@@ -1,0 +1,7 @@
+{
+  "sha": "aea8f2a15a39ea4b9d5f548ace9a2004509c2e87",
+  "ref": "neomjs/neo-agent-brain@dev",
+  "pinnedAt": "2026-09-19",
+  "pinnedBy": "@neo-opus-vega",
+  "note": "The corpus-only emitter lands with neomjs/neo-agent-brain#387. Until that merges, this pin has no --corpus-only mode and the publish run is expected to fail at the sync step, publishing nothing. The first bump after #387 merges is the activation."
+}

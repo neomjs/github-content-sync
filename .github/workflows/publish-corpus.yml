@@ -1,0 +1,113 @@
+# The corpus publisher.
+#
+# This repository owns the job; the Brain owns the emitter it runs
+# (neomjs/neo-agent-brain#387). The contract between them, in one line: the
+# emitter's EXIT CODE is the whole verdict. Zero means all four outcomes
+# advanced — release reference, issues, discussions, pulls — and only then is
+# there anything to publish. Every other outcome, including a partial facet
+# failure that left real content on disk, is nonzero and publishes nothing.
+#
+# Nothing here reads the emitter's output to decide. That is deliberate: a
+# publisher that parses prose eventually publishes on a message it misread.
+name: Publish corpus
+
+on:
+  schedule:
+    # Every six hours, off the hour so it does not pile onto the top-of-hour
+    # rush shared by every cron on the runner fleet.
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+# One publication at a time. Two runs interleaving would race on the same
+# branch, and the loser's push would rewrite a revision the winner just made.
+# Never cancel a run in flight: it may be mid-commit.
+concurrency:
+  group: publish-corpus
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the corpus
+        uses: actions/checkout@v4
+
+      - name: Read the pinned Brain runtime
+        id: pin
+        run: |
+          set -euo pipefail
+          sha="$(jq -r '.sha // empty' brain-runtime.json)"
+
+          # A pin that is not an immutable commit is the failure this guard
+          # exists for: a branch name here would turn every scheduled run into
+          # an untested upgrade of the thing doing the publishing.
+          if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error file=brain-runtime.json::Pin must be a full 40-character commit SHA, got: '${sha}'"
+            exit 1
+          fi
+
+          echo "sha=${sha}" >> "$GITHUB_OUTPUT"
+          echo "Pinned Brain runtime: ${sha}"
+
+      - name: Check out the Brain at that exact commit
+        uses: actions/checkout@v4
+        with:
+          repository: neomjs/neo-agent-brain
+          ref: ${{ steps.pin.outputs.sha }}
+          path: .runtime
+
+      - name: Install the pinned runtime
+        working-directory: .runtime
+        run: |
+          set -euo pipefail
+          npm ci
+          npm run prepare
+
+      - name: Emit the corpus
+        working-directory: .runtime
+        env:
+          NEO_MCP_GITHUB_OWNER: neomjs
+          NEO_MCP_GITHUB_REPO: neo
+          # Absolute, and the directory already exists because it is this
+          # repository's own checkout. The emitter refuses a missing, invalid
+          # or escaping destination before it even imports itself.
+          NEO_MCP_GITHUB_CONTENT_ROOT: ${{ github.workspace }}
+          GH_TOKEN: ${{ secrets.CORPUS_SOURCE_READ_TOKEN }}
+        run: npm run ai:sync-github-workflow -- --corpus-only --verbose
+
+      # Reached only when the step above exited 0. A failed emission ends the
+      # job here, and its half-written files die with the runner rather than
+      # being cleaned up by a step that could itself fail.
+      - name: Publish
+        run: |
+          set -euo pipefail
+
+          # Exactly the published paths. Never `git add -A`: the runtime
+          # checkout and the transient lock live in this workspace too, and a
+          # blanket add is how they would reach a revision.
+          git add -- _index.json neo
+
+          if git diff --cached --quiet; then
+            echo "Corpus is already current; nothing to publish."
+            exit 0
+          fi
+
+          # Content and index travel together. They are one publication unit,
+          # so the delivered revision identifies the files and their index.
+          git -c user.name='Neo Corpus Publisher' \
+              -c user.email='neo-opus-vega@neomjs.com' \
+              commit -m 'chore(corpus): publish neo conversations [skip ci]'
+
+          git push origin HEAD:dev
+
+      - name: Report the published revision
+        if: success()
+        run: |
+          echo "### Corpus publication" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- runtime pin: \`${{ steps.pin.outputs.sha }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- revision: \`$(git rev-parse HEAD)\`" >> "$GITHUB_STEP_SUMMARY"
