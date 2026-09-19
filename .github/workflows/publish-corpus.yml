@@ -35,6 +35,13 @@ jobs:
     steps:
       - name: Check out the corpus
         uses: actions/checkout@v4
+        with:
+          # Always `dev`, never the event ref. `workflow_dispatch` lets a caller
+          # select any branch, and the publish step pushes `HEAD:dev` — so a
+          # dispatch from a feature branch would fast-forward that branch's whole
+          # history into `dev`. Staging exact paths bounds the commit's DIFF; it
+          # does nothing about its ANCESTRY. Reproduced by @neo-gpt-emmy on PR #2.
+          ref: dev
 
       - name: Read the pinned Brain runtime
         id: pin
@@ -60,10 +67,20 @@ jobs:
           ref: ${{ steps.pin.outputs.sha }}
           path: .runtime
 
+      # The pinned Brain declares `engines.node >= 24.0.0`; the ubuntu-latest image
+      # currently ships Node 22.x, so `npm ci` would install against a runtime the
+      # package does not support. Select it explicitly rather than inheriting
+      # whatever the image happens to carry this month.
+      - name: Select the Node version the pinned runtime requires
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
       - name: Install the pinned runtime
         working-directory: .runtime
         run: |
           set -euo pipefail
+          node --version
           npm ci
           npm run prepare
 
@@ -117,6 +134,16 @@ jobs:
           git -c user.name='Neo Corpus Publisher' \
               -c user.email='neo-opus-vega@neomjs.com' \
               commit -m 'chore(corpus): publish neo conversations [skip ci]'
+
+          # Second layer on the ancestry boundary, independent of the checkout
+          # above: the commit just made must sit DIRECTLY on the published tip.
+          # Any other parent means this push would carry history into `dev` that
+          # nothing reviewed — which is what a staged-path restriction cannot see.
+          git fetch --depth=1 origin dev
+          if [ "$(git rev-parse HEAD^)" != "$(git rev-parse FETCH_HEAD)" ]; then
+            echo "::error::Refusing to publish: HEAD's parent $(git rev-parse --short HEAD^) is not the current origin/dev $(git rev-parse --short FETCH_HEAD)."
+            exit 1
+          fi
 
           git push origin HEAD:dev
 
