@@ -2,7 +2,7 @@
 
 The corpus repository for the Neo.mjs organisation's GitHub conversation content — issues, pull requests and discussions, mirrored as markdown, for every relevant repository in the org.
 
-**No content has been published here yet.** The publisher below exists and is wired; the emitter it runs ships with [`neomjs/neo-agent-brain#387`](https://github.com/neomjs/neo-agent-brain/issues/387). Until that merges and the pin is bumped past it, a scheduled run fails at the emit step and publishes nothing — which is the gate doing its job, not a fault.
+**No content has been published here yet.** The publisher below exists and is wired; the emitter it runs ships with [`neomjs/neo-agent-brain#387`](https://github.com/neomjs/neo-agent-brain/issues/387). Until that merges and the pin is bumped past it, a run stops at the *Verify the pinned runtime supports corpus mode* step and publishes nothing — **before** the emitter is invoked at all, because a runtime without the mode would silently run a full manual sync rather than refusing. That is the gate doing its job, not a fault.
 
 ## Why it exists
 
