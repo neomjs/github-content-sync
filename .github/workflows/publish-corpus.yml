@@ -109,7 +109,14 @@ jobs:
           # repository's own checkout. The emitter refuses a missing, invalid
           # or escaping destination before it even imports itself.
           NEO_MCP_GITHUB_CONTENT_ROOT: ${{ github.workspace }}
-          GH_TOKEN: ${{ secrets.CORPUS_SOURCE_READ_TOKEN }}
+          # The source repository is PUBLIC, and an Actions-injected token can already read it:
+          # a probe on this repo's runner returned real `neomjs/neo` discussions and pull
+          # requests over GraphQL, which is the API the emitter mainly uses. So the default
+          # token is the zero-setup path and the secret is the override, not the requirement.
+          # If a REST call turns out to need more, the org's established answer is an App
+          # installation token (`actions/create-github-app-token@v3`) with permissions
+          # requested EXPLICITLY, per `neomjs/neo`'s data-sync-pipeline.yml — not a PAT.
+          GH_TOKEN: ${{ secrets.CORPUS_SOURCE_READ_TOKEN || github.token }}
         run: npm run ai:sync-github-workflow -- --corpus-only --verbose
 
       # Reached only when the step above exited 0. A failed emission ends the
