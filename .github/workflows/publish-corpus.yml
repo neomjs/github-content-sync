@@ -1,0 +1,156 @@
+# The corpus publisher.
+#
+# This repository owns the job; the Brain owns the emitter it runs
+# (neomjs/neo-agent-brain#387). The contract between them, in one line: the
+# emitter's EXIT CODE is the whole verdict. Zero means all four outcomes
+# advanced — release reference, issues, discussions, pulls — and only then is
+# there anything to publish. Every other outcome, including a partial facet
+# failure that left real content on disk, is nonzero and publishes nothing.
+#
+# Nothing here reads the emitter's output to decide. That is deliberate: a
+# publisher that parses prose eventually publishes on a message it misread.
+name: Publish corpus
+
+on:
+  schedule:
+    # Every six hours, off the hour so it does not pile onto the top-of-hour
+    # rush shared by every cron on the runner fleet.
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+# One publication at a time. Two runs interleaving would race on the same
+# branch, and the loser's push would rewrite a revision the winner just made.
+# Never cancel a run in flight: it may be mid-commit.
+concurrency:
+  group: publish-corpus
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the corpus
+        uses: actions/checkout@v4
+        with:
+          # Always `dev`, never the event ref. `workflow_dispatch` lets a caller
+          # select any branch, and the publish step pushes `HEAD:dev` — so a
+          # dispatch from a feature branch would fast-forward that branch's whole
+          # history into `dev`. Staging exact paths bounds the commit's DIFF; it
+          # does nothing about its ANCESTRY. Reproduced by @neo-gpt-emmy on PR #2.
+          ref: dev
+
+      - name: Read the pinned Brain runtime
+        id: pin
+        run: |
+          set -euo pipefail
+          sha="$(jq -r '.sha // empty' brain-runtime.json)"
+
+          # A pin that is not an immutable commit is the failure this guard
+          # exists for: a branch name here would turn every scheduled run into
+          # an untested upgrade of the thing doing the publishing.
+          if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error file=brain-runtime.json::Pin must be a full 40-character commit SHA, got: '${sha}'"
+            exit 1
+          fi
+
+          echo "sha=${sha}" >> "$GITHUB_OUTPUT"
+          echo "Pinned Brain runtime: ${sha}"
+
+      - name: Check out the Brain at that exact commit
+        uses: actions/checkout@v4
+        with:
+          repository: neomjs/neo-agent-brain
+          ref: ${{ steps.pin.outputs.sha }}
+          path: .runtime
+
+      # The pinned Brain declares `engines.node >= 24.0.0`; the ubuntu-latest image
+      # currently ships Node 22.x, so `npm ci` would install against a runtime the
+      # package does not support. Select it explicitly rather than inheriting
+      # whatever the image happens to carry this month.
+      - name: Select the Node version the pinned runtime requires
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install the pinned runtime
+        working-directory: .runtime
+        run: |
+          set -euo pipefail
+          node --version
+          npm ci
+          npm run prepare
+
+      # An absent corpus mode is NOT a safe no-op. The pre-#387 CLI ignores an
+      # unknown --corpus-only and selects FULL MANUAL MODE, which materializes
+      # release notes, derives Portal artifacts and pushes issues back to
+      # GitHub — precisely the effects this job must never cause. So a pin
+      # without the mode must be refused here, before the emitter is invoked,
+      # rather than trusted to fail on its own.
+      - name: Verify the pinned runtime supports corpus mode
+        working-directory: .runtime
+        run: |
+          set -euo pipefail
+          if ! grep -rqs -- 'corpus-only' ai/scripts/maintenance/syncGithubWorkflow.mjs; then
+            echo "::error file=brain-runtime.json::Pinned runtime ${{ steps.pin.outputs.sha }} has no --corpus-only mode. The flag would be IGNORED and a full manual sync would run. Refusing to invoke it."
+            exit 1
+          fi
+          echo "Corpus mode present in the pinned runtime."
+
+      - name: Emit the corpus
+        working-directory: .runtime
+        env:
+          NEO_MCP_GITHUB_OWNER: neomjs
+          NEO_MCP_GITHUB_REPO: neo
+          # Absolute, and the directory already exists because it is this
+          # repository's own checkout. The emitter refuses a missing, invalid
+          # or escaping destination before it even imports itself.
+          NEO_MCP_GITHUB_CONTENT_ROOT: ${{ github.workspace }}
+          GH_TOKEN: ${{ secrets.CORPUS_SOURCE_READ_TOKEN }}
+        run: npm run ai:sync-github-workflow -- --corpus-only --verbose
+
+      # Reached only when the step above exited 0. A failed emission ends the
+      # job here, and its half-written files die with the runner rather than
+      # being cleaned up by a step that could itself fail.
+      - name: Publish
+        run: |
+          set -euo pipefail
+
+          # Exactly the published paths. Never `git add -A`: the runtime
+          # checkout and the transient lock live in this workspace too, and a
+          # blanket add is how they would reach a revision.
+          git add -- _index.json neo
+
+          if git diff --cached --quiet; then
+            echo "Corpus is already current; nothing to publish."
+            exit 0
+          fi
+
+          # Content and index travel together. They are one publication unit,
+          # so the delivered revision identifies the files and their index.
+          git -c user.name='Neo Corpus Publisher' \
+              -c user.email='neo-opus-vega@neomjs.com' \
+              commit -m 'chore(corpus): publish neo conversations [skip ci]'
+
+          # Second layer on the ancestry boundary, independent of the checkout
+          # above: the commit just made must sit DIRECTLY on the published tip.
+          # Any other parent means this push would carry history into `dev` that
+          # nothing reviewed — which is what a staged-path restriction cannot see.
+          git fetch --depth=1 origin dev
+          if [ "$(git rev-parse HEAD^)" != "$(git rev-parse FETCH_HEAD)" ]; then
+            echo "::error::Refusing to publish: HEAD's parent $(git rev-parse --short HEAD^) is not the current origin/dev $(git rev-parse --short FETCH_HEAD)."
+            exit 1
+          fi
+
+          git push origin HEAD:dev
+
+      - name: Report the published revision
+        if: success()
+        run: |
+          echo "### Corpus publication" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- runtime pin: \`${{ steps.pin.outputs.sha }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- revision: \`$(git rev-parse HEAD)\`" >> "$GITHUB_STEP_SUMMARY"

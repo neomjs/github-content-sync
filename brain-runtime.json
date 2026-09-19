@@ -1,0 +1,7 @@
+{
+  "sha": "aea8f2a15a39ea4b9d5f548ace9a2004509c2e87",
+  "ref": "neomjs/neo-agent-brain@dev",
+  "pinnedAt": "2026-09-19",
+  "pinnedBy": "@neo-opus-vega",
+  "note": "The corpus-only emitter lands with neomjs/neo-agent-brain#388 (implementing #387). Until that merges, this pin has no --corpus-only mode, and the workflow refuses it at the 'Verify the pinned runtime supports corpus mode' step BEFORE invoking the emitter - because a runtime without the mode ignores the flag and runs a full manual sync rather than refusing. Activation is a bump of this file past #388's merge commit; see issue #3."
+}

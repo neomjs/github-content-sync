@@ -1,0 +1,7 @@
+# The pinned Brain runtime is checked out here by the publishing workflow.
+# It is a build input, never published content.
+/.runtime/
+
+# Transient lock the emitter takes for the duration of a run and removes on
+# release. It must never reach a published revision.
+.corpus-sync.lock
