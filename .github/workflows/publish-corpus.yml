@@ -67,6 +67,22 @@ jobs:
           npm ci
           npm run prepare
 
+      # An absent corpus mode is NOT a safe no-op. The pre-#387 CLI ignores an
+      # unknown --corpus-only and selects FULL MANUAL MODE, which materializes
+      # release notes, derives Portal artifacts and pushes issues back to
+      # GitHub — precisely the effects this job must never cause. So a pin
+      # without the mode must be refused here, before the emitter is invoked,
+      # rather than trusted to fail on its own.
+      - name: Verify the pinned runtime supports corpus mode
+        working-directory: .runtime
+        run: |
+          set -euo pipefail
+          if ! grep -rqs -- 'corpus-only' ai/scripts/maintenance/syncGithubWorkflow.mjs; then
+            echo "::error file=brain-runtime.json::Pinned runtime ${{ steps.pin.outputs.sha }} has no --corpus-only mode. The flag would be IGNORED and a full manual sync would run. Refusing to invoke it."
+            exit 1
+          fi
+          echo "Corpus mode present in the pinned runtime."
+
       - name: Emit the corpus
         working-directory: .runtime
         env:
