@@ -1,0 +1,31 @@
+---
+id: 4871
+title: 'button.Base: adjust the initial main menu rendering position to a negative offset'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2023-09-11T07:51:53Z'
+updatedAt: '2023-09-11T07:52:39Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4871'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-09-11T07:52:39Z'
+---
+# button.Base: adjust the initial main menu rendering position to a negative offset
+
+the menu shows up on the center of the screen first and gets adjusted inside the next frame.
+
+to be consistent to sub menus, let's go for a negative margin.
+

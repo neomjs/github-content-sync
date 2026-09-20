@@ -1,0 +1,44 @@
+---
+id: 2328
+title: component.Clock
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-06-07T15:21:16Z'
+updatedAt: '2021-06-09T19:18:14Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/2328'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-06-09T19:18:14Z'
+---
+# component.Clock
+
+create a simple CSS driven clock component, which we can use inside the TimeField trigger.
+
+it should be possible to adjust the size as well as the minutes and hours.
+
+## Timeline
+
+- 2021-06-07T15:21:16Z @tobiu added the `enhancement` label
+- 2021-06-07T15:21:16Z @tobiu assigned to @tobiu
+- 2021-06-07T16:03:34Z @tobiu referenced in commit `d57c191` - "component.Clock #2328 base class"
+- 2021-06-07T16:06:38Z @tobiu referenced in commit `0815944` - "#2328 component.Clock: vdom"
+- 2021-06-07T16:11:16Z @tobiu referenced in commit `dd6c8b6` - "#2328 component.Clock: example app"
+- 2021-06-07T16:12:53Z @tobiu referenced in commit `36a860b` - "#2328 component.Clock: scss file"
+- 2021-06-07T16:19:18Z @tobiu referenced in commit `a6ee954` - "#2328 component.Clock: size_ config"
+- 2021-06-07T17:32:12Z @tobiu referenced in commit `5891b8f` - "#2328 component.Clock: styling test"
+- 2021-06-07T17:51:08Z @tobiu referenced in commit `abccbbd` - "#2328 component.Clock: fontSize VS size"
+- 2021-06-08T19:54:35Z @tobiu referenced in commit `ba5c294` - "#2328 component.Clock: time_"
+

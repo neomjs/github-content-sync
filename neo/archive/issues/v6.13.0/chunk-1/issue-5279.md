@@ -1,0 +1,31 @@
+---
+id: 5279
+title: 'component.Base: parentComponent_ config'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-03-01T13:09:38Z'
+updatedAt: '2024-03-01T13:10:13Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5279'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-03-01T13:10:13Z'
+---
+# component.Base: parentComponent_ config
+
+for the LivePreview cmps inside markdown definitions, we need an easy way to find the closest view controller.
+
+`parentId` is not sufficient, since it does not match a neo component.
+

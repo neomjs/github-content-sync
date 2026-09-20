@@ -1,0 +1,35 @@
+---
+id: 4409
+title: buildScripts/createClass => update the singleton logic
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2023-05-11T14:06:54Z'
+updatedAt: '2023-05-18T17:35:44Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4409'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-05-18T17:35:44Z'
+---
+# buildScripts/createClass => update the singleton logic
+
+```
+let instance = Neo.applyClassConfig(Cookie);
+
+export default instance;
+```
+
+instead of the outdated old syntax
+

@@ -1,0 +1,31 @@
+---
+id: 2230
+title: 'plugin.Resizable: onMouseMove() => compare targets'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-06-02T16:15:09Z'
+updatedAt: '2021-06-02T16:16:11Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/2230'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-06-02T16:16:11Z'
+---
+# plugin.Resizable: onMouseMove() => compare targets
+
+i case delegation targets are right next to each other, it can happen that `onMouseLeave()` does not trigger.
+
+we need to ensure that handles always get removed when switching targets.
+

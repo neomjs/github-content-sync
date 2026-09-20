@@ -1,0 +1,35 @@
+---
+id: 1133
+title: 'Docs App: using routes breaks locally'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2020-08-24T15:25:11Z'
+updatedAt: '2020-08-25T07:31:35Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1133'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-08-25T07:31:35Z'
+---
+# Docs App: using routes breaks locally
+
+e.g.: #viewSource=Neo.calendar.model.Event&line=13
+
+the parentId & index are missing inside the delta update.
+
+![Screenshot 2020-08-24 at 17 24 18](https://user-images.githubusercontent.com/1177434/91063815-bc48e780-e62e-11ea-85ec-708fbbb12a3c.png)
+
+will take a look into this.
+

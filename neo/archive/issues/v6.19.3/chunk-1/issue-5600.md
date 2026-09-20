@@ -1,0 +1,31 @@
+---
+id: 5600
+title: 'form.field.Base: remove the static delayable class field'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-07-21T00:03:30Z'
+updatedAt: '2024-07-21T00:04:04Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5600'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-07-21T00:04:04Z'
+---
+# form.field.Base: remove the static delayable class field
+
+the delay of 1s for change events was intended for a client project to delay potential ajax calls to a backend.
+
+obviously this should not be the framework default, but get implemented on app level if needed (using delayable for the change event handlers).
+

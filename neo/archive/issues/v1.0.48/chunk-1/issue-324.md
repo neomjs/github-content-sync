@@ -1,0 +1,38 @@
+---
+id: 324
+title: 'Neo.main.DomAccess: scrollToTableRow'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-03-19T12:56:32Z'
+updatedAt: '2020-03-19T13:10:21Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/324'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-03-19T13:10:21Z'
+---
+# Neo.main.DomAccess: scrollToTableRow
+
+now that the sticky table headers work again, srollIntoView() moves the table row exactly behind the headers. since this mehod does not support setting an offset, we need a custom scroll logic instead.
+
+on it.
+
+## Timeline
+
+### @tobiu - 2020-03-19T13:10:21Z
+
+done.
+
+

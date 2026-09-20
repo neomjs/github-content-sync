@@ -1,0 +1,35 @@
+---
+id: 2346
+title: 'calendar.view.month.Component: show the event edit form on event double-click'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-06-11T10:14:36Z'
+updatedAt: '2021-06-11T17:06:38Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/2346'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-06-11T17:06:38Z'
+---
+# calendar.view.month.Component: show the event edit form on event double-click
+
+This ticket is an epic. I will create sub-tickets.
+
+Ideally, the entire calendar app will only create one editor instance.
+
+To make this happen, the "owner" needs to be the MainContainer.
+
+This one needs the relevant configs (e.g. minimum event duration, timeFormat).
+

@@ -1,0 +1,37 @@
+---
+id: 340
+title: 'Covid.view.country.Helix: light theme'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-03-19T17:28:41Z'
+updatedAt: '2020-03-19T18:50:58Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/340'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-03-19T18:50:58Z'
+---
+# Covid.view.country.Helix: light theme
+
+similar to the gallery theme
+
+## Timeline
+
+### @tobiu - 2020-03-19T18:50:58Z
+
+![Screenshot 2020-03-19 at 19 45 37](https://user-images.githubusercontent.com/1177434/77103582-edd3dc00-6a1a-11ea-9493-7e8b3d506275.png)
+
+
+

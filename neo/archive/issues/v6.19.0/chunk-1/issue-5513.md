@@ -1,0 +1,38 @@
+---
+id: 5513
+title: layout.Cube
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-07-02T11:23:12Z'
+updatedAt: '2024-07-02T19:23:07Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5513'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-07-02T19:23:07Z'
+---
+# layout.Cube
+
+For the Portal App, I would like to try using an animated cube layout.
+
+To do this, we need a new layout class & example.
+
+## Timeline
+
+### @tobiu - 2024-07-02T19:23:07Z
+
+working fine now, i will add more feature request tickets for it.
+
+

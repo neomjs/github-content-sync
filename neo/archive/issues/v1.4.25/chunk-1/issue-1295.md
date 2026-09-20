@@ -1,0 +1,33 @@
+---
+id: 1295
+title: 'examples.TabContainer: changing the tabBarPosition (checkboxes) should update the reversed layout sort direction checkbox'
+state: CLOSED
+labels:
+  - enhancement
+  - good first issue
+assignees: []
+createdAt: '2020-10-22T14:09:58Z'
+updatedAt: '2020-10-24T12:58:22Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1295'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-10-24T12:58:22Z'
+---
+# examples.TabContainer: changing the tabBarPosition (checkboxes) should update the reversed layout sort direction checkbox
+
+not super important, since it does not break anything, but switching to "left" has a reversed order by default while the other sides have not.
+
+flagging the ticket as a good first issue.
+
+
+

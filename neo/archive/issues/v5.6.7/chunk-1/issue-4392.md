@@ -1,0 +1,30 @@
+---
+id: 4392
+title: 'form.field.Picker: destroy() => enforce unmounting'
+state: CLOSED
+labels:
+  - enhancement
+assignees: []
+createdAt: '2023-05-08T09:30:48Z'
+updatedAt: '2023-05-08T09:31:06Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4392'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-05-08T09:31:06Z'
+---
+# form.field.Picker: destroy() => enforce unmounting
+
+there are some edge cases, where a picker field with an open picker overlay triggers a page navigation resulting in a `destroy()` OP. this does not always ensure that the overlay does get removed from the dom, so we need to adjust our logic.
+
+@alberthashani
+

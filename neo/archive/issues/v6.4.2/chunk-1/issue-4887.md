@@ -1,0 +1,48 @@
+---
+id: 4887
+title: 'form.field.Date: hide the default trigger in Firefox > v109'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-09-11T16:28:06Z'
+updatedAt: '2023-09-11T16:29:41Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4887'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-09-11T16:29:41Z'
+---
+# form.field.Date: hide the default trigger in Firefox > v109
+
+before this version, it was easily doable...
+
+## Timeline
+
+### @tobiu - 2023-09-11T16:29:41Z
+
+the "least worst" hack i can think of:
+```
+@-moz-document url-prefix() {
+    .neo-datefield {
+        .neo-textfield-input {
+            clip-path: inset(0 2em 0 0);
+        }
+    }
+}
+```
+
+<img width="1209" alt="Screenshot 2023-09-11 at 18 29 23" src="https://github.com/neomjs/neo/assets/1177434/55b2d197-8552-46c9-90c7-321d05329d38">
+
+
+

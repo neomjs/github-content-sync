@@ -1,0 +1,31 @@
+---
+id: 4902
+title: 'util.Function: convert the class into named exports'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-09-14T09:32:44Z'
+updatedAt: '2023-09-14T10:37:48Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4902'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-09-14T10:37:48Z'
+---
+# util.Function: convert the class into named exports
+
+since we want to use it inside `core.Base`.
+
+we also need to adjust the WebSocket connection, which is using it.
+

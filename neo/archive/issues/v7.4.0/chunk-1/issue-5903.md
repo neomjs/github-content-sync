@@ -1,0 +1,37 @@
+---
+id: 5903
+title: 'Portal App: Examples => add the colors dashboard'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-09-14T13:25:59Z'
+updatedAt: '2024-09-14T13:32:26Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5903'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-09-14T13:32:26Z'
+---
+# Portal App: Examples => add the colors dashboard
+
+*(No description provided)*
+
+## Timeline
+
+### @tobiu - 2024-09-14T13:32:26Z
+
+![Screenshot 2024-09-14 at 15 26 23](https://github.com/user-attachments/assets/d9181b28-caf7-434f-9e7c-9686c191eaa0)
+
+
+

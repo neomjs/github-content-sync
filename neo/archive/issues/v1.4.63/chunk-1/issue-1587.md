@@ -1,0 +1,31 @@
+---
+id: 1587
+title: 'component.Base: initConfig() => add model.resolveBindings()'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-03-26T00:04:34Z'
+updatedAt: '2021-03-26T00:04:52Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1587'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-03-26T00:04:52Z'
+---
+# component.Base: initConfig() => add model.resolveBindings()
+
+in case this is possible.
+
+still need to test if we can lazy load a model class without breaking the life-cycle.
+

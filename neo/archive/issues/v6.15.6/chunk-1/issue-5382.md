@@ -1,0 +1,41 @@
+---
+id: 5382
+title: Neo.container.DateSelector => refactoring
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-04-05T12:45:07Z'
+updatedAt: '2024-04-09T13:24:17Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5382'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-04-09T13:24:17Z'
+---
+# Neo.container.DateSelector => refactoring
+
+We already have `Neo.component.DateSelector`. Since we do want to add a new view to select month & year via mouse, it does make sense to refactor the current implementation.
+
+Container with a header toolbar and a body container using a card layout.
+
+@mxmrtns 
+
+## Timeline
+
+### @tobiu - 2024-04-07T15:17:49Z
+
+WIP
+<img width="606" alt="Screenshot 2024-04-07 at 17 17 19" src="https://github.com/neomjs/neo/assets/1177434/54d1c5a6-7e11-4f0c-b390-aa04c7ada09d">
+
+

@@ -1,0 +1,36 @@
+---
+id: 5391
+title: 'collection.Base: isObject() checks no longer honor records'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2024-04-12T15:06:52Z'
+updatedAt: '2024-04-12T15:33:08Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5391'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-04-12T15:33:08Z'
+---
+# collection.Base: isObject() checks no longer honor records
+
+this causes issues, e.g. for finding indexes properly.
+
+we need a new `isItem()` helper to check for objects or records.
+
+## Timeline
+
+- 2026-05-20T22:19:48Z @neo-gpt cross-referenced by #11701
+- 2026-05-21T00:52:14Z @neo-opus-ada cross-referenced by PR #11706
+

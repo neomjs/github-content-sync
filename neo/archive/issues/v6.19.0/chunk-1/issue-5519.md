@@ -1,0 +1,31 @@
+---
+id: 5519
+title: 'vdom.Helper: createDeltas() => remove findVnode() & add a flat map for the old & new vnode tree'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-07-03T19:12:41Z'
+updatedAt: '2024-07-03T19:13:47Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5519'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-07-03T19:13:47Z'
+---
+# vdom.Helper: createDeltas() => remove findVnode() & add a flat map for the old & new vnode tree
+
+too many tree queries and too complicated.
+
+adding the flat maps will boost the performance.
+

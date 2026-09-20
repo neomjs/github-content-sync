@@ -1,0 +1,31 @@
+---
+id: 1480
+title: Neo.config.useGoogleAnalytics no longer functional
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2020-12-18T21:12:49Z'
+updatedAt: '2020-12-18T21:15:51Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1480'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-12-18T21:15:51Z'
+---
+# Neo.config.useGoogleAnalytics no longer functional
+
+refactored this one "too much" without proper testing.
+
+it obviously still should work with setting just the config and not adding it into the addons config (gh pages).
+

@@ -1,0 +1,33 @@
+---
+id: 2655
+title: 'form.field.Select: Add the ability to pass a record id (keyProperty) as the value'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-07-25T13:08:55Z'
+updatedAt: '2021-07-25T13:09:14Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/2655'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-07-25T13:09:14Z'
+---
+# form.field.Select: Add the ability to pass a record id (keyProperty) as the value
+
+this requires two changes:
+
+`beforeSetValue()` needs to convert a recordId into `record[this.displayField]` if needed.
+
+the change event needs to pass record ids, in case there is a match.
+

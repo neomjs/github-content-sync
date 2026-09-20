@@ -1,0 +1,37 @@
+---
+id: 3653
+title: 'textfield-input: scss var → padding'
+state: CLOSED
+labels:
+  - enhancement
+assignees: []
+createdAt: '2022-12-20T15:41:16Z'
+updatedAt: '2022-12-20T21:26:25Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/3653'
+author: mxmrtns
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2022-12-20T21:26:24Z'
+---
+# textfield-input: scss var → padding
+
+*(No description provided)*
+
+## Timeline
+
+### @tobiu - 2022-12-20T21:26:24Z
+
+pushed the new variable.
+
+thinking more about it: do we even need an input-height variable, when we can define the padding and line-height now?
+
+

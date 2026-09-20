@@ -1,0 +1,42 @@
+---
+id: 2669
+title: 'main.draggable.sensor.Mouse: onMouseDown() => event.path'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2021-08-02T00:34:41Z'
+updatedAt: '2021-08-02T00:37:56Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/2669'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-08-02T00:37:56Z'
+---
+# main.draggable.sensor.Mouse: onMouseDown() => event.path
+
+I just noticed inside Safari Tech Preview, that `event.composedPath()` only works in case we are calling it inside the handler.
+
+When storing the event as the `startEvent` and later calling `composedPath()`, we get an empty array.
+
+To fix this, I will store the path manually inside `onMouseDown()`.
+
+Assuming that it is the same for touch events, I will adjust the touch sensor as well.
+
+## Timeline
+
+### @tobiu - 2021-08-02T00:36:53Z
+
+This one affects the non tech preview version of safari as well.
+
+

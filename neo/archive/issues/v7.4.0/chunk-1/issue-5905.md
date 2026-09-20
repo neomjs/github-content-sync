@@ -1,0 +1,38 @@
+---
+id: 5905
+title: 'Portal App: Examples => add the multi-window OffscreenCanvas demo'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-09-14T14:29:55Z'
+updatedAt: '2024-09-14T14:31:25Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5905'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-09-14T14:31:01Z'
+---
+# Portal App: Examples => add the multi-window OffscreenCanvas demo
+
+*(No description provided)*
+
+## Timeline
+
+### @tobiu - 2024-09-14T14:31:01Z
+
+![Screenshot 2024-09-14 at 16 30 48](https://github.com/user-attachments/assets/84d77ecb-7d80-41df-8167-e6004cdcb9e5)
+
+
+
+

@@ -1,0 +1,33 @@
+---
+id: 1591
+title: 'Neo classes: method order'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-03-26T11:58:53Z'
+updatedAt: '2021-03-26T13:57:47Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1591'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-03-26T13:57:47Z'
+---
+# Neo classes: method order
+
+I started with putting a few methods on top of each class: 
+constructor, onConstructed, init, mergeConfig, getVdomRoot, getVnodeRoot.
+
+At this point it feels rather confusing, so I will change this approach:
+constructor first, all other methods in chronological (alphabetical) order. 
+

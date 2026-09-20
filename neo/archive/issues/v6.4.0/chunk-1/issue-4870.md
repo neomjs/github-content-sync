@@ -1,0 +1,51 @@
+---
+id: 4870
+title: 'component.Base: isVdomUpdating change does not honor render'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - ExtAnimal
+createdAt: '2023-09-10T21:07:42Z'
+updatedAt: '2023-09-11T05:11:01Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4870'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-09-11T05:11:00Z'
+---
+# component.Base: isVdomUpdating change does not honor render
+
+Hi Nige,
+
+I am wondering about this change:
+<img width="840" alt="Screenshot 2023-09-10 at 22 58 12" src="https://github.com/neomjs/neo/assets/1177434/fe173190-d488-433c-9a30-e7fa8f1f9826">
+
+We also set this flag to true when calling `render()`. This is important, since updates which arrive while the initial rendering cycle is running need to get delayed.
+
+If you want to keep:
+```
+    get isVdomUpdating() {
+        // The VDOM is being updated if we have the promise that executeVdomUpdate uses
+        return Boolean(this.vdomUpdate)
+    }
+```
+
+we need to adjust all setters to modify `this.vdomUpdate` to a promise or null instead.
+
+## Timeline
+
+### @tobiu - 2023-09-10T21:11:04Z
+
+the alternative is to restore the old way how it worked.
+
+

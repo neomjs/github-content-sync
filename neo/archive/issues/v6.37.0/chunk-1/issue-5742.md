@@ -1,0 +1,39 @@
+---
+id: 5742
+title: 'theme-neo-light: define core-fontsize-h3'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-08-12T14:55:06Z'
+updatedAt: '2024-08-12T14:55:40Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5742'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-08-12T14:55:40Z'
+---
+# theme-neo-light: define core-fontsize-h3
+
+@mxmrtns 
+
+already in use inside our app, but the core token for h3 was missing.
+
+```
+--core-fontsize-h1 : 2.5rem;
+--core-fontsize-h2 : 1.75rem;
+--core-fontsize-h3 : 1.25rem;
+```
+
+adding it now => feel free to adjust the value.
+

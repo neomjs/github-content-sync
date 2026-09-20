@@ -1,0 +1,31 @@
+---
+id: 2200
+title: 'component.Splitter: resizeTarget config'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-05-29T07:16:07Z'
+updatedAt: '2021-05-29T09:37:52Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/2200'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-05-29T09:37:52Z'
+---
+# component.Splitter: resizeTarget config
+
+{String} previous / next
+
+It should be optional which sibling to resize on drop.
+

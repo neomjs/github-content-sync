@@ -1,0 +1,30 @@
+---
+id: 1717
+title: 'model.Component: optionally cache the generated formatter functions'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-04-02T13:12:23Z'
+updatedAt: '2021-04-02T13:21:56Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1717'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-04-02T13:21:56Z'
+---
+# model.Component: optionally cache the generated formatter functions
+
+* add a config to the model class => Boolean
+* store the functions inside a module object => key: formatter string, value formatter fn
+

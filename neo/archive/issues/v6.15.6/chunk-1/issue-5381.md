@@ -1,0 +1,31 @@
+---
+id: 5381
+title: 'form.Base: getValue() => getSubmitValue()'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-04-04T12:00:58Z'
+updatedAt: '2024-04-04T12:14:04Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5381'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-04-04T12:14:04Z'
+---
+# form.Base: getValue() => getSubmitValue()
+
+It can be confusing for devs to spot the difference for `value` and `getValue()`, so we should use a clearer name to highlight the difference.
+
+until the next major release, this is a non-breaking change (both will work).
+

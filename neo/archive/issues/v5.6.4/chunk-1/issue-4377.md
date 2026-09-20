@@ -1,0 +1,31 @@
+---
+id: 4377
+title: 'calendar.*: support for ancient dates'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2023-05-03T11:42:12Z'
+updatedAt: '2023-05-03T11:44:30Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4377'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-05-03T11:44:30Z'
+---
+# calendar.*: support for ancient dates
+
+related to: https://github.com/neomjs/neo/issues/4376
+
+i did not encounter a bug yet, but adding .000Z should be better.
+

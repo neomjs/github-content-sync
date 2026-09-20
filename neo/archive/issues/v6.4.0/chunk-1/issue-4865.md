@@ -1,0 +1,38 @@
+---
+id: 4865
+title: 'util.HashHistory: second()'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-09-07T20:56:25Z'
+updatedAt: '2023-09-07T20:58:34Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4865'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-09-07T20:58:34Z'
+---
+# util.HashHistory: second()
+
+it feels pretty common, to compare the current & the last hash value inside controllers.
+
+we should add a convenience shortcut.
+
+## Timeline
+
+- 2023-09-07T20:56:25Z @tobiu added the `enhancement` label
+- 2023-09-07T20:56:25Z @tobiu assigned to @tobiu
+- 2023-09-07T20:58:27Z @tobiu referenced in commit `a55b6a1` - "util.HashHistory: second() #4865"
+- 2023-09-07T20:58:34Z @tobiu closed this issue
+

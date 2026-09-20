@@ -1,0 +1,29 @@
+---
+id: 4380
+title: Update phoneField inputPattern
+state: CLOSED
+labels:
+  - enhancement
+assignees: []
+createdAt: '2023-05-04T08:47:28Z'
+updatedAt: '2023-05-04T19:46:41Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4380'
+author: ki1pen
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-05-04T19:46:41Z'
+---
+# Update phoneField inputPattern
+
+The current inputPattern, that phoneField use for phone number validation, use regex that allows the user to use multiple minus signs after each other(e.g: -----). Update the regex for stricter phone number validation.
+
+

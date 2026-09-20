@@ -1,0 +1,31 @@
+---
+id: 5260
+title: 'learning section: scrolling only works when having the cursor on top of the actual content, not on the sides'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2024-02-22T17:22:48Z'
+updatedAt: '2024-02-22T17:26:54Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5260'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-02-22T17:26:54Z'
+---
+# learning section: scrolling only works when having the cursor on top of the actual content, not on the sides
+
+as an easy fix, we can just move `overflow: scroll` one level up => from `learn-content` to `learn-content-container`.
+
+@maxrahder @mxmrtns 
+

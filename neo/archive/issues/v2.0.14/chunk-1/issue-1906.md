@@ -1,0 +1,50 @@
+---
+id: 1906
+title: 'create-app program: apps.json => order the apps chronologically'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-04-30T11:21:40Z'
+updatedAt: '2021-04-30T11:34:26Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1906'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-04-30T11:34:26Z'
+---
+# create-app program: apps.json => order the apps chronologically
+
+a bit tricky, since we are using nested objects:
+```
+"apps": {
+    "Covid": {
+        "input": "./apps/covid/app.mjs",
+        "mainThreadAddons": "'AmCharts', 'DragDrop', 'MapboxGL', 'Stylesheet'",
+        "output": "/apps/covid/",
+        "themes": "'neo-theme-dark', 'neo-theme-light'",
+        "title": "COVID-19 IN NUMBERS"
+    },
+    "RealWorld": {
+        "indexPath": "apps/realworld/index.ejs",
+        "input": "./apps/realworld/app.mjs",
+        "mainThreadAddons": "'LocalStorage', 'Markdown'",
+        "output": "/apps/realworld/",
+        "themes": "",
+        "title": "Conduit"
+    }
+}
+```
+
+definitely nicer to not append new apps to the end.
+

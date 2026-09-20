@@ -1,0 +1,38 @@
+---
+id: 1596
+title: 'model.Component: createBinding()'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-03-27T14:49:38Z'
+updatedAt: '2021-03-27T14:50:28Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1596'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-03-27T14:50:28Z'
+---
+# model.Component: createBinding()
+
+store the binding related infos inside this.bindings.
+
+structure:
+```
+{
+    bindingProperty: {
+        coponentId: [key1, key2,...]
+    }
+}
+```
+

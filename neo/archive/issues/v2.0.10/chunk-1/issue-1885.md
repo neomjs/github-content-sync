@@ -1,0 +1,33 @@
+---
+id: 1885
+title: 'Covid.view.MainContainerController: onMainViewMounted()'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-04-28T16:02:09Z'
+updatedAt: '2021-04-28T16:27:52Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1885'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-04-28T16:27:52Z'
+---
+# Covid.view.MainContainerController: onMainViewMounted()
+
+after switching to lazy load all covid app main tabs, we can no longer use `onMainViewMounted()` since at this point at most 1 tab is there.
+
+instead, we need to trigger the logic when a new tab gets activated. `onHashChange()` could work.
+
+diving into this now.
+

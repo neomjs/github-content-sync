@@ -1,0 +1,38 @@
+---
+id: 5969
+title: 'data.RecordFactory: add support for change notifications for nested fields'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-09-26T17:49:28Z'
+updatedAt: '2024-09-26T21:34:41Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5969'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-09-26T21:34:41Z'
+---
+# data.RecordFactory: add support for change notifications for nested fields
+
+use case:
+```
+{
+    annotations: {
+        selected: true
+    }
+}
+```
+
+=> `myRecord.annotations.selected = false` => notify the `data.Store`
+

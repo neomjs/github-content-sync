@@ -1,0 +1,37 @@
+---
+id: 5074
+title: 'apps/learnneo: add a PoC for using the HighlightJS addon'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-11-02T21:19:33Z'
+updatedAt: '2023-11-02T21:20:20Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5074'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-11-02T21:20:20Z'
+---
+# apps/learnneo: add a PoC for using the HighlightJS addon
+
+*(No description provided)*
+
+## Timeline
+
+### @tobiu - 2023-11-02T21:20:20Z
+
+<img width="799" alt="Screenshot 2023-11-02 at 21 48 17" src="https://github.com/neomjs/neo/assets/1177434/41f86d0a-2eb0-4ad8-855a-cadd8736f9e3">
+
+
+

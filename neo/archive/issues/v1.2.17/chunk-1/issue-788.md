@@ -1,0 +1,31 @@
+---
+id: 788
+title: 'neo website: create a base class for the blog'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-06-27T14:51:56Z'
+updatedAt: '2020-06-27T15:07:41Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/788'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-06-27T15:07:41Z'
+---
+# neo website: create a base class for the blog
+
+should be a container with a search field (filter) and checkboxes (e.g. blog, tutorial, release note).
+
+for displaying the items, a list makes sense.
+

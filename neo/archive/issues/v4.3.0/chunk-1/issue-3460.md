@@ -1,0 +1,32 @@
+---
+id: 3460
+title: 'button.Base: badgeText_'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2022-09-28T15:03:02Z'
+updatedAt: '2022-09-28T15:26:51Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/3460'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2022-09-28T15:26:51Z'
+---
+# button.Base: badgeText_
+
+we already created a `BadgeButton` inside one of our workshops recently:
+https://github.com/neomjs/workshops/blob/main/apps/w2022_09_08/view/BadgeButton.mjs
+
+It would be nice to get a more polished version of this logic directly into `button.Base`.
+

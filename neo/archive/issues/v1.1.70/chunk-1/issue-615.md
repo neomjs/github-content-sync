@@ -1,0 +1,31 @@
+---
+id: 615
+title: 'Docs App: toggle source view theme'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2020-05-24T00:24:06Z'
+updatedAt: '2020-05-24T01:06:33Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/615'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-05-24T01:06:33Z'
+---
+# Docs App: toggle source view theme
+
+still using Neo.main.DomAccess.swapStyleSheet
+
+=> switch to the addon
+

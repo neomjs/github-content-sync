@@ -1,0 +1,42 @@
+---
+id: 1739
+title: 'model.Component: stores config'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-04-09T17:42:17Z'
+updatedAt: '2021-04-09T20:09:07Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1739'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-04-09T20:09:07Z'
+---
+# model.Component: stores config
+
+view models are supposed to store data.
+
+data.Store contains data, so it should be possible to create store instances inside a vm.
+
+type: object.
+
+each key is a store instance name to which we can bind to.
+
+## Timeline
+
+### @tobiu - 2021-04-09T20:09:07Z
+
+The first PoC is working now. I will create new follow up tickets to further improve it.
+
+

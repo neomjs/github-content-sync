@@ -1,0 +1,31 @@
+---
+id: 621
+title: 'createApp: using the HighlightJS mainThreadAddon'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-05-25T13:35:29Z'
+updatedAt: '2020-05-25T13:37:13Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/621'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-05-25T13:37:13Z'
+---
+# createApp: using the HighlightJS mainThreadAddon
+
+edge case:
+
+we want to copy the docs/recources folder into the new app shell.
+

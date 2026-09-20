@@ -1,0 +1,37 @@
+---
+id: 1316
+title: examples.tree.List
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-10-26T12:21:02Z'
+updatedAt: '2020-10-26T12:54:35Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1316'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-10-26T12:54:35Z'
+---
+# examples.tree.List
+
+to further enhance & test the DD implementation, we need a new standalone example for trees.
+
+## Timeline
+
+### @tobiu - 2020-10-26T12:54:35Z
+
+![Screenshot 2020-10-26 at 13 52 32](https://user-images.githubusercontent.com/1177434/97174580-93f67a00-1792-11eb-853b-4b7c539972b6.png)
+
+
+

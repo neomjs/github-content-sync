@@ -1,0 +1,31 @@
+---
+id: 1279
+title: 'draggable.toolbar.SortZone: support for vertical toolbars (drag&drop)'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-10-20T13:44:46Z'
+updatedAt: '2020-10-21T12:22:00Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1279'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-10-21T12:22:00Z'
+---
+# draggable.toolbar.SortZone: support for vertical toolbars (drag&drop)
+
+onDragStart() needs to check the owner.layout config.
+
+if this is a vbox layout, switch to the vertical mode.
+

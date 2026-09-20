@@ -1,0 +1,31 @@
+---
+id: 1333
+title: 'covid apps: marshall islands country flag'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-10-29T06:39:51Z'
+updatedAt: '2020-10-29T06:50:54Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1333'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-10-29T06:50:54Z'
+---
+# covid apps: marshall islands country flag
+
+a new country got added to the list & the flag image is broken.
+
+the image is named marshall-island without the "s" at the end.
+

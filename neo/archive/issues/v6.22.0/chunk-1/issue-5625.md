@@ -1,0 +1,31 @@
+---
+id: 5625
+title: Replace setTimeout() calls when possible
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-07-26T13:54:58Z'
+updatedAt: '2024-07-26T14:16:14Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5625'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-07-26T14:16:14Z'
+---
+# Replace setTimeout() calls when possible
+
+`core.Base` has a `timeout()` method, which will store all timeout ids and clear them, in case the instance gets destroyed.
+
+in case we don't need to store the ids manually, we should replace the setTimeout() calls.
+

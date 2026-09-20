@@ -1,0 +1,33 @@
+---
+id: 5116
+title: 'worker.App: createNeoInstance() => config.importPath'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-11-30T16:12:07Z'
+updatedAt: '2023-11-30T16:17:39Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5116'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-11-30T16:17:39Z'
+---
+# worker.App: createNeoInstance() => config.importPath
+
+it should be possible inside the dev mode to dynamically import modules as needed.
+
+webpack MUST ignore it (bundling madness).
+
+@ExtAnimal 
+

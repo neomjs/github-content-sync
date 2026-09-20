@@ -1,0 +1,31 @@
+---
+id: 3424
+title: 'buildScripts/createClass: MainContainer => comments'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2022-09-03T08:56:27Z'
+updatedAt: '2022-09-03T08:58:43Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/3424'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2022-09-03T08:58:43Z'
+---
+# buildScripts/createClass: MainContainer => comments
+
+same as #3423 
+
+block VS doc comments
+

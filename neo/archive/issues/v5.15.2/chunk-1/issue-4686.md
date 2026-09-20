@@ -1,0 +1,30 @@
+---
+id: 4686
+title: 'component.Base: #executeVdomUpdate()'
+state: CLOSED
+labels:
+  - enhancement
+assignees: []
+createdAt: '2023-08-09T20:11:18Z'
+updatedAt: '2023-08-09T20:17:14Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4686'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-08-09T20:17:14Z'
+---
+# component.Base: #executeVdomUpdate()
+
+`updateVdom()` got too long and needs to get refactored.
+
+we need a new method which must not get used directly by devs => has to be private.
+

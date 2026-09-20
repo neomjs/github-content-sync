@@ -1,0 +1,38 @@
+---
+id: 1308
+title: Add drag&drop tab re-sorting to the neo website app
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-10-26T10:33:30Z'
+updatedAt: '2020-10-26T11:12:20Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1308'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-10-26T11:12:20Z'
+---
+# Add drag&drop tab re-sorting to the neo website app
+
+not really needed here from an UX perspective, but since it is a tech demo, i see no reason not to add it.
+
+## Timeline
+
+### @tobiu - 2020-10-26T11:12:20Z
+
+a bit more tricky than i thought: the onHashChange() logic needs to be aware of dynamic tab position changes.
+
+resolved now.
+
+

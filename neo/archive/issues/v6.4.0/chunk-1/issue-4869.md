@@ -1,0 +1,33 @@
+---
+id: 4869
+title: 'examples.form.field.select.MainContainer: width control'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2023-09-10T20:52:15Z'
+updatedAt: '2023-09-10T20:53:45Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4869'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-09-10T20:53:45Z'
+---
+# examples.form.field.select.MainContainer: width control
+
+<img width="1253" alt="Screenshot 2023-09-10 at 22 50 12" src="https://github.com/neomjs/neo/assets/1177434/bd426cbf-79b3-4e4d-8f15-02cbbc21d940">
+
+since we are using the value '50%' here, we should replace the NumberField with a TextField, to get rid of the warning plus a visible value inside the field.
+
+@ExtAnimal 
+

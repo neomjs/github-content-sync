@@ -1,0 +1,31 @@
+---
+id: 5095
+title: buildScripts/convertDesignTokens => add support for non-token based values containing empty chars
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-11-13T22:52:39Z'
+updatedAt: '2023-11-13T22:53:32Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5095'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-11-13T22:53:32Z'
+---
+# buildScripts/convertDesignTokens => add support for non-token based values containing empty chars
+
+@mxmrtns `font-family` names can contain blanks, in which case we want to ensure they get wrapped in '.
+
+example: Source Code Pro => 'Source Code Pro'
+

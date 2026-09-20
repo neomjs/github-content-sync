@@ -1,0 +1,34 @@
+---
+id: 2370
+title: 'model.Component: getPlainData()'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-06-15T16:58:22Z'
+updatedAt: '2021-06-15T17:00:54Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/2370'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-06-15T17:00:54Z'
+---
+# model.Component: getPlainData()
+
+the current approach:
+```
+return JSON.parse(JSON.stringify(this.data));
+```
+
+works well for only getting the values inside an object tree structure (excluding custom get() / set() based props), but it is not sufficient for non primitive values. E.g. dates get replaced by strings, which is bad.
+

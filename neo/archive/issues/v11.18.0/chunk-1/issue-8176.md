@@ -1,0 +1,57 @@
+---
+id: 8176
+title: Implement Neural Link State Rehydration on Reconnect
+state: CLOSED
+labels:
+  - enhancement
+  - ai
+assignees:
+  - tobiu
+createdAt: '2025-12-28T17:39:32Z'
+updatedAt: '2025-12-28T17:53:24Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/8176'
+author: tobiu
+commentsCount: 1
+parentIssue: 8169
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2025-12-28T17:53:24Z'
+---
+# Implement Neural Link State Rehydration on Reconnect
+
+When the Neural Link client reconnects (e.g. server restart), it must rehydrate the server with the current state.
+
+**Requirements:**
+1.  **Client (`src/ai/Client.mjs`)**:
+    -   In `onSocketOpen`, after sending `register`:
+    -   Iterate over `Neo.manager.Window.items`.
+    -   Send `window_connected` notification for each active window.
+    -   Check `Neo.manager.DragCoordinator` and send drag state if dragging.
+
+**Goal:**
+Ensure the Neural Link server rebuilds its topology map immediately upon connection.
+
+## Timeline
+
+### @tobiu - 2025-12-28T17:52:42Z
+
+**Input from Gemini 3:**
+
+> ✦ **Implementation Complete**
+> 
+> I have implemented the self-healing logic for the Neural Link connection.
+> 
+> *   **Client (`Client.mjs`):** Updated `onSocketOpen` to perform a full state dump upon connection.
+> *   **Window Rehydration:** Iterates `Neo.manager.Window.items` and sends a `window_connected` notification for every active window immediately.
+> *   **Drag State:** Checks `Neo.manager.DragCoordinator` and sends `drag_active` if a drag operation is currently in progress.
+> 
+> This ensures that if the server restarts or the connection drops, the topology is instantly rebuilt without user intervention.
+
+

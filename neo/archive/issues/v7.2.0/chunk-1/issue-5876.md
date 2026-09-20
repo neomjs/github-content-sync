@@ -1,0 +1,37 @@
+---
+id: 5876
+title: 'Portal.view.about.Container: center the content'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-09-11T00:19:08Z'
+updatedAt: '2024-09-11T00:19:53Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5876'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-09-11T00:19:53Z'
+---
+# Portal.view.about.Container: center the content
+
+*(No description provided)*
+
+## Timeline
+
+### @tobiu - 2024-09-11T00:19:53Z
+
+<img width="1251" alt="Screenshot 2024-09-11 at 02 19 40" src="https://github.com/user-attachments/assets/c3e0df84-46a9-4f98-ac2a-34a6a1ddbdd9">
+
+
+

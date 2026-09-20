@@ -1,0 +1,31 @@
+---
+id: 1327
+title: 'draggable.tree.DragZone: leafNodesOnly config'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-10-28T10:55:21Z'
+updatedAt: '2020-10-28T11:00:32Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1327'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-10-28T11:00:32Z'
+---
+# draggable.tree.DragZone: leafNodesOnly config
+
+{Boolean}
+
+optionally limit DD to tree leaf nodes
+

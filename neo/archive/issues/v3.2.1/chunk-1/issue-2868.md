@@ -1,0 +1,31 @@
+---
+id: 2868
+title: 'covid API: returns the string undefined for dates'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2022-02-07T20:44:51Z'
+updatedAt: '2022-02-07T20:49:53Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/2868'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2022-02-07T20:49:53Z'
+---
+# covid API: returns the string undefined for dates
+
+this is a new API related bug.
+
+To work around it, we need to adjust `Covid.view.TableContainerController`
+

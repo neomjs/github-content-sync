@@ -1,0 +1,37 @@
+---
+id: 331
+title: 'Covid.view.country.Gallery: country selection => country field'
+state: CLOSED
+labels:
+  - enhancement
+assignees: []
+createdAt: '2020-03-19T14:06:30Z'
+updatedAt: '2020-03-20T08:22:20Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/331'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-03-20T08:22:20Z'
+---
+# Covid.view.country.Gallery: country selection => country field
+
+the selection sync should go both ways.
+
+important: when selecting the field, this may not trigger a view animation.
+
+## Timeline
+
+### @tobiu - 2020-03-20T08:22:20Z
+
+done.
+
+

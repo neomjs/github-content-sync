@@ -1,0 +1,44 @@
+---
+id: 1127
+title: button.Split
+state: CLOSED
+labels:
+  - enhancement
+assignees: []
+createdAt: '2020-08-22T15:48:13Z'
+updatedAt: '2020-08-24T15:16:53Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1127'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-08-24T15:16:53Z'
+---
+# button.Split
+
+We do need Split-Buttons for showing menues later on.
+
+We need this markup in general:
+```
+<div>
+    <button></button>
+    <button></button>
+</div>
+```
+
+We can still extend Button and just set the vdomRoot on the first button.
+
+The second button-tag can extend button as well and get put into the new vdom structure.
+
+## Timeline
+
+- 2020-08-22T15:48:13Z @tobiu added the `enhancement` label
+

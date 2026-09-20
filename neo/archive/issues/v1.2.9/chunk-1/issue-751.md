@@ -1,0 +1,31 @@
+---
+id: 751
+title: 'Realworld App: new timing issues preventing the User API to load'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2020-06-18T20:43:46Z'
+updatedAt: '2020-06-18T20:45:02Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/751'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-06-18T20:45:02Z'
+---
+# Realworld App: new timing issues preventing the User API to load
+
+RealWorld.api.Base:
+
+onAppRendered() can trigger Base.on("ready") while it is already ready (so the event won't fire).
+

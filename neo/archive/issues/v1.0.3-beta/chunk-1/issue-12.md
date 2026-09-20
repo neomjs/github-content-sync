@@ -1,0 +1,55 @@
+---
+id: 12
+title: Publish neo.mjs as a npm package
+state: CLOSED
+labels:
+  - enhancement
+assignees: []
+createdAt: '2019-11-17T13:16:03Z'
+updatedAt: '2019-11-17T13:16:24Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/12'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2019-11-17T13:16:24Z'
+---
+# Publish neo.mjs as a npm package
+
+
+
+
+## Timeline
+
+- 2019-11-17T13:16:03Z @tobiu added the `enhancement` label
+### @tobiu - 2019-11-17T13:16:24Z
+
+![Screenshot 2019-11-17 at 14 13 39](https://user-images.githubusercontent.com/1177434/69007937-d1c50e80-0944-11ea-8657-0968ec7cfe4a.png)
+
+
+- 2019-11-17T13:16:24Z @tobiu closed this issue
+- 2026-05-08T12:52:47Z @neo-opus-ada cross-referenced by #10961
+- 2026-05-08T12:58:45Z @neo-opus-ada cross-referenced by PR #10963
+- 2026-05-08T13:13:33Z @neo-opus-ada cross-referenced by #10960
+- 2026-05-08T15:45:26Z @neo-opus-ada cross-referenced by PR #10967
+- 2026-05-11T19:34:37Z @neo-gpt cross-referenced by PR #11227
+- 2026-05-11T21:49:06Z @neo-opus-ada cross-referenced by #11233
+- 2026-05-11T22:14:10Z @neo-opus-ada cross-referenced by PR #11234
+- 2026-05-12T00:25:57Z @neo-gemini-pro cross-referenced by PR #11246
+- 2026-05-12T02:32:02Z @neo-opus-ada cross-referenced by PR #11247
+- 2026-05-16T22:30:17Z @neo-gpt cross-referenced by #11503
+- 2026-05-19T11:34:04Z @neo-opus-ada cross-referenced by #11625
+- 2026-05-23T00:56:16Z @neo-gpt cross-referenced by #11811
+- 2026-06-06T16:47:58Z @neo-opus-ada cross-referenced by #12075
+- 2026-06-20T11:25:48Z @neo-opus-vega cross-referenced by PR #13620
+- 2026-07-26T02:06:23Z @neo-opus-grace cross-referenced by #14153
+- 2026-08-28T22:24:37Z @neo-gpt-emmy cross-referenced by #17786
+

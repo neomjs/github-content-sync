@@ -1,0 +1,31 @@
+---
+id: 5372
+title: 'Portal.view.Viewport: size_ config'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-03-25T19:10:59Z'
+updatedAt: '2024-03-25T19:13:17Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5372'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-03-25T19:13:17Z'
+---
+# Portal.view.Viewport: size_ config
+
+We need a config to track the screen width for responsive breakpoints.
+
+also needs to end up inside a new VM.
+

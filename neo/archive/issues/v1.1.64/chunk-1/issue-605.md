@@ -1,0 +1,33 @@
+---
+id: 605
+title: convert buildAll into a real program
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-05-23T13:35:48Z'
+updatedAt: '2020-05-23T15:12:16Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/605'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-05-23T15:12:16Z'
+---
+# convert buildAll into a real program
+
+With buildDocsExamples, buildMyApps, buildThemes & buildThreads in place as real programs, the next logical step is to convert buildAll into a program too.
+
+options for picking the sub-tasks.
+
+exclude the jsdocx-parsing by default (got way too slow).
+

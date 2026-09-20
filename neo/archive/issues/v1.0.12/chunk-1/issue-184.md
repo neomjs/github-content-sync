@@ -1,0 +1,47 @@
+---
+id: 184
+title: Move the CODE_OF_CONDUCT inside the.github folder
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2019-12-15T23:06:56Z'
+updatedAt: '2019-12-15T23:11:19Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/184'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2019-12-15T23:11:18Z'
+---
+# Move the CODE_OF_CONDUCT inside the.github folder
+
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
+
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
+
+**Additional context**
+Add any other context or screenshots about the feature request here.
+
+
+## Timeline
+
+### @tobiu - 2019-12-15T23:11:18Z
+
+done.
+
+

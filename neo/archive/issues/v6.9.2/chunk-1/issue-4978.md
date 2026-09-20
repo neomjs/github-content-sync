@@ -1,0 +1,54 @@
+---
+id: 4978
+title: 'selection.table.RowModel: selecting a record should automatically scroll to the related table tow'
+state: CLOSED
+labels:
+  - enhancement
+assignees: []
+createdAt: '2023-10-05T13:56:28Z'
+updatedAt: '2023-10-19T08:22:43Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4978'
+author: tobiu
+commentsCount: 2
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-10-19T08:22:43Z'
+---
+# selection.table.RowModel: selecting a record should automatically scroll to the related table tow
+
+*(No description provided)*
+
+## Timeline
+
+- 2023-10-05T13:56:28Z @tobiu added the `enhancement` label
+### @gplanansky - 2023-10-19T06:02:50Z
+
+perhaps the "opts appName"  gotcha?
+
+for neo 6.9.0 
+
+```
+diff table/View.mjs.orig table/View.mjs.orig.scrollfix
+240c240
+<                 Neo.main.DomAccess.scrollToTableRow({id: selectedRows[0]});
+---
+>                 Neo.main.DomAccess.scrollToTableRow({id: selectedRows[0], appName: me.appName});
+```
+
+### @tobiu - 2023-10-19T08:20:32Z
+
+the `appName` should indeed get used inside all remote methods => window identifier, important for the shared workers scope.
+
+will add it.
+
+- 2023-10-19T08:22:01Z @tobiu referenced in commit `6f0ab05` - "selection.table.RowModel: selecting a record should automatically scroll to the related table tow #4978"
+- 2023-10-19T08:22:43Z @tobiu closed this issue
+

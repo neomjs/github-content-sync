@@ -1,0 +1,35 @@
+---
+id: 1131
+title: button.Split example
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-08-24T10:00:00Z'
+updatedAt: '2020-08-24T10:12:01Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1131'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-08-24T10:12:01Z'
+---
+# button.Split example
+
+create a new example for SplitButtons.
+
+should help with the development & testing
+
+## Timeline
+
+- 2020-08-24T10:00:00Z @tobiu added the `enhancement` label
+

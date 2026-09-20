@@ -1,0 +1,31 @@
+---
+id: 2352
+title: 'calendar.view.week.EventDragZone: allow resizing across the opposite edge'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-06-12T18:29:57Z'
+updatedAt: '2021-06-13T10:02:36Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/2352'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-06-13T10:02:36Z'
+---
+# calendar.view.week.EventDragZone: allow resizing across the opposite edge
+
+We need this logic for #2293.
+
+I will make this feature optional with adding a new config.
+

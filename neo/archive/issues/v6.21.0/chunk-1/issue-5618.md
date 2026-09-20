@@ -1,0 +1,38 @@
+---
+id: 5618
+title: 'code.LivePreview: enable expanding (full-screen) & collapsing the view'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-07-23T11:26:45Z'
+updatedAt: '2024-07-23T11:28:59Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5618'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-07-23T11:28:58Z'
+---
+# code.LivePreview: enable expanding (full-screen) & collapsing the view
+
+optional, based on the new `enableFullscreen` config
+
+## Timeline
+
+### @tobiu - 2024-07-23T11:28:59Z
+
+https://github.com/user-attachments/assets/0be013c2-3e88-4744-a818-60df392b6d7f
+
+
+
+

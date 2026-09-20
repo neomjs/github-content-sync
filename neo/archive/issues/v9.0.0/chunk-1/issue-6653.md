@@ -1,0 +1,31 @@
+---
+id: 6653
+title: 'table.View: afterSetStore()'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2025-04-15T20:34:12Z'
+updatedAt: '2025-04-15T20:35:30Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/6653'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2025-04-15T20:35:30Z'
+---
+# table.View: afterSetStore()
+
+* trying to get the logic as consistent to `grid.View` as possible
+
+@gplanansky 
+

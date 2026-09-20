@@ -1,0 +1,38 @@
+---
+id: 368
+title: 'main.mixins.DeltaUpdates: update()'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-03-24T20:07:20Z'
+updatedAt: '2020-03-24T20:21:09Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/368'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-03-24T20:21:08Z'
+---
+# main.mixins.DeltaUpdates: update()
+
+replace the switch statement with a map object.
+
+on it.
+
+## Timeline
+
+### @tobiu - 2020-03-24T20:21:08Z
+
+done.
+
+

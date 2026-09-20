@@ -1,0 +1,31 @@
+---
+id: 741
+title: Application rendering timing
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-06-16T15:32:52Z'
+updatedAt: '2020-06-16T15:33:46Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/741'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-06-16T15:33:46Z'
+---
+# Application rendering timing
+
+we should add a short delay (10ms) so that initial routes can get applied BEFORE the main view of an app does get rendered.
+
+layout.Card & tab.Container need to get adjusted.
+

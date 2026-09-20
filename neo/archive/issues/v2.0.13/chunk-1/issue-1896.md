@@ -1,0 +1,44 @@
+---
+id: 1896
+title: Enhance the RealWorld demo app with lazy loading
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-04-29T21:30:14Z'
+updatedAt: '2021-04-29T22:43:10Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1896'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-04-29T22:43:10Z'
+---
+# Enhance the RealWorld demo app with lazy loading
+
+Just took a look into the code and it should be pretty simple.
+
+mostly:
+RealWorld.view.MainContainer
+RealWorld.view.MainContainerController
+
+=> remove the static imports for all views and go for dynamic ones instead. webpack can easily handle it now.
+
+Thoughts? @mrsunshine 
+
+## Timeline
+
+### @tobiu - 2021-04-29T22:43:10Z
+
+done :)
+
+

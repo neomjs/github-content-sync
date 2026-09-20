@@ -1,0 +1,31 @@
+---
+id: 5121
+title: 'tooltip.Base: create theme bases scss files'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-12-01T14:37:55Z'
+updatedAt: '2023-12-01T14:46:58Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5121'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-12-01T14:46:58Z'
+---
+# tooltip.Base: create theme bases scss files
+
+plus one demo variable.
+
+@mxmrtns 
+

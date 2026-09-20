@@ -1,0 +1,38 @@
+---
+id: 5740
+title: 'component.Toast: conflict for this.timeout() & this.timeout'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2024-08-10T18:44:17Z'
+updatedAt: '2024-08-10T18:44:56Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5740'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-08-10T18:44:56Z'
+---
+# component.Toast: conflict for this.timeout() & this.timeout
+
+@Dinkh 
+
+## Timeline
+
+### @tobiu - 2024-08-10T18:44:39Z
+
+![Screenshot 2024-08-10 at 20 39 56](https://github.com/user-attachments/assets/be41c2e9-fa11-43cb-a9f2-8e0b8b06c7ea)
+
+method & class field having the same name causes issues.
+
+

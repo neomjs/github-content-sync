@@ -1,0 +1,31 @@
+---
+id: 1478
+title: Neo.config.logDeltaUpdates
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-12-04T10:02:58Z'
+updatedAt: '2020-12-04T10:11:14Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1478'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-12-04T10:11:14Z'
+---
+# Neo.config.logDeltaUpdates
+
+since the logging happens inside the main thread, it is not easy to turn this (debugging) feature on or off.
+
+{Boolean} the default should be false.
+

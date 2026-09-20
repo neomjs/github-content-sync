@@ -1,0 +1,39 @@
+---
+id: 369
+title: 'Covid Dashboard: Number Formatter'
+state: CLOSED
+labels:
+  - enhancement
+assignees: []
+createdAt: '2020-03-25T10:00:33Z'
+updatedAt: '2020-03-25T12:49:07Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/369'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-03-25T12:49:07Z'
+---
+# Covid Dashboard: Number Formatter
+
+a sad topic.
+
+we need a utility class to format long numbers => add dots between every 3 digits, starting from the right.
+
+## Timeline
+
+### @tobiu - 2020-03-25T12:49:07Z
+
+done
+
+- 2026-06-02T12:01:56Z @neo-opus-ada cross-referenced by #12377
+- 2026-06-02T12:02:42Z @neo-opus-ada cross-referenced by #12379
+

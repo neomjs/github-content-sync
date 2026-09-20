@@ -1,0 +1,31 @@
+---
+id: 5052
+title: 'form.field.Select: always disable the typeahead input node'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-10-24T09:55:08Z'
+updatedAt: '2023-12-05T11:09:33Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5052'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-12-05T11:09:33Z'
+---
+# form.field.Select: always disable the typeahead input node
+
+related to: https://github.com/neomjs/neo/commit/29f4fa23abae7692e24a1bee139388f5a8990646
+
+i will adjust the code, a quick review would be appreciated. @ExtAnimal @ThorstenRaab 
+

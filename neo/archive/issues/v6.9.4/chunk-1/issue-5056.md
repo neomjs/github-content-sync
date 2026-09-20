@@ -1,0 +1,31 @@
+---
+id: 5056
+title: 'form.field.Picker: adjust pickerIsMounted'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2023-10-25T15:50:30Z'
+updatedAt: '2023-10-25T19:09:39Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5056'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-10-25T19:09:39Z'
+---
+# form.field.Picker: adjust pickerIsMounted
+
+the config is still in use inside several spots, but the custom show & hide logic got removed.
+
+we should populate the value again or remove it.
+

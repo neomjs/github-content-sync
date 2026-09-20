@@ -1,0 +1,73 @@
+---
+id: 14
+title: 'Docs: jsdoc => no ability for alternateClassName'
+state: CLOSED
+labels:
+  - documentation
+  - enhancement
+  - stale
+assignees: []
+createdAt: '2019-11-17T15:53:40Z'
+updatedAt: '2024-09-29T02:39:21Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/14'
+author: tobiu
+commentsCount: 2
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-09-29T02:39:20Z'
+---
+# Docs: jsdoc => no ability for alternateClassName
+
+should be easy to implement a custom tag inside our jsdocx parser.
+
+not 100% sure if we even need it anymore. this was a pretty old pre ES6+ modules.
+
+thoughts?
+
+## Timeline
+
+- 2019-11-17T15:53:40Z @tobiu added the `documentation` label
+- 2019-11-17T15:53:40Z @tobiu added the `enhancement` label
+### @github-actions - 2024-09-15T02:37:33Z
+
+This issue is stale because it has been open for 90 days with no activity.
+
+- 2024-09-15T02:37:34Z @github-actions added the `stale` label
+### @github-actions - 2024-09-29T02:39:20Z
+
+This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-29T02:39:20Z @github-actions closed this issue
+- 2026-05-22T13:59:42Z @neo-opus-ada cross-referenced by PR #11764
+- 2026-05-22T15:29:39Z @neo-opus-ada cross-referenced by PR #11769
+- 2026-05-25T12:44:09Z @neo-gpt cross-referenced by #10103
+- 2026-05-27T09:12:32Z @neo-opus-ada cross-referenced by PR #12061
+- 2026-07-24T12:12:22Z @neo-opus-ada cross-referenced by #15789
+- 2026-07-24T12:12:50Z @neo-opus-ada cross-referenced by PR #15797
+- 2026-08-29T12:25:15Z @neo-opus-ada cross-referenced by #17847
+- 2026-08-30T02:07:08Z @neo-gpt cross-referenced by PR #17880
+- 2026-08-31T04:55:40Z @neo-gpt cross-referenced by #17783
+- 2026-08-31T06:47:41Z @neo-gpt cross-referenced by PR #17912
+- 2026-08-31T06:52:08Z @neo-opus-grace cross-referenced by PR #17915
+- 2026-08-31T06:53:25Z @neo-opus-grace cross-referenced by #17911
+- 2026-08-31T06:53:27Z @neo-opus-grace cross-referenced by #17913
+- 2026-08-31T07:00:33Z @neo-gpt-emmy cross-referenced by PR #17917
+- 2026-08-31T09:04:24Z @neo-opus-grace cross-referenced by #17791
+- 2026-08-31T12:21:51Z @neo-opus-grace cross-referenced by #17175
+- 2026-08-31T18:26:24Z @neo-opus-ada cross-referenced by #17967
+- 2026-09-03T19:47:36Z @neo-opus-grace cross-referenced by #18226
+- 2026-09-03T19:47:53Z @neo-opus-grace cross-referenced by PR #18228
+- 2026-09-04T08:27:45Z @neo-opus-grace cross-referenced by #17922
+- 2026-09-04T19:13:00Z @neo-opus-grace cross-referenced by PR #18322
+- 2026-09-08T08:15:07Z @neo-gpt cross-referenced by #17853
+- 2026-09-16T07:57:03Z @neo-opus-vega cross-referenced by PR #18753
+- 2026-09-16T08:05:33Z @neo-opus-grace cross-referenced by #18757
+

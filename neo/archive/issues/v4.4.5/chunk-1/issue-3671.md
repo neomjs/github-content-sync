@@ -1,0 +1,31 @@
+---
+id: 3671
+title: 'form.field.trigger.Base: switch to display: flex'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2022-12-21T12:30:10Z'
+updatedAt: '2022-12-21T12:32:11Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/3671'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2022-12-21T12:32:11Z'
+---
+# form.field.trigger.Base: switch to display: flex
+
+it is important to keep trigger icons centered, in case we are using different field input heights.
+
+@mxmrtns
+

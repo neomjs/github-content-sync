@@ -1,0 +1,36 @@
+---
+id: 1167
+title: Enhanced Webpack builds (split chunks for apps & examples)
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-09-04T10:38:03Z'
+updatedAt: '2020-09-09T22:16:29Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1167'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-09-09T22:16:29Z'
+---
+# Enhanced Webpack builds (split chunks for apps & examples)
+
+Got a PoC running locally:
+![Screenshot 2020-09-04 at 03 37 06](https://user-images.githubusercontent.com/1177434/92230402-5a4c7580-eeab-11ea-8a4b-1654f7035e1c.png)
+
+<img width="1338" alt="Screenshot 2020-09-04 at 03 48 22" src="https://user-images.githubusercontent.com/1177434/92230444-6afceb80-eeab-11ea-83fd-d168a0f62ac4.png">
+
+Will create a new branch to further test & polish this.
+
+
+

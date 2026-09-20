@@ -1,0 +1,31 @@
+---
+id: 2663
+title: 'core.Base: parseItemConfigs()'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-08-01T14:50:37Z'
+updatedAt: '2021-08-01T15:00:34Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/2663'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-08-01T15:00:34Z'
+---
+# core.Base: parseItemConfigs()
+
+Move the parsing logic from `container.Base` into `core.Base` so that we can parse other entities for string based config shortcuts more easily.
+
+One example is `form.field.Color`, which should pass the `colorField` config down to the list.
+

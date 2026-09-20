@@ -1,0 +1,33 @@
+---
+id: 3461
+title: 'button.Base: rippleEl wrapper'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2022-09-28T15:29:21Z'
+updatedAt: '2022-09-28T16:00:29Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/3461'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2022-09-28T16:00:29Z'
+---
+# button.Base: rippleEl wrapper
+
+right now, the top level CSS selector for buttons uses `overflow: hidden`.
+
+we need this for ripple effects, but it collides with badges, which are supposed to be positioned absolutely over a corner.
+
+so, we need a wrapper for ripples to resolve this.
+

@@ -1,0 +1,40 @@
+---
+id: 5097
+title: onHash in controllerBase needs to be async
+state: CLOSED
+labels:
+  - bug
+assignees: []
+createdAt: '2023-11-16T09:45:32Z'
+updatedAt: '2023-11-22T14:01:40Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5097'
+author: ThorstenRaab
+commentsCount: 2
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 1
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-11-22T14:01:39Z'
+---
+# onHash in controllerBase needs to be async
+
+*(No description provided)*
+
+## Timeline
+
+### @ThorstenRaab - 2023-11-16T10:11:31Z
+
+[QUARANTINED_URL: github.com]
+
+
+### @ThorstenRaab - 2023-11-22T14:01:39Z
+
+fixed
+
+

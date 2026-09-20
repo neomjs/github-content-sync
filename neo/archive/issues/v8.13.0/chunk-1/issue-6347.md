@@ -1,0 +1,29 @@
+---
+id: 6347
+title: 'selection.table.RowModel: update record based annotations (in case they exist) on manual selections'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2025-01-30T16:10:34Z'
+updatedAt: '2025-01-30T16:10:58Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/6347'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2025-01-30T16:10:58Z'
+---
+# selection.table.RowModel: update record based annotations (in case they exist) on manual selections
+
+same story as for the grid: https://github.com/neomjs/neo/issues/6343
+

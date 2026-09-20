@@ -1,0 +1,36 @@
+---
+id: 1719
+title: Neo should have a url field form.field.Url
+state: CLOSED
+labels:
+  - enhancement
+assignees: []
+createdAt: '2021-04-02T14:40:31Z'
+updatedAt: '2021-04-04T14:34:50Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1719'
+author: wemersonjanuario
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-04-04T14:34:50Z'
+---
+# Neo should have a url field form.field.Url
+
+Neo Framework should have a url field extending from form.field.Text
+
+
+## Timeline
+
+### @tobiu - 2021-04-04T14:34:50Z
+
+resolved. thx!
+
+

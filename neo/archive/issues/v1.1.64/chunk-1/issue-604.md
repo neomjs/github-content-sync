@@ -1,0 +1,42 @@
+---
+id: 604
+title: 'build programs: simplify the use of commander'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-05-23T13:18:34Z'
+updatedAt: '2020-05-23T13:32:04Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/604'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-05-23T13:32:04Z'
+---
+# build programs: simplify the use of commander
+
+current:
+```
+commander = require('commander')
+//...
+const program = new commander.Command(programName)
+```
+
+new:
+```
+{ program } = require('commander')
+//...
+program
+    .name(programName)
+```
+

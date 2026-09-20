@@ -1,0 +1,35 @@
+---
+id: 4873
+title: 'button.Base: switching themes for the menu'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-09-11T09:43:19Z'
+updatedAt: '2023-09-11T10:15:46Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4873'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-09-11T10:15:46Z'
+---
+# button.Base: switching themes for the menu
+
+<img width="1496" alt="Screenshot 2023-09-11 at 11 02 37" src="https://github.com/neomjs/neo/assets/1177434/0f850ed8-fa23-42e7-850d-88cc73936840">
+
+we need to get to this state.
+
+right now, `button.Base` is rendering menus into the document.body, while `menu.List` renders sub menus into the viewport. we should adjust this part to be consistent.
+
+if we go for document.body, we need to adjust `examples.ConfigurationViewport` to switch the theme there instead of the viewport.
+

@@ -1,0 +1,46 @@
+---
+id: 347
+title: 'main.DomEvents: keydown => preventDefault prevents opening the dev tools via shortcut'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2020-03-19T23:30:02Z'
+updatedAt: '2020-03-19T23:33:46Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/347'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-03-19T23:33:46Z'
+---
+# main.DomEvents: keydown => preventDefault prevents opening the dev tools via shortcut
+
+limit the preventDefault() to arrow keys
+
+## Timeline
+
+### @tobiu - 2020-03-19T23:33:46Z
+
+```
+    onKeyDown(event) {
+        this.sendMessageToApp(this.getKeyboardEventData(event));
+
+        if (['ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowUp'].includes(event.key)) {
+            event.preventDefault();
+        }
+    }
+```
+
+- 2026-09-12T15:44:36Z @neo-gpt-emmy cross-referenced by #18605
+- 2026-09-12T22:15:41Z @neo-gpt-emmy cross-referenced by PR #18634
+

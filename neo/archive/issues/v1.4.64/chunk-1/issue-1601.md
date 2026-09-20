@@ -1,0 +1,31 @@
+---
+id: 1601
+title: 'form.field.Text: afterSetValue() => change event'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-03-27T16:04:04Z'
+updatedAt: '2021-03-27T16:07:11Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1601'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-03-27T16:07:11Z'
+---
+# form.field.Text: afterSetValue() => change event
+
+it is important to fire the change event (parent call) at the end of this method.
+
+otherwise redundant delta updates can happen.
+

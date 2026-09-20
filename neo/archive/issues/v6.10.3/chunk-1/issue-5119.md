@@ -1,0 +1,31 @@
+---
+id: 5119
+title: 'component.Base: afterSetIsLoading() => ensure that the logic won''t trigger for initial false states'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2023-12-01T11:11:08Z'
+updatedAt: '2023-12-01T11:11:51Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5119'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-12-01T11:11:51Z'
+---
+# component.Base: afterSetIsLoading() => ensure that the logic won't trigger for initial false states
+
+this breaks a lot of other items otherwise (e.g. buttons no longer getting an ui, labelPositions for fields).
+
+it also triggers not needed logic for most cmp ctors
+

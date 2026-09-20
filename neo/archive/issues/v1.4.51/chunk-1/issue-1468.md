@@ -1,0 +1,32 @@
+---
+id: 1468
+title: 'webpack 5: chunk paths for dist dev & prod'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-11-30T12:01:20Z'
+updatedAt: '2020-12-03T15:44:24Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1468'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-12-03T15:44:24Z'
+---
+# webpack 5: chunk paths for dist dev & prod
+
+for dist prod, all chunks should end up inside:
+dist/production/chunks (no deeper sub-folders)
+
+for dist dev, there could be more meaningful sub-folders
+

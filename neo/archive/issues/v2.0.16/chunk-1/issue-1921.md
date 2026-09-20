@@ -1,0 +1,39 @@
+---
+id: 1921
+title: 'form.field.Text: autoComplete_ & autoCorrect_ configs'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-05-02T12:10:18Z'
+updatedAt: '2021-05-02T13:00:40Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1921'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-05-02T13:00:40Z'
+---
+# form.field.Text: autoComplete_ & autoCorrect_ configs
+
+Boolean
+
+## Timeline
+
+### @tobiu - 2021-05-02T12:28:25Z
+
+looks like autocorrect is not inside the official specs:
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
+
+I will remove it and add a config for spellCheck_
+
+

@@ -1,0 +1,37 @@
+---
+id: 329
+title: 'Covid.view.country.TableContainer: country selection => country field'
+state: CLOSED
+labels:
+  - enhancement
+assignees: []
+createdAt: '2020-03-19T14:04:49Z'
+updatedAt: '2020-03-20T07:45:07Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/329'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-03-20T07:45:07Z'
+---
+# Covid.view.country.TableContainer: country selection => country field
+
+the selection sync should go both ways.
+
+important: when selecting the field, this may not trigger a view animation.
+
+## Timeline
+
+### @tobiu - 2020-03-20T07:45:07Z
+
+done.
+
+

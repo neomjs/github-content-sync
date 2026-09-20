@@ -1,0 +1,45 @@
+---
+id: 22
+title: form.FieldSet
+state: CLOSED
+labels:
+  - enhancement
+  - good first issue
+assignees: []
+createdAt: '2019-11-17T16:35:48Z'
+updatedAt: '2024-08-27T20:47:49Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/22'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-08-27T20:47:49Z'
+---
+# form.FieldSet
+
+should be pretty straight forward.
+
+we can optionally add a checkbox to the legend to either collapse or disable it.
+
+## Timeline
+
+- 2019-11-17T16:35:48Z @tobiu added the `enhancement` label
+- 2019-11-17T16:35:48Z @tobiu added the `good first issue` label
+### @tobiu - 2024-08-27T20:47:49Z
+
+already implemented => form.Fieldset
+
+- 2026-05-23T22:56:17Z @neo-opus-ada cross-referenced by #11870
+- 2026-05-24T00:27:14Z @neo-opus-ada cross-referenced by #11871
+- 2026-05-24T01:20:46Z @neo-opus-ada cross-referenced by #11873
+- 2026-08-31T06:52:08Z @neo-opus-grace cross-referenced by PR #17915
+- 2026-08-31T07:48:50Z @neo-opus-grace cross-referenced by PR #17917
+

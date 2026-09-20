@@ -1,0 +1,37 @@
+---
+id: 4878
+title: 'menu.List: afterSetTheme() => pass the theme to child menus'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-09-11T10:53:04Z'
+updatedAt: '2023-09-11T10:53:51Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4878'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-09-11T10:53:50Z'
+---
+# menu.List: afterSetTheme() => pass the theme to child menus
+
+*(No description provided)*
+
+## Timeline
+
+### @tobiu - 2023-09-11T10:53:51Z
+
+<img width="1473" alt="Screenshot 2023-09-11 at 12 50 43" src="https://github.com/neomjs/neo/assets/1177434/58c18184-d2d4-4cde-8b7f-5f89c8e17884">
+
+
+

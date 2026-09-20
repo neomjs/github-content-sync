@@ -1,0 +1,60 @@
+---
+id: 1708
+title: 'model.Component: data format for binding strings'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-04-01T15:25:40Z'
+updatedAt: '2021-04-01T21:50:56Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1708'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-04-01T21:50:37Z'
+---
+# model.Component: data format for binding strings
+
+instead of using:
+```
+bind: {
+    text: 'button1Text'
+}
+```
+
+we should switch to the format:
+```
+bind: {
+    text: '${data.button1Text}'
+}
+```
+
+this will make it easier to pass formulas in the future.
+
+todos:
+* adjust the 4 example apps
+* add a value parser to `model.Component`
+
+## Timeline
+
+### @tobiu - 2021-04-01T21:50:37Z
+
+it got super nice now, we can already handle complex formulas like:
+
+```
+bind: {
+    text: 'Hello ${data.button2Text} ${1+2} ${data.button1Text + data.button2Text}'
+}
+```
+
+

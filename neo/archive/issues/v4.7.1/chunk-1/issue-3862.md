@@ -1,0 +1,46 @@
+---
+id: 3862
+title: Neo.applyClassConfig() => handle singletons and return the updates class or instance
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-01-15T01:38:23Z'
+updatedAt: '2023-01-15T08:34:58Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/3862'
+author: tobiu
+commentsCount: 2
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-01-15T08:32:33Z'
+---
+# Neo.applyClassConfig() => handle singletons and return the updates class or instance
+
+this will greatly reduce the code
+
+## Timeline
+
+### @tobiu - 2023-01-15T07:56:16Z
+
+while the singleton changes are good, the default class changes decrease the performance due to the way module caching works. need to revert this part.
+
+### @tobiu - 2023-01-15T08:32:32Z
+
+did some more testing. it does not seem to affect the performance. however, the IDE support for non singleton based changes gets  WAY worse:
+
+<img width="815" alt="Screenshot 2023-01-15 at 09 29 23" src="https://user-images.githubusercontent.com/1177434/212531071-aca5aa12-c4a3-43f4-a45e-24250cf179a0.png">
+
+<img width="824" alt="Screenshot 2023-01-15 at 09 29 42" src="https://user-images.githubusercontent.com/1177434/212530656-5c41595b-8aa9-4eea-8d6d-44f0a814546f.png">
+
+i think we should just keep the current version.
+
+

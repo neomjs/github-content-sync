@@ -1,0 +1,37 @@
+---
+id: 181
+title: Split up the story & vision file
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2019-12-15T20:15:05Z'
+updatedAt: '2019-12-15T20:31:20Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/181'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2019-12-15T20:31:20Z'
+---
+# Split up the story & vision file
+
+the content is getting too long, 2 separate files are needed.
+adjust the links inside the readme.md
+
+## Timeline
+
+### @tobiu - 2019-12-15T20:31:20Z
+
+done.
+
+

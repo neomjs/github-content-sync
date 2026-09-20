@@ -1,0 +1,41 @@
+---
+id: 175
+title: 'component.DateSelector: weekStartDay & item selections'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2019-12-12T18:40:48Z'
+updatedAt: '2019-12-12T19:20:44Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/175'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2019-12-12T19:20:44Z'
+---
+# component.DateSelector: weekStartDay & item selections
+
+this did work before.
+
+right now, the selected item can get shifted to the left or right when changing weekStartDay.
+might be inside the selModel code.
+
+looking into this now.
+
+## Timeline
+
+### @tobiu - 2019-12-12T19:20:44Z
+
+fixed.
+
+

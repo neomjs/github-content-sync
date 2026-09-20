@@ -1,0 +1,39 @@
+---
+id: 145
+title: Make component.ntype more optional
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2019-12-04T14:01:31Z'
+updatedAt: '2019-12-04T14:06:04Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/145'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2019-12-04T14:06:04Z'
+---
+# Make component.ntype more optional
+
+1.  do not delete config.module (could be used for searching inside the component tree)
+2.  Neo.create => use the className instead of the ntype
+3.  container.Base: createItems => use the className instead of the ntype if possible
+
+## Timeline
+
+- 2019-12-04T14:01:31Z @tobiu added the `enhancement` label
+### @tobiu - 2019-12-04T14:06:03Z
+
+done.
+
+

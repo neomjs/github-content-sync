@@ -1,0 +1,31 @@
+---
+id: 1313
+title: 'tree.List: draggable_ config'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-10-26T11:54:48Z'
+updatedAt: '2020-10-26T12:01:09Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1313'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-10-26T12:01:09Z'
+---
+# tree.List: draggable_ config
+
+{Boolean}
+
+afterSetDraggable() needs to dynamically import the module & create an instance.
+

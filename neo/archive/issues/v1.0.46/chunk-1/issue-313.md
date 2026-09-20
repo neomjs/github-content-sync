@@ -1,0 +1,42 @@
+---
+id: 313
+title: 'form.field.Select: list keyNav broken'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2020-03-18T10:35:34Z'
+updatedAt: '2020-03-18T13:45:41Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/313'
+author: tobiu
+commentsCount: 2
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-03-18T13:45:41Z'
+---
+# form.field.Select: list keyNav broken
+
+will look into it.
+
+## Timeline
+
+### @tobiu - 2020-03-18T12:59:27Z
+
+related to the change that all dom events bubble up now.
+
+in this case, the key down & up bubble from the list to the field, which should not happen.
+
+### @tobiu - 2020-03-18T13:45:41Z
+
+util.KeyNavigation now uses the new "bubble" config => false for the keydown event.
+
+

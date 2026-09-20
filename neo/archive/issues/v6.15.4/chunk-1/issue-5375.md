@@ -1,0 +1,33 @@
+---
+id: 5375
+title: 'collection.Base: destroy() => edge case, can get called more than once with VM based stores which get bound in multiple cmps.'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-03-28T09:56:37Z'
+updatedAt: '2024-03-28T13:57:24Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5375'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-03-28T13:57:24Z'
+---
+# collection.Base: destroy() => edge case, can get called more than once with VM based stores which get bound in multiple cmps.
+
+i think `core.Base: destroy()` should set a flag like `isDestroyed`.
+
+then all class extensions should check for this flag, before doing their logic.
+
+thoughts? @ExtAnimal 
+

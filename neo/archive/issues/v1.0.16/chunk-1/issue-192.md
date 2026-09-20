@@ -1,0 +1,38 @@
+---
+id: 192
+title: The webkit dependency fsevents breaks on MacOS Catalina
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2019-12-20T21:57:20Z'
+updatedAt: '2019-12-20T22:01:01Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/192'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2019-12-20T22:01:01Z'
+---
+# The webkit dependency fsevents breaks on MacOS Catalina
+
+> "fsevents": "1.2.9", // npm i breaks without the specific include on MacOS Catalina
+
+this does require a new npm package version
+
+## Timeline
+
+### @tobiu - 2019-12-20T22:00:50Z
+
+todo: we can remove the dependency once fsevents does support catalina
+
+

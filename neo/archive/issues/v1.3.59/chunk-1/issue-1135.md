@@ -1,0 +1,40 @@
+---
+id: 1135
+title: 'tab.Strip: moveActiveIndicator()'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-08-25T12:40:50Z'
+updatedAt: '2020-08-25T13:39:03Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1135'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-08-25T13:39:03Z'
+---
+# tab.Strip: moveActiveIndicator()
+
+there should be a check if the vnode already exists.
+
+changes which happen before the rendering / mounting (e.g. through hash changes) should not trigger animations.
+
+looking into it.
+
+## Timeline
+
+### @tobiu - 2020-08-25T13:39:03Z
+
+not as easy as i thought. needed some refactoring to do it in a smarter way.
+
+

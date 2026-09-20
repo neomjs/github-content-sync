@@ -1,0 +1,31 @@
+---
+id: 939
+title: 'Neo Calendar: refactor the timeAxis into its own component'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-07-19T20:56:10Z'
+updatedAt: '2020-07-19T22:11:15Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/939'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-07-19T22:11:15Z'
+---
+# Neo Calendar: refactor the timeAxis into its own component
+
+timeAxisConfig, destroy logic, heightChange event.
+
+should get a reference inside the mainContainer (timeAxis: null config)
+

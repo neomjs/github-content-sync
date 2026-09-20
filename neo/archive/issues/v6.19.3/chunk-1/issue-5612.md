@@ -1,0 +1,39 @@
+---
+id: 5612
+title: 'Portal.view.services.Component: add support for mobile'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2024-07-22T07:56:23Z'
+updatedAt: '2024-07-22T09:15:01Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5612'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-07-22T09:15:00Z'
+---
+# Portal.view.services.Component: add support for mobile
+
+![Screenshot 2024-07-21 at 17 30 00](https://github.com/user-attachments/assets/cacf2e42-649a-4151-b460-28db67da31b2)
+
+
+## Timeline
+
+### @tobiu - 2024-07-22T09:15:00Z
+
+![Screenshot 2024-07-22 at 11 12 42](https://github.com/user-attachments/assets/2097054b-e712-47ef-9215-b68055a40a19)
+
+reduced the padding a lot for mobile and added vertical scrolling
+
+

@@ -1,0 +1,37 @@
+---
+id: 4879
+title: 'form.field.Picker: afterSetTheme() => adjust the picker'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-09-11T10:58:54Z'
+updatedAt: '2023-09-11T10:59:19Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4879'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-09-11T10:59:19Z'
+---
+# form.field.Picker: afterSetTheme() => adjust the picker
+
+*(No description provided)*
+
+## Timeline
+
+### @tobiu - 2023-09-11T10:59:19Z
+
+<img width="580" alt="Screenshot 2023-09-11 at 12 58 16" src="https://github.com/neomjs/neo/assets/1177434/4e126a75-e264-48c9-a263-c8d5e1925987">
+
+
+

@@ -1,0 +1,58 @@
+---
+id: 1883
+title: 'layout.Card: support lazy loading items'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-04-28T12:13:44Z'
+updatedAt: '2021-04-28T12:52:19Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1883'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-04-28T12:52:19Z'
+---
+# layout.Card: support lazy loading items
+
+module can optionally be a function.
+
+example:
+```
+            items: [{
+                module         : () => import('./TableContainer.mjs'),
+                reference      : 'table-container',
+                tabButtonConfig: {
+                    iconCls: 'fa fa-table',
+                    route  : 'mainview=table',
+                    text   : 'Table'
+                }
+            }, {
+                module         : () => import('./mapboxGl/Container.mjs'),
+                tabButtonConfig: {
+                    iconCls: 'fa fa-globe-americas',
+                    route  : 'mainview=mapboxglmap',
+                    text   : 'Mapbox GL Map'
+                }
+            }]
+```
+
+epic.
+
+## Timeline
+
+### @tobiu - 2021-04-28T12:52:19Z
+
+done.
+
+

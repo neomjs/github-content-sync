@@ -1,0 +1,31 @@
+---
+id: 4875
+title: 'button.Base, menu.List => remove the negative offsets for showing popovers'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-09-11T10:02:57Z'
+updatedAt: '2023-09-11T10:03:23Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/4875'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-09-11T10:03:23Z'
+---
+# button.Base, menu.List => remove the negative offsets for showing popovers
+
+there was a theme build missing on my end, not needed.
+
+@ExtAnimal 
+

@@ -1,0 +1,31 @@
+---
+id: 3264
+title: 'form.field.Select: onListItemChange()'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2022-07-05T11:55:16Z'
+updatedAt: '2022-07-05T11:56:08Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/3264'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2022-07-05T11:56:08Z'
+---
+# form.field.Select: onListItemChange()
+
+I am changing the UX a bit:
+1. onListItemNaviate() should keep the list open
+2. onListItemClick() should close the list
+

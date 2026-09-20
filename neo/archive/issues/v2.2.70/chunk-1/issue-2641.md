@@ -1,0 +1,31 @@
+---
+id: 2641
+title: Neo.config.useDomIds
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-07-21T22:43:41Z'
+updatedAt: '2021-07-21T22:48:00Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/2641'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-07-21T22:48:00Z'
+---
+# Neo.config.useDomIds
+
+Add a new `Boolean` default config, default true.
+
+false will map vdom ids into `data-neo-id` dom attributes instead of real ids.
+

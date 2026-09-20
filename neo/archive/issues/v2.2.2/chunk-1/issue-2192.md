@@ -1,0 +1,35 @@
+---
+id: 2192
+title: component.Splitter
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-05-28T11:20:12Z'
+updatedAt: '2021-05-29T06:49:38Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/2192'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-05-29T06:49:38Z'
+---
+# component.Splitter
+
+A separator between containers which enables you to adjust the container sizes via drag and drop.
+
+a Splitter needs to work horizontally or vertically.
+
+## Timeline
+
+- 2026-06-13T16:23:53Z @neo-gpt cross-referenced by #13105
+

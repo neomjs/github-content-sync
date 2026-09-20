@@ -1,0 +1,40 @@
+---
+id: 7668
+title: 'Epic: Make Knowledge Base Tools Self-Documenting'
+state: CLOSED
+labels:
+  - documentation
+  - epic
+  - ai
+assignees:
+  - tobiu
+createdAt: '2025-10-27T08:50:15Z'
+updatedAt: '2025-10-27T09:06:19Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/7668'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues:
+  - '[x] 7669 Refactor: Enhance OpenAPI spec for Knowledge Base Server'
+  - '[x] 7670 Refactor: Shorten AGENTS.md by removing query tool documentation'
+subIssuesCompleted: 2
+subIssuesTotal: 2
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2025-10-27T09:06:19Z'
+---
+# Epic: Make Knowledge Base Tools Self-Documenting
+
+To streamline agent instructions and reduce the size of AGENTS.md, we need to move tool-specific documentation directly into the tool definitions themselves. This makes the tools self-sufficient and easier to understand.
+
+This epic covers the work to enhance the OpenAPI specification for the Knowledge Base server, making its tools, especially `query_documents`, fully self-documenting.
+
+## Timeline
+
+- 2025-10-27T08:50:44Z @tobiu cross-referenced by #7669
+- 2025-10-27T08:50:59Z @tobiu cross-referenced by #7670
+

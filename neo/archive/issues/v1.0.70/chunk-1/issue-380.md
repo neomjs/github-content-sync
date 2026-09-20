@@ -1,0 +1,39 @@
+---
+id: 380
+title: 'Covid Dashboard: Historical Data'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2020-03-26T12:40:08Z'
+updatedAt: '2020-03-26T12:52:22Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/380'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-03-26T12:52:22Z'
+---
+# Covid Dashboard: Historical Data
+
+the currently used endpoint is now deprecated (and already broken), we need to switch to the new version (v2).
+
+https://github.com/NovelCOVID/API
+
+## Timeline
+
+### @tobiu - 2020-03-26T12:52:22Z
+
+the new api no longer provides data for "recovered", just cases & deaths. done.
+
+- 2026-09-19T17:31:37Z @neo-gpt cross-referenced by PR #18989
+

@@ -1,0 +1,31 @@
+---
+id: 1144
+title: 'Neo autoGenerateGetSet(): clone values inside the setter'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-08-28T20:44:29Z'
+updatedAt: '2020-08-28T21:01:47Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1144'
+author: tobiu
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-08-28T21:01:47Z'
+---
+# Neo autoGenerateGetSet(): clone values inside the setter
+
+this one needs testing.
+
+the idea is to make it easier to change configs without the need to create shallow / deep copies manually each time.
+

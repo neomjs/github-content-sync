@@ -1,0 +1,52 @@
+---
+id: 1298
+title: 'draggable.tab.header.toolbar.SortZone: disable the tab strip animation after a drop happens'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2020-10-24T13:00:14Z'
+updatedAt: '2020-10-24T14:04:41Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1298'
+author: tobiu
+commentsCount: 3
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-10-24T14:04:41Z'
+---
+# draggable.tab.header.toolbar.SortZone: disable the tab strip animation after a drop happens
+
+drag&drop based re-sorting can change the active index.
+
+in this case, the active tab indicator should not move with an animation.
+
+an edge case, but to make it perfect it should move instantly.
+
+## Timeline
+
+### @tobiu - 2020-10-24T13:03:14Z
+
+the logic needs to be inside: draggable.tab.header.toolbar.SortZone.
+
+will adjust the ticket title.
+
+### @tobiu - 2020-10-24T13:45:53Z
+
+it turns out, that adding a style like `animation: none !important` to the toolbar or each button does not override the value inside the button indicator child node (only tested in Chrome).
+
+we need to add a custom css rule to make it work.
+
+### @tobiu - 2020-10-24T14:00:20Z
+
+i will test adding the new cls onDragStart(), so that the dragProxyEl tab indicator does not flicker.
+
+

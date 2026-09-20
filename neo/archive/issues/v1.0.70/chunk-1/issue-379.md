@@ -1,0 +1,39 @@
+---
+id: 379
+title: 'Covid Dashboard: Flag images'
+state: CLOSED
+labels:
+  - bug
+assignees:
+  - tobiu
+createdAt: '2020-03-26T11:34:24Z'
+updatedAt: '2020-03-26T12:37:08Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/379'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2020-03-26T12:37:08Z'
+---
+# Covid Dashboard: Flag images
+
+The API got changed:
+https://github.com/NovelCOVID/API
+
+Several Country names got changed resulting in broken flag image links. On it.
+
+## Timeline
+
+### @tobiu - 2020-03-26T12:37:08Z
+
+adjusted all failing ones.
+
+

@@ -1,0 +1,41 @@
+---
+id: 1740
+title: examples.model.Table
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2021-04-09T17:47:07Z'
+updatedAt: '2021-04-09T20:07:56Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/1740'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2021-04-09T20:07:56Z'
+---
+# examples.model.Table
+
+To further develop and test the model.Component stores config, we need a new example (app).
+
+I will copy an existing table example, add a view model class, create the store there and then add a binding inside the table view.
+
+## Timeline
+
+### @tobiu - 2021-04-09T20:07:56Z
+
+the first PoC is working now:
+
+![Screenshot 2021-04-09 at 22 07 30](https://user-images.githubusercontent.com/1177434/114235116-00031e00-9980-11eb-9cf3-282e5ab12c9e.png)
+
+
+

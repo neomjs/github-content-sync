@@ -1,0 +1,46 @@
+---
+id: 5082
+title: 'form.field.Text: add a trim() logic for submitting values'
+state: CLOSED
+labels:
+  - enhancement
+assignees:
+  - tobiu
+createdAt: '2023-11-04T16:44:54Z'
+updatedAt: '2023-11-06T11:04:03Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/5082'
+author: tobiu
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2023-11-06T11:04:03Z'
+---
+# form.field.Text: add a trim() logic for submitting values
+
+@linchen, @ThorstenRaab: i had to revert your idea for a fix:
+https://github.com/neomjs/neo/pull/5081
+
+since it was causing multiple new bugs. e.g. NumberField extends TextField. so if you just transform whatever type of value which is coming in into a string, it will break.
+
+also, we do need a proper if condition for:
+```
+data.value ? data.value.toString().trim() : me.emptyValue
+```
+
+if `data.value` equals 0, it will get changed to the emptyValue.
+
+## Timeline
+
+### @tobiu - 2023-11-04T17:23:51Z
+
+^ we can probably go for this one, in case we only want to trim user inputs and not programmatic values.
+
+

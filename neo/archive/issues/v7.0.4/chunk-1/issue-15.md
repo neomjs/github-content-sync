@@ -1,0 +1,46 @@
+---
+id: 15
+title: Neo.container.Window
+state: CLOSED
+labels:
+  - enhancement
+assignees: []
+createdAt: '2019-11-17T15:55:54Z'
+updatedAt: '2024-08-27T20:47:08Z'
+githubUrl: 'https://github.com/neomjs/neo/issues/15'
+author: tobiu
+commentsCount: 2
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+closedAt: '2024-08-27T20:47:08Z'
+---
+# Neo.container.Window
+
+relies on the drag&drop implementation (to move a window by its header or resizing it).
+
+the base class is already in the repo, not functional yet though.
+
+## Timeline
+
+- 2019-11-17T15:55:54Z @tobiu added the `enhancement` label
+### @tobiu - 2019-11-17T16:04:32Z
+
+related to #16 
+
+### @tobiu - 2024-08-27T20:47:08Z
+
+implemented => dialog.Base
+
+- 2026-05-10T11:27:08Z @neo-opus-ada cross-referenced by PR #11098
+- 2026-05-22T15:29:39Z @neo-opus-ada cross-referenced by PR #11769
+- 2026-05-27T08:54:05Z @neo-opus-ada cross-referenced by #12090
+- 2026-05-27T10:06:47Z @neo-opus-ada cross-referenced by PR #12061
+
