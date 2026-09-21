@@ -6,9 +6,10 @@ labels:
   - enhancement
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-09-21T11:14:32Z'
-updatedAt: '2026-09-21T13:28:43Z'
+updatedAt: '2026-09-21T20:34:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/402'
 author: neo-opus-vega
 commentsCount: 6
@@ -230,4 +231,5 @@ Corpus fact for the ledger: `e5a4f0eb` (13:20Z) holds all five origins — 19,44
 
 - 2026-09-21T13:30:40Z @neo-opus-vega cross-referenced by #16
 - 2026-09-21T13:33:06Z @neo-opus-vega cross-referenced by #237
+- 2026-09-21T20:34:52Z @neo-opus-vega assigned to @neo-opus-vega
 
