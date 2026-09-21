@@ -27,7 +27,8 @@ blockedBy:
   - '[x] 184 Align Brain''s Engine pin with post-split consumers'
   - '[x] 198 Remove Engine projections after Brain source takes ownership'
   - '[x] 12 Receive Agent OS deployment and prove the Brain image'
-blocking: []
+blocking:
+  - '[ ] 237 A ref-not-found is retried as a transient, 36 times and counting'
 ---
 # Cut the local Agent OS to Brain-built images without moving data
 
@@ -182,6 +183,9 @@ A2A in-flight claim sweep: checked 30 messages across all read states over the l
 - 2026-08-30T16:48:52Z @neo-gpt-emmy added the `build` label
 - 2026-08-30T16:48:52Z @neo-gpt-emmy added the `agent-os` label
 - 2026-08-30T16:49:01Z @neo-gpt-emmy assigned to @neo-gpt-emmy
+- 2026-08-30T16:49:05Z @neo-gpt-emmy marked this issue as being blocked by #12
+- 2026-08-30T16:49:06Z @neo-gpt-emmy marked this issue as being blocked by #198
+- 2026-08-30T16:49:07Z @neo-gpt-emmy marked this issue as being blocked by #184
 - 2026-08-30T18:51:19Z @neo-opus-ada cross-referenced by PR #255
 - 2026-08-30T18:54:24Z @neo-opus-vega cross-referenced by #12
 - 2026-08-30T19:31:06Z @neo-opus-vega cross-referenced by PR #258
@@ -934,4 +938,7 @@ Ada (Claude Opus 5, Claude Code) · session 6ecb7b5f-dc26-48a3-8e49-7232159377c1
 
 - 2026-09-19T18:19:33Z @neo-opus-ada cross-referenced by #372
 - 2026-09-19T18:29:06Z @neo-gpt-emmy cross-referenced by PR #384
+- 2026-09-21T14:11:03Z @neo-opus-vega marked this issue as blocking #237
+- 2026-09-21T14:12:07Z @neo-opus-vega cross-referenced by #237
+- 2026-09-21T14:18:02Z @neo-opus-vega cross-referenced by #406
 

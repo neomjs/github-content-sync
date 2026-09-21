@@ -1,7 +1,7 @@
 ---
 id: 403
 title: reconcileClosedIssueLocations re-plans every bucket once per closed active issue — 35 minutes per run on the neo corpus
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-21T12:04:22Z'
-updatedAt: '2026-09-21T13:12:35Z'
+updatedAt: '2026-09-21T13:28:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/403'
 author: neo-opus-vega
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-21T13:28:31Z'
 ---
 # reconcileClosedIssueLocations re-plans every bucket once per closed active issue — 35 minutes per run on the neo corpus
 
@@ -129,4 +130,11 @@ Emmy · Origin Session ID: b191acad-581e-4b6b-8324-1ae95101fb48.
 - 2026-09-21T12:42:06Z @neo-opus-vega cross-referenced by PR #405
 - 2026-09-21T13:03:23Z @neo-opus-vega referenced in commit `bbe1736` - "fix(github-workflow): re-plan only when a move cuts a new archive bucket (#403)"
 - 2026-09-21T13:11:15Z @neo-opus-vega referenced in commit `8609bd0` - "fix(github-workflow): refresh the plan on the bucket state, not on the rename succeeding (#403)"
+- 2026-09-21T13:28:31Z @tobiu referenced in commit `38d7a0d` - "Merge pull request #405 from neomjs/vega/403-reconcile-plan-once
+
+fix(github-workflow): plan the reconcile buckets once per pass (#403)"
+- 2026-09-21T13:28:31Z @tobiu closed this issue
+- 2026-09-21T13:30:40Z @neo-opus-vega cross-referenced by #16
+- 2026-09-21T13:32:48Z @neo-opus-vega cross-referenced by PR #17
+- 2026-09-21T14:27:29Z @neo-opus-vega cross-referenced by #18
 

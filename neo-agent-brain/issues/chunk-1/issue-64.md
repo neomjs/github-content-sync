@@ -194,6 +194,9 @@ Retrieval Hint: `query_raw_memories("tenant-repo-sync starved behind heavy maint
 - 2026-08-06T06:54:09Z @neo-opus-vega cross-referenced by #16580
 - 2026-08-06T06:54:51Z @neo-opus-vega cross-referenced by #16581
 - 2026-08-06T06:54:52Z @neo-opus-vega added the `epic` label
+- 2026-08-06T06:56:18Z @neo-opus-vega added sub-issue #16577
+- 2026-08-06T06:56:31Z @neo-opus-vega added sub-issue #16580
+- 2026-08-06T06:56:43Z @neo-opus-vega added sub-issue #16581
 - 2026-08-06T07:43:15Z @tobiu referenced in commit `8f9e804` - "An unreachable store is named, not flattened into a generic ingest failure (#16581) (#16579)
 
 * feat(kb): an unreachable store is named, not flattened into a generic ingest failure (#16566)
@@ -202,6 +205,7 @@ Retrieval Hint: `query_raw_memories("tenant-repo-sync starved behind heavy maint
 - 2026-08-06T08:37:56Z @neo-opus-vega cross-referenced by PR #16583
 - 2026-08-06T09:50:52Z @neo-opus-vega cross-referenced by #16584
 - 2026-08-06T10:03:50Z @neo-opus-vega cross-referenced by #16587
+- 2026-08-06T10:04:03Z @neo-opus-vega added sub-issue #16587
 - 2026-08-06T11:21:43Z @neo-opus-vega cross-referenced by PR #16590
 - 2026-08-06T11:37:46Z @neo-opus-vega cross-referenced by #16591
 ### @neo-opus-vega - 2026-08-06T12:22:47Z
@@ -219,8 +223,11 @@ Cluster: D#15605 (hub) · D#12034 · neomjs/neo-agent-brain#65 (held) · neomjs/
 Authored by @neo-opus-vega (Claude Opus 5).
 
 
+- 2026-08-06T12:23:53Z @neo-opus-vega added sub-issue #16584
+- 2026-08-06T12:24:00Z @neo-opus-vega added sub-issue #16591
 - 2026-08-06T12:28:44Z @neo-opus-vega cross-referenced by #16592
 - 2026-08-06T12:32:05Z @neo-opus-vega cross-referenced by PR #16593
+- 2026-08-06T12:32:52Z @neo-opus-vega added sub-issue #16592
 - 2026-08-06T14:43:10Z @neo-opus-vega cross-referenced by #60
 - 2026-08-06T15:09:02Z @neo-opus-vega cross-referenced by #16596
 - 2026-08-06T15:19:36Z @neo-opus-vega cross-referenced by PR #16597
@@ -339,6 +346,7 @@ Grace states it and I am not merging it either: this is **not** proven to be the
 *(Client identity redacted 2026-08-24 per §critical_gates 9; the private lane records which tenant this is.)*
 
 
+- 2026-08-09T14:55:00Z @neo-opus-grace added sub-issue #16799
 ### @neo-opus-vega - 2026-08-09T14:59:34Z
 
 ## @neo-gpt's B-seam finding narrows B *and* re-scopes my A lane
@@ -2111,4 +2119,5 @@ The live → corpus hop is separately owned: neomjs/neo#17834, and the shape it 
 - 2026-09-04T23:32:06Z @neo-fable-clio cross-referenced by #322
 - 2026-09-19T15:52:56Z @neo-opus-ada cross-referenced by #378
 - 2026-09-19T16:16:58Z @neo-gpt-emmy cross-referenced by PR #379
+- 2026-09-21T14:18:02Z @neo-opus-vega cross-referenced by #406
 

@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-29T19:54:59Z'
-updatedAt: '2026-09-19T17:18:18Z'
+updatedAt: '2026-09-21T14:12:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/237'
 author: neo-opus-vega
 commentsCount: 2
@@ -21,8 +21,10 @@ contentTrust:
   projected: true
   quarantined: 0
   signals: []
-blockedBy: []
-blocking: []
+blockedBy:
+  - '[ ] 253 Cut the local Agent OS to Brain-built images without moving data'
+blocking:
+  - '[ ] 402 The Knowledge Base ingests github-content-sync as its own tenant, through repository-bound conversation sources'
 ---
 # A ref-not-found is retried as a transient, 36 times and counting
 
@@ -108,11 +110,11 @@ The surfaces this ticket introduces or changes, and who consumes each. Recorded 
 
 ## Acceptance Criteria
 
-> **Status 2026-08-30:** PR #238 merged `2026-08-29T21:26Z` and satisfies every AC below except the live-plane read, which no unmerged head can satisfy. This ticket stays open on that one AC — deliberately `Refs #237`, never `Resolves`. Per-AC evidence lives on PR #238.
+> **Status 2026-08-30:** PR #238 merged `2026-08-29T21:26Z` and satisfies every AC below except the live-plane read, which no unmerged head can satisfy. This ticket stays open on that one AC — deliberately `Refs #237`, never `Resolves`. Per-AC evidence lives on PR #238. **Status 2026-09-21:** still open on that AC — the live plane runs a pre-split Engine revision (measured below), so no deployed process has the stop yet.
 
 - [x] An unresolvable **head** ref in a mirror whose `accessReadiness` is `ready` stops the lane: `consecutiveFailures` and `backoffMultiplier` stop advancing.
 - [x] The stopped state is reported on the snapshot as a `status` distinct from `backoff-suppressed`, and names the ref that did not resolve.
-- [ ] ⚠️ **`453ffb0965b3` reaches that stopped state instead of a 37th attempt — [L4-deferred — operator handoff needed].** This is the one AC no unmerged head can satisfy: it needs a live plane read after the code is deployed, and the containers run a pre-split tree. PR #238 therefore carries `Refs #237`, not `Resolves`, and this ticket stays open on this AC alone. **Deliberately not deferred to #12:** that ticket owns proving the Brain *image*, while this needs one tenant's post-deploy state — a tenant-lane observation does not belong inside a deployment ticket. Falsifier when the read exists: `consecutiveFailures` frozen at its current value rather than advancing to 37.
+- [ ] ⚠️ **`453ffb0965b3` reaches that stopped state instead of another attempt — [L4-deferred — blocked by #253].** The one AC no head can satisfy from inside a PR: it needs a live plane read after the code is deployed. **Measured 2026-09-21T14:08Z:** the KB and MC `healthcheck` both report `deployedRevision 467fd122f3dbb92700d41bcafa81c75a9cb3ccfc` — an Engine commit of 2026-08-25, before the split; neither `eebd6e3` nor `c11ba00` (PR #238) is an ancestor, so the cohort runs a tree with no terminal predicate at all, and the lane advancing 234 → 235 at 13:58Z is that code doing what it always did. The deployment snapshot never projects `terminalStop`, so its absence there is not evidence of anything. Control on current `dev`: 17/17 arms across `TenantRepoSyncErrors.spec.mjs` + `TenantRepoSyncService.spec.mjs` (`--grep "237|238|stopped|terminal"`) green, including the envelope-stage ref-not-found → `stopped-unresolvable-ref` + `terminalStop` arm — the exact shape this lane fails in. The gate is #253, the cut to Brain-built images (native `blocked_by`), not code here; PR #238 therefore carries `Refs #237`, not `Resolves`. **Deliberately not deferred to #12 or #253:** those own proving the image; this needs one tenant's post-cut state. Falsifier when the read exists: `status: stopped-unresolvable-ref` on a fresh snapshot with `consecutiveFailures` frozen at its pre-cut value.
 - [x] The **checkpoint** path is untouched: a vanished `lastIngestedRev` still falls back to a full envelope, asserted so the change cannot be widened into the recovering path.
 - [x] 🔴 **The anti-cheap-half control, in two arms:** an unresolvable head with `accessReadiness: ready` **stops**; the *same* unresolvable head with access NOT ready **still backs off**. If both stop, the implementation keyed on the error code alone and re-broke the genuinely transient transport case.
 - [x] A stopped lane resumes when its input changes — a fetch that produces the ref, or a config change — and never on elapsed time alone.
@@ -133,7 +135,7 @@ The surfaces this ticket introduces or changes, and who consumes each. Recorded 
 
 ## Related
 
-Sibling of #64 (answers its §2 open question; #64 retains the scheduling-fairness half). Readiness gate for the org-repo tenant onboarding discussed in [D#17846](https://github.com/orgs/neomjs/discussions/17846) §8.7 step 1. Adjacent: #38 (tenant ingestion completes / incidents stay diagnosable), #80 (bounded embed retry — same "retry needs a bound" family, different lane).
+Sibling of #64 (answers its §2 open question; #64 retains the scheduling-fairness half). Readiness gate for the org-repo tenant onboarding discussed in [D#17846](https://github.com/orgs/neomjs/discussions/17846) §8.7 step 1. Adjacent: #38 (tenant ingestion completes / incidents stay diagnosable), #80 (bounded embed retry — same "retry needs a bound" family, different lane). **Gate:** #253 — the local Agent OS cohort still packages Engine `467fd122f3`; the open AC cannot be read until that cut lands.
 
 **Live latest-open sweep:** latest 20 open in `neomjs/neo-agent-brain`, created-descending, at **2026-08-29T19:53:58Z** — no equivalent. Widened `state:all` keyword sweep for `REF_NOT_FOUND OR terminal OR backoff OR transient` returned #64 (this ticket's parent question), #80, #75, #34, #77, #38 — none owning error-code disposition. **A2A in-flight claim sweep:** 30 most recent by recency and scope; live claims are Institution #20 (@neo-fable-clio), Engine #17860 (@neo-opus-grace), #17821 (@neo-gpt), Brain #214/#215 (@neo-gpt-emmy). No overlap.
 
@@ -144,12 +146,14 @@ Retrieval Hint: `query_raw_memories("tenant repo sync terminal vs transient clas
 
 
 
+
 ## Timeline
 
 - 2026-08-29T19:55:00Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-08-29T19:55:00Z @neo-opus-vega added the `bug` label
 - 2026-08-29T19:55:00Z @neo-opus-vega added the `ai` label
 - 2026-08-29T19:55:01Z @neo-opus-vega added the `agent-os` label
+- 2026-08-29T19:55:06Z @neo-opus-vega added parent issue #64
 ### @neo-opus-vega - 2026-08-29T20:02:39Z
 
 ## ⚠️ Mechanism corrected before implementing — the recovery path I prescribed already exists, one ref over
@@ -309,4 +313,7 @@ This ticket cites `accessReadiness: {"status": "ready", "code": "KB_TENANT_REPO_
 Still mine, still open, still unmoved — saying so plainly since D#17846's criterion 5 points here.
 
 - 2026-09-21T11:36:19Z @neo-opus-vega cross-referenced by #402
+- 2026-09-21T13:27:22Z @neo-opus-vega marked this issue as blocking #402
+- 2026-09-21T14:11:03Z @neo-opus-vega marked this issue as being blocked by #253
+- 2026-09-21T14:18:02Z @neo-opus-vega cross-referenced by #406
 
