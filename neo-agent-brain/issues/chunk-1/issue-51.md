@@ -1,0 +1,85 @@
+---
+id: 51
+title: 'Fleet visibility grant family — CAN_OBSERVE_FLEET_OF, default-private, at-rest coherence with an enforcement point'
+state: OPEN
+labels:
+  - enhancement
+  - ai
+  - architecture
+assignees:
+  - neo-fable-clio
+createdAt: '2026-08-08T19:56:53Z'
+updatedAt: '2026-08-26T15:05:15Z'
+githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/51'
+author: neo-fable-clio
+commentsCount: 0
+parentIssue: 83
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy:
+  - '[ ] 52 Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)'
+blocking:
+  - '[ ] 16 Sharing pane — two grant families, distinct receipts, truthful under revocation'
+---
+# Fleet visibility grant family — CAN_OBSERVE_FLEET_OF, default-private, at-rest coherence with an enforcement point
+
+**Graduated from D#16720 (body v12 @ 2026-08-08T19:52:47Z).** Operator Identity facts 3–4 + the cycle-3 convergence (state-predicate coherence + the revocation re-render falsifier).
+
+## Context
+
+Roster visibility is Fleet's own grant family (#16176-inherited): `CAN_OBSERVE_FLEET_OF(granteePrincipal, ownerPrincipal)` + `CAN_ADMINISTER_FLEET_OF`. DEFAULT-PRIVATE even in team deployments. Content sharing stays under MC's independent agent-to-agent `CAN_READ_*` — two service-owned families, separate receipts, never aggregated.
+
+## Acceptance Criteria
+
+- [ ] `CAN_OBSERVE_FLEET_OF` enforcement plane-side, default-private; cross-operator visibility = explicit revocable grant.
+- [ ] **The at-rest coherence invariant WITH an enforcement point** (today NONE exists — `PermissionService.revokePermission` is a bare single-edge delete, verified): *at rest, every content grant's target is roster-visible to the grantee* — mint, revoke, operator departure, identity retirement all bound; per-mutation enforcement choice (auto-extend / cascade-dispose / refuse).
+- [ ] **Key-space finding (sweep §8):** the shipped revoke primitive is `AgentIdentity`-keyed; this family is principal-keyed. Name the sibling-or-bridge decision — the bridge must never become a third ownership source.
+- [ ] **Run the revocation re-render falsifier against the real projection** (4 assertions; assertion 2 — no collateral re-materialization — decides plain re-query vs the neomjs/neo#15178 owner-parking boundary). Band-preserving revocation; removal renders as scope, never liveness; emptied roster = scoped-empty-with-reason.
+- [ ] **Wake-pump coupling cross-ref (S7):** `revokePermission` already calls `WakeSubscriptionService.pump()` in shipped code — inherit the coupling deliberately, document it.
+- [ ] Content-family batch-minting (granting-UX convenience) stays INSIDE the MC family; roster grants never widen content visibility.
+
+## Sequencing
+
+Blocked by S2 + S4. Blocks C4 (the pane renders these grants).
+
+## Signal Ledger
+Family-keyed at D#16720 v11/v12: fable AUTHOR_SIGNAL + APPROVED; Opus APPROVED. Full ledger: D#16720 closing comment.
+## Unresolved Dissent
+GPT v9-anchor DEFERRED: repair implemented (v11); re-stamp pending.
+## Unresolved Liveness
+@neo-gemini-pro benched; GPT/Kimi engaged without final-anchor signal.
+## Discussion Criteria Mapping
+D#16720 criteria (1)–(9): closing comment.
+
+Origin: D#16720 · Retrieval Hint: "CAN_OBSERVE_FLEET_OF default-private at-rest coherence enforcement revocation falsifier owner-parking key-space bridge"
+
+
+## Timeline
+
+- 2026-08-08T19:56:55Z @neo-fable-clio added the `enhancement` label
+- 2026-08-08T19:56:55Z @neo-fable-clio added the `ai` label
+- 2026-08-08T19:56:55Z @neo-fable-clio added the `architecture` label
+- 2026-08-08T21:32:16Z @neo-fable-clio cross-referenced by #16735
+- 2026-08-09T00:14:34Z @neo-gpt-emmy cross-referenced by PR #16761
+- 2026-08-09T10:39:56Z @neo-opus-ada cross-referenced by #52
+- 2026-08-09T11:55:52Z @neo-fable-clio cross-referenced by #53
+- 2026-08-09T13:14:43Z @neo-kimi-phoebe cross-referenced by PR #16781
+- 2026-08-14T16:06:39Z @neo-fable-clio cross-referenced by #16736
+- 2026-08-14T16:25:18Z @neo-fable-clio cross-referenced by PR #17127
+- 2026-08-15T10:41:57Z @neo-fable-clio assigned to @neo-fable-clio
+- 2026-08-15T23:32:40Z @neo-opus-vega cross-referenced by #31
+- 2026-08-16T23:21:05Z @neo-fable-clio cross-referenced by #10
+- 2026-08-24T21:22:18Z @neo-gpt-emmy cross-referenced by PR #17736
+- 2026-08-26T15:05:17Z @tobiu added the `enhancement` label
+- 2026-08-26T15:05:17Z @tobiu added the `ai` label
+- 2026-08-26T15:05:18Z @tobiu added the `architecture` label
+- 2026-08-29T11:37:10Z @neo-opus-vega cross-referenced by #233
+- 2026-09-04T20:27:13Z @neo-fable-clio cross-referenced by #314
+- 2026-09-05T00:48:45Z @neo-fable-clio cross-referenced by #323
+- 2026-09-05T00:54:44Z @neo-fable-clio cross-referenced by #324
+

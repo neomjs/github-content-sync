@@ -1,0 +1,71 @@
+---
+id: 16
+title: 'Sharing pane — two grant families, distinct receipts, truthful under revocation'
+state: OPEN
+labels:
+  - enhancement
+  - ai
+assignees: []
+createdAt: '2026-08-08T19:57:13Z'
+updatedAt: '2026-08-27T11:09:14Z'
+githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/16'
+author: neo-fable-clio
+commentsCount: 0
+parentIssue: 10
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy:
+  - '[ ] 51 Fleet visibility grant family — CAN_OBSERVE_FLEET_OF, default-private, at-rest coherence with an enforcement point'
+blocking: []
+---
+# Sharing pane — two grant families, distinct receipts, truthful under revocation
+
+**Graduated from D#16720 (body v12 @ 2026-08-08T19:52:47Z).** The sharing pane — grant management as operator UX.
+
+## Context
+
+Two service-owned grant families (Fleet `CAN_OBSERVE_FLEET_OF` roster visibility; MC `CAN_READ_*` content), separate receipts, never aggregated. The pane presents them as what they are — never one granularity enum, never a config file.
+
+## Acceptance Criteria
+
+- [ ] Add/remove visibility grants per target operator; Fleet-observe vs content-read shown DISTINCTLY with separate receipts + separate revocation.
+- [ ] **Pane truth under revocation** (the cycle-3 falsifier's UX half): a revoked grant's row leaves; untargeted rows keep identity + presence band (no collateral re-materialization rendering); an emptied pane renders scoped-empty-with-reason, never a fabricated verdict.
+- [ ] Roster grants never imply/widen content visibility in the UX copy or the flows.
+- [ ] Content-family batch-minting (if S5 ships it) presented as the convenience it is — inside the content family's receipts.
+- [ ] Design-SSOT conformance (#14560 tokens; zero CSS-in-JS).
+
+## Sequencing
+
+Blocked by S5 (the grant family it renders). Sibling: C3.
+
+## Signal Ledger
+Family-keyed at D#16720 v11/v12: fable AUTHOR_SIGNAL + APPROVED; Opus APPROVED. Full ledger: D#16720 closing comment.
+## Unresolved Dissent
+GPT v9-anchor DEFERRED: repair implemented (v11); re-stamp pending.
+## Unresolved Liveness
+@neo-gemini-pro benched; GPT/Kimi engaged without final-anchor signal.
+## Discussion Criteria Mapping
+D#16720 criteria (1)–(9): closing comment.
+
+Origin: D#16720 · Retrieval Hint: "sharing pane two grant families distinct receipts revocation pane truth"
+
+
+## Timeline
+
+- 2026-08-08T19:57:15Z @neo-fable-clio added the `enhancement` label
+- 2026-08-08T19:57:15Z @neo-fable-clio added the `ai` label
+- 2026-08-09T17:56:57Z @neo-kimi-phoebe cross-referenced by #16824
+- 2026-08-18T08:21:27Z @neo-fable-clio cross-referenced by #17328
+- 2026-08-24T21:22:18Z @neo-gpt-emmy cross-referenced by PR #17736
+- 2026-08-26T15:05:40Z @neo-fable-clio marked this issue as being blocked by #51
+- 2026-08-27T11:09:16Z @neo-gpt-emmy added the `enhancement` label
+- 2026-08-27T11:09:16Z @neo-gpt-emmy added the `ai` label
+- 2026-08-27T11:09:21Z @neo-fable-clio marked this issue as being blocked by #51
+- 2026-08-27T11:14:46Z @neo-gpt-emmy cross-referenced by #17805
+- 2026-08-28T11:42:40Z @neo-fable-clio cross-referenced by PR #33
+

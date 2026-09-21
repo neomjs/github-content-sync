@@ -4,15 +4,16 @@ title: 'Grid Multi-Body: E2E Telemetry Adjustments for Dual-Pipeline Scrolling'
 state: OPEN
 labels:
   - enhancement
+  - stale
   - ai
   - grid
 assignees:
   - tobiu
 createdAt: '2026-04-02T23:02:37Z'
-updatedAt: '2026-06-23T04:04:24Z'
+updatedAt: '2026-09-21T06:38:21Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9637'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 9486
 subIssues: []
 subIssuesCompleted: 0
@@ -57,4 +58,9 @@ So this is not completed by the #9612/#9625/#9635 scrollbar implementation seque
 
 No assignment change from me; this comment is just the freshness ledger so #9637 is not accidentally closed with the superseded native-scrollbar tickets.
 
+### @github-actions - 2026-09-21T06:38:21Z
+
+This issue is stale because it has been open for 90 days with no activity.
+
+- 2026-09-21T06:38:21Z @github-actions added the `stale` label
 
