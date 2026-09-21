@@ -29,6 +29,8 @@ The contract in one line: **the emitter's exit code is the whole verdict, per or
 
 When a run does publish, the content tree and `_index.json` land in **one commit**. They are a single publication unit; a revision carrying one without the other is a corpus whose index disagrees with its files.
 
+The pushed commit always sits directly on the current `dev` tip. If `dev` moved while the emitter ran — a reviewed merge landing mid-run — the publication commit is replayed onto the new tip (a cherry-pick; it touches only corpus paths, which nothing else writes) and the parent check runs again before the push. A conflict on a corpus path means a second writer, and the run refuses instead.
+
 ## Maintaining the runtime pin
 
 `brain-runtime.json` holds the Brain commit this repository runs. **It is a maintained artifact, not a constant** — pinning a runtime means this repository carries a pin with the same staleness failure mode `neo-agent-institution` has with its engine pin. One file, so the question *"is this pin stale?"* has one place to look.
