@@ -29,7 +29,7 @@ The contract in one line: **the emitter's exit code is the whole verdict, per or
 
 When a run does publish, the content tree and `_index.json` land in **one commit**. They are a single publication unit; a revision carrying one without the other is a corpus whose index disagrees with its files.
 
-The pushed commit always sits directly on the current `dev` tip. If `dev` moved while the emitter ran — a reviewed merge landing mid-run — the publication commit is replayed onto the new tip (a cherry-pick; it touches only corpus paths, which nothing else writes) and the parent check runs again before the push. A conflict on a corpus path means a second writer, and the run refuses instead.
+The pushed commit always sits directly on the current `dev` tip. If `dev` moved while the emitter ran — a reviewed merge landing mid-run — the publication commit is replayed onto the new tip, under three checks that are verified rather than assumed: the tip changed **no corpus path** since the emission base (otherwise the emission is stale or a second writer exists, and the run refuses); the replay runs without rename detection and must touch **exactly the publication's paths** (a clean rename on the tip could otherwise carry a corpus edit to a non-corpus file); and the parent check runs **again** before the push. Anything short of all three refuses.
 
 ## Maintaining the runtime pin
 

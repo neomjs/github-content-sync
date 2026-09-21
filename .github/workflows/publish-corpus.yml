@@ -183,21 +183,39 @@ jobs:
           #
           # `dev` may have moved while the emitter ran (a reviewed merge landing
           # mid-run cost run 35592845470 its 39 minutes). The publication commit
-          # touches only the corpus paths staged above and nothing else writes
-          # them, so it is replayed onto the fetched tip: a cherry-pick, not a
-          # rebase — this clone is shallow and has no merge base — and the parent
-          # invariant is re-checked afterwards rather than assumed. A conflict
-          # would mean a second corpus writer, and that is refused as before.
+          # is replayed onto the fetched tip — a cherry-pick, not a rebase, since
+          # this clone is shallow and has no merge base — under three checks that
+          # are verified, never assumed:
+          #   1. admission: the tip changed NO corpus path since the emission
+          #      base; otherwise the emission is stale or a second writer exists;
+          #   2. custody: rename detection is off, and the replayed commit must
+          #      touch exactly the publication's paths — a clean rename on the
+          #      tip could otherwise carry a corpus edit to a non-corpus path
+          #      (reproduced by @neo-gpt-emmy on PR #15);
+          #   3. ancestry: the parent check below runs again after the replay.
           git fetch --depth=1 origin dev
           if [ "$(git rev-parse HEAD^)" != "$(git rev-parse FETCH_HEAD)" ]; then
             publication="$(git rev-parse HEAD)"
-            echo "dev moved to $(git rev-parse --short FETCH_HEAD) during the run; replaying publication ${publication:0:7} onto it."
+            base="$(git rev-parse HEAD^)"
+            tip="$(git rev-parse --short FETCH_HEAD)"
+            echo "dev moved to ${tip} during the run; replaying publication ${publication:0:7} onto it."
+
+            if [ -n "$(git diff --name-only "$base" FETCH_HEAD -- _index.json $ORIGINS)" ]; then
+              echo "::error::Refusing to publish: origin/dev ${tip} changed corpus paths since the emission base ${base:0:7} — the emission is stale or a second writer touched the corpus."
+              exit 1
+            fi
+
             git checkout -q --detach FETCH_HEAD
             if ! git -c user.name='Neo Corpus Publisher' \
                     -c user.email='neo-opus-vega@neomjs.com' \
-                    cherry-pick "$publication"; then
+                    cherry-pick -X no-renames "$publication"; then
               git cherry-pick --abort
-              echo "::error::Refusing to publish: replaying publication ${publication:0:7} onto origin/dev $(git rev-parse --short FETCH_HEAD) conflicted on a corpus path — a second writer touched the corpus."
+              echo "::error::Refusing to publish: replaying publication ${publication:0:7} onto origin/dev ${tip} conflicted."
+              exit 1
+            fi
+
+            if [ "$(git diff-tree --no-commit-id --name-only -r "$publication" | sort)" != "$(git diff-tree --no-commit-id --name-only -r HEAD | sort)" ]; then
+              echo "::error::Refusing to publish: the replayed commit touches different paths than publication ${publication:0:7}."
               exit 1
             fi
           fi
