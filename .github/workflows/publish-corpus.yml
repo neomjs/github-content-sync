@@ -14,9 +14,17 @@ name: Publish corpus
 
 on:
   schedule:
-    # Every six hours, off the hour so it does not pile onto the top-of-hour
-    # rush shared by every cron on the runner fleet.
-    - cron: '17 */6 * * *'
+    # Hourly, off the hour so it does not pile onto the top-of-hour rush shared
+    # by every cron on the runner fleet. Hourly because this cadence is the
+    # Knowledge Base's freshness floor once the Brain consumes the corpus, and
+    # the Brain's projection SLA assumes hourly emission (neomjs/neo#17627).
+    # A cron is a configured cadence, not a publication-age guarantee: GitHub
+    # may delay or drop scheduled runs, and the concurrency group below holds
+    # ONE pending run — a newer schedule replaces it while a run is in flight —
+    # so a run longer than an hour skips slots rather than stacking them. Move
+    # to '17 */2 * * *' if hourly incremental runs draw secondary-limit 403s or
+    # routinely exceed 60 minutes (#12).
+    - cron: '17 * * * *'
   workflow_dispatch:
 
 # One publication at a time. Two runs interleaving would race on the same
