@@ -177,10 +177,48 @@ jobs:
               commit -m 'chore(corpus): publish org conversations [skip ci]'
 
           # Second layer on the ancestry boundary, independent of the checkout
-          # above: the commit just made must sit DIRECTLY on the published tip.
+          # above: the commit pushed must sit DIRECTLY on the published tip.
           # Any other parent means this push would carry history into `dev` that
           # nothing reviewed — which is what a staged-path restriction cannot see.
+          #
+          # `dev` may have moved while the emitter ran (a reviewed merge landing
+          # mid-run cost run 35592845470 its 39 minutes). The publication commit
+          # is replayed onto the fetched tip — a cherry-pick, not a rebase, since
+          # this clone is shallow and has no merge base — under three checks that
+          # are verified, never assumed:
+          #   1. admission: the tip changed NO corpus path since the emission
+          #      base; otherwise the emission is stale or a second writer exists;
+          #   2. custody: rename detection is off, and the replayed commit must
+          #      touch exactly the publication's paths — a clean rename on the
+          #      tip could otherwise carry a corpus edit to a non-corpus path
+          #      (reproduced by @neo-gpt-emmy on PR #15);
+          #   3. ancestry: the parent check below runs again after the replay.
           git fetch --depth=1 origin dev
+          if [ "$(git rev-parse HEAD^)" != "$(git rev-parse FETCH_HEAD)" ]; then
+            publication="$(git rev-parse HEAD)"
+            base="$(git rev-parse HEAD^)"
+            tip="$(git rev-parse --short FETCH_HEAD)"
+            echo "dev moved to ${tip} during the run; replaying publication ${publication:0:7} onto it."
+
+            if [ -n "$(git diff --name-only "$base" FETCH_HEAD -- _index.json $ORIGINS)" ]; then
+              echo "::error::Refusing to publish: origin/dev ${tip} changed corpus paths since the emission base ${base:0:7} — the emission is stale or a second writer touched the corpus."
+              exit 1
+            fi
+
+            git checkout -q --detach FETCH_HEAD
+            if ! git -c user.name='Neo Corpus Publisher' \
+                    -c user.email='neo-opus-vega@neomjs.com' \
+                    cherry-pick -X no-renames "$publication"; then
+              git cherry-pick --abort
+              echo "::error::Refusing to publish: replaying publication ${publication:0:7} onto origin/dev ${tip} conflicted."
+              exit 1
+            fi
+
+            if [ "$(git diff-tree --no-commit-id --name-only -r "$publication" | sort)" != "$(git diff-tree --no-commit-id --name-only -r HEAD | sort)" ]; then
+              echo "::error::Refusing to publish: the replayed commit touches different paths than publication ${publication:0:7}."
+              exit 1
+            fi
+          fi
           if [ "$(git rev-parse HEAD^)" != "$(git rev-parse FETCH_HEAD)" ]; then
             echo "::error::Refusing to publish: HEAD's parent $(git rev-parse --short HEAD^) is not the current origin/dev $(git rev-parse --short FETCH_HEAD)."
             exit 1
