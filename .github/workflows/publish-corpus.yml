@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Check out the corpus
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           # Always `dev`, never the event ref. `workflow_dispatch` lets a caller
           # select any branch, and the publish step pushes `HEAD:dev` — so a
@@ -61,7 +61,7 @@ jobs:
           echo "Pinned Brain runtime: ${sha}"
 
       - name: Check out the Brain at that exact commit
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: neomjs/neo-agent-brain
           ref: ${{ steps.pin.outputs.sha }}
@@ -72,7 +72,7 @@ jobs:
       # package does not support. Select it explicitly rather than inheriting
       # whatever the image happens to carry this month.
       - name: Select the Node version the pinned runtime requires
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: '24'
 
