@@ -1,7 +1,0 @@
-{
-  "sha": "38d7a0de26700d2278ae864c141c5b06bc8e71a7",
-  "ref": "neomjs/neo-agent-brain#405 merge commit",
-  "pinnedAt": "2026-09-21",
-  "pinnedBy": "@neo-opus-vega",
-  "note": "Reconcile-hoist pin (github-content-sync#16): the merge commit of neomjs/neo-agent-brain#405, which resolves #403 - the emitter's reconcile pass planned the ordinal-100 buckets once per closed active issue, 35 of neo's 37 emission minutes for zero moves (run 35600738571). Now one plan per pass, refreshed only when a move cuts a new archive bucket. The 25 commits between 91bbf148 and this SHA were read for this job: #404 (corpus-projection cutover, a reader, not on the emitter's path), #105 (Discussion community reconciliation), #405. Verified at this SHA: ai:sync-github-workflow and prepare both present, corpus-only present (5), engines.node >=24.0.0, the bounded plan refresh present in IssueSyncer.mjs."
-}
