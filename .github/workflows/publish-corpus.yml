@@ -60,40 +60,40 @@ jobs:
           # does nothing about its ANCESTRY. Reproduced by @neo-gpt-emmy on PR #2.
           ref: dev
 
-      - name: Read the pinned Brain runtime
-        id: pin
-        run: |
-          set -euo pipefail
-          sha="$(jq -r '.sha // empty' brain-runtime.json)"
-
-          # A pin that is not an immutable commit is the failure this guard
-          # exists for: a branch name here would turn every scheduled run into
-          # an untested upgrade of the thing doing the publishing.
-          if [[ ! "$sha" =~ ^[0-9a-f]{40}$ ]]; then
-            echo "::error file=brain-runtime.json::Pin must be a full 40-character commit SHA, got: '${sha}'"
-            exit 1
-          fi
-
-          echo "sha=${sha}" >> "$GITHUB_OUTPUT"
-          echo "Pinned Brain runtime: ${sha}"
-
-      - name: Check out the Brain at that exact commit
+      # The runtime is the Brain's `dev` tip, resolved when the run starts —
+      # never a pin kept here. A pin is a maintained artifact nobody maintains
+      # (#16 was the one bump, by hand, hours after the fix it carried had
+      # merged), and the protection it claimed is already the exit-code
+      # verdict below: a tip that breaks the emitter exits nonzero and
+      # publishes nothing; the next green tip publishes an hour later. Which
+      # revision actually ran is recorded on the publication commit as a
+      # `Brain-Runtime:` trailer — provenance as a record, not a pin (#18).
+      - name: Check out the Brain at its dev tip
         uses: actions/checkout@v7
         with:
           repository: neomjs/neo-agent-brain
-          ref: ${{ steps.pin.outputs.sha }}
+          ref: dev
           path: .runtime
 
-      # The pinned Brain declares `engines.node >= 24.0.0`; the ubuntu-latest image
+      - name: Record the runtime revision
+        id: runtime
+        working-directory: .runtime
+        run: |
+          set -euo pipefail
+          sha="$(git rev-parse HEAD)"
+          echo "sha=${sha}" >> "$GITHUB_OUTPUT"
+          echo "Brain runtime: ${sha} (dev tip at checkout)"
+
+      # The Brain declares `engines.node >= 24.0.0`; the ubuntu-latest image
       # currently ships Node 22.x, so `npm ci` would install against a runtime the
       # package does not support. Select it explicitly rather than inheriting
       # whatever the image happens to carry this month.
-      - name: Select the Node version the pinned runtime requires
+      - name: Select the Node version the runtime requires
         uses: actions/setup-node@v7
         with:
           node-version: '24'
 
-      - name: Install the pinned runtime
+      - name: Install the runtime
         working-directory: .runtime
         run: |
           set -euo pipefail
@@ -104,18 +104,20 @@ jobs:
       # An absent corpus mode is NOT a safe no-op. The pre-#387 CLI ignores an
       # unknown --corpus-only and selects FULL MANUAL MODE, which materializes
       # release notes, derives Portal artifacts and pushes issues back to
-      # GitHub — precisely the effects this job must never cause. So a pin
-      # without the mode must be refused here, before the emitter is invoked,
-      # rather than trusted to fail on its own.
-      - name: Verify the pinned runtime supports corpus mode
+      # GitHub — precisely the effects this job must never cause. A `dev` tip
+      # that regressed the mode must be refused here, before the emitter is
+      # invoked, rather than trusted to fail on its own.
+      - name: Verify the runtime supports corpus mode
         working-directory: .runtime
+        env:
+          BRAIN_RUNTIME: ${{ steps.runtime.outputs.sha }}
         run: |
           set -euo pipefail
           if ! grep -rqs -- 'corpus-only' ai/scripts/maintenance/syncGithubWorkflow.mjs; then
-            echo "::error file=brain-runtime.json::Pinned runtime ${{ steps.pin.outputs.sha }} has no --corpus-only mode. The flag would be IGNORED and a full manual sync would run. Refusing to invoke it."
+            echo "::error::Brain dev at ${BRAIN_RUNTIME} has no --corpus-only mode. The flag would be IGNORED and a full manual sync would run. Refusing to invoke it."
             exit 1
           fi
-          echo "Corpus mode present in the pinned runtime."
+          echo "Corpus mode present in the runtime."
 
       - name: Emit the corpus
         working-directory: .runtime
@@ -156,6 +158,8 @@ jobs:
       # job here, and its half-written files die with the runner rather than
       # being cleaned up by a step that could itself fail.
       - name: Publish
+        env:
+          BRAIN_RUNTIME: ${{ steps.runtime.outputs.sha }}
         run: |
           set -euo pipefail
 
@@ -172,9 +176,12 @@ jobs:
 
           # Content and index travel together. They are one publication unit,
           # so the delivered revision identifies the files and their index.
+          # The trailer names the Brain revision that emitted them; the replay
+          # below carries the message, so it survives a moved `dev`.
           git -c user.name='Neo Corpus Publisher' \
               -c user.email='neo-opus-vega@neomjs.com' \
-              commit -m 'chore(corpus): publish org conversations [skip ci]'
+              commit -m 'chore(corpus): publish org conversations [skip ci]' \
+                     -m "Brain-Runtime: ${BRAIN_RUNTIME}"
 
           # Second layer on the ancestry boundary, independent of the checkout
           # above: the commit pushed must sit DIRECTLY on the published tip.
@@ -228,8 +235,10 @@ jobs:
 
       - name: Report the published revision
         if: success()
+        env:
+          BRAIN_RUNTIME: ${{ steps.runtime.outputs.sha }}
         run: |
           echo "### Corpus publication" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "- runtime pin: \`${{ steps.pin.outputs.sha }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Brain runtime (dev tip at checkout): \`${BRAIN_RUNTIME}\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- revision: \`$(git rev-parse HEAD)\`" >> "$GITHUB_STEP_SUMMARY"
