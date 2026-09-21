@@ -2,10 +2,11 @@
 #
 # This repository owns the job; the Brain owns the emitter it runs
 # (neomjs/neo-agent-brain#387). The contract between them, in one line: the
-# emitter's EXIT CODE is the whole verdict. Zero means all four outcomes
-# advanced — release reference, issues, discussions, pulls — and only then is
-# there anything to publish. Every other outcome, including a partial facet
-# failure that left real content on disk, is nonzero and publishes nothing.
+# emitter's EXIT CODE is the whole verdict, once per origin. Zero means all four
+# outcomes advanced — release reference, issues, discussions, pulls — and only
+# when every origin exits zero is there anything to publish. Every other
+# outcome, including a partial facet failure that left real content on disk,
+# is nonzero and publishes nothing.
 #
 # Nothing here reads the emitter's output to decide. That is deliberate: a
 # publisher that parses prose eventually publishes on a message it misread.
@@ -31,6 +32,14 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+
+    env:
+      # The live origin set, `neo` first: one token per source repository. The
+      # emit step runs the emitter once per token and the publish step stages
+      # exactly these roots, so adding an origin is adding a token here — its
+      # tree is created by its first emission. Sequential by nature, not by
+      # choice: the emitter's lease and the shared `_index.json` are corpus-wide.
+      ORIGINS: neo neo-agent-brain neo-agent-institution neo-agent-skills devindex
 
     steps:
       - name: Check out the corpus
@@ -104,7 +113,7 @@ jobs:
         working-directory: .runtime
         env:
           NEO_MCP_GITHUB_OWNER: neomjs
-          NEO_MCP_GITHUB_REPO: neo
+          # `NEO_MCP_GITHUB_REPO` is set per origin in the loop below.
           # Absolute, and the directory already exists because it is this
           # repository's own checkout. The emitter refuses a missing, invalid
           # or escaping destination before it even imports itself.
@@ -117,7 +126,23 @@ jobs:
           # installation token (`actions/create-github-app-token@v3`) with permissions
           # requested EXPLICITLY, per `neomjs/neo`'s data-sync-pipeline.yml — not a PAT.
           GH_TOKEN: ${{ secrets.CORPUS_SOURCE_READ_TOKEN || github.token }}
-        run: npm run ai:sync-github-workflow -- --corpus-only --verbose
+          # The emitter's own default is `warn`, which left a 36-minute run with
+          # nothing between "Starting" and "complete" — and the 403 runs of
+          # 2026-09-19/20 undiagnosable from their logs. Per-facet progress is
+          # the minimum a scheduled run must leave behind.
+          NEO_LOG_LEVEL: info
+        run: |
+          set -euo pipefail
+
+          # One invocation per origin, in order. `set -e` makes the loop
+          # fail-fast: the first nonzero exit ends this step, Publish never runs,
+          # and the branch stays where it was. Nothing here reads the emitter's
+          # output to decide.
+          for repo in $ORIGINS; do
+            echo "::group::Origin ${repo}"
+            NEO_MCP_GITHUB_REPO="$repo" npm run ai:sync-github-workflow -- --corpus-only --verbose
+            echo "::endgroup::"
+          done
 
       # Reached only when the step above exited 0. A failed emission ends the
       # job here, and its half-written files die with the runner rather than
@@ -126,10 +151,11 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Exactly the published paths. Never `git add -A`: the runtime
-          # checkout and the transient lock live in this workspace too, and a
-          # blanket add is how they would reach a revision.
-          git add -- _index.json neo
+          # Exactly the published paths — the index and the origin roots the
+          # emit step just wrote. Never `git add -A`: the runtime checkout and
+          # the transient lock live in this workspace too, and a blanket add is
+          # how they would reach a revision.
+          git add -- _index.json $ORIGINS
 
           if git diff --cached --quiet; then
             echo "Corpus is already current; nothing to publish."
@@ -140,7 +166,7 @@ jobs:
           # so the delivered revision identifies the files and their index.
           git -c user.name='Neo Corpus Publisher' \
               -c user.email='neo-opus-vega@neomjs.com' \
-              commit -m 'chore(corpus): publish neo conversations [skip ci]'
+              commit -m 'chore(corpus): publish org conversations [skip ci]'
 
           # Second layer on the ancestry boundary, independent of the checkout
           # above: the commit just made must sit DIRECTLY on the published tip.

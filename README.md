@@ -2,7 +2,7 @@
 
 The corpus repository for the Neo.mjs organisation's GitHub conversation content — issues, pull requests and discussions, mirrored as markdown, for every relevant repository in the org.
 
-**No content has been published here yet.** The publisher below exists and is wired; the emitter it runs ships with [`neomjs/neo-agent-brain#387`](https://github.com/neomjs/neo-agent-brain/issues/387). Until that merges and the pin is bumped past it, a run stops at the *Verify the pinned runtime supports corpus mode* step and publishes nothing — **before** the emitter is invoked at all, because a runtime without the mode would silently run a full manual sync rather than refusing. That is the gate doing its job, not a fault.
+**Live origins:** `neo`, `neo-agent-brain`, `neo-agent-institution`, `neo-agent-skills`, `devindex` — one `<repoSlug>/` root each, published every six hours. The set is the `ORIGINS` list in the workflow; adding a repository is adding one token there, and its tree is created by its first emission. The emitter ships with the Brain ([`neomjs/neo-agent-brain#387`](https://github.com/neomjs/neo-agent-brain/issues/387)); a runtime pin without its corpus mode is refused at the *Verify the pinned runtime supports corpus mode* step, **before** the emitter is invoked, because a runtime without the mode would silently run a full manual sync rather than refusing.
 
 ## Why it exists
 
@@ -23,9 +23,9 @@ Two decisions from that design govern what lands here:
 
 ## How publication works
 
-`.github/workflows/publish-corpus.yml` runs on a schedule and on demand. It checks the Brain out at a pinned commit, installs that commit's own lockfile, runs the emitter against this checkout, and commits **only if the emitter exits 0**.
+`.github/workflows/publish-corpus.yml` runs on a schedule and on demand. It checks the Brain out at a pinned commit, installs that commit's own lockfile, runs the emitter against this checkout **once per origin, in order**, and commits **only if every invocation exits 0**.
 
-The contract in one line: **the emitter's exit code is the whole verdict.** Zero means all four outcomes advanced — release reference, issues, discussions, pulls. Everything else — a refusal, a held lease, a partial facet failure that left real files on disk — is nonzero and publishes nothing. No step reads the emitter's output to decide, because a publisher that parses prose eventually publishes on a message it misread.
+The contract in one line: **the emitter's exit code is the whole verdict, per origin.** Zero means all four outcomes advanced — release reference, issues, discussions, pulls. Everything else — a refusal, a held lease, a partial facet failure that left real files on disk — is nonzero, ends the run before the next origin, and publishes nothing. No step reads the emitter's output to decide, because a publisher that parses prose eventually publishes on a message it misread.
 
 When a run does publish, the content tree and `_index.json` land in **one commit**. They are a single publication unit; a revision carrying one without the other is a corpus whose index disagrees with its files.
 
