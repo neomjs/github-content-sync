@@ -2,7 +2,7 @@
 
 The corpus repository for the Neo.mjs organisation's GitHub conversation content — issues, pull requests and discussions, mirrored as markdown, for every relevant repository in the org.
 
-**Live origins:** `neo`, `neo-agent-brain`, `neo-agent-institution`, `neo-agent-skills`, `devindex` — one `<repoSlug>/` root each, published every six hours. The set is the `ORIGINS` list in the workflow; adding a repository is adding one token there, and its tree is created by its first emission. The emitter ships with the Brain ([`neomjs/neo-agent-brain#387`](https://github.com/neomjs/neo-agent-brain/issues/387)); a runtime pin without its corpus mode is refused at the *Verify the pinned runtime supports corpus mode* step, **before** the emitter is invoked, because a runtime without the mode would silently run a full manual sync rather than refusing.
+**Configured origins:** `neo`, `neo-agent-brain`, `neo-agent-institution`, `neo-agent-skills`, `devindex`. Each gets one `<repoSlug>/` root **once its first clean emission publishes**; until then it is configured, not present. `neo` has published on the six-hourly schedule since 2026-09-20; the other four appear with the first successful run after they joined the list. The set is the `ORIGINS` list in the workflow; adding a repository is adding one token there, and its tree is created by its first emission. The emitter ships with the Brain ([`neomjs/neo-agent-brain#387`](https://github.com/neomjs/neo-agent-brain/issues/387)); a runtime pin without its corpus mode is refused at the *Verify the pinned runtime supports corpus mode* step, **before** the emitter is invoked, because a runtime without the mode would silently run a full manual sync rather than refusing.
 
 ## Why it exists
 
