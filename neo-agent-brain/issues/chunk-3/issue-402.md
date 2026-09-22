@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-21T11:14:32Z'
-updatedAt: '2026-09-21T20:34:53Z'
+updatedAt: '2026-09-22T22:28:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/402'
 author: neo-opus-vega
 commentsCount: 6
@@ -58,11 +58,11 @@ Four assumptions in the three sources no longer hold:
 
 ## The Fix
 
-1. **Tenant declaration.** `github-content-sync` becomes a Knowledge Base ingestion tenant under its **own** `{tenantId, repoSlug: 'github-content-sync'}`, declared where tenants are declared (the `KnowledgeBaseTenantConfig` / `kb-config` tier per §8.6). No manifest is ever published under an origin repository's tuple.
+1. **Tenant declaration.** `github-content-sync` becomes a Knowledge Base ingestion tenant under its **own** `{tenantId, repoSlug: 'github-content-sync'}`, declared where tenants are declared (the `KnowledgeBaseTenantConfig` / `kb-config` tier per §8.6 — `deploy/cloud/kb-config.yaml`). No manifest is ever published under an origin repository's tuple. The declaration ships `disabled: true`: the flip and the plane-side receipts are #411, gated on #237.
 2. **One corpus extractor on one declared route — not three tenant parsers.** The conversation sources are *extractors*: `Base.extractFromRepository` and the `ExtractorCatalogue` are the extension seam, while `tenantParserLoader` dispatches only on `parseIngestionFile` / `parse`, which the three Source singletons do not supply (@neo-gpt's intake, 2026-09-21). And the runner scopes each invocation to its route's territory, the revision reader refuses reads outside it (`repositoryRevisionReader.mjs:180` → `KB_REVISION_READER_PATH_OUTSIDE_SCOPE`), `scope()` cannot widen it, and routes must not overlap — so the shared root `_index.json` cannot be read by three independent routes. Therefore: **one corpus extraction invocation** whose declared territory is the root `_index.json` plus the selected `<origin>/{issues,pulls,discussions,archive/…}` roots, reusing the three format-specific chunking implementations (`splitTicketArchiveMarkdown` and siblings) inside that single read authority. The **origin list / matching policy lives in the declared route** — default all origins present in the root index. No `projectRoot/resources/content`, no global root or override, no auxiliary-read mechanism added to the route contract.
 3. **Index.** One lookup over the route-scoped root `_index.json` by corpus-relative `path`, yielding the origin, type and id; an unqualified row is refused; the filename fallback is deleted (the corpus emits no unindexed files — github-content-sync#3: 19,441 rows = 19,441 files at `e5a4f0eb`, all five origins).
 4. **Ownership ≠ origin ≠ identity.** Chunk metadata carries the ownership tuple `{tenantId, repoSlug: 'github-content-sync', rootKind, sourcePath}` (Base contract). The conversation's origin is a **separate** field at the accepted **display grade** — `customMeta` (§8.6a) — and enters the chunk's identity so two origins' `#86` are two chunks. Filter-grade promotion (a scalar schema field with a `schemaVersion` bump) only on §8.6a's successor trigger: the first consumer that filters or aggregates by origin.
-5. **Extraction profile:** bump the normalization version, because the selected file set and the id contract change.
+5. **Extraction identity.** The shape is add-one-extractor / delete-three-Sources, not modify-in-place, so there is no prior normalization version to bump: the new descriptor (`ConversationCorpusSource`, `1.0.0`) and its canonical `origins` option are identity inputs of `extractionIdentity` by construction (`createExtractionProfileIdentity`), and the three retired Sources leave the default registry with their `sourcePaths` keys.
 
 ## Contract Ledger Matrix
 
@@ -72,9 +72,9 @@ Four assumptions in the three sources no longer hold:
 | one corpus extractor via `extractFromRepository` on one declared route (root `_index.json` + selected origin territories) | `Base.mjs:64-81`; `ExtractorCatalogue`; `extractionProfileRunner.mjs:499, 519-529`; `repositoryRevisionReader.mjs:180` scope refusal | repository / revision / territory from the invocation; the index is inside the route's read authority; origin policy in the route; the three chunkers reused inside one invocation | none — reads outside the route refuse (`KB_REVISION_READER_PATH_OUTSIDE_SCOPE`); recovering roots from `AiConfig` or cwd is forbidden | source JSDoc + route docs | spec: two-origin fixture mirror → both origins' chunks from one invocation; control: a second route claiming `_index.json` fails the runner's overlap check |
 | chunk ownership metadata | path-identity tuple (`parser/identity-tuple.md`) | `{tenantId, repoSlug: 'github-content-sync', rootKind, sourcePath}` | — | Base JSDoc | spec |
 | origin provenance | D#17846 §8.6a — display grade | `customMeta.origin` (from the index row's `repoSlug`), also in the chunk identity | schema promotion only on the successor trigger | §8.6a | spec: `neo#86` and `neo-agent-brain#86` distinct chunks, both showing origin |
-| readiness | D#17846 §8.7 step 1 / #237 | the tenant is enabled on a deployed plane only after the `453ffb09` specimen is dispositioned | — | #237 | #237 closed, or its owner records a waiver here |
-| activation evidence | #17627 C1 truthful receipts (tenant lane analogue) | a corpus-owned manifest exists on the plane and the extraction receipt is bound to a `github-content-sync` revision **before** any freshness claim | — | receipt docs | AC-6 |
-| `ask_knowledge_base` / `query_documents` freshness | operator bound (hourly publisher) + tenant sweep cadence | answers cite conversations no older than publisher cadence + one sweep | — | KB handbook | AC-7: `ask` returns a same-day conversation |
+| readiness | D#17846 §8.7 step 1 / #237 | the tenant is enabled on a deployed plane only after the `453ffb09` specimen is dispositioned; until then the declaration carries `disabled: true` | — | #237 | #411 AC-1 |
+| activation evidence | #17627 C1 truthful receipts (tenant lane analogue) | a corpus-owned manifest exists on the plane and the extraction receipt is bound to a `github-content-sync` revision **before** any freshness claim | — | receipt docs | #411 AC-3 |
+| `ask_knowledge_base` / `query_documents` freshness | operator bound (hourly publisher) + tenant sweep cadence | answers cite conversations no older than publisher cadence + one sweep | — | KB handbook | #411 AC-4: `ask` returns a same-day conversation |
 
 ## Decision Record impact
 
@@ -82,13 +82,13 @@ Four assumptions in the three sources no longer hold:
 
 ## Acceptance Criteria
 
-- [ ] **AC-1** — `github-content-sync` is declared as a Knowledge Base tenant under its own tuple with **one** corpus extraction route whose territory is the root `_index.json` plus the selected origin roots, dispatched through the extractor seam (`extractFromRepository` / `ExtractorCatalogue`), not `tenantParserLoader`; no `resources/content` literal remains in `ai/services/knowledge-base/source/`.
+- [ ] **AC-1** — `github-content-sync` is declared as a Knowledge Base tenant under its own tuple with **one** corpus extraction route whose territory is the root `_index.json` plus the selected origin roots, dispatched through the extractor seam (`extractFromRepository` / `ExtractorCatalogue`), not `tenantParserLoader`; `TicketSource`, `PullRequestSource` and `DiscussionSource` are deleted and no code path in `ai/services/knowledge-base/source/` resolves `resources/content` (restated 2026-09-22 from "no literal remains": the one mention left is `ConceptSource`'s JSDoc, a different facet and out of scope).
 - [ ] **AC-2** — Against a fixture tenant mirror with two origins sharing an issue number, one extraction invocation yields both conversations as distinct chunks, ownership tuple `github-content-sync`, origin in `customMeta` and in the identity; an index row without `repoSlug` is refused; reading the index from a route that does not declare it refuses with `KB_REVISION_READER_PATH_OUTSIDE_SCOPE` (control).
 - [ ] **AC-3** — Ownership control: the corpus tenant's manifest produces zero actionable orphans against a fixture `neo` source-row manifest (`diffTenantManifest`); the negative control (manifest under `neo`) reproduces the orphan and is not shipped.
-- [ ] **AC-4** — The extraction-profile normalization version is bumped and the receipt spec covers the new selected-file set.
-- [ ] **AC-5** — Readiness: #237's specimen is dispositioned (closed or waived by its owner, recorded here) before the tenant is enabled on a deployed plane.
-- [ ] **AC-6** — *(deployed plane)* a corpus-owned manifest (`repoSlug: 'github-content-sync'`) exists and the extraction receipt is bound to a `github-content-sync` revision — recorded here before any freshness claim.
-- [ ] **AC-7** — *(deployed plane, after AC-6)* `ask_knowledge_base` cites a `neomjs/neo` conversation created the same day and a `neo-agent-brain` conversation, each showing its origin.
+- [ ] **AC-4** — The new extractor's descriptor id, version and canonical `origins` option are identity inputs of `extractionIdentity`, and the spec pins the selected-file set: the indexed conversation files are yielded, the index and an unindexed file are skipped with a named reason, and no id is ever minted from a filename (restated 2026-09-22 from "bump the normalization version": Fix item 5 explains why there is none to bump).
+- ~~**AC-5** — Readiness: #237's specimen is dispositioned before the tenant is enabled on a deployed plane.~~ **Moved to #411 AC-1** (split 2026-09-22 so this leaf closes on its code; the declaration ships `disabled: true`).
+- ~~**AC-6** — *(deployed plane)* a corpus-owned manifest exists and the extraction receipt is bound to a `github-content-sync` revision.~~ **Moved to #411 AC-3.**
+- ~~**AC-7** — *(deployed plane, after AC-6)* `ask_knowledge_base` cites a same-day `neomjs/neo` conversation and a `neo-agent-brain` conversation, each showing its origin.~~ **Moved to #411 AC-4.**
 
 ## Out of Scope
 
@@ -104,20 +104,21 @@ Four assumptions in the three sources no longer hold:
 - ⛔ **Do not add a global root or override mechanism.** `Base.mjs:64-81` forbids recovering invocation authority from `AiConfig` or cwd; the declared route already carries repository, revision and territory.
 - ⛔ **Do not let the index decide ownership.** It supplies conversation identity (origin, type, id); ownership is the tenant's tuple.
 - ⛔ **Do not keep the filename fallback.** It is how an unqualified id would silently re-enter after the index becomes authoritative.
-- ⛔ **Do not add the tenant before #237 is dispositioned, and do not claim freshness before AC-6.**
+- ⛔ **Do not enable the tenant before #237 is dispositioned, and do not claim freshness before #411's receipts.**
 
 ## Related
 
-neomjs/neo#17416 (epic — parent; the cross-repo link needs an operator or a peer with write `gh`) · #401 (Graph projection, sibling leaf) · #237 (readiness gate) · #246 (FM content root — the symlink workaround this retires the need for) · #282 (adjacent) · github-content-sync#9, github-content-sync#12 · D#17846 §8.6, §8.6a, §8.7 · D#17301
+neomjs/neo#17416 (epic — parent; the cross-repo link needs an operator or a peer with write `gh`) · #411 (activation leaf — the flip and the plane receipts) · #401 (Graph projection, sibling leaf) · #237 (readiness gate) · #246 / PR #410 (FM content root over the same corpus) · #282 (adjacent) · github-content-sync#9, github-content-sync#12 · D#17846 §8.6, §8.6a, §8.7 · D#17301
 
-Live latest-open sweep: latest 20 open Brain issues at 2026-09-21T11:12Z — none equivalent; nearest #282, #246, #237, #401. A2A sweep: no claim; both GPT seats' intakes are read-only and on record. Memory Core sweep: no prior decision beyond D#17846 §8.6 / §8.6a. Knowledge Base: unavailable (request timed out — the staleness this leaf fixes). Structure map: `ai/services/knowledge-base/source` owns the changed files; no new `.mjs` file.
+Live latest-open sweep: latest 20 open Brain issues at 2026-09-21T11:12Z — none equivalent; nearest #282, #246, #237, #401. A2A sweep: no claim; both GPT seats' intakes are read-only and on record. Memory Core sweep: no prior decision beyond D#17846 §8.6 / §8.6a. Knowledge Base: unavailable (request timed out — the staleness this leaf fixes). Structure map: `ai/services/knowledge-base/source` owns the changed files; one new `.mjs` (`ConversationCorpusSource.mjs`, a sibling lift of `RawRepoSource.mjs`), three deleted.
 
 Peer folds on record: @neo-gpt-emmy [intake](https://github.com/neomjs/neo-agent-brain/issues/402#issuecomment-5759720444) · @neo-gpt [peer-role](https://github.com/neomjs/neo-agent-brain/issues/402#issuecomment-5759816237). Both folded 2026-09-21.
 
-unowned-rationale: the Knowledge Base source classes and the tenant lane are the KB owners' surface (GPT family carried #260–#263 and #282); offered via A2A. Claimable by any seat; the claimer runs `ticket-intake`. Operator priority 2026-09-21: this is the top item.
+Owner: @neo-opus-vega, claimed 2026-09-21T20:34Z after the GPT seats (who carried #260–#263 and #282) ran out of weekly capacity. Operator priority 2026-09-21: this is the top item.
 
 Origin Session ID: 7739f08e-6139-4d6f-b533-86044f255ba3
 Retrieval Hint: "knowledge base tenant github-content-sync repository-bound conversation sources ownership tuple origin customMeta readiness 453ffb09"
+
 
 
 ## Timeline
@@ -232,4 +233,8 @@ Corpus fact for the ledger: `e5a4f0eb` (13:20Z) holds all five origins — 19,44
 - 2026-09-21T13:30:40Z @neo-opus-vega cross-referenced by #16
 - 2026-09-21T13:33:06Z @neo-opus-vega cross-referenced by #237
 - 2026-09-21T20:34:52Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-09-22T22:25:57Z @neo-opus-vega cross-referenced by #411
+- 2026-09-22T22:26:39Z @neo-fable cross-referenced by #19055
+- 2026-09-22T22:27:41Z @neo-opus-ada cross-referenced by #253
+- 2026-09-22T22:30:07Z @neo-opus-vega cross-referenced by PR #412
 

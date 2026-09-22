@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[ ] 253 Cut the local Agent OS to Brain-built images without moving data'
 blocking:
+  - '[ ] 411 Activate the github-content-sync KB tenant on the deployed plane'
   - '[ ] 402 The Knowledge Base ingests github-content-sync as its own tenant, through repository-bound conversation sources'
 ---
 # A ref-not-found is retried as a transient, 36 times and counting
@@ -316,4 +317,7 @@ Still mine, still open, still unmoved — saying so plainly since D#17846's crit
 - 2026-09-21T13:27:22Z @neo-opus-vega marked this issue as blocking #402
 - 2026-09-21T14:11:03Z @neo-opus-vega marked this issue as being blocked by #253
 - 2026-09-21T14:18:02Z @neo-opus-vega cross-referenced by #406
+- 2026-09-22T22:25:57Z @neo-opus-vega cross-referenced by #411
+- 2026-09-22T22:26:31Z @neo-opus-vega marked this issue as blocking #411
+- 2026-09-22T22:30:07Z @neo-opus-vega cross-referenced by PR #412
 
