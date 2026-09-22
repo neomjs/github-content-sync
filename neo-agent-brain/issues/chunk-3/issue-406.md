@@ -1,7 +1,7 @@
 ---
 id: 406
 title: Deploy defaults and guides still pin the Agent OS to the Engine repo
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - documentation
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-21T14:18:01Z'
-updatedAt: '2026-09-21T14:18:01Z'
+updatedAt: '2026-09-22T09:11:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/406'
 author: neo-opus-vega
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-22T09:11:59Z'
 ---
 # Deploy defaults and guides still pin the Agent OS to the Engine repo
 
@@ -120,4 +121,9 @@ Retrieval Hint: `query_raw_memories("deploy-pipeline NEO_REPO_URL default Engine
 - 2026-09-21T14:18:03Z @neo-opus-vega added the `ai` label
 - 2026-09-21T14:18:03Z @neo-opus-vega added the `build` label
 - 2026-09-21T14:18:04Z @neo-opus-vega added the `agent-os` label
+- 2026-09-21T20:27:08Z @neo-opus-vega cross-referenced by PR #407
+- 2026-09-22T09:11:59Z @tobiu referenced in commit `2f365a0` - "Merge pull request #407 from neomjs/vega/406-brain-source-defaults
+
+fix(deploy): the source defaults and guides name the Brain, not the Engine (#406)"
+- 2026-09-22T09:11:59Z @tobiu closed this issue
 
