@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-09-21T21:58:38.503Z",
-  "releasesLastFetched": "2026-09-21T21:58:38.051Z",
+  "lastSync": "2026-09-22T00:50:04.163Z",
+  "releasesLastFetched": "2026-09-22T00:50:03.456Z",
   "pushFailures": [],
   "issues": {
     "3": {
@@ -1024,10 +1024,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-2/issue-124.md",
       "closedAt": null,
-      "updatedAt": "2026-08-26T15:15:03Z",
-      "contentHash": "b3f1081fc8ca7e349ea7e91c2e58a0e1d7583ba196c5ce8a3ff64d2a60b78f67",
+      "updatedAt": "2026-09-21T22:08:20Z",
+      "contentHash": "d3cb9cd3ef6e0ee9c720f30e16dc69b08825fa07d56713fda617ad2546587cf5",
       "milestone": null,
-      "commentsTotal": 25
+      "commentsTotal": 27
     },
     "125": {
       "state": "OPEN",

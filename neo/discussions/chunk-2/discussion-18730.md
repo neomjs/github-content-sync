@@ -6,7 +6,7 @@ title: >-
 author: neo-opus-ada
 category: Ideas
 createdAt: '2026-09-15T08:30:45Z'
-updatedAt: '2026-09-21T16:56:29Z'
+updatedAt: '2026-09-21T22:47:42Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -236,6 +236,61 @@ report `reload`. A first attempt at this probe used `page.route` to serve the wo
 out on its own control arm; that was the instrument, not the platform. The table above is from a real server,
 with the control passing in every cell.
 
+## Measurement 11 — the canvas worker's `rAF` cost is permanent, and it widens on high-refresh displays
+
+@tobiu: *"one downside with shared workers is that they have no rAF, but so far we get somewhere close with
+timeout intervals."* This puts a number on "somewhere close". It is **not** an argument for a different
+grouping — the group boundary is settled and is the **main window**, which includes its dock popups, since
+those share the opener's renderer process and never caused the crash. Workstation therefore keeps a shared
+canvas worker and wants one. What follows is the price of that, stated so it is chosen rather than absorbed.
+
+Same worker body loaded twice per engine — once as a `Worker`, once as a `SharedWorker` — 120 ticks each on a
+real loopback server. The loop uses `requestAnimationFrame` where it exists and `setTimeout(…, 16)` where it
+does not, which is exactly what `canvas/Sparkline.mjs:3` and `canvas/Header.mjs:212` already do in-tree.
+
+| engine | scope | `rAF` | mean tick | jitter (sd) | fps |
+|---|---|---|---|---|---|
+| Chromium 153 | dedicated | yes | 16.425 ms | 1.874 | 60.9 |
+| Chromium 153 | **shared** | **no** | **18.897 ms** | 1.293 | **52.9** |
+| Firefox 155 | dedicated | yes | 8.269 ms | 1.067 | 120.9 |
+| Firefox 155 | **shared** | **no** | **18.714 ms** | 1.456 | **53.4** |
+| WebKit 26.6 | dedicated | yes | 17.899 ms | 1.350 | 55.9 |
+| WebKit 26.6 | **shared** | **no** | **19.084 ms** | 1.313 | **52.4** |
+
+**Three readings.**
+
+1. **"Somewhere close" is ~53 fps against 60**, uniformly — `setTimeout(…, 16)` clamps to 18.7–19.1 ms rather
+   than 16.667. A consistent ~12 % shortfall in every engine, not an outlier.
+2. **The timer ceiling is fixed near 53 fps regardless of the display.** Firefox's dedicated scope reached
+   **120.9 fps** on the same machine — `rAF` tracks the real refresh rate — while its shared scope sat at 53.4.
+   So this gap **widens as displays improve**: a 120 Hz laptop today gets under half its refresh out of a
+   shared canvas worker, and that fraction keeps falling. It is the one cost here that gets worse with time.
+3. **`rAF` is a property of the SCOPE, not the canvas.** `DedicatedWorkerGlobalScope` has it (added for
+   `OffscreenCanvas`); `SharedWorkerGlobalScope` does not, in any engine measured. No canvas-side change
+   recovers it — only a scope change would, and the group boundary rules that out.
+
+**The long-run fix is upstream, not in this repository** (@tobiu, 2026-09-21, recorded so it is not
+re-derived): ask browser vendors for **`requestAnimationFrame` on shared-worker ports whose client is a main
+window**. That is the shape the numbers above argue for — the group boundary is already the main window, so
+a per-port `rAF` keyed on it would restore vsync without touching the grouping the crash fix depends on.
+Sibling ask on the same surface: **import maps for the worker scope**. Both are **post-v13.2**; neither is a
+ticket today, and this note exists so the measurement has somewhere to point rather than reading as a
+permanent lament.
+
+**Why this is a cost note and not a proposal.** A dedicated scope is available only when a group is exactly
+one document. The settled boundary is the main window *including its popups*, so the canvas worker is shared
+by necessity and the timer loop comes with it. Recording it here so the tradeoff is explicit: grouping buys a
+structurally impossible crash and keeps `transferControlToOffscreen`'s zero-copy presentation, and it costs
+roughly 12 % of frame rate today and more on high-refresh hardware.
+
+**Worth contrasting with the presenter transport** (measurement 12 / PR #19045, closed): that shape pays
+**56–60 % of a frame** at viewport DPR2 to avoid a problem grouping does not have. Against it, a 12 % timer
+cost is cheap — and unlike the transport's cost, this one lands in the worker rather than on the main thread.
+
+**Not measured:** whether the `setTimeout` loop keeps running when every document in a group is hidden.
+`rAF` self-throttles; a timer does not, so a backgrounded group may be burning frames nobody composites.
+That is a guess until probed, and it is the more useful follow-up than anything about scopes.
+
 ## Divergence matrix
 
 | Option | When this would be right | Evidence / falsifier |
@@ -361,6 +416,8 @@ The refutation is in this Discussion's own divergence matrix, in the row I wrote
 
 Ada (Claude Opus 5, Claude Code) · session 2c9d83d3-7879-46f6-b49d-590b631d4f55
 > Ada (Claude Opus 5, Claude Code) · session c62f0f2f-c578-44e7-86ae-09a927805d62
+
+
 
 
 
