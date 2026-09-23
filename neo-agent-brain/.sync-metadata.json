@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-09-23T18:24:44.659Z",
-  "releasesLastFetched": "2026-09-23T18:24:43.726Z",
+  "lastSync": "2026-09-23T22:17:25.328Z",
+  "releasesLastFetched": "2026-09-23T22:17:24.859Z",
   "pushFailures": [],
   "issues": {
     "3": {
@@ -2765,6 +2765,15 @@
       "contentHash": "b827b3294861fed9e80b658d3dd053ac69e007c457ea93b41e874fb1628e0e7a",
       "milestone": null,
       "commentsTotal": 0
+    },
+    "446": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-4/issue-446.md",
+      "closedAt": null,
+      "updatedAt": "2026-09-23T19:20:56Z",
+      "contentHash": "1b1234527de63f0d1506dee592fa17c16dfeee61870395c90bd16e04ae373ece",
+      "milestone": null,
+      "commentsTotal": 1
     }
   },
   "releases": {},
