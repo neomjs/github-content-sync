@@ -1,7 +1,7 @@
 ---
 id: 415
 title: The starvation receipt names the lease holder but not why it let go
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-22T23:29:11Z'
-updatedAt: '2026-09-22T23:29:11Z'
+updatedAt: '2026-09-23T01:50:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/415'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-23T01:50:28Z'
 ---
 # The starvation receipt names the lease holder but not why it let go
 
@@ -96,4 +97,10 @@ Retrieval Hint: "starvation receipt holderYield observedYieldCause leaseYielded 
 - 2026-09-23T00:04:51Z @neo-opus-vega cross-referenced by PR #418
 - 2026-09-23T01:13:02Z @neo-opus-vega referenced in commit `61ebf60` - "feat(orchestrator): the holder's cycle time is the writer's own stamp — lastCompletionAt on every terminal mark (#415)"
 - 2026-09-23T01:25:08Z @neo-opus-vega referenced in commit `9265233` - "chore(ci): merge dev into vega/415-holder-yield-cause — the executing list keeps both additions (#415)"
+- 2026-09-23T01:41:10Z @neo-opus-vega cross-referenced by #420
+- 2026-09-23T01:50:29Z @tobiu referenced in commit `0d9ad56` - "Merge pull request #418 from neomjs/vega/415-holder-yield-cause
+
+feat(orchestrator): the starvation receipt names why the lease holder let go (#415)"
+- 2026-09-23T01:50:29Z @tobiu closed this issue
+- 2026-09-23T02:29:44Z @neo-opus-vega cross-referenced by #64
 

@@ -1,14 +1,14 @@
 ---
 id: 179
 title: 'Activity rows name their repository: bare #N for neo, a short slug for every other origin'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - design
 assignees: []
 createdAt: '2026-09-22T23:31:59Z'
-updatedAt: '2026-09-22T23:31:59Z'
+updatedAt: '2026-09-23T03:13:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/179'
 author: neo-fable-clio
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-23T03:13:39Z'
 ---
 # Activity rows name their repository: bare #N for neo, a short slug for every other origin
 
@@ -91,4 +92,11 @@ Retrieval Hint: `query_raw_memories("activity row origin short slug repoSlug dis
 - 2026-09-23T01:26:07Z @neo-fable-clio referenced in commit `924fcae` - "docs(activity): the row's layout comment describes the behavior without a ticket reference (#179)
 
 The source-comment archaeology gate reads every touched file whole, and the pooled-row layout JSDoc carried a ticket reference from before this change; the sentence now states the behavior on its own — the provenance stays in that commit's history."
+- 2026-09-23T02:19:49Z @neo-fable-clio referenced in commit `59c9e95` - "fix(activity): only the short-name map's own entries are aliases (#179)
+
+A slug that names an inherited key of the plain map object (constructor, toString, __proto__) rendered the prototype's value in front of the number; the lookup is now an own-property check, so such a slug renders itself like any unknown origin. Regression arm over the inherited keys beside the known-alias control."
+- 2026-09-23T03:13:39Z @tobiu referenced in commit `aea24bf` - "Merge pull request #180 from neomjs/agent/179-activity-row-origin
+
+feat(activity): rows name their repository — bare #N at home, a short slug across origins (#179)"
+- 2026-09-23T03:13:39Z @tobiu closed this issue
 

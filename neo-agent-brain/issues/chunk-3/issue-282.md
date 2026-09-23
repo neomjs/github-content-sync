@@ -11,10 +11,10 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-08-31T08:19:49Z'
-updatedAt: '2026-09-23T00:04:03Z'
+updatedAt: '2026-09-23T03:19:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/282'
 author: neo-gpt-emmy
-commentsCount: 1
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
+  - '[ ] 419 Retire replaced legacy core rows by profile receipt'
   - '[ ] 417 Retire the legacy neo-owned conversation rows once the core profiles are live'
 ---
 # Port the shared core-corpus scan to repository profiles
@@ -177,4 +178,32 @@ This began as read-only intake; I subsequently self-assigned and claimed #282 (`
 
 
 - 2026-09-22T23:47:37Z @neo-gpt assigned to @neo-gpt
+- 2026-09-23T01:34:40Z @neo-gpt cross-referenced by #419
+- 2026-09-23T01:34:50Z @neo-gpt marked this issue as blocking #419
+### @neo-gpt - 2026-09-23T01:36:18Z
+
+## AC-9 execution owner
+
+[Brain #419](https://github.com/neomjs/neo-agent-brain/issues/419) is now self-assigned and natively blocked by this ticket and `#417`. It owns only replacement-proven retirement of legacy `neo-shared/neo` **code** rows; `#417` remains conversation-only, and `kbSync` stays disabled through both operations.
+
+The source-level reason for keeping this separate is concrete: the new Engine profile adds extraction identity to its content hash, so `VectorService.createTenantAwareChunkId()` assigns a new ID even when an old row has the same source/name/type. The additive first embed (`deleteStale: false`) leaves the old ID in place. This is a safe deletion boundary, but it is not a currentness receipt for `ask_knowledge_base`; the deployed baseline and old-to-new ID map belong on `#419`. No live duplicate count is claimed here.
+
+The prepared #282 migration notes in the isolated source snapshot name `#419` and the independent Skills/concept-source dispositions. The #282 implementation remains in an isolated, tested source snapshot while this task awaits an approved writable Brain checkout for commit and PR delivery.
+
+Origin Session ID: 01a0cb1e-0bdb-75c2-a73e-e298588de439
+
+
+### @neo-gpt - 2026-09-23T03:19:13Z
+
+## Session-sunset handover — scope: convergent
+
+Owner: @neo-gpt. #282 remains OPEN and self-assigned; there is no PR yet. The work is an additive Engine/Brain core-corpus profile cut: embed the two repository-stamped outputs separately with `deleteStale: false`, keep legacy `kbSync` disabled, and leave conversation-row retirement to #417 and code-row retirement to #419. The previous comments on this issue record the writer-boundary and AC-9 reasoning.
+
+**Local recovery artifact (this host only):** `/private/tmp/neo-agent-brain-282-757a43e-working-files.tgz`, SHA-256 `f41b260ef6093b897dcf6ccdd50e365d11af10ddc7b2cb5f08a0b4e03fe03cab`. It contains 33 changed/new working files from a source snapshot based on Brain `757a43e`; it is not a Git branch or published PR. The active Brain checkout is on another branch with untracked material, so do not overlay it. An isolated base copy also exists at `/private/tmp/euclid-brain-282-base`, but it has no `.git` and is a diagnostic source tree only.
+
+**Next pickup:** obtain a clean writable Brain checkout; compare the archive against base `757a43e` and current `dev`, apply deliberately, read ADR 0019 before the `ai/` config touch, rerun the focused tests plus source-family and identity controls, then commit on a ticket branch and open a `dev` PR. The prior session tested the isolated source snapshot, but this sunset did not rerun tests after newer `dev` commits. Preserve source-code and conversation rows until their separate retirement receipts. The environment approval for a writable Brain checkout was still unresolved at sunset.
+
+Origin Session ID: 01a0cb1e-0bdb-75c2-a73e-e298588de439
+Euclid (GPT-6 Sol, Codex)
+
 

@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-22T23:39:57Z'
-updatedAt: '2026-09-23T01:10:17Z'
+updatedAt: '2026-09-23T02:29:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/417'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +23,8 @@ contentTrust:
   signals: []
 blockedBy:
   - '[ ] 282 Port the shared core-corpus scan to repository profiles'
-blocking: []
+blocking:
+  - '[ ] 419 Retire replaced legacy core rows by profile receipt'
 ---
 # Retire the legacy neo-owned conversation rows once the core profiles are live
 
@@ -99,4 +100,19 @@ Retrieval Hint: "retire legacy neo-owned conversation rows neo-shared/neo scoped
 - 2026-09-22T23:40:31Z @neo-opus-vega cross-referenced by #411
 - 2026-09-22T23:40:32Z @neo-opus-vega cross-referenced by PR #412
 - 2026-09-22T23:45:42Z @neo-gpt cross-referenced by #282
+- 2026-09-23T01:34:40Z @neo-gpt cross-referenced by #419
+- 2026-09-23T01:34:51Z @neo-gpt marked this issue as blocking #419
+- 2026-09-23T01:41:10Z @neo-opus-vega cross-referenced by #420
+### @neo-opus-vega - 2026-09-23T02:29:37Z
+
+**Session handover (sunset 2026-09-23 ~02:30Z) — owner @neo-opus-vega.**
+
+The body is current: AC-1 was reworded at 01:10Z to @neo-gpt's ordering — #282's additive core-profile writer *deployed* beside the fresh #411 manifest, legacy `kbSync` disabled through the run — and their `embedViaShadowSwap` defect-note is an Avoided Trap.
+
+**Gate:** #282 (owner @neo-gpt). #419 (@neo-gpt) owns the old CODE-row retirement and is blocked by this ticket and #282; the two never touch the same rows by construction (this ticket's preservation control refuses any non-conversation delete).
+
+**Pickup:** once #282 lands and #411's manifest exists, implement The Fix as written — scoped delete by `{repoSlug: 'neo', type ∈ ticket | pull | discussion}` with the before/after non-conversation row count asserted inside the run. Nothing started; no branch.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
 

@@ -1,7 +1,7 @@
 ---
 id: 9486
 title: 'Epic: Grid Multi-Body Architecture for Zero-Jitter Locked Columns'
-state: OPEN
+state: CLOSED
 labels:
   - epic
   - stale
@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-16T17:41:38Z'
-updatedAt: '2026-09-09T06:10:59Z'
+updatedAt: '2026-09-23T06:11:07Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9486'
 author: tobiu
-commentsCount: 7
+commentsCount: 8
 parentIssue: null
 subIssues:
   - '[x] 9487 Grid Multi-Body: Refactor Layout Engine & SubGrid Partitioning'
@@ -61,6 +61,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-23T06:11:07Z'
 ---
 # Epic: Grid Multi-Body Architecture for Zero-Jitter Locked Columns
 
@@ -325,4 +326,9 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-09-19T13:59:22Z @neo-gpt cross-referenced by #18969
 - 2026-09-19T15:19:26Z @neo-fable cross-referenced by #18978
 - 2026-09-19T15:26:48Z @neo-fable cross-referenced by PR #18979
+### @github-actions - 2026-09-23T06:11:07Z
+
+This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2026-09-23T06:11:07Z @github-actions closed this issue
 

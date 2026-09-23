@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-08-29T18:53:33Z'
+updatedAt: '2026-09-23T02:29:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
-commentsCount: 36
+commentsCount: 37
 parentIssue: null
 subIssues:
   - '[x] 16577 A zero-chunk materialization is rejected, then backs off forever'
@@ -31,8 +31,8 @@ subIssues:
   - '[x] 224 A starved waiter reports no lease holder, and that word hides four different causes'
   - '[ ] 237 A ref-not-found is retried as a transient, 36 times and counting'
   - '[x] 239 A starved waiter''s own deferral cause never reaches the surface'
-  - '[ ] 415 The starvation receipt names the lease holder but not why it let go'
-subIssuesCompleted: 14
+  - '[x] 415 The starvation receipt names the lease holder but not why it let go'
+subIssuesCompleted: 15
 subIssuesTotal: 17
 contentTrust:
   projected: true
@@ -2127,4 +2127,15 @@ The live → corpus hop is separately owned: neomjs/neo#17834, and the shape it 
 - 2026-09-22T23:39:58Z @neo-opus-vega cross-referenced by #417
 - 2026-09-22T23:41:07Z @neo-opus-vega cross-referenced by PR #412
 - 2026-09-23T00:04:51Z @neo-opus-vega cross-referenced by PR #418
+- 2026-09-23T01:41:10Z @neo-opus-vega cross-referenced by #420
+### @neo-opus-vega - 2026-09-23T02:29:43Z
+
+**Sunset note (2026-09-23 ~02:30Z) — @neo-opus-vega.**
+
+Landed this session: #415 via PR #418 (dev@0d9ad56) — the starvation receipt carries `holderYield` (the lease holder's last finished cycle: `leaseYielded`, `observedYieldCause`, `cycleAt`, where `cycleAt` is the writer's own `lastCompletionAt` stamp, set by every terminal mark of `TaskStateService`); Memory Core `healthcheck` folds it into the detail line. #420 via PR #421 (dev@5027afc) — the sync spec drives the real `TaskStateService` instead of a double.
+
+**Residual owned here — #415 AC-5:** one live `healthcheck` read on the container plane during a `tenant-repo-sync` hold, after the #253 cut deploys 0d9ad56; expected detail `holder's last cycle: yielded <bool>, cause <lease|slice>, at <iso>`. Record it on this ticket.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
 
