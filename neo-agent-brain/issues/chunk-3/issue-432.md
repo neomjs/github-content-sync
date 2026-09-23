@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-23T12:52:41Z'
-updatedAt: '2026-09-23T12:52:41Z'
+updatedAt: '2026-09-23T14:28:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/432'
 author: neo-opus-vega
 commentsCount: 0
@@ -32,19 +32,19 @@ Lever 2 of #430, split out so each lever ships with its own seam and witness (ch
 
 ## The Problem
 
-Measured on `neo-local-canonical` (`b99ea11`) for the `github-content-sync` tenant, 2026-09-23: slice 1 (11:48:45–11:54:01Z) and slice 2 (12:20:01–12:25:10Z) both logged `materialized: envelopeFiles=47140 envelopeDeleted=0 ingested=47182 … errors=0` and then `partial-progress: slice budget reached, checkpoint held at none`, landing 120 and 140 embeddings respectively. `lastIngestedRev` stays `null` until the corpus is exhausted, so `buildIngestEnvelope` takes the full path on every slice: 47,140 files materialized from the mirror and 47,182 chunk rows upserted before the first embedding batch runs. Most of the 5-minute `sliceBudgetMs` pays for work whose result is identical to the previous slice's, and the embedding stage — the only stage that advances `corpusOutstanding` — gets the remainder.
+Measured on `neo-local-canonical` (`b99ea11`) for the `github-content-sync` tenant, 2026-09-23: slice 1 (11:48:45–11:54:01Z) and slice 2 (12:20:01–12:25:10Z) both logged `materialized: envelopeFiles=47140 envelopeDeleted=0 ingested=47182 … errors=0` and then `partial-progress: slice budget reached, checkpoint held at none`, landing 120 and 140 embeddings respectively. `lastIngestedRev` stays `null` until the corpus is exhausted, so `buildIngestEnvelope` takes the full path on every slice: the mirror is refreshed and all ~47k files are materialized into the chunk file before the first embedding batch runs. The KB log splits a later slice (13:56:54–14:01:59Z) three ways. The refresh and envelope build take 1 min 46 s (the logs do not split them further). Loading the 47,378 chunks and diffing them against the 260 already embedded takes 4 s. Embedding takes 3 min 15 s (50 + 50 + 20 chunks, about 0.7 chunks/s) until the cooperative yield. So a third of every slice repeats work whose result is identical to the previous slice's.
 
-With #430's lever 1 the slices run back to back, which makes this cost the dominant term: ~4 minutes of rebuild for ~1 minute of embedding per slice, and the heavy-maintenance lease held for the rebuild too.
+With #430's lever 1 the slices run back to back, so skipping the rebuild on an unchanged head raises each slice from ~120 to ~180 embeddings (≈ +50 %), and the heavy-maintenance lease stops being held for repeated work. Embedding remains the dominant term: 47,120 outstanding chunks at ~0.7 chunks/s is ~19 h of embedding.
 
 ## The Architectural Reality
 
 - The checkpoint contract is deliberately all-or-nothing on `lastIngestedRev` (`tenantRepoCheckpointValidity.mjs`): advancing it on a partial slice would claim a corpus is whole when it is not — the failure `partial-progress`'s own comment names (`TenantRepoSyncService.mjs:2865–2975`). So the reuse cannot be "advance the checkpoint early".
-- The ingestion path is idempotent on content-hashed chunk ids; already-embedded chunks are skipped. Resumption is correct today — the envelope build and the row upsert are the repeated cost, not the embedding.
+- The ingestion path is idempotent on content-hashed chunk ids; already-embedded chunks are skipped (`Found 260 existing documents in this corpus` → `47120 chunks to add or update`). Resumption is correct today; the refresh and envelope build are the repeated cost. `ingested=` counts chunks written to the chunk file, not rows upserted before embedding.
 - `tenantRepoIngestEnvelopeBuilder.mjs` resolves head and base revisions against the mirror and materializes files under the orchestrator's writable layer; the head revision is known before any file is read.
 
 ## The Fix
 
-Persist the materialized head beside the resume marker (`partialHead`, `normalizeTenantRepoCheckpointState` allowlist, validated whole or dropped). When a clean partial repo comes due and the mirror's resolved head equals `partialHead`, skip materialization and the row upsert and hand the embedder the outstanding chunks only; a moved head, an absent marker, or any failure invalidates it and rebuilds as today. The reuse must never mint or reuse a full-materialization receipt — that is the shortcut `partial-progress` returns before `assertFullMaterializationEffect` to prevent.
+Persist the materialized head beside the resume marker (`partialHead`, `normalizeTenantRepoCheckpointState` allowlist, validated whole or dropped). When a clean partial repo comes due and the mirror's resolved head equals `partialHead`, skip the envelope rebuild and hand the embedder the previous slice's chunk file, whose already-embedded chunks it skips by id; a moved head, an absent marker, or any failure invalidates it and rebuilds as today. The reuse must never mint or reuse a full-materialization receipt — that is the shortcut `partial-progress` returns before `assertFullMaterializationEffect` to prevent.
 
 ## Contract Ledger
 
@@ -84,6 +84,7 @@ Retrieval Hint: `query_raw_memories("tenant repo sync partial slice re-materiali
 
 Authored by Vega (Fable 5.1, Claude Code) 🌿
 
+
 ## Timeline
 
 - 2026-09-23T12:52:41Z @neo-opus-vega assigned to @neo-opus-vega
@@ -94,4 +95,7 @@ Authored by Vega (Fable 5.1, Claude Code) 🌿
 - 2026-09-23T12:53:28Z @neo-opus-vega cross-referenced by #430
 - 2026-09-23T12:57:22Z @neo-opus-vega cross-referenced by PR #433
 - 2026-09-23T13:31:04Z @neo-opus-vega cross-referenced by #434
+- 2026-09-23T14:17:15Z @neo-opus-vega cross-referenced by #438
+- 2026-09-23T14:39:40Z @neo-opus-vega cross-referenced by #440
+- 2026-09-23T15:11:26Z @neo-opus-vega cross-referenced by #444
 

@@ -1,7 +1,7 @@
 ---
 id: 105
 title: Seven skill payloads still sweep the engine's frozen content mirror
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - documentation
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-23T11:02:36Z'
-updatedAt: '2026-09-23T13:23:32Z'
+updatedAt: '2026-09-23T14:22:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/105'
 author: neo-opus-vega
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-23T14:22:50Z'
 ---
 # Seven skill payloads still sweep the engine's frozen content mirror
 
@@ -117,4 +118,10 @@ Authored by Vega (Fable 5.1, Claude Code) 🌿
 - 2026-09-23T12:21:32Z @neo-opus-vega referenced in commit `4dc71b8` - "chore(skills): bump to 0.1.16 (#105)"
 - 2026-09-23T12:23:08Z @neo-opus-vega referenced in commit `bf3294e` - "chore(skills): the reusable baseline pins 0.1.16 (#105)"
 - 2026-09-23T13:25:56Z @neo-opus-vega referenced in commit `d3d8391` - "fix(skills): the quarantine clock reads publication and ingestion as two observations (#105)"
+- 2026-09-23T13:47:39Z @neo-opus-ada cross-referenced by #109
+- 2026-09-23T14:22:50Z @tobiu referenced in commit `90d4f0a` - "Merge pull request #107 from neomjs/vega/105-mirror-sweeps
+
+fix(skills): seven payloads sweep the live corpus, not the frozen engine mirror (#105)"
+- 2026-09-23T14:22:50Z @tobiu closed this issue
+- 2026-09-23T14:47:27Z @neo-opus-vega cross-referenced by #17416
 

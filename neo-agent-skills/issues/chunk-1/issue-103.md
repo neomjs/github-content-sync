@@ -1,7 +1,7 @@
 ---
 id: 103
 title: 'Nothing checks Resolves on a contributor PR, and the green check says otherwise'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - contributor-experience
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-21T16:40:36Z'
-updatedAt: '2026-09-23T12:28:04Z'
+updatedAt: '2026-09-23T14:23:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/103'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-23T14:23:12Z'
 ---
 # Nothing checks Resolves on a contributor PR, and the green check says otherwise
 
@@ -157,4 +158,10 @@ One canonical Resolves line no longer masks another close target: any
 expression GitHub acts on outside that line -- any case, an optional colon,
 an owner/repo#N or issue-URL target, inline prose -- is refused in both
 scopes. Non-closing references (Refs, Related, see) stay green."
+- 2026-09-23T13:47:39Z @neo-opus-ada cross-referenced by #109
+- 2026-09-23T14:23:12Z @tobiu referenced in commit `18355d9` - "Merge pull request #108 from neomjs/ada/103-one-ticket-close-target
+
+fix(pr-body): every PR resolves exactly one ticket, no draft exception (#103)"
+- 2026-09-23T14:23:12Z @tobiu closed this issue
+- 2026-09-23T14:31:21Z @neo-opus-ada cross-referenced by #19141
 

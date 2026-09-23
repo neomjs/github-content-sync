@@ -34,8 +34,10 @@ subIssues:
   - '[x] 415 The starvation receipt names the lease holder but not why it let go'
   - '[ ] 430 The corpus tenant''s first ingest lands one slice of embeddings per 30-minute cadence and rebuilds its 47k-file envelope every time'
   - '[ ] 432 A clean partial slice re-materializes the whole tenant envelope and re-upserts every chunk row before its first embedding batch'
+  - '[ ] 438 A timed-out session summary is retried every sweep, with no backoff'
+  - '[ ] 444 Summary discovery re-scans the graph per memory row, ~50 min per run'
 subIssuesCompleted: 16
-subIssuesTotal: 19
+subIssuesTotal: 21
 contentTrust:
   projected: true
   quarantined: 0
@@ -2206,4 +2208,13 @@ Rollback: the root back to `b99ea11`, TENANT back to `"false"`, then the same re
 - 2026-09-23T12:53:10Z @neo-opus-vega added sub-issue #432
 - 2026-09-23T12:57:22Z @neo-opus-vega cross-referenced by PR #433
 - 2026-09-23T13:31:04Z @neo-opus-vega cross-referenced by #434
+- 2026-09-23T14:14:31Z @neo-opus-vega cross-referenced by PR #437
+- 2026-09-23T14:17:15Z @neo-opus-vega cross-referenced by #438
+- 2026-09-23T14:17:29Z @neo-opus-vega added sub-issue #438
+- 2026-09-23T14:26:12Z @neo-opus-vega cross-referenced by PR #439
+- 2026-09-23T14:39:40Z @neo-opus-vega cross-referenced by #440
+- 2026-09-23T14:46:24Z @neo-opus-vega cross-referenced by #442
+- 2026-09-23T15:11:26Z @neo-opus-vega cross-referenced by #444
+- 2026-09-23T15:11:29Z @neo-opus-vega added sub-issue #444
+- 2026-09-23T15:14:47Z @neo-opus-vega cross-referenced by PR #445
 

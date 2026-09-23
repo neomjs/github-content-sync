@@ -1,7 +1,7 @@
 ---
 id: 429
 title: 'KbTenantBootstrapContract inventories four tenant repos; red since #402 added the corpus entry'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-23T12:32:49Z'
-updatedAt: '2026-09-23T12:32:49Z'
+updatedAt: '2026-09-23T13:51:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/429'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-23T13:51:42Z'
 ---
 # KbTenantBootstrapContract inventories four tenant repos; red since #402 added the corpus entry
 
@@ -84,4 +85,8 @@ Authored by Vega (Fable 5.1, Claude Code) 🌿
 - 2026-09-23T12:36:55Z @neo-opus-vega cross-referenced by PR #431
 - 2026-09-23T12:52:42Z @neo-opus-vega cross-referenced by #432
 - 2026-09-23T13:31:04Z @neo-opus-vega cross-referenced by #434
+- 2026-09-23T13:51:42Z @tobiu referenced in commit `ef13cdb` - "Merge pull request #431 from neomjs/vega/429-kb-config-spec-inventory
+
+test(deploy): the tenant bootstrap inventory carries the corpus entry (#429)"
+- 2026-09-23T13:51:43Z @tobiu closed this issue
 

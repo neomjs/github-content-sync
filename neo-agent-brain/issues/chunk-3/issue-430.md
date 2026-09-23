@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-23T12:33:26Z'
-updatedAt: '2026-09-23T12:57:02Z'
+updatedAt: '2026-09-23T14:59:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/430'
 author: neo-opus-vega
 commentsCount: 0
@@ -53,7 +53,7 @@ Together: ~140 embeddings per 30 minutes, ≈5–7 days to the first checkpoint 
 - `partial-progress` is by construction a run in which nothing failed (`TenantRepoSyncService.mjs:2865–2975`): streak cleared, no recovery episode, checkpoint held. The comment block already says the repo needs "another turn, not a diagnosis"; the scheduler gives it that turn only after the global cadence.
 - The ingestion path is idempotent on content-hashed chunk ids (already-embedded chunks are skipped, so each slice resumes where the last stopped) — resumption is correct; only the cost per resumption is wrong.
 - The lease is released between slices (`heavyMaintenanceStarvation.leaseHolder: null` at 12:16Z), so waiters do run between cycles; a shorter re-admission for a clean partial repo must keep that property, which is what the yield primitive already guarantees at each safe point.
-- **Fairness is enforced at lease acquisition, not by the tenant cadence.** `MaintenanceBackpressureService` asks `findWaiterToYieldTo` before every acquisition (`heavyMaintenanceWaiterLedger.mjs`): a higher-rank waiter wins immediately, a same-rank waiter wins once it has starved past `fairnessYieldAfterMs` (30 min, `NEO_HEAVY_MAINTENANCE_LEASE_FAIRNESS_YIELD_MS`) and longer than the acquirer. So a tenant lane re-admitted every sweep still hands `dream`, `core-corpus-projection` and `graphlog-compaction` their turns on the ledger's clock — the 30-minute tenant cadence was never the mechanism that protected them, which is what makes lever 1 safe to change and AC-3 checkable against the ledger rather than against a gap.
+- **Fairness is enforced at lease acquisition, not by the tenant cadence, and only within a rank.** `MaintenanceBackpressureService` asks `findWaiterToYieldTo` before every acquisition (`heavyMaintenanceWaiterLedger.mjs`). A higher-rank waiter wins immediately, a same-rank waiter wins once it has starved past `fairnessYieldAfterMs` (30 min, `NEO_HEAVY_MAINTENANCE_LEASE_FAIRNESS_YIELD_MS`) and waited longer than the acquirer, and a lower-rank waiter never wins. A first ingest keeps a null `lastIngestedRev` until the whole corpus has landed, so `isBootstrapCriticalTask` ranks it above ordinary maintenance, and re-admitted every sweep it would hold the lease for the whole first ingest. Lever 1 therefore needs the bootstrap class to cover only the first slice. Once a clean slice has landed, the catch-up ranks ordinary and same-rank fairness hands `dream`, `core-corpus-projection` and `graphlog-compaction` their turns on the ledger's clock.
 - `isRepoDue` is a pure function (`scheduling/tenantRepoSync.mjs`): `due = recoveryBypass || (now − lastRunAttemptAt) ≥ effectiveCadence`. A `partial-resume` reason beside `embedding-recovery` is the smallest seam for lever 1; the marker rides the persisted repo state, so the checkpoint allowlist has to admit it or a reload drops it silently.
 
 ## The Fix
@@ -79,7 +79,7 @@ Wire note: additive only; no config leaf, no schema version, no migration — an
 ## Acceptance Criteria
 
 - [ ] **AC-1** A repo whose slice ended `partial-progress` with `errors=0` is attempted on the next sweep (`sweepCadenceMs`), not after `effectiveCadenceMs`; a repo whose slice failed keeps today's backoff. Both arms as unit witnesses in `TenantRepoSyncService.spec.mjs`.
-- [ ] **AC-2** Heavy-maintenance waiters still acquire the lease while a clean partial repo is re-admitted every sweep: the acquisition-time fairness yield (`findWaiterToYieldTo`, same-rank starvation past `fairnessYieldAfterMs`) is what protects them, so the witness is that a starving waiter takes the lease from the re-admitted lane on the ledger's clock — unit arm on the existing yield contract plus the live `heavyMaintenanceStarvation` read showing `leaseHolder` moving off `tenant-repo-sync`; the #415 receipt fields do not regress.
+- [ ] **AC-2** Heavy-maintenance waiters still acquire the lease while a clean partial repo is re-admitted every sweep, including during a first ingest. Once a first slice has landed clean, `isBootstrapCriticalTask` ranks the lane ordinary, so a waiter starved past `fairnessYieldAfterMs` takes the lease on the ledger's clock; an unlanded or failed first slice keeps the class, and priority-zero still wins. Witness: a unit arm through the real classifier, picker and admission rule, with a checkpointed partial repo as the control. After deploy, the live `heavyMaintenanceStarvation` read shows `leaseHolder` moving off `tenant-repo-sync` (post-merge). The #415 receipt fields do not regress.
 - [ ] **AC-3** *(deployed plane, `[L4-deferred — operator handoff needed]`)* on `neo-local-canonical`, the corpus tenant's `lastIngestedRev` is set and `corpusOutstanding.state: complete` within two days of the deploy that carries lever 1 alone (each slice still rebuilds the envelope, ~130 embeddings per ~6-minute slice against ~0.6 chunks/s measured throughput; lever 2 in #432 tightens this to one day); recorded on #64 AC-6 item 2 with the snapshot timestamp. Residual-Owner: #64.
 
 Lever 2 — two consecutive clean partial slices on an unchanged mirror head do not re-materialize the envelope — was **split out 2026-09-23 12:5xZ to #432** (its own seam, `tenantRepoIngestEnvelopeBuilder`, its own witness); this ticket is lever 1 alone, and its ACs were renumbered 1–3 at the split.
@@ -110,6 +110,7 @@ Retrieval Hint: `query_raw_memories("tenant repo sync partial-progress first ing
 Authored by Vega (Fable 5.1, Claude Code) 🌿
 
 
+
 ## Timeline
 
 - 2026-09-23T12:33:26Z @neo-opus-vega assigned to @neo-opus-vega
@@ -122,4 +123,22 @@ Authored by Vega (Fable 5.1, Claude Code) 🌿
 - 2026-09-23T12:52:42Z @neo-opus-vega cross-referenced by #432
 - 2026-09-23T12:57:22Z @neo-opus-vega cross-referenced by PR #433
 - 2026-09-23T13:31:04Z @neo-opus-vega cross-referenced by #434
+- 2026-09-23T14:17:15Z @neo-opus-vega cross-referenced by #438
+- 2026-09-23T14:26:12Z @neo-opus-vega cross-referenced by PR #439
+- 2026-09-23T14:39:40Z @neo-opus-vega cross-referenced by #440
+- 2026-09-23T14:46:24Z @neo-opus-vega cross-referenced by #442
+- 2026-09-23T14:58:15Z @neo-opus-vega referenced in commit `833187e` - "fix(tenant-sync): a first ingest ranks ordinary once its first slice has landed clean (#430)
+
+A clean partial slice is due at the next sweep, but a first ingest keeps a
+null lastIngestedRev until the whole corpus has landed, so
+isBootstrapCriticalTask kept ranking it bootstrap-critical and the waiter
+ledger never lets a lower rank displace it. Back-to-back slices would have held
+the heavy lease for the entire first ingest while ordinary maintenance starved
+past any bound.
+
+The bootstrap class now buys the first slice only: a null-checkpoint entry
+carrying a clean partial-resume marker ranks ordinary, so same-rank fairness
+applies to the catch-up. An unlanded or failed first slice keeps the class,
+and priority-zero tasks still win either way."
+- 2026-09-23T15:11:26Z @neo-opus-vega cross-referenced by #444
 
