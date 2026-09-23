@@ -9,10 +9,10 @@ labels:
   - refactoring
 assignees: []
 createdAt: '2026-08-28T22:05:02Z'
-updatedAt: '2026-09-19T15:35:41Z'
+updatedAt: '2026-09-23T09:23:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/42'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: 24
 subIssues: []
 subIssuesCompleted: 0
@@ -109,6 +109,7 @@ Authored by Clio (Fable 5, Claude Code). Session 41859592-b7ee-4bce-bee3-f25644d
 - 2026-08-28T22:05:04Z @neo-fable-clio added the `ai` label
 - 2026-08-28T22:05:05Z @neo-fable-clio added the `architecture` label
 - 2026-08-28T22:05:05Z @neo-fable-clio added the `refactoring` label
+- 2026-08-28T22:05:05Z @neo-fable-clio added parent issue #24
 - 2026-08-29T13:23:23Z @tobiu cross-referenced by #50
 - 2026-08-29T13:23:25Z @tobiu referenced in commit `1d3b244` - "refactor(agentos): home the cockpit read families on the view CONTROLLER (#50)
 
@@ -146,4 +147,11 @@ visual 6/6 untouched goldens."
 - 2026-09-02T17:12:50Z @neo-fable-clio cross-referenced by PR #86
 - 2026-09-19T10:32:05Z @neo-fable-clio cross-referenced by #170
 - 2026-09-19T13:30:14Z @neo-gpt-emmy cross-referenced by PR #173
+### @neo-fable-clio - 2026-09-23T09:23:44Z
+
+**Seam cut record (2026-09-23, PR for #181):** the Brain-health read left `LivenessController` as `apps/agentos/util/BrainHealthRead.mjs` — the `DeploymentStateRead` shape (static `load(owner)` / `apply(owner, response)`, the controller keeps `loadBrainHealth` / `applyBrainHealth` as handles); the roster-derived consumer refresh moved into the new `util/TargetBinding.mjs` with the target-binding rule. LivenessController 993 → 960 lines. The matrix here stands: Container 999, Controller 998 remain the next cuts.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session f34cbeb6-fd44-4060-b31f-e05332e62aee
+
+- 2026-09-23T09:23:56Z @neo-fable-clio cross-referenced by PR #184
 

@@ -1,7 +1,7 @@
 ---
 id: 237
 title: 'A ref-not-found is retried as a transient, 36 times and counting'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-29T19:54:59Z'
-updatedAt: '2026-09-21T14:12:09Z'
+updatedAt: '2026-09-23T12:15:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/237'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: 64
 subIssues: []
 subIssuesCompleted: 0
@@ -22,10 +22,11 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 253 Cut the local Agent OS to Brain-built images without moving data'
+  - '[x] 253 Cut the local Agent OS to Brain-built images without moving data'
 blocking:
-  - '[ ] 411 Activate the github-content-sync KB tenant on the deployed plane'
-  - '[ ] 402 The Knowledge Base ingests github-content-sync as its own tenant, through repository-bound conversation sources'
+  - '[x] 411 Activate the github-content-sync KB tenant on the deployed plane'
+  - '[x] 402 The Knowledge Base ingests github-content-sync as its own tenant, through repository-bound conversation sources'
+closedAt: '2026-09-23T12:07:47Z'
 ---
 # A ref-not-found is retried as a transient, 36 times and counting
 
@@ -111,11 +112,11 @@ The surfaces this ticket introduces or changes, and who consumes each. Recorded 
 
 ## Acceptance Criteria
 
-> **Status 2026-08-30:** PR #238 merged `2026-08-29T21:26Z` and satisfies every AC below except the live-plane read, which no unmerged head can satisfy. This ticket stays open on that one AC — deliberately `Refs #237`, never `Resolves`. Per-AC evidence lives on PR #238. **Status 2026-09-21:** still open on that AC — the live plane runs a pre-split Engine revision (measured below), so no deployed process has the stop yet.
+> **Status 2026-08-30:** PR #238 merged `2026-08-29T21:26Z` and satisfies every AC below except the live-plane read, which no unmerged head can satisfy. This ticket stays open on that one AC — deliberately `Refs #237`, never `Resolves`. Per-AC evidence lives on PR #238. **Status 2026-09-21:** still open on that AC — the live plane runs a pre-split Engine revision (measured below), so no deployed process has the stop yet. **Status 2026-09-23T12:1xZ — closed:** the #253 cut deployed the fix (`b99ea11`), and the first enabled sweep (11:44Z) found the specimen recovered by a config change rather than stopped; the last AC below records what was observed, and the stop arm's live receipt is re-homed to #64 AC-7.
 
 - [x] An unresolvable **head** ref in a mirror whose `accessReadiness` is `ready` stops the lane: `consecutiveFailures` and `backoffMultiplier` stop advancing.
 - [x] The stopped state is reported on the snapshot as a `status` distinct from `backoff-suppressed`, and names the ref that did not resolve.
-- [ ] ⚠️ **`453ffb0965b3` reaches that stopped state instead of another attempt — [L4-deferred — blocked by #253].** The one AC no head can satisfy from inside a PR: it needs a live plane read after the code is deployed. **Measured 2026-09-21T14:08Z:** the KB and MC `healthcheck` both report `deployedRevision 467fd122f3dbb92700d41bcafa81c75a9cb3ccfc` — an Engine commit of 2026-08-25, before the split; neither `eebd6e3` nor `c11ba00` (PR #238) is an ancestor, so the cohort runs a tree with no terminal predicate at all, and the lane advancing 234 → 235 at 13:58Z is that code doing what it always did. The deployment snapshot never projects `terminalStop`, so its absence there is not evidence of anything. Control on current `dev`: 17/17 arms across `TenantRepoSyncErrors.spec.mjs` + `TenantRepoSyncService.spec.mjs` (`--grep "237|238|stopped|terminal"`) green, including the envelope-stage ref-not-found → `stopped-unresolvable-ref` + `terminalStop` arm — the exact shape this lane fails in. The gate is #253, the cut to Brain-built images (native `blocked_by`), not code here; PR #238 therefore carries `Refs #237`, not `Resolves`. **Deliberately not deferred to #12 or #253:** those own proving the image; this needs one tenant's post-cut state. Falsifier when the read exists: `status: stopped-unresolvable-ref` on a fresh snapshot with `consecutiveFailures` frozen at its pre-cut value.
+- [ ] ⚠️ **`453ffb0965b3` reaches that stopped state instead of another attempt — not observable from this specimen; the stop arm's live receipt is re-homed to #64 AC-7.** Read 2026-09-23T11:54Z on the post-cut plane (`b99ea11`; PR #238's merge `d040805` is an ancestor): the first enabled sweep attempted the specimen at 11:44:23Z and it **completed** — `neo-shared/devindex completed: head=6e7fcc72 ingested=154 deleted=0 (262081ms)`, status `active`, `consecutiveFailures 250 → 0`, `stopReasonCode null`. The ref that never resolved was `main`: the mirror inside the container has no `refs/heads/main`, its fetches succeeded through the whole window (PR-ref files dated 2026-08-26 … 2026-09-23 03:36Z), and kb-config `65b0a21` (#267, 2026-08-31) had moved devindex to `branchRef: dev` — but the pre-cut plane ran the pre-split Engine image (`467fd122`, measured below), so no Brain merge, that fix included, reached the lane until the #253 cut; this sweep was its first evaluation under the fixed config. The input changed in the same transaction that deployed the stop, so the **resume-on-input-change** arm ran live and the stop arm never did. The falsifier (`stopped-unresolvable-ref` with `consecutiveFailures` frozen at 250) can no longer be read from any existing entry. What is claimed: the fix is deployed and the recovering path behaved as specified. What is not claimed: a live observation of the stop — PR #238's envelope-stage arm (ref-not-found → `stopped-unresolvable-ref` + `terminalStop`) is its only evidence until #64 AC-7's first natural specimen; no synthetic one is made, because a `branchRef` mutation on the shared plane's config is operator-owned. The 2026-09-21T14:08Z measurement (plane at `467fd122`, pre-split, no terminal predicate deployed) is superseded by the #253 cut.
 - [x] The **checkpoint** path is untouched: a vanished `lastIngestedRev` still falls back to a full envelope, asserted so the change cannot be widened into the recovering path.
 - [x] 🔴 **The anti-cheap-half control, in two arms:** an unresolvable head with `accessReadiness: ready` **stops**; the *same* unresolvable head with access NOT ready **still backs off**. If both stop, the implementation keyed on the error code alone and re-broke the genuinely transient transport case.
 - [x] A stopped lane resumes when its input changes — a fetch that produces the ref, or a config change — and never on elapsed time alone.
@@ -143,6 +144,7 @@ Sibling of #64 (answers its §2 open question; #64 retains the scheduling-fairne
 Origin Session ID: 96836c41-0a29-415d-aa36-6ac60b81c782
 
 Retrieval Hint: `query_raw_memories("tenant repo sync terminal vs transient classification ref-not-found backoffMultiplier 2^36 stopReasonCode KB_INGEST_ENVELOPE_REF_NOT_FOUND")`
+
 
 
 
@@ -320,4 +322,26 @@ Still mine, still open, still unmoved — saying so plainly since D#17846's crit
 - 2026-09-22T22:25:57Z @neo-opus-vega cross-referenced by #411
 - 2026-09-22T22:26:31Z @neo-opus-vega marked this issue as blocking #411
 - 2026-09-22T22:30:07Z @neo-opus-vega cross-referenced by PR #412
+- 2026-09-22T23:29:12Z @neo-opus-vega cross-referenced by #415
+- 2026-09-22T23:39:58Z @neo-opus-vega cross-referenced by #417
+- 2026-09-23T01:41:10Z @neo-opus-vega cross-referenced by #420
+- 2026-09-23T10:55:20Z @neo-opus-vega cross-referenced by PR #424
+- 2026-09-23T11:24:04Z @neo-opus-vega cross-referenced by #64
+### @neo-opus-vega - 2026-09-23T12:07:46Z
+
+## Closing receipt — the fix is deployed; the specimen recovered before the stop could run
+
+Read 2026-09-23T11:54Z on the post-cut plane (`b99ea11`, PR #238's merge `d040805` an ancestor), first sweep with the tenant lane enabled (neomjs/neo-agent-brain#411, activation 11:44–11:45Z):
+
+- `453ffb0965b3` is `neo-shared/devindex`. Attempted 11:44:23Z → `completed: head=6e7fcc72 ingested=154 deleted=0 (262081ms)`; snapshot `status: active`, `consecutiveFailures 250 → 0`, `stopReasonCode null`.
+- The ref that never resolved was `main`. The mirror inside the container has no `refs/heads/main` and its fetches succeeded through the whole window (PR-ref files dated 2026-08-26 … 2026-09-23 03:36Z); kb-config `65b0a21` (#267, 2026-08-31) had moved devindex to `branchRef: dev`, but the pre-cut plane ran the pre-split Engine image (`467fd122`), so no Brain merge — that fix included — reached the lane until the #253 cut. 250 attempts against a branch that no longer existed, ended by the fixed config reaching the lane — the resume-on-input-change arm, observed live.
+
+**Claimed:** the terminal-vs-transient classification is deployed, and the recovering path behaved as specified. **Not claimed:** a live observation of `stopped-unresolvable-ref` — this specimen can no longer produce it and no other entry is in that state. That receipt is re-homed to #64 AC-7 (first natural specimen; no synthetic entry, because a `branchRef` mutation on the shared plane's config is operator-owned). PR #238's envelope-stage arm remains the stop's evidence until then.
+
+The body's last AC records the same, in place. Sibling receipts on #411 and #64 AC-6.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+
+- 2026-09-23T12:07:47Z @neo-opus-vega closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 282
 title: Port the shared core-corpus scan to repository profiles
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-08-31T08:19:49Z'
-updatedAt: '2026-09-23T03:19:51Z'
+updatedAt: '2026-09-23T10:26:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/282'
 author: neo-gpt-emmy
 commentsCount: 3
@@ -27,6 +27,7 @@ blockedBy: []
 blocking:
   - '[ ] 419 Retire replaced legacy core rows by profile receipt'
   - '[ ] 417 Retire the legacy neo-owned conversation rows once the core profiles are live'
+closedAt: '2026-09-23T10:26:43Z'
 ---
 # Port the shared core-corpus scan to repository profiles
 
@@ -206,4 +207,11 @@ Owner: @neo-gpt. #282 remains OPEN and self-assigned; there is no PR yet. The wo
 Origin Session ID: 01a0cb1e-0bdb-75c2-a73e-e298588de439
 Euclid (GPT-6 Sol, Codex)
 
+- 2026-09-23T09:05:17Z @neo-opus-vega cross-referenced by #19093
+- 2026-09-23T09:59:36Z @tobiu cross-referenced by PR #423
+- 2026-09-23T10:26:43Z @tobiu referenced in commit `b99ea11` - "Merge pull request #423 from neomjs/codex/282-core-corpus-profiles
+
+feat(kb): shared core sync uses repository profiles (#282)"
+- 2026-09-23T10:26:43Z @tobiu closed this issue
+- 2026-09-23T10:55:20Z @neo-opus-vega cross-referenced by PR #424
 

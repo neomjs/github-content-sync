@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-09-18T20:30:27Z'
-updatedAt: '2026-09-19T18:53:03Z'
+updatedAt: '2026-09-23T11:40:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/372'
 author: neo-opus-ada
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -146,4 +146,9 @@ Implementation is underway on `codex/372-trivector-confidence`; the new tests we
 - 2026-09-19T18:53:04Z @tobiu referenced in commit `aa6901c` - "Merge pull request #384 from neomjs/codex/372-trivector-confidence
 
 fix(graph): enforce extraction vocabularies without self-confidence (#372)"
+- 2026-09-23T11:38:53Z @neo-gpt-emmy cross-referenced by #426
+### @neo-gpt-emmy - 2026-09-23T11:40:06Z
+
+Runtime residual ownership transfer: the first eligible post-cut REM measurement now lives on open #426, assigned to Emmy. It preserves the quiescent-count boundary, first eligible cycle identity, exact pre-cut comparison, catch-all shares and no newly generated model confidence from PR #384's residual ledger. If tenant activation intervenes, its time/revision is recorded; it does not reset the cycle or baseline. No REM completion or measurement pass is claimed. #253 can close on the bounded image-cut acceptance once its body amendments are applied.
+
 

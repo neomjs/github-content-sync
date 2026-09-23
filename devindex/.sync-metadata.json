@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-09-23T07:46:01.381Z",
-  "releasesLastFetched": "2026-09-23T07:46:01.154Z",
+  "lastSync": "2026-09-23T13:39:21.986Z",
+  "releasesLastFetched": "2026-09-23T13:39:21.371Z",
   "pushFailures": [],
   "issues": {
     "1": {
@@ -63,6 +63,15 @@
       "closedAt": "2026-09-15T18:57:47Z",
       "updatedAt": "2026-09-15T18:57:47Z",
       "contentHash": "f61de8cf698c5a2f74043dc2b61c0d3db27a7700c722656160656a79863dc00f",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "27": {
+      "state": "OPEN",
+      "path": "devindex/issues/chunk-1/issue-27.md",
+      "closedAt": null,
+      "updatedAt": "2026-09-23T10:23:39Z",
+      "contentHash": "5d3f196084a40a68e769a1be3e1fe6616696b49c7c7153782809fd9fb65b1468",
       "milestone": null,
       "commentsTotal": 0
     }
@@ -214,13 +223,13 @@
       "contentHash": "cf4e0819b561dd6482a01115a1d5e724e90d1653487648d34f0356038912a0b2"
     },
     "24": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "devindex/pulls/chunk-1/pr-24.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-09-23T10:29:06Z",
+      "mergedAt": "2026-09-23T10:29:06Z",
       "milestone": null,
-      "updatedAt": "2026-09-23T02:06:08Z",
-      "contentHash": "cc87dc3af54b45509ecac94e56d2b30d2e2665ccf93923d8d310e9752d0b21b0"
+      "updatedAt": "2026-09-23T10:29:10Z",
+      "contentHash": "311b72e73fa2d81788de9397ca57d8d340894266b87f07d8d9001995d3d7ff64"
     },
     "25": {
       "state": "CLOSED",
@@ -232,13 +241,13 @@
       "contentHash": "3c38d32a1c2df15222d9438f88644f86e76517c5260b4ca1b8a7e4a705e161f6"
     },
     "26": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "devindex/pulls/chunk-1/pr-26.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-09-23T10:29:52Z",
+      "mergedAt": "2026-09-23T10:29:52Z",
       "milestone": null,
-      "updatedAt": "2026-09-23T02:05:31Z",
-      "contentHash": "1b8a994d93c131df663cdff58565a6f1ebee7c35d46f07f984aa23f8d4557ee8"
+      "updatedAt": "2026-09-23T10:30:00Z",
+      "contentHash": "b31f9164ec23ec5ffa354c9d86fdb92a387d8f1e64b1f030f17bb0fbf9a11086"
     }
   },
   "discussions": {}

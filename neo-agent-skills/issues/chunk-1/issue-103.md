@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-21T16:40:36Z'
-updatedAt: '2026-09-21T16:40:36Z'
+updatedAt: '2026-09-23T12:28:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/103'
 author: neo-opus-ada
 commentsCount: 0
@@ -30,6 +30,8 @@ blocking: []
 ## Context
 
 @tobiu, 2026-09-21, on [neomjs/neo#19044](https://github.com/neomjs/neo/pull/19044): *"sigh. now we get PRs without resolves."*
+
+@tobiu, 2026-09-23, after I opened neomjs/neo-agent-brain#428 with `Refs #425` because three of #425's ACs were observable only after deploy: *"a PR MUST ALWAYS resolve ONE ticket. zero exceptions."* That removes the draft deferral the Fix below originally kept. The substrate still grants it in three places: the CLI's `--draft` flag, `pull-request-workflow.md`'s "Draft-only exception", and `ticket-create-workflow.md` §1d ("Any pre-marker PR stays draft with `Refs #N`"). The same payload also permits several `Resolves` lines ("Multiple delivered tickets get one standalone line each"). A ticket whose ACs a PR cannot deliver is re-scoped, with post-merge checks moved to `## Post-Merge Validation`. The keyword is never downgraded. *(Scope extended 2026-09-23 by the author.)*
 
 That PR has no closing keyword. The rule it misses is not template preference — it is repo policy, stated by the operator the same day: **every PR resolves exactly one ticket, and fully delivers it.** `Resolves` rather than `Closes`, because an issue can be closed without being resolved.
 
@@ -72,10 +74,23 @@ The first complaint is `Evidence:` — an agent-only anchor — and the missing 
 
 Split the validation into two claims over the same body:
 
-1. **Close target — ungated, every pull request.** Exactly one standalone `Resolves #N`; `Closes` / `Fixes` rejected; comma-separated `Resolves #X, #Y` rejected; a draft may defer it, as today.
+1. **Close target — ungated, every pull request.** Exactly one standalone `Resolves #N`; `Closes` / `Fixes` rejected; comma-separated `Resolves #X, #Y` rejected; a second standalone `Resolves` line rejected; **no draft exception** (the `--draft` relaxation goes, and the two payload passages that grant it are rewritten to the one-ticket rule).
 2. **Agent anchors — gated exactly as now**, on `neo-` login or the `ai` label.
 
 The CLI grows a flag selecting which claim to run (`--close-target-only`, or the inverse), and the workflow runs (1) for everyone and (2) under the existing condition. Contributors get the one rule that is genuinely theirs, in a message that names it, and no agent anchor ever appears in their check output.
+
+## Contract Ledger Matrix
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+|---|---|---|---|---|---|
+| `findBodyViolations({body, isDraft})` in `scripts/check-pr-body.mjs` | operator rulings 2026-09-21 / 2026-09-23 | exactly one standalone `Resolves #N`; `isDraft` no longer relaxes it | two `Resolves` lines → violation naming the one-ticket rule | JSDoc | unit arms per AC |
+| `neo-agent-skills-pr-body` CLI flags | same | `--draft` removed; a flag selects the close-target claim alone for non-agent PRs | an unknown flag fails loudly, never silently | CLI usage text | CLI runs before/after |
+| `reusable-pr-baseline.yml` `pr-body` job | #14 (reporting job) + the rulings | body read and close target checked for EVERY PR; agent anchors stay gated on `neo-` / `ai` | a draft is judged like a ready PR | workflow comments | workflow-contract suite |
+| `pull-request-workflow.md` close-target rules · `ticket-create-workflow.md` §1d | the rulings | draft-only exception and "multiple delivered tickets" line removed; pre-marker work opens no PR | — | the payloads | lint + byte delta |
+
+## Intake (2026-09-23, author, drift probe fired on `reusable-pr-baseline.yml` via #104's version pins only)
+
+Prescription checked: `scripts/check-pr-body.mjs` — owns the concern (the close-target logic and the draft relaxation both live in `findBodyViolations`). Live CLI 0.1.15: a draft body with only `Refs #1` passes; a body with two standalone `Resolves` lines passes; the workflow gates the body read on `neo-` / `ai` and exports `--draft` for drafts. Verdict: valid-as-written with the 2026-09-23 extension.
 
 ## Acceptance Criteria
 
@@ -85,6 +100,8 @@ The CLI grows a flag selecting which claim to run (`--close-target-only`, or the
 - [ ] AC-4 — `Closes` / `Fixes`, and `Resolves #X, #Y`, are rejected for every author, not only agents.
 - [ ] AC-5 — Mutation-checked in both directions: the close-target arm reds when the keyword is removed, and the anchor arm reds when an anchor is removed — run separately, so one cannot mask the other. The vacuous-green failure mode this ticket is about is exactly what an unmutated arm would reproduce.
 - [ ] AC-6 — Net loaded-bytes accounted per the accretion rule.
+- [ ] AC-7 — A **draft** PR without a standalone `Resolves #N` fails exactly like a ready one; `--draft` no longer relaxes the close target. `pull-request-workflow.md`'s draft-only exception and `ticket-create-workflow.md` §1d's pre-marker `Refs` are rewritten to the one-ticket rule.
+- [ ] AC-8 — A body with two standalone `Resolves` lines fails, and the message says a PR resolves exactly one ticket; the payload's "multiple delivered tickets" line is rewritten to match.
 
 ## Out of Scope
 
@@ -122,6 +139,7 @@ Retrieval Hint: `query_raw_memories("PR body guard skips contributor authors vac
 
 Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code
 
+
 ## Timeline
 
 - 2026-09-21T16:40:36Z @neo-opus-ada assigned to @neo-opus-ada
@@ -130,4 +148,13 @@ Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code
 - 2026-09-21T16:40:38Z @neo-opus-ada added the `ai` label
 - 2026-09-21T16:40:38Z @neo-opus-ada added the `github_actions` label
 - 2026-09-21T16:44:41Z @neo-opus-ada cross-referenced by PR #19044
+- 2026-09-21T22:12:13Z @neo-opus-ada cross-referenced by #17171
+- 2026-09-23T11:42:05Z @neo-opus-ada cross-referenced by #427
+- 2026-09-23T12:33:15Z @neo-opus-ada cross-referenced by PR #108
+- 2026-09-23T12:49:28Z @neo-opus-ada referenced in commit `118e188` - "fix(pr-body): a second GitHub closing expression is a second ticket (#103)
+
+One canonical Resolves line no longer masks another close target: any
+expression GitHub acts on outside that line -- any case, an optional colon,
+an owner/repo#N or issue-URL target, inline prose -- is refused in both
+scopes. Non-closing references (Refs, Related, see) stay green."
 
