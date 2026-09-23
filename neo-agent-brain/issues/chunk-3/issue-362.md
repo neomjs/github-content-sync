@@ -1,7 +1,7 @@
 ---
 id: 362
 title: 'The Brain tier''s membership is hand-written in seven places, and the repo already fixed this once'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-15T18:57:20Z'
-updatedAt: '2026-09-15T18:57:20Z'
+updatedAt: '2026-09-22T23:35:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/362'
 author: neo-opus-vega
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-22T23:35:48Z'
 ---
 # The Brain tier's membership is hand-written in seven places, and the repo already fixed this once
 
@@ -70,7 +71,7 @@ That asymmetry is what shapes the fix: sites 3–7 can consume a constant; site 
 
 ## The Fix
 
-1. Export the membership once from the config that already owns the gate — one array, named, with the three-in-prose sites (4, 5) rewritten to interpolate it or to stop enumerating.
+1. Export the membership once — one named array — with the three-in-prose sites (4, 5) rewritten to interpolate it or to stop enumerating. **Where (restated 2026-09-22 at implementation):** in the denial loader (site 7), not in the unit config. Site 7 is a production diagnostic whose own JSDoc forbids importing from the test tree, while the config imports production code freely, so the loader is the one site all six others can reach.
 2. Sites 3, 6, 7 consume it. Site 7's loader keeps its env override; only the default list changes.
 3. One arm asserts `dependabot.yml`'s `exclude-patterns` contains every member — `js-yaml` is already a dependency and `playwrightConfigUnit.spec.mjs` already reads `.github/workflows/brain-unit.yml`, so cross-artifact assertion is this file's established idiom, not new machinery.
 4. One arm asserts every member is a declared `package.json` dependency (site 6's existing behaviour, now over the constant instead of a literal).
@@ -96,7 +97,7 @@ That asymmetry is what shapes the fix: sites 3–7 can consume a constant; site 
 - [ ] Sites 3, 6 and 7 hold no literal tier name; sites 4 and 5 either interpolate or stop enumerating.
 - [ ] `NEO_DENIED_PACKAGES` env override still wins over the default — an arm, since site 7 is a production diagnostic.
 - [ ] `CLOUD_ONLY` and the `PackageBoundary` manifest list are **unchanged**, each carrying one line naming its set and why it is a superset.
-- [ ] No new file. The constant lives beside the gate that already owns the concept; `structural-pre-flight` is therefore not triggered, and this AC records that it was considered.
+- [ ] No new file. The constant lives in an existing file that already owns the concept — the denial loader, the in-tree "one loader, two consumers" precedent, since the gate's config may import it and it may not import the gate (restated 2026-09-22 from "beside the gate"); `structural-pre-flight` is therefore not triggered, and this AC records that it was considered.
 
 ## Out of Scope
 
@@ -127,6 +128,7 @@ Retrieval Hint: `query_raw_memories("brain tier membership seven hand-written li
 Live latest-open sweep: checked latest 20 open issues at 2026-09-15T18:56:32Z; A2A sweep over the most recent messages including Grace's `#359` review; no equivalent found.
 
 
+
 ## Timeline
 
 - 2026-09-15T18:57:20Z @neo-opus-vega assigned to @neo-opus-vega
@@ -135,4 +137,12 @@ Live latest-open sweep: checked latest 20 open issues at 2026-09-15T18:56:32Z; A
 - 2026-09-15T18:57:22Z @neo-opus-vega added the `testing` label
 - 2026-09-15T18:57:22Z @neo-opus-vega added the `tech-debt` label
 - 2026-09-19T14:00:01Z @neo-fable cross-referenced by PR #376
+- 2026-09-21T14:18:02Z @neo-opus-vega cross-referenced by #406
+- 2026-09-22T22:25:57Z @neo-opus-vega cross-referenced by #411
+- 2026-09-22T23:13:08Z @neo-opus-vega cross-referenced by PR #414
+- 2026-09-22T23:29:12Z @neo-opus-vega cross-referenced by #415
+- 2026-09-22T23:35:48Z @tobiu referenced in commit `b1476d5` - "Merge pull request #414 from neomjs/vega/362-brain-tier-membership
+
+fix(brain-tier): the tier's membership is written once and dependabot is asserted against it (#362)"
+- 2026-09-22T23:35:48Z @tobiu closed this issue
 

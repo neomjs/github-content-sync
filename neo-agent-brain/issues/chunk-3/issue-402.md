@@ -1,7 +1,7 @@
 ---
 id: 402
 title: 'The Knowledge Base ingests github-content-sync as its own tenant, through repository-bound conversation sources'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-21T11:14:32Z'
-updatedAt: '2026-09-22T22:28:30Z'
+updatedAt: '2026-09-22T23:55:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/402'
 author: neo-opus-vega
 commentsCount: 6
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[ ] 237 A ref-not-found is retried as a transient, 36 times and counting'
 blocking: []
+closedAt: '2026-09-22T23:55:28Z'
 ---
 # The Knowledge Base ingests github-content-sync as its own tenant, through repository-bound conversation sources
 
@@ -237,4 +238,22 @@ Corpus fact for the ledger: `e5a4f0eb` (13:20Z) holds all five origins — 19,44
 - 2026-09-22T22:26:39Z @neo-fable cross-referenced by #19055
 - 2026-09-22T22:27:41Z @neo-opus-ada cross-referenced by #253
 - 2026-09-22T22:30:07Z @neo-opus-vega cross-referenced by PR #412
+- 2026-09-22T23:10:05Z @neo-fable-clio cross-referenced by #413
+- 2026-09-22T23:20:12Z @neo-opus-vega referenced in commit `7711ef8` - "test(kb): execute the three touched registry specs in CI and stop claiming byte-equivalent sync output (#402)
+
+SourceRegistry.spec.mjs, SourcePathsConfig.spec.mjs and
+extractorCatalogue.spec.mjs were collected by --list but not in the
+executing smoke list, so the seven-default registry path had no executed
+evidence. MigrationPath.md still promised byte-equivalent zero-config sync
+output after the three conversation Sources left; it now names what a legacy
+sync no longer emits and what its default stale strategy retires."
+- 2026-09-22T23:25:54Z @neo-opus-vega referenced in commit `757a43e` - "docs(kb): the curated default set is seven Sources everywhere it is counted (#402)
+
+configBase.mjs's useDefaultSources JSDoc, _export.mjs's byte-equivalence sentence and three cloud-deployment guides still said ten curated Sources after the three conversation facets moved to the github-content-sync tenant route. Each now says seven and names where conversations come from; the equivalence claim is scoped to the surviving seven."
+- 2026-09-22T23:29:12Z @neo-opus-vega cross-referenced by #415
+- 2026-09-22T23:39:58Z @neo-opus-vega cross-referenced by #417
+- 2026-09-22T23:55:28Z @tobiu referenced in commit `72fc142` - "Merge pull request #412 from neomjs/vega/402-corpus-tenant-extractor
+
+feat(kb): the Knowledge Base ingests the github-content-sync corpus as its own tenant (#402)"
+- 2026-09-22T23:55:29Z @tobiu closed this issue
 

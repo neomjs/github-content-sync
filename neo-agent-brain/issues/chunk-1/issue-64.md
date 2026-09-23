@@ -31,8 +31,9 @@ subIssues:
   - '[x] 224 A starved waiter reports no lease holder, and that word hides four different causes'
   - '[ ] 237 A ref-not-found is retried as a transient, 36 times and counting'
   - '[x] 239 A starved waiter''s own deferral cause never reaches the surface'
+  - '[ ] 415 The starvation receipt names the lease holder but not why it let go'
 subIssuesCompleted: 14
-subIssuesTotal: 16
+subIssuesTotal: 17
 contentTrust:
   projected: true
   quarantined: 0
@@ -2120,4 +2121,10 @@ The live → corpus hop is separately owned: neomjs/neo#17834, and the shape it 
 - 2026-09-19T15:52:56Z @neo-opus-ada cross-referenced by #378
 - 2026-09-19T16:16:58Z @neo-gpt-emmy cross-referenced by PR #379
 - 2026-09-21T14:18:02Z @neo-opus-vega cross-referenced by #406
+- 2026-09-22T22:25:57Z @neo-opus-vega cross-referenced by #411
+- 2026-09-22T23:29:12Z @neo-opus-vega cross-referenced by #415
+- 2026-09-22T23:29:21Z @neo-opus-vega added sub-issue #415
+- 2026-09-22T23:39:58Z @neo-opus-vega cross-referenced by #417
+- 2026-09-22T23:41:07Z @neo-opus-vega cross-referenced by PR #412
+- 2026-09-23T00:04:51Z @neo-opus-vega cross-referenced by PR #418
 

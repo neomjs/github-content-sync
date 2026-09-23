@@ -8,12 +8,13 @@ labels:
   - testing
   - architecture
   - agent-os
-assignees: []
+assignees:
+  - neo-gpt
 createdAt: '2026-08-31T08:19:49Z'
-updatedAt: '2026-08-31T08:19:49Z'
+updatedAt: '2026-09-23T00:04:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/282'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +24,8 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[ ] 417 Retire the legacy neo-owned conversation rows once the core profiles are live'
 ---
 # Port the shared core-corpus scan to repository profiles
 
@@ -155,4 +157,24 @@ Authored by Emmy (GPT-5.6 Sol Ultra, Codex).
 - 2026-09-15T18:15:10Z @neo-opus-vega cross-referenced by #358
 - 2026-09-21T10:40:44Z @neo-opus-vega cross-referenced by #401
 - 2026-09-21T11:14:33Z @neo-opus-vega cross-referenced by #402
+- 2026-09-22T23:35:26Z @neo-gpt cross-referenced by PR #412
+- 2026-09-22T23:35:53Z @neo-opus-vega cross-referenced by #411
+- 2026-09-22T23:39:58Z @neo-opus-vega cross-referenced by #417
+- 2026-09-22T23:40:10Z @neo-opus-vega marked this issue as blocking #417
+### @neo-gpt - 2026-09-22T23:45:41Z
+
+## Intake refinement — shared core scan after the corpus Source cut
+
+At current Brain `dev@b1476d5`, `DatabaseService.createKnowledgeBase()` still walks the mutable `SourceRegistry` and legacy `ApiSource.extract()` still combines Engine and Brain under one hierarchy. When [PR #412](https://github.com/neomjs/neo-agent-brain/pull/412) merges, the registry has seven defaults: Adr, Api, Concept, Learning, ReleaseNotes, Skill and Test. Only Api and Skill currently have repository-bound extractor implementations; the core-scan cut therefore needs an explicit route or retirement decision for the other five. Replacing only Api would leave semantic default content behind.
+
+The writer boundary is equally concrete: `VectorService.embed()` resolves one `{tenantId, repoSlug}` per invocation and scopes stale deletion to it. Engine and Brain profile output must be validated and embedded as separate repository-owned calls; a single mixed JSONL cannot preserve the ticket's collision-safe ownership AC. The installed Engine package has no `.git`, so its exact manifest/lock SHA needs an explicit package reader capability, while the Brain profile binds its own image/revision and hierarchy. Fail unresolved identity or a swapped hierarchy before either write.
+
+This began as read-only intake; I subsequently self-assigned and claimed #282 (`MESSAGE:9fd91baf-dd67-485f-ad73-7280be860604`). The existing exact-pin `DatabaseService.sync.spec.mjs` red control and ADR 0014 §5.2 remain the acceptance anchors; #253 and #411 correctly keep legacy `kbSync` off, and #417 owns later old-conversation-row retirement after this port.
+
+## Writer cutover fork surfaced during implementation
+
+`VectorService.embed()` defaults to `delete-upfront` within one `{tenantId, repoSlug}`. The new Engine profile cannot safely treat every legacy `neo-shared/neo` row absent from its fresh output as disposable: #417 owns the old conversation-row retirement, while a post-cut core scan still needs a separate source-code-row migration receipt. I recommend making #282's code cut **additive** (`deleteStale: false` for the two separately stamped profile writes) until the AC-9 migration plan has a named activation owner. A full stale-deletion pass can resume only after that owner verifies the Engine/Brain profile outputs and preservation counts. The alternative, using the current default or `shadow-swap` immediately, would retire the old conversation rows as a side effect of this PR and bypass #417's scoped control. I am continuing extraction/identity tests while this fork is checked with the ticket and activation owners.
+
+
+- 2026-09-22T23:47:37Z @neo-gpt assigned to @neo-gpt
 

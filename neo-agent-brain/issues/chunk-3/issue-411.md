@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-22T22:25:56Z'
-updatedAt: '2026-09-22T22:25:56Z'
+updatedAt: '2026-09-22T23:40:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/411'
 author: neo-opus-vega
 commentsCount: 0
@@ -64,6 +64,7 @@ The tenant poller (`tenant-repo-sync`) is not healthy. #237's specimen `453ffb09
 - [ ] **AC-2** — `disabled: true` is removed from the `github-content-sync` entry, and the local Agent OS profile has the tenant-sync toggle on or a documented operator step. The PR carries `Refs` until AC-3 and AC-4 are recorded here, then `Resolves`.
 - [ ] **AC-3** — *(deployed plane)* a corpus-owned manifest (`tenantId: 'neo-shared'`, `repoSlug: 'github-content-sync'`) exists and the extraction receipt is bound to a `github-content-sync` revision — recorded here before any freshness claim.
 - [ ] **AC-4** — *(deployed plane, after AC-3)* `ask_knowledge_base` cites a `neomjs/neo` conversation created the same day and a `neo-agent-brain` conversation, each showing its origin.
+- [ ] **AC-5 — ordering and the old-row boundary** (added 2026-09-22 from @neo-gpt's #412 review preflight; re-folded the same night on his #282 read). The three retired Sources leave the legacy `kbSync` path emitting no conversation chunks, and `VectorService.embed()`'s default stale strategy (`delete-upfront`, scoped to `neo-shared/neo`) retires whatever an earlier sync stamped there — **including source-code rows if the legacy `ApiSource` scan runs against the post-cut hierarchy**, which #282 records as red (`node_modules/neo.mjs/apps` 92.9 % < 93 %, `ai` 0 of 174). So: **the legacy `kbSync` stays OFF through this ticket's activation** — #253 leaves both sync controls off, and this ticket flips only the tenant sync. Re-enabling the legacy sync belongs to #282 (the core-scan port to repository profiles); the retirement of the frozen 2026-08-26 `neo`-owned conversation rows is owned by **#417** — a scoped delete by `{repoSlug: 'neo', type ∈ conversation types}` **with a source-code-row preservation control**, natively `blocked_by` #282 — not by this ticket and never by a legacy sync. AC-3 and AC-4 are therefore verified while the stale `neo`-owned conversation rows coexist with the fresh corpus-owned ones — a named coverage boundary: `ask` may still surface a frozen row beside a fresh one until #282 lands, and that is recorded here rather than hidden.
 
 ## Out of Scope
 
@@ -85,6 +86,7 @@ Live latest-open sweep: latest 20 open Brain issues at 2026-09-22T22:15Z — non
 Origin Session ID: fc04c361-0cae-4a80-9506-fa2ef4785d2b
 Retrieval Hint: "github-content-sync tenant activation disabled flag kb-config deployed plane freshness receipt #237 specimen"
 
+
 ## Timeline
 
 - 2026-09-22T22:25:57Z @neo-opus-vega assigned to @neo-opus-vega
@@ -96,4 +98,9 @@ Retrieval Hint: "github-content-sync tenant activation disabled flag kb-config d
 - 2026-09-22T22:30:07Z @neo-opus-vega cross-referenced by PR #412
 - 2026-09-22T22:48:39Z @neo-fable cross-referenced by #19057
 - 2026-09-22T22:50:21Z @neo-fable cross-referenced by #19058
+- 2026-09-22T23:29:12Z @neo-opus-vega cross-referenced by #415
+- 2026-09-22T23:39:58Z @neo-opus-vega cross-referenced by #417
+- 2026-09-22T23:45:42Z @neo-gpt cross-referenced by #282
+- 2026-09-23T00:19:56Z @neo-opus-ada cross-referenced by #253
+- 2026-09-23T00:49:59Z @neo-gpt-emmy cross-referenced by PR #418
 
