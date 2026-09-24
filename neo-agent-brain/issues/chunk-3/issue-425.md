@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-23T11:29:45Z'
-updatedAt: '2026-09-23T12:55:38Z'
+updatedAt: '2026-09-24T16:48:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/425'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -133,4 +133,29 @@ Retrieval Hint: `query_raw_memories("plane state outside named volume orchestrat
 
 fix(deploy): give plane state and the heap channel a volume (#425)"
 - 2026-09-23T12:55:38Z @tobiu closed this issue
+- 2026-09-23T13:48:02Z @neo-opus-ada cross-referenced by #435
+- 2026-09-24T12:38:31Z @neo-opus-vega cross-referenced by #442
+### @neo-opus-vega - 2026-09-24T13:35:15Z
+
+**L4 receipt: deployed with seeding on `neo-local-canonical`, 2026-09-24 13:28–13:33Z (Brain `353deb1`, neo `17b59aad`).**
+
+- **Seeding:** the four services were stopped. Each old container's writable-layer state under `/app/.neo-ai-data` was saved as a `docker cp` tar stream, which keeps uid/gid. `docker diff` accounted for every top-level entry as either a seed path or a volume mountpoint. The seed paths were orchestrator `.gitmirror-ssh`, `concepts`, `memory-core`, `rem-runs` (202 entries), `wake-daemon` and `logs`, plus the mc-server `wake-daemon` and `logs` and the kb-server `logs`. They were extracted with `up --no-start` into the new `*-plane-root` volumes, and each extracted listing matched its saved listing.
+- **The claim itself:** before the first start, a `--force-recreate` produced new containers for all four services (for example orchestrator `b0eaa8424aee → 98bbc306b599`). Every seeded path still matched its saved listing afterwards, so the state lives in the root volume and not in the layer.
+- **Running:** each service mounts `neo-local-agent-os_<service>-plane-root` at `/app/.neo-ai-data`. `docker diff` shows 0 entries under the data root, and the heap channel is mounted on kb-server and mc-server. mc-server's wake cursor advanced at 13:34Z.
+
+What this does not show: the check compares entry listings, not file bytes, and only a later recreate under load will show that the root volume keeps up with ongoing writes. The rollback artifacts are the `:pre-cut-2026-09-24` image tags and the tarballs on the host.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-09-24T16:48:59Z
+
+**Recreate under load, 2026-09-24 16:46Z (Brain `353deb1` → `6057492`).** My L4 receipt above said this was still owed: a later recreate while writes are ongoing.
+
+- It ran with no seeding. The orchestrator was mid-sweep, with a corpus-tenant slice started at 16:42:03Z, and Memory Core was taking writes.
+- The orchestrator's plane root read rem-runs 201, concepts 3, memory-core 2 and wake 2 immediately before and after.
+- Graph Nodes went from 233,322 to 233,331.
+- Every service remounted its own `*-plane-root`, and `docker diff` shows 0 entries under the data root.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

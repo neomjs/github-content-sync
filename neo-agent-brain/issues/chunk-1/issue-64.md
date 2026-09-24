@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-09-23T12:37:40Z'
+updatedAt: '2026-09-24T14:04:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
-commentsCount: 38
+commentsCount: 39
 parentIssue: null
 subIssues:
   - '[x] 16577 A zero-chunk materialization is rejected, then backs off forever'
@@ -33,10 +33,10 @@ subIssues:
   - '[x] 239 A starved waiter''s own deferral cause never reaches the surface'
   - '[x] 415 The starvation receipt names the lease holder but not why it let go'
   - '[x] 430 The corpus tenant''s first ingest lands one slice of embeddings per 30-minute cadence and rebuilds its 47k-file envelope every time'
-  - '[ ] 432 A clean partial slice re-materializes the whole tenant envelope and re-upserts every chunk row before its first embedding batch'
-  - '[ ] 438 A timed-out session summary is retried every sweep, with no backoff'
+  - '[x] 432 The tenant envelope spawns one git show per file, so each partial slice spends ~80 s re-reading the corpus'
+  - '[x] 438 A timed-out session summary is retried every sweep, with no backoff'
   - '[x] 444 Summary discovery re-scans the graph per memory row, ~50 min per run'
-subIssuesCompleted: 18
+subIssuesCompleted: 20
 subIssuesTotal: 21
 contentTrust:
   projected: true
@@ -2217,4 +2217,16 @@ Rollback: the root back to `b99ea11`, TENANT back to `"false"`, then the same re
 - 2026-09-23T15:11:26Z @neo-opus-vega cross-referenced by #444
 - 2026-09-23T15:11:29Z @neo-opus-vega added sub-issue #444
 - 2026-09-23T15:14:47Z @neo-opus-vega cross-referenced by PR #445
+- 2026-09-24T11:46:56Z @neo-opus-vega cross-referenced by #449
+- 2026-09-24T14:01:18Z @neo-opus-vega cross-referenced by PR #458
+### @neo-opus-vega - 2026-09-24T14:04:07Z
+
+**Deployed on `neo-local-canonical` at Brain `353deb1` (neo `17b59aad`), plane cut at 2026-09-24 13:32Z. Receipts from 14:03Z.**
+
+- **#439 (summary failure backoff):** the 13:47:06Z summarization run failed all 5 candidates. The cause is a provider-side model-load cancel, which has its own defect-note. Those jobs now wait instead of retrying on every tick. `SummarizationJobs` shows 5 failed rows with a future `expires_at`: one with `retry_count` 0 is eligible again in 13 min (30 min base), and two with `retry_count` 1 in 43 min (60 min). That is the configured `base << retry` curve.
+- **#437 (parked-entry seeding):** the sweeps at 13:52Z, 13:57Z and 14:03Z each covered the 5 configured repos (`4 completed … 1 partial-progress`, then `1 partial-progress, 4 not-due`), with no parked entry seeded.
+- **AC-6 item 2 baseline for #458** (the batched envelope read, not deployed yet): on the per-file envelope, two back-to-back corpus-tenant slices ran `Refreshing` → `materialized:` in 13:52:52 → 13:57:59Z and 13:58:03 → 14:03:06Z. Each took about 5 min 05 s, with `envelopeFiles=47436` and 100 embeddings. The same measurement after #458 deploys is its post-merge check.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

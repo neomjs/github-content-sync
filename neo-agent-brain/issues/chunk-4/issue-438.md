@@ -1,7 +1,7 @@
 ---
 id: 438
 title: 'A timed-out session summary is retried every sweep, with no backoff'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-23T14:17:14Z'
-updatedAt: '2026-09-24T11:43:10Z'
+updatedAt: '2026-09-24T12:21:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/438'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-24T12:21:30Z'
 ---
 # A timed-out session summary is retried every sweep, with no backoff
 
@@ -128,4 +129,8 @@ Witness: a child process resolves a 1 min / 24 h policy at construction on its
 own in-memory graph (no singleton mutation) and must read 1 min, 8 min, 24 h;
 red with the fixed clamp (64 min) and with the literals (30 min). The leaf
 defaults and both env bindings are asserted on a fresh isolated provider."
+- 2026-09-24T12:21:30Z @tobiu referenced in commit `65fbb40` - "Merge pull request #439 from neomjs/vega/438-summary-failure-backoff
+
+fix(memory-core): a failed session summary backs off instead of retrying every sweep (#438)"
+- 2026-09-24T12:21:31Z @tobiu closed this issue
 

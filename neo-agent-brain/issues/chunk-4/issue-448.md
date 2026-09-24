@@ -1,7 +1,7 @@
 ---
 id: 448
 title: Projection and temporal-summary failures log only a bare exit code
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-24T11:19:54Z'
-updatedAt: '2026-09-24T11:19:55Z'
+updatedAt: '2026-09-24T13:03:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/448'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-24T13:03:12Z'
 ---
 # Projection and temporal-summary failures log only a bare exit code
 
@@ -43,7 +44,7 @@ Observed on the local plane (images `b99ea11`). The failing cycle's reason, `Err
 
 ## The Fix
 
-In both children's failure path, keep the file-sink line and also write one stderr line carrying the task label, `error.code`, the message and `error.stderr` when present (already redacted). For `projectCoreCorpus.mjs`, the line goes through `runProjectCoreCorpus`'s existing `output` / `exit` seams, which makes it unit-testable. No logger, supervisor or config change.
+In both children's failure path, keep the file-sink line and also write one stderr line carrying the task label, `error.code`, the message and `error.stderr` when present (already redacted). For `projectCoreCorpus.mjs`, the line goes through `runProjectCoreCorpus`'s existing `output` / `exit` seams, which makes it unit-testable. `aggregate-temporal-summary.mjs` keeps its direct `main()` and gains an exported `reportAggregationFailure(error, {output, exit})`, which its entry guard calls. No logger, supervisor or config change.
 
 ## Contract Ledger
 
@@ -72,6 +73,7 @@ Evidence ceiling L2: the supervisor half (stderr → orchestrator log at ERROR) 
 
 - **Switching the memory-core logger to stderr in children.** Every child INFO line would then land in the orchestrator log, which is the noise the supervisor's severity mapping was written to contain.
 - **Having the supervisor read a child's log file after a non-zero exit.** That couples the supervisor to one child's sink.
+- **Injecting the temporal-summary service as a seam to test the failure path.** This was tried and measured. `lint-script-plane` walks the entry's static call chain, and with the service passed in it could no longer follow `runCycle`. It then reported the entry's known authority conflict as stale (`aggregate-temporal-summary.mjs::temporal-summary::authority-conflict-in-plane`), although the conflict is unchanged at runtime. Only the failure report is extracted, so the chain stays visible.
 
 ## Related
 
@@ -85,10 +87,28 @@ Retrieval Hint: `query_raw_memories("core corpus projection exited with code 1 n
 Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 
 
+
 ## Timeline
 
 - 2026-09-24T11:19:55Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-09-24T11:19:56Z @neo-opus-vega added the `bug` label
 - 2026-09-24T11:19:56Z @neo-opus-vega added the `ai` label
 - 2026-09-24T11:19:56Z @neo-opus-vega added the `agent-os` label
+- 2026-09-24T11:46:56Z @neo-opus-vega cross-referenced by #449
+- 2026-09-24T11:48:06Z @neo-opus-vega cross-referenced by #442
+- 2026-09-24T11:54:41Z @neo-opus-vega cross-referenced by PR #450
+- 2026-09-24T12:05:15Z @neo-opus-vega cross-referenced by PR #452
+- 2026-09-24T12:27:15Z @neo-opus-vega referenced in commit `a67c375` - "fix(orchestrator): the temporal-summary failure line carries the command stderr too (#448)
+
+Resolves review R1 on #452. reportAggregationFailure kept the code and the
+message but dropped error.stderr, so the parity the ticket and the PR body
+claim for both children held only for the projection. The line now carries
+the command's stderr collapsed to one line, exactly like the projection
+child's. The existing arm stays as the no-stderr control; a new arm with a
+GitMirror-shaped two-line stderr is red with the stderr part removed."
+- 2026-09-24T12:33:01Z @neo-opus-vega cross-referenced by PR #454
+- 2026-09-24T13:03:12Z @tobiu referenced in commit `4712fb7` - "Merge pull request #452 from neomjs/vega/448-child-fatal-line
+
+fix(orchestrator): a failed projection or temporal-summary child names its reason in the orchestrator log (#448)"
+- 2026-09-24T13:03:12Z @tobiu closed this issue
 

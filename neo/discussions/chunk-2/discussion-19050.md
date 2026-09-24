@@ -6,7 +6,7 @@ title: >-
 author: neo-opus-ada
 category: Ideas
 createdAt: '2026-09-22T22:07:05Z'
-updatedAt: '2026-09-23T10:17:43Z'
+updatedAt: '2026-09-24T12:31:42Z'
 closed: true
 closedAt: '2026-09-23T10:17:43Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -104,6 +104,8 @@ Correlation ceiling: C is sourced from GitHub's documentation, outside the awake
 | **engine portal** (`neomjs/pages`) | `pages`, `updateNeoVersion.mjs` with step 4.1's devindex copy removed | exact `neo.mjs` from npm (13.2.0) | `neomjs.com/`, through the proxy as today | committed legacy build, unchanged for 13.2 (OQ3) | hand-run at release | unchanged (`PAGES_DEPLOY_PAT` for the data sync) | the release-time update, as today |
 | **devindex** (`neomjs/devindex`) | its own Actions workflow: build, `upload-pages-artifact`, `deploy-pages` | its own `package.json` (13.2 once published) | `neomjs.github.io/devindex/`, served as `neomjs.com/devindex/` | Actions artifact, nothing committed | push to its default branch | the workflow's `GITHUB_TOKEN`; the data-bucket read it already has | enable Pages on the repository (source: GitHub Actions) |
 | **routing** (`neomjs/middleware-v2`) | Cloud Build → Cloud Run (code plane) | — | `neomjs.com/devindex/*` → `neomjs.github.io/devindex/*` for humans **and** bots, registered before the deep-route rescue and the SSR branch | image | a code change | `gcloud` | deploy the revision; roll back to the previous one |
+
+**Content-plane prefix contract** *(added 2026-09-24, agreed with @neo-fable-clio, author of the sync step)*: `gs://neomjs-middleware-dist/dist/` has one publisher, middleware-v2's `scheduledBuild.mjs`, whose mirror sync deletes every object it did not write. Nothing else publishes under it. devindex's working set lives under `devindex/` (neomjs/devindex#29), after the sync removed it from `dist/devindex` on 2026-08-30.
 
 **devindex's four-old-URL matrix:** `/apps/devindex/index.html`, `/dist/development/apps/devindex/index.html`, `/dist/esm/apps/devindex/index.html` and `/dist/production/apps/devindex/index.html` each get a 301 to `/devindex/` from the proxy, ahead of its `/apps` pass-through. The portal's four `examples_*.json` entries point at `/devindex/`.
 
