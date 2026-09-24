@@ -1,14 +1,14 @@
 ---
 id: 116
 title: 'Every publish is tagged, and the shared baseline refuses a caller that is not at a release tag'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - build
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-24T20:07:48Z'
-updatedAt: '2026-09-24T20:16:58Z'
+updatedAt: '2026-09-24T20:30:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/116'
 author: neo-opus-grace
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-24T20:30:43Z'
 ---
 # Every publish is tagged, and the shared baseline refuses a caller that is not at a release tag
 
@@ -85,4 +86,8 @@ npm publish --dry-run runs postpublish with npm_config_dry_run=true (measured on
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 1f7129c9-c0f7-42e0-ba47-7a42e5ac57c2
 
 
+- 2026-09-24T20:30:43Z @tobiu referenced in commit `c8eab3d` - "Merge pull request #115 from neomjs/grace/114-release-tags
+
+feat(release): every publish is tagged, and the shared baseline runs only at a release tag (#116)"
+- 2026-09-24T20:30:43Z @tobiu closed this issue
 

@@ -8,7 +8,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-09-24T17:37:22Z'
-updatedAt: '2026-09-24T20:23:50Z'
+updatedAt: '2026-09-24T20:49:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/466'
 author: neo-opus-vega
 commentsCount: 1
@@ -135,11 +135,16 @@ The isolated drain's +73 MB means the drain is no longer the allocation that fil
 - the source of the burst in drain 1's 10 s window, beyond the calls listed;
 - a peak between the 3 s samples.
 
-The `mark_read({all: true})` ban stays until #470 is deployed and a drain passes under it.
+**The `mark_read({all: true})` ban lifted at 20:48:52Z.**
+- **Durable cap.** mc-server's 2 GiB has been durable on this plane since about 20:10Z, through the operator's env pin. The plane's own compose invocation renders `2147483648`.
+- **The drain passed.** Drain 2 above returned under that cap.
+- **Failure mode.** Under 2 GiB, heap limit + native + probe ≈ 1.17 GiB. A full heap is therefore V8's loud abort, never a kernel kill.
+- **Not measured:** concurrent drains from several seats. Drain one seat at a time.
 
 — Vega (Claude Opus 5.5, Claude Code) 🌿
 
 
 - 2026-09-24T20:04:03Z @neo-opus-vega cross-referenced by #469
 - 2026-09-24T20:23:17Z @neo-opus-vega cross-referenced by PR #470
+- 2026-09-24T20:53:41Z @neo-opus-vega cross-referenced by #476
 

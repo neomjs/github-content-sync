@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-24T20:04:01Z'
-updatedAt: '2026-09-24T20:20:16Z'
+updatedAt: '2026-09-24T20:47:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/469'
 author: neo-opus-vega
 commentsCount: 0
@@ -64,7 +64,16 @@ Measured 2026-09-24 on `neo-local-canonical`:
 | fleet-server | `512m` → `768m` | 432 MiB | ≤ 600 MiB | ≥ 168 MiB |
 
 - The kb-server note replaces "strictly below" with that rule, and the mc-server and fleet-server notes point to it.
-- The spec asserts the rule from a measured non-heap table for each API server, and Brain Unit runs it.
+- The spec asserts the rule from a measured non-heap table for each API server, and Brain Unit runs it. The table holds samples, not bounds, so a server whose native footprint grows needs a new measurement.
+
+## Contract Ledger
+
+| Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| mc-server cap default `NEO_MC_SERVER_MEMORY_LIMIT` (`deploy/cloud/docker-compose.yml`) | this ticket's rule | `1g` → `2g` | the env var overrides; this plane pins `2g` | the kb-server compose note | AC-1 |
+| kb-server cap default `NEO_KB_SERVER_MEMORY_LIMIT` | same | `1g` → `1536m` | env override | same | AC-1 |
+| fleet-server cap default `NEO_FLEET_SERVER_MEMORY_LIMIT` | same | `512m` → `768m` | env override | same | AC-1 |
+| the heap-ceiling bound in `DeclaredHeapCeilings.spec.mjs` | this ticket | heap flag + measured non-heap ≤ cap for each API server (`NON_HEAP_MB`) | the orchestrator keeps "strictly below" (#73) | the spec's JSDoc | AC-2 |
 
 Decision Record impact: none.
 
@@ -72,11 +81,11 @@ Decision Record impact: none.
 
 - [ ] **AC-1** When none of the three env vars is set, `docker compose config` renders caps of 2 GiB for mc-server, 1.5 GiB for kb-server and 768 MiB for fleet-server.
 - [ ] **AC-2** `DeclaredHeapCeilings.spec.mjs` fails for all three services at `origin/dev`'s caps and passes at the new ones. Brain Unit executes it, which the hosted test count shows.
-- [ ] **AC-3** *(deployed plane, post-merge)* After a recreate on this revision:
-  - kb-server's and fleet-server's caps equal the new defaults, with no `docker update`.
-  - mc-server's cap is 2 GiB. That witnesses the env pin, so the default is witnessed by AC-1 alone.
-  - Each process reports the heap limit in the table above.
-  - A `mark_read({all: true})` drain returns with no kernel kill and no restart, and the drain ban then lifts.
+- [ ] **AC-3** V8 reports the heap limit in the Fix table under each new cap. Measured in throwaway containers of the image, since V8 sizes the heap from the cgroup at startup.
+
+The deployed drain and the drain ban are not this ticket's: they are #464's residual. That residual is met:
+- **The drain:** it returned at 19:32Z under 2 GiB (#466, issuecomment-5820863380).
+- **The cap:** it has been durable on this plane since about 20:10Z, through the env pin. The plane's compose resolves `2147483648`.
 
 ## Out of Scope
 
@@ -115,4 +124,7 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-09-24T20:15:22Z @neo-opus-vega changed title from **mc-server's and kb-server's memory caps sit below their heap limit plus native memory and the probe** to **kb-server's, mc-server's and fleet-server's memory caps don't cover their V8 heap limit plus native memory and the probe**
 - 2026-09-24T20:23:17Z @neo-opus-vega cross-referenced by PR #470
 - 2026-09-24T20:23:51Z @neo-opus-vega cross-referenced by #466
+- 2026-09-24T20:47:00Z @neo-opus-vega referenced in commit `8eb6647` - "fix(deploy): the kb-server heap note and the non-heap table say what they measure (#469)
+
+The kb-server heap note still sized the ceiling below a 1g limit, and the spec's NON_HEAP_MB read as bounds. It holds samples: a server whose native footprint grows needs a new measurement."
 
