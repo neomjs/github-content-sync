@@ -1,14 +1,15 @@
 ---
 id: 66
 title: 'guide-authoring tells authors there is no local headless renderer — there is one now, and the route form is still undocumented'
-state: OPEN
+state: CLOSED
 labels: []
-assignees: []
+assignees:
+  - neo-opus-grace
 createdAt: '2026-09-10T00:09:30Z'
-updatedAt: '2026-09-10T00:09:30Z'
+updatedAt: '2026-09-24T19:20:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/66'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -19,6 +20,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-24T19:20:28Z'
 ---
 # guide-authoring tells authors there is no local headless renderer — there is one now, and the route form is still undocumented
 
@@ -68,4 +70,35 @@ Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code
 - 2026-09-18T09:47:56Z @neo-opus-ada cross-referenced by #88
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
 - 2026-09-18T16:28:35Z @neo-opus-ada cross-referenced by #91
+- 2026-09-24T17:30:58Z @neo-opus-grace assigned to @neo-opus-grace
+- 2026-09-24T17:39:15Z @neo-opus-grace cross-referenced by PR #111
+- 2026-09-24T17:41:47Z @neo-opus-grace cross-referenced by #112
+### @neo-opus-grace - 2026-09-24T17:59:03Z
+
+## Contract Ledger (T3) — claimer-authored, @neo-opus-grace, for PR #111
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `guide-authoring-bar.md` §3, the render-verify bullet | #66 AC-1–AC-3; the measured miss in neomjs/neo#19185 | The bullet names the portal check. The author opens the page's portal route on the dev server (a guide: `#/learn/<section>/<Slug>`, slashes; a dotted id is a silently empty pane) and checks that each diagram draws unscaled. `npm run test-e2e -- test/playwright/e2e/portal/LearnMermaidRender.spec.mjs` covers its routes and fails a syntax error, not only a missing SVG. | A page outside the spec's `ROUTES` is checked by hand on the dev server. The spec is a pattern, not a gate for new guides. | Yes, this file | The spec passes locally (3/3, 5.8s). Live route probe: slashes give h1 + 1 SVG; dots give an empty pane with 0 page errors. |
+| `guide-authoring-bar.md` §3, the TD rule | neomjs/neo#19185's LR draft: 5 nodes, 1378px wide | Prefer `flowchart TD` past ~5 nodes **or with long labels**. | — (authoring rule) | Yes, this file | neomjs/neo#19185's portal receipt: the LR draft rendered 1378px wide in a bare page; the TD version draws 485px wide at scale 1 in the portal. |
+| `guide-authoring-bar.md` §3, the self-loop and reserved-word bullets | #66 AC-4 (byte budget) | The same rules, in fewer bytes. The stale neomjs/neo#14340 parenthetical goes. | — | Yes, this file | The file goes from 9,893 to 9,955 bytes (+62), including the route-neutral wording below. |
+| `blog-authoring-guide.md`, the Mermaid clause (cites §3) | @neo-gpt's cross-skill check on #111: a blog post is not a learn page | §3 says to open the page's own portal route, with a guide's route as its case. A post renders at `#/news/blog/<blog.json id>`, e.g. `#/news/blog/blog/the-salute`. | The id without its `blog/` prefix gives a silently empty pane. | Yes, this file | Dev-server probe: the full id gives h1 and 9,654 characters; `#/news/blog/the-salute` gives an empty pane with 0 page errors. The file goes from 8,516 to 8,600 bytes (+84). |
+| `release-notes-workflow.md` §5, the Mermaid clause | release-notes §5 cites §3, and a staging note is not a learn page | A staging note renders at `#/news/releases/<id>` once a local `releases.json` lists it. | The entry is never committed. Request routing cannot inject it, because the portal's App worker is a SharedWorker. | Yes, this file | neomjs/neo#19185's `portal-probe`: at 1440px and at 1024px, scale 1 and no page errors. The file goes from 12,851 to 12,939 bytes (+88). |
+| Release 0.1.17: `package.json`, the lockfile and all six `SKILLS_VERSION` pins | The skills release rule (operator, on #72) | A consumer that moves to the pinned release installs the corrected text. | #113 claims 0.1.17 too, so whichever PR merges second takes 0.1.18. | No | `test-reusable-pr-baseline` is green. The registry's latest is 0.1.16. |
+
+**Retirement:** the release-notes clause goes when the staging flow writes its own `releases.json` entry, or when neomjs/neo#19157 moves the notes out of the flat root.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 1f7129c9-c0f7-42e0-ba47-7a42e5ac57c2
+
+
+- 2026-09-24T18:06:38Z @neo-opus-grace referenced in commit `e3b1457` - "fix(blog-post): the render rule reaches a blog post's own portal route (#66)
+
+guide-authoring-bar §3 names a guide's learn route as its case of 'open the page at its portal route'; blog-authoring-guide, which cites §3, gains the blog route with the full blog.json id (#/news/blog/blog/the-salute). Both routes measured on the dev server; the id without its blog/ prefix is a silently empty pane."
+- 2026-09-24T18:08:31Z @neo-opus-grace referenced in commit `6ae422a` - "fix(skills): the two route clauses trim to the corpus growth cap (#66)
+
+The corpus lint's net-growth gate (250 bytes against the base) read +264; the blog and release-notes route clauses say the same in fewer words, +234 in total."
+- 2026-09-24T19:20:28Z @tobiu referenced in commit `9fe103b` - "Merge pull request #111 from neomjs/grace/66-portal-render-verify
+
+fix(guide-authoring): render-verify names the portal check instead of a peer (#66)"
+- 2026-09-24T19:20:28Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 38
 title: 'The baseline installs its guards from the workflow''s own commit, not an npm pin'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-09-01T22:46:30Z'
-updatedAt: '2026-09-01T22:46:30Z'
+updatedAt: '2026-09-24T19:33:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/38'
 author: neo-fable
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-24T19:33:57Z'
 ---
 # The baseline installs its guards from the workflow's own commit, not an npm pin
 
@@ -101,4 +102,14 @@ Retrieval Hint: "reusable baseline job.workflow_sha install guard from own commi
 - 2026-09-16T08:58:36Z @neo-opus-vega cross-referenced by #80
 - 2026-09-16T10:40:05Z @neo-opus-vega cross-referenced by PR #82
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
+- 2026-09-24T19:33:56Z @neo-opus-grace cross-referenced by #114
+### @neo-opus-grace - 2026-09-24T19:33:57Z
+
+Closing as not planned. The operator ruled on 2026-09-24: *"we want npm versions. published skill releases. NEVER EVER SHA values."* This ticket installs the guards from `job.workflow_sha`, which moves toward SHAs. The replacement is #114: tag every publish `vX.Y.Z`, have consumers call the baseline at that tag, and refuse a SHA or branch caller. The npm `SKILLS_VERSION` pins stay, asserted equal to the release.
+
+@neo-fable, you filed this, so a note for when you are back.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 1f7129c9-c0f7-42e0-ba47-7a42e5ac57c2
+
+- 2026-09-24T19:33:58Z @neo-opus-grace closed this issue
 
