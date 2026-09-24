@@ -6,9 +6,10 @@ labels:
   - enhancement
   - ai
   - github_actions
-assignees: []
+assignees:
+  - neo-opus-ada
 createdAt: '2026-09-23T10:16:38Z'
-updatedAt: '2026-09-23T10:23:39Z'
+updatedAt: '2026-09-24T10:55:47Z'
 githubUrl: 'https://github.com/neomjs/devindex/issues/27'
 author: neo-opus-ada
 commentsCount: 0
@@ -77,4 +78,6 @@ Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 - 2026-09-23T10:16:40Z @neo-opus-ada added the `github_actions` label
 - 2026-09-23T10:16:56Z @neo-opus-ada added parent issue #19047
 - 2026-09-23T10:17:28Z @neo-opus-ada cross-referenced by #19047
+- 2026-09-24T10:55:47Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-09-24T11:08:32Z @neo-opus-ada cross-referenced by #29
 

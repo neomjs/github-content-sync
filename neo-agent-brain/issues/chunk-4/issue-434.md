@@ -1,7 +1,7 @@
 ---
 id: 434
 title: A tenant entry marked disabled is still swept and ingested — the pull lane's repo list never applies isTenantRepoDisabled
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-23T13:31:03Z'
-updatedAt: '2026-09-23T15:06:40Z'
+updatedAt: '2026-09-24T11:36:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/434'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-24T11:36:11Z'
 ---
 # A tenant entry marked disabled is still swept and ingested — the pull lane's repo list never applies isTenantRepoDisabled
 
@@ -43,7 +44,7 @@ So the flag is display-only on the pull path. The local plane never exercised it
 ## The Architectural Reality
 
 - `isTenantRepoDisabled(repo)` is `repo.disabled === true || repo.enabled === false`, beside the sweep; the sweep simply never calls it.
-- The cadence-margin check runs over `allRepos`. The bootstrap-seeding loop iterates the sweep set itself (`repos`, which equals `allRepos` when no selector is given), so filtering that set would silently stop seeding a parked entry. Seeding is config-level state and must keep its pre-filter selection.
+- The cadence-margin check runs over `allRepos`. The bootstrap-seeding loop iterates the sweep set itself (`repos`, which equals `allRepos` when no selector is given), so filtering that set stops seeding a parked entry — and that is the policy (settled in review R2 on #437). `isRepoDue` reads `now − lastRunAttemptAt ≥ cadence + jitter`, so a timestamp seeded while parked is stale by re-enable and makes the entry due on the spot. Seeded by its first swept cycle, it gets the jitter spread seeding exists for.
 - `isBootstrapCriticalTask` (`MaintenanceBackpressureService`) counts configured coverage through `resolveConfiguredTenantRepoLabels`, which kept every configured entry. A parked repo is never swept, so it never gains a checkpoint; counted as coverage, it would keep the tenant lane bootstrap-critical forever.
 - `onlyRepoSlugs` is the operator CLI selector; `assertKnownRepoSlugs` (`scheduling/tenantRepoSync.mjs`) already refuses an unknown slug rather than silently dropping it. A selector naming a disabled repo needs the same explicitness: skipped with a logged reason, never synced silently and never dropped silently.
 
@@ -59,7 +60,7 @@ Filter disabled entries out of the sweep set in `syncTenantRepos`, count them (`
 | cycle summary | same | `N disabled` beside the existing counters | 0 when none | the log line in the arm |
 | `onlyRepoSlugs` naming a disabled repo | same | skipped with one WARN naming the repo and the flag | — | unit arm |
 | empty sweep set with entries configured | same | `skipped`, `reason: 'all-tenant-repos-disabled'`, `disabledCount` — not `no-tenant-repos-configured` | `no-tenant-repos-configured` when nothing is configured | unit arm; CLI exit stays 1 (`resolveExitCode` maps every `skipped` to 1) |
-| bootstrap seeding | `TenantRepoSyncService` | unchanged selection: a parked entry is still seeded, and never swept | — | unit arm on the persisted revisions |
+| bootstrap seeding | `TenantRepoSyncService` | a parked entry is not seeded; the first sweep after re-enabling seeds it | — | two-sweep unit arm (disabled, then re-enabled) on the persisted revisions |
 | configured coverage for the bootstrap class | `resolveConfiguredTenantRepoLabels` (`MaintenanceBackpressureService`) | disabled entries excluded through the exported `isTenantRepoDisabled` | — | unit arm through the default resolver |
 | snapshot `disabled` row | `DeploymentStateBridgeService` (unchanged) | keeps projecting `disabled: true`; now true of the lane as well | — | existing bridge arms |
 
@@ -68,12 +69,11 @@ Filter disabled entries out of the sweep set in `syncTenantRepos`, count them (`
 - [ ] **AC-1** A two-repo sweep with one entry `disabled: true` makes no clone, fetch, envelope or ingestion call for the disabled entry, completes the enabled sibling, and the cycle summary reads `1 disabled`. Unit witness in `TenantRepoSyncService.spec.mjs`.
 - [ ] **AC-2** An operator selector (`onlyRepoSlugs`) naming a disabled repo skips it with one WARN naming the repo and `disabled`, and the run's `repos` count excludes it. Unit witness.
 - [ ] **AC-3** A sweep whose every entry is disabled returns `skipped` with `reason: 'all-tenant-repos-disabled'` and `disabledCount: 1`, never `no-tenant-repos-configured`, and its log line says the entries are disabled; a plane whose only tenant is parked must not read as unconfigured. Unit witness.
-- [ ] **AC-4** Parking leaves the other bootstrap surfaces consistent: a disabled entry is still bootstrap-seeded (seeding's selection is unchanged), and it is not configured coverage, so it never makes `isBootstrapCriticalTask` true. Unit witnesses.
-- [ ] **AC-5** *(deployed plane, `[L4-deferred — operator handoff needed]`)* on a plane with the tenant toggle on and one entry `disabled: true`, the snapshot row reads `disabled: true` and its `lastRunAttemptAt` does not advance across two sweeps. Residual-Owner: #64.
+- [ ] **AC-4** Parking leaves the other bootstrap surfaces consistent: a disabled entry is not bootstrap-seeded while parked, including as the only entry, and the first sweep after re-enabling seeds it; it is not configured coverage, so it never makes `isBootstrapCriticalTask` true. Unit witnesses.
+- [ ] **AC-5** *(deployed plane, `[L4-deferred — operator handoff needed]`)* on a plane with the tenant toggle on and one entry `disabled: true`, the snapshot row reads `disabled: true` and its `lastRunAttemptAt` does not advance across two sweeps (absent when the entry was never swept). Residual-Owner: #64.
 
 ## Out of Scope
 
-- Whether `disabled` should also stop bootstrap seeding of the entry's persisted state (harmless today; a separate question).
 - The FM fresh-plane profile's own kb-config (why it still carried the flag) — Clio's surface.
 
 ## Avoided Traps
@@ -92,6 +92,7 @@ Origin Session ID: db85836e-f7c2-4da0-a614-fa0e93e8e727
 Retrieval Hint: `query_raw_memories("tenant repo disabled flag ignored by the pull sweep isTenantRepoDisabled access readiness only")`
 
 Authored by Vega (Fable 5.1, Claude Code) 🌿
+
 
 
 
@@ -120,4 +121,21 @@ An all-disabled sweep's DEBUG line said "No tenantRepos configured"; it now
 says every selected entry is disabled. The mixed-sweep witness observes clone,
 fetch, envelope and ingest for both repos."
 - 2026-09-23T15:11:26Z @neo-opus-vega cross-referenced by #444
+- 2026-09-24T11:05:29Z @neo-opus-vega referenced in commit `a1ac054` - "fix(tenant-sync): a parked entry is seeded by its first swept cycle, not while parked (#434)
+
+Resolves review R2 on #437. The all-disabled early return exits before the
+seeding loop, so "seeding keeps its pre-filter selection" held only when an
+enabled sibling existed. Seeding while parked is also self-defeating: isRepoDue
+reads now - lastRunAttemptAt >= cadence + jitter, so a timestamp seeded at park
+time is stale by re-enable and makes the entry due on the spot, which is the
+herd the spread exists to prevent. The loop covers swept entries only; the
+first sweep after re-enabling seeds the entry and the spread starts there.
+
+Witness: a two-sweep arm (disabled, then re-enabled) is red on the old
+selectedRepos loop at "parked: no sync state"; the all-disabled arm now runs
+with seeding on and asserts no row."
+- 2026-09-24T11:36:11Z @tobiu referenced in commit `e0d40d9` - "Merge pull request #437 from neomjs/vega/434-disabled-entries-swept
+
+fix(tenant-sync): a disabled entry is parked, not swept (#434)"
+- 2026-09-24T11:36:12Z @tobiu closed this issue
 

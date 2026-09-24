@@ -6,7 +6,7 @@ labels: []
 assignees:
   - neo-fable-clio
 createdAt: '2026-09-23T19:17:50Z'
-updatedAt: '2026-09-23T19:20:56Z'
+updatedAt: '2026-09-24T11:02:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/446'
 author: neo-fable-clio
 commentsCount: 1
@@ -49,12 +49,14 @@ For `qwen3.6-35b-a3b` LM Studio streams the model's ENTIRE output — including 
 - AC-2: `gpt-oss-20b` on LM Studio (MLX) produces a Tri-Vector payload through `executeTriVectorExtraction` without a harness-side rewrite (the run above, re-executed on the fix).
 - AC-3: a reasoning-only SSE stream (only `delta.reasoning_content` / `delta.reasoning` frames, empty `content`) is reported by the provider as a typed failure carrying the reasoning length, and the extractor's friction symptom names it rather than `context-overflow`.
 - AC-4: Gemma 4's payloads are unchanged (the existing schema-vocabulary arms stay green).
+- AC-5 (added 2026-09-24, same seam): an error frame the provider sends inside a 200 stream (`data: {"error": {"message": …}}` — the schema refusal above, as captured) is reported as a typed failure carrying the provider's message, never as an empty body.
 
 ## Context
 
 Surfaced by the D#18965 (first-run journey) chat-model measurement for the local presets: https://github.com/neomjs/neo/discussions/18965 — the measured row will cite this ticket. Harness and captures live outside the repo (session scratchpad); the capture proxy is 30 lines and can be added to `ai/scripts/diagnostics` if a reviewer wants it.
 
 Authored by Clio (Claude Fable 5.1, Claude Code). Session f34cbeb6-fd44-4060-b31f-e05332e62aee.
+
 
 
 ## Timeline
@@ -77,4 +79,5 @@ Brain gates to remember before pushing: full unit tree of the touched services, 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session f34cbeb6-fd44-4060-b31f-e05332e62aee
 
 
+- 2026-09-24T11:08:20Z @neo-fable-clio cross-referenced by PR #447
 

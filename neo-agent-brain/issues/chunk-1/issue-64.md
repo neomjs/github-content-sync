@@ -32,11 +32,11 @@ subIssues:
   - '[x] 237 A ref-not-found is retried as a transient, 36 times and counting'
   - '[x] 239 A starved waiter''s own deferral cause never reaches the surface'
   - '[x] 415 The starvation receipt names the lease holder but not why it let go'
-  - '[ ] 430 The corpus tenant''s first ingest lands one slice of embeddings per 30-minute cadence and rebuilds its 47k-file envelope every time'
+  - '[x] 430 The corpus tenant''s first ingest lands one slice of embeddings per 30-minute cadence and rebuilds its 47k-file envelope every time'
   - '[ ] 432 A clean partial slice re-materializes the whole tenant envelope and re-upserts every chunk row before its first embedding batch'
   - '[ ] 438 A timed-out session summary is retried every sweep, with no backoff'
-  - '[ ] 444 Summary discovery re-scans the graph per memory row, ~50 min per run'
-subIssuesCompleted: 16
+  - '[x] 444 Summary discovery re-scans the graph per memory row, ~50 min per run'
+subIssuesCompleted: 18
 subIssuesTotal: 21
 contentTrust:
   projected: true

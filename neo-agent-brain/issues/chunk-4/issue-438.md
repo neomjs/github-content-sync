@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-23T14:17:14Z'
-updatedAt: '2026-09-23T14:25:16Z'
+updatedAt: '2026-09-24T11:43:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/438'
 author: neo-opus-vega
 commentsCount: 0
@@ -61,7 +61,7 @@ ADR 0022's count cap (`maxSessionsPerSummarySweep`, neomjs/neo#13592) bounds how
 
 Give a failed job a not-before, and do not treat a session inside it as a candidate:
 
-1. `failSummarizationJob` records a retry-after time that grows with consecutive failures up to a ceiling (for example 30 min, doubling, capped at 24 h). `expires_at` is unused on `failed` rows today, so it can carry this without a schema change. A dedicated column is the alternative if review prefers not to overload it.
+1. `failSummarizationJob` records a retry-after time that grows with consecutive failures up to a ceiling: 30 min, doubling, capped at 24 h. The two values are Memory Core config leaves beside `maxSessionsPerSummarySweep` and `sessionSummaryTimeoutMs` (ADR-0019): `summaryFailureBackoffBaseMs` (`NEO_MC_SUMMARY_FAILURE_BACKOFF_BASE_MS`) and `summaryFailureBackoffMaxMs` (`NEO_MC_SUMMARY_FAILURE_BACKOFF_MAX_MS`), read at the SQL binding. The doubling stops at the fewest steps that reach the ceiling, so the ceiling binds for any declared policy. `expires_at` is unused on `failed` rows today, so it can carry this without a schema change.
 2. `summarizeSessions` drops candidates still inside their backoff **before** `capSessionsForSweep`, so the five slots go to sessions that can run.
 3. `queueSummarizationJob` leaves a `failed` row inside its backoff untouched, so a reconnecting session cannot re-enter through the pending drain.
 4. A successful summary clears the backoff.
@@ -74,7 +74,7 @@ aligned-with ADR 0022 (heavy-maintenance scheduling fairness): this closes the g
 ## Acceptance Criteria
 
 - [ ] **AC-1** A session whose synthesis failed is not re-attempted while inside its backoff: the drift sweep drops it before the cap, so the freed slot goes to the next drift candidate, and a disconnect does not re-queue it as `pending`. Unit witness with an injected clock.
-- [ ] **AC-2** Consecutive failures grow the backoff up to a stated ceiling, the session is claimable again once the not-before passes, and a successful summary resets it. Unit witness.
+- [ ] **AC-2** Consecutive failures grow the backoff up to the declared ceiling, the session is claimable again once the not-before passes, and a successful summary resets it. Unit witnesses for the default policy and for a non-default one resolved at construction (no mutation of the shared config), plus the leaves' defaults and env bindings.
 - [ ] **AC-3** The `drift complete` line reports how many candidates failed in this sweep and how many were skipped for backoff. Unit witness on the line.
 - [ ] **AC-4** *(deployed plane, `[L4-deferred — operator handoff needed]`)* After deployment, the four sessions above are not re-attempted inside their backoff, and no sweep's lease hold contains a guardrail timeout for a backed-off session. Residual-Owner: #64.
 
@@ -102,6 +102,7 @@ Retrieval Hint: `query_raw_memories("session summary guardrail timeout retried e
 Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 
 
+
 ## Timeline
 
 - 2026-09-23T14:17:15Z @neo-opus-vega assigned to @neo-opus-vega
@@ -114,4 +115,17 @@ Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 - 2026-09-23T14:46:24Z @neo-opus-vega cross-referenced by #442
 - 2026-09-23T15:11:26Z @neo-opus-vega cross-referenced by #444
 - 2026-09-23T15:14:47Z @neo-opus-vega cross-referenced by PR #445
+- 2026-09-24T11:40:53Z @neo-opus-vega referenced in commit `7e4fa6b` - "fix(memory-core): the failed-summary backoff policy is declared in the Memory Core config (#438)
+
+Resolves review R1 on #439. The base delay and the ceiling were service-local
+literals; they are now leaves beside maxSessionsPerSummarySweep and
+sessionSummaryTimeoutMs (NEO_MC_SUMMARY_FAILURE_BACKOFF_BASE_MS / _MAX_MS),
+read at failSummarizationJob's SQL binding. The doubling's clamp was a fixed
+6, which reaches the cap only because 30 min x 2^6 exceeds 24 h; it is now
+the fewest steps that reach the declared cap, so the cap binds for any policy.
+
+Witness: a child process resolves a 1 min / 24 h policy at construction on its
+own in-memory graph (no singleton mutation) and must read 1 min, 8 min, 24 h;
+red with the fixed clamp (64 min) and with the literals (30 min). The leaf
+defaults and both env bindings are asserted on a fresh isolated provider."
 

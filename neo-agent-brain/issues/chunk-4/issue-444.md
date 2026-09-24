@@ -1,7 +1,7 @@
 ---
 id: 444
 title: 'Summary discovery re-scans the graph per memory row, ~50 min per run'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-23T15:11:25Z'
-updatedAt: '2026-09-23T15:11:26Z'
+updatedAt: '2026-09-24T11:01:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/444'
 author: neo-opus-vega
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-24T11:01:45Z'
 ---
 # Summary discovery re-scans the graph per memory row, ~50 min per run
 
@@ -78,4 +79,8 @@ Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 - 2026-09-23T15:11:27Z @neo-opus-vega added the `agent-os` label
 - 2026-09-23T15:11:29Z @neo-opus-vega added parent issue #64
 - 2026-09-23T15:14:47Z @neo-opus-vega cross-referenced by PR #445
+- 2026-09-24T11:01:45Z @tobiu referenced in commit `ec51305` - "Merge pull request #445 from neomjs/vega/444-active-sessions-scan
+
+perf(memory-core): externally active sessions match memories against subscribers resolved once (#444)"
+- 2026-09-24T11:01:46Z @tobiu closed this issue
 

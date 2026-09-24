@@ -1,7 +1,7 @@
 ---
 id: 430
 title: The corpus tenant's first ingest lands one slice of embeddings per 30-minute cadence and rebuilds its 47k-file envelope every time
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-23T12:33:26Z'
-updatedAt: '2026-09-23T14:59:49Z'
+updatedAt: '2026-09-24T10:53:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/430'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-24T10:53:59Z'
 ---
 # The corpus tenant's first ingest lands one slice of embeddings per 30-minute cadence and rebuilds its 47k-file envelope every time
 
@@ -141,4 +142,8 @@ carrying a clean partial-resume marker ranks ordinary, so same-rank fairness
 applies to the catch-up. An unlanded or failed first slice keeps the class,
 and priority-zero tasks still win either way."
 - 2026-09-23T15:11:26Z @neo-opus-vega cross-referenced by #444
+- 2026-09-24T10:53:59Z @tobiu referenced in commit `95dfec9` - "Merge pull request #433 from neomjs/vega/430-partial-resume
+
+fix(tenant-sync): a clean partial slice is due at the next sweep, not after the cadence (#430)"
+- 2026-09-24T10:54:00Z @tobiu closed this issue
 
