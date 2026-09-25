@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-07-30T11:27:07Z'
-updatedAt: '2026-09-25T15:43:56Z'
+updatedAt: '2026-09-25T18:17:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/84'
 author: neo-gpt
-commentsCount: 31
+commentsCount: 33
 parentIssue: 90
 subIssues:
   - '[x] 16180 Route local wake delivery through a signed Shape-B dispatcher'
@@ -2001,4 +2001,42 @@ Not found: a `neural-link-bridge.pid` file under the deploy home's `.neo-ai-data
 - 2026-09-25T16:33:15Z @neo-opus-vega cross-referenced by PR #498
 - 2026-09-25T16:43:53Z @neo-opus-vega cross-referenced by #500
 - 2026-09-25T16:48:10Z @neo-opus-vega cross-referenced by PR #502
+### @neo-opus-vega - 2026-09-25T17:32:19Z
+
+## Deploy receipt, 2026-09-25 17:25–17:26Z — dev head `bc6ad07`, tenant lane re-enabled, REM channel seeded
+
+One recreate, operator-authorized earlier today, carrying three merges: #492 (tool-metrics schema), #498 (a running tenant slice keeps the coverage snapshot warm), PR #502 (the REM run-state channel, #500).
+
+| Step | Receipt |
+|---|---|
+| host daemons | `com.neomjs.agent-os-wake` and `com.neomjs.agent-os-host-edge` booted out 17:24:58Z, bootstrapped 17:25:11Z around the checkout; the Neural Link bridge is back on loopback 8081 (host-edge pid 33666) |
+| deploy home | `origin/dev` fetched and checked out at `bc6ad078820547a36a8aa5eaa2db98d6e139d217`; `npm ci` clean (221 packages, tree not dirty) |
+| channel seed | `shared-rem-runs-data` created, seeded from `orchestrator-plane-root`'s `rem-runs` (`cp -a`, 200 receipts) before `up -d` |
+| images | four images built at `NEO_REVISION=bc6ad07…` (17:25:12–17:25:44Z) |
+| services | `up -d` with the cloud/fleet/ingress profiles 17:25:44–17:26:04Z; orchestrator, kb-server, mc-server, fleet-server all `healthy` by 17:26:29Z |
+| tenant lane | `NEO_ORCHESTRATOR_TENANT_REPO_SYNC_ENABLED=true` (the cut fragment, back from the 15:35Z pause); first refresh 17:27:10Z (`neo-shared/github-content-sync`); two repos whose 15:35Z attempts the pause cut off were recorded as failures for backoff |
+| REM channel | mc-server mounts the channel read-only; `get_rem_pipeline_state` lists five completed cycles (receipt on #500) |
+
+Not run on this recreate: #466's AC-4 controlled-kill drill and the Docker label-filter check; both stay owed here as #466's residual. The #498 post-merge box (a heavy waiter running between two tenant `Cycle summary` lines) is watched on #64.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-09-25T18:17:28Z
+
+## Deploy receipt, 2026-09-25 18:15–18:17Z — dev head `7d6a2cc` (#505), both #504 overrides retired
+
+| Step | Receipt |
+|---|---|
+| pre-check | `docker diff` on the four services: nothing under the plane root outside a mount (only the mount point itself) |
+| host daemons | wake + host-edge booted out 18:15:29Z, bootstrapped 18:15:38Z around the checkout; Neural Link bridge back on 8081 (host-edge pid 75521) |
+| deploy home | `origin/dev` at `7d6a2ccea9dce921903cab2fa386de3017713e19` (carries PR #505: the picker promotes the starving waiter, the coverage warm-up keyed on owned-and-enabled); `npm ci` clean |
+| images | four images built at that revision (18:15:38–18:16:20Z) |
+| services | `up -d` 18:16:20–18:16:40Z; orchestrator, kb-server, mc-server, fleet-server `healthy` by 18:17:05Z |
+| cut fragment | `NEO_ORCHESTRATOR_TENANT_REPO_SYNC_ENABLED=true`; the 24 h `NEO_HEAVY_MAINTENANCE_LEASE_FAIRNESS_YIELD_MS` bridge (17:57–18:16Z) removed, so the 30 min leaf default applies again |
+| REM channel | 201 receipts on both sides (the 17:58Z run joined the 200 seeded ones) |
+
+Owed here still: #466's AC-4 controlled-kill drill and the Docker label-filter check (not run on this recreate either). The #504 AC-4 receipt (the dream promoted between two tenant `Cycle summary` lines) goes on #64 once the waiter reaches the 30 min bound during the first ingest.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
 

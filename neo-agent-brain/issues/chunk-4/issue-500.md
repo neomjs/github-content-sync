@@ -1,7 +1,7 @@
 ---
 id: 500
 title: rem-runs is a declared shared channel that compose keeps per service
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-25T16:43:52Z'
-updatedAt: '2026-09-25T16:43:52Z'
+updatedAt: '2026-09-25T18:02:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/500'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T17:23:53Z'
 ---
 # rem-runs is a declared shared channel that compose keeps per service
 
@@ -91,4 +92,32 @@ Retrieval Hint: "rem-runs shared channel compose per-service plane root recentCy
 - 2026-09-25T16:43:53Z @neo-opus-vega added the `ai` label
 - 2026-09-25T16:43:53Z @neo-opus-vega added the `agent-os` label
 - 2026-09-25T16:48:10Z @neo-opus-vega cross-referenced by PR #502
+- 2026-09-25T17:05:07Z @neo-opus-vega referenced in commit `c0fcfe1` - "ci(brain-unit): the plane-root mount guard joins the executed run list (#500)
+
+The unit job collects every spec and executes only the named list, so the #425 guard and its new REM-channel arm never ran in CI. Eos's RA-1 on PR #502."
+- 2026-09-25T17:23:53Z @tobiu referenced in commit `bc6ad07` - "Merge pull request #502 from neomjs/agent/500-rem-runs-channel
+
+fix(deploy): the REM run-state channel is shared between the orchestrator and mc-server (#500)"
+- 2026-09-25T17:23:53Z @tobiu closed this issue
+- 2026-09-25T17:31:24Z @neo-opus-vega cross-referenced by PR #499
+### @neo-opus-vega - 2026-09-25T17:32:09Z
+
+## AC-3 receipt, local plane, 2026-09-25
+
+Recreate at 17:25–17:26Z to Brain dev `bc6ad07` (carries #492, #498 and PR #502). Before `up -d`, `shared-rem-runs-data` was created and seeded from the orchestrator root's `rem-runs` with a `cp -a` copy (200 receipts, count printed by the deploy step).
+
+| Check | Result |
+|---|---|
+| mc-server mount | `neo-local-agent-os_shared-rem-runs-data -> /app/.neo-ai-data/rem-runs`, `rw=false` |
+| receipts visible | orchestrator 200 · mc-server 200 |
+| `get_rem_pipeline_state` from mc-server (17:30Z) | `recentCycles`: five completed runs (`rem-1fdcff41` 118.5 s, `rem-d17147f8` 105.0 s, `rem-b53b88b5` 93.5 s, `rem-3b5f0557` 17.5 s, `rem-4dcea090` 111.2 s); `undigested 990 / digested 1010` unchanged, the window by design |
+| first dream cycle after the recreate (18:04Z read) | `rem-ae04a6c2`, 138.0 s, `completed`, listed first — the 17:58:26–18:00:44Z run |
+
+AC-3 met on both halves: the seeded runs are listed from the mc-server process, and the first post-recreate cycle appeared in the same read. The cycle itself waited on #504 (the fairness yield abstained instead of dispatching the dream); the plane ran it once the yield threshold was raised by hand, documented in the cut fragment with #504 as the retirement.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+- 2026-09-25T17:32:20Z @neo-opus-vega cross-referenced by #84
+- 2026-09-25T17:54:39Z @neo-opus-vega cross-referenced by #504
+- 2026-09-25T18:02:33Z @neo-opus-vega cross-referenced by #64
 

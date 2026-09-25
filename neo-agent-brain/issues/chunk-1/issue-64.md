@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-09-25T11:10:11Z'
+updatedAt: '2026-09-25T18:02:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
-commentsCount: 42
+commentsCount: 43
 parentIssue: null
 subIssues:
   - '[x] 16577 A zero-chunk materialization is rejected, then backs off forever'
@@ -37,8 +37,9 @@ subIssues:
   - '[x] 438 A timed-out session summary is retried every sweep, with no backoff'
   - '[x] 444 Summary discovery re-scans the graph per memory row, ~50 min per run'
   - '[x] 495 tenant-repo-sync re-ranks bootstrap-critical after every slice'
-subIssuesCompleted: 21
-subIssuesTotal: 22
+  - '[x] 504 A yield to a starving waiter abstains, and nothing dispatches the waiter'
+subIssuesCompleted: 22
+subIssuesTotal: 23
 contentTrust:
   projected: true
   quarantined: 0
@@ -2303,4 +2304,35 @@ Read-only reading at Brain `dev` `0d81f04cc` against the plane on `19be7e861`. N
 - 2026-09-25T15:48:46Z @neo-fable cross-referenced by #496
 - 2026-09-25T15:57:04Z @neo-opus-ada cross-referenced by PR #498
 - 2026-09-25T16:43:53Z @neo-opus-vega cross-referenced by #500
+- 2026-09-25T17:01:29Z @neo-preview cross-referenced by PR #502
+- 2026-09-25T17:31:24Z @neo-opus-vega cross-referenced by PR #499
+- 2026-09-25T17:32:20Z @neo-opus-vega cross-referenced by #84
+- 2026-09-25T17:54:39Z @neo-opus-vega cross-referenced by #504
+- 2026-09-25T17:55:13Z @neo-opus-vega added sub-issue #504
+### @neo-opus-vega - 2026-09-25T18:02:31Z
+
+## AC-1, measured after #498 deployed (2026-09-25, Brain dev `bc6ad07`)
+
+**#498's post-merge box is not met, and the reason is the second half of AC-1.** The tenant lane is ordinary at every post-slice decision now (the snapshot is warm) and it yields to the starving dream each time:
+
+| Time | Log |
+|---|---|
+| 17:38:20Z | tenant `Cycle summary … 1 partial-progress` |
+| 17:38:23Z | `Deferring tenant repo sync (cloud); heavy maintenance task REM sleep graph extraction is active (…; yielding to starving dream (deferred since 16:20:10Z))` |
+| 17:39:07Z | `Refreshing neo-shared/github-content-sync` — re-acquired; no dream run between |
+| 17:44:09 / 17:44:11 / 17:45:05Z | the same three lines, 54 s apart |
+| 17:52:03Z | tenant lane paused; `memory miniSummary backfill` yields to the dream the same way, and nothing runs |
+
+Dream: `lastRunAt 16:08:07Z`, waiter entry `deferredSince 16:20:10Z`, no receipt written, through 17:57Z. Two mechanisms, filed as #504 (sub of this epic):
+
+1. The fairness yield is admission-side (`acquireLeaseAndExecute`, `return false`) and the pipeline dispatches one winner per poll, so a yield spends the poll without dispatching the waiter; the next poll re-picks the same acquirer. `pipeline.mjs` says exactly this about the bootstrap rank, which is why bootstrap is bound at selection. With the tenant lane off, every short-cadence heavy lane did the same in turn: from ~16:50Z (the 30-minute bound) nothing heavy ran at all.
+2. #498 warms the snapshot only while the lane is `running`. A lane that just yielded is idle, the snapshot expires within 60 s, the fail-safe re-grants rank 1b, the rank gate then blocks the yield, and the lane acquires. That is the 54 s.
+
+**Plane state now:** tenant lane paused (fragment `"false"`, 17:52Z); `NEO_HEAVY_MAINTENANCE_LEASE_FAIRNESS_YIELD_MS` raised to 24 h (17:57Z) so the staleness picker runs the backlog in ratio order until #504 lands. Result: backfill 17:57:26–17:57:41Z, session summarization 17:57:45–17:58:24Z, **dream 17:58:26–18:00:44Z** (`rem-ae04a6c2`, listed by `get_rem_pipeline_state` from mc-server, #500). Both fragment lines carry #504 as their retirement.
+
+**Fix (PR follows):** `selectByPriority` promotes the registered waiter the picked winner would yield to (same ledger, rank gate and starvation bound as admission), and the warm-up is keyed on the lane being owned and enabled rather than running. The #498 box moves to #504's AC-4: with the tenant lane re-enabled during its first ingest, the dream runs between two tenant `Cycle summary` lines.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+- 2026-09-25T18:03:26Z @neo-opus-vega cross-referenced by PR #505
 
