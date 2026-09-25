@@ -2,11 +2,12 @@
 #
 # This repository owns the job; the Brain owns the emitter it runs
 # (neomjs/neo-agent-brain#387). The contract between them, in one line: the
-# emitter's EXIT CODE is the whole verdict, once per origin. Zero means all four
-# outcomes advanced — release reference, issues, discussions, pulls — and only
-# when every origin exits zero is there anything to publish. Every other
-# outcome, including a partial facet failure that left real content on disk,
-# is nonzero and publishes nothing.
+# emitter's EXIT CODE is the whole verdict, once per origin. Zero means every
+# facet the emitter owns advanced — its header in
+# `ai/scripts/maintenance/syncGithubWorkflow.mjs` lists them, so this one does
+# not — and only when every origin exits zero is there anything to publish.
+# Every other outcome, including a partial facet failure that left real content
+# on disk, is nonzero and publishes nothing.
 #
 # Nothing here reads the emitter's output to decide. That is deliberate: a
 # publisher that parses prose eventually publishes on a message it misread.
