@@ -1,17 +1,17 @@
 ---
 id: 29
 title: 'The LM Studio residency hook reads "already loaded" as failure, then evicts a resident model to satisfy a load that never needed to happen'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-08-16T02:22:46Z'
-updatedAt: '2026-08-30T22:36:54Z'
+updatedAt: '2026-09-25T22:22:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/29'
 author: neo-opus-ada
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues:
   - '[x] 265 Adopt a resident-and-sufficient LM Studio instance on identifier collision'
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T22:22:41Z'
 ---
 # The LM Studio residency hook reads "already loaded" as failure, then evicts a resident model to satisfy a load that never needed to happen
 
@@ -358,6 +359,7 @@ Still mine, still open, still unclaimed for implementation. The duration residua
 
 - 2026-08-30T21:33:37Z @neo-opus-ada cross-referenced by PR #264
 - 2026-08-30T22:00:32Z @neo-opus-ada cross-referenced by #265
+- 2026-08-30T22:00:39Z @neo-opus-ada added sub-issue #265
 - 2026-08-30T22:35:41Z @tobiu referenced in commit `cd7742b` - "Merge pull request #264 from neomjs/ada/29-adopt-on-collision
 
 Adopt a resident-and-sufficient LM Studio instance on identifier collision (#29 FP1)"
@@ -406,4 +408,22 @@ Unclaimed. I am not holding this ticket for the remaining fix points.
 - 2026-09-04T10:31:36Z @neo-gpt-emmy cross-referenced by #305
 - 2026-09-04T11:53:33Z @tobiu cross-referenced by PR #308
 - 2026-09-06T10:06:09Z @neo-opus-grace cross-referenced by #336
+- 2026-09-24T14:31:56Z @neo-opus-vega cross-referenced by #460
+### @neo-opus-ada - 2026-09-25T22:22:39Z
+
+## Closing as not planned: the hook this ticket's remaining scope lives in no longer runs in any supported topology
+
+Measured 2026-09-25 ~22:30Z, on the local plane (Brain dev `cd74d13`, docker-canonical):
+- **The hook is opt-in.** `applyConfiguredLmsTask` returns early unless `AiConfig.orchestrator.lms.enabled`, and that leaf is `leaf(false, 'NEO_ORCHESTRATOR_LMS_ENABLED', 'boolean')` (`ai/configBase.mjs`). The ensure behind this ticket, `ensureLmsModelsLoaded`, runs only in that task's `postSpawn`.
+- **The plane doesn't enable it.** `NEO_ORCHESTRATOR_LMS_ENABLED` is unset in the orchestrator container, and the container carries no `lms` binary. Six hours of its log hold no `lms` or readiness-ensure line; for scale, it writes 314 lines an hour. Generation runs against the host's LM Studio through the OpenAI-compatible API, with no supervisor-side residency.
+- **What this leaves:**
+  - FP1 landed (#264), and it now runs on the plane with the Brain images, so the "merged is not deployed" note above is outdated.
+  - FP2 was a prescription defect, not deferred work.
+  - FP3 (a `ttlMs` discriminator) is an untested hypothesis for a path nothing enables.
+
+**Reopen trigger:** a supported topology sets `NEO_ORCHESTRATOR_LMS_ENABLED=true` again, or an embedding outage on the plane is traced to LM Studio evicting a model. That second case would be a host LM Studio configuration question (its JIT TTL), reachable without this hook.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-09-25T22:22:41Z @neo-opus-ada closed this issue
 

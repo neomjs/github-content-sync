@@ -1,7 +1,7 @@
 ---
 id: 480
 title: Provider responses are accepted without checking the served model
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-25T10:07:29Z'
-updatedAt: '2026-09-25T14:54:57Z'
+updatedAt: '2026-09-25T22:05:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/480'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T22:05:15Z'
 ---
 # Provider responses are accepted without checking the served model
 
@@ -117,4 +118,117 @@ Retrieval Hint: "LM Studio silent model substitution served model field MODEL_MI
 - 2026-09-25T14:27:36Z @neo-preview assigned to @neo-preview
 - 2026-09-25T14:28:47Z @neo-opus-vega cross-referenced by #493
 - 2026-09-25T14:32:39Z @neo-preview referenced in commit `e28f588` - "fix(provider): name served-model operator diagnostic (#480)"
+- 2026-09-25T15:33:45Z @neo-preview referenced in commit `4c4994c` - "fix(provider): keep served-model identity action-free (#480)"
+- 2026-09-25T15:36:00Z @neo-preview referenced in commit `b231c34` - "merge(dev): sync #480 branch with current dev (#480)
+
+# Conflicts:
+#	.github/workflows/brain-unit.yml"
+- 2026-09-25T16:44:49Z @neo-preview cross-referenced by PR #501
+- 2026-09-25T17:01:29Z @neo-preview cross-referenced by PR #502
+- 2026-09-25T17:41:16Z @neo-preview cross-referenced by #503
+- 2026-09-25T18:50:44Z @tobiu referenced in commit `c1c9568` - "fix(provider): require the declared provider's HTTPS origin, not its hostname alone (#480)
+
+Round 2, RA-1. @neo-gpt caught this by reading rather than by a test, and
+they were right: replacing the host-shape heuristic with a declared-contract
+lookup also dropped the protocol check that heuristic had been carrying.
+
+`hostedModelAliasesAllowed` tested only hostname membership, so
+`http://api.openai.com/v1` returned true and inherited a date-alias tolerance
+it never earned. A declared provider's origin is `https://` AND the hostname;
+the same hostname over plaintext is a different endpoint — unauthenticated as
+that provider and unprotected in transit — so a date-suffixed served id
+arriving from one is precisely the wrong-resident signal this whole assertion
+exists to catch. A gate that gets stricter about trust while silently
+loosening the transport is worse than the shape heuristic it replaced.
+
+Falsified before believing it, and the first probe was no good: removing the
+condition with a text substitution that spanned lines corrupted the function
+and failed three assertions with `undefined`, which is a broken probe rather
+than a result. Redone as a single-line condition swap: exactly one arm flips,
+`Expected: false, Received: true` on the plaintext host, 17 of 18 still green.
+The distinction matters — the first result would have been reported as
+evidence and would have meant nothing.
+
+116/116 focused at this head."
+- 2026-09-25T19:20:46Z @tobiu referenced in commit `2846347` - "fix(provider): make the collection witness valid, and prove it discriminates (#480)
+
+Round 2, RA-2, first half. @neo-gpt was right that the witness was
+non-discriminating, and the reason is worth stating precisely: my response
+omitted `index: 0`, so the dense-index guard refused the batch BEFORE the
+identity check was reached. The zero-upsert assertion then held for the wrong
+reason — it would have passed with the served-model guard bypassed entirely.
+
+Two changes make the witness mean what it claims:
+
+- The mismatch response is now a VALID embedding reply (`index: 0` present),
+  so the only thing that can refuse it is the identity check.
+- A new CONTROL arm serves an AGREEING model with the same well-formed shape
+  and asserts the vector DOES reach the collection. This is the non-vacuity
+  control the arm was missing: without it, a response refused by any earlier
+  guard produces the same zero, and the assertion cannot tell the difference.
+
+Falsified both directions rather than asserted. Disabling the identity
+assertion at the embedding call site flips EXACTLY ONE arm — the mismatch arm,
+`expected MODEL_MISMATCH as the batch-abort cause, got undefined` — while the
+control stays green. So the mismatch arm now fails for the right reason, which
+is the whole of RA-2's first ask.
+
+The ADR 0019 B4 half is NOT done and is deliberately not faked. The two
+`aiConfig.openAiCompatible.host` writes stay for now, and the reason is a
+finding rather than an oversight: the host is read inline at three sites in
+TextEmbeddingService with no resolver seam, so B4-compliant isolation cannot be
+reached by test-only changes — it needs a small production seam. `node
+ai/scripts/lint/check-aiconfig-test-mutation.mjs` reports 0 new violations
+across 825 scanned test files WITH those writes present, so the guard does not
+see them either. That is a scope fork for the reviewer who wrote the action,
+and it goes to @neo-gpt with this evidence rather than being resolved here.
+
+117/117 focused at this head."
+- 2026-09-25T19:53:19Z @tobiu referenced in commit `b182ac2` - "feat(memory-core): resolve the OpenAI-compatible host through an injectable seam (#480)
+
+ADR 0019 B4 half of RA-2. The identity-guard arm needed a real HTTP endpoint
+to talk to, and the only way to point this service at one was to write
+`aiConfig.openAiCompatible.host` on the shared singleton and restore it after.
+B4 calls that safety-critical, and the reason is structural rather than
+stylistic: the write lands on shared state, so a missed cleanup, a shared
+process or plain test order hands the next consumer the test's endpoint. An
+isolation mechanism that is itself a cross-test hazard is not isolation.
+
+The seam follows `MaintenanceBackpressureService.resolveConfiguredTenantRepoLabelsFn_`
+so the pattern is the codebase's, not this file's invention — and that
+precedent is also the correction: Neo's `setupClass()` strips the trailing
+underscore from a `static config` key, so the instance member is
+`openAiCompatibleHostFn`. Reading it with the underscore left it `undefined`,
+which surfaced as `this.openAiCompatibleHostFn is not a function` in a spec
+that never assigned it.
+
+Two things hid here, and both are the same mistake: I grepped for
+`aiConfig.openAiCompatible.host` and treated three hits as the surface. The
+site that actually issues the request reads the host by DESTRUCTURING —
+`const {host} = aiConfig.openAiCompatible` — which binds a bare `host` and
+never reads as a member expression. The arm failed with a `MODEL_MISMATCH`
+cause of `undefined` because the request was still going to the configured
+host, not the fixture. The seam is only real once the transport uses it.
+
+Scope note, stated rather than implied: only the host leaf is seamed.
+`TextEmbeddingService.retry.spec` mutates the same leaf plus `unloadRetryCount`,
+`unloadRetryDelayMs` and `embeddingModel`, and a per-leaf seam is the wrong
+general answer there — a real B4 fix for that spec wants an injected config
+snapshot, which is a different change in a different ticket. Reported, not
+silently widened.
+
+The guard reports 825 files / 0 new violations, but it never flagged the
+writes it exists to catch, so it is not evidence either way here; the absence
+of shared-config writes in the spec is.
+
+22/22 on the arm's spec; 76/76 with the retry spec. The three Ollama cap
+failures and the `DatabaseService shared core sync` failure in a wide run are
+pre-existing — the latter is gated on a clean checkout, so a one-blank-line
+change in an unrelated file reproduces it and it clears on commit."
+- 2026-09-25T20:19:45Z @tobiu cross-referenced by #508
+- 2026-09-25T21:04:25Z @neo-opus-vega cross-referenced by PR #510
+- 2026-09-25T22:05:15Z @tobiu referenced in commit `5284dca` - "Merge pull request #501 from neomjs/agent/480-served-model-identity-successor
+
+feat(provider): enforce served-model identity (#480)"
+- 2026-09-25T22:05:15Z @tobiu closed this issue
 

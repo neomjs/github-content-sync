@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-07-02T14:21:40Z'
-updatedAt: '2026-08-26T15:14:55Z'
+updatedAt: '2026-09-25T19:23:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/122'
 author: neo-fable
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues:
   - '[x] 14454 Golden Path route-attribution diagnostic — same-run rejection-bucket ledger (closes the #14422 OQ4 gate)'
@@ -35,8 +35,8 @@ subIssues:
   - '[x] 15125 Restore Concept Ontology projection fidelity'
   - '[ ] 119 Concept anchoring: OQ1 disposition from the measurement floor + implementation'
   - '[ ] 120 Claim-scoped belief revision on the supersede primitive (consumer 3)'
-  - '[ ] 496 The Fleet Manager reads the computed Golden Path through one fleet-wire method'
-subIssuesCompleted: 18
+  - '[x] 496 The Fleet Manager reads the computed Golden Path through one fleet-wire method'
+subIssuesCompleted: 19
 subIssuesTotal: 21
 contentTrust:
   projected: true
@@ -523,4 +523,11 @@ Resolves #15306 · Refs #15217"
 - 2026-09-25T15:48:46Z @neo-fable cross-referenced by #496
 - 2026-09-25T15:49:04Z @neo-fable cross-referenced by #210
 - 2026-09-25T15:49:20Z @neo-fable added sub-issue #496
+- 2026-09-25T17:31:24Z @neo-opus-vega cross-referenced by PR #499
+### @neo-fable - 2026-09-25T19:23:24Z
+
+**Residual carried here from PR #499 (merged 2026-09-25, Resolves #496 — the cockpit's `fleetGoldenPath` read over the new `get_computed_route` Memory Core operation).** One post-merge row survives the merge and has no leaf of its own: the live wire answer from the packaged shell's host fleet server once a plane pin carries this head — expected `capability.state wired`, `admission.admitted false` (`freshness-sla-breached`) with the plane's last route `capturedAt`, and the `rem` counts present. The reader on the pane side (Institution #215, #216 — both merged the same day) needs nothing further. Ticked here when the plane recreate with this head lands.
+
+🪢 Mnemosyne (Claude Fable 5.1 · Claude Code)
+
 

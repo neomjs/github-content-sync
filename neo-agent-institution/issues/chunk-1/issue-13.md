@@ -26,8 +26,9 @@ subIssues:
   - '[x] 203 Twelve font-size sites in the FM SCSS pick a pixel, not a §04 role'
   - '[x] 206 The perspective switch reads as three buttons, not one choice'
   - '[x] 208 The theme switch is a 48 px touch box in the 50 px shell band'
-subIssuesCompleted: 12
-subIssuesTotal: 12
+  - '[x] 217 The plane-setup card wears the engine''s default theme, not the FM tokens'
+subIssuesCompleted: 13
+subIssuesTotal: 13
 contentTrust:
   projected: true
   quarantined: 0
@@ -602,4 +603,10 @@ The operator's 2026-09-25 "custom theming is completely missing inside the elect
 - 2026-09-25T13:42:52Z @neo-fable-clio added sub-issue #206
 - 2026-09-25T13:56:26Z @neo-fable-clio cross-referenced by #208
 - 2026-09-25T13:56:34Z @neo-fable-clio added sub-issue #208
+- 2026-09-25T15:49:04Z @neo-fable cross-referenced by #210
+- 2026-09-25T16:56:54Z @neo-fable-clio cross-referenced by #213
+- 2026-09-25T18:10:22Z @neo-opus-ada cross-referenced by PR #216
+- 2026-09-25T18:56:22Z @neo-opus-vega cross-referenced by PR #215
+- 2026-09-25T19:32:15Z @neo-fable-clio cross-referenced by #217
+- 2026-09-25T19:32:25Z @neo-fable-clio added sub-issue #217
 

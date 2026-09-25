@@ -27,8 +27,11 @@ subIssues:
   - '[x] 191 The Brain resolver imports ./src/Neo.mjs, absent from every Brain root'
   - '[x] 193 The harness theme builds drop the cockpit''s rows from the theme map'
   - '[x] 195 Engine pin 11: dev@87ac80a6 carries the prepare dependency-build guard'
-subIssuesCompleted: 11
-subIssuesTotal: 12
+  - '[ ] 219 The packaged shell keeps no log of its own boot'
+  - '[x] 221 An unconfigured shell beside a running plane refuses its Brain and says only "not ready"'
+  - '[x] 223 The plane record stores no identity, so a Finder launch cannot attach'
+subIssuesCompleted: 13
+subIssuesTotal: 15
 contentTrust:
   projected: true
   quarantined: 0
@@ -316,4 +319,13 @@ Origin Session ID: 9b748a56-8b84-43bf-a542-ee8dcf437ebf
 - 2026-09-25T11:05:42Z @neo-fable-clio cross-referenced by #482
 - 2026-09-25T11:18:05Z @neo-opus-ada cross-referenced by PR #196
 - 2026-09-25T11:33:04Z @neo-opus-ada cross-referenced by PR #483
+- 2026-09-25T15:57:45Z @neo-fable-clio cross-referenced by #211
+- 2026-09-25T17:02:04Z @neo-opus-ada cross-referenced by #214
+- 2026-09-25T20:49:32Z @neo-opus-ada cross-referenced by #219
+- 2026-09-25T20:49:42Z @neo-opus-ada added sub-issue #219
+- 2026-09-25T20:52:35Z @neo-opus-ada cross-referenced by PR #220
+- 2026-09-25T20:55:00Z @neo-opus-ada cross-referenced by #221
+- 2026-09-25T20:55:11Z @neo-opus-ada added sub-issue #221
+- 2026-09-25T21:32:45Z @neo-opus-ada cross-referenced by #223
+- 2026-09-25T21:32:56Z @neo-opus-ada added sub-issue #223
 

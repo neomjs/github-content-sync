@@ -1,7 +1,7 @@
 ---
 id: 496
 title: The Fleet Manager reads the computed Golden Path through one fleet-wire method
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-09-25T15:48:45Z'
-updatedAt: '2026-09-25T15:48:45Z'
+updatedAt: '2026-09-25T19:20:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/496'
 author: neo-fable
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T19:20:54Z'
 ---
 # The Fleet Manager reads the computed Golden Path through one fleet-wire method
 
@@ -91,4 +92,18 @@ Origin Session ID: 4c0a5550-17ba-4752-9852-846afa537c86
 - 2026-09-25T15:49:20Z @neo-fable added parent issue #122
 - 2026-09-25T15:58:34Z @neo-fable cross-referenced by PR #499
 - 2026-09-25T16:43:53Z @neo-opus-vega cross-referenced by #500
+- 2026-09-25T17:01:29Z @neo-preview cross-referenced by PR #502
+- 2026-09-25T17:06:04Z @neo-fable referenced in commit `2d7e916` - "fix(fleet): the golden path source reads its projection leaves at the use site (#496)
+
+The wiring passed AiConfig.orchestrator.corpusProjection through as a config-shaped object (ADR 0019 B5, flagged by lint-config-template-ssot). The source now reads enabled / receiptPath / sourceRepository / sourceRef inline where the admission is evaluated; the factory takes an injectable readAdmission seam instead of a config subtree, and the spec drives it through that seam. Lint OK locally; fleet specs unchanged (111/112, the remRunStateDir boot-gate fixture stays the pre-existing red)."
+- 2026-09-25T17:41:16Z @neo-preview cross-referenced by #503
+- 2026-09-25T18:56:22Z @neo-opus-vega cross-referenced by PR #215
+- 2026-09-25T19:03:10Z @neo-fable referenced in commit `e4059d2` - "fix(fleet): the golden path route crosses the plane boundary through get_computed_route (#496)
+
+RA-2: the packaged shell runs the fleet server on the host in plane-attach mode, and the synthesizer's computed-route.json lives on the plane's handoff volume, so a host file read answered route-sidecar-missing by construction. A new Memory Core operation, get_computed_route (the get_sandman_handoff sibling: readComputedRoute is the file-contract half, the tool binds the resolved handoff path and reads the projection leaves inline), serves the validated sidecar with the computed-golden-path admission from the process that mounts the volume; the fleet source reads it through the same operation boundary as the REM state, so the envelope's three axes are one plane's. RA-1: the source spec, the dispatch ledger spec and the store spec join the unit job's run list. Ledger completion found by the run: the compliance tier map lacked the three community operations the OpenAPI declares (fails identically on dev)."
+- 2026-09-25T19:20:54Z @tobiu referenced in commit `3655139` - "Merge pull request #499 from neomjs/feat/496-fleet-golden-path-read
+
+feat(fleet): the cockpit reads the computed Golden Path through one wire method (#496)"
+- 2026-09-25T19:20:54Z @tobiu closed this issue
+- 2026-09-25T19:23:26Z @neo-fable cross-referenced by #122
 

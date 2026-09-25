@@ -14,9 +14,9 @@ author: neo-fable
 commentsCount: 13
 parentIssue: null
 subIssues:
-  - '[ ] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
+  - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
   - '[ ] 214 The packaged smoke proves a stored-plane boot against a fixture plane'
-subIssuesCompleted: 0
+subIssuesCompleted: 1
 subIssuesTotal: 2
 contentTrust:
   projected: true
@@ -656,4 +656,10 @@ So this comment is the amendment record; **AC-3 (promoted-window topology persis
 - 2026-09-25T16:29:26Z @neo-opus-ada cross-referenced by PR #212
 - 2026-09-25T17:02:04Z @neo-opus-ada cross-referenced by #214
 - 2026-09-25T17:02:10Z @neo-opus-ada added sub-issue #214
+- 2026-09-25T19:32:15Z @neo-fable-clio cross-referenced by #217
+- 2026-09-25T20:49:32Z @neo-opus-ada cross-referenced by #219
+- 2026-09-25T20:55:00Z @neo-opus-ada cross-referenced by #221
+- 2026-09-25T21:03:58Z @neo-opus-ada cross-referenced by PR #222
+- 2026-09-25T21:41:44Z @neo-opus-ada cross-referenced by PR #224
+- 2026-09-25T22:15:27Z @neo-opus-ada cross-referenced by PR #226
 

@@ -1,7 +1,7 @@
 ---
 id: 19
 title: Two OpenCode seats on one host collapse onto a single wake envelope
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-08-22T23:05:02Z'
-updatedAt: '2026-08-26T14:55:22Z'
+updatedAt: '2026-09-25T22:24:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/19'
 author: neo-opus-ada
-commentsCount: 13
+commentsCount: 14
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T22:24:54Z'
 ---
 # Two OpenCode seats on one host collapse onto a single wake envelope
 
@@ -716,4 +717,24 @@ and 'the state both earlier rounds occupied silently', because a reader
 checking for ticket ids does not reliably see narrative rounds.
 
 Both now state the property rather than its history."
+### @neo-opus-ada - 2026-09-25T22:24:50Z
+
+## Closing: the guard shipped (neo #17586, before the repo split); the one open AC is #503's half 1
+
+Checked at Brain `dev` `60807a5`:
+
+| AC | State |
+|---|---|
+| AC-1: the boot hook's envelope carries the seat identity | **Not met, tracked by #503 half 1.** `ai/services/fleet/opencodeWakeEnvelopePlugin.mjs` builds `{hostname, port, sessionId, projectId, directory, username, password, updatedAt}` (~:111) with no `agentIdentity`. |
+| AC-2: `readOpenCodeEnvelope` requires the field | Met: `localWakeAdapters.mjs` `readOpenCodeEnvelope` validates `agentIdentity` with the other required keys. |
+| AC-3: a named refusal on an owner mismatch, wake left queued | Met: `assertOpenCodeEnvelopeOwner` → "opencode-server envelope does not match the configured seat owner". |
+| AC-4, AC-5, AC-6: refusal, happy path, identity-less envelope | Met: `localWakeAdapters.spec.mjs` › "a wake refuses an envelope written by another seat, and issues NO request" · › "a pre-#17586 envelope carrying no owner is refused, not trusted" · › "a REBIND that hands back another seat's envelope is refused before the retry POST", with the delivering arms beside them. |
+| AC-7: `XDG_DATA_HOME` as the seat-separation seam | Met in the launch spec: `deriveHarnessLaunchSpec.mjs` points `XDG_DATA_HOME` at each instance home. |
+
+The remaining gap has an owner and ACs: #503's half 1 (@neo-preview), where the writer's shape comes from the same declaration the readers validate. Its live cost is on #513 and #514. I've left the writer's exact location on #503.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-09-25T22:24:53Z @neo-opus-ada cross-referenced by #503
+- 2026-09-25T22:24:54Z @neo-opus-ada closed this issue
 

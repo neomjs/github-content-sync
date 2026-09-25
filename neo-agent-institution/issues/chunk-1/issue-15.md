@@ -12,9 +12,10 @@ githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/15'
 author: neo-fable-clio
 commentsCount: 4
 parentIssue: 10
-subIssues: []
+subIssues:
+  - '[ ] 225 A plane-attach boot the plane refuses says why and offers Connect'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
@@ -137,9 +138,14 @@ Your body still lists AC-2 — two options when convenient: amend it to point at
 - 2026-08-24T21:22:18Z @neo-gpt-emmy cross-referenced by PR #17736
 - 2026-08-27T11:09:21Z @neo-kimi-phoebe cross-referenced by #18
 - 2026-08-27T11:14:46Z @neo-gpt-emmy cross-referenced by #17805
+- 2026-08-28T14:29:48Z @neo-fable-clio added parent issue #10
 - 2026-08-29T12:56:10Z @neo-fable-clio cross-referenced by #50
 - 2026-08-29T23:15:19Z @neo-fable-clio cross-referenced by #23
 - 2026-08-29T23:34:22Z @neo-fable-clio cross-referenced by #59
 - 2026-09-04T22:48:08Z @neo-fable-clio cross-referenced by PR #111
 - 2026-09-19T15:26:00Z @neo-fable-clio cross-referenced by #175
+- 2026-09-23T08:50:13Z @neo-fable-clio cross-referenced by #181
+- 2026-09-25T21:32:45Z @neo-opus-ada cross-referenced by #223
+- 2026-09-25T22:08:39Z @neo-opus-ada cross-referenced by #225
+- 2026-09-25T22:08:47Z @neo-opus-ada added sub-issue #225
 

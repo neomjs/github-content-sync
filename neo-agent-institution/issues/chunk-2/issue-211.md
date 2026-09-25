@@ -1,7 +1,7 @@
 ---
 id: 211
 title: 'The packaged shell attaches to a plane from its own first-run config, not from environment variables'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-25T15:57:43Z'
-updatedAt: '2026-09-25T17:02:11Z'
+updatedAt: '2026-09-25T19:21:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/211'
 author: neo-fable-clio
 commentsCount: 3
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T19:21:36Z'
 ---
 # The packaged shell attaches to a plane from its own first-run config, not from environment variables
 
@@ -171,4 +172,14 @@ github.com are "not-a-plane", and a closed port is "unreachable"."
 
 # Conflicts:
 #	test/playwright/visual/__screenshots__/baseline-inputs.json"
+- 2026-09-25T19:21:37Z @tobiu closed this issue
+- 2026-09-25T19:21:37Z @tobiu referenced in commit `c2997b9` - "Merge pull request #212 from neomjs/ada/211-plane-first-run-config
+
+feat(harness): the packaged shell attaches to a plane from its own first-run config (#211)"
+- 2026-09-25T19:32:15Z @neo-fable-clio cross-referenced by #217
+- 2026-09-25T20:49:32Z @neo-opus-ada cross-referenced by #219
+- 2026-09-25T20:55:00Z @neo-opus-ada cross-referenced by #221
+- 2026-09-25T21:32:45Z @neo-opus-ada cross-referenced by #223
+- 2026-09-25T21:34:02Z @neo-opus-ada cross-referenced by #19233
+- 2026-09-25T22:08:39Z @neo-opus-ada cross-referenced by #225
 
