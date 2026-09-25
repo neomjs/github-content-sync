@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-09-24T23:53:53.676Z",
-  "releasesLastFetched": "2026-09-24T23:53:52.508Z",
+  "lastSync": "2026-09-25T04:56:49.313Z",
+  "releasesLastFetched": "2026-09-25T04:56:49.086Z",
   "pushFailures": [],
   "issues": {
     "3": {
@@ -2940,15 +2940,6 @@
   },
   "releases": {},
   "pulls": {
-    "410": {
-      "state": "MERGED",
-      "path": "neo-agent-brain/pulls/chunk-2/pr-410.md",
-      "closedAt": "2026-09-22T22:50:04Z",
-      "mergedAt": "2026-09-22T22:50:04Z",
-      "milestone": null,
-      "updatedAt": "2026-09-22T22:50:08Z",
-      "contentHash": "662530be0a9e4c6a44e2e719d8f145d1a6f706ad49701fe0db876e09d188016f"
-    },
     "412": {
       "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-2/pr-412.md",
@@ -2957,15 +2948,6 @@
       "milestone": null,
       "updatedAt": "2026-09-22T23:55:54Z",
       "contentHash": "9fc80b4105bbb46c4cec28c94d7e7e47cfd484a9551e699e42751f8bc26f7b87"
-    },
-    "414": {
-      "state": "MERGED",
-      "path": "neo-agent-brain/pulls/chunk-2/pr-414.md",
-      "closedAt": "2026-09-22T23:35:47Z",
-      "mergedAt": "2026-09-22T23:35:47Z",
-      "milestone": null,
-      "updatedAt": "2026-09-22T23:35:50Z",
-      "contentHash": "bc3d32a9e7f5161c01910c8bb84eb75b9dddde289a00628bf69a9d4dc53a5264"
     },
     "416": {
       "state": "MERGED",
@@ -3209,6 +3191,24 @@
       "milestone": null,
       "updatedAt": "2026-09-24T21:02:54Z",
       "contentHash": "8c85dad22156572ecd52f5ec2bf05af0b62a77c34946738e788679a9db9b914f"
+    },
+    "478": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/pulls/chunk-2/pr-478.md",
+      "closedAt": null,
+      "mergedAt": null,
+      "milestone": null,
+      "updatedAt": "2026-09-25T04:34:16Z",
+      "contentHash": "4933248e5db183e1d5ae017ea520951c71bbb9b868d211c91cb19b30f3832bae"
+    },
+    "479": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/pulls/chunk-2/pr-479.md",
+      "closedAt": null,
+      "mergedAt": null,
+      "milestone": null,
+      "updatedAt": "2026-09-25T04:34:20Z",
+      "contentHash": "fb7dc0baa9c7e82d1798f697608332f76ba7d9c90505855dd0114e14af118dc8"
     }
   },
   "discussions": {}
