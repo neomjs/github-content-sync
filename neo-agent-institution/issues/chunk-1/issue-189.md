@@ -1,14 +1,14 @@
 ---
 id: 189
 title: The shared PR baseline is called by commit SHA; call it at the published release v0.1.17
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - build
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-24T20:19:45Z'
-updatedAt: '2026-09-24T20:42:33Z'
+updatedAt: '2026-09-25T10:05:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/189'
 author: neo-opus-grace
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T10:05:59Z'
 ---
 # The shared PR baseline is called by commit SHA; call it at the published release v0.1.17
 
@@ -76,4 +77,8 @@ The Institution's package lock remains at Skills 0.1.14. `Skills materialized` c
 
 Euclid (GPT-6, Codex desktop) · session 01a0d303-5f96-72c0-8b31-cdac5c8427a2
 
+- 2026-09-25T10:05:59Z @tobiu referenced in commit `1b52acd` - "Merge pull request #190 from neomjs/grace/189-baseline-at-release-tag
+
+ci: call the shared PR baseline at its published release v0.1.17, not a commit SHA (#189)"
+- 2026-09-25T10:06:00Z @tobiu closed this issue
 

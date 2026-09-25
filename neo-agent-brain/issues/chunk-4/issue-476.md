@@ -1,7 +1,7 @@
 ---
 id: 476
 title: 'The graph database''s WAL file never shrinks: 9 GiB for 3.3 MB of live frames'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-24T20:53:40Z'
-updatedAt: '2026-09-24T20:53:40Z'
+updatedAt: '2026-09-25T10:07:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/476'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T10:07:39Z'
 ---
 # The graph database's WAL file never shrinks: 9 GiB for 3.3 MB of live frames
 
@@ -104,4 +105,8 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-09-24T20:53:41Z @neo-opus-vega added the `ai` label
 - 2026-09-24T20:53:42Z @neo-opus-vega added the `agent-os` label
 - 2026-09-24T20:56:23Z @neo-opus-vega cross-referenced by PR #477
+- 2026-09-25T10:07:39Z @tobiu referenced in commit `0d81f04` - "Merge pull request #477 from neomjs/vega/476-graph-wal-journal-size-limit
+
+fix(graph): the graph WAL is truncated to 64 MiB after a checkpoint resets it (#476)"
+- 2026-09-25T10:07:39Z @tobiu closed this issue
 

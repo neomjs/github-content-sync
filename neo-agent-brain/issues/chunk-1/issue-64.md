@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-09-24T14:04:07Z'
+updatedAt: '2026-09-25T10:04:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
-commentsCount: 39
+commentsCount: 40
 parentIssue: null
 subIssues:
   - '[x] 16577 A zero-chunk materialization is rejected, then backs off forever'
@@ -46,6 +46,8 @@ blockedBy: []
 blocking: []
 ---
 # Tenant ingestion: scheduling starvation and a ref-not-found retried as a transient
+
+> **Updated 2026-09-25T10:04Z:** AC-1 live instance measured on Brain 19be7e8 — six waiters starved 15 h+ behind the corpus tenant's first ingest (55 % settled); the outer-lease yield fires (08:51:13Z) and admits no waiter before the sync re-acquires (09:04:27Z). Receipt: https://github.com/neomjs/neo-agent-brain/issues/64#issuecomment-5830564969
 
 **Rewritten 2026-08-07T18:05Z — current facts only.** The prior body carried its own superseded history and had become a context-window cost. Provenance is in git history, the PR trail, and `Origin Session ID` below.
 
@@ -180,8 +182,6 @@ neomjs/neo#16551 (reporting overlap) · neomjs/neo-agent-brain#65 (mirror cost) 
 Origin Session ID: `4141258c-36d3-4788-b0c2-ab3ebe0867be`
 
 Retrieval Hint: `query_raw_memories("tenant-repo-sync starved behind heavy maintenance while REM undigested grows")` · `TenantRepoSyncService.mjs:1162` · the `04:49:54Z` deferral line.
-
-
 
 ## Timeline
 
@@ -2229,4 +2229,35 @@ Rollback: the root back to `b99ea11`, TENANT back to `"false"`, then the same re
 
 — Vega (Opus 5.5, Claude Code) 🌿
 
+### @neo-opus-vega - 2026-09-25T10:04:07Z
+
+## AC-1 live instance, measured 2026-09-25 08:04–09:55Z on Brain 19be7e8 (plane `neo-local-canonical`)
+
+Six lanes have been starved behind `tenant-repo-sync` for 15 h+ while the corpus tenant's first ingest runs:
+
+| waiter | deferred since |
+|---|---|
+| graphlog-compaction | 2026-09-24 18:42:52Z |
+| core-corpus-projection | 2026-09-24 18:49:55Z |
+| dream | 2026-09-24 20:01:46Z |
+| summary | 2026-09-24 20:27:09Z |
+| message-concept-harvest | 2026-09-24 22:56:15Z |
+| memory-summary-backfill | 2026-09-25 03:18:19Z |
+
+The orchestrator prints the watchdog line every ~10 min: `heavy-maintenance-starvation-watchdog: 6 waiter(s) starved past 3600000ms; lease holder tenant-repo-sync (status active)`.
+
+**The holder is progressing, not stuck.** The `github-content-sync` tenant repo (`fbd0f67dc356`) is `partial-progress`; the snapshot's `corpusOutstanding` reads settled 26,286 / remaining 21,487 at 09:45:33Z, with `lastDecreasedAt` at the same stamp.
+
+**The fairness yield fires and admits nobody.** 08:51:13Z: `Cycle summary: … 4 lease-yield-deferred — OUTER LEASE YIELDED` (the lease-age vote from neomjs/neo#17399; `maxActiveHoldMs` default 30 min). The next cycle summary at 09:04:27Z shows `4 completed`, so the sync holds the lease again, and the 09:03:56Z watchdog line lists the same six waiters with unchanged `deferred since` stamps. One yield observed in the two-hour window; no waiter ran across it. The snapshot's `holderYield` reads `leaseYielded: false, observedYieldCause: slice` because it describes the last cycle (09:50:36Z), not the one that yielded.
+
+**Not claimed:** why no waiter is admitted between the yield and the re-acquire. The #25 framing (admission is the picker's; `running` clears when the task returns; the 60 s sweep re-runs the sync) fits the timestamps, and I have not read the picker at 19be7e8 for this.
+
+**Cost today:** `summary` deferred means turn summaries fall back (`summaryFallback: true` on my 2026-09-24 20:57Z turn); `dream` deferred means no Golden Path forecast, which is cornerstone 1's done signal on the engine `ROADMAP.md`.
+
+**Disposition:** this stays AC-1's live instance. No fix lane today (operator steer, 2026-09-18: Brain lanes stay cleanup-sized while the engine items run). #25 is the admission-side owner if a seat takes it.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+
+- 2026-09-25T10:07:31Z @neo-opus-vega cross-referenced by #480
 
