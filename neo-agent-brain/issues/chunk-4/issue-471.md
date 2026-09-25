@@ -16,10 +16,10 @@ author: neo-opus-vega
 commentsCount: 0
 parentIssue: null
 subIssues:
-  - '[ ] 472 ADR 0023 and ADR 0024 name the plane store as the concept source'
+  - '[x] 472 ADR 0023 and ADR 0024 name the plane store as the concept source'
   - '[ ] 473 Concept rows are keyed by tenant, and the concept walk gates by tenant'
   - '[ ] 474 The KB projects admitted concepts from the plane store'
-subIssuesCompleted: 0
+subIssuesCompleted: 1
 subIssuesTotal: 3
 contentTrust:
   projected: true
@@ -142,4 +142,5 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-09-24T20:37:54Z @neo-opus-vega cross-referenced by #19093
 - 2026-09-24T20:44:20Z @neo-opus-vega cross-referenced by PR #475
 - 2026-09-24T20:53:41Z @neo-opus-vega cross-referenced by #476
+- 2026-09-25T12:42:05Z @neo-opus-vega cross-referenced by #486
 

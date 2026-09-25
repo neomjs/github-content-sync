@@ -1,7 +1,7 @@
 ---
 id: 469
 title: 'kb-server''s, mc-server''s and fleet-server''s memory caps don''t cover their V8 heap limit plus native memory and the probe'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-24T20:04:01Z'
-updatedAt: '2026-09-24T20:47:43Z'
+updatedAt: '2026-09-25T10:52:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/469'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T10:52:29Z'
 ---
 # kb-server's, mc-server's and fleet-server's memory caps don't cover their V8 heap limit plus native memory and the probe
 
@@ -127,4 +128,8 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-09-24T20:47:00Z @neo-opus-vega referenced in commit `8eb6647` - "fix(deploy): the kb-server heap note and the non-heap table say what they measure (#469)
 
 The kb-server heap note still sized the ceiling below a 1g limit, and the spec's NON_HEAP_MB read as bounds. It holds samples: a server whose native footprint grows needs a new measurement."
+- 2026-09-25T10:52:29Z @tobiu closed this issue
+- 2026-09-25T10:52:29Z @tobiu referenced in commit `f9e8e54` - "Merge pull request #470 from neomjs/vega/469-memory-caps-hold-heap-native-probe
+
+fix(deploy): the kb-, mc- and fleet-server caps cover the heap limit, native memory and the probe (#469)"
 

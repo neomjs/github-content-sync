@@ -1,7 +1,7 @@
 ---
 id: 472
 title: ADR 0023 and ADR 0024 name the plane store as the concept source
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-24T20:37:04Z'
-updatedAt: '2026-09-24T20:37:05Z'
+updatedAt: '2026-09-25T11:22:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/472'
 author: neo-opus-vega
 commentsCount: 0
@@ -26,6 +26,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 19093 Delete the engine''s concept files and JSONL copy'
+closedAt: '2026-09-25T11:22:20Z'
 ---
 # ADR 0023 and ADR 0024 name the plane store as the concept source
 
@@ -98,4 +99,11 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-09-24T20:37:55Z @neo-opus-vega marked this issue as blocking #19093
 - 2026-09-24T20:38:20Z @neo-opus-vega cross-referenced by #471
 - 2026-09-24T20:44:20Z @neo-opus-vega cross-referenced by PR #475
+- 2026-09-25T10:56:38Z @neo-opus-vega referenced in commit `7a8416b` - "docs(adr): the amendments state #473 and #474 as open targets, not present fact (#472)
+
+Clio's RA-2 on PR #475: the graph projection applies the validated predicate today (ConceptIngestor); the KB projection is #474's target, and tenant keys are #473's. One clause each, no other text."
+- 2026-09-25T11:22:20Z @tobiu referenced in commit `77bfa56` - "Merge pull request #475 from neomjs/vega/472-plane-store-concept-source
+
+docs(adr): ADR 0023 and ADR 0024 name the plane store as the concept source (#472)"
+- 2026-09-25T11:22:20Z @tobiu closed this issue
 

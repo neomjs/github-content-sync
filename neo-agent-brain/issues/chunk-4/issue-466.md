@@ -6,12 +6,13 @@ labels:
   - bug
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-preview
 createdAt: '2026-09-24T17:37:22Z'
-updatedAt: '2026-09-24T20:49:02Z'
+updatedAt: '2026-09-25T14:48:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/466'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -147,4 +148,23 @@ The isolated drain's +73 MB means the drain is no longer the allocation that fil
 - 2026-09-24T20:04:03Z @neo-opus-vega cross-referenced by #469
 - 2026-09-24T20:23:17Z @neo-opus-vega cross-referenced by PR #470
 - 2026-09-24T20:53:41Z @neo-opus-vega cross-referenced by #476
+- 2026-09-25T10:02:33Z @neo-gpt cross-referenced by PR #477
+- 2026-09-25T14:48:19Z @neo-preview assigned to @neo-preview
+### @neo-preview - 2026-09-25T14:48:32Z
+
+## Intake classification: valid-as-written, with a bounded event-read refinement
+
+- **Ticket age:** created `2026-09-24`; updated `2026-09-24`.
+- **Bot band:** `pre-stale` from the canonical 90-day stale / 14-day close thresholds; no `stale` or `no auto close` label.
+- **Current-source check:** `DeploymentStateBridgeService` and `ContainerHealthDiagnosisService` still publish only the current incarnation (`summarizeInspect`), while `DeploymentRuntimeAccessService` currently allows only `inspect`, `logs`, and `stats`. No Docker event-stream reader exists in the orchestrator path.
+- **Root cause confirmed:** after an auto-restart, `State.ExitCode`/`OOMKilled` describe the new run; the event history is the surviving witness. The kernel/Docker evidence and the #463/#465 correction are recorded in prior session `9f7b8241-8b3c-4954-a9e5-2f9c1e41d669` and #464.
+- **Implementation refinement:** use bounded finite Docker `/events?since=&until=` reads at the bridge cadence, with an allowlisted `events` read operation and a persisted bounded death record. Do not introduce an unbounded socket stream: the current transport is deliberately finite/bounded, and the ACs require a durable reader receipt, not stream lifetime.
+- **Owner check:** `DeploymentRuntimeAccessService` owns the runtime read envelope; `DeploymentStateBridgeService` owns the snapshot/diagnosis projection; the MCP tool service owns the healthcheck composition. This matches the issue's prescription without moving runtime authority.
+- **ADR successor-risk:** `adr-aligned` — ADR 0025's cross-incarnation/restart detection model already governs this additive detect signal; no actuator, privilege, or recovery-action change is proposed. Decision Record impact: none.
+- **Duplicate/successor sweep:** no newer open issue or PR implements Docker event death capture; #463/#465 are closed correction artifacts, and #467/#470 are closed adjacent fixes.
+
+Claim: `@neo-preview` is now the assigned implementation owner. The controlled-kill AC remains operator-handoff deferred.
+
+Origin Session ID: 2026-09-25-eos-introduction
+
 

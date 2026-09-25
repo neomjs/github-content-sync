@@ -159,6 +159,7 @@ Origin Session ID: `abdf06f7-5c90-4124-ad28-f0e2897214ee`
 - 2026-08-08T14:41:12Z @neo-gpt assigned to @neo-gpt
 - 2026-08-08T14:41:12Z @neo-gpt added the `epic` label
 - 2026-08-08T16:12:36Z @neo-gpt cross-referenced by #16715
+- 2026-08-08T16:12:48Z @neo-gpt added sub-issue #16715
 ### @neo-gpt-emmy - 2026-08-08T16:51:01Z
 
 ## Epic Review by @neo-gpt-emmy (Emmy, GPT-5.6 Sol Ultra, Codex)
@@ -226,11 +227,16 @@ The epic already names the higher-blast traps: no caller-supplied ownership, no 
 Origin Session ID: 019fe0b3-53bc-7ef2-8665-41a0ef3f7b62
 
 - 2026-08-08T18:47:17Z @neo-gpt-emmy cross-referenced by PR #16731
+- 2026-08-08T19:57:35Z @neo-fable-clio added sub-issue #16735
+- 2026-08-08T19:57:36Z @neo-fable-clio added sub-issue #16736
+- 2026-08-08T19:57:46Z @neo-fable-clio added sub-issue #16740
+- 2026-08-08T19:57:49Z @neo-fable-clio added sub-issue #16747
 - 2026-08-08T20:59:37Z @neo-gpt-emmy cross-referenced by #16735
 - 2026-08-08T21:50:54Z @neo-gpt cross-referenced by PR #16752
 - 2026-08-09T00:14:34Z @neo-gpt-emmy cross-referenced by PR #16761
 - 2026-08-09T01:01:49Z @neo-gpt cross-referenced by PR #16762
 - 2026-08-09T13:14:43Z @neo-kimi-phoebe cross-referenced by PR #16781
+- 2026-08-09T14:53:33Z @neo-fable-clio added sub-issue #16798
 - 2026-08-09T15:49:36Z @neo-fable-clio cross-referenced by PR #16796
 ### @neo-fable-clio - 2026-08-10T20:24:36Z
 
@@ -268,6 +274,23 @@ From tonight's one-command receipt (`#16694` comment `IC_kwDODSospM8AAAABOKWbkQ`
 - 2026-08-22T14:09:10Z @neo-gpt-emmy cross-referenced by #17547
 - 2026-08-22T16:24:00Z @neo-fable-clio cross-referenced by PR #17548
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
+- 2026-08-26T14:57:37Z @tobiu added sub-issue #27
+- 2026-08-26T15:05:41Z @tobiu added sub-issue #51
+- 2026-08-26T15:05:49Z @tobiu added sub-issue #52
+- 2026-08-26T15:06:01Z @tobiu added sub-issue #50
+- 2026-08-26T15:06:03Z @tobiu added sub-issue #53
+- 2026-08-26T15:09:28Z @tobiu added sub-issue #16736
+- 2026-08-26T15:09:28Z @tobiu added sub-issue #27
+- 2026-08-26T15:09:28Z @tobiu added sub-issue #16740
+- 2026-08-26T15:09:28Z @tobiu added sub-issue #16747
+- 2026-08-26T15:09:28Z @tobiu added sub-issue #50
+- 2026-08-26T15:09:28Z @tobiu added sub-issue #16715
+- 2026-08-26T15:09:28Z @tobiu added sub-issue #51
+- 2026-08-26T15:09:28Z @tobiu added sub-issue #52
+- 2026-08-26T15:09:28Z @tobiu added sub-issue #16735
+- 2026-08-26T15:09:28Z @tobiu added sub-issue #16798
+- 2026-08-26T15:09:28Z @tobiu added sub-issue #53
+- 2026-08-26T15:11:13Z @tobiu added parent issue #90
 - 2026-08-27T11:10:23Z @neo-fable-clio cross-referenced by #10
 - 2026-09-19T11:00:05Z @neo-fable-clio cross-referenced by #171
 - 2026-09-19T13:43:39Z @neo-opus-grace cross-referenced by #375

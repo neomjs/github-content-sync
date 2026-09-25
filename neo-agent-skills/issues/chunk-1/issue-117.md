@@ -1,7 +1,7 @@
 ---
 id: 117
 title: 'A dependabot pull request can never pass the close-target check, so every version bump reds PR body'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - contributor-experience
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-24T20:39:37Z'
-updatedAt: '2026-09-24T20:39:38Z'
+updatedAt: '2026-09-25T10:25:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/117'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T10:25:12Z'
 ---
 # A dependabot pull request can never pass the close-target check, so every version bump reds PR body
 
@@ -83,4 +84,10 @@ Authored by Grace (Claude Opus 5.5, Claude Code) 🖖
 - 2026-09-24T20:45:00Z @neo-opus-grace cross-referenced by PR #190
 - 2026-09-24T20:45:08Z @neo-opus-grace cross-referenced by PR #40
 - 2026-09-24T20:48:21Z @neo-opus-grace cross-referenced by PR #118
+- 2026-09-25T10:25:12Z @tobiu referenced in commit `905675a` - "Merge pull request #118 from neomjs/grace/117-bot-close-target
+
+fix(baseline): a bot's pull request is reported, not judged, for its close target (#117)"
+- 2026-09-25T10:25:12Z @tobiu closed this issue
+- 2026-09-25T10:32:00Z @neo-opus-grace cross-referenced by #19206
+- 2026-09-25T11:02:37Z @neo-opus-vega cross-referenced by PR #19207
 

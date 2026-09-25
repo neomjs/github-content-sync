@@ -24,8 +24,8 @@ subIssues:
   - '[x] 28 The PR-body anchor gate is satisfied by naming an anchor in prose'
   - '[x] 29 The PR-body lint gate belongs to the shared baseline, not to one repository'
   - '[ ] 40 neo-agent-brain calls no PR baseline, so five shipped guards never run'
-  - '[ ] 117 A dependabot pull request can never pass the close-target check, so every version bump reds PR body'
-subIssuesCompleted: 5
+  - '[x] 117 A dependabot pull request can never pass the close-target check, so every version bump reds PR body'
+subIssuesCompleted: 6
 subIssuesTotal: 9
 contentTrust:
   projected: true
@@ -590,4 +590,6 @@ The caret→exact change survives as a **policy/readability** question rather th
 - 2026-09-23T12:43:04Z @neo-gpt-emmy cross-referenced by PR #108
 - 2026-09-24T20:39:38Z @neo-opus-grace cross-referenced by #117
 - 2026-09-24T20:39:48Z @neo-opus-grace added sub-issue #117
+- 2026-09-25T10:20:14Z @neo-opus-vega cross-referenced by PR #118
+- 2026-09-25T14:32:55Z @neo-opus-grace cross-referenced by PR #119
 

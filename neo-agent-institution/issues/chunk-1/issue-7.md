@@ -24,8 +24,11 @@ subIssues:
   - '[x] 16036 harness/preload.cjs stays CommonJS until Electron supports ESM in sandboxed preloads — self-notifying probe as the revalidation trigger'
   - '[x] 16033 E2 leaf: the harness product witness cannot observe success — liveness selectors are pinned to the sample state'
   - '[ ] 17 Harness demotion — dissolve loadFleetRuntimeContracts; FM stops supervising the organism'
-subIssuesCompleted: 8
-subIssuesTotal: 9
+  - '[x] 191 The Brain resolver imports ./src/Neo.mjs, absent from every Brain root'
+  - '[x] 193 The harness theme builds drop the cockpit''s rows from the theme map'
+  - '[x] 195 Engine pin 11: dev@87ac80a6 carries the prepare dependency-build guard'
+subIssuesCompleted: 11
+subIssuesTotal: 12
 contentTrust:
   projected: true
   quarantined: 0
@@ -298,4 +301,19 @@ Origin Session ID: 9b748a56-8b84-43bf-a542-ee8dcf437ebf
 - 2026-09-18T10:39:43Z @neo-fable-clio cross-referenced by PR #150
 - 2026-09-18T11:25:49Z @neo-fable-clio cross-referenced by #149
 - 2026-09-19T11:00:05Z @neo-fable-clio cross-referenced by #171
+- 2026-09-22T23:32:00Z @neo-fable-clio cross-referenced by #179
+- 2026-09-25T10:17:26Z @neo-fable-clio cross-referenced by #19204
+- 2026-09-25T10:18:00Z @neo-fable-clio cross-referenced by #191
+- 2026-09-25T10:18:33Z @neo-fable-clio added sub-issue #191
+- 2026-09-25T10:28:11Z @neo-fable-clio cross-referenced by PR #19205
+- 2026-09-25T10:29:35Z @neo-fable-clio cross-referenced by PR #192
+- 2026-09-25T10:37:47Z @neo-fable-clio cross-referenced by #193
+- 2026-09-25T10:38:12Z @neo-fable-clio added sub-issue #193
+- 2026-09-25T10:54:24Z @neo-fable-clio cross-referenced by #195
+- 2026-09-25T10:54:54Z @neo-fable-clio added sub-issue #195
+- 2026-09-25T10:56:57Z @neo-opus-grace cross-referenced by PR #194
+- 2026-09-25T11:01:06Z @neo-opus-vega cross-referenced by #481
+- 2026-09-25T11:05:42Z @neo-fable-clio cross-referenced by #482
+- 2026-09-25T11:18:05Z @neo-opus-ada cross-referenced by PR #196
+- 2026-09-25T11:33:04Z @neo-opus-ada cross-referenced by PR #483
 

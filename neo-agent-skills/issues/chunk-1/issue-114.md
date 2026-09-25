@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-24T19:33:55Z'
-updatedAt: '2026-09-24T20:40:08Z'
+updatedAt: '2026-09-25T14:32:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/114'
 author: neo-opus-grace
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues:
   - '[x] 116 Every publish is tagged, and the shared baseline refuses a caller that is not at a release tag'
@@ -25,6 +25,8 @@ blockedBy: []
 blocking: []
 ---
 # Consumers call the shared baseline by commit SHA, not by a published release — tag every publish and call it by version
+
+> **Amended 2026-09-25 by the author.** Operator: *"we do NOT want to patch and duplicate inside our key org repos one by one"*. Institution #205, a Dependabot PR, failed the PR-body check that 0.1.19 fixed, because the Institution and devindex still call `@v0.1.17` while neo calls `@v0.1.19`. Step 4 changes from "Dependabot moves each pin" to one moving major tag. That is one last caller change per repository, then none. The original step 4 is in the edit history.
 
 ## Context
 
@@ -44,39 +46,38 @@ A consumer's baseline is named by an opaque commit, not by the published release
 ## The Fix
 
 1. **Tag every publish.** A `postpublish` script tags the published commit `v${npm_package_version}` and pushes the tag, so `npm publish` and the release tag cannot diverge. The first tag is `v0.1.17`, the publish that carries #111 and #113.
-2. **Call by version.** Each consumer calls `neomjs/neo-agent-skills/.github/workflows/reusable-pr-baseline.yml@vX.Y.Z`. At that tag, the workflow's `SKILLS_VERSION` pins install `neo-agent-skills@X.Y.Z` (asserted equal by `test-reusable-pr-baseline`), so the tag and the npm release are the same version.
-3. **Refuse a SHA or a branch.** A first job in the reusable baseline fails unless `job.workflow_ref` ends in `@refs/tags/v<semver>`, so a SHA or branch caller reds at once. The workflow header comment's "immutable `uses:` coordinate" becomes "a published release tag".
-4. **Dependabot moves the tag.** Dependabot's `github-actions` ecosystem is already enabled daily in all three consumers. It moves the `@vX.Y.Z` reference on each release, beside the npm bump: no hand-written pin PRs.
+2. **Call by version.** Each consumer calls `neomjs/neo-agent-skills/.github/workflows/reusable-pr-baseline.yml@v0`. At every release, the workflow's `SKILLS_VERSION` pins install `neo-agent-skills@X.Y.Z` (asserted equal by `test-reusable-pr-baseline`), so what runs is always one published version.
+3. **Refuse a SHA or a branch.** The first job in the reusable baseline fails unless `job.workflow_ref` names a tag (`@refs/tags/v…`), so a SHA or branch caller goes red at once. It then requires the workflow's own commit (`job.workflow_sha`) to be the commit `v${SKILLS_VERSION}` marks. A tag on an unpublished commit is refused too.
+4. **The major tag follows every release.** `tag-release` also moves `v0` (the major tag for 0.x) to each published release, forward only. A prerelease never moves it, and neither does a version older than the one it marks, so a backport cannot downgrade every caller. A skills fix reaches every consumer's next PR, with no pin PR in any repository.
 
 ## Acceptance Criteria
 
-- [ ] **AC-1:** Publishing creates and pushes `v<version>` on the published commit. `v0.1.17` exists on the commit npm 0.1.17 was built from.
-- [ ] **AC-2:** The reusable baseline fails when called at a SHA or a branch and passes at a `v<semver>` tag. The contract test covers both.
-- [ ] **AC-3:** No workflow in any neomjs consumer references `neo-agent-skills` by SHA: neo, the Institution and devindex call `@v0.1.17`.
-- [ ] **AC-4:** The first release after `v0.1.17` receives a dependabot PR moving the `@vX.Y.Z` reference. If it does not, the ticket reopens with the reason.
+- [x] **AC-1:** Publishing creates and pushes `v<version>` on the published commit. `v0.1.17` exists on the commit npm 0.1.17 was built from.
+- [ ] **AC-2:** The reusable baseline fails when called at a SHA, a branch, or a tag on an unpublished commit, and passes at `@v0` and at an exact `@vX.Y.Z`. The contract test covers each guard, with a mutation arm.
+- [ ] **AC-3:** Publishing moves `v0` to the published commit. A backport or a prerelease leaves it where it is. The `tag-release` fixture covers each case against a real origin.
+- [ ] **AC-4:** Post-publish, flagged: after 0.1.20 is published, `v0` marks `v0.1.20`'s commit, and neo, the Institution and devindex call `@v0`. Each of those three switches is the last pin change its repository makes.
 
 ## Out of Scope
 
 - The semver policy (what counts as patch, minor or major) and 1.0.0: a separate Discussion.
-- `v*` tag protection: a repository ruleset setting, which is the operator's to apply.
+- `v*` tag protection, which is a repository ruleset setting and the operator's to apply. A ruleset that blocks moving tags would stop `v0` from moving; `tag-release` then fails loudly and names the rerun.
 
 ## Supersedes
 
-#38 proposed installing the guards from `job.workflow_sha`, which moves toward SHAs; it is closed as not planned.
+#38 proposed installing the guards from `job.workflow_sha`, which moves toward SHAs; it is closed as not planned. Here `job.workflow_sha` is only compared against the published tag, and callers never name a SHA.
 
 ## Related
 
-#56 (merged substrate is not coupled to a published version) · #38 · #27 · neomjs/neo#19119 · neomjs/neo#19142
+#80 (the consumer-drift diagnosis; its per-consumer Dependabot ACs are superseded by step 4) · #56 (merged substrate is not coupled to a published version) · #38 · #27 · neomjs/neo#19119 · neomjs/neo#19142 · neomjs/neo-agent-institution#205
 
 Sweeps at 19:33Z:
 - **Latest open:** of the latest 20 open issues, three touch versions or pins: #38 (superseded here), #56 (publish coupling, which this narrows for tags) and #90 (a commit-time guard installer, a different surface).
-- **Consumer sweep:** reading every non-archived neomjs repository's `.github/workflows` finds the three callers above and nothing else (2026-09-24, 20:28Z). An earlier code search had found only the first two and missed devindex.
+- **Consumer sweep:** reading every non-archived neomjs repository's `.github/workflows` finds the three callers above and nothing else (2026-09-24, 20:28Z). An earlier code search had found only the first two and missed devindex. Re-read 2026-09-25 14:1xZ: neo `@v0.1.19`, the Institution `@v0.1.17`, devindex `@v0.1.17`; the other five repositories have no caller.
 - **A2A:** no claim.
 
 Origin Session ID: 1f7129c9-c0f7-42e0-ba47-7a42e5ac57c2
 
 Authored by Grace (Claude Opus 5.5, Claude Code) 🖖
-
 
 
 ## Timeline
@@ -137,4 +138,21 @@ Status at 20:45Z, after #115 merged and 0.1.18 was published.
 
 
 - 2026-09-24T20:48:21Z @neo-opus-grace cross-referenced by PR #118
+### @neo-opus-grace - 2026-09-25T10:29:18Z
+
+Status at 10:3xZ, 2026-09-25, after #118 merged and 0.1.19 was published.
+
+- **AC-1, live:** the 0.1.19 publish tagged itself. Its postpublish printed `tag-release: v0.1.19 at 905675a, pushed`, and `v0.1.19^{}` peels to `905675a`, which is #118's merge commit. This is the first tag the publish set without a hand rerun. Why 0.1.18's publish set none yesterday is still unexplained, and it hasn't recurred.
+- **AC-3:** neo (neomjs/neo#19198) and the Institution (neomjs/neo-agent-institution#190) call `@v0.1.17`, both merged. devindex (neomjs/devindex#40) is approved at its head and waits for the merge.
+- **AC-4 is still open, and Dependabot lags behind npm.** At 2026-09-25 02:05Z it bumped devindex's npm pin from 0.1.12 to 0.1.14 (`devindex#42`), although 0.1.15 to 0.1.18 had been published 6 to 38 h before. So the `@vX.Y.Z` move may take a day or two to appear.
+- **Until each caller reaches `@v0.1.19`, its dependabot PRs red `PR body`.** Right now that is `neomjs/neo#19199`, at `@v0.1.17`. That's the gap #117 closed in 0.1.19, and it goes away with the move. *Update 10:3xZ:* neo moves by hand, in neomjs/neo#19207, because the operator is merging its dependabot PRs now and a rebase of `#19199` still ran `@v0.1.17`. The Institution and devindex callers stay with dependabot, so AC-4 keeps its live test there.
+- **Check-back:** if no dependabot PR moves an `@v` reference by 2026-09-28, this ticket records the reason here.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session d2d30528-b6fe-423b-86ce-ab945396a201
+
+
+- 2026-09-25T10:32:00Z @neo-opus-grace cross-referenced by #19206
+- 2026-09-25T10:33:15Z @neo-opus-grace cross-referenced by PR #19207
+- 2026-09-25T14:32:55Z @neo-opus-grace cross-referenced by PR #119
+- 2026-09-25T14:33:13Z @neo-opus-grace cross-referenced by #80
 

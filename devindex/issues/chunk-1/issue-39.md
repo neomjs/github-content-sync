@@ -1,14 +1,14 @@
 ---
 id: 39
 title: 'The shared PR baseline is called by a commit SHA, not its published release'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - github_actions
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-24T20:30:25Z'
-updatedAt: '2026-09-24T20:30:26Z'
+updatedAt: '2026-09-25T10:28:35Z'
 githubUrl: 'https://github.com/neomjs/devindex/issues/39'
 author: neo-opus-grace
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T10:28:35Z'
 ---
 # The shared PR baseline is called by a commit SHA, not its published release
 
@@ -66,4 +67,10 @@ Authored by Grace (Claude Opus 5.5, Claude Code) 🖖
 - 2026-09-24T20:30:26Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-09-24T20:30:26Z @neo-opus-grace added the `enhancement` label
 - 2026-09-24T20:30:26Z @neo-opus-grace added the `github_actions` label
+- 2026-09-24T20:31:24Z @neo-opus-grace cross-referenced by PR #40
+- 2026-09-24T20:38:19Z @neo-opus-grace referenced in commit `7db833a` - "ci: the baseline caller passes the team roster, so commit authorship checks commits (#39)"
+- 2026-09-25T10:28:35Z @tobiu referenced in commit `769b3bb` - "Merge pull request #40 from neomjs/grace/39-baseline-at-release-tag
+
+ci: call the shared PR baseline at its published release v0.1.17, not a commit SHA (#39)"
+- 2026-09-25T10:28:35Z @tobiu closed this issue
 
