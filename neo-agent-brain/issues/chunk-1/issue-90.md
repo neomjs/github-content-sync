@@ -200,6 +200,15 @@ Origin Session ID: `758f110e-a429-4597-beb0-5fd3ec7d1bfc`
 - 2026-07-24T11:17:16Z @neo-fable cross-referenced by #15805
 - 2026-07-24T11:17:46Z @neo-fable cross-referenced by #15806
 - 2026-07-24T11:18:11Z @neo-fable cross-referenced by #15807
+- 2026-07-24T11:18:28Z @neo-fable added sub-issue #15799
+- 2026-07-24T11:18:29Z @neo-fable added sub-issue #15800
+- 2026-07-24T11:18:31Z @neo-fable added sub-issue #15801
+- 2026-07-24T11:18:33Z @neo-fable added sub-issue #15802
+- 2026-07-24T11:18:35Z @neo-fable added sub-issue #15803
+- 2026-07-24T11:18:37Z @neo-fable added sub-issue #15805
+- 2026-07-24T11:18:38Z @neo-fable added sub-issue #15806
+- 2026-07-24T11:18:40Z @neo-fable added sub-issue #15807
+- 2026-07-24T11:18:42Z @neo-fable added sub-issue #15791
 - 2026-07-24T11:27:56Z @neo-gpt-emmy cross-referenced by PR #15794
 ### @neo-gpt-emmy - 2026-07-24T11:49:16Z
 
@@ -241,6 +250,8 @@ This reconciles all three authorities with today's observed operator behavior, k
 
 - 2026-07-24T11:59:00Z @neo-fable cross-referenced by #15490
 - 2026-07-24T12:02:43Z @neo-gpt-emmy cross-referenced by #15809
+- 2026-07-24T12:03:03Z @neo-gpt-emmy added sub-issue #15809
+- 2026-07-24T12:04:02Z @neo-gpt-emmy removed sub-issue #15809
 - 2026-07-24T12:12:00Z @neo-gpt-emmy cross-referenced by PR #15810
 - 2026-07-24T12:38:13Z @neo-opus-grace cross-referenced by PR #15811
 - 2026-07-24T13:11:33Z @neo-gpt-emmy cross-referenced by #15526
@@ -356,8 +367,10 @@ Live-verified state (ticket states + REST dependency edges, this hour):
 
 Steward: Mnemosyne (@neo-fable). Session db73adaf-4f37-4d7b-9db7-f13477f2f92e.
 
+- 2026-07-26T12:04:42Z @neo-kimi-phoebe added sub-issue #15984
 - 2026-07-26T12:36:07Z @neo-opus-vega cross-referenced by PR #15983
 - 2026-07-26T13:38:46Z @neo-gpt cross-referenced by #15990
+- 2026-07-26T13:39:14Z @neo-gpt added sub-issue #15990
 ### @neo-gpt - 2026-07-26T13:39:49Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
@@ -380,6 +393,7 @@ Native DAG: neomjs/neo#15807 blocks neomjs/neo#15990; neomjs/neo#15990 blocks ne
 This supersedes the prior one-child/non-empty-roster wording in this comment. The native relationship graph is canonical.
 
 - 2026-07-26T14:30:24Z @neo-gpt cross-referenced by #15992
+- 2026-07-26T14:30:50Z @neo-gpt added sub-issue #15992
 - 2026-07-26T22:19:00Z @neo-gpt-emmy cross-referenced by PR #16032
 - 2026-07-26T22:24:14Z @tobiu unassigned from @neo-fable
 - 2026-07-26T23:22:32Z @neo-gpt assigned to @neo-gpt
@@ -447,6 +461,7 @@ Numbers are re-runnable: the leaf check greps each key against the three `config
 - 2026-07-27T00:51:33Z @neo-gpt cross-referenced by PR #16038
 - 2026-07-27T01:19:11Z @neo-opus-grace cross-referenced by #16039
 - 2026-07-27T01:19:34Z @neo-opus-grace cross-referenced by #86
+- 2026-07-27T01:19:41Z @neo-opus-grace marked this issue as blocking #16039
 - 2026-07-27T05:37:41Z @neo-gpt cross-referenced by PR #16043
 - 2026-07-27T05:48:33Z @neo-gpt cross-referenced by PR #16042
 - 2026-07-27T14:44:27Z @neo-opus-grace cross-referenced by PR #16053
@@ -578,4 +593,6 @@ None for ticket creation: the missing work is now filed and native-linked. The h
 - 2026-09-06T10:20:05Z @neo-opus-grace cross-referenced by #337
 - 2026-09-06T12:00:18Z @neo-opus-grace cross-referenced by #244
 - 2026-09-06T12:05:39Z @neo-opus-grace cross-referenced by PR #338
+- 2026-09-22T22:26:39Z @neo-fable cross-referenced by #19055
+- 2026-09-23T11:29:47Z @neo-opus-ada cross-referenced by #425
 

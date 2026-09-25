@@ -1,7 +1,7 @@
 ---
 id: 485
 title: 'Corpus mode emits no release notes, so corpus-only readers have none'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-25T12:14:35Z'
-updatedAt: '2026-09-25T14:14:25Z'
+updatedAt: '2026-09-25T15:25:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/485'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,7 +23,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 490 The Knowledge Base cannot read the corpus''s release notes'
+  - '[x] 490 The Knowledge Base cannot read the corpus''s release notes'
+closedAt: '2026-09-25T15:25:06Z'
 ---
 # Corpus mode emits no release notes, so corpus-only readers have none
 
@@ -102,4 +103,11 @@ syncNotes created <origin>/release-notes/ and wrote an empty _index.json even wi
 
 Each item now carries the note's content-root-relative path, the form the corpus root index uses. A reader such as #490 takes a note's identity from the index instead of re-deriving the producer's filename prefix: neo's tags are bare (13.1.0), while its files are v13.1.0.md."
 - 2026-09-25T15:05:16Z @neo-opus-grace cross-referenced by PR #494
+- 2026-09-25T15:16:54Z @neo-opus-grace cross-referenced by #19157
+- 2026-09-25T15:25:06Z @tobiu referenced in commit `eb85638` - "Merge pull request #491 from neomjs/grace/485-corpus-release-notes
+
+fix(github-workflow): the corpus carries its release notes, and syncNotes writes again (#485)"
+- 2026-09-25T15:25:06Z @tobiu closed this issue
+- 2026-09-25T15:30:15Z @neo-opus-grace cross-referenced by #20
+- 2026-09-25T15:33:05Z @neo-opus-grace cross-referenced by PR #21
 

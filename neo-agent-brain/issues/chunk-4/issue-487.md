@@ -1,7 +1,7 @@
 ---
 id: 487
 title: get_memory_core_tool_metrics rejects its own telemetry
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-25T13:22:34Z'
-updatedAt: '2026-09-25T15:08:12Z'
+updatedAt: '2026-09-25T15:32:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/487'
 author: neo-preview
 commentsCount: 1
@@ -24,93 +24,81 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T15:32:13Z'
 ---
 # get_memory_core_tool_metrics rejects its own telemetry
 
 ## Context
 
-A live Memory Core MCP call to `get_memory_core_tool_metrics` on 2026-09-25 returned an MCP structured-output validation error. The response validator rejected 20 `providerActivity.recentCompletions[*].failureStage` values because they were not in the declared enum. Core Memory Core reads, recency reads, semantic recall, and A2A remained available; the failure is isolated to the diagnostics response contract.
+A live Memory Core MCP call to `get_memory_core_tool_metrics` on 2026-09-25 returned an MCP structured-output validation error. The response validator rejected successful provider-completion rows because their `failureStage` is `null`.
 
-The mismatch is visible in the Brain source at the current `dev` head `f37b8d3`:
+The mismatch is in the Brain's OpenAPI publication path:
 
-- `ai/mcp/server/memory-core/toolService.mjs:640-648` records `failureStage: dispatch` whenever a tool call fails during dispatch.
-- `ai/mcp/server/memory-core/openapi.yaml:3549-3582` declares `ProviderActivityCompletion.failureStage` as only `provider | queue | unknown`.
-- `ai/services/memory-core/MemoryCoreRecorderService.mjs:782-790` projects the separate `recentSlowCalls` surface; the failing provider-completion projection is `ai/services/shared/providerActivityLedger.mjs:649-655`.
+- `ai/mcp/server/memory-core/openapi.yaml:3582` declares `ProviderActivityCompletion.failureStage` as `type: string`, `nullable: true`, with enum values `provider | queue | unknown`.
+- `ai/mcp/validation/openApiValidator.mjs:15-18` emits the schema consumed by `tools/list` through Zod's OpenAPI 3.0 target.
+- OpenAPI 3.0's `nullable: true` does not add `null` to an `enum`; AJV, as configured by the MCP client, therefore rejects `null` even though the Brain's Zod schema accepts it.
+- The memory-core input contract has the same publication shape for `addressType` at `openapi.yaml:2737`.
 
-The tool therefore rejects a response shape that its own recorder produces.
+The live provider ledger stores `null` for successful completions. The `dispatch` token belongs to the separate `mc_tool_call_log` / `recentSlowCalls` surface and does not enter `providerActivity.recentCompletions`.
 
-## The Problem
+## Problem
 
-`get_memory_core_tool_metrics` is an extended, read-only MCP diagnostics surface. Its output is consumed through client-side structured-content validation. A single failed tool call can persist a `dispatch` stage, and the next metrics read can then fail before the caller receives the diagnostic payload. The failure hides exactly the telemetry the operator needs when diagnosing dispatch failures.
+`get_memory_core_tool_metrics` is an extended, read-only MCP diagnostics surface. Its response is validated by MCP clients against the published JSON Schema. A successful provider completion can therefore make the diagnostics response unreadable exactly when a caller needs provider health evidence.
 
-The existing closed issue #310 addresses a different response-wrapper mismatch between `buildOutputZodSchema` and `formatToolResult`. It does not cover the `failureStage` value domain and is not a duplicate.
+The original ticket premise that the rejected value was `dispatch` was falsified by the live rows and the client-side AJV receipt. The defect is schema publication, not a missing provider-stage writer.
 
-## The Architectural Reality
+## Architectural reality
 
-The contract crosses three Brain-owned surfaces:
+The corrected contract crosses these Brain-owned surfaces:
 
-1. `ai/services/shared/providerActivityLedger.mjs` owns the closed provider-completion failure-stage vocabulary and projection; `MemoryCoreRecorderService.mjs` owns persisted tool-call telemetry and the separate `recentSlowCalls` surface.
-2. `ai/mcp/server/memory-core/toolService.mjs` owns the dispatch boundary and emits the `dispatch` classification.
-3. `ai/mcp/server/memory-core/openapi.yaml` owns the MCP output contract consumed by the validator.
+1. `ai/mcp/validation/openApiValidator.mjs` owns the JSON Schema publication for MCP `tools/list` output and input schemas.
+2. `ai/services/shared/providerActivityLedger.mjs` owns the provider-completion writer and projection; successful rows persist `failureStage: null`, and unknown persisted stages normalize to `unknown` at the projection boundary.
+3. `ai/mcp/server/memory-core/openapi.yaml` owns the source OpenAPI declarations, including the nullable `failureStage` and `addressType` enums.
 
-The Brain structure map places the change in the existing `ai/services/memory-core` and `ai/mcp/server/memory-core` homes. No new service, folder, or runtime surface is needed.
+No provider vocabulary, persistence, or service-boundary change is required.
 
-## The Fix
+## Fix
 
-1. Make `dispatch` an explicit member of the `ProviderActivityCompletion.failureStage` enum, because it is a real recorder stage and not an error alias.
-2. Keep the contract fail-closed for unknown persisted values: normalize any unrecognized legacy or future value to `unknown` at the metrics projection boundary rather than emitting an unvalidated string.
-3. Add a red-first Brain unit arm that exercises a real MCP `tools/call` with structured-output validation, seeds a failed dispatch row, and asserts that the metrics response validates. Include a control for an unknown persisted value normalizing to `unknown`.
-4. Run the OpenAPI service-parity lint and the Brain unit suite at the fix head.
+1. In `toOpenApiJsonSchema`, append `null` to every nullable enum node exactly once. This repairs all current and future nullable enum publications at their common owner instead of hand-editing individual YAML fields.
+2. Keep the provider-activity failure-stage vocabulary closed at `provider | queue | unknown`; preserve `null` for successful completions and `unknown` for unrecognized persisted values.
+3. Add a real `CallToolRequestSchema` handler arm that seeds a successful completion and validates `structuredContent` with AJV against the published output schema; retain a raw-SQL unknown-stage control that projects as `unknown`.
+4. Add a converter-level assertion for both nullable enums (`failureStage` and `addressType`) and keep the two focused regression specs in the Brain unit workflow.
 
 ## Contract Ledger Matrix
 
 | Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `get_memory_core_tool_metrics` → `providerActivity.recentCompletions[*].failureStage` | `openapi.yaml` schema plus the shared provider-activity projection and dispatch boundary | Declare `dispatch` alongside `provider`, `queue`, and `unknown`; preserve the semantic distinction | Normalize any unrecognized persisted value to `unknown` before emission | Update the operation/schema description to name dispatch | Live MCP validation failure plus a red-first client-validated tools-call arm |
-| `providerActivityLedger` metrics projection | `providerActivityLedger.mjs:649-655` | Project known recorder stages unchanged and bound unknown values to `unknown` | No raw value escapes the declared domain | Inline contract comment at the projection | Unit arm for dispatch and unknown fallback |
+| MCP JSON Schema publication for nullable enums | `ai/mcp/validation/openApiValidator.mjs` + source OpenAPI declarations | Every `nullable: true` enum includes `null` exactly once; non-null values remain unchanged | No raw enum value is emitted by the converter | Existing OpenAPI schema annotations remain the source declarations | Converter assertions plus AJV validation for `failureStage` and `addressType` |
+| `get_memory_core_tool_metrics` → `providerActivity.recentCompletions[*].failureStage` | `providerActivityLedger.mjs` projection + the published output schema | Successful completions emit `null`; known stages remain `provider | queue`; unrecognized persisted stages emit `unknown` | Unknown persisted values are normalized at the projection boundary | Existing bounded telemetry contract | Real handler arm validates a successful `null` row and an unknown-value control |
+| `manage_wake_subscription` → `harnessTargetMetadata.addressType` | Memory-core input OpenAPI declaration + `toOpenApiJsonSchema` | Published input enum admits its declared values and `null` | No value-domain widening beyond nullability | Existing bridge metadata contract | MCP listing assertion and converter-level AJV validation |
 
 ## Decision Record impact
 
-None. This repairs an existing MCP contract and does not change the Memory Core persistence or service-boundary architecture.
+None. This repairs the existing MCP schema publication boundary and does not change Memory Core persistence, provider attribution, or service architecture.
 
 ## Acceptance Criteria
 
-- [ ] A real `tools/call` to `get_memory_core_tool_metrics` with client structured-output validation succeeds when a recent completion has `failureStage: dispatch`.
-- [ ] The OpenAPI schema accepts every stage emitted by the recorder, and an unrecognized persisted stage is emitted as `unknown` rather than an invalid string.
-- [ ] A red-first Brain unit arm covers the dispatch row and the unknown-value fallback; it is red at the current head and green after the fix.
-- [ ] `npm run ai:lint-openapi-service-parity` and the Brain unit suite pass at the fix head.
+- [ ] A real `tools/call` to `get_memory_core_tool_metrics` with client-side AJV validation succeeds when a recent completion has `failureStage: null`.
+- [ ] The published output schema admits `null` for `failureStage`, and an unrecognized persisted stage is emitted as `unknown` rather than an invalid string.
+- [ ] The published `manage_wake_subscription` input schema admits `null` for `addressType`; nullable enums contain `null` exactly once.
+- [ ] The focused contract suite and `npm run ai:lint-openapi-service-parity` pass at the fix head; unrelated baseline failures are recorded rather than folded into this ticket.
 
 ## Out of Scope
 
+- Changing the provider-activity failure-stage vocabulary or adding a `dispatch` provider stage.
 - Changing telemetry retention, redaction, or provider-activity aggregation.
 - Changing Memory Core health, backup, or maintenance degradation.
 - Reopening or broadening closed #310.
-- Changing unrelated MCP response-wrapper behavior.
+- Fixing unrelated current `dev` contract-test drift in `ingest_source_files` or the memory-core tool-tier inventory.
 
-## Sweep Attestation
+## Evidence and provenance
 
-Live latest-open sweep: checked the latest 20 open Brain issues at 2026-09-25T13:21:42Z; no equivalent tool-metrics or `failureStage` issue found. A2A all-state sweep: checked the latest 30 messages; no same-scope lane claim or intent found. MC sweep: queried the problem nouns for Memory Core tool metrics, `failureStage`, `dispatch`, and structured-output validation; no prior decision was found. Own-assignment sweep: GitHub cannot resolve `@neo-preview` as an assignee in this repository, so this issue remains explicitly unowned rather than misassigning another identity. Structure map: `npm run ai:structure-map -- --files --loc` passed in the Brain checkout and confirms the two owning `ai/` homes.
-
-## Related
-
-- #310 (closed): a different untyped response-schema/result-wrapper mismatch.
-- `ai/mcp/server/memory-core/toolService.mjs:640-648`
-- `ai/mcp/server/memory-core/openapi.yaml:3549-3582`
-- `ai/services/memory-core/MemoryCoreRecorderService.mjs:782-790`
+The review amendment and source-coordinate falsifiers are recorded in PR #492 review 5319294438 and the #487 amendment comment. The focused repaired run is 117 passed / 2 pre-existing failures; the two failures concern `ingest_source_files` input drift and the memory-core tool-tier inventory, both outside this change.
 
 Origin Session ID: 8d28d3e0-a698-4266-b702-298bb385be3f
 
-unowned-rationale: Eos verified and authored the defect, but GitHub does not currently recognize `@neo-preview` as an assignee in `neomjs/neo-agent-brain`; leave it unowned until the seat has collaborator assignment access.
+Handoff Retrieval Hint: `query_raw_memories("neo-agent-brain Memory Core tool metrics nullable enum null OpenAPI AJV")`
 
-Handoff Retrieval Hint: `query_raw_memories("neo-agent-brain Memory Core tool metrics failureStage dispatch structured output schema validation")`
-
-## Intake Sharpening (2026-09-25)
-
-The live MCP reproduction and current source narrow the owner: `MemoryCoreRecorderService.mjs:782-790` projects the separate `recentSlowCalls` surface, not `providerActivity.recentCompletions`. The failing provider-completion projection is `ai/services/shared/providerActivityLedger.mjs:649-655`, with its closed `FAILURE_STAGES` vocabulary at `:72`.
-
-Implementation will therefore add `dispatch` to the shared provider-activity vocabulary, normalize persisted completion values at the shared metrics projection (unknown values remain `unknown`), update the `ProviderActivityCompletion` OpenAPI enum, and exercise a real validated tools/call plus the unknown-value control. The recorder spec remains a consumer regression guard; no enum is added to the unconstrained redacted `recentSlowCalls` field.
-
-Prescription checked: `ai/services/shared/providerActivityLedger.mjs` — owns the closed failure-stage vocabulary and provider-completion projection. `MemoryCoreRecorderService.mjs` remains a downstream telemetry consumer, not the mutation owner.
 
 ## Timeline
 
@@ -132,4 +120,9 @@ Proposed Fix: in `toOpenApiJsonSchema`, add `null` to `enum` for every `nullable
 
 — Vega (Fable 5.1, Claude Code) 🌿
 
+- 2026-09-25T15:21:49Z @neo-preview referenced in commit `0c01707` - "fix(memory-core): publish nullable enums with null (#487)"
+- 2026-09-25T15:32:14Z @tobiu referenced in commit `e62708b` - "Merge pull request #492 from neomjs/agent/487-tool-metrics-schema
+
+fix(memory-core): align provider failure-stage output contract (#487)"
+- 2026-09-25T15:32:14Z @tobiu closed this issue
 

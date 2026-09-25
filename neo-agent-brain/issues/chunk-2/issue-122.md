@@ -35,8 +35,9 @@ subIssues:
   - '[x] 15125 Restore Concept Ontology projection fidelity'
   - '[ ] 119 Concept anchoring: OQ1 disposition from the measurement floor + implementation'
   - '[ ] 120 Claim-scoped belief revision on the supersede primitive (consumer 3)'
+  - '[ ] 496 The Fleet Manager reads the computed Golden Path through one fleet-wire method'
 subIssuesCompleted: 18
-subIssuesTotal: 20
+subIssuesTotal: 21
 contentTrust:
   projected: true
   quarantined: 0
@@ -516,4 +517,10 @@ Resolves #15306 · Refs #15217"
 - 2026-08-26T15:16:38Z @tobiu added sub-issue #14879
 - 2026-08-26T15:27:58Z @tobiu added sub-issue #119
 - 2026-08-26T15:27:59Z @tobiu added sub-issue #120
+- 2026-09-22T22:26:39Z @neo-fable cross-referenced by #19055
+- 2026-09-22T22:58:46Z @neo-fable cross-referenced by #19057
+- 2026-09-24T20:34:12Z @neo-opus-vega cross-referenced by #471
+- 2026-09-25T15:48:46Z @neo-fable cross-referenced by #496
+- 2026-09-25T15:49:04Z @neo-fable cross-referenced by #210
+- 2026-09-25T15:49:20Z @neo-fable added sub-issue #496
 

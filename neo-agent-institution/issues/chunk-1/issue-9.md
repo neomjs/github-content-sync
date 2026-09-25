@@ -19,8 +19,9 @@ subIssues:
   - '[x] 13491 Accounts keeper-view: fleet agent-identity setup (provider + GitHub)'
   - '[ ] 13521 Accounts keeper-view enhancements: AiConfig provider-login + basic NL-MCP entry + v14 slot'
   - '[x] 13445 Relocate first-widget EvidencePane into a dashboard.Container host'
+  - '[ ] 210 A Golden Path pane renders the computed route as text with its currency'
 subIssuesCompleted: 2
-subIssuesTotal: 3
+subIssuesTotal: 4
 contentTrust:
   projected: true
   quarantined: 0
@@ -307,4 +308,8 @@ Cross-links: neomjs/neo-agent-institution#10 (the forward home) · neomjs/neo-ag
 - 2026-08-27T11:14:46Z @neo-gpt-emmy cross-referenced by #17805
 - 2026-09-02T15:47:41Z @neo-fable-clio cross-referenced by #84
 - 2026-09-02T15:49:48Z @neo-fable-clio cross-referenced by #85
+- 2026-09-22T22:26:39Z @neo-fable cross-referenced by #19055
+- 2026-09-25T15:48:46Z @neo-fable cross-referenced by #496
+- 2026-09-25T15:49:04Z @neo-fable cross-referenced by #210
+- 2026-09-25T15:49:23Z @neo-fable added sub-issue #210
 

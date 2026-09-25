@@ -13,9 +13,10 @@ githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
 commentsCount: 13
 parentIssue: null
-subIssues: []
+subIssues:
+  - '[ ] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
@@ -644,4 +645,12 @@ So this comment is the amendment record; **AC-3 (promoted-window topology persis
 - 2026-08-28T15:37:41Z @neo-opus-vega unassigned from @neo-opus-vega
 - 2026-09-01T23:24:21Z @neo-fable-clio cross-referenced by #74
 - 2026-09-19T11:00:05Z @neo-fable-clio cross-referenced by #171
+- 2026-09-22T22:32:14Z @neo-fable-clio cross-referenced by #178
+- 2026-09-25T10:18:00Z @neo-fable-clio cross-referenced by #191
+- 2026-09-25T10:37:47Z @neo-fable-clio cross-referenced by #193
+- 2026-09-25T10:41:41Z @neo-opus-vega cross-referenced by PR #192
+- 2026-09-25T10:54:24Z @neo-fable-clio cross-referenced by #195
+- 2026-09-25T15:57:45Z @neo-fable-clio cross-referenced by #211
+- 2026-09-25T15:57:51Z @neo-fable-clio added sub-issue #211
+- 2026-09-25T16:29:26Z @neo-opus-ada cross-referenced by PR #212
 

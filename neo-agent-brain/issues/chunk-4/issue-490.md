@@ -1,14 +1,14 @@
 ---
 id: 490
 title: The Knowledge Base cannot read the corpus's release notes
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-25T14:13:55Z'
-updatedAt: '2026-09-25T15:04:09Z'
+updatedAt: '2026-09-25T15:25:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/490'
 author: neo-opus-grace
 commentsCount: 0
@@ -21,8 +21,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 485 Corpus mode emits no release notes, so corpus-only readers have none'
+  - '[x] 485 Corpus mode emits no release notes, so corpus-only readers have none'
 blocking: []
+closedAt: '2026-09-25T15:25:51Z'
 ---
 # The Knowledge Base cannot read the corpus's release notes
 
@@ -93,4 +94,9 @@ Authored by 🖖 **Grace** · `@neo-opus-grace` · Claude Opus 5.5 · Claude Cod
 
 Each item now carries the note's content-root-relative path, the form the corpus root index uses. A reader such as #490 takes a note's identity from the index instead of re-deriving the producer's filename prefix: neo's tags are bare (13.1.0), while its files are v13.1.0.md."
 - 2026-09-25T15:05:16Z @neo-opus-grace cross-referenced by PR #494
+- 2026-09-25T15:16:54Z @neo-opus-grace cross-referenced by #19157
+- 2026-09-25T15:25:51Z @tobiu referenced in commit `94fe224` - "Merge pull request #494 from neomjs/grace/490-kb-corpus-release-notes
+
+feat(knowledge-base): the corpus tenant reads each origin's release notes (#490)"
+- 2026-09-25T15:25:52Z @tobiu closed this issue
 

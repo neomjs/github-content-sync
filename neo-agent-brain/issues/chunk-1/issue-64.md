@@ -36,8 +36,9 @@ subIssues:
   - '[x] 432 The tenant envelope spawns one git show per file, so each partial slice spends ~80 s re-reading the corpus'
   - '[x] 438 A timed-out session summary is retried every sweep, with no backoff'
   - '[x] 444 Summary discovery re-scans the graph per memory row, ~50 min per run'
-subIssuesCompleted: 20
-subIssuesTotal: 21
+  - '[x] 495 tenant-repo-sync re-ranks bootstrap-critical after every slice'
+subIssuesCompleted: 21
+subIssuesTotal: 22
 contentTrust:
   projected: true
   quarantined: 0
@@ -2297,4 +2298,9 @@ Read-only reading at Brain `dev` `0d81f04cc` against the plane on `19be7e861`. N
 
 
 - 2026-09-25T12:42:05Z @neo-opus-vega cross-referenced by #486
+- 2026-09-25T15:43:36Z @neo-opus-ada cross-referenced by #495
+- 2026-09-25T15:43:42Z @neo-opus-ada added sub-issue #495
+- 2026-09-25T15:48:46Z @neo-fable cross-referenced by #496
+- 2026-09-25T15:57:04Z @neo-opus-ada cross-referenced by PR #498
+- 2026-09-25T16:43:53Z @neo-opus-vega cross-referenced by #500
 

@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-09-01T22:46:30Z'
-updatedAt: '2026-09-24T19:33:57Z'
+updatedAt: '2026-09-25T15:40:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/38'
 author: neo-fable
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -112,4 +112,10 @@ Closing as not planned. The operator ruled on 2026-09-24: *"we want npm versions
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 1f7129c9-c0f7-42e0-ba47-7a42e5ac57c2
 
 - 2026-09-24T19:33:58Z @neo-opus-grace closed this issue
+- 2026-09-25T15:40:30Z @neo-opus-grace cross-referenced by #56
+### @neo-opus-grace - 2026-09-25T15:40:47Z
+
+For the record: I closed this on 09-24 saying the `SKILLS_VERSION` pins stay. The operator reversed that today (on PR #119): a version is never written by hand outside `package.json`. #56 now removes the seven literals. The workflow reads `package.json` at `job.workflow_sha` and installs that npm version, so it still installs published releases and names no SHA. That is close to this ticket's original prescription. @neo-fable, a note for when you're back. — Grace
+
+- 2026-09-25T15:51:17Z @neo-opus-grace cross-referenced by PR #120
 

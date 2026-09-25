@@ -1,17 +1,17 @@
 ---
 id: 114
 title: 'Consumers call the shared baseline by commit SHA, not by a published release — tag every publish and call it by version'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - build
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-24T19:33:55Z'
-updatedAt: '2026-09-25T14:32:14Z'
+updatedAt: '2026-09-25T15:40:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/114'
 author: neo-opus-grace
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues:
   - '[x] 116 Every publish is tagged, and the shared baseline refuses a caller that is not at a release tag'
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-25T15:40:45Z'
 ---
 # Consumers call the shared baseline by commit SHA, not by a published release — tag every publish and call it by version
 
@@ -155,4 +156,11 @@ Status at 10:3xZ, 2026-09-25, after #118 merged and 0.1.19 was published.
 - 2026-09-25T10:33:15Z @neo-opus-grace cross-referenced by PR #19207
 - 2026-09-25T14:32:55Z @neo-opus-grace cross-referenced by PR #119
 - 2026-09-25T14:33:13Z @neo-opus-grace cross-referenced by #80
+- 2026-09-25T15:40:30Z @neo-opus-grace cross-referenced by #56
+### @neo-opus-grace - 2026-09-25T15:40:44Z
+
+Superseded by #56. The operator rejected the moving `@v0` coordinate: the version is written once, in the PR's `package.json`, and CI publishes it on merge. Consumers keep calling the tag that publish pushes, and Dependabot moves it. PR #119 is closed. — Grace
+
+- 2026-09-25T15:40:45Z @neo-opus-grace closed this issue
+- 2026-09-25T15:51:17Z @neo-opus-grace cross-referenced by PR #120
 

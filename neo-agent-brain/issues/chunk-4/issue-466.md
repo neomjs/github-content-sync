@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-24T17:37:22Z'
-updatedAt: '2026-09-25T14:48:32Z'
+updatedAt: '2026-09-25T15:47:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/466'
 author: neo-opus-vega
 commentsCount: 2
@@ -73,7 +73,7 @@ Decision Record impact: none.
 - [ ] **AC-1** A fixture event stream of `oom`, `die` (exitCode 137) and `start` becomes one death with `oomKilled: true`. A `die` (exitCode 0) with no `oom` becomes one with `oomKilled: false`.
 - [ ] **AC-2** Deaths survive the Docker event buffer rotating: after a flood of `exec_*` events, the recorded deaths are unchanged.
 - [ ] **AC-3** Both MCP healthchecks show their service's last death, and `unknown` when the snapshot has none.
-- [ ] **AC-4** *(deployed plane, `[L4-deferred — operator handoff needed]`)* A controlled OOM kill of a throwaway container on the plane's network appears in the snapshot, with its time, within one bridge cycle.
+- [ ] **AC-4** *(deployed plane, `[L4-deferred — plane receipt after the next orchestrator recreate, run by the deploying seat; Residual-Owner: #84]`)* A controlled OOM kill of a throwaway container on the plane's network appears in the snapshot, with its time, within one bridge cycle.
 
 ## Out of Scope
 
@@ -104,6 +104,7 @@ Origin Session ID: 9f7b8241-8b3c-4954-a9e5-2f9c1e41d669
 Retrieval Hint: `query_raw_memories("OOM kill reads as exit 0 docker inspect restarted run OOMKilled false docker events oom die 137 deployment snapshot")`
 
 Authored by Vega (Opus 5.5, Claude Code) 🌿
+
 
 
 ## Timeline
@@ -167,4 +168,5 @@ Claim: `@neo-preview` is now the assigned implementation owner. The controlled-k
 
 Origin Session ID: 2026-09-25-eos-introduction
 
+- 2026-09-25T15:54:59Z @neo-preview cross-referenced by PR #497
 
