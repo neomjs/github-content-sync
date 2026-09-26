@@ -8,7 +8,7 @@ labels:
   - testing
 assignees: []
 createdAt: '2026-09-25T17:02:02Z'
-updatedAt: '2026-09-25T17:02:02Z'
+updatedAt: '2026-09-25T22:26:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/214'
 author: neo-opus-ada
 commentsCount: 0
@@ -46,7 +46,13 @@ No automated run proves the composition the unit arms cannot. Nothing checks tha
    - starts a loopback plane on a runtime-allocated port;
    - writes a record into the smoke's isolation root, never the user's real `userData`;
    - boots the fleet child in `plane-attach` from that record.
-   **Decision at intake:** the fixture is either an isolated organism mc-server under the smoke profile (real admission, one more supervised child) or a stub that answers the admission subset. Read `createPlaneMailboxClient`'s admission sequence first. A stub re-encodes the protocol, so it needs a parity arm against the client.
+   **Decision (2026-09-25, read at Brain `dev` `60807a5`):** use an isolated mc-server under the smoke profile, in `seat-token` auth mode, not a stub.
+   - Since #224, the attach needs the bearer's **identity**: the shell's probe and the fleet child's `init` both read `list_permissions`' `identity`.
+   - `local-bearer` mode proves possession only (`AuthService.createLocalBearerVerifier` returns no `userId`), so its attach would refuse as `no-identity`.
+   - `seat-token` binds a minted subject per request (`AuthService.setupSeatToken`).
+   - `mintSeatToken({agentIdentityNodeId})` (`ai/mcp/server/shared/helpers/seatToken.mjs`) mints the fixture's bearer and registry row for a fixture identity seeded in the isolated graph.
+   - A stub would re-encode the Streamable-HTTP session flow the probe and the client both use, so it would need its own parity arm.
+   - **Precondition:** checkout runs share the installed app's `userData` (`neo-harness`), so the smoke must first get its own `userData`. See the 2026-09-25 defect-note.
 2. **No keychain write.** In this mode the record goes through an encryption stand-in bound only to the smoke. Electron's `safeStorage` stays Electron's contract, and the unit arms already fake it.
 3. **Census.** The census watches a set of bearers: the fleet bearer plus the plane bearer from the record or `NEO_FLEET_PLANE_BEARER`. Red-first: an injected line carrying the plane bearer must fail the smoke.
 
@@ -85,6 +91,7 @@ Origin Session ID: 0f80515e-7682-4313-8101-b926da48c55c
 Retrieval Hint: "harness smoke fixture plane plane-attach safeStorage keychain secret census plane bearer"
 
 
+
 ## Timeline
 
 - 2026-09-25T17:02:04Z @neo-opus-ada added the `enhancement` label
@@ -93,4 +100,8 @@ Retrieval Hint: "harness smoke fixture plane plane-attach safeStorage keychain s
 - 2026-09-25T17:02:10Z @neo-opus-ada added parent issue #12
 - 2026-09-25T17:02:11Z @neo-opus-ada cross-referenced by #211
 - 2026-09-25T17:03:02Z @neo-opus-ada cross-referenced by PR #212
+- 2026-09-25T20:49:32Z @neo-opus-ada cross-referenced by #219
+- 2026-09-25T20:55:00Z @neo-opus-ada cross-referenced by #221
+- 2026-09-25T21:32:45Z @neo-opus-ada cross-referenced by #223
+- 2026-09-25T22:08:39Z @neo-opus-ada cross-referenced by #225
 

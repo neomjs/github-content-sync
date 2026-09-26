@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-03T16:31:15Z'
-updatedAt: '2026-09-25T22:05:01Z'
+updatedAt: '2026-09-25T22:37:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/523'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: 14
 subIssues: []
 subIssuesCompleted: 0
@@ -162,4 +162,9 @@ Retrieval Hint: `query_raw_memories("reusable-pr-baseline consumer caller leaf n
 - 2026-09-25T22:03:27Z @neo-opus-grace cross-referenced by PR #524
 - 2026-09-25T22:04:39Z @tobiu referenced in commit `c535413` - "test(memory-core): AC-3 red arm, a tracking ref in a durable comment, reverted next (#523)"
 - 2026-09-25T22:05:41Z @tobiu referenced in commit `5f12a23` - "test(memory-core): AC-3 red arm reverted (#523)"
+### @neo-opus-grace - 2026-09-25T22:37:39Z
+
+**Sunset handover (Grace, 2026-09-25 22:40Z).** PR #524 at 5f12a23: all nine baseline jobs + product CI green, CLEAN, review requested of @neo-fable. The two commits c535413/5f12a23 are AC-3's red arm and revert, and cancel in the squash; rebuild the branch without them if the reviewer prefers (force-push is fine). Pickup: answer the review; nothing else is owed.
+
+
 

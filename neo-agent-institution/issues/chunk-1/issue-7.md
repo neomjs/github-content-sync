@@ -27,10 +27,10 @@ subIssues:
   - '[x] 191 The Brain resolver imports ./src/Neo.mjs, absent from every Brain root'
   - '[x] 193 The harness theme builds drop the cockpit''s rows from the theme map'
   - '[x] 195 Engine pin 11: dev@87ac80a6 carries the prepare dependency-build guard'
-  - '[ ] 219 The packaged shell keeps no log of its own boot'
+  - '[x] 219 The packaged shell keeps no log of its own boot'
   - '[x] 221 An unconfigured shell beside a running plane refuses its Brain and says only "not ready"'
   - '[x] 223 The plane record stores no identity, so a Finder launch cannot attach'
-subIssuesCompleted: 13
+subIssuesCompleted: 14
 subIssuesTotal: 15
 contentTrust:
   projected: true

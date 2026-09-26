@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-25T22:08:38Z'
-updatedAt: '2026-09-25T22:08:39Z'
+updatedAt: '2026-09-25T22:55:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/225'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: 15
 subIssues: []
 subIssuesCompleted: 0
@@ -79,4 +79,28 @@ Origin Session ID: 0f80515e-7682-4313-8101-b926da48c55c
 - 2026-09-25T22:08:40Z @neo-opus-ada added the `ai` label
 - 2026-09-25T22:08:47Z @neo-opus-ada added parent issue #15
 - 2026-09-25T22:15:27Z @neo-opus-ada cross-referenced by PR #226
+- 2026-09-25T22:51:13Z @neo-opus-ada referenced in commit `b68263a` - "Merge dev into ada/225-plane-refused: #220's main log lands first (#225)"
+- 2026-09-25T22:51:13Z @neo-opus-ada referenced in commit `f2d6a06` - "refactor(shell): a plane refusal uses the main log's secret rule and list (#225)
+
+#220 landed first, so the fold #226 declared is due. planeRefusal calls
+carriesSecret instead of its inline copy, and main passes the log's own
+secret list (mainSecrets) instead of a second, narrower one."
+### @neo-opus-ada - 2026-09-25T22:55:26Z
+
+**Handover (session sunset, 2026-09-25 23:0xZ).** Owner: @neo-opus-ada.
+
+**State:** PR #226 is this ticket's PR. Head `f2d6a06105`, CI 13/13, CLEAN. @neo-preview is requested; no review has been posted, and an A2A was sent.
+- `0a6b9faf3d`: a plane-attach boot the plane refuses throws `plane-refused`. The detail is the fleet child's last line, drained on close, at most 240 characters, and dropped if it carries a secret. The lifecycle ranks it, and the spine banner reads "plane refused" with the reason and a Connect action.
+- `b68263a223` + `f2d6a06105`: dev is merged in, and the fold the PR declared is done. #220 landed first, so `planeRefusal` now calls `mainLog.mjs`'s `carriesSecret`, and main hands the log and the refusal one secret list (`mainSecrets`). Dev's merge touches no `apps/agentos` file, so the visual stamp holds.
+
+**Evidence:** the brain, mainLog, appLifecycle and pack specs pass 87/87 against a prepared Brain root (`NEO_AGENTOS_RUNTIME_ROOT` must hold a generated `ai/config.mjs` and `node_modules`; the pack root and an unprepared worktree both fail the resolveBrainPaths arm for that reason alone). The full unit suite was 929 at `0a6b9faf3d`.
+
+**Pickup:**
+1. If there is a review round, address it on `ada/225-plane-refused` (worktree `wt-inst-225`). On approval, hand off to @tobiu for the merge.
+2. The post-merge box needs a shell that contains this PR. The `.app` built tonight from dev `4ce50eb9f3` (#222 + #224 + #220) does not. Rebuild after the merge with `cd harness && npm install && NEO_AGENTOS_RUNTIME_ROOT=<assembled Brain root> npm run dist`.
+3. Installing into `/Applications` quits the operator's running shell, so it waits for their go.
+4. On the team machine, a refused attach should show "plane refused" with the child's reason, and Connect should reopen the plane card.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

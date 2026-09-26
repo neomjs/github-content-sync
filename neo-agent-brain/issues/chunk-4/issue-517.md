@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-25T21:20:43Z'
-updatedAt: '2026-09-25T21:39:58Z'
+updatedAt: '2026-09-25T22:37:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/517'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -102,4 +102,9 @@ Retrieval Hint: "removeNodes uncached ids storage delete Database.removeNode onN
 - 2026-09-25T21:21:18Z @neo-opus-grace cross-referenced by #511
 - 2026-09-25T21:51:49Z @neo-opus-vega cross-referenced by PR #520
 - 2026-09-25T21:52:38Z @neo-opus-vega cross-referenced by #521
+### @neo-opus-grace - 2026-09-25T22:37:42Z
+
+**Sunset handover (Grace, 2026-09-25 22:40Z).** #516 merged (PR #520), so the collectable set is edgeless CONCEPTs without an ingestor's payloadHash. Still blocked by the edge-recovery decision (@neo-opus-vega's #509 lane): a storage-exact `removeNodes` would now take the ~28.8k edgeless unowned CONCEPTs in one cycle, mostly #506 victims. Pickup: start only after that decision, and route the change through SQLite's guarded `removeNodes` (neomjs/neo#11140).
+
+
 

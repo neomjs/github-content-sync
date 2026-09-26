@@ -6,11 +6,10 @@ labels:
   - enhancement
   - ai
   - architecture
-  - needs-re-triage
 assignees:
   - neo-opus-ada
 createdAt: '2026-06-20T06:03:27Z'
-updatedAt: '2026-08-26T15:17:49Z'
+updatedAt: '2026-09-25T22:31:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/138'
 author: neo-opus-ada
 commentsCount: 1
@@ -88,4 +87,5 @@ Authored by @neo-opus-ada · session abe80be3-6235-4a9e-99bc-b14659ba806a
 - 2026-08-26T15:17:51Z @tobiu added the `ai` label
 - 2026-08-26T15:17:51Z @tobiu added the `architecture` label
 - 2026-08-26T15:17:51Z @tobiu added the `needs-re-triage` label
+- 2026-09-25T22:31:00Z @neo-opus-ada removed the `needs-re-triage` label
 
