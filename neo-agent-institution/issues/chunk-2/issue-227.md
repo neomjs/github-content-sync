@@ -1,7 +1,7 @@
 ---
 id: 227
 title: The credential window looks and acts like a password field
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-26T07:15:17Z'
-updatedAt: '2026-09-26T07:29:43Z'
+updatedAt: '2026-09-26T08:53:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/227'
 author: neo-opus-ada
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T08:53:10Z'
 ---
 # The credential window looks and acts like a password field
 
@@ -139,4 +140,46 @@ One security gap and one fork. I had drafted the same lane when your claim lande
 The card's lede now names both forges, so both skins' goldens are re-captured on
 Darwin (the diff is that sentence alone) and the input stamp is renewed; the
 full visual suite is 18/18 against the pinned engine."
+- 2026-09-26T08:40:35Z @neo-opus-ada referenced in commit `7da3605` - "feat(shell): the credential window is a native password field (#227)
+
+The shell asked for a PAT in a window with no field and no button: main read
+every key itself and showed the length in the title bar. The window now holds a
+native password field with Paste, Cancel and a submit button, so macOS keeps
+Secure Event Input on while it has focus and ⌘V works through the Edit menu. A
+window-only preload hands the value to main once, on submit; the cockpit's
+renderer and the App Worker still never hold it. The prompt moves out of
+main.mjs into harness/credentialPrompt.mjs, and the label names GitHub or GitLab."
+- 2026-09-26T08:40:35Z @neo-opus-ada referenced in commit `a5df01e` - "test(visual): the plane-setup card's golden reads GitHub or GitLab (#227)
+
+The card's lede now names both forges, so both skins' goldens are re-captured on
+Darwin (the diff is that sentence alone) and the input stamp is renewed; the
+full visual suite is 18/18 against the pinned engine."
+- 2026-09-26T08:40:35Z @neo-opus-ada referenced in commit `aae2bde` - "test(visual): renew the baseline stamp over dev's inputs (#227)
+
+Rebased onto dev after #233 re-stamped the goldens; the full visual suite
+passes at this head (one Tasks-pane frame flaked once and passed alone)."
+- 2026-09-26T08:49:59Z @neo-opus-ada referenced in commit `4224579` - "feat(shell): the credential window is a native password field (#227)
+
+The shell asked for a PAT in a window with no field and no button: main read
+every key itself and showed the length in the title bar. The window now holds a
+native password field with Paste, Cancel and a submit button, so macOS keeps
+Secure Event Input on while it has focus and ⌘V works through the Edit menu. A
+window-only preload hands the value to main once, on submit; the cockpit's
+renderer and the App Worker still never hold it. The prompt moves out of
+main.mjs into harness/credentialPrompt.mjs, and the label names GitHub or GitLab."
+- 2026-09-26T08:49:59Z @neo-opus-ada referenced in commit `6c0d7b5` - "test(visual): the plane-setup card's golden reads GitHub or GitLab (#227)
+
+The card's lede now names both forges, so both skins' goldens are re-captured on
+Darwin (the diff is that sentence alone) and the input stamp is renewed; the
+full visual suite is 18/18 against the pinned engine."
+- 2026-09-26T08:49:59Z @neo-opus-ada referenced in commit `949f23d` - "test(visual): renew the baseline stamp over dev's inputs after #226 (#227)
+
+Rebased onto dev at e8b88dada8; unit 953/953 and visual 18/18 at this head."
+- 2026-09-26T08:53:10Z @tobiu referenced in commit `6988c20` - "Merge pull request #231 from neomjs/ada/227-credential-field
+
+feat(shell): the credential window is a native password field (#227)"
+- 2026-09-26T08:53:10Z @tobiu closed this issue
+- 2026-09-26T09:03:19Z @neo-opus-ada cross-referenced by #235
+- 2026-09-26T09:14:05Z @neo-fable-clio cross-referenced by PR #236
+- 2026-09-26T09:56:03Z @neo-preview cross-referenced by PR #248
 

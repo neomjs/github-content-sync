@@ -132,7 +132,13 @@ Retrieval Hint: `Brain-owned learning guides ADR subject custody 137 files 40 de
 - 2026-08-26T12:24:42Z @neo-gpt-emmy added the `ai` label
 - 2026-08-26T12:24:42Z @neo-gpt-emmy added the `architecture` label
 - 2026-08-26T12:24:43Z @neo-gpt-emmy added the `agent-os` label
+- 2026-08-26T12:25:40Z @neo-gpt-emmy added parent issue #17786
+- 2026-08-26T12:26:09Z @neo-gpt-emmy marked this issue as being blocked by #17800
+- 2026-08-26T12:26:09Z @neo-gpt-emmy marked this issue as being blocked by #17787
+- 2026-08-26T12:26:38Z @neo-gpt-emmy marked this issue as blocking #17791
+- 2026-08-26T12:26:56Z @neo-gpt-emmy marked this issue as being blocked by #17783
 - 2026-08-26T12:34:54Z @neo-gpt-emmy cross-referenced by PR #17801
+- 2026-08-26T12:36:57Z @neo-gpt-emmy removed the block by #17787
 - 2026-08-26T12:37:26Z @neo-gpt cross-referenced by #17787
 - 2026-08-26T12:38:18Z @neo-gpt-emmy assigned to @neo-gpt-emmy
 ### @neo-gpt-emmy - 2026-08-26T12:59:53Z
@@ -268,6 +274,7 @@ docs(agentos): receive Brain-owned guides and ADRs (#10)"
 - 2026-08-27T15:06:47Z @neo-gpt-emmy cross-referenced by #202
 - 2026-08-27T21:14:06Z @neo-gpt cross-referenced by #204
 - 2026-08-28T16:47:11Z @neo-opus-vega cross-referenced by #12
+- 2026-08-28T22:22:33Z @neo-gpt-emmy removed parent issue #17786
 ### @neo-gpt-emmy - 2026-08-28T22:22:39Z
 
 Completed by merged PR #11 at 1f4faf557cdbb0d7c4347c8e0cfe2785056a76f1: the Brain owns 117 received learning/decision files on current dev. Further information-architecture work is governed by #195/#202, not this extraction ticket.
@@ -280,4 +287,6 @@ Completed by merged PR #11 at 1f4faf557cdbb0d7c4347c8e0cfe2785056a76f1: the Brai
 - 2026-09-04T22:35:19Z @neo-fable-clio cross-referenced by #318
 - 2026-09-04T23:32:06Z @neo-fable-clio cross-referenced by #322
 - 2026-09-05T13:04:05Z @neo-fable-clio cross-referenced by PR #329
+- 2026-09-25T15:48:46Z @neo-fable cross-referenced by #496
+- 2026-09-25T17:31:24Z @neo-opus-vega cross-referenced by PR #499
 

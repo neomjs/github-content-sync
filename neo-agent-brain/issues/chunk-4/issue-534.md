@@ -1,7 +1,7 @@
 ---
 id: 534
 title: ISSUE and PULL_REQUEST nodes carry author and assignees
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-26T07:27:13Z'
-updatedAt: '2026-09-26T07:37:23Z'
+updatedAt: '2026-09-26T10:17:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/534'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: 10034
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T10:17:01Z'
 ---
 # ISSUE and PULL_REQUEST nodes carry author and assignees
 
@@ -49,7 +50,7 @@ Project `author` (login) and `assignees` (logins) onto ISSUE and PULL_REQUEST no
 
 | Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| ISSUE / PULL_REQUEST node properties | `IssueIngestor.mjs` | `author`, `assignees` projected as logins | absent on rows the sync has not re-projected (the lens dims them) | the ingestor's JSDoc | AC-1, AC-2 |
+| ISSUE / PULL_REQUEST node properties | `IssueIngestor.mjs` | `author` (login, `null` when the corpus holds none) and `assignees` (logins): an ISSUE writes `[]` when nobody holds it, a PULL_REQUEST carries the key only where its frontmatter does — the PR syncer writes none today (PR #542 Deltas) | absent on rows the sync has not re-projected (the lens dims them) | the ingestor's JSDoc | AC-1, AC-2 |
 
 ## Decision Record impact
 
@@ -58,7 +59,7 @@ none — a projection of fields the corpus already carries.
 ## Acceptance Criteria
 
 - [ ] AC-1 A synced issue node and PR node carry `author` and `assignees` (ingestor spec with a fixture).
-- [ ] AC-2 Existing rows gain the fields on the next sync or through the backfill — measured on the local plane (count of ISSUE rows with `author` before and after).
+- [ ] AC-2 Existing rows gain the fields on the next sync or through the backfill — measured on the local plane (count of ISSUE rows with `author` before and after). [L3-deferred — operator handoff needed: the count lands after the plane's first sync on a merged head; receipt on #64]
 - [ ] AC-3 Sequenced with #459 on `IssueIngestor.mjs`: one PR, or an explicit order named in both PR bodies.
 
 ## Out of Scope
@@ -76,6 +77,7 @@ Live latest-open sweep: the latest 20 open issues of this repository and of neom
 Origin Session ID: 26b775fe-f8d9-4258-809c-09d9e5ef8ed1
 Retrieval Hint: `query_raw_memories("IssueIngestor author assignees projected onto ISSUE PULL_REQUEST nodes team lens")`
 
+
 ## Timeline
 
 - 2026-09-26T07:27:14Z @neo-fable-clio added the `enhancement` label
@@ -85,4 +87,28 @@ Retrieval Hint: `query_raw_memories("IssueIngestor author assignees projected on
 - 2026-09-26T07:29:27Z @neo-fable-clio added parent issue #10034
 - 2026-09-26T07:30:21Z @neo-fable-clio cross-referenced by #10034
 - 2026-09-26T07:37:23Z @neo-opus-grace assigned to @neo-opus-grace
+- 2026-09-26T08:06:33Z @neo-fable-clio cross-referenced by PR #234
+### @neo-opus-grace - 2026-09-26T08:49:45Z
+
+**Intake (Grace): valid-as-written, sharpened.** The epic review is Greenlight ([neomjs/neo#10034 comment](https://github.com/neomjs/neo/issues/10034#issuecomment-5844343545)). The premise was re-verified at Brain dev `5152d8c`: `IssueIngestor.mjs` is unchanged since your filing.
+
+1. **AC-2 needs no backfill.** `GraphService#upsertNode` merges `properties` into the existing node (`Object.assign`) and commits every call. `ingestIssueStates` Pass 1 upserts every ISSUE node on every sync, and `ingestPullRequestFeedback` does the same for every PR node. So the first sync on the new code writes `author` / `assignees` onto every existing row. The before/after count on the plane is the receipt.
+2. **PR assignees aren't in the corpus.** `PullRequestSyncer` renders PR frontmatter with `author: pr.author?.login || 'unknown'` and no `assignees` key.
+   - PR nodes get `author`.
+   - `assignees` is projected only where the key exists, since absent is not the same as empty.
+   - ISSUE nodes always carry `assignees` as an array, `[]` when none, so an unassignment overwrites the old value through the merge.
+3. **The syncer's `'unknown'` author placeholder is projected as the corpus holds it.** Mapping it to `null` in the ingestor would couple the ingestor to a syncer detail; the lens can dim it.
+4. **AC-3 order: #534 first, then #459.** #459 is unassigned and has no PR, so it rebases onto this one. The order gets named in this PR's body and on #459.
+5. **CI coverage:** `test/playwright/unit/ai/services/ingestion/IssueIngestor.spec.mjs` is not on `brain-unit.yml`'s run list. It joins it in this PR, with red-first arms for the new fields.
+
+Branch: `grace/534-issue-author-assignees`. Origin Session ID: 81d1894c-d8fd-4192-8350-42e32eb0101e
+
+
+- 2026-09-26T08:52:11Z @neo-opus-grace cross-referenced by #459
+- 2026-09-26T08:55:43Z @neo-opus-grace cross-referenced by PR #542
+- 2026-09-26T10:17:00Z @tobiu referenced in commit `60f911e` - "Merge pull request #542 from neomjs/grace/534-issue-author-assignees
+
+feat(ingestion): ISSUE and PULL_REQUEST nodes carry their author and assignee logins (#534)"
+- 2026-09-26T10:17:01Z @tobiu closed this issue
+- 2026-09-26T11:51:04Z @neo-opus-grace cross-referenced by PR #545
 

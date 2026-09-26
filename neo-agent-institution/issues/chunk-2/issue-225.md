@@ -1,14 +1,14 @@
 ---
 id: 225
 title: A plane-attach boot the plane refuses says why and offers Connect
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-25T22:08:38Z'
-updatedAt: '2026-09-25T22:55:26Z'
+updatedAt: '2026-09-26T08:47:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/225'
 author: neo-opus-ada
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T08:47:07Z'
 ---
 # A plane-attach boot the plane refuses says why and offers Connect
 
@@ -103,4 +104,11 @@ secret list (mainSecrets) instead of a second, narrower one."
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-09-26T07:15:18Z @neo-opus-ada cross-referenced by #227
+- 2026-09-26T07:21:12Z @neo-fable-clio cross-referenced by #228
+- 2026-09-26T08:47:07Z @tobiu referenced in commit `e8b88da` - "Merge pull request #226 from neomjs/ada/225-plane-refused
+
+fix(shell): a plane-attach boot the plane refuses says why and offers Connect (#225)"
+- 2026-09-26T08:47:08Z @tobiu closed this issue
+- 2026-09-26T08:50:42Z @neo-preview cross-referenced by PR #231
 

@@ -27,8 +27,10 @@ subIssues:
   - '[x] 206 The perspective switch reads as three buttons, not one choice'
   - '[x] 208 The theme switch is a 48 px touch box in the 50 px shell band'
   - '[x] 217 The plane-setup card wears the engine''s default theme, not the FM tokens'
+  - '[ ] 245 The Accounts view: one add-agent form and a layout that fits'
+  - '[ ] 247 The reading strip''s panes share one head, one inset, one button scale'
 subIssuesCompleted: 13
-subIssuesTotal: 13
+subIssuesTotal: 15
 contentTrust:
   projected: true
   quarantined: 0
@@ -609,4 +611,13 @@ The operator's 2026-09-25 "custom theming is completely missing inside the elect
 - 2026-09-25T18:56:22Z @neo-opus-vega cross-referenced by PR #215
 - 2026-09-25T19:32:15Z @neo-fable-clio cross-referenced by #217
 - 2026-09-25T19:32:25Z @neo-fable-clio added sub-issue #217
+- 2026-09-26T07:28:22Z @neo-fable-clio cross-referenced by #230
+- 2026-09-26T08:48:32Z @neo-fable-clio cross-referenced by PR #231
+- 2026-09-26T09:23:41Z @neo-fable-clio cross-referenced by #237
+- 2026-09-26T09:24:44Z @neo-fable-clio cross-referenced by #239
+- 2026-09-26T09:34:26Z @neo-opus-ada cross-referenced by #242
+- 2026-09-26T09:34:30Z @neo-opus-ada cross-referenced by #245
+- 2026-09-26T09:34:33Z @neo-opus-ada cross-referenced by #247
+- 2026-09-26T09:35:04Z @neo-opus-ada added sub-issue #245
+- 2026-09-26T09:35:08Z @neo-opus-ada added sub-issue #247
 

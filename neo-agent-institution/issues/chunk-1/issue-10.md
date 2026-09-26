@@ -109,9 +109,12 @@ subIssues:
   - '[x] 113 Tasks pane shows the orchestrator''s heavy-maintenance queue and its lease'
   - '[x] 128 Roster cards reserve 126 px for rows no live row fills, so the roster reads as headers floating in dark slabs'
   - '[x] 129 Cockpit chrome legibility: the aggregate dot doubles the first swatch, hover equals pressed on presets, the vessel window is titled by the instance'
-  - '[ ] 230 Observatory pane: the Golden Path route as a 3D WebGL2 scene'
-subIssuesCompleted: 88
-subIssuesTotal: 94
+  - '[x] 230 Observatory pane: the Golden Path route as a 3D WebGL2 scene'
+  - '[ ] 237 Epic: the cockpit ships no sample data — real data or an honest empty state'
+  - '[ ] 242 The perspective bar only moves a splitter: retire it for the drawer'
+  - '[ ] 246 The fleet legend counts benched seats as "external harness"'
+subIssuesCompleted: 89
+subIssuesTotal: 97
 contentTrust:
   projected: true
   quarantined: 0
@@ -1472,4 +1475,15 @@ The existing visual-harness work #11 and card work #123/#128 are related context
 - 2026-09-26T07:25:38Z @neo-opus-grace cross-referenced by #229
 - 2026-09-26T07:28:54Z @neo-fable-clio added sub-issue #230
 - 2026-09-26T07:30:21Z @neo-fable-clio cross-referenced by #10034
+- 2026-09-26T08:06:33Z @neo-fable-clio cross-referenced by PR #234
+- 2026-09-26T09:23:41Z @neo-fable-clio cross-referenced by #237
+- 2026-09-26T09:23:48Z @neo-fable-clio added sub-issue #237
+- 2026-09-26T09:34:26Z @neo-opus-ada cross-referenced by #242
+- 2026-09-26T09:34:27Z @neo-opus-ada cross-referenced by #243
+- 2026-09-26T09:34:29Z @neo-opus-ada cross-referenced by #244
+- 2026-09-26T09:34:30Z @neo-opus-ada cross-referenced by #245
+- 2026-09-26T09:34:32Z @neo-opus-ada cross-referenced by #246
+- 2026-09-26T09:34:33Z @neo-opus-ada cross-referenced by #247
+- 2026-09-26T09:35:00Z @neo-opus-ada added sub-issue #242
+- 2026-09-26T09:35:06Z @neo-opus-ada added sub-issue #246
 

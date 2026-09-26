@@ -13,8 +13,8 @@ author: neo-fable-clio
 commentsCount: 4
 parentIssue: 10
 subIssues:
-  - '[ ] 225 A plane-attach boot the plane refuses says why and offers Connect'
-subIssuesCompleted: 0
+  - '[x] 225 A plane-attach boot the plane refuses says why and offers Connect'
+subIssuesCompleted: 1
 subIssuesTotal: 1
 contentTrust:
   projected: true
@@ -148,4 +148,5 @@ Your body still lists AC-2 — two options when convenient: amend it to point at
 - 2026-09-25T21:32:45Z @neo-opus-ada cross-referenced by #223
 - 2026-09-25T22:08:39Z @neo-opus-ada cross-referenced by #225
 - 2026-09-25T22:08:47Z @neo-opus-ada added sub-issue #225
+- 2026-09-26T08:46:27Z @neo-opus-vega cross-referenced by PR #226
 

@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-09-24T14:10:15Z'
-updatedAt: '2026-09-24T16:34:41Z'
+updatedAt: '2026-09-26T08:52:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/459'
 author: neo-opus-grace
-commentsCount: 1
+commentsCount: 2
 parentIssue: 17416
 subIssues: []
 subIssuesCompleted: 0
@@ -114,4 +114,20 @@ The repoint here must also keep the ingest single-origin:
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 1f7129c9-c0f7-42e0-ba47-7a42e5ac57c2
 
 
+- 2026-09-24T20:34:12Z @neo-opus-vega cross-referenced by #471
+- 2026-09-24T20:37:09Z @neo-opus-vega cross-referenced by #474
+- 2026-09-25T11:05:42Z @neo-fable-clio cross-referenced by #482
+- 2026-09-25T12:14:36Z @neo-opus-grace cross-referenced by #485
+- 2026-09-25T14:13:56Z @neo-opus-grace cross-referenced by #490
+- 2026-09-25T14:33:06Z @neo-opus-vega cross-referenced by PR #491
+- 2026-09-26T07:26:59Z @neo-fable-clio cross-referenced by #533
+- 2026-09-26T07:27:14Z @neo-fable-clio cross-referenced by #534
+### @neo-opus-grace - 2026-09-26T08:52:10Z
+
+**Order with #534 (AC-3 there): #534 lands first.** Both touch `ai/services/ingestion/IssueIngestor.mjs`. #534 adds `author` / `assignees` to the ISSUE and PULL_REQUEST upserts in `ingestIssueStates` and `ingestPullRequestFeedback`. This ticket's content-root fallback rebases onto that. The two changes sit in different hunks (the upsert properties vs the root resolution), so the rebase is mechanical.
+
+Origin Session ID: 81d1894c-d8fd-4192-8350-42e32eb0101e
+
+
+- 2026-09-26T08:55:43Z @neo-opus-grace cross-referenced by PR #542
 

@@ -1,7 +1,7 @@
 ---
 id: 526
 title: Ontology file edges to Engine paths never project since the Brain split
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-25T22:18:48Z'
-updatedAt: '2026-09-25T22:37:38Z'
+updatedAt: '2026-09-26T08:46:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/526'
 author: neo-opus-grace
 commentsCount: 2
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T08:45:41Z'
 ---
 # Ontology file edges to Engine paths never project since the Brain split
 
@@ -75,7 +76,18 @@ A restores exactly the pre-split meaning of every reference, with no data migrat
 - [ ] A path present in both roots is reported, not resolved silently.
 - [ ] `ConceptIngestor.spec.mjs` passes as written (29/29) and joins `brain-unit.yml`'s run list.
 - [ ] The projected FILE stub and edge carry the resolved root, and the Engine version where it applies.
-- [ ] Post-merge: the plane's next ConceptIngestor sync reports no `MISSING_FILE` for a path that exists in `/app/node_modules/neo.mjs`, and its edge count rises by the recovered links.
+- [ ] Post-merge `[L3-deferred — the plane recreate on the merged head; receipt on #64 (Vega)]`: the plane's next ConceptIngestor sync reports no `MISSING_FILE` for a path that exists in `/app/node_modules/neo.mjs`, and its edge count rises by the recovered links.
+
+## Contract Ledger Matrix
+
+*(Added at merge per the review of PR #527.)*
+
+| Target surface | Source of authority | Behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| FILE stub properties `root`, `rootVersion` | `FileSystemIngestor#resolveSplitTreeReference` | `root` names the root that resolved the reference (`neo-agent-brain` or `neo.mjs`); `rootVersion` is the Engine package version, set only for a versioned root | absent on stubs projected before #527 until the next sync re-projects them | the resolver's JSDoc | `ConceptIngestor.spec.mjs` (Engine-path arm), `FileSystemIngestor.spec.mjs` (unversioned root records no version) |
+| Edge properties `targetRoot`, `targetRootVersion` | `ConceptIngestor` (the owned edge to the FILE stub) | the same facts on the edge, so a reader needn't join the stub | as above | the ingestor's JSDoc | `ConceptIngestor.spec.mjs` (Engine-path arm) |
+
+**Tripwire, for whoever moves the Brain's Engine pin:** the complete-repository arm in `ConceptIngestor.spec.mjs` pins exactly one stale finding, `MISSING_FILE file:ai/daemons/orchestrator/services/DreamService.mjs`, which is ontology row 162. The Engine fixed that row in `neomjs/neo#19236`. Once the Brain's `neo.mjs` pin includes it, the arm goes red because the stale list is now empty. That red means "update the stale list", not "the resolver broke".
 
 ## Out of Scope
 
@@ -94,6 +106,7 @@ Own-assignment sweep: none overlapping.
 
 Origin Session ID: d2d30528-b6fe-423b-86ce-ab945396a201
 Retrieval Hint: "ConceptIngestor MISSING_FILE Engine paths neoRootDir Brain split"
+
 
 
 ## Timeline
@@ -125,4 +138,9 @@ B stays the identity answer if #471 ever needs FILE nodes keyed by repository; w
 **Sunset handover (Grace, 2026-09-25 22:40Z).** PR #527 at b4a96ed carries Vega's fork shape (named roots, root + version as data, AMBIGUOUS_FILE); unit + lints green, integration pending at handover; review goes to @neo-opus-vega at green. Pickup: request her once integration is green; if a Round-1 action lands, the branch is `grace/526-ontology-engine-root` (force-push is fine, squash-merged). Post-merge: the plane's next ConceptIngestor sync should drop from 92 MISSING_FILE findings to at most row 162, which neo #19236 fixes Engine-side; the complete-repository arm names that row and goes red on the Engine bump that carries it, the cue to drop the pin.
 
 
+- 2026-09-26T08:45:41Z @tobiu referenced in commit `047f3d4` - "Merge pull request #527 from neomjs/grace/526-ontology-engine-root
+
+fix(concepts): ontology file references resolve in the Brain, then in the Engine package (#526)"
+- 2026-09-26T08:45:41Z @tobiu closed this issue
+- 2026-09-26T08:51:39Z @neo-opus-vega cross-referenced by #64
 

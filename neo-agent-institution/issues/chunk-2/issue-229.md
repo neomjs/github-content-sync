@@ -1,7 +1,7 @@
 ---
 id: 229
 title: 'The shell denies the engine''s staged popup, so no cockpit pane tears out or pops out'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-26T07:25:37Z'
-updatedAt: '2026-09-26T07:26:02Z'
+updatedAt: '2026-09-26T08:53:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/229'
 author: neo-opus-grace
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T08:53:32Z'
 ---
 # The shell denies the engine's staged popup, so no cockpit pane tears out or pops out
 
@@ -119,4 +120,8 @@ Retrieval Hint: "FM shell tear-out popout refused: setWindowOpenHandler denies a
 - 2026-09-26T07:26:04Z @neo-opus-grace added parent issue #7
 - 2026-09-26T07:35:12Z @neo-opus-grace cross-referenced by PR #232
 - 2026-09-26T07:35:15Z @neo-opus-grace cross-referenced by PR #19240
+- 2026-09-26T08:53:32Z @tobiu referenced in commit `e85cceb` - "Merge pull request #232 from neomjs/grace/229-staged-popup-admission
+
+fix(harness): the shell admits the engine's about:blank staging realm as a popup (#229)"
+- 2026-09-26T08:53:33Z @tobiu closed this issue
 

@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-09-25T21:45:59Z'
+updatedAt: '2026-09-26T10:21:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
-commentsCount: 45
+commentsCount: 49
 parentIssue: null
 subIssues:
   - '[x] 16577 A zero-chunk materialization is rejected, then backs off forever'
@@ -38,8 +38,8 @@ subIssues:
   - '[x] 444 Summary discovery re-scans the graph per memory row, ~50 min per run'
   - '[x] 495 tenant-repo-sync re-ranks bootstrap-critical after every slice'
   - '[x] 504 A yield to a starving waiter abstains, and nothing dispatches the waiter'
-  - '[ ] 509 Restore the receipts the GC cycles deleted, from the 13:12Z bundle'
-subIssuesCompleted: 22
+  - '[x] 509 Restore the receipts the GC cycles deleted, from the 13:12Z bundle'
+subIssuesCompleted: 23
 subIssuesTotal: 24
 contentTrust:
   projected: true
@@ -2430,4 +2430,86 @@ Still owed here: #509 (the receipt restore, dry-run first, operator's go before 
 — Vega (Fable 5.1, Claude Code) 🌿
 
 - 2026-09-25T21:52:38Z @neo-opus-vega cross-referenced by #521
+- 2026-09-25T22:31:20Z @neo-opus-grace cross-referenced by PR #527
+- 2026-09-26T07:15:30Z @tobiu cross-referenced by PR #529
+- 2026-09-26T07:19:52Z @neo-gpt cross-referenced by #530
+- 2026-09-26T07:21:12Z @neo-fable-clio cross-referenced by #228
+- 2026-09-26T07:34:29Z @neo-opus-vega cross-referenced by #537
+- 2026-09-26T07:41:14Z @neo-opus-vega cross-referenced by PR #539
+- 2026-09-26T07:50:37Z @neo-opus-vega cross-referenced by PR #540
+- 2026-09-26T08:05:14Z @neo-fable-clio cross-referenced by PR #233
+### @neo-opus-vega - 2026-09-26T08:22:21Z
+
+## Plane recreate on Brain dev a8d9e66 (#539 merged, #537 closed) — 2026-09-26 08:18–08:20Z
+
+Same shape as yesterday's recuts: host daemons booted out, deploy home fetched and checked out at `a8d9e66ff2aef9ad233a40cb45174740618e5e05`, `npm ci` (221 packages, #531's bump), daemons re-bootstrapped, four images built at that revision, `up -d` with the cloud/fleet/ingress profiles, the cut fragment unchanged (tenant lane on).
+
+| Check | Result |
+|---|---|
+| orchestrator / kb-server / mc-server / fleet-server | healthy, created 08:19:43–08:19:53Z |
+| `healthcheck.deployedRevision` | `a8d9e66ff2…`, runtime freshness current |
+| image label `org.opencontainers.image.revision` (orchestrator, mc-server) | `a8d9e66ff2…` |
+| `isMessageRecordEdge` in the orchestrator's `GraphService.mjs` | present (5 mentions) |
+| writable layers before the recreate | only the `/app/.neo-ai-data` directory entry on each service, nothing outside a mount |
+| rem-runs channel | 200 / 200 |
+| Neural Link bridge | 8081 up (host edge) |
+
+**#537 AC-4 (L3-deferred) receipt path:** `lastDecayedAt` is 2026-09-25T18:09:50Z, so the next due decay is ~18:09Z today. Expected in this container's `mc-server-2026-09-26.log`: one `Running ambient topology decay`, then `Skipping global topology decay (Algorithmic Lock: …)` on the following cycles, and message-sourced edge weights unchanged across that run (read-only probe before and after). I post that line here when it lands.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+### @neo-opus-vega - 2026-09-26T08:51:37Z
+
+## Plane recreate on Brain dev 5152d8c (#527 + #540 merged) — 2026-09-26 08:48–08:50Z
+
+Same shape as 08:18Z's: daemons booted out, deploy home at `5152d8c8a53ef637f8a10a61bb5ebf34a37f0d21`, `npm ci`, daemons re-bootstrapped, four images at that revision, `up -d` with the three profiles, the cut fragment unchanged.
+
+| Check | Result |
+|---|---|
+| orchestrator / kb-server / mc-server / fleet-server | healthy, created 08:49:49–08:50:01Z |
+| `healthcheck.deployedRevision` / image label | `5152d8c8…` |
+| `resolveSplitTreeReference` in the orchestrator's `FileSystemIngestor.mjs` | present |
+| `ai/scripts/maintenance/restoreReceipts.mjs` in the container | present (the #509 CLI now runs from its real path) |
+| writable layers before the recreate | only the `/app/.neo-ai-data` directory entry, nothing outside a mount |
+| rem-runs channel · bridge | 201 / 201 · 8081 up |
+
+**#526 AC-5 receipt path:** the last ConceptIngestor sync before the recreate (08:45:26Z, the old container) still logged `92 projection integrity finding(s)` … `MISSING_FILE`. The first sync in this container is the receipt: no `MISSING_FILE` for a path under `/app/node_modules/neo.mjs` (row 162 at most) and a non-zero "edges … added". I post it here when it lands.
+
+**#537 AC-4** stays on the next due decay (~18:09Z), unchanged by this recreate (the clock is storage).
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+- 2026-09-26T08:55:43Z @neo-opus-grace cross-referenced by PR #542
+- 2026-09-26T09:34:45Z @neo-opus-vega cross-referenced by PR #543
+- 2026-09-26T10:01:09Z @tobiu cross-referenced by #534
+### @neo-opus-vega - 2026-09-26T10:20:42Z
+
+## #526 AC-5 receipt — the first ConceptIngestor sync on Brain dev 5152d8c (#527)
+
+The container recreated at 08:50Z logged its first ontology sync at 10:17:22Z:
+
+```
+[ConceptIngestor] 1 projection integrity finding(s): [{"code":"MISSING_FILE","reason":"Repository file does not exist: ai/daemons/orchestrator/services/DreamService.mjs","source":"dream-pipeline", …
+[ConceptIngestor] Sync complete: 0 node payloads upserted, 140 unchanged; edges 91 added / 13 updated / 0 removed / 77 unchanged; 0 legacy stubs retired; 108 orphans.
+```
+
+Before (08:45:26Z, the previous container): `92 projection integrity finding(s)`, `edges 0 added`. After: the one finding is row 162 (the deleted `DreamService.mjs`, neomjs/neo#19236's fix moves with the Engine pin), and the 91 recovered Engine-side links were added. AC-5 met.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+### @neo-opus-vega - 2026-09-26T10:21:09Z
+
+## Plane recreate on Brain dev 60f911e (#542 + #543 + #525 merged) — 2026-09-26 10:18–10:20Z
+
+Same shape as the two earlier today. Four services healthy, created 10:19:39–10:19:51Z; image labels `60f911e7…`; `IssueIngestor.mjs` carries the author/assignee fields (#542), `rebuildMessageEdges.mjs` sits at its real path (#543); writable layers clean before the recreate; bridge on 8081.
+
+Owed lines on this ticket: #537 AC-4 after the next due decay (~18:09Z, unchanged by recreates); the two #538 applies on the operator's go.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+- 2026-09-26T10:43:09Z @neo-opus-vega cross-referenced by PR #544
 

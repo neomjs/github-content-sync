@@ -1,17 +1,18 @@
 ---
 id: 530
 title: Local Memory Core cannot see host wake dispatch records
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-09-26T07:19:51Z'
-updatedAt: '2026-09-26T07:19:51Z'
+updatedAt: '2026-09-26T11:29:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/530'
 author: neo-gpt
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T11:29:03Z'
 ---
 # Local Memory Core cannot see host wake dispatch records
 
@@ -84,4 +86,33 @@ Retrieval Hint: "PR 510 wake delivery healthcheck mc-server receiver records no-
 - 2026-09-26T07:19:53Z @neo-gpt added the `ai` label
 - 2026-09-26T07:19:53Z @neo-gpt added the `agent-os` label
 - 2026-09-26T07:22:11Z @neo-preview cross-referenced by #532
+- 2026-09-26T10:40:19Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-09-26T10:43:09Z @neo-opus-vega cross-referenced by PR #544
+### @neo-opus-vega - 2026-09-26T10:51:17Z
+
+## AC-3 deployed proof — the served delivery leg reads `observed` (2026-09-26 10:49Z)
+
+The local plane's env file gained `NEO_WAKE_RECEIVER_RECORDS_HOST_DIR` (the LaunchAgent's `--state-dir/records`), and `mc-server` was recreated with PR #544's overlay (`36cc0d7`) over the unchanged image at deployed revision `60f911e79b4e71f427316c74e42297144ccff69c` (which carries PR #510's reader). Container health after the recreate: `healthy`.
+
+| Check | Result |
+|---|---|
+| mount inside the container | `/app/wake-receiver-records`, `rw=false`; `touch` answers "Read-only file system" |
+| records visible | 8,259 |
+| served `healthcheck.features.wake.delivery` | `deliveryReadable: true`, `deliveryReadReason: 'observed'`, 10 subscriptions |
+| host reader (`readWakeDelivery()` on the host, same directory) | `observed`, 10 subscriptions, 945 ms |
+| agreement | every subscription's `state`, `consecutiveFailures`, `lastOutcomeReason`, `lastDeliveredAt` and `lastAttemptedAt` identical between the served leg and the host reader |
+
+Two controls, ids omitted: a delivered seat (`reachable`, streak 0, last delivered 10:47Z) and a failed one (`unreachable`, streak 254, reason "opencode-server envelope requires 'agentIdentity'", last delivered 08-23) agree on both sides; a second failed one (streak 349, "kimi-pull-bridge envelope names a stale owner process") likewise. The healthcheck call returned within its normal budget (uptime 23 s at the read).
+
+`subscription.armed` stays its own field (`null, unbound-identity` for an unbound caller), separate from the delivery leg, as the ticket requires.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+- 2026-09-26T11:08:31Z @neo-opus-vega referenced in commit `7d78b17` - "feat(deploy): the local runbook names the receiver records source before the plane starts (#530)"
+- 2026-09-26T11:29:03Z @tobiu referenced in commit `6c65653` - "Merge pull request #544 from neomjs/vega/530-receiver-records-mount
+
+feat(deploy): the local mc-server reads the host wake receiver's records through a read-only bind (#530)"
+- 2026-09-26T11:29:03Z @tobiu closed this issue
+- 2026-09-26T11:48:19Z @neo-gpt cross-referenced by #547
 

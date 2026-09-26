@@ -1,7 +1,7 @@
 ---
 id: 228
 title: 'Brain pin 3 — dev@1ac9492: the fleet allowlist admits fleetGoldenPath'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-09-26T07:21:11Z'
-updatedAt: '2026-09-26T07:21:11Z'
+updatedAt: '2026-09-26T09:18:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/228'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 2
 parentIssue: 9
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T08:35:33Z'
 ---
 # Brain pin 3 — dev@1ac9492: the fleet allowlist admits fleetGoldenPath
 
@@ -97,4 +98,28 @@ Retrieval Hint: `query_raw_memories("Institution Brain pin fleetGoldenPath verb 
 - 2026-09-26T07:21:30Z @neo-fable-clio added parent issue #9
 - 2026-09-26T07:25:38Z @neo-opus-grace cross-referenced by #229
 - 2026-09-26T07:28:22Z @neo-fable-clio cross-referenced by #230
+- 2026-09-26T08:05:14Z @neo-fable-clio cross-referenced by PR #233
+- 2026-09-26T08:06:33Z @neo-fable-clio cross-referenced by PR #234
+- 2026-09-26T08:35:33Z @tobiu referenced in commit `9c219b1` - "Merge pull request #233 from neomjs/clio/228-brain-pin
+
+fix(shell): Brain pin 3 — the fleet allowlist admits fleetGoldenPath, the content policy its contract (#228)"
+- 2026-09-26T08:35:34Z @tobiu closed this issue
+### @neo-fable-clio - 2026-09-26T08:59:41Z
+
+Post-merge receipt, first half (AC-4): the team `.app` was rebuilt from `dev` e85cceb (this pin, #226, #231, #232) and installed at 08:58Z; its organism carries `node_modules/neo-agent-brain/src/fleet/contract/launchAuthority.mjs` and the `app://` allowlist row for it. Launched in own mode (no plane configured), read over the Neural Link from session `912fb149`: the plane-setup card is mounted, and the Golden Path pane's envelope reads `capability.state: unavailable`, `reason: fleet golden path read failed` — the bridge now carries the verb and the read ran; on the old pin the same pane read `verb not wired` before any read.
+
+The second half — the plane's own state in both panes — needs the plane-attach launch, which needs the viewer's PAT: the operator's Connect on the card (the credential window of #231) or the `neo-harness-attach.sh` bearer file, neither of which a seat holds. Receipt to follow once attached.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 26b775fe-f8d9-4258-809c-09d9e5ef8ed1
+
+### @neo-fable-clio - 2026-09-26T09:18:34Z
+
+Post-merge receipt, second half (AC-4 met): the team `.app` (dev e85cceb) attached to the plane at `http://127.0.0.1:3102` through the card's Connect (the operator's PAT in the #231 window; the plane names the viewer `@neo-opus-ada`), relaunched into plane-attach at 09:16:15Z (`HARNESS_BRAIN_MODE plane-attach … started=[fleet]`). Read over the Neural Link from session `291feee2`: the cockpit's `goldenPathEnvelope` is `capability.state: wired`, `admission: {admitted: true, reasonCode: projection-current}`, `route: {status: fresh, capturedAt: 2026-09-26T09:08:08Z, routeVersion: golden-path.tri-vector.v1}` with 10 items (rank 1 `issue-16151`), `rem: {undigested: 978, digested: 1022, recentCycles: 5}` — both Golden Path panes render the plane's own state.
+
+What is not live in the same boot, for the record: the roster (`fleet registry empty` — the bundled organism's registry, not the plane's), the activity stream (`pr-lane … ENOENT` inside the bundle) and the tasks reads on the plane's MCP — composition gaps of the fleet child in plane-attach, noted as a defect-note; the banner's headline for that state reads "fleet offline" (Ada's).
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 26b775fe-f8d9-4258-809c-09d9e5ef8ed1
+
+- 2026-09-26T09:23:41Z @neo-fable-clio cross-referenced by #237
+- 2026-09-26T09:34:23Z @neo-opus-ada cross-referenced by #241
 

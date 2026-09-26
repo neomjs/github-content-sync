@@ -30,10 +30,12 @@ subIssues:
   - '[x] 219 The packaged shell keeps no log of its own boot'
   - '[x] 221 An unconfigured shell beside a running plane refuses its Brain and says only "not ready"'
   - '[x] 223 The plane record stores no identity, so a Finder launch cannot attach'
-  - '[ ] 227 The credential window looks and acts like a password field'
-  - '[ ] 229 The shell denies the engine''s staged popup, so no cockpit pane tears out or pops out'
-subIssuesCompleted: 14
-subIssuesTotal: 17
+  - '[x] 227 The credential window looks and acts like a password field'
+  - '[x] 229 The shell denies the engine''s staged popup, so no cockpit pane tears out or pops out'
+  - '[x] 235 The credential window cuts off its buttons: a fixed height shorter than its content'
+  - '[x] 241 The shell''s instance switcher swaps in a bridge that has no bearer'
+subIssuesCompleted: 18
+subIssuesTotal: 19
 contentTrust:
   projected: true
   quarantined: 0
@@ -334,4 +336,12 @@ Origin Session ID: 9b748a56-8b84-43bf-a542-ee8dcf437ebf
 - 2026-09-26T07:15:22Z @neo-opus-ada added sub-issue #227
 - 2026-09-26T07:25:38Z @neo-opus-grace cross-referenced by #229
 - 2026-09-26T07:26:04Z @neo-opus-grace added sub-issue #229
+- 2026-09-26T08:47:10Z @neo-opus-vega cross-referenced by PR #231
+- 2026-09-26T08:49:37Z @neo-fable-clio cross-referenced by PR #232
+- 2026-09-26T09:03:19Z @neo-opus-ada cross-referenced by #235
+- 2026-09-26T09:03:24Z @neo-opus-ada added sub-issue #235
+- 2026-09-26T09:14:05Z @neo-fable-clio cross-referenced by PR #236
+- 2026-09-26T09:23:41Z @neo-fable-clio cross-referenced by #237
+- 2026-09-26T09:34:23Z @neo-opus-ada cross-referenced by #241
+- 2026-09-26T09:34:58Z @neo-opus-ada added sub-issue #241
 

@@ -21,9 +21,11 @@ subIssues:
   - '[x] 13445 Relocate first-widget EvidencePane into a dashboard.Container host'
   - '[x] 210 A Golden Path pane renders the computed route as text with its currency'
   - '[x] 213 The Golden Path as a graph: a canvas-worker pane draws the computed route''s spine and its citations'
-  - '[ ] 228 Brain pin 3 — dev@1ac9492: the fleet allowlist admits fleetGoldenPath'
-subIssuesCompleted: 4
-subIssuesTotal: 6
+  - '[x] 228 Brain pin 3 — dev@1ac9492: the fleet allowlist admits fleetGoldenPath'
+  - '[x] 243 The Observatory becomes a left-rail view, not a strip tab'
+  - '[ ] 244 Home gets a live canvas, at least at the portal hero''s bar'
+subIssuesCompleted: 6
+subIssuesTotal: 8
 contentTrust:
   projected: true
   quarantined: 0
@@ -321,4 +323,12 @@ Cross-links: neomjs/neo-agent-institution#10 (the forward home) · neomjs/neo-ag
 - 2026-09-25T19:07:48Z @neo-opus-vega cross-referenced by PR #499
 - 2026-09-26T07:21:30Z @neo-fable-clio added sub-issue #228
 - 2026-09-26T07:25:38Z @neo-opus-grace cross-referenced by #229
+- 2026-09-26T08:05:14Z @neo-fable-clio cross-referenced by PR #233
+- 2026-09-26T09:23:41Z @neo-fable-clio cross-referenced by #237
+- 2026-09-26T09:34:27Z @neo-opus-ada cross-referenced by #243
+- 2026-09-26T09:34:29Z @neo-opus-ada cross-referenced by #244
+- 2026-09-26T09:34:30Z @neo-opus-ada cross-referenced by #245
+- 2026-09-26T09:35:01Z @neo-opus-ada added sub-issue #243
+- 2026-09-26T09:35:03Z @neo-opus-ada added sub-issue #244
+- 2026-09-26T12:01:06Z @neo-fable-clio cross-referenced by PR #253
 

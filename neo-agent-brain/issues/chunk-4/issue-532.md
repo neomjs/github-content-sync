@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-26T07:22:10Z'
-updatedAt: '2026-09-26T07:22:15Z'
+updatedAt: '2026-09-26T10:25:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/532'
 author: neo-preview
 commentsCount: 0
@@ -60,11 +60,21 @@ The plant is a *plugin* rather than a generated script, so the target path diffe
 
 Emit the plant through the seat-config generator, beside the boot hook it already emits, into the seat's OpenCode plugins directory. The generator is the only surface that already knows a seat's paths; adding a second installer for one file in the same seat would be the accretion this repo's maintainer test refuses.
 
+**Two of the three questions this ticket originally asked are already answered by `deriveHarnessLaunchSpec.mjs`, and finding that narrowed the scope.** The harness launch spec sets a two-var XDG pair per seat — `XDG_CONFIG_HOME` and `XDG_DATA_HOME` both at the instance home, `XDG_CACHE_HOME` under it — and its own comment records that this "unifies the whole footprint as `<instanceHome>/opencode/` (**the seat-config generator's planting target**)". So the path rule already has exactly one owner and the generator already has a target to plant into. The genuinely missing half is that **nothing writes there**: the only mentions of `~/.config/opencode/plugins/` in this repo are the plant's own JSDoc and one comment.
+
 Decide at the PR, with the generator's sibling precedent read first:
 
 - **Arm shape** — one more entry in the returned `files` array, or a separate plant-specific return. The first is the smaller change; the second is easier to consume for a caller that only wants the plant.
 - **Overwrite semantics** — an operator hand-edit of the installed plant must be detected and reported rather than silently clobbered, or silently clobbered with a log line. Pick one deliberately; the current state (no installer, hand edits persist) is not a design, it is an accident.
 - **Freshness** — whether the generator rewrites the plant unconditionally, or only when the repo copy's content differs from the installed copy. The second makes a relaunch cheap and makes "the seat is running an old plant" answerable by diff.
+
+### The second, smaller defect: the fallback is honest nowhere
+
+`opencodeWakeEnvelopePlugin.mjs:87` derives its root as `process.env.XDG_DATA_HOME || path.join(os.homedir(), '.local', 'share')`, while its own JSDoc at :54 claims "The envelope root honors `XDG_DATA_HOME`, so per-seat XDG isolation (Fleet launch specs) keeps each seat's envelope on its own path instead of collapsing onto the shared default."
+
+Under the harness that claim holds. **Under a hand launch it does not**, and a hand launch is a normal way to start a seat: `open -n -a <harness> --args --user-data-dir=…` sets that harness's own flag and leaves `XDG_DATA_HOME` unset, so the fallback puts the envelope at a root shared by every seat on the host, while the subscription's registered `envelopePath` points at the per-seat instance home. The reader then refuses or — worse — a *different* seat's bridge answers for this one.
+
+Decide at the PR: whether the unset case **fails loudly** (log and skip the write, so the absence is visible) or keeps writing to a shared root **with the JSDoc corrected** to stop claiming isolation it does not provide. The second is a one-word doc change and leaves a silent cross-seat hazard; the first is safer and makes a mis-provisioned seat self-describing. I lean first, and the argument for the second is that a strict refusal would break every currently-working hand launch — which is an argument about *this week*, not about correctness.
 
 ## Contract Ledger Matrix
 
@@ -115,6 +125,7 @@ Live latest-open sweep: checked the latest 20 open Brain issues at 2026-09-26T07
 Origin Session ID: session-2026-09-25-neo-preview-brain-prs
 
 Retrieval Hint: "wake envelope plant provisioning generator files array seat plugins path" · Commit anchor `7d7de1c` (the approved writer fix whose Post-Merge Validation step 1 is the manual copy this ticket automates).
+
 
 
 ## Timeline

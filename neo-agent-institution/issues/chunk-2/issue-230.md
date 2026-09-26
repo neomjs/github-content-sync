@@ -1,7 +1,7 @@
 ---
 id: 230
 title: 'Observatory pane: the Golden Path route as a 3D WebGL2 scene'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-09-26T07:28:21Z'
-updatedAt: '2026-09-26T07:28:21Z'
+updatedAt: '2026-09-26T09:07:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/230'
 author: neo-fable-clio
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T09:07:38Z'
 ---
 # Observatory pane: the Golden Path route as a 3D WebGL2 scene
 
@@ -46,7 +47,7 @@ The cockpit has two Golden Path readings on `dev` — the text pane (#210 → #2
 
 ## The Fix
 
-1. `apps/agentos/canvas/Observatory.mjs` — `Neo.canvas.Base`, `contextType: 'webgl2'`, `contextAttributes: {antialias: false, powerPreference: 'high-performance'}`; remote: `setScene`, `setTheme`, `updateMouseState`, `updateSize`, `getStats` (+ the base lifecycle set). Frames only while the pointer moves the camera or a scene lands — idle draws nothing. Layers: edges (lines, dim), nodes (round points, sized by score / degree), the route (a golden line strip + points). Currency: `current` = the route in the signal gold, `withheld` = dim ink, anything else = a cleared surface.
+1. `apps/agentos/canvas/Observatory.mjs` — `Neo.canvas.Base`, `contextType: 'webgl2'`, `contextAttributes: {antialias: false, powerPreference: 'high-performance'}`; remote: `setScene`, `setTheme`, `updateMouseState`, `updateSize`, `getStats` (+ the base lifecycle set). Frames only while the pointer moves the camera or a scene lands — idle draws nothing. Layers: edges (lines, dim), nodes (round points, sized by score / degree), the route as a recommendation-order ribbon — beads along each leg in the signal, styled apart from the graph's edges (D#19151 OQ4: never a rank-to-rank connector that looks like a dependency the graph asserts). Currency: `current` = the route in the signal, `withheld` = dim ink, anything else = a cleared surface.
 2. `apps/agentos/util/ObservatorySceneLayout.mjs` — pure, unit-tested: turns a scene envelope into typed arrays (positions, colours, sizes, edge indices, route indices). The scene envelope shape is declared here (`{nodes: [{id, kind, label, score?, degree?, peer?}], edges: [[a, b]], route: [id…], counts, budget, completeness}`) and `fromGoldenPath(envelope)` derives this slice's only scene from the Golden Path envelope: route items on a helix by rank, each item's citations on a ring around it — so neomjs/neo-agent-brain#533 replaces the derivation, never the renderer.
 3. `apps/agentos/view/fleet/goldenpath/ObservatoryContainer.mjs` + `ObservatoryCanvas.mjs` — the pane (currency head, the hovered node's label in the head, the canvas), registered beside "Route graph" as "Observatory"; the host lifts `GraphCanvas`'s pointer handling and adds wheel + drag forwarding (neomjs/neo#19173's shape) so the worker orbits and zooms.
 4. Specs: the layout's unit spec (route order, citation rings, currency); a Neural Link e2e arm that lands a fixture envelope through `writeGoldenPath` and reads the renderer's `getStats()` (frames > 0, the camera moved after a forwarded drag and wheel); goldens for `current` and `withheld` in both themes through #11 (the surface is deterministic per fixture and camera).
@@ -71,6 +72,7 @@ aligned-with ADR 0029 (the pane is a declared pane and tears out like any other)
 - [ ] AC-3 "Observatory" is a declared pane beside "Route graph", tears out with the cockpit's mechanics, and wears the FM tokens (#13); goldens for `current` and `withheld` in both themes pass the #11 harness.
 - [ ] AC-4 The scene shape and `setScene` are the one entry a Brain scene feed lands in — reviewed against the diff; the feed itself is neomjs/neo-agent-brain#533.
 - [ ] AC-5 (post-merge) The operator orbits the real route in the team shell (plane-attach, after #228).
+- [ ] AC-6 (D#19151 OQ4) The route layer reads as recommendation order, never as an edge the graph asserts: a beaded ribbon in the signal, styled apart from the graph's edges (dim hairlines), the producer's rank read in the head on hover; rank-at-rest numbering (DOM beacons over the projected items, the `Neo.app.header.Canvas` precedent) is an AC of the H3-e leaf.
 
 ## Out of Scope
 
@@ -92,6 +94,7 @@ Live latest-open sweep: the latest 20 open issues of this repository (07:18:32Z)
 Origin Session ID: 26b775fe-f8d9-4258-809c-09d9e5ef8ed1
 Retrieval Hint: `query_raw_memories("observatory pane WebGL2 canvas worker Golden Path 3D scene orbit")`
 
+
 ## Timeline
 
 - 2026-09-26T07:28:21Z @neo-fable-clio assigned to @neo-fable-clio
@@ -101,4 +104,36 @@ Retrieval Hint: `query_raw_memories("observatory pane WebGL2 canvas worker Golde
 - 2026-09-26T07:28:23Z @neo-fable-clio added the `design` label
 - 2026-09-26T07:28:54Z @neo-fable-clio added parent issue #10
 - 2026-09-26T07:30:21Z @neo-fable-clio cross-referenced by #10034
+- 2026-09-26T08:06:33Z @neo-fable-clio cross-referenced by PR #234
+- 2026-09-26T08:50:15Z @neo-fable-clio referenced in commit `c9add4b` - "feat(cockpit): the Observatory pane draws the Golden Path route as a 3D scene on the canvas worker (#230)
+
+A WebGL2 renderer in the canvas worker (the engine's first) draws the route's
+items on a helix by rank with their citations on rings and the route as a
+beaded line in the signal; a current route in colour, a withheld one dim, any
+other currency a cleared surface. A frame is owed only to a change: a scene,
+the surface, the theme, the camera. Drag orbits, the wheel zooms, the head
+names the node under the pointer. The pure scene layout declares the scene
+shape a Brain feed lands in later; the FM ink mirror the two canvas-worker
+renderers share moves into one module."
+- 2026-09-26T08:57:06Z @neo-fable-clio referenced in commit `23b6185` - "feat(cockpit): the Observatory pane draws the Golden Path route as a 3D scene on the canvas worker (#230)
+
+A WebGL2 renderer in the canvas worker (the engine's first) draws the route's
+items on a helix by rank with their citations on rings and the route as a
+beaded line in the signal; a current route in colour, a withheld one dim, any
+other currency a cleared surface. A frame is owed only to a change: a scene,
+the surface, the theme, the camera. Drag orbits, the wheel zooms, the head
+names the node under the pointer. The pure scene layout declares the scene
+shape a Brain feed lands in later; the FM ink mirror the two canvas-worker
+renderers share moves into one module."
+- 2026-09-26T09:02:45Z @neo-preview cross-referenced by PR #232
+- 2026-09-26T09:07:38Z @tobiu referenced in commit `61fabbb` - "Merge pull request #234 from neomjs/clio/230-observatory
+
+feat(cockpit): the Observatory pane draws the Golden Path route as a 3D scene on the canvas worker (#230)"
+- 2026-09-26T09:07:38Z @tobiu closed this issue
+- 2026-09-26T09:34:27Z @neo-opus-ada cross-referenced by #243
+- 2026-09-26T09:34:29Z @neo-opus-ada cross-referenced by #244
+- 2026-09-26T10:45:09Z @neo-opus-ada cross-referenced by #19261
+- 2026-09-26T10:45:53Z @neo-opus-ada cross-referenced by #252
+- 2026-09-26T12:01:06Z @neo-fable-clio cross-referenced by PR #253
+- 2026-09-26T12:49:11Z @neo-fable-clio cross-referenced by PR #19274
 

@@ -7,9 +7,10 @@ labels:
   - ai
   - architecture
   - agent-os
-assignees: []
+assignees:
+  - neo-preview
 createdAt: '2026-09-26T07:26:58Z'
-updatedAt: '2026-09-26T07:26:58Z'
+updatedAt: '2026-09-26T11:02:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/533'
 author: neo-fable-clio
 commentsCount: 0
@@ -90,4 +91,8 @@ Retrieval Hint: `query_raw_memories("fleetGraphScene bounded neighbourhood scene
 - 2026-09-26T07:28:22Z @neo-fable-clio cross-referenced by #230
 - 2026-09-26T07:29:26Z @neo-fable-clio added parent issue #10034
 - 2026-09-26T07:30:21Z @neo-fable-clio cross-referenced by #10034
+- 2026-09-26T08:06:33Z @neo-fable-clio cross-referenced by PR #234
+- 2026-09-26T11:02:02Z @neo-preview assigned to @neo-preview
+- 2026-09-26T11:19:00Z @neo-preview cross-referenced by PR #545
+- 2026-09-26T11:29:08Z @neo-preview cross-referenced by #546
 

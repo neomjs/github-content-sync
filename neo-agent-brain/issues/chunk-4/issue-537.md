@@ -1,7 +1,7 @@
 ---
 id: 537
 title: 'The decay lock trusts a cached clock, and a message''s edges are not exempt'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-26T07:34:27Z'
-updatedAt: '2026-09-26T07:34:27Z'
+updatedAt: '2026-09-26T08:15:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/537'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T08:15:51Z'
 ---
 # The decay lock trusts a cached clock, and a message's edges are not exempt
 
@@ -62,7 +63,8 @@ Every run multiplies every unprotected edge weight by 0.98 and deletes the ones 
 
 1. `decayGlobalTopology` reads `lastDecayedAt` from storage (`SELECT json_extract(data, '$.properties.lastDecayedAt') FROM Nodes WHERE id = '_SYSTEM_STATE'`) and drops the pre-run cache probe and blank upsert. The post-run `upsertGlobalNode` (which lazy-loads before merging) creates or advances the clock as today. The JSDoc names why: the lock is a storage fact, and the #506-era loop is the anchor.
 2. Both statements gain `AND substr(source, 1, 8) <> 'MESSAGE:'`; the `PROTECTED_EDGE_TYPES` block gets the one-line rule: a message's own edges are the sender's record, never scent.
-3. Three arms in `test/playwright/unit/ai/services/memory-core/GraphService.spec.mjs`: (a) an external clock advance in storage makes an unforced run skip — red on `dev`; (b) a message-sourced `IN_REPLY_TO` at 0.05 and `TAGGED_CONCEPT` at 1.0 survive a forced run unchanged while a non-message `RELATES_TO` at 0.05 is pruned — red on `dev`; (c) `getOrphanedNodes` never returns `_SYSTEM_STATE` — green on `dev`, pins #515/#520.
+3. Arms in `test/playwright/unit/ai/services/memory-core/GraphService.spec.mjs`: (a) an external clock advance in storage makes an unforced run skip — red on `dev`; (b) a message-sourced `IN_REPLY_TO` at 0.05 and `TAGGED_CONCEPT` at 1.0 survive a forced run unchanged while a non-message `RELATES_TO` at 0.05 is pruned and a memory's `TAGGED_CONCEPT` decays to 0.98 — red on `dev`; (c) `getOrphanedNodes` never returns `_SYSTEM_STATE` — a baseline control, green on `dev`, pins #515/#520; (d) the support projection counts a message-sourced edge as total, never decaying, support.
+4. `getInboundStructuralSupport` applies the same source rule to its decaying buckets (Euclid's RA-1 on PR #539): a permanent record must not read as current motion.
 
 **Contract Ledger**
 
@@ -71,6 +73,7 @@ Every run multiplies every unprotected edge weight by 0.98 and deletes the ones 
 | `GraphService.decayGlobalTopology` lock | this ticket; the 24h lock's own JSDoc | the clock is read from storage on every call | no clock row → create and run (unchanged) | arm (a) |
 | `GraphService.decayGlobalTopology` decay + prune predicate | `PROTECTED_EDGE_TYPES` criterion (record vs scent) | edges sourced by a `MESSAGE` node are neither decayed nor pruned | — | arm (b) |
 | `getOrphanedNodes` | #520's allowlist | `_SYSTEM_STATE` never collectable | — | arm (c) |
+| `GraphService.getInboundStructuralSupport` decaying buckets (consumed by `GoldenPathSynthesizer` Discussion liveness) | the same record-vs-scent criterion | a message-sourced edge counts in `totalWeight` / `totalEdgeCount`, never in `decayingWeight` / `decayingEdgeCount` — the read model matches what the decay leaves alone | — | the support arm's message-sourced control |
 
 **Decision Record impact:** none. Aligned with neo #15973 (carrier shielding) and ADR 0006 §2.5 by construction; no ADR.
 
@@ -79,7 +82,7 @@ Every run multiplies every unprotected edge weight by 0.98 and deletes the ones 
 - [ ] AC-1: arm (a) is red against `dev` and green at the head: with the storage clock advanced by another writer and a stale cached copy, an unforced `decayGlobalTopology()` writes nothing.
 - [ ] AC-2: arm (b) is red against `dev` and green at the head: message-sourced edges keep their weight and survive the prune; the non-message control at 0.05 is pruned.
 - [ ] AC-3: arm (c) is green: `_SYSTEM_STATE` is never in `getOrphanedNodes()`.
-- [ ] AC-4 (post-merge, local plane): after the recreate on the merged head, the first due decay logs one `Running ambient topology decay`, and the following cycles log `Skipping global topology decay (Algorithmic Lock: …)`; a read-only probe before and after that run shows message-sourced edge weights unchanged. Receipt on #64.
+- [ ] AC-4 (L3-deferred: the running plane cannot be an unmerged head; post-merge, local plane, the recreate is Vega's; receipt path #64): after the recreate on the merged head, the first due decay logs one `Running ambient topology decay`, and the following cycles log `Skipping global topology decay (Algorithmic Lock: …)`; a read-only probe before and after that run shows message-sourced edge weights unchanged.
 
 ## Out of Scope
 
@@ -107,6 +110,7 @@ Structure map: owning folder `ai/services/memory-core/` (`GraphService.mjs` and 
 Origin Session ID: e2fd8a01-5bfc-4d82-ad5b-5c889f4b6710
 Retrieval Hint: "decay lock reads cached _SYSTEM_STATE, orphan pass deleted the clock, decay ran five times in 37 minutes, message edges exempt from decay"
 
+
 ## Timeline
 
 - 2026-09-26T07:34:28Z @neo-opus-vega assigned to @neo-opus-vega
@@ -114,4 +118,12 @@ Retrieval Hint: "decay lock reads cached _SYSTEM_STATE, orphan pass deleted the 
 - 2026-09-26T07:34:29Z @neo-opus-vega added the `ai` label
 - 2026-09-26T07:34:29Z @neo-opus-vega added the `agent-os` label
 - 2026-09-26T07:36:55Z @neo-opus-vega cross-referenced by #538
+- 2026-09-26T07:41:14Z @neo-opus-vega cross-referenced by PR #539
+- 2026-09-26T08:06:27Z @neo-opus-vega referenced in commit `2228704` - "fix(graph): the support projection counts a message's record edges as total, never decaying, support (#537)"
+- 2026-09-26T08:15:51Z @tobiu referenced in commit `a8d9e66` - "Merge pull request #539 from neomjs/vega/537-decay-clock-storage-truth
+
+fix(graph): the decay lock reads its clock from storage, and a message's edges are exempt (#537)"
+- 2026-09-26T08:15:51Z @tobiu closed this issue
+- 2026-09-26T08:22:23Z @neo-opus-vega cross-referenced by #64
+- 2026-09-26T09:46:46Z @neo-opus-grace cross-referenced by PR #543
 

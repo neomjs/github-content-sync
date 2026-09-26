@@ -1,14 +1,14 @@
 ---
 id: 508
 title: 'The B4 guard detects DB paths only, so ''B4 is guarded'' reads true while 356 shared-config writes sit in test/'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-preview
 createdAt: '2026-09-25T20:19:43Z'
-updatedAt: '2026-09-25T20:39:36Z'
+updatedAt: '2026-09-26T08:58:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/508'
 author: tobiu
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T08:58:18Z'
 ---
 # The B4 guard detects DB paths only, so 'B4 is guarded' reads true while 356 shared-config writes sit in test/
 
@@ -77,11 +78,13 @@ If the general rule lands first it will report ~356 pre-existing hits; those nee
 
 ## Acceptance Criteria
 
-- [ ] AC-1 `check-aiconfig-test-mutation` either detects shared-config assignment in `test/**`, or is renamed and `0019:64` corrected to state its real scope. A receipt showing the mechanism, not an absence of complaints.
-- [ ] AC-2 The ADR's B4 row no longer claims coverage the implementation does not have, in both directions: pattern scope and directory scope.
-- [ ] AC-3 `TextEmbeddingService.retry.spec.mjs` writes zero shared-config leaves, with the tuning surface supplied by injection.
-- [ ] AC-4 A guard arm that fails on a synthetic shared-config write and passes on the current shape — a control that survives only if the rule can actually see a write.
-- [ ] AC-5 The converted retry spec still passes at parity, and `openAiCompatibleHostFn_`-style seams are **not** proliferated one leaf at a time; the seam count must not grow with the leaf count.
+- [x] AC-1 `check-aiconfig-test-mutation` either detects shared-config assignment in `test/**`, or is renamed and `0019:64` corrected to state its real scope. A receipt showing the mechanism, not an absence of complaints.
+- [x] AC-2 The ADR's B4 row no longer claims coverage the implementation does not have, in both directions: pattern scope and directory scope.
+- [ ] AC-3 `TextEmbeddingService.retry.spec.mjs` writes zero shared-config leaves, with the tuning surface supplied by injection. → **moved to #541** (phase 2; not delivered here)
+- [x] AC-4 A guard arm that fails on a synthetic shared-config write and passes on the current shape — a control that survives only if the rule can actually see a write.
+- [ ] AC-5 The converted retry spec still passes at parity, and `openAiCompatibleHostFn_`-style seams are **not** proliferated one leaf at a time; the seam count must not grow with the leaf count. → **moved to #541** (phase 2; not delivered here)
+
+**Scope note.** This ticket covers the DETECTION half only. AC-3 and AC-5 are the CONVERSION half — they change specs, not the guard — and were split to #541 before this PR opened, so closing this ticket cannot close the only pointer to them.
 
 ## Out of Scope
 
@@ -94,6 +97,7 @@ If the general rule lands first it will report ~356 pre-existing hits; those nee
 Origin Session ID: d19add67-d33c-489d-99aa-27ad2782ed5e
 
 
+
 ## Timeline
 
 - 2026-09-25T20:19:45Z @tobiu added the `bug` label
@@ -102,4 +106,98 @@ Origin Session ID: d19add67-d33c-489d-99aa-27ad2782ed5e
 - 2026-09-25T20:39:36Z @tobiu assigned to @neo-preview
 - 2026-09-25T20:45:32Z @neo-opus-vega cross-referenced by #509
 - 2026-09-25T22:15:18Z @neo-preview cross-referenced by PR #525
+- 2026-09-26T07:15:30Z @tobiu cross-referenced by PR #529
+- 2026-09-26T07:22:11Z @neo-preview cross-referenced by #532
+- 2026-09-26T07:30:09Z @neo-preview referenced in commit `04db28d` - "fix(lint): B4's two halves share one catalog id, and the ownership check is pinned (#508)
+
+The red-first spec I wanted for the ids is the one that was missing: a rule id
+that is executable and self-consistent can still be unexpressible in the ADR
+catalog it claims to serve. `lint-config-template-ssot.mjs` parses catalog id
+cells with `/\b([A-C]\d+)\b/` and resolves every registry id back to a row, so
+`B4-DB-PATH` parses as `B4` and a second suffixed rule collides into
+`duplicate-row`. Splitting B4's halves was right; suffixing their ids was not.
+
+The halves now share the id `B4` — one antipattern, one catalog row, one key —
+and are told apart by a `scope` field plus the `gating` flag the scanner already
+branches on. The ADR row keeps the honesty this PR exists for: the DB-path
+subset GATES, the full scope is REPORT-ONLY, `ai/**` stays unenforced. Its tag
+was also `[gated: …]`, which the parser does not read, so the row parsed as
+zero guards and `unverifiable-tag` fired; the parser only accepts `[guarded: …]`.
+
+Two specs, because the drift cost a 44s lint job in CI and a peer had to report
+it:
+
+- the two-way ownership relation, asserted against the real ADR source (0
+  violations) — milliseconds instead of a CI round-trip;
+- a non-vacuity arm feeding the same check the suffixed ids this PR originally
+  shipped, which must red in both directions (`overstates-enforcement` on the
+  row, `guard-id-missing-from-adr` per half). An arm asserting only `[]` passes
+  just as happily against a validator that stopped checking.
+
+48/48 in the guard spec; `lint-config-template-ssot` reports 0 ownership
+mismatches.
+
+The substantive part of this PR is unchanged: the guard that carried the B4 id
+detected DB paths only, so auditing "is B4 enforced?" against the ADR's own table
+returned a false assurance. It now scans the full clause, prints its measured
+count on every run, and says in the table which half is not yet gating."
+- 2026-09-26T07:37:25Z @neo-preview referenced in commit `a6990bb` - "docs(lint): the catalog-key rule reads as mechanism, not provenance (#508)
+
+The ownership mechanism is unchanged and still pinned by the specs; only the prose
+changes. A durable comment that cites the decision record by number decays into
+a second, unmaintained copy of the rule — the check-ticket-archaeology gate says
+so, and it caught three such refs I had just introduced in this same PR while
+documenting a different mechanism."
+- 2026-09-26T08:18:22Z @neo-preview cross-referenced by #541
+- 2026-09-26T08:20:10Z @neo-preview referenced in commit `8bc38dd` - "fix(lint): the B4 detector sees Object.assign too, and a `full` label may not outrun it (#508)
+
+@neo-opus-ada's Round 1, four RAs, all correct. The second one is this PR's own
+thesis aimed at this PR's own rule: I widened the detector because a label
+broader than its detection is a false assurance, then shipped a `scope: 'full'`
+whose detection was also narrower than its label.
+
+`Object.assign(<config root>, …)` is a write. Every key of that call is still a
+`[[Set]]` on the hierarchical proxy and still routes to the owning provider's
+`setData`, so the previous grammar — which required `=` after the leaf — could
+not see it. It is now its own pattern rather than an alternation on the
+assignment pattern, because a bare `,<object literal>` alternative also matches
+any call that merely PASSES a config value beside a literal. That was my first
+implementation and it produced 177 false positives on a count that looked
+entirely plausible; anchoring on the callee is the only thing that separates the
+write from the read, and an arm now pins it.
+
+Each hit carries its `form`, and the guard prints the split rather than a bare
+total: one `assign-call` can write many leaves, so a per-hit count is a lower
+bound on leaves touched, never a census. The reviewer's independent `git grep`
+measured 57 such sites in 12 files; the detector reports 57. Two instruments
+agreeing to the unit is the receipt, and neither number is a receipt alone.
+
+The true total is therefore 655 / 150, not the 598 / 146 this branch previously
+recorded — the earlier census was itself an undercount by exactly the form it
+could not see. That is now stated in the PR body next to the earlier correction
+rather than quietly replaced.
+
+RA-3: the point-in-time census is gone from the B4 tag cell, the Status-row
+amendment and the detector's comment. ADR 0019 §4's tag contract keeps figures
+with the guard that can re-measure them, and a count in a tag is stale the
+moment the surface moves. The PR body keeps its numbers, because a per-PR
+measurement is evidence rather than durable prose — and they are current.
+
+RA-4: "What this PR does" item 1 still named `B4-DB-PATH` after the head
+stopped shipping it.
+
+RA-1 is its own correction and the one I am least comfortable writing: a
+`Resolves` on a ticket holding ACs this PR does not deliver is the exact mistake
+I was corrected on with #510, repeated one session later. AC-3 and AC-5 are the
+CONVERSION half — they change specs, not the guard — and are now #541, with
+#508's body naming the successor, filed and assigned before this push rather
+than promised under Post-Merge Validation.
+
+Verified: guard spec 51/51 (four new arms — the assign form, the read/write
+discrimination, the two-way ownership relation, and its non-vacuity feed);
+`lint-config-template-ssot` 0 ownership mismatches; archaeology 0."
+- 2026-09-26T08:58:18Z @tobiu closed this issue
+- 2026-09-26T08:58:18Z @tobiu referenced in commit `7786f01` - "Merge pull request #525 from neomjs/agent/508-b4-guard-scope
+
+fix(lint): the B4 guard stops claiming scope it did not enforce (#508)"
 
