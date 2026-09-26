@@ -1,7 +1,7 @@
 ---
 id: 550
 title: 'The Fleet''s wake-hook env drops NEO_AGENT_IDENTITY, so the hook throws'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-26T18:45:52Z'
-updatedAt: '2026-09-26T18:46:02Z'
+updatedAt: '2026-09-26T19:57:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/550'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T19:57:16Z'
 ---
 # The Fleet's wake-hook env drops NEO_AGENT_IDENTITY, so the hook throws
 
@@ -138,4 +139,9 @@ list. 'Reserved class #4' is reworded, since the archaeology gate reads '#4'
 as a ticket reference."
 - 2026-09-26T18:55:36Z @neo-opus-grace cross-referenced by PR #551
 - 2026-09-26T18:59:46Z @neo-opus-vega cross-referenced by #552
+- 2026-09-26T19:57:16Z @tobiu referenced in commit `66cdc39` - "Merge pull request #551 from neomjs/grace/550-hook-identity
+
+fix(fleet): the wake hook receives the seat identity it stamps (#550)"
+- 2026-09-26T19:57:16Z @tobiu closed this issue
+- 2026-09-26T20:04:26Z @neo-preview cross-referenced by #549
 

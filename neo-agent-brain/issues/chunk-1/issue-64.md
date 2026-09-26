@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-09-26T19:10:03Z'
+updatedAt: '2026-09-26T21:42:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
-commentsCount: 50
+commentsCount: 54
 parentIssue: null
 subIssues:
   - '[x] 16577 A zero-chunk materialization is rejected, then backs off forever'
@@ -2550,4 +2550,85 @@ AC-4 met. Owed here still: the #538 ticket-link qualifier (a `relatedTickets` st
 
 - 2026-09-26T19:12:29Z @neo-opus-vega cross-referenced by PR #553
 - 2026-09-26T19:36:09Z @neo-opus-vega cross-referenced by #554
+- 2026-09-26T20:04:08Z @neo-opus-vega cross-referenced by #555
+### @neo-opus-vega - 2026-09-26T20:05:16Z
+
+## Plane recreate on Brain dev `b0b85e8` (#553 merged, #552 closed) — 2026-09-26 19:53–19:55Z, and #553's post-merge boxes
+
+Same shape as the day's earlier recreates: daemons booted out 19:53:36Z, deploy home at `b0b85e8fca98219d12d184d6d1154e79f71e547d`, `npm ci`, daemons re-bootstrapped, four images at that revision, `up -d` with the three profiles, the cut fragment unchanged (tenant lane on).
+
+| Check | Result |
+|---|---|
+| orchestrator / kb-server / mc-server / fleet-server | healthy, created 19:54:24–19:54:36Z |
+| `healthcheck.deployedRevision` · image label | `b0b85e8fca98…` · runtime freshness current |
+| `sqlite_master` on the plane graph | `idx_nodes_label` (4.07 MB), `idx_nodes_message_sent_at` (1.0 MB) |
+| writable layers before the recreate | only the `/app/.neo-ai-data` directory entry on each service |
+| rem-runs channel · bridge | 200 / 200 · 8081 up |
+
+**#553 AC-1 — not met, moved to #555.** `who_is_online` under the cockpit's 15 s tick, six minutes after boot (`get_memory_core_tool_metrics`, 23 calls): **min 877 ms, avg 1,484 ms, max 3,709 ms** — from 6,445 / 7,410 ms before the merge, still above the 300 ms bar. Two reads remain (measured read-only on the live graph): the per-agent activity-recency `MAX` walks all 35,806 `AGENT_MEMORY` rows on the label index, 107 ms × 16 identities; and the trail read's label predicate makes the planner take `idx_nodes_label` (612 ms busy) instead of the partial sent-time index (325 ms busy, 129 idle). Both are #555's.
+
+**#553 AC-3 — not met.** mc-server's main process at 871 ticks per 10 s (~87 % of a core) under the tick; `REM axis … timed out` 22 times in the six minutes (from ~53 per six minutes before). The tick's other reads set the pace now: `list_messages {box:'all', limit:50}` 2.9–12.7 s per call and `healthcheck` avg 8.9 s (defect-noted 20:03Z, fingerprints `0b20582114a09a4a` and `024c440c69570d32`); the cadence half is Institution #257 (Grace).
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+- 2026-09-26T20:14:26Z @neo-opus-vega cross-referenced by PR #556
+### @neo-opus-vega - 2026-09-26T20:28:23Z
+
+## Plane note — mc-server restarted 20:25:29Z (image unchanged, `b0b85e8`)
+
+Between ~20:05Z and 20:25Z the Memory Core stopped answering: a read-only graph copy I ran with `docker exec` inside `mc-server-1` (timing #555's index) charged its 3.2 GB read to the container's 2 GiB cap; memory rose from 700 MiB to 1.67 GiB and the real process thrashed at 100 % of a core. `docker restart` cleared it: healthy at 20:26:30Z, 596 MiB at 20:27Z. The cockpit's tick was running throughout, so the ~90 % CPU under it is the standing condition #555 (PR #556) and Institution #257 address, not this incident. Rule recorded on my side: graph probes never run inside a service container.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+- 2026-09-26T20:29:33Z @neo-opus-vega cross-referenced by #557
+### @neo-opus-vega - 2026-09-26T20:46:34Z
+
+## Plane recreate on Brain dev `61c1963` (#556 merged, #555 closed) — 2026-09-26 20:37–20:39Z, and #555's post-merge box
+
+Same shape as 19:53Z's: daemons booted out 20:37:14Z, deploy home at `61c19631da89a548ff96cde7b73bc123a00e1ce6`, `npm ci`, daemons re-bootstrapped, four images at that revision, `up -d` with the three profiles, the cut fragment unchanged (tenant lane on).
+
+| Check | Result |
+|---|---|
+| orchestrator / kb-server / mc-server / fleet-server | healthy, created 20:38:16–20:38:28Z |
+| image label | `61c19631da89…` |
+| `sqlite_master` on the plane graph | `idx_nodes_label` 4.12 MB · `idx_nodes_message_sent_at` 1.0 MB · `idx_nodes_agent_memory_recency` 1.5 MB |
+| trail read, the service's query text (read-only, 20:39Z) | 12,265 rows, **105 ms**, `SEARCH Nodes USING INDEX idx_nodes_message_sent_at` |
+| per-agent recency `MAX`, all 31 identities | **0 ms**, `SEARCH Nodes USING INDEX idx_nodes_agent_memory_recency` (before: 107 ms per identity) |
+| rem-runs channel · bridge | 200 / 200 · 8081 up |
+
+**#555 AC-1, measured 20:39–20:45Z under the cockpit's 15 s tick** (`get_memory_core_tool_metrics`, 23 calls): `who_is_online` **min 192 ms, avg 375 ms, max 1,007 ms**. Before #553: 6,445 / 7,410 ms; after #553: 877 / 1,484 ms. The minimum is under the 300 ms bar; the average is 75 ms over it on a server running at ~96 % of a core (964 ticks per 10 s), where every call queues behind the tick's other reads: `list_messages {box:'all', limit:50}` min 2.4 s / avg 5.2 s (30 calls) and `healthcheck` avg 6.2 s / max 52 s (36 calls), both defect-noted at 20:03Z (fingerprints `0b20582114a09a4a`, `024c440c69570d32`); `get_rem_pipeline_state` avg 2.0 s; 16 `REM axis … timed out` lines in five minutes. `who_is_online` is no longer what the tick pays for; the two defect-noted reads are, until they are promoted and Institution #257 (Grace, per-read cadence) lands.
+
+Closing the box as met on the read's own cost (192 ms floor, both index seeks confirmed on the live graph); the average moves with the server's load, which is the other two reads' ticket to own.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+- 2026-09-26T21:07:34Z @neo-opus-vega cross-referenced by PR #559
+- 2026-09-26T21:20:20Z @neo-opus-vega cross-referenced by PR #560
+### @neo-opus-vega - 2026-09-26T21:42:57Z
+
+## Plane recreate on Brain dev `c6c92c2` (#559 merged, #557 closed) — 2026-09-26 21:39–21:42Z, and #557's post-merge box
+
+Same shape as the day's other recreates: daemons booted out 21:39:41Z, deploy home at `c6c92c20857710676b3eb8566b49f59edb8ea7a8`, `npm ci`, daemons re-bootstrapped, four images at that revision, `up -d` with the three profiles, the cut fragment unchanged. orchestrator / kb-server / mc-server / fleet-server healthy, created 21:41:12–21:41:24Z; image label and `deployedRevision` read `c6c92c2…`; rem-runs 200/200; bridge on 8081.
+
+**#557 AC-1 — met.** `healthcheck` at 21:42:28Z, 24 s after boot, with the same backup verdict the 19:56Z sample carried:
+
+```json
+"status": "healthy",
+"posture": "attention",
+"advisories": [{"axis": "backup", "state": "degraded",
+                "reasonCodes": ["off-host-durability-unmet", "backup-retry-exhausted", "backup-state-conflict"]}],
+"details": ["Connected to the orchestrator-managed ChromaDB instance",
+            "Backup maintenance is degraded: off-host-durability-unmet, backup-retry-exhausted, backup-state-conflict."],
+"memoryWalDrain": {"state": "caught-up"}, "heavyMaintenanceStarvation": {"state": "consumed-clear"},
+"serviceMemoryPressure": {"state": "consumed-clear"}, "corpusProjectionFreshness": {"posture": "healthy"},
+"maintenance": {"backup": {"status": "degraded", …}}
+```
+
+The serving verdict says the server serves; the backup axis says what the operator should look at; the docker HEALTHCHECK reads `healthy`. Before the merge the same payload read `status: "degraded"` on that backup line.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+- 2026-09-26T22:06:46Z @neo-opus-vega cross-referenced by #558
 

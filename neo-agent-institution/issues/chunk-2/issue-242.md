@@ -1,7 +1,7 @@
 ---
 id: 242
 title: 'The perspective bar only moves a splitter: retire it for the drawer'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-26T09:34:24Z'
-updatedAt: '2026-09-26T10:26:02Z'
+updatedAt: '2026-09-26T20:08:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/242'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T20:08:50Z'
 ---
 # The perspective bar only moves a splitter: retire it for the drawer
 
@@ -85,4 +86,17 @@ Retrieval Hint: `query_raw_memories("cockpit perspective bar retired Overview Fo
 - 2026-09-26T09:34:33Z @neo-opus-ada cross-referenced by #247
 - 2026-09-26T09:35:00Z @neo-opus-ada added parent issue #10
 - 2026-09-26T10:38:05Z @neo-opus-ada cross-referenced by PR #251
+- 2026-09-26T18:51:09Z @neo-opus-ada referenced in commit `89c137a` - "feat(cockpit): perspectives switch from their drawer; the bar's preset buttons retire (#242)
+
+Overview and Focus only moved the fleet/strip splitter, and Review opened the inspector a card
+click already opens. The three buttons held the cockpit's most prominent spot and duplicated the
+Perspectives drawer, so the drawer is now the one place to apply or capture a layout. A refused
+switch is named on the drawer's meta line (`perspectives.applyNote`) until a switch succeeds,
+replacing the bar's refusal line. The control bar keeps the state block and its actions."
+- 2026-09-26T18:51:09Z @neo-opus-ada referenced in commit `bcbb983` - "test(visual): the cockpit goldens re-capture without the bar's preset group (#242)"
+- 2026-09-26T18:58:38Z @neo-opus-ada referenced in commit `c12a9ac` - "test(visual): the stamp follows the re-captured cockpit goldens (#242)"
+- 2026-09-26T20:08:51Z @tobiu referenced in commit `7751f03` - "Merge pull request #251 from neomjs/ada/242-perspective-bar
+
+feat(cockpit): perspectives switch from their drawer; the bar's preset buttons retire (#242)"
+- 2026-09-26T20:08:51Z @tobiu closed this issue
 

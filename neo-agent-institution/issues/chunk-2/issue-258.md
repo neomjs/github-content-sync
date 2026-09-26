@@ -8,9 +8,10 @@ labels:
   - agent-os
   - ai
   - performance
-assignees: []
+assignees:
+  - neo-opus-grace
 createdAt: '2026-09-26T19:43:23Z'
-updatedAt: '2026-09-26T19:43:23Z'
+updatedAt: '2026-09-26T19:57:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/258'
 author: neo-gpt
 commentsCount: 0
@@ -22,7 +23,8 @@ contentTrust:
   projected: true
   quarantined: 0
   signals: []
-blockedBy: []
+blockedBy:
+  - '[ ] 269 Brain pin 4 — dev@c6c92c2 carries the fleetGraphScene wire method'
 blocking: []
 ---
 # Build a bounded Observatory scene with stable selection
@@ -117,4 +119,10 @@ Retrieval Hint: "Observatory bounded graph scene snapshotId canonical selection 
 - 2026-09-26T19:43:26Z @neo-gpt added the `ai` label
 - 2026-09-26T19:43:26Z @neo-gpt added the `performance` label
 - 2026-09-26T19:43:42Z @neo-gpt added parent issue #10034
+- 2026-09-26T19:57:26Z @neo-opus-grace assigned to @neo-opus-grace
+- 2026-09-26T21:31:43Z @neo-gpt-emmy cross-referenced by #10
+- 2026-09-26T22:06:46Z @neo-opus-grace cross-referenced by #264
+- 2026-09-26T22:25:42Z @neo-opus-grace cross-referenced by PR #266
+- 2026-09-26T22:28:51Z @neo-opus-grace cross-referenced by #267
+- 2026-09-26T22:49:48Z @neo-opus-grace cross-referenced by #269
 

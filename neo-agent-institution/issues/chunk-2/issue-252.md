@@ -1,7 +1,7 @@
 ---
 id: 252
 title: The Observatory renders through Neo.canvas.GraphScene; its app-local WebGL2 machinery retires
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-26T10:45:52Z'
-updatedAt: '2026-09-26T18:59:52Z'
+updatedAt: '2026-09-26T20:32:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/252'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 19261 Extract a WebGL2 graph-scene renderer into src/canvas as Neo.canvas.GraphScene'
 blocking: []
+closedAt: '2026-09-26T20:32:12Z'
 ---
 # The Observatory renders through Neo.canvas.GraphScene; its app-local WebGL2 machinery retires
 
@@ -44,8 +45,19 @@ neomjs/neo#19261 extracts the generic WebGL2 graph-scene machinery (the point-an
 ## The Fix
 
 1. Bump the `neo.mjs` pin (and CI's engine ref) to a dev commit carrying `Neo.canvas.GraphScene`.
-2. `AgentOS.canvas.Observatory extends Neo.canvas.GraphScene`, keeping only the palette, the currency tones and the scene derivation; it hands the engine typed arrays through `setScene`.
+2. `AgentOS.canvas.Observatory extends Neo.canvas.GraphScene`, keeping only the palette, the currency tones and the scene derivation. It inks the layout scene into the engine's flat scene, as plain arrays, and hands it to the engine's `setScene`. The engine's normalizer turns them into typed arrays before the upload. *(Corrected after review RA-2, Euclid on PR #256: this line first said "hands the engine typed arrays". Sending typed arrays from the App Worker only pays off at H3-e's scale, not for this route of a few dozen nodes.)*
 3. Delete the duplicated program, camera, pick and stats code from the app, and the assumed `dpr`.
+
+## Contract Ledger
+
+*(Backfilled after review RA-2 on PR #256.)*
+
+| Surface | Authority | Behaviour | Fallback | Evidence |
+|---|---|---|---|---|
+| `Observatory.setScene({scene, windowId})` (remote) | `ObservatoryCanvas#pushScene` | takes the layout scene `{currency, empty, nodes, edges, route}` and inks it into the engine's flat scene: route items in the signal (current) or dim (withheld), citations dim, the route as one path | an empty or missing scene clears the surface. A scene the engine refuses throws in the canvas worker, and the drawn scene stays with its `sourceScene`. The App Worker's call rejects only from an engine pin that carries neo `#19291`; this PR's pin, `2965d82fca`, predates it, so there the call gets no reply | unit arms |
+| `Observatory.pick({x, y})` (remote) | `ObservatoryCanvas#onMouseMove` → `reportHover` | the node itself, `{id, kind, label, rank, score}`, mapped from the engine's index | no scene or no surface size → `null` | unit arm |
+| `Observatory.getStats()` (remote) | `ObservatoryCanvas#readStats`, `FleetObservatoryNL` | the engine's stats, with the pane's `counts: {nodes, edges, route}` and `currency` | an empty scene counts zeros; no scene counts `null` | unit arm, NL spec |
+| a theme change | `Neo.canvas.Base#afterSetTheme` → `updateResources` | inks the drawn scene again in the new palette | no scene → one frame | unit arm |
 
 ## Acceptance Criteria
 
@@ -70,6 +82,7 @@ Origin Session ID: 1b945fcf-1142-475f-8007-ac18d51c069a
 Retrieval Hint: `query_raw_memories("Observatory extends GraphScene pin bump app-local renderer sunset")`
 
 
+
 ## Timeline
 
 - 2026-09-26T10:45:53Z @neo-opus-ada added the `enhancement` label
@@ -82,4 +95,25 @@ Retrieval Hint: `query_raw_memories("Observatory extends GraphScene pin bump app
 - 2026-09-26T18:59:52Z @neo-opus-ada assigned to @neo-opus-ada
 - 2026-09-26T19:17:15Z @neo-opus-ada cross-referenced by PR #256
 - 2026-09-26T19:43:25Z @neo-gpt cross-referenced by #258
+- 2026-09-26T19:58:43Z @neo-opus-ada referenced in commit `d325b98` - "fix(agentos): the Observatory's scene changes only once the engine took the inked one (#252)"
+- 2026-09-26T20:09:18Z @neo-opus-ada referenced in commit `255a5c6` - "test(visual): the stamp follows the Observatory's setScene order, goldens re-verified unchanged (#252)"
+- 2026-09-26T20:21:09Z @neo-opus-ada referenced in commit `5177735` - "test(visual): the stamp follows the Observatory's setScene order, goldens re-verified unchanged (#252)"
+- 2026-09-26T20:24:01Z @neo-opus-ada referenced in commit `aa40a5e` - "fix(agentos): the Observatory renders through Neo.canvas.GraphScene, its buffer at the host's pixel ratio (#252)
+
+The app-local WebGL2 copy (program, camera, pick, upload, stats) retires:
+AgentOS.canvas.Observatory extends the engine's GraphScene and keeps only
+the ink - the palette, the currency tones and the layout scene marshalled
+into the engine's flat scene. pick maps the engine's index back to the
+node, getStats keeps the pane's counts and currency, a theme change inks
+the scene again, and the fixed dpr: 2 gives way to the size message's
+devicePixelRatio. Sizes move to the engine's unit (pixels at the camera
+distance) so the pane keeps its look. The engine pin moves to 2965d82fca,
+the GraphScene merge."
+- 2026-09-26T20:24:01Z @neo-opus-ada referenced in commit `7508201` - "fix(agentos): the Observatory's scene changes only once the engine took the inked one (#252)"
+- 2026-09-26T20:24:01Z @neo-opus-ada referenced in commit `67e8be8` - "test(visual): the stamp follows the Observatory's setScene order, goldens re-verified unchanged (#252)"
+- 2026-09-26T20:24:01Z @neo-opus-ada referenced in commit `87abd6d` - "test(visual): the stamp covers #251's goldens beside the Observatory's after the rebase (#252)"
+- 2026-09-26T20:32:12Z @tobiu referenced in commit `975d16d` - "Merge pull request #256 from neomjs/ada/252-observatory-graphscene
+
+fix(agentos): the Observatory renders through Neo.canvas.GraphScene, its buffer at the host's pixel ratio (#252)"
+- 2026-09-26T20:32:12Z @tobiu closed this issue
 

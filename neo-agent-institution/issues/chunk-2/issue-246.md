@@ -1,6 +1,6 @@
 ---
 id: 246
-title: The fleet legend counts benched seats as "external harness"
+title: 'Fleet legend: benched, unobserved and stopped collapse into Offline with its reason; no ''external harness'', no bare ''wedged'''
 state: OPEN
 labels:
   - bug
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-26T09:34:31Z'
-updatedAt: '2026-09-26T13:55:41Z'
+updatedAt: '2026-09-26T21:30:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/246'
 author: neo-opus-ada
 commentsCount: 2
@@ -25,60 +25,77 @@ contentTrust:
 blockedBy: []
 blocking: []
 ---
-# The fleet legend counts benched seats as "external harness"
+# Fleet legend: benched, unobserved and stopped collapse into Offline with its reason; no 'external harness', no bare 'wedged'
+
+## Operator ruling, 2026-09-26 ~21:15Z (relayed by @neo-gpt-emmy; the wider design notes are recorded under #10)
+
+This supersedes this ticket's first Fix and ACs, which split benched, stopped and unobserved into separate buckets:
+- **Benched, unobserved and stopped are one operator-facing category: Offline.** The precise reason stays in the row's detail, not in the legend.
+- **"External harness" is not a state.** Every current agent runs in one.
+- **No unexplained "wedged".**
+- **The seven-item status row is too many.**
+- **A whole-plane read failure stays distinct from "agent offline".**
 
 ## Context
 
 The operator, 2026-09-26, on the legend above the roster: *"what does 'wedged' mean? not clear to me. why is 'external harness' in there? all peers use one."*
 
-The legend on dev reads `0 working · 0 idle · 0 wedged · 0 rate-limited · 8 unobserved · 3 external harness · 0 benched / offline`. The three "external harness" seats are exactly the three rows the roster marks `participationStatus: 'operator_benched'` (Gemini Pro, Phoebe, Iris), so the legend files the benched seats under "external harness" and reports zero benched.
+The legend on dev reads `0 working · 0 idle · 0 wedged · 0 rate-limited · 8 unobserved · 3 external harness · 0 benched / offline`. The three "external harness" seats are exactly the three rows the roster marks `participationStatus: 'operator_benched'` (Gemini Pro, Phoebe, Iris). So the legend files the benched seats under "external harness" and reports zero benched.
 
 ## The Problem
 
-Two words in the legend say nothing an operator can use, and one bucket miscounts:
-
 - **"wedged"** is internal slang for a session that runs but makes no progress. Operators read it as a guess.
 - **"external harness"** names a topology, not a state. Every seat runs in its own harness, so the bucket describes the whole fleet, and today it is where benched seats end up.
-- **Benched is lost.** `SourceHealth.resolveFleetDisplayState` reads only `state` and the runtime source. When no runtime is wired it maps `state: 'off'` to `external`, and it never reads `participationStatus`, the roster's authority for the bench fact. `neomjs/neo#17305` introduced `external` so unmanaged seats would stop reading "benched / offline". That was right, but the fix also removed the one bench verdict the roster does state.
+- **Benched is lost.** `SourceHealth.resolveFleetDisplayState` reads only `state` and the runtime source. When no runtime is wired, it maps `state: 'off'` to `external`, and it never reads `participationStatus`, the roster's authority for the bench fact.
+- **Seven buckets for five operator questions.** An operator asks whether a seat is working, idle, stuck, rate-limited or offline. The reason a seat is offline is detail.
 
 ## The Architectural Reality
 
 - `apps/agentos/util/SourceHealth.mjs`, `resolveFleetDisplayState({state, sources})`: `CARD_STATES = ['ok', 'idle', 'wedged', 'limited', 'off']`. A wired runtime renders its state as-is. Otherwise `off` and unknown states map to `external`, and the rest to `unobserved`.
-- `apps/agentos/view/fleet/health/Container.mjs`: `HEALTH_ORDER` (seven buckets incl. `external`), `healthCounts()`, and `ATTENTION_STATES = ['wedged', 'limited']`. Its JSDoc still says "exactly the six canonical keys" and "Unknown/guest rows fold into `off`", and neither matches the code.
+- `apps/agentos/view/fleet/health/Container.mjs`: `HEALTH_ORDER` (seven buckets, `external` included), `healthCounts()`, and `ATTENTION_STATES = ['wedged', 'limited']`. Its JSDoc says "exactly the six canonical keys" and "Unknown/guest rows fold into `off`"; neither matches the code.
 - `apps/agentos/view/fleet/shared/StateDotComponent.mjs`, `STATE_LABEL`: `wedged: 'wedged'`, `external: 'external harness'`, `off: 'benched / offline'`.
-- `apps/agentos/model/FleetAgent.mjs`: rows carry `participationStatus` (Brain-stamped, `null` when not stamped).
-- `apps/agentos/CARD-CONTRACT.md`: the card's state vocabulary; `neomjs/neo-agent-brain#28` is the write path for bench and unbench (its AC-3 asks the cards and the tally to count benched as benched).
+- `apps/agentos/model/FleetAgent.mjs`: rows carry `participationStatus`, stamped by the Brain and `null` when not stamped.
+- `apps/agentos/CARD-CONTRACT.md`: the card's state vocabulary. `neomjs/neo-agent-brain#28` is the write path for bench and unbench.
+- Where a failed whole-plane roster read lands today is not traced yet. The implementation reads it before AC-4.
 
 ## The Fix
 
-1. `resolveFleetDisplayState` reads `participationStatus`: `operator_benched` resolves to `benched` in every topology, because the bench is a roster fact, not a supervision verdict.
-2. `external` leaves the state axis. An unwired seat is `unobserved` unless the roster benches it. The harness is a per-seat fact, which the configuration card already shows; it is not a legend bucket.
-3. The fused "benched / offline" splits: `benched` (participation) and `stopped` (a wired runtime that Fleet knows is stopped). `stopped` shows only when a runtime is wired.
-4. Plain words: `wedged` renders as "stuck". The internal key can stay.
-5. Correct the JSDoc in `health/Container.mjs` and update `CARD-CONTRACT.md` to the new vocabulary.
+1. `resolveFleetDisplayState` returns a display state plus, for Offline, its reason:
+   - `benched`: `participationStatus: 'operator_benched'`, in every topology, because the bench is a roster fact.
+   - `unobserved`: no runtime wired and not benched.
+   - `stopped`: a wired runtime that Fleet knows is stopped.
+2. `external` leaves the state axis entirely. The harness is a per-seat fact, which the configuration card already shows.
+3. The legend has five buckets: working · idle · stuck · rate-limited · offline. The row and its detail carry the offline reason.
+4. "stuck" replaces "wedged" in operator-facing text, and the row says what it means: running, no progress. The internal key can stay.
+5. A whole-plane read failure renders as a plane-level state, never as every agent offline.
+6. The `health/Container.mjs` JSDoc and `CARD-CONTRACT.md` follow the new vocabulary.
 
 ## Acceptance Criteria
 
-- [ ] AC-1 A roster row with `participationStatus: 'operator_benched'` renders `benched` on its card and counts in the benched bucket, with or without a wired runtime (unit arms on the resolver and `healthCounts`).
-- [ ] AC-2 No row renders "external harness", and an unwired, active row renders `unobserved` (unit arms; the `neomjs/neo#17305` arms keep holding: no unmanaged seat reads benched or stopped).
-- [ ] AC-3 The legend reads working · idle · stuck · rate-limited · unobserved · benched, plus `stopped` only when a runtime is wired (component arm), and the attention set still counts stuck and rate-limited.
-- [ ] AC-4 `CARD-CONTRACT.md` and the `health/Container.mjs` JSDoc match the code; the affected goldens are re-captured.
+- [ ] AC-1: a roster row with `participationStatus: 'operator_benched'` resolves to `offline` with reason `benched`, with or without a wired runtime. It counts in the offline bucket (unit arms on the resolver and `healthCounts`).
+- [ ] AC-2: no row renders "external harness".
+  - An unwired, active row resolves to `offline` with reason `unobserved`.
+  - A wired, stopped runtime resolves to `offline` with reason `stopped`.
+  - The `neomjs/neo#17305` arms keep holding: no unmanaged seat reads benched.
+- [ ] AC-3: the legend reads working · idle · stuck · rate-limited · offline, and each offline row shows its reason (component arm). The attention set still counts stuck and rate-limited.
+- [ ] AC-4: a failed whole-plane read does not render as agents offline; it shows as a plane-level read failure (arm driving the failed read).
+- [ ] AC-5: `CARD-CONTRACT.md` and the `health/Container.mjs` JSDoc match the code, and the affected goldens are re-captured.
 
 ## Out of Scope
 
 - Writing the bench fact (`neomjs/neo-agent-brain#28`).
 - Retiring the sample roster (#237, Clio): the resolver fix holds for live rows, which carry `participationStatus` from the Brain.
+- The rest of the operator's design notes (navigation, right-rail spacing, the bottom Route Graph, status summary): #10.
 
 ## Related
 
-#10 (parent) · `neomjs/neo#17305` (the origin of `external`) · `neomjs/neo-agent-brain#28` (bench write path; this ticket delivers its Institution render half) · #237 / #239
+#10 (parent) · `neomjs/neo#17305` (the origin of `external`) · `neomjs/neo-agent-brain#28` (the bench write path; this ticket delivers its Institution render half) · #237 / #239
 
-unowned-rationale: claimable (a resolver and vocabulary change with unit arms and a few goldens); its author holds #241 and #242.
-
-Live latest-open sweep: the latest 20 open issues at 2026-09-26T09:33:49Z — no equivalent. A2A in-flight sweep (all read states, last 60 min): no claim on the legend or the resolver. Memory Core sweep ("fleet health legend external harness benched"): none beyond `neomjs/neo#17305`. Own-assignment sweep: none open (#235 closed with #236 at 09:31Z).
+Live latest-open sweep: the latest 20 open issues at 2026-09-26T09:33:49Z showed no equivalent. A2A in-flight sweep (all read states, last 60 min): no claim on the legend or the resolver. Memory Core sweep ("fleet health legend external harness benched"): nothing beyond `neomjs/neo#17305`. Own-assignment sweep: none open.
 
 Origin Session ID: 1b945fcf-1142-475f-8007-ac18d51c069a
-Retrieval Hint: `query_raw_memories("fleet legend wedged stuck external harness benched participationStatus resolver")`
+Retrieval Hint: `query_raw_memories("fleet legend wedged stuck external harness benched participationStatus resolver offline reason")`
+
 
 ## Timeline
 
@@ -111,4 +128,8 @@ The record-change arm matters: a load-only test can pass while the live HealthBa
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-09-26T21:19:55Z @neo-gpt-emmy cross-referenced by #10
+- 2026-09-26T21:30:48Z @neo-opus-ada changed title from **The fleet legend counts benched seats as "external harness"** to **Fleet legend: benched, unobserved and stopped collapse into Offline with its reason; no 'external harness', no bare 'wedged'**
+- 2026-09-26T22:28:51Z @neo-opus-grace cross-referenced by #267
+- 2026-09-26T22:45:54Z @neo-opus-grace cross-referenced by PR #268
 

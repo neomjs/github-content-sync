@@ -1,7 +1,7 @@
 ---
 id: 255
 title: The cockpit's 15-second liveness tick issues six plane reads and saturates mc-server
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-26T18:59:46Z'
-updatedAt: '2026-09-26T19:29:44Z'
+updatedAt: '2026-09-26T21:06:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/255'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T20:41:20Z'
 ---
 # The cockpit's 15-second liveness tick issues six plane reads and saturates mc-server
 
@@ -113,4 +114,75 @@ Grace (Claude Opus 5.5, Claude Code) · 6408fcd4-3571-4ec2-8009-b4dae5d18917
 
 
 - 2026-09-26T19:25:00Z @neo-opus-grace cross-referenced by PR #257
+- 2026-09-26T20:05:23Z @tobiu referenced in commit `e263508` - "test(visual): re-stamp the baseline inputs after the liveness cadence change (#255)
+
+The visual suite (20/20) and AgentCardSynthesisRenderNL (4/4) were re-run on
+Darwin at 5c61806 without --update-snapshots: no golden moved, so only the
+input stamp changes."
+- 2026-09-26T20:12:15Z @tobiu referenced in commit `b683e5f` - "fix(cockpit): each liveness read keeps its own cadence, and a hidden cockpit reads nothing (#255)
+
+One 15 s timer drove all five liveness reads, and each is a Memory Core
+call behind the fleet server: an open cockpit issued about 380 calls per
+10 minutes and held mc-server near a full core. AgentOS.util.LivenessCadence
+now gives each read its own interval (roster and activity 60 s; tasks,
+deployment state and Brain health 120 s). The 15 s pass only checks which
+reads are due, and it publishes the system lane's instant when no
+deployment read goes out. The in-flight cap still lets a probe go out
+beside a hung wire, so recovery is noticed on the next due turn.
+visibilitychange for the cockpit's window pauses the reads, and a return
+launches what fell due, once.
+
+The two e2e specs that drive timer edges at a 300 ms pass also pin the
+cadence. Three comment refs in them are reworded, because the archaeology
+gate audits whole changed files."
+- 2026-09-26T20:12:15Z @tobiu referenced in commit `dfdc558` - "test(visual): re-stamp the baseline inputs after the liveness cadence change (#255)
+
+The visual suite (19/19) and AgentCardSynthesisRenderNL (4/4) were re-run on
+Darwin at b683e5f without --update-snapshots: no golden moved, so only the
+input stamp changes."
+- 2026-09-26T20:35:59Z @neo-gpt-emmy cross-referenced by #7
+- 2026-09-26T20:38:44Z @tobiu referenced in commit `8b879d3` - "fix(cockpit): each liveness read keeps its own cadence, and a hidden cockpit reads nothing (#255)
+
+One 15 s timer drove all five liveness reads, and each is a Memory Core
+call behind the fleet server: an open cockpit issued about 380 calls per
+10 minutes and held mc-server near a full core. AgentOS.util.LivenessCadence
+now gives each read its own interval (roster and activity 60 s; tasks,
+deployment state and Brain health 120 s). The 15 s pass only checks which
+reads are due, and it publishes the system lane's instant when no
+deployment read goes out. The in-flight cap still lets a probe go out
+beside a hung wire, so recovery is noticed on the next due turn.
+visibilitychange for the cockpit's window pauses the reads, and a return
+launches what fell due, once.
+
+The two e2e specs that drive timer edges at a 300 ms pass also pin the
+cadence. Three comment refs in them are reworded, because the archaeology
+gate audits whole changed files."
+- 2026-09-26T20:38:44Z @tobiu referenced in commit `af1f73a` - "test(visual): re-stamp the baseline inputs on the rebased head (#255)
+
+After the rebase onto #256 (engine pin 2965d82fca), the visual suite (19/19)
+and AgentCardSynthesisRenderNL (4/4) were re-run on Darwin without
+--update-snapshots: no golden moved, so only the input stamp changes."
+- 2026-09-26T20:41:20Z @tobiu referenced in commit `9bd959a` - "Merge pull request #257 from neomjs/grace/255-per-read-cadence
+
+fix(cockpit): each liveness read keeps its own cadence, and a hidden cockpit reads nothing (#255)"
+- 2026-09-26T20:41:20Z @tobiu closed this issue
+- 2026-09-26T21:04:30Z @neo-opus-grace cross-referenced by #261
+### @neo-gpt-emmy - 2026-09-26T21:06:44Z
+
+## Installed cadence observation after the update
+
+The installed shell now runs merged Institution `9bd959a9` (delivery receipt: [#7](https://github.com/neomjs/neo-agent-institution/issues/7#issuecomment-5849819338)). Saved-plane admission was recorded at 20:55:23 UTC. Before the first re-poll, the five controller generations were all 1; at 21:06:00, roster/activity were 10 and tasks/deployment/health were 6, with `livenessHidden:false`: **33 re-polls** observed across the installed run.
+
+The last 600,000 ms of backend metrics at 21:06 showed `who_is_online:9`, `manage_wake_subscription:9`, `get_rem_pipeline_state:5`, and `get_deployment_state_snapshot:5`. The old equal-count fast-tick signature is gone. Global `list_messages:23` includes peer reads and two explicit diagnostic probes; `healthcheck:69` includes the Docker probe and other callers. Total across all callers was 140.
+
+This supports the cadence reduction. It **does not certify the exact <=60 cockpit-originated-call AC**: the metrics API has no caller attribution. Keep that evidence boundary with the #10 residual rather than treating the global total as either a cockpit pass or a cockpit failure.
+
+A separate packaged-smoke consequence is now measured: `harness/main.mjs` waits 20 seconds for another `fleetRoster` call after popup close, while the new roster interval is 60 seconds. Its `workerAfterPopupClose` check fails despite successful IPC afterward. The timing assumption needs to be corrected; the shared-worker result must not be faked. Grace has the exact receipt.
+
+Origin Session ID: 01a0deee-3f9b-7180-ac35-f90129ccaa40
+Emmy · GPT-6 Astra · Codex
+
+- 2026-09-26T21:11:21Z @neo-opus-grace cross-referenced by #10
+- 2026-09-26T21:48:20Z @neo-gpt-emmy cross-referenced by #263
+- 2026-09-26T22:07:43Z @neo-gpt-emmy cross-referenced by PR #265
 

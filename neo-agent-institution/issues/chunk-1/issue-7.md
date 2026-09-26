@@ -9,10 +9,10 @@ labels:
   - epic
 assignees: []
 createdAt: '2026-06-15T18:05:08Z'
-updatedAt: '2026-08-27T11:08:03Z'
+updatedAt: '2026-09-26T22:35:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/7'
 author: neo-opus-vega
-commentsCount: 3
+commentsCount: 6
 parentIssue: 144
 subIssues:
   - '[x] 13033 Electron build root: boot the Agent OS + harness windows in one shell'
@@ -34,8 +34,10 @@ subIssues:
   - '[x] 229 The shell denies the engine''s staged popup, so no cockpit pane tears out or pops out'
   - '[x] 235 The credential window cuts off its buttons: a fixed height shorter than its content'
   - '[x] 241 The shell''s instance switcher swaps in a bridge that has no bearer'
-subIssuesCompleted: 18
-subIssuesTotal: 19
+  - '[x] 259 Document how operators update an installed Fleet Manager'
+  - '[x] 261 The packaged smoke waits 20 s for a roster read now due every 60 s'
+subIssuesCompleted: 20
+subIssuesTotal: 21
 contentTrust:
   projected: true
   quarantined: 0
@@ -344,4 +346,72 @@ Origin Session ID: 9b748a56-8b84-43bf-a542-ee8dcf437ebf
 - 2026-09-26T09:23:41Z @neo-fable-clio cross-referenced by #237
 - 2026-09-26T09:34:23Z @neo-opus-ada cross-referenced by #241
 - 2026-09-26T09:34:58Z @neo-opus-ada added sub-issue #241
+- 2026-09-26T20:29:58Z @neo-gpt-emmy cross-referenced by PR #257
+### @neo-gpt-emmy - 2026-09-26T20:35:58Z
+
+## Today's operator goal: deliver the current shell and restore live plane data
+
+The operator has prioritized updating the installed FM Electron shell, making the operator update procedure explicit, and establishing release auto-updates. Real Agent OS activity must work again; product dummy data is forbidden, including when the connection is unavailable.
+
+| Responsibility | Current evidence / next delivery |
+|---|---|
+| Installed artifact and update procedure — Emmy | `/Applications/Neo Harness.app` reports shell `0.0.1`; its build receipt is 2026-09-26 08:57 UTC, Brain `1ac9492`, Engine `87ac80a`. It predates #254/#239 (13:43 removal of roster/activity seeds). Rebuild from explicit merged revisions, preserve userData and plane configuration, verify the installed bytes and live read results, and publish the repeatable update procedure. Ada confirms no competing builder. |
+| Polling load — #255 / PR #257, Grace | Reviewed and approved at `dfdc558`; human merge pending. The actual <=60 tool calls / 10-minute receipt remains post-merge on the rebuilt installed app. Loader-launch arithmetic is not that receipt. |
+| Dummy data — #237 | #238/#239 closed; #240 still open for task samples. No demo-mode escape hatch. |
+| Plane source ownership — Brain #459 plus the #17 remote-client boundary | The saved plane is configured and main.log proves successful plane admission. The installed activity provider instead reports PR-lane `ENOENT` beneath bundled `organism/resources`. Current Brain's plane branch still combines remote A2A with host-local PR corpus. [Runtime witness](https://github.com/neomjs/neo-agent-brain/issues/459#issuecomment-5849637031). Removing seeds or lowering poll load alone cannot certify this repaired. |
+| Release updates — ADR 0034 §2.5 / E7 | Current packaging has no publish provider/updater metadata; Institution's releases API returns no releases. Whole-package updates remain the contract, independently versioned from npm. Signed/notarized release artifacts and the updater feed are required for macOS automatic updating; signing remains operator-owned. |
+
+This is a responsibility map under the existing epic, not a new shell epic or a claim that the installed regression is resolved. The install's stored principal is preserved; an agent must not silently replace it with its own login.
+
+Origin Session ID: 01a0deee-3f9b-7180-ac35-f90129ccaa40
+Emmy · GPT-6 Astra · Codex
+
+- 2026-09-26T20:46:08Z @neo-gpt-emmy cross-referenced by #259
+- 2026-09-26T20:46:27Z @neo-gpt-emmy added sub-issue #259
+### @neo-gpt-emmy - 2026-09-26T20:57:16Z
+
+## Installed update receipt — 2026-09-26 20:55 UTC
+
+The installed `/Applications/Neo Harness.app` now contains Institution `9bd959a9cf872aa0f84474480f6db07265e16807` (#256 and #257 merged), Engine `2965d82fcab51927dd8f4ad6b13ba3128e189257`, and Brain `61c19631da89a548ff96cde7b73bc123a00e1ce6`. Its generated receipt is stamped `2026-09-26T20:45:45.923Z`.
+
+The candidate was first launched with the existing saved plane configuration. After verifying successful admission, both apps were explicitly quit, the replacement was staged and its main archive/build receipt/liveness source compared, then the whole bundle was swapped. The previous app remains at `/Applications/Neo Harness.previous-20260926.app`. Hash comparisons confirm `plane.json` and the encrypted bearer were unchanged. No canonical Agent OS service was changed by this installation.
+
+**Observed in the reopened installed app:** main.log at 20:55:23 records plane-attach and the same admitted viewer; the switcher displays `127.0.0.1:3102`, not NO INSTANCE. The roster and activity stores contain no invented rows. Neural Link reads the new 60-second activity/roster and 120-second tasks/health/deployment intervals. The actual ten-minute call-count observation is still pending and will remain separate from this installation receipt.
+
+**Remaining live-data defects:** the roster's live answer is empty because its definition source is still local; activity remains stale with PR-lane ENOENT under the bundle's resources path (Brain #459 witness). A later direct feed read also reported an A2A plane-call failure. Admission success does not certify these producers. #240 still owns task sample removal.
+
+**Packaged smoke — overall FAIL, retained honestly:** isolated profile and allocated ports; first-paint product witness passed (`cardCount:0`, `emptyCta:true`), both viewports booted, required assets/shared heap/popup materialization/IPC and sender-refusal/secret checks passed; no renderer errors; owned children stopped without force and released their ports. `chromaListening:false` failed the isolated own-mode gate. `workerAfterPopupClose:false` failed a 20-second wait for another roster poll after #257 changed that poll to 60 seconds. The successful saved-plane product run above is distinct evidence, not a promotion of this smoke to green. Grace and Ada have the two failure receipts.
+
+Operator-update documentation is being delivered under #259. Automatic updates are not implemented by this bundle replacement.
+
+Origin Session ID: 01a0deee-3f9b-7180-ac35-f90129ccaa40
+Emmy · GPT-6 Astra · Codex
+
+- 2026-09-26T20:57:47Z @neo-gpt-emmy cross-referenced by PR #260
+- 2026-09-26T21:04:30Z @neo-opus-grace cross-referenced by #261
+- 2026-09-26T21:04:50Z @neo-opus-grace added sub-issue #261
+- 2026-09-26T21:06:45Z @neo-gpt-emmy cross-referenced by #255
+- 2026-09-26T21:09:53Z @neo-opus-grace cross-referenced by PR #262
+- 2026-09-26T21:31:43Z @neo-gpt-emmy cross-referenced by #10
+- 2026-09-26T22:07:43Z @neo-gpt-emmy cross-referenced by PR #265
+- 2026-09-26T22:08:39Z @neo-gpt-emmy cross-referenced by #263
+### @neo-gpt-emmy - 2026-09-26T22:32:44Z
+
+### Packaged activity repair: real saved-plane observation
+
+At 2026-09-26 22:30–22:32 UTC, the candidate built from #265 head `1fcea4f3c9be75bf62cec8bfcf98a50300a23d7d` attached to the saved local plane and displayed **49 real A2A events**, with **partial — some sources unavailable**. It is running from the temporary build directory; `/Applications/Neo Harness.app` has not yet been replaced with this candidate.
+
+The raw producer answer, provider-owned Store and visible row all match event `memory-core:mailbox:MESSAGE:26b9f5c3-8057-4ffb-ae33-21eeee565b17`, occurredAt `2026-09-26T22:25:59.358Z`, our public #265 update. Store `neo-state-provider-2__fleetActivityEvents` holds the event; provider state is `partial`, with the sanitized PR-source failure retained. The header keeps `memory-core:mailbox` count scope. No seeded data or injected activity was used.
+
+Ordinary scheduled polling subsequently admitted new event `memory-core:mailbox:MESSAGE:0dc70e8c-98d7-4b16-a79e-7451c02bde75` (occurredAt `2026-09-26T22:33:06.727Z`), advancing the same Store from 49 to 50 retained rows without a refresh or reload. The row is visible in native accessibility output. After the scheduled health read, daemon state is `running` and the initial boot warning clears to the source-specific **feed partial** banner.
+
+The shell log proves `plane-attach`, only the fleet child started, and the existing saved viewer was verified plane-side. Both saved plane configuration and encrypted bearer are byte-identical before/after the run. Build provenance: Brain `c6c92c20857710676b3eb8566b49f59edb8ea7a8`, Engine pin `2965d82fcab51927dd8f4ad6b13ba3128e189257`, Electron 43.1.0, staged `2026-09-26T22:27:25.409Z`.
+
+The isolated packaged smoke verifies #261/#262's remaining runtime condition: `workerAfterPopupClose:true`, real Fleet calls from both windows and after popup close, shared heap, off-origin refusal, no secret leaks, coherent first paint and clean unforced teardown with released ports. **Overall smoke exit remains 1**: isolated own-mode Chroma never listened on its allocated port 50141. This result does not certify standalone organism startup.
+
+Remaining delivery gate: cross-family review and human merge of #265, then install the merged-source bundle and repeat the row match from `/Applications`. Remaining product gaps stay explicit: bundled roster is empty, PR reader still targets the absent local corpus, wake push is off. Partial activity restores a useful connection; it does not certify all sources.
+
+Origin Session ID: 01a0deee-3f9b-7180-ac35-f90129ccaa40.
+
+- 2026-09-26T22:49:48Z @neo-opus-grace cross-referenced by #269
 

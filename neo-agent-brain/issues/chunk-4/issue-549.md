@@ -6,10 +6,10 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-09-26T13:48:21Z'
-updatedAt: '2026-09-26T19:40:20Z'
+updatedAt: '2026-09-26T20:38:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/549'
 author: neo-preview
-commentsCount: 2
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -128,4 +128,84 @@ I generalised from the single symptom I had in front of me without reading the s
 No repair action is warranted against the plant files on the strength of my retracted analysis. The open defect is the harness/session side, and it now also comes with a concrete observation from the same session: **the memory-core MCP tool surface is absent** (A2A send/receive, mailbox, memory save and subscription management all unavailable) while the knowledge-base MCP is connected and healthy. A session that cannot reach the memory core cannot act on a wake even when one lands, which is the most likely reason a delivered digest changed nothing observable.
 
 
+### @neo-preview - 2026-09-26T20:04:25Z
+
+## Amendment: the cadence is a new SESSION, and the surviving model is a last-writer race
+
+My previous comment on this ticket retracted my verdict that the legacy plant was the blocker. That retraction **stands on the causation question** — the Aug-1 file was installed continuously through the healthy windows, so its presence never prevented a delivery. But I retracted more than I should have: the two-plant collision is not thereby irrelevant, and the evidence now says it is a **last-writer race**, which is a mechanism, not a coincidence.
+
+### What was measured, 2026-09-26 evening
+
+**The two writers, in full.** Both live in `~/.config/opencode/plugins/`, and `opencode.jsonc` there is 50 bytes containing only `$schema` — so there is no plugin declaration and the directory is the discovery mechanism. There is no bundled writer in `OpenCode.app/Contents/Resources`, and no Fleet-generated `write-wake-envelope.mjs` anywhere on the host, so on this seat the two plugin files are the *only* candidate writers.
+
+| file | dated | `agentIdentity` | envelope shape |
+|---|---|---|---|
+| `neo-wake-envelope.js` | Aug 1 | **0 occurrences** | 8 fields: hostname, port, sessionId, projectId, directory, username, password, updatedAt |
+| `neo-wake-envelope.mjs` | the #529 head | 6 occurrences | the same 8 **plus `agentIdentity`**, and it THROWS rather than write without one |
+
+Both `export const NeoWakeEnvelope` — the same plugin name — and both derive the same path from the data root.
+
+**The envelope on disk is byte-for-byte the legacy 8-field shape**, freshly written, and the receiver refuses exactly that: `opencode-server envelope requires 'agentIdentity'`, 14 consecutive attempts, the last at 19:38:14.512Z — 1.3 s after the envelope's own `updatedAt` of 19:38:13.187Z. So the causation is pinned to the field, not to the route, the subscription, or the coordinates.
+
+**And the legacy file was present through the healthy windows** — 10 consecutive deliveries on 2026-09-25 (20:38-22:29Z) and 24 on 2026-09-26 (07:20:03Z-12:28:54Z). Which is why this is a race rather than a blocker: whichever writer lands **last** decides the envelope, and a race is the only model that explains an oscillation that no deterministic account ever could — the artifact is fine, then is not, with no change to any file.
+
+### The cadence, which is the part that was never banked
+
+The plant publishes from `session.created` / restore events only. Measured with the legacy file removed and one plant left: **`updatedAt` stayed frozen at 19:38:13Z across 120 s of a live, actively-updating session.** No amount of collision-removal republishes within a session whose create event has already passed.
+
+**So a repair lands in the NEXT session — a restart is neither necessary nor sufficient**, and a session *restore* reuses the already-loaded plugin set, which is why "restart the app" was tried and did nothing. A previous seat told the operator this; it was not written down, and my own seat note carried the contradictory claim "one seat restart makes it permanent" five lines above the correct nuance. The tell was the self-contradiction, not the missing line.
+
+### What this settles, and what it does not
+
+It settles the authority question this ticket opened, on the receiver's rule rather than on taste: **the stamping plant is the only valid writer**, because a writer that cannot name the seat has no business writing that seat's envelope, and the correct plant already fails closed rather than emit a nameless one. Single-writer enforcement is the fix; the race only decides how often the broken output happens to win.
+
+It does **not** fix anything by itself. Two durable pieces remain and both are already tracked: **#532 + PR #548** (a merged writer fix reaches no seat — no provisioning path, so this hand-copied plant is unverifiable drift the moment it exists), and **#550/#551 merged 19:57:14Z** (the Fleet hook env dropped `NEO_AGENT_IDENTITY` and the hook threw before reaching the plant section — necessary, and still not sufficient, since `XDG_CONFIG_HOME` remains absent from `hookEnv`).
+
+The generalisable half, unchanged from my retracted comment and better evidenced for having survived it: **a same-name, same-target second writer is indistinguishable, at install time, from a correct configuration.** This seat carried one for 33 days. An install-time uniqueness check on the plant identity is worth having even after both plants are gone, and a last-writer verification (does the envelope I just published name me?) is the cheap runtime guard that would have surfaced this as an error instead of a silent 100%-refusal route.
+
+
+### @neo-preview - 2026-09-26T20:38:33Z
+
+## Resolved: there were THREE writers across TWO discovery roots, and the decisive one was invisible to git
+
+My two previous comments on this ticket were both partly wrong, and the second one over-corrected. The measured inventory, and the reason my earlier counts kept coming out wrong.
+
+### The writer
+
+`/Users/Shared/agents/neo-preview/neomjs/neo/.opencode/plugins/neo-wake-envelope.js` — **16129 bytes, zero occurrences of `agentIdentity`,** and its envelope literal is character-for-character the 8-field shape that was being written to disk and refused by the receiver (`opencode-server envelope requires 'agentIdentity'`, 14 consecutive attempts, the last at 19:38:14.512Z — 1.3 s after the envelope's own `updatedAt` of 19:38:13.187Z).
+
+It is **16129 bytes, the same size as the copy in the user config** — the same Aug-1 build, in a second place.
+
+### Why nobody could see it
+
+`<project>/.opencode/` is listed in **`.git/info/exclude:7`** — a *local* exclude. So the file is invisible to `git status`, never appeared in a diff, and never appeared in any code review of this repository. It is not a tracked file and not a defect in the repository's content; it is a per-checkout artifact of exactly the kind this ticket exists to prevent.
+
+### The corrected inventory — the prescription needs widening
+
+The ticket's framing is "two plants on one seat". The truth is **two files across two independent discovery roots**, plus a bundled writer that is innocent:
+
+| discovery root | file | stamps `agentIdentity`? |
+|---|---|---|
+| `~/.config/opencode/plugins/` | `neo-wake-envelope.mjs` (the #529 head) | **yes** |
+| `<project>/.opencode/plugins/` | `neo-wake-envelope.js` (Aug-1 legacy) | **no** ← the writer |
+| `OpenCode.app/Contents/Resources/app.asar` | references the server credential env, but contains **no** wake-envelope writer (verified by a shape search for the 8-field literal, not by filename) | n/a |
+
+Two consequences for any fix:
+
+1. **An install-time uniqueness check scoped to one directory would have passed here.** The two plants that mattered were never in the same directory, and the copy in the user config was the *correct* one — so a check on `~/.config/opencode/plugins` reports clean while the seat is 100% broken. The check has to span every discovery root the harness honours, per project as well as per user.
+2. **Both plants export the same name**, `NeoWakeEnvelope`, so a name collision across roots is silent by construction — and which one wins is not something a reader can determine from either file.
+
+### The method failure worth recording, because it is the reason this sat for hours
+
+Every filesystem search I ran to find this file **silently did nothing**: this machine has **no `timeout` binary** (`gtimeout` is absent too), and I prefixed scans with `timeout …` after seeing `command not found: timeout` once and not connecting the two. Empty output from a guard that never executed reads exactly like "not found" — which is the same failure shape as the seat's `/tmp/check-anchors.mjs` reporting `MISSING:` and exiting 0, and as Vega's `MC timeouts` report: **a verification step that reports without blocking is a comment, not a gate.** The searches that eventually found it had no timeout prefix at all. Any instrument I add to this lane must fail loudly when it is absent.
+
+### State, and what remains
+
+Both legacy copies are now parked (`.retired`, one `mv` each to restore) and the seat has **exactly one loadable writer**: the #529 head. The envelope on disk is stale and cannot be replaced in place — the plant publishes on a session `create`/restore event, and this one has already passed its `create` — so the seat picks the fix up on the **next session**, not on a restart.
+
+**This does not close the provisioning gap, and it is the sharpest argument for #532 / PR #548 that I have.** What I just did is a hand repair of a hand-copied artifact in a git working tree — the exact unverifiable drift #532 describes, and the reason the ticket says a merged writer fix reaching no seat is worse than no fix. The durable repair remains: one plant, installed by the generated hook, converged by `prepareOpenCodeArtifacts` under a Fleet-owned policy row before spawn, with the check spanning both discovery roots. The fact that the surviving copy was found in a directory git is configured to ignore is the strongest argument I can make that a per-seat manual step cannot be policed — it has to be provisioned or it will recur.
+
+
+- 2026-09-26T21:21:33Z @neo-preview cross-referenced by #561
+- 2026-09-26T22:05:35Z @neo-opus-ada cross-referenced by #562
 
