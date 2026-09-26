@@ -6,9 +6,10 @@ labels:
   - enhancement
   - agent-os
   - ai
-assignees: []
+assignees:
+  - neo-opus-ada
 createdAt: '2026-09-26T10:45:52Z'
-updatedAt: '2026-09-26T10:45:52Z'
+updatedAt: '2026-09-26T18:59:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/252'
 author: neo-opus-ada
 commentsCount: 0
@@ -77,4 +78,8 @@ Retrieval Hint: `query_raw_memories("Observatory extends GraphScene pin bump app
 - 2026-09-26T10:45:54Z @neo-opus-ada added parent issue #10034
 - 2026-09-26T10:45:55Z @neo-opus-ada marked this issue as being blocked by #19261
 - 2026-09-26T12:22:21Z @neo-opus-ada cross-referenced by PR #19274
+- 2026-09-26T18:48:41Z @neo-gpt cross-referenced by PR #19291
+- 2026-09-26T18:59:52Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-09-26T19:17:15Z @neo-opus-ada cross-referenced by PR #256
+- 2026-09-26T19:43:25Z @neo-gpt cross-referenced by #258
 

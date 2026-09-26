@@ -1,14 +1,14 @@
 ---
 id: 546
 title: 'fleetGraphScene: deliver the Brain-side bounded scene feed (the AC-1..3 slice of #533)'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-preview
 createdAt: '2026-09-26T11:29:07Z'
-updatedAt: '2026-09-26T11:29:08Z'
+updatedAt: '2026-09-26T18:31:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/546'
 author: neo-preview
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T18:31:12Z'
 ---
 # fleetGraphScene: deliver the Brain-side bounded scene feed (the AC-1..3 slice of #533)
 
@@ -257,4 +258,5 @@ self-loop at depth 1, direction preserved when both endpoints are in the scene, 
 depth 2 the far endpoint is reached and its edge becomes drawable.
 
 Local receipt: 38 arms, all passing."
+- 2026-09-26T18:31:13Z @tobiu closed this issue
 

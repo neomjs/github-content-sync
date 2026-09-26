@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-09-26T10:21:09Z'
+updatedAt: '2026-09-26T19:10:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
-commentsCount: 49
+commentsCount: 50
 parentIssue: null
 subIssues:
   - '[x] 16577 A zero-chunk materialization is rejected, then backs off forever'
@@ -2512,4 +2512,42 @@ Owed lines on this ticket: #537 AC-4 after the next due decay (~18:09Z, unchange
 
 
 - 2026-09-26T10:43:09Z @neo-opus-vega cross-referenced by PR #544
+### @neo-opus-vega - 2026-09-26T19:10:03Z
+
+## #537 AC-4 receipt — the 24 h decay ran once on 2026-09-26, the lock held across three recreates, and the message-sourced edges came through untouched
+
+Brain dev `60f911e` on the plane (the `isMessageRecordEdge` exemption and the storage-read clock from #539). The orchestrator container's `mc-server-2026-09-26.log`:
+
+```
+2026-09-26T08:29:10.375Z [GraphService] Skipping global topology decay (Algorithmic Lock: only 14.3h elapsed).
+2026-09-26T11:19:45.782Z [GraphService] Skipping global topology decay (Algorithmic Lock: only 17.2h elapsed).
+2026-09-26T17:36:49.000Z [GraphService] Skipping global topology decay (Algorithmic Lock: only 23.4h elapsed).
+2026-09-26T18:18:47.836Z [GraphService] Running ambient topology decay (factor: 0.98)...
+2026-09-26T18:18:49.037Z [GraphService] Ambient Decay complete. Pruned 59 dead pathways.
+2026-09-26T18:59:12.096Z [GraphService] Skipping global topology decay (Algorithmic Lock: only 0.7h elapsed).
+```
+
+The three container recreates today (08:19Z, 08:49Z, 10:19Z) sit inside that window and none of them re-ran the decay: the lock read 14.3 h, 14.5 h and 17.2 h across them, from storage. Before #539 each new process's first cycle ran it (the 09-24 burst: five runs in 37 minutes).
+
+**Message-sourced edges after the 0.98 pass** (read-only probe in the mc-server container at 18:26Z; `lastDecayedAt` in storage = `2026-09-26T18:18:47.836Z`):
+
+| Type (source `MESSAGE:*`) | edges | at weight 1.0 | below 1.0 |
+|---|---|---|---|
+| `DELIVERED_TO` | 67,310 | 65,399 | 1,911 |
+| `TAGGED_CONCEPT` | 38,205 | 34,682 | 3,523 |
+| `SENT_TO` | 26,400 | 25,570 | 830 |
+| `SENT_BY` | 22,591 | 22,591 | 0 |
+| `IN_REPLY_TO` | 3,280 | 2,719 | 561 |
+| `REFERENCES_TICKET` | 319 | 313 | 6 |
+| `PART_OF_THREAD` | 135 | 130 | 5 |
+
+A pass that touched these leaves none at 1.0; the below-1.0 rows carry the 0.98 / 0.9604 weights of the two 09-25 runs and the older decayed carriers, unchanged today. Control: 8,346 unprotected, non-message edges sit at exactly 0.98 (decayed from 1.0 by this run), and the 59 pruned pathways are all outside the exemption. The 22,791 "orphaned nodes" the same cycle eradicated were cache-side: `Purging semantic vectors for the 1 of 22791 orphans that left storage`.
+
+AC-4 met. Owed here still: the #538 ticket-link qualifier (a `relatedTickets` string that names a tag concept must not link as `REFERENCES_TICKET`; Euclid's audit names it too) gets its own ticket; #466's controlled-kill drill; and #552's post-merge boxes (the `who_is_online` read and the two indexes) once that PR lands and the plane recreates.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+- 2026-09-26T19:12:29Z @neo-opus-vega cross-referenced by PR #553
+- 2026-09-26T19:36:09Z @neo-opus-vega cross-referenced by #554
 

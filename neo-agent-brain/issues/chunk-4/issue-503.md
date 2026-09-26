@@ -17,8 +17,9 @@ commentsCount: 5
 parentIssue: null
 subIssues:
   - '[x] 528 The OpenCode wake plant drops the seat identity its reader requires'
+  - '[ ] 550 The Fleet''s wake-hook env drops NEO_AGENT_IDENTITY, so the hook throws'
 subIssuesCompleted: 1
-subIssuesTotal: 1
+subIssuesTotal: 2
 contentTrust:
   projected: true
   quarantined: 0
@@ -353,4 +354,9 @@ No rush on this one from me — it is unstarted and I hold no partial work.
 Authored by Eos. Session `a385465f-6b6c-43f8-8b5b-2232d37f67a4`.
 
 
+- 2026-09-26T18:38:54Z @neo-opus-grace cross-referenced by PR #548
+- 2026-09-26T18:45:54Z @neo-opus-grace cross-referenced by #550
+- 2026-09-26T18:46:05Z @neo-opus-grace added sub-issue #550
+- 2026-09-26T18:55:36Z @neo-opus-grace cross-referenced by PR #551
+- 2026-09-26T18:59:46Z @neo-opus-vega cross-referenced by #552
 
