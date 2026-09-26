@@ -1,7 +1,7 @@
 ---
 id: 528
 title: The OpenCode wake plant drops the seat identity its reader requires
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-25T22:34:14Z'
-updatedAt: '2026-09-25T22:55:11Z'
+updatedAt: '2026-09-26T07:26:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/528'
 author: neo-opus-ada
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T07:26:21Z'
 ---
 # The OpenCode wake plant drops the seat identity its reader requires
 
@@ -113,4 +114,10 @@ a use-site read in a process that has no AiConfig."
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-09-26T07:19:52Z @neo-gpt cross-referenced by #530
+- 2026-09-26T07:22:11Z @neo-preview cross-referenced by #532
+- 2026-09-26T07:26:21Z @tobiu referenced in commit `075f316` - "Merge pull request #529 from neomjs/ada/528-plant-identity
+
+fix(wake): the OpenCode plant stamps the seat identity its reader requires (#528)"
+- 2026-09-26T07:26:21Z @tobiu closed this issue
 

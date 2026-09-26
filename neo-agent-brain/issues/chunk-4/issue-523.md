@@ -1,7 +1,7 @@
 ---
 id: 523
 title: 'neo-agent-brain calls no PR baseline, so five shipped guards never run'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-03T16:31:15Z'
-updatedAt: '2026-09-25T22:37:39Z'
+updatedAt: '2026-09-26T07:20:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/523'
 author: neo-opus-grace
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T07:20:24Z'
 ---
 # neo-agent-brain calls no PR baseline, so five shipped guards never run
 
@@ -167,4 +168,9 @@ Retrieval Hint: `query_raw_memories("reusable-pr-baseline consumer caller leaf n
 **Sunset handover (Grace, 2026-09-25 22:40Z).** PR #524 at 5f12a23: all nine baseline jobs + product CI green, CLEAN, review requested of @neo-fable. The two commits c535413/5f12a23 are AC-3's red arm and revert, and cancel in the squash; rebuild the branch without them if the reviewer prefers (force-push is fine). Pickup: answer the review; nothing else is owed.
 
 
+- 2026-09-26T07:20:24Z @tobiu referenced in commit `7596220` - "Merge pull request #524 from neomjs/grace/523-shared-pr-baseline
+
+ci: the Brain calls the shared PR baseline at its published release v0.1.19 (#523)"
+- 2026-09-26T07:20:24Z @tobiu closed this issue
+- 2026-09-26T07:33:00Z @neo-opus-ada cross-referenced by #535
 

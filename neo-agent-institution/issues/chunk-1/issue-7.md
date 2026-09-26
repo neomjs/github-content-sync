@@ -30,8 +30,10 @@ subIssues:
   - '[x] 219 The packaged shell keeps no log of its own boot'
   - '[x] 221 An unconfigured shell beside a running plane refuses its Brain and says only "not ready"'
   - '[x] 223 The plane record stores no identity, so a Finder launch cannot attach'
+  - '[ ] 227 The credential window looks and acts like a password field'
+  - '[ ] 229 The shell denies the engine''s staged popup, so no cockpit pane tears out or pops out'
 subIssuesCompleted: 14
-subIssuesTotal: 15
+subIssuesTotal: 17
 contentTrust:
   projected: true
   quarantined: 0
@@ -328,4 +330,8 @@ Origin Session ID: 9b748a56-8b84-43bf-a542-ee8dcf437ebf
 - 2026-09-25T20:55:11Z @neo-opus-ada added sub-issue #221
 - 2026-09-25T21:32:45Z @neo-opus-ada cross-referenced by #223
 - 2026-09-25T21:32:56Z @neo-opus-ada added sub-issue #223
+- 2026-09-26T07:15:18Z @neo-opus-ada cross-referenced by #227
+- 2026-09-26T07:15:22Z @neo-opus-ada added sub-issue #227
+- 2026-09-26T07:25:38Z @neo-opus-grace cross-referenced by #229
+- 2026-09-26T07:26:04Z @neo-opus-grace added sub-issue #229
 

@@ -109,8 +109,9 @@ subIssues:
   - '[x] 113 Tasks pane shows the orchestrator''s heavy-maintenance queue and its lease'
   - '[x] 128 Roster cards reserve 126 px for rows no live row fills, so the roster reads as headers floating in dark slabs'
   - '[x] 129 Cockpit chrome legibility: the aggregate dot doubles the first swatch, hover equals pressed on presets, the vessel window is titled by the instance'
+  - '[ ] 230 Observatory pane: the Golden Path route as a 3D WebGL2 scene'
 subIssuesCompleted: 88
-subIssuesTotal: 93
+subIssuesTotal: 94
 contentTrust:
   projected: true
   quarantined: 0
@@ -1459,4 +1460,16 @@ The existing visual-harness work #11 and card work #123/#128 are related context
 - 2026-09-19T11:00:05Z @neo-fable-clio cross-referenced by #171
 - 2026-09-19T12:53:40Z @neo-gpt-emmy cross-referenced by PR #169
 - 2026-09-19T15:26:00Z @neo-fable-clio cross-referenced by #175
+- 2026-09-22T22:26:39Z @neo-fable cross-referenced by #19055
+- 2026-09-22T22:32:14Z @neo-fable-clio cross-referenced by #178
+- 2026-09-22T23:32:00Z @neo-fable-clio cross-referenced by #179
+- 2026-09-23T01:24:53Z @neo-fable-clio cross-referenced by PR #180
+- 2026-09-23T08:50:13Z @neo-fable-clio cross-referenced by #181
+- 2026-09-25T11:44:30Z @neo-fable-clio cross-referenced by #197
+- 2026-09-25T15:49:04Z @neo-fable cross-referenced by #210
+- 2026-09-25T19:32:15Z @neo-fable-clio cross-referenced by #217
+- 2026-09-26T07:21:12Z @neo-fable-clio cross-referenced by #228
+- 2026-09-26T07:25:38Z @neo-opus-grace cross-referenced by #229
+- 2026-09-26T07:28:54Z @neo-fable-clio added sub-issue #230
+- 2026-09-26T07:30:21Z @neo-fable-clio cross-referenced by #10034
 

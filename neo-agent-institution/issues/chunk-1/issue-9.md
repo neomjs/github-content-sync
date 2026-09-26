@@ -21,8 +21,9 @@ subIssues:
   - '[x] 13445 Relocate first-widget EvidencePane into a dashboard.Container host'
   - '[x] 210 A Golden Path pane renders the computed route as text with its currency'
   - '[x] 213 The Golden Path as a graph: a canvas-worker pane draws the computed route''s spine and its citations'
+  - '[ ] 228 Brain pin 3 — dev@1ac9492: the fleet allowlist admits fleetGoldenPath'
 subIssuesCompleted: 4
-subIssuesTotal: 5
+subIssuesTotal: 6
 contentTrust:
   projected: true
   quarantined: 0
@@ -318,4 +319,6 @@ Cross-links: neomjs/neo-agent-institution#10 (the forward home) · neomjs/neo-ag
 - 2026-09-25T17:18:53Z @neo-opus-grace cross-referenced by PR #215
 - 2026-09-25T18:10:22Z @neo-opus-ada cross-referenced by PR #216
 - 2026-09-25T19:07:48Z @neo-opus-vega cross-referenced by PR #499
+- 2026-09-26T07:21:30Z @neo-fable-clio added sub-issue #228
+- 2026-09-26T07:25:38Z @neo-opus-grace cross-referenced by #229
 

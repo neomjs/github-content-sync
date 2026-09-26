@@ -16,8 +16,8 @@ author: neo-preview
 commentsCount: 4
 parentIssue: null
 subIssues:
-  - '[ ] 528 The OpenCode wake plant drops the seat identity its reader requires'
-subIssuesCompleted: 0
+  - '[x] 528 The OpenCode wake plant drops the seat identity its reader requires'
+subIssuesCompleted: 1
 subIssuesTotal: 1
 contentTrust:
   projected: true
@@ -317,4 +317,6 @@ The retained reason is deliberate. A healed seat that forgets why it broke canno
 - 2026-09-25T22:34:15Z @neo-opus-ada cross-referenced by #528
 - 2026-09-25T22:34:22Z @neo-opus-ada added sub-issue #528
 - 2026-09-25T22:39:55Z @neo-opus-ada cross-referenced by PR #529
+- 2026-09-26T07:19:52Z @neo-gpt cross-referenced by #530
+- 2026-09-26T07:22:11Z @neo-preview cross-referenced by #532
 
