@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-25T17:41:15Z'
-updatedAt: '2026-09-25T22:31:16Z'
+updatedAt: '2026-09-26T13:49:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/503'
 author: neo-preview
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues:
   - '[x] 528 The OpenCode wake plant drops the seat identity its reader requires'
@@ -319,4 +319,38 @@ The retained reason is deliberate. A healed seat that forgets why it broke canno
 - 2026-09-25T22:39:55Z @neo-opus-ada cross-referenced by PR #529
 - 2026-09-26T07:19:52Z @neo-gpt cross-referenced by #530
 - 2026-09-26T07:22:11Z @neo-preview cross-referenced by #532
+- 2026-09-26T11:48:19Z @neo-gpt cross-referenced by #547
+### @neo-preview - 2026-09-26T13:49:41Z
+
+### Session handover — intake only, no implementation, and one stale note corrected
+
+I did **intake only** on this ticket and closed the session. No code, no spec, no branch. Recording the
+intake so it is not re-derived, and correcting one thing I had noted earlier in the session.
+
+**The four ACs, as written:** AC-1 a spec derives the writer's emitted envelope shape from the same
+declaration the adapter validates, failing on drift; AC-2 with the writer on the current schema a
+dispatch to an idle seat is recorded `delivered`; AC-3 a subscription whose dispatches fail carries
+`consecutiveFailures` ≥ 1 plus the receiver's own `lastOutcomeReason`; AC-4 `who_is_online` distinguishes
+*present and reachable* from *present and undeliverable*.
+
+**The correction.** Earlier in this session I had planned to amend this ticket's body to record that
+AC-4's dependency, #530, was unassigned and therefore unblocking nothing. **That is stale: #530 is
+CLOSED, under @neo-opus-vega** ("Local Memory Core cannot see host wake dispatch records"). I checked
+before writing it into a handover rather than repeating the note, because a stale dependency pointer is
+exactly the failure class this ticket exists to prevent. The body was never amended, so nothing stale
+was published in the first place — but **anyone who read that note should re-check AC-4's dependency
+before planning against it**, since the ticket that owned the undeliverable-records question has since
+landed and may already discharge part of AC-4.
+
+**Pickup protocol.** Read the current wake-writer's emitted envelope and the adapter's validator and
+check whether they can be derived from one declaration at all — if they are two independent literals,
+AC-1 is an architecture question rather than a spec question, and that is worth knowing before writing
+the test. For AC-2, note that a real `delivered` receipt is a live-plane observation; a unit arm can
+assert the record shape but not the delivery, so plan the evidence split rather than discovering it.
+
+No rush on this one from me — it is unstarted and I hold no partial work.
+
+Authored by Eos. Session `a385465f-6b6c-43f8-8b5b-2232d37f67a4`.
+
+
 

@@ -1,7 +1,7 @@
 ---
 id: 238
 title: 'The tests own the sample roster and activity: a driver lands them, no spec reads the app''s seed'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-09-26T09:24:10Z'
-updatedAt: '2026-09-26T09:24:10Z'
+updatedAt: '2026-09-26T13:35:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/238'
 author: neo-fable-clio
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T13:35:40Z'
 ---
 # The tests own the sample roster and activity: a driver lands them, no spec reads the app's seed
 
@@ -85,4 +86,8 @@ Retrieval Hint: `query_raw_memories("fleetSample driver test fixtures land roste
 - 2026-09-26T13:00:36Z @neo-fable-clio referenced in commit `a3e8197` - "merge(dev): fold dev (the Observatory keeper view and engine pin 12) into clio/238-test-fixtures, the baseline stamp regenerated (#238)"
 - 2026-09-26T13:00:36Z @neo-fable-clio referenced in commit `ddb8dd4` - "refactor(cockpit): the answered-surface admission is one path — AgentOS.util.FleetAdmission, called by the reads and by the tests' landing (#238)"
 - 2026-09-26T13:04:10Z @tobiu referenced in commit `5c5d3c5` - "chore(visual): the baseline stamp follows the admission module into the style-owning inputs (#238)"
+- 2026-09-26T13:35:40Z @tobiu referenced in commit `6386898` - "Merge pull request #250 from neomjs/clio/238-test-fixtures
+
+test(fleet): the tests own the sample fleet — a landing seam in the App worker, no spec reads the app's seed (#238)"
+- 2026-09-26T13:35:41Z @tobiu closed this issue
 

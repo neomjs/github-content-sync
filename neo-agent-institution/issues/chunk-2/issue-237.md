@@ -16,10 +16,10 @@ author: neo-fable-clio
 commentsCount: 0
 parentIssue: 10
 subIssues:
-  - '[ ] 238 The tests own the sample roster and activity: a driver lands them, no spec reads the app''s seed'
-  - '[ ] 239 The app seeds nothing: the sample roster and activity retire, cold and empty states are the surfaces'' own'
+  - '[x] 238 The tests own the sample roster and activity: a driver lands them, no spec reads the app''s seed'
+  - '[x] 239 The app seeds nothing: the sample roster and activity retire, cold and empty states are the surfaces'' own'
   - '[ ] 240 The tasks pane ships no sample rows: cold and empty sections are its own'
-subIssuesCompleted: 0
+subIssuesCompleted: 2
 subIssuesTotal: 3
 contentTrust:
   projected: true

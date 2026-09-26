@@ -1,7 +1,7 @@
 ---
 id: 239
 title: 'The app seeds nothing: the sample roster and activity retire, cold and empty states are the surfaces'' own'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-09-26T09:24:43Z'
-updatedAt: '2026-09-26T12:25:37Z'
+updatedAt: '2026-09-26T13:43:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/239'
 author: neo-fable-clio
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-26T13:43:37Z'
 ---
 # The app seeds nothing: the sample roster and activity retire, cold and empty states are the surfaces' own
 
@@ -106,4 +107,11 @@ Retrieval Hint: `query_raw_memories("cockpit adapter vocabulary cold live stale 
 - 2026-09-26T10:08:15Z @neo-fable-clio cross-referenced by PR #250
 - 2026-09-26T12:44:06Z @neo-fable-clio cross-referenced by PR #254
 - 2026-09-26T12:46:32Z @neo-fable-clio referenced in commit `ddded48` - "test(agentos): the burst spec's row-geometry comment names its witness, not a ticket (#239)"
+- 2026-09-26T13:07:29Z @neo-fable-clio referenced in commit `aed598a` - "merge(238): re-stack onto #250's repaired head — the admission is FleetAdmission's, the empty answer stays authoritative, the full-page goldens carry the Observatory rail entry (#239)"
+- 2026-09-26T13:07:30Z @neo-fable-clio referenced in commit `c6124b8` - "merge(238): the baseline stamp follows #250's stamp commit (#239)"
+- 2026-09-26T13:13:25Z @neo-fable-clio referenced in commit `8624d3f` - "test(agentos): the roster refill seam drives a switch's clear · clear + add — nothing is seeded, so nothing reloads (#239)"
+- 2026-09-26T13:43:37Z @tobiu referenced in commit `b55d9a5` - "Merge pull request #254 from neomjs/clio/239-no-seed
+
+feat(cockpit): the app seeds nothing — the sample fleet retires, the surfaces speak cold · live · stale and render their own empty states (#239)"
+- 2026-09-26T13:43:38Z @tobiu closed this issue
 
