@@ -113,10 +113,10 @@ subIssues:
   - '[ ] 237 Epic: the cockpit ships no sample data — real data or an honest empty state'
   - '[x] 242 The perspective bar only moves a splitter: retire it for the drawer'
   - '[ ] 246 Fleet legend: benched, unobserved and stopped collapse into Offline with its reason; no ''external harness'', no bare ''wedged'''
-  - '[ ] 263 Keep valid activity visible when one feed source fails'
+  - '[x] 263 Keep valid activity visible when one feed source fails'
   - '[ ] 264 Remove the bottom Route graph pane; the Observatory keeps the route picture'
   - '[ ] 267 The keeper nav shows icons with tooltips; each right-rail item reads as its own chip'
-subIssuesCompleted: 90
+subIssuesCompleted: 91
 subIssuesTotal: 100
 contentTrust:
   projected: true

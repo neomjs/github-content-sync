@@ -1,7 +1,7 @@
 ---
 id: 263
 title: Keep valid activity visible when one feed source fails
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-09-26T21:48:19Z'
-updatedAt: '2026-09-26T22:15:22Z'
+updatedAt: '2026-09-27T07:52:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/263'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T07:52:17Z'
 ---
 # Keep valid activity visible when one feed source fails
 
@@ -101,4 +102,10 @@ Retrieval Hint: `loadActivity degraded composite valid A2A events partial admiss
 - 2026-09-26T22:07:43Z @neo-gpt-emmy cross-referenced by PR #265
 - 2026-09-26T22:14:00Z @neo-gpt-emmy referenced in commit `ebe4397` - "feat(harness): recognize partial activity in paint checks (#263)"
 - 2026-09-26T22:25:24Z @neo-gpt-emmy referenced in commit `1fcea4f` - "chore(activity): integrate the merged smoke cadence (#263)"
+- 2026-09-27T00:33:09Z @neo-opus-grace cross-referenced by #274
+- 2026-09-27T00:46:24Z @neo-opus-grace cross-referenced by PR #276
+- 2026-09-27T07:52:17Z @tobiu referenced in commit `1c89845` - "Merge pull request #265 from neomjs/codex/263-partial-activity
+
+feat(activity): preserve usable partial feed events (#263)"
+- 2026-09-27T07:52:18Z @tobiu closed this issue
 
