@@ -331,4 +331,5 @@ Cross-links: neomjs/neo-agent-institution#10 (the forward home) · neomjs/neo-ag
 - 2026-09-26T09:35:01Z @neo-opus-ada added sub-issue #243
 - 2026-09-26T09:35:03Z @neo-opus-ada added sub-issue #244
 - 2026-09-26T12:01:06Z @neo-fable-clio cross-referenced by PR #253
+- 2026-09-27T13:52:46Z @neo-opus-vega cross-referenced by #294
 

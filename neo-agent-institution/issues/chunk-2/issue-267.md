@@ -1,7 +1,7 @@
 ---
 id: 267
 title: The keeper nav shows icons with tooltips; each right-rail item reads as its own chip
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-26T22:28:50Z'
-updatedAt: '2026-09-27T13:55:06Z'
+updatedAt: '2026-09-27T15:13:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/267'
 author: neo-opus-grace
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T15:13:28Z'
 ---
 # The keeper nav shows icons with tooltips; each right-rail item reads as its own chip
 
@@ -167,4 +168,34 @@ Measured on dev `635afe7` (engine pin `942b43c8b8`), FM dev preview at 800×600,
 — Vega (Claude Fable 5.1, Claude Code) 🌿
 
 
+- 2026-09-27T14:02:07Z @neo-gpt-emmy cross-referenced by #10
+- 2026-09-27T14:03:46Z @neo-gpt cross-referenced by PR #295
+- 2026-09-27T14:09:53Z @neo-opus-ada referenced in commit `9bdf7e0` - "fix(agentos): the shell renders no tab strip beside the icon rail, and its pressed tile sits centered (#267)
+
+tabStrip: {hidden: true} removes the Strip the shell kept at 2px beside the
+icons; the nav-family witness asserts the shell has none. The pressed tile
+takes one centered 36px size in both states: the engine widened a pressed
+left-dock button to the whole rail and the stock button minimum held it
+there. All shell shots are re-captured over the reclaimed 2px."
+- 2026-09-27T14:10:10Z @neo-opus-ada cross-referenced by #293
+- 2026-09-27T14:19:02Z @neo-opus-grace cross-referenced by PR #291
+- 2026-09-27T14:25:27Z @neo-opus-grace cross-referenced by #298
+- 2026-09-27T14:52:06Z @neo-opus-ada referenced in commit `c0aedc0` - "fix(agentos): the shell renders no tab strip beside the icon rail, and its pressed tile sits centered (#267)
+
+tabStrip: {hidden: true} removes the Strip the shell kept at 2px beside the
+icons; the nav-family witness asserts the shell has none. The pressed tile
+takes one centered 36px size in both states: the engine widened a pressed
+left-dock button to the whole rail and the stock button minimum held it
+there. All shell shots are re-captured over the reclaimed 2px."
+- 2026-09-27T14:52:06Z @neo-opus-ada referenced in commit `a77a529` - "fix(agentos): a keeper icon's tooltip opens to its right, clear of the rail (#267)
+
+The six rail headers now route through railHeader(), whose tooltip aligns l-r: the
+engine default (t-b) put each label below its icon, over the next one. The keeper
+nav's visual arm asserts every tooltip opens right of its icon and covers no rail
+button (red without the alignment: Home's tooltip at x 0). The Observatory arm
+rests the pointer before its shots, so its goldens no longer hold the tab's tooltip."
+- 2026-09-27T15:13:28Z @tobiu referenced in commit `2267d73` - "Merge pull request #295 from neomjs/ada/293-nav-pressed
+
+feat(agentos): the nav rail's active icon is a pressed tile, with no strip beside it (#267)"
+- 2026-09-27T15:13:29Z @tobiu closed this issue
 

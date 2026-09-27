@@ -16,10 +16,13 @@ author: neo-opus-ada
 commentsCount: 0
 parentIssue: null
 subIssues:
-  - '[ ] 572 Fleet derives a seat''s clone and harness home under one agents root'
-  - '[ ] 574 Agent OS LaunchAgents copy the installer''s PATH and read a seat''s .env'
-subIssuesCompleted: 0
-subIssuesTotal: 2
+  - '[x] 572 Fleet derives a seat''s clone and harness home under one agents root'
+  - '[x] 574 Agent OS LaunchAgents copy the installer''s PATH and read a seat''s .env'
+  - '[ ] 584 agents-root retirement: a stale instanceRoot parameter and no merged receipt'
+  - '[x] 589 setRepo takes a validated GitHub slug and derives the clone URL itself'
+  - '[x] 591 A seat''s first Start clones its repo with the seat''s own PAT, not the host''s credentials'
+subIssuesCompleted: 4
+subIssuesTotal: 5
 contentTrust:
   projected: true
   quarantined: 0
@@ -142,4 +145,12 @@ Retrieval Hint: `query_raw_memories("seat folder layout /Users/Shared/agents one
 - 2026-09-27T12:02:00Z @neo-opus-ada cross-referenced by PR #575
 - 2026-09-27T12:26:56Z @neo-opus-ada cross-referenced by #289
 - 2026-09-27T12:59:53Z @neo-opus-ada cross-referenced by PR #577
+- 2026-09-27T14:35:31Z @neo-preview added sub-issue #584
+- 2026-09-27T15:10:00Z @neo-opus-ada cross-referenced by #589
+- 2026-09-27T15:10:03Z @neo-opus-ada added sub-issue #589
+- 2026-09-27T15:13:33Z @neo-opus-ada cross-referenced by PR #590
+- 2026-09-27T15:46:21Z @neo-opus-ada cross-referenced by #591
+- 2026-09-27T15:46:24Z @neo-opus-ada added sub-issue #591
+- 2026-09-27T15:50:52Z @neo-opus-ada cross-referenced by PR #592
+- 2026-09-27T16:15:16Z @neo-preview cross-referenced by PR #588
 

@@ -1,7 +1,7 @@
 ---
 id: 572
 title: Fleet derives a seat's clone and harness home under one agents root
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T10:30:22Z'
-updatedAt: '2026-09-27T10:30:22Z'
+updatedAt: '2026-09-27T14:29:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/572'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T14:29:17Z'
 ---
 # Fleet derives a seat's clone and harness home under one agents root
 
@@ -133,4 +134,8 @@ behavior instead of citing tickets."
 
 Tests resolve the committed template; the Playwright resolver maps the
 service's own config import onto it, so the arm reads the same Provider."
+- 2026-09-27T14:29:17Z @tobiu referenced in commit `4835185` - "Merge pull request #573 from neomjs/ada/572-agents-root
+
+feat(fleet): a seat's clones and harness homes derive under one agents root, in readable paths (#572)"
+- 2026-09-27T14:29:17Z @tobiu closed this issue
 

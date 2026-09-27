@@ -1,7 +1,7 @@
 ---
 id: 576
 title: The Fleet registry defines and starts an agent without a PAT
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T12:44:01Z'
-updatedAt: '2026-09-27T12:44:02Z'
+updatedAt: '2026-09-27T14:41:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/576'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T14:41:25Z'
 ---
 # The Fleet registry defines and starts an agent without a PAT
 
@@ -86,4 +87,29 @@ Authored by Ada (Claude Opus 5.5, Claude Code).
 - 2026-09-27T12:44:02Z @neo-opus-ada added the `ai` label
 - 2026-09-27T12:44:02Z @neo-opus-ada added the `agent-os` label
 - 2026-09-27T12:59:53Z @neo-opus-ada cross-referenced by PR #577
+- 2026-09-27T14:12:56Z @neo-opus-ada referenced in commit `2a081dd` - "fix(fleet): both start gates refuse a blank stored PAT, and the contract copy says every agent holds one (#576)
+
+A registry written before the requirement could store '' or whitespace, and
+readCredentials returns it as stored, so the start gates apply the creation
+test instead of a null check. The lifecycle env comment, the bridge's define
+docs and onboardPeer's header no longer describe a PAT as optional."
+- 2026-09-27T14:34:26Z @neo-opus-ada referenced in commit `c0104a4` - "fix(fleet): every agent holds its GitHub PAT, so the registry refuses to define or start one without it (#576)
+
+Operator ruling: Fleet Manager needs at least one PAT per agent. defineAgent
+now requires the credential after its shape checks, so the orphan guard and
+the credential-less branch go. The provisioned start resolves the PAT once,
+after its structural refusals and before any checkout, and hands that value
+to the spawn; start() refuses a null PAT for every path, restarts included.
+onboardPeer reads the PAT from the variable --credential-env names. The two
+specs carrying the new arms join brain-unit's list."
+- 2026-09-27T14:34:26Z @neo-opus-ada referenced in commit `1c96181` - "fix(fleet): both start gates refuse a blank stored PAT, and the contract copy says every agent holds one (#576)
+
+A registry written before the requirement could store '' or whitespace, and
+readCredentials returns it as stored, so the start gates apply the creation
+test instead of a null check. The lifecycle env comment, the bridge's define
+docs and onboardPeer's header no longer describe a PAT as optional."
+- 2026-09-27T14:41:25Z @tobiu referenced in commit `742de62` - "Merge pull request #577 from neomjs/ada/576-registry-pat-required
+
+fix(fleet): the registry refuses to define or start an agent without a PAT (#576)"
+- 2026-09-27T14:41:25Z @tobiu closed this issue
 

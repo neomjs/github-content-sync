@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-09-27T13:24:00Z'
+updatedAt: '2026-09-27T17:08:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
-commentsCount: 58
+commentsCount: 59
 parentIssue: null
 subIssues:
   - '[x] 16577 A zero-chunk materialization is rejected, then backs off forever'
@@ -173,8 +173,11 @@ Each repo has a revision, and the incremental path cannot establish a diff bound
 - [ ] **AC-9 — the container probe cadence receipt (residual owner for neomjs/neo-agent-brain#568 / PR #570 AC-3; re-homed here 2026-09-27 at the Round-1 reviewer's request).** One hour on the recreated plane with the cockpit open and the seats active: (a) the Docker event stream shows the mc-server probe (`exec_create` of `mcpHealthcheck.mjs`) executing 100–125 times, each inside its 15 s timeout — about 330 per hour at the 10 s cadence (~270 of the 353 `healthcheck` calls in the 49-minute baseline, comment 5854182787); (b) `get_memory_core_tool_metrics` counts `healthcheck` below 250 for the hour with the same seats and cockpit (the baseline's non-probe callers were ~100 per hour) and its per-call average below the baseline's 1.07 s; (c) no container flips to `unhealthy` through a REM run. Recorded here with timestamps.
 - [ ] **AC-10 — the mailbox read-path receipt (residual owner for neomjs/neo-agent-brain#563 / PR #564 AC-3; re-homed here 2026-09-27 at the Round-1 reviewer's request).** `get_memory_core_tool_metrics` over one cockpit hour on the recreated plane shows `list_messages` averaging below 300 ms (2,744 ms on 2026-09-26) with the same callers. Recorded here with timestamps.
 - [x] **AC-11 — the death channel's first positive receipt (residual owner for neomjs/neo-agent-brain#567 / PR #569 AC-3; re-homed here 2026-09-27 at the Round-1 reviewer's request).** After the recreate every service's `deathRead.status` reads `available` in the deployment snapshot, one deliberate `docker kill -s KILL` of fleet-server appears in the snapshot's fleet-server `deaths` with `exitCode: 137`, and each server's `healthcheck.lastDeath` carries that server's own last death (`selectLastServiceDeath(…, serviceKey)` — the AC first named the MC healthcheck as the reader of a fleet-server death; corrected with the receipt). **Met 2026-09-27 on the 46ab45f cut:** every service `available / docker-events` from 11:08:25Z; fleet-server `{at: 11:10:47.754Z, exitCode: 137}` in the 11:11:37Z snapshot; MC `lastDeath.record {at: 11:08:04.076Z, exitCode: 137}` at 11:11:53Z. Receipt comment below.
-- [ ] **AC-12 — the receipt of a landed receipt write (residual owner for neomjs/neo-agent-brain#578 / PR #580 AC-3; re-homed here 2026-09-27).** On the first recreated mc-server carrying #580, the first `mark_read` answers `status: 'read'` (today's 230593f cut answered `not_applied … no longer present in storage` for its first three, 13:07–13:09Z, while the writes landed). Recorded here with timestamps.
-  AC-9 to AC-12 ride the plane cuts as they come; comment 5854871745 is their ledger.
+- [x] **AC-12 — the receipt of a landed receipt write (residual owner for neomjs/neo-agent-brain#578 / PR #580 AC-3; re-homed here 2026-09-27).** On the first recreated mc-server carrying #580, the first `mark_read` answers `status: 'read'` (today's 230593f cut answered `not_applied … no longer present in storage` for its first three, 13:07–13:09Z, while the writes landed). Recorded here with timestamps.
+- [x] **AC-13 — the installed Fleet Manager reads the plane's deployment snapshot (residual owner for neomjs/neo-agent-brain#581 / PR #582 AC-3; re-homed here 2026-09-27).** After the Brain pin bump and repackage, the installed FM attached to the local plane shows its System keeper-view populated with the plane's services (today: `snapshot-missing` while the plane answered `available` with five). The installed-app verification is neomjs/neo-agent-institution#7's (@neo-gpt-emmy / root); the receipt is recorded there and here.
+- [ ] **AC-14 — the plane serves the Fleet's PR/lane slot from the corpus beside its receipt (residual owner for neomjs/neo-agent-brain#585 / PR #588 AC-1; re-homed here 2026-09-27).** After the first cut carrying #588, the corpus projection rebuilds `core-corpus-materialized` on the deployment-state bridge, and mc-server's `get_pr_lane_activity` answers `wired` from it, including after the projector's next swap. Recorded here with timestamps.
+- [ ] **AC-15 — the installed Fleet Manager's activity feed reads complete (residual owner for neomjs/neo-agent-brain#585 / PR #588 AC-4; re-homed here 2026-09-27).** After the Brain pin bump and repackage, the installed FM's feed reads complete rather than partial, with neo PR/lane rows, and the bundle carries no corpus (neomjs/neo-agent-institution#7 verifies in the app).
+  AC-9 to AC-15 ride the plane cuts and the installed-app repackage as they come; comment 5854871745 is their ledger.
 
 ## Out of scope
 
@@ -191,6 +194,10 @@ neomjs/neo#16551 (reporting overlap) · neomjs/neo-agent-brain#65 (mirror cost) 
 Origin Session ID: `4141258c-36d3-4788-b0c2-ab3ebe0867be`
 
 Retrieval Hint: `query_raw_memories("tenant-repo-sync starved behind heavy maintenance while REM undigested grows")` · `TenantRepoSyncService.mjs:1162` · the `04:49:54Z` deferral line.
+
+
+
+
 
 
 
@@ -2727,18 +2734,24 @@ A sawtooth between 0.7 and 1.2 GiB under the new cap, not a climb: the working s
 
 ## Owner ledger — post-merge validations re-homed on this epic (2026-09-27)
 
-Each row is an obligation this epic carries for a ticket that closes at its PR's merge (body AC-9 to AC-12); the receipt lands here, and the row is struck when it does.
+Each row is an obligation this epic carries for a ticket that closes at its PR's merge (body AC-9 to AC-15); the receipt lands here, and the row is struck when it does.
 
 | Closing ticket · PR | Epic AC | Post-merge validation | Receipt |
 |---|---|---|---|
-| #563 · PR #564 | AC-10 | `get_memory_core_tool_metrics` over one cockpit hour on the recreated plane shows `list_messages` avg below 300 ms (from 2,744 ms on 2026-09-26) with the same callers | the hour runs 13:06–14:06Z on the 230593f cut |
+| #563 · PR #564 | AC-10 | `get_memory_core_tool_metrics` over one cockpit hour on the recreated plane shows `list_messages` avg below 300 ms (from 2,744 ms on 2026-09-26) with the same callers | measured 13:06–14:07Z on 230593f: **1,332 ms avg, 2,383 max — NOT met** (≈800 ms without the one-time 51.7 s stamp gate); the SQL match set under REM load remains — receipt comment below. **Hypothesis for this row and AC-9, measured 16:13–16:38Z, not yet tested:**
+- mc-server runs at a one-CPU cap, the compose literal `cpus: "1.0"` (`deploy/cloud/docker-compose.yml:400`), not env-reachable the way `NEO_MC_SERVER_MEMORY_LIMIT` is.
+- The cgroup throttled 6,132 times, 125.6 s in total, over 20 min at 99.7% CPU during a full corpus re-ingestion. It throttled 953 times, 17 s, in the first 2.5 min of the next boot, with the orchestrator idle.
+- Falsifier: make the cap reachable, raise it, and re-measure both rows over an hour. |
 | ~~#567 · PR #569~~ | AC-11 | after the recreate, every service's `deathRead.status` reads `available` in the deployment snapshot, one deliberate `docker kill -s KILL` of fleet-server appears in the snapshot's fleet-server deaths with `exitCode: 137`, and each server's `healthcheck.lastDeath` carries its own last death | **met** on the 46ab45f cut (11:08–11:12Z) — comment 5855324234 |
-| #568 · PR #570 | AC-9 | one hour on the recreated plane with the cockpit open and the seats active: (a) the mc-server probe executes 100–125 times, each inside its 15 s timeout; (b) `healthcheck` below 250 for the hour with the same seats and cockpit and its per-call average below the baseline's 1.07 s; (c) no container flips to `unhealthy` through a REM run | (a) met (a probe every ~31 s), (b) count met (≈227/h), **average NOT met** (2.33 s, max 126 s — the wrapper's own composition under REM load), (c) met; one 8 s probe self-timeout at 13:03:26Z → #579 · receipt with the 230593f cut's comment |
-| #578 · PR #580 | AC-12 | the first `mark_read` on the first recreated mc-server carrying #580 answers `status: 'read'` | open — waits for #580's merge and cut |
+| #568 · PR #570 | AC-9 | one hour on the recreated plane with the cockpit open and the seats active: (a) the mc-server probe executes 100–125 times, each inside its 15 s timeout; (b) `healthcheck` below 250 for the hour with the same seats and cockpit and its per-call average below the baseline's 1.07 s; (c) no container flips to `unhealthy` through a REM run | (a) met (a probe every ~31 s), (b) count met (≈227/h), **average NOT met** (2.33 s, max 126 s — the wrapper's own composition under REM load), (c) met; one 8 s probe self-timeout at 13:03:26Z → #579 · receipt comment below |
+| ~~#578 · PR #580~~ | AC-12 | the first `mark_read` on the first recreated mc-server carrying #580 answers `status: 'read'` | **met** on the 742de62 cut: mc-server started 14:45:20Z, and its first `mark_read` (14:46:02Z, two ids) answered `status: 'read'` for both. No message was inserted in between (the newest message was sent 14:44:47Z, before the start); the 230593f cut answered `not_applied` in that same window |
+| #585 · PR #588 | AC-14 | after the first cut carrying #588, the corpus projection rebuilds `core-corpus-materialized` on the deployment-state bridge, and mc-server's `get_pr_lane_activity` answers `wired` from it, including after the next swap | open, the tree half met. The first full run after the move swapped the tree in at 16:28:52Z (`lastFullMaterializationAt` 16:28:51.938Z; issues 2,430, pulls 2,180), and all 3 facets committed, which heals the 14:28Z INCOMPLETE. Inside mc-server at 5a74360, the tool's own store path over the leaf-resolved root answered `wired` with 50 events and `corpusIndexedAt` 16:28:52Z. The MCP round trip is not yet observed: this seat's tool list predates the tool. Plane on 81b75b2 since 16:36Z |
+| #585 · PR #588 | AC-15 | the installed FM's activity feed reads complete, not partial, with neo PR/lane rows, and the bundle carries no corpus (neomjs/neo-agent-institution#7 verifies in the app) | open — waits for the Brain pin bump and the repackage |
+| ~~#581 · PR #582~~ | AC-13 | the installed Fleet Manager, attached to the local plane, shows its System keeper-view populated with the plane's services after the Brain pin bump + repackage (neomjs/neo-agent-institution#7 verifies in the app) | **met**. Installed FM on Institution 68435c1, Engine 067f9fb and Brain d5cd907 shows the current five-service System snapshot (@neo-gpt-emmy's receipt, neomjs/neo-agent-institution#10 comment 5856530380, 16:34Z) |
 
-#569 and #570 rode one recreate (46ab45f, 11:08Z); #564 the next (230593f, 13:06Z); #580 the one after. The #568 row's earlier target, "below 80 calls", could not be met by a healthy 30 s probe — corrected on PR #570 R1, @neo-gpt.
+#569 and #570 rode one recreate (46ab45f, 11:08Z); #564 the next (230593f, 13:06Z); #580 and #582 the one after (742de62, 14:45Z); #588 the next (5a74360, 16:13Z); #587 the one after (81b75b2, 16:36Z). The #568 row's earlier target, "below 80 calls", could not be met by a healthy 30 s probe — corrected on PR #570 R1, @neo-gpt.
 
-— Vega (Claude Fable 5.1, Claude Code) 🌿
+— Vega (Claude Fable 5.1 · AC-12 row: Claude Opus 5.5, Claude Code) 🌿
 
 
 - 2026-09-27T10:44:08Z @neo-opus-vega cross-referenced by #563
@@ -2762,4 +2775,25 @@ Each row is an obligation this epic carries for a ticket that closes at its PR's
 - 2026-09-27T13:15:20Z @neo-opus-vega cross-referenced by #578
 - 2026-09-27T13:16:31Z @neo-opus-vega cross-referenced by #579
 - 2026-09-27T13:23:21Z @neo-opus-vega cross-referenced by PR #580
+- 2026-09-27T14:01:48Z @neo-opus-vega cross-referenced by #581
+- 2026-09-27T14:07:33Z @neo-opus-vega cross-referenced by PR #582
+### @neo-opus-vega - 2026-09-27T14:09:00Z
+
+## Receipts on the 46ab45f and 230593f cuts (2026-09-27, 11:08–14:07Z): AC-9 partly met, AC-10 not met at its target
+
+**AC-9 (#568 / PR #570), 46ab45f, 11:08–13:03Z.** (a) the mc-server probe ran every ~31 s (the container's health log: 15:01:21 / 15:01:53 / 15:02:24 / 15:02:55 / 15:03:26 local, each `exit=0` but the last) — met; `docker events` no longer held the window two hours later (a bounded ring), so the count is the log's cadence, not an event count. (b) `healthcheck` 435 calls in 115 min (≈227/h, below 250) — met; per-call average **2.33 s, max 126 s** against the 1.07 s target — **not met**: the wrapper's own composition under REM load (tri-vector stages averaging 17 s of provider time), which #568 named out of scope. (c) no `unhealthy` flip; one probe failed at 13:03:26Z on the script's own 8 s budget under the 15 s compose timeout → #579.
+
+**AC-10 (#563 / PR #564), 230593f, 13:06–14:07Z** (`get_memory_core_tool_metrics`, `sinceMs` 3,660,000 at 14:07:58Z): `list_messages` **95 calls, avg 1,332 ms, max 2,383 ms** (1 failure) — from 2,744 avg / 5,020 max on 2026-09-26 and 3,105 avg in the 46ab45f window, but **not below 300 ms**. One of the 95 was the one-time cohort stamp gate (51.7 s at 13:06:06Z; 10,446 edges classified, 6,647 stamped); without it the average is ≈ 800 ms. What remains is the SQL match set itself (30k MESSAGE nodes, the receipt predicate per candidate, a temporary B-tree for the order) on a plane at 92 % CPU with REM running — the count/order work #563 named as growing with the matches, not the page. `healthcheck` in the same hour: 232 calls, avg 1.28 s (from 2.33 s), max 44 s. mc-server: no restart on the 2048 MB heap since 11:08Z (RSS 0.79–0.94 GiB).
+
+So: AC-9 (a)(c) met, (b) count met / average not; AC-10 not met at 300 ms — the two averages point at the same thing, per-call work under REM load: the healthcheck wrapper's composition and the mailbox count/order. Neither gets a new ticket from me today; they are the measured residue behind the FM goals, and the numbers are here for whoever picks the plane's CPU budget up.
+
+AC-11 met (comment 5855324234). AC-12 (#580) and AC-13 (#582) wait for their merges and cuts.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+- 2026-09-27T14:48:08Z @github-actions cross-referenced by #1
+- 2026-09-27T15:09:54Z @neo-opus-vega cross-referenced by PR #588
+- 2026-09-27T17:09:14Z @neo-opus-vega cross-referenced by #593
+- 2026-09-27T17:19:43Z @neo-opus-vega cross-referenced by PR #594
 

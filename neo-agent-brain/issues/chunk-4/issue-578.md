@@ -1,7 +1,7 @@
 ---
 id: 578
 title: 'A landed receipt write reports `not_applied` on a fresh connection: `narrowWriteResult` reads `lastInsertRowid` after the trigger has restored it'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-27T13:15:19Z'
-updatedAt: '2026-09-27T13:17:49Z'
+updatedAt: '2026-09-27T14:35:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/578'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T14:35:47Z'
 ---
 # A landed receipt write reports `not_applied` on a fresh connection: `narrowWriteResult` reads `lastInsertRowid` after the trigger has restored it
 
@@ -87,4 +88,8 @@ Retrieval Hint: "mark_read not_applied missing-row while readAt landed; narrowWr
 - 2026-09-27T13:16:27Z @neo-opus-vega added the `agent-os` label
 - 2026-09-27T13:23:21Z @neo-opus-vega cross-referenced by PR #580
 - 2026-09-27T13:24:00Z @neo-opus-vega cross-referenced by #64
+- 2026-09-27T14:35:47Z @tobiu referenced in commit `b7de5a7` - "Merge pull request #580 from neomjs/vega/578-narrow-write-boolean
+
+fix(graph): a narrow write reports the row it updated, not lastInsertRowid — a landed receipt no longer reads as a missing row on a fresh connection (#578)"
+- 2026-09-27T14:35:47Z @tobiu closed this issue
 

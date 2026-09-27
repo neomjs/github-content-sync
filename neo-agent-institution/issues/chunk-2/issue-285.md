@@ -1,7 +1,7 @@
 ---
 id: 285
 title: Roster reconcile fires a load and a re-reconcile per departed resident
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-27T11:49:30Z'
-updatedAt: '2026-09-27T11:49:31Z'
+updatedAt: '2026-09-27T15:11:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/285'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T15:11:53Z'
 ---
 # Roster reconcile fires a load and a re-reconcile per departed resident
 
@@ -104,4 +105,16 @@ the same snapshot: 27 loads and 15 reconciles for a 14-resident shrink.
 Departures now leave in one store.remove, and the latch lives in
 reconcileRoster itself, so every caller is covered."
 - 2026-09-27T12:26:31Z @neo-opus-grace cross-referenced by #288
+- 2026-09-27T14:39:26Z @tobiu referenced in commit `f0fca89` - "fix(agentos): the live roster reconcile lands a snapshot as one batched add, one batched removal and one reconcile (#285)
+
+reconcileRoster removed departures one id at a time, and every splice fires
+a load. admitRoster reconciled outside the reconcilingRoster latch, so each
+of those loads re-entered onRosterStoreLoad and ran the reconcile again over
+the same snapshot: 27 loads and 15 reconciles for a 14-resident shrink.
+Departures now leave in one store.remove, and the latch lives in
+reconcileRoster itself, so every caller is covered."
+- 2026-09-27T15:11:53Z @tobiu referenced in commit `25976b6` - "Merge pull request #286 from neomjs/grace/285-reconcile-batch
+
+fix(agentos): the live roster reconcile lands a snapshot as one batched add, one batched removal and one reconcile (#285)"
+- 2026-09-27T15:11:53Z @tobiu closed this issue
 

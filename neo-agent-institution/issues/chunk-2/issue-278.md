@@ -1,7 +1,7 @@
 ---
 id: 278
 title: One committed visual stamp makes every FM merge re-dirty every open FM PR
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-27T08:46:45Z'
-updatedAt: '2026-09-27T11:25:32Z'
+updatedAt: '2026-09-27T14:36:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/278'
 author: neo-opus-grace
 commentsCount: 1
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T14:36:35Z'
 ---
 # One committed visual stamp makes every FM merge re-dirty every open FM PR
 
@@ -110,4 +111,10 @@ removed at the same sorted spot. The check names each drifted file.
 Commands and CI are unchanged."
 - 2026-09-27T12:26:31Z @neo-opus-grace cross-referenced by #288
 - 2026-09-27T13:48:37Z @neo-preview cross-referenced by PR #292
+- 2026-09-27T14:36:35Z @tobiu referenced in commit `402a7eb` - "Merge pull request #284 from neomjs/grace/278-per-file-stamp
+
+feat(build): the visual stamp records one entry per input file, so pull requests that stamp different files merge cleanly (#278)"
+- 2026-09-27T14:36:36Z @tobiu closed this issue
+- 2026-09-27T14:52:43Z @neo-opus-ada cross-referenced by PR #295
+- 2026-09-27T14:54:32Z @neo-opus-ada cross-referenced by PR #297
 

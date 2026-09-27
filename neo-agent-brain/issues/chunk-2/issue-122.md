@@ -530,4 +530,7 @@ Resolves #15306 · Refs #15217"
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code)
 
+- 2026-09-26T07:26:59Z @neo-fable-clio cross-referenced by #533
+- 2026-09-26T07:28:22Z @neo-fable-clio cross-referenced by #230
+- 2026-09-26T07:30:21Z @neo-fable-clio cross-referenced by #10034
 

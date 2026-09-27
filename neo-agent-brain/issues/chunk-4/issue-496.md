@@ -7,12 +7,12 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-fable
+  - neo-gpt-emmy
 createdAt: '2026-09-25T15:48:45Z'
-updatedAt: '2026-09-25T19:20:54Z'
+updatedAt: '2026-09-27T15:28:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/496'
 author: neo-fable
-commentsCount: 0
+commentsCount: 2
 parentIssue: 122
 subIssues: []
 subIssuesCompleted: 0
@@ -23,65 +23,39 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-09-25T19:20:54Z'
+closedAt: '2026-09-27T15:28:17Z'
 ---
 # The Fleet Manager reads the computed Golden Path through one fleet-wire method
 
 ## Context
+Reopened for the operator's 2026-09-27 complete Golden Path requirement. [D#19151's accepted H1](https://github.com/neomjs/neo/discussions/19151#discussioncomment-18615999) requires the human section whole and separately from `computed-route.v1`. Emmy owns this bounded follow-up; Institution #210 is the consumer.
 
-The operator's refocus of 2026-09-25 (15:42Z, his words: "a re-focus to address the high ROI lanes first. e.g. GP and graph inside FM") and the lead's lane 3 ("a GP text representation in the Fleet Manager") ask for the Golden Path to be visible inside the cockpit. The Golden Path already has a typed text artifact: `GoldenPathSynthesizer` writes `computed-route.json` (the computed-route.v1 sidecar: `capturedAt`, `expiresAt`, `status`, `freshness`, `provenance`, `route.items`) beside the handoff, and `AgentOrchestrator#readComputedRoute` already reads it fail-closed. The corpus-projection admission (`corpusProjectionContract.mjs`) already says whether that route is current, last-known-good, or withheld; today it reads withheld (`CORPUS_PROJECTION_NOT_CURRENT`, `freshness-sla-breached`; REM 990 undigested, 0 recent cycles). Nothing serves either to the cockpit: the fleet wire (`src/fleet/contract/wire.mjs`) has `fleetTasks`, `fleetActivity`, `fleetMemories` and their siblings, and no Golden Path read.
+## Problem and solution
+The shipped `fleetGoldenPath` read carries only route, admission and REM. Reuse `get_sandman_handoff` through the existing admitted operation boundary and include its exact Computed Golden Path section in the same Fleet response. Extract from the canonical level-two heading through the next level-two heading; do not expose unrelated handoff sections or the server's filesystem path.
 
-## The Problem
-
-The cockpit can render the roster, activity, tasks and catch-up envelopes because each has one bridge read backed by one wired source with an honest not-wired default. The Golden Path has none, so the one picture the institution steers by is invisible in the product, and any pane built without a read would have to guess at freshness. The read must carry the same honest states as `get_context_frontier` (current / last-known-good with its age / withheld with the reason) — never a stale route presented as current, never a mixed live read.
-
-## The Architectural Reality
-
-- `ai/services/fleet/FleetControlBridge.mjs`: source slots (`tasksSource`, `activitySource`, …) and READ-OBSERVE methods (`fleetTasks`, ~:628) returning the source envelope untouched or a `capability: {state: 'unavailable', reason: '… not wired'}` default.
-- `ai/services/fleet/fleetTasksSource.mjs` + `wireFleetTasksSource.mjs`, `wireFleetActivityReadSource.mjs`: the source-module + boot-wiring precedent (read at the use site, fail-soft, no stub); `devFleetServer.mjs` (~:147, ~:299) is the boot site.
-- `src/fleet/contract/wire.mjs`: `FLEET_WIRE_METHODS` (the public vocabulary, protocol version 1, `method-schema-v1`); `ai/services/fleet/fleetServerPolicy.mjs`: the per-method policy (`read-observe`) and the S3 gating map.
-- `ai/agent/AgentOrchestrator.mjs#readComputedRoute` (~:117): the sidecar read with `validateComputedRouteResult`, freshness and expiry gates.
-- `ai/services/graph/corpusProjectionContract.mjs`: `CORPUS_PROJECTION_CONSUMER.computedGoldenPath`, `evaluateCorpusProjectionAdmission`, `readCorpusProjectionReceipt`; `MemoryService.mjs` (~:119): the withheld / last-known-good view shape.
-- Structure map (`npm run ai:structure-map -- --files --loc`, 2026-09-25 15:47Z): owning directories `ai/services/fleet` and `ai/services/graph`.
-
-## The Fix
-
-1. `ai/services/fleet/fleetGoldenPathSource.mjs`: `createFleetGoldenPathSource({routePath, readReceipt, config, now, readRemState})` → `readGoldenPath(params)` returning one envelope: `{capability, admission, route, rem, generatedAt}`. `route` is the validated sidecar passed through (`status`, `freshness`, `capturedAt`, `expiresAt`, `provenance`, `route.kind`, `route.items[]` — id, title, score, reasons as the producer wrote them), never re-ranked; an unreadable or contract-invalid sidecar is `capability.state: 'degraded'` with the reason; `admission` is the consumer's projection admission (`admitted`, `fallback`, `reasonCode`, `staleFacets`); `rem` is `{undigested, digested, recentCycles}` when readable.
-2. `wireFleetGoldenPathSource.mjs` installs it at the fleet-server boot (the `wireFleetTasksSource` shape), reading the handoff directory from config at the use site.
-3. `FleetControlBridge#fleetGoldenPath(params)` over a `goldenPathSource` slot with the unwired default `{capability: {state: 'unavailable', reason: 'fleet golden path source not wired'}, admission: null, route: null, rem: null}`; `fleetGoldenPath` joins `FLEET_WIRE_METHODS` and the server policy as `read-observe`.
-4. Unit arms: the source over a fixture sidecar (fresh / expired / invalid / missing) and a fixture receipt (admitted / stale), the bridge's unwired default, the wire vocabulary + policy parity.
-
-## Contract Ledger Matrix
-
-| Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
-|---|---|---|---|---|---|
-| `fleetGoldenPath` (fleet wire method) | `src/fleet/contract/wire.mjs` `FLEET_WIRE_METHODS`; `fleetServerPolicy.mjs` | READ-OBSERVE; returns the envelope above for the authenticated viewer | unknown method fails closed as today | this ticket + the module JSDoc | unit arm on vocabulary/policy parity |
-| `FleetControlBridge#goldenPathSource` (slot) | the bridge's DI contract (`tasksSource` precedent) | wired at boot; unwired → `capability.state 'unavailable'` | the honest not-wired envelope | module JSDoc | bridge unit arm |
-| envelope `route` | computed-route.v1 (`validateComputedRouteResult`) | pass-through, validated; non-fresh routes carry their own `status`/`freshness` | `capability.state 'degraded'` + reason | module JSDoc | source unit arms |
-| envelope `admission` | `corpusProjectionContract` consumer `computed-golden-path` | current / last-known-good / withheld, as the contract evaluates | `admitted: false`, `fallback 'last-known-good'` | existing contract docs | source unit arm |
-
-Decision Record impact: aligned-with ADR 0023 (earned-and-forgetting map fidelity: the read presents the producer's route and its freshness, adds no scorer, no age multiplier, no synthesis).
+## Contract Ledger
+| Surface | Behavior | Fallback / evidence |
+|---|---|---|
+| `fleetGoldenPath.handoff` | `{markdown, mtimeMs, ageMs, staleAfterMs, stale, reason}`; values are nullable, Markdown is exact source text | Explicit missing-section, unavailable-read or unwired reason; source tests |
+| `sources.handoff` | Diagnostic `{state: 'available' · 'stale' · 'degraded' · 'unavailable', reason}` for the independent human read | Missing section is degraded; absent/unwired/failed read is unavailable; stale source remains readable. It does not change route capability. The consumer can also read `handoff.stale` and `handoff.reason` directly. |
+| Route/admission/REM | Existing producer-owned values remain unchanged and independent | Handoff failure or staleness cannot replace their verdict |
+| Plane attachment | Invoke existing `get_sandman_handoff` through `callHistoryOperation` / admitted plane client | No host filesystem fallback; wiring test |
+| Source metadata | Preserve handoff mtime/age/staleness; mtime is not section capture time | Producer's capture line stays verbatim in Markdown |
 
 ## Acceptance Criteria
+- [ ] Existing Fleet read returns the complete human section, including breakdowns/guard/interpretation when the producer writes them.
+- [ ] Other handoff sections and filesystem paths are excluded.
+- [ ] Missing, unreadable and stale human content has an explicit independent state while route/admission/REM retain their original values.
+- [ ] Both Fleet boot paths use the existing operation boundary; focused source/wiring tests pass.
 
-- [ ] AC-1 `fleetGoldenPath` answers over the wire from a running fleet server with the envelope above; against today's plane it reports the withheld admission and the last route's `capturedAt`, not a current picture.
-- [ ] AC-2 The source's unit arms: fresh sidecar → `route.status 'fresh'` passed through; expired / invalid / missing → `capability.state 'degraded'` with the reason and no items; admitted vs stale receipt → the matching `admission`.
-- [ ] AC-3 The bridge's unwired default and the wire vocabulary / server-policy parity are unit-tested; `lint-openapi-service-parity` and the fleet contract's own specs stay green.
-- [ ] AC-4 No ranking, merging or synthesis in the read path (reviewed against the module diff).
 
-## Out of Scope
+## Post-Merge Validation
+The paired consumer and installed-app presentation remain owned by neomjs/neo-agent-institution#210. This reader's four implementation criteria above do not claim the installed UI is complete.
 
-The cockpit pane that renders the envelope (neomjs/neo-agent-institution, filed alongside); the REM/dream currency itself (#64, #495); concept-graph rendering inside the cockpit (Institution #8's COP).
+## Boundaries
+No new MCP or Fleet method, scorer, ranking change, layout producer, local file fallback in plane mode, or synthesis. Preserve the existing typed route validator and admission. This completes the existing reader rather than reopening the Golden Path producer design.
 
-## Related
-
-#122 (parent: Golden Path v2 — consumers over a measured route), #64 (the heavy-maintenance lease starving REM), #495, the Institution pane ticket (linked from the broadcast), neomjs/neo-agent-institution#9 / #10.
-
-Live latest-open sweep: checked the latest 20 open issues of this repository and of neo-agent-institution at 2026-09-25T15:47:01Z; no equivalent. A2A in-flight sweep (the 12 most recent messages, all read states, 15:44Z) and my [lane-intent] broadcast at 15:46Z: no competing claim. Memory Core sweep: no prior record of a Golden Path read for the cockpit. Own-assignment sweep: none of mine covers it.
-
-Retrieval Hint: `query_raw_memories("fleetGoldenPath wire method computed route envelope cockpit")`
-
-Origin Session ID: 4c0a5550-17ba-4752-9852-846afa537c86
+Origin Session ID: f4539f98-814e-43c1-8214-a10206fb0d73
 
 ## Timeline
 
@@ -106,4 +80,30 @@ RA-2: the packaged shell runs the fleet server on the host in plane-attach mode,
 feat(fleet): the cockpit reads the computed Golden Path through one wire method (#496)"
 - 2026-09-25T19:20:54Z @tobiu closed this issue
 - 2026-09-25T19:23:26Z @neo-fable cross-referenced by #122
+- 2026-09-26T07:21:12Z @neo-fable-clio cross-referenced by #228
+- 2026-09-26T07:26:59Z @neo-fable-clio cross-referenced by #533
+### @neo-gpt-emmy - 2026-09-27T14:27:11Z
+
+Reopening the existing Fleet Golden Path read for the missing human recommendation axis, under the operator's current correction and [D#19151's requirement to return the whole human section separately](https://github.com/neomjs/neo/discussions/19151#discussioncomment-18615999). Emmy takes this bounded completion; the original typed-route ranking/producer authority remains unchanged.
+
+Reuse `get_sandman_handoff` through the already-admitted plane operation boundary. Return the exact Computed Golden Path Markdown section plus its source freshness beside the existing route/REM fields. No re-synthesis, no host filesystem fallback in plane mode, and no inference that handoff freshness establishes typed-route admission. Institution #210 is the paired consumer. Mnemosyne is currently rate-limited per the operator; this is completion of the shipped read, not a new Golden Path producer design.
+
+- 2026-09-27T14:27:13Z @neo-gpt-emmy reopened this issue
+- 2026-09-27T14:27:15Z @neo-gpt-emmy assigned to @neo-gpt-emmy
+- 2026-09-27T14:27:15Z @neo-gpt-emmy unassigned from @neo-fable
+### @neo-gpt-emmy - 2026-09-27T14:27:16Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@neo-fable`
+**New assignees:** `neo-gpt-emmy`
+**Reason:** Bounded completion of previously closed Fleet read under operator's current full-human-recommendation ruling and D19151; original assignee Mnemosyne unavailable until Friday per operator. No ranking/producer ownership transfer.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-09-27T15:03:01Z @neo-gpt-emmy cross-referenced by PR #586
+- 2026-09-27T15:28:17Z @tobiu referenced in commit `d5cd907` - "Merge pull request #586 from neomjs/codex/496-complete-gp-content
+
+feat(fleet): expose complete Golden Path recommendation (#496)"
+- 2026-09-27T15:28:17Z @tobiu closed this issue
 

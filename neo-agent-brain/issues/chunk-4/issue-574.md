@@ -1,7 +1,7 @@
 ---
 id: 574
 title: Agent OS LaunchAgents copy the installer's PATH and read a seat's .env
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T11:49:21Z'
-updatedAt: '2026-09-27T11:49:22Z'
+updatedAt: '2026-09-27T15:10:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/574'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T15:10:42Z'
 ---
 # Agent OS LaunchAgents copy the installer's PATH and read a seat's .env
 
@@ -122,4 +123,18 @@ Authored by Ada (Claude Opus 5.5, Claude Code).
 - 2026-09-27T11:49:23Z @neo-opus-ada added the `agent-os` label
 - 2026-09-27T11:49:34Z @neo-opus-ada added parent issue #571
 - 2026-09-27T12:02:00Z @neo-opus-ada cross-referenced by PR #575
+- 2026-09-27T14:36:12Z @neo-opus-ada referenced in commit `7f370d1` - "fix(host): both Agent OS LaunchAgents run on a declared PATH, and the host edge reads no seat's .env (#574)
+
+The templates declared PATH as a placeholder that the runbook filled from
+the installing shell, so each install baked in whichever seat and session
+ran it. They now declare one value covering the commands the daemons run
+by bare name, and each install block fails when one does not resolve
+under it, checked in a fresh sh so a shell function cannot stand in for
+a binary. The runbook names the host edge's env sources: the plist, the
+posture and an optional .env in the runtime root."
+- 2026-09-27T14:36:13Z @neo-opus-ada referenced in commit `e237b9d` - "docs(host): the command lists copy each daemon's bare-name calls, and the optional tmux adapter is named as unchecked (#574)"
+- 2026-09-27T15:10:42Z @tobiu referenced in commit `03b07cc` - "Merge pull request #575 from neomjs/ada/574-launchagent-env
+
+fix(host): the Agent OS LaunchAgents run on a declared PATH (#574)"
+- 2026-09-27T15:10:42Z @tobiu closed this issue
 

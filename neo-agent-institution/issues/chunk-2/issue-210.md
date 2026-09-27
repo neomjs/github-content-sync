@@ -7,12 +7,12 @@ labels:
   - ai
   - design
 assignees:
-  - neo-opus-grace
+  - neo-gpt-emmy
 createdAt: '2026-09-25T15:49:03Z'
-updatedAt: '2026-09-25T18:57:48Z'
+updatedAt: '2026-09-27T16:36:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/210'
 author: neo-fable
-commentsCount: 0
+commentsCount: 2
 parentIssue: 9
 subIssues: []
 subIssuesCompleted: 0
@@ -23,52 +23,42 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-09-25T18:57:48Z'
+closedAt: '2026-09-27T16:26:26Z'
 ---
 # A Golden Path pane renders the computed route as text with its currency
 
 ## Context
+Reopened for the operator's 2026-09-27 correction: the Golden Path pane must show the complete producer-written recommendation, not just the reduced typed route. Grace transferred this follow-up to Emmy. Authority: [existing org D#19151](https://github.com/neomjs/neo/discussions/19151#discussioncomment-18624317).
 
-The operator's refocus of 2026-09-25 names "GP and graph inside FM" as the high-ROI work, and the lead's lane 3 asks for a Golden Path text representation in the Fleet Manager. The Brain side (a `fleetGoldenPath` fleet-wire read returning the computed route with its freshness, the corpus-projection admission and the REM counts) is filed in neo-agent-brain; this ticket is the cockpit half.
+## Problem and solution
+The current pane omits semantic/structural score breakdowns, routing guard and Strategic Interpretation. Render the exact human Golden Path Markdown section as the primary content using the existing native Markdown component and pane-local SCSS. Replace the duplicate reduced-route cards; retain useful typed-route provenance and REM information as explicitly separate secondary information. The graph continues to consume the typed route.
 
-## The Problem
-
-The Golden Path is the picture the institution steers by, and the cockpit does not show it. Today the underlying read is withheld (the corpus projection is not current; REM has 990 undigested turns and no recent cycle), which is exactly what the pane must say: a route presented without its currency would mislead, and a pane that hides a withheld state would hide the day's real problem.
-
-## The Architectural Reality
-
-- `apps/agentos/view/fleet/catchup/Container.mjs`: the south-strip reading-surface precedent — renders source-owned `notAuthority` envelopes without synthesizing, ranking, merging or caching; honest states (unavailable / degraded / empty, generated timestamp, coverage, citations) are first-class; reads go through intent events the owning cockpit relays to the authenticated bridge (`cockpit/Controller.mjs` ~:239, `cockpit/Container.mjs` ~:191 registers the pane).
-- `apps/agentos/fleet/installFleetBridge.mjs`: the app↔fleet transport over the installed public contract; the new method arrives with the Brain package bump.
-- The design system (#13) and the visual-regression baseline harness (#11) govern the pane's look and its goldens.
-
-## The Fix
-
-1. `apps/agentos/view/fleet/goldenpath/Container.mjs`: a south-strip tab "Golden Path" rendering the `fleetGoldenPath` envelope as text: a currency line first (current at `capturedAt` / last known good, captured `capturedAt`, withheld since `reasonCode` / unavailable with the capability reason; REM undigested / digested / recent cycles beside it), then the route items in the producer's order (rank, id, title, score, the reasons as written), then provenance (`producer`, `runId`, `algorithmVersion`, `expiresAt`). No synthesis, no re-ranking, no caching beyond the pane's own store.
-2. Registration beside the catch-up pane; the cockpit controller relays the read intent and a refresh; the liveness controller's refresh cadence may include it (same as catch-up).
-3. Goldens for the four states (current / last-known-good / withheld / unavailable) in both themes through the #11 harness; unit spec on the pane's rendering of a fixture envelope per state.
+## Contract Ledger
+| Surface | Behavior | Fallback / evidence |
+|---|---|---|
+| `GoldenPathEnvelope.handoff` | Closed block: `markdown, mtimeMs, ageMs, staleAfterMs, stale, reason` from Brain #496 | Older/missing source renders unavailable; envelope test |
+| Primary recommendation | Full producer Markdown, including heading, full titles, scores, guard when present, interpretation and capture line | Native Markdown rendering; no reconstructed prose or scores |
+| Freshness | Handoff update/stale state is independent of typed-route admission | Label each axis; never call file mtime the recommendation's capture time |
+| Layout | Readable wrapping and ordinary scrolling in both themes | Render inspection at narrow and wide pane sizes |
 
 ## Acceptance Criteria
+- [ ] Full recommendation content survives the envelope and is readable without clipping.
+- [ ] Missing and stale handoff states are explicit; a fresh route never makes an old human section look fresh.
+- [ ] A missing human section does not corrupt the typed route, graph selection data or REM state.
+- [ ] Both themes render the content with the native Markdown component; focused tests and visual evidence cover the changed pane.
 
-- [ ] AC-1 With the Brain read returning a fixture envelope, the pane renders each of the four states with the currency line first and the items in producer order; unit spec per state.
-- [ ] AC-2 Against the live plane the pane shows the real state of the day (today: withheld with `freshness-sla-breached` and the last route's `capturedAt`), never a route presented as current.
-- [ ] AC-3 Goldens for the four states in both themes pass the #11 harness; the pane uses the token system (#13), no pixel literals.
-- [ ] AC-4 The pane synthesizes nothing (reviewed against the diff).
+## Post-Merge Validation
+- [x] Emmy: installed FM shows the actual producer-written section after packaging the merged reader. This delivery receipt remains tracked by the open parent #10.
 
-## Out of Scope
+## Boundaries
+No ranking, synthesis, Observatory changes, new navigation surface or new Markdown parser. Reuse the existing pane and Brain #496. The original typed-route-only implementation is already shipped; these criteria describe the reopened completion.
 
-The Brain read itself; a graph rendering of concepts or edges (Institution #8's COP); ranking changes to the Golden Path (Brain #122's leaves).
+Origin Session ID: f4539f98-814e-43c1-8214-a10206fb0d73
 
-## Related
 
-neomjs/neo-agent-institution#9 (parent: the keeper views), #10 (the design-led surface), #13, #11, the Brain read ticket (linked from the broadcast), neomjs/neo-agent-brain#122.
+Installed verification: [delivery receipt, 2026-09-27 16:30–16:32 UTC](https://github.com/neomjs/neo-agent-institution/issues/10#issuecomment-5856530380). The real producer section, full titles and scores, interpretation, scrolling and separate freshness states are visible in the installed app.
 
-unowned-rationale: the Brain read lands first; the pane is the FM design seat's kind of work — @neo-fable-clio or @neo-preview claim it with a [lane-claim], and I take it myself once the read is on a plane pin if nobody has.
 
-Live latest-open sweep: checked the latest 20 open issues of this repository and of neo-agent-brain at 2026-09-25T15:47:01Z; no equivalent. A2A in-flight sweep (15:44Z) and my [lane-intent] broadcast at 15:46Z: no competing claim. Memory Core sweep: no prior record. Own-assignment sweep: none of mine covers it.
-
-Retrieval Hint: `query_raw_memories("Golden Path pane cockpit south strip currency line fleetGoldenPath")`
-
-Origin Session ID: 4c0a5550-17ba-4752-9852-846afa537c86
 
 ## Timeline
 
@@ -123,4 +113,38 @@ tab sits under the diff threshold, so they passed without it."
 
 The golden stamp digests the committed apps/agentos inputs, which the Golden Path util and pane changed; the visual suite and the pane's Neural Link goldens pass unchanged at this head. The util's shape comment described its source by ticket; it now names the Brain's wire, which the source-comment archaeology check requires."
 - 2026-09-25T18:57:48Z @tobiu closed this issue
+- 2026-09-26T07:21:12Z @neo-fable-clio cross-referenced by #228
+- 2026-09-26T07:28:22Z @neo-fable-clio cross-referenced by #230
+- 2026-09-26T08:05:14Z @neo-fable-clio cross-referenced by PR #233
+### @neo-gpt-emmy - 2026-09-27T14:27:05Z
+
+Picking up the bounded follow-up transferred by Grace in A2A `MESSAGE:96605579-5993-441d-ac8c-505b61d6c867`, under the operator's current Golden Path correction and [D#19151](https://github.com/neomjs/neo/discussions/19151#discussioncomment-18624317).
+
+The pane must show the whole producer-written recommendation: full titles, total and semantic/structural scores, routing guard when present, Strategic Interpretation, and source freshness. The reduced typed route does not supply that content. Reuse the existing pane and native Markdown renderer; preserve the typed route's independent admission and provenance. Companion read completion is existing Brain #496. No Observatory edits or new ticket.
+
+- 2026-09-27T14:27:07Z @neo-gpt-emmy reopened this issue
+- 2026-09-27T14:27:09Z @neo-gpt-emmy assigned to @neo-gpt-emmy
+- 2026-09-27T14:27:09Z @neo-gpt-emmy unassigned from @neo-opus-grace
+### @neo-gpt-emmy - 2026-09-27T14:27:10Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@neo-opus-grace`
+**New assignees:** `neo-gpt-emmy`
+**Reason:** Grace explicitly transferred the closed issue's complete human recommendation follow-up in MESSAGE:96605579-5993-441d-ac8c-505b61d6c867; original graph implementation stays with Grace.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-09-27T14:56:09Z @neo-gpt-emmy cross-referenced by #496
+- 2026-09-27T15:03:01Z @neo-gpt-emmy cross-referenced by PR #586
+- 2026-09-27T15:16:40Z @neo-gpt-emmy cross-referenced by #13018
+- 2026-09-27T15:24:15Z @neo-gpt-emmy cross-referenced by PR #19313
+- 2026-09-27T15:54:30Z @neo-gpt-emmy cross-referenced by PR #304
+- 2026-09-27T16:13:05Z @tobiu referenced in commit `3900f91` - "feat(fleet): read the complete Golden Path recommendation (#210)"
+- 2026-09-27T16:13:06Z @tobiu referenced in commit `32c59d3` - "fix(fleet): detach the recommendation reader from graph selection (#210)"
+- 2026-09-27T16:26:26Z @tobiu referenced in commit `68435c1` - "Merge pull request #304 from neomjs/codex/210-complete-gp-content
+
+feat(fleet): read the complete Golden Path recommendation (#210)"
+- 2026-09-27T16:26:27Z @tobiu closed this issue
+- 2026-09-27T16:34:52Z @neo-gpt-emmy cross-referenced by #10
 
