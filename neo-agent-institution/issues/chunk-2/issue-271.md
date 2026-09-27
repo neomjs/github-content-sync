@@ -1,7 +1,7 @@
 ---
 id: 271
 title: Observatory draws the bounded graph read with one canonical selection
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-26T23:46:07Z'
-updatedAt: '2026-09-26T23:46:07Z'
+updatedAt: '2026-09-27T09:45:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/271'
 author: neo-opus-grace
 commentsCount: 0
@@ -22,8 +22,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 269 Brain pin 4 (dev@c6c92c2, fleetGraphScene) + engine pin (dev@a50ae57ce8, GraphScene''s rejecting setScene)'
+  - '[x] 269 Brain pin 4 (dev@c6c92c2, fleetGraphScene) + engine pin (dev@a50ae57ce8, GraphScene''s rejecting setScene)'
 blocking: []
+closedAt: '2026-09-27T09:45:00Z'
 ---
 # Observatory draws the bounded graph read with one canonical selection
 
@@ -88,4 +89,41 @@ Retrieval Hint: "Observatory graphSceneEnvelope fromGraphScene canonical selecti
 - 2026-09-26T23:49:51Z @neo-opus-grace cross-referenced by #19305
 - 2026-09-27T00:22:26Z @tobiu referenced in commit `51b42c3` - "test(visual): re-stamp the baseline inputs over the committed goldens (#271)"
 - 2026-09-27T00:25:44Z @neo-opus-grace cross-referenced by PR #273
+- 2026-09-27T08:19:41Z @tobiu referenced in commit `295d4f0` - "feat(agentos): lay out the bounded graph read around its seeds, stable per id (#271)
+
+ObservatorySceneLayout.fromGraphScene turns a fleetGraphScene envelope into
+a scene: the route's seeds on the helix in their route slots with their rank,
+every other node ringed around the seeds nearest to it (hop, cluster), and
+only the feed's own edges with their types. Positions depend only on ids,
+route order and edges, so shuffled rows and a second read of one snapshot lay
+out identically and the id-to-index map keeps a selection on its node."
+- 2026-09-27T08:19:42Z @tobiu referenced in commit `77d2407` - "refactor(agentos): ClosedShape lands a wire envelope in its leaf's declared shape (#271)
+
+The projection moves out of GoldenPathEnvelope unchanged, so the graph scene leaf lands through the same closed-shape rule: setData drills objects into leaf paths, so every declared key must be present on every write."
+- 2026-09-27T08:19:42Z @tobiu referenced in commit `b485c9d` - "feat(agentos): the Observatory draws the Golden Path's bounded graph neighbourhood, with one canonical selection (#271)
+
+The cockpit reads fleetGraphScene beside the Golden Path, on its own fence, into its own graphSceneEnvelope leaf. The Observatory binds that leaf, derives the scene once through ObservatorySceneLayout.fromGraphScene and retires the route-only fromGoldenPath scene: only the feed's edges become lines, and seeds are rank beacons. Selection is one origin-qualified id. A click selects, an orbit does not, and a read that lost the id clears the selection with its reason. The renderer inks by hop, fades outside a selection's neighbourhood and gains locate, the inverse of pick."
+- 2026-09-27T08:19:42Z @tobiu referenced in commit `61b6a1c` - "test(visual): re-stamp the baseline inputs on the rebased head (#271)"
+- 2026-09-27T08:31:27Z @neo-opus-grace cross-referenced by #277
+- 2026-09-27T08:46:46Z @neo-opus-grace cross-referenced by #278
+- 2026-09-27T08:55:44Z @tobiu referenced in commit `cb995d2` - "fix(agentos): an orbit never selects, a late pick cannot bring back an id, and a profile switch retires the graph (#271)"
+- 2026-09-27T09:40:11Z @tobiu referenced in commit `7365ea7` - "feat(agentos): lay out the bounded graph read around its seeds, stable per id (#271)
+
+ObservatorySceneLayout.fromGraphScene turns a fleetGraphScene envelope into
+a scene: the route's seeds on the helix in their route slots with their rank,
+every other node ringed around the seeds nearest to it (hop, cluster), and
+only the feed's own edges with their types. Positions depend only on ids,
+route order and edges, so shuffled rows and a second read of one snapshot lay
+out identically and the id-to-index map keeps a selection on its node."
+- 2026-09-27T09:40:11Z @tobiu referenced in commit `83fbc60` - "refactor(agentos): ClosedShape lands a wire envelope in its leaf's declared shape (#271)
+
+The projection moves out of GoldenPathEnvelope unchanged, so the graph scene leaf lands through the same closed-shape rule: setData drills objects into leaf paths, so every declared key must be present on every write."
+- 2026-09-27T09:40:11Z @tobiu referenced in commit `ae6effc` - "feat(agentos): the Observatory draws the Golden Path's bounded graph neighbourhood, with one canonical selection (#271)
+
+The cockpit reads fleetGraphScene beside the Golden Path, on its own fence, into its own graphSceneEnvelope leaf. The Observatory binds that leaf, derives the scene once through ObservatorySceneLayout.fromGraphScene and retires the route-only fromGoldenPath scene: only the feed's edges become lines, and seeds are rank beacons. Selection is one origin-qualified id. A click selects, an orbit does not, and a read that lost the id clears the selection with its reason. The renderer inks by hop, fades outside a selection's neighbourhood and gains locate, the inverse of pick."
+- 2026-09-27T09:40:11Z @tobiu referenced in commit `1aed04e` - "fix(agentos): an orbit never selects, a late pick cannot bring back an id, and a profile switch retires the graph (#271)"
+- 2026-09-27T09:45:00Z @tobiu referenced in commit `4cb1f13` - "Merge pull request #272 from neomjs/grace/271-observatory-graph-selection
+
+feat(agentos): the Observatory draws the Golden Path's bounded graph neighbourhood, with one canonical selection (#271)"
+- 2026-09-27T09:45:00Z @tobiu closed this issue
 

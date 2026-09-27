@@ -1,7 +1,7 @@
 ---
 id: 246
 title: 'Fleet legend: benched, unobserved and stopped collapse into Offline with its reason; no ''external harness'', no bare ''wedged'''
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-26T09:34:31Z'
-updatedAt: '2026-09-26T21:30:48Z'
+updatedAt: '2026-09-27T12:05:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/246'
 author: neo-opus-ada
 commentsCount: 2
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T12:05:59Z'
 ---
 # Fleet legend: benched, unobserved and stopped collapse into Offline with its reason; no 'external harness', no bare 'wedged'
 
@@ -70,6 +71,20 @@ The legend on dev reads `0 working · 0 idle · 0 wedged · 0 rate-limited · 8 
 5. A whole-plane read failure renders as a plane-level state, never as every agent offline.
 6. The `health/Container.mjs` JSDoc and `CARD-CONTRACT.md` follow the new vocabulary.
 
+## Contract Ledger Matrix
+
+Every consumer reads the one resolver; the rows follow the five-bucket ruling above.
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| `SourceHealth.resolveFleetDisplayState` | the operator ruling | returns `{state, reason}`: a benched seat is `off`/`benched` in every topology; with no runtime wired, `off`/`unobserved`; a wired runtime keeps its session state, and `off`/`stopped` when stopped | a wired state outside the five passes through literally | JSDoc, `CARD-CONTRACT.md` | `sourceHealth.spec` |
+| Health legend and tally (`health/Container.mjs`) | the ruling | five buckets: working · idle · stuck · rate-limited · offline; attention weighs stuck and rate-limited | an unknown state counts offline, so the bar never undercounts | JSDoc | `roster/container.spec` HealthBar arms |
+| Card state line | the ruling | the word (`offline`, `stuck`, …), with the reason and meaning on its title | — | `CARD-CONTRACT.md` (state-honesty) | `card/container.spec` |
+| Detail session row | the ruling | `offline · <reason>` | — | — | `detail/container.spec` |
+| "Hide offline" filter (`roster/Controller.mjs`) | the ruling | hides what the legend counts offline, and re-filters when any fact the resolver reads changes (`state`, `sources`, `participationStatus`); the title and tally keep the whole fleet | — | JSDoc | `roster/container.spec` filter arms |
+| Failed roster read (`LivenessController.loadRoster`) | AC-4 | the last-known rows stay; a live grid turns stale with a reason on a thrown or malformed read; a grid that never answered stays cold | — | JSDoc | `rosterStore.spec` failed-read arm |
+| Retired tokens | the ruling | `--fm-state-external` and the dot's `.fm-state-unobserved` rule go; `--fm-state-unobserved` stays for the System view's chips | — | — | `stateDotComponent.spec` |
+
 ## Acceptance Criteria
 
 - [ ] AC-1: a roster row with `participationStatus: 'operator_benched'` resolves to `offline` with reason `benched`, with or without a wired runtime. It counts in the offline bucket (unit arms on the resolver and `healthCounts`).
@@ -95,6 +110,7 @@ Live latest-open sweep: the latest 20 open issues at 2026-09-26T09:33:49Z showed
 
 Origin Session ID: 1b945fcf-1142-475f-8007-ac18d51c069a
 Retrieval Hint: `query_raw_memories("fleet legend wedged stuck external harness benched participationStatus resolver offline reason")`
+
 
 
 ## Timeline
@@ -132,4 +148,202 @@ The record-change arm matters: a load-only test can pass while the live HealthBa
 - 2026-09-26T21:30:48Z @neo-opus-ada changed title from **The fleet legend counts benched seats as "external harness"** to **Fleet legend: benched, unobserved and stopped collapse into Offline with its reason; no 'external harness', no bare 'wedged'**
 - 2026-09-26T22:28:51Z @neo-opus-grace cross-referenced by #267
 - 2026-09-26T22:45:54Z @neo-opus-grace cross-referenced by PR #268
+- 2026-09-27T09:10:22Z @neo-opus-ada referenced in commit `3fa3f0d` - "test(agentos): the display-state resolver has its own arms — bench in every topology, unobserved without a runtime, a wired runtime's state kept (#246)"
+- 2026-09-27T09:12:51Z @neo-opus-ada cross-referenced by PR #279
+- 2026-09-27T09:18:58Z @neo-opus-ada cross-referenced by #280
+- 2026-09-27T09:31:26Z @neo-opus-ada referenced in commit `530c412` - "docs(agentos): comments in the touched files describe behavior, not the tickets that brought it (#246)"
+- 2026-09-27T09:34:11Z @neo-opus-ada referenced in commit `b1921e4` - "feat(agentos): the fleet legend reads working · idle · stuck · rate-limited · offline, and why a seat is offline rides its row (#246)
+
+Operator ruling 2026-09-26 (#10 item 13 and 15): benched, unobserved and
+stopped are one operator-facing category, Offline; "external harness" is
+not a state; no unexplained "wedged"; seven buckets are too many.
+
+SourceHealth.resolveFleetDisplayState returns {state, reason}: the bench
+is the roster's fact and holds in every topology, a wired runtime keeps
+its session state (stopped when off), and a seat Fleet runs no process
+for is offline, unobserved. The health bar, the card, the detail pane and
+the roster's "Hide offline" filter all read that one resolver.
+
+The card's word stays "offline" (the reason rides its title, so it fits
+the narrowest card); the detail pane's new session row spells
+"offline · <reason>" out. "stuck" replaces "wedged" in operator text and
+says what it means on its title. The external token and the dot's
+unobserved rule had no reader left and are gone."
+- 2026-09-27T09:34:12Z @neo-opus-ada referenced in commit `b2fab08` - "test(agentos): the display-state resolver has its own arms — bench in every topology, unobserved without a runtime, a wired runtime's state kept (#246)"
+- 2026-09-27T09:34:12Z @neo-opus-ada referenced in commit `f7443e8` - "docs(agentos): comments in the touched files describe behavior, not the tickets that brought it (#246)"
+- 2026-09-27T09:34:12Z @neo-opus-ada referenced in commit `f3d0397` - "test(visual): the legend goldens re-captured and re-stamped on the rebased head (#246)"
+- 2026-09-27T10:07:45Z @neo-opus-ada referenced in commit `dcc9802` - "feat(agentos): the fleet legend reads working · idle · stuck · rate-limited · offline, and why a seat is offline rides its row (#246)
+
+Operator ruling 2026-09-26 (#10 item 13 and 15): benched, unobserved and
+stopped are one operator-facing category, Offline; "external harness" is
+not a state; no unexplained "wedged"; seven buckets are too many.
+
+SourceHealth.resolveFleetDisplayState returns {state, reason}: the bench
+is the roster's fact and holds in every topology, a wired runtime keeps
+its session state (stopped when off), and a seat Fleet runs no process
+for is offline, unobserved. The health bar, the card, the detail pane and
+the roster's "Hide offline" filter all read that one resolver.
+
+The card's word stays "offline" (the reason rides its title, so it fits
+the narrowest card); the detail pane's new session row spells
+"offline · <reason>" out. "stuck" replaces "wedged" in operator text and
+says what it means on its title. The external token and the dot's
+unobserved rule had no reader left and are gone."
+- 2026-09-27T10:07:45Z @neo-opus-ada referenced in commit `619c84d` - "test(agentos): the display-state resolver has its own arms — bench in every topology, unobserved without a runtime, a wired runtime's state kept (#246)"
+- 2026-09-27T10:07:45Z @neo-opus-ada referenced in commit `bd69231` - "docs(agentos): comments in the touched files describe behavior, not the tickets that brought it (#246)"
+- 2026-09-27T10:07:45Z @neo-opus-ada referenced in commit `0cbc5b9` - "test(visual): the legend goldens re-captured and re-stamped on the rebased head (#246)"
+- 2026-09-27T10:07:45Z @neo-opus-ada referenced in commit `113935f` - "fix(agentos): a malformed roster answer after a live one reads stale, with its reason (#246)
+
+A non-array `rows` answer returned early after clearing the grid's connection, so a grid
+that had been live kept its live badge over a failed read and lost its reason. It now
+degrades through the same path as a thrown read: the last-known roster stays, a live grid
+turns stale with "Roster answer was malformed", and a grid that never answered stays cold.
+
+The new arm drives a genuinely wired working row live, repeats the well-formed read on the
+same profile (still live), then answers malformed: stale, the reason, nothing cleared,
+removed or re-added. Red before the fix (`live`), green after.
+
+Found by Euclid and Emmy in review."
+- 2026-09-27T10:15:43Z @neo-opus-ada referenced in commit `060bb2d` - "test(agentos): a working row survives a thrown read after a live one, not only a malformed one (#246)
+
+The same-profile failure arm seeded rows that mapped offline before the read failed, so it could
+not show a working row staying working. The live-then-failed arm now runs both failures, a thrown
+read and a malformed answer, over a genuinely wired working row: stale, the reason, the row kept."
+- 2026-09-27T10:24:01Z @neo-opus-ada referenced in commit `cf8f3c4` - "feat(agentos): the fleet legend reads working · idle · stuck · rate-limited · offline, and why a seat is offline rides its row (#246)
+
+Operator ruling 2026-09-26 (#10 item 13 and 15): benched, unobserved and
+stopped are one operator-facing category, Offline; "external harness" is
+not a state; no unexplained "wedged"; seven buckets are too many.
+
+SourceHealth.resolveFleetDisplayState returns {state, reason}: the bench
+is the roster's fact and holds in every topology, a wired runtime keeps
+its session state (stopped when off), and a seat Fleet runs no process
+for is offline, unobserved. The health bar, the card, the detail pane and
+the roster's "Hide offline" filter all read that one resolver.
+
+The card's word stays "offline" (the reason rides its title, so it fits
+the narrowest card); the detail pane's new session row spells
+"offline · <reason>" out. "stuck" replaces "wedged" in operator text and
+says what it means on its title. The external token and the dot's
+unobserved rule had no reader left and are gone."
+- 2026-09-27T10:24:01Z @neo-opus-ada referenced in commit `d3e2bef` - "test(agentos): the display-state resolver has its own arms — bench in every topology, unobserved without a runtime, a wired runtime's state kept (#246)"
+- 2026-09-27T10:24:01Z @neo-opus-ada referenced in commit `ee296a3` - "docs(agentos): comments in the touched files describe behavior, not the tickets that brought it (#246)"
+- 2026-09-27T10:24:01Z @neo-opus-ada referenced in commit `234aa03` - "fix(agentos): a malformed roster answer after a live one reads stale, with its reason (#246)
+
+A non-array `rows` answer returned early after clearing the grid's connection, so a grid
+that had been live kept its live badge over a failed read and lost its reason. It now
+degrades through the same path as a thrown read: the last-known roster stays, a live grid
+turns stale with "Roster answer was malformed", and a grid that never answered stays cold.
+
+The new arm drives a genuinely wired working row live, repeats the well-formed read on the
+same profile (still live), then answers malformed: stale, the reason, nothing cleared,
+removed or re-added. Red before the fix (`live`), green after.
+
+Found by Euclid and Emmy in review."
+- 2026-09-27T10:24:01Z @neo-opus-ada referenced in commit `920d82b` - "test(agentos): a working row survives a thrown read after a live one, not only a malformed one (#246)
+
+The same-profile failure arm seeded rows that mapped offline before the read failed, so it could
+not show a working row staying working. The live-then-failed arm now runs both failures, a thrown
+read and a malformed answer, over a genuinely wired working row: stale, the reason, the row kept."
+- 2026-09-27T10:24:01Z @neo-opus-ada referenced in commit `0e3f480` - "test(visual): the legend goldens re-captured on the new nav and re-stamped (#246)"
+- 2026-09-27T11:06:55Z @neo-opus-ada referenced in commit `a440f5c` - "feat(agentos): the fleet legend reads working · idle · stuck · rate-limited · offline, and why a seat is offline rides its row (#246)
+
+Operator ruling 2026-09-26 (#10 item 13 and 15): benched, unobserved and
+stopped are one operator-facing category, Offline; "external harness" is
+not a state; no unexplained "wedged"; seven buckets are too many.
+
+SourceHealth.resolveFleetDisplayState returns {state, reason}: the bench
+is the roster's fact and holds in every topology, a wired runtime keeps
+its session state (stopped when off), and a seat Fleet runs no process
+for is offline, unobserved. The health bar, the card, the detail pane and
+the roster's "Hide offline" filter all read that one resolver.
+
+The card's word stays "offline" (the reason rides its title, so it fits
+the narrowest card); the detail pane's new session row spells
+"offline · <reason>" out. "stuck" replaces "wedged" in operator text and
+says what it means on its title. The external token and the dot's
+unobserved rule had no reader left and are gone."
+- 2026-09-27T11:06:55Z @neo-opus-ada referenced in commit `4924e0d` - "test(agentos): the display-state resolver has its own arms — bench in every topology, unobserved without a runtime, a wired runtime's state kept (#246)"
+- 2026-09-27T11:06:55Z @neo-opus-ada referenced in commit `2d54f98` - "docs(agentos): comments in the touched files describe behavior, not the tickets that brought it (#246)"
+- 2026-09-27T11:06:55Z @neo-opus-ada referenced in commit `b0092a5` - "fix(agentos): a malformed roster answer after a live one reads stale, with its reason (#246)
+
+A non-array `rows` answer returned early after clearing the grid's connection, so a grid
+that had been live kept its live badge over a failed read and lost its reason. It now
+degrades through the same path as a thrown read: the last-known roster stays, a live grid
+turns stale with "Roster answer was malformed", and a grid that never answered stays cold.
+
+The new arm drives a genuinely wired working row live, repeats the well-formed read on the
+same profile (still live), then answers malformed: stale, the reason, nothing cleared,
+removed or re-added. Red before the fix (`live`), green after.
+
+Found by Euclid and Emmy in review."
+- 2026-09-27T11:06:56Z @neo-opus-ada referenced in commit `dbedf51` - "test(agentos): a working row survives a thrown read after a live one, not only a malformed one (#246)
+
+The same-profile failure arm seeded rows that mapped offline before the read failed, so it could
+not show a working row staying working. The live-then-failed arm now runs both failures, a thrown
+read and a malformed answer, over a genuinely wired working row: stale, the reason, the row kept."
+- 2026-09-27T11:06:56Z @neo-opus-ada referenced in commit `d172a3d` - "test(visual): the legend goldens re-captured on the new nav and re-stamped (#246)"
+- 2026-09-27T11:16:09Z @neo-opus-ada referenced in commit `ac81fd2` - "fix(agentos): an enabled roster filter re-runs when a fact its predicate reads changes (#246)
+
+Hide offline reads everything the legend's resolver reads — the session state, the sources and
+the participation — but the collection re-filters only on mutations and filter edits, and the
+record-change handler only re-sorted on a `state` change. So a bench-only or runtime-only change
+left an offline card visible, or a now-working one hidden, while the tally already counted it
+right. The handler now re-runs the store's filters whenever an enabled filter's input changed,
+then re-sorts. The arm drives both changes in both directions with Hide offline on; red before.
+
+Found by Emmy in review."
+- 2026-09-27T11:29:07Z @neo-opus-ada referenced in commit `837320f` - "feat(agentos): the fleet legend reads working · idle · stuck · rate-limited · offline, and why a seat is offline rides its row (#246)
+
+Operator ruling 2026-09-26 (#10 item 13 and 15): benched, unobserved and
+stopped are one operator-facing category, Offline; "external harness" is
+not a state; no unexplained "wedged"; seven buckets are too many.
+
+SourceHealth.resolveFleetDisplayState returns {state, reason}: the bench
+is the roster's fact and holds in every topology, a wired runtime keeps
+its session state (stopped when off), and a seat Fleet runs no process
+for is offline, unobserved. The health bar, the card, the detail pane and
+the roster's "Hide offline" filter all read that one resolver.
+
+The card's word stays "offline" (the reason rides its title, so it fits
+the narrowest card); the detail pane's new session row spells
+"offline · <reason>" out. "stuck" replaces "wedged" in operator text and
+says what it means on its title. The external token and the dot's
+unobserved rule had no reader left and are gone."
+- 2026-09-27T11:29:07Z @neo-opus-ada referenced in commit `722a47b` - "test(agentos): the display-state resolver has its own arms — bench in every topology, unobserved without a runtime, a wired runtime's state kept (#246)"
+- 2026-09-27T11:29:07Z @neo-opus-ada referenced in commit `a1b6b59` - "docs(agentos): comments in the touched files describe behavior, not the tickets that brought it (#246)"
+- 2026-09-27T11:29:07Z @neo-opus-ada referenced in commit `9400e6f` - "fix(agentos): a malformed roster answer after a live one reads stale, with its reason (#246)
+
+A non-array `rows` answer returned early after clearing the grid's connection, so a grid
+that had been live kept its live badge over a failed read and lost its reason. It now
+degrades through the same path as a thrown read: the last-known roster stays, a live grid
+turns stale with "Roster answer was malformed", and a grid that never answered stays cold.
+
+The new arm drives a genuinely wired working row live, repeats the well-formed read on the
+same profile (still live), then answers malformed: stale, the reason, nothing cleared,
+removed or re-added. Red before the fix (`live`), green after.
+
+Found by Euclid and Emmy in review."
+- 2026-09-27T11:29:07Z @neo-opus-ada referenced in commit `1d99e8d` - "test(agentos): a working row survives a thrown read after a live one, not only a malformed one (#246)
+
+The same-profile failure arm seeded rows that mapped offline before the read failed, so it could
+not show a working row staying working. The live-then-failed arm now runs both failures, a thrown
+read and a malformed answer, over a genuinely wired working row: stale, the reason, the row kept."
+- 2026-09-27T11:29:07Z @neo-opus-ada referenced in commit `06bf74c` - "test(visual): the legend goldens re-captured on the new nav and re-stamped (#246)"
+- 2026-09-27T11:29:08Z @neo-opus-ada referenced in commit `dd99008` - "fix(agentos): an enabled roster filter re-runs when a fact its predicate reads changes (#246)
+
+Hide offline reads everything the legend's resolver reads — the session state, the sources and
+the participation — but the collection re-filters only on mutations and filter edits, and the
+record-change handler only re-sorted on a `state` change. So a bench-only or runtime-only change
+left an offline card visible, or a now-working one hidden, while the tally already counted it
+right. The handler now re-runs the store's filters whenever an enabled filter's input changed,
+then re-sorts. The arm drives both changes in both directions with Hide offline on; red before.
+
+Found by Emmy in review."
+- 2026-09-27T11:29:08Z @neo-opus-ada referenced in commit `667b801` - "test(visual): re-stamp the baseline inputs over the roster reconcile fix (#246)"
+- 2026-09-27T12:05:59Z @tobiu referenced in commit `d366884` - "Merge pull request #279 from neomjs/ada/246-fleet-legend-offline
+
+feat(agentos): the fleet legend reads working · idle · stuck · rate-limited · offline, and why a seat is offline rides its row (#246)"
+- 2026-09-27T12:05:59Z @tobiu closed this issue
+- 2026-09-27T12:22:04Z @neo-opus-ada cross-referenced by #287
 

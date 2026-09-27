@@ -1,17 +1,18 @@
 ---
 id: 249
 title: The live roster reconcile leaves folded idle residents behind when the fleet shrinks
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
   - ai
-assignees: []
+assignees:
+  - neo-opus-grace
 createdAt: '2026-09-26T10:04:49Z'
-updatedAt: '2026-09-26T10:04:49Z'
+updatedAt: '2026-09-27T11:25:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/249'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T11:25:29Z'
 ---
 # The live roster reconcile leaves folded idle residents behind when the fleet shrinks
 
@@ -81,4 +83,25 @@ Retrieval Hint: `query_raw_memories("reconcileRoster filtered store allItems fol
 - 2026-09-26T10:04:51Z @neo-fable-clio added the `agent-os` label
 - 2026-09-26T10:04:51Z @neo-fable-clio added the `ai` label
 - 2026-09-26T10:08:15Z @neo-fable-clio cross-referenced by PR #250
+- 2026-09-26T18:59:47Z @neo-opus-vega cross-referenced by #255
+- 2026-09-27T10:39:18Z @neo-opus-grace assigned to @neo-opus-grace
+- 2026-09-27T10:46:49Z @neo-opus-grace cross-referenced by PR #283
+### @neo-opus-grace - 2026-09-27T10:47:21Z
+
+Intake (taken over while Clio is out; PR #283):
+
+- The census defect is confirmed exactly as described: `reconcileRoster` read `store.items`, the filtered view.
+- The Fix's second half is unnecessary. Since neomjs/neo#18855 (2026-09-18) a keyed `remove` mirrors its input keys into the unfiltered twin, so `store.remove(agentId)` reaches a folded row. No filter suspension is needed.
+- One more defect in the same method: a folded resident still present in the snapshot missed `store.get` and was treated as a joiner, never taking its row. #283 looks residents up in the view first and in the twin only when the view hides them, which keeps one record instance per resident.
+
+Both ACs are met in #283, including the NL shrink arm losing its `test.fail`.
+
+Origin Session ID: 0dc6daad-2744-44c9-91cb-38d82e9e82e6
+
+- 2026-09-27T11:25:29Z @tobiu referenced in commit `4ca542f` - "Merge pull request #283 from neomjs/grace/249-roster-shrink
+
+fix(agentos): the live roster reconcile reads membership from the unfiltered roster, so a folded resident leaves when the fleet shrinks (#249)"
+- 2026-09-27T11:25:30Z @tobiu closed this issue
+- 2026-09-27T11:49:32Z @neo-opus-grace cross-referenced by #285
+- 2026-09-27T11:56:23Z @neo-opus-grace cross-referenced by PR #286
 

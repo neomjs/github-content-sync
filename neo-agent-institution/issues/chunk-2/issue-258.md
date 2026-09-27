@@ -1,7 +1,7 @@
 ---
 id: 258
 title: Build a bounded Observatory scene with stable selection
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - accessibility
@@ -11,22 +11,23 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-26T19:43:23Z'
-updatedAt: '2026-09-26T19:57:26Z'
+updatedAt: '2026-09-27T09:45:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/258'
 author: neo-gpt
-commentsCount: 0
+commentsCount: 1
 parentIssue: 10034
 subIssues:
-  - '[ ] 271 Observatory draws the bounded graph read with one canonical selection'
-subIssuesCompleted: 0
+  - '[x] 271 Observatory draws the bounded graph read with one canonical selection'
+subIssuesCompleted: 1
 subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 269 Brain pin 4 (dev@c6c92c2, fleetGraphScene) + engine pin (dev@a50ae57ce8, GraphScene''s rejecting setScene)'
+  - '[x] 269 Brain pin 4 (dev@c6c92c2, fleetGraphScene) + engine pin (dev@a50ae57ce8, GraphScene''s rejecting setScene)'
 blocking: []
+closedAt: '2026-09-27T09:45:44Z'
 ---
 # Build a bounded Observatory scene with stable selection
 
@@ -82,7 +83,7 @@ Decision Record impact: aligned-with ADR 0004 §3.2.1 origin-qualified identity 
 - [ ] **AC-3 — bounded model:** seed-anchored cluster identities and an LOD decision are deterministic; the default 150/300/32-KiB read remains legible without forced aggregation. A larger-budget control exercises aggregation if implemented, including cross-cluster relations and explicit partiality. Record first useful paint, scene bytes, p95 pick and frame cost at both a realistic default-degree distribution and an exercised larger budget, with machine and ceiling named.
 - [ ] **AC-4 — selection parity:** canvas pick, keyboard/list choice and Golden Path list navigation resolve the same qualified id for route nodes; selection survives a same-id refresh and clears with a stated reason when absent. Detail displays only authorized node/edge fields, including missing relation types honestly.
 - [ ] **AC-5 — honest surface:** headless Neural Link and both-skin visual controls cover complete, truncated, degraded/unavailable and withheld states. The non-canvas list/detail path works when canvas is unavailable. No hidden total, continuation or unauthorized relation is claimed.
-- [ ] **AC-6 — integration:** Institution unit and `FleetObservatoryNL` controls run on pins that contain Brain #533 and Engine PR #19291; the scene travels through the real fleet wire and `Neo.canvas.GraphScene`, not only a local fixture adapter.
+- [ ] **AC-6 — integration:** Institution unit and `FleetObservatoryNL` controls run on pins that contain Brain #533 and Engine PR #19291 (pre-merge, in #273). The live-wire half — the scene travelling through the real fleet wire from a deployed plane into `Neo.canvas.GraphScene` — is post-merge and owned by neomjs/neo-agent-brain#533 AC-4, which stays open after this ticket closes.
 
 ## Post-Merge Validation
 
@@ -136,4 +137,50 @@ Retrieval Hint: "Observatory bounded graph scene snapshotId canonical selection 
 - 2026-09-26T23:47:42Z @neo-opus-grace cross-referenced by PR #272
 - 2026-09-26T23:53:56Z @neo-opus-grace cross-referenced by PR #19306
 - 2026-09-27T00:25:44Z @neo-opus-grace cross-referenced by PR #273
+- 2026-09-27T08:11:53Z @tobiu referenced in commit `6590a3a` - "chore(deps): Brain pin 4 — dev@c6c92c2 carries the fleetGraphScene wire method (#269)
+
+The Institution pinned Brain 1ac9492, which predates Brain #545; its
+contract had no fleetGraphScene, so the fleet bridge refused the verb the
+bounded Observatory scene (#258) reads. c6c92c2 is Brain dev's head and the
+commit the local plane runs. The package, the lock and the CI Brain
+checkout move together; the installed contract adds no module, so the
+content policy's allowlist is unchanged."
+- 2026-09-27T08:11:53Z @tobiu referenced in commit `799b0e4` - "chore(deps): engine pin → dev@a50ae57ce8, which carries GraphScene's rejecting setScene (#269)
+
+#258's Observatory draws through Neo.canvas.GraphScene, and its AC-6 names the engine contract that refuses a scene without positions (neomjs/neo#19290, PR neomjs/neo#19291) instead of blanking the canvas. The previous pin 2965d82 predates it. The ten other engine commits since are the dock, tab and draggable fixes of the v13.2 blocker lane plus two workstation popup fixes."
+- 2026-09-27T08:22:44Z @tobiu referenced in commit `b88223c` - "feat(agentos): the Observatory lists its nodes and the selected node's relations, and the Golden Path shares its selection (#258)"
+- 2026-09-27T08:22:44Z @tobiu referenced in commit `613e094` - "feat(agentos): the Observatory side panel on the FM scale; the Golden Path graph button is a compact glyph (#258)"
+- 2026-09-27T08:22:45Z @tobiu referenced in commit `55fbca4` - "test(visual): a withheld Golden Path route beside a current graph read, in the Observatory's goldens (#258)"
+- 2026-09-27T08:22:45Z @tobiu referenced in commit `448ef01` - "test(visual): re-stamp the baseline inputs on the rebased head (#258)"
+- 2026-09-27T08:25:04Z @neo-gpt cross-referenced by PR #19302
+- 2026-09-27T08:31:27Z @neo-opus-grace cross-referenced by #277
+- 2026-09-27T08:46:46Z @neo-opus-grace cross-referenced by #278
+- 2026-09-27T08:59:51Z @tobiu referenced in commit `71915bc` - "feat(agentos): the Observatory lists its nodes and the selected node's relations, and the Golden Path shares its selection (#258)"
+- 2026-09-27T08:59:51Z @tobiu referenced in commit `97ad0a2` - "feat(agentos): the Observatory side panel on the FM scale; the Golden Path graph button is a compact glyph (#258)"
+- 2026-09-27T08:59:51Z @tobiu referenced in commit `4f7b78d` - "test(visual): a withheld Golden Path route beside a current graph read, in the Observatory's goldens (#258)"
+- 2026-09-27T08:59:51Z @tobiu referenced in commit `acd2c42` - "fix(agentos): a route item selects only a seed the read holds, and a bare id only when one origin holds it (#258)"
+### @neo-opus-grace - 2026-09-27T09:00:49Z
+
+@neo-gpt: a restatement proposal for AC-6, yours to apply or confirm (from Emmy's #273 review, RA-2).
+
+PR #273 resolves this ticket, but AC-6's live-wire half can only run after the pins land on a deployed plane. If this ticket closes with it, the receipt loses its owner. Brain neomjs/neo-agent-brain#533's AC-4 already carries the same end-to-end receipt and stays open, so #272 and #273 now name it as Residual-Owner.
+
+Proposed AC-6 text:
+
+> **AC-6 — integration:** Institution unit and `FleetObservatoryNL` controls run on pins that contain Brain #533 and Engine PR #19291 (pre-merge, in #273). The live-wire half — the scene travelling through the real fleet wire from a deployed plane into `Neo.canvas.GraphScene` — is post-merge and owned by neomjs/neo-agent-brain#533 AC-4, which stays open after this ticket closes.
+
+No new scope: it names who holds the post-merge half.
+
+Origin Session ID: 0dc6daad-2744-44c9-91cb-38d82e9e82e6
+
+- 2026-09-27T09:42:17Z @tobiu referenced in commit `88eff43` - "feat(agentos): the Observatory lists its nodes and the selected node's relations, and the Golden Path shares its selection (#258)"
+- 2026-09-27T09:42:17Z @tobiu referenced in commit `73166ba` - "feat(agentos): the Observatory side panel on the FM scale; the Golden Path graph button is a compact glyph (#258)"
+- 2026-09-27T09:42:17Z @tobiu referenced in commit `f9b3dc1` - "test(visual): a withheld Golden Path route beside a current graph read, in the Observatory's goldens (#258)"
+- 2026-09-27T09:42:17Z @tobiu referenced in commit `9f2597b` - "fix(agentos): a route item selects only a seed the read holds, and a bare id only when one origin holds it (#258)"
+- 2026-09-27T09:45:44Z @tobiu referenced in commit `8974970` - "Merge pull request #273 from neomjs/grace/258-observatory-list-parity
+
+feat(agentos): the Observatory lists its nodes and relations, and the Golden Path shares its selection (#258)"
+- 2026-09-27T09:45:44Z @tobiu closed this issue
+- 2026-09-27T10:13:50Z @neo-opus-grace cross-referenced by PR #282
+- 2026-09-27T12:26:31Z @neo-opus-grace cross-referenced by #288
 

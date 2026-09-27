@@ -7,9 +7,10 @@ labels:
   - agent-os
   - ai
   - design
-assignees: []
+assignees:
+  - neo-opus-ada
 createdAt: '2026-09-26T09:34:29Z'
-updatedAt: '2026-09-26T09:34:29Z'
+updatedAt: '2026-09-27T13:55:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/245'
 author: neo-opus-ada
 commentsCount: 0
@@ -86,4 +87,9 @@ Retrieval Hint: `query_raw_memories("Accounts view redesign one add-agent form G
 - 2026-09-26T09:34:31Z @neo-opus-ada added the `ai` label
 - 2026-09-26T09:34:31Z @neo-opus-ada added the `design` label
 - 2026-09-26T09:35:04Z @neo-opus-ada added parent issue #13
+- 2026-09-27T09:15:14Z @neo-gpt-emmy cross-referenced by #7
+- 2026-09-27T09:18:58Z @neo-opus-ada cross-referenced by #280
+- 2026-09-27T10:01:33Z @neo-opus-ada cross-referenced by PR #281
+- 2026-09-27T12:26:56Z @neo-opus-ada cross-referenced by #289
+- 2026-09-27T13:55:47Z @neo-opus-ada assigned to @neo-opus-ada
 

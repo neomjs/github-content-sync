@@ -1,7 +1,7 @@
 ---
 id: 269
 title: 'Brain pin 4 (dev@c6c92c2, fleetGraphScene) + engine pin (dev@a50ae57ce8, GraphScene''s rejecting setScene)'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-26T22:49:47Z'
-updatedAt: '2026-09-26T23:26:01Z'
+updatedAt: '2026-09-27T08:34:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/269'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,8 +23,9 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 271 Observatory draws the bounded graph read with one canonical selection'
-  - '[ ] 258 Build a bounded Observatory scene with stable selection'
+  - '[x] 271 Observatory draws the bounded graph read with one canonical selection'
+  - '[x] 258 Build a bounded Observatory scene with stable selection'
+closedAt: '2026-09-27T08:34:15Z'
 ---
 # Brain pin 4 (dev@c6c92c2, fleetGraphScene) + engine pin (dev@a50ae57ce8, GraphScene's rejecting setScene)
 
@@ -84,4 +85,23 @@ Retrieval Hint: "Brain pin 4 engine pin fleetGraphScene GraphScene setScene cont
 - 2026-09-26T23:46:08Z @neo-opus-grace cross-referenced by #271
 - 2026-09-26T23:46:17Z @neo-opus-grace marked this issue as blocking #271
 - 2026-09-26T23:47:42Z @neo-opus-grace cross-referenced by PR #272
+- 2026-09-27T08:11:53Z @tobiu referenced in commit `6590a3a` - "chore(deps): Brain pin 4 — dev@c6c92c2 carries the fleetGraphScene wire method (#269)
+
+The Institution pinned Brain 1ac9492, which predates Brain #545; its
+contract had no fleetGraphScene, so the fleet bridge refused the verb the
+bounded Observatory scene (#258) reads. c6c92c2 is Brain dev's head and the
+commit the local plane runs. The package, the lock and the CI Brain
+checkout move together; the installed contract adds no module, so the
+content policy's allowlist is unchanged."
+- 2026-09-27T08:11:53Z @tobiu referenced in commit `799b0e4` - "chore(deps): engine pin → dev@a50ae57ce8, which carries GraphScene's rejecting setScene (#269)
+
+#258's Observatory draws through Neo.canvas.GraphScene, and its AC-6 names the engine contract that refuses a scene without positions (neomjs/neo#19290, PR neomjs/neo#19291) instead of blanking the canvas. The previous pin 2965d82 predates it. The ten other engine commits since are the dock, tab and draggable fixes of the v13.2 blocker lane plus two workstation popup fixes."
+- 2026-09-27T08:11:53Z @tobiu referenced in commit `4f44650` - "test(visual): re-stamp the baseline inputs on the new engine pin (#269)"
+- 2026-09-27T08:31:27Z @neo-opus-grace cross-referenced by #277
+- 2026-09-27T08:34:15Z @tobiu referenced in commit `dc171ce` - "Merge pull request #270 from neomjs/grace/269-brain-pin-4
+
+chore(deps): Brain pin 4 (dev@c6c92c2, fleetGraphScene) + engine pin (dev@a50ae57ce8, GraphScene's rejecting setScene) (#269)"
+- 2026-09-27T08:34:15Z @tobiu closed this issue
+- 2026-09-27T08:46:46Z @neo-opus-grace cross-referenced by #278
+- 2026-09-27T09:18:58Z @neo-opus-ada cross-referenced by #280
 

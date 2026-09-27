@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-09-26T23:11:52Z'
+updatedAt: '2026-09-27T13:24:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
-commentsCount: 54
+commentsCount: 58
 parentIssue: null
 subIssues:
   - '[x] 16577 A zero-chunk materialization is rejected, then backs off forever'
@@ -170,6 +170,11 @@ Each repo has a revision, and the incremental path cannot establish a diff bound
   The coverage boundary from #411 AC-5 stands while these are read: frozen `neo`-owned conversation rows coexist with fresh corpus-owned ones until #417.
 - [ ] **AC-7 — the deployed stop's live receipt (re-homed from #237's last AC on 2026-09-23, when its only specimen recovered by input change before the stop could run).** The first tenant entry on this plane that reaches `KB_INGEST_ENVELOPE_REF_NOT_FOUND` with `accessReadiness: ready` reports `status: stopped-unresolvable-ref` with its `unresolvedRef`, and its `consecutiveFailures` does not advance on the following sweep. No synthetic specimen is made for this: a `branchRef` mutation on the shared plane's config is operator-owned, and the operator may elect one. Until a specimen exists, the arm's evidence is PR #238's envelope-stage ref-not-found → `stopped-unresolvable-ref` + `terminalStop` arm (L3).
 - [ ] **AC-8 — the PR bird view's per-origin receipt (residual owner for neomjs/neo-agent-brain#558 / PR #560 AC-1's L4 arm; re-homed here 2026-09-27 at the Round-1 reviewer's request).** On the local plane after the post-merge recreate: `explore_pull_request_history({preset: 'weekly', origin: 'neomjs/neo-agent-brain'})` and the same call with `origin: 'neomjs/nowhere'`, both recorded here with their timestamps. **Precondition, measured 2026-09-26 22:0xZ:** the mc-server container has no corpus content root — `fleet.contentRoot` defaults to `/app/resources/content`, absent there, and the plane's only `_index.json` is the orchestrator's single-origin materialized root (`orchestrator-daemon/core-corpus-materialized`) — so until the multi-origin corpus is reachable from mc-server the first call refuses with `unknown-origin` as designed; that refusal plus the configured-origin call is the receipt available today, and the positive receipt lands once the mount exists (an operator decision on the plane's compose, not taken by this epic).
+- [ ] **AC-9 — the container probe cadence receipt (residual owner for neomjs/neo-agent-brain#568 / PR #570 AC-3; re-homed here 2026-09-27 at the Round-1 reviewer's request).** One hour on the recreated plane with the cockpit open and the seats active: (a) the Docker event stream shows the mc-server probe (`exec_create` of `mcpHealthcheck.mjs`) executing 100–125 times, each inside its 15 s timeout — about 330 per hour at the 10 s cadence (~270 of the 353 `healthcheck` calls in the 49-minute baseline, comment 5854182787); (b) `get_memory_core_tool_metrics` counts `healthcheck` below 250 for the hour with the same seats and cockpit (the baseline's non-probe callers were ~100 per hour) and its per-call average below the baseline's 1.07 s; (c) no container flips to `unhealthy` through a REM run. Recorded here with timestamps.
+- [ ] **AC-10 — the mailbox read-path receipt (residual owner for neomjs/neo-agent-brain#563 / PR #564 AC-3; re-homed here 2026-09-27 at the Round-1 reviewer's request).** `get_memory_core_tool_metrics` over one cockpit hour on the recreated plane shows `list_messages` averaging below 300 ms (2,744 ms on 2026-09-26) with the same callers. Recorded here with timestamps.
+- [x] **AC-11 — the death channel's first positive receipt (residual owner for neomjs/neo-agent-brain#567 / PR #569 AC-3; re-homed here 2026-09-27 at the Round-1 reviewer's request).** After the recreate every service's `deathRead.status` reads `available` in the deployment snapshot, one deliberate `docker kill -s KILL` of fleet-server appears in the snapshot's fleet-server `deaths` with `exitCode: 137`, and each server's `healthcheck.lastDeath` carries that server's own last death (`selectLastServiceDeath(…, serviceKey)` — the AC first named the MC healthcheck as the reader of a fleet-server death; corrected with the receipt). **Met 2026-09-27 on the 46ab45f cut:** every service `available / docker-events` from 11:08:25Z; fleet-server `{at: 11:10:47.754Z, exitCode: 137}` in the 11:11:37Z snapshot; MC `lastDeath.record {at: 11:08:04.076Z, exitCode: 137}` at 11:11:53Z. Receipt comment below.
+- [ ] **AC-12 — the receipt of a landed receipt write (residual owner for neomjs/neo-agent-brain#578 / PR #580 AC-3; re-homed here 2026-09-27).** On the first recreated mc-server carrying #580, the first `mark_read` answers `status: 'read'` (today's 230593f cut answered `not_applied … no longer present in storage` for its first three, 13:07–13:09Z, while the writes landed). Recorded here with timestamps.
+  AC-9 to AC-12 ride the plane cuts as they come; comment 5854871745 is their ledger.
 
 ## Out of scope
 
@@ -186,6 +191,9 @@ neomjs/neo#16551 (reporting overlap) · neomjs/neo-agent-brain#65 (mirror cost) 
 Origin Session ID: `4141258c-36d3-4788-b0c2-ab3ebe0867be`
 
 Retrieval Hint: `query_raw_memories("tenant-repo-sync starved behind heavy maintenance while REM undigested grows")` · `TenantRepoSyncService.mjs:1162` · the `04:49:54Z` deferral line.
+
+
+
 
 
 ## Timeline
@@ -2634,4 +2642,124 @@ The serving verdict says the server serves; the backup axis says what the operat
 
 - 2026-09-26T22:06:46Z @neo-opus-vega cross-referenced by #558
 - 2026-09-26T23:17:01Z @neo-opus-vega cross-referenced by #459
+### @neo-opus-vega - 2026-09-27T08:24:36Z
+
+## Plane recreate on Brain dev `4bc885b` (#560 merged, #558 closed) — 2026-09-27 08:21–08:22Z, with mc-server's heap cap raised after the 07:24Z OOM
+
+Deploy home at `4bc885b284e93559211b9ae1ac5aa5e253764542`; `package.json` / `package-lock.json` unchanged from `c6c92c2`, so no `npm ci`; no host process was running from the deploy home. Four images built with `NEO_REVISION=4bc885b…` (the first build, without it, was refused by the Dockerfile's mutable-ref gate — the pin is a build-time environment variable, not the checkout), `up -d` with the three profiles, the cut fragment unchanged.
+
+| Check | Result |
+|---|---|
+| mc-server / kb-server / fleet-server | healthy 24 s after `up -d` (08:21:29Z) |
+| orchestrator | healthy at 08:22:40Z |
+| image label · `deployedRevision` | `4bc885b…` · `4bc885b…` |
+| healthcheck | `status: healthy`, `posture: attention`, backup advisory unchanged (`off-host-durability-unmet`, `backup-retry-exhausted`, `backup-state-conflict`), WAL drain caught up, memories 41,826 |
+| rem-runs · bridge | 201 (200 yesterday) · 127.0.0.1:8081 listening |
+| mc-server command · cgroup | `node --max-old-space-size=1536` · 2684354560 (2560m) |
+
+**Incident.** mc-server's Node process aborted at 2026-09-27T07:24:28Z, 9.7 h after the 21:41Z recreate, with `FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory` on the compose default `--max-old-space-size=768`; the last GC lines read 698–733 MB of heap at `average mu = 0.305`. Docker's `unless-stopped` policy restarted the container at 07:24:29Z (`RestartCount 1`, `OOMKilled false`, exit code 0 as seen by the cgroup). Volumes were untouched. A `docker stats` sample every 45 s from 08:13:55Z to 08:19:18Z on the restarted 768 MB process:
+
+| time | RSS | CPU |
+|---|---|---|
+| 08:13:55 | 701 MiB | 98 % |
+| 08:14:41 | 735 MiB | 100 % |
+| 08:15:27 | 703 MiB | 100 % |
+| 08:16:13 | 736 MiB | 67 % |
+| 08:16:59 | 813 MiB | 62 % |
+| 08:17:45 | 737 MiB | 95 % |
+| 08:18:32 | 709 MiB | 97 % |
+| 08:19:18 | 719 MiB | 77 % |
+
+The V8 snapshot in `heap-observation/mc-server.json` at 08:14Z read ~371 MB old space + 60 MB large objects, i.e. the process sat at the cap's GC-bound plateau within 50 minutes of boot. Load in that window: `healthcheck` 353 calls / 49 min (avg 1.07 s, max 31.6 s), `list_messages` 78 (avg 3.26 s, #563), REM tri-vector and topology stages running.
+
+**Decision (plane sizing).** `NEO_MC_SERVER_HEAP_MB=1536`, `NEO_MC_SERVER_MEMORY_LIMIT=2560m` in `~/.neo-ai/config/local-agent-os.env`, rationale recorded beside the lines. Arithmetic: RSS 680 MiB with ~450 MB of heap gives ~230 MB native; the in-cgroup `mcpHealthcheck.mjs` probe is a second Node process; 1536 + 230 + ~80 leaves ~700 MB under 2560m, so a heap OOM stays a V8 abort with a GC trace rather than a cgroup kill without one. First minute on the new cap: 700 MiB RSS at 66 % with a REM call in flight; a later sample here says whether the plateau is gone.
+
+**#560 post-merge:** deployed; its positive L4 receipt (a non-configured origin served from the corpus catalog) still waits on the corpus content roots being mounted into mc-server (AC-8).
+
+**Observed for tickets (not yet filed):**
+1. `healthcheck.lastDeath` read `{status: 'available', record: null}` after the abort — the death record does not capture a V8 OOM exit.
+2. The container health probe runs the full `healthcheck` tool every 10 s (`interval: 10s` in `deploy/cloud/docker-compose.yml`): ~270 of the 353 calls above, and three of them took 63–83 s during the 08:14–08:15Z boot window.
+3. The abort wrote a 1.1 GB `core` into the container's writable layer (`ulimit -c` unlimited in the image); it went with the layer on this recreate.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+- 2026-09-27T08:44:31Z @neo-opus-vega cross-referenced by PR #564
+- 2026-09-27T09:30:11Z @neo-opus-vega cross-referenced by #567
+- 2026-09-27T09:30:37Z @neo-opus-vega cross-referenced by #568
+- 2026-09-27T09:37:31Z @neo-opus-vega cross-referenced by PR #569
+- 2026-09-27T09:44:18Z @neo-opus-vega cross-referenced by PR #570
+### @neo-opus-vega - 2026-09-27T09:50:58Z
+
+## AC-8 receipt on the recreated plane (Brain `4bc885b`, 2026-09-27 09:48Z), and the first hour of mc-server on its new heap cap
+
+**AC-8 — `explore_pull_request_history` per origin.** A fresh StreamableHTTP session against the ingress (the harness's own Memory Core client still advertises the pre-recreate tool list and drops `origin` silently — a client-side fact, not the plane's). The recreated plane advertises `origin`; three calls at 09:48:48Z:
+
+| call | answer |
+|---|---|
+| `{preset: 'weekly', origin: 'neomjs/nowhere'}` | refused in 29 ms: `PullRequestHistoryService: unknown-origin "neomjs/nowhere" — not a corpus origin under /app/resources/content` |
+| `{preset: 'weekly', origin: 'neomjs/neo-agent-brain'}` | refused in 25 ms with the same text — the precondition recorded on this AC holds: mc-server mounts no corpus root, so the catalog admits nothing beyond the configured repository |
+| `{preset: 'weekly', origin: 'neomjs/neo'}` (the configured origin) | served, `partition: repository:neomjs/neo:all_resolved`, `coverage.degraded: true`, `degradedReason: retrieval-failed: Could not authenticate with GitHub. Set GH_TOKEN or GITHUB_TOKEN…` |
+
+So the refusal half of AC-8 is met as designed, the positive half still waits on the corpus mount, and a third fact fell out: the mc-server container carries no GitHub token, so the bird view's live half degrades on this plane for every window (defect-noted, fingerprint `09f4632431f03648`; which token the plane should hold is an operator-credential decision).
+
+**mc-server on `--max-old-space-size=1536` under 2560m**, `docker stats` every five minutes from 08:51:55Z (the recreate was 08:21Z):
+
+| time | RSS | CPU |
+|---|---|---|
+| 08:51 | 845 MiB | 99 % |
+| 08:56 | 949 MiB | 82 % |
+| 09:01 | 987 MiB | 84 % |
+| 09:06 | 1.09 GiB | 80 % |
+| 09:12 | 1.02 GiB | 87 % |
+| 09:17 | 1.12 GiB | 70 % |
+| 09:22 | 1.20 GiB | 73 % |
+| 09:27 | 1.10 GiB | 86 % |
+| 09:32 | 686 MiB | 99 % |
+| 09:37 | 1.08 GiB | 95 % |
+| 09:42 | 802 MiB | 89 % |
+| 09:47 | 911 MiB | 98 % |
+
+A sawtooth between 0.7 and 1.2 GiB under the new cap, not a climb: the working set wanted more than the old 768 MB heap (it sat GC-bound at 700–813 MiB there), and with room it collects back. CPU stays at 70–99 % of a core with the REM tri-vector and topology stages running through the hour; #570 (the probe cadence) and #564 (the mailbox page) are the two known reductions, #73 owns the ceiling proof. No further sizing change from me on this evidence.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-09-27T10:01:16Z
+
+## Owner ledger — post-merge validations re-homed on this epic (2026-09-27)
+
+Each row is an obligation this epic carries for a ticket that closes at its PR's merge (body AC-9 to AC-12); the receipt lands here, and the row is struck when it does.
+
+| Closing ticket · PR | Epic AC | Post-merge validation | Receipt |
+|---|---|---|---|
+| #563 · PR #564 | AC-10 | `get_memory_core_tool_metrics` over one cockpit hour on the recreated plane shows `list_messages` avg below 300 ms (from 2,744 ms on 2026-09-26) with the same callers | the hour runs 13:06–14:06Z on the 230593f cut |
+| ~~#567 · PR #569~~ | AC-11 | after the recreate, every service's `deathRead.status` reads `available` in the deployment snapshot, one deliberate `docker kill -s KILL` of fleet-server appears in the snapshot's fleet-server deaths with `exitCode: 137`, and each server's `healthcheck.lastDeath` carries its own last death | **met** on the 46ab45f cut (11:08–11:12Z) — comment 5855324234 |
+| #568 · PR #570 | AC-9 | one hour on the recreated plane with the cockpit open and the seats active: (a) the mc-server probe executes 100–125 times, each inside its 15 s timeout; (b) `healthcheck` below 250 for the hour with the same seats and cockpit and its per-call average below the baseline's 1.07 s; (c) no container flips to `unhealthy` through a REM run | (a) met (a probe every ~31 s), (b) count met (≈227/h), **average NOT met** (2.33 s, max 126 s — the wrapper's own composition under REM load), (c) met; one 8 s probe self-timeout at 13:03:26Z → #579 · receipt with the 230593f cut's comment |
+| #578 · PR #580 | AC-12 | the first `mark_read` on the first recreated mc-server carrying #580 answers `status: 'read'` | open — waits for #580's merge and cut |
+
+#569 and #570 rode one recreate (46ab45f, 11:08Z); #564 the next (230593f, 13:06Z); #580 the one after. The #568 row's earlier target, "below 80 calls", could not be met by a healthy 30 s probe — corrected on PR #570 R1, @neo-gpt.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+- 2026-09-27T10:44:08Z @neo-opus-vega cross-referenced by #563
+### @neo-opus-vega - 2026-09-27T11:12:49Z
+
+## Cut receipt — the plane on Brain `46ab45f` (2026-09-27 11:08Z): #570 + #569 deployed, the death channel's first records, and a second mc-server OOM
+
+**The cut.** Images built and labelled `org.opencontainers.image.revision=46ab45f842cd16392412d8dc1580ea44abd8cc4b`; `up -d` at 11:07:52Z, the four Brain services healthy at 11:08:27Z (orchestrator, mc-server, kb-server, fleet-server recreated; ingress and chroma untouched). State stayed in the plane-root and shared volumes; nothing was copied. mc-server's 2 GB `core` dump from the 10:39Z abort went with the old writable layer.
+
+**Why the heap moved again (sizing, mine).** mc-server aborted a second time at 10:39Z — `FATAL ERROR: Reached heap limit Allocation failed`, Mark-Compact `1532.2 → 1533.2 MB` at mu 0.25 — i.e. AT the 1536 MB heap set after the 07:24Z abort, 2.3 h after the recreate, with the pre-#564 mailbox walk (`list_messages` avg 4.7 s over 24 h, max 92 s; `healthcheck` avg 4.2 s, max 366 s, 26,528 calls) and REM on the same loop. This cut runs `--max-old-space-size=2048` under a 3 GiB cgroup (`HostConfig.Memory` 3221225472); #564 removes the walk, #73 owns the ceiling proof. Same arithmetic as this morning: 2048 + ~250 MB native + ~80 MB probe + headroom.
+
+**AC-9 (#568 / PR #570) — the configuration half.** Both MCP-probed containers read `Interval 30s / Timeout 15s / Retries 4` (`docker inspect`); the one-hour measurement starts at 11:08Z and lands here as its own comment (probe executions from the Docker event stream, `healthcheck` count and average from `get_memory_core_tool_metrics`, no `unhealthy` flip through a REM run).
+
+**AC-11 (#567 / PR #569) — met, with one noun corrected.** Every service's `deathRead` reads `{status: 'available', source: 'docker-events'}` in the snapshot (11:08:25Z and after), against `unavailable / runtime-access-error` on every cycle before the cut. The channel's first records on this plane are the recreate's own stops (kb-server and mc-server `exitCode 137` at 11:08:04Z — compose's SIGKILL after its stop grace; fleet-server and orchestrator `exitCode 0`), and the deliberate `docker kill -s KILL` of fleet-server at 11:10:47Z appears in the snapshot's fleet-server entry as `{at: 2026-09-27T11:10:47.754Z, exitCode: 137, oomKilled: false}` (generatedAt 11:11:37Z); Docker restarted it, healthy again at 11:11:23Z. The MC `healthcheck` at 11:11:53Z reads `lastDeath: {status: 'available', record: {at: 2026-09-27T11:08:04.076Z, exitCode: 137, oomKilled: false}}` — mc-server's OWN last death, because each server's `lastDeath` is its own service's (`selectLastServiceDeath(…, serviceKey)`), not the plane's. The AC's "appears in `lastDeath.record` on the next healthcheck" named the wrong reader for a fleet-server death; the body's AC-11 now says where each reading lives. Substance unchanged: a failed read no longer says "no death", and a real death is carried.
+
+**Still owed here:** AC-9's hour (12:08Z+), AC-10 after #564's own cut.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+- 2026-09-27T13:15:20Z @neo-opus-vega cross-referenced by #578
+- 2026-09-27T13:16:31Z @neo-opus-vega cross-referenced by #579
+- 2026-09-27T13:23:21Z @neo-opus-vega cross-referenced by PR #580
 

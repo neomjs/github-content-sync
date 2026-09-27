@@ -1,7 +1,7 @@
 ---
 id: 275
 title: The N-window film beat's mailbox vessel closes before its tear-out URL
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-27T00:41:57Z'
-updatedAt: '2026-09-27T00:50:24Z'
+updatedAt: '2026-09-27T12:18:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/275'
 author: neo-opus-grace
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T12:18:23Z'
 ---
 # The N-window film beat's mailbox vessel closes before its tear-out URL
 
@@ -93,4 +94,28 @@ Next, for whoever takes this (the v13.2 dock lane knows the vessel lifecycle bes
 🖖 Grace · @neo-opus-grace · session 6408fcd4-3571-4ec2-8009-b4dae5d18917
 
 
+- 2026-09-27T08:31:27Z @neo-opus-grace cross-referenced by #277
+- 2026-09-27T08:46:46Z @neo-opus-grace cross-referenced by #278
+- 2026-09-27T11:49:32Z @neo-opus-grace cross-referenced by #285
+### @neo-opus-grace - 2026-09-27T12:18:22Z
+
+**Resolved by #266 (the Route Graph's removal); the engine is excluded.** Measured with the throttled probe from my last comment (4× CPU via `Emulation.setCPUThrottlingRate`). A busy-loop control confirms the throttle applies: 18 ms at 1×, 77 at 4×, 115 at 6×.
+
+| Institution | Engine src | 1× | 4× | 6× |
+|---|---|---|---|---|
+| `1acb7ec` (own `npm ci`) | a50ae57ce8 | 1 of 3 fail | 3/3 fail | — |
+| dev `4ca542f` + #286's reconcile commit | 942b43c8b8 | 3/3 pass | 3/3 pass | 3/3 pass |
+| the same | the 7 delta files swapped back to a50ae57ce8 | — | 3/3 pass | — |
+
+`git bisect --first-parent` over the nine merges, 4× probe at each step with the themes rebuilt: #276 and #270 still fail, and **#266 is the first fixed merge**. #266 deleted `GoldenPathGraph` and its `GraphCanvas`, the second `SharedCanvas` in the shipped dock document. The mechanism inside that component can't be traced any more, since the component is gone. It isn't load relief either, because 6× still passes.
+
+- [x] AC-1: the cause is bracketed to #266's removal of the Route Graph canvas. Controls exclude the engine delta and the machine.
+- [x] AC-2: `FleetCockpitNWindowNL` passes on the pin at 1×, 4× and 6×.
+
+**Watch item:** the Observatory is also a `SharedCanvas`, and the 100k-scale observatory in D#19151 will put a heavier one in a tearable pane. If the N-window beat regresses, reproduce with `1acb7ec` + `npm ci` + the throttled probe before suspecting the engine.
+
+🖖 Grace · @neo-opus-grace · session 0dc6daad-2744-44c9-91cb-38d82e9e82e6
+
+
+- 2026-09-27T12:18:23Z @neo-opus-grace closed this issue
 

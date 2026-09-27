@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-26T22:28:50Z'
-updatedAt: '2026-09-26T22:48:07Z'
+updatedAt: '2026-09-27T13:55:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/267'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 2
 parentIssue: 10
 subIssues: []
 subIssuesCompleted: 0
@@ -79,4 +79,92 @@ Retrieval Hint: "keeper nav icons tooltips right rail chip distinguishable items
 - 2026-09-26T22:28:59Z @neo-opus-grace added parent issue #10
 - 2026-09-26T22:45:54Z @neo-opus-grace cross-referenced by PR #268
 - 2026-09-26T22:49:48Z @neo-opus-grace cross-referenced by #269
+- 2026-09-27T08:18:09Z @tobiu referenced in commit `d3cce68` - "feat(agentos): the keeper nav shows icons with tooltips, and each right-rail item is its own chip (#267)
+
+The operator's #10 corrections: the left nav was overloaded, and on the right
+rail the gap between items read like the word space inside a label, so
+nobody could count the items without hovering.
+
+The keeper nav keeps its six destinations, routes and order; its glyphs
+stand upright at the icon scale, each button carries its label as a
+tooltip, and the label stays the accessible name, hidden visually only. The
+right rail's tabs rest on the panel ground, so the engine's 2px gap reads as
+cockpit ground between chips; hover lifts to panel-2 and the revealed tab
+to the line tone with the signal ink, three grounds for three states."
+- 2026-09-27T08:18:10Z @tobiu referenced in commit `9ee41da` - "test(visual): the icon-rail arm and the cockpit goldens with the new nav and rail (#267)
+
+The new arm pins the keeper nav's contract in a real browser: each of the six
+tabs keeps its label as its accessible name, the label is clipped rather
+than removed, and hovering Observatory shows its tooltip (dropping that
+tooltip turns the arm red). Seven cockpit goldens re-recorded with
+--update-snapshots=all show the chipped right rail; system-view,
+accounts-config-surface and the two Observatory goldens also re-rendered
+with drift unrelated to this change and were left as they were. Stamp
+refreshed."
+- 2026-09-27T08:18:10Z @tobiu referenced in commit `0d71939` - "test(visual): re-stamp the baseline inputs on the rebased head (#267)"
+- 2026-09-27T08:31:27Z @neo-opus-grace cross-referenced by #277
+- 2026-09-27T08:42:55Z @tobiu referenced in commit `5b0fba0` - "feat(agentos): the keeper nav shows icons with tooltips, and each right-rail item is its own chip (#267)
+
+The operator's #10 corrections: the left nav was overloaded, and on the right
+rail the gap between items read like the word space inside a label, so
+nobody could count the items without hovering.
+
+The keeper nav keeps its six destinations, routes and order; its glyphs
+stand upright at the icon scale, each button carries its label as a
+tooltip, and the label stays the accessible name, hidden visually only. The
+right rail's tabs rest on the panel ground, so the engine's 2px gap reads as
+cockpit ground between chips; hover lifts to panel-2 and the revealed tab
+to the line tone with the signal ink, three grounds for three states."
+- 2026-09-27T08:42:55Z @tobiu referenced in commit `72ac604` - "test(visual): the icon-rail arm and the cockpit goldens with the new nav and rail (#267)
+
+The new arm pins the keeper nav's contract in a real browser: each of the six
+tabs keeps its label as its accessible name, the label is clipped rather
+than removed, and hovering Observatory shows its tooltip (dropping that
+tooltip turns the arm red). Seven cockpit goldens re-recorded with
+--update-snapshots=all show the chipped right rail; system-view,
+accounts-config-surface and the two Observatory goldens also re-rendered
+with drift unrelated to this change and were left as they were. Stamp
+refreshed."
+- 2026-09-27T08:42:55Z @tobiu referenced in commit `3abb199` - "test(visual): re-stamp the baseline inputs on the rebased head (#267)"
+- 2026-09-27T08:46:46Z @neo-opus-grace cross-referenced by #278
+- 2026-09-27T09:47:25Z @tobiu referenced in commit `9ac9ca7` - "feat(agentos): the keeper nav shows icons with tooltips, and each right-rail item is its own chip (#267)
+
+The operator's #10 corrections: the left nav was overloaded, and on the right
+rail the gap between items read like the word space inside a label, so
+nobody could count the items without hovering.
+
+The keeper nav keeps its six destinations, routes and order; its glyphs
+stand upright at the icon scale, each button carries its label as a
+tooltip, and the label stays the accessible name, hidden visually only. The
+right rail's tabs rest on the panel ground, so the engine's 2px gap reads as
+cockpit ground between chips; hover lifts to panel-2 and the revealed tab
+to the line tone with the signal ink, three grounds for three states."
+- 2026-09-27T09:47:26Z @tobiu referenced in commit `89d7083` - "test(visual): the icon-rail arm and the cockpit goldens with the new nav and rail (#267)
+
+The new arm pins the keeper nav's contract in a real browser: each of the six
+tabs keeps its label as its accessible name, the label is clipped rather
+than removed, and hovering Observatory shows its tooltip (dropping that
+tooltip turns the arm red). Seven cockpit goldens re-recorded with
+--update-snapshots=all show the chipped right rail; system-view,
+accounts-config-surface and the two Observatory goldens also re-rendered
+with drift unrelated to this change and were left as they were. Stamp
+refreshed."
+- 2026-09-27T10:11:01Z @tobiu referenced in commit `aa58919` - "Merge pull request #268 from neomjs/grace/267-nav-icons-rail-chips
+
+feat(agentos): the keeper nav shows icons with tooltips, and each right-rail item is its own chip (#267)"
+- 2026-09-27T10:11:01Z @tobiu closed this issue
+- 2026-09-27T13:48:37Z @neo-preview cross-referenced by PR #292
+### @neo-opus-grace - 2026-09-27T13:51:00Z
+
+Reopened by its author on the operator's correction (2026-09-27): the icons were right, but the keeper nav kept the engine's tab strip, a thin signal line along the rail's right edge, as its only active cue. The active icon itself gets a pressed state instead: the strip and the per-button indicator go, and the pressed button takes FM's signal-emphasis tile (the submit button's signal-tinted fill and ring, signal glyph). Fix follows in one PR under this ticket.
+
+- 2026-09-27T13:51:01Z @neo-opus-grace reopened this issue
+- 2026-09-27T13:52:46Z @neo-opus-vega cross-referenced by #294
+### @neo-opus-vega - 2026-09-27T13:55:06Z
+
+Measured on dev `635afe7` (engine pin `942b43c8b8`), FM dev preview at 800×600, before PR #295: the keeper rail is 48 px wide, its six buttons 48×40 with `background: transparent` in every state; the active button (`pressed`) differs only by glyph ink; a `neo-tab-strip` (2 px, the engine's `tab.Strip`) runs down the rail's right edge at x = 48 with a 0-height `neo-active-tab-indicator`. So the strip and the glyph ink were the only marks of the active place — the operator's "kept the tab strip at the right side". Ported from my #294 (closed as this ticket's duplicate; the fix is #295).
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
 

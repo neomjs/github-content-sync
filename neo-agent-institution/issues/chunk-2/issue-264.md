@@ -1,7 +1,7 @@
 ---
 id: 264
 title: Remove the bottom Route graph pane; the Observatory keeps the route picture
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-26T22:06:45Z'
-updatedAt: '2026-09-26T22:06:45Z'
+updatedAt: '2026-09-27T09:31:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/264'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T09:31:09Z'
 ---
 # Remove the bottom Route graph pane; the Observatory keeps the route picture
 
@@ -86,4 +87,66 @@ spec's partial host; that host has no catalog to retire against, so it now
 applies the restored document unchanged. The visual stamp follows the
 Container change; the goldens re-verified unchanged (17/17)."
 - 2026-09-26T22:45:54Z @neo-opus-grace cross-referenced by PR #268
+- 2026-09-27T08:16:32Z @tobiu referenced in commit `5897917` - "feat(agentos): the bottom Route graph pane leaves the cockpit, and a stored perspective naming it restores without it (#264)
+
+The operator ruled the south strip's Route graph tab out (#10); the
+Observatory draws the route going forward. The pane's catalog entry and
+stream-tabs slot go, with its view pair, the 2D canvas renderer, its layout
+util, its SCSS, its specs and its eight goldens.
+
+describeCurrency moves beside GoldenPathEnvelope.currency, so the
+Observatory's currency line reads as before (its arms move to the envelope
+spec). A stored perspective that still names the retired pane, such as a
+shared artifact exported before this change, restores without it:
+CockpitPerspectives.retireUndeclaredItems closes it out with the engine's
+closeItem semantics, so an emptied strip or split collapses."
+- 2026-09-27T08:16:32Z @tobiu referenced in commit `d4d2863` - "test(visual): the cockpit goldens re-recorded without the Route graph tab (#264)
+
+Seven cockpit goldens show the south strip, which lost its last tab; each
+was re-recorded with --update-snapshots=all and compared against its
+predecessor: the only change is the missing ROUTE GRAPH tab (and, at 314 px,
+the strip's overflow that follows from it). accounts-config-surface and
+system-view-cold also re-rendered with sub-tolerance drift unrelated to
+this change and were left as they were. The input stamp is refreshed."
+- 2026-09-27T08:16:32Z @tobiu referenced in commit `7df6e51` - "fix(agentos): a host without a pane catalog keeps every item when a capture applies (#264)
+
+The retirement read Object.keys(me.panes), which throws on the projection
+spec's partial host; that host has no catalog to retire against, so it now
+applies the restored document unchanged. The visual stamp follows the
+Container change; the goldens re-verified unchanged (17/17)."
+- 2026-09-27T08:16:32Z @tobiu referenced in commit `d81d626` - "test(visual): re-stamp the baseline inputs on the rebased head (#264)"
+- 2026-09-27T08:31:27Z @neo-opus-grace cross-referenced by #277
+- 2026-09-27T08:41:38Z @tobiu referenced in commit `a2c11d3` - "feat(agentos): the bottom Route graph pane leaves the cockpit, and a stored perspective naming it restores without it (#264)
+
+The operator ruled the south strip's Route graph tab out (#10); the
+Observatory draws the route going forward. The pane's catalog entry and
+stream-tabs slot go, with its view pair, the 2D canvas renderer, its layout
+util, its SCSS, its specs and its eight goldens.
+
+describeCurrency moves beside GoldenPathEnvelope.currency, so the
+Observatory's currency line reads as before (its arms move to the envelope
+spec). A stored perspective that still names the retired pane, such as a
+shared artifact exported before this change, restores without it:
+CockpitPerspectives.retireUndeclaredItems closes it out with the engine's
+closeItem semantics, so an emptied strip or split collapses."
+- 2026-09-27T08:41:38Z @tobiu referenced in commit `a66da68` - "test(visual): the cockpit goldens re-recorded without the Route graph tab (#264)
+
+Seven cockpit goldens show the south strip, which lost its last tab; each
+was re-recorded with --update-snapshots=all and compared against its
+predecessor: the only change is the missing ROUTE GRAPH tab (and, at 314 px,
+the strip's overflow that follows from it). accounts-config-surface and
+system-view-cold also re-rendered with sub-tolerance drift unrelated to
+this change and were left as they were. The input stamp is refreshed."
+- 2026-09-27T08:41:38Z @tobiu referenced in commit `7499334` - "fix(agentos): a host without a pane catalog keeps every item when a capture applies (#264)
+
+The retirement read Object.keys(me.panes), which throws on the projection
+spec's partial host; that host has no catalog to retire against, so it now
+applies the restored document unchanged. The visual stamp follows the
+Container change; the goldens re-verified unchanged (17/17)."
+- 2026-09-27T08:41:38Z @tobiu referenced in commit `c7e1fe3` - "test(visual): re-stamp the baseline inputs on the rebased head (#264)"
+- 2026-09-27T08:46:46Z @neo-opus-grace cross-referenced by #278
+- 2026-09-27T09:31:09Z @tobiu referenced in commit `03e6c43` - "Merge pull request #266 from neomjs/grace/264-remove-route-graph
+
+feat(agentos): the bottom Route graph pane leaves the cockpit, and a stored perspective naming it restores without it (#264)"
+- 2026-09-27T09:31:09Z @tobiu closed this issue
 

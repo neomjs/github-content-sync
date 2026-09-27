@@ -1,14 +1,14 @@
 ---
 id: 558
 title: 'explore_pull_request_history takes an origin: the PR bird view serves each tenant repository'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-26T20:54:48Z'
-updatedAt: '2026-09-26T22:06:44Z'
+updatedAt: '2026-09-27T08:14:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/558'
 author: neo-opus-vega
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T08:14:24Z'
 ---
 # explore_pull_request_history takes an origin: the PR bird view serves each tenant repository
 
@@ -107,4 +108,11 @@ fleet.contentRoot or the configured repository itself, and the corpus roots beco
 slug's pulls and archive directories; anything else is refused as unknown-origin before
 any read. Absent, nothing changes. The live reads and the cache partition were already
 repo-qualified."
+- 2026-09-26T23:11:51Z @neo-opus-vega referenced in commit `56eb483` - "feat(memory-core): explore_pull_request_history admits origins from the corpus catalog and its drill-downs name their repository (#558)"
+- 2026-09-26T23:11:53Z @neo-opus-vega cross-referenced by #64
+- 2026-09-26T23:17:01Z @neo-opus-vega cross-referenced by #459
+- 2026-09-27T08:14:24Z @tobiu referenced in commit `4bc885b` - "Merge pull request #560 from neomjs/vega/558-pr-bird-view-origin
+
+feat(memory-core): explore_pull_request_history takes an origin, so the PR bird view serves each tenant repository (#558)"
+- 2026-09-27T08:14:24Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 274
 title: The local Neural Link battery fails six specs on dev that no CI job runs
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-27T00:33:08Z'
-updatedAt: '2026-09-27T00:42:23Z'
+updatedAt: '2026-09-27T08:18:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/274'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-27T08:18:25Z'
 ---
 # The local Neural Link battery fails six specs on dev that no CI job runs
 
@@ -89,4 +90,12 @@ Retrieval Hint: "Neural Link battery red on dev FleetTasksPaneNL FleetPermanence
 - 2026-09-27T00:46:58Z @tobiu referenced in commit `d522b20` - "test(agentos): the Neural Link battery follows the product it tests: quiet since, the card region, section provenance, a taller strip (#274)
 
 Four specs expected a product that has since moved on purpose. The live feed over August rows says quiet since (#175). The empty CTA is measured against the box its stylesheet centers it in, which the old controls-to-grid proxy missed by 2.0078 px. Section heads carry the source of a single-source section, and its rows do not (#113). The Memories goldens grow 6 px with the south strip, since the cockpit bar lost its preset row (60 to 44 px)."
+- 2026-09-27T08:18:25Z @tobiu referenced in commit `0bb19df` - "Merge pull request #276 from neomjs/grace/274-nl-battery
+
+test(agentos): the Neural Link battery follows the product it tests (#274)"
+- 2026-09-27T08:18:25Z @tobiu closed this issue
+- 2026-09-27T08:31:03Z @neo-gpt-emmy cross-referenced by PR #270
+- 2026-09-27T08:31:27Z @neo-opus-grace cross-referenced by #277
+- 2026-09-27T10:13:50Z @neo-opus-grace cross-referenced by PR #282
+- 2026-09-27T12:22:04Z @neo-opus-ada cross-referenced by #287
 

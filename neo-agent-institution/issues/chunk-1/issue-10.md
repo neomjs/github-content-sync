@@ -112,11 +112,11 @@ subIssues:
   - '[x] 230 Observatory pane: the Golden Path route as a 3D WebGL2 scene'
   - '[ ] 237 Epic: the cockpit ships no sample data — real data or an honest empty state'
   - '[x] 242 The perspective bar only moves a splitter: retire it for the drawer'
-  - '[ ] 246 Fleet legend: benched, unobserved and stopped collapse into Offline with its reason; no ''external harness'', no bare ''wedged'''
+  - '[x] 246 Fleet legend: benched, unobserved and stopped collapse into Offline with its reason; no ''external harness'', no bare ''wedged'''
   - '[x] 263 Keep valid activity visible when one feed source fails'
-  - '[ ] 264 Remove the bottom Route graph pane; the Observatory keeps the route picture'
+  - '[x] 264 Remove the bottom Route graph pane; the Observatory keeps the route picture'
   - '[ ] 267 The keeper nav shows icons with tooltips; each right-rail item reads as its own chip'
-subIssuesCompleted: 91
+subIssuesCompleted: 93
 subIssuesTotal: 100
 contentTrust:
   projected: true
@@ -1619,4 +1619,155 @@ Items 1, 8 and 9 (the icon rail and distinguishable right-rail items) are in PR 
 - 2026-09-27T00:41:38Z @neo-opus-grace cross-referenced by PR #19308
 - 2026-09-27T00:41:58Z @neo-opus-grace cross-referenced by #275
 - 2026-09-27T00:46:24Z @neo-opus-grace cross-referenced by PR #276
+- 2026-09-27T08:16:32Z @tobiu referenced in commit `5897917` - "feat(agentos): the bottom Route graph pane leaves the cockpit, and a stored perspective naming it restores without it (#264)
+
+The operator ruled the south strip's Route graph tab out (#10); the
+Observatory draws the route going forward. The pane's catalog entry and
+stream-tabs slot go, with its view pair, the 2D canvas renderer, its layout
+util, its SCSS, its specs and its eight goldens.
+
+describeCurrency moves beside GoldenPathEnvelope.currency, so the
+Observatory's currency line reads as before (its arms move to the envelope
+spec). A stored perspective that still names the retired pane, such as a
+shared artifact exported before this change, restores without it:
+CockpitPerspectives.retireUndeclaredItems closes it out with the engine's
+closeItem semantics, so an emptied strip or split collapses."
+- 2026-09-27T08:18:10Z @tobiu referenced in commit `d3cce68` - "feat(agentos): the keeper nav shows icons with tooltips, and each right-rail item is its own chip (#267)
+
+The operator's #10 corrections: the left nav was overloaded, and on the right
+rail the gap between items read like the word space inside a label, so
+nobody could count the items without hovering.
+
+The keeper nav keeps its six destinations, routes and order; its glyphs
+stand upright at the icon scale, each button carries its label as a
+tooltip, and the label stays the accessible name, hidden visually only. The
+right rail's tabs rest on the panel ground, so the engine's 2px gap reads as
+cockpit ground between chips; hover lifts to panel-2 and the revealed tab
+to the line tone with the signal ink, three grounds for three states."
+- 2026-09-27T08:41:38Z @tobiu referenced in commit `a2c11d3` - "feat(agentos): the bottom Route graph pane leaves the cockpit, and a stored perspective naming it restores without it (#264)
+
+The operator ruled the south strip's Route graph tab out (#10); the
+Observatory draws the route going forward. The pane's catalog entry and
+stream-tabs slot go, with its view pair, the 2D canvas renderer, its layout
+util, its SCSS, its specs and its eight goldens.
+
+describeCurrency moves beside GoldenPathEnvelope.currency, so the
+Observatory's currency line reads as before (its arms move to the envelope
+spec). A stored perspective that still names the retired pane, such as a
+shared artifact exported before this change, restores without it:
+CockpitPerspectives.retireUndeclaredItems closes it out with the engine's
+closeItem semantics, so an emptied strip or split collapses."
+- 2026-09-27T08:42:55Z @tobiu referenced in commit `5b0fba0` - "feat(agentos): the keeper nav shows icons with tooltips, and each right-rail item is its own chip (#267)
+
+The operator's #10 corrections: the left nav was overloaded, and on the right
+rail the gap between items read like the word space inside a label, so
+nobody could count the items without hovering.
+
+The keeper nav keeps its six destinations, routes and order; its glyphs
+stand upright at the icon scale, each button carries its label as a
+tooltip, and the label stays the accessible name, hidden visually only. The
+right rail's tabs rest on the panel ground, so the engine's 2px gap reads as
+cockpit ground between chips; hover lifts to panel-2 and the revealed tab
+to the line tone with the signal ink, three grounds for three states."
+- 2026-09-27T09:12:51Z @neo-opus-ada cross-referenced by PR #279
+- 2026-09-27T09:18:58Z @neo-opus-ada cross-referenced by #280
+- 2026-09-27T09:34:11Z @neo-opus-ada referenced in commit `b1921e4` - "feat(agentos): the fleet legend reads working · idle · stuck · rate-limited · offline, and why a seat is offline rides its row (#246)
+
+Operator ruling 2026-09-26 (#10 item 13 and 15): benched, unobserved and
+stopped are one operator-facing category, Offline; "external harness" is
+not a state; no unexplained "wedged"; seven buckets are too many.
+
+SourceHealth.resolveFleetDisplayState returns {state, reason}: the bench
+is the roster's fact and holds in every topology, a wired runtime keeps
+its session state (stopped when off), and a seat Fleet runs no process
+for is offline, unobserved. The health bar, the card, the detail pane and
+the roster's "Hide offline" filter all read that one resolver.
+
+The card's word stays "offline" (the reason rides its title, so it fits
+the narrowest card); the detail pane's new session row spells
+"offline · <reason>" out. "stuck" replaces "wedged" in operator text and
+says what it means on its title. The external token and the dot's
+unobserved rule had no reader left and are gone."
+- 2026-09-27T09:47:25Z @tobiu referenced in commit `9ac9ca7` - "feat(agentos): the keeper nav shows icons with tooltips, and each right-rail item is its own chip (#267)
+
+The operator's #10 corrections: the left nav was overloaded, and on the right
+rail the gap between items read like the word space inside a label, so
+nobody could count the items without hovering.
+
+The keeper nav keeps its six destinations, routes and order; its glyphs
+stand upright at the icon scale, each button carries its label as a
+tooltip, and the label stays the accessible name, hidden visually only. The
+right rail's tabs rest on the panel ground, so the engine's 2px gap reads as
+cockpit ground between chips; hover lifts to panel-2 and the revealed tab
+to the line tone with the signal ink, three grounds for three states."
+- 2026-09-27T10:07:45Z @neo-opus-ada referenced in commit `dcc9802` - "feat(agentos): the fleet legend reads working · idle · stuck · rate-limited · offline, and why a seat is offline rides its row (#246)
+
+Operator ruling 2026-09-26 (#10 item 13 and 15): benched, unobserved and
+stopped are one operator-facing category, Offline; "external harness" is
+not a state; no unexplained "wedged"; seven buckets are too many.
+
+SourceHealth.resolveFleetDisplayState returns {state, reason}: the bench
+is the roster's fact and holds in every topology, a wired runtime keeps
+its session state (stopped when off), and a seat Fleet runs no process
+for is offline, unobserved. The health bar, the card, the detail pane and
+the roster's "Hide offline" filter all read that one resolver.
+
+The card's word stays "offline" (the reason rides its title, so it fits
+the narrowest card); the detail pane's new session row spells
+"offline · <reason>" out. "stuck" replaces "wedged" in operator text and
+says what it means on its title. The external token and the dot's
+unobserved rule had no reader left and are gone."
+- 2026-09-27T10:24:01Z @neo-opus-ada referenced in commit `cf8f3c4` - "feat(agentos): the fleet legend reads working · idle · stuck · rate-limited · offline, and why a seat is offline rides its row (#246)
+
+Operator ruling 2026-09-26 (#10 item 13 and 15): benched, unobserved and
+stopped are one operator-facing category, Offline; "external harness" is
+not a state; no unexplained "wedged"; seven buckets are too many.
+
+SourceHealth.resolveFleetDisplayState returns {state, reason}: the bench
+is the roster's fact and holds in every topology, a wired runtime keeps
+its session state (stopped when off), and a seat Fleet runs no process
+for is offline, unobserved. The health bar, the card, the detail pane and
+the roster's "Hide offline" filter all read that one resolver.
+
+The card's word stays "offline" (the reason rides its title, so it fits
+the narrowest card); the detail pane's new session row spells
+"offline · <reason>" out. "stuck" replaces "wedged" in operator text and
+says what it means on its title. The external token and the dot's
+unobserved rule had no reader left and are gone."
+- 2026-09-27T11:06:55Z @neo-opus-ada referenced in commit `a440f5c` - "feat(agentos): the fleet legend reads working · idle · stuck · rate-limited · offline, and why a seat is offline rides its row (#246)
+
+Operator ruling 2026-09-26 (#10 item 13 and 15): benched, unobserved and
+stopped are one operator-facing category, Offline; "external harness" is
+not a state; no unexplained "wedged"; seven buckets are too many.
+
+SourceHealth.resolveFleetDisplayState returns {state, reason}: the bench
+is the roster's fact and holds in every topology, a wired runtime keeps
+its session state (stopped when off), and a seat Fleet runs no process
+for is offline, unobserved. The health bar, the card, the detail pane and
+the roster's "Hide offline" filter all read that one resolver.
+
+The card's word stays "offline" (the reason rides its title, so it fits
+the narrowest card); the detail pane's new session row spells
+"offline · <reason>" out. "stuck" replaces "wedged" in operator text and
+says what it means on its title. The external token and the dot's
+unobserved rule had no reader left and are gone."
+- 2026-09-27T11:29:07Z @neo-opus-ada referenced in commit `837320f` - "feat(agentos): the fleet legend reads working · idle · stuck · rate-limited · offline, and why a seat is offline rides its row (#246)
+
+Operator ruling 2026-09-26 (#10 item 13 and 15): benched, unobserved and
+stopped are one operator-facing category, Offline; "external harness" is
+not a state; no unexplained "wedged"; seven buckets are too many.
+
+SourceHealth.resolveFleetDisplayState returns {state, reason}: the bench
+is the roster's fact and holds in every topology, a wired runtime keeps
+its session state (stopped when off), and a seat Fleet runs no process
+for is offline, unobserved. The health bar, the card, the detail pane and
+the roster's "Hide offline" filter all read that one resolver.
+
+The card's word stays "offline" (the reason rides its title, so it fits
+the narrowest card); the detail pane's new session row spells
+"offline · <reason>" out. "stuck" replaces "wedged" in operator text and
+says what it means on its title. The external token and the dot's
+unobserved rule had no reader left and are gone."
+- 2026-09-27T12:26:31Z @neo-opus-grace cross-referenced by #288
+- 2026-09-27T13:10:51Z @neo-opus-grace cross-referenced by PR #291
 
