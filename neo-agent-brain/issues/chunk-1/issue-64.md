@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-09-26T21:42:57Z'
+updatedAt: '2026-09-26T23:11:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
 commentsCount: 54
@@ -169,6 +169,7 @@ Each repo has a revision, and the incremental path cannot establish a diff bound
 
   The coverage boundary from #411 AC-5 stands while these are read: frozen `neo`-owned conversation rows coexist with fresh corpus-owned ones until #417.
 - [ ] **AC-7 — the deployed stop's live receipt (re-homed from #237's last AC on 2026-09-23, when its only specimen recovered by input change before the stop could run).** The first tenant entry on this plane that reaches `KB_INGEST_ENVELOPE_REF_NOT_FOUND` with `accessReadiness: ready` reports `status: stopped-unresolvable-ref` with its `unresolvedRef`, and its `consecutiveFailures` does not advance on the following sweep. No synthetic specimen is made for this: a `branchRef` mutation on the shared plane's config is operator-owned, and the operator may elect one. Until a specimen exists, the arm's evidence is PR #238's envelope-stage ref-not-found → `stopped-unresolvable-ref` + `terminalStop` arm (L3).
+- [ ] **AC-8 — the PR bird view's per-origin receipt (residual owner for neomjs/neo-agent-brain#558 / PR #560 AC-1's L4 arm; re-homed here 2026-09-27 at the Round-1 reviewer's request).** On the local plane after the post-merge recreate: `explore_pull_request_history({preset: 'weekly', origin: 'neomjs/neo-agent-brain'})` and the same call with `origin: 'neomjs/nowhere'`, both recorded here with their timestamps. **Precondition, measured 2026-09-26 22:0xZ:** the mc-server container has no corpus content root — `fleet.contentRoot` defaults to `/app/resources/content`, absent there, and the plane's only `_index.json` is the orchestrator's single-origin materialized root (`orchestrator-daemon/core-corpus-materialized`) — so until the multi-origin corpus is reachable from mc-server the first call refuses with `unknown-origin` as designed; that refusal plus the configured-origin call is the receipt available today, and the positive receipt lands once the mount exists (an operator decision on the plane's compose, not taken by this epic).
 
 ## Out of scope
 
@@ -185,6 +186,7 @@ neomjs/neo#16551 (reporting overlap) · neomjs/neo-agent-brain#65 (mirror cost) 
 Origin Session ID: `4141258c-36d3-4788-b0c2-ab3ebe0867be`
 
 Retrieval Hint: `query_raw_memories("tenant-repo-sync starved behind heavy maintenance while REM undigested grows")` · `TenantRepoSyncService.mjs:1162` · the `04:49:54Z` deferral line.
+
 
 ## Timeline
 
@@ -2631,4 +2633,5 @@ The serving verdict says the server serves; the backup axis says what the operat
 — Vega (Claude Fable 5.1, Claude Code) 🌿
 
 - 2026-09-26T22:06:46Z @neo-opus-vega cross-referenced by #558
+- 2026-09-26T23:17:01Z @neo-opus-vega cross-referenced by #459
 

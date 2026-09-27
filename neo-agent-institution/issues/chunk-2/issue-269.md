@@ -1,6 +1,6 @@
 ---
 id: 269
-title: Brain pin 4 — dev@c6c92c2 carries the fleetGraphScene wire method
+title: 'Brain pin 4 (dev@c6c92c2, fleetGraphScene) + engine pin (dev@a50ae57ce8, GraphScene''s rejecting setScene)'
 state: OPEN
 labels:
   - enhancement
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-26T22:49:47Z'
-updatedAt: '2026-09-26T22:49:47Z'
+updatedAt: '2026-09-26T23:26:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/269'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,33 +23,37 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
+  - '[ ] 271 Observatory draws the bounded graph read with one canonical selection'
   - '[ ] 258 Build a bounded Observatory scene with stable selection'
 ---
-# Brain pin 4 — dev@c6c92c2 carries the fleetGraphScene wire method
+# Brain pin 4 (dev@c6c92c2, fleetGraphScene) + engine pin (dev@a50ae57ce8, GraphScene's rejecting setScene)
 
 ## Context
 
 #258 (the bounded Observatory scene) consumes Brain #533's `fleetGraphScene` read through the fleet bridge. The Institution pins Brain `1ac9492` (Brain pin 3, `#228`), which predates Brain PR #545. Its contract's `FLEET_WIRE_METHODS` has no `fleetGraphScene`, so the bridge refuses the verb in every topology. The operator's local plane runs Brain `c6c92c2` (current `dev` head, containing #545, #551 and #559).
 
+#258 also draws through `Neo.canvas.GraphScene`, and its AC-6 names the engine contract that refuses a scene without positions (neomjs/neo#19290, PR neomjs/neo#19291). The engine pin `2965d82` predates that PR.
+
 ## The Problem
 
-Without the pin, #258's read cannot be wired or tested against the real contract. Pin 3 set the precedent: a pin bump is its own small PR, reviewed and smoked separately, because it moves every Brain-contract import at once.
+Without the pins, #258's read cannot be wired or tested against the real contracts. Pin 3 set the precedent: a pin bump is its own small PR, reviewed and smoked separately, because it moves every contract import at once.
 
 ## The Architectural Reality
 
-- The pin appears in three places: `package.json` (`neo-agent-brain`), `package-lock.json` (the resolved git ref) and `.github/workflows/ci.yml` (the explicit Brain contract job's `ref`).
+- The Brain pin appears in three places: `package.json` (`neo-agent-brain`), `package-lock.json` (the resolved git ref) and `.github/workflows/ci.yml` (the explicit Brain contract job's `ref`). The engine pin appears in two: `package.json` (`neo.mjs`) and `package-lock.json`.
 - `harness/contentPolicy.mjs` allowlists the installed contract's modules, and `ContentPolicy.spec` parses the index's `export *` lines to prove each one is allowlisted. A new contract module fails there until allowlisted, which is what pin 3's packaged smoke caught.
 - Brain between the two pins includes the healthcheck posture split (#557, `status` is the serving verdict) and the fleet wake-hook identity (#551). The cockpit reads the live plane's healthcheck regardless of the pin; the pin moves the contract, the local test Brain and the packaged organism.
+- The engine between its two pins adds the rejecting `setScene`, the v13.2 dock, tab and draggable fixes, and two workstation popup fixes.
 
 ## The Fix
 
-Move all three references to `c6c92c20857710676b3eb8566b49f59edb8ea7a8`, allowlist any new contract module, and fix whatever the unit, visual and NL suites surface against the new contract. No feature code: the `fleetGraphScene` read itself is #258.
+Move the Brain references to `c6c92c20857710676b3eb8566b49f59edb8ea7a8` and the engine references to `a50ae57ce82002251495c9892ac1bba95295634d`. Allowlist any new contract module, and fix whatever the unit, visual and NL suites surface against the new contracts. No feature code: the `fleetGraphScene` read itself is #258.
 
 ## Acceptance Criteria
 
-- [ ] AC-1: `package.json`, `package-lock.json` and `ci.yml` name `c6c92c2`, and the installed contract lists `fleetGraphScene` in `FLEET_WIRE_METHODS`.
-- [ ] AC-2: unit (including `ContentPolicy.spec`), visual and the Observatory/cockpit NL suites pass on the new pin.
-- [ ] AC-3 (post-merge): a packaged smoke on the merged pin shows no content-policy 404 for a contract module (receipt under #7).
+- [ ] AC-1: `package.json`, `package-lock.json` and `ci.yml` name `c6c92c2`, and the installed contract lists `fleetGraphScene` in `FLEET_WIRE_METHODS`. `package.json` and `package-lock.json` name `a50ae57ce8`, and the installed `GraphScene#setScene` refuses a scene without positions.
+- [ ] AC-2: unit (including `ContentPolicy.spec`), components and visual pass on the new pins. Every e2e and NL spec that fails on the new pins fails identically on the old ones.
+- [ ] AC-3 (post-merge): a packaged smoke on the merged pins shows no content-policy 404 for a contract module (receipt under #7).
 
 ## Out of Scope
 
@@ -59,10 +63,11 @@ Move all three references to `c6c92c20857710676b3eb8566b49f59edb8ea7a8`, allowli
 
 Blocks #258. Precedent: `#228` / `#233` (pin 3). Parent: #10.
 
-Live latest-open sweep: the latest 20 open Institution issues at 2026-09-26T22:55Z hold no pin ticket (newest #267). A2A: no pin claim in the last hour. Memory Core: pin 3's session (Clio, 2026-09-26) documents the contract allowlist trap this AC-2 covers.
+Live latest-open sweep: the latest 20 open Institution issues at 2026-09-26T22:55Z hold no pin ticket (newest #267). A2A: no pin claim in the last hour. Memory Core: pin 3's session (Clio, 2026-09-26) documents the contract allowlist trap this AC-2 covers. The engine pin joined on 2026-09-26 after the Brain pin's PR opened: #258 needs both, and two pin PRs would conflict on adjacent `package.json` lines.
 
 Origin Session ID: 6408fcd4-3571-4ec2-8009-b4dae5d18917
-Retrieval Hint: "Brain pin 4 fleetGraphScene contract allowlist c6c92c2"
+Retrieval Hint: "Brain pin 4 engine pin fleetGraphScene GraphScene setScene contract allowlist c6c92c2 a50ae57ce8"
+
 
 ## Timeline
 
@@ -70,4 +75,13 @@ Retrieval Hint: "Brain pin 4 fleetGraphScene contract allowlist c6c92c2"
 - 2026-09-26T22:49:48Z @neo-opus-grace added the `enhancement` label
 - 2026-09-26T22:49:48Z @neo-opus-grace added the `ai` label
 - 2026-09-26T22:49:48Z @neo-opus-grace added the `build` label
+- 2026-09-26T22:49:56Z @neo-opus-grace marked this issue as blocking #258
+- 2026-09-26T22:57:13Z @neo-opus-grace cross-referenced by PR #270
+- 2026-09-26T23:24:50Z @tobiu referenced in commit `bfa1dfa` - "chore(deps): engine pin → dev@a50ae57ce8, which carries GraphScene's rejecting setScene (#269)
+
+#258's Observatory draws through Neo.canvas.GraphScene, and its AC-6 names the engine contract that refuses a scene without positions (neomjs/neo#19290, PR neomjs/neo#19291) instead of blanking the canvas. The previous pin 2965d82 predates it. The ten other engine commits since are the dock, tab and draggable fixes of the v13.2 blocker lane plus two workstation popup fixes."
+- 2026-09-26T23:26:01Z @neo-opus-grace changed title from **Brain pin 4 — dev@c6c92c2 carries the fleetGraphScene wire method** to **Brain pin 4 (dev@c6c92c2, fleetGraphScene) + engine pin (dev@a50ae57ce8, GraphScene's rejecting setScene)**
+- 2026-09-26T23:46:08Z @neo-opus-grace cross-referenced by #271
+- 2026-09-26T23:46:17Z @neo-opus-grace marked this issue as blocking #271
+- 2026-09-26T23:47:42Z @neo-opus-grace cross-referenced by PR #272
 

@@ -16,15 +16,16 @@ githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/258'
 author: neo-gpt
 commentsCount: 0
 parentIssue: 10034
-subIssues: []
+subIssues:
+  - '[ ] 271 Observatory draws the bounded graph read with one canonical selection'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 269 Brain pin 4 — dev@c6c92c2 carries the fleetGraphScene wire method'
+  - '[ ] 269 Brain pin 4 (dev@c6c92c2, fleetGraphScene) + engine pin (dev@a50ae57ce8, GraphScene''s rejecting setScene)'
 blocking: []
 ---
 # Build a bounded Observatory scene with stable selection
@@ -125,4 +126,14 @@ Retrieval Hint: "Observatory bounded graph scene snapshotId canonical selection 
 - 2026-09-26T22:25:42Z @neo-opus-grace cross-referenced by PR #266
 - 2026-09-26T22:28:51Z @neo-opus-grace cross-referenced by #267
 - 2026-09-26T22:49:48Z @neo-opus-grace cross-referenced by #269
+- 2026-09-26T22:49:56Z @neo-opus-grace marked this issue as being blocked by #269
+- 2026-09-26T22:57:13Z @neo-opus-grace cross-referenced by PR #270
+- 2026-09-26T23:24:50Z @tobiu referenced in commit `bfa1dfa` - "chore(deps): engine pin → dev@a50ae57ce8, which carries GraphScene's rejecting setScene (#269)
+
+#258's Observatory draws through Neo.canvas.GraphScene, and its AC-6 names the engine contract that refuses a scene without positions (neomjs/neo#19290, PR neomjs/neo#19291) instead of blanking the canvas. The previous pin 2965d82 predates it. The ten other engine commits since are the dock, tab and draggable fixes of the v13.2 blocker lane plus two workstation popup fixes."
+- 2026-09-26T23:46:08Z @neo-opus-grace cross-referenced by #271
+- 2026-09-26T23:46:16Z @neo-opus-grace added sub-issue #271
+- 2026-09-26T23:47:42Z @neo-opus-grace cross-referenced by PR #272
+- 2026-09-26T23:53:56Z @neo-opus-grace cross-referenced by PR #19306
+- 2026-09-27T00:25:44Z @neo-opus-grace cross-referenced by PR #273
 

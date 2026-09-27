@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-07-04T00:26:14Z'
-updatedAt: '2026-09-26T21:32:35Z'
+updatedAt: '2026-09-27T00:28:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/10'
 author: neo-opus-vega
-commentsCount: 33
+commentsCount: 34
 parentIssue: null
 subIssues:
   - '[x] 14577 FM cockpit target-app decision: evolve apps/agentos vs fresh app'
@@ -1595,4 +1595,28 @@ Retrieval Hint: `FM fifteen navigation challenges full inventory repositories A2
 - 2026-09-26T22:28:59Z @neo-opus-grace added sub-issue #267
 - 2026-09-26T22:45:54Z @neo-opus-grace cross-referenced by PR #268
 - 2026-09-26T22:49:48Z @neo-opus-grace cross-referenced by #269
+- 2026-09-26T22:57:13Z @neo-opus-grace cross-referenced by PR #270
+### @neo-opus-grace - 2026-09-27T00:28:54Z
+
+## Item 2 (Chat → A2A messaging): two shapes, and my recommendation
+
+The ruling: the Chat destination may serve A2A messaging, and it must not imply a harness that does not exist. Today it does imply one. `apps/agentos/view/Viewport.mjs` renders a placeholder: *"Chat — prompt an agent → a live widget pane you can dock and pop out. The dockable QT work-area lands here next."* A2A messaging already exists, as the cockpit's **Mailbox** south tab (`fleet/mailbox/OperatorContainer`: the operator's inbox over compose, with per-recipient outcomes). That tab can tear out into a vessel and sits beside the roster it steers.
+
+| Shape | What changes | Cost | Weighs against |
+|---|---|---|---|
+| **A. Retire the placeholder** (recommended) | The Chat item leaves the rail; the `/chat` route redirects to the cockpit with the Mailbox tab active | small: one rail item, one route | item 1 (the rail is overloaded) and item 2 (no implied harness) both improve; nothing is duplicated |
+| B. A Messages keeper hosting the mailbox | The mailbox moves out of the cockpit into its own full view; the cockpit controller feeds it through a provider leaf | medium: a new data path, cockpit layouts and goldens change | messaging gets a top-level destination, but the mailbox loses its place beside the roster and its vessel tear-out |
+
+I recommend **A** until the harness exists. Item 6 already flags that Activity, Mailbox and Catch-up lack a hierarchy, and a second messaging surface would deepen that. When a real harness lands, its destination returns with real content. **@tobiu**, this is a product call: A, B, or keep Chat as a labelled "coming later" item. I'll build the chosen shape; nothing is changed until then.
+
+Items 1, 8 and 9 (the icon rail and distinguishable right-rail items) are in PR #268, with Eos reviewing. Item 5 (Route graph removed) is PR #266. The Observatory work (#258, cited under item 5) is PRs #272 and #273.
+
+🖖 Grace · @neo-opus-grace · Claude Opus 5.5 · Claude Code · session 6408fcd4-3571-4ec2-8009-b4dae5d18917
+
+
+- 2026-09-27T00:33:09Z @neo-opus-grace cross-referenced by #274
+- 2026-09-27T00:39:44Z @neo-opus-grace cross-referenced by #19307
+- 2026-09-27T00:41:38Z @neo-opus-grace cross-referenced by PR #19308
+- 2026-09-27T00:41:58Z @neo-opus-grace cross-referenced by #275
+- 2026-09-27T00:46:24Z @neo-opus-grace cross-referenced by PR #276
 
