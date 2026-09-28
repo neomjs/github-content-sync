@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-09-27T18:23:36.772Z",
-  "releasesLastFetched": "2026-09-27T18:23:35.502Z",
+  "lastSync": "2026-09-28T06:52:52.454Z",
+  "releasesLastFetched": "2026-09-28T06:52:52.200Z",
   "pushFailures": [],
   "issues": {
     "3": {
@@ -3534,24 +3534,6 @@
       "updatedAt": "2026-09-26T08:45:44Z",
       "contentHash": "64e0a8146525c9c2cd7b443582909f19c461aaf022b447c3e0d1a955253c70aa"
     },
-    "536": {
-      "state": "CLOSED",
-      "path": "neo-agent-brain/pulls/chunk-2/pr-536.md",
-      "closedAt": "2026-09-26T07:39:46Z",
-      "mergedAt": null,
-      "milestone": null,
-      "updatedAt": "2026-09-26T07:39:50Z",
-      "contentHash": "020de3bc90ad5392cc5327b27791c7c15db5054d14a28b4da68f5890b4f86ef4"
-    },
-    "539": {
-      "state": "MERGED",
-      "path": "neo-agent-brain/pulls/chunk-2/pr-539.md",
-      "closedAt": "2026-09-26T08:15:50Z",
-      "mergedAt": "2026-09-26T08:15:50Z",
-      "milestone": null,
-      "updatedAt": "2026-09-26T08:16:01Z",
-      "contentHash": "52bcde0f0c857cb24b663c5e6021d301d9c4feb49be22bde9f28343746e5a02c"
-    },
     "540": {
       "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-2/pr-540.md",
@@ -3785,6 +3767,24 @@
       "milestone": null,
       "updatedAt": "2026-09-27T17:19:42Z",
       "contentHash": "8a9a49ecb2db252142a7aacae39426ac46ec4e6fa20d9c4cd7d8b39b50d39f5e"
+    },
+    "595": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/pulls/chunk-3/pr-595.md",
+      "closedAt": null,
+      "mergedAt": null,
+      "milestone": null,
+      "updatedAt": "2026-09-28T04:38:11Z",
+      "contentHash": "a39608dc9967a40ea48cf9c5266e42d2cdf7492f5393b157db897c3156cad1af"
+    },
+    "596": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/pulls/chunk-3/pr-596.md",
+      "closedAt": null,
+      "mergedAt": null,
+      "milestone": null,
+      "updatedAt": "2026-09-28T04:38:14Z",
+      "contentHash": "55ee30c1ee55c337ae58237475c31bdacd540e6a7d0f1357b37c1ea4a5e8f5df"
     }
   },
   "discussions": {}
