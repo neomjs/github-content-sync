@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-28T13:46:28Z'
-updatedAt: '2026-09-28T13:46:29Z'
+updatedAt: '2026-09-28T16:58:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/606'
 author: neo-preview
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -141,4 +141,42 @@ fresh JSDoc while the previous one stayed directly above it, so the file still
 opened with "Retries only pre-submit frontmost races" on a function that no
 longer retries. Documentation that contradicts the code beneath it is worse than
 none, because a reader has to choose which one to believe."
+- 2026-09-28T15:49:59Z @neo-preview cross-referenced by #598
+- 2026-09-28T16:28:08Z @neo-preview referenced in commit `aa5eb39` - "fix(wake): the dialog gate compiled to nothing, so it never fired (#606)"
+- 2026-09-28T16:37:54Z @neo-preview referenced in commit `16b9608` - "fix(wake): the dialog-gate rig carried the same invalid probe, so it could never report a role (#606)"
+- 2026-09-28T16:56:53Z @neo-preview referenced in commit `a5345d6` - "revert(wake): drop the dialog-gate and rig changes; #606 is paste, then Return, no focus check (#606)"
+### @neo-preview - 2026-09-28T16:58:02Z
+
+## Parked finding, deliberately NOT fixed here — out of #606's scope
+
+Recording this so the defect is not lost, and so the next person does not re-derive it. **This PR does not touch it**, because #606 is *paste, then Return, no focus check* and nothing more; a focus guard is a mechanism #606 does not ask for.
+
+### The defect
+
+`buildDialogGateArgs` in `ai/daemons/wake/localWakeAdapters.mjs` reads the focused element with:
+
+```applescript
+set focusedRole to role of focused element of window 1
+```
+
+That is not valid AppleScript — `focused element` is not a term. Verified: the minimal expression and the exact emitted script both fail to **compile** with `-2741` (*Expected end of line but found identifier*).
+
+A compile error is not a runtime error, so the surrounding `try` cannot catch it — the script never runs. The `interactive dialog pending` branch is therefore unreachable, the caller's message match (`/interactive dialog pending/`) does not match a compile error, and delivery **fails open**. Every delivery since this gate was written has bypassed a guard whose own JSDoc describes it as "armed by default".
+
+`ai/scripts/diagnostics/dialogGateRig.mjs` carries the **identical** construct, so the rig built to detect Electron AX role drift always returned `(unreadable: …)`, which its own classifier reads as "never readable" — the fail-open condition. The drift detection its documentation promises was never testable.
+
+### Two corrections to the obvious fix, so nobody repeats them
+
+- **`AXFocusedUIElement` is not a window attribute.** Reading it from `window 1` raises `-1728` at runtime, which the `try` *does* swallow — so the obvious repair still fails open, just later and less visibly. The read has to be app-level. (@neo-opus-vega measured this independently.)
+- **The allowlist is not the problem.** The composer role is `AXTextArea`, which is already in `{AXTextArea, AXTextField}`. An earlier theory of mine that an Electron composer reports `AXWebArea` was wrong, and the operator's live observation — that pasting into the prompt field works reliably — falsified it before anyone acted on it.
+
+### Why it is parked rather than fixed
+
+The gate's intent is to notice when focus is *not* a text input, so a wake is not typed into a pending operator dialog. That is a real concern, but it is a **separate requirement** from #606, and fixing it correctly needs a probe that reads app-level focus — a piece of work with its own test surface, not a drive-by inside a submit-boundary PR.
+
+Suggested home: its own ticket against `ai/daemons/wake/localWakeAdapters.mjs`, scoped to "the dialog gate cannot fire; make it readable and app-level, or delete it". Either outcome is fine — a gate that cannot be made correct should not exist, and today it is the appearance of a guard rather than one.
+
+Evidence: compile check via `osacompile` (pure syntax, no Accessibility consent needed); the two corrections above came from review, not from me.
+
+
 

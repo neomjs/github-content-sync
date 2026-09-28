@@ -1,14 +1,14 @@
 ---
 id: 561
 title: 'The wake-subscription tool path: poll-digest hangs with no record, and the opencode-server adapter dispatches into stale coordinates'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-preview
 createdAt: '2026-09-26T21:21:32Z'
-updatedAt: '2026-09-28T12:03:35Z'
+updatedAt: '2026-09-28T17:05:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/561'
 author: neo-preview
 commentsCount: 4
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-28T17:05:01Z'
 ---
 # The wake-subscription tool path: poll-digest hangs with no record, and the opencode-server adapter dispatches into stale coordinates
 
@@ -65,15 +66,19 @@ Three separable problems in one line:
 
 ## Acceptance criteria
 
-- [ ] AC-1: `poll-digest` either returns a digest/dispatch result or fails with a named server-side reason and **writes a record**; a transport-level hang with no trace is not an acceptable outcome for a forced-dispatch action.
-- [ ] AC-2: a `404` from `prompt_async` is classified distinctly (stale coordinates) rather than as an undifferentiated dispatch failure, reusing the receiver's existing `coordinates did not change after connection refusal` vocabulary if it fits.
-- [ ] AC-3: the dispatch outcome for a triggered digest is observable by the seat through the tool surface, not only through a host-side file the seat has to know to read.
+- [ ] **AC-1 (restated 2026-09-28 to the defect that was actually diagnosed and delivered).** The original AC-1 above described a record-less *hang*; the defect that reproduced, twice, was an **unbounded read** in the shared `pollDigest` / `resync` path, which both default `sinceLogId` to 0 and so materialise the whole log — 41,007,073 rows against a 3 GiB cgroup cap, OOM-killing Memory Core and destroying the evidence the seat needed to diagnose itself. AC-1 is therefore restated as: the shared read is **bounded per call**, the bound is a work budget rather than a range window (nothing is dropped, no `boundedFrom` is reported, an offline client resumes from the returned watermark), and it carries **three falsifiers, each of which goes red with its own bound removed**.
+  - [ ] AC-1a: a watermark-less poll is bounded and still answers from current read state.
+  - [ ] AC-1b: a delta larger than the page budget returns a continuing watermark, not the head, and drains without loss.
+  - [ ] AC-1c: a heartbeat pulse past the first page of a range is not dropped.
+- [ ] **AC-2 and AC-3 have MOVED to their own leaf** (stale-coordinate classification, and dispatch-outcome observability on the tool surface). They are dispatch-legibility defects, not read-bound defects, and keeping them here meant this PR's AC table mapped clauses it does not deliver. Tracked in **#613**.
 
 ## Notes for whoever takes this
 
 Both were found while repairing a live seat, so the reproduction context is `@neo-preview` on 2026-09-26 evening. The `poll-digest` hangs coincided with `mc-server` at 99-101% CPU, so **a red herring worth ruling out first is load**: the defect may reproduce only under contention, in which case the record-less hang is a *consequence* of the timeout budget rather than a logic error. The `update` success at the same moment is the control that argues the path itself is intact. The 404 is load-independent.
 
 Origin session: `e4c39535-a0e0-43e1-a6fc-4da255b13d79`.
+
+
 
 
 ## Timeline
@@ -245,4 +250,13 @@ Claiming to implement the bounded-paging fix unless @neo-opus-vega wants it fold
 - 2026-09-28T14:17:43Z @neo-preview cross-referenced by PR #610
 - 2026-09-28T15:23:37Z @neo-preview referenced in commit `e7b41d6` - "fix(wake): bound the pollDigest walk per call and read pulses per page (#561)"
 - 2026-09-28T15:26:19Z @neo-preview referenced in commit `c05fbfc` - "refactor(wake): express walk-bound falsifiers as durable intent, not ticket refs (#561)"
+- 2026-09-28T15:38:59Z @neo-preview cross-referenced by #612
+- 2026-09-28T15:39:08Z @neo-preview cross-referenced by #613
+- 2026-09-28T16:10:19Z @neo-preview referenced in commit `2f7d5b3` - "fix(wake): a watermark-less poll walks no log and answers from current unread state (#561)"
+- 2026-09-28T17:03:25Z @neo-opus-vega cross-referenced by #616
+- 2026-09-28T17:05:01Z @tobiu referenced in commit `a7a199e` - "Merge pull request #610 from neomjs/eos/561-bound-poll-digest
+
+fix(memory-core): page pollDigest and resync instead of materialising the whole log (#561)"
+- 2026-09-28T17:05:01Z @tobiu closed this issue
+- 2026-09-28T17:24:02Z @neo-opus-vega cross-referenced by PR #617
 

@@ -9,17 +9,17 @@ labels:
   - epic
 assignees: []
 createdAt: '2026-09-28T11:52:12Z'
-updatedAt: '2026-09-28T14:12:14Z'
+updatedAt: '2026-09-28T18:23:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/312'
 author: neo-opus-vega
 commentsCount: 2
 parentIssue: null
 subIssues:
-  - '[ ] 310 The Observatory draws readable wells before any Brain change'
+  - '[x] 310 The Observatory draws readable wells before any Brain change'
   - '[ ] 311 The Observatory''s wells follow the roadmap, and the team lens shows who touched what'
   - '[ ] 603 The graph scene carries the Brain''s gravity and recency columns'
   - '[x] 604 The graph scene attributes nodes to peers, with origin carried by identity'
-subIssuesCompleted: 1
+subIssuesCompleted: 2
 subIssuesTotal: 4
 contentTrust:
   projected: true
@@ -69,6 +69,7 @@ The per-leaf mapping is recorded in D#19317's own ledger section (rev 13). At ep
 ## Residuals carried from closed leaves
 
 - **#310 AC-6** `[L4-deferred — operator handoff needed]`: headed checks on the installed FM at the operator's viewer, from a cold saved-plane launch: first useful paint, selection latency, well and halo readability, resize, graph and route state. It stays open here once #310 closes, and its first-paint check also waits on the cold `get_graph_scene` read (below).
+- **neomjs/neo-agent-brain#603 (B1), the installed read** `[L4-deferred]`: once the plane runs neomjs/neo-agent-brain#611's revision, a fleet-server `fleetGraphScene` read carries `gravityWell`, `strategicWeight` and `lastActivityAt` on its nodes, and `activitySources` with each kind's `sourceCapturedAt: null`. It stays open here once #603 closes.
 
 ## Out of scope
 
@@ -88,6 +89,8 @@ Epic sweep: 7 open Institution epics and 38 open Brain epics read, by terminal p
 Structure map: run 2026-09-28 in the Brain checkout; the Brain leaves sit in `ai/services/memory-core` (`GraphService`) and `ai/services/fleet` (`fleetGraphSceneSource`). The Institution consumer is not Brain-hosted (N/A).
 Origin Session ID: 96f97500-4dcb-461e-bef0-af4e6dc5e24a
 Retrieval Hint: "Observatory shared operating picture epic wells attention team lens D19317"
+
+
 
 
 
@@ -173,4 +176,5 @@ Euclid (GPT-6, Codex) · session 01a0e711-2090-7cf1-9e31-38de49789366
 
 - 2026-09-28T13:12:12Z @neo-gpt-emmy cross-referenced by PR #605
 - 2026-09-28T14:12:14Z @neo-opus-vega cross-referenced by #310
+- 2026-09-28T15:32:16Z @neo-opus-vega cross-referenced by PR #611
 

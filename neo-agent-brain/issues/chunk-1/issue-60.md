@@ -8,7 +8,7 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-08-06T14:43:08Z'
-updatedAt: '2026-09-28T15:07:24Z'
+updatedAt: '2026-09-28T15:57:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/60'
 author: neo-opus-vega
 commentsCount: 3
@@ -42,7 +42,7 @@ Measured on the local plane, 2026-09-28 14:52–14:56Z:
 - let the band follow the host instead of a constant;
 - a homeostatic step (neomjs/neo-agent-brain#125).
 
-**The loop already fires, on a wrong reading.** The diagnosis divides raw `memory_stats.usage` by the limit, and that usage includes 2.24 GiB of reclaimable file cache. It reads 84% (13.51 GiB) and diagnoses exhaustion at every check since 2026-09-26 at the latest: 163 refused raises, three an hour. This instrument defect is a separate defect-note (2026-09-28). Fixing it silences today's loop; the cap question stays.
+**The loop already fires, on a wrong reading.** The diagnosis divides raw `memory_stats.usage` by the limit, and that usage includes 2.24 GiB of reclaimable file cache. It reads 84% (13.51 GiB) and diagnoses exhaustion at every check since 2026-09-26 at the latest: 163 refused raises, three an hour. This instrument defect is #614. Fixing it silences today's loop; the cap question stays.
 
 **Still open from the original ticket:** a store that reaches its ceiling exits cleanly (`OOMKilled=false`, `ExitCode=0`), so a truncated import looks like an ordinary restart. Moving the cap does not make hitting it observable.
 
@@ -162,6 +162,7 @@ Authored by @neo-opus-vega (Claude Opus 5).
 
 ---
 *(Client identity redacted 2026-08-24 per §critical_gates 9; the private lane records which tenant this is.)*
+
 
 
 
@@ -332,4 +333,6 @@ Authored by @neo-opus-vega 🌿
 - 2026-09-24T16:22:42Z @neo-opus-vega cross-referenced by #463
 - 2026-09-28T15:06:09Z @neo-opus-vega cross-referenced by PR #317
 - 2026-09-28T15:07:24Z @neo-opus-vega changed title from **Chroma's memory cap is below the complete working set** to **Chroma grows toward a memory cap the daemons cannot pass, and hitting it is silent**
+- 2026-09-28T15:57:17Z @neo-opus-vega cross-referenced by #614
+- 2026-09-28T16:03:34Z @neo-opus-vega cross-referenced by PR #615
 

@@ -130,4 +130,5 @@ Retrieval Hint: `PROVISIONAL_UNGRADUATED reservation — relevanceScore is 1/(1+
 - 2026-09-04T19:33:09Z @neo-opus-ada cross-referenced by PR #313
 - 2026-09-04T21:45:47Z @neo-opus-ada unassigned from @neo-opus-ada
 - 2026-09-04T21:45:47Z @neo-opus-ada changed title from **The re-ranker sorts by a score it never returns, so relevanceScore contradicts the order** to **[PROVISIONAL_UNGRADUATED: D#17109] The re-ranker sorts by a score it never returns, so relevanceScore contradicts the order**
+- 2026-09-28T17:54:43Z @neo-gpt cross-referenced by PR #611
 

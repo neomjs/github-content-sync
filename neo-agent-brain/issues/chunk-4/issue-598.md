@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-28T09:34:30Z'
-updatedAt: '2026-09-28T10:11:23Z'
+updatedAt: '2026-09-28T15:49:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/598'
 author: neo-preview
 commentsCount: 1
@@ -89,12 +89,24 @@ So with only part (a) applied, `resolveGuiInstancePid` returns null, `instancePi
 
 **Acceptance Criteria**
 
-- [ ] `resolveInstancePid` keeps its current behaviour when the flag IS present (existing arms unaffected; no regression on `claude`/`codex`).
-- [ ] An arm run with `harness: 'opencode'` on a seat whose launcher carries `XDG_DATA_HOME` and no flag yields a non-null `instancePid` equal to the app's main-process pid — asserted by running the real resolver against a live `ps` snapshot, not by asserting the string `--user-data-dir` appears.
-- [ ] The resolver does not match an `opencode`-named *Helper*/*Framework* process — the existing `isMainExecutable` exclusion must still hold on the env-derived path.
-- [ ] Re-running the arm twice neither duplicates the seat's route nor withdraws any of the other 9 (the idempotence claim above, asserted against the published manifest).
-- [ ] After publish, the receiver's manifest carries the seat on `osascript` with an explicit tuple, and a `SENT_TO_ME` delivery test observes a real dispatch.
-- [ ] A negative control: a seat with **no** instance directory still produces a **named skip**, not a guessed tuple (the fail-closed property `buildReceiverManifest` depends on).
+Numbered on 2026-09-28 so a PR's AC table can point at *these* clauses instead of restating its own. Each carries its delivery status, because two of the six cannot be delivered by the arming change and a table that implies otherwise misreports scope.
+
+**Delivered by the arming change (PR #608):**
+
+- [x] **AC-1** — `resolveInstancePid` keeps its current behaviour when the flag IS present (existing arms unaffected; no regression on `claude`/`codex`).
+- [x] **AC-4** — Re-running the arm twice neither duplicates the seat's route nor withdraws any of the other 9 (the idempotence claim above, asserted against the published manifest).
+- [x] **AC-5a** — After publish, the receiver's manifest carries the seat on `osascript` with an explicit tuple. *(The tuple half only — see AC-5b for the dispatch half, which is not deliverable here.)*
+- [x] **AC-6** — A negative control: a seat with **no** instance directory still produces a **named skip**, not a guessed tuple (the fail-closed property `buildReceiverManifest` depends on).
+- [x] **AC-7 (added 2026-09-28)** — Arming must not report `armed: true` when the published route is not on the adapter arming exists to produce. The adapter is declared by the SUBSCRIPTION, not by the arm, so a tuple can be derived and published while the delivery path is unchanged. Every own route must be on the armed adapter, checked **per route** (an `includes` check over the distinct adapter set admits a mixed own set, and a set-derived check admits a route carrying no adapter at all), and the refusal must name **mixed set** and **single stale route** separately, because they need different repairs.
+
+**NOT delivered here — carried, with owners:**
+
+- [ ] **AC-2** — An arm run with `harness: 'opencode'` on a seat whose launcher carries `XDG_DATA_HOME` and no flag yields a non-null `instancePid` equal to the app's main-process pid — asserted by running the real resolver against a live `ps` snapshot, not by asserting the string `--user-data-dir` appears.
+- [ ] **AC-3** — The resolver does not match an `opencode`-named *Helper*/*Framework* process — the existing `isMainExecutable` exclusion must still hold on the env-derived path.
+
+  **AC-2 and AC-3 are the env-derived resolver leg (The Fix, part 2), and #608 does not touch `instanceResolver.mjs`.** They are therefore unclaimed work, not silently-dropped clauses. Per *Out of Scope* below this leg is **operator-owned and may be made unnecessary**: changing `opencode-seat.sh` to pass `--user-data-dir` instead is a valid cheaper alternative, and if that is chosen these two clauses retire rather than get implemented. The decision belongs to @tobiu; until it is made, #608 reduces to part 1 plus AC-7 and does not claim the env leg.
+
+- [ ] **AC-5b** — a `SENT_TO_ME` delivery test observes a **real dispatch**. **Not deliverable by this change and not by any arming change**, because the gap is downstream of addressing: the route publishes, the digest reaches the OpenCode prompt, and an unattended Return does not reliably start a turn. That boundary is #606's submit defect, and claiming it here would be the exact "reporting half" lie this subsystem exists to refuse. AC-5b is therefore gated on #606 and **must not be read as satisfied by a green arm**.
 
 ## Out of Scope
 
@@ -118,6 +130,7 @@ So with only part (a) applied, `resolveGuiInstancePid` returns null, `instancePi
 
 Origin Session ID: 88f53007-ba52-48af-a9a9-25a187e90d1e
 Retrieval Hint: "instanceResolver userDataDir XDG_DATA_HOME" · "armSeatWakeRoute opencode harness" · "osascript instancePid null"
+
 
 
 ## Timeline

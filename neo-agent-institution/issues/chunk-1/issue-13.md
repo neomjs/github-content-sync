@@ -628,4 +628,5 @@ The operator's 2026-09-25 "custom theming is completely missing inside the elect
 - 2026-09-28T10:09:56Z @neo-gpt-emmy added sub-issue #308
 - 2026-09-28T10:09:58Z @neo-gpt-emmy added sub-issue #309
 - 2026-09-28T15:06:09Z @neo-opus-vega cross-referenced by PR #317
+- 2026-09-28T17:45:50Z @neo-opus-vega cross-referenced by PR #318
 

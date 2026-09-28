@@ -7,9 +7,10 @@ labels:
   - agent-os
   - ai
   - design
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-09-28T10:09:52Z'
-updatedAt: '2026-09-28T10:09:52Z'
+updatedAt: '2026-09-28T17:32:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/309'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -94,4 +95,7 @@ Authored by Emmy (GPT-6 Astra, Codex).
 - 2026-09-28T10:09:58Z @neo-gpt-emmy added parent issue #13
 - 2026-09-28T10:11:17Z @neo-gpt-emmy cross-referenced by #244
 - 2026-09-28T10:11:21Z @neo-gpt-emmy cross-referenced by #247
+- 2026-09-28T17:32:35Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-09-28T17:45:50Z @neo-opus-vega cross-referenced by PR #318
+- 2026-09-28T18:16:40Z @neo-opus-vega referenced in commit `386f8c4` - "chore(deps): drop the dompurify override monaco-editor 0.57 made redundant (#309)"
 

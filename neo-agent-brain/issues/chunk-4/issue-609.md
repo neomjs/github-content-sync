@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-28T13:52:44Z'
-updatedAt: '2026-09-28T13:52:45Z'
+updatedAt: '2026-09-28T17:12:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/609'
 author: neo-preview
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -95,4 +95,54 @@ Related: #606 / #607 (receiver-side retry removal) · #598 / #608 (the `armed` g
 - 2026-09-28T13:52:45Z @neo-preview assigned to @neo-preview
 - 2026-09-28T13:52:46Z @neo-preview added the `ai` label
 - 2026-09-28T13:52:46Z @neo-preview added the `refactoring` label
+- 2026-09-28T17:03:25Z @neo-opus-vega cross-referenced by #616
+### @neo-preview - 2026-09-28T17:12:21Z
+
+## Blocking prerequisite found during intake — delegation would silently drop Codex's submit proof
+
+Not claiming the work is blocked forever. Claiming the ticket's ACs do not describe a dependency the refactor has to resolve first, and that resolving it by writing code would have been me inventing a mechanism.
+
+### What I verified
+
+- **Premise holds.** `daemon.mjs` is 2,865 lines, imports `child_process`, has 5 spawn/`execFile` sites, 3 `fetch` sites, and all ten enumerated symbols present (`deliverViaCodexAppServer`, `deliverViaOpencodeServer`, `postOpenCodeDigest`, `deliverViaKimiServer`, `deliverViaKimiPullBridge`, `deliverViaOsascriptWithRetry`, `deliverViaWebhookUrl`, `readProcessStartTime`, `isConnectionRefused`, `spawnAsync`).
+- **The delegation target is complete.** `dispatchLocalWake` already handles all seven adapters the daemon dispatches on — `codex-app-server`, `opencode-server`, `kimi-server`, `kimi-pull-bridge`, `tmux`, `webhook`, `osascript`. So AC6 has no adapter gap, and "no capability dropped" is not blocked here.
+- **Baseline is green before any change.** `daemonDeliveryOwner.spec.mjs` + `daemon.spec.mjs` = **75 passed** at `origin/dev@4d5888b`. A safety net never seen green is not a safety net.
+- **`daemon.mjs` does not import the adapter layer today.** There is no partial delegation to build on, so this is a contract change rather than a swap.
+
+### The dependency the ACs miss
+
+`dispatchLocalWake(record, dependencies)` **builds the digest itself** via `formatLocalWakeDigest(record.envelope)`. The daemon does not: it receives a pre-coalesced `digest` and, for Codex submit-proof adapters, does this before dispatch (`daemon.mjs:2159-2161`):
+
+```js
+const wakeSubmitNonce = isCodexSubmitProofAdapter({adapter, appName: meta.appName}) ? crypto.randomUUID() : null;
+const dispatchDigest  = wakeSubmitNonce ? appendCodexWakeSubmitNonce(digest, wakeSubmitNonce) : digest;
+const proofEvidence   = wakeSubmitNonce ? {...deliveryEvidence, wakeSubmitNonce} : proofEvidence;
+```
+
+That nonce is **not a daemon-local annotation**. It is one end of a causal proof chain spanning three services:
+
+| hop | file | role |
+|---|---|---|
+| mint + embed | `daemon.mjs:1845` | appends `<!-- {prefix}{uuid} -->` to the digest the seat receives |
+| extract | `TurnPresenceHookWriter.mjs:117` | `extractWakeSubmitNonce(hookPayload)` — reads it back out of the seat's turn-presence hook |
+| validate/store | `TurnPresenceService.mjs:91` | shape-checks the uuid and persists it on the turn |
+| prove | `daemon.mjs:1866` | `findTurnPresenceAfter(…, {wakeSubmitNonce})` filters GraphLog rows on `properties.wakeSubmitNonce` to establish **that this wake caused this turn** |
+
+`localWakeAdapters.mjs` contains **zero** occurrences of the nonce. Handing `dispatchLocalWake` a record and letting it re-format the digest therefore does not merely move code — **it deletes the token that makes a Codex wake provable**, and it does so silently, because the digest still looks well-formed and the wake still delivers. Every Codex wake would lose its submit proof and the daemon would report nothing wrong.
+
+### Why I am stopping rather than proceeding
+
+Three ways forward, and picking one is a design call, not mine to assume:
+
+1. **`dispatchLocalWake` accepts a pre-built digest** (optional `digest` in the record/deps, falling back to `formatLocalWakeDigest`). Smallest change, keeps digest ownership with the coalescer that owns ordering. Costs an adapter-layer surface addition.
+2. **The nonce moves into the adapter layer** — minted in `buildOsascriptArgs`/`deliverViaCodexAppServer` equivalents. Correct long-term home, since the adapter is what actually submits, but it is a second coupling the daemon currently owns and it widens the blast radius.
+3. **Daemon keeps the nonce and delegates only the transport** — i.e. #609 as written does not reach the seam the way the seam actually sits.
+
+Option 1 preserves every AC. Options 2 and 3 change the ticket's scope. I would rather be corrected on this than be the agent who quietly picked one.
+
+### State
+
+Branch `eos/609-daemon-delegates` off `origin/dev@4d5888b`, nothing committed. A red-first structural guard is in the working tree (`daemonDelegation.spec.mjs`, uncommitted because it is **red by design** against the current daemon — AC1/AC2/AC3/AC6 all fail, while the adapter-coverage half of AC6 passes, so it discriminates rather than tautologising). It is deliberately a separate file from `daemonDeliveryOwner.spec.mjs`, which must pass unchanged and therefore cannot also be the thing that notices the refactor.
+
+
 

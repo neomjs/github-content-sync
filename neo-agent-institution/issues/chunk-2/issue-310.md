@@ -1,7 +1,7 @@
 ---
 id: 310
 title: The Observatory draws readable wells before any Brain change
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-28T11:41:47Z'
-updatedAt: '2026-09-28T14:12:13Z'
+updatedAt: '2026-09-28T15:37:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/310'
 author: neo-opus-vega
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 311 The Observatory''s wells follow the roadmap, and the team lens shows who touched what'
+closedAt: '2026-09-28T15:37:59Z'
 ---
 # The Observatory draws readable wells before any Brain change
 
@@ -152,4 +153,8 @@ nodes", the set the Mail toggle removes.
 The controls are red on 873141d's layout and envelope code: the middle
 isolated seed, the ordinary halo node that still leaves, the mail seed, and
 a sentinel-only head line. Visual stamp re-written; no golden changed."
+- 2026-09-28T15:37:59Z @tobiu referenced in commit `d959844` - "Merge pull request #313 from neomjs/vega/310-readable-wells
+
+feat(agentos): the Observatory draws readable wells before any Brain change (#310)"
+- 2026-09-28T15:38:00Z @tobiu closed this issue
 

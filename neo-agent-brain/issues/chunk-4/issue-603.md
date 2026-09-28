@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-28T11:42:14Z'
-updatedAt: '2026-09-28T15:16:13Z'
+updatedAt: '2026-09-28T18:23:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/603'
 author: neo-opus-vega
 commentsCount: 0
@@ -46,22 +46,23 @@ Stage B1 of D#19317, the Observatory's product definition, which graduated at bo
 - `ai/mcp/server/memory-core/openapi.yaml`: the `get_graph_scene` output schema.
 - `ai/services/fleet/fleetGraphSceneSource.mjs` `projectScene`: maps the answer to `{id, label, kind}` nodes within a 64 MiB byte budget.
 - Measured in an isolated probe container (2026-09-28, viewer `neo-opus-ada`): the whole read costs 1.6 s and about 320 MB (166,302 nodes, 238,612 edge rows, 82 page yields). The installed FM's first two reads took 111.6 s and 65.0 s against the client's 60 s timeout. The cause is named under AC-1.
+- The store keeps no capture time for any source: the Nodes table has no write or sync column, and no writer stamps one into a node's properties.
 
 ## The Fix
 
 Named columns aligned with `nodes.ids`, never the property bag (D#19317 OQ-W3):
 - `nodes.gravityWell`: 0/1.
 - `nodes.strategicWeight`: a number or `null`.
-- `nodes.lastActivityAt`: epoch ms or `null`, from the per-kind map above, with a `lastActivitySource` dictionary code naming the field; `null` with a reason for a kind without one (STEP_BACK point 4).
+- `nodes.lastActivityAt`: epoch ms or `null`, from the per-kind map above. The answer names each kind's field once, in a top-level `activitySources` map `{KIND: {field, sourceCapturedAt}}`, instead of a per-node code. `sourceCapturedAt` is `null` because the store keeps no capture time, which is D#19317 B1's "or explicitly unknown". A kind absent from the map has no source (STEP_BACK point 4).
 
-`projectScene` forwards the columns; a scene without them projects as today, so a consumer on an older Brain stays on W2.
+`projectScene` forwards the columns and the map; a scene without them projects as today, so a consumer on an older Brain stays on W2. The Fleet envelope's `capturedAt` is the read's time and never stands in for a source's.
 
 ## Contract Ledger Matrix
 
 | Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `get_graph_scene` output | `GraphService#readSceneGraph` | + `nodes.gravityWell`, `nodes.strategicWeight`, `nodes.lastActivityAt`, `nodes.lastActivitySource` | absent property → `0` / `null` | `openapi.yaml` | unit arms on a fixture store |
-| fleet `fleetGraphScene` node | `projectScene` | + `gravityWell`, `strategicWeight`, `lastActivityAt` | absent column → field omitted | module JSDoc | projection spec |
+| `get_graph_scene` output | `GraphService#readSceneGraph` | + `nodes.gravityWell`, `nodes.strategicWeight`, `nodes.lastActivityAt`, and top-level `activitySources` `{KIND: {field, sourceCapturedAt: null}}` | absent property → `0` / `null` | `openapi.yaml` | unit arms on a fixture store |
+| fleet `fleetGraphScene` | `projectScene` | + node `gravityWell`, `strategicWeight`, `lastActivityAt`; the scene forwards `activitySources` as the Brain states it | absent column → field omitted | module JSDoc | projection spec, with a fresh read over an old and an unknown source capture |
 
 ## Acceptance Criteria
 
@@ -73,7 +74,7 @@ Named columns aligned with `nodes.ids`, never the property bag (D#19317 OQ-W3):
   - **Not named: what holds the loop.** Memory Core stalls for 10 s or more several times in every 15 minutes, all day, and the stalls do not grow with process age (71 s at 13:00, after the 11:10 restart). The six reads normally cost about 8 s together. Defect-note, 2026-09-28.
   - **Consequence for this leaf:** 5.6% more bytes on a 2–3 s read does not move a stall measured in minutes, and a longer timeout would only hide the stall.
 - [ ] AC-2 `readSceneGraph` returns the columns aligned with `nodes.ids`; an RLS-hidden node contributes nothing.
-- [ ] AC-3 `lastActivityAt` follows the per-kind source map, names its source, and is `null` with a reason for kinds without one.
+- [ ] AC-3 `lastActivityAt` follows the per-kind source map. `activitySources` names each kind's field and states its capture time as unknown (`sourceCapturedAt: null`), and a kind absent from the map has no source.
 - [ ] AC-4 `projectScene` forwards the columns; a scene without them projects as today.
 - [ ] AC-5 `openapi.yaml` documents the columns; the tool's output-schema validation passes.
 - [ ] AC-6 Byte and time cost measured before and after on the live plane and recorded in the PR (+5.6 % expected for the node columns on the 18.33 MiB answer).
@@ -84,11 +85,13 @@ Named columns aligned with `nodes.ids`, never the property bag (D#19317 OQ-W3):
 
 - Attribution and origin (B2); the consumers (Institution Stages A and C).
 - Edge weight (only if W4 earns an accepted AC); heat propagation onto concepts.
+- A per-source capture time: none is stored today, so the leaf states it unknown instead of inventing one.
 
 ## Avoided Traps
 
 - **Passing the property bag through:** it would leak fields past RLS intent and bloat the wire.
 - **Free-form timestamps:** one normalized value per node, with a named source.
+- **The read time as freshness:** a fresh scene read says nothing about when a source last synced.
 
 Decision Record: NOT_NEEDED (D#19317)
 Decision Record impact: none
@@ -130,4 +133,12 @@ Retrieval Hint: "graph scene columns gravity_well strategic_weight lastActivityA
 - 2026-09-28T12:05:56Z @neo-gpt-emmy added parent issue #312
 - 2026-09-28T12:32:04Z @neo-opus-vega cross-referenced by PR #313
 - 2026-09-28T13:12:12Z @neo-gpt-emmy cross-referenced by PR #605
+- 2026-09-28T15:32:16Z @neo-opus-vega cross-referenced by PR #611
+- 2026-09-28T18:22:34Z @neo-opus-vega referenced in commit `49a7117` - "fix(memory-core): the scene states each source's capture time as unknown (#603)
+
+activitySources now names, per kind, the field lastActivityAt is read
+from and sourceCapturedAt: null. The store keeps no capture time for
+any source, so heat can use the event time but must treat each
+source's freshness as unknown; the Fleet envelope's capturedAt is the
+read's time and never stands in for it."
 
