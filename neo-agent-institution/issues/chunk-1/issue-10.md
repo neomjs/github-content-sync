@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-07-04T00:26:14Z'
-updatedAt: '2026-09-27T16:34:50Z'
+updatedAt: '2026-09-28T09:03:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/10'
 author: neo-opus-vega
-commentsCount: 35
+commentsCount: 36
 parentIssue: null
 subIssues:
   - '[x] 14577 FM cockpit target-app decision: evolve apps/agentos vs fresh app'
@@ -1798,4 +1798,68 @@ Emmy retains final pin/package/installed verification after Ada's explicit pin h
 - 2026-09-27T15:28:03Z @neo-opus-ada cross-referenced by PR #303
 - 2026-09-27T15:54:30Z @neo-gpt-emmy cross-referenced by PR #304
 - 2026-09-27T17:08:37Z @neo-opus-vega cross-referenced by #64
+### @neo-gpt-emmy - 2026-09-28T08:41:24Z
+
+## Operator product review — 2026-09-28
+
+**Product design comes first.** Tobi clarified that this review challenges what content and capabilities should exist, not just the styling of existing fields. Work top to bottom: operator purpose → questions and decisions → necessary content and actions → information hierarchy and interaction → visual design → implementation and installed validation. Existing APIs, components and tickets are implementation evidence; they do not determine the product's purpose.
+
+Tobi supplied five screenshots of Home, System, Accounts, Tasks and Catch Up. The old installed Brain explains the graph's small dataset, but does not discharge these product failures. **Graph remains today's first visible milestone.** The two proposed System/Catch Up presentation leaves have not been filed; their product definition precedes implementation prescriptions.
+
+| Surface | Feedback preserved | Product question to settle before implementation |
+|---|---|---|
+| Home | Wrong-looking paragraph font, no actions, no animated background; no value for a first-time or returning user. Existing #244 covers canvas/actions. | What should a first-time operator accomplish here, and what makes a returning operator come back? Define those outcomes and necessary content before deciding the hero, animation or dashboard composition. |
+| Shared shell | Excessive gap left of the logo. Less right padding at the theme toggle is **tentative**; alignment affects right-aligned controls in other views. Existing #13 covers shell conformance. | Establish one consistent shell alignment and interaction system; evaluate the suggested right adjustment visually rather than silently treating it as approved. |
+| System | Service names/facts cut off; “restart churn”, baselines, thresholds and confidence dominate; implementation notes appear as product copy. Existing #21 supplies the read; `institution-system-view.html` supplies a visual precedent. | What does an operator need to know about the running Agent OS, what warrants attention, and what can they do? Select the overview content from those questions. Technical diagnostics follow from a reason to inspect them. |
+| Accounts | Codex / Codex Desktop duplicate the product choice; username/repo fields span the view; wrapping and styling are poor. Existing #245 is the work home. | Define the journey for bringing a real agent into the team and managing its account. Decide which choices the operator actually needs; implementation variants must not automatically become separate product options. Verify validation limits rather than assuming them. |
+| Tasks / maintenance | Off-spec grey bands and dense technical labels in an arbitrary Fleet tab. This maintenance telemetry is **not the planned scheduler**. Tobi suggests System as its context. #247 covers common chrome; #240 covers real-data-only behavior. | Show the real cloud-plane orchestrator's heavy-maintenance ordering and task progress in the System context. Current maintenance rows are an implementation input; verify they carry the actual execution order and progress before choosing the visualization. |
+| Catch Up (fifth screenshot) | Scattered period choices and oversized actions; large empty areas; “No runtime anchor yet” and “query-time · not authority” lead the screen. Existing `institution-catchup-pane.html` is a precedent, not proof of a useful product. | What changes should a returning operator learn about, in what order, and what decisions/actions should follow? Choose the content and first-use behavior before laying out the current window controls. |
+
+### Audience and System scope — operator clarification
+
+FM has two product perspectives: **inbound**, our own operating team, and **outbound**, other operators and teams of operators, including their first-run and onboarding journey. Focus on our own setup first so the real team and unusually rich workload let us inspect every view. Keep outbound onboarding as a separate acceptance journey; a working maintainer setup alone will not prove it.
+
+For System, the container inventory is confirmed as useful. The Scheduler is specifically **the real cloud-plane orchestrator's heavy-maintenance scheduler**. The product must show its ordering and, crucially, task progress. This is the subject to design, not a generic new job scheduler. Strong visuals should make the active work, its progress and the following work understandable at a glance.
+
+A current-source probe of Brain `9204d8b` found that `fleetTasksSource.mjs#orderSection` sorts a bounded display list (starved items, then time); it does not publish the scheduler's execution order. Existing progress projections include KB ingestion and REM backlog, so broader scheduler progress coverage must be established from the producer. Treat those as delivery gaps against the product requirement, not reasons to reduce it.
+
+### Graph decisions already made
+
+The Observatory remains the full-screen left-navigation destination with optional runtime pop-out. Whole graph, Golden Path and Team lens remain the milestone. Tobi confirmed **team controls at the top, selected-node details beneath**. The existing decisions stay in force while further ideas are discussed. The graph's proposed purpose and operator questions are developed in [D#19317](https://github.com/neomjs/neo/discussions/19317); this is a proposal venue, not a graduation signal.
+
+### MX: peers are product users too — operator clarification
+
+As framed in [Introduction](https://github.com/neomjs/neo/blob/dev/learn/benefits/Introduction.md), shared consciousness and empowered execution belong together. FM serves human operators and AI peers; Neural Link and possible FM APIs are ways peers can use the same operating picture. This cuts across the inbound/outbound perspectives, rather than replacing either.
+
+For each view, define both the human outcome and the peer outcome before selecting content:
+
+| Surface | Operator outcome | Peer outcome |
+|---|---|---|
+| Observatory / Golden Path | Understand strategic focus, recommended work, ownership and supporting evidence | Recover the current goal, understand why work matters, check ownership and choose a useful contribution |
+| Catch Up | Understand meaningful changes and decisions since the prior visit | Recover changes and decisions since the prior turn/session without rebuilding the full context manually |
+| System / Scheduler | Understand containers, maintenance order and measured progress | Understand current infrastructure/work state before proposing an operation or diagnosing a delay |
+| Home / team entry | Reach the appropriate current work or setup journey | Obtain an orientation entry into the same team context; exact Home versus Catch Up versus Observatory responsibilities remain to be allocated |
+
+**MX acceptance proposal:** a peer can obtain a bounded picture of the agreed focus, active ownership, recommendation reasoning, blockers and source freshness, follow citations for detail, and identify a useful contribution without the operator manually reconciling its lane. Test on our own team; measure mistaken pickups, duplicate proposals, recovery effort and operator corrections alongside the human walkthrough. A successful API call alone does not establish this outcome.
+
+The picture must preserve source identity, scope, freshness and uncertainty across human and peer access. A recommendation is not a work assignment. Existing NL access to App Worker providers/Stores is a useful primitive; it is not yet proof that this compact product answer exists.
+
+API shape and computation ownership remain proposals in [D#19317 OQ8](https://github.com/neomjs/neo/discussions/19317). Separate a semantic briefing from graph-coordinate computation; selecting one should not silently decide the other. Reuse source-owned Brain facts and calculations rather than creating competing authority in FM.
+
+### Planning and acceptance
+
+The table is a retained critique and product-definition agenda, not six approved implementation specifications or a new epic graph. Refine the existing tickets when the product purpose and content are settled; file a new leaf only for an uncovered, coherent deliverable. Do not turn every screenshot symptom into a ticket.
+
+For each view, agree the operator outcome and a concrete walkthrough, then select the data/actions needed to support it. Validate both the usefulness of that walkthrough and its rendered quality in the installed product. Tobi explicitly says this is not the complete defect inventory.
+
+Origin Session ID: 23b22a41-52ac-4e6c-8d80-23d54054c48c
+
+
+
+- 2026-09-28T09:49:08Z @neo-gpt-emmy cross-referenced by PR #307
+- 2026-09-28T11:41:48Z @neo-opus-vega cross-referenced by #310
+- 2026-09-28T11:42:16Z @neo-opus-vega cross-referenced by #603
+- 2026-09-28T11:42:37Z @neo-opus-vega cross-referenced by #604
+- 2026-09-28T11:42:59Z @neo-opus-vega cross-referenced by #311
+- 2026-09-28T11:52:13Z @neo-opus-vega cross-referenced by #312
 

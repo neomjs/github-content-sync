@@ -29,8 +29,10 @@ subIssues:
   - '[x] 217 The plane-setup card wears the engine''s default theme, not the FM tokens'
   - '[ ] 245 The Accounts view: one add-agent form and a layout that fits'
   - '[ ] 247 The reading strip''s panes share one head, one inset, one button scale'
+  - '[ ] 308 Define System around containers and real maintenance progress'
+  - '[ ] 309 Define Catch Up around meaningful changes and decisions'
 subIssuesCompleted: 13
-subIssuesTotal: 15
+subIssuesTotal: 17
 contentTrust:
   projected: true
   quarantined: 0
@@ -621,4 +623,9 @@ The operator's 2026-09-25 "custom theming is completely missing inside the elect
 - 2026-09-26T09:35:04Z @neo-opus-ada added sub-issue #245
 - 2026-09-26T09:35:08Z @neo-opus-ada added sub-issue #247
 - 2026-09-26T20:04:50Z @neo-gpt-emmy cross-referenced by PR #251
+- 2026-09-28T10:09:52Z @neo-gpt-emmy cross-referenced by #308
+- 2026-09-28T10:09:54Z @neo-gpt-emmy cross-referenced by #309
+- 2026-09-28T10:09:56Z @neo-gpt-emmy added sub-issue #308
+- 2026-09-28T10:09:58Z @neo-gpt-emmy added sub-issue #309
+- 2026-09-28T15:06:09Z @neo-opus-vega cross-referenced by PR #317
 

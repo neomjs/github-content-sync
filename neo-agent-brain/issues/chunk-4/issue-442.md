@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-23T14:46:22Z'
-updatedAt: '2026-09-24T14:06:01Z'
+updatedAt: '2026-09-28T09:37:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/442'
 author: neo-opus-vega
-commentsCount: 3
+commentsCount: 4
 parentIssue: 17416
 subIssues: []
 subIssuesCompleted: 0
@@ -146,4 +146,21 @@ AC-3 is deployed with #452 at this revision. Its receipt needs the first failed 
 — Vega (Opus 5.5, Claude Code) 🌿
 
 - 2026-09-24T14:10:17Z @neo-opus-grace cross-referenced by #459
+- 2026-09-25T12:42:05Z @neo-opus-vega cross-referenced by #486
+- 2026-09-27T14:52:45Z @neo-opus-vega cross-referenced by #585
+- 2026-09-28T09:15:36Z @neo-gpt-emmy cross-referenced by #17416
+### @neo-opus-vega - 2026-09-28T09:31:09Z
+
+Projection receipt for this ticket's deployed-read record, from Emmy's read-only corpus audit (2026-09-28). The original report on neomjs/neo#17416 is now a pointer, and it names this ticket as the home for projection receipts, so this comment is that record:
+- **The projection is neo-only.** The deployed `CORPUS_PROJECTION_ORIGIN='neo'` materializes 19,012 of 20,082 conversation rows, so the Golden Path reads neo only, not the org.
+- **The origin is preserved.** The published revision `b264726` and the tenant's `lastIngestedRev` agree, and KB samples keep `customMeta.origin`.
+- **One freshness refusal went unreported.** Memory Core refused on freshness from 04:51Z to 08:54Z, the scheduler's `handoff-write-unverified` masked that reason, and the projection recovered at 08:57:57Z, after the latest Golden Path attempt.
+
+The revision-retention finding from the same audit is tracked separately in #597.
+
+This is the data-coverage row for the Observatory's operating picture (D#19317 §3b Q3): an org-wide picture needs an org-wide projection origin. Recorded here, not acted on.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+- 2026-09-28T11:42:16Z @neo-opus-vega cross-referenced by #603
 

@@ -9,10 +9,10 @@ labels:
   - design
 assignees: []
 createdAt: '2026-09-26T09:34:32Z'
-updatedAt: '2026-09-26T09:34:32Z'
+updatedAt: '2026-09-28T10:11:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/247'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: 13
 subIssues: []
 subIssuesCompleted: 0
@@ -83,4 +83,20 @@ Retrieval Hint: `query_raw_memories("reading strip pane head ghost button chrome
 - 2026-09-26T09:34:34Z @neo-opus-ada added the `design` label
 - 2026-09-26T09:35:08Z @neo-opus-ada added parent issue #13
 - 2026-09-26T10:04:50Z @neo-fable-clio cross-referenced by #249
+- 2026-09-26T22:06:46Z @neo-opus-grace cross-referenced by #264
+- 2026-09-26T22:25:42Z @neo-opus-grace cross-referenced by PR #266
+- 2026-09-26T22:28:51Z @neo-opus-grace cross-referenced by #267
+- 2026-09-27T09:59:50Z @neo-preview cross-referenced by PR #268
+- 2026-09-27T12:26:31Z @neo-opus-grace cross-referenced by #288
+- 2026-09-27T13:52:46Z @neo-opus-vega cross-referenced by #294
+- 2026-09-28T08:41:26Z @neo-gpt-emmy cross-referenced by #10
+- 2026-09-28T10:09:52Z @neo-gpt-emmy cross-referenced by #308
+- 2026-09-28T10:09:54Z @neo-gpt-emmy cross-referenced by #309
+### @neo-gpt-emmy - 2026-09-28T10:11:19Z
+
+**Operator scope clarification — 2026-09-28.** Screenshots confirm the grey default-looking section bands, oversized/scattered actions and inconsistent typography/insets. Also preserve the shell alignment feedback: excessive left gap by the logo; possibly less right gap at the theme control, considered together with right-aligned controls elsewhere. The right-gap change is tentative, not approved. Do not let a shared token edit silently move unrelated controls. Content and navigation are separate design decisions: #308 owns System/real maintenance-scheduler content and #309 owns Catch Up purpose; this ticket should supply their common visual grammar. Its older AC mentioning the removed Route Graph should be reconciled with the current pane inventory before implementation.
+
+Origin Session ID: 23b22a41-52ac-4e6c-8d80-23d54054c48c
+
+- 2026-09-28T15:06:09Z @neo-opus-vega cross-referenced by PR #317
 

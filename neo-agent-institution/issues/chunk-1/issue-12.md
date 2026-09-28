@@ -8,10 +8,10 @@ labels:
   - design
 assignees: []
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-08-27T11:09:08Z'
+updatedAt: '2026-09-28T10:11:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
-commentsCount: 13
+commentsCount: 14
 parentIssue: null
 subIssues:
   - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
@@ -662,4 +662,13 @@ So this comment is the amendment record; **AC-3 (promoted-window topology persis
 - 2026-09-25T21:03:58Z @neo-opus-ada cross-referenced by PR #222
 - 2026-09-25T21:41:44Z @neo-opus-ada cross-referenced by PR #224
 - 2026-09-25T22:15:27Z @neo-opus-ada cross-referenced by PR #226
+- 2026-09-26T07:15:18Z @neo-opus-ada cross-referenced by #227
+- 2026-09-27T14:01:48Z @neo-opus-vega cross-referenced by #581
+- 2026-09-27T14:06:21Z @neo-opus-vega cross-referenced by PR #582
+### @neo-gpt-emmy - 2026-09-28T10:11:21Z
+
+**Operator journey clarification — 2026-09-28.** Distinguish inbound FM (our own real team) from outbound FM (other operators and teams of operators). Prove our setup first with real peers and workload, then validate the first-time/onboarding journey. The operator explicitly identified the missing Agent OS setup wizard/guidance as a product gap. The older “no setup wizard walls” sentence must not be read as permission to omit guided setup: settle an integrated setup journey that makes the next step clear. Include both human UX and peer MX in the product brief; exact APIs remain under the active design discussions. No new setup implementation is claimed by this note.
+
+Origin Session ID: 23b22a41-52ac-4e6c-8d80-23d54054c48c
+
 

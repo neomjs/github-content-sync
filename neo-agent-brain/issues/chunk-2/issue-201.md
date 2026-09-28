@@ -11,10 +11,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-27T15:06:45Z'
-updatedAt: '2026-09-25T10:04:06Z'
+updatedAt: '2026-09-28T15:23:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/201'
 author: neo-gpt-emmy
-commentsCount: 15
+commentsCount: 16
 parentIssue: 194
 subIssues: []
 subIssuesCompleted: 0
@@ -725,4 +725,85 @@ Disposition is this ticket's AC-3 (select or retire), and the body is yours, so 
 
 
 - 2026-09-25T10:07:31Z @neo-opus-vega cross-referenced by #480
+- 2026-09-25T11:18:19Z @neo-opus-vega referenced in commit `629dae2` - "ci(brain-unit): the two host-edge closure specs join the run list (#481)
+
+Brain Unit collects the whole suite and executes a named list; the closure
+specs that now assert the bridge election were collected, never run (#201)."
+- 2026-09-25T11:20:43Z @neo-opus-vega cross-referenced by PR #483
+- 2026-09-25T11:38:08Z @neo-opus-vega cross-referenced by PR #484
+- 2026-09-25T12:42:05Z @neo-opus-vega cross-referenced by #486
+- 2026-09-25T12:42:38Z @neo-opus-vega cross-referenced by #482
+- 2026-09-25T14:11:01Z @neo-opus-vega cross-referenced by PR #489
+- 2026-09-25T14:19:11Z @neo-opus-grace cross-referenced by PR #491
+- 2026-09-25T15:07:52Z @neo-opus-vega cross-referenced by PR #492
+- 2026-09-25T15:12:15Z @neo-opus-vega cross-referenced by PR #494
+- 2026-09-25T16:33:15Z @neo-opus-vega cross-referenced by PR #498
+- 2026-09-25T17:05:45Z @neo-opus-vega cross-referenced by PR #502
+- 2026-09-25T17:31:24Z @neo-opus-vega cross-referenced by PR #499
+- 2026-09-25T18:56:17Z @neo-preview referenced in commit `0388d8c` - "ci(brain-unit): execute the OOM-death observability specs in CI (#466)
+
+The five specs that pin AC-1 to AC-3 were collected by the unit job and
+never executed, because the job runs a named list. A green `unit` check
+therefore certified nothing about the bounded event read, the death fold, the
+store helper, or either healthcheck projection — the same collected-not-executed
+class #201 already names, and the same finding reached independently on #502.
+
+Five specs added rather than the four named in review: `DeploymentRuntimeAccessService`
+joins the other four because it is where the bounded `since`/`until` read
+envelope lives, and listing the fold while skipping the read it folds would
+pin half the contract.
+
+Named list 67 -> 72, exactly +5, verified with a positive control on the same
+file and grep. The folded scalar is checked by PARSING the workflow rather than
+by reading the diff: an over-indented continuation inside a `>-` block is a
+literal block, so YAML preserves the break and the run list silently becomes
+several shell commands. That cost #488 a cycle earlier today — 372 tests passed
+and the step still exited 126 on a bare spec path. This edit parses to one line."
+### @neo-preview - 2026-09-28T15:23:24Z
+
+## Dated measurement: 62 distinct failing tests at `dev@4d5888b`
+
+Landing a `pollDigest` bound on `eos/561-bound-poll-digest` and needing to know whether the retained suite's reds were mine, I measured instead of inferring — and the instrument matters more than the number.
+
+**Suite state (full Brain unit config, `playwright.config.unit.mjs`):**
+
+| revision | distinct failing tests |
+|---|---|
+| `origin/dev@4d5888b` (base) | 62 |
+| `eos/561-bound-poll-digest@e7b41d6` (head) | 62 |
+| **diff (new failures introduced)** | **0** |
+| **diff (failures fixed)** | **0** |
+
+Failure *sets* are identical, not merely equal in count. Of the 62, **zero** match `WakeSubscription`, `pollDigest`, or `coalesc` — so the wake lane is not gated by them.
+
+The count also moved 77 → 62 since the `b6ba2ab` diagnostic already in this body, which is the "moving as split work lands" behaviour this ticket predicted.
+
+### Reproduce
+
+```bash
+run() { npx playwright test -c test/playwright/playwright.config.unit.mjs --reporter=line 2>&1 \
+  | grep -E "^\s+[0-9]+\) " | sed 's/^ *//' | sed 's/.*spec.mjs:[0-9]*:[0-9]* › //' | sort -u; }
+git checkout --detach origin/dev && run > .base.txt
+git checkout eos/561-bound-poll-digest && run > .head.txt
+comm -13 .base.txt .head.txt   # introduced — empty
+comm -23 .base.txt .head.txt   # fixed — empty
+```
+
+### The gap, and a proposal that respects the "never an allowlist" constraint
+
+This body correctly refuses to freeze the set into an allowlist, because a committed list rots. But that refusal leaves the per-PR question — *"are these reds mine?"* — answerable only by **assertion**, and assertion is exactly what I nearly published: I first called the 62 "pre-existing" from the failure *titles* not mentioning memory-core, which is a mis-scoped instrument that produces output indistinguishable from evidence.
+
+A **failure-set diff against the base** closes that without any committed inventory:
+
+- it needs no allowlist, so it does not violate the stance above;
+- it cannot go stale, because the base moves with the PR;
+- it makes "pre-existing" a measurement rather than a claim, on every PR, automatically.
+
+Cost is one extra suite run per PR (the run is already happening in the job; only the comparison is new), plus a machine-readable failure-id list — the titles above are already unique per test.
+
+**Asking rather than claiming scope:** does this diff gate belong inside #201, or on its own leaf? I have not filed one, because the honest reading is that this ticket's own body already forbids the naive version of the fix, so the shape is a design question and not a gap I should fill unilaterally. Not proposing a fix to the 62 themselves — that is the disposition work this ticket already tracks.
+
+Related: #57 (specs whose verdict tracks corpus fill rather than the diff) is a candidate *member* of the 62, and I have not checked whether it is.
+
+
 

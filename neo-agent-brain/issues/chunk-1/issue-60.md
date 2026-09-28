@@ -1,6 +1,6 @@
 ---
 id: 60
-title: Chroma's memory cap is below the complete working set
+title: 'Chroma grows toward a memory cap the daemons cannot pass, and hitting it is silent'
 state: OPEN
 labels:
   - bug
@@ -8,7 +8,7 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-08-06T14:43:08Z'
-updatedAt: '2026-08-26T15:06:40Z'
+updatedAt: '2026-09-28T15:07:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/60'
 author: neo-opus-vega
 commentsCount: 3
@@ -23,50 +23,30 @@ contentTrust:
 blockedBy: []
 blocking: []
 ---
-# Chroma's memory cap is below the complete working set
+# Chroma grows toward a memory cap the daemons cannot pass, and hitting it is silent
 
-## ⛔ THE CAP HALF OF THIS TICKET IS SUPERSEDED — read before implementing
+## Current state (2026-09-28): read first
 
-*(@neo-opus-vega, 2026-08-17, operator-prompted.)*
+*The 2g arithmetic below is history. The default cap became `${NEO_CHROMA_MEMORY_LIMIT:-8g}` on 2026-08-07 (neomjs/neo#16596 / neomjs/neo#16597), and the live limit is now 16 GiB.*
 
-**Everything below about a 2g cap is stale.** `ai/deploy/docker-compose.yml` has capped chroma at
-`${NEO_CHROMA_MEMORY_LIMIT:-8g}` — env-overridable — since commit `ea5b3058ff` on **2026-08-07**,
-landed by the sibling **#16596 / PR neomjs/neo#16597** (*"A store at its memory ceiling is told to shed load it
-cannot shed"*), which closed 2026-08-12. The change predates this ticket's own last update by three
-days, and the body was never refreshed against it.
+Measured on the local plane, 2026-09-28 14:52–14:56Z:
 
-So the arithmetic in `## The Problem` is moot: the 2.03 GiB working set fits 8 GiB with ~4x headroom,
-and the 0.36 GiB fragment-deletion squeeze it argues over buys nothing. Do not implement it.
+| | 2026-08-10 | 2026-09-28 |
+|---|---|---|
+| limit | 8 GiB | 16 GiB, the top of the `container-memory-ceiling` band (8–16 GiB, ADR 0026 §2.8) |
+| in use (`docker stats`) | 3.43 GiB | 11.27 GiB (70%) |
+| rows | ~101,000 | 264,585 in 6 collections, one of them `kb-restore-20260806` (59,754) |
 
-**On why 8g is the right default — and a correction to how I first argued it.** I initially called
-the tenant deployment "independent corroboration" that also caps chroma at 8g. It is not independent:
-we author that tenant's config too, so that is one team picking the same number twice, and I should not
-have claimed convergence between two artifacts with a common author.
+**The daemons have no step past the cap.** At or above the cap, the selector proposes a beyond-cap value and validation refuses it by design; the loop then records. ADR 0026 §2.8 says: *"Reaching the cap is a signal that autonomy has hit the corpus-architecture question, not a wall to move."* The store grew 3.3× in seven weeks, so that question is now this ticket's. The ADR can be amended. Candidates, none chosen:
+- shrink what the store holds, such as dead collections and retained revisions;
+- let the band follow the host instead of a constant;
+- a homeostatic step (neomjs/neo-agent-brain#125).
 
-The real argument is better and the operator's: these are the **only two Agent OS instances known to
-exist**, and both run 8g. So the previous `2g` default was a number that **zero deployments ran** —
-its only function was to be overridden. A default that matches 100% of real deployments is not a
-guess, it is the observed value; the sample is N=2 with a shared author, which makes it evidence
-about what we actually deploy, not about hardware generality.
+**The loop already fires, on a wrong reading.** The diagnosis divides raw `memory_stats.usage` by the limit, and that usage includes 2.24 GiB of reclaimable file cache. It reads 84% (13.51 GiB) and diagnoses exhaustion at every check since 2026-09-26 at the latest: 163 refused raises, three an hour. This instrument defect is a separate defect-note (2026-09-28). Fixing it silences today's loop; the cap question stays.
 
-Sizing check against that default: that tenant's incoming first ingest of **94,255 chunks** projects to
-roughly **2 GiB** at the ~22 KiB/row this ticket measured — comfortably inside 8g.
+**Still open from the original ticket:** a store that reaches its ceiling exits cleanly (`OOMKilled=false`, `ExitCode=0`), so a truncated import looks like an ordinary restart. Moving the cap does not make hitting it observable.
 
-**What survives, and this ticket's own Contract Ledger already named it** (`chroma restart handling |
-unchanged — removes a cause, not the handling`):
-
-> A store that reaches its memory ceiling **exits cleanly** — `OOMKilled = false`, `ExitCode = 0`,
-> `RestartCount = 13`. A truncated import is therefore indistinguishable from an ordinary restart,
-> with no kernel OOM trail to find. The demonstrated instance: a 59,754-chunk restore died at
-> **24,000** with `DATABASE_IMPORT_ERROR`, reported as a routine container restart.
-
-**Raising a cap moves the ceiling; it does not make hitting it observable.** That residual is live at
-any cap value, and it is the only thing this ticket should still be about. It matters now rather than
-academically: that tenant plane is about to walk 94,255 chunks through this store, and if it does hit
-its ceiling the operator will see a restart, not a failure.
-
-New ACs are deliberately not written until the residual is scoped — writing them against the stale
-cap premise is how a ticket acquires a fix nobody re-justified.
+New ACs are deliberately not written until the mechanism is chosen.
 
 ## Context
 
@@ -182,6 +162,7 @@ Authored by @neo-opus-vega (Claude Opus 5).
 
 ---
 *(Client identity redacted 2026-08-24 per §critical_gates 9; the private lane records which tenant this is.)*
+
 
 
 ## Timeline
@@ -348,4 +329,7 @@ Authored by @neo-opus-vega 🌿
 
 - 2026-08-25T17:45:17Z @neo-opus-ada cross-referenced by #17773
 - 2026-08-28T15:37:12Z @neo-opus-vega unassigned from @neo-opus-vega
+- 2026-09-24T16:22:42Z @neo-opus-vega cross-referenced by #463
+- 2026-09-28T15:06:09Z @neo-opus-vega cross-referenced by PR #317
+- 2026-09-28T15:07:24Z @neo-opus-vega changed title from **Chroma's memory cap is below the complete working set** to **Chroma grows toward a memory cap the daemons cannot pass, and hitting it is silent**
 

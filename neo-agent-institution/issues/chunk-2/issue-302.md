@@ -6,12 +6,12 @@ labels:
   - enhancement
   - ai
 assignees:
-  - neo-opus-ada
+  - neo-gpt-emmy
 createdAt: '2026-09-27T15:23:11Z'
-updatedAt: '2026-09-27T15:46:58Z'
+updatedAt: '2026-09-28T10:03:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/302'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-09-27T15:46:58Z'
+closedAt: '2026-09-28T10:03:08Z'
 ---
 # Brain pin to dev, with the harness resolving fleet.agentsRoot
 
@@ -78,4 +78,34 @@ the CI contract job checks out the same Brain commit."
 
 chore(deps): Brain pin to dev d5cd907, with the harness resolving fleet.agentsRoot (#302)"
 - 2026-09-27T15:46:59Z @tobiu closed this issue
+- 2026-09-28T08:19:21Z @neo-gpt-emmy reopened this issue
+- 2026-09-28T08:19:24Z @neo-gpt-emmy assigned to @neo-gpt-emmy
+- 2026-09-28T08:19:24Z @neo-gpt-emmy unassigned from @neo-opus-ada
+### @neo-gpt-emmy - 2026-09-28T08:19:25Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@neo-opus-ada`
+**New assignees:** `neo-gpt-emmy`
+**Reason:** Ada explicitly handed the final Brain pin to Emmy in MESSAGE:51cbedd0-ebc0-4850-9b1c-4971d2880b3b on 2026-09-27. The initial #303 harness rename is merged, but current dev and installed FM still pin d5cd907, before the merged whole-graph reader #587. Tobi's 2026-09-28 priority is Graph experience first; reopening this existing pin ticket for that remaining delivery.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+### @neo-gpt-emmy - 2026-09-28T08:21:38Z
+
+Reopened for the remaining Brain pin delivery under Ada's explicit handoff to Emmy (Memory Core `MESSAGE:51cbedd0-ebc0-4850-9b1c-4971d2880b3b`, 2026-09-27), after #303's harness rename and #304's reader landed. The harness rename remains delivered.
+
+Live verification on 2026-09-28: Institution `dev` still pins Brain `d5cd907`; the installed bundle's receipt carries that same revision. Brain #587 and #592 are merged. The installed Observatory shows 18 nodes / 20 edges, while a current `get_graph_scene` read returns 149,541 nodes / 216,775 edges / 69,813 unlinked nodes, with neither node nor edge truncation. Tobi has chosen the graph experience as today's first visible milestone.
+
+Prescription checked: `package.json`, `package-lock.json` and `.github/workflows/ci.yml` own this dependency/contract alignment. The remaining change is their Brain revision, followed by package and installed verification under #10. No new graph renderer or harness path change is needed for the pin. The live Institution PR queue was empty at intake. The header and Team lens design remain under #10 / neomjs/neo#19151 and are not certified by this dependency update.
+
+Emmy · session 01a0e711-293d-7d43-b01a-3a88bb68dbf6
+
+- 2026-09-28T09:49:08Z @neo-gpt-emmy cross-referenced by PR #307
+- 2026-09-28T10:03:08Z @tobiu referenced in commit `f710502` - "Merge pull request #307 from neomjs/codex/302-fleet-graph-pin
+
+feat(fleet): consume the full-graph Brain revision (#302)"
+- 2026-09-28T10:03:08Z @tobiu closed this issue
+- 2026-09-28T10:09:52Z @neo-gpt-emmy cross-referenced by #308
+- 2026-09-28T10:09:54Z @neo-gpt-emmy cross-referenced by #309
 

@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-26T09:34:29Z'
-updatedAt: '2026-09-27T13:55:48Z'
+updatedAt: '2026-09-28T10:11:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/245'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: 13
 subIssues: []
 subIssuesCompleted: 0
@@ -92,4 +92,13 @@ Retrieval Hint: `query_raw_memories("Accounts view redesign one add-agent form G
 - 2026-09-27T10:01:33Z @neo-opus-ada cross-referenced by PR #281
 - 2026-09-27T12:26:56Z @neo-opus-ada cross-referenced by #289
 - 2026-09-27T13:55:47Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-09-27T14:02:07Z @neo-gpt-emmy cross-referenced by #10
+- 2026-09-27T14:17:49Z @neo-opus-ada cross-referenced by #296
+- 2026-09-27T14:21:35Z @neo-opus-ada cross-referenced by PR #297
+### @neo-gpt-emmy - 2026-09-28T10:11:17Z
+
+**Operator scope clarification — 2026-09-28.** Our own real team is the first setup/acceptance environment; onboarding for other operators and teams remains required. The screenshot specifically rejects Codex and Codex Desktop as separate product choices, full-width username/repository fields, and the current styling. Present the meaningful product choice and preserve required launch mechanics behind it; field sizing and validation must use verified contracts rather than assumed character limits. Remove App Worker/credential-ownership implementation prose from the ordinary setup journey. Peer colours are now an identity-stable, cross-view presentation concept under neomjs/neo#19317 OQ-W9: setup consumes its eventual decision; model changes must not change a peer's colour. These details belong in this existing form/product task.
+
+Origin Session ID: 23b22a41-52ac-4e6c-8d80-23d54054c48c
+
 
