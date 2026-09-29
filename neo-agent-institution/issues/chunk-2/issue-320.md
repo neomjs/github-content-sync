@@ -1,7 +1,7 @@
 ---
 id: 320
 title: 'The Observatory''s heat overlay and team lens: attention and attribution over any geography'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,11 +10,11 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-29T11:48:22Z'
-updatedAt: '2026-09-29T14:52:53Z'
+updatedAt: '2026-09-29T19:41:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/320'
 author: neo-opus-vega
 commentsCount: 0
-parentIssue: null
+parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-29T17:29:11Z'
 ---
 # The Observatory's heat overlay and team lens: attention and attribution over any geography
 
@@ -61,7 +62,7 @@ Stage C of D#19317 had two overlays and a lens beside its geography. #311 now sh
 - [ ] AC-5 (post-merge, installed) The operator's viewer, launched cold from a saved plane, shows the overlays and the lens.
 - [ ] AC-6 The line reads the strategic cap: the halo splits "no well reached" from "over a well's cap", so its count stops conflating two facts, and `wellCap` gets its first reader. (From #321's review 5352528441.)
 - [ ] AC-7 The pane has one admission source. Either the scene envelope's `admission` replaces the Golden Path leaf's copy for the route overlay, or the scene copy leaves the SHAPE. The choice is pinned by an arm. (From #321's review 5352528441.)
-- [ ] AC-8 (post-merge) #311's AC-1 residual: on a plane serving neomjs/neo-agent-brain#611's columns, record the strategic wells' sizes and `wellCap` on this ticket. Once neomjs/neo-agent-brain#625 is merged and deployed, the same measurement also records that the answer carries its `states` and `nodes.state` column (#625's AC-4).
+- [x] AC-8 (post-merge) #311's AC-1 residual: on a plane serving neomjs/neo-agent-brain#611's columns, record the strategic wells' sizes and `wellCap` on this ticket. Once neomjs/neo-agent-brain#625 is merged and deployed, the same measurement also records that the answer carries its `states` and `nodes.state` column (#625's AC-4). **Measured 2026-09-29 19:38Z on the local plane at Brain dev@`83c0e09`.** The scene was read as the fleet reads it: `get_graph_scene` and `get_computed_route` over the plane's MC ingress, shaped by `fleetGraphSceneSource` at the deployed revision. The read took 3.5 s and came back current and complete: 152,675 nodes, 223,509 edges. It holds 48 strategic wells with `wellCap` 1,894. Well sizes run from 16 (min) through 139 (p50) and 1,171 (p90) to 1,894 (max); 3 wells sit at the cap, and 17,474 nodes are in wells. The answer's `states` dictionary and `nodes.state` codes decode to 19,145 work-item states: OPEN 425, CLOSED 12,533, MERGED 6,187. Another 6,041 work items have no state.
 
 ## Out of Scope
 
@@ -94,6 +95,7 @@ Live latest-open sweep: latest 20 open Institution issues, read 2026-09-29 ~12:0
 Origin Session ID: db0e34f7-9d0f-4799-a2c2-3a5033f8bc9a
 
 Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
+
 
 
 
@@ -166,4 +168,14 @@ under a hovered node, which keeps its own."
 - 2026-09-29T15:33:57Z @neo-opus-vega referenced in commit `fd18512` - "docs(observatory): the heat names how fresh the state it reads is (#320)
 
 A work item's state and time are what the Brain's last ingestion stored, and the read carries no freshness, so an item merged since still heats until the next ingestion. The lifecycle is a work item's, never a task's."
+- 2026-09-29T15:52:23Z @neo-opus-vega referenced in commit `81c116f` - "fix(observatory): a work state the heat cannot interpret reads unknown, never cold (#320)
+
+heatOf retired every stored state but OPEN to a confident 0, so a value outside the Brain's vocabulary was drawn cold and missed from the line's unknown count. workStates now declares the states the heat can interpret (OPEN heats, MERGED and CLOSED retire), and anything else is NaN like a missing state."
+- 2026-09-29T17:29:11Z @tobiu referenced in commit `31d4a89` - "Merge pull request #325 from neomjs/vega/320-observatory-overlays
+
+feat(observatory): the team lens and the heat draw over any geography (#320)"
+- 2026-09-29T17:29:11Z @tobiu closed this issue
+- 2026-09-29T20:35:33Z @neo-opus-vega cross-referenced by #333
+- 2026-09-29T20:36:00Z @neo-opus-vega added parent issue #312
+- 2026-09-29T20:37:56Z @neo-opus-vega cross-referenced by #312
 

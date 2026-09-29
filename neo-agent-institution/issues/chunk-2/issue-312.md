@@ -9,7 +9,7 @@ labels:
   - epic
 assignees: []
 createdAt: '2026-09-28T11:52:12Z'
-updatedAt: '2026-09-28T18:23:53Z'
+updatedAt: '2026-09-29T20:37:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/312'
 author: neo-opus-vega
 commentsCount: 2
@@ -19,8 +19,10 @@ subIssues:
   - '[x] 311 The Observatory''s wells follow the roadmap: W3 strategic wells with a mass cap'
   - '[x] 603 The graph scene carries the Brain''s gravity and recency columns'
   - '[x] 604 The graph scene attributes nodes to peers, with origin carried by identity'
-subIssuesCompleted: 4
-subIssuesTotal: 4
+  - '[ ] 333 The Observatory''s panel: View, then the selected node and its source'
+  - '[x] 320 The Observatory''s heat overlay and team lens: attention and attribution over any geography'
+subIssuesCompleted: 5
+subIssuesTotal: 6
 contentTrust:
   projected: true
   quarantined: 0
@@ -36,7 +38,7 @@ Terminal predicate: on the installed Fleet Manager, from a cold launch, the oper
 
 The Observatory is FM's full-screen graph view, and on the live scene it answers none of the operator's questions. Its layout clusters bare topology into 4,638 communities, the two largest of which are agent inboxes, and draws them as a featureless sphere. Half the scene has no edge. The Brain's strategic anchors, recency and attribution never leave `get_graph_scene`. On the D#19317 prototype, built from the same data, the operator said: *"a LOT better than what FM shows right now, and closer to clio's PoCs."*
 
-**Why an epic, not a ticket:** the outcome spans two repositories, the Institution consumer and the Brain's scene read. It has leaves in a dependency order: the consumer's first stage needs no wire change, and the Brain's columns and attribution come before its second stage. The graduation also named work it did not file yet: the right-hand panel's View and Selected-node sections. Institution #10 cannot hold these leaves. It carries GitHub's maximum of 100 sub-issues (94 closed), and the operator's rule (2026-09-28) is about 25 subs per epic at most.
+**Why an epic, not a ticket:** the outcome spans two repositories, the Institution consumer and the Brain's scene read. It has leaves in a dependency order: the consumer's first stage needs no wire change, and the Brain's columns and attribution come before its second stage. The graduation also named the right-hand panel's View and Selected-node sections, which #333 carries. Institution #10 cannot hold these leaves. It carries GitHub's maximum of 100 sub-issues (94 closed), and the operator's rule (2026-09-28) is about 25 subs per epic at most.
 
 ## Intended solution shape
 
@@ -64,12 +66,13 @@ Decision Record impact: none
 The per-leaf mapping is recorded in D#19317's own ledger section (rev 13). At epic level:
 - Q1 and Q2 (wells, attention) → the consumer stages and Brain columns
 - Q4, historical half → the Brain attribution leaf and the consumer's second stage; the live half is `[DEFERRED_WITH_TIMELINE]` (OQ-W8)
-- Q5 and the panel's View and Selected-node sections → not yet filed; a leaf joins this epic when its definition is ready
+- Q5 and the panel's View and Selected-node sections → #333, for the kinds with a source view: canonical GitHub ids and session ids, about 14% of the scene's nodes. Every other kind's evidence needs a viewer-scoped Brain read, because `get_node` descriptions came back empty or placeholder in the kinds sampled. That leaf is not filed yet, and until it lands, "any node" in the terminal predicate holds only for those kinds.
 
 ## Residuals carried from closed leaves
 
 - **#310 AC-6** `[L4-deferred — operator handoff needed]`: headed checks on the installed FM at the operator's viewer, from a cold saved-plane launch: first useful paint, selection latency, well and halo readability, resize, graph and route state. It stays open here once #310 closes, and its first-paint check also waits on the cold `get_graph_scene` read (below).
-- **neomjs/neo-agent-brain#603 (B1), the installed read** `[L4-deferred]`: once the plane runs neomjs/neo-agent-brain#611's revision, a fleet-server `fleetGraphScene` read carries `gravityWell`, `strategicWeight` and `lastActivityAt` on its nodes, and `activitySources` with each kind's `sourceCapturedAt: null`. It stays open here once #603 closes.
+- **#320 AC-5** `[L4-deferred — operator handoff needed]`: the operator's viewer, launched cold from a saved plane, shows the Team list, the lens and the heat.
+- **neomjs/neo-agent-brain#603 (B1), the installed read**, resolved 2026-09-29 at 19:38Z. On the plane at Brain dev@`83c0e09`, the scene was read through its MC ingress and shaped by the deployed `fleetGraphSceneSource`. Of 152,675 nodes, `gravityWell` is set on 10,472, `strategicWeight` on 28,341 and `lastActivityAt` on 112,381. `activitySources` names all ten kinds, each with `sourceCapturedAt: null`. The fleet-server's own hop is the installed FM's read, which #310 AC-6 exercises.
 
 ## Out of scope
 
@@ -89,6 +92,8 @@ Epic sweep: 7 open Institution epics and 38 open Brain epics read, by terminal p
 Structure map: run 2026-09-28 in the Brain checkout; the Brain leaves sit in `ai/services/memory-core` (`GraphService`) and `ai/services/fleet` (`fleetGraphSceneSource`). The Institution consumer is not Brain-hosted (N/A).
 Origin Session ID: 96f97500-4dcb-461e-bef0-af4e6dc5e24a
 Retrieval Hint: "Observatory shared operating picture epic wells attention team lens D19317"
+
+
 
 
 
@@ -180,4 +185,7 @@ Euclid (GPT-6, Codex) · session 01a0e711-2090-7cf1-9e31-38de49789366
 - 2026-09-29T11:29:48Z @neo-preview cross-referenced by PR #317
 - 2026-09-29T11:48:23Z @neo-opus-vega cross-referenced by #320
 - 2026-09-29T12:24:39Z @neo-preview cross-referenced by PR #321
+- 2026-09-29T20:35:33Z @neo-opus-vega cross-referenced by #333
+- 2026-09-29T20:35:58Z @neo-opus-vega added sub-issue #333
+- 2026-09-29T20:36:00Z @neo-opus-vega added sub-issue #320
 

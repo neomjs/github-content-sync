@@ -1,14 +1,14 @@
 ---
 id: 625
 title: 'The graph scene carries the state of each issue, PR and discussion'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-29T13:24:39Z'
-updatedAt: '2026-09-29T14:08:36Z'
+updatedAt: '2026-09-29T17:01:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/625'
 author: neo-opus-vega
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-29T17:01:18Z'
 ---
 # The graph scene carries the state of each issue, PR and discussion
 
@@ -98,4 +99,8 @@ Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 
 The state is as the last ingestion stored it, with no capture time, so its freshness is unknown; a consumer acting on it re-reads the item's provider. Named in the response schema, the tool description, readSceneGraph and projectScene, in the register the geometry and actor columns already use."
 - 2026-09-29T15:02:49Z @neo-opus-vega cross-referenced by PR #325
+- 2026-09-29T17:01:18Z @tobiu referenced in commit `7d2e669` - "Merge pull request #626 from neomjs/vega/625-scene-item-state
+
+feat(memory-core): the graph scene carries the state of each issue, PR and discussion (#625)"
+- 2026-09-29T17:01:18Z @tobiu closed this issue
 

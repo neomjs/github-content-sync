@@ -1,17 +1,17 @@
 ---
 id: 606
 title: 'osascript: submit after paste, and stop retrying — the retry removal is a ruling, the no-submit cause is still open'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-preview
 createdAt: '2026-09-28T13:46:28Z'
-updatedAt: '2026-09-29T13:40:05Z'
+updatedAt: '2026-09-29T17:27:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/606'
 author: neo-preview
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-29T17:27:53Z'
 ---
 # osascript: submit after paste, and stop retrying — the retry removal is a ruling, the no-submit cause is still open
 
@@ -49,7 +50,7 @@ A keystroke into the target's text field is evidence that the **paste** landed �
 
 ## Acceptance Criteria
 
-Numbered 2026-09-29 so a PR's certificate binds by id. **AC-1…AC-6 are delivered by #607; AC-7 is not, and this ticket stays open for it** — which is why #607 now carries `Refs #606` rather than `Resolves`. A close target cannot own its own residual, so the undeliverable clause had to leave with the close, or the PR would have held a promise nobody was on the hook for.
+Numbered 2026-09-29 so a PR's certificate binds by id. **AC-1…AC-6 and the dispatch half of AC-7 are delivered by #607. The unattended turn-start witness is transferred to open #503 AC-6**, whose issue survives this ticket's closure. #607 therefore closes this bounded one-attempt mechanism; it does not claim to fix the intermittent no-submit symptom.
 
 - [x] **AC-1** — no retry: exactly one `osascript` spawn per delivery; the 4-attempt loop and the 800ms backoff are gone.
 - [x] **AC-2** — `keystroke "v" using command down` is followed by `key code 36` with no intervening guard, re-verification, or probe.
@@ -57,7 +58,7 @@ Numbered 2026-09-29 so a PR's certificate binds by id. **AC-1…AC-6 are deliver
 - [x] **AC-4** — the typing guards are untouched: the `assertTargetFrontmost` call-site count is unchanged at 10.
 - [x] **AC-5** — `localWakeAdapters.spec.mjs` + `localWakeAdaptersDialogGate.spec.mjs` green (29 + 8, measured at the branch head).
 - [x] **AC-6** — **corrected 2026-09-29: "one file changed" is no longer true and was the wrong bound.** The delivery is `localWakeAdapters.mjs` (source + JSDoc) and `localWakeAdapters.spec.mjs` (one new arm, plus the turn-start disclaimer on the existing one). Two files, and the second is the falsifier — an AC that forbids its own evidence is not an AC.
-- [x] **AC-7 (added 2026-09-29)** — **The no-submit cause is characterised, and the `delivered` field stops standing in for a turn start.** Two parts, and they close in different places. **(b) The `delivered` field is a dispatch claim:** delivered by #607, which states it in `spawnOsascriptOnce`'s JSDoc — *"the script was dispatched and exited cleanly. It does not mean a turn started"* — and disclaims it again on the spec arm that would otherwise read a successful `spawnAsync` as turn-start evidence. **(a) The observed witness is open and is NOT carried here:** a close target cannot own its own residual, so the unattended-wake witness moves to **[#503](https://github.com/neomjs/neo-agent-brain/issues/503)**, which is the ticket whose whole subject is a surface that *projects intent where it should project outcome* — the same distinction one level up, and open in the same repo. The 2026-09-28 receipt stays retracted here as the record of why: one success followed immediately by one failure is an intermittent symptom, not a fix, and this harness has no Accessibility consent (`-25211`) to characterise a distribution.
+- [x] **AC-7 (added 2026-09-29)** — **The `delivered` field is a dispatch claim; the unattended turn-start witness is transferred to #503.** The two parts close in different places. **(b) Dispatch scope:** delivered by #607, which states it in `spawnOsascriptOnce`'s JSDoc — *"the script was dispatched and exited cleanly. It does not mean a turn started"* — and disclaims it again on the spec arm that would otherwise read a successful `spawnAsync` as turn-start evidence. **(a) The observed witness is open and is NOT carried here:** a close target cannot own its own residual, so the unattended-wake witness moves to **[#503](https://github.com/neomjs/neo-agent-brain/issues/503)**, which is the ticket whose whole subject is a surface that *projects intent where it should project outcome* — the same distinction one level up, and open in the same repo. The 2026-09-28 receipt stays retracted here as the record of why: one success followed immediately by one failure is an intermittent symptom, not a fix, and this harness has no Accessibility consent (`-25211`) to characterise a distribution.
 
 ## Out of scope
 
@@ -78,7 +79,6 @@ Numbered 2026-09-29 so a PR's certificate binds by id. **AC-1…AC-6 are deliver
 - **Live level (L2, Post-Merge Validation).** Whether enter now fires unattended is observable only against a real seat, and only after merge. Not claimed here.
 
 Related: the submit-gap defect-note (@neo-opus-vega holds the promotion call) · #79 (arming path) · #561 (poll-digest OOM — unrelated)
-
 
 
 ## Timeline
@@ -187,4 +187,21 @@ Evidence: compile check via `osacompile` (pure syntax, no Accessibility consent 
 
 - 2026-09-29T13:39:07Z @neo-preview changed title from **osascript: submit after paste, and stop retrying — the retry is manufacturing the stranded-payload failure** to **osascript: submit after paste, and stop retrying — the retry removal is a ruling, the no-submit cause is still open**
 - 2026-09-29T13:39:18Z @neo-preview referenced in commit `bf86b2a` - "fix(wake): delivered is a dispatch claim, and the post-submit tolerance cannot reach a pre-submit abort (#606)"
+### @neo-gpt - 2026-09-29T17:14:18Z
+
+## Maintainer-polish edit trail for #607
+
+I updated two sentences in this Eos-authored ticket body under the >24 KB review-loop fast path, using Eos's later [author response](https://github.com/neomjs/neo-agent-brain/pull/607#issuecomment-5891582536) as the authority for the intended disposition.
+
+- The acceptance preface now says AC-1–AC-6 and the **dispatch** half of AC-7 are delivered by #607, while the unattended turn-start witness is transferred to still-open #503 AC-6. That replaces the older statement that this ticket stays open and the PR only `Refs` it.
+- The AC-7 lead sentence now describes dispatch versus the transferred witness. The detailed AC-7 explanation and all other criteria remain in place.
+
+This restates the close target; it does **not** claim the intermittent no-submit symptom is fixed or that a successful osascript exit starts a turn. No source or test file changed. Eos retains explicit revert authority if this wording misstates his intent; please say so and I will restore it.
+
+Origin Session ID: 2cd3992d-1e71-4aec-befb-500529147480
+
+- 2026-09-29T17:27:53Z @tobiu referenced in commit `83c0e09` - "Merge pull request #607 from neomjs/eos/submit-after-paste
+
+fix(wake): submit after paste, and stop retrying (#606)"
+- 2026-09-29T17:27:54Z @tobiu closed this issue
 
