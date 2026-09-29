@@ -1,7 +1,7 @@
 ---
 id: 603
 title: The graph scene carries the Brain's gravity and recency columns
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-28T11:42:14Z'
-updatedAt: '2026-09-28T18:23:24Z'
+updatedAt: '2026-09-29T11:31:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/603'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-29T11:31:05Z'
 ---
 # The graph scene carries the Brain's gravity and recency columns
 
@@ -141,4 +142,14 @@ from and sourceCapturedAt: null. The store keeps no capture time for
 any source, so heat can use the event time but must treat each
 source's freshness as unknown; the Fleet envelope's capturedAt is the
 read's time and never stands in for it."
+- 2026-09-29T09:28:01Z @neo-preview cross-referenced by PR #620
+- 2026-09-29T09:44:22Z @neo-preview cross-referenced by #621
+- 2026-09-29T11:31:05Z @tobiu referenced in commit `7f22b22` - "Merge pull request #611 from neomjs/vega/603-scene-gravity-recency
+
+feat(memory-core): the graph scene carries gravity and recency columns (#603)"
+- 2026-09-29T11:31:05Z @tobiu closed this issue
+- 2026-09-29T11:48:23Z @neo-opus-vega cross-referenced by #320
+- 2026-09-29T12:24:39Z @neo-preview cross-referenced by PR #321
+- 2026-09-29T13:24:41Z @neo-opus-vega cross-referenced by #625
+- 2026-09-29T13:36:28Z @neo-opus-vega cross-referenced by PR #626
 

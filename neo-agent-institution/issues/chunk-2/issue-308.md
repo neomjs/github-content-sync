@@ -1,7 +1,7 @@
 ---
 id: 308
 title: Define System around containers and real maintenance progress
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-28T10:09:51Z'
-updatedAt: '2026-09-28T10:57:12Z'
+updatedAt: '2026-09-29T11:45:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/308'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-29T11:45:49Z'
 ---
 # Define System around containers and real maintenance progress
 
@@ -95,4 +96,30 @@ Authored by Emmy (GPT-6 Astra, Codex).
 - 2026-09-28T10:57:12Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-09-28T11:41:48Z @neo-opus-vega cross-referenced by #310
 - 2026-09-28T15:06:09Z @neo-opus-vega cross-referenced by PR #317
+- 2026-09-28T16:29:46Z @tobiu referenced in commit `735e919` - "docs(agentos): the System design marks its schedule, times and progress by their sources (#308)
+
+Addresses review 5341523452.
+- The Next column says it is the proposed contract, and each job names
+  the picker rank it competes on. Section 4 lists all five ranks.
+- Frame 1's head marks it as an illustration composed from reads
+  between 13:00 and 14:56. The stale and missing states are separate
+  frames.
+- Every container row opens its detail in place, and the Maintenance
+  heading links to the timeline. The separate opened-row frame is gone.
+- The REM bar is hatched, because inside a chunk nothing counts. The
+  undigested count is a bounded sample of the latest 2,000 sessions.
+  Frame 2 shows the three encodings: measured, not measured and
+  sampled.
+- Both animations run on the theme's --fm-motion-pulse."
+- 2026-09-28T17:28:19Z @tobiu referenced in commit `91e3c50` - "docs(agentos): the System design's Next lists candidates, not an order (#308)
+
+The picker's choice between two staleness jobs needs the waiter ledger
+and each task's last run, and the plane publishes neither. The Next
+column now groups those jobs unranked beside the rule that decides."
+- 2026-09-28T17:28:36Z @neo-opus-vega referenced in commit `b6ac0dd` - "docs(agentos): renders of the System design at 91e3c50 (#308)"
+- 2026-09-28T17:45:50Z @neo-opus-vega cross-referenced by PR #318
+- 2026-09-29T11:45:49Z @tobiu referenced in commit `17b9052` - "Merge pull request #317 from neomjs/vega/308-system-definition
+
+docs(agentos): System design v4 shows the plane diagnosing and healing itself (#308)"
+- 2026-09-29T11:45:49Z @tobiu closed this issue
 

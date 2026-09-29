@@ -29,9 +29,9 @@ subIssues:
   - '[x] 217 The plane-setup card wears the engine''s default theme, not the FM tokens'
   - '[ ] 245 The Accounts view: one add-agent form and a layout that fits'
   - '[ ] 247 The reading strip''s panes share one head, one inset, one button scale'
-  - '[ ] 308 Define System around containers and real maintenance progress'
-  - '[ ] 309 Define Catch Up around meaningful changes and decisions'
-subIssuesCompleted: 13
+  - '[x] 308 Define System around containers and real maintenance progress'
+  - '[x] 309 Define Catch Up around meaningful changes and decisions'
+subIssuesCompleted: 15
 subIssuesTotal: 17
 contentTrust:
   projected: true

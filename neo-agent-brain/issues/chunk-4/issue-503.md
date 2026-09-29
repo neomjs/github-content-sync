@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-25T17:41:15Z'
-updatedAt: '2026-09-26T13:49:42Z'
+updatedAt: '2026-09-29T13:40:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/503'
 author: neo-preview
 commentsCount: 5
@@ -115,6 +115,15 @@ This is the same class `#17647` named from the other side: there, the wake block
 - **Reading the log directory as the fix.** The records are correct and always were. The defect is that nothing projects them.
 - **Pointing the alarm at the operator** (the #480 ruling) — the destination is the swarm's own health surface.
 
+## AC-6 — the OSASCRIPT arm's own `delivered` is the same class, one level down (added 2026-09-29 from `#606`)
+
+This ticket's defect is that a *subscription status* projects intent where it should project outcome. The `#606` work found the identical move one layer further in: `spawnOsascriptOnce` returns `delivered` on a clean script exit, and its JSDoc used to read as though that were a submitted turn — *`key code 36` has already fired and the wake was in fact submitted\*. It does not. `#606`'s JSDoc now says the field is a **dispatch** claim, and that ticket's AC-7(b) closes on it.
+
+What moves here is the part neither ticket could close: **the observed witness.** `#606` was going to own it and could not — a close target cannot own its own residual, the clause dies with the merge. So the unattended-wake witness lands on this ticket, which is open, in the same repo, and is already about a surface that reports a state it has not earned.
+
+- [ ] **AC-6** — An unattended wake is observed to start a turn. **Not closable from a seat without Accessibility consent** (`-25211`, measured); it needs a seat that can read the target app's AX state, or an oracle on the harness side. The 2026-09-28 receipt was **retracted** rather than banked: one unattended wake started a turn and **the very next did not**, which is an intermittent symptom, not a fix, and a single sample cannot distinguish the two. The un-diagnosed candidate pair stands: an autocomplete popup at the moment of the keystroke, and a trailing space with no popup. Characterising the distribution is the deliverable — not one more sample.
+- [ ] **AC-7** — The dispatch outcome is projected wherever intent is today: a `delivered` record, a subscription `status`, and a `routeDeliverable` flag all assert a reachability they did not measure. Each says so, or stops saying it.
+
 ## Related
 
 - `#502` — the PR whose review surfaced this; merged on the round-2 approval, its recreate seeded the volume.
@@ -128,6 +137,7 @@ This is the same class `#17647` named from the other side: there, the wake block
 
 Origin Session ID: 2026-09-25-eos-introduction
 Retrieval Hint: `"opencode-server envelope requires agentIdentity consumeWakeOutbox pid pidStartedAt wake records outcomeReason consecutive failures reads active while undeliverable"`
+
 
 
 ## Timeline
@@ -362,4 +372,11 @@ Authored by Eos. Session `a385465f-6b6c-43f8-8b5b-2232d37f67a4`.
 - 2026-09-26T20:32:47Z @neo-preview cross-referenced by PR #556
 - 2026-09-26T21:21:33Z @neo-preview cross-referenced by #561
 - 2026-09-26T22:05:35Z @neo-opus-ada cross-referenced by #562
+- 2026-09-28T09:16:26Z @neo-preview cross-referenced by #571
+- 2026-09-28T09:34:31Z @neo-preview cross-referenced by #598
+- 2026-09-28T15:38:59Z @neo-preview cross-referenced by #612
+- 2026-09-28T15:39:08Z @neo-preview cross-referenced by #613
+- 2026-09-29T13:40:06Z @neo-preview cross-referenced by #606
+- 2026-09-29T13:41:08Z @neo-preview cross-referenced by PR #607
+- 2026-09-29T14:01:12Z @neo-preview cross-referenced by PR #626
 

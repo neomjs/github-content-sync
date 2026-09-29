@@ -1,6 +1,6 @@
 ---
 id: 606
-title: 'osascript: submit after paste, and stop retrying — the retry is manufacturing the stranded-payload failure'
+title: 'osascript: submit after paste, and stop retrying — the retry removal is a ruling, the no-submit cause is still open'
 state: OPEN
 labels:
   - bug
@@ -8,7 +8,7 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-28T13:46:28Z'
-updatedAt: '2026-09-28T16:58:02Z'
+updatedAt: '2026-09-29T13:40:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/606'
 author: neo-preview
 commentsCount: 1
@@ -23,19 +23,21 @@ contentTrust:
 blockedBy: []
 blocking: []
 ---
-# osascript: submit after paste, and stop retrying — the retry is manufacturing the stranded-payload failure
+# osascript: submit after paste, and stop retrying — the retry removal is a ruling, the no-submit cause is still open
 
 ## Problem
 
 A wake lands in the seat's prompt field and nothing submits. The operator presses enter manually. Three occurrences on one route today; the receiver's own record reads `state: delivered` throughout, so the human-visible failure is invisible to the accounting that claims to describe it.
 
-**The retry loop is a cause of this, not a mitigation against it.** `deliverOsascriptWithRetry` retried up to 4 times on a frontmost race. The script pastes into the prompt field and only *afterwards* reaches steps that can abort, so a retried attempt can leave attempt N's text sitting in the field while attempt N+1 aborts at an earlier guard. The net result is exactly the reported symptom — text present, no submit, no error to explain it — and retrying makes it more likely, not less.
+**The retry loop was the working hypothesis, and this PR did not establish it as the cause.** `deliverOsascriptWithRetry` retried up to 4 times on a frontmost race. The script pastes into the prompt field and only *afterwards* reaches steps that can abort, so a retried attempt *can* leave attempt N's text sitting in the field while attempt N+1 aborts at an earlier guard — which would produce exactly the reported symptom.
+
+**That is a mechanism, not a measurement.** The 2026-09-28 measurement runs the other way: with the retry removed, a wake still failed to submit. One unattended wake started a turn; **the very next one did not** (receipt retracted 2026-09-28T17:22Z). So retry removal did not fix the symptom and this ticket no longer claims it did. The retry was removed because the operator's simplification ruling judged the machinery more dangerous than the failure it guarded against — a reason that stands whether or not the retry was ever the cause.
 
 ## Decision
 
 **Submit immediately after pasting. Do not retry.**
 
-A successful keystroke into the target's text field *is* the confirmation. The adapter has already spent its verification budget by the time the paste lands. The probability of focus leaving inside the sub-second gap between paste and submit is negligible next to the damage the machinery causes on **every ordinary message**.
+A keystroke into the target's text field is evidence that the **paste** landed — and nothing more. The submit keystroke sits after it, and the adapter has no oracle for whether that one took: this harness has no Accessibility consent (`-25211`). So "the paste landed" is the confirmation this design can actually make, and the boundary after it is the open defect this ticket now tracks rather than assumes. The probability of focus leaving inside the sub-second gap is not the argument — *the machinery's cost on every ordinary message* is.
 
 ## Solution
 
@@ -43,16 +45,19 @@ A successful keystroke into the target's text field *is* the confirmation. The a
 
 **What is deliberately NOT touched:** the ten `assertTargetFrontmost` call sites. Those guards gate **typing** and are what prevents a wake being pasted into a different seat's window — a real harm this file's own history records. They stay, unchanged.
 
-**One classification is deliberately kept:** a failure raised at a *post-submit* guard (the user-input restore path) still reports `delivered`, because `key code 36` has already fired and the wake was in fact submitted. Reporting that as a failure would hide real deliveries, and an existing spec asserts it. Everything else that throws is `failed` and carries the captured stderr.
+**One classification is deliberately kept, and it is about the script rather than the outcome:** a failure raised at a *post-submit* guard (the user-input restore path) still reports `delivered`, because `key code 36` has already been **sent** by that point. Sending it is a fact about the script's progress; whether the seat acted on it is not observable from here. Reporting a later cleanup failure as a delivery failure would hide real dispatches, and an existing spec asserts it. Everything else that throws is `failed` and carries the captured stderr — **including a pre-submit frontmost abort**, which a 2026-09-29 arm now pins so the post-submit tolerance cannot widen backwards.
 
 ## Acceptance Criteria
 
-- [ ] **AC1** — no retry: exactly one `osascript` spawn per delivery; the 4-attempt loop and the 800ms backoff are gone.
-- [ ] **AC2** — `keystroke "v" using command down` is followed by `key code 36` with no intervening guard, re-verification, or probe.
-- [ ] **AC3** — a post-submit (`user input restore`) race still yields `delivered`; every other throw yields `failed` with the captured stderr in both the log and the outcome.
-- [ ] **AC4** — the typing guards are untouched: the `assertTargetFrontmost` call-site count is unchanged at 10.
-- [ ] **AC5** — `localWakeAdapters.spec.mjs` + `localWakeAdaptersDialogGate.spec.mjs` green.
-- [ ] **AC6** — one file changed.
+Numbered 2026-09-29 so a PR's certificate binds by id. **AC-1…AC-6 are delivered by #607; AC-7 is not, and this ticket stays open for it** — which is why #607 now carries `Refs #606` rather than `Resolves`. A close target cannot own its own residual, so the undeliverable clause had to leave with the close, or the PR would have held a promise nobody was on the hook for.
+
+- [x] **AC-1** — no retry: exactly one `osascript` spawn per delivery; the 4-attempt loop and the 800ms backoff are gone.
+- [x] **AC-2** — `keystroke "v" using command down` is followed by `key code 36` with no intervening guard, re-verification, or probe.
+- [x] **AC-3** — a post-submit (`user input restore`) race still yields `delivered`; every other throw yields `failed` with the captured stderr in both the log and the outcome. *(Bounded 2026-09-29: the tolerance no longer reaches a pre-submit abort, and an arm pins that.)*
+- [x] **AC-4** — the typing guards are untouched: the `assertTargetFrontmost` call-site count is unchanged at 10.
+- [x] **AC-5** — `localWakeAdapters.spec.mjs` + `localWakeAdaptersDialogGate.spec.mjs` green (29 + 8, measured at the branch head).
+- [x] **AC-6** — **corrected 2026-09-29: "one file changed" is no longer true and was the wrong bound.** The delivery is `localWakeAdapters.mjs` (source + JSDoc) and `localWakeAdapters.spec.mjs` (one new arm, plus the turn-start disclaimer on the existing one). Two files, and the second is the falsifier — an AC that forbids its own evidence is not an AC.
+- [x] **AC-7 (added 2026-09-29)** — **The no-submit cause is characterised, and the `delivered` field stops standing in for a turn start.** Two parts, and they close in different places. **(b) The `delivered` field is a dispatch claim:** delivered by #607, which states it in `spawnOsascriptOnce`'s JSDoc — *"the script was dispatched and exited cleanly. It does not mean a turn started"* — and disclaims it again on the spec arm that would otherwise read a successful `spawnAsync` as turn-start evidence. **(a) The observed witness is open and is NOT carried here:** a close target cannot own its own residual, so the unattended-wake witness moves to **[#503](https://github.com/neomjs/neo-agent-brain/issues/503)**, which is the ticket whose whole subject is a surface that *projects intent where it should project outcome* — the same distinction one level up, and open in the same repo. The 2026-09-28 receipt stays retracted here as the record of why: one success followed immediately by one failure is an intermittent symptom, not a fix, and this harness has no Accessibility consent (`-25211`) to characterise a distribution.
 
 ## Out of scope
 
@@ -73,6 +78,7 @@ A successful keystroke into the target's text field *is* the confirmation. The a
 - **Live level (L2, Post-Merge Validation).** Whether enter now fires unattended is observable only against a real seat, and only after merge. Not claimed here.
 
 Related: the submit-gap defect-note (@neo-opus-vega holds the promotion call) · #79 (arming path) · #561 (poll-digest OOM — unrelated)
+
 
 
 ## Timeline
@@ -179,4 +185,6 @@ Suggested home: its own ticket against `ai/daemons/wake/localWakeAdapters.mjs`, 
 Evidence: compile check via `osacompile` (pure syntax, no Accessibility consent needed); the two corrections above came from review, not from me.
 
 
+- 2026-09-29T13:39:07Z @neo-preview changed title from **osascript: submit after paste, and stop retrying — the retry is manufacturing the stranded-payload failure** to **osascript: submit after paste, and stop retrying — the retry removal is a ruling, the no-submit cause is still open**
+- 2026-09-29T13:39:18Z @neo-preview referenced in commit `bf86b2a` - "fix(wake): delivered is a dispatch claim, and the post-submit tolerance cannot reach a pre-submit abort (#606)"
 

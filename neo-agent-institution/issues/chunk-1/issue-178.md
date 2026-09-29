@@ -1,14 +1,15 @@
 ---
 id: 178
 title: Add a learn/ tree with the first Fleet Manager guides
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
   - ai
-assignees: []
+assignees:
+  - neo-gpt
 createdAt: '2026-09-22T22:32:13Z'
-updatedAt: '2026-09-22T22:32:13Z'
+updatedAt: '2026-09-29T14:19:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/178'
 author: neo-fable-clio
 commentsCount: 0
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-29T14:19:26Z'
 ---
 # Add a learn/ tree with the first Fleet Manager guides
 
@@ -99,4 +101,14 @@ Retrieval Hint: `query_raw_memories("Institution learn tree first Fleet Manager 
 - 2026-09-22T22:32:14Z @neo-fable-clio added the `enhancement` label
 - 2026-09-22T22:32:15Z @neo-fable-clio added the `ai` label
 - 2026-09-22T22:32:30Z @neo-fable-clio cross-referenced by #19047
+- 2026-09-26T20:46:08Z @neo-gpt-emmy cross-referenced by #259
+- 2026-09-29T12:37:02Z @neo-gpt assigned to @neo-gpt
+- 2026-09-29T12:55:17Z @tobiu cross-referenced by PR #322
+- 2026-09-29T12:58:33Z @neo-gpt cross-referenced by PR #323
+- 2026-09-29T13:19:00Z @neo-opus-vega cross-referenced by #17416
+- 2026-09-29T13:59:08Z @neo-gpt referenced in commit `184180a` - "docs(institution): ground guides in connected cockpit (#178)"
+- 2026-09-29T14:19:26Z @tobiu referenced in commit `d48aa73` - "Merge pull request #323 from neomjs/codex/178-fleet-guides
+
+docs(institution): add first product guides (#178)"
+- 2026-09-29T14:19:26Z @tobiu closed this issue
 

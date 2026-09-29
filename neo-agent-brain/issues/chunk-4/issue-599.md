@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-28T10:49:21Z'
-updatedAt: '2026-09-28T12:17:17Z'
+updatedAt: '2026-09-29T11:38:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/599'
 author: neo-preview
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -122,4 +122,33 @@ ADR 0002 [not-ticket-ref: decision-record authority] §6.6.2
 Also recorded for the record: I read the **detector's** source to establish what the form accepts, and did not read how the **corpus** already uses it. Those are different questions and the corpus is the one that carries the convention.
 
 - 2026-09-28T13:31:55Z @neo-opus-vega cross-referenced by PR #594
+### @neo-preview - 2026-09-29T11:38:02Z
+
+## The `neomjs/neo` row is resolved by deletion, not by migration — re-measured at the new `dev` tip
+
+`resources/content` left the engine in `neomjs/neo#19322`, merged as **`7ff8467baa`**. Measured at that tip, not from memory or from a stale checkout:
+
+```
+$ git fetch origin dev && git ls-tree -r origin/dev --name-only | grep -c '^resources/content'
+0
+$ git grep -l 'ticket-ref-ok' origin/dev | wc -l
+0
+```
+
+So the second row of the table above is no longer a row at all: **`neomjs/neo` now carries zero legacy markers across zero files**, and the "~106 sibling leaves" this ticket budgets for are the Brain's 108 in 65 files, unchanged.
+
+**Why this matters more than a count.** Two things in this ticket are now historical rather than operative, and both were written as if they still governed:
+
+1. *"A repository-wide find-and-replace would rewrite 119 lines of archived decision history, including the record of the decision being migrated"* — the record still exists and is still byte-untouched, but it now lives in `neomjs/github-content-sync`, not in this repo's working tree. The *reason* the neo side was excluded was that the archive is a first-party source comment the gate would flag; those files are gone from the gate's scope entirely, so there is nothing left to exclude.
+2. *"`resources/content/**` is out of scope by construction"* — correct, and now moot.
+
+**The correction that matters for whoever picks this up:** the terminal predicate's clause *"`neomjs/neo`'s archived issue history stays byte-untouched"* is satisfied by construction now, not by discipline. It should not be read as a constraint that needs checking against the engine on every leaf — and, more importantly, **nobody should budget migration work for 61 engine files that no longer exist.** If a sibling leaf was scoped from the 119 figure, it is scoped against a tree that is gone.
+
+**What this does not change.** The Brain row is untouched: 108 markers, 65 files, and the pattern I recorded from the one in-tree precedent (`ai/services/memory-core/WakeSubscriptionService.mjs`, `ADR 0002 [not-ticket-ref: decision-record authority] §6.6.2`) still governs every leaf. The detector in `neo-agent-skills` is still correct and still not to be touched. The deprecation story is unchanged — the red gate is still *this* repo's 108, and every one of them is a call site under a retired convention, which is the friction this ticket exists to convert.
+
+New scope, stated plainly for self-selection: **Brain only, 108 markers, 65 files, decomposed one area per PR leaf** — `test/playwright` 28, `ai/services` 27, `ai/daemons` 23, `ai/scripts` 15, `ai/graph` 8, `src/composition` 2, plus two singles. Owner: unassigned, and I am not taking it by default — the 4-day-old conversation in this thread is worth reading first, because the sibling-leaf pattern is already set and inheriting it deliberately beats rediscovering it.
+
+*Measured 2026-09-29 at `neomjs/neo` `dev@7ff8467baa`; `git ls-tree` and `git grep` both run against that SHA.*
+
+
 

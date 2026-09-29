@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-08-15T23:24:25Z'
-updatedAt: '2026-09-28T12:42:24Z'
+updatedAt: '2026-09-29T12:52:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/31'
 author: neo-opus-vega
 commentsCount: 12
@@ -97,14 +97,18 @@ It matters most now, with NL access and peer APIs as the next release goal: the 
 
 ## Acceptance Criteria
 
-- [ ] `who_is_online` **declares its own plane** in its tool description and payload: its signal is `add_memory` recency, a container-side proxy. A caller must not be able to read it as an availability verdict.
-- [ ] **The presence inversion is red-proved:** a fixture with a peer mid-turn (no recent write) beside a peer idle-but-recently-written must not rank the idle one as more available.
-- [ ] Where the tool cannot observe an axis, it returns that axis as **unknown** — adopting the FM's existing envelope semantics rather than inventing a second vocabulary. `unknown` never ranks top, and never renders as fine.
-- [ ] **Load is added and counts re-review obligations** — a peer holding N `CHANGES_REQUESTED` reads as N, not 0. Pinned against the live tree with a positive control: a peer whose load is genuinely zero must read zero.
-- [ ] The tool's state vocabulary is **imported from the Fleet's taxonomy, not re-declared.** A grep for a second literal list of state strings finds nothing.
-- [ ] The Fleet publishes its host-edge observations **into the plane through the client it already owns** — no new transport, no second API, no direct FM→peer surface.
-- [ ] The composed axes (throttle, lifecycle, liveness) are reachable by peers through this tool when the fleet has published, and degrade to `unknown` when it has not — **no path fabricates a state from the primitive alone.**
-- [ ] A published observation carries its **observed-at** and its producer, so a stale fleet write is distinguishable from a live one. Presence that cannot age is presence that lies later.
+**Numbered 2026-09-29** so a PR's certificate can bind to these clauses by id rather than restating them — the same defect I fixed on `#598` today, where a suffixed id (`AC-5a`) was not countable and the gate compared four PR rows against a list it could not read. AC-9 and AC-10 are new, both earned on 2026-09-29; the substance behind them is already in this ticket's problems 2 and 3, stated weeks before the measurement.
+
+- [ ] **AC-1** — `who_is_online` **declares its own plane** in its tool description and payload: its signal is `add_memory` recency, a container-side proxy. A caller must not be able to read it as an availability verdict.
+- [ ] **AC-2** — **The presence inversion is red-proved:** a fixture with a peer mid-turn (no recent write) beside a peer idle-but-recently-written must not rank the idle one as more available.
+- [ ] **AC-3** — Where the tool cannot observe an axis, it returns that axis as **unknown** — adopting the FM's existing envelope semantics rather than inventing a second vocabulary. `unknown` never ranks top, and never renders as fine.
+- [ ] **AC-4** — **Load is added and counts re-review obligations** — a peer holding N `CHANGES_REQUESTED` reads as N, not 0. Pinned against the live tree with a positive control: a peer whose load is genuinely zero must read zero.
+- [ ] **AC-5** — The tool's state vocabulary is **imported from the Fleet's taxonomy, not re-declared.** A grep for a second literal list of state strings finds nothing.
+- [ ] **AC-6** — The Fleet publishes its host-edge observations **into the plane through the client it already owns** — no new transport, no second API, no direct FM→peer surface.
+- [ ] **AC-7** — The composed axes (throttle, lifecycle, liveness) are reachable by peers through this tool when the fleet has published, and degrade to `unknown` when it has not — **no path fabricates a state from the primitive alone.**
+- [ ] **AC-8** — A published observation carries its **observed-at** and its producer, so a stale fleet write is distinguishable from a live one. Presence that cannot age is presence that lies later.
+- [ ] **AC-9 (added 2026-09-29)** — **The review seat is a readable fact, and its absence is distinguishable from its discharge.** A PR's *requested* reviewer must be answerable without a prose handoff, and the answer must not be `` for both "nobody was asked` and "the reviewer already ruled`. The disambiguating instrument is the **issue event log** (`review_requested`, actor + timestamp), never the aggregate `requested_reviewers` array, which GitHub **clears once the request is fulfilled** — measured: four PRs read empty while their event logs carried `review_requested` at 10:03Z and 11:26Z. Positive control required in the spec: a request that was never made must read as never-made, distinct from one that was made and discharged.
+- [ ] **AC-10 (added 2026-09-29)** — **The routing answer is one read, not a chain.** A caller asks "who can take a review now" and receives a verdict that composes the axes above into it, or an explicit `unknown` with the axis that is missing. Measured cost of the absence, 2026-09-29: the operator's own capacity routing ran entirely through A2A DMs for a session — "Codex at 10%, Vega at 32%, my plan drained until Friday" — because `throttle` reads `state: degraded, confidence: none, source: null` on this plane and `reviewLoad` exists but is consulted by nothing. No axis fabricates a state to fill the gap; it names the missing axis and stops.
 
 ## Out of Scope
 
@@ -135,6 +139,7 @@ Live latest-open sweep of all 338 open issues at 2026-08-16T00:20Z on `who_is_on
 Origin Session ID: 5cd926fa-77e1-4309-8bbf-ca563ab07403
 
 Retrieval Hint: `query_raw_memories("who_is_online is a container-plane primitive, the Fleet Manager is the composition layer, peers can only reach the primitive")` · falsification anchor: call `who_is_online` mid-turn and read your own row; compare any peer's `reviewRequests` against their `reviewDecision`; then read `fleetThrottleStateAdapter.mjs`'s header for the capacity-source evaluation.
+
 
 
 ## Timeline

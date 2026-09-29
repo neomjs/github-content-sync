@@ -1,19 +1,19 @@
 ---
 id: 311
-title: 'The Observatory''s wells follow the roadmap, and the team lens shows who touched what'
-state: OPEN
+title: 'The Observatory''s wells follow the roadmap: W3 strategic wells with a mass cap'
+state: CLOSED
 labels:
   - enhancement
   - agent-os
   - ai
   - design
 assignees:
-  - neo-preview
+  - neo-opus-vega
 createdAt: '2026-09-28T11:42:58Z'
-updatedAt: '2026-09-28T14:13:54Z'
+updatedAt: '2026-09-29T12:26:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/311'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
@@ -23,20 +23,19 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 310 The Observatory draws readable wells before any Brain change'
+  - '[x] 310 The Observatory draws readable wells before any Brain change'
 blocking: []
+closedAt: '2026-09-29T12:26:17Z'
 ---
-# The Observatory's wells follow the roadmap, and the team lens shows who touched what
+# The Observatory's wells follow the roadmap: W3 strategic wells with a mass cap
 
 ## Context
 
-Stage C of D#19317, the Observatory's product definition, which graduated at body `updatedAt 2026-09-28T10:56:25Z` (Signal Ledger below). After Stage A (#310) and the Brain's B1 (neomjs/neo-agent-brain#603) and B2 (neomjs/neo-agent-brain#604), the Observatory can answer two operator questions it cannot answer today. Q1 is centres of gravity: wells at the Brain's own strategic anchors (W3). Q4 is who is working on what: the operator's team lens. Its live half ("working now") has no current, viewer-scoped source yet, so this leaf ships **historical attribution only** (D#19317 OQ-W8 `[DEFERRED_WITH_TIMELINE]`).
+Stage C of D#19317, the Observatory's product definition, which graduated at body `updatedAt 2026-09-28T10:56:25Z` (Signal Ledger below). After Stage A (#310) and the Brain's B1 (neomjs/neo-agent-brain#603) and B2 (neomjs/neo-agent-brain#604), the Observatory can answer Q1, centres of gravity: wells at the Brain's own strategic anchors (W3). **Split 2026-09-29:** the heat overlay and the team lens (Q2, Q4) moved to #320, so each ships as its own PR; this leaf is the geography.
 
 ## The Problem
 
 - On two viewers' live scenes, W3's top anchors read like the roadmap (`Fleet Manager (FM)`, `ADR-0019`, `Golden Path`, `Workstation`, `Neural Link`). But one concept pulls 10,859 nodes, so without a cap one well swallows the reached graph.
-- The operator's lens direction: *"we want to see all your AND emmy's nodes"*, meaning one checkbox per peer, shown as a union, and one colour per identity with a default.
-- A timestamp alone does not say which work event happened; a closed or bot-updated item is not "attention now" (STEP_BACK point 4).
 
 ## The Architectural Reality
 
@@ -48,26 +47,25 @@ Stage C of D#19317, the Observatory's product definition, which graduated at bod
 ## The Fix
 
 - **W3 as the default geography:** the top 48 anchors (configurable), ranked by `strategic_weight` × log(1 + degree), with a cap on a well's mass (or a normalization).
-- **Heat overlay** over a named event taxonomy in a stated window; switching it moves no node.
-- **Team lens:** one checkbox per peer, checked peers as a union; labels authored, assigned and recently changed; peer colours from the registry or the palette default, keyed on identity, never the model. No "working now" mark.
 - **Fallback:** on a Brain without B1's columns, W2 stays the default.
 
 ## Acceptance Criteria
 
 - [ ] AC-1 W3 wells with the mass cap; the cap's value is measured on a live scene and recorded.
-- [ ] AC-2 Heat uses the named event taxonomy: a merged item retires; a failed source reads "unknown".
-- [ ] AC-3 The lens shows the union of checked peers; an old assignment never reads as current work; no "working now" mark exists.
-- [ ] AC-4 Peer colours come from the registry field or the palette default, keyed on identity.
+- [ ] ~~AC-2 Heat uses the named event taxonomy~~ moved to #320 (AC-1).
+- [ ] ~~AC-3 The lens shows the union of checked peers~~ moved to #320 (AC-2).
+- [ ] ~~AC-4 Peer colours come from the registry field~~ moved to #320 (AC-3).
 - [ ] AC-5 On an older Brain (no B1 columns) the Observatory stays on W2.
 - [ ] AC-6 (post-merge, installed) Stage A's headed checks repeated at the operator's viewer from a cold saved-plane launch.
-- [ ] AC-7 Unit arms go red on `dev`; NL arms read the lens and geography state.
+- [ ] AC-7 Unit arms go red on `dev`; NL arms read the geography state.
+- [ ] AC-8 The graph scene envelope from neomjs/neo-agent-brain#620 lands whole: `GraphSceneEnvelope` declares `admission`, a served route with zero items reads current, and an unserved route shows its `capability.reason` while the graph is still drawn. This is #533's AC-4 receipt, carried here (comment 5889512288).
 
 ## Out of Scope
 
 - "Working now" and the compact peer briefing (OQ-W8: they reopen when a current, viewer-scoped live-work authority exists); the three MX acceptance arms.
 - Editing a peer's colour (the agent-setup view's own definition).
 
-handoff: @neo-preview (Eos owns the Observatory consumer; he confirms or hands this back)
+Owner: @neo-opus-vega, since @neo-preview released it on 2026-09-29.
 
 Decision Record: NOT_NEEDED (D#19317)
 Decision Record impact: none
@@ -96,6 +94,8 @@ MC sweep: "Observatory featureless sphere inbox wells mail dominates graph", 5 r
 Origin Session ID: 96f97500-4dcb-461e-bef0-af4e6dc5e24a
 Retrieval Hint: "Observatory Stage C W3 strategic wells heat team lens peer colour historical attribution"
 
+
+
 ## Timeline
 
 - 2026-09-28T11:43:00Z @neo-opus-vega added the `enhancement` label
@@ -120,4 +120,34 @@ Brain `#603` (B1) supplies geometry and one normalized timestamp per node with i
 - 2026-09-28T12:32:04Z @neo-opus-vega cross-referenced by PR #313
 - 2026-09-28T13:12:12Z @neo-gpt-emmy cross-referenced by PR #605
 - 2026-09-28T14:13:54Z @neo-preview assigned to @neo-preview
+- 2026-09-28T15:32:16Z @neo-opus-vega cross-referenced by PR #611
+- 2026-09-29T10:11:00Z @neo-opus-vega unassigned from @neo-preview
+- 2026-09-29T10:11:00Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-09-29T11:29:48Z @neo-preview cross-referenced by PR #317
+- 2026-09-29T11:34:45Z @neo-opus-vega cross-referenced by PR #620
+### @neo-preview - 2026-09-29T11:40:19Z
+
+## Carrying the Brain #533 / PR #620 receipt here (my own lane, so the obligation has a home that survives both merges)
+
+`neomjs/neo-agent-brain#620` (my PR, Resolves #533) was going to name a Brain-side `Residual-Owner` for AC-4's `setScene` receipt, and had to stop: the only Brain ticket that could have held it was #603, which **#611 closed at 11:31Z** — the residual owner did not survive its own PR. This is the right home instead, for three reasons, two of them mechanical:
+
+- **#311 is open, assigned to me, and consumes this envelope** — it is the Observatory team-lens pane over `fleetGraphScene`, and Stage C reads the scene `projectScene` builds.
+- **The consumer-side half of #620 is mine anyway.** `GraphSceneEnvelope`'s closed `SHAPE` (`apps/agentos/util/GraphSceneEnvelope.mjs`) declares no `admission` key, so the field Brain #620 now carries is **dropped at landing** until the Institution declares it. #620 deliberately did not declare it on this side of the wire, and the omission is named in its own `## Deltas from ticket`.
+- **The Brain-side gate cannot express this owner.** `Residual-Owner: #N` is a bare number resolved against the PR's own repository, so a cross-repo owner either misresolves to a same-numbered Brain ticket (Brain #311 is a *closed* `inspect_component_render_tree` defect) or is rejected as malformed. Parking the obligation on the consumer's own ticket is the honest resolution, not a gate workaround.
+
+- [ ] **Receipt (post-merge, `neomjs/neo-agent-brain#620`):** once Brain's #620 is on `dev`, one `setScene` read through the fleet server carries the route's `admission` beside the scene, and the Observatory paints it — which means declaring `admission` in `GraphSceneEnvelope`'s `SHAPE` and giving it a line in `describe()`, so a *withheld* admission reads as "last known good" rather than as current. Two properties worth asserting rather than eyeballing: a **served route with zero items stays `current`** (that is what makes `degraded` mean something), and a **route the operation did not serve is named in `capability.reason`** (`route-read-failed` / the operation's own reason / `route-answer-malformed`) while the graph is still drawn. If #620 lands first and the shape has no `admission`, a withheld route is currently invisible in the pane — which is the one consumer-side gap this clause exists to close.
+
+Recorded so the obligation is traceable to the PR that could not carry it, and so the next reader finds the cross-repo pointer here rather than re-deriving it from a `Residual-Owner` that the gate will not accept.
+
+
+- 2026-09-29T11:48:23Z @neo-opus-vega cross-referenced by #320
+- 2026-09-29T11:48:55Z @neo-opus-vega changed title from **The Observatory's wells follow the roadmap, and the team lens shows who touched what** to **The Observatory's wells follow the roadmap: W3 strategic wells with a mass cap**
+- 2026-09-29T11:59:31Z @neo-opus-vega cross-referenced by PR #321
+- 2026-09-29T12:07:18Z @neo-opus-vega referenced in commit `2ab7274` - "test(visual): restamp the baseline inputs after the Observatory's layout change, pixels unchanged (#311)
+
+The visual suite ran on Darwin at f0f56e9: 18 passed, no snapshot updated. The Observatory's visual fixtures carry no strategic anchor, so the strategic default lays out as density and renders as before."
+- 2026-09-29T12:26:17Z @tobiu closed this issue
+- 2026-09-29T12:26:18Z @tobiu referenced in commit `a86111f` - "Merge pull request #321 from neomjs/vega/311-stage-c
+
+feat(observatory): the wells follow the roadmap, W3 strategic wells held to a mass cap (#311)"
 

@@ -1,7 +1,7 @@
 ---
 id: 533
 title: 'fleetGraphScene: the bounded neighbourhood scene of the computed route'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-26T07:26:58Z'
-updatedAt: '2026-09-27T00:30:51Z'
+updatedAt: '2026-09-29T11:44:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/533'
 author: neo-fable-clio
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-29T11:44:59Z'
 ---
 # fleetGraphScene: the bounded neighbourhood scene of the computed route
 
@@ -51,9 +52,11 @@ The cockpit reads the plane through the fleet wire only (`src/fleet/contract/wir
 
 ## Contract Ledger Matrix
 
+**Restated 2026-09-29** per review `5351861190` (RA-1), before this ticket closes, so the closed record states the shipped contract rather than the contract as first written. The prior row read "`degraded` when the graph read fails", which this head no longer answers: a failed or malformed graph read is `unavailable`. The graph axis winning over the route axis — and the resulting invisibility of a route failure behind `no-rows-resolved` — is a named, accepted limitation of the composite read, recorded here rather than left for the next reader to discover.
+
 | Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `fleetGraphScene` wire method | `src/fleet/contract/wire.mjs` `FLEET_WIRE_METHODS` | the bounded scene envelope for the route's neighbourhoods | `unsupported-method` on a plane without the slot; `degraded` when the graph read fails | the source's JSDoc; #499's envelope precedent | AC-1 … AC-4 |
+| `fleetGraphScene` wire method | `src/fleet/contract/wire.mjs` `FLEET_WIRE_METHODS` | the bounded scene envelope for the route's neighbourhoods: `{capability, admission, scene, snapshotId, capturedAt}` | **`unavailable`** when the slot is unwired, when the graph read fails (`graph-read-failed`) or is malformed (`graph-answer-malformed`). **`degraded`** means no rows resolved (`no-rows-resolved`) **or** a route the operation did not serve, carrying that axis's own reason (`route-read-failed` / the operation's `reason` / `route-answer-malformed`); a *served* route with zero items stays `current`, which is what gives `degraded` its meaning. **The graph axis wins when both apply** — an empty graph answers `no-rows-resolved` and the route's failure is then not visible in `capability`, and `admission` is `null` whether the route failed or the answer carried none. `admission` is the route answer's **own object, whole** — never re-derived, never narrowed to a field set this ticket happened to see; `null` only when no route answered or the graph is unavailable. `sources` is **omitted** by declared delta: `capability.reason` and `admission` carry both facts and no consumer on either side of the wire reads a per-axis map | `unsupported-method` on a plane without the slot | the source's JSDoc and the `FleetControlBridge` docblock; #499's envelope precedent; `fleetGoldenPathSource`'s admission passthrough | AC-1 … AC-4 |
 | scene node ids | ADR 0004 §3.2.1 | origin-qualified, stable across reads | — | ADR 0004 | AC-3 |
 
 ## Decision Record impact
@@ -81,6 +84,7 @@ Live latest-open sweep: the latest 20 open issues of this repository and of neom
 
 Origin Session ID: 26b775fe-f8d9-4258-809c-09d9e5ef8ed1
 Retrieval Hint: `query_raw_memories("fleetGraphScene bounded neighbourhood scene feed budget completeness origin-qualified")`
+
 
 ## Timeline
 
@@ -115,4 +119,16 @@ Also on this source (sent to @neo-preview directly): line 289's `graph-neasons-r
 🖖 Grace · @neo-opus-grace · Claude Opus 5.5 · Claude Code · session 6408fcd4-3571-4ec2-8009-b4dae5d18917
 
 
+- 2026-09-27T08:31:03Z @neo-gpt-emmy cross-referenced by PR #270
+- 2026-09-27T08:43:04Z @neo-gpt-emmy cross-referenced by PR #272
+- 2026-09-27T08:47:19Z @neo-gpt-emmy cross-referenced by PR #273
+- 2026-09-27T14:28:36Z @neo-opus-ada cross-referenced by #583
+- 2026-09-27T15:07:39Z @neo-opus-ada cross-referenced by PR #587
+- 2026-09-29T09:28:01Z @neo-preview cross-referenced by PR #620
+- 2026-09-29T09:43:29Z @neo-preview referenced in commit `541cba7` - "test(fleet): the admission fixture carries the live plane's whole object (#533)"
+- 2026-09-29T11:44:59Z @tobiu referenced in commit `f1ef820` - "Merge pull request #620 from neomjs/eos/533-scene-route-admission
+
+fix(fleet): the graph scene carries the route's admission and names an unserved route (#533)"
+- 2026-09-29T11:44:59Z @tobiu closed this issue
+- 2026-09-29T12:24:39Z @neo-preview cross-referenced by PR #321
 

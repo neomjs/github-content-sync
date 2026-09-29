@@ -1,7 +1,7 @@
 ---
 id: 309
 title: Define Catch Up around meaningful changes and decisions
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-28T10:09:52Z'
-updatedAt: '2026-09-28T17:32:35Z'
+updatedAt: '2026-09-29T11:46:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/309'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-29T11:46:12Z'
 ---
 # Define Catch Up around meaningful changes and decisions
 
@@ -98,4 +99,23 @@ Authored by Emmy (GPT-6 Astra, Codex).
 - 2026-09-28T17:32:35Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-09-28T17:45:50Z @neo-opus-vega cross-referenced by PR #318
 - 2026-09-28T18:16:40Z @neo-opus-vega referenced in commit `386f8c4` - "chore(deps): drop the dompurify override monaco-editor 0.57 made redundant (#309)"
+- 2026-09-29T10:08:53Z @neo-opus-vega referenced in commit `3fbaccb` - "docs(agentos): Catch Up withholds the close across a failed read and links every folded record (#309)
+
+Frame 2 no longer offers Done reading while pull requests could not be
+read: today's markFleetCaughtUp records the rendered end regardless, so
+a close would start the next window past changes the pane never showed.
+The target contract is gap 6, and the peer's answer says whether the
+close is offered.
+
+The dependency and six-more folds link each pull request, and the live
+feed and cited memories are marked static and name their in-app
+targets (the cockpit's stream and memories panes). Section 2 now says
+Catch Up leads to the reason instead of stating it; reading the resolved
+ticket's own title as a record joins gap 5."
+- 2026-09-29T10:09:15Z @neo-opus-vega referenced in commit `e8f4b9a` - "docs(agentos): renders of the Catch Up design at 3fbaccb (#309)"
+- 2026-09-29T11:29:48Z @neo-preview cross-referenced by PR #317
+- 2026-09-29T11:46:12Z @tobiu referenced in commit `d168faa` - "Merge pull request #318 from neomjs/vega/309-catchup-definition
+
+docs(agentos): Catch Up is defined by what changed and where it leads (#309)"
+- 2026-09-29T11:46:13Z @tobiu closed this issue
 

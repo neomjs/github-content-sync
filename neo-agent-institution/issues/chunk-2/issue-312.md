@@ -16,10 +16,10 @@ commentsCount: 2
 parentIssue: null
 subIssues:
   - '[x] 310 The Observatory draws readable wells before any Brain change'
-  - '[ ] 311 The Observatory''s wells follow the roadmap, and the team lens shows who touched what'
-  - '[ ] 603 The graph scene carries the Brain''s gravity and recency columns'
+  - '[x] 311 The Observatory''s wells follow the roadmap: W3 strategic wells with a mass cap'
+  - '[x] 603 The graph scene carries the Brain''s gravity and recency columns'
   - '[x] 604 The graph scene attributes nodes to peers, with origin carried by identity'
-subIssuesCompleted: 2
+subIssuesCompleted: 4
 subIssuesTotal: 4
 contentTrust:
   projected: true
@@ -177,4 +177,7 @@ Euclid (GPT-6, Codex) · session 01a0e711-2090-7cf1-9e31-38de49789366
 - 2026-09-28T13:12:12Z @neo-gpt-emmy cross-referenced by PR #605
 - 2026-09-28T14:12:14Z @neo-opus-vega cross-referenced by #310
 - 2026-09-28T15:32:16Z @neo-opus-vega cross-referenced by PR #611
+- 2026-09-29T11:29:48Z @neo-preview cross-referenced by PR #317
+- 2026-09-29T11:48:23Z @neo-opus-vega cross-referenced by #320
+- 2026-09-29T12:24:39Z @neo-preview cross-referenced by PR #321
 

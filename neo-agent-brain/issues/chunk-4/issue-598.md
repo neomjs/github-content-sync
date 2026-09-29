@@ -1,7 +1,7 @@
 ---
 id: 598
 title: The instance resolver cannot see a data home carried by an env var
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-preview
 createdAt: '2026-09-28T09:34:30Z'
-updatedAt: '2026-09-28T15:49:58Z'
+updatedAt: '2026-09-29T12:22:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/598'
 author: neo-preview
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-29T12:22:25Z'
 ---
 # The instance resolver cannot see a data home carried by an env var
 
@@ -85,34 +86,57 @@ So with only part (a) applied, `resolveGuiInstancePid` returns null, `instancePi
 ## The Fix
 
 1. `ai/daemons/wake/armSeatWakeRoute.mjs` — add `opencode: '.opencode-instances'` to `INSTANCE_DIR_BY_HARNESS`, with the JSDoc note that this convention is a bridge toward #571's per-type harness home, not a new pre-layout path to be permanent.
-2. `ai/daemons/wake/instanceResolver.mjs` — teach `resolveInstancePid` to resolve a data home carried by the environment when the flag is absent. The pure resolver takes a ps snapshot; the environment leg belongs in `getInstancePid` (the side-effect wrapper), so `resolveInstancePid` stays pure and its existing unit surface is unchanged. A launcher that sets `XDG_DATA_HOME` and execs without a flag must resolve to the same pid as one that passes `--user-data-dir`.
+2. ~~`ai/daemons/wake/instanceResolver.mjs` — teach `resolveInstancePid` to resolve a data home carried by the environment when the flag is absent.~~ **RETIRED 2026-09-29: the operator took the cheaper path and this leg is dead.** The launch line now carries the flag, so the existing needle matches and no resolver change is needed.
 
-**Acceptance Criteria**
+**The decision, and its receipt (2026-09-29).** This ticket previously held part 2 open pending an operator decision on the launcher. That decision is made and in effect — the seat's app now launches as
 
-Numbered on 2026-09-28 so a PR's AC table can point at *these* clauses instead of restating its own. Each carries its delivery status, because two of the six cannot be delivered by the arming change and a table that implies otherwise misreports scope.
+```
+/Applications/OpenCode.app/Contents/MacOS/OpenCode --user-data-dir=/Users/tobiasuhlig/.opencode-instances/neo-preview
+```
+
+with `~/.opencode-instances/neo-preview` a **symlink** to the seat's real data home (`…/neo-preview/.local/share/opencode`), so the string the resolver matches in argv and the path the app actually reads and writes are the same one by construction. Running the **real** `resolveInstancePid` against this host's live `ps axww -o pid=,ppid=,command=`:
+
+```
+resolveInstancePid({userDataDir: '~/.opencode-instances/neo-preview', psOutput: <live>})  →  14175
+14175 /Applications/OpenCode.app/Contents/MacOS/OpenCode --user-data-dir=/Users/tobiasuhlig/.opencode-instances/neo-preview
+```
+
+A bare pid, matching the live main process — not a string-match on the flag, which is the assertion former AC-2 (now AC-6) was written specifically to forbid. So part 2 is not merely unnecessary, it would be a second way to answer a question the launcher now answers: `getInstancePid`'s environment leg would be a *fallback* whose only remaining reachable case is a seat that never got the flag — i.e. it would add untested code to the fail-closed path `buildReceiverManifest` depends on.
+
+## Acceptance Criteria
+
+Numbered on 2026-09-28 so a PR's AC table can point at *these* clauses instead of restating its own; statuses and the numbering corrected 2026-09-29 per review `5350493758` (RA-2), after the launcher decision above. **Renumbered contiguously on 2026-09-29** — the ids were `1, 4, 5a, 6, 7, 2, 3, 5b`, which is unreadable as a count register and defeats the PR-body certificate. Map from the old ids: old AC-1 → **AC-1**, old AC-4 → **AC-2**, old AC-5a → **AC-3**, old AC-6 → **AC-4**, old AC-7 → **AC-5**, old AC-2 → **AC-6**, old AC-3 → **AC-7**, old AC-5b → **AC-8**.
 
 **Delivered by the arming change (PR #608):**
 
 - [x] **AC-1** — `resolveInstancePid` keeps its current behaviour when the flag IS present (existing arms unaffected; no regression on `claude`/`codex`).
-- [x] **AC-4** — Re-running the arm twice neither duplicates the seat's route nor withdraws any of the other 9 (the idempotence claim above, asserted against the published manifest).
-- [x] **AC-5a** — After publish, the receiver's manifest carries the seat on `osascript` with an explicit tuple. *(The tuple half only — see AC-5b for the dispatch half, which is not deliverable here.)*
-- [x] **AC-6** — A negative control: a seat with **no** instance directory still produces a **named skip**, not a guessed tuple (the fail-closed property `buildReceiverManifest` depends on).
-- [x] **AC-7 (added 2026-09-28)** — Arming must not report `armed: true` when the published route is not on the adapter arming exists to produce. The adapter is declared by the SUBSCRIPTION, not by the arm, so a tuple can be derived and published while the delivery path is unchanged. Every own route must be on the armed adapter, checked **per route** (an `includes` check over the distinct adapter set admits a mixed own set, and a set-derived check admits a route carrying no adapter at all), and the refusal must name **mixed set** and **single stale route** separately, because they need different repairs.
+- [x] **AC-2** — Re-running the arm twice neither duplicates the seat's route nor withdraws any of the other 9 (the idempotence claim above, asserted against the published manifest).
+- [x] **AC-3** — After publish, the receiver's manifest carries the seat on `osascript` with an explicit tuple. *(The tuple half only — AC-8 is not this ticket's.)*
+- [x] **AC-4** — A negative control: a seat with **no** instance directory still produces a **named skip**, not a guessed tuple (the fail-closed property `buildReceiverManifest` depends on).
+- [x] **AC-5 (added 2026-09-28)** — Arming must not report `armed: true` when the published route is not on the adapter arming exists to produce. The adapter is declared by the SUBSCRIPTION, not by the arm, so a tuple can be derived and published while the delivery path is unchanged. Every own route must be on the armed adapter, checked **per route** (an `includes` check over the distinct adapter set admits a mixed own set, and a set-derived check admits a route carrying no adapter at all), and the refusal must name **mixed set** and **single stale route** separately, because they need different repairs.
 
-**NOT delivered here — carried, with owners:**
+**Delivered by the operator's launcher decision (2026-09-29), not by any substrate change:**
 
-- [ ] **AC-2** — An arm run with `harness: 'opencode'` on a seat whose launcher carries `XDG_DATA_HOME` and no flag yields a non-null `instancePid` equal to the app's main-process pid — asserted by running the real resolver against a live `ps` snapshot, not by asserting the string `--user-data-dir` appears.
-- [ ] **AC-3** — The resolver does not match an `opencode`-named *Helper*/*Framework* process — the existing `isMainExecutable` exclusion must still hold on the env-derived path.
+- [x] **AC-6** — *Rewritten from the env-derived form, which no longer describes this seat.* The intent was always that this seat's **real main-process pid** resolves, and that it is proved by running the resolver against a live `ps` snapshot rather than by asserting the flag string appears. Both now hold: `resolveInstancePid` returns `14175` against live `ps`, and that pid is the app's main executable (receipt above). The env-derived path this clause named is retired with part 2.
+- [x] **AC-7** — *Same rewrite.* The substance is that the resolver never answers with a *Helper*/*Framework* pid, and that exclusion holds on the path that survives. `instanceResolver.mjs:67-95` prefers a direct main-executable match and otherwise walks the pid tree upward, and the existing arm at `instanceResolver.spec.mjs` asserts it with two `Helper` rows carrying the addressed dir in the fixture while the resolver answers the main pid. The env-derived variant of this clause retires with part 2.
 
-  **AC-2 and AC-3 are the env-derived resolver leg (The Fix, part 2), and #608 does not touch `instanceResolver.mjs`.** They are therefore unclaimed work, not silently-dropped clauses. Per *Out of Scope* below this leg is **operator-owned and may be made unnecessary**: changing `opencode-seat.sh` to pass `--user-data-dir` instead is a valid cheaper alternative, and if that is chosen these two clauses retire rather than get implemented. The decision belongs to @tobiu; until it is made, #608 reduces to part 1 plus AC-7 and does not claim the env leg.
+**NOT this ticket — moved, with owners:**
 
-- [ ] **AC-5b** — a `SENT_TO_ME` delivery test observes a **real dispatch**. **Not deliverable by this change and not by any arming change**, because the gap is downstream of addressing: the route publishes, the digest reaches the OpenCode prompt, and an unattended Return does not reliably start a turn. That boundary is #606's submit defect, and claiming it here would be the exact "reporting half" lie this subsystem exists to refuse. AC-5b is therefore gated on #606 and **must not be read as satisfied by a green arm**.
+- [ ] **AC-8 → [`#606`](https://github.com/neomjs/neo-agent-brain/issues/606)** — a `SENT_TO_ME` delivery test observes a **real dispatch**. Not deliverable by this change or by any arming change: the gap is downstream of addressing, because the route publishes and the digest reaches the OpenCode prompt, and an unattended Return does not reliably start a turn. That boundary is #606's submit defect, and claiming it here would be the exact "reporting half" lie this subsystem exists to refuse. **It now lives on #606 and is not tracked here** — #598's remaining clauses map to evidence, which is what makes `Resolves #598` honest.
+
+## Contract Ledger
+
+| Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| `armSeatWakeRoute` return, new `adapter` field | the subscription's own `harnessTargetMetadata.adapter`, read at publish time | the adapter the published route will actually use — `ARMED_ADAPTER` (`'osascript'`) on success, the observed adapters joined on a refusal | `'none'` when an own route carries no adapter at all | the module JSDoc on `ARMED_ADAPTER`; the refusal reasons on both branches | AC-5 — spec arms for the single-stale, mixed-set and no-adapter shapes |
+| `armSeatWakeRoute` return, `armed` / `routeCount` | unchanged surface, corrected semantics | `armed: true` only when every own route is on `ARMED_ADAPTER`; `routeCount` still counts this seat's own routes, so a refusal is countable rather than silent | unchanged: an unknown harness, missing identity, non-directory and absent dir each keep their own named skip | the per-route predicate's comment | AC-5 (the guard), AC-4 (the unchanged named skips) |
+| `INSTANCE_DIR_BY_HARNESS.opencode` | #571's terminal predicate (pre-layout paths are retired) | the OpenCode instance-dir convention, as a **bridge** | a seat with no such dir keeps AC-4's named skip | the entry's JSDoc calls it a bridge, not a destination | AC-3 (the published tuple), AC-4 (the missing-dir skip) |
 
 ## Out of Scope
 
 - The `60823` auth rejection on the existing `opencode-server` adapter. It is a separate defect and it is the only mechanism available to `@neo-kimi-phoebe`, who has no arm and no alternative; do not let this ticket's success imply that seat is fixed.
 - Extending `INSTANCE_DIR_BY_HARNESS` beyond `opencode`, and any migration of existing `.claude-instances` / `.codex-instances` seats — #571 owns that.
-- Changing `opencode-seat.sh` to pass `--user-data-dir` instead. That is a valid cheaper alternative to fix part 2 and is operator-owned; if chosen, part 2 becomes unnecessary and this ticket reduces to part 1. Recorded so the cheaper path is not lost.
+- ~~Changing `opencode-seat.sh` to pass `--user-data-dir` instead.~~ **DONE 2026-09-29 — this is the path taken**; see The Fix. Recorded here originally so the cheaper alternative would not be lost, and it was not.
 
 ## Avoided Traps
 
@@ -130,6 +154,8 @@ Numbered on 2026-09-28 so a PR's AC table can point at *these* clauses instead o
 
 Origin Session ID: 88f53007-ba52-48af-a9a9-25a187e90d1e
 Retrieval Hint: "instanceResolver userDataDir XDG_DATA_HOME" · "armSeatWakeRoute opencode harness" · "osascript instancePid null"
+
+
 
 
 
@@ -344,4 +370,8 @@ control and the absent-adapter control.
 Also corrects the mock builder's comment, which claimed field-for-field fidelity
 to the real builder. It exists to drive the admission predicate, not to mirror
 the builder."
+- 2026-09-29T12:22:25Z @tobiu referenced in commit `9f42809` - "Merge pull request #608 from neomjs/eos/598-opencode-arm
+
+feat(wake): the arming path knows an OpenCode harness, and armed stops lying (#598)"
+- 2026-09-29T12:22:25Z @tobiu closed this issue
 
