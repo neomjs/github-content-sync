@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-09-28T22:00:36.214Z",
-  "releasesLastFetched": "2026-09-28T22:00:35.057Z",
+  "lastSync": "2026-09-29T08:29:13.467Z",
+  "releasesLastFetched": "2026-09-29T08:29:13.182Z",
   "pushFailures": [],
   "issues": {
     "3": {
@@ -3633,24 +3633,6 @@
       "updatedAt": "2026-09-27T10:38:28Z",
       "contentHash": "05dfc7294cb615fec0e3f8bcd0b840202fa46dd072af941fd08939456c88216e"
     },
-    "556": {
-      "state": "MERGED",
-      "path": "neo-agent-brain/pulls/chunk-2/pr-556.md",
-      "closedAt": "2026-09-26T20:36:02Z",
-      "mergedAt": "2026-09-26T20:36:02Z",
-      "milestone": null,
-      "updatedAt": "2026-09-26T20:36:07Z",
-      "contentHash": "8e6ea674a325675f12f84feb8ba7e5ec1520502a5c7abcad7b75a4fd77449db6"
-    },
-    "559": {
-      "state": "MERGED",
-      "path": "neo-agent-brain/pulls/chunk-2/pr-559.md",
-      "closedAt": "2026-09-26T21:38:46Z",
-      "mergedAt": "2026-09-26T21:38:46Z",
-      "milestone": null,
-      "updatedAt": "2026-09-26T21:38:50Z",
-      "contentHash": "28770e55be0b3dd0c20fd56d0d3d65afd74af27a2eef8f4feaa831875f7dd911"
-    },
     "560": {
       "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-2/pr-560.md",
@@ -3893,6 +3875,24 @@
       "milestone": null,
       "updatedAt": "2026-09-28T18:12:42Z",
       "contentHash": "7487787dbcc372c273867c0d8a305ca05219a3875bd230a550e11f8eb6a86e36"
+    },
+    "618": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/pulls/chunk-3/pr-618.md",
+      "closedAt": null,
+      "mergedAt": null,
+      "milestone": null,
+      "updatedAt": "2026-09-29T04:34:26Z",
+      "contentHash": "85f1ada85465918f037d88c6001c31728824bfa87a9d7d8152618e3f60e308e9"
+    },
+    "619": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/pulls/chunk-3/pr-619.md",
+      "closedAt": null,
+      "mergedAt": null,
+      "milestone": null,
+      "updatedAt": "2026-09-29T04:34:32Z",
+      "contentHash": "db1791485659be91003ca7366064bc12643cb649a39d59189ed3c170a6777ca8"
     }
   },
   "discussions": {}
