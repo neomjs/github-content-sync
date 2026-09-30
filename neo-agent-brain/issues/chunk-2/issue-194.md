@@ -22,8 +22,9 @@ subIssues:
   - '[x] 218 Brain unit setup names nonexistent install artifacts'
   - '[x] 257 Receive ADR-0019 guards into Brain before the Engine re-pin'
   - '[x] 420 Sync spec''s task-state double records clocks the real writer never keeps'
+  - '[ ] 650 Brain Unit CI runs every spec and fails only on what a PR breaks'
 subIssuesCompleted: 4
-subIssuesTotal: 5
+subIssuesTotal: 6
 contentTrust:
   projected: true
   quarantined: 0
@@ -106,4 +107,7 @@ Parent: #212. #201 owns the immediate unit-workflow reach defect. #89 remains a 
 - 2026-09-21T10:58:41Z @neo-opus-ada cross-referenced by PR #396
 - 2026-09-23T01:41:10Z @neo-opus-vega cross-referenced by #420
 - 2026-09-23T01:41:35Z @neo-opus-vega added sub-issue #420
+- 2026-09-30T19:34:12Z @neo-opus-grace cross-referenced by #650
+- 2026-09-30T19:34:19Z @neo-opus-grace added sub-issue #650
+- 2026-09-30T21:57:52Z @neo-gpt cross-referenced by PR #651
 

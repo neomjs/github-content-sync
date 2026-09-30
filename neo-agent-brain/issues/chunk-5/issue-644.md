@@ -1,7 +1,7 @@
 ---
 id: 644
 title: Fleet seats in repositories without AGENTS.md load no instructions
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-30T17:14:47Z'
-updatedAt: '2026-09-30T18:24:52Z'
+updatedAt: '2026-09-30T22:23:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/644'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T22:23:31Z'
 ---
 # Fleet seats in repositories without AGENTS.md load no instructions
 
@@ -75,9 +76,10 @@ Two parts, split so the preparer keeps one file-safety path:
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `<instanceHome>/CLAUDE.md` for `claude-code` | `deriveHarnessLaunchSpec` `CLAUDE_CONFIG_DIR` | the seat repository's maintainer composition | `repository-supplied` when the repository tracks a Claude file; `not-applicable` for an undeclared repository | module JSDoc | a Brain-repository fixture seat gets the file; an Engine fixture seat is skipped |
-| `AGENTS.md` in the Codex home for `codex` / `codex-desktop` | `deriveHarnessLaunchSpec` `CODEX_HOME`; the home root in `prepareCodexArtifacts` | the same composition | `repository-supplied` when the checkout carries `AGENTS.override.md` or `AGENTS.md`; `not-applicable` for an undeclared repository | module JSDoc | a fixture arm per Codex type; an `AGENTS.md` checkout is skipped |
-| the instructions receipt | the `convergeTransportReceipt` precedent | records Fleet's last write | a hand-edit refuses the start with `FLEET_WORKSPACE_DIVERGENT` | module JSDoc | a release-update arm and a hand-edit arm |
+| `<instanceHome>/CLAUDE.md` for `claude-code` | `deriveHarnessLaunchSpec` `CLAUDE_CONFIG_DIR` | the seat repository's maintainer composition | `repository-supplied` when the checkout carries a Claude file the harness can read (a symlink to one counts; a directory, a link to nothing or an unreadable file does not, and is named in `ignored`); `not-applicable` for an undeclared repository. When the seat stops taking the file, Fleet retires the copy it wrote; an edited copy refuses the start, and one Fleet never wrote stays and is reported | module JSDoc | a Brain-repository fixture seat gets the file; an Engine fixture seat is skipped |
+| `AGENTS.md` in the Codex home for `codex` / `codex-desktop` | `deriveHarnessLaunchSpec` `CODEX_HOME`; the home root in `prepareCodexArtifacts` | the same composition | `repository-supplied` when the checkout carries a readable `AGENTS.override.md` or `AGENTS.md` (same entry rules); `not-applicable` for an undeclared repository; the same retirement on a transition | module JSDoc | a fixture arm per Codex type; an `AGENTS.md` checkout is skipped |
+| the instructions receipt | the `convergeTransportReceipt` precedent | records Fleet's last write | a hand-edit refuses the start with `FLEET_WORKSPACE_DIVERGENT`; retirement removes the receipt with its file | module JSDoc | a release-update arm, a hand-edit arm, and a retirement arm per harness |
+| the decision, `seatInstructions` | the preparation result; `startAgentProvisioned`'s returned status | `{state, reason, ignored?, homeFile?}` on every prepared start | a harness with no slot reports `not-applicable` with no path | JSDoc on both | a real composed start reports `repository-supplied` and `not-applicable` with no logger injected |
 
 **Accretion disposition.** One new module that writes nothing; the preparer gains one call, a receipt option on an existing function and two small receipt helpers. The Codex Desktop home rule becomes one local helper shared by the Codex adapter and the instructions step instead of a second inline copy. Consumers' turn-loaded bytes fall once the Engine removes its tracked copies. Sunset: the `repository-supplied` branch retires when no declared repository tracks an instruction file its harness reads.
 
@@ -87,11 +89,11 @@ Two parts, split so the preparer keeps one file-safety path:
 
 ## Acceptance Criteria
 
-- [ ] AC-1: A `claude-code` seat whose repository tracks no Claude instruction file gets `<instanceHome>/CLAUDE.md` holding the maintainer composition for its repository. A seat whose repository tracks one gets no home file, and the preparer logs `repository-supplied`.
-- [ ] AC-2: A `codex` or `codex-desktop` seat gets `AGENTS.md` in its Codex home holding the same composition. A seat whose checkout carries `AGENTS.override.md` or `AGENTS.md` gets none, and the preparer logs `repository-supplied`.
-- [ ] AC-3: A seat on an undeclared repository, or on a harness type without a witnessed slot, starts normally with no home file, and the preparer logs `not-applicable`.
+- [ ] AC-1: A `claude-code` seat whose repository tracks no Claude instruction file gets `<instanceHome>/CLAUDE.md` holding the maintainer composition for its repository. A seat whose repository tracks one gets no home file, and the start reports `repository-supplied`.
+- [ ] AC-2: A `codex` or `codex-desktop` seat gets `AGENTS.md` in its Codex home holding the same composition. A seat whose checkout carries `AGENTS.override.md` or `AGENTS.md` gets none, and the start reports `repository-supplied`.
+- [ ] AC-3: A seat on an undeclared repository, or on a harness type without a witnessed slot, starts normally with no home file, and the start reports `not-applicable`.
 - [ ] AC-4: A new Skills release replaces a file Fleet wrote; a hand-edited file refuses the start with `FLEET_WORKSPACE_DIVERGENT`, naming the path.
-- [ ] AC-5 (post-merge, residual owner neomjs/neo-agent-institution#12): a Fleet-started Claude seat and a Fleet-started Codex seat on the Brain repository each show the home file's rules in effect in their first session, with no repository instruction file present.
+- [ ] AC-5 (post-merge, residual owner #571, the seat-launch outcome; acceptance trail neomjs/neo-agent-institution#12): a Fleet-started Claude seat and a Fleet-started Codex seat on the Brain repository each show the home file's rules in effect in their first session, with no repository instruction file present.
 
 ## Out of Scope
 
@@ -125,6 +127,9 @@ Two parts, split so the preparer keeps one file-safety path:
 Origin Session ID: 8c224931-7b3d-4cb5-a43d-86f1735f3636
 
 
+
+
+
 ## Timeline
 
 - 2026-09-30T17:14:48Z @neo-opus-grace assigned to @neo-opus-grace
@@ -138,4 +143,23 @@ Origin Session ID: 8c224931-7b3d-4cb5-a43d-86f1735f3636
 - 2026-09-30T18:19:16Z @neo-opus-grace referenced in commit `38e6f16` - "feat(fleet): project a seat's maintainer instructions into its harness home (#644)"
 - 2026-09-30T18:19:16Z @neo-opus-grace referenced in commit `5f534a6` - "feat(fleet): converge a seat's instructions in its harness home against a receipt of Fleet's last write (#644)"
 - 2026-09-30T18:24:05Z @neo-opus-grace referenced in commit `bd13b26` - "fix(fleet): a checkout's AGENTS.md supplies a Codex seat's instructions, since Codex reads its home file beside the project budget (#644)"
+- 2026-09-30T19:23:06Z @neo-gpt-emmy cross-referenced by #648
+- 2026-09-30T19:35:03Z @neo-gpt cross-referenced by PR #647
+- 2026-09-30T19:40:20Z @neo-opus-grace cross-referenced by PR #649
+- 2026-09-30T20:23:36Z @neo-opus-grace cross-referenced by PR #131
+- 2026-09-30T21:10:48Z @neo-opus-grace referenced in commit `304c62d` - "feat(fleet): project a seat's maintainer instructions into its harness home (#644)"
+- 2026-09-30T21:10:48Z @neo-opus-grace referenced in commit `7385354` - "feat(fleet): converge a seat's instructions in its harness home against a receipt of Fleet's last write (#644)"
+- 2026-09-30T21:10:48Z @neo-opus-grace referenced in commit `dd280f5` - "fix(fleet): a checkout's AGENTS.md supplies a Codex seat's instructions, since Codex reads its home file beside the project budget (#644)"
+- 2026-09-30T21:10:48Z @neo-opus-grace referenced in commit `7532838` - "feat(fleet): Fleet resolves neo-agent-skills ^0.1.23, the first release that exports agents-md (#644)
+
+projectSeatInstructions imports neo-agent-skills/agents-md, which 0.1.23 (Skills #127) is the first to export; the floor moves from ^0.1.19 so no install can resolve a release without it."
+- 2026-09-30T21:10:51Z @neo-opus-grace cross-referenced by PR #654
+- 2026-09-30T22:07:04Z @tobiu referenced in commit `bb9350d` - "feat(fleet): a seat's instructions converge both ways, count only a readable checkout file, and report the decision on the start (#644)
+
+When the seat stops taking its home file (the checkout now supplies one, or the repository is undeclared), the file Fleet wrote is retired with its receipt; a file edited since refuses the start, and one Fleet never wrote stays and is reported. A checkout entry supplies instructions only when it resolves to a readable file, a symlink to one included; a directory, a link to nothing or an unreadable file falls back to the composition and is named. The preparation result carries the decision as seatInstructions, and startAgentProvisioned returns it on the status its caller already receives."
+- 2026-09-30T22:23:31Z @tobiu referenced in commit `5653203` - "Merge pull request #654 from neomjs/grace/644-seat-instructions
+
+feat(fleet): a Fleet seat starts with its repository's maintainer instructions in its harness home (#644)"
+- 2026-09-30T22:23:31Z @tobiu closed this issue
+- 2026-09-30T22:24:51Z @neo-opus-grace cross-referenced by #571
 

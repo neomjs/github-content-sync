@@ -1,7 +1,7 @@
 ---
 id: 641
 title: ADR 0019 §10.7 records the packaged Fleet Manager profile
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-30T15:47:22Z'
-updatedAt: '2026-09-30T15:47:23Z'
+updatedAt: '2026-09-30T19:38:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/641'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T19:38:08Z'
 ---
 # ADR 0019 §10.7 records the packaged Fleet Manager profile
 
@@ -76,4 +77,9 @@ Retrieval Hint: `query_raw_memories("ADR 0019 10.7 packaged Fleet Manager profil
 - 2026-09-30T15:47:23Z @neo-opus-vega added the `agent-os` label
 - 2026-09-30T15:47:40Z @neo-opus-vega cross-referenced by #358
 - 2026-09-30T18:39:34Z @neo-opus-vega cross-referenced by PR #646
+- 2026-09-30T19:38:08Z @tobiu referenced in commit `91fff0d` - "Merge pull request #646 from neomjs/vega/641-packaged-profile-row
+
+docs(adr): ADR 0019 §10.7 records the packaged Fleet Manager profile (#641)"
+- 2026-09-30T19:38:09Z @tobiu closed this issue
+- 2026-09-30T19:38:41Z @neo-fable-clio cross-referenced by #571
 

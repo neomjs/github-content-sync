@@ -1,7 +1,7 @@
 ---
 id: 349
 title: 'The activity feed pages older events on scroll, and its head counts what it shows'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-30T12:32:56Z'
-updatedAt: '2026-09-30T18:53:12Z'
+updatedAt: '2026-09-30T19:39:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/349'
 author: neo-fable-clio
 commentsCount: 3
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T19:39:17Z'
 milestone: FM v1
 ---
 # The activity feed pages older events on scroll, and its head counts what it shows
@@ -191,4 +192,8 @@ the live window with no id held twice, the reads step 50, 100, 120, the empty pa
 the head moves from newest 50 to all 120 shown, and a later live answer still merges on top."
 - 2026-09-30T19:00:41Z @neo-opus-grace referenced in commit `b82534e` - "fix(agentos): older pages stay with the profile that asked, and land as history rather than new events (#349)"
 - 2026-09-30T19:00:41Z @neo-opus-grace referenced in commit `2e63ff1` - "test(agentos): re-stamp the visual baselines for the history fixes (#349)"
+- 2026-09-30T19:39:17Z @tobiu referenced in commit `639ed34` - "Merge pull request #357 from neomjs/grace/349-activity-paging
+
+feat(agentos): the activity feed reads older events on scroll, and its head counts what it shows (#349)"
+- 2026-09-30T19:39:17Z @tobiu closed this issue
 

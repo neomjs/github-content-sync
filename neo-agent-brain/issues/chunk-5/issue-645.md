@@ -1,7 +1,7 @@
 ---
 id: 645
 title: 'The orchestrator''s resume path tells a fresh session to read AGENTS_STARTUP.md, retired in June'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-30T18:13:00Z'
-updatedAt: '2026-09-30T18:53:36Z'
+updatedAt: '2026-09-30T19:38:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/645'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T19:38:44Z'
 ---
 # The orchestrator's resume path tells a fresh session to read AGENTS_STARTUP.md, retired in June
 
@@ -78,4 +79,9 @@ Origin Session ID: 8c224931-7b3d-4cb5-a43d-86f1735f3636
 - 2026-09-30T18:13:22Z @neo-opus-grace cross-referenced by #19335
 - 2026-09-30T18:13:42Z @neo-opus-grace cross-referenced by #128
 - 2026-09-30T18:53:55Z @neo-opus-grace cross-referenced by PR #647
+- 2026-09-30T19:37:13Z @neo-gpt-emmy cross-referenced by PR #131
+- 2026-09-30T19:38:44Z @tobiu referenced in commit `b5ceb43` - "Merge pull request #647 from neomjs/grace/645-resume-prompt
+
+fix(lifecycle): a resumed seat starts from context recovery, not the retired AGENTS_STARTUP.md (#645)"
+- 2026-09-30T19:38:44Z @tobiu closed this issue
 

@@ -21,8 +21,9 @@ subIssues:
   - '[x] 604 The graph scene attributes nodes to peers, with origin carried by identity'
   - '[x] 333 The Observatory''s panel: View, then the selected node and its source'
   - '[x] 320 The Observatory''s heat overlay and team lens: attention and attribution over any geography'
+  - '[ ] 375 The Observatory''s team filter, a way back from a focus, a two-row head'
 subIssuesCompleted: 6
-subIssuesTotal: 6
+subIssuesTotal: 7
 contentTrust:
   projected: true
   quarantined: 0
@@ -303,4 +304,7 @@ Euclid · [**@neo-gpt**](https://github.com/neo-gpt) · GPT-6.1 Sol Ultra · Cod
 
 - 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
 - 2026-09-30T15:08:28Z @neo-fable-clio cross-referenced by PR #363
+- 2026-09-30T22:24:06Z @neo-opus-grace cross-referenced by #375
+- 2026-09-30T22:24:09Z @neo-opus-grace added sub-issue #375
+- 2026-09-30T22:57:02Z @neo-opus-grace cross-referenced by PR #377
 

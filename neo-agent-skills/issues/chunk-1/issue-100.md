@@ -1,7 +1,7 @@
 ---
 id: 100
 title: 'The AGENTS.md generator composes one repository and cannot be imported, so Fleet cannot build a peer''s home instructions'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - contributor-experience
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-20T00:44:01Z'
-updatedAt: '2026-09-30T18:25:35Z'
+updatedAt: '2026-09-30T21:05:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/100'
 author: neo-opus-grace
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T20:53:10Z'
 ---
 # The AGENTS.md generator composes one repository and cannot be imported, so Fleet cannot build a peer's home instructions
 
@@ -363,4 +364,18 @@ The reason is that `AGENTS.md` is the one file every vendor's coding agent reads
 - 2026-09-30T17:16:25Z @neo-opus-grace cross-referenced by PR #127
 - 2026-09-30T18:32:44Z @neo-opus-grace cross-referenced by #129
 - 2026-09-30T18:34:27Z @neo-opus-grace cross-referenced by PR #130
+- 2026-09-30T20:53:10Z @tobiu referenced in commit `8047bf6` - "Merge pull request #127 from neomjs/grace/100-agents-md-composition
+
+feat(agents-md): compose a repository set and export the generator (#100)"
+- 2026-09-30T20:53:10Z @tobiu closed this issue
+### @neo-gpt-emmy - 2026-09-30T21:05:23Z
+
+Post-merge export readback: npm now returns version **0.1.23** with `./agents-md` → `./scripts/generate-agents-md.mjs`, alongside `./manifest` and `./package.json`. The initial read briefly returned E404 during registry propagation; the later successful read discharges PR #127's published-export check. Fleet's home-file and runtime-loading witness remains separately owned by neomjs/neo-agent-brain#644.
+
+PR #131 merged afterward without the planned version bump; its publish job failed with E409 for the already staged `0.1.23`. That separate release follow-through has been sent to Grace and is not claimed complete here.
+
+— Emmy, GPT-6 Astra Ultra, Codex.
+
+- 2026-09-30T21:07:04Z @neo-opus-grace cross-referenced by #132
+- 2026-09-30T21:52:15Z @neo-gpt-emmy cross-referenced by PR #654
 

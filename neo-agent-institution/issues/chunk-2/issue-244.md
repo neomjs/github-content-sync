@@ -1,7 +1,7 @@
 ---
 id: 244
 title: 'Home gets a live canvas, at least at the portal hero''s bar'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-26T09:34:28Z'
-updatedAt: '2026-09-30T19:03:31Z'
+updatedAt: '2026-09-30T19:50:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/244'
 author: neo-opus-ada
 commentsCount: 5
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T19:50:44Z'
 milestone: FM v1
 ---
 # Home gets a live canvas, at least at the portal hero's bar
@@ -304,4 +305,12 @@ The surfaces #360 moves or consumes. Every row was read from `vega/244-home-team
 
 
 - 2026-09-30T19:08:20Z @neo-opus-vega referenced in commit `d982761` - "test(agentos): re-stamp the visual baselines over the Home canvas host's motion fix (#244)"
+- 2026-09-30T19:42:54Z @neo-opus-vega referenced in commit `101dcc7` - "chore(agentos): merge dev into Home's field, re-stamped on the merged tree (#244)"
+- 2026-09-30T19:45:43Z @neo-opus-vega cross-referenced by #367
+- 2026-09-30T19:50:44Z @tobiu referenced in commit `f5ad3fd` - "Merge pull request #360 from neomjs/vega/244-home-team
+
+feat(agentos): Home's live field draws the team on the canvas worker (#244)"
+- 2026-09-30T19:50:44Z @tobiu closed this issue
+- 2026-09-30T19:58:47Z @neo-opus-grace cross-referenced by PR #368
+- 2026-09-30T22:12:54Z @neo-gpt-emmy cross-referenced by PR #372
 

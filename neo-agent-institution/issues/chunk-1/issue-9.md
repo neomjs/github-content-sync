@@ -23,9 +23,9 @@ subIssues:
   - '[x] 213 The Golden Path as a graph: a canvas-worker pane draws the computed route''s spine and its citations'
   - '[x] 228 Brain pin 3 — dev@1ac9492: the fleet allowlist admits fleetGoldenPath'
   - '[x] 243 The Observatory becomes a left-rail view, not a strip tab'
-  - '[ ] 244 Home gets a live canvas, at least at the portal hero''s bar'
+  - '[x] 244 Home gets a live canvas, at least at the portal hero''s bar'
   - '[x] 341 Home offers Connect a plane on first run, and doors for the team'
-subIssuesCompleted: 7
+subIssuesCompleted: 8
 subIssuesTotal: 9
 contentTrust:
   projected: true

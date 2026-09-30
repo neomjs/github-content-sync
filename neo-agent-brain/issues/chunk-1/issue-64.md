@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-09-27T17:08:38Z'
+updatedAt: '2026-09-30T22:24:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
 commentsCount: 59
@@ -170,14 +170,15 @@ Each repo has a revision, and the incremental path cannot establish a diff bound
   The coverage boundary from #411 AC-5 stands while these are read: frozen `neo`-owned conversation rows coexist with fresh corpus-owned ones until #417.
 - [ ] **AC-7 — the deployed stop's live receipt (re-homed from #237's last AC on 2026-09-23, when its only specimen recovered by input change before the stop could run).** The first tenant entry on this plane that reaches `KB_INGEST_ENVELOPE_REF_NOT_FOUND` with `accessReadiness: ready` reports `status: stopped-unresolvable-ref` with its `unresolvedRef`, and its `consecutiveFailures` does not advance on the following sweep. No synthetic specimen is made for this: a `branchRef` mutation on the shared plane's config is operator-owned, and the operator may elect one. Until a specimen exists, the arm's evidence is PR #238's envelope-stage ref-not-found → `stopped-unresolvable-ref` + `terminalStop` arm (L3).
 - [ ] **AC-8 — the PR bird view's per-origin receipt (residual owner for neomjs/neo-agent-brain#558 / PR #560 AC-1's L4 arm; re-homed here 2026-09-27 at the Round-1 reviewer's request).** On the local plane after the post-merge recreate: `explore_pull_request_history({preset: 'weekly', origin: 'neomjs/neo-agent-brain'})` and the same call with `origin: 'neomjs/nowhere'`, both recorded here with their timestamps. **Precondition, measured 2026-09-26 22:0xZ:** the mc-server container has no corpus content root — `fleet.contentRoot` defaults to `/app/resources/content`, absent there, and the plane's only `_index.json` is the orchestrator's single-origin materialized root (`orchestrator-daemon/core-corpus-materialized`) — so until the multi-origin corpus is reachable from mc-server the first call refuses with `unknown-origin` as designed; that refusal plus the configured-origin call is the receipt available today, and the positive receipt lands once the mount exists (an operator decision on the plane's compose, not taken by this epic).
-- [ ] **AC-9 — the container probe cadence receipt (residual owner for neomjs/neo-agent-brain#568 / PR #570 AC-3; re-homed here 2026-09-27 at the Round-1 reviewer's request).** One hour on the recreated plane with the cockpit open and the seats active: (a) the Docker event stream shows the mc-server probe (`exec_create` of `mcpHealthcheck.mjs`) executing 100–125 times, each inside its 15 s timeout — about 330 per hour at the 10 s cadence (~270 of the 353 `healthcheck` calls in the 49-minute baseline, comment 5854182787); (b) `get_memory_core_tool_metrics` counts `healthcheck` below 250 for the hour with the same seats and cockpit (the baseline's non-probe callers were ~100 per hour) and its per-call average below the baseline's 1.07 s; (c) no container flips to `unhealthy` through a REM run. Recorded here with timestamps.
+- [ ] **AC-9 — the container probe cadence receipt (residual owner for neomjs/neo-agent-brain#568 / PR #570 AC-3; re-homed here 2026-09-27 at the Round-1 reviewer's request).** One hour on the recreated plane with the cockpit open and the seats active: (a) the Docker event stream shows the mc-server probe (`exec_create` of `mcpHealthcheck.mjs`) executing 100–125 times, each inside its 14 s budget under the 15 s Docker timeout (#579) — about 330 per hour at the 10 s cadence (~270 of the 353 `healthcheck` calls in the 49-minute baseline, comment 5854182787); (b) `get_memory_core_tool_metrics` counts `healthcheck` below 250 for the hour with the same seats and cockpit (the baseline's non-probe callers were ~100 per hour) and its per-call average below the baseline's 1.07 s; (c) no container flips to `unhealthy` through a REM run. Recorded here with timestamps.
 - [ ] **AC-10 — the mailbox read-path receipt (residual owner for neomjs/neo-agent-brain#563 / PR #564 AC-3; re-homed here 2026-09-27 at the Round-1 reviewer's request).** `get_memory_core_tool_metrics` over one cockpit hour on the recreated plane shows `list_messages` averaging below 300 ms (2,744 ms on 2026-09-26) with the same callers. Recorded here with timestamps.
 - [x] **AC-11 — the death channel's first positive receipt (residual owner for neomjs/neo-agent-brain#567 / PR #569 AC-3; re-homed here 2026-09-27 at the Round-1 reviewer's request).** After the recreate every service's `deathRead.status` reads `available` in the deployment snapshot, one deliberate `docker kill -s KILL` of fleet-server appears in the snapshot's fleet-server `deaths` with `exitCode: 137`, and each server's `healthcheck.lastDeath` carries that server's own last death (`selectLastServiceDeath(…, serviceKey)` — the AC first named the MC healthcheck as the reader of a fleet-server death; corrected with the receipt). **Met 2026-09-27 on the 46ab45f cut:** every service `available / docker-events` from 11:08:25Z; fleet-server `{at: 11:10:47.754Z, exitCode: 137}` in the 11:11:37Z snapshot; MC `lastDeath.record {at: 11:08:04.076Z, exitCode: 137}` at 11:11:53Z. Receipt comment below.
 - [x] **AC-12 — the receipt of a landed receipt write (residual owner for neomjs/neo-agent-brain#578 / PR #580 AC-3; re-homed here 2026-09-27).** On the first recreated mc-server carrying #580, the first `mark_read` answers `status: 'read'` (today's 230593f cut answered `not_applied … no longer present in storage` for its first three, 13:07–13:09Z, while the writes landed). Recorded here with timestamps.
 - [x] **AC-13 — the installed Fleet Manager reads the plane's deployment snapshot (residual owner for neomjs/neo-agent-brain#581 / PR #582 AC-3; re-homed here 2026-09-27).** After the Brain pin bump and repackage, the installed FM attached to the local plane shows its System keeper-view populated with the plane's services (today: `snapshot-missing` while the plane answered `available` with five). The installed-app verification is neomjs/neo-agent-institution#7's (@neo-gpt-emmy / root); the receipt is recorded there and here.
 - [ ] **AC-14 — the plane serves the Fleet's PR/lane slot from the corpus beside its receipt (residual owner for neomjs/neo-agent-brain#585 / PR #588 AC-1; re-homed here 2026-09-27).** After the first cut carrying #588, the corpus projection rebuilds `core-corpus-materialized` on the deployment-state bridge, and mc-server's `get_pr_lane_activity` answers `wired` from it, including after the projector's next swap. Recorded here with timestamps.
 - [ ] **AC-15 — the installed Fleet Manager's activity feed reads complete (residual owner for neomjs/neo-agent-brain#585 / PR #588 AC-4; re-homed here 2026-09-27).** After the Brain pin bump and repackage, the installed FM's feed reads complete rather than partial, with neo PR/lane rows, and the bundle carries no corpus (neomjs/neo-agent-institution#7 verifies in the app).
-  AC-9 to AC-15 ride the plane cuts and the installed-app repackage as they come; comment 5854871745 is their ledger.
+- [ ] **AC-16 — the installed Fleet Manager stops drawing while minimized (residual owner for neomjs/neo-agent-institution#367 / PR #373 AC-2; re-homed here 2026-09-30 at the Round-1 reviewer's request).** After the engine pin bump and repackage, with the installed FM's window minimized, Home's `getStats().frames` does not advance and the Observatory's canvas draws no frames; restoring the window makes both advance again. Recorded here with timestamps.
+  AC-9 to AC-16 ride the plane cuts and the installed-app repackage as they come; comment 5854871745 is their ledger.
 
 ## Out of scope
 
@@ -194,6 +195,7 @@ neomjs/neo#16551 (reporting overlap) · neomjs/neo-agent-brain#65 (mirror cost) 
 Origin Session ID: `4141258c-36d3-4788-b0c2-ab3ebe0867be`
 
 Retrieval Hint: `query_raw_memories("tenant-repo-sync starved behind heavy maintenance while REM undigested grows")` · `TenantRepoSyncService.mjs:1162` · the `04:49:54Z` deferral line.
+
 
 
 
@@ -2796,4 +2798,8 @@ AC-11 met (comment 5855324234). AC-12 (#580) and AC-13 (#582) wait for their mer
 - 2026-09-27T15:09:54Z @neo-opus-vega cross-referenced by PR #588
 - 2026-09-27T17:09:14Z @neo-opus-vega cross-referenced by #593
 - 2026-09-27T17:19:43Z @neo-opus-vega cross-referenced by PR #594
+- 2026-09-28T09:15:36Z @neo-gpt-emmy cross-referenced by #17416
+- 2026-09-30T22:11:30Z @neo-opus-vega cross-referenced by PR #655
+- 2026-09-30T22:24:55Z @neo-opus-vega cross-referenced by #367
+- 2026-09-30T22:24:57Z @neo-opus-vega cross-referenced by PR #373
 

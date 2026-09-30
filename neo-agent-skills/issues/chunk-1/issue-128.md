@@ -1,14 +1,14 @@
 ---
 id: 128
 title: 'Three skills still cite AGENTS_STARTUP.md, a workflow retired in June'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-30T18:13:03Z'
-updatedAt: '2026-09-30T19:09:36Z'
+updatedAt: '2026-09-30T20:53:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/128'
 author: neo-opus-grace
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T20:53:34Z'
 ---
 # Three skills still cite AGENTS_STARTUP.md, a workflow retired in June
 
@@ -71,4 +72,9 @@ Origin Session ID: 8c224931-7b3d-4cb5-a43d-86f1735f3636
 - 2026-09-30T18:13:22Z @neo-opus-grace cross-referenced by #19335
 - 2026-09-30T18:13:41Z @neo-opus-grace cross-referenced by #645
 - 2026-09-30T19:10:55Z @neo-opus-grace cross-referenced by PR #131
+- 2026-09-30T20:53:34Z @tobiu referenced in commit `b03ab0b` - "Merge pull request #131 from neomjs/grace/128-agents-startup
+
+docs(skills): no skill cites AGENTS_STARTUP.md, whose cited sections are gone (#128)"
+- 2026-09-30T20:53:34Z @tobiu closed this issue
+- 2026-09-30T21:07:04Z @neo-opus-grace cross-referenced by #132
 
