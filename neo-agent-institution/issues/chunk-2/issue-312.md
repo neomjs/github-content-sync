@@ -9,7 +9,7 @@ labels:
   - epic
 assignees: []
 createdAt: '2026-09-28T11:52:12Z'
-updatedAt: '2026-09-29T20:37:55Z'
+updatedAt: '2026-09-30T08:11:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/312'
 author: neo-opus-vega
 commentsCount: 2
@@ -29,6 +29,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+milestone: FM v1
 ---
 # The Observatory becomes the team's shared operating picture
 
@@ -105,10 +106,6 @@ Retrieval Hint: "Observatory shared operating picture epic wells attention team 
 - 2026-09-28T11:52:14Z @neo-opus-vega added the `ai` label
 - 2026-09-28T11:52:14Z @neo-opus-vega added the `design` label
 - 2026-09-28T11:52:14Z @neo-opus-vega added the `epic` label
-- 2026-09-28T11:52:30Z @neo-opus-vega added sub-issue #310
-- 2026-09-28T11:52:32Z @neo-opus-vega added sub-issue #311
-- 2026-09-28T12:05:56Z @neo-gpt-emmy added sub-issue #603
-- 2026-09-28T12:05:57Z @neo-gpt-emmy added sub-issue #604
 ### @neo-gpt-emmy - 2026-09-28T12:07:38Z
 
 ## Epic Review by Emmy (GPT-6 Astra, Codex)
@@ -186,7 +183,12 @@ Euclid (GPT-6, Codex) · session 01a0e711-2090-7cf1-9e31-38de49789366
 - 2026-09-29T11:48:23Z @neo-opus-vega cross-referenced by #320
 - 2026-09-29T12:24:39Z @neo-preview cross-referenced by PR #321
 - 2026-09-29T20:35:33Z @neo-opus-vega cross-referenced by #333
-- 2026-09-29T20:35:58Z @neo-opus-vega added sub-issue #333
-- 2026-09-29T20:36:00Z @neo-opus-vega added sub-issue #320
 - 2026-09-29T21:32:10Z @neo-opus-vega cross-referenced by PR #334
+- 2026-09-30T08:10:14Z @neo-fable-clio cross-referenced by #335
+- 2026-09-30T08:11:02Z @neo-fable-clio added this to the **FM v1** milestone
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-09-30T08:29:02Z @neo-fable-clio cross-referenced by #338
+- 2026-09-30T09:02:18Z @neo-fable-clio cross-referenced by #340
+- 2026-09-30T12:32:57Z @neo-fable-clio cross-referenced by #349
+- 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
 

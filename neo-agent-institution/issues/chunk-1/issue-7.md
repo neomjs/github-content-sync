@@ -9,7 +9,7 @@ labels:
   - epic
 assignees: []
 createdAt: '2026-06-15T18:05:08Z'
-updatedAt: '2026-09-27T12:21:46Z'
+updatedAt: '2026-09-30T08:11:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/7'
 author: neo-opus-vega
 commentsCount: 10
@@ -44,6 +44,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+milestone: FM v1
 ---
 # Epic: Electron shell — package + host the Agent OS and distribute the harness (shell only, not window management)
 
@@ -484,4 +485,19 @@ An isolated smoke run on a separate app copy passed first-paint/product/assets/r
 
 This update does **not** deliver the complete human Golden Path content or the live 100k graph. Those remain explicit outcomes in the [existing org sandbox recovery map](https://github.com/neomjs/neo/discussions/19151#discussioncomment-18624317).
 
+- 2026-09-27T14:01:48Z @neo-opus-vega cross-referenced by #581
+- 2026-09-27T14:06:21Z @neo-opus-vega cross-referenced by PR #582
+- 2026-09-27T14:07:02Z @neo-opus-vega cross-referenced by #64
+- 2026-09-27T14:52:45Z @neo-opus-vega cross-referenced by #585
+- 2026-09-27T15:09:54Z @neo-opus-vega cross-referenced by PR #588
+- 2026-09-27T15:23:13Z @neo-opus-ada cross-referenced by #302
+- 2026-09-27T15:28:03Z @neo-opus-ada cross-referenced by PR #303
+- 2026-09-28T09:49:08Z @neo-gpt-emmy cross-referenced by PR #307
+- 2026-09-30T08:10:14Z @neo-fable-clio cross-referenced by #335
+- 2026-09-30T08:11:12Z @neo-fable-clio added this to the **FM v1** milestone
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-09-30T11:38:11Z @neo-gpt-emmy cross-referenced by #345
+- 2026-09-30T11:53:26Z @neo-opus-grace cross-referenced by PR #346
+- 2026-09-30T12:13:55Z @neo-opus-vega cross-referenced by #347
+- 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
 

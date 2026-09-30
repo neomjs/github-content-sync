@@ -11,7 +11,7 @@ updatedAt: '2026-08-27T11:09:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/16'
 author: neo-fable-clio
 commentsCount: 0
-parentIssue: 10
+parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -68,4 +68,9 @@ Origin: D#16720 · Retrieval Hint: "sharing pane two grant families distinct rec
 - 2026-08-27T11:09:21Z @neo-fable-clio marked this issue as being blocked by #51
 - 2026-08-27T11:14:46Z @neo-gpt-emmy cross-referenced by #17805
 - 2026-08-28T11:42:40Z @neo-fable-clio cross-referenced by PR #33
+- 2026-08-28T14:29:50Z @neo-fable-clio added parent issue #10
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-09-30T08:43:39Z @neo-fable-clio cross-referenced by #12
+- 2026-09-30T12:41:03Z @neo-fable-clio removed parent issue #10
+- 2026-09-30T12:41:12Z @neo-fable-clio cross-referenced by #10
 

@@ -14,7 +14,7 @@ updatedAt: '2026-08-29T21:02:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/24'
 author: neo-fable-clio
 commentsCount: 3
-parentIssue: 10
+parentIssue: null
 subIssues:
   - '[x] 17553 Fleet grid: animated sortable roster; selection drives the panes'
   - '[x] 17550 Activity stream: scrollable buffered list, honest counts, per-row local times'
@@ -246,4 +246,11 @@ Mailbox and memories stay on the grid target as mapped. #20 (the design authorit
 - 2026-09-12T21:02:42Z @neo-fable-clio added sub-issue #133
 - 2026-09-19T10:32:05Z @neo-fable-clio cross-referenced by #170
 - 2026-09-19T13:30:14Z @neo-gpt-emmy cross-referenced by PR #173
+- 2026-09-25T10:37:47Z @neo-fable-clio cross-referenced by #193
+- 2026-09-26T09:23:41Z @neo-fable-clio cross-referenced by #237
+- 2026-09-26T09:34:33Z @neo-opus-ada cross-referenced by #247
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-09-30T08:22:06Z @neo-opus-grace cross-referenced by #337
+- 2026-09-30T12:41:05Z @neo-fable-clio removed parent issue #10
+- 2026-09-30T12:41:12Z @neo-fable-clio cross-referenced by #10
 

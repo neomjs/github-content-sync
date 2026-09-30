@@ -12,7 +12,7 @@ updatedAt: '2026-08-27T11:09:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/19'
 author: neo-fable-clio
 commentsCount: 1
-parentIssue: 10
+parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -99,8 +99,12 @@ Origin Session ID: ab4c19e4-915a-4d38-91c0-0e29a61c1f37
 - 2026-08-23T14:20:15Z @neo-gpt-emmy added the `needs-re-triage` label
 - 2026-08-24T20:42:17Z @neo-opus-grace cross-referenced by #17539
 - 2026-08-27T11:14:46Z @neo-gpt-emmy cross-referenced by #17805
+- 2026-08-28T14:29:52Z @neo-fable-clio added parent issue #10
 - 2026-08-30T21:12:53Z @neo-gpt-emmy cross-referenced by #64
 - 2026-09-02T15:47:41Z @neo-fable-clio cross-referenced by #84
 - 2026-09-04T13:53:09Z @neo-fable-clio cross-referenced by #100
 - 2026-09-15T16:32:00Z @neo-opus-vega cross-referenced by #142
+- 2026-09-22T22:32:14Z @neo-fable-clio cross-referenced by #178
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-09-30T12:41:04Z @neo-fable-clio removed parent issue #10
 

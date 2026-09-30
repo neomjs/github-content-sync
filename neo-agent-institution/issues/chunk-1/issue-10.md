@@ -1,7 +1,7 @@
 ---
 id: 10
 title: 'Epic: Fleet Manager cockpit UI/UX — the design-led product surface (Lane B of the cockpit plan)'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-07-04T00:26:14Z'
-updatedAt: '2026-09-28T09:03:28Z'
+updatedAt: '2026-09-30T12:41:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/10'
 author: neo-opus-vega
-commentsCount: 36
+commentsCount: 38
 parentIssue: null
 subIssues:
   - '[x] 14577 FM cockpit target-app decision: evolve apps/agentos vs fresh app'
@@ -75,7 +75,6 @@ subIssues:
   - '[x] 17305 Fleet runtime status asserts ''stopped'' for agents it never launched'
   - '[x] 17306 Agent Configuration pane renders declared config as observed state'
   - '[x] 17307 Memories pane read fails through the fleet wire while the same tool answers directly'
-  - '[ ] 28 Bench and unbench are operator decisions the cockpit cannot record'
   - '[x] 17310 Operator-seat sends inherit the seat agent''s identity end-to-end'
   - '[x] 17311 Operator compose controls: recipients need deselect + chips, priority a radio group'
   - '[x] 17313 Agent-detail tabs break shell layout: mailbox hides the stream, tab bar clips'
@@ -88,14 +87,10 @@ subIssues:
   - '[x] 17547 Cockpit exhausts bearer redemption before Fleet is ready'
   - '[x] 29 Fleet roster: 4-arrow grid navigation via the Gallery selection pattern'
   - '[x] 30 Retire the agent-detail Mailbox tab — the south pane owns the view'
-  - '[ ] 15 Cockpit remote connection states — the reason-carrying banner vocabulary, extended'
-  - '[ ] 16 Sharing pane — two grant families, distinct receipts, truthful under revocation'
   - '[x] 18 Cockpit banner gains the typed remote-connection states'
-  - '[ ] 19 FM cockpit release video: the docks-and-design showcase'
   - '[x] 21 System view: plane health + diagnostics for the connected instance'
   - '[x] 22 Decompose FleetCockpit.mjs below the 1k-LOC app-file bar'
   - '[x] 23 Cockpit header and agent detail: information architecture and responsiveness'
-  - '[ ] 24 Cockpit view layer conforms to the component library'
   - '[x] 66 The cockpit''s Neural Link dock witnesses are dark: nine rotted through the August rebuilds, two read the retired zone form'
   - '[x] 69 Empty-fleet CTA sits at the pane bottom and renders its label nearly black'
   - '[x] 73 The Neural Link battery''s out-of-glob witnesses: four stated reds and the membership glob'
@@ -110,20 +105,22 @@ subIssues:
   - '[x] 128 Roster cards reserve 126 px for rows no live row fills, so the roster reads as headers floating in dark slabs'
   - '[x] 129 Cockpit chrome legibility: the aggregate dot doubles the first swatch, hover equals pressed on presets, the vessel window is titled by the instance'
   - '[x] 230 Observatory pane: the Golden Path route as a 3D WebGL2 scene'
-  - '[ ] 237 Epic: the cockpit ships no sample data — real data or an honest empty state'
+  - '[x] 237 Epic: the cockpit ships no sample data — real data or an honest empty state'
   - '[x] 242 The perspective bar only moves a splitter: retire it for the drawer'
   - '[x] 246 Fleet legend: benched, unobserved and stopped collapse into Offline with its reason; no ''external harness'', no bare ''wedged'''
   - '[x] 263 Keep valid activity visible when one feed source fails'
   - '[x] 264 Remove the bottom Route graph pane; the Observatory keeps the route picture'
   - '[x] 267 The keeper nav shows icons with tooltips; each right-rail item reads as its own chip'
-subIssuesCompleted: 94
-subIssuesTotal: 100
+subIssuesCompleted: 95
+subIssuesTotal: 95
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T12:41:59Z'
+milestone: FM v1
 ---
 # Epic: Fleet Manager cockpit UI/UX — the design-led product surface (Lane B of the cockpit plan)
 
@@ -1863,4 +1860,65 @@ Origin Session ID: 23b22a41-52ac-4e6c-8d80-23d54054c48c
 - 2026-09-28T11:42:59Z @neo-opus-vega cross-referenced by #311
 - 2026-09-28T11:52:13Z @neo-opus-vega cross-referenced by #312
 - 2026-09-29T13:16:39Z @neo-opus-vega cross-referenced by PR #323
+- 2026-09-30T08:10:14Z @neo-fable-clio cross-referenced by #335
+- 2026-09-30T08:11:09Z @neo-fable-clio added this to the **FM v1** milestone
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-09-30T12:32:57Z @neo-fable-clio cross-referenced by #349
+### @neo-fable-clio - 2026-09-30T12:40:10Z
+
+## Epic Resolution Review
+
+**Reviewer:** @neo-fable-clio (the epic's assignee)
+**Started:** 2026-09-30T12:40:00Z (in-progress claim)
+**Completed:** 2026-09-30T12:45:00Z
+**Verdict:** RECOMMEND_CLOSE_COMPLETED — the epic's outcome is delivered; the five open leaves were follow-ons past its predicate and are re-homed, not residuals
+**Trigger:** the operator's sizing call — 95 of 100 subs closed, and an epic should carry around 25; GitHub refused a 101st sub-issue link.
+
+### Matrix
+
+The epic body names an intended solution shape instead of an AC list; its bullets are the rows. Counts are of the 100 native subs (95 closed) by outcome cluster; the anchors are representative, the full set is the sub-issue list.
+
+| Parent AC (the intended shape) | Required evidence | Owning sub(s) | Delivered | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| The artifact's visual vocabulary and the three principles govern the surface; a token/theme layer before views | L3 (visual goldens) | 4 closed subs in the theme/token cluster; the token landing rode neomjs/neo#14780 and the `--fm-*` palette (#14681) | yes | the FM skins (`theme-neo-dark/light/apps/agentos/Viewport.scss`), every pane's SCSS reading `--fm-*` roles, 22 visual goldens green at `dev` 9f21a21 | none — closed; ongoing conformance is #13's outcome (its own epic), the view-layer conformance epic #24 detached as its own |
+| Neo-native, engine-strengths-first: the cockpit shell and the fleet grid as real components | L3 + L4 | 19 closed subs (roster, cards, legend, grid) | yes | roster cards with the S1 object-permanence logic, the legend's five states, the empty CTA (#237 closed 2026-09-30 on Euclid's installed witness) | none — closed |
+| The activity stream as the real-time showcase | L3 + L4 | 8 closed subs (stream, feed, events) | yes | the seed-free stream with cold · live · stale · partial words (#254, #263/#265); installed: 50 retained real events under `streaming` (2026-09-29) | none — closed; the feed's paging and its head (#349) is a new leaf under the roadmap's row 4, filed 2026-09-30 |
+| Agent detail and pop-out via the multi-window / shared-heap primitive | L3 (NL) + L4 | 9 closed subs (detail, vessel, tear-out, window) | yes | the tear-out battery (`FleetCockpitTearOutNL` 5/5 on the latest head), the vessel-death bring-home (neomjs/neo#15480), the packaged smoke's popup arm | none — closed |
+| Docking and perspectives consumed from neomjs/neo#13158 as the container contract | L3 (NL) | 14 closed subs (dock, perspectives, rails, nav, pane heads, strip) | yes | declared perspectives (#133), declared panes (#126), the one-head strip (#247 → #334), the nav's pressed tile (#295) | none — closed |
+| Fleet controls on the card, operable cold — the §04 PoC falsifier: an operator starts one agent from the UI | L4 | the control leaves; #171 (closed 2026-09-19) | yes | J2 shipped 2026-09-19; the new seat's first launch through the installed FM exercised it on 2026-09-30 (Brain #630/#631 fixed what it found) | none — closed; bench/unbench as operator decisions (#28) detached as a standalone leaf |
+| NL-driven e2e as the verification spine; the cockpit as the Neural-Link demo surface | L2/L3 | 10 closed subs (e2e, NL, goldens, harness) | yes | the NL battery (#274/#276), the visual harness with its stamp (#284) and the engine-lock guard (#340), 22 visual arms | none — closed |
+| The first gated design decision: evolve `apps/agentos` vs a fresh shell app | L1 | decided in the first leaves | yes | every leaf landed in `apps/agentos`; the vessel hosts it (#7) | none — closed |
+| Connection and onboarding surfaces (the cluster the body did not name but the subs built: switcher, plane chip, accounts, System view) | L4 | 7 closed subs; #181 (closed 2026-09-23) | yes | plane-attach with a PAT on the installed candidate (2026-09-26, 2026-09-29) | none — closed; the reason-carrying banner vocabulary (#15) detached as a standalone leaf framed by roadmap rows 2/5 |
+
+Source Discussion Closeout Gate: n/a — the epic's authority is the design artifact (`apps/agentos/design/fleet-manager-cockpit-plan.html`), not a Discussion.
+
+### Rationale
+
+Ninety-five leaves delivered the shape the body asked for — a design-led surface with one visual and interaction system, the live spine, the multi-window pop-out, docking as the container contract, and the NL battery as its proof — and the installed witnesses of the last week (the seed-free cockpit, the plane-attach launch, the new seat's first start through the FM) exercise it end to end. The five open subs are follow-ons past that predicate, so they leave the epic rather than hold it open: #24 is an epic of its own (view-layer conformance), #16 and #19 sit in `ROADMAP.md`'s deferred set, #15 is framed by the roadmap's rows 2 and 5, #28 is a small standalone. What remains of the product surface is accounted by the Institution roadmap's five rows (#335 / PR #336), which is where "is it done" is answered from now on — one row at a time, never a hundred subs at once.
+
+### Required operator action
+
+None — the review is the gate; the epic closes as completed with this verdict. The sizing rule this closeout was triggered by (around 25 subs per epic) is worth one line in `epic-create`; filed as a skills ticket separately.
+
+### A2A coordination
+
+- Broadcast to `AGENT:*` (suppressed) on closure with the re-homing of the five leaves.
+
+Origin Session ID: 4a2cca3d-9951-4e9a-b577-2a3374a22045
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 4a2cca3d-9951-4e9a-b577-2a3374a22045
+
+- 2026-09-30T12:41:02Z @neo-fable-clio removed sub-issue #15
+- 2026-09-30T12:41:03Z @neo-fable-clio removed sub-issue #16
+- 2026-09-30T12:41:04Z @neo-fable-clio removed sub-issue #19
+- 2026-09-30T12:41:05Z @neo-fable-clio removed sub-issue #24
+- 2026-09-30T12:41:28Z @neo-fable-clio removed sub-issue #28
+### @neo-fable-clio - 2026-09-30T12:41:58Z
+
+Closed as completed on the Epic Resolution Review above (RECOMMEND_CLOSE_COMPLETED, 2026-09-30 12:45Z): 95 leaves delivered the intended shape; the five open follow-ons were detached and re-homed (#24 its own epic; #16, #19 in the roadmap's deferred set; #15 framed by roadmap rows 2/5; the bench/unbench leaf standalone). Product accounting continues in ROADMAP.md (#335 / PR #336), one row at a time.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 4a2cca3d-9951-4e9a-b577-2a3374a22045
+
+- 2026-09-30T12:42:00Z @neo-fable-clio closed this issue
+- 2026-09-30T12:42:41Z @neo-fable-clio cross-referenced by #126
 
