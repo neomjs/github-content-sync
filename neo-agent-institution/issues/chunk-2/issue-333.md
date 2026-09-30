@@ -1,7 +1,7 @@
 ---
 id: 333
 title: 'The Observatory''s panel: View, then the selected node and its source'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-29T20:35:32Z'
-updatedAt: '2026-09-29T20:46:26Z'
+updatedAt: '2026-09-29T23:44:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/333'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-29T22:42:27Z'
 ---
 # The Observatory's panel: View, then the selected node and its source
 
@@ -59,7 +60,7 @@ D#19317 §4 is the Observatory's right-hand panel contract: Team at the top (#32
 ## The Fix
 
 1. **The panel:** it reads Team, View, Selected node, per §4. The strip leaves and the canvas takes its row. The sections become components beside `ObservatoryPeerList`, `ObservatoryNodeList` and `ObservatoryRelationList`, so the container shrinks rather than passing its bar.
-2. **View:** one control for the geography (strategic wells or density) plus Mail, Halo, Heat and Route. Each is labelled by the question it answers. A withheld route reads "unavailable" in its control, and the reason goes in the control's detail.
+2. **View:** one control for the geography (strategic wells or density) plus Mail, Halo, Heat and Route. Each is labelled by the question it answers. A withheld route reads "withheld" in its control, the Golden Path read's own word, and the reason goes in the control's detail. D#19317 §4 said "unavailable", but the canvas still draws the route the graph read carries, so that word would contradict the screen.
 3. **Selected node:**
    - label, then kind;
    - the scene's own facts: state (as last ingested), attribution (authored by, assigned to, memory of) and last activity. The landed envelope does not carry `activitySources`, so the section names no source for that time;
@@ -76,14 +77,14 @@ D#19317 §4 is the Observatory's right-hand panel contract: Team at the top (#32
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `AgentOS.util.GraphNodeSource#sourceOf(node)` (new) | the scene's `origin#id` grammar (`fleetGraphSceneSource`) | `{kind: 'github', url}` for `origin#issue-N`, `#pr-N` and `#discussion-N`; `{kind: 'session', sessionId}` for `#session:<uuid>` and `#summary_<uuid>` | `null`, rendered as "no source view" with the node's kind | JSDoc table on the vocabulary | unit arms for every id shape above, and for the non-canonical `ISSUE:N` / `ISSUE:#N` forms reading `null` |
+| `AgentOS.util.GraphNodeSource#sourceOf(node)` (new) | the scene's `origin#id` grammar (`fleetGraphSceneSource`) | `{type: 'github', url}` for `origin#issue-N`, `#pr-N` and `#discussion-N`; `{type: 'session', sessionId}` for `#session:<uuid>` and `#summary_<uuid>` | `null`, rendered as "no source view" with the node's kind | JSDoc table on the vocabulary | unit arms for every id shape above, and for the non-canonical `ISSUE:N` / `ISSUE:#N` forms, an undeclared kind and a `.` or `..` repository reading `null` |
 | Observatory → Memories drill | `cockpit/Controller.mjs#loadSessionMemories` | routes to the cockpit, opens Memories and drills the session | a session the viewer's read cannot return shows the drill's own unavailable or empty state | JSDoc | NL arm |
 | the View and Selected-node sections (NL-readable state) | the container's stores and configs | the selection's facts, its source and its grouped relations as data, so peers read what the canvas shows | none | JSDoc | NL arm |
 
 ## Acceptance Criteria
 
 - [ ] AC-1 The side panel reads Team, View, Selected node from top to bottom. The strip is gone, and selecting or clearing a node leaves the canvas size unchanged.
-- [ ] AC-2 The geography control switches between strategic wells and density and keeps the selection. Each View control's label names the question it answers. A withheld route reads unavailable in its control without a hover.
+- [ ] AC-2 The geography control switches between strategic wells and density and keeps the selection. Each View control's label names the question it answers. A withheld route reads withheld in its control without a hover, with the reason in the control's detail. The control still draws or drops the route the graph read carries, so the word matches what the canvas shows.
 - [ ] AC-3 The selected node reads label and kind first; state, attribution and last activity where the scene carries them; and route rank only while the current route holds it. The id sits behind a Copy action and never in the headline. Nothing the scene does not carry renders as known.
 - [ ] AC-4 Relations are grouped by type and direction, with counts. Choosing one selects the node at the other end, and the camera does not move (`readStats().camera`).
 - [ ] AC-5 Open follows `sourceOf`: canonical GitHub ids open GitHub, a session or summary with a uuid id opens that session's Memories drill, and any other node names its kind and says it has no source view.
@@ -126,6 +127,7 @@ Retrieval Hint: "Observatory selected node source action sourceOf Memories drill
 Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 
 
+
 ## Timeline
 
 - 2026-09-29T20:35:33Z @neo-opus-vega assigned to @neo-opus-vega
@@ -135,4 +137,43 @@ Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 - 2026-09-29T20:35:34Z @neo-opus-vega added the `design` label
 - 2026-09-29T20:35:58Z @neo-opus-vega added parent issue #312
 - 2026-09-29T20:37:56Z @neo-opus-vega cross-referenced by #312
+- 2026-09-29T21:32:10Z @neo-opus-vega cross-referenced by PR #334
+- 2026-09-29T22:21:14Z @neo-opus-vega referenced in commit `5ba9eac` - "fix(agentos): the selected node's id stays behind Copy, and its source never outruns its identity (#333)
+
+- GraphNodeSource#sourceOf reads a kind only from a vocabulary's own entries (`constructor` threw) and
+  rejects a `.` or `..` repository, which the browser resolved to a different page.
+- The id field leaves the panel's flow and paint but keeps its box, which the copy needs; the focus the
+  selection takes returns to the Copy action.
+- Six Observatory goldens re-captured; the selected-source arm copies by pointer and by keyboard."
+- 2026-09-29T22:42:27Z @tobiu referenced in commit `1d592e1` - "Merge pull request #334 from neomjs/vega/333-observatory-panel
+
+feat(agentos): the Observatory's panel reads the view, then the selected node, which opens its source (#333)"
+- 2026-09-29T22:42:28Z @tobiu closed this issue
+### @neo-gpt - 2026-09-29T23:44:17Z
+
+## Session handover — separate Engine hide/removeDom investigation
+
+scope: convergent
+Origin Session ID: 01a0ee37-7eaa-7d52-9869-ba5d0de51b43
+
+This is follow-up continuity for the Engine observation surfaced during this leaf. It does not reopen `#333` or add a required action to merged `#334`. No Engine ticket or implementation claim exists yet.
+
+**Measured at Engine `dev@745321dec3ca9168f1416c267f4546142ac2ae9c`:**
+- `component.Base#hide` silently stamps the child's `vdom.removeDom`, sets the parent's depth to 2, and updates the parent. The method is byte-identical to the Institution's 13.1.0 dependency.
+- `mixin.VdomLifecycle` declares `denseUpdate` for silent descendant writes; collection otherwise supplies merged-child IDs to finite-depth tree generation.
+- An isolated execution of the actual `util.vdom.TreeBuilder`, with mounted-component records supplied through a process-local manager lookup, gave these controls for four hidden siblings:
+
+| Payload mode | Hidden children |
+|---|---|
+| depth 2, merged set contains only the head | All four become ignored placeholders; no removeDom markers ship |
+| depth 2, no merged set | All four removeDom markers ship |
+| depth -1, same merged set | All four removeDom markers ship |
+
+**Limit:** this isolates payload behavior. It does not reproduce the real scheduler/DOM incident, and the missing dense-update boundary remains a hypothesis.
+
+**Next falsifier:** use the real App/VDom harness at current head, hide four direct children while a sibling update merges into the same parent, and record config/vdom/queued IDs/payload/DOM. Carry dense-depth-2 and full-depth positive controls. Only after attribution, run the normal duplicate/ticket/claim gates before a tracked repair.
+
+Do not reuse `#16498` as this bug: its amended contract is window-restoration bystander child loss and the F7 whole-film gate.
+
+
 

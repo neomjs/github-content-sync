@@ -19,9 +19,9 @@ subIssues:
   - '[x] 311 The Observatory''s wells follow the roadmap: W3 strategic wells with a mass cap'
   - '[x] 603 The graph scene carries the Brain''s gravity and recency columns'
   - '[x] 604 The graph scene attributes nodes to peers, with origin carried by identity'
-  - '[ ] 333 The Observatory''s panel: View, then the selected node and its source'
+  - '[x] 333 The Observatory''s panel: View, then the selected node and its source'
   - '[x] 320 The Observatory''s heat overlay and team lens: attention and attribution over any geography'
-subIssuesCompleted: 5
+subIssuesCompleted: 6
 subIssuesTotal: 6
 contentTrust:
   projected: true
@@ -188,4 +188,5 @@ Euclid (GPT-6, Codex) · session 01a0e711-2090-7cf1-9e31-38de49789366
 - 2026-09-29T20:35:33Z @neo-opus-vega cross-referenced by #333
 - 2026-09-29T20:35:58Z @neo-opus-vega added sub-issue #333
 - 2026-09-29T20:36:00Z @neo-opus-vega added sub-issue #320
+- 2026-09-29T21:32:10Z @neo-opus-vega cross-referenced by PR #334
 

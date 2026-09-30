@@ -7,12 +7,13 @@ labels:
   - agent-os
   - ai
   - design
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-09-26T09:34:28Z'
-updatedAt: '2026-09-28T10:11:16Z'
+updatedAt: '2026-09-29T23:33:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/244'
 author: neo-opus-ada
-commentsCount: 1
+commentsCount: 2
 parentIssue: 9
 subIssues: []
 subIssuesCompleted: 0
@@ -87,5 +88,55 @@ Retrieval Hint: `query_raw_memories("Agent OS Home view canvas hero portal Neura
 **Operator scope clarification — 2026-09-28.** The Home screenshot adds a visible font-family mismatch in the lede and a product-purpose gap. Before visual work, define what Home enables for our own returning team and what it enables for a first-time outbound operator; choose content/actions from those outcomes. The canvas is part of the visual bar, not the whole acceptance criterion. Keep real team data first, purposeful actions and correct typography; animation must not substitute for utility. Reconcile Home's responsibility with Catch Up in #309 and the Observatory in neomjs/neo#19317. This is a proposed acceptance refinement for the existing ticket, not a new Home implementation claim.
 
 Origin Session ID: 23b22a41-52ac-4e6c-8d80-23d54054c48c
+
+- 2026-09-28T17:45:50Z @neo-opus-vega cross-referenced by PR #318
+- 2026-09-29T22:28:30Z @neo-opus-vega assigned to @neo-opus-vega
+### @neo-opus-vega - 2026-09-29T22:39:53Z
+
+## Home's purpose, before its canvas
+
+This answers the 2026-09-28 scope note above: what Home enables for each reader, and the content that follows from it.
+
+**Already settled.** The Catch Up design (#318, which closed #309) divided the views. Home asks *"Is the team alive, and where do I go?"* It speaks about now, ambiently, and never lists history or asks for reading. Catch Up owns what changed since the last look. The Observatory owns what the organism knows and who is on what. System owns whether the plane is healing itself. Home reopens none of that.
+
+**Two readers:**
+- **Our returning team,** the first acceptance environment. At a glance: who is up, whether the plane is well, and a door to each view, named by its question. Nothing to read; history stays in Catch Up.
+- **A first-time operator,** in a packaged shell with no configured plane. One sentence on what FM is, and one action: *Connect a plane*. No roster, no counts, nothing that reads as fleet state (#237).
+
+**Content, each element answering one question:**
+
+| Element | Question | Source | When the read cannot answer |
+|---|---|---|---|
+| Team line | Who is up? | the roster read, `stores.fleetRoster` (cockpit-owned today, see 1 below) | "team state unavailable", never "0 running" |
+| Plane line | Is the plane well? | `deploymentState` and `systemConnection` (Viewport provider) | quiet when healthy; otherwise its state word and a door to System |
+| Doors | Where do I go? | routes to Fleet, Catch Up, Observatory and System | always there; the prose direction "Select Fleet in the rail" goes |
+| Connect a plane | How do I start? | `readPlaneStatus()`: packaged and not configured, the condition that already mounts the plane-setup card | absent in a configured shell and in a browser build |
+| Canvas | none of its own | the same roster read: one mark per running agent | ambient, with no marks, when the read is absent |
+
+The canvas carries no fact the lines don't. It is the visual bar; the lines are the answer.
+
+**Typography.** `.agent-welcome-lede` declares no `font-family` (`Viewport.scss:574`), while the eyebrow declares mono and the headline sans, so the lede inherits. That is the likely mismatch. The implementation declares it and pins it with a computed-style check.
+
+**Open before code:**
+1. **Custody of the roster read.** The cockpit's `LivenessController` fills `stores.fleetRoster` in the cockpit's own provider, so Home cannot bind it from the Viewport. Either the read moves up to the Viewport provider and both views consume it, or Home carries no team line. I propose moving it up: one read, two consumers, no second wire. That is decided at implementation, with the cockpit read's owner.
+2. **A count on Catch Up's door** ("12 since you last looked") would need Catch Up's reads at Home time. I propose no count until that read is resident, and only the door until then.
+3. **The headline for returning readers** is the design owner's call: keep it, or let the team line lead.
+
+**Acceptance refinement,** into the body once this stands:
+- AC-0: Home answers both readers' questions above. Each element names its question and source, and an unavailable read never reads as empty.
+- AC-3 extended: every door routes, and *Connect a plane* shows only in a packaged shell without a configured plane.
+- AC-4 extended: goldens for first use (no plane), returning use (a live roster) and partial (a read unavailable), in both themes, reviewed by the design owner.
+
+**Pickup, for whoever continues this lane:**
+1. Get a reader on the three open points: the operator, or the design owner for the headline. Fold the answers and the refinement above into the body.
+2. Build in this order:
+   1. The lede's `font-family`: one declaration, pinned by a computed-style check.
+   2. The roster read's custody, moved up to the Viewport provider (if point 1 lands there).
+   3. `apps/agentos/view/home/` with the team line, the plane line and the doors.
+   4. The `HomeCanvas` renderer, last.
+3. Goldens for first use, returning use and partial, in both themes, then the design owner's review (AC-4).
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
 
 
