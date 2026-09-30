@@ -1,7 +1,7 @@
 ---
 id: 214
 title: The packaged smoke proves a stored-plane boot against a fixture plane
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-25T17:02:02Z'
-updatedAt: '2026-09-30T11:42:31Z'
+updatedAt: '2026-09-30T15:02:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/214'
 author: neo-opus-ada
-commentsCount: 3
+commentsCount: 4
 parentIssue: 12
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T15:02:43Z'
 milestone: FM v1
 ---
 # The packaged smoke proves a stored-plane boot against a fixture plane
@@ -230,4 +231,58 @@ bearer, which also handed the renderer a credential it must never hold. The
 probe now enters each sink where main receives it: brainLog, the window's own
 console-message listener, and the reply census, extracted as censusIpcReply."
 - 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
+- 2026-09-30T14:12:00Z @neo-opus-grace referenced in commit `5d8dbe4` - "fix(harness): a diagnostic run owns its userData, outside the installed app's (#214)
+
+A packaged smoke rooted its isolation under the installed app's userData,
+which also holds the product's plane record, and a checkout run shared that
+profile outright. resolveSmokeRoot places the root in the per-user temp dir
+(or the checkout's .brain/smoke), stable across runs so the stale-run sweep
+still reaps, and main moves Electron's userData under it before anything
+reads it."
+- 2026-09-30T14:12:01Z @neo-opus-grace referenced in commit `274aea6` - "fix(harness): every smoke census sink tests all the secrets main holds (#214)
+
+The renderer-failure, IPC-reply, Brain-log and window-URL checks compared
+against the fleet bearer alone, so a plane bearer from the env or the stored
+record passed them silently. They now read mainSecrets() through the main
+log's carriesSecret, one list and one rule for every sink."
+- 2026-09-30T14:12:01Z @neo-opus-grace referenced in commit `4131ef0` - "feat(harness): the Brain smoke attaches to a fixture plane of its own (#214)
+
+NEO_HARNESS_SMOKE_PLANE=1 (npm run smoke:plane) starts the Brain's Memory Core
+in seat-token mode on a loopback port, every plane member placed under the
+smoke root, behind a loopback /mc ingress. It mints one seat, attaches the way
+the cockpit does (probe, then an encrypted record in the smoke's userData
+through a run-bound stand-in), and boots the fleet child from that record
+through the product's plan, so no orchestrator starts. The verdict requires
+the plane-attach boot fact, planeStatus configured+attached, the admission
+line and the listAgents round trip; NEO_HARNESS_SMOKE_PLANE_LEAK=1 routes the
+plane bearer through every census sink.
+
+Supervised children no longer see the owner marker (a --import preload strips
+it; ps still shows it for the sweep), since the Memory Core's CLI refuses
+unknown options. A renderer console line is censused before it prints, and a
+diagnostic run logs under its own root."
+- 2026-09-30T14:12:01Z @neo-opus-grace referenced in commit `161412a` - "fix(harness): the fixture plane seeds its seat and keeps a file-backed graph (#214)
+
+On Brain dev a seat binds a request only to an AgentIdentity its graph holds,
+so the fixture seeds its identity through the Brain's own seeder before the
+plane boots; UNIT_TEST_MODE would have swapped the plane's graph for one in
+memory. The leak arm waits on the console sink a main-world throw reaches."
+- 2026-09-30T14:12:01Z @neo-opus-grace referenced in commit `7ed376a` - "test(harness): pin the fixture plane's stand-in, member placement and ingress (#214)"
+- 2026-09-30T14:12:01Z @neo-opus-grace referenced in commit `2a56bc5` - "fix(harness): the leak arm feeds each census sink in main, never the renderer (#214)
+
+CodeQL flagged the first shape: it built renderer code around the plane
+bearer, which also handed the renderer a credential it must never hold. The
+probe now enters each sink where main receives it: brainLog, the window's own
+console-message listener, and the reply census, extracted as censusIpcReply."
+- 2026-09-30T14:33:20Z @neo-opus-grace cross-referenced by #359
+- 2026-09-30T14:56:45Z @tobiu referenced in commit `0446d77` - "Merge pull request #350 from neomjs/grace/214-smoke-fixture-plane
+
+feat(harness): the smoke attaches to a fixture plane of its own, from a stored record (#214)"
+### @neo-opus-grace - 2026-09-30T15:02:42Z
+
+Delivered by #350, merged to `dev` at 0446d77. Its post-merge validation passed on `dev` 3825816: `smoke:plane` exit 0 against Brain ff018a4.
+
+- 2026-09-30T15:02:43Z @neo-opus-grace closed this issue
+- 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
+- 2026-09-30T15:08:28Z @neo-fable-clio cross-referenced by PR #363
 

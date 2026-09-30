@@ -1,7 +1,7 @@
 ---
 id: 337
 title: Pane heads close on the SSOT hairline
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-30T08:22:05Z'
-updatedAt: '2026-09-30T09:18:57Z'
+updatedAt: '2026-09-30T14:31:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/337'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: 13
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T14:31:07Z'
 ---
 # Pane heads close on the SSOT hairline
 
@@ -87,4 +88,9 @@ Retrieval Hint: `query_raw_memories("pane head hairline rule Tasks section label
 - 2026-09-30T13:42:28Z @tobiu referenced in commit `f24caee` - "Merge pull request #343 from neomjs/grace/337-pane-head-rule
 
 fix(agentos): pane heads close on the SSOT hairline (#337)"
+### @neo-opus-grace - 2026-09-30T14:31:07Z
+
+Delivered by #343, merged to `dev` at f24caee (13:42Z).
+
+- 2026-09-30T14:31:08Z @neo-opus-grace closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 341
 title: 'Home offers Connect a plane on first run, and doors for the team'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-30T09:14:10Z'
-updatedAt: '2026-09-30T13:20:09Z'
+updatedAt: '2026-09-30T14:56:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/341'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: 9
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T14:56:27Z'
 milestone: FM v1
 ---
 # Home offers Connect a plane on first run, and doors for the team
@@ -60,9 +61,17 @@ The lede declares no `font-family`, so it inherits the theme's body face ("Sourc
   - one door per keeper view (Fleet, Observatory, System), each named by the question the view answers.
 - The styles move to `resources/scss/src/apps/agentos/home/Container.scss`, and the lede declares `--fm-font-sans`.
 
+## Contract Ledger
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `shellPlaneConfigured` (Viewport provider data, default `null`, `apps/agentos/view/Viewport.mjs`) | this ticket; the writer is `ViewportController#mountPlaneSetup` | The controller publishes `false` for a packaged shell without a plane and `true` for one with a plane. Home binds it: `false` shows the product line, the lede and *Connect a plane*. | `null` for a browser build, an unpackaged shell and a failed read (`readPlaneStatus()` resolves `null`), so an unknown status never offers setup. After an attach, the broker relaunches the shell, and the next boot publishes `true`. | JSDoc on the controller method and `AgentOS.view.home.Container` | `ViewportController.spec.mjs` (a browser, an unpackaged shell, a configured shell and a failed read create nothing); `homeContainer.spec.mjs`; the visual driver `homeState.driver.mjs` |
+| `instanceState` (Viewport provider data, default `'off'`) | the chrome switcher's verdict | The cockpit's `instanceState` formula writes the ongoing verdict (`cockpit/StateProvider.mjs`: banner hidden → `ok`, degraded → `limited`, else `off`). The instance switch writes `starting`, then `off` on a failed switch. Home's plane line is quiet at `ok` and names every other state. | Home binds the key and never writes it. | JSDoc on the formula and on Home | `homeContainer.spec.mjs` (every word, and an unknown key reads as not connected); the visual Home cases |
+| `INSTANCE_STATE_WORDS` (export of `view/fleet/instances/SwitcherButton.mjs`) | the chrome switcher | One vocabulary for the chrome dot and Home's plane line: `ok` connected · `limited` degraded · `off` not connected · `starting` switching. | An unknown key reads as `off`'s word through an own-key guard (`Object.hasOwn`), so `toString` and its kin never leak. | JSDoc on the export | `homeContainer.spec.mjs` |
+
 ## Acceptance Criteria
 
-- [ ] AC-1 A packaged shell without a plane sees the headline, the lede and one action, *Connect a plane*, which opens the plane-setup card. It sees no doors and no plane line. A browser build and a shell with a plane publish `null` / `true` and never see this action.
+- [ ] AC-1 A packaged shell without a plane sees the headline, the lede and one action, *Connect a plane*, which opens the plane-setup card. It sees no doors and no plane line. A browser build and a shell with a plane publish `null` / `true` and never see this action. `[L4-deferred]` The installed-shell run belongs to #12's installed acceptance, on the first installed build that carries this change. The in-repo proof is the controller and Home unit arms and the visual driver.
 - [ ] AC-2 Every other reader sees one door per keeper view (Fleet, Observatory, System). Each door routes to its view and is named by the question that view answers.
 - [ ] AC-3 The plane line binds `instanceState` and speaks the chrome switcher's words. It is quiet when the verdict is `ok`; otherwise it names the state and carries a door to System.
 - [ ] AC-4 The lede declares the display line's family. A computed-style check pins it and fails without the declaration.
@@ -94,6 +103,7 @@ Retrieval Hint: "Home first run Connect a plane, plane line, doors, shellPlaneCo
 
 
 
+
 ## Timeline
 
 - 2026-09-30T09:14:12Z @neo-opus-vega added the `enhancement` label
@@ -108,4 +118,19 @@ Retrieval Hint: "Home first run Connect a plane, plane line, doors, shellPlaneCo
 - 2026-09-30T12:13:55Z @neo-opus-vega cross-referenced by #347
 - 2026-09-30T12:32:57Z @neo-fable-clio cross-referenced by #349
 - 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
+- 2026-09-30T14:14:35Z @neo-opus-vega referenced in commit `fbf1793` - "chore(agentos): merge dev into the Home first-run branch, visual stamp re-taken on the merged tree (#341)"
+- 2026-09-30T14:32:41Z @neo-opus-vega cross-referenced by #358
+- 2026-09-30T14:55:53Z @tobiu referenced in commit `731cff1` - "Merge pull request #342 from neomjs/vega/341-home
+
+feat(agentos): Home offers Connect a plane on first run, and doors for the team (#341)"
+### @neo-opus-vega - 2026-09-30T14:56:26Z
+
+Landed via #342 (merged by @tobiu at 2026-09-30T14:55:52Z; Emmy APPROVED at fbf1793, review 5367626836; Grace's design sign-off on the goldens). AC-1's installed-shell run stays `[L4-deferred]` under #12's installed acceptance, as the body records. The PR targets dev, so its `Resolves` keyword did not close this ticket.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-09-30T14:56:28Z @neo-opus-vega closed this issue
+- 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
+- 2026-09-30T15:08:28Z @neo-fable-clio cross-referenced by PR #363
+- 2026-09-30T18:54:56Z @neo-gpt cross-referenced by PR #360
 

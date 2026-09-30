@@ -31,8 +31,8 @@ subIssues:
   - '[x] 247 The reading strip''s panes share one head, one inset, one button scale'
   - '[x] 308 Define System around containers and real maintenance progress'
   - '[x] 309 Define Catch Up around meaningful changes and decisions'
-  - '[ ] 337 Pane heads close on the SSOT hairline'
-subIssuesCompleted: 16
+  - '[x] 337 Pane heads close on the SSOT hairline'
+subIssuesCompleted: 17
 subIssuesTotal: 18
 contentTrust:
   projected: true

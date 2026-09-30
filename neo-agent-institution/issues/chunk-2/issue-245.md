@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-26T09:34:29Z'
-updatedAt: '2026-09-28T10:11:18Z'
+updatedAt: '2026-09-30T16:43:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/245'
 author: neo-opus-ada
-commentsCount: 1
+commentsCount: 3
 parentIssue: 13
 subIssues: []
 subIssuesCompleted: 0
@@ -100,5 +100,39 @@ Retrieval Hint: `query_raw_memories("Accounts view redesign one add-agent form G
 **Operator scope clarification — 2026-09-28.** Our own real team is the first setup/acceptance environment; onboarding for other operators and teams remains required. The screenshot specifically rejects Codex and Codex Desktop as separate product choices, full-width username/repository fields, and the current styling. Present the meaningful product choice and preserve required launch mechanics behind it; field sizing and validation must use verified contracts rather than assumed character limits. Remove App Worker/credential-ownership implementation prose from the ordinary setup journey. Peer colours are now an identity-stable, cross-view presentation concept under neomjs/neo#19317 OQ-W9: setup consumes its eventual decision; model changes must not change a peer's colour. These details belong in this existing form/product task.
 
 Origin Session ID: 23b22a41-52ac-4e6c-8d80-23d54054c48c
+
+- 2026-09-30T08:10:14Z @neo-fable-clio cross-referenced by #335
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-09-30T11:56:50Z @neo-fable-clio cross-referenced by #13
+- 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
+### @neo-gpt-emmy - 2026-09-30T14:29:32Z
+
+**Operator requirement from installed onboarding — multiple repositories per peer (2026-09-30).** Tobi asked: “this could be an FM enhancement: picking the repos (multiple ones) that a peer should get clones for.”
+
+Concrete witness: the new seat was added with `neomjs/neo`; its managed `<seat>/neomjs/` contains only that Git checkout. It has no Brain or Institution working clone. `AddAgentFlow` currently supplies one `metadata.repo`, and Brain `FleetManager.startAgent` provisions that working repo before launch. The bundled Brain runtime is separate from a seat-owned working clone.
+
+Proposed functional contract for the onboarding follow-up: select a repository set, choose one working repository for launch, show each clone's readiness/failure, and allow later additions. Keep credential use bound to the peer. Deselecting a repository should preserve its existing working tree by default; deletion is a separate explicit operation. These are proposed semantics for owner review, not new ACs imposed on this form-consolidation ticket.
+
+This touches both the shared Add Agent/configuration surface here and Brain's durable definition/provisioning contract; it should reuse the unified form rather than adding a third entry point. Sophie is the acceptance example: `neo`, `neo-agent-brain`, `neo-agent-institution`, with one selected startup cwd.
+
+Related: #12 · #351 · neomjs/neo-agent-brain#571
+
+Origin Session ID: b0dd802b-6451-48ec-b789-d91e29a2b08e
+
+### @neo-gpt-emmy - 2026-09-30T16:43:10Z
+
+### Operator decisions from the first FM-launched peer
+
+This extends the earlier [multi-repository request](https://github.com/neomjs/neo-agent-institution/issues/245#issuecomment-5913348117), without changing this ticket's existing design-conformance ACs.
+
+Tobi selected **preparing supported repositories by default before first launch, with visible progress and a skip option**. He also clarified that a peer may have a stable primary folder for generated instructions, skills and turn memory, with multiple working folders attached. The intended instruction source is the Skills generator; the new flow must not depend on retaining `AGENTS.md` in the Engine repository. The generator integration is already owned by Skills #100; its [updated direction and native constraints](https://github.com/neomjs/neo-agent-skills/issues/100#issuecomment-5915607875) are recorded there.
+
+The proposed UI boundary is therefore two separate facts: **peer environment ready** and **each working repository prepared/skipped/failed**. Skipping dependency installation for a repository must not silently omit the peer's instruction/skills environment. The existing single `repoSlug`/`targetRepoRoot` currently serves clone ownership, project configuration and launch cwd together; the multi-folder design must separate those meanings before wiring more controls into the form.
+
+Runtime evidence, 2026-09-30: installed FM uses Electron 43.5.0 with Node 24.19.0; Sophie's interactive setup used Node 25.9.0, matching the host's Homebrew runtime. Her install succeeded but cssnano/http-proxy-middleware exclude Node 25 from their declared support ranges. [Node's current releases](https://nodejs.org/en/about/previous-releases) list 24.21.0 LTS, 26.10.0 Current, and 25 EOL. My recommendation is a supported Node 24 default with an explicit, tested runtime choice; this is not a claim that FM currently controls the peer's shell runtime.
+
+No accounts layout, active peer home or system Node installation has been changed. This is the operator's product requirement and an ownership-boundary proposal for the existing multi-repo/Accounts work.
+
+Emmy (GPT-6 Astra Ultra, Codex) · session b0dd802b-6451-48ec-b789-d91e29a2b08e
 
 

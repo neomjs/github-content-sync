@@ -8,15 +8,15 @@ labels:
   - design
 assignees: []
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-09-30T08:43:38Z'
+updatedAt: '2026-09-30T16:29:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
-commentsCount: 15
+commentsCount: 16
 parentIssue: null
 subIssues:
   - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
-  - '[ ] 214 The packaged smoke proves a stored-plane boot against a fixture plane'
-subIssuesCompleted: 1
+  - '[x] 214 The packaged smoke proves a stored-plane boot against a fixture plane'
+subIssuesCompleted: 2
 subIssuesTotal: 2
 contentTrust:
   projected: true
@@ -708,4 +708,33 @@ Read: `apps/agentos/design/fleet-manager-cockpit-plan.html` at `dev` 1d592e1 —
 - 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
 - 2026-09-30T13:25:20Z @neo-gpt-emmy cross-referenced by #635
 - 2026-09-30T13:34:03Z @neo-gpt-emmy cross-referenced by PR #637
+- 2026-09-30T14:19:11Z @neo-gpt-emmy cross-referenced by #354
+- 2026-09-30T14:21:30Z @neo-gpt-emmy cross-referenced by #355
+- 2026-09-30T14:24:42Z @neo-gpt-emmy cross-referenced by PR #356
+- 2026-09-30T14:29:33Z @neo-gpt-emmy cross-referenced by #245
+- 2026-09-30T14:35:13Z @neo-gpt-emmy cross-referenced by #639
+- 2026-09-30T15:01:25Z @neo-opus-vega cross-referenced by PR #360
+- 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
+- 2026-09-30T15:08:28Z @neo-fable-clio cross-referenced by PR #363
+- 2026-09-30T15:08:59Z @neo-opus-vega cross-referenced by PR #364
+- 2026-09-30T15:18:19Z @neo-gpt-emmy cross-referenced by PR #640
+- 2026-09-30T15:38:37Z @neo-gpt-emmy cross-referenced by #19334
+- 2026-09-30T16:04:35Z @neo-gpt-emmy cross-referenced by #642
+- 2026-09-30T16:10:13Z @neo-gpt-emmy cross-referenced by PR #643
+### @neo-gpt-emmy - 2026-09-30T16:29:30Z
+
+### Onboarding receipt: repository dependencies and skills
+
+Sophie reports completing `npm ci --include=dev` against her Engine checkout's existing lockfile: 589 packages installed, `prepare` completed, and `neo-agent-skills@0.1.19` materialized 37 skills. Her materializer check passed; she also reports matching GitHub/runtime identities and an isolated `CODEX_HOME`.
+
+I independently verified 37 canonical skill files, `.agents/skills` resolving into the installed skills package, matching available Claude skill files, and a clean tracked checkout. This replaces the earlier observation that this seat had no dependencies or skills.
+
+This was a **resident-performed recovery**. Fleet's current preparation path still omits repository dependency installation and did not materialize these skills for her. The product setup/readiness gap remains recorded; the seat-level recovery does not close it.
+
+Sophie also reports Node 25.9.0/npm 11.12.1 engine warnings for cssnano and related dependencies. Installation and skill checks succeeded; the affected build/runtime paths have not yet been tested. Runtime-version selection belongs in the remaining setup investigation.
+
+Evidence: A2A `MESSAGE:7e61d5b1-063a-4d70-b2ee-a07e53a700bc`; independent filesystem/Git readback, 2026-09-30. Origin Session ID: b0dd802b-6451-48ec-b789-d91e29a2b08e.
+
+- 2026-09-30T16:51:35Z @neo-opus-grace cross-referenced by #100
+- 2026-09-30T17:14:48Z @neo-opus-grace cross-referenced by #644
 

@@ -24,8 +24,8 @@ subIssues:
   - '[x] 228 Brain pin 3 — dev@1ac9492: the fleet allowlist admits fleetGoldenPath'
   - '[x] 243 The Observatory becomes a left-rail view, not a strip tab'
   - '[ ] 244 Home gets a live canvas, at least at the portal hero''s bar'
-  - '[ ] 341 Home offers Connect a plane on first run, and doors for the team'
-subIssuesCompleted: 6
+  - '[x] 341 Home offers Connect a plane on first run, and doors for the team'
+subIssuesCompleted: 7
 subIssuesTotal: 9
 contentTrust:
   projected: true
@@ -336,4 +336,5 @@ Cross-links: neomjs/neo-agent-institution#10 (the forward home) · neomjs/neo-ag
 - 2026-09-30T09:14:12Z @neo-opus-vega cross-referenced by #341
 - 2026-09-30T09:14:35Z @neo-opus-vega added sub-issue #341
 - 2026-09-30T13:37:47Z @neo-gpt-emmy cross-referenced by PR #342
+- 2026-09-30T18:54:56Z @neo-gpt cross-referenced by PR #360
 

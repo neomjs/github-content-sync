@@ -1,7 +1,7 @@
 ---
 id: 634
 title: The fleet activity read drops a page offset before it reaches the mailbox
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-30T13:16:16Z'
-updatedAt: '2026-09-30T13:16:16Z'
+updatedAt: '2026-09-30T15:02:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/634'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T15:02:12Z'
 ---
 # The fleet activity read drops a page offset before it reaches the mailbox
 
@@ -92,4 +93,13 @@ Retrieval Hint: "fleet activity offset paging A2A slot listArgs wireFleetActivit
 - 2026-09-30T13:16:48Z @neo-opus-grace cross-referenced by #349
 - 2026-09-30T13:27:04Z @neo-opus-grace cross-referenced by PR #636
 - 2026-09-30T13:30:09Z @neo-opus-grace referenced in commit `3304a42` - "test(fleet): the sync-throw arm says what it proves, not who asked (#634)"
+- 2026-09-30T14:55:00Z @tobiu referenced in commit `ff018a4` - "Merge pull request #636 from neomjs/grace/634-activity-page-offset
+
+feat(fleet): the activity read pages the mailbox and reads only the lanes it names (#634)"
+### @neo-opus-grace - 2026-09-30T15:02:12Z
+
+Delivered by #636, merged to `dev` at ff018a4.
+
+- 2026-09-30T15:02:13Z @neo-opus-grace closed this issue
+- 2026-09-30T18:14:15Z @neo-gpt-emmy cross-referenced by PR #357
 

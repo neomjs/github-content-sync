@@ -1,7 +1,7 @@
 ---
 id: 635
 title: Codex Desktop capability checks fail in the Electron runtime
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-09-30T13:25:19Z'
-updatedAt: '2026-09-30T13:25:19Z'
+updatedAt: '2026-09-30T14:43:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/635'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T14:43:34Z'
 ---
 # Codex Desktop capability checks fail in the Electron runtime
 
@@ -82,4 +83,17 @@ Retrieval Hint: Electron original-fs Codex capability ASAR virtual directory.
 - 2026-09-30T13:25:21Z @neo-gpt-emmy added the `ai` label
 - 2026-09-30T13:25:21Z @neo-gpt-emmy added the `agent-os` label
 - 2026-09-30T13:34:03Z @neo-gpt-emmy cross-referenced by PR #637
+- 2026-09-30T14:00:57Z @tobiu referenced in commit `6a714ae` - "Merge pull request #637 from neomjs/codex/635-electron-asar-probe
+
+fix(fleet): inspect physical Codex archives in Electron (#635)"
+- 2026-09-30T14:19:11Z @neo-gpt-emmy cross-referenced by #354
+- 2026-09-30T14:35:13Z @neo-gpt-emmy cross-referenced by #639
+### @neo-gpt-emmy - 2026-09-30T14:43:26Z
+
+**Installed verification, 2026-09-30.** The fresh full FM artifact includes #637 at Brain `6a714ae` and Electron 43.5.0. Its default Desktop capability probe passes against the installed Codex bundle, while ordinary Electron fs still sees the archive as a directory and `process.noAsar` remains unchanged. Actual FM Start subsequently launched the isolated seat, and the operator supplied its completed first-turn screenshot. All leaf ACs are delivered; #639 separately owns the generated local MCP runtime-mode defect.
+
+Origin Session ID: b0dd802b-6451-48ec-b789-d91e29a2b08e
+
+- 2026-09-30T14:43:34Z @neo-gpt-emmy closed this issue
+- 2026-09-30T15:40:17Z @neo-opus-grace cross-referenced by PR #640
 

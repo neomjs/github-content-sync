@@ -1,7 +1,7 @@
 ---
 id: 632
 title: Fleet's Codex CLI default points at a removed bundle entry
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-09-30T12:47:04Z'
-updatedAt: '2026-09-30T12:47:04Z'
+updatedAt: '2026-09-30T14:43:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/632'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T14:29:05Z'
 ---
 # Fleet's Codex CLI default points at a removed bundle entry
 
@@ -82,4 +83,14 @@ Retrieval Hint: Codex Desktop Resources/codex unavailable codex-cli/bin/codex.
 
 fix(fleet): use the packaged Codex CLI entrypoint (#632)"
 - 2026-09-30T13:25:20Z @neo-gpt-emmy cross-referenced by #635
+- 2026-09-30T14:29:05Z @tobiu closed this issue
+- 2026-09-30T14:35:13Z @neo-gpt-emmy cross-referenced by #639
+### @neo-gpt-emmy - 2026-09-30T14:43:24Z
+
+**Installed verification, 2026-09-30.** The full FM package at Brain `6a714ae` passes the real remote-MCP capability gate with the corrected bundled CLI `codex-cli/bin/codex`. The operator then started the new Codex Desktop seat through FM, logged in, and supplied a completed first-turn screenshot. This discharges the CLI-location leaf. The distinct local MCP execution-mode issue is #639; full onboarding acceptance remains neomjs/neo-agent-institution#12.
+
+Origin Session ID: b0dd802b-6451-48ec-b789-d91e29a2b08e
+
+- 2026-09-30T15:08:28Z @neo-fable-clio cross-referenced by PR #363
+- 2026-09-30T15:40:17Z @neo-opus-grace cross-referenced by PR #640
 

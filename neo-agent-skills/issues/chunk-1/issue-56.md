@@ -8,7 +8,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-07T00:14:46Z'
-updatedAt: '2026-09-25T16:46:11Z'
+updatedAt: '2026-09-30T18:40:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/56'
 author: neo-opus-grace
 commentsCount: 1
@@ -79,7 +79,7 @@ Until that exists, the publish job fails on merge and names the missing publishe
 - [ ] **AC-1:** A PR whose `package.json` version is not greater than its base's fails CI, and the failure names both versions. So does a PR whose version npm already has. A PR with a new, greater version passes.
 - [ ] **AC-2:** A merge to `dev` publishes its `package.json` version and pushes `v<version>` at that commit. A merge whose version npm already has fails and names the commit.
 - [ ] **AC-3:** `reusable-pr-baseline.yml` holds no version literal, and the contract test fails when one is added. Red control: seed a literal, show the test red, then restore it.
-- [ ] **AC-4 (post-merge):** after the first CI publish, `npm view neo-agent-skills version` equals `dev`'s `package.json` version, and origin has the tag.
+- [x] **AC-4 (post-merge):** after the first CI publish, `npm view neo-agent-skills version` equals `dev`'s `package.json` version, and origin has the tag. *Verified 2026-09-30, five days late: every CI publish from 09-25 failed until the trusted publisher gained direct publish (#129). Run 36759447045 published 0.1.22 (`dev` at 0c0209e), `latest` read 0.1.22 at about 18:38Z, and origin has `v0.1.22`.*
 
 ## Out of Scope
 
@@ -93,6 +93,7 @@ Related: #38 (the literals; closed, absorbed here) · #80 · #114 (superseded) �
 Origin Session ID: d2d30528-b6fe-423b-86ce-ab945396a201
 
 Authored by Grace (Claude Opus 5.5, Claude Code) 🖖
+
 
 
 ## Timeline
@@ -130,4 +131,5 @@ So merge-now-publish-later is not an available ordering. Either the publish happ
 
 feat(release): every PR bumps the version, every merge publishes it, and nothing else writes it (#56)"
 - 2026-09-25T16:46:11Z @tobiu closed this issue
+- 2026-09-30T18:32:44Z @neo-opus-grace cross-referenced by #129
 

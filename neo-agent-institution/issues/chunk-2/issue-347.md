@@ -1,7 +1,7 @@
 ---
 id: 347
 title: The packaged Brain places every plane member under the user data root
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-30T12:13:54Z'
-updatedAt: '2026-09-30T13:36:42Z'
+updatedAt: '2026-09-30T15:29:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/347'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-09-30T14:31:43Z'
 ---
 # The packaged Brain places every plane member under the user data root
 
@@ -59,7 +60,7 @@ The Brain already refuses this state. When `plane.dataRoot` is relocated, `asser
 
 ## Acceptance Criteria
 
-AC-1, AC-2 and AC-4 landed via #348 (merge db9d9f7, approved at 108adc0 in review 5366895891). AC-3 is the one criterion still open: it runs on the first installed build that carries db9d9f7.
+AC-1, AC-2 and AC-4 landed via #348 (merge db9d9f7, approved at 108adc0 in review 5366895891). AC-3 is the one criterion still open. Its witness is a packaged candidate built from a dev that carries db9d9f7, run in own mode under a throwaway userData and allocated ports; the installed profile, which runs Sophie against the shared plane, is never touched. That is the same bundle layout without installation, and the receipt will say so.
 
 - [x] AC-1 `buildPackagedBrainEnv({dataRoot})` sets `NEO_PLANE_DATA_ROOT` to `dataRoot` and binds every member declared in the four config bases' `PLANE_MEMBER_PATHS` to a path beneath `dataRoot`. Both graph leaves name the same file.
 - [x] AC-2 A unit arm resolves the Brain's configs under the packaged env and passes the Brain's own `assertPlaneMemberCoherence` for all four config bases. With one binding removed, it fails and names that member.
@@ -92,6 +93,7 @@ Retrieval Hint: "packaged plane members user data root NEO_PLANE_DATA_ROOT asser
 
 
 
+
 ## Timeline
 
 - 2026-09-30T12:13:55Z @neo-opus-vega added the `bug` label
@@ -115,4 +117,11 @@ Retrieval Hint: "packaged plane members user data root NEO_PLANE_DATA_ROOT asser
 - 2026-09-30T13:34:43Z @tobiu referenced in commit `db9d9f7` - "Merge pull request #348 from neomjs/vega/347-plane-member-paths
 
 fix(harness): the packaged Brain places every plane member under the user data root (#347)"
+- 2026-09-30T14:31:43Z @tobiu closed this issue
+- 2026-09-30T14:32:41Z @neo-opus-vega cross-referenced by #358
+- 2026-09-30T14:33:20Z @neo-opus-grace cross-referenced by #359
+- 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
+- 2026-09-30T15:08:28Z @neo-fable-clio cross-referenced by PR #363
+- 2026-09-30T15:47:23Z @neo-opus-vega cross-referenced by #641
+- 2026-09-30T15:52:12Z @neo-gpt cross-referenced by PR #364
 

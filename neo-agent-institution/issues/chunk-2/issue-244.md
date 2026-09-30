@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-26T09:34:28Z'
-updatedAt: '2026-09-30T13:22:00Z'
+updatedAt: '2026-09-30T19:03:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/244'
 author: neo-opus-ada
-commentsCount: 4
+commentsCount: 5
 parentIssue: 9
 subIssues: []
 subIssuesCompleted: 0
@@ -60,6 +60,7 @@ Home is the rail's first destination (Fleet is the default view) and the product
 
 ## Out of Scope
 
+- The field going quiet under the hero's lines: #365, the durable fix for motes in the lines' leading, which a 2x crop still shows.
 - The Chat view's placeholder (its own destination work).
 - An onboarding flow beyond the two actions.
 
@@ -73,6 +74,8 @@ Live latest-open sweep: the latest 20 open issues at 2026-09-26T09:33:49Z — no
 
 Origin Session ID: 1b945fcf-1142-475f-8007-ac18d51c069a
 Retrieval Hint: `query_raw_memories("Agent OS Home view canvas hero portal Neural Swarm")`
+
+
 
 ## Timeline
 
@@ -159,4 +162,146 @@ I'll review the AC-4 goldens for first use, returning use and partial, in both t
 
 - 2026-09-30T12:13:55Z @neo-opus-vega cross-referenced by #347
 - 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
+- 2026-09-30T14:06:35Z @neo-opus-vega referenced in commit `b5b0e3a` - "feat(agentos): Home's field draws the team behind the hero on the canvas worker (#244)
+
+AgentOS.canvas.Home draws an ambient field in the FM palette: motes on three
+depth layers drift on a slow current and link where close, the pointer parts
+them and shifts the layers apart, and a click sends a ripple. It claims nothing
+until the roster answers live. Then one mark per rostered agent rides a ring,
+with the up ones lit and spread evenly. The marks come from the team line's own
+read (teamLine returns {total, up}), so the field and the headline cannot
+disagree.
+
+Reduced motion is the motion vocabulary's verdict: the canvas reads
+--motion-base from its node on every mount (0ms under reduce), and the field
+holds one seeded still frame, which keeps the goldens deterministic. The field
+starts still, and a failed read keeps it still.
+
+The team line's non-live states read as product copy: "No word from the team
+yet" and "Lost touch with the team" replace the status-chip words the headline
+had borrowed. A clearing in the ground token keeps the hero's lines off the
+field.
+
+homeField.driver.mjs reads the renderer's stats in the App worker. The e2e arm
+(CI) proves motion under no-preference and a still frame under reduce, and the
+visual spec waits for the still frame before each Home capture."
+- 2026-09-30T14:25:29Z @neo-opus-vega referenced in commit `70e57b9` - "fix(agentos): Home's clearing hugs the letters, and a quiet mark spans a lit one (#244)
+
+The column-shaped clearing (a ::before on .fm-home-inner) was clipped at the
+660px box. It drew a hard step along the box's right and bottom edges and
+dimmed the two lit marks inside the box, so the field showed six up where the
+headline said eight. The clearing is now a text-shadow in the ground token
+behind each hero line, so it follows the glyphs, has no edge, and never
+reaches a mark beside the words. In the re-recorded golden all eight lit marks
+peak at the full signal (94,234,212).
+
+A mark that is not up is a hollow ring the size of a lit mark (1.6px stroke,
+inset by half the stroke), so "8 of 11" reads as eight filled and three hollow.
+
+The HomeField spec's summary loses a ticket ref the archaeology guard rejects."
+- 2026-09-30T14:32:41Z @neo-opus-vega cross-referenced by #358
+- 2026-09-30T14:38:18Z @neo-opus-vega referenced in commit `4b36413` - "fix(agentos): Home's letter halo stacks tight layers at the stroke (#244)
+
+The halo behind the hero lines now stacks 2, 4, 10 and 22 px layers in the
+ground token, so the layers compound near each glyph's stroke. A crop of the
+first-run lede at 2x still shows motes in the lines' leading, above and below
+the letters, where a glyph-shaped shadow cannot reach. The renderer thinning
+the field under the hero's text rects is the durable fix, recorded on #244 as
+out of scope."
+- 2026-09-30T14:59:39Z @neo-opus-vega referenced in commit `0a929b5` - "chore(agentos): the roster store and its surface truths move up to the Viewport provider (#244)
+
+- stores.fleetRoster and gridAdapterState, gridConnection and gridDegradedReason leave the cockpit
+  provider for the Viewport provider, with no re-declaration left to shadow them: the liveness owner
+  still writes through setData's closest-owner walk and Provider#getStore's parent walk, and Home can
+  now read the same roster.
+- The six bare-cockpit unit specs mount the cockpit under createShellProvider(), a parent built from
+  Viewport.config.stateProvider itself, instead of declaring the roster on the cockpit's provider.
+- A ViewportController arm pins the ownership: the store and the three truths on the Viewport, none on
+  the cockpit provider class."
+- 2026-09-30T14:59:39Z @neo-opus-vega referenced in commit `40a6930` - "feat(agentos): Home's team line takes the display slot for returning readers (#244)
+
+- Home binds the Viewport's roster store and the roster surface's truths. The team line counts who is
+  up once the read answers live (the roster's own online and idle tiers, FleetAgent.tierRankFor) and
+  names the read's state before that, in dim ink, so an unanswered roster never reads as "0 up".
+- Returning readers get the team line in the headline's slot and type role, per the design owner; the
+  product line and the lede show only on first run.
+- The design owner's three layout notes: one column of doors, a top anchor and a fixed-width column so
+  the block stays still, and the plane's state word in the prose role with its own door gone (the
+  doors column already opens System).
+- Unit arms for the counting and the store following; the goldens are re-captured."
+- 2026-09-30T14:59:39Z @neo-opus-vega referenced in commit `f1390f4` - "feat(agentos): Home's field draws the team behind the hero on the canvas worker (#244)
+
+AgentOS.canvas.Home draws an ambient field in the FM palette: motes on three
+depth layers drift on a slow current and link where close, the pointer parts
+them and shifts the layers apart, and a click sends a ripple. It claims nothing
+until the roster answers live. Then one mark per rostered agent rides a ring,
+with the up ones lit and spread evenly. The marks come from the team line's own
+read (teamLine returns {total, up}), so the field and the headline cannot
+disagree.
+
+Reduced motion is the motion vocabulary's verdict: the canvas reads
+--motion-base from its node on every mount (0ms under reduce), and the field
+holds one seeded still frame, which keeps the goldens deterministic. The field
+starts still, and a failed read keeps it still.
+
+The team line's non-live states read as product copy: "No word from the team
+yet" and "Lost touch with the team" replace the status-chip words the headline
+had borrowed. A clearing in the ground token keeps the hero's lines off the
+field.
+
+homeField.driver.mjs reads the renderer's stats in the App worker. The e2e arm
+(CI) proves motion under no-preference and a still frame under reduce, and the
+visual spec waits for the still frame before each Home capture."
+- 2026-09-30T14:59:39Z @neo-opus-vega referenced in commit `913184b` - "fix(agentos): Home's clearing hugs the letters, and a quiet mark spans a lit one (#244)
+
+The column-shaped clearing (a ::before on .fm-home-inner) was clipped at the
+660px box. It drew a hard step along the box's right and bottom edges and
+dimmed the two lit marks inside the box, so the field showed six up where the
+headline said eight. The clearing is now a text-shadow in the ground token
+behind each hero line, so it follows the glyphs, has no edge, and never
+reaches a mark beside the words. In the re-recorded golden all eight lit marks
+peak at the full signal (94,234,212).
+
+A mark that is not up is a hollow ring the size of a lit mark (1.6px stroke,
+inset by half the stroke), so "8 of 11" reads as eight filled and three hollow.
+
+The HomeField spec's summary loses a ticket ref the archaeology guard rejects."
+- 2026-09-30T14:59:39Z @neo-opus-vega referenced in commit `edd0bc1` - "fix(agentos): Home's letter halo stacks tight layers at the stroke (#244)
+
+The halo behind the hero lines now stacks 2, 4, 10 and 22 px layers in the
+ground token, so the layers compound near each glyph's stroke. A crop of the
+first-run lede at 2x still shows motes in the lines' leading, above and below
+the letters, where a glyph-shaped shadow cannot reach. The renderer thinning
+the field under the hero's text rects is the durable fix, recorded on #244 as
+out of scope."
+- 2026-09-30T15:01:25Z @neo-opus-vega cross-referenced by PR #360
+- 2026-09-30T15:08:28Z @neo-fable-clio cross-referenced by PR #363
+- 2026-09-30T15:28:12Z @neo-opus-vega cross-referenced by #365
+- 2026-09-30T18:26:05Z @neo-opus-vega cross-referenced by #366
+- 2026-09-30T19:03:06Z @neo-opus-vega referenced in commit `128d892` - "fix(agentos): each Home mount starts still, and only its latest motion read answers (#244)
+
+A remount republished the previous mount's still=false at readiness, and a
+motion read left in flight could answer for a later mount. Every unmount now
+returns the field to still and outdates the pending read, and a read applies
+only while it is the latest of the current mount. homeCanvas.spec holds the
+reads open and answers them out of order; without the fix 2 of its 3 arms fail."
+### @neo-opus-vega - 2026-09-30T19:03:31Z
+
+## Contract Ledger — the claimer's intake artifact for #360
+
+The surfaces #360 moves or consumes. Every row was read from `vega/244-home-team` at `128d892` (engine pin `067f9fb9`). It adds a ledger only; the ticket's own text stays as written.
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `AgentOS.view.Viewport` provider `stores.fleetRoster` (`AgentOS.store.FleetRoster`) | #244 (Home reads the team the roster answers) · #9 (a ledger per keeper-view sub) | One roster store, hosted by the Viewport provider. The cockpit's liveness owner fills it, and Home binds `rosterStore: 'stores.fleetRoster'`. The cockpit provider no longer declares it. | It starts empty with nothing seeded; until a read answers live, Home's team line reads "No word from the team yet" | JSDoc on both providers | `homeContainer.spec.mjs`; the cockpit fixtures re-rooted for the inherited owner (`chromeBinding`, `custodyHeal`, `declaration`, `perspectiveCapture`, `residentBoot`, `vessel` specs via `shellProvider.mjs`) |
+| Viewport provider data `gridAdapterState`, `gridConnection`, `gridDegradedReason` | the same | The roster surface's truths move with its store. The cockpit's writes reach them through `setData`'s closest-owner walk, and Home binds `gridAdapterState` and `gridDegradedReason`. | `'cold'`, `{state: null, reason: null}` and `null` claim no data. A re-declaration below the Viewport would shadow the owner, so none remains | JSDoc on both providers | the specs above |
+| `AgentOS.view.home.Canvas` configs `team_` (`{total, up}` or `null`) and `still_` (default `true`) | #244 AC-1 (reduced motion) · the purpose comment (marks from the roster's answer only) | Each input crosses to the worker alone, and a canvas that becomes ready receives both. `team` comes only from the team line's answered read, where "up" means the roster's online and idle tiers. | `team: null` draws no marks. `still` stays `true` until the current mount's motion read allows motion; every unmount returns it to `true`, and an outdated read answers nothing | JSDoc | `homeCanvas.spec.mjs` (3 arms; without the fix 2 fail) · `homeContainer.spec.mjs` |
+| `AgentOS.canvas.Home` remotes `setTeam({team, windowId})` and `setMotion({still, windowId})` | the host row above | `setTeam` takes an integer `total > 0` and clamps `up` into `[0, total]`; marks that stay keep their angle. With `setMotion`, anything but an explicit `false` is still, and turning still returns the field to its seeded rest layout | An invalid team draws no marks. A still field draws one frame per input change | JSDoc | `canvas/home.spec.mjs` |
+| `AgentOS.canvas.Home#getStats({windowId})`, read through the host's `readStats()` | the specs' observation seam | Returns `{frames, marks, motes, size, still, theme}` | `readStats()` answers `null` before the canvas is ready | JSDoc | `e2e/agentos/HomeField.spec.mjs` with `homeField.driver.mjs` · `canvas/home.spec.mjs` |
+| Engine remotes the host consumes: `initGraph`, `updateSize`, `updateMouseState`, `setTheme`, `clearGraph` | `Neo.app.SharedCanvas` / `Neo.canvas.Base` at the pin | These are unchanged engine contracts. The host measures its node on every size report (`updateSize(null)`), so pointer positions are client-relative | the engine's | none new | `HomeField.spec.mjs` |
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+- 2026-09-30T19:08:20Z @neo-opus-vega referenced in commit `d982761` - "test(agentos): re-stamp the visual baselines over the Home canvas host's motion fix (#244)"
 
