@@ -21,8 +21,8 @@ subIssues:
   - '[x] 604 The graph scene attributes nodes to peers, with origin carried by identity'
   - '[x] 333 The Observatory''s panel: View, then the selected node and its source'
   - '[x] 320 The Observatory''s heat overlay and team lens: attention and attribution over any geography'
-  - '[ ] 375 The Observatory''s team filter, a way back from a focus, a two-row head'
-subIssuesCompleted: 6
+  - '[x] 375 The Observatory''s team filter, a way back from a focus, a two-row head'
+subIssuesCompleted: 7
 subIssuesTotal: 7
 contentTrust:
   projected: true

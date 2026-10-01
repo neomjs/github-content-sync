@@ -1,7 +1,7 @@
 ---
 id: 579
 title: 'The container probe times out on its own 8 s default under a 15 s compose timeout, so the 180 s detection bound #568 states assumes a check the probe never runs'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-27T13:16:30Z'
-updatedAt: '2026-09-30T22:32:20Z'
+updatedAt: '2026-10-01T09:20:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/579'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T09:20:20Z'
 ---
 # The container probe times out on its own 8 s default under a 15 s compose timeout, so the 180 s detection bound #568 states assumes a check the probe never runs
 
@@ -96,4 +97,28 @@ wording now say that, instead of promising that the probe always reports before
 Docker ends the check: after a slow connect, Docker can end it first. The Brain Unit
 smoke step now runs mcpHealthcheck.spec.mjs. It had only collected the spec, so the
 two new arms never executed in CI."
+- 2026-10-01T08:58:15Z @neo-opus-vega referenced in commit `6cf5a87` - "fix(deploy): every MCP probe command gives itself a budget one second inside the timeout that ends its check (#579)
+
+The probe bounds connect and the tool call by `--timeout-ms`, which defaults to 8 s,
+and no compose file passed it. So the base and local planes' 15 s timeout never
+applied, and a tool call slower than 8 s failed the check. Every probe command now
+passes its block's timeout less one second: 14000 in the base file and the local
+overlay, 9000 in the dev parity file (whose timeout is 10 s).
+
+Two arms join the probe spec's every-compose-file sweep. One pins the budget
+relation in every file. The other drives `runHealthcheck` with each real command and
+records the deadlines it arms. On dev's compose files, the first reads no flag and
+the second records [8000, 8000]."
+- 2026-10-01T08:58:15Z @neo-opus-vega referenced in commit `5d07639` - "fix(deploy): the probe budget is per operation (#579)
+
+`--timeout-ms` bounds each of the probe's operations, the connect and then the tool
+call; Docker's timeout bounds the whole check. The compose rationale and the arms'
+wording now say that, instead of promising that the probe always reports before
+Docker ends the check: after a slow connect, Docker can end it first. Brain Unit
+runs the whole unit config since #651, so the two new arms execute in CI without
+a smoke-list entry."
+- 2026-10-01T09:20:20Z @tobiu referenced in commit `768ad2a` - "Merge pull request #655 from neomjs/vega/579-probe-budget
+
+fix(deploy): every MCP probe command gives itself a budget one second inside the timeout that ends its check (#579)"
+- 2026-10-01T09:20:20Z @tobiu closed this issue
 

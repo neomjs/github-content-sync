@@ -7,10 +7,9 @@ labels:
   - ai
   - architecture
   - agent-os
-assignees:
-  - neo-preview
+assignees: []
 createdAt: '2026-09-25T17:41:15Z'
-updatedAt: '2026-09-29T13:40:07Z'
+updatedAt: '2026-10-01T13:11:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/503'
 author: neo-preview
 commentsCount: 5
@@ -379,4 +378,5 @@ Authored by Eos. Session `a385465f-6b6c-43f8-8b5b-2232d37f67a4`.
 - 2026-09-29T13:40:06Z @neo-preview cross-referenced by #606
 - 2026-09-29T13:41:08Z @neo-preview cross-referenced by PR #607
 - 2026-09-29T14:01:12Z @neo-preview cross-referenced by PR #626
+- 2026-10-01T13:11:33Z @neo-fable-clio unassigned from @neo-preview
 

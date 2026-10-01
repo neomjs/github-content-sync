@@ -9,14 +9,16 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-09-30T13:19:28Z'
-updatedAt: '2026-09-30T13:19:59Z'
+updatedAt: '2026-10-01T11:40:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/351'
 author: neo-fable-clio
 commentsCount: 0
 parentIssue: null
-subIssues: []
+subIssues:
+  - '[ ] 678 ADR 0041: the bootstrap record and the verified-plane handoff'
+  - '[ ] 679 First-run recipe: live step evaluation and one host-owned record'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 2
 contentTrust:
   projected: true
   quarantined: 0
@@ -29,7 +31,7 @@ milestone: FM v1
 
 Terminal predicate: on a machine that is not ours, an outside operator's cold first run of the installed Fleet Manager reaches — through the setup wizard alone, with nothing of ours in the loop — a working institution that answers a query and holds its first persisted memory, on the placement, preset and credentials they chose.
 
-`[PROVISIONAL_UNGRADUATED: D#18965]` — filed at the Discussion's `[GRADUATION_PROPOSED]` (body `updatedAt` 2026-09-30T13:05:51Z) per ideation-sandbox §6.7 as the pre-quorum reservation; promoted (`[GRADUATED_TO_TICKET]` recorded there, this marker removed) at §6.2 quorum. No PR under this epic is merge-eligible before that.
+`[GRADUATED_FROM: D#18965]` — §6.2 quorum reached 2026-10-01: `claude` `[AUTHOR_SIGNAL]` (the author) + `gpt` `[GRADUATION_APPROVED]` by @neo-gpt (`DC_kwDODSospM4BHUr8`, at the Discussion body of 2026-10-01T11:01:27Z, after his OQ3 deferral was folded). The pre-quorum reservation of 2026-09-30 is promoted; leaves may be filed under this epic (ticket-create §1d satisfied). The REQUIRED Decision Record — ADR 0041, the host-record → verified-plane handoff from OQ1 — is filed beside the first record-writing leaf and gates that leaf's merge. By the operator's order of 2026-10-01 the Fleet-launched Claude Desktop seat path (neomjs/neo-agent-brain#669, #378/#379, the repackage, Ada's move) ranks above this epic's builds.
 
 ## Problem scope
 
@@ -45,7 +47,7 @@ D#18965's convergence, in one paragraph each:
 
 1. **One shared recipe, evaluated live.** Step definitions exist once and every renderer reads them; a step's status is a fresh observation for the bound target and the evaluated recipe version, never a remembered "completed" bit. Only what cannot be reconstructed persists — intent, consent and the receipts of host effects — in one secret-free host record owned by the bootstrap side; authenticated plane observations take over as the authority for *current* readiness once the served plane identity matches the run's target (OQ1, `[RESOLVED_TO_AC]`). A receipt is history, never health.
 2. **Two renderers over one host-effect module.** The CLI bootstrap has host-effect authority and can serve the cockpit before a Brain exists; the cockpit inside the packaged vessel ([#7](https://github.com/neomjs/neo-agent-institution/issues/7), installed since 2026-09-26) is the wizard. The Discussion rejected an in-cockpit-only path because a browser page cannot run compose, probe ports or write config — the shell's main process can, so the host-effect half is one module both the vessel and the CLI call, never two implementations.
-3. **Three placements, asked separately** — where the plane runs, where harnesses and workspaces run, where inference runs — each probed on the machine that bears it (RAM as a budget: total minus what the OS, the harnesses, the Docker VM cap and resident models hold; disk, cores, GPU or unified memory). This machine is the default; a cloud deployment is a placement the wizard prepares (compose, env, secret files on the operator's target), never a service of ours.
+3. **Three placements, asked separately** — where the plane runs, where harnesses and workspaces run, where inference runs — each probed on the machine that bears it (RAM as a budget: total minus what the OS, the harnesses, the Docker VM cap and resident models hold; disk, cores, GPU or unified memory). This machine is the default; a cloud deployment is a placement the wizard prepares (compose, env, secret files on the operator's target), never a service of ours. **One plane per host by default** (operator, 2026-10-01: two Agent OS instances do not fit beside each other in RAM): the probe looks for a running plane first — the canonical compose project, its ingress and fleet ports — and offers Connect before Provision; a second plane is an explicit *advanced* choice sized against the Docker VM's remaining cap, which is the first ceiling, not host RAM. Measured on this machine, 2026-10-01: a 31.3 GiB Docker VM; the live Chroma resident at 11.6 GiB of a 16 GiB container cap over 15 GB on disk at 4096 dims; ≈ 20 GB of local models in LM Studio. A fixture plane with a 1024-dim embedder that shares the host's loaded models idles at 0.39 GiB (six services, 39 MB of volumes, healthy in 17 s; 2026-09-23). Wizard leaves verify against such a fixture plane, one at a time, never against a second model stack.
 4. **Curated presets over declared leaves** — *hosted inference* (smallest footprint), *local small*, *local full* — each a set of env values over ADR 0019 §10.7's declared profiles, each declaring `authorityProfile`; the smallest useful stack is the fleet server, the Memory Core with its vector store and the orchestrator with hosted inference, the Knowledge Base an add-on step. Model overrides and the rest sit behind an *advanced* fold.
 5. **Credentials.** The plane's own login (a GitHub or GitLab PAT, `auth.mode` `github-pat` / `gitlab-pat`), a provider key only in the hosted preset through the sanctioned `*File` sibling-leaf adapter (custody = a Compose secret + a `_FILE` env value; a named operator credential step until the adapter exists). Harness logins never enter the recipe — the operator signs in inside each harness the Fleet Manager starts.
 6. **Validate before durable ingest; done is the adopter's bar.** A provider call and one observed embedding confirm the configuration, dimension included, before any corpus is ingested; the wizard witnesses its own completion — a working stack that answers a query (neomjs/neo-agent-brain#86) and first persistence (J3 in [neomjs/neo#14781](https://github.com/neomjs/neo/issues/14781)). Starting the first agent ([#171](https://github.com/neomjs/neo-agent-institution/issues/171), shipped) is a waypoint the journey consumes.
@@ -116,6 +118,8 @@ D#18965 · [`ROADMAP.md` row 1](https://github.com/neomjs/neo-agent-institution/
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 4a2cca3d-9951-4e9a-b577-2a3374a22045
 
+
+
 ## Timeline
 
 - 2026-09-30T13:19:28Z @neo-fable-clio assigned to @neo-fable-clio
@@ -126,4 +130,20 @@ D#18965 · [`ROADMAP.md` row 1](https://github.com/neomjs/neo-agent-institution/
 - 2026-09-30T13:36:52Z @neo-fable-clio cross-referenced by #19330
 - 2026-09-30T13:36:58Z @neo-fable-clio cross-referenced by #335
 - 2026-09-30T13:38:53Z @neo-fable-clio cross-referenced by PR #19331
+- 2026-09-30T14:29:33Z @neo-gpt-emmy cross-referenced by #245
+- 2026-09-30T14:32:41Z @neo-opus-vega cross-referenced by #358
+- 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
+- 2026-09-30T15:08:28Z @neo-fable-clio cross-referenced by PR #363
+- 2026-09-30T16:48:17Z @neo-opus-grace cross-referenced by #100
+- 2026-09-30T17:14:48Z @neo-opus-grace cross-referenced by #644
+- 2026-09-30T20:58:56Z @neo-fable-clio cross-referenced by #652
+- 2026-09-30T21:55:36Z @neo-fable-clio cross-referenced by #19339
+- 2026-09-30T22:00:21Z @neo-fable-clio cross-referenced by #374
+- 2026-09-30T22:14:00Z @neo-fable-clio cross-referenced by #656
+- 2026-10-01T10:27:17Z @neo-opus-grace cross-referenced by #571
+- 2026-10-01T11:04:36Z @neo-opus-grace cross-referenced by #378
+- 2026-10-01T13:03:53Z @neo-fable-clio cross-referenced by #678
+- 2026-10-01T13:04:31Z @neo-fable-clio cross-referenced by #679
+- 2026-10-01T13:05:22Z @neo-fable-clio added sub-issue #678
+- 2026-10-01T13:05:23Z @neo-fable-clio added sub-issue #679
 

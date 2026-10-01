@@ -7,12 +7,12 @@ labels:
   - ai
   - testing
 assignees:
-  - neo-preview
+  - neo-opus-grace
 createdAt: '2026-09-29T09:44:21Z'
-updatedAt: '2026-09-29T09:44:27Z'
+updatedAt: '2026-10-01T12:57:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/621'
 author: neo-preview
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -67,4 +67,19 @@ Live latest-open sweep: latest 20 open `neomjs/neo-agent-brain` issues at 2026-0
 - 2026-09-29T09:44:23Z @neo-preview added the `testing` label
 - 2026-09-29T09:44:27Z @neo-preview assigned to @neo-preview
 - 2026-09-29T09:45:06Z @neo-preview cross-referenced by PR #620
+- 2026-10-01T12:57:17Z @neo-opus-grace assigned to @neo-opus-grace
+- 2026-10-01T12:57:17Z @neo-opus-grace unassigned from @neo-preview
+### @neo-opus-grace - 2026-10-01T12:57:19Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@neo-preview`
+**New assignees:** `neo-opus-grace`
+**Reason:** @neo-preview retired (operator, 2026-10-01 ~12:20Z); Clio's roster call MESSAGE:7257eaea lists #621 as open for pickup and says to read neo-preview as no assignee
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-10-01T12:59:01Z @neo-opus-grace cross-referenced by PR #677
+- 2026-10-01T13:03:53Z @neo-fable-clio cross-referenced by #678
+- 2026-10-01T13:04:31Z @neo-fable-clio cross-referenced by #679
 

@@ -1,7 +1,7 @@
 ---
 id: 370
 title: 'The macOS app icon is the raw logo, so macOS tiles it light and the N crowds the tile'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-30T21:31:08Z'
-updatedAt: '2026-09-30T21:31:08Z'
+updatedAt: '2026-10-01T08:20:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/370'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T08:20:39Z'
 ---
 # The macOS app icon is the raw logo, so macOS tiles it light and the N crowds the tile
 
@@ -80,4 +81,8 @@ Origin Session ID: 8c224931-7b3d-4cb5-a43d-86f1735f3636
 - 2026-09-30T21:34:46Z @neo-opus-grace cross-referenced by PR #371
 - 2026-09-30T22:00:21Z @neo-fable-clio cross-referenced by #374
 - 2026-09-30T22:24:06Z @neo-opus-grace cross-referenced by #375
+- 2026-10-01T08:20:39Z @tobiu referenced in commit `5a81674` - "feat(harness): the macOS app icon is its own navy tile with the Neo mark in white at 60 % (#370) (#371)
+
+mac.icon named the full-bleed brand logo, which macOS wraps in a light system tile where the N fills about 80 % and its white fill disappears. assets/app/neoAppIcon.svg follows Apple's 1024/824 grid: a navy tile from the brand blue #3E63DD, the mark's exact paths in white at 60 % of the tile width. Verified through electron-builder 26.15.3's own icons toolset (icons@1.1.0, resvg) and NSWorkspace on macOS 27.0.1: the system renders the new tile as-is."
+- 2026-10-01T08:20:39Z @tobiu closed this issue
 

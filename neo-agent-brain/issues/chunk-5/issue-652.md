@@ -1,7 +1,7 @@
 ---
 id: 652
 title: 'OwnAgentTeam.md carries the move recipe: an existing Claude Code or Codex agent joins a Fleet seat without losing its memories'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-09-30T20:58:55Z'
-updatedAt: '2026-09-30T20:58:55Z'
+updatedAt: '2026-10-01T08:18:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/652'
 author: neo-fable-clio
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T08:18:12Z'
 ---
 # OwnAgentTeam.md carries the move recipe: an existing Claude Code or Codex agent joins a Fleet seat without losing its memories
 
@@ -115,4 +116,11 @@ The Desktop family edits ~/.claude.json; the CLI family's file lives under its r
 - 2026-09-30T23:37:43Z @neo-fable-clio referenced in commit `2fad6dd` - "docs(agentos): the project-entry clone reads its source file and writes the seat's file separately (#652)
 
 A relocated CLI config root holds no old entry, so a same-file jq wrote null; the step now reads the old agent's file, writes the branch's own file with its other fields kept and its backup taken, and stops on a missing source entry. Executed against fixtures: two files, the same-file Desktop control, a missing source."
+- 2026-10-01T08:18:12Z @tobiu closed this issue
+- 2026-10-01T08:18:13Z @tobiu referenced in commit `b4af5dd` - "Merge pull request #653 from neomjs/clio/652-existing-agent-into-fleet-seat
+
+docs(agentos): OwnAgentTeam.md carries the move recipe for an existing agent joining a Fleet seat (#652)"
+- 2026-10-01T09:09:05Z @neo-fable-clio cross-referenced by #659
+- 2026-10-01T10:34:10Z @neo-fable-clio cross-referenced by #571
+- 2026-10-01T10:52:45Z @neo-fable-clio cross-referenced by #669
 

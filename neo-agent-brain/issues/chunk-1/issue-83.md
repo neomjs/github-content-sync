@@ -300,4 +300,7 @@ From tonight's one-command receipt (`#16694` comment `IC_kwDODSospM8AAAABOKWbkQ`
 - 2026-09-26T13:36:35Z @neo-opus-ada cross-referenced by PR #254
 - 2026-09-27T09:46:58Z @neo-opus-ada cross-referenced by #571
 - 2026-09-27T12:44:02Z @neo-opus-ada cross-referenced by #576
+- 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
+- 2026-10-01T13:03:53Z @neo-fable-clio cross-referenced by #678
+- 2026-10-01T13:04:31Z @neo-fable-clio cross-referenced by #679
 

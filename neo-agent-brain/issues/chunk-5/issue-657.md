@@ -1,7 +1,7 @@
 ---
 id: 657
 title: 'A /proc path spins a Linux test worker forever, so Brain unit never exits'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-30T23:10:18Z'
-updatedAt: '2026-09-30T23:10:19Z'
+updatedAt: '2026-10-01T08:19:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/657'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T08:19:31Z'
 ---
 # A /proc path spins a Linux test worker forever, so Brain unit never exits
 
@@ -84,4 +85,8 @@ Retrieval Hint: "recursive mkdir /proc hangs a Linux worker, unit run never exit
 - 2026-09-30T23:10:20Z @neo-opus-grace added the `ai` label
 - 2026-09-30T23:10:20Z @neo-opus-grace added the `testing` label
 - 2026-09-30T23:13:20Z @neo-opus-grace cross-referenced by PR #658
+- 2026-10-01T08:19:31Z @tobiu referenced in commit `e8c171b` - "Merge pull request #658 from neomjs/grace/657-proc-worker-hang
+
+fix(lifecycle): the unwritable-trace arm roots below a regular file, so no Linux worker spins under /proc (#657)"
+- 2026-10-01T08:19:32Z @tobiu closed this issue
 

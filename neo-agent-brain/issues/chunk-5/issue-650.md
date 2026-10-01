@@ -1,7 +1,7 @@
 ---
 id: 650
 title: Brain Unit CI runs every spec and fails only on what a PR breaks
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-30T19:34:11Z'
-updatedAt: '2026-10-01T00:01:09Z'
+updatedAt: '2026-10-01T08:16:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/650'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T08:16:46Z'
 ---
 # Brain Unit CI runs every spec and fails only on what a PR breaks
 
@@ -159,4 +160,9 @@ A side whose listed tests were never reached recorded nothing and vouches for no
 it carries. Each introduced failure's block opens with an Error: line, the ledger's symptom: a typed
 error, a timeout or a thrown value is prefixed, and a test with no recorded error says so."
 - 2026-09-30T23:10:19Z @neo-opus-grace cross-referenced by #657
+- 2026-10-01T08:16:46Z @tobiu referenced in commit `893b14a` - "Merge pull request #651 from neomjs/grace/650-unit-failure-diff
+
+feat(ci): Brain Unit runs every spec on the change and on its base, and fails only on what the change breaks (#650)"
+- 2026-10-01T08:16:46Z @tobiu closed this issue
+- 2026-10-01T10:08:20Z @neo-opus-grace cross-referenced by #667
 

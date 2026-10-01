@@ -1,7 +1,7 @@
 ---
 id: 375
 title: 'The Observatory''s team filter, a way back from a focus, a two-row head'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-30T22:24:05Z'
-updatedAt: '2026-09-30T22:52:18Z'
+updatedAt: '2026-10-01T08:22:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/375'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T08:22:12Z'
 ---
 # The Observatory's team filter, a way back from a focus, a two-row head
 
@@ -126,4 +127,21 @@ Retrieval Hint: "Observatory team scope identity nodes clear selection two-row h
 - 2026-09-30T22:24:09Z @neo-opus-grace added parent issue #312
 - 2026-09-30T22:57:02Z @neo-opus-grace cross-referenced by PR #377
 - 2026-09-30T23:45:44Z @neo-opus-grace referenced in commit `733e762` - "fix(observatory): an outsider leaves Team with its check, and a member's check keeps the rows (#375)"
+- 2026-09-30T23:50:13Z @neo-opus-grace referenced in commit `7a306eb` - "test(observatory): the visual stamp records round 2's inputs; all 25 visual arms pass with the goldens unchanged (#375)"
+- 2026-10-01T08:22:12Z @tobiu closed this issue
+- 2026-10-01T08:22:12Z @tobiu referenced in commit `4f56f2a` - "feat(observatory): Team offers the team busiest first, and every focus has a way back (#375) (#377)
+
+* feat(observatory): Team offers the team busiest first, and every focus has a way back (#375)
+
+The Team list offers the identities the read holds an AgentIdentity node for, busiest first, with All for
+everyone the read attributes; a checked peer stays listed and a read without identity nodes says so. The
+Team section (head, scope, list, checks) is its own container, the pane keeping the lens. Clear drops a
+selection or the lens, and Escape backs out one step. A list row is outlined for keyboard focus only, and
+the head reads in two rows.
+
+* test(observatory): the Observatory goldens read the two-row head and the Team head, and the NL lens arm reads busiest first (#375)
+
+* fix(observatory): an outsider leaves Team with its check, and a member's check keeps the rows (#375)
+
+* test(observatory): the visual stamp records round 2's inputs; all 25 visual arms pass with the goldens unchanged (#375)"
 

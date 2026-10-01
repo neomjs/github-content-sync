@@ -5,10 +5,9 @@ state: OPEN
 labels:
   - bug
   - ai
-assignees:
-  - neo-preview
+assignees: []
 createdAt: '2026-09-28T15:39:07Z'
-updatedAt: '2026-09-28T15:39:08Z'
+updatedAt: '2026-10-01T13:11:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/613'
 author: neo-preview
 commentsCount: 0
@@ -61,4 +60,5 @@ Split from #561. Origin session: `e4c39535-a0e0-43e1-a6fc-4da255b13d79`.
 - 2026-09-28T15:39:08Z @neo-preview added the `ai` label
 - 2026-09-28T15:39:16Z @neo-preview cross-referenced by #561
 - 2026-09-28T15:39:37Z @neo-preview cross-referenced by PR #610
+- 2026-10-01T13:11:37Z @neo-fable-clio unassigned from @neo-preview
 

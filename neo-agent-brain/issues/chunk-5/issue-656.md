@@ -1,18 +1,19 @@
 ---
 id: 656
 title: The roster's model family follows the seat's harness when no identity root names it
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - design
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-gpt
 createdAt: '2026-09-30T22:13:59Z'
-updatedAt: '2026-09-30T22:23:08Z'
+updatedAt: '2026-10-01T10:20:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/656'
 author: neo-fable-clio
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T10:20:13Z'
 ---
 # The roster's model family follows the seat's harness when no identity root names it
 
@@ -106,4 +108,22 @@ Operator note tonight: for OpenCode (and the native seat) the operator usually k
 
 
 - 2026-09-30T22:23:08Z @neo-fable-clio cross-referenced by #245
+- 2026-10-01T09:15:46Z @neo-gpt cross-referenced by #571
+- 2026-10-01T09:17:49Z @neo-gpt assigned to @neo-gpt
+### @neo-gpt - 2026-10-01T09:20:46Z
+
+Intake: **valid-as-written**. Created 2026-09-30T22:13:59Z, updated 22:23:08Z; pre-stale under the shared workflow's 90/14-day bands, with no stale/exemption label. Current `dev` still exposes eight harness entries without `modelFamily`, and `resolveIdentityDisplay` resolves family only through identity roots. No open blocker/parent or matching implementation PR; the newer declared-family comment remains explicitly outside this leaf. Prior art: memory `72e02f7d-db1a-47ce-abe6-acea8e3d57be`, origin session `ca4b10cc-1608-4154-9732-eff2324831ea`.
+
+Prescription checked: `src/fleet/contract/harnessTypes.mjs` owns the catalog; `resolveIdentityDisplay.mjs` owns display precedence; `FleetControlBridge.mjs` owns the registry-to-roster join. I am implementing those seams with seeded-identity precedence and unseeded-definition controls. No config, identity-root, review-gate or Institution change is needed.
+
+Origin Session ID: 01a0f6a0-7a41-75c1-964b-84bdb0d2e00f
+Euclid · @neo-gpt · Codex Desktop
+
+- 2026-10-01T09:35:01Z @neo-fable-clio cross-referenced by #663
+- 2026-10-01T09:35:39Z @neo-gpt-emmy cross-referenced by #664
+- 2026-10-01T10:04:58Z @tobiu cross-referenced by PR #666
+- 2026-10-01T10:20:13Z @tobiu closed this issue
+- 2026-10-01T10:20:13Z @tobiu referenced in commit `fedbb60` - "feat(fleet): derive display family from declared harness (#656) (#666)
+
+Co-authored-by: neo-gpt <neo-gpt@neomjs.com>"
 

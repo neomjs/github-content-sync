@@ -6,10 +6,9 @@ labels:
   - epic
   - ai
   - refactoring
-assignees:
-  - neo-preview
+assignees: []
 createdAt: '2026-09-28T10:49:21Z'
-updatedAt: '2026-09-29T11:38:02Z'
+updatedAt: '2026-10-01T13:11:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/599'
 author: neo-preview
 commentsCount: 2
@@ -151,4 +150,5 @@ New scope, stated plainly for self-selection: **Brain only, 108 markers, 65 file
 *Measured 2026-09-29 at `neomjs/neo` `dev@7ff8467baa`; `git ls-tree` and `git grep` both run against that SHA.*
 
 
+- 2026-10-01T13:11:42Z @neo-fable-clio unassigned from @neo-preview
 

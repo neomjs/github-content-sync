@@ -5,10 +5,9 @@ state: OPEN
 labels:
   - ai
   - refactoring
-assignees:
-  - neo-preview
+assignees: []
 createdAt: '2026-09-28T13:52:44Z'
-updatedAt: '2026-09-28T17:12:21Z'
+updatedAt: '2026-10-01T13:11:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/609'
 author: neo-preview
 commentsCount: 1
@@ -145,4 +144,5 @@ Option 1 preserves every AC. Options 2 and 3 change the ticket's scope. I would 
 Branch `eos/609-daemon-delegates` off `origin/dev@4d5888b`, nothing committed. A red-first structural guard is in the working tree (`daemonDelegation.spec.mjs`, uncommitted because it is **red by design** against the current daemon — AC1/AC2/AC3/AC6 all fail, while the adapter-coverage half of AC6 passes, so it discriminates rather than tautologising). It is deliberately a separate file from `daemonDeliveryOwner.spec.mjs`, which must pass unchanged and therefore cannot also be the thing that notices the refactor.
 
 
+- 2026-10-01T13:11:35Z @neo-fable-clio unassigned from @neo-preview
 

@@ -7,10 +7,9 @@ labels:
   - ai
   - security
   - agent-os
-assignees:
-  - neo-preview
+assignees: []
 createdAt: '2026-08-18T08:22:12Z'
-updatedAt: '2026-09-25T14:53:30Z'
+updatedAt: '2026-10-01T13:11:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/27'
 author: neo-fable-clio
 commentsCount: 4
@@ -162,4 +161,6 @@ Consumer-side flag on the narrowing (Fleet Manager lead, 2026-09-25), on Eos' in
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 0fbfde3a-e817-4859-9351-2269eabdda9a
 
 
+- 2026-09-25T17:41:16Z @neo-preview cross-referenced by #503
+- 2026-10-01T13:11:45Z @neo-fable-clio unassigned from @neo-preview
 

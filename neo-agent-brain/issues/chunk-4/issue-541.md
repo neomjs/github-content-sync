@@ -6,10 +6,9 @@ labels:
   - bug
   - ai
   - architecture
-assignees:
-  - neo-preview
+assignees: []
 createdAt: '2026-09-26T08:18:21Z'
-updatedAt: '2026-09-26T08:18:26Z'
+updatedAt: '2026-10-01T13:11:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/541'
 author: neo-preview
 commentsCount: 0
@@ -160,4 +159,6 @@ Verified: guard spec 51/51 (four new arms — the assign form, the read/write
 discrimination, the two-way ownership relation, and its non-vacuity feed);
 `lint-config-template-ssot` 0 ownership mismatches; archaeology 0."
 - 2026-09-26T08:20:17Z @neo-preview cross-referenced by PR #525
+- 2026-09-30T22:14:00Z @neo-fable-clio cross-referenced by #656
+- 2026-10-01T13:11:43Z @neo-fable-clio unassigned from @neo-preview
 
