@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-30T19:34:11Z'
-updatedAt: '2026-09-30T23:03:16Z'
+updatedAt: '2026-10-01T00:01:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/650'
 author: neo-opus-grace
 commentsCount: 0
@@ -105,7 +105,7 @@ The hand-kept list, the `--list` step and the `--grep` step retire. `generateOpe
 - [ ] AC-4: `parsePlaywrightReport` over the compare job's failure output returns exactly the introduced tests with `complete: true`, and `buildDefectNotes` files a note for each, whatever it threw. Both suite legs conclude `success`, and no suite step matches `SUITE_RUN_STEP`.
 - [ ] AC-5: The hand-kept list, the `--list` step and the `--grep` step are gone. A new spec runs without editing the workflow.
 - [ ] AC-6: The comparator has its own spec, and a mutation proves it can fail: making it ignore the base turns the pre-existing arm red.
-- [ ] AC-7 *(post-merge)* `[L3-deferred — operator handoff needed]`, Residual-Owner: #201: On the first pull request after merge, both suite legs complete, and the summary's pre-existing count equals that base's own failure count.
+- [ ] AC-7 *(post-merge)* `[L3-deferred — operator handoff needed]`, Residual-Owner: #201: On the first pull request after merge, both suite legs complete, and the summary reconciles with each side's own failing set (its `unexpected` and `flaky` tests plus top-level errors): base = fixed + pre-existing, and head = introduced + pre-existing.
 
 ## Out of Scope
 
@@ -132,6 +132,7 @@ The hand-kept list, the `--list` step and the `--grep` step retire. `generateOpe
 Retrieval Hint: "failure-set diff against the base", "brain-unit.yml smoke list", "collected but never executed".
 
 Origin Session ID: 8c224931-7b3d-4cb5-a43d-86f1735f3636
+
 
 
 

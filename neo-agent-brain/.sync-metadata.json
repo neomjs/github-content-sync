@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-09-30T23:48:22.262Z",
-  "releasesLastFetched": "2026-09-30T23:48:19.771Z",
+  "lastSync": "2026-10-01T05:50:59.735Z",
+  "releasesLastFetched": "2026-10-01T05:50:59.127Z",
   "pushFailures": [],
   "issues": {
     "3": {
@@ -3760,8 +3760,8 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-5/issue-650.md",
       "closedAt": null,
-      "updatedAt": "2026-09-30T23:03:16Z",
-      "contentHash": "7365f92c22377696d04778165353a9dabd09b88c003644b7e9c6ccd1991550a7",
+      "updatedAt": "2026-10-01T00:01:09Z",
+      "contentHash": "a2e45b71b774036e3783709f868dd0863be574ea10476587180a492613b81049",
       "milestone": null,
       "commentsTotal": 0
     },
@@ -4026,8 +4026,8 @@
       "closedAt": null,
       "mergedAt": null,
       "milestone": null,
-      "updatedAt": "2026-09-30T23:41:32Z",
-      "contentHash": "7a17551c11929fd386102a1751b0d4da2edb93a68deeb5d679b5a2a8e3817c5c"
+      "updatedAt": "2026-10-01T00:01:11Z",
+      "contentHash": "1a6b6ecc8788c00ea00ddef53a4d5698805b150e1ffd2cbc550467e6f2ce5c5e"
     },
     "653": {
       "state": "OPEN",
