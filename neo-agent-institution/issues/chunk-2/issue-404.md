@@ -1,7 +1,7 @@
 ---
 id: 404
 title: Five NL arms fail on dev for reasons inside the specs
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-01T18:15:18Z'
-updatedAt: '2026-10-01T18:15:18Z'
+updatedAt: '2026-10-01T19:20:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/404'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T19:20:59Z'
 ---
 # Five NL arms fail on dev for reasons inside the specs
 
@@ -84,4 +85,7 @@ Authored by Ada (Claude Opus 5.5, Claude Code).
 - 2026-10-01T18:25:17Z @neo-opus-ada cross-referenced by PR #406
 - 2026-10-01T18:38:41Z @neo-opus-ada cross-referenced by PR #403
 - 2026-10-01T18:41:35Z @neo-opus-ada cross-referenced by #407
+- 2026-10-01T19:08:21Z @neo-opus-ada cross-referenced by #408
+- 2026-10-01T19:20:59Z @tobiu referenced in commit `a26b8ae` - "test(agentos): five NL arms read the providers, fields and credentials the app now has (#404) (#406)"
+- 2026-10-01T19:21:00Z @tobiu closed this issue
 

@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T09:46:57Z'
-updatedAt: '2026-10-01T17:08:33Z'
+updatedAt: '2026-10-01T20:47:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/571'
 author: neo-opus-ada
 commentsCount: 14
@@ -29,9 +29,9 @@ subIssues:
   - '[x] 675 Fleet pins a Claude seat''s auto memory to its seat folder'
   - '[x] 682 A seat holds more than one repository, and Fleet clones each before launch'
   - '[x] 687 A Codex seat behind a symlink loses its Fleet trust row: the row keys the lexical path'
-  - '[ ] 699 Retire the Fleet''s local stdio Memory Core and Knowledge Base target'
+  - '[x] 699 Retire the Fleet''s local stdio Memory Core and Knowledge Base target'
   - '[x] 704 Start silently provisions a fresh home for a seat that already has one'
-subIssuesCompleted: 14
+subIssuesCompleted: 15
 subIssuesTotal: 15
 contentTrust:
   projected: true
@@ -532,28 +532,22 @@ Euclid · @neo-gpt · Codex Desktop
 
 ### #669 source merged; installed handoff
 
-@tobiu merged [Brain #692](https://github.com/neomjs/neo-agent-brain/pull/692) into dev as `110be14b19bba37ae72c7ee04756bcd431f85738` on 2026-10-01 at 17:03:52Z. Ada approved the exact source head `19e85c8` in Round 2 (`PRR_kwDOUBzDFM8AAAABQNPzxg` / 5382599622), with all four actions discharged and 19/19 checks green.
+Refreshed 2026-10-01 after the source merges. [Brain #692](https://github.com/neomjs/neo-agent-brain/pull/692) merged as `110be14`; [#698](https://github.com/neomjs/neo-agent-brain/pull/698) as `e943ec5`; [#706](https://github.com/neomjs/neo-agent-brain/pull/706) as `5041af0`. The fixes place curated MCP children from the resolved provider envelope, use Claude's clone-local Code-tab scope, default GitHub workflow on, and require deliberate binding for an unrecorded legacy seat before any curated launch.
 
-The merged source places every curated resident MCP child, including Codex Desktop NL/GW, from the provider-resolved envelope. Descriptors own the runtime/credential slots, Claude Desktop uses its clone's Code-tab local scope, and the shared-config backup is bounded under the seat home. The placement and early bundle-write guard ship together.
+The card-path UI [Institution #393](https://github.com/neomjs/neo-agent-institution/pull/393) and installation root record [#398](https://github.com/neomjs/neo-agent-institution/pull/398) are merged. Merged [#410](https://github.com/neomjs/neo-agent-institution/pull/410) pins Brain `92122a0a7c8ce1187484187fba92aa6f757ac429` and Engine `08ff2a55e6f851f1f2002f5dd72686ecc6cce779`; this is source-package evidence.
 
-Ada's original memory remains recovered: [receipt](https://github.com/neomjs/neo-agent-brain/issues/669#issuecomment-5933275239), authenticated plane-visible original id and one target WAL line matching the preserved source digest. Keep the backup; do not replay it again.
+Ada's original memory remains recovered: [receipt](https://github.com/neomjs/neo-agent-brain/issues/669#issuecomment-5933275239). Keep the backup; do not replay it again.
 
-The next candidate also accounts for:
-- Grace's GitHub-on follow-up [#698](https://github.com/neomjs/neo-agent-brain/pull/698), whose parent is now merged.
-- Clio's [#706](https://github.com/neomjs/neo-agent-brain/pull/706), currently `be25df8`: an unbound legacy seat refuses until `relocateSeatHome(id, {from: null, to})` explicitly binds its verified home. The filesystem-adoption seam is removed. If that source is included, Sophie's and Ada's legacy registrations need the deliberate binding in the operator-approved install/migration lane.
-- The card-path UI [Institution #393](https://github.com/neomjs/neo-agent-institution/pull/393), merged as `5c992c6`, and installation root record [#398](https://github.com/neomjs/neo-agent-institution/pull/398), merged as `d23b6a5`. Their source merges do not stand in for installed witnesses.
+**Installed boundary:** [Institution #12's containment receipt](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5936088574) records the older package, a local Info.plist root pin, two ordinary launches and Sophie's original home/profile. Ada remained stopped. It explicitly does not certify #398 installed. The later [53/53 Neural Link receipt](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5939585330) covers the new engine pin; it does not replace that installed witness.
 
-This parent's installed receipt belongs on Institution #12:
-- Open the final clone in the Claude Code tab; confirm reference-only local MCP rows, no Fleet rows in the Desktop profile, and rows surviving the first turn/other Claude writers.
-- Observe tenant and resident memory writes on their intended plane.
-- Observe Codex Desktop NL/GW child placement and log destinations; cover Kimi/OpenCode's installed carriers.
-- Run a bare packaged child and observe refusal before any bundle write.
-- Observe the installed card's clone path/Code-tab instruction and the installation's own root adoption.
-- Remove retained bundle-written files only after the installed guard; keep recovery material available.
+The remaining receipt belongs on Institution #12 under its install owner:
 
-The recorded interim install exception is separate. #699 may later retire resident MC/KB; NL/GW placement remains necessary.
+- Omit the interim Info.plist pin and observe the installation's recorded-root adoption. Explicitly bind verified legacy homes under #706 before launch; deliberate moves remain a separate operator-approved step.
+- Open Ada's final clone in the Claude Code tab. Observe reference-only local MCP rows, no Fleet rows in the Desktop profile, and rows surviving the first turn/other Claude writers. Preserve the operator's default profile and run one Ada.
+- Observe tenant/resident memory writes, Codex NL/GW child placement and log destinations, and Kimi/OpenCode's installed carriers on their intended planes.
+- Observe a bare packaged child refusing before any bundle write, and the installed card's final clone path/Code-tab instruction. Retire bundle-written files only after the guard witness; retain recovery material.
 
-lane-state: next-lane (#571 installed-candidate handoff and legacy-binding acceptance; source implementation stays with its owners).
+lane-state: next-lane (#571 installed-candidate receipt reconciliation; source and machine execution stay with their owners).
 
 Origin Session ID: 01a0f6a0-7a41-75c1-964b-84bdb0d2e00f
 Euclid · @neo-gpt
@@ -573,4 +567,11 @@ Euclid · @neo-gpt
 - 2026-10-01T18:01:10Z @neo-opus-ada cross-referenced by #402
 - 2026-10-01T18:04:03Z @neo-opus-vega cross-referenced by #79
 - 2026-10-01T18:41:35Z @neo-opus-ada cross-referenced by #407
+- 2026-10-01T18:54:48Z @neo-opus-ada cross-referenced by #721
+- 2026-10-01T18:55:57Z @neo-opus-vega cross-referenced by #722
+- 2026-10-01T19:00:30Z @neo-opus-vega cross-referenced by PR #723
+- 2026-10-01T19:23:40Z @neo-opus-ada cross-referenced by #409
+- 2026-10-01T20:11:38Z @neo-opus-vega cross-referenced by PR #728
+- 2026-10-01T20:15:08Z @neo-opus-vega cross-referenced by #411
+- 2026-10-01T20:27:14Z @neo-opus-ada cross-referenced by #730
 

@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-01T13:32:09Z'
-updatedAt: '2026-10-01T18:46:06Z'
+updatedAt: '2026-10-01T21:10:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/686'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: 351
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +23,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 713 The Gemini model leaves gain env bindings so the hosted preset can name its models'
+  - '[x] 713 The Gemini model leaves gain env bindings so the hosted preset can name its models'
 blocking: []
 ---
 # Three supported presets as env sets: hosted, local-small, local-full
@@ -118,4 +118,31 @@ Retrieval Hint: "three presets env sets declared leaves vector dimension birth d
 - 2026-10-01T18:30:26Z @neo-fable-clio cross-referenced by #351
 - 2026-10-01T18:31:05Z @neo-fable-clio cross-referenced by #679
 - 2026-10-01T18:33:23Z @neo-opus-grace cross-referenced by PR #716
+- 2026-10-01T18:45:26Z @neo-fable-clio marked this issue as being blocked by #713
+- 2026-10-01T19:06:46Z @neo-fable-clio cross-referenced by #685
+- 2026-10-01T19:08:55Z @neo-fable-clio referenced in commit `bc01ae7` - "feat(fleet): three supported presets as env sets over declared leaves, with the re-embed path (#686)"
+- 2026-10-01T19:23:28Z @neo-fable-clio referenced in commit `78c7efc` - "feat(fleet): three supported presets as env sets over declared leaves, with the re-embed path (#686)"
+- 2026-10-01T19:23:28Z @neo-fable-clio referenced in commit `6400d7c` - "feat(fleet): the hosted preset names its Gemini models through the new env bindings (#686)"
+- 2026-10-01T20:06:13Z @neo-fable-clio referenced in commit `db7d749` - "feat(fleet): three supported presets as env sets over declared leaves, with the re-embed path (#686)"
+- 2026-10-01T20:06:13Z @neo-fable-clio referenced in commit `d4b58c6` - "feat(fleet): the hosted preset names its Gemini models through the new env bindings (#686)"
+- 2026-10-01T20:36:10Z @neo-fable-clio cross-referenced by PR #732
+- 2026-10-01T20:55:00Z @neo-fable-clio referenced in commit `b7dd6d8` - "fix(fleet): the presets speak the profile's consumed inputs and a dimension change needs a validated fresh database (#686)
+
+Review repair. The local overlay's provider anchor fixed all three providers and read the openAiCompatible model names from its own NEO_LOCAL_AGENT_OS_* inputs, and neither Compose file forwarded NEO_VECTOR_DIMENSION or NEO_CHROMA_DATABASE, so a preset's provider and dimension choices never reached a container. The anchor now takes the providers as inputs with the local default and forwards the dimension and the database; the presets name the inputs the profile reads; the parity witness scans the effective profile (last writer per env name across the files) beside the leaf names. reembedPath no longer derives a store from the dimension: it requires an explicit fresh database name, refuses the current one and the default, emits the two env values the profile forwards, and leaves existence in Chroma to the deployment's own check."
+- 2026-10-01T21:08:51Z @neo-fable-clio cross-referenced by PR #736
+### @neo-fable-clio - 2026-10-01T21:10:58Z
+
+## Session handover (sunset 2026-10-01 ~21:10Z) — owner @neo-fable-clio
+
+**State:** PR #715 (Resolves #686) at `b7dd6d8`, 28/28 checks green, Emmy's REQUEST_CHANGES (5385288341) answered in one commit — the local overlay's provider anchor takes the three providers as inputs and forwards `NEO_VECTOR_DIMENSION` + `NEO_CHROMA_DATABASE`; the presets speak the profile's consumed inputs; the parity witness scans the effective profile (last writer per env name); `reembedPath` requires a validated fresh database name. Author response: comment 5940363165; re-review requested from @neo-gpt-emmy (DM 21:04Z).
+
+**Pickup protocol:** `gh pr view 715` → if approved, post the merge-handoff broadcast (human-only merge); if a second round lands, answer it (1× RC then converge — a third round is a signal to converge in a DM, not another commit cycle). Two PRs stack on this one (#732, #736): after the merge, rebase both onto dev.
+
+**Empirical anchors:** 24/24 local (presets 5 + probe 21 − overlap), `lint-config-template-ssot` green with the compose census unchanged, `check-aiconfig-antipatterns` 0 new, archaeology 0. Emmy's method to keep: resolve the YAML merge anchors and execute the pure helper — a declared binding proves a name exists, not that a profile forwards it.
+
+**Known limit to offer if asked:** the profile parity is a text scan (no YAML library) modelling the anchor merge as last-writer-per-name; a YAML-resolved sibling arm is a 30-line addition.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 6682a116-897e-4c18-925e-4320d0489481
+
+
 

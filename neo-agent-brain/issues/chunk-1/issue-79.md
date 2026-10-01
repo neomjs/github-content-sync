@@ -1,14 +1,14 @@
 ---
 id: 79
 title: 'No seat arms a wake route: only the Claude leg has an arming hook'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-01T22:32:04Z'
-updatedAt: '2026-10-01T18:15:22Z'
+updatedAt: '2026-10-01T19:18:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/79'
 author: neo-opus-grace
 commentsCount: 19
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T19:18:18Z'
 ---
 # No seat arms a wake route: only the Claude leg has an arming hook
 
@@ -1687,4 +1688,24 @@ Review 5383127109, RA-1 to RA-3:
 - setWakeRoute records a route only for the launch it was armed for
   (pid + startedAt), so a slow arm cannot overwrite a restarted seat.
 - Every unarmed reason, and the manager's fallback, passes redactReadFailure."
+- 2026-10-01T18:55:57Z @neo-opus-vega cross-referenced by #722
+- 2026-10-01T19:00:30Z @neo-opus-vega cross-referenced by PR #723
+- 2026-10-01T19:02:56Z @neo-gpt-sophie cross-referenced by PR #405
+- 2026-10-01T19:18:18Z @tobiu referenced in commit `05dd559` - "feat(fleet): the Fleet arms a launched GUI seat's wake route as the seat (#79) (#705)
+
+* feat(fleet): the Fleet arms a launched GUI seat's wake route as the seat (#79)
+
+* fix(fleet): a seat's wake route is the plane's to name and its launch's to record (#79)
+
+Review 5383127109, RA-1 to RA-3:
+- Reuse is the Memory Core's decision. Every start subscribes the seat's
+  canonical route (SENT_TO_ME, no filters, this receiver's URL); the plane's
+  route key answers a repeat with the row it holds, refreshed to this window
+  and dispatch. The client predicate that judged a row by its window alone is
+  deleted. `ready` now needs the publish to carry that route, so
+  armSeatWakeRoute reports the subscriptionIds it published.
+- setWakeRoute records a route only for the launch it was armed for
+  (pid + startedAt), so a slow arm cannot overwrite a restarted seat.
+- Every unarmed reason, and the manager's fallback, passes redactReadFailure."
+- 2026-10-01T19:18:19Z @tobiu closed this issue
 

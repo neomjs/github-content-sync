@@ -1,7 +1,7 @@
 ---
 id: 685
 title: The wizard's placement probe reads host and guest RAM budgets apart
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-01T13:31:24Z'
-updatedAt: '2026-10-01T17:12:16Z'
+updatedAt: '2026-10-01T20:02:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/685'
 author: neo-fable-clio
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T20:02:58Z'
 ---
 # The wizard's placement probe reads host and guest RAM budgets apart
 
@@ -53,13 +54,14 @@ Measured instruments on this host (2026-10-01, names only, no values that identi
 ## The Fix
 
 1. **`probePlacement({target, readers})`** — one module beside #679's recipe/record module (same placement pre-flight; `ai/services/fleet/` is the sibling-pattern candidate, a new `ai/services/setup/` runs the full structural pre-flight in the PR). Output, one object per probed machine:
-   `{host: {totalBytes, consumers: [{name, bytes, source}], availableBytes, pressure: 'ok' | 'swapping' | 'unknown', uncertainty: [...]}, guest: {backend, capBytes, residencyBytes, availableBytes, reservationPolicy} | null, disk: {rootFreeBytes}, cores, accelerator: {kind, memoryBytes} | null, runningPlane: {project, ports, revision} | null, probedAt, target}`.
-   - **host.availableBytes = total − Σ consumers** (OS floor, harnesses, resident models, the VM's host reservation), **each consumer once**; a cap never appears in the sum.
-   - **guest.availableBytes = cap − residency** where the plane will run in a VM; `null` where there is no VM.
+   `{host: {totalBytes, consumers: [{name, bytes, source, population}], containers, availableBytes, complete, pressure: 'ok' | 'swapping' | 'unknown'}, guest: {backend, capBytes, cores, guestOs, residencyBytes, availableBytes, reservationPolicy, complete} | null, disk: {rootFreeBytes}, cores, accelerator: {kind, memoryBytes} | null, runningPlane: {project, status, ports, configFiles} | null, observed: {<reader>: Boolean}, uncertainty: [{reader, reason}], probedAt, target}` *(shape reconciled 2026-10-01 with PR #707 on review RA-4: `uncertainty` and `observed` are top-level, keyed by reader; `runningPlane` carries the compose status and config files, not a revision — the plane's revision is the deployment-state projection's, never the probe's)*.
+   - **host.availableBytes = total − Σ consumers** (OS floor, harnesses, resident models, the VM's host reservation), **each consumer once**; a cap never appears in the sum. **One owner per process population:** the host inventory comes back partitioned (the VM's own processes, each model server, everything else); the VM population is replaced by the observed reservation only when a VM topology was observed, a model server's resident set only by an inventory that actually lists its weights, and container processes on a host-native engine are already in the inventory and never added a second time.
+   - **guest.availableBytes = cap − residency** where the plane will run in a VM; `guest: null` where the engine was observed running on the host itself. An unobserved topology is neither.
    - **reservationPolicy** names what was done when the VM's host reservation was unobservable (e.g. `'vm-reservation=residency+2GiB'`), or `uncertainty` carries the reason — never a silent number.
-   - **pressure: 'swapping'** when the host reports swap in use or compressed memory above a named share; the probe then refuses to call any local preset a fit, whatever the arithmetic says.
-2. **`fitsPreset(probe, presetWorkload)`** — pure: compares the preset's declared workload (`{planeIdleBytes, planePeakBytes, modelsBytes, vmCapRecommendedBytes}` — the presets leaf's data) against BOTH budgets and returns `{fits, margins: {host, guest}, reasons}`. With no preset data it returns `null`, never a verdict.
-3. **Backend readers** are injected (`readers: {totalmem, vmInfo, containerStats, processRss, loadedModels, composeLs, statfs}`) so every arm is unit-testable with fixtures and the production readers are thin shells over the commands above; a reader that fails reports `uncertainty`, never throws the probe.
+   - **complete** (host and guest): false when any reader the budget is computed from failed or answered an unusable shape; an incomplete budget has `availableBytes: null` and **never yields an affirmative fit**.
+   - **pressure: 'swapping'** when the host reports swap in use or compressed memory above a named share (the one named classifier in the module; preset sizing thresholds are #686's data); the probe then refuses to call any local preset a fit, whatever the arithmetic says.
+2. **`fitsPreset(probe, presetWorkload)`** — pure: compares the preset's declared workload (`{planeIdleBytes, planePeakBytes, modelsBytes, vmCapRecommendedBytes}` — the presets leaf's data) against BOTH budgets and returns `{fits, margins: {host, guest}, reasons}`. The workload is **additional demand** of a new plane: the host backs the plane's peak and its models with or without a VM (VM memory is host memory), the guest must hold the same peak under its cap; raising the cap alone never moves the host margin. With no preset data it returns `null`, never a verdict; a malformed workload or an incomplete budget is a refusal, never a zero-demand fit.
+3. **Backend readers** are injected (`readers: {totalmem, cores, hostUse, vmInfo, containerStats, vmReservation (optional), loadedModels, swap, composeLs, composePorts, statfs, accelerator}`; `createDefaultReaders({run})` builds the production shells over an injectable command runner) so every arm is unit-testable with fixtures and the production readers run on fixture command output; a reader that fails reports `uncertainty` and marks its budget incomplete, never throws the probe.
 4. **Remote targets**: the probe never guesses a machine it does not run on — the CLI (#679) runs it ON the target (`--probe --json`) and the cockpit shows that JSON (`target.kind: 'local' | 'remote-json'`); a cloud placement without a probe result is marked `unprobed` in the recipe's placement step.
 5. **`runningPlane`** detection feeds the recipe's placement step: a canonical plane found → Connect is offered first; a second plane is the advanced choice sized against `guest.availableBytes`.
 
@@ -67,9 +69,9 @@ Measured instruments on this host (2026-10-01, names only, no values that identi
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `probePlacement()` output shape | D#18965 OQ3 disposition (11:01:27Z body); epic point 3 | two budgets, consumers listed once each, pressure + uncertainty explicit | a failed reader → `uncertainty` entry, budget still computed from what was read | module JSDoc | unit: Euclid's fixture → host 27.5 GiB / guest 29.5 GiB |
+| `probePlacement()` output shape | D#18965 OQ3 disposition (11:01:27Z body); epic point 3 | two budgets, consumers listed once each, pressure + uncertainty explicit | a failed or unusable reader → `uncertainty` entry and the budget it feeds marked `complete: false` with `availableBytes: null`; an incomplete budget never yields an affirmative fit | module JSDoc | unit: the counterexample fixture → host 27.5 GiB / guest 29.5 GiB; a failed model inventory → no fit |
 | the host budget rule | OQ3: "a cap is a limit, never consumption" | `total − Σ consumers`, each once; the VM counted by its host reservation only | unobservable reservation → named policy or uncertainty | JSDoc | unit: raising only the VM cap leaves `host.availableBytes` unchanged |
-| the guest budget rule | OQ3 | `cap − residency`; `null` without a VM | — | JSDoc | unit: Linux fixture → `guest: null`, containers in `host.consumers` |
+| the guest budget rule | OQ3 | `cap − residency`; `null` where the engine was observed on the host itself; an unobserved topology is neither | — | JSDoc | unit: the native-engine fixture → `guest: null`, the container stats listed under `host.containers` for display only, their processes already counted once in the host inventory |
 | `pressure` | the 2026-09-23 specimen (127 GB used, 17 GB swap) | `'swapping'` refuses every local fit | `'unknown'` when swap/compression are unreadable | JSDoc | unit: the specimen fixture → no local preset fits |
 | `fitsPreset()` | the presets leaf's declared workloads | pure comparison against both budgets | no preset data → `null` | JSDoc | unit: a 64 GiB fixture fits local-full, a 32 GiB fixture only hosted |
 | `runningPlane` | epic point 3 (one plane per host) | canonical compose project + ports detected → Connect first | compose unreadable → `null` + uncertainty | JSDoc + `SharedDeployment.md` pointer | unit: injected `compose ls` fixture |
@@ -83,7 +85,7 @@ Measured instruments on this host (2026-10-01, names only, no values that identi
 - [ ] AC-5 Unobservable VM reservation: the output names the policy applied or carries the uncertainty; a snapshot assertion fails on any silent number. Unit.
 - [ ] AC-6 `runningPlane`: an injected `compose ls` fixture with the canonical project → `runningPlane` set with ports; the recipe's placement step (#679) consumes it to offer Connect first. Unit here; the step wiring in #679.
 - [ ] AC-7 Without preset data `fitsPreset()` returns `null`; with the presets leaf's table a 64 GiB fixture fits `local-full` and a 32 GiB fixture fits only `hosted`. Unit.
-- [ ] AC-8 *(post-merge, first outside host)* the probe's JSON recorded on the epic; the density count unaffected (one question, no manual action).
+- [ ] AC-8 `[L4-deferred — operator handoff needed; Residual-Owner: neomjs/neo-agent-institution#351]` *(post-merge, first outside host)* the probe's JSON recorded on the epic; the density count unaffected (one question, no manual action). This observation describes the target machine for the recipe's placement step and is kept apart from the plane's readiness (ADR 0041 owners).
 
 ## Out of Scope
 
@@ -108,6 +110,8 @@ Retrieval Hint: "placement probe two budgets host guest VM cap residency swappin
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 6682a116-897e-4c18-925e-4320d0489481
 
+
+
 ## Timeline
 
 - 2026-10-01T13:31:27Z @neo-fable-clio added the `enhancement` label
@@ -126,4 +130,14 @@ Retrieval Hint: "placement probe two budgets host guest VM cap residency swappin
 - 2026-10-01T18:25:04Z @neo-fable-clio cross-referenced by PR #715
 - 2026-10-01T18:30:26Z @neo-fable-clio cross-referenced by #351
 - 2026-10-01T18:31:05Z @neo-fable-clio cross-referenced by #679
+- 2026-10-01T19:07:28Z @neo-fable-clio referenced in commit `e8516ad` - "feat(fleet): the placement probe reads host and guest RAM budgets apart (#685)"
+- 2026-10-01T19:07:28Z @neo-fable-clio referenced in commit `9c1bda2` - "feat(fleet): the probe refuses a fit on an incomplete budget, counts each process population once, and backs guest growth on the host (#685)"
+- 2026-10-01T19:23:27Z @neo-fable-clio referenced in commit `8c41e84` - "feat(fleet): the placement probe reads host and guest RAM budgets apart (#685)"
+- 2026-10-01T19:23:27Z @neo-fable-clio referenced in commit `ee085c1` - "feat(fleet): the probe refuses a fit on an incomplete budget, counts each process population once, and backs guest growth on the host (#685)"
+- 2026-10-01T20:02:58Z @tobiu referenced in commit `78366b7` - "feat(fleet): the placement probe reads host and guest RAM budgets apart (#685) (#707)
+
+* feat(fleet): the placement probe reads host and guest RAM budgets apart (#685)
+
+* feat(fleet): the probe refuses a fit on an incomplete budget, counts each process population once, and backs guest growth on the host (#685)"
+- 2026-10-01T20:02:59Z @tobiu closed this issue
 

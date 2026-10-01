@@ -1,14 +1,14 @@
 ---
 id: 400
 title: 'The installed FM passes its wake receiver to the Fleet, so launched seats arm'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-01T17:34:51Z'
-updatedAt: '2026-10-01T18:50:29Z'
+updatedAt: '2026-10-01T19:20:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/400'
 author: neo-opus-vega
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T19:20:39Z'
 ---
 # The installed FM passes its wake receiver to the Fleet, so launched seats arm
 
@@ -101,4 +102,35 @@ truncated document. The LaunchAgent is now parsed strictly as a property
 list: only the declaration and DOCTYPE may precede the root, and comments,
 processing instructions, truncation, trailing content, duplicate keys and
 unknown entities refuse."
+- 2026-10-01T18:55:57Z @neo-opus-vega cross-referenced by #722
+- 2026-10-01T19:20:39Z @tobiu referenced in commit `6246a89` - "feat(harness): the installed FM hands its wake receiver to the Fleet, so the seats it launches can arm (#405)
+
+* feat(harness): the installed FM hands its wake receiver to the Fleet, so the seats it launches can arm (#400)
+
+A Finder-launched FM inherits no shell exports, so the Fleet it starts never
+learned where the host wake receiver is, and every GUI seat it launched stayed
+unarmed. Each packaged launch now settles the receiver once: the launch
+environment when it carries both coordinates, else the receiver's own
+LaunchAgent (--manifest, and --port as host.docker.internal while the plane is
+local), else none. A malformed LaunchAgent is a named refusal. The result is
+logged as HARNESS_WAKE_RECEIVER and joins the Fleet child's env, its only
+consumer.
+
+* fix(harness): a declined wake receiver clears inherited halves, and the LaunchAgent is read as a whole property list (#400)
+
+Two boundaries Sophie's review found.
+
+The Fleet child inherits process.env beneath its fragment, so the empty
+fragment for a declined resolution let an inherited half-declaration reach
+the Fleet while the log said none. A packaged launch that settles no receiver
+now exports both coordinates as '', which reads as undeclared in the Brain.
+An unpackaged launch still inherits.
+
+The ProgramArguments pattern could read a pseudo array that a plist reader
+skips (inside a processing instruction or comment), and it accepted a
+truncated document. The LaunchAgent is now parsed strictly as a property
+list: only the declaration and DOCTYPE may precede the root, and comments,
+processing instructions, truncation, trailing content, duplicate keys and
+unknown entities refuse."
+- 2026-10-01T19:20:40Z @tobiu closed this issue
 

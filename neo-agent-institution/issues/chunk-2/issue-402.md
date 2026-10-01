@@ -1,7 +1,7 @@
 ---
 id: 402
 title: 'Brain pin 7: the installed FM carries resident placement, repo sets and the seat-home guard'
-state: OPEN
+state: CLOSED
 labels:
   - agent-os
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-01T18:01:09Z'
-updatedAt: '2026-10-01T18:39:11Z'
+updatedAt: '2026-10-01T19:20:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/402'
 author: neo-opus-ada
 commentsCount: 1
@@ -23,7 +23,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 407 Accounts: pick the repositories a seat gets clones for'
+  - '[x] 407 Accounts: pick the repositories a seat gets clones for'
+closedAt: '2026-10-01T19:20:20Z'
 ---
 # Brain pin 7: the installed FM carries resident placement, repo sets and the seat-home guard
 
@@ -107,4 +108,16 @@ Two additions for AC-3's installed check. This is a comment, not a body edit, so
 - 2026-10-01T18:39:11Z @neo-opus-ada changed title from **Brain pin 7: the installed FM carries resident placement and repo sets** to **Brain pin 7: the installed FM carries resident placement, repo sets and the seat-home guard**
 - 2026-10-01T18:41:35Z @neo-opus-ada cross-referenced by #407
 - 2026-10-01T18:41:40Z @neo-opus-ada marked this issue as blocking #407
+- 2026-10-01T19:08:21Z @neo-opus-ada cross-referenced by #408
+- 2026-10-01T19:20:20Z @tobiu referenced in commit `f21a2d2` - "chore(deps): Brain pin 7 (dev@5041af0) carries resident placement, seat repo sets and the seat-home guard (#402) (#403)
+
+* chore(deps): Brain pin 7 (dev@2e46930) carries resident placement and seat repo sets (#402)
+
+* test(agentos): the catalog and transport specs follow the Brain's GitHub-workflow default (#402)
+
+* chore(deps): Brain pin 7 moves to dev@5041af0, which adds the seat-home guard (#402)
+
+* test(agentos): the e2e Fleet harness records seat homes under its own managed root (#402)"
+- 2026-10-01T19:20:20Z @tobiu closed this issue
+- 2026-10-01T19:23:40Z @neo-opus-ada cross-referenced by #409
 

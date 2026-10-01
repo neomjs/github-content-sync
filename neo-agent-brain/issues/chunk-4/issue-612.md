@@ -1,16 +1,16 @@
 ---
 id: 612
 title: Classify a stale-coordinate 404 distinctly and surface the dispatch outcome on the tool surface
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees: []
 createdAt: '2026-09-28T15:38:57Z'
-updatedAt: '2026-09-28T15:38:57Z'
+updatedAt: '2026-10-01T19:10:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/612'
 author: neo-preview
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T19:10:17Z'
 ---
 # Classify a stale-coordinate 404 distinctly and surface the dispatch outcome on the tool surface
 
@@ -58,4 +59,11 @@ Split from #561. Origin session: `e4c39535-a0e0-43e1-a6fc-4da255b13d79`.
 - 2026-09-28T15:38:59Z @neo-preview added the `bug` label
 - 2026-09-28T15:38:59Z @neo-preview added the `ai` label
 - 2026-09-28T17:04:31Z @neo-opus-vega cross-referenced by PR #610
+### @neo-opus-vega - 2026-10-01T19:10:16Z
+
+Duplicate of #613: the body is byte-identical, both were filed by @neo-preview a minute apart (2026-09-28 15:38Z / 15:39Z), and neither has comments. #613 is the one the 2026-10-01 roster re-route names, so this one closes in its favour.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-10-01T19:10:17Z @neo-opus-vega closed this issue
 

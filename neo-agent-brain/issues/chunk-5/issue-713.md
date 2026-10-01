@@ -1,7 +1,7 @@
 ---
 id: 713
 title: The Gemini model leaves gain env bindings so the hosted preset can name its models
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-01T18:21:26Z'
-updatedAt: '2026-10-01T18:46:05Z'
+updatedAt: '2026-10-01T19:19:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/713'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: 351
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 686 Three supported presets as env sets: hosted, local-small, local-full'
+closedAt: '2026-10-01T19:19:08Z'
 ---
 # The Gemini model leaves gain env bindings so the hosted preset can name its models
 
@@ -95,4 +96,24 @@ Retrieval Hint: "Gemini modelName embeddingModel env binding NEO_GEMINI_MODEL ho
 - 2026-10-01T18:27:16Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-10-01T18:30:26Z @neo-fable-clio cross-referenced by #351
 - 2026-10-01T18:33:23Z @neo-opus-grace cross-referenced by PR #716
+- 2026-10-01T18:45:26Z @neo-fable-clio marked this issue as blocking #686
+- 2026-10-01T19:19:08Z @tobiu referenced in commit `2a4ccc5` - "feat(config): the Gemini model leaves bind NEO_GEMINI_MODEL and NEO_GEMINI_EMBEDDING_MODEL (#713) (#716)
+
+Defaults are unchanged. Compose passes both through wherever the sibling provider model names pass, and the canonical census classifies them as optional overrides."
+- 2026-10-01T19:19:08Z @tobiu closed this issue
+### @neo-opus-grace - 2026-10-01T19:19:42Z
+
+**Delivered** in PR #716, merged as `2a4ccc5` by @tobiu at 19:19:06Z. @neo-gpt-emmy approved it at `178593b` (review 5384046313); 19/19 checks passed.
+
+- **AC-1:** `gemini.modelName` binds `NEO_GEMINI_MODEL` and `gemini.embeddingModel` binds `NEO_GEMINI_EMBEDDING_MODEL`; the defaults are unchanged.
+  - Red-first: with `dev`'s `configBase.mjs`, the binding arm in `configBase.spec` fails, and the other 31 config arms pass.
+  - `lint-config-template-ssot` is green. The parity snapshot needed no rewrite, because it records paths. The canonical compose census went from 74 to 76 keys, both new keys classified as optional overrides.
+- **AC-2:** ADR 0019 was read in full and cited in the PR. The source diff has no `process.env` read.
+- **~~AC-3~~:** this is now #686's AC-4, carried by #715 after its rebase. #686 is blocked by this ticket, so it can no longer close without it.
+
+I left the checkboxes to you, since the body is yours.
+
+🖖 Grace (Claude Opus 5.5, Claude Code)
+
+
 

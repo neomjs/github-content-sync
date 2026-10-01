@@ -1,7 +1,7 @@
 ---
 id: 710
 title: 'A seat''s repository records its forge, and a GitLab slug may name nested groups'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-01T17:52:14Z'
-updatedAt: '2026-10-01T17:52:16Z'
+updatedAt: '2026-10-01T21:06:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/710'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 712 A seat''s PAT is presented only to the forge host it was stored for'
+closedAt: '2026-10-01T21:06:18Z'
 ---
 # A seat's repository records its forge, and a GitLab slug may name nested groups
 
@@ -52,6 +53,19 @@ A GitLab seat cannot be registered today: a seat's repository is a two-segment `
 2. A GitLab slug may have more than two segments. Each one passes `assertSeatSegment`, segment 0 is checked against `RESERVED_OWNERS`, and the checkout path mirrors the segments under `<root>/<agentId>/`. A GitHub slug stays `owner/repo`.
 3. A GitLab entry needs an explicit clone URL naming its path; only GitHub keeps the default.
 4. `setRepo` and `setRepos` refuse a seat set whose derived checkout paths collide, meaning one equals or contains another, across the working repository and the extras and across forges.
+
+## Contract Ledger
+
+*Backfilled 2026-10-01 by the author, for RA-2 of @neo-gpt's review of PR #711. Clone authentication (#712) and the GitLab workflow server's injection (#727) are separate leaves with their own ledgers.*
+
+| Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| `setRepo({id, repoSlug, cloneUrl, forge})` / `setRepos({id, repos: [{repoSlug, cloneUrl, forge}]})` registration fields | `FleetManager.repoCoordinates` | `forge` is `'github'` (default) or `'gitlab'`; any other value refuses | omitted: GitHub | `setRepo` / `setRepos` JSDoc | `FleetManager.spec` GitLab arm |
+| `metadata.repo` / `metadata.repos[]` serialization | the registry row | GitHub entries keep today's `{repoSlug, cloneUrl}`, with no `forge` written; GitLab entries add `forge: 'gitlab'`; readers treat an absent forge as GitHub | absent: GitHub | same | same |
+| Per-forge depth | `repoCoordinates` | GitHub: exactly `<owner>/<repo>`. GitLab: two or more segments (nested groups) | none (refusal) | same | same |
+| Clone URL | `repoCoordinates` | A plain string with no query, fragment or whitespace, naming the slug as an https, ssh or SCP-like remote with no credentials. GitLab must name one; GitHub defaults to `https://github.com/<slug>.git`. Refusals never echo the URL | GitHub default only | `repoCoordinates` JSDoc | `FleetManager.spec` (query, fragment, array and path-mismatch controls) |
+| Checkout path helper | `deriveAgentRepoPath` / `assertRepoSlug` | Any validated depth of two segments or more: forge-independent path math, under `<root>/<agentId>/`; segment 0 never a `RESERVED_OWNERS` key | none (refusal) | module JSDoc | `deriveAgentRepoPath.spec` |
+| Checkout collisions | `assertNoCheckoutCollision` | Across the working repository and the extras, on either forge, no derived path equals or contains another; refused before any registry write | none (refusal) | function JSDoc | `FleetManager.spec` collision arm |
 
 ## Acceptance Criteria
 
@@ -89,6 +103,7 @@ Retrieval Hint: "Fleet repository forge github gitlab nested group slug checkout
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
 
+
 ## Timeline
 
 - 2026-10-01T17:52:16Z @neo-opus-grace added the `enhancement` label
@@ -101,4 +116,24 @@ Retrieval Hint: "Fleet repository forge github gitlab nested group slug checkout
 - 2026-10-01T18:10:42Z @neo-opus-grace marked this issue as blocking #712
 - 2026-10-01T18:24:47Z @neo-opus-grace cross-referenced by #684
 - 2026-10-01T18:41:35Z @neo-opus-ada cross-referenced by #407
+- 2026-10-01T18:54:48Z @neo-opus-ada cross-referenced by #721
+- 2026-10-01T19:31:34Z @neo-opus-grace cross-referenced by #725
+- 2026-10-01T19:49:32Z @neo-opus-grace referenced in commit `100c535` - "feat(fleet): a seat's repository records its forge, and a GitLab slug may name nested groups (#710)
+
+repoCoordinates takes forge (github default, never written; gitlab recorded): GitHub stays exactly owner/repo with its github.com default, GitLab may name nested groups and must name its clone URL. Path derivation accepts any validated depth, so callers are unchanged. setRepo and setRepos refuse a seat set whose checkouts would share a path or nest, across forges."
+- 2026-10-01T20:10:26Z @neo-opus-grace cross-referenced by #727
+- 2026-10-01T20:23:48Z @neo-opus-grace cross-referenced by #729
+- 2026-10-01T20:32:13Z @neo-opus-grace referenced in commit `92414aa` - "fix(fleet): a repository's clone URL is a plain remote string, so a query or fragment cannot stand in for its path (#710)
+
+Euclid's RA-1 on PR #711: the remote matcher read query and fragment text as part of the host, and RegExp.test coerced an array. repoCoordinates now refuses a non-string or a URL carrying a query, fragment or whitespace before matching."
+- 2026-10-01T21:06:18Z @tobiu referenced in commit `425667d` - "feat(fleet): a seat's repository records its forge, and a GitLab slug may name nested groups (#710) (#711)
+
+* feat(fleet): a seat's repository records its forge, and a GitLab slug may name nested groups (#710)
+
+repoCoordinates takes forge (github default, never written; gitlab recorded): GitHub stays exactly owner/repo with its github.com default, GitLab may name nested groups and must name its clone URL. Path derivation accepts any validated depth, so callers are unchanged. setRepo and setRepos refuse a seat set whose checkouts would share a path or nest, across forges.
+
+* fix(fleet): a repository's clone URL is a plain remote string, so a query or fragment cannot stand in for its path (#710)
+
+Euclid's RA-1 on PR #711: the remote matcher read query and fragment text as part of the host, and RegExp.test coerced an array. repoCoordinates now refuses a non-string or a URL carrying a query, fragment or whitespace before matching."
+- 2026-10-01T21:06:18Z @tobiu closed this issue
 

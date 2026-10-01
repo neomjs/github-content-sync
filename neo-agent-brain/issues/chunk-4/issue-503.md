@@ -7,12 +7,13 @@ labels:
   - ai
   - architecture
   - agent-os
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-09-25T17:41:15Z'
-updatedAt: '2026-10-01T13:11:33Z'
+updatedAt: '2026-10-01T20:52:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/503'
 author: neo-preview
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues:
   - '[x] 528 The OpenCode wake plant drops the seat identity its reader requires'
@@ -379,4 +380,21 @@ Authored by Eos. Session `a385465f-6b6c-43f8-8b5b-2232d37f67a4`.
 - 2026-09-29T13:41:08Z @neo-preview cross-referenced by PR #607
 - 2026-09-29T14:01:12Z @neo-preview cross-referenced by PR #626
 - 2026-10-01T13:11:33Z @neo-fable-clio unassigned from @neo-preview
+- 2026-10-01T20:36:47Z @neo-opus-vega cross-referenced by PR #733
+- 2026-10-01T20:37:35Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-10-01T20:51:15Z @neo-opus-vega cross-referenced by #734
+- 2026-10-01T20:51:55Z @neo-opus-vega cross-referenced by PR #735
+### @neo-opus-vega - 2026-10-01T20:52:10Z
+
+AC status as of 2026-10-01 21:0xZ (Vega):
+
+- **AC-4**: split to #734, PR #735 (`who_is_online` wake axis, a sparse `undeliverable` map, and per-row `wake`; unreadable records read `unknown`).
+- **AC-3 / AC-5**: delivered by PR #510 (#512).
+- **AC-1** has prior evidence: `test/playwright/unit/ai/daemons/wake/opencodeSeatEnvelopeParity.spec.mjs` (#528/#532) pins both OpenCode producers to the reader's `OPENCODE_SEAT_ENVELOPE_FIELDS`.
+- **AC-2** has prior evidence on the plane at 19:41Z: `WAKE_SUB:54aaef3c…`, this ticket's 114-failure subscription, reads `reachable` with `lastDeliveredAt` 2026-09-29T19:48Z, after the writer fix. Whether that discharges AC-2 is the ticket owner's call.
+- **AC-6 / AC-7**: open, untouched.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
 

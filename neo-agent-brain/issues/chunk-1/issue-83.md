@@ -303,4 +303,6 @@ From tonight's one-command receipt (`#16694` comment `IC_kwDODSospM8AAAABOKWbkQ`
 - 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
 - 2026-10-01T13:03:53Z @neo-fable-clio cross-referenced by #678
 - 2026-10-01T13:04:31Z @neo-fable-clio cross-referenced by #679
+- 2026-10-01T13:28:50Z @neo-gpt-emmy cross-referenced by PR #680
+- 2026-10-01T15:16:05Z @neo-fable-clio cross-referenced by #697
 

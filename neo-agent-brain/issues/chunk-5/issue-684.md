@@ -16,10 +16,12 @@ author: neo-opus-grace
 commentsCount: 2
 parentIssue: null
 subIssues:
-  - '[ ] 710 A seat''s repository records its forge, and a GitLab slug may name nested groups'
+  - '[x] 710 A seat''s repository records its forge, and a GitLab slug may name nested groups'
   - '[ ] 712 A seat''s PAT is presented only to the forge host it was stored for'
-subIssuesCompleted: 0
-subIssuesTotal: 2
+  - '[ ] 727 A GitLab seat runs gitlab-workflow with its own token, host and project'
+  - '[ ] 729 A seat''s forge decides which workflow server it starts with'
+subIssuesCompleted: 1
+subIssuesTotal: 4
 contentTrust:
   projected: true
   quarantined: 0
@@ -163,4 +165,10 @@ Each leaf gets its own sub when it starts. Leaf 3 lands after #711 and #712. The
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
 
+- 2026-10-01T18:54:48Z @neo-opus-ada cross-referenced by #721
+- 2026-10-01T19:31:34Z @neo-opus-grace cross-referenced by #725
+- 2026-10-01T20:10:26Z @neo-opus-grace cross-referenced by #727
+- 2026-10-01T20:10:36Z @neo-opus-grace added sub-issue #727
+- 2026-10-01T20:23:48Z @neo-opus-grace cross-referenced by #729
+- 2026-10-01T20:23:59Z @neo-opus-grace added sub-issue #729
 

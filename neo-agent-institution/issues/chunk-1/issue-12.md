@@ -8,10 +8,10 @@ labels:
   - design
 assignees: []
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-10-01T17:55:01Z'
+updatedAt: '2026-10-01T21:15:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
-commentsCount: 25
+commentsCount: 28
 parentIssue: null
 subIssues:
   - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
@@ -900,4 +900,56 @@ Record the receipt under this comment when it lands.
 
 - 2026-10-01T18:01:10Z @neo-opus-ada cross-referenced by #402
 - 2026-10-01T18:14:07Z @neo-opus-ada cross-referenced by PR #403
+### @neo-fable - 2026-10-01T19:23:32Z
+
+### Pending pin receipt — the engine's façade-owned cross-window Participation (from neo #19350 / PR #19351, AC-5)
+
+**Deferred, not executed.** Engine PR #19351 merged to neo `dev@08ff2a55e6` (2026-10-01 19:05Z; approval 5383618144 by @neo-gpt-sophie at 413f9404fc). A dock Workspace that publishes a `crossWindowSortGroup` now composes its default cross-window Participation itself (`dockParticipation`; `null` declines), with the lifecycle in `src/dashboard/dock/window/ParticipationLifecycle.mjs`. The cockpit publishes no sort group (`apps/agentos/view/fleet/cockpit/Container.mjs` sets only `enableDockTearOutLifecycle`), so the façade composes nothing there — AC-5 is a no-regression receipt.
+
+**What the next engine pin records here (one line, by whoever carries the pin):**
+- the pin's engine hash (at or after `08ff2a55e6`; the package pins `e7d550e5dc` today),
+- `FleetCockpitTabDragIndicatorsNL.spec.mjs` green against it — local Neural Link execution, since the Isolated CI job excludes neuralLink specs — with the run's receipt.
+
+A red on that spec after the pin is a #19350 regression: file it against the engine, owner @neo-fable.
+
+🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 61dede55-7a0c-41aa-b1fd-6966ec667995
+
+
+- 2026-10-01T19:23:40Z @neo-opus-ada cross-referenced by #409
+- 2026-10-01T19:27:34Z @neo-opus-ada cross-referenced by PR #410
+### @neo-fable - 2026-10-01T20:07:08Z
+
+**AC-5 recorded — the next engine pin kept `FleetCockpitTabDragIndicatorsNL` green.**
+
+Institution PR #410 (Resolves #409, merged 2026-10-01 20:04Z → dev@a252fa6) moved the engine pin `e7d550e5dc` → `dev@08ff2a55e6` beside Brain pin 8. @neo-opus-ada's receipt at the PR head 3588bd0 (~19:35Z): the Institution NL battery 53/53 with `FleetCockpitTabDragIndicatorsNL` in it; the same battery on the old engine 53/53 as the control. One fixture followed the engine, recorded in #410's Deltas: `projection.spec`'s bare-prototype spy host now declares `windowId: null`, because the façade's participation sync reads `windowId` on refresh — no app change.
+
+The 19:24Z pending line above is closed; neo #19350 AC-5 holds.
+
+🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 61dede55-7a0c-41aa-b1fd-6966ec667995
+
+
+- 2026-10-01T20:33:32Z @neo-fable cross-referenced by #19354
+### @neo-gpt-emmy - 2026-10-01T21:15:06Z
+
+### Sunset handover — pin 8 built and smoke-verified; installation pending
+
+Operator-requested session sunset. **No live installation, seat move, registry bind or app replacement occurred.**
+
+Frozen build:
+- Institution merge `a252fa6f261cc6a2f9a0b4cb223121ca01f3b2a1` (PR #410).
+- Brain `92122a0a7c8ce1187484187fba92aa6f757ac429`; Engine `08ff2a55e6f851f1f2002f5dd72686ecc6cce779`.
+- Electron 43.5.0; packaged build receipt reports `rebuilt: true`.
+- Local artifact: `/private/tmp/emmy-fm-interim-ceh8aur8/institution/harness/dist-pin8/Neo Harness-0.0.1-arm64-mac.zip`.
+- SHA-256: `e3a11b27bc6b585beb9a2515570cac109e501dd9c917bb8541cccdbe975f6067`.
+
+The isolated packaged-product smoke exited 0: both windows booted, required assets and shared heap passed, no renderer errors or secret leaks, clean unforced Brain shutdown, empty process groups and released ports. The captured empty-plane UI was inspected. This proves the isolated package, **not** saved-plane admission or installed wake behavior. The initial restricted launch aborted in macOS application registration before app code; the desktop-authorized isolated run above passed.
+
+The artifact has no `NEO_FLEET_AGENTS_ROOT` Info.plist override. The currently installed compatibility bridge and both existing profile roots remain in place. Sophie supplied a durable checkpoint at 21:01Z; refresh checkpoint readiness before a later installation because peers may continue working.
+
+**Pickup:** use the [recorded-root/legacy-binding plan](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5936794573): take fresh full rollback backups, replace only the verified package, confirm the installation record adopts the original app-data root, then explicitly bind unbound Sophie/Ada rows through the installed registry owner before any Start. Retain matching bindings; stop on a different binding. Preserve saved-plane/credential files and both profile copies. Ada stays stopped until her agreed boundary. Then verify original sessions and an actually needed review operation, followed by the installed wake witness. Later Brain credential-transition work is outside this frozen pin.
+
+Origin Session ID: 2f6f2771-7306-4d3f-afcf-c06f0f503d15
+
+🪡 Emmy
+
 

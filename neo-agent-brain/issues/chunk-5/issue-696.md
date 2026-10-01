@@ -7,12 +7,13 @@ labels:
   - ai
   - architecture
   - agent-os
-assignees: []
+assignees:
+  - neo-fable-clio
 createdAt: '2026-10-01T15:15:25Z'
-updatedAt: '2026-10-01T15:15:25Z'
+updatedAt: '2026-10-01T21:21:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/696'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: 351
 subIssues: []
 subIssuesCompleted: 0
@@ -68,7 +69,9 @@ The hosted preset's key is the one first-run secret with no file custody: `ai/co
 - [ ] AC-2 The credential step writes the PAT file and (hosted preset) the key file with mode 0600 and emits the `_FILE` env values; a sentinel credential appears in none of: the host record, the generated env set (only the path), `docker compose config`'s output, the step's log. Unit, red-first.
 - [ ] AC-3 The refuse-before-mutation control: an unknown or invalid leaf in the preset's env set refuses before any file is written. Unit.
 - [ ] AC-4 `npm run ai:lint-config-template-ssot` green with the parity snapshot updated in the same commit; no `process.env` read, no runtime `AiConfig` write, no competing resolver (ADR 0019 A1/B4/C1 — the reviewer checks the §3 catalog).
-- [ ] AC-5 *(Institution, verified when #384 lands)* the browser's persisted state and a public response never hold the sentinel.
+- [ ] AC-5 *(Institution, verified when #384 lands)* the browser's persisted state and a public response never hold the sentinel. `[L4-deferred — operator handoff needed; Residual-Owner: neomjs/neo-agent-institution#384]`
+
+> **Edit note (2026-10-01, PR #736):** AC-1…AC-4 land in PR #736 (`ai/services/shared/secretCarrier.mjs`, `ai/services/fleet/credentialStep.mjs`, the two leaves, seven use sites, the overlay's `gemini-api-key` secret with a `/dev/null` default, the recipe's `provider-key` question). The plane credential is the ADMISSION token (`mcp-auth-token`); the Fleet bearer is a distinct mint the step generates; `GH_TOKEN` leaves the carrier (the ingestion token is a separate credential, follow-up on the epic). Claimed by the design seat on 2026-10-01 after #732.
 
 ## Out of Scope
 
@@ -93,6 +96,7 @@ Retrieval Hint: "apiKeyFile sibling leaf hosted preset credential step secret fi
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 6682a116-897e-4c18-925e-4320d0489481
 
+
 ## Timeline
 
 - 2026-10-01T15:15:27Z @neo-fable-clio added the `enhancement` label
@@ -104,4 +108,29 @@ Retrieval Hint: "apiKeyFile sibling leaf hosted preset credential step secret fi
 - 2026-10-01T18:21:51Z @neo-fable-clio cross-referenced by #714
 - 2026-10-01T18:23:28Z @neo-fable-clio cross-referenced by #686
 - 2026-10-01T18:30:26Z @neo-fable-clio cross-referenced by #351
+- 2026-10-01T20:44:54Z @neo-fable-clio assigned to @neo-fable-clio
+- 2026-10-01T21:08:09Z @neo-fable-clio cross-referenced by PR #736
+- 2026-10-01T21:10:58Z @neo-fable-clio cross-referenced by #679
+### @neo-fable-clio - 2026-10-01T21:10:59Z
+
+## Session handover (sunset 2026-10-01 ~21:10Z) — owner @neo-fable-clio
+
+**State:** PR #736 (Resolves #696) open at `7d6d884` (amended once after the first CI: the shared PR baseline's archaeology job flagged two PRE-EXISTING `ADR 0019` / `ADR-19` comments in touched files — `buildChatModel.mjs:105`, `SemanticGraphExtractor.mjs:175` — reworded to "the AiConfig SSOT decision"; the Brain's installed checker 0.1.23 does not honour the legacy `ticket-ref-ok` escape on ADR refs), stacked on #732 → #715; CI was re-running at sunset; the GPT reviewer request goes out at green (Sophie, as the continuation of #732's stack review, unless her queue says otherwise). Body and ticket carry AC-5's residual (Institution #384).
+
+**CI at sunset (7d6d884, 21:20Z): archaeology green, `unit` comparator RED — 1 introduced:** `test/playwright/unit/ai/services/memory-core/SessionService.buildChatModel.spec.mjs:161` ("buildChatModel provider selector") expects the OpenAI-compatible provider config to carry `apiKey: undefined` when the fixture sets no key; `readSecretCarrier` returns `''` for "neither carrier set", so the provider factory now receives `''`. **One-line fix, first action of the next session:** in `ai/provider/buildChatModel.mjs` make the resolver engage the adapter only when the file carrier is set — `apiKey = () => cfg.apiKeyFile ? readSecretCarrier({…}) : cfg.apiKey` — which preserves the pre-existing shape (`undefined` stays `undefined`) and reads the file exactly when a sibling exists; rerun that spec via `npm run test-unit -- <path>`, amend, force-push with lease, then the reviewer request at green. (The other six use sites' specs are green with `''`.)
+
+**Pickup protocol:** read the sunset memory; `gh api repos/neomjs/neo-agent-brain/commits/8f3c642/check-runs` → at green `manage_pr_reviewers add` + the waking review-request DM (name the ADR 0019 gate: the reviewer reads the ADR before the config touch); answer reviews per protocol. When #732 / #715 merge, rebase onto dev.
+
+**Empirical anchors:** 33 lane arms green (`secretCarrier` 4, `credentialStep` 4, `firstRun` 6, `firstRunRecipe` 8, `hostEffects` 6, `placementPresets` 5) plus the consumers' specs; `SessionService.spec` must run through `npm run test-unit` (UNIT_TEST_MODE) — outside it the Chroma cleanup guard reds, unrelated to the key read. SSOT lint green with the parity snapshot (+2 paths), AiConfig antipatterns 0 new, archaeology 0.
+
+**Decisions folded here (not in the ticket's text):** the PAT is the admission token (`mcp-auth-token`), the Fleet bearer a distinct mint; `GH_TOKEN` leaves the carrier — the ingestion token is a separate credential and needs its own leaf (follow-up for the epic); Compose custody mounts `gemini-api-key` with a `/dev/null` default so a local plane renders without a key file (the leaf, not the mount, decides).
+
+**Preflight trap (twice today):** never pipe `agent-preflight` into `tail`/`cut` inside a `&&` chain — the masked exit let `gh pr create` run on a failed `pr-body-stack` gate; capture the exit code (redirect to a log) and gate the create on it.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 6682a116-897e-4c18-925e-4320d0489481
+
+
+- 2026-10-01T21:12:50Z @neo-fable-clio referenced in commit `7d6d884` - "feat(config): provider keys gain their *File siblings and the first run writes the credential files (#696)
+
+Two leaves (openAiCompatible.apiKeyFile, geminiApiKeyFile) beside the value leaves, one adapter (readSecretCarrier: exactly one carrier, the file read at the call, errors name the leaf and never the contents), every provider-key consumer reading the pair at its use site. The credential step composes the operator's PAT into the admission token file, a distinct minted Fleet plane bearer, and a hosted preset's provider key, emitting only _FILE paths into the carrier; the preset's env set is refused before any write when the profile would not honour it. The local overlay mounts the key as a Compose secret with a /dev/null default so a local plane renders without one."
 

@@ -1,12 +1,12 @@
 ---
 id: 719
 title: 'The self-succession lease arms race a 40 ms real-time window, so CI load fails them'
-state: OPEN
+state: CLOSED
 labels: []
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-01T18:42:58Z'
-updatedAt: '2026-10-01T18:42:58Z'
+updatedAt: '2026-10-01T19:19:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/719'
 author: neo-opus-vega
 commentsCount: 0
@@ -20,6 +20,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T19:19:51Z'
 ---
 # The self-succession lease arms race a 40 ms real-time window, so CI load fails them
 
@@ -60,5 +61,18 @@ Origin Session ID: 6b4062a3-941e-4b08-b997-765875a5b207
 
 ## Timeline
 
+- 2026-10-01T18:42:59Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-01T18:46:01Z @neo-opus-vega cross-referenced by PR #720
+- 2026-10-01T19:19:51Z @tobiu referenced in commit `92122a0` - "fix(orchestrator): the self-succession wrapper takes the lease core's clock, so its arms no longer race real time (#719) (#720)
+
+Both self-succession arms ran a 40 ms window against the real clock. A GC
+pause on a loaded runner made the predecessor's lease stale before the first
+claim, so "it must wait" failed and the live-holder control acquired. That
+gave head-suite reds the differential gate counts as introduced.
+acquireAuthorityLeaseSurvivingSelfSuccession now takes `now` (default
+Date.now), uses it for the remaining wait, and passes it to both claims, as
+the lease core already accepts. Both arms drive a fake clock that the sleep
+stub advances. The touched file's legacy ticket-ref-ok escape becomes the
+typed decision-record form the archaeology guard requires."
+- 2026-10-01T19:19:52Z @tobiu closed this issue
 

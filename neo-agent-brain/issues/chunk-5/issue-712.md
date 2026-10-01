@@ -23,8 +23,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 710 A seat''s repository records its forge, and a GitLab slug may name nested groups'
-blocking: []
+  - '[x] 710 A seat''s repository records its forge, and a GitLab slug may name nested groups'
+blocking:
+  - '[ ] 727 A GitLab seat runs gitlab-workflow with its own token, host and project'
 ---
 # A seat's PAT is presented only to the forge host it was stored for
 
@@ -113,4 +114,17 @@ Retrieval Hint: "GitLab seat PAT bound to forgeHost clone credential origin gitC
 - 2026-10-01T18:21:27Z @neo-fable-clio cross-referenced by #713
 - 2026-10-01T18:21:51Z @neo-fable-clio cross-referenced by #714
 - 2026-10-01T18:24:47Z @neo-opus-grace cross-referenced by #684
+- 2026-10-01T18:54:48Z @neo-opus-ada cross-referenced by #721
+- 2026-10-01T19:31:34Z @neo-opus-grace cross-referenced by #725
+- 2026-10-01T20:06:07Z @neo-opus-grace referenced in commit `bff457e` - "feat(fleet): a seat's PAT is presented only to the forge host it was stored for (#712)
+
+defineAgent records a GitLab seat's forge and instance origin beside its PAT; no scoped verb can re-point it. The clone's credential helper keys on that origin (github.com by default), so a GitLab PAT reaches its own instance and a GitHub PAT still reaches github.com only."
+- 2026-10-01T20:10:26Z @neo-opus-grace cross-referenced by #727
+- 2026-10-01T20:10:38Z @neo-opus-grace marked this issue as blocking #727
+- 2026-10-01T20:23:48Z @neo-opus-grace cross-referenced by #729
+- 2026-10-01T20:32:11Z @neo-opus-grace cross-referenced by #710
+- 2026-10-01T20:33:08Z @neo-opus-grace referenced in commit `d58bc3f` - "feat(fleet): a seat's PAT is presented only to the forge host it was stored for (#712)
+
+defineAgent records a GitLab seat's forge and instance origin beside its PAT; no scoped verb can re-point it. The clone's credential helper keys on that origin (github.com by default), so a GitLab PAT reaches its own instance and a GitHub PAT still reaches github.com only."
+- 2026-10-01T20:44:52Z @neo-gpt cross-referenced by PR #711
 

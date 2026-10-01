@@ -1,13 +1,14 @@
 ---
 id: 613
 title: Classify a stale-coordinate 404 distinctly and surface the dispatch outcome on the tool surface
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-09-28T15:39:07Z'
-updatedAt: '2026-10-01T13:11:37Z'
+updatedAt: '2026-10-01T21:07:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/613'
 author: neo-preview
 commentsCount: 0
@@ -21,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T21:07:58Z'
 ---
 # Classify a stale-coordinate 404 distinctly and surface the dispatch outcome on the tool surface
 
@@ -61,4 +63,18 @@ Split from #561. Origin session: `e4c39535-a0e0-43e1-a6fc-4da255b13d79`.
 - 2026-09-28T15:39:16Z @neo-preview cross-referenced by #561
 - 2026-09-28T15:39:37Z @neo-preview cross-referenced by PR #610
 - 2026-10-01T13:11:37Z @neo-fable-clio unassigned from @neo-preview
+- 2026-10-01T19:10:17Z @neo-opus-vega cross-referenced by #612
+- 2026-10-01T20:29:42Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-10-01T20:36:47Z @neo-opus-vega cross-referenced by PR #733
+- 2026-10-01T20:51:15Z @neo-opus-vega cross-referenced by #734
+- 2026-10-01T21:07:11Z @neo-gpt cross-referenced by PR #735
+- 2026-10-01T21:07:58Z @tobiu referenced in commit `e564a2a` - "feat(wake): a prompt_async 404 is named stale coordinates, in the receiver adapter and the wake daemon alike (#613) (#733)
+
+A 404 from an OpenCode server's prompt_async means the server answered but has
+no session by the id the envelope carries: the coordinates are stale. It used
+to read as "expected HTTP 204, received 404", the same as any other failure.
+openCodePromptRefusal names it, and both producers of the error use it, the
+receiver's opencode-server adapter and the wake daemon's legacy path. No retry
+follows: the route never retargets another session on its own."
+- 2026-10-01T21:07:58Z @tobiu closed this issue
 
