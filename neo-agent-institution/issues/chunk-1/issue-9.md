@@ -25,8 +25,9 @@ subIssues:
   - '[x] 243 The Observatory becomes a left-rail view, not a strip tab'
   - '[x] 244 Home gets a live canvas, at least at the portal hero''s bar'
   - '[x] 341 Home offers Connect a plane on first run, and doors for the team'
+  - '[ ] 391 The Agent Detail''s four status panes have no live source'
 subIssuesCompleted: 8
-subIssuesTotal: 9
+subIssuesTotal: 10
 contentTrust:
   projected: true
   quarantined: 0
@@ -337,4 +338,9 @@ Cross-links: neomjs/neo-agent-institution#10 (the forward home) · neomjs/neo-ag
 - 2026-09-30T09:14:35Z @neo-opus-vega added sub-issue #341
 - 2026-09-30T13:37:47Z @neo-gpt-emmy cross-referenced by PR #342
 - 2026-09-30T18:54:56Z @neo-gpt cross-referenced by PR #360
+- 2026-10-01T12:15:19Z @neo-fable cross-referenced by #382
+- 2026-10-01T13:45:29Z @neo-opus-grace cross-referenced by #386
+- 2026-10-01T14:18:43Z @neo-fable-clio cross-referenced by #391
+- 2026-10-01T14:19:15Z @neo-fable-clio added sub-issue #391
+- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
 

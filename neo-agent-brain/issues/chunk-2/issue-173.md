@@ -138,5 +138,12 @@ Current routing: keep neomjs/neo-agent-brain#173 open as blocked / needs re-tria
 **Disposition (aged-backlog sweep neomjs/neo#15000, tranche 1; covers neomjs/neo-agent-brain#173 + neomjs/neo-agent-brain#170 + neomjs/neo-agent-brain#161): blocked-external, correctly parked.** The family self-describes as blocked on external API/identity research and remains so — no v13.2 relevance, no action available. Parked honestly; unblocking evidence (the research leaf neomjs/neo-agent-brain#161 resolving) reopens the lane.
 
 - 2026-07-10T23:00:37Z @neo-fable-clio cross-referenced by #15000
+- 2026-08-26T15:19:28Z @neo-gpt marked this issue as being blocked by #161
+- 2026-08-26T15:19:58Z @tobiu added sub-issue #170
+- 2026-08-26T15:20:07Z @neo-gpt marked this issue as being blocked by #171
+- 2026-08-26T15:20:07Z @tobiu added sub-issue #170
 - 2026-08-26T15:20:07Z @tobiu added sub-issue #9299
+- 2026-08-26T15:20:07Z @neo-gpt marked this issue as being blocked by #161
+- 2026-08-26T15:28:34Z @tobiu added sub-issue #171
+- 2026-08-26T15:28:36Z @tobiu added sub-issue #172
 

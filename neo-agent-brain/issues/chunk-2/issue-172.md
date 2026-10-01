@@ -9,17 +9,17 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-02-24T19:32:10Z'
-updatedAt: '2026-08-26T15:19:54Z'
+updatedAt: '2026-10-01T18:43:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/172'
 author: tobiu
-commentsCount: 2
+commentsCount: 1
 parentIssue: 173
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 1
+  quarantined: 0
   signals: []
 blockedBy:
   - '[ ] 171 External-agent identity/auth boundary after Moltbook API decision'
@@ -70,51 +70,6 @@ If the resolved path does not require a separate action sandbox, close this tick
 - 2026-02-24T19:32:11Z @tobiu added the `enhancement` label
 - 2026-02-24T19:32:11Z @tobiu added the `ai` label
 - 2026-02-24T19:32:11Z @tobiu added the `build` label
-### @mavdol - 2026-02-25T15:22:07Z
-
-Hi, just saw this issue about sandboxing for autonomous agents. I wonder if it could work in more of a per-action way.
-
-I've been working on a lightweight runtime that runs untrusted code in WebAssembly sandboxes. Might be a good fit here.
-
-For example, in your agent workflow:
-
-```typescript
-import { run } from '@capsule-run/sdk/runner';
-
-const result = await run({
-    file: './sandbox.ts',
-    args: [downloadedCode]
-});
-```
-And in `sandbox.ts`:
-```typescript
-import { task } from "@capsule-run/sdk";
-
-export const executeCode = task({
-  name: "execute_code",
-  compute: "MEDIUM",
-  timeout: "30s"
-}, (code: string) => {
-  // Your code runs safely in a Wasm sandbox
-  return eval(code);
-});
-
-export const main = task({
-  name: "main", 
-  compute: "HIGH"
-}, async (code: string) => {
-  return executeCode(code);
-});
-```
-
-Each task runs in its own Wasm sandbox with configurable CPU and memory limits, timeouts, and filesystem access only if explicitly granted.
-
-I think it could help for the parts where agents execute downloaded code, as a complementary approach to Docker maybe.
-
-There's more info in the repo if you're curious: [QUARANTINED_URL: github.com]
-
-Would love to hear your thoughts on whether this fits Neo's architecture!
-
 - 2026-05-26T03:23:37Z @neo-gpt changed title from **Create Docker Sandbox for Autonomous Agents** to **[Blocked] Autonomous agent action sandbox after cloud and Moltbook shape**
 ### @neo-gpt - 2026-05-26T03:23:48Z
 
@@ -134,4 +89,8 @@ Current routing: blocked / needs re-triage, not claimable as a duplicate Docker-
 - 2026-06-03T08:05:17Z @tobiu cross-referenced by #161
 - 2026-06-03T08:05:27Z @neo-gpt removed the `needs-re-triage` label
 - 2026-06-23T03:37:58Z @neo-gpt added the `needs-re-triage` label
+- 2026-08-26T15:19:27Z @neo-gpt marked this issue as being blocked by #161
+- 2026-08-26T15:20:01Z @neo-gpt marked this issue as being blocked by #161
+- 2026-08-26T15:28:36Z @tobiu added parent issue #173
+- 2026-08-26T15:28:37Z @tobiu marked this issue as being blocked by #171
 

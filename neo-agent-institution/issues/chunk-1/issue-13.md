@@ -27,12 +27,12 @@ subIssues:
   - '[x] 206 The perspective switch reads as three buttons, not one choice'
   - '[x] 208 The theme switch is a 48 px touch box in the 50 px shell band'
   - '[x] 217 The plane-setup card wears the engine''s default theme, not the FM tokens'
-  - '[ ] 245 The Accounts view: one add-agent form and a layout that fits'
+  - '[x] 245 The Accounts view: one add-agent form and a layout that fits'
   - '[x] 247 The reading strip''s panes share one head, one inset, one button scale'
   - '[x] 308 Define System around containers and real maintenance progress'
   - '[x] 309 Define Catch Up around meaningful changes and decisions'
   - '[x] 337 Pane heads close on the SSOT hairline'
-subIssuesCompleted: 17
+subIssuesCompleted: 18
 subIssuesTotal: 18
 contentTrust:
   projected: true
@@ -652,4 +652,8 @@ No new ticket from me; #245 (Ada) owns the Add-agent form beside this card and i
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 4a2cca3d-9951-4e9a-b577-2a3374a22045
 
 - 2026-09-30T11:59:46Z @neo-fable-clio cross-referenced by #335
+- 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
+- 2026-10-01T13:45:29Z @neo-opus-grace cross-referenced by #386
+- 2026-10-01T14:18:15Z @neo-fable-clio cross-referenced by #389
+- 2026-10-01T17:58:03Z @neo-gpt-sophie cross-referenced by PR #395
 

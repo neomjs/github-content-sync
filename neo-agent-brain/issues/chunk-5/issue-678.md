@@ -1,7 +1,7 @@
 ---
 id: 678
 title: 'ADR 0041: the bootstrap record and the verified-plane handoff'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-01T13:03:51Z'
-updatedAt: '2026-10-01T13:03:51Z'
+updatedAt: '2026-10-01T14:26:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/678'
 author: neo-fable-clio
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T14:26:02Z'
 ---
 # ADR 0041: the bootstrap record and the verified-plane handoff
 
@@ -48,7 +49,7 @@ The first-run journey has two renderers over one recipe — a CLI bootstrap with
 
 Add `learn/agentos/decisions/0041-bootstrap-record-verified-plane-handoff.md` (next free number at `origin/dev`; 0040 is the last, no open PR adds a decisions file). Its decision, in eight points: (1) one host-owned, secret-free record per run — `runId`, target descriptor, evaluated recipe version, consent entries, host-effect receipts — under the host's Agent OS state root (`~/.neo-ai/`), never a checkout, never the plane's data root, never browser storage; (2) one writer — the host-effect module, called by the CLI and the vessel's main process; the cockpit page projects and never writes; (3) no completed bit — a step's status is a fresh observation by the owner that already observes it, receipts are provenance and replay guards; (4) binding — create binds the declared `plane.id`, attach binds the served identity, endpoint text is a coordinate only; (5) the handoff — once the served identity matches the run's target, plane observations own *current* readiness and the record owns *prior* consent and effects; an identity match alone turns nothing green; (6) effects — each names an executable local handler or an explicit operator action, an `accepted` effect never replays on resume, an ambiguous one is `reconcile-required` until a fresh matching observation; (7) invalidation — a target or recipe-version change retires every observation and receipt as current proof, they stay history; (8) "is this set?" is a leaf read (ADR 0019 A1/C1), never the record, never `process.env`. Rejected: a plane-owned record, a cockpit-owned status, endpoint-keyed binding, the Institution's connection-profile roster as the ledger, readiness derived from receipts. The §3 witness every implementing leaf inherits: accept an effect → interrupt before its acknowledgement → resume through the other renderer → answer from a wrong or stale plane: no replay, nothing green until a fresh matching observation. §6 merge gate: the first record-writing leaf cannot merge before this ADR is Accepted; a PR that replays an accepted effect on resume or turns a step green from a receipt is rejected at review regardless of CI.
 
-Status at filing: **Accepted** — recorded at D#18965's quorum (`[GRADUATED_TO_TICKET: neomjs/neo-agent-institution#351]`, body 2026-10-01T13:01:21Z); the PR carries the text, the Status row cites the Discussion anchor.
+Status at filing: `Accepted — 2026-10-01 (PR #680; ADR 0005 §9: Accepted by the human merge of the approved, green PR that publishes the record)` — the corpus syntax `lint-adr-status` enforces (corrected 2026-10-01 ~13:40Z per review RA-2 on PR #680 and the lint at d9ef33c; the earlier "Accepted at quorum" wording conflated the design's graduation with the record's lifecycle). D#18965's quorum (`[GRADUATED_TO_TICKET: neomjs/neo-agent-institution#351]`, body 2026-10-01T13:01:21Z) graduated the design; the PR carries the text, the Status row cites both.
 
 ## Decision Record
 
@@ -60,7 +61,7 @@ depends-on ADR 0019 (§10.3 declared `plane.id`; A1/C1 leaf reads) and ADR 0005 
 
 ## Acceptance Criteria
 
-- [ ] AC-1 `learn/agentos/decisions/0041-bootstrap-record-verified-plane-handoff.md` lands on `dev` with the attribute table (Status Accepted citing the D#18965 anchor, Graduated-from, Implementation = neomjs/neo-agent-institution#351, Supersedes, Informs, Decision Record relations, Anti-anchor), §1 Context, §2 the eight decision points, §3 the inherited witness, §4 Rejected, §5 Consequences, §6 the merge gate.
+- [ ] AC-1 `learn/agentos/decisions/0041-bootstrap-record-verified-plane-handoff.md` lands on `dev` with the attribute table (Status "Proposed → Accepted on the human merge" per ADR 0005 §9 with the D#18965 graduation anchor, Graduated-from, Implementation = neomjs/neo-agent-institution#351, Supersedes, Informs, Decision Record relations, Anti-anchor), §1 Context, §2 the eight decision points, §3 the inherited witness, §4 Rejected, §5 Consequences, §6 the merge gate.
 - [ ] AC-2 Every file/line and Discussion-comment anchor in the text resolves at the PR head (`gh api` / file reads in the PR body's evidence).
 - [ ] AC-3 The Brain preflight (`check-pr-body` on stdin, archaeology checker against `origin/dev`) is green; no `#N` reference in the ADR prose is bare where it is descriptive (reference-hygiene).
 - [ ] AC-4 The first record-writing leaf (the recipe/record leaf under neomjs/neo-agent-institution#351, filed beside this ticket) names this ADR as its gate in its body — verified by reading that body after both exist.
@@ -84,6 +85,7 @@ Retrieval Hint: "ADR 0041 bootstrap record verified-plane handoff host record co
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 6682a116-897e-4c18-925e-4320d0489481
 
+
 ## Timeline
 
 - 2026-10-01T13:03:52Z @neo-fable-clio assigned to @neo-fable-clio
@@ -93,4 +95,19 @@ Retrieval Hint: "ADR 0041 bootstrap record verified-plane handoff host record co
 - 2026-10-01T13:03:54Z @neo-fable-clio added the `agent-os` label
 - 2026-10-01T13:05:22Z @neo-fable-clio added parent issue #351
 - 2026-10-01T13:08:49Z @neo-fable-clio cross-referenced by PR #680
+- 2026-10-01T13:31:25Z @neo-fable-clio cross-referenced by #685
+- 2026-10-01T13:32:10Z @neo-fable-clio cross-referenced by #686
+- 2026-10-01T13:34:34Z @neo-fable-clio referenced in commit `f38a921` - "docs(decisions): ADR 0041 binds the handoff to identity and root, and Accepted to the human merge (#678)"
+- 2026-10-01T13:35:02Z @neo-fable-clio referenced in commit `96d6188` - "docs(decisions): ADR 0041 records the bootstrap record and the verified-plane handoff (#678)"
+- 2026-10-01T13:35:02Z @neo-fable-clio referenced in commit `d9ef33c` - "docs(decisions): ADR 0041 binds the handoff to identity and root, and Accepted to the human merge (#678)"
+- 2026-10-01T13:45:45Z @neo-fable-clio referenced in commit `0a54908` - "docs(decisions): ADR 0041 carries the corpus status syntax, Accepted with its publishing PR (#678)"
+- 2026-10-01T14:26:02Z @tobiu referenced in commit `ab0846e` - "docs(decisions): ADR 0041 records the bootstrap record and the verified-plane handoff (#678) (#680)
+
+* docs(decisions): ADR 0041 records the bootstrap record and the verified-plane handoff (#678)
+
+* docs(decisions): ADR 0041 binds the handoff to identity and root, and Accepted to the human merge (#678)
+
+* docs(decisions): ADR 0041 carries the corpus status syntax, Accepted with its publishing PR (#678)"
+- 2026-10-01T14:26:02Z @tobiu closed this issue
+- 2026-10-01T18:30:26Z @neo-fable-clio cross-referenced by #351
 

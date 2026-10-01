@@ -1,7 +1,7 @@
 ---
 id: 287
 title: 'The card-matrix and cockpit-bar NL goldens are stale on dev since #251 and #279'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T12:22:03Z'
-updatedAt: '2026-09-27T12:32:38Z'
+updatedAt: '2026-10-01T17:01:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/287'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T17:01:39Z'
 ---
 # The card-matrix and cockpit-bar NL goldens are stale on dev since #251 and #279
 
@@ -51,8 +52,10 @@ Re-capture the 14 shots on dev with dev's themes, updating snapshots for these t
 
 ## Acceptance Criteria
 
-- [ ] AC-1: All 12 shots of the card matrix are re-captured: "stuck" on the second card and the third card's lane line in view, 418 px each. The spec passes.
+- [ ] AC-1: All 12 shots of the card matrix are re-captured: "stuck" on the second card and the third card's lane line in view, 420 px each. The spec passes.
 - [ ] AC-2: `cockpit-bar-contract-800` and `cockpit-bar-vessel-narrow-520` are re-captured without the preset buttons (44 px), and the spec passes.
+
+Re-measured 2026-10-01 on dev `8e08f46`: the card shots are 420 px and the bars 752×44 / 472×44. Later commits moved both 2 px since filing (#247's pane heads among them); the fix shape is unchanged.
 - [ ] AC-3: No other golden changes, the other arms of both specs pass unchanged, and `check-visual-baselines` matches.
 
 ## Out of Scope
@@ -73,6 +76,7 @@ Origin Session ID: f3d50317-fe3b-4773-b4ac-db05e1fa6812
 Authored by Ada (Claude Opus 5.5, Claude Code).
 
 
+
 ## Timeline
 
 - 2026-09-27T12:22:04Z @neo-opus-ada assigned to @neo-opus-ada
@@ -82,4 +86,24 @@ Authored by Ada (Claude Opus 5.5, Claude Code).
 - 2026-09-27T12:26:31Z @neo-opus-grace cross-referenced by #288
 - 2026-09-27T12:32:38Z @neo-opus-ada changed title from **Three Darwin-only NL goldens are stale on dev since #251 and #279** to **The card-matrix and cockpit-bar NL goldens are stale on dev since #251 and #279**
 - 2026-09-27T13:10:51Z @neo-opus-grace cross-referenced by PR #291
+- 2026-09-30T08:10:14Z @neo-fable-clio cross-referenced by #335
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-09-30T08:29:02Z @neo-fable-clio cross-referenced by #338
+- 2026-09-30T09:02:18Z @neo-fable-clio cross-referenced by #340
+- 2026-09-30T09:16:22Z @neo-opus-vega cross-referenced by PR #342
+- 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
+- 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
+- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
+- 2026-10-01T14:31:51Z @neo-fable cross-referenced by PR #393
+- 2026-10-01T16:32:18Z @neo-opus-ada cross-referenced by PR #397
+- 2026-10-01T17:01:39Z @tobiu referenced in commit `b9971ee` - "test(agentos): re-capture the card-matrix and cockpit-bar NL goldens on dev (#287) (#397)
+
+AgentCardSynthesisRenderNL's 12 shots now show the wedged card as
+"stuck" (#279) with the third card's lane line in view, 420 px each.
+FleetCockpitBarCompositionNL's 800 and 520 shots show the bar without
+the retired preset buttons (#251), 44 px high. Both specs pass on dev;
+no other golden moved, and the visual stamp tracks the card set."
+- 2026-10-01T17:01:40Z @tobiu closed this issue
+- 2026-10-01T17:56:58Z @neo-fable cross-referenced by PR #383
+- 2026-10-01T18:15:19Z @neo-opus-ada cross-referenced by #404
 

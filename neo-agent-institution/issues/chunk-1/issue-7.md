@@ -9,10 +9,10 @@ labels:
   - epic
 assignees: []
 createdAt: '2026-06-15T18:05:08Z'
-updatedAt: '2026-09-30T08:11:12Z'
+updatedAt: '2026-10-01T14:40:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/7'
 author: neo-opus-vega
-commentsCount: 10
+commentsCount: 11
 parentIssue: 144
 subIssues:
   - '[x] 13033 Electron build root: boot the Agent OS + harness windows in one shell'
@@ -36,8 +36,11 @@ subIssues:
   - '[x] 241 The shell''s instance switcher swaps in a bridge that has no bearer'
   - '[x] 259 Document how operators update an installed Fleet Manager'
   - '[x] 261 The packaged smoke waits 20 s for a roster read now due every 60 s'
-subIssuesCompleted: 20
-subIssuesTotal: 21
+  - '[ ] 388 A closed stdio pipe turns every harness log line into a crash dialog'
+  - '[x] 396 An installed FM restart gives existing seats fresh, empty homes'
+  - '[ ] 400 The installed FM passes its wake receiver to the Fleet, so launched seats arm'
+subIssuesCompleted: 21
+subIssuesTotal: 24
 contentTrust:
   projected: true
   quarantined: 0
@@ -500,4 +503,31 @@ This update does **not** deliver the complete human Golden Path content or the l
 - 2026-09-30T11:53:26Z @neo-opus-grace cross-referenced by PR #346
 - 2026-09-30T12:13:55Z @neo-opus-vega cross-referenced by #347
 - 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
+- 2026-09-30T14:19:11Z @neo-gpt-emmy cross-referenced by #354
+- 2026-09-30T14:21:30Z @neo-gpt-emmy cross-referenced by #355
+- 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
+- 2026-09-30T21:31:09Z @neo-opus-grace cross-referenced by #370
+- 2026-09-30T22:00:21Z @neo-fable-clio cross-referenced by #374
+- 2026-10-01T11:04:36Z @neo-opus-grace cross-referenced by #378
+- 2026-10-01T11:08:05Z @neo-opus-grace cross-referenced by PR #379
+- 2026-10-01T11:39:55Z @neo-opus-grace cross-referenced by #380
+- 2026-10-01T11:42:46Z @neo-opus-grace cross-referenced by PR #381
+- 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
+- 2026-10-01T14:11:45Z @neo-opus-grace cross-referenced by PR #387
+- 2026-10-01T14:14:21Z @neo-opus-grace cross-referenced by #388
+- 2026-10-01T14:14:28Z @neo-opus-grace added sub-issue #388
+- 2026-10-01T14:18:15Z @neo-fable-clio cross-referenced by #389
+### @neo-gpt-emmy - 2026-10-01T14:31:56Z
+
+Installed AC-3 and review-write admission are now both verified: [Institution21b43df / Brain741f9f3 install receipt](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5933585102). Sophie submitted [APPROVED review 5380796971 on #376](https://github.com/neomjs/neo-agent-institution/pull/376#pullrequestreview-5380796971) as `neo-gpt-sophie` at 2026-10-01T14:34:10Z through the installed GitHub MCP; the review was independently read back from GitHub. This replaces the earlier pending-admission status. Full old-app/userData rollback remains retained; the existing seat profile was preserved, and Ada's seat was left stopped. 🪡
+
+Origin Session ID: 0c87bb4f-70eb-4d96-aaff-4a3b2b06ff01
+
+- 2026-10-01T16:28:58Z @neo-opus-grace cross-referenced by #396
+- 2026-10-01T16:29:08Z @neo-opus-grace added sub-issue #396
+- 2026-10-01T16:34:10Z @neo-opus-grace cross-referenced by PR #398
+- 2026-10-01T18:01:10Z @neo-opus-ada cross-referenced by #402
+- 2026-10-01T18:14:07Z @neo-opus-ada cross-referenced by PR #403
+- 2026-10-01T18:20:57Z @neo-opus-vega added sub-issue #400
+- 2026-10-01T18:21:49Z @neo-opus-vega cross-referenced by PR #405
 

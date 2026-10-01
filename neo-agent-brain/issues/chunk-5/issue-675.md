@@ -1,7 +1,7 @@
 ---
 id: 675
 title: Fleet pins a Claude seat's auto memory to its seat folder
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-01T12:38:35Z'
-updatedAt: '2026-10-01T13:07:33Z'
+updatedAt: '2026-10-01T15:11:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/675'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T15:11:41Z'
 ---
 # Fleet pins a Claude seat's auto memory to its seat folder
 
@@ -125,4 +126,56 @@ Retrieval Hint: `query_raw_memories("Fleet pins Claude seat auto memory autoMemo
 - 2026-10-01T13:04:31Z @neo-fable-clio cross-referenced by #679
 - 2026-10-01T13:05:15Z @neo-opus-grace cross-referenced by #584
 - 2026-10-01T13:09:01Z @neo-opus-ada cross-referenced by PR #681
+- 2026-10-01T13:12:04Z @neo-opus-ada cross-referenced by #682
+- 2026-10-01T13:20:45Z @neo-opus-ada cross-referenced by PR #683
+- 2026-10-01T13:22:32Z @neo-opus-ada referenced in commit `c970794` - "feat(fleet): a Claude seat keeps its auto memory in its seat folder (#675)
+
+Fleet writes autoMemoryDirectory: <agentsRoot>/<agentId>/memory into the
+checkout's .claude/settings.local.json for claude-code and claude-desktop
+seats, so a seat keeps one memory whichever checkout it opens and wherever
+a checkout moves. The key is inserted into the file's own text (every other
+byte kept); a different existing value refuses the start. The memory
+directory is created 0700, and the `memory` owner is reserved like
+`harness`. OwnAgentTeam.md's Claude branch copies memory into the seat
+folder and merges, rather than copies, the old allowlist."
+- 2026-10-01T13:56:12Z @neo-opus-ada referenced in commit `6ba4a73` - "feat(fleet): a Claude seat keeps its auto memory in its seat folder (#675)
+
+Fleet writes autoMemoryDirectory: <agentsRoot>/<agentId>/memory into the
+checkout's .claude/settings.local.json for claude-code and claude-desktop
+seats, so a seat keeps one memory whichever checkout it opens and wherever
+a checkout moves. The key is inserted into the file's own text (every other
+byte kept); a different existing value refuses the start. The memory
+directory is created 0700, and the `memory` owner is reserved like
+`harness`. OwnAgentTeam.md's Claude branch copies memory into the seat
+folder and merges, rather than copies, the old allowlist."
+- 2026-10-01T14:52:30Z @neo-opus-ada referenced in commit `3a203e9` - "docs(fleet): the move recipe makes the agents root owner-only before the copy (#675)
+
+Emmy's review of #681 measured two holes in step 3: `mkdir -p -m 700` sets
+only the last directory's mode (the agents root and seat folder came out
+0755, so the copy ran where other accounts could reach it), and `rsync -a`
+gives the target the source directory's 0755. The step now chmods the root
+700 before anything is copied and the memory directory 700 after the copy,
+and ends with an `ls -ld` the reader can check."
+- 2026-10-01T15:11:41Z @tobiu referenced in commit `7effbab` - "feat(fleet): a Claude seat keeps its auto memory in its seat folder (#675) (#681)
+
+* feat(fleet): a Claude seat keeps its auto memory in its seat folder (#675)
+
+Fleet writes autoMemoryDirectory: <agentsRoot>/<agentId>/memory into the
+checkout's .claude/settings.local.json for claude-code and claude-desktop
+seats, so a seat keeps one memory whichever checkout it opens and wherever
+a checkout moves. The key is inserted into the file's own text (every other
+byte kept); a different existing value refuses the start. The memory
+directory is created 0700, and the `memory` owner is reserved like
+`harness`. OwnAgentTeam.md's Claude branch copies memory into the seat
+folder and merges, rather than copies, the old allowlist.
+
+* docs(fleet): the move recipe makes the agents root owner-only before the copy (#675)
+
+Emmy's review of #681 measured two holes in step 3: `mkdir -p -m 700` sets
+only the last directory's mode (the agents root and seat folder came out
+0755, so the copy ran where other accounts could reach it), and `rsync -a`
+gives the target the source directory's 0755. The step now chmods the root
+700 before anything is copied and the memory directory 700 after the copy,
+and ends with an `ls -ld` the reader can check."
+- 2026-10-01T15:11:41Z @tobiu closed this issue
 

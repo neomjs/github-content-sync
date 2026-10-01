@@ -1,7 +1,7 @@
 ---
 id: 245
 title: 'The Accounts view: one add-agent form and a layout that fits'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-26T09:34:29Z'
-updatedAt: '2026-09-30T22:23:07Z'
+updatedAt: '2026-10-01T17:58:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/245'
 author: neo-opus-ada
 commentsCount: 4
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T17:58:58Z'
 ---
 # The Accounts view: one add-agent form and a layout that fits
 
@@ -55,6 +56,16 @@ One task, adding an agent, has two forms with two designs, and the Accounts one 
 4. The Accounts layout: the definitions as a list beside the selected definition's card (master-detail), each declared value next to its label; empty states say what to do first.
 5. Everything on the `--fm-*` tokens and the component skin layer, with before/after screenshots against the SSOT frame (the #13 gate).
 
+## Contract Ledger
+
+Added 2026-10-01 from @neo-gpt-sophie's review of PR #395, which found no ledger here or on #13 for the consumed surfaces this ticket introduces.
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `AgentOS.util.HarnessChoice` (new; consumed by `AddAgentForm`, `AgentConfigComponent`, the accounts `List`) | Brain Fleet contract `listHarnessProducts()` + `resolveHarnessType()` (pin 6) | `products()`: the products in catalog order, each with `defaultType` (its first type) and App / Command line choices only where a product ships two types. `choiceOf(type)` returns `{product, runsAs}`. `typeFor(product, runsAs)` returns the type to store, keeping the current run mode when the product offers it. `describe(type)` returns "Claude · App", or the bare label for a single-type product. | An unknown type gives `choiceOf` / `describe` `null`, and the list row shows "Unknown harness". An unknown product gives `typeFor` `null`. A run mode the product lacks falls to its first type. | class and method JSDoc | `harnessChoice.spec.mjs`; `addAgentFlow.spec.mjs` product-chip arm; `Accounts.spec.mjs` card product-chip intents |
+| `AddAgentForm`'s end boundary (shared by Accounts and the rail's Add agent zone) | AC-1, AC-2; the fleet credential matrix | Ends at `agentDefinitionAccepted({agent})` with the registry's validated public definition, after an accepted readback. The token field clears on every settle path. | `credentialIngress: 'shell'` removes the token field before mount and submits public intent only. With no bridge, submit is disabled and `FLEET_OFFLINE_REASON` is the status line. | class JSDoc | `addAgentFlow.spec.mjs` shell-mode and gated arms; `Accounts.spec.mjs` "the one add-agent form" arms; component and e2e `AddAgentForm.spec.mjs` |
+| `AgentOS.view.accounts.Panel`, the owner of the roster write | AC-4 | On the form's accepted definition it upserts the definition into the shared `agentDefinitions` store and re-fires `agentDefinitionAccepted` for the Viewport's roster refresh. The form stays up with its outcome line. | A definition that fails `AddAgentFlow.validateReadback` is neither written nor re-fired. | method JSDoc | `Accounts.spec.mjs` accepted-add and guard-refusal arms |
+
 ## Acceptance Criteria
 
 - [ ] AC-1 A single add-agent component serves Accounts and the rail; `AddAgentForm` or the Accounts form retires (grep in the PR).
@@ -62,12 +73,27 @@ One task, adding an agent, has two forms with two designs, and the Accounts one 
 - [ ] AC-3 At 1000×640 and 1280×800 no control is clipped and nothing scrolls sideways (visual goldens at both sizes).
 - [ ] AC-4 The declared rows keep label and value adjacent; the view has an empty state for "no definitions yet".
 - [ ] AC-5 Before/after screenshots in the PR beside the SSOT frame; the design owner's review.
+- [ ] AC-6 The operator's ruling of 2026-09-28: one choice per product, read from the Brain's `listHarnessProducts()`, with *App* / *Command line* shown only for products that have both. No full-width username or repository field. The setup journey carries no App Worker or credential-ownership prose.
 
 ## Out of Scope
 
 - GitLab agent definitions: they need the Brain's GitLab credential injection first (plane logins already take a GitHub or a GitLab PAT, #231).
 - The provider-login config through AiConfig (`neomjs/neo#13521`).
 - Benching (`neomjs/neo-agent-brain#28`).
+- The onboarding follow-up leaf recorded in this thread: the repository-set picker (after neomjs/neo-agent-brain#683 plus a Brain read of the plane's repositories), the model family for any-provider harnesses, and the Node runtime choice.
+
+## Intake (2026-10-01)
+
+- **Kept component: `AddAgentForm`.** `apps/agentos/view/fleet/instances/AddAgentForm.mjs` is mount-independent and carries the flow states. `AddAgentFlow.submitDefineAgent` already does define → `assignRepo`, the path the Accounts form duplicates in `onSubmitAgentClick` / `assignRepoThroughBridge`. Accounts mounts the form and keeps only its roster upsert (`upsertPublicAgentDefinition`, echo guard included) on `agentDefinitionAccepted`.
+- **Retired with the Accounts form:**
+    - *Use sample*, a dev affordance;
+    - *Connect harness*. Its `AgentOS.neuralLink.connectionBridge` has no provider anywhere in this repo (`git grep connectionBridge`), so it can only fail closed.
+- **Product grouping** comes from neomjs/neo-agent-brain#691 (merged), so this lane carries Brain pin 6 (dev@9f72f91).
+- **Drift since filing:** #296 (working-repo field), #376 (a field's reason line), #247 (pane heads). The kept form already has all three.
+- **#351's setup wizard** consumes this one form rather than adding a third.
+
+Prescription checked: `apps/agentos/view/fleet/instances/AddAgentForm.mjs` — owns the concern.
+Prescription checked: neomjs/neo-agent-brain `src/fleet/contract/harnessTypes.mjs` (`listHarnessProducts`) — owns the product grouping.
 
 ## Related
 
@@ -79,6 +105,8 @@ Live latest-open sweep: the latest 20 open issues at 2026-09-26T09:33:49Z — no
 
 Origin Session ID: 1b945fcf-1142-475f-8007-ac18d51c069a
 Retrieval Hint: `query_raw_memories("Accounts view redesign one add-agent form GitHub GitLab harness picker")`
+
+
 
 ## Timeline
 
@@ -153,4 +181,77 @@ Both belong to the onboarding follow-up leaf this ticket's records already descr
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session ca4b10cc-1608-4154-9732-eff2324831ea
 
 
+- 2026-10-01T11:58:40Z @neo-opus-ada cross-referenced by #571
+- 2026-10-01T12:38:36Z @neo-opus-ada cross-referenced by #675
+- 2026-10-01T13:12:04Z @neo-opus-ada cross-referenced by #682
+- 2026-10-01T13:20:45Z @neo-opus-ada cross-referenced by PR #683
+- 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
+- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
+- 2026-10-01T14:31:51Z @neo-fable cross-referenced by PR #393
+- 2026-10-01T14:42:54Z @neo-opus-ada cross-referenced by #690
+- 2026-10-01T14:45:19Z @neo-opus-ada cross-referenced by PR #691
+- 2026-10-01T16:19:01Z @neo-opus-ada referenced in commit `bcecb6f` - "feat(agentos): one add-agent form, one choice per product, and an Accounts view that fits (#245)
+
+Accounts mounts the cockpit rail's AddAgentForm and retires its own
+form: the fields, the submit path, "Use sample", and "Connect harness"
+(its connectionBridge has no provider in this repo). The form names its
+forge once ("GitHub account": Username, Personal access token) and
+offers one chip per product from the Brain's listHarnessProducts(), with
+App / Command line only where a product ships both; the config card
+offers the same choice through the new HarnessChoice util. No App
+Worker or credential-ownership prose remains in the setup journey.
+
+Accounts becomes master-detail: the definitions list (a Neo.list.Base
+bound to the shared agentDefinitions store) beside the selected agent's
+card, or the form while adding. An empty roster opens on the form with
+an empty state; the store's placeholder seed is gone. An accepted add
+keeps the form and its outcome line up, so a "working repository is not
+set" warning is never swapped out of view. The card's declared rows
+keep label and value adjacent.
+
+Visual: Accounts goldens at 1000x640 and 1280x800 with a geometry gate
+(no overflowing box, no clipped control), the re-captured Accounts and
+rail Add agent goldens, and a fresh baseline stamp."
+- 2026-10-01T16:20:44Z @neo-opus-ada cross-referenced by PR #395
+- 2026-10-01T16:38:38Z @neo-opus-ada referenced in commit `21381e9` - "test(agentos): drop ticket references from the add-agent spec comments (#245)"
+- 2026-10-01T17:06:42Z @neo-opus-ada referenced in commit `1593c9d` - "fix(agentos): the card and the form share one measure, an idle form shows no status rule, and New agent opens the form (#245)"
+- 2026-10-01T17:29:12Z @neo-opus-ada cross-referenced by #399
+- 2026-10-01T17:58:58Z @tobiu referenced in commit `8ce65c8` - "feat(agentos): one add-agent form, one choice per product, and an Accounts view that fits (#245) (#395)
+
+* chore(deps): Brain pin 6 (dev@9f72f91) for the product catalog (#245)
+
+The add-agent form offers one choice per product, so it reads the
+catalog's listHarnessProducts() (#691). Pin 5 (dev@741f9f3) predates it.
+9f72f91 also carries #681 (a Claude seat's auto memory in its seat
+folder) and ADR 0041 (#680). The lock's integrity follows the new
+tarball; CI checks out the same Brain commit.
+
+* feat(agentos): one add-agent form, one choice per product, and an Accounts view that fits (#245)
+
+Accounts mounts the cockpit rail's AddAgentForm and retires its own
+form: the fields, the submit path, "Use sample", and "Connect harness"
+(its connectionBridge has no provider in this repo). The form names its
+forge once ("GitHub account": Username, Personal access token) and
+offers one chip per product from the Brain's listHarnessProducts(), with
+App / Command line only where a product ships both; the config card
+offers the same choice through the new HarnessChoice util. No App
+Worker or credential-ownership prose remains in the setup journey.
+
+Accounts becomes master-detail: the definitions list (a Neo.list.Base
+bound to the shared agentDefinitions store) beside the selected agent's
+card, or the form while adding. An empty roster opens on the form with
+an empty state; the store's placeholder seed is gone. An accepted add
+keeps the form and its outcome line up, so a "working repository is not
+set" warning is never swapped out of view. The card's declared rows
+keep label and value adjacent.
+
+Visual: Accounts goldens at 1000x640 and 1280x800 with a geometry gate
+(no overflowing box, no clipped control), the re-captured Accounts and
+rail Add agent goldens, and a fresh baseline stamp.
+
+* test(agentos): drop ticket references from the add-agent spec comments (#245)
+
+* fix(agentos): the card and the form share one measure, an idle form shows no status rule, and New agent opens the form (#245)"
+- 2026-10-01T17:58:59Z @tobiu closed this issue
+- 2026-10-01T18:41:35Z @neo-opus-ada cross-referenced by #407
 

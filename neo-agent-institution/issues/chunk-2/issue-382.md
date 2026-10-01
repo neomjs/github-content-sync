@@ -1,7 +1,7 @@
 ---
 id: 382
 title: The cockpit shows no drop zones while a tab header is dragged
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-01T12:15:17Z'
-updatedAt: '2026-10-01T13:06:11Z'
+updatedAt: '2026-10-01T18:14:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/382'
 author: neo-fable
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T18:14:43Z'
 milestone: FM v1
 ---
 # The cockpit shows no drop zones while a tab header is dragged
@@ -73,7 +74,7 @@ No engine change; no new module; the probe becomes the tracked red-first e2e arm
 - [ ] AC-1 Red-first e2e arm (`FleetCockpitTabDragIndicatorsNL`): a tab header held over the other cockpit pane un-hides the indicator menu within 2 s, exactly one chip is `…-indicator-active`, and the menu's `activeCandidate` is non-null in the App Worker; red on dev (the menu never mounts), green at the head.
 - [ ] AC-2 Releasing on the active chip commits through the cockpit's reducer: the dragged item leaves its zone in the committed document and every other item stays, the menu hides with no chip active, and the cockpit's existing dock witnesses (`FleetCockpitDockNL`, `FleetCockpitPopOutNL`, `FleetCockpitNWindowNL`, the rail witnesses) stay green. (`getDockTopology().operations` is the executable vocabulary, not a history — no count clause.)
 - [ ] AC-3 Visual tier: idle cockpit goldens unchanged in both skins (the host is a fit-layout wrapper at the shell's old flex slot; the overlays render nothing at rest).
-- [ ] AC-4 Post-merge, installed receipt: the operator drags a tab header in the installed Fleet Manager after the next repackage and sees the zones (his observation is the acceptance; recorded on this ticket).
+- [ ] AC-4 `[L3-deferred — operator handoff needed]` Post-merge, installed receipt: the operator drags a tab header in the installed Fleet Manager after the next repackage and sees the zones (his observation is the acceptance). This ticket closes with PR #383, so the receipt's surviving owner is Institution #12 (the native-shell acceptance owner); recorded there when it lands *(re-pointed 2026-10-01 by the author on @neo-gpt-emmy's RA-1)*.
 
 ## Out of Scope
 
@@ -96,6 +97,7 @@ Origin Session ID: b04b2ce2-c8b8-40ba-9f0a-4dd2585a5be1 (rotated mid-lane to 771
 Retrieval Hint: "cockpit tab header drag no drop indicators DragAffordances dock host"
 
 
+
 ## Timeline
 
 - 2026-10-01T12:15:18Z @neo-fable assigned to @neo-fable
@@ -104,4 +106,40 @@ Retrieval Hint: "cockpit tab header drag no drop indicators DragAffordances dock
 - 2026-10-01T12:15:19Z @neo-fable added the `ai` label
 - 2026-10-01T12:16:16Z @neo-fable added this to the **FM v1** milestone
 - 2026-10-01T13:04:05Z @neo-fable cross-referenced by PR #383
+- 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
+- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
+- 2026-10-01T16:05:38Z @neo-fable referenced in commit `4915e3d` - "chore(merge): bring origin/dev into the branch (#382)
+
+# Conflicts:
+#	test/playwright/visual/__screenshots__/baseline-inputs.txt"
+- 2026-10-01T16:15:13Z @neo-fable cross-referenced by #19350
+- 2026-10-01T17:55:03Z @neo-fable cross-referenced by #12
+- 2026-10-01T17:56:27Z @neo-fable referenced in commit `cc65abd` - "test(cockpit): the drop-indicator arm describes the composed in-window controller (#382)
+
+Review round 1: the spec's header and AC-1 comment credited a Participation and the coordinator — the stale first prescription. The tier is the cockpit's composed DragAffordances over the declared dock host; the coordinator never targets an in-window drag's own window."
+- 2026-10-01T18:14:43Z @tobiu referenced in commit `8b730f5` - "feat(agentos): the cockpit answers a dragged tab header with drop zones (#382) (#383)
+
+* feat(agentos): the cockpit answers a dragged tab header with drop zones (#382)
+
+A tab header dragged inside the Fleet cockpit followed the pointer into a layout that never
+answered: the engine's in-window drop feedback (the preview renderer, the drop-indicator menu
+and the gesture controller that feeds them) is a consumer-composed tier, and the cockpit
+composed none of it — measured headless as zero indicator chips and no DragAffordances,
+DropIndicators or Participation instance in the App Worker, the same absence the operator saw
+in the installed Electron shell.
+
+The cockpit now declares a dock host under its control bar (`dockHostReference`), holding the
+projected shell at slot 0 beside the two persistent overlays; VesselContainer composes
+DragAffordances over them and routes the projection's three cross-zone drag seams to it; one
+skin rule makes the host the overlays' containing block. The duplicated shell-index pair in
+the cockpit config goes with it. A held header now un-hides the indicator menu with the hovered
+chip active, and releasing on it commits through the cockpit's own reducer.
+
+Red-first e2e arm (FleetCockpitTabDragIndicatorsNL); the shell-placement assertions in
+FleetCockpitDockNL and the projection unit spec move to the dock host's first slot.
+
+* test(cockpit): the drop-indicator arm describes the composed in-window controller (#382)
+
+Review round 1: the spec's header and AC-1 comment credited a Participation and the coordinator — the stale first prescription. The tier is the cockpit's composed DragAffordances over the declared dock host; the coordinator never targets an in-window drag's own window."
+- 2026-10-01T18:14:44Z @tobiu closed this issue
 

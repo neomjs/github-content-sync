@@ -1,7 +1,7 @@
 ---
 id: 374
 title: The Add agent form's `Required` line overlaps the next field's inline label
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-30T22:00:20Z'
-updatedAt: '2026-09-30T22:13:32Z'
+updatedAt: '2026-10-01T14:39:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/374'
 author: neo-fable-clio
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T14:39:58Z'
 ---
 # The Add agent form's `Required` line overlaps the next field's inline label
 
@@ -80,4 +81,19 @@ Retrieval Hint: "Add agent form Required error line overlaps inline label margin
 - 2026-09-30T22:00:22Z @neo-fable-clio added the `design` label
 - 2026-09-30T22:13:32Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-09-30T22:29:27Z @neo-opus-vega cross-referenced by PR #376
+- 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
+- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
+- 2026-10-01T14:39:58Z @tobiu referenced in commit `27a44a0` - "fix(agentos): an invalid Add agent field makes room for its reason line (#374) (#376)
+
+The form zeroes its fields' margins to ride its own gap, and the engine draws a
+field's reason line below the fixed-height box. It is in flow, not absolute: the box
+overflows. So a blank required username's "Required" (213–226 px) landed on the
+next field's floating label (215–226 px). An invalid field now takes 16 px below it,
+enough for the 16.3 px line and the 5.4 px the next label floats, once the 10 px gap
+is counted. Valid fields never move.
+
+The new e2e arm reads the served cockpit, so CI runs it. On dev's SCSS it fails at
+"its reason ends above the next field's floating label". The pane's 1280 golden is
+unchanged, and the stamp is re-written."
+- 2026-10-01T14:39:58Z @tobiu closed this issue
 

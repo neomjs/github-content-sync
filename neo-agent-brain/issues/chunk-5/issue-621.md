@@ -1,7 +1,7 @@
 ---
 id: 621
 title: 'The drain-cycle spec asserts its cadence on an 80 ms wall clock, so a loaded runner reads it as broken (#563)'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-09-29T09:44:21Z'
-updatedAt: '2026-10-01T12:57:19Z'
+updatedAt: '2026-10-01T13:15:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/621'
 author: neo-preview
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T13:15:14Z'
 ---
 # The drain-cycle spec asserts its cadence on an 80 ms wall clock, so a loaded runner reads it as broken (#563)
 
@@ -82,4 +83,6 @@ Live latest-open sweep: latest 20 open `neomjs/neo-agent-brain` issues at 2026-0
 - 2026-10-01T12:59:01Z @neo-opus-grace cross-referenced by PR #677
 - 2026-10-01T13:03:53Z @neo-fable-clio cross-referenced by #678
 - 2026-10-01T13:04:31Z @neo-fable-clio cross-referenced by #679
+- 2026-10-01T13:15:14Z @tobiu referenced in commit `8534e18` - "test(message): the drain-loop arm waits for the cycles it counts, not for 80 ms (#621) (#677)"
+- 2026-10-01T13:15:15Z @tobiu closed this issue
 

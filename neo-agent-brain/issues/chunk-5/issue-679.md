@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-01T13:04:30Z'
-updatedAt: '2026-10-01T13:04:30Z'
+updatedAt: '2026-10-01T18:31:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/679'
 author: neo-fable-clio
 commentsCount: 0
@@ -48,6 +48,7 @@ An outside operator's first run must reach a served plane through steps whose st
 ## The Fix
 
 1. **The recipe module** — one exported step list, versioned (`recipeVersion`), each step `{id, kind: 'question' | 'effect' | 'observation', evaluate(target) → {status, reason, observedAt}}`. `evaluate` is a fresh read for the bound target; no step reads the record for its status. v1's steps, in order: placement (where the plane runs) · preset · plane credential (PAT) · [advanced, folded] · effects: env file + secret files + compose up · observation: the served plane identity matches the target · validation: one provider call and one observed embedding (dimension included) · done: a query answered and first persistence (neomjs/neo-agent-brain#86's bar, J3 in neomjs/neo#14781).
+   **The placement step's headroom rule** *(added 2026-10-01 from the #685 / #686 build)*: the step reads `probePlacement()` (#685) and `fitsPreset(probe, preset.workload)` over `presets` (#686), both threshold-free by contract, and adds the one judgement they do not make — a named headroom. `fitsPreset` reports raw margins; the step recommends a preset only when `margins.host ≥ headroomBytes` (v1: 4 GiB, the working headroom the 2026-09-23 harness-stack measurement needs before the OS starts compressing) and the guest margin is non-negative, offers a preset that fits by less than that as *possible, not recommended* with its margin shown, and never offers a `candidate` preset (no recorded floor) by default. Measured consequence that fixed the rule: with real model sizes `local-small` fits a 32 GiB host (14 GiB other use, 16 GiB VM) by 0.3 GiB on arithmetic — the 32 GiB tier's steer toward `hosted` lives here, not in the table or the probe. A `pressure: 'swapping'` host gets no local recommendation at all (the probe already refuses the fit).
 2. **The record** — one JSON file per run under the host state root (`~/.neo-ai/setup/<runId>.json`, root overridable the way the prescriptions root is), `{schemaVersion, runId, target: {planeId | null before create, endpoint}, recipeVersion, consents: [...], receipts: [{effectId, acceptedAt, digest, outcome}]}`; secret-free by construction (references only). One writer: the host-effect module. A resumed run replays nothing whose receipt is `accepted`; an ambiguous effect is `reconcile-required` until a fresh matching observation settles it.
 3. **The host-effect module** — the effect handlers (write env, write secret files with mode 0600, compose up, probe a port), each naming an executable local handler or an explicit operator action; imported by the CLI here and by the vessel's main process in the Institution leaf. One implementation.
 4. **The CLI renderer** — a script beside `ai/scripts/setup/initServerConfigs.mjs`: prints the evaluated steps, asks the three questions, runs effects through the module, re-evaluates after each; `--json` for the vessel's smoke and the witness. It can run before any Brain container exists.
@@ -98,6 +99,7 @@ Retrieval Hint: "first-run recipe host record consent receipts evaluated live CL
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 6682a116-897e-4c18-925e-4320d0489481
 
+
 ## Timeline
 
 - 2026-10-01T13:04:31Z @neo-fable-clio added the `enhancement` label
@@ -106,4 +108,15 @@ Retrieval Hint: "first-run recipe host record consent receipts evaluated live CL
 - 2026-10-01T13:04:31Z @neo-fable-clio added the `agent-os` label
 - 2026-10-01T13:05:23Z @neo-fable-clio added parent issue #351
 - 2026-10-01T13:08:49Z @neo-fable-clio cross-referenced by PR #680
+- 2026-10-01T13:31:25Z @neo-fable-clio cross-referenced by #685
+- 2026-10-01T13:32:10Z @neo-fable-clio cross-referenced by #686
+- 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
+- 2026-10-01T15:15:27Z @neo-fable-clio cross-referenced by #696
+- 2026-10-01T15:16:05Z @neo-fable-clio cross-referenced by #697
+- 2026-10-01T16:41:30Z @neo-opus-vega cross-referenced by PR #705
+- 2026-10-01T18:21:27Z @neo-fable-clio cross-referenced by #713
+- 2026-10-01T18:21:51Z @neo-fable-clio cross-referenced by #714
+- 2026-10-01T18:23:30Z @neo-fable-clio cross-referenced by PR #715
+- 2026-10-01T18:30:26Z @neo-fable-clio cross-referenced by #351
+- 2026-10-01T18:51:27Z @neo-gpt cross-referenced by PR #707
 

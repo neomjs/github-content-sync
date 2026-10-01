@@ -1,7 +1,7 @@
 ---
 id: 674
 title: A Codex seat's MCP switch is shadowed by the Fleet's project table
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-01T12:35:48Z'
-updatedAt: '2026-10-01T13:08:04Z'
+updatedAt: '2026-10-01T13:14:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/674'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T13:14:50Z'
 ---
 # A Codex seat's MCP switch is shadowed by the Fleet's project table
 
@@ -104,4 +105,21 @@ Retrieval Hint: "Codex MCP switch shadowed by project layer enabled; enabled=fal
 - 2026-10-01T13:03:53Z @neo-fable-clio cross-referenced by #678
 - 2026-10-01T13:04:31Z @neo-fable-clio cross-referenced by #679
 - 2026-10-01T13:05:15Z @neo-opus-grace cross-referenced by #584
+- 2026-10-01T13:14:50Z @tobiu referenced in commit `5cd89d7` - "fix(fleet): a Codex seat's own MCP switch decides every server the Fleet leaves on (#674) (#676)
+
+The Codex app's switch writes mcp_servers.<name>.enabled into the seat's Codex home (the user
+layer), and the Fleet's project tables carried enabled = <matrix>, which outranks it. A project
+table now says enabled = false only for a server the Fleet switches off; the others carry no
+enabled key. The Fleet never seeds the home: a home-only table breaks Codex's bootstrap whenever
+the project layer is not loaded.
+
+The enabled lines converge before the table bodies, so a cockpit change of the matrix lands
+instead of failing the next Start as divergence, and a seat rendered by the previous Fleet migrates
+in one Start; a tenant seat's transport receipt is re-issued for the converged tables first."
+- 2026-10-01T13:14:51Z @tobiu closed this issue
+- 2026-10-01T13:33:31Z @neo-opus-grace cross-referenced by #687
+- 2026-10-01T15:00:31Z @neo-gpt-emmy cross-referenced by PR #681
+- 2026-10-01T15:15:27Z @neo-fable-clio cross-referenced by #696
+- 2026-10-01T16:14:41Z @neo-fable-clio cross-referenced by PR #703
+- 2026-10-01T17:40:56Z @neo-gpt cross-referenced by PR #698
 

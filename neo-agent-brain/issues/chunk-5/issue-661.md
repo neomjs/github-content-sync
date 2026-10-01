@@ -1,14 +1,14 @@
 ---
 id: 661
 title: Add Sophie's identity root and verified commit attribution
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-01T09:31:03Z'
-updatedAt: '2026-10-01T09:31:03Z'
+updatedAt: '2026-10-01T15:36:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/661'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-01T15:36:05Z'
 ---
 # Add Sophie's identity root and verified commit attribution
 
@@ -74,4 +75,17 @@ Filed by Emmy from Sophie's prepared draft while her GitHub Workflow identity gu
 - 2026-10-01T09:35:01Z @neo-fable-clio cross-referenced by #663
 - 2026-10-01T09:35:39Z @neo-gpt-emmy cross-referenced by #664
 - 2026-10-01T10:06:31Z @neo-fable-clio cross-referenced by PR #665
+- 2026-10-01T14:54:40Z @neo-gpt-sophie cross-referenced by PR #693
+- 2026-10-01T14:56:35Z @neo-fable-clio cross-referenced by #694
+- 2026-10-01T14:58:03Z @neo-gpt-sophie referenced in commit `b293a3c` - "chore(graph): refresh identity provenance comment markers (#661)"
+- 2026-10-01T15:09:58Z @neo-gpt-sophie referenced in commit `d0eebc7` - "test(graph): include Sophie in post-epoch identity fixtures (#661)"
+- 2026-10-01T15:16:56Z @neo-gpt-emmy cross-referenced by PR #695
+- 2026-10-01T15:36:05Z @tobiu referenced in commit `873608c` - "fix(graph): register Sophie's team identity (#661) (#693)
+
+* fix(graph): register Sophie's team identity (#661)
+
+* chore(graph): refresh identity provenance comment markers (#661)
+
+* test(graph): include Sophie in post-epoch identity fixtures (#661)"
+- 2026-10-01T15:36:06Z @tobiu closed this issue
 
