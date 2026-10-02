@@ -1,7 +1,7 @@
 ---
 id: 727
 title: 'A GitLab seat runs gitlab-workflow with its own token, host and project'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-01T20:10:25Z'
-updatedAt: '2026-10-01T20:22:20Z'
+updatedAt: '2026-10-02T11:37:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/727'
 author: neo-opus-grace
 commentsCount: 1
@@ -22,9 +22,10 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 712 A seat''s PAT is presented only to the forge host it was stored for'
+  - '[x] 712 A seat''s PAT is presented only to the forge host it was stored for'
 blocking:
-  - '[ ] 729 A seat''s forge decides which workflow server it starts with'
+  - '[x] 729 A seat''s forge decides which workflow server it starts with'
+closedAt: '2026-10-02T11:32:28Z'
 ---
 # A GitLab seat runs gitlab-workflow with its own token, host and project
 
@@ -50,17 +51,35 @@ A seat bound to a GitLab instance cannot run `gitlab-workflow`:
 
 ## The Fix
 
-1. **Per-seat env.** For a GitLab seat, the spawn sets `NEO_GITLAB_PAT` (its PAT), `NEO_GITLAB_HOST` (`forgeHost`) and `NEO_GITLAB_PROJECT` (the working slug), and no `GH_TOKEN`. A GitHub seat is unchanged. All three join the reserved slots.
+1. **Per-seat env.** For a GitLab seat, the spawn sets `NEO_GITLAB_PAT` (its PAT), `NEO_GITLAB_HOST` (`forgeHost`) and `NEO_GITLAB_PROJECT` (the working slug, only for a clone on that instance), and no `GH_TOKEN`. A GitHub seat is unchanged. All three join the reserved slots.
 2. **Envelope.** `resolveResidentMcpEnvironment` maps `gitlab-workflow` to its config module and excludes the per-seat names from `exportEnv`. The hard-coded exclusion list becomes a descriptor field (`seatEnv`), so the same rule covers `GH_TOKEN`.
 3. **Plan.** The descriptor's `unsupportedReason` goes. The plan refuses `gitlab-workflow` on a seat that is not bound to GitLab, and on Kimi and OpenCode (their fixed lists), each with its reason.
 4. **Rendering.** Codex, Claude Code and Claude Desktop render from the descriptor, so each gets a proof arm, not new code.
 
+## Contract Ledger
+
+*Backfilled during review (PR #742, Round 1, RA-2). Evidence is L2 (unit); the installed arm is AC-4's.*
+
+| Target surface | Source of authority | Behavior | Failure / fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| A GitLab seat's spawn env (`FleetLifecycleService.start`) | the registry row's `forge` + `forgeHost` (#712) and the seat's stored PAT | `NEO_GITLAB_PAT` = the PAT, `NEO_GITLAB_HOST` = `forgeHost`; no `GH_TOKEN` / `GITHUB_TOKEN` | a GitHub seat's env is unchanged | JSDoc | lifecycle: "a GitLab seat starts with its own PAT, instance and project…" |
+| `NEO_GITLAB_PROJECT` (`gitlabProjectOf` → `isOnInstance`) | the working repository's `repoSlug` + `cloneUrl` | named only for a clone on the bound instance: an `https` clone by exact origin (scheme, host, port; IPv6 normalized), an `ssh` / scp-style clone by host, since SSH has its own port | absent, so `gitlab-workflow` has no default project | JSDoc | lifecycle: the eleven-case instance matrix |
+| Reserved seat slots | the `gitlab-workflow` descriptor's `seatEnv` | a launch env naming any of the three refuses the start; so does a resident envelope carrying one | the start refuses before spawning | JSDoc | lifecycle: "SECURITY: a launch env cannot pre-load a GitLab seat slot", plus the envelope-refusal arm |
+| `seatEnv` on every descriptor, and the `exportEnv` exclusion (`SEAT_ENV`) | `MANAGED_WORKSPACE_MCP_SERVER_DESCRIPTORS` plus the identity slot | the resident envelope never exports a per-seat name from the host's own config; the union replaces the hard-coded list (a superset of it) | n/a (a static set) | JSDoc at the descriptors | lifecycle: "the default producer gives the GitLab workflow server its plane slots and never a GitLab seat value" |
+| Plan intent `agent.forge` (`managedAgentWorkspacePlan`) | the registry row | present only for a GitLab seat | omitted = GitHub; a GitHub plan's shape is unchanged | JSDoc | prepare: the GitHub plan arms, unchanged |
+| `MCP_SERVERS` catalog `forge` field | `src/fleet/contract/mcpServers.mjs` | each workflow entry names its forge | none (#729 derives the defaults from it) | JSDoc | contract spec |
+| Renderer admission (`mcpDeclarationRefusal(forge)`) | the descriptor and the harness's renderer | `gitlab-workflow` is admitted on a GitLab seat for Codex, Claude Code and Claude Desktop, and refused on a GitHub seat and on Kimi / OpenCode, each with its reason | refused before any write | JSDoc | prepare: "the GitLab workflow server runs only on a seat bound to GitLab, and only where the harness renders it" |
+
+Boundaries: the default flip (`github-workflow` off for a GitLab seat) is #729; the installed arm is AC-4, owned by open #684.
+
 ## Acceptance Criteria
 
-- [ ] AC-1: a GitLab seat's spawn env carries `NEO_GITLAB_PAT`, `NEO_GITLAB_HOST` and `NEO_GITLAB_PROJECT`, and no `GH_TOKEN`. A GitHub seat's env is unchanged. A launch env naming any of the three refuses (unit).
-- [ ] AC-2: with `gitlab-workflow` enabled, the resident envelope carries the plane slots and never the host's own `NEO_GITLAB_*` values (unit, with a host value set in the export source).
-- [ ] AC-3: the plan admits an enabled `gitlab-workflow` on a GitLab seat for Codex, Claude Code and Claude Desktop, and each renderer forwards or references the three names. It refuses on a GitHub seat and on Kimi and OpenCode, each with its reason (unit).
+- [x] AC-1: a GitLab seat's spawn env carries `NEO_GITLAB_PAT`, `NEO_GITLAB_HOST` and `NEO_GITLAB_PROJECT`, and no `GH_TOKEN`. A GitHub seat's env is unchanged. A launch env naming any of the three refuses (unit).
+- [x] AC-2: with `gitlab-workflow` enabled, the resident envelope carries the plane slots and never the host's own `NEO_GITLAB_*` values (unit, with a host value set in the export source).
+- [x] AC-3: the plan admits an enabled `gitlab-workflow` on a GitLab seat for Codex, Claude Code and Claude Desktop, and each renderer forwards or references the three names. It refuses on a GitHub seat and on Kimi and OpenCode, each with its reason (unit).
 - [ ] AC-4 `[L4-deferred — operator handoff needed]` (post-merge, installed): a GitLab seat's `gitlab-workflow` reads its project on a self-hosted instance. This is #684's installed arm, so the residual owner is #684.
+
+AC-1 to AC-3 were delivered by PR #742, merged as `db9918e` on 2026-10-02 after @neo-gpt's Round-2 approval at `9995ca9`. Round 1 named the project only for a clone on the exact instance, and backfilled the Contract Ledger. AC-4 stays with #684.
 
 ## Out of Scope
 
@@ -90,6 +109,8 @@ Origin Session ID: c4499e07-1e9b-4f4e-b876-d6afd7ea4364
 Retrieval Hint: "GitLab seat gitlab-workflow NEO_GITLAB_PAT NEO_GITLAB_HOST NEO_GITLAB_PROJECT exportEnv seatEnv unsupportedReason resolveResidentMcpEnvironment"
 
 🖖 Grace (Claude Opus 5.5, Claude Code)
+
+
 
 
 ## Timeline
@@ -123,4 +144,30 @@ The spawn puts a GitLab seat's PAT, instance and working project in the GitLab s
 
 The spawn puts a GitLab seat's PAT, instance and working project in the GitLab slots instead of GH_TOKEN; the resident envelope gains the gitlab-workflow module and excludes every per-seat value from exportEnv; the plan admits the server on a GitLab seat and refuses it elsewhere and on Kimi/OpenCode."
 - 2026-10-01T20:44:52Z @neo-gpt cross-referenced by PR #711
+- 2026-10-02T08:14:43Z @neo-opus-grace referenced in commit `3f61ba3` - "feat(fleet): a GitLab seat runs gitlab-workflow with its own token, host and project (#727)
+
+The spawn puts a GitLab seat's PAT, instance and working project in the GitLab slots instead of GH_TOKEN; the resident envelope gains the gitlab-workflow module and excludes every per-seat value from exportEnv; the plan admits the server on a GitLab seat and refuses it elsewhere and on Kimi/OpenCode."
+- 2026-10-02T08:48:13Z @neo-opus-grace referenced in commit `b64e019` - "feat(fleet): a GitLab seat runs gitlab-workflow with its own token, host and project (#727)
+
+The spawn puts a GitLab seat's PAT, instance and working project in the GitLab slots instead of GH_TOKEN; the resident envelope gains the gitlab-workflow module and excludes every per-seat value from exportEnv; the plan admits the server on a GitLab seat and refuses it elsewhere and on Kimi/OpenCode."
+- 2026-10-02T09:19:02Z @neo-opus-grace referenced in commit `39d4baa` - "feat(fleet): a GitLab seat runs gitlab-workflow with its own token, host and project (#727)
+
+The spawn puts a GitLab seat's PAT, instance and working project in the GitLab slots instead of GH_TOKEN; the resident envelope gains the gitlab-workflow module and excludes every per-seat value from exportEnv; the plan admits the server on a GitLab seat and refuses it elsewhere and on Kimi/OpenCode."
+- 2026-10-02T09:19:05Z @neo-opus-grace cross-referenced by PR #742
+- 2026-10-02T11:07:14Z @neo-opus-grace referenced in commit `9995ca9` - "fix(fleet): a GitLab seat's project is named only for a clone on its exact instance (#727)
+
+An https clone must carry the bound instance's exact origin, so the same host on another port no longer names its project and a bracketed IPv6 instance now does. ssh and scp-style clones still match by host, since SSH has its own port."
+- 2026-10-02T11:32:28Z @tobiu referenced in commit `db9918e` - "feat(fleet): a GitLab seat runs gitlab-workflow with its own token, host and project (#727) (#742)
+
+* feat(fleet): a GitLab seat runs gitlab-workflow with its own token, host and project (#727)
+
+The spawn puts a GitLab seat's PAT, instance and working project in the GitLab slots instead of GH_TOKEN; the resident envelope gains the gitlab-workflow module and excludes every per-seat value from exportEnv; the plan admits the server on a GitLab seat and refuses it elsewhere and on Kimi/OpenCode.
+
+* fix(fleet): a GitLab seat's project is named only for a clone on its exact instance (#727)
+
+An https clone must carry the bound instance's exact origin, so the same host on another port no longer names its project and a bracketed IPv6 instance now does. ssh and scp-style clones still match by host, since SSH has its own port."
+- 2026-10-02T11:32:28Z @tobiu closed this issue
+- 2026-10-02T11:37:50Z @neo-opus-grace cross-referenced by PR #749
+- 2026-10-02T12:46:20Z @neo-opus-grace cross-referenced by #684
+- 2026-10-02T14:02:41Z @neo-opus-grace cross-referenced by #448
 

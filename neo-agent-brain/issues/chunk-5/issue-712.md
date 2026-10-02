@@ -1,7 +1,7 @@
 ---
 id: 712
 title: A seat's PAT is presented only to the forge host it was stored for
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-01T18:10:27Z'
-updatedAt: '2026-10-01T18:10:28Z'
+updatedAt: '2026-10-02T09:16:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/712'
 author: neo-opus-grace
 commentsCount: 0
@@ -25,7 +25,8 @@ contentTrust:
 blockedBy:
   - '[x] 710 A seat''s repository records its forge, and a GitLab slug may name nested groups'
 blocking:
-  - '[ ] 727 A GitLab seat runs gitlab-workflow with its own token, host and project'
+  - '[x] 727 A GitLab seat runs gitlab-workflow with its own token, host and project'
+closedAt: '2026-10-02T09:15:29Z'
 ---
 # A seat's PAT is presented only to the forge host it was stored for
 
@@ -66,9 +67,11 @@ This is leaf 2 of #684, the Fleet's GitLab parity. Leaf 1 (#710, PR #711) record
 
 ## Acceptance Criteria
 
-- [ ] AC-1: a GitLab define records `forge` and `forgeHost` and never returns the PAT. A GitHub define writes the same row as before. A GitLab define without a host refuses and writes nothing, as do a host that is not a bare `https` origin, a host with `github`, and an unknown forge (unit).
-- [ ] AC-2: `updateAgent` (the path `setRepo` and `setAvatar` use) and `configureAgent` leave `forge` and `forgeHost` as defined (unit).
-- [ ] AC-3: a GitLab seat's PAT reaches only its own origin. It is not sent to `github.com` or to another GitLab host, and a GitHub seat's PAT still reaches `github.com` only. Covered by a `gitCloneCommand` matrix, plus a `startAgentProvisioned` arm proving the origin reaches every clone, extras included (unit).
+- [x] AC-1: a GitLab define records `forge` and `forgeHost` and never returns the PAT. A GitHub define writes the same row as before. A GitLab define without a host refuses and writes nothing, as do a host that is not a bare `https` origin, a host with `github`, and an unknown forge (unit).
+- [x] AC-2: `updateAgent` (the path `setRepo` and `setAvatar` use) and `configureAgent` leave `forge` and `forgeHost` as defined (unit).
+- [x] AC-3: a GitLab seat's PAT reaches only its own origin. It is not sent to `github.com` or to another GitLab host, and a GitHub seat's PAT still reaches `github.com` only. Covered by a `gitCloneCommand` matrix, plus a `startAgentProvisioned` arm proving the origin reaches every clone, extras included (unit).
+
+AC-1 to AC-3 were delivered by PR #739, merged as `d0c9410` on 2026-10-02 after @neo-gpt's Round-2 approval at `8460f00`. Round 1 widened AC-1's host rule to bracketed IPv6 origins, and a real-`git` `credential fill` arm now backs AC-3. AC-4 stays with #684.
 - [ ] AC-4 `[L4-deferred — operator handoff needed]` (post-merge, installed): a GitLab seat clones a private repository on a self-hosted instance. This is the same instance as #684's installed arm, so the residual owner is #684.
 
 ## Out of Scope
@@ -102,6 +105,7 @@ Retrieval Hint: "GitLab seat PAT bound to forgeHost clone credential origin gitC
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
 
+
 ## Timeline
 
 - 2026-10-01T18:10:28Z @neo-opus-grace assigned to @neo-opus-grace
@@ -127,4 +131,25 @@ defineAgent records a GitLab seat's forge and instance origin beside its PAT; no
 
 defineAgent records a GitLab seat's forge and instance origin beside its PAT; no scoped verb can re-point it. The clone's credential helper keys on that origin (github.com by default), so a GitLab PAT reaches its own instance and a GitHub PAT still reaches github.com only."
 - 2026-10-01T20:44:52Z @neo-gpt cross-referenced by PR #711
+- 2026-10-02T08:10:23Z @neo-opus-grace referenced in commit `7e508f6` - "feat(fleet): a seat's PAT is presented only to the forge host it was stored for (#712)
+
+defineAgent records a GitLab seat's forge and instance origin beside its PAT; no scoped verb can re-point it. The clone's credential helper keys on that origin (github.com by default), so a GitLab PAT reaches its own instance and a GitHub PAT still reaches github.com only."
+- 2026-10-02T08:10:29Z @neo-opus-grace cross-referenced by PR #739
+- 2026-10-02T08:46:51Z @neo-opus-grace referenced in commit `8460f00` - "fix(fleet): a GitLab instance addressed by an IPv6 literal binds its PAT like a hostname (#712)
+
+The forge-host check admitted only DNS-style hostnames, so a bare https origin like https://[2001:db8::1]:8443 was refused although git's credential helper scopes that key exactly. A bracketed IPv6 literal, as the URL parser serializes it (hex and ':'), now passes; nothing in it can split git's -c key=value."
+- 2026-10-02T09:15:29Z @tobiu referenced in commit `d0c9410` - "feat(fleet): a seat's PAT is presented only to the forge host it was stored for (#712) (#739)
+
+* feat(fleet): a seat's PAT is presented only to the forge host it was stored for (#712)
+
+defineAgent records a GitLab seat's forge and instance origin beside its PAT; no scoped verb can re-point it. The clone's credential helper keys on that origin (github.com by default), so a GitLab PAT reaches its own instance and a GitHub PAT still reaches github.com only.
+
+* fix(fleet): a GitLab instance addressed by an IPv6 literal binds its PAT like a hostname (#712)
+
+The forge-host check admitted only DNS-style hostnames, so a bare https origin like https://[2001:db8::1]:8443 was refused although git's credential helper scopes that key exactly. A bracketed IPv6 literal, as the URL parser serializes it (hex and ':'), now passes; nothing in it can split git's -c key=value."
+- 2026-10-02T09:15:29Z @tobiu closed this issue
+- 2026-10-02T09:19:05Z @neo-opus-grace cross-referenced by PR #742
+- 2026-10-02T12:22:13Z @neo-gpt cross-referenced by PR #749
+- 2026-10-02T14:02:41Z @neo-opus-grace cross-referenced by #448
+- 2026-10-02T14:53:50Z @neo-opus-grace cross-referenced by PR #450
 

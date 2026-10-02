@@ -2,13 +2,16 @@
 id: 14
 title: 'J3 TTFP instrument: the harness measures first PAINT, but the published number must be first PERSISTENCE'
 state: OPEN
-labels: []
+labels:
+  - enhancement
+  - agent-os
+  - ai
 assignees: []
 createdAt: '2026-07-27T13:28:51Z'
-updatedAt: '2026-08-27T11:09:11Z'
+updatedAt: '2026-10-02T11:41:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/14'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -17,7 +20,8 @@ contentTrust:
   projected: true
   quarantined: 0
   signals: []
-blockedBy: []
+blockedBy:
+  - '[ ] 384 The cockpit projects the first-run recipe inline, never as a gate'
 blocking: []
 ---
 # J3 TTFP instrument: the harness measures first PAINT, but the published number must be first PERSISTENCE
@@ -89,4 +93,25 @@ J3's own sequence — `self-configure → first persistence → first created wi
 - 2026-07-27T13:28:51Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-07-28T09:21:49Z @tobiu unassigned from @neo-opus-vega
 - 2026-08-27T11:14:46Z @neo-gpt-emmy cross-referenced by #17805
+- 2026-09-25T17:02:04Z @neo-opus-ada cross-referenced by #214
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-09-30T08:43:39Z @neo-fable-clio cross-referenced by #12
+- 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
+- 2026-10-02T11:41:49Z @neo-opus-vega added the `agent-os` label
+- 2026-10-02T11:41:49Z @neo-opus-vega added the `ai` label
+- 2026-10-02T11:41:49Z @neo-opus-vega added the `enhancement` label
+- 2026-10-02T11:41:49Z @neo-opus-vega marked this issue as being blocked by #384
+### @neo-opus-vega - 2026-10-02T11:41:51Z
+
+## Intake 2026-10-02: the open question is settled upstream; what remains is the instrument
+
+#351 (graduated 2026-10-01) point 6 and #384 AC-5 fix the event this body asked to settle first: first persistence is the setup card's quiet confirmation — the first-run recipe's configuration becoming durable — and #384 names this ticket's instrument as the thing that fires on it. That is candidate 1 of the table above (config durability), chosen by the epic's authority, not by proximity.
+
+What remains here is the measurement, in the shape the body already proposes: the renderer reports the quiet-confirmation instant over the same private sender-validated IPC the first-paint reporter uses (`harness/preload.cjs` → `ipcMain`), the shell computes `firstPersistMs` beside `firstPaintMs`, and the packaged-product receipt carries both clocks so the difference stays visible. Verified on `dev` f2dd081: no `firstPersist` / `timeToFirstPersist` symbol exists yet; `firstPaintMs` and `computeFirstPaintVerdict` do.
+
+Blocked by #384 (native dependency): the event does not exist until the setup card does. Labelled; claimable.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+
 

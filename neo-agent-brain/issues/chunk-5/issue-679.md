@@ -1,7 +1,7 @@
 ---
 id: 679
 title: 'First-run recipe: live step evaluation and one host-owned record'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-01T13:04:30Z'
-updatedAt: '2026-10-01T21:10:57Z'
+updatedAt: '2026-10-02T09:13:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/679'
 author: neo-fable-clio
 commentsCount: 2
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T09:13:47Z'
 ---
 # First-run recipe: live step evaluation and one host-owned record
 
@@ -171,4 +172,24 @@ Origin Session ID: c364ebda-af03-4392-ae57-3d129e60b1df
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 6682a116-897e-4c18-925e-4320d0489481
 
 
+- 2026-10-02T08:35:39Z @neo-fable-clio referenced in commit `464587a` - "feat(fleet): the first-run recipe evaluated live, its host-owned record and the host effects (#679)
+
+One versioned step list whose status is a fresh read per bound target (ADR 0041 §2.3): a question reads the record's consent, an effect reads the observation of its result beside its receipt, an observation reads the owner that already observes it. The record is secret-free by shape, bound by plane id with the data root as corroborating evidence, retired into readable history on a target or version change. The host-effect module is the record's one writer: a pending receipt before a handler, an accepted one after, so an interrupted run resumes as reconcile-required and is settled only by a fresh matching observation, never by replay. The placement step adds the 4 GiB headroom rule over the probe and the preset table."
+- 2026-10-02T08:35:39Z @neo-fable-clio referenced in commit `439521d` - "fix(fleet): a resume keeps the record's root, admits a credential reference before recording it, and settles a pending receipt through the CLI (#679)
+
+Review repair. A resume naming only the identity evaluated against an invocation without a root, so a plane serving the same id over another storage read ok: the record's bound target now fills what the invocation omits (resumeTarget; another identity carries nothing over). The credential answer reached the record before anything read it, so a pasted token was recorded as a path and echoed by the read's ENOENT: a file-reference question (answer: 'file') is admitted first — an absolute path to a readable regular file — and a refusal names the rule, never the value. An evaluated effect row carried no effectId and the writer settled only reconcile-required receipts, so a pending receipt on disk crashed the resume: rows carry their effectId, settleReceipt owns the pending → reconcile-required transition (persisted, never replayed), the run re-evaluates after settling and performs nothing on top of an unsettled effect. The placement step's reason names each possible and refused preset's own cause instead of a headroom shortfall no row had."
+- 2026-10-02T08:57:57Z @neo-fable-clio cross-referenced by #421
+- 2026-10-02T09:13:47Z @tobiu referenced in commit `5c8f1b8` - "feat(fleet): the first-run recipe evaluated live, its host-owned record and the host effects (#679) (#732)
+
+* feat(fleet): the first-run recipe evaluated live, its host-owned record and the host effects (#679)
+
+One versioned step list whose status is a fresh read per bound target (ADR 0041 §2.3): a question reads the record's consent, an effect reads the observation of its result beside its receipt, an observation reads the owner that already observes it. The record is secret-free by shape, bound by plane id with the data root as corroborating evidence, retired into readable history on a target or version change. The host-effect module is the record's one writer: a pending receipt before a handler, an accepted one after, so an interrupted run resumes as reconcile-required and is settled only by a fresh matching observation, never by replay. The placement step adds the 4 GiB headroom rule over the probe and the preset table.
+
+* fix(fleet): a resume keeps the record's root, admits a credential reference before recording it, and settles a pending receipt through the CLI (#679)
+
+Review repair. A resume naming only the identity evaluated against an invocation without a root, so a plane serving the same id over another storage read ok: the record's bound target now fills what the invocation omits (resumeTarget; another identity carries nothing over). The credential answer reached the record before anything read it, so a pasted token was recorded as a path and echoed by the read's ENOENT: a file-reference question (answer: 'file') is admitted first — an absolute path to a readable regular file — and a refusal names the rule, never the value. An evaluated effect row carried no effectId and the writer settled only reconcile-required receipts, so a pending receipt on disk crashed the resume: rows carry their effectId, settleReceipt owns the pending → reconcile-required transition (persisted, never replayed), the run re-evaluates after settling and performs nothing on top of an unsettled effect. The placement step's reason names each possible and refused preset's own cause instead of a headroom shortfall no row had."
+- 2026-10-02T09:13:48Z @tobiu closed this issue
+- 2026-10-02T10:37:21Z @neo-gpt cross-referenced by PR #743
+- 2026-10-02T12:54:59Z @neo-fable cross-referenced by #750
+- 2026-10-02T15:39:30Z @neo-gpt-sophie cross-referenced by PR #765
 

@@ -1,7 +1,7 @@
 ---
 id: 37
 title: Verify the FM architecture guide is KB-retrievable after ingestion
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-08-14T07:14:57Z'
-updatedAt: '2026-08-26T15:01:45Z'
+updatedAt: '2026-10-02T10:25:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/37'
 author: neo-fable-clio
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T10:25:40Z'
 ---
 # Verify the FM architecture guide is KB-retrievable after ingestion
 
@@ -104,4 +105,32 @@ Ran the ticket's two-step check against the live KB plane (post-merge state: the
 - 2026-09-04T20:27:13Z @neo-fable-clio cross-referenced by #314
 - 2026-09-05T00:48:45Z @neo-fable-clio cross-referenced by #323
 - 2026-09-05T00:54:44Z @neo-fable-clio cross-referenced by #324
+- 2026-10-01T09:09:05Z @neo-fable-clio cross-referenced by #659
+- 2026-10-01T09:35:01Z @neo-fable-clio cross-referenced by #663
+- 2026-10-01T13:03:53Z @neo-fable-clio cross-referenced by #678
+- 2026-10-01T13:04:31Z @neo-fable-clio cross-referenced by #679
+- 2026-10-01T13:31:25Z @neo-fable-clio cross-referenced by #685
+- 2026-10-01T13:32:10Z @neo-fable-clio cross-referenced by #686
+- 2026-10-01T14:56:35Z @neo-fable-clio cross-referenced by #694
+- 2026-10-01T15:15:27Z @neo-fable-clio cross-referenced by #696
+- 2026-10-01T15:16:05Z @neo-fable-clio cross-referenced by #697
+- 2026-10-01T17:29:15Z @neo-gpt-sophie cross-referenced by #708
+- 2026-10-02T09:26:35Z @neo-fable-clio cross-referenced by #744
+- 2026-10-02T10:05:27Z @neo-fable-clio cross-referenced by #746
+### @neo-fable-clio - 2026-10-02T10:25:39Z
+
+**Receipts (2026-10-02, canonical plane `neo-local-canonical`, KB healthy, 118,178 rows, deployedRevision `92122a0a`).**
+
+**AC-1 — `ask_knowledge_base` returns the guide's content (type `guide`, two FM-architecture queries):**
+1. *"FM client topology: the three hops between the Fleet Manager client and a plane, and the credential classes on each hop"* → the answer names the three hops with their credential classes (process-lifetime bearer App Worker → relay; PAT-class plane credential relay → ingress; class-1 FM admission bearer at the cutover), citing `learn/agentos/FleetManagerArchitecture.md` (score 10371) beside `RunningTheFleetCockpit.md` and `ClientAuthentication.md`.
+2. *"fleet cockpit truth pipeline: how a card reads INVALID versus not-wired, and which service owns the status"* → the answer gives `normalizeSourceFact` (absent → calm `not-wired`, present-but-rejected → `INVALID`), the producers and the `fleetCockpitStatus` assembler, citing the guide (score 8510).
+
+**AC-2 — the merged revision is in the corpus, identified by fingerprint:** the KB's answer cites `apps/agentos/view/fleet/sourceHealth.mjs`, a path only the 2026-08-14 revisions of the guide carry (`4a389d57cd` = PR neomjs/neo#16936, `3691cefe7c` = D1 neomjs/neo#17110); the three later engine revisions say `util/sourceHealth.mjs` (`1fd30a505f`, 08-22), `util/SourceHealth.mjs` (`313252e69b`, 08-23) and add Brain cross-links (`c623b2f63c`, 08-27). So PR #16936's merged guide is the ingested one. (`get_document_by_id` takes a row id, not a path — the exact check is the fingerprint; `query_documents` lists the guide among the ranked sources for query 1 as well.)
+
+**Residual, owned elsewhere:** the guide's later engine revisions have no refresh path on this plane — `deploy/cloud/kb-config.yaml` registers five external tenants and deliberately not the Neo repo ("Neo returns as a tenant once sources and parsers are declarable per tenant"; the nearest lane is #149's source-family inventory), the KB's in-process ingestion reads `never-attempted` since the 2026-10-01 boot, and the Brain tree the container ingests dropped its copy of this guide in `9c196a2` (#13). The corpus therefore carries the August import of engine `learn/` content. Both ACs as written are met; closing as the evidence trail the ticket asked for.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 1efa16ff-bd83-41e5-87dc-4c186b03b451
+
+
+- 2026-10-02T10:25:40Z @neo-fable-clio closed this issue
 

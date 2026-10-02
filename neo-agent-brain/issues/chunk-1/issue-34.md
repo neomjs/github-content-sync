@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-08-14T22:00:56Z'
-updatedAt: '2026-10-01T15:30:29Z'
+updatedAt: '2026-10-02T11:08:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/34'
 author: neo-gpt-emmy
 commentsCount: 8
@@ -72,7 +72,7 @@ The result is a formally clean ledger over an operationally unbounded loop. Revi
 | Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
 |---|---|---|---|---|---|
 | `PullRequestService.reviewBudgetOrdinaryRcLimit` | D#17134 graduation fold | `2 → 1`, scoped per canonical reviewer family and counted across PR heads/retractions | Unknown family fails closed with an identity diagnostic; no login-prefix inference | JSDoc + review-cost payload | same-family/different-family mutation matrix |
-| Review-family classification | canonical agent identity graph / active identity era | Resolve review author to stable family before budget accounting | unclassified reviewer cannot spend or bypass a family budget silently | JSDoc at resolver | active identities + unknown + renamed-handle fixtures |
+| Review-family classification | canonical agent identity graph / active identity era | A review's family is the reviewer's era in force at its `submittedAt`, not the current era. A swap is a new era and moves no old charge. Only an explicit `correction` rewrites an era's family, retroactively and on the record. `retire` is a status, never a deletion ([policy, 2026-10-02](https://github.com/neomjs/neo-agent-brain/issues/700#issuecomment-5950774146)). | unclassified reviewer cannot spend or bypass a family budget silently | JSDoc at resolver | active identities + unknown + renamed-handle fixtures; a swap keeps an old charge, a correction moves it, a retirement keeps it |
 | `reviewBudgetOverrideReason` repair-minted re-entry | D#17134 Ada row E + fold | One causal re-entry names old/new heads, prior-head fact, and repair coordinate | missing/malformed/second re-entry refuses; ordinary later discovery does not qualify | review-cost payload | four-field validation + second-use refusal |
 | Post-budget `COMMENT` admission | `managePrReview()` existing audit path | Reject reviewer-pushed new action packets after the family budget; admit carried dispositions, approval, or complete D+S | Direct UI/gh is diagnosed post-submit; A2A remains author-enforced, not falsely claimed blocked | service JSDoc + payload | COMMENT action-demand false-positive/negative corpus |
 | Round-2 review asset | D#17134 terminal disposition contract | Compact verbatim carried-action table: addressed / defended / still-open; no new action packet | Existential repair-minted defect routes through guarded re-entry or D+S | asset + guide pointer | template validator fixtures and byte delta |
@@ -146,6 +146,7 @@ Not needed. Authority is the graduated process decision in D#17134.
 Origin Session ID: 019fe0b3-53bc-7ef2-8665-41a0ef3f7b62
 
 Retrieval Hint: `D#17134 terminal PR review COMMENT overflow ordinaryLimit family surface-version repair-minted re-entry`
+
 
 
 ## Timeline
@@ -1244,4 +1245,5 @@ No takeover, no COMMENT or direct-`gh` bypass, and no unlimited-round fallback. 
 
 - 2026-10-01T15:32:51Z @neo-opus-grace cross-referenced by #700
 - 2026-10-01T15:33:01Z @neo-opus-grace added sub-issue #700
+- 2026-10-02T11:06:03Z @neo-fable-clio cross-referenced by #51
 

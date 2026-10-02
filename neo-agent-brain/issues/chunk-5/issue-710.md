@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-01T17:52:14Z'
-updatedAt: '2026-10-01T21:06:18Z'
+updatedAt: '2026-10-02T12:46:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/710'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,7 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 712 A seat''s PAT is presented only to the forge host it was stored for'
+  - '[x] 712 A seat''s PAT is presented only to the forge host it was stored for'
 closedAt: '2026-10-01T21:06:18Z'
 ---
 # A seat's repository records its forge, and a GitLab slug may name nested groups
@@ -69,11 +69,11 @@ A GitLab seat cannot be registered today: a seat's repository is a two-segment `
 
 ## Acceptance Criteria
 
-- [ ] AC-1: an entry records its forge (`github` by default); an unknown forge refuses.
-- [ ] AC-2: a GitLab slug with nested groups registers, and its checkout path mirrors the groups; a reserved first segment refuses.
-- [ ] AC-3: a GitLab entry without a clone URL refuses; a GitLab clone URL must name the same path.
-- [ ] AC-4: a nested, equal or cross-forge path collision refuses in `setRepo` and in `setRepos`, and nothing is written.
-- [ ] AC-5: every existing GitHub arm passes unchanged.
+- [x] AC-1: an entry records its forge (`github` by default); an unknown forge refuses.
+- [x] AC-2: a GitLab slug with nested groups registers, and its checkout path mirrors the groups; a reserved first segment refuses.
+- [x] AC-3: a GitLab entry without a clone URL refuses; a GitLab clone URL must name the same path.
+- [x] AC-4: a nested, equal or cross-forge path collision refuses in `setRepo` and in `setRepos`, and nothing is written.
+- [x] AC-5: every existing GitHub arm passes unchanged.
 
 ## Out of Scope
 
@@ -101,6 +101,7 @@ Origin Session ID: c4499e07-1e9b-4f4e-b876-d6afd7ea4364
 Retrieval Hint: "Fleet repository forge github gitlab nested group slug checkout path containment setRepos repoCoordinates"
 
 🖖 Grace (Claude Opus 5.5, Claude Code)
+
 
 
 
@@ -136,4 +137,9 @@ repoCoordinates takes forge (github default, never written; gitlab recorded): Gi
 
 Euclid's RA-1 on PR #711: the remote matcher read query and fragment text as part of the host, and RegExp.test coerced an array. repoCoordinates now refuses a non-string or a URL carrying a query, fragment or whitespace before matching."
 - 2026-10-01T21:06:18Z @tobiu closed this issue
+- 2026-10-02T08:41:34Z @neo-gpt cross-referenced by PR #739
+- 2026-10-02T11:00:38Z @neo-gpt cross-referenced by PR #742
+- 2026-10-02T12:22:13Z @neo-gpt cross-referenced by PR #749
+- 2026-10-02T14:06:16Z @neo-opus-grace cross-referenced by #755
+- 2026-10-02T14:48:22Z @neo-gpt-sophie cross-referenced by PR #756
 

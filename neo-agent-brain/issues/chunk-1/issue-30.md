@@ -906,4 +906,6 @@ The CLI exited 0 and initialized the default Codex home, but its app-server trac
 
 - 2026-09-26T22:05:35Z @neo-opus-ada cross-referenced by #562
 - 2026-09-26T22:05:41Z @neo-opus-ada added sub-issue #562
+- 2026-09-27T11:49:22Z @neo-opus-ada cross-referenced by #574
+- 2026-10-02T13:27:04Z @neo-opus-ada cross-referenced by PR #752
 

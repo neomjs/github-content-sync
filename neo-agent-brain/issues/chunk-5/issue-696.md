@@ -1,7 +1,7 @@
 ---
 id: 696
 title: A *File sibling for provider keys and a file-writing credential step
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-01T15:15:25Z'
-updatedAt: '2026-10-01T21:21:41Z'
+updatedAt: '2026-10-02T09:24:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/696'
 author: neo-fable-clio
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T09:24:12Z'
 ---
 # A *File sibling for provider keys and a file-writing credential step
 
@@ -133,4 +134,40 @@ Retrieval Hint: "apiKeyFile sibling leaf hosted preset credential step secret fi
 - 2026-10-01T21:12:50Z @neo-fable-clio referenced in commit `7d6d884` - "feat(config): provider keys gain their *File siblings and the first run writes the credential files (#696)
 
 Two leaves (openAiCompatible.apiKeyFile, geminiApiKeyFile) beside the value leaves, one adapter (readSecretCarrier: exactly one carrier, the file read at the call, errors name the leaf and never the contents), every provider-key consumer reading the pair at its use site. The credential step composes the operator's PAT into the admission token file, a distinct minted Fleet plane bearer, and a hosted preset's provider key, emitting only _FILE paths into the carrier; the preset's env set is refused before any write when the profile would not honour it. The local overlay mounts the key as a Compose secret with a /dev/null default so a local plane renders without one."
+- 2026-10-02T08:12:09Z @neo-fable-clio referenced in commit `fee9331` - "feat(config): provider keys gain their *File siblings and the first run writes the credential files (#696)
+
+Two leaves (openAiCompatible.apiKeyFile, geminiApiKeyFile) beside the value leaves, one adapter (readSecretCarrier: exactly one carrier, the file read at the call, errors name the leaf and never the contents), every provider-key consumer reading the pair at its use site. The credential step composes the operator's PAT into the admission token file, a distinct minted Fleet plane bearer, and a hosted preset's provider key, emitting only _FILE paths into the carrier; the preset's env set is refused before any write when the profile would not honour it. The local overlay mounts the key as a Compose secret with a /dev/null default so a local plane renders without one.
+
+The lazy-construction spec of buildChatModel now pins apiKey '' for an unset key: the adapter's unset value, which is also the apiKey leaf default and the provider's own member default (it sends Authorization only for a truthy key). Its former undefined reflected the fixture omitting the field, not a production value."
+- 2026-10-02T08:39:20Z @neo-fable-clio referenced in commit `dbb9d53` - "feat(config): provider keys gain their *File siblings and the first run writes the credential files (#696)
+
+Two leaves (openAiCompatible.apiKeyFile, geminiApiKeyFile) beside the value leaves, one adapter (readSecretCarrier: exactly one carrier, the file read at the call, errors name the leaf and never the contents), every provider-key consumer reading the pair at its use site. The credential step composes the operator's PAT into the admission token file, a distinct minted Fleet plane bearer, and a hosted preset's provider key, emitting only _FILE paths into the carrier; the preset's env set is refused before any write when the profile would not honour it. The local overlay mounts the key as a Compose secret with a /dev/null default so a local plane renders without one.
+
+The lazy-construction spec of buildChatModel now pins apiKey '' for an unset key: the adapter's unset value, which is also the apiKey leaf default and the provider's own member default (it sends Authorization only for a truthy key). Its former undefined reflected the fixture omitting the field, not a production value."
+- 2026-10-02T08:46:48Z @neo-gpt-sophie cross-referenced by PR #732
+- 2026-10-02T08:55:23Z @neo-fable-clio referenced in commit `ab00006` - "fix(config): the Gemini embedding owner reads the key through its two carriers, and the provider-key question is decided after the preset answer (#696)
+
+Review repair. TextEmbeddingService initialized its Gemini client and guarded both request paths from the value leaf alone, so a file-only hosted profile reached the container and embedded nothing: its three sites now read through readSecretCarrier (the value leaf, else the file at the call; both set refuses at construct naming both leaves). The CLI asked its questions from the evaluation taken before any answer, so a cold run asked for a provider key after a local preset was chosen: answerQuestions re-evaluates after every consent and asks a question once the consented preset requires it, and is exported for the in-process renderer spec."
+- 2026-10-02T08:57:57Z @neo-fable-clio cross-referenced by #421
+- 2026-10-02T09:16:45Z @tobiu referenced in commit `b2d6444` - "feat(config): provider keys gain their *File siblings and the first run writes the credential files (#696)
+
+Two leaves (openAiCompatible.apiKeyFile, geminiApiKeyFile) beside the value leaves, one adapter (readSecretCarrier: exactly one carrier, the file read at the call, errors name the leaf and never the contents), every provider-key consumer reading the pair at its use site. The credential step composes the operator's PAT into the admission token file, a distinct minted Fleet plane bearer, and a hosted preset's provider key, emitting only _FILE paths into the carrier; the preset's env set is refused before any write when the profile would not honour it. The local overlay mounts the key as a Compose secret with a /dev/null default so a local plane renders without one.
+
+The lazy-construction spec of buildChatModel now pins apiKey '' for an unset key: the adapter's unset value, which is also the apiKey leaf default and the provider's own member default (it sends Authorization only for a truthy key). Its former undefined reflected the fixture omitting the field, not a production value."
+- 2026-10-02T09:16:46Z @tobiu referenced in commit `48d503f` - "fix(config): the Gemini embedding owner reads the key through its two carriers, and the provider-key question is decided after the preset answer (#696)
+
+Review repair. TextEmbeddingService initialized its Gemini client and guarded both request paths from the value leaf alone, so a file-only hosted profile reached the container and embedded nothing: its three sites now read through readSecretCarrier (the value leaf, else the file at the call; both set refuses at construct naming both leaves). The CLI asked its questions from the evaluation taken before any answer, so a cold run asked for a provider key after a local preset was chosen: answerQuestions re-evaluates after every consent and asks a question once the consented preset requires it, and is exported for the in-process renderer spec."
+- 2026-10-02T09:24:12Z @tobiu referenced in commit `f9ccc2e` - "feat(config): provider keys gain their *File siblings and the first run writes the credential files (#696) (#736)
+
+* feat(config): provider keys gain their *File siblings and the first run writes the credential files (#696)
+
+Two leaves (openAiCompatible.apiKeyFile, geminiApiKeyFile) beside the value leaves, one adapter (readSecretCarrier: exactly one carrier, the file read at the call, errors name the leaf and never the contents), every provider-key consumer reading the pair at its use site. The credential step composes the operator's PAT into the admission token file, a distinct minted Fleet plane bearer, and a hosted preset's provider key, emitting only _FILE paths into the carrier; the preset's env set is refused before any write when the profile would not honour it. The local overlay mounts the key as a Compose secret with a /dev/null default so a local plane renders without one.
+
+The lazy-construction spec of buildChatModel now pins apiKey '' for an unset key: the adapter's unset value, which is also the apiKey leaf default and the provider's own member default (it sends Authorization only for a truthy key). Its former undefined reflected the fixture omitting the field, not a production value.
+
+* fix(config): the Gemini embedding owner reads the key through its two carriers, and the provider-key question is decided after the preset answer (#696)
+
+Review repair. TextEmbeddingService initialized its Gemini client and guarded both request paths from the value leaf alone, so a file-only hosted profile reached the container and embedded nothing: its three sites now read through readSecretCarrier (the value leaf, else the file at the call; both set refuses at construct naming both leaves). The CLI asked its questions from the evaluation taken before any answer, so a cold run asked for a provider key after a local preset was chosen: answerQuestions re-evaluates after every consent and asks a question once the consented preset requires it, and is exported for the in-process renderer spec."
+- 2026-10-02T09:24:12Z @tobiu closed this issue
+- 2026-10-02T09:26:35Z @neo-fable-clio cross-referenced by #744
 

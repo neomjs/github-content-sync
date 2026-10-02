@@ -10,18 +10,20 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-01T13:28:13Z'
-updatedAt: '2026-10-01T18:24:46Z'
+updatedAt: '2026-10-02T12:46:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/684'
 author: neo-opus-grace
 commentsCount: 2
 parentIssue: null
 subIssues:
   - '[x] 710 A seat''s repository records its forge, and a GitLab slug may name nested groups'
-  - '[ ] 712 A seat''s PAT is presented only to the forge host it was stored for'
-  - '[ ] 727 A GitLab seat runs gitlab-workflow with its own token, host and project'
-  - '[ ] 729 A seat''s forge decides which workflow server it starts with'
-subIssuesCompleted: 1
-subIssuesTotal: 4
+  - '[x] 712 A seat''s PAT is presented only to the forge host it was stored for'
+  - '[x] 727 A GitLab seat runs gitlab-workflow with its own token, host and project'
+  - '[x] 729 A seat''s forge decides which workflow server it starts with'
+  - '[ ] 448 The add-agent form defines a GitLab seat on its own instance'
+  - '[ ] 755 A GitLab seat''s repositories default to its own instance'
+subIssuesCompleted: 4
+subIssuesTotal: 6
 contentTrust:
   projected: true
   quarantined: 0
@@ -64,10 +66,10 @@ A seat whose repository lives on GitLab cannot be provisioned or launched:
 
 ## Acceptance Criteria
 
-- [ ] AC-1: a seat defined on a GitLab repository stores a GitLab PAT and never returns it; a GitHub seat is unchanged.
-- [ ] AC-2: the clone of a private GitLab repository authenticates with that PAT, to that host only.
-- [ ] AC-3: the seat's `gitlab-workflow` reaches the self-hosted instance from the derived host and project (unit arms per harness renderer; one installed arm against a real instance).
-- [ ] AC-4: `NEO_MCP_REMOTE_TOKEN` and the forge PAT stay separate slots.
+- [x] AC-1: a seat defined on a GitLab repository stores a GitLab PAT and never returns it; a GitHub seat is unchanged. *(#712 AC-1, PR #739.)*
+- [ ] AC-2: the clone of a private GitLab repository authenticates with that PAT, to that host only. *(Unit evidence: #712 AC-3's `gitCloneCommand` matrix, PR #739. Open for the installed clone, #712 AC-4.)*
+- [ ] AC-3: the seat's `gitlab-workflow` reaches the self-hosted instance from the derived host and project (unit arms per harness renderer; one installed arm against a real instance). *(Unit evidence: #727 AC-1–3, PR #742, and #729's forge defaults, PR #749. Open for the installed arm, #727 AC-4.)*
+- [x] AC-4: `NEO_MCP_REMOTE_TOKEN` and the forge PAT stay separate slots. *(`FleetLifecycleService.spec`: a repository PAT cannot take the plane slot, plus #727 AC-2's resident envelope.)*
 
 ## Out of Scope
 
@@ -87,7 +89,7 @@ A seat whose repository lives on GitLab cannot be provisioned or launched:
 
 Live latest-open sweep: latest 20 open Brain issues at 2026-10-01T13:27:29Z, no equivalent. `gh search issues --owner neomjs` for "GitLab credential injection", "gitlab-workflow Fleet credential", "NEO_GITLAB_PAT Fleet", "gitlab PAT seat": only Institution #245's deferral and #659. MC sweep ("GitLab agent cannot be launched by the Fleet; self-hosted GitLab host and personal access token per seat; plane login takes a GitHub or GitLab PAT"), 6 results: plane PAT modes confirmed; no decision on the Fleet side. Own-assignment sweep: #659 is adjacent, nothing overlapping. Structure map (this session, exit 0): `ai/services/fleet` and `ai/mcp/server/gitlab-workflow`; no new module required.
 
-unowned-rationale: the operator ranks the Claude Desktop seat path first; this records the operator's GitLab requirements so the contract is designed from them. Grace takes it after the seat path clears if it is still free.
+Owner: @neo-opus-grace (taken 2026-10-01 once the seat path cleared). Leaves #710, #712, #727 and #729 are merged. What remains is one installed sitting against a real GitLab instance, which covers AC-2 and AC-3 (#712 AC-4 and #727 AC-4 name this epic as their residual owner).
 
 Body revised 2026-10-01 ~13:40Z: framed as parity, and the clone fix reuses KB ingestion's credential code (operator input).
 
@@ -95,6 +97,7 @@ Origin Session ID: c4499e07-1e9b-4f4e-b876-d6afd7ea4364
 Retrieval Hint: "Fleet GitLab seat self-hosted NEO_GITLAB_HOST NEO_GITLAB_PAT clone auth forge credential per seat"
 
 🖖 Grace · @neo-opus-grace · Claude Opus 5.5 · Claude Code
+
 
 
 ## Timeline
@@ -171,4 +174,17 @@ Each leaf gets its own sub when it starts. Leaf 3 lands after #711 and #712. The
 - 2026-10-01T20:10:36Z @neo-opus-grace added sub-issue #727
 - 2026-10-01T20:23:48Z @neo-opus-grace cross-referenced by #729
 - 2026-10-01T20:23:59Z @neo-opus-grace added sub-issue #729
+- 2026-10-02T08:10:29Z @neo-opus-grace cross-referenced by PR #739
+- 2026-10-02T09:19:05Z @neo-opus-grace cross-referenced by PR #742
+- 2026-10-02T11:37:50Z @neo-opus-grace cross-referenced by PR #749
+- 2026-10-02T13:08:31Z @neo-gpt-emmy cross-referenced by #442
+- 2026-10-02T13:18:16Z @neo-opus-grace cross-referenced by #751
+- 2026-10-02T13:34:04Z @neo-gpt-emmy cross-referenced by PR #445
+- 2026-10-02T14:02:41Z @neo-opus-grace cross-referenced by #448
+- 2026-10-02T14:02:52Z @neo-opus-grace added sub-issue #448
+- 2026-10-02T14:06:16Z @neo-opus-grace cross-referenced by #755
+- 2026-10-02T14:06:21Z @neo-opus-grace added sub-issue #755
+- 2026-10-02T14:22:49Z @neo-opus-grace cross-referenced by PR #756
+- 2026-10-02T14:36:49Z @neo-opus-grace cross-referenced by #760
+- 2026-10-02T14:53:50Z @neo-opus-grace cross-referenced by PR #450
 

@@ -1,7 +1,7 @@
 ---
 id: 408
 title: Accounts shows each repository's last start outcome
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-01T19:08:19Z'
-updatedAt: '2026-10-01T21:05:29Z'
+updatedAt: '2026-10-02T09:43:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/408'
 author: neo-opus-ada
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 407 Accounts: pick the repositories a seat gets clones for'
 blocking: []
+closedAt: '2026-10-02T09:42:40Z'
 ---
 # Accounts shows each repository's last start outcome
 
@@ -56,11 +57,30 @@ Intake decides between them with a measurement of the roster read path.
 - **The on-disk half** extends `inspectFleetRepos`. Today it inspects only `metadata.repo` (neomjs/neo-agent-brain `ai/services/fleet/inspectFleetRepos.mjs`), and can inspect each `metadata.repos` entry the same way.
 - **The failure reason** exists only in the start's answer. neomjs/neo-agent-brain#705 set the precedent for keeping a launch's outcome: `FleetManager.armSeatWake` records the wake route on the lifecycle record with `lifecycle.setWakeRoute(agentId, route, {pid, startedAt})`, bound to that launch. A start's per-repository outcome can ride the same record and reach the roster DTO the same way.
 
+## Contract Ledger
+
+*Added 2026-10-02 with the build, at the Brain pin dev@cbd11cb that carries neomjs/neo-agent-brain#731.*
+
+| Target surface | Source of authority | Behavior | Failure / fallback | Evidence |
+|---|---|---|---|---|
+| Roster row `repoOutcomes` | Brain `fleetCockpitStatus.mjs`, fed by `FleetLifecycleService.setRepoOutcomes` through `status(id).repos` (neomjs/neo-agent-brain#731) | `[{repoSlug, state: 'prepared' \| 'failed', reason?}]`, reasons redacted where they are written | `null` until a start covers other repositories | Brain unit arms on #731 |
+| `FleetAgent.repoOutcomes` | `util/RosterRow.mjs` `mapRosterRow`, `model/FleetAgent.mjs` | The array passes onto the record whole | `null` when the row carries none | the `mapRosterRow` arm, `rosterStore.spec` |
+| Repositories card rows | `view/fleet/detail/AgentReposContainer.mjs`, `RepositoryList.mjs` | Each other repository gets a `Prepared` or `Failed` pill titled *At the last start*, and a failed one shows its reason. The working repository keeps `repoStatus` (`Working`). | No pill when the last start's outcome set has no entry for the slug, or for an unknown `state`. A slug removed and re-added before the next start keeps that start's entry. | `reposCard.spec` arms, the two Accounts goldens |
+| Card heading | `AgentReposContainer` | `Repositories · declared · last start` once any row has an outcome | `Repositories · declared` otherwise | goldens |
+| Lifetime | the Fleet owner process, which holds the launch record | A roster read or a cockpit reload reads it again | A Fleet restart drops it. A seat re-adopted from its lease shows none until its next start. | the "a roster that arrives later fills it" arm |
+
 ## Acceptance Criteria
 
-- [ ] AC-1: after a start, the Repositories card shows each of the seat's other repositories as prepared or failed, and a failed one shows its redacted reason.
-- [ ] AC-2: the outcome is still shown after a roster read and after an app reload.
-- [ ] AC-3: a repository added after the last start shows no outcome until the next start.
+- [x] AC-1: after a start, the Repositories card shows each of the seat's other repositories as prepared or failed, and a failed one shows its redacted reason.
+- [x] AC-2: the outcome is still shown after a roster read and after an app reload.
+- [x] AC-3: a repository the last start did not cover shows no outcome until the next start. One removed and re-added since keeps that start's outcome, because the outcome records the start, not the current list. *(Narrowed 2026-10-02 at @neo-gpt-sophie's #423 contract read: it first said "added after the last start", which a re-added slug is not.)*
+
+## Post-Merge Validation
+
+- [ ] On an installed Fleet Manager carrying Brain pin 10 or later (#12's next package), start a seat whose other repositories include one that clones and one that cannot.
+  - Accounts shows `Prepared` and `Failed`, and the failed row shows its redacted reason.
+  - A cockpit reload keeps both.
+  - A Fleet restart clears them until the seat's next start.
 
 ## Out of Scope
 
@@ -82,6 +102,10 @@ Intake decides between them with a measurement of the roster read path.
 Origin Session ID: 84a3bf84-c9cb-4215-818a-d9640f49669a
 
 Authored by Ada (Claude Opus 5.5, Claude Code).
+
+
+
+
 
 
 ## Timeline
@@ -118,4 +142,43 @@ Evidence at `08f3047`:
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-10-02T08:22:02Z @neo-fable cross-referenced by #391
+- 2026-10-02T08:52:45Z @neo-fable cross-referenced by #418
+- 2026-10-02T08:57:51Z @neo-opus-ada referenced in commit `620f3e5` - "feat(agentos): the Repositories card shows each repository's last start outcome (#408)
+
+The roster row's repoOutcomes (neomjs/neo-agent-brain#731) maps onto FleetAgent. The card joins
+it by slug, reading the provider's fleetRoster Store and never writing it: prepared, or failed
+with the Fleet's redacted reason. The heading names the last start whenever an outcome shows."
+- 2026-10-02T08:57:52Z @neo-opus-ada referenced in commit `3ea5228` - "test(agentos): the fleet sample's seat carries a prepared and a failed repository outcome (#408)"
+- 2026-10-02T08:57:52Z @neo-opus-ada referenced in commit `cac53e8` - "chore(deps): Brain pin 10 (dev@cbd11cb) carries the start's per-repository outcome on the roster row (#408)"
+- 2026-10-02T08:57:52Z @neo-opus-ada referenced in commit `1b9afbc` - "test(agentos): the Accounts goldens show a prepared and a failed repository, re-captured over #413 (#408)"
+- 2026-10-02T09:00:59Z @neo-opus-ada cross-referenced by PR #423
+- 2026-10-02T09:05:31Z @neo-opus-ada cross-referenced by #424
+- 2026-10-02T09:31:58Z @neo-opus-ada referenced in commit `214d239` - "feat(agentos): the Repositories card shows each repository's last start outcome (#408)
+
+The roster row's repoOutcomes (neomjs/neo-agent-brain#731) maps onto FleetAgent. The card joins
+it by slug, reading the provider's fleetRoster Store and never writing it: prepared, or failed
+with the Fleet's redacted reason. The heading names the last start whenever an outcome shows."
+- 2026-10-02T09:31:58Z @neo-opus-ada referenced in commit `1fee678` - "test(agentos): the fleet sample's seat carries a prepared and a failed repository outcome (#408)"
+- 2026-10-02T09:31:58Z @neo-opus-ada referenced in commit `bec7836` - "chore(deps): Brain pin 10 (dev@cbd11cb) carries the start's per-repository outcome on the roster row (#408)"
+- 2026-10-02T09:31:59Z @neo-opus-ada referenced in commit `6e7a1e7` - "test(agentos): the Accounts goldens show a prepared and a failed repository, re-captured over #413 (#408)"
+- 2026-10-02T09:31:59Z @neo-opus-ada referenced in commit `0341fb8` - "test(agentos): an outcome records the last start, so a repository removed and re-added before the next one keeps it (#408)"
+- 2026-10-02T09:36:15Z @neo-gpt-emmy cross-referenced by #430
+- 2026-10-02T09:42:40Z @tobiu referenced in commit `7b031c3` - "feat(agentos): the Repositories card shows each repository's last start outcome (#408) (#423)
+
+* feat(agentos): the Repositories card shows each repository's last start outcome (#408)
+
+The roster row's repoOutcomes (neomjs/neo-agent-brain#731) maps onto FleetAgent. The card joins
+it by slug, reading the provider's fleetRoster Store and never writing it: prepared, or failed
+with the Fleet's redacted reason. The heading names the last start whenever an outcome shows.
+
+* test(agentos): the fleet sample's seat carries a prepared and a failed repository outcome (#408)
+
+* chore(deps): Brain pin 10 (dev@cbd11cb) carries the start's per-repository outcome on the roster row (#408)
+
+* test(agentos): the Accounts goldens show a prepared and a failed repository, re-captured over #413 (#408)
+
+* test(agentos): an outcome records the last start, so a repository removed and re-added before the next one keeps it (#408)"
+- 2026-10-02T09:42:40Z @tobiu closed this issue
+- 2026-10-02T11:20:41Z @neo-fable-clio cross-referenced by PR #433
 

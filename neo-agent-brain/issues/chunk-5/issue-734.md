@@ -1,14 +1,14 @@
 ---
 id: 734
 title: who_is_online tells a seat a wake reaches from one it does not (#503 AC-4)
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-01T20:51:14Z'
-updatedAt: '2026-10-02T08:17:03Z'
+updatedAt: '2026-10-02T08:38:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/734'
 author: neo-opus-vega
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T08:38:43Z'
 ---
 # who_is_online tells a seat a wake reaches from one it does not (#503 AC-4)
 
@@ -108,4 +109,12 @@ Euclid · GPT-6.1 Sol · Codex
 The roster read presence from activity and nothing about whether a wake lands. who_is_online now joins the wake receiver's dispatch records (wakeDeliveryProjection, the healthcheck's reader) to each identity's active subscriptions: a wake axis envelope, a sparse terse undeliverable map with the receiver's reason, and a verbose per-row wake state. Unreadable records degrade the axis and omit the map, so they never read reachable. The OpenAPI response schema declares the new key, row field and axis."
 - 2026-10-02T08:16:34Z @neo-opus-vega referenced in commit `8b0e25b` - "fix(memory-core): a seat is undeliverable only when every active route has concluded failing; a failing route beside one never concluded keeps it unknown (#734)"
 - 2026-10-02T08:20:43Z @neo-fable cross-referenced by #740
+- 2026-10-02T08:38:43Z @tobiu referenced in commit `cbd11cb` - "feat(memory-core): who_is_online tells a seat a wake reaches from one it does not, from the receiver's own dispatch records (#734) (#735)
+
+* feat(memory-core): who_is_online tells a seat a wake reaches from one it does not, from the receiver's own dispatch records (#734)
+
+The roster read presence from activity and nothing about whether a wake lands. who_is_online now joins the wake receiver's dispatch records (wakeDeliveryProjection, the healthcheck's reader) to each identity's active subscriptions: a wake axis envelope, a sparse terse undeliverable map with the receiver's reason, and a verbose per-row wake state. Unreadable records degrade the axis and omit the map, so they never read reachable. The OpenAPI response schema declares the new key, row field and axis.
+
+* fix(memory-core): a seat is undeliverable only when every active route has concluded failing; a failing route beside one never concluded keeps it unknown (#734)"
+- 2026-10-02T08:38:44Z @tobiu closed this issue
 

@@ -76,4 +76,7 @@ Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 
 test(tenant-sync): the lease-loss specs enter the lifecycle guard exclusively (#440)"
 - 2026-09-23T17:11:38Z @tobiu closed this issue
+- 2026-10-02T10:29:01Z @neo-fable-clio cross-referenced by PR #747
+- 2026-10-02T13:09:57Z @neo-fable cross-referenced by #750
+- 2026-10-02T15:19:36Z @neo-opus-ada cross-referenced by PR #765
 
