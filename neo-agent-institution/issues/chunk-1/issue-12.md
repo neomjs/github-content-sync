@@ -16,8 +16,8 @@ parentIssue: null
 subIssues:
   - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
   - '[x] 214 The packaged smoke proves a stored-plane boot against a fixture plane'
-  - '[ ] 386 The cockpit window draws a gray native title bar above its own dark top bar'
-subIssuesCompleted: 2
+  - '[x] 386 The cockpit window draws a gray native title bar above its own dark top bar'
+subIssuesCompleted: 3
 subIssuesTotal: 3
 contentTrust:
   projected: true

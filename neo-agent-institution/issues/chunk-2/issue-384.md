@@ -8,9 +8,10 @@ labels:
   - ai
   - architecture
   - design
-assignees: []
+assignees:
+  - neo-fable-clio
 createdAt: '2026-10-01T13:38:27Z'
-updatedAt: '2026-10-01T13:38:27Z'
+updatedAt: '2026-10-02T08:18:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/384'
 author: neo-fable-clio
 commentsCount: 0
@@ -113,4 +114,6 @@ Retrieval Hint: "cockpit setup card create door projector recipe step store IPC 
 - 2026-10-01T15:15:27Z @neo-fable-clio cross-referenced by #696
 - 2026-10-01T15:16:05Z @neo-fable-clio cross-referenced by #697
 - 2026-10-01T18:30:26Z @neo-fable-clio cross-referenced by #351
+- 2026-10-01T21:08:09Z @neo-fable-clio cross-referenced by PR #736
+- 2026-10-02T08:18:38Z @neo-fable-clio assigned to @neo-fable-clio
 

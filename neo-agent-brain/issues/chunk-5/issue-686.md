@@ -1,7 +1,7 @@
 ---
 id: 686
 title: 'Three supported presets as env sets: hosted, local-small, local-full'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-01T13:32:09Z'
-updatedAt: '2026-10-01T21:10:58Z'
+updatedAt: '2026-10-02T08:21:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/686'
 author: neo-fable-clio
 commentsCount: 1
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 713 The Gemini model leaves gain env bindings so the hosted preset can name its models'
 blocking: []
+closedAt: '2026-10-02T08:21:22Z'
 ---
 # Three supported presets as env sets: hosted, local-small, local-full
 
@@ -35,6 +36,8 @@ Epic neomjs/neo-agent-institution#351, shape point 4 (*simple by default: choose
 Parent: neomjs/neo-agent-institution#351 (sub-issue link set after creation). Consumers: the recipe's preset step (#679) and the probe's `fitsPreset()` (#685).
 
 *Narrowed 2026-10-01 by the author: the AiConfig half (AC-4, the Gemini env bindings) moved to #713 and the floor instrument with its recorded runs (AC-5 / AC-6) to #714, so the `ai/configBase.mjs` touch gets its own ADR 0019 review and the measurement lane its own receipts. This leaf is the table, the parity lint and the re-embed path.*
+
+*Edited 2026-10-02 by the author after PR #715's Round 1 (@neo-gpt-emmy, RA-1 + RA-2): a declared leaf binding is not a forwarded input. A preset now speaks the inputs the effective profile consumes, the parity check scans that profile, and a dimension change takes an explicit fresh database name. The Fix 1–3, the ledger and AC-2 / AC-3 say so.*
 
 ## The Problem
 
@@ -51,9 +54,9 @@ Today the supported configurations live in prose across `learn/agentos/ModelProv
 
 ## The Fix
 
-1. **A preset table as data** — one module exporting `presets` beside the probe in `ai/services/fleet/`: `{id: 'hosted' | 'local-small' | 'local-full', label, inference, profile (ADR 0019 §10.7), authorityProfile, env: {NEO_…: value}, requires: ['chatModel' | 'embeddingModel' | 'providerKey' | 'repos' | 'pat'], vectorDimension, embedder, chatModel, workload: {planeIdleBytes, planePeakBytes, modelsBytes, vmCapRecommendedBytes}, qualityFloor: {instrument, measuredAt, result} | null}`. Values measured on the fixture plane, never on ours; `workload` is what the probe's `fitsPreset()` consumes. The hosted preset declares `pendingBindings` for the two Gemini leaves until #713 lands.
-2. **The leaf-parity lint** — a spec that resolves every `env` key of every preset against the declared leaf bindings (`ai/configBase.mjs`'s `leaf(…, 'ENV_NAME')` declarations) and fails on an unknown key: the mitigation named in the Discussion's convergence pass for option I ("drift between the recipe and the leaves").
-3. **The birth decision** — each preset declares `vectorDimension`; the recipe's preset step (#679) shows it; a preset change after ingest is a **new store**, never an in-place re-dimension — the module exports `reembedPath(fromPreset, toPreset)` returning the named path (new store name, the env values that select it, the re-embed steps) or `null` when the dimension is unchanged.
+1. **A preset table as data** — one module exporting `presets` beside the probe in `ai/services/fleet/`: `{id: 'hosted' | 'local-small' | 'local-full', label, inference, profile (ADR 0019 §10.7), authorityProfile, env: {INPUT: value}, requires: ['chatModel' | 'embeddingModel' | 'providerKey' | 'repos' | 'pat'], vectorDimension, embedder, chatModel, workload: {planeIdleBytes, planePeakBytes, modelsBytes, vmCapRecommendedBytes}, qualityFloor: {instrument, measuredAt, result} | null}`. Values measured on the fixture plane, never on ours; `workload` is what the probe's `fitsPreset()` consumes. The hosted preset declares `pendingBindings` for the two Gemini leaves until #713 lands. An `env` key is an **input the profile's Compose files read**, not a leaf's own env name: the local overlay feeds the openAiCompatible leaves from its own `NEO_LOCAL_AGENT_OS_*` inputs, takes the three provider names as inputs with the local default, and forwards `NEO_VECTOR_DIMENSION` + `NEO_CHROMA_DATABASE` (`deploy/cloud/docker-compose.local-agent-os.yml`).
+2. **The effective-profile parity check** — `profileInputs()` reads the profile's Compose files in order, and the last file to feed an env name wins (an overlay that re-feeds a base pass-through from its own input removes the base's input). A spec fails any preset `env` key that is not an input of that profile, or whose landing env name (itself, or the name the overlay maps it onto) is no `leaf(…, 'ENV_NAME')` binding in `ai/configBase.mjs`. This is the mitigation named in the Discussion's convergence pass for option I ("drift between the recipe and the leaves").
+3. **The birth decision** — each preset declares `vectorDimension`; the recipe's preset step (#679) shows it; a preset change after ingest is a **new store**, never an in-place re-dimension. Storage selection belongs to the deployment, so the module names no store itself: `reembedPath(fromPreset, toPreset, {currentDatabase, freshDatabase})` requires an explicit fresh Chroma database name for a dimension change. It refuses a missing name, the current database, the default (`default_database`) and a name outside Chroma's grammar. It returns `{from, to, database: {current, fresh}, env: {NEO_VECTOR_DIMENSION, NEO_CHROMA_DATABASE}, steps}`: the two values the profile forwards, plus the steps with the deployment's own nonexistence check (a name proves nothing). It returns `null` when the dimension is unchanged.
 4. **The Gemini bindings** — #713.
 5. **The floor instrument** — #714.
 
@@ -62,16 +65,16 @@ Today the supported configurations live in prose across `learn/agentos/ModelProv
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
 | `presets[]` | D#18965 option I + OQ3/4/8 dispositions; ADR 0019 §10.7/§10.8 | env sets over declared profiles, each with `authorityProfile`, workload, dimension, floor | a preset without a recorded floor is `candidate`, never offered by default | module JSDoc + `ModelProviders.md` pointer | unit: three presets, every field present |
-| the leaf-parity lint | convergence pass (option I's residual risk) | every preset env key resolves to a declared leaf binding | an unknown key fails the suite | JSDoc | unit: a fixture preset with a typo'd key fails |
-| `vectorDimension` + `reembedPath()` | OQ4 | pinned per preset; change after ingest → a new store by name | same dimension → `null` | JSDoc + `SharedDeployment.md` | unit: 1024 → 4096 names the path; 4096 → 4096 is `null` |
+| the effective-profile parity check | convergence pass (option I's residual risk); PR #715 RA-1 | every preset env key is an input of the profile's Compose files (last writer per env name) and lands on a declared leaf binding | an unconsumed or undeclared key fails the suite | JSDoc | unit: the leaf-named pre-repair shape, a typo'd key, a shadowed base input and an undeclared landing each fail |
+| `vectorDimension` + `reembedPath()` | OQ4; PR #715 RA-2 | pinned per preset; change after ingest → an explicit, validated fresh database the deployment chose; the current one stays in Chroma's volume | same dimension → `null`; a missing, current, default or malformed name refuses | JSDoc + `SharedDeployment.md` | unit: 1024 → 4096 with a fresh name returns the two env values + the nonexistence step; the refusals; a round trip needs a new name per hop; 4096 → 4096 is `null` |
 | the Gemini env bindings | OQ5's AC | → #713 | — | — | — |
 | the floor instrument | OQ8 | → #714 | — | — | — |
 
 ## Acceptance Criteria
 
 - [ ] AC-1 Three presets exported with every contract field; `local-small` pins 1024 dims with the 0.6b embedder, `local-full` the 8b at 4096, `hosted` 3072 with `gemini-embedding-001`; workloads carry the fixture measurements, not our plane's. Unit.
-- [ ] AC-2 The leaf-parity lint resolves every preset env key against the declared leaf bindings and fails on a fixture preset with an unknown key. Unit.
-- [ ] AC-3 `reembedPath()` names the new-store path for a dimension change and returns `null` for none; no code path re-dimensions in place. Unit.
+- [ ] AC-2 The effective-profile parity check: every shipped preset's env keys are inputs the profile's Compose files read (last writer per env name) and land on declared leaf bindings; a leaf-named key the overlay does not read, a typo'd key, a shadowed base input and an input landing on an undeclared name each fail. Unit.
+- [ ] AC-3 `reembedPath()` requires an explicit fresh database name for a dimension change, refusing a missing, current, default or malformed one. It returns the two env values the profile forwards plus steps that include the deployment's nonexistence check, and `null` for an unchanged dimension; no code path re-dimensions in place. Unit.
 - [ ] AC-4 *(after #713 / PR #716 lands — #686 is blocked-by #713; moved here from #713's AC-3 on 2026-10-01 18:4xZ per @neo-opus-grace's closure read)*: the hosted preset names both Gemini models through its `env` (`NEO_GEMINI_MODEL`, `NEO_GEMINI_EMBEDDING_MODEL`) and its `pendingBindings` is empty; the leaf-parity spec stays green. Unit, carried by PR #715 after its rebase.
 - [ ] ~~AC-5 / AC-6~~ → #714 (the floor instrument; the recorded runs, hosted post-merge with an operator-supplied key).
 
@@ -97,6 +100,7 @@ Origin Session ID: 6682a116-897e-4c18-925e-4320d0489481
 Retrieval Hint: "three presets env sets declared leaves vector dimension birth decision re-embed new collection quality floor instrument"
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 6682a116-897e-4c18-925e-4320d0489481
+
 
 
 
@@ -145,4 +149,14 @@ Review repair. The local overlay's provider anchor fixed all three providers and
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 6682a116-897e-4c18-925e-4320d0489481
 
 
+- 2026-10-02T08:21:22Z @tobiu referenced in commit `074dae2` - "feat(fleet): three supported presets as env sets over declared leaves, with the re-embed path (#686) (#715)
+
+* feat(fleet): three supported presets as env sets over declared leaves, with the re-embed path (#686)
+
+* feat(fleet): the hosted preset names its Gemini models through the new env bindings (#686)
+
+* fix(fleet): the presets speak the profile's consumed inputs and a dimension change needs a validated fresh database (#686)
+
+Review repair. The local overlay's provider anchor fixed all three providers and read the openAiCompatible model names from its own NEO_LOCAL_AGENT_OS_* inputs, and neither Compose file forwarded NEO_VECTOR_DIMENSION or NEO_CHROMA_DATABASE, so a preset's provider and dimension choices never reached a container. The anchor now takes the providers as inputs with the local default and forwards the dimension and the database; the presets name the inputs the profile reads; the parity witness scans the effective profile (last writer per env name across the files) beside the leaf names. reembedPath no longer derives a store from the dimension: it requires an explicit fresh database name, refuses the current one and the default, emits the two env values the profile forwards, and leaves existence in Chroma to the deployment's own check."
+- 2026-10-02T08:21:23Z @tobiu closed this issue
 

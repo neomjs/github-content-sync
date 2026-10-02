@@ -1,7 +1,7 @@
 ---
 id: 730
 title: A start's per-repository outcome stays on the seat's launch record and reaches the roster
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-01T20:27:12Z'
-updatedAt: '2026-10-01T21:05:31Z'
+updatedAt: '2026-10-02T08:23:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/730'
 author: neo-opus-ada
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T08:23:58Z'
 ---
 # A start's per-repository outcome stays on the seat's launch record and reaches the roster
 
@@ -117,4 +118,23 @@ Downstream: neomjs/neo-agent-institution#408's Institution half is pushed (`ada/
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-10-02T08:10:55Z @neo-opus-ada referenced in commit `34e0401` - "feat(fleet): a start's per-repository outcome stays on its launch record and reaches the roster (#730)
+
+FleetLifecycleService.setRepoOutcomes records the provisioned start's repos on the launch's process record, bound by pid and startedAt like setWakeRoute; status(id) reports it, fleetRuntimeStatus passes it through, and the cockpit roster row carries it as repoOutcomes. The start's own answer is unchanged."
+- 2026-10-02T08:10:56Z @neo-opus-ada referenced in commit `12e444b` - "docs(fleet): the activity-identity comment names its aliasing without a ticket-shaped number (#730)
+
+The shared baseline's archaeology gate reads every changed file whole, and this pre-existing comment's example read as two ticket references. The wording keeps its meaning."
+- 2026-10-02T08:10:56Z @neo-opus-ada referenced in commit `2a915b6` - "docs(fleet): status() names the repos outcome it reports (#730)"
+- 2026-10-02T08:23:58Z @tobiu referenced in commit `ba68ac3` - "feat(fleet): a start's per-repository outcome stays on its launch record and reaches the roster (#730) (#731)
+
+* feat(fleet): a start's per-repository outcome stays on its launch record and reaches the roster (#730)
+
+FleetLifecycleService.setRepoOutcomes records the provisioned start's repos on the launch's process record, bound by pid and startedAt like setWakeRoute; status(id) reports it, fleetRuntimeStatus passes it through, and the cockpit roster row carries it as repoOutcomes. The start's own answer is unchanged.
+
+* docs(fleet): the activity-identity comment names its aliasing without a ticket-shaped number (#730)
+
+The shared baseline's archaeology gate reads every changed file whole, and this pre-existing comment's example read as two ticket references. The wording keeps its meaning.
+
+* docs(fleet): status() names the repos outcome it reports (#730)"
+- 2026-10-02T08:23:58Z @tobiu closed this issue
 

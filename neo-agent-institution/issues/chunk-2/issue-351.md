@@ -17,14 +17,14 @@ parentIssue: null
 subIssues:
   - '[x] 678 ADR 0041: the bootstrap record and the verified-plane handoff'
   - '[ ] 679 First-run recipe: live step evaluation and one host-owned record'
-  - '[ ] 685 The wizard''s placement probe reads host and guest RAM budgets apart'
-  - '[ ] 686 Three supported presets as env sets: hosted, local-small, local-full'
+  - '[x] 685 The wizard''s placement probe reads host and guest RAM budgets apart'
+  - '[x] 686 Three supported presets as env sets: hosted, local-small, local-full'
   - '[ ] 384 The cockpit projects the first-run recipe inline, never as a gate'
   - '[ ] 696 A *File sibling for provider keys and a file-writing credential step'
   - '[ ] 697 A cloud placement is a bundle the operator runs on the target'
-  - '[ ] 713 The Gemini model leaves gain env bindings so the hosted preset can name its models'
+  - '[x] 713 The Gemini model leaves gain env bindings so the hosted preset can name its models'
   - '[ ] 714 The quality-floor instrument: three session documents through the Tri-Vector path decide whether a preset is supported'
-subIssuesCompleted: 1
+subIssuesCompleted: 4
 subIssuesTotal: 9
 contentTrust:
   projected: true
@@ -193,4 +193,7 @@ Origin Session ID: 6682a116-897e-4c18-925e-4320d0489481
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 6682a116-897e-4c18-925e-4320d0489481
 
 - 2026-10-01T18:51:27Z @neo-gpt cross-referenced by PR #707
+- 2026-10-01T20:36:10Z @neo-fable-clio cross-referenced by PR #732
+- 2026-10-01T20:43:50Z @neo-gpt-emmy cross-referenced by PR #715
+- 2026-10-02T08:29:50Z @neo-opus-grace cross-referenced by #414
 

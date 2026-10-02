@@ -1,7 +1,7 @@
 ---
 id: 411
 title: 'The cockpit sets a seat''s own plane credential, and the agent config names the Fleet instead of local services'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-01T20:15:06Z'
-updatedAt: '2026-10-01T21:04:24Z'
+updatedAt: '2026-10-02T08:31:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/411'
 author: neo-opus-vega
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T08:31:44Z'
 ---
 # The cockpit sets a seat's own plane credential, and the agent config names the Fleet instead of local services
 
@@ -114,4 +115,39 @@ Pickup protocol:
 3. AC-5 (installed L4) stays with #7.
 
 
+- 2026-10-02T08:12:05Z @neo-opus-vega referenced in commit `ec583ed` - "feat(agentos): the cockpit sets a seat's own plane credential, and the agent config names this fleet instead of local services (#411)
+
+Brain #728 adds the credential-bearing verb setPlaneCredential({id, credential}).
+The shell projects it to {id} alone and prompts for the credential in main,
+asking for the seat's own identity-only PAT, never its checkout PAT. The agent
+config offers "Plane credential · Set" to a seat on this fleet whose harness
+reaches a remote Memory Core; the round-trip routes the intent, writes no
+record, and shows the Brain's own outcome. A bridge without the verb, or one
+whose credentials are not the shell's to take, sends nothing and says why.
+"Local services" now reads "This fleet". The three Accounts goldens are
+re-captured and the baseline stamp refreshed."
+- 2026-10-02T08:12:05Z @neo-opus-vega referenced in commit `76c0550` - "test(harness): the plane-credential capability path runs over Brain #728's contract and refuses on a contract without the verb (#411)"
+- 2026-10-02T08:12:05Z @neo-opus-vega referenced in commit `63e4cae` - "test(harness): the capability fixture names the contract it injects, not its ticket (#411)"
+- 2026-10-02T08:12:05Z @neo-opus-vega referenced in commit `8505c65` - "test(agentos): the Accounts goldens re-captured over the repositories card, after the rebase onto #412 (#411)"
+- 2026-10-02T08:31:25Z @neo-opus-vega cross-referenced by #416
+- 2026-10-02T08:31:44Z @tobiu referenced in commit `d52a90e` - "feat(agentos): the cockpit sets a seat's own plane credential, and the agent config names this fleet instead of local services (#411) (#413)
+
+* feat(agentos): the cockpit sets a seat's own plane credential, and the agent config names this fleet instead of local services (#411)
+
+Brain #728 adds the credential-bearing verb setPlaneCredential({id, credential}).
+The shell projects it to {id} alone and prompts for the credential in main,
+asking for the seat's own identity-only PAT, never its checkout PAT. The agent
+config offers "Plane credential · Set" to a seat on this fleet whose harness
+reaches a remote Memory Core; the round-trip routes the intent, writes no
+record, and shows the Brain's own outcome. A bridge without the verb, or one
+whose credentials are not the shell's to take, sends nothing and says why.
+"Local services" now reads "This fleet". The three Accounts goldens are
+re-captured and the baseline stamp refreshed.
+
+* test(harness): the plane-credential capability path runs over Brain #728's contract and refuses on a contract without the verb (#411)
+
+* test(harness): the capability fixture names the contract it injects, not its ticket (#411)
+
+* test(agentos): the Accounts goldens re-captured over the repositories card, after the rebase onto #412 (#411)"
+- 2026-10-02T08:31:44Z @tobiu closed this issue
 

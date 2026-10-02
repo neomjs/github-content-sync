@@ -8,7 +8,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-01T20:51:14Z'
-updatedAt: '2026-10-01T21:10:33Z'
+updatedAt: '2026-10-02T08:17:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/734'
 author: neo-opus-vega
 commentsCount: 1
@@ -41,10 +41,22 @@ This is #503's AC-4, split out the way #512 carried its health half: one deliver
 
 ## The Fix
 
-1. `projectIdentityWakeReachability(ids, verdicts)` goes in the pure projection module. A seat is `reachable` when one of its routes lands, `undeliverable` when its routes keep failing (with the newest reason and its streak), and `unknown` otherwise.
+1. `projectIdentityWakeReachability(ids, verdicts)` goes in the pure projection module. A seat is `reachable` when one of its routes lands, `undeliverable` only when every active route has concluded failing (with the newest failing route's reason and streak), and `unknown` otherwise, including a failing route beside one the receiver never concluded.
 2. `readActiveWakeSubscriptionIdsByIdentity`: one per-subscription query that reuses the existing active-status predicate.
 3. `whoIsOnline` gains a `wake` axis envelope, a sparse terse `undeliverable` map, and a verbose per-row `wake`. Unreadable records degrade the envelope and omit the map.
 4. The OpenAPI response schema declares the new key and fields.
+
+## Contract Ledger
+
+| Target surface | Source of authority | Behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| `who_is_online` producer | `WakeSubscriptionService.whoIsOnline` → `_readWakeReachability`, which joins `readWakeDelivery` (`wakeDeliveryReader.mjs`, the reader `healthcheck` uses) to `readActiveWakeSubscriptionIdsByIdentity` (`readActiveWakeSubscriptionIdentities.mjs`, the existing active-status predicate) through `projectIdentityWakeReachability` (`wakeDeliveryProjection.mjs`) | Each rostered identity's ACTIVE subscriptions are joined to the receiver's per-subscription verdicts, once per projection. No new reader, no new store. | Either input unreadable ⇒ `{available: false, reason}`; nothing is cached across calls. | OpenAPI `whoIsOnline` description | `WakeSubscriptionService.spec` "whether a wake can reach the seat (#503)" |
+| `axes.wake` envelope (terse and verbose) | `_composedAxesEnvelope`; the capability-envelope grammar `axes.presence` / `axes.load` already use | `{source: 'memory-core:whoIsOnline', plane: 'host', signal: 'wake-receiver-records', state: 'wired', confidence: 'observed', capturedAt, reason}` when both inputs read. | `state: 'degraded', confidence: 'none'`, `reason` naming the unreadable input: the receiver's records, or the active-subscription scan. | OpenAPI `axes` description | Same describe block: the wired arm and the degraded arm |
+| Terse `undeliverable` map | `whoIsOnline` terse return | Sparse, like `reviewLoad`: identity → the newest failing route's `outcomeReason`, only rostered seats whose EVERY active route has concluded failing. An absent seat is reachable, unsubscribed, or has a route the receiver never concluded. | Omitted whole (no key) when the wake axis is degraded, so absence never reads reachable. | OpenAPI `undeliverable` property | Terse assertions in the same block: `{broken: reason}`, `{}` with a half-observed seat, and `not.toHaveProperty` when unreadable |
+| Verbose `agents[].wake` | `whoIsOnline` verbose rows | `{state: 'reachable'}` · `{state: 'undeliverable', reason, consecutiveFailures}` · `{state: 'unknown'}` · `{state: 'unsubscribed'}` (no active route). `reason` and `consecutiveFailures` appear only with `undeliverable`. | `{state: 'unknown', reason}` on every row when the axis is degraded; the reason is the envelope's. | OpenAPI `agents[].wake` schema | Per-row assertions in the same block |
+| Active-route aggregation | `projectIdentityWakeReachability` (pure) | One `reachable` route ⇒ `reachable`. Every active route `unreachable` ⇒ `undeliverable`, newest `lastAttemptedAt` lends reason and streak. Any active route without a verdict or with an `unknown` verdict ⇒ `unknown`. No active route ⇒ `unknown`. `skipped` records stay transparent (unchanged from #512). | — (pure; no I/O) | JSDoc on the function | `wakeDeliveryProjection.spec` "one seat across its routes": reachable-wins, all-failed, the three mixed cases, and the three unknown cases |
+
+Evidence: L2 (service over a temp records directory + the container graph; pure projection). The L3 plane observation stays with #503 (AC-4's live read on the running plane). Outside this leaf: #503 AC-6/AC-7 and the reader/config authority gap in #547.
 
 ## Acceptance Criteria
 
@@ -65,6 +77,7 @@ Live latest-open sweep at 20:50Z: latest 20 open Brain issues, plus a search for
 
 Origin Session ID: 6b4062a3-941e-4b08-b997-765875a5b207
 Retrieval Hint: "who_is_online wake reachability undeliverable receiver records"
+
 
 
 ## Timeline
@@ -90,4 +103,9 @@ This ends this Codex session on the operator's explicit request. It does not hal
 Origin Session ID: 01a0f6a0-7a41-75c1-964b-84bdb0d2e00f
 Euclid · GPT-6.1 Sol · Codex
 
+- 2026-10-02T08:16:34Z @neo-opus-vega referenced in commit `5d80251` - "feat(memory-core): who_is_online tells a seat a wake reaches from one it does not, from the receiver's own dispatch records (#734)
+
+The roster read presence from activity and nothing about whether a wake lands. who_is_online now joins the wake receiver's dispatch records (wakeDeliveryProjection, the healthcheck's reader) to each identity's active subscriptions: a wake axis envelope, a sparse terse undeliverable map with the receiver's reason, and a verbose per-row wake state. Unreadable records degrade the axis and omit the map, so they never read reachable. The OpenAPI response schema declares the new key, row field and axis."
+- 2026-10-02T08:16:34Z @neo-opus-vega referenced in commit `8b0e25b` - "fix(memory-core): a seat is undeliverable only when every active route has concluded failing; a failing route beside one never concluded keeps it unknown (#734)"
+- 2026-10-02T08:20:43Z @neo-fable cross-referenced by #740
 

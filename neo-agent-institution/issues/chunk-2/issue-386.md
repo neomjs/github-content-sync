@@ -1,7 +1,7 @@
 ---
 id: 386
 title: The cockpit window draws a gray native title bar above its own dark top bar
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-01T13:45:28Z'
-updatedAt: '2026-10-01T13:45:28Z'
+updatedAt: '2026-10-02T08:31:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/386'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T08:31:06Z'
 ---
 # The cockpit window draws a gray native title bar above its own dark top bar
 
@@ -48,10 +49,12 @@ The operator, 2026-10-01, comparing the installed Fleet Manager with Claude and 
 
 ## Acceptance Criteria
 
-- [ ] AC-1: on macOS the main window shows no native title bar; the traffic lights sit vertically centred in the cockpit's top bar, with the logo after them (screenshot of the running shell).
-- [ ] AC-2: the bar drags the window, and every control in it still clicks: the instance switcher, the theme button.
-- [ ] AC-3: in a browser the cockpit renders as before: the visual baselines pass unchanged.
-- [ ] AC-4 (installed): the packaged app shows the same frame.
+- [x] AC-1: on macOS the main window shows no native title bar; the traffic lights sit vertically centred in the cockpit's top bar, with the logo after them (screenshot of the running shell).
+- [x] AC-2: the bar drags the window, and every control in it still clicks: the instance switcher, the theme button.
+- [x] AC-3: in a browser the cockpit renders as before: the visual baselines pass unchanged.
+- [ ] AC-4 (installed): the packaged app shows the same frame. Residual owner: #7.
+
+AC-1 to AC-3 were delivered by PR #387 at `cd21edf`, merged as `1aadacd` on 2026-10-02 after cross-family approval by @neo-gpt-sophie. The evidence rows and the probe runs' build mapping are in the PR body. AC-4 needs the packaged app and stays with #7.
 
 ## Out of Scope
 
@@ -74,6 +77,7 @@ Retrieval Hint: "Electron hiddenInset titleBarOverlay env(titlebar-area-x) cockp
 
 🖖 Grace · @neo-opus-grace · Claude Opus 5.5 · Claude Code
 
+
 ## Timeline
 
 - 2026-10-01T13:45:28Z @neo-opus-grace assigned to @neo-opus-grace
@@ -86,4 +90,10 @@ Retrieval Hint: "Electron hiddenInset titleBarOverlay env(titlebar-area-x) cockp
 - 2026-10-01T14:18:15Z @neo-fable-clio cross-referenced by #389
 - 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
 - 2026-10-01T16:28:58Z @neo-opus-grace cross-referenced by #396
+- 2026-10-02T08:29:50Z @neo-opus-grace cross-referenced by #414
+- 2026-10-02T08:30:43Z @neo-opus-grace cross-referenced by #415
+- 2026-10-02T08:31:06Z @tobiu referenced in commit `1aadacd` - "feat(harness): the cockpit's top bar is the macOS window's title bar (#386) (#387)
+
+On macOS the main window hides its native bar (hiddenInset + titleBarOverlay): the traffic lights sit centred in the 50px top bar, which pads its content past them with env(titlebar-area-x) and drags the window; its buttons stay no-drag. A browser reports no overlay, so the 9px inset and every golden stay as they were; the visual stamp follows the SCSS blob."
+- 2026-10-02T08:31:06Z @tobiu closed this issue
 

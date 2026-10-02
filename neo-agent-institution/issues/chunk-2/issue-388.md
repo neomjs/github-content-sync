@@ -1,7 +1,7 @@
 ---
 id: 388
 title: A closed stdio pipe turns every harness log line into a crash dialog
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-01T14:14:19Z'
-updatedAt: '2026-10-01T14:14:21Z'
+updatedAt: '2026-10-02T08:26:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/388'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T08:25:05Z'
 ---
 # A closed stdio pipe turns every harness log line into a crash dialog
 
@@ -65,10 +66,12 @@ The reader goes away whenever a launcher pipes the harness's stdio and exits fir
 
 ## Acceptance Criteria
 
-- [ ] AC-1: a harness main whose stdio reader is gone raises no uncaught exception on console writes. The reproduction above goes from 38 of 40 to 0.
-- [ ] AC-2: `main.log` still receives every line, plus one line naming the terminal error, written once.
-- [ ] AC-3: unit spec: after `install()`, an error emitted on an injected terminal stream does not throw, and the file records the one line once, however many errors follow.
-- [ ] AC-4: with a live terminal nothing changes: lines print and land in the file.
+- [x] AC-1: a harness main whose stdio reader is gone raises no uncaught exception on console writes. The reproduction above goes from 38 of 40 to 0.
+- [x] AC-2: `main.log` still receives every line, plus one line naming the terminal error, written once.
+- [x] AC-3: unit spec: after `install()`, an error emitted on an injected terminal stream does not throw, and the file records the one line once, however many errors follow.
+- [x] AC-4: with a live terminal nothing changes: lines print and land in the file.
+
+Delivered by PR #390 at `610ee17`, merged as `c9d3c85` (2026-10-02, cross-family approval by @neo-gpt-sophie). Each AC's evidence row is in the PR body.
 
 ## Out of Scope
 
@@ -97,6 +100,7 @@ Retrieval Hint: "harness mainLog EPIPE uncaught dialog closed stdio pipe termina
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
 
+
 ## Timeline
 
 - 2026-10-01T14:14:21Z @neo-opus-grace added the `bug` label
@@ -109,4 +113,8 @@ Retrieval Hint: "harness mainLog EPIPE uncaught dialog closed stdio pipe termina
 - 2026-10-01T14:18:43Z @neo-fable-clio cross-referenced by #391
 - 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
 - 2026-10-01T16:28:58Z @neo-opus-grace cross-referenced by #396
+- 2026-10-02T08:25:05Z @tobiu referenced in commit `c9d3c85` - "fix(harness): a terminal whose reader went away no longer turns each log line into a crash dialog (#388) (#390)
+
+mainLog.install listens for errors on the terminal streams: the terminal half drops quietly, main.log names why once and keeps every line. Before, each console write into a pipe without a reader raised an uncaught EPIPE, which Electron shows as a modal dialog."
+- 2026-10-02T08:25:05Z @tobiu closed this issue
 

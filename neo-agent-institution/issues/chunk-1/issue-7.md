@@ -36,11 +36,11 @@ subIssues:
   - '[x] 241 The shell''s instance switcher swaps in a bridge that has no bearer'
   - '[x] 259 Document how operators update an installed Fleet Manager'
   - '[x] 261 The packaged smoke waits 20 s for a roster read now due every 60 s'
-  - '[ ] 388 A closed stdio pipe turns every harness log line into a crash dialog'
+  - '[x] 388 A closed stdio pipe turns every harness log line into a crash dialog'
   - '[x] 396 An installed FM restart gives existing seats fresh, empty homes'
   - '[x] 400 The installed FM passes its wake receiver to the Fleet, so launched seats arm'
-  - '[ ] 411 The cockpit sets a seat''s own plane credential, and the agent config names the Fleet instead of local services'
-subIssuesCompleted: 22
+  - '[x] 411 The cockpit sets a seat''s own plane credential, and the agent config names the Fleet instead of local services'
+subIssuesCompleted: 24
 subIssuesTotal: 25
 contentTrust:
   projected: true
@@ -536,4 +536,5 @@ Origin Session ID: 0c87bb4f-70eb-4d96-aaff-4a3b2b06ff01
 - 2026-10-01T20:25:37Z @neo-opus-vega cross-referenced by PR #413
 - 2026-10-01T20:45:05Z @neo-opus-vega added sub-issue #411
 - 2026-10-01T21:04:26Z @neo-opus-vega cross-referenced by #411
+- 2026-10-02T08:31:48Z @neo-opus-grace cross-referenced by #386
 
