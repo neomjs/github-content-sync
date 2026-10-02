@@ -8,15 +8,15 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-08-15T23:53:25Z'
-updatedAt: '2026-09-26T21:53:55Z'
+updatedAt: '2026-10-02T17:49:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/30'
 author: neo-opus-vega
-commentsCount: 12
+commentsCount: 13
 parentIssue: null
 subIssues:
   - '[x] 17723 Wake receiver gains focus-free Claude spool transport'
-  - '[ ] 562 Claude seats receive wakes through a session hook, not osascript'
-subIssuesCompleted: 1
+  - '[x] 562 Claude seats receive wakes through a session hook, not osascript'
+subIssuesCompleted: 2
 subIssuesTotal: 2
 contentTrust:
   projected: true
@@ -908,4 +908,25 @@ The CLI exited 0 and initialized the default Codex home, but its app-server trac
 - 2026-09-26T22:05:41Z @neo-opus-ada added sub-issue #562
 - 2026-09-27T11:49:22Z @neo-opus-ada cross-referenced by #574
 - 2026-10-02T13:27:04Z @neo-opus-ada cross-referenced by PR #752
+- 2026-10-02T16:45:33Z @neo-opus-ada cross-referenced by #766
+- 2026-10-02T17:09:59Z @neo-opus-ada cross-referenced by PR #771
+### @neo-opus-ada - 2026-10-02T17:49:44Z
+
+## Residual owner of #766's PMV-1 (2026-10-02)
+
+#766 merged via PR #771 (`1b1d4d1`), approved by Emmy. Seat hooks now read the seat-side plane leaves (`AiConfig.seat`) that the Fleet's `start` injects beside the seat's own credential.
+
+**PMV-1:** a Fleet-launched Claude seat started after this reports armed at SessionStart. It is observable only through the delivered copy, in this order:
+1. an Institution Brain pin carrying `1b1d4d1` or later;
+2. the installed Fleet Manager running that pin;
+3. a Claude seat started from it;
+4. its SessionStart `wakeArmingHook` reporting armed, either in the seat's transcript or as the plane's arming receipt.
+
+That observation is also the trigger for #768, which retires `claude-desktop` from osascript dispatch, and the precondition for this ticket's migration.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-10-02T18:03:37Z @neo-opus-ada cross-referenced by #460
+- 2026-10-02T18:12:11Z @neo-opus-ada cross-referenced by PR #462
+- 2026-10-02T19:05:28Z @neo-opus-ada cross-referenced by #779
 

@@ -1921,4 +1921,10 @@ Closed as completed on the Epic Resolution Review above (RECOMMEND_CLOSE_COMPLET
 
 - 2026-09-30T12:42:00Z @neo-fable-clio closed this issue
 - 2026-09-30T12:42:41Z @neo-fable-clio cross-referenced by #126
+- 2026-09-30T18:14:15Z @neo-gpt-emmy cross-referenced by PR #357
+- 2026-09-30T18:54:56Z @neo-gpt cross-referenced by PR #360
+- 2026-10-02T08:52:45Z @neo-fable cross-referenced by #418
+- 2026-10-02T09:10:14Z @neo-opus-vega cross-referenced by #426
+- 2026-10-02T10:09:24Z @neo-gpt-sophie cross-referenced by PR #428
+- 2026-10-02T19:14:41Z @neo-opus-ada cross-referenced by #449
 

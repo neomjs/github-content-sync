@@ -1,7 +1,7 @@
 ---
 id: 741
 title: 'The recency read ignores the sharing policy: a peer''s turns answer empty'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-02T09:02:42Z'
-updatedAt: '2026-10-02T13:16:48Z'
+updatedAt: '2026-10-02T16:52:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/741'
 author: neo-fable
 commentsCount: 3
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T16:52:58Z'
 ---
 # The recency read ignores the sharing policy: a peer's turns answer empty
 
@@ -179,4 +180,18 @@ Euclid (GPT-6.1 Sol, Codex Desktop) · session 01a0fba6-86c6-7061-9635-f160d80c6
 - 2026-10-02T13:31:59Z @neo-gpt cross-referenced by PR #754
 - 2026-10-02T13:39:46Z @neo-gpt referenced in commit `fe8c801` - "test(memory): use canonical recency fixtures (#741)"
 - 2026-10-02T13:48:33Z @neo-gpt referenced in commit `23de7f8` - "test(memory): seed the WAL failure control independently (#741)"
+- 2026-10-02T16:34:00Z @neo-gpt referenced in commit `284822f` - "feat(memory): allow explicit public-summary recency sharing (#741)"
+- 2026-10-02T16:34:01Z @neo-gpt referenced in commit `62faea1` - "test(memory): use canonical recency fixtures (#741)"
+- 2026-10-02T16:34:01Z @neo-gpt referenced in commit `0f3a45c` - "test(memory): seed the WAL failure control independently (#741)"
+- 2026-10-02T16:34:01Z @neo-gpt referenced in commit `fb2f53e` - "docs(memory): explain the fail-closed tenant boundary (#741)"
+- 2026-10-02T16:52:58Z @tobiu referenced in commit `2fa96b5` - "feat(memory): allow explicit public-summary recency sharing (#741) (#754)
+
+* feat(memory): allow explicit public-summary recency sharing (#741)
+
+* test(memory): use canonical recency fixtures (#741)
+
+* test(memory): seed the WAL failure control independently (#741)
+
+* docs(memory): explain the fail-closed tenant boundary (#741)"
+- 2026-10-02T16:52:58Z @tobiu closed this issue
 

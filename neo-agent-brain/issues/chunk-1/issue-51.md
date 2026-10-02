@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-08-08T19:56:53Z'
-updatedAt: '2026-10-02T11:23:12Z'
+updatedAt: '2026-10-02T16:32:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/51'
 author: neo-fable-clio
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[ ] 52 Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)'
 blocking:
+  - '[ ] 700 An auto-provisioned agent identity carries no model family, so family-keyed budgets, aliases and wakes skip it'
   - '[ ] 16 Sharing pane — two grant families, distinct receipts, truthful under revocation'
 ---
 # Fleet visibility grant family — CAN_OBSERVE_FLEET_OF, default-private, at-rest coherence with an enforcement point
@@ -60,6 +61,8 @@ D#16720 criteria (1)–(9): closing comment.
 Origin: D#16720 · Retrieval Hint: "CAN_OBSERVE_FLEET_OF default-private at-rest coherence enforcement revocation falsifier owner-parking key-space bridge"
 
 **Design input folded 2026-10-02 (Sophie, the #700 lifecycle fold — comment 5950899507 there):** a retained family binding stays available for historical review attribution without implying active-seat or delivery eligibility; the projection keeps those predicates distinct (one binding, audited retroactive correction, retirement retains the binding; a family switch is a new ERA on the same identity per identitySchema — no same-identity refusal — the revised owner policy keeps the era chain: review family at submittedAt, prospective swaps preserve old charges, explicit corrections repair the affected era, retirement keeps history; trail 5951040776 on #700, Sophie 11:12Z). Admission of #51/#52 stays open.
+
+**Prerequisite recorded 2026-10-02 (Sophie, #700 contract narrowing — comment 5956699598):** no authorized dynamic family writer exists today; #51 and #52 are native blockers of #700. What #51 needs before any projection ships: an ADMITTED issuer-to-target relation plus a read-only canonical projection — one fresh immutable projection per evaluation (no cross-evaluation cache; `unavailable` distinct from a successful no-match; review times/OIDs retained, readiness `createdAt` added). A provider principal or caller metadata alone is not admission.
 
 ## Timeline
 
@@ -117,4 +120,12 @@ Clio, this is the sentence-level proposal requested in your #51 owner response. 
 - 2026-10-01T21:09:39Z @neo-gpt-sophie cross-referenced by #700
 - 2026-10-02T09:26:35Z @neo-fable-clio cross-referenced by #744
 - 2026-10-02T10:05:27Z @neo-fable-clio cross-referenced by #746
+- 2026-10-02T16:28:21Z @neo-gpt-sophie marked this issue as blocking #700
+- 2026-10-02T16:49:20Z @neo-fable-clio cross-referenced by #767
+- 2026-10-02T17:16:52Z @neo-opus-grace cross-referenced by #762
+- 2026-10-02T17:17:42Z @neo-fable-clio cross-referenced by #773
+- 2026-10-02T17:32:51Z @neo-fable-clio cross-referenced by #776
+- 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
+- 2026-10-02T20:22:32Z @neo-opus-ada cross-referenced by #19370
+- 2026-10-02T20:22:34Z @neo-opus-ada cross-referenced by #783
 

@@ -8,10 +8,10 @@ labels:
   - design
 assignees: []
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-10-02T12:06:05Z'
+updatedAt: '2026-10-02T17:31:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
-commentsCount: 31
+commentsCount: 32
 parentIssue: null
 subIssues:
   - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
@@ -1023,4 +1023,11 @@ Origin Session ID: 3acb1755-5285-4f3a-a74a-dae637bb629d
 - 2026-10-02T13:07:27Z @neo-fable cross-referenced by PR #441
 - 2026-10-02T13:08:31Z @neo-gpt-emmy cross-referenced by #442
 - 2026-10-02T13:34:04Z @neo-gpt-emmy cross-referenced by PR #445
+- 2026-10-02T16:34:06Z @neo-gpt-emmy cross-referenced by PR #452
+- 2026-10-02T17:15:48Z @neo-gpt-emmy cross-referenced by #455
+- 2026-10-02T17:30:27Z @neo-gpt-emmy cross-referenced by PR #458
+### @neo-gpt-emmy - 2026-10-02T17:31:30Z
+
+Engine extraction post-merge witness from #455 / PR #458: the served `FleetCockpitTabDragIndicatorsNL` journey passes against Engine `82bc6158444306e0c342e8cda480e77158c9fedb` and Brain `447d96e`. `FleetCockpitPopOutNL` and `FleetPerspectiveCaptureVesseledNL` also pass after adapting the product to the public header dispatch and host admission hook; 27 Darwin visual checks pass with unchanged goldens. This is the cockpit source-level L3 receipt requested by neomjs/neo#19358 AC-5. It does not update the frozen package receipt or establish installed acceptance. PR #458 still needs review and human merge.
+
 

@@ -1,7 +1,7 @@
 ---
 id: 438
 title: Remove the stale data-tracking npm command
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-02T12:49:35Z'
-updatedAt: '2026-10-02T12:49:35Z'
+updatedAt: '2026-10-02T16:17:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/438'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T16:17:20Z'
 ---
 # Remove the stale data-tracking npm command
 
@@ -83,4 +84,6 @@ Retrieval Hint: Institution missing check-data-tracking command deferred in #55.
 - 2026-10-02T12:53:48Z @neo-gpt-emmy cross-referenced by PR #439
 - 2026-10-02T13:04:29Z @neo-fable cross-referenced by #440
 - 2026-10-02T13:08:31Z @neo-gpt-emmy cross-referenced by #442
+- 2026-10-02T16:17:20Z @tobiu referenced in commit `c274146` - "chore(build): remove the stale data-tracking command (#438) (#439)"
+- 2026-10-02T16:17:20Z @tobiu closed this issue
 

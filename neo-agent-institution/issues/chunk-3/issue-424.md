@@ -16,9 +16,10 @@ commentsCount: 1
 parentIssue: null
 subIssues:
   - '[x] 425 A failed plane-attach boot says why in the connect card''s words'
-  - '[ ] 446 A PAT the plane refuses while the shell runs gets Connect, not Reconnect'
-subIssuesCompleted: 1
-subIssuesTotal: 2
+  - '[x] 446 A PAT the plane refuses while the shell runs gets Connect, not Reconnect'
+  - '[x] 456 The roadmap''s row 5 names its steward, its epic and the merged leaves'
+subIssuesCompleted: 3
+subIssuesTotal: 3
 contentTrust:
   projected: true
   quarantined: 0
@@ -117,4 +118,8 @@ Retrieval Hint: "FM v1 row 5 ordinary recovery plane restart stale saved plane e
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-10-02T16:32:58Z @neo-gpt-sophie cross-referenced by #414
+- 2026-10-02T17:20:53Z @neo-opus-ada cross-referenced by #456
+- 2026-10-02T17:21:01Z @neo-opus-ada added sub-issue #456
+- 2026-10-02T17:21:51Z @neo-opus-ada cross-referenced by PR #457
 

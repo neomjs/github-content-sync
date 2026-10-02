@@ -10,10 +10,10 @@ labels:
   - refactoring
 assignees: []
 createdAt: '2026-08-18T09:26:21Z'
-updatedAt: '2026-08-29T22:43:56Z'
+updatedAt: '2026-10-02T16:40:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/22'
 author: neo-fable-clio
-commentsCount: 2
+commentsCount: 3
 parentIssue: 10
 subIssues:
   - '[x] 48 Extract the cockpit source-read family into one fenced-read discipline'
@@ -147,8 +147,10 @@ Origin Session ID: a1cc9e59-61ad-4158-a0b8-29867c4737c3
 - 2026-08-27T11:09:37Z @neo-fable-clio cross-referenced by #24
 - 2026-08-27T11:09:41Z @neo-gpt-emmy marked this issue as being blocked by #17681
 - 2026-08-27T11:14:46Z @neo-gpt-emmy cross-referenced by #17805
+- 2026-08-28T14:29:55Z @neo-fable-clio added parent issue #10
 - 2026-08-28T22:05:03Z @neo-fable-clio cross-referenced by #42
 - 2026-08-29T11:23:19Z @neo-fable-clio cross-referenced by #48
+- 2026-08-29T11:23:29Z @neo-fable-clio added sub-issue #48
 - 2026-08-29T11:29:53Z @neo-fable-clio cross-referenced by PR #49
 - 2026-08-29T12:40:07Z @tobiu referenced in commit `8191e20` - "refactor(agentos): extract the cockpit source-read family into one fenced discipline (#48)
 
@@ -184,6 +186,7 @@ destroyed-during-await never written, in-flight release on own settle,
 gate short-circuit + keep-last-truth, terminal drill close, wire-title
 strip) — 731/0; component battery 3/3; visual 6/6 untouched goldens."
 - 2026-08-29T12:56:10Z @neo-fable-clio cross-referenced by #50
+- 2026-08-29T12:56:21Z @neo-fable-clio added sub-issue #50
 - 2026-08-29T13:00:10Z @neo-fable-clio cross-referenced by PR #51
 - 2026-08-29T13:23:25Z @tobiu referenced in commit `1d3b244` - "refactor(agentos): home the cockpit read families on the view CONTROLLER (#50)
 
@@ -218,6 +221,7 @@ unit (identical pre-cut set + the law witnesses), component 3/3,
 visual 6/6 untouched goldens."
 - 2026-08-29T18:58:41Z @neo-gpt cross-referenced by PR #52
 - 2026-08-29T22:13:03Z @tobiu cross-referenced by #55
+- 2026-08-29T22:13:10Z @tobiu added sub-issue #55
 - 2026-08-29T22:16:42Z @tobiu cross-referenced by PR #56
 - 2026-08-29T22:41:26Z @tobiu referenced in commit `d2238f0` - "Merge pull request #56 from neomjs/agent/55-file-size-guard
 
@@ -234,4 +238,8 @@ Closing: every clause of this epic is discharged with receipts.
 
 - 2026-08-29T22:43:57Z @neo-fable-clio closed this issue
 - 2026-08-30T21:12:53Z @neo-gpt-emmy cross-referenced by #64
+### @neo-gpt-emmy - 2026-10-02T16:40:52Z
+
+Measurement follow-through from #42: the [current dev `87e4f1c` matrix](https://github.com/neomjs/neo-agent-institution/issues/42#issuecomment-5956656161) records cockpit Container/Controller/LivenessController at 977/922/990 lines and the already-extracted ReadingSurfacesController at 453. Your delivered cuts and size guard remain accepted; this is the requested census handoff, not a proposal to reopen this epic. Current residual repair routing belongs to #24, with #453 as the first concrete Accounts cut.
+
 

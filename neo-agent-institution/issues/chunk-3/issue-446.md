@@ -1,14 +1,14 @@
 ---
 id: 446
 title: 'A PAT the plane refuses while the shell runs gets Connect, not Reconnect'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T13:34:28Z'
-updatedAt: '2026-10-02T14:35:26Z'
+updatedAt: '2026-10-02T16:18:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/446'
 author: neo-opus-ada
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T16:18:23Z'
 ---
 # A PAT the plane refuses while the shell runs gets Connect, not Reconnect
 
@@ -140,4 +141,56 @@ newer reply, then the older reply, in both result directions, beside the
 existing single-recovery control."
 - 2026-10-02T14:45:55Z @neo-opus-ada referenced in commit `08421a4` - "test(visual): the golden stamp names the episode-token inputs, re-rendered with no pixel change (#446)"
 - 2026-10-02T15:29:38Z @neo-opus-ada cross-referenced by #424
+- 2026-10-02T16:13:43Z @tobiu referenced in commit `5d1d9c1` - "docs(adr): ADR-0034 §2.3 item 8 gains verifyPlane(), the broker's runtime PAT check (#19362) (#19363)
+
+* docs(adr): ADR-0034 §2.3 item 8 gains verifyPlane(), the broker's runtime PAT check (#19362)
+
+The plane-attach broker names a third capability. verifyPlane() probes the record the shell
+launched its fleet child with and answers {cause}: plane-credential-refused, plane-identity-changed,
+or null. It never answers the PAT and never probes a plane the environment supplied. The item is
+retitled from "pair" to "broker" to match.
+
+Prerequisite for neomjs/neo-agent-institution#446: a PAT the plane refuses mid-session reads as
+"plane unreachable" today, and the banner offers only Reconnect.
+
+* docs(adr): ADR-0034 §2.3 item 8 names main's broker probes as the PAT's second route (#19362)"
+- 2026-10-02T16:18:23Z @tobiu referenced in commit `87e4f1c` - "feat(agentos): a PAT the plane refuses while the shell runs gets Connect, not Reconnect (#446) (#447)
+
+* feat(agentos): a PAT the plane refuses while the shell runs gets Connect, not Reconnect (#446)
+
+A PAT that expires mid-session made every roster read fail upstream. The plane answers it with
+401, but the Fleet's plane client reads that as "plane unreachable", the wire sanitizes it, and the
+banner offered only Reconnect, which sends the same refused PAT again.
+
+- The plane broker gains verifyPlane() (shell-plane-verify), as amended into ADR 0034 §2.3 item 8:
+  main probes the record this shell launched its fleet child with and answers {cause}, never the
+  PAT. runtimePlaneCause keeps only the credential's own answers: plane-credential-refused and
+  plane-identity-changed.
+- The liveness owner asks once per failed roster-read episode (PlaneCredentialCheck), and an
+  answered read clears the cause. The banner speaks it with the connect card's words and Connect;
+  an unreachable plane mid-session keeps Reconnect.
+- main keeps the launched record in one place, which the boot refusal typing now reads too.
+- Visual baselines re-stamped: the 27 goldens pass unchanged.
+
+* fix(agentos): a plane-credential answer belongs to the episode that asked for it (#446)
+
+PlaneCredentialCheck kept one Boolean per failure episode. After a read
+recovered and a second failure opened a new episode, the first episode's
+late answer passed the check and overwrote the newer one, in either
+direction.
+
+Each episode now asks with its own token. settle() clears the token, and an
+answer publishes only while its own token is current. One ask per episode
+stays.
+
+The spec adds the control for recovery, then a second failure, then the
+newer reply, then the older reply, in both result directions, beside the
+existing single-recovery control.
+
+* test(visual): the golden stamp names the episode-token inputs, re-rendered with no pixel change (#446)"
+- 2026-10-02T16:18:24Z @tobiu closed this issue
+- 2026-10-02T17:20:53Z @neo-opus-ada cross-referenced by #456
+- 2026-10-02T17:21:51Z @neo-opus-ada cross-referenced by PR #457
+- 2026-10-02T17:22:43Z @neo-fable cross-referenced by #19366
+- 2026-10-02T19:20:16Z @neo-opus-ada cross-referenced by #15
 

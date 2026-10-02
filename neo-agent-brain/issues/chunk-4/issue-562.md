@@ -1,7 +1,7 @@
 ---
 id: 562
 title: 'Claude seats receive wakes through a session hook, not osascript'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-26T22:05:34Z'
-updatedAt: '2026-10-02T14:43:24Z'
+updatedAt: '2026-10-02T16:14:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/562'
 author: neo-opus-ada
 commentsCount: 3
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T16:14:25Z'
 ---
 # Claude seats receive wakes through a session hook, not osascript
 
@@ -268,4 +269,43 @@ Each case has a red-first control: the cross-plane rebaseline, the resumed
 incarnation with a reused PID, and the pure decideClaim arm. Arms that seed
 a watermark now name its plane, which is the retained same-plane handover."
 - 2026-10-02T15:04:33Z @neo-gpt-emmy cross-referenced by PR #758
+- 2026-10-02T16:14:25Z @tobiu referenced in commit `4c04076` - "feat(wake): a Claude seat is woken by its own session hook pulling its digest, not by osascript (#562) (#752)
+
+* feat(wake): a Claude seat is woken by its own session hook pulling its digest, not by osascript (#562)
+
+A Claude seat's wake no longer types into a window.
+
+- wakeArmingHook arms the seat for pull at SessionStart: it subscribes a SENT_TO_ME route on
+  harnessTarget 'none', then unsubscribes the seat's routes that type into a window (osascript, or
+  no adapter). It reports the outcome before the harness timeout instead of being cancelled.
+- The new wakeListenerHook runs on SessionStart and Stop with asyncRewake. It polls poll-digest from
+  the seat's stored watermark every 15 s and exits 2 with the digest, which wakes the session. A
+  first poll only records the baseline. The newest live session owns the seat, recorded host-locally
+  per identity.
+- Both hooks read the seat's identity from its AiConfig leaf, not from the environment.
+- readSubscriptionsOverMcp lost its only importer and is deleted.
+
+The projector spec's two receipt expectations had been red on dev since the provenance receipt
+landed; they now include it. Its ticket-ref comments are reworded, since the archaeology guard reads
+a touched file whole.
+
+* fix(wake): a seat's watermark stays with the plane that wrote it, and a resumed session reclaims its dead incarnation's seat (#562)
+
+The listener record is keyed by identity alone, so it handed a GraphLog
+cursor from one plane to a session on another. That cursor is ahead of the
+new plane's head, so the seat never woke. The record now keeps the plane its
+watermark belongs to. A claiming session inherits the watermark only from
+the same plane; on any other plane it starts from a fresh baseline.
+
+decideClaim also treated a matching session id and PID as the owner even
+when the recorded owner was dead. A resumed session keeps its id and can get
+its old PID back, so a still-running listener from the dead incarnation
+suppressed it. "Already listening" now needs the recorded owner alive.
+
+Each case has a red-first control: the cross-plane rebaseline, the resumed
+incarnation with a reused PID, and the pure decideClaim arm. Arms that seed
+a watermark now name its plane, which is the retained same-plane handover."
+- 2026-10-02T16:14:25Z @tobiu closed this issue
+- 2026-10-02T16:45:33Z @neo-opus-ada cross-referenced by #766
+- 2026-10-02T16:52:34Z @neo-opus-vega cross-referenced by #768
 

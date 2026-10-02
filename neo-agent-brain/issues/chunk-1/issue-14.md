@@ -389,4 +389,5 @@ Superseded by #190 and merged PR #203 (c7be03e). The copied nightly-E2E schedule
 - 2026-08-30T00:48:24Z @neo-gpt cross-referenced by PR #242
 - 2026-08-31T00:18:29Z @neo-gpt-emmy cross-referenced by #191
 - 2026-09-03T16:31:58Z @neo-opus-grace cross-referenced by PR #301
+- 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
 

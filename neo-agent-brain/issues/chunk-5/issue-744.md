@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-02T09:26:33Z'
-updatedAt: '2026-10-02T11:53:28Z'
+updatedAt: '2026-10-02T16:57:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/744'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: 351
 subIssues: []
 subIssuesCompleted: 0
@@ -103,4 +103,29 @@ Retrieval Hint: "hosted preset graph provider gemini openAiCompatible endpoint T
 - 2026-10-02T11:53:28Z @tobiu referenced in commit `40ed1dd` - "feat(fleet): the hosted preset routes graph generation through Gemini's OpenAI-compatible endpoint, its key and reasoning effort over the overlay's inputs (#744) (#747)"
 - 2026-10-02T11:53:28Z @tobiu closed this issue
 - 2026-10-02T12:21:30Z @neo-gpt-sophie cross-referenced by PR #748
+- 2026-10-02T16:49:20Z @neo-fable-clio cross-referenced by #767
+### @neo-fable-clio - 2026-10-02T16:57:23Z
+
+**Hosted preset — the first floor runs through the instrument (2026-10-02, the operator's Gemini key as a file, never printed).**
+
+Before the fix (Brain #767 / its PR): the first run failed in one second — Gemini's OpenAI-compatible endpoint refuses a request carrying `keep_alive` and `operationStage` (`400 Invalid JSON payload received. Unknown name …`); the client leaked both; LM Studio answers 200 to the same fields, which is why the local lane never saw it.
+
+After the fix (`presetQualityFloor.mjs --preset hosted` on the #767 tree; `gemini-3.5-flash` over `https://generativelanguage.googleapis.com/v1beta/openai`, `reasoning_effort: low`, `json_schema` structured output; the child isolated: graph store `:memory:`, scratch anchor + marker dir; `documentsDigest f3cd8b71…16844e` = the table's):
+
+| run | time | schemaValid | dangling | grounded / doc | ungrounded | comparable | met |
+|---|---|---|---|---|---|---|---|
+| 1 | 19 s | true | 0 | 3–5 | 2 (`Neo.main.DomEvents`, `Neo.dashboard.dock.Workspace`) | true | false |
+| 2 | 23 s | true | 0 | 4–5 | 2 (`Focus Management`, `Neo.dashboard.dock.Workspace`) | true | false |
+
+Reading: the hosted lane extracts a schema-valid graph with no dangling edge and more grounded claim nodes per document than the gemma reference (3–4); it reads below the reference on ungrounded names (gemma: 0) on both samples. The names are canonical class names the threads only imply (the thread says "dock Workspace" / `Workspace.mjs`; the model writes `Neo.dashboard.dock.Workspace`) and one concept label. By the floor rule (at or above on every recorded axis) `hosted` stays `candidate` and the 32 GiB tier keeps "nothing recommended"; the rule was reviewed as strict on purpose. Hypothesis, not acted on: word-wise grounding of a dotted name by its last segment would read both class names as grounded — a decision for the instrument's owner, with its own V-B-A (what else it would admit).
+
+Calls spent: 10 on this lane today (one failing run, a model list, two shaped probes, two measured runs). The wire fix is Brain #767; the readiness probe's bearer is Grace's #748 (#746).
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 1efa16ff-bd83-41e5-87dc-4c186b03b451
+
+
+- 2026-10-02T17:17:42Z @neo-fable-clio cross-referenced by #773
+- 2026-10-02T17:26:19Z @neo-gpt cross-referenced by PR #770
+- 2026-10-02T17:32:51Z @neo-fable-clio cross-referenced by #776
+- 2026-10-02T17:55:41Z @neo-gpt cross-referenced by PR #775
 

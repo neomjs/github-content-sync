@@ -1,7 +1,7 @@
 ---
 id: 448
 title: The add-agent form defines a GitLab seat on its own instance
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T14:02:40Z'
-updatedAt: '2026-10-02T14:23:48Z'
+updatedAt: '2026-10-02T17:29:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/448'
 author: neo-opus-grace
 commentsCount: 0
@@ -22,9 +22,10 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 755 A GitLab seat''s repositories default to its own instance'
-  - '[ ] 442 Carry the new Brain pin with forge-correct MCP controls'
+  - '[x] 755 A GitLab seat''s repositories default to its own instance'
+  - '[x] 442 Carry the new Brain pin with forge-correct MCP controls'
 blocking: []
+closedAt: '2026-10-02T17:29:54Z'
 ---
 # The add-agent form defines a GitLab seat on its own instance
 
@@ -157,4 +158,31 @@ Retrieval Hint: `query_raw_memories("GitLab seat add-agent form forge forgeHost 
 - 2026-10-02T14:20:02Z @neo-opus-grace marked this issue as being blocked by #755
 - 2026-10-02T14:22:49Z @neo-opus-grace cross-referenced by PR #756
 - 2026-10-02T14:53:50Z @neo-opus-grace cross-referenced by PR #450
+- 2026-10-02T16:27:35Z @neo-gpt-emmy cross-referenced by #451
+- 2026-10-02T16:32:34Z @neo-opus-grace referenced in commit `ea8a857` - "feat(agentos): the add-agent form defines a GitLab seat on its own instance (#448)
+
+A GitHub / GitLab choice heads the account section; a GitLab seat names its instance and sends forge + forgeHost, and every repository crosses as its slug so the Fleet composes the clone URL on the seat's forge. The Repositories card carries each stored entry whole, its forge included."
+- 2026-10-02T16:32:35Z @neo-opus-grace referenced in commit `684627e` - "test(agentos): the GitLab add journey, the forge-state goldens and the input stamp (#448)
+
+The Brain-bound Accounts journey defines a GitLab seat through the form and changes its repositories over the real Fleet wire; the add-form goldens re-render for the Account chips, and the GitLab state gets its own capture."
+- 2026-10-02T16:34:06Z @neo-gpt-emmy cross-referenced by PR #452
+- 2026-10-02T16:40:08Z @neo-gpt-emmy cross-referenced by #453
+- 2026-10-02T17:01:15Z @neo-opus-grace referenced in commit `5a3b6ef` - "feat(agentos): the add-agent form defines a GitLab seat on its own instance (#448)
+
+A GitHub / GitLab choice heads the account section; a GitLab seat names its instance and sends forge + forgeHost, and every repository crosses as its slug so the Fleet composes the clone URL on the seat's forge. The Repositories card carries each stored entry whole, its forge included."
+- 2026-10-02T17:01:16Z @neo-opus-grace referenced in commit `c3aea2f` - "test(agentos): the GitLab add journey, the forge-state goldens and the input stamp (#448)
+
+The Brain-bound Accounts journey defines a GitLab seat through the form and changes its repositories over the real Fleet wire; the add-form goldens re-render for the Account chips, and the GitLab state gets its own capture."
+- 2026-10-02T17:29:54Z @tobiu referenced in commit `cf4b54f` - "feat(agentos): the add-agent form defines a GitLab seat on its own instance (#448) (#450)
+
+* feat(agentos): the add-agent form defines a GitLab seat on its own instance (#448)
+
+A GitHub / GitLab choice heads the account section; a GitLab seat names its instance and sends forge + forgeHost, and every repository crosses as its slug so the Fleet composes the clone URL on the seat's forge. The Repositories card carries each stored entry whole, its forge included.
+
+* test(agentos): the GitLab add journey, the forge-state goldens and the input stamp (#448)
+
+The Brain-bound Accounts journey defines a GitLab seat through the form and changes its repositories over the real Fleet wire; the add-form goldens re-render for the Account chips, and the GitLab state gets its own capture."
+- 2026-10-02T17:29:54Z @tobiu closed this issue
+- 2026-10-02T17:30:46Z @neo-opus-grace cross-referenced by #684
+- 2026-10-02T18:32:24Z @neo-fable-clio cross-referenced by PR #463
 

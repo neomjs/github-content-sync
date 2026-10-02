@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T10:05:26Z'
-updatedAt: '2026-10-02T12:46:32Z'
+updatedAt: '2026-10-02T18:17:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/746'
 author: neo-fable-clio
-commentsCount: 2
+commentsCount: 6
 parentIssue: 351
 subIssues: []
 subIssuesCompleted: 0
@@ -146,4 +146,57 @@ Out of scope, in defect-note `0a5c8120`: the embedding canary (`checkOpenAiCompa
 
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
+- 2026-10-02T16:49:20Z @neo-fable-clio cross-referenced by #767
+### @neo-fable-clio - 2026-10-02T16:57:22Z
+
+**Hosted preset — the first floor runs through the instrument (2026-10-02, the operator's Gemini key as a file, never printed).**
+
+Before the fix (Brain #767 / its PR): the first run failed in one second — Gemini's OpenAI-compatible endpoint refuses a request carrying `keep_alive` and `operationStage` (`400 Invalid JSON payload received. Unknown name …`); the client leaked both; LM Studio answers 200 to the same fields, which is why the local lane never saw it.
+
+After the fix (`presetQualityFloor.mjs --preset hosted` on the #767 tree; `gemini-3.5-flash` over `https://generativelanguage.googleapis.com/v1beta/openai`, `reasoning_effort: low`, `json_schema` structured output; the child isolated: graph store `:memory:`, scratch anchor + marker dir; `documentsDigest f3cd8b71…16844e` = the table's):
+
+| run | time | schemaValid | dangling | grounded / doc | ungrounded | comparable | met |
+|---|---|---|---|---|---|---|---|
+| 1 | 19 s | true | 0 | 3–5 | 2 (`Neo.main.DomEvents`, `Neo.dashboard.dock.Workspace`) | true | false |
+| 2 | 23 s | true | 0 | 4–5 | 2 (`Focus Management`, `Neo.dashboard.dock.Workspace`) | true | false |
+
+Reading: the hosted lane extracts a schema-valid graph with no dangling edge and more grounded claim nodes per document than the gemma reference (3–4); it reads below the reference on ungrounded names (gemma: 0) on both samples. The names are canonical class names the threads only imply (the thread says "dock Workspace" / `Workspace.mjs`; the model writes `Neo.dashboard.dock.Workspace`) and one concept label. By the floor rule (at or above on every recorded axis) `hosted` stays `candidate` and the 32 GiB tier keeps "nothing recommended"; the rule was reviewed as strict on purpose. Hypothesis, not acted on: word-wise grounding of a dotted name by its last segment would read both class names as grounded — a decision for the instrument's owner, with its own V-B-A (what else it would admit).
+
+Calls spent: 10 on this lane today (one failing run, a model list, two shaped probes, two measured runs). The wire fix is Brain #767; the readiness probe's bearer is Grace's #748 (#746).
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 1efa16ff-bd83-41e5-87dc-4c186b03b451
+
+
+- 2026-10-02T16:57:42Z @neo-fable-clio cross-referenced by PR #770
+- 2026-10-02T17:17:42Z @neo-fable-clio cross-referenced by #773
+### @neo-fable-clio - 2026-10-02T17:26:15Z
+
+AC-4 receipts, next samples (2026-10-02, the operator's key, three requests each; the table and the pricing read live in #773's body): `gemini-3.8-flash` 4–5 grounded / 0 dangling / 3 ungrounded dotted canonical names, 19 s; `gemini-3.5-flash-lite` 2–5 grounded / 0 dangling / 0 ungrounded, 11 s (the grid thread yields 3 nodes). Both `comparable: true`, `met: false`, so the hosted preset stays `candidate` — the pin moves to 3.8-flash in PR #775 (current line, half the 2026 price); flash-lite stays a candidate for the graph lane once it has two samples.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 1efa16ff-bd83-41e5-87dc-4c186b03b451
+
+- 2026-10-02T17:32:51Z @neo-fable-clio cross-referenced by #776
+- 2026-10-02T17:40:26Z @neo-fable-clio cross-referenced by PR #777
+### @neo-fable-clio - 2026-10-02T17:40:59Z
+
+AC-4 receipt under the grounding fix (#776 / PR #777 — a canonical Neo path is grounded by its identity): `gemini-3.8-flash`, three requests, 20 s — `{schemaValid: true, danglingEdges: 0, groundedNodesPerDocument: '4-6', ungroundedNames: 1}`, `comparable: true`, `met: false`. The one miss is `Focus Management Contract`, a concept the thread does not contain, so the status is honest: hosted stays `candidate`. Gemma's reference re-measured under the same rule reads the table's result unchanged (3–4 grounded, 0 dangling, 0 ungrounded). The same three payloads re-read under the old rule: `Neo.dashboard.dock.Workspace` invented → grounded; nothing else moves.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 1efa16ff-bd83-41e5-87dc-4c186b03b451
+
+- 2026-10-02T17:55:41Z @neo-gpt cross-referenced by PR #775
+### @neo-fable-clio - 2026-10-02T18:17:44Z
+
+AC-4 receipt on dev@8f79171 (the merged #777 rule and the #775 pin, `gemini-3.8-flash`, three requests, 21 s, digest `f3cd8b71…`): `{schemaValid: true, danglingEdges: 0, groundedNodesPerDocument: '5-7', ungroundedNames: 0}` — `comparable: true`, **`met: true`**, the first hosted sample that meets the floor.
+
+| document | nodes | grounded | labelled | dangling | ungrounded |
+|---|---|---|---|---|---|
+| 19339-dock-reveal-overlay-focus.md | 7 | 6 | 1 | 0 | — |
+| 19354-dock-workspace-header-actions-plugin.md | 9 | 7 | 2 | 0 | — |
+| 19356-grid-body-scroll-edge.md | 6 | 5 | 1 | 0 | — |
+
+Sample ledger under the identity rule, same model and documents: sample 1 (measured on the #777 tree) 4–6 grounded, 1 genuine invention (`Focus Management Contract`) → met: false; sample 2 (this one) → met: true. One met sample is not qualification on its own (the floor is per run; the earlier reviewer caveat stands); whether a promotion row wants a second met sample is this ticket's call. The payloads of both samples are saved on the measuring seat for offline re-reads. Hosted-lane API calls today: 23.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 1efa16ff-bd83-41e5-87dc-4c186b03b451
+
+- 2026-10-02T20:38:29Z @neo-fable-clio cross-referenced by #782
 

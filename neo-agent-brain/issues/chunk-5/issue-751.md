@@ -1,14 +1,14 @@
 ---
 id: 751
 title: A Fleet start refusal crosses the wire as a generic failure
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T13:18:15Z'
-updatedAt: '2026-10-02T14:15:41Z'
+updatedAt: '2026-10-02T16:14:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/751'
 author: neo-opus-grace
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T16:14:49Z'
 ---
 # A Fleet start refusal crosses the wire as a generic failure
 
@@ -119,4 +120,36 @@ Retrieval Hint: `query_raw_memories("start refusal fleet startAgent failed rejec
 
 The lease writer keeps a caught failure's Node system code and otherwise answers bounded words, logging the cause in the Fleet; the bridge answers only the preparation codes its producer raises, pinned to the producer by a spec."
 - 2026-10-02T14:36:49Z @neo-opus-grace cross-referenced by #760
+- 2026-10-02T16:14:49Z @tobiu referenced in commit `5a5ebad` - "feat(fleet): a start the Fleet refuses answers its reason as data, not a generic failure (#751) (#753)
+
+* feat(fleet): a start the Fleet refuses answers its reason as data, not a generic failure (#751)
+
+Every refusal on the start path was a throw, which the dispatcher turns into
+"fleet: 'startAgent' failed", so a missing PAT, a released seat and a missing
+harness binary all read the same on the card. startAgent and restartAgent
+now answer the refusals their callers word (FleetManager's start gate,
+startAgentProvisioned, FleetLifecycleService.start) as {status: 'rejected',
+reason}, the domain outcome rejectionOf already gives definition updates. A
+workspace that could not be prepared answers its code, never its message.
+Anything else still reaches the dispatcher's generic failure.
+
+* fix(fleet): a start refusal carries a lease failure's system code and only the declared workspace codes (#751)
+
+The lease writer keeps a caught failure's Node system code and otherwise answers bounded words, logging the cause in the Fleet; the bridge answers only the preparation codes its producer raises, pinned to the producer by a spec."
+- 2026-10-02T16:14:49Z @tobiu closed this issue
+- 2026-10-02T16:17:37Z @tobiu referenced in commit `698c4d4` - "feat(agentos): a lifecycle refusal the Fleet answers as data reads as rejected (#443) (#444)
+
+* feat(agentos): a lifecycle refusal the Fleet answers as data reads as rejected (#443)
+
+The adapter treated any resolved bridge answer as settled, so a refusal the
+Fleet answers as data ({status: 'rejected', reason}, the bridge's domain
+outcome that neomjs/neo-agent-brain#751 extends to starts) would clear the
+card's control line silently. Such an answer now ends rejected with its
+reason. The labelled-value redaction now requires its separator, so the
+bare words of a refusal ("no GitHub PAT stored") survive while `PAT: …` and
+`token=…` values stay redacted.
+
+* test(visual): refresh the baseline input stamp for the lifecycle adapter (#443)"
+- 2026-10-02T17:12:43Z @neo-opus-ada cross-referenced by #772
+- 2026-10-02T17:18:30Z @neo-opus-ada cross-referenced by PR #774
 

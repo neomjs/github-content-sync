@@ -1,7 +1,7 @@
 ---
 id: 429
 title: 'The engine''s scrollEdge reaches the cockpit: the mailbox drops its interim body, the memories pane requests at the edge'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-02T09:30:46Z'
-updatedAt: '2026-10-02T10:48:37Z'
+updatedAt: '2026-10-02T16:16:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/429'
 author: neo-opus-vega
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 430 Carry the wizard backend and scroll edge in the next Fleet package'
 blocking: []
+closedAt: '2026-10-02T16:16:41Z'
 ---
 # The engine's scrollEdge reaches the cockpit: the mailbox drops its interim body, the memories pane requests at the edge
 
@@ -123,4 +124,15 @@ Both memories registers relay grid.Body's scrollEdge through RowsGrid; the pane 
 
 A hidden register keeps its last geometry, so a summary continuation landing while a drill owns the zone announces its new count on that store set and the engine latches it; a plain refusal left the list short of its corpus with no edge left to reach. The pane remembers the refused edge and replays it once after the drill closes; nothing pages behind the drill. Sophie's source witness on 53a9919; two arms red against it."
 - 2026-10-02T12:37:52Z @neo-opus-vega cross-referenced by #19361
+- 2026-10-02T16:16:41Z @tobiu referenced in commit `4c23843` - "refactor(agentos): the memories pane requests at the engine's scroll edge, its drains go (#429) (#434)
+
+* refactor(agentos): the memories pane requests at the engine's scroll edge, its drains go (#429)
+
+Both memories registers relay grid.Body's scrollEdge through RowsGrid; the pane asks for the next window once per edge entry at the rendered depth while the producer's total says more exists and no window is in flight, the summary register quiet while a drill owns the zone. The four drain fields and both drain blocks are gone; the rendered key is written before the bags seat because a corpus shorter than one window announces its edge inside that set. Unit arms red-first against the drain (5), 1177/1177 at the pinned engine.
+
+* fix(agentos): an edge the memories list announces behind an open drill is replayed once on return (#429)
+
+A hidden register keeps its last geometry, so a summary continuation landing while a drill owns the zone announces its new count on that store set and the engine latches it; a plain refusal left the list short of its corpus with no edge left to reach. The pane remembers the refused edge and replays it once after the drill closes; nothing pages behind the drill. Sophie's source witness on 53a9919; two arms red against it."
+- 2026-10-02T16:16:41Z @tobiu closed this issue
+- 2026-10-02T16:40:30Z @neo-opus-vega cross-referenced by #454
 

@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-01T13:28:13Z'
-updatedAt: '2026-10-02T12:46:19Z'
+updatedAt: '2026-10-02T17:30:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/684'
 author: neo-opus-grace
 commentsCount: 2
@@ -20,9 +20,9 @@ subIssues:
   - '[x] 712 A seat''s PAT is presented only to the forge host it was stored for'
   - '[x] 727 A GitLab seat runs gitlab-workflow with its own token, host and project'
   - '[x] 729 A seat''s forge decides which workflow server it starts with'
-  - '[ ] 448 The add-agent form defines a GitLab seat on its own instance'
-  - '[ ] 755 A GitLab seat''s repositories default to its own instance'
-subIssuesCompleted: 4
+  - '[x] 448 The add-agent form defines a GitLab seat on its own instance'
+  - '[x] 755 A GitLab seat''s repositories default to its own instance'
+subIssuesCompleted: 6
 subIssuesTotal: 6
 contentTrust:
   projected: true
@@ -89,7 +89,7 @@ A seat whose repository lives on GitLab cannot be provisioned or launched:
 
 Live latest-open sweep: latest 20 open Brain issues at 2026-10-01T13:27:29Z, no equivalent. `gh search issues --owner neomjs` for "GitLab credential injection", "gitlab-workflow Fleet credential", "NEO_GITLAB_PAT Fleet", "gitlab PAT seat": only Institution #245's deferral and #659. MC sweep ("GitLab agent cannot be launched by the Fleet; self-hosted GitLab host and personal access token per seat; plane login takes a GitHub or GitLab PAT"), 6 results: plane PAT modes confirmed; no decision on the Fleet side. Own-assignment sweep: #659 is adjacent, nothing overlapping. Structure map (this session, exit 0): `ai/services/fleet` and `ai/mcp/server/gitlab-workflow`; no new module required.
 
-Owner: @neo-opus-grace (taken 2026-10-01 once the seat path cleared). Leaves #710, #712, #727 and #729 are merged. What remains is one installed sitting against a real GitLab instance, which covers AC-2 and AC-3 (#712 AC-4 and #727 AC-4 name this epic as their residual owner).
+Owner: @neo-opus-grace (taken 2026-10-01 once the seat path cleared). All six leaves are merged: #710, #712, #727, #729, #755 (through #756) and neomjs/neo-agent-institution#448 (through neomjs/neo-agent-institution#450, 2026-10-02), so the cockpit can now define a GitLab seat end to end. What remains is one installed sitting against a real GitLab instance, which covers AC-2 and AC-3 (#712 AC-4 and #727 AC-4 name this epic as their residual owner). The sitting needs an installed package carrying Institution `cf4b54f` or later, which pins Brain `447d96e`. From the operator it needs a GitLab instance, a private test project and an `api` PAT.
 
 Body revised 2026-10-01 ~13:40Z: framed as parity, and the clone fix reuses KB ingestion's credential code (operator input).
 
@@ -97,6 +97,7 @@ Origin Session ID: c4499e07-1e9b-4f4e-b876-d6afd7ea4364
 Retrieval Hint: "Fleet GitLab seat self-hosted NEO_GITLAB_HOST NEO_GITLAB_PAT clone auth forge credential per seat"
 
 🖖 Grace · @neo-opus-grace · Claude Opus 5.5 · Claude Code
+
 
 
 

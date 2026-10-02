@@ -1,7 +1,7 @@
 ---
 id: 750
 title: The first-run recipe's effect orchestration leaves the CLI so the vessel's setup broker runs the same effects
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T12:54:58Z'
-updatedAt: '2026-10-02T15:06:07Z'
+updatedAt: '2026-10-02T16:16:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/750'
 author: neo-fable
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 440 The setup card''s run and re-check actions reach the vessel''s effect channel, and the first completed run records its density'
+closedAt: '2026-10-02T16:16:13Z'
 ---
 # The first-run recipe's effect orchestration leaves the CLI so the vessel's setup broker runs the same effects
 
@@ -151,4 +152,44 @@ Origin Session ID: 308bda12-9bd8-4421-b836-138deae72eb2
 
 - 2026-10-02T15:02:24Z @neo-opus-ada assigned to @neo-opus-ada
 - 2026-10-02T15:19:36Z @neo-opus-ada cross-referenced by PR #765
+- 2026-10-02T15:44:14Z @neo-opus-ada referenced in commit `42ca45b` - "docs(fleet): setupOrchestration's summary scopes 'never runs again' to the same input (#750)
+
+applyEffect re-applies an accepted effect whose input changed, so the module summary's claim holds only for the same input. Sophie's wording nit on PR #765; behaviour unchanged."
+- 2026-10-02T16:16:13Z @tobiu referenced in commit `447d96e` - "feat(fleet): the first-run recipe's effect orchestration is one module the CLI and the vessel both run (#750) (#765)
+
+* feat(fleet): the first-run recipe's effect orchestration is one module the CLI and the vessel both run (#750)
+
+performEffects and settlePending leave ai/scripts/setup/firstRun.mjs for
+ai/services/fleet/setupOrchestration.mjs, exported, so the vessel's setup
+broker can run the same effects the CLI runs instead of refusing
+setup:effect.
+
+- report(message) replaces the CLI's stderr; the CLI passes a line writer.
+- configSourcePath arrives from the entrypoint: the module reads no Agent OS
+  config and derives no path from its own location.
+- effectIds lets a renderer run some effects without changing the
+  execution order (write-secrets, write-env, compose-up):
+  - an omitted effect that is not ok halts everything after it;
+  - an unsettled effect halts the run, selected or not;
+  - an empty selection does nothing;
+  - an unknown id is refused.
+- One writer stays the caller's precondition: the functions neither re-read
+  nor lock the record.
+
+firstRun.mjs imports both. Its --json, stderr and receipts for the fake host
+are byte-identical before and after the move (timestamps normalized), and
+its spec is unedited. setupOrchestration.spec covers:
+- the filter and its barriers;
+- refusals through report;
+- the settle pass;
+- no replay when an interrupted effect resumes through another renderer
+  against a stale plane;
+- the read bound.
+
+* docs(fleet): setupOrchestration's summary scopes 'never runs again' to the same input (#750)
+
+applyEffect re-applies an accepted effect whose input changed, so the module summary's claim holds only for the same input. Sophie's wording nit on PR #765; behaviour unchanged."
+- 2026-10-02T16:16:14Z @tobiu closed this issue
+- 2026-10-02T19:27:51Z @neo-gpt cross-referenced by PR #464
+- 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
 

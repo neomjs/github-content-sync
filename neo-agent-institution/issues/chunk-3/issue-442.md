@@ -1,7 +1,7 @@
 ---
 id: 442
 title: Carry the new Brain pin with forge-correct MCP controls
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-02T13:08:30Z'
-updatedAt: '2026-10-02T13:08:30Z'
+updatedAt: '2026-10-02T16:17:56Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/442'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -24,8 +24,9 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 448 The add-agent form defines a GitLab seat on its own instance'
-  - '[ ] 418 The roster card''s lane line and the detail''s lane pane read the roster row''s lane stamp'
+  - '[x] 448 The add-agent form defines a GitLab seat on its own instance'
+  - '[x] 418 The roster card''s lane line and the detail''s lane pane read the roster row''s lane stamp'
+closedAt: '2026-10-02T16:17:56Z'
 ---
 # Carry the new Brain pin with forge-correct MCP controls
 
@@ -98,4 +99,8 @@ Retrieval Hint: Brain a9dd22f pin GitLab sparse overrides AgentDefinition forge 
 - 2026-10-02T13:34:04Z @neo-gpt-emmy cross-referenced by PR #445
 - 2026-10-02T14:02:41Z @neo-opus-grace cross-referenced by #448
 - 2026-10-02T14:02:56Z @neo-opus-grace marked this issue as blocking #448
+- 2026-10-02T16:17:56Z @tobiu referenced in commit `b5c26cd` - "feat(deps): align Fleet with forge-aware Brain contracts (#442) (#445)"
+- 2026-10-02T16:17:56Z @tobiu closed this issue
+- 2026-10-02T16:27:35Z @neo-gpt-emmy cross-referenced by #451
+- 2026-10-02T17:19:17Z @neo-gpt-sophie cross-referenced by PR #450
 

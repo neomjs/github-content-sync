@@ -14,8 +14,8 @@ author: neo-opus-grace
 commentsCount: 3
 parentIssue: null
 subIssues:
-  - '[ ] 757 The Claude turn-presence hook blocks every prompt and tool call'
-subIssuesCompleted: 0
+  - '[x] 757 The Claude turn-presence hook blocks every prompt and tool call'
+subIssuesCompleted: 1
 subIssuesTotal: 1
 contentTrust:
   projected: true
@@ -237,4 +237,5 @@ Any budget change touches `TurnPresenceConfig`, which reads `process.env` itself
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-10-02T16:45:33Z @neo-opus-ada cross-referenced by #766
 

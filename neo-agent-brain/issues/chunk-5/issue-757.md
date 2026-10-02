@@ -1,7 +1,7 @@
 ---
 id: 757
 title: The Claude turn-presence hook blocks every prompt and tool call
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T14:25:51Z'
-updatedAt: '2026-10-02T15:11:19Z'
+updatedAt: '2026-10-02T16:15:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/757'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T16:15:32Z'
 ---
 # The Claude turn-presence hook blocks every prompt and tool call
 
@@ -135,4 +136,50 @@ Retrieval Hint: "turn presence hook async blocks every tool call PostToolUse lat
 - 2026-10-02T14:25:58Z @neo-opus-ada added parent issue #67
 - 2026-10-02T14:33:17Z @neo-opus-ada cross-referenced by PR #758
 - 2026-10-02T14:47:36Z @neo-opus-ada cross-referenced by #67
+- 2026-10-02T15:10:31Z @neo-opus-ada referenced in commit `c7e7bf7` - "fix(hooks): turn presence keeps its start ahead of the turn's completion; only progress runs in the background (#757)
+
+An async start can land after its turn has completed. Completion (add_memory)
+then finds no interval to close, and the late start opens a fresh active one
+for a finished turn, which reads active for the whole freshness horizon. Emmy
+reproduced this on TurnPresenceService.
+
+The start registration goes back to synchronous within its 2 s bound, once
+per prompt. Only the per-tool-call progress beacon stays async; a late
+progress after completion is a documented no-op.
+
+The hook spec pins progress as async with no timeout, and start as
+synchronous at 2 s. The service spec pins the terminal-before-start hazard
+that the synchronous start guards against."
+- 2026-10-02T16:15:32Z @tobiu referenced in commit `5d13928` - "fix(hooks): the Claude turn-presence hook runs in the background (#757) (#758)
+
+* fix(hooks): the Claude turn-presence hook runs in the background (#757)
+
+Both turnPresenceHook registrations in the Claude event manifest now run
+"async": true and carry no timeout. Presence is never a precondition, so no
+prompt or tool call waits on it. The harness enforces no timeout on an async
+hook, which leaves the writer's one MCP deadline (hookWriteTimeoutMs, 1.5 s)
+as the only bound on each run.
+
+Measured on @neo-opus-ada's seat: 305,529 synchronous runs across 688
+sessions blocked 10.92 h (p50 125 ms), and none of them recorded presence.
+
+projectSeatHooks retires and re-appends owned entries, so each seat picks up
+the flag on its next projection. The spec pins both registrations and the
+reconciliation that replaces a seat's synchronous entries.
+
+* fix(hooks): turn presence keeps its start ahead of the turn's completion; only progress runs in the background (#757)
+
+An async start can land after its turn has completed. Completion (add_memory)
+then finds no interval to close, and the late start opens a fresh active one
+for a finished turn, which reads active for the whole freshness horizon. Emmy
+reproduced this on TurnPresenceService.
+
+The start registration goes back to synchronous within its 2 s bound, once
+per prompt. Only the per-tool-call progress beacon stays async; a late
+progress after completion is a documented no-op.
+
+The hook spec pins progress as async with no timeout, and start as
+synchronous at 2 s. The service spec pins the terminal-before-start hazard
+that the synchronous start guards against."
+- 2026-10-02T16:15:32Z @tobiu closed this issue
 

@@ -1,14 +1,15 @@
 ---
 id: 763
 title: The plane's PR lane carries the producer's transitions for every repo
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-10-02T14:36:54Z'
-updatedAt: '2026-10-02T14:36:54Z'
+updatedAt: '2026-10-02T17:50:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/763'
 author: neo-opus-grace
 commentsCount: 0
@@ -21,8 +22,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 760 One producer observes every open PR and projects each seat''s open work'
+  - '[x] 760 One producer observes every open PR and projects each seat''s open work'
 blocking: []
+closedAt: '2026-10-02T17:50:17Z'
 ---
 # The plane's PR lane carries the producer's transitions for every repo
 
@@ -80,9 +82,10 @@ None.
 
 Sweeps: as on the observing leaf (2026-10-02T14:35Z). No equivalent.
 
-unowned-rationale: filed at graduation. @neo-opus-vega has first refusal, since the PR-lane slot is his #585 projection. It is blocked by the observing leaf.
+unowned-rationale: filed at graduation. @neo-opus-vega has first refusal, since the PR-lane slot is her #585 projection. It is blocked by the observing leaf.
 
 Origin Session ID: 31c9ca1a-ded8-4b19-8d99-682d259efeca
+
 
 
 ## Timeline
@@ -94,4 +97,28 @@ Origin Session ID: 31c9ca1a-ded8-4b19-8d99-682d259efeca
 - 2026-10-02T14:37:27Z @neo-opus-grace marked this issue as being blocked by #760
 - 2026-10-02T14:37:48Z @neo-opus-grace cross-referenced by #759
 - 2026-10-02T14:39:36Z @neo-opus-grace cross-referenced by #414
+- 2026-10-02T15:52:17Z @neo-gpt cross-referenced by PR #764
+- 2026-10-02T16:42:53Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-10-02T16:52:58Z @neo-opus-vega cross-referenced by PR #769
+- 2026-10-02T17:09:23Z @neo-gpt cross-referenced by #762
+- 2026-10-02T17:33:08Z @neo-opus-vega referenced in commit `2a4b96a` - "fix(fleet): the PR lane's producer contract reaches the delivered snapshot, the base is asked without PR events, and a full window covers from its second pulse (#763)
+
+The composite capability carries each contributor's own capability under slots, so the producer's high-water time, coverage, retained window and coverage gap survive composition instead of the read clock. The base reader is asked for no pull-request events (prEvents, declared on the plane tool and kept per shape by its memo store) at the composer's maximum bound, so a replaced corpus PR displaces no surviving issue, lane-claim or stall event. A full window may have cut inside one pulse, so coverage begins at the first pulse after the oldest retained one; a partial pulse degrades the slot. Euclid's three controls are arms."
+- 2026-10-02T17:37:05Z @neo-opus-vega referenced in commit `faa7d1c` - "test(fleet): the adapter spec's section comment names its subject, not a review round (#763)
+
+The source-comment archaeology guard reads a touched file whole: the pre-existing 'Cycle-2 RA3' marker in fleetPrLaneActivityAdapter.spec.mjs decayed into a violation the moment this lane appended an arm to the file. The comment now says what the section tests."
+- 2026-10-02T17:50:17Z @tobiu referenced in commit `f9d3088` - "feat(fleet): the PR lane carries the open-work producer's transitions for every repository (#763) (#769)
+
+* feat(fleet): the PR lane carries the open-work producer's transitions for every repository (#763)
+
+The PR/lane slot's pull-request contributor reads the producer's retained transitions (opened, review verdict, merged, closed) as pr-activity events at the producer's observing pulse; the base reader keeps the issue, lane-claim and stall events. The slot's capability carries the producer's high-water time, coverage and declared retained window, and a reader behind that window reads a coverage gap. The producer is read where it lives, in both modes; nothing is published to the plane.
+
+* fix(fleet): the PR lane's producer contract reaches the delivered snapshot, the base is asked without PR events, and a full window covers from its second pulse (#763)
+
+The composite capability carries each contributor's own capability under slots, so the producer's high-water time, coverage, retained window and coverage gap survive composition instead of the read clock. The base reader is asked for no pull-request events (prEvents, declared on the plane tool and kept per shape by its memo store) at the composer's maximum bound, so a replaced corpus PR displaces no surviving issue, lane-claim or stall event. A full window may have cut inside one pulse, so coverage begins at the first pulse after the oldest retained one; a partial pulse degrades the slot. Euclid's three controls are arms.
+
+* test(fleet): the adapter spec's section comment names its subject, not a review round (#763)
+
+The source-comment archaeology guard reads a touched file whole: the pre-existing 'Cycle-2 RA3' marker in fleetPrLaneActivityAdapter.spec.mjs decayed into a violation the moment this lane appended an arm to the file. The comment now says what the section tests."
+- 2026-10-02T17:50:17Z @tobiu closed this issue
 

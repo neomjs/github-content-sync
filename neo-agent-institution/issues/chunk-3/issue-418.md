@@ -1,17 +1,18 @@
 ---
 id: 418
 title: The roster card's lane line and the detail's lane pane read the roster row's lane stamp
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
   - ai
-assignees: []
+assignees:
+  - neo-gpt-sophie
 createdAt: '2026-10-02T08:52:44Z'
-updatedAt: '2026-10-02T08:52:44Z'
+updatedAt: '2026-10-02T19:05:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/418'
 author: neo-fable
-commentsCount: 0
+commentsCount: 1
 parentIssue: 414
 subIssues: []
 subIssuesCompleted: 0
@@ -21,9 +22,11 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 442 Carry the new Brain pin with forge-correct MCP controls'
+  - '[x] 442 Carry the new Brain pin with forge-correct MCP controls'
   - '[x] 740 The roster row carries no lane line: the Fleet never stamps a seat''s latest lane claim'
-blocking: []
+blocking:
+  - '[x] 465 Move inspector config and aging into its view controller'
+closedAt: '2026-10-02T19:05:54Z'
 ---
 # The roster card's lane line and the detail's lane pane read the roster row's lane stamp
 
@@ -109,4 +112,30 @@ Retrieval Hint: "roster card lane line laneClaimedAt sources.lane RosterRow cons
 - 2026-10-02T13:08:31Z @neo-gpt-emmy cross-referenced by #442
 - 2026-10-02T13:30:04Z @neo-gpt-emmy marked this issue as being blocked by #442
 - 2026-10-02T13:34:04Z @neo-gpt-emmy cross-referenced by PR #445
+### @neo-gpt-sophie - 2026-10-02T16:39:23Z
+
+### Intake — valid as written
+
+The producer and pin blockers are closed; #445 merged at 16:17:54Z. At Institution `87e4f1c`, the current mapping still omits the lane fields and SourceHealth has no lane axis, so the consumer gap remains. #449's open-work count/state is a separate source and does not supersede the claim subject/time. Positive ROI: reuse the one roster mapping, shared age formatter and existing card/detail source-ledger path; no new module or authority.
+
+The ticket was created/updated today at 08:52:44Z. No stale/exemption labels; this repository has no stale-close workflow among its current workflows. No open #418 PR or assignee was found. ADR successor-risk: aligned with the existing observation/freshness boundary; no decision record changes. Contract Ledger is present and its field/method anchors were checked. Parent entry review: https://github.com/neomjs/neo-agent-institution/issues/414#issuecomment-5956773164 .
+
+Core idioms checked: `src/Neo.mjs`, `src/core/Base.mjs`, `src/state/Provider.mjs`, `src/data/Model.mjs`, `src/data/Store.mjs` (class setup, batching, readiness and records). The lane remains inert text; claim age and roster observation age remain distinct. Scope: model, mapper, source normalization, existing card/detail and their tests/visuals. No installed-journey pass is claimed.
+
+— Sophie · Origin Session ID: 308bda12-9bd8-4421-b836-138deae72eb2
+
+- 2026-10-02T16:39:30Z @neo-gpt-sophie assigned to @neo-gpt-sophie
+- 2026-10-02T18:04:32Z @neo-gpt-sophie referenced in commit `ec141c2` - "feat(fleet): show roster lane claims and their age (#418)
+
+Co-authored-by: Sophie <neo-gpt-sophie@neomjs.com>"
+- 2026-10-02T18:05:51Z @neo-gpt-sophie cross-referenced by PR #461
+- 2026-10-02T18:25:39Z @neo-gpt-emmy cross-referenced by #42
+- 2026-10-02T18:44:59Z @neo-gpt-emmy cross-referenced by #465
+- 2026-10-02T18:45:25Z @neo-gpt-emmy marked this issue as blocking #465
+- 2026-10-02T18:53:26Z @neo-gpt-sophie referenced in commit `5cd5bf6` - "fix(fleet): age lane claims without losing their subject (#418)
+
+Co-authored-by: Sophie <neo-gpt-sophie@neomjs.com>"
+- 2026-10-02T19:05:54Z @tobiu referenced in commit `98d4093` - "feat(fleet): show roster lane claims and their age (#418) (#461)"
+- 2026-10-02T19:05:54Z @tobiu closed this issue
+- 2026-10-02T19:34:24Z @neo-gpt-emmy cross-referenced by PR #466
 

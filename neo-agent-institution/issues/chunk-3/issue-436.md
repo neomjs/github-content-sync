@@ -1,7 +1,7 @@
 ---
 id: 436
 title: An instance switch keeps the previous instance's operator inbox
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T12:20:27Z'
-updatedAt: '2026-10-02T12:32:10Z'
+updatedAt: '2026-10-02T16:17:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/436'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T16:17:01Z'
 ---
 # An instance switch keeps the previous instance's operator inbox
 
@@ -125,4 +126,32 @@ sent, through one bridgeProfileId getter."
 - 2026-10-02T13:13:04Z @neo-opus-grace referenced in commit `a73b5c3` - "test(visual): refresh the baseline input stamp for the settlement guards (#436)"
 - 2026-10-02T13:18:37Z @neo-opus-grace cross-referenced by #443
 - 2026-10-02T14:02:41Z @neo-opus-grace cross-referenced by #448
+- 2026-10-02T16:17:01Z @tobiu referenced in commit `9ca1d65` - "feat(agentos): the operator's inbox belongs to the profile that answered it (#436) (#437)
+
+* feat(agentos): the operator's inbox belongs to the profile that answered it (#436)
+
+An instance switch kept the previous instance's operator identity and inbox
+window: reconnectFleet re-read ten surfaces but neither, and a failed read
+keeps the last window. TargetBinding.retireOperatorMailbox now retires the
+identity, window, posture and compose outcome when the bridge in hand names
+another profile; both operator loads retire first and drop an answer whose
+asking profile is gone. The cockpit Controller re-drives both on Reconnect:
+an identity that binds anew reads its own first window, an unchanged one is
+read here. Fakes built from the prototype gain the field real controllers hold.
+
+* test(visual): refresh the baseline input stamp for the operator-mailbox retire (#436)
+
+* feat(agentos): a retired profile's late send or Reconnect answer lands nowhere (#436)
+
+Round 1 (Sophie): the retire cleared held state, but two continuations still
+acted on the new profile. A send that settled after a switch wrote its
+outcome into the new pane and re-read the new inbox, and a stale identity
+answer returned `false`, which the Reconnect continuation read as an
+unchanged identity and so read the new window again. loadOperatorIdentity
+now answers 'bound', 'held' or null; Reconnect reads only on 'held'. Compose
+settlement and its refresh compare the bridge's profile with the one that
+sent, through one bridgeProfileId getter.
+
+* test(visual): refresh the baseline input stamp for the settlement guards (#436)"
+- 2026-10-02T16:17:02Z @tobiu closed this issue
 

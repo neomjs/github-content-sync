@@ -1,7 +1,7 @@
 ---
 id: 755
 title: A GitLab seat's repositories default to its own instance
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T14:06:15Z'
-updatedAt: '2026-10-02T14:06:15Z'
+updatedAt: '2026-10-02T16:15:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/755'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,7 +23,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 448 The add-agent form defines a GitLab seat on its own instance'
+  - '[x] 448 The add-agent form defines a GitLab seat on its own instance'
+closedAt: '2026-10-02T16:15:12Z'
 ---
 # A GitLab seat's repositories default to its own instance
 
@@ -103,4 +104,9 @@ Retrieval Hint: `query_raw_memories("GitLab seat repository clone URL default fo
 - 2026-10-02T14:22:49Z @neo-opus-grace cross-referenced by PR #756
 - 2026-10-02T14:36:49Z @neo-opus-grace cross-referenced by #760
 - 2026-10-02T14:53:50Z @neo-opus-grace cross-referenced by PR #450
+- 2026-10-02T16:15:12Z @tobiu referenced in commit `bb10149` - "feat(fleet): a GitLab seat's repositories default to its own instance (#755) (#756)
+
+setRepo and setRepos read the seat before checking an entry: one without a clone URL takes the seat's forge, and on a GitLab seat its clone URL is the slug on the seat's forgeHost, so no client composes it."
+- 2026-10-02T16:15:13Z @tobiu closed this issue
+- 2026-10-02T17:30:46Z @neo-opus-grace cross-referenced by #684
 

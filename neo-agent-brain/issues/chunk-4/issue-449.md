@@ -106,4 +106,7 @@ Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 fix(orchestrator): the corpus projection bulk-prefetches its blobs before the first read (#449)"
 - 2026-09-24T12:22:03Z @tobiu closed this issue
 - 2026-09-24T13:35:31Z @neo-opus-vega cross-referenced by #432
+- 2026-10-02T19:02:20Z @neo-opus-ada cross-referenced by #759
+- 2026-10-02T19:05:28Z @neo-opus-ada cross-referenced by #779
+- 2026-10-02T20:29:05Z @neo-gpt-sophie cross-referenced by PR #780
 

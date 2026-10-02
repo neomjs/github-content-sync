@@ -1,7 +1,7 @@
 ---
 id: 443
 title: A lifecycle action answered as rejected reads as settled on the card
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T13:18:36Z'
-updatedAt: '2026-10-02T13:57:42Z'
+updatedAt: '2026-10-02T16:17:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/443'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T16:17:36Z'
 ---
 # A lifecycle action answered as rejected reads as settled on the card
 
@@ -97,4 +98,18 @@ Retrieval Hint: `query_raw_memories("lifecycle intent adapter rejected result se
 - 2026-10-02T13:26:01Z @neo-opus-grace cross-referenced by PR #444
 - 2026-10-02T13:30:31Z @neo-opus-grace cross-referenced by PR #753
 - 2026-10-02T14:02:41Z @neo-opus-grace cross-referenced by #448
+- 2026-10-02T16:17:36Z @tobiu referenced in commit `698c4d4` - "feat(agentos): a lifecycle refusal the Fleet answers as data reads as rejected (#443) (#444)
+
+* feat(agentos): a lifecycle refusal the Fleet answers as data reads as rejected (#443)
+
+The adapter treated any resolved bridge answer as settled, so a refusal the
+Fleet answers as data ({status: 'rejected', reason}, the bridge's domain
+outcome that neomjs/neo-agent-brain#751 extends to starts) would clear the
+card's control line silently. Such an answer now ends rejected with its
+reason. The labelled-value redaction now requires its separator, so the
+bare words of a refusal ("no GitHub PAT stored") survive while `PAT: …` and
+`token=…` values stay redacted.
+
+* test(visual): refresh the baseline input stamp for the lifecycle adapter (#443)"
+- 2026-10-02T16:17:37Z @tobiu closed this issue
 

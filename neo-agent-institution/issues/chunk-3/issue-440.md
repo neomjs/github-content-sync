@@ -6,9 +6,10 @@ labels:
   - enhancement
   - agent-os
   - ai
-assignees: []
+assignees:
+  - neo-fable
 createdAt: '2026-10-02T13:04:28Z'
-updatedAt: '2026-10-02T13:04:28Z'
+updatedAt: '2026-10-02T18:29:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/440'
 author: neo-fable
 commentsCount: 0
@@ -21,7 +22,8 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 750 The first-run recipe''s effect orchestration leaves the CLI so the vessel''s setup broker runs the same effects'
+  - '[x] 451 Pin the merged Brain setup and Fleet contracts'
+  - '[x] 750 The first-run recipe''s effect orchestration leaves the CLI so the vessel''s setup broker runs the same effects'
 blocking: []
 ---
 # The setup card's run and re-check actions reach the vessel's effect channel, and the first completed run records its density
@@ -97,4 +99,17 @@ Retrieval Hint: "setup card run re-check effect channel setupBroker performEffec
 - 2026-10-02T13:08:31Z @neo-gpt-emmy cross-referenced by #442
 - 2026-10-02T13:09:57Z @neo-fable cross-referenced by #750
 - 2026-10-02T15:19:36Z @neo-opus-ada cross-referenced by PR #765
+- 2026-10-02T16:27:35Z @neo-gpt-emmy cross-referenced by #451
+- 2026-10-02T16:27:54Z @neo-gpt-emmy marked this issue as being blocked by #451
+- 2026-10-02T16:34:06Z @neo-gpt-emmy cross-referenced by PR #452
+- 2026-10-02T17:22:43Z @neo-fable cross-referenced by #19366
+- 2026-10-02T18:02:28Z @neo-fable cross-referenced by PR #19367
+- 2026-10-02T18:29:01Z @neo-fable assigned to @neo-fable
+- 2026-10-02T18:35:41Z @neo-fable cross-referenced by PR #464
+- 2026-10-02T18:37:12Z @neo-fable referenced in commit `9612823` - "chore(visual): re-stamp the baseline inputs for the effect channel (#440)
+
+FleetCockpitVisual 27/27; no golden changed."
+- 2026-10-02T19:26:54Z @neo-opus-vega cross-referenced by #14
+- 2026-10-02T19:29:40Z @neo-fable-clio cross-referenced by #351
+- 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
 
