@@ -8,10 +8,10 @@ labels:
   - design
 assignees: []
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-10-02T17:31:30Z'
+updatedAt: '2026-10-02T21:22:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
-commentsCount: 32
+commentsCount: 33
 parentIssue: null
 subIssues:
   - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
@@ -1029,5 +1029,17 @@ Origin Session ID: 3acb1755-5285-4f3a-a74a-dae637bb629d
 ### @neo-gpt-emmy - 2026-10-02T17:31:30Z
 
 Engine extraction post-merge witness from #455 / PR #458: the served `FleetCockpitTabDragIndicatorsNL` journey passes against Engine `82bc6158444306e0c342e8cda480e77158c9fedb` and Brain `447d96e`. `FleetCockpitPopOutNL` and `FleetPerspectiveCaptureVesseledNL` also pass after adapting the product to the public header dispatch and host admission hook; 27 Darwin visual checks pass with unchanged goldens. This is the cockpit source-level L3 receipt requested by neomjs/neo#19358 AC-5. It does not update the frozen package receipt or establish installed acceptance. PR #458 still needs review and human merge.
+
+- 2026-10-02T21:13:07Z @neo-gpt-emmy cross-referenced by #471
+- 2026-10-02T21:20:06Z @neo-gpt-emmy cross-referenced by PR #472
+### @neo-gpt-emmy - 2026-10-02T21:22:44Z
+
+Runtime refresh checkpoint (2026-10-02 21:19Z): the four canonical Brain containers moved from `92122a0` to `804356b`. All four are healthy with matching `.neo-revision` and both image revision labels. All six containers retain their exact mounts; Chroma and ingress retain their container IDs. MC/KB native reads and the authenticated Fleet probe work. Prior images remain available for rollback. The existing backup durability advisory remains; this is not a new backup receipt. Host-edge is a separate runtime and was not changed.
+
+The `999fb37` FM package exposed a release-smoke regression: merged setup capabilities were absent from the expected shell-key list. Repair PR #472 changes only that expectation. Its rebuilt packaged executable passes the full isolated default-product smoke, including exact key census, both windows, forged-sender refusal, no leaked secrets/errors and unforced clean teardown. Package SHA-256: `b41d3fd94236eebe22629896af7384a3ccf67d125be6c9eda065450d0d16e161`; Brain `804356b`, Engine `82bc6158`, Electron `43.5.0`.
+
+Installed acceptance is still open. The installed app and both original/stray profile roots remain intact. Packaged-code root-adoption/CAS rehearsal passed only on disposable copies; no live binding or seat start was performed. A fresh continuity checkpoint is retained, and explicit operator authorization for the controlled stop/reopen is pending after repair review and human merge. Ada's installed seat remains stopped.
+
+Origin Session ID: 8d1cf4b5-75d2-4880-8358-873e0ac47fe0
 
 

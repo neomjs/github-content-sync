@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-02T20:44:14.212Z",
-  "releasesLastFetched": "2026-10-02T20:44:11.011Z",
+  "lastSync": "2026-10-03T00:29:41.627Z",
+  "releasesLastFetched": "2026-10-03T00:29:39.449Z",
   "pushFailures": [],
   "issues": {
     "1": {
@@ -109975,11 +109975,11 @@
       "commentsTotal": 1
     },
     "19370": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo/issues/chunk-25/issue-19370.md",
-      "closedAt": null,
-      "updatedAt": "2026-10-02T20:22:52Z",
-      "contentHash": "bd70fb109355e928d053c31f19ed20912563847c7ae29039691e636136caa189",
+      "closedAt": "2026-10-02T21:03:09Z",
+      "updatedAt": "2026-10-02T21:03:09Z",
+      "contentHash": "b8bb0d6904239fbd365980a4c6a6d124d584bbd457995ceb2858cdddeabe78d3",
       "milestone": null,
       "commentsTotal": 0
     },
@@ -114014,13 +114014,13 @@
       "contentHash": "a79196317a69dd6d756295b77986b17dcd6434df1590d158ea149668bde8eb41"
     },
     "19371": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo/pulls/chunk-23/pr-19371.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-10-02T21:03:08Z",
+      "mergedAt": "2026-10-02T21:03:08Z",
       "milestone": null,
-      "updatedAt": "2026-10-02T20:43:16Z",
-      "contentHash": "91840f2380987490e4b76b6509b6e2302b1d464dc8788c5f7df1173d9b5788d6"
+      "updatedAt": "2026-10-02T21:03:14Z",
+      "contentHash": "d6ddcbc4f429a4dddba8460d7b04d345f2c4ddb9aa2fb60398303e547b919bb4"
     },
     "19374": {
       "state": "OPEN",

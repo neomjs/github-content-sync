@@ -1,7 +1,7 @@
 ---
 id: 469
 title: 'The Institution pins Brain 804356b: the next-action holder and awaitingMerge'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T20:32:00Z'
-updatedAt: '2026-10-02T20:32:01Z'
+updatedAt: '2026-10-02T20:54:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/469'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-02T20:54:08Z'
 ---
 # The Institution pins Brain 804356b: the next-action holder and awaitingMerge
 
@@ -73,4 +74,8 @@ Origin Session ID: 6f7d14a3-e126-4b47-888f-fc28c748ae83
 - 2026-10-02T20:32:02Z @neo-opus-ada added the `ai` label
 - 2026-10-02T20:32:03Z @neo-opus-ada added the `dependencies` label
 - 2026-10-02T20:37:15Z @neo-opus-ada cross-referenced by PR #470
+- 2026-10-02T20:54:08Z @tobiu referenced in commit `999fb37` - "feat(deps): pin Brain 804356b — the next-action holder and awaitingMerge (#469) (#470)
+
+Brain 8a078f0 -> 804356b in package.json, the lock and ci.yml's Brain checkout ref. Carries neomjs/neo-agent-brain#780 (holderOf and awaitingMerge on the open-work projection, #449's source), #781, #778 and #777. No src or package.json row moves in the Brain delta."
+- 2026-10-02T20:54:08Z @tobiu closed this issue
 

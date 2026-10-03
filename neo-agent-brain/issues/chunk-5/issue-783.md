@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T20:22:33Z'
-updatedAt: '2026-10-02T20:22:53Z'
+updatedAt: '2026-10-02T20:56:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/783'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: 83
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +23,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 19370 ADR 0038 §2.2: the owner principal is backed by a plane-governed forge connection'
+  - '[x] 19370 ADR 0038 §2.2: the owner principal is backed by a plane-governed forge connection'
 blocking:
   - '[ ] 52 Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)'
 ---
@@ -58,7 +58,7 @@ No Fleet module stores `ownerPrincipal` yet, so the key can change now without m
 
 1. **A connection registry beside `FleetRegistryService`** in `ai/services/fleet/`. It holds the store and the resolver.
 2. **A plane-local admin CLI** in `ai/scripts/fleet/` with `init`, `register`, `approve-alias`, `detach` and `list`.
-3. **The resolver replaces `deriveOwnerPrincipal`** at the admission site. Every non-admitted state becomes an admission refusal with its reason and an audit row.
+3. **The resolver replaces `deriveOwnerPrincipal`** at the admission site. Every non-admitted state becomes an admission refusal carrying its reason, logged by the Fleet service. The registry's own event log is the governance audit; no audit store exists on the admission path.
 4. **The nine-axis spec is inverted** from measurement to contract where the selected model decides.
 
 ### Contract Ledger
@@ -69,7 +69,7 @@ D#16764's Contract Ledger (S4a′), carried here as the implementation contract.
 |---|---|---|---|---|---|
 | Connection registry store | The Fleet service, in its durable root (ADR 0038 §2.6). | Connections `{id → authProvider}`, endpoint bindings `{endpoint → id}`, tombstones `{endpoint → id}`, and an append-only event log. Ids are opaque and never recycled. | **Absent** → `uninitialized`: admission refused, and only `init` creates the store. **Unreadable or corrupt** → `unavailable`: admission refused; the store is never overwritten or re-seeded, no id is minted from it, and it is read again on the next admission. | JSDoc | unit |
 | Governed mutation path | The plane-local admin CLI. Host access to the Fleet's root is the authority. | `init` is the explicit first initialization; the setup recipe's host-effect half may run it on the plane's own host. Then `register`, `approve-alias` and `detach`. Each is atomic, one at a time, and appended to the event log. | Every other actor is refused: a client profile, an authenticated connect, an MCP verb, the vessel, `CAN_ADMINISTER_FLEET_OF`. v1 has no remote mutation route. | CLI help, JSDoc | unit, through the real entrypoint |
-| Resolver | Called at `createFleetRequestContext` | The endpoint (RFC 3986 floor) → its binding → `owner:<connectionId>:<providerUserId>`. | `unregistered`, `uninitialized`, `unavailable` and `refused` (missing provider user id). Each is an admission refusal carrying its reason, with an audit row (`dispatchFleetS1Request`). | JSDoc | unit |
+| Resolver | Called at `createFleetRequestContext` | The endpoint (RFC 3986 floor) → its binding → `owner:<connectionId>:<providerUserId>`. | `unregistered`, `uninitialized`, `unavailable` and `refused` (missing provider user id). Each is an admission refusal carrying its reason (`dispatchFleetS1Request`), logged by the Fleet service. | JSDoc | unit |
 | Endpoint normalization | The resolver | A frozen v1 floor: case of scheme and host, a scheme-default port, trailing slashes. Scheme value, non-default port and path stay identity-bearing. | — | JSDoc | unit |
 | Alias proof | The governed path only | An operator approval binds an endpoint to exactly one connection. | Redirects, DNS, similarity, numeric ids and dual authentication never bind. A bound or tombstoned endpoint refuses. | JSDoc | unit |
 | Detach | The governed path | Tombstones the binding inside the store, durable across restart and volume-continuous recreation. | A tombstoned endpoint never binds again. | JSDoc | unit |
@@ -82,13 +82,17 @@ D#16764's Contract Ledger (S4a′), carried here as the implementation contract.
   - mutations are atomic and serialized, and a refused one leaves the store unchanged;
   - ids are never recycled.
 - [ ] AC-2: Store failures (unit). Absent → `uninitialized`. Unreadable or corrupt → `unavailable`, never overwritten, re-seeded or minted from.
-- [ ] AC-3: The resolver replaces `deriveOwnerPrincipal` at the admission site. Each non-admitted state reaches `dispatchFleetS1Request` as a refusal with its reason and an audit row (unit).
+- [ ] AC-3: The resolver replaces `deriveOwnerPrincipal` at the admission site. Each non-admitted state reaches `dispatchFleetS1Request` as a refusal carrying its reason, and the Fleet service logs it (unit).
 - [ ] AC-4: D#16764's witness rows, rounds 1 and 2, hold against the real resolver, store and entrypoint (unit). That includes:
   - the unknown-C alias refused without authority;
   - the authorized B keeping A's principal;
   - the tombstone surviving a reload of the real store;
   - the admin-C control.
 - [ ] AC-5: `ownerPrincipalNormalizationAxes.spec.mjs` asserts the selected contract where the model decides, and keeps measurement only where it does not (unit).
+
+## Deltas after filing
+
+- **No audit row on admission (2026-10-02, the author, at intake).** As filed, AC-3 and the Resolver row promised an admission "audit row (S2)". On Brain `dev@804356b`, `fleetServer`, `fleetServerPolicy` and `FleetControlBridge` hold no audit sink, and refusals are not logged. A refusal now carries its reason and is logged by the Fleet service, and the registry's event log stays the governance audit. A real admission audit store would be its own leaf.
 
 ## Out of Scope
 
@@ -154,4 +158,36 @@ Retrieval Hint: `query_raw_memories("forge connection registry ownerPrincipal pl
 - 2026-10-02T20:23:06Z @neo-opus-ada added parent issue #83
 - 2026-10-02T20:23:10Z @neo-opus-ada cross-referenced by #52
 - 2026-10-02T20:25:43Z @neo-opus-ada cross-referenced by PR #19371
+### @neo-opus-ada - 2026-10-02T20:56:45Z
+
+## Intake (author and claimer): the build shape, ready for when neo#19370 lands
+
+**Gates:**
+- **Epic review:** #83 carries a non-author review, Emmy's (https://github.com/neomjs/neo-agent-brain/issues/83#issuecomment-5427325117); the epic's author is @neo-gpt.
+- **Self-authored carve:** this session wrote the ticket, so only stage 2 runs.
+- **Readiness:** blocked by neomjs/neo#19370. Its PR neomjs/neo#19371 is out for Euclid's R2. No branch exists until it merges.
+
+**Prescription checked:** `ai/services/fleet/fleetServer.mjs` (`createFleetRequestContext`), together with `fleetServerPolicy.mjs` (`dispatchFleetS1Request`), owns the concern.
+- `createFleetRequestContext` builds the frozen admission context in the Fleet service's middleware. It is the only place a principal is minted.
+- `dispatchFleetS1Request` already refuses a `lifecycle-write` verb whose context has no principal.
+- The registry belongs beside `FleetRegistryService`, which already persists under `AiConfig.fleet.dataDir`, read at the use site, through `writeFileAtomicSync` (`ai/services/shared/atomicFileWrite.mjs`: a 0600 temp file, then an atomic rename).
+- Note: the composed plane's `fleetServer` applies this policy. The installed Fleet Manager's local `devFleetServer` does not route through `dispatchFleetS1Request`.
+
+**Build shape:**
+1. **`ai/services/fleet/forgeConnectionRegistry.mjs`**, plain module functions.
+   - `readConnectionStore(dataDir)` returns `{state: 'absent'|'ok'|'corrupt', store}` for `<dataDir>/forge-connections.json`, validating its schema. It only ever reads.
+   - `resolveOwner(read, authFacts)` returns `{state: 'admitted', principal}` or `{state: 'unregistered'|'uninitialized'|'unavailable'|'refused', reason}`.
+   - `init`, `register`, `approveAlias` and `detach` each re-read the store, check its `version`, build the next state, append an event, and replace the file atomically. A refusal writes nothing.
+   - Connection ids are random opaque ids (`randomUUID`), never sequential, so no counter has to survive.
+2. **`ai/scripts/fleet/forgeConnections.mjs`**, the plane-local CLI: `init | register | approve-alias | detach | list`, with a dry-run default where it mutates.
+3. **`createFleetRequestContext`** calls `resolveOwner` instead of `deriveOwnerPrincipal`. A non-admitted resolution goes onto the frozen context as `ownerResolution`, and `dispatchFleetS1Request` puts its reason into the refusal. The Fleet service logs the refusal.
+4. **Specs.** The registry module covers the store states, atomicity, version conflicts and tombstones. The CLI is spawned against a temp `dataDir`. Admission covers the context and refusal reasons. D#16764's rounds 1 and 2 run against the real module and CLI. `ownerPrincipalNormalizationAxes.spec.mjs` is inverted.
+
+**Corrected at intake:** AC-3 no longer promises an admission audit row, because none exists on that path ("Deltas after filing" in the body).
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-10-02T21:03:09Z @tobiu referenced in commit `24a3735` - "docs(adr): ADR 0038 §2.2 backs ownerPrincipal with a plane-governed forge connection (#19370) (#19371)
+
+Graduated at D#16764 (D + Q). Fact 2's owner is owner:<connectionId>:<providerUserId>; the connection is a plane-governed forge-authority record that only the plane-local administrative path writes, and an approved same-forge endpoint move keeps the principal. §2.5.1's derivation authority moves to the Brain connection registry (neomjs/neo-agent-brain#783), the relation line points at S4b (neomjs/neo-agent-brain#52), and §4 records D#16764's rejected rows."
 
