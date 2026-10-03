@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-03T19:58:10.753Z",
-  "releasesLastFetched": "2026-10-03T19:58:09.947Z",
+  "lastSync": "2026-10-03T23:03:36.133Z",
+  "releasesLastFetched": "2026-10-03T23:03:35.406Z",
   "pushFailures": [],
   "issues": {
     "5": {
@@ -89,7 +89,7 @@
       "path": "neo-agent-skills/issues/chunk-1/issue-14.md",
       "closedAt": null,
       "updatedAt": "2026-09-15T16:36:02Z",
-      "contentHash": "6b47b7ca717a88e010514316f06b9b3af3973f17a47ec29bf0609cbe6f5a1c64",
+      "contentHash": "40cd106f4fa67d5b183a2a9e334e0d557b58337b42a79a240f9a587f5676e5d1",
       "milestone": null,
       "commentsTotal": 8
     },
@@ -305,7 +305,7 @@
       "path": "neo-agent-skills/issues/chunk-1/issue-51.md",
       "closedAt": null,
       "updatedAt": "2026-09-18T10:09:47Z",
-      "contentHash": "8f1d595d90df54bfdeab1a6fda60ce32730ff5c4b5cd1cb9c5333232dbdb3ee4",
+      "contentHash": "fca995579254a3bc9b1271633b738649b237a1f89ff2920c093dc5a39a6432cc",
       "milestone": null,
       "commentsTotal": 4
     },
@@ -772,10 +772,19 @@
       "state": "OPEN",
       "path": "neo-agent-skills/issues/chunk-1/issue-140.md",
       "closedAt": null,
-      "updatedAt": "2026-10-03T19:33:32Z",
-      "contentHash": "33524ecf4b95cafa78982755d56f279436e2455d7c33cbaae07307d2db5587e8",
+      "updatedAt": "2026-10-03T22:39:00Z",
+      "contentHash": "98fbe18cd0a5f1197b27caf3f16a12933d616ef9a75d894bd3d504b099d8d7b2",
       "milestone": null,
-      "commentsTotal": 4
+      "commentsTotal": 7
+    },
+    "144": {
+      "state": "OPEN",
+      "path": "neo-agent-skills/issues/chunk-1/issue-144.md",
+      "closedAt": null,
+      "updatedAt": "2026-10-03T22:20:04Z",
+      "contentHash": "d815cfe16e72180203e98e8d825973652df71c00fc1ab476c008880d25ffcf98",
+      "milestone": null,
+      "commentsTotal": 0
     }
   },
   "releases": {},
@@ -1029,8 +1038,8 @@
       "closedAt": "2026-10-03T18:48:31Z",
       "mergedAt": "2026-10-03T18:48:31Z",
       "milestone": null,
-      "updatedAt": "2026-10-03T18:48:50Z",
-      "contentHash": "f58a6ee7a758e77e29834c02ab91fec8b915bc80202cc3ca5129782f0e07adf9"
+      "updatedAt": "2026-10-03T21:16:48Z",
+      "contentHash": "377b3cb7229add7ee635e2d93248a83340f1a5d138bc828351faff06df639609"
     },
     "142": {
       "state": "MERGED",
@@ -1038,8 +1047,8 @@
       "closedAt": "2026-10-03T19:16:15Z",
       "mergedAt": "2026-10-03T19:16:15Z",
       "milestone": null,
-      "updatedAt": "2026-10-03T19:17:55Z",
-      "contentHash": "6e8facd994a1de613b7adec36692e614586472761e6a298536fa700c6eb70528"
+      "updatedAt": "2026-10-03T21:16:50Z",
+      "contentHash": "84c954627eab325660ee184001c12ad100f9ada75c73379d42a04d633aabc5bb"
     },
     "143": {
       "state": "MERGED",

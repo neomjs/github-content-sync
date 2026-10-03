@@ -9,7 +9,7 @@ labels:
   - epic
 assignees: []
 createdAt: '2026-09-28T11:52:12Z'
-updatedAt: '2026-10-03T17:56:12Z'
+updatedAt: '2026-10-03T21:55:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/312'
 author: neo-opus-vega
 commentsCount: 9
@@ -25,8 +25,9 @@ subIssues:
   - '[ ] 485 Row 3''s installed walkthrough: the Observatory''s eight checks on a cold saved-plane launch'
   - '[x] 486 The cold get_graph_scene read lands inside the client''s 60 s on the installed FM'
   - '[x] 487 The Observatory''s panel reads kind-appropriate evidence for a selected node without a source view'
+  - '[ ] 527 The Observatory''s side panel width is a splitter, kept for the session'
 subIssuesCompleted: 9
-subIssuesTotal: 10
+subIssuesTotal: 11
 contentTrust:
   projected: true
   quarantined: 0
@@ -39,7 +40,7 @@ milestone: FM v1
 
 Terminal predicate: on the installed Fleet Manager, from a cold launch, the operator walks D#19317's Q1–Q5 in the Observatory: readable wells at the Brain's own strategic anchors, attention on named work events, the Golden Path route, who authored, was assigned or recently changed what, and any node's evidence one step away.
 
-Row state: row 3 · Vega · unknown · 2026-10-03, installed candidate staged 09:23Z (Brain `fb40366`, Engine `82bc615`): warm partial walk, 1 fail (#509), checks 2 and 4–8 need a pointer · plan: planned 2 · done 0 · added 3 (gap list accepted 2026-10-03; three design leaves accepted by the reader 17:26Z) · next: #509 (Vega; claimed, build starts after D#19384 ticket 1 lands) → the next #12 cut carrying `610689ab2` + #509 → the cold walk #485
+Row state: row 3 · Vega · unknown · 2026-10-03, installed candidate staged 09:23Z (Brain `fb40366`, Engine `82bc615`): warm partial walk, 1 fail (#509), checks 2 and 4–8 need a pointer · plan: planned 2 · done 0 · added 4 (gap list accepted 2026-10-03; three design leaves accepted by the reader 17:26Z; #527 split from #509 by the reader's decision 4, 21:24Z) · next: #509 → PR #528 (design read approved, review: Emmy) → merge → the next #12 cut carrying `610689ab2` + #528 → the cold walk #485; #527 open to a builder
 
 ## Problem scope
 
@@ -101,6 +102,7 @@ Epic sweep: 7 open Institution epics and 38 open Brain epics read, by terminal p
 Structure map: run 2026-09-28 in the Brain checkout; the Brain leaves sit in `ai/services/memory-core` (`GraphService`) and `ai/services/fleet` (`fleetGraphSceneSource`). The Institution consumer is not Brain-hosted (N/A).
 Origin Session ID: 96f97500-4dcb-461e-bef0-af4e6dc5e24a
 Retrieval Hint: "Observatory shared operating picture epic wells attention team lens D19317"
+
 
 
 
@@ -440,4 +442,6 @@ Row 3's lift input is complete on the cockpit side. #510 / #507 stay under #505,
 - 2026-10-03T17:56:36Z @neo-opus-ada cross-referenced by #517
 - 2026-10-03T18:01:16Z @neo-fable-clio cross-referenced by #518
 - 2026-10-03T18:01:18Z @neo-opus-ada cross-referenced by PR #519
+- 2026-10-03T21:43:20Z @neo-opus-vega cross-referenced by #527
+- 2026-10-03T21:43:25Z @neo-opus-vega added sub-issue #527
 

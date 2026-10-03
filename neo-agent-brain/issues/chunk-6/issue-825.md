@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T19:12:36Z'
-updatedAt: '2026-10-03T19:12:36Z'
+updatedAt: '2026-10-03T20:26:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/825'
 author: neo-opus-ada
 commentsCount: 0
@@ -51,6 +51,17 @@ This is gap 2 of #571, the team's move into Fleet Manager as dogfooding, under t
 2. Detection gains `lastChanged` and `name`. No file contents and no secrets cross the wire.
 3. Declare the method in all three places, with scope class `read-observe`.
 
+## Contract Ledger
+
+*Backfilled at Sophie's review of PR #827 (pr-review §5.4). It describes the head under review, b71507f.*
+
+| Target surface | Source of authority | Behavior | Fallback / failure | Docs | Evidence |
+|---|---|---|---|---|---|
+| Wire method `fleetMemoryCandidates` | `src/fleet/contract/wire.mjs` `FLEET_WIRE_METHODS`; `fleetServerPolicy.mjs` (S1 `awaiting-s5`, scope class `read-observe`) | A read-observe method that **takes no input**: params are ignored, and no caller value reaches detection. It is answered by the host that holds the seats, through `FleetControlBridge.memoryCandidatesSource`, which only `devFleetServer.mjs` wires. | The composed plane service answers `degraded` (`awaiting-s5`), as for every S5 read. | `FleetControlBridge.fleetMemoryCandidates` JSDoc | `dispatchFleetRequest.spec`, `fleetServer.spec`, `FleetControlBridge.spec` |
+| Response envelope | `FleetControlBridge.fleetMemoryCandidates` | **Wired:** `{capability: {state: 'wired'}, candidates, count}`. **Wired and empty:** `candidates: []`, `count: 0`, meaning the host read completed and found no memory. | **Unwired** (a service that holds no seats): `{capability: {state: 'unavailable', reason: 'memory candidates are read on the host that holds the seats'}, candidates: [], count: 0}`. This is never an empty host. **A thrown read** (for example `EACCES` on `~/.claude/projects`): the dispatcher's sanitized `operationFailed` envelope, `fleet: 'fleetMemoryCandidates' failed`, with the cause logged server-side only. **Only wired-and-empty means "no memory exists"**; a consumer treats the other two as unknown (neomjs/neo-agent-institution#521). | same | `FleetControlBridge.spec` (wired, unwired); `dispatchFleetRequest` catch path |
+| Candidate | `seatMemoryImport.detectMemoryCandidates` | `{family: 'claude'\|'codex', source, name, notes, lastChanged}`, most notes first. **`source`** is the absolute memory folder `normalizeMemoryImport` accepts: a Claude project's `memory`, `~/.codex/memories`, or `~/.codex-instances/<name>/memories`, with real folders only. **`name`** comes from the folder, never the path: a Codex instance's folder name, `codex` for the Codex home, or a Claude slug without the home's encoding (`~` for the home itself). **`notes`** counts the regular files beneath `source`; links are neither followed nor counted. **`lastChanged`** is the newest such file's mtime, in ISO form. | A folder with no files is no candidate. A link on any segment hides the folder. No file's contents are read. | `detectMemoryCandidates` / `candidateName` JSDoc | `seatMemoryImport.spec` |
+| Consent boundary | `defineAgent` → `normalizeMemoryImport` → `importSeatMemory` (#797) | A candidate's `source` is the value a `memoryImport` consent names. `normalizeMemoryImport` re-validates it at define time, because the wire carries the consent and not trust. The copy runs at Start, never moves the original, and is refused when it reads empty. | `'none'` is the explicit decline. Anything else is a `TypeError` at define. | `seatMemoryImport` module doc | `seatMemoryImport.spec` "a candidate's source is the consent defineAgent accepts" |
+
 ## Acceptance Criteria
 
 - [ ] AC-1: `fleetMemoryCandidates` is declared in `FLEET_WIRE_METHODS`, the S1 policy and the scope classes (`read-observe`), and is served by the bridge.
@@ -73,6 +84,7 @@ Decision Record impact: `none` (an additive read on an existing contract).
 
 Origin Session ID: 84371353-afea-4f59-9b58-2b8777325f56
 Retrieval Hint: "fleetMemoryCandidates detectMemoryCandidates wire method memory import Add Agent candidates name notes lastChanged"
+
 
 ## Timeline
 

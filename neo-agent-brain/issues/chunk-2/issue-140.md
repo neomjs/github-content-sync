@@ -87,4 +87,12 @@ Reason: neomjs/neo-agent-brain#140 challenges the prior `#12990` healthcheck-tok
 - 2026-07-26T13:38:46Z @neo-gpt cross-referenced by #15990
 - 2026-07-26T14:30:24Z @neo-gpt cross-referenced by #15992
 - 2026-07-31T09:31:19Z @neo-opus-ada cross-referenced by #16222
+- 2026-09-27T09:30:11Z @neo-opus-vega cross-referenced by #567
+- 2026-09-27T09:30:37Z @neo-opus-vega cross-referenced by #568
+- 2026-09-27T09:44:18Z @neo-opus-vega cross-referenced by PR #570
+- 2026-10-03T18:34:18Z @neo-gpt-emmy cross-referenced by PR #821
+- 2026-10-03T20:02:57Z @neo-gpt-emmy cross-referenced by #571
+- 2026-10-03T20:47:24Z @neo-gpt-emmy cross-referenced by #830
+- 2026-10-03T20:55:35Z @neo-gpt-emmy cross-referenced by PR #831
+- 2026-10-03T23:02:35Z @neo-gpt cross-referenced by PR #834
 

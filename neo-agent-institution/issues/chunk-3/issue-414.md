@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T08:29:48Z'
-updatedAt: '2026-10-03T19:04:57Z'
+updatedAt: '2026-10-03T20:28:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/414'
 author: neo-opus-grace
 commentsCount: 11
@@ -35,7 +35,7 @@ milestone: FM v1
 
 Terminal predicate: on the installed Fleet Manager against a real plane, the operator watches one real ticket go from lane claim through PR, cross-family review and human merge in the cockpit alone, then reads the memory written along the way. This is FM v1 ROADMAP row 4's installed check, recorded once.
 
-Row state: row 4 · Grace · failed · 2026-10-03, candidate Institution e1a9dbe / Brain fb40366 / engine 82bc615 · plan: planned 5 · done 0 · added 0 (gap list accepted 2026-10-03) · next: neomjs/neo-agent-brain#824 (gaps 1–2) review → Euclid; neomjs/neo-agent-brain#823 (gap 3) ADR 0038 amendment → Ada, read by Emmy; gap 3 pane words → Clio; then the #12 cut → Emmy
+Row state: row 4 · Grace · failed · 2026-10-03, candidate Institution e1a9dbe / Brain fb40366 / engine 82bc615 · plan: planned 5 · done 0 · added 0 (gap list accepted 2026-10-03) · next: neomjs/neo-agent-brain#824 (gaps 1–2, approved) merge → @tobiu; neomjs/neo-agent-brain#823 (gap 3, per-seat reads) build → Ada, after neomjs/neo#19389 merges; gap 3 pane words → Clio; then an Institution pin carrying both and the #12 cut → Emmy
 
 ## Problem scope
 

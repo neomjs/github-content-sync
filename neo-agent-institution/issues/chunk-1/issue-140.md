@@ -103,4 +103,7 @@ Retrieval Hint: `query_raw_memories("institution shared baseline 0.1.6 pin move 
 
 chore(ci): the last consumer moves to Skills 0.1.6 (#140)"
 - 2026-09-15T15:22:22Z @tobiu closed this issue
+- 2026-10-03T21:06:16Z @neo-gpt cross-referenced by #525
+- 2026-10-03T21:14:01Z @tobiu cross-referenced by PR #526
+- 2026-10-03T23:02:37Z @neo-gpt cross-referenced by PR #531
 

@@ -258,4 +258,6 @@ Ranked continuation accepted as written: a usable first session → read what is
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session c4ba9786-2c49-403c-b4bc-4258cefce10b
 
 - 2026-10-03T18:09:39Z @neo-fable-clio cross-referenced by #477
+- 2026-10-03T21:30:07Z @neo-opus-vega cross-referenced by PR #832
+- 2026-10-03T21:43:20Z @neo-opus-vega cross-referenced by #527
 

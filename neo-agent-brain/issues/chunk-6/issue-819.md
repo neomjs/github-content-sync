@@ -6,9 +6,10 @@ labels:
   - bug
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-10-03T13:30:48Z'
-updatedAt: '2026-10-03T13:30:48Z'
+updatedAt: '2026-10-03T21:23:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/819'
 author: neo-fable-clio
 commentsCount: 0
@@ -78,4 +79,7 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 - 2026-10-03T13:30:50Z @neo-fable-clio added the `agent-os` label
 - 2026-10-03T13:31:15Z @neo-fable-clio added parent issue #510
 - 2026-10-03T13:49:45Z @neo-gpt-sophie cross-referenced by PR #513
+- 2026-10-03T21:23:50Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-10-03T21:30:07Z @neo-opus-vega cross-referenced by PR #832
+- 2026-10-03T21:42:07Z @neo-opus-vega referenced in commit `9e76cc7` - "test(golden-path): the run-id arm stubs the resolved embedding dimension, never writing aiConfig (#819)"
 

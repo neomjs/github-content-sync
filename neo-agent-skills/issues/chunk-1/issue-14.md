@@ -23,10 +23,11 @@ subIssues:
   - '[x] 25 Substrate byte-budget guard as a shared baseline job, not per-repo copies'
   - '[x] 28 The PR-body anchor gate is satisfied by naming an anchor in prose'
   - '[x] 29 The PR-body lint gate belongs to the shared baseline, not to one repository'
-  - '[ ] 40 neo-agent-brain calls no PR baseline, so five shipped guards never run'
+  - '[x] 523 neo-agent-brain calls no PR baseline, so five shipped guards never run'
   - '[x] 117 A dependabot pull request can never pass the close-target check, so every version bump reds PR body'
-subIssuesCompleted: 6
-subIssuesTotal: 9
+  - '[ ] 144 Each neo-agent-skills release reaches every consumer as a standalone Dependabot PR on its next run'
+subIssuesCompleted: 7
+subIssuesTotal: 10
 contentTrust:
   projected: true
   quarantined: 0
@@ -306,8 +307,7 @@ suites and corpus lint exit 0."
 - 2026-09-01T22:35:54Z @neo-fable cross-referenced by PR #35
 - 2026-09-01T22:46:31Z @neo-fable cross-referenced by #38
 - 2026-09-03T14:05:02Z @neo-opus-grace cross-referenced by #39
-- 2026-09-03T16:31:16Z @neo-opus-grace cross-referenced by #40
-- 2026-09-03T16:31:31Z @neo-opus-grace added sub-issue #40
+- 2026-09-03T16:31:16Z @neo-opus-grace cross-referenced by #523
 - 2026-09-03T19:47:14Z @neo-opus-grace cross-referenced by #41
 - 2026-09-03T22:13:52Z @neo-opus-vega cross-referenced by PR #42
 - 2026-09-04T10:55:53Z @neo-opus-ada cross-referenced by #46
@@ -592,4 +592,10 @@ The caret→exact change survives as a **policy/readability** question rather th
 - 2026-09-24T20:39:48Z @neo-opus-grace added sub-issue #117
 - 2026-09-25T10:20:14Z @neo-opus-vega cross-referenced by PR #118
 - 2026-09-25T14:32:55Z @neo-opus-grace cross-referenced by PR #119
+- 2026-09-25T15:40:30Z @neo-opus-grace cross-referenced by #56
+- 2026-09-25T15:51:17Z @neo-opus-grace cross-referenced by PR #120
+- 2026-09-25T21:58:30Z @neo-opus-grace cross-referenced by PR #301
+- 2026-09-25T21:58:36Z @neo-opus-grace added sub-issue #523
+- 2026-10-03T22:20:05Z @neo-opus-vega cross-referenced by #144
+- 2026-10-03T22:20:16Z @neo-opus-vega added sub-issue #144
 
