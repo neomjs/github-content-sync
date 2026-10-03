@@ -9,17 +9,18 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T08:29:48Z'
-updatedAt: '2026-10-02T16:32:57Z'
+updatedAt: '2026-10-03T06:36:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/414'
 author: neo-opus-grace
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues:
   - '[x] 415 The Activity PR row names the pull request''s state and review verdict'
   - '[x] 418 The roster card''s lane line and the detail''s lane pane read the roster row''s lane stamp'
   - '[x] 426 The compose form leaves the operator inbox 96 px, under one row'
+  - '[ ] 490 Row 4''s installed walkthrough: one ticket watched from claim to merge'
 subIssuesCompleted: 3
-subIssuesTotal: 3
+subIssuesTotal: 4
 contentTrust:
   projected: true
   quarantined: 0
@@ -248,4 +249,40 @@ Origin Session ID: 308bda12-9bd8-4421-b836-138deae72eb2
 - 2026-10-02T16:52:58Z @neo-opus-vega cross-referenced by PR #769
 - 2026-10-02T17:54:58Z @neo-opus-vega cross-referenced by PR #459
 - 2026-10-02T18:05:51Z @neo-gpt-sophie cross-referenced by PR #461
+### @neo-opus-grace - 2026-10-03T06:36:41Z
+
+## Steward ledger, 2026-10-03 06:4xZ: the row-4 sitting packet
+
+The leaves are closed (#415, #418, #426). What remains is the installed sitting. Its preconditions, read live this morning:
+
+| Precondition | Needed | State now |
+|---|---|---|
+| Installed bundle | Institution `dev` ≥ `999fb37` (Brain pin `804356b`). It carries #417 (PR state and verdict), #428 (inbox rows), #461 (lane line) and Brain #769 (the PR lane from the producer, for every repo). | The installed bundle was staged 2026-10-01 14:21Z on Brain `741f9f3` (`organism-build-info.json`), so it carries none of them. The in-place update is Clio's lane. |
+| Plane | MC, KB, orchestrator and fleet server at `804356b` | Met: the four images' `org.opencontainers.image.revision` labels read `804356b` (06:2xZ). |
+| Two seats, two families | A working peer and a cross-family reviewer, both on the roster (step 1 reads the peer's card) | Met for one run: Ada (`claude-desktop`) and Sophie (`codex-desktop`) are the two registered seats. |
+| The ticket's repo is observed | The open-work producer observes `githubSlugsOf(registry)`, meaning each seat's working repository plus its other repositories (`devFleetServer.mjs:476` → `wireFleetOpenWorkSource`) | Both seats scope `neomjs/neo` only. For a Brain or Institution ticket, add that repo to the seat in the Agent Detail's Repositories pane first. Otherwise the run uses a `neo` ticket. |
+
+**Expected words that changed since [the script](https://github.com/neomjs/neo-agent-institution/issues/335#issuecomment-5909802228):**
+- **Step 1:** the card's lane line reads the roster row's lane stamp (#418), not the activity feed.
+- **Step 4:** there is no separate `review` chip. The `pr` row ends `· changes requested`, `· approved` or `· review required` (#415).
+- **Step 5:** the same row ends `· merged` within the activity cadence and redraws in place.
+- **Not needed for the pass:** #449 (Ada, building) adds the card's open-work chip and the fleet head's "N awaiting merge" button. If it lands first, step 5 also reads it.
+
+**The operator's calls at the sitting:**
+- the ticket and its repo;
+- the peer and the reviewer;
+- the recording.
+
+The row's state stays `unknown` until the recording.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 9eba4853-ea86-428a-85f9-e9060002ca22
+
+
+- 2026-10-03T08:22:58Z @neo-fable-clio cross-referenced by #477
+- 2026-10-03T08:24:43Z @neo-fable-clio cross-referenced by #480
+- 2026-10-03T08:28:43Z @neo-fable-clio cross-referenced by PR #482
+- 2026-10-03T09:05:10Z @neo-opus-grace cross-referenced by #490
+- 2026-10-03T09:05:16Z @neo-opus-grace added sub-issue #490
+- 2026-10-03T10:56:50Z @neo-opus-grace cross-referenced by #498
+- 2026-10-03T11:57:17Z @neo-fable-clio cross-referenced by #505
 

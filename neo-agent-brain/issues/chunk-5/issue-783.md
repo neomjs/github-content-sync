@@ -1,7 +1,7 @@
 ---
 id: 783
 title: Fleet admission resolves its owner through a plane-governed forge connection
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T20:22:33Z'
-updatedAt: '2026-10-02T20:56:45Z'
+updatedAt: '2026-10-03T11:57:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/783'
 author: neo-opus-ada
 commentsCount: 1
@@ -26,6 +26,7 @@ blockedBy:
   - '[x] 19370 ADR 0038 §2.2: the owner principal is backed by a plane-governed forge connection'
 blocking:
   - '[ ] 52 Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)'
+closedAt: '2026-10-03T11:57:07Z'
 ---
 # Fleet admission resolves its owner through a plane-governed forge connection
 
@@ -190,4 +191,63 @@ Retrieval Hint: `query_raw_memories("forge connection registry ownerPrincipal pl
 - 2026-10-02T21:03:09Z @tobiu referenced in commit `24a3735` - "docs(adr): ADR 0038 §2.2 backs ownerPrincipal with a plane-governed forge connection (#19370) (#19371)
 
 Graduated at D#16764 (D + Q). Fact 2's owner is owner:<connectionId>:<providerUserId>; the connection is a plane-governed forge-authority record that only the plane-local administrative path writes, and an approved same-forge endpoint move keeps the principal. §2.5.1's derivation authority moves to the Brain connection registry (neomjs/neo-agent-brain#783), the relation line points at S4b (neomjs/neo-agent-brain#52), and §4 records D#16764's rejected rows."
+- 2026-10-03T06:39:10Z @neo-opus-grace cross-referenced by #759
+- 2026-10-03T06:41:31Z @neo-fable-clio cross-referenced by #784
+- 2026-10-03T10:32:04Z @neo-opus-ada referenced in commit `a0a7177` - "feat(fleet): Fleet admission resolves its owner through the plane's forge-connection registry (#783)
+
+ADR 0038 §2.2 as amended by neo#19371: the owner principal is
+owner:<connectionId>:<providerUserId>, and the connection is a plane-governed
+record of a trusted forge and the endpoints its operator approved.
+
+- ForgeConnectionRegistryService holds the store (forge-connections.json in the
+  Fleet data root, read at the use site through the dataDir instance seam) and
+  the resolver. Resolving only reads: absent is uninitialized, unreadable or
+  inconsistent is unavailable, and neither is created, repaired or minted from.
+- ai/scripts/fleet/forgeConnections.mjs is the only writer: init, register,
+  approve-alias, detach, list; dry run unless --apply; each mutation re-reads
+  under an exclusive lock, appends its event and replaces the file atomically.
+- createFleetRequestContext resolves through the registry instead of deriving
+  the tuple principal; an unresolved forge admission carries ownerResolution,
+  a refused lifecycle write names it, and the Fleet service logs the refusal.
+- D#16764's round-1 and round-2 witness rows run against the real registry
+  and CLI; the nine-axis spec asserts the contract where the model decides."
+- 2026-10-03T10:32:16Z @neo-opus-ada cross-referenced by PR #805
+- 2026-10-03T11:07:35Z @neo-opus-ada referenced in commit `f0f3f9e` - "fix(fleet): the forge-connection store checks a reference is a string before any key lookup (#783)
+
+Euclid's integrity falsifier on #805: a binding value ['id'] passed through
+Object.hasOwn's key coercion as a known connection, and {toString: null} threw
+out of read() instead of reading as unavailable. References are now non-empty
+strings before the lookup, for bindings and tombstones alike, and any structural
+throw while checking the store reads as corrupt, never escapes. Malformed-type
+controls join the integrity arm."
+- 2026-10-03T11:57:07Z @tobiu referenced in commit `a8c763b` - "feat(fleet): Fleet admission resolves its owner through the plane's forge-connection registry (#783) (#805)
+
+* feat(fleet): Fleet admission resolves its owner through the plane's forge-connection registry (#783)
+
+ADR 0038 §2.2 as amended by neo#19371: the owner principal is
+owner:<connectionId>:<providerUserId>, and the connection is a plane-governed
+record of a trusted forge and the endpoints its operator approved.
+
+- ForgeConnectionRegistryService holds the store (forge-connections.json in the
+  Fleet data root, read at the use site through the dataDir instance seam) and
+  the resolver. Resolving only reads: absent is uninitialized, unreadable or
+  inconsistent is unavailable, and neither is created, repaired or minted from.
+- ai/scripts/fleet/forgeConnections.mjs is the only writer: init, register,
+  approve-alias, detach, list; dry run unless --apply; each mutation re-reads
+  under an exclusive lock, appends its event and replaces the file atomically.
+- createFleetRequestContext resolves through the registry instead of deriving
+  the tuple principal; an unresolved forge admission carries ownerResolution,
+  a refused lifecycle write names it, and the Fleet service logs the refusal.
+- D#16764's round-1 and round-2 witness rows run against the real registry
+  and CLI; the nine-axis spec asserts the contract where the model decides.
+
+* fix(fleet): the forge-connection store checks a reference is a string before any key lookup (#783)
+
+Euclid's integrity falsifier on #805: a binding value ['id'] passed through
+Object.hasOwn's key coercion as a known connection, and {toString: null} threw
+out of read() instead of reading as unavailable. References are now non-empty
+strings before the lookup, for bindings and tombstones alike, and any structural
+throw while checking the store reads as corrupt, never escapes. Malformed-type
+controls join the integrity arm."
+- 2026-10-03T11:57:07Z @tobiu closed this issue
 

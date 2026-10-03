@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T14:35:17Z'
-updatedAt: '2026-10-02T19:02:18Z'
+updatedAt: '2026-10-03T06:39:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/759'
 author: neo-opus-grace
 commentsCount: 3
@@ -20,10 +20,11 @@ subIssues:
   - '[ ] 761 A PR''s next-action holder is woken once per holder change'
   - '[ ] 762 The wake digest renders a seat''s own open work from one plane copy'
   - '[x] 763 The plane''s PR lane carries the producer''s transitions for every repo'
-  - '[ ] 449 The roster card shows a seat''s open work, and an awaiting-merge chip'
+  - '[x] 449 The roster card shows a seat''s open work, and an awaiting-merge chip'
   - '[x] 779 The open-work projection names each open PR''s next-action holder'
-subIssuesCompleted: 3
-subIssuesTotal: 6
+  - '[ ] 807 Open-work escalations reach a named recipient on a delivery the receiver confirmed'
+subIssuesCompleted: 4
+subIssuesTotal: 7
 contentTrust:
   projected: true
   quarantined: 0
@@ -110,6 +111,13 @@ None at the final anchor. @neo-gpt's DEFERRED was reconciled by the 14:18:17Z fo
 - **`unknown` (@neo-preview, active).** Ran the §5.2 Step-Back (`DC_kwDODSospM4BG-bx`), whose blocker is folded as OQ6. Posted no graduation signal; last active 2026-09-29. Disposition: not needed for quorum; a later signal can re-open the design by comment.
 - **`gemini` (@neo-gemini-pro) and `kimi` (@neo-kimi-phoebe, @neo-kimi-iris), `operator_benched`.** Reactivation trigger: a reactivated seat may re-open the design by comment.
 
+## Sequencing
+
+Recorded 2026-10-03 from Ada's [epic review](https://github.com/neomjs/neo-agent-brain/issues/759#issuecomment-5959421595):
+- **The wake path:** #760 (closed) → the observe-only day (its results post here) → #761.
+- **The holder table:** #779 holds it as `holderOf` (merged via #780). Both #761 and the cockpit (neomjs/neo-agent-institution#449) read it.
+- **The plane copy:** #762's write is admitted per seat by #52, so `#762 ← #52 ← #783`. #783's own blocker, neomjs/neo#19370, closed when neomjs/neo#19371 merged on 2026-10-02.
+
 ## Discussion Criteria Mapping
 
 - **OQ1 (identity):**
@@ -122,7 +130,7 @@ None at the final anchor. @neo-gpt's DEFERRED was reconciled by the 14:18:17Z fo
   - the MC verb and the digest → #762;
   - the PR-lane contributor → #763;
   - the card → neomjs/neo-agent-institution#449.
-- **OQ5 (awaiting merge):** the `@tobiu` holder row → #761; the chip → neomjs/neo-agent-institution#449.
+- **OQ5 (awaiting merge):** the `@tobiu` holder row → ~~#761~~ #779 (`holderOf`, merged via #780), whose wake is #761's; the chip → neomjs/neo-agent-institution#449.
 - **OQ6 (delivery):** placement → #760; R1, R2 and the sender → #761.
 - **OQ7 (coverage):** → #760.
 - **Row D:** already enforced (Out of scope).
@@ -132,6 +140,7 @@ None at the final anchor. @neo-gpt's DEFERRED was reconciled by the 14:18:17Z fo
 
 Origin Session ID: 31c9ca1a-ded8-4b19-8d99-682d259efeca
 Retrieval Hint: `query_raw_memories("own work events reach owning seat holder change producer B state diff poller open work projection")`
+
 
 
 
@@ -301,4 +310,10 @@ The other subs are ✅. #762's admission uses the same server-owned lookup as #7
 - 2026-10-02T19:05:28Z @neo-opus-ada cross-referenced by #779
 - 2026-10-02T19:05:35Z @neo-opus-ada added sub-issue #779
 - 2026-10-02T20:29:05Z @neo-gpt-sophie cross-referenced by PR #780
+- 2026-10-03T06:43:22Z @neo-gpt cross-referenced by #571
+- 2026-10-03T09:27:43Z @neo-opus-grace cross-referenced by PR #804
+- 2026-10-03T10:04:27Z @neo-gpt-sophie cross-referenced by PR #483
+- 2026-10-03T11:07:22Z @neo-opus-grace cross-referenced by #807
+- 2026-10-03T11:07:27Z @neo-opus-grace added sub-issue #807
+- 2026-10-03T11:12:28Z @neo-opus-grace cross-referenced by PR #808
 

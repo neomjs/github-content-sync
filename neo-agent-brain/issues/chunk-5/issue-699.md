@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-01T15:23:13Z'
-updatedAt: '2026-10-01T21:06:59Z'
+updatedAt: '2026-10-03T11:23:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/699'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: 571
 subIssues: []
 subIssuesCompleted: 0
@@ -311,4 +311,22 @@ before it creates the client; a mismatch is unarmed with the reason, and nothing
 is subscribed or published. OwnAgentTeam.md says where the proof runs and
 qualifies the plane credential as the MC/KB one, beside the checkout PAT."
 - 2026-10-01T21:07:00Z @tobiu closed this issue
+### @neo-gpt-emmy - 2026-10-03T11:23:55Z
+
+## Operator correction: the added PAT burden was not authorized
+
+The installed Mnemosyne onboarding attempt exposed a broken journey: Add Agent accepted the seat's PAT and published its card, but Start refused because a separate plane-credential slot was empty. The only visible recovery was a buried prompt instructing the operator to create another identity-only PAT. The operator explicitly rejected that requirement on 2026-10-03.
+
+The operator input recorded at the top of this issue requested shared-plane MC/KB. The later second-PAT requirement is recorded here as an agent-selected Tier-2 decision; it is not the operator's instruction. I approved the Brain implementation in #728 and described the separate credential as sound. That review failed to challenge the operator-facing journey.
+
+The required product outcome is one credential entry for an ordinary seat on the connected Agent OS, with identity and served-plane verification preserved, and no hidden setup left after Add Agent. Distinct authentication requirements for an explicitly different service must be surfaced within that journey when they actually apply, rather than imposed on every local-plane seat. A second human-created PAT must not be a prerequisite for this pilot.
+
+The adjacent URL-choice failure is verified too: the UI offers the saved connection, while the registry rejects it as already assigned to Sophie. The prior target consequently remains selected. That is an offered-but-unusable choice, not evidence that the operator failed to configure the seat.
+
+I am carrying the correction with the UI and onboarding owners; the current copied Mnemosyne profile and its memory remain preserved. No identity/proof guard is being removed.
+
+Origin Session ID: b42bdfd4-f066-4093-8602-c02f56bd9f16
+
+- 2026-10-03T11:41:50Z @neo-gpt-emmy cross-referenced by #809
+- 2026-10-03T11:48:35Z @neo-gpt-emmy cross-referenced by #503
 

@@ -1,7 +1,7 @@
 ---
 id: 440
 title: 'The setup card''s run and re-check actions reach the vessel''s effect channel, and the first completed run records its density'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-02T13:04:28Z'
-updatedAt: '2026-10-02T18:29:01Z'
+updatedAt: '2026-10-03T07:16:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/440'
 author: neo-fable
 commentsCount: 0
@@ -25,6 +25,7 @@ blockedBy:
   - '[x] 451 Pin the merged Brain setup and Fleet contracts'
   - '[x] 750 The first-run recipe''s effect orchestration leaves the CLI so the vessel''s setup broker runs the same effects'
 blocking: []
+closedAt: '2026-10-03T07:13:39Z'
 ---
 # The setup card's run and re-check actions reach the vessel's effect channel, and the first completed run records its density
 
@@ -54,17 +55,24 @@ On the installed Fleet Manager the three effect rows (`write-env`, `write-secret
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `shell-setup-effect {effectId}` (existing channel) | neomjs/neo-agent-brain#750's `performEffects` | Runs the one consented effect in the CLI's order rules; replies the re-evaluated run. | A refusal (preset env, credentials) → `{ok: false, reason}` in the orchestration's words; `reconcile-required` ahead of it → refused, never replayed. | JSDoc | `setupBroker.spec.mjs`: one-effect run · refusal · the halt |
+| `shell-setup-effect {effectId}` (existing channel) | neomjs/neo-agent-brain#750's `performEffects` | Runs the one consented effect in the CLI's order rules; replies the re-evaluated run. | A refusal (preset env, credentials) → `{ok: false, reason}` in the orchestration's words; a `reconcile-required` row on it or ahead of it → halted: the reply is the evaluation with that row unchanged, never replayed. | JSDoc | `setupBroker.spec.mjs`: one-effect run · refusal · the halt |
 | `shell-setup-evaluate` (existing) | #750's `settlePending` | Settles interrupted effects by a matching observation before evaluating. | Nothing to settle → unchanged. | JSDoc | `setupBroker.spec.mjs` resume arm |
-| `CreateContainer#runEffect` (existing) | #384 | Unchanged contract; the manual-action path stays for a refusal. | — | — | `createContainer.spec.mjs` (existing arms stay green) |
+| `CreateContainer#runEffect` (existing) | #384 | A shell that cannot run effects at all (`no-shell`, `not-packaged`, `no-brain-root`) → the row's action is the operator's instruction (the CLI's command), counted as a manual action. | A refusal from the orchestration (the preset's env set, the credential composition) or a run that failed (`<effect> could not run: …`, an unreadable record included) → the status line in the shell's words, never a manual action. | JSDoc | `createContainer.spec.mjs`: the shell-unavailable arm · the orchestration-refusal arm |
+| `setupBroker` record operations (existing) | ADR 0041 §2.6 · the orchestration's one-writer precondition | Every serialized operation reads the bound run's record from disk; the broker keeps the record's path only. An effect whose acknowledgement write was rejected is found `pending` by the next request and settled by observation, never run again. | A bound record that is gone or unreadable → the operation is refused by name; nothing is written and no fresh run takes its place. | JSDoc | `setupBroker.spec.mjs` over the Brain's own modules: the rejected-acknowledgement arm (same broker · fresh broker) · the consent arm · the accepted control · the unreadable-record arm |
 
 ## Acceptance Criteria
 
-- [ ] AC-1 With a Brain pin carrying neomjs/neo-agent-brain#750, `run` on `write-env` writes the carrier through the host-effect module and the row re-reads `ok` (unit with fake modules; e2e on the fixture plane).
-- [ ] AC-2 `re-check` on a `reconcile-required` row settles it when the served plane matches, and leaves it when not (unit).
-- [ ] AC-3 A refused effect reaches the status line in the orchestration's words and writes nothing (unit).
-- [ ] AC-4 A completed run on the fixture plane reports `decisions` and `manualActions` on the provider; the count is recorded on #351 (e2e receipt + the epic comment).
-- [ ] AC-5 `EFFECT_UNWIRED_REASON` and its arm are gone.
+- [x] AC-1 With a Brain pin carrying neomjs/neo-agent-brain#750, `run` on `write-env` writes the carrier through the host-effect module and the row re-reads `ok` (unit with fake modules; e2e on the fixture plane).
+- [x] AC-2 `re-check` on a `reconcile-required` row settles it when the served plane matches, and leaves it when not (unit).
+- [x] AC-3 A refused effect reaches the status line in the orchestration's words and writes nothing (unit).
+- [x] AC-4 A completed run on the fixture shell reports `decisions` and `manualActions` on the mounted provider (the e2e reads the provider: 6 / 0); the count is recorded on #351 as the fixture path's projection — the fixture shell assigns the step statuses, so it witnesses the consumer, never a host run.
+- [x] AC-5 `EFFECT_UNWIRED_REASON` and its arm are gone.
+
+## Evidence boundary
+
+- **Here (L2 + consumer e2e):** the broker over module doubles and over the Brain's own modules on a temp layout; the mounted card against the fixture shell.
+- **L3-deferred — owner #351:** a completed run on an installed host (three effects through the vessel on a Docker host) and that run's density. No receipt on this ticket claims it.
+- **Documentation obligation — owner #351 until its leaf exists:** ADR 0034 §2.3 item 10 still says the effect handler refuses every call; an engine docs leaf corrects that sentence when this leaf's PR merges.
 
 ## Out of Scope
 
@@ -86,6 +94,8 @@ Origin Session ID: 774647be-7f3e-4a83-a197-0f7d1f7cef1a
 Retrieval Hint: "setup card run re-check effect channel setupBroker performEffects settlePending density receipt first completed run"
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 774647be-7f3e-4a83-a197-0f7d1f7cef1a
+
+
 
 ## Timeline
 
@@ -112,4 +122,30 @@ FleetCockpitVisual 27/27; no golden changed."
 - 2026-10-02T19:26:54Z @neo-opus-vega cross-referenced by #14
 - 2026-10-02T19:29:40Z @neo-fable-clio cross-referenced by #351
 - 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
+- 2026-10-03T06:39:43Z @neo-fable referenced in commit `5ffda9a` - "chore(merge): bring origin/dev into the branch (#440)"
+- 2026-10-03T06:39:44Z @neo-fable referenced in commit `6a1c792` - "fix(harness): every setup record operation starts from the record on disk, so an effect whose acknowledgement write was rejected is never replayed (#440)
+
+The broker kept the run's record in memory and re-read it only on a fresh boot. A host that rejected the write acknowledging an effect left the pending receipt on disk and an older record in the broker: the next request ran the handler again, and the next consent wrote the guard away. The broker now holds the record's path only; every serialized operation reads the bound record from disk, a bound record that is gone or unreadable refuses the operation, and the writer's returned record is the working copy inside one operation.
+
+The regression arms run the broker over the pinned Brain's own recipe, record, host-effect and orchestration modules on a temp layout: the rejected-acknowledgement arm (same broker, fresh broker), the consent arm, the accepted control and the unreadable-record arm. The fixture e2e reads the completed run's density from the mounted provider (6 decisions, 0 manual actions). The Create door no longer matches the retired unwired reason."
+- 2026-10-03T07:04:31Z @neo-fable cross-referenced by #475
+- 2026-10-03T07:13:39Z @tobiu referenced in commit `424fa0e` - "feat(agentos): the setup card's run and re-check reach the vessel's effect channel through the shared orchestration (#440) (#464)
+
+* feat(agentos): the setup card's run and re-check reach the vessel's effect channel through the shared orchestration (#440)
+
+shell-setup-effect runs the one consented effect through the Brain's setupOrchestration (the settle pass first, effectIds in the recipe's order rules, a refusal in the orchestration's words with nothing written) inside the serialized chain, the config source injected by main; evaluate settles an interrupted effect before reading. The card counts a manual action only when the shell cannot run effects at all; an orchestration refusal is the shell's own word. The card relays the Create door's first persistence to its owner. The e2e fixture runs the three effects to a completed run.
+
+* chore(visual): re-stamp the baseline inputs for the effect channel (#440)
+
+FleetCockpitVisual 27/27; no golden changed.
+
+* fix(harness): every setup record operation starts from the record on disk, so an effect whose acknowledgement write was rejected is never replayed (#440)
+
+The broker kept the run's record in memory and re-read it only on a fresh boot. A host that rejected the write acknowledging an effect left the pending receipt on disk and an older record in the broker: the next request ran the handler again, and the next consent wrote the guard away. The broker now holds the record's path only; every serialized operation reads the bound record from disk, a bound record that is gone or unreadable refuses the operation, and the writer's returned record is the working copy inside one operation.
+
+The regression arms run the broker over the pinned Brain's own recipe, record, host-effect and orchestration modules on a temp layout: the rejected-acknowledgement arm (same broker, fresh broker), the consent arm, the accepted control and the unreadable-record arm. The fixture e2e reads the completed run's density from the mounted provider (6 decisions, 0 manual actions). The Create door no longer matches the retired unwired reason."
+- 2026-10-03T07:13:39Z @tobiu closed this issue
+- 2026-10-03T07:15:03Z @neo-fable cross-referenced by #19377
+- 2026-10-03T07:24:28Z @neo-fable-clio cross-referenced by PR #796
+- 2026-10-03T08:26:26Z @neo-fable-clio cross-referenced by #481
 

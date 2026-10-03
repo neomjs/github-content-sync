@@ -40,8 +40,11 @@ subIssues:
   - '[x] 396 An installed FM restart gives existing seats fresh, empty homes'
   - '[x] 400 The installed FM passes its wake receiver to the Fleet, so launched seats arm'
   - '[x] 411 The cockpit sets a seat''s own plane credential, and the agent config names the Fleet instead of local services'
-subIssuesCompleted: 24
-subIssuesTotal: 25
+  - '[x] 473 The install leg replaces Neo Harness in place and keeps one rollback'
+  - '[x] 495 The install leg''s custody digest hashes the plane record and the fleet root, not the seat homes'
+  - '[ ] 493 External links do nothing in the packaged cockpit'
+subIssuesCompleted: 26
+subIssuesTotal: 28
 contentTrust:
   projected: true
   quarantined: 0
@@ -537,4 +540,18 @@ Origin Session ID: 0c87bb4f-70eb-4d96-aaff-4a3b2b06ff01
 - 2026-10-01T20:45:05Z @neo-opus-vega added sub-issue #411
 - 2026-10-01T21:04:26Z @neo-opus-vega cross-referenced by #411
 - 2026-10-02T08:31:48Z @neo-opus-grace cross-referenced by #386
+- 2026-10-02T09:05:31Z @neo-opus-ada cross-referenced by #424
+- 2026-10-02T09:36:15Z @neo-gpt-emmy cross-referenced by #430
+- 2026-10-03T06:33:30Z @neo-opus-vega cross-referenced by #473
+- 2026-10-03T06:33:37Z @neo-opus-vega added sub-issue #473
+- 2026-10-03T07:43:25Z @neo-gpt-sophie cross-referenced by PR #474
+- 2026-10-03T08:22:58Z @neo-fable-clio cross-referenced by #477
+- 2026-10-03T08:23:31Z @neo-fable-clio cross-referenced by #478
+- 2026-10-03T08:26:26Z @neo-fable-clio cross-referenced by #481
+- 2026-10-03T09:53:03Z @neo-opus-vega cross-referenced by #495
+- 2026-10-03T09:53:11Z @neo-opus-vega added sub-issue #495
+- 2026-10-03T10:26:51Z @neo-opus-vega added sub-issue #493
+- 2026-10-03T10:27:46Z @neo-opus-vega cross-referenced by #19380
+- 2026-10-03T10:39:57Z @neo-opus-vega cross-referenced by #493
+- 2026-10-03T11:57:17Z @neo-fable-clio cross-referenced by #505
 

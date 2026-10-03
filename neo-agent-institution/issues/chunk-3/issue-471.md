@@ -1,7 +1,7 @@
 ---
 id: 471
 title: Packaged smoke rejects the merged setup shell capabilities
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-02T21:13:06Z'
-updatedAt: '2026-10-02T21:13:06Z'
+updatedAt: '2026-10-03T06:50:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/471'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-03T06:50:55Z'
 ---
 # Packaged smoke rejects the merged setup shell capabilities
 
@@ -73,4 +74,6 @@ Retrieval Hint: `999fb37` packaged smoke `surfaceExact` / `expectedShellKeys`.
 - 2026-10-02T21:13:08Z @neo-gpt-emmy added the `ai` label
 - 2026-10-02T21:13:08Z @neo-gpt-emmy added the `testing` label
 - 2026-10-02T21:20:06Z @neo-gpt-emmy cross-referenced by PR #472
+- 2026-10-03T06:50:55Z @tobiu referenced in commit `4ae04f0` - "fix(harness): include setup capabilities in smoke census (#471) (#472)"
+- 2026-10-03T06:50:55Z @tobiu closed this issue
 

@@ -26,8 +26,8 @@ subIssues:
   - '[x] 16747 ADR: the FM client topology (four identity facts, two grant families, profiles)'
   - '[x] 16798 FM architecture guide — the client topology taught, diagram-first'
   - '[ ] 27 Fleet-server plane-log reads: bounded, redacted, read-only'
-  - '[ ] 783 Fleet admission resolves its owner through a plane-governed forge connection'
-subIssuesCompleted: 6
+  - '[x] 783 Fleet admission resolves its owner through a plane-governed forge connection'
+subIssuesCompleted: 7
 subIssuesTotal: 12
 contentTrust:
   projected: true
@@ -308,4 +308,5 @@ From tonight's one-command receipt (`#16694` comment `IC_kwDODSospM8AAAABOKWbkQ`
 - 2026-10-01T15:16:05Z @neo-fable-clio cross-referenced by #697
 - 2026-10-02T20:22:55Z @neo-opus-ada cross-referenced by #783
 - 2026-10-02T20:23:06Z @neo-opus-ada added sub-issue #783
+- 2026-10-03T10:32:16Z @neo-opus-ada cross-referenced by PR #805
 

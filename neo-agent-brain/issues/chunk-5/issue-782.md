@@ -1,14 +1,15 @@
 ---
 id: 782
 title: A run-bound verify effect feeds the recipe's validation and done observers
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-fable-clio
 createdAt: '2026-10-02T20:21:30Z'
-updatedAt: '2026-10-03T06:29:52Z'
+updatedAt: '2026-10-03T10:52:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/782'
 author: neo-fable-clio
 commentsCount: 4
@@ -20,9 +21,11 @@ contentTrust:
   projected: true
   quarantined: 0
   signals: []
-blockedBy: []
+blockedBy:
+  - '[x] 784 served-plane never reads ok: /mcp route, no bearer, plane block dropped'
 blocking:
   - '[ ] 14 J3 TTFP instrument: the harness measures first PAINT, but the published number must be first PERSISTENCE'
+closedAt: '2026-10-03T10:52:47Z'
 ---
 # A run-bound verify effect feeds the recipe's validation and done observers
 
@@ -66,7 +69,7 @@ No plane-side change; no renderer logic beyond the consent the card already rend
 | `done` observer + `evaluateDone` gate | the recipe (`evaluateDone`); ADR 0041 §3 (no green against a wrong plane) | reads this run's `verification` (`persisted` = memory present, `queryAnswered` = recall hit); `ok` only with `served-plane` and `validation` `ok` in the same evaluation | missing section → `unknown`; recorded failure → `failed`; fresh steps not ok → not ok with the historical fact in the reason | observer + recipe JSDoc | observer arms over record fixtures; the wrong-plane / validation-unknown control (record present, `done` not ok) |
 | the witness memory | the plane's Memory Core (`add_memory`) | one row per attempt under the run's session; its content names run, plane and the attempt marker and reads as the first-run witness | never deleted by the recipe; a re-run adds another; a lost ack never duplicates it without consent | the Day-0 guide (#86) names it | recall arm; reconciliation arms |
 
-Decision Record impact: amends ADR 0041 (the record's §3 shape gains the historical `verification` section; the one-writer rule holds; §2.3 / §2.5 / §4 readiness authority unchanged — `validation` is fresh and `done` is gated on it; a `reconcile-required` witness row follows §2.6 / §3's observation-only settlement); aligned-with ADR 0019 (no new config).
+Decision Record impact: amends ADR 0041 — split into its own ADR-update PR per ADR 0005 §6.5 (#802 / PR #803, merge-ordered ahead of the implementation PR) (the record's §3 shape gains the historical `verification` section; the one-writer rule holds; §2.3 / §2.5 / §4 readiness authority unchanged — `validation` is fresh and `done` is gated on it; a `reconcile-required` witness row follows §2.6 / §3's observation-only settlement); aligned-with ADR 0019 (no new config).
 
 ## Acceptance Criteria
 
@@ -75,7 +78,19 @@ Decision Record impact: amends ADR 0041 (the record's §3 shape gains the histor
 - AC-3: at most one dispatched write per attempt: a later-query failure followed by a retry produces exactly one witness write (the accepted-resume control); an explicit pre-acceptance refusal records `attempt.refused` and the next consented run dispatches a new attempt; a lost acknowledgement is reconciled read-only — a row carrying the attempt's marker is adopted, while an empty (`count 0 / nextCursor: null`), failed, limited or unavailable read yields `reconcile-required` and no write; Euclid's diagonal (accepted + lost ack + unavailable read, resumed twice) retains one attempt and adopts once the read is positive; any other second write happens only as a new operator-consented attempt with its own marker; the witness content carries run id, plane id and the marker.
 - AC-4: `productionObservers().done` reads the record (`unknown` without a section for this run, `failed` with the recorded reason) and `evaluateDone` turns `ok` only when `memory` and `recall.hit` landed AND `served-plane` and `validation` are `ok` in the same evaluation; the control "record present, wrong served plane / `validation` unknown" reads `done` not ok with the historical timestamp in its reason. The empty-corpus `ask_knowledge_base` short-circuit is pinned as NOT a witness (control arm).
 - AC-5: ADR 0041 §3 records the `verification` section as historical, keeps the one-writer rule and restates that readiness and completion never derive from it alone; the recipe's step summaries for `validation` / `done` name what each observes. One live receipt on the maintainer plane recorded in the PR.
-- AC-6 *(post-merge)*: the vessel's card (neomjs/neo-agent-institution#440) runs `verify` like the other effects — consent, run, receipt, `reconcile-required` with `re-check` and the explicit new-attempt consent — with no new card vocabulary; Institution #14 reads `verification.memory.at`.
+- AC-6 *(post-merge, owned by neomjs/neo-agent-institution#481 since #440 closed on 2026-10-03)*: the vessel's card runs `verify` like the other effects — consent, run, receipt, a `pending`/`resumable` or `reconcile-required` row with `re-check`, and the explicit new-attempt consent (`newAttempt`) — with no new card vocabulary; Institution #14 reads `verification.memory.at`.
+
+## Implementation deltas (the shipped contract, PR #796)
+
+Recorded here so the ticket and the implementation read the same way (review packet of 2026-10-03):
+
+- **The served-plane observer carries the plane's health word.** `productionObservers().servedPlane` returns `{id, dataRoot, status}`; the recipe keeps the identity step `ok` for a matching plane and gates `validation` and `done` behind `status !== degraded` — a degraded matching plane reads validation `unknown` ("not observed: served-plane is degraded") and done `pending` with the witnessed timestamp (ADR 0041 §2.5: identified is not ready).
+- **A read-only sub-step left outstanding is a `pending` + `resumable` receipt**, not `reconcile-required`: the recipe shows the receipt's reason as a pending row and `performEffects` resumes it; `reconcile-required` stays reserved for the unacknowledged write.
+- **Refusal is a code, not an `isError` flag.** `planeWitnessClient` settles an attempt as refused only on `MEMORY_VALIDATION_ERROR`, `MISSING_AGENT_IDENTITY`, `INVALID_PARAMETERS` (the plane's pre-acceptance gates); the service's catch-all `MEMORY_ADD_ERROR` is ambiguous (a WAL append whose close rejected after the bytes landed reaches it) and is reconciled through a positive read.
+- **A refused read-only sub-step is recorded on the section** (`failure: {step, at, reason}`) and projected `failed` with the plane's reason by the effect row and by `done`; a later resume that lands the sub-step clears it.
+- **The semantic recall queries the witness's own words**, not the bare marker (a UUID embeds nowhere near its row); a hit is bound by the marker in the returned row or the acknowledged id. A `degraded` or `quarantined` query envelope stays pending with the producer's cause; a plain miss names the rows answered and never asserts a drain it cannot see.
+- **`validation` is a config-free host probe** (`providerValidation.mjs`): one chat completion and one embedding over the preset's declared HTTP contracts (OpenAI-compatible; Gemini `embedContent` for the hosted embedder), 64 tokens with the preset's declared reasoning effort, `host.docker.internal` read as loopback — its stated bound: the supplied configuration from this host, not the plane's active route.
+- **Options:** `performEffects({newAttempt, createPlaneClient})` (a renderer without a plane passes `null` and verify is reported, not run); the CLI flag `--new-attempt`; `verifyEffect.mjs` and `planeWitnessClient.mjs` are new fleet modules, `PLANE_MEMORY_CORE_PATH` lives in `mcpWireParsing.mjs`.
 
 ## Out of Scope
 
@@ -95,6 +110,7 @@ unowned-rationale: the epic's steward files the shape tonight; the build takes a
 
 Origin Session ID: 1efa16ff-bd83-41e5-87dc-4c186b03b451
 Retrieval Hint: "first-run verify effect attempt before dispatch at-most-once witness reconcile-required validation fresh canary done gated record verification"
+
 
 
 ## Timeline
@@ -164,4 +180,91 @@ The lost-acknowledgement correction is now folded into Fix 2, the Contract Ledge
 
 Verified against the live ticket body on 2026-10-03. These are contract dispositions, not implementation or installed-runtime evidence. No further contract correction is requested from that packet; implementation and its prescribed controls remain to be demonstrated.
 
+- 2026-10-03T06:41:31Z @neo-fable-clio cross-referenced by #784
+- 2026-10-03T06:41:54Z @neo-fable-clio marked this issue as being blocked by #784
+- 2026-10-03T06:52:52Z @neo-fable cross-referenced by #786
+- 2026-10-03T07:24:28Z @neo-fable-clio cross-referenced by PR #796
+- 2026-10-03T07:24:37Z @neo-fable-clio assigned to @neo-fable-clio
+- 2026-10-03T07:36:23Z @neo-gpt-sophie cross-referenced by PR #785
+- 2026-10-03T07:45:02Z @neo-fable-clio cross-referenced by #798
+- 2026-10-03T08:08:15Z @neo-fable-clio referenced in commit `715813c` - "feat(setup): a run-bound verify effect feeds the recipe's validation and done observers (#782)
+
+The wizard now witnesses its own completion through the plane it provisioned, for THIS run:
+
+- validation is a fresh observation at every evaluation (providerValidation.mjs): one chat completion
+  and one embedding with the consented preset's env and the operator's key file, config-free, asked
+  only behind a served-plane row that is ok in the same evaluation; it reads no receipt
+- verify (verifyEffect.mjs) writes one witness memory through the served plane (planeWitnessClient.mjs,
+  the consented credential), reads it back and recalls it through the embedding lane; a durable attempt
+  lands BEFORE the write, sub-step receipts land as the plane answers, a lost acknowledgement is adopted
+  from a positive read or left reconcile-required, never replayed; a second write only by explicit consent
+- done reads this run's verification section and turns ok only beside a fresh served-plane and validation;
+  the historical timestamp survives in every other reason
+- the record gains the verification section (ADR 0041 §2.9 / §3), written by the one writer beside the
+  verify receipt and retired with it; performEffects runs verify last and reports every halt"
+- 2026-10-03T08:24:43Z @neo-fable-clio cross-referenced by #480
+- 2026-10-03T08:26:26Z @neo-fable-clio cross-referenced by #481
+- 2026-10-03T08:41:48Z @neo-fable-clio cross-referenced by #802
+- 2026-10-03T08:42:55Z @neo-fable-clio referenced in commit `f0ee51d` - "docs(adr): the ADR 0041 amendment moves to its own PR, per ADR 0005 §6.5 (#782)"
+- 2026-10-03T08:58:03Z @neo-fable-clio referenced in commit `21c6c9a` - "feat(setup): a run-bound verify effect feeds the recipe's validation and done observers (#782)
+
+The wizard now witnesses its own completion through the plane it provisioned, for THIS run:
+
+- validation is a fresh observation at every evaluation (providerValidation.mjs): one chat completion
+  and one embedding with the consented preset's env and the operator's key file, config-free, asked
+  only behind a served-plane row that is ok in the same evaluation; it reads no receipt
+- verify (verifyEffect.mjs) writes one witness memory through the served plane (planeWitnessClient.mjs,
+  the consented credential), reads it back and recalls it through the embedding lane; a durable attempt
+  lands BEFORE the write, sub-step receipts land as the plane answers, a lost acknowledgement is adopted
+  from a positive read or left reconcile-required, never replayed; a second write only by explicit consent
+- done reads this run's verification section and turns ok only beside a fresh served-plane and validation;
+  the historical timestamp survives in every other reason
+- the record gains the verification section (ADR 0041 §2.9 / §3), written by the one writer beside the
+  verify receipt and retired with it; performEffects runs verify last and reports every halt"
+- 2026-10-03T08:58:03Z @neo-fable-clio referenced in commit `58d0fdd` - "fix(setup): a degraded matching plane gates validation and completion; only pre-acceptance codes settle a witness attempt as refused; a refused read-only sub-step and a degraded recall project the plane's own words (#782)
+
+Sophie's review packet on the first head:
+- the served-plane observer carries the plane's health word; the recipe keeps identity ok and holds
+  validation and done behind a degraded plane (ADR 0041 §2.5)
+- the witness client settles an attempt as refused only on MEMORY_VALIDATION_ERROR / MISSING_AGENT_IDENTITY /
+  INVALID_PARAMETERS; the service's catch-all MEMORY_ADD_ERROR is a lost acknowledgement, reconciled by a read
+- a refused readback or recall is recorded on the section and projected failed with the plane's reason by the
+  effect row and by done; a later resume that lands it clears the failure
+- a degraded or quarantined semantic query stays pending with the producer's cause; a plain miss names the
+  rows answered, never a drain it cannot see"
+- 2026-10-03T09:17:42Z @neo-fable-clio referenced in commit `75c7a46` - "test(setup): two spec comments name the bootstrap-record decision by title, as the rest of the tree does (#782)"
+- 2026-10-03T09:29:24Z @neo-gpt-sophie cross-referenced by PR #803
+- 2026-10-03T10:52:47Z @tobiu referenced in commit `bd079b7` - "feat(setup): a run-bound verify effect feeds the recipe's validation and done observers (#782) (#796)
+
+* feat(setup): a run-bound verify effect feeds the recipe's validation and done observers (#782)
+
+The wizard now witnesses its own completion through the plane it provisioned, for THIS run:
+
+- validation is a fresh observation at every evaluation (providerValidation.mjs): one chat completion
+  and one embedding with the consented preset's env and the operator's key file, config-free, asked
+  only behind a served-plane row that is ok in the same evaluation; it reads no receipt
+- verify (verifyEffect.mjs) writes one witness memory through the served plane (planeWitnessClient.mjs,
+  the consented credential), reads it back and recalls it through the embedding lane; a durable attempt
+  lands BEFORE the write, sub-step receipts land as the plane answers, a lost acknowledgement is adopted
+  from a positive read or left reconcile-required, never replayed; a second write only by explicit consent
+- done reads this run's verification section and turns ok only beside a fresh served-plane and validation;
+  the historical timestamp survives in every other reason
+- the record gains the verification section (ADR 0041 §2.9 / §3), written by the one writer beside the
+  verify receipt and retired with it; performEffects runs verify last and reports every halt
+
+* fix(setup): a degraded matching plane gates validation and completion; only pre-acceptance codes settle a witness attempt as refused; a refused read-only sub-step and a degraded recall project the plane's own words (#782)
+
+Sophie's review packet on the first head:
+- the served-plane observer carries the plane's health word; the recipe keeps identity ok and holds
+  validation and done behind a degraded plane (ADR 0041 §2.5)
+- the witness client settles an attempt as refused only on MEMORY_VALIDATION_ERROR / MISSING_AGENT_IDENTITY /
+  INVALID_PARAMETERS; the service's catch-all MEMORY_ADD_ERROR is a lost acknowledgement, reconciled by a read
+- a refused readback or recall is recorded on the section and projected failed with the plane's reason by the
+  effect row and by done; a later resume that lands it clears the failure
+- a degraded or quarantined semantic query stays pending with the producer's cause; a plain miss names the
+  rows answered, never a drain it cannot see
+
+* test(setup): two spec comments name the bootstrap-record decision by title, as the rest of the tree does (#782)"
+- 2026-10-03T10:52:48Z @tobiu closed this issue
+- 2026-10-03T12:25:27Z @neo-fable-clio cross-referenced by #810
 

@@ -17,8 +17,12 @@ commentsCount: 4
 parentIssue: 9
 subIssues:
   - '[x] 435 The Agent Detail''s Repository pane reads the roster row, and every pane names its missing producer'
+  - '[ ] 792 The Fleet serves a seat''s recent turn summaries'
+  - '[ ] 476 The Agent Detail''s Thought stream pane reads the seat''s recent turns'
+  - '[ ] 501 The Agent Detail''s Pull requests pane reads the seat''s open work'
+  - '[ ] 811 The open-work row summary carries the pull request''s title'
 subIssuesCompleted: 1
-subIssuesTotal: 1
+subIssuesTotal: 5
 contentTrust:
   projected: true
   quarantined: 0
@@ -216,4 +220,17 @@ The liveness owner stamps rosterObservedAt before the reconcile, so a re-seat it
 FleetCockpitVisual 26/26 against the unchanged goldens; the stamp follows detail/Container.mjs's JSDoc change."
 - 2026-10-02T13:04:29Z @neo-fable cross-referenced by #440
 - 2026-10-02T13:31:59Z @neo-gpt cross-referenced by PR #754
+- 2026-10-02T18:19:39Z @neo-opus-grace cross-referenced by PR #461
+- 2026-10-02T21:03:18Z @neo-opus-ada cross-referenced by #449
+- 2026-10-03T07:04:31Z @neo-fable cross-referenced by #475
+- 2026-10-03T07:08:41Z @neo-fable cross-referenced by #792
+- 2026-10-03T07:08:51Z @neo-fable added sub-issue #792
+- 2026-10-03T07:16:55Z @neo-fable cross-referenced by #476
+- 2026-10-03T07:17:06Z @neo-fable added sub-issue #476
+- 2026-10-03T09:35:48Z @neo-gpt cross-referenced by PR #795
+- 2026-10-03T10:59:34Z @neo-fable-clio cross-referenced by #499
+- 2026-10-03T11:05:48Z @neo-fable-clio cross-referenced by #500
+- 2026-10-03T11:12:52Z @neo-fable-clio cross-referenced by #501
+- 2026-10-03T11:13:01Z @neo-fable-clio added sub-issue #501
+- 2026-10-03T12:33:07Z @neo-fable-clio added sub-issue #811
 
