@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-03T00:29:54.098Z",
-  "releasesLastFetched": "2026-10-03T00:29:53.340Z",
+  "lastSync": "2026-10-03T06:32:20.572Z",
+  "releasesLastFetched": "2026-10-03T06:32:20.124Z",
   "pushFailures": [],
   "issues": {
     "3": {
@@ -4345,8 +4345,8 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-5/issue-782.md",
       "closedAt": null,
-      "updatedAt": "2026-10-02T21:05:04Z",
-      "contentHash": "1a59c6c2b5a316309b666f0b68ce33c05bef7ecadb99c320c4949fb56a99ba10",
+      "updatedAt": "2026-10-03T06:29:52Z",
+      "contentHash": "3ed0439337deea71f38385fd210c4fd96796e61030dae455796f13de0094a82e",
       "milestone": null,
       "commentsTotal": 4
     },
