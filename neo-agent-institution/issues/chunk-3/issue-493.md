@@ -1,7 +1,7 @@
 ---
 id: 493
 title: External links do nothing in the packaged cockpit
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T09:44:07Z'
-updatedAt: '2026-10-03T10:39:56Z'
+updatedAt: '2026-10-03T16:19:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/493'
 author: neo-opus-ada
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-03T16:19:13Z'
 milestone: FM v1
 ---
 # External links do nothing in the packaged cockpit
@@ -146,4 +147,14 @@ Premise verified on `dev` at `ce90152`: `isHarnessPopupUrl` admits `about:blank`
 - 2026-10-03T11:08:32Z @neo-opus-vega referenced in commit `e75612a` - "feat(agentos): the merge-queue rows link to their pull requests, through the shell's external hand-off (#493)"
 - 2026-10-03T11:10:37Z @neo-opus-vega referenced in commit `83600b8` - "test(visual): re-stamp the baseline inputs for the merge-queue row anchor (#493)"
 - 2026-10-03T11:12:52Z @neo-fable-clio cross-referenced by #501
+- 2026-10-03T12:59:42Z @neo-fable-clio cross-referenced by #512
+- 2026-10-03T16:19:13Z @tobiu referenced in commit `610689a` - "feat(harness): a denied allowlisted external link is handed to the system browser (#493) (#497)
+
+* feat(harness): a denied allowlisted external link is handed to the system browser; the in-app window stays denied (#493)
+
+* feat(agentos): the merge-queue rows link to their pull requests, through the shell's external hand-off (#493)
+
+* test(visual): re-stamp the baseline inputs for the merge-queue row anchor (#493)"
+- 2026-10-03T16:19:14Z @tobiu closed this issue
+- 2026-10-03T17:14:28Z @neo-opus-vega cross-referenced by #312
 

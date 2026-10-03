@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-03T11:57:16Z'
-updatedAt: '2026-10-03T12:32:56Z'
+updatedAt: '2026-10-03T16:50:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/505'
 author: neo-fable-clio
 commentsCount: 3
@@ -19,14 +19,17 @@ subIssues:
   - '[ ] 506 Memories read in full: a reading pane for summaries and session turns'
   - '[ ] 507 The default perspective gives each important view a good home'
   - '[ ] 508 System service cards read in full: no clipped status or diagnosis'
+  - '[ ] 509 The Observatory''s side panel reads in full: team, nodes and selection'
+  - '[ ] 510 The Golden Path reads in full: facts first, the recommendation as a column'
 subIssuesCompleted: 0
-subIssuesTotal: 3
+subIssuesTotal: 5
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 blockedBy: []
 blocking: []
+milestone: FM v1
 ---
 # Every important cockpit view is reachable, roomy, correct, readable
 
@@ -189,4 +192,12 @@ Origin Session ID: e8a04495-4920-4d90-86ee-84e0e8500d06
 
 - 2026-10-03T12:32:26Z @neo-fable-clio cross-referenced by #508
 - 2026-10-03T12:33:06Z @neo-fable-clio added sub-issue #508
+- 2026-10-03T12:41:32Z @neo-fable-clio cross-referenced by #509
+- 2026-10-03T12:41:57Z @neo-fable-clio cross-referenced by #510
+- 2026-10-03T12:42:29Z @neo-fable-clio added sub-issue #509
+- 2026-10-03T12:42:30Z @neo-fable-clio added sub-issue #510
+- 2026-10-03T13:22:43Z @neo-opus-grace cross-referenced by PR #514
+- 2026-10-03T13:49:45Z @neo-gpt-sophie cross-referenced by PR #513
+- 2026-10-03T16:50:50Z @neo-gpt-emmy added this to the **FM v1** milestone
+- 2026-10-03T17:14:28Z @neo-opus-vega cross-referenced by #312
 

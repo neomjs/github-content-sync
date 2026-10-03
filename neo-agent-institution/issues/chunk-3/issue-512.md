@@ -1,0 +1,84 @@
+---
+id: 512
+title: The awaiting-merge list names each pull request by its title
+state: OPEN
+labels:
+  - enhancement
+  - agent-os
+  - ai
+  - design
+assignees:
+  - neo-opus-ada
+createdAt: '2026-10-03T12:59:41Z'
+updatedAt: '2026-10-03T12:59:41Z'
+githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/512'
+author: neo-fable-clio
+commentsCount: 0
+parentIssue: 477
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+---
+# The awaiting-merge list names each pull request by its title
+
+## Context
+
+Brain #811 (PR #814, @neo-opus-ada) makes the open-work row summary carry the PR title; the detail's Pull requests pane already has its title slot (#501). The fleet head's awaiting-merge list — the operator's merge queue (#483) — still renders `neomjs/neo #19501` and has no leaf for the title. Planner-filed on Ada's note (12:56Z); she builds it once a pin carries #814.
+
+## The Problem
+
+The merge queue is the operator's own worklist: the PRs waiting on his hand. A row that is a repository and a number makes him open each one to learn what he is merging — the console-dump failure the design seat ruled out on #501 (a PR row that is only a number). The producer fix lands in the Brain; the queue's rendering is the consumer half nobody owns.
+
+## The Architectural Reality
+
+- The awaiting-merge button and its floating Store-backed list (#483): `apps/agentos/view/fleet/cockpit/*` (the fleet head), rows from the cockpit's open-work read filtered to rows the operator holds; words from `OpenWorkSeat` where they overlap with the chip.
+- After the pin, rows carry `title` (string or null); the list renders it when present and falls back to the reference when null — the same rule as the detail pane's slot.
+
+## The Fix
+
+1. Each queue row reads `#N · <title>` on its first line (repository in the second line or the title attribute), `<state word> · observed <age>` on the second; the reference alone when `title` is null.
+2. The row keeps its link (the external hand-off of #493/#497) and its width discipline: the title wraps to two lines at most in the floating list, never elides silently — the full title is in the `title` attribute AND the row is a link, so the whole is one click away.
+3. One unit arm on the row renderer (title / null); the visual golden of the open queue re-captured from a full run if the fixture rows gain titles.
+
+## Acceptance Criteria
+
+- [ ] AC-1 Unit arm: a row with a title renders `#N · <title>`; a row without renders the reference; the state line is unchanged.
+- [ ] AC-2 The title wraps to at most two lines in the floating list; the row stays a link to the PR.
+- [ ] AC-3 (post-merge, installed) On the next #12 cut with the Brain pin carrying #814, the operator's merge queue names each waiting PR by its title; one screenshot receipt on this ticket.
+
+## Out of Scope
+
+- The producer (Brain #811 / PR #814) and the detail pane (#501).
+
+## Related
+
+#483 (the queue), #501 (the detail pane's slot), Brain #811 / #814 (the producer), #477 (row 2 — parent: a surface names what it shows), #12 (the installed cut for AC-3).
+
+Decision Record impact: none.
+
+Live latest-open sweep: checked the latest 20 open issues at 2026-10-03 12:40Z and a keyword search ("awaiting merge title", open) at 12:58Z — no equivalent. A2A in-flight claim sweep: Ada's planner note (12:56Z) — she builds. Memory Core rationale sweep: the #501 design read's rule. Own-assignment sweep: none of my open tickets owns the queue. Structure map: N/A — Institution view layer; owning folder `apps/agentos/view/fleet/cockpit/`.
+
+handoff: @neo-opus-ada (builds after the pin carrying #814).
+
+Retrieval Hint: "awaiting-merge list title #N title row fleet head merge queue after pin #814"
+
+Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
+
+## Timeline
+
+- 2026-10-03T12:59:41Z @neo-fable-clio assigned to @neo-opus-ada
+- 2026-10-03T12:59:42Z @neo-fable-clio added the `enhancement` label
+- 2026-10-03T12:59:42Z @neo-fable-clio added the `agent-os` label
+- 2026-10-03T12:59:42Z @neo-fable-clio added the `ai` label
+- 2026-10-03T12:59:43Z @neo-fable-clio added the `design` label
+- 2026-10-03T13:00:12Z @neo-fable-clio added parent issue #477
+- 2026-10-03T13:25:53Z @neo-gpt cross-referenced by PR #814
+

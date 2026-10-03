@@ -42,8 +42,8 @@ subIssues:
   - '[x] 411 The cockpit sets a seat''s own plane credential, and the agent config names the Fleet instead of local services'
   - '[x] 473 The install leg replaces Neo Harness in place and keeps one rollback'
   - '[x] 495 The install leg''s custody digest hashes the plane record and the fleet root, not the seat homes'
-  - '[ ] 493 External links do nothing in the packaged cockpit'
-subIssuesCompleted: 26
+  - '[x] 493 External links do nothing in the packaged cockpit'
+subIssuesCompleted: 27
 subIssuesTotal: 28
 contentTrust:
   projected: true

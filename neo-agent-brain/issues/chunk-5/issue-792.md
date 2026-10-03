@@ -1,7 +1,7 @@
 ---
 id: 792
 title: The Fleet serves a seat's recent turn summaries
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-03T07:08:40Z'
-updatedAt: '2026-10-03T12:28:35Z'
+updatedAt: '2026-10-03T16:59:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/792'
 author: neo-fable
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 476 The Agent Detail''s Thought stream pane reads the seat''s recent turns'
+closedAt: '2026-10-03T16:18:23Z'
 ---
 # The Fleet serves a seat's recent turn summaries
 
@@ -77,10 +78,10 @@ aligned-with ADR 0019 (no AiConfig key; the source reads no config and takes its
 
 ## Acceptance Criteria
 
-- [ ] AC-1 `readRecentTurns` calls the injected operation once with `{agentIdentity, memorySharing: 'team', detail: 'summary', limit}` (and `before` when given) and passes its `turns`, `nextCursor` and `memorySharing` through under a `wired` capability.
-- [ ] AC-2 A failure the operation throws or returns, a page it marks with a scope refusal, and an unrecognized payload each answer `unavailable` with zero rows and their own constant reason, the first two with a redacted `detail`; a clamped policy and an empty team page each answer a `wired` empty page that says so. (The returned forms were added at review: PR #795, RA-1.)
-- [ ] AC-3 A non-canonical `agentIdentity`, an out-of-range `limit` and a malformed `before` are rejected before the operation is called; a viewer the ingress did not bind refuses the read.
-- [ ] AC-4 `FleetControlBridge#fleetRecentTurns` passes the envelope through and names an unwired source `unavailable`; both policy tables and `FLEET_WIRE_METHODS` carry the verb, and the dev fleet server wires it in plane mode and in-process mode.
+- [x] AC-1 `readRecentTurns` calls the injected operation once with `{agentIdentity, memorySharing: 'team', detail: 'summary', limit}` (and `before` when given) and passes its `turns`, `nextCursor` and `memorySharing` through under a `wired` capability.
+- [x] AC-2 A failure the operation throws or returns, a page it marks with a scope refusal, and an unrecognized payload each answer `unavailable` with zero rows and their own constant reason, the first two with a redacted `detail`; a clamped policy and an empty team page each answer a `wired` empty page that says so. (The returned forms were added at review: PR #795, RA-1.)
+- [x] AC-3 A non-canonical `agentIdentity`, an out-of-range `limit` and a malformed `before` are rejected before the operation is called; a viewer the ingress did not bind refuses the read.
+- [x] AC-4 `FleetControlBridge#fleetRecentTurns` passes the envelope through and names an unwired source `unavailable`; both policy tables and `FLEET_WIRE_METHODS` carry the verb, and the dev fleet server wires it in plane mode and in-process mode.
 - ~~AC-5 [post-merge] the verb on the canonical plane~~ — moved to neomjs/neo-agent-institution#476 (AC-6): the plane's containerized fleet server answers this verb `awaiting-s5`, so the installed Fleet Manager is where it is witnessed.
 
 ## Out of Scope
@@ -131,4 +132,18 @@ The Memory Core's query_recent_turns answers two outcomes as payloads: an error 
 Now an error payload is a failed read with the redacted, bounded detail; a page carrying the operation's scope marker is unavailable with its own reason (recent-turns-scope-refused) and the marker as detail; rows are accepted only after both. The genuine empty team page and the clamped page stay wired with their verdict.
 
 Arms: the declared shapes in the source spec, and one arm in the Memory Core's spec that runs the source over the real method for a tenant refusal, an empty team page and an unavailable graph reader."
+- 2026-10-03T16:18:23Z @tobiu referenced in commit `12041ce` - "feat(fleet): the Fleet serves a seat's recent turn summaries (#792) (#795)
+
+* feat(fleet): the Fleet serves a seat's recent turn summaries (#792)
+
+The cockpit reaches the Memory Core only through Fleet read verbs, and none wrapped the recency read, so the Agent Detail's thought stream had no producer although the plane answers a peer's public turn summaries since the recency read learned the sharing policy. fleetRecentTurns is that verb: a viewer-bound source in the session-memories sibling's shape asks the injected query_recent_turns operation for one page of a seat's public summaries under the team policy and passes the rows, the next cursor and the plane's memorySharing verdict through a fail-honest envelope. The bridge verb, both policy rows, the wire vocabulary and the dev fleet server's wiring carry it.
+
+* fix(fleet): the recent-turns source keeps the operation's returned failures and scope refusals apart from a wired page (#792)
+
+The Memory Core's query_recent_turns answers two outcomes as payloads: an error object ({error, message, code}) from its catch, and a page marked with a fail-closed scope when no tenant resolves. The source accepted any turns array as a wired page and called an error object an unrecognized payload.
+
+Now an error payload is a failed read with the redacted, bounded detail; a page carrying the operation's scope marker is unavailable with its own reason (recent-turns-scope-refused) and the marker as detail; rows are accepted only after both. The genuine empty team page and the clamped page stay wired with their verdict.
+
+Arms: the declared shapes in the source spec, and one arm in the Memory Core's spec that runs the source over the real method for a tenant refusal, an empty team page and an unavailable graph reader."
+- 2026-10-03T16:18:23Z @tobiu closed this issue
 

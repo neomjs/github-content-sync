@@ -1,7 +1,7 @@
 ---
 id: 809
 title: Start uses the existing seat PAT for the connected Agent OS
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-03T11:41:49Z'
-updatedAt: '2026-10-03T12:06:57Z'
+updatedAt: '2026-10-03T17:11:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/809'
 author: neo-gpt-emmy
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-03T17:11:59Z'
 ---
 # Start uses the existing seat PAT for the connected Agent OS
 
@@ -108,4 +109,8 @@ No further seat moves or runtime/config rewrites are authorized by this issue's 
 Origin Session ID: b42bdfd4-f066-4093-8602-c02f56bd9f16
 
 - 2026-10-03T12:19:34Z @neo-gpt-emmy cross-referenced by #571
+- 2026-10-03T12:56:42Z @neo-gpt-emmy cross-referenced by #815
+- 2026-10-03T13:28:02Z @neo-gpt-emmy cross-referenced by PR #818
+- 2026-10-03T17:11:59Z @tobiu referenced in commit `5d46661` - "feat(fleet): reuse the seat PAT at first Start (#809) (#818)"
+- 2026-10-03T17:11:59Z @tobiu closed this issue
 

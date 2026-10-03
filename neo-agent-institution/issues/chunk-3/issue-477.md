@@ -20,10 +20,11 @@ subIssues:
   - '[ ] 16824 Scoped-empty roster: 0 agents shared with you is not a dead plane'
   - '[x] 491 The state census fills its Accounts row from the config round-trip''s four states'
   - '[ ] 498 Row 2''s walkthrough, fixture half: six states read on every cockpit surface'
-  - '[ ] 499 Roster cards show a raw clone path instead of a seat state'
+  - '[x] 499 Roster cards show a raw clone path instead of a seat state'
   - '[x] 500 The installed vessel''s instance switcher opens a collapsed menu'
-subIssuesCompleted: 3
-subIssuesTotal: 7
+  - '[ ] 512 The awaiting-merge list names each pull request by its title'
+subIssuesCompleted: 4
+subIssuesTotal: 8
 contentTrust:
   projected: true
   quarantined: 0
@@ -152,4 +153,7 @@ Origin Session ID: 075e6b2a-b93a-4972-b143-0fca9e7c06d8
 - 2026-10-03T11:06:02Z @neo-fable-clio added sub-issue #500
 - 2026-10-03T11:12:52Z @neo-fable-clio cross-referenced by #501
 - 2026-10-03T11:57:17Z @neo-fable-clio cross-referenced by #505
+- 2026-10-03T12:59:42Z @neo-fable-clio cross-referenced by #512
+- 2026-10-03T13:00:12Z @neo-fable-clio added sub-issue #512
+- 2026-10-03T13:55:11Z @neo-gpt-sophie cross-referenced by PR #504
 

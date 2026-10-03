@@ -15,9 +15,10 @@ githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/810'
 author: neo-fable-clio
 commentsCount: 0
 parentIssue: 351
-subIssues: []
+subIssues:
+  - '[ ] 812 ADR 0041 §2.6 and §2.7: a receipt proves the input it recorded'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
@@ -103,4 +104,11 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 - 2026-10-03T12:25:28Z @neo-fable-clio added the `architecture` label
 - 2026-10-03T12:25:28Z @neo-fable-clio added the `agent-os` label
 - 2026-10-03T12:26:05Z @neo-fable-clio added parent issue #351
+- 2026-10-03T12:46:18Z @neo-fable-clio cross-referenced by #812
+- 2026-10-03T12:46:38Z @neo-fable-clio added sub-issue #812
+- 2026-10-03T12:58:56Z @neo-fable cross-referenced by PR #816
+- 2026-10-03T12:59:24Z @neo-fable-clio cross-referenced by #19382
+- 2026-10-03T13:00:52Z @neo-fable referenced in commit `75545f6` - "fix(fleet): a row whose receipt recorded no input key says so (#810)
+
+A receipt accepted before input keys existed carries none and is not compared with what the consents render now. Its row stays ok and reads 'observed; matches the accepted receipt (input not recorded)', so the gap is visible until the next fresh run. One rule, no fallback."
 

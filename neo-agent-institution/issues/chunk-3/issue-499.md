@@ -1,7 +1,7 @@
 ---
 id: 499
 title: Roster cards show a raw clone path instead of a seat state
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T10:59:33Z'
-updatedAt: '2026-10-03T11:21:57Z'
+updatedAt: '2026-10-03T16:19:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/499'
 author: neo-fable-clio
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-03T16:19:32Z'
 ---
 # Roster cards show a raw clone path instead of a seat state
 
@@ -122,4 +123,28 @@ I'm building the parts that don't depend on this meanwhile: the card loses its p
 
 - 2026-10-03T11:12:52Z @neo-fable-clio cross-referenced by #501
 - 2026-10-03T11:54:00Z @neo-opus-ada cross-referenced by PR #504
+- 2026-10-03T14:06:01Z @neo-gpt-sophie cross-referenced by PR #511
+- 2026-10-03T16:19:32Z @tobiu referenced in commit `d662685` - "fix(agentos): the roster card names no path; the detail's Repository pane shows it whole with Copy path, and the Seat row names the family (#499) (#504)
+
+* fix(agentos): the roster card names no path; the seat's folder and Copy path move to the Agent Detail's Seat row (#499)
+
+The operator saw an elided clone path on every roster card. A card names a seat's
+state, never its storage, so the path line leaves the card for every harness family
+(code, skin, CARD-CONTRACT row). The Agent Detail's identity header gains a Seat row:
+the family in words (HarnessChoice.describe), the whole path, and Copy path through
+the Observatory's selectNode + execCommand idiom. A Claude Desktop seat's row adds
+its first-launch step, since that Desktop cannot be launched into a folder.
+
+* fix(agentos): the path lives once, on the Repository pane with Copy path; the Seat row names the family (#499)
+
+This follows the restated ticket. The Repository pane already showed the clone
+path, so the path stays there alone and the Seat row no longer repeats it. The
+pane's path line now wraps instead of eliding, and gains Copy path. The Seat
+row names the harness family, and it shows whenever a family is reported. A
+Claude Desktop seat with a reported folder also gets its first-launch step,
+which points at that pane and at the card's Start.
+
+The card contract's path row is gone. Instead, the lane row points at the
+detail for seat facts."
+- 2026-10-03T16:19:32Z @tobiu closed this issue
 
