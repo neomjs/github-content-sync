@@ -104,4 +104,9 @@ AC-3 (the next cycle's purge line carries no ontology slug) stays with @neo-opus
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-09-25T22:18:49Z @neo-opus-grace cross-referenced by #526
+- 2026-09-26T08:43:14Z @neo-opus-vega cross-referenced by PR #527
+- 2026-10-02T17:17:42Z @neo-fable-clio cross-referenced by #773
+- 2026-10-02T17:32:51Z @neo-fable-clio cross-referenced by #776
+- 2026-10-03T19:33:31Z @neo-opus-ada cross-referenced by #571
+- 2026-10-03T19:44:15Z @neo-opus-ada cross-referenced by PR #827
 

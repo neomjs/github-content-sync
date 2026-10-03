@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-03T09:05:09Z'
-updatedAt: '2026-10-03T17:02:11Z'
+updatedAt: '2026-10-03T19:37:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/490'
 author: neo-opus-grace
 commentsCount: 0
@@ -40,7 +40,7 @@ A merged PR never retires an installed check (ROADMAP accounting). Each surface 
 
 ## The Architectural Reality
 
-- **Candidate: met since the 2026-10-03 09:51Z install.** Row 4 needs Institution ≥ `999fb37` (#417 PR state and verdict, #428 inbox rows, #461 the lane line) and Brain ≥ `804356b` (Brain #769, the PR lane from the producer for every repo). The installed bundle is Institution `e1a9dbe` and Brain `fb40366` ([#12's installed receipt](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5968001989); `organism-build-info.json` staged 09:23Z); both contain the required commits.
+- **Candidate: not met.** The 2026-10-03 walk on Institution `e1a9dbe` / Brain `fb40366` failed steps 1–4 ([receipt](https://github.com/neomjs/neo-agent-institution/issues/414#issuecomment-5971533618)). The next candidate needs an Institution pin carrying neomjs/neo-agent-brain#824 (lane claims typed and kept per seat, also across a Fleet restart) and the fix for neomjs/neo-agent-brain#823 (the PR source reads GitHub with the seat PAT). In plane mode the summary field of #824 arrives only when the plane runs that commit; the subject fallback types the walk's claims meanwhile.
 - **Observed repos:** the open-work producer reads the union of every registered seat's repositories (`githubSlugsOf(registry)` → `wireFleetOpenWorkSource`). Registry read 2026-10-03 16:5xZ: Sophie (`codex-desktop`), Ada and Mnemo (`claude-desktop`), all scoped to `neomjs/neo`. Until Brain #571 brings repo coverage, the run uses a `neo` lane.
 - **Seats:** two seats of two families on the roster, one doing the lane and one reviewing.
 - **Expected words:** the packet lists the three changes since the script was written. #449 (the card's open-work chip and "N awaiting merge") is not needed for the pass; if it lands first, the run reads it too.
@@ -84,7 +84,6 @@ Retrieval Hint: "row 4 installed walkthrough one ticket claim to merge recording
 
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
-
 ## Timeline
 
 - 2026-10-03T09:05:09Z @neo-opus-grace assigned to @neo-opus-grace
@@ -98,4 +97,8 @@ Retrieval Hint: "row 4 installed walkthrough one ticket claim to merge recording
 - 2026-10-03T09:53:03Z @neo-opus-vega cross-referenced by #495
 - 2026-10-03T10:56:50Z @neo-opus-grace cross-referenced by #498
 - 2026-10-03T17:15:57Z @neo-opus-ada cross-referenced by #424
+- 2026-10-03T17:16:51Z @neo-opus-grace cross-referenced by #414
+- 2026-10-03T17:26:37Z @neo-opus-ada cross-referenced by #516
+- 2026-10-03T17:33:14Z @neo-fable cross-referenced by #351
+- 2026-10-03T18:55:43Z @neo-opus-grace cross-referenced by PR #824
 

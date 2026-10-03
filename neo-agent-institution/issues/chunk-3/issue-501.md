@@ -1,7 +1,7 @@
 ---
 id: 501
 title: The Agent Detail's Pull requests pane reads the seat's open work
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T11:12:51Z'
-updatedAt: '2026-10-03T12:08:27Z'
+updatedAt: '2026-10-03T18:16:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/501'
 author: neo-fable-clio
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-03T18:16:59Z'
 ---
 # The Agent Detail's Pull requests pane reads the seat's open work
 
@@ -89,4 +90,82 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 - 2026-10-03T11:12:52Z @neo-fable-clio added the `ai` label
 - 2026-10-03T11:13:01Z @neo-fable-clio added parent issue #391
 - 2026-10-03T12:08:27Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-10-03T12:45:42Z @neo-opus-ada referenced in commit `e4a5966` - "feat(agentos): a held pull request's row shows its title when the producer carries one (#501)
+
+The design read on #501 asked for a title slot. Brain #811 adds the title to
+the open-work row summary, and until then no row carries one. `OpenWorkSeat.held`
+keeps the row's `title` (null when absent), `describeRow` passes it on, and the
+pane renders it between the reference and the line only when it exists."
+- 2026-10-03T12:46:49Z @neo-opus-ada cross-referenced by PR #511
+- 2026-10-03T12:59:42Z @neo-fable-clio cross-referenced by #512
+- 2026-10-03T13:25:53Z @neo-gpt cross-referenced by PR #814
+- 2026-10-03T15:52:20Z @neo-opus-ada referenced in commit `c057157` - "fix(agentos): the Pull requests pane stays stale on a failed pulse and lists its rows through a Store-backed list (#501)
+
+- The pane's ledger carries the producer's stale flag, and AgentFreshness
+  never classifies a source-reported stale observation as fresh: it keeps its
+  real age and still ages into lost.
+- The rows are a PullRequestList (Neo.list.Base) bound to a HeldPullRequests
+  Store of HeldPullRequest records, fed from the same held answer, the detail
+  folder's RepositoryList pattern. Each held row carries the <repo>#<number>
+  id the resolver already keyed it by. The empty sentence is its own
+  component, and the list re-words its rows' ages at the pane's clock.
+- The list joins the pane for the first resident shown, so an idle cockpit
+  carries none. Built with the detail, it raised the operator-compose NL
+  journey's failures from 0 of 3 full-battery runs to 5 of 7; built lazily,
+  1 of 6. The residual is RecipientChipList destroying trimmed chips before
+  its own update lands, outside this change.
+- Specs: the failed-pulse regression with its fresh control, the rows'
+  re-aging, the Store's records and order, the idle detail without a list,
+  and the classifier's stale flag."
+- 2026-10-03T17:26:37Z @neo-opus-ada cross-referenced by #516
+- 2026-10-03T17:56:36Z @neo-opus-ada cross-referenced by #517
+- 2026-10-03T18:05:17Z @neo-opus-ada referenced in commit `8c9f554` - "chore(agentos): merge dev into the Pull requests pane branch; the Repository pane's Copy path and the held-PR list compose (#501)"
+- 2026-10-03T18:16:59Z @tobiu referenced in commit `4b02d94` - "feat(agentos): the Agent Detail's Pull requests pane lists the seat's held open work, worst first (#501) (#511)
+
+* feat(agentos): the Agent Detail's Pull requests pane lists the seat's held open work, worst first (#501)
+
+The fourth detail pane said "source not wired" while the cockpit already held
+its rows: the open-work read behind the card's chip. The pane now reads that
+same answer:
+- `OpenWorkSeat.held` returns the seat's rows worst first, or null when the
+  read has not answered. An answer with no rows for the seat holds nothing.
+  `summarize` now counts the rows `held` returns instead of a copy of its
+  filter.
+- `OpenWorkRead.seatOpenWork` writes both record fields, `openWork` for the
+  chip and the new `openWorkHeld` for the pane, at all three stamp sites.
+  The chip and the pane therefore cannot read different answers.
+
+Each row shows its reference as a link to the forge, built from the row's
+own repository and number in #497's anchor shape. Under it is one line in
+the chip's vocabulary: role, state word, age. The pill ages from the read's
+observation. Nothing held reads "no pull request waits on this seat". No
+answer reads "not observed — open-work read unanswered" on the pill, with no
+list.
+
+* feat(agentos): a held pull request's row shows its title when the producer carries one (#501)
+
+The design read on #501 asked for a title slot. Brain #811 adds the title to
+the open-work row summary, and until then no row carries one. `OpenWorkSeat.held`
+keeps the row's `title` (null when absent), `describeRow` passes it on, and the
+pane renders it between the reference and the line only when it exists.
+
+* fix(agentos): the Pull requests pane stays stale on a failed pulse and lists its rows through a Store-backed list (#501)
+
+- The pane's ledger carries the producer's stale flag, and AgentFreshness
+  never classifies a source-reported stale observation as fresh: it keeps its
+  real age and still ages into lost.
+- The rows are a PullRequestList (Neo.list.Base) bound to a HeldPullRequests
+  Store of HeldPullRequest records, fed from the same held answer, the detail
+  folder's RepositoryList pattern. Each held row carries the <repo>#<number>
+  id the resolver already keyed it by. The empty sentence is its own
+  component, and the list re-words its rows' ages at the pane's clock.
+- The list joins the pane for the first resident shown, so an idle cockpit
+  carries none. Built with the detail, it raised the operator-compose NL
+  journey's failures from 0 of 3 full-battery runs to 5 of 7; built lazily,
+  1 of 6. The residual is RecipientChipList destroying trimmed chips before
+  its own update lands, outside this change.
+- Specs: the failed-pulse regression with its fresh control, the rows'
+  re-aging, the Store's records and order, the idle detail without a list,
+  and the classifier's stale flag."
+- 2026-10-03T18:16:59Z @tobiu closed this issue
 

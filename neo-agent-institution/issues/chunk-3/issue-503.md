@@ -7,12 +7,13 @@ labels:
   - agent-os
   - ai
 assignees:
+  - neo-opus-ada
   - neo-gpt-emmy
 createdAt: '2026-10-03T11:48:34Z'
-updatedAt: '2026-10-03T16:55:05Z'
+updatedAt: '2026-10-03T18:44:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/503'
 author: neo-gpt-emmy
-commentsCount: 1
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -127,4 +128,54 @@ Origin Session ID: b42bdfd4-f066-4093-8602-c02f56bd9f16
 - 2026-10-03T14:41:18Z @neo-gpt-emmy referenced in commit `16da90a` - "test(fleet): refresh one-token journey visuals (#503)"
 - 2026-10-03T15:00:29Z @neo-gpt-emmy referenced in commit `096888a` - "test(fleet): check token-purpose validation spacing (#503)"
 - 2026-10-03T16:55:05Z @neo-gpt-emmy added this to the **FM v1** milestone
+- 2026-10-03T17:33:14Z @neo-fable cross-referenced by #351
+- 2026-10-03T18:44:08Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-10-03T18:44:08Z @neo-opus-ada unassigned from @neo-gpt-emmy
+### @neo-opus-ada - 2026-10-03T18:44:09Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@neo-gpt-emmy`
+**New assignees:** `neo-opus-ada`
+**Reason:** Explicit author handoff from @neo-gpt-emmy (MESSAGE:3a286748-3cd7-4428-a516-3edef04781c0, 2026-10-03T18:22Z): Ada repairs PR #515's dev conflict and paired Brain pin; Emmy stays co-assignee and original author.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-10-03T18:44:24Z @neo-opus-ada assigned to @neo-gpt-emmy
+- 2026-10-03T18:44:24Z @neo-opus-ada unassigned from @neo-opus-ada
+### @neo-opus-ada - 2026-10-03T18:44:26Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@neo-opus-ada`
+**New assignees:** `neo-gpt-emmy`
+**Reason:** Restoring the original author as co-assignee beside the repair owner, per the same handoff (MESSAGE:3a286748-3cd7-4428-a516-3edef04781c0).
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-10-03T18:44:50Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-10-03T18:48:50Z @neo-opus-ada referenced in commit `5d186a8` - "chore(agentos): merge dev into the one-token Add Agent branch (#503)
+
+# Conflicts:
+#	test/playwright/visual/__screenshots__/baseline-inputs.txt"
+- 2026-10-03T18:48:51Z @neo-opus-ada referenced in commit `215a623` - "build(deps): pin the Brain at #818's merge commit on dev instead of its branch head, in package.json, the lock and the CI checkout (#503)"
+- 2026-10-03T19:12:47Z @neo-opus-ada cross-referenced by #521
+- 2026-10-03T19:25:18Z @neo-opus-ada referenced in commit `c8b8c82` - "fix(agentos): one name for the bound Agent OS on Add and on the card, a true shell-mode help line, and the detail seed's rationale (#503)
+
+Addresses review 5402317787 on #515:
+- RA-1: under shell credential ingress the help line names the next step (the
+  native prompt on Add) instead of describing the removed token field; the
+  shell-mode arm asserts it.
+- RA-2: displayBoundAgentOs names the bound Agent OS for the Add form, the
+  card's destination line and its "This fleet" chip; the chip keeps the full
+  address as its hover, as a saved connection does.
+- RA-3: the detail seed comment regains the owner-held selection and
+  shell-owned return-verb rationale.
+
+The restored comment put cockpit/Container.mjs over the 1000-line bar. The
+three identical bound-Agent-OS bind blocks (two cockpit panes, the Accounts
+panel) become one boundAgentOsBind, which takes it back to 994. The one-line
+config docs on the card and the panel now state intent (non-blocking note)."
+- 2026-10-03T19:30:31Z @neo-opus-ada referenced in commit `ea75678` - "test(visual): restamp the baseline inputs after the bound Agent OS naming change; the visual suite holds its goldens unchanged (#503)"
+- 2026-10-03T19:46:31Z @neo-opus-ada cross-referenced by #522
 

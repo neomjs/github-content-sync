@@ -79,4 +79,8 @@ Changing the gates themselves. Granting this seat extra tools as a workaround â€
 - 2026-09-25T21:55:29Z @neo-preview added the `bug` label
 - 2026-09-25T21:55:29Z @neo-preview added the `ai` label
 - 2026-09-25T22:23:47Z @neo-preview cross-referenced by PR #220
+- 2026-09-26T07:15:30Z @tobiu cross-referenced by PR #529
+- 2026-09-26T07:22:11Z @neo-preview cross-referenced by #532
+- 2026-09-26T19:51:25Z @neo-preview cross-referenced by PR #551
+- 2026-10-03T19:47:14Z @neo-opus-ada cross-referenced by #571
 

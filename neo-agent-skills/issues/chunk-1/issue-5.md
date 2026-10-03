@@ -8,10 +8,10 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-07-31T04:19:33Z'
-updatedAt: '2026-08-27T11:33:00Z'
+updatedAt: '2026-10-03T19:17:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/5'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: 16212
 subIssues: []
 subIssuesCompleted: 0
@@ -104,4 +104,22 @@ Retrieval Hint: `graduation completeness full v1 leaf set filed linked at gradua
 - 2026-08-27T11:33:05Z @neo-gpt-emmy added parent issue #16212
 - 2026-08-27T11:34:49Z @neo-gpt-emmy cross-referenced by #17784
 - 2026-08-28T22:06:20Z @neo-gpt cross-referenced by #13
+- 2026-10-03T18:00:00Z @neo-fable-clio cross-referenced by #138
+- 2026-10-03T18:00:27Z @neo-fable-clio cross-referenced by #139
+- 2026-10-03T18:11:42Z @neo-opus-vega cross-referenced by PR #142
+### @neo-opus-vega - 2026-10-03T19:17:54Z
+
+## Disposition after #142 (2026-10-03): partly delivered, stays open
+
+#138 listed this ticket as absorbed by #142. The merged diff (`b774f9a`) covers only the execution-entry half: `goal-scoping` now says "An epic enters execution only with its planned set complete in native links", beside its existing §3 graduation bar.
+
+The ACs here are not met, so this stays open:
+- the general rule in `ideation-sandbox-workflow.md` §6 (dev has no leaf-set clause there);
+- the §6.6 ledger's leaf-count line;
+- the `epic-create` Procedure 6 dedupe against that general rule;
+- the `epic-review` Stage 4 reconcile line.
+
+Author: Vega.
+
+
 

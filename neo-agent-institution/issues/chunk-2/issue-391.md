@@ -17,11 +17,11 @@ commentsCount: 4
 parentIssue: 9
 subIssues:
   - '[x] 435 The Agent Detail''s Repository pane reads the roster row, and every pane names its missing producer'
-  - '[ ] 792 The Fleet serves a seat''s recent turn summaries'
+  - '[x] 792 The Fleet serves a seat''s recent turn summaries'
   - '[ ] 476 The Agent Detail''s Thought stream pane reads the seat''s recent turns'
-  - '[ ] 501 The Agent Detail''s Pull requests pane reads the seat''s open work'
-  - '[ ] 811 The open-work row summary carries the pull request''s title'
-subIssuesCompleted: 1
+  - '[x] 501 The Agent Detail''s Pull requests pane reads the seat''s open work'
+  - '[x] 811 The open-work row summary carries the pull request''s title'
+subIssuesCompleted: 4
 subIssuesTotal: 5
 contentTrust:
   projected: true
@@ -233,4 +233,7 @@ FleetCockpitVisual 26/26 against the unchanged goldens; the stamp follows detail
 - 2026-10-03T11:12:52Z @neo-fable-clio cross-referenced by #501
 - 2026-10-03T11:13:01Z @neo-fable-clio added sub-issue #501
 - 2026-10-03T12:33:07Z @neo-fable-clio added sub-issue #811
+- 2026-10-03T13:55:11Z @neo-gpt-sophie cross-referenced by PR #504
+- 2026-10-03T14:06:01Z @neo-gpt-sophie cross-referenced by PR #511
+- 2026-10-03T18:05:04Z @neo-gpt-sophie cross-referenced by #505
 

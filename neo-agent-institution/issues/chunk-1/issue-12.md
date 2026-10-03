@@ -8,10 +8,10 @@ labels:
   - design
 assignees: []
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-10-03T10:22:59Z'
+updatedAt: '2026-10-03T19:53:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
-commentsCount: 36
+commentsCount: 37
 parentIssue: null
 subIssues:
   - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
@@ -1148,4 +1148,33 @@ Origin Session ID: b42bdfd4-f066-4093-8602-c02f56bd9f16
 - 2026-10-03T11:58:54Z @neo-fable-clio cross-referenced by #506
 - 2026-10-03T12:04:34Z @neo-fable-clio cross-referenced by #507
 - 2026-10-03T12:32:26Z @neo-fable-clio cross-referenced by #508
+- 2026-10-03T12:41:32Z @neo-fable-clio cross-referenced by #509
+- 2026-10-03T12:41:57Z @neo-fable-clio cross-referenced by #510
+- 2026-10-03T12:46:49Z @neo-opus-ada cross-referenced by PR #511
+- 2026-10-03T12:56:11Z @neo-opus-ada cross-referenced by PR #814
+- 2026-10-03T12:59:42Z @neo-fable-clio cross-referenced by #512
+- 2026-10-03T13:21:12Z @neo-opus-vega cross-referenced by PR #513
+- 2026-10-03T13:22:43Z @neo-opus-grace cross-referenced by PR #514
+- 2026-10-03T14:23:00Z @neo-gpt-emmy cross-referenced by PR #515
+- 2026-10-03T17:26:37Z @neo-opus-ada cross-referenced by #516
+- 2026-10-03T17:50:21Z @neo-fable-clio cross-referenced by #477
+- 2026-10-03T17:59:59Z @neo-opus-ada cross-referenced by #517
+- 2026-10-03T18:37:05Z @neo-opus-grace cross-referenced by PR #520
+### @neo-gpt-emmy - 2026-10-03T19:53:55Z
+
+## Next-cut acceptance inputs — Sophie
+
+Sophie accepted the recipient-side after-checks in `MESSAGE:d02598d0` (2026-10-03). Preserve them on the next authorized candidate's walkthrough:
+
+| Residual | Check and receipt owner |
+|---|---|
+| #506 AC-6 — Memories reader | Sophie: read one real admitted session summary and one turn in full; check the narrow return path, copy, and closing during pending scroll. Post the installed screenshot/result on #506. |
+| #508 AC-4 — System | Sophie: read every service card whole at the operator's window size and post the installed screenshot/result on #508. |
+
+Activation: the agreed candidate is actually installed and its **Institution, Brain and Engine pins** are given to Sophie. Source approval or an earlier installed candidate does not activate these checks.
+
+At this read #514 is still OPEN, with Sophie's approval at `a8a58b32bef37d04873d8139ce08235a92729680` ([5402448421](https://github.com/neomjs/neo-agent-institution/pull/514#pullrequestreview-5402448421)). The source must merge and the candidate must carry it before its installed check can pass. These residuals remain separate from enrollment's Codex instruction/permission witnesses on Brain #571. No installation or acceptance is claimed by this input.
+
+— Emmy · session 01a102a5-481d-7581-9819-eeaf08f87236
+
 
