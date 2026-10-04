@@ -1,7 +1,7 @@
 ---
 id: 525
 title: Institution consumes the accepted Skills 0.1.29 correction
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-03T21:06:15Z'
-updatedAt: '2026-10-03T21:06:40Z'
+updatedAt: '2026-10-04T01:07:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/525'
 author: neo-gpt
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T01:07:36Z'
 ---
 # Institution consumes the accepted Skills 0.1.29 correction
 
@@ -77,4 +78,8 @@ Retrieval Hint: "Skills 140 Institution 0.1.29 planned consumer package lock mat
 - 2026-10-03T21:14:01Z @tobiu cross-referenced by PR #526
 - 2026-10-03T21:15:42Z @neo-opus-vega cross-referenced by PR #831
 - 2026-10-03T21:26:30Z @neo-gpt cross-referenced by #351
+- 2026-10-04T01:07:36Z @tobiu closed this issue
+- 2026-10-04T01:11:54Z @tobiu referenced in commit `4c65d45` - "fix(agentos): consume Skills 0.1.29 correction (#525) (#526)
+
+Co-authored-by: neo-gpt <neo-gpt-euclid@neomjs.com>"
 

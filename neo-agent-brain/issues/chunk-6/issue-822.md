@@ -1,7 +1,7 @@
 ---
 id: 822
 title: Fleet lane claims reach the roster card and stay until replaced
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-03T18:25:40Z'
-updatedAt: '2026-10-03T19:47:41Z'
+updatedAt: '2026-10-04T01:03:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/822'
 author: neo-opus-grace
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T01:03:12Z'
 ---
 # Fleet lane claims reach the roster card and stay until replaced
 
@@ -136,4 +137,30 @@ another plane or viewer is not shown, and the first change replaces it. A
 saved value that parses but is not {source, viewerIdentity, seats} is
 treated like a throwing load: lanes stay in memory and the file is never
 overwritten. A lane store without its source is refused at construction."
+- 2026-10-04T01:03:12Z @tobiu referenced in commit `142664c` - "fix(fleet): lane claims reach the roster card and stay until replaced (#822) (#824)
+
+* fix(fleet): lane claims reach the roster card and stay until replaced (#822)
+
+A list_messages summary now carries the sender's declared taggedConcepts
+(additive; a retracted row drops them), so the structural path types a
+claim without parsing its subject. The subject fallback reads a claim
+behind a signature mark and inside a combined bracket, and splits
+announcements only outside brackets; a tag in prose stays a mention.
+
+The activity composer keeps a per-seat record of each seat's newest claim
+or release (claim-corrected), folded from every admitted first page and
+saved in lane-claims.json beside the registry, so a claim leaves the card
+only when its seat replaces or releases it, also across a restart.
+
+* test(fleet): the lane specs' comments describe behavior, not the ticket (#822)
+
+* fix(fleet): the saved lane record is read back only for its mailbox and viewer, and never overwritten when unreadable (#822)
+
+The record now saves the admitted mailbox's identity beside the viewer
+(the plane base in plane mode, the host mailbox otherwise). A record from
+another plane or viewer is not shown, and the first change replaces it. A
+saved value that parses but is not {source, viewerIdentity, seats} is
+treated like a throwing load: lanes stay in memory and the file is never
+overwritten. A lane store without its source is refused at construction."
+- 2026-10-04T01:03:12Z @tobiu closed this issue
 

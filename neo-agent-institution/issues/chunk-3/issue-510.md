@@ -1,7 +1,7 @@
 ---
 id: 510
 title: 'The Golden Path reads in full: facts first, the recommendation as a column'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,14 +10,14 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T12:41:56Z'
-updatedAt: '2026-10-03T13:21:33Z'
+updatedAt: '2026-10-04T01:05:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/510'
 author: neo-fable-clio
 commentsCount: 3
 parentIssue: 505
 subIssues:
-  - '[ ] 819 The Golden Path synthesizer records its run id in the computed route'
-subIssuesCompleted: 0
+  - '[x] 819 The Golden Path synthesizer records its run id in the computed route'
+subIssuesCompleted: 1
 subIssuesTotal: 1
 contentTrust:
   projected: true
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T01:05:42Z'
 ---
 # The Golden Path reads in full: facts first, the recommendation as a column
 
@@ -160,4 +161,48 @@ line now ends at 866 px and its title at 893 of 900; at 1332 the row stays one l
 The arm fails on the preceding layout (078b69b: first item bottom 904.9 px, pane bottom 900) and passes on the repaired one."
 - 2026-10-03T17:13:38Z @neo-opus-grace cross-referenced by #414
 - 2026-10-03T17:14:28Z @neo-opus-vega cross-referenced by #312
+- 2026-10-03T17:25:59Z @neo-fable-clio cross-referenced by #485
+- 2026-10-03T17:40:38Z @neo-fable-clio cross-referenced by #505
+- 2026-10-03T21:42:39Z @neo-gpt-sophie cross-referenced by PR #832
+- 2026-10-03T21:43:20Z @neo-opus-vega cross-referenced by #527
+- 2026-10-04T01:05:42Z @tobiu referenced in commit `450ddce` - "feat(agentos): the Golden Path pane reads its facts first and scrolls only the recommendation column (#510) (#513)
+
+* feat(agentos): the Golden Path pane reads its facts first and scrolls only the recommendation column (#510)
+
+The typed route's three facts — currency, REM counts, the producer's run — move from a footer
+under a 1,160 px scroll into one wrapping row directly under the head, and the producer-written
+recommendation becomes the pane's single scroll seat (flex column, min-height 0), so the facts
+never leave the screen at any pane height. A route whose producer recorded no run id says
+"run id not recorded by the synthesizer" instead of "run unknown". The column's list rhythm
+tightens and the producer's one-bullet title list reads as the item's rationale line under its
+number, which puts the first ranked item and its title above the fold at the lower dock's
+default 282 px.
+
+Unit arms: the facts row holds currency, REM, provenance in that order and never flexes; the
+markdown is the flex column; the run-id sentence both ways. The e2e NL spec's scroll seat moves
+to the column, and a new arm at 1400 × 900 proves the facts row and the first item sit inside
+the default pane with only the column scrolling, and that a tall pane scrolls nowhere. Goldens
+refreshed for the moved facts; visual baseline stamp follows the inputs.
+
+* style(agentos): the Golden Path currency chip's frame carries freshness — solid only when current, dashed otherwise (#510)
+
+The design read asked the frame to mean something or go: it now means the route's currency in two
+dimensions, colour for the state and a solid line only for a current route, with every other
+state dashed. The e2e state loop asserts the border style per state; goldens refreshed; visual
+baseline stamp follows the inputs.
+
+* fix(agentos): the Golden Path's first ranked item stays above the fold at the installed 988 × 282 pane (#510)
+
+Measured at the installed default width with the real ten-item recommendation: the facts row wraps
+to two lines there and the producer's intro sentence to two, which pushed the first ranked item
+5 px and its title 31 px under the fold. Two rhythm moves recover it without touching the type:
+the recommendation's own source line ("Recommendation source · updated …") joins the facts row as
+its fourth fact — the recommendation's currency belongs with the route's — and the column drops
+its top padding and the heading's default margins to one spacing step. At 988 × 282 the item's
+line now ends at 866 px and its title at 893 of 900; at 1332 the row stays one line.
+
+* test(agentos): the Golden Path arm measures the installed 988 × 282 pane with the producer's ten items and null-run sentence (#510)
+
+The arm fails on the preceding layout (078b69b: first item bottom 904.9 px, pane bottom 900) and passes on the repaired one."
+- 2026-10-04T01:05:42Z @tobiu closed this issue
 

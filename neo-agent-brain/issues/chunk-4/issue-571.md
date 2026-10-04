@@ -32,13 +32,13 @@ subIssues:
   - '[x] 699 Retire the Fleet''s local stdio Memory Core and Knowledge Base target'
   - '[x] 704 Start silently provisions a fresh home for a seat that already has one'
   - '[ ] 815 Replace a seat token coherently after a credential rejection'
-  - '[ ] 825 The Fleet serves existing agents'' memory candidates to the cockpit'
+  - '[x] 825 The Fleet serves existing agents'' memory candidates to the cockpit'
   - '[ ] 826 The Fleet reports where a desktop seat''s first session opened'
   - '[ ] 521 Add Agent offers an existing agent''s memory, only when one exists'
   - '[ ] 522 A desktop seat whose session opened in another folder says so'
   - '[ ] 829 A Fleet seat commits as itself: identity derived, projected and verified at Start'
   - '[ ] 524 One identity row: Add shows it only when derivation fails, Detail repairs it'
-subIssuesCompleted: 15
+subIssuesCompleted: 16
 subIssuesTotal: 22
 contentTrust:
   projected: true

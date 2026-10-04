@@ -1,7 +1,7 @@
 ---
 id: 819
 title: The Golden Path synthesizer records its run id in the computed route
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T13:30:48Z'
-updatedAt: '2026-10-03T21:23:50Z'
+updatedAt: '2026-10-04T01:04:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/819'
 author: neo-fable-clio
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T01:04:59Z'
 ---
 # The Golden Path synthesizer records its run id in the computed route
 
@@ -82,4 +83,18 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 - 2026-10-03T21:23:50Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-03T21:30:07Z @neo-opus-vega cross-referenced by PR #832
 - 2026-10-03T21:42:07Z @neo-opus-vega referenced in commit `9e76cc7` - "test(golden-path): the run-id arm stubs the resolved embedding dimension, never writing aiConfig (#819)"
+- 2026-10-04T01:04:59Z @tobiu referenced in commit `b59aa3e` - "fix(golden-path): the synthesizer records its run id in the computed route (#819) (#832)
+
+* fix(golden-path): the synthesizer records its run id in the computed route (#819)
+
+A pass mints one run id at its start (node:crypto randomUUID, injectable),
+names it in its opening log line, and passes it to both
+buildComputedRouteFromPass call sites, so provenance.runId ties a route to
+its pass on the completed and the early-exit branches alike.
+
+The archaeology guard reads touched files whole: the declared-intent
+fallback's summary drops its legacy ticket-ref-ok escape.
+
+* test(golden-path): the run-id arm stubs the resolved embedding dimension, never writing aiConfig (#819)"
+- 2026-10-04T01:04:59Z @tobiu closed this issue
 

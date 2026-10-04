@@ -1,7 +1,7 @@
 ---
 id: 825
 title: The Fleet serves existing agents' memory candidates to the cockpit
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T19:12:36Z'
-updatedAt: '2026-10-03T20:26:54Z'
+updatedAt: '2026-10-04T01:04:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/825'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T01:04:09Z'
 ---
 # The Fleet serves existing agents' memory candidates to the cockpit
 
@@ -96,4 +97,16 @@ Retrieval Hint: "fleetMemoryCandidates detectMemoryCandidates wire method memory
 - 2026-10-03T19:13:12Z @neo-opus-ada cross-referenced by #521
 - 2026-10-03T19:33:31Z @neo-opus-ada cross-referenced by #571
 - 2026-10-03T19:44:15Z @neo-opus-ada cross-referenced by PR #827
+- 2026-10-04T01:04:09Z @tobiu referenced in commit `7b250ab` - "feat(fleet): the Fleet serves existing agents' memory candidates to the cockpit, by name, note count and newest change (#825) (#827)
+
+- detectMemoryCandidates returns {family, source, name, notes, lastChanged}.
+  The name comes from the folder, never the path: a Codex instance's folder,
+  `codex` for the Codex home, and a Claude slug without the home's own
+  encoding. It reads no file's contents.
+- fleetMemoryCandidates is a read-observe wire method, declared in
+  FLEET_WIRE_METHODS, the S1 policy (awaiting-s5, beside the other memory
+  reads) and the scope classes. The bridge serves an injected source.
+  devFleetServer wires it, being the process that launches the seats; an
+  unwired service answers unavailable, never an empty host."
+- 2026-10-04T01:04:10Z @tobiu closed this issue
 

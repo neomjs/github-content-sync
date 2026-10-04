@@ -1,7 +1,7 @@
 ---
 id: 503
 title: Add Agent supplies everything needed for Start
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ assignees:
   - neo-opus-ada
   - neo-gpt-emmy
 createdAt: '2026-10-03T11:48:34Z'
-updatedAt: '2026-10-03T18:44:26Z'
+updatedAt: '2026-10-04T01:07:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/503'
 author: neo-gpt-emmy
 commentsCount: 3
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T01:07:07Z'
 milestone: FM v1
 ---
 # Add Agent supplies everything needed for Start
@@ -178,4 +179,39 @@ panel) become one boundAgentOsBind, which takes it back to 994. The one-line
 config docs on the card and the panel now state intent (non-blocking note)."
 - 2026-10-03T19:30:31Z @neo-opus-ada referenced in commit `ea75678` - "test(visual): restamp the baseline inputs after the bound Agent OS naming change; the visual suite holds its goldens unchanged (#503)"
 - 2026-10-03T19:46:31Z @neo-opus-ada cross-referenced by #522
+- 2026-10-03T20:16:40Z @neo-opus-ada cross-referenced by #523
+- 2026-10-03T21:19:22Z @neo-gpt cross-referenced by PR #526
+- 2026-10-04T01:07:07Z @tobiu referenced in commit `0ba2dbf` - "feat(fleet): make Add Agent a one-token journey (#503) (#515)
+
+* feat(fleet): make Add Agent a one-token journey (#503)
+
+* test(fleet): refresh one-token journey visuals (#503)
+
+* test(fleet): check token-purpose validation spacing (#503)
+
+* build(deps): pin the Brain at #818's merge commit on dev instead of its branch head, in package.json, the lock and the CI checkout (#503)
+
+* fix(agentos): one name for the bound Agent OS on Add and on the card, a true shell-mode help line, and the detail seed's rationale (#503)
+
+Addresses review 5402317787 on #515:
+- RA-1: under shell credential ingress the help line names the next step (the
+  native prompt on Add) instead of describing the removed token field; the
+  shell-mode arm asserts it.
+- RA-2: displayBoundAgentOs names the bound Agent OS for the Add form, the
+  card's destination line and its "This fleet" chip; the chip keeps the full
+  address as its hover, as a saved connection does.
+- RA-3: the detail seed comment regains the owner-held selection and
+  shell-owned return-verb rationale.
+
+The restored comment put cockpit/Container.mjs over the 1000-line bar. The
+three identical bound-Agent-OS bind blocks (two cockpit panes, the Accounts
+panel) become one boundAgentOsBind, which takes it back to 994. The one-line
+config docs on the card and the panel now state intent (non-blocking note).
+
+* test(visual): restamp the baseline inputs after the bound Agent OS naming change; the visual suite holds its goldens unchanged (#503)
+
+---------
+
+Co-authored-by: Ada <neo-opus-4-7@neomjs.com>"
+- 2026-10-04T01:07:07Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 506
 title: 'Memories read in full: a reading pane for summaries and session turns'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-03T11:58:53Z'
-updatedAt: '2026-10-03T12:24:24Z'
+updatedAt: '2026-10-04T01:06:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/506'
 author: neo-fable-clio
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T01:06:39Z'
 ---
 # Memories read in full: a reading pane for summaries and session turns
 
@@ -100,4 +101,63 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 - 2026-10-03T12:04:34Z @neo-fable-clio cross-referenced by #507
 - 2026-10-03T12:11:34Z @neo-fable-clio assigned to @neo-opus-grace
 - 2026-10-03T12:21:39Z @neo-opus-grace cross-referenced by #505
+- 2026-10-03T13:22:00Z @neo-opus-grace referenced in commit `8fbe872` - "feat(agentos): the Memories reading follows the design read — controller, narrow regime, scroll follow (#506)
+
+The reading orchestration moves into its own ReadingController, so the
+pane renders zones and the controller decides what is read. At 720 px
+and below the pane is list or reader, the rail collapsing behind the
+reader's back breadcrumb. Under Show all the rail's selection follows
+the reader's scroll, record heads stay in view, and the reader's title
+wraps. Comments name current behavior, not the tickets behind it."
+- 2026-10-03T13:22:43Z @neo-opus-grace cross-referenced by PR #514
+- 2026-10-03T19:35:42Z @neo-opus-grace referenced in commit `5f0ec54` - "fix(agentos): show all reads the register's Store, and a closed pane retires its pending reads (#506)
+
+Show all binds the open register's own Store: the reader renders its Model
+records in Store order and re-renders on the Store's loads, mutations,
+record changes, sorts and filters, instead of a copied bag array. One read
+record still arrives as its bag.
+
+The scroll follow's rectangle read is trapped on the reading controller and
+every main-thread step of a copy on the reader, so a pane closed before the
+main thread answers rejects with Neo.isDestroyed and nothing runs on the
+retired pane."
+- 2026-10-03T19:35:42Z @neo-opus-grace referenced in commit `6af67df` - "fix(agentos): the reader hears an add or removal once, as the Store's load (#506)"
+- 2026-10-03T19:35:42Z @neo-opus-grace referenced in commit `a8a58b3` - "test(agentos): restamp the visual baseline inputs after the reader repair; no golden moved (#506)"
+- 2026-10-03T19:53:56Z @neo-gpt-emmy cross-referenced by #12
+- 2026-10-04T01:06:39Z @tobiu referenced in commit `73ece6e` - "feat(agentos): the Memories view reads a memory whole (#506) (#514)
+
+* feat(agentos): the Memories view reads a memory whole beside its rail (#506)
+
+Selecting a session summary or a turn opens it in a reader beside the list:
+the summary's full text, or the turn's prompt, thought and response with a
+copy action each. The list collapses to a rail while it reads; up/down move
+the selection, Escape closes the reading, and Show all reads every loaded
+record in list order. The wire already carries each record whole, so
+reading fetches nothing. Room is the dock's own maximize.
+
+* feat(agentos): the Memories reading follows the design read — controller, narrow regime, scroll follow (#506)
+
+The reading orchestration moves into its own ReadingController, so the
+pane renders zones and the controller decides what is read. At 720 px
+and below the pane is list or reader, the rail collapsing behind the
+reader's back breadcrumb. Under Show all the rail's selection follows
+the reader's scroll, record heads stay in view, and the reader's title
+wraps. Comments name current behavior, not the tickets behind it.
+
+* fix(agentos): show all reads the register's Store, and a closed pane retires its pending reads (#506)
+
+Show all binds the open register's own Store: the reader renders its Model
+records in Store order and re-renders on the Store's loads, mutations,
+record changes, sorts and filters, instead of a copied bag array. One read
+record still arrives as its bag.
+
+The scroll follow's rectangle read is trapped on the reading controller and
+every main-thread step of a copy on the reader, so a pane closed before the
+main thread answers rejects with Neo.isDestroyed and nothing runs on the
+retired pane.
+
+* fix(agentos): the reader hears an add or removal once, as the Store's load (#506)
+
+* test(agentos): restamp the visual baseline inputs after the reader repair; no golden moved (#506)"
+- 2026-10-04T01:06:39Z @tobiu closed this issue
 

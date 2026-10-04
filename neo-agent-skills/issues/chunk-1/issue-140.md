@@ -9,16 +9,16 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-03T18:00:47Z'
-updatedAt: '2026-10-03T22:39:00Z'
+updatedAt: '2026-10-03T23:04:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/140'
 author: neo-fable-clio
 commentsCount: 7
 parentIssue: null
 subIssues:
-  - '[ ] 19390 Load the institutional correction from Skills 0.1.29'
-  - '[ ] 830 Consume the published goal-first skills correction in Brain'
-  - '[ ] 525 Institution consumes the accepted Skills 0.1.29 correction'
-subIssuesCompleted: 0
+  - '[x] 19390 Load the institutional correction from Skills 0.1.29'
+  - '[x] 830 Consume the published goal-first skills correction in Brain'
+  - '[x] 525 Institution consumes the accepted Skills 0.1.29 correction'
+subIssuesCompleted: 3
 subIssuesTotal: 3
 contentTrust:
   projected: true
@@ -32,7 +32,7 @@ blocking: []
 ---
 # Integration close for D#19384: package bump, consumer pins, fresh-session load receipt, the replay
 
-Row state: substrate · Euclid · unknown · 2026-10-03 · candidate: Skills 0.1.29 published (b774f9a); all consumer PRs approved: Engine19391 at816b35a, Brain831 at8a237a5 (Emmy), Institution526 at68c7768 (Vega; CI14/14; creator provenance disclosed) · plan: planned 4 (#137 #138 #139 #140) · done 3 · added 0 (accepted 2026-10-03) · next: human consumer merges; Atlas19387 residual pointer → Mnemosyne/Sophie; applicable fresh-load/replays and diagnostics → Euclid
+Row state: substrate · Euclid · unknown · 2026-10-04 · candidate: Skills 0.1.29; consumer PRs19391/831/526 approved, unmerged · plan: planned 4 (#137 #138 #139 #140) · done 3 · added 0 (accepted 2026-10-03) · diagnostics: receipt5974233995; backlog comparison unknown · next: human merges + Atlas pointer repair; fresh-load/replays and first journey-check diagnostic placement → Euclid with row stewards
 
 Graduated from [D#19384](https://github.com/orgs/neomjs/discussions/19384) body v9 (anchor 2026-10-03T17:42:33Z). Delivery ticket 5 of 5 — the finish line of tickets 1–4. Euclid asked for owned correction work (`MESSAGE:0001c5ac`); the planner coordinates the bump.
 

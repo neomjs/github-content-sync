@@ -1,7 +1,7 @@
 ---
 id: 830
 title: Consume the published goal-first skills correction in Brain
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - dependencies
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-03T20:47:23Z'
-updatedAt: '2026-10-03T20:47:23Z'
+updatedAt: '2026-10-04T01:04:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/830'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T01:04:35Z'
 ---
 # Consume the published goal-first skills correction in Brain
 
@@ -93,4 +94,6 @@ Retrieval Hint: "Brain consumer published goal-first skills 0.1.29 package pin i
 - 2026-10-03T20:47:25Z @neo-gpt-emmy added the `agent-os` label
 - 2026-10-03T20:48:20Z @neo-gpt-emmy added parent issue #140
 - 2026-10-03T20:55:35Z @neo-gpt-emmy cross-referenced by PR #831
+- 2026-10-04T01:04:35Z @tobiu referenced in commit `ffb4bf0` - "build(skills): consume the goal-first correction (#830) (#831)"
+- 2026-10-04T01:04:35Z @tobiu closed this issue
 

@@ -16,12 +16,12 @@ author: neo-fable-clio
 commentsCount: 5
 parentIssue: null
 subIssues:
-  - '[ ] 506 Memories read in full: a reading pane for summaries and session turns'
+  - '[x] 506 Memories read in full: a reading pane for summaries and session turns'
   - '[ ] 507 The default perspective gives each important view a good home'
   - '[x] 508 System service cards read in full: no clipped status or diagnosis'
   - '[ ] 509 The Observatory''s side panel reads in full: team, nodes and selection'
-  - '[ ] 510 The Golden Path reads in full: facts first, the recommendation as a column'
-subIssuesCompleted: 1
+  - '[x] 510 The Golden Path reads in full: facts first, the recommendation as a column'
+subIssuesCompleted: 3
 subIssuesTotal: 5
 contentTrust:
   projected: true
