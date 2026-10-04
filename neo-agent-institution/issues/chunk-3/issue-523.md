@@ -1,7 +1,7 @@
 ---
 id: 523
 title: A walker can hold smoke's isolated organism open and drive its plane
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T20:16:39Z'
-updatedAt: '2026-10-03T20:17:36Z'
+updatedAt: '2026-10-04T12:38:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/523'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,7 +24,10 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
+  - '[ ] 534 Row 1''s installed walkthrough: a cold first run reaches done'
   - '[ ] 516 Row 5''s installed walkthrough: each ordinary failure provoked, one receipt each'
+closedAt: '2026-10-04T12:38:50Z'
+milestone: FM v1
 ---
 # A walker can hold smoke's isolated organism open and drive its plane
 
@@ -65,6 +68,20 @@ This is row 5's second planned leaf (#424), accepted by planner Clio on 2026-10-
    - `token revoke` and `token remap <identity>`: rewrites of the fixture registry that the verifier picks up live.
    - It resolves the smoke root with `resolveSmokeRoot` and the plane by `FIXTURE_PLANE_ID`. It refuses any other root or plane id, so it can never reach the live plane.
 
+## Contract Ledger
+
+*(Added 2026-10-04 by the claimer for review [5406017431](https://github.com/neomjs/neo-agent-institution/pull/537#pullrequestreview-5406017431) RA-4. It matches the repaired head.)*
+
+| Target surface | Source of authority | Behavior | Fallback | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `NEO_HARNESS_SMOKE_HOLD=1` | AC-1 (Clio 1) | Holds only in the fixture-plane arm (`NEO_HARNESS_SMOKE=1`, Brain leg on, `NEO_HARNESS_SMOKE_PLANE=1`), and only once the organism is attached to its fixture plane. It skips the verdict exit and the timeout net, then logs `HARNESS_SMOKE_HOLD` with the candidate, the auth mode, the plane base and the smoke root. | Set anywhere else: `HARNESS_SMOKE_HOLD_REFUSED <reason>` and exit 2, before any profile path is set. Plane not attached: `HARNESS_SMOKE_HOLD_UNAVAILABLE`, and the run reports its verdict as an ordinary smoke. | `walkControl.mjs` module doc, `resolveSmokeHold` | `walkControl.spec` hold arm |
+| Walk manifest `<smokeRoot>/walk/manifest.json` | the held run | Written once the run holds: `planeId`, `smokeRoot`, `registryPath`, `runtimeRoot`, `identities`, `planePort`, `ingressPort`, `pid`, `candidate`, `auth`. Mode 0600, written through a rename; earlier walk files are cleared first. | No manifest: every command refuses, "no held smoke run under …". | `writeWalkManifest` | manifest and stale-request arms |
+| Accepted target (`assertWalkTarget`) | AC-2 (Clio 2), RA-1 | Plane id `neo-harness-smoke`, this run's smoke root, and a registry inside that root once links resolve. Token writes go to the resolved file the check accepted. | Another plane id, root, or a registry outside the root: refused, naming the mismatch; nothing is written. | `assertWalkTarget` | refusal arm, link arm (escaping link refused, in-root link followed) |
+| CLI `walkControl.mjs [--packaged] plane stop\|start \| token revoke \| token remap <identity> \| cleanup` | AC-2, AC-4 | `plane`: a control file the held run watches, answered in an ack file with `ok` and the handler's result. `token revoke`: the next registry generation holds no rows, so the plane refuses the stored token (`stale-generation`). `token remap`: the next generation binds the token to another identity the plane's graph holds. | Unknown command: usage, exit 1. No answer within 60 s: "is its window still open?". A remap to an identity the graph lacks writes nothing. | module doc, `runWalkControl` | plane and token arms on real seat-token registries |
+| Plane stop answer | RA-3 | `ok: true` only once the plane's process group is gone (a forced stop included); the stop report rides the answer. | The group outlived the kill: `ok: false`, the report in the error. | `createPlaneProcess` | stop-result arms (`fixturePlane.spec`, `walkControl.spec`) |
+| Control lifetime | AC-5, RA-2 | From the manifest write until teardown. `teardownBrain` closes the control first: no request starts after it, and the one in flight settles, so a plane it starts is in the drain. | A request after close is never answered. | `watchPlaneControl`, `teardownBrain` | close-race arm |
+| `cleanup` | AC-7 (Emmy 3) | Removes the smoke root only once the held run's pid is gone and neither plane port listens. | While either holds: refuses, removing nothing. | `cleanupHeldRun` | cleanup arm; the installed receipt is Post-Merge Validation, read on #516 |
+
 ## Acceptance Criteria
 
 - [ ] AC-1 (Clio 1): `NEO_HARNESS_SMOKE_HOLD=1` holds the window only in the fixture-plane arm. With no fixture plane, which also covers the operator's instance with no plane declared, the harness refuses with a named reason and never attaches (unit).
@@ -74,6 +91,13 @@ This is row 5's second planned leaf (#424), accepted by planner Clio on 2026-10-
 - [ ] AC-5 (Emmy 1): the held run reuses smoke's containment and its own lifecycle: the same isolation root, the same `exitTerminal` teardown. There is no second runtime, and the six provocations are not split into features.
 - [ ] AC-6 (Emmy 2): the held run names its candidate (the build info it runs) and its auth mode (the fixture seat token) when it starts. The walker drives the real UI's recovery against fixture-only faults.
 - [ ] AC-7 (Emmy 3): a held run's receipt proves cleanup. The smoke root is removed and the fixture plane is stopped, while the operator's app profile and the live plane are unchanged.
+
+## Post-Merge Validation
+
+*(Added 2026-10-04 by the claimer. The held-run receipts in AC-4 and AC-7 need an installed candidate, so they leave the PR's gate and stay owned here, read on #516's walk.)*
+
+- [ ] AC-4, the held run: on the installed candidate held with `NEO_HARNESS_SMOKE_HOLD=1`, `token revoke`, `token remap` and `plane stop` / `plane start` each produce the refusal or recovery the cockpit should show. One receipt each, on #516.
+- [ ] AC-7, the held run: after the walker closes the window, `walkControl.mjs [--packaged] cleanup` removes the smoke root with both plane ports closed, and the operator's app profile and live plane are untouched.
 
 ## Out of Scope
 
@@ -99,6 +123,8 @@ Origin Session ID: 84371353-afea-4f59-9b58-2b8777325f56
 Retrieval Hint: "smoke hold open walker isolated organism fixture plane control script revoke remap token NEO_HARNESS_SMOKE_HOLD"
 
 
+
+
 ## Timeline
 
 - 2026-10-03T20:16:40Z @neo-opus-ada assigned to @neo-opus-ada
@@ -109,4 +135,40 @@ Retrieval Hint: "smoke hold open walker isolated organism fixture plane control 
 - 2026-10-03T20:16:48Z @neo-opus-ada added parent issue #424
 - 2026-10-03T20:16:50Z @neo-opus-ada marked this issue as blocking #516
 - 2026-10-03T20:16:51Z @neo-opus-ada cross-referenced by #424
+- 2026-10-04T10:01:59Z @neo-opus-ada added this to the **FM v1** milestone
+- 2026-10-04T10:59:50Z @neo-fable cross-referenced by #351
+- 2026-10-04T11:01:22Z @neo-opus-ada cross-referenced by #533
+- 2026-10-04T11:10:05Z @neo-fable cross-referenced by #534
+- 2026-10-04T11:10:14Z @neo-fable marked this issue as blocking #534
+- 2026-10-04T11:44:36Z @neo-opus-ada cross-referenced by PR #537
+- 2026-10-04T11:56:03Z @neo-gpt-emmy cross-referenced by #12
+- 2026-10-04T12:22:42Z @neo-opus-ada referenced in commit `ecb0626` - "fix(harness): the walk control writes only inside its root, closes before the drain, and answers a stop only once the plane is gone (#523)
+
+Three boundary defects from the #537 review, each reproduced on 130a7f5d:
+
+- a registry reached through a link inside the smoke root was written outside it: assertWalkTarget compares resolved paths and hands the write the file it accepted;
+- a plane start queued while the window closed could register a child after teardown took its snapshot: the watcher's close() stops admission and settles the request in flight, and teardownBrain awaits it first;
+- a stop whose process group outlived the kill was acknowledged ok: the plane's stop throws unless its group is gone, and the answer carries the stop report.
+
+Each new arm fails on the previous source."
+- 2026-10-04T12:38:50Z @tobiu referenced in commit `606ab2a` - "feat(harness): a walker can hold the fixture-plane smoke's organism open and drive its plane and seat token (#523) (#537)
+
+* feat(harness): a walker can hold the fixture-plane smoke's organism open and drive its plane and seat token (#523)
+
+NEO_HARNESS_SMOKE_HOLD=1 acts only in the fixture-plane arm; set anywhere else the harness refuses before anything starts. A held run stops after the plane observations with the organism attached and the window open, names its candidate and auth mode, and writes a walk manifest under its smoke root. Closing the window quits through window-all-closed and will-quit, the owned-Brain teardown exitTerminal runs, so the organism and the plane stop with it; a held run arms no timeout net.
+
+harness/walkControl.mjs acts only on what that manifest names (the fixture plane id, the smoke root, a registry inside it): plane stop and start go through a control file the held run watches and acknowledges, token revoke and remap rewrite the fixture's seat-token registry, which the plane's verifier reads on its next request, and cleanup removes the smoke root once the run and both plane ports are gone.
+
+The fixture plane's child is now a createPlaneProcess handle registered as drain-owned but never a Brain claim: it stands in for a remote plane, whose outage the shell meets through its own reads, never as a crash of a child it owns. A held run seeds a second identity, so a remap names another account the plane holds. walkControl.mjs joins the packaged main's module set.
+
+* fix(harness): the walk control writes only inside its root, closes before the drain, and answers a stop only once the plane is gone (#523)
+
+Three boundary defects from the #537 review, each reproduced on 130a7f5d:
+
+- a registry reached through a link inside the smoke root was written outside it: assertWalkTarget compares resolved paths and hands the write the file it accepted;
+- a plane start queued while the window closed could register a child after teardown took its snapshot: the watcher's close() stops admission and settles the request in flight, and teardownBrain awaits it first;
+- a stop whose process group outlived the kill was acknowledged ok: the plane's stop throws unless its group is gone, and the answer carries the stop report.
+
+Each new arm fails on the previous source."
+- 2026-10-04T12:38:50Z @tobiu closed this issue
 

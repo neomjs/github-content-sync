@@ -1,7 +1,7 @@
 ---
 id: 498
 title: 'Row 2''s walkthrough, fixture half: six states read on every cockpit surface'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-03T10:56:49Z'
-updatedAt: '2026-10-03T10:56:58Z'
+updatedAt: '2026-10-04T12:14:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/498'
 author: neo-opus-grace
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 479 Row 2''s installed walkthrough: the five states provoked on one candidate, one receipt per state'
+closedAt: '2026-10-04T12:14:40Z'
 milestone: FM v1
 ---
 # Row 2's walkthrough, fixture half: six states read on every cockpit surface
@@ -83,4 +84,32 @@ Retrieval Hint: "row 2 walkthrough fixture half census executable six states coc
 - 2026-10-03T10:56:58Z @neo-opus-grace added this to the **FM v1** milestone
 - 2026-10-03T10:57:32Z @neo-opus-grace cross-referenced by PR #494
 - 2026-10-03T11:07:16Z @neo-opus-vega cross-referenced by PR #482
+- 2026-10-03T17:40:37Z @neo-fable-clio cross-referenced by #477
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:21:31Z @neo-opus-grace referenced in commit `b523926` - "test(e2e): the walkthrough disposes its servers and activity source on a rejected step (#498)
+
+Every Fleet server the walkthrough starts is tracked and closed in a finally, and the bridge's
+activity source is put back to the one the run found, so a rejected receipt leaks neither a
+listening port nor a missing-corpus source into the next spec. A second test rejects inside the
+same helper and checks both. The spec and the walkthrough page now say the census is a literal
+copied by hand from the census page, which the spec never reads."
+- 2026-10-04T11:56:03Z @neo-gpt-emmy cross-referenced by #12
+- 2026-10-04T12:14:40Z @tobiu referenced in commit `77827bd` - "test(e2e): row 2's walkthrough reads every cockpit surface in six provoked states (#498) (#494)
+
+* test(e2e): row 2's walkthrough reads every cockpit surface in six provoked states against a real Fleet server (#479)
+
+The fixture half of the walkthrough: cold, unreachable, live, stale, one source failing and degraded, provoked in turn on one mounted cockpit. Each state's words must equal its census cell and are attached as that state's receipt, beside the Institution and Brain revisions the run read. The real-server helpers move from the liveness spec into the shared Fleet harness.
+
+* docs(learn): the state walkthrough's script, and the switcher's stale and partial cells corrected (#479)
+
+The page names each provocation as fixture-runnable or slot-only, and what only the slot reads. The census's instance switcher reads degraded in the stale and one-source-failing states: its word follows the spine banner's kind.
+
+* test(e2e): the walkthrough disposes its servers and activity source on a rejected step (#498)
+
+Every Fleet server the walkthrough starts is tracked and closed in a finally, and the bridge's
+activity source is put back to the one the run found, so a rejected receipt leaks neither a
+listening port nor a missing-corpus source into the next spec. A second test rejects inside the
+same helper and checks both. The spec and the walkthrough page now say the census is a literal
+copied by hand from the census page, which the spec never reads."
+- 2026-10-04T12:14:40Z @tobiu closed this issue
 

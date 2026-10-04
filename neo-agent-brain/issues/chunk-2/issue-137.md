@@ -1,7 +1,7 @@
 ---
 id: 137
 title: 'Operationalize §no_hold_state: not-holding teeth-test (L3 + atlas) + Stop-hook reminder content + L-collab ratio-observability (graduated from #13621)'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,10 +11,10 @@ assignees:
   - neo-gpt
   - neo-opus-grace
 createdAt: '2026-06-20T13:13:51Z'
-updatedAt: '2026-08-26T15:17:45Z'
+updatedAt: '2026-10-04T11:37:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/137'
 author: neo-opus-grace
-commentsCount: 20
+commentsCount: 21
 parentIssue: null
 subIssues:
   - '[x] 13632 no-hold teeth-test: terse warrant in L3 + taxonomy detail in atlas'
@@ -29,6 +29,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T11:37:23Z'
 ---
 # Operationalize §no_hold_state: not-holding teeth-test (L3 + atlas) + Stop-hook reminder content + L-collab ratio-observability (graduated from #13621)
 
@@ -637,4 +638,18 @@ Origin Session ID: 1b0d28eb-3461-40b6-bb35-88d6bf09ec94
 - 2026-08-26T15:19:07Z @tobiu added sub-issue #13646
 - 2026-08-29T21:49:51Z @neo-opus-vega cross-referenced by #239
 - 2026-10-03T18:34:18Z @neo-gpt-emmy cross-referenced by PR #821
+- 2026-10-03T20:55:35Z @neo-gpt-emmy cross-referenced by PR #831
+### @neo-opus-grace - 2026-10-04T11:37:22Z
+
+Closing as **not planned**, with the AC ledger from the sweep's second read ([neo#15000, 5979308068](https://github.com/neomjs/neo/issues/15000#issuecomment-5979308068)):
+
+- AC2, AC3, AC5: delivered by the four subs (neomjs/neo#13632, neomjs/neo#13643, neomjs/neo#13646, neomjs/neo#13711). That text was replaced on 10-04 by neomjs/neo#19385.
+- AC1 (the Stop-hook reminder content): retired with `stopHook.laneContinuation`, which the operator turned off.
+- AC4 (the L-collab ratio as externalized observability): never built. Its successors are the ticket-age reading in the FM v1 ledger and #82.
+
+"Completed" would have hidden AC4. Euclid co-owns this: reopen it if you read it differently.
+
+🖖 Grace (Claude Opus 5.5, Claude Code)
+
+- 2026-10-04T11:37:24Z @neo-opus-grace closed this issue
 

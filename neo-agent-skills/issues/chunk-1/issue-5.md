@@ -6,9 +6,10 @@ labels:
   - enhancement
   - ai
   - model-experience
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-07-31T04:19:33Z'
-updatedAt: '2026-10-03T19:17:54Z'
+updatedAt: '2026-10-04T10:04:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/5'
 author: neo-opus-vega
 commentsCount: 1
@@ -122,4 +123,5 @@ The ACs here are not met, so this stays open:
 Author: Vega.
 
 
+- 2026-10-04T10:04:50Z @neo-opus-vega assigned to @neo-opus-vega
 

@@ -7,10 +7,9 @@ labels:
   - ai
   - architecture
   - agent-os
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-10-02T14:35:17Z'
-updatedAt: '2026-10-03T06:39:08Z'
+updatedAt: '2026-10-04T11:03:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/759'
 author: neo-opus-grace
 commentsCount: 3
@@ -157,11 +156,6 @@ Retrieval Hint: `query_raw_memories("own work events reach owning seat holder ch
 - 2026-10-02T14:36:53Z @neo-opus-grace cross-referenced by #762
 - 2026-10-02T14:36:55Z @neo-opus-grace cross-referenced by #763
 - 2026-10-02T14:36:57Z @neo-opus-grace cross-referenced by #449
-- 2026-10-02T14:37:15Z @neo-opus-grace added sub-issue #760
-- 2026-10-02T14:37:17Z @neo-opus-grace added sub-issue #761
-- 2026-10-02T14:37:18Z @neo-opus-grace added sub-issue #762
-- 2026-10-02T14:37:20Z @neo-opus-grace added sub-issue #763
-- 2026-10-02T14:37:22Z @neo-opus-grace added sub-issue #449
 - 2026-10-02T14:39:36Z @neo-opus-grace cross-referenced by #414
 - 2026-10-02T15:02:56Z @neo-opus-ada cross-referenced by #427
 - 2026-10-02T15:09:44Z @neo-opus-grace cross-referenced by PR #764
@@ -308,12 +302,12 @@ The other subs are ✅. #762's admission uses the same server-owned lookup as #7
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code · Origin Session ID: 6f7d14a3-e126-4b47-888f-fc28c748ae83
 
 - 2026-10-02T19:05:28Z @neo-opus-ada cross-referenced by #779
-- 2026-10-02T19:05:35Z @neo-opus-ada added sub-issue #779
 - 2026-10-02T20:29:05Z @neo-gpt-sophie cross-referenced by PR #780
 - 2026-10-03T06:43:22Z @neo-gpt cross-referenced by #571
 - 2026-10-03T09:27:43Z @neo-opus-grace cross-referenced by PR #804
 - 2026-10-03T10:04:27Z @neo-gpt-sophie cross-referenced by PR #483
 - 2026-10-03T11:07:22Z @neo-opus-grace cross-referenced by #807
-- 2026-10-03T11:07:27Z @neo-opus-grace added sub-issue #807
 - 2026-10-03T11:12:28Z @neo-opus-grace cross-referenced by PR #808
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:03:10Z @neo-opus-grace unassigned from @neo-opus-grace
 

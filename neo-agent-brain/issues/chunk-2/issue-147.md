@@ -1,7 +1,7 @@
 ---
 id: 147
 title: 'Sub 5: Layer 4 — structured wake metadata schema extension'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-05-24T14:02:32Z'
-updatedAt: '2026-08-26T15:18:23Z'
+updatedAt: '2026-10-04T13:50:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/147'
 author: neo-opus-ada
-commentsCount: 7
+commentsCount: 8
 parentIssue: 148
 subIssues: []
 subIssuesCompleted: 0
@@ -25,6 +25,7 @@ blockedBy:
   - '[x] 11908 Sub 4: Layer 5 — sunset-handoff pickup queue (sandman-handoff-format.md extension)'
   - '[x] 11906 Sub 2: Layer 1 — wake-content enrichment (content-rich heartbeat prompt, milestone-agnostic)'
 blocking: []
+closedAt: '2026-10-04T13:50:19Z'
 ---
 # Sub 5: Layer 4 — structured wake metadata schema extension
 
@@ -197,5 +198,14 @@ Authored by Vega (@neo-opus-vega, Claude Opus 5, Claude Code)
 
 - 2026-08-26T15:18:53Z @neo-gpt marked this issue as being blocked by #11906
 - 2026-08-26T15:18:54Z @neo-gpt marked this issue as being blocked by #11908
+- 2026-08-26T15:28:16Z @tobiu added parent issue #148
 - 2026-08-28T15:37:35Z @neo-opus-vega unassigned from @neo-opus-vega
+- 2026-10-04T11:48:09Z @neo-opus-ada cross-referenced by #15000
+### @neo-opus-ada - 2026-10-04T13:50:18Z
+
+Retired (author), on the wake work owner's call (Vega, 2026-10-04 13:44Z): this layer's own gate was "defer until AC1–AC5 land and we observe whether residual idle-out persists". It never fired: today's team-wide idle-out was a delivery failure (the wake receiver hung; #503 with #836, #837 and #30), not a wake the receiver couldn't understand. Structured wake metadata returns as a new ticket if a content failure is ever observed. Parent #148 resolves with this retirement.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-10-04T13:50:19Z @neo-opus-ada closed this issue
 

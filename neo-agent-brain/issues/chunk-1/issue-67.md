@@ -1,14 +1,14 @@
 ---
 id: 67
 title: The turn-presence hook budgets a network round-trip with a timeout sized for a local file write
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-08-05T11:52:57Z'
-updatedAt: '2026-10-03T14:24:57Z'
+updatedAt: '2026-10-04T11:28:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/67'
 author: neo-opus-grace
 commentsCount: 5
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T11:28:32Z'
 ---
 # The turn-presence hook budgets a network round-trip with a timeout sized for a local file write
 
@@ -237,7 +238,6 @@ Second finding in the ticket - resolveMemoryCoreGraphPath is orphaned - was alre
 it exists nowhere in the tree."
 - 2026-08-30T16:02:34Z @neo-opus-grace cross-referenced by #250
 - 2026-10-02T14:25:52Z @neo-opus-ada cross-referenced by #757
-- 2026-10-02T14:25:58Z @neo-opus-ada added sub-issue #757
 - 2026-10-02T14:33:17Z @neo-opus-ada cross-referenced by PR #758
 ### @neo-opus-ada - 2026-10-02T14:47:35Z
 
@@ -327,4 +327,68 @@ One pointer goes stale on merge. AC-3 names this ticket as the Residual-Owner of
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 
+- 2026-10-04T11:28:32Z @tobiu referenced in commit `88a7df6` - "fix(memory-core): the presence hook writer reads its deadlines from the turnPresence leaves, split by how each harness registers the hook (#67) (#817)
+
+* fix(memory-core): the presence hook writer reads its deadline from the turnPresence leaf through its entrypoint, and specs pin it under every synchronous registration (#67)
+
+`TurnPresenceConfig` was the twin shape ADR-0019 §10.1 retired. It held
+literals that the leaves declared from, plus a parallel env resolver that
+the writer called instead of reading the leaf. The literals are now inline
+in the leaves and the module is gone. The graph DB env name it also carried
+is inline in its one leaf too.
+
+The hook entrypoints were already "the only place config is resolved".
+Each of the three (Claude, Codex, Kimi) now reads the deadline through
+`seatConfig.readTurnPresenceDeadlineMs()`, which loads the Memory Core config
+lazily (about 2 ms after the Tier-1 load the plane read already pays), and
+injects it beside the plane. The writer stays Neo-free and resolves nothing.
+
+Specs:
+- The writer's deadline stays below every synchronous registration that
+  spends it: Claude's start (2 s), Codex's prompt hook (10 s), and Kimi's
+  five presence events (5 s each). The numbers live in four places.
+- The projected hook, run against a plane that accepts the connection and
+  never answers, ends in the named stderr warning and exits 0.
+- The deadline reader returns the leaf's default and honours its env
+  binding.
+- The entrypoint's deadline reaches the transport.
+
+The leaf's docblock records why 1500 ms: Claude's 2 s start is the tightest
+synchronous bound, and the hook process needs the rest of it.
+
+* fix(memory-core): an asynchronously registered presence hook spends its own remote-sized deadline (#67)
+
+AC-1, as folded on the ticket, splits the deadline by registration, not by
+action. Kimi registers every presence event synchronously at 5 s, so a
+remote-sized budget can only belong to a hook the harness never times out.
+
+- `turnPresence.asyncHookWriteTimeoutMs` (8000 ms, the transport's own default
+  for one remote exchange) sits beside the synchronous `hookWriteTimeoutMs`.
+  The leaf docblock records both bounds and the async cost: overlap, because
+  async runs are not deduplicated.
+- `seatConfig.readTurnPresenceDeadlineMs({async})` reads the leaf for the
+  calling hook's class.
+- The Claude hook names its async actions (progress). A spec holds that set
+  equal to the manifest's async registrations, so the two cannot drift.
+
+The spawned-hook arm now runs both actions with the two leaves set to
+different values. Start's warning names 200 ms and progress's names 300 ms.
+
+* fix(memory-core): a synchronous presence deadline must fit its hook's registration, and Codex names a write it did not record (#67)
+
+- The two deadline leaves are positiveInt: an env value that is not a whole
+  number of ms warns by name and the default stands.
+- seatConfig refuses, by name, a synchronous deadline that does not leave the
+  hook process 500 ms of the calling hook's registration. Each entrypoint names
+  its registration (Claude start 2000, Codex prompt 10000, Kimi 5000), held
+  equal to its harness config by spec.
+- Codex's main prints the Claude hook's named warning for a skip or a throw
+  instead of swallowing it; its stdout stays the context alone.
+- The writer's no-deadline skip names the repair: a copy projected before this
+  runtime injects no deadline, and seats are never re-projected unattended.
+- Specs: the refusal per registration and per hook at the CLI boundary,
+  malformed values, Codex against a silent and an answering plane, and the
+  stale-copy skip."
+- 2026-10-04T11:28:32Z @tobiu closed this issue
+- 2026-10-04T11:30:06Z @neo-opus-ada cross-referenced by #571
 

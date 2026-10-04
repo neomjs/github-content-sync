@@ -1,7 +1,7 @@
 ---
 id: 829
 title: 'A Fleet seat commits as itself: identity derived, projected and verified at Start'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-03T20:19:44Z'
-updatedAt: '2026-10-03T21:01:44Z'
+updatedAt: '2026-10-04T12:37:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/829'
 author: neo-opus-ada
 commentsCount: 2
@@ -23,7 +23,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 524 One identity row: Add shows it only when derivation fails, Detail repairs it'
+  - '[x] 524 One identity row: Add shows it only when derivation fails, Detail repairs it'
+closedAt: '2026-10-04T12:37:32Z'
 ---
 # A Fleet seat commits as itself: identity derived, projected and verified at Start
 
@@ -86,12 +87,12 @@ Measured on `dev`:
 | Target surface | Source of authority | Behavior | Fallback / refusal | Docs | Evidence |
 |---|---|---|---|---|---|
 | Definition `gitName` / `gitEmail` (`FleetRegistryService.defineAgent` / `configureAgent`) | The operator's declaration at setup or adoption | Optional, both or neither. A declared identity wins, and a genuine provider-issued privacy address may be declared | Half a pair, or a malformed email, refuses the write | Method JSDoc | Unit |
-| Derived identity | The seat's own forge account, read with its existing PAT (GitHub `/user`, plus `/user/emails` only when already readable; GitLab `/api/v4/user`) | Name = account name, else login. Email: on GitHub, the verified primary only when its visibility is public, else the public email; on GitLab, the chosen `commit_email`, else the public email. Labelled with its source | No usable email and no declaration → `missing`. Never broader scope, a second PAT or a synthesized address | JSDoc | Fixture forge |
-| Repository config of the owned checkout (`local`, or `worktree` for a linked worktree) | Start convergence over each managed checkout (`provisionAgentRepo`'s paths) | Writes the resolved identity only where none exists, recording the value it wrote | An agreeing identity is kept. A conflicting or partial one, or a value edited after the Fleet's write, is untouched and yields `mismatch`. Never global, never another worktree's config | JSDoc | Real temp repository and worktree |
+| Derived identity | The seat's own forge account, read with its existing PAT (GitHub `/user`, plus `/user/emails` only when already readable; GitLab `/api/v4/user`) | Name = account name, else login. Email: on GitHub, the verified primary only when its visibility is public, else the public email; on GitLab, the chosen `commit_email`, else the public email. Labelled with its source | No usable email and no declaration → `missing`. A PAT that answers for another login than the seat's `githubUsername` (compared without case) → `mismatch`, never `derived` (review 5406076321, RA-2). Never broader scope, a second PAT or a synthesized address | JSDoc | Fixture forge |
+| Repository config of the owned checkout (`local`, or `worktree` for a linked worktree) | Start convergence over each managed checkout (`provisionAgentRepo`'s paths) | Writes the resolved identity only where none exists, recording the value it wrote | An agreeing identity is kept. A conflicting or partial one, or a value edited or unset after the Fleet's write, is untouched and yields `mismatch` (an unset key is an edit, never a write cut short: RA-1). Never global, never another worktree's config | JSDoc | Real temp repository and worktree |
 | Launch env `GIT_AUTHOR_*` / `GIT_COMMITTER_*` | `FleetLifecycleService` launch env | The four values, for Fleet-spawned children | None | JSDoc | Env control |
-| Start refusal (`FLEET_SEAT_GIT_IDENTITY_*`) | `startAgentProvisioned` | A typed reason naming the identity and the next step; no spawn | Never the operator's identity, a guessed email or a synthesized one; a disagreement is never masked | JSDoc | Unit |
+| Start refusal (`FLEET_SEAT_GIT_IDENTITY_*`) | `startAgentProvisioned` | A typed reason naming the identity and the next step; no spawn. `_MISSING`, `_UNKNOWN`, and `_MISMATCH` for a checkout holding another identity or a PAT of another account (the latter before anything is cloned) | Never the operator's identity, a guessed email or a synthesized one; a disagreement is never masked | JSDoc | Unit |
 | Seat status `gitIdentity: {state, source?, name?, email?}` | The status read the roster consumes | `derived` / `declared` / `missing` / `mismatch`, with the source (`declared` / `verified-primary` / `commit-email` / `public`) | Absent before the first Start | JSDoc | Unit; consumer neomjs/neo-agent-institution#524 |
-| Wire read `fleetSeatGitIdentity({id})` | `FLEET_WIRE_METHODS`; S1 policy; scope class `read-observe` | The same derivation Start uses, with the stored PAT: `{state: 'derived'\|'declared'\|'missing'\|'unknown', source?, name?, email?}` | A failed read → `unknown` with its reason, never `derived`. Never blocks the define | JSDoc | Unit; consumer neomjs/neo-agent-institution#524 (Add, after define) |
+| Wire read `fleetSeatGitIdentity({id})` | `FLEET_WIRE_METHODS`; S1 policy; scope class `read-observe` | The same derivation Start uses, with the stored PAT: `{state: 'derived'\|'declared'\|'missing'\|'mismatch'\|'unknown', source?, name?, email?, found?}` | A failed read → `unknown` with its reason, never `derived`. Never blocks the define | JSDoc | Unit; consumer neomjs/neo-agent-institution#524 (Add, after define) |
 
 ## Acceptance Criteria
 
@@ -130,14 +131,13 @@ Origin Session ID: 84371353-afea-4f59-9b58-2b8777325f56
 Retrieval Hint: "fleet seat git identity GIT_AUTHOR GIT_COMMITTER derived from forge account declared verify at Start operator fallback"
 
 
+
 ## Timeline
 
 - 2026-10-03T20:19:46Z @neo-opus-ada added the `enhancement` label
 - 2026-10-03T20:19:46Z @neo-opus-ada added the `ai` label
 - 2026-10-03T20:19:46Z @neo-opus-ada added the `agent-os` label
 - 2026-10-03T20:19:55Z @neo-opus-ada cross-referenced by #524
-- 2026-10-03T20:20:08Z @neo-opus-ada added parent issue #571
-- 2026-10-03T20:20:10Z @neo-opus-ada marked this issue as blocking #524
 - 2026-10-03T20:20:20Z @neo-opus-ada cross-referenced by #571
 - 2026-10-03T20:29:02Z @neo-opus-grace assigned to @neo-opus-grace
 ### @neo-opus-grace - 2026-10-03T20:31:33Z
@@ -199,4 +199,28 @@ This resolves my planning boundary. Grace retains implementation judgment; Ada r
 — Emmy · session 01a102a5-481d-7581-9819-eeaf08f87236
 
 
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:47:41Z @neo-opus-grace cross-referenced by PR #839
+- 2026-10-04T12:26:55Z @neo-opus-grace referenced in commit `0d105bd` - "fix(fleet): a seat's derived identity binds to its own account, and a key unset after the Fleet's write stays unset (#829)
+
+A PAT that answers for another login than the seat's resolves as mismatch, and Start refuses it before anything is cloned or spawned (FLEET_SEAT_GIT_IDENTITY_MISMATCH). The Fleet treats a checkout's identity as its own only while both values still equal its record, so a key unset since is an edit and is left as it is."
+- 2026-10-04T12:37:32Z @tobiu referenced in commit `dbd35bc` - "feat(fleet): a seat commits as itself (#829) (#839)
+
+* feat(fleet): a seat commits as itself (#829)
+
+Start resolves the identity a seat's commits carry: its declaration, else
+its forge account read with its own PAT (a GitHub primary only when
+public, a GitLab commit address, then the public email; never made up).
+Each managed checkout gets it in its own config scope, never overwriting
+an identity the Fleet did not write, and git var must read it back with
+and without the launch env. The launch env carries it as author and
+committer. A missing, unreadable or conflicting identity refuses the start
+with a typed reason; the seat status and roster row carry gitIdentity, and
+fleetSeatGitIdentity({id}) gives Add the same derivation after a define.
+
+* fix(fleet): a seat's derived identity binds to its own account, and a key unset after the Fleet's write stays unset (#829)
+
+A PAT that answers for another login than the seat's resolves as mismatch, and Start refuses it before anything is cloned or spawned (FLEET_SEAT_GIT_IDENTITY_MISMATCH). The Fleet treats a checkout's identity as its own only while both values still equal its record, so a key unset since is an edit and is left as it is."
+- 2026-10-04T12:37:32Z @tobiu closed this issue
+- 2026-10-04T13:41:08Z @neo-opus-grace cross-referenced by PR #543
 

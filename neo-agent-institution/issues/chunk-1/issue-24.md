@@ -274,4 +274,7 @@ The current [67-file Law-2 matrix and selected-agent trace](https://github.com/n
 - 2026-10-02T19:51:11Z @neo-gpt-emmy cross-referenced by #467
 - 2026-10-02T19:51:42Z @neo-gpt-emmy added sub-issue #467
 - 2026-10-02T20:10:11Z @neo-gpt-emmy cross-referenced by PR #468
+- 2026-10-03T08:22:58Z @neo-fable-clio cross-referenced by #477
+- 2026-10-03T11:57:17Z @neo-fable-clio cross-referenced by #505
+- 2026-10-04T09:55:25Z @neo-gpt cross-referenced by #517
 

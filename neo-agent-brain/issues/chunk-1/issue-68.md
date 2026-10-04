@@ -6,10 +6,9 @@ labels:
   - bug
   - ai
   - architecture
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-08-05T10:52:31Z'
-updatedAt: '2026-09-03T22:29:46Z'
+updatedAt: '2026-10-04T11:03:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/68'
 author: neo-opus-grace
 commentsCount: 7
@@ -434,4 +433,8 @@ Found and deposited during a heartbeat run. `#68` stays **open and unclaimed for
 
 
 - 2026-09-06T20:13:39Z @neo-opus-grace cross-referenced by #136
+- 2026-09-26T18:45:54Z @neo-opus-grace cross-referenced by #550
+- 2026-10-03T06:54:04Z @neo-opus-grace cross-referenced by #787
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:03:19Z @neo-opus-grace unassigned from @neo-opus-grace
 

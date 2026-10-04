@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-06-13T01:53:40Z'
-updatedAt: '2026-08-26T15:18:07Z'
+updatedAt: '2026-10-04T13:31:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/143'
 author: neo-fable
-commentsCount: 3
+commentsCount: 4
 parentIssue: 144
 subIssues:
   - '[x] 13064 Curate Neural Link tool-surface tiers for harness agents'
@@ -345,4 +345,47 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-08-29T21:49:51Z @neo-opus-vega cross-referenced by #239
 - 2026-09-09T01:47:46Z @neo-gpt cross-referenced by #343
 - 2026-09-09T02:05:01Z @neo-gpt cross-referenced by PR #344
+- 2026-09-30T10:00:42Z @neo-gpt-emmy cross-referenced by #628
+- 2026-09-30T10:47:30Z @neo-opus-grace cross-referenced by PR #629
+- 2026-10-04T11:14:20Z @neo-fable cross-referenced by #15000
+### @neo-opus-ada - 2026-10-04T13:29:42Z
+
+## Epic Resolution Review
+
+**Reviewer:** @neo-opus-ada (steward)
+**Started:** 2026-10-04T13:30Z (in-progress claim)
+**Completed:** see this comment's edit time
+**Verdict:** RECOMMEND_CREATE_MISSING_SUBS (or the operator explicitly defers row 4; see below)
+
+### Matrix
+
+| Parent AC (the four delivery surfaces) | Required evidence | Owning sub(s) | Delivered PR(s) | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| Curated tool surface: read / write-locked / admin tiers, plus a harness projection bound on the server | L1–L2 | neomjs/neo#13064, #13082, #13084, #13106 | neomjs/neo#13078 (L1), #13103 (L1; it also resolved #13082), #13112 (L2) | L1–L2 | none (closed) |
+| Topological Locking: subtree conflicts, the in-heap WriteGuard as authority, explicit target under several sessions, the sender's identity forwarded, release on disconnect, TTL leases | L3: live two-writer enforcement | neomjs/neo#13125, #13129, #13134, #13138, #13167, #13217, #13324, #13330, #15681 | neomjs/neo#13126, #13130, #13135, #13140 (L1), #13294 (**L3**: live two-writer enforcement), #13218 (docs), #13325 (**L3**: live release lifecycle), #13356 (L1), #15735 (L2) | L3 | none (closed) |
+| Identity-bound transport: the Bridge authenticates agents with registry-minted short-lived tokens; no PAT in the browser | L1–L2 | **not linked as a sub:** neomjs/neo#13172 | neomjs/neo#13181 (asymmetric-signed tokens; L1, 25 unit specs). Now in the Brain as `verifyBridgeToken.mjs` and `FleetRegistryService.mintBridgeToken` | L1 | none, delivered; linking neomjs/neo#13172 as a sub would complete the graph |
+| Mutation observability: NL mutations emit into the A2A mailbox and wake substrate ("rides the first coordination slice, not a separate sub") | L2 | none | none | **absent**: no emission in `ai/mcp/server/neural-link`, `ai/services/neural-link` or the engine's `src/ai` (`WriteGuard`, `admitWrite`, `TransactionService`) | **LOST**: undelivered, not deferred, not converted |
+
+**Source Discussion gate (#10119, through #144's coordination rows):** tool surface, isolation and conflict semantics, and the auth model are delivered. **Observability shape is `LOST`.** The epic promised it would ride the first coordination slice, and no slice carried it.
+
+### Rationale
+
+The two hard parts are done, and done well: multi-writer safety with live L3 proof, and an authenticated Bridge. What's missing is the one obligation the epic deliberately kept out of its own sub list, and that is how it went missing. A peer still cannot see another peer's live-heap writes.
+
+Per the skill, a `LOST` criterion blocks closing. Every sub is closed, so it is not recoverable inside an existing sub.
+
+My neomjs/neo#15000 line said "close as completed"; it is corrected there.
+
+### Required operator action
+
+One of:
+1. **Authorize one sub:** WriteGuard-admitted NL mutations emit a `MESSAGE` (author, target, subtree, operation), consumed by the existing mailbox and wake substrate. Proposed owner: Ada.
+2. **Or defer it explicitly** with the activation condition "a multi-writer NL slice reaches users". Multi-writer co-habitation is not in the Oct–Nov line; that's my recommendation. The epic then closes with row 4 `EXPLICITLY DEFERRED`.
+
+### A2A coordination
+
+Euclid (who approved the coordination rows on #144) and Grace (her sweep), by A2A after this comment.
+
+Origin Session ID: 6b13f348-5848-47a1-8740-c4a9d1dfaea7
+
 

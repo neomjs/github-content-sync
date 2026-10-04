@@ -1,7 +1,7 @@
 ---
 id: 527
 title: 'The Observatory''s side panel width is a splitter, kept for the session'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T21:43:18Z'
-updatedAt: '2026-10-03T22:20:52Z'
+updatedAt: '2026-10-04T13:46:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/527'
 author: neo-opus-vega
 commentsCount: 1
@@ -24,6 +24,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T13:46:36Z'
+milestone: FM v1
 ---
 # The Observatory's side panel width is a splitter, kept for the session
 
@@ -104,4 +106,57 @@ Open the PR (`Resolves #527`) once #528 lands or as a stacked draft; the visual 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session c4ba9786-2c49-403c-b4bc-4258cefce10b
 
 - 2026-10-03T22:21:24Z @neo-opus-vega cross-referenced by PR #529
+- 2026-10-04T09:58:36Z @neo-opus-vega added this to the **FM v1** milestone
+- 2026-10-04T12:14:50Z @neo-opus-vega referenced in commit `d37646f` - "feat(agentos): the Observatory's side panel is as wide as the operator drags it, for the session (#527)
+
+The engine's splitter sits between the canvas and the side panel and
+resizes the panel. Its bounds are the panel's CSS min-width (280 px) and
+max-width (half the body), which the engine's drag clamps against, so no
+clamping code is added. Nothing stores the width: a reload starts at the
+320 px default, as the design seat decided for a single pane. The
+splitter speaks the dock splitter's flat language and is the panel's
+edge, so the panel draws no second line.
+
+Visual arm: a drag widens the panel, clamps at half the body and at
+280 px, and a reload is back at 320 px. Its control, with the CSS bounds
+removed, reds on "never wider than half the body". Goldens re-captured
+for the 6 px splitter and stamped."
+- 2026-10-04T12:39:55Z @neo-opus-vega referenced in commit `0a51d2d` - "feat(agentos): the Observatory's side panel is as wide as the operator drags it, for the session (#527)
+
+The engine's splitter sits between the canvas and the side panel and
+resizes the panel. Its bounds are the panel's CSS min-width (280 px) and
+max-width (half the body), which the engine's drag clamps against, so no
+clamping code is added. Nothing stores the width: a reload starts at the
+320 px default, as the design seat decided for a single pane. The
+splitter speaks the dock splitter's flat language and is the panel's
+edge, so the panel draws no second line.
+
+Visual arm: a drag widens the panel, clamps at half the body and at
+280 px, and a reload is back at 320 px. Its control, with the CSS bounds
+removed, reds on "never wider than half the body". Goldens re-captured
+for the 6 px splitter and stamped."
+- 2026-10-04T12:58:05Z @neo-opus-vega referenced in commit `a96a59b` - "fix(agentos): without a canvas the Observatory's side panel is the whole body again, and the half-body cap holds beside the canvas only (#527)
+
+Round 1 (Sophie): the splitter's `max-width: 50%` applied in both compositions.
+It now sits on `.fm-observatory-splitter + .fm-observatory-side`, the panel
+beside the surface. The real no-canvas fixture check then showed the fallback
+had never been whole-body. The no-canvas branch assigned `flex = 1` after the
+layout had copied flex into the style, so the panel stayed at 320 px of
+1552. It now sets both, the idiom syncSections uses.
+
+A visual arm boots the cockpit from a neo-config with `useCanvasWorker` off
+and finds no canvas, no splitter, and a side panel as wide as the body. It is
+red at 0a51d2d, still red with only the cap scoped, and green with both."
+- 2026-10-04T12:58:16Z @neo-opus-vega referenced in commit `697818f` - "fix(agentos): without a canvas the Observatory's side panel takes the whole body, and the half-body cap holds beside the canvas only (#527)
+
+Round 1 (Sophie): the splitter's `max-width: 50%` applied in both compositions.
+It now sits on `.fm-observatory-splitter + .fm-observatory-side`, the panel
+beside the surface. The real no-canvas fixture check then showed the fallback
+had never been whole-body. The no-canvas branch assigned `flex = 1` after the
+layout had copied flex into the style, so the panel stayed at 320 px of
+1552. It now sets both, the idiom syncSections uses.
+
+A visual arm boots the cockpit from a neo-config with `useCanvasWorker` off
+and finds no canvas, no splitter, and a side panel as wide as the body. It is
+red at 0a51d2d, still red with only the cap scoped, and green with both."
 

@@ -5,9 +5,10 @@ state: OPEN
 labels:
   - enhancement
   - ai
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-10-03T22:20:04Z'
-updatedAt: '2026-10-03T22:20:04Z'
+updatedAt: '2026-10-04T09:56:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/144'
 author: neo-opus-vega
 commentsCount: 0
@@ -101,4 +102,5 @@ Retrieval Hint: "Dependabot default cooldown three days neo-agent-skills consume
 - 2026-10-03T22:26:44Z @neo-opus-vega cross-referenced by PR #834
 - 2026-10-03T22:26:46Z @neo-opus-vega cross-referenced by PR #531
 - 2026-10-03T22:26:47Z @neo-opus-vega cross-referenced by PR #52
+- 2026-10-04T09:56:43Z @neo-opus-vega assigned to @neo-opus-vega
 

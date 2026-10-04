@@ -8,10 +8,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-04-24T11:12:17Z'
-updatedAt: '2026-08-26T15:18:50Z'
+updatedAt: '2026-10-04T13:33:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/154'
 author: neo-opus-ada
-commentsCount: 7
+commentsCount: 8
 parentIssue: null
 subIssues:
   - '[x] 10292 P1: Content Provenance Tracking — authoredBy edges + 8-tier trust taxonomy on Memory Core'
@@ -36,6 +36,8 @@ blockedBy: []
 blocking: []
 ---
 # Organism self-defense substrate for cloud-phase #9999 deployment
+
+> **Dormant (2026-10-04, author):** this epic and its open subs (#152, #153) activate when a cloud-phase plane (#9999) is scheduled. Until then they stay off the FM v1 milestone. Resolution review: https://github.com/neomjs/neo-agent-brain/issues/154#issuecomment-5980520540
 
 ## Context
 
@@ -159,6 +161,7 @@ Seven coordinated primitives. Full architectural detail in Discussion #10289 bod
 Origin Session ID: `b02bd06c-a2cb-4aff-8af1-c4f2643c91be`
 
 Retrieval Hint: `"neo organism self-defense tenets provenance trusted-instruction ring contextual sandboxing middleware guards adversarial-lens cloud-phase epic OWASP ASI01 ASI02 ASI03 ASI06 Policy-as-Code PEP Critic/Verifier Memory Integrity"`
+
 
 ## Timeline
 
@@ -573,4 +576,44 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-08-26T15:20:02Z @tobiu added sub-issue #10477
 - 2026-08-26T15:28:20Z @tobiu added sub-issue #152
 - 2026-08-26T15:28:22Z @tobiu added sub-issue #153
+- 2026-09-30T18:13:01Z @neo-opus-grace cross-referenced by #645
+- 2026-10-04T11:48:09Z @neo-opus-ada cross-referenced by #15000
+### @neo-opus-ada - 2026-10-04T13:32:39Z
+
+## Epic Resolution Review
+
+**Reviewer:** @neo-opus-ada (author)
+**Started:** 2026-10-04T13:33Z (in-progress claim)
+**Completed:** see this comment's edit time
+**Verdict:** RECOMMEND_KEEP_OPEN: dormant, with a documented activation condition; not FM v1
+
+### Matrix
+
+| Parent AC | Required evidence | Owning sub(s) | Delivered PR(s) | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| Sub A (P1): `authoredBy` provenance, tier filtering, eight tiers | L2 | neomjs/neo#10292, neomjs/neo#12995 | none linked for #10292; neomjs/neo#13000 (KB chunk taint) | L2 | none (closed) |
+| Sub B (P6a): `AGENTS_TENETS.md` v0, loaded at boot, ratified by the operator plus a cross-family review | L1 + ratification | neomjs/neo-agent-brain#153 (open) | none | none | RESIDUAL: dormant until activation |
+| Sub C (P6b): policy config plus three guards (agent `gh pr merge` refusal, `addMessage` FK-verify, tenets write protection) | L2 | neomjs/neo#10294, neomjs/neo#10284 | neomjs/neo#12685, neomjs/neo#12086 | L2 for the first two guards; the tenets write protection needs P6a's document | partial; tenets guard waits on #153 |
+| Sub D (P2): the Trusted-Instruction Ring paragraph live | L1 | neomjs/neo#10295 | neomjs/neo#11450 | L1 | none (closed) |
+| Post-merge: a synthetic injection refused end to end across all four blocker primitives | L3 | none | none | not run, and not runnable while P6a is open | RESIDUAL_L3 |
+| P7: a `ContextSanitizer` profile with a hot-path consumer | L2 | neomjs/neo#15615 (sanitizer signal class) | neomjs/neo#16178 | partial: a content-trust sanitizer exists on the Memory Core write path, not as a sub-agent profile | partial |
+| P3: delimiter discipline in `pr-review`, `ticket-intake` and `ideation-sandbox` | L1 | none | none | absent: none of the three skills (org skills, followed through their npm symlink) mentions delimiter, injection or an adversarial lens | undelivered |
+| P4: an injection-pattern scan at Memory Core ingestion and the ticket-intake boundary | L2 | neomjs/neo#12995, neomjs/neo#12996, neomjs/neo#13359 (quarantine playbook) | neomjs/neo#13000, #12997, #13364 | partial: KB taint and the quarantine skill exist; no write-time scan at ticket intake | partial |
+| P5: an adversarial lens in `pr-review-guide.md` | L1 | none | none | absent | undelivered |
+| P8: external link quarantine and stealth-intent detection | — | neomjs/neo-agent-brain#152 (open, reopened) | none | none | dormant until activation |
+
+### Rationale
+
+The epic exists for the cloud phase (#9999: shared plane, untrusted content), where Neo's security stops following from topology and has to be designed. Four primitives are delivered or partly delivered and earn their keep now: provenance, the merge and mailbox guards, the instruction ring, and the sanitizer and quarantine pieces. The rest (tenets, the end-to-end injection proof, delimiter discipline, the review lens, the intake scan, link quarantine) is cloud-phase work, and the cloud phase is not in the Oct–Nov line.
+
+Closing would bury six undelivered criteria. My earlier line on neomjs/neo#15000 ("close with #152 and #153 explicitly deferred") counted two of them; it is corrected there.
+
+**Activation condition, now also in the epic body:** this epic and its open subs activate when a cloud-phase plane (#9999) is scheduled. Until then they stay off the FM v1 milestone and need no grooming.
+
+### Required operator action
+
+None. A dormant epic with a stated trigger is the honest state.
+
+Origin Session ID: 6b13f348-5848-47a1-8740-c4a9d1dfaea7
+
 

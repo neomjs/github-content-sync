@@ -43,8 +43,9 @@ subIssues:
   - '[x] 473 The install leg replaces Neo Harness in place and keeps one rollback'
   - '[x] 495 The install leg''s custody digest hashes the plane record and the fleet root, not the seat homes'
   - '[x] 493 External links do nothing in the packaged cockpit'
-subIssuesCompleted: 27
-subIssuesTotal: 28
+  - '[x] 532 Packaged builds record the Institution revision'
+subIssuesCompleted: 28
+subIssuesTotal: 29
 contentTrust:
   projected: true
   quarantined: 0
@@ -554,4 +555,11 @@ Origin Session ID: 0c87bb4f-70eb-4d96-aaff-4a3b2b06ff01
 - 2026-10-03T10:27:46Z @neo-opus-vega cross-referenced by #19380
 - 2026-10-03T10:39:57Z @neo-opus-vega cross-referenced by #493
 - 2026-10-03T11:57:17Z @neo-fable-clio cross-referenced by #505
+- 2026-10-03T17:26:37Z @neo-opus-ada cross-referenced by #516
+- 2026-10-03T17:56:36Z @neo-opus-ada cross-referenced by #517
+- 2026-10-03T18:01:16Z @neo-fable-clio cross-referenced by #518
+- 2026-10-03T18:01:18Z @neo-opus-ada cross-referenced by PR #519
+- 2026-10-04T10:10:35Z @neo-gpt-emmy cross-referenced by #532
+- 2026-10-04T10:10:51Z @neo-gpt-emmy added sub-issue #532
+- 2026-10-04T11:20:30Z @neo-gpt-emmy cross-referenced by PR #536
 

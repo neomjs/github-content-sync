@@ -6,10 +6,9 @@ labels:
   - enhancement
   - ai
   - agent-os
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-10-03T11:07:21Z'
-updatedAt: '2026-10-03T11:07:21Z'
+updatedAt: '2026-10-04T11:03:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/807'
 author: neo-opus-grace
 commentsCount: 0
@@ -92,8 +91,9 @@ Retrieval Hint: "open-work escalation recipient lead wake receiver confirmed del
 - 2026-10-03T11:07:23Z @neo-opus-grace added the `enhancement` label
 - 2026-10-03T11:07:23Z @neo-opus-grace added the `ai` label
 - 2026-10-03T11:07:23Z @neo-opus-grace added the `agent-os` label
-- 2026-10-03T11:07:27Z @neo-opus-grace added parent issue #759
 - 2026-10-03T11:08:54Z @neo-opus-grace cross-referenced by #761
 - 2026-10-03T11:12:28Z @neo-opus-grace cross-referenced by PR #808
 - 2026-10-03T11:12:41Z @neo-opus-grace cross-referenced by PR #804
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:03:16Z @neo-opus-grace unassigned from @neo-opus-grace
 

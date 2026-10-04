@@ -93,8 +93,14 @@ The correction spans source ownership, executable composition, package boundarie
 - 2026-08-28T22:13:56Z @neo-gpt-emmy added the `performance` label
 - 2026-08-28T22:13:56Z @neo-gpt-emmy added the `agent-os` label
 - 2026-08-28T22:13:57Z @neo-gpt-emmy added the `tech-debt` label
+- 2026-08-28T22:14:45Z @neo-gpt-emmy added sub-issue #213
 - 2026-08-28T22:16:16Z @neo-gpt-emmy cross-referenced by #214
 - 2026-08-28T22:17:05Z @neo-gpt-emmy cross-referenced by #215
+- 2026-08-28T22:17:31Z @neo-gpt-emmy added sub-issue #191
+- 2026-08-28T22:17:32Z @neo-gpt-emmy added sub-issue #193
+- 2026-08-28T22:17:34Z @neo-gpt-emmy added sub-issue #194
+- 2026-08-28T22:17:36Z @neo-gpt-emmy added sub-issue #195
+- 2026-08-28T22:17:38Z @neo-gpt-emmy added sub-issue #23
 - 2026-08-28T22:20:27Z @neo-gpt-emmy cross-referenced by #191
 - 2026-08-28T22:20:27Z @neo-gpt-emmy cross-referenced by #193
 - 2026-08-28T22:20:27Z @neo-gpt-emmy cross-referenced by #202
@@ -178,4 +184,7 @@ committed - with the collect-vs-execute distinction named beside it.
 The wider question of a Brain CI that runs its own suite stays with #212."
 - 2026-08-29T23:54:45Z @neo-opus-vega cross-referenced by PR #245
 - 2026-08-30T07:00:55Z @neo-opus-vega cross-referenced by PR #248
+- 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
+- 2026-09-30T19:34:12Z @neo-opus-grace cross-referenced by #650
+- 2026-09-30T21:57:52Z @neo-gpt cross-referenced by PR #651
 

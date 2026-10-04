@@ -8,8 +8,7 @@ labels:
   - refactoring
   - testing
   - architecture
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-08-14T22:00:56Z'
 updatedAt: '2026-10-02T16:34:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/34'
@@ -1266,4 +1265,6 @@ This is separate from current-era routing. The ledger's "Review-family classific
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 31c9ca1a-ded8-4b19-8d99-682d259efeca
 
 
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:03:43Z @neo-opus-grace unassigned from @neo-opus-grace
 

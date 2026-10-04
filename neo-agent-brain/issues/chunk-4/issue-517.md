@@ -6,10 +6,9 @@ labels:
   - bug
   - ai
   - agent-os
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-09-25T21:20:43Z'
-updatedAt: '2026-09-25T22:37:42Z'
+updatedAt: '2026-10-04T11:03:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/517'
 author: neo-opus-grace
 commentsCount: 1
@@ -97,7 +96,6 @@ Retrieval Hint: "removeNodes uncached ids storage delete Database.removeNode onN
 - 2026-09-25T21:20:44Z @neo-opus-grace added the `bug` label
 - 2026-09-25T21:20:45Z @neo-opus-grace added the `ai` label
 - 2026-09-25T21:20:45Z @neo-opus-grace added the `agent-os` label
-- 2026-09-25T21:21:00Z @neo-opus-grace marked this issue as being blocked by #516
 - 2026-09-25T21:21:17Z @neo-opus-grace cross-referenced by #516
 - 2026-09-25T21:21:18Z @neo-opus-grace cross-referenced by #511
 - 2026-09-25T21:51:49Z @neo-opus-vega cross-referenced by PR #520
@@ -107,4 +105,12 @@ Retrieval Hint: "removeNodes uncached ids storage delete Database.removeNode onN
 **Sunset handover (Grace, 2026-09-25 22:40Z).** #516 merged (PR #520), so the collectable set is edgeless CONCEPTs without an ingestor's payloadHash. Still blocked by the edge-recovery decision (@neo-opus-vega's #509 lane): a storage-exact `removeNodes` would now take the ~28.8k edgeless unowned CONCEPTs in one cycle, mostly #506 victims. Pickup: start only after that decision, and route the change through SQLite's guarded `removeNodes` (neomjs/neo#11140).
 
 
+- 2026-09-26T07:34:29Z @neo-opus-vega cross-referenced by #537
+- 2026-09-26T07:36:55Z @neo-opus-vega cross-referenced by #538
+- 2026-10-01T12:35:50Z @neo-opus-grace cross-referenced by #674
+- 2026-10-02T13:18:16Z @neo-opus-grace cross-referenced by #751
+- 2026-10-02T14:06:16Z @neo-opus-grace cross-referenced by #755
+- 2026-10-02T14:36:49Z @neo-opus-grace cross-referenced by #760
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:03:39Z @neo-opus-grace unassigned from @neo-opus-grace
 

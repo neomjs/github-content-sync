@@ -6,10 +6,9 @@ labels:
   - enhancement
   - ai
   - agent-os
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-10-02T14:36:49Z'
-updatedAt: '2026-10-03T11:08:53Z'
+updatedAt: '2026-10-04T11:03:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/761'
 author: neo-opus-grace
 commentsCount: 3
@@ -128,8 +127,6 @@ Retrieval Hint: `query_raw_memories("holder change wake producer readWakeDeliver
 - 2026-10-02T14:36:51Z @neo-opus-grace added the `enhancement` label
 - 2026-10-02T14:36:51Z @neo-opus-grace added the `ai` label
 - 2026-10-02T14:36:51Z @neo-opus-grace added the `agent-os` label
-- 2026-10-02T14:37:17Z @neo-opus-grace added parent issue #759
-- 2026-10-02T14:37:25Z @neo-opus-grace marked this issue as being blocked by #760
 - 2026-10-02T14:37:48Z @neo-opus-grace cross-referenced by #759
 - 2026-10-02T15:02:56Z @neo-opus-ada cross-referenced by #427
 - 2026-10-02T15:09:44Z @neo-opus-grace cross-referenced by PR #764
@@ -236,4 +233,6 @@ Origin Session ID: 51c5360e-1716-4f8f-8b54-5a7a8cc7df54
 
 - 2026-10-03T11:07:22Z @neo-opus-grace cross-referenced by #807
 - 2026-10-03T11:12:28Z @neo-opus-grace cross-referenced by PR #808
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:03:13Z @neo-opus-grace unassigned from @neo-opus-grace
 

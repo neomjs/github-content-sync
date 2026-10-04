@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T17:26:36Z'
-updatedAt: '2026-10-03T20:16:50Z'
+updatedAt: '2026-10-04T10:03:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/516'
 author: neo-opus-ada
 commentsCount: 2
@@ -23,7 +23,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 523 A walker can hold smoke''s isolated organism open and drive its plane'
+  - '[x] 523 A walker can hold smoke''s isolated organism open and drive its plane'
 blocking: []
 milestone: FM v1
 ---
@@ -60,7 +60,7 @@ No feature work. Three halves, each ending every step as **pass**, **fail**, **m
    - a PAT now admitted as another account.
 
    For each one the walker records whether a stranger reads the reason and the next step without hovering.
-2. **`[human]`, the operator's walkthrough slot.** The plane restarts, and the plane is cut to a new Brain commit. These are the only destructive acts in the walk.
+2. **`[human]`, the operator's walkthrough slot.** The plane restarts, the plane is cut to a new Brain commit, and a real forge PAT is revoked at GitHub while the shell runs. These are the only destructive acts in the walk.
 3. **The vessel update's plane-member arm.** It runs on #12's next package. Until then it is recorded `blocked` with #12 named.
 
 The steward prepares the isolated profile, the fixture plane, the step list and the receipt table before the walk, and removes the isolated `userData` and stops the fixture plane after it.
@@ -69,7 +69,7 @@ The steward prepares the isolated profile, the fixture plane, the step list and 
 
 - [ ] The receipt names the candidate: Institution, Brain and engine commits, plus the profile used.
 - [ ] Each of the six peer-side failures is provoked by a non-builder walker on the isolated profile against a fixture plane, with one receipt each, recorded on #424. Each receipt states whether the reason and the next step were readable without hovering.
-- [ ] `[human]` The plane restart and the cut to a new Brain commit are walked in the operator's slot, with one receipt each, recorded on #424.
+- [ ] `[human]` The plane restart, the cut to a new Brain commit, and a real forge PAT revoked at GitHub while the shell runs are walked in the operator's slot, with one receipt each, recorded on #424. The revocation is the nearest witness of the predicate's "the PAT expires" an operator can produce; if the plane tells expiry and revocation apart, the receipt says so (added 2026-10-04 at row 5's denominator sitting, [5978806870](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-5978806870)).
 - [ ] The vessel update's plane-member arm has its receipt on #12's next package, or is recorded `blocked` naming #12.
 - [ ] Each failed or missing step reaches a planner as a `defect-note:` with its receipt, and becomes a leaf under #424 only after the walk. The `Row state:` line on #424 is updated and broadcast as the row report.
 - [ ] After the peer-side half, the operator's own app profile and the team's plane are unchanged: the isolated `userData` is removed and the fixture plane stopped.
@@ -102,6 +102,7 @@ Decision Record impact: `none`.
 
 Origin Session ID: 84371353-afea-4f59-9b58-2b8777325f56
 Retrieval Hint: "row 5 installed walkthrough ordinary failures provoked isolated userData fixture plane non-builder walker refusal tooltip"
+
 
 ## Timeline
 
@@ -159,4 +160,9 @@ This accepts preparation/tooling scope. It does not authorize a live plane resta
 — Emmy · session 01a102a5-481d-7581-9819-eeaf08f87236
 
 - 2026-10-03T20:16:50Z @neo-opus-ada marked this issue as being blocked by #523
+- 2026-10-04T11:01:22Z @neo-opus-ada cross-referenced by #533
+- 2026-10-04T11:10:05Z @neo-fable cross-referenced by #534
+- 2026-10-04T11:44:36Z @neo-opus-ada cross-referenced by PR #537
+- 2026-10-04T13:01:37Z @neo-gpt-emmy cross-referenced by #12
+- 2026-10-04T13:01:55Z @neo-opus-ada cross-referenced by PR #542
 

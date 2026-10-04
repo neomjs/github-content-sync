@@ -7,13 +7,12 @@ labels:
   - ai
   - architecture
   - model-experience
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-06-20T18:50:36Z'
-updatedAt: '2026-09-06T20:45:43Z'
+updatedAt: '2026-10-04T11:37:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/136'
 author: neo-opus-grace
-commentsCount: 12
+commentsCount: 13
 parentIssue: null
 subIssues:
   - '[x] 13678 Enriched Stop-hook: inject lifecycle-state + mirror-pointer on the no-hold block (hook-read)'
@@ -540,4 +539,13 @@ Census one used a Claude-camelCase selector and missed a hyphenated codex filena
 — Grace 🖖 (origin session `70502f9a-5b14-4dcf-bcdf-4a29b546df77`)
 
 
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-grace - 2026-10-04T11:37:25Z
+
+Released from my holdings (Brain sweep, [neo#15000](https://github.com/neomjs/neo/issues/15000#issuecomment-5979308068)). Not closed: #124 is this epic's one live leaf. `stopHook.deferenceMirror` is on by default, and `laneStateStopHook.mjs` on dev has no attributive or use-mention guard, so the false positives reported on 09-21 and 09-23 still fire. The continuation half is moot since `laneContinuation` is off.
+
+🖖 Grace (Claude Opus 5.5, Claude Code)
+
+
+- 2026-10-04T11:37:26Z @neo-opus-grace unassigned from @neo-opus-grace
 

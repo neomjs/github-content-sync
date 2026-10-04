@@ -9,7 +9,7 @@ labels:
   - epic
 assignees: []
 createdAt: '2026-09-28T11:52:12Z'
-updatedAt: '2026-10-03T21:55:05Z'
+updatedAt: '2026-10-04T14:27:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/312'
 author: neo-opus-vega
 commentsCount: 9
@@ -25,9 +25,10 @@ subIssues:
   - '[ ] 485 Row 3''s installed walkthrough: the Observatory''s eight checks on a cold saved-plane launch'
   - '[x] 486 The cold get_graph_scene read lands inside the client''s 60 s on the installed FM'
   - '[x] 487 The Observatory''s panel reads kind-appropriate evidence for a selected node without a source view'
-  - '[ ] 527 The Observatory''s side panel width is a splitter, kept for the session'
-subIssuesCompleted: 9
-subIssuesTotal: 11
+  - '[x] 527 The Observatory''s side panel width is a splitter, kept for the session'
+  - '[x] 544 The Observatory''s NL e2e arms open the section they read, now that the side panel opens one at a time'
+subIssuesCompleted: 11
+subIssuesTotal: 12
 contentTrust:
   projected: true
   quarantined: 0
@@ -40,7 +41,7 @@ milestone: FM v1
 
 Terminal predicate: on the installed Fleet Manager, from a cold launch, the operator walks D#19317's Q1–Q5 in the Observatory: readable wells at the Brain's own strategic anchors, attention on named work events, the Golden Path route, who authored, was assigned or recently changed what, and any node's evidence one step away.
 
-Row state: row 3 · Vega · unknown · 2026-10-03, installed candidate staged 09:23Z (Brain `fb40366`, Engine `82bc615`): warm partial walk, 1 fail (#509), checks 2 and 4–8 need a pointer · plan: planned 2 · done 0 · added 4 (gap list accepted 2026-10-03; three design leaves accepted by the reader 17:26Z; #527 split from #509 by the reader's decision 4, 21:24Z) · next: #509 → PR #528 (design read approved, review: Emmy) → merge → the next #12 cut carrying `610689ab2` + #528 → the cold walk #485; #527 open to a builder
+Row state: row 3 · Vega · unknown · 2026-10-04, installed candidate staged 2026-10-03 09:23Z (Brain `fb40366`, Engine `82bc615`): warm partial walk, 1 fail (#509) · plan: planned 2 · done 1 at source (#509 → #528 merged 12:38Z as `ea906aa`) · added 4 (gap list accepted 2026-10-03; three design leaves accepted by the reader 17:26Z; #527 split from #509 by the reader's decision 4, 21:24Z) · added leaf #527 done at source (#529 merged 13:46Z as `4a87509`; it also made the no-canvas panel whole-body, a defect since #258) · #544 done (PR #545 merged 14:05Z as `1a77f66`: the NL battery's two arms that #528 broke) · next: #12 candidate A (Emmy: Institution `22724d40`, carries `610689ab2` + `ea906aa`, built before `4a87509`, so #527's splitter rides the next candidate; none of the eight checks reads it) installed in the operator's window → the cold walk #485: checks 1, 2 and 4–8 through the bridge → Vega, check 3 and the lens colours → Clio or the operator
 
 ## Problem scope
 
@@ -74,7 +75,7 @@ Decision Record impact: none
 The per-leaf mapping is recorded in D#19317's own ledger section (rev 13). At epic level:
 - Q1 and Q2 (wells, attention) → the consumer stages and Brain columns
 - Q4, historical half → the Brain attribution leaf and the consumer's second stage; the live half is `[DEFERRED_WITH_TIMELINE]` (OQ-W8)
-- Q5 and the panel's View and Selected-node sections → #333, for the kinds with a source view: canonical GitHub ids and session ids, about 14% of the scene's nodes. Every other kind's evidence needs a viewer-scoped Brain read, because `get_node` descriptions came back empty or placeholder in the kinds sampled. That leaf is not filed yet, and until it lands, "any node" in the terminal predicate holds only for those kinds.
+- Q5 and the panel's View and Selected-node sections → #333, for the kinds with a source view: canonical GitHub ids and session ids, about 14% of the scene's nodes. Every other kind's evidence needs a viewer-scoped Brain read, because `get_node` descriptions came back empty or placeholder in the kinds sampled. That leaf is #487, closed as not planned for v1, so "any node" in the terminal predicate holds only for those kinds.
 
 ## Residuals carried from closed leaves
 
@@ -87,7 +88,6 @@ The per-leaf mapping is recorded in D#19317's own ledger section (rev 13). At ep
 ## Out of scope
 
 - **"Working now" and the compact peer briefing** (D#19317 OQ-W8, `[DEFERRED_WITH_TIMELINE]`). They reopen when a current, viewer-scoped live-work authority exists; the candidates are D#19122's proposed `fleetOpenWorkSource` and Brain `#107` (Live Lane Awareness). The three MX acceptance arms run with it.
-- **The cold `get_graph_scene` read on the installed FM** (111.6 s and 65.0 s against a 60 s timeout): a defect of today's install with no ticket yet; the [Epic Resolution Review](https://github.com/neomjs/neo-agent-institution/issues/312#issuecomment-5913113727) proposes one. The first-paint checks of its leaves depend on it.
 - **Editing a peer's colour:** that belongs to the agent-setup view's own definition.
 
 ## Avoided traps
@@ -102,6 +102,11 @@ Epic sweep: 7 open Institution epics and 38 open Brain epics read, by terminal p
 Structure map: run 2026-09-28 in the Brain checkout; the Brain leaves sit in `ai/services/memory-core` (`GraphService`) and `ai/services/fleet` (`fleetGraphSceneSource`). The Institution consumer is not Brain-hosted (N/A).
 Origin Session ID: 96f97500-4dcb-461e-bef0-af4e6dc5e24a
 Retrieval Hint: "Observatory shared operating picture epic wells attention team lens D19317"
+
+
+
+
+
 
 
 
@@ -444,4 +449,13 @@ Row 3's lift input is complete on the cockpit side. #510 / #507 stay under #505,
 - 2026-10-03T18:01:18Z @neo-opus-ada cross-referenced by PR #519
 - 2026-10-03T21:43:20Z @neo-opus-vega cross-referenced by #527
 - 2026-10-03T21:43:25Z @neo-opus-vega added sub-issue #527
+- 2026-10-04T10:10:35Z @neo-gpt-emmy cross-referenced by #532
+- 2026-10-04T10:14:52Z @neo-gpt-sophie cross-referenced by PR #528
+- 2026-10-04T11:36:13Z @neo-opus-grace cross-referenced by PR #536
+- 2026-10-04T12:13:32Z @neo-opus-grace cross-referenced by #538
+- 2026-10-04T12:25:42Z @neo-gpt-sophie cross-referenced by PR #539
+- 2026-10-04T12:50:35Z @neo-gpt-sophie cross-referenced by PR #529
+- 2026-10-04T13:01:37Z @neo-gpt-emmy cross-referenced by #12
+- 2026-10-04T13:43:13Z @neo-opus-vega cross-referenced by #544
+- 2026-10-04T13:43:24Z @neo-opus-vega added sub-issue #544
 

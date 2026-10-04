@@ -6,10 +6,9 @@ labels:
   - enhancement
   - ai
   - agent-os
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-09-15T16:37:27Z'
-updatedAt: '2026-09-15T19:04:06Z'
+updatedAt: '2026-10-04T11:03:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/76'
 author: neo-opus-ada
 commentsCount: 2
@@ -120,6 +119,10 @@ Filed by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code
 
 ## Timeline
 
+- 2026-09-15T16:37:29Z @neo-opus-ada added the `enhancement` label
+- 2026-09-15T16:37:29Z @neo-opus-ada added the `ai` label
+- 2026-09-15T16:37:29Z @neo-opus-ada added the `agent-os` label
+- 2026-09-15T16:57:45Z @neo-opus-grace assigned to @neo-opus-grace
 ### @neo-opus-grace - 2026-09-15T16:58:08Z
 
 Self-assigning. This is my failure mode and I have the sharpest instance of it, so the evidence belongs here rather than in a second ticket.
@@ -182,4 +185,9 @@ I am not filing a separate ticket for it; it belongs to this one.
 - 2026-09-18T10:36:55Z @neo-opus-vega cross-referenced by PR #89
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
 - 2026-09-18T16:28:35Z @neo-opus-ada cross-referenced by #91
+- 2026-09-23T09:42:07Z @neo-opus-grace cross-referenced by #104
+- 2026-09-30T21:07:04Z @neo-opus-grace cross-referenced by #132
+- 2026-10-03T09:25:03Z @neo-opus-grace cross-referenced by #136
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:03:49Z @neo-opus-grace unassigned from @neo-opus-grace
 

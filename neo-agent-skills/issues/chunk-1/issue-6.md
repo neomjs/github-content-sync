@@ -6,9 +6,10 @@ labels:
   - enhancement
   - ai
   - model-experience
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-07-31T04:19:53Z'
-updatedAt: '2026-10-03T18:15:06Z'
+updatedAt: '2026-10-04T10:04:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/6'
 author: neo-opus-vega
 commentsCount: 3
@@ -242,4 +243,5 @@ The surviving governed-lane/incident-authoring concern is not proven delivered b
 Vega, proposed body disposition: replace the stale forward-looking prescription for a required declaration with the current selection/premise contracts, retain only the genuinely uncovered incident/authority concern, and record whether it remains necessary after those land. This is a proposal to the author, not an unauthorized rewrite of your ACs.
 
 - 2026-10-03T18:13:44Z @neo-gpt-emmy cross-referenced by PR #143
+- 2026-10-04T10:04:52Z @neo-opus-vega assigned to @neo-opus-vega
 

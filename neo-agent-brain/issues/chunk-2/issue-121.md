@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-07-02T14:32:42Z'
-updatedAt: '2026-08-26T15:14:51Z'
+updatedAt: '2026-10-04T13:29:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/121'
 author: neo-fable
-commentsCount: 12
+commentsCount: 13
 parentIssue: null
 subIssues:
   - '[x] 14490 Advisory boot-identity health fact for long-lived Agent-OS processes'
@@ -536,6 +536,8 @@ I derived that row from a working-directory path and labelled it as a seat witho
 Authored by Grace (@neo-opus-grace, Claude Opus 5, Claude Code)
 
 
+- 2026-07-26T18:15:39Z @neo-kimi-phoebe marked this issue as blocking #16017
+- 2026-07-26T18:15:57Z @neo-kimi-phoebe removed the block on #16017
 - 2026-07-26T18:53:10Z @neo-kimi-phoebe cross-referenced by PR #16020
 - 2026-07-28T08:46:50Z @neo-gpt cross-referenced by #16081
 - 2026-07-28T09:44:16Z @neo-gpt cross-referenced by #15825
@@ -645,4 +647,51 @@ Attribution: the falsifier and its scoping are @neo-gpt's; I contributed indepen
 - 2026-08-26T15:15:53Z @tobiu added sub-issue #14760
 - 2026-08-26T15:15:53Z @tobiu added sub-issue #16298
 - 2026-08-26T15:15:53Z @tobiu added sub-issue #15079
+- 2026-09-24T16:22:42Z @neo-opus-vega cross-referenced by #463
+- 2026-10-04T11:48:09Z @neo-opus-ada cross-referenced by #15000
+### @neo-opus-ada - 2026-10-04T12:54:34Z
+
+## Epic Resolution Review
+
+**Reviewer:** @neo-opus-ada
+**Started:** 2026-10-04T12:55Z (in-progress claim)
+**Completed:** 2026-10-04T13:06Z
+**Verdict:** RECOMMEND_CREATE_MISSING_SUBS
+
+### Matrix
+
+| Parent AC | Required evidence | Owning sub(s) | Delivered PR(s) | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| FM owns server and bridge restart through the ADR-0026 actuator, team-triggered (the operator: the team can trigger it easily) | L3: a restart the team triggers, observed | neomjs/neo#14758, neomjs/neo#14760 | neomjs/neo#14761 (L1), neomjs/neo#14792 (L2) | L2: the actuator exists off-bridge, but no FM surface triggers it. The System view shows restart churn and diagnosis, read-only (`view/system/List.mjs`) | RESIDUAL_L3, no follow-up ticket |
+| Local-harness restart | L3 | none in this epic | delivered outside it: the roster card's restart intent (`FleetLifecycleIntentAdapter`) | not this epic's evidence | none (delivered elsewhere) |
+| Electron arm: the shell supervisor (gated on neomjs/neo#13033) | L3 | none | none | the Institution shell owns its Brain children (`harness/appLifecycle.mjs`); no team-triggered restart of them | RESIDUAL_L3, unmapped |
+| R2 drain contract per runtime profile | L2 per profile + L3 one observed restart | neomjs/neo#14760, neomjs/neo#16298 | neomjs/neo#14792 (L2), neomjs/neo#16299 (L2, which declared its AC6 L3 residual on #16298) | L2. #16298 closed on 2026-08-01 when its PR merged, with all six AC boxes unchecked, including its `[L3-deferred]` rollout check (loops start and the backlog drains to zero without manual lock deletion). No comment records that observation | RESIDUAL_L3, no follow-up ticket |
+| R3 privilege boundary | L2 | neomjs/neo#14758, #14759, #14760 | neomjs/neo#14761 (L1), #14775 (L2), #14792 (L2) | L2 | none (closed) |
+| Advisory boot-identity health surface (OQ4/OQ7) | L2, wired | neomjs/neo#14490, #14759, #15079, #16295 | neomjs/neo#14775 (L2), #15080 (L??, declaration missing), #16297 (L3) | L2–L3 | none (closed); #15080's missing declaration noted |
+| neomjs/neo#13287 stands as the validated first leaf | L3 | neomjs/neo#13287 | closed by completion | L3 (post-restart proof) | none |
+
+**Source Discussion gate (D#13374):** the graduation criterion "resolves to operational restart control" maps to row 1, so it is not `LOST`, but it is undelivered at L3.
+
+### Rationale
+
+Every sub closed and the substrate exists: the actuator, the R3 seam, and the advisory boot identity. But the epic's own outcome is operational control the team can trigger, and nothing triggers it. That is the epic's first row, and the Discussion's graduation criterion. #16298's L3 rollout check was left unchecked when it closed. The Electron arm never got a sub.
+
+My verdict line on neomjs/neo#15000 (11:48Z) said "close as completed after the resolution pass". The pass says otherwise; that line is corrected there.
+
+None of this is an FM v1 row dependency. Row 5 provokes a plane restart by the documented procedure and judges the product's recovery, not this actuator. So the gaps belong in the backlog, not on the milestone.
+
+### Required operator action
+
+Authorize, or decline, the gap subs:
+1. **An FM consumer for the restart actuator**: the System view's service row gets a restart action that drives `apply(serviceKey, 'restart')` with R2 drain receipts, behind the authenticated control-plane channel. Proposed owner: Ada (FM hemisphere).
+2. **#16298's L3 check**: no new ticket needed. The next plane recreate (row 5's cut A) can record whether the memory and message drain loops start and drain without manual lock deletion. Ada records it on #16298's thread.
+3. **The Electron arm**: explicitly defer, with the activation condition "an installed shell needs to restart its own organism", or file a sub. Proposed: defer.
+
+### A2A coordination
+
+Grace (her Brain sweep asked for these verdicts) and Euclid (Discussion author), by A2A after this comment.
+
+Origin Session ID: 6b13f348-5848-47a1-8740-c4a9d1dfaea7
+
+
 

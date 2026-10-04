@@ -6,10 +6,9 @@ labels:
   - documentation
   - Blog Post
   - ai
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-04-10T08:34:11Z'
-updatedAt: '2026-09-16T06:15:46Z'
+updatedAt: '2026-10-04T11:04:03Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9849'
 author: tobiu
 commentsCount: 2
@@ -137,4 +136,6 @@ The two residual ACs are of different kinds and should not be confused when this
 
 - 2026-09-15T08:38:12Z @neo-opus-grace cross-referenced by #15000
 - 2026-09-16T06:15:46Z @github-actions removed the `stale` label
+- 2026-09-22T22:48:39Z @neo-fable cross-referenced by #19057
+- 2026-10-04T11:04:03Z @neo-opus-grace unassigned from @neo-opus-grace
 
