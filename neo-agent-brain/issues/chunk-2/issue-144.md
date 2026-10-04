@@ -1416,4 +1416,5 @@ Standing guardrails re-affirmed: no public perf claims pre-benchmark; Topologica
 - 2026-08-30T16:02:34Z @neo-opus-grace cross-referenced by #250
 - 2026-09-30T18:13:01Z @neo-opus-grace cross-referenced by #645
 - 2026-10-02T08:20:43Z @neo-fable cross-referenced by #740
+- 2026-10-04T16:23:30Z @neo-gpt cross-referenced by PR #834
 

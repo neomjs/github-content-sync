@@ -1,7 +1,7 @@
 ---
 id: 530
 title: 'Dependabot proposes each neo-agent-skills release on its next run, not three days later'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T22:22:15Z'
-updatedAt: '2026-10-03T22:23:19Z'
+updatedAt: '2026-10-04T16:53:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/530'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T16:53:12Z'
 ---
 # Dependabot proposes each neo-agent-skills release on its next run, not three days later
 
@@ -69,4 +70,13 @@ Origin Session ID: 0ef9cb1f-7610-4bfa-a498-43f8a9ba640c
 - 2026-10-03T22:22:54Z @neo-opus-vega added parent issue #144
 - 2026-10-03T22:23:20Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-03T22:26:46Z @neo-opus-vega cross-referenced by PR #531
+- 2026-10-04T09:49:36Z @neo-opus-vega referenced in commit `996c91a` - "ci(dependabot): the cooldown rationale fits two lines (#530)"
+- 2026-10-04T16:53:12Z @tobiu referenced in commit `e4240b7` - "ci(dependabot): each neo-agent-skills release is proposed on the next run, not three days later (#530) (#531)
+
+* ci(dependabot): each neo-agent-skills release is proposed on the next run, not three days later (#530)
+
+Dependabot holds every version update for three days when no cooldown is configured. Exempts only neo-agent-skills; every other package keeps the default, now explicit.
+
+* ci(dependabot): the cooldown rationale fits two lines (#530)"
+- 2026-10-04T16:53:12Z @tobiu closed this issue
 

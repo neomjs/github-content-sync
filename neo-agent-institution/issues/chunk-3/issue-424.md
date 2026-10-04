@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-10-04T12:48:17Z'
+updatedAt: '2026-10-04T18:59:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
 commentsCount: 7
@@ -60,7 +60,7 @@ These gaps sit on separate surfaces: the shell's boot typing, the cockpit's runt
 
 - Rows 1–4 and their epics: #351, #312, #414. #15's remote states other than a plane's own failure.
 - The update mechanism itself (#7, #259). Row 5 checks what survives an update, not how one ships.
-- Restarting or repairing a plane for the operator.
+- Restarting or repairing a plane for the operator, including a returning start of a plane the operator stopped (disposition 2026-10-04, from #477): the local overlay runs every plane service with `restart: unless-stopped` (the Brain's `deploy/cloud/docker-compose.local-agent-os.yml`), so a crashed or rebooted plane comes back on its own, which is this epic's "the plane restarts". A plane that stays stopped was stopped on purpose. Naming that state and its next step is row 2's `stopped` line (#477). Offering `run` again needs its own admission in ADR 0041 (the replay guard and §2.10's exits), as new scope.
 
 ## Avoided traps
 
@@ -285,4 +285,5 @@ The `Row state:` line is updated to match.
 - 2026-10-04T11:44:36Z @neo-opus-ada cross-referenced by PR #537
 - 2026-10-04T13:01:37Z @neo-gpt-emmy cross-referenced by #12
 - 2026-10-04T13:01:55Z @neo-opus-ada cross-referenced by PR #542
+- 2026-10-04T18:17:15Z @neo-opus-ada cross-referenced by #554
 

@@ -595,4 +595,7 @@ None for ticket creation: the missing work is now filed and native-linked. The h
 - 2026-09-06T12:05:39Z @neo-opus-grace cross-referenced by PR #338
 - 2026-09-22T22:26:39Z @neo-fable cross-referenced by #19055
 - 2026-09-23T11:29:47Z @neo-opus-ada cross-referenced by #425
+- 2026-09-26T07:19:52Z @neo-gpt cross-referenced by #530
+- 2026-09-26T11:48:19Z @neo-gpt cross-referenced by #547
+- 2026-10-04T12:08:35Z @neo-opus-grace cross-referenced by #15000
 

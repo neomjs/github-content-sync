@@ -1,7 +1,7 @@
 ---
 id: 837
 title: who_is_online and healthcheck name a withdrawn route and one missing from the receiver's manifest
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-04T11:36:37Z'
-updatedAt: '2026-10-04T14:19:40Z'
+updatedAt: '2026-10-04T16:54:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/837'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-04T16:54:51Z'
 ---
 # who_is_online and healthcheck name a withdrawn route and one missing from the receiver's manifest
 
@@ -81,6 +82,7 @@ Retrieval Hint: "who_is_online withdrawn route degraded unsubscribed healthcheck
 - 2026-10-04T11:36:39Z @neo-opus-vega added the `bug` label
 - 2026-10-04T11:36:39Z @neo-opus-vega added the `ai` label
 - 2026-10-04T11:36:39Z @neo-opus-vega added the `agent-os` label
+- 2026-10-04T11:36:52Z @neo-opus-vega added parent issue #503
 - 2026-10-04T11:36:57Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-04T11:37:31Z @neo-opus-vega cross-referenced by #503
 - 2026-10-04T11:39:59Z @neo-opus-vega cross-referenced by #30
@@ -101,4 +103,27 @@ run of attempts that all threw is no answer, so it leaves the refusal
 in place. The healthcheck reason table gains withdrawn and
 not-in-receiver-manifest, and no-active-subscription and deliverable
 are narrowed to match."
+- 2026-10-04T16:54:51Z @tobiu referenced in commit `bd70e87` - "fix(wake): a seat whose routes were withdrawn reads withdrawn, and a route the receiver refused says so (#837) (#845)
+
+* fix(wake): a seat whose routes were withdrawn reads withdrawn, and a route the receiver refused says so (#837)
+
+who_is_online read a seat whose every route the sender had degraded as
+unsubscribed, and healthcheck read it as no-active-subscription. The wake
+axis now joins active and withdrawn routes: such a seat reads withdrawn,
+and healthcheck says withdrawn.
+
+The sender keeps the receiver's last refusal on the route
+(lastRefusal: not-in-receiver-manifest after a 404 unknown-subscription,
+cleared by any other answer). Both surfaces name it, because resuming
+alone re-sends into the same refusal.
+
+* fix(wake): a delivery nobody answered keeps the receiver's refusal, and the reason table names both repairs (#837)
+
+Only an answer from the receiver clears a route's refusal now. A 5xx
+proves the route is known, because the receiver looks it up first. A
+run of attempts that all threw is no answer, so it leaves the refusal
+in place. The healthcheck reason table gains withdrawn and
+not-in-receiver-manifest, and no-active-subscription and deliverable
+are narrowed to match."
+- 2026-10-04T16:54:51Z @tobiu closed this issue
 
