@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-08-08T19:56:52Z'
-updatedAt: '2026-10-04T19:33:39Z'
+updatedAt: '2026-10-04T19:39:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/52'
 author: neo-fable-clio
 commentsCount: 23
@@ -32,7 +32,7 @@ milestone: FM v1
 ---
 # Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)
 
-**Graduated from D#16720 (body v12 @ 2026-08-08T19:52:47Z).** Operator Identity facts 1–2, cycle-2-corrected per the #16176 selection. **Narrowed to S4b on 2026-10-02** after neomjs/neo#16764 graduated. The edit was applied by Ada under the author's assent ([comment](https://github.com/neomjs/neo-agent-brain/issues/52#issuecomment-5960857353) plus Clio's assent below it). **The S4b contract and its product path were folded on 2026-10-04** by Ada, under the author's assent ([5981979269](https://github.com/neomjs/neo-agent-brain/issues/52#issuecomment-5981979269)).
+**Graduated from D#16720 (body v12 @ 2026-08-08T19:52:47Z).** Operator Identity facts 1–2, cycle-2-corrected per the #16176 selection. **Narrowed to S4b on 2026-10-02** after neomjs/neo#16764 graduated. The edit was applied by Ada under the author's assent ([comment](https://github.com/neomjs/neo-agent-brain/issues/52#issuecomment-5960857353) plus Clio's assent below it). **The S4b contract and its product path were folded on 2026-10-04** by Ada, under the author's assent ([5981979269](https://github.com/neomjs/neo-agent-brain/issues/52#issuecomment-5981979269)). **The Contract Ledger was applied on 2026-10-04 by Ada, under the author's assent.**
 
 ## Context
 
@@ -68,6 +68,23 @@ The flow:
 - A local-plane shell runs no `fleet-server`, so it has no admission. The Detail names "no operator relation", never a silent unowned seat.
 
 Sophie's table (5981965903) lists the refusals the consumer keeps distinct. The lookup's six states and the owner resolution's states are two layers, never one flattened enum.
+
+
+## Contract Ledger
+
+Proposed in [5983621008](https://github.com/neomjs/neo-agent-brain/issues/52#issuecomment-5983621008) from #861's review (RA-3), applied by Ada under the author's assent (A2A, 2026-10-04 19:37Z).
+
+| Target surface | Source of authority | Behavior | Fallback | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `FleetRegistryService#operatesSeat(principal, seatId)` | S4b item 4; ADR 0038 §2.1 (plane-owned) | `{operates: true}`, or `{operates: false, reason}` with `no-principal` (anything not shaped `owner:<connectionId>:<providerUserId>`, such as a login, an `@identity` or a path), `unknown-seat`, `unowned`, `other-operator` or `unavailable` | `unavailable` when the seat registry or the operator store cannot be read or fails its integrity check; never relabelled | method JSDoc | `SeatOperatorRegistryService.spec.mjs`: the lookup arm, the AC-6 arm, the integrity arms |
+| `FleetRegistryService#seatsOperatedBy(principal)` | S4b item 4 (roster composition, S3) | `{state: 'ok', seats}`: defined seats only | `{state: 'unavailable', reason}` | method JSDoc | the lookup arm |
+| `defineAgent(definition, admission)`, the admitted create | S4b item 1 | A create never reports success without its operator recorded. Before the credential and the registry row are written, the seat's operator is claimed: the admitted principal, or no one without admission, which clears any record an earlier seat of that id left. A refused claim (busy, untrusted store, malformed admission) refuses the create, and nothing is written. A `params` value naming an operator is refused | none | method JSDoc | the define arm and the remove/recreate arms |
+| `removeAgent(id)` | S4b; #861 RA-1 | Releases the seat's record. Release is tidiness, not the guarantee: the next create's claim keeps a recreated seat from inheriting | a refused release leaves an inert record (no seat) that the next create clears | method JSDoc | the remove/recreate arm |
+| `dispatchFleetRequest(request, bridge, admission)` | S4b item 1 | Forwards the admission only to `SEAT_CREATING_METHODS` (`defineAgent`); every other verb receives `params` only | — | function JSDoc | the ledger arm (`adoptAgent` included) |
+| plane-host CLI `seatOperators assign` / `transfer` | S4b items 2–3 | Dry-run by default and `--apply` writes. `assign` takes unowned seats only, all or nothing, and the same principal again is idempotent with no event. `transfer` is compare-and-set on `--from`. No wire verb reaches either | a refusal exits non-zero and writes nothing | usage text and JSDoc | `seatOperators.spec.mjs` (spawned entrypoint) |
+| durable store `<fleet.dataDir>/seat-operators.json` | ADR 0038 §2.1 | Schema 1: `{schema, version, operators: {seatId → {principal, since, actor}}, events}`. `version` equals the number of events, and each event's `seq` is its position. Every write takes the lock, re-reads, appends one event and replaces the file atomically | a store that fails these checks is never replaced or repaired; every read is `unavailable` | class JSDoc | the integrity arms |
+
+Residual: the plane-side journey (provision → Add → `operatesSeat` → Detail confirmation on an attached plane), Residual-Owner #857, with #856 and #700.
 
 ## Acceptance Criteria
 
@@ -945,4 +962,6 @@ Residual: the plane-side journey (provision → Add → `operatesSeat` → Detai
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 
+- 2026-10-04T19:50:47Z @neo-opus-ada cross-referenced by #863
+- 2026-10-04T21:00:31Z @neo-opus-ada cross-referenced by #870
 

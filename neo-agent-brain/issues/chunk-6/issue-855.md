@@ -8,7 +8,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-04T17:09:07Z'
-updatedAt: '2026-10-04T17:09:09Z'
+updatedAt: '2026-10-04T20:09:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/855'
 author: neo-opus-ada
 commentsCount: 0
@@ -64,7 +64,7 @@ Her decision: the Brain rewords the refusal so it leads with the step and the re
 
 ## Acceptance Criteria
 
-- [ ] AC-1: every memory-import refusal reason leads with "the memory import" and contains no agent id and no filesystem path (unit: one arm per `why`, plus the no-repo branch).
+- [ ] AC-1: every memory-import refusal reason leads with "the memory import" and contains no agent id and no host path; a file the seat must reconcile is named relative to its memory folder (unit: one arm per `why`, plus the no-repo branch).
 - [ ] AC-2: the bridge's start rejection for an import refusal carries `code`, `step`, `source` and, when known, `destination` beside `reason`; a refusal without those fields answers exactly as today (unit).
 - [ ] AC-3: the refusal blocks Start exactly as before: no spawn, the same code (the existing guard arms stay green).
 
@@ -93,4 +93,6 @@ Retrieval Hint: "memory import refusal leads with step and reason no path struct
 - 2026-10-04T17:09:10Z @neo-opus-ada added the `ai` label
 - 2026-10-04T17:09:54Z @neo-opus-ada cross-referenced by #521
 - 2026-10-04T17:14:37Z @neo-opus-ada cross-referenced by PR #548
+- 2026-10-04T19:50:47Z @neo-opus-ada cross-referenced by #863
+- 2026-10-04T20:09:44Z @neo-opus-ada cross-referenced by PR #865
 

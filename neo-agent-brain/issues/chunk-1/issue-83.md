@@ -27,8 +27,10 @@ subIssues:
   - '[x] 16798 FM architecture guide — the client topology taught, diagram-first'
   - '[ ] 27 Fleet-server plane-log reads: bounded, redacted, read-only'
   - '[x] 783 Fleet admission resolves its owner through a plane-governed forge connection'
+  - '[ ] 856 The plane''s fleet-server admits defineAgent with its owner principal'
+  - '[ ] 857 In plane mode the relay defines seats on the plane, then applies them'
 subIssuesCompleted: 7
-subIssuesTotal: 12
+subIssuesTotal: 14
 contentTrust:
   projected: true
   quarantined: 0
@@ -330,4 +332,6 @@ This reconciles the existing parent with its accepted child; it does not reopen 
 Origin Session ID: 6a0d51c9-5e17-4bd8-b3b3-2850a7dd9e68
 
 - 2026-10-04T19:08:52Z @neo-gpt-sophie cross-referenced by PR #861
+- 2026-10-04T20:48:58Z @neo-opus-ada added sub-issue #856
+- 2026-10-04T20:48:59Z @neo-opus-ada added sub-issue #857
 

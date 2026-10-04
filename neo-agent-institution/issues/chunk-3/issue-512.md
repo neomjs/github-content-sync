@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T12:59:41Z'
-updatedAt: '2026-10-04T19:36:12Z'
+updatedAt: '2026-10-04T20:20:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/512'
 author: neo-fable-clio
 commentsCount: 1
@@ -42,15 +42,29 @@ The merge queue is the operator's own worklist: the PRs waiting on his hand. A r
 
 ## The Fix
 
-1. Each queue row reads `#N · <title>` on its first line (repository in the second line or the title attribute), `<state word> · observed <age>` on the second; the reference alone when `title` is null.
+1. Each queue row reads `#N · <title>` as a titled link, clamped to two lines, with the repository in the title attribute; the reference alone when `title` is null. **Source correction (2026-10-04, Ada's intake 5983642505, Euclid's review of PR #560):** the Store-backed menu is `apps/agentos/view/fleet/roster/AwaitingMergeMenuList.mjs` (not `cockpit/*`), and on `dev` a row carries a reference link plus the existing **stale chip** — there is no `<state word> · observed <age>` line, and this leaf adds none: the stale chip stays as it is, and held-state and age remain the detail pane's (#501). The earlier second-line prescription is withdrawn.
 2. The row keeps its link (the external hand-off of #493/#497) and its width discipline: the title wraps to two lines at most in the floating list, never elides silently — the full title is in the `title` attribute AND the row is a link, so the whole is one click away.
 3. One unit arm on the row renderer (title / null); the visual golden of the open queue re-captured from a full run if the fixture rows gain titles.
 
+
+## Contract Ledger (intake-derived, Ada, assignee)
+
+Added at Euclid's #560 intake. It is my claimer section; the rest of the body stays the author's.
+
+| Target surface | Source of authority | Behavior | Fallback | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| producer `awaitingMerge[].title` | Brain #811 / PR #814, carried by this repo's pin `dbd35bc2` | a string, or null when the row carries none | null → the row renders its reference | — | pin ancestry (#814's merge commit is an ancestor of `dbd35bc2`) |
+| `OpenWorkRead.mergeRows` | this ticket | passes `title` through, undefined when absent | — | method JSDoc | `openWorkRead.spec.mjs`, the title arm |
+| `OpenPullRequest.title` | this ticket | a field, null by default | null | model comment | `awaitingMergeButton.spec.mjs`, the null arm |
+| `AwaitingMergeMenuList#createItemContent` | AC-1 | titled: `#N · <title>`, tooltip `<repo> #N · <title>`, the row a link; untitled: `<repo> #N`, tooltip the link; the stale chip unchanged | the reference | method JSDoc | `awaitingMergeButton.spec.mjs` |
+| the floating list | AC-2 | `max-width` 360px; the title clamps to two lines | — | SCSS comment | the visual arm (clamp measured) and `fleet-head-merge-queue-open.png` |
+| the installed queue | AC-3 | names each waiting PR by its title on a #12 cut whose Institution carries #560 and whose Brain pin carries #814. Candidate B (`4c916a0d`) does not carry #560 | — | — | Post-Merge Validation, owner #12 |
+
 ## Acceptance Criteria
 
-- [ ] AC-1 Unit arm: a row with a title renders `#N · <title>`; a row without renders the reference; the state line is unchanged.
+- [ ] AC-1 Unit arm: a row with a title renders `#N · <title>` as a link clamped to two lines; a row without renders the reference; the existing stale chip is unchanged (no state/age line is added).
 - [ ] AC-2 The title wraps to at most two lines in the floating list; the row stays a link to the PR.
-- [ ] AC-3 (post-merge, installed) On the next #12 cut with the Brain pin carrying #814, the operator's merge queue names each waiting PR by its title; one screenshot receipt on this ticket.
+- [ ] AC-3 [L4-deferred — operator handoff needed] On a selected #12 cut whose Institution carries #560 and whose Brain pin carries #814, the operator's merge queue names each waiting PR by its title; one screenshot receipt on this ticket. Residual-Owner: #12.
 
 ## Out of Scope
 
@@ -62,7 +76,7 @@ The merge queue is the operator's own worklist: the PRs waiting on his hand. A r
 
 Decision Record impact: none.
 
-Live latest-open sweep: checked the latest 20 open issues at 2026-10-03 12:40Z and a keyword search ("awaiting merge title", open) at 12:58Z — no equivalent. A2A in-flight claim sweep: Ada's planner note (12:56Z) — she builds. Memory Core rationale sweep: the #501 design read's rule. Own-assignment sweep: none of my open tickets owns the queue. Structure map: N/A — Institution view layer; owning folder `apps/agentos/view/fleet/cockpit/`.
+Live latest-open sweep: checked the latest 20 open issues at 2026-10-03 12:40Z and a keyword search ("awaiting merge title", open) at 12:58Z — no equivalent. A2A in-flight claim sweep: Ada's planner note (12:56Z) — she builds. Memory Core rationale sweep: the #501 design read's rule. Own-assignment sweep: none of my open tickets owns the queue. Structure map: N/A — Institution view layer; owning folder `apps/agentos/view/fleet/roster/` (corrected 2026-10-04 from `cockpit/`).
 
 handoff: @neo-opus-ada (builds after the pin carrying #814).
 
@@ -71,6 +85,8 @@ Retrieval Hint: "awaiting-merge list title #N title row fleet head merge queue a
 Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
+
+
 
 ## Timeline
 
@@ -109,4 +125,5 @@ Prescription checked: `AwaitingMergeMenuList`, `OpenWorkRead.mergeRows` and `Ope
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 
+- 2026-10-04T20:03:36Z @neo-opus-ada cross-referenced by PR #560
 
