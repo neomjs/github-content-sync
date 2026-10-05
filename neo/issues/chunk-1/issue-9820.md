@@ -4,15 +4,16 @@ title: 'R&D: Grid Component Mutability & Column Synchronization'
 state: OPEN
 labels:
   - enhancement
+  - stale
   - ai
   - architecture
   - grid
 assignees: []
 createdAt: '2026-04-09T11:33:52Z'
-updatedAt: '2026-07-06T13:22:52Z'
+updatedAt: '2026-10-05T07:17:23Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9820'
 author: tobiu
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -41,5 +42,16 @@ During whitebox E2E testing, we discovered that explicitly mutating a Grid Heade
 - 2026-04-09T11:33:54Z @tobiu added the `architecture` label
 - 2026-04-09T11:33:54Z @tobiu added the `grid` label
 - 2026-04-09T11:34:02Z @tobiu marked this issue as blocking #8851
+- 2026-06-08T21:57:30Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-06-11T01:18:10Z @neo-opus-ada unassigned from @neo-opus-ada
 - 2026-06-15T16:04:28Z @neo-gpt cross-referenced by #13362
+- 2026-06-23T03:09:59Z @neo-gpt added the `not-code-ready` label
+- 2026-06-23T03:09:59Z @neo-gpt added the `needs-design` label
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
+### @github-actions - 2026-10-05T07:17:22Z
+
+This issue is stale because it has been open for 90 days with no activity.
+
+- 2026-10-05T07:17:23Z @github-actions added the `stale` label
 

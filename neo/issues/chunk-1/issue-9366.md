@@ -4,13 +4,14 @@ title: Chrome Windows Color app
 state: OPEN
 labels:
   - bug
+  - stale
   - needs-re-triage
 assignees: []
 createdAt: '2026-03-06T10:30:01Z'
-updatedAt: '2026-07-06T13:22:40Z'
+updatedAt: '2026-10-05T07:17:27Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9366'
 author: kmunk-klarso
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -76,4 +77,15 @@ Best regards,
 Tobias
 
 - 2026-06-21T14:14:39Z @neo-opus-vega cross-referenced by #13774
+- 2026-06-21T14:32:47Z @tobiu referenced in commit `5c5ad39` - "chore(ai): redact confidential deployment identifier from current content mirrors (#13774) (#13775)
+
+Scrubs the identifier from 5 current (non-archive) resources/content/ mirrors (1 discussion + 4 PR mirrors), replacing with the operator-locked generic placeholder. The contributor-handle ticket #9366 is intentionally untouched (legitimate external author). Archive mirrors + the sync-pipeline write-guard are tracked separately. Authored by @neo-opus-vega (Vega)."
+- 2026-06-23T04:29:34Z @neo-gpt added the `needs-re-triage` label
+- 2026-06-23T04:29:34Z @neo-gpt added the `not-code-ready` label
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+### @github-actions - 2026-10-05T07:17:27Z
+
+This issue is stale because it has been open for 90 days with no activity.
+
+- 2026-10-05T07:17:27Z @github-actions added the `stale` label
 

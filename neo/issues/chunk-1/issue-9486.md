@@ -48,12 +48,12 @@ subIssues:
   - '[x] 9626 Epic: Grid Unified Scrolling & VDOM Orchestration'
   - '[x] 9635 Grid Multi-Body: Restoring Vertical Scrollbar for Dual-Pipeline GPU Thumb Pinning'
   - '[x] 9636 Grid Multi-Body: Simplify GridDragScroll Scrollbar Hit Detection'
-  - '[ ] 9637 Grid Multi-Body: E2E Telemetry Adjustments for Dual-Pipeline Scrolling'
+  - '[x] 9637 Grid Multi-Body: E2E Telemetry Adjustments for Dual-Pipeline Scrolling'
   - '[x] 9868 R&D: Grid Multi-Body Selection Architecture Redesign'
   - '[ ] 9872 Grid Multi-Body: 3-Tier Component Orchestration and Architecture Refactoring'
   - '[x] 12878 Column-header DnD resort misbehaves in locked multi-region grids'
   - '[x] 12883 Column drag to the locked-end region fails to re-home (silent)'
-subIssuesCompleted: 31
+subIssuesCompleted: 32
 subIssuesTotal: 37
 contentTrust:
   projected: true

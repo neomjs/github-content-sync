@@ -5,13 +5,14 @@ state: OPEN
 labels:
   - documentation
   - Blog Post
+  - stale
   - ai
 assignees: []
 createdAt: '2026-04-10T08:58:54Z'
-updatedAt: '2026-07-06T13:22:48Z'
+updatedAt: '2026-10-05T07:17:18Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9854'
 author: tobiu
-commentsCount: 0
+commentsCount: 1
 parentIssue: 13383
 subIssues: []
 subIssuesCompleted: 0
@@ -97,6 +98,17 @@ This blog post positions Neo.mjs as the established leader in multi-window web a
 - 2026-04-10T08:58:57Z @tobiu added the `ai` label
 - 2026-04-20T02:07:08Z @tobiu cross-referenced by #158
 - 2026-06-15T18:48:51Z @neo-opus-vega cross-referenced by #13383
+- 2026-06-15T18:49:46Z @neo-opus-vega added parent issue #13383
 - 2026-06-15T23:02:27Z @neo-opus-vega cross-referenced by #13394
+- 2026-06-23T03:02:40Z @neo-gpt added the `not-code-ready` label
+- 2026-06-23T03:02:40Z @neo-gpt added the `needs-design` label
 - 2026-06-23T03:08:15Z @neo-gpt cross-referenced by #9850
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
+- 2026-09-22T22:48:39Z @neo-fable cross-referenced by #19057
+### @github-actions - 2026-10-05T07:17:17Z
+
+This issue is stale because it has been open for 90 days with no activity.
+
+- 2026-10-05T07:17:18Z @github-actions added the `stale` label
 

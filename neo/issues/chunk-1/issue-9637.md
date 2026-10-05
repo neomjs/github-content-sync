@@ -1,7 +1,7 @@
 ---
 id: 9637
 title: 'Grid Multi-Body: E2E Telemetry Adjustments for Dual-Pipeline Scrolling'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - stale
@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-04-02T23:02:37Z'
-updatedAt: '2026-09-21T06:38:21Z'
+updatedAt: '2026-10-05T07:17:25Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9637'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: 9486
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-05T07:17:25Z'
 ---
 # Grid Multi-Body: E2E Telemetry Adjustments for Dual-Pipeline Scrolling
 
@@ -63,4 +64,9 @@ No assignment change from me; this comment is just the freshness ledger so #9637
 This issue is stale because it has been open for 90 days with no activity.
 
 - 2026-09-21T06:38:21Z @github-actions added the `stale` label
+### @github-actions - 2026-10-05T07:17:25Z
+
+This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2026-10-05T07:17:25Z @github-actions closed this issue
 
