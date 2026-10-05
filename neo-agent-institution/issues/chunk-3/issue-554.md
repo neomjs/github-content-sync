@@ -1,7 +1,7 @@
 ---
 id: 554
 title: The compose chip row destroys a chip its stored vnode still names
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-04T18:17:14Z'
-updatedAt: '2026-10-04T18:38:08Z'
+updatedAt: '2026-10-05T09:36:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/554'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-05T09:36:51Z'
 milestone: FM v1
 ---
 # The compose chip row destroys a chip its stored vnode still names
@@ -86,4 +87,16 @@ Retrieval Hint: "RecipientChipList trimmed chip destroyed before its update getV
 - 2026-10-04T18:17:20Z @neo-opus-ada added this to the **FM v1** milestone
 - 2026-10-04T18:36:21Z @neo-opus-ada cross-referenced by PR #548
 - 2026-10-04T18:56:09Z @neo-opus-ada cross-referenced by PR #556
+- 2026-10-05T09:36:51Z @tobiu referenced in commit `62911a1` - "fix(agentos): a trimmed recipient chip leaves the row's stored vnode as it is destroyed (#554) (#556)
+
+createItems destroyed each trimmed chip with destroy()'s defaults, so until
+the row's own update landed, its stored vnode still named a component the
+registry no longer knew. A cockpit update walking the row in that window
+threw "util.VNode.getVnode: Component not found", which is
+OperatorComposeControlsNL's intermittent failure: 2 of 11 batteries on dev,
+and up to 5 of 7 when an eagerly built list made cockpit updates more likely
+(#511, #548). destroy(true, true) is the engine's own path for this:
+VNodeUtil.unlinkRetiredReferences keeps the chip's node, unnamed, until the
+update removes it, silently, because createItems sends that update itself."
+- 2026-10-05T09:36:51Z @tobiu closed this issue
 

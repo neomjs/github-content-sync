@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-09-30T13:19:28Z'
-updatedAt: '2026-10-04T19:09:48Z'
+updatedAt: '2026-10-05T11:06:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/351'
 author: neo-fable-clio
 commentsCount: 24
@@ -43,14 +43,15 @@ subIssues:
   - '[ ] 14 J3 TTFP instrument: the harness measures first PAINT, but the published number must be first PERSISTENCE'
   - '[ ] 534 Row 1''s installed walkthrough: a cold first run reaches done'
   - '[ ] 535 The setup card opens with a guided front in the operator''s words'
-  - '[ ] 540 The setup card offers a new witness attempt where the recipe names it'
+  - '[x] 540 The setup card offers a new witness attempt where the recipe names it'
   - '[x] 840 One effect order, and each setup row names its wait and its exit'
   - '[x] 19395 ADR-0034 §2.3 item 10: setupEffect carries the operator''s new attempt'
   - '[x] 547 The setup card''s tests run the pinned recipe through the real broker'
-  - '[ ] 550 A run the setup card starts takes the profile''s target'
+  - '[x] 550 A run the setup card starts takes the profile''s target'
   - '[x] 848 A Create run binds the target its profile declares'
-subIssuesCompleted: 26
-subIssuesTotal: 34
+  - '[ ] 571 Plane attach carries the fleet credential that plane-first Add needs'
+subIssuesCompleted: 28
+subIssuesTotal: 35
 contentTrust:
   projected: true
   quarantined: 0
@@ -150,7 +151,10 @@ D#18965 · [`ROADMAP.md` row 1](https://github.com/neomjs/neo-agent-institution/
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 4a2cca3d-9951-4e9a-b577-2a3374a22045
 
-Row state: row 1 · card half: Mnemosyne (design reads: Clio) · enrollment half: Ada + Emmy · blocked · 2026-10-04, candidate Institution e1a9dbe / Brain fb40366 / engine 82bc615 · plan: card half planned 7 · done 8 at source (the Brain pin: `dev` pinned `5d466610`, which carries `bd079b7`; neomjs/neo#19378; neomjs/neo#19395 as neomjs/neo#19396; #481 as #541, its installed reading stays #534; and on 2026-10-04: neomjs/neo-agent-brain#842 as neomjs/neo-agent-brain#843, neomjs/neo-agent-brain#840 as neomjs/neo-agent-brain#844, #547 as #549, neomjs/neo-agent-brain#848 as neomjs/neo-agent-brain#849) · added 3 (accepted 2026-10-04, 5979904322: neomjs/neo-agent-brain#840, the next-action contract with the one effect order; neomjs/neo#19395, the ADR-0034 §2.3 item 10 clause, landed; #540, the recovery consumer; neomjs/neo-agent-brain#842 is the contract leaf's record criterion carved into its own leaf, no scope added; #547 is #535's fixture criterion carved into its own leaf on the design seat's hand-over, no scope added; added 2 more on 2026-10-04 (accepted 5981959620 and 5981994832): neomjs/neo-agent-brain#848, a Create run binds the target its profile declares, and #550, the broker takes it when the card names none; #534 files an accepted line and is no addition) (gap list accepted 2026-10-03, #351 comment 5971732569; parked with it until the walk: #475, neomjs/neo-agent-brain#810); enrollment half inventoried — neomjs/neo-agent-brain#571 eleven-gap record (5971277938) + Emmy's disposition (5971892418), stewards Ada + Emmy; #532 filed from the accepted #12 revision gap; accepted dependency neomjs/neo-agent-brain#700 (a provisioned seat's model family is read at its first turn — consumed by row 4; #51 stays deferred, its administered-family clause narrowed to the unclassifiable-model fallback via #52 S4b) · next: the showstopper (a run the card starts never received its profile's target, gap line 5981291794) is fixed at source in the Brain: neomjs/neo-agent-brain#848 merged 18:28Z as neomjs/neo-agent-brain#849; the Institution's half is #550, PR #555 (the Brain pin `01fa9fd4` and the broker's binding: the card's own run reaches `done` on the real broker), approved (Euclid, 5407717144) → the operator's merge; then #540 (the witness row's exits; built on its branch on top of #555, the design seat read its frames and approved, three goldens in its diff), its PR opens when #555 is merged → Mnemosyne; then a cut that carries both, and the row's walk #534 (its second half is a `[human]` row on a machine the operator chooses); the guided front is #535: the design seat's two frames are posted (5981064896); the operator's look at their four sentences is next, before any build → the operator; one gap line waits for the planner (5982813310: before the plane is up, the served-plane row reads a transport code); the stranger read of the card is done (Sophie, 5979354380); #14 is on the row and the milestone since 2026-10-04
+Row state: row 1 · card half: Mnemosyne (design reads: Clio) · enrollment half: Ada + Emmy · blocked · 2026-10-04, candidate Institution e1a9dbe / Brain fb40366 / engine 82bc615 · plan: card half planned 7 · done 10 at source (the Brain pin: `dev` pinned `5d466610`, which carries `bd079b7`; neomjs/neo#19378; neomjs/neo#19395 as neomjs/neo#19396; #481 as #541, its installed reading stays #534; and on 2026-10-04: neomjs/neo-agent-brain#842 as neomjs/neo-agent-brain#843, neomjs/neo-agent-brain#840 as neomjs/neo-agent-brain#844, #547 as #549, neomjs/neo-agent-brain#848 as neomjs/neo-agent-brain#849; and on 2026-10-05: #550 as #555, #540 as #561) · added 3 (accepted 2026-10-04, 5979904322: neomjs/neo-agent-brain#840, the next-action contract with the one effect order; neomjs/neo#19395, the ADR-0034 §2.3 item 10 clause, landed; #540, the recovery consumer; neomjs/neo-agent-brain#842 is the contract leaf's record criterion carved into its own leaf, no scope added; #547 is #535's fixture criterion carved into its own leaf on the design seat's hand-over, no scope added; added 2 more on 2026-10-04 (accepted 5981959620 and 5981994832): neomjs/neo-agent-brain#848, a Create run binds the target its profile declares, and #550, the broker takes it when the card names none; #534 files an accepted line and is no addition) (gap list accepted 2026-10-03, #351 comment 5971732569; parked with it until the walk: #475, neomjs/neo-agent-brain#810); enrollment half inventoried — neomjs/neo-agent-brain#571 eleven-gap record (5971277938) + Emmy's disposition (5971892418), stewards Ada + Emmy; #532 filed from the accepted #12 revision gap; accepted dependency neomjs/neo-agent-brain#700 (a provisioned seat's model family is read at its first turn — consumed by row 4; #51 stays deferred, its administered-family clause narrowed to the unclassifiable-model fallback via #52 S4b) · next: the showstopper (a run the card starts never received its profile's target, gap line 5981291794) is fixed at source in the Brain: neomjs/neo-agent-brain#848 merged 18:28Z as neomjs/neo-agent-brain#849; the Institution's half, #550, merged 2026-10-05 09:37Z as #555 (the Brain pin `01fa9fd4` and the broker's binding: the card's own run reaches `done` on the real broker); #540 (the witness row's exits) merged 2026-10-05 11:05Z as #561, with a defect its CI found repaired in it (an answer equal to the held one now also takes a pending confirmation back); then a cut that carries both, and the row's walk #534 (its second half is a `[human]` row on a machine the operator chooses); the guided front is #535: the design seat's two frames are posted (5981064896); the operator's look at their four sentences is next, before any build → the operator; one gap line waits for the planner (5982813310: before the plane is up, the served-plane row reads a transport code); the stranger read of the card is done (Sophie, 5979354380); #14 is on the row and the milestone since 2026-10-04
+
+
+
 
 
 
@@ -772,4 +776,9 @@ No ticket from me until it is accepted. It does not block #550, #540 or the walk
 🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session 577754b6-3d27-48f5-911a-434605a54220
 
 - 2026-10-04T19:08:55Z @neo-gpt cross-referenced by PR #555
+- 2026-10-04T20:09:44Z @neo-opus-ada cross-referenced by PR #865
+- 2026-10-05T11:00:10Z @neo-gpt cross-referenced by PR #561
+- 2026-10-05T14:00:48Z @neo-gpt-emmy cross-referenced by #12
+- 2026-10-05T14:02:23Z @neo-opus-ada cross-referenced by #571
+- 2026-10-05T14:02:35Z @neo-opus-ada added sub-issue #571
 

@@ -1,7 +1,7 @@
 ---
 id: 557
 title: 'Home''s first line counts what waits for the operator: merges now, questions when the plane can list them'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-04T19:10:36Z'
-updatedAt: '2026-10-04T19:32:01Z'
+updatedAt: '2026-10-05T10:35:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/557'
 author: neo-fable-clio
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-05T10:35:34Z'
 milestone: FM v1
 ---
 # Home's first line counts what waits for the operator: merges now, questions when the plane can list them
@@ -90,4 +91,44 @@ Retrieval Hint: "Home first line · N questions · M merges wait for you · ques
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 4299144f-a074-4eee-afd9-75c53b452d15
 
+- 2026-10-04T19:50:08Z @neo-opus-vega referenced in commit `9b4e820` - "fix(agentos): Home's line never reads an incomplete zero as nothing, takes its questions from their source, and opens the merge queue (#557)
+
+A partial merge zero names itself with its reason, and a stale one keeps its age. An axis
+with something to say lights the line even when the other is silent. The questions axis is
+OpenWorkRead's `questions` block, and today's wire carries none, so it reads `unsupported`.
+The merge count is a button that opens the fleet head's merge queue."
+- 2026-10-04T19:59:18Z @neo-opus-vega referenced in commit `37f6760` - "fix(agentos): a partial merge count reads as the least that waits, and says some could not be read (#557)"
+- 2026-10-05T10:18:56Z @neo-opus-vega referenced in commit `824945e` - "fix(agentos): Home's line never reads an incomplete zero as nothing, takes its questions from their source, and opens the merge queue (#557)
+
+A partial merge zero names itself with its reason, and a stale one keeps its age. An axis
+with something to say lights the line even when the other is silent. The questions axis is
+OpenWorkRead's `questions` block, and today's wire carries none, so it reads `unsupported`.
+The merge count is a button that opens the fleet head's merge queue."
+- 2026-10-05T10:18:56Z @neo-opus-vega referenced in commit `55c563d` - "fix(agentos): a partial merge count reads as the least that waits, and says some could not be read (#557)"
+- 2026-10-05T10:18:56Z @neo-opus-vega referenced in commit `fa0fd88` - "test(agentos): restamp the visual baselines after rebasing on the titled merge queue (#557)"
+- 2026-10-05T10:35:34Z @tobiu referenced in commit `25cb796` - "feat(agentos): Home's first line counts the merges that wait for the operator, and says why the questions cannot be counted yet (#557) (#558)
+
+* feat(agentos): Home leads with what waits for the operator — the merges that wait for his hand, and why his questions cannot be counted yet (#551)
+
+Home's first line is the operator's own: the merges that wait for his
+hand, read from the queue the cockpit already fills (FleetAwaitingMerge,
+from the open-work read's awaitingMerge), and the questions that wait
+for his word. That axis has no producer until Brain #859, so it reads
+its reason, never a 0. "nothing waits for you" needs both axes answered
+zero. A stale queue reads its count "as of" its oldest row. A missing
+verb or a failed read earns no pixels, which is the merge button's rule.
+
+* fix(agentos): the operator line's steady state reads "your questions are not listed yet", its reason in the title (#551)
+
+* fix(agentos): Home's line never reads an incomplete zero as nothing, takes its questions from their source, and opens the merge queue (#557)
+
+A partial merge zero names itself with its reason, and a stale one keeps its age. An axis
+with something to say lights the line even when the other is silent. The questions axis is
+OpenWorkRead's `questions` block, and today's wire carries none, so it reads `unsupported`.
+The merge count is a button that opens the fleet head's merge queue.
+
+* fix(agentos): a partial merge count reads as the least that waits, and says some could not be read (#557)
+
+* test(agentos): restamp the visual baselines after rebasing on the titled merge queue (#557)"
+- 2026-10-05T10:35:35Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 863
 title: 'Each Fleet seat gets one .env in its seat root: a Fleet block plus the operator''s keys'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-04T19:50:45Z'
-updatedAt: '2026-10-04T20:40:06Z'
+updatedAt: '2026-10-05T09:33:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/863'
 author: neo-opus-ada
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-05T09:33:34Z'
 ---
 # Each Fleet seat gets one .env in its seat root: a Fleet block plus the operator's keys
 
@@ -143,4 +144,32 @@ Addresses review 5408196541 on #868:
 
 The preparation spec's bounded-effect vocabulary gains `open` (the no-follow read handle) and `rm`
 (the shared writer's forced cleanup of its own scratch)."
+- 2026-10-05T09:33:33Z @tobiu referenced in commit `4b1c35f` - "feat(fleet): each seat holds its own .env in its seat folder, a Fleet block plus the operator's keys (#863) (#868)
+
+* feat(fleet): each seat holds its own .env in its seat folder, a Fleet block plus the operator's keys (#863)
+
+Every provisioned Start ensures <agentsRoot>/<agent-id>/.env, owner-only and outside every clone.
+The Fleet converges one delimited block of non-secret keys, empty until a harness names one, and
+leaves the operator's lines byte-identical. Start refuses a file whose operator part sets a slot the
+Fleet fills itself: the envKeys the launch-env guard reads, a renamed credentialEnvVar included,
+plus GITHUB_TOKEN.
+
+The Kimi and OpenCode generators keep pointing at the clone's .env. A config naming another path
+refuses the next Start as FLEET_WORKSPACE_DIVERGENT, so re-pointing them would stop every existing
+seat of those harnesses; #863's Out of Scope carries the trigger.
+
+* fix(fleet): the seat .env helper follows no link and reads keys as --env-file does (#863)
+
+Addresses review 5408196541 on #868:
+- RA-1: a link or any other entry at the seat's .env path is refused before it is followed, on
+  read and on write. An unchanged file is re-moded through its open handle (opened without
+  following a link), and a changed one is published by the shared writeFileAtomic (UUID scratch,
+  exclusive create, cleanup) instead of a pid-named scratch. A refused read at Start is a named
+  FleetLifecycleService.start refusal; any other fs error is rethrown, so no path reaches a reason.
+- RA-2: operator keys come from util.parseEnv, the parser --env-file itself uses, so a line inside
+  a quoted value sets no key while a real `export GH_TOKEN=` still refuses before any spawn.
+
+The preparation spec's bounded-effect vocabulary gains `open` (the no-follow read handle) and `rm`
+(the shared writer's forced cleanup of its own scratch)."
+- 2026-10-05T09:33:34Z @tobiu closed this issue
 

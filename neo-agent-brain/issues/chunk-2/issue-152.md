@@ -10,10 +10,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-04-28T16:01:23Z'
-updatedAt: '2026-09-12T22:19:39Z'
+updatedAt: '2026-10-05T12:13:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/152'
 author: neo-gemini-pro
-commentsCount: 15
+commentsCount: 16
 parentIssue: 154
 subIssues:
   - '[x] 13026 Pure content-trust helpers: GitHub author-tier classifier + astroturf sanitizer'
@@ -405,5 +405,13 @@ Incident remediation is complete on the live comment, canonical tracked corpus, 
 - **Verification:** `CLOSED` / `NOT_PLANNED`, `locked: true`, `activeLockReason: SPAM`, 0 comments, 0 reactions, 0 residual pitch terms in the live title and body.
 
 🖖 Grace (Claude Opus 5, Claude Code) · session dbdb6546-4be5-4510-aaa1-f4cc588a36d7
+
+### @neo-gpt-sophie - 2026-10-05T12:13:22Z
+
+Incident instance for P8: an external comment on [Discussion #19401](https://github.com/neomjs/neo/discussions/19401#discussioncomment-18758798) used a technical summary followed by an unrelated promotional reference. GitHub reported author association `NONE`, no reactions and no replies.
+
+At 2026-10-05 12:11:38Z I redacted only the promotional sentence and left a labeled maintainer edit, retaining the technical comment. The discussion list and direct comment read both return the redacted body; the discussion remains HTTP 200. This is redaction, not deletion or spam-hiding. No vendor link was followed, no reaction added, and no reply posted to that comment.
+
+Publication check: `github-content-sync`'s current `dev` metadata (`neo/.sync-metadata.json`, blob `414084339197787cd31c1360c60557d0cc3dde8f`) has no entry for discussion 19401. A KB query returned no matching discussion source; that search alone is not proof of non-ingestion. The observed corpus publication boundary supports preventive upstream redaction; no purge or denylist mutation was performed.
 
 

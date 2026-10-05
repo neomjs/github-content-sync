@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-03T08:22:57Z'
-updatedAt: '2026-10-04T20:21:27Z'
+updatedAt: '2026-10-05T11:32:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/477'
 author: neo-fable-clio
 commentsCount: 18
@@ -22,8 +22,8 @@ subIssues:
   - '[x] 498 Row 2''s walkthrough, fixture half: six states read on every cockpit surface'
   - '[x] 499 Roster cards show a raw clone path instead of a seat state'
   - '[x] 500 The installed vessel''s instance switcher opens a collapsed menu'
-  - '[ ] 512 The awaiting-merge list names each pull request by its title'
-subIssuesCompleted: 5
+  - '[x] 512 The awaiting-merge list names each pull request by its title'
+subIssuesCompleted: 6
 subIssuesTotal: 8
 contentTrust:
   projected: true
@@ -91,7 +91,7 @@ These observations are retained on this outcome, not counted as hypothetical imp
 Origin Session ID: fb9561d9-a0dd-4f35-912c-095864afbae4
 Retrieval Hint: "row 2 truthful state epic census walkthrough five states reason next step installed candidate"
 
-Row state: row 2 · Euclid (design/provocation: Clio; independent walker: Sophie, accepted #479/5979344687) · unknown · 2026-10-04 · last recorded installed candidate Institution e1a9dbe / Brain fb40366 / engine 82bc615 · accepted scope: 4 existing leaves (#498 #479 #512 neomjs/neo#16824), Activity explanation accepted/unfiled; shared prerequisites Brain #53 (open, blocks neomjs/neo#16824) and cut #12; Brain #823 ticket completed, installed adoption remains unverified; hypothetical findings excluded · source delivery for current scope 1 (#498 → #494 merged 12:14:39Z) · added: cold design refined; browser token step withdrawn; returning-start excluded from row 5 by its steward, new admission scope held; source controls retained; held-expiry mechanism verified, installed cause unproved; no new leaf yet · next: #494 merged as 77827bd; A fixture pair 22724d4/786d9c4 preserved 2/2; B pair 4c916a0d/dbd35bc2 reported 2/2, selected installation determines #479’s anchor; cold-state/Activity/expiry dispositions → Euclid + Clio; coordinated installation + exact served pair → Emmy/Ada; independent #479 installed read → Sophie
+Row state: row 2 · Euclid (design/provocation: Clio; independent walker: Sophie, accepted #479/5979344687) · unknown · 2026-10-05 · last recorded installed candidate Institution e1a9dbe / Brain fb40366 / engine 82bc615 · accepted scope: 4 existing leaves (#498 #479 #512 neomjs/neo#16824), Activity explanation accepted/unfiled; shared prerequisites Brain #53 (open, blocks neomjs/neo#16824) and cut #12; Brain #823 ticket completed, installed adoption remains unverified; hypothetical findings excluded · source delivery for current scope 2 (#498 → #494; #512 → #560 merged 2026-10-05 10:03:25Z as 6561d1f) · added: cold design refined; browser token step withdrawn; returning-start excluded from row 5 by its steward, new admission scope held; source controls retained; held-expiry mechanism verified, installed cause unproved; no new leaf yet · next: preserve A’s 22724d4/786d9c4 fixture and B’s frozen 4c916a0d/dbd35bc2 package evidence; #560’s merged title consumer needs the selected later cut for its installed check; Ada’s #571 preparation record 5991847194 received; candidate C scope selected in #12/5991701878 (Institution 5f3275b baseline + #564 consumer/pin; Brain f24815d; Engine 82bc615), freeze/build follows #564’s disposition and human merge → Emmy; fresh affected-seat checkpoint/interruption window, destination proofs and installed/served revision pair → Emmy + Ada; independent #479 installed read → Sophie; cold-state/Activity/expiry dispositions → Euclid with Clio’s recorded design; Brain #53 → neomjs/neo#16824 remains a source blocker
 
 
 ## Timeline

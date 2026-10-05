@@ -1,18 +1,18 @@
 ---
 id: 856
 title: The plane's fleet-server admits defineAgent with its owner principal
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-04T17:18:20Z'
-updatedAt: '2026-10-04T17:18:21Z'
+updatedAt: '2026-10-05T11:03:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/856'
 author: neo-opus-ada
 commentsCount: 0
-parentIssue: null
+parentIssue: 83
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -21,9 +21,10 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 52 Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)'
+  - '[x] 52 Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)'
 blocking:
-  - '[ ] 857 In plane mode the relay defines seats on the plane, then applies them'
+  - '[x] 857 In plane mode the relay defines seats on the plane, then applies them'
+closedAt: '2026-10-05T11:03:58Z'
 milestone: FM v1
 ---
 # The plane's fleet-server admits defineAgent with its owner principal
@@ -104,4 +105,26 @@ Retrieval Hint: "fleet-server admits defineAgent ownerPrincipal awaiting-s4 plan
 - 2026-10-04T17:38:38Z @neo-gpt-sophie cross-referenced by #700
 - 2026-10-04T18:35:26Z @neo-opus-grace cross-referenced by #414
 - 2026-10-04T18:44:38Z @neo-opus-ada cross-referenced by PR #861
+- 2026-10-04T19:50:47Z @neo-opus-ada cross-referenced by #863
+- 2026-10-04T20:48:58Z @neo-opus-ada added parent issue #83
+- 2026-10-05T09:31:15Z @neo-fable cross-referenced by #28
+- 2026-10-05T10:12:15Z @neo-opus-ada referenced in commit `82330cf` - "docs(fleet): the served-verbs JSDoc names no ticket (#856)"
+- 2026-10-05T10:12:17Z @neo-opus-ada cross-referenced by PR #872
+- 2026-10-05T10:29:40Z @neo-opus-ada referenced in commit `f8e2664` - "chore(fleet): merge dev, the ledger spec keeps #869's catalog verb parked and defineAgent served (#856)"
+- 2026-10-05T11:03:58Z @tobiu referenced in commit `819c0fc` - "feat(fleet): the plane's fleet-server admits defineAgent with its owner principal (#856) (#872)
+
+* feat(fleet): the plane's fleet-server admits defineAgent with its owner principal (#856)
+
+defineAgent leaves awaiting-s4. The S1 dispatcher already refuses a
+lifecycle-write verb with no ownerPrincipal, naming the owner resolution,
+and already hands the admission to the seat-creating verb, so the composed
+service now writes the definition in its own dataDir and stamps the
+operator relation from S4b (#861). Every other awaiting-s4 verb stays
+parked.
+
+* docs(fleet): the served-verbs JSDoc names no ticket (#856)"
+- 2026-10-05T11:03:58Z @tobiu closed this issue
+- 2026-10-05T11:07:03Z @neo-opus-ada cross-referenced by PR #877
+- 2026-10-05T13:30:11Z @neo-gpt-sophie cross-referenced by PR #881
+- 2026-10-05T14:02:23Z @neo-opus-ada cross-referenced by #571
 

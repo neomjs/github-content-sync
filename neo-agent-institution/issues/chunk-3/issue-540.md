@@ -1,7 +1,7 @@
 ---
 id: 540
 title: The setup card offers a new witness attempt where the recipe names it
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-04T12:42:06Z'
-updatedAt: '2026-10-04T17:37:22Z'
+updatedAt: '2026-10-05T11:06:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/540'
 author: neo-fable
 commentsCount: 2
@@ -22,11 +22,12 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 550 A run the setup card starts takes the profile''s target'
+  - '[x] 550 A run the setup card starts takes the profile''s target'
   - '[x] 547 The setup card''s tests run the pinned recipe through the real broker'
   - '[x] 19395 ADR-0034 §2.3 item 10: setupEffect carries the operator''s new attempt'
   - '[x] 840 One effect order, and each setup row names its wait and its exit'
 blocking: []
+closedAt: '2026-10-05T11:05:33Z'
 milestone: FM v1
 ---
 # The setup card offers a new witness attempt where the recipe names it
@@ -71,16 +72,16 @@ On `dev`, a `verify` row whose write the plane refused shows `run`, and pressing
 | `Neo.main.addon.ShellPlane#setupEffect` in `src/main/addon/ShellPlane.mjs` (existing; the field is new here) | ADR-0034 §2.3 item 10 | forwards `newAttempt: true` when it is `true` | otherwise the request carries `effectId` alone | JSDoc | the addon spec's forwarding arm |
 | `AgentOS.model.SetupStep` fields `waitsFor`, `exits`, `duplicatePossible` (new) | ADR 0041 §2.10; the Brain's `firstRunRecipe.mjs` and `verifyEffect.mjs#verifyExits` | the row's data as the Brain evaluated it | a wire value of another type reads `null`, `null`, `false` | JSDoc | arms in the card's spec |
 | `actionsFor(step)` in `apps/agentos/view/setup/StepList.mjs` (replaces `actionFor`) | the design seat, 5982442594 | the row's chips from its data: none while `waitsFor`; a row with `exits` offers them in the Brain's order as `run` · `re-check` · `write again`; every other row as today | an exit the card has no verb for shows no chip | JSDoc | unit arms; one arm holds the verb table against the pinned Brain's `VERIFY_EXITS` |
-| The row as rendered (`StepList#createItemContent`) | the design seat, 5982442594 | the second exit is a quieter chip, in the two-exit state only; the confirmation line before a write that can duplicate; `waits for <step id>` in the action column | a fresh evaluation ends a pending confirmation | none | unit and e2e arms; six dark captures and the two-chip state in light, to the design seat before the PR opens |
+| The row as rendered (`StepList#createItemContent`) | the design seat, 5982442594 | the second exit is a text link beside the chip, without border or fill (the design seat's condition on the built frames, 2026-10-04), in the two-exit state only; the confirmation line before a write that can duplicate; `waits for <step id>` in the action column | a fresh evaluation ends a pending confirmation | none | unit, e2e and visual arms; eight captures read by the design seat before the PR opened, three goldens in the diff |
 
 ## Acceptance Criteria
 
-- [ ] A refused write: the row offers the new attempt; choosing it writes once under a new marker, and the record's `priorAttempts` keeps the old one.
-- [ ] An unresolved acknowledgement: `re-check` stays read-only; after one re-check that did not find the row, the new attempt is offered with the duplicate warning in the Brain's words.
-- [ ] A resumable row offers only the resume; an accepted row offers nothing.
-- [ ] `newAttempt` on any other effect, or on a row that does not name it, is refused by name and changes nothing.
-- [ ] Neither the broker nor the card reads a reason sentence to decide: both read the row's data.
-- [ ] Unit arms in the broker's and the card's existing spec idiom; one capture per state goes to the design seat before the PR opens.
+- [x] A refused write: the row offers the new attempt; choosing it writes once under a new marker, and the record's `priorAttempts` keeps the old one.
+- [x] An unresolved acknowledgement: `re-check` stays read-only; after one re-check that did not find the row, the new attempt is offered with the duplicate warning in the Brain's words.
+- [x] A resumable row offers only the resume; an accepted row offers nothing.
+- [x] `newAttempt` on any other effect, or on a row that does not name it, is refused by name and changes nothing.
+- [x] Neither the broker nor the card reads a reason sentence to decide: both read the row's data.
+- [x] Unit arms in the broker's and the card's existing spec idiom; one capture per state goes to the design seat before the PR opens.
 
 ## Out of Scope
 
@@ -117,6 +118,8 @@ Decision Record impact: `depends-on ADR 0034` (neomjs/neo#19395) and `depends-on
 
 Origin Session ID: 577754b6-3d27-48f5-911a-434605a54220
 Retrieval Hint: "setup card verify row new attempt exit refused write reconcile-required duplicate warning recovery consumer"
+
+
 
 
 
@@ -168,4 +171,31 @@ The one rule: chip labels are the operator's verbs, never the contract's nouns �
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 4299144f-a074-4eee-afd9-75c53b452d15
 
 - 2026-10-04T17:37:28Z @neo-fable marked this issue as being blocked by #550
+- 2026-10-05T09:49:31Z @neo-fable cross-referenced by PR #561
+- 2026-10-05T09:53:16Z @neo-fable cross-referenced by #559
+- 2026-10-05T10:10:31Z @neo-fable referenced in commit `e93b09d` - "chore(merge): bring origin/dev into the branch (#540)"
+- 2026-10-05T10:10:31Z @neo-fable referenced in commit `364db31` - "test(agentos): re-stamp the visual baselines after dev's merges (#540)"
+- 2026-10-05T10:47:33Z @neo-fable referenced in commit `13214c7` - "chore(merge): bring origin/dev into the branch (#540)"
+- 2026-10-05T10:47:33Z @neo-fable referenced in commit `0e0cdd7` - "fix(agentos): an answer equal to the held one also takes a pending confirmation back (#540)
+
+The door cleared the witness row's pending confirmation in afterSetEvaluation, which the config setter skips for an equal value: an equal answer left the confirmation in the row. The door's evaluation is an observation, so its config now never reports equality (the engine's per-config isEqual, as container items use it) and every answer re-projects. The arm holds an exactly equal answer and a changed one."
+- 2026-10-05T10:47:33Z @neo-fable referenced in commit `7a04c8b` - "test(agentos): re-stamp the visual baselines after dev's merges (#540)"
+- 2026-10-05T11:05:33Z @tobiu referenced in commit `9406ce8` - "feat(agentos): the setup card offers the witness row's exits (#540) (#561)
+
+* feat(agentos): the setup card offers the witness row's exits (#540)
+
+A refused witness write showed run, which never writes again, and a lost acknowledgement offered only a re-check that never searched the plane: the first run stopped there. The card now reads the row's data. A row that waits names the step it waits for and has no chip. The witness row's exits are its chips in the Brain's order, in the operator's verbs: run, re-check, write again. re-check is the effect without a new attempt; write again sends newAttempt, after one line in the row when a second row on the plane is possible.
+
+The broker admits newAttempt only when the evaluated row lists a new attempt among its exits and refuses it by name anywhere else; the addon forwards it only as true. actionsFor replaces actionFor, and the branch that read the provider-key row's reason is gone.
+
+Needs #550's Brain pin.
+
+* test(agentos): re-stamp the visual baselines after dev's merges (#540)
+
+* fix(agentos): an answer equal to the held one also takes a pending confirmation back (#540)
+
+The door cleared the witness row's pending confirmation in afterSetEvaluation, which the config setter skips for an equal value: an equal answer left the confirmation in the row. The door's evaluation is an observation, so its config now never reports equality (the engine's per-config isEqual, as container items use it) and every answer re-projects. The arm holds an exactly equal answer and a changed one.
+
+* test(agentos): re-stamp the visual baselines after dev's merges (#540)"
+- 2026-10-05T11:05:33Z @tobiu closed this issue
 

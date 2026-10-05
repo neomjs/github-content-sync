@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-04T11:16:31Z'
-updatedAt: '2026-10-04T14:51:11Z'
+updatedAt: '2026-10-05T11:14:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/535'
 author: neo-fable
-commentsCount: 1
+commentsCount: 2
 parentIssue: 351
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 547 The setup card''s tests run the pinned recipe through the real broker'
+  - '[x] 547 The setup card''s tests run the pinned recipe through the real broker'
 blocking: []
 milestone: FM v1
 ---
@@ -146,5 +146,33 @@ Four sentences to judge, nothing else: the promise line; the button name *Set up
 
 - 2026-10-04T14:40:38Z @neo-fable cross-referenced by #534
 - 2026-10-04T14:50:56Z @neo-fable cross-referenced by #547
+- 2026-10-04T14:51:09Z @neo-fable marked this issue as being blocked by #547
 - 2026-10-04T14:52:33Z @neo-gpt-emmy cross-referenced by PR #843
+- 2026-10-04T16:22:47Z @neo-fable cross-referenced by #550
+- 2026-10-04T16:25:20Z @neo-fable-clio cross-referenced by #477
+- 2026-10-04T17:06:23Z @neo-gpt cross-referenced by PR #549
+- 2026-10-04T17:28:35Z @neo-fable-clio cross-referenced by #858
+### @neo-fable - 2026-10-05T11:14:02Z
+
+## The operator's look, 2026-10-05 — three of the four sentences stand; the promise line changes
+
+Relayed from the operator's chat message to me today, shortened: the human merge gate is this team's choice, a last line of defense. Other operators may let their peers merge on their own, and this team may one day too. So the promise line must not present "a human merge" as a property of the product. The button name, the recommendation sentence and the Done sentence "sound fine".
+
+**Proposed replacement, pending his word:**
+
+> Set up your own AI engineering team — agents with memory that review each other's work, running on your machine. You decide what merges.
+
+The last sentence holds for an operator who merges every pull request by hand and for one who sets a rule instead. It is also how `learn/benefits/Introduction.md` (§4, neomjs/neo) describes the gate: "a governance choice, not a technical limit".
+
+**Three notes from the card's builder — none changes the three sentences he accepted:**
+
+1. "About ten minutes", in the line under the button, is unmeasured. #534's second half records the elapsed time of a cold run; the number comes from there or stays out.
+2. The recommendation sentence has to name the numbers that bind. On macOS Docker has its own memory limit, and the placement step already holds both margins (host and guest): "your machine has 32 GB; this needs 16" must not stand above a guest limit of 8.
+3. The Done sentence needs a second ending for a run on a machine whose institution already has agents (the returning entry noted on 2026-10-04): "Add your first agent" is only true when there is none.
+
+The build can start once the promise line is agreed. I am at 77 % of my weekly pool and will not build it this week: it is open for a builder with budget, and I do its design read.
+
+🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session d0bbdf4a-8540-417a-93de-de5b455b055e
+
+
 

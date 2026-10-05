@@ -16,15 +16,15 @@ author: neo-fable-clio
 commentsCount: 5
 parentIssue: 414
 subIssues:
-  - '[ ] 557 Home''s first line counts what waits for the operator: merges now, questions when the plane can list them'
-subIssuesCompleted: 0
+  - '[x] 557 Home''s first line counts what waits for the operator: merges now, questions when the plane can list them'
+subIssuesCompleted: 1
 subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 859 Human recipients can read and answer their own A2A Tasks'
+  - '[x] 859 Human recipients can read and answer their own A2A Tasks'
 blocking: []
 milestone: FM v1
 ---
@@ -240,4 +240,38 @@ Origin Session ID: 6a0d51c9-5e17-4bd8-b3b3-2850a7dd9e68
 - 2026-10-04T19:10:37Z @neo-fable-clio cross-referenced by #557
 - 2026-10-04T19:10:45Z @neo-fable-clio added sub-issue #557
 - 2026-10-04T19:18:31Z @neo-opus-vega cross-referenced by PR #558
+- 2026-10-05T10:18:56Z @neo-opus-vega referenced in commit `73ba8e7` - "feat(agentos): Home leads with what waits for the operator — the merges that wait for his hand, and why his questions cannot be counted yet (#551)
+
+Home's first line is the operator's own: the merges that wait for his
+hand, read from the queue the cockpit already fills (FleetAwaitingMerge,
+from the open-work read's awaitingMerge), and the questions that wait
+for his word. That axis has no producer until Brain #859, so it reads
+its reason, never a 0. "nothing waits for you" needs both axes answered
+zero. A stale queue reads its count "as of" its oldest row. A missing
+verb or a failed read earns no pixels, which is the merge button's rule."
+- 2026-10-05T10:18:56Z @neo-opus-vega referenced in commit `9a637ee` - "fix(agentos): the operator line's steady state reads "your questions are not listed yet", its reason in the title (#551)"
+- 2026-10-05T10:35:35Z @tobiu referenced in commit `25cb796` - "feat(agentos): Home's first line counts the merges that wait for the operator, and says why the questions cannot be counted yet (#557) (#558)
+
+* feat(agentos): Home leads with what waits for the operator — the merges that wait for his hand, and why his questions cannot be counted yet (#551)
+
+Home's first line is the operator's own: the merges that wait for his
+hand, read from the queue the cockpit already fills (FleetAwaitingMerge,
+from the open-work read's awaitingMerge), and the questions that wait
+for his word. That axis has no producer until Brain #859, so it reads
+its reason, never a 0. "nothing waits for you" needs both axes answered
+zero. A stale queue reads its count "as of" its oldest row. A missing
+verb or a failed read earns no pixels, which is the merge button's rule.
+
+* fix(agentos): the operator line's steady state reads "your questions are not listed yet", its reason in the title (#551)
+
+* fix(agentos): Home's line never reads an incomplete zero as nothing, takes its questions from their source, and opens the merge queue (#557)
+
+A partial merge zero names itself with its reason, and a stale one keeps its age. An axis
+with something to say lights the line even when the other is silent. The questions axis is
+OpenWorkRead's `questions` block, and today's wire carries none, so it reads `unsupported`.
+The merge count is a button that opens the fleet head's merge queue.
+
+* fix(agentos): a partial merge count reads as the least that waits, and says some could not be read (#557)
+
+* test(agentos): restamp the visual baselines after rebasing on the titled merge queue (#557)"
 

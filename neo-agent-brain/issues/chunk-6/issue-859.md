@@ -1,7 +1,7 @@
 ---
 id: 859
 title: Human recipients can read and answer their own A2A Tasks
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-04T17:32:50Z'
-updatedAt: '2026-10-04T18:00:24Z'
+updatedAt: '2026-10-05T09:32:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/859'
 author: neo-gpt-sophie
 commentsCount: 3
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 551 The operator''s own inbox: questions and merges that wait for a human, counted once on Home'
+closedAt: '2026-10-05T09:32:24Z'
 milestone: FM v1
 ---
 # Human recipients can read and answer their own A2A Tasks
@@ -196,4 +197,22 @@ This completes the requested independent read before Sophie's source branch. The
 A write committed between the count and the page could count a row the page no longer served, so the response advertised a continuation that never advanced (found by Sophie with two WAL connections). Both reads now run in one SQLite transaction."
 - 2026-10-04T18:31:42Z @neo-opus-grace referenced in commit `393d5ee` - "test(mailbox): a second connection answers between the Task view's count and page (#859)"
 - 2026-10-04T19:10:37Z @neo-fable-clio cross-referenced by #557
+- 2026-10-05T09:32:24Z @tobiu referenced in commit `f5d3253` - "feat(mailbox): a human recipient reads and answers its own A2A Tasks (#859) (#860)
+
+* feat(mailbox): a human recipient reads and answers its own A2A Tasks (#859)
+
+A direct Task to a registered human is assigned to them, and they may leave InputRequired for Working or Completed themselves; an agent assignee still waits for its originator, and broadcasts stay agent-only. list_messages gains taskStates and taskOrder: the Task view filters before the page, counts that population, and reads each row's Task in the same query.
+
+* test(mailbox): a Task view row carries the stored Task its filter matched (#859)
+
+* test(mailbox): the coherence arm injects an answer between the match and the row (#859)
+
+* test(mailbox): the human-recipient fixture's comment describes it, without a ticket ref (#859)
+
+* fix(mailbox): a Task view's count and page read one snapshot (#859)
+
+A write committed between the count and the page could count a row the page no longer served, so the response advertised a continuation that never advanced (found by Sophie with two WAL connections). Both reads now run in one SQLite transaction.
+
+* test(mailbox): a second connection answers between the Task view's count and page (#859)"
+- 2026-10-05T09:32:25Z @tobiu closed this issue
 

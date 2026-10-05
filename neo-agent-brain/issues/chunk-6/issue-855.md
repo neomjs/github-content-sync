@@ -1,14 +1,14 @@
 ---
 id: 855
 title: 'A memory-import refusal names its step and reason first, no path in it'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-04T17:09:07Z'
-updatedAt: '2026-10-04T20:09:08Z'
+updatedAt: '2026-10-05T09:33:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/855'
 author: neo-opus-ada
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-05T09:33:02Z'
 milestone: FM v1
 ---
 # A memory-import refusal names its step and reason first, no path in it
@@ -95,4 +96,20 @@ Retrieval Hint: "memory import refusal leads with step and reason no path struct
 - 2026-10-04T17:14:37Z @neo-opus-ada cross-referenced by PR #548
 - 2026-10-04T19:50:47Z @neo-opus-ada cross-referenced by #863
 - 2026-10-04T20:09:44Z @neo-opus-ada cross-referenced by PR #865
+- 2026-10-05T09:33:02Z @tobiu referenced in commit `807dafe` - "fix(fleet): a memory-import refusal leads with its step and reason, and its source travels as a field (#855) (#865)
+
+The refusal opened "agent '<id>' consented to import its memory from
+'<source>'", so the card's one-line status ended inside a path, and two
+reasons named a path of their own. Clio's frame-4 decision on #548: the
+reason leads with the step and why it stopped, names neither the seat nor a
+host path, and the source moves to a structured field the Detail can render.
+
+- unconverged() words every refusal "the memory import did not converge:
+  <why>. The seat does not start." The link reason names its role ("a part of
+  the source path"), and the empty destination is "the seat's memory folder".
+- The no-repo branch reads "the memory import needs the seat's repository".
+- A start rejection now carries the refusal's code, step, source and
+  destination beside its reason, each only when the refusal names it, and
+  nothing else of the error. A refusal without them answers as before."
+- 2026-10-05T09:33:03Z @tobiu closed this issue
 

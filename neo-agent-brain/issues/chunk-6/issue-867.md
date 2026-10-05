@@ -15,10 +15,10 @@ author: neo-opus-ada
 commentsCount: 0
 parentIssue: 571
 subIssues:
-  - '[ ] 862 A Fleet seat starts on its declared model and reasoning effort'
-  - '[ ] 864 Configuration offers the models and efforts a seat''s harness names, and Start refuses one it lacks'
-  - '[ ] 559 Detail''s Seat group declares a seat''s model and reasoning effort'
-subIssuesCompleted: 0
+  - '[x] 862 A Fleet seat starts on its declared model and reasoning effort'
+  - '[x] 864 Configuration offers the models and efforts a seat''s harness names, and Start refuses one it lacks'
+  - '[x] 559 Detail''s Seat group declares a seat''s model and reasoning effort'
+subIssuesCompleted: 3
 subIssuesTotal: 3
 contentTrust:
   projected: true

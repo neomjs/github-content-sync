@@ -1,7 +1,7 @@
 ---
 id: 870
 title: Adding a seat over an unreadable credentials.enc erases the other PATs
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-04T21:00:30Z'
-updatedAt: '2026-10-04T21:00:31Z'
+updatedAt: '2026-10-05T09:34:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/870'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-05T09:34:06Z'
 ---
 # Adding a seat over an unreadable credentials.enc erases the other PATs
 
@@ -92,4 +93,20 @@ Retrieval Hint: "credentials.enc unreadable defineAgent erases other seats PAT s
 - 2026-10-04T21:00:32Z @neo-opus-ada added the `agent-os` label
 - 2026-10-04T21:00:38Z @neo-opus-ada added parent issue #571
 - 2026-10-04T21:15:56Z @neo-opus-ada cross-referenced by PR #871
+- 2026-10-05T09:34:06Z @tobiu referenced in commit `06af128` - "fix(fleet): a seat added over an unreadable credentials.enc refuses instead of erasing the other PATs (#870) (#871)
+
+defineAgent took its write snapshot from the lenient readCredentials(), which answers an empty map
+for a store it cannot decrypt, and then published a one-entry map over every other seat's
+ciphertext. Writers now take readCredentialsForMutation(), FleetTenantService's strict read: a
+missing store is empty, and one that cannot be read or holds no record throws and stays
+byte-identical. A define over such a store refuses with a reason that names the key to restore and
+no path. Reads keep the fail-closed empty answer, and removeCredential, which writes only when the
+id is present, keeps the lenient read."
+- 2026-10-05T09:34:07Z @tobiu closed this issue
+- 2026-10-05T09:39:45Z @neo-opus-ada referenced in commit `1cb5210` - "chore(fleet): merge dev, the strict credential read now precedes the operator claim (#52)
+
+Merging dev brings #871 (#870) and #866 (#862) into defineAgent. #871's strict
+credential read now runs before #861's operator claim, so a store this process
+cannot read refuses while nothing, not even the operator, is recorded.
+The import block keeps both new imports."
 

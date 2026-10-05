@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-10-04T18:59:51Z'
+updatedAt: '2026-10-05T13:19:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
 commentsCount: 7
@@ -20,8 +20,8 @@ subIssues:
   - '[x] 456 The roadmap''s row 5 names its steward, its epic and the merged leaves'
   - '[ ] 516 Row 5''s installed walkthrough: each ordinary failure provoked, one receipt each'
   - '[x] 523 A walker can hold smoke''s isolated organism open and drive its plane'
-  - '[ ] 533 A non-live banner shows its reason beside the pill, not only on hover'
-subIssuesCompleted: 4
+  - '[x] 533 A non-live banner shows its reason beside the pill, not only on hover'
+subIssuesCompleted: 5
 subIssuesTotal: 6
 contentTrust:
   projected: true
@@ -35,7 +35,7 @@ milestone: FM v1
 
 Terminal predicate: on one installed Fleet Manager, each failure FM v1 ROADMAP row 5 names is provoked, and the product returns to `live` by its own guidance alone, with one receipt per failure. The failures are: the plane restarts, the plane is cut to a new Brain commit, the vessel is updated, the saved plane goes stale, the PAT expires or is wrong, the endpoint is wrong. This is row 5's installed check, recorded once.
 
-Row state: row 5 · Ada (walker Mnemosyne) · blocked · 2026-10-04 12:48Z, candidate Institution `e1a9dbe` / Brain `fb40366` / engine `82bc615` · plan: planned 3 on milestone #1: #523 M (done: PR #537 merged 12:38Z), #533 M (built at `ac7ddccc`, captures at Clio's read before the PR), #516 S · done 1 · added 1 (denominator sitting 2026-10-04: 5978785003 + 5978806870) · depends on: #532 (Emmy; PR #536 merged), row 2's cold frames (#477), cut A (prepared; the live recreate waits for the operator's in-session yes), the next #12 candidate carrying #537 and #533, one operator slot · forecast: passed by 2026-10-11 if cut A lands by 10-07 and the operator slot by 10-11 · next: #533 capture read → Clio, then PR → a GPT seat; cut A go → @tobiu, run → Ada with Mnemosyne walking; the slot → @tobiu
+Row state: row 5 · Ada (walker Vega, accepted 10-05; Euclid alternate) · blocked · 2026-10-05 13:20Z, candidate C (Emmy's #12 selection 5991701878, not yet built): Institution `5f3275b1` + #564 / Brain `f24815d6` / engine `82bc6158` · plan: planned 3 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S · done 2 · added 1 (denominator sitting 2026-10-04: 5978785003 + 5978806870) · depends on: candidate C, which freezes after #564 merges (its re-review waits on the operator's permission for Sophie to publish her session id), or Emmy's separate `5f3275b1` build for row 5 alone if C is not frozen by 10-07 (#516: 5994667825); row 2's cold frames (#477); one operator slot · forecast: passed by 2026-10-11 if a candidate carrying #542 is built by 10-07 and the operator slot lands by 10-11 · next: the permission → @tobiu (to Sophie); the candidate → Emmy; the walk → Vega once it is built; the slot → @tobiu
 
 ## Problem scope
 
@@ -286,4 +286,6 @@ The `Row state:` line is updated to match.
 - 2026-10-04T13:01:37Z @neo-gpt-emmy cross-referenced by #12
 - 2026-10-04T13:01:55Z @neo-opus-ada cross-referenced by PR #542
 - 2026-10-04T18:17:15Z @neo-opus-ada cross-referenced by #554
+- 2026-10-05T11:05:33Z @neo-opus-ada cross-referenced by #566
+- 2026-10-05T14:02:23Z @neo-opus-ada cross-referenced by #571
 

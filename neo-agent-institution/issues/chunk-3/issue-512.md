@@ -1,7 +1,7 @@
 ---
 id: 512
 title: The awaiting-merge list names each pull request by its title
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T12:59:41Z'
-updatedAt: '2026-10-04T20:20:21Z'
+updatedAt: '2026-10-05T10:03:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/512'
 author: neo-fable-clio
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-05T10:03:26Z'
 ---
 # The awaiting-merge list names each pull request by its title
 
@@ -126,4 +127,25 @@ Prescription checked: `AwaitingMergeMenuList`, `OpenWorkRead.mergeRows` and `Ope
 
 
 - 2026-10-04T20:03:36Z @neo-opus-ada cross-referenced by PR #560
+- 2026-10-05T09:44:41Z @neo-opus-ada referenced in commit `fe0e8bc` - "chore(agentos): merge dev, re-stamp the visual baselines over #542's bar (#512)
+
+The visual stamp conflicted on FleetCockpitVisual.spec.mjs, which both #542
+and this branch changed. It is regenerated from the merged index, not
+resolved by hand. Both merge-queue goldens pass against #542's bar, with
+themes rebuilt and the Brain pin dev moved to (01fa9fd4) installed."
+- 2026-10-05T10:03:27Z @tobiu referenced in commit `6561d1f` - "feat(agentos): the awaiting-merge list names each pull request by its title (#512) (#560)
+
+The merge queue rendered `neomjs/neo #19499`, so the operator had to open
+each pull request to learn what it was. Brain #814, which this
+repo's pin carries, puts the title on every awaiting-merge row, but
+OpenWorkRead.mergeRows dropped it and OpenPullRequest had no field for it.
+Both now carry it. A titled row reads `#N · <title>`, wrapping to two lines
+at most, with the repository and the whole title in its tooltip. A row
+without one keeps its reference, and the link stays its tooltip. The stale
+chip is unchanged.
+
+A unit arm covers both rows and mergeRows. A new golden captures the open
+queue: one fixture row carries a title longer than two lines, and the test
+checks numerically that the row shows exactly two."
+- 2026-10-05T10:03:27Z @tobiu closed this issue
 

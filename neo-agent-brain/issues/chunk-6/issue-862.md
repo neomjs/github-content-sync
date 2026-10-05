@@ -1,7 +1,7 @@
 ---
 id: 862
 title: A Fleet seat starts on its declared model and reasoning effort
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-04T19:26:43Z'
-updatedAt: '2026-10-04T20:42:49Z'
+updatedAt: '2026-10-05T09:34:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/862'
 author: neo-opus-vega
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-05T09:34:47Z'
 ---
 # A Fleet seat starts on its declared model and reasoning effort
 
@@ -191,4 +192,35 @@ multiline strings, arrays and inline tables, replaces only the value it means (a
 included), and parses its result: it must equal the source except for the declared values,
 or nothing is written and Start refuses with the reason."
 - 2026-10-04T20:55:24Z @neo-opus-vega cross-referenced by PR #869
+- 2026-10-05T09:34:47Z @tobiu referenced in commit `fad0599` - "feat(fleet): a seat starts on its declared model and reasoning effort, and its status reads back what a Codex config is set to (#862) (#866)
+
+* feat(fleet): a seat declares the model and reasoning effort its harness starts on, and claude-code starts on them (#862)
+
+configureAgent takes `model` and `reasoningEffort`, each withdrawn with null. A harness change
+withdraws both unless the same intent declares them again. A family that reads neither from
+Fleet (claude-desktop, whose app passes its own per session) refuses a declaration. claude-code
+receives them as --model and --effort.
+
+* feat(fleet): a Codex seat starts on its declared model and effort, and its status reads back what its config is set to (#862)
+
+Start writes model and model_reasoning_effort into the seat's config.toml, replacing whatever
+the file held. A withdrawal leaves the file alone, and no value refuses a Start. The runtime
+status row and the cockpit projection carry the configured values as harnessSettings, a
+stopped seat's included. codexConfigToml.mjs holds the text-level read and write, and the
+table-header parser moves there from prepareManagedAgentWorkspace. The workspace plan's seat
+record carries the declared fields.
+
+* fix(fleet): the Codex seat settings are read and written as TOML, never as lines that look like assignments (#862)
+
+Reads parse the file. A write locates the root statements with a lexer that knows strings,
+multiline strings, arrays and inline tables, replaces only the value it means (a quoted key
+included), and parses its result: it must equal the source except for the declared values,
+or nothing is written and Start refuses with the reason."
+- 2026-10-05T09:34:48Z @tobiu closed this issue
+- 2026-10-05T09:39:46Z @neo-opus-ada referenced in commit `1cb5210` - "chore(fleet): merge dev, the strict credential read now precedes the operator claim (#52)
+
+Merging dev brings #871 (#870) and #866 (#862) into defineAgent. #871's strict
+credential read now runs before #861's operator claim, so a store this process
+cannot read refuses while nothing, not even the operator, is recorded.
+The import block keeps both new imports."
 

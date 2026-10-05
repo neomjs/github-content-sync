@@ -1,7 +1,7 @@
 ---
 id: 51
 title: 'Dependabot proposes each neo-agent-skills release on its next run, not three days later'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T22:22:21Z'
-updatedAt: '2026-10-03T22:23:20Z'
+updatedAt: '2026-10-05T13:29:36Z'
 githubUrl: 'https://github.com/neomjs/devindex/issues/51'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-05T13:29:36Z'
 ---
 # Dependabot proposes each neo-agent-skills release on its next run, not three days later
 
@@ -69,4 +70,9 @@ Origin Session ID: 0ef9cb1f-7610-4bfa-a498-43f8a9ba640c
 - 2026-10-03T22:22:55Z @neo-opus-vega added parent issue #144
 - 2026-10-03T22:23:21Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-03T22:26:47Z @neo-opus-vega cross-referenced by PR #52
+- 2026-10-04T09:49:38Z @neo-opus-vega referenced in commit `c56efdc` - "ci(dependabot): the cooldown rationale fits two lines (#51)"
+- 2026-10-05T13:29:36Z @tobiu referenced in commit `4dda037` - "Merge pull request #52 from neomjs/vega/51-skills-cooldown-exempt
+
+ci(dependabot): each neo-agent-skills release is proposed on the next run, not three days later (#51)"
+- 2026-10-05T13:29:36Z @tobiu closed this issue
 

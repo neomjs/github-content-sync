@@ -1,18 +1,18 @@
 ---
 id: 857
 title: 'In plane mode the relay defines seats on the plane, then applies them'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-04T17:18:40Z'
-updatedAt: '2026-10-04T17:18:41Z'
+updatedAt: '2026-10-05T13:35:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/857'
 author: neo-opus-ada
 commentsCount: 0
-parentIssue: null
+parentIssue: 83
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -21,12 +21,15 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 856 The plane''s fleet-server admits defineAgent with its owner principal'
+  - '[x] 856 The plane''s fleet-server admits defineAgent with its owner principal'
 blocking:
   - '[ ] 700 An auto-provisioned agent identity carries no model family, so family-keyed budgets, aliases and wakes skip it'
+closedAt: '2026-10-05T13:35:51Z'
 milestone: FM v1
 ---
 # In plane mode the relay defines seats on the plane, then applies them
+
+> *Corrected 2026-10-05 (Ada, the author, at intake):* this body said the relay calls the plane's `/fleet` "with the plane bearer". That bearer is the plane-MCP credential, and the credential-class ledger forbids presenting it to the fleet surface (`assertFleetPlaneAdmissionBearerClass`, `fleetServer.mjs`). The relay presents the fleet-surface credential, `fleet.planeAdmissionBearer`. The Fix, the ledger and AC-1 say so now, and AC-5 is new.
 
 ## Context
 
@@ -41,31 +44,34 @@ This is the third of four leaves on #52's product path, in Grace's order for row
 ## The Architectural Reality
 
 - The plane-mode relay already opens an identity-verified client to the plane (`createPlaneMailboxClient` on `<planeBase>/mc/mcp`, with the plane bearer checked as the viewer's subject).
+- The fleet surface takes its own credential. `fleet.planeAdmissionBearer` (or `fleet.planeAdmissionBearerFile`) is the fleet-client admission credential. `assertFleetPlaneAdmissionBearerClass` refuses a declaration that aliases the plane-MCP bearer, and `devFleetServer` already dials `<planeBase>/fleet/events` with it.
 - The plane's `fleet-server` admits `defineAgent` once #856 lands. It authenticates the PAT, resolves the principal and records the definition and the relation.
-- `fleet.planeBase` and `fleet.planeBearer` are AiConfig leaves. Any touch follows ADR 0019 (critical gate 10: read it before authoring).
+- `fleet.planeBase`, `fleet.planeBearer` and `fleet.planeAdmissionBearer` are AiConfig leaves. Any touch follows ADR 0019 (critical gate 10: read it before authoring).
 - Structure map: `ai/services/fleet` (`devFleetServer.mjs`, `fleetBridgeServer.mjs`, `FleetControlBridge.mjs`).
 
 ## The Fix
 
-- In plane mode, the relay's `defineAgent` sends the definition to the plane's `/fleet` with the plane bearer.
+- In plane mode, the relay's `defineAgent` sends the definition to the plane's `/fleet` with the fleet-surface credential, never the plane-MCP bearer.
   - When the plane accepts, the relay writes the plane's canonical definition to its local registry as the actuation copy, and answers it.
   - When the plane refuses, the relay answers the plane's state as it is (`no-principal`, `unregistered`, `uninitialized`, `refused`, `unavailable`) and writes nothing.
   - When the plane is unreachable, the relay answers `unavailable` and writes nothing.
+  - When no fleet-surface credential is declared, the relay answers a named refusal and writes nothing. It never falls back to the plane-MCP bearer or to a local define.
 - In-process mode (no plane base) is unchanged. A local-plane shell has no admission; the consumer names that as a state.
 
 ## Contract Ledger
 
 | Target surface | Source of authority | Behavior | Fallback | Docs | Evidence |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| The relay's `defineAgent` in plane mode | #52's product path; ADR 0038 §2.1 | Defined on the plane first; the local registry holds only the plane's canonical answer | A refusal or an unreachable plane answers as itself, with the local registry unchanged | `devFleetServer` / bridge JSDoc | relay spec against a fixture plane |
+| The relay's `defineAgent` in plane mode | #52's product path; ADR 0038 §2.1 | Defined on the plane first, with the fleet-surface credential; the local registry holds only the plane's canonical answer | A refusal, an unreachable plane or an undeclared fleet-surface credential answers as itself, with the local registry unchanged | `devFleetServer` / bridge JSDoc | relay spec against a fixture plane |
 | In-process mode | today | Unchanged | — | — | existing specs |
 
 ## Acceptance Criteria
 
-- [ ] AC-1: in plane mode, `defineAgent` reaches the plane's `/fleet` with the plane bearer, and the local registry holds the plane's canonical answer (spec against a fixture plane).
+- [ ] AC-1: in plane mode, `defineAgent` reaches the plane's `/fleet` with the fleet-surface credential, and the local registry holds the plane's canonical answer (spec against a fixture plane).
 - [ ] AC-2: each plane refusal answers as the plane's state and reason, and the local registry is unchanged (unit, one arm per state).
 - [ ] AC-3: an unreachable plane answers `unavailable` and writes nothing (unit).
 - [ ] AC-4: in-process mode behaves exactly as today (the existing relay specs stay green).
+- [ ] AC-5: with no fleet-surface credential declared, `defineAgent` answers a named refusal and writes nothing, and the plane-MCP bearer never reaches `/fleet` (unit).
 
 ## Post-Merge Validation
 
@@ -104,4 +110,33 @@ Retrieval Hint: "relay plane mode defineAgent forwarded to plane fleet canonical
 - 2026-10-04T17:38:38Z @neo-gpt-sophie cross-referenced by #700
 - 2026-10-04T17:45:45Z @neo-opus-grace cross-referenced by #414
 - 2026-10-04T18:44:38Z @neo-opus-ada cross-referenced by PR #861
+- 2026-10-04T19:50:47Z @neo-opus-ada cross-referenced by #863
+- 2026-10-04T20:48:59Z @neo-opus-ada added parent issue #83
+- 2026-10-05T10:12:17Z @neo-opus-ada cross-referenced by PR #872
+- 2026-10-05T11:07:03Z @neo-opus-ada cross-referenced by PR #877
+- 2026-10-05T11:47:26Z @neo-opus-ada referenced in commit `800c06d` - "fix(fleet): plane mode applies the plane's accepted definition, and an answer without one writes nothing (#857)
+
+Sophie's source falsifier: the local apply re-sent the operator's request,
+so a default the plane chose (modelProvider) and canonical metadata never
+reached this host's copy, and an ok answer carrying null still applied.
+The copy now takes the plane's declaration fields as accepted, plus only
+the host-owned PAT and launch owner. An answer without a definition for
+this seat id refuses and writes nothing."
+- 2026-10-05T12:03:50Z @neo-opus-ada cross-referenced by PR #881
+- 2026-10-05T13:35:52Z @tobiu referenced in commit `e3388e5` - "feat(fleet): in plane mode the relay defines a seat on the plane first, with the fleet-surface credential (#857) (#881)
+
+The plane owns a seat's definition and operator, so the plane-mode relay
+sends defineAgent to <planeBase>/fleet with fleet.planeAdmissionBearer,
+never the plane-MCP bearer. This host then applies the plane's accepted
+definition (its declaration fields, defaults included) plus only the
+host-owned PAT and launch owner, and claims no operator. A plane refusal,
+an unreachable plane, an undeclared fleet-surface credential, a local id
+clash, or an answer without the accepted definition writes nothing here.
+A local failure after the plane accepted says the seat now exists on the
+plane. In-process mode is unchanged.
+
+Supersedes PR #877, whose branch carries a merge commit without a ticket
+id; the content is identical (same patch-id)."
+- 2026-10-05T13:35:52Z @tobiu closed this issue
+- 2026-10-05T14:02:23Z @neo-opus-ada cross-referenced by #571
 

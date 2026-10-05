@@ -1,7 +1,7 @@
 ---
 id: 864
 title: 'Configuration offers the models and efforts a seat''s harness names, and Start refuses one it lacks'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-04T20:07:35Z'
-updatedAt: '2026-10-04T21:56:35Z'
+updatedAt: '2026-10-05T10:21:56Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/864'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-05T10:21:56Z'
 ---
 # Configuration offers the models and efforts a seat's harness names, and Start refuses one it lacks
 
@@ -145,4 +146,104 @@ The catalog is read at every provisioned start, declared or not, repo or not, an
 declared value is checked against it. A read whose app-server outlived its signals refuses the start as
 FLEET_SEAT_HOME_IN_USE. The model refusal says what did not happen (nothing cloned or configured, the harness not
 started) instead of "nothing was changed", since the read itself runs the app-server in the seat's home."
+- 2026-10-05T09:39:47Z @neo-opus-vega referenced in commit `27eba96` - "fix(fleet): a catalog app-server that outlives both signals keeps its seat's home until it exits, so no read or start runs beside it (#864)
+
+The reader records the home and the server's pid when SIGTERM and SIGKILL both go unanswered, and clears it on that
+process's exit. Until then every catalog read of that home answers that it is in use, naming the pid, without
+starting a second app-server; the dispatcher asks before the login check, so the read each start runs first
+refuses the start even when the home has lost its login meanwhile."
+- 2026-10-05T09:43:45Z @neo-opus-vega referenced in commit `0afe89c` - "feat(fleet): read a Codex seat's model catalog through its own app-server, every page, hidden entries flagged (#864)"
+- 2026-10-05T09:43:45Z @neo-opus-vega referenced in commit `82771e0` - "feat(fleet): Start refuses a declared model its harness lacks, and Configuration can ask a seat's harness what it offers (#864)
+
+seatModelCatalog reads per family: a Codex seat's app-server in its own logged-in home,
+claude-code's effort levels from its own --help, nothing for the rest. Only a complete read
+refuses, in Clio's words, before anything changes; the outcome rides the status as seatModel.
+fleetSeatModelCatalog serves the picker: a stopped seat read fresh, a running one the catalog
+its last start read. It is classed lifecycle-write, because the read starts an app-server in
+the seat's home."
+- 2026-10-05T09:43:45Z @neo-opus-vega referenced in commit `92db496` - "refactor(fleet): where a harness reads a declared model is the shared catalog's seatSettings, one truth for Brain and Body (#864)
+
+The launch contract map kept the fact in ai/, where the cockpit cannot read it. It moves to
+src/fleet/contract/harnessTypes.mjs beside tenantMcpTarget, with resolveHarnessSeatSettings.
+getHarnessSeatSettings and the launch map's three entries go."
+- 2026-10-05T09:43:45Z @neo-opus-vega referenced in commit `1115442` - "fix(fleet): a seat's model refusal belongs to its latest start, so a later start never inherits it as its cause (#864)
+
+Each provisioned start clears the seat's model record before its first refusal. A start refused at the Git
+identity check, or one with the declaration withdrawn, no longer leaves an earlier "model is not available"
+standing in the seat's status."
+- 2026-10-05T09:43:45Z @neo-opus-vega referenced in commit `51319a6` - "fix(fleet): a Codex catalog read is over only when its app-server has exited, and an unreadable model list never proves a model missing (#864)
+
+The answer waits for the child's exit: SIGTERM, then SIGKILL after a bounded grace, and a process that outlives
+both hands back no catalog but stillRunning, since the seat's home is not free. A page is read whole or not at all:
+a result without a data list, a row without an id or with unnamed efforts, or a non-string cursor reads as partial
+(earlier pages kept) or unavailable, and nothing thrown while reading a message escapes the stream callback."
+- 2026-10-05T09:43:45Z @neo-opus-vega referenced in commit `f8976f3` - "fix(fleet): catalog reads and starts take a seat's home one at a time, so a running check never admits a second app-server (#864)
+
+FleetManager.withSeatHome chains every operation on one seat's home: a stopped seat's picker read and a start's
+provisioning wait for each other, and the running check runs inside the hold. A read queued behind a start finds
+the seat running and answers the catalog that start kept. An operation that throws releases the home."
+- 2026-10-05T09:43:45Z @neo-opus-vega referenced in commit `f59f496` - "fix(fleet): every start reads and keeps its harness's catalog, so a seat started on defaults can be changed while it runs (#864)
+
+The catalog is read at every provisioned start, declared or not, repo or not, and kept for Configuration; only a
+declared value is checked against it. A read whose app-server outlived its signals refuses the start as
+FLEET_SEAT_HOME_IN_USE. The model refusal says what did not happen (nothing cloned or configured, the harness not
+started) instead of "nothing was changed", since the read itself runs the app-server in the seat's home."
+- 2026-10-05T09:43:46Z @neo-opus-vega referenced in commit `9de7a1c` - "fix(fleet): a catalog app-server that outlives both signals keeps its seat's home until it exits, so no read or start runs beside it (#864)
+
+The reader records the home and the server's pid when SIGTERM and SIGKILL both go unanswered, and clears it on that
+process's exit. Until then every catalog read of that home answers that it is in use, naming the pid, without
+starting a second app-server; the dispatcher asks before the login check, so the read each start runs first
+refuses the start even when the home has lost its login meanwhile."
+- 2026-10-05T10:21:56Z @tobiu referenced in commit `f24815d` - "feat(fleet): Start refuses a declared model its harness lacks, and Configuration asks a seat's harness what it offers (#864) (#869)
+
+* feat(fleet): read a Codex seat's model catalog through its own app-server, every page, hidden entries flagged (#864)
+
+* feat(fleet): Start refuses a declared model its harness lacks, and Configuration can ask a seat's harness what it offers (#864)
+
+seatModelCatalog reads per family: a Codex seat's app-server in its own logged-in home,
+claude-code's effort levels from its own --help, nothing for the rest. Only a complete read
+refuses, in Clio's words, before anything changes; the outcome rides the status as seatModel.
+fleetSeatModelCatalog serves the picker: a stopped seat read fresh, a running one the catalog
+its last start read. It is classed lifecycle-write, because the read starts an app-server in
+the seat's home.
+
+* refactor(fleet): where a harness reads a declared model is the shared catalog's seatSettings, one truth for Brain and Body (#864)
+
+The launch contract map kept the fact in ai/, where the cockpit cannot read it. It moves to
+src/fleet/contract/harnessTypes.mjs beside tenantMcpTarget, with resolveHarnessSeatSettings.
+getHarnessSeatSettings and the launch map's three entries go.
+
+* fix(fleet): a seat's model refusal belongs to its latest start, so a later start never inherits it as its cause (#864)
+
+Each provisioned start clears the seat's model record before its first refusal. A start refused at the Git
+identity check, or one with the declaration withdrawn, no longer leaves an earlier "model is not available"
+standing in the seat's status.
+
+* fix(fleet): a Codex catalog read is over only when its app-server has exited, and an unreadable model list never proves a model missing (#864)
+
+The answer waits for the child's exit: SIGTERM, then SIGKILL after a bounded grace, and a process that outlives
+both hands back no catalog but stillRunning, since the seat's home is not free. A page is read whole or not at all:
+a result without a data list, a row without an id or with unnamed efforts, or a non-string cursor reads as partial
+(earlier pages kept) or unavailable, and nothing thrown while reading a message escapes the stream callback.
+
+* fix(fleet): catalog reads and starts take a seat's home one at a time, so a running check never admits a second app-server (#864)
+
+FleetManager.withSeatHome chains every operation on one seat's home: a stopped seat's picker read and a start's
+provisioning wait for each other, and the running check runs inside the hold. A read queued behind a start finds
+the seat running and answers the catalog that start kept. An operation that throws releases the home.
+
+* fix(fleet): every start reads and keeps its harness's catalog, so a seat started on defaults can be changed while it runs (#864)
+
+The catalog is read at every provisioned start, declared or not, repo or not, and kept for Configuration; only a
+declared value is checked against it. A read whose app-server outlived its signals refuses the start as
+FLEET_SEAT_HOME_IN_USE. The model refusal says what did not happen (nothing cloned or configured, the harness not
+started) instead of "nothing was changed", since the read itself runs the app-server in the seat's home.
+
+* fix(fleet): a catalog app-server that outlives both signals keeps its seat's home until it exits, so no read or start runs beside it (#864)
+
+The reader records the home and the server's pid when SIGTERM and SIGKILL both go unanswered, and clears it on that
+process's exit. Until then every catalog read of that home answers that it is in use, naming the pid, without
+starting a second app-server; the dispatcher asks before the login check, so the read each start runs first
+refuses the start even when the home has lost its login meanwhile."
+- 2026-10-05T10:21:57Z @tobiu closed this issue
 

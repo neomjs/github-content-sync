@@ -1,7 +1,7 @@
 ---
 id: 52
 title: Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-08-08T19:56:52Z'
-updatedAt: '2026-10-04T19:39:45Z'
+updatedAt: '2026-10-05T09:57:56Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/52'
 author: neo-fable-clio
 commentsCount: 23
@@ -24,10 +24,11 @@ contentTrust:
 blockedBy:
   - '[x] 783 Fleet admission resolves its owner through a plane-governed forge connection'
 blocking:
-  - '[ ] 856 The plane''s fleet-server admits defineAgent with its owner principal'
+  - '[x] 856 The plane''s fleet-server admits defineAgent with its owner principal'
   - '[ ] 762 The wake digest renders a seat''s own open work from one plane copy'
   - '[ ] 700 An auto-provisioned agent identity carries no model family, so family-keyed budgets, aliases and wakes skip it'
   - '[ ] 51 Fleet visibility grant family — CAN_OBSERVE_FLEET_OF, default-private, at-rest coherence with an enforcement point'
+closedAt: '2026-10-05T09:57:56Z'
 milestone: FM v1
 ---
 # Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)
@@ -964,4 +965,65 @@ Residual: the plane-side journey (provision → Add → `operatesSeat` → Detai
 
 - 2026-10-04T19:50:47Z @neo-opus-ada cross-referenced by #863
 - 2026-10-04T21:00:31Z @neo-opus-ada cross-referenced by #870
+- 2026-10-05T09:25:06Z @neo-gpt-sophie cross-referenced by #28
+- 2026-10-05T09:39:45Z @neo-opus-ada referenced in commit `1cb5210` - "chore(fleet): merge dev, the strict credential read now precedes the operator claim (#52)
+
+Merging dev brings #871 (#870) and #866 (#862) into defineAgent. #871's strict
+credential read now runs before #861's operator claim, so a store this process
+cannot read refuses while nothing, not even the operator, is recorded.
+The import block keeps both new imports."
+- 2026-10-05T09:39:46Z @neo-opus-ada referenced in commit `6a9003c` - "test(fleet): a create over an unreadable credential store records no operator (#52)
+
+Fails with the claim-first order (an orphaned claim names the refused seat)
+and passes with the strict read first."
+- 2026-10-05T09:57:56Z @tobiu referenced in commit `33ae898` - "feat(fleet): a seat records the principal that operates it, written only by a define or the plane host (#52) (#861)
+
+* feat(fleet): a seat records the principal that operates it, written only by a define or the plane host (#52)
+
+The operator relation the #700 family confirmation needs:
+- SeatOperatorRegistryService holds {seatId → principal} in seat-operators.json, with the forge-connection store's discipline: lock, re-read, atomic replace, an append-only event log, and a store that cannot be trusted is never replaced and reads unavailable.
+- defineAgent stamps the admitted owner principal, handed in by the dispatcher's admission (seat-creating verbs only), never from params; a caller-named operator is refused.
+- FleetRegistryService.operatesSeat answers operates / other-operator / unowned / unknown-seat / no-principal / unavailable, and an unreadable seat registry is no longer mistaken for an empty one; seatsOperatedBy is its inverse.
+- The seatOperators CLI is the plane-host path: assign for legacy seats (all or nothing, same-principal idempotent) and transfer (compare-and-set). No wire verb reaches either.
+
+Open before the PR (#52 comment 5980887375): the packaged shell's fleetBridgeServer carries no owner principal yet, so its seats are created unowned until the stack picks how that path gets one.
+
+* fix(fleet): only an owner principal operates a seat, and adopting one moves no operator (#52)
+
+operatesSeat tested its principal for truthiness, so a login, an @identity
+or a path reached the store and answered other-operator or unowned. It now
+answers no-principal for anything that is not an owner principal, like the
+writers already did. Two arms pin the folded ACs: adoptAgent receives no
+admission and its launch-owner write leaves the store byte-identical (AC-1),
+and no relation path keys on a login, an AgentIdentity id or a checkout path
+(AC-6). The AC-6 arm fails with the old truthiness guard.
+
+* fix(fleet): a seat's create claims its operator before anything is written, so a recreated seat never inherits one (#52)
+
+Sophie's review of #861 reproduced two ways a recreated seat kept its
+predecessor's operator. removeAgent left the relation behind, and the stamp
+ran after the definition was published and only warned when refused.
+defineAgent is now a three-store create: the operator is claimed first (the
+admitted principal, or no one, which clears any record an earlier seat of
+the id left), then the credential, then the registry row. A refused claim
+refuses the create before anything is written. A later write failure leaves
+a claim for a seat that does not exist, which no lookup reads as operated
+and the next create replaces. removeAgent releases the record as tidiness.
+claim and release replace stamp.
+
+Integrity: the operator store's version must count its events in sequence,
+and a registry without an agents table reads unavailable instead of empty,
+so neither lookup answers from a malformed store and nothing repairs one.
+
+Every create now reads fleet.dataDir through the claim, so the unit config
+binds that leaf to a root per worker process, removed at exit, instead of
+letting specs that root their registry elsewhere reach the host's.
+
+* test(fleet): a create over an unreadable credential store records no operator (#52)
+
+Fails with the claim-first order (an orphaned claim names the refused seat)
+and passes with the strict read first."
+- 2026-10-05T09:57:56Z @tobiu closed this issue
+- 2026-10-05T10:58:01Z @neo-gpt-sophie cross-referenced by PR #872
+- 2026-10-05T13:30:11Z @neo-gpt-sophie cross-referenced by PR #881
 

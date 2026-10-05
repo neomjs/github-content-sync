@@ -1,14 +1,14 @@
 ---
 id: 550
 title: A run the setup card starts takes the profile's target
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-fable
 createdAt: '2026-10-04T16:22:46Z'
-updatedAt: '2026-10-04T17:50:24Z'
+updatedAt: '2026-10-05T09:37:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/550'
 author: neo-fable
 commentsCount: 0
@@ -23,7 +23,8 @@ contentTrust:
 blockedBy:
   - '[x] 848 A Create run binds the target its profile declares'
 blocking:
-  - '[ ] 540 The setup card offers a new witness attempt where the recipe names it'
+  - '[x] 540 The setup card offers a new witness attempt where the recipe names it'
+closedAt: '2026-10-05T09:37:20Z'
 milestone: FM v1
 ---
 # A run the setup card starts takes the profile's target
@@ -119,4 +120,35 @@ Retrieval Hint: "setup broker resolveRun target null layout target cold request 
 - 2026-10-04T17:37:28Z @neo-fable marked this issue as blocking #540
 - 2026-10-04T17:49:56Z @neo-fable cross-referenced by #848
 - 2026-10-04T18:34:00Z @neo-fable cross-referenced by PR #555
+- 2026-10-05T09:37:20Z @tobiu referenced in commit `3d337eb` - "fix(harness): a run the setup card starts binds the plane its profile declares (#550) (#555)
+
+* fix(harness): a run the setup card starts binds the plane its profile declares (#550)
+
+The card names no target, and resolveRun created the run with none: write-env could not render the plane's data root and the run never reached done. resolveRun now asks the Brain's runTarget, as the CLI does: what the request names, else the record's binding, else the target the profile's layout declares. A new run is created already bound, so a first evaluation retires nothing.
+
+Tests: the fixture reads the profile's target from the pinned layout instead of stating it; the broker's cold arm and its done arm were the same run once the target is the profile's, so they are one arm; the card's e2e carries its run to done on the real broker and the hand-written sample has no e2e consumer left.
+
+Needs the Brain pin that carries neomjs/neo-agent-brain#848.
+
+* feat(deps): pin Brain 01fa9fd4 — the row contract and the profile's target (#550)
+
+The pin carries neomjs/neo-agent-brain#844 (the recipe is the one effect order; rows name their wait and their exits) and neomjs/neo-agent-brain#848 (hostLayout declares the profile's target and compose profiles; runTarget). The broker's call to runTarget needs it. The lock also takes the Brain's dotenv 18.0.5."
+- 2026-10-05T09:37:20Z @tobiu closed this issue
+- 2026-10-05T11:05:33Z @tobiu referenced in commit `9406ce8` - "feat(agentos): the setup card offers the witness row's exits (#540) (#561)
+
+* feat(agentos): the setup card offers the witness row's exits (#540)
+
+A refused witness write showed run, which never writes again, and a lost acknowledgement offered only a re-check that never searched the plane: the first run stopped there. The card now reads the row's data. A row that waits names the step it waits for and has no chip. The witness row's exits are its chips in the Brain's order, in the operator's verbs: run, re-check, write again. re-check is the effect without a new attempt; write again sends newAttempt, after one line in the row when a second row on the plane is possible.
+
+The broker admits newAttempt only when the evaluated row lists a new attempt among its exits and refuses it by name anywhere else; the addon forwards it only as true. actionsFor replaces actionFor, and the branch that read the provider-key row's reason is gone.
+
+Needs #550's Brain pin.
+
+* test(agentos): re-stamp the visual baselines after dev's merges (#540)
+
+* fix(agentos): an answer equal to the held one also takes a pending confirmation back (#540)
+
+The door cleared the witness row's pending confirmation in afterSetEvaluation, which the config setter skips for an equal value: an equal answer left the confirmation in the row. The door's evaluation is an observation, so its config now never reports equality (the engine's per-config isEqual, as container items use it) and every answer re-projects. The arm holds an exactly equal answer and a changed one.
+
+* test(agentos): re-stamp the visual baselines after dev's merges (#540)"
 
