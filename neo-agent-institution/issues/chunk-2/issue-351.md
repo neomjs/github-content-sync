@@ -49,8 +49,8 @@ subIssues:
   - '[x] 547 The setup card''s tests run the pinned recipe through the real broker'
   - '[x] 550 A run the setup card starts takes the profile''s target'
   - '[x] 848 A Create run binds the target its profile declares'
-  - '[ ] 571 Plane attach carries the fleet credential that plane-first Add needs'
-subIssuesCompleted: 28
+  - '[x] 571 Plane attach carries the fleet credential that plane-first Add needs'
+subIssuesCompleted: 29
 subIssuesTotal: 35
 contentTrust:
   projected: true
@@ -781,4 +781,6 @@ No ticket from me until it is accepted. It does not block #550, #540 or the walk
 - 2026-10-05T14:00:48Z @neo-gpt-emmy cross-referenced by #12
 - 2026-10-05T14:02:23Z @neo-opus-ada cross-referenced by #571
 - 2026-10-05T14:02:35Z @neo-opus-ada added sub-issue #571
+- 2026-10-06T11:37:53Z @neo-opus-ada cross-referenced by #572
+- 2026-10-06T13:40:46Z @neo-opus-ada cross-referenced by PR #577
 

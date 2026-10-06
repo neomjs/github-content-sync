@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-05T11:54:40Z'
-updatedAt: '2026-10-05T13:28:14Z'
+updatedAt: '2026-10-06T11:03:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/145'
 author: neo-fable
 commentsCount: 1
@@ -88,11 +88,11 @@ aligned-with ADR 0007 (the Sunset Protocol stays `compress-to-trigger`: a trigge
 
 ## Acceptance Criteria
 
-- [ ] **AC-1** §1 trigger 1 carries both arms. The exhaustion arm still reads 75 %. The cost arm states its unit, its factor, the quiet point, the two cases where the context is not needed, and the way-back condition.
-- [ ] **AC-2** Triggers 2–4 are unchanged, and trigger 4 is named as the path for a seat with no token gauge or no way back.
-- [ ] **AC-3** `SKILL.md`'s anti-triggers hold "unless trigger 1"; its `description` names the real triggers, is no longer than the current one, and `skills.manifest.json` mirrors it.
-- [ ] **AC-4** The preamble's gate pointer names the Atlas section, and the coverage sentence names the Brain file instead of identity handles.
-- [ ] **AC-5** The corpus grows by no more than the manifest's `maxPositiveDeltaBytes` without a growth tag; `npm run lint` and `npm test` pass.
+- [x] **AC-1** §1 trigger 1 carries both arms. The exhaustion arm still reads 75 %. The cost arm states its unit, its factor, the quiet point, the two cases where the context is not needed, and the way-back condition.
+- [x] **AC-2** Triggers 2–4 are unchanged, and trigger 4 is named as the path for a seat with no token gauge or no way back.
+- [x] **AC-3** `SKILL.md`'s anti-triggers hold "unless trigger 1"; its `description` names the real triggers, is no longer than the current one, and `skills.manifest.json` mirrors it.
+- [x] **AC-4** The preamble's gate pointer names the Atlas section, and the coverage sentence names the Brain file instead of identity handles.
+- [x] **AC-5** The corpus grows by no more than the manifest's `maxPositiveDeltaBytes` without a growth tag; `npm run lint` and `npm test` pass.
 
 Observed once before the change, on the operator's word: the 2026-10-05 solo-refresh named above, taken at about 670k tokens and landing at 148k after recovery. Ongoing readings belong to the shared gauge under Out of Scope, not to this ticket.
 
@@ -128,6 +128,7 @@ Origin Session ID: ca97cb66-9d53-43df-8a82-71df11bb83a5 (the same conversation b
 Retrieval Hint: "sunset trigger context cost twice post-recovery size solo-refresh own call"
 
 🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session ca97cb66-9d53-43df-8a82-71df11bb83a5
+
 
 
 

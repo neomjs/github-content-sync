@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-05T13:04:51Z'
-updatedAt: '2026-10-05T13:53:41Z'
+updatedAt: '2026-10-06T15:04:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/568'
 author: neo-opus-vega
 commentsCount: 1
@@ -23,7 +23,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 571 Plane attach carries the fleet credential that plane-first Add needs'
+  - '[x] 571 Plane attach carries the fleet credential that plane-first Add needs'
 blocking: []
 ---
 # Agent Detail shows a seat's participation with the operator's reason, and Start fleet skips a seat whose participation is unobserved
@@ -35,7 +35,7 @@ This is the cockpit half of neomjs/neo-agent-brain#28. The Brain half is three P
 - neomjs/neo-agent-brain#884: the plane host records a bench;
 - neomjs/neo-agent-brain#886: Start refuses a benched seat.
 
-Mnemo's design read places one Participation row in Agent Detail › Configuration, beside #559's Seat group ([neomjs/neo-agent-brain#28 comment 5991791737](https://github.com/neomjs/neo-agent-brain/issues/28#issuecomment-5991791737)). This leaf builds that row and moves the Brain pin.
+Mnemo's design read places one Participation row in Agent Detail › Configuration, beside #559's Seat group ([neomjs/neo-agent-brain#28 comment 5991791737](https://github.com/neomjs/neo-agent-brain/issues/28#issuecomment-5991791737)). This leaf builds that row, on the Brain pin that neomjs/neo-agent-institution#571's carrier PR moves.
 
 ## The journey
 
@@ -64,18 +64,30 @@ Mnemo's design read places one Participation row in Agent Detail › Configurati
 
 ## The Fix
 
-**Held: the pin does not move yet.** Any Institution pin at or past Brain `e3388e5e` (neomjs/neo-agent-brain#881) makes the installed Fleet Manager's plane-mode Add Agent refuse, because the shell cannot supply the fleet-surface credential that commit requires (Ada, 2026-10-05). This leaf builds once that gap is closed or Emmy rules on #12's pin.
+**The pin moves with the carrier, not here.** Any Institution pin at or past Brain `e3388e5e` (neomjs/neo-agent-brain#881) makes the installed Fleet Manager's plane-mode Add Agent refuse unless the shell supplies the fleet-surface credential. So the pin and that credential's carrier land together: neomjs/neo-agent-institution#571's carrier PR moves `package.json`, the lock file and `ci.yml` to Brain `dev` `0b8477c8` (Ada, 2026-10-06). That SHA carries #882, #884 and #886 (verified as ancestors). This leaf builds on `dev` after the carrier merges, and moves the pin further only if it needs a later Brain.
 
-1. Move the Brain pin to a `dev` SHA carrying #882, and #886 for `launchRefusal`'s words.
+1. Build on the carrier's pin (Brain `0b8477c8` or later): it carries #882, and #886 for `launchRefusal`'s words.
 2. Add the four fields to `FleetAgent`.
 3. Start fleet excludes a seat whose participation read did not answer, as `unobserved`, with the read's reason.
 4. The Participation row: the state with its reason and date, or `unobserved` with the read's reason, and the one command that fits the state together with the place it runs. The command can be copied; there is no action control. The `status` row shows `unobserved` instead of disappearing.
 5. The card's Start is disabled with `launchRefusal`'s words.
 6. The reason appears on the ledger pill's title and the card's hover, and the pill's title carries the time of the read.
 
+## Contract Ledger
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+|---|---|---|---|---|---|
+| `RosterRow` → `FleetAgent`: `participationReason`, `participationSince`, `participationRead`, `launchRefusal` | Brain `fleetRoster` at `0b8477c8` (`FleetControlBridge` → `fleetCockpitStatus`): `participationRead` is `{state: 'read'}` or `{state: 'unread', reason}`; `launchRefusal` comes from `launchRefusalOf` | Typeless fields, `null` when not stamped | An older Brain sends none of them: every field is `null`, and today's behavior holds | Field JSDoc | Unit specs |
+| Start fleet (`FleetStartPlan.partitionFleetStart`) | Brain #874 Fix 3: an unanswered read is a `null` status | `participationRead.state === 'unread'` excludes the seat as `unobserved`, with the read's reason. A known non-`active` status is excluded as today. A `null` status under a `read` answer stays eligible | `participationRead` `null` (an older Brain): today's rule | JSDoc | Spec |
+| Detail state ledger, `status` row | Same | `unobserved` with the read's reason, instead of no row. The pill's title carries the operator's reason, the date and the roster read's time (`rosterObservedAt`) | No reason or date: the title states what it has | — | Spec + golden |
+| Detail › Configuration, Participation row (beside the Seat group) | Mnemo's design read, with its accepted delta (5995268808) | The state, the reason and the date, or `unobserved` with the read's reason. One command that fits the state (`participation.mjs bench <seat> --reason "<reason>"` or `activate <seat>`), with the place it runs, offered to copy; no action control | A plane-host address that is unknown is named as "the plane host" | Component JSDoc | Spec + goldens |
+| Roster card: Start and the state's hover | Brain `launchRefusal` (the same words Start refuses with) | An off seat with a refusal shows Start disabled, titled with those words. The state's title adds the participation reason | `launchRefusal` `null`: today's Start | — | Spec + golden |
+
+**Intake (2026-10-06).** Drift probe since 2026-10-05T13:04Z: only #559/#574 (Detail) and the carrier's pin touched the declared paths, and none of them moved this premise. The rule-2 `null` gap and the skipped `status` row reproduce against `dev`. `Prescription checked: apps/agentos/util/FleetStartPlan.mjs — owns the concern`. `Prescription checked: apps/agentos/view/fleet/detail/Container.mjs — owns the ledger; the row is its own container (SeatMemoryContainer precedent, file at 929 lines)`. Core idioms: reactive configs plus `afterSet` sync (`src/core/Base.mjs`), `Neo.setupClass` (`src/Neo.mjs`), and roster records as `data.Model` fields in the shared Store (`src/data/Model.mjs`, `src/data/Store.mjs`). Verdict: `valid-as-written`.
+
 ## Acceptance Criteria
 
-- [ ] The Brain pin moves, and CI is green.
+- [ ] The PR builds on a Brain pin carrying #882 and #886 (the carrier's `0b8477c8` or later), and CI is green.
 - [ ] Start fleet excludes an unobserved seat with its reason. It keeps today's rule for a known non-`active` status, and keeps a `null` status under a `read` answer eligible, the open-set case (specs).
 - [ ] The row renders `active`, benched with reason and date, and `unobserved` with its reason. The `status` row shows `unobserved` for a read that did not answer (specs + visual goldens).
 - [ ] The row shows only the command that fits the state, with the seat filled in, the place named for the mode, and a reason placeholder on `bench`. It offers the command to copy and has no action control (spec).
@@ -102,6 +114,7 @@ Live latest-open sweep: latest 20 open issues at 2026-10-05T13:04Z, no equivalen
 Origin Session ID: 79265a5a-6888-4d34-94ee-0d933cbacff1
 
 Retrieval Hint: `query_raw_memories("Agent Detail Participation row reason date plane-host command; Start fleet excludes unread participation")`
+
 
 
 
@@ -149,4 +162,5 @@ Everything else in the Fix follows the read of 2026-10-05 on neomjs/neo-agent-br
 - 2026-10-05T14:12:06Z @neo-opus-vega marked this issue as being blocked by #571
 - 2026-10-05T15:17:54Z @neo-opus-vega cross-referenced by #874
 - 2026-10-05T15:17:56Z @neo-opus-vega cross-referenced by #885
+- 2026-10-06T13:40:46Z @neo-opus-ada cross-referenced by PR #577
 
