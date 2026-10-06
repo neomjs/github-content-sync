@@ -1,14 +1,14 @@
 ---
 id: 573
 title: An installed shell moves its seats to the default seat root
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-06T11:52:05Z'
-updatedAt: '2026-10-06T13:25:26Z'
+updatedAt: '2026-10-06T15:52:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/573'
 author: neo-opus-ada
 commentsCount: 5
@@ -22,7 +22,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 582 System reviews and consents to this installation''s seat move'
+  - '[x] 582 System reviews and consents to this installation''s seat move'
+closedAt: '2026-10-06T15:52:44Z'
 ---
 # An installed shell moves its seats to the default seat root
 
@@ -57,7 +58,7 @@ So every first Start on the next build would provision under app data, which the
    - read the registry back: every consented row must read its destination;
    - commit: `writeSeatRootRecord({origin: 'moved'})`;
    - retire: rename each moved row's old folder into the archive, a dot-folder under the old root fixed in the inputs.
-3. **Recovery.** Before the commit, an interruption resumes, or restores the old bindings, with no Fleet Start in between. After it, only the retirement resumes, and bindings never roll back under a new-root record. A missing or corrupt root record with a transition present is recovered from the transition, never by the first-launch adoption.
+3. **Recovery.** Before the commit, an interruption resumes, or restores the bindings this transition changed, with no Fleet Start in between, and only while their old folders are still there. After it, only the retirement resumes, and bindings never roll back under a new-root record. A missing or corrupt root record with a transition present is recovered from the transition, never by the first-launch adoption. An old folder in the archive proves the commit, so the record is written again. Otherwise the move runs again, and one that cannot go on holds while any consented row reads its destination. *(Refined in review, PR #584 round 1.)*
 4. **No completed bit** (ADR 0041's shape): the transition record holds inputs only. A row's state is read: the destination copy, the registry's `seatHome`, the root record, and the archive.
 
 ## Contract Ledger
@@ -67,18 +68,18 @@ So every first Start on the next build would provision under app data, which the
 | `seat-root.json` (`harness/seatRootRecord.mjs`) | this ticket; the operator's 10-01 root | gains its first `moved` writer, inside the transition only, after the registry readback | the transition did not commit: the record keeps its previous root | `seatRootRecord.mjs` JSDoc | unit + one interruption spec per step |
 | the transition record (`userData`) | this ticket; ADR 0041's shape | inputs only; read before the first-launch choice | resume or restore at the next boot | JSDoc | interruption specs, missing/corrupt root record |
 | each row's `seatHome` | Brain `relocateSeatHome` via `moveSeatHomes` | relocated with the exact `from` after its files are proven at the destination | a refusal before the commit restores the old bindings | — | unit over real temp roots |
-| the old seat folders | this ticket; Grace's trap | renamed into the transition's archive after the commit | an occupied archive path stops the retirement before any rename | JSDoc | retirement interruption spec |
+| the old seat folders | this ticket; Grace's trap | renamed into the transition's archive after the commit | an archive path that is a link, a file or occupied stops the retirement before any rename | JSDoc | retirement interruption spec |
 | the plan and the consent writer (`harness/seatRootMove.mjs`) | this ticket | the dry run for the installation's roots, and consent that persists the inputs of an unchanged plan | a refused or changed plan writes nothing | JSDoc | unit |
 
 ## Acceptance Criteria
 
 - [x] **AC-1:** Intake records the mechanism: where the transition runs relative to the fleet child that owns the registry, and how the shell records, resumes and rolls back a transition. Design read: Mnemosyne; planner read: Emmy ([6017036252](https://github.com/neomjs/neo-agent-institution/issues/573#issuecomment-6017036252)). The Brain surface is neomjs/neo-agent-brain#900.
-- [ ] **AC-2:** The plan classifies every registered row through the Brain's dry run, with its disposition (copy, binding only, done, untouched with its reason) and any refusal (occupied or divergent destination, a folder the Fleet did not provision, a live seat). Consent persists the inputs and changes nothing else before the relaunch.
+- [ ] **AC-2:** The plan classifies every registered row through the Brain's dry run, with its disposition (copy, binding only, done, untouched with its reason) and any refusal (occupied or divergent destination, a folder the Fleet did not provision, a live seat). Consent persists the inputs and changes nothing else before the relaunch. Each moving row keeps the binding it was read with; a row already at its destination stays out of the move, with its binding.
 - [ ] **AC-3:** The transition runs only when no process can still write this installation's registry: no listener on the fleet port and no process running this installation's Fleet entry. Unreadable liveness evidence refuses, as does a seat whose lease names a live process. The move names what to stop.
 - [ ] **AC-4:** At boot the shell re-plans; a scope that differs from the consented rows refuses and returns for review. Each materialized home is copied, proven and only then relocated with its exact `from`, an unmaterialized row's binding alone. A fresh registry readback must show every consented row at its destination before the commit, and every other row names its disposition. The source homes are unchanged until the retirement.
-- [ ] **AC-5:** The root record changes only as the transition's commit. The transition is read before the first-launch choice. An interruption before the commit resumes or restores the old bindings, and no Fleet Start runs in between. After the commit only the retirement resumes. A missing or corrupt root record with a transition present is recovered from it. One spec per step.
-- [ ] **AC-6:** After the commit, each moved row's old folder is renamed into the archive the inputs name, under the old root and skipped by the first-launch choice. Only folders this transition names are touched, and an occupied archive path stops the retirement before any rename. The archive stays until the destination acceptance receipts.
-- [ ] **AC-7:** The boot logs `HARNESS_SEAT_MOVE {row, state}` and the transition's outcome, which main keeps for the shell to report, including when the Fleet child cannot start. A move that can neither go on nor restore holds the Fleet boot with its reason.
+- [ ] **AC-5:** The root record changes only as the transition's commit. The transition is read before the first-launch choice. An interruption before the commit resumes or restores the bindings it changed, and no Fleet Start runs in between. After the commit only the retirement resumes. A missing or corrupt root record with a transition present is recovered from it: an archived old folder proves the commit; otherwise nothing is restored while a consented row reads its destination. One spec per step.
+- [ ] **AC-6:** After the commit, each moved row's old folder is renamed into the archive the inputs name, under the old root and skipped by the first-launch choice. Only folders this transition names are touched, and an archive path that is a link, a file or occupied stops the retirement before any rename. The archive stays until the destination acceptance receipts.
+- [ ] **AC-7:** The boot logs `HARNESS_SEAT_MOVE {row, state}` and the transition's outcome, which main keeps for the shell to report, including when the Fleet child cannot start. A move that can neither go on nor restore holds the Fleet boot with its reason, as does a committed one whose retirement is held.
 
 ## Post-Merge Validation
 
@@ -114,6 +115,7 @@ Origin Session ID: 4095e966-9503-44c4-a759-5e7293dc3daa
 Retrieval Hint: "installed FM seat root adopted app data move seats default root ~/.neo-ai/agents relocateSeatHome FLEET_SEAT_HOME_MISMATCH Gap 13"
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 
 
 ## Timeline
@@ -385,4 +387,45 @@ was written through, and removed, whatever stood at its path. Now:
 - 2026-10-06T15:10:47Z @neo-opus-ada referenced in commit `98fa59d` - "style(harness): the pack spec's blocks align, as the preflight repaired them (#573)"
 - 2026-10-06T15:10:47Z @neo-opus-ada referenced in commit `75c2dbd` - "build(deps): the declared Brain pin moves to a8dd1ae4, where a moved seat starts at its new root (#573)"
 - 2026-10-06T15:10:49Z @neo-opus-ada cross-referenced by PR #584
+- 2026-10-06T15:19:19Z @neo-gpt-emmy cross-referenced by PR #585
+- 2026-10-06T15:41:26Z @neo-opus-ada referenced in commit `675e86e` - "fix(harness): the move gives back only what it provably did, its archive is a folder in the old root, and a held retirement holds the boot (#573)"
+- 2026-10-06T15:52:44Z @tobiu referenced in commit `9a025ab` - "feat(harness): an installed shell moves its seats to the default seat root, with the Brain pin at a8dd1ae4 (#573) (#584)
+
+* feat(harness): a consented move of the seats settles at boot, before the first-launch choice (#573)
+
+seatRootMove.mjs holds the installation-wide move. Consent persists only the
+inputs of the plan the operator saw (the Brain's moveSeatHomes dry run). At the
+next boot, before settleSeatRoot and before any Brain child, the shell:
+- rules out a live registry writer;
+- re-plans, then moves through the Brain's one-shot;
+- reads the registry back, then commits by writing the root record (moved);
+- retires the old folders into a dot-archive under the old root.
+
+A move that cannot commit brings the old bindings back and spends the consent.
+After the commit, only the retirement resumes. A move that can neither go on
+nor come back holds the boot. The live arm runs the real one-shot against a
+Brain root.
+
+* feat(harness): the consented move carries its id to the Brain, which owns only stages marked with it (#573)
+
+Consent records a moveId, and the boot's plan and move steps pass it to the
+Brain's moveSeatHomes (NEO_HARNESS_SEAT_MOVE_ID). A staging folder is that
+move's own only when it carries the id, so an interrupted copy is discarded and
+redone, while any other occupant stops the move (neomjs/neo-agent-brain#901,
+review round 1, RA-6).
+
+* feat(harness): a refused consent names its code beside its sentence (#573)
+
+consentSeatMove refuses with {state: 'refused', code, reason}: no-seat-root, already-consented, plan-refused, plan-changed or nothing-to-move, so the consent surface decides on the code (ADR 0034 §2.3's named-refusal rule, item 11 in Grace's amendment) and keeps the sentence for the person and the log.
+
+* build(harness): the packaged app carries the seat move module (#573)
+
+main.mjs imports seatRootMove.mjs, so electron-builder's files allowlist and pack.spec's expected main-module closure name it (Emmy's #582 packaging finding).
+
+* style(harness): the pack spec's blocks align, as the preflight repaired them (#573)
+
+* build(deps): the declared Brain pin moves to a8dd1ae4, where a moved seat starts at its new root (#573)
+
+* fix(harness): the move gives back only what it provably did, its archive is a folder in the old root, and a held retirement holds the boot (#573)"
+- 2026-10-06T15:52:45Z @tobiu closed this issue
 

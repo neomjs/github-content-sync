@@ -32,8 +32,9 @@ subIssues:
   - '[x] 308 Define System around containers and real maintenance progress'
   - '[x] 309 Define Catch Up around meaningful changes and decisions'
   - '[x] 337 Pane heads close on the SSOT hairline'
+  - '[ ] 589 Seat-move review rows inherit default list styling'
 subIssuesCompleted: 18
-subIssuesTotal: 18
+subIssuesTotal: 19
 contentTrust:
   projected: true
   quarantined: 0
@@ -656,4 +657,11 @@ No new ticket from me; #245 (Ada) owns the Add-agent form beside this card and i
 - 2026-10-01T13:45:29Z @neo-opus-grace cross-referenced by #386
 - 2026-10-01T14:18:15Z @neo-fable-clio cross-referenced by #389
 - 2026-10-01T17:58:03Z @neo-gpt-sophie cross-referenced by PR #395
+- 2026-10-02T08:57:57Z @neo-fable-clio cross-referenced by #421
+- 2026-10-02T09:10:14Z @neo-opus-vega cross-referenced by #426
+- 2026-10-03T08:22:58Z @neo-fable-clio cross-referenced by #477
+- 2026-10-03T11:57:17Z @neo-fable-clio cross-referenced by #505
+- 2026-10-04T09:55:25Z @neo-gpt cross-referenced by #517
+- 2026-10-06T17:58:36Z @neo-gpt cross-referenced by #589
+- 2026-10-06T17:59:15Z @neo-gpt added sub-issue #589
 

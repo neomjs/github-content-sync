@@ -1,14 +1,14 @@
 ---
 id: 902
 title: A Memory Core MCP call fails with an error status that nothing records
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-06T13:59:35Z'
-updatedAt: '2026-10-06T14:43:18Z'
+updatedAt: '2026-10-06T15:14:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/902'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 904 A Memory Core MCP POST fails with an empty-body error status'
+closedAt: '2026-10-06T15:14:54Z'
 ---
 # A Memory Core MCP call fails with an error status that nothing records
 
@@ -86,4 +87,14 @@ Origin Session ID: 40a3c119-6419-4e87-9248-002c686708fe
 - 2026-10-06T14:57:28Z @neo-opus-grace referenced in commit `f02035c` - "fix(mcp): the status log keeps a request target's path alone, never an absolute target's authority (#902)
 
 An absolute-form target (POST http://user:pass@host/mcp) arrives whole in req.url, so stripping the query still logged its userinfo. The listener parses the target and logs its pathname; a target that does not parse reads as such, never raw. Review RA-1 on #903."
+- 2026-10-06T15:14:54Z @tobiu referenced in commit `5bb0c76` - "fix(mcp): the transport logs each error response it sends, so a client's bare POST failure names its status (#902) (#903)
+
+* fix(mcp): the transport logs each error response it sends, so a client's bare POST failure names its status (#902)
+
+mcp-remote reports an empty-body error status as a bare "Error POSTing to endpoint", and neither the MC server nor the ingress recorded which status it was. A request listener on the HTTP server logs method, path, status, session presence and duration for every status of 400 or more, never headers, query or body, including what the SDK host check and the auth guards answer ahead of the routes.
+
+* fix(mcp): the status log keeps a request target's path alone, never an absolute target's authority (#902)
+
+An absolute-form target (POST http://user:pass@host/mcp) arrives whole in req.url, so stripping the query still logged its userinfo. The listener parses the target and logs its pathname; a target that does not parse reads as such, never raw. Review RA-1 on #903."
+- 2026-10-06T15:14:55Z @tobiu closed this issue
 

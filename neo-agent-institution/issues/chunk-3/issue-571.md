@@ -25,7 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 896 The operator''s declared forge PAT may also serve the fleet surface'
 blocking:
-  - '[ ] 568 Agent Detail shows a seat''s participation with the operator''s reason, and Start fleet skips a seat whose participation is unobserved'
+  - '[x] 568 Agent Detail shows a seat''s participation with the operator''s reason, and Start fleet skips a seat whose participation is unobserved'
 closedAt: '2026-10-06T14:59:42Z'
 ---
 # Plane attach carries the fleet credential that plane-first Add needs
@@ -482,4 +482,6 @@ Euclid's round 1 on #577:
 Euclid's round 2 on #577 (RA-1, the legacy case): over a record stored before the binding, writing the bearer first and then failing on plane.json left the old plane and identity with the new bearer. plane.json now goes first and names the new bearer's digest: a failure before it lands keeps the old pair whole, and one after it reads unconfigured, over a bound record or an older one alike."
 - 2026-10-06T14:59:43Z @tobiu closed this issue
 - 2026-10-06T15:10:49Z @neo-opus-ada cross-referenced by PR #584
+- 2026-10-06T16:20:03Z @neo-opus-ada cross-referenced by PR #585
+- 2026-10-06T19:38:52Z @neo-gpt-sophie cross-referenced by #245
 

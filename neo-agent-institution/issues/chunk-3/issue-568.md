@@ -1,7 +1,7 @@
 ---
 id: 568
 title: 'Agent Detail shows a seat''s participation with the operator''s reason, and Start fleet skips a seat whose participation is unobserved'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-05T13:04:51Z'
-updatedAt: '2026-10-06T15:04:32Z'
+updatedAt: '2026-10-06T16:08:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/568'
 author: neo-opus-vega
 commentsCount: 1
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 571 Plane attach carries the fleet credential that plane-first Add needs'
 blocking: []
+closedAt: '2026-10-06T16:08:18Z'
 ---
 # Agent Detail shows a seat's participation with the operator's reason, and Start fleet skips a seat whose participation is unobserved
 
@@ -80,7 +81,7 @@ Mnemo's design read places one Participation row in Agent Detail › Configurati
 | `RosterRow` → `FleetAgent`: `participationReason`, `participationSince`, `participationRead`, `launchRefusal` | Brain `fleetRoster` at `0b8477c8` (`FleetControlBridge` → `fleetCockpitStatus`): `participationRead` is `{state: 'read'}` or `{state: 'unread', reason}`; `launchRefusal` comes from `launchRefusalOf` | Typeless fields, `null` when not stamped | An older Brain sends none of them: every field is `null`, and today's behavior holds | Field JSDoc | Unit specs |
 | Start fleet (`FleetStartPlan.partitionFleetStart`) | Brain #874 Fix 3: an unanswered read is a `null` status | `participationRead.state === 'unread'` excludes the seat as `unobserved`, with the read's reason. A known non-`active` status is excluded as today. A `null` status under a `read` answer stays eligible | `participationRead` `null` (an older Brain): today's rule | JSDoc | Spec |
 | Detail state ledger, `status` row | Same | `unobserved` with the read's reason, instead of no row. The pill's title carries the operator's reason, the date and the roster read's time (`rosterObservedAt`) | No reason or date: the title states what it has | — | Spec + golden |
-| Detail › Configuration, Participation row (beside the Seat group) | Mnemo's design read, with its accepted delta (5995268808) | The state, the reason and the date, or `unobserved` with the read's reason. One command that fits the state (`participation.mjs bench <seat> --reason "<reason>"` or `activate <seat>`), with the place it runs, offered to copy; no action control | A plane-host address that is unknown is named as "the plane host" | Component JSDoc | Spec + goldens |
+| Detail › Configuration, Participation row (beside the Seat group) | Mnemo's design read, with its accepted delta (5995268808) | The state, the reason and the date, or `unobserved` with the read's reason. One command that fits the state (`participation.mjs bench --identity @<seat> --reason "<why>"`, `activate`, or the read-only `show`), with where it runs on the attached plane, offered to copy; no action control | A command is offered only on an attached plane and only for a plain-handle identity (one literal argument). The shell's own plan names no plane, and an identity that is not a plain handle cannot be one literal argument: in both cases there is no command, and the group says why | Component JSDoc | Spec + goldens |
 | Roster card: Start and the state's hover | Brain `launchRefusal` (the same words Start refuses with) | An off seat with a refusal shows Start disabled, titled with those words. The state's title adds the participation reason | `launchRefusal` `null`: today's Start | — | Spec + golden |
 
 **Intake (2026-10-06).** Drift probe since 2026-10-05T13:04Z: only #559/#574 (Detail) and the carrier's pin touched the declared paths, and none of them moved this premise. The rule-2 `null` gap and the skipped `status` row reproduce against `dev`. `Prescription checked: apps/agentos/util/FleetStartPlan.mjs — owns the concern`. `Prescription checked: apps/agentos/view/fleet/detail/Container.mjs — owns the ledger; the row is its own container (SeatMemoryContainer precedent, file at 929 lines)`. Core idioms: reactive configs plus `afterSet` sync (`src/core/Base.mjs`), `Neo.setupClass` (`src/Neo.mjs`), and roster records as `data.Model` fields in the shared Store (`src/data/Model.mjs`, `src/data/Store.mjs`). Verdict: `valid-as-written`.
@@ -92,7 +93,8 @@ Mnemo's design read places one Participation row in Agent Detail › Configurati
 - [ ] The row renders `active`, benched with reason and date, and `unobserved` with its reason. The `status` row shows `unobserved` for a read that did not answer (specs + visual goldens).
 - [ ] The row shows only the command that fits the state, with the seat filled in, the place named for the mode, and a reason placeholder on `bench`. It offers the command to copy and has no action control (spec).
 - [ ] The card's Start is disabled with the refusal's words for a benched seat (spec + visual golden).
-- [ ] Before the PR: the copied string, taken from the pinned Brain, has one executed receipt in the PR (the string, the host it ran on, the result). After it runs, the row changes without a restart, and the pill's title carries the read's time. If the roster needs a manual step to re-read, the row names it.
+- [ ] Before the PR: the copied string, taken from the pinned Brain, has one executed receipt in the PR (the string, the host it ran on, the result). The roster re-reads participation on every read, so no manual re-read step is named. The successful write is witnessed after merge, on a plane running Brain `b525a12` or later (#892's fix): the row changes without a restart, and the pill's title carries the read's time.
+  Residual-Owner: neomjs/neo-agent-brain#28
 - [ ] Post-merge, installed: the benched seats show their reasons in Detail, Start fleet's summary excludes them from the node, and a per-card Start is disabled with the words. Receipt on this ticket.
   Residual-Owner: neomjs/neo-agent-brain#28
 
@@ -114,6 +116,7 @@ Live latest-open sweep: latest 20 open issues at 2026-10-05T13:04Z, no equivalen
 Origin Session ID: 79265a5a-6888-4d34-94ee-0d933cbacff1
 
 Retrieval Hint: `query_raw_memories("Agent Detail Participation row reason date plane-host command; Start fleet excludes unread participation")`
+
 
 
 
@@ -163,4 +166,56 @@ Everything else in the Fix follows the read of 2026-10-05 on neomjs/neo-agent-br
 - 2026-10-05T15:17:54Z @neo-opus-vega cross-referenced by #874
 - 2026-10-05T15:17:56Z @neo-opus-vega cross-referenced by #885
 - 2026-10-06T13:40:46Z @neo-opus-ada cross-referenced by PR #577
+- 2026-10-06T15:25:01Z @neo-opus-vega cross-referenced by PR #586
+- 2026-10-06T15:53:05Z @neo-opus-vega referenced in commit `24911f1` - "fix(agentos): the Participation command carries one literal identity and runs only where the attached plane is named (#568)
+
+Sophie's round 1 on #586:
+
+- RA-1: a command is offered only for a plain handle (an optional @, then letters,
+  digits, ., _ or -). Anything else gets no command, never an escaped one, so a
+  copied string carries exactly the identity the row names.
+- RA-2: where it runs follows the plane the shell is attached to: this machine for
+  a loopback plane, else the plane host. The container is named only as the Docker
+  case. The shell's own plan names no plane, so the group offers no command and
+  says why, instead of naming a container that may not exist.
+
+A visual driver attaches the views to a plane. The goldens show the attached group
+in each state, and the own plan without a command."
+- 2026-10-06T16:08:18Z @tobiu referenced in commit `015fcd0` - "feat(agentos): Agent Detail shows a seat's participation with the operator's reason, and Start fleet skips an unobserved seat (#568) (#586)
+
+* feat(agentos): Agent Detail shows a seat's participation with the operator's reason, and Start fleet skips an unobserved seat (#568)
+
+The roster's participation facts from the Brain pin at 0b8477c8 reach the cockpit:
+the operator's reason and date, whether the identity node's read answered, and
+the Fleet's Start refusal.
+
+- Start fleet excludes a seat whose participation read did not answer, as
+  unobserved with the read's reason. A null status under an answered read keeps
+  the open-set rule.
+- Detail's state ledger shows the status row as unobserved instead of dropping
+  it. Its title carries the date and reason, or the read's reason, and the time
+  of the roster read.
+- Configuration gains a Participation group beside the Seat group. It shows the
+  state in the design read's words and the one plane-host command that fits,
+  with the seat filled in and where it runs, offered to copy. It has no action
+  control.
+- The roster card closes Start, in the Fleet's words, for a seat the Fleet
+  refuses to start. A benched seat's state title carries the operator's date
+  and reason.
+
+* fix(agentos): the Participation command carries one literal identity and runs only where the attached plane is named (#568)
+
+Sophie's round 1 on #586:
+
+- RA-1: a command is offered only for a plain handle (an optional @, then letters,
+  digits, ., _ or -). Anything else gets no command, never an escaped one, so a
+  copied string carries exactly the identity the row names.
+- RA-2: where it runs follows the plane the shell is attached to: this machine for
+  a loopback plane, else the plane host. The container is named only as the Docker
+  case. The shell's own plan names no plane, so the group offers no command and
+  says why, instead of naming a container that may not exist.
+
+A visual driver attaches the views to a plane. The goldens show the attached group
+in each state, and the own plan without a command."
+- 2026-10-06T16:08:19Z @tobiu closed this issue
 

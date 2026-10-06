@@ -1,7 +1,7 @@
 ---
 id: 582
 title: System reviews and consents to this installation's seat move
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-06T13:58:16Z'
-updatedAt: '2026-10-06T14:16:44Z'
+updatedAt: '2026-10-06T16:37:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/582'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -23,8 +23,9 @@ contentTrust:
   signals: []
 blockedBy:
   - '[x] 19428 ADR 0034 §2.3 item 11: moving the seat root is a named broker'
-  - '[ ] 573 An installed shell moves its seats to the default seat root'
+  - '[x] 573 An installed shell moves its seats to the default seat root'
 blocking: []
+closedAt: '2026-10-06T16:37:08Z'
 ---
 # System reviews and consents to this installation's seat move
 
@@ -152,4 +153,54 @@ boot's deletion of refused inputs.
 
 The Brain's dry run refuses with a reason alone, so only a consent refusal and the shell's refusals carry a code. A plan for seats already at the target root refuses nothing-to-move before the Brain runs, since moveSeatHomes throws on equal roots. A committed move keeps its inputs, which status still reports as pending."
 - 2026-10-06T15:10:49Z @neo-opus-ada cross-referenced by PR #584
+- 2026-10-06T15:13:38Z @neo-opus-ada cross-referenced by #571
+- 2026-10-06T15:19:16Z @neo-gpt-emmy referenced in commit `eed4144` - "feat(agentos): review and consent to the installation seat move (#582)"
+- 2026-10-06T15:19:19Z @neo-gpt-emmy cross-referenced by PR #585
+- 2026-10-06T15:52:45Z @tobiu referenced in commit `9a025ab` - "feat(harness): an installed shell moves its seats to the default seat root, with the Brain pin at a8dd1ae4 (#573) (#584)
+
+* feat(harness): a consented move of the seats settles at boot, before the first-launch choice (#573)
+
+seatRootMove.mjs holds the installation-wide move. Consent persists only the
+inputs of the plan the operator saw (the Brain's moveSeatHomes dry run). At the
+next boot, before settleSeatRoot and before any Brain child, the shell:
+- rules out a live registry writer;
+- re-plans, then moves through the Brain's one-shot;
+- reads the registry back, then commits by writing the root record (moved);
+- retires the old folders into a dot-archive under the old root.
+
+A move that cannot commit brings the old bindings back and spends the consent.
+After the commit, only the retirement resumes. A move that can neither go on
+nor come back holds the boot. The live arm runs the real one-shot against a
+Brain root.
+
+* feat(harness): the consented move carries its id to the Brain, which owns only stages marked with it (#573)
+
+Consent records a moveId, and the boot's plan and move steps pass it to the
+Brain's moveSeatHomes (NEO_HARNESS_SEAT_MOVE_ID). A staging folder is that
+move's own only when it carries the id, so an interrupted copy is discarded and
+redone, while any other occupant stops the move (neomjs/neo-agent-brain#901,
+review round 1, RA-6).
+
+* feat(harness): a refused consent names its code beside its sentence (#573)
+
+consentSeatMove refuses with {state: 'refused', code, reason}: no-seat-root, already-consented, plan-refused, plan-changed or nothing-to-move, so the consent surface decides on the code (ADR 0034 §2.3's named-refusal rule, item 11 in Grace's amendment) and keeps the sentence for the person and the log.
+
+* build(harness): the packaged app carries the seat move module (#573)
+
+main.mjs imports seatRootMove.mjs, so electron-builder's files allowlist and pack.spec's expected main-module closure name it (Emmy's #582 packaging finding).
+
+* style(harness): the pack spec's blocks align, as the preflight repaired them (#573)
+
+* build(deps): the declared Brain pin moves to a8dd1ae4, where a moved seat starts at its new root (#573)
+
+* fix(harness): the move gives back only what it provably did, its archive is a folder in the old root, and a held retirement holds the boot (#573)"
+- 2026-10-06T15:58:09Z @neo-gpt-emmy referenced in commit `155f5c9` - "feat(agentos): review and consent to the installation seat move (#582)"
+- 2026-10-06T15:58:10Z @neo-gpt-emmy referenced in commit `7ebce5a` - "fix(agentos): reflect settled seat-move and Fleet hold outcomes (#582)"
+- 2026-10-06T16:37:08Z @tobiu referenced in commit `df65934` - "feat(agentos): review and consent to the installation seat move (#582) (#585)
+
+* feat(agentos): review and consent to the installation seat move (#582)
+
+* fix(agentos): reflect settled seat-move and Fleet hold outcomes (#582)"
+- 2026-10-06T16:37:08Z @tobiu closed this issue
+- 2026-10-06T17:58:36Z @neo-gpt cross-referenced by #589
 

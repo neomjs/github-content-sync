@@ -1,6 +1,6 @@
 ---
 id: 61
-title: dist/esm and dev mode join the Pages site once they boot under the mount
+title: Every DevIndex environment is live under /devindex/ and linked from the Portal
 state: OPEN
 labels:
   - enhancement
@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-06T15:11:05Z'
-updatedAt: '2026-10-06T15:11:06Z'
+updatedAt: '2026-10-06T16:46:58Z'
 githubUrl: 'https://github.com/neomjs/devindex/issues/61'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,11 +23,13 @@ contentTrust:
 blockedBy: []
 blocking: []
 ---
-# dist/esm and dev mode join the Pages site once they boot under the mount
+# Every DevIndex environment is live under /devindex/ and linked from the Portal
 
 ## Context
 
 Split from #60 on 2026-10-06. #60 ships dist/development and dist/production, each from its own entry. The other two environments the Portal links, dist/esm and dev mode, cannot boot under the `/devindex/` mount yet, for reasons outside the assembly.
+
+This ticket owns the outcome: every environment live under `/devindex/` and linked from the Portal. That includes #60's residual, the live read of its two entries after their deploy and the Portal rows for them (Residual-Owner of #60, accepted 2026-10-06 at @neo-gpt's review of #62).
 
 ## The Problem
 
@@ -44,7 +46,7 @@ Measured in headless Chromium on 2026-10-06 (`neo.mjs` 13.1.0), with the assembl
   - `node_modules/neo.mjs/{src,dist}` and FontAwesome's `css` and `webfonts`;
   - `resources/theme-map.json`, which the worker reads from the root.
   
-  Its theme CSS comes from `dist/development/css`, which the site already ships.
+  Its theme CSS comes from `dist/development/css`, which the site already ships. Its learn view reads the origin-absolute `/learn/`, an app-level workaround for the same worker offset (`apps/devindex/view/learn/MainContainerStateProvider.mjs`). Under the mount that path leaves the site, so it goes back to `basePath + 'learn/'` once neomjs/neo#19430 lands.
 - **The engine version.** The lock holds `neo.mjs` 13.1.0. Dependabot's grouped bump moves it to 13.2.0 about three days after the publish, and 13.2's `build-all` regenerates the engine's browser bundles before it builds.
 
 ## The Fix
@@ -54,10 +56,11 @@ Measured in headless Chromium on 2026-10-06 (`neo.mjs` 13.1.0), with the assembl
 
 ## Acceptance Criteria
 
-- [ ] dist/esm's entry paints the grid from the shared index under the mount (headless probe) and on neomjs.com after a deploy.
+- [x] After #62 deploys, neomjs.com's `dist/development` and `dist/production` entries paint the grid and the learn view, and their index request goes to `neomjs.com/devindex/apps/devindex/resources/data/users.jsonl` (#60's residual). Read live 2026-10-06 at `55ce8d05`: https://github.com/neomjs/devindex/issues/61#issuecomment-6021047925
+- [ ] dist/esm's entry paints the grid from the shared index under the mount (headless probe), and on neomjs.com after a deploy.
 - [ ] Dev mode's entry does the same, from the site's index rather than any copy inside `node_modules`.
 - [ ] `deploy-receipt.json`'s `entries` names all four environments.
-- [ ] A neomjs/neo PR points the Portal's dist/esm and dev-mode DevIndex rows at their entries.
+- [ ] A neomjs/neo PR points each of the Portal's four DevIndex rows (`examples_{devmode,dist_dev,dist_esm,dist_prod}.json`) at its environment's entry. The `dist_dev` and `dist_prod` rows can move as soon as the first criterion holds.
 
 ## Out of Scope
 
@@ -80,7 +83,29 @@ Origin Session ID: 40a3c119-6419-4e87-9248-002c686708fe
 Retrieval Hint: "devindex Pages dist/esm dev mode mount entry basePath"
 
 
+
 ## Timeline
 
 - 2026-10-06T15:11:07Z @neo-opus-grace assigned to @neo-opus-grace
+- 2026-10-06T15:11:34Z @neo-opus-grace cross-referenced by #60
+- 2026-10-06T15:11:59Z @neo-opus-grace added the `enhancement` label
+- 2026-10-06T15:11:59Z @neo-opus-grace added the `ai` label
+- 2026-10-06T15:12:47Z @neo-opus-grace cross-referenced by PR #62
+- 2026-10-06T15:26:35Z @neo-opus-grace changed title from **dist/esm and dev mode join the Pages site once they boot under the mount** to **Every DevIndex environment is live under /devindex/ and linked from the Portal**
+- 2026-10-06T15:44:01Z @neo-opus-grace cross-referenced by #19430
+### @neo-opus-grace - 2026-10-06T16:46:46Z
+
+**#60's residual, read live (AC-1): passes.** Pages run `37497872605` deployed `55ce8d05` at 16:45Z. Its `deploy-receipt.json` lists both entries. Headless Chromium on neomjs.com:
+
+| Entry | Grid | Index request | Learn view | Failed requests |
+|---|---|---|---|---|
+| site root | 14 rows | `200 https://neomjs.com/devindex/apps/devindex/resources/data/users.jsonl` | — | none |
+| `dist/development/apps/devindex/` | 14 rows | the same, inside the mount | guides render | none |
+| `dist/production/apps/devindex/` | 14 rows | the same, inside the mount | guides render | none |
+
+Before #62, the production entry fetched `https://neomjs.com/apps/devindex/…`, outside the site. Next on this ticket: the Portal's `dist_dev`/`dist_prod` rows (a neo PR before the 13.2 cut). After 13.2.0 is published, the devindex bump, then dist/esm and dev mode.
+
+- 2026-10-06T16:47:20Z @neo-opus-grace cross-referenced by #19433
+- 2026-10-06T16:48:44Z @neo-opus-grace cross-referenced by PR #19434
+- 2026-10-06T16:53:39Z @neo-gpt cross-referenced by PR #19435
 

@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-06T14:42:59Z'
-updatedAt: '2026-10-06T15:07:35Z'
+updatedAt: '2026-10-06T16:06:56Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/904'
 author: neo-opus-grace
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 902 A Memory Core MCP call fails with an error status that nothing records'
+  - '[x] 902 A Memory Core MCP call fails with an error status that nothing records'
 blocking: []
 ---
 # A Memory Core MCP POST fails with an empty-body error status
@@ -94,5 +94,9 @@ From @neo-opus-grace's session `40a3c119`:
 
 The failed POST was answered without reaching tool dispatch, and nothing recorded its status. #903's status line closes that gap from its deploy on.
 
+
+### @neo-opus-grace - 2026-10-06T16:06:56Z
+
+Occurrence 8: 2026-10-06 ~16:06:2xZ, before #903 deploys (session `40a3c119`). It came with **four** MC calls in flight from this seat: `mark_read`, two `add_message` and an `add_memory`. One `add_message` failed with the bare `Error POSTing to endpoint:`; the other three succeeded, including the second `add_message` at 16:06:30.196. The MC app log has no `Calling tool` line for the failed one, and the outbox confirms it never landed; an identical retry succeeded. With occurrence 7 (a single call), parallel load is not required, but it is also not excluded. In both, the failed POST never reached tool dispatch.
 
 

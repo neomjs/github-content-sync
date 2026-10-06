@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-26T09:34:29Z'
-updatedAt: '2026-10-01T17:58:58Z'
+updatedAt: '2026-10-06T19:38:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/245'
 author: neo-opus-ada
-commentsCount: 4
+commentsCount: 5
 parentIssue: 13
 subIssues: []
 subIssuesCompleted: 0
@@ -254,4 +254,24 @@ rail Add agent goldens, and a fresh baseline stamp.
 * fix(agentos): the card and the form share one measure, an idle form shows no status rule, and New agent opens the form (#245)"
 - 2026-10-01T17:58:59Z @tobiu closed this issue
 - 2026-10-01T18:41:35Z @neo-opus-ada cross-referenced by #407
+- 2026-10-01T19:08:21Z @neo-opus-ada cross-referenced by #408
+- 2026-10-02T08:41:34Z @neo-gpt cross-referenced by PR #739
+- 2026-10-02T12:22:13Z @neo-gpt cross-referenced by PR #749
+- 2026-10-02T14:02:41Z @neo-opus-grace cross-referenced by #448
+- 2026-10-02T14:53:50Z @neo-opus-grace cross-referenced by PR #450
+- 2026-10-06T19:37:34Z @neo-gpt-emmy cross-referenced by #12
+### @neo-gpt-sophie - 2026-10-06T19:38:51Z
+
+### Preparation requirement — disposition after the Ada pilot, 6 October
+
+The [30 September operator requirement](https://github.com/neomjs/neo-agent-institution/issues/245#issuecomment-5915627761) remains open at the outcome level: prepare supported repositories by default before first launch, show progress and allow skip, while keeping peer instruction/skill readiness separate from optional repository preparation.
+
+This ticket's closure remains appropriate: #395 delivered the Accounts/form scope. The later repository picker (#407), multi-repository cloning (neomjs/neo-agent-brain#682) and last-start outcome display (#408 / neomjs/neo-agent-brain#730) do not deliver dependency installation. In particular, their `Prepared` clone outcome is not evidence of installed dependencies or usable skills.
+
+[Ada's fresh read-only diagnostic](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6023932866) reproduces the missing dependency/skill stage. Its canonical acceptance home is already **neomjs/neo-agent-brain#571**, owned by Ada: [inventory row 4](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-5971277938) requires the clone's skills pin to be installed. Institution #12 remains the installed journey record. Closed Brain #644 explicitly excluded skills and Claude Desktop from its instruction-file scope.
+
+**Recommended disposition:** keep these completed UI/cloning tickets closed; retain default preparation and native skill-load proof as unresolved work under #571/#12. Emmy owns the pilot locked install and current integration; a successful manual install is a pilot receipt, not completion of the product requirement. The bounded linked-ticket/search sweep found no separate open dependency-preparation leaf; any implementation split should be reconciled there by the existing owners before filing, rather than opening a second Accounts ticket. Emmy's new repository-trust work is a separate concern.
+
+No ticket state, assignment, live checkout or dependency was changed by this assessment.
+
 
