@@ -8,7 +8,7 @@ labels:
   - design
 assignees: []
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-10-06T20:07:49Z'
+updatedAt: '2026-10-06T23:04:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
 commentsCount: 43
@@ -1343,11 +1343,19 @@ Ada's existing definition was retained. The operator's selected external memory 
 
 Sophie independently confirmed a [dependency/skills preparation gap](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6023932866): the managed clone had no dependencies or skill projections, although tracked instructions survived. Emmy repaired this pilot checkout with its own locked `npm ci --include=dev` under Node 24.19.0. Install and materializer check passed; all 37 Skills 0.1.19 links resolve, none are tracked or shadowed, the tracked tree is clean, and package/lock hashes are unchanged. This manual repair does not discharge the existing default-preparation requirement recorded on Institution #245.
 
-**MCP requirement clarified (19:41Z):** after restarting Ada's harness, Tobi confirms the skills are visible but Neo MCP servers remain absent in the Desktop UI. He requires each isolated FM-launched peer harness to carry its own Desktop MCP setup. The earlier project-scoped declarations do not satisfy that requested surface.
+**Ada's first native session:** Tobi manually forwarded the bounded probe while retaining her wake shield. Grace reports that a projected SessionStart wake listener held initialization until she stopped that identified listener; the first prompt then ran. The later Stop listener backgrounds normally, so the observed startup defect must not be generalized to every listener event.
 
-Euclid verified the active Claude process's intended profile, home and project recipient, all four Code-project declarations, and presence of the required launch variables. Source [Brain #669 / PR #692](https://github.com/neomjs/neo-agent-brain/issues/669) deliberately retired the Desktop-profile rows after a measured stripped child environment caused missing credentials/placement and writes into the application bundle. Its protection must be preserved while providing the operator-requested Desktop scope. Copying an old peer's wrappers would risk restoring the wrong identity or paths.
+Ada's operator-relayed receipt reports all four Neo servers connected (MC 52 / KB 13 / NL 60 / GitHub workflow 24 tools), native MC reads and a successful save as Ada, recovery of her sunset, all 924 memory files matching, correct Git/GitHub identity, and Opus 5.5 / max. Emmy independently observes her new Memory Core turn `efaac404-0fc4-4ebe-8e71-52147c1629e1` in session `cc7cf210-43fe-487e-b0f2-5c98033a42cf`. This establishes Code-session progress; it does not establish the Desktop-profile delivery requirement.
 
-Emmy owns integration; Euclid's [carrier comparison](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6024380856) records the remaining custody and lifecycle choices. Grace is online outside FM and reports four connected Desktop-kind servers in her own profile, but no exposed MCP declaration or protected-settings write tool. The decision is now tracked in [D19437](https://github.com/orgs/neomjs/discussions/19437), with native protected settings, a process relay, a per-start carrier file and bounded existing-store access left open for peer review. No live configuration or credential-carrier change is selected. **Ada's native MCP call and recovery witness remain open.** Installed placement, Sophie's recovery and Ada's loaded skills are measured; the first additional usable peer is not yet accepted.
+**Ada's six core destination checks are passed**, per [her native receipt](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6025948876). Tobi lifted the wake shield; the controlled nonce reached her new session through the Stop hook and she acknowledged it natively. Ada manually fast-forwarded the clean checkout to `966eec877a4b316e74350142381d88589890c8ca` and ran `npm ci`, bringing the installed skills to 0.1.30; Emmy independently verified the clean revision and declared/installed version. This supersedes the earlier 0.1.19 pilot state for Ada. It remains assisted, seat-specific proof: model/effort, folder, trust, dependency/freshness and initial hook repair costs are retained.
+
+The rg guard's incorrect projected path and operator-tool carryover remain open. The additional-key/tool inventory is reconciled privately and a bounded carryover is staged, not applied or natively witnessed. Ada's Brain repository is now assigned through FM Accounts; its checkout is not yet provisioned. No blanket complete-seat or automatic migration claim follows from the six core checks.
+
+Emmy owns integration. Grace's SessionStart repair [PR #908](https://github.com/neomjs/neo-agent-brain/pull/908) was independently approved at `8d6562a93b24520002e57c78aef63a7dc656657f`, with 29 checks passing, then human-merged at `f5ee2bcfce15bad76b241d4aa8860efb4b050baa` on 6 October at 22:12Z. It makes a bounded ownership claim at SessionStart and reserves polling for Stop. The next packaged Brain pin and managed re-projection must consume it; the installed first-prompt/background-listener witness remains open.
+
+[D19437](https://github.com/orgs/neomjs/discussions/19437) is graduated at approved design digest `493ac3ec`. The required ADR amendment [Engine #19438 / PR #19439](https://github.com/neomjs/neo/pull/19439) is human-merged as `b2db92c5b74848f520d8cf23095ace3bf1b6761a` (6 October, 22:52:30Z), discharging that source prerequisite. Grace owns the [Brain launcher implementation #909](https://github.com/neomjs/neo-agent-brain/issues/909). The packaged consumer must render issuer-owned admission state and managed-restart recovery, and the three receipts remain distinct: Desktop-profile availability, native Code connectivity, and correct identity/plane read-write. No new credential carrier or live profile rewrite has been applied. The installed artifact's `85d5282` and merge `3b68995` still resolve to the same tree recorded above; that difference is not an installation mismatch.
+
+**Next update window:** the operator asked for Ada to remain closed until the next update and is unavailable for further merges before the morning of 7 October. Source implementation, tests and review may continue; the installed candidate, live profiles and staged operator-tool carryover remain unchanged. A future install/Start uses a fresh coordinated window and its own receipts.
 
 Repaired artifact: `harness/dist-artifacts/candidate-c-20261006-85d5282/Neo Harness-0.0.1-arm64-mac.zip`, 343,221,125 bytes, SHA-256 `cd01c251df816c3d5cad5d2a0bcd7fe299ecd15ac57d6e838c00772e2ffb1d2d`. Embedded product `85d5282`, Brain `a8dd1ae4`, Engine `82bc6158`, Electron `43.5.0`, native `rebuilt: true`; independently inspected against the packaged files. Fixture attachment is the smoke's isolated seat-token plane, not an operator PAT or installed-plane witness.
 
@@ -1398,8 +1406,6 @@ The #516 recovery walk may reuse a frozen C artifact but adds no adoption prereq
 
 — Emmy · original record: session 0ed3f43c-0e36-46b9-94fd-9ccb43b7edb1; current gate: session d0d0bed3-7ce4-4bce-a16d-59589484aec0
 
-
-
 - 2026-10-05T10:18:20Z @neo-gpt-emmy cross-referenced by #562
 - 2026-10-05T10:29:16Z @neo-opus-vega cross-referenced by PR #564
 - 2026-10-05T10:52:21Z @neo-gpt-emmy cross-referenced by PR #565
@@ -1441,4 +1447,8 @@ The detailed witness is retained in the internal handoff. Emmy has accepted this
 No configuration, credentials, processes, routes or seat state were changed during this witness.
 
 - 2026-10-06T19:35:10Z @neo-gpt-emmy cross-referenced by #906
+- 2026-10-06T22:15:06Z @neo-gpt-emmy cross-referenced by #19438
+- 2026-10-06T22:20:16Z @neo-gpt-emmy cross-referenced by #909
+- 2026-10-06T22:34:58Z @neo-opus-grace cross-referenced by PR #19439
+- 2026-10-07T00:35:56Z @neo-gpt cross-referenced by PR #910
 

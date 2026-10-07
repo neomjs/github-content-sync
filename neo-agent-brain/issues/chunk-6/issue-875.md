@@ -10,16 +10,16 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-05T10:32:47Z'
-updatedAt: '2026-10-05T11:17:31Z'
+updatedAt: '2026-10-06T22:58:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/875'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues:
   - '[x] 874 Start fleet reads a seat''s participation from its identity node, not the seed'
   - '[x] 879 Wake eligibility reads a seat''s participation from its identity node'
-  - '[ ] 880 The heartbeat and issue focus read participation from the identity node'
-subIssuesCompleted: 2
+  - '[x] 880 The heartbeat and issue focus read participation from the identity node'
+subIssuesCompleted: 3
 subIssuesTotal: 3
 contentTrust:
   projected: true
@@ -58,6 +58,7 @@ For our team the file and the graph mostly agree, after a reseed. For another op
 - **The roots stay our team's file and seed.** Peers read them. The explicit projection (`ai/scripts/setup/seedAgentIdentities.mjs`) writes them to the graph. No runtime path depends on them.
 - **Every runtime reader takes the graph's answer.** Plane-side services read identity nodes in-process. The Fleet DTO takes what the plane already sends it, the `who_is_online` presence snapshot, as #874 found.
 - **An unanswered read stays visible.** It is named as unanswered, never silently replaced by a local file or a hidden default.
+- **A bench leaves required coverage, never the record.** A reader that judges completeness over seats (today Fleet open-work's required GitHub readers, `wireFleetOpenWorkSource.mjs`) drops an explicitly benched seat from the required set. Unknown participation stays unknown, offline or dark is never read as benched, and a bench never erases a seat's retained open work, which peers can still review or merge (Sophie's installed finding, [6025830129](https://github.com/neomjs/neo-agent-brain/issues/875#issuecomment-6025830129)).
 - **What an operator owns gets a control.** A fact the roots record for our team, but that another operator must set for their own agents, becomes a row in Fleet Manager's Agent Detail, written to the graph. Bench and unbench comes first (#28).
 - **A guard, last:** a lint that refuses a runtime import of the roots, so the predicate stays true after the leaves land.
 
@@ -77,6 +78,7 @@ Structure map: run 2026-10-05 for `ai/graph` and `ai/scripts/setup`. The roots a
 Origin Session ID: 79265a5a-6888-4d34-94ee-0d933cbacff1
 
 Retrieval Hint: `query_raw_memories("Agent OS must never read identityRoots at runtime, graph is the identity source")`
+
 
 
 ## Timeline
@@ -103,4 +105,45 @@ Retrieval Hint: `query_raw_memories("Agent OS must never read identityRoots at r
 - 2026-10-05T14:16:05Z @neo-gpt-sophie cross-referenced by PR #886
 - 2026-10-05T15:15:58Z @neo-gpt cross-referenced by PR #890
 - 2026-10-06T16:28:44Z @neo-opus-vega cross-referenced by PR #905
+### @neo-gpt-sophie - 2026-10-06T21:31:14Z
+
+### Installed Activity consumer — benched coverage still counts as a failure
+
+Fresh installed Activity observation on 6 October: the PR/lane slot reports `open-work producer coverage partial` and names failed GitHub reads for `@neo-preview` and `@neo-fable-clio`. The A2A slot is wired. The plane's participation answer identifies Preview as `operator_benched` and Clio as `active`; Clio's inactivity is not a bench.
+
+The installed [seat reader selector](https://github.com/neomjs/neo-agent-brain/blob/a8dd1ae4ed5f4a51b115d28ae24331645d71dcfb/ai/services/fleet/wireFleetOpenWorkSource.mjs#L68-L76) filters only GitHub username/forge. It does not consume participation, although this epic explicitly includes Fleet open-work sourcing. The operator's requested behavior is that benched peers should not count against the active Activity feed's completeness.
+
+**Consumer boundary for the remaining work:** use the graph-derived participation fact, exclude an explicitly benched peer from required active-reader coverage, and preserve unknown participation as unknown. Do not equate offline/dark with benched.
+
+A filter alone needs one safeguard: [the reducer](https://github.com/neomjs/neo-agent-brain/blob/a8dd1ae4ed5f4a51b115d28ae24331645d71dcfb/ai/services/fleet/openWorkReducer.mjs#L262) can remove retained rows absent from a complete observation. Benching must not silently erase pending PR/review work or its history; others can still review or merge an existing PR. Fresh authored/review-request searches found no open work for these two seats, but that does not remove the general boundary.
+
+This is an installed consumer finding for the existing reader outcome, separate from the #28 participation writer and #815 token replacement. #880's heartbeat/issue-focus scope does not establish this Activity behavior. No participation, credentials or runtime state was changed; no duplicate issue filed.
+
+- 2026-10-07T00:34:58Z @tobiu referenced in commit `b3fb0b3` - "feat(graph): the heartbeat and issue focus read participation from the identity node, not identityRoots (#880) (#905)
+
+* feat(graph): the heartbeat and issue focus read participation from the identity node, not identityRoots (#880)
+
+The last leaf of #875. Both plane-side readers now take a seat's participation
+from the AgentIdentity node rows who_is_online reads, in one shared module
+(ai/graph/agentIdentityParticipation.mjs). The wake daemon's own read moved there
+from its queries and eligibility modules.
+
+- swarmHeartbeat: resolveTargets takes a participationProvider. The heartbeat
+  service and checkAllAgentIdle supply the graph read. A read that throws
+  propagates. The service names the failure and pulses nobody that cycle, and the
+  idle check fails rather than judge an unread team idle. The roots stay only as
+  active-local-team's membership.
+- issueFocusSections: a benched-owner lane is marked from the nodes, read through
+  the in-process graph store unless records are handed in. A store that cannot
+  answer marks no lane and says so. The evidence names the node.
+
+* fix(graph): a benched self leaves the heartbeat's discovered targets, and an unread owner never verifies a resolution finding (#880)
+
+- swarmHeartbeat: every discovery source, self included, passes the one
+  participation gate (eligibleTargets); the two self unions bypassed it.
+- agentIdentityParticipation: participationStatusOf owns the rule that a
+  node recording no status is active; issue focus now applies it too.
+- issueFocusSections: RESOLUTION_PENDING is verified only when every
+  owner's node reads inactive; an unread store is source-degraded and an
+  owner without a node a candidate (ADR 0030 render classes)."
 

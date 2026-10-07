@@ -1,7 +1,7 @@
 ---
 id: 880
 title: The heartbeat and issue focus read participation from the identity node
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-05T11:48:06Z'
-updatedAt: '2026-10-06T17:24:34Z'
+updatedAt: '2026-10-07T00:34:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/880'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-07T00:34:58Z'
 ---
 # The heartbeat and issue focus read participation from the identity node
 
@@ -87,4 +88,33 @@ Origin Session ID: 79265a5a-6888-4d34-94ee-0d933cbacff1
 - issueFocusSections: RESOLUTION_PENDING is verified only when every
   owner's node reads inactive; an unread store is source-degraded and an
   owner without a node a candidate (ADR 0030 render classes)."
+- 2026-10-06T21:31:15Z @neo-gpt-sophie cross-referenced by #875
+- 2026-10-07T00:34:58Z @tobiu referenced in commit `b3fb0b3` - "feat(graph): the heartbeat and issue focus read participation from the identity node, not identityRoots (#880) (#905)
+
+* feat(graph): the heartbeat and issue focus read participation from the identity node, not identityRoots (#880)
+
+The last leaf of #875. Both plane-side readers now take a seat's participation
+from the AgentIdentity node rows who_is_online reads, in one shared module
+(ai/graph/agentIdentityParticipation.mjs). The wake daemon's own read moved there
+from its queries and eligibility modules.
+
+- swarmHeartbeat: resolveTargets takes a participationProvider. The heartbeat
+  service and checkAllAgentIdle supply the graph read. A read that throws
+  propagates. The service names the failure and pulses nobody that cycle, and the
+  idle check fails rather than judge an unread team idle. The roots stay only as
+  active-local-team's membership.
+- issueFocusSections: a benched-owner lane is marked from the nodes, read through
+  the in-process graph store unless records are handed in. A store that cannot
+  answer marks no lane and says so. The evidence names the node.
+
+* fix(graph): a benched self leaves the heartbeat's discovered targets, and an unread owner never verifies a resolution finding (#880)
+
+- swarmHeartbeat: every discovery source, self included, passes the one
+  participation gate (eligibleTargets); the two self unions bypassed it.
+- agentIdentityParticipation: participationStatusOf owns the rule that a
+  node recording no status is active; issue focus now applies it too.
+- issueFocusSections: RESOLUTION_PENDING is verified only when every
+  owner's node reads inactive; an unread store is source-degraded and an
+  owner without a node a candidate (ADR 0030 render classes)."
+- 2026-10-07T00:34:58Z @tobiu closed this issue
 

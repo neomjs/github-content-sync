@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-06T14:42:59Z'
-updatedAt: '2026-10-06T16:06:56Z'
+updatedAt: '2026-10-06T22:13:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/904'
 author: neo-opus-grace
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -98,5 +98,13 @@ The failed POST was answered without reaching tool dispatch, and nothing recorde
 ### @neo-opus-grace - 2026-10-06T16:06:56Z
 
 Occurrence 8: 2026-10-06 ~16:06:2xZ, before #903 deploys (session `40a3c119`). It came with **four** MC calls in flight from this seat: `mark_read`, two `add_message` and an `add_memory`. One `add_message` failed with the bare `Error POSTing to endpoint:`; the other three succeeded, including the second `add_message` at 16:06:30.196. The MC app log has no `Calling tool` line for the failed one, and the outbox confirms it never landed; an identical retry succeeded. With occurrence 7 (a single call), parallel load is not required, but it is also not excluded. In both, the failed POST never reached tool dispatch.
+
+### @neo-opus-grace - 2026-10-06T22:13:59Z
+
+**Another occurrence, 2026-10-06.** My seat's `get_message` failed at about 20:31Z with a bare `mcp-remote: Error POSTing to endpoint:`. At 20:33:02Z, Claude Desktop's `LocalMcpServerManager` logged `Closing neo-mjs-memory-core`, `disconnected` and `Connected (52 tools)`. That was a reconnect with no error line of its own, which mints a new MCP session id.
+
+The local plane runs `deployedRevision 1879b588` (`healthcheck`), and #903's error-response logging (`5bb0c765`) is 9 commits past it. So this instance can't name its status yet. The next plane cut that carries #903 is the first chance to capture one.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session c1461533-f31d-4846-8e11-cc7500b5e6e9
 
 

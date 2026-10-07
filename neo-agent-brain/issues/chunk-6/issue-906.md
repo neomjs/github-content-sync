@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-06T19:35:09Z'
-updatedAt: '2026-10-06T19:36:57Z'
+updatedAt: '2026-10-06T23:39:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/906'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: 571
 subIssues: []
 subIssuesCompleted: 0
@@ -49,7 +49,7 @@ The structure-map command completed successfully; `ai/services/fleet` is the exi
 Closed #675 pins Claude auto memory and explicitly notes its dependence on trusted workspace settings. It does not implement this request.
 
 ## The Fix
-Extend the existing Claude preparation boundary to honor an operator's current FM repository assignment for its verified checkout, using the documented per-project trust key. Verify consumption against the installed Claude Code surface and intended configuration recipient.
+Extend the existing Claude preparation boundary to honor each of the operator's current FM repository assignments for its independently verified checkout, using the documented per-project trust key. This includes assigned secondary repositories as well as the working repository; being a sibling directory alone grants nothing. Verify consumption against the installed Claude Code surface and intended configuration recipient.
 
 Match the resolved checkout origin to the assigned forge/repository before applying trust; directory name or `.git` presence alone is insufficient. Resolve Claude's canonical trust root. For worktrees it is the main checkout root, so refuse a grant that would extend beyond the assigned repository's verified scope. Preserve explicit newer distrust and handle relocation as verification of the same assigned repository at its new destination. Repeated preparation must be idempotent.
 
@@ -66,9 +66,9 @@ Aligned with the existing preparation boundary: carries the existing operator as
 
 ## Acceptance Criteria
 - [ ] Use the documented project trust key; record supported Claude versions/surfaces and prove it addresses the intended configuration recipient.
-- [ ] An assigned, verified repository opens trusted on first start and after a verified root relocation, without a second workspace-trust click.
+- [ ] Assigned, independently verified working and secondary repositories open trusted on first use and after a verified root relocation, without a second workspace-trust click.
 - [ ] Repeated preparation is idempotent and preserves explicit newer distrust.
-- [ ] Unassigned folders, sibling repositories, checkout identity mismatches and escaping symlink targets receive no trust from this integration.
+- [ ] Unassigned folders and sibling repositories, checkout identity mismatches and escaping symlink targets receive no trust from this integration. An assigned sibling is evaluated as its own repository, not trusted by proximity.
 - [ ] Do not rewrite permission rules/modes, hook approvals or MCP approval records. Document that native trust enables the repository's existing trust-gated allow rules and additional directories.
 - [ ] Record an installed Claude Code witness for the positive and negative cases. Fixture-only success is not native acceptance.
 
@@ -87,6 +87,7 @@ Origin Session ID: d0d0bed3-7ce4-4bce-a16d-59589484aec0
 
 
 
+
 ## Timeline
 
 - 2026-10-06T19:35:09Z @neo-gpt-emmy assigned to @neo-gpt-emmy
@@ -95,4 +96,19 @@ Origin Session ID: d0d0bed3-7ce4-4bce-a16d-59589484aec0
 - 2026-10-06T19:35:11Z @neo-gpt-emmy added the `agent-os` label
 - 2026-10-06T19:35:32Z @neo-gpt-emmy added parent issue #571
 - 2026-10-06T19:37:34Z @neo-gpt-emmy cross-referenced by #12
+- 2026-10-06T22:20:16Z @neo-gpt-emmy cross-referenced by #909
+### @neo-gpt-emmy - 2026-10-06T23:39:53Z
+
+### Preparation map and scope clarification
+
+The operator's requirement covers assigned repositories, plural. I corrected the body/AC wording to distinguish **assigned secondary repositories** from **unassigned siblings**; limiting the feature to the working checkout would under-deliver that request.
+
+The current Start path ensures secondary checkouts but prepares only the working repository. The implementation must verify every intended trust recipient independently. Existing `inspectAgentRepo` checks checkout presence, not actual origin identity; `realpath` resolves symlinks, not a linked worktree's main root. Existing provisioning URL validation and worktree-root resolution provide behavior references, not complete trust proofs.
+
+The Claude trust-write seam is the same preparation area Grace is changing under #909. No parallel edit was made there. Source work can follow that contract once its projection shape is stable; native acceptance remains under the coordinated next update window, with Ada held closed.
+
+An explicit false trust field must not be silently overwritten. The implementation must distinguish the evidence it actually has from a claim about when or why the resident changed it; absent/true/false and relocation controls belong in the proof.
+
+Origin Session ID: d0d0bed3-7ce4-4bce-a16d-59589484aec0
+
 
