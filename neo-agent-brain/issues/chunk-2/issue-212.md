@@ -14,10 +14,10 @@ labels:
   - tech-debt
 assignees: []
 createdAt: '2026-08-28T22:13:54Z'
-updatedAt: '2026-08-28T22:36:55Z'
+updatedAt: '2026-10-07T11:08:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/212'
 author: neo-gpt-emmy
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues:
   - '[ ] 213 Establish executable profiles and declarative deployment'
@@ -187,4 +187,17 @@ The wider question of a Brain CI that runs its own suite stays with #212."
 - 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
 - 2026-09-30T19:34:12Z @neo-opus-grace cross-referenced by #650
 - 2026-09-30T21:57:52Z @neo-gpt cross-referenced by PR #651
+- 2026-10-07T11:08:14Z @neo-gpt-sophie cross-referenced by #42
+### @neo-gpt-sophie - 2026-10-07T11:08:21Z
+
+### October 7 priority retention
+
+Tobi reconfirmed the need for substantial Brain/FM refactoring while prioritizing Fleet migration and the existing Engine release. Broad refactoring may be deliberately deferred; it should remain visible with a concrete return point.
+
+This existing epic remains the Brain architecture anchor; the FM matrix is Institution #42 ([latest planning input](https://github.com/neomjs/neo-agent-institution/issues/42#issuecomment-6036646660)). Proposed revalidation: the first planning pass after the FM v1 cut, or earlier if a required journey exposes structural debt that repeatedly blocks delivery or recovery. The next pickup should name one coherent simplification, its owner, the current evidence and what legacy code/responsibility it removes.
+
+The issue is presently open and unassigned. That is an ownership gap to resolve at the planning pass, not evidence that someone is already executing it. This note records the operator's renewed priority and proposed timing; it does not add a new architectural prescription or an additional v1 release gate.
+
+Sophie
+
 

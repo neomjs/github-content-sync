@@ -1,7 +1,7 @@
 ---
 id: 909
 title: Launch Desktop MCPs through scoped Fleet admission
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-06T22:20:14Z'
-updatedAt: '2026-10-07T00:26:08Z'
+updatedAt: '2026-10-07T10:08:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/909'
 author: neo-gpt-emmy
 commentsCount: 3
@@ -26,6 +26,7 @@ blockedBy: []
 blocking:
   - '[ ] 590 Explain native tool launch admission on the seat card'
   - '[ ] 911 Make Stop cancel pending managed Starts'
+closedAt: '2026-10-07T10:08:25Z'
 ---
 # Launch Desktop MCPs through scoped Fleet admission
 
@@ -220,4 +221,97 @@ Stop and does not count."
 - 2026-10-07T01:15:48Z @neo-gpt-emmy cross-referenced by #590
 - 2026-10-07T01:16:01Z @neo-gpt-emmy marked this issue as blocking #911
 - 2026-10-07T01:16:29Z @neo-gpt-emmy marked this issue as blocking #590
+- 2026-10-07T10:08:25Z @tobiu referenced in commit `2d839fc` - "feat(fleet): Claude Desktop seats start their Neo MCPs from their own profile, through Fleet launch admission (#909) (#910)
+
+* feat(fleet): Fleet's MCP launcher redeems a per-server grant over a signed loopback hop (#909)
+
+Claude Desktop starts a profile row's MCP child with a stripped environment,
+so the row runs this launcher instead of the server. It proves possession of
+its grant with an HMAC over a fresh nonce, accepts only an answer signed with
+the same secret, and starts the unchanged target on Desktop's own stdio. The
+secret never crosses the wire, so a process holding a dead issuer's port can
+neither learn the grant nor hand the launcher an environment.
+
+launchRowEnvNames splits a bound plan row once, for the renderer and the
+issuer alike: identity, Node runtime env and resident placement stay literal,
+everything else is redeemed; a tenant row redeems only its credential slot.
+
+* feat(fleet): the launch-admission issuer binds a Desktop seat's grants to its Start, Stop and registry changes (#909)
+
+McpLaunchAdmissionService reserves one grant per enabled server before
+preparation writes the rows, and the lifecycle activates them once the seat
+is launched and leased, with the values Start injected and a probe of the
+launched process. Redemptions repeat for the generation's lifetime; one that
+arrives during Start waits for its outcome, bounded.
+
+Revocation is sticky. Stop intent revokes before any signal; a failed lease
+or Start, the process's exit and a newer Start end the generation. The
+registry now fires definitionChange after each committed write, so a server
+switched off loses its grant for good, and a changed harness, MCP target,
+launch owner or launch override ends the generation.
+
+Start refuses a Claude Desktop seat whose profile another process holds.
+A seat this issuer holds no generation for reads stale while it runs.
+
+* feat(fleet): a Claude Desktop seat's own profile carries its Neo MCP rows, and its Code-tab rows retire (#909)
+
+Every Code session of a Fleet-launched Desktop now has the seat's MCP
+servers, whatever folder it opened: each enabled server gets a profile row
+that runs the launcher with that server's grant, the validated forge login
+and, for a resident server, its plane placement. No PAT, plane bearer or
+signing key is written.
+
+The profile receipt names the new rows before the profile does and keeps the
+previous ones admissible, so a preparation interrupted between the two
+writes converges on the next Start; rows nobody accounts for refuse byte for
+byte. Rows an earlier Fleet wrote into the shared Code-tab config are retired
+only as its receipt recorded them, with the operator's projects, trust and
+toggles kept.
+
+* feat(fleet): a Desktop seat's launch admission reaches its cockpit row (#909)
+
+The runtime row and the cockpit row carry the lifecycle's launchAdmission
+status, so the seat card can say when new MCP children need a managed
+restart without calling running tools disconnected.
+
+* docs(fleet): launch-admission comments describe behavior, not their decision record (#909)
+
+* test(fleet): an interrupted Desktop profile preparation converges from either write (#909)
+
+* test(fleet): a post-spawn error revokes, and the admission audit stays bounded and value-free (#909)
+
+* fix(fleet): redeem seat credentials from their owners, and publish a reservation before anything is awaited (#909)
+
+Each redemption resolves the seat's PAT from the registry, and its plane
+credential from the explicit tenant or plane binding Start selected. It
+proves that value the way Start proves it, then re-checks generation,
+server and process, and hands over exactly the proved bytes. The PAT
+proof reads the forge account even when a Git identity is declared.
+
+A missing value refuses credential-missing; an unproved one refuses
+credential-unproven. Neither ends the generation or falls back to the
+other credential. Concurrent proofs of one value share one probe,
+bounded by proofTimeoutMs. The issuer no longer holds the credentials,
+and the lifecycle leaves them out of the values it hands to activation.
+
+reserve() publishes the generation before awaiting its listener, and
+checks it against the registry's current definition. A switch-off, Stop
+or removal between Start's definition read and the reservation now
+reaches it.
+
+* fix(fleet): an owner that cannot resolve and prove owns no credential slot (#909)
+
+* fix(fleet): a Stop during a managed Start ends the admission that Start reserves (#909)
+
+A Stop that arrived while a Claude Desktop seat's Start was still
+provisioning found no generation to revoke and was lost, so the later
+reservation admitted. The issuer now counts every seat-wide revocation,
+whether or not a generation takes it. FleetManager.startAgent reads that
+mark where the managed Start begins, before it waits for the seat's home.
+startAgentProvisioned reads it itself when it is called directly, before
+its first await. reserve() mints the generation already revoked when a
+revocation came after the mark. A Start that reads the mark after a Stop
+begins fresh. Replacing a generation, or revoking one by id, is not a
+Stop and does not count."
+- 2026-10-07T10:08:25Z @tobiu closed this issue
 

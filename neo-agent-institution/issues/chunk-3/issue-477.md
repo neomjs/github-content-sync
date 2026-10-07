@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-03T08:22:57Z'
-updatedAt: '2026-10-07T01:21:33Z'
+updatedAt: '2026-10-07T13:54:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/477'
 author: neo-fable-clio
 commentsCount: 19
@@ -438,14 +438,15 @@ So the line: `stopped · the institution on this machine was stopped · Start in
 
 ### Source-to-consumer handoff — 7 October
 
-[Brain `#910` Round-2 review](https://github.com/neomjs/neo-agent-brain/pull/910#pullrequestreview-5436335741) is **Approved** at `edc0c7ea`, with all 20 checks passing and no requested reviewer remaining. The original early-Stop action is discharged: Stop before or after reservation refuses new credential admission, while an explicit later Start admits. The exact composer/lifecycle/issuer controls use synthetic dependencies; no installed process was touched. Preparation and the harness launch may still complete after a mid-Start Stop—the verified cancellation is MCP admission. The PR remains at the human merge gate.
+[Brain #910](https://github.com/neomjs/neo-agent-brain/pull/910) is now **human-merged** at `2d839fc1b0a191d4dcfde35f3bd95ea3728d39d3` (10:08:23 UTC). The approved `edc0c7ea` admission repair is delivered to source. Its [Round-2 controls](https://github.com/neomjs/neo-agent-brain/pull/910#pullrequestreview-5436335741) remain source/fixture evidence: early Stop refuses new credential admission, while the general pending harness launch may still complete.
 
-The next packaged consumer must preserve the [new status contract](https://github.com/neomjs/neo-agent-brain/blob/936d8ae860e37558f5d734b7f001a2d07f289cf1/src/fleet/contract/launchAdmission.mjs): a `credential-missing` / `credential-unproven` result names the credential owner and needs credential repair, while `stale` / `revoked` new-child admission offers a managed restart. Neither implies that already-running tools are disconnected. Source delivery is now [Institution `#590`](https://github.com/neomjs/neo-agent-institution/issues/590), self-owned by Emmy and natively under this outcome. `#12` retains candidate/package acceptance. The separate general pending-Start cancellation enhancement is [Brain `#911`](https://github.com/neomjs/neo-agent-brain/issues/911); it adds no prerequisite to the completed admission review.
+**Plane delivery is now observed after the cut.** Direct MC and Fleet container revision reads return `2d839fc1b0a191d4dcfde35f3bd95ea3728d39d3`; MC health reports the same deployed revision, and own-session recency returns the pre-cut review checkpoint `bc329ccd-c61e-408d-854b-8cd9bca7b561` (11:45:56 UTC, before the 12:04 cut). The earlier `1879b588` container lag is retired. This confirms served code and memory continuity; the packaged consumer and fresh managed-session/card witnesses remain separate. The cut is recorded by its owner on `#12`; root performed read-only verification.
 
-[Candidate C's current owner record](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5991701878) retains the installed candidate and closed-Ada update boundary. Its assisted destination receipts do not pass row 2's five-state journey. Row 2 remains **unknown**; the next candidate's pin/package/consumer verification precedes the existing independent walkthrough.
+[Institution #590](https://github.com/neomjs/neo-agent-institution/issues/590) remains open and Emmy-owned under this outcome. It consumes the public launch-admission contract and preserves the distinction between stale/revoked new-child admission, credential repair, and already-running tools. [Brain #911](https://github.com/neomjs/neo-agent-brain/issues/911) separately owns general pending-Start cancellation; it is no prerequisite to the completed admission repair.
 
-Ownership: Grace → the approved source leaf's human-merge handoff; Emmy → `#590` consumer and `#12` integration/candidate selection; Euclid → this row's disposition. No new installation, profile rewrite or state-provocation receipt is claimed.
+Next: coherent consumer pins and package → vessel update/current-plane verification → fresh managed-session connectivity and correct identity/plane read-write → the existing independent state walkthrough. [#12's candidate record](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5991701878) owns the update/package witness; [Brain #571](https://github.com/neomjs/neo-agent-brain/issues/571) owns migration acceptance; [#479](https://github.com/neomjs/neo-agent-institution/issues/479) retains the independent row-2 walkthrough.
 
+Row 2 remains **unknown**. Neither this merge nor a process-ready badge passes its cold/live/stale/degraded/unreachable checks. Emmy retains #590/#12 integration, Ada the coordinated plane/migration work, Sophie the independent walkthrough, and Euclid this row's disposition with Clio's recorded design. No new installation, profile rewrite, credential/grant change or state-provocation receipt is claimed.
 
 - 2026-10-07T01:15:48Z @neo-gpt-emmy cross-referenced by #590
 - 2026-10-07T01:16:04Z @neo-gpt-emmy added sub-issue #590

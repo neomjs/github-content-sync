@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T09:46:57Z'
-updatedAt: '2026-10-07T01:17:07Z'
+updatedAt: '2026-10-07T11:16:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/571'
 author: neo-opus-ada
-commentsCount: 58
+commentsCount: 59
 parentIssue: null
 subIssues:
   - '[x] 572 Fleet derives a seat''s clone and harness home under one agents root'
@@ -47,10 +47,11 @@ subIssues:
   - '[x] 582 System reviews and consents to this installation''s seat move'
   - '[ ] 906 Carry FM repository trust into Claude Code'
   - '[x] 907 The Claude wake listener blocks a Claude Desktop session''s first prompt'
-  - '[ ] 909 Launch Desktop MCPs through scoped Fleet admission'
+  - '[x] 909 Launch Desktop MCPs through scoped Fleet admission'
   - '[ ] 911 Make Stop cancel pending managed Starts'
-subIssuesCompleted: 29
-subIssuesTotal: 33
+  - '[x] 912 The rg-replace guard never runs in an Engine-checkout seat'
+subIssuesCompleted: 31
+subIssuesTotal: 34
 contentTrust:
   projected: true
   quarantined: 0
@@ -1836,4 +1837,27 @@ Emmy (GPT-6 Astra, Codex) · session d0d0bed3-7ce4-4bce-a16d-59589484aec0
 - 2026-10-07T01:15:43Z @neo-gpt-emmy cross-referenced by #911
 - 2026-10-07T01:15:48Z @neo-gpt-emmy cross-referenced by #590
 - 2026-10-07T01:16:00Z @neo-gpt-emmy added sub-issue #911
+- 2026-10-07T10:48:49Z @neo-gpt cross-referenced by #477
+- 2026-10-07T10:52:24Z @neo-opus-ada cross-referenced by #912
+- 2026-10-07T10:52:30Z @neo-opus-ada added sub-issue #912
+- 2026-10-07T11:02:37Z @neo-opus-ada cross-referenced by PR #913
+### @neo-opus-ada - 2026-10-07T11:16:01Z
+
+### Operator-visible gap: a moved Claude seat's Neo tools are invisible in its own Connectors menu (2026-10-07)
+
+The operator compared two harnesses. Grace's (not FM-booted) composer → Connectors lists `neo-mjs-github-workflow`, `-knowledge-base`, `-memory-core` and `-neural-link` with toggles. Ada's FM-booted seat lists only Claude in Chrome. Yet Ada's session has all four, and they are healthy and in use. An operator cannot see or toggle what their agent runs. Read in Ada's seat:
+
+| Seat | Where the four `neo-mjs-*` rows live | Composer → Connectors |
+|---|---|---|
+| Grace (`~/.claude-instances/Neo`) | that profile's `claude_desktop_config.json` `mcpServers` | listed, with toggles |
+| Ada (FM, installed pre-#910 build) | shared `~/.claude.json` → `projects[<managed clone>].mcpServers` (the local scope from #692). Profile `mcpServers` is `{}` | not listed |
+
+`session_connectors_status` in Ada's session reports all four as `kind: user`, `connected` (52 / 13 / 60 / 24 tools). The menu shows Desktop-profile servers and claude.ai connectors, but not user-scope rows. This is the same placement the earlier withdrawn "separate defect" note above described as by design.
+
+#910 (merged at `2d839fc1`) converges the `neo-mjs-*` rows into the seat's Desktop profile and retires the `~/.claude.json` rows. So the fix exists in source. It reaches a seat once the installed FM carries a Brain pin at or past `2d839fc1` (Institution #590) and the seat is re-provisioned.
+
+**Row 4 receipt, one more check per Claude Desktop seat from the next move on:** the seat's `claude_desktop_config.json` holds the four `neo-mjs-*` rows, its composer's Connectors menu lists them, and `~/.claude.json` keeps no `neo-mjs-*` row under that seat's clone. Ada's own seat re-checks this after its re-provision.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-06T15:11:05Z'
-updatedAt: '2026-10-06T16:46:58Z'
+updatedAt: '2026-10-07T11:08:45Z'
 githubUrl: 'https://github.com/neomjs/devindex/issues/61'
 author: neo-opus-grace
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,7 +20,8 @@ contentTrust:
   projected: true
   quarantined: 0
   signals: []
-blockedBy: []
+blockedBy:
+  - '[x] 64 DevIndex cannot build on neo.mjs 13.2: the Data Factory sits under apps/'
 blocking: []
 ---
 # Every DevIndex environment is live under /devindex/ and linked from the Portal
@@ -108,4 +109,36 @@ Before #62, the production entry fetched `https://neomjs.com/apps/devindex/…`,
 - 2026-10-06T16:47:20Z @neo-opus-grace cross-referenced by #19433
 - 2026-10-06T16:48:44Z @neo-opus-grace cross-referenced by PR #19434
 - 2026-10-06T16:53:39Z @neo-gpt cross-referenced by PR #19435
+- 2026-10-07T10:56:27Z @neo-opus-grace cross-referenced by #64
+- 2026-10-07T10:56:35Z @neo-opus-grace marked this issue as being blocked by #64
+- 2026-10-07T11:04:32Z @neo-opus-grace cross-referenced by PR #65
+### @neo-opus-grace - 2026-10-07T11:08:45Z
+
+**Pre-cut witness: on Engine `dev`, all four environments boot under a `/devindex/` mount.** Measured 2026-10-07.
+
+Setup:
+- Engine `dev` at neomjs/neo@b2db92c5b7, packed the way the publish packs it.
+- DevIndex at `33414d5`, the code commit of #65.
+- Headless Chromium, behind a local server that answers only under `/devindex/` (404 outside, as on Pages).
+
+| Entry | Served from | Grid rows | Index request | Failed requests | Errors |
+|---|---|---|---|---|---|
+| site root | assembled `_site` | 13 | `200 /devindex/apps/devindex/resources/data/users.jsonl` | 0 | 0 |
+| `dist/development/apps/devindex/` | assembled `_site` | 13 | same | 0 | 0 |
+| `dist/production/apps/devindex/` | assembled `_site` | 13 | same | 0 | 0 |
+| `dist/esm/apps/devindex/` | the workspace, unassembled | 13 | same | 0 | 0 |
+| `apps/devindex/` (dev mode) | the workspace | 13 | same: the site's index, not the copy inside `node_modules/neo.mjs` | 0 | 0 |
+
+So both engine fixes this ticket waits for hold on 13.2. The esm build's imports resolve inside `dist/esm`, and dev mode's worker reads the index from the document base (neomjs/neo#19430).
+
+What remains is DevIndex's, after the publish:
+- #64 (PR #65) merges first. Without it, 13.2's `build-all` exits 1.
+- The assembly's copy sets for dist/esm and dev mode (The Fix, 1–2), and dev mode's learn view `contentPath`, which this probe did not open.
+- The deploy, the live reads on neomjs.com, and the Portal rows.
+
+This does not replace the ACs' live reads, so no box is ticked.
+
+Grace (Claude Opus 5.5, Claude Code) · session 9aa8aa9b-2502-458b-976b-eec8a223218e
+
+
 

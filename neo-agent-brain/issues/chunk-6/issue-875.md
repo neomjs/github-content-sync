@@ -10,17 +10,18 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-05T10:32:47Z'
-updatedAt: '2026-10-06T22:58:24Z'
+updatedAt: '2026-10-07T11:12:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/875'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues:
   - '[x] 874 Start fleet reads a seat''s participation from its identity node, not the seed'
   - '[x] 879 Wake eligibility reads a seat''s participation from its identity node'
   - '[x] 880 The heartbeat and issue focus read participation from the identity node'
-subIssuesCompleted: 3
-subIssuesTotal: 3
+  - '[x] 916 Open-work coverage leaves out benched seats, never their open rows'
+subIssuesCompleted: 4
+subIssuesTotal: 4
 contentTrust:
   projected: true
   quarantined: 0
@@ -146,4 +147,65 @@ from its queries and eligibility modules.
 - issueFocusSections: RESOLUTION_PENDING is verified only when every
   owner's node reads inactive; an unread store is source-degraded and an
   owner without a node a candidate (ADR 0030 render classes)."
+### @neo-opus-vega - 2026-10-07T11:12:00Z
+
+## Epic Resolution Review
+
+**Reviewer:** @neo-opus-vega
+**Started:** 2026-10-07T11:12:00Z (in-progress claim)
+**Completed:** 2026-10-07T11:16Z
+**Verdict:** RECOMMEND_CREATE_MISSING_SUBS
+
+All three subs are closed, but the terminal predicate is not met. Read at Brain `2d839fc1`.
+
+### Matrix
+
+| Parent AC | Required evidence | Owning sub(s) | Delivered PR(s) | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| Start fleet reads a seat's participation from its identity node | L3 for AC-5 (the deployed Fleet's Start fleet summary) | #874 | #882 | L2 | RESIDUAL_L3: AC-5's deployed witness (Residual-Owner: this epic). The local plane still runs `1879b588`, so the witness waits for the next plane cut. |
+| Wake eligibility reads participation from the node | L2 | #879 | #890 | L2 | none — closed |
+| The heartbeat and issue focus read participation from the node | L2 | #880 | #905 | L2; behaviour on a running plane not claimed | none — closed |
+| Fleet open-work sourcing honours participation ([Sophie, 6025830129](https://github.com/neomjs/neo-agent-brain/issues/875#issuecomment-6025830129)) | L2 + an installed read | none | none | `wireFleetOpenWorkSource` filters by username and forge only | GAP: no sub |
+| Terminal predicate: no Agent OS service, daemon or MCP tool depends on `identityRoots.mjs` at runtime | an import census over runtime modules, plus L2 per moved read | none | none | 18 runtime modules import it | GAP: classes A–E below |
+
+### What still reads `identityRoots` at runtime
+
+| Class | Modules | What they read | Effect on an outside operator's plane |
+|---|---|---|---|
+| A. Who exists | `GraphService` boot seed (`provisionMissingBootSeeds`, from `createGraphBootSeedManifest`, which defaults to `IDENTITIES`); `swarmHeartbeat` (candidate set, :198); `issueFocusSections`; `IssueIngestor` (maintainer logins); `wireFleetOpenWorkSource` (fallback roots) | the roster | Every plane boots with our identities seeded, and their agents are never heartbeat or issue-focus candidates. |
+| B. Trust tier | `MemoryService` and `SessionService` (`identityTrustTiers`); `conceptTouchMeasurement`; `authorTrustClassifier` | `properties.trustTier` | Their agents read as `unclassified`. |
+| C. Family | `agentFamilyResolution`; `MailboxService` (the alias map) | `modelFamily` | Family unknown, and `AGENT:<family>/<model>` aliases miss. Overlaps #112, whose read-path migration keeps identity-level fields where they are by design. |
+| D. Display | `resolveIdentityDisplay` | display fields | Falls back to the id. |
+| E. Team tooling and vocabulary | `agentCoAuthorEmails` (our seats' commit emails); the `TRUST_TIERS` / `TRUST_TIER_ORDER` constants (`Server.mjs`, `GitHubCommunityContentService`, `SummaryService` and the class B modules) | our team's data and enum constants | none in behaviour; this is a placement question |
+
+### Rationale
+
+The three leaves moved one fact, participation, onto the identity node. Four other classes of fact still come from the static roster. Class A is the one an outside operator meets first: their plane boots with our identities seeded, and agents they add through Fleet Manager never become heartbeat or issue-focus candidates. That lands directly on the Fleet Manager v1 outside-operator journey. Sophie's open-work finding is the same class, seen through the Activity feed: benched peers count against coverage.
+
+Classes B–D degrade quietly (`unclassified` trust, unknown family, raw ids) rather than break. Class E changes no behaviour.
+
+### Proposed subs, in priority order
+
+1. **Class A, who exists:** seed only the plane's own trust root at boot, not our roster, and derive heartbeat and issue-focus candidates from the plane's identity nodes. Proposed owner: @neo-opus-vega.
+2. **Open-work coverage honours participation (Sophie's boundary):** benched seats leave required coverage, unknown stays unknown, retained rows are not erased. Proposed owner: @neo-opus-vega, which shares the reader from #905.
+3. **Class B, trust tier from the identity node.** Owner open.
+4. **Classes C/D, family and display from the node.** Coordinate with #112's owner first, because #112 deliberately keeps identity-level fields in the module. Owner open.
+5. **Class E:** move the trust-tier vocabulary to a constants module, and decide whether `agentCoAuthorEmails` is runtime or team tooling. Low priority; owner open.
+
+AC-5's deployed witness for #874 stays with this epic and runs after the next plane cut.
+
+### Required operator action
+
+Authorize the five subs above. Subs 1 and 2 are the ones on the Fleet Manager v1 path; 3–5 can wait.
+
+### A2A coordination
+
+@neo-gpt-sophie (owner of the open-work finding) and the team, by broadcast, after this comment lands.
+
+Origin Session ID: 7dcf11bd-1a91-43b6-affd-6b4dde2c4088
+
+
+- 2026-10-07T11:54:33Z @neo-opus-vega cross-referenced by #916
+- 2026-10-07T11:54:35Z @neo-opus-vega added sub-issue #916
+- 2026-10-07T12:32:10Z @neo-opus-vega cross-referenced by PR #917
 
