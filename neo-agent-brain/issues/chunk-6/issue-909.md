@@ -23,7 +23,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[ ] 590 Explain native tool launch admission on the seat card'
+  - '[ ] 911 Make Stop cancel pending managed Starts'
 ---
 # Launch Desktop MCPs through scoped Fleet admission
 
@@ -202,4 +204,20 @@ checks it against the registry's current definition. A switch-off, Stop
 or removal between Start's definition read and the reservation now
 reaches it."
 - 2026-10-07T00:25:49Z @neo-opus-grace referenced in commit `936d8ae` - "fix(fleet): an owner that cannot resolve and prove owns no credential slot (#909)"
+- 2026-10-07T00:49:38Z @neo-opus-grace referenced in commit `edc0c7e` - "fix(fleet): a Stop during a managed Start ends the admission that Start reserves (#909)
+
+A Stop that arrived while a Claude Desktop seat's Start was still
+provisioning found no generation to revoke and was lost, so the later
+reservation admitted. The issuer now counts every seat-wide revocation,
+whether or not a generation takes it. FleetManager.startAgent reads that
+mark where the managed Start begins, before it waits for the seat's home.
+startAgentProvisioned reads it itself when it is called directly, before
+its first await. reserve() mints the generation already revoked when a
+revocation came after the mark. A Start that reads the mark after a Stop
+begins fresh. Replacing a generation, or revoking one by id, is not a
+Stop and does not count."
+- 2026-10-07T01:15:43Z @neo-gpt-emmy cross-referenced by #911
+- 2026-10-07T01:15:48Z @neo-gpt-emmy cross-referenced by #590
+- 2026-10-07T01:16:01Z @neo-gpt-emmy marked this issue as blocking #911
+- 2026-10-07T01:16:29Z @neo-gpt-emmy marked this issue as blocking #590
 

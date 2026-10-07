@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-03T08:22:57Z'
-updatedAt: '2026-10-07T00:37:44Z'
+updatedAt: '2026-10-07T01:21:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/477'
 author: neo-fable-clio
 commentsCount: 19
@@ -23,8 +23,9 @@ subIssues:
   - '[x] 499 Roster cards show a raw clone path instead of a seat state'
   - '[x] 500 The installed vessel''s instance switcher opens a collapsed menu'
   - '[x] 512 The awaiting-merge list names each pull request by its title'
+  - '[ ] 590 Explain native tool launch admission on the seat card'
 subIssuesCompleted: 6
-subIssuesTotal: 8
+subIssuesTotal: 9
 contentTrust:
   projected: true
   quarantined: 0
@@ -437,13 +438,15 @@ So the line: `stopped · the institution on this machine was stopped · Start in
 
 ### Source-to-consumer handoff — 7 October
 
-[Brain `#910` review](https://github.com/neomjs/neo-agent-brain/pull/910#pullrequestreview-5436138223) is **Request Changes** at `936d8ae8`, with all 20 required checks green. One source action remains with Grace: Stop during asynchronous preparation before launch reservation is forgotten, allowing the same pending Start to create admission later. The exact composer/lifecycle/issuer control reproduces it; no installed process was touched. The redemption-time owner proof and exact-byte controls pass.
+[Brain `#910` Round-2 review](https://github.com/neomjs/neo-agent-brain/pull/910#pullrequestreview-5436335741) is **Approved** at `edc0c7ea`, with all 20 checks passing and no requested reviewer remaining. The original early-Stop action is discharged: Stop before or after reservation refuses new credential admission, while an explicit later Start admits. The exact composer/lifecycle/issuer controls use synthetic dependencies; no installed process was touched. Preparation and the harness launch may still complete after a mid-Start Stop—the verified cancellation is MCP admission. The PR remains at the human merge gate.
 
-The next packaged consumer must preserve the [new status contract](https://github.com/neomjs/neo-agent-brain/blob/936d8ae860e37558f5d734b7f001a2d07f289cf1/src/fleet/contract/launchAdmission.mjs): a `credential-missing` / `credential-unproven` result names the credential owner and needs credential repair, while `stale` / `revoked` new-child admission offers a managed restart. Neither implies that already-running tools are disconnected. This is existing `#12` integration scope, not another lane or ticket.
+The next packaged consumer must preserve the [new status contract](https://github.com/neomjs/neo-agent-brain/blob/936d8ae860e37558f5d734b7f001a2d07f289cf1/src/fleet/contract/launchAdmission.mjs): a `credential-missing` / `credential-unproven` result names the credential owner and needs credential repair, while `stale` / `revoked` new-child admission offers a managed restart. Neither implies that already-running tools are disconnected. Source delivery is now [Institution `#590`](https://github.com/neomjs/neo-agent-institution/issues/590), self-owned by Emmy and natively under this outcome. `#12` retains candidate/package acceptance. The separate general pending-Start cancellation enhancement is [Brain `#911`](https://github.com/neomjs/neo-agent-brain/issues/911); it adds no prerequisite to the completed admission review.
 
 [Candidate C's current owner record](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5991701878) retains the installed candidate and closed-Ada update boundary. Its assisted destination receipts do not pass row 2's five-state journey. Row 2 remains **unknown**; the next candidate's pin/package/consumer verification precedes the existing independent walkthrough.
 
-Ownership: Grace → the remaining source repair and bounded re-review; Emmy → `#12` integration and candidate selection; Euclid → this row's disposition. No new installation, profile rewrite or state-provocation receipt is claimed.
+Ownership: Grace → the approved source leaf's human-merge handoff; Emmy → `#590` consumer and `#12` integration/candidate selection; Euclid → this row's disposition. No new installation, profile rewrite or state-provocation receipt is claimed.
 
 
+- 2026-10-07T01:15:48Z @neo-gpt-emmy cross-referenced by #590
+- 2026-10-07T01:16:04Z @neo-gpt-emmy added sub-issue #590
 
