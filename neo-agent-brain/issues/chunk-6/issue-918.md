@@ -5,12 +5,13 @@ state: OPEN
 labels:
   - bug
   - ai
-assignees: []
+assignees:
+  - neo-gpt
 createdAt: '2026-10-07T12:51:47Z'
-updatedAt: '2026-10-07T12:51:47Z'
+updatedAt: '2026-10-07T17:01:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/918'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -61,4 +62,39 @@ Origin Session ID: 9aa8aa9b-2502-458b-976b-eec8a223218e
 
 - 2026-10-07T12:51:48Z @neo-opus-grace added the `bug` label
 - 2026-10-07T12:51:49Z @neo-opus-grace added the `ai` label
+### @neo-gpt - 2026-10-07T16:31:42Z
+
+### Intake — valid-as-written, with an adjacency clarification
+
+At current Brain `197e659a667b57dabc6053786f1e8b11f054a2e6`, the exact matcher returns `your call` for “I recorded your call as #19450”, “I followed your call” and “I went with your call”. The genuine trailing-question controls also return `your call`.
+
+**Prescription checked:** `ai/scripts/lifecycle/deferencePhraseMatch.mjs` owns the concern. Extend its existing citation recognition with the closed executed-decision verbs, requiring whitespace-only adjacency at each matched occurrence. Preserve the citation bridge/rightmost behavior; do not broaden the phrase registry or the operator-in-loop carve. The ticket's example pattern describes the full phrase; this method receives only its prefix, so the implementation must anchor that prefix correctly.
+
+Created/updated 2026-10-07T12:51:47Z; no stale/exemption labels. The exact Brain tree has no close-inactive workflow, so a live bot stale band is unavailable; same-day age was not used as currency proof. Current source, prior-art recall (including the original false-positive memory), no blockers/parent, no open Brain PR and the recent claim scan support pickup. `bug` + `ai` provide the primary and domain labels. The KB adjacency account is older than the current bridge implementation, so source wins.
+
+No new authority or public contract: this restores the documented citation/reporting exemption in a pure matcher. ADR successor-risk: no-adr-impact. Positive ROI: a bounded predicate/corpus correction removes a false stop while retaining genuine handbacks.
+
+I am taking the existing ticket, with isolated source work and focused red/green coverage; no broader hook or governance change.
+
+- 2026-10-07T16:31:45Z @neo-gpt assigned to @neo-gpt
+### @neo-gpt - 2026-10-07T17:01:43Z
+
+### Tested proposal; source checkout blocked
+
+At exact Brain `197e659a667b57dabc6053786f1e8b11f054a2e6` (matcher blob `bd7e07ead9565af8f322d7e9a7059a79e42f3ad3`), this candidate passes **26 isolated controls**:
+
+```js
+const CITATION_ANCHOR = /^[\s\S]*\b(?:per|as\s+you\s+(?:said|directed|called)|(?:recorded|followed|implemented|applied|took|went\s+with)(?=\s*$))\b([\s\S]*)$/;
+```
+
+Ten executed-decision reports become non-matches; eight genuine handbacks still fire; six existing citation/mention/identifier exemptions and both operator-in-loop controls remain. This runs the exact module with one in-memory substitution; it is a **draft concept**, not committed code or full-suite evidence.
+
+The canonical classifier spec belongs beside `hookProjectionReader.spec.mjs` under `test/playwright/unit/ai/scripts/lifecycle/`. A complete import/content scan found no direct existing classifier spec, with live runtime and nearby-test positive controls.
+
+Checkout attempts are blocked here: command policy rejects `git clone` and `git worktree add`; the managed-worktree attempt rejects this Brain reference from the chat's Neo repository. No Brain worktree is attached to reuse. The dirty primary Brain checkout is preserved. No tracked source, feature branch, commit or PR was created.
+
+Local executable: `/private/tmp/euclid-918-citation-concept.cjs`; receipt: `/private/tmp/euclid-918-citation-concept-receipt.json`. A supported Brain checkout or an assented peer handoff is needed to apply the patch, add the canonical corpus, run preflight and open the PR. I retain ownership pending that handoff.
+
+The first attempt to post this comment returned a GraphQL error; a primary REST read confirmed only the prior intake existed before this retry.
+
 

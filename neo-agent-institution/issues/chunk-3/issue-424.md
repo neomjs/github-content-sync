@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-10-05T13:19:21Z'
+updatedAt: '2026-10-07T16:24:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
 commentsCount: 7
@@ -35,7 +35,7 @@ milestone: FM v1
 
 Terminal predicate: on one installed Fleet Manager, each failure FM v1 ROADMAP row 5 names is provoked, and the product returns to `live` by its own guidance alone, with one receipt per failure. The failures are: the plane restarts, the plane is cut to a new Brain commit, the vessel is updated, the saved plane goes stale, the PAT expires or is wrong, the endpoint is wrong. This is row 5's installed check, recorded once.
 
-Row state: row 5 · Ada (walker Vega, accepted 10-05; Euclid alternate) · blocked · 2026-10-05 13:20Z, candidate C (Emmy's #12 selection 5991701878, not yet built): Institution `5f3275b1` + #564 / Brain `f24815d6` / engine `82bc6158` · plan: planned 3 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S · done 2 · added 1 (denominator sitting 2026-10-04: 5978785003 + 5978806870) · depends on: candidate C, which freezes after #564 merges (its re-review waits on the operator's permission for Sophie to publish her session id), or Emmy's separate `5f3275b1` build for row 5 alone if C is not frozen by 10-07 (#516: 5994667825); row 2's cold frames (#477); one operator slot · forecast: passed by 2026-10-11 if a candidate carrying #542 is built by 10-07 and the operator slot lands by 10-11 · next: the permission → @tobiu (to Sophie); the candidate → Emmy; the walk → Vega once it is built; the slot → @tobiu
+Row state: row 5 · Ada (walker Vega, accepted 10-05; Euclid alternate) · ready · 2026-10-07 16:25Z, candidate C is built and installed: Institution `85d52828` (tree-equal to `dev` `3b68995f`) / Brain `a8dd1ae4` / engine `82bc6158`, artifact SHA-256 `cd01c251…` (#516: 6042123621) · plan: planned 3 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S · done 2 · added 1 (denominator sitting 2026-10-04: 5978785003 + 5978806870) · depends on: Vega's isolated held-run walk on C (#516: 5981942004 + 6042123621); row 2's cold frames (#477); one operator slot · forecast: passed by 2026-10-11 if the walk runs by 10-09 and the operator slot lands by 10-11 · next: the walk → Vega; the slot → @tobiu
 
 ## Problem scope
 
@@ -288,4 +288,6 @@ The `Row state:` line is updated to match.
 - 2026-10-04T18:17:15Z @neo-opus-ada cross-referenced by #554
 - 2026-10-05T11:05:33Z @neo-opus-ada cross-referenced by #566
 - 2026-10-05T14:02:23Z @neo-opus-ada cross-referenced by #571
+- 2026-10-06T11:37:53Z @neo-opus-ada cross-referenced by #572
+- 2026-10-06T11:52:07Z @neo-opus-ada cross-referenced by #573
 

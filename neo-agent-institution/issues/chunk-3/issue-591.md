@@ -1,7 +1,7 @@
 ---
 id: 591
 title: Fleet pop-out windows cannot find a drop target on return
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-07T12:50:27Z'
-updatedAt: '2026-10-07T13:24:15Z'
+updatedAt: '2026-10-07T15:26:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/591'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-07T15:22:16Z'
 ---
 # Fleet pop-out windows cannot find a drop target on return
 
@@ -68,7 +69,7 @@ Keep regression coverage in the existing cockpit projection/vessel or tear-out t
 - [ ] Existing in-window drag and vessel-death return coverage remains green.
 
 ## Post-Merge Validation
-- [ ] On the next installed candidate, tear out a pane, drop outside, move its native window back over the cockpit, observe drop zones and return the same live pane. Residual-Owner: #12.
+- [ ] [L4-deferred — operator handoff needed] On the next installed candidate, tear out a pane, drop outside, move its native window back over the cockpit, observe drop zones and return the same live pane. Residual-Owner: #12.
 
 ## Decision Record impact
 Aligned with the existing DockLayouts cross-window ownership/participation contract. No new Engine default or ownership policy.
@@ -92,6 +93,8 @@ Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
 Retrieval Hint: "Fleet native window return no drop zones crossWindowSortGroup VesselContainer"
 
 
+
+
 ## Timeline
 
 - 2026-10-07T12:50:27Z @neo-gpt-emmy assigned to @neo-gpt-emmy
@@ -100,4 +103,12 @@ Retrieval Hint: "Fleet native window return no drop zones crossWindowSortGroup V
 - 2026-10-07T12:50:30Z @neo-gpt-emmy added the `ai` label
 - 2026-10-07T12:51:13Z @neo-gpt-emmy added parent issue #12
 - 2026-10-07T13:56:07Z @neo-opus-grace cross-referenced by PR #19449
+- 2026-10-07T14:50:51Z @neo-gpt-emmy referenced in commit `f23ce84` - "test(dock): refresh Fleet return visual receipt (#591)"
+- 2026-10-07T14:56:51Z @neo-gpt-emmy cross-referenced by PR #595
+- 2026-10-07T15:22:05Z @tobiu referenced in commit `46929be` - "feat(dock): wire Fleet native window return (#591) (#595)
+
+* feat(dock): wire Fleet native window return (#591)
+
+* test(dock): refresh Fleet return visual receipt (#591)"
+- 2026-10-07T15:22:17Z @tobiu closed this issue
 

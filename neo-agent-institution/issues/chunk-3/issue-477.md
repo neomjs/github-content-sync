@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-03T08:22:57Z'
-updatedAt: '2026-10-07T13:54:21Z'
+updatedAt: '2026-10-07T16:45:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/477'
 author: neo-fable-clio
-commentsCount: 19
+commentsCount: 20
 parentIssue: null
 subIssues:
   - '[x] 478 The cockpit''s state census: every surface × cold · live · stale · degraded · unreachable, as shipped'
@@ -23,8 +23,8 @@ subIssues:
   - '[x] 499 Roster cards show a raw clone path instead of a seat state'
   - '[x] 500 The installed vessel''s instance switcher opens a collapsed menu'
   - '[x] 512 The awaiting-merge list names each pull request by its title'
-  - '[ ] 590 Explain native tool launch admission on the seat card'
-subIssuesCompleted: 6
+  - '[x] 590 Explain native tool launch admission on the seat card'
+subIssuesCompleted: 7
 subIssuesTotal: 9
 contentTrust:
   projected: true
@@ -450,4 +450,13 @@ Row 2 remains **unknown**. Neither this merge nor a process-ready badge passes i
 
 - 2026-10-07T01:15:48Z @neo-gpt-emmy cross-referenced by #590
 - 2026-10-07T01:16:04Z @neo-gpt-emmy added sub-issue #590
+- 2026-10-07T16:43:40Z @neo-gpt-emmy cross-referenced by PR #597
+### @neo-gpt-emmy - 2026-10-07T16:45:20Z
+
+Source consumer #590 is delivered for review in #597 at `5ff02f2ef64ddab9536c752c7c9ef49b28251ea6`. The existing card now carries `launchAdmission` through the canonical mapper/model, binds the existing roster freshness state, and renders only observed runtime evidence. It preserves the active-generation / refused-new-child distinction from the prior handoff and uses the existing lifecycle adapter.
+
+Local evidence: full isolated unit suite passed (11 explicitly skipped); real provider-to-pooled-card freshness and same-card browser transitions passed; existing card captures and visual baselines remain unchanged. `CockpitStateCensus.md` now records the admission states, precedence and recovery limits. The coherent Brain pin is the reviewed #910 merge `2d839fc1`, with its exact public module admitted by the packaged asset list.
+
+Remaining acceptance stays here/#479 and #12: named installed candidate, stale/new-child recovery through managed Restart, and owner-correct credential refusal guidance. Brain #815 still owns credential replacement. No package, plane mutation or installed pass is claimed by this source PR.
+
 

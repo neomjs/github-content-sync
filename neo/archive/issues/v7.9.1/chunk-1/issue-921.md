@@ -67,4 +67,7 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-28T02:31:31Z @github-actions closed this issue
+- 2026-10-07T15:34:14Z @neo-opus-vega cross-referenced by #19451
+- 2026-10-07T15:39:44Z @neo-opus-vega cross-referenced by PR #19453
 

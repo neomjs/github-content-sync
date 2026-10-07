@@ -1,14 +1,14 @@
 ---
 id: 919
 title: The open-work feed says who moved a verdict and when changes were pushed
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-07T13:46:11Z'
-updatedAt: '2026-10-07T13:46:36Z'
+updatedAt: '2026-10-07T14:50:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/919'
 author: neo-opus-vega
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-07T14:50:29Z'
 ---
 # The open-work feed says who moved a verdict and when changes were pushed
 
@@ -43,9 +44,19 @@ On 2026-10-07 the operator showed his installed Activity tab: the PR rows read `
 
 ## The Fix
 
-- `changesOf` puts `by` on a verdict transition: the reviewers whose standing opinion became the new decision. A change that no opinion explains, such as a dismissal or a branch rule, names no one.
+- `changesOf` puts `by` on a verdict transition: the reviewers observed moving the decision. A reviewer moved it when their standing opinion became the new decision, or when the same opinion moved onto the current head (a re-approval). Both reads must hold every standing opinion (`opinionsComplete`). Otherwise, like a dismissal or a branch rule, the change names no one.
 - `createPrTransitionEvents` carries `by` in `payload.transition`. When exactly one reviewer moved the verdict, that reviewer is the event's actor. Otherwise the actor stays the author.
 - A push to a PR whose verdict is `CHANGES_REQUESTED` reaches the feed as one event. Any other push stays off it.
+
+## Contract Ledger
+
+| Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| `payload.transition.kind` gains `head` | `PR_LANE_TRANSITION_KINDS` + `createPrTransitionEvents` (`ai/services/fleet/producerPrLaneEvents.mjs`) | a push shows only when the verdict it landed on (`transition.verdict`, from `contextOf`) was `CHANGES_REQUESTED` | every other push stays off the lane, as before | `PR_LANE_TRANSITION_KINDS` / `createPrTransitionEvents` JSDoc | unit (`producerPrLaneEvents.spec.mjs`) |
+| `payload.transition.by` (optional; `@<login>`, `login:<login>`, `team:<org>/<slug>`) | `contextOf` (`ai/services/fleet/openWorkReducer.mjs`) over `normalizePullRequest`'s `opinions` + `opinionsComplete` | the reviewers observed moving the verdict: a new standing decision, or a re-approval onto the current head | omitted when no reviewer is established: a dismissal, a rule, or either read missing or cutting its opinions | `contextOf` JSDoc | unit (`openWorkReducer.spec.mjs`) |
+| The event's actor (`agentId`) | `createPrTransitionEvents` | the reviewer's login when exactly one reviewer moved a verdict | the PR's author: several reviewers, none, or a team | `createPrTransitionEvents` JSDoc | unit, reducer to event |
+| Events and rows from before this change | the producer's saved state (`open-work.json`) | a saved row without `opinionsComplete` attributes nothing; an event without `by` reads as no reviewer | — | same | unit |
+| The consumer | neomjs/neo-agent-institution#593 / #594 (`getPullRequestStatus`) | renders `head` as `changes pushed`, and `by` only when several reviewers moved a verdict | an unknown kind names nothing | the consumer's own ledger on #593 | its unit tests; installed: neomjs/neo-agent-institution#490 |
 
 ## Acceptance Criteria
 
@@ -77,4 +88,17 @@ Origin Session ID: 86872728-bfc4-469c-b029-e656b742474f
 - 2026-10-07T13:46:52Z @neo-opus-vega added parent issue #414
 - 2026-10-07T13:52:40Z @neo-opus-vega cross-referenced by PR #920
 - 2026-10-07T13:56:59Z @neo-opus-vega cross-referenced by PR #594
+- 2026-10-07T14:39:04Z @neo-opus-vega referenced in commit `16c3d4a` - "fix(fleet): a verdict names a reviewer only from what both reads observed, a re-approval on the current head included (#919)
+
+contextOf compared reviewer and state alone. A re-approval on the current head (same state, the review moved off an older commit) went unattributed, and a prior read that cut or lacked its opinions made an unseen standing approval look new. A reviewer now moved the verdict when their standing opinion became the decision or moved onto the current head, and only when both reads hold every standing opinion (normalizePullRequest now keeps opinionsComplete). Otherwise the change names no one. Review RA-1."
+- 2026-10-07T14:50:29Z @tobiu referenced in commit `197e659` - "feat(fleet): the PR lane names who moved a verdict and the push that answers a change request (#919) (#920)
+
+* feat(fleet): the PR lane names who moved a verdict and the push that answers a change request (#919)
+
+A verdict transition carries the reviewers whose standing opinion became the new decision (none for a dismissal or a rule), and an event moved by exactly one reviewer has that reviewer as its actor. A push records the verdict it landed on, and the PR lane shows a push only when that verdict is CHANGES_REQUESTED, so the cockpit can say 'changes pushed'.
+
+* fix(fleet): a verdict names a reviewer only from what both reads observed, a re-approval on the current head included (#919)
+
+contextOf compared reviewer and state alone. A re-approval on the current head (same state, the review moved off an older commit) went unattributed, and a prior read that cut or lacked its opinions made an unseen standing approval look new. A reviewer now moved the verdict when their standing opinion became the decision or moved onto the current head, and only when both reads hold every standing opinion (normalizePullRequest now keeps opinionsComplete). Otherwise the change names no one. Review RA-1."
+- 2026-10-07T14:50:30Z @tobiu closed this issue
 

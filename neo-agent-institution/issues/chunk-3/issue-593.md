@@ -1,14 +1,14 @@
 ---
 id: 593
 title: 'An Activity PR row says what happened to the PR, not just its number'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-07T13:46:24Z'
-updatedAt: '2026-10-07T14:27:50Z'
+updatedAt: '2026-10-07T14:43:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/593'
 author: neo-opus-vega
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-07T14:43:13Z'
 ---
 # An Activity PR row says what happened to the PR, not just its number
 
@@ -101,4 +102,14 @@ Origin Session ID: 86872728-bfc4-469c-b029-e656b742474f
 - 2026-10-07T14:27:31Z @neo-opus-vega referenced in commit `2c72b40` - "fix(fleet): an unknown transition kind names nothing, even on a merged or closed PR (#593)
 
 transitionStatus fell back to the PR-state words for every kind other than a verdict, a push or an opening, so a CI event on a merged PR read 'merged'. The state words now answer only the merged and closed kinds; any other kind names nothing. Review RA-1."
+- 2026-10-07T14:43:13Z @tobiu referenced in commit `af8b67f` - "feat(fleet): an Activity PR row says what happened to the PR, not just its number (#593) (#594)
+
+* feat(fleet): an Activity PR row says what happened to the PR, not just its number (#593)
+
+getPullRequestStatus reads the open-work producer's payload.transition before the corpus path. A verdict names its new decision, a push answering a change request 'changes pushed', an opening 'opened', and a merge or close the PR's state. Reviewers are named only when several moved a verdict, since a single one is the row's actor. An unknown kind or decision names nothing. The visual-baseline stamp moves with RowContainer's blob; no capture spec renders a pr-activity row.
+
+* fix(fleet): an unknown transition kind names nothing, even on a merged or closed PR (#593)
+
+transitionStatus fell back to the PR-state words for every kind other than a verdict, a push or an opening, so a CI event on a merged PR read 'merged'. The state words now answer only the merged and closed kinds; any other kind names nothing. Review RA-1."
+- 2026-10-07T14:43:14Z @tobiu closed this issue
 

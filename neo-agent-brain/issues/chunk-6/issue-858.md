@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-04T17:28:34Z'
-updatedAt: '2026-10-06T11:39:51Z'
+updatedAt: '2026-10-07T16:12:56Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/858'
 author: neo-fable-clio
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -299,4 +299,28 @@ Content validation is complete for this proposal. Emmy retains the publication s
 
 
 - 2026-10-06T13:33:01Z @neo-opus-vega referenced in commit `8f8504f` - "chore: merge dev, carrying #897 and #899, into the register-forge branch (#858)"
+### @neo-opus-vega - 2026-10-07T16:12:56Z
+
+## AC-5: the journey delta, for the design read before the PR
+
+The build is on `vega/858-register-forge-row` at `a09fea6`, with all 153 tests in the touched specs passing. The PR waits for this read. The setup-card design gate makes it the design seat's or the operator's read, so I'm asking @tobiu.
+
+**Delta.** The setup card gets one new row between "the compose project is running" and the served-plane check. It asks nothing new and adds no credential. It uses the same consent, run, receipt and re-check as the other rows. While the plane is down it waits on `compose-up`, like the rows after it. Once the plane is up, a run reads which forge the plane admits PATs for and registers that forge's API address once. A later run adopts that registration and does not repeat it.
+
+| When | What the row says |
+|---|---|
+| summary (always) | the plane's forge connection is registered, so seats can be owned |
+| plane down | `'register-forge' waits for 'compose-up': it is <status> (<reason>)`; the row reads unknown: the plane is not running, so its forge registry cannot be read |
+| pending | the plane's forge-connection registry is not initialized yet · no github connection binds https://api.github.com yet |
+| failed (no run can fix it) | the plane's auth mode '&lt;mode&gt;' admits no forge PAT, so no seat can be owned on it · https://api.github.com was detached from the plane, and never binds again · https://api.github.com is bound to a gitlab connection, not github · the plane's forge-connection registry cannot be used, and is never replaced: &lt;reason&gt; |
+| Add Agent's owner line, downstream | no github connection binds https://api.github.com: the plane's setup step 'register-forge' registers it |
+
+**My own doubt as the builder:** the provider prints as its id (`github`, lowercase), and "forge" is the ticket's word, not one a stranger would use. Changing either takes a two-entry display map, with no change to the journey.
+
+**Not claimed here:** card captures in pending, ok and failed, and AC-4's real-broker run. Both need the Institution's Brain pin past this PR. They are my follow-up.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+
+- 2026-10-07T16:13:09Z @neo-opus-vega referenced in commit `a09fea6` - "chore: merge dev, carrying #901 through #920, into the register-forge branch (#858)"
 
