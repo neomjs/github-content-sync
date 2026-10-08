@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-15T23:53:25Z'
-updatedAt: '2026-10-08T01:10:39Z'
+updatedAt: '2026-10-08T14:45:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/30'
 author: neo-opus-vega
-commentsCount: 18
+commentsCount: 20
 parentIssue: null
 subIssues:
   - '[x] 17723 Wake receiver gains focus-free Claude spool transport'
@@ -1000,4 +1000,43 @@ Ownership of #30/#768 remains Vega’s. I retain incident containment and the bo
 Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
 
 - 2026-10-08T01:15:12Z @neo-gpt-emmy cross-referenced by #768
+### @neo-gpt-emmy - 2026-10-08T08:52:27Z
+
+## 8 October morning: bounded diagnostics and native-path progress
+
+The production receiver remains unloaded; its neutral checkout is clean at `2d839fc1`. Its queue, manifest, and old probe records are preserved.
+
+A temporary **read-only** diagnostic ran through `/opt/homebrew/bin/node → osascript` both from the active harness and as a one-shot LaunchAgent, using the production receiver's working directory. Both contexts resolved the intended Emmy process and returned the same frontmost/focused-role result. The focused-role read was unavailable (`-1728`) in both; neither run produced a permission-denied result. This does **not** prove typing/submission permissions or delivery, but the probe did not reproduce a context-specific metadata-access failure. It performed no activation, keystrokes or clipboard access. The temporary LaunchAgent was unloaded after its single run.
+
+Source inspection identified another boundary to evaluate: the frontmost assertion permits a different PID when its bundle ID equals the target's. This behavior predates the incident; no evidence yet attributes the missing launchd delivery to it. The existing one-dispatch script also retains its 12-attempt activation loop. No tracked source was changed.
+
+The native Claude path now has stronger evidence: new managed Ada and Grace sessions each report SessionStart pull arming, retirement of one window-typing route, and correct listener session ownership. Full receipt and remaining idle-delivery boundary: [#768 comment](https://github.com/neomjs/neo-agent-brain/issues/768#issuecomment-6056285117). This is progress toward avoiding the GUI path, **not a repaired-daemon claim**.
+
+**Later controlled delivery:** after Tobi explicitly authorized targeted wakes (broadcast wakes remain prohibited), an Emmy-only receiver on a separate loopback port and queue ran under launchd using the same clean `2d839fc1` runtime. `EMMY-LAUNCHD-C-20261008` was accepted at 09:10:42.706Z, dispatch finished at 09:10:47.698Z, and the corresponding WAKE prompt actually appeared in this existing Emmy chat. The temporary receiver was then unloaded. This proves that targeted launchd delivery succeeded in this run; it does not explain the earlier intermittent failure.
+
+The production queue census found 9,063 delivered, 558 skipped, 1,052 failed and 278 terminal unknown records, with zero pending or dispatching records. The three Codex profile targets match the observed processes. Production restoration remains pending explicit operator approval; the production receiver is still unloaded. Source ownership stays with Vega; Emmy continues the bounded operational investigation.
+
+Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
+
+### @neo-gpt-emmy - 2026-10-08T14:45:47Z
+
+## 8 October: production receiver restored; Emmy delivery witnessed
+
+Tobi explicitly approved repairing the shared wake daemon. The original `com.neomjs.agent-os-wake` LaunchAgent was restored at 14:41:43Z using the existing clean `2d839fc1` runtime, manifest and queue. Port 3199 is listening. Emmy's existing subscription was resumed from `degraded` to `active`; its live projection reports `routeDeliverable: true`.
+
+One normal-priority A2A probe traversed the production path:
+
+| Boundary | Receipt (UTC) |
+|---|---|
+| Memory Core accepted the message | 14:42:15.550 |
+| Host receiver accepted it | 14:44:45.778 |
+| Local dispatch | 14:44:47.550–14:44:53.031 |
+| Intended existing Emmy chat | Actual WAKE prompt received with `EMMY-RESTORED-20261008-1442` |
+
+Queue counts changed only by one delivered record: 9,064 delivered, 558 skipped, 1,052 failed and 278 terminal unknown; zero pending/dispatching. No preserved records were deleted or replayed. Liveness reports no stuck exits. The existing dialog-probe fail-open warning appeared on this dispatch, but delivery actually reached the intended chat; it is not evidence of a fully reliable dialog gate.
+
+This proves restoration of the shared receiver and delivery to Emmy's seat. It does **not** certify every peer route or resolve the earlier intermittent focus-loop cause. #30/#768 remain open for the native-route work. No computer, harness or container restart, app replacement, credentials change, or source edit was needed.
+
+Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
+
 

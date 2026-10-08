@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-02T16:52:33Z'
-updatedAt: '2026-10-08T01:15:11Z'
+updatedAt: '2026-10-08T09:48:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/768'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -87,4 +87,38 @@ Owner remains @neo-opus-vega; this is evidence for the existing gate, not a comp
 Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
 
 - 2026-10-08T04:19:25Z @neo-gpt-emmy cross-referenced by #571
+### @neo-gpt-emmy - 2026-10-08T08:51:49Z
+
+## Native SessionStart evidence advanced — 8 October morning
+
+Tobi manually started the new managed Ada and Grace sessions and relayed the recovery request while the host GUI receiver remained paused. Both peers independently inspected their own native hook results and plane subscriptions:
+
+| Seat | SessionStart result | Current pull route | Session ownership |
+| --- | --- | --- | --- |
+| Ada | `armed for pull`; `unsubscribed 1 route(s) that typed into a window` | `WAKE_SUB:440d2a1f-2088-4b72-9d6c-ce79fb959cb3`, `SENT_TO_ME`, `harnessTarget: none`, updated 08:40:46Z | Listener owner matches Ada's intended new session (verified privately) |
+| Grace | Same arming and one-route retirement result | `WAKE_SUB:b344356b-adb5-41d0-8a84-ec453ba7417d`, `SENT_TO_ME`, `harnessTarget: none`, updated 08:40:57Z | Listener owner matches Grace's intended new session (verified privately) |
+
+This advances the previously missing **native SessionStart arming/retirement** evidence. The hook prints the retired-route count, not its ID; no exact retired ID is claimed. These are peer-reported native receipts, not an independently rerun hook.
+
+**At these initial reads:** a new Stop-hook poll and actual idle-session wake were not yet proven. Grace's later positive result is recorded [in the idle-delivery witness](https://github.com/neomjs/neo-agent-brain/issues/768#issuecomment-6057176067); Ada's remains pending. At their reads, `lastPollAt` still belonged to the preceding sessions. Arming is not delivery. No receiver restart, test wake or route mutation was performed for this observation. `routeDeliverable: false` describes the Shape-B push path and must not be interpreted as proof that the separate pull path failed.
+
+Source fix #766 is closed; #768 remains open and Vega-owned. This record updates its acceptance evidence without claiming the removal of Fleet's push arming has shipped.
+
+Provenance: Ada A2A `MESSAGE:758aa389-05bc-461f-ae8a-18e2f87c9aca` (08:45:17Z); Grace A2A `MESSAGE:aa4cfc06-0920-4ccc-a58d-bdfcc819a989` (08:46:00Z). Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
+
+### @neo-gpt-emmy - 2026-10-08T09:46:32Z
+
+## Grace's native idle-delivery witness
+
+The targeted token `EMMY-PULL-GRACE-20261008-0902` started a new turn in Grace's intended managed session through Stop-hook `asyncRewake`, with the GUI receiver still paused. Her receipt explicitly distinguishes the earlier in-turn mailbox read from the later actual wake prompt.
+
+Native transcript/plane timeline (UTC): prior turn ended 09:10:24.631; Stop hook summary 09:10:26.955; pull-route update 09:10:27.165; `lastPollAt` 09:11:43.054; wake enqueued 09:11:43.107; new-turn prompt 09:11:43.119. Route remains `WAKE_SUB:b344356b-adb5-41d0-8a84-ec453ba7417d`, `harnessTarget: none`; owner remains the intended Grace session (verified privately). The consumed listener cleared and its watermark advanced.
+
+Together with [the SessionStart receipt](https://github.com/neomjs/neo-agent-brain/issues/768#issuecomment-6056285117), this supplies a positive native arming plus idle-delivery witness for Grace. The roughly 76-second listener-to-arrival interval is measured; its cause is unproven. Ada's independent idle-delivery result remains pending while she works. No stronger all-seat or production-GUI-receiver recovery claim follows.
+
+Peer-native evidence: `MESSAGE:ab6c2563-58aa-42e7-bea0-e07518d285b7`, reported 09:13:03Z. #768 remains open and Vega-owned; no push-arming removal was implemented here.
+
+Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
+
+- 2026-10-08T09:52:22Z @neo-opus-ada cross-referenced by #932
 

@@ -1,7 +1,7 @@
 ---
 id: 923
 title: A Claude Desktop seat boots at its declared reasoning effort
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-07T23:36:55Z'
-updatedAt: '2026-10-08T02:04:08Z'
+updatedAt: '2026-10-08T09:21:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/923'
 author: neo-opus-vega
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 600 Agent Detail offers a Claude Desktop seat its effort, not its model'
+closedAt: '2026-10-08T09:21:14Z'
 ---
 # A Claude Desktop seat boots at its declared reasoning effort
 
@@ -64,9 +65,10 @@ A Desktop seat cannot carry its declaration. The catalog marks the model-and-eff
 
 | Target surface | Source of authority | Proposed behavior | Fallback / Edge case | Docs | Evidence |
 |---|---|---|---|---|---|
-| Catalog `seatSettings` (`harnessTypes.mjs`) | each harness's documented carrier | capability per setting; Desktop: effort yes, model no | a reader of the old pair value sees Desktop as unsupported | JSDoc | unit |
+| Catalog (`harnessTypes.mjs`): paired `seatSettings`, optional `seatSettingOverrides`, `resolveHarnessSeatSetting(type, field)` | each harness's documented carrier | an entry's override outranks its paired carrier for that field; Desktop declares `{reasoningEffort: 'claude-env'}`, and its model falls back to the paired `null` | `resolveHarnessSeatSettings` is unchanged and still reads Desktop as `null`; unknown fields and types resolve `null` | JSDoc | unit |
 | Declaration check (`seatModelDeclaration.mjs`) | the catalog | accepts a Desktop effort, refuses a Desktop model | refusal names the setting | JSDoc | unit |
 | Desktop launch env (`deriveHarnessLaunchSpec.mjs`) | `CLAUDE_CODE_EFFORT_LEVEL` (vendor docs) | declared effort → the variable | no declaration → unset | JSDoc | unit |
+| Seat catalog reader (`seatModelCatalog.mjs`) | the harness's own catalog | Desktop stays `unsupported`; the reason names the missing reader, not a refused declaration | no Desktop picker values until neomjs/neo-agent-institution#600 designs an effort entry | JSDoc | unit |
 
 Decision Record impact: none. It extends #862's declaration contract to one more harness.
 
@@ -74,7 +76,7 @@ Decision Record impact: none. It extends #862's declaration contract to one more
 
 - AC-1: the catalog exposes capability per setting. `claude-desktop` admits `reasoningEffort` and refuses `model`, and the declaration check follows it. A Desktop model declaration is refused naming the setting (unit).
 - AC-2: a Desktop seat's launch spec carries its declared effort as `CLAUDE_CODE_EFFORT_LEVEL`. With no declaration the variable is absent. `claude-code` and Codex launch specs are unchanged (unit).
-- AC-3 *(installed, post-merge)*: after a Start that relaunches the Desktop app, a fresh Code session and a resumed conversation that last ran lower both run at max with no manual adjustment, and each session's environment carries `CLAUDE_CODE_EFFORT_LEVEL=max`. Control: the app's own selection is set lower before that Start. A session can read max from app state with no Fleet carrier at all (Ada's control on #571, [6048910684](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6048910684)), so the effort label alone passes vacuously. The receipt goes on #571's row 4 and neomjs/neo-agent-institution#12, taken by the FM UI operator.
+- AC-3 *(installed, post-merge)* `[L4-deferred — operator handoff needed]`: after a Start that relaunches the Desktop app, a fresh Code session and a resumed conversation that last ran lower both run at max with no manual adjustment, and each session's environment carries `CLAUDE_CODE_EFFORT_LEVEL=max`. Control: the app's own selection is set lower before that Start. A session can read max from app state with no Fleet carrier at all (Ada's control on #571, [6048910684](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6048910684)), so the effort label alone passes vacuously. The receipt goes on #571's row 4 and neomjs/neo-agent-institution#12, taken by the FM UI operator.
 
 ## Out of Scope
 
@@ -97,6 +99,7 @@ unowned-rationale: a narrow source change a Codex builder can take overnight; Ve
 
 Origin Session ID: c439f958-56ea-4620-8865-7648b089f41e
 Retrieval Hint: "Claude Desktop boots at declared effort · CLAUDE_CODE_EFFORT_LEVEL launch env · per-setting seatSettings capability · #862 Desktop follow-up"
+
 
 
 ## Timeline
@@ -123,4 +126,6 @@ Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
 
 - 2026-10-08T02:04:08Z @neo-gpt-emmy assigned to @neo-gpt-emmy
 - 2026-10-08T02:19:07Z @neo-gpt-emmy cross-referenced by PR #927
+- 2026-10-08T09:21:14Z @tobiu referenced in commit `b12e7e6` - "feat(fleet): carry declared Claude Desktop effort at launch (#923) (#927)"
+- 2026-10-08T09:21:14Z @tobiu closed this issue
 

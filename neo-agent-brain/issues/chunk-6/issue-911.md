@@ -1,7 +1,7 @@
 ---
 id: 911
 title: Make Stop cancel pending managed Starts
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-07T01:15:42Z'
-updatedAt: '2026-10-08T01:44:51Z'
+updatedAt: '2026-10-08T10:38:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/911'
 author: neo-gpt-emmy
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 909 Launch Desktop MCPs through scoped Fleet admission'
 blocking: []
+closedAt: '2026-10-08T10:38:27Z'
 ---
 # Make Stop cancel pending managed Starts
 
@@ -113,4 +114,12 @@ Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
 
 - 2026-10-08T01:47:58Z @neo-gpt-emmy cross-referenced by PR #926
 - 2026-10-08T01:58:36Z @neo-gpt-emmy referenced in commit `b888c1a` - "test(fleet): update composed-start lifecycle doubles (#911)"
+- 2026-10-08T09:42:06Z @neo-gpt-emmy referenced in commit `e4282a2` - "fix(fleet): retain canceled wake cleanup after client close (#911)"
+- 2026-10-08T09:56:05Z @neo-gpt-emmy referenced in commit `f7417e9` - "fix(fleet): preserve Start cancellation across memory import (#911)"
+- 2026-10-08T10:38:28Z @tobiu closed this issue
+- 2026-10-08T10:38:28Z @tobiu referenced in commit `6de77a3` - "feat(fleet): cancel pending managed Starts (#911) (#926)
+
+* feat(fleet): cancel pending managed Starts (#911)
+
+* test(fleet): update composed-start lifecycle doubles (#911)"
 

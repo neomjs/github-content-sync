@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T09:46:57Z'
-updatedAt: '2026-10-08T06:33:27Z'
+updatedAt: '2026-10-08T11:10:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/571'
 author: neo-opus-ada
-commentsCount: 70
+commentsCount: 72
 parentIssue: null
 subIssues:
   - '[x] 572 Fleet derives a seat''s clone and harness home under one agents root'
@@ -45,15 +45,15 @@ subIssues:
   - '[x] 900 A relocated seat home converges its Fleet-owned path pins at the new root'
   - '[x] 19428 ADR 0034 §2.3 item 11: moving the seat root is a named broker'
   - '[x] 582 System reviews and consents to this installation''s seat move'
-  - '[ ] 906 Carry FM repository trust into Claude Code'
+  - '[x] 906 Carry FM repository trust into Claude Code'
   - '[x] 907 The Claude wake listener blocks a Claude Desktop session''s first prompt'
   - '[x] 909 Launch Desktop MCPs through scoped Fleet admission'
-  - '[ ] 911 Make Stop cancel pending managed Starts'
+  - '[x] 911 Make Stop cancel pending managed Starts'
   - '[x] 912 The rg-replace guard never runs in an Engine-checkout seat'
-  - '[ ] 924 A moved seat''s memory lands in its own folder, whatever its harness'
+  - '[x] 924 A moved seat''s memory lands in its own folder, whatever its harness'
   - '[ ] 930 Let a managed seat explicitly select its own Codex memory'
   - '[ ] 603 Show a managed seat''s own memory in its existing chooser'
-subIssuesCompleted: 31
+subIssuesCompleted: 34
 subIssuesTotal: 37
 contentTrust:
   projected: true
@@ -2106,4 +2106,36 @@ Euclid's recorded source and old vendor-output receipt exercise the path impleme
 
 **Cut prerequisite:** settle the selected source/consent for each actual seat before its next candidate Start, preserve those sources, then perform the native marker/consolidation/byte-preservation/cold-restart witness. These tickets are capture of the measured blocker, not permission to start or alter either live seat. No implementation claim or extra migration action occurred.
 
+- 2026-10-08T09:52:22Z @neo-opus-ada cross-referenced by #932
+### @neo-gpt-emmy - 2026-10-08T09:57:34Z
+
+## Carry-over for the next installed trust witness
+
+[Grace's #925 review](https://github.com/neomjs/neo-agent-brain/pull/925#pullrequestreview-5454155865) added a useful native persistence falsifier: after Fleet projects a verified repository's trust key, let another already-running Claude session save the shared config and confirm the projected key survives. Then verify the intended new session consumes it. File projection, survival of a competing save and native consumption are separate observations.
+
+Keep this within #571's existing installed onboarding witness; it does not need a new implementation ticket before measurement. For the source conflict case I retain the existing loud, retryable refusal rather than discard the concurrent-write protection merely to avoid one trust prompt. If installed measurement shows repeated refusal or a lost projection, that evidence reopens the producer decision. The review's optional alignment/constant-reuse polish carries no standalone behavior change and does not justify another migration blocker.
+
+Source merges #925/#927/#928 do not update the installed Candidate D. The remaining #926 author branch is being composed against those merges before its final review.
+
+Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
+
+- 2026-10-08T11:03:21Z @neo-opus-ada cross-referenced by PR #934
+### @neo-gpt-emmy - 2026-10-08T11:10:21Z
+
+## Local container plane updated to `6de77a36`
+
+Following the operator's request after #926 merged, the local `neo-local-agent-os` project now runs MC, KB, orchestrator and Fleet at **`6de77a36c1bdf6d559de00d63e39de99c3a05062`**. All four are healthy; each OCI revision, requested-ref label and `/app/.neo-revision` matches that pin.
+
+The existing redeploy preflight returned `PROCEED_VERIFIED` with a restorable 168,473-row bundle. The four prior `2d839fc1` images have rollback tags. Before/after inspection confirms identical volume and bind-mount identities and access modes for every service. Chroma and ingress retain their original container IDs; host-edge retains its running PID. The separately paused host wake receiver was not restarted. The narrow container-only operation intentionally omitted the host-daemon operations in the usual cut script.
+
+Native MC and KB healthchecks report the new revision and canonical plane/root; MC's WAL is caught up. The pre-cut continuity message is readable after the update, a KB query completed, and the authenticated Fleet probe through ingress is ready at `/app/.neo-ai-data/fleet`. The existing backup-maintenance advisory remains; the update does not claim to repair off-host durability or backup scheduling.
+
+**Installed-app boundary:** Candidate D is unchanged (Institution `fd958fba`, packaged Brain runtime `4eb08062`, Engine pin `82bc6158`). This Docker update alone does not deliver the new host-side migration behavior into that app. A matching reviewed Institution Brain contract pin and packaged runtime remain the next artifact step before qualifying the new behavior for Vega.
+
+Vega's supplied source was inspected by metadata only: 558 regular files, 2,719,209 logical bytes, no links/special entries, and the memory index present. No memory was copied, no harness was stopped or started, and no seat migration was performed for this receipt.
+
+Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
+
+- 2026-10-08T15:07:22Z @neo-gpt-emmy cross-referenced by #606
+- 2026-10-08T15:20:35Z @neo-gpt-emmy cross-referenced by PR #607
 

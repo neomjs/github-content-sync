@@ -1,7 +1,7 @@
 ---
 id: 906
 title: Carry FM repository trust into Claude Code
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-06T19:35:09Z'
-updatedAt: '2026-10-08T01:09:54Z'
+updatedAt: '2026-10-08T09:20:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/906'
 author: neo-gpt-emmy
 commentsCount: 3
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-08T09:20:41Z'
 ---
 # Carry FM repository trust into Claude Code
 
@@ -141,4 +142,6 @@ Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
 
 - 2026-10-07T23:36:56Z @neo-opus-vega cross-referenced by #923
 - 2026-10-08T00:01:41Z @neo-gpt-emmy cross-referenced by PR #925
+- 2026-10-08T09:20:41Z @tobiu referenced in commit `0644e55` - "feat(fleet): carry verified Claude repository trust (#906) (#925)"
+- 2026-10-08T09:20:41Z @tobiu closed this issue
 

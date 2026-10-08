@@ -1,7 +1,7 @@
 ---
 id: 924
 title: 'A moved seat''s memory lands in its own folder, whatever its harness'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-07T23:52:36Z'
-updatedAt: '2026-10-08T04:09:33Z'
+updatedAt: '2026-10-08T09:50:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/924'
 author: neo-opus-ada
 commentsCount: 3
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 930 Let a managed seat explicitly select its own Codex memory'
+closedAt: '2026-10-08T09:50:48Z'
 ---
 # A moved seat's memory lands in its own folder, whatever its harness
 
@@ -72,10 +73,13 @@ The vendor's `memories/` and `[features] memories` stay as they are, outside acc
 
 | Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `memoryDestination` | #571 predicate | `<agentsRoot>/<id>/memory` for every family with a loader | `null` for a family without one | its JSDoc | unit |
-| the import receipt | owner decision, item 4 | counts when its destination, relative to the seat folder, equals the current one | a changed destination means a first import from the consented source | `importSeatMemory` JSDoc | unit |
-| `$CODEX_HOME/AGENTS.md` | `projectSeatInstructions` as sole owner | carries the boot files, rendered at each Start | no layer, no memory section | the layer's about-file, Codex branch | unit; the falsifier above |
+| `memoryDestination` | #571 predicate | `<agentsRoot>/<id>/memory` for every family with a loader | `null` for a family without one | its JSDoc; `learn/agentos/OwnAgentTeam.md`, "Bring an existing agent into a Fleet seat" | unit |
+| the import receipt | owner decision, item 4 | lives beside the memory folder as `<seat>/.neo-fleet-seat-memory-import.json`; counts when its destination, relative to the seat folder, equals the current one, and then the source is not re-validated; a matching receipt in a harness home is read, kept, and rewritten beside the memory folder | a changed destination means a first import from the consented source; a malformed or linked receipt beside the memory folder refuses Start | `importSeatMemory` JSDoc | unit |
+| `$CODEX_HOME/AGENTS.md` | `projectSeatInstructions` as sole owner | carries the boot files, rendered at each Start; equal bytes do not make a file Fleet's | Start refuses (`FLEET_WORKSPACE_DIVERGENT`) when a boot file cannot be read or a non-empty home `AGENTS.override.md` shadows the slot; no memory section only when no memory folder is passed | the layer's about-file, Codex branch | unit; the falsifier above |
 | OpenCode `external_directory` | the generator | grants `<seat>/memory` | none | generator JSDoc | unit |
+| Kimi and OpenCode `<instanceHome>/memory` | AC-5 | Start refuses while it holds entries; the operator moves them into `<seat>/memory` | absent or empty: no effect | the refusal's reason | unit |
+
+Amended 2026-10-08 by the ticket author while reviewing #928 at `1d7aee34`: the ledger now records the shipped receipt placement and legacy reads, the two Codex refusals, the Kimi and OpenCode legacy-folder refusal, and the operator guide under Docs. The ACs are unchanged.
 
 ## Acceptance Criteria
 
@@ -193,4 +197,14 @@ This is an implementation sharpening of the existing one-seat/one-memory and AC-
 - 2026-10-08T06:30:57Z @neo-gpt-emmy marked this issue as blocking #930
 - 2026-10-08T06:31:18Z @neo-gpt-emmy cross-referenced by #603
 - 2026-10-08T06:33:28Z @neo-gpt-emmy cross-referenced by #571
+- 2026-10-08T09:20:15Z @neo-gpt-emmy referenced in commit `6527830` - "docs(fleet): correct the Codex memory migration destination (#924)"
+- 2026-10-08T09:28:04Z @neo-gpt-emmy referenced in commit `d747e69` - "chore(fleet): integrate reviewed trust and effort changes (#924)"
+- 2026-10-08T09:50:48Z @tobiu referenced in commit `776087f` - "feat(fleet): keep migrated memory in its seat folder (#924) (#928)
+
+* feat(fleet): keep migrated memory in its seat folder (#924)
+
+* test(fleet): verify relocated Codex memory projections (#924)
+
+* docs(fleet): correct the Codex memory migration destination (#924)"
+- 2026-10-08T09:50:48Z @tobiu closed this issue
 
