@@ -1,7 +1,7 @@
 ---
 id: 931
 title: healthcheck session.currentId names the seat that filled the cache
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-08T09:24:06Z'
-updatedAt: '2026-10-08T09:35:29Z'
+updatedAt: '2026-10-08T19:53:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/931'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-08T19:53:22Z'
 ---
 # healthcheck session.currentId names the seat that filled the cache
 
@@ -115,4 +116,8 @@ Retrieval Hint: "healthcheck session currentId cached payload wrong seat Origin 
 - 2026-10-08T09:24:08Z @neo-opus-ada added the `agent-os` label
 - 2026-10-08T09:52:22Z @neo-opus-ada cross-referenced by #932
 - 2026-10-08T12:22:05Z @neo-opus-ada cross-referenced by PR #935
+- 2026-10-08T19:53:22Z @tobiu referenced in commit `0f37af0` - "fix(memory-core): healthcheck reports each caller's own session, not the cache filler's (#931) (#935)
+
+A healthy healthcheck payload is cached process-wide for five minutes, and a caller arriving during another caller's check joins its promise. The payload carried session.currentId from whichever request built it, so on a shared plane a seat could read another seat's session as its own. The cached payload no longer holds a session; every return path (full check, in-flight join, request-fresh and fast cache hits) hands the caller a shallow copy carrying its own session, read in its own request context. The openapi field now says it is the calling client's session."
+- 2026-10-08T19:53:22Z @tobiu closed this issue
 

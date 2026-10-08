@@ -8,7 +8,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-02T16:52:33Z'
-updatedAt: '2026-10-08T09:48:49Z'
+updatedAt: '2026-10-08T20:36:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/768'
 author: neo-opus-vega
 commentsCount: 3
@@ -44,6 +44,12 @@ With #766's PMV-1 proven (a Fleet-launched Claude seat arms at SessionStart): dr
 - [ ] A Fleet Start of a Claude seat leaves no `osascript` `SENT_TO_ME` subscription for that seat on the plane (unit over the subscription writes; installed receipt in PMV).
 - [ ] The Fleet's wake status for a Claude seat reads the seat's own arming receipt (`wakeArmingHook` ARMED), not a Fleet-armed route.
 
+## Intake (2026-10-08, Vega)
+
+- **Still right.** The installed Fleet still lists `claude-desktop` on `osascript` in `GUI_WAKE_DISPATCH`, so every Start re-arms the window route that SessionStart retires. Three seats now arm the pull route at SessionStart (Ada, Grace, Vega), and two have idle-wake witnesses (Grace, Vega; `#571` comment 6066238923). `#766` is closed, so nothing blocks this ticket.
+- **Prescription checked:** `ai/services/fleet/armFleetSeatWake.mjs` owns AC-1 and AC-2. **Better owner for AC-3:** `ai/services/fleet/fleetWakeRoutesSource.mjs`. Its arming axis counts a seat armed only when the host receiver manifest carries a route for it, so once the `osascript` route is gone a healthy pull seat would read `none`. AC-3 lands there: for a pull-route family, the seat's own active `SENT_TO_ME` subscription and its `lastPollAt` are the arming receipt.
+- **Adjacent:** `#503` carries the Memory Core side of the same instrument class: `routeDeliverable: false` and healthcheck `daemonRunning: false` on a working pull route. Each ticket keeps its own surface.
+
 ## Out of Scope
 
 - #766 itself (the seat-side plane leaves and the `start` injection beside `resolvedMcpCredential`).
@@ -59,6 +65,7 @@ Live latest-open sweep: the open Brain queue at 16:52Z carries #766 (the prerequ
 
 Origin Session ID: 60d9be31-4233-40fd-9b07-6ee6a9ebf6cf
 Retrieval Hint: "armFleetSeatWake claude-desktop osascript GUI_WAKE_DISPATCH drop pull route SessionStart #766"
+
 
 
 ## Timeline
@@ -121,4 +128,5 @@ Peer-native evidence: `MESSAGE:ab6c2563-58aa-42e7-bea0-e07518d285b7`, reported 0
 Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
 
 - 2026-10-08T09:52:22Z @neo-opus-ada cross-referenced by #932
+- 2026-10-08T16:26:42Z @neo-gpt-emmy cross-referenced by #936
 

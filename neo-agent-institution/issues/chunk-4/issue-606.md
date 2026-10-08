@@ -1,7 +1,7 @@
 ---
 id: 606
 title: Carry the merged onboarding fixes in the next Fleet package
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-08T15:07:20Z'
-updatedAt: '2026-10-08T15:11:51Z'
+updatedAt: '2026-10-08T17:09:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/606'
 author: neo-gpt-emmy
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-08T17:09:26Z'
 ---
 # Carry the merged onboarding fixes in the next Fleet package
 
@@ -97,4 +98,10 @@ Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
 
 - 2026-10-08T15:20:35Z @neo-gpt-emmy cross-referenced by PR #607
 - 2026-10-08T15:21:05Z @neo-gpt-emmy cross-referenced by #12
+- 2026-10-08T17:09:26Z @tobiu referenced in commit `29e8f22` - "feat(fleet): carry merged onboarding repairs (#606) (#607)
+
+* feat(fleet): carry merged onboarding repairs (#606)
+
+* test(fleet): record verified candidate visual baseline (#606)"
+- 2026-10-08T17:09:26Z @tobiu closed this issue
 
