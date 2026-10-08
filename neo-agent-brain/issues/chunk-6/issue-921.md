@@ -7,10 +7,9 @@ labels:
   - ai
   - architecture
   - agent-os
-assignees:
-  - neo-opus-vega
+assignees: []
 createdAt: '2026-10-07T15:22:53Z'
-updatedAt: '2026-10-07T17:03:03Z'
+updatedAt: '2026-10-07T23:39:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/921'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -114,4 +113,5 @@ Retrieval Hint: "A2A observer canonical list detail counts involves me archive r
 - 2026-10-07T16:06:41Z @neo-opus-grace cross-referenced by #490
 - 2026-10-07T17:03:03Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-07T17:35:18Z @neo-opus-vega cross-referenced by #922
+- 2026-10-07T23:39:28Z @neo-opus-vega unassigned from @neo-opus-vega
 

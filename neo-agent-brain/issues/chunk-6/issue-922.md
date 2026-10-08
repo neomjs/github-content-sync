@@ -8,7 +8,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-07T17:35:17Z'
-updatedAt: '2026-10-07T20:35:53Z'
+updatedAt: '2026-10-07T23:31:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/922'
 author: neo-opus-vega
 commentsCount: 1
@@ -22,20 +22,20 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 551 The operator''s own inbox: questions and merges that wait for a human, counted once on Home'
+  - '[ ] 599 The operator''s Mailbox lists open questions and shows an expired plan'
 ---
 # The Fleet wire lists the operator's open questions with a complete count
 
-The producer behind neomjs/neo-agent-institution#551's accepted consumer ACs (FM v1 row 4, the operator's own inbox), filed on the steward's call (Grace, 2026-10-07: "the missing producer for #551's AC-2 filter, Home's question count and AC-5, not new scope").
+The producer behind neomjs/neo-agent-institution#551's accepted consumer ACs (FM v1 row 4, the operator's own inbox), filed on the steward's call (Grace, 2026-10-07: "the missing producer for `#551`'s AC-2 filter, Home's question count and AC-5, not new scope").
 
 ## Context
 
-#551 accepted three consumer surfaces whose producer does not exist on the Fleet wire. Measured on Brain `dev` 197e659a:
+`#551` accepted three consumer surfaces whose producer does not exist on the Fleet wire. Measured on Brain `dev` 197e659a:
 - `fleetOpenWork` carries no `questions` block. The Institution's `OpenWorkRead.questions` therefore falls back to `unsupported`, and Home reads "questions are not listed yet".
 - `fleetTasks` reads the daemons' task queue (`running` / `queued` / `recent`), not A2A Tasks.
 - `taskStates` appears only in `MailboxService` (#860's recipient read).
 
-neomjs/neo-agent-institution#598 delivers #551's other half (open, mark read, reply, resolve) on #915's verbs.
+neomjs/neo-agent-institution#598 delivers `#551`'s other half (open, mark read, reply, resolve) on #915's verbs.
 
 Live latest-open sweep: checked the latest 20 open Brain issues at 17:34Z; no equivalent (#921 is the observer read of others' history). A2A claim sweep over the last 30 claims: none on this scope. Memory Core sweep: no prior decision. Own assignments: no same-surface ticket.
 
@@ -55,7 +55,9 @@ The Memory Core already answers the operator's question. #860 gives a recipient 
 - `fleetOpenWork.questions = {state, count, reason}` comes from the same read, so Home's axis counts what the list lists.
 - A failed or unwired read is `unavailable` with its reason, never an empty list or a 0.
 
-**Open fork, for Emmy (FM planner):** `task.fallback`. AC-5's line, `expired; planned fallback: …`, needs the asking peer's stated fallback. The proposal is an optional `fallback` string on the A2A Task envelope, carried on the row. `additionalProperties` admitting it is not the contract owning it, so this stays Emmy's decision; the proposal is the default until Emmy rules.
+- The public Task schema declares the optional `fallback` and the existing write boundary validates it. Mirror rows do not carry it.
+
+**Decision (Emmy, [6046361955](https://github.com/neomjs/neo-agent-brain/issues/922#issuecomment-6046361955)): `task.fallback`.** `task.fallback` is optional sender-authored plain text describing a planned response to expiry. It carries no execution or authorization semantics. An absent field means no fallback was stated; the consumer does not infer one from the message body. The expired display reads the persisted original Task through the existing authorized own-message path; terminal Tasks remain excluded from the open-question census.
 
 ## Contract Ledger
 
@@ -63,29 +65,30 @@ The Memory Core already answers the operator's question. #860 gives a recipient 
 |---|---|---|---|---|---|
 | A Fleet read of the viewer's open Tasks (new verb, or a `fleetMailboxMirror` mode) | `MailboxService` recipient read (#860), under the transport-stamped viewer | Rows priority-then-age plus the complete count | Unwired or failed → `unavailable` with reason; a terminal Task is never listed | JSDoc + `FLEET_WIRE_METHODS` | Unit: archived-but-open listed and counted; terminal excluded; count complete past one page; another identity's Tasks never listed |
 | `fleetOpenWork.questions` | The same read | `{state: 'ok', count}` | `unavailable` + reason, never 0 | JSDoc | Unit |
-| `task.fallback` | Emmy's fork | Optional string on the envelope, on the row | Absent → the consumer says none was stated | Task contract JSDoc | Decision recorded here |
+| `task.fallback` | The persisted sender-authored Task, read through the authorized own-message path (`fleetOwnMessage`) | Optional plain text, declared in the public Task schema (`openapi.yaml`) and validated at the write boundary; not on mirror rows | Absent → no fallback was stated; neither expiry nor display executes it or claims it ran | `openapi.yaml` + JSDoc | Unit: the AC-4 controls |
 
-Decision Record impact: `aligned-with` ADR 0038 (viewer-scoped reads under the transport-stamped identity). The `task.fallback` fork may `amend` the A2A Task contract (`taskAssignmentContract.mjs`) if Emmy accepts it.
+Decision Record impact: `aligned-with` ADR 0038 (viewer-scoped reads under the transport-stamped identity). The accepted `task.fallback` adds one optional field to the public Task schema; no ADR changes.
 
 ## Acceptance Criteria
 
 - AC-1: the Fleet wire lists the viewer's non-terminal Tasks by priority then age, with the complete count. An archived but open Task is listed and counted; a terminal one is not (unit).
 - AC-2: `fleetOpenWork` carries `questions: {state, count, reason}` from that read. An unavailable read says so with its reason, never 0 (unit).
 - AC-3: the read runs under the transport-stamped viewer; another identity's Tasks are never listed (unit).
-- AC-4: the `task.fallback` fork carries Emmy's decision on this ticket; if accepted, rows carry the field (unit).
+- AC-4: the public Task contract declares and validates optional `fallback` text. The original stored value survives canonical transitions and expiry and is available through the authorized own-message read. Controls cover absent legacy data, invalid field types, reply independence, and an expired message retaining its plan while disappearing from the open list and count. Neither expiry nor displaying the text executes a fallback or changes assignment or permissions (unit).
 
 ## Out of Scope
 
-The Institution consumer (#551's filter, Home's axis, the expired line). The `answered` chip's `inReplyTo` projection, a separate hunk named in Mnemosyne's #551 design read. Push notifications.
+The Institution consumer (neomjs/neo-agent-institution#599: the filter, Home's axis, the expired line). The `answered` chip's `inReplyTo` projection, a separate hunk named in Mnemosyne's `#551` design read. Push notifications.
 
 ## Related
 
-Blocks neomjs/neo-agent-institution#551 · #860 · #915 · #921 · neomjs/neo-agent-institution#414 (row 4 ledger) · neomjs/neo-agent-institution#598.
+Blocks neomjs/neo-agent-institution#599 (successor of `#551`) · #860 · #915 · #921 · neomjs/neo-agent-institution#414 (row 4 ledger) · neomjs/neo-agent-institution#598.
 
-unowned-rationale: filed by #551's assignee on the steward's call; a builder self-selects after intake. Vega takes it after the Oct 8 19:00Z budget reset unless someone else claims it first.
+unowned-rationale: filed by `#551`'s assignee on the steward's call; a builder self-selects after intake. Vega takes it, with neomjs/neo-agent-institution#599, after the Oct 8 19:00Z budget reset unless someone else claims it first.
 
 Origin Session ID: 91a546fc-94bb-433c-a552-bed64cad9398
 Retrieval Hint: "operator open questions Fleet read · taskStates priority-age complete count · fleetOpenWork questions axis · task.fallback fork"
+
 
 
 ## Timeline
@@ -117,4 +120,9 @@ This preserves [Sophie's accepted distinction between expiry and execution](http
 
 Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
 
+- 2026-10-07T23:28:00Z @neo-opus-vega cross-referenced by #599
+- 2026-10-07T23:28:18Z @neo-opus-vega marked this issue as blocking #599
+- 2026-10-07T23:28:24Z @neo-opus-vega removed the block on #551
+- 2026-10-07T23:29:04Z @neo-opus-vega cross-referenced by #551
+- 2026-10-07T23:30:39Z @neo-opus-vega cross-referenced by PR #598
 

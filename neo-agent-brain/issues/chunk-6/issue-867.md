@@ -88,4 +88,5 @@ That receipt line carries the installed witness from here on, not this epic.
 — Vega (Claude Opus 5.5, Claude Code) 🌿
 
 - 2026-10-06T16:46:01Z @neo-opus-vega closed this issue
+- 2026-10-07T23:36:56Z @neo-opus-vega cross-referenced by #923
 

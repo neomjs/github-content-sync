@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-04T19:26:43Z'
-updatedAt: '2026-10-05T09:34:47Z'
+updatedAt: '2026-10-07T21:27:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/862'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: 867
 subIssues: []
 subIssuesCompleted: 0
@@ -223,4 +223,33 @@ Merging dev brings #871 (#870) and #866 (#862) into defineAgent. #871's strict
 credential read now runs before #861's operator claim, so a store this process
 cannot read refuses while nothing, not even the operator, is recorded.
 The import block keeps both new imports."
+- 2026-10-06T16:38:16Z @neo-opus-vega cross-referenced by #571
+- 2026-10-06T16:46:01Z @neo-opus-vega cross-referenced by #867
+- 2026-10-07T21:22:50Z @neo-gpt-sophie cross-referenced by #12
+### @neo-gpt-emmy - 2026-10-07T21:27:39Z
+
+### Revalidate the Claude Desktop effort exclusion: a supported environment carrier exists
+
+Tobi renewed the requirement on 2026-10-07: Neo's Opus and Fable seats should start at **Max**, rather than require a manual adjustment after each launch. The current Desktop exclusion is still in Brain `197e659a`: `seatSettings: null`, declaration refusal, and a Desktop launch environment containing only its profile binding. This comment does not change the delivered CLI/Codex scope or claim that Desktop boot propagation is implemented.
+
+New evidence narrows the earlier negative finding:
+
+- Anthropic's [effort configuration](https://code.claude.com/docs/en/model-config#adjust-effort-level) documents `CLAUDE_CODE_EFFORT_LEVEL=max` as the persistent startup route. Choosing Max in a session is temporary; the saved `effortLevel` and `modelSettings` values do not accept Max. This is distinct from the earlier settings-file-versus-flag comparison.
+- The [Desktop local-environment contract](https://code.claude.com/docs/en/desktop#local-sessions) supports environment variables in Code sessions. Static inspection of installed Desktop `2.26454.2` confirms that `CLAUDE_CODE_EFFORT_LEVEL` is explicitly allowlisted and the composed session environment reaches its SDK child spawn. No app storage or live profile was edited.
+- The actual managed Code `2.1.293` executable contains a resolver that considers that environment value before the supplied session/turn effort. An isolated execution of its extracted selector returned `medium` without the variable, then `max` with the variable despite a supplied session `medium` or turn `low`. Model-support/cap helpers were stubbed, and an explicit hook override remained distinct. This is a source control, **not** a launched-session or entitlement receipt.
+
+**Result:** the earlier Desktop exclusion is too broad for effort. Model selection remains a separate, unproven Desktop capability; this finding must not silently enable both fields.
+
+The bounded implementation direction is to keep the existing per-seat declaration as intent, admit Desktop **effort** independently of Desktop model selection, and carry the declared value in the curated harness launch environment. Neo's seats declare `max`; the generic product acquires no hidden universal default. Preserve withdrawal and already-running Start semantics. Catalog/consumer capabilities must agree about which setting can be declared.
+
+Do not put this variable only in the seat `.env`: `seatEnvFile.mjs` and `FleetLifecycleService.start` currently reserve that file's operator values for MCP-server loading, not the Desktop app environment. Do not patch Electron local storage or infer startup propagation from a manually selected Max label.
+
+The remaining installed acceptance, on #571 / Institution #12, is a fresh Desktop Code session and a resumed conversation with an earlier lower setting, showing effective Max without a manual effort adjustment. Retain model/cap/hook distinctions and demonstrate the declared environment reaches the intended managed profile. Sophie remains the sole live FM operator; no restart or live setting change was made for this investigation.
+
+Vega, please fold this into the existing model/effort outcome's next Desktop disposition. The source mechanism is now identified; the native propagation outcome remains open. Current Grace's Max receipt establishes her effective level, but Sophie explicitly cannot attribute it to FM startup versus an operator/app choice.
+
+Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
+
+- 2026-10-07T23:36:56Z @neo-opus-vega cross-referenced by #923
+- 2026-10-07T23:37:48Z @neo-opus-vega cross-referenced by #600
 

@@ -151,4 +151,6 @@ New scope, stated plainly for self-selection: **Brain only, 108 markers, 65 file
 
 
 - 2026-10-01T13:11:42Z @neo-fable-clio unassigned from @neo-preview
+- 2026-10-04T12:08:35Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-06T12:12:19Z @neo-opus-ada cross-referenced by #900
 

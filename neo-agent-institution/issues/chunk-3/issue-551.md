@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-04T16:27:17Z'
-updatedAt: '2026-10-07T17:03:01Z'
+updatedAt: '2026-10-07T23:29:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/551'
 author: neo-fable-clio
 commentsCount: 10
@@ -25,7 +25,6 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 922 The Fleet wire lists the operator''s open questions with a complete count'
   - '[x] 859 Human recipients can read and answer their own A2A Tasks'
 blocking:
   - '[ ] 596 Show All / involves-me A2A activity in Fleet'
@@ -75,7 +74,7 @@ Two classes on one surface, one count that belongs to the operator alone:
 **Next action: two PRs** (steward disposition 6036744624). Institution dev `3b68995f` wires no body read, no `inReplyTo`, no mark-read and no transition, and the Fleet bridge exposes only `add_message`.
 - **Brain:** Fleet verbs for the operator's own inbox, under his identity: `get_message`, `mark_read`, `transition_task`. This is neomjs/neo-agent-brain#914, delivered by neomjs/neo-agent-brain#915: `fleetOwnMessage`, `markOwnMessageRead`, `transitionOwnTask`, and `inReplyTo` on compose. Merged 2026-10-07 (`f750655d`). A move the Task contract refuses answers as `{success: false, code, reason}`, with a fixed reason, so the row can show it.
 - **Institution:** the Mailbox detail, mark-read, reply-in-place and explicit resolve. Mnemosyne's design read is on this ticket ([6041900387](https://github.com/neomjs/neo-agent-institution/issues/551#issuecomment-6041900387)): yes on points 1, 3 and 4. On point 2, the `answered` chip is omitted until a Brain hunk projects `inReplyTo` on listed rows (never a cockpit-local memory), and a refusal shows the Brain's `code` beside its `reason`. Building (Vega). The PR moves the Brain pin past neomjs/neo-agent-brain#915, so the cockpit reaches the verbs through the FM app's bundled Brain in plane mode, and the operator gets them with the next #12 candidate.
-- **Not producible yet:** the `for you · open` filter (AC-2's second half), Home's question count (it reads "not listed yet") and AC-5's planned fallback. The Fleet wire carries no read of the operator's open A2A Tasks (`fleetTasks` reads the daemons' task queue), and `taskStates` exists only in `MailboxService` (neomjs/neo-agent-brain#860). These need one Brain leaf, a Fleet read of the viewer's non-terminal Tasks by priority then age with a complete count. AC-5 also needs a source for the fallback. The Task envelope admits extra fields, so the proposal is `task.fallback`, set by the asking peer.
+- **Not producible yet:** the `for you · open` filter (AC-2's second half), Home's question count (it reads "not listed yet") and AC-5's planned fallback. The Fleet wire carries no read of the operator's open A2A Tasks (`fleetTasks` reads the daemons' task queue), and `taskStates` exists only in `MailboxService` (neomjs/neo-agent-brain#860). These need one Brain leaf, a Fleet read of the viewer's non-terminal Tasks by priority then age with a complete count. AC-5 also needs a source for the fallback. The Task envelope admits extra fields, so the proposal is `task.fallback`, set by the asking peer. **Moved to #599** on the steward's call (Grace, 2026-10-07), blocked by neomjs/neo-agent-brain#922, which carries the read and Emmy's `task.fallback` decision. #598 resolves this ticket.
 
 ## Contract Ledger
 
@@ -93,10 +92,10 @@ Decision Record impact: `aligned-with` the A2A Task contract (`taskAssignmentCon
 ## Acceptance Criteria
 
 - AC-1 → **#557** (the Home line: both classes, the two-source zero, the unavailable axis with its reason, the stale `as of`), closed 2026-10-05.
-- AC-2: every message addressed to the operator, Task or ordinary, opens to its full body. The `for you · open` filter lists his non-terminal Tasks by priority then age from the complete recipient read (`includeArchived: true`, `status: 'all'`). Control: an **archived but open** Task stays listed and counted (unit + e2e).
-- AC-3: the operator marks his own message read; the row reads as read, and the open-question count does not move (unit + e2e).
+- AC-2: every message addressed to the operator, Task or ordinary, opens to its full body (unit + e2e). The `for you · open` filter and its archived-but-open control moved to #599 (AC-1).
+- AC-3: the operator marks his own message read; the row reads as read (unit + e2e). The clause "the open-question count does not move" moved to #599 (AC-2): its witness needs the count neomjs/neo-agent-brain#922 produces.
 - AC-4: a reply from the selected message carries its recipient and `inReplyTo`, shows a visible send result, and leaves the Task open. The explicit completion action transitions the original Task under the operator's identity, and the peer receives the 1:1 wake. A refused send or transition shows its reason (e2e against a fixture plane).
-- AC-5: an expired question reads `expired; planned fallback: …` with the peer's stated fallback (unit). The Mailbox rows' design read stays here.
+- AC-5: the expired line moved to #599 (AC-3), with the `task.fallback` decision on neomjs/neo-agent-brain#922. The Mailbox rows' design read stays here (Mnemosyne, [6041900387](https://github.com/neomjs/neo-agent-institution/issues/551#issuecomment-6041900387)).
 - AC-6 *(installed, post-merge)*: on the next #12 candidate, one real question goes from receipt through reply and explicit resolution, including one refused action with no false success. It stays findable from Home across new wakes, a reload and navigation. Row 4's installed walk (#490) names the receipt.
 
 ## Out of Scope
@@ -112,12 +111,13 @@ Push notifications, a new daemon or wake route for the operator, CODEOWNERS or r
 
 ## Related
 
-#557 (sub: the Home line, AC-1 + AC-5's Home half — Vega) · neomjs/neo-agent-brain#859 (the questions half's Memory Core contract: human recipient admitted · the two InputRequired exits for the human assignee · `taskStates` / `priority-age` read with a complete count · `get_message` body read) · #414 (parent, row 4) · #426 / PR #428 (compose) · #505 (Mailbox policy, inventory) · #490 (row 4's installed walk) · D#19394 (responsibility 3, the transport axis) · neo-agent-brain#30 · neo-agent-brain#503.
+#557 (sub: the Home line, AC-1 + AC-5's Home half — Vega) · #599 (successor: the `for you · open` filter, the count clause, the expired line) · neomjs/neo-agent-brain#859 (the questions half's Memory Core contract: human recipient admitted · the two InputRequired exits for the human assignee · `taskStates` / `priority-age` read with a complete count · `get_message` body read) · #414 (parent, row 4) · #426 / PR #428 (compose) · #505 (Mailbox policy, inventory) · #490 (row 4's installed walk) · D#19394 (responsibility 3, the transport axis) · neo-agent-brain#30 · neo-agent-brain#503.
 
 Owner: @neo-opus-vega (assigned). Grace stewards row 4; the Mailbox rows' design read (AC-5) is Clio's.
 
 Origin Session ID: 4299144f-a074-4eee-afd9-75c53b452d15
 Retrieval Hint: "operator's own inbox · Tasks to @tobiu · N questions · M merges wait for you"
+
 
 
 ## Timeline
@@ -401,4 +401,19 @@ Proposal: move both into one successor, with the Fleet questions read as its Bra
 - 2026-10-07T17:35:18Z @neo-opus-vega cross-referenced by #922
 - 2026-10-07T17:35:25Z @neo-opus-vega marked this issue as being blocked by #922
 - 2026-10-07T17:38:54Z @neo-opus-vega referenced in commit `70e200e` - "chore: merge dev, carrying #597, into the Mailbox detail branch (#551)"
+- 2026-10-07T23:28:00Z @neo-opus-vega cross-referenced by #599
+- 2026-10-07T23:28:24Z @neo-opus-vega removed the block by #922
+- 2026-10-07T23:37:48Z @neo-opus-vega cross-referenced by #600
+- 2026-10-07T23:56:57Z @neo-opus-vega referenced in commit `c4406de` - "fix(agentos): a resolution that lands after another message opened leaves that message's body alone (#551)"
+- 2026-10-08T00:29:22Z @neo-opus-vega referenced in commit `285816d` - "feat(agentos): the open message reads beside the Mailbox list, the way Memories reads a record (#551)
+
+The operator's design read on the detail's placement (2026-10-08) pointed at the cockpit's own
+drill-down idiom: Memories reads a selected record beside its list. The Mailbox now does the same:
+the list two shares, the detail one, the engine's Splitter between them. A pane 720 px wide or
+narrower stacks the detail under the list instead of squeezing the pair, and the body leaves the
+layout with its rows, so a state line keeps its room. While replying, the detail and its splitter
+fold as before.
+
+The NL journey asserts both regimes, beside at the fixture width and stacked at 600 px. A control
+with the body stacked fails the beside assertion."
 
