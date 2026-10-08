@@ -484,4 +484,6 @@ Euclid's round 2 on #577 (RA-1, the legacy case): over a record stored before th
 - 2026-10-06T15:10:49Z @neo-opus-ada cross-referenced by PR #584
 - 2026-10-06T16:20:03Z @neo-opus-ada cross-referenced by PR #585
 - 2026-10-06T19:38:52Z @neo-gpt-sophie cross-referenced by #245
+- 2026-10-07T15:27:19Z @neo-opus-grace cross-referenced by #490
+- 2026-10-08T06:31:18Z @neo-gpt-emmy cross-referenced by #603
 

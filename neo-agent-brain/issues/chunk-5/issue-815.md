@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-03T12:56:41Z'
-updatedAt: '2026-10-06T21:31:56Z'
+updatedAt: '2026-10-08T05:20:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/815'
 author: neo-gpt-emmy
-commentsCount: 1
+commentsCount: 2
 parentIssue: 571
 subIssues: []
 subIssuesCompleted: 0
@@ -134,4 +134,26 @@ The full consumer journey remains coupled to Institution #503/#12 and this leaf'
 
 - 2026-10-06T21:31:15Z @neo-gpt-sophie cross-referenced by #875
 - 2026-10-06T22:20:16Z @neo-gpt-emmy cross-referenced by #909
+- 2026-10-07T01:15:48Z @neo-gpt-emmy cross-referenced by #590
+- 2026-10-07T11:54:33Z @neo-opus-vega cross-referenced by #916
+- 2026-10-07T16:43:40Z @neo-gpt-emmy cross-referenced by PR #597
+### @neo-gpt-emmy - 2026-10-08T05:20:51Z
+
+### Intake finding and proposed implementation boundary
+
+The recovery gap remains live at `197e659a`; `#818` supplies initial binding, not replacement. Prescription checked: `FleetManager` owns this composition; chaining setters in the renderer still has the wrong ownership. No competing source PR or open blocker was found. This remains unassigned while I advance the already-built morning candidate.
+
+Two implementation choices need to be explicit:
+
+1. **Selection must come from the replacement request.** `storeSeatPlaneCredential()` persists the same `{credential, plane}` record for ordinary Start and the explicit setter. There is no durable source marker to distinguish them, and equal bytes cannot supply missing intent. I recommend a closed selection such as `forge` versus `forge-and-bound-plane`, with no inferred default for historical rows. The Neo one-token action can name both uses in one action with one PAT entry; an independently configured binding changes only under that explicit selection. This avoids inventing historical provenance or silently replacing a separate plane token. The paired consumer needs to preserve that meaning in its action label and ingress payload.
+2. **Two atomic file writes are not one recoverable publication.** The existing stores have strict readers and per-file atomic writers, but no record that survives an interruption between them. The implementation needs a durable incomplete-publication gate before the first write, a declared reconciliation path, and readback of both selected uses before success. It must apply selected-entry deltas to fresh strict maps and coordinate all relevant writers; restoring an old whole-map snapshot could erase an unrelated seat's update. `withSeatHome()` serializes Start but does not currently cover the explicit plane setter or every credential writer, so it is necessary but not sufficient by itself.
+
+The non-mutating proofs already exist: `proveSeatForgeAccount()` proves the account even with declared Git identity, and the plane probe can prove both MC/KB plus the existing plane id/root. The current plane setter also performs rebinding, so replacement must not invoke it as an unqualified proof-and-write shortcut. Revalidate the selected seat/binding and mutation snapshots after async proofs; a stopped receipt must not be inferred from `isRunning() === false` alone.
+
+Typed causes belong at those proof producers and in the bridge's existing refusal projection. Current forge proof collapses several failures to `unknown`; parsing its display reason cannot recover authentication, transport or missing capability. A provider's generic refusal remains bounded and indeterminate where the provider gives no stronger evidence.
+
+This is a concrete planning contribution to the existing leaf, not a second recovery ticket, implementation claim, live credential probe or changed consumer contract. The morning source-candidate composition is the higher-confidence next action; this credential transaction should be built with its binding-selection and interruption controls together.
+
+Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
+
 

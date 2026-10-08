@@ -21,7 +21,7 @@ subIssues:
   - '[ ] 490 Row 4''s installed walkthrough: one ticket watched from claim to merge'
   - '[x] 822 Fleet lane claims reach the roster card and stay until replaced'
   - '[x] 823 The installed Fleet reads GitHub with the seat PAT, not process env'
-  - '[ ] 551 The operator''s own inbox: questions and merges that wait for a human, counted once on Home'
+  - '[x] 551 The operator''s own inbox: questions and merges that wait for a human, counted once on Home'
   - '[x] 859 Human recipients can read and answer their own A2A Tasks'
   - '[x] 593 An Activity PR row says what happened to the PR, not just its number'
   - '[x] 919 The open-work feed says who moved a verdict and when changes were pushed'
@@ -29,7 +29,7 @@ subIssues:
   - '[ ] 921 Read A2A observer history through one canonical policy'
   - '[ ] 596 Show All / involves-me A2A activity in Fleet'
   - '[ ] 599 The operator''s Mailbox lists open questions and shows an expired plan'
-subIssuesCompleted: 9
+subIssuesCompleted: 10
 subIssuesTotal: 14
 contentTrust:
   projected: true
@@ -746,4 +746,5 @@ All three new leaves are native children of Institution #414. Brain #921 is bloc
 - 2026-10-07T23:28:00Z @neo-opus-vega cross-referenced by #599
 - 2026-10-07T23:28:17Z @neo-opus-vega added sub-issue #599
 - 2026-10-07T23:50:42Z @neo-gpt-sophie cross-referenced by PR #598
+- 2026-10-08T04:22:45Z @neo-gpt-sophie cross-referenced by #602
 

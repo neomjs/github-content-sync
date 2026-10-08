@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-07T01:15:42Z'
-updatedAt: '2026-10-07T01:15:42Z'
+updatedAt: '2026-10-08T01:44:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/911'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: 571
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 909 Launch Desktop MCPs through scoped Fleet admission'
+  - '[x] 909 Launch Desktop MCPs through scoped Fleet admission'
 blocking: []
 ---
 # Make Stop cancel pending managed Starts
@@ -43,7 +43,7 @@ This is source-derived evidence, supported by the production-composer regression
 - [FleetLifecycleService.stop](https://github.com/neomjs/neo-agent-brain/blob/edc0c7eafe7c9a770418d01281bed5d4185661b1/ai/services/fleet/FleetLifecycleService.mjs#L979) has no pending process to stop before spawn. Its early return does not currently prevent that pending launch.
 
 ## The Fix
-Give pending managed Starts one lifecycle-owned cancellation boundary. Capture the attempt before asynchronous preparation or seat-home waiting; retain Stop against the already-pending attempts; check cancellation through to the actual spawn boundary, including asynchronous work inside lifecycle start. An explicit later Start gets a fresh attempt.
+Give pending managed Starts one lifecycle-owned cancellation boundary. Capture the attempt before asynchronous preparation or seat-home waiting; retain Stop against the already-pending attempts; check cancellation through to the actual spawn boundary, after awaited preparation and immediately before the lifecycle's actual spawn call. The current lifecycle `start` method is synchronous; preserve that shape rather than adding an artificial asynchronous layer. An explicit later Start gets a fresh attempt.
 
 Reuse/generalize the existing fencing mechanism where appropriate, with one authority for Stop cancellation. MCP admission must consume that same cancellation fact; do not maintain independently advancing Stop counters per harness or in parallel lifecycle/admission owners. Retire or redirect any superseded admission-only tracking rather than layering another scheduler or queue beside it.
 
@@ -55,12 +55,14 @@ A phase already in progress may finish under its existing bounds, and prepared r
 | Pending `FleetManager.startAgent` / managed composer | Planner disposition above; existing seat-home serialization | Stop fences all attempts already pending for that seat, including queued preparation | Later explicit Start remains eligible; other seats unaffected | Start/Stop JSDoc | Paused preparation and queued-Start controls over production functions |
 | `FleetLifecycleService.stop` and pre-spawn boundary | Same disposition; existing process supervisor | Retain cancellation even without a process record; no late spawn after Stop | Already-spawned process follows current cleanup; no-pending Stop keeps its existing no-process behavior | Existing finite result shape and documented cancellation reason | Early/late race, no-child and running-process controls |
 | MCP admission cancellation | `#909`'s accepted contract | Uses the same Stop cancellation fact and cannot activate a canceled attempt | Independent non-Stop grant revocations retain their existing semantics | Admission/lifecycle ownership docs | Existing `#910` regressions plus later-Start control |
+| `FleetLifecycleService.beginStart` / `finishStart` / `canceledStart` | Lifecycle-owned pending attempt; manager captures before the seat-home queue | One AbortSignal shared through preparation, admission and wake arming; exact-attempt release and a finite canceled Start result | Never overwrite a newer process record; no-pending Stop keeps its prior response | Method JSDoc | Production-composer, queued-Start, final-spawn and stale-cleanup controls |
+| `armFleetSeatWake` canceled-attempt receipt | Same lifecycle signal while the manager holds the seat home | Stop prevents later subscription/publication; a completed late subscription is withdrawn and the manifest reconciled before a newer Start | An unconfirmed withdrawal returns `unarmed`, `cleanupUnresolved: true`, and the known subscription ID; never claim removed or ready | Arming JSDoc | Proof/subscribe/publish cancellation and failed-withdrawal controls |
 
 Decision Record impact: aligned with Fleet-owned lifecycle and the existing admission boundary. No new credential audience, service, configuration leaf or wire verb.
 
 ## Acceptance Criteria
 - [ ] Stop during queued seat-home work, checkout or workspace preparation prevents the affected attempts from reaching spawn and settles them as canceled rather than successful starts.
-- [ ] Stop during asynchronous lifecycle preparation is checked at the final spawn boundary; the guard is not merely before another awaited function.
+- [ ] Stop during awaited capability or workspace preparation is checked again at the final lifecycle spawn boundary; the guard is not merely before another awaited function.
 - [ ] A canceled attempt performs no later lease/admission activation or wake arming. Already completed repository preparation need not be rolled back.
 - [ ] A later explicit Start, including the fresh Start of a restart, can proceed; old canceled continuations cannot cancel or overwrite its state.
 - [ ] The behavior holds through the shared managed path for Desktop and a non-Desktop harness, with cross-seat and no-pending-Start negative controls.
@@ -93,4 +95,22 @@ Retrieval Hint: Stop during pending managed Start; withSeatHome; spawnPermitted;
 - 2026-10-07T01:17:07Z @neo-gpt-emmy cross-referenced by #12
 - 2026-10-07T01:17:08Z @neo-gpt-emmy cross-referenced by #571
 - 2026-10-07T01:21:34Z @neo-gpt cross-referenced by #477
+### @neo-gpt-emmy - 2026-10-08T01:23:32Z
+
+## Intake — valid, with the current synchronous spawn boundary clarified
+
+The live premise still holds at `dev@197e659a`: the manager captures an admission-only mark before the seat-home queue, but Stop with no process record does not cancel the composer. `spawnPermitted` rechecks ownership/participation, not that Stop. No competing open Brain PR covers this; #909 is closed. #925 remains a separate trust-projection PR.
+
+**Prescription checked:** `ai/services/fleet/FleetLifecycleService.mjs` owns process Start/Stop and therefore the pending-attempt cancellation fact. The manager captures it before queueing, the composer carries it through preparation, and admission/wake arming consume it. Keep one Stop owner; preserve non-Stop admission revocations. No new operator input or UI action is introduced. An independent local source read agrees with this ownership. The current `start()` is synchronous, so I corrected my body’s asynchronous wording; the guard still belongs immediately before spawn, after upstream awaited preparation.
+
+The parent has [Euclid’s independent epic review](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-5931143185). Prior-art MC `0003be88`, `5331c990`, and `26e556a3` recover the planner split and #910’s admission-only scope; current source is the falsifier. `pre_brief_session` did not resolve this qualified issue ID, so those targeted records and the live issue/source replaced that unavailable graph read. The KB synthesis describes admission integrity, not general process cancellation.
+
+Created 2026-10-07 01:15:42Z; no stale/exemption labels. This is inside the Engine’s 90-day stale window; no Brain-local stale workflow is present. Same-day merged #910 was inspected rather than treated as a duplicate resolution. ADR successor-risk: aligned with the existing lifecycle/admission ownership; no config, credential audience, wire verb, or decision-record change.
+
+Next proof: extend production-composer tests to require no spawn, lease activation, or later wake arming after Stop, with queued, non-Desktop, fresh later Start, other-seat, and existing-process cleanup controls. Source-only fixtures; no live harness experiment.
+
+Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
+
+- 2026-10-08T01:47:58Z @neo-gpt-emmy cross-referenced by PR #926
+- 2026-10-08T01:58:36Z @neo-gpt-emmy referenced in commit `b888c1a` - "test(fleet): update composed-start lifecycle doubles (#911)"
 

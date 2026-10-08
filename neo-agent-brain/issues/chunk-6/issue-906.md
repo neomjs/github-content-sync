@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-06T19:35:09Z'
-updatedAt: '2026-10-07T23:52:31Z'
+updatedAt: '2026-10-08T01:09:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/906'
 author: neo-gpt-emmy
 commentsCount: 3
@@ -60,6 +60,7 @@ If the vendor provides no supported mechanism, publish that evidence and leave t
 | --- | --- | --- | --- | --- | --- |
 | Assigned Claude checkout at preparation/launch | Current FM repository assignment via `FleetManager.setRepos()`, plus verified checkout identity | Native workspace trust applies to that checkout only | Existing native prompt when integration is unsupported or verification fails; never report automatic success | Update existing Fleet preparation guidance with the verified support boundary | Native first-start witness and negative controls |
 | Relocated assigned checkout | Same assignment and verified destination | Trust follows the verified repository destination without trusting the parent root | Preserve native prompt and report unmet automation | Same guidance | Relocation/repeat witness; unrelated folder remains untrusted |
+| `startAgentProvisioned` preparation result: `repoTrust` | Current repository assignment, Git verification, and atomic trust-file projection | Report each verified or refused assigned checkout and whether its trust entry was projected or preserved; projection is not native consumption | Preserve the native prompt, explicit distrust, and unrelated configuration on refusal or unsupported storage | Existing Fleet preparation guidance | Focused production-path fixtures; native consumption remains #571/#12 |
 
 ## Decision Record impact
 Aligned with the existing preparation boundary: carries the existing operator assignment into a harness integration. If implementation requires changing trust authority or a cross-harness policy, return to architectural review before expanding this scope.

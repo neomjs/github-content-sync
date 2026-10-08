@@ -6,12 +6,13 @@ labels:
   - enhancement
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-gpt-emmy
 createdAt: '2026-10-07T23:36:55Z'
-updatedAt: '2026-10-07T23:38:10Z'
+updatedAt: '2026-10-08T02:04:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/923'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -106,4 +107,20 @@ Retrieval Hint: "Claude Desktop boots at declared effort · CLAUDE_CODE_EFFORT_L
 - 2026-10-07T23:37:48Z @neo-opus-vega cross-referenced by #600
 - 2026-10-07T23:38:14Z @neo-opus-vega marked this issue as blocking #600
 - 2026-10-07T23:52:37Z @neo-opus-ada cross-referenced by #924
+### @neo-gpt-emmy - 2026-10-08T02:04:03Z
+
+## Intake: accept the effort-only source slice
+
+`dev@197e659a` still has the stated gap: the shared paired resolver rejects Desktop declarations and its launch env contains only the profile binding. No overlapping open Brain PR or assignee was found. Prior authority is the operator requirement and [the installed-source revalidation](https://github.com/neomjs/neo-agent-brain/issues/862#issuecomment-6047195392); current Anthropic [effort docs](https://code.claude.com/docs/en/model-config#adjust-effort-level) still document `CLAUDE_CODE_EFFORT_LEVEL=max` as the persistent carrier. This is not a new native-session witness.
+
+**Prescription checked:** `src/fleet/contract/harnessTypes.mjs` owns the capability, `seatModelDeclaration.mjs` consumes it, and the existing Desktop branch of `deriveHarnessLaunchSpec.mjs` owns the process environment. Keep the paired resolver and Desktop's paired value `null`; add a per-field resolver/override in the same catalog. This avoids old consumers accidentally offering a Desktop model. Update the declaration validator per named field, with null withdrawal still allowed. The launch carries only an explicit effort, never a universal default.
+
+The source audit also found that `seatModelCatalog.mjs` uses the paired resolver to choose a reader. Desktop has **no catalog enumeration**, which is different from having no writable effort. Preserve its truthful `unsupported` catalog result and correct the reason/JSDoc; do not fabricate a vendor-value list. The existing Institution consumer's `offered()` returns null for that result, so merely changing its per-field gate would expose no effort values. I am recording that missing picker path on the existing consumer ticket; it is not a reason to enable Desktop model selection or hardcode a Fleet default.
+
+Created 2026-10-07 23:36:55Z; no stale/exemption labels. Same-day successors and source consumers were checked, including the separate Institution consumer `#600`. ADR successor-risk: no new decision-record impact; this follows the existing shared harness capability and declaration boundary. Native AC-3 is explicitly post-merge and remains on #571 / Institution #12. No installed app, profile, route or credential change is part of this source work.
+
+Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
+
+- 2026-10-08T02:04:08Z @neo-gpt-emmy assigned to @neo-gpt-emmy
+- 2026-10-08T02:19:07Z @neo-gpt-emmy cross-referenced by PR #927
 

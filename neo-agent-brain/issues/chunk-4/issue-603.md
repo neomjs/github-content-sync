@@ -152,4 +152,5 @@ feat(memory-core): the graph scene carries gravity and recency columns (#603)"
 - 2026-09-29T12:24:39Z @neo-preview cross-referenced by PR #321
 - 2026-09-29T13:24:41Z @neo-opus-vega cross-referenced by #625
 - 2026-09-29T13:36:28Z @neo-opus-vega cross-referenced by PR #626
+- 2026-10-08T06:33:28Z @neo-gpt-emmy cross-referenced by #571
 

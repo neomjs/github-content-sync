@@ -1,7 +1,7 @@
 ---
 id: 551
 title: 'The operator''s own inbox: questions and merges that wait for a human, counted once on Home'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-04T16:27:17Z'
-updatedAt: '2026-10-07T23:29:03Z'
+updatedAt: '2026-10-08T01:39:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/551'
 author: neo-fable-clio
 commentsCount: 10
@@ -28,6 +28,7 @@ blockedBy:
   - '[x] 859 Human recipients can read and answer their own A2A Tasks'
 blocking:
   - '[ ] 596 Show All / involves-me A2A activity in Fleet'
+closedAt: '2026-10-08T01:39:29Z'
 milestone: FM v1
 ---
 # The operator's own inbox: questions and merges that wait for a human, counted once on Home
@@ -416,4 +417,42 @@ fold as before.
 
 The NL journey asserts both regimes, beside at the fixture width and stacked at 600 px. A control
 with the body stacked fails the beside assertion."
+- 2026-10-08T01:39:29Z @tobiu referenced in commit `68bd58c` - "feat(agentos): the operator opens, marks read, answers and resolves a Mailbox message (#551) (#598)
+
+* build(deps): pin Brain 197e659a, which carries the own-inbox verbs the Mailbox detail calls (#551)
+
+The pin moves past neomjs/neo-agent-brain#915 (fleetOwnMessage, markOwnMessageRead,
+transitionOwnTask, inReplyTo on compose). The CI cross-repository job checks out the same
+revision, and the harness content policy admits launchAdmission.mjs, which the contract
+index re-exports since #910.
+
+* feat(agentos): a message opened from the operator's Mailbox shows its full body, with Mark read, Reply and Resolve (#551)
+
+Selecting a row through the grid's own row model opens one detail view under the list. It reads
+the message under the operator's identity and never marks it read. The operator's own inbox
+(detailEntry 'own') adds Mark read, Reply and, apart, Resolve: mark Completed; any other host
+stays read-only. Reply opens the compose reveal for the sender with Re: and inReplyTo, and a
+reply never moves the Task. A refused action shows its reason beside the Brain's code. Rows read
+as read or resolved only from the inbox re-read that follows. While replying, the selected row is
+the inbox's one row of context and the detail folds.
+
+The owner side moves into AgentOS.util.OperatorInbox (compose included), which keeps the cockpit
+controller under the app file-size bar.
+
+* docs(agentos): the Mailbox detail's comments describe its behavior, not its tickets (#551)
+
+* fix(agentos): a resolution that lands after another message opened leaves that message's body alone (#551)
+
+* feat(agentos): the open message reads beside the Mailbox list, the way Memories reads a record (#551)
+
+The operator's design read on the detail's placement (2026-10-08) pointed at the cockpit's own
+drill-down idiom: Memories reads a selected record beside its list. The Mailbox now does the same:
+the list two shares, the detail one, the engine's Splitter between them. A pane 720 px wide or
+narrower stacks the detail under the list instead of squeezing the pair, and the body leaves the
+layout with its rows, so a state line keeps its room. While replying, the detail and its splitter
+fold as before.
+
+The NL journey asserts both regimes, beside at the fixture width and stacked at 600 px. A control
+with the body stacked fails the beside assertion."
+- 2026-10-08T01:39:30Z @tobiu closed this issue
 

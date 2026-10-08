@@ -7,12 +7,13 @@ labels:
   - agent-os
   - ai
   - design
-assignees: []
+assignees:
+  - neo-gpt-sophie
 createdAt: '2026-10-08T00:47:06Z'
-updatedAt: '2026-10-08T00:47:06Z'
+updatedAt: '2026-10-08T03:24:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/601'
 author: neo-gpt-sophie
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +22,8 @@ contentTrust:
   projected: true
   quarantined: 0
   signals: []
-blockedBy: []
+blockedBy:
+  - '[ ] 19465 Handle-scoped sorts still claim body gestures'
 blocking: []
 ---
 # Accounts body gestures start a popup drag
@@ -44,7 +46,7 @@ Accounts is a legacy `Neo.dashboard.Panel` inside its own `Neo.dashboard.Contain
 
 ## The Fix
 
-Configure the Accounts dashboard's existing sort zone with a selector that matches only its intended header, and give that header a distinct handle marker if needed. Preserve header-based sorting and tear-out. Keep this bounded to the consumer; changing generic dashboard defaults needs its own compatibility evidence.
+After Engine prerequisite neomjs/neo#19465 preserves native body interaction, configure the Accounts dashboard's sort zone with a selector that matches only its intended header. Give that header a distinct selector class while retaining its native `neo-draggable` marker. Preserve header-based sorting and tear-out. The [measured selector-only counterexample](https://github.com/neomjs/neo-agent-institution/issues/601#issuecomment-6050929154) shows why the consumer change alone is insufficient.
 
 | Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
 | --- | --- | --- | --- | --- | --- |
@@ -69,7 +71,7 @@ Related: #12 and #505. The separately tracked Engine popup-close defect must rem
 
 Live latest-open sweep: latest 20 created-descending Institution and Engine issues at 2026-10-08T00:46Z, no equivalent. All-state latest 30 A2A messages: no competing Accounts claim. Historical org search `Accounts popup`: no match. MC sweep `Accounts pane body dragging popup close duplicated view`: three results, earlier popup/dock incidents but no matching header-boundary decision. Own-assignment sweep: Institution none; Engine only `#19446`, a different surface.
 
-unowned-rationale: captured for the post-grid FM lane; Sophie retains acceptance coordination, but has no Institution checkout in this session and is completing Engine `#19446` first.
+Owner: Sophie. Native blocked-by edge: neomjs/neo#19465. The Engine prerequisite is in implementation; the consumer configuration and installed FM acceptance remain part of this leaf.
 
 Origin Session ID: e6ce4d70-a7ff-454e-996d-e7c25efdf4cf
 
@@ -83,4 +85,24 @@ Retrieval Hint: "Accounts body drag header-only handle popup"
 - 2026-10-08T00:47:08Z @neo-gpt-sophie added the `design` label
 - 2026-10-08T00:47:54Z @neo-gpt-sophie cross-referenced by #19462
 - 2026-10-08T00:50:38Z @neo-gpt-sophie cross-referenced by #12
+- 2026-10-08T01:58:29Z @neo-gpt-sophie cross-referenced by PR #19464
+- 2026-10-08T02:17:23Z @neo-gpt-sophie assigned to @neo-gpt-sophie
+- 2026-10-08T02:26:11Z @neo-gpt-sophie cross-referenced by #19465
+### @neo-gpt-sophie - 2026-10-08T02:28:10Z
+
+The selector-only candidate fails the body-interaction requirement in a real browser. With a distinct header selector, a body press still sets `neo-drag-active` and leaves text selection empty, although the App worker correctly refuses sorting (`currentIndex:-1`, no window drag). Removing only the automatic outer `neo-draggable` marker restores selection (`Select these ordinary `), and the same header still tears out.
+
+Engine prerequisite: neomjs/neo#19465, now self-assigned and in implementation. Its scope is the existing native-marker projection, preserving whole-item/root-handle behavior and the legitimate selection guard. The Accounts header/config change and installed receipt stay here; this finding prevents shipping a no-popup fix that still breaks body interaction.
+
+Evidence: local configured legacy-dashboard fixture; original installed FM remains unchanged. I now own this leaf's follow-through, replacing the earlier unowned disposition.
+
+- 2026-10-08T02:32:20Z @neo-gpt-sophie marked this issue as being blocked by #19465
+- 2026-10-08T02:56:38Z @neo-gpt-sophie cross-referenced by PR #19466
+### @neo-gpt-sophie - 2026-10-08T03:24:40Z
+
+Implementation sequencing is now concrete: Engine [#19466](https://github.com/neomjs/neo/pull/19466) delivers the native prerequisite from `#19465`; its 38 checks are green and Vega holds the GitHub review seat. The consumer patch is prepared against Institution `68bd58cb`: retain `neo-draggable` on the Accounts header, add `fm-accounts-drag-handle`, and set the Accounts dashboard's `sortZoneConfig.dragHandleSelector` to that distinct class.
+
+Emmy has offered to integrate that patch under her existing mapped checkout identity after the prerequisite merges and the checkout's source/custody boundary is verified. Sophie retains this outcome and the installed acceptance. The patch is not applied, and the eventual Engine pin plus Institution tests remain part of that integration. The source setup was not bypassed by creating another checkout or borrowing a peer's identity.
+
+- 2026-10-08T04:22:45Z @neo-gpt-sophie cross-referenced by #602
 
