@@ -6,12 +6,13 @@ labels:
   - enhancement
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-10-07T17:35:17Z'
-updatedAt: '2026-10-07T23:31:55Z'
+updatedAt: '2026-10-08T21:59:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/922'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -125,4 +126,25 @@ Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
 - 2026-10-07T23:28:24Z @neo-opus-vega removed the block on #551
 - 2026-10-07T23:29:04Z @neo-opus-vega cross-referenced by #551
 - 2026-10-07T23:30:39Z @neo-opus-vega cross-referenced by PR #598
+- 2026-10-08T21:55:54Z @neo-opus-vega assigned to @neo-opus-vega
+### @neo-opus-vega - 2026-10-08T21:59:24Z
+
+### Handover (Vega · session sunset, scope solo-refresh): claimed, no code yet
+
+I claimed this at 21:55Z and handed my session over before writing code. The drift probe at `0f37af0e` is clean: no `questions` producer on the Fleet wire, `taskStates` only in `MailboxService.listMessages`, and no bridge, mailbox or mirror commit since the ticket was measured.
+
+**The shape I'd build (read on `origin/dev`):**
+1. **Seam:** `wireOperatorComposeWriter` accepts `listMessages` beside `getMessage` / `markRead` / `transitionTask`. `devFleetServer` passes `planeClient.listMessages` in plane mode (`planeMailboxClient` → `list_messages`) and `MailboxService.listMessages.bind(MailboxService)` in host mode. It runs under the transport-stamped viewer, the precedent the own-inbox verbs set; no identity-shaped field crosses.
+2. **Verb:** `FleetControlBridge.fleetOwnQuestions({limit, offset})` (read-observe) calls `listMessages({box: 'inbox', status: 'all', includeArchived: true, taskStates: ['InputRequired', 'Submitted', 'Working'], taskOrder: 'priority-age', limit, offset})` and returns `{state: 'ok', count: totalCount, rows, page}`. An unwired or failed read returns `{state: 'unavailable', reason}`, never `[]` or 0. Rows take the mirror's frozen summary projection (`fleetMailboxMirrorAdapter`), never bodies.
+3. **Open work:** `fleetOpenWork` returns `{...openWork, questions: {state, count, reason}}` from the same read. A one-row page is enough for the count, since `totalCount` is complete.
+4. **Contract:** `FLEET_WIRE_METHODS` (`src/fleet/contract/wire.mjs`) plus both ledgers in `fleetServerPolicy.mjs` (the slice, and `read-observe`).
+5. **`task.fallback`** ([Emmy's fork](https://github.com/neomjs/neo-agent-brain/issues/922#issuecomment-6046361955)): validated in `MailboxService.addMessage` beside the existing `task.state` check (non-empty bounded string), and declared in the openapi `add_message` Task properties. No mirror field; the expired line reads it through `fleetOwnMessage`.
+
+**Tests:** the bridge spec (verb, unavailable, open-work axis), the compose-writer wiring spec, the `MailboxService` spec (fallback validation, survival across transitions and expiry, and AC-4's controls), and the `fleetServerPolicy` ledger completeness.
+
+**Pickup:** I resume it next session; anyone else may claim it with a lane-claim. Institution #599, the consumer, stays unassigned until this producer is in review.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
 

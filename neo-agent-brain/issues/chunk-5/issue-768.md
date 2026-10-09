@@ -1,14 +1,14 @@
 ---
 id: 768
 title: The Fleet stops arming claude-desktop on osascript once a Fleet-launched Claude seat arms itself at SessionStart
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-02T16:52:33Z'
-updatedAt: '2026-10-08T20:36:49Z'
+updatedAt: '2026-10-08T23:02:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/768'
 author: neo-opus-vega
 commentsCount: 3
@@ -23,6 +23,7 @@ contentTrust:
 blockedBy:
   - '[x] 766 Seat hooks resolve no plane: they read Fleet-transport leaves'
 blocking: []
+closedAt: '2026-10-08T23:02:02Z'
 ---
 # The Fleet stops arming claude-desktop on osascript once a Fleet-launched Claude seat arms itself at SessionStart
 
@@ -36,18 +37,30 @@ Today the drop would strand a Fleet-launched Claude seat: its hooks read `fleet.
 
 ## The Fix
 
-With #766's PMV-1 proven (a Fleet-launched Claude seat arms at SessionStart): drop `claude-desktop` from `GUI_WAKE_DISPATCH` so `armFleetSeatWake` answers `null` for it, the way OpenCode keeps its own route; the Fleet's wake status for a Claude seat then reads the seat's own arming receipt on the plane, never a route the Fleet armed.
+With #766's PMV-1 proven (a Fleet-launched Claude seat arms at SessionStart): drop `claude-desktop` from `GUI_WAKE_DISPATCH` so `armFleetSeatWake` answers `null` for it, the way OpenCode keeps its own route; the Fleet's wake status for a Claude seat then reads the seat's own pull route on the plane, never a route the Fleet armed.
 
 ## Acceptance Criteria
 
 - [ ] `armFleetSeatWake` answers `null` for a `claude-desktop` seat; the `armFleetSeatWake` arms cover it beside OpenCode (red-first: today it subscribes).
 - [ ] A Fleet Start of a Claude seat leaves no `osascript` `SENT_TO_ME` subscription for that seat on the plane (unit over the subscription writes; installed receipt in PMV).
-- [ ] The Fleet's wake status for a Claude seat reads the seat's own arming receipt (`wakeArmingHook` ARMED), not a Fleet-armed route.
+- [ ] The Fleet's wake status for a Claude seat reads the seat's own pull route on the plane: an active `SENT_TO_ME` subscription on `harnessTarget: 'none'`, carrying that route's own `lastPollAt` (null until its first poll), never a Fleet-armed route. A poll on any other subscription arms nothing, and a receiver-manifest route keeps its own detail: no poll proves the seat retired it. *(Corrected 2026-10-08 per the PR #939 review: the first text read any stamped subscription as the receipt and let it outrank the manifest.)*
+
+## Contract Ledger
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `readActiveWakeSubscriptionObservations` (`ai/services/memory-core/readActiveWakeSubscriptionIdentities.mjs`) | AC-3; #939 review R1 | Each row adds `pullRoute`: `{lastPollAt}` when the identity holds an active `SENT_TO_ME` row on `PULL_HARNESS_TARGET` (`'none'`), its stamp the `MAX(lastPollAt)` over those rows only; `null` when it holds none. `lastPollAt` keeps its identity-wide meaning. | The cache-seam double aggregates the same way; no read surface still throws. | JSDoc | `readActiveWakeSubscriptionIdentities.spec.mjs` |
+| `manage_wake_subscription` `fleet-identities` (`WakeSubscriptionService.fleetIdentities`) | same | `observations` rows are exactly `{identity, lastPollAt, pullRoute}`: timestamps and one transport fact, never endpoint, filter or key material. | An unbound caller is refused (unchanged). | OpenAPI description, JSDoc | `WakeSubscriptionService.spec.mjs` redacted-shape test |
+| `createPlaneWakeObservationsReader` (`ai/services/fleet/planeWakeIdentitiesReader.mjs`) | same | Forwards `pullRoute` as `{lastPollAt}` or `null`. | A plane without `observations` or without `pullRoute` (an older image), or a non-object `pullRoute`, reads `pullRoute: null`: no pull evidence. | JSDoc | `planeWakeIdentitiesReader.spec.mjs` |
+| `fleetWakeRoutesSource` `seats[].armed` | AC-3 | A seat holding a pull route reads `{state: 'armed', reason: null, route: {adapter: 'pull', lastPollAt}}` with that route's own stamp. | A manifest-armed row keeps its manifest detail, a pull route beside it included. Without pull evidence (no route, an older plane, an unreadable subscription axis) the row stays what the manifest read answered: `none`, `unknown` or `unobserved`. On an older plane a Claude seat therefore reads `none` until the plane updates. | JSDoc | `fleetWakeRoutesSource.spec.mjs`; the producer→projection test in `WakeSubscriptionService.spec.mjs` (production `poll-digest` stamp → SQLite → `fleet-identities` → plane reader → routes source) |
+
+- **Scope:** a message pull route only, per R1. The healthcheck's caller verdict (`features.wake.subscription`, #941) stays trigger-agnostic, like the manifest gate it mirrors.
+- **Installed boundary:** unit evidence only here; the installed reading of a Fleet-launched Claude seat stays with #571.
 
 ## Intake (2026-10-08, Vega)
 
 - **Still right.** The installed Fleet still lists `claude-desktop` on `osascript` in `GUI_WAKE_DISPATCH`, so every Start re-arms the window route that SessionStart retires. Three seats now arm the pull route at SessionStart (Ada, Grace, Vega), and two have idle-wake witnesses (Grace, Vega; `#571` comment 6066238923). `#766` is closed, so nothing blocks this ticket.
-- **Prescription checked:** `ai/services/fleet/armFleetSeatWake.mjs` owns AC-1 and AC-2. **Better owner for AC-3:** `ai/services/fleet/fleetWakeRoutesSource.mjs`. Its arming axis counts a seat armed only when the host receiver manifest carries a route for it, so once the `osascript` route is gone a healthy pull seat would read `none`. AC-3 lands there: for a pull-route family, the seat's own active `SENT_TO_ME` subscription and its `lastPollAt` are the arming receipt.
+- **Prescription checked:** `ai/services/fleet/armFleetSeatWake.mjs` owns AC-1 and AC-2. **Better owner for AC-3:** `ai/services/fleet/fleetWakeRoutesSource.mjs`. Its arming axis counts a seat armed only when the host receiver manifest carries a route for it, so once the `osascript` route is gone a healthy pull seat would read `none`. AC-3 lands there: for a pull-route family, the seat's own active `SENT_TO_ME` pull route is the arming evidence, and that route's `lastPollAt` its listener's receipt.
 - **Adjacent:** `#503` carries the Memory Core side of the same instrument class: `routeDeliverable: false` and healthcheck `daemonRunning: false` on a working pull route. Each ticket keeps its own surface.
 
 ## Out of Scope
@@ -57,7 +70,7 @@ With #766's PMV-1 proven (a Fleet-launched Claude seat arms at SessionStart): dr
 
 ## Related
 
-#562 / PR #752 · #705 · #728 · #766 (blocks this)
+#562 / PR #752 · #705 · #728 · #766 (blocks this) · PR #939 (implements) · #940 / PR #941 (the `list` and healthcheck pull reading)
 
 Owner: Vega (self-assigned on creation); blocked by #766 (native dependency).
 
@@ -65,7 +78,6 @@ Live latest-open sweep: the open Brain queue at 16:52Z carries #766 (the prerequ
 
 Origin Session ID: 60d9be31-4233-40fd-9b07-6ee6a9ebf6cf
 Retrieval Hint: "armFleetSeatWake claude-desktop osascript GUI_WAKE_DISPATCH drop pull route SessionStart #766"
-
 
 
 ## Timeline
@@ -129,4 +141,53 @@ Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
 
 - 2026-10-08T09:52:22Z @neo-opus-ada cross-referenced by #932
 - 2026-10-08T16:26:42Z @neo-gpt-emmy cross-referenced by #936
+- 2026-10-08T21:30:08Z @neo-opus-vega cross-referenced by PR #939
+- 2026-10-08T21:37:56Z @neo-opus-vega cross-referenced by #940
+- 2026-10-08T21:38:07Z @neo-opus-vega cross-referenced by #503
+- 2026-10-08T22:16:45Z @neo-gpt-emmy cross-referenced by PR #941
+- 2026-10-08T22:39:42Z @neo-opus-vega referenced in commit `bfa2461` - "fix(fleet): a seat is pull-armed by its own pull route, never by a poll stamp (#768)
+
+Review R1 on #939: `withPullArming` read the identity-wide `MAX(lastPollAt)` as pull evidence,
+so a Codex seat polling its push route, or any seat polling another trigger, had its manifest
+route replaced by `armed / pull`.
+
+- `readActiveWakeSubscriptionObservations` adds `pullRoute`: `{lastPollAt}` over the identity's
+  active `SENT_TO_ME` rows on `none` only, or null. `fleet-identities` and the plane reader carry it.
+- `withPullArming` arms on that route. A manifest-armed row keeps its detail, and without pull
+  evidence (an older plane included) the row stays what the manifest read answered.
+- A producer test runs the production `poll-digest` stamp through SQLite, `fleet-identities` and
+  the plane reader into the routes source: a push-only poll, another trigger's poll, coexistence,
+  the pull control and an unpolled pull route. It fails on the previous projection."
+- 2026-10-08T23:02:02Z @tobiu referenced in commit `03da502` - "feat(fleet): a Claude Desktop seat arms its own pull route, and the routes verb reads that route as its arming (#768) (#939)
+
+* feat(fleet): a Claude Desktop seat arms its own pull route, and the routes verb reads its poll as its arming (#768)
+
+A Fleet Start no longer subscribes a Claude Desktop seat on osascript:
+claude-desktop leaves GUI_WAKE_DISPATCH, so armFleetSeatWake answers null for
+it, as for OpenCode. The seat's own SessionStart arms its pull route and
+unsubscribes every route that types into its window, so a Fleet-armed one only
+came back stale.
+
+The decomposed wake-routes read counts a seat armed when its active
+subscription carries its own poll's stamp (`route: {adapter: 'pull',
+lastPollAt}`), whatever the manifest read answered. The stamp outranks a
+receiver-manifest entry, which beside a stamp names a route the seat already
+withdrew. A seat without a stamp keeps its row, so Codex keeps the manifest's
+detail.
+
+* fix(fleet): a seat is pull-armed by its own pull route, never by a poll stamp (#768)
+
+Review R1 on #939: `withPullArming` read the identity-wide `MAX(lastPollAt)` as pull evidence,
+so a Codex seat polling its push route, or any seat polling another trigger, had its manifest
+route replaced by `armed / pull`.
+
+- `readActiveWakeSubscriptionObservations` adds `pullRoute`: `{lastPollAt}` over the identity's
+  active `SENT_TO_ME` rows on `none` only, or null. `fleet-identities` and the plane reader carry it.
+- `withPullArming` arms on that route. A manifest-armed row keeps its detail, and without pull
+  evidence (an older plane included) the row stays what the manifest read answered.
+- A producer test runs the production `poll-digest` stamp through SQLite, `fleet-identities` and
+  the plane reader into the routes source: a push-only poll, another trigger's poll, coexistence,
+  the pull control and an unpolled pull route. It fails on the previous projection."
+- 2026-10-08T23:02:02Z @tobiu closed this issue
+- 2026-10-08T23:07:53Z @neo-opus-vega cross-referenced by #611
 

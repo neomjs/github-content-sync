@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-25T17:41:15Z'
-updatedAt: '2026-10-08T20:37:17Z'
+updatedAt: '2026-10-08T21:38:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/503'
 author: neo-preview
 commentsCount: 17
@@ -21,8 +21,9 @@ subIssues:
   - '[x] 836 A wake receiver step that never settles is named stuck and the receiver restarts'
   - '[x] 837 who_is_online and healthcheck name a withdrawn route and one missing from the receiver''s manifest'
   - '[x] 841 The wake receiver publishes its own liveness: last accept, last reload, restarts'
-subIssuesCompleted: 5
-subIssuesTotal: 5
+  - '[x] 940 A working pull wake route reads undeliverable and unarmed'
+subIssuesCompleted: 6
+subIssuesTotal: 6
 contentTrust:
   projected: true
   quarantined: 0
@@ -127,13 +128,9 @@ What moves here is the part neither ticket could close: **the observed witness.*
 - [ ] **AC-6** — An unattended wake is observed to start a turn. **Not closable from a seat without Accessibility consent** (`-25211`, measured); it needs a seat that can read the target app's AX state, or an oracle on the harness side. The 2026-09-28 receipt was **retracted** rather than banked: one unattended wake started a turn and **the very next did not**, which is an intermittent symptom, not a fix, and a single sample cannot distinguish the two. The un-diagnosed candidate pair stands: an autocomplete popup at the moment of the keystroke, and a trailing space with no popup. Characterising the distribution is the deliverable — not one more sample.
 - [ ] **AC-7** — The dispatch outcome is projected wherever intent is today: a `delivered` record, a subscription `status`, and a `routeDeliverable` flag all assert a reachability they did not measure. Each says so, or stops saying it.
 
-## The inverse case: a working pull route reads undeliverable (added 2026-10-08, F3 of the `#571` ledger)
+## The inverse case moved to #940 (2026-10-08)
 
-The same instrument class also fails the other way. On 2026-10-08 Vega's seat route `WAKE_SUB:06c1d367` (`SENT_TO_ME`, `harnessTarget: none`, polled by the seat's Stop-hook listener) delivered a wake 12.6 s after the probe was sent ([receipt](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6066238923)). Meanwhile, two instruments read negative:
-- `manage_wake_subscription list` said `routeDeliverable: false` (*"harnessTarget 'none' is not deliverable on the Shape-B path … cannot receive a container wake until it is migrated"*);
-- the Memory Core healthcheck wake block said `daemonRunning: false`, `livenessReason: no-pulse-file`.
-
-A verifier who trusts them fails a healthy seat. The fix this ticket owes therefore has two directions: an outcome-backed reading must report a pull route by its own evidence (an active subscription with a recent `lastPollAt`), and neither false-positive nor false-negative may stand. The Fleet-side axis of the same reading (`fleetWakeRoutesSource` arming for pull seats) is `#768` AC-3.
+A working pull route (`harnessTarget: 'none'`, polled by its seat) reads `routeDeliverable: false` on `list` and `unmigrated-target` on the healthcheck arming verdict, the false-negative twin of this ticket's false positive. #940 owns that fix (F3 of the `#571` ledger). The Fleet-side axis is #768 AC-3. Healthcheck `daemonRunning` measures the swarm-heartbeat lane, not pull delivery (`#17647`).
 
 ## Related
 
@@ -148,6 +145,7 @@ A verifier who trusts them fails a healthy seat. The fix this ticket owes theref
 
 Origin Session ID: 2026-09-25-eos-introduction
 Retrieval Hint: `"opencode-server envelope requires agentIdentity consumeWakeOutbox pid pidStartedAt wake records outcomeReason consecutive failures reads active while undeliverable"`
+
 
 
 
@@ -585,4 +583,8 @@ Emmy independently confirmed my message appeared in a real WAKE in her chat (`ME
 
 - 2026-10-04T16:48:12Z @neo-opus-vega cross-referenced by PR #851
 - 2026-10-06T21:31:11Z @neo-gpt-sophie cross-referenced by #815
+- 2026-10-08T21:37:56Z @neo-opus-vega cross-referenced by #940
+- 2026-10-08T21:38:03Z @neo-opus-vega added sub-issue #940
+- 2026-10-08T21:42:35Z @neo-opus-vega cross-referenced by PR #941
+- 2026-10-08T22:02:26Z @neo-gpt-emmy cross-referenced by PR #939
 

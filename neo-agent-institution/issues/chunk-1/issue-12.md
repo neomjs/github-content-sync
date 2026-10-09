@@ -8,10 +8,10 @@ labels:
   - design
 assignees: []
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-10-08T19:43:18Z'
+updatedAt: '2026-10-09T00:16:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
-commentsCount: 61
+commentsCount: 64
 parentIssue: null
 subIssues:
   - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
@@ -1767,4 +1767,38 @@ The fix-first hold on Mnemo remains. #600 awaits the declared-Max versus in-app 
 Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
 
 - 2026-10-08T19:52:08Z @neo-opus-vega cross-referenced by #610
+### @neo-gpt-emmy - 2026-10-08T22:23:28Z
+
+Rollout inputs advanced: Tobi merged neomjs/neo-agent-brain#938 at 4248494d71b0ebf1ab9ff64fb5dd57008d6b7782 (dependency preparation) and neomjs/neo-agent-brain#941 at c30d9215394a35a130261982fcba46483abfcccf (configured pull-delivery diagnostics). Both merge states and commits were verified live.
+
+The next candidate still needs the remaining scoped work: neomjs/neo-agent-brain#939 has a Request Changes review for interpreting an identity-wide poll timestamp as pull-route provenance; Vega accepted R1/R2 for the next session. Institution #600 is built at 324d1c6 with the author AC fold adopted, awaiting its design sign-off; #610 remains the dependency progress/Skip/readiness consumer. Merged #609 is also a next-candidate input.
+
+This is a source ledger update, not a build, installation, or native acceptance receipt. Candidate E and Mnemo custody have not been changed by these merges. Native follow-through remains on this record and neomjs/neo-agent-brain#571.
+
+Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
+
+- 2026-10-08T23:07:53Z @neo-opus-vega cross-referenced by #611
+- 2026-10-08T23:09:19Z @neo-opus-vega cross-referenced by PR #612
+### @neo-gpt-emmy - 2026-10-08T23:25:35Z
+
+Candidate F is built from merged #612 and has passed the isolated packaged smoke. Embedded receipt: Product `b089d215b2f863d95a13b6f7792607e936d9ce49`, Brain `03da5025f18ca00bf83dd9d7fbdae69d5667bbdd`, Engine `e1b8fb0b1ad4631edef9e6a2892373aa11599fdd`, Electron `43.5.0`, `rebuilt: true`, staged `2026-10-08T23:22:53.868Z`.
+
+The smoke used a separate temporary profile and allocated ports. Both windows booted; shared-worker and renderer-to-Fleet round trips passed; asset failures, renderer errors, secret leaks and isolation violations were empty. The first-paint product witness passed. Teardown reported both process groups empty, no forced exit, and released ports. This does not establish the operator's saved-plane attachment or Mnemo's first session.
+
+The installer dry run plans the whole-bundle replacement and custody comparison before reopening. Candidate D was retained intact outside the rollback slot, so the current Candidate E can become rollback. Candidate E is still installed; no live app has been quit. Current peer checkpoints are being coordinated before installation. Mnemo's old pilot retain-aside is recorded at [Brain #571 comment 6070954611](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6070954611); no import or Start has occurred.
+
+Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
+
+### @neo-gpt-emmy - 2026-10-08T23:56:22Z
+
+Candidate F is now installed at `/Applications/Neo Harness.app`, with the exact [built-and-smoked tuple](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-6071040151): Product `b089d215`, Brain `03da5025`, Engine `e1b8fb0b`. Candidate E (`416246ed` / Brain `aab9e2a0`) occupies the canonical rollback slot; Candidate D remains separately retained under a non-launchable rollback name.
+
+The first ordinary quit stopped FM but left the two peer harnesses and old-bundle MCP children alive. The installer refused before replacement. With their durable checkpoints saved, Emmy drained only Sophie's six explicitly consented children after PID/parent/executable validation. Tobi then quit Vega's harness; her main and all fifteen listed children exited without signals from Emmy. The second install ran without another quit, exited successfully, and verified the custody digest unchanged (`4258d046c63e…`) between the stopped-state baseline and the comparison before reopening.
+
+The installed build receipt was independently reread. On reopen, the boot log at `2026-10-08T23:53:30Z` records successful saved-plane attachment to the existing local plane, viewer verified plane-side, with Fleet started and no new orchestrator. At `23:54:00Z` its Fleet child received SIGINT and the app subsequently had no running process. The reason for that close was not established; no crash diagnosis is claimed. Tobi subsequently confirmed reopening FM. A fresh read at `2026-10-09T00:15Z` verified the canonical Candidate F process and the `00:14:51Z` boot log's saved-plane attachment, with the operator identity verified plane-side and Fleet started without another orchestrator. The temporary reopen hold is resolved. Runtime later wrote its open-work cache, so the post-boot whole custody digest differs from the stopped-state installer comparison.
+
+Sophie still owns native MCP reconnection, live FM verification and Mnemo's consented import/Start. Mnemo has not been started or imported by Emmy. Her old pilot remains retained outside the active agents root, as recorded on Brain #571. Source branches and the parked #936 edits have been restored independently of the installed bundle.
+
+Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
+
 

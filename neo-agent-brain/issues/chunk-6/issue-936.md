@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-08T16:26:40Z'
-updatedAt: '2026-10-08T16:26:40Z'
+updatedAt: '2026-10-09T01:12:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/936'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -91,4 +91,17 @@ Retrieval Hint: "Codex helper alias correct profile PID wrong foreground wake"
 - 2026-10-08T16:26:43Z @neo-gpt-emmy added the `ai` label
 - 2026-10-08T16:26:43Z @neo-gpt-emmy added the `agent-os` label
 - 2026-10-08T16:30:01Z @neo-gpt-emmy cross-referenced by #30
+### @neo-gpt-emmy - 2026-10-09T01:12:46Z
+
+### Emmy migration handoff: parked, not shipped
+
+The local branch `codex/936-codex-wake-activation` remains at `aab9e2a0`, with two uncommitted files: `ai/daemons/wake/localWakeAdapters.mjs` and its existing unit spec. The same patch is preserved in named stash `7263d77f1b69133cd79df395e55eb6040ec1e6f4` (`emmy-candidate-f-preserve-936-20261008`); restoration was verified byte-for-byte. No commit, PR or runtime installation was made for this patch.
+
+The operator chose a computer restart during the original investigation, and subsequent Emmy/Sophie wake receipts passed. Do not ship the parked activation change merely because it exists. Revalidate the current wake failure and exact addressed-process behavior before resuming this ticket. The newer external-close/Stop-card observation belongs to the separate lifecycle evidence on #571, not to this unproven activation repair.
+
+The old checkout and stash remain retained during Emmy's Fleet move. The new session can recover the patch there without overwriting fresh managed source.
+
+Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
+
+- 2026-10-09T01:21:47Z @neo-gpt-emmy cross-referenced by #571
 

@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-08T21:19:38.285Z",
-  "releasesLastFetched": "2026-10-08T21:19:37.380Z",
+  "lastSync": "2026-10-09T02:09:21.085Z",
+  "releasesLastFetched": "2026-10-09T02:09:19.911Z",
   "pushFailures": [],
   "issues": {
     "1": {
@@ -88,10 +88,10 @@
       "state": "OPEN",
       "path": "neo-agent-institution/issues/chunk-1/issue-12.md",
       "closedAt": null,
-      "updatedAt": "2026-10-08T19:43:18Z",
-      "contentHash": "25e8cab343609a1d8597968d5ddf1173b003972d54298cd2a8ffb2af9dd896e6",
+      "updatedAt": "2026-10-09T00:16:11Z",
+      "contentHash": "7509e942ddd8c8b9fd473f6d1a8549d8faff0f402b5649d9d9f59d491d952c14",
       "milestone": "FM v1",
-      "commentsTotal": 61
+      "commentsTotal": 64
     },
     "13": {
       "state": "OPEN",
@@ -1547,7 +1547,7 @@
       "path": "neo-agent-institution/issues/chunk-2/issue-351.md",
       "closedAt": null,
       "updatedAt": "2026-10-05T11:06:07Z",
-      "contentHash": "c02815d3dfdccf1587dce433086f83f4e0adef79c5fedddbac22ef211e750c69",
+      "contentHash": "1c039023ee5c05ea7e35fadf338ff867bf79d70a143d0d5d87f8c5e303d4d553",
       "milestone": "FM v1",
       "commentsTotal": 24
     },
@@ -2455,10 +2455,10 @@
       "state": "OPEN",
       "path": "neo-agent-institution/issues/chunk-3/issue-535.md",
       "closedAt": null,
-      "updatedAt": "2026-10-05T11:14:03Z",
-      "contentHash": "ac2cda36ab9f74615df53f801750991e09dbf990201138a4646653a6565442e7",
+      "updatedAt": "2026-10-09T02:08:32Z",
+      "contentHash": "c6b9b952870bbdcb88d9cefa9548ba0c6747236bfc85b7f9aa5c93c41151cfde",
       "milestone": "FM v1",
-      "commentsTotal": 2
+      "commentsTotal": 5
     },
     "538": {
       "state": "CLOSED",
@@ -2671,10 +2671,10 @@
       "state": "OPEN",
       "path": "neo-agent-institution/issues/chunk-3/issue-600.md",
       "closedAt": null,
-      "updatedAt": "2026-10-08T21:19:08Z",
-      "contentHash": "69a33cf509588174e435f6c098f95ea96c48687f4c5e3d80ef95fb848c9cc0e7",
+      "updatedAt": "2026-10-09T01:12:44Z",
+      "contentHash": "34c5887ede5c319a39143d4d8734847974082c8330bc53ee1a95c72ef41816e8",
       "milestone": null,
-      "commentsTotal": 6
+      "commentsTotal": 9
     },
     "601": {
       "state": "OPEN",
@@ -2729,28 +2729,19 @@
       "contentHash": "444de4bedf010e0738b11cf84e80eba66a6e74367864312e9e7b796778e8705c",
       "milestone": null,
       "commentsTotal": 3
+    },
+    "611": {
+      "state": "CLOSED",
+      "path": "neo-agent-institution/issues/chunk-4/issue-611.md",
+      "closedAt": "2026-10-08T23:19:59Z",
+      "updatedAt": "2026-10-08T23:19:59Z",
+      "contentHash": "acfeee22dfba0edc0312a344c2f0764cd68fad3995d66f109404dccd8e81ec87",
+      "milestone": null,
+      "commentsTotal": 0
     }
   },
   "releases": {},
   "pulls": {
-    "558": {
-      "state": "MERGED",
-      "path": "neo-agent-institution/pulls/chunk-3/pr-558.md",
-      "closedAt": "2026-10-05T10:35:33Z",
-      "mergedAt": "2026-10-05T10:35:33Z",
-      "milestone": null,
-      "updatedAt": "2026-10-05T10:35:35Z",
-      "contentHash": "3e4456f99d5520685fbae5aa1660e81ee866b5cdb06f50c97a84231b6e7b59d1"
-    },
-    "560": {
-      "state": "MERGED",
-      "path": "neo-agent-institution/pulls/chunk-3/pr-560.md",
-      "closedAt": "2026-10-05T10:03:25Z",
-      "mergedAt": "2026-10-05T10:03:25Z",
-      "milestone": null,
-      "updatedAt": "2026-10-05T10:03:27Z",
-      "contentHash": "106e3e505c65043dcc2059e98c876c2567f20aef805ca3697d8d5b74b2b86c55"
-    },
     "561": {
       "state": "MERGED",
       "path": "neo-agent-institution/pulls/chunk-3/pr-561.md",
@@ -3002,6 +2993,24 @@
       "milestone": null,
       "updatedAt": "2026-10-08T19:40:43Z",
       "contentHash": "15c5b87d6d87fdba67d31f959300427315e0b3e78fe239e89aabac335c5ea71c"
+    },
+    "612": {
+      "state": "MERGED",
+      "path": "neo-agent-institution/pulls/chunk-4/pr-612.md",
+      "closedAt": "2026-10-08T23:19:58Z",
+      "mergedAt": "2026-10-08T23:19:58Z",
+      "milestone": null,
+      "updatedAt": "2026-10-08T23:20:00Z",
+      "contentHash": "557897cc8ddb8174c7db13ff8980626218566bfef70248bc16782c7ce24a2b2d"
+    },
+    "613": {
+      "state": "OPEN",
+      "path": "neo-agent-institution/pulls/chunk-4/pr-613.md",
+      "closedAt": null,
+      "mergedAt": null,
+      "milestone": null,
+      "updatedAt": "2026-10-09T01:40:45Z",
+      "contentHash": "dbb9179c4c40fef2d60719be7086f3d9c022994688b0d26edd9d5d3a918fea35"
     }
   },
   "discussions": {

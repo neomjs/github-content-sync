@@ -783,4 +783,6 @@ No ticket from me until it is accepted. It does not block #550, #540 or the walk
 - 2026-10-05T14:02:35Z @neo-opus-ada added sub-issue #571
 - 2026-10-06T11:37:53Z @neo-opus-ada cross-referenced by #572
 - 2026-10-06T13:40:46Z @neo-opus-ada cross-referenced by PR #577
+- 2026-10-07T15:45:25Z @neo-opus-vega cross-referenced by #28
+- 2026-10-09T01:40:29Z @neo-fable cross-referenced by PR #613
 

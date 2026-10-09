@@ -1,7 +1,7 @@
 ---
 id: 937
 title: A Fleet Start installs a fresh seat clone's dependencies before launch
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-08T19:25:35Z'
-updatedAt: '2026-10-08T21:17:25Z'
+updatedAt: '2026-10-08T22:18:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/937'
 author: neo-opus-vega
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-08T22:18:34Z'
 ---
 # A Fleet Start installs a fresh seat clone's dependencies before launch
 
@@ -62,8 +63,8 @@ A Start clones each repository and prepares the harness workspace, but it instal
    - `node_modules` whose owned install never finished (receipt `installing` / `failed`) → installs again;
    - `node_modules` the Fleet did not install → `unverified`, untouched.
 
-   `npm` and its `PATH` resolve from the operator's login shell (`$SHELL -ilc`), which is the toolchain the seat's own shell uses. When none resolves, the row reads `failed` with that reason. Both the shell and `npm` inherit only `HOME LANG LOGNAME SHELL TMPDIR USER`, never the Fleet's credentials. `npm` runs to its exit: a timeout or a Stop terminates it and still waits for it to exit.
-2. A seat receipt `.neo-fleet-seat-dependencies.json` in the seat folder records each owned attempt: `{[repoSlug]: {state: installing | installed | failed, at, reason?}}`. Writes are serialized.
+   `npm` and its `PATH` resolve from the operator's login shell (`$SHELL -ilc`), which is the toolchain the seat's own shell uses. When none resolves, the row reads `failed` with that reason. Both the shell and `npm` inherit only `HOME LANG LOGNAME SHELL TMPDIR USER`, never the Fleet's credentials. `npm` runs to its exit as its own process group: a timeout or a Stop terminates the whole group, lifecycle scripts included, and waits until none of it is left.
+2. A seat receipt `.neo-fleet-seat-dependencies.json` in the seat folder records each owned attempt: `{[repoSlug]: {state: installing | installed | failed, at, reason?}}`. Writes are serialized, and an `installing` record that cannot be written keeps `npm` from running.
 3. `provisionAgent` runs the installer for every checkout, the primary and each extra that cloned. It runs after identity convergence (a refused Start never pays for an install) and before workspace preparation, with the checkouts in parallel and `npm` resolved once. An install outcome never stops the launch. A Stop does: once `npm` has exited, the Start answers `canceledStart`, and nothing is prepared or spawned.
 4. Outcomes: the Start status carries `dependencies: [{repoSlug, state, reason?}]`. The lifecycle keeps each seat's latest attempt's rows (`setPendingDependencies`): live while it is pending, and its final rows once it ends, launched or not. `fleetCockpitStatus` exposes them as `dependencyOutcomes`.
 
@@ -92,11 +93,11 @@ The first Start of a fresh seat now waits for up to three `npm ci` runs before t
 
 - [ ] A checkout with a lockfile and no `node_modules` gets `npm ci --include=dev` before the harness spawns, so neo's `.agents/skills` exists at first boot.
 - [ ] A tree the Fleet's own install finished reads `present`. A tree it did not install reads `unverified` and is not touched. A checkout with no `package-lock.json` reads `not-applicable`.
-- [ ] An owned install that never finished (receipt `installing` / `failed`) installs again. Control: a failed `npm ci` that leaves `node_modules` behind is installed again on the next Start, and is not reported `present`.
+- [ ] An owned install that never finished (receipt `installing` / `failed`) installs again. Control: a failed `npm ci` that leaves `node_modules` behind is installed again on the next Start, and is not reported `present`. An `installing` record that cannot be written keeps `npm` from running, so an earlier `installed` entry never vouches for a failed reinstall.
 - [ ] `npm` resolves from the login shell, with only the inherited variables. When none resolves, the row reads `failed` with a named reason and the launch goes on.
-- [ ] A failed or timed-out install never stops the launch; its row carries a redacted reason. A Stop during the install terminates `npm`, waits for its exit, and answers `canceledStart` with nothing prepared or spawned. The rows it interrupted read `canceled`.
+- [ ] A failed or timed-out install never stops the launch; its row carries a redacted reason. A Stop during the install terminates `npm` and its lifecycle scripts, waits until none of them is left, and answers `canceledStart` with nothing prepared or spawned. The rows it interrupted read `canceled`.
 - [ ] Every checkout's row, primary and extras, is on the Start status and stays readable through the cockpit status.
-- [ ] While a Start is pending, each checkout's row (`installing`, then its outcome) reads on the lifecycle status and the cockpit `dependencyOutcomes`. The rows are bound to that attempt. When it ends, launched or not, its install phase retires (no row reads `installing`) and its final rows stay readable until a later Start reports its own. A late report from the finished attempt is refused.
+- [ ] While a Start is pending, each checkout's row (`installing`, then its outcome) reads on the lifecycle status and, through `FleetManager.fleetRuntimeStatus`, the cockpit `dependencyOutcomes`. The rows are bound to that attempt. When it ends, launched or not, its install phase retires (no row reads `installing`) and its final rows stay readable until a later Start reports its own. A late report from the finished attempt is refused.
 - [ ] A Skip, separate from Stop, terminates every running `npm` and waits for its exit. Only the interrupted rows read `skipped`, finished rows keep their outcome, and the launch goes on. A concurrent Stop wins with no spawn.
 - [ ] Post-merge, installed: the next fresh-seat move (Mnemosyne's) boots with `node_modules` in every clone and `materialize-harness-skills.mjs --check` passing in neo, with no manual `npm ci`.
 
@@ -132,6 +133,7 @@ Structure map: `npm run ai:structure-map -- --files --loc` exit 0; `ai/services/
 
 Origin Session ID: 7d3fc6b2-cee6-4f82-ba2c-103729d4047a
 Retrieval Hint: "Fleet Start seat clone npm ci node_modules skills first boot login shell PATH installAgentRepoDependencies receipt unverified"
+
 
 
 
@@ -190,4 +192,88 @@ gone; setRepoOutcomes keeps its own body.
 A Stop that interrupts an install now reads `canceled`, beside a Skip's
 `skipped`: an operator's act, not a failure. The receipt still says `failed`,
 so the next Start installs again."
+- 2026-10-08T21:50:19Z @neo-opus-vega referenced in commit `1989e15` - "fix(fleet): a stopped install ends with its whole npm process group, its rows reach the cockpit, and an unrecorded install never runs npm (#937)
+
+runToExit signalled only the npm leader and settled on its exit, while npm
+runs lifecycle scripts as children: a `prepare` that ignores SIGTERM kept
+writing into the checkout after a Stop had answered. The command now leads
+its own process group; a stop signals the group, and the answer waits until
+no process of the group is left. A straggler after an ordinary exit is ended
+the same way.
+
+FleetManager.fleetRuntimeStatus projects each field explicitly and left out
+`dependencies`, so the cockpit's `dependencyOutcomes` stayed null on the real
+path. It now carries them, live or final, launched or not.
+
+The receipt writer swallowed every failure, so a failed `installing` write
+left an earlier `installed` entry to vouch for whatever the next install left
+behind. A write's failure now reaches the install that asked for it: one that
+cannot record `installing` keeps npm from running, and an install whose
+outcome could not be recorded says so, with the receipt left at `installing`
+so the next Start installs again."
+- 2026-10-08T22:18:34Z @tobiu referenced in commit `4248494` - "feat(fleet): a Start installs each seat checkout's dependencies before launch (#937) (#938)
+
+* feat(fleet): a Start installs each seat checkout's dependencies before launch (#937)
+
+A fresh Fleet seat booted with no node_modules in any clone, so the skill
+paths its instructions name led nowhere. provisionAgent now runs npm ci in
+every checkout after identity convergence and before workspace
+preparation. npm and its PATH come from the operator's login shell, since
+the Fleet's GUI PATH has none, and only six plain variables cross into
+npm. A tree the Fleet did not install stays untouched (unverified); one
+whose owned install never finished installs again, per a receipt in the
+seat folder. A Stop waits for npm's exit and cancels the Start. The rows
+ride the Start status, the launch record and the cockpit status.
+setRepoOutcomes and setDependencyOutcomes now share one launch-bound
+recorder.
+
+* feat(fleet): a pending Start reports its install rows, and a Skip drains npm without stopping it (#937)
+
+Each checkout's row now reaches the pending attempt as it changes
+(installing, then its outcome). The rows are bound to the Start's
+signal and cleared when that attempt finishes, so the lifecycle status
+and cockpit dependencyOutcomes carry the live install phase. A Skip
+signal, separate from Stop, terminates npm and waits for its exit.
+It marks only the interrupted rows skipped, and the launch goes on.
+A Stop still wins. The receipt records a skipped install as failed,
+so the next Start redoes it.
+
+* feat(fleet): a Start's final dependency rows outlive it, and the rows a Stop interrupts read canceled (#937)
+
+The lifecycle keeps one row set per seat: its latest Start's, live while that
+attempt is pending and final once it ends, launched or not. finishStart no
+longer drops them; it retires the install phase instead (no row reads
+`installing` afterwards), and a finished attempt's late report is still refused.
+provisionAgent records the install's answer before the Stop check, so a stopped
+attempt keeps its rows too.
+
+The launch-bound copy (setDependencyOutcomes) could no longer be read, so it is
+gone; setRepoOutcomes keeps its own body.
+
+A Stop that interrupts an install now reads `canceled`, beside a Skip's
+`skipped`: an operator's act, not a failure. The receipt still says `failed`,
+so the next Start installs again.
+
+* fix(fleet): a stopped install ends with its whole npm process group, its rows reach the cockpit, and an unrecorded install never runs npm (#937)
+
+runToExit signalled only the npm leader and settled on its exit, while npm
+runs lifecycle scripts as children: a `prepare` that ignores SIGTERM kept
+writing into the checkout after a Stop had answered. The command now leads
+its own process group; a stop signals the group, and the answer waits until
+no process of the group is left. A straggler after an ordinary exit is ended
+the same way.
+
+FleetManager.fleetRuntimeStatus projects each field explicitly and left out
+`dependencies`, so the cockpit's `dependencyOutcomes` stayed null on the real
+path. It now carries them, live or final, launched or not.
+
+The receipt writer swallowed every failure, so a failed `installing` write
+left an earlier `installed` entry to vouch for whatever the next install left
+behind. A write's failure now reaches the install that asked for it: one that
+cannot record `installing` keeps npm from running, and an install whose
+outcome could not be recorded says so, with the receipt left at `installing`
+so the next Start installs again."
+- 2026-10-08T22:18:34Z @tobiu closed this issue
+- 2026-10-08T22:44:31Z @neo-opus-vega cross-referenced by #942
+- 2026-10-08T23:07:53Z @neo-opus-vega cross-referenced by #611
 
