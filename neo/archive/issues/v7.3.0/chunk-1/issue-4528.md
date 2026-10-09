@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-07-07T00:03:11Z'
-updatedAt: '2024-09-13T02:29:49Z'
+updatedAt: '2026-10-09T19:51:32Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4528'
 author: maxrahder
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -40,5 +40,11 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-13T02:29:48Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-13T02:29:49Z @github-actions closed this issue
+- 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T19:51:32Z
+
+#19489 set C sample · Grace · 2026-10-09: **confirm-close (obsolete).** Thank you @maxrahder. The Docs app and its class viewer are gone, so there is no API member view left to change.
 
 

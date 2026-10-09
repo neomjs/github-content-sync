@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2023-07-12T12:29:07Z'
-updatedAt: '2024-09-13T02:29:42Z'
+updatedAt: '2026-10-09T20:33:26Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4541'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:41Z'
+closedAt: '2026-10-09T20:33:24Z'
 ---
 # table.Container: beforeSetStore() => listeners
 
@@ -43,4 +43,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:33:25Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `table.Container#afterSetStore` attaches its listeners with `on()`, so developer listeners survive.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

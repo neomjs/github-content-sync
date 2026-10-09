@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2022-06-07T10:44:54Z'
-updatedAt: '2024-09-15T02:35:52Z'
+updatedAt: '2026-10-09T20:24:17Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3132'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-15T02:35:52Z'
+closedAt: '2026-10-09T20:24:15Z'
 ---
 # dialog.Base: afterSetHidden()
 
@@ -41,4 +41,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:24:17Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `dialog.Base` needs no override; it follows `component.Base#hidden_`.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

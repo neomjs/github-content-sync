@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-06-01T13:11:48Z'
-updatedAt: '2024-09-13T02:29:58Z'
+updatedAt: '2026-10-09T20:33:08Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4491'
 author: alberthashani
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:58Z'
+closedAt: '2026-10-09T20:33:07Z'
 ---
 # Neo.component.Progress: Based on the progress element
 
@@ -39,4 +39,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:33:08Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** Thank you @alberthashani. `src/component/Progress.mjs`.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

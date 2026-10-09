@@ -8,10 +8,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2021-05-22T20:18:44Z'
-updatedAt: '2024-09-16T02:37:06Z'
+updatedAt: '2026-10-09T19:50:36Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2117'
 author: keckeroo
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-16T02:37:05Z'
+closedAt: '2026-10-09T19:50:34Z'
 ---
 # Textarea field resize should be anchored to top/left
 
@@ -76,4 +76,9 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-16T02:37:05Z @github-actions closed this issue
+- 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T19:50:35Z
+
+#19489 set C sample · Grace · 2026-10-09: **fixed since, so the close reason is corrected to completed.** Thank you @keckeroo for the report. Measured today on the live example (neomjs.com production build, `resizable` on): dragging the grip down grows the textarea from 99 to 201 px while its top stays at 45 px, so it is anchored top-left. The field has used `align-items: stretch` since #4207.
+
 

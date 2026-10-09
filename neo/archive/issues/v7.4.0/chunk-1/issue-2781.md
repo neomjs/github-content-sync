@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2021-12-27T10:38:40Z'
-updatedAt: '2024-09-15T02:36:16Z'
+updatedAt: '2026-10-09T20:18:04Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2781'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -42,4 +42,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:18:04Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **confirm-close (settled).** Micro-frontends never got a guide and are not part of today's learning path; the closest guide is `learn/gettingstarted/Workspaces` (several apps in one workspace).
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

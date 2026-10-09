@@ -8,10 +8,10 @@ labels:
 assignees:
   - Dinkh
 createdAt: '2023-08-04T20:27:14Z'
-updatedAt: '2024-09-13T02:29:23Z'
+updatedAt: '2026-10-09T20:39:40Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4648'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:29:22Z'
+closedAt: '2026-10-09T20:39:38Z'
 ---
 # model.Component: resolveFormulas() => we need a smarter check for affected keys
 
@@ -75,4 +75,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:39:40Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** Formulas read through a hierarchical data proxy and re-run when what they read changes (`state.Provider#formulas_`).
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

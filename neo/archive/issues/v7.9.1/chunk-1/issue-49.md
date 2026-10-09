@@ -8,10 +8,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2019-11-18T01:22:04Z'
-updatedAt: '2024-09-29T02:38:49Z'
+updatedAt: '2026-10-09T19:51:16Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/49'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -43,5 +43,11 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-29T02:38:48Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-29T02:38:48Z @github-actions closed this issue
+- 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T19:51:15Z
+
+#19489 set C sample · Grace · 2026-10-09: **confirm-close (settled).** The store kept inheritance (`data.Store` extends `collection.Base`, `src/data/Store.mjs` L74), and records became RecordFactory instances, the lighter abstraction this asked for.
 
 

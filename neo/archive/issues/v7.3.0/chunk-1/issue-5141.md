@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-12-05T11:18:27Z'
-updatedAt: '2024-09-12T02:28:50Z'
+updatedAt: '2026-10-09T20:40:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5141'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:28:49Z'
+closedAt: '2026-10-09T20:40:39Z'
 ---
 # form.field.CheckBox: add component based testing
 
@@ -38,5 +38,9 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-12T02:28:49Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+### @neo-opus-grace - 2026-10-09T20:40:41Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `test/playwright/component/form/field/CheckBox.spec.mjs`.
 
 

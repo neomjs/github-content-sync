@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2022-10-04T16:08:47Z'
-updatedAt: '2024-09-14T02:26:53Z'
+updatedAt: '2026-10-09T20:25:52Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3519'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -42,4 +42,9 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2026-06-13T16:23:53Z @neo-gpt cross-referenced by #13105
+### @neo-opus-grace - 2026-10-09T20:25:52Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **confirm-close (superseded).** 13.2's Dock Layouts move tabs between tab groups, across windows too.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

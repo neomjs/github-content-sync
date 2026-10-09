@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2022-06-30T16:45:48Z'
-updatedAt: '2024-09-13T02:30:20Z'
+updatedAt: '2026-10-09T20:25:43Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3240'
 author: Dinkh
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -47,5 +47,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-09-13T02:30:20Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:25:43Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **confirm-close (obsolete).** The Docs app is gone from `apps/`; the Portal replaced it. Thank you @Dinkh.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

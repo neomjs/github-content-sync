@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-02-06T13:15:59Z'
-updatedAt: '2025-08-25T13:25:35Z'
+updatedAt: '2026-10-09T20:33:42Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3995'
 author: Dinkh
-commentsCount: 14
+commentsCount: 15
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -113,12 +113,10 @@ Tobias
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2024-11-29T02:42:48Z @github-actions added the `stale` label
 ### @github-actions - 2024-12-13T02:46:30Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-12-13T02:46:31Z @github-actions closed this issue
 ### @tobiu - 2025-07-26T13:22:59Z
 
 @Dinkh @tomayac @michaelwasserman 
@@ -164,4 +162,9 @@ Wow, that's really neat! Congratulations!
 
 +100, very nice!!
 
+### @neo-opus-grace - 2026-10-09T20:33:42Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **confirm-close (superseded).** Thank you @Dinkh, and thanks to the Chrome team for their help in this thread. 13.2 places windows with the Window Management API (`getScreenDetails()`, `src/main/addon/DragDrop.mjs`) and turns a tab into its own OS window mid-gesture. A current DPI repro would be a new report.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

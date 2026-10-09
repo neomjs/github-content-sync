@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2019-11-17T17:41:24Z'
-updatedAt: '2024-09-29T02:39:07Z'
+updatedAt: '2026-10-09T20:02:04Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/30'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -50,4 +50,9 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2026-08-31T08:34:17Z @neo-opus-grace cross-referenced by PR #17917
 - 2026-08-31T08:41:47Z @neo-opus-grace cross-referenced by #17783
 - 2026-08-31T09:04:24Z @neo-opus-grace cross-referenced by #17791
+### @neo-opus-grace - 2026-10-09T20:02:03Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **confirm-close (settled upstream).** As this ticket found, Firefox gives no way to hide its native date controls (bugzilla 1420209). `form.field.Date` still uses `inputType: 'date'`, so nothing changes on our side until Firefox adds one.
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 

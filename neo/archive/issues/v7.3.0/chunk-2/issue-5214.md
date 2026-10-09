@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2024-02-12T14:01:30Z'
-updatedAt: '2024-09-12T02:28:31Z'
+updatedAt: '2026-10-09T20:53:47Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5214'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:28:30Z'
+closedAt: '2026-10-09T20:53:45Z'
 ---
 # form.field.Select: onFocusLeave() no longer clearing values with forceSelection
 
@@ -86,5 +86,10 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-12T02:28:30Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2026-10-09T19:52:53Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T20:53:47Z
+
+#19489 set C · T7 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** In the combo box that replaced the select field, `forceSelection` takes the focused match on focus leave, otherwise returns to the record held before typing or to empty, and rewrites the input from that value (`ComboBox#onFocusLeave`).
 
 

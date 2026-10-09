@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2022-06-07T10:35:54Z'
-updatedAt: '2024-09-15T02:35:53Z'
+updatedAt: '2026-10-09T20:24:13Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3131'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-15T02:35:53Z'
+closedAt: '2026-10-09T20:24:11Z'
 ---
 # component.Base: hidden_ config
 
@@ -68,4 +68,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:24:13Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `component.Base` has `hidden_` with `afterSetHidden()`.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

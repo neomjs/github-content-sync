@@ -9,10 +9,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2020-08-17T23:26:48Z'
-updatedAt: '2024-09-27T02:34:25Z'
+updatedAt: '2026-10-09T20:09:49Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/1100'
 author: tobiu
-commentsCount: 14
+commentsCount: 15
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -268,6 +268,10 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-09-27T02:34:25Z @github-actions closed this issue
 - 2024-10-01T23:19:05Z @tobiu cross-referenced by #6002
+### @neo-opus-grace - 2026-10-09T20:09:49Z
+
+#19489 set C · T2 · Grace · 2026-10-09: **confirm-close (settled).** No TypeScript mode: Neo stays zero-build JavaScript, with JSDoc types checked by `check-jsdoc-types`.
+
+- 2026-10-09T20:10:15Z @neo-opus-grace cross-referenced by #19489
 

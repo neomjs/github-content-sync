@@ -8,10 +8,10 @@ labels:
 assignees:
   - Dinkh
 createdAt: '2022-08-10T07:35:21Z'
-updatedAt: '2024-09-14T02:26:55Z'
+updatedAt: '2026-10-09T20:24:53Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3386'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:54Z'
+closedAt: '2026-10-09T20:24:51Z'
 ---
 # component.Carousel: itemCls
 
@@ -89,4 +89,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:24:53Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `component.Carousel` has `itemCls`.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

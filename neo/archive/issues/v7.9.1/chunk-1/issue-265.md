@@ -9,10 +9,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2020-03-12T12:48:57Z'
-updatedAt: '2024-09-28T02:32:22Z'
+updatedAt: '2026-10-09T20:02:22Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/265'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -68,4 +68,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:02:22Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **confirm-close (obsolete).** Stack Overflow's 1H-2020 open-source ad program has ended.
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 

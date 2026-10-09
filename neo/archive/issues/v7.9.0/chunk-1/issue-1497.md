@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2021-01-21T17:29:13Z'
-updatedAt: '2024-09-27T02:34:04Z'
+updatedAt: '2026-10-09T20:09:19Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/1497'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-27T02:34:03Z'
+closedAt: '2026-10-09T20:09:17Z'
 ---
 # dialog.Base: dragZoneCreated event
 
@@ -41,5 +41,10 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-27T02:34:02Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2026-10-09T19:52:53Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T20:09:18Z
+
+#19489 set C · T2 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `dialog.Base` fires `dragZoneCreated` (`src/dialog/Base.mjs`).
 
 

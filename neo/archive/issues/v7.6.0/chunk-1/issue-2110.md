@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2021-05-22T19:42:41Z'
-updatedAt: '2024-09-16T02:37:12Z'
+updatedAt: '2026-10-09T20:16:23Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2110'
 author: keckeroo
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-16T02:37:12Z'
+closedAt: '2026-10-09T20:16:22Z'
 ---
 # Example bug: examples/form/field/chip/
 
@@ -53,5 +53,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-09-16T02:37:12Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:16:23Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **fixed since, so the close reason is corrected to completed.** Thank you @keckeroo for the report. Checked today on neomjs.com (production build): the chip field's dropdown lists all 59 US states, with no console errors.
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

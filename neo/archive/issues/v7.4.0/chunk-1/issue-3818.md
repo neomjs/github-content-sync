@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-01-06T22:23:33Z'
-updatedAt: '2024-09-14T02:26:14Z'
+updatedAt: '2026-10-09T20:32:20Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3818'
 author: maxrahder
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:14Z'
+closedAt: '2026-10-09T20:32:18Z'
 ---
 # We need a way to make a buffered function call. 
 
@@ -52,5 +52,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-09-14T02:26:14Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:32:20Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** Thank you @maxrahder. `src/util/Function.mjs` exports `debounce` and `throttle` (and `buffer`).
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

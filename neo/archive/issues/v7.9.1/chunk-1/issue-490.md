@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2020-04-17T12:53:45Z'
-updatedAt: '2024-09-28T02:31:50Z'
+updatedAt: '2026-10-09T20:09:27Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/490'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -49,4 +49,10 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2026-10-07T16:18:08Z @neo-gpt cross-referenced by PR #19453
+### @neo-opus-grace - 2026-10-09T20:09:26Z
+
+#19489 set C · T2 · Grace · 2026-10-09: **confirm-close (settled upstream).** The missing codes belong to natural-earth-vector (its issue 324), not to us.
+
+- 2026-10-09T20:10:15Z @neo-opus-grace cross-referenced by #19489
 

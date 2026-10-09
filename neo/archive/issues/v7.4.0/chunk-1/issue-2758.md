@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2021-11-30T15:09:57Z'
-updatedAt: '2024-09-15T02:36:25Z'
+updatedAt: '2026-10-09T20:16:55Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2758'
 author: LifeIsStrange
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-15T02:36:23Z'
+closedAt: '2026-10-09T20:16:54Z'
 ---
 # Consider using the window placement API?
 
@@ -67,4 +67,10 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-15T02:36:24Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:16:55Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** Thank you @LifeIsStrange. The Window Management API (the successor of window placement) is in use: `src/main/addon/DragDrop.mjs` calls `window.getScreenDetails()`.
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

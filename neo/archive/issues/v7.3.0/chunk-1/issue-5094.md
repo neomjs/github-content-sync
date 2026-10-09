@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-11-13T17:32:42Z'
-updatedAt: '2024-09-12T02:29:08Z'
+updatedAt: '2026-10-09T20:40:09Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5094'
 author: mxmrtns
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:29:07Z'
+closedAt: '2026-10-09T20:40:07Z'
 ---
 # Design Token conversion script should consider color modifications
 
@@ -128,4 +128,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:40:09Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** Thank you @mxmrtns. `convertDesignTokens.mjs` reads Token Studio's `$extensions.modify` color modifications.
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

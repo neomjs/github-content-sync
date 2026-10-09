@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2020-11-30T09:57:22Z'
-updatedAt: '2024-09-27T02:34:06Z'
+updatedAt: '2026-10-09T20:09:56Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/1466'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -54,4 +54,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:09:56Z
+
+#19489 set C · T2 · Grace · 2026-10-09: **confirm-close (settled).** Cosmetic chunk names; the builds worked, and the ESM dist build has been added since.
+
+- 2026-10-09T20:10:15Z @neo-opus-grace cross-referenced by #19489
 

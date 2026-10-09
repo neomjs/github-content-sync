@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2020-03-16T20:02:47Z'
-updatedAt: '2024-09-28T02:32:10Z'
+updatedAt: '2026-10-09T20:01:49Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/301'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-28T02:32:09Z'
+closedAt: '2026-10-09T20:01:47Z'
 ---
 # Covid API fallback => static data
 
@@ -45,4 +45,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:01:48Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** The covid app runs on static data hosted on pages: `apiFallbackUrl` / `apiFallbackSummaryUrl` in `apps/covid/view/MainContainerController.mjs`, with `"useFallbackApi": true` in its `neo-config.json`.
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 

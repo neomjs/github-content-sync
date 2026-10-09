@@ -8,10 +8,10 @@ labels:
 assignees:
   - pensuwan-k
 createdAt: '2023-05-19T11:07:17Z'
-updatedAt: '2024-09-13T02:30:03Z'
+updatedAt: '2026-10-09T20:33:52Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4456'
 author: pensuwan-k
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -68,4 +68,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:33:52Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **confirm-close (settled).** Thank you @pensuwan-k. `Neo.dialog.Base` stays a regular element on purpose: the native top layer hid floating pickers (#4504).
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

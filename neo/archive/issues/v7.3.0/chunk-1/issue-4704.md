@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2023-08-12T18:21:33Z'
-updatedAt: '2024-09-13T02:29:17Z'
+updatedAt: '2026-10-09T20:41:13Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4704'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -49,4 +49,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:41:13Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **confirm-close (not re-verified).** The covid app runs on static 2020 data; a current repro would be a new report.
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

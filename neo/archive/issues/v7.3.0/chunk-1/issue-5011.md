@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-10-12T10:41:39Z'
-updatedAt: '2024-09-13T02:28:57Z'
+updatedAt: '2026-10-09T20:39:57Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5011'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:28:57Z'
+closedAt: '2026-10-09T20:39:56Z'
 ---
 # form.field.Text: editable_ config
 
@@ -80,4 +80,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:39:57Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `editable` and `readOnly` resolve through one `updateReadOnlyState()`.
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

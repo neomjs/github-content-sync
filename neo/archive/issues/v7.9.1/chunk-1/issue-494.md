@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2020-04-20T08:29:06Z'
-updatedAt: '2024-09-28T02:31:47Z'
+updatedAt: '2026-10-09T20:09:28Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/494'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -43,4 +43,11 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2026-09-25T15:16:54Z @neo-opus-grace cross-referenced by #19157
+- 2026-09-29T09:29:13Z @neo-opus-vega cross-referenced by #19159
+### @neo-opus-grace - 2026-10-09T20:09:28Z
+
+#19489 set C · T2 · Grace · 2026-10-09: **confirm-close (not re-verified).** The table and the VDOM engine this suspected were both rebuilt since 2020; a current repro would be a new report.
+
+- 2026-10-09T20:10:15Z @neo-opus-grace cross-referenced by #19489
 

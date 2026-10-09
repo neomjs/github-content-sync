@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2021-05-22T19:55:21Z'
-updatedAt: '2024-09-16T02:37:11Z'
+updatedAt: '2026-10-09T20:17:47Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2113'
 author: keckeroo
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -53,5 +53,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-09-16T02:37:10Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:17:47Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **confirm-close (settled).** Thank you @keckeroo for the report. As answered in 2021, `name@domain` without a TLD is valid address syntax.
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

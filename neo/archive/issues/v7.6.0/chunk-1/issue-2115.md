@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2021-05-22T20:05:50Z'
-updatedAt: '2024-09-16T02:37:08Z'
+updatedAt: '2026-10-09T20:17:50Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2115'
 author: keckeroo
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -45,5 +45,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-09-16T02:37:07Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:17:50Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **confirm-close (obsolete).** Thank you @keckeroo for the report. The select field example is gone; the combo box replaced it.
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

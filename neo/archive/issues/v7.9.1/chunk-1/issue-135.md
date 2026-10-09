@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2019-11-29T13:26:31Z'
-updatedAt: '2024-09-29T02:38:37Z'
+updatedAt: '2026-10-09T20:02:14Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/135'
 author: bsourcecorp
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -147,4 +147,10 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2026-10-01T16:07:31Z @neo-gpt-emmy cross-referenced by PR #19349
+### @neo-opus-grace - 2026-10-09T20:02:14Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **confirm-close (obsolete).** Thank you @bsourcecorp for reporting it. That 2020 dependency tree is long gone; a current audit finding would be a new report against today's lockfile.
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 

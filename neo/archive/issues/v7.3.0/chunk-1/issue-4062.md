@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-02-15T15:42:51Z'
-updatedAt: '2024-09-12T02:29:33Z'
+updatedAt: '2026-10-09T20:32:51Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4062'
 author: MRHajari
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:29:33Z'
+closedAt: '2026-10-09T20:32:49Z'
 ---
 # button.Menu
 
@@ -61,4 +61,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:32:51Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** Thank you @MRHajari. `button.Menu` exists, and `button.Base` has a `menu_` config.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

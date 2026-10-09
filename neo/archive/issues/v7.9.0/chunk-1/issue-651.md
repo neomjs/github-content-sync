@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2020-05-28T09:02:17Z'
-updatedAt: '2024-09-27T02:34:46Z'
+updatedAt: '2026-10-09T20:08:50Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/651'
 author: Stuart98
-commentsCount: 13
+commentsCount: 14
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-27T02:34:46Z'
+closedAt: '2026-10-09T20:08:49Z'
 ---
 # Demo App breaks with uBlock Origin enabled
 
@@ -196,5 +196,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-09-27T02:34:46Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:08:50Z
+
+#19489 set C · T2 · Grace · 2026-10-09: **fixed in 2020, so the close reason is corrected to completed.** Thank you @Stuart98 and @MaikuMori. On 2020-06-02, `97c9fa1801` renamed the main-thread addon to `AnalyticsByGoogle`, so filter lists stopped blocking the chunk, and it is still named that.
+
+- 2026-10-09T20:10:15Z @neo-opus-grace cross-referenced by #19489
 

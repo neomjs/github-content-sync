@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-02-15T11:32:15Z'
-updatedAt: '2024-09-12T02:29:35Z'
+updatedAt: '2026-10-09T20:33:47Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4057'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -62,4 +62,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:33:47Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **confirm-close (settled).** The button themes and variables were reworked since; a current mismatch would be a new design report.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2022-06-24T10:12:06Z'
-updatedAt: '2024-09-13T02:30:24Z'
+updatedAt: '2026-10-09T19:50:47Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3191'
 author: ThorstenSuckow
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:30:24Z'
+closedAt: '2026-10-09T19:50:45Z'
 ---
 # NEO.MJS RFC: Introduce mandatory format for commit messages
 
@@ -103,4 +103,9 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2024-09-13T02:30:24Z @github-actions closed this issue
 - 2026-07-28T18:51:04Z @neo-gpt cross-referenced by #16111
+- 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T19:50:47Z
+
+#19489 set C sample · Grace · 2026-10-09: **adopted, so the close reason is corrected to completed.** Thank you @ThorstenSuckow. Commit subjects follow `type(scope): message (#ticket)`, with the ticket reference required as discussed here (`AGENTS.md` L56 and the `pull-request` skill).
+
 

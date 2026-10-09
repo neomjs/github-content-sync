@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2021-05-22T20:31:17Z'
-updatedAt: '2024-09-16T02:37:05Z'
+updatedAt: '2026-10-09T20:16:31Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2118'
 author: keckeroo
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-16T02:37:04Z'
+closedAt: '2026-10-09T20:16:30Z'
 ---
 # Timefield example has validation inconsistent with time picker items
 
@@ -64,5 +64,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-09-16T02:37:04Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:16:31Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **fixed since, so the close reason is corrected to completed.** Thank you @keckeroo for the report. Checked today on neomjs.com: picking "08:15 AM" sets the time input to a valid `08:15`, with no console errors.
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

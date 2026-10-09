@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2022-07-20T09:36:58Z'
-updatedAt: '2024-09-14T02:26:59Z'
+updatedAt: '2026-10-09T20:24:44Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3311'
 author: davhm
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:58Z'
+closedAt: '2026-10-09T20:24:43Z'
 ---
 # Stabilize and improve versioning for the package neo.mjs by introducing beta version directly from dev branch
 
@@ -89,4 +89,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:24:44Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** Thank you @davhm. `main` is release-only now: releases are cut from `dev` by `buildScripts/release/publish.mjs`, so small changes no longer ship on their own.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

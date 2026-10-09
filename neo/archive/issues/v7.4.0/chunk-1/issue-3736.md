@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-01-02T00:20:20Z'
-updatedAt: '2024-09-14T02:26:26Z'
+updatedAt: '2026-10-09T20:25:29Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3736'
 author: Dinkh
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:26Z'
+closedAt: '2026-10-09T20:25:27Z'
 ---
 # Stores should support a Reader
 
@@ -45,4 +45,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:25:29Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** Thank you @Dinkh. Stores read through `data.Pipeline` (with parsers and normalizers) and `responseRoot`.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

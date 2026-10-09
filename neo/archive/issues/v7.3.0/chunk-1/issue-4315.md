@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-04-24T10:38:10Z'
-updatedAt: '2024-09-12T02:29:23Z'
+updatedAt: '2026-10-09T20:33:49Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4315'
 author: Ghost
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -52,4 +52,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:33:49Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **confirm-close (not re-verified).** The form fields were reworked since 2023; a current repro would be a new report.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

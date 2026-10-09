@@ -8,10 +8,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-02-23T15:56:38Z'
-updatedAt: '2024-09-12T02:29:28Z'
+updatedAt: '2026-10-09T20:33:48Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4140'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -61,4 +61,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:33:48Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **confirm-close (not re-verified).** The dist builds were rebuilt since; a current repro would be a new report.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

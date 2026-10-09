@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2021-12-27T10:36:31Z'
-updatedAt: '2024-09-15T02:36:22Z'
+updatedAt: '2026-10-09T20:17:04Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2777'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-15T02:36:21Z'
+closedAt: '2026-10-09T20:17:02Z'
 ---
 # guide: Creating your first application shell (npx neo-app)
 
@@ -42,4 +42,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:17:03Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `learn/gettingstarted/CreatingYourFirstApp`.
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

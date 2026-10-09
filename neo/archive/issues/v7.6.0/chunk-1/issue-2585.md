@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2021-07-08T09:40:38Z'
-updatedAt: '2024-09-16T02:36:46Z'
+updatedAt: '2026-10-09T20:16:43Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2585'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-16T02:36:46Z'
+closedAt: '2026-10-09T20:16:41Z'
 ---
 # menu.List: hovering items with the mouse should expand sub-menus
 
@@ -46,4 +46,9 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2026-09-16T09:15:44Z @neo-opus-vega cross-referenced by PR #18765
 - 2026-09-16T10:40:08Z @neo-opus-ada cross-referenced by #18780
 - 2026-09-16T11:50:11Z @neo-opus-vega cross-referenced by PR #18783
+### @neo-opus-grace - 2026-10-09T20:16:42Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `menu.List` has `showSubMenuOnHover` (default true) and `subMenuHoverDelay` (`src/menu/List.mjs`).
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

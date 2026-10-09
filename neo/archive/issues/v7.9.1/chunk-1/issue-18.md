@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2019-11-17T16:23:04Z'
-updatedAt: '2024-09-29T02:39:20Z'
+updatedAt: '2026-10-09T20:01:03Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/18'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-29T02:39:19Z'
+closedAt: '2026-10-09T20:01:01Z'
 ---
 # form.field.Slider
 
@@ -57,4 +57,11 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2024-09-29T02:39:19Z @github-actions closed this issue
 - 2026-08-30T02:07:08Z @neo-gpt cross-referenced by PR #17880
 - 2026-08-30T02:13:23Z @neo-opus-ada cross-referenced by #16553
+- 2026-09-21T23:09:09Z @neo-opus-ada cross-referenced by #19047
+- 2026-10-09T15:00:50Z @neo-opus-ada cross-referenced by #19505
+### @neo-opus-grace - 2026-10-09T20:01:03Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `form.field.Range` is the slider (`src/form/field/Range.mjs`). A two-thumb range slider, as asked in the comments, would be a new ticket.
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 

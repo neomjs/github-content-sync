@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2020-02-06T15:10:03Z'
-updatedAt: '2024-09-28T02:32:27Z'
+updatedAt: '2026-10-09T20:01:36Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/238'
 author: ryansolid
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-28T02:32:27Z'
+closedAt: '2026-10-09T20:01:35Z'
 ---
 # Any Performance Benchmarks?
 
@@ -91,4 +91,10 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-28T02:32:27Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:01:36Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **answered, so the close reason is corrected to completed.** Thank you @ryansolid for asking. The benchmarks exist now: [Benchmarking Frontends 2025](https://github.com/neomjs/neo/blob/dev/learn/blog/benchmarking-frontends-2025.md).
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 

@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2023-02-12T11:12:25Z'
-updatedAt: '2024-09-12T02:29:40Z'
+updatedAt: '2026-10-09T20:32:47Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4031'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:29:39Z'
+closedAt: '2026-10-09T20:32:45Z'
 ---
 # Firefox does not support dynamic imports inside the worker scope
 
@@ -63,4 +63,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:32:46Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **resolved upstream, so the close reason is corrected to completed.** Firefox supports module workers, dynamic imports included, since version 114 (2023).
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
 

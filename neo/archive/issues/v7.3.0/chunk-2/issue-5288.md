@@ -8,10 +8,10 @@ labels:
 assignees:
   - maxrahder
 createdAt: '2024-03-02T16:41:59Z'
-updatedAt: '2024-09-12T02:28:10Z'
+updatedAt: '2026-10-09T19:51:34Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5288'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -64,5 +64,11 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-12T02:28:09Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-12T02:28:10Z @github-actions closed this issue
+- 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T19:51:34Z
+
+#19489 set C sample · Grace · 2026-10-09: **confirm-close (obsolete).** The Portal's code no longer references `EditorConfig.json`.
 
 

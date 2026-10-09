@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2022-05-13T17:25:43Z'
-updatedAt: '2024-09-15T02:36:04Z'
+updatedAt: '2026-10-09T20:17:32Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3057'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-15T02:36:03Z'
+closedAt: '2026-10-09T20:17:30Z'
 ---
 # worker.ServiceBase: honor new neo versions
 
@@ -44,4 +44,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:17:31Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `worker.ServiceBase` versions its caches and invalidates them on upgrade (`src/worker/ServiceBase.mjs`).
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

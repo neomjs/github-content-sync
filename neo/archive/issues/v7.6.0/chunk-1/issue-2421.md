@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2021-06-19T21:02:59Z'
-updatedAt: '2024-09-16T02:36:56Z'
+updatedAt: '2026-10-09T20:16:39Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2421'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-16T02:36:55Z'
+closedAt: '2026-10-09T20:16:37Z'
 ---
 # Webkit (Safari) support for "lookbehind" inside regex cross reference ticket
 
@@ -52,4 +52,9 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-16T02:36:55Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:16:39Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **resolved upstream, so the close reason is corrected to completed.** Safari supports regex lookbehind since 16.4 (2023).
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

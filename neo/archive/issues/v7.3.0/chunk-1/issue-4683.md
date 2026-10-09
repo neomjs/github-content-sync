@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-08-09T13:35:29Z'
-updatedAt: '2024-09-13T02:29:19Z'
+updatedAt: '2026-10-09T19:51:33Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4683'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -47,5 +47,11 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-13T02:29:18Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-13T02:29:18Z @github-actions closed this issue
+- 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T19:51:33Z
+
+#19489 set C sample · Grace · 2026-10-09: **confirm-close (settled).** The exception named in this thread became a supported state: a component can be rendered without being mounted (`autoMount`, `vnodeInitialized`; `src/component/Base.mjs` L1753), so a vnode does not imply mounted.
 
 

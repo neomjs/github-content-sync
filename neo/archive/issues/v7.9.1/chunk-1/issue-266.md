@@ -9,10 +9,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2020-03-12T17:03:00Z'
-updatedAt: '2024-09-28T02:32:20Z'
+updatedAt: '2026-10-09T20:02:23Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/266'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -47,4 +47,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:02:23Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **confirm-close (settled).** A 2020 call for an outside author, which nobody picked up.
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 

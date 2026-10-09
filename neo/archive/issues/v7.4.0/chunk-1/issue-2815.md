@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2022-01-09T22:00:34Z'
-updatedAt: '2024-09-15T02:36:08Z'
+updatedAt: '2026-10-09T20:17:24Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2815'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-15T02:36:07Z'
+closedAt: '2026-10-09T20:17:23Z'
 ---
 # list.plugin.Animate: remove the need to specify DOM ids for each child node
 
@@ -45,4 +45,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:17:24Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `list.plugin.Animate` derives each node id from the record (`owner.getItemId(owner.getRecordId(record))`), so lists no longer need hand-set DOM ids.
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

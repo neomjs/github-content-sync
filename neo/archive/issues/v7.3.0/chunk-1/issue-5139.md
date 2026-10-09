@@ -8,10 +8,10 @@ labels:
 assignees:
   - ExtAnimal
 createdAt: '2023-12-05T11:17:36Z'
-updatedAt: '2024-09-12T02:28:53Z'
+updatedAt: '2026-10-09T20:40:33Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5139'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:28:52Z'
+closedAt: '2026-10-09T20:40:31Z'
 ---
 # form.field.Select: add component based testing
 
@@ -43,4 +43,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:40:33Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `test/playwright/component/form/field/ComboBox.spec.mjs`.
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2022-12-11T21:19:29Z'
-updatedAt: '2024-09-14T02:26:43Z'
+updatedAt: '2026-10-09T20:25:07Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3591'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-14T02:26:42Z'
+closedAt: '2026-10-09T20:25:05Z'
 ---
 # container.Base: items => default module
 
@@ -39,4 +39,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:25:07Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `container.Base#createItem()` defaults a plain item config to `component.Base`.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

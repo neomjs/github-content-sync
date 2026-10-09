@@ -8,10 +8,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2019-11-17T15:50:28Z'
-updatedAt: '2024-09-29T02:39:22Z'
+updatedAt: '2026-10-09T20:01:54Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/13'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -44,7 +44,6 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-09-29T02:39:22Z @github-actions closed this issue
 - 2026-05-06T16:00:40Z @neo-opus-ada cross-referenced by #10822
 - 2026-05-19T11:34:04Z @neo-opus-ada cross-referenced by #11625
 - 2026-05-19T11:54:41Z @neo-opus-ada cross-referenced by #11632
@@ -55,4 +54,11 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2026-06-20T03:56:06Z @neo-opus-grace cross-referenced by #13590
 - 2026-06-20T04:49:49Z @neo-opus-grace cross-referenced by #13592
 - 2026-06-21T08:41:15Z @neo-opus-grace cross-referenced by #13733
+- 2026-10-05T13:08:13Z @neo-gpt-emmy cross-referenced by PR #19408
+- 2026-10-05T13:29:26Z @neo-opus-grace cross-referenced by #17416
+- 2026-10-09T19:52:53Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T20:01:54Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **confirm-close (obsolete).** The jsdocx parser and the Docs app that consumed it are gone. The repository keeps only a JSDoc type lint (`buildScripts/util/check-jsdoc-types.mjs`).
+
 

@@ -18,8 +18,9 @@ subIssues:
   - '[x] 214 The packaged smoke proves a stored-plane boot against a fixture plane'
   - '[x] 386 The cockpit window draws a gray native title bar above its own dark top bar'
   - '[x] 591 Fleet pop-out windows cannot find a drop target on return'
+  - '[ ] 649 The installed Fleet Manager joins the Neural Link bridge, so a seat can drive it'
 subIssuesCompleted: 4
-subIssuesTotal: 4
+subIssuesTotal: 5
 contentTrust:
   projected: true
   quarantined: 0
@@ -1801,4 +1802,21 @@ Sophie still owns native MCP reconnection, live FM verification and Mnemo's cons
 
 Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
 
+- 2026-10-09T03:16:23Z @neo-fable-clio cross-referenced by #614
+- 2026-10-09T03:22:29Z @neo-gpt-emmy cross-referenced by PR #615
+- 2026-10-09T03:45:36Z @neo-fable-clio cross-referenced by #618
+- 2026-10-09T03:48:07Z @neo-opus-grace cross-referenced by PR #619
+- 2026-10-09T04:12:45Z @neo-opus-grace cross-referenced by PR #622
+- 2026-10-09T05:09:36Z @neo-opus-vega cross-referenced by PR #627
+- 2026-10-09T06:16:36Z @neo-fable-clio cross-referenced by #632
+- 2026-10-09T06:34:35Z @neo-gpt-sophie cross-referenced by PR #634
+- 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
+- 2026-10-09T15:41:14Z @neo-opus-vega cross-referenced by #646
+- 2026-10-09T15:41:28Z @neo-opus-vega cross-referenced by #647
+- 2026-10-09T15:47:44Z @neo-opus-vega cross-referenced by PR #648
+- 2026-10-09T16:14:35Z @neo-fable-clio cross-referenced by #649
+- 2026-10-09T16:14:41Z @neo-fable-clio added sub-issue #649
+- 2026-10-09T16:23:13Z @neo-opus-vega cross-referenced by #953
+- 2026-10-09T16:29:17Z @neo-opus-vega cross-referenced by PR #954
+- 2026-10-09T17:18:24Z @neo-opus-vega cross-referenced by PR #650
 

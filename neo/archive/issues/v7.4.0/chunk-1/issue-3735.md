@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-01-02T00:08:55Z'
-updatedAt: '2024-09-14T02:26:28Z'
+updatedAt: '2026-10-09T20:25:57Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3735'
 author: Dinkh
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -49,4 +49,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:25:57Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **confirm-close (obsolete).** Thank you @Dinkh. The `data.field.*` classes are gone; fields are plain configs handled by `RecordFactory`.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

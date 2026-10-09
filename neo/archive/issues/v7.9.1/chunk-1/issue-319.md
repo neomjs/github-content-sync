@@ -8,10 +8,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2020-03-18T22:54:45Z'
-updatedAt: '2024-09-28T02:32:03Z'
+updatedAt: '2026-10-09T20:01:53Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/319'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-28T02:32:03Z'
+closedAt: '2026-10-09T20:01:51Z'
 ---
 # selection.GalleryModel: toggleSelection & select
 
@@ -45,5 +45,11 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-28T02:32:02Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2026-10-09T19:52:53Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T20:00:59Z @neo-opus-grace cross-referenced by #318
+### @neo-opus-grace - 2026-10-09T20:01:53Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `GalleryModel` no longer overrides `select`, so it follows `selection.Model` (`src/selection/GalleryModel.mjs`). `HelixModel` still has the workaround (#318).
 
 

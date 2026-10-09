@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-09T15:41:13Z'
-updatedAt: '2026-10-09T15:41:30Z'
+updatedAt: '2026-10-09T16:50:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/646'
 author: neo-opus-vega
 commentsCount: 0
@@ -61,7 +61,7 @@ The shape is settled in the PR.
 
 - **Dependencies:** both name `dev`. Each CI job resolves them before its tests and prints the resolved SHAs in the job summary. The Brain checkout uses `ref: dev`.
 - **Packaging:** the build resolves at cut time and writes both resolved SHAs into `organism-build-info.json`. The ROADMAP's `Row state:` candidate line reads them from there.
-- **Visual stamp:** it keys on something a moving engine does not break. Either it records the engine SHA it was captured against and reports drift without failing, or the engine leaves the stamp's identity. The goldens' Darwin-local authority is unchanged either way.
+- **Visual stamp** (operator, 2026-10-09: *track dev, the stamp notes drift*): the stamp records the engine revision its goldens were captured against. The freshness check prints `captured at engine X, running Y` without failing, so a red local visual run can be traced to the engine. The goldens' Darwin-local authority is unchanged.
 
 ## Acceptance Criteria
 
@@ -69,7 +69,7 @@ The shape is settled in the PR.
 - [ ] AC-2: every CI job resolves both dependencies at run time and names the resolved SHAs in its summary.
 - [ ] AC-3: a packaged candidate's `organism-build-info.json` records both resolved SHAs.
 - [ ] AC-4: fail-closed. A Brain or engine revision that breaks the Institution turns its CI red and names the resolved SHA. This is witnessed once against a deliberately broken ref.
-- [ ] AC-5: an engine merge that changes no Institution input does not turn the visual freshness gate red.
+- [ ] AC-5: an engine merge that changes no Institution input does not turn the visual freshness gate red. The gate names the captured and running engine revisions when they differ.
 
 ## Out of Scope
 
@@ -90,6 +90,7 @@ Live latest-open sweep: checked the latest 20 open issues at 15:39Z; no equivale
 Origin Session ID: 9a84c569-02eb-4f7c-b87d-43ebcb24593d
 Retrieval Hint: "Institution track Brain engine dev de-pin package.json ci.yml resolve at run time visual stamp engine digest"
 
+
 ## Timeline
 
 - 2026-10-09T15:41:14Z @neo-opus-vega added the `enhancement` label
@@ -99,4 +100,9 @@ Retrieval Hint: "Institution track Brain engine dev de-pin package.json ci.yml r
 - 2026-10-09T15:41:28Z @neo-opus-vega cross-referenced by #647
 - 2026-10-09T15:41:29Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-09T15:47:44Z @neo-opus-vega cross-referenced by PR #648
+- 2026-10-09T17:18:24Z @neo-opus-vega cross-referenced by PR #650
+- 2026-10-09T17:45:06Z @neo-gpt-sophie cross-referenced by #19522
+- 2026-10-09T18:17:34Z @neo-opus-vega referenced in commit `6a06f48` - "fix(harness): a package cut ships one commit of each org dependency, and its receipt reads the stage (#646)
+
+Review RA-1 (neo-gpt-emmy, 5473746457): with the org dependencies at #dev, the cut built themes from the product's installed Engine (A), the stage installed dev on its own (B), and the receipt read the product's install. stageOrganism now resolves the cut first (the installed Engine and the Brain runtime root's HEAD; unknown fails before anything is built), pins both specs in the staged manifest to it, verifies the stage's installed Engine and Brain contract package against it after npm install (a mismatch fails the pack), and reads the receipt's Engine revision from the stage. The cut-path control stages A against B and fails; it passes at A."
 

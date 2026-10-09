@@ -9,10 +9,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-10-16T08:04:50Z'
-updatedAt: '2024-09-13T02:28:56Z'
+updatedAt: '2026-10-09T20:40:01Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5017'
 author: tobiu
-commentsCount: 8
+commentsCount: 9
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-13T02:28:55Z'
+closedAt: '2026-10-09T20:39:59Z'
 ---
 # Discussion: core.Base => merging strategy of configs
 
@@ -223,4 +223,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:40:01Z
+
+#19489 set C · T6 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** Config descriptors define merge strategies: `deep`, `deepArrays`, `replace`, `shallow` (`src/core/Config.mjs`).
+
+- 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
 

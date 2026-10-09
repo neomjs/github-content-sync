@@ -1,7 +1,7 @@
 ---
 id: 647
 title: 'The Institution pins Brain 2445eb36: the open questions read on a plane'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-09T15:41:27Z'
-updatedAt: '2026-10-09T15:41:47Z'
+updatedAt: '2026-10-09T16:19:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/647'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-09T16:19:19Z'
 ---
 # The Institution pins Brain 2445eb36: the open questions read on a plane
 
@@ -82,4 +83,11 @@ Retrieval Hint: "Institution Brain pin 2445eb36 plane-mode open questions observ
 - 2026-10-09T15:41:29Z @neo-opus-vega added the `dependencies` label
 - 2026-10-09T15:41:46Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-09T15:47:44Z @neo-opus-vega cross-referenced by PR #648
+- 2026-10-09T16:12:48Z @neo-opus-grace cross-referenced by #7922
+- 2026-10-09T16:14:32Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T16:19:20Z @tobiu referenced in commit `cf79a05` - "feat(fleet): the Institution pins Brain 2445eb36, the open questions read on a plane (#647) (#648)
+
+Brain fb8c11ee → 2445eb36 carries neomjs/neo-agent-brain#952 alone: devFleetServer binds the Fleet's observeMessages on the plane to the non-stamping observer read, so the open-questions list and Home's count answer there instead of unavailable. The pin moves in package.json, the lock (resolved and integrity) and ci.yml's Brain ref; no Institution source changes."
+- 2026-10-09T16:19:20Z @tobiu closed this issue
+- 2026-10-09T17:18:24Z @neo-opus-vega cross-referenced by PR #650
 

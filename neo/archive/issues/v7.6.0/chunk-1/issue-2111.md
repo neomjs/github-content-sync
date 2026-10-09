@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2021-05-22T19:50:17Z'
-updatedAt: '2024-09-16T02:37:12Z'
+updatedAt: '2026-10-09T20:16:27Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2111'
 author: keckeroo
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-16T02:37:11Z'
+closedAt: '2026-10-09T20:16:25Z'
 ---
 # Example examples/form/field/date/ not displaying final week of month
 
@@ -49,5 +49,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-09-16T02:37:11Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:16:27Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **fixed since, so the close reason is corrected to completed.** Thank you @keckeroo for the report. Checked today on neomjs.com: the date picker shows all six rows of August 2026 (30, 31 included).
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

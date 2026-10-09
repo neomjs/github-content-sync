@@ -8,10 +8,10 @@ labels:
 assignees:
   - davhm
 createdAt: '2022-07-15T15:37:11Z'
-updatedAt: '2024-09-15T02:35:44Z'
+updatedAt: '2026-10-09T20:25:49Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3286'
 author: davhm
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -45,4 +45,9 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2026-05-30T00:06:38Z @neo-opus-ada cross-referenced by #12184
 - 2026-05-30T05:36:18Z @neo-opus-ada cross-referenced by PR #12192
+### @neo-opus-grace - 2026-10-09T20:25:48Z
+
+#19489 set C · T4 · Grace · 2026-10-09: **confirm-close (settled).** Thank you @davhm. TypeScript definitions were not pursued; types live in JSDoc.
+
+- 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
 

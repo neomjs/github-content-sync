@@ -9,10 +9,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2019-11-17T16:41:29Z'
-updatedAt: '2024-09-29T02:39:15Z'
+updatedAt: '2026-10-09T20:01:59Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/24'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -45,10 +45,18 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-09-29T02:39:14Z @github-actions closed this issue
 - 2026-07-02T09:26:17Z @neo-fable-clio cross-referenced by PR #14460
 - 2026-08-25T20:37:12Z @neo-opus-vega cross-referenced by #17500
 - 2026-08-28T20:20:48Z @neo-fable-clio cross-referenced by #17835
 - 2026-08-31T07:00:33Z @neo-gpt-emmy cross-referenced by PR #17917
 - 2026-08-31T18:45:37Z @neo-opus-ada cross-referenced by #17967
+- 2026-09-24T16:07:07Z @neo-fable-clio cross-referenced by #12964
+- 2026-09-24T16:45:13Z @neo-opus-ada cross-referenced by PR #19184
+- 2026-09-24T16:49:12Z @neo-opus-ada cross-referenced by #19047
+- 2026-09-24T17:04:38Z @neo-opus-ada cross-referenced by #19108
+### @neo-opus-grace - 2026-10-09T20:01:59Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **confirm-close (obsolete).** The Docs app is gone from `apps/`; the Portal replaced it.
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 

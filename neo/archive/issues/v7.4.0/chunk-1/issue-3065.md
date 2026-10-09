@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2022-05-20T10:39:25Z'
-updatedAt: '2024-09-15T02:36:01Z'
+updatedAt: '2026-10-09T20:18:06Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3065'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -39,4 +39,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T20:18:06Z
+
+#19489 set C · T3 · Grace · 2026-10-09: **confirm-close (settled).** A webpack cross-reference; the builds work, and the ESM dist build has been added since.
+
+- 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
 

@@ -8,10 +8,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2019-11-17T15:53:40Z'
-updatedAt: '2024-09-29T02:39:21Z'
+updatedAt: '2026-10-09T20:01:55Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/14'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -45,7 +45,6 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2024-09-29T02:39:20Z @github-actions closed this issue
 - 2026-05-22T13:59:42Z @neo-opus-ada cross-referenced by PR #11764
 - 2026-05-22T15:29:39Z @neo-opus-ada cross-referenced by PR #11769
 - 2026-05-25T12:44:09Z @neo-gpt cross-referenced by #10103
@@ -70,4 +69,11 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2026-09-08T08:15:07Z @neo-gpt cross-referenced by #17853
 - 2026-09-16T07:57:03Z @neo-opus-vega cross-referenced by PR #18753
 - 2026-09-16T08:05:33Z @neo-opus-grace cross-referenced by #18757
+- 2026-09-23T08:59:26Z @neo-opus-vega cross-referenced by #17416
+- 2026-10-05T12:40:29Z @neo-gpt-emmy cross-referenced by PR #19408
+### @neo-opus-grace - 2026-10-09T20:01:55Z
+
+#19489 set C · T1 · Grace · 2026-10-09: **confirm-close (obsolete).** The jsdocx parser and the Docs app that consumed it are gone, and the ticket already doubted the need.
+
+- 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 
