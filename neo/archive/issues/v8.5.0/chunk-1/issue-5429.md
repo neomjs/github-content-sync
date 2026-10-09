@@ -8,10 +8,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2024-06-21T19:55:08Z'
-updatedAt: '2025-01-15T02:28:59Z'
+updatedAt: '2026-10-09T15:30:31Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5429'
 author: tobiu
-commentsCount: 7
+commentsCount: 8
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2025-01-15T02:28:59Z'
+closedAt: '2026-10-09T15:30:30Z'
 ---
 # tab.Container: getLayoutConfig() => replace the switch block with an object (map)
 
@@ -103,5 +103,11 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2025-01-15T02:28:58Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2025-01-15T02:28:59Z @github-actions closed this issue
+- 2026-10-09T15:28:25Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T15:30:31Z
+
+#19489 set B · other · Grace · 2026-10-09: **already resolved, so the close reason is corrected to completed.** `getLayoutConfig()` builds its config from a `layoutMap` object (`src/tab/Container.mjs` L416 at `a1f4695af0`), not a switch block.
 
 

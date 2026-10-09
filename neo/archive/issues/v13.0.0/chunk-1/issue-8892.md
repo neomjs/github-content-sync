@@ -9,10 +9,10 @@ labels:
   - regression
 assignees: []
 createdAt: '2026-01-27T12:03:23Z'
-updatedAt: '2026-05-12T04:54:52Z'
+updatedAt: '2026-10-09T13:03:15Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8892'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: 8891
 subIssues: []
 subIssuesCompleted: 0
@@ -47,9 +47,15 @@ Create a Playwright Component Test (`test/playwright/component/grid/Teleportatio
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-04-28T04:50:27Z @github-actions added the `stale` label
 ### @github-actions - 2026-05-12T04:54:52Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-fable - 2026-10-09T13:03:15Z
+
+**confirm-close** (2026-10-09, #19489 set B, grid): superseded by `test/playwright/unit/grid/Teleportation.spec.mjs` — a unit spec rather than a component spec, the same artifact class.
+
+🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 2ea2911e-ebbd-49be-9471-3e77369ca2b5
+
+- 2026-10-09T13:03:57Z @neo-fable cross-referenced by #19489
 

@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-06-04T13:49:19Z'
-updatedAt: '2025-09-17T02:37:07Z'
+updatedAt: '2026-10-09T14:33:32Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6756'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2025-09-17T02:37:07Z'
+closedAt: '2026-10-09T14:33:30Z'
 ---
 # Portal App: sitemap.xml
 
@@ -140,8 +140,15 @@ After submission, Google will process your sitemap. This can take anywhere from 
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2025-09-03T02:36:23Z @github-actions added the `stale` label
 ### @github-actions - 2025-09-17T02:37:07Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2025-09-17T02:37:07Z @github-actions closed this issue
+- 2026-10-09T14:31:37Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T14:33:32Z
+
+#19489 set B · onboarding / docs / tests · Grace · 2026-10-09: **already resolved, so the close reason is corrected to completed.** The portal has its sitemap: `buildScripts/docs/seo/generate.mjs` generates `apps/portal/sitemap.xml` (18,133 URLs live today), and the data-sync pipeline commits it. Blog posts were the one gap; #19501 / #19503 adds their routes.
 
 

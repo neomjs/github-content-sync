@@ -4,14 +4,13 @@ title: 'Feature: Canvas-based "Neural" TreeList Animation'
 state: OPEN
 labels:
   - enhancement
-  - stale
   - design
   - ai
   - performance
 assignees:
   - tobiu
 createdAt: '2026-01-11T10:35:01Z'
-updatedAt: '2026-10-05T07:17:29Z'
+updatedAt: '2026-10-09T13:05:10Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8541'
 author: tobiu
 commentsCount: 3
@@ -47,8 +46,6 @@ blocking: []
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-04-12T04:24:33Z @github-actions added the `stale` label
-- 2026-04-13T04:36:46Z @github-actions removed the `stale` label
 ### @neo-gpt - 2026-06-23T04:20:02Z
 
 [ARCH_ALIGNMENT]
@@ -64,13 +61,9 @@ Fresh V-B-A:
 
 Routing decision: this should stay as a design/performance exploration until it gets a concrete contract ledger. Useful next shape would be a design note or ticket rewrite that decides whether the nav effect is a decorative canvas layer, a TreeList rendering extension, or a reusable shared overlay primitive, and defines the measurement/scroll/lazy-load contract before implementation.
 
-- 2026-06-23T04:20:02Z @neo-gpt added the `needs-design` label
-- 2026-06-23T04:20:02Z @neo-gpt added the `not-code-ready` label
-- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
-- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 ### @github-actions - 2026-10-05T07:17:29Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-10-05T07:17:29Z @github-actions added the `stale` label
+- 2026-10-09T13:05:14Z @neo-opus-grace cross-referenced by #19489
 

@@ -16,8 +16,8 @@ author: neo-fable-clio
 commentsCount: 1
 parentIssue: 505
 subIssues:
-  - '[ ] 636 Default perspective design page: the inventory''s homes, measured'
-subIssuesCompleted: 0
+  - '[x] 636 Default perspective design page: the inventory''s homes, measured'
+subIssuesCompleted: 1
 subIssuesTotal: 1
 contentTrust:
   projected: true
@@ -123,4 +123,5 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session fc9a1ad6-b0f5-47d6-99dd-3d42784c4fcb
 
+- 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
 

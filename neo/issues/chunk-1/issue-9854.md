@@ -1,18 +1,18 @@
 ---
 id: 9854
 title: 'Blog Post: Multi-Window Web Apps in 2026 — SharedWorkers, Not PostMessage Chains'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - Blog Post
-  - stale
   - ai
-assignees: []
+assignees:
+  - neo-opus-grace
 createdAt: '2026-04-10T08:58:54Z'
-updatedAt: '2026-10-05T07:17:18Z'
+updatedAt: '2026-10-09T15:52:11Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9854'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 13383
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-09T15:52:11Z'
 ---
 # Blog Post: Multi-Window Web Apps in 2026 — SharedWorkers, Not PostMessage Chains
 
@@ -98,17 +99,40 @@ This blog post positions Neo.mjs as the established leader in multi-window web a
 - 2026-04-10T08:58:57Z @tobiu added the `ai` label
 - 2026-04-20T02:07:08Z @tobiu cross-referenced by #158
 - 2026-06-15T18:48:51Z @neo-opus-vega cross-referenced by #13383
-- 2026-06-15T18:49:46Z @neo-opus-vega added parent issue #13383
 - 2026-06-15T23:02:27Z @neo-opus-vega cross-referenced by #13394
-- 2026-06-23T03:02:40Z @neo-gpt added the `not-code-ready` label
-- 2026-06-23T03:02:40Z @neo-gpt added the `needs-design` label
 - 2026-06-23T03:08:15Z @neo-gpt cross-referenced by #9850
-- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
-- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 - 2026-09-22T22:48:39Z @neo-fable cross-referenced by #19057
 ### @github-actions - 2026-10-05T07:17:17Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-10-05T07:17:18Z @github-actions added the `stale` label
+- 2026-10-09T12:46:37Z @neo-opus-grace cross-referenced by #19488
+- 2026-10-09T12:47:28Z @neo-opus-grace cross-referenced by PR #19490
+- 2026-10-09T12:57:31Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T13:07:28Z
+
+**Intake · Grace · 2026-10-09: accepted for 13.2, sharpened. The body stays yours; the proposals are below.**
+
+- **Classification:** valid-as-written for the goal: a multi-window post, from your April plan. The stale bot nearly closed it (#19489, set A); it is pre-stale again since the label came off today.
+- **Prescription checked:** `learn/blog/<slug>.md` plus its `apps/portal/resources/data/blog.json` entry own the concern (blog-authoring guide §5).
+
+**Proposed sharpening:**
+1. **Anchor it on 13.2.** The 2026 chapter is Dock Layouts across windows, the centerpiece of the 13.2 notes (#19487): a workspace that leaves its window as a real OS window and comes back intact. The SharedWorker architecture is *why* that holds.
+2. **Claims.** Two lines in the outline fail the blog guide's over-claim flavors: "the industry is only now discovering… solved 7 years ago" and "the established leader". They are an unsourced superlative (flavor 1) and a competitive put-down (flavor 5). The post states our own timeline and receipts, and the reader's problem, without ranking anyone.
+3. **Title candidate:** "A workspace that can leave its window: multi-window apps in Neo.mjs 13.2". It passes the guide's title test.
+4. **Sources moved:**
+   - `learn/benefits/MultiWindow.md` is now `learn/benefits/body/MultiWindow.md`;
+   - `learn/agentos/NeuralLink.md` is in the Brain's repository.
+   The Neural Link section shrinks to a link to the possession post.
+5. **Publication:** a draft PR now. It publishes after your manual defect pass and once the screenshots exist, your sequence.
+6. **Fact check:** the body's "since its GA release in November 2019" is off. `useSharedWorkers` entered the engine on 2020-06-05 (#667 config, #678 `createWorker()`), and the 1.0.x tags from late 2019 have no shared-worker mode. The post dates it to June 2020.
+
+Origin Session ID: e76b2469-377c-4fec-85a7-4c47b10269b9
+
+
+- 2026-10-09T13:11:38Z @neo-opus-grace cross-referenced by PR #19492
+- 2026-10-09T13:33:31Z @neo-opus-grace cross-referenced by #19494
+- 2026-10-09T13:33:34Z @neo-opus-grace cross-referenced by #19495
+- 2026-10-09T14:24:17Z @neo-opus-grace cross-referenced by #19501
+- 2026-10-09T15:24:59Z @neo-opus-grace cross-referenced by PR #19507
 

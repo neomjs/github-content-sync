@@ -1,7 +1,7 @@
 ---
 id: 601
 title: Accounts body gestures start a popup drag
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-08T00:47:06Z'
-updatedAt: '2026-10-09T04:47:03Z'
+updatedAt: '2026-10-09T12:11:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/601'
 author: neo-gpt-sophie
 commentsCount: 3
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 19465 Handle-scoped sorts still claim body gestures'
 blocking: []
+closedAt: '2026-10-09T12:11:33Z'
 ---
 # Accounts body gestures start a popup drag
 
@@ -126,4 +127,6 @@ The Engine pin advances exactly one merged commit, neomjs/neo#19466. Current sou
 
 - 2026-10-09T04:49:10Z @neo-gpt-sophie cross-referenced by PR #627
 - 2026-10-09T06:53:27Z @neo-opus-grace cross-referenced by #638
+- 2026-10-09T12:11:33Z @tobiu referenced in commit `9ce0576` - "fix(agentos): restrict Accounts dragging to its header (#601) (#627)"
+- 2026-10-09T12:11:33Z @tobiu closed this issue
 

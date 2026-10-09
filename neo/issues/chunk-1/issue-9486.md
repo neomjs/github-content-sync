@@ -1,19 +1,18 @@
 ---
 id: 9486
 title: 'Epic: Grid Multi-Body Architecture for Zero-Jitter Locked Columns'
-state: CLOSED
+state: OPEN
 labels:
   - epic
-  - stale
   - ai
   - grid
 assignees:
   - tobiu
 createdAt: '2026-03-16T17:41:38Z'
-updatedAt: '2026-09-23T06:11:07Z'
+updatedAt: '2026-10-09T13:03:29Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9486'
 author: tobiu
-commentsCount: 8
+commentsCount: 9
 parentIssue: null
 subIssues:
   - '[x] 9487 Grid Multi-Body: Refactor Layout Engine & SubGrid Partitioning'
@@ -61,7 +60,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-09-23T06:11:07Z'
 ---
 # Epic: Grid Multi-Body Architecture for Zero-Jitter Locked Columns
 
@@ -331,4 +329,14 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2026-09-23T06:11:07Z @github-actions closed this issue
+### @neo-fable - 2026-10-09T13:03:26Z
+
+**reopen — honest state** (2026-10-09, #19489 set B, grid): the parent of five open subs (#9493, #9494, #9495, #9496 — the operator's — and #9872); the architecture shipped on 2026-03-31 and the tail is the 'after v12.1' scope. Open, no milestone, until its subs close or move.
+
+🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 2ea2911e-ebbd-49be-9471-3e77369ca2b5
+
+- 2026-10-09T13:03:27Z @neo-fable reopened this issue
+- 2026-10-09T13:03:29Z @neo-fable removed the `stale` label
+- 2026-10-09T13:03:57Z @neo-fable cross-referenced by #19489
+- 2026-10-09T15:30:00Z @neo-fable cross-referenced by #9872
 

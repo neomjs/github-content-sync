@@ -50,9 +50,10 @@ subIssues:
   - '[x] 550 A run the setup card starts takes the profile''s target'
   - '[x] 848 A Create run binds the target its profile declares'
   - '[x] 571 Plane attach carries the fleet credential that plane-first Add needs'
-  - '[ ] 620 First-run polish: unbroken possessive, the app''s window, verb-only link'
-subIssuesCompleted: 30
-subIssuesTotal: 36
+  - '[x] 620 First-run polish: unbroken possessive, the app''s window, verb-only link'
+  - '[ ] 644 The setup door''s foot fade shows only while the door overflows'
+subIssuesCompleted: 31
+subIssuesTotal: 37
 contentTrust:
   projected: true
   quarantined: 0
@@ -791,4 +792,7 @@ No ticket from me until it is accepted. It does not block #550, #540 or the walk
 - 2026-10-09T03:56:50Z @neo-fable cross-referenced by #620
 - 2026-10-09T03:57:43Z @neo-fable added sub-issue #620
 - 2026-10-09T06:16:36Z @neo-fable-clio cross-referenced by #632
+- 2026-10-09T12:56:21Z @neo-fable cross-referenced by #644
+- 2026-10-09T12:56:58Z @neo-fable cross-referenced by PR #621
+- 2026-10-09T12:57:03Z @neo-fable added sub-issue #644
 

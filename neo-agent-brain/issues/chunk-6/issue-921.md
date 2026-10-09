@@ -1,7 +1,7 @@
 ---
 id: 921
 title: Read A2A observer history through one canonical policy
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-07T15:22:53Z'
-updatedAt: '2026-10-09T07:58:20Z'
+updatedAt: '2026-10-09T14:31:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/921'
 author: neo-gpt-emmy
 commentsCount: 2
@@ -26,6 +26,7 @@ blockedBy:
   - '[x] 19451 Record deployment-policy A2A observation in ADR 0038'
 blocking:
   - '[ ] 596 Show All / involves-me A2A activity in Fleet'
+closedAt: '2026-10-09T14:31:12Z'
 ---
 # Read A2A observer history through one canonical policy
 
@@ -134,14 +135,27 @@ This ticket's explicit observer request is the sanctioned non-stamping list on b
 - 2026-10-09T07:02:56Z @neo-gpt-emmy assigned to @neo-gpt-emmy
 ### @neo-gpt-emmy - 2026-10-09T07:58:20Z
 
-Author checkpoint: `codex/921-a2a-observer` is pushed at `1686fe5e917ba3bf70369e4bf737e72d91b8de1e`.
+Author checkpoint: `codex/921-a2a-observer` is pushed at `8f35cf94` after the human merges through `dev@9212fc38` (#943, #949, #948). The rebase's range-diff preserves the original `1686fe5e` feature patch exactly.
 
-The explicit observer scopes now share one eligibility query for list/count/page/detail, with retained archive/retraction semantics and bounded metadata. Stored grants and content read one SQLite snapshot; a second-connection revocation control covers stale graph-cache rights. Own/involves-me reads begin with indexed routing candidates. The actual MC adapter and Fleet host/plane composition preserve seen/read/Task state. Plane reads first verify the connected session advertises the requested observer scope and policy, so an older facade cannot silently strip the argument and perform a stamping inbox read.
+The explicit observer scopes share one eligibility query for list/count/page/detail, with retained archive/retraction semantics and bounded metadata. Stored grants and content read one SQLite snapshot; a second-connection revocation control covers stale graph-cache rights. Own/involves-me reads begin with indexed routing candidates. The actual MC adapter and Fleet host/plane composition preserve seen/read/Task state. Plane reads verify the connected session advertises the requested observer scope and policy before dispatch, so an older facade cannot silently strip the argument and perform a stamping inbox read.
 
-Validation: 322 combined mailbox/permission/observer/Fleet/plane-client checks passed; the five observer adapter controls plus setup/teardown also passed under separately constructed private and legacy deployments (7/7 each). OpenAPI/service parity, AiConfig SSOT lint, syntax/diff checks and capability commit preflight passed. These are source/adapter fixtures, not an installed-plane acceptance claim.
+Validation: 322 combined mailbox/permission/observer/Fleet/plane-client checks passed on the original checkpoint; after the first merged-base rebase and exact lockfile install, the owning combined set passed 323 checks. Private and legacy deployment runs each passed the five observer controls plus setup/teardown (7/7). The final upstream move only adds the unrelated provisioning-count test correction; the feature patch is unchanged. OpenAPI/service parity, AiConfig SSOT lint, syntax/diff checks and capability commit preflight passed. These are source/adapter fixtures, not installed-plane acceptance.
 
-No PR yet. The remaining pre-handoff step is composition after #946 lands: retain its `readOwnQuestions` consumer, this branch's shared `observeMessages` slot, and the explicit own-default host/plane wrappers. Re-run the combined `fleetOwnQuestions` / `fleetOpenWork.questions` controls on that composed head before claiming AC-8 and opening the PR. The current branches are siblings; neither has been merged by an agent. Installed acceptance remains with neomjs/neo-agent-institution#490 and the own-inbox consumer neomjs/neo-agent-institution#599.
+No PR yet. The remaining pre-handoff step is composition after #946 lands: retain its `readOwnQuestions` consumer, this branch's shared `observeMessages` slot, and the explicit own-default host/plane wrappers. Re-run the combined `fleetOwnQuestions` / `fleetOpenWork.questions` controls on that composed head before claiming AC-8 and opening the PR. #946 has been re-approved at `6350fe9c`, but remains at the human merge gate in the latest read. Installed acceptance remains with neomjs/neo-agent-institution#490 and the own-inbox consumer neomjs/neo-agent-institution#599.
+
+A separate isolated witness confirmed an existing ordinary delegated-list window: another connection can revoke a grant while `PermissionService.hasPermission` still admits one metadata page from its cache, before projection synchronizes it. The observer path denies that read from its stored snapshot. This is recorded as a distinct defect-note, not claimed repaired for every ordinary permission reader by this checkpoint.
 
 Origin Session ID: b56dbc41-6e95-4210-a2ea-8d1f5f3ffcd0
 
+- 2026-10-09T12:30:16Z @neo-gpt-emmy referenced in commit `8f35cf9` - "feat(memory-core): expose policy-bound A2A observation (#921)"
+- 2026-10-09T13:16:45Z @neo-gpt-emmy referenced in commit `ca88c5d` - "feat(memory-core): expose policy-bound A2A observation (#921)"
+- 2026-10-09T13:16:45Z @neo-gpt-emmy referenced in commit `48be724` - "test(memory-core): verify composed question observation (#921)"
+- 2026-10-09T13:18:31Z @neo-gpt-emmy cross-referenced by PR #952
+- 2026-10-09T14:31:12Z @tobiu referenced in commit `2445eb3` - "feat(memory-core): observe A2A history without changing receipts (#921) (#952)
+
+* feat(memory-core): expose policy-bound A2A observation (#921)
+
+* test(memory-core): verify composed question observation (#921)"
+- 2026-10-09T14:31:12Z @tobiu closed this issue
+- 2026-10-09T15:41:28Z @neo-opus-vega cross-referenced by #647
 

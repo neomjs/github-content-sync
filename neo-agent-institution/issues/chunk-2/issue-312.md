@@ -27,10 +27,10 @@ subIssues:
   - '[x] 487 The Observatory''s panel reads kind-appropriate evidence for a selected node without a source view'
   - '[x] 527 The Observatory''s side panel width is a splitter, kept for the session'
   - '[x] 544 The Observatory''s NL e2e arms open the section they read, now that the side panel opens one at a time'
-  - '[ ] 624 The Observatory names each surface once: its view, its Route, its pane'
-  - '[ ] 625 The Observatory head opens with the team''s sentence; its counts move behind Details'
-  - '[ ] 626 The Observatory''s Nodes list leads with what changed, and names its order'
-subIssuesCompleted: 11
+  - '[x] 624 The Observatory names each surface once: its view, its Route, its pane'
+  - '[x] 625 The Observatory head opens with the team''s sentence; its counts move behind Details'
+  - '[x] 626 The Observatory''s Nodes list leads with what changed, and names its order'
+subIssuesCompleted: 14
 subIssuesTotal: 15
 contentTrust:
   projected: true

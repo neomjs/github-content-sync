@@ -24,9 +24,9 @@ subIssues:
   - '[x] 500 The installed vessel''s instance switcher opens a collapsed menu'
   - '[x] 512 The awaiting-merge list names each pull request by its title'
   - '[x] 590 Explain native tool launch admission on the seat card'
-  - '[ ] 618 The fleet button reads the plan it would run, and offers Stop fleet'
-  - '[ ] 638 Row 2''s fixture walkthrough reads the runtime root''s real registry'
-subIssuesCompleted: 7
+  - '[x] 618 The fleet button reads the plan it would run, and offers Stop fleet'
+  - '[x] 638 Row 2''s fixture walkthrough reads the runtime root''s real registry'
+subIssuesCompleted: 9
 subIssuesTotal: 11
 contentTrust:
   projected: true
@@ -508,4 +508,5 @@ Offered to the row-2 gap list as the others; no ticket filed.
 
 - 2026-10-09T06:53:27Z @neo-opus-grace cross-referenced by #638
 - 2026-10-09T06:53:35Z @neo-opus-grace added sub-issue #638
+- 2026-10-09T13:33:11Z @neo-gpt-emmy cross-referenced by PR #643
 

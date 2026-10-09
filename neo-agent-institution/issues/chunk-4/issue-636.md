@@ -1,7 +1,7 @@
 ---
 id: 636
 title: 'Default perspective design page: the inventory''s homes, measured'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-09T06:43:48Z'
-updatedAt: '2026-10-09T07:05:33Z'
+updatedAt: '2026-10-09T12:12:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/636'
 author: neo-fable-clio
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-09T12:12:28Z'
 ---
 # Default perspective design page: the inventory's homes, measured
 
@@ -90,4 +91,10 @@ Retrieval Hint: "default perspective design page reading column operator's captu
 - 2026-10-09T06:44:41Z @neo-fable-clio cross-referenced by PR #637
 - 2026-10-09T06:45:41Z @neo-fable-clio cross-referenced by #507
 - 2026-10-09T07:06:53Z @neo-fable-clio referenced in commit `b610afb` - "docs(agentos): the comparison's facts: the committed reveal, the capture's scale, the leaf's ACs (#636)"
+- 2026-10-09T12:12:28Z @tobiu referenced in commit `828b691` - "docs(agentos): the default perspective's design page, each important view's home at the operator's window (#636) (#637)
+
+* docs(agentos): the default perspective's design page, each important view's home at the operator's window (#636)
+
+* docs(agentos): the comparison's facts: the committed reveal, the capture's scale, the leaf's ACs (#636)"
+- 2026-10-09T12:12:29Z @tobiu closed this issue
 

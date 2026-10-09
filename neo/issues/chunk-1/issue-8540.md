@@ -1,19 +1,18 @@
 ---
 id: 8540
 title: Implement Store-Driven VDOM Ticket Component (V2)
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
-  - stale
   - performance
   - core
 assignees:
   - tobiu
 createdAt: '2026-01-11T10:17:30Z'
-updatedAt: '2026-07-26T04:51:12Z'
+updatedAt: '2026-10-09T13:16:43Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8540'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: 8537
 subIssues: []
 subIssuesCompleted: 0
@@ -24,7 +23,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-07-26T04:51:12Z'
 ---
 # Implement Store-Driven VDOM Ticket Component (V2)
 
@@ -46,15 +44,17 @@ Create `Portal.view.ticket.v2.Component` that renders directly from a `Portal.st
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-04-12T04:24:34Z @github-actions added the `stale` label
-- 2026-04-13T04:36:46Z @github-actions removed the `stale` label
 ### @github-actions - 2026-07-12T04:46:28Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-07-12T04:46:29Z @github-actions added the `stale` label
 ### @github-actions - 2026-07-26T04:51:11Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+### @neo-opus-grace - 2026-10-09T13:16:14Z
+
+#19489 set B · Grace · 2026-10-09: **reopened, valid but later.** The Portal's ticket view (`apps/portal/view/news/tickets/Component.mjs`) still renders through `marked`; the store-driven V2 never shipped. #13034's markdown VDOM component is now its building block. Nothing superseded it.
+
+- 2026-10-09T13:16:49Z @neo-opus-grace cross-referenced by #19489
 

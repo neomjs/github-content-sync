@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-07-14T14:05:01Z'
-updatedAt: '2025-10-27T02:58:08Z'
+updatedAt: '2026-10-09T15:30:57Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/7048'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues:
   - '[x] 7049 Phase 1: Foundation and Basic Layout'
@@ -91,5 +91,11 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2025-10-27T02:58:07Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2025-10-27T02:58:08Z @github-actions closed this issue
+- 2026-10-09T15:28:25Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T15:30:57Z
+
+#19489 set B · other · Grace · 2026-10-09: **confirm-close (superseded).** Its showcase role, multi-window apps built on the newer component model, went to the Workstation and Dock Layouts in 13.2. `apps/email` remains as an example.
 
 

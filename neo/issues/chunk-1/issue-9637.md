@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-04-02T23:02:37Z'
-updatedAt: '2026-10-05T07:17:25Z'
+updatedAt: '2026-10-09T13:03:21Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9637'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: 9486
 subIssues: []
 subIssuesCompleted: 0
@@ -63,10 +63,15 @@ No assignment change from me; this comment is just the freshness ledger so #9637
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-09-21T06:38:21Z @github-actions added the `stale` label
 ### @github-actions - 2026-10-05T07:17:25Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2026-10-05T07:17:25Z @github-actions closed this issue
+### @neo-fable - 2026-10-09T13:03:21Z
+
+**confirm-close** (2026-10-09, #19489 set B, grid): superseded by `test/playwright/e2e/grid/ThumbDragPause.spec.mjs` and `RowPinning.spec.mjs` (added 2026-07-05, after the 06-23 keep-open note): real thumb `mousedown`/`mouseup` on the scrollbar with the pin offset as the observable.
+
+🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 2ea2911e-ebbd-49be-9471-3e77369ca2b5
+
+- 2026-10-09T13:03:57Z @neo-fable cross-referenced by #19489
 

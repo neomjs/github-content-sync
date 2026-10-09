@@ -11,10 +11,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-10-10T16:38:20Z'
-updatedAt: '2026-02-09T04:01:22Z'
+updatedAt: '2026-10-09T14:33:37Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/7435'
 author: tobiu
-commentsCount: 9
+commentsCount: 10
 parentIssue: null
 subIssues:
   - '[x] 7436 Create Component Test Harness Config'
@@ -41,7 +41,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-02-09T04:01:22Z'
+closedAt: '2026-10-09T14:33:34Z'
 ---
 # Create Component Tests in Playwright (and migrate existing tests from Siesta)
 
@@ -407,4 +407,10 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2026-02-09T04:01:22Z @github-actions closed this issue
 - 2026-09-05T13:24:51Z @neo-fable cross-referenced by #18361
+### @neo-opus-grace - 2026-10-09T14:33:37Z
+
+#19489 set B · onboarding / docs / tests · Grace · 2026-10-09: **already resolved, so the close reason is corrected to completed.** The Siesta migration is done (no Siesta file remains under `test/`), and `test/playwright/component` holds 81 specs. Per-component tests continue as #18985's curated contributor issues, held in the tier its rule picks.
+
+- 2026-10-09T14:33:50Z @neo-opus-grace cross-referenced by #7737
+- 2026-10-09T14:34:45Z @neo-opus-grace cross-referenced by #19489
 

@@ -1,7 +1,7 @@
 ---
 id: 610
 title: 'Start shows dependency preparation, its skip control and peer readiness'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-08T19:52:06Z'
-updatedAt: '2026-10-09T05:45:48Z'
+updatedAt: '2026-10-09T12:05:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/610'
 author: neo-opus-vega
 commentsCount: 6
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-09T12:05:37Z'
 ---
 # Start shows dependency preparation, its skip control and peer readiness
 
@@ -229,4 +230,91 @@ Your evidence line is now under the remaining AC, word for word.
 - 2026-10-09T06:36:59Z @neo-opus-grace cross-referenced by #635
 - 2026-10-09T06:49:10Z @neo-opus-grace referenced in commit `69d8592` - "test(agentos): the drill round-trip's narrow Detail frames show Ada's checkout rows (#610)"
 - 2026-10-09T06:53:27Z @neo-opus-grace cross-referenced by #638
+- 2026-10-09T12:05:37Z @tobiu referenced in commit `0f04d98` - "feat(agentos): each checkout's preparation reads in Repository, and a seat without it says skills not verified (#610) (#617)
+
+* feat(agentos): a running seat whose working checkout was not prepared says so, and each checkout's preparation reads in Repository (#610)
+
+SeatDependencies words the Fleet's dependencyOutcomes once for the card,
+Agent Detail's Repository pane and the Accounts Repositories card: the card's
+quietest exception reads "skills not verified" for a running seat whose working
+checkout the last start did not prepare; every checkout keeps its own row, a
+failed clone first, an install still running as this start.
+
+* test(agentos): the preparation frames, and the card's skills line follows the state it shows (#610)
+
+The skills line gates on the resolved display state, so a seat the card reads
+offline (stopped or unobserved) says nothing. New goldens: the card line and
+Detail's Repository pane settled, live and light; Ada's Repository pane now
+carries her clone outcomes in two refreshed goldens. Baselines re-stamped.
+
+* test(agentos): re-stamp the visual baselines over dev's merged inputs (#610)
+
+* fix(agentos): a checkout's dependency row speaks over an older clone outcome, and a clone with no install reported reads unverified (#610)
+
+* fix(agentos): a clone with no install reported reads unverified in one line, and the goldens re-capture the panes that showed it (#610)
+
+* refactor(agentos): Detail's Repository pane reads its checkouts through the Accounts card's Store/Model/list, read-only (#610)
+
+* fix(agentos): the Repository body takes its content's height, the list keeps the pane's rhythm and the failure's weight (#610)
+
+* docs(agentos): the fold's reason names a checkout the start held, not one it cloned (#610)
+
+* test(agentos): the drill round-trip's narrow Detail frames show Ada's checkout rows (#610)"
+- 2026-10-09T12:05:38Z @tobiu closed this issue
+- 2026-10-09T12:36:38Z @neo-fable-clio cross-referenced by #642
+- 2026-10-09T12:52:30Z @tobiu referenced in commit `7ae86bd` - "feat(agentos): a Start the Fleet is preparing shows its count on the card, cancels from the toggle, and skips from Repository (#616) (#629)
+
+* feat(agentos): a running seat whose working checkout was not prepared says so, and each checkout's preparation reads in Repository (#610)
+
+SeatDependencies words the Fleet's dependencyOutcomes once for the card,
+Agent Detail's Repository pane and the Accounts Repositories card: the card's
+quietest exception reads "skills not verified" for a running seat whose working
+checkout the last start did not prepare; every checkout keeps its own row, a
+failed clone first, an install still running as this start.
+
+* test(agentos): the preparation frames, and the card's skills line follows the state it shows (#610)
+
+The skills line gates on the resolved display state, so a seat the card reads
+offline (stopped or unobserved) says nothing. New goldens: the card line and
+Detail's Repository pane settled, live and light; Ada's Repository pane now
+carries her clone outcomes in two refreshed goldens. Baselines re-stamped.
+
+* test(agentos): re-stamp the visual baselines over dev's merged inputs (#610)
+
+* feat(agentos): a Start the Fleet is preparing shows its count on the card, cancels from the toggle, and skips from Repository (#616)
+
+While the Fleet reports installs for a pending Start, the card reads
+`start… preparing dependencies (n/m done)` in place of `start…` and the local
+`no answer yet`, and the power verb is Cancel start; a sent cancel reads
+`canceling start…`. The Repository pane offers Skip while the Start installs,
+with its consequence beside it, as a side request that never claims the Start's
+pending verb. The verb comes from the pinned wire, so Skip appears once a pin
+carries neomjs/neo-agent-brain#942. The pane's body becomes its own component,
+which keeps detail/Container.mjs under the app file-size bar.
+
+* test(agentos): the preparing card and the Repository pane's Skip, both skins (#616)
+
+* test(agentos): the Skip driver's summary names the verb it adds, not the pin that ships it (#616)
+
+* test(agentos): the card falls back to its plain pending and timeout text once the live rows go (#616)
+
+* fix(agentos): a checkout's dependency row speaks over an older clone outcome, and a clone with no install reported reads unverified (#610)
+
+* fix(agentos): a clone with no install reported reads unverified in one line, and the goldens re-capture the panes that showed it (#610)
+
+* refactor(agentos): the panes read a live Start through the same line the card counts (#616)
+
+* refactor(agentos): Detail's Repository pane reads its checkouts through the Accounts card's Store/Model/list, read-only (#610)
+
+* fix(agentos): the Repository body takes its content's height, the list keeps the pane's rhythm and the failure's weight (#610)
+
+* docs(agentos): the fold's reason names a checkout the start held, not one it cloned (#610)
+
+* fix(agentos): a Skip binds to the attempt it was asked in, and an unanswered cancel stays canceling (#616)
+
+* test(agentos): the earlier attempt's late Skip answer never replaces the current request (#616)
+
+* test(agentos): re-stamp the visual baselines over the attempt-bound Skip and the open cancel (#616)
+
+* test(agentos): the drill round-trip's narrow Detail frames show Ada's checkout rows (#610)"
 

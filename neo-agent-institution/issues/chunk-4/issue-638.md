@@ -1,7 +1,7 @@
 ---
 id: 638
 title: Row 2's fixture walkthrough reads the runtime root's real registry
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-09T06:53:26Z'
-updatedAt: '2026-10-09T06:53:27Z'
+updatedAt: '2026-10-09T12:12:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/638'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-09T12:12:50Z'
 ---
 # Row 2's fixture walkthrough reads the runtime root's real registry
 
@@ -86,4 +87,6 @@ Retrieval Hint: "CockpitStateWalkthroughNL real registry 12 agents runtime root 
 - 2026-10-09T06:53:28Z @neo-opus-grace added the `testing` label
 - 2026-10-09T06:53:35Z @neo-opus-grace added parent issue #477
 - 2026-10-09T07:03:12Z @neo-opus-grace cross-referenced by PR #639
+- 2026-10-09T12:12:50Z @tobiu referenced in commit `fbe3f78` - "fix(e2e): row 2's walkthrough reads an empty fleet, never the runtime root's real registry (#638) (#639)"
+- 2026-10-09T12:12:50Z @tobiu closed this issue
 

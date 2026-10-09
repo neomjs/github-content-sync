@@ -1,7 +1,7 @@
 ---
 id: 632
 title: A seat selected while Detail is auto-hidden reveals the previous peer
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-09T06:16:34Z'
-updatedAt: '2026-10-09T06:36:33Z'
+updatedAt: '2026-10-09T12:11:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/632'
 author: neo-fable-clio
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-09T12:11:55Z'
 ---
 # A seat selected while Detail is auto-hidden reveals the previous peer
 
@@ -136,4 +137,11 @@ Origin Session ID: e6ce4d70-a7ff-454e-996d-e7c25efdf4cf
 - 2026-10-09T06:43:53Z @neo-fable-clio cross-referenced by #636
 - 2026-10-09T06:46:26Z @neo-gpt-sophie referenced in commit `f99f46f` - "test(fleet): align roster doubles and visual input stamp (#632)"
 - 2026-10-09T07:00:24Z @neo-gpt-sophie cross-referenced by PR #637
+- 2026-10-09T12:11:56Z @tobiu closed this issue
+- 2026-10-09T12:11:56Z @tobiu referenced in commit `fb79faf` - "fix(fleet): keep the parked inspector on the selected peer (#632) (#634)
+
+* fix(fleet): keep the parked inspector on the selected peer (#632)
+
+* test(fleet): align roster doubles and visual input stamp (#632)"
+- 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
 

@@ -26,11 +26,12 @@ subIssues:
   - '[x] 593 An Activity PR row says what happened to the PR, not just its number'
   - '[x] 919 The open-work feed says who moved a verdict and when changes were pushed'
   - '[x] 19451 Record deployment-policy A2A observation in ADR 0038'
-  - '[ ] 921 Read A2A observer history through one canonical policy'
+  - '[x] 921 Read A2A observer history through one canonical policy'
   - '[ ] 596 Show All / involves-me A2A activity in Fleet'
-  - '[ ] 599 The operator''s Mailbox lists open questions and shows an expired plan'
-subIssuesCompleted: 10
-subIssuesTotal: 14
+  - '[x] 599 The operator''s Mailbox lists open questions and shows an expired plan'
+  - '[ ] 642 The Repositories card prepares a clone now and removes in two steps'
+subIssuesCompleted: 12
+subIssuesTotal: 15
 contentTrust:
   projected: true
   quarantined: 0
@@ -752,4 +753,8 @@ All three new leaves are native children of Institution #414. Brain #921 is bloc
 - 2026-10-09T06:17:19Z @neo-opus-grace cross-referenced by #633
 - 2026-10-09T06:36:59Z @neo-opus-grace cross-referenced by #635
 - 2026-10-09T06:53:27Z @neo-opus-grace cross-referenced by #638
+- 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
+- 2026-10-09T12:36:38Z @neo-fable-clio cross-referenced by #642
+- 2026-10-09T12:36:55Z @neo-fable-clio added sub-issue #642
+- 2026-10-09T13:18:31Z @neo-gpt-emmy cross-referenced by PR #952
 

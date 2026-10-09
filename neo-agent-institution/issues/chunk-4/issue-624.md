@@ -1,7 +1,7 @@
 ---
 id: 624
 title: 'The Observatory names each surface once: its view, its Route, its pane'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-09T04:43:51Z'
-updatedAt: '2026-10-09T04:45:14Z'
+updatedAt: '2026-10-09T14:42:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/624'
 author: neo-opus-vega
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-09T14:42:28Z'
 milestone: FM v1
 ---
 # The Observatory names each surface once: its view, its Route, its pane
@@ -95,4 +96,103 @@ Retrieval Hint: "Observatory one name per surface Route control head title Roadm
 - 2026-10-09T05:27:21Z @neo-opus-vega referenced in commit `84dbc9f` - "test(observatory): re-capture the widened side-panel goldens, which still showed the old names (#624)"
 - 2026-10-09T05:46:32Z @neo-gpt-emmy cross-referenced by PR #630
 - 2026-10-09T06:50:09Z @neo-opus-vega cross-referenced by #485
+- 2026-10-09T12:12:22Z @neo-opus-vega referenced in commit `f29e44f` - "chore(observatory): merge dev into the Observatory names, the visual stamp regenerated over both sides (#624)"
+- 2026-10-09T13:08:13Z @neo-opus-vega referenced in commit `7271700` - "chore(observatory): merge dev after #629 into the Observatory names, the visual stamp regenerated (#624)"
+- 2026-10-09T14:14:55Z @neo-opus-vega referenced in commit `2661510` - "chore(observatory): merge dev after #641 into the Observatory names, the visual stamp regenerated (#624)
+
+Only the visual stamp conflicted. Regenerated from the merged tree after a full visual run (49/49 passed); units 1621 passed, 11 skipped."
+- 2026-10-09T14:42:28Z @tobiu referenced in commit `4204bb8` - "feat(observatory): the Observatory names each surface once: its view, its Route, its pane (#624) (#628)
+
+* feat(observatory): the Observatory names each surface once: its view, its Route, its pane (#624)
+
+The head title names the view and the geography the scene drew
+(`Observatory · Roadmap wells` / `Hub wells`), the View section's route control
+reads `Route`, and "Golden Path" stays the lower-dock pane's name, as the row-3
+reader ruled. The fourteen Observatory goldens are re-captured: every shot
+frames the head, and the pixel-ratio tolerance had let the old names pass.
+
+* test(observatory): re-capture the widened side-panel goldens, which still showed the old names (#624)"
+- 2026-10-09T14:42:29Z @tobiu closed this issue
+- 2026-10-09T15:06:04Z @tobiu referenced in commit `29ab1b3` - "feat(observatory): the head opens with the team's sentence, its counts behind Details (#625) (#630)
+
+* feat(observatory): the Observatory names each surface once: its view, its Route, its pane (#624)
+
+The head title names the view and the geography the scene drew
+(`Observatory · Roadmap wells` / `Hub wells`), the View section's route control
+reads `Route`, and "Golden Path" stays the lower-dock pane's name, as the row-3
+reader ruled. The fourteen Observatory goldens are re-captured: every shot
+frames the head, and the pixel-ratio tolerance had let the old names pass.
+
+* test(observatory): re-capture the widened side-panel goldens, which still showed the old names (#624)
+
+* feat(observatory): the head opens with the team's sentence, its counts behind Details (#625)
+
+The Observatory head now leads with what the team did in the attention
+window: `captured 06:20 PM · last 3 days: 4 merged · 12 in motion ·
+attention: #N · <title> · complete`, with zero classes silent and the
+attention item a link that selects its node. The renderer's counts, a
+withheld route and the overlays' words sit behind a Details disclosure,
+which shows only when they say more than the line. A pressed Roadmap on a
+read without roadmap anchors reads `Roadmap · no anchors`.
+
+The head becomes its own component (ObservatoryHeadComponent, with its own
+sheet) and the sentence a util (ObservatoryBrief); the container drops from
+998 to 990 lines. GraphSceneEnvelope.completenessOf and
+GraphNodeSource.numberOf are shared steps the sentence reuses.
+
+* fix(observatory): the head's sentence counts unknown work instead of a zero, and the browser opens Details (#625)
+
+A time on one node said nothing about another's, yet any timestamp in the read made untimed
+work read as "nothing moved". Work a count could hold whose own time or state the read omits
+is now unknown, in the heat line's word: "· 2 unknown". The NL journey reads the visible line,
+opens Details with a real click, and selects the attention item's node through the browser."
+- 2026-10-09T15:17:40Z @tobiu referenced in commit `7157391` - "feat(observatory): the Nodes list leads with what changed, and names its order (#626) (#631)
+
+* feat(observatory): the Observatory names each surface once: its view, its Route, its pane (#624)
+
+The head title names the view and the geography the scene drew
+(`Observatory · Roadmap wells` / `Hub wells`), the View section's route control
+reads `Route`, and "Golden Path" stays the lower-dock pane's name, as the row-3
+reader ruled. The fourteen Observatory goldens are re-captured: every shot
+frames the head, and the pixel-ratio tolerance had let the old names pass.
+
+* test(observatory): re-capture the widened side-panel goldens, which still showed the old names (#624)
+
+* feat(observatory): the head opens with the team's sentence, its counts behind Details (#625)
+
+The Observatory head now leads with what the team did in the attention
+window: `captured 06:20 PM · last 3 days: 4 merged · 12 in motion ·
+attention: #N · <title> · complete`, with zero classes silent and the
+attention item a link that selects its node. The renderer's counts, a
+withheld route and the overlays' words sit behind a Details disclosure,
+which shows only when they say more than the line. A pressed Roadmap on a
+read without roadmap anchors reads `Roadmap · no anchors`.
+
+The head becomes its own component (ObservatoryHeadComponent, with its own
+sheet) and the sentence a util (ObservatoryBrief); the container drops from
+998 to 990 lines. GraphSceneEnvelope.completenessOf and
+GraphNodeSource.numberOf are shared steps the sentence reuses.
+
+* fix(observatory): the head's sentence counts unknown work instead of a zero, and the browser opens Details (#625)
+
+A time on one node said nothing about another's, yet any timestamp in the read made untimed
+work read as "nothing moved". Work a count could hold whose own time or state the read omits
+is now unknown, in the heat line's word: "· 2 unknown". The NL journey reads the visible line,
+opens Details with a real click, and selects the attention item's node through the browser.
+
+* feat(observatory): the Nodes list leads with what changed, and names its order (#626)
+
+The list orders the whole read before the budget cuts it: work that changed within the
+attention window first, newest first, merged and closed included, then every node by its
+last activity. A message or a file never leads on a change alone. The head names the order
+in the design seat's words and wraps beside its toggle, which reads by relations and back.
+factsOf moves to the selection section it feeds, keeping the container under the bar.
+
+* feat(observatory): the Nodes head names its order on a line of its own, in the detail role (#626)
+
+The design read moved the order off the chrome line: `Nodes · 2 of 7` keeps the section's
+word and the budget beside the toggle, and the order sits beneath in dim detail text, `by
+relations · most related first` when pressed. A collapsed section keeps only its chrome line.
+The head moves into ObservatoryNodesHeadContainer, which owns the words and both controls;
+the container drops from 996 to 973 lines and keeps one item and two event hooks."
 

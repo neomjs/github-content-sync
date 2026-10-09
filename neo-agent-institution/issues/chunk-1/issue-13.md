@@ -32,8 +32,8 @@ subIssues:
   - '[x] 308 Define System around containers and real maintenance progress'
   - '[x] 309 Define Catch Up around meaningful changes and decisions'
   - '[x] 337 Pane heads close on the SSOT hairline'
-  - '[ ] 589 Seat-move review rows inherit default list styling'
-subIssuesCompleted: 18
+  - '[x] 589 Seat-move review rows inherit default list styling'
+subIssuesCompleted: 19
 subIssuesTotal: 19
 contentTrust:
   projected: true

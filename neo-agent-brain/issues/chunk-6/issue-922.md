@@ -1,7 +1,7 @@
 ---
 id: 922
 title: The Fleet wire lists the operator's open questions with a complete count
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-07T17:35:17Z'
-updatedAt: '2026-10-08T21:59:24Z'
+updatedAt: '2026-10-09T12:49:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/922'
 author: neo-opus-vega
 commentsCount: 2
@@ -23,7 +23,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 599 The operator''s Mailbox lists open questions and shows an expired plan'
+  - '[x] 599 The operator''s Mailbox lists open questions and shows an expired plan'
+closedAt: '2026-10-09T12:49:46Z'
 ---
 # The Fleet wire lists the operator's open questions with a complete count
 
@@ -147,4 +148,75 @@ I claimed this at 21:55Z and handed my session over before writing code. The dri
 — Vega (Opus 5.5, Claude Code) 🌿
 
 
+- 2026-10-09T04:00:15Z @neo-opus-vega referenced in commit `157591a` - "feat(memory-core): a Task carries its sender's optional fallback plan, which nothing runs (#922)
+
+Emmy's decision on #922: `task.fallback` is optional sender-authored plain text describing a planned
+response to expiry, with no execution or authorization semantics.
+
+- `MailboxService.addMessage` accepts it only as a non-empty string of at most
+  `MAX_TASK_FALLBACK_LENGTH` (1000) characters, beside the existing `task.state` check.
+- The `add_message` Task schema declares it. `transitionTask` and the expiry sweep set only their
+  own paths, so the stored text survives both, and `getMessage` returns it to the recipient.
+- Tests: absent legacy data, malformed values that never land, reply independence, and an expired
+  Task keeping its plan while it leaves the open list and count, with nothing sent on its behalf."
+- 2026-10-09T04:00:52Z @neo-opus-vega cross-referenced by PR #946
+- 2026-10-09T04:12:02Z @neo-opus-vega referenced in commit `393b111` - "fix(fleet): an open question's row says it was archived, and the answer when it was read (#922)
+
+The mirror adapter's closed export pin now lists the shared row projector.
+The Institution's open view marks archived-but-open rows and judges its
+freshness chip by the answer's capturedAt (Clio's design read on #599)."
+- 2026-10-09T04:20:27Z @neo-opus-vega referenced in commit `74b0d1d` - "test(fleet): the mirror adapter's producer witness names what it proves, not its tracking id (#922)"
+- 2026-10-09T05:36:06Z @neo-opus-vega referenced in commit `00e5c8d` - "fix(fleet): the open questions page continues as the mailbox served it, never by projected rows (#922)"
+- 2026-10-09T06:07:05Z @neo-opus-vega referenced in commit `b59f9e9` - "fix(fleet): the open questions read only through a list that leaves them unseen (#922)
+
+The plane's one list is the model-visible list_messages, which records seenAt, and a
+Fleet read is an observation: a seen mark it left would let a mark-all-read drain a
+question the operator never displayed. The seam's list is now observeMessages, wired
+in process from MailboxService.listMessages (non-stamping by omission) and left
+unwired on a plane, where the questions and their count answer unavailable."
+- 2026-10-09T06:10:28Z @neo-opus-vega cross-referenced by #921
+- 2026-10-09T12:06:54Z @neo-opus-vega referenced in commit `6350fe9` - "chore(fleet): merge dev into the open-questions read, keeping both new wire verbs in the dispatch spec (#922)"
+- 2026-10-09T12:49:46Z @tobiu referenced in commit `fb8c11e` - "feat(fleet): the Fleet wire lists the operator's open questions with a complete count (#922) (#946)
+
+* feat(fleet): the Fleet wire lists the operator's open questions with a complete count (#922)
+
+- `wireOperatorComposeWriter` takes `listMessages` beside the other own-inbox primitives;
+  `devFleetServer` wires the plane client's in plane mode and `MailboxService.listMessages` on a host.
+- `fleetOwnQuestions({limit, offset})` (read-observe) reads the viewer's non-terminal Tasks with
+  #860's query: `InputRequired`/`Submitted`/`Working`, `status: 'all'`, `includeArchived: true`,
+  `taskOrder: 'priority-age'`. It answers the mailbox mirror's body-free rows plus the complete
+  count; an unwired, failed or countless read answers `unavailable` with its reason.
+- `fleetOpenWork` adds `questions: {state, count, reason}` from a one-row page of the same read.
+- `FLEET_WIRE_METHODS` and both policy ledgers carry the verb (`awaiting-s4`, `read-observe`).
+
+* feat(memory-core): a Task carries its sender's optional fallback plan, which nothing runs (#922)
+
+Emmy's decision on #922: `task.fallback` is optional sender-authored plain text describing a planned
+response to expiry, with no execution or authorization semantics.
+
+- `MailboxService.addMessage` accepts it only as a non-empty string of at most
+  `MAX_TASK_FALLBACK_LENGTH` (1000) characters, beside the existing `task.state` check.
+- The `add_message` Task schema declares it. `transitionTask` and the expiry sweep set only their
+  own paths, so the stored text survives both, and `getMessage` returns it to the recipient.
+- Tests: absent legacy data, malformed values that never land, reply independence, and an expired
+  Task keeping its plan while it leaves the open list and count, with nothing sent on its behalf.
+
+* fix(fleet): an open question's row says it was archived, and the answer when it was read (#922)
+
+The mirror adapter's closed export pin now lists the shared row projector.
+The Institution's open view marks archived-but-open rows and judges its
+freshness chip by the answer's capturedAt (Clio's design read on #599).
+
+* test(fleet): the mirror adapter's producer witness names what it proves, not its tracking id (#922)
+
+* fix(fleet): the open questions page continues as the mailbox served it, never by projected rows (#922)
+
+* fix(fleet): the open questions read only through a list that leaves them unseen (#922)
+
+The plane's one list is the model-visible list_messages, which records seenAt, and a
+Fleet read is an observation: a seen mark it left would let a mark-all-read drain a
+question the operator never displayed. The seam's list is now observeMessages, wired
+in process from MailboxService.listMessages (non-stamping by omission) and left
+unwired on a plane, where the questions and their count answer unavailable."
+- 2026-10-09T12:49:46Z @tobiu closed this issue
 

@@ -24,9 +24,10 @@ subIssues:
   - '[x] 562 Keep the Fleet roster available across dock layout changes'
   - '[x] 566 The activity recipient gets its avatar and the new-events pill its skin'
   - '[x] 614 System''s seat-move block outlives the move and hides the plane list'
-  - '[ ] 632 A seat selected while Detail is auto-hidden reveals the previous peer'
-subIssuesCompleted: 7
-subIssuesTotal: 9
+  - '[x] 632 A seat selected while Detail is auto-hidden reveals the previous peer'
+  - '[x] 640 A parked Wake routes pane misses snapshots and the Reconnect re-drive'
+subIssuesCompleted: 9
+subIssuesTotal: 10
 contentTrust:
   projected: true
   quarantined: 0
@@ -400,4 +401,6 @@ Origin Session ID: e6ce4d70-a7ff-454e-996d-e7c25efdf4cf
 - 2026-10-09T06:34:35Z @neo-gpt-sophie cross-referenced by PR #634
 - 2026-10-09T06:43:53Z @neo-fable-clio cross-referenced by #636
 - 2026-10-09T06:44:41Z @neo-fable-clio cross-referenced by PR #637
+- 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
+- 2026-10-09T12:18:56Z @neo-opus-grace added sub-issue #640
 

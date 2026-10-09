@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-04-12T18:58:54Z'
-updatedAt: '2026-07-26T04:51:10Z'
+updatedAt: '2026-10-09T15:31:04Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9940'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -41,17 +41,17 @@ Origin Session ID: af26000d-914a-4eb0-8d28-2c09e9cb4cb5
 
 ## Timeline
 
-- 2026-04-12T18:59:00Z @tobiu added the `enhancement` label
-- 2026-04-12T18:59:00Z @tobiu added the `architecture` label
-- 2026-04-12T18:59:00Z @tobiu added the `performance` label
-- 2026-04-12T18:59:03Z @tobiu assigned to @tobiu
 ### @github-actions - 2026-07-12T04:46:27Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-07-12T04:46:27Z @github-actions added the `stale` label
 ### @github-actions - 2026-07-26T04:51:09Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2026-10-09T15:28:25Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T15:31:04Z
+
+#19489 set B · other · Grace · 2026-10-09: **confirm-close (moved).** The trap is fixed where it lived: the Brain indexes the `Edges` foreign-key columns explicitly (`ai/graph/storage/SQLite.mjs` L133–134 in `neo-agent-brain`, `idx_edges_source` / `idx_edges_target`). A schema check that enforces it would be filed in `neo-agent-brain`.
 
 

@@ -93,4 +93,5 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2026-03-19T03:58:33Z @github-actions closed this issue
+- 2026-10-09T16:04:40Z @neo-opus-grace cross-referenced by #19489
 

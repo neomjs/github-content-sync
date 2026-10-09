@@ -1,7 +1,7 @@
 ---
 id: 599
 title: The operator's Mailbox lists open questions and shows an expired plan
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-07T23:27:59Z'
-updatedAt: '2026-10-09T04:04:55Z'
+updatedAt: '2026-10-09T15:38:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/599'
 author: neo-opus-vega
 commentsCount: 2
@@ -23,8 +23,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 922 The Fleet wire lists the operator''s open questions with a complete count'
+  - '[x] 922 The Fleet wire lists the operator''s open questions with a complete count'
 blocking: []
+closedAt: '2026-10-09T15:38:50Z'
 ---
 # The operator's Mailbox lists open questions and shows an expired plan
 
@@ -171,4 +172,97 @@ short of the read's end, the line says only what was read ("5 open · the ones r
 cannot be shown", or "9 open · more follow" beside held rows) and `read on` continues from the
 served cursor with a fresh bounded run. The NL journey proves it in the browser."
 - 2026-10-09T07:58:21Z @neo-gpt-emmy cross-referenced by #921
+- 2026-10-09T12:31:38Z @neo-opus-vega referenced in commit `4526fc1` - "chore(mailbox): merge dev into the operator's open questions, keeping Brain 74b0d1da until #946 merges and taking dev's engine (#599)"
+- 2026-10-09T12:31:39Z @neo-opus-vega referenced in commit `45622a3` - "fix(mailbox): the list takes its room before its rows land, as it did before the open-questions rework (#599)
+
+The open-questions rework moved the projection ahead of the body's show, so rows could land in
+a hidden grid. Once on the new engine, one first NL run after a fresh install left read on's
+question unrendered. The pane now decides from the bags whether the list shows, shows it, then
+projects; the state line follows as before."
+- 2026-10-09T13:03:29Z @neo-opus-vega referenced in commit `ca22802` - "revert(mailbox): project before the show again, as 4526fc1 did; the reorder brought no fix and two double-mounts (#599)
+
+The reorder in 45622a3 was a guess at a flaky NL arm (read on's question not rendering). An
+A/B of six runs each on engine d75cc685 showed it did not cure that flake: three reds against
+one. Both double-mounted rows (a cell's content twice, one vnode id) came with the reorder."
+- 2026-10-09T13:03:30Z @neo-opus-vega referenced in commit `cda72af` - "chore(deps): carry Brain fb8c11ee, the merge of the open-questions read, in the package and in CI (#599)"
+- 2026-10-09T13:18:31Z @neo-gpt-emmy cross-referenced by PR #952
+- 2026-10-09T13:22:21Z @neo-opus-vega referenced in commit `9c27730` - "chore(mailbox): merge dev after #629 into the open questions; at Brain fb8c11ee the live preparation frame offers Skip (#599)
+
+The visual spec's two new driver constants (the open questions' and the Skip wire's) are kept
+side by side. Brain fb8c11ee carries #943's skipAgentDependencies, so the Repository pane now
+offers "Skip remaining preparation" during an install; detail-repo-preparation-live.png is
+re-captured to that frame, and every other golden reads unchanged."
+- 2026-10-09T14:19:28Z @neo-opus-grace cross-referenced by #490
+- 2026-10-09T14:33:21Z @neo-opus-vega referenced in commit `40fe796` - "chore(mailbox): merge dev after #641 into the open questions, the visual stamp regenerated (#599)
+
+Only the visual stamp conflicted; package.json and the lock merged cleanly (Brain fb8c11ee kept, dev's dev-deps bumps taken). Regenerated after a full visual run (50/50); units 1637 passed, 11 skipped; the six mailbox NL specs passed."
+- 2026-10-09T14:49:17Z @neo-opus-vega referenced in commit `b5dd52f` - "chore(mailbox): merge dev after #628's squash into the open questions, the visual stamp regenerated (#599)
+
+Only the visual stamp conflicted. Regenerated after a full visual run on the merged tree (50/50); units 1638 passed, 11 skipped."
+- 2026-10-09T15:10:22Z @neo-opus-vega referenced in commit `9645b98` - "chore(mailbox): merge dev after #630's squash into the open questions, the visual stamp regenerated (#599)
+
+Only the visual stamp conflicted. Regenerated after a full visual run on the merged tree (50/50); units 1645 passed, 11 skipped."
+- 2026-10-09T15:21:16Z @neo-opus-vega referenced in commit `4da51c3` - "chore(mailbox): merge dev after #631's squash into the open questions, the visual stamp regenerated (#599)
+
+Only the visual stamp conflicted; FleetCockpitVisual.spec.mjs auto-merged both sides' captures. Regenerated after a full visual run on the merged tree (50/50); units 1650 passed, 11 skipped."
+- 2026-10-09T15:38:51Z @tobiu referenced in commit `41068a4` - "feat(mailbox): the operator's Mailbox lists what waits for their word, and Home's count opens it (#599) (#623)
+
+* feat(mailbox): the operator's Mailbox lists what waits for their word, and Home's count opens it (#599)
+
+Beside compose, `all mail` and `for you · 3 open` switch the list. The open view
+reads the Fleet's `fleetOwnQuestions` (non-terminal Tasks, archived ones included,
+priority then age); its count is Home's own, shown only when the read produced
+one. Archived-but-open rows say `archived`; the freshness chip ages the list by
+its read; a resolve re-counts at once, a read receipt never does. An expired
+question's detail states its sender's planned fallback, or that none was stated.
+
+The list read moves from the cockpit controller into OperatorInbox and follows
+the view, under one fence for both lists. The Brain pin moves to #946's head
+(both halves); it re-pins to the merge commit once that lands.
+
+* fix(mailbox): the open questions keep their read's order and every row, and their pressed state is captured (#599)
+
+The mailbox store sorted every list newest first, which re-sorted the open
+questions out of their read's order (priority, then age), and thread collapse
+could hide a question behind "+N earlier". The open view now clears the
+sorter (AgentMailbox.sortersOf) and lists each question on its own row; all
+mail reads newest first again on the way back. Unit and e2e assert the order.
+
+pane-mailbox-open-questions.png is the frame Clio's design read asked for:
+`for you · 3 open` pressed, three rows in the read's order, one archived.
+
+* fix(mailbox): an empty window of open questions keeps what is held and asks past itself; only a zero count is empty (#599)
+
+A window can show none of the questions its count holds, when the graph cannot project its
+rows. It no longer reads "nothing waits for your word" over a positive count or discards the
+held questions and their detail, and since the edge cannot ask again while the rows in view stay
+the same, the pane asks for the next window itself, three in a row at most. A count no window
+could show says so: "3 open · none can be shown here".
+
+* test(mailbox): stamp the visual baselines for the open view's pane change, its goldens re-read unchanged (#599)
+
+* fix(mailbox): open questions the pane's own asks stopped short of stay reachable through read on (#599)
+
+The bounded run of asks past windows the graph cannot project used to end on "none can be
+shown here" with a hidden grid and no way on, although the read had more. Where the run stops
+short of the read's end, the line says only what was read ("5 open · the ones read so far
+cannot be shown", or "9 open · more follow" beside held rows) and `read on` continues from the
+served cursor with a fresh bounded run. The NL journey proves it in the browser.
+
+* fix(mailbox): the list takes its room before its rows land, as it did before the open-questions rework (#599)
+
+The open-questions rework moved the projection ahead of the body's show, so rows could land in
+a hidden grid. Once on the new engine, one first NL run after a fresh install left read on's
+question unrendered. The pane now decides from the bags whether the list shows, shows it, then
+projects; the state line follows as before.
+
+* revert(mailbox): project before the show again, as 4526fc1 did; the reorder brought no fix and two double-mounts (#599)
+
+The reorder in 45622a3 was a guess at a flaky NL arm (read on's question not rendering). An
+A/B of six runs each on engine d75cc685 showed it did not cure that flake: three reds against
+one. Both double-mounted rows (a cell's content twice, one vnode id) came with the reorder.
+
+* chore(deps): carry Brain fb8c11ee, the merge of the open-questions read, in the package and in CI (#599)"
+- 2026-10-09T15:38:51Z @tobiu closed this issue
+- 2026-10-09T15:41:28Z @neo-opus-vega cross-referenced by #647
 

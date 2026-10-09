@@ -1,7 +1,7 @@
 ---
 id: 942
 title: The operator can Skip a pending Start's dependency install
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-08T22:44:30Z'
-updatedAt: '2026-10-09T03:57:18Z'
+updatedAt: '2026-10-09T12:04:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/942'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-09T12:04:20Z'
 ---
 # The operator can Skip a pending Start's dependency install
 
@@ -105,4 +106,77 @@ Retrieval Hint: "skipAgentDependencies dependencySkipSignal Skip pending Start i
 - 2026-10-09T03:56:52Z @neo-opus-vega cross-referenced by #610
 - 2026-10-09T05:14:34Z @neo-opus-grace cross-referenced by PR #629
 - 2026-10-09T06:17:19Z @neo-opus-grace cross-referenced by #633
+- 2026-10-09T12:04:21Z @tobiu referenced in commit `e74cd6f` - "feat(fleet): the operator can Skip a pending Start's dependency install (#942) (#943)
+
+* feat(fleet): the operator can Skip a pending Start's dependency install (#942)
+
+#938 gave `installSeatDependencies` a skip signal separate from Stop, but nothing fired it.
+
+- `FleetLifecycleService`: each pending Start owns a Stop fence and a Skip fence. `skipDependencies(id)`
+  aborts the Skip fence of every pending Start of the seat and answers `{id, skippedStarts}`;
+  `dependencySkipSignal(id, signal)` hands one attempt's fence out.
+- `FleetManager.startAgent` passes it to the provisioning composer as `dependencySkipSignal`, and
+  `skipAgentDependencies(id)` delegates to the lifecycle like `stopAgent`.
+- `skipAgentDependencies` joins `FLEET_WIRE_METHODS`, both policy ledgers (`awaiting-s5`,
+  `lifecycle-write`, as `stopAgent`) and `FleetControlBridge`.
+- `createFleetRegistryBridge`'s note no longer names a wire-method twin and a parity lint: the
+  product bridge imports this same list.
+
+* test(fleet): the Skip test dispatches through the real wire and bridge (#942)"
+- 2026-10-09T12:04:21Z @tobiu closed this issue
+- 2026-10-09T12:52:30Z @tobiu referenced in commit `7ae86bd` - "feat(agentos): a Start the Fleet is preparing shows its count on the card, cancels from the toggle, and skips from Repository (#616) (#629)
+
+* feat(agentos): a running seat whose working checkout was not prepared says so, and each checkout's preparation reads in Repository (#610)
+
+SeatDependencies words the Fleet's dependencyOutcomes once for the card,
+Agent Detail's Repository pane and the Accounts Repositories card: the card's
+quietest exception reads "skills not verified" for a running seat whose working
+checkout the last start did not prepare; every checkout keeps its own row, a
+failed clone first, an install still running as this start.
+
+* test(agentos): the preparation frames, and the card's skills line follows the state it shows (#610)
+
+The skills line gates on the resolved display state, so a seat the card reads
+offline (stopped or unobserved) says nothing. New goldens: the card line and
+Detail's Repository pane settled, live and light; Ada's Repository pane now
+carries her clone outcomes in two refreshed goldens. Baselines re-stamped.
+
+* test(agentos): re-stamp the visual baselines over dev's merged inputs (#610)
+
+* feat(agentos): a Start the Fleet is preparing shows its count on the card, cancels from the toggle, and skips from Repository (#616)
+
+While the Fleet reports installs for a pending Start, the card reads
+`start… preparing dependencies (n/m done)` in place of `start…` and the local
+`no answer yet`, and the power verb is Cancel start; a sent cancel reads
+`canceling start…`. The Repository pane offers Skip while the Start installs,
+with its consequence beside it, as a side request that never claims the Start's
+pending verb. The verb comes from the pinned wire, so Skip appears once a pin
+carries neomjs/neo-agent-brain#942. The pane's body becomes its own component,
+which keeps detail/Container.mjs under the app file-size bar.
+
+* test(agentos): the preparing card and the Repository pane's Skip, both skins (#616)
+
+* test(agentos): the Skip driver's summary names the verb it adds, not the pin that ships it (#616)
+
+* test(agentos): the card falls back to its plain pending and timeout text once the live rows go (#616)
+
+* fix(agentos): a checkout's dependency row speaks over an older clone outcome, and a clone with no install reported reads unverified (#610)
+
+* fix(agentos): a clone with no install reported reads unverified in one line, and the goldens re-capture the panes that showed it (#610)
+
+* refactor(agentos): the panes read a live Start through the same line the card counts (#616)
+
+* refactor(agentos): Detail's Repository pane reads its checkouts through the Accounts card's Store/Model/list, read-only (#610)
+
+* fix(agentos): the Repository body takes its content's height, the list keeps the pane's rhythm and the failure's weight (#610)
+
+* docs(agentos): the fold's reason names a checkout the start held, not one it cloned (#610)
+
+* fix(agentos): a Skip binds to the attempt it was asked in, and an unanswered cancel stays canceling (#616)
+
+* test(agentos): the earlier attempt's late Skip answer never replaces the current request (#616)
+
+* test(agentos): re-stamp the visual baselines over the attempt-bound Skip and the open cancel (#616)
+
+* test(agentos): the drill round-trip's narrow Detail frames show Ada's checkout rows (#610)"
 

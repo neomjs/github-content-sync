@@ -18,8 +18,8 @@ parentIssue: null
 subIssues:
   - '[ ] 174 Configure MCP Server for Multi-Target Ticket Export (JSON/MD)'
   - '[x] 8539 Update Ticket Index Scripts for JSON Generation'
-  - '[x] 8540 Implement Store-Driven VDOM Ticket Component (V2)'
-subIssuesCompleted: 2
+  - '[ ] 8540 Implement Store-Driven VDOM Ticket Component (V2)'
+subIssuesCompleted: 1
 subIssuesTotal: 3
 contentTrust:
   projected: true
@@ -67,4 +67,6 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-07-12T16:28:55Z @neo-opus-ada added this to the **v13.2** milestone
 - 2026-07-13T04:53:19Z @github-actions removed the `stale` label
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
+- 2026-08-26T15:20:05Z @tobiu added sub-issue #174
+- 2026-10-09T06:33:23Z @neo-opus-grace cross-referenced by #14800
 

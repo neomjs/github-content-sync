@@ -5,11 +5,10 @@ state: OPEN
 labels:
   - documentation
   - Blog Post
-  - stale
   - ai
 assignees: []
 createdAt: '2026-04-10T08:58:52Z'
-updatedAt: '2026-10-05T07:17:19Z'
+updatedAt: '2026-10-09T12:57:10Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9853'
 author: tobiu
 commentsCount: 1
@@ -85,18 +84,16 @@ The release notes are excellent but buried inside the GitHub release page. A sta
 - 2026-04-10T08:58:54Z @tobiu added the `ai` label
 - 2026-04-20T02:07:08Z @tobiu cross-referenced by #158
 - 2026-06-15T18:48:51Z @neo-opus-vega cross-referenced by #13383
-- 2026-06-15T18:49:43Z @neo-opus-vega added parent issue #13383
 - 2026-06-15T23:02:27Z @neo-opus-vega cross-referenced by #13394
 - 2026-06-18T22:40:52Z @neo-opus-vega cross-referenced by #13485
 - 2026-06-18T22:47:27Z @neo-opus-vega cross-referenced by PR #13486
-- 2026-06-23T03:04:39Z @neo-gpt added the `not-code-ready` label
-- 2026-06-23T03:04:39Z @neo-gpt added the `needs-design` label
-- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
-- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 - 2026-09-22T22:48:39Z @neo-fable cross-referenced by #19057
 ### @github-actions - 2026-10-05T07:17:19Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-10-05T07:17:19Z @github-actions added the `stale` label
+- 2026-10-09T12:46:37Z @neo-opus-grace cross-referenced by #19488
+- 2026-10-09T12:47:28Z @neo-opus-grace cross-referenced by PR #19490
+- 2026-10-09T12:57:31Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T13:33:34Z @neo-opus-grace cross-referenced by #19495
 

@@ -1,7 +1,7 @@
 ---
 id: 589
 title: Seat-move review rows inherit default list styling
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-06T17:58:35Z'
-updatedAt: '2026-10-09T03:49:23Z'
+updatedAt: '2026-10-09T12:11:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/589'
 author: neo-gpt
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-09T12:11:09Z'
 ---
 # Seat-move review rows inherit default list styling
 
@@ -100,4 +101,38 @@ Creation sweeps at 2026-10-06 17:58 UTC: live latest 20 open Institution issues 
 - 2026-10-09T06:17:19Z @neo-opus-grace cross-referenced by #633
 - 2026-10-09T06:36:59Z @neo-opus-grace cross-referenced by #635
 - 2026-10-09T06:53:27Z @neo-opus-grace cross-referenced by #638
+- 2026-10-09T12:11:09Z @tobiu referenced in commit `ad98d3b` - "fix(agentos): the seat-move rows sit on the FM panel and every text node picks a documented role (#589) (#622)
+
+* fix(agentos): System's seat-move block reads by state, and its rows scroll in their own box (#614)
+
+A committed move leaves no decision, so the plan box (line, copy-note, rows)
+gives way to the receipt on the status line even though the consent record
+still carries the rows. While the rows are a decision they scroll inside a
+40vh box, so the plane list keeps the view's scroll and stays in reach.
+
+* fix(agentos): a held retirement keeps the seat-move rows in their box, and the frames at the operator's window (#614)
+
+Fleet start stays held while old folders are not all archived, so that state
+keeps the plan line and rows (scrolling, 24vh) without the pre-move copy-note;
+only a clean commit reduces the block to its receipt. New System goldens at
+1552x850: committed (receipt, planes in view) and pending (rows scroll, the
+first card's head reads without a scroll). Baselines re-stamped.
+
+* fix(agentos): the seat-move rows sit on the FM panel and every text node picks a documented role (#589)
+
+The sheet named --fm-text-subhead, --fm-text-label and --fm-radius, none of
+which the FM token block defines, so the title, the copy-note and the seat
+names fell back to the 16px default. The engine list's state tokens are bound
+to --fm-panel and the rows lose the pointer: they are information, not a
+selection.
+
+* test(agentos): the reviewed-move fixture's rows carry the destination every plan row needs (#589)
+
+* test(agentos): the reviewed move on the FM skin, both skins, wide and narrow (#589)
+
+Mixed dispositions and a refused row, the row's surface read against a
+--fm-panel probe at rest, hover and press in both skins, every capture at rest.
+The System frames carrying the seat-root title are refreshed for its display
+role; baselines re-stamped."
+- 2026-10-09T12:11:10Z @tobiu closed this issue
 

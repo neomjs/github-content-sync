@@ -1,7 +1,7 @@
 ---
 id: 618
 title: 'The fleet button reads the plan it would run, and offers Stop fleet'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-09T03:45:35Z'
-updatedAt: '2026-10-09T04:12:34Z'
+updatedAt: '2026-10-09T16:05:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/618'
 author: neo-fable-clio
 commentsCount: 2
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-09T16:05:49Z'
 ---
 # The fleet button reads the plan it would run, and offers Stop fleet
 
@@ -149,4 +150,195 @@ binding that routes the one button by the plan's direction, and the goldens, fol
 owns the one-click start batch, the two-press stop batch, their shared fencing token and the
 summary slot's writer; the roster truth and the per-card lifecycle request stay where they were.
 The cockpit controller returns under the app-file bar."
+- 2026-10-09T12:47:04Z @neo-fable referenced in commit `0d839f0` - "feat(agentos): the fleet button's plan — the stop partition, the label the click would run, a summary that speaks both directions (#618)
+
+The pure half of #618, red-first on the static label: `partitionFleetStop` mirrors the start
+partition (the UP eligible fleet stops; down, benched, pending, unwired and guest rows are excluded
+with reasons), `describeFleetButton` reads the plan a click would run — `Start fleet · n` while
+anything eligible is down, `Stop fleet · n` only when nothing is left to start, the plain
+`Start fleet` with its reason in the title when no plan can be computed — and
+`renderFleetStartSummary` takes the verb (`started` / `stopped`). The toolbar binding, the
+two-press stop and the goldens follow in the same ticket."
+- 2026-10-09T12:47:05Z @neo-fable referenced in commit `65e38f1` - "feat(agentos): the fleet-wide stop is a two-press — the plan first, then one stop intent per planned seat (#618)
+
+`onStopFleet` arms on the first press: the summary slot shows the up, eligible fleet it would stop
+and every exclusion with its reason, and nothing is sent; the second press runs the stop batch —
+the mirror of the start batch, one intent per planned seat through the card's own verb, the
+summary reading `N stopped · M excluded`. A fleet start takes the first press back. The toolbar
+binding that routes the one button by the plan's direction, and the goldens, follow."
+- 2026-10-09T12:47:05Z @neo-fable referenced in commit `6b0ee45` - "refactor(agentos): the cockpit's fleet batches move to their own controller layer (#618)
+
+`FleetBatchController` sits between `ReadingSurfacesController` and the cockpit `Controller` and
+owns the one-click start batch, the two-press stop batch, their shared fencing token and the
+summary slot's writer; the roster truth and the per-card lifecycle request stay where they were.
+The cockpit controller returns under the app-file bar."
+- 2026-10-09T12:47:05Z @neo-fable referenced in commit `0cde80a` - "feat(agentos): the fleet button reads the plan it would run and holds the stop's second press (#618)
+
+The toolbar's chip gets a reference and a handler the batch layer routes by
+the plan: `Start fleet · n` while anything eligible is down, `Stop fleet · n`
+when the up fleet is all that is left, the plain `Start fleet` with its reason
+on the title when no plan can be computed. The label is written on settled
+rosters only — the liveness layer's one admit path now ends in
+`onRosterSettled`, which the batch layer overrides — and a batch in flight
+keeps the last words with the button disabled.
+
+The two-press stop takes the design read's frame: the first press renders the
+plan where the summaries live (`Stop fleet · 8 seats: Ada, Grace, … · 3
+excluded`, every reason on the title) and the chip becomes the second press,
+`Stop fleet · press again`; the arm lasts until that press, a settled roster
+whose plan differs, or ten seconds. Start keeps one press.
+
+Unit: the label's three states and the hold during a batch, the arm's three
+exits (fleetControl.spec), the plan line and its key (startPlan.spec). E2E:
+the journey over the fixture Fleet wire (FleetCardLifecycleNL.spec). Visual:
+one golden per state on the sample roster with lifecycle evidence, the plain
+verb asserted by its title attribute."
+- 2026-10-09T12:47:42Z @neo-fable cross-referenced by PR #643
+- 2026-10-09T12:53:21Z @neo-fable referenced in commit `5938d56` - "chore(agentos): the fleet button's comments describe behavior, provenance stays in the commits (#618)
+
+The source-comment archaeology guard refuses ticket and review references in
+durable comments: six of them in the fleet button's files (four of this lane's,
+two older ones in the control spec's header) now read as the behavior they
+describe, and the PR and commits keep the provenance."
+- 2026-10-09T12:54:59Z @neo-fable referenced in commit `e03baad` - "feat(agentos): the fleet button's plan — the stop partition, the label the click would run, a summary that speaks both directions (#618)
+
+The pure half of #618, red-first on the static label: `partitionFleetStop` mirrors the start
+partition (the UP eligible fleet stops; down, benched, pending, unwired and guest rows are excluded
+with reasons), `describeFleetButton` reads the plan a click would run — `Start fleet · n` while
+anything eligible is down, `Stop fleet · n` only when nothing is left to start, the plain
+`Start fleet` with its reason in the title when no plan can be computed — and
+`renderFleetStartSummary` takes the verb (`started` / `stopped`). The toolbar binding, the
+two-press stop and the goldens follow in the same ticket."
+- 2026-10-09T12:54:59Z @neo-fable referenced in commit `1b54453` - "feat(agentos): the fleet-wide stop is a two-press — the plan first, then one stop intent per planned seat (#618)
+
+`onStopFleet` arms on the first press: the summary slot shows the up, eligible fleet it would stop
+and every exclusion with its reason, and nothing is sent; the second press runs the stop batch —
+the mirror of the start batch, one intent per planned seat through the card's own verb, the
+summary reading `N stopped · M excluded`. A fleet start takes the first press back. The toolbar
+binding that routes the one button by the plan's direction, and the goldens, follow."
+- 2026-10-09T12:54:59Z @neo-fable referenced in commit `41119f2` - "refactor(agentos): the cockpit's fleet batches move to their own controller layer (#618)
+
+`FleetBatchController` sits between `ReadingSurfacesController` and the cockpit `Controller` and
+owns the one-click start batch, the two-press stop batch, their shared fencing token and the
+summary slot's writer; the roster truth and the per-card lifecycle request stay where they were.
+The cockpit controller returns under the app-file bar."
+- 2026-10-09T12:54:59Z @neo-fable referenced in commit `cd2c43a` - "feat(agentos): the fleet button reads the plan it would run and holds the stop's second press (#618)
+
+The toolbar's chip gets a reference and a handler the batch layer routes by
+the plan: `Start fleet · n` while anything eligible is down, `Stop fleet · n`
+when the up fleet is all that is left, the plain `Start fleet` with its reason
+on the title when no plan can be computed. The label is written on settled
+rosters only — the liveness layer's one admit path now ends in
+`onRosterSettled`, which the batch layer overrides — and a batch in flight
+keeps the last words with the button disabled.
+
+The two-press stop takes the design read's frame: the first press renders the
+plan where the summaries live (`Stop fleet · 8 seats: Ada, Grace, … · 3
+excluded`, every reason on the title) and the chip becomes the second press,
+`Stop fleet · press again`; the arm lasts until that press, a settled roster
+whose plan differs, or ten seconds. Start keeps one press.
+
+Unit: the label's three states and the hold during a batch, the arm's three
+exits (fleetControl.spec), the plan line and its key (startPlan.spec). E2E:
+the journey over the fixture Fleet wire (FleetCardLifecycleNL.spec). Visual:
+one golden per state on the sample roster with lifecycle evidence, the plain
+verb asserted by its title attribute."
+- 2026-10-09T12:54:59Z @neo-fable referenced in commit `8d763ef` - "chore(agentos): the fleet button's comments describe behavior, provenance stays in the commits (#618)
+
+The source-comment archaeology guard refuses ticket and review references in
+durable comments: six of them in the fleet button's files (four of this lane's,
+two older ones in the control spec's header) now read as the behavior they
+describe, and the PR and commits keep the provenance."
+- 2026-10-09T13:39:39Z @neo-fable referenced in commit `22b5be5` - "fix(agentos): the stop's second press sends only for the Fleet and the plan the first press showed (#618)
+
+The arm now binds its target — the bridge's profile and the roster store at
+the first press — and the second press re-partitions the roster as it is now
+before anything is sent: a replaced profile, a retired roster, a settled roster
+whose plan differs, or a seat whose own action is pending withdraws the
+confirmation with nothing sent, and the button reads its plan again. The
+liveness layer's roster retirement ends in `onRosterRetired`, which the batch
+layer uses to drop an armed stop the moment its target is replaced.
+
+Two unit arms replay the sequences the review ran: an arm on profile A, the
+profile switched and the roster retired, the second press before B's roster
+answers — zero Stop calls through B; and an arm, one seat's own Stop pending,
+the second press before any roster settles — no duplicate Stop, the plan
+re-read as `Stop fleet · 1`. The unchanged-plan control still sends one Stop
+per planned seat. The cockpit Controller's `@extends` names its real parent."
+- 2026-10-09T15:23:39Z @neo-fable referenced in commit `e56f6d7` - "chore(agentos): merge dev into the fleet button's branch, the baselines re-stamped (#618)"
+- 2026-10-09T15:28:59Z @neo-fable referenced in commit `96c2084` - "chore(agentos): merge dev into the fleet button's branch, the baselines re-stamped (#618)"
+- 2026-10-09T15:42:02Z @neo-fable referenced in commit `10c7ef4` - "chore(agentos): merge dev into the fleet button's branch, the baselines re-stamped (#618)"
+- 2026-10-09T16:05:49Z @tobiu referenced in commit `f9dc363` - "feat(agentos): the fleet button reads the plan it would run and holds the stop's second press (#618) (#643)
+
+* feat(agentos): the fleet button's plan — the stop partition, the label the click would run, a summary that speaks both directions (#618)
+
+The pure half of #618, red-first on the static label: `partitionFleetStop` mirrors the start
+partition (the UP eligible fleet stops; down, benched, pending, unwired and guest rows are excluded
+with reasons), `describeFleetButton` reads the plan a click would run — `Start fleet · n` while
+anything eligible is down, `Stop fleet · n` only when nothing is left to start, the plain
+`Start fleet` with its reason in the title when no plan can be computed — and
+`renderFleetStartSummary` takes the verb (`started` / `stopped`). The toolbar binding, the
+two-press stop and the goldens follow in the same ticket.
+
+* feat(agentos): the fleet-wide stop is a two-press — the plan first, then one stop intent per planned seat (#618)
+
+`onStopFleet` arms on the first press: the summary slot shows the up, eligible fleet it would stop
+and every exclusion with its reason, and nothing is sent; the second press runs the stop batch —
+the mirror of the start batch, one intent per planned seat through the card's own verb, the
+summary reading `N stopped · M excluded`. A fleet start takes the first press back. The toolbar
+binding that routes the one button by the plan's direction, and the goldens, follow.
+
+* refactor(agentos): the cockpit's fleet batches move to their own controller layer (#618)
+
+`FleetBatchController` sits between `ReadingSurfacesController` and the cockpit `Controller` and
+owns the one-click start batch, the two-press stop batch, their shared fencing token and the
+summary slot's writer; the roster truth and the per-card lifecycle request stay where they were.
+The cockpit controller returns under the app-file bar.
+
+* feat(agentos): the fleet button reads the plan it would run and holds the stop's second press (#618)
+
+The toolbar's chip gets a reference and a handler the batch layer routes by
+the plan: `Start fleet · n` while anything eligible is down, `Stop fleet · n`
+when the up fleet is all that is left, the plain `Start fleet` with its reason
+on the title when no plan can be computed. The label is written on settled
+rosters only — the liveness layer's one admit path now ends in
+`onRosterSettled`, which the batch layer overrides — and a batch in flight
+keeps the last words with the button disabled.
+
+The two-press stop takes the design read's frame: the first press renders the
+plan where the summaries live (`Stop fleet · 8 seats: Ada, Grace, … · 3
+excluded`, every reason on the title) and the chip becomes the second press,
+`Stop fleet · press again`; the arm lasts until that press, a settled roster
+whose plan differs, or ten seconds. Start keeps one press.
+
+Unit: the label's three states and the hold during a batch, the arm's three
+exits (fleetControl.spec), the plan line and its key (startPlan.spec). E2E:
+the journey over the fixture Fleet wire (FleetCardLifecycleNL.spec). Visual:
+one golden per state on the sample roster with lifecycle evidence, the plain
+verb asserted by its title attribute.
+
+* chore(agentos): the fleet button's comments describe behavior, provenance stays in the commits (#618)
+
+The source-comment archaeology guard refuses ticket and review references in
+durable comments: six of them in the fleet button's files (four of this lane's,
+two older ones in the control spec's header) now read as the behavior they
+describe, and the PR and commits keep the provenance.
+
+* fix(agentos): the stop's second press sends only for the Fleet and the plan the first press showed (#618)
+
+The arm now binds its target — the bridge's profile and the roster store at
+the first press — and the second press re-partitions the roster as it is now
+before anything is sent: a replaced profile, a retired roster, a settled roster
+whose plan differs, or a seat whose own action is pending withdraws the
+confirmation with nothing sent, and the button reads its plan again. The
+liveness layer's roster retirement ends in `onRosterRetired`, which the batch
+layer uses to drop an armed stop the moment its target is replaced.
+
+Two unit arms replay the sequences the review ran: an arm on profile A, the
+profile switched and the roster retired, the second press before B's roster
+answers — zero Stop calls through B; and an arm, one seat's own Stop pending,
+the second press before any roster settles — no duplicate Stop, the plan
+re-read as `Stop fleet · 1`. The unchanged-plan control still sends one Stop
+per planned seat. The cockpit Controller's `@extends` names its real parent."
+- 2026-10-09T16:05:49Z @tobiu closed this issue
 

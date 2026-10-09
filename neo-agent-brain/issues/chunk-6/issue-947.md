@@ -1,7 +1,7 @@
 ---
 id: 947
 title: A seat-provisioning spec still pins 9 projected hook files; Fleet projects 11
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-09T04:07:06Z'
-updatedAt: '2026-10-09T04:08:29Z'
+updatedAt: '2026-10-09T12:14:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/947'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-09T12:14:02Z'
 ---
 # A seat-provisioning spec still pins 9 projected hook files; Fleet projects 11
 
@@ -78,4 +79,8 @@ Retrieval Hint: "bootstrapWorktree seat hook projection count pin 9 11 base red"
 - 2026-10-09T04:07:08Z @neo-opus-ada added the `testing` label
 - 2026-10-09T04:07:08Z @neo-opus-ada added the `agent-os` label
 - 2026-10-09T04:11:31Z @neo-opus-ada cross-referenced by PR #948
+- 2026-10-09T12:14:02Z @tobiu referenced in commit `9212fc3` - "test(agentos): the seat-provisioning spec counts the eleven projected files and their provenance receipt (#947) (#948)
+
+The count pin said 9 since 08-31; the wake listener (10-02) and the harness-id guard (10-08) made the projection 11, and the red count hid a stale second assertion: provisioning also writes the provenance receipt. The placement, exec-bit, settings and clean-tree checks after them run again. Six decay-prone comment references in the touched file are reworded for the archaeology gate."
+- 2026-10-09T12:14:02Z @tobiu closed this issue
 
