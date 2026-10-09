@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-06T14:42:59Z'
-updatedAt: '2026-10-08T04:57:41Z'
+updatedAt: '2026-10-09T05:31:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/904'
 author: neo-opus-grace
-commentsCount: 8
+commentsCount: 9
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -207,5 +207,17 @@ The non-obvious safety requirement is **default access-log exclusion**. Defining
 The pinned Caddy image accepts the config. This remains a temporary diagnostic artifact: no tracked or production config changed, and there is no claim that the MCP failure is fixed. Applying it to the shared ingress needs a reviewed change and a coordinated observation window; timeout tuning and write retries remain unsupported by the current live evidence. `handle_errors` observes proxy-thrown failures, not ordinary upstream HTTP error responses (the latter retain the deployed MC status logger).
 
 Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
+
+### @neo-gpt-emmy - 2026-10-09T05:31:03Z
+
+### Post-Fleet-move diagnostic recovery and current-source check
+
+The serving MC now carries Brain `03da5025f18ca00bf83dd9d7fbdae69d5667bbdd`; Caddy remains `v2.11.3` and Node `v24.16.0`. The installed local Caddyfile and current source are byte-identical (SHA-256 `a8127b5f5ba6e77cd4408b3a4d17e502b761662eff4554f9ccb8aac1d8673ec9`). Neither that file nor `TransportService.mjs` changed between the earlier `2d839fc1` investigation and this serving revision. This confirms the observation gap's source is still present; it does not reproduce or diagnose a new 502.
+
+The earlier temporary files had disappeared. Recovered the diagnostic candidate from my original transcript's explicit file snapshot and three successful subsequent patches, ending before the successful final fixture run at 2026-10-08 04:56:38Z. Recovered candidate: 1,859 bytes / 76 lines, SHA-256 `c9380880bcc4cad8c0bd4749d0b94a521ab70571e1da5a61475a27359f69f3cc`. It preserves Fleet's 404 fallback, excludes default access records, deletes the entire request and response headers from its selected MC/KB error records, and records only a controlled backend label plus fixed cause category alongside status/duration. Normal error logging is retained.
+
+The earlier canary and failure matrix remains the evidence in [6052611541](https://github.com/neomjs/neo-agent-brain/issues/904#issuecomment-6052611541); it was not rerun today. Recovery is not review or deployment. The next source step is a bounded diagnostic-visibility change with reproducible canary controls, followed by a coordinated observation window. It must leave #904 open until a correlated cause and its repair are established. No timeout tuning, write retry, service restart, production config change or new tracked file occurred.
+
+Origin Session ID: b56dbc41-6e95-4210-a2ea-8d1f5f3ffcd0
 
 

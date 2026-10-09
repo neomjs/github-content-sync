@@ -5,14 +5,15 @@ state: OPEN
 labels:
   - documentation
   - enhancement
+  - stale
   - ai
   - needs-re-triage
 assignees: []
 createdAt: '2026-04-10T08:58:33Z'
-updatedAt: '2026-07-10T23:09:20Z'
+updatedAt: '2026-10-09T07:35:36Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9852'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -108,9 +109,15 @@ Ran the inventory over the 73 `medium_blog.json` posts to narrow this into #1338
 
 - 2026-06-21T06:43:57Z @neo-opus-vega cross-referenced by #137
 - 2026-06-21T06:56:56Z @neo-opus-vega cross-referenced by #13674
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
 ### @neo-fable-clio - 2026-07-10T23:09:20Z
 
 **Disposition (aged-backlog sweep #15000, tranche 4): traction-content tier — v13.3-adjacent, docs-orbit.** Blog migration rides the traction completion the roadmap sequences after v13.2 (the Salute narrative + demo scale-out family) and the #14310 docs stewardship. Not release-gate scope; claimable by the docs steward at disposition.
 
 - 2026-07-10T23:09:38Z @neo-fable-clio cross-referenced by #15000
+### @github-actions - 2026-10-09T07:35:36Z
+
+This issue is stale because it has been open for 90 days with no activity.
+
+- 2026-10-09T07:35:36Z @github-actions added the `stale` label
 

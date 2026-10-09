@@ -10,14 +10,15 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-03T12:04:32Z'
-updatedAt: '2026-10-03T12:04:32Z'
+updatedAt: '2026-10-09T07:05:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/507'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: 505
-subIssues: []
+subIssues:
+  - '[ ] 636 Default perspective design page: the inventory''s homes, measured'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
@@ -50,7 +51,7 @@ The cockpit's default perspective (*Overview*, `apps/agentos/util/CockpitPerspec
 
 ## Acceptance Criteria
 
-- [ ] AC-1 The design page exists on dev with captures of the current default and the proposal at the operator's window size, the inventory placed, and the four questions answered per view; the operator's approval is recorded on this ticket before AC-2 starts.
+- [ ] AC-1 The design page exists on dev (#636, PR #637: `apps/agentos/design/default-perspective.html`, drawn to the operator's capture of 2026-10-09 02:58Z, the inventory placed, the four questions answered per view); the operator's approval is recorded on this ticket before AC-2 starts.
 - [ ] AC-2 First run (no saved perspective) renders the approved default: unit arm on the catalog + NL/e2e arm on the rendered dock topology (`get_dock_topology`).
 - [ ] AC-3 A saved custom perspective is untouched by the new default; *Reset to default* restores the approved layout (NL/e2e arm).
 - [ ] AC-4 Goldens re-captured from a full visual run; `baseline-inputs.txt` re-stamped.
@@ -92,4 +93,34 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 - 2026-10-03T12:21:39Z @neo-opus-grace cross-referenced by #505
 - 2026-10-03T12:23:25Z @neo-opus-vega cross-referenced by #485
 - 2026-10-03T12:32:26Z @neo-fable-clio cross-referenced by #508
+- 2026-10-03T12:41:32Z @neo-fable-clio cross-referenced by #509
+- 2026-10-03T12:41:57Z @neo-fable-clio cross-referenced by #510
+- 2026-10-03T13:49:45Z @neo-gpt-sophie cross-referenced by PR #513
+- 2026-10-03T17:14:28Z @neo-opus-vega cross-referenced by #312
+- 2026-10-03T21:43:20Z @neo-opus-vega cross-referenced by #527
+- 2026-10-03T22:21:24Z @neo-opus-vega cross-referenced by PR #529
+- 2026-10-04T13:01:55Z @neo-opus-ada cross-referenced by PR #542
+- 2026-10-04T16:27:18Z @neo-fable-clio cross-referenced by #551
+- 2026-10-05T10:18:20Z @neo-gpt-emmy cross-referenced by #562
+- 2026-10-05T11:03:02Z @neo-opus-grace cross-referenced by PR #565
+- 2026-10-09T03:16:23Z @neo-fable-clio cross-referenced by #614
+- 2026-10-09T03:45:36Z @neo-fable-clio cross-referenced by #618
+- 2026-10-09T06:16:36Z @neo-fable-clio cross-referenced by #632
+- 2026-10-09T06:43:53Z @neo-fable-clio cross-referenced by #636
+- 2026-10-09T06:44:02Z @neo-fable-clio added sub-issue #636
+- 2026-10-09T06:44:41Z @neo-fable-clio cross-referenced by PR #637
+### @neo-fable-clio - 2026-10-09T06:45:43Z
+
+## AC-1 landed as its own leaf, #636 / PR #637 — the page waits for your word
+
+@tobiu, the design page `apps/agentos/design/default-perspective.html` (on the branch until #637 merges, then on dev) measures your capture of this morning, 02:58Z, the first with all eight active peers booted from the Fleet Manager, and draws today's Overview under the re-declared one at the capture's proportions. It asserts no logical window size: every number is a capture px, and the builder's NL read of the installed viewport decides the final card width.
+
+**The proposal, three moves.** (1) The dock's center becomes a 0.64 : 0.36 split: the fleet-over-feeds stack on the left, a full-height reading column on the right. (2) The six-tab strip splits by nature: Activity and Catch up stay under the roster; Agent Detail, Memories, Mailbox, Tasks and Golden Path move into the column, Memories open at first run, Detail activated by selecting a card. (3) The right band keeps the three invoked tools: Perspectives, Add agent, Wake routes.
+
+**What it buys at your window.** The reading surface's body grows 2.6× (≈ 400 → ≈ 1055 capture px); Activity keeps 7–8 rows; Memories, Mailbox and Tasks are each one move away without displacing the feed; Agent Detail leaves its committed 0.25 band (a card click docks it today, and it stays) for a wider column it shares with the reading tabs. **What it costs.** The roster shows 6 cards (2 × 3) instead of 9, the rest on scroll with Online first on top, Focus one click away for a fleet start; and selecting a peer while Memories or Mailbox is open takes the column to Detail, the reading tab one click back, where today's band leaves the strip untouched beside it.
+
+**Your slot, AC-1.** Approve, or change, three things here: the split numbers (0.64 : 0.36 and 0.62 : 0.38), the column's tab order (Detail · Memories · Mailbox · Tasks · Golden Path), and Memories as the first-run tab. AC-2, the catalog change, is a builder's lane and starts from your record. The ticket's starting direction, a side-by-side lower zone, is overturned on the page: it gives width where the reading views need height.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session fc9a1ad6-b0f5-47d6-99dd-3d42784c4fcb
+
 

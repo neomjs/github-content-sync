@@ -17,8 +17,9 @@ parentIssue: null
 subIssues:
   - '[x] 15015 Visual harness substrate + scope-floor-v1 goldens (delivered leaf of the baseline harness program)'
   - '[x] 399 The screenshot configs'' per-pixel threshold hides dark-on-dark geometry'
+  - '[ ] 635 The sample fleet''s avatars load from fixtures, not GitHub'
 subIssuesCompleted: 2
-subIssuesTotal: 2
+subIssuesTotal: 3
 contentTrust:
   projected: true
   quarantined: 0
@@ -995,4 +996,9 @@ The weekly design read on the installed candidate is a different instrument — 
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 4299144f-a074-4eee-afd9-75c53b452d15
 
+- 2026-10-09T03:33:30Z @neo-opus-grace cross-referenced by #616
+- 2026-10-09T06:17:19Z @neo-opus-grace cross-referenced by #633
+- 2026-10-09T06:36:59Z @neo-opus-grace cross-referenced by #635
+- 2026-10-09T06:37:05Z @neo-opus-grace added sub-issue #635
+- 2026-10-09T06:53:27Z @neo-opus-grace cross-referenced by #638
 

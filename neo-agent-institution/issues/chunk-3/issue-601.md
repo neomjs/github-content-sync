@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-08T00:47:06Z'
-updatedAt: '2026-10-08T03:24:40Z'
+updatedAt: '2026-10-09T04:47:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/601'
 author: neo-gpt-sophie
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +23,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 19465 Handle-scoped sorts still claim body gestures'
+  - '[x] 19465 Handle-scoped sorts still claim body gestures'
 blocking: []
 ---
 # Accounts body gestures start a popup drag
@@ -48,6 +48,8 @@ Accounts is a legacy `Neo.dashboard.Panel` inside its own `Neo.dashboard.Contain
 
 After Engine prerequisite neomjs/neo#19465 preserves native body interaction, configure the Accounts dashboard's sort zone with a selector that matches only its intended header. Give that header a distinct selector class while retaining its native `neo-draggable` marker. Preserve header-based sorting and tear-out. The [measured selector-only counterexample](https://github.com/neomjs/neo-agent-institution/issues/601#issuecomment-6050929154) shows why the consumer change alone is insufficient.
 
+## Contract Ledger
+
 | Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
 | --- | --- | --- | --- | --- | --- |
 | Accounts drag admission | Operator decision above; existing dashboard handle selector | Only its header starts pane movement | Body remains ordinary interactive content | Header/host intent in existing JSDoc | Native gesture test with header positive control and body negative controls |
@@ -59,7 +61,11 @@ Decision Record impact: none; restores the requested interaction boundary using 
 - [ ] A drag beginning in body whitespace, list text, detail text or form controls does not start the dashboard drag or open a popup.
 - [ ] A deliberate Accounts header drag still starts pane movement and can tear out.
 - [ ] Body selection, scrolling and controls remain usable.
-- [ ] Regression coverage fails on the broad body selector and passes with the header boundary; an installed receipt records the actual candidate separately from source tests.
+- [ ] Regression coverage fails on the broad body selector and passes with the header boundary. [L3-deferred — operator handoff needed] An installed receipt records the actual candidate separately from source tests; the next-candidate witness remains with Sophie under #505.
+
+## Post-Merge Validation
+
+On the next agreed installed candidate, Sophie repeats the Accounts body/header gestures and records the actual Product and Engine inputs on #505. This requires the merged consumer and Engine pin; source/browser evidence does not certify the installed app. No new harness restart or app replacement is authorized by this ticket alone.
 
 ## Out of Scope
 
@@ -71,11 +77,12 @@ Related: #12 and #505. The separately tracked Engine popup-close defect must rem
 
 Live latest-open sweep: latest 20 created-descending Institution and Engine issues at 2026-10-08T00:46Z, no equivalent. All-state latest 30 A2A messages: no competing Accounts claim. Historical org search `Accounts popup`: no match. MC sweep `Accounts pane body dragging popup close duplicated view`: three results, earlier popup/dock incidents but no matching header-boundary decision. Own-assignment sweep: Institution none; Engine only `#19446`, a different surface.
 
-Owner: Sophie. Native blocked-by edge: neomjs/neo#19465. The Engine prerequisite is in implementation; the consumer configuration and installed FM acceptance remain part of this leaf.
+Owner: Sophie. Native blocked-by edge: neomjs/neo#19465. The Engine prerequisite merged in neomjs/neo#19466 at `d75cc685`. The consumer includes that exact Engine pin; installed FM acceptance remains explicitly tracked above.
 
 Origin Session ID: e6ce4d70-a7ff-454e-996d-e7c25efdf4cf
 
 Retrieval Hint: "Accounts body drag header-only handle popup"
+
 
 ## Timeline
 
@@ -105,4 +112,18 @@ Implementation sequencing is now concrete: Engine [#19466](https://github.com/ne
 Emmy has offered to integrate that patch under her existing mapped checkout identity after the prerequisite merges and the checkout's source/custody boundary is verified. Sophie retains this outcome and the installed acceptance. The patch is not applied, and the eventual Engine pin plus Institution tests remain part of that integration. The source setup was not bypassed by creating another checkout or borrowing a peer's identity.
 
 - 2026-10-08T04:22:45Z @neo-gpt-sophie cross-referenced by #602
+- 2026-10-08T15:07:22Z @neo-gpt-emmy cross-referenced by #606
+### @neo-gpt-sophie - 2026-10-09T04:47:03Z
+
+Source validation on Product `32627ab` plus the Accounts handle configuration and Engine `d75cc685`:
+
+- `AccountsConfigSurface.spec.mjs` now drives body whitespace, list/detail text, input and wheel scrolling with native mouse events, checking both the native drag guard and App-worker sort state. The header still starts sorting and opens a real popup; its DOM id and preserved input bind it to the original live Accounts instance. Final focused run passes.
+- The test fails on the original implementation. With the new Engine still installed, restoring only the broad `.neo-draggable` selector also fails at the first body press. The final source restores the distinct header selector.
+- Required full headed NL comparison: **71 passed / 6 failed before → 72 passed / the same 6 failed cases after**. Baseline failures are the AgentCard, DrillRoundTrip, GoldenPath, Memories and NavFamily screenshot arms plus the CockpitStateWalkthrough roster census. This is a baseline comparison, not a green full-suite claim.
+- Full Darwin visual recapture: **43 passed / 2 failed; no PNG changes**. The existing setup witness-row test expects three preset controls hidden by the new Create flow and also fails on the prior Engine. A Perspectives-pressed failure in the pane-head census did not reproduce: prior Engine control passed and the proposed pin passed **3/3** isolated trials. That single transient remains disclosed; no causal Engine defect is asserted.
+
+The Engine pin advances exactly one merged commit, neomjs/neo#19466. Current source uses the existing `sortZoneConfig.dragHandleSelector` mechanism and preserves `neo-draggable` on the header. Installed acceptance remains the separately recorded next-candidate witness under #505; no installed app or active peer harness was changed.
+
+- 2026-10-09T04:49:10Z @neo-gpt-sophie cross-referenced by PR #627
+- 2026-10-09T06:53:27Z @neo-opus-grace cross-referenced by #638
 

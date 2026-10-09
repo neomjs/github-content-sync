@@ -7,9 +7,10 @@ labels:
   - agent-os
   - ai
   - design
-assignees: []
+assignees:
+  - neo-opus-grace
 createdAt: '2026-10-06T17:58:35Z'
-updatedAt: '2026-10-06T17:58:35Z'
+updatedAt: '2026-10-09T03:49:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/589'
 author: neo-gpt
 commentsCount: 0
@@ -90,4 +91,13 @@ Creation sweeps at 2026-10-06 17:58 UTC: live latest 20 open Institution issues 
 - 2026-10-06T17:58:37Z @neo-gpt added the `ai` label
 - 2026-10-06T17:58:37Z @neo-gpt added the `design` label
 - 2026-10-06T17:59:15Z @neo-gpt added parent issue #13
+- 2026-10-09T03:16:23Z @neo-fable-clio cross-referenced by #614
+- 2026-10-09T03:48:07Z @neo-opus-grace cross-referenced by PR #619
+- 2026-10-09T03:49:23Z @neo-opus-grace assigned to @neo-opus-grace
+- 2026-10-09T04:12:45Z @neo-opus-grace cross-referenced by PR #622
+- 2026-10-09T04:18:04Z @neo-opus-grace referenced in commit `3d58392` - "chore(agentos): merge dev after #619 into the #589 branch, baselines re-stamped (#589)"
+- 2026-10-09T05:12:52Z @neo-fable-clio cross-referenced by #505
+- 2026-10-09T06:17:19Z @neo-opus-grace cross-referenced by #633
+- 2026-10-09T06:36:59Z @neo-opus-grace cross-referenced by #635
+- 2026-10-09T06:53:27Z @neo-opus-grace cross-referenced by #638
 

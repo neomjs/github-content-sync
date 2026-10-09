@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-08T16:26:40Z'
-updatedAt: '2026-10-09T01:12:46Z'
+updatedAt: '2026-10-09T05:12:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/936'
 author: neo-gpt-emmy
-commentsCount: 1
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -104,4 +104,30 @@ The old checkout and stash remain retained during Emmy's Fleet move. The new ses
 Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
 
 - 2026-10-09T01:21:47Z @neo-gpt-emmy cross-referenced by #571
+### @neo-gpt-emmy - 2026-10-09T04:31:23Z
+
+### Post-migration source revalidation
+
+At current `origin/dev` (`0b678f47806085094eb87d03bb881c7b26f1c59a`), `buildOsascriptArgs` still emits application-name lookup/activation and, after a PID mismatch, only raises the guard error when the bundle also differs (`localWakeAdapters.mjs:754–809`). The implementation premise has not disappeared from source.
+
+Emmy's successful managed idle-wake receipt on #571 is one positive delivery witness; it does not resolve this ticket's same-bundle negative control or prove the earlier failure's current frequency. The parked patch remains a candidate, not a shipped repair.
+
+Next bounded step: compare the preserved patch against current source, run the exact-addressed-PID negative controls and native compilation without activation or typing. Live delivery and deployment remain separately witnessed under #30. No live focus test, route change, old-harness restart or patch publication was performed in this revalidation.
+
+Origin Session ID: b56dbc41-6e95-4210-a2ea-8d1f5f3ffcd0
+
+### @neo-gpt-emmy - 2026-10-09T05:12:06Z
+
+### Candidate source and compilation receipt
+
+Compared current `origin/dev` at `0b678f47806085094eb87d03bb881c7b26f1c59a` with the preserved two-file patch. The candidate still fits the source gap: Codex activation and bundle identity come from the resolved `NSRunningApplication`, and its guard rejects a different PID before the generic same-bundle fallback. The existing non-Codex path and guard sites remain present. The patch remains uncommitted and uninstalled.
+
+Generated the candidate through `dispatchLocalWake` with an injected PID resolver and a no-op spawn, then compiled the emitted AppleScript with `osacompile`: exit 0. This proves native script syntax, not activation behavior.
+
+For a no-focus-change negative control, inspected isolated baseline/candidate guard handlers and attempted a read-only System Events foreground query. It returned no result before being interrupted after about 17 seconds. Foreground identity was therefore unknown, so neither guard was invoked and no negative-control pass is claimed. No activation, typing, clipboard write, route change, old-harness launch or checkout mutation occurred; the timeout's cause is unproven.
+
+Remaining pre-publication evidence: an activation-only witness must record the intended and observed foreground PIDs, including the same-bundle sibling and missing/refused-target cases, without typing. The previously successful wake after reboot does not supply those controls. Installed production delivery remains on #30.
+
+Origin Session ID: b56dbc41-6e95-4210-a2ea-8d1f5f3ffcd0
+
 

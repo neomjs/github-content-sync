@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-08T22:44:30Z'
-updatedAt: '2026-10-08T23:19:05Z'
+updatedAt: '2026-10-09T03:57:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/942'
 author: neo-opus-vega
 commentsCount: 0
@@ -52,7 +52,7 @@ The operator's 2026-09-30 decision asked for preparation "with visible progress 
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `skipAgentDependencies` (new; `src/fleet/contract/wire.mjs`, `fleetServerPolicy.mjs`, `FleetControlBridge`) | #610 design read; this ticket | A lifecycle-write verb taking the seat id, answering `{id, skippedStarts}` | An older Fleet refuses the unknown method, failing closed | JSDoc | wire/policy parity specs, bridge unit |
+| `skipAgentDependencies` (new; `src/fleet/contract/wire.mjs`, `fleetServerPolicy.mjs`, `FleetControlBridge`) | neomjs/neo-agent-institution#610 design read; this ticket | A lifecycle-write verb taking the seat id, answering `{id, skippedStarts}` | An older Fleet refuses the unknown method, failing closed | JSDoc | wire/policy parity specs, bridge unit |
 | `FleetLifecycleService.skipDependencies(id)` (new) | same | Aborts the skip controller of each pending Start of `id` not yet skipped; `skippedStarts` counts them. A Start already past its install ignores it | No pending Start: `skippedStarts: 0`, no change. A repeated Skip does not count again | JSDoc | lifecycle unit |
 | `FleetManager.startAgent` → `startAgentProvisioned({dependencySkipSignal})` | #938's seam | Each attempt's own skip signal reaches `installSeatDependencies`: the interrupted checkouts read `skipped`, finished ones keep their outcome, and the Start launches | A Stop still wins: its interrupted rows read `canceled` and the Start answers `canceledStart`. A later Start gets a fresh skip signal | JSDoc | manager unit with an injected install |
 
@@ -64,22 +64,22 @@ Decision Record impact: none (completes #937's accepted contract).
 - [ ] A Skip while a Start installs ends the running installs: the interrupted checkouts read `skipped`, finished ones keep their outcome, and the Start launches (unit over `FleetManager.startAgent` with an injected install).
 - [ ] A Skip with no pending Start answers `skippedStarts: 0` and changes nothing; a Start after a Skip gets a fresh skip signal.
 - [ ] A Stop after a Skip still cancels the Start: it answers `canceledStart`, and the rows it interrupted read `canceled`.
-- [ ] Post-merge (installed): #610's Skip on Agent Detail ends a fresh seat's install and the seat launches. Residual owner: neomjs/neo-agent-institution#610.
+- [ ] Post-merge (installed): the Agent Detail Skip (neomjs/neo-agent-institution#616) ends a fresh seat's install and the seat launches. Residual owner: neomjs/neo-agent-institution#616.
 
 ## Out of Scope
 
-- The Agent Detail control, the progress line and the readiness exception (neomjs/neo-agent-institution#610).
+- The Agent Detail control and the progress line (neomjs/neo-agent-institution#616), and the readiness exception (neomjs/neo-agent-institution#610).
 - A Skip chosen before the Start: the design read offers Skip during the install only.
 - Stop's semantics.
 
 ## Avoided Traps
 
-- **Skip as a Start option** (`startAgent(id, {skipDependencies})`), #610's first shape: the design read moved Skip into the install, where the operator can see it is slow. A Start option asks before any cost is visible.
+- **Skip as a Start option** (`startAgent(id, {skipDependencies})`), neomjs/neo-agent-institution#610's first shape: the design read moved Skip into the install, where the operator can see it is slow. A Start option asks before any cost is visible.
 - **Reusing the Stop signal:** Stop cancels the Start, and Skip must let it launch (Grace's ask on #937).
 
 ## Related
 
-#937 / PR #938 (producer) · neomjs/neo-agent-institution#610 (consumer, Grace) · neomjs/neo-agent-institution#245 (operator decision) · #571
+#937 / PR #938 (producer) · neomjs/neo-agent-institution#616 (consumer, Grace; split from neomjs/neo-agent-institution#610) · neomjs/neo-agent-institution#245 (operator decision) · #571
 
 Live latest-open sweep: the latest 20 open Brain issues at 22:43Z; no equivalent. Org-wide `gh search issues "skip dependency install"`: none.
 A2A claim sweep: no claim on a Skip verb in the last hour; Grace's 19:55Z message names this leaf as Brain's.
@@ -92,6 +92,7 @@ Retrieval Hint: "skipAgentDependencies dependencySkipSignal Skip pending Start i
 
 
 
+
 ## Timeline
 
 - 2026-10-08T22:44:31Z @neo-opus-vega assigned to @neo-opus-vega
@@ -100,4 +101,8 @@ Retrieval Hint: "skipAgentDependencies dependencySkipSignal Skip pending Start i
 - 2026-10-08T22:44:33Z @neo-opus-vega added the `agent-os` label
 - 2026-10-08T22:57:02Z @neo-opus-vega referenced in commit `99e5c0b` - "test(fleet): the Skip test dispatches through the real wire and bridge (#942)"
 - 2026-10-08T22:57:22Z @neo-opus-vega cross-referenced by PR #943
+- 2026-10-09T03:33:30Z @neo-opus-grace cross-referenced by #616
+- 2026-10-09T03:56:52Z @neo-opus-vega cross-referenced by #610
+- 2026-10-09T05:14:34Z @neo-opus-grace cross-referenced by PR #629
+- 2026-10-09T06:17:19Z @neo-opus-grace cross-referenced by #633
 

@@ -9,7 +9,7 @@ labels:
   - epic
 assignees: []
 createdAt: '2026-09-28T11:52:12Z'
-updatedAt: '2026-10-04T14:27:55Z'
+updatedAt: '2026-10-09T04:45:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/312'
 author: neo-opus-vega
 commentsCount: 9
@@ -27,8 +27,11 @@ subIssues:
   - '[x] 487 The Observatory''s panel reads kind-appropriate evidence for a selected node without a source view'
   - '[x] 527 The Observatory''s side panel width is a splitter, kept for the session'
   - '[x] 544 The Observatory''s NL e2e arms open the section they read, now that the side panel opens one at a time'
+  - '[ ] 624 The Observatory names each surface once: its view, its Route, its pane'
+  - '[ ] 625 The Observatory head opens with the team''s sentence; its counts move behind Details'
+  - '[ ] 626 The Observatory''s Nodes list leads with what changed, and names its order'
 subIssuesCompleted: 11
-subIssuesTotal: 12
+subIssuesTotal: 15
 contentTrust:
   projected: true
   quarantined: 0
@@ -41,7 +44,7 @@ milestone: FM v1
 
 Terminal predicate: on the installed Fleet Manager, from a cold launch, the operator walks D#19317's Q1–Q5 in the Observatory: readable wells at the Brain's own strategic anchors, attention on named work events, the Golden Path route, who authored, was assigned or recently changed what, and any node's evidence one step away.
 
-Row state: row 3 · Vega · unknown · 2026-10-04, installed candidate staged 2026-10-03 09:23Z (Brain `fb40366`, Engine `82bc615`): warm partial walk, 1 fail (#509) · plan: planned 2 · done 1 at source (#509 → #528 merged 12:38Z as `ea906aa`) · added 4 (gap list accepted 2026-10-03; three design leaves accepted by the reader 17:26Z; #527 split from #509 by the reader's decision 4, 21:24Z) · added leaf #527 done at source (#529 merged 13:46Z as `4a87509`; it also made the no-canvas panel whole-body, a defect since #258) · #544 done (PR #545 merged 14:05Z as `1a77f66`: the NL battery's two arms that #528 broke) · next: #12 candidate A (Emmy: Institution `22724d40`, carries `610689ab2` + `ea906aa`, built before `4a87509`, so #527's splitter rides the next candidate; none of the eight checks reads it) installed in the operator's window → the cold walk #485: checks 1, 2 and 4–8 through the bridge → Vega, check 3 and the lens colours → Clio or the operator
+Row state: row 3 · Vega · unknown · 2026-10-09, installed Candidate F staged 2026-10-08 23:22Z (Institution `b089d21`, Brain `03da5025`, Engine `e1b8fb0`), which carries every row-3 fix so far (#528 `ea906aa`, #527 `4a87509`, #544 `1a77f66`) · plan: the three design leaves the reader accepted on 2026-10-03, filed today: #624 (one name per surface), #625 (the head opens with the team's sentence), #626 (the Nodes list leads with what changed) · next: the cold walk #485 on F in an operator slot (checks 1, 2 and 4–8 through the bridge → Vega; check 3 and the lens colours → Clio or the operator) · #624 then #625 built by Vega now, #626 open to any seat · the 10-04 line is in this body's edit history
 
 ## Problem scope
 
@@ -102,20 +105,6 @@ Epic sweep: 7 open Institution epics and 38 open Brain epics read, by terminal p
 Structure map: run 2026-09-28 in the Brain checkout; the Brain leaves sit in `ai/services/memory-core` (`GraphService`) and `ai/services/fleet` (`fleetGraphSceneSource`). The Institution consumer is not Brain-hosted (N/A).
 Origin Session ID: 96f97500-4dcb-461e-bef0-af4e6dc5e24a
 Retrieval Hint: "Observatory shared operating picture epic wells attention team lens D19317"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## Timeline
@@ -458,4 +447,14 @@ Row 3's lift input is complete on the cockpit side. #510 / #507 stay under #505,
 - 2026-10-04T13:01:37Z @neo-gpt-emmy cross-referenced by #12
 - 2026-10-04T13:43:13Z @neo-opus-vega cross-referenced by #544
 - 2026-10-04T13:43:24Z @neo-opus-vega added sub-issue #544
+- 2026-10-06T11:52:07Z @neo-opus-ada cross-referenced by #573
+- 2026-10-06T13:58:17Z @neo-gpt-emmy cross-referenced by #582
+- 2026-10-09T04:43:53Z @neo-opus-vega cross-referenced by #624
+- 2026-10-09T04:44:30Z @neo-opus-vega cross-referenced by #625
+- 2026-10-09T04:44:59Z @neo-opus-vega cross-referenced by #626
+- 2026-10-09T04:45:04Z @neo-opus-vega added sub-issue #624
+- 2026-10-09T04:45:06Z @neo-opus-vega added sub-issue #625
+- 2026-10-09T04:45:08Z @neo-opus-vega added sub-issue #626
+- 2026-10-09T05:46:32Z @neo-gpt-emmy cross-referenced by PR #630
+- 2026-10-09T06:43:39Z @neo-gpt-emmy cross-referenced by PR #631
 
