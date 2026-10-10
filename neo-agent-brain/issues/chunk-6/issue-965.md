@@ -1,7 +1,7 @@
 ---
 id: 965
 title: Resuming an older Claude session silences the seat's wakes
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-10T13:40:21Z'
-updatedAt: '2026-10-10T13:40:21Z'
+updatedAt: '2026-10-10T14:30:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/965'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-10T14:30:19Z'
 ---
 # Resuming an older Claude session silences the seat's wakes
 
@@ -30,11 +31,17 @@ blocking: []
 
 On 2026-10-10 the operator noticed that `@neo-opus-ada` never woke for a review verdict. Emmy's wake-enabled hand-offs on neo `#19542` went out at 12:55:31Z and 13:03:27Z. Measured on that seat at 13:3xZ, read-only:
 
-- The seat's Claude Desktop instance runs two Claude Code sessions. One is live, with its process started at 12:49:02Z. The other started at 12:57:09Z with `--resume` for an older session, and it has been idle since: 8 s of CPU, sleeping, no turn.
+- The seat's Claude Desktop instance runs two Claude Code sessions. One is live, with its process started at 12:49:02Z. The other started at 12:57:09Z with `--resume` for an older session. Since then it has had one injected turn, described below, and no prompt.
 - The seat's listener record (`LISTENER_STATE_RELATIVE/neo-opus-ada.json`) names the resumed session as owner. Its listener pid, the `SessionStart` hook run, has exited.
 - The seat's pull subscription is `active` and `routeDeliverable`, but its `lastPollAt` is 11:29:21Z. Nothing has polled since the live session started.
 
-Unknown: what resumed the older session. It started in the same second that Desktop relaunched the seat's MC/KB servers after the plane cut, and might have been opened from the sidebar. The defect does not depend on the cause.
+What resumed it, measured later from the resumed session's own transcript:
+
+- The previous session had opened `#19542` with Auto-fix on, and the desktop app kept that PR's monitor bound to it.
+- Emmy's review at 12:55Z made the app enqueue a `<ci-monitor-event>` into that session at 12:57:11Z.
+- The hook record shows `SessionStart:resume` running `wakeListenerHook` (the claim) and no `UserPromptSubmit`.
+- The model refused the turn at 12:57:18Z, and no `Stop` hook ran.
+- The app then listed the session as not running, while its process stayed alive and kept the seat. Nothing in the UI could close it.
 
 ## The Problem
 
@@ -96,6 +103,7 @@ Retrieval Hint: "wake listener seat ownership resumed session superseded no poll
 
 Origin Session ID: c8bc6416-bf17-4e1c-9183-0ce0d7aeed48
 
+
 ## Timeline
 
 - 2026-10-10T13:40:21Z @neo-opus-ada assigned to @neo-opus-ada
@@ -103,4 +111,9 @@ Origin Session ID: c8bc6416-bf17-4e1c-9183-0ce0d7aeed48
 - 2026-10-10T13:40:23Z @neo-opus-ada added the `ai` label
 - 2026-10-10T13:40:23Z @neo-opus-ada added the `agent-os` label
 - 2026-10-10T13:40:26Z @neo-opus-ada added parent issue #571
+- 2026-10-10T14:05:23Z @neo-opus-ada cross-referenced by PR #967
+- 2026-10-10T14:30:19Z @tobiu referenced in commit `e5fbfda` - "fix(hooks): the session prompted last owns a Claude seat's wakes, not the newest process (#965) (#967)
+
+A resume starts a new process for an old session and fires SessionStart without a prompt. Under the newest-process rule that session took the seat and never polled, and the live session's Stop stood down, so the seat received no wakes. The claim moves from SessionStart to UserPromptSubmit. A Stop now polls only while its own session owns the seat, and a dead or absent owner frees it."
+- 2026-10-10T14:30:20Z @tobiu closed this issue
 

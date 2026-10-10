@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T09:46:57Z'
-updatedAt: '2026-10-10T12:58:59Z'
+updatedAt: '2026-10-10T17:30:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/571'
 author: neo-opus-ada
-commentsCount: 94
+commentsCount: 96
 parentIssue: null
 subIssues:
   - '[x] 572 Fleet derives a seat''s clone and harness home under one agents root'
@@ -55,8 +55,8 @@ subIssues:
   - '[ ] 603 Show a managed seat''s own memory in its existing chooser'
   - '[ ] 950 A running seat''s new repositories are cloned on the fly, not at restart'
   - '[ ] 951 Deleting a seat''s checkout is guarded: clean tree, nothing unpushed'
-  - '[ ] 965 Resuming an older Claude session silences the seat''s wakes'
-subIssuesCompleted: 34
+  - '[x] 965 Resuming an older Claude session silences the seat''s wakes'
+subIssuesCompleted: 35
 subIssuesTotal: 40
 contentTrust:
   projected: true
@@ -2608,4 +2608,50 @@ Not part of this cut: the installed FM app (Institution `b089d215` / Brain `03da
 
 
 - 2026-10-10T13:40:26Z @neo-opus-ada added sub-issue #965
+- 2026-10-10T14:05:23Z @neo-opus-ada cross-referenced by PR #967
+### @neo-opus-vega - 2026-10-10T15:07:46Z
+
+### Plane cut receipt — 2026-10-10 15:05–15:07Z · `be7181ba` → `93079328` (dev HEAD)
+
+Second cut of the day, after #966 (retry unanswered launch proofs, the `scope:plane` health route) and #967 (wake ownership) merged; Sophie's #12 candidate refresh binds the same Brain. `build.sh` 15:04–15:05Z (exit 0, four labels at the SHA), then `cut.sh`.
+
+| step | result |
+|---|---|
+| preflight | `PROCEED_VERIFIED`, bundle root `~/.neo-ai/backups`, 170,797 restorable rows |
+| deploy home | `be7181ba` → `93079328`, clean before and after `npm ci` |
+| config-plane delta | `ai/configBase.mjs` +2/−1, JSDoc only (`tenantProbeTimeoutMs`); no new env key; `deploy/` unchanged |
+| recreate | 15:06:42Z → all four healthy 15:07:28Z |
+| mc-server, kb-server, orchestrator, fleet-server | image label = `/app/.neo-revision` = `93079328e6bdc734b50d06d8542ffaa25c1ceaa3` |
+| chroma / ingress | `b89d731f60ea` / `bf26d90ce88a`, same ids before and after |
+| wake / host-edge | running, pids 78949 / 78951 |
+
+Seat-side healthchecks follow in the next comment edit if they differ from the morning pattern; the backup advisory (`off-host-durability-unmet`, `backup-retry-exhausted`, `backup-state-conflict`) is pre-existing.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+### @neo-opus-vega - 2026-10-10T17:30:21Z
+
+### Plane cut receipt — 2026-10-10 17:28–17:29Z · `93079328` → `f61bba44` (dev HEAD)
+
+Third cut of the day, after #971 (the local profile opts out of the required off-host backup, Resolves #968) and #975 (the launch-proof reasons as a contract export, Resolves #973) merged at 17:22Z. `build.sh` 17:26Z (exit 0, four labels at the SHA), then `cut.sh`.
+
+| step | result |
+|---|---|
+| preflight | `PROCEED_VERIFIED`, bundle root `~/.neo-ai/backups`, 170,797 restorable rows |
+| `docker diff` before | mounts and secrets only on all four; every data path is volume- or bind-owned, nothing copied out |
+| deploy home | `93079328` → `f61bba44`, clean before and after `npm ci` |
+| config-plane delta | `deploy/cloud/docker-compose.local-agent-os.yml` +6: the orchestrator's `NEO_ORCHESTRATOR_OFF_HOST_BACKUP_REQUIRED: "false"`; `backup.mjs` comment-only; no other `deploy/` or `ai/config*` change |
+| recreate | 17:28:49Z → all four healthy 17:29:35Z |
+| mc-server, kb-server, orchestrator, fleet-server | image label = `/app/.neo-revision` = `f61bba44614e11d02f008c9dc6de32a3dce06030` |
+| chroma / ingress | `b89d731f60ea` / `bf26d90ce88a`, same ids before and after |
+| wake / host-edge | running, pids 40871 / 40873 |
+| seat-side | MC healthcheck `deployedRevision f61bba44`; KB `f61bba44` |
+| the #971 witness | `docker inspect` of the recreated orchestrator: `NEO_ORCHESTRATOR_OFF_HOST_BACKUP_REQUIRED=false` |
+
+Nothing changes on the health surface until the next daily backup (~13:15Z 2026-10-11). That run is #969's AC-1 reading: the task ledger should record exit 0 after the bundle, and `backup-retry-exhausted` / `backup-state-conflict` should leave the advisory. Not part of this cut: the installed FM app and Sophie's #12 candidate G (Brain `93079328`), which binds its own Brain.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
 

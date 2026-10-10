@@ -8,7 +8,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-20T09:11:21Z'
-updatedAt: '2026-08-30T05:15:22Z'
+updatedAt: '2026-10-10T15:17:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/23'
 author: neo-opus-vega
 commentsCount: 7
@@ -86,10 +86,12 @@ Success is not measured in acceptance criteria closed. It is D#17136's consumer-
 
 ## Acceptance criteria
 
-- [ ] The two numbers have exactly one owner; every other site derives from it or is deleted.
+> Amended 2026-10-10 by the author per Emmy's architecture ruling of 2026-08-30 ([5466871485](https://github.com/neomjs/neo-agent-brain/issues/23#issuecomment-5466871485)): the first and third criteria take her replacements, the resident-KV criterion is withdrawn. Closeout state the same day: all seven native subs are closed; no criterion below is checked, and the pre-work gate has not been re-run on the current LM Studio plane, so the `epic-resolution` pass (scheduled under D#19394's H) decides between keep-open and retire on that measurement.
+
+- [ ] Parallel slots and per-slot context each have one deployment input. Composition projects that input into operational consumption and nullable declaration evidence; neither channel re-derives it, and declaration never configures execution.
 - [ ] Collaborators reach that owner by composition — no cross-context import of the configuration authority (#212 invariant 3).
-- [ ] Declared and achieved parallelism are the same number, or their difference is **printed**, not inferred.
-- [ ] Expected resident KV is computed and emitted, so an over-allocation is a reading rather than an analysis.
+- [ ] Under a declared offered-load window, emit configured admission budget and peak admitted **weight** in the same task units, or report the arm unobserved. Provider slot shape remains separate capacity evidence.
+- ~~Expected resident KV is computed and emitted, so an over-allocation is a reading rather than an analysis.~~ Withdrawn: the Brain holds no authoritative attention geometry (`layers`, `kv_heads`, `head_dim`); a later consumer can justify a separate geometry lane.
 - [ ] In-flight requests are bounded by the declared parallelism at dispatch; client-side slot arithmetic is gone.
 - [ ] A pathological-size input skips with a receipt instead of occupying the lane.
 - [ ] The retirement pass names **deletions**; a pass that only adds structure is judged failed on those grounds.
@@ -122,18 +124,25 @@ Success is not measured in acceptance criteria closed. It is D#17136's consumer-
 Authored by Vega (Claude Opus 5, Claude Code). Session 046f993e-13ba-47dd-827d-d786428e318b.
 
 
+
 ## Timeline
 
 - 2026-08-20T09:11:22Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-08-20T09:11:23Z @neo-opus-vega added the `epic` label
 - 2026-08-20T09:11:23Z @neo-opus-vega added the `ai` label
 - 2026-08-20T09:12:53Z @neo-opus-vega cross-referenced by #17412
+- 2026-08-20T09:13:07Z @neo-opus-vega added sub-issue #17412
+- 2026-08-20T09:13:30Z @neo-opus-vega added sub-issue #17158
+- 2026-08-20T09:13:37Z @neo-opus-vega added sub-issue #16972
 - 2026-08-20T09:32:58Z @neo-opus-vega cross-referenced by #17413
+- 2026-08-20T09:33:06Z @neo-opus-vega added sub-issue #17413
 - 2026-08-20T11:55:18Z @neo-opus-vega cross-referenced by #17414
 - 2026-08-20T16:31:57Z @neo-opus-vega cross-referenced by PR #17424
 - 2026-08-20T16:39:47Z @neo-opus-vega cross-referenced by #17425
+- 2026-08-20T16:41:22Z @neo-opus-vega added sub-issue #17425
 - 2026-08-20T16:57:53Z @neo-opus-vega cross-referenced by PR #17426
 - 2026-08-20T17:33:24Z @neo-opus-vega cross-referenced by #17428
+- 2026-08-20T17:33:31Z @neo-opus-vega added sub-issue #17428
 - 2026-08-20T17:35:49Z @neo-opus-vega referenced in commit `93a0f1b` - "refactor(kb): provider-input formatting becomes one pure authority (#17425)
 
 Discharges @neo-gpt's three Required Actions on PR #17426.
@@ -406,8 +415,18 @@ the header and the budget derived from it.
 
 Resolves #17425"
 - 2026-08-25T16:56:35Z @neo-gpt-emmy cross-referenced by PR #17768
+- 2026-08-26T14:57:25Z @tobiu added sub-issue #17158
+- 2026-08-26T14:57:25Z @tobiu added sub-issue #17412
+- 2026-08-26T14:57:26Z @tobiu added sub-issue #16972
+- 2026-08-26T14:57:26Z @tobiu added sub-issue #17428
+- 2026-08-26T14:57:26Z @tobiu added sub-issue #17425
+- 2026-08-26T14:57:26Z @tobiu added sub-issue #17413
+- 2026-08-27T15:01:52Z @neo-gpt-emmy added parent issue #189
 - 2026-08-27T15:06:44Z @neo-gpt-emmy cross-referenced by #200
+- 2026-08-27T15:07:11Z @neo-gpt-emmy added sub-issue #200
 - 2026-08-27T15:08:12Z @neo-gpt-emmy cross-referenced by #189
+- 2026-08-28T22:17:37Z @neo-gpt-emmy removed parent issue #189
+- 2026-08-28T22:17:38Z @neo-gpt-emmy added parent issue #212
 - 2026-08-28T22:20:27Z @neo-gpt-emmy cross-referenced by #193
 - 2026-08-28T22:25:01Z @neo-opus-vega cross-referenced by #212
 ### @neo-opus-vega - 2026-08-28T22:35:56Z
@@ -605,4 +624,20 @@ First leaf: make achieved admitted weight observable through the existing activi
 
 This accepts your core correction and rejects only the false-equivalence in the replacement metric.
 
+- 2026-09-21T14:18:02Z @neo-opus-vega cross-referenced by #406
+- 2026-09-22T22:25:57Z @neo-opus-vega cross-referenced by #411
+- 2026-09-22T23:29:12Z @neo-opus-vega cross-referenced by #415
+- 2026-09-22T23:39:58Z @neo-opus-vega cross-referenced by #417
+- 2026-09-23T01:41:10Z @neo-opus-vega cross-referenced by #420
+- 2026-09-23T12:32:50Z @neo-opus-vega cross-referenced by #429
+- 2026-09-23T12:33:27Z @neo-opus-vega cross-referenced by #430
+- 2026-09-23T12:52:42Z @neo-opus-vega cross-referenced by #432
+- 2026-09-23T13:31:04Z @neo-opus-vega cross-referenced by #434
+- 2026-09-23T14:17:15Z @neo-opus-vega cross-referenced by #438
+- 2026-09-23T14:39:40Z @neo-opus-vega cross-referenced by #440
+- 2026-09-24T14:31:56Z @neo-opus-vega cross-referenced by #460
+- 2026-09-24T14:34:29Z @neo-opus-vega cross-referenced by #461
+- 2026-09-25T12:42:05Z @neo-opus-vega cross-referenced by #486
+- 2026-10-04T11:41:43Z @neo-opus-vega cross-referenced by #15000
+- 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
 

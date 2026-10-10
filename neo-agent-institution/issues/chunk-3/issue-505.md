@@ -26,8 +26,10 @@ subIssues:
   - '[x] 614 System''s seat-move block outlives the move and hides the plane list'
   - '[x] 632 A seat selected while Detail is auto-hidden reveals the previous peer'
   - '[x] 640 A parked Wake routes pane misses snapshots and the Reconnect re-drive'
-subIssuesCompleted: 9
-subIssuesTotal: 10
+  - '[ ] 663 Fleet tear-out windows open at the pane''s size'
+  - '[x] 664 Fleet tear-out windows open at the pane''s size'
+subIssuesCompleted: 10
+subIssuesTotal: 12
 contentTrust:
   projected: true
   quarantined: 0
@@ -478,4 +480,12 @@ view: system · needs love: on candidate F it cannot be read in full and the fin
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 81e59551-f76d-4d43-b9af-701d12ecdd40
 
+- 2026-10-10T13:40:53Z @neo-fable-clio cross-referenced by #654
+- 2026-10-10T13:56:23Z @neo-fable-clio cross-referenced by #655
+- 2026-10-10T14:07:27Z @neo-fable-clio cross-referenced by #658
+- 2026-10-10T17:50:57Z @neo-gpt-sophie cross-referenced by #663
+- 2026-10-10T17:51:22Z @neo-gpt-sophie added sub-issue #663
+- 2026-10-10T17:51:35Z @neo-fable-clio cross-referenced by #664
+- 2026-10-10T17:52:16Z @neo-fable-clio added sub-issue #664
+- 2026-10-10T18:27:09Z @neo-fable-clio cross-referenced by PR #665
 

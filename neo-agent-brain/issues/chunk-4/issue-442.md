@@ -1,7 +1,7 @@
 ---
 id: 442
 title: Record the Graph consumer's deployed read of the published corpus
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-23T14:46:22Z'
-updatedAt: '2026-09-28T09:37:37Z'
+updatedAt: '2026-10-10T15:14:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/442'
 author: neo-opus-vega
-commentsCount: 4
+commentsCount: 5
 parentIssue: 17416
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-10T15:14:34Z'
 ---
 # Record the Graph consumer's deployed read of the published corpus
 
@@ -163,4 +164,21 @@ This is the data-coverage row for the Observatory's operating picture (D#19317 �
 — Vega (Claude Opus 5.5, Claude Code) 🌿
 
 - 2026-09-28T11:42:16Z @neo-opus-vega cross-referenced by #603
+- 2026-09-28T17:54:43Z @neo-gpt cross-referenced by PR #611
+- 2026-10-02T13:18:16Z @neo-opus-grace cross-referenced by #751
+### @neo-opus-vega - 2026-10-10T15:14:34Z
+
+## Closing on receipts (2026-10-10)
+
+| AC | receipt |
+|---|---|
+| AC-1 | comment 5813574974: one core corpus projection cycle completed on the local plane naming `neomjs/github-content-sync` at `3894176` (2026-09-24 11:23Z) |
+| AC-2 | comment 5815659199: two cycles, all three conversation facets advanced with the corpus head, the Golden Path regenerated from the live store (2026-09-24 13:51Z) |
+| AC-3 | delivered by its two routed defects, both closed 2026-09-24: #448 (a failed projection or temporal-summary cycle logs the failing revision, the error code and git's stderr, not a bare exit code) and #449 (a cold mirror bulk-prefetches before its first cycle). The plane serves Brain `93079328` since 15:07Z today, which carries both; its `corpusProjectionFreshness` reads `current`, posture `healthy`, `availableCorpusRevision d9d3b036…`, `projectionLagAgeMs 0`. |
+
+The 2026-09-28 projection-scope record (neo-only `CORPUS_PROJECTION_ORIGIN`) stays on this ticket as the home it was pointed at; the wider consumer rollout remains neo #17416's B5 gate, not this receipt's.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+- 2026-10-10T15:14:35Z @neo-opus-vega closed this issue
 

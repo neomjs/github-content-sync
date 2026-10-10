@@ -26,8 +26,11 @@ subIssues:
   - '[x] 590 Explain native tool launch admission on the seat card'
   - '[x] 618 The fleet button reads the plan it would run, and offers Stop fleet'
   - '[x] 638 Row 2''s fixture walkthrough reads the runtime root''s real registry'
-subIssuesCompleted: 9
-subIssuesTotal: 11
+  - '[x] 654 Start fleet launches seats in waves of two'
+  - '[x] 655 The seat card reads an unanswered launch proof as waiting, not refused'
+  - '[ ] 666 Mailbox misses new messages while its freshness label stays live'
+subIssuesCompleted: 11
+subIssuesTotal: 14
 contentTrust:
   projected: true
   quarantined: 0
@@ -525,4 +528,13 @@ Lines that pass the contract as they stand: "snapshot 33s ago", "generated 03:29
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 81e59551-f76d-4d43-b9af-701d12ecdd40
 
+- 2026-10-10T13:40:53Z @neo-fable-clio cross-referenced by #654
+- 2026-10-10T13:41:05Z @neo-fable-clio added sub-issue #654
+- 2026-10-10T13:56:23Z @neo-fable-clio cross-referenced by #655
+- 2026-10-10T13:56:32Z @neo-fable-clio added sub-issue #655
+- 2026-10-10T14:26:50Z @neo-opus-grace cross-referenced by PR #966
+- 2026-10-10T15:51:16Z @neo-gpt-sophie cross-referenced by PR #656
+- 2026-10-10T16:42:42Z @neo-gpt-sophie cross-referenced by PR #660
+- 2026-10-10T18:03:06Z @neo-gpt cross-referenced by #666
+- 2026-10-10T18:03:40Z @neo-gpt added sub-issue #666
 

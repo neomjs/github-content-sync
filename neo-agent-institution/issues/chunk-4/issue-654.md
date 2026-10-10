@@ -1,7 +1,7 @@
 ---
 id: 654
 title: Start fleet launches seats in waves of two
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,11 +9,11 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-10T13:40:52Z'
-updatedAt: '2026-10-10T13:40:52Z'
+updatedAt: '2026-10-10T16:04:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/654'
 author: neo-fable-clio
 commentsCount: 0
-parentIssue: null
+parentIssue: 477
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-10T16:04:59Z'
 ---
 # Start fleet launches seats in waves of two
 
@@ -100,4 +101,58 @@ Origin Session ID: f45d36fd-6e77-4c89-bd56-dd49d95b5b0a
 - 2026-10-10T13:40:53Z @neo-fable-clio added the `enhancement` label
 - 2026-10-10T13:40:53Z @neo-fable-clio added the `agent-os` label
 - 2026-10-10T13:40:54Z @neo-fable-clio added the `ai` label
+- 2026-10-10T13:41:05Z @neo-fable-clio added parent issue #477
+- 2026-10-10T13:56:23Z @neo-fable-clio cross-referenced by #655
+- 2026-10-10T13:58:33Z @neo-fable-clio cross-referenced by PR #656
+- 2026-10-10T14:07:27Z @neo-fable-clio cross-referenced by #658
+- 2026-10-10T15:05:11Z @neo-fable-clio referenced in commit `918e8c3` - "feat(agentos): Start fleet launches seats in waves of two (#654)
+
+One fleet-start press sent every eligible seat's start intent at once; the
+first real Start fleet left every Claude Desktop seat without Memory Core and
+Knowledge Base (Brain #964: the launch-admission proof times out under
+concurrent starts) and the host under a ~30 s burst. The batch now sends its
+seats in waves — FleetStartPlan.waves, startFleetWaveSize = 2 on
+FleetBatchController, the next wave once the previous one answered — and the
+chrome line counts the unsent seats as pending between waves instead of
+folding a missing result into "rejected". A retired batch sends no further
+wave. The stop batch keeps its single wave."
+- 2026-10-10T15:54:45Z @neo-fable-clio referenced in commit `d3a00a5` - "fix(agentos): a wave reads its seats before it leaves, a retired roster ends the batch, late answers land at once (#654)
+
+Sophie's falsifier against the real controller chain found three contract
+holes in the wave batch: a seat its own card started while an earlier wave was
+held was sent a second time; a roster retired and re-bound to the same profile
+id let the old batch keep sending; an earlier wave's late answers reached the
+running line only after the next wave answered. Each wave now re-partitions
+its seats as they are when it leaves (a superseded seat keeps its slot with
+the partition's reason), onRosterRetired drops the batch token, and the
+settlement watchers attach per wave. Three mirror tests in fleetControl.spec."
+- 2026-10-10T15:55:08Z @neo-fable-clio referenced in commit `b838e9f` - "test(agentos): the wave fixture's comment describes the harness, not the review (#654)"
+- 2026-10-10T16:04:59Z @tobiu referenced in commit `52925d8` - "feat(agentos): Start fleet launches seats in waves of two (#654) (#656)
+
+* feat(agentos): Start fleet launches seats in waves of two (#654)
+
+One fleet-start press sent every eligible seat's start intent at once; the
+first real Start fleet left every Claude Desktop seat without Memory Core and
+Knowledge Base (Brain #964: the launch-admission proof times out under
+concurrent starts) and the host under a ~30 s burst. The batch now sends its
+seats in waves — FleetStartPlan.waves, startFleetWaveSize = 2 on
+FleetBatchController, the next wave once the previous one answered — and the
+chrome line counts the unsent seats as pending between waves instead of
+folding a missing result into "rejected". A retired batch sends no further
+wave. The stop batch keeps its single wave.
+
+* fix(agentos): a wave reads its seats before it leaves, a retired roster ends the batch, late answers land at once (#654)
+
+Sophie's falsifier against the real controller chain found three contract
+holes in the wave batch: a seat its own card started while an earlier wave was
+held was sent a second time; a roster retired and re-bound to the same profile
+id let the old batch keep sending; an earlier wave's late answers reached the
+running line only after the next wave answered. Each wave now re-partitions
+its seats as they are when it leaves (a superseded seat keeps its slot with
+the partition's reason), onRosterRetired drops the batch token, and the
+settlement watchers attach per wave. Three mirror tests in fleetControl.spec.
+
+* test(agentos): the wave fixture's comment describes the harness, not the review (#654)"
+- 2026-10-10T16:04:59Z @tobiu closed this issue
+- 2026-10-10T18:31:52Z @neo-gpt-sophie cross-referenced by #12
 

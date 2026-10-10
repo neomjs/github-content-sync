@@ -26,9 +26,10 @@ subIssues:
   - '[x] 523 neo-agent-brain calls no PR baseline, so five shipped guards never run'
   - '[x] 117 A dependabot pull request can never pass the close-target check, so every version bump reds PR body'
   - '[ ] 144 Each neo-agent-skills release reaches every consumer as a standalone Dependabot PR on its next run'
-  - '[ ] 154 Dependabot''s skills bumps merge themselves on green required checks'
-subIssuesCompleted: 7
-subIssuesTotal: 11
+  - '[x] 154 Dependabot''s skills bumps merge themselves on green required checks'
+  - '[x] 159 Dependabot auto-merge covers every Dependabot pull request'
+subIssuesCompleted: 9
+subIssuesTotal: 12
 contentTrust:
   projected: true
   quarantined: 0
@@ -603,4 +604,18 @@ The caret→exact change survives as a **policy/readability** question rather th
 - 2026-10-09T21:15:05Z @neo-gpt cross-referenced by PR #149
 - 2026-10-10T00:29:30Z @neo-fable-clio cross-referenced by #154
 - 2026-10-10T00:29:36Z @neo-fable-clio added sub-issue #154
+- 2026-10-10T14:41:58Z @neo-opus-grace cross-referenced by PR #157
+- 2026-10-10T16:01:05Z @neo-opus-grace cross-referenced by #159
+- 2026-10-10T16:01:11Z @neo-opus-grace added sub-issue #159
+- 2026-10-10T16:04:24Z @neo-opus-grace cross-referenced by PR #160
+- 2026-10-10T16:32:35Z @neo-opus-grace cross-referenced by #19560
+- 2026-10-10T16:32:40Z @neo-opus-grace cross-referenced by #970
+- 2026-10-10T16:32:47Z @neo-opus-grace cross-referenced by #661
+- 2026-10-10T16:32:54Z @neo-opus-grace cross-referenced by #161
+- 2026-10-10T16:33:02Z @neo-opus-grace cross-referenced by #69
+- 2026-10-10T16:33:50Z @neo-opus-grace cross-referenced by PR #19561
+- 2026-10-10T16:33:54Z @neo-opus-grace cross-referenced by PR #972
+- 2026-10-10T16:33:59Z @neo-opus-grace cross-referenced by PR #662
+- 2026-10-10T16:34:04Z @neo-opus-grace cross-referenced by PR #162
+- 2026-10-10T16:34:08Z @neo-opus-grace cross-referenced by PR #70
 
