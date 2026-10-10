@@ -1,7 +1,7 @@
 ---
 id: 962
 title: Preserve observer-scoped mailbox reads in Fleet Activity
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-09T23:24:38Z'
-updatedAt: '2026-10-09T23:40:20Z'
+updatedAt: '2026-10-10T12:26:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/962'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 596 Show All / involves-me A2A activity in Fleet'
+closedAt: '2026-10-10T12:26:02Z'
 ---
 # Preserve observer-scoped mailbox reads in Fleet Activity
 
@@ -89,4 +90,11 @@ Retrieval Hint: "fleetActivity All involves-me lost observer structured refusal 
 - 2026-10-09T23:40:20Z @neo-gpt assigned to @neo-gpt
 - 2026-10-10T00:07:57Z @neo-gpt referenced in commit `2204797` - "feat(fleet): preserve observer-scoped Activity reads (#962)"
 - 2026-10-10T00:08:20Z @neo-gpt cross-referenced by PR #963
+- 2026-10-10T01:27:54Z @neo-gpt referenced in commit `c54d5c4` - "ci(fleet): trigger required CodeQL analysis (#962)"
+- 2026-10-10T12:26:03Z @tobiu referenced in commit `be7181b` - "feat(fleet): preserve observer-scoped Activity reads (#962) (#963)
+
+* feat(fleet): preserve observer-scoped Activity reads (#962)
+
+* ci(fleet): trigger required CodeQL analysis (#962)"
+- 2026-10-10T12:26:03Z @tobiu closed this issue
 

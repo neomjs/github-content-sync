@@ -1,7 +1,7 @@
 ---
 id: 858
 title: The first-run recipe registers the plane's forge connection as an effect row
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-04T17:28:34Z'
-updatedAt: '2026-10-09T21:36:27Z'
+updatedAt: '2026-10-10T12:25:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/858'
 author: neo-fable-clio
 commentsCount: 7
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-10T12:25:39Z'
 milestone: FM v1
 ---
 # The first-run recipe registers the plane's forge connection as an effect row
@@ -351,4 +352,33 @@ Clio's design read of AC-5 (issuecomment 6089661345): 'forge' leaves the card; o
 
 Euclid's RC on #960 (review 5476429304): RA-1 fences the final post-mutation status read to the requested provider and endpoint (declarationRefusal at both reads); RA-2 admits only the canonical status answer (readForgeStatus / canonicalForgeStatus), so a refusal or an incomplete envelope surfaces its own reason instead of a no-PAT claim. Controls: the final-reread declaration change, the unchanged-declaration acceptance, an unreadable status that mutates nothing, and forgeObservation over {ok:false} and {}."
 - 2026-10-09T23:54:36Z @neo-opus-vega referenced in commit `15631ac` - "chore: merge dev, carrying #959 and #961, into the register-forge branch (#858)"
+- 2026-10-10T01:23:31Z @neo-opus-vega referenced in commit `9545517` - "chore: give the register-forge head a CodeQL analysis after the Brain enabled it (#858)"
+- 2026-10-10T02:50:05Z @neo-opus-vega referenced in commit `9eb186d` - "chore: re-trigger the CodeQL analysis the earlier push raced past (#858)"
+- 2026-10-10T12:25:39Z @tobiu referenced in commit `6441fc6` - "feat(fleet): the first-run recipe registers the plane's forge connection as its own row (#858) (#960)
+
+* feat(fleet): the first-run recipe registers the plane's forge connection as its own row (#858)
+
+A `register-forge` effect row after compose-up reads the plane's forge-connection
+registry inside its Fleet service and registers the forge the plane's auth mode
+declares: it adopts an existing binding, initializes only an absent store and
+registers only an unbound endpoint. Another forge's binding, a tombstone, a
+corrupt store or no declared forge refuse with their reason; nothing replays.
+
+The declaration comes from the functions admissions stamp providerBaseUrl with
+(forgeAdmissionFacts), read through the CLI's new read-only `status`. A plane
+that is not running reads unknown, never an empty registry. The owner resolver
+names the row as the remedy where it is one.
+
+* fix(fleet): the forge row names GitHub or GitLab, and every failed line its way out (#858)
+
+Clio's design read of AC-5 (issuecomment 6089661345): 'forge' leaves the card; one display map (ai/services/fleet/forgeProviders.mjs) names each provider id, and an id outside it prints as it is. Where no provider can be read yet (plane down, a mode that admits no PAT, the static summary) the words say 'GitHub or GitLab'. Every failed line ends with its exit or says only a fresh plane recovers it. FORGE_AUTH_PROVIDERS derives from the map.
+
+* fix(fleet): the forge row accepts only its own declaration's binding and reads a refused status as unknown (#858)
+
+Euclid's RC on #960 (review 5476429304): RA-1 fences the final post-mutation status read to the requested provider and endpoint (declarationRefusal at both reads); RA-2 admits only the canonical status answer (readForgeStatus / canonicalForgeStatus), so a refusal or an incomplete envelope surfaces its own reason instead of a no-PAT claim. Controls: the final-reread declaration change, the unchanged-declaration acceptance, an unreadable status that mutates nothing, and forgeObservation over {ok:false} and {}.
+
+* chore: give the register-forge head a CodeQL analysis after the Brain enabled it (#858)
+
+* chore: re-trigger the CodeQL analysis the earlier push raced past (#858)"
+- 2026-10-10T12:25:40Z @tobiu closed this issue
 

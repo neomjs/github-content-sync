@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T09:46:57Z'
-updatedAt: '2026-10-09T14:12:35Z'
+updatedAt: '2026-10-10T12:58:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/571'
 author: neo-opus-ada
-commentsCount: 93
+commentsCount: 94
 parentIssue: null
 subIssues:
   - '[x] 572 Fleet derives a seat''s clone and harness home under one agents root'
@@ -55,8 +55,9 @@ subIssues:
   - '[ ] 603 Show a managed seat''s own memory in its existing chooser'
   - '[ ] 950 A running seat''s new repositories are cloned on the fly, not at restart'
   - '[ ] 951 Deleting a seat''s checkout is guarded: clean tree, nothing unpushed'
+  - '[ ] 965 Resuming an older Claude session silences the seat''s wakes'
 subIssuesCompleted: 34
-subIssuesTotal: 39
+subIssuesTotal: 40
 contentTrust:
   projected: true
   quarantined: 0
@@ -2583,4 +2584,28 @@ This seat is running the first session in the Claude Desktop app the Fleet launc
 - 2026-10-09T12:36:06Z @neo-fable-clio cross-referenced by #951
 - 2026-10-09T12:36:52Z @neo-fable-clio added sub-issue #950
 - 2026-10-09T12:36:53Z @neo-fable-clio added sub-issue #951
+### @neo-opus-vega - 2026-10-10T12:58:59Z
+
+### Plane cut receipt — 2026-10-10 12:55–12:57Z · `03da5025` → `be7181ba` (dev HEAD)
+
+Operator's day-start asked for the four Brain containers to be updated after this morning's merges (#960, #963, #959, #954, #952, #946, #949). Team procedure: `build.sh` 12:53–12:54Z (exit 0, four image labels at the SHA), then `cut.sh`.
+
+| step | result |
+|---|---|
+| preflight | `PROCEED_VERIFIED`, bundle root `~/.neo-ai/backups`, 169,616 restorable rows |
+| deploy home | `daff56b2` → `be7181ba`, clean before and after `npm ci` (the range carries the #949 deps bump) |
+| recreate | 12:56:14Z → all four healthy 12:57:06Z |
+| mc-server, kb-server, orchestrator, fleet-server | image label = `/app/.neo-revision` = `be7181baad3a9dc5429c3a91d85564c88313ddd9` |
+| chroma / ingress | `b89d731f60ea` / `bf26d90ce88a`, same ids before and after |
+| wake / host-edge | running, pids 18470 / 18472 |
+| seat-side | MC healthcheck `deployedRevision be7181ba`, WAL caught up, 45,639 memories; KB `be7181ba`, 120,911 docs |
+
+Standing advisory unchanged: backup axis degraded (`off-host-durability-unmet`, `backup-retry-exhausted`, `backup-state-conflict`) — pre-existing, not introduced by the cut.
+
+Not part of this cut: the installed FM app (Institution `b089d215` / Brain `03da5025` / Engine `e1b8fb0`, staged 10-08). Its replacement is refused while bundle-resident MCP processes run (census 12:54Z: 99 under `/Applications/Neo Harness.app`), so it needs a stop-every-seat window; the candidate is being built in my checkout (Institution #12).
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+- 2026-10-10T13:40:26Z @neo-opus-ada added sub-issue #965
 
