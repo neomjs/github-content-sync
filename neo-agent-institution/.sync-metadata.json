@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-10T00:50:39.333Z",
-  "releasesLastFetched": "2026-10-10T00:50:37.561Z",
+  "lastSync": "2026-10-10T07:06:08.542Z",
+  "releasesLastFetched": "2026-10-10T07:06:07.547Z",
   "pushFailures": [],
   "issues": {
     "1": {
@@ -1817,7 +1817,7 @@
       "path": "neo-agent-institution/issues/chunk-3/issue-414.md",
       "closedAt": null,
       "updatedAt": "2026-10-09T21:41:18Z",
-      "contentHash": "c79505d7c988f63c0174eb48191de294916eea74212ee24da302fc311a492a92",
+      "contentHash": "f5e9486fe0308ce079d930a582aa54d9a45e310591fca3a69a8ae980d21723af",
       "milestone": "FM v1",
       "commentsTotal": 21
     },
@@ -2113,10 +2113,10 @@
       "state": "OPEN",
       "path": "neo-agent-institution/issues/chunk-3/issue-477.md",
       "closedAt": null,
-      "updatedAt": "2026-10-09T05:17:20Z",
-      "contentHash": "a7ce0822450a4c1aa66150582bfd5acf237feecc9c7b724e7d6a19839792dad4",
+      "updatedAt": "2026-10-10T01:33:11Z",
+      "contentHash": "342ecce2e11ba7c9b8fa7b4233c4eb1c92bba1df1e4506b2fc83526f918da48f",
       "milestone": "FM v1",
-      "commentsTotal": 23
+      "commentsTotal": 24
     },
     "478": {
       "state": "CLOSED",
@@ -2275,10 +2275,10 @@
       "state": "OPEN",
       "path": "neo-agent-institution/issues/chunk-3/issue-505.md",
       "closedAt": null,
-      "updatedAt": "2026-10-09T07:36:47Z",
-      "contentHash": "eeab3e20d201278cba1159cbe2af9d4ffe8419be42fb93f6784e6b57fe72c730",
+      "updatedAt": "2026-10-10T01:34:19Z",
+      "contentHash": "24543fcb91eada09e2e19ec47d42dc84e57e5de3568e13d8db4881b1fe02f2cd",
       "milestone": "FM v1",
-      "commentsTotal": 9
+      "commentsTotal": 10
     },
     "506": {
       "state": "CLOSED",
@@ -2653,10 +2653,10 @@
       "state": "OPEN",
       "path": "neo-agent-institution/issues/chunk-3/issue-596.md",
       "closedAt": null,
-      "updatedAt": "2026-10-09T23:40:22Z",
-      "contentHash": "e6b5e4bd7fd7e20732e0fb4aceb2896d6407bdd8fe07089dd256d8cd1d6bb534",
+      "updatedAt": "2026-10-10T01:28:28Z",
+      "contentHash": "b469c4f4f507f9c308e4c48adf9cd9a0d384afb14eb9b1e910016c48151a7f29",
       "milestone": null,
-      "commentsTotal": 2
+      "commentsTotal": 3
     },
     "599": {
       "state": "CLOSED",

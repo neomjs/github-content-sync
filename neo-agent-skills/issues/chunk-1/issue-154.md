@@ -9,10 +9,10 @@ labels:
   - build
 assignees: []
 createdAt: '2026-10-10T00:29:29Z'
-updatedAt: '2026-10-10T00:38:39Z'
+updatedAt: '2026-10-10T01:01:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/154'
 author: neo-fable-clio
-commentsCount: 1
+commentsCount: 3
 parentIssue: 14
 subIssues: []
 subIssuesCompleted: 0
@@ -125,6 +125,20 @@ The check names to require (exactly as the check runs are named on the last merg
 | neo | `baseline / PR base`, `baseline / PR body`, `baseline / Release ref`, `baseline / Skills version`, `baseline / Skills materialized`, `baseline / Substrate size`, `baseline / Secrets`, `baseline / Commit authorship`, `baseline / Source comment archaeology`, `baseline / npm overrides` · `Classify test scope / Classify test scope` · `build-all` · `check` · `check-size` · `check-freshness` · `components (1/3)` `(2/3)` `(3/3)` |
 
 Two consequences to decide with the rule: it binds every PR, not only Dependabot's (a human merge with a red required check becomes impossible unless the operator is on the ruleset's bypass list); and a check that is skipped by path filters reads as "expected but missing" and blocks — the names above all ran on ordinary PRs, which is why they are the candidates.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 357bcb1f-3338-4a2e-b6e0-0e99eea44ccb
+
+### @neo-fable-clio - 2026-10-10T00:54:01Z
+
+**Measured again, 2026-10-10 00:5xZ, after the operator's ruleset update.** Every one of the five repositories now has an active ruleset on the default branch (`Protect dev`; neo's is `code scanning merge protection`, id 19087298) carrying `required_status_checks` beside `deletion`, `non_fast_forward` and `code_scanning` — but the rule's list of required checks is **empty** in all five (`rules[].parameters.required_status_checks: []`). An empty list requires nothing, so a Dependabot PR is still mergeable at once and auto-merge still cannot wait. Remaining step: add the check names from the table above to each ruleset's "Require status checks to pass" rule (no bypass actors are set anywhere; the operator may add the repository-admin role as a bypass to keep red-merge freedom for himself).
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 357bcb1f-3338-4a2e-b6e0-0e99eea44ccb
+
+### @neo-fable-clio - 2026-10-10T01:01:17Z
+
+**The operator's part is complete (2026-10-10 01:0xZ), verified on the branch rules.** "Allow auto-merge" is on in all five repositories, and each default-branch ruleset now names its required status checks (`GET /repos/{r}/rules/branches/dev`): neo 11 (`baseline / …` ×10 + `build-all`), neo-agent-institution 12 (`Shared PR Baseline / …` ×10 + `Isolated Institution` + `Explicit Brain contract`), neo-agent-brain 15 (the ten + `unit` `lint` `substrate` `integration-unified` `integration-parity`), devindex 11 (the ten + `test`), neo-agent-skills 1 (`corpus`). Only checks from path-unfiltered workflows were named, so no PR can hang on an "expected" check that never reports; neo's `changes`-gated unit matrix is deliberately not required. No bypass actors are set: a red required check now blocks every merge, the operator's included.
+
+Consequence for this leaf: the fail-closed state is lifted — once the reusable workflow and a caller exist, `gh pr merge --auto` on a Dependabot skills PR waits for exactly these checks. AC-5's witness becomes the first self-merged PR per consumer. Until the build lands, the open Dependabot PRs (devindex #66/#68 today) still wait for the operator.
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 357bcb1f-3338-4a2e-b6e0-0e99eea44ccb
 

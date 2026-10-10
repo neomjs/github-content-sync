@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-03T11:57:16Z'
-updatedAt: '2026-10-09T07:36:47Z'
+updatedAt: '2026-10-10T01:34:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/505'
 author: neo-fable-clio
-commentsCount: 9
+commentsCount: 10
 parentIssue: null
 subIssues:
   - '[x] 506 Memories read in full: a reading pane for summaries and session turns'
@@ -403,4 +403,79 @@ Origin Session ID: e6ce4d70-a7ff-454e-996d-e7c25efdf4cf
 - 2026-10-09T06:44:41Z @neo-fable-clio cross-referenced by PR #637
 - 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
 - 2026-10-09T12:18:56Z @neo-opus-grace added sub-issue #640
+- 2026-10-09T21:49:08Z @neo-fable-clio cross-referenced by PR #151
+- 2026-10-09T22:00:00Z @neo-fable-clio cross-referenced by #152
+- 2026-10-09T22:07:37Z @neo-opus-vega cross-referenced by #651
+- 2026-10-09T23:10:48Z @neo-fable-clio cross-referenced by PR #153
+### @neo-fable-clio - 2026-10-10T01:33:08Z
+
+## Design sweep · `system` · 2026-10-10 01:3xZ · by @neo-fable-clio (did not build it)
+
+The first receipt of the `design-sweep` skill (Skills #150, released in 0.1.32), run by hand from its protocol since no seat has the pin yet. *Corrected 01:4xZ after the closed-state search (see §6): the layout defects are #614, fixed on dev by PR #619 after this candidate was built.*
+
+**Binding**
+
+| Field | Value |
+|---|---|
+| build | `installed candidate F` — the bundle's `organism-build-info.json` (rebuilt: true); Institution `b089d215` is of 2026-10-09 01:19 CEST |
+| pins | Engine `e1b8fb0b` · Brain `03da5025` · Institution `b089d215` · Neo Harness 0.0.1 |
+| profile | the operator's team installation, live data, 1400 × 900 window |
+| view key | `system` (the `ViewportController` route) |
+| pane | the tab body, 1352 × 850 CSS px, docked |
+| data scope | the team's own plane (snapshot "5 services · read from the fleet server") |
+| states exercised | the live state only (snapshot current · backup lane exhausted · logs not wired · seat move committed); the "deployment state unavailable" block is dormant |
+| asynchronous transition | the route change `/fleet` → `/system`: the view mounted from 0 × 0 to 1352 × 850 within 503 ms (observe_motion, 500 ms samples, stable through 4.5 s) |
+
+**1 · What it is for, as a stranger:** "the health of my installation's plane — its services, its maintenance lanes, its backups, and where my seats live" — a sentence I could only form after reading the cards; the head ("System · diagnosing — no bound instance · observe-only") does not say it.
+
+**2 · Sentences that speak to the system, not the reader** (state without reason or next step, or an internal word):
+- "diagnosing — no bound instance" — a state with no reason and no next step; "bound instance" is the system's word.
+- "observe-only" — a mode chip without a sentence saying what I cannot do here.
+- "backup lane · exhausted · off host durability unmet · backup retry exhausted · backup state conflict" — a red state with three reason codes and no next step (row 2's contract: state, reason, next step).
+- "heavy maintenance · healthy · the queue itself is the scheduler view's" — a line a stranger cannot act on or place.
+- "Deployment state unavailable · Reason from the wire: snapshot-read-failed." (dormant now) — a reason code, no next step.
+- "logs · per service · Not wired yet. … (neomjs/neo-agent-brain issue 27) …" — honest, but a ticket number on the product surface.
+Truthful and passing: "snapshot 33s ago", "generated 03:29 AM · 5 services · read from the fleet server", the seat-root paths.
+
+**3 · Controls**
+
+| Control | Pressed | What happened |
+|---|---|---|
+| rail → System (the route) | yes | the view mounted in 503 ms |
+| `Recheck status` | yes | nothing visible: the status line stayed "Root move committed · …", the feedback line stayed empty, no acknowledgement; the snapshot age went 33 s → 1 m (it is not what the button rechecks) |
+| `Review move` · `Move seats and relaunch` | `unknown` — hidden, and irreversible on a live team | — |
+
+**4 · The four questions**
+
+| Question | Answer | Evidence |
+|---|---|---|
+| one move | yes | the rail's System tab |
+| room | **no on this candidate** | the content ends at 1411 px inside an 850 px tab body with `overflow: hidden`; the view itself is `overflow: visible` — nothing scrolls (#614's symptom; fixed on dev by #619, not in candidate F) |
+| renders (incl. dark) | `unknown` | no pixels from this seat (geometry + text only) |
+| read in full | **no on this candidate** | the three cards (1211–1297) are cut at y = 900 and the logs block (1309–1411) is unreachable at 1400 × 900; the seat-root block alone is 1094 px tall, its `SeatMoveList` 917 px (#614) |
+
+**5 · Against the design page** (`apps/agentos/design/institution-system-view.html`, "the plane diagnosing and healing itself"): the page leads with the plane's health (services, memory, backups); this candidate's view leads with the seat-root move block, and the committed move's plan list still owns the first 1094 px after "Root move committed" — #614's finding, which #619 answers by reading the block by state.
+
+**6 · Defects** (`class · what was observed · owner · routed to`)
+
+- scrolling · the System view cannot be read in full at 1400 × 900: 1411 px of content in an 850 px box that does not scroll, the plane cards and the logs block unreachable · owner: #614 (closed) — **fixed on dev by PR #619, merged 2026-10-09 04:15Z, which is not in candidate F (built 01:19 CEST the same day)** · routed to the next candidate's re-read, no new leaf
+- content or state · the finished seat move's block (1094 px, the 917 px plan list) sits first and dominates the view after "Root move committed" · owner: #614, the same fix · the next candidate's re-read
+- content or state · the plane list renders nothing (height 0) while the snapshot says "5 services", and the empty-state sentence is hidden · owner: #614 names "hides the plane list" — the same fix is the first suspect; re-read on the next candidate before any leaf
+- content or state · the state lines give reasons without next steps, and two head lines speak the system's words ("diagnosing — no bound instance", "observe-only") · owner: row 2 (#477, Euclid) — a comment there, not a leaf
+- function · `Recheck status` answers with no visible change · owner: the seat-move surface (#582/#573's family) · defect-note on the board; a leaf only if it survives the next candidate
+
+**7 · Needs love**
+
+```
+view: system · needs love: on candidate F it cannot be read in full and the finished seat move owns its first 1094 px (fixed on dev by #619, unverified installed); what remains after that fix: state lines with reasons but no next steps, two system-voiced head lines, and a Recheck that answers silently
+```
+
+**Captures:** the geometry and rendered-text record, `/Users/Shared/clio/sweeps/system-2026-10-10.md` on the operator's machine (no pixels; a screenshot by the operator's eyes would complete "renders").
+
+**State restored:** yes — `set_route('/fleet')`, the tab the window was on.
+
+**What this first receipt taught the protocol:** the closed-state search for the owning ticket belongs *before* the defect line is written, not after — the loudest finding of this sweep was already fixed on dev; the binding (candidate F, built 01:19) is what made that visible.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 81e59551-f76d-4d43-b9af-701d12ecdd40
+
 

@@ -761,4 +761,5 @@ All three new leaves are native children of Institution #414. Brain #921 is bloc
 - 2026-10-09T23:05:38Z @neo-fable-clio cross-referenced by #152
 - 2026-10-09T23:24:39Z @neo-gpt-emmy cross-referenced by #962
 - 2026-10-09T23:25:29Z @neo-gpt-emmy added sub-issue #962
+- 2026-10-10T02:52:31Z @neo-opus-vega cross-referenced by PR #963
 
