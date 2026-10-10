@@ -10,10 +10,10 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-08-29T11:37:33Z'
-updatedAt: '2026-09-15T16:36:02Z'
+updatedAt: '2026-10-10T18:44:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/14'
 author: neo-gpt-emmy
-commentsCount: 8
+commentsCount: 9
 parentIssue: null
 subIssues:
   - '[x] 15 Publish the reusable PR-baseline workflow'
@@ -618,4 +618,22 @@ The caret→exact change survives as a **policy/readability** question rather th
 - 2026-10-10T16:33:59Z @neo-opus-grace cross-referenced by PR #662
 - 2026-10-10T16:34:04Z @neo-opus-grace cross-referenced by PR #162
 - 2026-10-10T16:34:08Z @neo-opus-grace cross-referenced by PR #70
+### @neo-opus-grace - 2026-10-10T18:44:09Z
+
+**Dependabot auto-merge is live in all five repositories with Dependabot (2026-10-10, 18:43Z).**
+
+- **Decision:** the operator, ~16:00Z, *"dependabot: ALL PRs once CI is green. no limitations."* Every Dependabot pull request, majors included, merges itself once `dev`'s required checks pass.
+- **Mechanism:** `reusable-dependabot-automerge.yml` at v0.1.35 (#157 shape, widened by #160). It runs a live admission (*Allow auto-merge*, a non-empty required set, the admitted head) and arms with `--match-head-commit`. Another account's push takes the arming back, so a peer's fix still waits for a human merge (gate 1).
+- **Callers:** neomjs/neo#19561, neomjs/neo-agent-brain#972, neomjs/neo-agent-institution#662, #162 (this repository, tag-pinned), neomjs/devindex#70.
+- **Rulesets, operator-adjusted today:**
+  - neo now requires `unit`, `components (1–3/3)` and `e2e-engine (1–3/3)` beside the baseline and `build-all`;
+  - Brain dropped the path-filtered `lint`, which no workflow-only pull request could ever report.
+- **Kill switch:** the repository variable `NEO_AUTOMERGE_DEPENDABOT=off`.
+
+**Open:** AC-2 in each repository is the first Dependabot pull request that merges itself; none is open now. The publish workflow's commit→PR lookup races GitHub's index: 0.1.36 failed once and Euclid re-ran it green. Defect-noted, not yet ticketed.
+
+🖖 **Grace** · `@neo-opus-grace` · Claude Opus 5.5 · Claude Code · session afd79583-ff45-4f2c-96a5-08549257af36
+
+- 2026-10-10T18:46:02Z @neo-opus-grace cross-referenced by #164
+- 2026-10-10T18:47:41Z @neo-opus-grace cross-referenced by PR #165
 

@@ -1,7 +1,7 @@
 ---
 id: 970
 title: Dependabot pull requests merge themselves once the required checks pass
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-10T16:32:39Z'
-updatedAt: '2026-10-10T16:32:39Z'
+updatedAt: '2026-10-10T18:43:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/970'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-10T18:43:36Z'
 ---
 # Dependabot pull requests merge themselves once the required checks pass
 
@@ -72,4 +73,6 @@ Retrieval Hint: "dependabot auto-merge caller reusable-dependabot-automerge v0.1
 - 2026-10-10T16:32:41Z @neo-opus-grace added the `build` label
 - 2026-10-10T16:33:52Z @neo-opus-grace referenced in commit `032c238` - "ci(dependabot): Dependabot pull requests merge themselves on green required checks (#970)"
 - 2026-10-10T16:33:54Z @neo-opus-grace cross-referenced by PR #972
+- 2026-10-10T18:43:36Z @tobiu referenced in commit `69120d2` - "ci(dependabot): Dependabot pull requests merge themselves on green required checks (#970) (#972)"
+- 2026-10-10T18:43:37Z @tobiu closed this issue
 

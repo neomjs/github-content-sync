@@ -1,7 +1,7 @@
 ---
 id: 666
 title: Mailbox misses new messages while its freshness label stays live
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-10T18:03:05Z'
-updatedAt: '2026-10-10T18:03:05Z'
+updatedAt: '2026-10-10T22:31:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/666'
 author: neo-gpt
 commentsCount: 0
@@ -21,8 +21,10 @@ contentTrust:
   projected: true
   quarantined: 0
   signals: []
-blockedBy: []
+blockedBy:
+  - '[x] 602 Loading older Mailbox rows resets the reading position'
 blocking: []
+closedAt: '2026-10-10T22:31:25Z'
 ---
 # Mailbox misses new messages while its freshness label stays live
 
@@ -77,6 +79,8 @@ Use current source ownership rather than copying the older installed controller 
 | Mailbox freshness | Mirror `capability.capturedAt`, existing pane `now` input and state vocabulary | Clock advances without a new snapshot; old data cannot remain labeled freshly updated | Existing pane freshness contract | Held-snapshot clock advancement and rendered label |
 | Mailbox Store / paging | Existing pane, Store/Grid and #602 boundary | New rows visible once published, coherent selection/thread facts; automatic refresh must not reset an older-page reading window | Existing projection contract | New-message, duplicate, selection and page controls |
 
+Prescription checked against Institution `fd7b9471`: the shared cadence, owned inbox reader and existing pane clock/projection seams own this concern. The unchanged authenticated read exposed the missing messages. Automatic replacement defers for an older/pending/scrolled window; selecting the existing all-mail chip again explicitly returns to page zero.
+
 Decision Record impact: none; restore the existing freshness and read ownership.
 
 ## Acceptance Criteria
@@ -87,7 +91,9 @@ Decision Record impact: none; restore the existing freshness and read ownership.
 - [ ] Reads are bounded and fenced: one in flight per source, no boot drain or page loop, no late previous-profile result, and none after teardown.
 - [ ] Refresh preserves coherent row identities/thread facts and selection. For an older-page reading window, preserve its anchor or defer first-page replacement; do not worsen #602's separately owned continuation defect.
 - [ ] Focused tests include a red-before-green new-message refresh and a frozen-label clock control, using the production owners.
-- [ ] **Post-merge:** a named installed candidate repeats the already-open Mailbox → new real operator message → automatic visibility journey and records its source/plane pins under #12 / #479. This leaf does not mark parent row 2 passed.
+## Post-Merge Validation
+
+- [ ] A named installed candidate repeats the already-open Mailbox → new real operator message → automatic visibility journey and records its source/plane pins under #12 / #479. This leaf does not mark parent row 2 passed.
 
 ## Out of Scope
 
@@ -104,6 +110,7 @@ Origin Session ID: 2c648caa-d36c-413c-99b3-0083aaad4b30
 Retrieval Hint: "FM Mailbox October 9 09:56 updated 5s Activity new message loadOperatorInbox capturedAt"
 
 
+
 ## Timeline
 
 - 2026-10-10T18:03:06Z @neo-gpt assigned to @neo-gpt
@@ -111,4 +118,18 @@ Retrieval Hint: "FM Mailbox October 9 09:56 updated 5s Activity new message load
 - 2026-10-10T18:03:07Z @neo-gpt added the `agent-os` label
 - 2026-10-10T18:03:07Z @neo-gpt added the `ai` label
 - 2026-10-10T18:03:40Z @neo-gpt added parent issue #477
+- 2026-10-10T19:07:12Z @neo-fable-clio cross-referenced by #667
+- 2026-10-10T19:33:23Z @neo-gpt-sophie cross-referenced by #602
+- 2026-10-10T19:50:56Z @neo-opus-ada cross-referenced by #669
+- 2026-10-10T20:07:48Z @neo-gpt cross-referenced by PR #672
+- 2026-10-10T20:38:19Z @neo-gpt referenced in commit `5f582d3` - "feat(mailbox): refresh the inbox and age retained observations (#666)"
+- 2026-10-10T20:45:24Z @neo-gpt marked this issue as being blocked by #602
+- 2026-10-10T21:40:36Z @neo-gpt referenced in commit `a3555e1` - "feat(mailbox): refresh the inbox and age retained observations (#666)"
+- 2026-10-10T22:01:56Z @neo-gpt referenced in commit `74cea08` - "fix(mailbox): publish inbox read outcomes as one config batch (#666)"
+- 2026-10-10T22:31:26Z @tobiu referenced in commit `cb82cb2` - "feat(mailbox): refresh the inbox and age retained observations (#666) (#672)
+
+* feat(mailbox): refresh the inbox and age retained observations (#666)
+
+* fix(mailbox): publish inbox read outcomes as one config batch (#666)"
+- 2026-10-10T22:31:26Z @tobiu closed this issue
 

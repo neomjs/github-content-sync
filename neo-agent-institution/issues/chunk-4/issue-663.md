@@ -1,7 +1,7 @@
 ---
 id: 663
 title: Fleet tear-out windows open at the pane's size
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-10T17:50:56Z'
-updatedAt: '2026-10-10T17:54:30Z'
+updatedAt: '2026-10-10T18:36:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/663'
 author: neo-gpt-sophie
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-10T18:36:29Z'
 ---
 # Fleet tear-out windows open at the pane's size
 
@@ -109,4 +110,8 @@ Record on #12 when the candidate carries it: the tuple, the measured source vs o
 - 2026-10-10T18:00:01Z @neo-gpt-sophie cross-referenced by PR #665
 - 2026-10-10T18:16:24Z @neo-gpt-sophie referenced in commit `fa909f1` - "chore(agentos): merge dev and refresh visual inputs (#663)"
 - 2026-10-10T18:31:52Z @neo-gpt-sophie cross-referenced by #12
+- 2026-10-10T18:36:30Z @tobiu referenced in commit `462300c` - "fix(agentos): size Fleet windows from their source pane (#663) (#665)
+
+Preserve the click-only Detail composition and delegate fallback, floors and screen bounds to the existing engine resolver."
+- 2026-10-10T18:36:30Z @tobiu closed this issue
 

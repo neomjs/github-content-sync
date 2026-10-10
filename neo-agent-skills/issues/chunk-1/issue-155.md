@@ -1,7 +1,7 @@
 ---
 id: 155
 title: Make architecture review catch and route inherited Neo idiom debt
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-10T02:43:03Z'
-updatedAt: '2026-10-10T17:42:35Z'
+updatedAt: '2026-10-10T19:14:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/155'
 author: neo-gpt-emmy
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-10T19:14:37Z'
 ---
 # Make architecture review catch and route inherited Neo idiom debt
 
@@ -192,4 +193,14 @@ The three dispositions already proposed are sound: new/deepened wrong shape belo
 
 - 2026-10-10T14:48:51Z @neo-opus-ada assigned to @neo-opus-ada
 - 2026-10-10T18:26:39Z @neo-opus-ada cross-referenced by PR #163
+- 2026-10-10T19:09:08Z @neo-gpt-emmy cross-referenced by PR #19564
+- 2026-10-10T19:14:37Z @tobiu referenced in commit `6abba52` - "fix(pr-review): architecture review reads the touched owner's Neo shape and routes inherited debt (#155) (#163)
+
+The core-idiom audit gains a stateful-owner check. For a module that owns instances, resources or effects, the reviewer traces each effect from the host's call site to the code that runs: a subclass or override must be able to replace it, and one owner ends its lifetime. A handler bag over closure state, an effect body calling statics by class name, or a host naming the class at its call site defeats replacement even inside a registered class. The exemption no longer covers a closure that owns state.
+
+The guide's trigger reaches such modules. The expected-shape field reads the owner with its creator and destructor. Scope discipline routes three ways, whatever the verdict: a wrong shape the patch adds is this PR's, verified inherited debt gets a real issue without blocking a safe fix, and a suspicion stays a hypothesis.
+
+A redundant intro list and the reviewer-seeded section are folded or cut, and three paragraphs are compressed. The loaded selection goes from 53,730 to 53,552 bytes. 0.1.37."
+- 2026-10-10T19:14:38Z @tobiu closed this issue
+- 2026-10-10T22:31:14Z @neo-opus-ada cross-referenced by #166
 

@@ -1,7 +1,7 @@
 ---
 id: 974
 title: 'Backup bundles compress their JSONL payloads: 9.7 GB a day is embedding floats stored as text'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-10T16:42:46Z'
-updatedAt: '2026-10-10T17:38:30Z'
+updatedAt: '2026-10-10T20:02:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/974'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-10T20:02:50Z'
 ---
 # Backup bundles compress their JSONL payloads: 9.7 GB a day is embedding floats stored as text
 
@@ -127,4 +128,42 @@ Retrieval Hint: "backup bundle brotli jsonl.br embedding floats text 53.9 KB per
 
 
 - 2026-10-10T18:34:37Z @neo-opus-vega cross-referenced by PR #976
+### @neo-opus-vega - 2026-10-10T18:35:27Z
+
+**AC-4 receipt (restore drill from a compressed bundle, 2026-10-10):** the day's bundle `backup-2026-10-10T13-15-59.709Z` re-encoded through the helper in 115 s: 10.14 GB → 3.92 GB (2.59×). `validateBundle` on the re-encoded bundle streamed kb 120,911 / memories 45,652 / summaries 4,234 rows, equal to the declared counts, with an integrity pass on kb, mc and graph. A 2,000-row kb slice of it restored into a scratch Chroma in merge mode: 2,000 restored, topology match, exit 0. Implementation: #976.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+- 2026-10-10T18:49:27Z @neo-opus-vega referenced in commit `43c3d11` - "fix(backup): the compressed reader holds one stream, and a torn payload rejects once (#974)"
+- 2026-10-10T19:31:39Z @neo-opus-vega referenced in commit `4b96930` - "fix(backup): the exporters compress only when the bundle asks; the release artifact stays plain JSONL (#974)"
+### @neo-opus-vega - 2026-10-10T19:32:14Z
+
+## Contract Ledger (#976, head 4b96930e)
+
+Every consumed surface the change touches, and what each consumer may rely on after the merge.
+
+| Surface | Contract after the change | Consumers |
+|---|---|---|
+| Payload file names (`<prefix>-<timestamp>` + extension) | Three extensions are payloads: `.jsonl` (plain), `.jsonl.br` (brotli, written), `.jsonl.gz` (read only, never written). Nothing else in a bundle subdir counts as a payload. `bundlePayloadFileName(prefix, timestamp, encoding = 'jsonl')` is the one namer. | `backup.mjs`, both `DatabaseService` exporters, every reader below |
+| `payloadEncoding` option on `exportDatabase` / `manageDatabaseBackup({action: 'export'})` (KB and Memory Core) | Default `'jsonl'`: an exporter writes the plain file its consumers always received. `'jsonl+br'` only when the caller asks. The daily bundle (`backup.mjs`) asks via `BUNDLE_EXPORT_ENCODING`. | `backup.mjs` (asks), `uploadKnowledgeBase.mjs` (default, plain), `ai/examples/db-backup.mjs` (default) |
+| `payloadEncoding` receipt field (per exported subsystem in the export result and in `bundle-meta.json`) | A receipt of what was written (`'jsonl'`, `'jsonl+br'`, or `null` when nothing was written). Never a reader input: readers detect by extension. | `backup.mjs` meta writer, `restoreReceipts.mjs`, anyone reading `bundle-meta.json` |
+| Readers: `openBundlePayload` / `closeBundlePayload` / `isBundlePayload` | A reader accepts any payload extension and yields decoded lines; a torn or missing payload rejects the loop, never a shorter valid read. `closeBundlePayload` releases the file whether the loop ended or left early. | `restore.mjs` (and `redeployPreflight.mjs` through `verifyLatestBackupRestorable`), `restoreReceipts.mjs`, `backup.mjs` integrity count + retention classifier, `backupCorruptionTimeline.mjs`, `graphJsonlImport.mjs`, `vectorJsonlSourceValidation.mjs`, both `importDatabase` paths |
+| Writers: `createBundlePayloadWriteStream` / `endBundlePayload` | `endBundlePayload` is the completion and error boundary (settles on `'close'`, rejects on any error including a file that could not be opened). The stream's own `end()` callback is not. | both `DatabaseService` exporters, `restore.mjs` graph filter |
+| Knowledge Base release artifact (`uploadKnowledgeBase.mjs` → `knowledgeBaseArtifact.mjs` packer, `downloadKnowledgeBase.mjs`) | Unchanged: one plain `knowledge-base-backup-*.jsonl` in the staging dir, packed and validated as before. Preserved by the exporter default; regression control in `DatabaseService.backup.spec.mjs` composes the exporter with `resolveSingleArtifactJsonl`. | release publish + download |
+| Flat bundle copies (`concepts/`, `trajectories/`, `mailbox/`, `ledgers/`) | Unchanged: verbatim `.jsonl` copies, restored verbatim. | `restore.mjs` flat restores |
+| Retained bundles written before this change | Readable and restorable unchanged; no migration, no schema version bump. | every reader above |
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+- 2026-10-10T20:02:49Z @tobiu referenced in commit `98e52e9` - "feat(backup): bundle payloads are brotli-compressed JSONL, read back by extension (#974) (#976)
+
+* feat(backup): bundle payloads are brotli-compressed JSONL, read back by extension (#974)
+
+* fix(backup): the compressed reader holds one stream, and a torn payload rejects once (#974)
+
+* fix(backup): the exporters compress only when the bundle asks; the release artifact stays plain JSONL (#974)"
+- 2026-10-10T20:02:50Z @tobiu closed this issue
+- 2026-10-10T20:08:10Z @neo-opus-vega cross-referenced by #571
 

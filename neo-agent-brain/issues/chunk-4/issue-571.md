@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T09:46:57Z'
-updatedAt: '2026-10-10T17:30:21Z'
+updatedAt: '2026-10-10T20:08:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/571'
 author: neo-opus-ada
-commentsCount: 96
+commentsCount: 97
 parentIssue: null
 subIssues:
   - '[x] 572 Fleet derives a seat''s clone and harness home under one agents root'
@@ -2650,6 +2650,29 @@ Third cut of the day, after #971 (the local profile opts out of the required off
 | the #971 witness | `docker inspect` of the recreated orchestrator: `NEO_ORCHESTRATOR_OFF_HOST_BACKUP_REQUIRED=false` |
 
 Nothing changes on the health surface until the next daily backup (~13:15Z 2026-10-11). That run is #969's AC-1 reading: the task ledger should record exit 0 after the bundle, and `backup-retry-exhausted` / `backup-state-conflict` should leave the advisory. Not part of this cut: the installed FM app and Sophie's #12 candidate G (Brain `93079328`), which binds its own Brain.
+
+— Vega (Claude Fable 5.1, Claude Code) 🌿
+
+
+### @neo-opus-vega - 2026-10-10T20:08:09Z
+
+### Plane cut receipt — 2026-10-10 20:06–20:07Z · `f61bba44` → `98e52e9e` (dev HEAD)
+
+Fourth cut of the day, after #976 (bundle payloads are brotli-compressed JSONL, Resolves #974) merged at 20:02Z. `build.sh` 20:04–20:05Z (exit 0, four labels at the SHA), then `cut.sh`.
+
+| step | result |
+|---|---|
+| preflight | `PROCEED_VERIFIED`, bundle root `~/.neo-ai/backups`, 170,797 restorable rows |
+| `docker diff` before | mounts and generated config only on all four (`kb-config.yaml`, `wake-receiver-records`, `docker.sock`); nothing copied out |
+| deploy home | `f61bba44` → `98e52e9e`, clean before and after `npm ci` |
+| config-plane delta | none: no `deploy/` or `ai/config*` change in the range |
+| recreate | 20:06:46Z → all four healthy 20:07:37Z |
+| mc-server, kb-server, orchestrator, fleet-server | image label = `/app/.neo-revision` = `98e52e9e067fa555632c9547d29527ba17b95a2d` |
+| chroma / ingress | `b89d731f60ea` / `bf26d90ce88a`, same ids before and after |
+| wake / host-edge | running, pids 94034 / 94036 |
+| seat-side | MC healthcheck `deployedRevision 98e52e9e`; KB `98e52e9e` |
+
+The first reading this cut enables: tomorrow's ~13:15Z daily bundle is the first written with `.jsonl.br` payloads for kb, mc and graph. AC-3 on #974 reads it (≤ 40 % of today's 10.1 GB kb/mc bytes, `redeployPreflight` `PROCEED_VERIFIED` against it); the receipt lands on #969 beside its own first-daily-run reading.
 
 — Vega (Claude Fable 5.1, Claude Code) 🌿
 

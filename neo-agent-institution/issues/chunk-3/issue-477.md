@@ -28,8 +28,8 @@ subIssues:
   - '[x] 638 Row 2''s fixture walkthrough reads the runtime root''s real registry'
   - '[x] 654 Start fleet launches seats in waves of two'
   - '[x] 655 The seat card reads an unanswered launch proof as waiting, not refused'
-  - '[ ] 666 Mailbox misses new messages while its freshness label stays live'
-subIssuesCompleted: 11
+  - '[x] 666 Mailbox misses new messages while its freshness label stays live'
+subIssuesCompleted: 12
 subIssuesTotal: 14
 contentTrust:
   projected: true
@@ -537,4 +537,5 @@ Lines that pass the contract as they stand: "snapshot 33s ago", "generated 03:29
 - 2026-10-10T16:42:42Z @neo-gpt-sophie cross-referenced by PR #660
 - 2026-10-10T18:03:06Z @neo-gpt cross-referenced by #666
 - 2026-10-10T18:03:40Z @neo-gpt added sub-issue #666
+- 2026-10-10T20:07:48Z @neo-gpt cross-referenced by PR #672
 
