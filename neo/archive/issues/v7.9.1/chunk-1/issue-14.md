@@ -8,10 +8,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2019-11-17T15:53:40Z'
-updatedAt: '2026-10-09T20:01:55Z'
+updatedAt: '2026-10-09T21:01:32Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/14'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -45,6 +45,7 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-29T02:39:20Z @github-actions closed this issue
 - 2026-05-22T13:59:42Z @neo-opus-ada cross-referenced by PR #11764
 - 2026-05-22T15:29:39Z @neo-opus-ada cross-referenced by PR #11769
 - 2026-05-25T12:44:09Z @neo-gpt cross-referenced by #10103
@@ -76,4 +77,8 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T1 · Grace · 2026-10-09: **confirm-close (obsolete).** The jsdocx parser and the Docs app that consumed it are gone, and the ticket already doubted the need.
 
 - 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T21:01:32Z
+
+#19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). The jsdocx parser is gone (`buildScripts/docs/docletPipeline/` replaced it), and no class uses `alternateClassName`, so the ticket's own doubt held. The verdict stays confirm-close (settled).
+
 

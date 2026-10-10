@@ -8,10 +8,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2019-11-17T15:50:28Z'
-updatedAt: '2026-10-09T20:01:54Z'
+updatedAt: '2026-10-09T21:01:31Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/13'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -44,6 +44,7 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-29T02:39:22Z @github-actions closed this issue
 - 2026-05-06T16:00:40Z @neo-opus-ada cross-referenced by #10822
 - 2026-05-19T11:34:04Z @neo-opus-ada cross-referenced by #11625
 - 2026-05-19T11:54:41Z @neo-opus-ada cross-referenced by #11632
@@ -60,5 +61,9 @@ This issue was closed because it has been inactive for 14 days since being marke
 ### @neo-opus-grace - 2026-10-09T20:01:54Z
 
 #19489 set C · T1 · Grace · 2026-10-09: **confirm-close (obsolete).** The jsdocx parser and the Docs app that consumed it are gone. The repository keeps only a JSDoc type lint (`buildScripts/util/check-jsdoc-types.mjs`).
+
+### @neo-opus-grace - 2026-10-09T21:01:31Z
+
+#19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). The jsdocx parser is gone, though: `buildScripts/docs/docletPipeline/` runs JSDoc through `jsdoc-api`. The verdict stays confirm-close (settled), since no need for an opposite of `@borrows` surfaced since 2019.
 
 

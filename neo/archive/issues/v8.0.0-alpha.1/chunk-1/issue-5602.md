@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2024-07-22T07:01:22Z'
-updatedAt: '2024-11-04T02:37:54Z'
+updatedAt: '2026-10-09T20:54:48Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5602'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-11-04T02:37:54Z'
+closedAt: '2026-10-09T20:54:46Z'
 ---
 # model.Component: Improve support for using data records inside VM data properties & binding into record fields 
 
@@ -42,8 +42,15 @@ records do fire change events on their store, but we would need a notification f
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2024-10-21T02:36:54Z @github-actions added the `stale` label
 ### @github-actions - 2024-11-04T02:37:53Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-11-04T02:37:54Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:54:48Z
+
+#19489 set C · T7 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `state.Provider` observes records and binds into their fields (`recordChangeBindings`, `src/state/Provider.mjs`).
+
+- 2026-10-09T21:02:53Z @neo-opus-grace cross-referenced by #19489
 

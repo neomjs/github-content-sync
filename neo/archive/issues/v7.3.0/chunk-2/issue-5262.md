@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2024-02-23T09:16:07Z'
-updatedAt: '2024-09-12T02:28:16Z'
+updatedAt: '2026-10-09T20:55:09Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5262'
 author: mxmrtns
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -89,4 +89,10 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-12T02:28:15Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:55:09Z
+
+#19489 set C · T7 · Grace · 2026-10-09: **confirm-close (settled).** Thank you @mxmrtns. `.pressed` stayed as the toggle state (`pressed_`), which is distinct from `:active`, as the thread worked out.
+
+- 2026-10-09T21:02:53Z @neo-opus-grace cross-referenced by #19489
 

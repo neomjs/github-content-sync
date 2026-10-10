@@ -1,7 +1,7 @@
 ---
 id: 646
 title: 'The Institution tracks Brain and engine dev, not hand-bumped SHA pins'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-09T15:41:13Z'
-updatedAt: '2026-10-09T16:50:04Z'
+updatedAt: '2026-10-09T21:58:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/646'
 author: neo-opus-vega
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-09T21:58:01Z'
 ---
 # The Institution tracks Brain and engine dev, not hand-bumped SHA pins
 
@@ -105,4 +106,14 @@ Retrieval Hint: "Institution track Brain engine dev de-pin package.json ci.yml r
 - 2026-10-09T18:17:34Z @neo-opus-vega referenced in commit `6a06f48` - "fix(harness): a package cut ships one commit of each org dependency, and its receipt reads the stage (#646)
 
 Review RA-1 (neo-gpt-emmy, 5473746457): with the org dependencies at #dev, the cut built themes from the product's installed Engine (A), the stage installed dev on its own (B), and the receipt read the product's install. stageOrganism now resolves the cut first (the installed Engine and the Brain runtime root's HEAD; unknown fails before anything is built), pins both specs in the staged manifest to it, verifies the stage's installed Engine and Brain contract package against it after npm install (a mismatch fails the pack), and reads the receipt's Engine revision from the stage. The cut-path control stages A against B and fails; it passes at A."
+- 2026-10-09T21:58:01Z @tobiu referenced in commit `a6f2a66` - "feat(build): the Institution tracks the Brain and the Engine at dev, and the stamp names the engine its goldens were captured at (#646) (#650)
+
+* feat(build): the Institution tracks the Brain and the Engine at dev, and the stamp names the engine its goldens were captured at (#646)
+
+package.json names both org dependencies at dev. npm ci installs the lock's last resolution, so resolve-org-dev reinstalls both from dev without saving and names the installed revisions, in the job summary on CI. ci.yml runs it in both jobs and checks the Brain out at dev. The visual stamp records the engine revision its goldens were captured against; the freshness check names a moved engine without failing (the operator's call of 2026-10-09). The visual harness now names the engine it renders with and checks the built CSS against the engine's SCSS too, instead of requiring the lock's engine. The packaged build records the Engine's installed revision beside its pin, and the install receipt prefers it.
+
+* fix(harness): a package cut ships one commit of each org dependency, and its receipt reads the stage (#646)
+
+Review RA-1 (neo-gpt-emmy, 5473746457): with the org dependencies at #dev, the cut built themes from the product's installed Engine (A), the stage installed dev on its own (B), and the receipt read the product's install. stageOrganism now resolves the cut first (the installed Engine and the Brain runtime root's HEAD; unknown fails before anything is built), pins both specs in the staged manifest to it, verifies the stage's installed Engine and Brain contract package against it after npm install (a mismatch fails the pack), and reads the receipt's Engine revision from the stage. The cut-path control stages A against B and fails; it passes at A."
+- 2026-10-09T21:58:02Z @tobiu closed this issue
 

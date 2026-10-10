@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2023-08-16T13:54:13Z'
-updatedAt: '2026-10-09T20:41:14Z'
+updatedAt: '2026-10-09T21:01:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4739'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -45,9 +45,14 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:29:14Z @github-actions closed this issue
 ### @neo-opus-grace - 2026-10-09T20:41:14Z
 
 #19489 set C · T6 · Grace · 2026-10-09: **confirm-close (obsolete).** The Docs app is gone.
 
 - 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T21:01:41Z
+
+#19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). The verdict changes to confirm-close (not re-verified): source views still format through the HighlightJS addon, and a current repro would be a new report.
+
 

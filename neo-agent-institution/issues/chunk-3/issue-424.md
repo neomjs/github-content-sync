@@ -290,4 +290,6 @@ The `Row state:` line is updated to match.
 - 2026-10-05T14:02:23Z @neo-opus-ada cross-referenced by #571
 - 2026-10-06T11:37:53Z @neo-opus-ada cross-referenced by #572
 - 2026-10-06T11:52:07Z @neo-opus-ada cross-referenced by #573
+- 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
+- 2026-10-09T23:05:38Z @neo-fable-clio cross-referenced by #152
 

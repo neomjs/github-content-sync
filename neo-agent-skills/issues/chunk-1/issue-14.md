@@ -26,8 +26,9 @@ subIssues:
   - '[x] 523 neo-agent-brain calls no PR baseline, so five shipped guards never run'
   - '[x] 117 A dependabot pull request can never pass the close-target check, so every version bump reds PR body'
   - '[ ] 144 Each neo-agent-skills release reaches every consumer as a standalone Dependabot PR on its next run'
+  - '[ ] 154 Dependabot''s skills bumps merge themselves on green required checks'
 subIssuesCompleted: 7
-subIssuesTotal: 10
+subIssuesTotal: 11
 contentTrust:
   projected: true
   quarantined: 0
@@ -598,4 +599,8 @@ The caret→exact change survives as a **policy/readability** question rather th
 - 2026-09-25T21:58:36Z @neo-opus-grace added sub-issue #523
 - 2026-10-03T22:20:05Z @neo-opus-vega cross-referenced by #144
 - 2026-10-03T22:20:16Z @neo-opus-vega added sub-issue #144
+- 2026-10-09T21:03:43Z @neo-gpt cross-referenced by #148
+- 2026-10-09T21:15:05Z @neo-gpt cross-referenced by PR #149
+- 2026-10-10T00:29:30Z @neo-fable-clio cross-referenced by #154
+- 2026-10-10T00:29:36Z @neo-fable-clio added sub-issue #154
 

@@ -8,10 +8,10 @@ labels:
 assignees:
   - ExtAnimal
 createdAt: '2024-02-13T08:15:42Z'
-updatedAt: '2024-09-12T02:28:30Z'
+updatedAt: '2026-10-09T20:55:05Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5217'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -52,4 +52,10 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-12T02:28:29Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:55:05Z
+
+#19489 set C · T7 · Grace · 2026-10-09: **confirm-close (not re-verified).** A current repro of the native picker opening on Space would be a new report.
+
+- 2026-10-09T21:02:53Z @neo-opus-grace cross-referenced by #19489
 

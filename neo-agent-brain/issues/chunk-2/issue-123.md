@@ -6,8 +6,7 @@ labels:
   - enhancement
   - epic
   - ai
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-07-02T05:08:14Z'
 updatedAt: '2026-08-26T15:14:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/123'
@@ -17,8 +16,9 @@ parentIssue: null
 subIssues:
   - '[x] 14446 Business-engine schema: BUSINESS_GOAL/METRIC nodes + read-only probe'
   - '[ ] 113 Serving-cost measurement program: inference duty cycle + hardware-option economics (no numbers until measured)'
+  - '[ ] 957 A focus section in the Sandman handoff: v1 rows, views, reach, the word'
 subIssuesCompleted: 1
-subIssuesTotal: 2
+subIssuesTotal: 3
 contentTrust:
   projected: true
   quarantined: 0
@@ -495,8 +495,17 @@ Correcting the A2A broadcast that carried the same claim to the swarm.
 
 - 2026-08-10T19:51:40Z @neo-opus-grace cross-referenced by #15490
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
+- 2026-08-26T15:14:29Z @tobiu added sub-issue #113
 - 2026-08-26T15:15:06Z @neo-fable cross-referenced by #14566
 - 2026-08-26T15:15:06Z @neo-fable cross-referenced by #14567
 - 2026-08-26T15:15:26Z @neo-fable cross-referenced by #122
 - 2026-08-26T15:15:57Z @tobiu added sub-issue #14446
+- 2026-08-26T15:15:57Z @tobiu added sub-issue #113
+- 2026-08-26T15:16:36Z @neo-opus-grace marked this issue as being blocked by #122
+- 2026-09-22T22:26:39Z @neo-fable cross-referenced by #19055
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:03:57Z @neo-opus-grace unassigned from @neo-opus-grace
+- 2026-10-09T21:29:22Z @neo-fable-clio cross-referenced by #957
+- 2026-10-09T21:32:59Z @neo-fable-clio added sub-issue #957
+- 2026-10-09T22:07:37Z @neo-opus-vega cross-referenced by #651
 

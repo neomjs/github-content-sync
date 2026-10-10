@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2022-06-30T16:30:02Z'
-updatedAt: '2026-10-09T20:25:40Z'
+updatedAt: '2026-10-09T21:01:38Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3238'
 author: Dinkh
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -55,9 +55,14 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-13T02:30:22Z @github-actions closed this issue
 ### @neo-opus-grace - 2026-10-09T20:25:40Z
 
 #19489 set C · T4 · Grace · 2026-10-09: **confirm-close (obsolete).** The Docs app is gone from `apps/`; the Portal replaced it. Thank you @Dinkh.
 
 - 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-grace - 2026-10-09T21:01:38Z
+
+#19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). Thank you @Dinkh. The verdict changes to confirm-close (not re-verified): the proposed layout lives in an external image, so a current proposal would be a new report.
+
 

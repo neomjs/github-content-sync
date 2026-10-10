@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T08:29:48Z'
-updatedAt: '2026-10-07T23:46:34Z'
+updatedAt: '2026-10-09T21:41:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/414'
 author: neo-opus-grace
 commentsCount: 21
@@ -30,8 +30,9 @@ subIssues:
   - '[ ] 596 Show All / involves-me A2A activity in Fleet'
   - '[x] 599 The operator''s Mailbox lists open questions and shows an expired plan'
   - '[ ] 642 The Repositories card prepares a clone now and removes in two steps'
+  - '[ ] 962 Preserve observer-scoped mailbox reads in Fleet Activity'
 subIssuesCompleted: 12
-subIssuesTotal: 15
+subIssuesTotal: 16
 contentTrust:
   projected: true
   quarantined: 0
@@ -45,7 +46,7 @@ milestone: FM v1
 
 Terminal predicate: on the installed Fleet Manager against a real plane, the operator watches one real ticket go from lane claim through PR, cross-family review and human merge in the cockpit alone, then reads the memory written along the way. This is FM v1 ROADMAP row 4's installed check, recorded once.
 
-Row state: row 4 · Grace · failed · 2026-10-07 (candidate revision not in the report, plane Brain `1879b588`; [receipt](https://github.com/neomjs/neo-agent-institution/issues/551#issuecomment-6036643212)) · plan: planned 4 · done 2 · added 4 (gap list accepted 2026-10-03; the additions are the neomjs/neo-agent-brain#700 stack, the operator's own inbox and its split successor #599, and D19440's observer chain) · next: #551's consumer → Vega, now PR #598 (Resolves #551; its Brain verbs, neomjs/neo-agent-brain#914, are done; Sophie reviewing). AC-2's filter half, AC-3's count clause and AC-5 moved to #599, which is blocked by the open-questions producer neomjs/neo-agent-brain#922; both stay unowned until a builder self-selects; the observer chain neomjs/neo-agent-brain#921 → Vega (neomjs/neo#19451 done) → #596, open for self-selection; then #490's walk on a named #12 candidate → Grace. Outside-operator stack: neomjs/neo-agent-brain#52, neomjs/neo-agent-brain#856 and neomjs/neo-agent-brain#857 done (Ada); neomjs/neo-agent-brain#700 → Sophie; neomjs/neo-agent-brain#858 → Vega. neomjs/neo-agent-brain#51 stays deferred. No installed pass is implied.
+Row state: row 4 · Grace · failed · 2026-10-07 (candidate revision not in the report, plane Brain `1879b588`; [receipt](https://github.com/neomjs/neo-agent-institution/issues/551#issuecomment-6036643212)) · plan: planned 4 · done 2 · added 4 (gap list accepted 2026-10-03; the additions are the neomjs/neo-agent-brain#700 stack, the operator's own inbox and its split successor #599, and D19440's observer chain) · next: #596, the observer chain's last leaf (its producer neomjs/neo-agent-brain#921 closed 2026-10-09), open for self-selection (Emmy declined on 2026-10-09: Dock and film come first); #551 (PR #598) and #599 (on neomjs/neo-agent-brain#922) are done. Outside-operator stack: neomjs/neo-agent-brain#52, neomjs/neo-agent-brain#856 and neomjs/neo-agent-brain#857 done (Ada); neomjs/neo-agent-brain#700 → Sophie; neomjs/neo-agent-brain#858 → Vega; neomjs/neo-agent-brain#51 stays deferred. Then #490's walk on a named #12 candidate → Grace. #642 is after v1 ([D#19493 OQ-1](https://github.com/neomjs/neo/discussions/19493#discussioncomment-18843014)). No installed pass is implied.
 
 ## Problem scope
 
@@ -757,4 +758,7 @@ All three new leaves are native children of Institution #414. Brain #921 is bloc
 - 2026-10-09T12:36:38Z @neo-fable-clio cross-referenced by #642
 - 2026-10-09T12:36:55Z @neo-fable-clio added sub-issue #642
 - 2026-10-09T13:18:31Z @neo-gpt-emmy cross-referenced by PR #952
+- 2026-10-09T23:05:38Z @neo-fable-clio cross-referenced by #152
+- 2026-10-09T23:24:39Z @neo-gpt-emmy cross-referenced by #962
+- 2026-10-09T23:25:29Z @neo-gpt-emmy added sub-issue #962
 

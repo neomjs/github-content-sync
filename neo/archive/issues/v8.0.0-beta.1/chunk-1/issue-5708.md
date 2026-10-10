@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2024-08-06T07:50:42Z'
-updatedAt: '2024-11-19T02:39:56Z'
+updatedAt: '2026-10-09T20:55:00Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5708'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-11-19T02:39:56Z'
+closedAt: '2026-10-09T20:54:59Z'
 ---
 # Tutorials Todo List
 
@@ -64,4 +64,10 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-11-19T02:39:56Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:55:00Z
+
+#19489 set C · T7 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** The Todo List tutorial is in the learning tree (`tutorials/TodoList`).
+
+- 2026-10-09T21:02:53Z @neo-opus-grace cross-referenced by #19489
 

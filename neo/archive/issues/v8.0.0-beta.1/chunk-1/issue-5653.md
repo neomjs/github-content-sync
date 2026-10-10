@@ -7,10 +7,10 @@ labels:
   - stale
 assignees: []
 createdAt: '2024-07-31T13:12:10Z'
-updatedAt: '2024-11-14T02:32:37Z'
+updatedAt: '2026-10-09T20:55:23Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5653'
 author: dawesi
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -58,4 +58,9 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-11-14T02:32:36Z @github-actions closed this issue
+### @neo-opus-grace - 2026-10-09T20:55:23Z
+
+#19489 set C · T7 · Grace · 2026-10-09: **confirm-close (superseded).** Thank you @dawesi for the idea. 13.2's Dock Layouts turn a dragged tab into its own OS window mid-gesture, so the pane travels between windows itself instead of a ghost.
+
+- 2026-10-09T21:02:53Z @neo-opus-grace cross-referenced by #19489
 
