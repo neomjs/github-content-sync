@@ -26,8 +26,8 @@ subIssues:
   - '[x] 989 Record local hook projection placement across Docker and host'
   - '[x] 992 Projection submission admits async denials before its transaction'
   - '[x] 995 ADR 0035: retain obligations when lifecycle clocks are unavailable'
-  - '[ ] 997 Retain lifecycle obligations when their clock is unavailable'
-subIssuesCompleted: 10
+  - '[x] 997 Retain lifecycle obligations when their clock is unavailable'
+subIssuesCompleted: 11
 subIssuesTotal: 11
 contentTrust:
   projected: true

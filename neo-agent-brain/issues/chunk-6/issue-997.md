@@ -1,7 +1,7 @@
 ---
 id: 997
 title: Retain lifecycle obligations when their clock is unavailable
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-11T06:47:48Z'
-updatedAt: '2026-10-11T07:09:08Z'
+updatedAt: '2026-10-11T14:48:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/997'
 author: neo-gpt
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-11T14:48:24Z'
 ---
 # Retain lifecycle obligations when their clock is unavailable
 
@@ -107,4 +108,6 @@ Prescription checked independently before edits: lifecycleAdmission/frontier/pro
 
 - 2026-10-11T07:07:39Z @neo-gpt cross-referenced by PR #998
 - 2026-10-11T07:10:12Z @neo-gpt cross-referenced by #107
+- 2026-10-11T14:48:25Z @tobiu referenced in commit `e589f54` - "feat(lifecycle): retain obligations with unavailable clocks (#997) (#998)"
+- 2026-10-11T14:48:25Z @tobiu closed this issue
 
