@@ -1,7 +1,7 @@
 ---
 id: 981
 title: A Round-2 review body is refused on create but accepted on update
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-11T00:02:27Z'
-updatedAt: '2026-10-11T00:10:11Z'
+updatedAt: '2026-10-11T04:46:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/981'
 author: neo-opus-vega
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-11T04:45:53Z'
 ---
 # A Round-2 review body is refused on create but accepted on update
 
@@ -72,10 +73,10 @@ Decision Record impact: none (consistency of an existing gate; no ADR governs th
 
 ## Acceptance Criteria
 
-- [ ] AC-1: a unit spec submits a Round-2 body through the `update` path on a PR with no `CHANGES_REQUESTED` review and is refused with the relation failure; red before the change.
-- [ ] AC-2: the same spec on a PR with a cited `CHANGES_REQUESTED` review from another node passes on `update`; the review being updated is excluded from the candidate set.
-- [ ] AC-3: the existing `create`-path specs for the relation gate stay green unchanged (control).
-- [ ] AC-4 *(doc, Skills follow-up)*: `merge-hold-tokens.md` says the withdrawal instrument that opens a round is a `CHANGES_REQUESTED` review, and the hold token is for the case where no round can be opened; the clearing review after a hold-only withdrawal uses the full template. Filed as its own Skills leaf (the doc's author is Grace; fork sent).
+- [x] AC-1: a unit spec submits a Round-2 body through the `update` path on a PR with no `CHANGES_REQUESTED` review and is refused with the relation failure; red before the change.
+- [x] AC-2: the same spec on a PR with a cited `CHANGES_REQUESTED` review from another node passes on `update`; the review being updated is excluded from the candidate set.
+- [x] AC-3: the existing `create`-path specs for the relation gate stay green unchanged (control).
+- [x] AC-4 *(doc, Skills follow-up)*: `merge-hold-tokens.md` says the withdrawal instrument that opens a round is a `CHANGES_REQUESTED` review, and the hold token is for the case where no round can be opened; the clearing review after a hold-only withdrawal uses the full template. Filed as its own Skills leaf (the doc's author is Grace; fork sent).
 
 ## Out of Scope
 
@@ -95,6 +96,7 @@ Live latest-open sweep: latest 20 open Brain issues read at 2026-10-11T00:00Z (n
 Origin Session ID: b7e00524-0631-423a-aa93-b4fbe04aa870
 Retrieval Hint: `manage_pr_review Round 2 disposition refused on create accepted on update merge hold comment`
 
+
 ## Timeline
 
 - 2026-10-11T00:02:28Z @neo-opus-vega assigned to @neo-opus-vega
@@ -112,4 +114,26 @@ Retrieval Hint: `manage_pr_review Round 2 disposition refused on create accepted
 
 - 2026-10-11T00:31:17Z @neo-gpt cross-referenced by #982
 - 2026-10-11T00:59:54Z @neo-opus-grace cross-referenced by PR #984
+- 2026-10-11T03:57:10Z @neo-opus-vega cross-referenced by PR #994
+- 2026-10-11T04:45:52Z @tobiu referenced in commit `a126f91` - "fix(github-workflow): an edited review answers to the Round-2 relation, as a new one does (#981) (#994)
+
+* fix(github-workflow): an edited review answers to the Round-2 relation, as a new one does (#981)
+
+manage_pr_review ran getRound2DispositionRelationFailure on create only, so a
+disposition body the gate refused there was accepted as an edit of another
+review. The update query now reads the pull request's reviews in its one round
+trip; the update branch runs the same relation with the edited review left out
+(a review is never its own Round 1) and the review's GitHub state read in the
+vocabulary the state matrix uses (COMMENTED -> COMMENT, CHANGES_REQUESTED ->
+REQUEST_CHANGES). The create path is unchanged.
+
+* docs(github-workflow): the touched files' comments describe current behavior (#981)
+
+Touching PullRequestService.mjs and its spec makes the source-comment
+archaeology guard read both files whole, and it flagged 23 lines: review-round
+narration ("prior round", "Round 1 reviewed", RA-N labels with digits), who
+caught what, a neo ticket ref and `line #42`-style examples. Each now states
+the behavior it explains, with the same meaning; examples use `#N`. Comments
+only, no code change."
+- 2026-10-11T04:45:53Z @tobiu closed this issue
 

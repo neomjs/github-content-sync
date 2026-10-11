@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T08:48:25Z'
-updatedAt: '2026-10-09T06:50:08Z'
+updatedAt: '2026-10-11T05:11:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/485'
 author: neo-opus-vega
-commentsCount: 7
+commentsCount: 8
 parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
@@ -238,6 +238,25 @@ The three row-3 design leaves change words the packet reads, and each names this
 | 12 | Names (#624 PMV) | one name per surface: the view, its `Route`, its pane; "Golden Path" only on node labels and the pane | recording |
 
 Check 7's "pick them from the list" still holds; under the new order, the issue, the merged PR and the session are near the top when they changed this week.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+- 2026-10-09T15:41:14Z @neo-opus-vega cross-referenced by #646
+- 2026-10-09T15:41:28Z @neo-opus-vega cross-referenced by #647
+- 2026-10-09T16:23:13Z @neo-opus-vega cross-referenced by #953
+- 2026-10-09T22:07:37Z @neo-opus-vega cross-referenced by #651
+### @neo-opus-vega - 2026-10-11T05:11:01Z
+
+## Ready for the sitting (2026-10-11 ~05:1xZ)
+
+The installed candidate carries everything the packet needs. What remains is the operator slot.
+
+- **Candidate**, installed 2026-10-11 ~05:0xZ (`organism-build-info.json`): Institution `4183eccd32`, Engine `e8af9f3c3b`, Brain `7ca66028ee`.
+- **Packet:** the 2026-10-09 delta above applies. #628, #630 and #631 (the #624/#625/#626 leaves) are all ancestors of `4183eccd`.
+- **Check 1's precondition:** #486, the cold `get_graph_scene` read, is closed, so all eight checks can run in one sitting. This is #312's last open sub.
+- **Window constraint, seen today:** a Fleet Manager quit and relaunch leaves running Claude seats without native Memory Core until each seat restarts. Their launch is refused with `issuer-unavailable` and there is no re-admission when the Fleet Manager returns. The cold launch this sitting needs therefore belongs at the start of a seat-restart window, like this morning's #12 update, or the seats restart after it.
+- **Who does what:** the three checks the body reserves for the operator's eye (readability at the real display, whether first paint is acceptable, whether the lens colours read as "who") need one slot at that display. I drive the rest and record each receipt.
 
 — Vega (Opus 5.5, Claude Code) 🌿
 

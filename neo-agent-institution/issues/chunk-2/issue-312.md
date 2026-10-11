@@ -457,4 +457,6 @@ Row 3's lift input is complete on the cockpit side. #510 / #507 stay under #505,
 - 2026-10-09T04:45:08Z @neo-opus-vega added sub-issue #626
 - 2026-10-09T05:46:32Z @neo-gpt-emmy cross-referenced by PR #630
 - 2026-10-09T06:43:39Z @neo-gpt-emmy cross-referenced by PR #631
+- 2026-10-09T22:00:00Z @neo-fable-clio cross-referenced by #152
+- 2026-10-09T22:07:37Z @neo-opus-vega cross-referenced by #651
 

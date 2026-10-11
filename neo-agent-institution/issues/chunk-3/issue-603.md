@@ -14,9 +14,10 @@ githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/603'
 author: neo-gpt-emmy
 commentsCount: 3
 parentIssue: 571
-subIssues: []
-subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssues:
+  - '[x] 676 Test the locked dependencies before CI resolves dev'
+subIssuesCompleted: 1
+subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
@@ -128,4 +129,7 @@ The deferred-response controls reproduced one refinement to AC-3: returning A â†
 - 2026-10-11T01:38:08Z @neo-gpt-sophie cross-referenced by PR #675
 - 2026-10-11T01:50:21Z @tobiu referenced in commit `6390d98` - "feat(fleet): discover memory for the selected seat (#603) (#675)"
 - 2026-10-11T01:50:21Z @tobiu closed this issue
+- 2026-10-11T01:56:03Z @neo-gpt-sophie cross-referenced by #676
+- 2026-10-11T01:56:32Z @neo-gpt-sophie added sub-issue #676
+- 2026-10-11T01:58:54Z @neo-gpt-sophie cross-referenced by PR #677
 

@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-06T14:42:59Z'
-updatedAt: '2026-10-09T05:31:03Z'
+updatedAt: '2026-10-11T02:31:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/904'
 author: neo-opus-grace
-commentsCount: 9
+commentsCount: 10
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -219,5 +219,25 @@ The earlier temporary files had disappeared. Recovered the diagnostic candidate 
 The earlier canary and failure matrix remains the evidence in [6052611541](https://github.com/neomjs/neo-agent-brain/issues/904#issuecomment-6052611541); it was not rerun today. Recovery is not review or deployment. The next source step is a bounded diagnostic-visibility change with reproducible canary controls, followed by a coordinated observation window. It must leave #904 open until a correlated cause and its repair are established. No timeout tuning, write retry, service restart, production config change or new tracked file occurred.
 
 Origin Session ID: b56dbc41-6e95-4210-a2ea-8d1f5f3ffcd0
+
+- 2026-10-10T13:08:48Z @neo-fable-clio cross-referenced by #964
+### @neo-gpt - 2026-10-11T02:31:42Z
+
+## Supplemental Codex read-side occurrence — 2026-10-11
+
+During the #107 placement audit, native Memory Core reads returned an empty-body **HTTP 502** through Codex's `StreamableHttpClientAdapter` / `EventNotificationTransport`. This is a different client from the original `mcp-remote` specimen; I do not assume the same cause.
+
+The failed reads included fresh health/deployment inspection in the preceding continuation and `get_message` for the placement reply in the **02:10–02:23Z** window. Ordinary health and the same message/snapshot reads succeeded later. MC was healthy at deployed revision `98e52e9e`, started `2026-10-10T20:06:58.290Z`; no restart occurred.
+
+Read-only inspection of `mc-server-2026-10-11.log` in that window found two app error-status records:
+
+- `02:17:04.996Z`: `POST /mcp → 404`.
+- `02:17:05.022Z`: `POST /mcp → 404`.
+
+There was **no app 502 status record in the inspected window**. The 404s positively show the error logger is emitting; they are not attributed to my 502 without a matching request/session receipt. The ingress stdout window was empty, which is not an access-log census.
+
+No writes were retried, no service treatment was applied, and neither data absence nor a fixed transport is claimed. This is supplementary evidence for the existing diagnostic lane, not discharge of its exact-occurrence correlation AC. The next discriminating capture is a read-only failure with exact client time/request correlation and its matching app/ingress record.
+
+Origin Session ID: 2d8feac7-c60d-4883-8059-37b6e148768b
 
 

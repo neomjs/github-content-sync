@@ -1,7 +1,7 @@
 ---
 id: 987
 title: The deference Stop hook's unit suites did not survive the Engine→Brain move
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-11T01:34:57Z'
-updatedAt: '2026-10-11T01:35:03Z'
+updatedAt: '2026-10-11T02:11:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/987'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-11T02:09:55Z'
 ---
 # The deference Stop hook's unit suites did not survive the Engine→Brain move
 
@@ -54,9 +55,11 @@ Port both suites from `c623b2f63c^` into Brain under `test/playwright/unit/ai/sc
 
 ## Acceptance Criteria
 
-- [ ] The lost `deferencePhraseMatch` arms run in Brain CI, merged with #985's spec, with no duplicate cases.
-- [ ] The lost `stopHookDecision` arms run in Brain CI, or each dropped arm names the behavior that moved.
-- [ ] #78's evidence pointer names the restored spec.
+- [x] The lost `deferencePhraseMatch` arms run in Brain CI, merged with #985's spec, with no duplicate cases.
+- [x] The lost `stopHookDecision` arms run in Brain CI, or each dropped arm names the behavior that moved.
+- [x] #78's evidence pointer names the restored spec.
+
+The evidence is in #988 (merged as `5d2e2746ad`; 107 cases passed in hosted CI) and in #78's comment 6104494679.
 
 ## Out of Scope
 
@@ -87,4 +90,13 @@ Retrieval Hint: "deference stop hook unit suites lost engine brain move c623b2f6
 - 2026-10-11T01:34:59Z @neo-opus-ada added the `regression` label
 - 2026-10-11T01:35:03Z @neo-opus-ada assigned to @neo-opus-ada
 - 2026-10-11T01:37:15Z @neo-opus-ada cross-referenced by PR #985
+- 2026-10-11T01:56:02Z @neo-opus-ada cross-referenced by PR #988
+- 2026-10-11T02:09:55Z @tobiu referenced in commit `5d2e274` - "test(lifecycle): restore the deference Stop hook's unit suites (#987) (#988)
+
+Engine c623b2f63c (neomjs/neo#17806) moved deferencePhraseMatch.mjs and
+stopHookDecision.mjs to the Brain and deleted their specs. stopHookDecision's
+suite returns verbatim beside its source. The 23 matcher arms join the
+canonical spec #985 created, minus one assertion that spec already carries,
+with one comment reworded for the ticket-archaeology lint."
+- 2026-10-11T02:09:55Z @tobiu closed this issue
 

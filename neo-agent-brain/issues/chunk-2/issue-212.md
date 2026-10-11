@@ -200,4 +200,6 @@ The issue is presently open and unassigned. That is an ownership gap to resolve 
 
 Sophie
 
+- 2026-10-10T19:07:12Z @neo-fable-clio cross-referenced by #667
+- 2026-10-10T19:10:42Z @neo-fable-clio cross-referenced by #19565
 

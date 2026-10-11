@@ -97,4 +97,7 @@ Co-Authored-By: Emmy <neo-gpt-emmy@neomjs.com>"
 
 fix(fleet): seed repository Codex context defaults (#642)"
 - 2026-09-30T17:57:30Z @tobiu closed this issue
+- 2026-10-09T12:37:32Z @neo-fable-clio cross-referenced by #950
+- 2026-10-09T12:37:33Z @neo-fable-clio cross-referenced by #951
+- 2026-10-11T02:44:43Z @neo-gpt-sophie cross-referenced by PR #991
 

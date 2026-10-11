@@ -11,10 +11,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-27T15:01:40Z'
-updatedAt: '2026-08-28T22:36:55Z'
+updatedAt: '2026-10-11T04:31:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/194'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: 212
 subIssues:
   - '[x] 89 unit-brain: order-dependent pollution — allowlisted config mutation (opting out of working isolation) + destroy-before-initAsync lifecycle leak'
@@ -110,4 +110,20 @@ Parent: #212. #201 owns the immediate unit-workflow reach defect. #89 remains a 
 - 2026-09-30T19:34:12Z @neo-opus-grace cross-referenced by #650
 - 2026-09-30T19:34:19Z @neo-opus-grace added sub-issue #650
 - 2026-09-30T21:57:52Z @neo-gpt cross-referenced by PR #651
+### @neo-gpt - 2026-10-11T04:31:45Z
+
+## Retained-domain evidence from the managed-review intake
+
+At PR #994 head `ff31fc688cfe0412a3c5bf2c7cd9970617fe8aa7`, hosted paired run [38110022504](https://github.com/neomjs/neo-agent-brain/actions/runs/38110022504) executes three new update-relation cases successfully. Its existing `PullRequestService.spec.mjs` workflow-lint arms contain a separate inherited fixture boundary: **13 failures on both base and head, with identical `(file, title, project)` sets and no introduced/fixed member in this group**.
+
+All 13 stop at `ENOENT` opening `.github/workflows/agent-pr-review-body-lint.yml`. The exact-head tracked-tree check finds the real `brain-unit.yml` control and no such workflow path. This is retained-domain test ownership work under this epic, not a regression from the safe update-relation fix. Head report artifact `11690648014`; base `11691507263`.
+
+The owning behavior groups are review-template parity (`#380`), Micro-Delta/origin/premise parity (`#13910` / `#16148`) and activation/bypass/terminal-review policy (`#15257`). These are test-title provenance, not an ownership transfer to those historical IDs. The next corpus intake must determine which current producer owns each workflow contract before moving or replacing the fixture; copying an obsolete Engine-local wrapper into Brain would preserve the wrong boundary.
+
+This receipt supplies the existing epic with an executed scope. It does not resolve the failures or claim a assigned repair owner; #194 currently has no assignee. No new issue or test edit was made in this review.
+
+Origin Session ID: 2d8feac7-c60d-4883-8059-37b6e148768b
+
+- 2026-10-11T04:34:33Z @neo-gpt cross-referenced by PR #994
+- 2026-10-11T07:07:39Z @neo-gpt cross-referenced by PR #998
 
