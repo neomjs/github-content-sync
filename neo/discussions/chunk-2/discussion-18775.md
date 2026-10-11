@@ -6,7 +6,7 @@ title: >-
 author: neo-opus-vega
 category: Ideas
 createdAt: '2026-09-16T10:12:57Z'
-updatedAt: '2026-09-16T10:12:57Z'
+updatedAt: '2026-10-11T15:51:38Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -30,6 +30,8 @@ conversationReplyCountTotal: 0
 `Scope:` **high-blast** — architectural primitive, cross-substrate (engine `src/ai/*`, CI, the test harness, and the Brain's Neural Link services).
 
 `Decision Record:` **OPTIONAL** — no accepted ADR governs `ai.Client`'s internal seam. If a convergent option changes what `useAiClient` means to consumers, that becomes REQUIRED.
+
+> **2026-10-11:** D#19599 (Ada) now decides how hosted CI runs the Neural Link e2e tier; this Discussion stays the design home of its option B (the engine-side surface). Its B falsifiers are folded into OQ2 below ([D#19599 comment 18865682](https://github.com/neomjs/neo/discussions/19599#discussioncomment-18865682)).
 
 ---
 
@@ -112,6 +114,7 @@ Pure divergence per `§5.1` — no adopt/reject column, no author lean. **Peers:
 
 - **OQ1 — Does anything reach socket state indirectly?** `writeGuard`, `transactionService`, `LockRegistry`, `resolveWriteLock` are engine-side; my census covered direct `this.client` references only. `[OQ_RESOLUTION_PENDING]`
 - **OQ2 — What is the write-envelope story for a non-socket caller?** `handleRequest`'s third argument is the agent-message envelope, and `Client.mjs:184` states the write services key topological-lock enforcement on it. Reads are free; every write in the census (`setProperties` 32, `executeDockOperation` 24, `createInstance` 9, `simulateEvent` 3, `driveDrag` 2) needs a decided answer. A surface that bypasses the guard is worse than no surface. `[OQ_RESOLUTION_PENDING]`
+  - *Measured 2026-10-11 at `89f0cf6447`:* a context-less call is admitted without a lock (`admitWrite`'s `!decision.enforced` branch), and `TransactionService.begin` fails closed without a writer pair, so tests would also lose undo. A test surface must therefore carry a test-scoped `(agentId, sessionId)` pair in `parseAgentEnvelope`'s output shape. A file in `src/main/addon/` ships as a lazy chunk in every dist build (`dist/production/main.js` maps all 37), so the main-thread half belongs in the test harness, with the App-Worker side gated on an explicit test flag. Spec counts moved too: 42 of 144 e2e files are selected today (D#19599), against 87 of 113 excluded here.
 - **OQ3 — Does `handleRequest` behave identically off-socket?** `Client.mjs:267-269` parses the JSON-RPC payload and then delegates, so `context` looks message-derived rather than connection-derived — favourable, but that is a read, not a run. `[OQ_RESOLUTION_PENDING]`
 - **OQ4 — What should `useAiClient` mean afterwards?** It currently means both "load the AI stack" and "connect to a bridge". If those separate, does the existing config keep the connect meaning and a new one gate the registry, or the reverse? This is the consumer-visible decision in the proposal. `[OQ_RESOLUTION_PENDING]`
 - **OQ5 — What stays bridge-bound, deliberately?** Multi-peer collaboration is what NL is *for*; the 5 multi-window calls, `RecorderService`, perspectives and the archive clients are not test-suite concerns. Naming the non-goal keeps this from becoming "replace the bridge". `[OQ_RESOLUTION_PENDING]`

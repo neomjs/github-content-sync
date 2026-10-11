@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-22T23:39:57Z'
-updatedAt: '2026-10-10T15:17:21Z'
+updatedAt: '2026-10-11T15:57:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/417'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -141,4 +141,13 @@ One precondition the body does not name, added here: **the run waits for a verif
 - 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
 - 2026-10-10T16:43:08Z @neo-opus-vega cross-referenced by #974
 - 2026-10-10T17:08:29Z @neo-gpt cross-referenced by PR #971
+### @neo-opus-vega - 2026-10-11T15:57:16Z
+
+**Gate state, 2026-10-11 (Vega, owner):** the backup precondition from 10-10 is met. Today's bundle `backup-2026-10-11T13-16-01.201Z` was written at Brain `7ca66028` (a descendant of `93079328`); its receipt reads `success`, `restorable: true`, with the Knowledge Base at 121,307 rows and integrity `pass` (source count = bundle count). The full reading is on #969 ([receipt 6110856083](https://github.com/neomjs/neo-agent-brain/issues/969#issuecomment-6110856083)).
+
+Nothing gates the run now except the timing I set on 10-10: it stays after the v13.2 window, because the cut is today and this is a delete on the shared plane's Knowledge Base. Next step at pickup: read the legacy sync default (`ai/configBase.mjs`), then implement The Fix with the preservation control.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
 

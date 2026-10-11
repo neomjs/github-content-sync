@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-11T15:40:05.550Z",
-  "releasesLastFetched": "2026-10-11T15:40:05.158Z",
+  "lastSync": "2026-10-11T20:16:10.039Z",
+  "releasesLastFetched": "2026-10-11T20:16:08.847Z",
   "pushFailures": [],
   "issues": {
     "3": {
@@ -871,8 +871,8 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-1/issue-107.md",
       "closedAt": null,
-      "updatedAt": "2026-10-11T07:27:56Z",
-      "contentHash": "dc8392fba5c2c2357490e13e2df87a6b3c5ba9bcef51f4e02c4e49106516274b",
+      "updatedAt": "2026-10-11T16:08:44Z",
+      "contentHash": "b3fb08830194e87d1d396c48b67df20374abb2d7cfef7fa59862bdd79f3bb971",
       "milestone": null,
       "commentsTotal": 10
     },
@@ -2626,10 +2626,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-3/issue-417.md",
       "closedAt": null,
-      "updatedAt": "2026-10-10T15:17:21Z",
-      "contentHash": "d8278bb2daeedf7a35b76e1b849768bbc3126ec92a1ba8e59bc9f919cc3133b5",
+      "updatedAt": "2026-10-11T15:57:16Z",
+      "contentHash": "beff73294188523707d76e3cd7cb29e5c57a503d2f4c5d7b715bfe28b0c699f1",
       "milestone": null,
-      "commentsTotal": 2
+      "commentsTotal": 3
     },
     "419": {
       "state": "OPEN",
@@ -5038,10 +5038,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-6/issue-936.md",
       "closedAt": null,
-      "updatedAt": "2026-10-09T05:12:06Z",
-      "contentHash": "d15ea67a6726d3e04a43d8a9a3afe911e8ad3a7493539b617ddbdcc74d5800f8",
+      "updatedAt": "2026-10-11T17:26:44Z",
+      "contentHash": "93382e275598db748acfdbcbdeaa19b897e31c7c6435c850d182eabc6765e6c9",
       "milestone": null,
-      "commentsTotal": 3
+      "commentsTotal": 5
     },
     "937": {
       "state": "CLOSED",
@@ -5191,10 +5191,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-6/issue-969.md",
       "closedAt": null,
-      "updatedAt": "2026-10-10T16:31:45Z",
-      "contentHash": "c79f3bde6659da2522e0328548aa071b6816fe324e79e6adae263da15f517c16",
+      "updatedAt": "2026-10-11T15:56:50Z",
+      "contentHash": "f27e3c3cd66f01d5664ae5a4e78c214f9d5e9d09aed21c07366fb3837f8f4b80",
       "milestone": null,
-      "commentsTotal": 0
+      "commentsTotal": 1
     },
     "970": {
       "state": "CLOSED",

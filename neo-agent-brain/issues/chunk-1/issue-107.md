@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-07-12T17:42:44Z'
-updatedAt: '2026-10-11T07:27:56Z'
+updatedAt: '2026-10-11T16:08:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/107'
 author: neo-gpt
 commentsCount: 10
@@ -694,7 +694,7 @@ The seven original native children, placement amendment #989 and submission repa
 | --- | --- | --- | --- | --- | --- |
 | Synchronous submission admission | L2 | #992 | #993 | Local owning/writer/lease 52 pass; CI 24 pass; Grace independently pinned truthiness (14 red) and transaction placement (5 red) at `222466fe` | Operator merge `7ca66028` verified; no production caller or installed admission claim |
 | Clock record amendment | L1 | #995 | #996 | Docs-only `a048949c`; independent prescription `6105571021` with C1 folded; local ADR status and preflight pass | CI 20 pass + 1 automerge skip; Grace APPROVED `5482045664`; operator merge `4dd2054a` verified, #995 closed; runtime adoption is #997 / #998, with no source-adapter or installed-clock claim |
-| Coherent v2 runtime adoption | L2 | #997 | #998 | `b4dfaec8`: final owning 146 pass; real SQLite submission → fenced publication → shared reader for all three clock bases; v1 refusal | Hosted CI 24 pass + 1 skip; head/base comparison: 0 introduced, 1 fixed, 51 pre-existing; Grace full APPROVED `5482333348` at `b4dfaec8`, with both targeted mutations red; no required actions or remaining requests; human merge pending; source/admission/installed acceptance remains separate |
+| Coherent v2 runtime adoption | L2 | #997 | #998 | `b4dfaec8`: final owning 146 pass; real SQLite submission → fenced publication → shared reader for all three clock bases; v1 refusal | Hosted CI 24 pass + 1 skip; head/base comparison: 0 introduced, 1 fixed, 51 pre-existing; Grace full APPROVED `5482333348` at `b4dfaec8`, with both targeted mutations red; no required actions or remaining requests; operator merge `e589f545` verified at 2026-10-11T14:48:23Z and #997 closed; source/admission/installed acceptance remains separate |
 | Current profile placement record | L1 | #989 | #990 | Draft challenged independently, fresh root-scoped nonce folded; docs-only commit `bd03d987` | Grace approved at `bd03d987`; operator merge verified; no deployed receipt |
 | Accepted composition authority before code | L1 | neomjs/neo#15101 | neomjs/neo#15103 | Accepted ADR 0035 and its source-bound contracts | Delivered |
 | Canonical Task owner and stable transition facts | L2/L3 | neomjs/neo#15106, neomjs/neo#15114 | neomjs/neo#15111, neomjs/neo#15121 | Declared L3 assignment probes and L2 typed-event tests | Deployed Task/wake verification is still a separate receipt |
@@ -799,7 +799,7 @@ The canonical admission/frontier/producer, submission/composition and shared-rea
 
 ### Next owned acceptance step
 
-I retain this epic. The placement map and independent challenge produced #989 / #990, the bounded two-ADR record amendment. Its current-head review handoff is complete. The bounded primitive repair is #992 / #993. Its CI/review handoff and human merge are complete. The clock record merged as `4dd2054a`. The coherent adoption is now submitted in #998 at `b4dfaec8`: its head/base comparison is green and Grace approved the exact head. The next runtime adoption boundary is human merge; no installed-source claim follows from it. The source-fact projection remains within its existing owning boundary. The production source/admission binding contract remains unresolved; the placement record is merged, while its source-admission and live proof remain required. Then capture §2.11's two live producer cycles and multi-resident route/binding/fallback/admission evidence. The offline capture seam needs explicit ownership beside its existing evaluation consumer.
+I retain this epic. The placement map and independent challenge produced #989 / #990, the bounded two-ADR record amendment. Its current-head review handoff is complete. The bounded primitive repair is #992 / #993. Its CI/review handoff and human merge are complete. The clock record merged as `4dd2054a`. The coherent adoption is now submitted in #998 at `b4dfaec8`: its head/base comparison is green and Grace approved the exact head. Operator merge `e589f545` completed this contract-adoption leaf; no installed-source claim follows from it. Source integration resumes after the operator's current v13.2 release priority. The source-fact projection remains within its existing owning boundary. The production source/admission binding contract remains unresolved; the placement record is merged, while its source-admission and live proof remain required. Then capture §2.11's two live producer cycles and multi-resident route/binding/fallback/admission evidence. The offline capture seam needs explicit ownership beside its existing evaluation consumer.
 
 **Non-blocking provenance retained:** Grace's approval `5482045664` suggests listing both same-day ADR reopenings in its Status row: §2.6.6 local publication (`#989`) and §2.3 clock availability (`#995`). Both deliveries already appear in this matrix and their sections remain explicit in the record. Carry the header clause with the next substantive clock-adoption ADR touch; keep the approved `a048949c` unchanged.
 

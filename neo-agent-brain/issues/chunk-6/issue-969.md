@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-10T16:31:45Z'
-updatedAt: '2026-10-10T16:31:45Z'
+updatedAt: '2026-10-11T15:56:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/969'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -50,7 +50,7 @@ Alternative kept on record: leave the task failure as the carrier and add an esc
 
 ## Acceptance Criteria
 
-- [ ] AC-1 *(post-merge of #968, local plane)*: after the first daily run on a plane cut past #968, `orchestrator-state.json → backup` shows `lastExitCode 0`, `lastSuccessAt` set, `failureStreakStartedAt null`; the healthcheck's backup axis carries no `backup-retry-exhausted` / `backup-state-conflict`; the receipt still reads `success`, `restorable: true`. Recorded here.
+- [x] AC-1 *(post-merge of #968, local plane)*: after the first daily run on a plane cut past #968, `orchestrator-state.json → backup` shows `lastExitCode 0`, `lastSuccessAt` set, `failureStreakStartedAt null`; the healthcheck's backup axis carries no `backup-retry-exhausted` / `backup-state-conflict`; the receipt still reads `success`, `restorable: true`. Recorded here: [receipt 6110856083](https://github.com/neomjs/neo-agent-brain/issues/969#issuecomment-6110856083).
 - [ ] AC-2: the stewards' decision on the Fix is recorded here (accept, amend, or decline with the reason).
 - [ ] AC-3 *(if accepted)*: a required-but-unconfigured sync after a restorable bundle exits 0 with the outcome on the receipt and in `lastCompletion`; a failed configured sync still exits non-zero; both arms red-first.
 
@@ -70,6 +70,7 @@ Live latest-open sweep: the latest 20 open Brain issues at 2026-10-10T16:25Z car
 Origin Session ID: 7e2e0d22-28be-46a3-9535-e8334e165352
 Retrieval Hint: "backup task failed after restorable bundle required off-host sync exit code policy"
 
+
 ## Timeline
 
 - 2026-10-10T16:31:46Z @neo-opus-vega added the `enhancement` label
@@ -81,4 +82,25 @@ Retrieval Hint: "backup task failed after restorable bundle required off-host sy
 - 2026-10-10T16:43:08Z @neo-opus-vega cross-referenced by #974
 - 2026-10-10T17:30:22Z @neo-opus-vega cross-referenced by #571
 - 2026-10-10T18:34:37Z @neo-opus-vega cross-referenced by PR #976
+- 2026-10-10T22:29:30Z @neo-fable-clio cross-referenced by #977
+- 2026-10-10T22:30:06Z @neo-fable-clio cross-referenced by #978
+- 2026-10-10T22:30:45Z @neo-fable-clio cross-referenced by #979
+### @neo-opus-vega - 2026-10-11T15:56:49Z
+
+**AC-1 receipt (local plane, 2026-10-11 15:5xZ):** the first daily run past #968 completed clean, and it was also the first compressed bundle (#974).
+
+| Reading | Result |
+|---|---|
+| Plane revision | Brain `7ca66028` (healthcheck `deployedRevision`), which contains #968 (`8321ac25`) and #976 (`98e52e9e`) |
+| `orchestrator-daemon/orchestrator-state.json → backup` | `lastExitCode: 0`, `lastSuccessAt: 2026-10-11T13:22:08.110Z`, `failureStreakStartedAt: null`; `lastErrorAt` stays at 2026-10-10T13:19:36Z, the last run before #968 |
+| Healthcheck backup axis (`maintenance.backup`) | `status: healthy`, `reasonCodes: []`: no `backup-retry-exhausted`, no `backup-state-conflict` |
+| `backups/last-backup-receipt.json` | `backup.status: "success"`, `integrity.restorable: true`, `emptySubsystems: []`, `offHostSync.status: "disabled"` (the #968 opt-out), 366.9 s |
+| Bundle `backup-2026-10-11T13-16-01.201Z` | all four payloads `.jsonl.br`; 3.7 GB against 9.5 GB for the 10-10 bundle; integrity `pass` for kb (121,307), mc (50,428) and graph (591,953), source count = bundle count |
+
+AC-2 (the stewards' decision on the Fix for planes that require off-host durability) stays open.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+- 2026-10-11T15:57:17Z @neo-opus-vega cross-referenced by #417
 

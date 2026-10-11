@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-08T16:26:40Z'
-updatedAt: '2026-10-09T05:12:06Z'
+updatedAt: '2026-10-11T17:26:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/936'
 author: neo-gpt-emmy
-commentsCount: 3
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -129,5 +129,31 @@ For a no-focus-change negative control, inspected isolated baseline/candidate gu
 Remaining pre-publication evidence: an activation-only witness must record the intended and observed foreground PIDs, including the same-bundle sibling and missing/refused-target cases, without typing. The previously successful wake after reboot does not supply those controls. Installed production delivery remains on #30.
 
 Origin Session ID: b56dbc41-6e95-4210-a2ea-8d1f5f3ffcd0
+
+### @neo-gpt-emmy - 2026-10-11T16:36:34Z
+
+### Recurrence: repeated activation, no pasted wake
+
+Tobi reported repeated input flickering with no wake text entering Emmy's current Codex chat on 2026-10-11. Read-only inspection found seven consecutive failed receiver records between 15:51:44Z and 16:29:09Z: the first says `Target app lost frontmost status before prompt clear (-2700)`; the following six say `Target app lost frontmost status after activation (-2700)`. These records establish pre-paste failure, not a clipboard or submit failure.
+
+The owner-scoped subscription list contains one active Emmy `SENT_TO_ME` route. Its stable profile path matches the running ChatGPT main process. Native Memory Core mailbox reads remain usable. The host receiver checkout is `98e52e9e067fa555632c9547d29527ba17b95a2d`; its adapter still mixes generic Codex activation with PID frontmost assignment and permits a same-bundle PID fallback. Its generated script has a twelve-iteration activation loop inside one dispatch, accounting for repeated activation attempts without requiring duplicate subscriptions. The historical helper-alias observation in this issue was not independently repeated today.
+
+The latest preceding receipt marked delivered ended at 15:47:28Z; that state only means adapter completion, not verified turn start. Context and dialog probes also log fail-open warnings; their underlying failures are not yet attributed.
+
+No source, subscription, clipboard, credential, process, or installed app was changed. Direct inspection of the Codex window is unavailable through this harness's computer-use tool, which rejects access to the app. I did not bypass that boundary. The preserved patch remains unshipped; its activation and exact-PID negative controls are still required. Installed delivery acceptance remains on #30.
+
+Origin Session ID: 560c2b21-b38b-4252-8b2c-87b73738ed65
+
+### @neo-gpt-emmy - 2026-10-11T17:26:44Z
+
+### Recovery verified after computer reboot
+
+Tobi challenged the move toward a code repair: this wake path had worked for weeks, and a reboot had recovered it before. We tested the smaller intervention first. After a harness-only restart, the fresh high-priority self-wake reached the receiver at 16:56:59Z and failed at 16:57:08Z with the same `Target app lost frontmost status after activation (-2700)` error.
+
+After Tobi rebooted the computer and reopened the saved chat, a second unique self-wake (`EMMY-REBOOT-20261011-02`) was sent at 17:23:00Z. The receiver accepted it at 17:25:31Z and recorded `delivered` at 17:25:40Z with no error. This time the wake prompt actually arrived in the intended saved Emmy chat and started a fresh turn. Both test messages are now marked read.
+
+This establishes recovery for the post-reboot Emmy test. No adapter patch, route change, credential change or forced UI probe was applied. It does not identify the transient host-state cause or certify every peer. The parked source candidate remains unshipped; this incident alone is not evidence that it should be installed.
+
+Origin Session ID: 31fd987f-2d3d-44b9-9558-90dc8638b060
 
 
