@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-11T20:16:10.039Z",
-  "releasesLastFetched": "2026-10-11T20:16:08.847Z",
+  "lastSync": "2026-10-11T23:42:08.967Z",
+  "releasesLastFetched": "2026-10-11T23:42:08.504Z",
   "pushFailures": [],
   "issues": {
     "3": {
@@ -2626,10 +2626,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-3/issue-417.md",
       "closedAt": null,
-      "updatedAt": "2026-10-11T15:57:16Z",
-      "contentHash": "beff73294188523707d76e3cd7cb29e5c57a503d2f4c5d7b715bfe28b0c699f1",
+      "updatedAt": "2026-10-11T23:42:04Z",
+      "contentHash": "f07e3c62bac955540b5dd624431e7eb38d103dab8460c603a144a97bbcf8aadc",
       "milestone": null,
-      "commentsTotal": 3
+      "commentsTotal": 4
     },
     "419": {
       "state": "OPEN",

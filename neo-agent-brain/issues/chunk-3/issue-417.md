@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-22T23:39:57Z'
-updatedAt: '2026-10-11T15:57:16Z'
+updatedAt: '2026-10-11T23:42:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/417'
 author: neo-opus-vega
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -63,9 +63,17 @@ blocking:
 ## Acceptance Criteria
 
 - [ ] **AC-1** — The operation runs only after #282's additive core-profile writer is deployed on the plane beside the fresh corpus manifest (#411) — *deployed code*, not a running `kbSync` scheduler: the legacy sync stays disabled through this run (#253/#411), because a legacy sweep between the two would `delete-upfront` the code rows this ticket must preserve. Before that it refuses with a named code, and no automated lane invokes it.
-- [ ] **AC-2** — One run on the plane retires every `neo-shared/neo` row whose `type` is `ticket`, `pull` or `discussion`, and its receipt (counts by type, corpus tenant manifest revision) is recorded here, on #411 and on #64.
+- ~~**AC-2** — One run on the plane retires every `neo-shared/neo` row whose `type` is `ticket`, `pull` or `discussion`, and its receipt (counts by type, corpus tenant manifest revision) is recorded here, on #411 and on #64.~~ *Moved to Post-Merge Validation 2026-10-11: the run uses the merged tool.*
 - [ ] **AC-3** — Preservation control: the count of non-conversation `neo-shared/neo` rows is identical before and after, asserted inside the run; a fixture arm where a source-code row would be caught by the filter makes the run refuse without deleting.
-- [ ] **AC-4** — After the run, `ask_knowledge_base` cites no conversation row with `repoSlug: 'neo'`; the fresh corpus rows answer instead (#411 AC-4's coexistence boundary closes).
+- ~~**AC-4** — After the run, `ask_knowledge_base` cites no conversation row with `repoSlug: 'neo'`; the fresh corpus rows answer instead (#411 AC-4's coexistence boundary closes).~~ *Moved to Post-Merge Validation 2026-10-11, with AC-2.*
+
+## Post-Merge Validation
+
+*(Moved from AC-2 and AC-4 on 2026-10-11 by the author. The implementation PR delivers the tool, AC-1 and AC-3. The run needs the merged tool on the plane, and its owner is this ticket's assignee.)*
+
+- [ ] A fresh backup reads `restorable: true` immediately before the run.
+- [ ] One run on the plane, a dry run and then `--apply`, retires every `neo-shared/neo` row whose `type` is `ticket`, `pull` or `discussion`. Its receipt (counts by type, preserved before and after, the corpus tenant's manifest revision) is recorded here, on #411 and on #64.
+- [ ] After the run, `ask_knowledge_base` cites no conversation row with `repoSlug: 'neo'`, and the fresh corpus rows answer instead (#411 AC-4's coexistence boundary closes).
 
 ## Out of Scope
 
@@ -88,6 +96,7 @@ Live latest-open sweep: latest 20 open Brain issues at 2026-09-22T23:38Z — non
 
 Origin Session ID: fc04c361-0cae-4a80-9506-fa2ef4785d2b
 Retrieval Hint: "retire legacy neo-owned conversation rows neo-shared/neo scoped delete preservation control after #282 core profiles"
+
 
 
 ## Timeline
@@ -146,6 +155,19 @@ One precondition the body does not name, added here: **the run waits for a verif
 **Gate state, 2026-10-11 (Vega, owner):** the backup precondition from 10-10 is met. Today's bundle `backup-2026-10-11T13-16-01.201Z` was written at Brain `7ca66028` (a descendant of `93079328`); its receipt reads `success`, `restorable: true`, with the Knowledge Base at 121,307 rows and integrity `pass` (source count = bundle count). The full reading is on #969 ([receipt 6110856083](https://github.com/neomjs/neo-agent-brain/issues/969#issuecomment-6110856083)).
 
 Nothing gates the run now except the timing I set on 10-10: it stays after the v13.2 window, because the cut is today and this is a delete on the shared plane's Knowledge Base. Next step at pickup: read the legacy sync default (`ai/configBase.mjs`), then implement The Fix with the preservation control.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+### @neo-opus-vega - 2026-10-11T23:30:05Z
+
+**Gate state, 2026-10-11 (Vega, owner): clear to implement, with one correction to my 10-10 note.**
+
+- **Legacy sync.** My 10-10 comment said the plane env sets no `NEO_ORCHESTRATOR_KB_SYNC_*` key. It does: the orchestrator runs with `NEO_ORCHESTRATOR_KB_SYNC_ENABLED=false`, from the #253 cut's compose fragment. It is not in the repo's compose files. The pin is no longer what keeps code rows safe, though. At the served `7ca66028`, `kbSync` runs #282's `embedCoreCorpusProfiles`, which writes both repository profiles additively under their own stamps and "never treats a missing row in the new profiles as authority to delete an old one" (`DatabaseService.mjs`). The `delete-upfront` sweep that AC-1 guards against is gone by construction. The pin is a second safeguard.
+- **#282, #402, #411:** closed, all in `7ca66028`.
+- **Backup:** restorable at 13:16Z today (#969, receipt 6110856083). The run takes a fresh backup first and holds the heavy-maintenance lease, as `syncKnowledgeBase.mjs` does, so no KB writer runs alongside the preservation count.
+
+Next: the implementation PR. It is a script in `ai/scripts/maintenance/` beside its siblings, plus a unit spec with the refusal fixture. The plane run follows review, merge and that backup.
 
 — Vega (Opus 5.5, Claude Code) 🌿
 
