@@ -1,17 +1,18 @@
 ---
 id: 603
 title: Show a managed seat's own memory in its existing chooser
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
   - ai
-assignees: []
+assignees:
+  - neo-gpt-sophie
 createdAt: '2026-10-08T06:31:17Z'
-updatedAt: '2026-10-08T06:31:17Z'
+updatedAt: '2026-10-11T01:50:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/603'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 3
 parentIssue: 571
 subIssues: []
 subIssuesCompleted: 0
@@ -21,8 +22,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 930 Let a managed seat explicitly select its own Codex memory'
+  - '[x] 930 Let a managed seat explicitly select its own Codex memory'
 blocking: []
+closedAt: '2026-10-11T01:50:21Z'
 ---
 # Show a managed seat's own memory in its existing chooser
 
@@ -95,4 +97,35 @@ Live latest-open sweep: latest 20 open Institution issues re-read immediately be
 - 2026-10-08T06:33:28Z @neo-gpt-emmy cross-referenced by #571
 - 2026-10-08T06:37:31Z @neo-gpt-emmy cross-referenced by #930
 - 2026-10-08T06:46:33Z @neo-gpt-emmy cross-referenced by PR #928
+- 2026-10-08T15:07:22Z @neo-gpt-emmy cross-referenced by #606
+- 2026-10-09T03:56:50Z @neo-fable cross-referenced by #620
+- 2026-10-09T04:44:30Z @neo-opus-vega cross-referenced by #625
+- 2026-10-09T04:44:59Z @neo-opus-vega cross-referenced by #626
+- 2026-10-11T00:36:34Z @neo-gpt-sophie cross-referenced by PR #983
+### @neo-gpt-sophie - 2026-10-11T01:09:42Z
+
+## Brain pin sequencing
+
+The Institution Brain-pin move that first carries neomjs/neo-agent-brain#983 must include this chooser change, or follow a revision that already contains it. The producer can refuse Start when native notes need consent; a global-only chooser cannot offer that seat's source. The pin and chooser therefore belong in the same reviewable consumer change before the next installed candidate.
+
+This records [Ada's review boundary](https://github.com/neomjs/neo-agent-brain/pull/983#pullrequestreview-5481429500) on the existing consumer owner. It adds no new dialog or operator step and does not claim installed acceptance; #12 / neomjs/neo-agent-brain#571 retain that witness.
+
+### @neo-gpt-sophie - 2026-10-11T01:28:58Z
+
+## Intake — valid-as-written
+
+Brain #930 is closed by merged #983 (`78924863`); #603 remains unassigned and no open Institution PR supplies this consumer. Created 2026-10-08T06:31:17Z, updated 2026-10-11T01:09:42Z: pre-stale, without stale/exemption labels. Current `dev` remains `cb82cb2`; the controller still drops `binding.id` and the utility accepts a global answer. The live ledger matches both owners. No successor found in the current queue; KB/MC misses do not establish absence. Parent #571 has [Euclid's independent review](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-5931143185).
+
+Prescription checked: `apps/agentos/view/fleet/detail/Controller.mjs` owns selection/generation fencing; `apps/agentos/util/AddAgentFlow.mjs` owns discovery interpretation. I will extend those owners, retaining the existing `MemoryCandidates` Store / `MemoryCandidate` Model and configuration readback. `Neo.mjs`, `core/Base.mjs` and `state/Provider.mjs` ground the instance lifecycle; no new class or provider is needed. No added operator obligation or authority change, and no new ADR decision.
+
+The bounded change sends the existing ID, requires its exact scope echo, and pairs the merged producer's lock update with the chooser. Controls will cover no-ID compatibility, old/wrong/unavailable answers, stale selection and destruction, and the existing source/empty choice readback. Installed retention remains #12 / Brain #571. Positive ROI: makes an already offered consent usable for the seat's own notes without another workflow.
+
+- 2026-10-11T01:29:00Z @neo-gpt-sophie assigned to @neo-gpt-sophie
+### @neo-gpt-sophie - 2026-10-11T01:31:37Z
+
+The deferred-response controls reproduced one refinement to AC-3: returning A → B → A, or changing a harness and returning, restored the same binding and let the earlier reply populate the reset chooser. The existing request generation was not invalidated by those transitions. Observing the existing Seat group's reactive binding now retires that memory request and its displayed choice; no new binding store or token is introduced. Both controls failed before the fix and now pass alongside unchanged Store-replacement, newer-read and destruction controls. The four affected suites pass (125 tests). The producer lock update and consumer contract validation remain before publication.
+
+- 2026-10-11T01:38:08Z @neo-gpt-sophie cross-referenced by PR #675
+- 2026-10-11T01:50:21Z @tobiu referenced in commit `6390d98` - "feat(fleet): discover memory for the selected seat (#603) (#675)"
+- 2026-10-11T01:50:21Z @tobiu closed this issue
 

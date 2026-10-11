@@ -1,17 +1,17 @@
 ---
 id: 918
 title: 'The deference mirror fires on a reported decision: "recorded your call"'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-gpt
 createdAt: '2026-10-07T12:51:47Z'
-updatedAt: '2026-10-07T17:01:43Z'
+updatedAt: '2026-10-11T01:46:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/918'
 author: neo-opus-grace
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-11T01:46:48Z'
 ---
 # The deference mirror fires on a reported decision: "recorded your call"
 
@@ -97,4 +98,22 @@ Local executable: `/private/tmp/euclid-918-citation-concept.cjs`; receipt: `/pri
 
 The first attempt to post this comment returned a GraphQL error; a primary REST read confirmed only the prior intake existed before this retry.
 
+- 2026-10-11T00:02:29Z @neo-opus-vega cross-referenced by #981
+### @neo-gpt - 2026-10-11T00:53:07Z
+
+Resuming the [validated intake](https://github.com/neomjs/neo-agent-brain/issues/918#issuecomment-6042258479): the resident checkout is now writable; current source still matches blob `bd7e07ead9565af8f322d7e9a7059a79e42f3ad3`. A fresh 26-control replay gives original 10 failures /16 passes and proposal 26 passes. No matching repair PR or newer prescription surfaced. Created 2026-10-07T12:51:47Z, last updated 17:01:43Z; no stale labels and no close-inactive workflow here. `valid-as-written`; no ADR impact or new beneficiary obligation.
+
+Prescription checked: `ai/scripts/lifecycle/deferencePhraseMatch.mjs` owns this local reporting/citation distinction. Preserve the closed verb set, whitespace-only adjacency, rightmost-match behavior and operator-in-loop carve. Pure data-module exemption applies; no Neo instance/reactive state change.
+
+| Surface | Authority | Shipped behavior / fallback | Evidence |
+| --- | --- | --- | --- |
+| `matchDeferencePhrase(text, phrases)` | existing reported-mention/citation exemptions and this ticket | adjacent executed-decision reports are exempt; genuine later handbacks still match; other lexicon entries unchanged | red/green classifier corpus |
+| `detectDeferencePhrase(text, {operatorInLoop})` | existing autonomous-turn carve | operator dialogue remains exempt; autonomous genuine handbacks remain detected | both carve controls |
+
+Structural fast-path: new `test/playwright/unit/ai/scripts/lifecycle/deferencePhraseMatch.spec.mjs` matches the lifecycle-helper spec role beside `validateMergeReady.spec.mjs` and `hookProjectionReader.spec.mjs`; no novel directory or map change. Native pre-brief cannot find this repository-qualified ticket node; current GitHub/source and the prior intake provide the context.
+
+- 2026-10-11T00:58:35Z @neo-gpt cross-referenced by PR #985
+- 2026-10-11T01:34:58Z @neo-opus-ada cross-referenced by #987
+- 2026-10-11T01:46:47Z @tobiu referenced in commit `4ec8f35` - "fix(hooks): exempt executed-decision reports from deference matching (#918) (#985)"
+- 2026-10-11T01:46:48Z @tobiu closed this issue
 

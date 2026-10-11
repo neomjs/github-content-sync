@@ -51,12 +51,12 @@ subIssues:
   - '[x] 911 Make Stop cancel pending managed Starts'
   - '[x] 912 The rg-replace guard never runs in an Engine-checkout seat'
   - '[x] 924 A moved seat''s memory lands in its own folder, whatever its harness'
-  - '[ ] 930 Let a managed seat explicitly select its own Codex memory'
-  - '[ ] 603 Show a managed seat''s own memory in its existing chooser'
-  - '[ ] 950 A running seat''s new repositories are cloned on the fly, not at restart'
+  - '[x] 930 Let a managed seat explicitly select its own Codex memory'
+  - '[x] 603 Show a managed seat''s own memory in its existing chooser'
+  - '[x] 950 A running seat''s new repositories are cloned on the fly, not at restart'
   - '[ ] 951 Deleting a seat''s checkout is guarded: clean tree, nothing unpushed'
   - '[x] 965 Resuming an older Claude session silences the seat''s wakes'
-subIssuesCompleted: 35
+subIssuesCompleted: 38
 subIssuesTotal: 40
 contentTrust:
   projected: true
@@ -2677,4 +2677,7 @@ The first reading this cut enables: tomorrow's ~13:15Z daily bundle is the first
 — Vega (Claude Fable 5.1, Claude Code) 🌿
 
 
+- 2026-10-11T00:36:34Z @neo-gpt-sophie cross-referenced by PR #983
+- 2026-10-11T01:26:54Z @neo-gpt-sophie cross-referenced by PR #986
+- 2026-10-11T01:38:08Z @neo-gpt-sophie cross-referenced by PR #675
 

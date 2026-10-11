@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-07-12T17:42:44Z'
-updatedAt: '2026-08-26T15:13:58Z'
+updatedAt: '2026-10-11T01:45:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/107'
 author: neo-gpt
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues:
   - '[x] 15101 Define Live Lane Awareness composition in ADR 0035'
@@ -661,6 +661,8 @@ Whoever takes it: `#15298`'s `hookProjectionWriter` is your input and I will sha
 - 2026-07-16T22:18:02Z @neo-opus-ada added sub-issue #15315
 - 2026-07-18T15:05:26Z @neo-gpt cross-referenced by PR #15475
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
+- 2026-08-26T15:13:18Z @neo-gpt marked this issue as blocking #101
+- 2026-08-26T15:14:38Z @neo-gpt marked this issue as blocking #101
 - 2026-08-26T15:14:39Z @tobiu added sub-issue #15101
 - 2026-08-26T15:14:39Z @tobiu added sub-issue #15296
 - 2026-08-26T15:14:39Z @tobiu added sub-issue #15315
@@ -669,4 +671,63 @@ Whoever takes it: `#15298`'s `hookProjectionWriter` is your input and I will sha
 - 2026-08-26T15:14:39Z @tobiu added sub-issue #15106
 - 2026-08-26T15:14:39Z @tobiu added sub-issue #15114
 - 2026-09-19T19:50:16Z @neo-gpt cross-referenced by #387
+- 2026-10-04T12:08:35Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T17:32:52Z @neo-gpt-sophie cross-referenced by #859
+### @neo-gpt - 2026-10-11T01:02:53Z
+
+## Epic Resolution Review
+
+**Reviewer:** @neo-gpt  
+**Started:** 2026-10-11T01:02:53Z  
+**Completed:** 2026-10-11T01:44:29Z (initial verdict publication)  
+**Verdict:** RECOMMEND_KEEP_OPEN
+
+The seven native children are closed. Their delivered contracts are valuable; the accepted Wave-1 outcome still needs producer/publication integration, usable live inputs, and the offline-evidence seam.
+
+### Delivery matrix
+
+| Parent outcome | Required evidence | Owning work | Delivered PR | Achieved evidence | Residual |
+| --- | --- | --- | --- | --- | --- |
+| Accepted composition authority before code | L1 | neomjs/neo#15101 | neomjs/neo#15103 | Accepted ADR 0035 and its source-bound contracts | Delivered |
+| Canonical Task owner and stable transition facts | L2/L3 | neomjs/neo#15106, neomjs/neo#15114 | neomjs/neo#15111, neomjs/neo#15121 | Declared L3 assignment probes and L2 typed-event tests | Deployed Task/wake verification is still a separate receipt |
+| One typed route and direct consumer | L2 plus integrated runtime receipt | Existing neomjs/neo#15087 | Existing route delivery; source checked here | Current synthesizer returns/writes the typed result; AgentOrchestrator validates its sidecar | Publication into the combined projection unverified |
+| Current-state landscape | L2 contract, usable source-backed live probe | neomjs/neo#15234 | neomjs/neo#15264 | L2 hermetic; registered operation invoked in this audit | Current plane's open-work census is unavailable |
+| Response-required lifecycle frontier | L2 matrix, source-to-consumer receipt | neomjs/neo#15267 | neomjs/neo#15295 | L2 injected-source matrix | Production producer/publication call path unverified |
+| Fenced transport | L2 fencing/atomicity, L3 resident integration | neomjs/neo#15296 | neomjs/neo#15298 | L2 writer; merged body explicitly deferred first consumer publication | Production factory caller and live producer cycles unresolved |
+| Pure Claude/Codex reader | Reader contract plus L3 parity/fallback receipt | neomjs/neo#15315 | neomjs/neo#16109 | Reader is wired into both hook adapters; merged receipts cover the local writer→file→reader seam | Its live same-seat, both-harness and admission-parity checklist remains the parent gate |
+| Offline exposure / choice / later-outcome evidence | Separate records and firewall proof | This epic's sixth seam; Brain #117 is the evaluation consumer | Not established by the native children | Direction attribution exists separately | Evidence capture/ownership and delivery unresolved |
+
+The PR-reference connection returns neomjs/neo#15295 alongside the older assignment repair. Its later merge cannot have closed neomjs/neo#15106; the dated closure matches neomjs/neo#15111. References were reconciled by body and chronology, not counted as interchangeable closers.
+
+### Source-Discussion closeout gate
+
+[D#15090 §9–10](https://github.com/neomjs/neo/discussions/15090) and ADR 0035 remain the authority.
+
+| Accepted criterion group | Reconciliation |
+| --- | --- |
+| OQ1–10 contracts, corrected source-readiness matrix, one named typed boundary, asymmetric scope | Recorded in the accepted ADR; runtime availability stays a separate question |
+| Mechanical zero-authority federation, fixed channel order and descriptor membership | Pure primitives/reader receipts support the contract; integrated publication still needs proof |
+| Historical tools remain separate; existing parent topology retained; future Fleet reads excluded from Wave 1 | Preserved design boundary; no completion claim for future Fleet reads |
+| One fenced writer, atomic transport, channel freshness, categorical binding and never-foreign lifecycle | Writer/reader leaf contracts delivered; live multi-resident receipt unresolved |
+| Exact lifecycle admissions and fixed hook rendering with zero admission effect | Leaf matrices delivered; producer inputs/publication and deployed parity unresolved |
+| Offline feedback ledger — exposure, explicit choice, later outcome | Explicit sixth seam in §9; its capture implementation is not established by these children. Existing Brain #117 owns evaluation, not automatically the missing capture seam |
+| ADR first in merge order, legacy quarantine, quorum and independent Step Back | Accepted graduation trail present. Current active Claude directive states it does not consult legacy lifecycle-state; ADR §2.11's final two-cycle/multi-resident gate remains |
+
+### Executed current-state checks
+
+At source `98e52e9e` plus this turn's unrelated hook restoration, a tracked production-source census found `makeHookProjectionWriter` and `produceLifecycleFrontier` only at their definitions. Both harness adapters do call `readConfiguredHookProjection`. This establishes the inspected repository boundary, not absence of an external caller.
+
+The live `explore_lane_landscape({})` probe at **2026-10-11T01:35:54.796Z** returned `lane-landscape.v1`, `notAuthority:true`, and **degraded coverage**: the cloud-plane server does not carry the host-edge GitHub open-work census. `totalOpenItems:null` and unavailable authority counts are unknown, not an empty landscape. Manifest: `741638a5`.
+
+Three targeted memory searches produced off-topic results, with no qualifying multi-resident acceptance receipt surfaced. The live source, native child/PR evidence and executed probe determine this verdict.
+
+### Next owned acceptance step
+
+I retain this epic. Next, map the present host-edge/cloud placement against ADR 0035 §6's revalidation triggers and locate the source-owned producer/publication integration path. Then capture §2.11's two live producer cycles and multi-resident route/binding/fallback/admission evidence. The offline capture seam needs explicit ownership beside its existing evaluation consumer.
+
+**Operator action:** none for this keep-open verdict.
+
+Origin Session ID: 2d8feac7-c60d-4883-8059-37b6e148768b
+
+
 

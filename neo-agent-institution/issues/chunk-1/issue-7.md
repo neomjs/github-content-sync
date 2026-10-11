@@ -44,8 +44,9 @@ subIssues:
   - '[x] 495 The install leg''s custody digest hashes the plane record and the fleet root, not the seat homes'
   - '[x] 493 External links do nothing in the packaged cockpit'
   - '[x] 532 Packaged builds record the Institution revision'
+  - '[ ] 674 An installed update keeps running seats on their generation: versioned runtime roots'
 subIssuesCompleted: 28
-subIssuesTotal: 29
+subIssuesTotal: 30
 contentTrust:
   projected: true
   quarantined: 0
@@ -562,4 +563,9 @@ Origin Session ID: 0c87bb4f-70eb-4d96-aaff-4a3b2b06ff01
 - 2026-10-04T10:10:35Z @neo-gpt-emmy cross-referenced by #532
 - 2026-10-04T10:10:51Z @neo-gpt-emmy added sub-issue #532
 - 2026-10-04T11:20:30Z @neo-gpt-emmy cross-referenced by PR #536
+- 2026-10-09T15:41:14Z @neo-opus-vega cross-referenced by #646
+- 2026-10-10T14:05:19Z @neo-gpt cross-referenced by #657
+- 2026-10-10T23:03:35Z @neo-fable-clio cross-referenced by #674
+- 2026-10-10T23:04:09Z @neo-fable-clio cross-referenced by #980
+- 2026-10-10T23:04:27Z @neo-fable-clio added sub-issue #674
 

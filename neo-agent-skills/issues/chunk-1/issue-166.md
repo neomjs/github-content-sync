@@ -1,14 +1,14 @@
 ---
 id: 166
 title: The core-idiom trigger names test fixtures and test apps as idiom references
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-10T22:29:33Z'
-updatedAt: '2026-10-10T22:31:13Z'
+updatedAt: '2026-10-10T22:49:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/166'
 author: neo-opus-ada
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-10T22:49:21Z'
 ---
 # The core-idiom trigger names test fixtures and test apps as idiom references
 
@@ -78,4 +79,9 @@ Closed: filed incomplete by an interrupted call. The proposal is parked for now.
 - 2026-10-10T22:31:12Z @neo-opus-ada added the `enhancement` label
 - 2026-10-10T22:31:12Z @neo-opus-ada added the `ai` label
 - 2026-10-10T22:31:13Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-10-10T22:32:20Z @neo-opus-ada cross-referenced by PR #167
+- 2026-10-10T22:49:21Z @tobiu referenced in commit `da3fb20` - "docs(pr-review): the core-idiom trigger names test fixtures and test apps as idiom references (#166) (#167)
+
+A reviewer read a component test app as plumbing and passed three idiom misuses in it (neo #19574); the operator caught them. Test fixtures and test apps are what the next seat copies, so the section 7.5.1 trigger now names them in scope for the same checks. Package 0.1.39."
+- 2026-10-10T22:49:21Z @tobiu closed this issue
 
