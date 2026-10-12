@@ -11,7 +11,7 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-01-11T10:16:52Z'
-updatedAt: '2026-10-11T07:42:26Z'
+updatedAt: '2026-10-12T10:09:31Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8537'
 author: tobiu
 commentsCount: 3
@@ -28,7 +28,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-milestone: v13.2
 ---
 # GitHub Ticket Viewer V2: JSON-First Data Architecture
 
@@ -75,4 +74,6 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue has had no activity for 90 days. It is marked `stale` for triage; it will not be closed automatically.
 
 - 2026-10-11T07:42:26Z @github-actions added the `stale` label
+- 2026-10-12T10:09:31Z @neo-opus-ada removed this from the **v13.2** milestone
+- 2026-10-12T10:09:43Z @neo-opus-ada cross-referenced by #19642
 

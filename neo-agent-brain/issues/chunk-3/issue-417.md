@@ -1,7 +1,7 @@
 ---
 id: 417
 title: Retire the legacy neo-owned conversation rows once the core profiles are live
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-22T23:39:57Z'
-updatedAt: '2026-10-12T00:47:10Z'
+updatedAt: '2026-10-12T12:06:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/417'
 author: neo-opus-vega
-commentsCount: 6
+commentsCount: 8
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -25,6 +25,7 @@ blockedBy:
   - '[x] 282 Port the shared core-corpus scan to repository profiles'
 blocking:
   - '[ ] 419 Retire replaced legacy core rows by profile receipt'
+closedAt: '2026-10-12T10:49:59Z'
 ---
 # Retire the legacy neo-owned conversation rows once the core profiles are live
 
@@ -62,18 +63,20 @@ blocking:
 
 ## Acceptance Criteria
 
-- [ ] **AC-1** — The operation runs only after #282's additive core-profile writer is deployed on the plane beside the fresh corpus manifest (#411) — *deployed code*, not a running `kbSync` scheduler: the legacy sync stays disabled through this run (#253/#411), because a legacy sweep between the two would `delete-upfront` the code rows this ticket must preserve. Before that it refuses with a named code, and no automated lane invokes it.
+- [x] **AC-1** — The operation runs only after #282's additive core-profile writer is deployed on the plane beside the fresh corpus manifest (#411) — *deployed code*, not a running `kbSync` scheduler: the legacy sync stays disabled through this run (#253/#411), because a legacy sweep between the two would `delete-upfront` the code rows this ticket must preserve. Before that it refuses with a named code, and no automated lane invokes it.
 - ~~**AC-2** — One run on the plane retires every `neo-shared/neo` row whose `type` is `ticket`, `pull` or `discussion`, and its receipt (counts by type, corpus tenant manifest revision) is recorded here, on #411 and on #64.~~ *Moved to Post-Merge Validation 2026-10-11: the run uses the merged tool.*
-- [ ] **AC-3** — Preservation control: the count of non-conversation `neo-shared/neo` rows is identical before and after, asserted inside the run; a fixture arm where a source-code row would be caught by the filter makes the run refuse without deleting.
+- [x] **AC-3** — Preservation control: the count of non-conversation `neo-shared/neo` rows is identical before and after, asserted inside the run; a fixture arm where a source-code row would be caught by the filter makes the run refuse without deleting.
 - ~~**AC-4** — After the run, `ask_knowledge_base` cites no conversation row with `repoSlug: 'neo'`; the fresh corpus rows answer instead (#411 AC-4's coexistence boundary closes).~~ *Moved to Post-Merge Validation 2026-10-11, with AC-2.*
 
 ## Post-Merge Validation
 
 *(Moved from AC-2 and AC-4 on 2026-10-11 by the author. The implementation PR delivers the tool, AC-1 and AC-3. The run needs the merged tool on the plane, and its owner is this ticket's assignee.)*
 
-- [ ] A fresh backup reads `restorable: true` immediately before the run.
-- [ ] One run on the plane, a dry run and then `--apply`, retires every `neo-shared/neo` row whose `type` is `ticket`, `pull` or `discussion`. Its receipt (counts by type, preserved before and after, the corpus tenant's manifest revision) is recorded here, on #411 and on #64.
-- [ ] After the run, `ask_knowledge_base` cites no conversation row with `repoSlug: 'neo'`, and the fresh corpus rows answer instead (#411 AC-4's coexistence boundary closes).
+- [x] A fresh backup reads `restorable: true` immediately before the run.
+- [x] One run on the plane, a dry run and then `--apply`, retires every `neo-shared/neo` row whose `type` is `ticket`, `pull` or `discussion`. Its receipt (counts by type, preserved before and after, the corpus tenant's manifest revision) is recorded here, on #411 and on #64.
+- [x] After the run, `ask_knowledge_base` cites no conversation row with `repoSlug: 'neo'`, and the fresh corpus rows answer instead (#411 AC-4's coexistence boundary closes).
+
+*Post-Merge Validation completed 2026-10-12 12:05Z; receipt in comment 6123938093.*
 
 ## Out of Scope
 
@@ -96,6 +99,7 @@ Live latest-open sweep: latest 20 open Brain issues at 2026-09-22T23:38Z — non
 
 Origin Session ID: fc04c361-0cae-4a80-9506-fa2ef4785d2b
 Retrieval Hint: "retire legacy neo-owned conversation rows neo-shared/neo scoped delete preservation control after #282 core profiles"
+
 
 
 
@@ -224,4 +228,76 @@ Both dedicated checkouts are being refreshed on dev; no uncommitted source, test
 
 Origin Session ID: 2d8feac7-c60d-4883-8059-37b6e148768b
 
+- 2026-10-12T10:49:59Z @tobiu referenced in commit `b3cad9f` - "feat(kb): retire the frozen neo-owned conversation rows by scoped delete (#417) (#999)
+
+* feat(kb): retire the frozen neo-owned conversation rows by scoped delete (#417)
+
+A dry-run-first maintenance CLI deletes the Knowledge Base rows the retired
+Sources left under the default stamp with a conversation type. It refuses
+before deleting when a selected row lives outside resources/content/ or when
+no other repository of the tenant serves conversation rows, and it proves the
+preserved count after the delete, all under the heavy-maintenance lease.
+
+* feat(kb): bind the retirement's replacement to the configured corpus and keep its receipt on interruption (#417)
+
+The replacement check now resolves the configured tenant repository that is
+the corpus source through the ingestion authority and requires its accepted
+manifest, from the configured extraction identity, plus conversation rows of
+its own; another repository's rows no longer admit a run. A failing delete
+page or recount now throws with the receipt of confirmed pages, and the CLI
+prints it through failureReport()."
+- 2026-10-12T10:49:59Z @tobiu closed this issue
+### @neo-opus-vega - 2026-10-12T11:08:02Z
+
+## Post-Merge Validation, part 1 of 2 (2026-10-12 10:55–11:06Z): backup and dry run done, apply pending a permission
+
+**Backup, fresh and restorable.** `backup-2026-10-12T10-55-18.259Z` (orchestrator container, `ai/scripts/maintenance/backup.mjs`), 7 min 8 s, `integrity.restorable: true`, `emptySubsystems: []`; the bundle is 2.74 GB KB + 1.14 GB MC + 53.6 MB graph. The first checkbox holds.
+
+**Dry run of the merged CLI (b3cad9f1) on the plane at 11:06:30Z**, run through the same stdin route as the pre-merge dry runs (the file's six relative imports rewritten to `/app/ai/`, the file-URL entry guard replaced by an explicit call; the plane itself stays at revision 7ca66028, and the merge touched none of the Knowledge Base services the CLI imports). Receipt:
+
+```json
+{"apply": false, "scope": {"tenantId": "neo-shared", "repoSlug": "neo"},
+ "replacement": {"repoSlug": "github-content-sync", "manifestUpdatedAt": 1791803027655,
+   "extractionIdentity": "9785ca5aaaefc93007ece74b85ca3a6c1755b7368ea2a852676be29188ed6da0",
+   "attemptId": "3f0b311cd0858e8e26895cfcc45f05c4", "recordedAt": 1791803027650},
+ "before": {"scopeTotal": 67980, "preserved": 29320,
+   "conversationByType": {"discussion": 2203, "pull": 15280, "ticket": 21177}},
+ "refusals": [], "retired": 0, "after": null}
+```
+
+38,660 rows selected, 29,320 preserved, no refusals, the replacement bound to the configured corpus at the configured extraction identity with a manifest observed at 11:03:47Z. Identical counts to the 00:31Z pre-merge dry run. Three earlier attempts (11:02–11:05Z) were refused with `KB_LEGACY_RETIRE_LEASE_HELD` by `tenant-repo-sync` and read nothing, as designed.
+
+**Apply: not run.** The harness's auto-mode classifier denied the `--apply --confirm` invocation ("Modify Shared Resources"), which is the destructive step and the right place for a human gate. The operator either grants that one permission or runs the command himself; the receipt lands here, on #411 and on #64 afterwards, followed by the `ask_knowledge_base` check (baseline at 10:5xZ: a ticket query still cites `resources/content/issues/…` rows beside the corpus's `neo/issues/…` rows).
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+
+- 2026-10-12T11:36:13Z @neo-gpt-sophie cross-referenced by PR #19650
+### @neo-opus-vega - 2026-10-12T12:06:40Z
+
+## Post-Merge Validation, part 2 of 2 (2026-10-12 12:04–12:05Z): the run, and the Knowledge Base answers from the corpus
+
+**Run.** Merged CLI (b3cad9f1) on the local plane (revision 7ca66028; the merge touched none of the Knowledge Base services the CLI imports), through the same stdin route as the dry runs, from a Claude Code seat in auto mode after `.claude/settings.template.json` gained the operand-bound `docker exec` allowance (neo #19650, merged 12:03Z). First attempt, no lease refusal, 54 s wall clock. Backup immediately before the dry run: `backup-2026-10-12T10-55-18.259Z`, `restorable: true` (part 1, comment 6123046514).
+
+```json
+{"apply": true, "scope": {"tenantId": "neo-shared", "repoSlug": "neo"},
+ "replacement": {"repoSlug": "github-content-sync", "manifestUpdatedAt": 1791804887141,
+   "extractionIdentity": "9785ca5aaaefc93007ece74b85ca3a6c1755b7368ea2a852676be29188ed6da0",
+   "attemptId": "765a950b423189afd1698f341def9327", "recordedAt": 1791804887137},
+ "before": {"scopeTotal": 67980, "preserved": 29320,
+   "conversationByType": {"discussion": 2203, "pull": 15280, "ticket": 21177}},
+ "refusals": [], "retired": 38660,
+ "after": {"scopeTotal": 29320, "preserved": 29320, "conversation": 0}}
+```
+
+38,660 conversation rows retired (2,203 discussions, 15,280 pulls, 21,177 tickets); the preservation population is 29,320 before and after, asserted inside the run; zero conversation rows remain under the stamp; the replacement was bound to the configured corpus at the configured extraction identity, manifest observed at 11:34:47Z.
+
+**Retrieval check (`ask_knowledge_base`, type `ticket`, "which tickets and pull requests discuss locked columns in the grid multi-body architecture").** Baseline at 10:5xZ, before the run: 6 references, of which 4 were legacy rows under `resources/content/…` (`resources/content/issues/chunk-1/issue-9486.md`, `…/archive/issues/v13.0.0/chunk-1/issue-9487.md`, `…/issue-12954.md`, `…/issue-9497.md`) beside 2 corpus rows under `neo/…`. After the run at 12:0xZ: 6 references, all corpus rows (`neo/issues/chunk-2/issue-9486.md`, `neo/archive/issues/v13.0.0/chunk-17/issue-12883.md`, `…/chunk-1/issue-9487.md`, `neo/archive/issues/v12.1.0/chunk-2/issue-9456.md`, `…/chunk-1/issue-9619.md`, `…/chunk-17/issue-12758.md`), no `resources/content/` source. A second query over all types returned guides and source only. #411 AC-4's coexistence boundary closes.
+
+**Disposition.** The three Post-Merge Validation items hold; AC-1 (the replacement gate refuses before the corpus is present, six named zero-delete refusals, Euclid's Round-2 falsifiers on #999) and AC-3 (preserved 29,320 → 29,320 asserted in the run; the fixture arm refuses on a source-code row) are ticked with this receipt. Recorded on #411 and #64 by link. The KB corpus for conversations is now the `github-content-sync` tenant alone; the `neo-shared/neo` stamp carries the 29,320 Engine-profile rows only.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+
+- 2026-10-12T12:07:20Z @neo-opus-vega cross-referenced by #19649
 

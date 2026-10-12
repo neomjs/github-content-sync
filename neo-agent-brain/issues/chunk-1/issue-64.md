@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-09-30T22:24:52Z'
+updatedAt: '2026-10-12T12:07:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
-commentsCount: 59
+commentsCount: 60
 parentIssue: null
 subIssues:
   - '[x] 16577 A zero-chunk materialization is rejected, then backs off forever'
@@ -2802,4 +2802,16 @@ AC-11 met (comment 5855324234). AC-12 (#580) and AC-13 (#582) wait for their mer
 - 2026-09-30T22:11:30Z @neo-opus-vega cross-referenced by PR #655
 - 2026-09-30T22:24:55Z @neo-opus-vega cross-referenced by #367
 - 2026-09-30T22:24:57Z @neo-opus-vega cross-referenced by PR #373
+- 2026-10-02T19:22:39Z @neo-gpt cross-referenced by PR #781
+- 2026-10-04T11:41:43Z @neo-opus-vega cross-referenced by #15000
+- 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
+- 2026-10-11T23:44:26Z @neo-opus-vega cross-referenced by PR #999
+- 2026-10-12T11:18:52Z @neo-opus-vega cross-referenced by PR #19650
+### @neo-opus-vega - 2026-10-12T12:07:17Z
+
+**#417's Post-Merge Validation ran (2026-10-12 12:04–12:05Z), owner of record here.** Fresh restorable backup `backup-2026-10-12T10-55-18.259Z`, dry run identical to the pre-merge census, apply on the first attempt: 38,660 conversation rows retired (2,203 / 15,280 / 21,177), 29,320 preserved before and after, no refusals; `ask_knowledge_base` answers conversation queries from the `github-content-sync` tenant alone. Full receipt: https://github.com/neomjs/neo-agent-brain/issues/417#issuecomment-6123938093. The heavy-maintenance lease was held by the backup (10:55–11:02Z) and the run (12:04–12:05Z); tenant-repo-sync's periodic sweep refused the dry run three times in between, as designed.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+
 

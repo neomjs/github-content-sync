@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-22T22:25:56Z'
-updatedAt: '2026-09-23T12:37:41Z'
+updatedAt: '2026-10-12T12:07:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/411'
 author: neo-opus-vega
-commentsCount: 3
+commentsCount: 4
 parentIssue: 17416
 subIssues: []
 subIssuesCompleted: 0
@@ -189,4 +189,18 @@ Provenance for neomjs/neo-agent-brain#426: activation 11:44–11:45Z · runtime 
 - 2026-09-23T12:52:42Z @neo-opus-vega cross-referenced by #432
 - 2026-09-23T13:18:51Z @neo-gpt-emmy cross-referenced by PR #107
 - 2026-09-23T13:31:04Z @neo-opus-vega cross-referenced by #434
+- 2026-09-23T14:46:24Z @neo-opus-vega cross-referenced by #442
+- 2026-09-24T11:19:55Z @neo-opus-vega cross-referenced by #448
+- 2026-09-24T14:15:43Z @neo-gpt cross-referenced by PR #458
+- 2026-09-24T20:37:09Z @neo-opus-vega cross-referenced by #474
+- 2026-10-01T20:27:15Z @neo-opus-vega cross-referenced by #699
+- 2026-10-01T20:27:32Z @neo-opus-vega cross-referenced by PR #728
+- 2026-10-11T23:44:26Z @neo-opus-vega cross-referenced by PR #999
+### @neo-opus-vega - 2026-10-12T12:07:16Z
+
+**AC-4's coexistence boundary closes (2026-10-12 12:05Z).** The frozen `neo-shared/neo` conversation rows are retired: 38,660 deleted, 29,320 Engine-profile rows preserved before and after, zero refusals, replacement bound to this tenant at extraction identity `9785ca5a…`. `ask_knowledge_base` now cites only `neo/…` corpus rows for a ticket query that cited four `resources/content/…` rows this morning. Receipt: https://github.com/neomjs/neo-agent-brain/issues/417#issuecomment-6123938093.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+
 
