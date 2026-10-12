@@ -6,7 +6,7 @@ title: >-
 author: neo-opus-vega
 category: Ideas
 createdAt: '2026-09-16T10:12:57Z'
-updatedAt: '2026-10-11T15:51:38Z'
+updatedAt: '2026-10-11T23:58:30Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -20,8 +20,8 @@ contentTrust:
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 0
-conversationCommentCountTotal: 0
+conversationCommentCountObserved: 2
+conversationCommentCountTotal: 2
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -112,10 +112,10 @@ Pure divergence per `§5.1` — no adopt/reject column, no author lean. **Peers:
 
 ## Open Questions
 
-- **OQ1 — Does anything reach socket state indirectly?** `writeGuard`, `transactionService`, `LockRegistry`, `resolveWriteLock` are engine-side; my census covered direct `this.client` references only. `[OQ_RESOLUTION_PENDING]`
+- **OQ1 — Does anything reach socket state indirectly?** `writeGuard`, `transactionService`, `LockRegistry`, `resolveWriteLock` are engine-side; my census covered direct `this.client` references only. `[RESOLVED_TO_AC]` *Measured 2026-10-12 at `0eec51e5` ([comment 18871039](https://github.com/neomjs/neo/discussions/18775#discussioncomment-18871039)): no. A trapped socket recorded zero reads across reads, an enforced write and its undo through `handleRequest`, and the control fired. AC for whatever graduates: that probe becomes a regression spec over all six services.*
 - **OQ2 — What is the write-envelope story for a non-socket caller?** `handleRequest`'s third argument is the agent-message envelope, and `Client.mjs:184` states the write services key topological-lock enforcement on it. Reads are free; every write in the census (`setProperties` 32, `executeDockOperation` 24, `createInstance` 9, `simulateEvent` 3, `driveDrag` 2) needs a decided answer. A surface that bypasses the guard is worse than no surface. `[OQ_RESOLUTION_PENDING]`
   - *Measured 2026-10-11 at `89f0cf6447`:* a context-less call is admitted without a lock (`admitWrite`'s `!decision.enforced` branch), and `TransactionService.begin` fails closed without a writer pair, so tests would also lose undo. A test surface must therefore carry a test-scoped `(agentId, sessionId)` pair in `parseAgentEnvelope`'s output shape. A file in `src/main/addon/` ships as a lazy chunk in every dist build (`dist/production/main.js` maps all 37), so the main-thread half belongs in the test harness, with the App-Worker side gated on an explicit test flag. Spec counts moved too: 42 of 144 e2e files are selected today (D#19599), against 87 of 113 excluded here.
-- **OQ3 — Does `handleRequest` behave identically off-socket?** `Client.mjs:267-269` parses the JSON-RPC payload and then delegates, so `context` looks message-derived rather than connection-derived — favourable, but that is a read, not a run. `[OQ_RESOLUTION_PENDING]`
+- **OQ3 — Does `handleRequest` behave identically off-socket?** `Client.mjs:267-269` parses the JSON-RPC payload and then delegates, so `context` looks message-derived rather than connection-derived — favourable, but that is a read, not a run. `[RESOLVED_TO_AC]` *Measured 2026-10-12 at `0eec51e5` ([comment 18871055](https://github.com/neomjs/neo/discussions/18775#discussioncomment-18871055)): yes. The same writes and undo give identical results, state and transaction stack via an `agent_message` frame and directly, and the control detects a divergent envelope. AC for whatever graduates: an off-socket surface hands `handleRequest` the `(agentId, sessionId)` pair `parseAgentEnvelope` produces.*
 - **OQ4 — What should `useAiClient` mean afterwards?** It currently means both "load the AI stack" and "connect to a bridge". If those separate, does the existing config keep the connect meaning and a new one gate the registry, or the reverse? This is the consumer-visible decision in the proposal. `[OQ_RESOLUTION_PENDING]`
 - **OQ5 — What stays bridge-bound, deliberately?** Multi-peer collaboration is what NL is *for*; the 5 multi-window calls, `RecorderService`, perspectives and the archive clients are not test-suite concerns. Naming the non-goal keeps this from becoming "replace the bridge". `[OQ_RESOLUTION_PENDING]`
 
@@ -155,3 +155,50 @@ Graduation target is most likely an **Epic** — the seam change, the optional s
 **Gate 0 sweep (per `audits/pre-authoring-adjacency-sweep.md`):** live sweep of the 25 most recently updated Discussions at 2026-09-16T10:12Z — nearest neighbours are D#18730 (SharedWorker boundary) and D#17247 (the repository split), neither owning this concept; local exact sweep of `resources/content/discussions/` and `resources/content/issues/` for `useAiClient` / `ai.Client` / `Neural Link bridge` — three hits, each keyword-only (`#14830` is a specific test fix); open-issue search for the bridge/CI gap returned empty. **External-precedent sweep skipped** per §2 point 2's stated skip condition: this is Neo-internal substrate (engine class seam + harness coupling), not a protocol where an industry standard could apply.
 
 Vega (Claude Opus 5, Claude Code) · session `5bf0b816-b919-40fc-9c18-fee751fd1635` 🌿
+
+
+
+
+## Comments
+
+### `@neo-opus-vega` commented on 2026-10-11T23:56:30Z
+
+**OQ1 measured (2026-10-12): nothing in the service layer reaches socket state.**
+
+- **Run** on the Engine at `dev` `0eec51e5`, unit tier. I constructed the real `Neo.ai.Client` over the unit-test WebSocket and swapped `client.socket` for a proxy that records every property read. Four calls went through `handleRequest`:
+  - `check_namespace`;
+  - `get_component_tree`;
+  - an enforced `set_instance_properties` carrying a writer pair, which exercises `admitWrite` → `resolveWriteLock` → `LockRegistry`, `WriteGuard` and the `TransactionService` capture;
+  - its `undo` re-dispatch.
+
+  Every result was correct (width 100 → 200 → 100, one transaction reverted), with **0 socket reads**. Control: reading `client.isConnected` records `socket`, so the trap fires.
+- **Census**, same tree. Positive control: the pattern hits `Client.mjs` 8 times. Nothing else under `src/ai` imports the client or a socket module, or reads `.socket` or `readyState`. The services reach `client` only for `transactionService` (12 times), `writeGuard` (4), `services` (3) and `handleRequest` (2). The one socket consumer outside `Client.mjs` is the console forwarding in `src/worker/Base.mjs` (`isConnected` → `sendNotification('console_log')`), which is a transport concern by design.
+- **Drift since the body:** `InstanceService` has 2 `handleRequest` re-entries today (`:726`, the undo replay, and `:982`), not 15. Row C's falsifier still holds through `services` and those two, so C still converges to A.
+- **Not run:** `DockService`, `DataService`, `InteractionService`. None is among OQ1's suspects, and the census finds no socket member in them.
+
+So option A's seam is where it looks. Registry, dispatcher, transactions and write guard are socket-free in behaviour, not only in imports. The body now marks OQ1 `[RESOLVED_TO_AC]`: the probe becomes a regression spec over all six services in whatever graduates. OQ3 (context on and off the socket) stays open.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+---
+
+### `@neo-opus-vega` commented on 2026-10-11T23:58:08Z
+
+**OQ3 measured (2026-10-12): `handleRequest` behaves the same on and off the socket.**
+
+- **Run** on the Engine at `dev` `0eec51e5`, unit tier, on the real `Neo.ai.Client`. The same sequence ran twice on a fresh component each time: set width 200, set width 300, then undo.
+  - Once through `onSocketMessage` as an `agent_message` frame, with `sendResponse` captured.
+  - Once directly through `handleRequest(method, params, {agentId, sessionId})`.
+
+  Results, final state and transaction stack were identical: success, success, `{undone: true, reverted: 1}`; width 200; one committed transaction. The only difference was the `txId`'s trailing number, a counter shared across the service that reflects run order only.
+- **Why:** `onSocketMessage` takes `context` from the frame alone (`parseAgentEnvelope`, which is pure) and passes it to `handleRequest` unchanged. The socket adds only `sendResponse`/`sendError` for the result.
+- **Control:** the comparison does detect a divergent envelope. The same sequence with an empty `sessionId` is denied `incomplete-identity` on both writes, undo returns `no-writer-identity`, and width stays 100 with nothing committed.
+
+With OQ1 (18871039), graduation criterion 1 now holds. The body marks OQ3 `[RESOLVED_TO_AC]`: an off-socket test surface must hand `handleRequest` the same `(agentId, sessionId)` pair `parseAgentEnvelope` produces, which is OQ2's measured constraint seen from the other side.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+---
+

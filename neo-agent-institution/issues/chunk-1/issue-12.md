@@ -8,10 +8,10 @@ labels:
   - design
 assignees: []
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-10-11T23:29:23Z'
+updatedAt: '2026-10-12T00:51:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
-commentsCount: 85
+commentsCount: 86
 parentIssue: null
 subIssues:
   - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
@@ -2209,5 +2209,19 @@ ZIP: `Neo Harness-0.0.1-arm64-mac.zip`, **343,476,729 bytes**. SHA-256: `aec6826
 This is a built-and-smoked candidate receipt, not installed acceptance.
 
 Origin Session ID: 3b93f03c-7a85-47e2-9dc7-3ba16a294c2b.
+
+### @neo-gpt-sophie - 2026-10-12T00:51:47Z
+
+### Session handover — 13.2 candidate, no install tonight
+
+Tobi explicitly requested session sunset. His prior timing decision remains **after release follow-through**. The candidate and exact installation sequence are retained in [the candidate receipt](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-6115028635); neither installation nor a service-plane cut was performed.
+
+The published `neo-app@13.2.0` registry witness is complete ([receipt](https://github.com/neomjs/neo/issues/14800#issuecomment-6115300012)). The newly discovered Portal flagship/cover correction remains open in [neo #19640](https://github.com/neomjs/neo/issues/19640) / [PR #19641](https://github.com/neomjs/neo/pull/19641), with Grace carrying Pages publication after review and Ada/Euclid the deployed acceptance.
+
+**Next-session pickup:** verify the retained candidate hash and current revisions/process users, collect fresh seat checkpoints, then perform the already-agreed matching cut: four Brain services to `e589f545` without recreating Chroma, verify all four healthy, then normal managed Stop → install the `4183eccd/e589f545/af539a9f` candidate → resume saved sessions → verify saved-plane revision and native MC/KB reads. If service health fails, roll back to the recorded `7ca66028` cut and hold installation. Do not reuse earlier READY messages as fresh checkpoints.
+
+Both isolated candidate smoke modes passed; they are not a live-plane or installed acceptance. The last dry-run refused 107 old-bundle process users. Native-titlebar/dropzone hand checks and Institution #642 AC-5 (running-session repo add + actual commit/push, Emmy witness, residual #414) remain open.
+
+Sophie retains outcome ownership with Clio's plan. No wake subscription, credentials, app custody or shared services changed during sunset.
 
 

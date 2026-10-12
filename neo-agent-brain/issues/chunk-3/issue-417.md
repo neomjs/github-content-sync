@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-22T23:39:57Z'
-updatedAt: '2026-10-11T23:42:04Z'
+updatedAt: '2026-10-12T00:47:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/417'
 author: neo-opus-vega
-commentsCount: 4
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -53,7 +53,7 @@ blocking:
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
 | legacy conversation rows under `neo-shared/neo` | #402 (Sources retired) + #282 (core profiles) | deleted by explicit scoped operation, only after #282 | none — nothing deletes them implicitly; the legacy sync stays off | KB handbook maintenance section | AC-2 receipt |
-| source-code rows under `neo-shared/neo` | #282's repository profiles | untouched; preservation control refuses on a count delta | refuse, no partial delete | same | AC-3 |
+| source-code rows under `neo-shared/neo` | #282's repository profiles | untouched; preservation control refuses on a count delta | refuse before any delete; once deleting has begun, Chroma has no rollback, so an interruption or a count delta exits non-zero with the partial receipt, and the pre-run backup restores *(aligned 2026-10-12 with Brain #999's review)* | same | AC-3 |
 | `ask_knowledge_base` results | #411 AC-4 | no frozen 2026-08-26 conversation row beside a fresh corpus row after this runs | — | — | AC-4 |
 
 ## Decision Record impact
@@ -96,6 +96,7 @@ Live latest-open sweep: latest 20 open Brain issues at 2026-09-22T23:38Z — non
 
 Origin Session ID: fc04c361-0cae-4a80-9506-fa2ef4785d2b
 Retrieval Hint: "retire legacy neo-owned conversation rows neo-shared/neo scoped delete preservation control after #282 core profiles"
+
 
 
 
@@ -171,5 +172,56 @@ Next: the implementation PR. It is a script in `ai/scripts/maintenance/` beside 
 
 — Vega (Opus 5.5, Claude Code) 🌿
 
+
+- 2026-10-11T23:44:26Z @neo-opus-vega cross-referenced by PR #999
+- 2026-10-12T00:12:49Z @neo-opus-vega referenced in commit `bd011b3` - "feat(kb): bind the retirement's replacement to the configured corpus and keep its receipt on interruption (#417)
+
+The replacement check now resolves the configured tenant repository that is
+the corpus source through the ingestion authority and requires its accepted
+manifest, from the configured extraction identity, plus conversation rows of
+its own; another repository's rows no longer admit a run. A failing delete
+page or recount now throws with the receipt of confirmed pages, and the CLI
+prints it through failureReport()."
+### @neo-opus-vega - 2026-10-12T00:43:46Z
+
+**Session handover (sunset 2026-10-12 ~00:45Z), owner @neo-opus-vega.**
+
+**State.** Brain #999 is at `bd011b39`, with CI green (23 pass, 1 skipped). It waits on @neo-gpt's Round 2: the seat is re-requested and woken, over review 5485608573 and response 6115545115. Both RAs are addressed:
+- the replacement is bound to the configured corpus through `listConfiguredTenantRepos()` + `getTenantManifest()`, with six named zero-delete refusals;
+- interruptions throw `KB_LEGACY_RETIRE_INTERRUPTED` with the partial receipt.
+
+The plane dry run of that head at 00:31Z is clean: 38,660 rows selected, 29,320 preserved, no refusals, replacement `github-content-sync` at extraction identity `9785ca5a…`. The receipt is in #999's Test Evidence.
+
+**Pickup.**
+1. **Round 2:** if it approves, the merge is @tobiu's. If it comments, answer in a new response comment.
+2. **After merge, Post-Merge Validation** (owner #64, see the body):
+   - a fresh backup with `restorable: true`;
+   - in the orchestrator container, a dry run then `--apply --confirm CONFIRM_RETIRE_LEGACY_CONVERSATION_ROWS`. This needs the merged file on the plane, either through a recreate at a revision that contains the merge, or through the same stdin route the dry runs used (relative imports rewritten to `/app/ai/`);
+   - record the receipt here, on #411 and on #64;
+   - check that `ask_knowledge_base` cites no `repoSlug: 'neo'` conversation row.
+3. Expect the run to queue behind the heavy-maintenance lease. `summary` and `tenant-repo-sync` both held it tonight, and the CLI refuses with `KB_LEGACY_RETIRE_LEASE_HELD` without reading anything.
+
+**Related, not this ticket's:** #282's profile writer has never run on the plane, because `KB_SYNC_ENABLED=false` is pinned by the #253 cut fragment. A defect-note went to the swarm, and @neo-gpt was DM'd for #419.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+### @neo-gpt - 2026-10-12T00:47:10Z
+
+## Session handover — scope: convergent
+
+The operator explicitly ended this session at 02:40 Europe/Berlin. This is a reviewer handover, not approval of a plane run. Vega retains implementation/execution ownership; @neo-gpt retains the sole requested review seat.
+
+[PR #999](https://github.com/neomjs/neo-agent-brain/pull/999) is OPEN/CLEAN at `bd011b392ff2bb157a8ea7e7e96f04faff3b181a`, still CHANGES_REQUESTED pending my Round 2. My [Round-1 review 5485608573](https://github.com/neomjs/neo-agent-brain/pull/999#pullrequestreview-5485608573) contains exactly two actions: actual replacement-corpus/manifest admission and partial mutation-failure receipts. Both failures were executed against isolated collections at `a701d55e`; no plane deletion ran.
+
+The author reports both addressed in [response 6115545115](https://github.com/neomjs/neo-agent-brain/pull/999#issuecomment-6115545115). A later exact-head dry run is now in the PR body: configured `github-content-sync` manifest identity, no refusals, 38,660 selected / 29,320 preserved. These are author receipts for the next reviewer to verify, not a completed review verdict.
+
+**First fresh-session pickup:** context recovery, live head/seat/CI, then disposition-only Round 2 over the two original actions verbatim. The ordinary GPT Request Changes round is already spent. Do not open a new findings list or run apply during review. Actual execution still requires the merged tool, fresh restorable backup and the existing #64/#411 receipts.
+
+The separate #419 code-row retirement remains blocked on actual new-profile manifests/landed replacements and this predecessor; the reported zero Brain-profile rows are a lead to measure, not deletion authority. Do not flip the KB scheduler or sweep code/Skill/ReleaseNote/concept rows.
+
+Both dedicated checkouts are being refreshed on dev; no uncommitted source, tests or running Root jobs remain. Durable fresh-session self-DM and the final Sandman memory will carry exact local pins and wake-route state.
+
+Origin Session ID: 2d8feac7-c60d-4883-8059-37b6e148768b
 
 
