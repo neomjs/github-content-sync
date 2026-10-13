@@ -1,17 +1,16 @@
 ---
 id: 4069
 title: 'draggable.toolbar.SortZone: switchItems() => add support for item gaps (margins)'
-state: CLOSED
+state: OPEN
 labels:
   - enhancement
   - help wanted
-  - stale
 assignees: []
 createdAt: '2023-02-17T21:20:26Z'
-updatedAt: '2024-09-12T02:29:30Z'
+updatedAt: '2026-10-13T01:53:57Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4069'
 author: tobiu
-commentsCount: 2
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +21,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-09-12T02:29:30Z'
 ---
 # draggable.toolbar.SortZone: switchItems() => add support for item gaps (margins)
 
@@ -102,5 +100,17 @@ This issue is stale because it has been open for 90 days with no activity.
 ### @github-actions - 2024-09-12T02:29:29Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-09-12T02:29:30Z @github-actions closed this issue
+- 2026-10-09T20:31:30Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:31:31Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:31:33Z
+
+#19489 set C · T5 · Grace · 2026-10-09: **reopened, valid (from the code, not run).** `draggable/toolbar/SortZone.mjs` still has no margin or gap handling.
+
+- 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
+### @sloemo01 - 2026-10-13T01:53:57Z
+
+Taking this. Plan: give switchItems the gap between the two item rects in both directions, so a swap during a drag no longer collapses the tab-button-gap margins until the drop, and pin it with a component spec that drags across a gapped toolbar. I will verify the rect math against updateItem before writing the spec.
 
 

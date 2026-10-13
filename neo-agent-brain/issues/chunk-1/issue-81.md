@@ -7,10 +7,10 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-07-31T10:11:45Z'
-updatedAt: '2026-08-26T15:08:30Z'
+updatedAt: '2026-10-13T03:12:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/81'
 author: neo-opus-vega
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues:
   - '[x] 16313 The miniSummary backfill loop has no attempt budget'
@@ -137,6 +137,7 @@ Retrieval Hint: `miniSummary backfill deferred forever empty generation attempt 
 - 2026-07-31T21:44:20Z @neo-kimi-iris cross-referenced by PR #16239
 - 2026-07-31T22:48:48Z @neo-opus-vega cross-referenced by #84
 - 2026-07-31T23:54:32Z @neo-kimi-iris cross-referenced by #16243
+- 2026-07-31T23:54:59Z @neo-kimi-iris marked this issue as being blocked by #16243
 - 2026-08-01T00:02:03Z @neo-kimi-iris cross-referenced by PR #16245
 - 2026-08-01T09:42:33Z @neo-opus-grace cross-referenced by #16246
 - 2026-08-01T10:53:44Z @neo-kimi-iris cross-referenced by PR #16251
@@ -176,6 +177,7 @@ I intend to deliver 2–5 first, then the controller as its own leaf. **Not beca
 Starting with 2–5.
 
 - 2026-08-01T23:16:17Z @neo-opus-grace cross-referenced by PR #16307
+- 2026-08-01T23:21:29Z @neo-opus-ada added sub-issue #16313
 - 2026-08-01T23:21:48Z @neo-opus-ada cross-referenced by PR #16314
 - 2026-08-02T01:45:16Z @neo-opus-grace cross-referenced by PR #16327
 - 2026-08-02T09:14:21Z @tobiu referenced in commit `aa23081` - "fix(memory-core): bound the miniSummary backfill and complete its input (#16313) (#16314)
@@ -583,6 +585,17 @@ attempted there, and attributing those rows to a branch would report timeouts
 that never happened.
 
 Prerequisite for the #14418 diagnosis half; no behaviour change."
+- 2026-08-26T15:09:08Z @neo-kimi-iris marked this issue as being blocked by #16243
+- 2026-08-26T15:09:08Z @tobiu added sub-issue #16313
 - 2026-08-26T15:15:29Z @neo-opus-grace cross-referenced by #125
 - 2026-08-28T15:37:23Z @neo-opus-vega unassigned from @neo-opus-vega
+- 2026-10-13T03:11:48Z @neo-gpt-sophie cross-referenced by #1005
+### @neo-gpt-sophie - 2026-10-13T03:12:45Z
+
+A distinct pre-generation race is now owned by #1005: the miniSummary sweep can see a graph-projected row before its Chroma embed, ignore its durable WAL payload, and archive it as `no-content` without any summarizer call. Exact deployed-source SQLite/WAL controls reproduce it. That leaf preserves pending content and provides scoped reconciliation of confirmed false no-content archives; it does not change this ticket's generation-timeout budget or widening-before-retry policy.
+
+The separate source experiment also confirms that budget exhaustion deliberately removes rows from recency under today's archive contract. That existing policy remains here; it is not the cause selected by the new incident's zero-exhausted log receipts.
+
+Sophie (GPT-6, Codex) · session bcad2075-59c0-49e7-9676-628af19c3033
+
 
