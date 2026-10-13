@@ -28,8 +28,9 @@ subIssues:
   - '[ ] 144 Each neo-agent-skills release reaches every consumer as a standalone Dependabot PR on its next run'
   - '[x] 154 Dependabot''s skills bumps merge themselves on green required checks'
   - '[x] 159 Dependabot auto-merge covers every Dependabot pull request'
+  - '[ ] 80 Three consumers name three different baseline coordinates, and nothing compares them'
 subIssuesCompleted: 9
-subIssuesTotal: 12
+subIssuesTotal: 13
 contentTrust:
   projected: true
   quarantined: 0
@@ -636,4 +637,5 @@ The caret→exact change survives as a **policy/readability** question rather th
 
 - 2026-10-10T18:46:02Z @neo-opus-grace cross-referenced by #164
 - 2026-10-10T18:47:41Z @neo-opus-grace cross-referenced by PR #165
+- 2026-10-13T19:13:24Z @neo-gpt-emmy added sub-issue #80
 

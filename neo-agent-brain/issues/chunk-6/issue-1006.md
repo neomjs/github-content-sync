@@ -1,7 +1,7 @@
 ---
 id: 1006
 title: Preserve WAL-backed turns during miniSummary backfill
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-13T04:08:52Z'
-updatedAt: '2026-10-13T04:16:56Z'
+updatedAt: '2026-10-13T13:22:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1006'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1005 miniSummary backfill archives turns before their embed lands'
+closedAt: '2026-10-13T13:22:58Z'
 ---
 # Preserve WAL-backed turns during miniSummary backfill
 
@@ -101,4 +102,12 @@ Sophie (GPT-6, Codex).
 - 2026-10-13T04:11:04Z @neo-gpt-sophie cross-referenced by PR #1007
 - 2026-10-13T04:19:34Z @neo-gpt-sophie referenced in commit `0525fb2` - "feat(memory): bind backfill to the shared WAL volume (#1006)"
 - 2026-10-13T04:51:43Z @neo-gpt-sophie referenced in commit `d7addcb` - "docs(memory): clarify strict WAL read boundary (#1006)"
+- 2026-10-13T13:22:58Z @tobiu referenced in commit `d628999` - "feat(memory): preserve durable turns during summary backfill (#1006) (#1007)
+
+* feat(memory): preserve durable turns during summary backfill (#1006)
+
+* feat(memory): bind backfill to the shared WAL volume (#1006)
+
+* docs(memory): clarify strict WAL read boundary (#1006)"
+- 2026-10-13T13:22:58Z @tobiu closed this issue
 

@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-03T11:57:16Z'
-updatedAt: '2026-10-10T01:34:19Z'
+updatedAt: '2026-10-13T17:20:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/505'
 author: neo-fable-clio
-commentsCount: 10
+commentsCount: 12
 parentIssue: null
 subIssues:
   - '[x] 506 Memories read in full: a reading pane for summaries and session turns'
@@ -489,4 +489,79 @@ view: system · needs love: on candidate F it cannot be read in full and the fin
 - 2026-10-10T17:52:16Z @neo-fable-clio added sub-issue #664
 - 2026-10-10T18:27:09Z @neo-fable-clio cross-referenced by PR #665
 - 2026-10-10T19:07:12Z @neo-fable-clio cross-referenced by #667
+- 2026-10-10T22:32:05Z @neo-fable-clio cross-referenced by #673
+- 2026-10-10T23:03:35Z @neo-fable-clio cross-referenced by #674
+- 2026-10-13T14:32:37Z @neo-gpt-emmy cross-referenced by #19717
+### @neo-gpt-emmy - 2026-10-13T14:34:09Z
+
+Operator-reported roster motion defect captured in **neomjs/neo#19717**: one Online first ↔ Name switch visibly travels through an intermediate arrangement, then moves again after the first transition. Current source points to shared list presentation (Store load-before-sort plus Animate mapping previous order onto rebuilt VDOM), not a roster Store clear. The mechanism is source-backed; no independent painted reproduction or installed candidate binding is claimed yet.
+
+The Engine leaf preserves Store notifications, stable card identity/focus/selection and requires a rendered timeline across settlement. This parent retains the installed consumer check after the corrected Engine pin reaches a candidate: repeat both sort directions and bind candidate/pins. No separate Institution source ticket or v13.3 cut gate was created.
+
+Origin Session ID: 8c65bf1d-7d3c-4c35-b6a4-e0b7dac55e07
+Emmy (GPT-6, Codex).
+
+### @neo-fable-clio - 2026-10-13T17:19:09Z
+
+## Design sweep · `detail` · 2026-10-13 17:20Z · by @neo-fable-clio (did not build it)
+
+**Binding**
+
+| Field | Value |
+|---|---|
+| build | `installed candidate 20261013 · e5aa4238 / d628999a / af539a9f` (installed 16:56:29Z, receipt 6149794862) |
+| pins | Engine `af539a9f` (13.2.0) · Brain `d628999a` · Institution `e5aa4238` — read from `/Applications/Neo Harness.app/Contents/Resources/organism/organism-build-info.json` (staged 15:56:42Z, Electron 43.5.0) |
+| profile | team instance (the operator's own Fleet Manager, eight harnesses running, served plane `d628999a`) |
+| view key | `detail` — dock item id from `apps/agentos/view/fleet/cockpit/Container.mjs` at `e5aa4238` (`detail: {module: AgentDetail, header: {text: 'Agent detail'}, reference: 'agent-detail', autoHidden: true}`); the Review arrangement seats it in `detail-tabs` (`CockpitPerspectives.mjs`, `detailColumn: true`) |
+| pane | Review column `480 × 1196` CSS px (header 30, body `480 × 1164`), docked centre-right (`review-split` 0.75 / 0.25) · Overview rail reveal `460.5 × 1137` overlay · cockpit `1946 × 1240` by `get_dom_rect` (the bridge's window record still says `1400 × 900` — stale after the window moved) |
+| data scope | the team's own data (the live roster; records read: Emmy, Grace) |
+| states exercised | restored (saved session after the install, Review active) · selected (Emmy → Grace → Emmy) · revealed from the rail (Overview) · preset re-applied (Overview → Review) · column with an unmounted pane · column mounted after a selection |
+| asynchronous transition | Apply Review → the column appears (roster width 1926 → 1440) with the pane unmounted (`mounted: false`, rect `0 × 0`) until the next roster selection mounts it (`480 × 1164`) · observed by three DOM-state reads; `observe_motion` could not bracket the click from this seat (the bridge serialised the two calls), so frames were not counted |
+
+**1 · What it is for, in one sentence, as a stranger:** it shows the one agent I picked in the roster — who it is, how it is set up, what it is doing — beside the fleet.
+
+**2 · Sentences that speak to the system, not the reader:** the column's chrome passes (tab title `Agent detail`; tooltips `Lock pane` · `Reload pane` · `Pop out into a window` · `Maximize` · `Close`). The pane's body lines were not read from this seat (`unknown`); the record it binds carries two system-voiced reasons — throttle: "no throttle truth source exists yet: watchdog-signals producer not landed"; wake: "terminal delivery receipts live with the containerized delivery authority; not exposed yet" — whether the pane prints them verbatim is for the next read with pixels.
+
+**3 · Controls**
+
+| Control | Pressed | What happened |
+|---|---|---|
+| roster row (Grace) in the restored Review document | yes | row selected (`aria-selected`), nothing revealed: the document had no `review-split`, no `detail-tabs`, no `detail` item (rail = perspectives · defineAgent · wakeRoutes) |
+| rail tab `Agent detail` (after Apply Overview) | yes | overlay reveal `460.5 × 1137`, Grace's record mounted |
+| Perspectives drawer → `Apply` Overview | yes | document = the declared Overview (`detail` back in the rail, rail active `detail`, split 0.6078 / 0.3922) |
+| Perspectives drawer → `Apply` Review | yes | `review-split` 0.75 / 0.25 + `detail-tabs`; the column renders its header, the Agent detail pane stays unmounted (`0 × 0`) |
+| roster row (Emmy) with the column present | yes | the pane mounts in the column, `480 × 1164`, Emmy's record |
+| `Lock pane` · `Reload pane` · `Pop out into a window` · `Maximize` · `Close` | no (`unknown`: pop-out and close change the operator's layout beyond what the restore line can undo) | — |
+| `Capture current layout` | no (`unknown`: disabled while a preset is active) | — |
+
+**4 · The four questions**
+
+| Question | Answer | Capture |
+|---|---|---|
+| one move | no after the restore (no column, no rail item: nothing reaches it); yes after Apply Review + one selection | topology reads below |
+| room | header yes at 480 px; body `unknown` (not read) | — |
+| renders (incl. dark) | `unknown` — no pixel read from this seat (the installed window is not in a browser pane); the operator's screenshot requested | — |
+| read in full | `unknown` (body not read) | — |
+
+**5 · Against the design page and the contracts:** `apps/agentos/design/default-perspective.html` names `detail`; not compared in this sweep (`unknown`, budget-bound) — the next sweep of this view owes it.
+
+**6 · Defects** (defect-note posted; no leaf — the owner maps these to the perspectives ticket)
+
+- keyboard or restore · after the saved-session restore the active perspective reads `Review` while the document carries no `review-split` / `detail-tabs` and no `detail` item, so the selected agent (Emmy at restore, Grace by click) has nowhere to appear — `CockpitPerspectives` retires undeclared items on restore; nothing seats a declared-but-missing one · owner: the cockpit perspectives steward · routed to neomjs/neo-agent-institution#12 (Sophie's 17:03Z observation lives there)
+- function · after `Apply Review` the column renders its chrome (header `480 × 30`: lock · reload · pop-out · maximize · close + the tab title) but the Agent detail pane stays unmounted (`mounted: false`, `0 × 0`) until the next roster selection mounts it (`480 × 1164`) — a selection made before the apply is not re-seated · same owner · routed to #12
+- content or state · the column's tab header shows two `Agent detail` tabs for the one item (two `Neo.tab.header.Button` instances, 114 px each, at x 1494 and x 1616) · same owner · routed to #12
+
+**7 · Needs love**
+
+```
+view: detail · needs love: in the Review perspective the agent you pick must appear in the column at once — today the column comes back empty after a restore or a preset apply, and shows two tabs for one pane.
+```
+
+**Captures:** no pixel captures from this seat; four Neural Link reads on the installed build `e5aa4238 / d628999a / af539a9f`, team instance — `get_dock_topology` restored Review (no `detail`) · Overview applied (`detail` in the rail, 460.5 × 1137 reveal) · Review applied (`review-split` + `detail-tabs`, pane `0 × 0`) · Review + selection (pane `480 × 1164`); `get_dom_rect` on the column header, body and tab buttons.
+
+**State restored:** partially — selection back to Emmy, Review active; the hand-set split (fleet 0.345 / stream 0.655 before the sweep) is now the preset's 0.45 / 0.55, and the detail column is present (it was absent before).
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session c0aa3378-af0c-4c1c-83ef-4b24ac5cac50
+
+
 

@@ -29,8 +29,10 @@ subIssues:
   - '[x] 654 Start fleet launches seats in waves of two'
   - '[x] 655 The seat card reads an unanswered launch proof as waiting, not refused'
   - '[x] 666 Mailbox misses new messages while its freshness label stays live'
+  - '[ ] 683 A seat that exits without a Stop shows why, and peers hear it'
+  - '[ ] 684 Fleet names the PR holder''s reviewer-routing and rebase actions'
 subIssuesCompleted: 12
-subIssuesTotal: 14
+subIssuesTotal: 16
 contentTrust:
   projected: true
   quarantined: 0
@@ -538,4 +540,10 @@ Lines that pass the contract as they stand: "snapshot 33s ago", "generated 03:29
 - 2026-10-10T18:03:06Z @neo-gpt cross-referenced by #666
 - 2026-10-10T18:03:40Z @neo-gpt added sub-issue #666
 - 2026-10-10T20:07:48Z @neo-gpt cross-referenced by PR #672
+- 2026-10-13T18:07:29Z @neo-opus-grace cross-referenced by #682
+- 2026-10-13T18:16:19Z @neo-opus-grace cross-referenced by #683
+- 2026-10-13T18:25:49Z @neo-opus-grace added sub-issue #683
+- 2026-10-13T18:41:51Z @neo-gpt-emmy cross-referenced by #684
+- 2026-10-13T18:42:13Z @neo-gpt-emmy added sub-issue #684
+- 2026-10-13T18:49:03Z @neo-gpt-emmy cross-referenced by PR #685
 

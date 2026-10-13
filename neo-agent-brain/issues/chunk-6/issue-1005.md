@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-13T03:11:47Z'
-updatedAt: '2026-10-13T04:27:14Z'
+updatedAt: '2026-10-13T17:18:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1005'
 author: neo-gpt-sophie
-commentsCount: 4
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1006 Preserve WAL-backed turns during miniSummary backfill'
+  - '[x] 1006 Preserve WAL-backed turns during miniSummary backfill'
 blocking: []
 ---
 # miniSummary backfill archives turns before their embed lands
@@ -67,7 +67,7 @@ Provide a bounded, explicit reconciliation path for previously false `no-content
 
 ## Delivery ownership
 
-Sophie owns both steps. The source contract and its five original ACs now live in #1006, which blocks this incident. Source/CI completion does not certify deployed behavior or repaired rows. No live operation has run. The source merge releases the deployment/reconciliation sequence; it does not close this issue.
+Sophie owns both steps. The source contract and its five original ACs now live in #1006, which blocks this incident. Source/CI completion does not certify deployed behavior or repaired rows. The coordinated deployment now runs d628999a470e8c8feecdbefae45d6dddebab82e1. All four identified historical candidates were restored, independently read back by their owners, and passed exact-ID idempotence checks. The [live receipt](https://github.com/neomjs/neo-agent-brain/issues/1005#issuecomment-6148826421) retains the evidence limits: AC-1 still needs the accepted-pending-turn/backfill witness, and no live intentional-archive control has been identified. This issue remains open.
 
 ## Decision Record impact
 
@@ -157,5 +157,48 @@ No deployment or repair has run. Current source/CI receipts do not close either 
 
 Sophie (GPT-6, Codex). Session bcad2075-59c0-49e7-9676-628af19c3033.
 
+
+### @neo-gpt-sophie - 2026-10-13T14:00:19Z
+
+Recovery checkpoint, 2026-10-13: #1007 is human-merged at `d628999a470e8c8feecdbefae45d6dddebab82e1`. Both operational ACs remain open under my ownership.
+
+Fresh container reads confirm that MC and orchestrator still run `7ca66028eea0f5799e40d3bbdaa089d5edf04e7f`. Their resolved WAL directories still differ: MC uses `/app/.neo-ai-data/sqlite/memory-wal`, while the backfill consumer uses `/app/.neo-ai-data/memory-wal`. MC health is healthy and its WAL drain is caught up; neither fact retires the observed consumer-placement defect.
+
+The live project still uses the same ordered three-file Compose composition. The deployment checkout is separately behind at `98e52e9e`; pinning the image alone would therefore miss the merged Compose repair. The update must deliver both source and composition.
+
+Read-only preparation passed:
+- Both candidate Compose blobs match the exact merged revision.
+- The active environment carrier was recovered from Docker's deployment label; the reference pipeline's default environment locations do not describe this installation.
+- Rendering the existing composition with its `cloud`, `ingress`, and `fleet` profiles includes all six running services. Every named-volume name/target/access-mode tuple matches the live containers.
+- All four Brain services receive the same full source/revision pin. MC and orchestrator resolve the same shared WAL directory in the prospective configuration.
+
+Next owned step: validate the restorable pre-transition backup and obtain fresh active-peer checkpoints, then execute the existing deployment/reconciliation sequence. The four previously identified candidates remain a bounded two-owner inspection set, with eligibility determined by the reviewed dry-run rather than prior recency misses. No service or live record has changed during this recovery check; a successful render is not deployment acceptance.
+
+Sophie. Origin Session ID: 1c696f9e-9c6f-4561-b6c7-e770db2aeb63
+
+### @neo-gpt-sophie - 2026-10-13T14:25:23Z
+
+Deployment preparation is complete; the coordinated service transition is pending Ada's active-peer checkpoint.
+
+- The existing deployment's backup gate returned `PROCEED_VERIFIED` / `RESTORABLE` for the 2026-10-13 13:16 UTC bundle, with 128,792 vector rows and no empty required subsystem. This is local restorability evidence, not off-host durability or semantic producer-provenance certification.
+- All four Brain service images built successfully at `d628999a470e8c8feecdbefae45d6dddebab82e1`; isolated no-network/no-data-mount reads confirm each packaged revision matches its image label. Exact previous image IDs have rollback tags.
+- The candidate's declared environment differs from the running services only by the intended orchestrator WAL binding; ordinary bind mounts match. The prior six-service/named-volume render remains the deployment scope.
+- Emmy, Vega, Euclid and Grace supplied durable checkpoints with no shared-plane collision. Grace's 14:33 UTC receipt also confirms her private test bridge is stopped. Ada's reply remains pending; targeted requests are outstanding.
+
+The deployment checkout has fetched the target but has not switched. No deployment or historical repair has been applied, so neither operational AC is complete. Sophie retains the next action: announce the write-quiescence window after the remaining checkpoint, deliver the pinned source/composition, verify the running cohort, then use the reviewed owner-scoped reconciliation path.
+
+### @neo-gpt-sophie - 2026-10-13T15:15:57Z
+
+The coordinated deployment and bounded historical repair are now applied.
+
+All five active-peer checkpoints were received before the cut. MC, KB, Fleet and orchestrator now run `d628999a470e8c8feecdbefae45d6dddebab82e1` and passed their health gates. Chroma and ingress stayed running. MC and orchestrator both resolve the WAL under the existing shared SQLite volume; MC remains the drainer. Native health, mailbox and chronological recall succeeded after recreation.
+
+The reviewed dry-run classified all four exact candidates eligible, with `unavailableSources: []`. After the operator delegated the restoration decision, the guarded apply restored one Sophie record and three Vega records. Repeating each owner's exact apply restored zero records; all four returned `not-no-content-archive`.
+
+Owner-visible readback is complete: my record is present in `query_recent_turns` with a generated summary, and Vega independently confirms all three of his records through bounded own-identity recency reads. For two Vega records his pre-cut feed supplies the absence control; the older third has a stored-turn comparison rather than a same-day before-feed. No live intentional-archive control was identified, so that negative-control evidence remains the reviewed source fixtures.
+
+Post-cut symptom check, independently counted from the same orchestrator pass log through **2026-10-13 17:14:33 UTC**: before the 15:01 UTC boundary, **11 of 96** completed backfill passes reported missing content (**11 rows**); after it, **0 of 37** passes reported missing content, and none reported deferred work. The post-cut series begins at 15:02:48 UTC. Vega first surfaced this comparison. This supports disappearance of the logged symptom over the observed interval, not the pending-row mechanism: at `d628999a`, the WAL fallback overlays absent Chroma content before the pass counts its updates, so these log totals cannot distinguish a rescued pending row from an ordinary Chroma hit.
+
+The historical four-record population is recovered. AC-1's accepted-pending-turn/backfill witness on this running revision is still outstanding; healthy deployment and recovered history do not substitute for that behavioral observation. I retain this final verification step and keep the incident open.
 
 
