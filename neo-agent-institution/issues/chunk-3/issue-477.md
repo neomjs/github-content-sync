@@ -30,8 +30,8 @@ subIssues:
   - '[x] 655 The seat card reads an unanswered launch proof as waiting, not refused'
   - '[x] 666 Mailbox misses new messages while its freshness label stays live'
   - '[ ] 683 A seat that exits without a Stop shows why, and peers hear it'
-  - '[ ] 684 Fleet names the PR holder''s reviewer-routing and rebase actions'
-subIssuesCompleted: 12
+  - '[x] 684 Fleet names the PR holder''s reviewer-routing and rebase actions'
+subIssuesCompleted: 13
 subIssuesTotal: 16
 contentTrust:
   projected: true

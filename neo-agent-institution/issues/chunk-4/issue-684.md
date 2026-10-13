@@ -1,7 +1,7 @@
 ---
 id: 684
 title: Fleet names the PR holder's reviewer-routing and rebase actions
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-13T18:41:50Z'
-updatedAt: '2026-10-13T18:41:50Z'
+updatedAt: '2026-10-13T19:51:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/684'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-13T19:51:42Z'
 ---
 # Fleet names the PR holder's reviewer-routing and rebase actions
 
@@ -37,17 +38,17 @@ Design authority: `OpenWorkSeat` documents: “The Brain's open-work producer de
 The existing utility owns the shared roster chip and detail-row vocabulary. Brain owns the holder decision. Existing `#501` and `#449` deliveries remain the consumer surfaces; no second holder table belongs in Institution.
 
 ## The Fix
-Consume the producer's explicit `holder.kind` for red-CI repair, requested changes, review, reviewer routing and rebasing. Give roster chips and detail rows the same action wording and ranking. Preserve compatibility with the currently shipped producer that omits `kind`; an explicit unsupported kind must not become a fabricated change request. Do not change the Brain pin in this wording-only delivery.
+Consume the producer's explicit `holder.kind` for red-CI repair, requested changes, review, reviewer routing and rebasing. Give roster chips and detail rows the same action wording and ranking. Preserve compatibility with the currently shipped producer that omits `kind`; an explicit unsupported string kind remains a held row with neutral wording; it must not become a fabricated change request or disappear from the count. Do not change the Brain pin in this wording-only delivery.
 
 ## Contract Ledger
 | Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `OpenWorkSeat.kindOf/held/describe/describeRow` | Brain `holder.kind`; existing utility JSDoc | Author routing and rebase actions retain their meaning in both views | Absent kind keeps the shipped legacy contract; unknown explicit kind is not relabeled | Utility JSDoc | Existing utility controls plus composed card/detail projection cases |
+| `OpenWorkSeat.kindOf/held/describe/describeRow` | Brain `holder.kind`; existing utility JSDoc | Author routing and rebase actions retain their meaning in both views | Absent kind keeps the shipped legacy contract; unknown explicit string kind remains held with neutral wording | Utility JSDoc | Existing utility controls plus composed card/detail projection cases |
 
 ## Acceptance Criteria
 - [ ] AC-1: Explicit `repair-ci`, `address-changes`, `review`, `route-review` and `rebase` produce their corresponding words; routing/rebase never read “changes requested.”
 - [ ] AC-2: Roster chip text/accessibility and detail-row wording share the mapping, including mixed-kind ranking and unchanged age/stale behavior.
-- [ ] AC-3: Old rows without `kind` remain compatible; non-holders, operator/rotation/unknown holders and unsupported explicit kinds do not invent an actionable row.
+- [ ] AC-3: Old rows without `kind` remain compatible. An unsupported explicit string kind remains held and counted with neutral wording at the lowest rank; it does not invent an action. Non-holders, operator/rotation/unknown holders and malformed non-string kinds remain excluded.
 
 ## Out of Scope
 Holder selection, wake delivery, automatic enablement, Brain-pin adoption, installed acceptance and unrelated detail-pane work.
@@ -74,6 +75,23 @@ Retrieval Hint: "OpenWorkSeat green author route-review rebase wording"
 - 2026-10-13T18:48:32Z @neo-gpt-emmy cross-referenced by PR #1009
 - 2026-10-13T18:49:03Z @neo-gpt-emmy cross-referenced by PR #685
 - 2026-10-13T19:16:07Z @neo-gpt-emmy referenced in commit `369272c` - "test(fleet): bind verified holder wording captures (#684)
+
+Co-Authored-By: Emmy <neo-gpt-emmy@neomjs.com>"
+- 2026-10-13T19:38:36Z @neo-gpt-emmy referenced in commit `0a583cc` - "fix(fleet): keep unfamiliar holder actions counted (#684)
+
+Co-Authored-By: Emmy <neo-gpt-emmy@neomjs.com>"
+- 2026-10-13T19:51:42Z @tobiu closed this issue
+- 2026-10-13T19:51:43Z @tobiu referenced in commit `20138c4` - "feat(fleet): render action-specific holder wording (#684) (#685)
+
+* feat(fleet): render action-specific holder wording (#684)
+
+Co-Authored-By: Emmy <neo-gpt-emmy@neomjs.com>
+
+* test(fleet): bind verified holder wording captures (#684)
+
+Co-Authored-By: Emmy <neo-gpt-emmy@neomjs.com>
+
+* fix(fleet): keep unfamiliar holder actions counted (#684)
 
 Co-Authored-By: Emmy <neo-gpt-emmy@neomjs.com>"
 

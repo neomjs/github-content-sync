@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-10T23:03:34Z'
-updatedAt: '2026-10-13T19:10:21Z'
+updatedAt: '2026-10-13T22:52:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/674'
 author: neo-fable-clio
-commentsCount: 4
+commentsCount: 7
 parentIssue: 7
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +23,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 19725 Define runtime and admission continuity across Fleet updates'
+  - '[x] 19725 Define runtime and admission continuity across Fleet updates'
 blocking: []
 ---
 # An installed update keeps running seats on their generation: versioned runtime roots
@@ -166,4 +166,45 @@ Sophie · Origin Session ID: 2bee7cb2-c7fa-4367-a104-25694d0050c3
 D19723 has graduated to neomjs/neo#19725, the ADR-only prerequisite. Its [approved contract](https://github.com/orgs/neomjs/discussions/19723) includes immutable runtime pins plus positive durable issuer succession, verified existing-profile capability recovery, original-endpoint and input-owner proof, and sticky revocation. The existing implementation must follow both amended ADRs; runtime behavior merges after the ADR PR. The lost-revocation crash/replayed-handoff negatives, clean-handoff later-child positive and Institution #12 installed witness remain delivery obligations. This does not close this implementation ticket or rewrite the current update guide before executable acceptance.
 
 - 2026-10-13T19:14:15Z @neo-gpt-sophie marked this issue as being blocked by #19725
+- 2026-10-13T19:18:42Z @neo-gpt-sophie cross-referenced by PR #19726
+### @neo-gpt-sophie - 2026-10-13T19:37:27Z
+
+### Implementation boundary after D19723
+
+The resident source already has explicit `agentosRuntimeRoot` / `nodePath` inputs in Brain `startAgentProvisioned`, while Institution `bootProductBrain` still exports its own executable and bundle runtime. I am starting the shell's immutable-generation materialization at the existing host boundary, beside `harness/install.mjs` and `seatRootRecord.mjs`.
+
+The first executable control is a verified copy of the complete bundle execution closure under the generation directory, with the receipt's full product/Brain/Engine/Electron identity, a separate manifest digest over file bytes/modes/link targets, and an atomic publication. Repeated identity+payload reuses it; conflicting payload, incomplete publication or escaping links refuse. This reuses the previously probed intact Electron layout and avoids assuming a minimal native-library subset is sufficient. Later integration supplies its explicit root/executable to the existing provisioner. Retention, census and admission succession remain required parts of this issue and Brain `#980`; materialization alone will not close either or rewrite the live guide.
+
+ADR authority remains PR neomjs/neo#19726 / ticket neomjs/neo#19725 before implementation merge. No live generation directory, profile or installed bundle is being changed.
+
+### @neo-gpt-sophie - 2026-10-13T22:13:24Z
+
+### Executable continuation intake
+
+Valid for the existing shell outcome after the merged ADR prerequisite. Current source still exports the bundle executable/runtime, and no open Institution PR implements generations. Refreshed `20138c4` changes only unrelated open-work UI/test files since the earlier intake; the host ownership and five-row ledger remain current. The native graph pre-brief did not find the qualified issue node, so live GitHub, the accepted ADRs, source and retained execution-copy proof supply the intake evidence.
+
+**Prescription checked:** `harness/install.mjs` remains whole-package replacement/custody owner; `harness/brain.mjs` and `bootProductBrain` own explicit child runtime bindings. An adjacent plain filesystem module is the right materialization boundary; it creates no Neo instance, supervisor or seat-reference registry. Structural fast-path: `harness/runtimeGeneration.mjs` follows the host filesystem-helper role of `seatRootRecord.mjs`; its unit spec follows the existing harness filesystem fixtures. The first component will not close #674 or rewrite the current update guide.
+
+The materialization descriptor distinguishes the generation directory from the copied organism root and executable inside its intact bundle layout. A read-only payload manifest covers bytes, modes and resolved internal link targets; publication follows a copied-executable/platform/native-module probe. Same-identity mismatch and existing-generation corruption refuse rather than overwrite. The complete update and retirement behavior still consumes the existing lifecycle/status projection and the #980 admission contract. The operator gains no new configuration or manual copying obligation.
+
+### @neo-gpt-sophie - 2026-10-13T22:45:54Z
+
+### Checkpoint — runtime materialisation and installer preparation
+
+Sophie retains #674. The operator requested a pause after this checkpoint; implementation is preserved on [`codex/674-runtime-generations`](https://github.com/neomjs/neo-agent-institution/tree/codex/674-runtime-generations), commit [`c26da2cb`](https://github.com/neomjs/neo-agent-institution/commit/c26da2cb6777ff54b2d68dc21887fef8262373cf). No PR or completion claim yet.
+
+The materialiser copies the complete package execution layout into a sealed `host.runtime` directory, binds the ADR's four-part package identity separately from the bytes/modes/link manifest, probes the copied Electron/native SQLite runtime, and publishes atomically. Repeat, integrity, incompatible-runtime and concurrent-publication paths have explicit controls.
+
+The canonical installer now awaits that verification before moving the installed or rollback slots. Restore and interrupted-restore preparation use the bundle that will occupy the installed slot. Equal-receipt installs prepare a missing generation and compare the artifact payload without rotating either slot. `runningHarnessPaths()` and its bundle-use refusal remain unchanged.
+
+**Validation:** 41 focused installer/runtime tests passed on Node 24.19.0, including a delayed probe that keeps both app slots intact, probe failure before replacement/open, install/restore coexistence, same-receipt/different-payload refusal, custody preservation, and source-containment controls. `git diff --check` passed. `agent-preflight` is not hosted in this repository; no CI or merge-readiness claim.
+
+An earlier isolated copy of the installed e5aa4238 / d628999a / af539a9f package ran Electron 43.5.0 as Node 24.19.0, loaded native SQLite (ABI 148), and resolved the copied launcher. Materialisation took 21.65 seconds; verified reuse took 6.14 seconds without another executable probe. Its temporary copy was removed. This is execution-compatibility evidence, not surviving-seat admission or an installed update witness.
+
+**Resume:** wire first-run packaged boot and the runtime descriptor only with neomjs/neo-agent-brain#980's seat pin/admission recovery contract; consume the existing lifecycle/status projection for generation display and retirement. Keep installed/rollback, surviving-seat, lingering-child and unknown-liveness retention, including the acquisition/retirement race boundary. Then prove the installed journeys on #12. `main.mjs`, package inclusion, running profiles, live runtime roots and current update guidance are unchanged. #674 remains open.
+
+Origin Session ID: 2bee7cb2-c7fa-4367-a104-25694d0050c3
+
+**Sunset refresh (2026-10-14, Europe/Berlin):** the resident checkout is clean on `dev` at `20138c4`; the checkpoint branch and remote retain `c26da2cb`. Resume by switching back to `codex/674-runtime-generations`, then refreshing ownership and the #980 integration boundary. The operator requested session sunset; the goal is paused, not complete.
+
 

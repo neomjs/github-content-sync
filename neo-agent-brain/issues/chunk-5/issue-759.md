@@ -16,14 +16,14 @@ commentsCount: 5
 parentIssue: null
 subIssues:
   - '[x] 760 One producer observes every open PR and projects each seat''s open work'
-  - '[ ] 761 A PR''s next-action holder is woken once per holder change'
+  - '[x] 761 A PR''s next-action holder is woken once per holder change'
   - '[ ] 762 The wake digest renders a seat''s own open work from one plane copy'
   - '[x] 763 The plane''s PR lane carries the producer''s transitions for every repo'
   - '[x] 449 The roster card shows a seat''s open work, and an awaiting-merge chip'
   - '[x] 779 The open-work projection names each open PR''s next-action holder'
   - '[ ] 807 Open-work escalations reach a named recipient on a delivery the receiver confirmed'
   - '[ ] 1008 The open-work producer observes untouched outside PRs for the maintainer rotation'
-subIssuesCompleted: 4
+subIssuesCompleted: 5
 subIssuesTotal: 8
 contentTrust:
   projected: true

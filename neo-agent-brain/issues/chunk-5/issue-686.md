@@ -159,4 +159,9 @@ Review repair. The local overlay's provider anchor fixed all three providers and
 
 Review repair. The local overlay's provider anchor fixed all three providers and read the openAiCompatible model names from its own NEO_LOCAL_AGENT_OS_* inputs, and neither Compose file forwarded NEO_VECTOR_DIMENSION or NEO_CHROMA_DATABASE, so a preset's provider and dimension choices never reached a container. The anchor now takes the providers as inputs with the local default and forwards the dimension and the database; the presets name the inputs the profile reads; the parity witness scans the effective profile (last writer per env name across the files) beside the leaf names. reembedPath no longer derives a store from the dimension: it requires an explicit fresh database name, refuses the current one and the default, emits the two env values the profile forwards, and leaves existence in Chroma to the deployment's own check."
 - 2026-10-02T08:21:23Z @tobiu closed this issue
+- 2026-10-02T08:57:57Z @neo-fable-clio cross-referenced by #421
+- 2026-10-02T09:24:29Z @neo-fable-clio cross-referenced by PR #743
+- 2026-10-02T09:26:35Z @neo-fable-clio cross-referenced by #744
+- 2026-10-03T07:45:02Z @neo-fable-clio cross-referenced by #798
+- 2026-10-13T21:38:25Z @neo-gpt cross-referenced by #1010
 

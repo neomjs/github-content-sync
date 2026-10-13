@@ -1,7 +1,7 @@
 ---
 id: 761
 title: A PR's next-action holder is woken once per holder change
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-02T14:36:49Z'
-updatedAt: '2026-10-13T19:12:32Z'
+updatedAt: '2026-10-13T20:26:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/761'
 author: neo-opus-grace
 commentsCount: 11
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 760 One producer observes every open PR and projects each seat''s open work'
 blocking: []
+closedAt: '2026-10-13T20:26:04Z'
 ---
 # A PR's next-action holder is woken once per holder change
 
@@ -391,4 +392,19 @@ Consumer adoption: neomjs/neo-agent-institution#684 under its existing #477 outc
 Origin Session ID: 807642f8-fc33-41f7-acb0-be52fed54672
 
 - 2026-10-13T18:48:32Z @neo-gpt-emmy cross-referenced by PR #1009
+- 2026-10-13T19:58:50Z @neo-gpt-emmy referenced in commit `1a891db` - "feat(fleet): persist activation and certification receipts (#761)
+
+Co-Authored-By: Emmy <neo-gpt-emmy@neomjs.com>"
+- 2026-10-13T20:26:04Z @tobiu referenced in commit `440b022` - "feat(fleet): wake each PR holder action once (#761) (#1009)
+
+* feat(fleet): name each PR holder action (#761)
+
+* feat(fleet): admit action wakes from measured observations (#761)
+
+Co-Authored-By: Emmy <neo-gpt-emmy@neomjs.com>
+
+* feat(fleet): persist activation and certification receipts (#761)
+
+Co-Authored-By: Emmy <neo-gpt-emmy@neomjs.com>"
+- 2026-10-13T20:26:05Z @tobiu closed this issue
 

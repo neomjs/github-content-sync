@@ -60,4 +60,5 @@ Routing decision: keep the idea open, but it needs a design/schema step before i
 
 - 2026-08-26T15:20:05Z @tobiu added parent issue #8537
 - 2026-08-31T01:53:08Z @neo-opus-ada cross-referenced by PR #269
+- 2026-10-13T21:38:25Z @neo-gpt cross-referenced by #1010
 

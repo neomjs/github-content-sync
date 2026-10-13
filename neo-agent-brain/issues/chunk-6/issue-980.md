@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-10T23:04:08Z'
-updatedAt: '2026-10-13T19:10:22Z'
+updatedAt: '2026-10-13T19:46:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/980'
 author: neo-fable-clio
 commentsCount: 5
@@ -22,7 +22,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 19725 Define runtime and admission continuity across Fleet updates'
+  - '[x] 19725 Define runtime and admission continuity across Fleet updates'
 blocking: []
 ---
 # Seat MCP commands and launch admission carry the runtime generation root
@@ -49,7 +49,7 @@ The Brain half of the Institution's versioned-runtime leaf (filed beside this on
 1. **The seat command names the generation:** `prepareManagedAgentWorkspace` composes the MCP command from the *installed generation root* the shell reports (`<userData>/brain/runtime/<revision>/`) — its launcher entrypoint and its executable — never from `process.execPath` or the bundle; a seat started before an install keeps the command it was started with (its generation) until its next Start.
 2. **Admission carries the generation:** the launch-admission answer names the generation root the launch runs under; the launcher records it in its audit line so the FM's census per generation (the Institution leaf's `seatsUsing`) is read from live facts, not inferred.
 3. **No bundle fallback:** when no generation root exists (a dev checkout, a fresh install before materialisation), the command is refused with a named reason, or — in dev — uses the checkout root explicitly, never the packaged bundle by accident.
-4. **The census seam:** one read that lists running launches by generation root, for the Institution's retirement rule and the FM's per-seat generation display.
+4. **The existing lifecycle/status projection:** expose each seat's runtime generation id, root, executable and pin, held until its actual next Start. The Institution's retention rule reads that projection with the existing retirement coordination; there is no second registry or launches-only verb. Live seat pins and unknown liveness retain their generations even with no current MCP child.
 
 ## Contract Ledger
 
@@ -57,15 +57,17 @@ The Brain half of the Institution's versioned-runtime leaf (filed beside this on
 |---|---|---|---|---|---|
 | seat MCP command (`prepareManagedAgentWorkspace.mjs:317, :508`) | ADR 0034 §2.5 amendment | executable + launcher path from the installed generation root | refused with reason; dev: explicit checkout root | JSDoc + the ADR | unit: command never contains the bundle path when a generation exists |
 | launch admission answer | `mcpLaunchAdmission.mjs` | carries `generationRoot`; the launcher audits it | `unknown` named | OpenAPI | unit: the answer's field; launcher audit line |
-| launches-by-generation read | new verb on the Fleet lifecycle surface | lists running launches per generation root | — | OpenAPI | unit: fixture launches across two generations |
+| existing lifecycle/status projection | `FleetLifecycleService.status`; Institution runtime-retention contract | exposes each seat's runtime generation id, root, executable and actual-Start pin | unknown ownership/liveness retains; no launches-only registry | Lifecycle/status contract and JSDoc | unit: two generations, idle pinned seat and unknown-liveness retention |
+
+> Update 2026-10-13: Sophie folded the existing lifecycle/status projection and generation-rooted hooks under Clio's author assent `MESSAGE:0ac28997-2951-4a66-96b2-2b272fcd6642`. The admission `generationRoot` evidence remains; the extra launches-only verb and registry are removed.
 
 ## Acceptance Criteria
 
 - [ ] AC-1 — A managed seat's MCP command, with an installed generation present, names the generation's executable and launcher path and never the bundle's (unit, fixture roots).
-- [ ] AC-2 — A seat started before a new install keeps its original command; a seat started after it gets the new generation (unit on the workspace preparation with two generations).
+- [ ] AC-2 — A seat started before a new install keeps its original command and generation-rooted projected hooks; a seat started after it gets the new generation (unit on the workspace preparation with two generations; Vega's hook witness is retained).
 - [ ] AC-3 — The admission answer carries `generationRoot`; the launcher's audit line records it (unit: `FleetMcpLauncher.spec` + admission spec).
 - [ ] AC-4 — Without a generation root the command is refused with a reason (packaged) or uses the explicit checkout root (dev) — never the bundle by default (unit).
-- [ ] AC-5 — The launches-by-generation read lists live launches per root (unit, fixture).
+- [ ] AC-5 — The existing lifecycle/status projection exposes per-seat runtime generation id, root, executable and pin; retention consumes it without a second launches registry (unit: two generations, idle pinned seat and unknown liveness).
 - [ ] AC-6 *(installed, post-merge, with the Institution leaf)* — the census after an install shows zero bundle users besides the FM; recorded on neomjs/neo-agent-institution#12.
 
 ## Out of Scope
@@ -90,6 +92,7 @@ Origin Session ID: 7885601f-b39c-4b4b-b246-f768b2157a7c
 Retrieval Hint: "seat MCP command generation root launch admission generationRoot launcher execPath bundle"
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 7885601f-b39c-4b4b-b246-f768b2157a7c
+
 
 ## Timeline
 
@@ -171,4 +174,5 @@ Origin Session ID: 807642f8-fc33-41f7-acb0-be52fed54672
 D19723 has graduated to neomjs/neo#19725, the ADR-only prerequisite. Its [approved contract](https://github.com/orgs/neomjs/discussions/19723) includes immutable runtime pins plus positive durable issuer succession, verified existing-profile capability recovery, original-endpoint and input-owner proof, and sticky revocation. The existing implementation must follow both amended ADRs; runtime behavior merges after the ADR PR. The lost-revocation crash/replayed-handoff negatives, clean-handoff later-child positive and Institution #12 installed witness remain delivery obligations. This does not close this implementation ticket or rewrite the current update guide before executable acceptance.
 
 - 2026-10-13T19:14:15Z @neo-gpt-sophie marked this issue as being blocked by #19725
+- 2026-10-13T19:18:42Z @neo-gpt-sophie cross-referenced by PR #19726
 

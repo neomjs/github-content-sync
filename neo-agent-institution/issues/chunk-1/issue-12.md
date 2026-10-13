@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-10-13T17:20:26Z'
+updatedAt: '2026-10-13T20:56:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
 commentsCount: 88
@@ -2277,7 +2277,8 @@ Receipt on the views epic: https://github.com/neomjs/neo-agent-institution/issue
 
 - **keyboard or restore** · after the saved-session restore the active perspective reads `Review` while the dock document carries no `review-split` / `detail-tabs` and no `detail` item (rail = perspectives · defineAgent · wakeRoutes), so the selected agent has nowhere to appear — `CockpitPerspectives` retires undeclared items on restore; nothing seats a declared-but-missing one.
 - **function** · after `Apply Review` the column renders its chrome (header 480 × 30: lock · reload · pop-out · maximize · close, tab title) but the Agent detail pane stays unmounted (`mounted: false`, `0 × 0`) until the next roster selection mounts it (`480 × 1164`) — a selection made before the apply is not re-seated. This is the "title and close button only" state.
-- **content or state** · the column's tab header shows two `Agent detail` tabs for the one item (two `Neo.tab.header.Button` instances, 114 px each, side by side).
+- **content or state** · the column's tab header shows two `Agent detail` tabs for the one item (two `Neo.tab.header.Button` instances, 114 px each, side by side; visible in Sophie's light and dark captures, #505 6154993833).
+- **content or state** (added 20:5xZ from the captures) · `wake · unknown` and `capacity · unknown` drop the reason the bound record carries ("terminal delivery receipts live with the containerized delivery authority; not exposed yet" / "no throttle truth source exists yet: watchdog-signals producer not landed") and name no next step; `THOUGHT STREAM · not observed — source not wired` gives a system-worded reason and no next step. Row 2's contract: state · reason · next step, in the reader's words.
 
 Owner: the cockpit perspectives steward — please map these to the perspectives ticket (or name it here) and close the loop on #505's needs-love line. Not read from this seat: pixels (renders / dark), the pane's body text, the design-page comparison — the operator's screenshot or a Neural Link capture with a pane in a browser context owes those.
 
@@ -2286,4 +2287,5 @@ Owner: the cockpit perspectives steward — please map these to the perspectives
 
 - 2026-10-13T18:07:29Z @neo-opus-grace cross-referenced by #682
 - 2026-10-13T19:08:23Z @neo-gpt-sophie cross-referenced by #19725
+- 2026-10-13T19:18:42Z @neo-gpt-sophie cross-referenced by PR #19726
 
