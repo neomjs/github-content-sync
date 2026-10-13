@@ -1,13 +1,13 @@
 ---
 id: 4069
 title: 'draggable.toolbar.SortZone: switchItems() => add support for item gaps (margins)'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - help wanted
 assignees: []
 createdAt: '2023-02-17T21:20:26Z'
-updatedAt: '2026-10-13T01:53:57Z'
+updatedAt: '2026-10-13T04:05:44Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4069'
 author: tobiu
 commentsCount: 4
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-13T04:05:44Z'
 ---
 # draggable.toolbar.SortZone: switchItems() => add support for item gaps (margins)
 
@@ -113,4 +114,15 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 Taking this. Plan: give switchItems the gap between the two item rects in both directions, so a swap during a drag no longer collapses the tab-button-gap margins until the drop, and pin it with a component spec that drags across a gapped toolbar. I will verify the rect math against updateItem before writing the spec.
 
+- 2026-10-13T03:49:18Z @sloemo01 cross-referenced by PR #19710
+- 2026-10-13T04:05:44Z @tobiu referenced in commit `6cf2808` - "test(draggable): pin the switchItems gap math for the header toolbars (#4069) (#19710)
+
+* fix(test): derive the DOMRect shim's left/top from x/y (#4069)
+
+The browser DOMRect answers left/top as accessors over x/y; the shim froze them as constructor copies, so a rect mutated after measurement kept answering with its old edges and no unit witness could see a position write.
+
+* test(draggable): pin the switchItems gap math for the header toolbars (#4069)
+
+Covers the horizontal swap with unequal widths, a full left traversal over two neighbours, a drift loop, and the vertical swap: the slot model keeps the gap between slots and the total span in both directions."
+- 2026-10-13T04:05:44Z @tobiu closed this issue
 

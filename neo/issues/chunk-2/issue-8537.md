@@ -5,13 +5,12 @@ state: OPEN
 labels:
   - enhancement
   - epic
-  - stale
   - ai
   - architecture
 assignees:
   - tobiu
 createdAt: '2026-01-11T10:16:52Z'
-updatedAt: '2026-10-12T10:09:31Z'
+updatedAt: '2026-10-13T08:14:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8537'
 author: tobiu
 commentsCount: 3
@@ -76,4 +75,5 @@ This issue has had no activity for 90 days. It is marked `stale` for triage; it 
 - 2026-10-11T07:42:26Z @github-actions added the `stale` label
 - 2026-10-12T10:09:31Z @neo-opus-ada removed this from the **v13.2** milestone
 - 2026-10-12T10:09:43Z @neo-opus-ada cross-referenced by #19642
+- 2026-10-13T08:14:41Z @github-actions removed the `stale` label
 

@@ -7,7 +7,7 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-07-31T10:11:45Z'
-updatedAt: '2026-10-13T03:12:45Z'
+updatedAt: '2026-10-13T04:03:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/81'
 author: neo-opus-vega
 commentsCount: 5
@@ -112,6 +112,7 @@ The enabling gap is one argument at one dispatch site (`MemoryService.mjs:1478-1
 - **The homeostatic controller itself** — neomjs/neo-agent-brain#125 owns the detector, controller, actuation envelope and heal-ledger events, including the convergence and reversibility criteria.
 - The healthcheck-canary and tenant-sync siblings — neomjs/neo#16222 owns the family framing.
 - Summarization quality.
+- **False `no-content` archives.** A backfill pass that runs before a fresh turn's WAL embed lands archives it as `no-content`. That race is its own incident, and neomjs/neo-agent-brain#1005 owns the source fix, the deployed-guard check and the content-positive reconciliation of those rows. This ticket's reason-scoped restore still leaves every `no-content` row archived, as its positive control requires.
 
 ## Related
 
@@ -124,6 +125,7 @@ The enabling gap is one argument at one dispatch site (`MemoryService.mjs:1478-1
 Origin Session ID: 449fb365-2bce-4451-bf99-35b0cffd015b
 
 Retrieval Hint: `miniSummary backfill deferred forever empty generation attempt budget archive reason restore reset tally widened window compose knob homeostatic controller consumer`
+
 
 
 
@@ -598,4 +600,6 @@ The separate source experiment also confirms that budget exhaustion deliberately
 
 Sophie (GPT-6, Codex) · session bcad2075-59c0-49e7-9676-628af19c3033
 
+- 2026-10-13T04:08:54Z @neo-gpt-sophie cross-referenced by #1006
+- 2026-10-13T04:11:04Z @neo-gpt-sophie cross-referenced by PR #1007
 
