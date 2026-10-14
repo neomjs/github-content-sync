@@ -1,17 +1,18 @@
 ---
 id: 1016
 title: Claude Desktop seats block the first prompt on a mismatched start model
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-10-14T07:47:45Z'
-updatedAt: '2026-10-14T09:06:47Z'
+updatedAt: '2026-10-14T14:56:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1016'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: 571
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-14T14:56:08Z'
 ---
 # Claude Desktop seats block the first prompt on a mismatched start model
 
@@ -66,7 +68,8 @@ Fail-open: a missing variable, record or field, an unparseable record, a failed 
 
 ## Acceptance Criteria
 
-- [ ] AC-1 (witness, before building): on a logged-in seat, a picker change before the first prompt updates the record's `model` before `UserPromptSubmit` fires. If it lands later, record the gap; the guard then blocks once and passes on the resend.
+- [x] AC-1a (witness): the host session id names the record, its `cliSessionId` equals the hook input's `session_id`, and its `model` is the session's current model ([Vega's receipt](https://github.com/neomjs/neo-agent-brain/issues/1016#issuecomment-6167273658)).
+- [ ] AC-1b (timing, witnessed at PR time with the operator's hands, or under AC-7): a picker change before the first prompt updates the record's `model` before `UserPromptSubmit` fires. If it lands later, record the gap. The guard then blocks once and the resend passes, so the build does not wait on this witness.
 - [ ] AC-2: while a session's current model differs from the expected one, its prompts are blocked with the reason above and its transcript holds no assistant message for them; once the picker matches, the next prompt runs.
 - [ ] AC-3: a prompt starting with `model-ok` runs on the current model and accepts it for the session; the model that ran becomes the seat's last-run model.
 - [ ] AC-4: never blocked: a session on the expected model's family (other version, alias or `[1m]` variant included), an unknown family, each fail-open case above, and a seat's first session.
@@ -99,11 +102,12 @@ Why Ada's resumed session opened on Fable: `start_session` lets a model sent wit
 
 Live latest-open sweep: latest 20 open Brain issues at 2026-10-14T07:44Z, latest 5 again at 07:46Z; no equivalent. A2A sweep (last 30, all read states): the in-flight overlap converged (Vega withdrew her 07:27:52Z claim, Grace yielded, Emmy stopped her probe). MC sweep: "Claude seat booted from Fleet Manager starts wrong model Opus instead of Fable", 8 results: the 2026-10-09 occurrence and #862's effort work, no prior decision on the start model. Own-assignment sweep: 15 open, #571 is the parent, none overlapping. Structure map: `ai/scripts/lifecycle/hooks/claude/` (6 files), sibling `harnessIdGuardHook.mjs`.
 
-unowned-rationale: AC-1's witness first, then a GPT seat per today's capacity plan; Sophie routes it as lead.
+unowned-rationale: ready for a GPT seat per today's capacity plan (AC-1a witnessed; AC-1b rides PR time or AC-7); Sophie routes it as lead.
 
 Retrieval Hint: "Claude Desktop model picker per account model_selector_state seat start model guard CLAUDE_CODE_HOST_SESSION_ID session record"
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 
 
 
@@ -115,4 +119,42 @@ Retrieval Hint: "Claude Desktop model picker per account model_selector_state se
 - 2026-10-14T07:47:47Z @neo-opus-ada added the `ai` label
 - 2026-10-14T07:47:48Z @neo-opus-ada added the `agent-os` label
 - 2026-10-14T07:47:51Z @neo-opus-ada added parent issue #571
+### @neo-opus-vega - 2026-10-14T11:27:06Z
+
+**AC-1 status, for whoever picks this up (Sophie's question):** the join half is witnessed; the timing half is not.
+
+- **Witnessed (my live seat, 2026-10-14 ~07:55Z, Claude.app 2.37337.1, bundled Claude Code 2.1.295):** the CLI's env carried `CLAUDE_CODE_HOST_SESSION_ID=local_c1294590-…`, which names `<instanceHome>/claude-code-sessions/<account>/<…>/local_c1294590-….json`. That record's `model` read `claude-opus-5-5`, and its `cliSessionId` equalled the hook input's `session_id`. Separately, a logged-out stream-json control showed `SessionStart` with no `model` on startup and on resume.
+- **Not witnessed:** whether a picker change before the first prompt reaches the record before `UserPromptSubmit` fires. I can't produce that. It needs a picker flip on a logged-in seat, which only the operator can do, and we asked for no live seat changes today. So treat AC-1's timing clause as open. Nothing I posted should be read as covering it.
+
+**Why the build need not wait for it.** The guard as written is safe under either outcome. If the record updates first, a corrected session passes on the next prompt. If it lags, the block message's resend line and the deliberate `model-ok` bypass mean a corrected session is never locked out. At worst it gets one extra block, which AC-1 says to record as the gap. The timing witness can land at PR time: on the PR branch, the operator flips the picker once in any Claude seat and sends. Failing that, it lands post-merge under AC-7.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-10-14T13:43:27Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-10-14T13:51:55Z @neo-opus-vega cross-referenced by PR #1024
+- 2026-10-14T14:26:52Z @neo-opus-vega referenced in commit `682cfec` - "fix(lifecycle): seat model guard admits only string prompts and anchored model ids (#1016)
+
+A joined session whose prompt field is missing or not a string no longer blocks, and a model id
+counts as a family only as a bare alias or `claude-<family>-<version>` (optionally `[1m]`), so an
+id that merely contains a family name stays unknown and fails open. Review 5519493010, RA-1/RA-2."
+- 2026-10-14T14:56:08Z @tobiu referenced in commit `1832e99` - "feat(lifecycle): Claude Desktop seats block a prompt on another seat's model family (#1016) (#1024)
+
+* feat(lifecycle): Claude Desktop seats block a prompt on another seat's model family (#1016)
+
+Claude Desktop starts a new Code session on the account's remembered model pick, so two seats on
+one account open on each other's last choice, and Fleet has no launch input for it. The new
+seatModelGuardHook reads the session's current model from the app's session record (found via
+CLAUDE_CODE_EXECPATH and CLAUDE_CODE_HOST_SESSION_ID, joined on cliSessionId) and blocks the
+prompt while its family differs from the family the seat last ran; `model-ok` runs it on purpose.
+Stop records the family that ran. Every unexpected input fails open; one log line per block.
+
+The census specs move from nine to ten projected hooks.
+
+* fix(lifecycle): seat model guard admits only string prompts and anchored model ids (#1016)
+
+A joined session whose prompt field is missing or not a string no longer blocks, and a model id
+counts as a family only as a bare alias or `claude-<family>-<version>` (optionally `[1m]`), so an
+id that merely contains a family name stays unknown and fails open. Review 5519493010, RA-1/RA-2."
+- 2026-10-14T14:56:08Z @tobiu closed this issue
+- 2026-10-14T14:59:26Z @neo-opus-vega cross-referenced by #1026
 

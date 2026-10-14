@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-03T11:57:16Z'
-updatedAt: '2026-10-13T20:56:52Z'
+updatedAt: '2026-10-14T11:38:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/505'
 author: neo-fable-clio
-commentsCount: 13
+commentsCount: 15
 parentIssue: null
 subIssues:
   - '[x] 506 Memories read in full: a reading pane for summaries and session turns'
@@ -591,4 +591,100 @@ The app is restored to **dark Overview with the detail column closed**; Sophie r
 
 Sophie · session 2bee7cb2-c7fa-4367-a104-25694d0050c3
 
+### @neo-gpt-emmy - 2026-10-14T10:24:03Z
+
+## Design sweep · `detail` (Participation) · 2026-10-14 10:23Z · @neo-gpt-emmy
+Scoped to Participation, which I did not build. This is an incomplete whole-view sweep, not a general Detail sign-off.
+
+**Binding**
+
+| Field | Value |
+|---|---|
+| build | installed Neo Harness; operator screenshot plus live Neural Link read |
+| pins | Institution `e5aa4238b7acba14ec5383bfd300ce2f2b8e8af2`; Brain `d628999a470e8c8feecdbefae45d6dddebab82e1`; Engine `af539a9f0c3e9fb8eca2051de98ff41867d724a6`, from installed organism-build-info |
+| profile / scope | canonical team plane; selected Gemini; real data |
+| view key | `detail`, from CockpitPerspectives; Configuration › Participation |
+| pane | docked Detail 486.5 × 1164 CSS px; Participation 462.5 × 167.39 CSS px |
+| states | benched with reason/date; active after explicitly authorized plane-host write |
+| asynchronous transition | natural roster refresh observed before/after; continuous transition timing **unknown**. A 24-sample/2.5s motion trace around attempted Status→Configuration events stayed geometrically constant and does not prove the tab transition. |
+
+**1 · Purpose:** understand this peer's participation and decide whether it may participate.
+
+**2 · Reader language:** the state, reason and date are useful. The supplied command and “inside its container” instruction offer a next step only to someone with host access. For a hosted customer they cannot complete the task.
+
+**3 · Controls:** Copy was not exercised; clipboard restoration was outside this bounded read. No Bench/Return control exists to exercise. Other Detail actions were not invoked. The user separately authorized Gemini's activation through the current operational path; the resulting row now reads active, independently verified through served Memory Core and the live component.
+
+**4 · Four questions:** the group is visible in Configuration (original navigation reachability unknown); content fits the measured width and dark rendering in the operator capture; the instruction is readable, but its action is unavailable to a hosted operator. Whole-view scrolling/keyboard coverage remains unknown.
+
+**5 · Design authority:** the existing source JSDoc and closed #568 deliberately specify read + host-command pending an authorized verb. `apps/agentos/design/institution-header-detail-ia.html` provides the Detail state/configuration split. Tobi's hosted-provider challenge exposes the unfinished product outcome already owned by neomjs/neo-agent-brain#28, rather than a claim that the interim view contradicts its implementation contract.
+
+**6 · Finding:** reachability/function · provider-hosted operators have no usable participation mutation path · owner Brain #28 (Vega; Grace's design challenge) · [routed with acceptance conditions](https://github.com/neomjs/neo-agent-brain/issues/28#issuecomment-6166191713). Defect-note recorded; no new leaf. The proposed acceptance covers no shell access, multiple forge connections, expired seat PAT, revoked operator grant, and cross-scope refusal.
+
+**7 · Needs love**
+
+`view: detail · needs love: provide an authorized Bench / Return action that works on a hosted plane without container access.`
+
+**Captures:** operator-supplied “Screenshot 2026-10-14 at 12.11.33.png” retained in the operator thread; not uploaded here. The binding and measured/source facts above are included directly so the private capture is not the sole evidence.
+
+**State restored:** Configuration remained selected; no layout or configuration change. Participation intentionally remains active per Tobi's explicit instruction (not restored to benched). No harness Start.
+
+Origin Session ID: 05b71d01-be36-41f5-8d86-6c898089c6ec
+
+- 2026-10-14T10:45:10Z @neo-gpt cross-referenced by #690
+### @neo-gpt - 2026-10-14T10:47:48Z
+
+## Design sweep · fleet · 2026-10-14 10:14–10:30Z · by @neo-gpt
+
+**Binding**
+
+| Field | Value |
+|---|---|
+| build | installed candidate e5aa4238; header-focused partial read |
+| pins | Institution e5aa4238 · Engine af539a9f (13.2.0) · Brain d628999a |
+| profile | operator's team profile, connected to the existing plane |
+| view key | fleet — selected route and its declared cockpit toolbar |
+| pane | main docked window 1994×1290 CSS px; toolbar 1946×44 |
+| data scope | team's own roster, 12 records |
+| states exercised | settled header/result and current button plan; controls remain unexercised |
+| asynchronous transition | header lifecycle transition unknown in this read; Start/Stop journeys will be exercised in an isolated fixture |
+
+**1 · What it is for:** manage peer harnesses and inspect the team's activity.
+
+**2 · Sentences:** the unlabelled batch result reads like current state. The installed header holds `8 started · 4 excluded` beside `Start fleet · 1`; the operator's earlier crop held `4 started · 8 excluded` beside the correct `Stop fleet · 8`.
+
+**3 · Controls**
+
+| Control | Pressed | What happened |
+|---|---|---|
+| Fleet Start/Stop and roster play/stop | no — unknown in this reader's sweep | live harness actions reserved for an isolated fixture |
+| Other route/roster controls | no — outside this header-focused read | no broader functional pass claimed |
+
+**4 · Four questions**
+
+| Question | Answer | Capture |
+|---|---|---|
+| one move | yes, Fleet was already selected and header exposed | native app state |
+| room | header/result/button fit this window; source fixture subsequently passed at 1280, 800 and 560 px | DOM rects |
+| renders | dark header and both labels visible | native screenshot at 10:30Z |
+| read in full | both header labels read in full at this width | native screenshot; result 153×18.5 CSS px |
+
+**5 · Design:** the Fleet design page describes live state at a glance. Completed `#618` separately owns the previous action's outcome and the current button plan. The operator clarified that settled chrome must show current fleet counts. Active batch feedback and armed confirmation may temporarily own the slot, then yield to current roster state.
+
+**6 · Defect**
+
+- content or state · previous batch result outlives roster lifecycle/eligibility changes and resembles current status · FleetBatchController shared slot · routed to #690 under #477; defect-note captured.
+
+**7 · Needs love**
+
+```
+view: fleet · needs love: the settled header must follow current roster counts; unbenching a stopped seat must change four excluded to three.
+```
+
+**Captures:** operator's header crop plus this reader's native capture/state and DOM rects. Full native capture remains private because it includes operational configuration; the observations above and #690's source reproducer are the public evidence. No full-view or installed repair acceptance claimed.
+
+**State restored:** yes — read-only except a one-second highlight, now expired; selected Fleet route and roster selection unchanged.
+
+**Source-fixture follow-through:** `FleetCardLifecycleNL.spec.mjs` passed 4/4 at the #690 candidate: fleet start → card stop → card play, two-press Stop, rejection, and eight up/four benched → eight up/three benched plus one ready. The final paired labels are `8 started · 3 excluded` and `Start fleet · 1`; header captures at 1280/800/560 px are readable and contained. This updates source evidence only; the installed binding above still carries the defect.
+
+- 2026-10-14T11:42:46Z @neo-gpt cross-referenced by PR #691
 

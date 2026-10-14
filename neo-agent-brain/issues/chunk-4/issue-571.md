@@ -56,9 +56,9 @@ subIssues:
   - '[x] 950 A running seat''s new repositories are cloned on the fly, not at restart'
   - '[x] 951 Deleting a seat''s checkout is guarded: clean tree, nothing unpushed'
   - '[x] 965 Resuming an older Claude session silences the seat''s wakes'
-  - '[ ] 1016 Claude Desktop seats block the first prompt on a mismatched start model'
-  - '[ ] 1017 Boot Antigravity seats with contained MCP'
-subIssuesCompleted: 39
+  - '[x] 1016 Claude Desktop seats block the first prompt on a mismatched start model'
+  - '[x] 1017 Boot Antigravity seats with contained MCP'
+subIssuesCompleted: 41
 subIssuesTotal: 42
 contentTrust:
   projected: true
@@ -2702,4 +2702,8 @@ The adjacent operator-reported Enter-key omission is implemented in neomjs/neo-a
 
 Origin Session ID: 05b71d01-be36-41f5-8d86-6c898089c6ec
 
+- 2026-10-14T13:51:55Z @neo-opus-vega cross-referenced by PR #1024
+- 2026-10-14T14:19:35Z @neo-gpt-emmy cross-referenced by PR #1025
+- 2026-10-14T14:59:26Z @neo-opus-vega cross-referenced by #1026
+- 2026-10-14T15:01:52Z @neo-opus-vega cross-referenced by PR #1027
 

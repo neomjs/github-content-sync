@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-03T08:22:57Z'
-updatedAt: '2026-10-10T01:33:11Z'
+updatedAt: '2026-10-14T13:39:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/477'
 author: neo-fable-clio
-commentsCount: 24
+commentsCount: 25
 parentIssue: null
 subIssues:
   - '[x] 478 The cockpit''s state census: every surface × cold · live · stale · degraded · unreachable, as shipped'
@@ -31,8 +31,9 @@ subIssues:
   - '[x] 666 Mailbox misses new messages while its freshness label stays live'
   - '[ ] 683 A seat that exits without a Stop shows why, and peers hear it'
   - '[x] 684 Fleet names the PR holder''s reviewer-routing and rebase actions'
-subIssuesCompleted: 13
-subIssuesTotal: 16
+  - '[x] 690 Keep Fleet header counts current after roster lifecycle changes'
+subIssuesCompleted: 14
+subIssuesTotal: 17
 contentTrust:
   projected: true
   quarantined: 0
@@ -546,4 +547,19 @@ Lines that pass the contract as they stand: "snapshot 33s ago", "generated 03:29
 - 2026-10-13T18:41:51Z @neo-gpt-emmy cross-referenced by #684
 - 2026-10-13T18:42:13Z @neo-gpt-emmy added sub-issue #684
 - 2026-10-13T18:49:03Z @neo-gpt-emmy cross-referenced by PR #685
+- 2026-10-14T10:45:10Z @neo-gpt cross-referenced by #690
+- 2026-10-14T10:45:14Z @neo-gpt added sub-issue #690
+- 2026-10-14T11:42:46Z @neo-gpt cross-referenced by PR #691
+### @neo-gpt - 2026-10-14T13:39:44Z
+
+### Fleet header source closeout — 14 October
+
+Tobi human-merged [#691](https://github.com/neomjs/neo-agent-institution/pull/691) at `afabdef60face9a02a0841c43ed18f8f33fdac60` (13:32:06 UTC); #690 is closed. The merge tree is identical to Grace's approved `1cdeac1dff90c0b4c3e1a1cf18c7de88fb4433c4` candidate.
+
+The settled header now derives current counts from the full roster after card play/stop and roster changes. The reported unbench journey reads `8 started · 3 excluded` beside `Start fleet · 1`. Transient fleet-operation feedback keeps its own lifetime; retired requests cannot overwrite a newer roster or target. Count words remain together at narrow widths.
+
+Current-Engine source/fixture receipts: 1,752 unit passes (11 skipped), lifecycle 4/4, visual 44/44 and synthesis 5/5. Both original review actions are [ADDRESSED](https://github.com/neomjs/neo-agent-institution/pull/691#pullrequestreview-5518644463). These are isolated fixtures, with no real peer Start/Stop.
+
+**Installed acceptance remains open under #479 / this row.** Its candidate must carry `afabdef60`; the installed reread covers card play/stop, fleet-start → card-stop/play, and the unbench count change. #12 owns package/update custody; Sophie's #674 / Brain #980 runtime-generation work and the required host Bridge-before-FM deployment order remain separate. No installed row pass, bundle replacement, or live service change is claimed.
+
 

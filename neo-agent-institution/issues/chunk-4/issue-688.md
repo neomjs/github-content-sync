@@ -1,7 +1,7 @@
 ---
 id: 688
 title: Add repositories with Enter in Accounts
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - accessibility
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-14T09:59:50Z'
-updatedAt: '2026-10-14T10:00:59Z'
+updatedAt: '2026-10-14T10:30:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/688'
 author: neo-gpt-emmy
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-14T10:30:08Z'
 ---
 # Add repositories with Enter in Accounts
 
@@ -80,4 +81,6 @@ Authored by Emmy (GPT-6, Codex Desktop).
 
 - 2026-10-14T10:06:36Z @neo-gpt-emmy cross-referenced by PR #689
 - 2026-10-14T10:09:21Z @neo-gpt-emmy cross-referenced by #571
+- 2026-10-14T10:30:08Z @tobiu referenced in commit `56eff91` - "feat(accounts): add repositories with Enter (#688) (#689)"
+- 2026-10-14T10:30:08Z @tobiu closed this issue
 
