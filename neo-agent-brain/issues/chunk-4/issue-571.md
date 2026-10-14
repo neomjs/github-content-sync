@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T09:46:57Z'
-updatedAt: '2026-10-14T16:03:21Z'
+updatedAt: '2026-10-14T21:01:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/571'
 author: neo-opus-ada
-commentsCount: 99
+commentsCount: 101
 parentIssue: null
 subIssues:
   - '[x] 572 Fleet derives a seat''s clone and harness home under one agents root'
@@ -58,8 +58,10 @@ subIssues:
   - '[x] 965 Resuming an older Claude session silences the seat''s wakes'
   - '[x] 1016 Claude Desktop seats block the first prompt on a mismatched start model'
   - '[x] 1017 Boot Antigravity seats with contained MCP'
-subIssuesCompleted: 41
-subIssuesTotal: 42
+  - '[x] 1030 Antigravity updates must not require a Fleet build allowlist'
+  - '[x] 1033 MCP bridge exits on discovery before initialization'
+subIssuesCompleted: 43
+subIssuesTotal: 44
 contentTrust:
   projected: true
   quarantined: 0
@@ -2722,5 +2724,29 @@ Next: operator-ready FM retry, complete native onboarding, then witness loaded m
 
 Authored by Emmy (@neo-gpt-emmy).
 - **Origin Session ID:** 05b71d01-be36-41f5-8d86-6c898089c6ec
+
+- 2026-10-14T19:31:08Z @neo-gpt-emmy cross-referenced by #1030
+- 2026-10-14T19:31:46Z @neo-gpt-emmy added sub-issue #1030
+- 2026-10-14T19:40:31Z @neo-gpt-emmy cross-referenced by PR #1031
+### @neo-gpt-emmy - 2026-10-14T19:42:01Z
+
+Gemini recovery update (2026-10-14): the actual managed MC and KB launchers both completed real initialize, tools/list and healthcheck probes, exit0/stderr0. This is backend-path evidence, not a claim that Antigravity attached the tools. During the subsequent Gemini-only FM restart, a pending vendor update installed Antigravity2.23.1. Fleet's hardcoded2.23.0 gate then stopped the Start before admission activation; the managed seat remains stopped.
+
+Tobi rejected build locking as a sustainable product policy. The focused repair is [PR #1031](https://github.com/neomjs/neo-agent-brain/pull/1031), resolving #1030: no version/hash allowlist; selected-app, profile/process/project and same-Start continuity checks stay. Native2.23.1 passed the production project binder in the disposable profile, with wrong-root and wrong-birth negative controls. Source CI is running. Next acceptance here remains: merge/package/install, normal Gemini Start, then real MC/KB calls from Gemini's native session. The earlier dummy `probe_identity` fixture did not establish that final step.
+
+Origin Session ID: 05b71d01-be36-41f5-8d86-6c898089c6ec
+
+- 2026-10-14T19:59:53Z @neo-opus-ada cross-referenced by #1032
+- 2026-10-14T20:46:49Z @neo-gpt-emmy cross-referenced by #1033
+- 2026-10-14T20:47:38Z @neo-gpt-emmy added sub-issue #1033
+- 2026-10-14T20:54:07Z @neo-gpt-emmy cross-referenced by PR #1034
+### @neo-gpt-emmy - 2026-10-14T21:01:19Z
+
+The vendor-build allowlist repair in #1031 has been installed. Native MC/KB acceptance remains open: the next blocker is the pre-initialization discovery handshake, now reproduced and owned by #1033 / PR #1034.
+
+The migration also required retiring obsolete global server commands and an obsolete global model/handle note. Workspace-only declarations did not expose the native tool surface in this client; neutral global discovery entries now delegate to the existing profile-owned Fleet invokers. No fixed identity or credential values belong in those discovery entries.
+
+PR #1034 has passing local bridge coverage, including a discovery-first executable fixture. Its CI/review and the subsequent installed native MC/KB identity, query and save/readback checks are still required. A running seat is not that acceptance receipt.
+
 
 

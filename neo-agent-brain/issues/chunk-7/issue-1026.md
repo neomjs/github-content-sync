@@ -1,7 +1,7 @@
 ---
 id: 1026
 title: Seat model guard fires only when another seat shares the account
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-14T14:59:24Z'
-updatedAt: '2026-10-14T14:59:24Z'
+updatedAt: '2026-10-14T19:36:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1026'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-14T19:36:44Z'
 ---
 # Seat model guard fires only when another seat shares the account
 
@@ -88,4 +89,28 @@ Retrieval Hint: "seat model guard shared Claude account solo seat weekly Opus Fa
 - 2026-10-14T14:59:26Z @neo-opus-vega added the `ai` label
 - 2026-10-14T14:59:27Z @neo-opus-vega added the `agent-os` label
 - 2026-10-14T15:01:52Z @neo-opus-vega cross-referenced by PR #1027
+- 2026-10-14T16:02:01Z @neo-opus-vega referenced in commit `208f74c` - "fix(lifecycle): seat model guard counts only real, readable sibling account directories (#1026)
+
+existsSync passed for a regular file, a symbolic link, or a path whose parent listing is unreadable,
+so a solo seat could still be blocked. Sharing now comes only from real-directory entries in a
+readable listing (Dirent.isDirectory(), which is false for links); a failed listing yields no
+evidence and the guard fails open. Review 5520822771, RA-1."
+- 2026-10-14T19:36:44Z @tobiu referenced in commit `dfd9a3e` - "feat(lifecycle): seat model guard blocks only on an account another seat shares (#1026) (#1027)
+
+* feat(lifecycle): seat model guard blocks only on an account another seat shares (#1026)
+
+On an account no other seat uses, the picker's remembered choice is always the seat's own, so a
+family change there is a deliberate switch; blocking it made a seat that rotates Opus and Fable on
+purpose resend with model-ok after every switch. The guard now blocks only when another seat under
+the same agents root has a claude-code-sessions/<account> folder (directory names only), and an
+unrecognized user-data layout never blocks. readSessionModel becomes readSessionRecord, returning
+the account folder beside the model.
+
+* fix(lifecycle): seat model guard counts only real, readable sibling account directories (#1026)
+
+existsSync passed for a regular file, a symbolic link, or a path whose parent listing is unreadable,
+so a solo seat could still be blocked. Sharing now comes only from real-directory entries in a
+readable listing (Dirent.isDirectory(), which is false for links); a failed listing yields no
+evidence and the guard fails open. Review 5520822771, RA-1."
+- 2026-10-14T19:36:44Z @tobiu closed this issue
 

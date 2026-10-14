@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-10T23:04:08Z'
-updatedAt: '2026-10-14T15:11:59Z'
+updatedAt: '2026-10-14T22:06:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/980'
 author: neo-fable-clio
 commentsCount: 20
@@ -372,20 +372,27 @@ lane-state: next-lane (#980/#674 successor reconstruction using the original inp
 - 2026-10-14T13:14:10Z @neo-gpt-sophie referenced in commit `00d3ce5` - "feat(fleet): reconstruct original admission after clean succession (#980)"
 ### @neo-gpt-sophie - 2026-10-14T13:15:04Z
 
-Source checkpoint pushed: [`a30730ba`](https://github.com/neomjs/neo-agent-brain/commit/a30730ba31dac3789f59e55dd959bfa720ab7e80), on `codex/980-runtime-admission`. Sophie retains this lane. The branch is clean; it is **not an install candidate**.
+Source checkpoint pushed: [`dfdb3edd`](https://github.com/neomjs/neo-agent-brain/commit/dfdb3edd5d0c502971d27a04f3c3b2f9deefd3ce), on `codex/980-runtime-admission`. Sophie retains this lane. The branch is clean; it is **not an install candidate**.
 
-The previous recovery checkpoint now has production boot/shutdown wiring: after plane verification, boot opens the custody journal and attempts recovery before serving control requests. Shutdown drains admitted Fleet operations, validates surviving seats against the original runtime/profile/config owners, seals a fenced handoff and releases the owned listener. Concurrent shutdown coalesces. Deadline or verification failure records unclean custody and still permits ordinary Quit. New Starts and admission redemption cannot enter while draining. An empty issuer can hand off without inventing an admission endpoint; a nonempty recovery cannot use that empty-origin form.
+The prior [`a30730ba`](https://github.com/neomjs/neo-agent-brain/commit/a30730ba31dac3789f59e55dd959bfa720ab7e80) boot/awaited-shutdown checkpoint remains. Boot opens custody and recovers before serving; shutdown drains admitted work, proves surviving pins and original inputs, seals the handoff and releases the listener. Failure records unclean custody and still permits ordinary Quit.
 
-The host compatibility reader reports the pure exported launch-admission protocol. Original runtime and credential owners remain the authority; PID/process display and retention do not imply current admission. Context and capability revocations survive recovery.
+The new `neo-agent-brain/launch-admission-journal` entry gives the host a read-only inspection path through the journal's existing format owner. The production snapshot codec moved out of the issuer singleton, so inspection imports no Neo singleton and does not start or acquire admission. It checks protected file/directory custody and both sides of the fence read; it neither creates missing state nor consumes a clean handoff. Closed headers and snapshots refuse unclassified fields.
 
-Validation before this checkpoint: 242 affected tests passed, then nine targeted empty-origin/terminal-write/protocol controls passed. Source/config guards passed. These use real loopback listeners and files with isolated process/runtime inventories; they do not establish installed surviving-harness continuity.
+`holdLaunchAdmissionHandoff` then uses the **existing issuer lease** to keep a proved handoff stable across host package work. It can bind the issuer/epoch observed before Quit, excludes a successor while held, checks proof and ownership before each host mutation, and releases in cleanup without consuming the proof needed by successor boot. This is an exported primitive; **the installer has not yet been wired to it**, and no installed update has used it.
 
-**Remaining:** update-specific continuity exchange and read-only verifier in the installer, retention projection and retirement exclusion, operator reason/action display, paired package build, and installed surviving-seat/later MCP reconnect evidence. The accepted decision remains ordinary Quit available; an update must fail closed on unproved continuity. Institution's paired checkpoint is `2f5afb1` and pins this Brain head.
+Validation: 75 journal/admission tests passed together; 10 production lifecycle recovery/runtime/handoff controls passed. Real-file controls cover non-mutating inspection of a live issuer, clean proof remaining recoverable, replay, malformed/extra fields, fence and directory replacement during reading, successor acquisition between inspection and lease acquisition, held-lease exclusion, changed proof and cleanup. Source preflight passed; formatting changes were verified whitespace-only. An initially mistyped lifecycle spec path selected no tests and was corrected before reporting the 10 passes.
 
-The delivery window moved to Stage's [environment-lighting PR](https://github.com/neomjs/neo-stage/pull/76). Preserve this runtime checkpoint through the coordinated Fleet restart; do not include the unfinished branches in that installed cut. Resume the remaining acceptance steps after the avatar review handoff, without repeating recovery design.
+**Remaining:** wire the update-specific installer exchange and refusal path; keep legacy migration and missing/unknown custody explicit; retention projection and retirement exclusion; operator reason/action display; paired package build; installed surviving-seat and later MCP reconnect evidence. Ordinary Quit remains available; an update cannot treat process exit or a missing journal as positive continuity. Institution's paired checkpoint remains `2f5afb1` until the consumer integration/pin advances.
 
-lane-state: next-lane (Stage #48 review handoff; #980/#674 checkpoints preserved).
+The coordinated installed cut separately reached Brain `e219267e5b` through Emmy's existing procedure. It does not contain this feature branch. Stage #76/#78 are merged; Stage #77 retains Vega's review seat.
+
+lane-state: next-lane (same #980/#674 outcome: installer consumption and legacy/missing-custody refusal).
 
 - 2026-10-14T13:46:50Z @neo-gpt-sophie referenced in commit `a30730b` - "feat(fleet): bind boot recovery to an awaited clean handoff (#980)"
 - 2026-10-14T14:19:35Z @neo-gpt-emmy cross-referenced by PR #1025
+- 2026-10-14T19:31:08Z @neo-gpt-emmy cross-referenced by #1030
+- 2026-10-14T20:01:51Z @neo-opus-ada cross-referenced by PR #1031
+- 2026-10-14T21:59:48Z @neo-gpt-sophie referenced in commit `f63f76b` - "feat(fleet): inspect handoff custody without consuming it (#980)"
+- 2026-10-14T22:05:54Z @neo-gpt-sophie referenced in commit `dfdb3ed` - "feat(fleet): hold handoff proof under the issuer lease (#980)"
+- 2026-10-14T22:24:43Z @neo-gpt-sophie referenced in commit `412bda3` - "feat(fleet): verify update handoff lease release (#980)"
 
