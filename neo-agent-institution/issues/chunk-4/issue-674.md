@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-10T23:03:34Z'
-updatedAt: '2026-10-13T22:52:30Z'
+updatedAt: '2026-10-14T09:20:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/674'
 author: neo-fable-clio
-commentsCount: 7
+commentsCount: 9
 parentIssue: 7
 subIssues: []
 subIssuesCompleted: 0
@@ -206,5 +206,27 @@ An earlier isolated copy of the installed e5aa4238 / d628999a / af539a9f package
 Origin Session ID: 2bee7cb2-c7fa-4367-a104-25694d0050c3
 
 **Sunset refresh (2026-10-14, Europe/Berlin):** the resident checkout is clean on `dev` at `20138c4`; the checkpoint branch and remote retain `c26da2cb`. Resume by switching back to `codex/674-runtime-generations`, then refreshing ownership and the #980 integration boundary. The operator requested session sunset; the goal is paused, not complete.
+
+- 2026-10-14T07:42:04Z @neo-gpt-sophie referenced in commit `9317124` - "feat(harness): select verified runtime before packaged boot (#674)"
+### @neo-gpt-sophie - 2026-10-14T07:42:29Z
+
+### Boot-selection checkpoint
+
+Pushed [`9317124`](https://github.com/neomjs/neo-agent-institution/commit/9317124) on the existing `codex/674-runtime-generations` branch. First-run packaged boot selects its installed or diagnostic profile before materialisation, then imports private Fleet contracts from the verified generation. Child execution and the Node shim use that generation's executable; an inherited executable override cannot substitute another packaged runtime. The package manifest now includes the materialiser. Checkout boot keeps its explicit runtime binding and UI-only mode.
+
+**Evidence:** 76 focused runtime, installer and packaging tests passed on Node 24.19.0. The actual main-module probe checks diagnostic custody, scheme registration before asynchronous publication, and private/public import roots. A separate in-memory mutation removing profile selection produced the wrong installed-profile publication, demonstrating that the control detects the ordering regression. The first run exposed two fixture assumptions (macOS canonical paths and Electron's immutable `resourcesPath`); both were corrected. `git diff --check` passed. `agent-preflight` is not hosted here; no CI or installed-success claim.
+
+**Next acceptance:** Brain #980's durable admission succession and actual-Start pins, then generation retention/display and the installed update/reconnect witness. The source is a checkpoint, not a complete #674 PR; live profiles, services, installed runtime roots and the update guide remain untouched.
+
+Origin Session ID: 516caf1d-c39c-451e-917e-5002cea731aa
+
+- 2026-10-14T08:39:36Z @neo-gpt-sophie cross-referenced by #17
+- 2026-10-14T08:49:59Z @neo-gpt-sophie referenced in commit `99eb2f8` - "feat(harness): consume the shared runtime verifier (#674)"
+- 2026-10-14T09:19:46Z @neo-gpt-sophie referenced in commit `183639d` - "feat(harness): carry verified generations into Fleet starts (#674)"
+### @neo-gpt-sophie - 2026-10-14T09:20:40Z
+
+The paired runtime-binding checkpoint and scoped test evidence are recorded on [Brain #980](https://github.com/neomjs/neo-agent-brain/issues/980#issuecomment-6165084758). Institution `183639dcb67883808530e4785a932fa54f8fa40a` is pushed.
+
+Shutdown decision for the remaining integration: preserve ordinary Quit even when continuity cannot be proved; require a successful continuity handoff before an update replaces the installed package. Tobi endorsed proceeding with this recommendation. The update guard is still to be implemented. The current installer sends an ordinary AppleScript Quit, so it needs an update-specific exchange before that request; the existing unconditional final Quit must not be mistaken for positive handoff evidence.
 
 

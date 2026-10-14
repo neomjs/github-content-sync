@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-13T23:18:21.784Z",
-  "releasesLastFetched": "2026-10-13T23:18:20.595Z",
+  "lastSync": "2026-10-14T10:11:42.891Z",
+  "releasesLastFetched": "2026-10-14T10:11:41.387Z",
   "pushFailures": [],
   "issues": {
     "3": {
@@ -3400,10 +3400,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-4/issue-571.md",
       "closedAt": null,
-      "updatedAt": "2026-10-10T20:08:09Z",
-      "contentHash": "a71d9ed14cdc2ba390fdb4e2be6716a1a4c778fe1d5ed32417e3592d1b6935e4",
+      "updatedAt": "2026-10-14T10:09:20Z",
+      "contentHash": "ca4dd86bfa71cf4b9a9197545202605aae5cbc6212fff73eba9c17a312b9c84a",
       "milestone": null,
-      "commentsTotal": 97
+      "commentsTotal": 98
     },
     "572": {
       "state": "CLOSED",
@@ -5254,10 +5254,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-6/issue-980.md",
       "closedAt": null,
-      "updatedAt": "2026-10-13T19:46:06Z",
-      "contentHash": "d6f926539ede037a214dc2cf7c351e223e25a444d4452db78ca6dfecb627d93f",
+      "updatedAt": "2026-10-14T09:56:45Z",
+      "contentHash": "16f3bf4bc9fbc13322ec7c1470f39add5f4ab43e3a46181c4ae18db6aebd02cb",
       "milestone": null,
-      "commentsTotal": 5
+      "commentsTotal": 12
     },
     "981": {
       "state": "CLOSED",
@@ -5402,6 +5402,24 @@
       "contentHash": "10b9ef04f35bd2c7920484e587293216173379939180b02bc432d52f320eaaa6",
       "milestone": null,
       "commentsTotal": 0
+    },
+    "1016": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-7/issue-1016.md",
+      "closedAt": null,
+      "updatedAt": "2026-10-14T09:06:47Z",
+      "contentHash": "be8d22118a21506640d93e66335997eaead2cee2da4f8676e40e742147e8f392",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "1017": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-7/issue-1017.md",
+      "closedAt": null,
+      "updatedAt": "2026-10-14T09:48:17Z",
+      "contentHash": "76b386c55cea2ff891a3d857c1eaad6c9bb564f760b27d1893c3c5e9b96c1bd2",
+      "milestone": null,
+      "commentsTotal": 3
     }
   },
   "releases": {},

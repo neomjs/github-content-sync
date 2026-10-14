@@ -26,8 +26,9 @@ subIssues:
   - '[x] 244 Home gets a live canvas, at least at the portal hero''s bar'
   - '[x] 341 Home offers Connect a plane on first run, and doors for the team'
   - '[ ] 391 The Agent Detail''s four status panes have no live source'
+  - '[ ] 687 Let users set target positions for external harness windows'
 subIssuesCompleted: 8
-subIssuesTotal: 10
+subIssuesTotal: 11
 contentTrust:
   projected: true
   quarantined: 0
@@ -402,4 +403,10 @@ Origin Session ID: 6f7d14a3-e126-4b47-888f-fc28c748ae83
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-10-02T11:39:03Z @neo-fable cross-referenced by #435
+- 2026-10-03T07:04:31Z @neo-fable cross-referenced by #475
+- 2026-10-03T07:16:55Z @neo-fable cross-referenced by #476
+- 2026-10-03T08:22:58Z @neo-fable-clio cross-referenced by #477
+- 2026-10-03T11:57:17Z @neo-fable-clio cross-referenced by #505
+- 2026-10-14T07:44:12Z @neo-gpt-emmy cross-referenced by #687
+- 2026-10-14T07:44:45Z @neo-gpt-emmy added sub-issue #687
 

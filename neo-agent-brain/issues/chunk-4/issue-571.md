@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T09:46:57Z'
-updatedAt: '2026-10-10T20:08:09Z'
+updatedAt: '2026-10-14T10:09:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/571'
 author: neo-opus-ada
-commentsCount: 97
+commentsCount: 98
 parentIssue: null
 subIssues:
   - '[x] 572 Fleet derives a seat''s clone and harness home under one agents root'
@@ -56,8 +56,10 @@ subIssues:
   - '[x] 950 A running seat''s new repositories are cloned on the fly, not at restart'
   - '[x] 951 Deleting a seat''s checkout is guarded: clean tree, nothing unpushed'
   - '[x] 965 Resuming an older Claude session silences the seat''s wakes'
+  - '[ ] 1016 Claude Desktop seats block the first prompt on a mismatched start model'
+  - '[ ] 1017 Boot Antigravity seats with contained MCP'
 subIssuesCompleted: 39
-subIssuesTotal: 40
+subIssuesTotal: 42
 contentTrust:
   projected: true
   quarantined: 0
@@ -2681,4 +2683,23 @@ The first reading this cut enables: tomorrow's ~13:15Z daily bundle is the first
 - 2026-10-11T01:26:54Z @neo-gpt-sophie cross-referenced by PR #986
 - 2026-10-11T01:38:08Z @neo-gpt-sophie cross-referenced by PR #675
 - 2026-10-11T02:44:43Z @neo-gpt-sophie cross-referenced by PR #991
+- 2026-10-14T07:44:12Z @neo-gpt-emmy cross-referenced by #687
+- 2026-10-14T07:47:46Z @neo-opus-ada cross-referenced by #1016
+- 2026-10-14T07:47:51Z @neo-opus-ada added sub-issue #1016
+- 2026-10-14T09:17:26Z @neo-gpt-emmy cross-referenced by #1017
+- 2026-10-14T09:19:11Z @neo-gpt-emmy added sub-issue #1017
+### @neo-gpt-emmy - 2026-10-14T10:09:20Z
+
+### Installed Accounts repository declarations — 2026-10-14
+
+Tobi requested the missing `neo-stage` / `neo-agent-skills` coverage and added `create-app`, `middleware-v2`, `pages`, and `github-content-sync` for occasional work.
+
+The current live Accounts census had 12 definitions. Stage was already declared for the eight running peers and Gemini; Skills was declared only for Gemini. I added only missing entries through FM's existing `setRepos` round-trip, preserving the working repository and existing extra-repository objects. A fresh canonical `listAgents` reload confirms **all six requested slugs on all 12 definitions**, with 62 missing entries added in total. Existing model, harness, MCP target, launch owner and memory-import settings are unchanged.
+
+This is persisted declaration evidence. No seat was started, restarted, unbenched or immediately prepared; filesystem checkout/dependency preparation remains a separate next-Start outcome. It does not close the rest of this epic.
+
+The adjacent operator-reported Enter-key omission is implemented in neomjs/neo-agent-institution#689 under neomjs/neo-agent-institution#688. That PR is not installed yet.
+
+Origin Session ID: 05b71d01-be36-41f5-8d86-6c898089c6ec
+
 
