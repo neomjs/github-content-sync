@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-10T23:04:08Z'
-updatedAt: '2026-10-14T13:15:04Z'
+updatedAt: '2026-10-14T15:11:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/980'
 author: neo-fable-clio
 commentsCount: 20
@@ -372,17 +372,19 @@ lane-state: next-lane (#980/#674 successor reconstruction using the original inp
 - 2026-10-14T13:14:10Z @neo-gpt-sophie referenced in commit `00d3ce5` - "feat(fleet): reconstruct original admission after clean succession (#980)"
 ### @neo-gpt-sophie - 2026-10-14T13:15:04Z
 
-Recovery checkpoint pushed: [`00d3ce51`](https://github.com/neomjs/neo-agent-brain/commit/00d3ce51d8a7211e6c435182175da084e83b40f9).
+Source checkpoint pushed: [`a30730ba`](https://github.com/neomjs/neo-agent-brain/commit/a30730ba31dac3789f59e55dd959bfa720ab7e80), on `codex/980-runtime-admission`. Sophie retains this lane. The branch is clean; it is **not an install candidate**.
 
-The existing lifecycle now corroborates original runtime pins against lease-derived process facts, verifies the retained runtime and launch protocol, reads the unchanged profile through the custody reader, and reconstructs the original credential/config owners. The admission service restores the existing capability only after a clean fenced handoff, retains prior revocations, and binds the exact recorded origin. A conflict never chooses another port. Unproved admission remains stale while retention evidence survives; existing process state is kept separate.
+The previous recovery checkpoint now has production boot/shutdown wiring: after plane verification, boot opens the custody journal and attempts recovery before serving control requests. Shutdown drains admitted Fleet operations, validates surviving seats against the original runtime/profile/config owners, seals a fenced handoff and releases the owned listener. Concurrent shutdown coalesces. Deadline or verification failure records unclean custody and still permits ordinary Quit. New Starts and admission redemption cannot enter while draining. An empty issuer can hand off without inventing an admission endpoint; a nonempty recovery cannot use that empty-origin form.
 
-The lifecycle fixture now exercises actual lease/profile files, a real journal transition and loopback listener, followed by a later HMAC redemption and Bridge-verifier proof. Its process and runtime inventory are isolated fixtures, not an installed harness witness. Wrong birth, profile edits, missing runtime, incompatible protocol, changed capability/owner/definition, crash recovery, concurrent Stop and off→on disablement all refuse or preserve revocation. A failed recovery publication releases its newly owned listener and leaves no admitted grants.
+The host compatibility reader reports the pure exported launch-admission protocol. Original runtime and credential owners remain the authority; PID/process display and retention do not imply current admission. Context and capability revocations survive recovery.
 
-Validation: 214 affected tests passed; after tightening failure cleanup, all 11 recovery controls passed. The protocol suite passed 8/8 after correcting its older expected slot list for `NEO_NL_PORT`. Source and config-authority guards passed.
+Validation before this checkpoint: 242 affected tests passed, then nine targeted empty-origin/terminal-write/protocol controls passed. Source/config guards passed. These use real loopback listeners and files with isolated process/runtime inventories; they do not establish installed surviving-harness continuity.
 
-Remaining integration: the host compatibility probe must report the exported launch-protocol identity; packaged boot must invoke recovery; the old issuer still needs an awaited, validated clean-handoff path connected to the update guard. Paired host pin/retention/display work and the installed surviving-seat/native reconnect witness remain. This branch is not an install candidate.
+**Remaining:** update-specific continuity exchange and read-only verifier in the installer, retention projection and retirement exclusion, operator reason/action display, paired package build, and installed surviving-seat/later MCP reconnect evidence. The accepted decision remains ordinary Quit available; an update must fail closed on unproved continuity. Institution's paired checkpoint is `2f5afb1` and pins this Brain head.
 
-lane-state: next-lane (#980/#674 package protocol reporting, boot recovery and clean handoff).
+The delivery window moved to Stage's [environment-lighting PR](https://github.com/neomjs/neo-stage/pull/76). Preserve this runtime checkpoint through the coordinated Fleet restart; do not include the unfinished branches in that installed cut. Resume the remaining acceptance steps after the avatar review handoff, without repeating recovery design.
+
+lane-state: next-lane (Stage #48 review handoff; #980/#674 checkpoints preserved).
 
 - 2026-10-14T13:46:50Z @neo-gpt-sophie referenced in commit `a30730b` - "feat(fleet): bind boot recovery to an awaited clean handoff (#980)"
 - 2026-10-14T14:19:35Z @neo-gpt-emmy cross-referenced by PR #1025

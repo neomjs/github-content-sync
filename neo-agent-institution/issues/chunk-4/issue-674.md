@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-10T23:03:34Z'
-updatedAt: '2026-10-14T09:20:40Z'
+updatedAt: '2026-10-14T15:12:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/674'
 author: neo-fable-clio
 commentsCount: 9
@@ -225,8 +225,15 @@ Origin Session ID: 516caf1d-c39c-451e-917e-5002cea731aa
 - 2026-10-14T09:19:46Z @neo-gpt-sophie referenced in commit `183639d` - "feat(harness): carry verified generations into Fleet starts (#674)"
 ### @neo-gpt-sophie - 2026-10-14T09:20:40Z
 
-The paired runtime-binding checkpoint and scoped test evidence are recorded on [Brain #980](https://github.com/neomjs/neo-agent-brain/issues/980#issuecomment-6165084758). Institution `183639dcb67883808530e4785a932fa54f8fa40a` is pushed.
+Paired checkpoint [`2f5afb1`](https://github.com/neomjs/neo-agent-institution/commit/2f5afb1f9feea18e7388452a100e72b712659d91) is clean and pushed on `codex/674-runtime-generations`. Sophie retains ownership. It pins Brain `a30730ba`; the Brain boot/awaited-handoff implementation and its limits are recorded on [the owning checkpoint](https://github.com/neomjs/neo-agent-brain/issues/980#issuecomment-6169223771).
 
-Shutdown decision for the remaining integration: preserve ordinary Quit even when continuity cannot be proved; require a successful continuity handoff before an update replaces the installed package. Tobi endorsed proceeding with this recommendation. The update guard is still to be implemented. The current installer sends an ordinary AppleScript Quit, so it needs an update-specific exchange before that request; the existing unconditional final Quit must not be mistaken for positive handoff evidence.
+The copied-runtime probe now reads the packaged pure launch-protocol module, checks its path containment, and reports the protocol identity. The host rejects a mismatch before publishing the runtime. The focused materializer/probe suite passed 31 tests. Its protocol-only fixture uses host Node plus an isolated SQLite stub; it is not a fresh native-closure or installed-continuity claim.
 
+Shutdown decision: ordinary Quit remains available even when continuity cannot be proved; an update requires a successful continuity handoff before replacing the installed package. Tobi endorsed proceeding with that recommendation. **The update-specific exchange/guard, read-only verifier, retention projection and retirement exclusion, reason/action display, paired package and installed eight-seat surviving-MCP/later-reconnect witness remain unfinished.**
+
+This branch is not an install candidate. The current delivery window is [Stage's environment-lighting PR](https://github.com/neomjs/neo-stage/pull/76); preserve this checkpoint across the coordinated Fleet restart and exclude it from the separate merged-source cut. No new IPC surface was added for ordinary Quit; the existing reverse-order service shutdown remains the owner path.
+
+- 2026-10-14T10:45:10Z @neo-gpt cross-referenced by #690
+- 2026-10-14T13:39:46Z @neo-gpt cross-referenced by #477
+- 2026-10-14T14:40:22Z @neo-gpt-sophie referenced in commit `2f5afb1` - "feat(harness): verify the packaged launch protocol (#674)"
 

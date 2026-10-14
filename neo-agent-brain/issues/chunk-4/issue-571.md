@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T09:46:57Z'
-updatedAt: '2026-10-14T10:09:20Z'
+updatedAt: '2026-10-14T16:03:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/571'
 author: neo-opus-ada
-commentsCount: 98
+commentsCount: 99
 parentIssue: null
 subIssues:
   - '[x] 572 Fleet derives a seat''s clone and harness home under one agents root'
@@ -2706,4 +2706,21 @@ Origin Session ID: 05b71d01-be36-41f5-8d86-6c898089c6ec
 - 2026-10-14T14:19:35Z @neo-gpt-emmy cross-referenced by PR #1025
 - 2026-10-14T14:59:26Z @neo-opus-vega cross-referenced by #1026
 - 2026-10-14T15:01:52Z @neo-opus-vega cross-referenced by PR #1027
+### @neo-gpt-emmy - 2026-10-14T15:08:41Z
+
+### Antigravity first-boot cut installed; onboarding witness remains open
+
+Tobi merged #1024 and #1025. The installed canonical FM package binds Brain `2b042f10cb7d0f56e7230aca398728abf6d4be41`, Institution `afabdef60face9a02a0841c43ed18f8f33fdac60`, and Engine `d52f0e3d0b02c5a92a42f88e33693ad288dc29ad`. The combined merged-tree Start, lifecycle, hook projection, Claude model guard and public-contract selection passed **293/293**. ZIP SHA-256: `37e198ec4cf270e4882a56ddba2c39768a8c01385021689a54ef43179ac8ec40`.
+
+After the operator-authorized Stage PR handoff, the existing installer replaced the whole canonical bundle, verified its receipt, retained the previous bundle in the fixed rollback slot and verified unchanged custody hashes. The host-edge Bridge was refreshed through its existing LaunchAgent to the same merged Brain revision **before** reconnecting updated FM clients, as #1022 requires. Its configuration remained unchanged; the existing local models remained resident. Emmy's reconnected GitHub and Neural Link MCP healthchecks are current/healthy, and the Docker Memory Core plane remains unchanged.
+
+The eight existing seats now report running in the authenticated Fleet roster. Seven were stopped/restarted through FM; Emmy's coordinating harness stayed open while its eight exact-owned bundle-backed MCP children were stopped and subsequently reconnected. Five peers supplied explicit checkpoints; the two nonresponding seats had clean resident checkouts and were stopped under the operator's restart authorization. Conversation/model selection remains operator-owned. Sophie initially refused with `FLEET_WORKSPACE_DIVERGENT`: three required Fleet-owned home-policy settings were absent. A private backup plus additive restoration preserved every existing parsed setting; her subsequent FM Start succeeded. The separate `create-app` npm-ci lockfile failure is a recorded non-blocking dependency outcome.
+
+**Gemini usable-seat acceptance is still open.** FM created the managed repositories, canonical Markdown memory loader, private 0600 MCP launchers and the credential-free project record. The actual managed Antigravity profile opened at that project but showed the first-run Security Notice & Data Use screen. Its project-binding deadline expired before onboarding completed, so FM stopped it and revoked admission. No native model/MCP/memory witness is claimed. Global Antigravity MCP and rule-file hashes remain unchanged.
+
+Next: operator-ready FM retry, complete native onboarding, then witness loaded memory, seat MCP identity and bounded memory save/readback. Broader profile controls, hooks and wake remain follow-ups. Brain #1027 was unmerged at cut time and is not included; Emmy's clean-Quit/window-restoration witness also remains separate.
+
+Authored by Emmy (@neo-gpt-emmy).
+- **Origin Session ID:** 05b71d01-be36-41f5-8d86-6c898089c6ec
+
 
