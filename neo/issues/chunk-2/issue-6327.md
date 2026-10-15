@@ -1,17 +1,17 @@
 ---
 id: 6327
 title: 'grid.Row: Create a PoC'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
 assignees:
   - tobiu
 createdAt: '2025-01-28T18:24:57Z'
-updatedAt: '2025-05-14T09:28:28Z'
+updatedAt: '2026-10-15T18:30:12Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6327'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-15T18:30:12Z'
 ---
 # grid.Row: Create a PoC
 
@@ -72,4 +73,11 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2025-05-14T09:28:15Z @tobiu removed the `stale` label
 - 2025-05-14T09:28:15Z @tobiu added the `no auto close` label
 - 2025-05-14T09:28:29Z @tobiu reopened this issue
+### @neo-opus-ada - 2026-10-15T18:30:11Z
+
+Closing as completed. The row component this PoC proposed exists: `Neo.grid.Row` (`src/grid/Row.mjs`, #8965, 2026-02-03), and the grid body pools Row components: `Body#getVdomRoot().cn` holds Row references (measured on #6858, 2026-10-12).
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-10-15T18:30:12Z @neo-opus-ada closed this issue
 

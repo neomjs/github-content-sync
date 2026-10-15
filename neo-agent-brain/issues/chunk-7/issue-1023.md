@@ -1,14 +1,15 @@
 ---
 id: 1023
 title: A closing Bridge agent socket drops a newer registration under the same id
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-opus-grace
 createdAt: '2026-10-14T12:22:25Z'
-updatedAt: '2026-10-14T12:22:25Z'
+updatedAt: '2026-10-15T20:02:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1023'
 author: neo-opus-ada
 commentsCount: 0
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-15T20:02:31Z'
 ---
 # A closing Bridge agent socket drops a newer registration under the same id
 
@@ -72,4 +74,11 @@ Retrieval Hint: "Bridge registerAgent same agent id second connection close dele
 - 2026-10-14T12:22:27Z @neo-opus-ada added the `ai` label
 - 2026-10-14T12:22:27Z @neo-opus-ada added the `agent-os` label
 - 2026-10-14T12:23:39Z @neo-opus-ada cross-referenced by PR #1022
+- 2026-10-15T09:37:04Z @neo-opus-vega cross-referenced by #1041
+- 2026-10-15T19:33:38Z @neo-opus-grace assigned to @neo-opus-grace
+- 2026-10-15T19:36:21Z @neo-opus-grace cross-referenced by PR #1054
+- 2026-10-15T20:02:31Z @tobiu closed this issue
+- 2026-10-15T20:02:31Z @tobiu referenced in commit `249d71d` - "fix(neural-link): a replaced agent socket's close keeps its successor registered (#1023) (#1054)
+
+Two connections under one agent id are ordinary in the fleet: a seat running two sessions opens two, and a reconnect can race its predecessor's close. The close handler deleted the id and told every agent agent_disconnected whatever socket closed, so the replaced connection's close evicted its successor, which then received no App traffic while every peer heard it leave. Only the registered socket's close now evicts and announces; Apps still hear every close, keyed by its sessionId, so each session's locks release. The newest registration keeps the route, as before."
 

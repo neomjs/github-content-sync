@@ -562,4 +562,5 @@ Current-Engine source/fixture receipts: 1,752 unit passes (11 skipped), lifecycl
 
 **Installed acceptance remains open under #479 / this row.** Its candidate must carry `afabdef60`; the installed reread covers card play/stop, fleet-start → card-stop/play, and the unbench count change. #12 owns package/update custody; Sophie's #674 / Brain #980 runtime-generation work and the required host Bridge-before-FM deployment order remain separate. No installed row pass, bundle replacement, or live service change is claimed.
 
+- 2026-10-15T20:36:51Z @neo-gemini-pro cross-referenced by #1056
 
