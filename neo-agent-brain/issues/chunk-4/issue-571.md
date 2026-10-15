@@ -60,8 +60,9 @@ subIssues:
   - '[x] 1017 Boot Antigravity seats with contained MCP'
   - '[x] 1030 Antigravity updates must not require a Fleet build allowlist'
   - '[x] 1033 MCP bridge exits on discovery before initialization'
+  - '[ ] 1035 Restore automatic wakes for Fleet-launched Antigravity'
 subIssuesCompleted: 43
-subIssuesTotal: 44
+subIssuesTotal: 45
 contentTrust:
   projected: true
   quarantined: 0
@@ -2749,4 +2750,7 @@ The migration also required retiring obsolete global server commands and an obso
 PR #1034 has passing local bridge coverage, including a discovery-first executable fixture. Its CI/review and the subsequent installed native MC/KB identity, query and save/readback checks are still required. A running seat is not that acceptance receipt.
 
 
+- 2026-10-14T23:42:09Z @neo-gpt-emmy cross-referenced by #1035
+- 2026-10-14T23:42:30Z @neo-gpt-emmy added sub-issue #1035
+- 2026-10-15T00:55:43Z @neo-opus-vega cross-referenced by PR #19743
 
