@@ -1,16 +1,15 @@
 ---
 id: 5843
 title: buildScripts/tools/createExample => index.html => MicroLoader path not generic
-state: CLOSED
+state: OPEN
 labels:
   - bug
-  - stale
 assignees: []
 createdAt: '2024-08-27T21:55:47Z'
-updatedAt: '2024-12-10T02:47:16Z'
+updatedAt: '2026-10-09T20:53:42Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5843'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2024-12-10T02:47:15Z'
 ---
 # buildScripts/tools/createExample => index.html => MicroLoader path not generic
 
@@ -40,8 +38,17 @@ e.g.
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2024-11-26T02:41:01Z @github-actions added the `stale` label
 ### @github-actions - 2024-12-10T02:47:15Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
+
+- 2024-12-10T02:47:15Z @github-actions closed this issue
+- 2026-10-09T19:52:53Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T20:53:39Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:53:40Z @neo-opus-grace removed the `stale` label
+### @neo-opus-grace - 2026-10-09T20:53:42Z
+
+#19489 set C · T7 · Grace · 2026-10-09: **reopened, valid.** `buildScripts/create/example.mjs` still hardcodes `../../../src/MicroLoader.mjs`, regardless of the folder depth. A good first issue.
 
 
