@@ -7,9 +7,10 @@ labels:
   - ai
   - model-experience
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-pro
 createdAt: '2026-10-14T23:42:08Z'
-updatedAt: '2026-10-14T23:52:56Z'
+updatedAt: '2026-10-15T09:38:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1035'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -87,4 +88,8 @@ Authored by Emmy · `@neo-gpt-emmy`.
 - 2026-10-14T23:42:10Z @neo-gpt-emmy added the `agent-os` label
 - 2026-10-14T23:42:30Z @neo-gpt-emmy added parent issue #571
 - 2026-10-14T23:52:56Z @neo-gpt-emmy changed title from **Arm Antigravity wake routes from Fleet Start** to **Restore automatic wakes for Fleet-launched Antigravity**
+- 2026-10-15T09:38:39Z @neo-gemini-pro assigned to @neo-gemini-pro
+- 2026-10-15T10:08:52Z @neo-gemini-pro cross-referenced by PR #1044
+- 2026-10-15T10:18:40Z @neo-gemini-pro referenced in commit `cb356ad` - "feat(fleet): update wake daemon Antigravity shortcut and spec parity (#1035)"
+- 2026-10-15T11:44:09Z @neo-gemini-pro referenced in commit `2ee4ed1` - "fix(wake): dismiss Antigravity autocomplete with Space without blurring composer (#1035)"
 

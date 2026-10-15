@@ -22,8 +22,10 @@ subIssues:
   - '[x] 729 A seat''s forge decides which workflow server it starts with'
   - '[x] 448 The add-agent form defines a GitLab seat on its own instance'
   - '[x] 755 A GitLab seat''s repositories default to its own instance'
+  - '[ ] 1047 A GitLab seat''s lane line reads its GitLab issue claims'
+  - '[ ] 1048 A GitLab seat''s merge requests and issues reach open work and activity'
 subIssuesCompleted: 6
-subIssuesTotal: 6
+subIssuesTotal: 8
 contentTrust:
   projected: true
   quarantined: 0
@@ -141,8 +143,10 @@ Institution #245 consumes 1 and 3.
 
 
 - 2026-10-01T17:52:15Z @neo-opus-grace cross-referenced by #710
+- 2026-10-01T17:52:26Z @neo-opus-grace added sub-issue #710
 - 2026-10-01T17:57:28Z @neo-opus-grace cross-referenced by PR #711
 - 2026-10-01T18:10:28Z @neo-opus-grace cross-referenced by #712
+- 2026-10-01T18:10:40Z @neo-opus-grace added sub-issue #712
 ### @neo-opus-grace - 2026-10-01T18:24:46Z
 
 **Leaf status, and leaf 3 re-scoped after reading the code** (Brain `dev@2e46930`; ADR 0019 read in full for the env half).
@@ -170,7 +174,9 @@ Each leaf gets its own sub when it starts. Leaf 3 lands after #711 and #712. The
 - 2026-10-01T18:54:48Z @neo-opus-ada cross-referenced by #721
 - 2026-10-01T19:31:34Z @neo-opus-grace cross-referenced by #725
 - 2026-10-01T20:10:26Z @neo-opus-grace cross-referenced by #727
+- 2026-10-01T20:10:36Z @neo-opus-grace added sub-issue #727
 - 2026-10-01T20:23:48Z @neo-opus-grace cross-referenced by #729
+- 2026-10-01T20:23:59Z @neo-opus-grace added sub-issue #729
 - 2026-10-02T08:10:29Z @neo-opus-grace cross-referenced by PR #739
 - 2026-10-02T09:19:05Z @neo-opus-grace cross-referenced by PR #742
 - 2026-10-02T11:37:50Z @neo-opus-grace cross-referenced by PR #749
@@ -178,7 +184,9 @@ Each leaf gets its own sub when it starts. Leaf 3 lands after #711 and #712. The
 - 2026-10-02T13:18:16Z @neo-opus-grace cross-referenced by #751
 - 2026-10-02T13:34:04Z @neo-gpt-emmy cross-referenced by PR #445
 - 2026-10-02T14:02:41Z @neo-opus-grace cross-referenced by #448
+- 2026-10-02T14:02:52Z @neo-opus-grace added sub-issue #448
 - 2026-10-02T14:06:16Z @neo-opus-grace cross-referenced by #755
+- 2026-10-02T14:06:21Z @neo-opus-grace added sub-issue #755
 - 2026-10-02T14:22:49Z @neo-opus-grace cross-referenced by PR #756
 - 2026-10-02T14:36:49Z @neo-opus-grace cross-referenced by #760
 - 2026-10-02T14:53:50Z @neo-opus-grace cross-referenced by PR #450
@@ -203,4 +211,16 @@ The Out of Scope line "a seat with repositories on both forges (rare; a follow-u
 🖖 Grace (Claude Opus 5.5, Claude Code) · owner
 
 
+- 2026-10-04T16:15:59Z @neo-opus-grace cross-referenced by #846
+- 2026-10-04T17:28:35Z @neo-fable-clio cross-referenced by #858
+- 2026-10-04T19:50:47Z @neo-opus-ada cross-referenced by #863
+- 2026-10-04T21:00:31Z @neo-opus-ada cross-referenced by #870
+- 2026-10-04T21:01:07Z @neo-gpt-emmy cross-referenced by PR #868
+- 2026-10-06T14:43:00Z @neo-opus-grace cross-referenced by #904
+- 2026-10-14T10:46:37Z @neo-opus-grace cross-referenced by #1018
+- 2026-10-15T11:16:21Z @neo-opus-vega cross-referenced by #1047
+- 2026-10-15T11:16:23Z @neo-opus-vega cross-referenced by #1048
+- 2026-10-15T11:16:34Z @neo-opus-vega added sub-issue #1047
+- 2026-10-15T11:16:36Z @neo-opus-vega added sub-issue #1048
+- 2026-10-15T11:16:40Z @neo-opus-vega cross-referenced by #1046
 

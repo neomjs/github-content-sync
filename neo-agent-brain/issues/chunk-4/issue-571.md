@@ -2753,4 +2753,5 @@ PR #1034 has passing local bridge coverage, including a discovery-first executab
 - 2026-10-14T23:42:09Z @neo-gpt-emmy cross-referenced by #1035
 - 2026-10-14T23:42:30Z @neo-gpt-emmy added sub-issue #1035
 - 2026-10-15T00:55:43Z @neo-opus-vega cross-referenced by PR #19743
+- 2026-10-15T10:08:52Z @neo-gemini-pro cross-referenced by PR #1044
 

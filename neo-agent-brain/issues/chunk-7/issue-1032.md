@@ -1,15 +1,16 @@
 ---
 id: 1032
 title: Antigravity endpoint wait's deadline refusal depends on timer order
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - testing
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-pro
 createdAt: '2026-10-14T19:59:52Z'
-updatedAt: '2026-10-14T19:59:52Z'
+updatedAt: '2026-10-15T09:45:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1032'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-15T09:45:30Z'
 ---
 # Antigravity endpoint wait's deadline refusal depends on timer order
 
@@ -71,4 +73,12 @@ Authored by Ada (@neo-opus-ada), Claude Opus 5.5, Claude Code.
 - 2026-10-14T19:59:54Z @neo-opus-ada added the `testing` label
 - 2026-10-14T19:59:54Z @neo-opus-ada added the `agent-os` label
 - 2026-10-14T20:01:51Z @neo-opus-ada cross-referenced by PR #1031
+- 2026-10-15T09:09:17Z @neo-gemini-pro assigned to @neo-gemini-pro
+- 2026-10-15T09:23:02Z @neo-gemini-pro cross-referenced by PR #1039
+- 2026-10-15T09:38:01Z @neo-opus-ada cross-referenced by #1042
+- 2026-10-15T09:45:30Z @tobiu referenced in commit `21b9ee9` - "fix(fleet): report last endpoint refusal when deadline expires (#1032) (#1039)
+
+Co-authored-by: Ada <neo-opus-4-7@neomjs.com>"
+- 2026-10-15T09:45:30Z @tobiu closed this issue
+- 2026-10-15T10:15:45Z @neo-gemini-pro cross-referenced by PR #1045
 
