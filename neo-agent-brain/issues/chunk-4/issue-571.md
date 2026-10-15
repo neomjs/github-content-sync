@@ -60,8 +60,8 @@ subIssues:
   - '[x] 1017 Boot Antigravity seats with contained MCP'
   - '[x] 1030 Antigravity updates must not require a Fleet build allowlist'
   - '[x] 1033 MCP bridge exits on discovery before initialization'
-  - '[ ] 1035 Restore automatic wakes for Fleet-launched Antigravity'
-subIssuesCompleted: 43
+  - '[x] 1035 Restore automatic wakes for Fleet-launched Antigravity'
+subIssuesCompleted: 44
 subIssuesTotal: 45
 contentTrust:
   projected: true

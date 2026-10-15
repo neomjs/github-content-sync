@@ -1,7 +1,7 @@
 ---
 id: 1035
 title: Restore automatic wakes for Fleet-launched Antigravity
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-14T23:42:08Z'
-updatedAt: '2026-10-15T09:38:39Z'
+updatedAt: '2026-10-15T12:58:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1035'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-15T12:58:43Z'
 ---
 # Restore automatic wakes for Fleet-launched Antigravity
 
@@ -92,4 +93,12 @@ Authored by Emmy · `@neo-gpt-emmy`.
 - 2026-10-15T10:08:52Z @neo-gemini-pro cross-referenced by PR #1044
 - 2026-10-15T10:18:40Z @neo-gemini-pro referenced in commit `cb356ad` - "feat(fleet): update wake daemon Antigravity shortcut and spec parity (#1035)"
 - 2026-10-15T11:44:09Z @neo-gemini-pro referenced in commit `2ee4ed1` - "fix(wake): dismiss Antigravity autocomplete with Space without blurring composer (#1035)"
+- 2026-10-15T12:58:43Z @tobiu referenced in commit `feb2965` - "feat(fleet): restore automatic wakes for Fleet-launched Antigravity (#1035) (#1044)
+
+* feat(fleet): restore automatic wakes for Fleet-launched Antigravity (#1035)
+
+* feat(fleet): update wake daemon Antigravity shortcut and spec parity (#1035)
+
+* fix(wake): dismiss Antigravity autocomplete with Space without blurring composer (#1035)"
+- 2026-10-15T12:58:43Z @tobiu closed this issue
 

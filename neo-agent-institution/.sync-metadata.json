@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-15T12:45:42.026Z",
-  "releasesLastFetched": "2026-10-15T12:45:41.763Z",
+  "lastSync": "2026-10-15T13:25:28.614Z",
+  "releasesLastFetched": "2026-10-15T13:25:27.856Z",
   "pushFailures": [],
   "issues": {
     "1": {
@@ -3040,10 +3040,10 @@
       "state": "OPEN",
       "path": "neo-agent-institution/issues/chunk-4/issue-682.md",
       "closedAt": null,
-      "updatedAt": "2026-10-13T18:55:18Z",
-      "contentHash": "682eec878923eab9542fae549dac9717d462328c03a2f2954fedd545701e7192",
+      "updatedAt": "2026-10-15T12:54:06Z",
+      "contentHash": "6bd6c5d62a8f8c44b6223618e332d667c74dff245038399454402c1cb3da6258",
       "milestone": null,
-      "commentsTotal": 2
+      "commentsTotal": 3
     },
     "683": {
       "state": "OPEN",
@@ -3378,8 +3378,8 @@
       "closedAt": null,
       "mergedAt": null,
       "milestone": null,
-      "updatedAt": "2026-10-15T12:45:13Z",
-      "contentHash": "b3da3b7c559c8ae788d8e9486e4d201fb20d04d5384eededd5750c8332cacde2"
+      "updatedAt": "2026-10-15T13:18:25Z",
+      "contentHash": "c4579b0f18096432f688544038112652c4129ea7a6cbb081870eeae93d664e14"
     },
     "698": {
       "state": "MERGED",

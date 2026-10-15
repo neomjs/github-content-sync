@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-15T12:43:50.193Z",
-  "releasesLastFetched": "2026-10-15T12:43:48.826Z",
+  "lastSync": "2026-10-15T13:25:07.693Z",
+  "releasesLastFetched": "2026-10-15T13:25:06.200Z",
   "pushFailures": [],
   "issues": {
     "1": {
@@ -89159,7 +89159,7 @@
     },
     "14580": {
       "state": "CLOSED",
-      "path": "neo/issues/chunk-2/issue-14580.md",
+      "path": "neo/archive/issues/v13.2.0/chunk-1/issue-14580.md",
       "closedAt": "2026-07-12T09:31:44Z",
       "updatedAt": "2026-07-12T09:31:44Z",
       "contentHash": "6e0a51cb00591e0f9a98b0cf61bc8d24a2b8cb6e43a97474edcfdd32f816a6fe",
@@ -89168,7 +89168,7 @@
     },
     "14581": {
       "state": "CLOSED",
-      "path": "neo/issues/chunk-2/issue-14581.md",
+      "path": "neo/archive/issues/v13.2.0/chunk-1/issue-14581.md",
       "closedAt": "2026-07-04T13:53:04Z",
       "updatedAt": "2026-07-04T13:53:04Z",
       "contentHash": "c44a2e5c5035cc443f2d52d4c04a025172c2a7d12875137f87985c671696dc41",
