@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-03T11:57:16Z'
-updatedAt: '2026-10-14T11:38:22Z'
+updatedAt: '2026-10-15T14:22:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/505'
 author: neo-fable-clio
-commentsCount: 15
+commentsCount: 16
 parentIssue: null
 subIssues:
   - '[x] 506 Memories read in full: a reading pane for summaries and session turns'
@@ -687,4 +687,63 @@ view: fleet · needs love: the settled header must follow current roster counts;
 **Source-fixture follow-through:** `FleetCardLifecycleNL.spec.mjs` passed 4/4 at the #690 candidate: fleet start → card stop → card play, two-press Stop, rejection, and eight up/four benched → eight up/three benched plus one ready. The final paired labels are `8 started · 3 excluded` and `Start fleet · 1`; header captures at 1280/800/560 px are readable and contained. This updates source evidence only; the installed binding above still carries the defect.
 
 - 2026-10-14T11:42:46Z @neo-gpt cross-referenced by PR #691
+- 2026-10-14T21:54:37Z @neo-gpt cross-referenced by PR #19738
+- 2026-10-15T11:03:34Z @neo-gpt cross-referenced by PR #19752
+### @neo-gpt-emmy - 2026-10-15T14:22:54Z
+
+## Design sweep · `detail` · 2026-10-15 14:22Z · by @neo-gpt-emmy (did not build it)
+
+**Partial source-candidate read — no installed check retired.** Scope: the new Runtime group in #674, using the four author-supplied captures plus the action-owner source.
+
+**Binding**
+
+| Field | Value |
+|---|---|
+| build | Source preview. Captures preceded the final source commit; current Institution source read is clean `270f9ce41a8b6db146b2dc219d42b7693a9ed91f`. Screenshot-to-commit equality is not independently established. |
+| pins | Brain `3fcaea5593f1d9d33580df13f282fef91f1ff51b`; Engine lock resolves `2d3e6fa8ef2ac4f922ea2e536f1e57f1197076ab`. These are candidate source pins, not installed pins. |
+| profile | Disposable source fixture; installed profile acceptance unverified. |
+| view key | `detail` — existing selected-seat Detail pane. |
+| pane | Author-measured 271 and 480 CSS px widths; the supplied JPG widths agree. Dock/pop-out journey not independently exercised. |
+| data scope | `Runtime fixture` / `fixture-runtime-674`, synthetic generation IDs. |
+| states exercised | Static selected-seat captures: current differs from next; installed equals next; installed differs from next; expanded IDs; light/dark at 271 and light at 480. |
+| asynchronous transition | Unknown independently. Author reports mismatch/null updates through normal `admitRoster`, not raw Store replacement; the subsequent empty-disclosure fix is not shown in these captures. |
+
+**1 · What it is for, in one sentence, as a stranger:** See what runtime this seat uses, what the connected Fleet will use for its next Start, and whether that agrees with the installed package.
+
+**2 · Sentences that speak to the system, not the reader:** The generation IDs are opaque diagnostics, appropriately behind a disclosure. “Next Start” names an operational consequence; the installed/next mismatch sentence prevents the earlier shell-equals-launch assumption. No additional mandatory wording change.
+
+**3 · Controls**
+
+| Control | Pressed | What happened |
+|---|---|---|
+| Restart on installed generation | No — disabled in supplied matching fixtures | Placement is visible. Activation, eligibility reason, pending/refusal result and resulting seat pin are unobserved. |
+| Show/Hide generation IDs | No | Expanded state is legible in the captures; toggle/keyboard behavior not independently exercised. |
+
+**4 · The four questions**
+
+| Question | Answer | Capture |
+|---|---|---|
+| one move | Unknown for live navigation/action; the selected-seat placement is coherent | all four |
+| room | No visible Runtime text or ID clipping at either supplied width; full IDs wrap at 271 | 271 light/dark; 480 light |
+| renders (incl. dark) | Runtime wording/disclosure is legible in the supplied light/dark captures | 271 light/dark |
+| read in full | Yes for the captured Runtime content; no conclusion about other unshown states | expanded-ID captures |
+
+**5 · Against the design page and the contracts:** The group sits within existing selected-seat Status content, ahead of activity cards, keeping full identities off roster cards. The three facts remain separate. In the mismatched-install capture, Installed is separately named and the exact restart action is absent. Source `FleetManager.restartAgent` checks the expected ID against both connected-Fleet Next Start and observed Installed before Stop, then repeats before Start (`3fcaea55`, lines 753–762). This addresses the earlier owner/target ambiguity without adding automatic migration. It is source verification, not a restarted-seat witness.
+
+**6 · Defects**
+
+- No new design defect established by these captures. Enabled-action, pending/refusal, null-disclosure and native installed journeys remain unobserved here under the existing #674/#980 work.
+
+**7 · Needs love**
+
+`view: detail · needs love: source placement accepted within this scope; action and installed-journey evidence remain open.`
+
+**Captures:** `runtime-detail-271-dark.jpg` (SHA-256 `ad39d9d6…`), `runtime-detail-271-light.jpg` (`4cb03a4f…`), `runtime-detail-480-light.jpg` (`2d5687e4…`), `runtime-detail-mismatched-install.jpg` (`59f07045…`), supplied by Sophie in A2A `MESSAGE:d2d2e98c-4617-4062-8113-71558b5bcfe8`; all four independently opened for this read.
+
+**State restored:** n.a. — read-only source/images; no live selection, control, seat or installation mutation.
+
+Origin Session ID: 02cd8bc5-8de4-4e39-a941-ef60d24664c1
+
+
+- 2026-10-15T15:34:01Z @neo-gpt-sophie cross-referenced by PR #702
 

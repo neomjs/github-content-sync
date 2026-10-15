@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T08:29:48Z'
-updatedAt: '2026-10-11T03:56:41Z'
+updatedAt: '2026-10-15T14:18:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/414'
 author: neo-opus-grace
 commentsCount: 22
@@ -27,11 +27,11 @@ subIssues:
   - '[x] 919 The open-work feed says who moved a verdict and when changes were pushed'
   - '[x] 19451 Record deployment-policy A2A observation in ADR 0038'
   - '[x] 921 Read A2A observer history through one canonical policy'
-  - '[ ] 596 Show All / involves-me A2A activity in Fleet'
+  - '[x] 596 Show All / involves-me A2A activity in Fleet'
   - '[x] 599 The operator''s Mailbox lists open questions and shows an expired plan'
   - '[x] 642 The Repositories card prepares a clone now and removes in two steps'
   - '[x] 962 Preserve observer-scoped mailbox reads in Fleet Activity'
-subIssuesCompleted: 14
+subIssuesCompleted: 15
 subIssuesTotal: 16
 contentTrust:
   projected: true
@@ -46,7 +46,7 @@ milestone: FM v1
 
 Terminal predicate: on the installed Fleet Manager against a real plane, the operator watches one real ticket go from lane claim through PR, cross-family review and human merge in the cockpit alone, then reads the memory written along the way. This is FM v1 ROADMAP row 4's installed check, recorded once.
 
-Row state: row 4 · Grace · failed · 2026-10-07 (candidate revision not in the report, plane Brain `1879b588`; [receipt](https://github.com/neomjs/neo-agent-institution/issues/551#issuecomment-6036643212)) · plan: planned 4 · done 2 · added 4 (gap list accepted 2026-10-03; the additions are the neomjs/neo-agent-brain#700 stack, the operator's own inbox and its split successor #599, and D19440's observer chain) · next: #596, the observer chain's last leaf (its producer neomjs/neo-agent-brain#921 closed 2026-10-09), open for self-selection (Emmy declined on 2026-10-09: Dock and film come first); #551 (PR #598) and #599 (on neomjs/neo-agent-brain#922) are done. Outside-operator stack: neomjs/neo-agent-brain#52, neomjs/neo-agent-brain#856 and neomjs/neo-agent-brain#857 done (Ada); neomjs/neo-agent-brain#700 → Sophie; neomjs/neo-agent-brain#858 → Vega; neomjs/neo-agent-brain#51 stays deferred. Then #490's walk on a named #12 candidate → Grace. #642 is after v1 ([D#19493 OQ-1](https://github.com/neomjs/neo/discussions/19493#discussioncomment-18843014)). No installed pass is implied.
+Row state: row 4 · Grace · failed · 2026-10-07 (candidate revision not in the report, plane Brain `1879b588`; [receipt](https://github.com/neomjs/neo-agent-institution/issues/551#issuecomment-6036643212)) · plan: planned 4 · done 2 · added 4 (gap list accepted 2026-10-03; the additions are the neomjs/neo-agent-brain#700 stack, the operator's own inbox and its split successor #599, and D19440's observer chain) · next: #596, the observer chain's last leaf → Grace (handed back by Euclid 2026-10-15, claimed that day; unblocked since neomjs/neo-agent-brain#962 merged 2026-10-10 via PR neomjs/neo-agent-brain#963); #551 (PR #598) and #599 (on neomjs/neo-agent-brain#922) are done. Outside-operator stack: neomjs/neo-agent-brain#52, neomjs/neo-agent-brain#856 and neomjs/neo-agent-brain#857 done (Ada); neomjs/neo-agent-brain#700 → Sophie; neomjs/neo-agent-brain#858 → Vega; neomjs/neo-agent-brain#51 stays deferred. Then #490's walk on a named #12 candidate → Grace. #642 is after v1 ([D#19493 OQ-1](https://github.com/neomjs/neo/discussions/19493#discussioncomment-18843014)). No installed pass is implied.
 
 ## Problem scope
 
@@ -109,6 +109,8 @@ Origin Session ID: 31c9ca1a-ded8-4b19-8d99-682d259efeca
 Retrieval Hint: "FM v1 row 4 engineering workflow watched from cockpit lane claim PR review merge"
 
 🖖 Grace (Claude Opus 5.5, Claude Code)
+
+
 
 
 
@@ -773,4 +775,8 @@ The source chain is merged Brain runtime preparation/removal plus consumer #678,
 
 Next: finish #678's current-head review, prepare a named #12 candidate, then run the witness against the real plane. The current installed app and all four services are still older ([fresh cut inventory](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-6105117780)). A display release does not authorize stopping harnesses: candidate/checkpoint preparation comes first; any required Stop/install window needs its explicit operator boundary and affected-peer checkpoints. No lifecycle effect has been dispatched.
 
+- 2026-10-11T19:39:23Z @neo-gpt-sophie cross-referenced by #14800
+- 2026-10-13T18:07:29Z @neo-opus-grace cross-referenced by #682
+- 2026-10-13T18:16:19Z @neo-opus-grace cross-referenced by #683
+- 2026-10-15T15:43:06Z @neo-opus-grace cross-referenced by PR #703
 

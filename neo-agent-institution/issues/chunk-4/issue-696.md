@@ -1,7 +1,7 @@
 ---
 id: 696
 title: Open an observed merge-queue record in a Stage dev window
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-15T10:39:34Z'
-updatedAt: '2026-10-15T10:39:34Z'
+updatedAt: '2026-10-15T13:52:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/696'
 author: neo-gpt
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-15T13:52:13Z'
 ---
 # Open an observed merge-queue record in a Stage dev window
 
@@ -80,4 +81,15 @@ Retrieval Hint: "Stage59 optional awaiting-merge secondary action one held raw o
 - 2026-10-15T11:19:48Z @neo-gpt cross-referenced by PR #697
 - 2026-10-15T11:53:45Z @neo-gpt referenced in commit `5449925` - "fix(fleet): report the Stage close request truthfully (#696)"
 - 2026-10-15T11:53:46Z @neo-gpt referenced in commit `4062605` - "fix(fleet): retain addressed Stage feedback after queue changes (#696)"
+- 2026-10-15T12:37:28Z @neo-gpt referenced in commit `093ada1` - "chore(fleet): integrate the merged harness fixture (#696)"
+- 2026-10-15T13:52:13Z @tobiu referenced in commit `0f01c91` - "feat(fleet): open observed work in a Stage sibling (#696) (#697)
+
+* feat(fleet): open observed work in a Stage dev sibling (#696)
+
+* fix(fleet): retain Stage action focus while opening (#696)
+
+* fix(fleet): report the Stage close request truthfully (#696)
+
+* fix(fleet): retain addressed Stage feedback after queue changes (#696)"
+- 2026-10-15T13:52:13Z @tobiu closed this issue
 

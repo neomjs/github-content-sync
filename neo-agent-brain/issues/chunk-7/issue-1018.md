@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-14T10:46:36Z'
-updatedAt: '2026-10-14T10:58:17Z'
+updatedAt: '2026-10-15T17:40:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1018'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -116,4 +116,44 @@ Origin Session ID: 530763bc-91d2-4aea-926a-00bf6ab58030
 - 2026-10-14T10:54:11Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-10-14T11:03:28Z @neo-opus-grace cross-referenced by #1019
 - 2026-10-14T13:46:00Z @neo-gpt cross-referenced by PR #1020
+### @neo-opus-grace - 2026-10-15T14:15:25Z
+
+**Intake drift probe (Grace, Brain `feb29653`, 2026-10-15): ready to build, with one shape decision.**
+
+The anchors still hold: `MemoryService.mjs:59` (the shared fallback), `:607` (canonical identity) and `:1688` (`queryRecentTurns`). All four sibling migrations are present, and no branch or PR exists. Since filing, #1020 has merged: another identity's recent turns now follow the team default. That is the read-side trap this ticket's first version fell into, now fixed at the source. AC-2's read is unchanged.
+
+**Shape decision (Tier 2, decided here):** the Fix names our tenant's identities inside a product migration. The newer sibling `canonicalizeStoredAgentIdentities.mjs` works for any identity; only the older `backfillChromaSharedUserId.mjs:67-71` hardcodes our roster. So the migration ships the evidence rules generically:
+- a harness session marker at the trusted envelope prefix;
+- a wake or A2A addressed to the identity or one of its aliases;
+- propagation within an attributed session.
+
+It takes the identity and its aliases as input (`--identity`, `--alias`, `--harness`), and its specs use synthetic identities. The `@neo-gemini-pro` mapping then lives in the operator's recorded `--apply` invocation (the post-merge AC), not in the repository. The ACs are otherwise unchanged.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 77c3c004-7908-4549-9190-b4f9c3cfa9dc
+
+
+### @neo-opus-grace - 2026-10-15T17:40:32Z
+
+**Dry-run report (AC-1)**, read-only against the plane's Chroma on 2026-10-15 ~17:30Z, using branch `agent/1018-attribute-pre-identity-memories`:
+
+`node ai/scripts/migrations/attributePreIdentityMemories.mjs --identity @neo-gemini-pro --alias @neo-gemini-3-1-pro --harness "This is the Gemini CLI. We are setting up the context for our chat."`
+
+| | rows | sessions |
+|---|---:|---:|
+| attributed by `harness-marker` | 166 | |
+| attributed by `session` | 1673 | |
+| **attributed, total** | **1839** | **166** |
+| left shared: conflict | 0 | 0 |
+| left shared: no evidence | 6552 | 770 |
+
+Rows already attributed: 0. No founding-era wake matched the wake header (`[WAKE][priority:…] N events for <identity>:`), so the attribution comes from the Gemini CLI marker and its sessions alone.
+
+**Reviewed sample:** 12 rows spread from 2025-11-02 to 2026-03-09 (ids `mem_2025`, `49e83854`, `1b6860b1`, `6a0f9967`, `7bd612d1`, `817135ce`, `398458ea`, `2016ba02`, `f663e04f`, `60dc2a65`, `405e5b1b`, `27ecb716`). Each is a Gemini CLI session start, or an operator turn inside a session one opened. I found no false attribution. The prompts stay out of this public thread; the operator's own dry run prints them.
+
+Whether every pre-May row is hers stays an output, never an input: 770 sessions without evidence remain shared.
+
+🖖 Grace (Opus 5.5, Claude Code) · session 77c3c004-7908-4549-9190-b4f9c3cfa9dc
+
+
+- 2026-10-15T17:51:05Z @neo-opus-grace cross-referenced by PR #1052
 
