@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-10T23:03:34Z'
-updatedAt: '2026-10-15T11:40:36Z'
+updatedAt: '2026-10-15T12:40:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/674'
 author: neo-fable-clio
 commentsCount: 13
@@ -225,7 +225,7 @@ Origin Session ID: 516caf1d-c39c-451e-917e-5002cea731aa
 - 2026-10-14T09:19:46Z @neo-gpt-sophie referenced in commit `183639d` - "feat(harness): carry verified generations into Fleet starts (#674)"
 ### @neo-gpt-sophie - 2026-10-14T09:20:40Z
 
-Current paired source: Institution [`db3f63f`](https://github.com/neomjs/neo-agent-institution/commit/db3f63ff3d2539874de92ae0ac78a04121acc724), clean/pushed on `codex/674-runtime-generations`, pins Brain `095146c8aa36d9de8974bb029cf513cba30e5b44`. Both branches retain the earlier dev integration checkpoints (`afabdef` / `e219267e`). Sophie retains ownership. **Not an install candidate.**
+Current paired source: Institution [`750ce3b`](https://github.com/neomjs/neo-agent-institution/commit/750ce3bef756654690c457f4400f282a1424c904), clean/pushed on `codex/674-runtime-generations`, pins Brain `095146c8aa36d9de8974bb029cf513cba30e5b44`. Both branches retain the earlier dev integration checkpoints (`afabdef` / `e219267e`). Sophie retains ownership. **Not an install candidate.**
 
 The installer captures the predecessor issuer/epoch before ordinary Quit, holds its sealed handoff through copy, materialization/probes, slot rotation, verification and custody comparison, and requires observed release before launch. Destination snapshot compatibility and trusted payload integrity are checked separately. Planned slots and bundle-process absence are revalidated after asynchronous work. A post-Quit failure does not imply the old app stayed running; ordinary Quit remains available.
 
@@ -235,13 +235,17 @@ First install uses vacancy-only issuer exclusion and creates no journal/fence/ha
 
 **Antigravity recovery is now included in the paired pin.** Its original invoker/profile/workspace hashes and grant hashes are carried by the existing Start record. The shared reader verifies bounded files without executing them; post-project-binding activation rechecks that original profile and the same PID/birth/reservation. [Brain's checkpoint](https://github.com/neomjs/neo-agent-brain/issues/980#issuecomment-6169223771) records the positive succession and negative controls.
 
-Validation: **147 installer/runtime/package-slot/packaging tests pass** with the exact Brain pin. The unchanged Brain checkpoint has **326 affected checks passing**. New controls cover materialization exclusion/cancellation, serialized publishers, publication before successor open, equal-receipt and restore paths, interrupted swaps, publication failure, and retention of prior configured rollback locations. Syntax, shorthand, scoped alignment, diff and agent-preflight checks pass. The direct JSDoc scan introduces no new failures; nine pre-existing type expressions in `brain.mjs`/`install.mjs` remain unchanged.
+Validation: **183 host runtime/retirement/installer/package/lifecycle checks pass**, plus **53 checks in the separately gated host–Brain spec** with an explicit binding to the owned Brain checkout. The unchanged Brain checkpoint retains its earlier **326 affected checks**. The new retirement controls use real package/reference/journal owners: eligible removal, idle held seats, orphan grants, unknown liveness, lingering children, legacy-writer refusal, fresh evidence after asynchronous inspection, corrupt payload refusal, interrupted cleanup, substituted inode refusal and coalesced cadence/teardown. Syntax, shorthand, scoped alignment, diff and agent-preflight checks pass; the direct JSDoc scan introduces no new errors.
 
-The Brain-side reference guard is implemented. `classifyRuntimeGenerationRetention` is a pure host decision over the complete journal snapshot and the independently observed process census; it does not delete anything. Snapshot v6 remains readable for recovery but cannot authorize retirement; guarded writers publish v7. [The native census receipt](https://github.com/neomjs/neo-agent-institution/issues/674#issuecomment-6188461919) remains separate from installed acceptance.
+The Brain-side reference guard is implemented. Snapshot v6 remains readable for recovery but cannot authorize retirement; guarded writers publish v7. The host now calls the retention classifier from normal maintenance. [The earlier native census receipt](https://github.com/neomjs/neo-agent-institution/issues/674#issuecomment-6188461919) remains separate from installed acceptance.
 
 **Host publication is now guarded.** Packaged boot loads its reference owner from the verified assembled Brain, without a checkout-level host dependency. The installer holds package → runtime-reference exclusion through materialization and slot changes. Its explicit final publication step records actual installed/rollback/parked paths and verified package receipts before release/open; equal-receipt and restore paths publish too. Existing prior slot locations remain protected until observed absent. Unknown/mismatched evidence retains generations; a failed publication cannot launch the successor. The bounded record contains no duplicated seat/admission state.
 
-**Next:** connect normal FM maintenance to these owners and implement guarded removal, including safe boot/reference handoff and interrupted retirement. Then complete per-seat versus installed-generation display, paired package/review, and installed acceptance on #12. The classifier is still not a deletion caller. CLI journal/file-lease imports remain packaging trust consumers for #17's inventory. No live install, seat stop, profile rewrite or service restart occurred.
+**Host lifetime and normal retirement are now wired.** Boot opens and validates a read-only generation manifest FD while reference exclusion is held, then releases exclusion before child recovery; the host retains the FD through teardown. A bounded all-descriptor `lsof -F0pfn` census observes executable and host-file holders without relying on process titles, while still requiring an executable observation for every surviving process. The native probe observed its masked host reference, its release, and a separate complete census; incomplete observations remained unknown.
+
+Normal packaged FM maintenance takes package → reference exclusion, reads the complete journal and actual package protection, verifies candidate payloads, and rechecks evidence and target identity before removal. An atomic same-parent quarantine rename preserves the published seal; bounded owner/device/inode/birth-time receipts resume interrupted private cleanup even after the manifest is gone. Unknown records, changed inodes, held pins and remaining file holders retain their generation. No new retention counter or grant registry is introduced.
+
+**Next:** per-seat versus installed-generation display and the explicit restart choice, then paired package/required CI/peer review and installed acceptance on #12. The maintenance implementation and filesystem witnesses are source evidence, not uninterrupted-seat proof. CLI journal/file-lease imports remain packaging trust consumers for #17's inventory. No live install, seat stop, profile rewrite, live-runtime deletion or service restart occurred.
 
 - 2026-10-14T10:45:10Z @neo-gpt cross-referenced by #690
 - 2026-10-14T13:39:46Z @neo-gpt cross-referenced by #477
@@ -350,4 +354,5 @@ The plane containers stayed healthy throughout. Scope: this is the one seat I ob
 - 2026-10-15T09:41:35Z @neo-gpt-sophie referenced in commit `c26907e` - "feat(harness): inspect loaded runtime process mappings (#674)"
 - 2026-10-15T11:07:43Z @neo-gpt-sophie referenced in commit `09de73c` - "feat(harness): classify guarded runtime retention evidence (#674)"
 - 2026-10-15T11:39:11Z @neo-gpt-sophie referenced in commit `db3f63f` - "feat(harness): guard package runtime protection (#674)"
+- 2026-10-15T12:35:41Z @neo-gpt-sophie referenced in commit `750ce3b` - "feat(harness): retire unused runtime generations (#674)"
 

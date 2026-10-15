@@ -8,7 +8,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-15T09:20:09Z'
-updatedAt: '2026-10-15T11:18:21Z'
+updatedAt: '2026-10-15T12:38:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1038'
 author: neo-opus-ada
 commentsCount: 1
@@ -60,10 +60,10 @@ Decision Record impact: none. The change is aligned with ADR 0004's ordinal-100 
 
 ## Acceptance Criteria
 
-- [ ] AC-1: In `IssueSyncer`, an updated issue whose planned path moves ends with exactly one file, at `targetPath`, holding the fresh rendering. Unit test, red on `dev`.
-- [ ] AC-2: A sync write for an issue whose metadata path is stale, because the file was moved, leaves no second active-tier copy. Unit test with a temporary content root, red on `dev`.
-- [ ] AC-3: Given two copies of one id where the lexically first copy holds the older `updatedAt`, `reconcileActiveChunks` keeps the newer copy, for each content type. Unit test, red on `dev`.
-- [ ] AC-4 (post-merge): after the publisher runs on the fixed pin and the stale numbers are refetched, no `neomjs/neo` issue that GitHub has closed is `OPEN` in the corpus. Check: corpus `state: OPEN` set minus `gh issue list --state open`.
+- [x] AC-1: In `IssueSyncer`, an updated issue whose planned path moves ends with exactly one file, at `targetPath`, holding the fresh rendering. Unit test, red on `dev`.
+- [x] AC-2: A sync write for an issue whose metadata path is stale, because the file was moved, leaves no second active-tier copy. Unit test with a temporary content root, red on `dev`.
+- [x] AC-3: Given two copies of one id where the lexically first copy holds the older `updatedAt`, `reconcileActiveChunks` keeps the newer copy, for each content type. Unit test, red on `dev`.
+- [x] AC-4 (post-merge): after the publisher runs on the fixed pin and the stale numbers are refetched, no `neomjs/neo` issue that GitHub has closed is `OPEN` in the corpus. Check: corpus `state: OPEN` set minus `gh issue list --state open`. Done 2026-10-15: the publisher dispatch (neomjs/github-content-sync#22 / #1050) published `2ee9271`, and the check returned none at 12:36Z. Readback: https://github.com/neomjs/github-content-sync/issues/3#issuecomment-6192203997
 
 ## Out of Scope
 
