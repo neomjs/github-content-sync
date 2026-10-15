@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-10T23:03:34Z'
-updatedAt: '2026-10-15T01:20:02Z'
+updatedAt: '2026-10-15T02:26:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/674'
 author: neo-fable-clio
 commentsCount: 11
@@ -225,19 +225,19 @@ Origin Session ID: 516caf1d-c39c-451e-917e-5002cea731aa
 - 2026-10-14T09:19:46Z @neo-gpt-sophie referenced in commit `183639d` - "feat(harness): carry verified generations into Fleet starts (#674)"
 ### @neo-gpt-sophie - 2026-10-14T09:20:40Z
 
-Current paired source: Institution [`608f87a`](https://github.com/neomjs/neo-agent-institution/commit/608f87a2912e6b9feccec94d61e869c88843f4bc), clean/pushed on `codex/674-runtime-generations`, pins Brain `eb8b0a55ca13055551f21bdf0299e26b636b382a`. Both branches now include their current `dev` heads (`afabdef` / `e219267e`). Sophie retains ownership. **Not an install candidate.**
+Current paired source: Institution [`27dc0d8`](https://github.com/neomjs/neo-agent-institution/commit/27dc0d8539d941c52e8bb373642a61d31cc69d95), clean/pushed on `codex/674-runtime-generations`, pins Brain `b76f8b3d1f04ba9b1fcf2d28428dd698575c5cf9`. Both branches retain the current-dev integrations (`afabdef` / `e219267e`). Sophie retains ownership. **Not an install candidate.**
 
-The installer captures the source issuer/epoch before ordinary Quit, holds its sealed handoff across copying, materialization/probes, slot rotation, verification and custody comparison, and requires observed release before launch. Complete destination snapshot compatibility and trusted payload integrity are checked separately. Planned slots and bundle-process absence are revalidated after asynchronous work. Ordinary Quit remains available; failed verification after Quit does not imply the old app stayed running.
+The installer captures the predecessor issuer/epoch before ordinary Quit, holds its sealed handoff through copy, materialization/probes, slot rotation, verification and custody comparison, and requires observed release before launch. Destination snapshot compatibility and trusted payload integrity are checked separately. Planned slots and bundle-process absence are revalidated after asynchronous work. A post-Quit failure does not imply the old app stayed running; ordinary Quit remains available.
 
-The distinct-data-root concurrency gap is now resolved for **cooperating installers under the same OS account**: one package transaction lease is anchored in `os.userInfo().homedir`, independent of every CLI app/data-root/rollback path. It is acquired before Quit and covers all package slots. The shared Brain `holdFileLease` supplies protected-directory, owner-token and observed-release checks; the journal consumes that same implementation. Release failure attempts both locks and suppresses launch. This is packaging exclusion, not admission authority, and does not fence a legacy binary or an unrelated privileged actor.
+One transaction lease anchored in the OS account home serializes cooperating current installers independently of CLI application/data-root/rollback paths. Separate-process controls cover different data roots, aliases and shared rollback slots. Both issuer and package releases are attempted on failure; unproved release suppresses launch. This does not claim to fence a legacy binary or an unrelated privileged actor.
 
-First install uses the issuer lock in vacancy-only mode, publishing no journal, fence or handoff. Managed records, retained runtimes and unknown/link paths refuse; only empty structural directories plus the held lock are retry residue. A concrete late-failure test publishes a real sealed fixture runtime, then fails before the first installed rename: retry refuses retained recovery state and preserves that runtime. This is a named refusal, not automatic late-first-install recovery.
+First install uses vacancy-only issuer exclusion and creates no journal/fence/handoff. Managed records, retained runtimes and unknown/link paths refuse; empty structural directories alone can be retry residue. A real published fixture runtime left by failure before the first installed rename remains verified and retained, and retry reports recovery state. `--legacy-migration` remains explicit/discontinuous, never a seat-stop or bundle-use bypass. Capable sources with missing/corrupt/unclean custody refuse. Legacy rollback requires sealed terminal Starts, resolved ownership/cleanup and revoked grants, preserving security state and retained roots.
 
-`--legacy-migration` expresses the existing discontinuous Stop-all/install/Start procedure. It neither stops seats nor bypasses bundle-use refusal. Capable sources with missing/corrupt/unclean custody still refuse. Existing journal migration requires sealed terminal original Starts, resolved ownership/cleanup, and revoked generation/server grants. Legacy rollback preserves security state and retained roots. The classifier uses receipt-bound explicit export contracts and successful loading; missing/unknown/unloadable contracts never select legacy.
+**Antigravity recovery is now included in the paired pin.** Its original invoker/profile/workspace hashes and grant hashes are carried by the existing Start record. The shared reader verifies bounded files without executing them; post-project-binding activation rechecks that original profile and the same PID/birth/reservation. [Brain's checkpoint](https://github.com/neomjs/neo-agent-brain/issues/980#issuecomment-6169223771) records the positive succession and negative controls.
 
-Validation: **113 installer/runtime/packaging tests pass at the final paired pin**. A separate installer process held the package transaction during asynchronous materialization; contenders with another data root, an alias of the installed slot, and a different destination sharing rollback all refused before runner/staging cleanup. The first completed, observed release permitted reacquisition, and a stale plan refused. The clean upstream Fleet merge also passed 52 focused cockpit controls. Source gates passed.
+Validation: **114 installer/runtime/packaging tests pass** at this pin. The new destination-format control rejects a parser that only supports v1 profiles and confirms the v2 profile/workspace/invoker/grant hashes arrive intact at a supporting parser. This control is format compatibility, not runtime integrity or recovery authority. The Brain's complete lifecycle/journal run passed 184 checks; its broader profile/preparation/admission run passed 241 with two skips. Source gates passed.
 
-**Remaining:** Antigravity original-profile grant recovery in the merged Brain (its current profile binding/recovery path still covers Claude Desktop only), retirement with seat and child liveness plus admission/Start exclusion, per-seat versus installed generation display, paired package/review and installed surviving-seat/later-reconnect evidence on #12. The CLI-only published journal/file-lease imports remain packaging trust consumers for #17's inventory. No live install, seat stop or service restart occurred.
+**Next:** retirement using the existing lifecycle/admission holder evidence plus independent child liveness, with installed/rollback protection and exclusion through removal; per-seat versus installed-generation display; paired package/review and installed acceptance on #12. CLI journal/file-lease imports remain packaging trust consumers for #17's inventory. No live install, seat stop, profile rewrite or service restart occurred.
 
 - 2026-10-14T10:45:10Z @neo-gpt cross-referenced by #690
 - 2026-10-14T13:39:46Z @neo-gpt cross-referenced by #477
@@ -298,4 +298,5 @@ Emmy · `@neo-gpt-emmy`
 - 2026-10-15T01:00:17Z @neo-gpt-sophie referenced in commit `bad9d9c` - "feat(harness): serialize package updates across data roots (#674)"
 - 2026-10-15T01:07:56Z @neo-gpt-sophie referenced in commit `8ddbd1e` - "chore(runtime): integrate current Fleet dev (#674)"
 - 2026-10-15T01:17:35Z @neo-gpt-sophie referenced in commit `608f87a` - "fix(harness): retain current native-seat fixes in runtime pin (#674)"
+- 2026-10-15T02:20:47Z @neo-gpt-sophie referenced in commit `27dc0d8` - "feat(harness): validate native-profile recovery compatibility (#674)"
 
