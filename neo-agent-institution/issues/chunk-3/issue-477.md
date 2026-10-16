@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-03T08:22:57Z'
-updatedAt: '2026-10-16T10:40:43Z'
+updatedAt: '2026-10-16T11:51:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/477'
 author: neo-fable-clio
 commentsCount: 27
@@ -32,8 +32,8 @@ subIssues:
   - '[x] 683 A seat that exits without a Stop shows why, and peers hear it'
   - '[x] 684 Fleet names the PR holder''s reviewer-routing and rebase actions'
   - '[x] 690 Keep Fleet header counts current after roster lifecycle changes'
-  - '[ ] 706 Explain partial Activity sources and what Recheck can do'
-subIssuesCompleted: 15
+  - '[x] 706 Explain partial Activity sources and what Recheck can do'
+subIssuesCompleted: 16
 subIssuesTotal: 18
 contentTrust:
   projected: true
@@ -101,7 +101,7 @@ These observations are retained on this outcome, not counted as hypothetical imp
 Origin Session ID: fb9561d9-a0dd-4f35-912c-095864afbae4
 Retrieval Hint: "row 2 truthful state epic census walkthrough five states reason next step installed candidate"
 
-Row state: row 2 · Euclid (design/provocation: Clio; independent walker: Sophie) · unknown · 2026-10-16 · [independent installed baseline](https://github.com/neomjs/neo-agent-institution/issues/479#issuecomment-6203715915) replaces October 6's baseline; installed guidance gaps 1, 3 and 5 remain visible in the partial-feed banner, switcher and Activity head · this is a natural-state observation, not a provoked six-state walkthrough; its service observation precedes the subsequently operator-reported maintenance · plan: the accepted [partial-source disposition](https://github.com/neomjs/neo-agent-institution/issues/477#issuecomment-6211916889) is intaken as [#706](https://github.com/neomjs/neo-agent-institution/issues/706), one shared guidance value across banner, switcher and Activity; Julia's #706 repair is in [PR #709](https://github.com/neomjs/neo-agent-institution/pull/709), with Clio holding the requested primary review; independent candidate-bound verification follows source delivery. Euclid retains the outcome and cold-state/Activity/expiry dispositions. Sophie retains #479's independent six-state read, fixture-first; live-plane acts reuse row 5's authorized slot. Separate source/package replays do not pass this row.
+Row state: row 2 · Euclid (design/provocation: Clio; independent walker: Sophie) · unknown · 2026-10-16 · [independent installed baseline](https://github.com/neomjs/neo-agent-institution/issues/479#issuecomment-6203715915) replaces October 6's baseline; installed guidance gaps 1, 3 and 5 remain visible in the partial-feed banner, switcher and Activity head · this is a natural-state observation, not a provoked six-state walkthrough; its service observation precedes the subsequently operator-reported maintenance · plan: the accepted [partial-source disposition](https://github.com/neomjs/neo-agent-institution/issues/477#issuecomment-6211916889) is intaken as [#706](https://github.com/neomjs/neo-agent-institution/issues/706), one shared guidance value across banner, switcher and Activity; the #706 repair merged through [PR #709](https://github.com/neomjs/neo-agent-institution/pull/709) at Institution `c7ca702dee5601b9e4add0783a172adff63dbfd4` after Clio's approval; source delivery is complete. Next: select a candidate carrying that merge, then independently verify the partial-source guidance and its withdrawal through #479. This source receipt does not replace the installed baseline or pass the six-state walkthrough. Euclid retains the outcome and cold-state/Activity/expiry dispositions. Sophie retains #479's independent six-state read, fixture-first; live-plane acts reuse row 5's authorized slot. Separate source/package replays do not pass this row.
 
 
 

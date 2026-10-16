@@ -1,7 +1,7 @@
 ---
 id: 704
 title: Document recovery when an issuer lock outlives its process
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-15T23:20:57Z'
-updatedAt: '2026-10-16T01:12:36Z'
+updatedAt: '2026-10-16T14:30:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/704'
 author: neo-gpt-sophie
-commentsCount: 3
+commentsCount: 5
 parentIssue: 12
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-16T14:30:52Z'
 ---
 # Document recovery when an issuer lock outlives its process
 
@@ -343,4 +344,49 @@ Pickup: reconcile the draft against current source and the named fixture boundar
 
 Origin Session ID: `7d0b6e29-3d57-4c3c-87a7-473974395a2f`.
 
+- 2026-10-16T09:36:20Z @neo-gpt-sophie cross-referenced by #707
+### @neo-gpt-sophie - 2026-10-16T14:09:05Z
+
+### Resumed intake — documentation delivery
+
+**Valid as written.** The ticket remains self-assigned and has no open blocker edges. The drift probe includes the merged #702 changes to `harness/README.md`, so I re-read the current guide and source rather than using the earlier-session exemption. The issuer recovery section is still absent; the merged-PR search returned the existing runtime delivery, not a completed guide. No open Institution PR overlaps this work.
+
+Prescription checked: `harness/README.md` owns this operator guidance, as the prior non-author read recorded in the [handover](https://github.com/neomjs/neo-agent-institution/issues/704#issuecomment-6205747452) confirmed. The existing lease/journal remain the runtime owners; no new recovery actuator or user prerequisite is introduced. The four-case and chronology controls remain the evidence boundary. Brain's directly exercised files are unchanged through `c9d894c6`; I will replay the isolated walkthrough using the supported Node runtime and the guide's PID probe before publication.
+
+ADR successor-risk: **adr-aligned** — ADR 0034 §2.5 and ADR 0038 §2.5.2 retain unknown-owner refusal and separate exclusion from clean admission recovery. No decision change. Created 2026-10-15T23:20:57Z; last update before pickup 2026-10-16T01:12:36Z; no stale/exemption labels. The repository's current automation marks at 90 days and does not auto-close. This is currency evidence from source and history, not an age exemption.
+
+Prior-art anchor: Memory Core `e67848b7-ed98-4265-ace5-3d0b85c74531`, Origin Session `7d0b6e29-3d57-4c3c-87a7-473974395a2f`. Graph pre-brief returned `NODE_NOT_FOUND`; live GitHub and the recorded walkthrough supplied the missing graph context. Scope remains one README change, with positive value before the next manual update; live recovery and installed acceptance stay on #12.
+
+### @neo-gpt-sophie - 2026-10-16T14:11:50Z
+
+### Current-source walkthrough — 2026-10-16
+
+Replayed the [four-case isolated script](https://github.com/neomjs/neo-agent-institution/issues/704#issuecomment-6205116138) with its revision binding changed to merged Brain `c9d894c6dbed77e10ecb95f06300f919d87b4f73`, using Node **v24.19.0**. It exited 0 at **2026-10-16T14:10:45.345Z**. All four directly imported source files byte-matched that revision before execution.
+
+| Case | Observed result |
+| --- | --- |
+| Genuine active issuer | `FILE_LEASE_HELD`; lock, journal and fence bytes unchanged |
+| Exited helper PID, verified `ESRCH` | Guarded reclaim; journal/fence unchanged by reclaim; next journal reports `unclean-issuer-exit` |
+| Old record naming the live fixture PID | `FILE_LEASE_HELD`; all three records unchanged |
+| Corrupt holder | `FILE_LEASE_HELD`; all three records unchanged |
+
+The temporary fixture was removed in `finally`; the helper exited on its own. This is simulated PID reuse, not an observed OS reuse or live Fleet recovery.
+
+The **exact `node -e` snippet extracted from the edited README** also passed: current process → `present: retain the lock`; exited helper → `absent: normal acquisition may retry`; injected `EPERM` in an isolated VM → `unknown; retain the lock`; invalid negative PID → refusal before syscall. The permission case did not probe another user's process.
+
+The draft now says a held-lock error can mean availability was unverifiable, and distinguishes a matching active journal's `unclean-issuer-exit` from valid mismatched records' `handoff-replayed`. The executable statement is narrowed to Brain JavaScript children, including the config resolver. These wording corrections follow the actual error and launch paths; no runtime code changed.
+
+Source digests:
+```
+fileLease.mjs              9f539d400d53b2c2f303aab051f92c238aa8e61857dc094e6b9e62c7f0ab5ec6
+lifecycleGuard.mjs         1a2e11fcb4136c1aabd08ef3d15e700bbf53583e469dec163a9abc0a0cc2303e
+launchAdmissionJournal.mjs e7ddbc46837f571d4c099ff4e0f22b1eed0296cf8d9b8598fc0a2e0aaa560c48
+atomicFileWrite.mjs        322d3bbc0572f7dc1197314c59bb5996eda1c06732ad7d602ee7a5c14cb4f7a2
+```
+
+Origin Session ID: `c8334b16-9aa5-4b9c-99c4-3da0453c0128`.
+
+- 2026-10-16T14:12:51Z @neo-gpt-sophie cross-referenced by PR #711
+- 2026-10-16T14:30:53Z @tobiu referenced in commit `3ec914d` - "docs(harness): explain retained issuer-lock recovery (#704) (#711)"
+- 2026-10-16T14:30:53Z @tobiu closed this issue
 

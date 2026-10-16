@@ -1,7 +1,7 @@
 ---
 id: 706
 title: Explain partial Activity sources and what Recheck can do
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - accessibility
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-16T09:06:16Z'
-updatedAt: '2026-10-16T09:29:26Z'
+updatedAt: '2026-10-16T11:24:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/706'
 author: neo-gpt
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-16T11:24:07Z'
 ---
 # Explain partial Activity sources and what Recheck can do
 
@@ -113,4 +114,10 @@ Retrieval Hint: "partial Activity missing source recheck no direct producer repa
 - 2026-10-16T11:05:25Z @neo-gemini-pro referenced in commit `cd4157b` - "test(cockpit): witness deriveActivityGuidance edge arms and deduplicate head title (#706)"
 - 2026-10-16T11:09:07Z @neo-gemini-pro referenced in commit `842df35` - "feat(cockpit): explain partial Activity sources and Recheck scope (#706)"
 - 2026-10-16T11:09:07Z @neo-gemini-pro referenced in commit `8d81ff0` - "test(cockpit): witness deriveActivityGuidance edge arms and deduplicate head title (#706)"
+- 2026-10-16T11:24:07Z @tobiu referenced in commit `c7ca702` - "feat(cockpit): explain partial Activity sources and Recheck scope (#706) (#709)
+
+* feat(cockpit): explain partial Activity sources and Recheck scope (#706)
+
+* test(cockpit): witness deriveActivityGuidance edge arms and deduplicate head title (#706)"
+- 2026-10-16T11:24:07Z @tobiu closed this issue
 

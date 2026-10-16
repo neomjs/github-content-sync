@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-10-16T11:13:06Z'
+updatedAt: '2026-10-16T13:45:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
-commentsCount: 92
+commentsCount: 93
 parentIssue: null
 subIssues:
   - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
@@ -20,9 +20,9 @@ subIssues:
   - '[x] 386 The cockpit window draws a gray native title bar above its own dark top bar'
   - '[x] 591 Fleet pop-out windows cannot find a drop target on return'
   - '[ ] 649 The installed Fleet Manager''s windows carry stable Neural Link names (after v1)'
-  - '[ ] 704 Document recovery when an issuer lock outlives its process'
+  - '[x] 704 Document recovery when an issuer lock outlives its process'
   - '[x] 707 Recover the initial shell roster after a startup timeout'
-subIssuesCompleted: 5
+subIssuesCompleted: 6
 subIssuesTotal: 7
 contentTrust:
   projected: true
@@ -2415,10 +2415,26 @@ The complete probe records four `fleetRoster` calls, admitted fixture plane, suc
 
 **Installation gate:** receipt-bound inspection classifies this candidate as `generation`, the installed `afabdef60/e219267e/d52f0e3d` bundle as `legacy`. The read-only installer dry run at 11:09:32 UTC refused `running`, reporting 111 process entries. That is not a seat count. The existing installed receipt is unchanged.
 
-**Next owned action:** coordinate a fresh seat/work checkpoint and an explicit legacy Stop-all/install/Start window for this artifact. Recheck executable holders and installer eligibility at that window; today's online report and this dry run cannot authorize a later replacement. A merge is not approval to interrupt peers. The later generation-to-generation tool survival, child reconnect, restart, rollback and guarded-retirement witnesses remain open. The earlier non-isolated inspection incident's retained runtime also stays in the retirement ledger.
+**Operator steer — 16 October:** manual updates are an accepted path when needed. Peers checkpoint their work, and the current sessions should resume after the update. This is a checkpoint-and-resume operation; no session sunset is implied. No immediate stop/restart window was requested in this exchange.
+
+**Next owned action:** select and qualify the cut for that window, gather a fresh seat/work checkpoint including each existing session's resume reference, then perform the explicit legacy Stop-all/install/Start transition and verify resumed sessions and native tools. Recheck executable holders and installer eligibility at the window. The next cut for #479's partial-guidance read should include #709 (merged `c7ca702dee5601b9e4add0783a172adff63dbfd4` at 11:24:05 UTC); the `5107867` artifact documented above predates it and retains only its own qualification.
+
+The later generation-to-generation tool survival, child reconnect, restart, rollback and guarded-retirement witnesses remain open. The earlier non-isolated inspection incident's retained runtime also stays in the retirement ledger.
 
 The recovery remains once per controller lifetime; switching onto a still-booting plane must be observed separately. Earlier baseline reproduction and custody boundaries remain [in the baseline receipt](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-6204571675). Sophie retains #12.
 
 Origin Session ID: `c8334b16-9aa5-4b9c-99c4-3da0453c0128`.
 
+- 2026-10-16T11:47:32Z @neo-gpt cross-referenced by PR #1064
+### @neo-gpt - 2026-10-16T13:45:17Z
+
+Source availability for the next selected Fleet candidate: [Brain #1064](https://github.com/neomjs/neo-agent-brain/pull/1064), resolving Brain #1062, is human-merged at `c9d894c6dbed77e10ecb95f06300f919d87b4f73` (2026-10-16 13:43:53 UTC). The adapter keeps local stdio alive across recoverable remote session loss and never replays a lost write. Its real-executable loopback receipt and 28 bridge tests bind the reviewed source; installed native adoption remains this outcome's separate post-merge check. Logical conversation continuity remains [D19401](https://github.com/neomjs/neo/discussions/19401). No package, installed bundle, peer session or service was changed by this source handoff.
+
+Origin Session ID: 5333f9c4-02c5-43fb-b40c-75216654a278
+
+- 2026-10-16T14:12:51Z @neo-gpt-sophie cross-referenced by PR #711
+- 2026-10-16T14:34:56Z @neo-fable cross-referenced by #712
+- 2026-10-16T14:35:20Z @neo-fable cross-referenced by #713
+- 2026-10-16T14:36:03Z @neo-fable cross-referenced by #715
+- 2026-10-16T15:50:26Z @neo-gpt cross-referenced by #1062
 

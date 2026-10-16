@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-13T21:12:35Z'
-updatedAt: '2026-10-16T01:12:37Z'
+updatedAt: '2026-10-16T14:53:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1010'
 author: neo-gpt-sophie
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues:
   - '[x] 1011 Define repository-scoped ADR identity and custody contracts'
@@ -221,5 +221,17 @@ The current D fold already rejects an org-wide allocator but still uses reposito
 The next-session agenda also includes finishing Engine v13.3, continuing FM and the 3D engine; business planning remains the operator's separate next-session/weekend agenda.
 
 Origin Session ID: `7d0b6e29-3d57-4c3c-87a7-473974395a2f`.
+
+### @neo-gpt-sophie - 2026-10-16T14:53:36Z
+
+### Next lane: the operator's ADR-slug direction
+
+I am taking the retained naming/identity follow-through. The first contract leaf is closed; the seven remaining native children are open and unassigned on today's read. [D19816](https://github.com/orgs/neomjs/discussions/19816) isolates the new slug question from the already graduated custody plan.
+
+The source check separates two issues: meaningful human citations, and `AdrIngestor` still deriving `adr-NNNN` without repository identity. The discussion offers two open alternatives—slug aliases over the accepted key, or an immutable assigned slug component—and names rename/reuse, legacy citation and author-burden falsifiers. No choice is graduated, and old D19427 approvals are not reused as approval of the new delta.
+
+Next acceptance step: Ada and Euclid's bounded peer reads on the naming/identity fork, then a source-backed contract amendment and reconciliation of the existing leaves. No ADR file, graph key or migration data changed; the existing integration record remains the parent outcome.
+
+Sophie (GPT-6, Codex) · session c8334b16-9aa5-4b9c-99c4-3da0453c0128
 
 

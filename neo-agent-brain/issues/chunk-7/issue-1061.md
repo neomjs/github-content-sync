@@ -1,15 +1,16 @@
 ---
 id: 1061
 title: Preserve Homebrew and local bin PATH in Antigravity MCP invokers
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - model-experience
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-pro
 createdAt: '2026-10-15T23:24:19Z'
-updatedAt: '2026-10-15T23:24:19Z'
+updatedAt: '2026-10-16T15:31:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1061'
 author: neo-gemini-pro
 commentsCount: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-16T15:31:20Z'
 ---
 # Preserve Homebrew and local bin PATH in Antigravity MCP invokers
 
@@ -46,21 +48,21 @@ When `Neo Harness.app` is launched from macOS Finder/Dock rather than an interac
 
 ## The Architectural Reality
 
-- `ai/services/fleet/FleetLifecycleService.mjs:2739` (`resolveAntigravityStartContext`) calls `this.snapshotAmbientProcessEnvironment()` (`:2804-2812`) to capture `AMBIENT_ENV_ALLOWLIST` (`HOME`, `PATH`, `USER`, `LOGNAME`, `TMPDIR`, `LANG`, `LC_ALL`, `SHELL`, `TERM`).
+- `ai/services/fleet/FleetLifecycleService.mjs:743-745` (`start` default `resolvedProcessEnvironment` for every managed seat's spawn environment) and `:3083` (`resolveAntigravityStartContext`) call `this.snapshotAmbientProcessEnvironment()` (`:3151-3163`) to capture `AMBIENT_ENV_ALLOWLIST` (`HOME`, `PATH`, `USER`, `LOGNAME`, `TMPDIR`, `LANG`, `LC_ALL`, `SHELL`, `TERM`).
 - `ai/services/fleet/prepareManagedAgentWorkspace.mjs:1490-1494` (`prepareAntigravityArtifacts`) forwards `processEnvironment` to `generateAntigravityMcpFiles({profileHome: instanceHome, rows, processEnvironment})`.
 - `ai/services/fleet/generateAntigravityMcpFiles.mjs:59-67` serializes `exec /usr/bin/env -i` with `PATH=${processEnvironment.PATH}` into `<profileHome>/.neo-fleet-mcp/{memory-core,knowledge-base,github-workflow,neural-link}.sh`.
 - `neomjs/neo-agent-institution/harness/brain.mjs:908-926` (`startBrainChild`) constructs `PATH` for `devFleetServer.mjs` without ensuring standard macOS user/package binary paths (`/opt/homebrew/bin`, `/usr/local/bin`) are present when `Neo Harness.app` starts from Finder/Dock.
 
 ## The Fix
 
-1. Normalize `PATH` in `FleetLifecycleService.snapshotAmbientProcessEnvironment()` (or in a shared `PATH` helper consumed by `snapshotAmbientProcessEnvironment` and `startBrainChild`) so that on `darwin` / POSIX hosts, existing standard tool directories (`/opt/homebrew/bin`, `/usr/local/bin`) are appended to `PATH` when absent from the GUI parent's `process.env.PATH` (preserving the caller's existing segments first so shims and explicit overrides still win).
-2. Add unit test coverage in `test/playwright/unit/ai/FleetLifecycleService.spec.mjs` and `test/playwright/unit/ai/services/fleet/generateAntigravityMcpFiles.spec.mjs` verifying that when `process.env.PATH` is Finder's minimal `/usr/bin:/bin:/usr/sbin:/sbin`, the snapshotted `processEnvironment.PATH` and generated `.neo-fleet-mcp/github-workflow.sh` preserve `/opt/homebrew/bin` and `/usr/local/bin` (after existing `PATH` entries).
+1. Normalize `PATH` in `FleetLifecycleService.snapshotAmbientProcessEnvironment()` (or in a shared `PATH` helper consumed by `snapshotAmbientProcessEnvironment` and `startBrainChild`) so that on `darwin` / POSIX hosts, existing standard tool directories (`/opt/homebrew/bin`, `/usr/local/bin`) are appended to `PATH` when absent from a stripped `launchd` GUI parent's `process.env.PATH` (preserving the caller's existing segments first so shims and explicit overrides still win, and returning non-`launchd` `PATH`s unchanged).
+2. Add unit test coverage in `test/playwright/unit/ai/FleetLifecycleService.spec.mjs` and `test/playwright/unit/ai/services/fleet/generateAntigravityMcpFiles.spec.mjs` verifying that when `process.env.PATH` is Finder's minimal `/usr/bin:/bin:/usr/sbin:/sbin`, the snapshotted `processEnvironment.PATH` and generated `.neo-fleet-mcp/github-workflow.sh` preserve `/opt/homebrew/bin` and `/usr/local/bin` (after existing `PATH` entries), while non-`launchd` `PATH`s remain unchanged.
 
 ## Contract Ledger
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `FleetLifecycleService.snapshotAmbientProcessEnvironment` | `ai/services/fleet/FleetLifecycleService.mjs:2804` | Appends missing standard POSIX/macOS tool bin directories (`/opt/homebrew/bin`, `/usr/local/bin`) after existing `process.env.PATH` segments when snapshotting the benign process environment | Existing `process.env.PATH` when standard directories are already present | JSDoc on `snapshotAmbientProcessEnvironment` | `test/playwright/unit/ai/FleetLifecycleService.spec.mjs` |
+| `FleetLifecycleService.snapshotAmbientProcessEnvironment` (consumed by `start()`'s default `resolvedProcessEnvironment` at `FleetLifecycleService.mjs:743–745` for every managed seat's spawn env and `resolveAntigravityStartContext` at `:3083`) | `ai/services/fleet/FleetLifecycleService.mjs:3151` | Appends missing standard POSIX/macOS tool bin directories (`/opt/homebrew/bin`, `/usr/local/bin`) after existing `process.env.PATH` segments when every `PATH` segment is a `launchd` system dir (`/usr/bin`, `/bin`, `/usr/sbin`, `/sbin`, `/opt/homebrew/bin`, `/usr/local/bin`) or an organism `/shims` / `/node_modules/.bin` entry (with `/usr/bin` and `/bin` present) | Returns `process.env.PATH` unchanged when any segment is outside the `launchd` / organism set or when standard directories are already present | JSDoc on `normalizeAmbientPath` and `snapshotAmbientProcessEnvironment` | `test/playwright/unit/ai/FleetLifecycleService.spec.mjs` |
 | `generateAntigravityMcpFiles` | `ai/services/fleet/generateAntigravityMcpFiles.mjs:34` | Emits `.neo-fleet-mcp/<key>.sh` with `PATH` carrying the normalized `processEnvironment.PATH` under `exec /usr/bin/env -i` | Refuses non-allowlisted env slots | JSDoc on `generateAntigravityMcpFiles` | `test/playwright/unit/ai/services/fleet/generateAntigravityMcpFiles.spec.mjs` |
 
 Decision Record impact: none
@@ -99,6 +101,7 @@ Origin Session ID: 14f10506-4e8f-40bb-96be-69dac6effa98
 Retrieval Hint: "generateAntigravityMcpFiles snapshotAmbientProcessEnvironment /opt/homebrew/bin/gh env -i PATH"
 
 
+
 ## Timeline
 
 - 2026-10-15T23:24:20Z @neo-gemini-pro added the `bug` label
@@ -106,4 +109,13 @@ Retrieval Hint: "generateAntigravityMcpFiles snapshotAmbientProcessEnvironment /
 - 2026-10-15T23:24:20Z @neo-gemini-pro added the `model-experience` label
 - 2026-10-15T23:24:20Z @neo-gemini-pro added the `agent-os` label
 - 2026-10-15T23:40:11Z @neo-gpt-sophie cross-referenced by #12
+- 2026-10-16T14:12:29Z @neo-gemini-pro assigned to @neo-gemini-pro
+- 2026-10-16T14:22:49Z @neo-gemini-pro cross-referenced by PR #1065
+- 2026-10-16T14:48:00Z @neo-gemini-pro referenced in commit `7dd9621` - "fix(fleet): pin negative-arm PATH normalization in FleetLifecycleService spec (#1061)"
+- 2026-10-16T15:31:21Z @tobiu closed this issue
+- 2026-10-16T15:31:21Z @tobiu referenced in commit `924b8bd` - "fix(fleet): preserve Homebrew and local bin PATH in Antigravity MCP invokers (#1061) (#1065)
+
+* fix(fleet): preserve Homebrew and local bin PATH in Antigravity MCP invokers (#1061)
+
+* fix(fleet): pin negative-arm PATH normalization in FleetLifecycleService spec (#1061)"
 
