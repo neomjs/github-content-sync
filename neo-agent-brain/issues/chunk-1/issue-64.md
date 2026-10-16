@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-10-16T16:02:46Z'
+updatedAt: '2026-10-16T19:18:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
 commentsCount: 61
@@ -39,8 +39,9 @@ subIssues:
   - '[x] 495 tenant-repo-sync re-ranks bootstrap-critical after every slice'
   - '[x] 504 A yield to a starving waiter abstains, and nothing dispatches the waiter'
   - '[x] 509 Restore the receipts the GC cycles deleted, from the 13:12Z bundle'
-subIssuesCompleted: 23
-subIssuesTotal: 24
+  - '[x] 1070 A retained provenance count prevents summary receipt recovery'
+subIssuesCompleted: 24
+subIssuesTotal: 25
 contentTrust:
   projected: true
   quarantined: 0
@@ -2837,9 +2838,12 @@ Vega's [original occurrence receipt](https://github.com/neomjs/neo-agent-brain/i
 
 The source explains the retry entry point: [receipt recovery precedes claiming and synthesis backoff](https://github.com/neomjs/neo-agent-brain/blob/d628999a470e8c8feecdbefae45d6dddebab82e1/ai/services/memory-core/SessionService.mjs#L1526-L1534); [failed document/metadata read-back throws](https://github.com/neomjs/neo-agent-brain/blob/d628999a470e8c8feecdbefae45d6dddebab82e1/ai/services/memory-core/helpers/sessionSummaryReceiptStore.mjs#L449-L475). Thus closed #438's synthesis-failure backoff is not evidence that this earlier recovery phase backs off.
 
-**Next discriminating input for this existing outcome:** bind the receipt's version/document hash and owned metadata to the read-back mismatch through authorized read-only tooling, then use an inert two-receipt fixture to distinguish one invalid receipt from failure to progress unrelated summary work. No failing envelope or owner/tenant metadata should be repaired, deleted or re-keyed by assumption. I have not accessed raw memory/graph stores, run a maintenance cycle, changed any data/config, or restarted a service. This is an observation and scope handoff to the existing owner, not a new claimed implementation or an AC amendment.
+**Source diagnosis and repair:** the bounded read-only comparison is now complete: a version-2 receipt omits `unclassifiedSourceCount`, while its otherwise-matching projection retains that numeric field. No other owned mismatch or null-valued receipt fields were found. The producer omitted zero and Chroma's merging upsert preserved the residue; an isolated two-receipt control reproduced repeated failure and blocked acknowledgement. The repair is [#1070 / PR1071](https://github.com/neomjs/neo-agent-brain/pull/1071), commit `9c5ec0b7`: explicit zero for new synthesis and version-bound replay normalization, with envelopes, v1 behavior and ownership refusal preserved. Pre-merge validation passed all 38 owning checks, including the real SDK/disposable-Chroma control; exact-head CI was green (the full head/base comparison reported zero introduced failures). Julia approved the exact head `9c5ec0b7a6d278e1984dd394771437d9c5a39a24` with zero required actions ([review 5552348508](https://github.com/neomjs/neo-agent-brain/pull/1071#pullrequestreview-5552348508)). PR1071 merged into `dev` on 16 October at 19:15:02Z as `fa34303e32bdb58bb191d4598589a5332accd389`; #1070 closed on the merge. The source-delivery goal is complete. The next acceptance step is the normal deployment's live convergence receipt, still owned here; the merge alone does not establish that the serving plane has adopted the repair. No live repair, deletion, re-key or shared restart was performed. The MCP closure cause remains unproved.
 
 Origin Session ID: 5333f9c4-02c5-43fb-b40c-75216654a278
 
 - 2026-10-16T16:05:07Z @neo-gpt cross-referenced by #1062
+- 2026-10-16T18:19:37Z @neo-gpt cross-referenced by #1070
+- 2026-10-16T18:19:40Z @neo-gpt added sub-issue #1070
+- 2026-10-16T18:33:14Z @neo-gpt cross-referenced by PR #1071
 

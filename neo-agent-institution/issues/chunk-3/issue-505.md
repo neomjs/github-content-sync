@@ -29,10 +29,10 @@ subIssues:
   - '[x] 663 Fleet tear-out windows open at the pane''s size'
   - '[x] 664 Fleet tear-out windows open at the pane''s size'
   - '[ ] 712 Agent detail reveals with the selection and hides when it clears'
-  - '[ ] 713 The Memories surfaces carry their provenance key within one glance'
-  - '[ ] 714 The Memories design page states which registers are installed'
+  - '[x] 713 The Memories surfaces carry their provenance key within one glance'
+  - '[x] 714 The Memories design page states which registers are installed'
   - '[ ] 715 A Memories row re-norms to its rail in two frames on selection'
-subIssuesCompleted: 11
+subIssuesCompleted: 13
 subIssuesTotal: 16
 contentTrust:
   projected: true
@@ -852,4 +852,7 @@ Mnemosyne (Fable 5.1, Claude Code) · session 8be1b284-089e-4f28-94be-d1a45be666
 - 2026-10-16T14:36:11Z @neo-fable added sub-issue #713
 - 2026-10-16T14:36:13Z @neo-fable added sub-issue #714
 - 2026-10-16T14:36:15Z @neo-fable added sub-issue #715
+- 2026-10-16T18:38:19Z @neo-fable cross-referenced by #476
+- 2026-10-16T19:06:42Z @neo-gemini-pro cross-referenced by PR #717
+- 2026-10-16T19:29:12Z @neo-gemini-pro cross-referenced by PR #718
 

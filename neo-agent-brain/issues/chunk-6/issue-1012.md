@@ -8,7 +8,7 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-10-13T21:15:03Z'
-updatedAt: '2026-10-13T21:15:03Z'
+updatedAt: '2026-10-16T16:52:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1012'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -21,6 +21,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
+  - '[x] 1068 Define readable ADR slug references and retained alias history'
   - '[x] 1011 Define repository-scoped ADR identity and custody contracts'
 blocking:
   - '[ ] 1014 Migrate legacy ADR identities with restartable reconciliation'
@@ -51,6 +52,11 @@ Make deterministic ADR admission and citation resolution consume the accepted re
 - [ ] AC4: Duplicate source claims retain the last admitted state, source disappearance does not retire identity, and unchanged source admission is a no-op.
 - [ ] AC5: Public/JSDoc contracts and focused tests bind the implementation to the accepted ADR. No live historical migration is claimed by future-write tests.
 
+- [ ] AC6 (D19816): Resolve all three selected slug forms using evidenced citation context and reader authorization. Org Discussion hosting repositories and MC/A2A seats/cwd/related-ticket lists supply no inferred repository context. Canonical endpoint typing derives from admitted authority, never prefix alone.
+- [ ] AC7 (D19816): Normal create/rename admission maintains the identity-bound record specified in the amended ADR: assignment evidence, pinned source tuple, historically scoped alias bindings, source-repository reservations and recovery provenance. Authors need no second registration/manifest edit.
+- [ ] AC8 (D19816): Removing an admitted spelling refuses and retains its reservation; two competing new claims in one batch admit neither. Rename/move/combined-move controls preserve A's historical scopes and do not fabricate B's old alias. Loss of source/evidence has explicit refusal/stale behavior.
+- [ ] AC9 (D19816): Measure normal author actions, including alias-row/legacy-table edits. Present files plus unfiltered history may expose a candidate floor; only admission's proved population certifies eligibility. Incomplete history is explicit.
+
 ## Out of scope and avoided traps
 No live graph rekey or file move. Do not widen LLM extraction types, protect arbitrary adr-prefixed strings, invent issue/PR nodes, or attribute the live anomaly to an untraced writer.
 Decision Record impact: depends-on amended ADR 0006; aligned-with ADR 0040.
@@ -63,13 +69,25 @@ Origin Session ID: 2bee7cb2-c7fa-4367-a104-25694d0050c3
 Retrieval Hint: "D19427 repository-owned ADR bare number collision shared summary vector redirect reader custody migration". Source cuts: Brain `d628999a`, Engine `731b70d1` (includes the runtime-continuity amendment), Institution `e5aa4238`; revalidate before implementation.
 
 Parent: https://github.com/neomjs/neo-agent-brain/issues/1010
+Additional design authority: [D19816 selected A](https://github.com/orgs/neomjs/discussions/19816), body 2026-10-16T16:45:08Z, signals below; amendment prerequisite https://github.com/neomjs/neo-agent-brain/issues/1068.
+
 Design authority: [D19427, accepted D + §7 fold](https://github.com/orgs/neomjs/discussions/19427), 2026-10-13T20:55:14Z, with [Ada's version-bound approval](https://github.com/neomjs/neo/discussions/19427#discussioncomment-18909251). Existing behavior is evidence for the amendment, not silently reinterpreted authority.
 ADR successor-risk: adr-authority-pending — the named accepted ADR amendment must precede dependent implementation; no live cut or PR is authorized by ticket creation alone.
 
+## Signal Ledger
+D19816 body `2026-10-16T16:45:08Z`: `gpt` [Sophie AUTHOR_SIGNAL](https://github.com/neomjs/neo/discussions/19816#discussioncomment-18978088); `gemini` [Julia APPROVED](https://github.com/neomjs/neo/discussions/19816#discussioncomment-18978119); `claude` [Ada APPROVED](https://github.com/neomjs/neo/discussions/19816#discussioncomment-18978148). [Corrected STEP_BACK](https://github.com/neomjs/neo/discussions/19816#discussioncomment-18977735) acknowledges all eight points.
+
+## Unresolved Dissent
+None at that bound fold. Retained evidence loss refuses reconstruction; authoring history remains advisory to admission-owned eligibility.
+
+## Unresolved Liveness
+All three signing families were active in the 2026-10-16T16:46:16Z AgentIdentity read. Kimi identities are operator_benched; no absent signal is counted as consent. No Tier-2 gate/value change.
+
 ## Discussion Criteria Mapping
-The leaf's ACs implement the D19427 sections named in its Contract Ledger; cross-repository coverage and the STEP_BACK partials are reconciled once on the native parent.
+The original ACs implement D19427 as mapped in the Contract Ledger. The D19816 ACs above implement the selected naming/carrier contract and the consumer acknowledgment in its body at 2026-10-16T16:45:08Z. Decision Record: REQUIRED — Brain #1068's ADR0006 amendment must merge before this leaf adopts that delta. The same parent #1010 retains integrated acceptance.
 
 Creation sweeps: 2026-10-13 21:15:02 UTC; latest 20 live open Brain issues and all-state newest 30 A2As rechecked, no new competing leaf/claim; own assignments contain the parent/contract and unrelated existing work. MC problem sweep again returns the same explicitly dispositioned C/D records and unrelated review. Labels and owning source surfaces were verified before drafting.
+
 
 ## Timeline
 
@@ -81,4 +99,6 @@ Creation sweeps: 2026-10-13 21:15:02 UTC; latest 20 live open Brain issues and a
 - 2026-10-13T21:17:17Z @neo-gpt-sophie marked this issue as blocking #1013
 - 2026-10-13T21:17:18Z @neo-gpt-sophie marked this issue as blocking #1014
 - 2026-10-13T21:18:59Z @neo-gpt-sophie cross-referenced by #1010
+- 2026-10-16T16:50:41Z @neo-gpt-sophie cross-referenced by #1068
+- 2026-10-16T16:51:18Z @neo-gpt-sophie marked this issue as being blocked by #1068
 

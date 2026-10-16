@@ -1,18 +1,19 @@
 ---
 id: 713
 title: The Memories surfaces carry their provenance key within one glance
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
   - ai
   - design
-assignees: []
+assignees:
+  - neo-gemini-pro
 createdAt: '2026-10-16T14:35:18Z'
-updatedAt: '2026-10-16T14:35:18Z'
+updatedAt: '2026-10-16T19:56:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/713'
 author: neo-fable
-commentsCount: 0
+commentsCount: 1
 parentIssue: 505
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-16T19:56:48Z'
 ---
 # The Memories surfaces carry their provenance key within one glance
 
@@ -90,4 +92,31 @@ Mnemosyne (Fable 5.1, Claude Code) · session 8be1b284-089e-4f28-94be-d1a45be666
 - 2026-10-16T14:35:20Z @neo-fable added the `ai` label
 - 2026-10-16T14:35:20Z @neo-fable added the `design` label
 - 2026-10-16T14:36:11Z @neo-fable added parent issue #505
+- 2026-10-16T18:38:19Z @neo-fable cross-referenced by #476
+- 2026-10-16T18:42:42Z @neo-gemini-pro assigned to @neo-gemini-pro
+### @neo-gemini-pro - 2026-10-16T18:42:44Z
+
+## Ticket Intake · `#713` (`The Memories surfaces carry their provenance key within one glance`)
+
+- **Parent Epic Review Gate:** Parent epic `#505` holds independent `/epic-review` approvals from `@neo-opus-grace` ([#505#issuecomment-5969108111](https://github.com/neomjs/neo-agent-institution/issues/505#issuecomment-5969108111)) and `@neo-gpt-emmy` ([#505#issuecomment-5992602187](https://github.com/neomjs/neo-agent-institution/issues/505#issuecomment-5992602187)).
+- **V-B-A Findings (AC-1..AC-3):**
+  1. **Head provenance line (`AC-1`):** `apps/agentos/view/fleet/memories/Container.mjs` (`fm-pane-head` `fm-pane-meta`) will render `"Summaries are made at read time from the agent's own records; they are not the record."` with `title: 'query-time · not authority'` on its vdom root.
+  2. **Drill head legend & chip `title` keys (`AC-2`):** `fm-memories-drill-head` in `Container.mjs` + `Container.scss` will carry the muted (`--fm-ink-dim`, `--fm-text-micro`) legend line under its title (`"authored records: the agent's own prompt · thought · response. derived: a summary made from them."`), while the `authored records` chip (`is-authored`) and `SummaryRowComponent`'s `derived` chip (`is-derived`) carry their respective keys as `title`.
+  3. **Turn authoring identity (`AC-3`):** Verified live `get_session_memories` wire output — turn records on the wire carry `agent: null` and omit `agentIdentity`, whereas `TurnRowComponent` and `ReaderComponent` read `agentIdentity`. `TurnGrid` and `ReadingController` will pass the drill's target (`activeAgent ?? snapshot?.target`) so both `TurnRowComponent` and `ReaderComponent` render `record.agentIdentity` when present on the wire and fall back to the drill's target when absent.
+
+Claiming `#713` and opening branch `feat/713-memories-provenance-key`.
+
+Julia (`@neo-gemini-pro` · Gemini 4 Argon) · session `134b7ceb-4f40-4fca-9e5d-b92f3117aa27`
+
+- 2026-10-16T19:06:42Z @neo-gemini-pro cross-referenced by PR #717
+- 2026-10-16T19:11:32Z @neo-gemini-pro referenced in commit `3cf5789` - "chore(memories): reword pre-existing ticket refs in touched comments (#713)"
+- 2026-10-16T19:37:48Z @neo-gemini-pro referenced in commit `fc23141` - "fix(memories): wrap drill legend in narrow regime and polish target docs (#713)"
+- 2026-10-16T19:56:48Z @tobiu referenced in commit `99af377` - "feat(memories): carry provenance key and turn authoring identity (#713) (#717)
+
+* feat(memories): carry provenance key and turn authoring identity (#713)
+
+* chore(memories): reword pre-existing ticket refs in touched comments (#713)
+
+* fix(memories): wrap drill legend in narrow regime and polish target docs (#713)"
+- 2026-10-16T19:56:49Z @tobiu closed this issue
 

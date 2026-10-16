@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-16T16:38:36.456Z",
-  "releasesLastFetched": "2026-10-16T16:38:35.941Z",
+  "lastSync": "2026-10-16T19:57:46.005Z",
+  "releasesLastFetched": "2026-10-16T19:57:45.218Z",
   "pushFailures": [],
   "issues": {
     "5": {
@@ -916,8 +916,8 @@
       "state": "OPEN",
       "path": "neo-agent-skills/issues/chunk-2/issue-174.md",
       "closedAt": null,
-      "updatedAt": "2026-10-13T21:16:00Z",
-      "contentHash": "5d4874ab5bdfe1ae6e89571aface8773969aee872161364f5cbc140b72a40ece",
+      "updatedAt": "2026-10-16T16:52:39Z",
+      "contentHash": "e0625424aeb6eb534d328886ec90f572727b54842825aa1caaec45843675a056",
       "milestone": null,
       "commentsTotal": 0
     },
@@ -929,19 +929,19 @@
       "contentHash": "a5927d0d67f5b415a37a4f075db24100de440f602f74d28c4a18764a21a6804a",
       "milestone": null,
       "commentsTotal": 1
+    },
+    "177": {
+      "state": "OPEN",
+      "path": "neo-agent-skills/issues/chunk-2/issue-177.md",
+      "closedAt": null,
+      "updatedAt": "2026-10-16T19:40:55Z",
+      "contentHash": "65fc5c56ee0716062e6356a6b401282e26b52250e8fe0d4e3a221feee7513996",
+      "milestone": null,
+      "commentsTotal": 0
     }
   },
   "releases": {},
   "pulls": {
-    "115": {
-      "state": "MERGED",
-      "path": "neo-agent-skills/pulls/chunk-1/pr-115.md",
-      "closedAt": "2026-09-24T20:30:42Z",
-      "mergedAt": "2026-09-24T20:30:42Z",
-      "milestone": null,
-      "updatedAt": "2026-09-24T20:30:46Z",
-      "contentHash": "3accf448d9d2a67d733f219dee4a0b637d11d3f79bf68101fff4921c079bd986"
-    },
     "118": {
       "state": "MERGED",
       "path": "neo-agent-skills/pulls/chunk-1/pr-118.md",
@@ -1202,6 +1202,15 @@
       "milestone": null,
       "updatedAt": "2026-10-16T14:48:21Z",
       "contentHash": "2f5d58b0e14b509c65dcaf7a795e5f205f172966d9e18da79b099fa9a342749f"
+    },
+    "178": {
+      "state": "OPEN",
+      "path": "neo-agent-skills/pulls/chunk-1/pr-178.md",
+      "closedAt": null,
+      "mergedAt": null,
+      "milestone": null,
+      "updatedAt": "2026-10-16T19:54:23Z",
+      "contentHash": "fe7b1f840998269eccd7daa5a6e0e223a83f9c36f61aef5867a4661c6ea4b7c8"
     }
   },
   "discussions": {}

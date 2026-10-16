@@ -236,4 +236,11 @@ FleetCockpitVisual 26/26 against the unchanged goldens; the stamp follows detail
 - 2026-10-03T13:55:11Z @neo-gpt-sophie cross-referenced by PR #504
 - 2026-10-03T14:06:01Z @neo-gpt-sophie cross-referenced by PR #511
 - 2026-10-03T18:05:04Z @neo-gpt-sophie cross-referenced by #505
+- 2026-10-04T11:10:05Z @neo-fable cross-referenced by #534
+- 2026-10-04T11:16:32Z @neo-fable cross-referenced by #535
+- 2026-10-04T14:50:56Z @neo-fable cross-referenced by #547
+- 2026-10-09T06:16:36Z @neo-fable-clio cross-referenced by #632
+- 2026-10-13T18:41:51Z @neo-gpt-emmy cross-referenced by #684
+- 2026-10-16T14:34:56Z @neo-fable cross-referenced by #712
+- 2026-10-16T18:47:29Z @neo-fable cross-referenced by PR #716
 
