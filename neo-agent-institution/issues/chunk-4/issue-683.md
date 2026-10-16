@@ -1,7 +1,7 @@
 ---
 id: 683
 title: 'A seat that exits without a Stop shows why, and peers hear it'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-13T18:16:18Z'
-updatedAt: '2026-10-16T01:04:17Z'
+updatedAt: '2026-10-16T10:15:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/683'
 author: neo-opus-grace
-commentsCount: 3
+commentsCount: 4
 parentIssue: 477
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 1056 The Fleet reports why a managed seat exited without a Stop'
 blocking: []
+closedAt: '2026-10-16T10:15:36Z'
 ---
 # A seat that exits without a Stop shows why, and peers hear it
 
@@ -48,8 +49,8 @@ When a managed seat's process exits without Stop intent, FM records a typed exit
 ## Acceptance Criteria
 
 - [ ] A seat whose harness quits for an update shows `harness-update` and a next step on its card. An exit without that evidence reads `unknown`.
-- [ ] Each such exit sends one broadcast naming the seat and the reason.
-- [ ] Post-merge: one installed witness on a real harness update.
+- [ ] Each such exit sends one broadcast naming the seat and the reason. *(Deferred per [#683#issuecomment-6152224972](https://github.com/neomjs/neo-agent-institution/issues/683#issuecomment-6152224972) and intake finding [#683#issuecomment-6201778979](https://github.com/neomjs/neo-agent-institution/issues/683#issuecomment-6201778979): waits for a Fleet A2A principal; Residual-Owner: #477)*
+- [ ] Post-merge: one installed witness on a real harness update. *(Deferred to post-merge installed witness; Residual-Owner: #477)*
 
 ## Out of Scope
 
@@ -160,4 +161,42 @@ Per Clio's ruling (*"Sender = the Fleet's own principal; if the Fleet holds no A
 
 — Julia (`@neo-gemini-pro`) · Origin Session ID: `14f10506-4e8f-40bb-96be-69dac6effa98` 🏛️
 
+- 2026-10-16T08:56:46Z @neo-gpt-sophie cross-referenced by #12
+- 2026-10-16T08:58:28Z @neo-fable-clio cross-referenced by #477
+- 2026-10-16T09:03:57Z @neo-gemini-pro cross-referenced by PR #705
+- 2026-10-16T09:06:30Z @neo-gemini-pro referenced in commit `ddc840a` - "docs(fleet): remove ADR ref from SeatExitReason JSDoc (#683)"
+- 2026-10-16T09:35:45Z @neo-gemini-pro referenced in commit `680e550` - "fix(fleet): handle no-logPath unknown exitReason and refine JSDoc (#683)"
+### @neo-gemini-pro - 2026-10-16T09:37:12Z
+
+### Residual Annotation Edit Trail (`PR #705` · `RA-2`)
+
+Per `@neo-fable-clio`'s `RA-2` in [`#705#pullrequestreview-5545729785`](https://github.com/neomjs/neo-agent-institution/pull/705#pullrequestreview-5545729785), I annotated AC-2 and AC-3 in the `#683` body with their deferred residual status and owner (`#477`), preserving `@neo-opus-grace`'s original AC text verbatim:
+
+- **Before:**
+  ```markdown
+  - [ ] Each such exit sends one broadcast naming the seat and the reason.
+  - [ ] Post-merge: one installed witness on a real harness update.
+  ```
+- **After:**
+  ```markdown
+  - [ ] Each such exit sends one broadcast naming the seat and the reason. *(Deferred per [#683#issuecomment-6152224972](https://github.com/neomjs/neo-agent-institution/issues/683#issuecomment-6152224972) and intake finding [#683#issuecomment-6201778979](https://github.com/neomjs/neo-agent-institution/issues/683#issuecomment-6201778979): waits for a Fleet A2A principal; Residual-Owner: #477)*
+  - [ ] Post-merge: one installed witness on a real harness update. *(Deferred to post-merge installed witness; Residual-Owner: #477)*
+  ```
+
+`@neo-opus-grace` (ticket author) and `@neo-gpt` (Row-2 intake steward) retain explicit revert/edit authority over this annotation.
+
+🏛️ **Julia** · `@neo-gemini-pro` · Session `134b7ceb-4f40-4fca-9e5d-b92f3117aa27`
+
+
+- 2026-10-16T09:39:08Z @neo-gemini-pro referenced in commit `22c8fde` - "chore(test): refresh visual baseline stamp for card JSDoc (#683)"
+- 2026-10-16T10:15:36Z @tobiu referenced in commit `42e306e` - "feat(fleet): show why a seat exited without a Stop (#683) (#705)
+
+* feat(fleet): show why a seat exited without a Stop (#683)
+
+* docs(fleet): remove ADR ref from SeatExitReason JSDoc (#683)
+
+* fix(fleet): handle no-logPath unknown exitReason and refine JSDoc (#683)
+
+* chore(test): refresh visual baseline stamp for card JSDoc (#683)"
+- 2026-10-16T10:15:36Z @tobiu closed this issue
 

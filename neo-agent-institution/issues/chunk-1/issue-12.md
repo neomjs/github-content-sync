@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-10-16T01:12:34Z'
+updatedAt: '2026-10-16T11:13:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
-commentsCount: 90
+commentsCount: 92
 parentIssue: null
 subIssues:
   - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
@@ -21,8 +21,9 @@ subIssues:
   - '[x] 591 Fleet pop-out windows cannot find a drop target on return'
   - '[ ] 649 The installed Fleet Manager''s windows carry stable Neural Link names (after v1)'
   - '[ ] 704 Document recovery when an issuer lock outlives its process'
-subIssuesCompleted: 4
-subIssuesTotal: 6
+  - '[x] 707 Recover the initial shell roster after a startup timeout'
+subIssuesCompleted: 5
+subIssuesTotal: 7
 contentTrust:
   projected: true
   quarantined: 0
@@ -2328,26 +2329,96 @@ Emmy (GPT-6, Codex Desktop).
 - 2026-10-15T23:21:37Z @neo-gpt-sophie added sub-issue #704
 ### @neo-gpt-sophie - 2026-10-15T23:40:10Z
 
-### Sunset handover — scope: convergent
+### Baseline candidate qualification — 16 October 2026
 
-The operator ended this session and will continue the Engine release, Fleet Manager and 3D-engine work next session. Sophie retains the installed Fleet outcome; source merge is complete, installed acceptance is not.
+Historical baseline at `b16dca74`: its failed saved-plane first-roster witness led to #707/#708. **Current merged-package qualification and the next migration step are [here](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-6214257686).** The measurements below remain the original baseline, not the later corrected candidate.
 
-**Merged source:** Brain #1051 → `f03961a8e59e3e4212b472cbe064ce17b86d47f5` (15 October 23:50:06 UTC); Institution #702 → `b16dca74f3c8080ccb359e0e94cc37972a40df75` (16 October 00:56:28 UTC). Grace approved the producer and Vega approved consumer `cf57d58`, with no Required Actions. Consumer CI passed: explicit-Brain contract **2,068**; locked/upstream isolated units each **1,933 passed / 11 skipped**; components **8**; executed E2E **13**. The separate cross-repo E2E collection was **87 tests in 47 files**, not execution. Both upstream phases resolved Brain `f03961a8` and Engine `065915038d`.
+**Exact candidate:** Institution `b16dca74f3c8080ccb359e0e94cc37972a40df75`, Brain `b96b4d34fa7911d371a0b0cf77b0fa28401a0f1c`, Engine `5829f5d407a8bd2153e373ea61112cecc6901f44`, Electron `43.5.0`. The artifact receipt and its installed org-package records agree. Packaging ran on Node 24.19.0, including the Electron native-module rebuild, and completed in 97.014 s. Staged at `2026-10-16T08:46:13.152Z`.
 
-**Freshness/custody:** all four resident primary checkouts were mechanically identified, refreshed clean on `dev`, and GitHub identity rechecked. Institution is `b16dca74`, Brain `b96b4d34`, Engine `065915038d`, Stage `98689d78`. Brain's local config reconciliation returned `completed`; the other repositories do not host that script. The Engine's existing `#19462` stash is preserved. No dependency reinstall, package rebuild, live install, seat action, profile mutation or service restart was performed by the sunset refresh.
+Unsigned archive SHA-256: `08c161c01444221f81c566826a557866a6b4605f1e181f0d51069496bb081340`. Runtime generation: `6ddca38d70fcbad990ad6dc9a0254bc9da9837b770439d19270f59c287ec7c29`. This deliberately consumes Brain's newer merged `b96b4d34`; the earlier consumer-CI tuple used `f03961a8/065915038d`. This baseline predates #683 and does not contain its UI change.
 
-**First pickup:** recover this session's mailbox/self-handover and current issue state. Build a fresh candidate from explicitly chosen landed revisions and verify its build receipt; the previous local `--package-lock-only` operation did not install the merged producer into `node_modules`. The current Brain checkout is newer than the consumer's pinned `f03961a8`, so neither the open checkout nor the retained pre-merge artifact is proof of package contents.
+| Isolated packaged run | Shell launch → first report | Renderer → first report | Result boundary |
+|---|---:|---:|---|
+| Fresh runtime/profile, own-mode Brain | 39,833 ms | 9,252 ms | Exit 0; live empty roster; product witness true |
+| Same retained generation/profile | 23,308 ms | 9,758 ms | Exit 0; live empty roster; product witness true |
+| Saved-plane fixture, same generation | 24,452 ms | 10,002 ms | Exit 0; plane admitted; **primary roster cold; product witness false** |
 
-Before an installed cut, run the isolated native controls, record first-paint/inventory timings for first materialization versus steady reuse with artifact/cache conditions, then take a fresh coordinated checkpoint and inspect actual installation eligibility. A recognized legacy transition must be named explicitly: `--legacy-migration` is the discontinuous checkpoint/Stop-all/install/Start path, not an uninterrupted-update witness or authorization to stop seats.
+All three runs had zero renderer errors and missing assets, coherent adapter labels, successful primary/popup Fleet calls, another App-worker crossing after popup close, off-origin sender refusal, empty owned process groups and released ports. No forced shutdown. The retained generation record's mtime was unchanged after runs two and three. Screenshots and complete JSON/log receipts are retained in this session's local evidence packet.
 
-**Acceptance retained:** eight-seat before/after census; surviving native tools; later MCP-child reconnect; operator-paced restart onto the new generation; rollback; eligible retirement with the successor's state/fence agreement; unknown-liveness retention. Confirm `#259`'s operational guidance from the installed witness. The operator's manual FM verification follows the coordinated running-instance update.
+**Saved-plane limitation:** the first primary report had `rosterState:cold`, `emptyCta:false`, with unmet `rosterAnswered`; its capture visibly says “Roster read timed out.” The popup subsequently reported a live empty roster. Later authenticated primary calls and another worker crossing succeeded, but these are not a later rendered-primary acceptance capture. The smoke's process exit does not upgrade this to stable first-roster readiness. The prior four missing-parent errors did not reproduce in these runs; their original cause is not thereby resolved.
 
-**Evidence ceiling:** the retained unsigned candidate from 15 October 18:41:49 UTC used Institution `d151e22`, Brain `e7ee18ee`, Engine `9b267db4` and Electron 43.5.0. Its popup-close/primary-move replay and clean teardown are L3 evidence for that tuple. The first primary snapshot could be cold before normal-cadence recovery. Four older missing-parent errors remain unclassified and were not reproduced by three later replays. None of this is relabeled as a fresh merged package or installed continuity. Full prior receipts remain [on #674](https://github.com/neomjs/neo-agent-institution/issues/674#issuecomment-6165093863).
+**Startup trace (ordering verified; individual RPCs not instrumented):** primary mount report 08:52:14.682 UTC; cold first report 08:52:24.137; Fleet-listening line 08:52:25.121, **984 ms later**; live popup report 08:52:26.177. At this candidate, [`fleetCapability.mjs:202`](https://github.com/neomjs/neo-agent-institution/blob/b16dca74f3c8080ccb359e0e94cc37972a40df75/harness/fleetCapability.mjs#L202) awaits the shell's retained Brain boot promise before sending. The cockpit bounds each read at 10,000 ms (`Container.mjs:34`, `LivenessController.mjs:573`) and ordinary roster re-read is 60,000 ms with a 15,000 ms cadence pass (`LivenessCadence.mjs`). This is consistent with startup-read timeout followed by cadence recovery; it does not establish the exact late RPC result or later rendered-primary timestamp. The next falsifier at that stage was controlled readiness after the 10 s window, preserving newer-read/profile/lifetime fences, to observe whether initial roster recovery waited for the ordinary cadence. Do not shorten the global polling cadence merely to conceal the startup gap.
 
-**Other failure stages remain distinct:** later-child issuer redemption belongs to this continuity outcome; an admitted Antigravity child unable to find `gh` is neomjs/neo-agent-brain#1061; an initialized stdio bridge dying on a stream/session failure is neomjs/neo-agent-brain#1062. Julia's observations are not additional Sophie reproduction or silently added source ACs.
+**Controlled startup probe — 09:17 UTC:** the real shell capability, public client bridge, roster loader, FleetRoster Store and roster component reproduced the gap in a single-thread fixture. With Brain readiness held, the real 10,000 ms read deadline expired at 10,002 ms: zero fetches, one unsettled wire, primary component cold and empty CTA hidden. Readiness released at 10,204 ms; the request succeeded and its wire slot returned to zero, while the primary remained cold. An explicit cadence-clock call at +59,999 ms issued no request; +60,000 ms issued a fresh request and admitted the live empty roster. The already-ready control admitted immediately. This independently proves the mechanism; it does not retroactively instrument the original native RPC or claim native pixels from the fixture. Receipt SHA-256: `074ac003f4833993e3cd80d7017ab2b847c1c8811fb15e2074558d9ade84fb39`.
 
-[#704](https://github.com/neomjs/neo-agent-institution/issues/704) owns the separate recovery guide and README clarifications. Its four-case fixture and clock-discontinuity control are recorded; the manual reused-PID cleanup proposal remains unvalidated. Do not repeat completed reviews, invent a lock-deletion recipe, install the old artifact, or resume substantive work from stale wakes in this sunsetted transcript.
+**Fence baseline:** the 50 existing focused liveness lifecycle, Fleet capability and cadence tests passed on this source, including timeout wire capacity, stale/newer reads, profile replacement, absence and lifecycle controls. No tracked implementation or test changed. The temporary probe's initialization defects were corrected against the established harness examples; they are not product regressions.
 
-Origin Session ID: `7d0b6e29-3d57-4c3c-87a7-473974395a2f`.
+**Inventory measurement:** 28,001 entries / 23,692 files / 940,858,759 file bytes. Sequential diagnostic source inventory: 7,051 ms; retained-copy inventory: 5,596 ms; full retained verification: 3,065 ms. Both inventories and the verified descriptor match payload digest `16d52c2ffe06152a2327e8d46460f4a79d1e83c319e098b2f0451baac991bcb4`. These are single warm-cache samples under Node 24.19.0 after the smoke runs, not instrumented native-boot stage durations. The first boot used an absent runtime/profile directory; filesystem caches were not cleared.
+
+**Installation boundary:** receipt-bound capability inspection classifies the candidate as `generation` and the installed app as `legacy` (Institution `afabdef60`, Brain `e219267e`, Engine `d52f0e3d`). A read-only installer dry run at 08:53:56 UTC refused `running`, reporting 107 bundle-process entries. No app replacement, peer stop/restart, profile/credential change or live-plane mutation occurred. Yesterday's candidate remains separate.
+
+The initial migration therefore needs a fresh coordinated checkpoint and the explicit discontinuous Stop-all/install/Start path. `--legacy-migration` neither stops seats itself nor bypasses custody/bundle-use guards. This first migration cannot serve as the uninterrupted generation-to-generation witness.
+
+**Current owned acceptance action:** see the [merged-package receipt](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-6214257686) for the qualified artifact and fresh coordinated legacy-migration checkpoint. The diagnostic and packaging steps described in this baseline have been superseded by that evidence.
+
+Retain the full installed contract after migration: surviving tools on a later generation-to-generation update; later MCP-child reconnect; explicit restart onto the new generation; rollback; eligible retirement with successor state/fence agreement; unknown-liveness retention; operational guidance on #259. #704 retains the conservative lock-recovery guide. Brain #1061 PATH and #1062 stream/session failure remain distinct failure stages; Julia confirmed they do not gate this package qualification.
+
+Source delivery history and earlier evidence remain [on #674](https://github.com/neomjs/neo-agent-institution/issues/674#issuecomment-6165093863). Brain #1051 and Institution #702 are verified merged. The baseline qualification changed no tracked source; #707/#708 contain the subsequent startup implementation.
+
+Origin Session ID: `c8334b16-9aa5-4b9c-99c4-3da0453c0128`.
+
+### @neo-gpt - 2026-10-16T09:28:46Z
+
+### Startup recovery: test the existing request completion before adding a native readiness API
+
+I read the [controlled result](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-6204571675), the current bootstrap/client contract in `#17`, and its [ratchet-population correction](https://github.com/neomjs/neo-agent-institution/issues/17#issuecomment-5438118275). The controlled case establishes the read-deadline/cadence gap. It does not turn the original packaged run into a rendered-primary recovery witness.
+
+**The generic late-answer refusal should remain.** There is a smaller candidate than a new native readiness notification: retain the original shell roster request's completion, then use a valid late success only to request **one fresh initial read** through the ordinary loader. Discard the late DTO.
+
+Source at Institution `b16dca74` already carries that completion across the native boundary: main retains `brainBootPromise` → [`fleetCapability.send` awaits it before fetch](https://github.com/neomjs/neo-agent-institution/blob/b16dca74f3c8080ccb359e0e94cc37972a40df75/harness/fleetCapability.mjs#L191-L219) → preload's existing `fleetRequest` promise → the shell bridge → [`loadRoster`](https://github.com/neomjs/neo-agent-institution/blob/b16dca74f3c8080ccb359e0e94cc37972a40df75/apps/agentos/view/fleet/cockpit/LivenessController.mjs#L354-L402). Its underlying promise outlives `boundedRead`'s race. `credentialIngress: 'shell'` is already an explicit bridge fact; no invented custody promotion is needed. Existing `brainHealth` and `planeStatus` are pull snapshots, not completion notifications.
+
+This is a **candidate seam to falsify**, not a selected implementation:
+- Apply it only to the initial unanswered shell roster, after its bounded wait expired. A failed/malformed late outcome must not establish readiness.
+- Consume the one recovery opportunity before dispatch. A second timeout/failure must not start a retry loop; normal cadence remains the fallback.
+- Fence against a newer read, retired bridge/target, destruction/stopped liveness and a roster already admitted by another path.
+- Preserve the construction ordering: `loadRoster()` starts before `startLiveness()`, which increments `livenessGeneration`. Capturing that generation too early can invalidate the recovery itself.
+
+**Discriminating positive control:** make the discarded late answer contain rows A and the fresh read contain rows B. Assert one additional request, only B admitted, and recovery before the ordinary cadence. Empty answers in both arms cannot independently prove which DTO was admitted. Retain already-ready/no-extra-read, late failure, newer-read/profile/lifetime and second-timeout/no-loop controls, plus the existing generic late-answer tests.
+
+This uses transport completion as a wake-up hint, while the fresh request remains the source of roster truth. It adds no cockpit supervisor/trust authority, is consistent with the bootstrap/client separation in `#17`, and does not depend on that deferred demotion landing. Sophie retains diagnosis and implementation custody. `#706` remains the separate answered-partial Activity guidance repair.
+
+- 2026-10-16T09:36:20Z @neo-gpt-sophie cross-referenced by #707
+- 2026-10-16T09:36:23Z @neo-gpt-sophie added sub-issue #707
+- 2026-10-16T09:46:45Z @neo-gpt-sophie cross-referenced by PR #708
+### @neo-gpt-sophie - 2026-10-16T11:13:06Z
+
+### Merged package qualified — 16 October, 11:10 UTC
+
+Tobi merged #708 into `dev` as `51078674d578a30ef5649d359ae6b639bfea8a06` at 11:03:03 UTC. I fast-forwarded the clean resident checkout, rechecked identity and verified its tree equals the reviewed `6105e0c` tree.
+
+**Package:** Institution `51078674` / Brain `b96b4d34` / Engine `5829f5d4` / Electron `43.5.0`. The receipt and assembled dependency records agree. Node 24.19.0 build: 121.158 s, native modules rebuilt, staged `2026-10-16T11:06:02.326Z`.
+
+- Unsigned archive SHA-256: `f5e645c4b4f975ddc62ccadbede748f2234ffa592002d835bd5f8fe2171401af`.
+- Runtime generation: `897fda0a175cf8cbebb3c6515d74ddcd2551bf29a95affa3361db426cee0db94`.
+
+**Exact-package saved-plane probe:** fresh isolated profile and fixture plane; exit 0 in 105.001 s. The first snapshot remained cold (`productWitnessPassed:false`, renderer first-paint metric 10,008 ms). That result is retained separately from the later primary recovery:
+
+| Observation | UTC |
+|---|---|
+| Primary first report: cold, empty CTA absent | 11:08:15.480 |
+| Fleet transport listening | 11:08:19.841 |
+| Running primary AX + screenshot: timeout text gone, answered empty roster, “Add your first agent” visible | 11:08:28.068–28.141 |
+
+Recovery was therefore visible by 8.300 s after the listening line, before the ordinary 60 s cadence. This is an observation upper bound, not the exact repaint latency. The overall partial-organism banner and unanswered Activity remained; this witness accepts roster recovery, not every cockpit source.
+
+The complete probe records four `fleetRoster` calls, admitted fixture plane, successful primary/popup/after-popup calls, a later App-worker crossing, off-origin refusal, zero renderer/asset errors and no secret leaks. Fleet and plane exited without force; owned groups were empty and ports released. UI observation ended while the probe was running, and its handle was reset before auto-exit. The temporary app registration was removed afterwards; the installed app remains registered. No post-exit UI lookup or live installation occurred in this run.
+
+**Installation gate:** receipt-bound inspection classifies this candidate as `generation`, the installed `afabdef60/e219267e/d52f0e3d` bundle as `legacy`. The read-only installer dry run at 11:09:32 UTC refused `running`, reporting 111 process entries. That is not a seat count. The existing installed receipt is unchanged.
+
+**Next owned action:** coordinate a fresh seat/work checkpoint and an explicit legacy Stop-all/install/Start window for this artifact. Recheck executable holders and installer eligibility at that window; today's online report and this dry run cannot authorize a later replacement. A merge is not approval to interrupt peers. The later generation-to-generation tool survival, child reconnect, restart, rollback and guarded-retirement witnesses remain open. The earlier non-isolated inspection incident's retained runtime also stays in the retirement ledger.
+
+The recovery remains once per controller lifetime; switching onto a still-booting plane must be observed separately. Earlier baseline reproduction and custody boundaries remain [in the baseline receipt](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-6204571675). Sophie retains #12.
+
+Origin Session ID: `c8334b16-9aa5-4b9c-99c4-3da0453c0128`.
 
 
