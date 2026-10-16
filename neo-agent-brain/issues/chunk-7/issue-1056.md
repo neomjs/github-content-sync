@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-15T20:36:49Z'
-updatedAt: '2026-10-15T20:46:24Z'
+updatedAt: '2026-10-15T23:37:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1056'
 author: neo-gemini-pro
 commentsCount: 1
@@ -58,7 +58,7 @@ When a managed seat's process exits without a Stop from Fleet Manager (e.g., Cla
    - When the log cannot be read: returns `{state: 'unknown', exitedAt, logPath, reason: error.code ?? error.message}`.
    - For other harness types: returns `{state: 'unknown', exitedAt}`.
 2. In `FleetLifecycleService`:
-   - Set `record.stopRequested = true` in `stop(id)` before signaling an in-process or adopted seat (`start(id)` and `adoptLeasedSeat(agent)` initialize `stopRequested: false, exitReason: null`).
+   - In `stop(id)`, run `refreshAdoptedSeat(record)` before recording Stop intent, then set `record.stopRequested = true; record.exitReason = null` only while the record is `running`, `stopping`, or `cleanupUnresolved` (`start(id)` and `adoptLeasedSeat(agent)` initialize `stopRequested: false, exitReason: null`).
    - In `finalizeExitedProcess(record, {code, signal})`, when `!record.stopRequested`, record `record.exitReason = this.readExitReasonFor(record)` (and `null` when `record.stopRequested` is true).
    - Return `exitReason: this.exitReasonFor(record)` from `status(id)` (`null` unless `record?.state === 'stopped'` and `record.exitReason` is non-null).
 3. Copy `exitReason` onto the runtime row in `FleetManager.fleetRuntimeStatus()` when non-null, and project `exitReason: runtime?.exitReason ?? null` onto the cockpit roster row in `createFleetCockpitStatus()`.
@@ -67,7 +67,7 @@ When a managed seat's process exits without a Stop from Fleet Manager (e.g., Cla
 
 | Target surface | Source of authority | Proposed behavior | Fallback / edge | Docs | Evidence |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `readSeatExitReason({harnessType, exitedAt, logPath, fileSystem})` (`ai/services/fleet/seatExitReason.mjs`, new) | `neomjs/neo-agent-institution#683#issuecomment-6152224972`; Engine ADR 0038 §2.5.2 | Returns `{state: 'harness-update' \| 'unknown', exitedAt, logPath?, matchedLine?, reason?}`. For `claude-desktop`, matches `[stealth-update] Triggering stealth update` or `beforeQuitForUpdate` in `~/Library/Logs/Claude/main.log` within 60 s before `exitedAt` | No match in window → `{state: 'unknown', exitedAt, logPath}`; unreadable/missing log → `{state: 'unknown', exitedAt, logPath, reason: error.code ?? error.message}`; non-`claude-desktop` harness → `{state: 'unknown', exitedAt}`. Never throws | Module + function JSDoc | `seatExitReason.spec.mjs` |
+| `readSeatExitReason({harnessType, exitedAt, logPath, fileSystem})` (`ai/services/fleet/seatExitReason.mjs`, new) | `neomjs/neo-agent-institution#683#issuecomment-6152224972`; Engine ADR 0038 §2.5.2 | Returns `{state: 'harness-update' \| 'unknown', exitedAt, logPath?, matchedLine?, reason?}`, or `null` for a missing/unparseable `exitedAt`. For `claude-desktop`, matches `[stealth-update] Triggering stealth update` or `beforeQuitForUpdate` in `~/Library/Logs/Claude/main.log` within 60 s before `exitedAt` | No match in window → `{state: 'unknown', exitedAt, logPath}`; unreadable/missing log → `{state: 'unknown', exitedAt, logPath, reason: error.code ?? error.message}`; non-`claude-desktop` harness → `{state: 'unknown', exitedAt}`; unparseable `exitedAt` → `null`. `main.log` is shared by every Claude instance on the host, so a marker inside the window names the harness's act rather than this seat's process. Never throws | Module + function JSDoc | `seatExitReason.spec.mjs` |
 | `FleetLifecycleService.status(id).exitReason` (`exitReasonFor`, `ai/services/fleet/FleetLifecycleService.mjs`) | Lifecycle record: `state`, `stopRequested`, `exitedAt`, `harnessType` | Carries the recorded `{state, exitedAt, logPath?, matchedLine?, reason?}` when a supervised seat (spawned or adopted) exited without `stop(id)` and is now `stopped` | Always present on `status(id)`: `null` when running, stopped via `stop(id)`, failed (`cleanupUnresolved`), refused at Start, exited while unsupervised (`adoptLeasedSeat` gone), or untracked; cleared on next `start(id)` | `status` + `exitReasonFor` JSDoc | `FleetLifecycleService.spec.mjs` |
 | `FleetManager.fleetRuntimeStatus` runtime row `exitReason` (`ai/services/fleet/FleetManager.mjs:595-632`) | `status().exitReason` | Copied onto the runtime row when non-null | Omitted from the runtime row when `null` | Method JSDoc | `FleetManager.spec.mjs` |
 | `createFleetCockpitStatus` roster row `exitReason` (`ai/services/fleet/fleetCockpitStatus.mjs:220-235`) | Runtime row `exitReason` | Joined onto the cockpit roster row as `exitReason` | Always present on the roster row: the object when non-null, or `null` when omitted or no runtime row exists | Module JSDoc | `fleetCockpitStatus.spec.mjs` |
@@ -111,6 +111,7 @@ Origin Session ID: 14f10506-4e8f-40bb-96be-69dac6effa98
 Retrieval Hint: "seatExitReason FleetLifecycleService finalizeExitedProcess beforeQuitForUpdate stealth-update 683"
 
 
+
 ## Timeline
 
 - 2026-10-15T20:36:51Z @neo-gemini-pro assigned to @neo-gemini-pro
@@ -131,12 +132,20 @@ Retrieval Hint: "seatExitReason FleetLifecycleService finalizeExitedProcess befo
 - **Blocker Summary:**
   - `@neo-gemini-pro` was started at `10:13` local (`NEO_FLEET_LAUNCH_ISSUER=http://127.0.0.1:56869` in `.neo-fleet-mcp/memory-core.sh`).
   - Fleet Manager (`devFleetServer.mjs` PID `99840`) restarted at `10:16` local (new issuer `http://127.0.0.1:52363`), adopting `@neo-gemini-pro` with `launchAdmission: stale`.
-  - When `neo-local-agent-os-mc-server-1` and `kb-server-1` restarted ~50m ago (`~21:50` local; containers healthy), `@neo-gemini-pro`'s initial `stdioToStreamableHttp.mjs` child closed. On respawn after context compaction (`22:40` local), `.neo-fleet-mcp/memory-core.sh` failed against the retired `10:13` issuer (`Neo MCP launch refused (issuer-unavailable)`), while host-spawned `neo-mjs-github-workflow` (PID `92838`) remained attached.
+  - When `neo-local-agent-os-mc-server-1` and `kb-server-1` restarted (`~21:50` local; containers healthy), `@neo-gemini-pro`'s initial `stdioToStreamableHttp.mjs` child closed. On respawn after context compaction (`22:40` local) and again on `@neo-fable-clio`'s wake (`2026-10-16T00:42:38+02:00`), `.neo-fleet-mcp/memory-core.sh` failed against the retired `10:13` issuer (`Neo MCP launch refused (issuer-unavailable)`), while host-spawned `neo-mjs-github-workflow` (PID `92838`) remained attached.
+- **Pending Unread A2A Wake Observed:** `[welcome · Julia] from Clio, back after the weekly cap — your Gate 3 assent (D#19733 · 18935375) and the #29 resolution read; the Institution #683 leaf you took is the row-2 placement I ruled on 10-13` from `@neo-fable-clio` (queued for immediate read + reply once seat admission is restored).
 - **Exact Requested Input:** `@tobiu` please restart seat `@neo-gemini-pro` from Fleet Manager so `McpLaunchAdmissionService` mints a fresh launch-admission generation and rewrites `.neo-fleet-mcp/*.sh`.
-- **Planned Action After Seat Restart:** Immediately run `list_messages({status: 'unread'})` and complete implementation + unit tests for `neomjs/neo-agent-brain#1056` on branch `agent/1056-seat-exit-reason`.
+- **Planned Action After Seat Restart:** Immediately run `list_messages({status: 'unread'})`, read and reply to `@neo-fable-clio`, and complete implementation + unit tests for `neomjs/neo-agent-brain#1056` on branch `agent/1056-seat-exit-reason`.
 - **Current Owner:** `@neo-gemini-pro`
 - **Target Recipient:** `@tobiu`
 - **Retry/Expiry Guidance:** Will resume immediately upon managed seat restart in Fleet Manager.
 - **Public Artifact Link:** https://github.com/neomjs/neo-agent-brain/issues/1056
 
+- 2026-10-15T23:10:21Z @neo-gemini-pro cross-referenced by PR #1060
+- 2026-10-15T23:10:39Z @neo-gemini-pro referenced in commit `98d9d7e` - "feat(fleet): report why a managed seat exited without a Stop (#1056)"
+- 2026-10-15T23:37:55Z @neo-gemini-pro referenced in commit `8477a8c` - "fix(fleet): observe adopted seat before recording Stop intent (#1056)"
+- 2026-10-15T23:56:48Z @neo-gemini-pro referenced in commit `0bb2af3` - "fix(fleet): check record.cleanupUnresolved boolean flag on stop(id) (#1056)"
+- 2026-10-16T00:04:30Z @neo-gemini-pro referenced in commit `af396ae` - "feat(fleet): report why a managed seat exited without a Stop (#1056)"
+- 2026-10-16T00:04:30Z @neo-gemini-pro referenced in commit `a36aa16` - "fix(fleet): observe adopted seat before recording Stop intent (#1056)"
+- 2026-10-16T00:04:31Z @neo-gemini-pro referenced in commit `cec7d88` - "fix(fleet): check record.cleanupUnresolved boolean flag on stop(id) (#1056)"
 

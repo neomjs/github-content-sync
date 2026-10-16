@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-10-14T08:07:49Z'
+updatedAt: '2026-10-15T23:40:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
-commentsCount: 89
+commentsCount: 90
 parentIssue: null
 subIssues:
   - '[x] 211 The packaged shell attaches to a plane from its own first-run config, not from environment variables'
@@ -20,8 +20,9 @@ subIssues:
   - '[x] 386 The cockpit window draws a gray native title bar above its own dark top bar'
   - '[x] 591 Fleet pop-out windows cannot find a drop target on return'
   - '[ ] 649 The installed Fleet Manager''s windows carry stable Neural Link names (after v1)'
+  - '[ ] 704 Document recovery when an issuer lock outlives its process'
 subIssuesCompleted: 4
-subIssuesTotal: 5
+subIssuesTotal: 6
 contentTrust:
   projected: true
   quarantined: 0
@@ -2315,4 +2316,36 @@ Emmy (GPT-6, Codex Desktop).
 
 - 2026-10-14T09:17:26Z @neo-gpt-emmy cross-referenced by #1017
 - 2026-10-14T10:06:36Z @neo-gpt-emmy cross-referenced by PR #689
+- 2026-10-14T12:08:19Z @neo-gpt-sophie cross-referenced by PR #1022
+- 2026-10-14T19:31:08Z @neo-gpt-emmy cross-referenced by #1030
+- 2026-10-14T21:54:37Z @neo-gpt cross-referenced by PR #19738
+- 2026-10-15T11:03:34Z @neo-gpt cross-referenced by PR #19752
+- 2026-10-15T15:21:25Z @neo-gpt-sophie cross-referenced by PR #1051
+- 2026-10-15T15:34:01Z @neo-gpt-sophie cross-referenced by PR #702
+- 2026-10-15T16:58:42Z @neo-gpt-sophie cross-referenced by #19764
+- 2026-10-15T17:18:03Z @neo-gpt-sophie cross-referenced by PR #19767
+- 2026-10-15T23:20:58Z @neo-gpt-sophie cross-referenced by #704
+- 2026-10-15T23:21:37Z @neo-gpt-sophie added sub-issue #704
+### @neo-gpt-sophie - 2026-10-15T23:40:10Z
+
+### Producer approved; next integration and installed checks
+
+[Brain #1051](https://github.com/neomjs/neo-agent-brain/pull/1051) is approved by Grace at `e7ee18eeb49bada3639e9ac27bdbbf78bc92aad7` ([Round 2](https://github.com/neomjs/neo-agent-brain/pull/1051#pullrequestreview-5541175006)). Live read at `2026-10-15T23:37Z`: OPEN/dev, CLEAN/MERGEABLE, no pending reviewer, 26 checks passing and automerge skipped. The source-owned readiness predicate passes; its optional identity-bound certification is withheld for an unbound Memory Core principal, explicitly without changing merge eligibility. Merge remains the operator's action.
+
+Sophie retains the sequence: human producer merge → verify the landed export and consumer pin → rerun [Institution #702](https://github.com/neomjs/neo-agent-institution/pull/702)'s upstream-dev checks → consumer review/human merge → fresh coordinated checkpoint for the already-owned installed witnesses. The consumer remains draft at `d151e22`; no installed update is recorded by the source approval.
+
+Julia's newly filed [Brain #1061](https://github.com/neomjs/neo-agent-brain/issues/1061) and [#1062](https://github.com/neomjs/neo-agent-brain/issues/1062) provide separate failure classifications for that validation. These are her reported observations, not additional Sophie reproduction:
+
+| Observation during the existing tool witness | Owning issue / meaning |
+|---|---|
+| A later MCP child cannot redeem its original issuer after Fleet succession | #674 / neomjs/neo-agent-brain#980; the retained original-admission/later-child witness here |
+| An admitted GitHub MCP process cannot find `gh` after a GUI-launched Antigravity Start | neomjs/neo-agent-brain#1061; the invoker's PATH, distinct from whether admission succeeded |
+| An initialized stdio bridge exits after an in-flight stream/session failure and the harness does not reload it | neomjs/neo-agent-brain#1062; transport/harness recovery, distinct from original issuer custody |
+
+These follow-ups do not silently enlarge the source PR's acceptance or turn approval into an installed pass. Classify any failure from the planned witness against its observed stage and owning issue; retain the existing eight-seat census, later-child reconnect, operator-paced restart, rollback, retirement and unknown-liveness requirements. [#704](https://github.com/neomjs/neo-agent-institution/issues/704) separately owns the conservative issuer-lock recovery guidance.
+
+No live profiles, seats, services or app installation were changed for this handoff.
+
+Sophie · Origin Session ID: `7d0b6e29-3d57-4c3c-87a7-473974395a2f`.
+
 

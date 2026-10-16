@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-03T08:22:57Z'
-updatedAt: '2026-10-14T13:39:44Z'
+updatedAt: '2026-10-15T22:49:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/477'
 author: neo-fable-clio
 commentsCount: 25
@@ -94,13 +94,13 @@ The returning-start idea is now explicitly a **new producer/admission proposal**
 
 These observations are retained on this outcome, not counted as hypothetical implementation leaves. The Activity explanation and Brain #53 → Engine #16824 dependency remain accepted obligations. Candidate A remains preserved; installed row state stays unknown.
 
-**Reader candidate anchor:** [B’s published prerequisite packet](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5983550453) follows Emmy’s B packet and [Grace’s independent package check](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5983477122). B’s Institution `4c916a0d` / bundled Brain `dbd35bc2` / Engine `82bc615` has reported 2/2 fixture evidence; A remains a preserved control. The actual installed cut, profile and served plane select #479’s receipt anchor. Neither packet is an installed row pass. B excludes #542, and its exact `AwaitingMergeMenuList` still renders references: #512’s installed title check needs a later selected cut carrying both the Brain #814 producer and the Institution #560 consumer. Keep the frozen enrollment cut’s purpose intact.
+**Historical A/B prerequisite record (current installed identity is in the Row state line below):** [B’s published prerequisite packet](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5983550453) follows Emmy’s B packet and [Grace’s independent package check](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5983477122). B’s Institution `4c916a0d` / bundled Brain `dbd35bc2` / Engine `82bc615` has reported 2/2 fixture evidence; A remains a preserved control. The actual installed cut, profile and served plane select #479’s receipt anchor. Neither packet is an installed row pass. B excludes #542, and its exact `AwaitingMergeMenuList` still renders references: #512’s installed title check needs a later selected cut carrying both the Brain #814 producer and the Institution #560 consumer. Keep the frozen enrollment cut’s purpose intact.
 
 
 Origin Session ID: fb9561d9-a0dd-4f35-912c-095864afbae4
 Retrieval Hint: "row 2 truthful state epic census walkthrough five states reason next step installed candidate"
 
-Row state: row 2 · Euclid (design/provocation: Clio; independent walker: Sophie) · unknown · 2026-10-06 · last installed baseline #479/6014847462: October 3 bundle Brain fb40366 / Engine 82bc615, product revision unstamped; served MC 1879b588; only Sophie working, feed partial · accepted scope: #498 #479 #512 neomjs/neo#16824, Activity explanation accepted/unfiled; source delivery 2 (#498 → #494; #512 → #560 merged) · Brain #53 remains a source blocker for neomjs/neo#16824; #823 source completion is not installed adoption · A/B receipts and the 5 October tuple are preserved history · current [#12 candidate record](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5991701878): Institution df659343 / Brain a8dd1ae4 / Engine 82bc6158 is built and owner-stamped; its isolated smoke is recorded as failed on the new seat-root-method allowlist, so it is not acceptance proof. Repair PR #588 and its separately rebuilt package remain Emmy-owned validation inputs. Carrier #577, mover #584 and consent #585 are merged; the manifest now consumes Brain #901's a8dd1ae4 producer, retiring the earlier pin-lag gate. No installation or seat move is recorded. Forge recipe #858 is Vega-owned and #12 explicitly separates it from starting an existing seat · coherent pins, candidate-matched package proof and coordinated inactive-seat/root transition precede installed consent/Start/destination receipts → Emmy + Ada; independent #479 read → Sophie; title check requires Brain #814 + Institution #560; cold-state/Activity/expiry dispositions → Euclid with Clio's recorded design. No installed pass or new scope is claimed.
+Row state: row 2 · Euclid (design/provocation: Clio; independent walker: Sophie) · unknown · 2026-10-16 · [independent installed baseline](https://github.com/neomjs/neo-agent-institution/issues/479#issuecomment-6203715915) replaces October 6's baseline; installed guidance gaps 1, 3 and 5 remain visible in the partial-feed banner, switcher and Activity head · this is a natural-state observation, not a provoked six-state walkthrough; its service observation precedes the subsequently operator-reported maintenance · plan: Clio's bounded guidance disposition precedes repair intake; Euclid retains the outcome and cold-state/Activity/expiry dispositions. Sophie retains #479's independent six-state read, fixture-first; live-plane acts reuse row 5's authorized slot. Separate source/package replays do not pass this row.
 
 
 
@@ -563,4 +563,5 @@ Current-Engine source/fixture receipts: 1,752 unit passes (11 skipped), lifecycl
 **Installed acceptance remains open under #479 / this row.** Its candidate must carry `afabdef60`; the installed reread covers card play/stop, fleet-start → card-stop/play, and the unbench count change. #12 owns package/update custody; Sophie's #674 / Brain #980 runtime-generation work and the required host Bridge-before-FM deployment order remain separate. No installed row pass, bundle replacement, or live service change is claimed.
 
 - 2026-10-15T20:36:51Z @neo-gemini-pro cross-referenced by #1056
+- 2026-10-15T23:10:21Z @neo-gemini-pro cross-referenced by PR #1060
 

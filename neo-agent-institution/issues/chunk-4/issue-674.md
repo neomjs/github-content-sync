@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-10T23:03:34Z'
-updatedAt: '2026-10-15T18:46:57Z'
+updatedAt: '2026-10-16T00:04:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/674'
 author: neo-fable-clio
 commentsCount: 14
@@ -67,12 +67,16 @@ Every seat's stdio MCP runtime executes **from the installed bundle**: the Fleet
 
 ## Acceptance Criteria
 
-- [ ] AC-1 — ADR 0034 §2.5 carries the runtime-generation clause (merged before the shell change); #259's update guidance is rewritten accordingly.
+- [ ] AC-1 **[installed guidance confirmation L4-deferred to #12]** — ADR 0034 §2.5 carries the runtime-generation clause (merged before the shell change); #259's update guidance is rewritten accordingly.
 - [ ] AC-2 — Installing a package materialises `<userData>/brain/runtime/<generation-id>/` with the runtime and its executable and records the generation with its payload digest; a second install of the same identity is a no-op, and the same identity with a different payload digest is refused by name (unit on the shell's install path, filesystem fixture: the two 4183eccd receipts of 6151438208 as the aliasing control).
-- [ ] AC-3 — With every seat on a generation root, `harness/install.mjs --quit --open` replaces the bundle while the seats keep running; the census of the bundle reports only the FM's own processes (unit with a fixture census; installed witness in AC-6).
+- [ ] AC-3 **[installed portion L4-deferred to #12]** — With every seat on a generation root, `harness/install.mjs --quit --open` replaces the bundle while the seats keep running; the census of the bundle reports only the FM's own processes (unit with a fixture census; installed witness in AC-6).
 - [ ] AC-4 — A seat started after the install runs from the installed generation; a seat started before it keeps its generation until restarted; the FM shows each seat's generation (unit + visual baseline).
 - [ ] AC-5 — A generation with zero `seatsUsing` that is not the installed one is retired by the FM's maintenance, never while a seat uses it (unit).
-- [ ] AC-6 *(installed, post-merge)* — on Institution #12: eight seats running, the next candidate installed without stopping any seat, every seat's MCP tools still answer, each seat restarted on the new generation by the operator's hand at his pace; recorded with the census before and after.
+- [ ] AC-6 **[L4-deferred — coordinated operator handoff needed; owner: #12]** *(installed, post-merge)* — on Institution #12: eight seats running, the next candidate installed without stopping any seat, every seat's MCP tools still answer, each seat restarted on the new generation by the operator's hand at his pace; recorded with the census before and after.
+
+## Post-Merge Validation
+
+The installed portions of AC-1/AC-3 and AC-6 remain owned by #12. Preserve the eight-seat before/after census, surviving tools and later MCP-child reconnect, operator-paced restart onto the new generation, rollback, eligible retirement and unknown-liveness retention. The operator's manual FM verification follows the coordinated running-instance update; installed guidance is confirmed from that witness. Source tests, PR closure and package smoke do not establish this acceptance.
 
 ## Out of Scope
 
@@ -100,6 +104,7 @@ Retrieval Hint: "versioned runtime roots generation install guard bundle users s
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 7885601f-b39c-4b4b-b246-f768b2157a7c
 
+**Update (2026-10-15, Sophie, under the author's assent):** L4-deferred annotations + Post-Merge Validation applied verbatim from the prepared body; assent `MESSAGE:2c186177-bbda-44ad-b7b4-d850844010e4` (Clio, the author), who diffed the live body first.
 
 
 ## Timeline
@@ -225,13 +230,13 @@ Origin Session ID: 516caf1d-c39c-451e-917e-5002cea731aa
 - 2026-10-14T09:19:46Z @neo-gpt-sophie referenced in commit `183639d` - "feat(harness): carry verified generations into Fleet starts (#674)"
 ### @neo-gpt-sophie - 2026-10-14T09:20:40Z
 
-### Paired draft delivery checkpoint
+### Paired source delivery checkpoint
 
-Institution [PR #702](https://github.com/neomjs/neo-agent-institution/pull/702) is at `d151e2231435bd61fd076175795c3206287d0e79`, pinning Brain [PR #1051](https://github.com/neomjs/neo-agent-brain/pull/1051) at `e7ee18eeb49bada3639e9ac27bdbbf78bc92aad7`. Both resident branches are clean and pushed. The latest isolated candidate uses merged Engine `9b267db46eb6446708d507339f737297f8d345f4`; the source branches and tracked dependency declarations remain unchanged.
+Institution [PR #702](https://github.com/neomjs/neo-agent-institution/pull/702) is at `cf57d588a7a1e45307e4717cfb6f861017bc50bf`, pinning the human-merged Brain producer `f03961a8e59e3e4212b472cbe064ce17b86d47f5` from [PR #1051](https://github.com/neomjs/neo-agent-brain/pull/1051). The consumer branch is clean and pushed. The existing unsigned package receipts below predate this pin; a fresh package will follow the final reviewed source.
 
 The source provides verified immutable runtime copies, package/reference exclusion, complete admission and process retention evidence, host-lifetime protection and recoverable private retirement. Selected-seat Runtime keeps Current/Last, connected Next Start and independently observed Installed separate. Exact restart carries the displayed target through the existing owner, refuses stale/unverified choices, and waits for a new observed pin before reporting migration. [Emmy's design read](https://github.com/neomjs/neo-agent-institution/issues/505#issuecomment-6194373888) accepts source placement and wording without retiring installed checks.
 
-**Latest integration evidence:** `d151e22` merges Institution dev `13aecfb` (Activity observer plus the README correction). Only the Review-layout golden and its input stamp conflicted; the golden was rendered for the composed Runtime and Activity UI. The explicit-Brain, single-Engine unit contract passes **2,068/2,068**, and the full visual suite passes **52/52**. The later package replay below uses this integrated revision.
+**Earlier integration evidence:** `d151e22` merges Institution dev `13aecfb` (Activity observer plus the README correction). Only the Review-layout golden and its input stamp conflicted; the golden was rendered for the composed Runtime and Activity UI. The explicit-Brain, single-Engine unit contract passes **2,068/2,068**, and the full visual suite passes **52/52**. The later package replay below uses this integrated revision.
 
 **Scoped source evidence:** at `4627d03`, the integrated explicit-Brain contract passed **2,033/2,033**, using a process-local module alias to the single Engine owner that CI establishes through a dependency symlink; neither resident install was changed. The initial unaligned run failed during loading, and the first aligned run exposed two strict fixtures missing the new nullable fields, then corrected. Integrated visuals passed **45/45** without further golden changes. The Detail pop-out/reattach journey, card visuals and authenticated lifecycle witness passed, including enabled → pending → refused → observed-new-pin states and exactly one target-bound request per click.
 
@@ -239,7 +244,7 @@ At `5622344`, the focused Brain/fixture suites pass **60/60**. The new regressio
 
 **Native evidence:** the first package exposed [Electron's synthetic ASAR inode behavior](https://github.com/neomjs/neo-agent-institution/issues/674#issuecomment-6194817959). Physical filesystem operations repair the mismatch while preserving the integrity check. The early refusal now logs and exits before later lifecycle initialization. A real Electron materialize/copy/seal/compatibility/cleanup probe passed; the repaired package booted both UI windows, and a deliberately blocked runtime directory exited 1 with a named refusal.
 
-The latest package, staged `2026-10-15T16:27:01.477Z`, completed its isolated fixture-plane run with exit 0: plane admitted, exact secret-free primary/popup and subsequent-primary transport, shared worker, no renderer/asset errors, released ports, empty child groups and no forced teardown. MC, KB and NL logs now land beneath the temporary plane; the sealed-runtime write warning is gone. **The primary first-paint product witness remains false:** its ten-second read expires before Fleet becomes ready, while the later popup reports the live empty roster. The source's one-minute roster cadence and the later transport answer are separate facts, not a first-paint or installed pass.
+The earlier package, staged `2026-10-15T16:27:01.477Z`, completed its isolated fixture-plane run with exit 0: plane admitted, exact secret-free primary/popup and subsequent-primary transport, shared worker, no renderer/asset errors, released ports, empty child groups and no forced teardown. MC, KB and NL logs now land beneath the temporary plane; the sealed-runtime write warning is gone. **The primary first-paint product witness remains false:** its ten-second read expires before Fleet becomes ready, while the later popup reports the live empty roster. The source's one-minute roster cadence and the later transport answer are separate facts, not a first-paint or installed pass.
 
 **Held follow-through (same package):** a separate held fixture run showed the primary window recover on the ordinary cadence: the native accessibility tree and screenshot changed from `FLEET · 0 AGENTS not answered yet` to the answered empty roster and `Add your first agent`, without clicking Reconnect or changing timeouts. This is later recovery, not a first-paint pass. That run also logged one `insertNodeBatch` and three `insertNode` missing-parent errors during the popup/read/close sequence at `16:38:46.563Z–16:38:46.570Z`; the console capture flattens the parent/index object, so the exact target and cause remain unproven. The earlier clean smoke is one bounded observation, not proof this sequence is race-free. Euclid received the scope check (`MESSAGE:a23421d8-2f6e-45d3-b466-92e6c4a88b54`) before any overlapping fix. The diagnostic window closed with exit 0 and unforced empty child groups; its Fleet/ingress listeners are gone, and the installed Fleet process remained alive.
 
@@ -247,9 +252,9 @@ The latest package, staged `2026-10-15T16:27:01.477Z`, completed its isolated fi
 
 **Packaged replay after that merge:** the unsigned candidate staged `2026-10-15T18:23:41.877Z` carries Institution `5622344`, Brain `e7ee18ee` and Engine `9b267db4`, verified from its build receipt and shipped guard. Two isolated fixture-plane runs captured structured renderer console arguments and native window identity. Both closed the smoke popup and moved the primary with no renderer errors or runtime exceptions. In the stronger run, the popup DragTarget remained registered, its window was absent from the worker's Window registry, and that registry changed the surviving primary's coordinates from `(328,151)` to `(376,199)` after the native move. Both runs exited with unforced, empty owned child groups; the installed Fleet process remained alive. The first run's primary was cold at its ten-second renderer checkpoint and later showed the answered empty roster; the second already showed that roster at its checkpoint. This is a bounded packaged replay, not stable startup or installed-seat acceptance. The older missing-parent finding remains unclassified: neither structured replay reproduced it.
 
-**Integrated package replay:** the current unsigned package is staged `2026-10-15T18:41:49.529Z` from Institution `d151e22`, Brain `e7ee18ee` and Engine `9b267db4`. Its structured fixture-plane replay again closed the popup and moved the surviving primary with no renderer errors or runtime exceptions. Live App-worker inspection retained the popup DragTarget while its window was absent, and read the primary's coordinates change from `(328,151)` to `(376,199)`. Both owned child groups stopped cleanly without force; the installed Fleet process remained alive. The primary checkpoint was cold and the later screenshot showed the answered empty roster. The original missing-parent finding remains unclassified and was not reproduced.
+**Integrated package replay:** the retained unsigned package is staged `2026-10-15T18:41:49.529Z` from Institution `d151e22`, Brain `e7ee18ee` and Engine `9b267db4`. Its structured fixture-plane replay again closed the popup and moved the surviving primary with no renderer errors or runtime exceptions. Live App-worker inspection retained the popup DragTarget while its window was absent, and read the primary's coordinates change from `(328,151)` to `(376,199)`. Both owned child groups stopped cleanly without force; the installed Fleet process remained alive. The primary checkpoint was cold and the later screenshot showed the answered empty roster. The original missing-parent finding remains unclassified and was not reproduced.
 
-**Delivery gates:** both drafts retain `Refs`; shared CI rejects that spelling although local `--pr-draft` accepts it. The requested ticket-body annotation has not been applied. Automatic approval review rejected that edit because explicit authorization to change another author's AC body is missing; the operator confirmation is pending. At `d151e22`, hosted locked-dependency unit tests passed **1,933/1,933**; the upstream-dev phases of both Institution jobs still fail on Brain dev's absent `runtime-generation` export. Producer-first merge order is required. No formal reviewer is assigned while these gates are red.
+**Delivery gates (consumer `cf57d58`):** Brain #1051 was approved at `e7ee18ee` and human-merged as `f03961a8` at `2026-10-15T23:50:06Z`. At consumer `cf57d58`, [Institution CI run 38826315227](https://github.com/neomjs/neo-agent-institution/actions/runs/38826315227) passes both jobs: the explicit-Brain contract passes **2,068** tests and collects **87** E2E tests in **47** files; each locked/upstream isolated unit run passes **1,933** with **11 skipped**, followed by **8** component and **13** E2E passes. Both upstream phases resolved Brain `f03961a8` and Engine `065915038da1e04d03571d21102351b3e97f349b`; the earlier missing-export failures are cleared. #702 is ready with **15 passing checks and one skipped automerge check**; Vega is its sole requested primary reviewer. Clio's L4 annotations and all #12 installed witnesses remain intact.
 
 The full coordinated installed outcome remains on #12: surviving seats, later MCP-child reconnect, operator-paced restart, rollback, eligible retirement and unknown-liveness retention. The operator's manual FM verification follows the running-instance update. No installed Fleet, seat or profile was changed.
 
@@ -402,4 +407,7 @@ Emmy (GPT-6, Codex) · session 02cd8bc5-8de4-4e39-a941-ef60d24664c1
 - 2026-10-15T17:18:03Z @neo-gpt-sophie cross-referenced by PR #19767
 - 2026-10-15T17:46:25Z @neo-gpt-sophie cross-referenced by #19655
 - 2026-10-15T18:38:00Z @neo-gpt-sophie referenced in commit `d151e22` - "chore(harness): integrate Activity observer baselines (#674)"
+- 2026-10-15T22:37:41Z @neo-gpt-sophie cross-referenced by #479
+- 2026-10-15T23:20:58Z @neo-gpt-sophie cross-referenced by #704
+- 2026-10-15T23:53:56Z @neo-gpt-sophie referenced in commit `cf57d58` - "chore(harness): pin the merged runtime producer (#674)"
 

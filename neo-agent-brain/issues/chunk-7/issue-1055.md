@@ -1,7 +1,7 @@
 ---
 id: 1055
 title: Memories the ingestor projects are invisible to identity recency
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-15T20:17:08Z'
-updatedAt: '2026-10-15T21:11:13Z'
+updatedAt: '2026-10-15T22:48:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1055'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-15T22:11:11Z'
 ---
 # Memories the ingestor projects are invisible to identity recency
 
@@ -67,11 +68,11 @@ The ingestor's differential-sync gate also hides any repair: `computeMemoryPaylo
 
 ## Acceptance Criteria
 
-- [ ] AC-1: A memory projected by `syncSessionToGraph` or `backfillMemory` carries the Chroma row's `agentIdentity` (normalized) and `timestamp`, and `queryRecentTurns` returns it. Red first.
-- [ ] AC-2: A Chroma row without those keys leaves the node's existing `agentIdentity` and `timestamp` untouched.
-- [ ] AC-3: A row whose Chroma `agentIdentity` changed re-projects on its next sync, and the node's `payloadHash` still matches its legacy twin's.
-- [ ] AC-4: The repair pass, as a dry run, reports the nodes it would re-project and the rows it would project, and with `--apply --offline` repairs them. A re-run is a no-op. Unit-covered.
-- [ ] AC-5 (post-merge, on the plane): after the repair, the 4,515 `liveIngested` nodes above carry both keys wherever their Chroma rows do, and #1018's `query_recent_turns(@neo-gemini-pro, team, before 2026-05-01)` returns founding-era turns.
+- [x] AC-1: A memory projected by `syncSessionToGraph` or `backfillMemory` carries the Chroma row's `agentIdentity` (normalized) and `timestamp`, and `queryRecentTurns` returns it. Red first.
+- [x] AC-2: A Chroma row without those keys leaves the node's existing `agentIdentity` and `timestamp` untouched.
+- [x] AC-3: A row whose Chroma `agentIdentity` changed re-projects on its next sync, and the node's `payloadHash` still matches its legacy twin's.
+- [x] AC-4: The repair pass, as a dry run, reports the nodes it would re-project and the rows it would project, and with `--apply --offline` repairs them. A re-run is a no-op. Unit-covered.
+- [x] AC-5 (post-merge, on the plane): after the repair, the 4,515 `liveIngested` nodes above carry both keys wherever their Chroma rows do, and #1018's `query_recent_turns(@neo-gemini-pro, team, before 2026-05-01)` returns founding-era turns. ([receipt](https://github.com/neomjs/neo-agent-brain/issues/1018#issuecomment-6203863139))
 
 ## Out of Scope
 
@@ -99,6 +100,7 @@ Origin Session ID: 77c3c004-7908-4549-9190-b4f9c3cfa9dc
 🖖 Grace (Opus 5.5, Claude Code)
 
 
+
 ## Timeline
 
 - 2026-10-15T20:17:09Z @neo-opus-grace assigned to @neo-opus-grace
@@ -116,4 +118,25 @@ resolved a missing raw-memory collection through them created it and planned
 an empty repair. ChromaManager.openExistingCollection opens through the same
 client and embedding function and never creates; the dry run acquires that way,
 before it opens the graph, so a missing collection refuses the run."
+- 2026-10-15T22:11:11Z @tobiu referenced in commit `4e00f70` - "fix(memory-core): memories the ingestor projects carry the keys identity recency reads (#1055) (#1057)
+
+* fix(memory-core): memories the ingestor projects carry the keys identity recency reads (#1055)
+
+The session ingestor and its lazy back-fill now project each row's agentIdentity
+(normalized) and ISO timestamp, the keys identity recency filters and orders by.
+A node that lacks a key its row carries re-projects on the next sync. The payload
+hash stays as it was: a canonical node's hash must keep matching its legacy twin's,
+or reconcileRawMemoryGraphIdentities refuses the pair.
+
+repairRawMemoryRecencyKeys.mjs re-projects the existing nodes and projects the
+identity-carrying rows that have no node. Dry run by default; --apply --offline writes.
+
+* fix(memory-core): the recency repair's dry run opens its collection without creating it (#1055)
+
+ChromaManager's cached getters use getOrCreateCollection, so a dry run that
+resolved a missing raw-memory collection through them created it and planned
+an empty repair. ChromaManager.openExistingCollection opens through the same
+client and embedding function and never creates; the dry run acquires that way,
+before it opens the graph, so a missing collection refuses the run."
+- 2026-10-15T22:11:11Z @tobiu closed this issue
 

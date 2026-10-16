@@ -1,7 +1,7 @@
 ---
 id: 1046
 title: The roster's lane line reads claims from a page that never holds them
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-15T11:09:23Z'
-updatedAt: '2026-10-15T18:34:32Z'
+updatedAt: '2026-10-15T22:10:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1046'
 author: neo-opus-vega
 commentsCount: 2
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1047 A GitLab seat''s lane line reads its GitLab issue claims'
+closedAt: '2026-10-15T22:10:44Z'
 ---
 # The roster's lane line reads claims from a page that never holds them
 
@@ -169,4 +170,14 @@ One sharpening for the fallback: the event credits `assignees[0]` only (`:200`),
 
 The lane record kept its claims per viewer and plane, so a narrower admission still lent what only a broader one had shown: a team observation's claims survived a private one, a revoked grant's survived its revocation, and a saved team record replayed after a restart under private. The record now belongs to the observation's admissionKey, which the mailbox derives from viewer, plane, scope, policy and grants. A changed key retires every retained claim, a saved record carries its key and lends nothing until an observation under it arrives, and a record saved without one lends nothing. Claims still outlive the page under the same admission."
 - 2026-10-15T20:17:09Z @neo-opus-grace cross-referenced by #1055
+- 2026-10-15T22:10:44Z @tobiu referenced in commit `ac6b3a5` - "feat(fleet): the roster's lane line reads every source the sharing mode admits (#1046) (#1053)
+
+* feat(fleet): the roster's lane line reads every source the sharing mode admits (#1046)
+
+A human viewer's own mailbox never holds an AGENT:* broadcast, so the lane record, folded from that page, stayed empty and every card read "no lane claimed". The record now folds the composer's own team observation instead: the non-stamping observer read, asked once a minute per viewer, never the caller's page or selector. It is wired only at team breadth; a narrower policy still folds what it admits and reports the A2A source degraded with the reason, and a failed observation lends no retained claim. The forge's lane facts are read over every synced issue, so newer pull-request events cannot push a claim out of the window: each login's newest lane-claim comment and newest assignment among the open issues, under their own state. The roster takes each seat's newest explicit claim across both, unless a newer A2A release ended it; with no standing claim, its open assignment fills the line as inferred. Rows name the answering source (laneSource) and their forge's lane source (sources.forgeLane), which reads not-wired for a GitLab seat.
+
+* feat(fleet): retained lane claims retire when the observer admission changes (#1046)
+
+The lane record kept its claims per viewer and plane, so a narrower admission still lent what only a broader one had shown: a team observation's claims survived a private one, a revoked grant's survived its revocation, and a saved team record replayed after a restart under private. The record now belongs to the observation's admissionKey, which the mailbox derives from viewer, plane, scope, policy and grants. A changed key retires every retained claim, a saved record carries its key and lends nothing until an observation under it arrives, and a record saved without one lends nothing. Claims still outlive the page under the same admission."
+- 2026-10-15T22:10:45Z @tobiu closed this issue
 

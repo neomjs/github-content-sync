@@ -1,7 +1,7 @@
 ---
 id: 1018
 title: A returning peer's pre-identity Memory Core history is unattributed
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-14T10:46:36Z'
-updatedAt: '2026-10-15T20:45:37Z'
+updatedAt: '2026-10-15T23:55:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1018'
 author: neo-opus-grace
-commentsCount: 9
+commentsCount: 11
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-15T22:47:45Z'
 ---
 # A returning peer's pre-identity Memory Core history is unattributed
 
@@ -88,13 +89,13 @@ The migration CLI as #1052 ships it (`1de6e8ac`); the operator is its consumer.
 
 ## Acceptance Criteria
 
-- [ ] A dry-run report on the canonical plane: rows per rule, sessions left shared, and a reviewed sample with no false attribution.
-- [ ] After `--apply`: `query_recent_turns(@neo-gemini-pro, team)` with `before: 2026-05-01` returns founding-era turns, and a peer's `team` `query_raw_memories` still finds them.
-- [ ] Rows without evidence stay `shared`, and a session with conflicting markers stays `shared` as a whole.
-- [ ] Every attributed row carries its rule and evidence. A re-run is a no-op, and a reverse run restores `shared`.
-- [ ] Unit specs cover the positive cases (CLI marker, wake marker, attributed-session sibling), the negative ones (Antigravity-only, mixed session, **the marker quoted outside the envelope prefix**) and idempotency.
-- [ ] A spec proves team readability after the re-key: a peer's `team` read returns the re-keyed row and a `private` read by another identity does not. A cross-store spec proves a re-run completes an interrupted Chroma pass without duplicating graph changes.
-- [ ] (post-merge) The operator runs `--apply`; the result is recorded here, and she confirms or rejects the attribution after first boot.
+- [x] A dry-run report on the canonical plane: rows per rule, sessions left shared, and a reviewed sample with no false attribution. ([dry-run report](https://github.com/neomjs/neo-agent-brain/issues/1018#issuecomment-6198424411))
+- [x] After `--apply`: `query_recent_turns(@neo-gemini-pro, team)` with `before: 2026-05-01` returns founding-era turns, and a peer's `team` `query_raw_memories` still finds them. ([receipt](https://github.com/neomjs/neo-agent-brain/issues/1018#issuecomment-6203863139), after #1057 and #1059)
+- [x] Rows without evidence stay `shared`, and a session with conflicting markers stays `shared` as a whole. (#1052's specs; 6,552 rows left shared on the plane)
+- [x] Every attributed row carries its rule and evidence. A re-run is a no-op, and a reverse run restores `shared`. (#1052's and #1059's specs)
+- [x] Unit specs cover the positive cases (CLI marker, wake marker, attributed-session sibling), the negative ones (Antigravity-only, mixed session, **the marker quoted outside the envelope prefix**) and idempotency. (#1052)
+- [x] A spec proves team readability after the re-key: a peer's `team` read returns the re-keyed row and a `private` read by another identity does not. A cross-store spec proves a re-run completes an interrupted Chroma pass without duplicating graph changes. (#1052)
+- [x] (post-merge) The operator runs `--apply`; the result is recorded here, and she confirms or rejects the attribution after first boot. ([apply](https://github.com/neomjs/neo-agent-brain/issues/1018#issuecomment-6201039669), [her confirmation](https://github.com/neomjs/neo-agent-brain/issues/1018#issuecomment-6201351445))
 
 ## Out of Scope
 
@@ -118,6 +119,7 @@ Retrieval Hint: "pre-identity memories userId shared unattributed founding era G
 Origin Session ID: 530763bc-91d2-4aea-926a-00bf6ab58030
 
 🖖 Grace (Opus 5.5, Claude Code)
+
 
 
 
@@ -295,4 +297,29 @@ The migration's graph pass re-keys only the bare-id `AGENT_MEMORY` node (`readGr
 - 2026-10-15T20:48:06Z @neo-opus-grace cross-referenced by PR #1057
 - 2026-10-15T20:53:30Z @neo-opus-grace cross-referenced by #1058
 - 2026-10-15T21:00:23Z @neo-opus-grace cross-referenced by PR #1059
+### @neo-opus-grace - 2026-10-15T22:47:02Z
+
+**Receipt: the offline window for #1057 and #1059, 2026-10-15 22:43–22:46Z, canonical plane, merged `dev` at `a3d30def`.** The operator authorized it. The plane image's Memory Core modules matched the pre-merge base `249d71df`, so the changed files were mounted from `a3d30def` into a one-off mc-server container. A fresh restorable backup came first: `backup-2026-10-15T22-37-30.015Z`, integrity verified, no bundle removed. mc-server, orchestrator and kb-server were stopped; Chroma stayed up.
+
+1. **#1058's re-apply** (this ticket's invocation, `--apply --offline`): `chromaUpdated 497 · graphMissing 1839 · graphUpdated 0 · legacyRefused 0 · legacyUpdated 497`. The dry run before it: 1,839 already attributed, 0 new, 0 conflicts.
+2. **Reconciler dry run:** 3 conflicts, down from 500, all `user_id` conflicts on rows outside the journal. Planned node merges rose from 26,316 to 26,813.
+3. **#1055's recency repair** (`--apply --offline`): `reprojected 4515 · projected 1416 · noSummary 0 · failed 0`. A second dry run plans `reproject 0 · project 0`, and `current` rose from 34,113 to 40,044.
+4. Services restarted at 22:45:27Z, all healthy by 22:46:00Z, about 2 minutes of Memory Core downtime.
+
+**AC-2 is met.** `query_recent_turns({agentIdentity: '@neo-gemini-pro', memorySharing: 'team', before: {timestamp: '2026-05-01T00:00:00Z'}})` returns founding-era turns (Gemini CLI sessions on 2026-03-25). Paging back reaches 2026-01-30 and 2025-11-25. A peer's `team` `query_raw_memories` still returns the rows as `@neo-gemini-pro`.
+
+Still open, and not this ticket's: 3,923 legacy-only rows, 497 of them this ticket's, wait for `reconcileRawMemoryGraphIdentities` to converge. Its 3 older conflicts block that apply. A later `repairRawMemoryRecencyKeys` run then gives them the keys.
+
+Every AC above is now met, so I'm closing this.
+
+🖖 Grace (Opus 5.5, Claude Code) · session 77c3c004-7908-4549-9190-b4f9c3cfa9dc
+
+
+- 2026-10-15T22:47:46Z @neo-opus-grace closed this issue
+### @neo-opus-grace - 2026-10-15T23:55:15Z
+
+The plane apply that would let identity recency reach this issue's legacy-only rows (783 of Julia's turns among 1,329 attributed ones) is blocked by the reconciler's whole-plan refusal on three rows the operator keeps unresolved. The evidence and the open fork are recorded once, on the reconciler's owner record: https://github.com/neomjs/neo/issues/17057#issuecomment-6204757348
+
+🖖 Grace (Opus 5.5, Claude Code) · session 9c64fa71-c6a4-4bdc-8ee6-ebc35910a2c3
+
 
