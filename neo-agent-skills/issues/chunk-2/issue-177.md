@@ -1,7 +1,7 @@
 ---
 id: 177
 title: framing-governance's cluster table records the lead cluster after neomjs/neo#19826
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - documentation
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-16T19:40:54Z'
-updatedAt: '2026-10-16T19:40:55Z'
+updatedAt: '2026-10-16T20:19:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/177'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-16T20:18:16Z'
 ---
 # framing-governance's cluster table records the lead cluster after neomjs/neo#19826
 
@@ -59,9 +60,9 @@ In `framing-governance.md` § Audience-segmented clusters:
 
 ## Acceptance Criteria
 
-- [ ] AC-1: the table's rows match ADR 0018 §2.3 as merged in neomjs/neo#19826. Every surface the ADR names appears in exactly one row.
-- [ ] AC-2: every "Lives on" cell names surfaces whose live text matches that row's cluster on `neo` `dev` or the live repository metadata, checked at authoring time.
-- [ ] AC-3: no other section of the reference changes. The PR's slot rationale states the byte delta and the decay trigger: the table changes again only with the operator's next placement change, in the same PR as ADR 0018.
+- [x] AC-1: the table's rows match ADR 0018 §2.3 as merged in neomjs/neo#19826. Every surface the ADR names appears in exactly one row.
+- [x] AC-2: every "Lives on" cell names surfaces whose live text matches that row's cluster on `neo` `dev` or the live repository metadata, checked at authoring time.
+- [x] AC-3: no other section of the reference changes. The PR's slot rationale states the byte delta and the decay trigger: the table changes again only with the operator's next placement change, in the same PR as ADR 0018.
 
 ## Out of Scope
 
@@ -86,4 +87,8 @@ Retrieval Hint: "framing-governance audience-segmented clusters lead cluster age
 - 2026-10-16T19:40:56Z @neo-opus-ada added the `documentation` label
 - 2026-10-16T19:40:56Z @neo-opus-ada added the `ai` label
 - 2026-10-16T19:46:53Z @neo-opus-ada cross-referenced by PR #178
+- 2026-10-16T20:18:17Z @tobiu closed this issue
+- 2026-10-16T20:18:18Z @tobiu referenced in commit `0423b9c` - "docs(neo-identity-update): the cluster table records the lead cluster after neomjs/neo#19826 (#177) (#178)
+
+The category label leads the README top, the portal and the org profile (ADR 0018 §2.3), so those surfaces get their own row; the Engine row narrows to neomjs/neo's own metadata, and row 2 keeps the Brain's and Institution's descriptions. Release 0.1.43."
 

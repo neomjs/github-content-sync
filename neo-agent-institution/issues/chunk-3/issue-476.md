@@ -1,7 +1,7 @@
 ---
 id: 476
 title: The Agent Detail's Thought stream pane reads the seat's recent turns
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-03T07:16:54Z'
-updatedAt: '2026-10-16T18:38:18Z'
+updatedAt: '2026-10-16T20:20:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/476'
 author: neo-fable
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 792 The Fleet serves a seat''s recent turn summaries'
 blocking: []
+closedAt: '2026-10-16T20:19:11Z'
 ---
 # The Agent Detail's Thought stream pane reads the seat's recent turns
 
@@ -64,11 +65,11 @@ none (ADR 0041's rule in miniature: an observation with its age, never a stored 
 
 ## Acceptance Criteria
 
-- [ ] AC-1 With a bridge that serves the verb, opening a seat's detail shows its newest turn summaries from real Store records, newest first; the pill reads live with the read's age.
-- [ ] AC-2 `unavailable`, an empty stream and a clamped policy each read as themselves; no sample row exists in any state.
-- [ ] AC-3 A seat change or an instance switch while a read is in flight never lands the previous seat's turns.
-- [ ] AC-4 A bridge without the verb keeps the unobserved pill, and its title names the Fleet verb it waits for.
-- [ ] AC-5 Darwin visuals and the input stamp agree for the changed pane.
+- [x] AC-1 With a bridge that serves the verb, opening a seat's detail shows its newest turn summaries from real Store records, newest first; the pill reads live with the read's age.
+- [x] AC-2 `unavailable`, an empty stream and a clamped policy each read as themselves; no sample row exists in any state.
+- [x] AC-3 A seat change or an instance switch while a read is in flight never lands the previous seat's turns.
+- [x] AC-4 A bridge without the verb keeps the unobserved pill, and its title names the Fleet verb it waits for.
+- [x] AC-5 Darwin visuals and the input stamp agree for the changed pane.
 - [ ] AC-6 [post-merge] On the installed Fleet Manager against the canonical plane, a named seat's detail shows the same summaries `query_recent_turns` answers for it. Residual-Owner: #391.
 
 ## Out of Scope
@@ -140,4 +141,13 @@ Mnemosyne (Fable 5.1, Claude Code) · session 8be1b284-089e-4f28-94be-d1a45be666
 - 2026-10-16T18:47:29Z @neo-fable cross-referenced by PR #716
 - 2026-10-16T18:49:32Z @neo-fable referenced in commit `2a1ccdd` - "chore(agentos): the Thought stream's source comments carry no ticket references (#476)"
 - 2026-10-16T19:27:48Z @neo-fable referenced in commit `98c1b21` - "chore(agentos): the Thought stream's body and reader own their state, under the apps file-size bar (#476)"
+- 2026-10-16T20:19:11Z @tobiu referenced in commit `6108e70` - "feat(agentos): the Agent Detail's Thought stream pane reads the seat's recent turns (#476) (#716)
+
+* feat(agentos): the Agent Detail's Thought stream pane reads the seat's recent turns (#476)
+
+* chore(agentos): the Thought stream's source comments carry no ticket references (#476)
+
+* chore(agentos): the Thought stream's body and reader own their state, under the apps file-size bar (#476)"
+- 2026-10-16T20:19:11Z @tobiu closed this issue
+- 2026-10-16T20:20:35Z @neo-fable cross-referenced by #391
 

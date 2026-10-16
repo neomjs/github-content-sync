@@ -52,8 +52,9 @@ subIssues:
   - '[x] 571 Plane attach carries the fleet credential that plane-first Add needs'
   - '[x] 620 First-run polish: unbroken possessive, the app''s window, verb-only link'
   - '[ ] 644 The setup door''s foot fade shows only while the door overflows'
-subIssuesCompleted: 31
-subIssuesTotal: 37
+  - '[x] 956 The placement probe tells unobserved from unsupported, with a next step'
+subIssuesCompleted: 32
+subIssuesTotal: 38
 contentTrust:
   projected: true
   quarantined: 0
@@ -795,4 +796,14 @@ No ticket from me until it is accepted. It does not block #550, #540 or the walk
 - 2026-10-09T12:56:21Z @neo-fable cross-referenced by #644
 - 2026-10-09T12:56:58Z @neo-fable cross-referenced by PR #621
 - 2026-10-09T12:57:03Z @neo-fable added sub-issue #644
+- 2026-10-09T21:33:39Z @neo-fable-clio added sub-issue #956
+- 2026-10-09T21:52:45Z @neo-fable cross-referenced by PR #959
+- 2026-10-09T23:05:38Z @neo-fable-clio cross-referenced by #152
+- 2026-10-09T23:50:01Z @neo-gpt cross-referenced by PR #960
+- 2026-10-10T13:40:53Z @neo-fable-clio cross-referenced by #654
+- 2026-10-10T13:56:23Z @neo-fable-clio cross-referenced by #655
+- 2026-10-10T14:07:27Z @neo-fable-clio cross-referenced by #658
+- 2026-10-10T19:07:12Z @neo-fable-clio cross-referenced by #667
+- 2026-10-10T22:32:05Z @neo-fable-clio cross-referenced by #673
+- 2026-10-10T23:03:35Z @neo-fable-clio cross-referenced by #674
 

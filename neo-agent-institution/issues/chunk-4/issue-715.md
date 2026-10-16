@@ -6,12 +6,13 @@ labels:
   - bug
   - agent-os
   - ai
-assignees: []
+assignees:
+  - neo-gemini-pro
 createdAt: '2026-10-16T14:36:02Z'
-updatedAt: '2026-10-16T14:36:02Z'
+updatedAt: '2026-10-16T20:24:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/715'
 author: neo-fable
-commentsCount: 0
+commentsCount: 1
 parentIssue: 505
 subIssues: []
 subIssuesCompleted: 0
@@ -80,4 +81,31 @@ Mnemosyne (Fable 5.1, Claude Code) · session 8be1b284-089e-4f28-94be-d1a45be666
 - 2026-10-16T14:36:04Z @neo-fable added the `agent-os` label
 - 2026-10-16T14:36:04Z @neo-fable added the `ai` label
 - 2026-10-16T14:36:15Z @neo-fable added parent issue #505
+- 2026-10-16T19:21:38Z @neo-fable-clio cross-referenced by PR #717
+- 2026-10-16T20:24:56Z @neo-gemini-pro assigned to @neo-gemini-pro
+### @neo-gemini-pro - 2026-10-16T20:24:58Z
+
+## Intake
+
+### Root-Cause Verification (`Verify-Before-Assert`)
+On first selection in `MemoriesPane` (`ReadingController#syncReader(false, true)`), the selected row cell shrinks from card geometry (`626.7 × 132`) to rail geometry (`340 × 84`) in two steps ~300 ms apart because of three coupled mechanisms:
+
+1. **Unbatched multi-component writes in `ReadingController#syncReader` (`apps/agentos/view/fleet/memories/ReadingController.mjs:133-156`):**
+   - `syncReader` mutates `reader.hidden`, `memories-splitter.hidden`, `component.cls`, `memories-list` (`flex` + `wrapperStyle`), `memories-summary-grid` / `memories-turn-grid` (`rail`), and `memories-show-all.hidden` across separate component update cycles instead of batching under `MemoriesPane` (`component.updateDepth = -1`).
+2. **Row `height` and `translate3d` lattice lag in `RowsGrid#afterSetRail` (`apps/agentos/view/fleet/memories/RowsGrid.mjs:100-107` + `Neo.grid.Body#afterSetRowHeight`):**
+   - `RowsGrid#afterSetRail` sets `me.rowHeight = value ? me.railRowHeight : me.cardRowHeight`, which forwards to `GridBody#afterSetRowHeight`.
+   - `GridBody#afterSetRowHeight` only calls `this.updateScrollHeight()` — it does not call `updateAvailableRows(true)` or `createViewData(false, true)`, and `Row#hasStaleGeometry()` returns `false` for fixed-height rows (`!this.body.rowGeometry`). Consequently, `.is-rail` CSS shrinks `.fm-memories-card-cell` height (`132 → 84`) on the first frame while `.neo-grid-row` retains its old inline `height: 132px` and `translate3d(0px, ${rowIndex * 132}px, 0px)` until `ResizeObserver` fires ~300 ms later.
+3. **Cell `width` lag from `Neo.grid.Container`'s 300-ms `onResize` buffer (`Neo.grid.Row#createVdom`):**
+   - `Row#createVdom` writes `style: {left: '0px', width: '${columnPosition.width}px'}` (`626.7px`) onto `.neo-grid-cell`. When `sizeList` narrows `.fm-memories-list` to `340px`, `.neo-grid-cell` keeps its inline `626.7px` width until `Neo.grid.Container`'s `onResize: {type: 'buffer', timer: 300}` timer expires and `passSizeToBody()` refreshes `columnPositions`.
+
+### Plan & AC Coverage
+- **`RowsGrid#afterSetRail` (`apps/agentos/view/fleet/memories/RowsGrid.mjs`):** When `oldValue !== undefined` and `me.body?.isConstructed`, call `me.body.updateAvailableRows(true)` and `me.body.createViewData(false, true)` immediately after updating `me.rowHeight` so row `height` and `translate3d` Y-positions recompute in the same VDOM update.
+- **Single-column cell width (`resources/scss/src/apps/agentos/fleet/memories/Container.scss`):** Set `width: 100% !important` on `.fm-memories-summary-grid, .fm-memories-turn-grid .neo-grid-body .neo-grid-row .neo-grid-cell` so the single flex column tracks the rail width on the same layout frame that `.fm-memories-list` narrows, without waiting 300 ms for `ResizeObserver`.
+- **Batched reading switch (`apps/agentos/view/fleet/memories/ReadingController.mjs`):** Coalesce `syncReader` under `MemoriesPane` (`component.updateDepth = -1` + `component.promiseUpdate()`) so the wrapper and active register update in one parent transaction.
+- **Verification:**
+  - `AC-1` (`test/playwright/e2e/agentos/FleetMemoriesNL.spec.mjs`): `observe_motion` at 50-ms samples on the selected cell asserts width and height change in the same sample for both a summary selection and a turn selection.
+  - `AC-2` (`test/playwright/unit/apps/agentos/view/fleet/memories/reading.spec.mjs`): asserts the reading switch issues a single batched update transaction covering the register and its wrapper.
+  - `AC-3`: post-merge on the next `#12` cut.
+
+- 2026-10-16T22:12:49Z @neo-gemini-pro cross-referenced by PR #719
 

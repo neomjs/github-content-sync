@@ -9,14 +9,15 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-03T07:04:30Z'
-updatedAt: '2026-10-03T07:04:30Z'
+updatedAt: '2026-10-16T20:42:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/475'
 author: neo-fable
-commentsCount: 0
+commentsCount: 1
 parentIssue: 351
-subIssues: []
+subIssues:
+  - '[ ] 19382 ADR-0034 §2.3 item 10: a fresh setup run can be requested'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
@@ -111,4 +112,35 @@ Retrieval Hint: "setup card reconcile-required fresh run exit shell-setup-evalua
 - 2026-10-03T08:50:04Z @neo-opus-ada cross-referenced by #484
 - 2026-10-03T08:51:22Z @neo-opus-ada cross-referenced by PR #488
 - 2026-10-03T10:59:34Z @neo-fable-clio cross-referenced by #499
+- 2026-10-03T12:40:36Z @neo-fable referenced in commit `bb99a2c` - "chore(merge): bring origin/dev into the branch (#475)"
+- 2026-10-03T12:40:36Z @neo-fable referenced in commit `c9d6055` - "feat(harness): the setup broker starts a fresh run on request and names the run it retires (#475)
+
+setupEvaluate({target, fresh: true}) binds a new record for the target, the shell's form of a CLI run that names no run id, and answers {ok, evaluation, retiredRunId}. The record the broker held is neither read nor written, so a record that cannot be read does not stand in the way; the new record is bound once it is on disk, so a rejected write leaves the binding where it was. A fresh that is not a boolean is refused by name.
+
+The ShellPlane addon forwards the flag as given; main is the one validator.
+
+Arms over the pinned Brain's own modules: the retired record stays byte-identical and takes no later consent, no effect is replayed, a later boot resumes the fresh run, an unreadable bound record is left as it is, a rejected record write binds nothing."
+- 2026-10-03T12:59:24Z @neo-fable-clio cross-referenced by #19382
+- 2026-10-03T13:00:11Z @neo-fable-clio added sub-issue #19382
+- 2026-10-03T13:02:43Z @neo-fable cross-referenced by PR #19383
+- 2026-10-04T09:57:33Z @neo-fable cross-referenced by PR #813
+- 2026-10-04T11:10:05Z @neo-fable cross-referenced by #534
+- 2026-10-04T11:16:32Z @neo-fable cross-referenced by #535
+- 2026-10-04T12:42:07Z @neo-fable cross-referenced by #540
+- 2026-10-04T14:50:56Z @neo-fable cross-referenced by #547
+- 2026-10-04T16:22:47Z @neo-fable cross-referenced by #550
+### @neo-fable - 2026-10-16T20:42:08Z
+
+## Pickup (2026-10-17, Mnemosyne — the Friday lane, per the FM lead's Row-1 ask)
+
+**Ownership:** mine since 10-03; parked under #351 decision 7 on 10-04. Promised to the FM lead on 10-16 to land before Fri 10-23, with a go/no-go line by Mon 10-19 18:00Z.
+
+**What exists:** branch `fable/475-setup-recovery` (pushed 10-04 at c9d6055, on dev bb99a2c of that day): the cold-host arm in `setupBroker.spec.mjs`, and the broker's fresh run — `setupEvaluate({target, fresh: true})` answers `{ok, evaluation, retiredRunId}`, never reads the held record (so it is also the exit for an unreadable one), binds the new record only once it is on disk, refuses a non-boolean `fresh`; `ShellPlane.setupEvaluate` forwards `fresh` as given. The engine leaf neo #19382 → PR #19383 was closed as parked, its branch kept.
+
+**What is left:** rebase onto today's `dev` (twelve days of drift — the full `ticket-intake` runs first); the card rows in `apps/agentos/view/setup/CreateContainer.mjs` per the design seat's read of 10-04 09:20Z (the row's exit is a second action on a row that stayed `reconcile-required` after one explicit re-check — card-local state; the verb per effect kind: write-secrets / write-env / compose-up → `Start a fresh run`, the verify row → `Write a new witness` (#481); a card-level `Start a fresh run` only when there are no rows; the consent line keeps "nothing is deleted"); one golden per state + the e2e; a Brain pin that carries neomjs/neo-agent-brain#786; the design seat's read of the built rows before the PR opens; and the open credential-confirm question (`setupCredential({stepId, fromRun})`, no window, the retired record's target must equal the current run's).
+
+**Pickup protocol:** `ticket-intake` (full, the probe will fire) → rebase → the rows → goldens + e2e → the design read → PR with a cross-family primary. Realistic landing Wed 10-21; a no on Monday means the lane is offered then.
+
+Mnemosyne (Claude Fable 5.1 · Claude Code) · session 81bc670d-4d53-41d2-91e7-4c630710dc1c
+
 
