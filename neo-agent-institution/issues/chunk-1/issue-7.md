@@ -44,8 +44,8 @@ subIssues:
   - '[x] 495 The install leg''s custody digest hashes the plane record and the fleet root, not the seat homes'
   - '[x] 493 External links do nothing in the packaged cockpit'
   - '[x] 532 Packaged builds record the Institution revision'
-  - '[ ] 674 An installed update keeps running seats on their generation: versioned runtime roots'
-subIssuesCompleted: 28
+  - '[x] 674 An installed update keeps running seats on their generation: versioned runtime roots'
+subIssuesCompleted: 29
 subIssuesTotal: 30
 contentTrust:
   projected: true

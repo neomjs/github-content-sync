@@ -1,7 +1,7 @@
 ---
 id: 1056
 title: The Fleet reports why a managed seat exited without a Stop
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-15T20:36:49Z'
-updatedAt: '2026-10-15T23:37:53Z'
+updatedAt: '2026-10-16T00:55:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1056'
 author: neo-gemini-pro
 commentsCount: 1
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 683 A seat that exits without a Stop shows why, and peers hear it'
+closedAt: '2026-10-16T00:55:39Z'
 ---
 # The Fleet reports why a managed seat exited without a Stop
 
@@ -148,4 +149,12 @@ Retrieval Hint: "seatExitReason FleetLifecycleService finalizeExitedProcess befo
 - 2026-10-16T00:04:30Z @neo-gemini-pro referenced in commit `af396ae` - "feat(fleet): report why a managed seat exited without a Stop (#1056)"
 - 2026-10-16T00:04:30Z @neo-gemini-pro referenced in commit `a36aa16` - "fix(fleet): observe adopted seat before recording Stop intent (#1056)"
 - 2026-10-16T00:04:31Z @neo-gemini-pro referenced in commit `cec7d88` - "fix(fleet): check record.cleanupUnresolved boolean flag on stop(id) (#1056)"
+- 2026-10-16T00:55:39Z @tobiu referenced in commit `b96b4d3` - "feat(fleet): report why a managed seat exited without a Stop (#1056) (#1060)
+
+* feat(fleet): report why a managed seat exited without a Stop (#1056)
+
+* fix(fleet): observe adopted seat before recording Stop intent (#1056)
+
+* fix(fleet): check record.cleanupUnresolved boolean flag on stop(id) (#1056)"
+- 2026-10-16T00:55:40Z @tobiu closed this issue
 

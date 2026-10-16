@@ -1,7 +1,7 @@
 ---
 id: 674
 title: 'An installed update keeps running seats on their generation: versioned runtime roots'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-10T23:03:34Z'
-updatedAt: '2026-10-16T00:04:12Z'
+updatedAt: '2026-10-16T00:56:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/674'
 author: neo-fable-clio
 commentsCount: 14
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 19725 Define runtime and admission continuity across Fleet updates'
 blocking: []
+closedAt: '2026-10-16T00:56:30Z'
 ---
 # An installed update keeps running seats on their generation: versioned runtime roots
 
@@ -410,4 +411,50 @@ Emmy (GPT-6, Codex) · session 02cd8bc5-8de4-4e39-a941-ef60d24664c1
 - 2026-10-15T22:37:41Z @neo-gpt-sophie cross-referenced by #479
 - 2026-10-15T23:20:58Z @neo-gpt-sophie cross-referenced by #704
 - 2026-10-15T23:53:56Z @neo-gpt-sophie referenced in commit `cf57d58` - "chore(harness): pin the merged runtime producer (#674)"
+- 2026-10-16T00:56:30Z @tobiu referenced in commit `b16dca7` - "feat(harness): preserve seat runtimes across package updates (#674) (#702)
+
+* feat(harness): prepare verified runtime generations before install (#674)
+
+* feat(harness): select verified runtime before packaged boot (#674)
+
+* feat(harness): consume the shared runtime verifier (#674)
+
+* feat(harness): carry verified generations into Fleet starts (#674)
+
+* feat(harness): verify the packaged launch protocol (#674)
+
+* feat(harness): revalidate package slots before mutation (#674)
+
+* feat(harness): probe destination handoff compatibility (#674)
+
+* fix(harness): keep snapshot probes inside the packaged boundary (#674)
+
+* feat(harness): classify receipt-bound runtime support (#674)
+
+* feat(harness): hold admission custody through package updates (#674)
+
+* feat(harness): distinguish first install and legacy migration (#674)
+
+* feat(harness): serialize package updates across data roots (#674)
+
+* fix(harness): retain current native-seat fixes in runtime pin (#674)
+
+* feat(harness): validate native-profile recovery compatibility (#674)
+
+* feat(harness): inspect loaded runtime process mappings (#674)
+
+* feat(harness): classify guarded runtime retention evidence (#674)
+
+* feat(harness): guard package runtime protection (#674)
+
+* feat(harness): retire unused runtime generations (#674)
+
+* feat(fleet): show runtime bindings and guarded restart (#674)
+
+* fix(harness): verify physical runtime payloads before boot (#674)
+
+* fix(harness): place fixture state outside sealed runtimes (#674)
+
+* chore(harness): pin the merged runtime producer (#674)"
+- 2026-10-16T00:56:30Z @tobiu closed this issue
 

@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-07-04T14:18:35Z'
-updatedAt: '2026-10-15T23:40:10Z'
+updatedAt: '2026-10-16T01:12:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/12'
 author: neo-fable
 commentsCount: 90
@@ -2328,24 +2328,26 @@ Emmy (GPT-6, Codex Desktop).
 - 2026-10-15T23:21:37Z @neo-gpt-sophie added sub-issue #704
 ### @neo-gpt-sophie - 2026-10-15T23:40:10Z
 
-### Producer approved; next integration and installed checks
+### Sunset handover — scope: convergent
 
-[Brain #1051](https://github.com/neomjs/neo-agent-brain/pull/1051) is approved by Grace at `e7ee18eeb49bada3639e9ac27bdbbf78bc92aad7` ([Round 2](https://github.com/neomjs/neo-agent-brain/pull/1051#pullrequestreview-5541175006)). Live read at `2026-10-15T23:37Z`: OPEN/dev, CLEAN/MERGEABLE, no pending reviewer, 26 checks passing and automerge skipped. The source-owned readiness predicate passes; its optional identity-bound certification is withheld for an unbound Memory Core principal, explicitly without changing merge eligibility. Merge remains the operator's action.
+The operator ended this session and will continue the Engine release, Fleet Manager and 3D-engine work next session. Sophie retains the installed Fleet outcome; source merge is complete, installed acceptance is not.
 
-Sophie retains the sequence: human producer merge → verify the landed export and consumer pin → rerun [Institution #702](https://github.com/neomjs/neo-agent-institution/pull/702)'s upstream-dev checks → consumer review/human merge → fresh coordinated checkpoint for the already-owned installed witnesses. The consumer remains draft at `d151e22`; no installed update is recorded by the source approval.
+**Merged source:** Brain #1051 → `f03961a8e59e3e4212b472cbe064ce17b86d47f5` (15 October 23:50:06 UTC); Institution #702 → `b16dca74f3c8080ccb359e0e94cc37972a40df75` (16 October 00:56:28 UTC). Grace approved the producer and Vega approved consumer `cf57d58`, with no Required Actions. Consumer CI passed: explicit-Brain contract **2,068**; locked/upstream isolated units each **1,933 passed / 11 skipped**; components **8**; executed E2E **13**. The separate cross-repo E2E collection was **87 tests in 47 files**, not execution. Both upstream phases resolved Brain `f03961a8` and Engine `065915038d`.
 
-Julia's newly filed [Brain #1061](https://github.com/neomjs/neo-agent-brain/issues/1061) and [#1062](https://github.com/neomjs/neo-agent-brain/issues/1062) provide separate failure classifications for that validation. These are her reported observations, not additional Sophie reproduction:
+**Freshness/custody:** all four resident primary checkouts were mechanically identified, refreshed clean on `dev`, and GitHub identity rechecked. Institution is `b16dca74`, Brain `b96b4d34`, Engine `065915038d`, Stage `98689d78`. Brain's local config reconciliation returned `completed`; the other repositories do not host that script. The Engine's existing `#19462` stash is preserved. No dependency reinstall, package rebuild, live install, seat action, profile mutation or service restart was performed by the sunset refresh.
 
-| Observation during the existing tool witness | Owning issue / meaning |
-|---|---|
-| A later MCP child cannot redeem its original issuer after Fleet succession | #674 / neomjs/neo-agent-brain#980; the retained original-admission/later-child witness here |
-| An admitted GitHub MCP process cannot find `gh` after a GUI-launched Antigravity Start | neomjs/neo-agent-brain#1061; the invoker's PATH, distinct from whether admission succeeded |
-| An initialized stdio bridge exits after an in-flight stream/session failure and the harness does not reload it | neomjs/neo-agent-brain#1062; transport/harness recovery, distinct from original issuer custody |
+**First pickup:** recover this session's mailbox/self-handover and current issue state. Build a fresh candidate from explicitly chosen landed revisions and verify its build receipt; the previous local `--package-lock-only` operation did not install the merged producer into `node_modules`. The current Brain checkout is newer than the consumer's pinned `f03961a8`, so neither the open checkout nor the retained pre-merge artifact is proof of package contents.
 
-These follow-ups do not silently enlarge the source PR's acceptance or turn approval into an installed pass. Classify any failure from the planned witness against its observed stage and owning issue; retain the existing eight-seat census, later-child reconnect, operator-paced restart, rollback, retirement and unknown-liveness requirements. [#704](https://github.com/neomjs/neo-agent-institution/issues/704) separately owns the conservative issuer-lock recovery guidance.
+Before an installed cut, run the isolated native controls, record first-paint/inventory timings for first materialization versus steady reuse with artifact/cache conditions, then take a fresh coordinated checkpoint and inspect actual installation eligibility. A recognized legacy transition must be named explicitly: `--legacy-migration` is the discontinuous checkpoint/Stop-all/install/Start path, not an uninterrupted-update witness or authorization to stop seats.
 
-No live profiles, seats, services or app installation were changed for this handoff.
+**Acceptance retained:** eight-seat before/after census; surviving native tools; later MCP-child reconnect; operator-paced restart onto the new generation; rollback; eligible retirement with the successor's state/fence agreement; unknown-liveness retention. Confirm `#259`'s operational guidance from the installed witness. The operator's manual FM verification follows the coordinated running-instance update.
 
-Sophie · Origin Session ID: `7d0b6e29-3d57-4c3c-87a7-473974395a2f`.
+**Evidence ceiling:** the retained unsigned candidate from 15 October 18:41:49 UTC used Institution `d151e22`, Brain `e7ee18ee`, Engine `9b267db4` and Electron 43.5.0. Its popup-close/primary-move replay and clean teardown are L3 evidence for that tuple. The first primary snapshot could be cold before normal-cadence recovery. Four older missing-parent errors remain unclassified and were not reproduced by three later replays. None of this is relabeled as a fresh merged package or installed continuity. Full prior receipts remain [on #674](https://github.com/neomjs/neo-agent-institution/issues/674#issuecomment-6165093863).
+
+**Other failure stages remain distinct:** later-child issuer redemption belongs to this continuity outcome; an admitted Antigravity child unable to find `gh` is neomjs/neo-agent-brain#1061; an initialized stdio bridge dying on a stream/session failure is neomjs/neo-agent-brain#1062. Julia's observations are not additional Sophie reproduction or silently added source ACs.
+
+[#704](https://github.com/neomjs/neo-agent-institution/issues/704) owns the separate recovery guide and README clarifications. Its four-case fixture and clock-discontinuity control are recorded; the manual reused-PID cleanup proposal remains unvalidated. Do not repeat completed reviews, invent a lock-deletion recipe, install the old artifact, or resume substantive work from stale wakes in this sunsetted transcript.
+
+Origin Session ID: `7d0b6e29-3d57-4c3c-87a7-473974395a2f`.
 
 

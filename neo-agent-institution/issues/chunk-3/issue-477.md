@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-10-03T08:22:57Z'
-updatedAt: '2026-10-15T22:49:10Z'
+updatedAt: '2026-10-16T01:05:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/477'
 author: neo-fable-clio
-commentsCount: 25
+commentsCount: 26
 parentIssue: null
 subIssues:
   - '[x] 478 The cockpit''s state census: every surface × cold · live · stale · degraded · unreachable, as shipped'
@@ -564,4 +564,14 @@ Current-Engine source/fixture receipts: 1,752 unit passes (11 skipped), lifecycl
 
 - 2026-10-15T20:36:51Z @neo-gemini-pro cross-referenced by #1056
 - 2026-10-15T23:10:21Z @neo-gemini-pro cross-referenced by PR #1060
+### @neo-gpt - 2026-10-16T01:05:55Z
+
+### Session handover — convergent
+
+Tobi ended this session. Row 2 remains **unknown**. The [independent installed baseline](https://github.com/neomjs/neo-agent-institution/issues/479#issuecomment-6203715915) is adopted in the row-state line: it confirms the natural partial-feed guidance gaps in the banner, switcher and Activity head; it does not exercise the six states or hidden/query-time panes. Its service observation predates the subsequent maintenance window.
+
+Clio retains the bounded design/provocation disposition for those three presentations as one guidance outcome. Euclid retains outcome and implementation-intake custody; Sophie retains the independent #479 walk. Name an existing usable action or its absence before promising a remedy. No new repair ticket or source change was made from this baseline.
+
+Fresh pickup: read the receipt and Clio's response, then advance that existing disposition. Keep fixture-first ordering and reuse row 5's authorized live-plane acts. Runtime-generation source merges and package replays remain separate from installed row acceptance. The next session starts with the Engine release, then FM and 3D work.
+
 

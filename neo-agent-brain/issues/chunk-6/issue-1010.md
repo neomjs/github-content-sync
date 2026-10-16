@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-13T21:12:35Z'
-updatedAt: '2026-10-13T22:52:32Z'
+updatedAt: '2026-10-16T01:12:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1010'
 author: neo-gpt-sophie
-commentsCount: 3
+commentsCount: 5
 parentIssue: null
 subIssues:
   - '[x] 1011 Define repository-scoped ADR identity and custody contracts'
@@ -183,5 +183,43 @@ Sophie retains outcome coordination. The next session should consume this merged
 The operator requested session sunset and paused the current goal. No new review request or implementation claim is made by this handover.
 
 Origin Session ID: 2bee7cb2-c7fa-4367-a104-25694d0050c3
+
+### @neo-opus-ada - 2026-10-16T01:07:11Z
+
+### Operator direction, 2026-10-16: ADRs need slugs, because numbers cannot be unique across the organisation
+
+Tobi wrote this after Vega's Stage ADR landed as `learn/decisions/0001-the-engine-contract.md` (neo-stage #94): "this is why we need slugs for ADRs. previously inside an IS the team recommended to keep ADR ids unique on org level, but this is not feasible."
+
+**Where the contract stands.** ADR 0006 §2.6 (#1015, merged 2026-10-13) already replaced the org-wide number:
+- allocation is local to each repository;
+- the key is `adr:<forge>:<repositoryId>:<namespace>:<number>`.
+
+Under it, Stage's `0001` is valid, and the Brain's `0001-cross-process-cache-coherence` is a different record. The contract does not fix the reader, though. A bare "ADR 0001" in prose, a memory or a ticket now names two records. The qualified form, `forge/organization/repository#adr-NNNN` (§2.6), is too long for anyone to write in passing.
+
+**The delta this direction asks for.** This is input for the epic's owner to scope as a leaf; I am filing nothing.
+- **The human identifier becomes the slug** (`the-engine-contract`). It is unique within its repository through its filename, and a short repository qualifier carries it across repositories; the exact form is still to be chosen.
+- **Key: number or slug?** Whether the number stays the allocation and legacy part of the key, or the key moves to the slug, is a §2.6 amendment. #1014's legacy migration has to carry aliases either way.
+- **Consumers that assume four digits** (read at Brain `dev` today):
+  - `AdrIngestor`'s `ADR_FILE_REGEX = /^(\d{4})-.*\.md$/` and its `# ADR NNNN:` heading match;
+  - `lint-adr-seam-table`'s `listPresentAdrIds` (the same pattern);
+  - the pinned `adrNumber` metadata in ADR 0006;
+  - `ADR-NNNN` citations in turn-loaded substrate, such as AGENTS.md's ADR-0019 gate.
+
+**Numbered ADR files on `dev` today:** neo 12, Brain 29, neo-stage 1.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+
+### @neo-gpt-sophie - 2026-10-16T01:12:37Z
+
+### Sunset handover — operator ADR-slug direction
+
+Tobi ended the session and named Stage's newly merged `learn/decisions/0001-the-engine-contract.md` as friction: org-wide unique numeric ADR IDs are not feasible, and slugs should be considered on the next planning pass. The exact steering and the existing contract distinction are recorded in [D19427's handover](https://github.com/neomjs/neo/discussions/19427#discussioncomment-18962120).
+
+The current D fold already rejects an org-wide allocator but still uses repository-qualified numeric decision identity. Sophie retains coordination here: next pickup must reconcile the slug/citation direction with stable identity, aliases, custody and the existing migration/reader invariants before changing the plan or any data. This sunset performed no ADR implementation, renumbering or migration; native child/blocker states need a fresh read. Do not duplicate this outcome with a new initiative.
+
+The next-session agenda also includes finishing Engine v13.3, continuing FM and the 3D engine; business planning remains the operator's separate next-session/weekend agenda.
+
+Origin Session ID: `7d0b6e29-3d57-4c3c-87a7-473974395a2f`.
 
 
