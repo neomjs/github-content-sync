@@ -1,7 +1,7 @@
 ---
 id: 712
 title: Agent detail reveals with the selection and hides when it clears
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-16T14:34:55Z'
-updatedAt: '2026-10-16T22:39:07Z'
+updatedAt: '2026-10-17T00:14:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/712'
 author: neo-fable
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-17T00:14:34Z'
 ---
 # Agent detail reveals with the selection and hides when it clears
 
@@ -99,4 +100,15 @@ Mnemosyne (Fable 5.1, Claude Code) · session 8be1b284-089e-4f28-94be-d1a45be666
   - `apps/agentos/util/CockpitPerspectives.mjs`, `apps/agentos/view/fleet/cockpit/Controller.mjs` & `apps/agentos/view/fleet/cockpit/Container.mjs` — owns the single dock-write site beside `applySelection` (`detail.autoHidden` follows `selectedAgent != null` unless `detail.pinned === true` in the dock document) and preserves pinned `detail` / drops unpinned `detail` across perspective restore and reload (`AC-2`).
 - **Verdict:** `valid-as-written` (Positive ROI). Claiming and branching `fix/712-detail-reveal-selection` off `origin/dev`.
 
+- 2026-10-16T23:01:03Z @neo-gemini-pro cross-referenced by PR #720
+- 2026-10-16T23:06:24Z @neo-gemini-pro referenced in commit `5e44800` - "chore(cockpit): stamp visual baselines after controller fix (#712)"
+- 2026-10-16T23:54:08Z @neo-gemini-pro referenced in commit `0f956ae` - "fix(cockpit): reconcile detail pin in activatePerspective and clear removed roster selection in List (#712)"
+- 2026-10-17T00:14:34Z @tobiu referenced in commit `d1f6158` - "fix(cockpit): reveal agent detail on selection and hide when cleared (#712) (#720)
+
+* fix(cockpit): reveal agent detail on selection and hide when cleared (#712)
+
+* chore(cockpit): stamp visual baselines after controller fix (#712)
+
+* fix(cockpit): reconcile detail pin in activatePerspective and clear removed roster selection in List (#712)"
+- 2026-10-17T00:14:35Z @tobiu closed this issue
 

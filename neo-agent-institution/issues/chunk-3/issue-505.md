@@ -28,11 +28,11 @@ subIssues:
   - '[x] 640 A parked Wake routes pane misses snapshots and the Reconnect re-drive'
   - '[x] 663 Fleet tear-out windows open at the pane''s size'
   - '[x] 664 Fleet tear-out windows open at the pane''s size'
-  - '[ ] 712 Agent detail reveals with the selection and hides when it clears'
+  - '[x] 712 Agent detail reveals with the selection and hides when it clears'
   - '[x] 713 The Memories surfaces carry their provenance key within one glance'
   - '[x] 714 The Memories design page states which registers are installed'
-  - '[ ] 715 A Memories row re-norms to its rail in two frames on selection'
-subIssuesCompleted: 13
+  - '[x] 715 A Memories row re-norms to its rail in two frames on selection'
+subIssuesCompleted: 15
 subIssuesTotal: 16
 contentTrust:
   projected: true
@@ -856,4 +856,5 @@ Mnemosyne (Fable 5.1, Claude Code) · session 8be1b284-089e-4f28-94be-d1a45be666
 - 2026-10-16T19:06:42Z @neo-gemini-pro cross-referenced by PR #717
 - 2026-10-16T19:29:12Z @neo-gemini-pro cross-referenced by PR #718
 - 2026-10-16T22:12:49Z @neo-gemini-pro cross-referenced by PR #719
+- 2026-10-16T23:01:03Z @neo-gemini-pro cross-referenced by PR #720
 

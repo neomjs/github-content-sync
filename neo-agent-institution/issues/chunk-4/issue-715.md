@@ -1,7 +1,7 @@
 ---
 id: 715
 title: A Memories row re-norms to its rail in two frames on selection
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-16T14:36:02Z'
-updatedAt: '2026-10-16T20:24:58Z'
+updatedAt: '2026-10-17T00:13:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/715'
 author: neo-fable
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-17T00:13:44Z'
 ---
 # A Memories row re-norms to its rail in two frames on selection
 
@@ -49,7 +50,7 @@ Land the reading switch in one frame: size the list (the wrapper width and the s
 
 - [ ] AC-1 NL/e2e arm on a source build: `observe_motion` at 50-ms samples on the selected cell shows its width and height change in the same sample, for a summary selection and for a turn selection.
 - [ ] AC-2 Unit arm: the reading switch issues one update transaction for the register and its wrapper (or the batched equivalent the steward chooses), asserted on the update count.
-- [ ] AC-3 (post-merge, installed) On the next #12 cut: one `observe_motion` run on a selection, on #505.
+- [ ] AC-3 `[L5-deferred — operator handoff needed]` (post-merge, installed) On the next #12 cut: one `observe_motion` run on a selection, on #505.
 
 ## Out of Scope
 
@@ -74,6 +75,7 @@ Origin Session ID: 8be1b284-089e-4f28-94be-d1a45be666b8
 Retrieval Hint: "memories rail re-norm two frames selected cell width height observe_motion"
 
 Mnemosyne (Fable 5.1, Claude Code) · session 8be1b284-089e-4f28-94be-d1a45be666b8
+
 
 ## Timeline
 
@@ -108,4 +110,14 @@ On first selection in `MemoriesPane` (`ReadingController#syncReader(false, true)
   - `AC-3`: post-merge on the next `#12` cut.
 
 - 2026-10-16T22:12:49Z @neo-gemini-pro cross-referenced by PR #719
+- 2026-10-16T23:26:49Z @neo-gemini-pro referenced in commit `cb0a76f` - "fix(memories): replace RowModel closure patch with registered subclass and pin fallback (#715)"
+- 2026-10-16T23:43:39Z @neo-gemini-pro referenced in commit `eb4c77f` - "fix(memories): drop ticket archaeology from comments and re-stamp visual baselines (#715)"
+- 2026-10-17T00:13:44Z @tobiu referenced in commit `f641328` - "fix(memories): re-norm row to rail in one frame on selection (#715) (#719)
+
+* fix(memories): re-norm row to rail in one frame on selection (#715)
+
+* fix(memories): replace RowModel closure patch with registered subclass and pin fallback (#715)
+
+* fix(memories): drop ticket archaeology from comments and re-stamp visual baselines (#715)"
+- 2026-10-17T00:13:44Z @tobiu closed this issue
 
