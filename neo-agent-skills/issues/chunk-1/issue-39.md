@@ -7,9 +7,10 @@ labels:
   - ai
   - testing
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-09-03T14:05:01Z'
-updatedAt: '2026-09-03T14:05:01Z'
+updatedAt: '2026-10-17T20:43:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/39'
 author: neo-opus-grace
 commentsCount: 0
@@ -110,5 +111,50 @@ Four restorations have now had to contradict this section in place — `neomjs/n
 - 2026-09-03T14:05:02Z @neo-opus-grace added the `ai` label
 - 2026-09-03T14:05:03Z @neo-opus-grace added the `testing` label
 - 2026-09-03T14:05:03Z @neo-opus-grace added the `agent-os` label
+- 2026-09-15T10:20:56Z @neo-opus-ada referenced in commit `2785f6d` - "fix(ci): a numeric HTML entity is a codepoint, never a ticket ref (#16553)
+
+@neo-opus-vega hit this live: a doc comment describing rendered markup contained
+`&#39;`, and the guard read `#39` as a tracking reference, reding CI on a comment
+with no ticket in it. `NUMERIC_REF_RE` stops at `(?![A-Za-z0-9_])`, and `;`
+satisfies that.
+
+The discriminator needs no context inference and no typed marker, which is what
+separates it from the colour case: `&#\d+;` is an entity, and the `&` immediately
+before the `#` is the whole rule. Hex entities never matched the numeric rule.
+
+Arms: the entity passes quoted and bare; a real ref beside an entity still fails;
+the hex form and a bare `#39` are the controls. Dropping the exclusion reds the
+first arm."
+- 2026-09-15T10:21:24Z @neo-opus-ada referenced in commit `b1fd043` - "fix(ci): a numeric HTML entity is a codepoint, never a ticket ref (#16553)
+
+@neo-opus-vega hit this live: a doc comment describing rendered markup contained
+`&#39;`, and the guard read `#39` as a tracking reference, reding CI on a comment
+with no ticket in it. `NUMERIC_REF_RE` stops at `(?![A-Za-z0-9_])`, and `;`
+satisfies that.
+
+The discriminator needs no context inference and no typed marker, which is what
+separates it from the colour case: `&#\d+;` is an entity, and the `&` immediately
+before the `#` is the whole rule. Hex entities never matched the numeric rule.
+
+Arms: the entity passes quoted and bare; a real ref beside an entity still fails;
+the hex form and a bare `#39` are the controls. Dropping the exclusion reds the
+first arm."
+- 2026-09-15T12:59:00Z @neo-opus-ada referenced in commit `772f523` - "fix(ci): a numeric HTML entity is a codepoint, never a ticket ref (#16553)
+
+@neo-opus-vega hit this live: a doc comment describing rendered markup contained
+`&#39;`, and the guard read `#39` as a tracking reference, reding CI on a comment
+with no ticket in it. `NUMERIC_REF_RE` stops at `(?![A-Za-z0-9_])`, and `;`
+satisfies that.
+
+The discriminator needs no context inference and no typed marker, which is what
+separates it from the colour case: `&#\d+;` is an entity, and the `&` immediately
+before the `#` is the whole rule. Hex entities never matched the numeric rule.
+
+Arms: the entity passes quoted and bare; a real ref beside an entity still fails;
+the hex form and a bare `#39` are the controls. Dropping the exclusion reds the
+first arm."
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
+- 2026-10-17T20:43:07Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-17T21:00:59Z @neo-gemini-maryam cross-referenced by PR #179
+- 2026-10-17T21:12:44Z @neo-gemini-maryam referenced in commit `712dea6` - "chore(release): bump version to 0.1.44 (#39)"
 

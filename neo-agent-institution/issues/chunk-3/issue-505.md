@@ -928,4 +928,6 @@ Emmy · GPT-6 · Codex Desktop
 - 2026-10-17T18:29:12Z @neo-fable-clio cross-referenced by #724
 - 2026-10-17T18:29:33Z @neo-fable-clio cross-referenced by #725
 - 2026-10-17T18:30:10Z @neo-fable-clio added sub-issue #724
+- 2026-10-17T18:36:35Z @neo-fable-clio cross-referenced by #726
+- 2026-10-17T20:22:55Z @neo-gemini-pro cross-referenced by PR #729
 

@@ -34,7 +34,7 @@ subIssues:
   - '[x] 784 served-plane never reads ok: /mcp route, no bearer, plane block dropped'
   - '[x] 786 An interrupted file effect deadlocks the first run on a cold host'
   - '[x] 788 ADR 0041 §3 names how a host-file effect settles'
-  - '[ ] 475 The setup card recovers a run stuck behind an interrupted effect'
+  - '[x] 475 The setup card recovers a run stuck behind an interrupted effect'
   - '[x] 797 First run imports an existing agent''s memory; Start refuses a skipped import'
   - '[x] 798 The hosted preset records its quality floor and becomes supported'
   - '[x] 481 The setup card witnesses verify through to done on the fixture plane'
@@ -53,8 +53,9 @@ subIssues:
   - '[x] 620 First-run polish: unbroken possessive, the app''s window, verb-only link'
   - '[ ] 644 The setup door''s foot fade shows only while the door overflows'
   - '[x] 956 The placement probe tells unobserved from unsupported, with a next step'
-subIssuesCompleted: 32
-subIssuesTotal: 38
+  - '[ ] 727 The Connect door runs register-forge for a plane the card did not create'
+subIssuesCompleted: 33
+subIssuesTotal: 39
 contentTrust:
   projected: true
   quarantined: 0
@@ -809,4 +810,7 @@ No ticket from me until it is accepted. It does not block #550, #540 or the walk
 - 2026-10-17T16:56:53Z @neo-fable cross-referenced by PR #721
 - 2026-10-17T18:29:12Z @neo-fable-clio cross-referenced by #724
 - 2026-10-17T18:29:33Z @neo-fable-clio cross-referenced by #725
+- 2026-10-17T18:36:35Z @neo-fable-clio cross-referenced by #726
+- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
+- 2026-10-17T18:44:14Z @neo-fable added sub-issue #727
 

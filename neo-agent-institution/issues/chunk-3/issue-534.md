@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-04T11:10:04Z'
-updatedAt: '2026-10-04T14:40:37Z'
+updatedAt: '2026-10-17T19:48:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/534'
 author: neo-fable
 commentsCount: 1
@@ -121,32 +121,31 @@ Retrieval Hint: "row 1 installed walkthrough setup card cold first run done ok r
 
 ## Half 1: step list and receipt table
 
-Prepared by the row's steward on 2026-10-04, from the card's source at `dev@194c9d7`. The walker is a seat that neither built nor designed the card (so not Mnemosyne, not Clio).
+Prepared by the row's steward; first written 2026-10-04 from `dev@194c9d7`, **refreshed 2026-10-17 from `dev@fa1a460`** (seven setup-card PRs landed between: #555, #558, #561, #613, #621, #623, #721). The walker is a seat that neither built nor designed the card (so not Mnemosyne, not Clio); Sophie did the 10-04 stranger read, so a seat that has never seen the card reads freshest.
 
 ### What half 1 needs before it starts
 
-- **A packaged candidate carrying #537 and #541.** The Create door mounts only in a packaged shell: `ViewportController.mountPlaneSetup` checks `status.packaged`, and the broker answers `not-packaged` otherwise (`harness/setupBroker.mjs:183`). An unpackaged held run cannot show the door. That is the next #12 candidate.
-- **A held smoke run on the fixture-plane arm** (`NEO_HARNESS_SMOKE_HOLD=1`; contract and commands on #523). It opens a window on the machine it runs on. On the operator's machine that needs his yes for the slot, as row 5's cut does.
+- **Friday's candidate: a package cut at Institution ≥ `fa1a460`.** The installed 10-14 bundle (`afabdef6`) and the 10-16 package (`51078674`, #12) both carry the three-question front (#613) but predate the fresh run (#721). Brain = the cut's pin (today `b96b4d34`, package.json:69, which carries neomjs/neo-agent-brain#844's one effect order); engine = its pin. The receipt names all three from `organism-build-info.json` `owners.*.revision` (#532 landed).
+- **The hold (#523 landed):** the installed candidate launched with `NEO_HARNESS_SMOKE=1 NEO_HARNESS_SMOKE_PLANE=1 NEO_HARNESS_SMOKE_HOLD=1` (the fixture-plane arm only; anywhere else it refuses before any profile path is set). It logs `HARNESS_SMOKE_HOLD` with the candidate, the auth mode, the plane base and the smoke root, and writes `<smokeRoot>/walk/manifest.json`. It opens a window on the machine it runs on, so it takes the operator's slot — Friday's.
 - **The walker drives through the Neural Link**: reads the words from the component tree, presses only what this list names.
 
 ### Step 0: is the Create door reachable?
 
-The held organism boots with a configured plane, so no card shows. From the source the path is: the shell switcher's attach-plane entry (`onAttachPlane`) → the card opens on Connect → the `Create` door button (`Panel.mjs`, `create-door-button`). Record what the walker actually had to do. `blocked` here ends the half and becomes its prerequisite.
+The held organism boots attached to its fixture plane, so no card mounts at boot (`mountPlaneSetup` mounts for a packaged shell with no plane). The card comes back on request (`showPlaneSetup`, `force: true`): the shell switcher's attach-plane entry, the banner's Connect, or Home's doors. With a plane configured Home shows the keeper doors, so the expected path is the shell switcher → the card on the door `choosePrimaryDoor` picks → the `Create` door button (`Panel.mjs`, `create-door-button`). Record what the walker actually had to do. `blocked` here ends the half and becomes its prerequisite.
 
 ### Frames
 
-One receipt per frame. Nothing is consented beyond what the row itself asks.
+One receipt per frame. Nothing is consented beyond what the frame itself asks; **no `run` and no `Run next step` is pressed.**
 
 | # | Frame | What to read |
 |---|---|---|
-| 1 | The door | the lede |
-| 2 | `placement` | the budget line, the placement line, the row's action (`re-read`) |
-| 3 | `preset` | one card per preset: name, facts, footprint, verdict with its reason, `choose`; a refused preset cannot be chosen. Choose the recommended one (the consent lands in the run's record under the smoke root) |
-| 4 | `plane credential` | the button and its note; the vessel's credential window with the fixture's token; afterwards the row names a path, never a value. If the window cannot be driven through the Neural Link, the frame is `blocked`, and that is its receipt |
-| 5 | `provider key` | for a local preset: the sentence that no key is needed, and no action |
-| 6 | `advanced` | folded, with `unfold` |
-| 7 | The rows before anything runs | `write-secrets`, `write-env`, `compose-up`, `served-plane`, `validation`, `verify`, `done`: status word, reason, the one action each offers. **Stop here: no `run` is pressed** |
-| 8 | The status line and the quiet line | what they say with nothing run |
+| 0 | Home, if the first-run face shows | the promise line, the primary `Set up your institution` with its line `A GitHub token · where it runs · start.`, the quiet `Joining a team that already runs one?` → `Connect to it` |
+| 1 | The Create door's lede | `Three questions, then one action at a time. Nothing is written until you say so, and every step says what it observed.` |
+| 2 | Q1, the token | the line (`One token. It lets your agents read and write your repositories, and it signs you in here.`), `Enter your token`, the help line; the app's own credential window with the fixture's token; afterwards the row names a path, never a value. If the window cannot be driven through the Neural Link, the frame is `blocked`, and that is its receipt |
+| 3 | Q2, where it runs | `Measuring this machine…` → the placement line and `Use this`; `Other choices` → one card per preset: name, facts, footprint, verdict with its reason, `choose`; a refused preset cannot be chosen; the budget line (`not probed yet` → its reading); `Enter the provider key` only when the chosen preset needs one, for a local preset the sentence that no key is needed. Choose the recommended one (the consent lands in the run's record under the smoke root) |
+| 4 | Q3, start | the start line, the one action `Run next step`, the start help — read, not pressed |
+| 5 | The ledger | the details toggle; then the pin's 13 rows as they read before anything runs — `placement`, `preset`, `plane-credential`, `provider-key`, `advanced`, `write-secrets`, `write-env`, `compose-up`, `register-forge`, `served-plane`, `validation`, `verify`, `done`: status word, reason, a `waits for <id>` chip where one shows, and the one action the row offers (`run` · `re-check` · `write again` · `unfold` · `change` · `re-read`). **Stop here** |
+| 6 | The status line and the quiet line | what they say with nothing run |
 
 ### Receipt columns
 
@@ -154,17 +153,34 @@ time (UTC) · the words shown, verbatim · the action offered · the decisions a
 
 ### Known before the walk
 
-These are to confirm, with the words the surface shows:
+To confirm, with the words the surface shows:
 
-- On a machine whose local plane runs, the three host-effect rows can read `ok` with "observed; not performed by this run". The compose project name is a constant, so the card reads the live plane's project. Record it; press nothing.
-- The candidate lists the carrier row before the secret-files row until a Brain pin carries neomjs/neo-agent-brain#844.
-- Several pending rows offer `run`, and the top one answers nothing: #535 and neomjs/neo-agent-brain#840 own those.
+- On a machine whose local plane runs, the host-effect rows can read `ok` with "observed; not performed by this run": the compose project name is a constant, so the card reads the live plane's project. Record it; press nothing.
+- Before the plane is up, the `served-plane` row may read a transport code (`connect ECONNREFUSED …`) instead of a sentence — the planner's gap line on #351 (5982813310); the pinned observer still shows what the health check throws. Record the exact words.
+- `register-forge` is a row now; nobody has read its words before anything runs.
+
+### AC-5 of #475 — the stuck row → `start a fresh run` → `done`
+
+Needs a run record with a receipt to damage: `test/playwright/e2e/agentos/FleetSetupCard.spec.mjs:255–309` sets the `write-secrets` receipt back to `pending` on disk, a re-read finds the row `reconcile-required` with `re-check` alone, re-check keeps it, the row then says `re-checked · unsettled` and offers `start a fresh run`, the lede reads `Fresh run <id> — the run <old> stays on disk as history…`, and the run reaches `done`. Half 1 runs no effect, so there is nothing to damage; this is **half 2's last step**, on the operator's test host after `done`, by the operator's word.
 
 ### After
 
-`node harness/walkControl.mjs --packaged cleanup`, then the steward checks that the operator's app profile and the team's plane are unchanged and posts the table on #351.
+`node harness/walkControl.mjs --packaged cleanup` (both plane ports closed, the smoke root gone), then the steward checks that the operator's app profile and the team's plane are unchanged and posts the table on #351; the `Row state:` line is updated and broadcast as the row report. Half 2's elapsed time to the first persisted memory is a stopwatch read until #14 lands.
 
-🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session 577754b6-3d27-48f5-911a-434605a54220
+🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · first prepared in session 577754b6-3d27-48f5-911a-434605a54220, refreshed 2026-10-17
+
 
 - 2026-10-04T14:50:56Z @neo-fable cross-referenced by #547
+- 2026-10-04T16:22:47Z @neo-fable cross-referenced by #550
+- 2026-10-04T17:06:23Z @neo-gpt cross-referenced by PR #549
+- 2026-10-04T17:28:35Z @neo-fable-clio cross-referenced by #858
+- 2026-10-04T18:34:00Z @neo-fable cross-referenced by PR #555
+- 2026-10-05T09:49:31Z @neo-fable cross-referenced by PR #561
+- 2026-10-09T01:40:29Z @neo-fable cross-referenced by PR #613
+- 2026-10-09T03:58:21Z @neo-fable cross-referenced by PR #621
+- 2026-10-09T21:54:01Z @neo-opus-vega cross-referenced by PR #960
+- 2026-10-09T23:10:19Z @neo-gpt-sophie cross-referenced by PR #959
+- 2026-10-10T14:07:27Z @neo-fable-clio cross-referenced by #658
+- 2026-10-17T17:16:35Z @neo-fable cross-referenced by #722
+- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
 

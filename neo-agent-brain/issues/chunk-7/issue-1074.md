@@ -1,7 +1,7 @@
 ---
 id: 1074
 title: Stop fleet leaves a seat unstartable when its Codex Desktop helper cleanup fails
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-16T23:47:19Z'
-updatedAt: '2026-10-17T17:48:27Z'
+updatedAt: '2026-10-17T18:46:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1074'
 author: neo-fable-clio
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-17T18:46:26Z'
 ---
 # Stop fleet leaves a seat unstartable when its Codex Desktop helper cleanup fails
 
@@ -57,8 +58,8 @@ The Fleet steward decides the primitive; the Institution half (card words, plan 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
 | `FleetLifecycleService#start(id)` result for a `cleanupUnresolved` record | `FleetLifecycleService.mjs:765` (today: throws while unresolved) | Re-proves the helper cleanup once; spawns on zero owned/ambiguous helpers; refuses with `failureReason` naming the live helper or the unreadable table | A thrown refusal with the reason words, never a silent no-op | JSDoc on `start`; `learn/` fleet lifecycle page if one names the stop phases | Unit arm AC-1, AC-2 |
-| `FleetLifecycleService#lifecycleStatus(id)` row (`:1540`) | the existing row shape (`state`, `failureReason`, `cleanupUnresolved`) | Unchanged fields; `cleanupUnresolved` + `failureReason` guaranteed present for a failed helper cleanup | — | the Institution reads it (`SourceHealth`) | Unit arm AC-2 |
-| Institution card control status + `FleetStartPlan` exclusion reason | CARD-CONTRACT.md control status; `FleetStartPlan.mjs:101` | `helper cleanup unresolved: <reason> — retry` on the card; plan reason names it, not "already up" | the existing `⚠ <kind>: <reason>` branch | CARD-CONTRACT.md | Sibling Institution leaf, AC-3 |
+| `FleetLifecycleService#lifecycleStatus(id)` row (`:1540`) | the existing row shape (`state`, `failureReason`, `cleanupUnresolved`) | Unchanged fields; `cleanupUnresolved` + `failureReason` guaranteed present for a failed helper cleanup | — | the Institution reads it (`SourceHealth`); shipped also on the `FleetManager#fleetRuntimeStatus` row (`cleanupUnresolved` when true, `failureReason`) and the `createFleetCockpitStatus` row (both always present) — Brain PR #1082 | Unit arm AC-2 |
+| Institution card control status + `FleetStartPlan` exclusion reason | CARD-CONTRACT.md control status; `FleetStartPlan.mjs:101` | `helper cleanup unresolved: <reason> — retry` on the card; plan reason names it, not "already up" | the existing `⚠ <kind>: <reason>` branch | CARD-CONTRACT.md | Institution #725, AC-3 |
 
 Decision Record impact: none (a lifecycle repair inside the existing stop/start contract; no ADR names the helper-cleanup phase).
 
@@ -66,8 +67,8 @@ Decision Record impact: none (a lifecycle repair inside the existing stop/start 
 
 - [ ] AC-1 Unit (Brain): with a `codexDesktopCleanupFn` that throws an ambiguous-identity error once and then returns clean, `stop()` resolves `{success: false, state: 'failed', cleanupUnresolved: true}` and a subsequent `start()` re-proves and spawns — no Fleet restart in between.
 - [ ] AC-2 Unit (Brain): with a cleanup that keeps failing, `start()` refuses with a reason naming the live helper (or the unreadable process table), and `lifecycleStatus(id)` carries `cleanupUnresolved: true` + that `failureReason`.
-- [ ] AC-3 (Institution sibling leaf, filed on this ticket's wire shape): the card prints the reason on its control status line and `Start fleet · n` excludes the seat with that reason; the `partitionFleetStart` unit arm asserts the words.
-- [ ] AC-4 (post-merge, installed) On the next Institution #12 candidate: one Stop fleet → Start fleet cycle with all seats, receipt on the Row 1 walk (Fri Oct 23); a seat left unresolved shows its reason and starts from the roster.
+- [ ] AC-3 (Institution sibling leaf, filed on this ticket's wire shape): the card prints the reason on its control status line and `Start fleet · n` excludes the seat with that reason; the `partitionFleetStart` unit arm asserts the words. **[L4-deferred — Institution #725 owns it]**
+- [ ] AC-4 (post-merge, installed) On the next Institution #12 candidate: one Stop fleet → Start fleet cycle with all seats, receipt on the Row 1 walk (Fri Oct 23); a seat left unresolved shows its reason and starts from the roster. **[L4-deferred — operator handoff needed: the Row 1 walk, 2026-10-23]**
 
 ## Out of Scope
 
@@ -79,7 +80,7 @@ Relaxing the zero-residual proof or treating an ambiguous helper as clean (the f
 
 ## Related
 
-Institution #12 (the installed-candidate epic; AC-4's walk), Institution #618 (the fleet button reads its plan), Institution #690 (header counts after lifecycle changes), neo #17305 (runtime status `stopped` for seats never launched), Brain #964 (launch admission under load), defect-notes `33a39d07` (this) and `f2650588` (the stale issuer, Ada).
+Institution #12 (the installed-candidate epic; AC-4's walk), Institution #725 (AC-3's leaf), Brain PR #1082 (the Brain half, approved at 6664e85b), Institution #618 (the fleet button reads its plan), Institution #690 (header counts after lifecycle changes), neo #17305 (runtime status `stopped` for seats never launched), Brain #964 (launch admission under load), defect-notes `33a39d07` (this) and `f2650588` (the stale issuer, Ada).
 
 Live latest-open sweep: checked the latest 20 open Brain issues at 2026-10-16 23:45:13Z; nearest #936 (wake activation must raise the addressed Codex instance) is a different Codex seam; no equivalent. Exact sweep (`stop fleet`, `cleanupUnresolved OR Crashpad OR "helper cleanup"`): Institution #618 and #690 (closed, the button and the counts), neo #17305 (closed) — none on the unresolved-stop dead end. A2A in-flight claim sweep at 23:45Z: none on this scope (Ada's `f2650588` is the adjacent issuer defect). MC sweep: "Stop fleet two seats stayed running cards kept the Stop button Start fleet count excluded seats could not start without quitting the Fleet Manager" — 6 results: Mnemosyne's 2026-10-09 answer on the start plan (455a259b), the #618 filing (5436edee), Vega's 2026-10-09 census that an FM quit does not stop seats (ce7f6427), my #964 record; no prior decision on the stop finalizer's dead end. Own-assignment sweep: 5 open in the Brain (#977 #850 #50 #51 #53), 3 in the Institution (#507 #505 #351), none overlapping. Structure map: ran at Brain `dev` (exit 0); no new module — the owners are `ai/services/fleet/FleetLifecycleService.mjs` and `manageCodexDesktopRuntime.mjs`.
 
@@ -90,6 +91,7 @@ Origin Session ID: 8daba841-613f-486f-8e8d-c0ba5a782d2a
 Retrieval Hint: "Stop fleet Codex Desktop helper cleanup unresolved start refuses card keeps Stop Start fleet 7 of 9 FM quit"
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 8daba841-613f-486f-8e8d-c0ba5a782d2a
+
 
 ## Timeline
 
@@ -103,4 +105,8 @@ Retrieval Hint: "Stop fleet Codex Desktop helper cleanup unresolved start refuse
 - 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
 - 2026-10-17T17:48:27Z @neo-gemini-pro assigned to @neo-gemini-pro
 - 2026-10-17T17:59:07Z @neo-gemini-pro cross-referenced by PR #1082
+- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
+- 2026-10-17T18:46:26Z @tobiu referenced in commit `afae1ef` - "fix(fleet): reprove Codex Desktop helper cleanup on start after stop failure (#1074) (#1082)"
+- 2026-10-17T18:46:27Z @tobiu closed this issue
+- 2026-10-17T19:15:22Z @neo-gemini-pro cross-referenced by PR #728
 

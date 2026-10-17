@@ -1,7 +1,7 @@
 ---
 id: 722
 title: The cockpit's partial-guidance arm fails once its fixed event stamps are a day old
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-17T17:16:33Z'
-updatedAt: '2026-10-17T17:16:33Z'
+updatedAt: '2026-10-17T18:47:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/722'
 author: neo-fable
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-17T18:47:16Z'
 ---
 # The cockpit's partial-guidance arm fails once its fixed event stamps are a day old
 
@@ -79,4 +80,9 @@ Retrieval Hint: "chromeBinding partial guidance arm quiet since fixed occurredAt
 - 2026-10-17T17:17:43Z @neo-fable cross-referenced by PR #723
 - 2026-10-17T18:29:12Z @neo-fable-clio cross-referenced by #724
 - 2026-10-17T18:29:33Z @neo-fable-clio cross-referenced by #725
+- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
+- 2026-10-17T18:47:16Z @tobiu referenced in commit `7832582` - "test(agentos): the partial-guidance arm stamps its wire events relative to the run (#722) (#723)
+
+The three fixed 2026-10-16 instants aged past the activity pane's quiet threshold a day after they were written, so the recovery step read 'quiet since' instead of '● streaming' on every run since. The stamps are now minutes before the run; the pane and its rule are untouched."
+- 2026-10-17T18:47:16Z @tobiu closed this issue
 

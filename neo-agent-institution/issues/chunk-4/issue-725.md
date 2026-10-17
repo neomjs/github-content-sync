@@ -1,15 +1,16 @@
 ---
 id: 725
 title: The card and the Start fleet plan name a seat's unresolved helper cleanup
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
   - ai
   - design
-assignees: []
+assignees:
+  - neo-gemini-pro
 createdAt: '2026-10-17T18:29:32Z'
-updatedAt: '2026-10-17T18:29:32Z'
+updatedAt: '2026-10-17T20:11:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/725'
 author: neo-fable-clio
 commentsCount: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-17T20:11:18Z'
 ---
 # The card and the Start fleet plan name a seat's unresolved helper cleanup
 
@@ -62,7 +64,7 @@ Decision Record impact: none (an Institution reading of an additive Brain row; A
 - [ ] AC-1 unit: `SourceHealth` maps `{state: 'failed', cleanupUnresolved: true, failureReason}` to `off` + the `cleanup` control reason; `{state: 'stopping'}` unchanged.
 - [ ] AC-2 unit: `partitionFleetStart` includes the seat with the `re-checks helper cleanup` reason; `Start fleet · n` counts it; the words asserted.
 - [ ] AC-3 visual: a card in that state — the reason on the control status line, Start as the primary; dark + light goldens.
-- [ ] AC-4 post-merge, installed: on the next #12 candidate (Brain at or after #1082's merge), one Stop fleet → Start fleet with all seats; a seat left unresolved shows its reason and starts from the roster — the Row 1 walk (2026-10-23), the same receipt Brain #1074 AC-4 names.
+- [ ] AC-4 post-merge, installed: on the next #12 candidate (Brain at or after #1082's merge), one Stop fleet → Start fleet with all seats; a seat left unresolved shows its reason and starts from the roster — the Row 1 walk (2026-10-23), the same receipt Brain #1074 AC-4 names. **[L4-deferred — operator handoff needed: the Row 1 walk, 2026-10-23; PR #728]**
 
 ## Out of Scope
 
@@ -86,6 +88,7 @@ Retrieval Hint: "card prints helper cleanup unresolved reason Start fleet plan r
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session cd7bf4ee-8722-43be-baf8-29f9ed658722
 
+
 ## Timeline
 
 - 2026-10-17T18:29:33Z @neo-fable-clio added the `enhancement` label
@@ -93,4 +96,25 @@ Retrieval Hint: "card prints helper cleanup unresolved reason Start fleet plan r
 - 2026-10-17T18:29:33Z @neo-fable-clio added the `ai` label
 - 2026-10-17T18:29:33Z @neo-fable-clio added the `design` label
 - 2026-10-17T18:30:12Z @neo-fable-clio added parent issue #12
+- 2026-10-17T18:36:35Z @neo-fable-clio cross-referenced by #726
+- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
+- 2026-10-17T18:45:15Z @neo-gemini-pro cross-referenced by PR #1082
+- 2026-10-17T18:55:34Z @neo-gemini-pro assigned to @neo-gemini-pro
+- 2026-10-17T19:15:22Z @neo-gemini-pro cross-referenced by PR #728
+- 2026-10-17T19:17:10Z @neo-gemini-pro referenced in commit `a46aa3a` - "chore(agentos): remove ticket archaeology refs from FleetAgent field comments (#725)"
+- 2026-10-17T19:22:52Z @neo-gemini-pro referenced in commit `c7c1267` - "chore(agentos): refresh visual baseline stamp for FleetAgent comment edit (#725)"
+- 2026-10-17T19:39:15Z @neo-gemini-pro referenced in commit `8b6d2c4` - "fix(agentos): drop cleanup provenance borrow and keep 3-field controlReason (#725)"
+- 2026-10-17T19:43:22Z @neo-gemini-pro referenced in commit `19ec32d` - "test(agentos): include cleanupUnresolved in rosterStore mapRosterRow snapshots (#725)"
+- 2026-10-17T20:11:18Z @tobiu referenced in commit `c52ca9b` - "feat(agentos): the card and the Start fleet plan name a seat's unresolved helper cleanup (#725) (#728)
+
+* feat(agentos): the card and the Start fleet plan name a seat's unresolved helper cleanup (#725)
+
+* chore(agentos): remove ticket archaeology refs from FleetAgent field comments (#725)
+
+* chore(agentos): refresh visual baseline stamp for FleetAgent comment edit (#725)
+
+* fix(agentos): drop cleanup provenance borrow and keep 3-field controlReason (#725)
+
+* test(agentos): include cleanupUnresolved in rosterStore mapRosterRow snapshots (#725)"
+- 2026-10-17T20:11:18Z @tobiu closed this issue
 

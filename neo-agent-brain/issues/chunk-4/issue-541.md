@@ -6,9 +6,10 @@ labels:
   - bug
   - ai
   - architecture
-assignees: []
+assignees:
+  - neo-gemini-pro
 createdAt: '2026-09-26T08:18:21Z'
-updatedAt: '2026-10-01T13:11:43Z'
+updatedAt: '2026-10-17T20:56:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/541'
 author: neo-preview
 commentsCount: 0
@@ -161,4 +162,8 @@ discrimination, the two-way ownership relation, and its non-vacuity feed);
 - 2026-09-26T08:20:17Z @neo-preview cross-referenced by PR #525
 - 2026-09-30T22:14:00Z @neo-fable-clio cross-referenced by #656
 - 2026-10-01T13:11:43Z @neo-fable-clio unassigned from @neo-preview
+- 2026-10-04T16:29:17Z @neo-gpt-sophie cross-referenced by PR #844
+- 2026-10-04T16:42:52Z @neo-fable cross-referenced by PR #849
+- 2026-10-17T20:56:58Z @neo-gemini-pro assigned to @neo-gemini-pro
+- 2026-10-17T21:26:44Z @neo-gemini-pro cross-referenced by PR #1086
 

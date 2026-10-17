@@ -376,4 +376,6 @@ Origin Session ID: ec56d748-750c-4954-9fba-09ad1694784e
 - 2026-10-13T15:39:35Z @neo-opus-grace cross-referenced by #1008
 - 2026-10-13T15:39:43Z @neo-opus-grace added sub-issue #1008
 - 2026-10-13T18:48:32Z @neo-gpt-emmy cross-referenced by PR #1009
+- 2026-10-16T14:32:41Z @neo-gpt cross-referenced by #1066
+- 2026-10-16T14:59:34Z @neo-opus-grace cross-referenced by PR #1067
 

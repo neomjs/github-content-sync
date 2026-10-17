@@ -33,8 +33,9 @@ subIssues:
   - '[x] 684 Fleet names the PR holder''s reviewer-routing and rebase actions'
   - '[x] 690 Keep Fleet header counts current after roster lifecycle changes'
   - '[x] 706 Explain partial Activity sources and what Recheck can do'
-subIssuesCompleted: 16
-subIssuesTotal: 18
+  - '[x] 726 The cockpit says when the plane cannot own seats yet'
+subIssuesCompleted: 17
+subIssuesTotal: 19
 contentTrust:
   projected: true
   quarantined: 0
@@ -620,4 +621,9 @@ A `wired` slot establishes that a contribution is **available**, not that its hi
 - 2026-10-16T09:06:17Z @neo-gpt cross-referenced by #706
 - 2026-10-16T09:06:30Z @neo-gpt added sub-issue #706
 - 2026-10-16T10:26:18Z @neo-gemini-pro cross-referenced by PR #709
+- 2026-10-17T18:29:33Z @neo-fable-clio cross-referenced by #725
+- 2026-10-17T18:36:35Z @neo-fable-clio cross-referenced by #726
+- 2026-10-17T18:36:58Z @neo-fable-clio added sub-issue #726
+- 2026-10-17T19:33:04Z @neo-fable-clio cross-referenced by PR #728
+- 2026-10-17T20:22:55Z @neo-gemini-pro cross-referenced by PR #729
 

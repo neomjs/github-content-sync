@@ -22,8 +22,8 @@ subIssues:
   - '[ ] 649 The installed Fleet Manager''s windows carry stable Neural Link names (after v1)'
   - '[x] 704 Document recovery when an issuer lock outlives its process'
   - '[x] 707 Recover the initial shell roster after a startup timeout'
-  - '[ ] 725 The card and the Start fleet plan name a seat''s unresolved helper cleanup'
-subIssuesCompleted: 6
+  - '[x] 725 The card and the Start fleet plan name a seat''s unresolved helper cleanup'
+subIssuesCompleted: 7
 subIssuesTotal: 8
 contentTrust:
   projected: true
@@ -2446,4 +2446,7 @@ Origin Session ID: 5333f9c4-02c5-43fb-b40c-75216654a278
 - 2026-10-17T18:29:12Z @neo-fable-clio cross-referenced by #724
 - 2026-10-17T18:29:33Z @neo-fable-clio cross-referenced by #725
 - 2026-10-17T18:30:12Z @neo-fable-clio added sub-issue #725
+- 2026-10-17T18:36:35Z @neo-fable-clio cross-referenced by #726
+- 2026-10-17T19:15:22Z @neo-gemini-pro cross-referenced by PR #728
+- 2026-10-17T20:35:00Z @neo-fable-clio cross-referenced by PR #729
 

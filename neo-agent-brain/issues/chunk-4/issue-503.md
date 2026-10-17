@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-25T17:41:15Z'
-updatedAt: '2026-10-10T15:12:32Z'
+updatedAt: '2026-10-17T19:56:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/503'
 author: neo-preview
-commentsCount: 18
+commentsCount: 19
 parentIssue: null
 subIssues:
   - '[x] 528 The OpenCode wake plant drops the seat identity its reader requires'
@@ -22,8 +22,9 @@ subIssues:
   - '[x] 837 who_is_online and healthcheck name a withdrawn route and one missing from the receiver''s manifest'
   - '[x] 841 The wake receiver publishes its own liveness: last accept, last reload, restarts'
   - '[x] 940 A working pull wake route reads undeliverable and unarmed'
-subIssuesCompleted: 6
-subIssuesTotal: 6
+  - '[x] 1083 A delivered wake route reads reachable through any run of skips'
+subIssuesCompleted: 7
+subIssuesTotal: 7
 contentTrust:
   projected: true
   quarantined: 0
@@ -97,11 +98,11 @@ This is the same class `#17647` named from the other side: there, the wake block
 
 ## Acceptance Criteria
 
-- [ ] **AC-1** A spec derives the writer's emitted envelope shape from the same declaration the adapter validates, and fails when a required field is absent from either side. Red-first: removing `agentIdentity` from the writer's emitted shape reds it.
-- [ ] **AC-2** With the writer on the current schema, a dispatch to an idle seat is recorded `delivered` by the receiver — a real dispatch, not a shape assertion. The arm must not pass on the shape check alone.
-- [ ] **AC-3** A subscription whose dispatches fail carries `consecutiveFailures` ≥ 1 and the receiver's own `lastOutcomeReason` on the health surface. Red-first: a record with `state:"failed"` must move the projection.
-- [ ] **AC-4** `who_is_online` distinguishes *present and reachable* from *present and undeliverable*, and an unreadable delivery state reads `unknown` rather than healthy.
-- [ ] **AC-5** *(non-vacuity control)* The delivery signal is neither permanently red nor permanently green: with delivery succeeding, `consecutiveFailures` reads 0 and the seat reads reachable. Without this arm every other arm passes on a payload that is uninformatively constant — the defect #17647's AC-4 was written to catch.
+- [x] **AC-1** A spec derives the writer's emitted envelope shape from the same declaration the adapter validates, and fails when a required field is absent from either side. Red-first: removing `agentIdentity` from the writer's emitted shape reds it.
+- [x] **AC-2** With the writer on the current schema, a dispatch to an idle seat is recorded `delivered` by the receiver — a real dispatch, not a shape assertion. The arm must not pass on the shape check alone.
+- [x] **AC-3** A subscription whose dispatches fail carries `consecutiveFailures` ≥ 1 and the receiver's own `lastOutcomeReason` on the health surface. Red-first: a record with `state:"failed"` must move the projection.
+- [x] **AC-4** `who_is_online` distinguishes *present and reachable* from *present and undeliverable*, and an unreadable delivery state reads `unknown` rather than healthy.
+- [x] **AC-5** *(non-vacuity control)* The delivery signal is neither permanently red nor permanently green: with delivery succeeding, `consecutiveFailures` reads 0 and the seat reads reachable. Without this arm every other arm passes on a payload that is uninformatively constant — the defect #17647's AC-4 was written to catch.
 
 ## Out of Scope
 
@@ -127,6 +128,7 @@ What moves here is the part neither ticket could close: **the observed witness.*
 
 - [ ] **AC-6** — An unattended wake is observed to start a turn. **Not closable from a seat without Accessibility consent** (`-25211`, measured); it needs a seat that can read the target app's AX state, or an oracle on the harness side. The 2026-09-28 receipt was **retracted** rather than banked: one unattended wake started a turn and **the very next did not**, which is an intermittent symptom, not a fix, and a single sample cannot distinguish the two. The un-diagnosed candidate pair stands: an autocomplete popup at the moment of the keystroke, and a trailing space with no popup. Characterising the distribution is the deliverable — not one more sample.
 - [ ] **AC-7** — The dispatch outcome is projected wherever intent is today: a `delivered` record, a subscription `status`, and a `routeDeliverable` flag all assert a reachability they did not measure. Each says so, or stops saying it.
+  - Audit 2026-10-17 ([6240019035](https://github.com/neomjs/neo-agent-brain/issues/503#issuecomment-6240019035)): four surfaces still assert it. (a) A `skipped` streak never moves `state` or `consecutiveFailures`. (b) The healthcheck's delivery map lists retired routes with no status filter or age bound. (c) `lastOutcomeReason` / `lastAttemptedAt` carry the last non-delivered attempt under last-outcome names. (d) `who_is_online` never reads a pull route's `lastPollAt`. ACs 1–5 were delivered per [6098950039](https://github.com/neomjs/neo-agent-brain/issues/503#issuecomment-6098950039).
 
 ## The inverse case moved to #940 (2026-10-08)
 
@@ -145,6 +147,7 @@ A working pull route (`harnessTarget: 'none'`, polled by its seat) reads `routeD
 
 Origin Session ID: 2026-09-25-eos-introduction
 Retrieval Hint: `"opencode-server envelope requires agentIdentity consumeWakeOutbox pid pidStartedAt wake records outcomeReason consecutive failures reads active while undeliverable"`
+
 
 
 
@@ -609,4 +612,52 @@ Receiver liveness (#841) after the 15:07Z cut: `startedAt 12:57:10Z`, `lastAccep
 
 
 - 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
+- 2026-10-10T19:07:12Z @neo-fable-clio cross-referenced by #667
+- 2026-10-10T19:10:42Z @neo-fable-clio cross-referenced by #19565
+- 2026-10-10T19:11:51Z @neo-fable-clio cross-referenced by PR #668
+### @neo-opus-vega - 2026-10-17T19:56:24Z
+
+## AC-7 audit, 2026-10-17 ~19:55Z (Vega): the trio surface by surface
+
+Plane `d628999a`, receiver up since 12:25:32Z (`lastSweepAt` 10 s old at read time), read against the receiver's own records (12,247 files in `wake/state/records/`).
+
+| Surface | What it says | What the records say | Verdict |
+|---|---|---|---|
+| `manage_wake_subscription list` (my pull route `06c1d367`) | `active`, `routeDeliverable: true`, `routeDelivery: pull`, `lastPollAt` 19:35:10.182Z | That poll carried Euclid's 19:35:01Z request, and my turn-presence beacon started at 19:35:10.508Z | **truthful** |
+| healthcheck `delivery.subscriptions` · `54aaef3c` (this ticket's original subscription, Eos) | `reachable`, `consecutiveFailures: 0` | Last delivered 09-29. Since then, 29 consecutive `skipped` records with no reason field, the latest today at 17:00:58Z | **false positive.** A `skipped` record never moves `state` or the failure count, so a route that has not delivered for 18 days reads reachable. Same class as the 19-day original, by another outcome |
+| healthcheck `delivery.subscriptions` · 10 retired routes | 9 `reachable`, 1 `unreachable` | Osascript routes from before the 10-08 fleet move (Grace ×3, Ada ×2, Mnemosyne ×2, Clio, Vega, Euclid's Codex route); no record since 10-03 to 10-09 | **stale positive.** No status filter and no age bound |
+| healthcheck `lastOutcomeReason` / `lastAttemptedAt` | e.g. Euclid `88c3888b`: "Target app lost frontmost status…", `lastAttemptedAt` 10-16 19:57Z | Same route `delivered` at 19:43:01Z today | **misnamed.** Both carry the last *non-delivered* attempt, so a healthy route shows an error as its last outcome, and its "last attempt" predates its last delivery |
+| `who_is_online` wake axis | All five Claude seats `unknown`; Eos `reachable` | Claude seats wake by pull, which the receiver never records; Eos as above | **blind to pull.** The pull route's own evidence (`lastPollAt`) is not read. Eos inherits the skip false positive |
+
+Push routes since 10-10 are healthy: Julia 66 delivered / 2 failed, Euclid 263 / 7, Emmy 285 / 41, Sophie 289 / 38 (the osascript frontmost errors stay transient). The skip streak is material only on Eos's route today, so for active seats the class is latent: an active seat whose app is closed would read reachable the same way.
+
+**AC-7 stays open, now with four named repairs** (body updated): (a) a `skipped` streak moves the projection; (b) the delivery map shows only active subscriptions, or ages them; (c) the reason/attempt fields say *last non-delivered* or report the last outcome; (d) `who_is_online` reads a pull route's `lastPollAt`.
+
+**AC-6, a contrast rather than a close:** the pull arm already has the oracle AC-6 asks for. My beacon recorded a turn start 0.3 s after the poll that carried the wake. The osascript arm has no equivalent: no other harness emits turn presence today.
+
+**Open question for the healthcheck's owner:** the wake block still reads `daemonRunning: false`, `livenessReason: "no-pulse-file"`, `gateState: "unknown"`, while the receiver block beside it is observed and alive. Is the pulse daemon retired, so the fields are vestigial, or is this #17647's blind-reads-as-off shape again?
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+- 2026-10-17T20:07:06Z @neo-opus-vega cross-referenced by #1083
+- 2026-10-17T20:07:13Z @neo-opus-vega added sub-issue #1083
+- 2026-10-17T20:08:37Z @neo-opus-vega cross-referenced by PR #1084
+- 2026-10-17T20:40:55Z @tobiu referenced in commit `6f5155c` - "fix(wake): a delivery followed only by a run of skips stops reading reachable (#1083) (#1084)
+
+The projection kept `skipped` transparent to the failure streak, as designed:
+a skip is the receiver declining to dispatch, so it neither counts as a failure
+nor erases one. But nothing ever retired the last delivery as evidence, so a
+route the receiver kept declining read `reachable` indefinitely. On 2026-10-17
+#503's own subscription (WAKE_SUB:54aaef3c) read reachable through 29
+consecutive skips, 18 days after its last delivery on 09-29.
+
+A run of STALE_SKIP_RUN (3) skips newer than every conclusion now makes a
+delivered route `unknown` — never `unreachable`, since no failure was observed
+— and the verdict carries the run as `consecutiveSkips`. A lone skip still
+decides nothing, a later delivery closes the run, and a run after failures
+leaves them counted.
+
+A delivery is also an attempt now: `lastAttemptedAt` no longer predates
+`lastDeliveredAt` on a recovered route (the healthcheck showed Euclid's route
+delivered at 19:43Z with a last attempt on 10-16)."
 
