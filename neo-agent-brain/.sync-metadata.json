@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-17T01:19:09.097Z",
-  "releasesLastFetched": "2026-10-17T01:19:08.488Z",
+  "lastSync": "2026-10-17T06:56:16.826Z",
+  "releasesLastFetched": "2026-10-17T06:56:15.859Z",
   "pushFailures": [],
   "issues": {
     "3": {
@@ -1204,10 +1204,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-2/issue-144.md",
       "closedAt": null,
-      "updatedAt": "2026-08-26T15:18:11Z",
-      "contentHash": "45211049a3bc8607f7ef187dd7ce5da3f722a223156cc2bc9f664866279e3bc0",
+      "updatedAt": "2026-10-17T01:52:32Z",
+      "contentHash": "e01af7425503df850a8c89c34be10f6f0c130bcfe6290ca50d2ed16170f0d16f",
       "milestone": null,
-      "commentsTotal": 26
+      "commentsTotal": 27
     },
     "145": {
       "state": "OPEN",
@@ -5656,11 +5656,11 @@
       "commentsTotal": 0
     },
     "1075": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-7/issue-1075.md",
-      "closedAt": null,
-      "updatedAt": "2026-10-17T00:27:42Z",
-      "contentHash": "5c208b867a54610b8b0cdbaded065f0941c0347377788e0f2f2eb4a62168107b",
+      "closedAt": "2026-10-17T01:51:23Z",
+      "updatedAt": "2026-10-17T01:52:30Z",
+      "contentHash": "14a52c70de4bdcf2b64bd9279f6c16756bc61f227f35a0e05d8504aed7c08f41",
       "milestone": null,
       "commentsTotal": 0
     }
@@ -5929,13 +5929,13 @@
       "contentHash": "1f2d722bdff1f36296a442eefd912e742695e08be57d7c3c8272249293b380f2"
     },
     "1076": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-5/pr-1076.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-10-17T01:51:22Z",
+      "mergedAt": "2026-10-17T01:51:22Z",
       "milestone": null,
-      "updatedAt": "2026-10-17T00:35:17Z",
-      "contentHash": "6a0e834ab80ef1954a03208fcec998aaba4085aec738d1ce8a0bd04f6c03d10b"
+      "updatedAt": "2026-10-17T01:51:24Z",
+      "contentHash": "d7e244d1a017baf7538eacc160116f2c86361b8368f27c2cfa9fb5f990abc1e3"
     }
   },
   "discussions": {}

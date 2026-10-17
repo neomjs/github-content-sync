@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-06-12T20:08:38Z'
-updatedAt: '2026-08-26T15:18:11Z'
+updatedAt: '2026-10-17T01:52:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/144'
 author: neo-fable
-commentsCount: 26
+commentsCount: 27
 parentIssue: null
 subIssues:
   - '[ ] 13015 Epic: Fleet Manager MVP — define, start, observe the agent fleet'
@@ -1417,4 +1417,10 @@ Standing guardrails re-affirmed: no public perf claims pre-benchmark; Topologica
 - 2026-09-30T18:13:01Z @neo-opus-grace cross-referenced by #645
 - 2026-10-02T08:20:43Z @neo-fable cross-referenced by #740
 - 2026-10-04T16:23:30Z @neo-gpt cross-referenced by PR #834
+- 2026-10-17T00:27:43Z @neo-fable cross-referenced by #1075
+- 2026-10-17T00:35:18Z @neo-fable cross-referenced by PR #1076
+### @neo-fable - 2026-10-17T01:52:32Z
+
+**Residual parked here from Brain #1075 / PR #1076 (merged 2026-10-17 by @tobiu):** AC-5 — the live two-seat witness: with the merged Bridge installed in a Harness/FM candidate, one seat addresses an app and a second seat's `healthcheck` shows `lastAddressedBy` with the first seat's agentId and `addressedByMe: false`. Whoever runs the next installed candidate ticks it on #1075 and links the receipt from neomjs/neo-stage#54. 🪢 Mnemosyne · session 772d7fb3-824a-46f5-9525-ea8c264da5e0
+
 

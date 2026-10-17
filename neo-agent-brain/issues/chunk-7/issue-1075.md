@@ -1,7 +1,7 @@
 ---
 id: 1075
 title: Neural Link sessions say who addressed them and what they run
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-17T00:27:42Z'
-updatedAt: '2026-10-17T00:27:42Z'
+updatedAt: '2026-10-17T01:52:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1075'
 author: neo-fable
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-17T01:51:23Z'
 ---
 # Neural Link sessions say who addressed them and what they run
 
@@ -53,11 +54,11 @@ Out of this leaf, named for the Decision Record (neo-stage#54): the agentId → 
 | `resolveCallTarget(sessionId, liveSessions)` refusal text | `resolveCallTarget.mjs` | lists the live sessions with app name and last addresser | ids only when rows carry no facts | the error message is the doc | `resolveCallTarget.spec.mjs` |
 
 ## Acceptance Criteria
-- [ ] AC-1 Bridge unit: after two agents address one app, `appState.addressed` has the first and the last with timestamps and both agents' counts; the `app_addressed` notice reaches every agent; a late-joining agent's `app_connected` carries the snapshot.
-- [ ] AC-2 ConnectionService unit: `getStatus().sessions[]` rows carry the app's register facts and the addressers; `addressedByMe` is true only for the server's own agentId; a session nobody addressed reads `firstAddressedBy: null`.
-- [ ] AC-3 resolveCallTarget unit: with two live sessions and no explicit target, the thrown message names each session's id, app name and last addresser (or "untouched"); one live session still resolves implicitly; zero throws as before.
-- [ ] AC-4 Docs: `openapi.yaml` and the handbook describe the new row; the Neural Link skill reference, if it shows a session row, shows the new one.
-- [ ] AC-5 (local, L3) one live run: two seats' servers against one bridge, one addresses an app, the other's `healthcheck` shows `lastAddressedBy` with the first seat's agentId — recorded in the PR body.
+- [x] AC-1 Bridge unit: after two agents address one app, `appState.addressed` has the first and the last with timestamps and both agents' counts; the `app_addressed` notice reaches every agent; a late-joining agent's `app_connected` carries the snapshot.
+- [x] AC-2 ConnectionService unit: `getStatus().sessions[]` rows carry the app's register facts and the addressers; `addressedByMe` is true only for the server's own agentId; a session nobody addressed reads `firstAddressedBy: null`.
+- [x] AC-3 resolveCallTarget unit: with two live sessions and no explicit target, the thrown message names each session's id, app name and last addresser (or "untouched"); one live session still resolves implicitly; zero throws as before.
+- [x] AC-4 Docs: `openapi.yaml` and the handbook describe the new row; the Neural Link skill reference, if it shows a session row, shows the new one.
+- [ ] AC-5 (post-merge, L3; owner #144 — the merged Bridge must ship in a Harness/FM candidate first) one live run: two seats' servers against one bridge, one addresses an app, the other's `healthcheck` shows `lastAddressedBy` with the first seat's agentId — recorded in the PR body.
 
 ## Out of Scope
 Any refusal or lease on cross-seat writes (the design is shared access); the agentId → seat handle label and FM-launched "opened by" (the #54 Decision Record); engine changes (`src/ai/Client.mjs` already sends what the row needs).
@@ -78,6 +79,7 @@ Retrieval Hint: "neural link session row who addressed app_addressed lastAddress
 
 🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session 772d7fb3-824a-46f5-9525-ea8c264da5e0
 
+
 ## Timeline
 
 - 2026-10-17T00:27:43Z @neo-fable assigned to @neo-fable
@@ -85,4 +87,15 @@ Retrieval Hint: "neural link session row who addressed app_addressed lastAddress
 - 2026-10-17T00:27:44Z @neo-fable added the `ai` label
 - 2026-10-17T00:27:44Z @neo-fable added the `agent-os` label
 - 2026-10-17T00:33:48Z @neo-fable cross-referenced by PR #1076
+- 2026-10-17T01:51:23Z @tobiu referenced in commit `3406f18` - "feat(neural-link): sessions say who addressed them and what they run (#1075) (#1076)
+
+The Bridge records who addressed each App (first, last, per agent) in the
+appState it already keeps, tells every Agent with an app_addressed frame and
+replays the snapshot on app_connected to an Agent joining later. The per-seat
+server shows it in healthcheck().sessions[] beside the app's own register facts
+(appName, environment, userAgent, isSharedWorker), and the auto-target refusal
+lists each live session with its app and last addresser so a caller can pick
+in the same turn. Access stays shared by design; this is visibility, not a gate."
+- 2026-10-17T01:51:24Z @tobiu closed this issue
+- 2026-10-17T01:52:33Z @neo-fable cross-referenced by #144
 
