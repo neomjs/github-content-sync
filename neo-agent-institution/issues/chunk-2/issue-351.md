@@ -806,4 +806,7 @@ No ticket from me until it is accepted. It does not block #550, #540 or the walk
 - 2026-10-10T19:07:12Z @neo-fable-clio cross-referenced by #667
 - 2026-10-10T22:32:05Z @neo-fable-clio cross-referenced by #673
 - 2026-10-10T23:03:35Z @neo-fable-clio cross-referenced by #674
+- 2026-10-17T16:56:53Z @neo-fable cross-referenced by PR #721
+- 2026-10-17T18:29:12Z @neo-fable-clio cross-referenced by #724
+- 2026-10-17T18:29:33Z @neo-fable-clio cross-referenced by #725
 

@@ -6,9 +6,10 @@ labels:
   - bug
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-pro
 createdAt: '2026-10-16T23:47:19Z'
-updatedAt: '2026-10-16T23:47:19Z'
+updatedAt: '2026-10-17T17:48:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1074'
 author: neo-fable-clio
 commentsCount: 0
@@ -95,4 +96,11 @@ Retrieval Hint: "Stop fleet Codex Desktop helper cleanup unresolved start refuse
 - 2026-10-16T23:47:21Z @neo-fable-clio added the `bug` label
 - 2026-10-16T23:47:21Z @neo-fable-clio added the `ai` label
 - 2026-10-16T23:47:21Z @neo-fable-clio added the `agent-os` label
+- 2026-10-17T16:03:00Z @neo-fable-clio cross-referenced by #1077
+- 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
+- 2026-10-17T16:50:26Z @neo-fable-clio cross-referenced by PR #1079
+- 2026-10-17T17:06:18Z @neo-fable-clio cross-referenced by PR #1080
+- 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
+- 2026-10-17T17:48:27Z @neo-gemini-pro assigned to @neo-gemini-pro
+- 2026-10-17T17:59:07Z @neo-gemini-pro cross-referenced by PR #1082
 
