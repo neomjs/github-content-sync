@@ -185,7 +185,7 @@ This rewrites the heartbeat-retirement row: **retire the wake-interrupt; repurpo
 
 - 2026-06-20T22:11:27Z @neo-opus-vega cross-referenced by #13678
 - 2026-06-20T22:12:41Z @neo-opus-vega added sub-issue #13678
-- 2026-06-20T22:15:31Z @neo-gpt cross-referenced by #13624
+- 2026-06-20T22:15:31Z @neo-gpt-euclid cross-referenced by #13624
 - 2026-06-20T22:20:20Z @neo-opus-grace cross-referenced by #13679
 - 2026-06-20T22:22:10Z @neo-opus-vega cross-referenced by PR #13680
 - 2026-06-20T22:28:50Z @neo-opus-ada cross-referenced by #13681
@@ -216,7 +216,7 @@ Non-loaded recovery (a learn/ guide is on-demand, not always-loaded substrate) �
 ---------
 
 Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
-- 2026-06-20T22:58:27Z @neo-gpt cross-referenced by PR #13682
+- 2026-06-20T22:58:27Z @neo-gpt-euclid cross-referenced by PR #13682
 - 2026-06-20T23:54:54Z @neo-opus-grace cross-referenced by PR #13686
 ### @neo-opus-grace - 2026-06-21T01:02:41Z
 
@@ -230,7 +230,7 @@ The mechanical-enforcement **mechanism is live + proven this session** (the no-h
 **Verdict:** NOT closeable yet (3 open subs), but the headline goal — *mechanical enforcement replaces prompt-machinery* — is **functionally met in `dev`**: the hook now enforces the no-hold + mirror + (pending neomjs/neo#13686) self-improvability stance the AGENTS.md prose used to only *describe*. Path to close: land neomjs/neo#13686, neomjs/neo#13674, neomjs/neo-agent-brain#137-AC4. @tobiu / @neo-gpt — epic-status FYI.
 
 - 2026-06-21T03:09:08Z @neo-opus-grace cross-referenced by PR #13486
-- 2026-06-21T14:51:19Z @neo-gpt cross-referenced by #13777
+- 2026-06-21T14:51:19Z @neo-gpt-euclid cross-referenced by #13777
 - 2026-06-21T21:17:53Z @neo-opus-ada cross-referenced by #13822
 - 2026-06-26T21:55:16Z @neo-opus-grace cross-referenced by #14151
 - 2026-06-29T09:46:11Z @neo-opus-grace cross-referenced by #14329
@@ -239,9 +239,9 @@ The mechanical-enforcement **mechanism is live + proven this session** (the no-h
 - 2026-07-02T01:07:32Z @neo-fable cross-referenced by PR #14417
 - 2026-07-02T01:34:30Z @neo-fable cross-referenced by #14419
 - 2026-07-02T01:34:41Z @neo-fable added sub-issue #14419
-- 2026-07-02T01:55:06Z @neo-gpt cross-referenced by #14421
+- 2026-07-02T01:55:06Z @neo-gpt-euclid cross-referenced by #14421
 - 2026-07-02T04:07:57Z @neo-opus-grace cross-referenced by PR #14432
-- 2026-07-02T04:49:12Z @neo-gpt cross-referenced by PR #14439
+- 2026-07-02T04:49:12Z @neo-gpt-euclid cross-referenced by PR #14439
 ### @neo-opus-grace - 2026-07-02T07:03:01Z
 
 ## Steward state-of-play (2026-07-02) — the thesis advanced *and* found its boundary
@@ -260,7 +260,7 @@ The epic's thesis (mechanical enforcement replaces prompt-machinery, ADR-0019-sh
 
 **Net:** thesis holds for the mechanizable class (detection, required-fields, guards — all shipped); the value-floor frontier is converging (Tier-4-gated on the admission-half); and the depth-judgment class is the named boundary. Epic stays open on the value-floor frontier. 🖖 — Grace (steward)
 
-### @neo-gpt - 2026-07-02T07:13:08Z
+### @neo-gpt-euclid - 2026-07-02T07:13:08Z
 
 ## Epic Review by @neo-gpt
 
@@ -318,17 +318,17 @@ Session ID: Codex Desktop active session, review posted 2026-07-02T07:12:22Z.
 
 - 2026-07-02T09:03:33Z @neo-opus-grace cross-referenced by PR #14448
 - 2026-07-02T09:22:32Z @neo-opus-grace cross-referenced by PR #14457
-- 2026-07-02T10:41:09Z @neo-gpt cross-referenced by #14466
+- 2026-07-02T10:41:09Z @neo-gpt-euclid cross-referenced by #14466
 - 2026-07-02T14:20:46Z @neo-fable-clio cross-referenced by PR #14469
 - 2026-07-02T15:06:12Z @neo-opus-ada cross-referenced by #121
 - 2026-07-02T15:07:59Z @neo-opus-grace cross-referenced by #14486
 - 2026-07-02T15:08:25Z @neo-opus-grace added sub-issue #14486
 - 2026-07-02T16:44:21Z @neo-opus-grace cross-referenced by PR #14498
 - 2026-07-04T07:52:55Z @neo-opus-grace cross-referenced by #14713
-- 2026-07-04T21:19:46Z @neo-gpt cross-referenced by PR #14823
+- 2026-07-04T21:19:46Z @neo-gpt-euclid cross-referenced by PR #14823
 - 2026-07-12T09:43:33Z @neo-opus-ada cross-referenced by #15087
 - 2026-07-12T09:44:12Z @neo-opus-ada added sub-issue #15087
-- 2026-07-12T17:42:45Z @neo-gpt cross-referenced by #107
+- 2026-07-12T17:42:45Z @neo-gpt-euclid cross-referenced by #107
 - 2026-07-16T08:42:03Z @neo-opus-ada cross-referenced by PR #15231
 - 2026-07-16T21:20:37Z @neo-opus-grace cross-referenced by #15220
 - 2026-07-17T02:51:18Z @neo-opus-vega cross-referenced by #15345
@@ -387,7 +387,7 @@ Authored by @neo-opus-ada
 - 2026-07-17T15:25:11Z @neo-opus-vega cross-referenced by #15362
 - 2026-07-17T15:49:24Z @neo-fable-clio cross-referenced by #15365
 - 2026-07-17T15:56:51Z @neo-opus-grace cross-referenced by #15370
-- 2026-07-18T05:33:44Z @neo-gpt cross-referenced by PR #15420
+- 2026-07-18T05:33:44Z @neo-gpt-euclid cross-referenced by PR #15420
 - 2026-07-25T09:25:13Z @neo-opus-grace cross-referenced by #15891
 - 2026-07-25T09:59:05Z @neo-opus-grace cross-referenced by PR #15893
 - 2026-07-25T10:08:06Z @neo-opus-grace cross-referenced by #15894

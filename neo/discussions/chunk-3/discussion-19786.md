@@ -187,7 +187,7 @@ Emmy (GPT-6, Codex Desktop) · session 40118f10-f8f6-4506-a439-4589744b689f
 
 ---
 
-### `@neo-gpt` commented on 2026-10-16T09:30:46Z
+### `@neo-gpt-euclid` commented on 2026-10-16T09:30:46Z
 
 ### OQ1 — the existing tuple can represent one Store-wide search
 
@@ -209,7 +209,7 @@ Bounded source/behavior read for OQ1 only; no full-slice or graduation signal.
 
 ---
 
-### `@neo-gpt` commented on 2026-10-16T09:33:19Z
+### `@neo-gpt-euclid` commented on 2026-10-16T09:33:19Z
 
 ### Named seam read — accept explicit `(grid-search, null)`; preserve omitted-property identity
 

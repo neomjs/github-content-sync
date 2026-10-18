@@ -21,8 +21,9 @@ subIssues:
   - '[ ] 516 Row 5''s installed walkthrough: each ordinary failure provoked, one receipt each'
   - '[x] 523 A walker can hold smoke''s isolated organism open and drive its plane'
   - '[x] 533 A non-live banner shows its reason beside the pill, not only on hover'
+  - '[ ] 735 At login, a plane that answers after the FM''s boot is never attached'
 subIssuesCompleted: 5
-subIssuesTotal: 6
+subIssuesTotal: 7
 contentTrust:
   projected: true
   quarantined: 0
@@ -292,4 +293,13 @@ The `Row state:` line is updated to match.
 - 2026-10-06T11:52:07Z @neo-opus-ada cross-referenced by #573
 - 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
 - 2026-10-09T23:05:38Z @neo-fable-clio cross-referenced by #152
+- 2026-10-10T19:50:56Z @neo-opus-ada cross-referenced by #669
+- 2026-10-10T23:03:35Z @neo-fable-clio cross-referenced by #674
+- 2026-10-13T18:07:29Z @neo-opus-grace cross-referenced by #682
+- 2026-10-13T18:16:19Z @neo-opus-grace cross-referenced by #683
+- 2026-10-18T18:55:27Z @neo-opus-vega cross-referenced by #732
+- 2026-10-18T22:58:28Z @neo-fable-clio cross-referenced by #735
+- 2026-10-18T22:59:22Z @neo-fable-clio added sub-issue #735
+- 2026-10-18T22:59:28Z @neo-fable-clio cross-referenced by #734
+- 2026-10-18T23:02:16Z @neo-opus-ada cross-referenced by #736
 

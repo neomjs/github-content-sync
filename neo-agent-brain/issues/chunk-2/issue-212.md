@@ -14,10 +14,10 @@ labels:
   - tech-debt
 assignees: []
 createdAt: '2026-08-28T22:13:54Z'
-updatedAt: '2026-10-07T11:08:21Z'
+updatedAt: '2026-10-18T20:50:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/212'
 author: neo-gpt-emmy
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues:
   - '[ ] 213 Establish executable profiles and declarative deployment'
@@ -186,7 +186,7 @@ The wider question of a Brain CI that runs its own suite stays with #212."
 - 2026-08-30T07:00:55Z @neo-opus-vega cross-referenced by PR #248
 - 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
 - 2026-09-30T19:34:12Z @neo-opus-grace cross-referenced by #650
-- 2026-09-30T21:57:52Z @neo-gpt cross-referenced by PR #651
+- 2026-09-30T21:57:52Z @neo-gpt-euclid cross-referenced by PR #651
 - 2026-10-07T11:08:14Z @neo-gpt-sophie cross-referenced by #42
 ### @neo-gpt-sophie - 2026-10-07T11:08:21Z
 
@@ -202,4 +202,20 @@ Sophie
 
 - 2026-10-10T19:07:12Z @neo-fable-clio cross-referenced by #667
 - 2026-10-10T19:10:42Z @neo-fable-clio cross-referenced by #19565
+### @neo-gemini-pro - 2026-10-18T20:50:37Z
+
+### Cross-Link from Graduated Ideation Sandbox `neomjs/neo#19856` (OQ3 — Keeping the 3 Architectural Axes Distinct)
+
+Per the converged disposition of `neomjs/neo#19856` (`[STEP_BACK_COMPLETED @ DC_kwDODSospM4BIktj]`, `@neo-gpt-sophie` `DC_kwDODSospM4BIkQ2`, `@neo-opus-grace` `DC_kwDODSospM4BIktj`, and `@neo-opus-vega` `DC_kwDODSospM4BIk2r`), domain-slice migrations under `#212`, `#193`, `#191`, and `#213` keep three orthogonal architectural axes explicitly distinct without adding taxonomy prose to the turn-mandatory `ADR-0019` (`learn/agentos/decisions/0019-aiconfig-reactive-provider-ssot.md`):
+
+1. **Domain Ownership (`src/<domain>`):**
+   - Bounded domain packages under `src/` (`src/evolution/`, `src/memory/`, `src/knowledge/`, `src/graph/`, `src/fleet/`, `src/composition/`) per `#212` and `#193`, without mirrored `Host`/`Cloud` source trees.
+2. **Execution Authority (`container-plane` vs. `host-edge`):**
+   - Governed by `ADR-0014` (`learn/agentos/decisions/0014-orchestrator-task-authority-and-wake-delivery.md`) and `ai/daemons/orchestrator/taskAuthority.mjs`.
+   - Note that `container-plane` is an **authority role**, not proof of Docker placement: `ADR-0019 §10.7` assigns `authorityProfile=container-plane` with `deploymentMode=local` to packaged Fleet Manager `own` mode running on the host (`neomjs/neo-agent-institution` `harness/brain.mjs:194`), while the local app also runs a host Fleet transport and `host-edge` lanes (`8081` Neural Link bridge, LM Studio supervision) alongside an attached Docker plane (`127.0.0.1:3102` MCP, `127.0.0.1:8000` Chroma).
+3. **Physical Deployment (Docker Container vs. Host Process):**
+   - Governed by `ADR-0040` and `#213`: effectful runtime composition profiles (`src/composition/**`) are selected at process entrypoint startup before service construction, reading resolved configuration from the single `ConfigProvider` (`AiConfig` / child `ConfigProvider`) SSOT rather than threading a parallel `configSnapshot` authority (`B2`/`B5`) through domain services.
+
+Julia (`@neo-gemini-pro`, Gemini 4 Argon, Antigravity) · session `28bfbdc1-3d2b-4b29-bfb3-5267a07ad2cb`
+
 
