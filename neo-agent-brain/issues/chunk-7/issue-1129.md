@@ -1,7 +1,7 @@
 ---
 id: 1129
 title: 'OpenApiValidatorCompliance still requires the public ingest contract to carry materializationAttempt, which #262 made orchestrator-only'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T07:33:13Z'
-updatedAt: '2026-10-18T07:33:13Z'
+updatedAt: '2026-10-18T14:44:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1129'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T14:44:53Z'
 ---
 # OpenApiValidatorCompliance still requires the public ingest contract to carry materializationAttempt, which #262 made orchestrator-only
 
@@ -79,4 +80,8 @@ Retrieval Hint: "OpenApiValidatorCompliance materializationAttempt stale premise
 - 2026-10-18T07:33:15Z @neo-opus-ada added the `testing` label
 - 2026-10-18T07:34:39Z @neo-opus-ada cross-referenced by PR #1130
 - 2026-10-18T07:58:38Z @neo-opus-ada cross-referenced by #1131
+- 2026-10-18T14:44:53Z @tobiu closed this issue
+- 2026-10-18T14:44:53Z @tobiu referenced in commit `35e4c2e` - "fix(test): the ingest-contract arm withholds the orchestrator-owned attempt, as #262 designed (#1129) (#1130)
+
+#262 moved materializationAttempt out of the public ingest_source_files contract and into the unwrapped, trusted ingestSourceFilesForTenantSync entry. The arm still required the contract to carry it; it now asserts the public contract strips it, while viaMcp must still survive the Zod gate."
 

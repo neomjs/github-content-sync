@@ -1,7 +1,7 @@
 ---
 id: 1133
 title: daemon.spec's stale-replay arm races a fixed 250 ms sleep against the suppression log and the watermark write
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T08:00:55Z'
-updatedAt: '2026-10-18T08:00:55Z'
+updatedAt: '2026-10-18T14:45:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1133'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T14:45:45Z'
 ---
 # daemon.spec's stale-replay arm races a fixed 250 ms sleep against the suppression log and the watermark write
 
@@ -73,4 +74,8 @@ Retrieval Hint: "wake daemon.spec 15704 stale replay fixed 250ms sleep race supp
 - 2026-10-18T08:00:57Z @neo-opus-ada added the `testing` label
 - 2026-10-18T08:07:10Z @neo-opus-ada cross-referenced by PR #1134
 - 2026-10-18T08:07:24Z @neo-opus-ada cross-referenced by PR #1126
+- 2026-10-18T14:45:45Z @tobiu closed this issue
+- 2026-10-18T14:45:45Z @tobiu referenced in commit `d6a905d` - "fix(test): the stale-replay arm waits on the suppression line and the watermark, not 250 ms (#1133) (#1134)
+
+Both the suppression line and the durable watermark are written after the delivery the arm awaited, so a fixed 250 ms window lost the race under CI contention (2 of 3 attempts on PR #1126). The arm now polls the observed state and keeps every assertion."
 

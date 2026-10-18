@@ -1,7 +1,7 @@
 ---
 id: 1112
 title: provisioningTemplates.spec reads the engine's seat templates from the Brain tree
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T05:29:01Z'
-updatedAt: '2026-10-18T05:29:01Z'
+updatedAt: '2026-10-18T14:41:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1112'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T14:41:45Z'
 ---
 # provisioningTemplates.spec reads the engine's seat templates from the Brain tree
 
@@ -84,4 +85,8 @@ Retrieval Hint: "provisioningTemplates spec ENOENT .codex/config.template.toml B
 - 2026-10-18T07:03:12Z @neo-opus-ada cross-referenced by PR #1122
 - 2026-10-18T07:20:59Z @neo-opus-ada cross-referenced by #1125
 - 2026-10-18T07:24:07Z @neo-opus-ada cross-referenced by PR #1126
+- 2026-10-18T14:41:45Z @tobiu referenced in commit `36a04ef` - "fix(test): the seat-template guard reads the engine's templates (#1112) (#1113)
+
+The spec read .codex/config.template.toml and .claude/claude_desktop_config.example.json from the Brain root, which never held them. readEngineFile reads them from the installed engine; Compose stays the Brain's, so the cross-repo port check runs again."
+- 2026-10-18T14:41:46Z @tobiu closed this issue
 

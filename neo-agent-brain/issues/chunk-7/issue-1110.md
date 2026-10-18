@@ -1,7 +1,7 @@
 ---
 id: 1110
 title: initTier1ConfigMigration.spec's fixtures import the engine from the Brain tree
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T05:26:32Z'
-updatedAt: '2026-10-18T05:26:32Z'
+updatedAt: '2026-10-18T14:41:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1110'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T14:41:23Z'
 ---
 # initTier1ConfigMigration.spec's fixtures import the engine from the Brain tree
 
@@ -88,4 +89,8 @@ Retrieval Hint: "initTier1ConfigMigration fixtures repoRoot/src/Neo.mjs engine l
 - 2026-10-18T07:03:12Z @neo-opus-ada cross-referenced by PR #1122
 - 2026-10-18T07:20:59Z @neo-opus-ada cross-referenced by #1125
 - 2026-10-18T07:24:07Z @neo-opus-ada cross-referenced by PR #1126
+- 2026-10-18T14:41:23Z @tobiu referenced in commit `133d20b` - "fix(test): the Tier-1 migration fixtures import the installed engine (#1110) (#1111)
+
+The fixtures wrote config files importing ${repoRoot}/src/Neo.mjs and src/core/_export.mjs, the engine's layout before the Brain split. They now import the installed engine through import.meta.resolve, so the six conversion and cascade arms run against the converter again."
+- 2026-10-18T14:41:24Z @tobiu closed this issue
 

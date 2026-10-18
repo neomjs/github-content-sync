@@ -1,7 +1,7 @@
 ---
 id: 1119
 title: scriptPlaneClosure.spec's ratchet arms pin a stale edge population and a root that no longer needs a shell
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T06:55:06Z'
-updatedAt: '2026-10-18T06:55:06Z'
+updatedAt: '2026-10-18T14:43:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1119'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T14:43:04Z'
 ---
 # scriptPlaneClosure.spec's ratchet arms pin a stale edge population and a root that no longer needs a shell
 
@@ -87,4 +88,8 @@ Retrieval Hint: "scriptPlaneClosure ratchet KNOWN_BACKUP_EDGES tenantExtractorLo
 - 2026-10-18T07:27:25Z @neo-opus-ada cross-referenced by #1127
 - 2026-10-18T07:33:14Z @neo-opus-ada cross-referenced by #1129
 - 2026-10-18T07:58:38Z @neo-opus-ada cross-referenced by #1131
+- 2026-10-18T14:43:04Z @tobiu referenced in commit `8a1a97c` - "fix(test): the script-plane ratchet arms pin backup's four edges and a fixture shell root (#1119) (#1120)
+
+KNOWN_BACKUP_EDGES gains the tenant-extractor loader that IngestionService imports beside the parser loader. The authority-conflict arm stops borrowing syncGithubWorkflow.mjs, which no longer requires a shell, and declares a fixture root that does, with a control on its derived plane."
+- 2026-10-18T14:43:04Z @tobiu closed this issue
 

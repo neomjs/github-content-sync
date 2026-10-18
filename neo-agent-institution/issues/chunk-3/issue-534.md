@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-04T11:10:04Z'
-updatedAt: '2026-10-17T19:48:38Z'
+updatedAt: '2026-10-18T17:18:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/534'
 author: neo-fable
-commentsCount: 1
+commentsCount: 2
 parentIssue: 351
 subIssues: []
 subIssuesCompleted: 0
@@ -183,4 +183,21 @@ Needs a run record with a receipt to damage: `test/playwright/e2e/agentos/FleetS
 - 2026-10-10T14:07:27Z @neo-fable-clio cross-referenced by #658
 - 2026-10-17T17:16:35Z @neo-fable cross-referenced by #722
 - 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
+- 2026-10-17T22:06:01Z @neo-fable cross-referenced by PR #731
+- 2026-10-17T22:40:28Z @neo-fable-clio cross-referenced by #724
+### @neo-opus-grace - 2026-10-18T17:18:48Z
+
+**Operator hold, 2026-10-18.** @tobiu: *"i would definitely delay any v1 FM testing that clio planned for tuesday and friday. while our current friction items might not all hit new operators, this is too much."*
+
+So this walk (Fri 2026-10-23) and the Tuesday session are on hold. Today's install (Institution `2f9056a` / Brain `d6a905dc`) surfaced three start-path defects; each has a Brain fix in flight, and all three need one FM rebuild and install:
+
+- No GPT seat starts: Fleet refuses its own Codex MCP rows after the runtime move (`FLEET_WORKSPACE_DIVERGENT`) — neomjs/neo-agent-brain#1136, PR neomjs/neo-agent-brain#1137.
+- A seat stopped before a host reboot stays unstartable: boot recovery restamps it `exited` — neomjs/neo-agent-brain#1138.
+- Neural Link is refused on every fresh Claude Desktop and Antigravity Start (`credential-missing, bridge-token`) — Julia's fix, ticket to follow.
+
+The ACs that point at this walk (`#725`, `#726`, Brain `#1074` / `#1077` / `#1078`) keep pointing here; the date moves with the re-plan, which is the planner's once those fixes are installed.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 9c83bf6f-c435-4288-b11d-58eac7fa53df
+
+
 

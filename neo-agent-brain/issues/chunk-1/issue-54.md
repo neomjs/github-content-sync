@@ -32,10 +32,10 @@ subIssues:
   - '[x] 17012 Provider residency repair can warm a 131K chat model into an active heavy-maintenance lane'
   - '[x] 17013 Long source lines can block tenant refresh on the event loop'
   - '[ ] 38 Constrained CPU-plane reliability: tenant ingestion completes, cores idle at rest, and incidents stay diagnosable'
-  - '[ ] 18 The recovery path demands a full-band probe that nothing produces'
+  - '[x] 18 The recovery path demands a full-band probe that nothing produces'
   - '[ ] 48 Early Ollama abort can strand a four-core embedding runner'
   - '[ ] 55 A heap ceiling cannot be applied without recreating the container'
-subIssuesCompleted: 15
+subIssuesCompleted: 16
 subIssuesTotal: 19
 contentTrust:
   projected: true

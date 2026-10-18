@@ -1,7 +1,7 @@
 ---
 id: 1131
 title: Orchestrator.spec's task-envelope census lacks community-reconciliation
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T07:58:37Z'
-updatedAt: '2026-10-18T07:58:37Z'
+updatedAt: '2026-10-18T14:45:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1131'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T14:45:12Z'
 ---
 # Orchestrator.spec's task-envelope census lacks community-reconciliation
 
@@ -70,4 +71,8 @@ Retrieval Hint: "Orchestrator.spec task census community-reconciliation createIn
 - 2026-10-18T07:58:38Z @neo-opus-ada added the `ai` label
 - 2026-10-18T07:58:39Z @neo-opus-ada added the `testing` label
 - 2026-10-18T07:59:32Z @neo-opus-ada cross-referenced by PR #1132
+- 2026-10-18T14:45:12Z @tobiu referenced in commit `f835677` - "fix(test): the orchestrator's task census learns community-reconciliation (#1131) (#1132)
+
+createInitialTaskState keys the state by the task definitions, so the envelope arm's list is the task census; #104 added community-reconciliation while the suite was dark."
+- 2026-10-18T14:45:12Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 1101
 title: Retire the full and --emit-only GitHub sync modes and their delivery
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-18T03:51:58Z'
-updatedAt: '2026-10-18T04:56:42Z'
+updatedAt: '2026-10-18T14:40:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1101'
 author: neo-opus-grace
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 459 Brain readers fall back to resources/content under projectRoot or __dirname'
 blocking: []
+closedAt: '2026-10-18T14:40:53Z'
 ---
 # Retire the full and --emit-only GitHub sync modes and their delivery
 
@@ -248,4 +249,53 @@ The one-off discussions migration that derived resources/content from
 projectRoot had no caller and goes too."
 - 2026-10-18T06:55:07Z @neo-opus-ada cross-referenced by #1119
 - 2026-10-18T06:58:07Z @neo-opus-ada cross-referenced by PR #1120
+- 2026-10-18T14:40:53Z @tobiu referenced in commit `ced6950` - "fix(sync): retire the full and --emit-only sync modes and their delivery (#1101) (#1106)
+
+* fix(sync): the corpus CLI runs --corpus-only alone (#1101)
+
+The bare command and --emit-only refuse before any lease or request,
+naming --corpus-only. The dev-branch guard existed only for the full
+sync's checkout writes, so it goes too. --corpus-only and
+--refetch-issues keep their behavior and literals, which the corpus
+publisher greps for before it invokes the CLI.
+
+The lease-adoption spec now records that the corpus CLI holds its own
+lease and never imports the shared resolver. Its held exit is pinned to
+the held branch. GitHubWorkflow.md describes the pull-only emission.
+
+* fix(sync): the emission no longer pushes to GitHub or commits (#1101)
+
+runFullSync, its auto-push, and the commit-rebase-push delivery go,
+together with their recovery path, the generated-path allowlist and
+execGit. IssueSyncer.pushToGitHub goes too, so nothing writes local
+Markdown back to real issues. With it go its push-only helpers and the
+GET_ISSUE_FOR_PUSH / UPDATE_ISSUE operations, which had no other
+caller. pushFailures leaves the pull, the issues facet and the saved
+metadata, and the pushToRepoAfterSync leaf, read only by the auto-push,
+is retired with its parity entry.
+
+Stage2's delivery arms go. Its verdict, carry-over and facet-isolation
+arms now drive emitGeneratedContent, which is what they always
+exercised. postReleaseSync's no-sync assertion now names the live
+emission entry points.
+
+The CLI's import walk shrinks from 52 modules to 47, exactly the
+retired subgraph (the branch guard, RepositoryService and its two query
+helpers, mutations.mjs). The walk's floor is re-derived from that
+measurement: 40 still fires when the walker stops at neo.mjs/**, which
+reaches 34.
+
+* fix(orchestrator): the dev-pull ladder resets no sync metadata (#1101)
+
+The primary checkout no longer tracks resources/content, and the full
+sync that dirtied its .sync-metadata.json is retired, so the ladder's
+metadata-reset step can never fire: resolveMetaAndPull,
+isOnlyMetaSyncStatus and META_SYNC_PATH go, and a dirty checkout is
+always a local divergence. The KB-relevance prefix narrows to
+resources/content/concepts/, the root the KB profile's ConceptSource
+still reads, so the predicate keeps mirroring the source registry.
+
+The one-off discussions migration that derived resources/content from
+projectRoot had no caller and goes too."
+- 2026-10-18T14:40:54Z @tobiu closed this issue
 

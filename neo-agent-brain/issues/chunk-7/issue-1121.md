@@ -1,7 +1,7 @@
 ---
 id: 1121
 title: 'PackageBoundary.spec: a version-pinned setup-node lookup, and a root script that duplicates the Cloud package''s'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T07:00:33Z'
-updatedAt: '2026-10-18T07:00:33Z'
+updatedAt: '2026-10-18T14:43:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1121'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T14:43:35Z'
 ---
 # PackageBoundary.spec: a version-pinned setup-node lookup, and a root script that duplicates the Cloud package's
 
@@ -83,4 +84,8 @@ Retrieval Hint: "PackageBoundary setup-node v7 lookup; ai:check-backup-integrity
 - 2026-10-18T07:27:25Z @neo-opus-ada cross-referenced by #1127
 - 2026-10-18T07:33:14Z @neo-opus-ada cross-referenced by #1129
 - 2026-10-18T07:58:38Z @neo-opus-ada cross-referenced by #1131
+- 2026-10-18T14:43:35Z @tobiu referenced in commit `3ea511e` - "fix(test): the package boundary finds setup-node at any version, and the Cloud package alone owns the backup canary (#1121) (#1122)
+
+The integration arm matched actions/setup-node@v6 exactly, which the actions-group bump moved to @v7. The root re-add of ai:check-backup-integrity duplicated the Cloud package's entry, where every other restoration-runbook command lives, so the root entry goes and backup.spec's canary reads cloud/package.json."
+- 2026-10-18T14:43:35Z @tobiu closed this issue
 

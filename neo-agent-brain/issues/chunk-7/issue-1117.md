@@ -1,7 +1,7 @@
 ---
 id: 1117
 title: The Neural Link capability matrix lives beside the server it documents
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - documentation
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T06:40:39Z'
-updatedAt: '2026-10-18T07:17:33Z'
+updatedAt: '2026-10-18T14:42:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1117'
 author: neo-opus-ada
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T14:42:37Z'
 ---
 # The Neural Link capability matrix lives beside the server it documents
 
@@ -130,4 +131,14 @@ Review RA-1/RA-2: InteractionService.driveDrag refuses with {error, message, pha
 - 2026-10-18T07:27:25Z @neo-opus-ada cross-referenced by #1127
 - 2026-10-18T07:33:14Z @neo-opus-ada cross-referenced by #1129
 - 2026-10-18T07:58:38Z @neo-opus-ada cross-referenced by #1131
+- 2026-10-18T14:42:37Z @tobiu referenced in commit `51e91ce` - "fix(neural-link): the capability matrix lives beside its server (#1117) (#1118)
+
+* fix(neural-link): the capability matrix lives beside its server (#1117)
+
+The matrix states that a registry change updates the doc in the same change, which only holds where the registry lives. It moves from neo to the path CapabilityMatrix.spec already reads, and gains the drive_drag row the split hid.
+
+* fix(neural-link): the drive_drag row names the Brain's refusal envelope, and the received refs keep their neo targets (#1117)
+
+Review RA-1/RA-2: InteractionService.driveDrag refuses with {error, message, phase, receipt}, nesting the Engine's typed error in receipt, while the driveDrag fixture calls the raw Engine RPC. The three bare ticket refs are neo's, so they become neomjs/neo#N in the Brain."
+- 2026-10-18T14:42:37Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 18
 title: The recovery path demands a full-band probe that nothing produces
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-08-23T00:50:07Z'
-updatedAt: '2026-10-18T06:01:22Z'
+updatedAt: '2026-10-18T14:42:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/18'
 author: neo-opus-grace
 commentsCount: 5
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T14:42:07Z'
 ---
 # The recovery path demands a full-band probe that nothing produces
 
@@ -286,4 +287,30 @@ than as a provider failure."
 🖖 Grace (Opus 5.5, Claude Code) · session 20f64d03-10e7-477d-948b-438ad0d63df5
 
 
+- 2026-10-18T14:42:07Z @tobiu closed this issue
+- 2026-10-18T14:42:07Z @tobiu referenced in commit `7d74d52` - "fix(tenant-sync): a recovery bypass mints on a full-band proof produced off the sweep (#18) (#1114)
+
+* fix(tenant-sync): a recovery bypass mints on a full-band proof produced off the sweep (#18)
+
+The sweep only ever ran the quarter-band cadence probe, and the gate demands a
+full-band observation, so recovery could never authorize a bypass. A poll cycle
+now produces the full-band proof under the heavy-maintenance lease, with that
+lease's fairness budget as its deadline. The sweep requests the proof and
+consumes it. It mints only when the proof is current, healthy, sized and
+full-band for exactly its cohort, and its own cadence probe is healthy.
+
+Both probes share one sizing, attempt and death-cache path, so recovery keeps a
+single refusal authority. A healthy sub-band answer now logs that a proof is
+awaited instead of reporting a provider failure.
+
+* fix(tenant-sync): a full-band death refuses for the lane, not the cohort, and expires (#18)
+
+The full-band proof recorded a death against the cohort key, so every repo joining the
+awaiting cohort bought one more attempt at the band ceiling, about four times the request
+that killed the engine. The death now records against the lane (provider, dimension,
+geometry) and expires after twelve sweep cadences, so an engine given more memory is asked
+again. The proof still answers for its cohort, so a cohort change retires it.
+
+The proof also carries the deadline it ran under, so a short lease reads as budget rather
+than as a provider failure."
 

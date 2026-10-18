@@ -1,7 +1,6 @@
 {
-  "lastSync": "2026-10-18T04:30:56.886Z",
-  "releasesLastFetched": "2026-10-18T04:30:55.823Z",
-  "pushFailures": [],
+  "lastSync": "2026-10-18T17:22:42.430Z",
+  "releasesLastFetched": "2026-10-18T17:22:41.725Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -2446,10 +2445,10 @@
       "state": "OPEN",
       "path": "neo-agent-institution/issues/chunk-3/issue-534.md",
       "closedAt": null,
-      "updatedAt": "2026-10-17T19:48:38Z",
-      "contentHash": "7d8b8aec2986b09c06702b5a4a797dfc92a2c81efc52b3f1422e59ec5255980a",
+      "updatedAt": "2026-10-18T17:18:48Z",
+      "contentHash": "6ece5c45fe9b32dd44144c307dc057003209b1090dc111c868e4452cca2ab067",
       "milestone": "FM v1",
-      "commentsTotal": 1
+      "commentsTotal": 2
     },
     "535": {
       "state": "CLOSED",
