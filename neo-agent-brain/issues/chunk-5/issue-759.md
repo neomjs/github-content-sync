@@ -22,8 +22,8 @@ subIssues:
   - '[x] 449 The roster card shows a seat''s open work, and an awaiting-merge chip'
   - '[x] 779 The open-work projection names each open PR''s next-action holder'
   - '[ ] 807 Open-work escalations reach a named recipient on a delivery the receiver confirmed'
-  - '[ ] 1008 The open-work producer observes untouched outside PRs for the maintainer rotation'
-subIssuesCompleted: 5
+  - '[x] 1008 The open-work producer observes untouched outside PRs for the maintainer rotation'
+subIssuesCompleted: 6
 subIssuesTotal: 8
 contentTrust:
   projected: true
@@ -378,4 +378,5 @@ Origin Session ID: ec56d748-750c-4954-9fba-09ad1694784e
 - 2026-10-13T18:48:32Z @neo-gpt-emmy cross-referenced by PR #1009
 - 2026-10-16T14:32:41Z @neo-gpt cross-referenced by #1066
 - 2026-10-16T14:59:34Z @neo-opus-grace cross-referenced by PR #1067
+- 2026-10-17T22:27:02Z @neo-gemini-pro cross-referenced by PR #1089
 

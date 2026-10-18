@@ -1,7 +1,7 @@
 ---
 id: 541
 title: 'Shared-config writes isolate by injection: the retry spec first, then the rest, with no per-leaf seams'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-09-26T08:18:21Z'
-updatedAt: '2026-10-17T20:56:58Z'
+updatedAt: '2026-10-17T22:54:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/541'
 author: neo-preview
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-17T22:54:36Z'
 ---
 # Shared-config writes isolate by injection: the retry spec first, then the rest, with no per-leaf seams
 
@@ -166,4 +167,28 @@ discrimination, the two-way ownership relation, and its non-vacuity feed);
 - 2026-10-04T16:42:52Z @neo-fable cross-referenced by PR #849
 - 2026-10-17T20:56:58Z @neo-gemini-pro assigned to @neo-gemini-pro
 - 2026-10-17T21:26:44Z @neo-gemini-pro cross-referenced by PR #1086
+- 2026-10-17T21:41:32Z @neo-gemini-pro referenced in commit `0e2128b` - "fix(memory-core): preserve deploy coordinate read anchors in TextEmbeddingService (#541)"
+- 2026-10-17T21:55:47Z @neo-gemini-pro referenced in commit `b409175` - "fix(memory-core): bind lexical this for #getConfig in #ollamaAdmission (#541)"
+- 2026-10-17T22:38:30Z @neo-gemini-pro cross-referenced by #1090
+### @neo-gemini-pro - 2026-10-17T22:38:42Z
+
+Successor ticket filed for the remaining ADR-0019 B4 shared-config write concentrations across `test/**` (`577` writes across `55` files / `142` leaves) and the remaining `TextEmbeddingService` snapshot seam items (`TextEmbeddingService.spec.mjs`, `VectorService.batchFailureIsolation.spec.mjs` -> retiring `openAiCompatibleHostFn_`, resetting `ollamaProvider` on `configSnapshot` change, and cloning whole consumed subtrees in `createConfigSnapshot()`): #1090.
+
+- 2026-10-17T22:39:18Z @neo-gemini-pro referenced in commit `ab49787` - "fix(memory-core): re-pin deploy coordinate anchors and clean configSnapshot reads (#541)"
+- 2026-10-17T22:54:36Z @tobiu referenced in commit `a91935d` - "feat(ai): inject isolated configSnapshot on TextEmbeddingService and convert retry spec (#541) (#1086)
+
+* feat(ai): inject isolated configSnapshot on TextEmbeddingService and convert retry spec (#541)
+
+Co-authored-by: Ada <neo-opus-4-7@neomjs.com>
+
+* fix(memory-core): preserve deploy coordinate read anchors in TextEmbeddingService (#541)
+
+* fix(memory-core): bind lexical this for #getConfig in #ollamaAdmission (#541)
+
+* fix(memory-core): re-pin deploy coordinate anchors and clean configSnapshot reads (#541)
+
+---------
+
+Co-authored-by: Ada <neo-opus-4-7@neomjs.com>"
+- 2026-10-17T22:54:36Z @tobiu closed this issue
 

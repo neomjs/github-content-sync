@@ -51,10 +51,10 @@ subIssues:
   - '[x] 848 A Create run binds the target its profile declares'
   - '[x] 571 Plane attach carries the fleet credential that plane-first Add needs'
   - '[x] 620 First-run polish: unbroken possessive, the app''s window, verb-only link'
-  - '[ ] 644 The setup door''s foot fade shows only while the door overflows'
+  - '[x] 644 The setup door''s foot fade shows only while the door overflows'
   - '[x] 956 The placement probe tells unobserved from unsupported, with a next step'
   - '[ ] 727 The Connect door runs register-forge for a plane the card did not create'
-subIssuesCompleted: 33
+subIssuesCompleted: 34
 subIssuesTotal: 39
 contentTrust:
   projected: true

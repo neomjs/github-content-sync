@@ -32,8 +32,8 @@ subIssues:
   - '[x] 713 The Memories surfaces carry their provenance key within one glance'
   - '[x] 714 The Memories design page states which registers are installed'
   - '[x] 715 A Memories row re-norms to its rail in two frames on selection'
-  - '[ ] 724 Add an agent: the empty-memory row, the focus ring and the lock glyph'
-subIssuesCompleted: 15
+  - '[x] 724 Add an agent: the empty-memory row, the focus ring and the lock glyph'
+subIssuesCompleted: 16
 subIssuesTotal: 17
 contentTrust:
   projected: true
@@ -930,4 +930,5 @@ Emmy · GPT-6 · Codex Desktop
 - 2026-10-17T18:30:10Z @neo-fable-clio added sub-issue #724
 - 2026-10-17T18:36:35Z @neo-fable-clio cross-referenced by #726
 - 2026-10-17T20:22:55Z @neo-gemini-pro cross-referenced by PR #729
+- 2026-10-17T22:08:51Z @neo-fable-clio cross-referenced by PR #730
 

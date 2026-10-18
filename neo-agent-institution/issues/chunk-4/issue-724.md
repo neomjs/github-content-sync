@@ -1,7 +1,7 @@
 ---
 id: 724
 title: 'Add an agent: the empty-memory row, the focus ring and the lock glyph'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-17T18:29:11Z'
-updatedAt: '2026-10-17T21:25:19Z'
+updatedAt: '2026-10-17T22:40:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/724'
 author: neo-fable-clio
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-17T22:38:50Z'
 ---
 # Add an agent: the empty-memory row, the focus ring and the lock glyph
 
@@ -61,7 +62,7 @@ No wire surface changes: the `memoryImport` values, the `agentDefinitionAccepted
 - [ ] AC-1 (component arm, `test/playwright/component/apps/agentos/AddAgentForm.spec.mjs`): with ≥ 2 candidates and a username matching none, the empty row is the first row and selected on open, and submit passes without the validation sentence; with exactly one candidate whose agent matches the username, that candidate is preselected (today's behavior kept).
 - [ ] AC-2 (visual, the cockpit visual suite): the memory frame with eleven candidates fits the card at the suite's viewport with its own scroll; goldens dark + light for the selected + focused row — one frame, no stock outline.
 - [ ] AC-3 (visual): the submit reads `Add agent` with no lock glyph (or a key glyph, decided in the PR with the capture shown); `[disabled]` keeps its own look.
-- [ ] AC-4 (post-merge, installed): the operator adds a new agent on the next Institution #12 candidate without scrolling for the memory choice — receipt on the Row 1 walk (2026-10-23).
+- [ ] AC-4 (post-merge, installed): the operator adds a new agent on the next Institution #12 candidate without scrolling for the memory choice — receipt on the Row 1 walk (2026-10-23). `[L4-deferred — operator handoff needed]` — PR #730 merged 2026-10-17T22:38Z as b0de02a; the receipt lands on the walk (#534), not here.
 - [ ] AC-5 (component arm + capture): the copy note is absent while the empty row is chosen and present under a chosen candidate; the token sheet's words carry the agent and the forge (asserted where the sheet is testable, else the capture in the PR).
 
 ## Out of Scope
@@ -87,6 +88,7 @@ Retrieval Hint: "Add an agent form Start with empty memory last row focus ring l
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session cd7bf4ee-8722-43be-baf8-29f9ed658722
 
 
+
 ## Timeline
 
 - 2026-10-17T18:29:13Z @neo-fable-clio added the `bug` label
@@ -98,4 +100,15 @@ Retrieval Hint: "Add an agent form Start with empty memory last row focus ring l
 - 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
 - 2026-10-17T20:22:55Z @neo-gemini-pro cross-referenced by PR #729
 - 2026-10-17T21:25:20Z @neo-gemini-pro assigned to @neo-gemini-pro
+- 2026-10-17T21:53:38Z @neo-gemini-pro cross-referenced by PR #730
+- 2026-10-17T21:58:54Z @neo-gemini-pro referenced in commit `d597e95` - "fix(agentos): stamp visual baselines and remove test comment ref (#724)"
+- 2026-10-17T22:26:44Z @neo-gemini-pro referenced in commit `91eef34` - "fix(agentos): declared-only memory preselection, ListModel ownership, and scroll-state fade (#724)"
+- 2026-10-17T22:38:50Z @tobiu referenced in commit `b0de02a` - "fix(agentos): empty-memory preselection, candidate list scroll, focus ring and token sheet (#724) (#730)
+
+* fix(agentos): empty-memory preselection, candidate list scroll, focus ring and token sheet (#724)
+
+* fix(agentos): stamp visual baselines and remove test comment ref (#724)
+
+* fix(agentos): declared-only memory preselection, ListModel ownership, and scroll-state fade (#724)"
+- 2026-10-17T22:38:50Z @tobiu closed this issue
 

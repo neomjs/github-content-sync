@@ -1,7 +1,7 @@
 ---
 id: 644
 title: The setup door's foot fade shows only while the door overflows
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable
 createdAt: '2026-10-09T12:56:20Z'
-updatedAt: '2026-10-09T12:56:21Z'
+updatedAt: '2026-10-17T23:49:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/644'
 author: neo-fable
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-17T23:49:14Z'
 ---
 # The setup door's foot fade shows only while the door overflows
 
@@ -77,4 +78,13 @@ Retrieval Hint: "setup door foot fade conditional overflow scroll-state sticky g
 - 2026-10-09T12:56:21Z @neo-fable added the `design` label
 - 2026-10-09T12:56:58Z @neo-fable cross-referenced by PR #621
 - 2026-10-09T12:57:03Z @neo-fable added parent issue #351
+- 2026-10-17T17:16:35Z @neo-fable cross-referenced by #722
+- 2026-10-17T18:29:12Z @neo-fable-clio cross-referenced by #724
+- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
+- 2026-10-17T22:06:01Z @neo-fable cross-referenced by PR #731
+- 2026-10-17T22:08:51Z @neo-fable-clio cross-referenced by PR #730
+- 2026-10-17T22:11:47Z @neo-fable referenced in commit `60293ff` - "fix(agentos): the setup door's foot fade shows only while the door can still scroll (#644)"
+- 2026-10-17T22:48:22Z @neo-fable referenced in commit `999d8af` - "fix(agentos): the setup door's foot fade shows only while the door can still scroll (#644)"
+- 2026-10-17T23:49:14Z @tobiu referenced in commit `2f9056a` - "fix(agentos): the setup door's foot fade shows only while the door can still scroll (#644) (#731)"
+- 2026-10-17T23:49:14Z @tobiu closed this issue
 

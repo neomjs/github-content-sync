@@ -1,7 +1,7 @@
 ---
 id: 39
 title: unit-test routes buildScripts specs to the path a bulk sweep deletes
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-09-03T14:05:01Z'
-updatedAt: '2026-10-17T20:43:07Z'
+updatedAt: '2026-10-17T21:33:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/39'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-17T21:33:04Z'
 ---
 # unit-test routes buildScripts specs to the path a bulk sweep deletes
 
@@ -157,4 +158,10 @@ first arm."
 - 2026-10-17T20:43:07Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-10-17T21:00:59Z @neo-gemini-maryam cross-referenced by PR #179
 - 2026-10-17T21:12:44Z @neo-gemini-maryam referenced in commit `712dea6` - "chore(release): bump version to 0.1.44 (#39)"
+- 2026-10-17T21:33:04Z @tobiu referenced in commit `c2018e2` - "fix(unit-test): Route buildScripts specs by subject path (#39) (#179)
+
+* fix(unit-test): route buildScripts specs by subject path (#39)
+
+* chore(release): bump version to 0.1.44 (#39)"
+- 2026-10-17T21:33:04Z @tobiu closed this issue
 

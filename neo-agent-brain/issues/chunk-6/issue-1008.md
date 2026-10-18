@@ -1,7 +1,7 @@
 ---
 id: 1008
 title: The open-work producer observes untouched outside PRs for the maintainer rotation
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-13T15:39:34Z'
-updatedAt: '2026-10-17T21:27:35Z'
+updatedAt: '2026-10-17T23:44:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1008'
 author: neo-opus-grace
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-17T23:44:38Z'
 ---
 # The open-work producer observes untouched outside PRs for the maintainer rotation
 
@@ -56,7 +57,7 @@ The seams below are @neo-gemini-pro's intake ledger ([6240821005](https://github
 
 | Target surface | Source of authority | Behavior | Fallback | Evidence |
 |---|---|---|---|---|
-| Outside-PR read and `runApproval` (`openWorkQueries.mjs`, `openWorkProducer.mjs`, `openWorkReducer.mjs`) | #427 AC-1/AC-3; GraphQL `CheckConclusionState` (`StatusState` has no `ACTION_REQUIRED`) | One search per repo per pulse: `is:pr is:open archived:false repo:<repo>` plus `-author:<seat>` for each registered seat (18 negated qualifiers, 449 characters, measured to return exactly the expected rows on 2026-10-17). Each row reads `authorAssociation`, `author.__typename` and the head commit's `checkSuites(last: 100) { pageInfo { hasNextPage } nodes { conclusion workflowRun { event } } }`. `runApproval: 'action_required'` when a suite whose event is not `pull_request_review` concludes `ACTION_REQUIRED`. | Truncated `checkSuites` → `row.partial`. A failed outside read → pulse coverage `partial`; carried outside rows are kept. | unit: producer, reducer |
+| Outside-PR read and `runApproval` (`openWorkQueries.mjs`, `openWorkProducer.mjs`, `openWorkReducer.mjs`) | #427 AC-1/AC-3; GraphQL `CheckConclusionState` (`StatusState` has no `ACTION_REQUIRED`) | One search per repo per pulse: `is:pr is:open archived:false repo:<repo>` plus `-author:<seat>` for each registered seat (18 negated qualifiers, 449 characters, measured to return exactly the expected rows on 2026-10-17). Each row reads `authorAssociation`, `author.__typename` and the head commit's `checkSuites(last: 100) { pageInfo { hasPreviousPage } nodes { conclusion workflowRun { event } } }`. `runApproval: 'action_required'` when a suite whose event is not `pull_request_review` concludes `ACTION_REQUIRED`. | Truncated `checkSuites` (`hasPreviousPage`, because a `last:` read misses the suites before its window; corrected from `hasNextPage` on 2026-10-17 after Euclid's live control) → `row.partial`. A failed outside read → pulse coverage `partial`; carried outside rows are kept. | unit: producer, reducer |
 | Outside holder kinds (`openWorkHolder.mjs`) | #761 Fix 1; #427 AC-1…AC-4 | A non-draft, non-bot row whose owner is outside and whose `authorAssociation` is not `OWNER`/`MEMBER`/`COLLABORATOR`, on a complete read: `runApproval === 'action_required'` → `{role: 'rotation', kind: 'approve-runs'}` (checked before `finished`); otherwise `finished && untouched` → `{role: 'rotation', kind: 'triage-outside'}`. | Partial read → `unknown`. Draft, bot, maintainer or touched without pending approval → `none`. | unit: holder |
 | Rotation seat and episode (`openWorkWakes.mjs`, `wireFleetOpenWorkWakes.mjs`) | Fix 2–3; AC-2 | The episode key is `[repo, number, head, 'rotation', kind]`, independent of the seat it resolves to, so a route change never wakes a second seat for one episode. The rotation picks the first reachable seat in `rotationSeats` (participating, non-benched, roster order), starting at a deterministic `(repo, number, head, kind)` hash offset. `reasonOf` names each kind. | No reachable seat → the episode stays `pending` and retries next pulse; escalation is #807's. | unit: wakes, wiring |
 | Switch-on gate (`wakeGateOf`) | #761 Fix 6 | The outside read's GraphQL cost counts against its executing reader's `(apiBase, viewer.id, resetAt)` bucket, inside the 20 % hourly share. The latest pulse must carry `outside.complete === true`. | A missing or failed outside read → the gate holds. | unit: wakes |
@@ -82,6 +83,7 @@ Live latest-open sweep: the latest 20 open Brain issues at 2026-10-13T15:39Z, pl
 handoff: @neo-gemini-pro, who ran the intake and offered to build it once the ledger was folded. #761's planner is on dev (closed 2026-10-13). I hold the design and will review.
 
 Retrieval Hint: "open-work producer outside contributor PR untouched rotation wake run approval"
+
 
 
 ## Timeline
@@ -142,4 +144,15 @@ Origin Session ID: 5a7abbb0-2c35-41f8-a7b0-c3f8d9bf07ef
 
 
 - 2026-10-17T21:27:36Z @neo-gemini-pro assigned to @neo-gemini-pro
+- 2026-10-17T21:53:57Z @neo-gemini-pro cross-referenced by PR #1089
+- 2026-10-17T22:46:34Z @neo-gemini-pro referenced in commit `cdd51f1` - "fix(fleet): enforce backward checkSuites completeness and trusted author gate (#1008)"
+- 2026-10-17T23:10:50Z @neo-gemini-pro referenced in commit `212500a` - "fix(fleet): preserve seat ownership for registered non-bot logins across repo associations (#1008)"
+- 2026-10-17T23:44:38Z @tobiu referenced in commit `54cd8fc` - "feat(fleet): add rotation wakes for untouched outside contributor PRs and run approvals (#1008) (#1089)
+
+* feat(fleet): add rotation wakes for untouched outside contributor PRs and run approvals (#1008)
+
+* fix(fleet): enforce backward checkSuites completeness and trusted author gate (#1008)
+
+* fix(fleet): preserve seat ownership for registered non-bot logins across repo associations (#1008)"
+- 2026-10-17T23:44:38Z @tobiu closed this issue
 
