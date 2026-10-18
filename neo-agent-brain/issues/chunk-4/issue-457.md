@@ -1,27 +1,29 @@
 ---
 id: 457
 title: The corpus emit path never asserts logical identity
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-09-24T13:59:23Z'
-updatedAt: '2026-09-24T13:59:23Z'
+updatedAt: '2026-10-18T03:11:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/457'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: 17416
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 3
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T03:11:04Z'
 ---
 # The corpus emit path never asserts logical identity
 
@@ -103,4 +105,29 @@ Authored by Grace (Claude Opus 5.5, Claude Code) 🖖
 - 2026-09-24T14:10:17Z @neo-opus-grace cross-referenced by #459
 - 2026-09-24T14:11:13Z @neo-opus-grace cross-referenced by #19158
 - 2026-09-24T14:12:02Z @neo-opus-grace cross-referenced by PR #19167
+- 2026-10-18T01:15:26Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-18T01:15:28Z
+
+## Ticket Intake Evaluation (`ticket-intake`)
+
+- **Gate 0 (Target-State Class):** `[TARGET_STATE_CLASS: RETIRE_AND_RELOCATE]` — Relocate `findLogicalIdentityCollisions` (and its archive-index helpers `listArchiveFamilies`, `buildLogicalIndex`) from `neo.mjs/buildScripts/util/check-content-logical-identity.mjs` into `ai/services/github-workflow/shared/contentInventory.mjs`, remove the cross-repo engine import from `SyncService.mjs`, and enforce logical-identity collision detection in `SyncService#emitConversationCorpus` over `aiConfig.issueSync.archiveRoot` scoped to the archive files written during the emit run.
+- **Parent Epic Check (§1.2):** Sub-issue of `neomjs/neo#17416` [QUARANTINED_URL: github.com], which has an independent `Epic Review` on record from `@neo-opus-vega` (`neomjs/neo#17416#issuecomment-5791980653` [QUARANTINED_URL: github.com]) and steward decision at `neomjs/neo#19158#issuecomment-5815399437` [QUARANTINED_URL: github.com].
+- **Stage 3 (Structural Pre-Flight & ADR-0019 / ADR-0004 Check):**
+  - Read `learn/agentos/decisions/0019-aiconfig-reactive-provider-ssot.md` and `neomjs/neo` `learn/agentos/decisions/0004-github-content-architecture.md` (§3.2.1).
+  - Co-locating `listArchiveFamilies`, `buildLogicalIndex`, and `findLogicalIdentityCollisions` (plus the archive write-tracking helpers `snapshotArchiveTree` / `collectWrittenArchiveTargets`) inside `ai/services/github-workflow/shared/contentInventory.mjs` avoids creating an extra single-purpose `.mjs` file in `shared/` where `contentInventory.mjs` already owns corpus inventory and integrity verdicts.
+  - `SyncService#emitConversationCorpus` reads `aiConfig.issueSync.archiveRoot` directly from the reactive `ConfigBase` formula (`data.issueSync.archiveRootOverride ?? path.resolve(data.issueSync.originRoot, 'archive')`).
+
+— Maryam (Gemini 4 Argon, Antigravity) · session `e180e579-3158-45b6-8e68-e64c9e04d9ae` 🧭
+
+- 2026-10-18T01:23:31Z @neo-gemini-maryam cross-referenced by PR #1093
+- 2026-10-18T02:13:04Z @neo-gemini-maryam referenced in commit `a2a9e57` - "chore(github-workflow): merge dev for configSnapshot seam (#457)"
+- 2026-10-18T02:13:05Z @neo-gemini-maryam referenced in commit `f3d486b` - "fix(github-workflow): isolate SyncService spec via configSnapshot and restore JSDoc (#457)"
+- 2026-10-18T03:00:23Z @neo-gemini-maryam cross-referenced by PR #1100
+- 2026-10-18T03:11:04Z @tobiu referenced in commit `1d2571c` - "fix(github-workflow): assert logical identity in emitConversationCorpus (#457) (#1093)
+
+* fix(github-workflow): assert logical identity in emitConversationCorpus (#457)
+
+* fix(github-workflow): isolate SyncService spec via configSnapshot and restore JSDoc (#457)"
+- 2026-10-18T03:11:05Z @tobiu closed this issue
+- 2026-10-18T03:51:59Z @neo-opus-grace cross-referenced by #1101
 

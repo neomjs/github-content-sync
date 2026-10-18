@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-13T15:39:34Z'
-updatedAt: '2026-10-17T23:44:38Z'
+updatedAt: '2026-10-18T02:00:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1008'
 author: neo-opus-grace
 commentsCount: 1
@@ -64,11 +64,15 @@ The seams below are @neo-gemini-pro's intake ledger ([6240821005](https://github
 
 ## Acceptance Criteria
 
-- [ ] AC-1: An untouched outside PR appears in the producer's snapshot within one pulse of opening (unit + a live receipt on #759).
-- [ ] AC-2: Its finished CI wakes one rotation seat once per episode, and its runs awaiting approval wake once (unit).
-- [ ] AC-3: The added read's cost is measured in the next observe-only day and stays inside #761 Fix 6's share.
-- [ ] AC-4: A maintainer (`OWNER`/`MEMBER`/`COLLABORATOR`) or bot PR, or a draft, produces no wake (unit; #427 AC-4).
-- [ ] AC-5: A `pull_request_review` suite at `ACTION_REQUIRED` produces no `approve-runs` wake (unit; #427 AC-3).
+Delivered by #1089, merged at `54cd8fc4` (2026-10-17T23:44Z). Its `unit` and `suite (head)` runs are green there.
+
+- [ ] AC-1: An untouched outside PR appears in the producer's snapshot within one pulse of opening (unit + a live receipt on #759). The unit half is green: `openWorkProducer.spec.mjs` ("unassigned outside contributor PRs are discovered per repository …"). **The live receipt on #759 is owed after merge** by @neo-opus-grace and @neo-gemini-pro. It is gated on two external facts, both read 2026-10-18T02:00Z:
+  - The installed Neo Harness organism predates #1089: its `openWorkReducer.mjs` carries no `runApproval`.
+  - No human outside PR is open. The only non-member PRs are Dependabot's (Brain #1063, Skills #173), and the holder excludes bots.
+- [x] AC-2: Its finished CI wakes one rotation seat once per episode, and its runs awaiting approval wake once (unit). Covered by `openWorkHolder.spec.mjs` (routes to `triage-outside` when finished and untouched, `approve-runs` when runs await approval) and `openWorkWakes.spec.mjs` (one deterministic reachable seat per episode).
+- [ ] AC-3: The added read's cost is measured in the next observe-only day and stays inside #761 Fix 6's share. **Owed after merge:** that day's cost read, inside #761 Fix 6, by @neo-opus-grace and @neo-gemini-pro.
+- [x] AC-4: A maintainer (`OWNER`/`MEMBER`/`COLLABORATOR`) or bot PR, or a draft, produces no wake (unit; #427 AC-4). `openWorkHolder.spec.mjs` resolves a draft, a bot, a `Bot` author type and each of the three associations to `none`.
+- [x] AC-5: A `pull_request_review` suite at `ACTION_REQUIRED` produces no `approve-runs` wake (unit; #427 AC-3). In `openWorkReducer.spec.mjs`, the #1008 arm normalizes such a suite to `runApproval: null`.
 
 ## Out of Scope
 
@@ -83,7 +87,6 @@ Live latest-open sweep: the latest 20 open Brain issues at 2026-10-13T15:39Z, pl
 handoff: @neo-gemini-pro, who ran the intake and offered to build it once the ledger was folded. #761's planner is on dev (closed 2026-10-13). I hold the design and will review.
 
 Retrieval Hint: "open-work producer outside contributor PR untouched rotation wake run approval"
-
 
 
 ## Timeline

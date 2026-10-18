@@ -1,16 +1,17 @@
 ---
 id: 126
 title: 'epic-create names an epic''s size: around 25 subs, then a successor epic'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-09-30T12:42:40Z'
-updatedAt: '2026-09-30T12:42:40Z'
+updatedAt: '2026-10-18T03:33:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/126'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T03:33:24Z'
 ---
 # epic-create names an epic's size: around 25 subs, then a successor epic
 
@@ -71,4 +73,34 @@ Retrieval Hint: "epic size around 25 subs successor epic GitHub sub-issue cap 10
 
 - 2026-09-30T12:42:41Z @neo-fable-clio added the `enhancement` label
 - 2026-09-30T12:42:42Z @neo-fable-clio added the `ai` label
+- 2026-10-10T22:32:32Z @neo-fable-clio cross-referenced by #168
+### @neo-gemini-maryam - 2026-10-18T03:23:47Z
+
+## Ticket Intake & Contract Ledger (`#126`)
+
+### Intake Reality Classification (`ticket-intake §1.8`)
+- **Ticket age:** `createdAt: 2026-09-30T12:42:40Z`, `updatedAt: 2026-09-30T12:42:40Z`
+- **Bot stale-band:** `pre-stale` (no `stale` or `no auto close` label)
+- **Prescription checked:** `.agents/skills/epic-create/references/epic-create-workflow.md` (`Procedure 1`) and `.agents/skills/ticket-create/references/ticket-create-workflow.md` (`§10`) — owns the concern.
+- **Currency / successor-risk & existing-enforcement audit:** Verified `git log` on `.agents/skills/epic-create/` and `.agents/skills/ticket-create/`, `scripts/lint-skill-corpus.mjs`, and `AGENTS.md` — no existing rule bounds epic sub-issue count or checks parent sub count before `update_issue_relationship`. Verified `gh api repos/neomjs/neo-agent-institution/issues/10/sub_issues --paginate --jq length` returns `95` on the closed anchor epic (`neomjs/neo-agent-institution#10`).
+- **ADR successor-risk:** `none`
+- **Verdict:** `valid-as-written`
+
+### Contract Ledger Matrix (T3 — Agent-Consumed Skill Surface)
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `.agents/skills/epic-create/references/epic-create-workflow.md` (`Procedure 1`) | Operator ruling on `neomjs/neo-agent-institution#10` (`2026-09-30`) & `#126` | Adds a **Size** paragraph under `Procedure 1`: names `~25` subs as the working size of a checkable outcome, mandates counting parent subs before filing (`gh api repos/<r>/issues/N/sub_issues --paginate --jq length`), routes `> ~25` to a successor epic with its own `Terminal predicate:`, and names GitHub's native sub-issue cap of `100` (`POST /issues/{n}/sub_issues`) as the hard wall. | Saturated existing epics get the closeout treatment: cluster open subs into outcomes, file successor epics, re-parent open leaves, and resolve the saturated epic via `epic-resolution`. | Yes (`.agents/skills/epic-create/references/epic-create-workflow.md`) | `npm run lint -- --base origin/dev` + `npm test` |
+| `.agents/skills/ticket-create/references/ticket-create-workflow.md` (`§10`) | Operator ruling on `neomjs/neo-agent-institution#10` & `#126` | Adds a one-line pre-link check on the `update_issue_relationship(parent_id: N, child_id: M, type: 'SUB_ISSUE')` bullet: count the parent's subs first (`gh api repos/<r>/issues/N/sub_issues --paginate --jq length`); past `~25`, file or link to a successor epic (`epic-create` Procedure 1). | Keeps `ticket-create-workflow.md` within its `25,000`-byte `perFilePayloadBudget` (`24,701` → `< 25,000` bytes); net corpus growth `> 250` bytes carries `[skill-growth-justified: ...]`. | Yes (`.agents/skills/ticket-create/references/ticket-create-workflow.md`) | `npm run lint -- --base origin/dev` + `npm test` |
+
+*Authored by Maryam (Gemini 4 Argon, Antigravity). Session `e180e579-3158-45b6-8e68-e64c9e04d9ae`.* 🧭
+
+- 2026-10-18T03:23:49Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-18T03:28:08Z @neo-gemini-maryam cross-referenced by PR #186
+- 2026-10-18T03:33:24Z @tobiu referenced in commit `696b74a` - "docs(epic-create,ticket-create): name epic working size (~25 subs) and successor path (#126) (#186)
+
+Adds the Size paragraph under epic-create Procedure 1 (~25 working size, gh api sub_issues count, successor-epic path, GitHub 100-sub hard wall) and the count-before-link check in ticket-create §10.
+
+[skill-growth-justified: operator ruling on neomjs/neo-agent-institution#10 (2026-09-30) and the 100-sub closeout wall]"
+- 2026-10-18T03:33:24Z @tobiu closed this issue
 

@@ -1,18 +1,19 @@
 ---
 id: 12
 title: Load-bearing public counts carry publish-safe instrument receipts — the instrument audit becomes author-side symmetric
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
   - ai
   - model-experience
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-08-22T00:37:56Z'
-updatedAt: '2026-08-27T11:33:51Z'
+updatedAt: '2026-10-18T04:25:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/12'
 author: neo-fable-clio
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T04:25:23Z'
 ---
 # Load-bearing public counts carry publish-safe instrument receipts — the instrument audit becomes author-side symmetric
 
@@ -169,4 +171,43 @@ Triaged per the `ticket-triage` skill. Applied: `enhancement`, `ai`, `model-expe
 📜 Clio (@neo-fable-clio) · Session 8947f450-e0c3-424b-8aa1-1e52ea33c03f
 
 - 2026-08-27T11:34:49Z @neo-gpt-emmy cross-referenced by #17784
+### @neo-gemini-maryam - 2026-10-18T03:47:01Z
+
+## Pre-Implementation Gate: ADR 0007/0008 Alignment & T3 Contract Ledger
+
+`ADR successor-risk: adr-aligned — artifact neomjs/neo-agent-skills#12/2026-08-22; ADR 0007 (Accepted 2026-05-15) & ADR 0008 (Proposed 2026-05-15); evidence neomjs/neo:learn/agentos/decisions/0007-agents-md-compaction-taxonomy.md & 0008-skill-anatomy-and-authoring-contract.md; route continue.`
+
+`Decision Record impact: aligned-with ADR 0007, ADR 0008`
+
+- **ADR 0007 (3-Axis Slot Rule):**
+  - `.agents/skills/ticket-create/references/ticket-create-workflow.md` (`### 1a. The Content Sweep`): receives a single `compress-to-trigger` pointer (`DISCIPLINE-ONLY`), offset in-file so net file size does not grow (`<= 24,868 B`).
+  - `.agents/skills/pr-review/references/reviewer-instrument-audit.md`: conditional World-Atlas payload (`rewrite` to two-sided author + reviewer instrument audit; `DISCIPLINE-ONLY` until a future absence-claim SHA lint retires the Shape-2 half).
+- **ADR 0008 (SKILL.md Anatomy & Recursive Map/Atlas Contract):**
+  - Top-level `.agents/skills/*/SKILL.md` routers and `AGENTS.md` are untouched (`0 B` always-loaded delta). The workflow Map (`ticket-create-workflow.md`) routes via a one-line `<!-- trigger: ... -->` pointer to the conditional payload (`../../pr-review/references/reviewer-instrument-audit.md`).
+
+### Contract Ledger (T3 Explicit Matrix)
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `.agents/skills/ticket-create/references/ticket-create-workflow.md` (`§1a. The Content Sweep`) | `neomjs/neo-agent-skills#12` (AC-1, AC-3, AC-4), ADR 0007, ADR 0008 | Adds a single `<!-- trigger: ... -->` pointer in `§1a` routing authors making load-bearing population counts or absence claims (used to justify premise, scope, or acceptance) to `../../pr-review/references/reviewer-instrument-audit.md`. Paid for in-file so net byte size does not grow (`<= 24,868 B`). | Non-load-bearing routine receipts (`"latest 20 open issues checked"`), CI-linked test totals (`"4115 passed"`), dates, and enumerations whose producer is already named do NOT fire the trigger. | Yes (`ticket-create-workflow.md`) | `wc -c` (`<= 24,868 B`) + `node scripts/lint-skill-corpus.mjs --base origin/dev` |
+| `.agents/skills/pr-review/references/reviewer-instrument-audit.md` (Author-side receipt contract) | `neomjs/neo-agent-skills#12` (AC-1, AC-2) + `neomjs/neo#17532` (RA-4 unnamed-tree history) | Defines the role-triggered author-side obligation: qualifying load-bearing counts and absence claims carry a publish-safe instrument receipt naming (1) producer (command/tool/query), (2) exact tree/ref or external source, (3) scope/filter, and (4) a sampled match or stage-matched positive control. | A linked CI or API receipt that already carries producer + source + scope satisfies the contract in place of inline fields and is not duplicated inline. | Yes (`reviewer-instrument-audit.md`) | Direct inspection of `reviewer-instrument-audit.md` + worked positive/negative examples |
+| `.agents/skills/pr-review/references/reviewer-instrument-audit.md` (Publish-safety boundary) | `neomjs/neo-agent-skills#12` (AC-2, Avoided Traps) + `ticket-create-workflow.md §12` (`Substrate Awareness`) | Publish-safety outranks receipt literalism: the receipt names the instrument, never the operator's machine. Explicitly forbids **secrets, private identifiers, machine-local paths, and client context** in public receipts. | Commands with local paths or private arguments are normalized to repo-relative paths / canonical tool names before recording. | Yes (`reviewer-instrument-audit.md`) | Explicit four-item forbidden-content list in `reviewer-instrument-audit.md` |
+| `.agents/skills/pr-review/references/reviewer-instrument-audit.md` (Two-sided framing & empirical anchors) | `neomjs/neo-agent-skills#12` (AC-1, AC-4, AC-6) | Reframes the file to read coherently from both Author and Reviewer roles at its existing path (`.agents/skills/pr-review/references/reviewer-instrument-audit.md`), preserves Shape 1 and Shape 2, includes worked negative examples + the `neomjs/neo#17532` RA-4 unnamed-tree example, and cites the six-case series from `neomjs/neo-agent-skills#12` in one line. | File is not relocated or renamed, preserving `.agents/skills/pr-review/SKILL.md` line 9 and existing references. | Yes (`reviewer-instrument-audit.md`) | `node scripts/lint-skill-corpus.mjs --base origin/dev` + `npm test` |
+
+### Surface-Anchor V-B-A Receipts
+- Verified `.agents/skills/pr-review/references/reviewer-instrument-audit.md` at `origin/dev` (`696b74ac`, 94 lines, `7,935 B`) and its caller at `.agents/skills/pr-review/SKILL.md:9`.
+- Verified `.agents/skills/ticket-create/references/ticket-create-workflow.md` at `origin/dev` (`696b74ac`, 220 lines, `24,868 B` against `perFilePayloadBudget: 25000`); `§12` is `## 12. Substrate Awareness ("Assume No Private Memory")` (lines 207–220).
+
+Authored by Maryam (`@neo-gemini-maryam`, Gemini 4 Argon, Antigravity). Session `e180e579-3158-45b6-8e68-e64c9e04d9ae`. 🧭
+
+
+- 2026-10-18T03:47:04Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-18T03:59:44Z @neo-gemini-maryam cross-referenced by PR #187
+- 2026-10-18T04:14:50Z @neo-gemini-maryam referenced in commit `a0dde9f` - "docs(ticket-create): restore single-session optionality on Origin Session ID in §5 (#12)"
+- 2026-10-18T04:25:23Z @tobiu referenced in commit `9e5f31c` - "docs(pr-review,ticket-create): make instrument audit author-side symmetric with publish-safe receipts (#12) (#187)
+
+* docs(pr-review,ticket-create): make instrument audit author-side symmetric with publish-safe receipts (#12)
+
+* docs(ticket-create): restore single-session optionality on Origin Session ID in §5 (#12)"
+- 2026-10-18T04:25:24Z @tobiu closed this issue
 

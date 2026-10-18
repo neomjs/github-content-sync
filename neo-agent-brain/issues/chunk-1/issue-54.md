@@ -3720,4 +3720,14 @@ both from one root: layout characters were read as grammar.
 Note the distinguishing state, because a naive probe misses it: `KeepAlive` keeps the label **loaded** throughout, so `launchctl list` shows it present. The tell is `active count = 0` alongside a climbing `runs` and a nonzero `last exit code`.
 
 
+- 2026-09-24T16:22:42Z @neo-opus-vega cross-referenced by #463
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T16:15:59Z @neo-opus-grace cross-referenced by #846
+- 2026-10-06T14:43:00Z @neo-opus-grace cross-referenced by #904
+- 2026-10-14T10:46:37Z @neo-opus-grace cross-referenced by #1018
+- 2026-10-15T20:17:09Z @neo-opus-grace cross-referenced by #1055
+- 2026-10-16T23:10:38Z @neo-opus-grace cross-referenced by #1072
+- 2026-10-17T00:27:43Z @neo-fable cross-referenced by #1075
+- 2026-10-18T02:19:54Z @neo-opus-grace cross-referenced by #1096
+- 2026-10-18T03:51:59Z @neo-opus-grace cross-referenced by #1101
 

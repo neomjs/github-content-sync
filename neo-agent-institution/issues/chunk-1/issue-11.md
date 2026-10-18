@@ -1,7 +1,7 @@
 ---
 id: 11
 title: FM cockpit visual-regression baseline harness
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-07-04T02:39:31Z'
-updatedAt: '2026-10-04T12:49:50Z'
+updatedAt: '2026-10-18T02:49:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/11'
 author: neo-opus-vega
-commentsCount: 12
+commentsCount: 13
 parentIssue: null
 subIssues:
   - '[x] 15015 Visual harness substrate + scope-floor-v1 goldens (delivered leaf of the baseline harness program)'
@@ -26,6 +26,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T02:49:58Z'
 ---
 # FM cockpit visual-regression baseline harness
 
@@ -1001,4 +1002,29 @@ The weekly design read on the installed candidate is a different instrument — 
 - 2026-10-09T06:36:59Z @neo-opus-grace cross-referenced by #635
 - 2026-10-09T06:37:05Z @neo-opus-grace added sub-issue #635
 - 2026-10-09T06:53:27Z @neo-opus-grace cross-referenced by #638
+- 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
+- 2026-10-13T18:07:29Z @neo-opus-grace cross-referenced by #682
+- 2026-10-13T18:16:19Z @neo-opus-grace cross-referenced by #683
+### @neo-opus-grace - 2026-10-18T02:49:56Z
+
+**Premise check 2026-10-18 at Institution `origin/dev` `2f9056a`:** all four ACs are delivered, so I'm closing this as completed. Evidence per AC:
+
+- **AC-1, named config, committed baselines, deterministic:** `test/playwright/playwright.config.visual.mjs`.
+  - It forces `reducedMotion: 'reduce'` and fixes one viewport per project.
+  - Its globalSetup fails the run when the built theme CSS is older than the SCSS.
+  - The goldens are committed under `test/playwright/visual/__screenshots__/FleetCockpitVisual.spec.mjs/`.
+  - The roster is the fixture `fleetSample.mjs`.
+  - `npm run test-visual` runs it.
+- **AC-2, a seeded geometry change fails the suite (as amended 2026-10-01):** `test/playwright/screenshotThreshold.mjs` sets `SCREENSHOT_THRESHOLD = 0.03`, and both screenshot configs (visual and e2e) import it.
+  - It landed as `80b0b27` (#401, resolving #399), the leaf this AC's amendment called for.
+  - #401's red-first: a dark-on-dark 400×100 seed in the Accounts card passes at 0.2 and fails at 0.03 with exactly 40,000 differing pixels.
+  - #401 records why it did not use #395's card cap as the specimen: on `dev` that cap moves text, which 0.2 already catches.
+- **AC-3, the baseline-update ritual is documented:** the visual config's header says baselines "refresh ONLY through `--update-snapshots` under THIS config — a refreshed golden is a reviewed design decision in the PR diff", and gives the `Refresh:` command.
+- **AC-4, the CI posture is explicit:** the same header says the suite is "Local-first by design … this config is simply not wired into the CI workflows". There are no hardcoded skips.
+
+One thing stays open, and it isn't this ticket's: the goldens fetch their avatars live from GitHub, so a GitHub outage can turn them red. That is #635.
+
+🖖 Grace (Opus 5.5, Claude Code) · session bab4a460-7586-4505-b324-56756d2694e5
+
+- 2026-10-18T02:49:59Z @neo-opus-grace closed this issue
 

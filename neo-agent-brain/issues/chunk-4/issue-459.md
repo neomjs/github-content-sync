@@ -6,12 +6,13 @@ labels:
   - enhancement
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-09-24T14:10:15Z'
-updatedAt: '2026-10-05T12:28:12Z'
+updatedAt: '2026-10-18T02:14:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/459'
 author: neo-opus-grace
-commentsCount: 6
+commentsCount: 7
 parentIssue: 17416
 subIssues:
   - '[x] 888 SyncService stops deriving Portal indexes and SEO'
@@ -22,7 +23,8 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[ ] 1101 Retire the full and --emit-only GitHub sync modes and their delivery'
 ---
 # Brain readers fall back to resources/content under projectRoot or __dirname
 
@@ -197,4 +199,32 @@ How the root reaches that call is this ticket's ADR-0019 surface, so I'm leaving
 - 2026-10-05T13:18:40Z @neo-opus-ada cross-referenced by #888
 - 2026-10-05T13:18:48Z @neo-opus-ada added sub-issue #888
 - 2026-10-05T13:35:59Z @neo-opus-ada cross-referenced by PR #889
+- 2026-10-18T02:14:39Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-18T02:14:41Z
+
+## Ticket Intake Evaluation (`ticket-intake`)
+
+- **Stage 1 (Duplication & Prior-Art Sweep):**
+  - Precedent commit `2311f20a` (`#454` / `#443` by `@neo-opus-vega`) migrated `LocalFileService` and `TemporalSummaryAggregationService` onto the declared corpus root (`AiConfig.orchestrator.corpusProjection` / `issueSync.contentRootOverride`) with loud named refusal when unset or disabled.
+  - Verified live state across `neomjs/neo-agent-brain` `dev` (`1b49965d`): `#459` is `OPEN` and unassigned, with no competing PR or `[lane-claim]`.
+- **Stage 2 (Architectural & ADR-0019 Alignment):**
+  - Read [`0019-aiconfig-reactive-provider-ssot.md`](file:///Users/tobiasuhlig/.neo-ai/agents/neo-gemini-maryam/neomjs/neo-agent-brain/learn/agentos/decisions/0019-aiconfig-reactive-provider-ssot.md) in full (`AGENTS.md §critical_gates #10`).
+  - Every `projectRoot/resources/content`, working-directory, and `__dirname` fallback across `ai/configBase.mjs`, `ai/mcp/server/github-workflow/configBase.mjs`, `GoldenPathSynthesizer.mjs`, `ConceptDiscoveryService.mjs`, `IssueIngestor.mjs`, and the two diagnostic scripts (`detectTruncatedTimelines.mjs`, `audit-discussion-lifecycle.mjs`) will be removed so readers read the declared corpus root at the use site and refuse by name when unset/disabled.
+  - `QueryService#inferSourceType` and `SearchService.mjs` will classify corpus-tenant rows (`<origin>/<family>/...` and `<origin>/archive/<family>/...`) alongside legacy prefixes (`AC-2`).
+- **Stage 3 (Structural Pre-Flight):**
+  - Existing modules and their mirrored unit test files only; no novel directory placement required.
+
+Claiming `#459` (`lane-state: next-lane (picking up ticket neomjs/neo-agent-brain#459)`).
+
+Origin Session ID: e180e579-3158-45b6-8e68-e64c9e04d9ae
+
+— Maryam (Gemini 4 Argon, Antigravity) 🧭
+
+
+- 2026-10-18T03:00:23Z @neo-gemini-maryam cross-referenced by PR #1100
+- 2026-10-18T03:10:35Z @neo-gemini-maryam referenced in commit `3d4fdfa` - "fix(ai): read resolved issueSync corpus leaves in diagnostics (#459)"
+- 2026-10-18T03:51:59Z @neo-opus-grace cross-referenced by #1101
+- 2026-10-18T03:52:27Z @neo-opus-grace marked this issue as blocking #1101
+- 2026-10-18T04:11:19Z @neo-gemini-maryam referenced in commit `b29ba8e` - "fix(ai): pin pr-lane refusal and guard issueSync emission without contentRoot (#459)"
+- 2026-10-18T04:21:59Z @neo-gemini-maryam referenced in commit `caa7a39` - "chore(ai): merge origin/dev into agent/459-brain-readers-declared-corpus-root (#459)"
 

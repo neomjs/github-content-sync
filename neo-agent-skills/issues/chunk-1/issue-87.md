@@ -1,18 +1,19 @@
 ---
 id: 87
 title: 'session-sunset Step 1 runs a script the repo split moved, so every sunset outside the Brain errors'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - regression
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-09-17T20:19:43Z'
-updatedAt: '2026-09-17T20:23:58Z'
+updatedAt: '2026-10-18T00:51:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/87'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T00:51:06Z'
 ---
 # session-sunset Step 1 runs a script the repo split moved, so every sunset outside the Brain errors
 
@@ -124,5 +126,33 @@ Retrieval Hint: "session-sunset migrate-config initServerConfigs missing after r
 
 ## Timeline
 
+- 2026-09-17T20:19:45Z @neo-opus-vega added the `bug` label
+- 2026-09-17T20:19:45Z @neo-opus-vega added the `ai` label
+- 2026-09-17T20:19:45Z @neo-opus-vega added the `regression` label
+- 2026-09-17T20:19:46Z @neo-opus-vega added the `agent-os` label
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
+- 2026-09-23T11:02:37Z @neo-opus-vega cross-referenced by #105
+- 2026-10-18T00:37:30Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-18T00:37:32Z
+
+## Ticket Intake & Contract Ledger
+
+Claiming `neomjs/neo-agent-skills#87` after V-B-A across `.agents/skills/session-sunset/references/session-sunset-workflow.md`.
+
+### Sharpening Note (Step 1 Primary-Checkout Staleness Probe)
+In addition to the unconditional `node ai/scripts/setup/initServerConfigs.mjs --migrate-config` call in **Step 1 (Primary-Clone Self-Refresh)** at line 65, the **Primary-Checkout Staleness Probe (When Running Inside a Linked Worktree)** at line 102 also instructs the operator to run `node <PRIMARY_ROOT>/ai/scripts/setup/initServerConfigs.mjs --migrate-config` after pulling `<PRIMARY_ROOT>`. Post-split (`neomjs/neo#17791`), both the script and the Agent OS daemons (`orchestrator-daemon`, `wake-daemon`, `DreamService`, KB sync pipeline) live only in `neomjs/neo-agent-brain`, so this PR updates all three Step 1 touchpoints (line 65 bash snippet, line 73 Substrate Accretion Defense note, and line 102 linked-worktree operator hint).
+
+### Contract Ledger
+| Surface | Change | Consumer / Verification |
+|---|---|---|
+| `.agents/skills/session-sunset/references/session-sunset-workflow.md` (Step 1 Primary-Clone Self-Refresh, line 65) | Guard `node ai/scripts/setup/initServerConfigs.mjs --migrate-config` with `if [ -f ai/scripts/setup/initServerConfigs.mjs ]; then ... fi` | Completes cleanly without error in `neomjs/neo` (and the 4 other non-Brain repos) while still executing the reconcile in `neomjs/neo-agent-brain` |
+| `.agents/skills/session-sunset/references/session-sunset-workflow.md` (Step 1 Substrate Accretion Defense note, line 73) | Clarify that the `--migrate-config` reconcile is `neo-agent-brain`-scoped (where `ai/` and `config.template.mjs` live post-split) and the `[ -f ... ]` guard is repo-topology scoping rather than the retirement condition | Preserves explicit retirement criteria (auto-reconcile on MCP server boot or retiring local `ai/config.mjs` overlays) |
+| `.agents/skills/session-sunset/references/session-sunset-workflow.md` (Step 1 Primary-Checkout Staleness Probe, line 102) | Scope the linked-worktree `<PRIMARY_ROOT>/ai/scripts/setup/initServerConfigs.mjs --migrate-config` reminder to `neo-agent-brain` checkouts | Prevents false operator instructions when sunsetting from a linked worktree in non-Brain repos |
+| `package.json` & `package-lock.json` | Bump version `0.1.45` → `0.1.46` | `node scripts/check-version-bump.mjs --base origin/dev` + `npm test` |
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session e180e579-3158-45b6-8e68-e64c9e04d9ae.
+
+- 2026-10-18T00:40:52Z @neo-gemini-maryam cross-referenced by PR #184
+- 2026-10-18T00:51:06Z @tobiu referenced in commit `457343e` - "fix(session-sunset): guard Step 1 migrate-config for post-split repos (#87) (#184)"
+- 2026-10-18T00:51:07Z @tobiu closed this issue
 

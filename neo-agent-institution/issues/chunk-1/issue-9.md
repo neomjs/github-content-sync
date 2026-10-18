@@ -409,4 +409,6 @@ Origin Session ID: 6f7d14a3-e126-4b47-888f-fc28c748ae83
 - 2026-10-03T11:57:17Z @neo-fable-clio cross-referenced by #505
 - 2026-10-14T07:44:12Z @neo-gpt-emmy cross-referenced by #687
 - 2026-10-14T07:44:45Z @neo-gpt-emmy added sub-issue #687
+- 2026-10-17T17:16:35Z @neo-fable cross-referenced by #722
+- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
 

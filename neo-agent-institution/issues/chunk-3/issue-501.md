@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T11:12:51Z'
-updatedAt: '2026-10-03T18:16:59Z'
+updatedAt: '2026-10-18T02:45:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/501'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: 391
 subIssues: []
 subIssuesCompleted: 0
@@ -51,10 +51,10 @@ A seat's held pull requests are the one status the operator asks for most when a
 
 ## Acceptance Criteria
 
-- [ ] AC-1 Unit arm: a seat holding three rows (one red head as author, one changes-requested as author, one review-due as reviewer) renders three rows worst-first with the resolver's words; the pane's freshness pill reads from the read's `observedAt`.
-- [ ] AC-2 Unit arm: zero held rows renders the empty sentence; an unanswered read renders the `not observed` sentence; neither renders a list.
-- [ ] AC-3 Unit arm: a stale read keeps the rows and carries the age; the pane never shows `source not wired` once the read exists.
-- [ ] AC-4 The words are produced by `OpenWorkSeat` (one resolver), covered by the resolver's own unit arm; CARD-CONTRACT's open-work row gains one sentence pointing at the pane.
+- [x] AC-1 Unit arm: a seat holding three rows (one red head as author, one changes-requested as author, one review-due as reviewer) renders three rows worst-first with the resolver's words; the pane's freshness pill reads from the read's `observedAt`.
+- [x] AC-2 Unit arm: zero held rows renders the empty sentence; an unanswered read renders the `not observed` sentence; neither renders a list.
+- [x] AC-3 Unit arm: a stale read keeps the rows and carries the age; the pane never shows `source not wired` once the read exists.
+- [x] AC-4 The words are produced by `OpenWorkSeat` (one resolver), covered by the resolver's own unit arm; CARD-CONTRACT's open-work row gains one sentence pointing at the pane.
 - [ ] AC-5 (post-merge, installed) On the next #12 cut, selecting a seat whose card shows an open-work chip lists the same count of rows in the detail; one screenshot receipt on this ticket.
 
 ## Out of Scope
@@ -82,6 +82,7 @@ Retrieval Hint: "Agent Detail Pull requests pane reads open work rows worst firs
 Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
+
 
 ## Timeline
 
@@ -168,4 +169,20 @@ pane renders it between the reference and the line only when it exists.
   re-aging, the Store's records and order, the idle detail without a list,
   and the classifier's stale flag."
 - 2026-10-03T18:16:59Z @tobiu closed this issue
+- 2026-10-04T20:22:23Z @neo-gpt cross-referenced by PR #560
+- 2026-10-09T06:16:36Z @neo-fable-clio cross-referenced by #632
+- 2026-10-13T19:26:28Z @neo-fable-clio cross-referenced by PR #685
+- 2026-10-16T20:20:35Z @neo-fable cross-referenced by #391
+### @neo-opus-ada - 2026-10-18T02:45:26Z
+
+AC-1 to AC-4 are ticked, verified against #511's merge `4b02d945d5` on `dev`. Each is backed by a named unit arm or a contract row:
+- AC-1: `container.spec.mjs` › `three held rows render worst first in the resolver's words through the list's Store, and the pill reads the read's observation (AC-1)`.
+- AC-2: `… nothing held renders the empty sentence, an unanswered read renders no list and says so on the pill (AC-2)`.
+- AC-3: `… a stale read keeps its rows and carries its age; an answer never reads as source not wired (AC-3)`.
+- AC-4: `OpenWorkSeat.held` / `describeRow` carry their own arms in `openWorkSeat.spec.mjs`, and the `CARD-CONTRACT.md` open-work row points at the Pull requests pane through `openWorkHeld`.
+
+AC-5 stays open. It needs the installed receipt: a seat with an open-work chip, its detail rows counted against the chip. Per Mnemosyne's note on #391, that read works on the current installed bundle (`afabdef6` carries #511), and #391's next sitting will take it if nobody takes it first.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

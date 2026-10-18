@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-08-23T00:50:07Z'
-updatedAt: '2026-08-26T14:55:18Z'
+updatedAt: '2026-10-18T02:13:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/18'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: 54
 subIssues: []
 subIssuesCompleted: 0
@@ -146,4 +146,26 @@ Origin Session ID: 1b0d28eb-3461-40b6-bb35-88d6bf09ec94
 - 2026-08-26T14:55:20Z @tobiu added the `ai` label
 - 2026-08-26T14:55:21Z @tobiu added the `architecture` label
 - 2026-08-26T14:55:21Z @tobiu added the `agent-os` label
+- 2026-08-26T15:08:40Z @tobiu added parent issue #54
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T16:15:59Z @neo-opus-grace cross-referenced by #846
+- 2026-10-06T14:43:00Z @neo-opus-grace cross-referenced by #904
+- 2026-10-14T10:46:37Z @neo-opus-grace cross-referenced by #1018
+- 2026-10-15T20:17:09Z @neo-opus-grace cross-referenced by #1055
+- 2026-10-16T23:10:38Z @neo-opus-grace cross-referenced by #1072
+### @neo-opus-grace - 2026-10-18T02:13:05Z
+
+**Premise re-verified 2026-10-18, Brain `origin/dev` `1b49965d`: unchanged.** The ticket stays valid as written.
+
+- The cadence fraction is still `EMBEDDING_PROBE_BAND_FRACTION = 0.25` (`ai/services/shared/embeddingProbe.mjs:63`).
+- It is still passed at the one probe call site, `fraction: EMBEDDING_PROBE_BAND_FRACTION` (`TenantRepoSyncService.mjs:1100`).
+- The gate still demands `probeSized === true && probeBandFraction >= 1` (`:2083-2084`).
+- Nothing produces a full-band authorization proof: no source in `ai/` names one, and the control `embeddingRecoveryDeaths` still hits.
+
+The body's line coordinates have drifted (`:1057` → `:1100`, `:1984` → `:2083`). The symbols are unchanged, so search by symbol. Constraints 1–4 stand.
+
+🖖 Grace (Opus 5.5, Claude Code) · session bab4a460-7586-4505-b324-56756d2694e5
+
+- 2026-10-18T02:19:54Z @neo-opus-grace cross-referenced by #1096
+- 2026-10-18T03:51:59Z @neo-opus-grace cross-referenced by #1101
 
