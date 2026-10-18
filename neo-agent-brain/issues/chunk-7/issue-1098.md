@@ -1,7 +1,7 @@
 ---
 id: 1098
 title: Convert RemDigestion and github-workflow B4 shared-config test writes
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-18T02:34:45Z'
-updatedAt: '2026-10-18T04:09:31Z'
+updatedAt: '2026-10-18T05:24:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1098'
 author: neo-gemini-pro
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T05:24:11Z'
 ---
 # Convert RemDigestion and github-workflow B4 shared-config test writes
 
@@ -48,12 +49,12 @@ Within the `443` remaining B4 shared-config writes across `45` test files, `RemD
 
 - `ai/services/shared/configSnapshot.mjs` (`cloneConfigSubtree`, `validateConfigSnapshot`) and `ai/services/shared/serviceProxy.mjs` (`makeSafe` `set` trap forwarding) already provide the canonical ADR-0019 §4 B4 test-isolation seam.
 - `RemDigestion` (`src/evolution/RemDigestion.mjs`) delegates graph analysis to `GapInferenceEngine` (`ai/services/graph/GapInferenceEngine.mjs`), `SemanticGraphExtractor` (`ai/services/graph/SemanticGraphExtractor.mjs`), and `TopologyInferenceEngine` (`ai/services/graph/TopologyInferenceEngine.mjs`); setting `RemDigestion.configSnapshot` must cascade the `aiConfig` snapshot to all three collaborators so tests configuring `RemDigestion` isolate the entire REM cycle.
-- `aiConfig.issueSync` (`ai/mcp/server/github-workflow/configBase.mjs`) defines `10` reactive path getters (`metadataBaseRoot`, `contentRoot`, `corpusLeaseFile`, `originRoot`, `issuesDir`, `archiveRoot`, `discussionsDir`, `pullsDir`, `metadataFile`, `releaseNotesDir`) derived from `contentRootOverride`, `repo`, and `*DirOverride`. A shared `ai/services/github-workflow/shared/configSnapshot.mjs` helper (`createGitHubWorkflowConfigSnapshot`, `validateGitHubWorkflowConfigSnapshot`) can preserve those live getter formulas on cloned snapshots so overriding `contentRootOverride` or `repo` in `createConfigSnapshot()` recomputes all derived paths deterministically.
+- `aiConfig.issueSync` (`ai/mcp/server/github-workflow/configBase.mjs`) defines `10` reactive path formulas (`metadataBaseRoot`, `contentRoot`, `corpusLeaseFile`, `originRoot`, `issuesDir`, `archiveRoot`, `discussionsDir`, `pullsDir`, `metadataFile`, `releaseNotesDir`) derived from `contentRootOverride`, `repo`, and `*DirOverride`. A shared `ai/services/github-workflow/shared/configSnapshot.mjs` helper (`createGitHubWorkflowConfigSnapshot`, `validateGitHubWorkflowConfigSnapshot`) applies overrides to an isolated `createConfigProxy(Neo.create(ConfigBase))` instance and calls `cloneConfigSubtree` so all derived paths come from the single `configBase.mjs` SSOT definition.
 
 ## The Fix
 
 1. Add `configSnapshot: null`, `beforeSetConfigSnapshot(value)` (via `validateConfigSnapshot`), `createConfigSnapshot(overrides = {})`, and `#getConfig()` to `RemDigestion` (`src/evolution/RemDigestion.mjs`, plus `#getEvolutionConfig()` and uniform collaborator cascade to `GapInferenceEngine`, `SemanticGraphExtractor`, and `TopologyInferenceEngine`) and to `GapInferenceEngine`, `SemanticGraphExtractor`, and `TopologyInferenceEngine`.
-2. Create `ai/services/github-workflow/shared/configSnapshot.mjs` (`createGitHubWorkflowConfigSnapshot`, `validateGitHubWorkflowConfigSnapshot`) and wire `configSnapshot`, `beforeSetConfigSnapshot`, `createConfigSnapshot(overrides = {})`, and `#getConfig()` into `LocalFileService`, `MetadataManager`, `ReleaseNotesSyncer`, `PullRequestSyncer`, `DiscussionSyncer`, and `IssueSyncer`.
+2. Create `ai/services/github-workflow/shared/configSnapshot.mjs` (`createGitHubWorkflowConfigSnapshot` applying overrides to an isolated `createConfigProxy(Neo.create(ConfigBase))` instance and cloning via `cloneConfigSubtree`, plus `validateGitHubWorkflowConfigSnapshot`) and wire `configSnapshot`, `beforeSetConfigSnapshot`, `createConfigSnapshot(overrides = {})`, and `#getConfig()` into `LocalFileService`, `MetadataManager`, `ReleaseNotesSyncer`, `PullRequestSyncer`, `DiscussionSyncer`, and `IssueSyncer`.
 3. Convert all `8` specs (`RemDigestion.spec.mjs`, `RemDigestion.executeRemCycle.spec.mjs`, `LocalFileService.spec.mjs`, `MetadataManager.spec.mjs`, `ReleaseNotesSyncer.spec.mjs`, `PullRequestSyncer.spec.mjs`, `DiscussionSyncer.spec.mjs`, `IssueSyncer.spec.mjs` — `101` writes total) to `createConfigSnapshot()` injection, add a `findSharedConfigMutations(source) === []` unit test to each spec, and run `node ai/scripts/lint/check-aiconfig-test-mutation.mjs --tighten-ceilings` to remove all `8` files from `ai/scripts/lint/shared-config-write-ceilings.json` (`45 -> 37` files, `443 -> 342` writes).
 
 ## Contract Ledger Matrix
@@ -62,7 +63,7 @@ Within the `443` remaining B4 shared-config writes across `45` test files, `RemD
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `RemDigestion.configSnapshot` / `RemDigestion.createConfigSnapshot(overrides)` (`src/evolution/RemDigestion.mjs`) | ADR-0019 §4 B4 (`0019-aiconfig-reactive-provider-ssot.md`) | Isolates `aiConfig` + `evolutionConfig` leaves per test and cascades the `aiConfig` snapshot to `GapInferenceEngine`, `SemanticGraphExtractor`, and `TopologyInferenceEngine` | `null` reads module-imported `AiConfig` and `EvolutionConfig` | JSDoc on `RemDigestion` | `RemDigestion.spec.mjs` + `RemDigestion.executeRemCycle.spec.mjs` |
 | `GapInferenceEngine` / `SemanticGraphExtractor` / `TopologyInferenceEngine` `configSnapshot` + `createConfigSnapshot(overrides)` (`ai/services/graph/*.mjs`) | ADR-0019 §4 B4 | Isolates `aiConfig` leaves (`data`, `remSleep`, `graphProvider`, `ollama`, `openAiCompatible`, `geminiApiKey`) per test | `null` reads module-imported `AiConfig` | JSDoc on each class | `RemDigestion.spec.mjs` + `RemDigestion.executeRemCycle.spec.mjs` |
-| `createGitHubWorkflowConfigSnapshot` / `validateGitHubWorkflowConfigSnapshot` (`ai/services/github-workflow/shared/configSnapshot.mjs`) + `configSnapshot` on `LocalFileService`, `MetadataManager`, `ReleaseNotesSyncer`, `PullRequestSyncer`, `DiscussionSyncer`, `IssueSyncer` | ADR-0019 §4 B4 | Clones `issueSync` and `pullRequest` subtrees while preserving reactive path getters (`contentRoot`, `issuesDir`, `discussionsDir`, `pullsDir`, `archiveRoot`, `metadataFile`, `releaseNotesDir`, `originRoot`, `metadataBaseRoot`, `corpusLeaseFile`) | `null` reads module-imported `aiConfig` | JSDoc on helper + 6 services | `6` `github-workflow` unit specs |
+| `createGitHubWorkflowConfigSnapshot` / `validateGitHubWorkflowConfigSnapshot` (`ai/services/github-workflow/shared/configSnapshot.mjs`) + `configSnapshot` on `LocalFileService`, `MetadataManager`, `ReleaseNotesSyncer`, `PullRequestSyncer`, `DiscussionSyncer`, `IssueSyncer` | ADR-0019 §4 B4 + `ai/mcp/server/github-workflow/configBase.mjs` | Applies overrides to an isolated `createConfigProxy(Neo.create(ConfigBase))` instance and clones `issueSync` and `pullRequest` subtrees via `cloneConfigSubtree` so all `issueSync` path formulas derive from the `configBase.mjs` SSOT | `null` reads module-imported `aiConfig` | JSDoc on helper + 6 services | `6` `github-workflow` unit specs |
 | `ai/scripts/lint/shared-config-write-ceilings.json` | `#1096` / PR `#1097` | Ratchets from `45` files (`443` writes) to `37` files (`342` writes across `104` leaves: `320` assignment, `22` `Object.assign`) | Per-file ceiling enforcement (`0` for unlisted specs) | `check-aiconfig-test-mutation.mjs` | `node ai/scripts/lint/check-aiconfig-test-mutation.mjs` |
 
 ## Decision Record impact
@@ -81,7 +82,7 @@ Within the `443` remaining B4 shared-config writes across `45` test files, `RemD
 ## Avoided Traps
 
 - **Adding per-leaf `*Fn_` seams:** Rejected per `#541`, `#1090`, and `#1091`; tests inject an isolated `configSnapshot` rather than proliferating per-leaf function hooks.
-- **Static value-copying of `aiConfig.issueSync` getters:** A plain `structuredClone` freezes `contentRoot` / `issuesDir` at clone time before `contentRootOverride` overrides are applied; `createGitHubWorkflowConfigSnapshot` re-attaches the reactive path getters so overrides recompute derived paths accurately.
+- **Re-declaring `aiConfig.issueSync` path formulas in the snapshot helper:** Copying the 10 path getters into `createGitHubWorkflowConfigSnapshot` creates a second formula SSOT that drifts when `configBase.mjs` changes (e.g. `#1100`); instead, apply overrides to a disposable `createConfigProxy(Neo.create(ConfigBase))` instance and `cloneConfigSubtree` it.
 
 ## Related
 
@@ -106,4 +107,18 @@ Retrieval Hint: "findSharedConfigMutations B4 RemDigestion github-workflow creat
 - 2026-10-18T04:09:31Z @neo-gemini-pro changed title from **Convert remaining Orchestrator, RemDigestion, and daemon B4 shared-config writes** to **Convert RemDigestion and github-workflow B4 shared-config test writes**
 - 2026-10-18T04:11:52Z @neo-gemini-pro cross-referenced by PR #1103
 - 2026-10-18T04:23:10Z @neo-gemini-pro referenced in commit `e9dfa73` - "feat(ai): preserve pullFilenamePrefix config access in PullRequestSyncer (#1098)"
+- 2026-10-18T04:52:34Z @neo-gemini-pro referenced in commit `f8e5eee` - "feat(ai): convert RemDigestion and github-workflow B4 test writes (#1098)"
+- 2026-10-18T04:52:34Z @neo-gemini-pro referenced in commit `53bf5d8` - "feat(ai): preserve pullFilenamePrefix config access in PullRequestSyncer (#1098)"
+- 2026-10-18T04:55:38Z @neo-gemini-pro referenced in commit `9c2b917` - "refactor(ai): derive github-workflow snapshot paths from ConfigBase SSOT (#1098)"
+- 2026-10-18T05:24:11Z @tobiu referenced in commit `7d5359b` - "feat(ai): convert RemDigestion and github-workflow B4 test writes (#1098) (#1103)
+
+* feat(ai): convert RemDigestion and github-workflow B4 test writes (#1098)
+
+* feat(ai): preserve pullFilenamePrefix config access in PullRequestSyncer (#1098)
+
+* refactor(ai): derive github-workflow snapshot paths from ConfigBase SSOT (#1098)"
+- 2026-10-18T05:24:11Z @tobiu closed this issue
+- 2026-10-18T05:53:46Z @neo-gemini-pro cross-referenced by #1115
+- 2026-10-18T06:05:13Z @neo-gemini-pro cross-referenced by PR #1116
+- 2026-10-18T09:03:04Z @neo-gemini-pro cross-referenced by PR #1135
 

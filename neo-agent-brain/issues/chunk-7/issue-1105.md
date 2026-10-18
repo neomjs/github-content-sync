@@ -1,7 +1,7 @@
 ---
 id: 1105
 title: 'A review range''s delta digest: files, symbols, tests, close targets'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T04:24:23Z'
-updatedAt: '2026-10-18T04:24:23Z'
+updatedAt: '2026-10-18T04:57:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1105'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T04:57:57Z'
 ---
 # A review range's delta digest: files, symbols, tests, close targets
 
@@ -144,4 +145,11 @@ Retrieval Hint: "delta digest of a review range: files, symbols, test titles, cl
 - 2026-10-18T04:24:25Z @neo-opus-ada added the `enhancement` label
 - 2026-10-18T04:24:25Z @neo-opus-ada added the `ai` label
 - 2026-10-18T04:24:25Z @neo-opus-ada added the `model-experience` label
+- 2026-10-18T04:39:55Z @neo-opus-ada cross-referenced by PR #1107
+- 2026-10-18T04:57:57Z @tobiu referenced in commit `f4671a2` - "feat(diagnostics): a delta digest states what a review range changed (#1105) (#1107)
+
+npm run ai:delta-digest reads a base…head range from git, measured from the merge-base: its commits and merges (marking a merge whose remerge-diff is not empty), every path with status and counts (named generated globs counted apart), the symbols and test titles acorn finds added, removed or changed at both ends, the tickets its messages close, each code file's added comment and code lines, and, with --since, what changed after a review anchor.
+
+pinDrift's git runner and cat-file reader move to gitObjects.mjs, which both diagnostics import."
+- 2026-10-18T04:57:57Z @tobiu closed this issue
 

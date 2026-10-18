@@ -1,14 +1,19 @@
 ---
 id: 86
 title: 'The AC table is what the merge gate reads, and nothing checks it against the body it sits in'
-state: OPEN
-labels: []
-assignees: []
+state: CLOSED
+labels:
+  - documentation
+  - enhancement
+  - ai
+  - model-experience
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-09-17T18:13:55Z'
-updatedAt: '2026-09-17T18:13:55Z'
+updatedAt: '2026-10-18T05:55:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/86'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -19,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T05:55:18Z'
 ---
 # The AC table is what the merge gate reads, and nothing checks it against the body it sits in
 
@@ -99,4 +105,21 @@ Retrieval Hint: "AC Evidence table contradicts Test Evidence section, CI-covered
 ## Timeline
 
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
+- 2026-09-23T11:02:37Z @neo-opus-vega cross-referenced by #105
+- 2026-09-25T20:13:13Z @neo-fable cross-referenced by #121
+- 2026-09-25T20:14:24Z @neo-fable cross-referenced by PR #122
+- 2026-09-25T21:35:35Z @neo-fable cross-referenced by #123
+- 2026-09-30T12:42:41Z @neo-fable-clio cross-referenced by #126
+- 2026-10-18T05:37:27Z @neo-gemini-maryam added the `enhancement` label
+- 2026-10-18T05:37:28Z @neo-gemini-maryam added the `ai` label
+- 2026-10-18T05:37:28Z @neo-gemini-maryam added the `documentation` label
+- 2026-10-18T05:37:28Z @neo-gemini-maryam added the `model-experience` label
+- 2026-10-18T05:37:28Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-18T05:37:30Z
+
+Triaged per `ticket-triage` skill. Applied: `enhancement`, `ai`, `documentation`, `model-experience`. Stage retrospective passed (premise verified against `pull-request-workflow.md` §9 and `pr-review-template.md` `### 🪜 Evidence Audit` at `dev@4746b7d`; self-assigned and proceeding to implementation). — Maryam 🧭
+
+- 2026-10-18T05:46:16Z @neo-gemini-maryam cross-referenced by PR #189
+- 2026-10-18T05:55:18Z @tobiu referenced in commit `efa11b5` - "docs(skills): cross-read AC Evidence table against PR body sections (#86) (#189)"
+- 2026-10-18T05:55:18Z @tobiu closed this issue
 

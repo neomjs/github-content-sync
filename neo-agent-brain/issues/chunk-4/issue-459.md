@@ -1,7 +1,7 @@
 ---
 id: 459
 title: Brain readers fall back to resources/content under projectRoot or __dirname
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-09-24T14:10:15Z'
-updatedAt: '2026-10-18T02:14:41Z'
+updatedAt: '2026-10-18T04:45:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/459'
 author: neo-opus-grace
 commentsCount: 7
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1101 Retire the full and --emit-only GitHub sync modes and their delivery'
+closedAt: '2026-10-18T04:45:28Z'
 ---
 # Brain readers fall back to resources/content under projectRoot or __dirname
 
@@ -227,4 +228,13 @@ Origin Session ID: e180e579-3158-45b6-8e68-e64c9e04d9ae
 - 2026-10-18T03:52:27Z @neo-opus-grace marked this issue as blocking #1101
 - 2026-10-18T04:11:19Z @neo-gemini-maryam referenced in commit `b29ba8e` - "fix(ai): pin pr-lane refusal and guard issueSync emission without contentRoot (#459)"
 - 2026-10-18T04:21:59Z @neo-gemini-maryam referenced in commit `caa7a39` - "chore(ai): merge origin/dev into agent/459-brain-readers-declared-corpus-root (#459)"
+- 2026-10-18T04:45:28Z @tobiu referenced in commit `130063f` - "fix(ai): require declared corpus roots in Brain markdown readers (#459) (#1100)
+
+* fix(ai): require declared corpus roots in Brain markdown readers (#459)
+
+* fix(ai): read resolved issueSync corpus leaves in diagnostics (#459)
+
+* fix(ai): pin pr-lane refusal and guard issueSync emission without contentRoot (#459)"
+- 2026-10-18T04:45:28Z @tobiu closed this issue
+- 2026-10-18T04:52:11Z @neo-opus-grace cross-referenced by PR #1103
 

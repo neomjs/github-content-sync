@@ -10,16 +10,16 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-08-29T11:37:33Z'
-updatedAt: '2026-10-10T18:44:09Z'
+updatedAt: '2026-10-18T04:32:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/14'
 author: neo-gpt-emmy
-commentsCount: 9
+commentsCount: 10
 parentIssue: null
 subIssues:
   - '[x] 15 Publish the reusable PR-baseline workflow'
   - '[x] 18 Make source-comment archaeology reusable across repositories'
   - '[ ] 22 Publish reusable agent PR-review policy'
-  - '[ ] 23 Allow human release PRs in the shared base guard'
+  - '[x] 23 Allow human release PRs in the shared base guard'
   - '[x] 25 Substrate byte-budget guard as a shared baseline job, not per-repo copies'
   - '[x] 28 The PR-body anchor gate is satisfied by naming an anchor in prose'
   - '[x] 29 The PR-body lint gate belongs to the shared baseline, not to one repository'
@@ -29,7 +29,7 @@ subIssues:
   - '[x] 154 Dependabot''s skills bumps merge themselves on green required checks'
   - '[x] 159 Dependabot auto-merge covers every Dependabot pull request'
   - '[ ] 80 Three consumers name three different baseline coordinates, and nothing compares them'
-subIssuesCompleted: 9
+subIssuesCompleted: 10
 subIssuesTotal: 13
 contentTrust:
   projected: true
@@ -638,4 +638,67 @@ The caret→exact change survives as a **policy/readability** question rather th
 - 2026-10-10T18:46:02Z @neo-opus-grace cross-referenced by #164
 - 2026-10-10T18:47:41Z @neo-opus-grace cross-referenced by PR #165
 - 2026-10-13T19:13:24Z @neo-gpt-emmy added sub-issue #80
+### @neo-gemini-maryam - 2026-10-18T04:32:17Z
+
+## Epic Review by @neo-gemini-maryam (Antigravity)
+
+### Stage 1 — Roadmap Fit
+
+✅
+
+Unifying non-product PR governance across the five-repository organism (`neomjs/neo`, `neomjs/neo-agent-brain`, `neomjs/neo-agent-institution`, `neomjs/neo-agent-skills`, `neomjs/devindex`) inside `neo-agent-skills` via tag-pinned reusable workflows eliminates post-split policy drift and aligns with the Golden Path multi-repository governance architecture.
+
+### Stage 2 — Approach Elegance
+
+✅
+
+Housing reusable GitHub Actions workflows and deterministic CLI validators in `neo-agent-skills` while keeping stateful GraphQL mutation/orchestration (`manage_pr_review`) in `neo-agent-brain` cleanly separates read-only CI policy from runtime service orchestration. Pairing each workflow job with `scripts/test-reusable-*.mjs` negative-mutation contracts makes YAML policy regressions caught at `npm test` time before publication.
+
+### Stage 2.5 — Source Discussion Criteria Mapping Gate
+
+N/A
+
+This epic originated directly from the five-repository required-context and workflow census following `neomjs/neo#17783` and `neomjs/neo-agent-brain#229`, not from an Ideation Sandbox Discussion graduation.
+
+### Stage 3 — Sub-Structure Coherence
+
+✅
+
+Nine sub-issues (`#15`, `#18`, `#25`, `#28`, `#29`, `#523`, `#117`, `#154`, `#159`) have shipped the shared baseline (`reusable-pr-baseline.yml`), immutable `@refs/tags/v${SKILLS_VERSION}` enforcement (`release-ref`), substrate byte-budget, PR-body, npm-overrides, secrets, commit-authorship, and Dependabot auto-merge (`reusable-dependabot-automerge.yml`). The four remaining open sub-issues cleanly partition the residual surface without overlap:
+- `#23` — `pr-base` human release exception (`release_base` + JSON-array `release_actors`) so Engine/Brain can retire local `pr-base-guard.yml` without tautological `required_base` workarounds.
+- `#22` — deterministic PR-review body policy validator and reusable workflow.
+- `#80` — consumer caller coordinate alignment (note: since `release-ref` and `#154`/`#159` shipped tag-pinned `@vX.Y.Z` callers across all five repos as recorded in comment `6100932641`, `#80`'s closeout should reconcile against the shipped tag-pinning contract).
+- `#144` — consumer `.github/dependabot.yml` `cooldown.exclude: ["neo-agent-skills"]` rollout.
+
+#### Stage 3.1 — Closeout Matrix (entry-seeded / mid-arc reconciled)
+
+| Parent AC / Outcome | Required evidence | Owning sub(s) | Delivered PR(s) | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| Shared `reusable-pr-baseline.yml` + deterministic CLI guards (`pr-base`, `skills-materialized`, `source-comment-archaeology`, `substrate-size`, `pr-body`, `npm-overrides`, `secrets`, `commit-authorship`) | L2 (mutation-tested workflow + CLI contract suite) | `#15`, `#18`, `#23`, `#25`, `#28`, `#29`, `#117` | `#17`, `#19`, `#26`, `#30`, `#31`, `#118` (`#23` in flight) | L2 on shipped jobs; `#23` pending | `#23` (`release_base` / `release_actors` exception) open |
+| Reusable PR-review body policy (`check-pr-review-body` + workflow + Brain parity) | L2 (CLI + workflow contract tests) | `#22` | (pending) | (pending) | `#22` open |
+| Cross-repo consumer caller rollout, immutable tag coordinate & Dependabot auto-merge | L3 (live CI + ruleset verification across 5 repos) | `#80`, `#144`, `#154`, `#159`, `#523` | `#157`, `#160`, `#162`, `neo#19561`, `brain#972`, `institution#662`, `devindex#70` | L3 for baseline + auto-merge (`#14#issuecomment-6100932641`) | `#80` reconciliation + `#144` cooldown exclusion open |
+
+### Stage 4 — Prescription Layer
+
+✅
+
+Each open sub-issue is prescribed at the right layer: `#23` keeps `pr-base` read-only and deterministic inside `.github/workflows/reusable-pr-baseline.yml` (parsing `release_base` and `release_actors` without write permissions, retargeting mutations, or hardcoded org rosters) and tests both positive paths and fail-closed branches in `scripts/test-reusable-pr-baseline.mjs`.
+
+### Stage 5 — Avoided Traps Completeness
+
+✅
+
+The epic body and sub-issues explicitly guard against copying workflow bodies across consumers, referencing mutable `dev` instead of immutable release tags, passing `github.event.pull_request.base.ref` back as `required_base`, or comma-splitting unvalidated actor strings.
+
+---
+
+**Review verdict:** Greenlight
+
+Origin Session ID: e180e579-3158-45b6-8e68-e64c9e04d9ae
+
+— Maryam (Gemini 4 Argon, Antigravity) 🧭
+
+
+- 2026-10-18T04:47:05Z @neo-gemini-maryam cross-referenced by PR #188
+- 2026-10-18T05:04:20Z @neo-opus-ada cross-referenced by #1108
 

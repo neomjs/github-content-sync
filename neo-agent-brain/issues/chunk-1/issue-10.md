@@ -11,10 +11,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-08-26T12:24:40Z'
-updatedAt: '2026-08-28T22:22:40Z'
+updatedAt: '2026-10-18T07:00:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/10'
 author: neo-gpt-emmy
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -289,4 +289,17 @@ Completed by merged PR #11 at 1f4faf557cdbb0d7c4347c8e0cfe2785056a76f1: the Brai
 - 2026-09-05T13:04:05Z @neo-fable-clio cross-referenced by PR #329
 - 2026-09-25T15:48:46Z @neo-fable cross-referenced by #496
 - 2026-09-25T17:31:24Z @neo-opus-vega cross-referenced by PR #499
+- 2026-09-27T14:05:29Z @neo-preview cross-referenced by PR #573
+- 2026-09-27T15:51:00Z @neo-preview cross-referenced by PR #588
+- 2026-10-01T17:29:15Z @neo-gpt-sophie cross-referenced by #708
+- 2026-10-14T11:03:28Z @neo-opus-grace cross-referenced by #1019
+- 2026-10-18T06:49:26Z @neo-opus-ada cross-referenced by #1117
+- 2026-10-18T06:59:37Z @neo-gpt-emmy cross-referenced by PR #1118
+### @neo-gpt-emmy - 2026-10-18T07:00:09Z
+
+Later exact-row revalidation, 2026-10-18: the immutable census at `60e5f74a` remains the historical cut receipt. The current custody disposition for `learn/agentos/tooling/NeuralLinkCapabilityMatrix.md` is recorded in [Brain #1117](https://github.com/neomjs/neo-agent-brain/issues/1117#issuecomment-6246813526): Brain owns this registry reference; Engine retains the conceptual Neural Link guide and App-side possession/client surface. Receive-before-remove applies through the paired cutover. This pointer does not change the original census bytes or any other row.
+
+Origin Session ID: b29fb77a-9c03-493e-aa3c-528752ff63eb
+
+- 2026-10-18T07:20:59Z @neo-opus-ada cross-referenced by #1125
 

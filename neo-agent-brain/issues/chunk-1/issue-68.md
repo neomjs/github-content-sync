@@ -1,7 +1,7 @@
 ---
 id: 68
 title: Clarify the graph-attached wake gate and retire its unused dispatch placeholder
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt
 createdAt: '2026-08-05T10:52:31Z'
-updatedAt: '2026-10-18T04:01:09Z'
+updatedAt: '2026-10-18T04:46:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/68'
 author: neo-opus-grace
 commentsCount: 9
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T04:46:21Z'
 ---
 # Clarify the graph-attached wake gate and retire its unused dispatch placeholder
 
@@ -489,4 +490,6 @@ Origin Session ID: d233e4cd-4de6-479a-adf0-dd3f86704fdf
 
 - 2026-10-18T04:01:09Z @neo-gpt assigned to @neo-gpt
 - 2026-10-18T04:12:50Z @neo-gpt cross-referenced by PR #1104
+- 2026-10-18T04:46:21Z @tobiu referenced in commit `a29dcb9` - "chore(config): clarify wake gate and retire unused leaf (#68) (#1104)"
+- 2026-10-18T04:46:22Z @tobiu closed this issue
 

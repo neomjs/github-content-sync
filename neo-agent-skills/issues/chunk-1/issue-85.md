@@ -2,20 +2,25 @@
 id: 85
 title: 'The Claude backlink ban lives only in agent memories, and §3.2 forbids the other half'
 state: OPEN
-labels: []
-assignees: []
+labels:
+  - documentation
+  - enhancement
+  - ai
+  - model-experience
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-09-17T11:59:59Z'
-updatedAt: '2026-09-17T11:59:59Z'
+updatedAt: '2026-10-18T06:01:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/85'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 1
   signals: []
 blockedBy: []
 blocking: []
@@ -105,4 +110,27 @@ Retrieval Hint: "claude code backlink forbidden in public artifacts, pull-reques
 ## Timeline
 
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
+- 2026-09-23T11:02:37Z @neo-opus-vega cross-referenced by #105
+- 2026-10-18T05:57:56Z @neo-gemini-maryam added the `enhancement` label
+- 2026-10-18T05:57:56Z @neo-gemini-maryam added the `ai` label
+- 2026-10-18T05:57:56Z @neo-gemini-maryam added the `documentation` label
+- 2026-10-18T05:57:56Z @neo-gemini-maryam added the `model-experience` label
+- 2026-10-18T05:57:57Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-18T05:57:58Z
+
+Triaged per `ticket-triage` skill. Applied: `enhancement`, `ai`, `documentation`, `model-experience`. Stage retrospective passed (premise verified against `pull-request-workflow.md` §§3.2 & 5, `pr-review-template.md`, and `scripts/check-pr-body.mjs` at `dev@7ab6124`; self-assigned and proceeding to implementation). — Maryam 🧭
+
+### @neo-gemini-maryam - 2026-10-18T05:58:42Z
+
+### Contract Ledger (T3 — `ticket-intake` / `create-skill` Gate 1)
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `.agents/skills/pull-request/references/pull-request-workflow.md` (`§3.2 Commit Message Hygiene`) | `neomjs/neo-agent-skills#85` & operator ruling (2026-09-03, cited in `neomjs/neo#18821`) | Forbids harness-injected PR-body backlinks (e.g., `🤖 Generated with Claude Code [QUARANTINED_URL: claude.com]`) in the same paragraph as `Co-Authored-By: <name> <noreply@*>` commit trailers, naming both as products of one harness reminder and stating that a merged PR body retains it permanently. | Discipline-only; explicitly states no mechanical CI gate enforces it (`pr-body` checks structure/anchors only). | Yes (skill reference payload) | `npm run lint` + `npm test` + exact byte-delta receipt |
+| `.agents/skills/pull-request/references/pull-request-workflow.md` (`§5 Self-Identification`) | `neomjs/neo-agent-skills#85` | States that the `Authored by …` block is the **only** attribution a PR body carries; any harness-appended backlink is removed before opening. | Cross-harness provenance continues to use the existing `Authored by [Social Name-B] … consuming [Social Name-A]\u0027s handoff` form. | Yes (skill reference payload) | `npm run lint` + `npm test` + exact byte-delta receipt |
+| `.agents/skills/pr-review/assets/pr-review-template.md` (`### 🕸️ Context & Graph Linking`) | `neomjs/neo-agent-skills#85` | Adds a checkable item verifying `Authored by …` is the only attribution in the PR body (no harness-appended backlink such as `🤖 Generated with [Claude Code]`). | Flagged as a Required Action before merge so merged PR bodies do not retain harness backlinks. | Yes (review template asset) | `npm run lint` + `npm test` + exact byte-delta receipt |
+
+— Maryam 🧭
+
+- 2026-10-18T06:02:16Z @neo-gemini-maryam cross-referenced by PR #190
 

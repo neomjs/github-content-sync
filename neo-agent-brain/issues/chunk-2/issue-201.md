@@ -9,12 +9,13 @@ labels:
   - architecture
   - build
   - agent-os
-assignees: []
+assignees:
+  - neo-opus-ada
 createdAt: '2026-08-27T15:06:45Z'
-updatedAt: '2026-10-01T18:36:48Z'
+updatedAt: '2026-10-18T07:24:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/201'
 author: neo-gpt-emmy
-commentsCount: 17
+commentsCount: 20
 parentIssue: 194
 subIssues: []
 subIssuesCompleted: 0
@@ -833,4 +834,107 @@ Origin Session ID: 8c224931-7b3d-4cb5-a43d-86f1735f3636
 - 2026-10-01T10:04:58Z @tobiu cross-referenced by PR #666
 - 2026-10-01T10:08:20Z @neo-opus-grace cross-referenced by #667
 - 2026-10-01T18:39:07Z @neo-opus-vega cross-referenced by #717
+- 2026-10-01T19:00:30Z @neo-opus-vega cross-referenced by PR #723
+- 2026-10-04T16:15:59Z @neo-opus-grace cross-referenced by #846
+- 2026-10-04T16:17:28Z @neo-opus-grace cross-referenced by PR #847
+### @neo-opus-ada - 2026-10-18T05:01:02Z
+
+Fresh measurement, 2026-10-18: dev at `9b01acf6`, Brain Unit run 39098249510, its base leg.
+
+#650 runs every spec and fails a PR only on what the PR breaks. The retained suite therefore executes in CI now. What remains is the base's own red set: **48 failing tests in 20 spec files**, down from 77 failing specs at `b6ba2ab`.
+
+| tests | spec (under `test/playwright/unit/`) |
+|---:|---|
+| 13 | `ai/services/github-workflow/PullRequestService.spec.mjs` |
+| 6 | `ai/initTier1ConfigMigration.spec.mjs` |
+| 4 | `ai/services/memory-core/helpers/nlRelocationComposition.spec.mjs` |
+| 4 | `ai/services/fleet/provisioningTemplates.spec.mjs` |
+| 3 | `ai/scripts/lint/scriptPlaneClosure.spec.mjs` |
+| 3 | `ai/mcp/server/neural-link/CapabilityMatrix.spec.mjs` |
+| 2 | `deploy/PackageBoundary.spec.mjs` |
+| 1 each | `memory-core/DatabaseService.graphBackup`, `knowledge-base/DatabaseService.sync`, `hostBarrelRuntimeReach`, `services-resilient-load`, `setup/generateRosterOnboarding`, `lint/lintGuides`, `lint/checkFrontDoorFingerprint`, `diagnostics/analyzeNlTelemetry`, `validation/OpenApiValidatorCompliance`, `validation/GuideToolParity`, `deploy/FleetServerComposition`, `orchestrator/Orchestrator`, `orchestrator/LaneEnablementSignal` |
+
+Two of these have causes measured tonight:
+- **`analyzeNlTelemetry.spec`'s #12438 test** pins `const DB_PATH = aiConfig.storagePaths.graph;` with one space, but the source aligns it (`const DB_PATH    =`). The assertion is stale; the behaviour it guards still holds.
+- **`ConfigCompleteness.spec`'s corpus-destination test** is not in the 48. It passes in CI only by worker order and fails alone on dev with `Neo.ai.Config` undefined, which is #89's class (shared-state order). Adding a spec elsewhere reshuffles the workers and surfaces it.
+
+I'm taking the burn-down, largest cluster first. Each cluster gets its own ticket and PR, `Related: #201`, and this ticket's body stays Emmy's.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-10-18T05:01:04Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-10-18T05:04:20Z @neo-opus-ada cross-referenced by #1108
+- 2026-10-18T05:05:04Z @neo-opus-ada cross-referenced by PR #1109
+- 2026-10-18T05:26:33Z @neo-opus-ada cross-referenced by #1110
+- 2026-10-18T05:27:11Z @neo-opus-ada cross-referenced by PR #1111
+- 2026-10-18T05:29:03Z @neo-opus-ada cross-referenced by #1112
+- 2026-10-18T05:29:29Z @neo-opus-ada cross-referenced by PR #1113
+### @neo-opus-ada - 2026-10-18T05:32:04Z
+
+**Burn-down progress, 2026-10-18 05:3xZ.** Following the census (6245894428):
+
+| slice | spec | reds | state |
+|---|---|---:|---|
+| #1108 / PR #1109 | `github-workflow/PullRequestService` | 13 | merged: the parity arms read neo's review-lint workflow from the installed engine |
+| #1110 / PR #1111 | `initTier1ConfigMigration` | 6 | open: fixtures imported `${repoRoot}/src/Neo.mjs`, the engine's pre-split layout |
+| #1112 / PR #1113 | `fleet/provisioningTemplates` | 4 | open: neo's seat templates were read from the Brain root |
+
+One class covers all three: an engine-owned file or path read from the Brain tree. The installed engine ships them, and `import.meta.resolve('neo.mjs/…')` reaches them, because `neo.mjs` declares no `exports`.
+
+Classified next:
+- **`neural-link/CapabilityMatrix` (3).** The same class with a twist. `learn/agentos/tooling/NeuralLinkCapabilityMatrix.md` stayed in neo when the other tooling docs moved to the Brain, and neo's portal and guides still link it. Read from the engine, the guard finds real drift: `drive_drag` (Brain #204, 08-30) is in the Brain's Neural Link OpenAPI and in no matrix, at the pin or on neo `dev`. Choosing the doc's home is a docs-ownership decision. One option keeps it in neo: fix the row and re-point the spec, which then goes green at the next pin move. The other moves it beside its server and updates neo's links.
+- **`lint/scriptPlaneClosure` (3).** The unresolved-ratchet identity arms are off by one against the live ledger; not yet read.
+- **`deploy/PackageBoundary` (2).** A manifest deep-equal diff and an undefined `with`, probably drift in the Cloud package; not yet read.
+- **`memory-core/helpers/nlRelocationComposition` (4 in CI, 6 locally).** "composition child produced no result"; environment-dependent, so the child's stderr comes first.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-10-18T06:40:41Z @neo-opus-ada cross-referenced by #1117
+- 2026-10-18T06:44:52Z @neo-opus-ada cross-referenced by PR #1118
+- 2026-10-18T06:55:07Z @neo-opus-ada cross-referenced by #1119
+- 2026-10-18T06:58:07Z @neo-opus-ada cross-referenced by PR #1120
+- 2026-10-18T07:00:34Z @neo-opus-ada cross-referenced by #1121
+- 2026-10-18T07:03:12Z @neo-opus-ada cross-referenced by PR #1122
+- 2026-10-18T07:11:32Z @neo-opus-ada cross-referenced by #19853
+- 2026-10-18T07:13:51Z @neo-opus-ada cross-referenced by PR #19854
+- 2026-10-18T07:14:13Z @neo-opus-ada cross-referenced by #1123
+- 2026-10-18T07:14:50Z @neo-opus-ada cross-referenced by PR #1124
+- 2026-10-18T07:17:14Z @neo-opus-ada cross-referenced by #19855
+- 2026-10-18T07:20:59Z @neo-opus-ada cross-referenced by #1125
+- 2026-10-18T07:24:07Z @neo-opus-ada cross-referenced by PR #1126
+### @neo-opus-ada - 2026-10-18T07:24:26Z
+
+**Burn-down progress, 2026-10-18 07:2xZ.** This follows 6246128417. Slices opened since:
+
+| slice | spec | base reds | state |
+|---|---|---:|---|
+| #1117 / PR #1118 | `neural-link/CapabilityMatrix` | 3 | The census owner decided B: the matrix lives in the Brain ([decision](https://github.com/neomjs/neo-agent-brain/issues/1117#issuecomment-6246813526)). RA-1–3 addressed at `09c32d12`, re-review requested. neomjs/neo#19855 removes neo's copy after the merge. |
+| #1119 / PR #1120 | `lint/scriptPlaneClosure` | 3 | `KNOWN_BACKUP_EDGES` re-pinned; the conflict arm owns a fixture shell root. In review. |
+| #1121 / PR #1122 | `deploy/PackageBoundary` | 2 | `setup-node` matched at any version; the root duplicate of `ai:check-backup-integrity` goes. In review. |
+| #1123 / PR #1124 | `lint/checkFrontDoorFingerprint` (live arm) | 1 | Paired with neomjs/neo#19854: the guard returns to neo, where the front door has drifted on 5 of the 6 edits since the split. Merge neo first. |
+| #1125 / PR #1126 | `hostBarrelRuntimeReach`, `services-resilient-load` | 2 | Both read neo's shipped fixture through `neo.mjs/…`. |
+
+**A recorded obligation, mine.** `GuideToolParity`'s `neural-link` arm is not in #1126. Read from the installed engine, it fails for a real reason: `NeuralLink.md` claims "59 operation IDs", and the registry has 60. neomjs/neo#19855 drops that sentence. Once the engine pin includes it, the arm reads `neo.mjs/learn/agentos/NeuralLink.md`, and its count check becomes conditional, as its own comment already states.
+
+**The remaining singles, classified tonight on `dev` `623a0109`:**
+- Stale source-text pins: `LaneEnablementSignal` (a moved `writeLog` string) and `analyzeNlTelemetry` (the `DB_PATH` alignment).
+- Contract or behaviour drift:
+  - `OpenApiValidatorCompliance`: `ingest_source_files` drops `materializationAttempt` at the Zod gate. That is a real contract gap.
+  - `Orchestrator`: the persisted-state envelope has one entry too many.
+  - `generateRosterOnboarding`: its live-surface anchors no longer match.
+  - `DatabaseService.graphBackup`: `malformed JSON` in the child.
+- Environment: `FleetServerComposition` (`docker compose`). `knowledge-base/DatabaseService.sync` passes locally.
+- Mixed custody: `lintGuides`. Its guide-series half lints neo's `learn/guides`, which the Brain does not track.
+- Still open: `nlRelocationComposition` (4 reds).
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-10-18T07:27:25Z @neo-opus-ada cross-referenced by #1127
+- 2026-10-18T07:30:48Z @neo-opus-ada cross-referenced by PR #1128
+- 2026-10-18T07:33:14Z @neo-opus-ada cross-referenced by #1129
+- 2026-10-18T07:34:39Z @neo-opus-ada cross-referenced by PR #1130
+- 2026-10-18T07:58:38Z @neo-opus-ada cross-referenced by #1131
+- 2026-10-18T07:59:32Z @neo-opus-ada cross-referenced by PR #1132
+- 2026-10-18T08:00:56Z @neo-opus-ada cross-referenced by #1133
+- 2026-10-18T08:07:10Z @neo-opus-ada cross-referenced by PR #1134
 

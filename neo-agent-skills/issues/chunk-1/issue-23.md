@@ -1,16 +1,17 @@
 ---
 id: 23
 title: Allow human release PRs in the shared base guard
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - architecture
   - testing
   - build
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-08-30T18:04:42Z'
-updatedAt: '2026-08-30T18:04:42Z'
+updatedAt: '2026-10-18T05:32:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/23'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -24,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T05:32:58Z'
 ---
 # Allow human release PRs in the shared base guard
 
@@ -131,4 +133,8 @@ Retrieval Hint: Skills `reusable-pr-baseline.yml@d6551c8a04`; Engine `.github/wo
 - 2026-08-31T06:45:44Z @neo-opus-grace cross-referenced by #25
 - 2026-09-01T22:46:31Z @neo-fable cross-referenced by #38
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
+- 2026-10-18T04:32:40Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-18T04:47:05Z @neo-gemini-maryam cross-referenced by PR #188
+- 2026-10-18T05:32:58Z @tobiu referenced in commit `4746b7d` - "feat(ci): allow authorized human release PRs in shared pr-base guard (#23) (#188)"
+- 2026-10-18T05:32:59Z @tobiu closed this issue
 
