@@ -1,7 +1,7 @@
 ---
 id: 1136
 title: Codex seat Start refuses its own MCP rows after a runtime move
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-18T16:51:36Z'
-updatedAt: '2026-10-18T17:02:11Z'
+updatedAt: '2026-10-18T17:34:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1136'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T17:33:43Z'
 ---
 # Codex seat Start refuses its own MCP rows after a runtime move
 
@@ -74,11 +75,13 @@ Exact re-render equality stays the gate: any other managed byte, a hand-edited e
 
 ## Acceptance Criteria
 
-- [ ] AC-1 — A codex / codex-desktop seat whose project rows Fleet rendered at an earlier packaged runtime (app bundle or generation) converges at its next Start to the installed generation: artifact `UPDATED`, MC/KB transport and receipt unchanged, resident tables (per-tool approvals, other resident TOML, context seed) byte for byte; the following Start is all `MATCH`. Red before the fix.
-- [ ] AC-2 — Rows rendered before `NEO_NL_PORT` joined the neural-link vocabulary converge the same way, at the same root and together with a root move. Red before the fix.
-- [ ] AC-3 — Still `FLEET_WORKSPACE_DIVERGENT` without overwrite: a hand-edited executable outside the packaged shape, a packaged-root render with any other managed byte changed, rows naming two runtimes. The existing `upgrade the exact prior MCP runtime` arms stay green.
-- [ ] AC-4 — A workspace-preparation refusal from Start/Restart logs `[fleet]`, its code and its artifact; the wire answer is unchanged.
-- [ ] AC-5 — On the three GPT seats' real files, the patched converger accepts each config read-only (the write-blocking instrument reaches the `UPDATED` publish) where the installed runtime refuses.
+- [x] AC-1 — A codex / codex-desktop seat whose project rows Fleet rendered at an earlier packaged runtime (app bundle or generation) converges at its next Start to the installed generation: artifact `UPDATED`, MC/KB transport and receipt unchanged, resident tables (per-tool approvals, other resident TOML, context seed) byte for byte; the following Start is all `MATCH`. Red before the fix.
+- [x] AC-2 — Rows rendered before `NEO_NL_PORT` joined the neural-link vocabulary converge the same way, at the same root and together with a root move. Red before the fix.
+- [x] AC-3 — Still `FLEET_WORKSPACE_DIVERGENT` without overwrite: a hand-edited executable outside the packaged shape, a packaged-root render with any other managed byte changed, rows naming two runtimes. The existing `upgrade the exact prior MCP runtime` arms stay green.
+- [x] AC-4 — A workspace-preparation refusal from Start/Restart logs `[fleet]`, its code and its artifact; the wire answer is unchanged.
+- [x] AC-5 — On the three GPT seats' real files, the patched converger accepts each config read-only (the write-blocking instrument reaches the `UPDATED` publish) where the installed runtime refuses.
+
+**Delivered** by PR #1137 (merged `383e8d49`, 2026-10-18 17:33Z): AC-1–AC-5 met; the installed Start stays under Post-Merge Validation until the next FM install.
 
 ## Post-Merge Validation
 
@@ -125,4 +128,20 @@ Retrieval Hint: "codex seat FLEET_WORKSPACE_DIVERGENT non-transport managed keys
 - 2026-10-18T17:05:06Z @neo-opus-grace cross-referenced by PR #1137
 - 2026-10-18T17:07:54Z @neo-opus-vega cross-referenced by #1138
 - 2026-10-18T17:18:49Z @neo-opus-grace cross-referenced by #534
+- 2026-10-18T17:33:43Z @tobiu referenced in commit `383e8d4` - "fix(fleet): a Codex seat's next Start moves Fleet's own MCP rows to the installed runtime (#1136) (#1137)
+
+An install moves the packaged runtime (app bundle -> generation, generation -> generation) and #1051
+added NEO_NL_PORT to Neural Link's vocabulary; the Codex converger recognised neither, so it refused
+rows Fleet itself wrote (FLEET_WORKSPACE_DIVERGENT) and no GPT seat started after the 2026-10-18 install.
+
+- prepareCodexArtifacts hands convergeTransportArtifact the renders of the current plan at the packaged
+  runtime the existing rows name (same bundle shape as the current runtime, PACKAGE_RECEIPT_PATH's
+  organism), and the current plan without the names a descriptor added since (previousRuntimeEnv).
+  Exact re-render stays the gate; a hand-edited executable or any other managed byte still refuses.
+- runtimeInvocation is the one command/args binding bind and rebind share.
+- startOutcome writes the refused workspace's message, artifact and cause to the Fleet log its reason
+  points at; the wire answer is unchanged."
+- 2026-10-18T17:33:44Z @tobiu closed this issue
+- 2026-10-18T17:50:22Z @neo-opus-vega cross-referenced by PR #1141
+- 2026-10-18T19:31:19Z @neo-opus-vega cross-referenced by #1145
 

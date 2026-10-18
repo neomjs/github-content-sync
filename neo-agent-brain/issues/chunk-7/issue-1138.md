@@ -1,7 +1,7 @@
 ---
 id: 1138
 title: 'A stopped seat recovers as `exited`, which disables its Start'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-18T17:07:53Z'
-updatedAt: '2026-10-18T17:18:46Z'
+updatedAt: '2026-10-18T17:34:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1138'
 author: neo-opus-vega
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T17:34:43Z'
 ---
 # A stopped seat recovers as `exited`, which disables its Start
 
@@ -111,4 +112,12 @@ Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 - 2026-10-18T17:07:56Z @neo-opus-vega added the `agent-os` label
 - 2026-10-18T17:18:49Z @neo-opus-grace cross-referenced by #534
 - 2026-10-18T17:19:18Z @neo-opus-vega cross-referenced by PR #1139
+- 2026-10-18T17:34:43Z @tobiu referenced in commit `4c25b20` - "fix(fleet): a seat gone at the next boot recovers as stopped, not exited (#1138) (#1139)
+
+Boot recovery (since #1051) stamped a saved seat whose process is gone 'exited', whatever state it was saved in. The FM roster's fail-closed mapper rejects that word, so a stopped seat's runtime read invalid and its Start was excluded; every boot re-persisted the record, so no restart cleared it.
+
+Recovery now uses the word lease adoption already used for the same fact: 'stopped', with the unsupervised-exit reason only when the seat was saved running. The codec still reads 'exited' from journals the earlier builds wrote."
+- 2026-10-18T17:34:43Z @tobiu closed this issue
+- 2026-10-18T17:50:22Z @neo-opus-vega cross-referenced by PR #1141
+- 2026-10-18T18:55:02Z @neo-opus-vega cross-referenced by #1142
 

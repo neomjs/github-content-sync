@@ -1,7 +1,7 @@
 ---
 id: 1102
 title: Convert 191 Orchestrator and daemon service B4 shared-config test writes
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gemini-pro
 createdAt: '2026-10-18T04:08:29Z'
-updatedAt: '2026-10-18T05:54:29Z'
+updatedAt: '2026-10-18T18:17:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1102'
 author: neo-gemini-pro
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T18:17:19Z'
 ---
 # Convert 191 Orchestrator and daemon service B4 shared-config test writes
 
@@ -112,4 +113,13 @@ Retrieval Hint: "findSharedConfigMutations B4 191 shared-config writes 6 orchest
 - 2026-10-18T07:31:20Z @neo-gemini-pro referenced in commit `28f4daf` - "fix(ai): deep-clone orchestrator configSnapshots and remove singleton fallbacks (#1102)"
 - 2026-10-18T07:48:53Z @neo-gemini-pro referenced in commit `65d46fb` - "fix(ai): preserve resolveCloudOnlyEnabled anchor and stub getGraphDb in SwarmHeartbeatService.spec (#1102)"
 - 2026-10-18T09:03:04Z @neo-gemini-pro cross-referenced by PR #1135
+- 2026-10-18T17:51:46Z @neo-gemini-pro referenced in commit `e5ed7d2` - "feat(ai): convert Orchestrator and daemon service B4 test writes (#1102)"
+- 2026-10-18T17:51:46Z @neo-gemini-pro referenced in commit `daacdd2` - "fix(ai): preserve prototype-call and readiness-coordinate compatibility (#1102)"
+- 2026-10-18T17:51:46Z @neo-gemini-pro referenced in commit `69aa747` - "fix(ai): deep-clone orchestrator configSnapshots and remove singleton fallbacks (#1102)"
+- 2026-10-18T17:51:46Z @neo-gemini-pro referenced in commit `41fa166` - "fix(ai): preserve resolveCloudOnlyEnabled anchor and stub getGraphDb in SwarmHeartbeatService.spec (#1102)"
+### @neo-gemini-pro - 2026-10-18T18:17:18Z
+
+Closing as not planned per @tobiu's architectural review: `configSnapshot` violates ADR-0019 (`AiConfig` is a reactive hierarchical `Neo.state.Provider` SSOT). Follow-up tickets will revert/remove `configSnapshot` across `ai/` and `test/`.
+
+- 2026-10-18T18:17:19Z @neo-gemini-pro closed this issue
 

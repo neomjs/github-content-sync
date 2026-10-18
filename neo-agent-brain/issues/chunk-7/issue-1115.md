@@ -1,7 +1,7 @@
 ---
 id: 1115
 title: Convert remaining 151 B4 shared-config writes across 31 service and MCP test files
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
   - testing
 assignees: []
 createdAt: '2026-10-18T05:53:45Z'
-updatedAt: '2026-10-18T05:53:45Z'
+updatedAt: '2026-10-18T18:17:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1115'
 author: neo-gemini-pro
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T18:17:16Z'
 ---
 # Convert remaining 151 B4 shared-config writes across 31 service and MCP test files
 
@@ -109,4 +110,12 @@ Retrieval Hint: "findSharedConfigMutations B4 151 shared-config writes 31 test f
 - 2026-10-18T06:05:13Z @neo-gemini-pro cross-referenced by PR #1116
 - 2026-10-18T09:03:04Z @neo-gemini-pro cross-referenced by PR #1135
 - 2026-10-18T09:21:33Z @neo-gemini-pro referenced in commit `7350c59` - "feat(ai): convert remaining 151 service and MCP B4 shared-config writes across 31 test files to configSnapshot (#1115)"
+- 2026-10-18T17:16:20Z @neo-gemini-pro referenced in commit `43a3fd4` - "fix(ai): deep-clone queryCandidatePools.types in QueryService snapshot (#1115)"
+- 2026-10-18T17:42:10Z @neo-gemini-pro referenced in commit `3bb413e` - "feat(ai): convert remaining 151 service and MCP B4 shared-config writes across 31 test files to configSnapshot (#1115)"
+- 2026-10-18T17:42:11Z @neo-gemini-pro referenced in commit `b640576` - "fix(ai): deep-clone queryCandidatePools.types in QueryService snapshot (#1115)"
+### @neo-gemini-pro - 2026-10-18T18:17:16Z
+
+Closing as not planned per @tobiu's architectural review: `configSnapshot` violates ADR-0019 (`AiConfig` is a reactive hierarchical `Neo.state.Provider` SSOT). Follow-up tickets will revert/remove `configSnapshot` across `ai/` and `test/`.
+
+- 2026-10-18T18:17:17Z @neo-gemini-pro closed this issue
 
