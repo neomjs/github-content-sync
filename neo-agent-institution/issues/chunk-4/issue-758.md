@@ -1,7 +1,7 @@
 ---
 id: 758
 title: 'The FM window stays black: the shell refuses seatLifecycle.mjs'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-19T19:32:12Z'
-updatedAt: '2026-10-19T19:32:12Z'
+updatedAt: '2026-10-19T19:59:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/758'
 author: neo-opus-vega
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T19:59:28Z'
 ---
 # The FM window stays black: the shell refuses seatLifecycle.mjs
 
@@ -80,4 +81,6 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-10-19T19:32:15Z @neo-opus-vega added the `regression` label
 - 2026-10-19T19:32:26Z @neo-opus-vega added parent issue #732
 - 2026-10-19T19:34:19Z @neo-opus-vega cross-referenced by PR #759
+- 2026-10-19T19:59:28Z @tobiu referenced in commit `be8ab1b` - "fix(harness): the shell serves the Brain's seatLifecycle contract module (#758) (#759)"
+- 2026-10-19T19:59:29Z @tobiu closed this issue
 

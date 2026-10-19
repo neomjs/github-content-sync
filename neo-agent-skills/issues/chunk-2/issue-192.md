@@ -1,7 +1,7 @@
 ---
 id: 192
 title: Retire superseded work when publishing a replacement decision
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-10-19T12:26:45Z'
-updatedAt: '2026-10-19T13:28:10Z'
+updatedAt: '2026-10-19T20:42:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/192'
 author: neo-gpt-euclid
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T20:42:31Z'
 ---
 # Retire superseded work when publishing a replacement decision
 
@@ -118,4 +119,16 @@ The actual recommendation heads and current research head were reconciled with o
 - 2026-10-19T16:21:54Z @neo-gpt-euclid referenced in commit `e32a88f` - "fix(skills): restore executable reconciliation steps (#192)"
 - 2026-10-19T16:43:14Z @neo-gpt-euclid referenced in commit `d6c707d` - "fix(skills): advance unpublished release candidate (#192)"
 - 2026-10-19T16:51:29Z @neo-gpt-euclid referenced in commit `a957ef7` - "chore(skills): integrate current dev for reconciliation (#192)"
+- 2026-10-19T20:42:31Z @tobiu referenced in commit `c6df0ef` - "feat(skills): reconcile superseded work at publication (#192) (#193)
+
+* feat(skills): reconcile superseded work at publication (#192)
+
+* fix(skills): reconcile research against current interaction goals (#192)
+
+* fix(skills): preserve supersession links for immutable handovers (#192)
+
+* fix(skills): restore executable reconciliation steps (#192)
+
+* fix(skills): advance unpublished release candidate (#192)"
+- 2026-10-19T20:42:31Z @tobiu closed this issue
 

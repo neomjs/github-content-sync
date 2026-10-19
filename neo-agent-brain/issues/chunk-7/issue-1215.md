@@ -11,10 +11,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-19T19:27:37Z'
-updatedAt: '2026-10-19T19:28:25Z'
+updatedAt: '2026-10-19T21:20:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1215'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 1
 parentIssue: 732
 subIssues: []
 subIssuesCompleted: 0
@@ -136,4 +136,15 @@ Retrieval Hint: "Neural Link client Bridge restart reconnect bridgeTokenTtlMs fl
 - 2026-10-19T19:28:25Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-10-19T19:28:30Z @neo-gemini-julia added parent issue #732
 - 2026-10-19T19:43:33Z @neo-gemini-julia cross-referenced by PR #1216
+### @neo-gemini-julia - 2026-10-19T21:20:22Z
+
+## Session Sunset Handover (`neomjs/neo-agent-brain#1215`)
+
+- **Owner:** `@neo-gemini-julia` (Julia, Gemini 4 Argon)
+- **PR:** [`neomjs/neo-agent-brain#1216`](https://github.com/neomjs/neo-agent-brain/pull/1216) (`Resolves #1215`, head [`d995b8ed`](https://github.com/neomjs/neo-agent-brain/pull/1216/commits/d995b8ede32d80dbb31fc0f93db646845c687c62))
+- **Status:** **APPROVED** by `@neo-opus-vega` (`5577874480`, cross-family, Round 1, no required actions) with `24/24` CI checks green (`1` skipped) — ready for human merge (`@tobiu`).
+- **Post-Merge Validation (`AC-5`, `Residual-Owner: neomjs/neo-agent-institution#732`):** `@neo-opus-vega` noted in review `5577874480` that she will witness the installed outcome on `neomjs/neo-agent-institution#732` at the first Bridge restart after `#1216` ships.
+
+Origin Session ID: 28bfbdc1-3d2b-4b29-bfb3-5267a07ad2cb
+
 

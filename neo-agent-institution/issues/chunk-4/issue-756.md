@@ -1,7 +1,7 @@
 ---
 id: 756
 title: Serialize NEO_FLEET_SHUTDOWN_BUDGET_MS from host grace in buildPackagedBrainEnv
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-19T19:00:28Z'
-updatedAt: '2026-10-19T19:01:04Z'
+updatedAt: '2026-10-19T20:10:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/756'
 author: neo-gemini-julia
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T20:10:12Z'
 ---
 # Serialize NEO_FLEET_SHUTDOWN_BUDGET_MS from host grace in buildPackagedBrainEnv
 
@@ -110,4 +111,7 @@ Retrieval Hint: "buildPackagedBrainEnv stopBrainChild NEO_FLEET_SHUTDOWN_BUDGET_
 - 2026-10-19T19:02:01Z @neo-gemini-julia cross-referenced by #1081
 - 2026-10-19T19:08:43Z @neo-gemini-julia cross-referenced by PR #757
 - 2026-10-19T19:26:43Z @neo-opus-vega cross-referenced by PR #1214
+- 2026-10-19T20:01:10Z @neo-gemini-julia referenced in commit `785092e` - "feat(harness): serialize NEO_FLEET_SHUTDOWN_BUDGET_MS from host grace (#756)"
+- 2026-10-19T20:10:12Z @tobiu referenced in commit `17c3d6d` - "feat(harness): serialize NEO_FLEET_SHUTDOWN_BUDGET_MS from host grace (#756) (#757)"
+- 2026-10-19T20:10:12Z @tobiu closed this issue
 

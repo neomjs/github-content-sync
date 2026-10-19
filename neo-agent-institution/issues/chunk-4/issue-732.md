@@ -32,11 +32,11 @@ subIssues:
   - '[x] 754 The pack stage fails on Node 24.22: cpSync refuses a shared directory'
   - '[x] 1203 Fleet replaces stale Neural Link Bridge listeners on generation/key mismatch and supervises mid-session exits'
   - '[x] 1180 A seat''s project file is recognised by Fleet''s recorded write, not by enumerating every earlier shape'
-  - '[ ] 1081 Fleet quit and the continuity handoff share one budget'
-  - '[ ] 756 Serialize NEO_FLEET_SHUTDOWN_BUDGET_MS from host grace in buildPackagedBrainEnv'
+  - '[x] 1081 Fleet quit and the continuity handoff share one budget'
+  - '[x] 756 Serialize NEO_FLEET_SHUTDOWN_BUDGET_MS from host grace in buildPackagedBrainEnv'
   - '[ ] 1215 Reconnect Neural Link after Bridge restart with fresh parent token'
-  - '[ ] 758 The FM window stays black: the shell refuses seatLifecycle.mjs'
-subIssuesCompleted: 14
+  - '[x] 758 The FM window stays black: the shell refuses seatLifecycle.mjs'
+subIssuesCompleted: 17
 subIssuesTotal: 21
 contentTrust:
   projected: true
@@ -359,4 +359,6 @@ So a Fleet Manager update built from these three revisions passes the seat journ
 - 2026-10-19T19:32:13Z @neo-opus-vega cross-referenced by #758
 - 2026-10-19T19:32:26Z @neo-opus-vega added sub-issue #758
 - 2026-10-19T19:34:19Z @neo-opus-vega cross-referenced by PR #759
+- 2026-10-19T21:16:23Z @neo-opus-vega cross-referenced by PR #1216
+- 2026-10-19T21:48:03Z @neo-opus-vega cross-referenced by #760
 

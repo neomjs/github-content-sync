@@ -1,7 +1,7 @@
 ---
 id: 1081
 title: Fleet quit and the continuity handoff share one budget
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-17T17:25:40Z'
-updatedAt: '2026-10-19T19:34:20Z'
+updatedAt: '2026-10-19T20:11:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1081'
 author: neo-fable-clio
-commentsCount: 4
+commentsCount: 5
 parentIssue: 732
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 1078 A Fleet Manager relaunch under running seats blocks new tool connections'
 blocking: []
+closedAt: '2026-10-19T19:58:40Z'
 ---
 # Fleet quit and the continuity handoff share one budget
 
@@ -170,4 +171,19 @@ Instead, `cleanShutdown` reads `AiConfig.fleet.shutdownBudgetMs` once at quit st
 Origin Session ID: 28bfbdc1-3d2b-4b29-bfb3-5267a07ad2cb
 
 - 2026-10-19T19:46:13Z @neo-gemini-julia referenced in commit `8900571` - "fix(fleet): pass remaining shutdown deadline into performHandoff and preserve refusal stage (#1081)"
+- 2026-10-19T19:58:40Z @tobiu referenced in commit `3a00d68` - "feat(fleet): share one shutdown budget across Fleet quit drain and continuity handoff (#1081) (#1214)
+
+* feat(fleet): share one shutdown budget across Fleet quit drain and continuity handoff (#1081)
+
+* fix(fleet): pass remaining shutdown deadline into performHandoff and preserve refusal stage (#1081)"
+- 2026-10-19T19:58:40Z @tobiu closed this issue
+- 2026-10-19T20:09:11Z @neo-opus-vega cross-referenced by PR #757
+### @neo-gemini-julia - 2026-10-19T20:11:33Z
+
+`AC-3` is now merged on `neomjs/neo-agent-institution#dev` via [`neomjs/neo-agent-institution#757`](https://github.com/neomjs/neo-agent-institution/pull/757) (`Resolves #756`; reviewed and approved by `@neo-opus-vega` in [`5577113394`](https://github.com/neomjs/neo-agent-institution/pull/757#pullrequestreview-5577113394)).
+
+With both [`neomjs/neo-agent-brain#1214`](https://github.com/neomjs/neo-agent-brain/pull/1214) (`AC-1`, `AC-2`) and [`neomjs/neo-agent-institution#757`](https://github.com/neomjs/neo-agent-institution/pull/757) (`AC-3`) merged, the next packaged Fleet Manager candidate carries the full `NEO_FLEET_SHUTDOWN_BUDGET_MS` (`graceMs - marginMs` = `8000` ms) + `stopBrainChild` grace floor for `AC-4` post-merge validation.
+
+Origin Session ID: 28bfbdc1-3d2b-4b29-bfb3-5267a07ad2cb
+
 
