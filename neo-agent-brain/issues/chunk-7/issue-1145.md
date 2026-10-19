@@ -1,7 +1,7 @@
 ---
 id: 1145
 title: 'A Codex seat''s Bridge token expires an hour after Start, ending its NL'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-18T19:31:18Z'
-updatedAt: '2026-10-18T22:34:16Z'
+updatedAt: '2026-10-18T23:14:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1145'
 author: neo-opus-vega
 commentsCount: 5
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T23:14:24Z'
 ---
 # A Codex seat's Bridge token expires an hour after Start, ending its NL
 
@@ -211,6 +212,53 @@ I also added a claimer-authored `## Contract Ledger` to the body (the other part
 
 
 - 2026-10-18T22:35:44Z @neo-opus-grace referenced in commit `d724ea2` - "fix(fleet): a retired Codex launcher table leaves the seat's switch behind (#1145)
+
+convergeCodexHomeLaunchTables carried a table's `enabled` line into its
+replacement, but a table with no replacement took the line with it. That
+happens when Fleet switches Neural Link off, or a Start runs without
+admission and the table moves to the project file. The seat's opt-out was
+gone, and the next admitted Start turned NL back on.
+
+A retiring table now leaves a switch-only table, which the custody projection
+already ignores and the next launcher table already merges. Two arms cover the
+combined transitions: admitted, the seat switches off, Fleet off, Fleet on;
+and admission, none, admission. Both are red without the change."
+- 2026-10-18T23:14:25Z @tobiu closed this issue
+- 2026-10-18T23:14:25Z @tobiu referenced in commit `303bd01` - "feat(fleet): Codex Desktop seats start Neural Link through Fleet's launcher (#1145) (#1156)
+
+* fix(fleet): an admitted seat's env carries no static Bridge token (#1145)
+
+When launch admission owns neural-link, the owner redeems a token per launch, so the
+static copy in the seat env was the one credential there that expired an hour after Start.
+One predicate now decides both the owner and the env slot.
+
+* feat(fleet): a Codex seat's launch grants are recovered from its home config (#1145)
+
+A v3 codex binding hashes the capability-bearing neo-mjs-* tables of the seat's
+CODEX_HOME config.toml with the shared grant hashing. Recovery re-reads them under the
+same descriptor custody, and proves the original workspace's project config names none
+of the bound tables, since a project table would win over home.
+
+* feat(fleet): an admitted Codex seat starts Neural Link through Fleet's launcher (#1145)
+
+The launcher table carries the grant, so it lives in the seat's Codex home config and
+the project file leaves it out; a receipt records the tables Fleet wrote there, so each
+Start may replace the last grant while an unrecorded edit refuses. The seat's own
+enabled switch stays outside the custody projection and rides across every rewrite.
+A seat may move between the two launch modes: each mode's project render counts as
+Fleet's own earlier shape, and the TOML merge moves a table in either direction.
+
+* feat(fleet): a Codex Desktop seat reserves launch admission for Neural Link only (#1145)
+
+reserve() takes the servers a seat starts through the issuer, so a Codex Desktop seat holds
+one grant and its other rows keep the seat env. Its resident input reaches activation for
+that server only, as recovery holds each input against the launched set. The continuity
+matrix now runs codex-desktop through handoff, recovery and a redeem that returns a
+renewed Bridge token.
+
+* test(fleet): a Codex Desktop seat's Neural Link token verifies a lifetime after Start (#1145)
+
+* fix(fleet): a retired Codex launcher table leaves the seat's switch behind (#1145)
 
 convergeCodexHomeLaunchTables carried a table's `enabled` line into its
 replacement, but a table with no replacement took the line with it. That

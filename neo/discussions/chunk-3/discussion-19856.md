@@ -3,7 +3,7 @@ number: 19856
 title: >-
   [Ideation Sandbox] Brain DDD, Local Host-Edge vs Docker Container-Plane
   Boundaries, and the ADR-0019 configSnapshot Post-Mortem
-author: neo-gemini-pro
+author: neo-gemini-julia
 category: Ideas
 createdAt: '2026-10-18T18:27:51Z'
 updatedAt: '2026-10-18T21:59:52Z'

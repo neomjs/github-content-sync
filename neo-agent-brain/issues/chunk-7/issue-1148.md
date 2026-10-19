@@ -1,7 +1,7 @@
 ---
 id: 1148
 title: A backup reports restorable after copying the heal ledger mid-rewrite
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-18T20:41:45Z'
-updatedAt: '2026-10-18T22:50:28Z'
+updatedAt: '2026-10-19T00:44:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1148'
 author: neo-opus-grace
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T00:44:39Z'
 ---
 # A backup reports restorable after copying the heal ledger mid-rewrite
 
@@ -124,4 +125,99 @@ Intake, self-authored carve (implementation: PR #1162).
 
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 874e962d-26d5-415d-99e7-582d2b05e15c
 
+- 2026-10-19T00:19:13Z @neo-opus-grace referenced in commit `c01111b` - "fix(memory-core): a heal-ledger prune keeps the ledger's permission bits under any umask (#1148)
+
+The prune forwarded the ledger's stat'd mode to writeFileAtomic. Creating the
+scratch lets the umask narrow it, so under 0077 a 0640 ledger came back 0600.
+
+writeFileAtomic and writeFileAtomicSync gain `preserveMode`. An existing
+target's permission bits go onto the scratch by chmod before the rename, and a
+missing target takes `mode`. The option is opt-in, so the other callers are
+unchanged. pruneHealLedger uses it and drops its own stat.
+
+Three arms run under umask 0077: the ledger prune, and each writer surface.
+All three fail before the change (0600) and pass after (0640)."
+- 2026-10-19T00:19:14Z @neo-opus-grace referenced in commit `24c9043` - "fix(backup): restore reads the nested ledger members after the receipt again (#1148)
+
+Moving the nested ledger checks ahead of bundle-meta.json changed one
+compound verdict. A malformed heal-attempts.json beside an unreadable receipt
+read BUNDLE_INVALID instead of BUNDLE_UNVERIFIABLE.
+
+validateIncidentLedgers now runs as two halves, each at its base position in
+validateBundle:
+- the top-level payloads where the streaming pass reaches ledgers/, its last
+  subdirectory;
+- heal-attempts.json and recovery-runs/ after bundle-meta.json, where the
+  dedicated block ran.
+The backup gate still runs both halves.
+
+Two arms pair each fault with a real EISDIR receipt:
+- a malformed nested member reads BUNDLE_UNVERIFIABLE (red at the previous
+  head, green at base and after);
+- a torn top-level payload reads BUNDLE_INVALID (green throughout), which
+  holds the payload half before the receipt."
+- 2026-10-19T00:44:39Z @tobiu referenced in commit `e4886d2` - "fix(backup): a torn heal-ledger copy is never published, and the prune replaces the ledger atomically (#1148) (#1162)
+
+* fix(memory-core): pruneHealLedger replaces the heal ledger atomically (#1148)
+
+The prune bounded the ledger with an in-place writeFile: it truncated the
+inode a backup's fs.copy was reading and wrote the retained tail into it.
+The copy came out spliced at a chunk boundary or short at the tail, and a
+failed write left a truncated ledger, contradicting the store's own comment
+that a failed prune leaves the prior ledger intact.
+
+The prune now goes through writeFileAtomic with the ledger's own mode. A
+reader that opened the ledger before the prune reads the whole old file; the
+path then holds the retained tail; no scratch file remains. The new arm is
+red on dev: the held reader saw the rewritten bytes.
+
+* fix(backup): a bundle restore would reject for a torn ledger is never published (#1148)
+
+The receipt's integrity.restorable reads row-count parity only, and ledgers
+sit outside that census, while restore's validateBundle parses every ledger
+member. So a torn heal-events.jsonl copy was published as the newest bundle
+with a receipt reading restorable, and the deploy preflight refused it.
+
+Restore's ledger rule is now one export, validateIncidentLedgers: top-level
+ledger rows, heal-attempts.json, nested recovery-runs rows. validateBundle
+calls it where the generic loop used to stream ledgers, and the old dedicated
+block is gone. backup.mjs runs it after copying the ledgers and throws
+INCIDENT_LEDGER_INVALID on a content error, so runBackup's catch removes the
+staging bundle and the previous one stays newest, as at the capture-collapse
+gate. Restore's verdicts are unchanged; the probe arm gains a torn top-level
+heal-events row.
+
+* fix(memory-core): a heal-ledger prune keeps the ledger's permission bits under any umask (#1148)
+
+The prune forwarded the ledger's stat'd mode to writeFileAtomic. Creating the
+scratch lets the umask narrow it, so under 0077 a 0640 ledger came back 0600.
+
+writeFileAtomic and writeFileAtomicSync gain `preserveMode`. An existing
+target's permission bits go onto the scratch by chmod before the rename, and a
+missing target takes `mode`. The option is opt-in, so the other callers are
+unchanged. pruneHealLedger uses it and drops its own stat.
+
+Three arms run under umask 0077: the ledger prune, and each writer surface.
+All three fail before the change (0600) and pass after (0640).
+
+* fix(backup): restore reads the nested ledger members after the receipt again (#1148)
+
+Moving the nested ledger checks ahead of bundle-meta.json changed one
+compound verdict. A malformed heal-attempts.json beside an unreadable receipt
+read BUNDLE_INVALID instead of BUNDLE_UNVERIFIABLE.
+
+validateIncidentLedgers now runs as two halves, each at its base position in
+validateBundle:
+- the top-level payloads where the streaming pass reaches ledgers/, its last
+  subdirectory;
+- heal-attempts.json and recovery-runs/ after bundle-meta.json, where the
+  dedicated block ran.
+The backup gate still runs both halves.
+
+Two arms pair each fault with a real EISDIR receipt:
+- a malformed nested member reads BUNDLE_UNVERIFIABLE (red at the previous
+  head, green at base and after);
+- a torn top-level payload reads BUNDLE_INVALID (green throughout), which
+  holds the payload half before the receipt."
+- 2026-10-19T00:44:39Z @tobiu closed this issue
 

@@ -1,18 +1,18 @@
 ---
 id: 1161
 title: Warm-worker graph clears drop AgentIdentity boot seeds across specs
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - testing
   - agent-os
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-18T22:44:46Z'
-updatedAt: '2026-10-18T22:44:47Z'
+updatedAt: '2026-10-18T23:42:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1161'
-author: neo-gemini-pro
+author: neo-gemini-julia
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-18T23:42:06Z'
 ---
 # Warm-worker graph clears drop AgentIdentity boot seeds across specs
 
@@ -76,7 +77,14 @@ When an earlier spec in the same worker clears the shared `GraphService.db` with
 3. **`test/playwright/unit/ai/services/fleet/fleetMailboxMirrorAdapter.spec.mjs`:**
    - In `test.afterAll` (`:422-427`), call `await TestLifecycleHelper.cleanupGraphService(GraphService, LifecycleService, null, null, 'clear')` so the spec does not leak its fixture nodes (`@subject-agent`, `@viewer-agent`, `@outsider-agent`, `@sender-agent`, `THREAD:15269`) or leave the worker graph unseeded.
 4. **Unit test coverage:**
-   - Add a dedicated unit test verifying that after `GraphService.db` and `GraphService.db.storage` are cleared and `resetMemoryCoreLifecycle()` runs, both `TestLifecycleHelper.cleanupGraphService(..., 'clear')` and `SystemLifecycleService.initAsync()` restore the canonical `AgentIdentity` boot seeds.
+   - Add a dedicated unit test verifying that after `GraphService.db` and `GraphService.db.storage` are cleared and `resetMemoryCoreLifecycle()` runs, both `TestLifecycleHelper.cleanupGraphService(..., 'clear')` and `SystemLifecycleService.initAsync()` restore the canonical `AgentIdentity` boot seeds (sampling an `AgentIdentity` ID from `createGraphBootSeedManifest()` so the assertion is invariant across identity handle renames).
+
+### Contract Ledger
+
+| Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| `SystemLifecycleService.initAsync()` (`ai/services/memory-core/lifecycle/SystemLifecycleService.mjs`) | `GraphService.mjs:204-213` (`provisionMissingBootSeeds`), `bootSeedManifest.mjs` | After `await GraphService.ready()`, when `GraphService.db?.storage?.db` is mounted, calls `GraphService.provisionMissingBootSeeds()` so warm-worker lifecycle re-initializations guarantee canonical boot seeds | Non-fatal `try / catch` warning via `logger.warn('[SystemLifecycleService] Failed to provision boot seeds:', seedErr.message)`, matching `GraphService.initAsync()` | Method JSDoc updated | `GraphService.spec.mjs` (`restore canonical boot seeds on warm workers`) + 2-file `GoldenPathSynthesizer.spec.mjs` reproducer |
+| `TestLifecycleHelper.cleanupGraphService(..., 'clear')` (`test/playwright/unit/ai/services/memory-core/util.mjs`) | `GraphService.mjs:204-213`, `util.mjs:206-231` | Clears in-memory `nodes`/`edges`/`vicinityLoadedNodes` and `storage.clear()`, resets `DELETE FROM GraphLog` + `GraphService.db.lastSyncId = 0` when `storage.db` is mounted, calls `GraphService.provisionMissingBootSeeds()`, and resets Memory Core lifecycle | Best-effort `try / catch` around `DELETE FROM GraphLog` and `provisionMissingBootSeeds()` | Helper JSDoc updated | `GraphService.spec.mjs` (`restore canonical boot seeds on warm workers`) + `fleetMailboxMirrorAdapter.spec.mjs` `afterAll` |
 
 ## Decision Record impact
 
@@ -105,11 +113,18 @@ Retrieval Hint: "GoldenPathSynthesizer OWNER_BENCHED_LANE provisionMissingBootSe
 
 ## Timeline
 
-- 2026-10-18T22:44:47Z @neo-gemini-pro added the `bug` label
-- 2026-10-18T22:44:47Z @neo-gemini-pro added the `ai` label
-- 2026-10-18T22:44:47Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-18T22:44:47Z @neo-gemini-pro added the `testing` label
-- 2026-10-18T22:44:47Z @neo-gemini-pro added the `agent-os` label
-- 2026-10-18T22:51:48Z @neo-gemini-pro cross-referenced by PR #1163
+- 2026-10-18T22:44:47Z @neo-gemini-julia added the `bug` label
+- 2026-10-18T22:44:47Z @neo-gemini-julia added the `ai` label
+- 2026-10-18T22:44:47Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-18T22:44:47Z @neo-gemini-julia added the `testing` label
+- 2026-10-18T22:44:47Z @neo-gemini-julia added the `agent-os` label
+- 2026-10-18T22:51:48Z @neo-gemini-julia cross-referenced by PR #1163
 - 2026-10-18T23:07:12Z @neo-opus-ada cross-referenced by #1164
+- 2026-10-18T23:17:01Z @neo-gemini-julia referenced in commit `132099d` - "test(ai): sample AgentIdentity seed ID from bootSeedManifest in warm-worker spec (#1161)"
+- 2026-10-18T23:42:06Z @tobiu referenced in commit `b5d2680` - "fix(ai): restore canonical graph boot seeds across warm-worker clears (#1161) (#1163)
+
+* fix(ai): restore canonical graph boot seeds across warm-worker clears (#1161)
+
+* test(ai): sample AgentIdentity seed ID from bootSeedManifest in warm-worker spec (#1161)"
+- 2026-10-18T23:42:06Z @tobiu closed this issue
 

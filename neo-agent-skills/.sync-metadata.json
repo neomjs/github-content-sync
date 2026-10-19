@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-18T23:11:11.529Z",
-  "releasesLastFetched": "2026-10-18T23:11:11.385Z",
+  "lastSync": "2026-10-19T01:15:46.326Z",
+  "releasesLastFetched": "2026-10-19T01:15:45.884Z",
   "issues": {
     "5": {
       "state": "OPEN",
@@ -492,8 +492,8 @@
       "state": "OPEN",
       "path": "neo-agent-skills/issues/chunk-1/issue-85.md",
       "closedAt": null,
-      "updatedAt": "2026-10-18T06:01:31Z",
-      "contentHash": "5c5782c63cdbe1dca721d91600556d45dd5e20a246c19d10404e35fffa7b76d0",
+      "updatedAt": "2026-10-18T23:15:35Z",
+      "contentHash": "bb96728a53e7c828465e3a0cd4bd7c8c5692ad686e0a9ee08f2993af356ad4f9",
       "milestone": null,
       "commentsTotal": 2
     },
@@ -993,7 +993,7 @@
       "mergedAt": "2026-10-05T13:28:13Z",
       "milestone": null,
       "updatedAt": "2026-10-05T13:28:57Z",
-      "contentHash": "a22a8d696427052454da029f955f9fe7ddebbcba1c9c82173940222ab7c6a61f"
+      "contentHash": "c63a51a7df46c92b9fd6ca9627fbe13f776df935a54d9250e638bb47a3b6dde3"
     },
     "147": {
       "state": "MERGED",
@@ -1002,7 +1002,7 @@
       "mergedAt": "2026-10-09T23:56:08Z",
       "milestone": null,
       "updatedAt": "2026-10-09T23:56:16Z",
-      "contentHash": "0618ab856e4d6e751d9312123367c674fc0f50e145669590cd80581dd1fdcb25"
+      "contentHash": "ef5caf8e8186395712a968543220e223032974c48d5b9f25aa200ccb83493fc1"
     },
     "149": {
       "state": "MERGED",
@@ -1011,7 +1011,7 @@
       "mergedAt": "2026-10-09T23:07:52Z",
       "milestone": null,
       "updatedAt": "2026-10-09T23:08:03Z",
-      "contentHash": "d0b870ebb3e8725b4588c54add96a4c33264cbce1b3108f2db2bb2ee16fb601d"
+      "contentHash": "bf1e3b82918252c1b84661effb3dcc9d4f2dee6a19eb437afa0345eaff092ceb"
     },
     "151": {
       "state": "MERGED",
@@ -1038,7 +1038,7 @@
       "mergedAt": "2026-10-10T15:48:22Z",
       "milestone": null,
       "updatedAt": "2026-10-10T15:48:23Z",
-      "contentHash": "f7d39492f227992face6871d04b0f31c8615f9c086a607db55dbfa61ac75af1d"
+      "contentHash": "c0fe45c25a77bc1bccac2aa970b77ba12dfe708dd82ab3e66c536b947be0d8f9"
     },
     "158": {
       "state": "MERGED",
@@ -1056,7 +1056,7 @@
       "mergedAt": "2026-10-10T16:29:39Z",
       "milestone": null,
       "updatedAt": "2026-10-10T16:29:42Z",
-      "contentHash": "2fdb818d8dcc815dc6f53101214bb6e1e8eaeb9b486be5615ccb0c5d43199ad2"
+      "contentHash": "f6477086cada0200982f2b99b5de7392f69d35d487d1897efbce2b91af4653fb"
     },
     "162": {
       "state": "MERGED",
@@ -1083,7 +1083,7 @@
       "mergedAt": "2026-10-10T19:23:22Z",
       "milestone": null,
       "updatedAt": "2026-10-11T01:21:12Z",
-      "contentHash": "8183e76d6833269276b8f2231b563930e416f770fbe65c055d4f0f1ce652e001"
+      "contentHash": "118180b05bcdaad96273a6595ff5d635512d32f1768899a56fa7bf611ec8b1fc"
     },
     "167": {
       "state": "MERGED",
@@ -1092,7 +1092,7 @@
       "mergedAt": "2026-10-10T22:49:19Z",
       "milestone": null,
       "updatedAt": "2026-10-10T22:49:22Z",
-      "contentHash": "fb9bc1d5ef0884b17e56fc2c8c80b1f3a54b56b55e6a7a6e7a51ceefde1317ae"
+      "contentHash": "f92879badc59782e3602085aa6d074f1cb37066988a01cf255275a69234bca8d"
     },
     "170": {
       "state": "MERGED",
@@ -1101,7 +1101,7 @@
       "mergedAt": "2026-10-11T01:19:18Z",
       "milestone": null,
       "updatedAt": "2026-10-11T20:39:42Z",
-      "contentHash": "944a54403cb0b0bb6136dd29b82ae427343e38a1e3b70dc23764ac53bba08641"
+      "contentHash": "aed4a1d1122976b6016f874bf9cc56a58410a220ac60644bbb269507fa6919bb"
     },
     "172": {
       "state": "MERGED",
@@ -1128,7 +1128,7 @@
       "mergedAt": "2026-10-16T14:48:19Z",
       "milestone": null,
       "updatedAt": "2026-10-16T14:48:21Z",
-      "contentHash": "29943a2b8f0b1c25d52c199096707316ccfcfdf15fb5ac0cfdd733f7311cbcbc"
+      "contentHash": "e1798415bcb3b9d1db11b5d62f074b84dda8424a464ac2409f5666c47485d99d"
     },
     "178": {
       "state": "MERGED",
@@ -1155,7 +1155,7 @@
       "mergedAt": "2026-10-17T21:36:05Z",
       "milestone": null,
       "updatedAt": "2026-10-17T21:36:08Z",
-      "contentHash": "ac7a0edf1e0eb10fc4fa8ba5b0d43e14259fe51002dc0ea187300ce928d457f8"
+      "contentHash": "38720ff78dba3d07b0691c0d27af112b49019cbea551c1cc4e3fb4d12c16277c"
     },
     "183": {
       "state": "MERGED",
@@ -1164,7 +1164,7 @@
       "mergedAt": "2026-10-17T21:59:43Z",
       "milestone": null,
       "updatedAt": "2026-10-17T21:59:46Z",
-      "contentHash": "6ebfc49687538112d0c09a3a003d05ec99f09a79221e8aa665e3f7b8f6987543"
+      "contentHash": "157177f0ebd81103ca1a7aa454983b21918fd9d5c4e3db56a707feed3c74b0ac"
     },
     "184": {
       "state": "MERGED",
@@ -1182,7 +1182,7 @@
       "mergedAt": "2026-10-18T03:14:00Z",
       "milestone": null,
       "updatedAt": "2026-10-18T03:14:02Z",
-      "contentHash": "8f6b03a72d2a827ad64f6e82136482dfb23eab0a69d7af61ea9b7110b8c9b815"
+      "contentHash": "b9e425380b980ceba2f3516e731ffc09712dff76b5392afe7d8707cacf03819b"
     },
     "186": {
       "state": "MERGED",
@@ -1226,8 +1226,8 @@
       "closedAt": null,
       "mergedAt": null,
       "milestone": null,
-      "updatedAt": "2026-10-18T06:26:27Z",
-      "contentHash": "754f7004719d65299c366a99cf5bdedc4935eb2e383bfc472149c5606d1a5af5"
+      "updatedAt": "2026-10-18T23:19:20Z",
+      "contentHash": "c74f05178fa18db67aa557bc4c2eda4473aa581b9c0f9d26540d28dcd8dd1a61"
     }
   },
   "discussions": {}

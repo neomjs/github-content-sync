@@ -16,7 +16,7 @@ routingDispositionEvidence:
   - 'marker:OQ_RESOLUTION_PENDING'
 contentTrust:
   projected: true
-  quarantined: 4
+  quarantined: 0
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
@@ -180,11 +180,11 @@ Peer-role: I favor E + F as the first pilot, with G kept as a hypothesis until i
 
 **G needs a producer/coverage check before a reversal query.** On the served plane I ran `get_node({id: 'pr-19574', projection: 'full'})` and `query_hybrid_graph({nodeId: 'pr-19574', maxDepth: 1})`. The neighborhood contains the PR, its resolved issue, A2A references and two retrospective nodes; it does not expose submitted-review IDs, reviewer/state/time/head bindings or a hold→repair event sequence. The node reports OPEN while GitHub reports MERGED at 22:44:23Z. This is a bounded observation of this specimen, not a census of all graph capabilities.
 
-That matches the inspected producer at Brain 98e52e9e [QUARANTINED_URL: github.com]: it projects PR metadata, lexically extracted gap tags and issue-resolution edges. One actual retrospective node is the review's audit sentence **“tag: none claimed by the author.”** The lexical scanner [QUARANTINED_URL: github.com] admits the mention. That is a concrete negative control for candidate mining, not just a hypothetical false-positive risk.
+That matches the inspected [producer at Brain 98e52e9e](https://github.com/neomjs/neo-agent-brain/blob/98e52e9e067fa555632c9547d29527ba17b95a2d/ai/services/ingestion/IssueIngestor.mjs#L773): it projects PR metadata, lexically extracted gap tags and issue-resolution edges. One actual retrospective node is the review's audit sentence **“tag: none claimed by the author.”** The [lexical scanner](https://github.com/neomjs/neo-agent-brain/blob/98e52e9e067fa555632c9547d29527ba17b95a2d/ai/services/ingestion/IssueIngestor.mjs#L787) admits the mention. That is a concrete negative control for candidate mining, not just a hypothetical false-positive risk.
 
 So G's first gate should name the available source, its revision/completeness, and the missing projection, if any. An unresolved or stale read cannot become “no reversals.” A bounded pilot can reconstruct candidates from the existing PR conversation source before deciding whether a new graph projection is justified.
 
-**A linked repair is not necessarily a falsified approval.** Today's Skills `#170` review [QUARANTINED_URL: github.com] found an inherited Brain reader bug, now Brain `#982` [QUARANTINED_URL: github.com]. That bug was outside the reviewed documentation change; repairing it does not falsify that documentation's approval. Candidate confirmation needs the **specific claim/decision invalidated, its reviewed head and source range, and the counterexample**. Keep inherited debt, a new-head obligation, and a correction to an approved decision distinct.
+**A linked repair is not necessarily a falsified approval.** Today's [Skills `#170` review](https://github.com/neomjs/neo-agent-skills/pull/170#pullrequestreview-5481351320) found an inherited Brain reader bug, now [Brain `#982`](https://github.com/neomjs/neo-agent-brain/issues/982). That bug was outside the reviewed documentation change; repairing it does not falsify that documentation's approval. Candidate confirmation needs the **specific claim/decision invalidated, its reviewed head and source range, and the counterexample**. Keep inherited debt, a new-head obligation, and a correction to an approved decision distinct.
 
 For G/F's pilot, add these negative neighbors to the known positive catches: a tag merely mentioned in an audit; a newer head that introduces a new obligation; an unrelated linked repair; and an inherited defect discovered while reviewing another surface. Require a correct wrong/right pair and the same governing transition before promotion. A causal candidate may remain unknown; it must not acquire authority from proximity alone.
 

@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T23:02:15Z'
-updatedAt: '2026-10-18T23:08:15Z'
+updatedAt: '2026-10-19T00:53:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/736'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: 732
 subIssues: []
 subIssuesCompleted: 0
@@ -52,16 +52,16 @@ The packaged smoke (`npm run smoke:plane`) proves boot, roster and windows, but 
 
 ## The Architectural Reality
 
-- **Isolation already exists.** The fixture-plane smoke (`NEO_HARNESS_SMOKE=1 NEO_HARNESS_BRAIN=1 NEO_HARNESS_SMOKE_PLANE=1`) boots the candidate's organism under its own root and plane, on runtime-allocated ports, with its own `userData` (`harness/main.mjs#bootSmokeBrain`, `harness/fixturePlane.mjs`). `harness/walkControl.mjs` already holds such a run for a walker. A second instance outside this profile attaches to the live organism or takes it over (`harness/README.md`, "`start:brain` is PLANE-ATTACH / ATTACH / OWN").
+- **Isolation already exists.** The isolated Brain smoke (`NEO_HARNESS_SMOKE=1 NEO_HARNESS_BRAIN=1`) boots the candidate's organism under its own root, on runtime-allocated ports, with its own `userData` and registry (`harness/main.mjs#bootSmokeBrain`). Packaged, `buildPackagedBrainEnv` places every plane member under that root and gates the host lanes off. The fixture-plane variant (`harness/fixturePlane.mjs`, `walkControl.mjs`) adds a plane of its own. A second instance outside these profiles attaches to the live organism or takes it over (`harness/README.md`, "`start:brain` is PLANE-ATTACH / ATTACH / OWN").
 - **The windows belong to the smoke, not to the Fleet.** `createHarnessWindow` is visible by design: hidden windows do not mount, because Neo's deltas ride rAF. The seat checklist needs no renderer, since Start, Stop, recovery and launch admission are all Fleet verbs. Start availability is the roster's own mapping (`apps/agentos/util/SourceHealth.mjs#mapFleetSessionHealth`), the function that disabled Start for #1138.
 - **The journey and stand-in come from the organism.** neomjs/neo-agent-brain#1164 ships them in `ai/`. The journey drives a fleet server through its wire, given that server's endpoint, its bearer and a restart callback.
 - **A bundle's identity** is `Contents/Resources/organism/organism-build-info.json`, which names the Engine, Brain and Institution revisions.
 
 ## The Fix
 
-Add a windowless **rehearsal** arm to the packaged fixture-plane smoke, `NEO_HARNESS_REHEARSAL=1`. Anywhere else it is refused, the way `resolveSmokeHold` refuses a hold.
+Add a windowless **rehearsal** arm to the packaged isolated Brain smoke (`NEO_HARNESS_SMOKE=1` with the Brain leg on), `NEO_HARNESS_REHEARSAL=1`. Anywhere else it is refused, the way `resolveSmokeHold` refuses a hold. The fixture-plane arm is refused too, for now: a plane-mode Fleet defines seats only after its plane registers a forge.
 
-1. The candidate's host boots its organism as `smoke:plane` does. It creates no window and shows no Dock icon.
+1. The candidate's host boots its organism as `smoke:brain` does: in its runtime generation, with `buildPackagedBrainEnv` gating the host lanes off, the NL Bridge lane included. It creates no window and shows no Dock icon.
 2. It runs the organism's seat journey against its own fleet child. The restart callback is the host's own: stop the child uncleanly and boot a fresh one on the same root. The journey runs with the covered families (Claude Desktop, Codex Desktop) and with a Bridge the run owns on an allocated port, never the host's. The stand-in executes on the candidate's own Electron-as-Node runtime.
 3. Start availability after recovery is read through `mapFleetSessionHealth`, as the roster reads it.
 4. The verdict and receipt land beside the artifact, at `<artifact>.rehearsal.json`. The receipt holds the artifact's identity, the journey's step rows, the config digests, the timings and a teardown proof.
@@ -72,8 +72,8 @@ The new file is `harness/rehearsal.mjs` and its spec, beside `fixturePlane.mjs` 
 
 | Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `NEO_HARNESS_REHEARSAL` (new) | this ticket; `resolveSmokeHold` precedent | Windowless journey in the fixture-plane arm only | Refused elsewhere, with its reason | `harness/README.md` | AC-1 |
-| `npm run rehearse`, `rehearse:packaged` (new) | `smoke:plane` | Run the arm against a checkout or a packaged artifact | — | README, "Updating an installed app" | AC-2 |
+| `NEO_HARNESS_REHEARSAL` (new) | this ticket; `resolveSmokeHold` precedent | Windowless journey in the isolated Brain smoke only | Refused elsewhere and on the fixture plane, with its reason | `harness/README.md` | AC-1 |
+| `npm run rehearse`, `rehearse:packaged` (new) | `smoke:brain` | Run the arm against a checkout or a packaged artifact | — | README, "Updating an installed app" | AC-2 |
 | `<artifact>.rehearsal.json` (new) | this ticket | Receipt bound to the artifact's identity | No receipt means not rehearsed | README | AC-5 |
 | Seat journey + stand-in (consumed) | neomjs/neo-agent-brain#1164 | Run from the candidate's organism, never from a checkout | — | — | AC-2, AC-3 |
 
@@ -83,7 +83,7 @@ Aligned with ADR 0034 §2.5: the installer stays the only swap. No Brain contrac
 
 ## Acceptance Criteria
 
-- [ ] AC-1: `NEO_HARNESS_REHEARSAL=1` is refused outside the fixture-plane arm, with its reason. Inside it, no `BrowserWindow` is created and no Dock icon shows. Evidence: a unit seam plus one packaged run.
+- [ ] AC-1: `NEO_HARNESS_REHEARSAL=1` is refused outside the isolated Brain smoke and on the fixture plane, with its reason. Inside it, no `BrowserWindow` is created and no Dock icon shows. Evidence: a unit seam plus one packaged run.
 - [ ] AC-2: On a candidate packaged at Brain `9cd1528b`, the organism's journey passes for Claude Desktop and Codex Desktop, and `mapFleetSessionHealth` offers Start after recovery.
 - [ ] AC-3 (red first): a candidate packaged at Brain `d6a905dc`, the 15:43Z install, fails. The verdict names the #1138 symptom (recovered `exited`, Start not offered) and the #1140 symptom (NL launch refused), by step and family. For this run, the journey from #1164 is used at the candidate's own revision; if it is not present there, the PR records how the red candidate got it.
 - [ ] AC-4: In the packaged run, the config digests after the second Start equal those after the first.
@@ -94,6 +94,7 @@ Aligned with ADR 0034 §2.5: the installer stays the only swap. No Brain contrac
 
 - **The upgrade leg,** where the installed build starts the seats and the candidate inherits them. It catches the #1136 class on packaged builds and is the next leaf, reusing this arm.
 - **The installer running the rehearsal before `--quit`:** its own leaf after #733, which owns `install.mjs`'s refusal paths.
+- **Plane mode** (the fixture-plane arm). A plane-mode Fleet defines seats only after its plane registers a forge, so it is a later row.
 - **More families.** They follow neomjs/neo-agent-brain#1164's rows.
 - **Version skew on the host's edge Bridge** (neomjs/neo-agent-brain#1144). The rehearsal owns its own Bridge and cannot see the host's.
 
@@ -129,4 +130,20 @@ Authored by Ada (Claude Opus 5.5, Claude Code) ⚖️
 - 2026-10-18T23:02:33Z @neo-opus-ada added parent issue #732
 - 2026-10-18T23:07:12Z @neo-opus-ada cross-referenced by #1164
 - 2026-10-18T23:07:25Z @neo-opus-ada marked this issue as being blocked by #1164
+- 2026-10-18T23:15:54Z @neo-fable-clio cross-referenced by #732
+- 2026-10-18T23:33:05Z @neo-fable-clio cross-referenced by #1144
+- 2026-10-18T23:41:51Z @neo-opus-ada cross-referenced by PR #1165
+### @neo-opus-ada - 2026-10-19T00:46:27Z
+
+**Intake (prescription check, Ada).** This leaf is where the 10-18 P0s get their red-first. The CI journey (neomjs/neo-agent-brain#1165) cannot reach them, measured:
+- `admissionOwnsBridgeToken` (#1140's owner) and custody recovery (#1138's `exited`) both require `runtime.generation`.
+- With #1139 reverted, the checkout journey stayed green.
+- The packaged smoke does run generation mode. `resolveLauncherRuntime` (`harness/brain.mjs`) materializes a generation under the run's own `userData` (`brain/runtime`) and hands `runtimeGenerationArguments(generation)` to the fleet child (`bootSmokeBrain`, `launcherRuntime.launchArgs`). So AC-3 at Brain `d6a905dc` is reachable here as written.
+
+One packaged-specific point is open: **the stand-in launcher's runtime.** The Fleet proves a seat's process by its command line: the launch binary itself, or a script behind exactly its shebang interpreter (`runsSeatLaunch`). Electron runs as Node only with `ELECTRON_RUN_AS_NODE=1`; the seat env's ambient allowlist drops that, and a shebang cannot set it without changing the interpreter line the proof compares. Plan: the rehearsal runs the stand-in on the host's Node, located the way `NEO_HARNESS_NODE_BIN` is. Without a usable Node it refuses with that reason; it never falls back. The stand-in is the test double, so the product's runtime stays untouched.
+
+Origin Session ID: 3616f5a6-7356-44a2-b974-7415da5f3f65
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

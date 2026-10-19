@@ -1,17 +1,17 @@
 ---
 id: 1146
 title: 'renameAgentIdentities rewrites handles by substring: prefix pairs chain and sibling seats collide'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - architecture
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-18T20:40:21Z'
-updatedAt: '2026-10-18T22:53:42Z'
+updatedAt: '2026-10-18T23:22:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1146'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -24,7 +24,8 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1149 Run the identity rename against the plane''s volumes, writers stopped'
-  - '[ ] 1147 The first seats'' handles carry their Social Names: neo-gpt-euclid, neo-gemini-julia, neo-fable-mnemosyne'
+  - '[x] 1147 The first seats'' handles carry their Social Names: neo-gpt-euclid, neo-gemini-julia, neo-fable-mnemosyne'
+closedAt: '2026-10-18T23:22:39Z'
 ---
 # renameAgentIdentities rewrites handles by substring: prefix pairs chain and sibling seats collide
 
@@ -120,30 +121,75 @@ Retrieval Hint: "renameAgentIdentities prefix chaining sibling collision bounded
 
 ## Timeline
 
-- 2026-10-18T20:40:21Z @neo-fable assigned to @neo-fable
-- 2026-10-18T20:40:22Z @neo-fable added the `bug` label
-- 2026-10-18T20:40:22Z @neo-fable added the `ai` label
-- 2026-10-18T20:40:22Z @neo-fable added the `architecture` label
-- 2026-10-18T20:40:34Z @neo-fable marked this issue as blocking #1147
+- 2026-10-18T20:40:21Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-18T20:40:22Z @neo-fable-mnemosyne added the `bug` label
+- 2026-10-18T20:40:22Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-18T20:40:22Z @neo-fable-mnemosyne added the `architecture` label
+- 2026-10-18T20:40:34Z @neo-fable-mnemosyne marked this issue as blocking #1147
 - 2026-10-18T20:48:57Z @neo-opus-vega cross-referenced by #1149
 - 2026-10-18T20:49:07Z @neo-opus-vega marked this issue as blocking #1149
-- 2026-10-18T20:51:01Z @neo-fable cross-referenced by PR #1152
-- 2026-10-18T21:47:15Z @neo-fable referenced in commit `c058bde` - "fix(migrations): re-key compound identity row ids with their JSON ids and edge endpoints (#1146)
+- 2026-10-18T20:51:01Z @neo-fable-mnemosyne cross-referenced by PR #1152
+- 2026-10-18T21:47:15Z @neo-fable-mnemosyne referenced in commit `c058bde` - "fix(migrations): re-key compound identity row ids with their JSON ids and edge endpoints (#1146)
 
 Euclid's read-only probe of the first head: a schema-valid IdentityState and EmbodiedEpisode pair kept its SQLite row ids while the JSON ids and the era anchor moved, and the HAS_EPISODE edge pointed at a row that no longer answered. Node and edge rows whose id embeds a handle now re-key together with their JSON id, edge endpoints follow, collisions are counted and skipped, and the era shape gets its own rule because the ISO since suffix hides the handle's right boundary behind a hyphen. The generic boundary stays strict; the protected @agent-neo-gpt rows are pinned unchanged."
-- 2026-10-18T22:29:28Z @neo-fable referenced in commit `33a0694` - "test(golden-path): the benched-owner arm seeds its own owner (#1146)
+- 2026-10-18T22:29:28Z @neo-fable-mnemosyne referenced in commit `33a0694` - "test(golden-path): the benched-owner arm seeds its own owner (#1146)
 
 The arm expected OWNER_BENCHED_LANE for an issue assigned to a roster resident whose roots say operator_benched, but the detector reads participation from the worker's graph store, where sibling specs seed and clear AgentIdentity nodes; its verdict depended on which specs shared the worker, and this branch's schedule made it fail on three of four fresh CI runs while passing locally in every order. Seeding a dedicated benched owner inside the arm removes the dependency."
-- 2026-10-18T22:42:50Z @neo-fable referenced in commit `c4fe827` - "fix(migrations): move compound rows under the Edges foreign keys and merge coexisting ids (#1146)
+- 2026-10-18T22:42:50Z @neo-fable-mnemosyne referenced in commit `c4fe827` - "fix(migrations): move compound rows under the Edges foreign keys and merge coexisting ids (#1146)
 
 Sophie's probe with the production DDL: the Edges foreign keys reference Nodes(id) with ON DELETE CASCADE and no ON UPDATE, and the plane runs with foreign_keys on, so updating a connected compound row's primary key aborted the whole apply — the unit schema without the keys had let it pass. The re-key is now insert, move, delete, and when old and new compound ids coexist the old row merges into the surviving one (edges move, duplicates drop, the old row goes) instead of a skipped row whose edge JSON had already been rewritten. Edge JSON endpoints mirror the moved SQL columns. The spec schema carries the production keys and enforcement, a new arm covers the coexistence case, and every graph arm checks foreign_key_check empty."
-- 2026-10-18T22:48:47Z @neo-fable referenced in commit `fe5f81b` - "fix(migrations): merge coexisting compound rows with their provenance; a taken edge id keeps its own (#1146)
+- 2026-10-18T22:48:47Z @neo-fable-mnemosyne referenced in commit `fe5f81b` - "fix(migrations): merge coexisting compound rows with their provenance; a taken edge id keeps its own (#1146)
 
 Sophie's provenance ask: a merge of coexisting compound rows is total and loses nothing — the surviving row's values win, the old row fills every gap, the older createdAt is kept; an edge whose re-keyed id is already taken keeps its own id and still takes its endpoints and metadata, and the collision is reported on every run. The structural edge pass now mirrors the JSON id onto the SQL id so the metadata pass re-keys both together or neither. Arms for both policies; the spec runs the production foreign keys."
-- 2026-10-18T22:53:40Z @neo-fable referenced in commit `2c04a0d` - "fix(migrations): a coexisting compound row merges only when compatible, otherwise fails closed (#1146)
+- 2026-10-18T22:53:40Z @neo-fable-mnemosyne referenced in commit `2c04a0d` - "fix(migrations): a coexisting compound row merges only when compatible, otherwise fails closed (#1146)
 
 Sophie's provenance finding, taken whole: a blind merge still discarded the old row's value wherever the two rows disagreed. The merge is now a policy — a key on one row is kept, a key on both must agree, the older createdAt is kept — and a disagreement fails closed for that row: nothing moves, nothing is written, the plan names the keys. Arms for the compatible merge and the fail-closed conflict."
-- 2026-10-18T23:09:41Z @neo-fable referenced in commit `3bb4aa0` - "fix(migrations): a merged survivor is re-read, never overwritten from the pre-pass snapshot (#1146)
+- 2026-10-18T23:09:41Z @neo-fable-mnemosyne referenced in commit `3bb4aa0` - "fix(migrations): a merged survivor is re-read, never overwritten from the pre-pass snapshot (#1146)
 
 Sophie's Round-1 finding: the metadata pass iterated a snapshot taken before any write, so a survivor visited after the merge that rewrote it was normalized from its stale, un-merged copy and lost the merged data whenever it needed normalization itself. Every node and edge is re-read before it is decided, a merged survivor's user_id is normalized in the merge, and the regression arm runs the compatible merge in both visiting orders with a survivor that still carries the old user id and an old token."
+- 2026-10-18T23:22:39Z @tobiu referenced in commit `c69476d` - "fix(migrations): rename tokens as whole handles, resolve chains, add the first-seat pairs (#1146) (#1152)
+
+* fix(migrations): rename tokens as whole handles, resolve chains, add the first-seat pairs (#1146)
+
+rewriteIdentityString ran two chained substring replaceAlls per pair, which was correct only while no old handle was a prefix of its target. The three first-seat pairs break that: @neo-fable became @neo-fable-mnemosyne-mnemosyne, @neo-gpt-emmy became @neo-gpt-euclid-euclid-emmy, and every re-run compounded. One alternation over all tokens, longest first, with the handle alphabet as the boundary, rewrites a whole handle once; a chain resolves to its last handle, so a second pass is a no-op. identityKey joins the metadata keys so an era-chain anchor would move with its root.
+
+* fix(migrations): re-key compound identity row ids with their JSON ids and edge endpoints (#1146)
+
+Euclid's read-only probe of the first head: a schema-valid IdentityState and EmbodiedEpisode pair kept its SQLite row ids while the JSON ids and the era anchor moved, and the HAS_EPISODE edge pointed at a row that no longer answered. Node and edge rows whose id embeds a handle now re-key together with their JSON id, edge endpoints follow, collisions are counted and skipped, and the era shape gets its own rule because the ISO since suffix hides the handle's right boundary behind a hyphen. The generic boundary stays strict; the protected @agent-neo-gpt rows are pinned unchanged.
+
+* test(golden-path): the benched-owner arm seeds its own owner (#1146)
+
+The arm expected OWNER_BENCHED_LANE for an issue assigned to a roster resident whose roots say operator_benched, but the detector reads participation from the worker's graph store, where sibling specs seed and clear AgentIdentity nodes; its verdict depended on which specs shared the worker, and this branch's schedule made it fail on three of four fresh CI runs while passing locally in every order. Seeding a dedicated benched owner inside the arm removes the dependency.
+
+* fix(migrations): move compound rows under the Edges foreign keys and merge coexisting ids (#1146)
+
+Sophie's probe with the production DDL: the Edges foreign keys reference Nodes(id) with ON DELETE CASCADE and no ON UPDATE, and the plane runs with foreign_keys on, so updating a connected compound row's primary key aborted the whole apply — the unit schema without the keys had let it pass. The re-key is now insert, move, delete, and when old and new compound ids coexist the old row merges into the surviving one (edges move, duplicates drop, the old row goes) instead of a skipped row whose edge JSON had already been rewritten. Edge JSON endpoints mirror the moved SQL columns. The spec schema carries the production keys and enforcement, a new arm covers the coexistence case, and every graph arm checks foreign_key_check empty.
+
+* fix(migrations): merge coexisting compound rows with their provenance; a taken edge id keeps its own (#1146)
+
+Sophie's provenance ask: a merge of coexisting compound rows is total and loses nothing — the surviving row's values win, the old row fills every gap, the older createdAt is kept; an edge whose re-keyed id is already taken keeps its own id and still takes its endpoints and metadata, and the collision is reported on every run. The structural edge pass now mirrors the JSON id onto the SQL id so the metadata pass re-keys both together or neither. Arms for both policies; the spec runs the production foreign keys.
+
+* fix(migrations): a coexisting compound row merges only when compatible, otherwise fails closed (#1146)
+
+Sophie's provenance finding, taken whole: a blind merge still discarded the old row's value wherever the two rows disagreed. The merge is now a policy — a key on one row is kept, a key on both must agree, the older createdAt is kept — and a disagreement fails closed for that row: nothing moves, nothing is written, the plan names the keys. Arms for the compatible merge and the fail-closed conflict.
+
+* fix(migrations): a merged survivor is re-read, never overwritten from the pre-pass snapshot (#1146)
+
+Sophie's Round-1 finding: the metadata pass iterated a snapshot taken before any write, so a survivor visited after the merge that rewrote it was normalized from its stale, un-merged copy and lost the merged data whenever it needed normalization itself. Every node and edge is re-read before it is decided, a merged survivor's user_id is normalized in the merge, and the regression arm runs the compatible merge in both visiting orders with a survivor that still carries the old user id and an old token."
+- 2026-10-18T23:22:39Z @tobiu closed this issue
+- 2026-10-18T23:24:58Z @neo-fable-mnemosyne referenced in commit `22c4cf0` - "feat(identity): the first seats' handles carry their Social Names; formerLogins keeps the trail (#1147)
+
+Euclid, Julia and Mnemosyne were the first seat of their families and the only ones whose GitHub handle did not carry the Social Name every later seat was born with. The roots, the co-author map, the roster engine tags, the core-swarm user ids, the epoch-pinned migration maps, two lifecycle defaults, the ModelStats id rows and the README roster follow the login; a new optional formerLogins keeps every earlier handle so corpus author strings and old @mentions still resolve, and IssueIngestor counts them as internal authors. Data moves with renameAgentIdentities.mjs (#1146); this change deploys only inside the rename window, after the accounts are renamed."
+- 2026-10-18T23:25:02Z @neo-fable-mnemosyne cross-referenced by #1147
+- 2026-10-18T23:47:58Z @tobiu referenced in commit `b4b040d` - "feat(identity): the first seats' handles carry their Social Names; formerLogins keeps the trail (#1147) (#1155)
+
+* feat(identity): the first seats' handles carry their Social Names; formerLogins keeps the trail (#1147)
+
+Euclid, Julia and Mnemosyne were the first seat of their families and the only ones whose GitHub handle did not carry the Social Name every later seat was born with. The roots, the co-author map, the roster engine tags, the core-swarm user ids, the epoch-pinned migration maps, two lifecycle defaults, the ModelStats id rows and the README roster follow the login; a new optional formerLogins keeps every earlier handle so corpus author strings and old @mentions still resolve, and IssueIngestor counts them as internal authors. Data moves with renameAgentIdentities.mjs (#1146); this change deploys only inside the rename window, after the accounts are renamed.
+
+* test(identity): roster-login fixtures follow the renamed handles (#1147)
+
+Forty-six arms across twenty-one spec files pin neo-gpt, neo-gemini-pro or neo-fable as a registered roster login (trust tiers, benched-owner lanes, core-swarm summaries, wake routes, review-family resolution). They move to the renamed handles with the same whole-handle boundary rule the migration script uses, so sibling seats stay untouched.
+
+* test(identity): realign two rewritten fixture blocks (#1147)"
 

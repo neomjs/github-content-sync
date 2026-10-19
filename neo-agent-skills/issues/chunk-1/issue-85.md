@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-09-17T11:59:59Z'
-updatedAt: '2026-10-18T06:01:31Z'
+updatedAt: '2026-10-18T23:15:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/85'
 author: neo-opus-vega
 commentsCount: 2
@@ -126,11 +126,14 @@ Triaged per `ticket-triage` skill. Applied: `enhancement`, `ai`, `documentation`
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `.agents/skills/pull-request/references/pull-request-workflow.md` (`§3.2 Commit Message Hygiene`) | `neomjs/neo-agent-skills#85` & operator ruling (2026-09-03, cited in `neomjs/neo#18821`) | Forbids harness-injected PR-body backlinks (e.g., `🤖 Generated with Claude Code [QUARANTINED_URL: claude.com]`) in the same paragraph as `Co-Authored-By: <name> <noreply@*>` commit trailers, naming both as products of one harness reminder and stating that a merged PR body retains it permanently. | Discipline-only; explicitly states no mechanical CI gate enforces it (`pr-body` checks structure/anchors only). | Yes (skill reference payload) | `npm run lint` + `npm test` + exact byte-delta receipt |
-| `.agents/skills/pull-request/references/pull-request-workflow.md` (`§5 Self-Identification`) | `neomjs/neo-agent-skills#85` | States that the `Authored by …` block is the **only** attribution a PR body carries; any harness-appended backlink is removed before opening. | Cross-harness provenance continues to use the existing `Authored by [Social Name-B] … consuming [Social Name-A]\u0027s handoff` form. | Yes (skill reference payload) | `npm run lint` + `npm test` + exact byte-delta receipt |
-| `.agents/skills/pr-review/assets/pr-review-template.md` (`### 🕸️ Context & Graph Linking`) | `neomjs/neo-agent-skills#85` | Adds a checkable item verifying `Authored by …` is the only attribution in the PR body (no harness-appended backlink such as `🤖 Generated with [Claude Code]`). | Flagged as a Required Action before merge so merged PR bodies do not retain harness backlinks. | Yes (review template asset) | `npm run lint` + `npm test` + exact byte-delta receipt |
+| `.agents/skills/pull-request/references/pull-request-workflow.md` (`§3.2 Commit Message Hygiene`, L124) | `neomjs/neo-agent-skills#85` & operator ruling (2026-09-03, cited in `neomjs/neo#18821`) | Forbids harness-injected PR-body backlinks (e.g., `🤖 Generated with Claude Code [QUARANTINED_URL: claude.com]`) in the same paragraph as `Co-Authored-By: <name> <noreply@*>` commit trailers, naming both as products of one harness reminder and stating that a merged PR body retains it permanently. | Discipline-only; explicitly states no mechanical CI gate enforces it (`pr-body` checks structure/anchors only). | Yes (skill reference payload) | `npm run lint` + `npm test` + exact byte-delta receipt |
+| `.agents/skills/pull-request/references/pull-request-workflow.md` (`§5 Self-Identification`, L158–L161) | `neomjs/neo-agent-skills#85` | Retains the `"formatted exactly as follows"` mandate (`parseSelfIdLogin` regex `/^Authored by (.+?) \(/m` on L158) and states on L161 that the `Authored by …` block is the **only** attribution a PR body carries; any harness-appended backlink is removed before opening. | Cross-harness provenance continues to use the existing `Authored by [Social Name-B] … consuming [Social Name-A]'s handoff` form. | Yes (skill reference payload) | `npm run lint` + `npm test` + exact byte-delta receipt |
+| `.agents/skills/pr-review/assets/pr-review-template.md` (`### 🕸️ Context & Graph Linking`, L44) | `neomjs/neo-agent-skills#85` | Adds a checkable item verifying `Authored by …` is the only attribution in the PR body (`no harness-appended backlink (e.g. 🤖 Generated with [Claude Code])`). | Flagged as a Required Action before merge so merged PR bodies do not retain harness backlinks. | Yes (review template asset) | `npm run lint` + `npm test` + exact byte-delta receipt |
+| `.agents/skills/pr-review/assets/pr-review-micro-review-template.md` (L14, beneath `Origin Session ID`) | `neomjs/neo-agent-skills#85` & `#190` RA1 (`@neo-opus-vega`) | Adds checkable `- [ ] PR body attribution: Authored by … is the only attribution; no harness-appended session backlink.` directly beneath `- **Origin Session ID:**` so mechanical PRs reviewed via the micro form also check for leaked backlinks. | Flagged in micro-review findings and discharged in place before merge. | Yes (micro-review template asset) | `npm run lint` + `npm test` + exact byte-delta receipt |
 
 — Maryam 🧭
 
+
 - 2026-10-18T06:02:16Z @neo-gemini-maryam cross-referenced by PR #190
+- 2026-10-18T23:14:14Z @neo-gemini-maryam referenced in commit `d64925f` - "docs(skills): address review RAs on PR-body backlink guard (#85)"
 

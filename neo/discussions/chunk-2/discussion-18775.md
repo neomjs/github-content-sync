@@ -16,7 +16,7 @@ routingDispositionEvidence:
   - 'marker:RESOLVED_TO_AC'
 contentTrust:
   projected: true
-  quarantined: 7
+  quarantined: 0
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
@@ -292,18 +292,18 @@ I read the current body/18880386 against Engine `9690340f05444488893d3ab1f2956f8
 
 | Option | When this would be right | Evidence / falsifier |
 |---|---|---|
-| **F. Keep one registered Client and its six-service registry; make transport startup explicit, with a harness-owned dispatch adapter** | The latent seam needs lifecycle separation but no new registry or transport class. Production App boot connects when the existing useAiClient policy resolves true; a test boot can load the same dispatcher without starting transport. | Client.construct already builds services before connect; App boot [QUARANTINED_URL: github.com] owns the three config forms. Falsify with repeated initialization, all useAiClient forms, late-bridge recovery, service teardown and test setup before app boot. This is an alternative shape, not a proven patch. |
-| **G. Dedicated-worker test adapter first, with native/headed and Bridge integration kept as distinct evidence tiers** | Hosted CI's immediate beneficiary is the single-app dispatcher; no production main-thread API or new default config is necessary for that first coverage. SharedWorker requires a separately proven adapter rather than silently changing its mode. | AiClientLateBridge [QUARANTINED_URL: github.com] already captures/evaluates the App Worker; DefaultConfig defaults to dedicated workers, while Workstation opts into SharedWorker. Falsify with a real source app, refusal/guard/undo, writer cleanup after a thrown test, and a named SharedWorker/native residual. No claim that this alone replaces all excluded specs. |
+| **F. Keep one registered Client and its six-service registry; make transport startup explicit, with a harness-owned dispatch adapter** | The latent seam needs lifecycle separation but no new registry or transport class. Production App boot connects when the existing useAiClient policy resolves true; a test boot can load the same dispatcher without starting transport. | Client.construct already builds services before connect; [App boot](https://github.com/neomjs/neo/blob/9690340f05444488893d3ab1f2956f80c14c2bb6/src/worker/App.mjs#L760) owns the three config forms. Falsify with repeated initialization, all useAiClient forms, late-bridge recovery, service teardown and test setup before app boot. This is an alternative shape, not a proven patch. |
+| **G. Dedicated-worker test adapter first, with native/headed and Bridge integration kept as distinct evidence tiers** | Hosted CI's immediate beneficiary is the single-app dispatcher; no production main-thread API or new default config is necessary for that first coverage. SharedWorker requires a separately proven adapter rather than silently changing its mode. | [AiClientLateBridge](https://github.com/neomjs/neo/blob/9690340f05444488893d3ab1f2956f80c14c2bb6/test/playwright/e2e/core/AiClientLateBridge.spec.mjs#L70) already captures/evaluates the App Worker; DefaultConfig defaults to dedicated workers, while Workstation opts into SharedWorker. Falsify with a real source app, refusal/guard/undo, writer cleanup after a thrown test, and a named SharedWorker/native residual. No claim that this alone replaces all excluded specs. |
 
 ## Transport independence is not a window-capability boundary
 
 OQ5's “surface hosts all six services” and “exposes no window operation” conflict with current Engine registrations.
 
-`registerRuntimeServiceMethods` [QUARANTINED_URL: github.com] registers all four names: `open_component_window`, `close_window`, `position_window`, `focus_window`. RuntimeService.focusWindow [QUARANTINED_URL: github.com] calls Main's native focus route; openComponentWindow calls the dashboard popup primitive. The Brain's wrappers do not own the only implementation of these effects.
+[`registerRuntimeServiceMethods`](https://github.com/neomjs/neo/blob/9690340f05444488893d3ab1f2956f80c14c2bb6/src/ai/client/RuntimeService.mjs#L12) registers all four names: `open_component_window`, `close_window`, `position_window`, `focus_window`. [RuntimeService.focusWindow](https://github.com/neomjs/neo/blob/9690340f05444488893d3ab1f2956f80c14c2bb6/src/ai/client/RuntimeService.mjs#L408) calls Main's native focus route; openComponentWindow calls the dashboard popup primitive. The Brain's wrappers do not own the only implementation of these effects.
 
 **Executed discriminator:** actual registration, resolver/dispatch, transaction-domain method and full RuntimeService class were evaluated with isolated literal window collaborators. `focus_window` with a complete test pair and a known native route produced exactly one `Neo.Main.windowNativeFocus` boundary call and success; an unknown-window positive refusal produced no second call. No Client/socket singleton, actual popup or live window was created. This establishes off-socket method reachability, not physical native-window acceptance.
 
-Removing four names is also not an effects barrier: InstanceService.callMethod [QUARANTINED_URL: github.com] invokes nested instance methods, and normal input can open a window (existing multi-window fixture [QUARANTINED_URL: github.com]). Those are source witnesses, not new browser receipts.
+Removing four names is also not an effects barrier: [InstanceService.callMethod](https://github.com/neomjs/neo/blob/9690340f05444488893d3ab1f2956f80c14c2bb6/src/ai/client/InstanceService.mjs#L1160) invokes nested instance methods, and normal input can open a window ([existing multi-window fixture](https://github.com/neomjs/neo/blob/9690340f05444488893d3ab1f2956f80c14c2bb6/test/playwright/e2e/neural-link/CreateComponentMultiWindow.spec.mjs#L34)). Those are source witnesses, not new browser receipts.
 
 The smaller contract is **transport isolation**: the test entry calls existing handlers without a WebSocket or Brain service. Native effects of those handlers remain available where the harness can prove them; physical popup/placement journeys remain in the headed matrix. A narrow Bridge tier owns authentication/stamping, routing/topology, disconnect delivery and transport recovery. Avoid inventing a universal “no windows” gate merely to justify socket-free tests.
 
@@ -311,7 +311,7 @@ The smaller contract is **transport isolation**: the test entry calls existing h
 
 Keep the complete fixture-owned writer pair. It is necessary for the context-enforcing methods, not proof that every Runtime effect uses subtree admitWrite. Preserve existing service semantics rather than silently widening the lock model.
 
-Test disposal needs the paired release-and-sweep behavior [QUARANTINED_URL: github.com], especially for a shared heap that outlives one page/test. Falsifier: test A writes then throws; after fixture cleanup, test B's new pair has neither stale conflict nor A's undo stack. Bridge ownership of trusted disconnect events does not relieve a fixture of ending its own writer lifetime.
+Test disposal needs the paired [release-and-sweep behavior](https://github.com/neomjs/neo/blob/9690340f05444488893d3ab1f2956f80c14c2bb6/src/ai/Client.mjs#L256), especially for a shared heap that outlives one page/test. Falsifier: test A writes then throws; after fixture cleanup, test B's new pair has neither stale conflict nor A's undo stack. Bridge ownership of trusted disconnect events does not relieve a fixture of ending its own writer lifetime.
 
 Finally, define the baseline for “byte-identical production build.” Adding a DefaultConfig property or changing Client/App code changes emitted bytes even when the branch is dormant. The useful bounded contract is that the test entry/addon is absent from production artifacts, normal useAiClient behavior is preserved, and flag-off boot exposes no new test dispatch route. Literal byte parity needs a named before/after artifact experiment if retained.
 

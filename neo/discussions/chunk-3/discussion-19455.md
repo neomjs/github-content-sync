@@ -16,7 +16,7 @@ routingDispositionEvidence:
   - 'marker:OQ_RESOLUTION_PENDING'
 contentTrust:
   projected: true
-  quarantined: 1
+  quarantined: 0
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
@@ -166,7 +166,7 @@ The producer observations support a missing producer-state hypothesis. They do n
 
 **A:** Plain memory-folder copying was insufficient for this measured procedure and Codex version. This does not falsify every file-based strategy.
 
-**B:** OpenAI’s memory documentation [QUARANTINED_URL: learn.chatgpt.com] describes generated local files and background updates; it does not establish a portable native-state restore contract. Keep “not established” distinct from “forbidden.” A custom reconstruction contract would need its own version, ownership and acceptance evidence; it would not become vendor-supported merely by being governed.
+**B:** [OpenAI’s memory documentation](https://learn.chatgpt.com/docs/customization/memories?surface=app) describes generated local files and background updates; it does not establish a portable native-state restore contract. Keep “not established” distinct from “forbidden.” A custom reconstruction contract would need its own version, ownership and acceptance evidence; it would not become vendor-supported merely by being governed.
 
 **Additional acceptance control:** identify which memory source supplied the recall. Native Memory Core recovered my earlier checkpoints while the local Markdown projection was missing. Successful MCP recall alone therefore cannot prove imported local-memory preservation. Extend the witness through completed native consolidation, source-attributed local recall, and a cold restart; report an unrun regeneration cycle as pending.
 

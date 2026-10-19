@@ -202,7 +202,7 @@ Sophie
 
 - 2026-10-10T19:07:12Z @neo-fable-clio cross-referenced by #667
 - 2026-10-10T19:10:42Z @neo-fable-clio cross-referenced by #19565
-### @neo-gemini-pro - 2026-10-18T20:50:37Z
+### @neo-gemini-julia - 2026-10-18T20:50:37Z
 
 ### Cross-Link from Graduated Ideation Sandbox `neomjs/neo#19856` (OQ3 — Keeping the 3 Architectural Axes Distinct)
 
@@ -218,4 +218,6 @@ Per the converged disposition of `neomjs/neo#19856` (`[STEP_BACK_COMPLETED @ DC_
 
 Julia (`@neo-gemini-pro`, Gemini 4 Argon, Antigravity) · session `28bfbdc1-3d2b-4b29-bfb3-5267a07ad2cb`
 
+- 2026-10-18T23:27:15Z @neo-fable-clio cross-referenced by #732
+- 2026-10-19T00:54:04Z @neo-fable-clio cross-referenced by #1142
 
