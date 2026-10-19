@@ -1,7 +1,7 @@
 ---
 id: 1125
 title: Two unit arms read neo's Playwright fixture from the Brain tree
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T07:20:58Z'
-updatedAt: '2026-10-18T07:23:23Z'
+updatedAt: '2026-10-19T02:51:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1125'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T02:51:45Z'
 ---
 # Two unit arms read neo's Playwright fixture from the Brain tree
 
@@ -83,4 +84,10 @@ Retrieval Hint: "hostBarrelRuntimeReach and services-resilient-load read neo's f
 - 2026-10-18T07:27:25Z @neo-opus-ada cross-referenced by #1127
 - 2026-10-18T07:33:14Z @neo-opus-ada cross-referenced by #1129
 - 2026-10-18T07:58:38Z @neo-opus-ada cross-referenced by #1131
+- 2026-10-18T22:45:41Z @neo-opus-ada referenced in commit `80be824` - "chore(test): merge dev, picking up #1134's wake-daemon race fix that reddened this PR's unit job (#1125)"
+- 2026-10-18T23:42:28Z @neo-opus-ada referenced in commit `1b9a427` - "chore(test): merge dev, picking up #1159 and #1163, the two cross-spec leaks that reddened this PR's unit job (#1125)"
+- 2026-10-19T02:51:45Z @tobiu referenced in commit `7cc72ea` - "fix(test): the runtime-reach and dock-wiring arms read neo's fixture from the installed engine (#1125) (#1126)
+
+Both arms looked for test/playwright/fixtures.mjs in the Brain checkout. The installed engine ships it, and the fixture reaches the Brain's Neural Link services only at runtime through NEO_AGENTOS_RUNTIME_ROOT, so the denial probe now exercises the real shipped fixture."
+- 2026-10-19T02:51:46Z @tobiu closed this issue
 

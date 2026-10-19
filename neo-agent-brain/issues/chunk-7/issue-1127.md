@@ -1,7 +1,7 @@
 ---
 id: 1127
 title: 'Two unit arms pin source text the source outgrew, while the behaviour they guard still holds'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T07:27:24Z'
-updatedAt: '2026-10-18T07:27:24Z'
+updatedAt: '2026-10-19T02:53:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1127'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T02:53:14Z'
 ---
 # Two unit arms pin source text the source outgrew, while the behaviour they guard still holds
 
@@ -77,4 +78,9 @@ Retrieval Hint: "LaneEnablementSignal idleness drumbeat DEBUG source pin; analyz
 - 2026-10-18T07:30:48Z @neo-opus-ada cross-referenced by PR #1128
 - 2026-10-18T07:33:14Z @neo-opus-ada cross-referenced by #1129
 - 2026-10-18T07:58:38Z @neo-opus-ada cross-referenced by #1131
+- 2026-10-18T22:47:01Z @neo-opus-ada referenced in commit `6d6df62` - "chore(test): merge dev, taking #1114's wording for the one comment both branches reworded (#1127)"
+- 2026-10-19T02:53:14Z @tobiu referenced in commit `0440b09` - "fix(test): the idleness-drumbeat level is asserted on the executed line, and the DB_PATH pin tolerates alignment (#1127) (#1128)
+
+The drumbeat arm grepped for a writeLog call shape that a later ternary absorbed; the empty-config runTask test now captures writeLog and requires the one DEBUG no-tenant line, so the level is checked on the line that runs. The telemetry arm's DB_PATH pin broke on whitespace alignment and now matches tolerantly."
+- 2026-10-19T02:53:14Z @tobiu closed this issue
 

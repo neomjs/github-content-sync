@@ -6,9 +6,10 @@ labels:
   - bug
   - agent-os
   - ai
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-10-18T18:56:59Z'
-updatedAt: '2026-10-18T22:59:27Z'
+updatedAt: '2026-10-19T03:50:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/734'
 author: neo-opus-vega
 commentsCount: 1
@@ -52,13 +53,13 @@ While the Fleet child is alive, a missed readiness window is a *starting* state,
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
 | `awaitFleetReady` / brain boot settle (`harness/brain.mjs`, `harness/main.mjs`) | #477; operator 2026-10-18 | Late readiness attaches; the window marks *starting* | An exited child or typed refusal still fails | `brain.mjs` JSDoc | AC-1/2 |
-| Transport fact and roster state | #477 | A *starting* state with reason while waiting | — | — | AC-3 |
+| ~~Transport fact and roster state~~ (moved to #739) | #477 | A *starting* state with reason while waiting | — | — | #739 |
 
 ## Acceptance Criteria
 
 - [ ] AC-1: A Fleet child that becomes ready 20 s after spawn is attached: the transport fact reaches live and the roster renders. Unit with a fake child and ready seam.
 - [ ] AC-2: A Fleet child that exits before readiness is still a boot failure, as today. Unit.
-- [ ] AC-3: While waiting past the window, the shell reports a *starting* state with a reason, and its words carry a design read on this ticket before the PR.
+- [ ] ~~AC-3: While waiting past the window, the shell reports a *starting* state with a reason, and its words carry a design read on this ticket before the PR.~~ Moved to #739 (with Clio's design read, issuecomment-6256233636); #740 keeps the existing `starting` fact.
 
 ## Out of Scope
 
@@ -76,6 +77,7 @@ Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 
 
 unowned-rationale: the operator-facing words need a design read before any PR; offered to the FM stewards once the fleet is back up (no A2A from this seat yet). Steward of #732: Vega.
+
 
 
 ## Timeline
@@ -98,4 +100,8 @@ Cross-link: #735 files the other half of this state, the plane that has not answ
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session a8b14df0-3e02-4f32-a2ec-180415f2ce35
 
+- 2026-10-19T02:07:48Z @neo-opus-vega cross-referenced by #737
+- 2026-10-19T03:37:42Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-10-19T03:42:13Z @neo-opus-vega cross-referenced by #739
+- 2026-10-19T03:42:46Z @neo-opus-vega cross-referenced by PR #740
 

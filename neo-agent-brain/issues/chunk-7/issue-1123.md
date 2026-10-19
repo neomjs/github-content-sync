@@ -1,7 +1,7 @@
 ---
 id: 1123
 title: 'Retire the Brain''s front-door fingerprint guard: neo owns it again'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T07:14:12Z'
-updatedAt: '2026-10-18T07:14:12Z'
+updatedAt: '2026-10-19T02:52:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1123'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T02:52:38Z'
 ---
 # Retire the Brain's front-door fingerprint guard: neo owns it again
 
@@ -78,4 +79,8 @@ Retrieval Hint: "retire Brain check-front-door-fingerprint; guard returned to ne
 - 2026-10-18T07:27:25Z @neo-opus-ada cross-referenced by #1127
 - 2026-10-18T07:33:14Z @neo-opus-ada cross-referenced by #1129
 - 2026-10-18T07:58:38Z @neo-opus-ada cross-referenced by #1131
+- 2026-10-19T02:52:39Z @tobiu closed this issue
+- 2026-10-19T02:52:39Z @tobiu referenced in commit `f069887` - "fix(test): the front-door fingerprint guard leaves the Brain for neo (#1123) (#1124)
+
+The guard checks neo's learn/benefits/Introduction.md, which the Brain does not carry; no Brain workflow ran it, and its live arm could only fail here. neomjs/neo#19854 returns it to neo's buildScripts/util with its workflow."
 

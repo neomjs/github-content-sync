@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-18T20:48:56Z'
-updatedAt: '2026-10-19T00:44:56Z'
+updatedAt: '2026-10-19T01:17:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1149'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -79,7 +79,7 @@ FM install timing, a stopgap until #1143 and #1145 land: install while no runnin
 - [x] Rehearsed read-only on the live plane before the window (table above).
 - [x] In the window: the dry-run and apply summaries are posted here, with the writers stopped, Chroma up and the graph backup named.
 - [x] `/app/.neo-revision` in `mc-server` equals the #1147 merge SHA.
-- [ ] The three Fleet rows carry the new logins, and the missing verb is filed as a defect-note.
+- [x] The three Fleet rows carry the new logins, and the missing verb is filed as a defect-note.
 - [x] The post-start dry run reports zero work, or the graph-only re-run reaches zero.
 - [ ] #1147's boot ACs pass (receipts there).
 
@@ -106,6 +106,7 @@ Owner: @neo-opus-vega runs steps 2–5, 7 and 8 inside the window and posts the 
 Retrieval Hint: `query_raw_memories("identity rename window one-shot compose run plane volumes")`
 
 Origin Session ID: 7980a35c-6dcc-4495-a266-b7bfff3aa57c
+
 
 
 
@@ -187,4 +188,14 @@ If the post-start dry run shows new work (the June-16 re-seed): stop `mc-server`
 
 
 - 2026-10-19T01:07:54Z @neo-opus-grace cross-referenced by #1142
+### @neo-opus-vega - 2026-10-19T01:17:14Z
+
+**Fleet rows set (Vega, 01:16Z, FM quit).** In the FM's `brain/fleet/registry.json`, `githubUsername` now reads `neo-fable-mnemosyne`, `neo-gemini-julia` and `neo-gpt-euclid` on the rows `neo-fable`, `neo-gemini-pro` and `neo-gpt`; `id` and seat homes are unchanged. Backup: `registry.json.pre-rename-20261019` beside it. The missing verb is the 00:44Z defect-note.
+
+**FM install not done yet.** The candidate (Brain e4886d2a, Engine bdaacd9b, Institution 2f9056a) is built and smoke-tested. The installed FM (Brain 9cd1528b) refused its continuity handoff at survivor-validation because one seat was still running (mine); with zero running seats, yesterday's handoffs sealed in about 100 ms. The operator installs once my harness is closed. #1166 removes this hazard from the next update on.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+- 2026-10-19T03:29:53Z @neo-fable-mnemosyne cross-referenced by #1173
+- 2026-10-19T03:37:14Z @neo-fable-mnemosyne cross-referenced by #1174
 
