@@ -1,7 +1,7 @@
 ---
 id: 1164
 title: 'A seat''s Start, restart and recovery run end to end against a stand-in harness in CI'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-18T23:07:10Z'
-updatedAt: '2026-10-19T13:04:21Z'
+updatedAt: '2026-10-19T14:14:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1164'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,7 +24,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 736 A packaged candidate runs the seat checklist in isolation before install'
+  - '[x] 736 A packaged candidate runs the seat checklist in isolation before install'
+closedAt: '2026-10-19T14:14:29Z'
 ---
 # A seat's Start, restart and recovery run end to end against a stand-in harness in CI
 
@@ -76,11 +77,11 @@ Every surface below is new (Source of Authority: this ticket). neomjs/neo-agent-
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `runSeatJourney({fleet, restartFleet, seats, bridgePort = null, timeoutMs = 90_000, log})` → `{ok, rows}` | #1164 | `fleet`: a Fleet wire client (`createFleetRegistryBridge` shape). `restartFleet`: `async ({beforeBoot}) => client`, which stops the server uncleanly, awaits `beforeBoot()`, then boots a fresh one on the same root. `seats`: `{definition, repo: {repoSlug, cloneUrl}}`. Per seat: `define` → `start` → `stop` → `start-again` → `operator-content`, then `recover` → `start-after-recovery` for the seats still running. A row is `{seat, family, step, ok, reason, detail}`. `ok` holds when every row is ok. | It never throws. A throwing wire call becomes that step's failed row (`the wire call failed: …`) and skips the seat's later steps. A failed restart writes a failed `recover` row per running seat and returns. `bridgePort: null` skips the port check. `timeoutMs` bounds each wait. | module JSDoc | `seatJourney.spec.mjs`: the end-to-end arm and the wire-failure arm |
+| `runSeatJourney({fleet, restartFleet, seats, bridgePort = null, timeoutMs = 90_000, log})` → `{ok, rows}` | #1164 | `fleet`: a Fleet wire client (`createFleetRegistryBridge` shape). `restartFleet`: `async ({beforeBoot}) => client`, which stops the server uncleanly, awaits `beforeBoot()`, then boots a fresh one on the same root. `seats`: `{definition, repo: {repoSlug, cloneUrl}}`. Per seat: `define` → `start` → `stop` → `start-again` → `operator-content`, then `recover` → `start-after-recovery` for the seats still running. A row is `{seat, family, step, ok, reason, detail}`. `ok` holds when every row is ok. | It never throws. A throwing wire call becomes that step's failed row (`the wire call failed: …`), and a config that cannot be read or seeded becomes the `operator-content` row (`reading the harness config failed: …`); either ends the seat's Start/Stop steps. Only a seat whose process is still up goes on to `recover`. A failed restart writes a failed `recover` row per running seat and returns. `bridgePort: null` skips the port check. `timeoutMs` bounds each wait. | module JSDoc | `seatJourney.spec.mjs`: the end-to-end arm, the wire-failure arm and the gone-config arm |
 | Teardown duties | #1164 | The runner, inside `beforeBoot`, SIGTERMs the seats it started and waits for them to exit. In `finally` it attempts `stopAgent` for every seat it defined. The caller owns the fleet server, the Bridge, the roots and the wire client, and stops them after the journey returns. | The closing Stops run under `allSettled`, so a failed one adds no row. The caller's own teardown stays the guarantee. | module JSDoc | the end-to-end arm asserts that no seat process remains |
 | Stand-in record `<instanceHome>/seat-stand-in.json` | #1164 | The file holds `{version: 1, records}`, newest 10. Once all its probes have answered, each launch appends `{family, pid, startedAt, argv, configs: [{path, sha256}], rows}`. A row takes one of three shapes: `{name, ok: true, tools, healthcheck, ms}`; `{name, ok: false, step, reason, stderr, ms}`, where `step` is `initialize`, `tools/list` or `healthcheck` and `stderr` keeps the last 2000 characters; or `{name, disabled: true}`. | A launch stopped before its probes finish writes no record, and the journey names that: `the stand-in wrote no record for this launch`. A server with no `healthcheck` tool, or one that answers `isError`, fails at `healthcheck`. | `seatStandIn.mjs` JSDoc | `seatStandIn.spec.mjs` |
 | `expectedRows(definition)`, `judgeRecord(record, {expected, bridgePort})` | #1164 | The expected rows are `neo-mjs-<server>` for every server the seat's MCP matrix enables over its forge's catalog. A record passes only when every expected row is present, switched on, and answered all three asks, and when Neural Link (if expected) reports `healthy` with a connected Bridge on `bridgePort`. | An expected row switched off fails (`is switched off`). An unexpected `neo-mjs-*` row may sit there switched off, but fails if it runs. A missing answer never passes. | JSDoc | the `judgeRecord` arms |
-| `readOperatorContent`, `compareOperatorContent`, `OPERATOR_ROW_SWITCHES` | #1164 (AC-3) | `readOperatorContent` returns a config minus what the Fleet owns. Inside a `neo-mjs-*` row only `enabled` / `disabled` belong to the operator; command, args, env and grant belong to the Fleet. | An unreadable config counts as changed. | JSDoc | the fresh-grant / flipped-switch arm |
+| `readOperatorContent`, `seedOperatorContent`, `compareOperatorContent`, `OPERATOR_ROW_SWITCHES` | #1164 (AC-3) | `readOperatorContent` returns a config minus what the Fleet owns. Inside a `neo-mjs-*` row only `enabled` / `disabled` belong to the operator; command, args, env and grant belong to the Fleet. | An unreadable config counts as changed. Seeding a config that is gone throws in either format and never writes it anew. | JSDoc | the fresh-grant / flipped-switch arm |
 | `writeStandInLauncher`, `writeCodexStandInBundle`, `seedSeatCheckout` | #1164 | The launcher is a module whose shebang names an absolute runtime, so it passes `runsSeatLaunch`. The bundle returns `{binary, cli}` for `NEO_FLEET_CODEX_DESKTOP_BIN` / `NEO_FLEET_CODEX_BIN`. The checkout is the one `ensureAgentRepo` reuses. | — | JSDoc | the launcher arm; the end-to-end arm |
 
 ## Acceptance Criteria
@@ -118,7 +119,6 @@ Origin Session ID: 0485abc0-0261-4f45-9f67-c91d9aa10f2e
 
 Authored by Ada (Claude Opus 5.5, Claude Code) ⚖️
 
-
 ## Timeline
 
 - 2026-10-18T23:07:11Z @neo-opus-ada assigned to @neo-opus-ada
@@ -133,4 +133,31 @@ Authored by Ada (Claude Opus 5.5, Claude Code) ⚖️
 - 2026-10-18T23:41:51Z @neo-opus-ada cross-referenced by PR #1165
 - 2026-10-18T23:52:27Z @neo-opus-ada referenced in commit `810ca11` - "fix(fleet): the seat journey pins the Codex CLI its Codex Desktop seat needs, so no installed app decides the run (#1164)"
 - 2026-10-19T13:02:13Z @neo-opus-ada referenced in commit `a0ade2a` - "fix(fleet): the seat journey passes only on positive evidence, keeps the operator's switch, and owns its cleanup at every phase (#1164)"
+- 2026-10-19T13:35:45Z @neo-opus-ada referenced in commit `6b54524` - "fix(fleet): the seat journey names a failed config read as its operator-content row, and never writes a gone config anew (#1164)
+
+Round 2 on #1165 (RA-3): seeding and snapshotting the harness configs ran outside the step wrapper, so a gone or unparsable config rejected runSeatJourney instead of becoming a row. Both now run inside attempt, whose reason names what failed. TOML seeding appended without reading, which wrote a gone Codex config anew; it now reads first and throws as JSON does."
+- 2026-10-19T13:38:12Z @neo-opus-ada referenced in commit `cf0c1a1` - "fix(fleet): the seat journey recovers only the seats that are up when the Fleet dies (#1164)
+
+A seat stopped after a failed operator-content or start-again step kept its first Start's record, so it went through recover and start-after-recovery and passed both without recovering anything. Recovery now takes a seat only while its recorded process is alive."
+- 2026-10-19T14:06:47Z @neo-opus-ada cross-referenced by #1194
+- 2026-10-19T14:14:29Z @tobiu referenced in commit `9ee10ac` - "feat(fleet): a seat's Start, restart and recovery run end to end against a stand-in harness (#1164) (#1165)
+
+* feat(fleet): a seat's Start, restart and recovery run end to end against a stand-in harness (#1164)
+
+The journey drives one fleet server through its own wire, the way the cockpit does: define, Start, Stop, Start again keeping what an operator added to the harness config, an unclean Fleet restart with the seat gone, and Start once more. Seats launch ai/scripts/fleet/seatStandIn.mjs instead of the real app, so launch admission, the spawn and every MCP row run without a window. The unit arm boots devFleetServer, its own keyed Bridge and stand-in seats for Claude Desktop and Codex Desktop.
+
+* test(fleet): the seat journey proves its closing Stop leaves no seat process (#1164)
+
+* fix(fleet): the seat journey pins the Codex CLI its Codex Desktop seat needs, so no installed app decides the run (#1164)
+
+* fix(fleet): the seat journey passes only on positive evidence, keeps the operator's switch, and owns its cleanup at every phase (#1164)
+
+* fix(fleet): the seat journey names a failed config read as its operator-content row, and never writes a gone config anew (#1164)
+
+Round 2 on #1165 (RA-3): seeding and snapshotting the harness configs ran outside the step wrapper, so a gone or unparsable config rejected runSeatJourney instead of becoming a row. Both now run inside attempt, whose reason names what failed. TOML seeding appended without reading, which wrote a gone Codex config anew; it now reads first and throws as JSON does.
+
+* fix(fleet): the seat journey recovers only the seats that are up when the Fleet dies (#1164)
+
+A seat stopped after a failed operator-content or start-again step kept its first Start's record, so it went through recover and start-after-recovery and passed both without recovering anything. Recovery now takes a seat only while its recorded process is alive."
+- 2026-10-19T14:14:29Z @tobiu closed this issue
 

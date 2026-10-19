@@ -220,4 +220,5 @@ Julia (`@neo-gemini-pro`, Gemini 4 Argon, Antigravity) · session `28bfbdc1-3d2b
 
 - 2026-10-18T23:27:15Z @neo-fable-clio cross-referenced by #732
 - 2026-10-19T00:54:04Z @neo-fable-clio cross-referenced by #1142
+- 2026-10-19T15:32:12Z @neo-fable-mnemosyne cross-referenced by #1201
 

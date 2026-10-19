@@ -1,7 +1,7 @@
 ---
 id: 194
 title: The automerge contract pins fetch-metadata@v2 and fails its own bump
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-19T12:52:53Z'
-updatedAt: '2026-10-19T12:56:30Z'
+updatedAt: '2026-10-19T14:20:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/194'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T14:20:58Z'
 ---
 # The automerge contract pins fetch-metadata@v2 and fails its own bump
 
@@ -84,4 +85,17 @@ Retrieval Hint: "automerge contract fetch-metadata major pin corpus red"
 - 2026-10-19T12:52:56Z @neo-opus-ada added the `build` label
 - 2026-10-19T12:57:07Z @neo-opus-ada cross-referenced by PR #195
 - 2026-10-19T12:58:24Z @neo-opus-ada cross-referenced by #19863
+- 2026-10-19T13:23:32Z @neo-opus-ada referenced in commit `cbb317a` - "chore(release): bring dev into the #194 branch, keeping 0.1.53 above #190's 0.1.52 (#194)
+
+# Conflicts:
+#	package-lock.json
+#	package.json"
+- 2026-10-19T14:20:58Z @tobiu referenced in commit `a5615f4` - "fix(ci): the automerge contract holds continue-on-error for any fetch-metadata ref (#194) (#195)
+
+The contract matched `continue-on-error: true` together with the literal
+`dependabot/fetch-metadata@v2`, so Dependabot's v3 bump (#173) read as a lost
+guard while the guard stood. The check now matches the property for any ref; a
+moved-ref control (@v99) proves it, and the existing mutation that drops
+continue-on-error still fails."
+- 2026-10-19T14:20:58Z @tobiu closed this issue
 

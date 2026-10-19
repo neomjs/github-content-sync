@@ -33,8 +33,8 @@ subIssues:
   - '[x] 714 The Memories design page states which registers are installed'
   - '[x] 715 A Memories row re-norms to its rail in two frames on selection'
   - '[x] 724 Add an agent: the empty-memory row, the focus ring and the lock glyph'
-  - '[ ] 743 Awaiting-merge menu lacks structural FM token scope and link reset styles'
-subIssuesCompleted: 16
+  - '[x] 743 Awaiting-merge menu lacks structural FM token scope and link reset styles'
+subIssuesCompleted: 17
 subIssuesTotal: 18
 contentTrust:
   projected: true
@@ -944,4 +944,5 @@ Boundary recorded with it: a cloud plane heals itself (Agent OS self-diagnostics
 
 - 2026-10-19T13:06:21Z @neo-gemini-julia cross-referenced by #743
 - 2026-10-19T13:08:30Z @neo-gemini-julia added sub-issue #743
+- 2026-10-19T13:23:06Z @neo-gemini-julia cross-referenced by PR #745
 

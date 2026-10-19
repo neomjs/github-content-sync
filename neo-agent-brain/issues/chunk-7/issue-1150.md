@@ -1,7 +1,7 @@
 ---
 id: 1150
 title: Remove configSnapshot from Memory Core and Knowledge Base services and specs
-state: OPEN
+state: CLOSED
 labels:
   - ai
   - refactoring
@@ -12,7 +12,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-18T20:50:39Z'
-updatedAt: '2026-10-19T13:08:08Z'
+updatedAt: '2026-10-19T14:23:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1150'
 author: neo-gemini-julia
 commentsCount: 0
@@ -27,7 +27,8 @@ contentTrust:
 blockedBy:
   - '[x] 1157 Rewrite ADR-0019''s configSnapshot prescription and widen its two guards'
 blocking:
-  - '[ ] 1151 Remove remaining configSnapshot usages, delete helpers, and gate in lint'
+  - '[x] 1151 Remove remaining configSnapshot usages, delete helpers, and gate in lint'
+closedAt: '2026-10-19T14:23:30Z'
 ---
 # Remove configSnapshot from Memory Core and Knowledge Base services and specs
 
@@ -80,11 +81,11 @@ Verified on `origin/dev` @ `455e8927`:
    - Delete `#configSnapshot`, `get configSnapshot()`, `set configSnapshot()`, `createConfigSnapshot()`, `#getConfig()`, and the `import { cloneConfigSubtree, validateConfigSnapshot } from '../shared/configSnapshot.mjs'` import.
    - Restore direct use-site reads against `aiConfig` per `ADR-0019 §5.1`.
 2. **In `test/playwright/unit/ai/services/memory-core/util.mjs` and the 13 unit specs above:**
-   - Extend `snapshotAiConfig` in `util.mjs` to accept an optional `{ 'dot.path': nextValue }` override map (and restore newly-added nested `ConfigProvider` object keys via `setRaw(undefined)` so `Neo.core.Config#set(undefined)`'s no-op guard does not leak nested keys across tests).
+   - Extend `snapshotAiConfig` in `util.mjs` to accept an optional `{ 'dot.path': nextValue }` override map for existing leaves (refusing unknown leaves) and track an `activeSnapshots` root/nested baseline per config object so discarded inner override calls are restored by the active root's `restore()` thunk.
    - Classify and replace every `configSnapshot` site across the 13 unit specs per Option E's `(i)–(iv)` ladder:
      - **`(i)` Redundant with `UNIT_TEST_MODE` defaults or `= null` / live-provider resets:** delete.
      - **`(ii)` Worker-scope (harness) env:** already bound before first `ConfigProvider` import (`test/playwright/configTemplateResolver.mjs:140`; **never** call unrestorable `ConfigProvider.setEnvOverride` inside a spec).
-     - **`(iii)` Pure-operation scalar input:** pass/test the scalar input on the pure helper directly without threading a config object.
+     - **`(iii)` Pure-operation scalar/config input:** pass/test the input on the pure helper directly (including `resolveTenantIsolationConfig` for nested-vs-flat tenant config precedence) without mutating `ConfigProvider`.
      - **`(iv)` Synchronous / non-overlapping `ConfigProvider` leaf variation when the service's own `ConfigProvider` read is the unit under test:** use `snapshotAiConfig` (`test/playwright/unit/ai/services/memory-core/util.mjs`) with `try/finally` or `afterEach`/`afterAll` restore.
 3. **Coordination note (`STEP_BACK` Point 6):**
    - Notify `#193`'s owner (`@neo-gpt-emmy`) at `[lane-claim]` time since these subtractive in-place edits touch `ai/services/memory-core/` and `ai/services/knowledge-base/`.
@@ -93,8 +94,8 @@ Verified on `origin/dev` @ `455e8927`:
 
 | Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `TextEmbeddingService` and `KB_VectorService` config reads (`ai/services/memory-core/TextEmbeddingService.mjs`, `ai/services/knowledge-base/VectorService.mjs`, `ai/scripts/diagnostics/providerLaneComposition.mjs`) | `ADR-0019 §2 & §5.1`, `neomjs/neo#19856` | Read resolved leaves directly from `aiConfig` at use sites; `configSnapshot` getter/setter, `createConfigSnapshot()`, and `#getConfig()` are removed | Fail loud on invalid leaf access via `ConfigProvider` proxy | Service JSDoc updated | `git grep configSnapshot` across `ai/services/{memory-core,knowledge-base}/` returns `0`; unit specs green |
-| 13 Memory Core, Knowledge Base, and deploy coordinate unit specs + `util.mjs` (`snapshotAiConfig`) | `ADR-0019 §4 & §5.4`, `neomjs/neo#19856` Option E | Isolate via `(i)` `UNIT_TEST_MODE` by-construction deletion, `(ii)` worker-scope env, `(iii)` direct pure-operation input, or `(iv)` sequential `snapshotAiConfig` restore | `snapshotAiConfig` `restore()` in `finally`/`afterEach`/`afterAll` | `util.mjs` + spec comments where `(iv)` is used | All 13 unit specs (`241` tests) + `check-aiconfig-test-mutation.mjs` + `check-aiconfig-antipatterns.mjs` green |
+| `TextEmbeddingService` and `KB_VectorService` config reads (`ai/services/memory-core/TextEmbeddingService.mjs`, `ai/services/knowledge-base/VectorService.mjs`, `ai/scripts/diagnostics/providerLaneComposition.mjs`) | `ADR-0019 §2 & §5.1`, `neomjs/neo#19856` | Read resolved leaves directly from `aiConfig` at use sites (and lift `resolveTenantIsolationConfig` as a pure helper); `configSnapshot` getter/setter, `createConfigSnapshot()`, and `#getConfig()` are removed | Fail loud on invalid leaf access via `ConfigProvider` proxy | Service JSDoc updated | `git grep configSnapshot` across `ai/services/{memory-core,knowledge-base}/` returns `0`; unit specs green |
+| 13 Memory Core, Knowledge Base, and deploy coordinate unit specs + `util.mjs` (`snapshotAiConfig`) | `ADR-0019 §4 & §5.4`, `neomjs/neo#19856` Option E | Isolate via `(i)` `UNIT_TEST_MODE` by-construction deletion, `(ii)` worker-scope env, `(iii)` direct pure-operation input (`resolveTenantIsolationConfig`), or `(iv)` sequential `snapshotAiConfig` existing-leaf restore with `activeSnapshots` root/nested baseline tracking | `snapshotAiConfig` restore thunk in `finally`/`afterEach`/`afterAll`; refuses unknown/non-existing leaves | `util.mjs` JSDoc + spec comments where `(iv)` is used | All 13 unit specs (`224` tests in MC/KB + `27` in deploy coordinates) + `check-aiconfig-test-mutation.mjs` + `check-aiconfig-antipatterns.mjs` green |
 
 **Decision Record:** `Required: ADR 0019` (carried by Ticket 1 `#1157` / `#1160` per `neomjs/neo#19856`).
 **Decision Record impact:** `depends-on ADR 0019` (implements the `ADR-0019` `configSnapshot` removal for Memory Core and Knowledge Base after Ticket 1 `#1160` amended `ADR-0019 §4/§5.4`).
@@ -120,8 +121,8 @@ None (Point 4 `GRADUATION_DEFERRED` from `DC_kwDODSospM4BIktj` reconciled in ful
 ## Acceptance Criteria
 
 - [ ] AC-1: `configSnapshot`, `#configSnapshot`, `createConfigSnapshot()`, `#getConfig()`, and `configSnapshot.mjs` imports are completely removed from `ai/services/memory-core/TextEmbeddingService.mjs` and `ai/services/knowledge-base/VectorService.mjs` (plus the coordinate anchor in `ai/scripts/diagnostics/providerLaneComposition.mjs`), and all config reads resolve directly through `aiConfig` at the use site.
-- [ ] AC-2: All `configSnapshot` usages across the 13 Memory Core, Knowledge Base, and deploy coordinate unit specs are replaced per Option E `(i)–(iv)` (with `snapshotAiConfig` in `util.mjs` supporting override maps and restoring newly-added nested `ConfigProvider` keys via `setRaw(undefined)`), without calling `ConfigProvider.setEnvOverride` in any spec and without raising any ceiling in `ai/scripts/lint/shared-config-write-ceilings.json`.
-- [ ] AC-3: `npx playwright test -c test/playwright/playwright.config.unit.mjs` passes on all 13 updated unit specs (`241` tests), and `node ai/scripts/lint/check-aiconfig-test-mutation.mjs` + `node ai/scripts/lint/check-aiconfig-antipatterns.mjs` pass with zero errors.
+- [ ] AC-2: All `configSnapshot` usages across the 13 Memory Core, Knowledge Base, and deploy coordinate unit specs are replaced per Option E `(i)–(iv)` (with `snapshotAiConfig` in `util.mjs` remaining strictly an existing-leaves helper that supports override maps and `activeSnapshots` root/nested baseline tracking, and `resolveTenantIsolationConfig` tested at rung `(iii)`), without calling `ConfigProvider.setEnvOverride` in any spec and without raising any ceiling in `ai/scripts/lint/shared-config-write-ceilings.json`.
+- [ ] AC-3: `npx playwright test -c test/playwright/playwright.config.unit.mjs` passes on all 13 updated unit specs, and `node ai/scripts/lint/check-aiconfig-test-mutation.mjs` + `node ai/scripts/lint/check-aiconfig-antipatterns.mjs` pass with zero errors.
 - [ ] AC-4: At `[lane-claim]` time, `#193`'s owner (`@neo-gpt-emmy`) is notified via A2A that these subtractive edits are landing in `ai/services/memory-core/` and `ai/services/knowledge-base/`.
 
 ## Out of Scope
@@ -155,6 +156,7 @@ Origin Session ID: 28bfbdc1-3d2b-4b29-bfb3-5267a07ad2cb
 Retrieval Hint: `query_raw_memories("D#19856 Ticket 2 remove configSnapshot memory-core knowledge-base Option E")`
 
 
+
 ## Timeline
 
 - 2026-10-18T20:50:41Z @neo-gemini-julia added the `ai` label
@@ -171,4 +173,13 @@ Retrieval Hint: `query_raw_memories("D#19856 Ticket 2 remove configSnapshot memo
 - 2026-10-18T23:15:54Z @neo-fable-clio cross-referenced by #732
 - 2026-10-19T13:04:02Z @neo-gemini-julia referenced in commit `f056704` - "fix(ai): remove configSnapshot from Memory Core and Knowledge Base (#1150)"
 - 2026-10-19T13:08:42Z @neo-gemini-julia cross-referenced by PR #1187
+- 2026-10-19T13:24:51Z @neo-gemini-julia referenced in commit `39dcfe4` - "fix(ai): remove configSnapshot from Memory Core and Knowledge Base (#1150)"
+- 2026-10-19T14:07:01Z @neo-gemini-julia referenced in commit `af159f3` - "fix(ai): keep snapshotAiConfig existing-leaves-only and isolate undeliverableGeometry overrides (#1150)"
+- 2026-10-19T14:23:30Z @tobiu referenced in commit `cf66245` - "fix(ai): remove configSnapshot from Memory Core and Knowledge Base (#1150) (#1187)
+
+* fix(ai): remove configSnapshot from Memory Core and Knowledge Base (#1150)
+
+* fix(ai): keep snapshotAiConfig existing-leaves-only and isolate undeliverableGeometry overrides (#1150)"
+- 2026-10-19T14:23:31Z @tobiu closed this issue
+- 2026-10-19T17:21:21Z @neo-opus-vega cross-referenced by PR #1210
 

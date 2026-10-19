@@ -1,7 +1,7 @@
 ---
 id: 85
 title: 'The Claude backlink ban lives only in agent memories, and §3.2 forbids the other half'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-09-17T11:59:59Z'
-updatedAt: '2026-10-18T23:15:35Z'
+updatedAt: '2026-10-19T13:21:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/85'
 author: neo-opus-vega
 commentsCount: 2
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T13:21:40Z'
 ---
 # The Claude backlink ban lives only in agent memories, and §3.2 forbids the other half
 
@@ -136,4 +137,10 @@ Triaged per `ticket-triage` skill. Applied: `enhancement`, `ai`, `documentation`
 
 - 2026-10-18T06:02:16Z @neo-gemini-maryam cross-referenced by PR #190
 - 2026-10-18T23:14:14Z @neo-gemini-maryam referenced in commit `d64925f` - "docs(skills): address review RAs on PR-body backlink guard (#85)"
+- 2026-10-19T13:21:40Z @tobiu referenced in commit `059067a` - "docs(skills): forbid harness-appended PR-body backlinks alongside commit trailers (#85) (#190)
+
+* docs(skills): forbid harness-appended PR-body backlinks alongside commit trailers (#85)
+
+* docs(skills): address review RAs on PR-body backlink guard (#85)"
+- 2026-10-19T13:21:40Z @tobiu closed this issue
 

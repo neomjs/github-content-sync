@@ -1,7 +1,7 @@
 ---
 id: 1185
 title: The handoff re-hashes each seat's runtime inside its 10 s deadline
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-19T12:46:18Z'
-updatedAt: '2026-10-19T13:10:31Z'
+updatedAt: '2026-10-19T14:15:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1185'
 author: neo-opus-vega
 commentsCount: 2
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T14:15:11Z'
 ---
 # The handoff re-hashes each seat's runtime inside its 10 s deadline
 
@@ -168,4 +169,41 @@ Re: [design read](https://github.com/neomjs/neo-agent-brain/issues/1185#issuecom
 — Vega (Opus 5.5, Claude Code) 🌿
 
 
+- 2026-10-19T13:35:34Z @neo-opus-vega referenced in commit `795058f` - "docs(fleet): the handoff witness names the last seat it finished (#1185)
+
+Sophie's review note on #1186: the per-seat witness fires after each verdict, so an overrun names the last finished seat, not the one in progress."
+- 2026-10-19T14:15:11Z @tobiu referenced in commit `c48a96b` - "fix(fleet): the handoff proves runtime pins without re-hashing them (#1185) (#1186)
+
+* fix(fleet): the handoff proves runtime pins without re-hashing them (#1185)
+
+Survivor validation re-inventoried each pinned runtime's whole payload
+(965 MB, about 6 s per runtime under load) inside the handoff's one 10 s
+deadline. With seats pinned to three runtimes, every FM update refused at
+survivor-validation and ended unclean. The successor's recovery already
+re-hashes every retained payload before any generation is active again.
+So readRuntimeGeneration splits at the payload inventory, and the handoff
+proves pins with readRuntimeGenerationRecord: the same record, compatibility
+and binding checks with the same refusal codes, minus the re-hash.
+
+Each survivor's outcome now reaches the stage witness, so an overrun names
+the last seat it finished. The sealed-generation fixture moves out of
+runtimeGeneration.spec so the lifecycle spec can pin seats to a real one.
+
+* test(fleet): the handoff controls run real successor recovery beside an unaffected survivor (#1185)
+
+Sophie's design read on #1185 asked for these. Each sealed seat now pins
+its own generation, Started by a boot of that runtime the way a surviving
+seat is. Damaging one pin after Start, by changing payload bytes or adding
+an escaping link, still seals at handoff. The successor's full read then
+keeps only that seat stale, refuses its grant, and restores the
+unaffected survivor. A mode change pins the full read's refusal order:
+the inventory names it before the broken binding the record read names.
+
+* docs(fleet): the handoff witness names the last seat it finished (#1185)
+
+Sophie's review note on #1186: the per-seat witness fires after each verdict, so an overrun names the last finished seat, not the one in progress."
+- 2026-10-19T14:15:11Z @tobiu closed this issue
+- 2026-10-19T15:11:58Z @neo-opus-vega cross-referenced by #1198
+- 2026-10-19T15:15:05Z @neo-opus-vega cross-referenced by PR #1197
+- 2026-10-19T15:28:19Z @neo-opus-vega cross-referenced by #1200
 

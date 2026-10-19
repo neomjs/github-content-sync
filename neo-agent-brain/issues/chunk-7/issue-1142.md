@@ -1,7 +1,7 @@
 ---
 id: 1142
 title: 'Fleet boot slowed 10–20× today, past the FM shell''s 15 s window'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -11,10 +11,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-18T18:55:00Z'
-updatedAt: '2026-10-19T13:06:27Z'
+updatedAt: '2026-10-19T15:33:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1142'
 author: neo-opus-vega
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T15:33:28Z'
 ---
 # Fleet boot slowed 10–20× today, past the FM shell's 15 s window
 
@@ -225,4 +226,85 @@ The handoff leaf is filed as #1185. It needs none of this exploration's boot bre
 - 2026-10-19T12:54:00Z @neo-opus-grace unassigned from @neo-opus-grace
 - 2026-10-19T13:00:51Z @neo-opus-vega cross-referenced by PR #1186
 - 2026-10-19T13:06:27Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-19T14:27:38Z @neo-gemini-julia cross-referenced by #1196
+### @neo-gemini-julia - 2026-10-19T14:28:41Z
+
+## Ticket Intake & `AC-1` / `AC-2` / `AC-3` Findings (`#1142`)
+
+### 1. `AC-1`: Per-Phase Boot Millisecond Logging in `ai/services/fleet/devFleetServer.mjs`
+
+Instrumented `boot()` in `ai/services/fleet/devFleetServer.mjs` with `FLEET_BOOT_PHASES = Object.freeze(['runtime bind', 'viewer claim', 'plane init', 'recovery', 'transport'])` and `formatFleetBootPhaseLine(phase, elapsedMs, detail)` so every Fleet boot logs:
+- `[fleet] boot phase runtime bind: <ms> ms (generation <id12> | checkout)`
+- `[fleet] boot phase viewer claim: <ms> ms (plane | host)`
+- `[fleet] boot phase plane init: <ms> ms (connected | skipped: host mode)`
+- `[fleet] boot phase recovery: <ms> ms (<N> retained generation(s) | skipped: no runtime generation)`
+- `[fleet] boot phase transport: <ms> ms (port: <port>)`
+
+Unit-tested in `test/playwright/unit/ai/services/fleet/openWorkBoot.spec.mjs` (`6 passed`).
+
+---
+
+### 2. `AC-2`: Read-Only V8 CPU Profile of `neo-local-agent-os-mc-server-1` (`85–102%` CPU 24/7 with Zero External Connections)
+
+- **Methodology:** Attached a read-only V8 CPU profiler to PID 1 inside `neo-local-agent-os-mc-server-1` (`kill -USR1 1` -> `Profiler.start` / `Profiler.stop` over a `6,003 ms` wall window -> `Runtime.evaluate("process._debugEnd()")`, verified port `9229` closed). Sampled CPU time: **`7,221.9 ms`** (`92.2%` active main-thread CPU, `7.8%` idle).
+- **Falsification of Earlier Hypothesis:**
+  - `#1142#issuecomment-6257493426` hypothesized that `mc-server-1` starts no maintenance timer and attributed the CPU to native addon threads (`onnxruntime` / `sharp` / `better-sqlite3`).
+  - **Empirical reality:** `neo-local-agent-os-mc-server-1` runs **two 250 ms in-process WAL polling timers on its main HTTP/MCP event loop**:
+    1. `ai/mcp/server/memory-core/Server.mjs:356` (`startDrainLoop`, `NEO_MEMORY_WAL_IN_PROCESS_DRAIN=true`, `NEO_MEMORY_WAL_POLL_INTERVAL_MS=250` in `deploy/cloud/docker-compose.yml:283`).
+    2. `ai/mcp/server/memory-core/Server.mjs:395` (`startMessageDrainLoop`, `NEO_MESSAGE_WAL_IN_PROCESS_DRAIN=true`, `NEO_MESSAGE_WAL_POLL_INTERVAL_MS=250` in `deploy/cloud/docker-compose.yml:288`).
+- **Why the 250 ms Polls Burn `80.5%` Main-Thread CPU in Steady State (`0` Pending Records):**
+  - `readPendingWalRecords` (`ai/services/memory-core/helpers/memoryWalStore.mjs:423`) and `readPendingMessageWalRecords` (`ai/services/memory-core/helpers/messageWalStore.mjs:610`) iterate over **every** segment returned by `listWalSegmentKeys(dir)` / `listMessageWalSegmentKeys(dir)` while `pending.length < bounded`.
+  - When `0` records are pending, `pending.length < bounded` is **always true** for every segment, and neither helper caches reconciled (`0` pending) segment stat signatures across polls.
+  - Furthermore, while `memoryWalStore.mjs:465` has `pruneReconciledWalSegments` (`retentionLimit = 30`, keeping `memory-wal` at `31` segments / `58.0 MB`), **`messageWalStore.mjs` has no segment pruning at all** — accumulating **`80` historical segments (`160` files, `111.7 MB`)** since `2026-04-12`.
+  - Four times per second (every `250 ms`), the MC server's main event loop reads from disk, UTF-8 decodes, and `JSON.parse`s **all `169.7 MB` (`254` files)** of WAL JSONL segments only to conclude `0` records are pending:
+
+| Function (`file:line`) | Self Time (ms / 6 s) | % of Total CPU | Mechanism |
+|---|---:|---:|---|
+| `readJsonlEntries` (`ai/services/memory-core/helpers/memoryWalStore.mjs:257`) | `1,957.2 ms` | **`27.1%`** | 250 ms `memory-wal` full scan (`31` segments, `58.0 MB` JSONL parse) |
+| `(garbage collector)` (V8 scavenging/marking ~`680 MB/s` of transient strings/objects) | `1,705.2 ms` | **`23.6%`** | V8 GC pressure from 250 ms WAL full scans |
+| `readFileHandle` + `StringDecoder.write`/`end` (`node:internal/fs/promises:512`, `node:string_decoder:75,95`) | `1,380.6 ms` | **`19.1%`** | Disk read + UTF-8 decode of `169.7 MB` WAL files every 250 ms |
+| `readJsonlEntries` + `readPendingMessageWalRecords` (`ai/services/memory-core/helpers/messageWalStore.mjs:254,609`) | `774.9 ms` | **`10.7%`** | 250 ms `message-wal` full scan (`80` unpruned segments, `111.7 MB`) |
+| **Subtotal: 250 ms In-Process WAL Full Scans (`0` pending)** | **`5,817.9 ms`** | **`80.5%`** | **Main-thread saturation stalling MCP HTTP calls (`plane init`)** |
+| `ensureAgentIdentityForAuthContext` -> `GraphService.upsertGlobalNode` -> `Database.getAdjacentNodes` (`Server.mjs:607`, `GraphService.mjs:334,431`, `Database.mjs:344`) | `470.7 ms` | **`6.5%`** | Synchronous SQLite graph write (`lastAuthenticatedAt`) + adjacency read on every authenticated MCP HTTP request |
+| `(idle)` | `561.7 ms` | **`7.8%`** | Event loop idle |
+
+---
+
+### 3. `AC-3`: Phase Breakdown vs. `≤ 2.3 s` Baseline, Fix Leaves & `≤ 2.5 s` Target Boot Budget
+
+#### Phase Breakdown Table (`devFleetServer.mjs` Boot Path)
+
+| Boot Phase (`FLEET_BOOT_PHASES`) | Baseline (`15:52Z`, `≤ 2.3 s`) | Regressed (`17:48Z` `8.1 s` / `18:36Z` `16.8 s` / `18:07Z` `26.0 s`) | Root Cause & Measured Cost | Target Budget (Post-Fix) |
+|---|---|---|---|---|
+| 1. `runtime bind` (`bindCurrentRuntime`) | **`0 ms`** (added in `#1051` at `16:08Z`) | **`2,900 ms`–`6,690 ms`** (`2.9 s` warm idle, `4.9 s` cold idle, `5.72–6.69 s` at host load `5.6`) | `readRuntimeGeneration` (`runtimeGeneration.mjs:140`) recursively walks & SHA-256 hashes all **`23,747` files (`965 MB`)** in packaged `Runtime/brain` on every boot (`readRuntimeGenerationRecord` takes **`~2 ms`**). | **`≤ 50 ms`** |
+| 2. `viewer claim` (`resolveFleetViewerClaim`) | **`~300–400 ms`** | **`363 ms`** (`gh api user` subprocess when `NEO_AGENT_IDENTITY` is unset; `0.1 ms` when set) | Spawns `gh api user` over HTTPS (`viewerIdentity.mjs:121`). | **`≤ 400 ms`** |
+| 3. `plane init` (`planeClient.init`: `initialize` + `list_permissions`) | **`~150–300 ms`** (before `16:05Z` container recreate + WAL growth) | **`3,500 ms`–`10,200 ms`** during `mc-server-1` WAL scan / GC pauses (`87–174 ms` between scans) | Two sequential HTTP round-trips to `mc-server-1` (`initialize` + `list_permissions`) queued behind `mc-server-1`'s 250 ms `169.7 MB` synchronous JSONL WAL scans + GC pauses (`80.5%` CPU). | **`≤ 250 ms`** |
+| 4. `recovery` (`lifecycle.recoverRuntimeCustody` -> `verifyPin`) | **`0 ms`** (added in `#1051` at `16:08Z`) | **`0 ms`** with `0` retained pins (`18:36Z`); **`~12,200 ms`** with `2` retained pins (`18:07Z`: `13.8 s` to `seams bound` + `12.2 s` in `recoverRuntimeCustody` = **`26.0 s` total**) | Runs **after** `seams bound` (`devFleetServer.mjs:216`) and **before** `startFleetBridgeServer` (`:609`). Calls `verifyPin` -> `readRuntimeGeneration(pin.runtimeRoot)` (`FleetLifecycleService.mjs:2393`), re-hashing **`23,747` files (`965 MB`) once per distinct retained pin** (`~6 s × N`), and does not even seed `verified` (`:2360`) with `this.installedRuntime.generation` when a survivor is pinned to the current runtime. | **`≤ 50 ms`** |
+| 5. `transport` (`startFleetBridgeServer` + open-work wiring) | **`~10 ms`** | **`~10–20 ms`** (plus ~`1.0–1.5 s` ESM module load before `boot()`) | Loopback socket bind (`127.0.0.1:52363`) + non-blocking observer setup (`wireFleetOpenWorkSource` defers first scan via `setTimeout(..., 0)`). | **`≤ 50 ms`** |
+| **Total (`spawn` -> `listening`)** | **`~1,700–2,300 ms`** | **`8,100 ms`–`16,800 ms`** (`0` pins) / **`26,000 ms`** (`2` pins) | Sum of `runtime bind` (`2.9–6.7 s`) + `plane init` stalls (`3.5–10.2 s`) + `recovery` (`0–12.2 s`) + module load (`~1.0–1.5 s`). | **`≤ 1,800 ms` (within `≤ 2,500 ms` target)** |
+
+#### Narrow Fix Leaves
+
+1. **Leaf 1 (Filed & Self-Assigned): `neomjs/neo-agent-brain#1196` — *Skip unchanged reconciled WAL segments in 250ms drains and prune message-wal***
+   - Caches reconciled (`0` pending) segment stat signatures `(recordsMtimeMs, recordsSize, markersMtimeMs, markersSize)` in `readPendingWalRecords` (`memoryWalStore.mjs`) and `readPendingMessageWalRecords` (`messageWalStore.mjs`), and adds `pruneReconciledMessageWalSegments` to `messageWalStore.mjs` on append.
+   - **Impact:** Eliminates the `80.5%` main-thread CPU burn on `neo-local-agent-os-mc-server-1` (`169.7 MB` parsed 4×/s) and drops `plane init` from `3.5–10.2 s` stalls back to **`90–250 ms`**.
+2. **Leaf 2 (Filed & Claimed by `@neo-opus-vega`): `neomjs/neo-agent-brain#1198` — *Fleet boot hashes whole runtimes before its transport listens* (`runtime bind` ≤ 50 ms + `recovery` ≤ 50 ms):**
+   - `#1185` / PR `#1186` (`c48a96b5`) switched **handoff** (`sealRuntimeCustody`) from `readRuntimeGeneration` (`~6 s` / `965 MB` walk) to `readRuntimeGenerationRecord` (`~2 ms`), explicitly relying on successor boot (`bindCurrentRuntime` + `recoverRuntimeCustody`) to run the full `readRuntimeGeneration` walk.
+   - However, running `readRuntimeGeneration` (`23,747` files / `965 MB`) synchronously before `startFleetBridgeServer` (`listening`) costs **`2.9–6.7 s`** in `bindCurrentRuntime` plus **`~6 s × N`** in `recoverRuntimeCustody` (`12.2 s` for 2 pins at `18:07Z` = **`18.9 s` in hashing alone**, exceeding both the `≤ 2.5 s` boot budget and the `15 s` FM shell window whenever `N >= 2`, and re-hashing the current generation twice when `start.runtime.directory === this.installedRuntime.generation.directory` because `verified` at `FleetLifecycleService.mjs:2360` is not seeded with `this.installedRuntime.generation`).
+   - **Action:** Seed `verified` in `recoverRuntimeCustodyUnderGuard` with `this.installedRuntime.generation` immediately, and coordinate with `@neo-opus-vega` on bounding/deferring full payload inventory on boot so `runtime bind + recovery` stays `≤ 100 ms` before `listening`.
+
+---
+
+Origin Session ID: 28bfbdc1-3d2b-4b29-bfb3-5267a07ad2cb
+
+
+- 2026-10-19T14:30:21Z @neo-gemini-julia cross-referenced by PR #1197
+- 2026-10-19T15:11:58Z @neo-opus-vega cross-referenced by #1198
+- 2026-10-19T15:33:28Z @tobiu referenced in commit `efd6fa1` - "feat(fleet): log per-phase boot milliseconds in devFleetServer (#1142) (#1197)"
+- 2026-10-19T15:33:29Z @tobiu closed this issue
+- 2026-10-19T15:37:27Z @neo-opus-ada cross-referenced by PR #1193
+- 2026-10-19T15:57:30Z @neo-fable-mnemosyne cross-referenced by PR #1199
+- 2026-10-19T16:01:07Z @neo-fable-mnemosyne cross-referenced by #1204
+- 2026-10-19T16:36:12Z @neo-fable-mnemosyne cross-referenced by #1207
+- 2026-10-19T17:49:26Z @neo-fable-mnemosyne cross-referenced by PR #1211
 

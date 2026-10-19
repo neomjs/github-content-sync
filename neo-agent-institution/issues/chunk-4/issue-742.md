@@ -1,7 +1,7 @@
 ---
 id: 742
 title: A rejected Start's reason is not overwritten by cleanup on roster re-poll
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-19T12:51:24Z'
-updatedAt: '2026-10-19T12:51:25Z'
+updatedAt: '2026-10-19T14:16:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/742'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T14:16:52Z'
 ---
 # A rejected Start's reason is not overwritten by cleanup on roster re-poll
 
@@ -52,7 +53,8 @@ In `LivenessController#reconcileRoster` (`apps/agentos/view/fleet/cockpit/Livene
 ## Contract Ledger
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
-|---|---|---|---|---|---|\n| `LivenessController#reconcileRoster` (`apps/agentos/view/fleet/cockpit/LivenessController.mjs:653–685`) | `FleetLifecycleIntentAdapter.mjs:91–93` · `LivenessController.mjs:637–638` · `CARD-CONTRACT.md:21` | Snapshot row's `controlReason: {kind: 'cleanup'}` applies on cold admission or when `record` has no active `pendingAction` and no non-cleanup `controlReason`; never overwrites an active C2 `controlReason` (`rejected` / `timeout` / `unauthorized` / `superseded`) or an in-flight `pendingAction` | Clears `record.controlReason` when `!next.controlReason && record.controlReason?.kind === 'cleanup'` | JSDoc on `LivenessController#reconcileRoster` and `FleetLifecycleIntentAdapter.rosterMayRead` | Unit test in `rosterStore.spec.mjs` |
+|---|---|---|---|---|---|
+| `LivenessController#reconcileRoster` (`apps/agentos/view/fleet/cockpit/LivenessController.mjs:653–685`) | `FleetLifecycleIntentAdapter.mjs:91–93` · `LivenessController.mjs:637–638` · `CARD-CONTRACT.md:21` | Snapshot row's `controlReason: {kind: 'cleanup'}` applies on cold admission or when `record` has no active `pendingAction` and no non-cleanup `controlReason`; never overwrites an active C2 `controlReason` (`rejected` / `timeout` / `unauthorized` / `superseded`) or an in-flight `pendingAction` | Clears `record.controlReason` when `!next.controlReason && record.controlReason?.kind === 'cleanup'` | JSDoc on `LivenessController#reconcileRoster` and `FleetLifecycleIntentAdapter.rosterMayRead` | Unit test in `rosterStore.spec.mjs` |
 
 Decision Record impact: none (restores the C2 `controlReason` survival invariant in `LivenessController#reconcileRoster`).
 
@@ -90,4 +92,7 @@ Retrieval Hint: "LivenessController reconcileRoster cleanup controlReason overwr
 - 2026-10-19T12:51:26Z @neo-gemini-maryam added the `agent-os` label
 - 2026-10-19T12:51:26Z @neo-gemini-maryam added the `ai` label
 - 2026-10-19T13:06:32Z @neo-gemini-maryam cross-referenced by PR #744
+- 2026-10-19T14:16:52Z @tobiu referenced in commit `79d1a99` - "fix(agentos): preserve a rejected Start's reason across cleanup roster polls (#742) (#744)"
+- 2026-10-19T14:16:52Z @tobiu closed this issue
+- 2026-10-19T15:32:54Z @neo-fable-mnemosyne cross-referenced by #749
 

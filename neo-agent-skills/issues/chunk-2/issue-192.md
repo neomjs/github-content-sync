@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-10-19T12:26:45Z'
-updatedAt: '2026-10-19T12:34:02Z'
+updatedAt: '2026-10-19T13:28:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/192'
 author: neo-gpt-euclid
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -32,7 +32,7 @@ The operator asked for a sweep when an accepted research direction is published 
 
 ## The Problem
 
-Creation's adjacency sweep discovers related work, but its exit only prevents a duplicate new filing. A replacement decision can coexist with older open, assigned prescriptions and unchecked ACs. Intake can reject one when picked up; it does not make the publisher reconcile the predecessors. A closed draft alone leaves the older tickets actionable.
+Creation's adjacency sweep discovers related work, but its exit only prevents a duplicate new filing. A replacement decision can coexist with older open, assigned prescriptions and unchecked ACs. Intake can reject one when picked up; it does not make the publisher reconcile the predecessors. A closed draft alone leaves the older tickets actionable. A second operator-caught recurrence after ticket cleanup revived a historical research/tool recommendation and a saved next action instead; those entry points must be reconciled against current interaction requirements too.
 
 ## The Architectural Reality
 
@@ -58,7 +58,7 @@ Keep the procedure in one conditional payload, with short pointers from its prod
 - [ ] It preserves outcome, surviving obligations, evidence/provenance and authorship; speculative alternatives cannot retire accepted work, and completed-but-not-selected candidates cannot claim the outcome achieved.
 - [ ] Related current heads/checklists and successor links receive an explicit disposition; owner-pending actions remain unresolved until verified. Narrow rejected prescriptions and unresolved outcome authorities have different close behavior.
 - [ ] Existing corpus/reference lint passes; router and turn-loaded bytes do not grow. Net skill Markdown change is non-positive or its conditional retirement rationale is explicitly justified.
-- [ ] Bounded cold reads cover a rejected method with an open outcome, a partially overlapping predecessor, a foreign-owned artifact, and an unaccepted exploratory alternative.
+- [ ] Bounded cold reads cover a rejected method with an open outcome, a partially overlapping predecessor, a foreign-owned artifact, an unaccepted exploratory alternative, and a historical research/tool recommendation that conflicts with newer accepted interaction requirements even after old method tickets close.
 
 ## Out of Scope
 
@@ -84,6 +84,7 @@ Retrieval Hint: "superseded implementation trails accepted research decision pub
 
 
 
+
 ## Timeline
 
 - 2026-10-19T12:26:45Z @neo-gpt-euclid assigned to @neo-gpt-euclid
@@ -101,4 +102,20 @@ Placement: `rewrite` conditional detail + `compress-to-trigger` caller pointers.
 A cold-context reader distinguished all four cases: rejected method/open outcome, partial overlap, foreign authority and unaccepted alternative. It identified successor-ID timing, pending-versus-complete reporting and the intake-rejection ingress. Those were corrected; a fresh delta read found no remaining ambiguity. This is source interpretation evidence, separate from installed-session adoption. Required release metadata is 0.1.52; no manual publish or consumer update.
 
 - 2026-10-19T12:34:39Z @neo-gpt-euclid cross-referenced by PR #193
+### @neo-gpt-euclid - 2026-10-19T13:22:27Z
+
+### Additional measured supersession case: research entry points
+
+A follow-up operator correction exposed a recurrence after old method tickets had closed: an earlier research/tool recommendation plus my saved next action still revived an obsolete path. The reference was reusable evidence, but no longer answered current interaction requirements.
+
+The shared reconciliation explicitly reads research recommendations, tool assumptions and active handovers/checklists, comparing them against the current outcome/required interactions. Immutable memories/handovers retain history with exact superseded-ID → current-authority mappings. AC-5 includes this fifth case. Five-payload net Markdown change is **−124 bytes** against the current base; routers remain unchanged. Corpus/body/version checks pass locally. The base advanced to 0.1.52, so release metadata is now 0.1.53.
+
+The actual recommendation heads and current research head were reconciled with original evidence preserved. A fresh-context recovery began from the obsolete research handover and two old recommendation URLs; it rejected the saved action and recovered current requirements without selecting a replacement implementation. This proves the record correction, not package loading or general recurrence prevention. The latest PR head is 286722d8d3177c470cbe3bb4d63e5a4be2d1725c; new-head CI follows the ordinary gate.
+
+- 2026-10-19T13:24:46Z @neo-gpt-euclid referenced in commit `f9d2492` - "fix(skills): reconcile research against current interaction goals (#192)"
+- 2026-10-19T13:24:46Z @neo-gpt-euclid referenced in commit `baebdb6` - "chore(skills): integrate current base for supersession fix (#192)"
+- 2026-10-19T13:27:16Z @neo-gpt-euclid referenced in commit `286722d` - "fix(skills): preserve supersession links for immutable handovers (#192)"
+- 2026-10-19T16:21:54Z @neo-gpt-euclid referenced in commit `e32a88f` - "fix(skills): restore executable reconciliation steps (#192)"
+- 2026-10-19T16:43:14Z @neo-gpt-euclid referenced in commit `d6c707d` - "fix(skills): advance unpublished release candidate (#192)"
+- 2026-10-19T16:51:29Z @neo-gpt-euclid referenced in commit `a957ef7` - "chore(skills): integrate current dev for reconciliation (#192)"
 

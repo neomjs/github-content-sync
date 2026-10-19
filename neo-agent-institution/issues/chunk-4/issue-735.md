@@ -1,18 +1,19 @@
 ---
 id: 735
 title: 'At login, a plane that answers after the FM''s boot is never attached'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
   - ai
   - design
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-10-18T22:58:27Z'
-updatedAt: '2026-10-18T22:58:27Z'
+updatedAt: '2026-10-19T16:56:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/735'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: 424
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T16:56:53Z'
 ---
 # At login, a plane that answers after the FM's boot is never attached
 
@@ -124,4 +126,35 @@ Retrieval Hint: "FM login auto-start plane unreachable boot refusal starting sta
 - 2026-10-18T22:59:22Z @neo-fable-clio added parent issue #424
 - 2026-10-18T22:59:28Z @neo-fable-clio cross-referenced by #734
 - 2026-10-18T23:02:16Z @neo-opus-ada cross-referenced by #736
+- 2026-10-18T23:15:54Z @neo-fable-clio cross-referenced by #732
+- 2026-10-18T23:41:07Z @neo-fable-clio cross-referenced by #1144
+- 2026-10-19T15:31:14Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-19T15:31:16Z
+
+## Ticket Intake & Operator Machine Boot Measurement (`#735`)
+
+### 1. Operator Machine Login-to-Plane Measurement (§ Fix item 4)
+Measured against the 2026-10-18 reboot on the operator's host (`sysctl -n kern.boottime` + `docker inspect`):
+
+| Milestone | Timestamp (UTC) | Elapsed from `kern.boottime` |
+| :--- | :--- | :--- |
+| OS boot (`kern.boottime = 1792338743`) | `2026-10-18T15:52:23Z` | `0 s` |
+| `neo-local-agent-os-chroma-1` `StartedAt` | `2026-10-18T15:54:17.573Z` | `+114.6 s` |
+| `neo-local-agent-os-ingress-1` `StartedAt` | `2026-10-18T15:54:17.574Z` | `+114.6 s` |
+| Container health + plane readiness | `~15:54:30Z–15:54:40Z` | `~127–137 s` (`~2.1–2.3 min`) |
+
+This confirms the proposed **`PLANE_STARTING_BOUND_MS = 180_000` (`3 min`)** constant provides a ~45–55 s margin over observed cold-login Docker + container startup while remaining bounded when a plane is genuinely down.
+
+### 2. Implementation Notes (Shared `starting` Surface with `#739`)
+- **Shell boot & bounded re-probe (`harness/brain.mjs`, `harness/main.mjs`):** When `fleetReadyOrPlaneRefusal` catches `plane-unreachable` on a stored `launchedPlaneRecord` (`bearer` + `planeBase` from the stored record), the shell enters `{phase: 'starting', reason: 'plane-starting', since}`, re-probes via `probePlaneCredential` (one probe in flight at a time, 5 s after the previous settles, abortable on quit via `fleetReadyAbort.signal`), and re-spawns the Fleet child when `verdict === 'accepted'` with matching identity. Any credential/identity/`not-a-plane` answer or elapsed `180_000 ms` bound throws the typed refusal immediately.
+- **Cold-grid precedence (`apps/agentos/util/SpineBanner.mjs`):** When `transport?.phase === 'starting'` carries a named reason (`'plane-starting'` or `'fleet-starting'`), `deriveSpineBanner` surfaces the starting pill (`Agent OS starting · <n> s` / `Fleet starting · <n> s`) and lead sentence (+ `"Longer than usual."` at `>= 60 s`) ahead of cold `grid.connection` (`connecting` / `timeout`).
+- **Starting-phase clock & settle re-drive (`apps/agentos/view/fleet/cockpit/LivenessController.mjs`, `apps/agentos/util/BrainHealthRead.mjs`):** While `shellTransport?.phase === 'starting'`, the cockpit polls `loadBrainHealth()` on a 1 s starting tick so the whole-second counter advances and, when `shellTransport` transitions from `phase: 'starting'` to `up: true`, triggers `reconnectFleet()` so the roster and activity stream render immediately without waiting for the 60 s cadence pass.
+
+Claiming `#735` (`valid-as-written`) on branch `agent/735-plane-starting-attach`.
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session 623823b7-3c27-4f59-a8e9-b04710554494. 🧭
+
+- 2026-10-19T16:07:24Z @neo-gemini-maryam cross-referenced by PR #751
+- 2026-10-19T16:56:54Z @tobiu referenced in commit `f91b92d` - "feat(agentos): attach late-answering login plane and render starting elapsed wait (#735) (#751)"
+- 2026-10-19T16:56:54Z @tobiu closed this issue
 

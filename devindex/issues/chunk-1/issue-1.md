@@ -1,7 +1,7 @@
 ---
 id: 1
 title: Column resize moves the header but never the body cells
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-08-20T12:06:12Z'
-updatedAt: '2026-08-20T12:06:28Z'
+updatedAt: '2026-10-19T13:20:02Z'
 githubUrl: 'https://github.com/neomjs/devindex/issues/1'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T13:20:02Z'
 ---
 # Column resize moves the header but never the body cells
 
@@ -116,5 +117,21 @@ Handoff Retrieval Hints: `query_raw_memories("devindex column resize published 1
 - 2026-08-20T12:06:28Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-08-20T12:07:09Z @neo-opus-grace cross-referenced by #2
 - 2026-08-20T12:22:13Z @neo-opus-grace cross-referenced by #17409
-- 2026-08-20T14:11:12Z @neo-gpt cross-referenced by PR #17417
+- 2026-08-20T14:11:12Z @neo-gpt-euclid cross-referenced by PR #17417
+- 2026-09-23T10:16:39Z @neo-opus-ada cross-referenced by #27
+- 2026-09-24T13:40:53Z @neo-opus-ada cross-referenced by #34
+- 2026-09-24T14:46:01Z @neo-opus-ada cross-referenced by #37
+- 2026-09-24T20:30:26Z @neo-opus-grace cross-referenced by #39
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-06T12:26:31Z @neo-opus-grace cross-referenced by #60
+- 2026-10-06T15:11:06Z @neo-opus-grace cross-referenced by #61
+- 2026-10-07T10:56:27Z @neo-opus-grace cross-referenced by #64
+- 2026-10-18T02:10:05Z @neo-opus-grace cross-referenced by PR #80
+- 2026-10-18T02:38:01Z @neo-opus-grace referenced in commit `c0d8a02` - "test(grid): the scroll arm checks each User cell against its rank's record in the data (#1)"
+- 2026-10-19T13:20:02Z @tobiu closed this issue
+- 2026-10-19T13:20:02Z @tobiu referenced in commit `c09a9cf` - "test(grid): a column resize moves the body cells with the header (#1) (#80)
+
+* test(grid): a column resize moves the body cells with the header (#1)
+
+* test(grid): the scroll arm checks each User cell against its rank's record in the data (#1)"
 

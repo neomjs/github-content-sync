@@ -1,7 +1,7 @@
 ---
 id: 1173
 title: 'Rename a seat''s Fleet id: folder, registry row and every id-keyed record follow'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-19T03:29:52Z'
-updatedAt: '2026-10-19T13:10:32Z'
+updatedAt: '2026-10-19T17:18:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1173'
 author: neo-fable-mnemosyne
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T17:18:39Z'
 ---
 # Rename a seat's Fleet id: folder, registry row and every id-keyed record follow
 
@@ -73,6 +74,20 @@ Live latest-open sweep: the 20 latest open Brain issues at 03:3xZ, no equivalent
 Origin Session ID: 830c2630-dbf5-47fb-9170-4cb6dee2b08c
 Retrieval Hint: "seat Fleet id rename folder registry re-key previousSeatHome"
 
+## Contract Ledger
+
+Backfilled 2026-10-19 by the ticket's author from the surfaces PR #1191 ships, per the review's §5.4 audit; rows name what exists at `9e919d4f`.
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| `ai/scripts/fleet/renameSeat.mjs --id <id> --to <id> [--apply]` (plane-host one-shot) | this ticket's design note; `moveSeatHomes.mjs` (the seat-root move) as sibling | Dry run by default; with `--apply` renames one seat's Fleet id and folder under the same root; prints the plan as JSON; exit 1 on a refusal; a re-run completes an interrupted rename (`moveId = rename-<id>-<to>`) | A refusal changes nothing; until the registry re-key the old seat stays startable | the module summary | `renameSeat.spec.mjs` (refusals change nothing; three re-run arms) |
+| `FleetRegistryService#renameAgent(id, {to, from, seatHome})` | `relocateSeatHome` (compare-and-set over the recorded home) | Re-keys the row to `to` with `previousId` and `previousSeatHome`; copies the PAT to `to` before the write and removes the old key after; carries the operator through `SeatOperatorRegistryService.rename`; Brain/operator-only, no wire allowlist | `null` when neither id names the seat; throws on an invalid id/home, a taken `to`, or a stale `from` | the verb's JSDoc | `renameSeat.spec.mjs`, `SeatOperatorRegistryService.spec.mjs` |
+| `FleetTenantService#renameSeatPlaneCredentials({from, to})` | `resolveSeatPlaneCredential` (Brain-internal) | Moves the seat's per-plane credential to the new id on every plane in one store write; a plane already holding `to` keeps it | `unchanged` when no plane holds `from`; throws on an unreadable store, which stays byte-identical | the verb's JSDoc | `FleetTenantService.spec.mjs` |
+| `SeatOperatorRegistryService#rename({from, to})` | the store's event-log invariant (`version` counts events) | One logged `rename` event moves the operator record; a leftover record at `to` is replaced; no record moves nothing | `{ok: false, refused, reason}` from `mutate` | the verb's JSDoc | `SeatOperatorRegistryService.spec.mjs` |
+| `carrySeatSessions({harnessType, instanceHome, from, to, previousId, id, homeDir})` | the measured session rows on this ticket (13:2xZ) | Re-points each harness's own session index at the new folder: Claude Desktop records + shared transcript folders (matched by their own `cwd`), Codex `state_<n>.sqlite` path columns + global state + `config.toml` (rollouts byte-identical), Antigravity receipt + project file (same project id) | `null` for a harness the Fleet does not know; a step already carried is left as it is | the module summary | `carrySeatSessions.spec.mjs` |
+| `startAgentProvisioned` → `prepareManagedAgentWorkspace({previousAgentId})` | `previousSeatPlacement` (Brain #900) | A row whose `previousSeatHome` basename is its own id or its `previousId` renders the previous placement as that agent, same root allowed, so Fleet-owned files rendered under the old id are re-derived | `null` placement when neither root nor id changed; a file matching neither rendering stays `FLEET_WORKSPACE_DIVERGENT` | the function's JSDoc | `prepareManagedAgentWorkspace.spec.mjs` (Kimi/OpenCode, Antigravity; Claude Desktop and Codex Desktop arms requested in the review) |
+| Untouched by design: `issuer.json`, `lane-claims.json`, the wake `routes.json`, the Antigravity history DB | the measured rows (Vega 13:04Z, Grace 13:26Z) | No write; the old id's admission generation recovers as a removed seat's stale generation; the history DB keys by project id and workspace uri, proven at the run | the bounded `workspace_uris` rewrite, as a leaf if the run needs it | the design note | the run (AC-4) |
+
 ## Timeline
 
 - 2026-10-19T03:29:53Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
@@ -104,12 +119,13 @@ The proof that a moved folder starts intact already exists: every row on this ho
 | The seat folder `<root>/<id>` (harness homes, `memory/`, the clones) | path | **moves with the folder**: copy to `.moving-<newId>` with the move's owner marker → `sameTree` proof → publish as `<root>/<newId>`. The old folder stays until the row is re-keyed and is **retired aside after the first green Start**, never deleted by the operation. |
 | Fleet-owned files that embed the path or the id — Codex home + project `config.toml` (`[projects."<path>"]` trust, hook state paths, env paths), `GEMINI.md`, the Antigravity `.neo-fleet-mcp/*.sh` invokers, Claude Desktop profile rows, `.claude/settings.local.json`'s memory key, `.neo-fleet-seat-memory-import.json` | path, id | **re-derived at the first Start**: the preparation renders the previous placement as the former agent (`{…agent, id: previousId}` at `previousSeatHome`), accepts a file equal to that rendering, and writes the current one — the existing `rehomeFiles` / `convergeJsonSetting(previousValue)` path, extended by the id. A file that matches neither stays a divergence, as today. |
 | `harness/<type>/.neo-fleet-window.json` (`agentId`) | id | **re-keyed by the operation** (one field); the next capture overwrites it anyway. |
-| `harness/antigravity/.neo-fleet-project-binding.json` (`projectName = id`, `projectRoot`) + Antigravity's own project registry entry | id, path | **re-derived at Start**: `antigravityProjectRegistry` verifies name + root and registers the project under the new name; the old registry entry is an **accepted leftover**, named in the Start receipt. |
-| `launch-admission/issuer.json` (`snapshot.seats` by `agentId`, generation paths) | id, path | **re-keyed** for this seat's saved-Start entry only (a stopped seat has no live Start; the entry names the seat that will start); `fence.json` carries no ids. |
-| `lane-claims.json` (`seats` under the admission key) | id | **re-keyed** (one entry per seat). |
+| `harness/antigravity/.neo-fleet-project-binding.json` (`projectId`, `projectName = id`, `projectRoot`) + Antigravity's own project entry `~/.gemini/config/projects/<id>.json` (`name`, `folderUri`) | id, path | **re-keyed, keeping the project id** (Grace, 13:26Z): the operation re-points the receipt and the project file to the new name and root, so the Start re-verifies the SAME project and the global conversation history (rows by `project_id`) stays attached without touching the shared DB. |
+| `launch-admission/issuer.json` (`snapshot.seats[]` by `start.agentId` with a `state`, generations unique by `agentId`) | id, path | **untouched, never hand-edited** (Grace, 13:07Z + 13:26Z): the snapshot is the issuer's closed validated codec (`isAdmissionSnapshot`) with no per-seat verb; a re-keyed entry would fail its `definitionHash` anyway. The old id's generation recovers `STALE` with its definition missing — a removed seat's disposition (`McpLaunchAdmissionService.recover`) — and the new id reserves its own entry at Start. Measured 13:2xZ: a stopped seat's entry persists with `state: stopped` (Clio's), which is exactly that disposition. `fence.json` carries no ids. |
+| `seat-operators.json` (`SeatOperatorRegistryService`: `{seatId → {principal, since, actor}}` + an append-only event log whose `version` counts the events) | id | **re-keyed through the store's own `mutate`**, one logged `rename` event (Grace, 13:07Z; a surface the first table missed): a hand edit breaks the version/event invariant the store refuses on, and without the re-key the renamed seat reads unowned and its operator loses it. |
+| `lane-claims.json` | identity | **untouched** — keyed by the A2A sender (`fleetA2AActivityAdapter.mjs:278`, `agentId: message.from`), not the Fleet id (Grace, 13:26Z; my 03:3xZ count read the handle). |
 | `open-work.json` (snapshot projection; its 917 `neo-gemini-pro` mentions are the old GitHub handle in issue text) | — | **re-derived**: the next snapshot rebuilds it; no rewrite (that is #1174's class, not this ticket's). |
 | The wake receiver's `routes.json` (`~/Library/Application Support/Neo/AgentOS/wake/`) | identity | **untouched** — a derived publication keyed by subscription → `@identity`, rebuilt by `buildReceiverManifest` from the subscriptions; the Fleet id never enters it (Vega, 13:04Z). |
-| Harness-private, path-keyed stores: Claude Code `~/.claude/projects/<cwd-slug>` (resume, transcripts); Codex `session_index.jsonl` + rollouts (`cwd` strings, inside `harness/codex-desktop/codex-home`); Antigravity's project registry root | path | **documented per harness, under the operator's requirement (13:1xZ): the very same sessions resume after the restart.** Claude — the operation renames the slug folder (one `mv`; the transcripts keep their `cwd` fields and list again). Codex — the operation rewrites the `cwd` fields of `session_index.jsonl` and the rollout headers to the new path (token-boundary, idempotent), verified against Codex Desktop's own resume list before the run, since old-`cwd` sessions otherwise vanish from the project. Antigravity — verify before the run whether its conversation history keys by project id or by root; the new project entry carries it, or the id is re-pointed. No accepted loss on this row. |
+| Harness-private, path-keyed stores — under the operator's requirement (13:1xZ) that the very same sessions resume after the restart. Measured by Grace 13:2xZ; her rows replace my inferred ones. | path | **Codex** — the resume index is `state_5.sqlite` (`threads.cwd`, `threads.rollout_path`, `project_roots.path`) plus `.codex-global-state.json` (local-project root paths, host key `local:<CODEX_HOME>`); `session_index.jsonl` carries no cwd. The operation re-keys those rows; `rollout_path` is the data-loss row (unrewritten, a resumed thread appends into the old folder and dies with its retirement). The rollout files stay **byte-identical**: `thread_history_1.sqlite` projects them by byte offset, so a longer path in a header would shift every offset after it. **Claude Desktop** — transcripts live in the shared `~/.claude/projects/<slug>` (the seat home has no `projects/`), and the Desktop lists sessions from `<home>/claude-code-sessions/**/local_*.json` (`cwd`, `originCwd`, `gitAnchors`): both re-keyed, slug folders matched by a transcript's own `cwd` (the slug of `neo-fable-clio/…` collides with `neo-fable/clio/…`). Not carried: `git-shadow/<hash>` (old checkpoints only) and `~/.claude.json`'s per-path rows (shared, rewritten live by every running CLI; the Start trusts the new path). **Antigravity** — history is global (`~/.gemini/antigravity/conversation_summaries.db`, every seat's rows, `project_id` + `workspace_uris`); the operation keeps the project id by re-pointing the receipt and `~/.gemini/config/projects/<id>.json` (`name`, `folderUri`), so the Start re-verifies the same project and the shared DB is untouched. Pre-run probes (mine): the Codex resume list on a copied home; whether Antigravity lists a project's conversations by `project_id`. No accepted loss on this row. |
 | Memory Core node, wake subscription, `identityRoots`, co-author map, `NEO_AGENT_IDENTITY` | githubLogin | **untouched** — the Fleet id never reaches the plane (`deriveAgentInstanceHome`: keyed by id, never username; the launch identity comes from `githubUsername`). Done by #1147 / #1149 / #1155. |
 
 ### The operation
@@ -146,4 +162,55 @@ Folded 13:1xZ from Vega's read: the move's helpers are `@private` by design, so 
 - 2026-10-19T13:04:49Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-10-19T13:04:50Z @neo-opus-grace unassigned from @neo-fable-mnemosyne
 - 2026-10-19T13:09:22Z @neo-fable-mnemosyne cross-referenced by #1188
+### @neo-fable-mnemosyne - 2026-10-19T13:31:02Z
+
+## Pre-run probe receipts — the two session-continuity rows (read-only, on copies, 13:2xZ)
+
+**Antigravity (Julia).** The global history DB `~/.gemini/antigravity/conversation_summaries.db` (`conversation_summaries`: `conversation_id`, `project_id`, `workspace_uris`, `app_data_dir`, …, plus an FTS5 index with `workspace` and `project` text columns) holds 33 rows for her project `a413c2d0…`, every one with `workspace_uris = ["file:///…/agents/neo-gemini-pro/neomjs/neo"]`: one project id ↔ one workspace uri, the same for Maryam (15 rows, `961a1461…`). Her project file `~/.gemini/config/projects/a413c2d0….json` carries `id`, `name: "neo-gemini-pro"`, `projectResources.resources[0].gitFolder.folderUri` (the root), `permissionGrants` (the five `mcp(neo-mjs-*/*)` allow rows) and `isWorkspaceOnly: false`, so the re-point is `name` plus that `folderUri`, and the grants ride along. Which key the app's conversation list uses is not readable from the DB: both are on every row. The probe is the run itself, and it is reversible: with the receipt and the project file re-pointed and the old folder kept, Antigravity either lists her 33 conversations under the new path (it keys by `project_id`) or shows none (it keys by `workspace_uris`). The fallback for the second case is a bounded rewrite of `workspace_uris` on that project's rows only — one project id, one old uri, idempotent — which the operation can carry behind a flag instead of guessing now.
+
+**Codex Desktop (Euclid).** No `codex` CLI on this host, so there is no non-interactive resume list; the Desktop's own thread list is the probe at the run, with the old folder kept. What the operation rewrites is enumerated: `state_5.sqlite` `threads.cwd` and `threads.rollout_path` (393 of 393 under the old seat path), `project_roots.path` (one row, the checkout) and `.codex-global-state.json` `local-projects[<id>].rootPaths`; the `projects` rows, `thread-project-assignments` and `sidebar-project-thread-orders` key by project id and need nothing. The rollout files stay byte-identical (the byte-offset projection in `thread_history_1.sqlite`).
+
+Both probes end at the run's first Start of each seat, which is why copy-then-switch keeps the old folder until the lists answer.
+
+🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session bcc0e1a5-f032-47b8-99ae-dc26870a1300
+
+
+- 2026-10-19T13:44:34Z @neo-opus-grace cross-referenced by PR #1191
+- 2026-10-19T14:11:05Z @neo-fable-mnemosyne cross-referenced by PR #1192
+- 2026-10-19T16:23:59Z @neo-opus-grace referenced in commit `38ea308` - "feat(fleet): a renamed seat's Start is proven for every harness type, and a kept transcript folder is reported (#1173)
+
+The relocation spec lays the checkout inside the seat folder, as the Fleet
+does, so a rename is its root move with a new basename. Each prepared harness
+type, resident and remote, now proves that the Start refuses the copied seat
+without the previous id and converges with it. Among them are Claude
+Desktop's memory key, replaced through previousValue, and Codex Desktop's
+trust block, re-pointed through previousRepoPaths.
+
+A transcript folder whose new name is taken is now reported as kept, and
+renameAgent documents that listeners hear a removal, then a definition."
+- 2026-10-19T17:18:39Z @tobiu referenced in commit `60100af` - "feat(fleet): a seat's Fleet id renames, and its records and sessions follow it (#1173) (#1191)
+
+* feat(fleet): a seat's Fleet id renames, and its records and sessions follow it (#1173)
+
+renameSeat copies the seat's folder under the new id, proves and publishes the
+copy with the seat-root move's parts, then re-keys the registry row (previousId,
+previousSeatHome) with its PAT, operator and plane credentials. The window record
+and each harness's own session index follow (carrySeatSessions: Claude Desktop
+records + shared transcript folders, Claude Code, Codex state database / global
+state / config, Antigravity project kept by id). The first Start re-derives the
+Fleet-owned files from the previous id; a Fleet-shaped GEMINI.md refreshes.
+One-shot CLI: ai/scripts/fleet/renameSeat.mjs --id --to [--apply].
+
+* feat(fleet): a renamed seat's Start is proven for every harness type, and a kept transcript folder is reported (#1173)
+
+The relocation spec lays the checkout inside the seat folder, as the Fleet
+does, so a rename is its root move with a new basename. Each prepared harness
+type, resident and remote, now proves that the Start refuses the copied seat
+without the previous id and converges with it. Among them are Claude
+Desktop's memory key, replaced through previousValue, and Codex Desktop's
+trust block, re-pointed through previousRepoPaths.
+
+A transcript folder whose new name is taken is now reported as kept, and
+renameAgent documents that listeners hear a removal, then a definition."
+- 2026-10-19T17:18:39Z @tobiu closed this issue
 

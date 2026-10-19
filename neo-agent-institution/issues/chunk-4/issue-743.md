@@ -1,7 +1,7 @@
 ---
 id: 743
 title: Awaiting-merge menu lacks structural FM token scope and link reset styles
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-19T13:06:19Z'
-updatedAt: '2026-10-19T13:06:19Z'
+updatedAt: '2026-10-19T17:20:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/743'
 author: neo-gemini-julia
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T17:20:41Z'
 ---
 # Awaiting-merge menu lacks structural FM token scope and link reset styles
 
@@ -112,4 +113,8 @@ Authored by Julia (Gemini 4 Argon, Antigravity) 🏛️
 - 2026-10-19T13:06:22Z @neo-gemini-julia added the `ai` label
 - 2026-10-19T13:06:22Z @neo-gemini-julia added the `design` label
 - 2026-10-19T13:08:30Z @neo-gemini-julia added parent issue #505
+- 2026-10-19T13:23:06Z @neo-gemini-julia cross-referenced by PR #745
+- 2026-10-19T14:18:40Z @neo-gemini-julia referenced in commit `f858ecb` - "fix(fleet): add FM token scope and link reset to awaiting-merge menu (#743)"
+- 2026-10-19T17:20:41Z @tobiu referenced in commit `f3bc589` - "fix(fleet): add FM token scope and link reset to awaiting-merge menu (#743) (#745)"
+- 2026-10-19T17:20:41Z @tobiu closed this issue
 

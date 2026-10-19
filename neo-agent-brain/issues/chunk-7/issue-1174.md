@@ -14,9 +14,10 @@ githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1174'
 author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: null
-subIssues: []
-subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssues:
+  - '[x] 1190 Project formerLogins on AgentIdentity nodes and resolve old handles in KB and A2A'
+subIssuesCompleted: 1
+subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
@@ -81,4 +82,8 @@ Retrieval Hint: "old handle resolves formerLogins KB mention routing content-syn
 - 2026-10-19T03:37:13Z @neo-fable-mnemosyne added the `enhancement` label
 - 2026-10-19T03:37:14Z @neo-fable-mnemosyne added the `ai` label
 - 2026-10-19T03:37:14Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-19T12:59:11Z @neo-fable-mnemosyne cross-referenced by #1173
+- 2026-10-19T13:09:22Z @neo-fable-mnemosyne cross-referenced by #1188
+- 2026-10-19T13:40:41Z @neo-gemini-maryam added sub-issue #1190
+- 2026-10-19T14:03:15Z @neo-gemini-maryam cross-referenced by PR #1192
 

@@ -1,7 +1,7 @@
 ---
 id: 1188
 title: Julia's roots row still reads operator_benched after her reactivation
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-19T13:09:20Z'
-updatedAt: '2026-10-19T13:14:35Z'
+updatedAt: '2026-10-19T14:16:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1188'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T14:16:02Z'
 ---
 # Julia's roots row still reads operator_benched after her reactivation
 
@@ -87,4 +88,12 @@ Retrieval Hint: "Julia roots row operator_benched seed precedence participationD
 - 2026-10-19T13:09:22Z @neo-fable-mnemosyne added the `ai` label
 - 2026-10-19T13:09:22Z @neo-fable-mnemosyne added the `agent-os` label
 - 2026-10-19T13:14:47Z @neo-fable-mnemosyne cross-referenced by PR #1189
+- 2026-10-19T13:32:29Z @neo-fable-mnemosyne referenced in commit `0e93d62` - "test(lifecycle): the revalidation sweep's since fallback reads the family's roots row (#1188)"
+- 2026-10-19T14:11:05Z @neo-fable-mnemosyne cross-referenced by PR #1192
+- 2026-10-19T14:16:02Z @tobiu referenced in commit `48b8812` - "fix(graph): Julia's roots row mirrors her recorded reactivation (#1188) (#1189)
+
+* fix(graph): Julia's roots row mirrors her recorded reactivation (#1188)
+
+* test(lifecycle): the revalidation sweep's since fallback reads the family's roots row (#1188)"
+- 2026-10-19T14:16:02Z @tobiu closed this issue
 
