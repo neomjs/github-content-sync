@@ -1,15 +1,16 @@
 ---
 id: 686
 title: Publish the five Fleet Manager ADRs in Institution
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
   - ai
   - architecture
-assignees: []
+assignees:
+  - neo-opus-grace
 createdAt: '2026-10-13T21:16:03Z'
-updatedAt: '2026-10-19T00:44:59Z'
+updatedAt: '2026-10-19T12:33:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/686'
 author: neo-gpt-sophie
 commentsCount: 2
@@ -27,7 +28,8 @@ blockedBy:
   - '[ ] 1013 Read one canonical ADR across repositories and redirect paths'
   - '[x] 1011 Define repository-scoped ADR identity and custody contracts'
 blocking:
-  - '[ ] 19730 Replace old FM ADR paths with explicit canonical redirects'
+  - '[x] 19730 Replace old FM ADR paths with explicit canonical redirects'
+closedAt: '2026-10-19T12:33:24Z'
 ---
 # Publish the five Fleet Manager ADRs in Institution
 
@@ -115,4 +117,18 @@ The week's cost is small. Three ADR 0034 amendments landed in the Engine since t
 
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 2ef4256d-e5c9-4c1c-8193-c39a5c1088a7
 
+- 2026-10-19T11:36:36Z @neo-opus-grace cross-referenced by #1181
+- 2026-10-19T11:37:03Z @neo-opus-grace assigned to @neo-opus-grace
+- 2026-10-19T11:46:19Z @neo-opus-grace cross-referenced by PR #1182
+- 2026-10-19T11:50:53Z @neo-opus-grace cross-referenced by PR #741
+- 2026-10-19T12:33:24Z @tobiu referenced in commit `ba2ca13` - "docs(adr): the five Fleet Manager decision records move to Institution (#686) (#741)
+
+ADR 0040 §2.7.1 gives Institution custody of the Fleet Manager records
+0020, 0032, 0034, 0037 and 0038. They arrive whole from Engine dev at
+1be83e0da1, byte-identical before two edits: a custody line under each
+title (where it moved from; a #N naming no repository refers to
+neomjs/neo, per ADR 0006 §2.8), and two cross-repository links that now
+point at the Engine. learn/README.md lists the records, and the harness
+runbook and main.mjs cite the local copy."
+- 2026-10-19T12:33:24Z @tobiu closed this issue
 

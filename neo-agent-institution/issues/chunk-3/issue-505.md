@@ -33,8 +33,9 @@ subIssues:
   - '[x] 714 The Memories design page states which registers are installed'
   - '[x] 715 A Memories row re-norms to its rail in two frames on selection'
   - '[x] 724 Add an agent: the empty-memory row, the focus ring and the lock glyph'
+  - '[ ] 743 Awaiting-merge menu lacks structural FM token scope and link reset styles'
 subIssuesCompleted: 16
-subIssuesTotal: 17
+subIssuesTotal: 18
 contentTrust:
   projected: true
   quarantined: 0
@@ -941,4 +942,6 @@ Boundary recorded with it: a cloud plane heals itself (Agent OS self-diagnostics
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 27474ff2-8b63-4f60-9840-70b18bb6dea8
 
+- 2026-10-19T13:06:21Z @neo-gemini-julia cross-referenced by #743
+- 2026-10-19T13:08:30Z @neo-gemini-julia added sub-issue #743
 

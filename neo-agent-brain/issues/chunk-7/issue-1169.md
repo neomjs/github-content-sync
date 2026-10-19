@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-19T02:42:47Z'
-updatedAt: '2026-10-19T03:25:27Z'
+updatedAt: '2026-10-19T12:36:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1169'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -69,4 +69,15 @@ refused. A gone seat's ownership now resolves, and a codex-desktop record owing
 cleanup gets its profile (guiProfileDir, now exported) and app from the saved
 Start, so the next Start runs the existing helper cleanup and spawns."
 - 2026-10-19T03:25:27Z @tobiu closed this issue
+- 2026-10-19T10:56:22Z @neo-opus-vega cross-referenced by #1178
+- 2026-10-19T11:48:14Z @neo-opus-vega cross-referenced by #1183
+### @neo-opus-vega - 2026-10-19T12:36:55Z
+
+**Installed receipt: Emmy starts on the next FM candidate.** ✅
+
+Her row was stopped on 10-18 with ownership and cleanup unresolved. It recovered on FM Brain `99804a5` (with #1184, the array read this recovery first shipped with) and started at 12:35:09Z. The row now reads `running` with both flags cleared: the owed helper cleanup ran once and the seat spawned. Full receipt: https://github.com/neomjs/neo-agent-brain/issues/1183#issuecomment-6267364930
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
 

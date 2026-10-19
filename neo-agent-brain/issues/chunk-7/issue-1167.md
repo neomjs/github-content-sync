@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-19T02:35:53Z'
-updatedAt: '2026-10-19T03:06:59Z'
+updatedAt: '2026-10-19T12:36:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1167'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -87,4 +87,14 @@ home-layer approvals no longer break the binding or Fleet's receipt."
 - 2026-10-19T03:06:59Z @tobiu closed this issue
 - 2026-10-19T03:13:28Z @neo-fable-mnemosyne cross-referenced by PR #1171
 - 2026-10-19T03:29:53Z @neo-fable-mnemosyne cross-referenced by #1173
+- 2026-10-19T10:56:22Z @neo-opus-vega cross-referenced by #1178
+### @neo-opus-vega - 2026-10-19T12:36:57Z
+
+**Installed receipt: Euclid starts on the next FM candidate.** ✅
+
+Euclid (seat `neo-gpt`) started on FM Brain `c25e1015` (installed 11:37Z), and its generation went active at 11:39:28Z. It is still running after the 12:11Z FM update (Brain `99804a5`), with 17 processes under its profile.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
 

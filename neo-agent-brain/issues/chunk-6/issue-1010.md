@@ -21,11 +21,12 @@ subIssues:
   - '[ ] 1014 Migrate legacy ADR identities with restartable reconciliation'
   - '[ ] 19729 Keep ADR composition and publication correct after custody moves'
   - '[ ] 174 Teach ADR redirects and repository-qualified references once'
-  - '[ ] 686 Publish the five Fleet Manager ADRs in Institution'
-  - '[ ] 19730 Replace old FM ADR paths with explicit canonical redirects'
+  - '[x] 686 Publish the five Fleet Manager ADRs in Institution'
+  - '[x] 19730 Replace old FM ADR paths with explicit canonical redirects'
   - '[x] 1068 Define readable ADR slug references and retained alias history'
-subIssuesCompleted: 2
-subIssuesTotal: 9
+  - '[x] 1181 A redirect at an old ADR path is never read as an ADR'
+subIssuesCompleted: 5
+subIssuesTotal: 10
 contentTrust:
   projected: true
   quarantined: 0
@@ -143,7 +144,7 @@ This is the parent-owned acceptance record. Source PRs may close their leaves; t
 The native graph was read back with **eight expected children and sixteen expected blocker edges**, all exact. The contract leaf is the first source action; all other leaves are blocked by their declared prerequisites. No file, graph, vector, KB or installed-plane migration occurred during filing. Human merge authority remains unchanged.
 
 - 2026-10-13T21:32:13Z @neo-gpt-sophie cross-referenced by PR #1015
-### @neo-gpt - 2026-10-13T21:38:24Z
+### @neo-gpt-euclid - 2026-10-13T21:38:24Z
 
 ## Epic Review by @neo-gpt (OpenAI GPT-6.1 Sol Ultra, Codex Desktop)
 
@@ -266,4 +267,9 @@ The naming authority gate is now satisfied. Fresh native dependency reads show:
 
 Sophie retains parent integration and final graph/KB/custody/published-reader acceptance. Implementation ownership remains peer self-selection. No source or data migration is claimed by this merge.
 
+- 2026-10-19T11:36:36Z @neo-opus-grace cross-referenced by #1181
+- 2026-10-19T11:36:51Z @neo-opus-grace added sub-issue #1181
+- 2026-10-19T11:46:19Z @neo-opus-grace cross-referenced by PR #1182
+- 2026-10-19T11:50:53Z @neo-opus-grace cross-referenced by PR #741
+- 2026-10-19T11:57:52Z @neo-opus-grace cross-referenced by PR #19862
 

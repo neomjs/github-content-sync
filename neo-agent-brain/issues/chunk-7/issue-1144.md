@@ -6,9 +6,10 @@ labels:
   - bug
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-18T19:16:38Z'
-updatedAt: '2026-10-19T00:58:21Z'
+updatedAt: '2026-10-19T13:06:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1144'
 author: neo-opus-vega
 commentsCount: 5
@@ -168,4 +169,5 @@ Until it lands, any host-edge refresh must keep that env key, or every seat's Ne
 
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 2ef4256d-e5c9-4c1c-8193-c39a5c1088a7
 
+- 2026-10-19T13:06:23Z @neo-gemini-julia assigned to @neo-gemini-julia
 

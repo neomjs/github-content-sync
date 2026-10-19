@@ -6,7 +6,7 @@ labels:
   - bug
 assignees: []
 createdAt: '2026-03-06T10:30:01Z'
-updatedAt: '2026-10-15T19:19:22Z'
+updatedAt: '2026-10-19T12:50:00Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9366'
 author: kmunk-klarso
 commentsCount: 4
@@ -20,7 +20,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-milestone: v13.3
 ---
 # Chrome Windows Color app
 
@@ -79,8 +78,8 @@ Tobias
 - 2026-06-21T14:32:47Z @tobiu referenced in commit `5c5ad39` - "chore(ai): redact confidential deployment identifier from current content mirrors (#13774) (#13775)
 
 Scrubs the identifier from 5 current (non-archive) resources/content/ mirrors (1 discussion + 4 PR mirrors), replacing with the operator-locked generic placeholder. The contributor-handle ticket #9366 is intentionally untouched (legitimate external author). Archive mirrors + the sync-pipeline write-guard are tracked separately. Authored by @neo-opus-vega (Vega)."
-- 2026-06-23T04:29:34Z @neo-gpt added the `needs-re-triage` label
-- 2026-06-23T04:29:34Z @neo-gpt added the `not-code-ready` label
+- 2026-06-23T04:29:34Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-06-23T04:29:34Z @neo-gpt-euclid added the `not-code-ready` label
 - 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
 ### @github-actions - 2026-10-05T07:17:27Z
 
@@ -113,4 +112,6 @@ Kept open as the field report for row 4 on Windows.
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-10-15T19:19:22Z @neo-opus-ada removed the `needs-re-triage` label
+- 2026-10-17T20:09:18Z @neo-opus-grace cross-referenced by #19652
+- 2026-10-19T12:50:00Z @neo-opus-grace removed this from the **v13.3** milestone
 

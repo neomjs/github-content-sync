@@ -1,7 +1,7 @@
 ---
 id: 734
 title: The FM roster stays empty when the Fleet answers after 15 s
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-18T18:56:59Z'
-updatedAt: '2026-10-19T03:50:38Z'
+updatedAt: '2026-10-19T10:39:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/734'
 author: neo-opus-vega
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-19T10:39:42Z'
 ---
 # The FM roster stays empty when the Fleet answers after 15 s
 
@@ -104,4 +105,13 @@ Cross-link: #735 files the other half of this state, the plane that has not answ
 - 2026-10-19T03:37:42Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-19T03:42:13Z @neo-opus-vega cross-referenced by #739
 - 2026-10-19T03:42:46Z @neo-opus-vega cross-referenced by PR #740
+- 2026-10-19T10:39:42Z @tobiu referenced in commit `e2e10e0` - "fix(harness): a Fleet past its readiness window is still starting, and the roster attaches when it answers (#734) (#740)
+
+The shell failed the boot after a fixed 15 s and never attached a Fleet that
+answered later, so every boot with seats running (18-19 s under a loaded Memory
+Core) left the roster empty. Product boots now wait while the Fleet child lives,
+log once when the window passes, and settle when it answers; an exited child,
+a typed refusal or the wire contract still fail. The smoke keeps its 15 s bound,
+and quit aborts a pending wait so teardown never hangs."
+- 2026-10-19T10:39:42Z @tobiu closed this issue
 

@@ -1,0 +1,104 @@
+---
+id: 192
+title: Retire superseded work when publishing a replacement decision
+state: OPEN
+labels:
+  - enhancement
+  - ai
+  - model-experience
+assignees:
+  - neo-gpt-euclid
+createdAt: '2026-10-19T12:26:45Z'
+updatedAt: '2026-10-19T12:34:02Z'
+githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/192'
+author: neo-gpt-euclid
+commentsCount: 1
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 0
+  signals: []
+blockedBy: []
+blocking: []
+---
+# Retire superseded work when publishing a replacement decision
+
+## Context
+
+The operator asked for a sweep when an accepted research direction is published or graduated, and when tickets/epics are created, so superseded implementation trails stop remaining executable work. The incident was verified against live predecessor bodies, an abandoned draft and the current decision; private project details stay outside this public ticket. The correction already applied there preserves historical evidence and leaves the quality outcome open.
+
+## The Problem
+
+Creation's adjacency sweep discovers related work, but its exit only prevents a duplicate new filing. A replacement decision can coexist with older open, assigned prescriptions and unchecked ACs. Intake can reject one when picked up; it does not make the publisher reconcile the predecessors. A closed draft alone leaves the older tickets actionable.
+
+## The Architectural Reality
+
+At Skills dev `efa11b5230c1ef25c64598d9224808cb2da2b695`, `ticket-create/references/decision-substrate-sweeps.md` owns rationale/outcome discovery and same-turn porting. `ticket-create-workflow.md` §10 owns post-create work; `ideation-sandbox-workflow.md` §§3/6.7 own accepted folds and graduation; `epic-create-workflow.md` owns decomposition. Intake §0/§4 already rejects stale prescriptions and preserves unresolved outcomes. No corresponding producer cleanup exists in those payloads or the inspected corpus scripts.
+
+## The Fix
+
+Extend the existing shared sweep/porting payload with a bounded reconciliation of predecessors found by the same adjacency reads. Trigger it when an accepted fold changes direction, at graduation and after successor ticket/epic IDs exist. Record which related work stays current, narrows, transfers or retires; preserve unique obligations/evidence/dissent before removing old actionability. Update current heads and successor links, honoring authorship or scoped authorization, and verify readback. Unresolved outcomes and research stay open; a finally rejected narrow implementation closes as not planned. A new exploratory option alone retires nothing.
+
+Keep the procedure in one conditional payload, with short pointers from its producer workflows and intake's existing rejection step. Leave intake's validation pass, routers, manifests and global turn instructions unchanged. Compress repeated explanation in that payload to offset the new operation.
+
+## Contract Ledger
+
+| Surface | Authority | Behavior | Fallback / ownership | Docs | Evidence |
+|---|---|---|---|---|---|
+| Accepted decision / graduation | Source decision and existing §11 authorship rules | Reconcile affected predecessor actionability before reporting the transition complete | New idea without accepted authority changes no predecessor; foreign edits need owner application or scoped authorization | Existing shared sweep payload | Cold read distinguishes accepted replacement from exploratory alternative |
+| Ticket / epic publication | Existing adjacency results and new artifact ID | Move surviving obligations first, then link and disposition obsolete prescriptions | Unresolved parent outcome stays open; partial overlap narrows rather than closes | Existing creation payload pointers | Partial-overlap and rejected-method cases |
+| Future session loading | ADR 0007 / skill Map-Atlas contract | Conditional detail; zero router/global load increase | Source merge is not installed adoption | PR load-effect audit | Corpus lint, byte delta, source-based cold reads |
+
+## Acceptance Criteria
+
+- [ ] One shared producer reconciliation runs at accepted direction-changing folds, graduation and successor ticket/epic creation, reusing adjacency results rather than adding a global scan.
+- [ ] It preserves outcome, surviving obligations, evidence/provenance and authorship; speculative alternatives cannot retire accepted work, and completed-but-not-selected candidates cannot claim the outcome achieved.
+- [ ] Related current heads/checklists and successor links receive an explicit disposition; owner-pending actions remain unresolved until verified. Narrow rejected prescriptions and unresolved outcome authorities have different close behavior.
+- [ ] Existing corpus/reference lint passes; router and turn-loaded bytes do not grow. Net skill Markdown change is non-positive or its conditional retirement rationale is explicitly justified.
+- [ ] Bounded cold reads cover a rejected method with an open outcome, a partially overlapping predecessor, a foreign-owned artifact, and an unaccepted exploratory alternative.
+
+## Out of Scope
+
+New skills, registries, hooks, MCP fields, automatic branch deletion, historical evidence erasure, global intake expansion, general closure-policy changes, publishing/installing a package, or resolving the underlying visual-quality goal.
+
+## Avoided Traps
+
+Adding an intake warning while leaving producer artifacts contradictory; treating all old research as invalid; closing an outcome because its method was rejected; adding another required review seat; editing another author's ACs without authority.
+
+## Existing-work disposition
+
+`#62` covers reading closed decisions, `#59/#60` body currency/comment triggers, `#10` within-body fold sufficiency and `#13` source-to-epic fidelity. This is the bounded producer-side reconciliation missing between those existing contracts; no unrelated scope is added to them.
+
+Decision Record impact: aligned-with ADR 0007 and the existing skill-shape contract; no new architectural primitive or ADR.
+Source authority: direct operator request, recorded in the Origin Session below; no ungraduated Discussion is claimed as implementation authority.
+Structure map: N/A — existing Markdown skill payloads, no Agent OS module or placement change.
+Live latest-open sweep: latest20 read immediately before creation; no equivalent producer reconciliation ticket found. Same-surface closed query had no matching replacement.
+MC rationale sweep: rejected approach/resumed draft research trails; own/peer current records found, no separate implementation owner.
+Own-assignment sweep: `#140` is integration adoption, not this source change. Recent all-state claims contain no competing Skills write-surface claim.
+
+Origin Session ID: ba608f22-df6f-4096-ac55-98ea38dc2cb1
+Retrieval Hint: "superseded implementation trails accepted research decision publisher reconciliation"
+
+
+
+## Timeline
+
+- 2026-10-19T12:26:45Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-19T12:26:46Z @neo-gpt-euclid added the `enhancement` label
+- 2026-10-19T12:26:46Z @neo-gpt-euclid added the `ai` label
+- 2026-10-19T12:26:46Z @neo-gpt-euclid added the `model-experience` label
+### @neo-gpt-euclid - 2026-10-19T12:30:55Z
+
+### Source contract and load-effect evidence
+
+The T3 Contract Ledger is in the canonical ticket body; its existing surfaces were checked at `efa11b5` before editing. One operational owner lives in `ticket-create/references/decision-substrate-sweeps.md#same-turn-reconciliation`, referenced by accepted ideation folds/graduation, ticket/epic publication and intake's existing rejection step. No additional intake pass is introduced.
+
+Placement: `rewrite` conditional detail + `compress-to-trigger` caller pointers. Event-triggered, discipline-only guidance for accepted replacements; no router, manifest, global turn text, runtime schema or new skill. The final five-payload Markdown diff is **−307 bytes** against `origin/dev`, with zero router delta. `npm run lint -- --base origin/dev` passes corpus/reference and budget checks; historical explanations are compressed with their provenance retained.
+
+A cold-context reader distinguished all four cases: rejected method/open outcome, partial overlap, foreign authority and unaccepted alternative. It identified successor-ID timing, pending-versus-complete reporting and the intake-rejection ingress. Those were corrected; a fresh delta read found no remaining ambiguity. This is source interpretation evidence, separate from installed-session adoption. Required release metadata is 0.1.52; no manual publish or consumer update.
+
+- 2026-10-19T12:34:39Z @neo-gpt-euclid cross-referenced by PR #193
+
