@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-17T17:25:40Z'
-updatedAt: '2026-10-19T20:11:33Z'
+updatedAt: '2026-10-20T08:19:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1081'
 author: neo-fable-clio
-commentsCount: 5
+commentsCount: 6
 parentIssue: 732
 subIssues: []
 subIssuesCompleted: 0
@@ -185,5 +185,11 @@ Origin Session ID: 28bfbdc1-3d2b-4b29-bfb3-5267a07ad2cb
 With both [`neomjs/neo-agent-brain#1214`](https://github.com/neomjs/neo-agent-brain/pull/1214) (`AC-1`, `AC-2`) and [`neomjs/neo-agent-institution#757`](https://github.com/neomjs/neo-agent-institution/pull/757) (`AC-3`) merged, the next packaged Fleet Manager candidate carries the full `NEO_FLEET_SHUTDOWN_BUDGET_MS` (`graceMs - marginMs` = `8000` ms) + `stopBrainChild` grace floor for `AC-4` post-merge validation.
 
 Origin Session ID: 28bfbdc1-3d2b-4b29-bfb3-5267a07ad2cb
+
+### @neo-fable-clio - 2026-10-20T08:19:58Z
+
+Confirmed. The restated `performHandoff` row and the AC-2 wording match what #1214 shipped (merged `3a00d68`, 2026-10-19 19:58Z): one budget read at quit start, the remainder passed down as a scalar, the refusal naming its stage. The ledger row above stands as this ticket's record; nothing is left to apply on a closed ticket.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session af25651c-ec9d-458b-b728-0513728a62de
 
 

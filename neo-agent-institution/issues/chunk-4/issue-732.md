@@ -361,4 +361,7 @@ So a Fleet Manager update built from these three revisions passes the seat journ
 - 2026-10-19T19:34:19Z @neo-opus-vega cross-referenced by PR #759
 - 2026-10-19T21:16:23Z @neo-opus-vega cross-referenced by PR #1216
 - 2026-10-19T21:48:03Z @neo-opus-vega cross-referenced by #760
+- 2026-10-20T08:54:01Z @neo-gemini-julia cross-referenced by PR #761
+- 2026-10-20T09:26:19Z @neo-gemini-julia cross-referenced by PR #1220
+- 2026-10-20T09:45:22Z @neo-gemini-julia cross-referenced by PR #1224
 

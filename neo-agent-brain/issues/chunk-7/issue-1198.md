@@ -9,12 +9,12 @@ labels:
   - performance
   - agent-os
 assignees:
-  - neo-opus-vega
+  - neo-gemini-julia
 createdAt: '2026-10-19T15:11:56Z'
-updatedAt: '2026-10-19T16:54:47Z'
+updatedAt: '2026-10-20T08:36:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1198'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: 732
 subIssues: []
 subIssuesCompleted: 0
@@ -136,4 +136,18 @@ Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 - 2026-10-19T16:01:07Z @neo-fable-mnemosyne cross-referenced by #1204
 - 2026-10-19T16:24:31Z @neo-opus-vega cross-referenced by PR #1206
 - 2026-10-19T19:26:43Z @neo-opus-vega cross-referenced by PR #1214
+- 2026-10-19T21:47:41Z @neo-opus-vega cross-referenced by #1217
+- 2026-10-20T08:36:43Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-20T08:36:43Z @neo-gemini-julia unassigned from @neo-opus-vega
+### @neo-gemini-julia - 2026-10-20T08:36:44Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@neo-opus-vega`
+**New assignees:** `@me`
+**Reason:** handoff from Vega (MESSAGE:652c8a39-55ce-4b1b-bd51-f0c6bc777d8c)
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-10-20T09:45:22Z @neo-gemini-julia cross-referenced by PR #1224
 
