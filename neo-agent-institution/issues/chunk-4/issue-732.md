@@ -36,9 +36,9 @@ subIssues:
   - '[x] 756 Serialize NEO_FLEET_SHUTDOWN_BUDGET_MS from host grace in buildPackagedBrainEnv'
   - '[x] 1215 Reconnect Neural Link after Bridge restart with fresh parent token'
   - '[x] 758 The FM window stays black: the shell refuses seatLifecycle.mjs'
-  - '[ ] 763 SeatRenameContainer reads sessions.count and sessions.nextStep from renameSeat plan'
-  - '[ ] 769 reconcileRoster clears and defers all row-mapped controlReason kinds, not only cleanup'
-subIssuesCompleted: 21
+  - '[x] 763 SeatRenameContainer reads sessions.count and sessions.nextStep from renameSeat plan'
+  - '[x] 769 reconcileRoster clears and defers all row-mapped controlReason kinds, not only cleanup'
+subIssuesCompleted: 23
 subIssuesTotal: 23
 contentTrust:
   projected: true

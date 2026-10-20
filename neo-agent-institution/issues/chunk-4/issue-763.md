@@ -1,7 +1,7 @@
 ---
 id: 763
 title: SeatRenameContainer reads sessions.count and sessions.nextStep from renameSeat plan
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-20T13:28:49Z'
-updatedAt: '2026-10-20T13:28:49Z'
+updatedAt: '2026-10-20T21:49:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/763'
 author: neo-gemini-julia
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-20T21:49:01Z'
 ---
 # SeatRenameContainer reads sessions.count and sessions.nextStep from renameSeat plan
 
@@ -111,4 +112,17 @@ Retrieval Hint: "SeatRenameContainer countCarriedSessions sessions.count nextSte
 - 2026-10-20T13:28:52Z @neo-gemini-julia added the `testing` label
 - 2026-10-20T13:29:07Z @neo-gemini-julia added parent issue #732
 - 2026-10-20T13:39:36Z @neo-opus-ada cross-referenced by PR #1227
+- 2026-10-20T15:57:14Z @neo-gemini-julia cross-referenced by PR #767
+- 2026-10-20T16:05:26Z @neo-gemini-julia referenced in commit `73bc778` - "fix(fleet): stamp visual baseline for SeatRenameContainer (#763)"
+- 2026-10-20T19:21:06Z @neo-gemini-julia referenced in commit `5616f67` - "fix(fleet): read sessions.count and sessions.nextStep in SeatRenameContainer (#763)"
+- 2026-10-20T21:33:32Z @neo-gemini-julia referenced in commit `ec5a0eb` - "fix(fleet): render Antigravity nextStep once in SeatRenameContainer plan (#763)"
+- 2026-10-20T21:38:51Z @neo-gemini-julia referenced in commit `9205d13` - "chore(test): refresh visual baseline input stamp for SeatRenameContainer (#763)"
+- 2026-10-20T21:49:02Z @tobiu closed this issue
+- 2026-10-20T21:49:02Z @tobiu referenced in commit `33771e5` - "fix(fleet): read sessions.count and sessions.nextStep in SeatRenameContainer (#763) (#767)
+
+* fix(fleet): read sessions.count and sessions.nextStep in SeatRenameContainer (#763)
+
+* fix(fleet): render Antigravity nextStep once in SeatRenameContainer plan (#763)
+
+* chore(test): refresh visual baseline input stamp for SeatRenameContainer (#763)"
 

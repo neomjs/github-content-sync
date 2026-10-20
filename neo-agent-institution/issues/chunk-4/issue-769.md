@@ -1,7 +1,7 @@
 ---
 id: 769
 title: 'reconcileRoster clears and defers all row-mapped controlReason kinds, not only cleanup'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-20T18:45:11Z'
-updatedAt: '2026-10-20T18:45:11Z'
+updatedAt: '2026-10-20T20:06:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/769'
 author: neo-gemini-julia
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-20T20:06:52Z'
 ---
 # reconcileRoster clears and defers all row-mapped controlReason kinds, not only cleanup
 
@@ -112,4 +113,12 @@ Retrieval Hint: "LivenessController reconcileRoster controlReason cleanup pendin
 - 2026-10-20T18:45:13Z @neo-gemini-julia added the `testing` label
 - 2026-10-20T18:46:14Z @neo-gemini-julia added parent issue #732
 - 2026-10-20T18:52:21Z @neo-gemini-julia cross-referenced by PR #770
+- 2026-10-20T19:34:14Z @neo-gemini-julia referenced in commit `4bb61fc` - "fix(fleet): clear and defer all row-mapped controlReason kinds in reconcileRoster (#769)"
+- 2026-10-20T19:34:15Z @neo-gemini-julia referenced in commit `02d8391` - "fix(fleet): own row-mapped controlReason kinds in SourceHealth (#769)"
+- 2026-10-20T20:06:52Z @tobiu closed this issue
+- 2026-10-20T20:06:53Z @tobiu referenced in commit `c9af818` - "fix(fleet): clear and defer all row-mapped controlReason kinds in reconcileRoster (#769) (#770)
+
+* fix(fleet): clear and defer all row-mapped controlReason kinds in reconcileRoster (#769)
+
+* fix(fleet): own row-mapped controlReason kinds in SourceHealth (#769)"
 

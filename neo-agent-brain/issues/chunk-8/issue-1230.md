@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-20T16:39:41Z'
-updatedAt: '2026-10-20T17:47:21Z'
+updatedAt: '2026-10-20T19:23:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1230'
 author: neo-opus-ada
 commentsCount: 1
@@ -57,13 +57,17 @@ Step 1 decides between arms 2 and 3; its result goes into this body before imple
 1. **Measure the re-seed, with the operator,** on a stopped seat profile whose store names a stale folder. Back up `Local Storage`, remove it, keep everything else, then Start through the FM. Record:
    - which folder the session opens in;
    - whether sign-in, MCP rows and model settings survive;
+   - where the existing sessions open. The operator saw every session bound to the stale environment, and "Edit environment" appends a second preset instead of repointing the stale one (Mnemosyne's measurement below);
    - what else resets.
-2. **If the app re-seeds from the converged file and sign-in survives:** at Start, clear the profile's renderer store before spawn whenever a Fleet writer has rewritten the preset since the app last confirmed it, and log that it did. That includes `convergeSeatSessionPreset` at this Start, and renameSeat's carry (#1220), which leaves the file current while the store stays stale. A preset the app has itself written back naming the checkout means the store is current, so that profile is not touched.
+
+   Subject: Mnemosyne's profile, the live case, stopped through the FM first.
+2. **If the app re-seeds from the converged file and sign-in survives:** at Start, clear the profile's renderer store before spawn whenever a Fleet writer has rewritten the preset since the app last confirmed it, and log that it did. That includes `convergeSeatSessionPreset` at this Start, and renameSeat's carry (#1220), which leaves the file current while the store stays stale. The store counts as current only when the preset the app opens (the newest `lastUsedAt` the app wrote back) names the checkout. A hand repair leaves the stale preset beside the new one, so the check reads that preset, never any entry in the file. A profile whose store is current is not touched.
 3. **Otherwise,** the Fleet names the state instead of reporting convergence. After spawn it reads the preset the app wrote back. A stale `target.cwd` becomes a seat state with one next step: "Edit environment → `<checkout>`".
 
 Recommendation: arm 2, because it meets AC-4 without writing the vendor's store format. Arm 3 is the floor if step 1 refutes arm 2.
 
 _Body updated 2026-10-20 ~16:50Z: arm 2's trigger now also covers a preset that renameSeat already rewrote. The first version keyed it to this Start's own rewrite only._
+_Body updated ~17:55Z with [Mnemosyne's measurement](https://github.com/neomjs/neo-agent-brain/issues/1230#issuecomment-6297362389) and the operator's observation: existing sessions moved into scope, and the "store is current" check now reads the preset the app opens._
 
 ## Contract Ledger
 
@@ -76,12 +80,12 @@ _Body updated 2026-10-20 ~16:50Z: arm 2's trigger now also covers a preset that 
 
 - [ ] AC-1: Step 1's measurement and the chosen arm are recorded in this body.
 - [ ] AC-2 [L2]: a unit arm covers the chosen behavior, including a preset that renameSeat already rewrote. An unconfirmed preset either clears the store before spawn (arm 2) or yields the named state (arm 3). A preset the app has confirmed leaves the profile byte-identical.
-- [ ] AC-3 [L3, post-merge]: on the installed FM, a Claude Desktop seat whose app store names a moved folder either starts and opens a session in its checkout with no manual edit (arm 2), or the FM shows the stale environment and its fix before the operator types (arm 3).
+- [ ] AC-3 [L3, post-merge]: on the installed FM, a Claude Desktop seat whose app store names a moved folder either starts and opens new and existing sessions in its checkout with no manual edit (arm 2), or the FM shows the stale environment and its fix before the operator types (arm 3).
 - [ ] AC-4: `seatSessionFolder.mjs`'s module doc names the store the app actually reads.
 
 ## Out of Scope
 
-- Session records that already name the old folder (`claude-code-sessions/**`); renameSeat carries those (#1220).
+- Transcript files under `~/.claude/projects`, which renameSeat carries (#1220).
 - Other harness families. The Fleet already imposes the checkout on Codex Desktop (#1223).
 
 ## Avoided Traps

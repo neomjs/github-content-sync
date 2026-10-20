@@ -1,7 +1,7 @@
 ---
 id: 174
 title: Teach ADR redirects and repository-qualified references once
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-13T21:16:00Z'
-updatedAt: '2026-10-20T15:41:38Z'
+updatedAt: '2026-10-20T19:17:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/174'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -27,6 +27,7 @@ blockedBy:
 blocking:
   - '[x] 19730 Replace old FM ADR paths with explicit canonical redirects'
   - '[x] 686 Publish the five Fleet Manager ADRs in Institution'
+closedAt: '2026-10-20T19:17:18Z'
 ---
 # Teach ADR redirects and repository-qualified references once
 
@@ -110,4 +111,18 @@ Creation sweeps: 2026-10-13 21:15:59 UTC; latest 20 live open neo-agent-skills i
 Addresses Round-1 review RAs on #197: fixes ADR 0010 census slug to 0010-lane-intent-coordination-primitive.md, aligns guide-authoring-bar.md §7 with ADR 0006 §§2.6-2.11 (including worked fixtures, Aliases table rules, incompleteHistory vs admission eligibility, and retirement trigger), keys decisionRowsByOwnerSlug by canonicalOwner + slug while rejecting unqualified cross-repo adr:<slug> in skill payloads, and completes the AC1 numeric ADR citation sweep across conditional payloads.
 
 [skill-growth-justified: neomjs/neo-agent-skills#174 AC2/AC5/AC6 worked fixtures and census rows in conditional payloads with 0 router/AGENTS.md byte growth]"
+- 2026-10-20T19:17:18Z @tobiu referenced in commit `1b9b48c` - "feat(skills): teach ADR redirects and repository-qualified references once (#174) (#197)
+
+* feat(skills): teach ADR redirects and repository-qualified references once (#174)
+
+Centralizes ADR custody redirects, 4-field canonical keys, and D19816 slug citation rules in guide-authoring conditional payload (0 router/AGENTS bytes), points structural-pre-flight, tech-debt-radar, and ticket-intake at that single rule + ADR 0006, and extends document-references.v1.json + lint-skill-corpus.mjs to validate D19816 slug references while rejecting bare single-repository ADR filenames and malformed #adr: tokens.
+
+[skill-growth-justified: neomjs/neo-agent-skills#174 adds ADR 0006 §§2.6-2.11 conditional payload in guide-authoring-bar.md and 3 decision census rows in document-references.v1.json with 0 router/AGENTS.md byte growth]
+
+* fix(skills): align ADR 0006 §7 contract, census 0010 slug, and qualified slug lint (#174)
+
+Addresses Round-1 review RAs on #197: fixes ADR 0010 census slug to 0010-lane-intent-coordination-primitive.md, aligns guide-authoring-bar.md §7 with ADR 0006 §§2.6-2.11 (including worked fixtures, Aliases table rules, incompleteHistory vs admission eligibility, and retirement trigger), keys decisionRowsByOwnerSlug by canonicalOwner + slug while rejecting unqualified cross-repo adr:<slug> in skill payloads, and completes the AC1 numeric ADR citation sweep across conditional payloads.
+
+[skill-growth-justified: neomjs/neo-agent-skills#174 AC2/AC5/AC6 worked fixtures and census rows in conditional payloads with 0 router/AGENTS.md byte growth]"
+- 2026-10-20T19:17:18Z @tobiu closed this issue
 

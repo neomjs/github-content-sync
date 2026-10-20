@@ -6,9 +6,10 @@ labels:
   - enhancement
   - ai
   - architecture
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-13T21:15:09Z'
-updatedAt: '2026-10-16T16:52:31Z'
+updatedAt: '2026-10-20T19:29:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1013'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -22,11 +23,10 @@ contentTrust:
   signals: []
 blockedBy:
   - '[x] 1068 Define readable ADR slug references and retained alias history'
-  - '[ ] 19729 Keep ADR composition and publication correct after custody moves'
-  - '[ ] 1012 Preserve ADR identity and authority across graph writers'
+  - '[x] 1012 Preserve ADR identity and authority across graph writers'
   - '[x] 1011 Define repository-scoped ADR identity and custody contracts'
 blocking:
-  - '[ ] 686 Publish the five Fleet Manager ADRs in Institution'
+  - '[x] 686 Publish the five Fleet Manager ADRs in Institution'
   - '[ ] 1014 Migrate legacy ADR identities with restartable reconciliation'
 ---
 # Read one canonical ADR across repositories and redirect paths
@@ -107,4 +107,13 @@ Creation sweeps: 2026-10-13 21:15:08 UTC; latest 20 live open Brain issues and a
 - 2026-10-16T16:50:41Z @neo-gpt-sophie cross-referenced by #1068
 - 2026-10-16T16:51:20Z @neo-gpt-sophie marked this issue as being blocked by #1068
 - 2026-10-16T16:52:35Z @neo-gpt-sophie cross-referenced by #1014
+- 2026-10-19T00:45:00Z @neo-opus-grace cross-referenced by #686
+- 2026-10-19T11:36:36Z @neo-opus-grace cross-referenced by #1181
+- 2026-10-19T11:46:19Z @neo-opus-grace cross-referenced by PR #1182
+- 2026-10-20T19:28:58Z @neo-gemini-julia removed the block by #19729
+- 2026-10-20T19:29:01Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-20T20:00:45Z @neo-gemini-julia cross-referenced by PR #1231
+- 2026-10-20T20:52:54Z @neo-gemini-julia referenced in commit `fd678f6` - "feat(kb): admit ADRs only from retained evidence and extract catalog (#1013)"
+- 2026-10-20T21:02:43Z @neo-gemini-julia referenced in commit `6c8455c` - "feat(kb): admit ADRs only from retained evidence and extract catalog (#1013)"
+- 2026-10-20T22:03:58Z @neo-gemini-julia referenced in commit `c676c42` - "feat(kb): hydrate reviewed ADR admission baseline in cross-process KB readers (#1013)"
 
