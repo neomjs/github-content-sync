@@ -16,14 +16,14 @@ commentsCount: 8
 parentIssue: null
 subIssues:
   - '[x] 1143 One seat''s unprovable server refuses the whole continuity handoff'
-  - '[ ] 733 An install refused at continuity leaves the Fleet Manager quit'
+  - '[x] 733 An install refused at continuity leaves the Fleet Manager quit'
   - '[x] 734 The FM roster stays empty when the Fleet answers after 15 s'
   - '[x] 1144 Neural Link fails after an FM update unless the Bridge is keyed by hand'
   - '[x] 736 A packaged candidate runs the seat checklist in isolation before install'
   - '[x] 1164 A seat''s Start, restart and recovery run end to end against a stand-in harness in CI'
   - '[x] 737 The installer refuses an update after an unclean FM exit; ADR 0034 §2.5 requires it to complete'
   - '[x] 1185 The handoff re-hashes each seat''s runtime inside its 10 s deadline'
-  - '[ ] 1198 Fleet boot hashes whole runtimes before its transport listens'
+  - '[x] 1198 Fleet boot hashes whole runtimes before its transport listens'
   - '[x] 1200 An FM update revokes every Codex seat: its Start lists ungranted servers'
   - '[x] 1201 The Fleet exports its seat lifecycle-state vocabulary'
   - '[ ] 749 The roster reads every Fleet lifecycle state, not three of six'
@@ -34,10 +34,11 @@ subIssues:
   - '[x] 1180 A seat''s project file is recognised by Fleet''s recorded write, not by enumerating every earlier shape'
   - '[x] 1081 Fleet quit and the continuity handoff share one budget'
   - '[x] 756 Serialize NEO_FLEET_SHUTDOWN_BUDGET_MS from host grace in buildPackagedBrainEnv'
-  - '[ ] 1215 Reconnect Neural Link after Bridge restart with fresh parent token'
+  - '[x] 1215 Reconnect Neural Link after Bridge restart with fresh parent token'
   - '[x] 758 The FM window stays black: the shell refuses seatLifecycle.mjs'
-subIssuesCompleted: 17
-subIssuesTotal: 21
+  - '[ ] 763 SeatRenameContainer reads sessions.count and sessions.nextStep from renameSeat plan'
+subIssuesCompleted: 20
+subIssuesTotal: 22
 contentTrust:
   projected: true
   quarantined: 0
@@ -364,4 +365,8 @@ So a Fleet Manager update built from these three revisions passes the seat journ
 - 2026-10-20T08:54:01Z @neo-gemini-julia cross-referenced by PR #761
 - 2026-10-20T09:26:19Z @neo-gemini-julia cross-referenced by PR #1220
 - 2026-10-20T09:45:22Z @neo-gemini-julia cross-referenced by PR #1224
+- 2026-10-20T10:58:55Z @neo-opus-ada cross-referenced by PR #1225
+- 2026-10-20T13:18:43Z @neo-opus-ada cross-referenced by PR #1227
+- 2026-10-20T13:28:50Z @neo-gemini-julia cross-referenced by #763
+- 2026-10-20T13:29:07Z @neo-gemini-julia added sub-issue #763
 

@@ -1,7 +1,7 @@
 ---
 id: 1215
 title: Reconnect Neural Link after Bridge restart with fresh parent token
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-19T19:27:37Z'
-updatedAt: '2026-10-19T21:20:23Z'
+updatedAt: '2026-10-20T10:22:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1215'
 author: neo-gemini-julia
 commentsCount: 1
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-20T10:22:15Z'
 ---
 # Reconnect Neural Link after Bridge restart with fresh parent token
 
@@ -147,4 +148,6 @@ Retrieval Hint: "Neural Link client Bridge restart reconnect bridgeTokenTtlMs fl
 
 Origin Session ID: 28bfbdc1-3d2b-4b29-bfb3-5267a07ad2cb
 
+- 2026-10-20T10:22:15Z @tobiu referenced in commit `ada3661` - "fix(neural-link): reconnect after Bridge restart with fresh parent-redeemed token (#1215) (#1216)"
+- 2026-10-20T10:22:16Z @tobiu closed this issue
 

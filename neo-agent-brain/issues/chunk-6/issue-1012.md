@@ -6,9 +6,10 @@ labels:
   - enhancement
   - ai
   - architecture
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-13T21:15:03Z'
-updatedAt: '2026-10-16T16:52:28Z'
+updatedAt: '2026-10-20T14:47:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1012'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -101,4 +102,8 @@ Creation sweeps: 2026-10-13 21:15:02 UTC; latest 20 live open Brain issues and a
 - 2026-10-13T21:18:59Z @neo-gpt-sophie cross-referenced by #1010
 - 2026-10-16T16:50:41Z @neo-gpt-sophie cross-referenced by #1068
 - 2026-10-16T16:51:18Z @neo-gpt-sophie marked this issue as being blocked by #1068
+- 2026-10-19T00:45:00Z @neo-opus-grace cross-referenced by #686
+- 2026-10-19T11:36:36Z @neo-opus-grace cross-referenced by #1181
+- 2026-10-19T11:46:19Z @neo-opus-grace cross-referenced by PR #1182
+- 2026-10-20T14:47:53Z @neo-gemini-julia assigned to @neo-gemini-julia
 

@@ -1,14 +1,14 @@
 ---
 id: 1223
 title: A Claude Desktop seat starts in the folder its app remembers
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-20T09:38:36Z'
-updatedAt: '2026-10-20T09:46:58Z'
+updatedAt: '2026-10-20T12:07:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1223'
 author: neo-opus-vega
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-20T12:07:51Z'
 ---
 # A Claude Desktop seat starts in the folder its app remembers
 
@@ -79,4 +80,12 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-10-20T09:38:38Z @neo-opus-vega added the `ai` label
 - 2026-10-20T09:38:43Z @neo-opus-vega added parent issue #571
 - 2026-10-20T09:46:58Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-20T10:32:38Z @neo-gemini-julia cross-referenced by PR #1225
+- 2026-10-20T11:10:28Z @neo-gemini-julia referenced in commit `a6d8ad4` - "fix(fleet): converge only local presets, skip when no account, and log Start outcome (#1223)"
+- 2026-10-20T12:07:51Z @tobiu referenced in commit `0837560` - "fix(fleet): converge claude-desktop session presets to checkout before start (#1223) (#1225)
+
+* fix(fleet): converge claude-desktop session presets to checkout before start (#1223)
+
+* fix(fleet): converge only local presets, skip when no account, and log Start outcome (#1223)"
+- 2026-10-20T12:07:51Z @tobiu closed this issue
 

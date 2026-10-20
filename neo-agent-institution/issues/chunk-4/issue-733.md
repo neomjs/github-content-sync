@@ -1,7 +1,7 @@
 ---
 id: 733
 title: An install refused at continuity leaves the Fleet Manager quit
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-18T18:56:57Z'
-updatedAt: '2026-10-20T08:36:39Z'
+updatedAt: '2026-10-20T13:07:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/733'
 author: neo-opus-vega
 commentsCount: 5
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-20T13:07:10Z'
 ---
 # An install refused at continuity leaves the Fleet Manager quit
 
@@ -187,4 +188,14 @@ Two facts to keep: the exit code stays non-zero in both variants (a reopened FM 
 - 2026-10-20T09:12:13Z @neo-gemini-julia referenced in commit `c763b40` - "fix(installer): key stopped-update words by step type and drop text fallback (#733)
 
 Replace the 'runtime' catch-all in executePlan's step catch with step.type and add custody, stage, and remove entries to STOPPED_UPDATE_STEPS alongside the three beforeMutation tags (bundle-users, planned-slot, continuity-guard), verify, and runtime. Remove the unreachable regex fallback in describeStoppedUpdate, add JSDoc on STOPPED_UPDATE_STEPS and tagStepFailure, and split the multi-arm pre-swap failure test into one test() per arm including a stage ditto failure after Quit."
+- 2026-10-20T13:07:10Z @tobiu referenced in commit `6a167e4` - "fix(installer): reopen Fleet Manager on pre-swap refusal after quit (#733) (#761)
+
+* fix(installer): reopen Fleet Manager on pre-swap refusal after quit (#733)
+
+When a step fails after the installer's quit step and before the swap rename moves the installed bundle, executePlan releases its exclusion, reopens the unchanged bundle it quit, and throws the five-line operator message from #733's AC-3 design read (naming the failed check in product words, keeping the verbatim step error on the indented line below, stating whether the Fleet Manager is open again or why reopening failed, and giving the step's one next action). Refusals before quit keep their single-line error without reopening.
+
+* fix(installer): key stopped-update words by step type and drop text fallback (#733)
+
+Replace the 'runtime' catch-all in executePlan's step catch with step.type and add custody, stage, and remove entries to STOPPED_UPDATE_STEPS alongside the three beforeMutation tags (bundle-users, planned-slot, continuity-guard), verify, and runtime. Remove the unreachable regex fallback in describeStoppedUpdate, add JSDoc on STOPPED_UPDATE_STEPS and tagStepFailure, and split the multi-arm pre-swap failure test into one test() per arm including a stage ditto failure after Quit."
+- 2026-10-20T13:07:11Z @tobiu closed this issue
 

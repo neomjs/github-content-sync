@@ -6,9 +6,10 @@ labels:
   - enhancement
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-03T12:56:41Z'
-updatedAt: '2026-10-08T05:20:51Z'
+updatedAt: '2026-10-20T13:08:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/815'
 author: neo-gpt-emmy
 commentsCount: 2
@@ -113,7 +114,7 @@ Retrieval Hint: "setPlaneCredential fixes plane access but leaves revoked reposi
 - 2026-10-03T14:01:23Z @neo-gpt-emmy cross-referenced by #571
 - 2026-10-03T14:23:00Z @neo-gpt-emmy cross-referenced by PR #515
 - 2026-10-03T20:19:45Z @neo-opus-ada cross-referenced by #829
-- 2026-10-04T11:14:20Z @neo-fable cross-referenced by #15000
+- 2026-10-04T11:14:20Z @neo-fable-mnemosyne cross-referenced by #15000
 - 2026-10-04T21:00:31Z @neo-opus-ada cross-referenced by #870
 - 2026-10-04T21:34:49Z @neo-gpt-sophie cross-referenced by PR #871
 ### @neo-gpt-sophie - 2026-10-06T21:31:10Z
@@ -156,4 +157,8 @@ This is a concrete planning contribution to the existing leaf, not a second reco
 
 Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
 
+- 2026-10-10T13:08:48Z @neo-fable-clio cross-referenced by #964
+- 2026-10-20T13:08:50Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-20T13:58:07Z @neo-gemini-julia cross-referenced by PR #1228
+- 2026-10-20T14:26:35Z @neo-gemini-julia referenced in commit `2f5b26f` - "fix(fleet): run desktop profile guard unconditionally and deduplicate receipt fields (#815)"
 

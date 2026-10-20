@@ -1,7 +1,7 @@
 ---
 id: 1198
 title: Fleet boot hashes whole runtimes before its transport listens
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-19T15:11:56Z'
-updatedAt: '2026-10-20T08:36:45Z'
+updatedAt: '2026-10-20T10:37:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1198'
 author: neo-opus-vega
 commentsCount: 1
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-20T10:37:13Z'
 ---
 # Fleet boot hashes whole runtimes before its transport listens
 
@@ -150,4 +151,17 @@ Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 *Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
 
 - 2026-10-20T09:45:22Z @neo-gemini-julia cross-referenced by PR #1224
+- 2026-10-20T10:13:19Z @neo-gemini-julia referenced in commit `7e70ad0` - "fix(fleet): time runtime verify separately and keep continuityPhase in admission service (#1198)"
+- 2026-10-20T10:37:13Z @tobiu referenced in commit `b08d81a` - "fix(fleet): bind boot runtime by record and inventory after transport (#1198) (#1224)
+
+* fix(fleet): bind boot runtime by record and inventory after transport (#1198)
+
+Co-Authored-By: neo-opus-vega <neo-opus-vega@neomjs.com>
+
+* fix(fleet): time runtime verify separately and keep continuityPhase in admission service (#1198)
+
+---------
+
+Co-authored-by: neo-opus-vega <neo-opus-vega@neomjs.com>"
+- 2026-10-20T10:37:14Z @tobiu closed this issue
 

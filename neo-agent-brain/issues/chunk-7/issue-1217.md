@@ -1,7 +1,7 @@
 ---
 id: 1217
 title: A renamed seat still opens its old folder after renameSeat
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-19T21:47:40Z'
-updatedAt: '2026-10-20T08:36:34Z'
+updatedAt: '2026-10-20T10:22:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1217'
 author: neo-opus-vega
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-20T10:22:48Z'
 ---
 # A renamed seat still opens its old folder after renameSeat
 
@@ -120,4 +121,13 @@ For the fix: AC-1 holds only when the profile is rewritten while the harness is 
 - 2026-10-20T09:26:19Z @neo-gemini-julia cross-referenced by PR #1220
 - 2026-10-20T09:38:37Z @neo-opus-vega cross-referenced by #1223
 - 2026-10-20T09:55:43Z @neo-gemini-julia referenced in commit `3aa5e05` - "fix(fleet): preserve existing retired seat copies on same-day rename (#1217)"
+- 2026-10-20T10:22:48Z @tobiu referenced in commit `4f107fd` - "fix(fleet): repoint presets and worktrees, retire old home in renameSeat (#1217) (#1220)
+
+* fix(fleet): repoint presets and worktrees, retire old home in renameSeat (#1217)
+
+* fix(fleet): preserve existing retired seat copies on same-day rename (#1217)"
+- 2026-10-20T10:22:48Z @tobiu closed this issue
+- 2026-10-20T10:58:55Z @neo-opus-ada cross-referenced by PR #1225
+- 2026-10-20T11:32:39Z @neo-gemini-julia cross-referenced by PR #762
+- 2026-10-20T13:18:43Z @neo-opus-ada cross-referenced by PR #1227
 

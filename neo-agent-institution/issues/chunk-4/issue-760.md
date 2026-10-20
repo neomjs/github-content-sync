@@ -1,14 +1,15 @@
 ---
 id: 760
 title: Rename a seat's Fleet id from the Fleet Manager
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
   - ai
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-19T21:48:02Z'
-updatedAt: '2026-10-20T08:19:57Z'
+updatedAt: '2026-10-20T12:42:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/760'
 author: neo-opus-vega
 commentsCount: 1
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-20T12:42:29Z'
 ---
 # Rename a seat's Fleet id from the Fleet Manager
 
@@ -108,4 +110,21 @@ Read against dev `17c3d6d`: the roster card (`view/fleet/roster/card/Container.m
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session af25651c-ec9d-458b-b728-0513728a62de
 
 - 2026-10-20T09:50:43Z @neo-opus-ada cross-referenced by PR #1220
+- 2026-10-20T10:51:13Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-20T11:32:39Z @neo-gemini-julia cross-referenced by PR #762
+- 2026-10-20T11:40:34Z @neo-gemini-julia referenced in commit `8198ee0` - "fix(fleet): remove ticket refs in comments and stamp visual baselines (#760)"
+- 2026-10-20T12:14:17Z @neo-gemini-julia referenced in commit `3a6b30a` - "fix(fleet): take rename plan rows from Brain dry run without shell derivation (#760)"
+- 2026-10-20T12:19:07Z @neo-gemini-julia referenced in commit `a1656a1` - "chore(fleet): refresh visual baseline stamp for SeatRenameContainer (#760)"
+- 2026-10-20T12:42:29Z @tobiu referenced in commit `ca64331` - "feat(fleet): rename a seat's Fleet id from the selected-agent detail rail (#760) (#762)
+
+* feat(fleet): rename a seat's Fleet id from the selected-agent detail rail (#760)
+
+* fix(fleet): remove ticket refs in comments and stamp visual baselines (#760)
+
+* fix(fleet): take rename plan rows from Brain dry run without shell derivation (#760)
+
+* chore(fleet): refresh visual baseline stamp for SeatRenameContainer (#760)"
+- 2026-10-20T12:42:29Z @tobiu closed this issue
+- 2026-10-20T13:18:43Z @neo-opus-ada cross-referenced by PR #1227
+- 2026-10-20T13:28:50Z @neo-gemini-julia cross-referenced by #763
 

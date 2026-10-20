@@ -1,7 +1,7 @@
 ---
 id: 1221
 title: Approved PRs from a repository without CI never reach awaiting merge
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-20T09:26:21Z'
-updatedAt: '2026-10-20T09:26:21Z'
+updatedAt: '2026-10-20T10:23:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1221'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-20T10:23:19Z'
 ---
 # Approved PRs from a repository without CI never reach awaiting merge
 
@@ -79,4 +80,8 @@ Retrieval Hint: "awaiting merge drops approved PRs from repositories without CI"
 - 2026-10-20T09:26:23Z @neo-opus-ada added the `ai` label
 - 2026-10-20T09:26:23Z @neo-opus-ada added the `agent-os` label
 - 2026-10-20T09:33:18Z @neo-opus-ada cross-referenced by PR #1222
+- 2026-10-20T10:23:19Z @tobiu referenced in commit `618a34c` - "fix(fleet): an approved PR from a repository without CI reaches awaiting merge when GitHub calls it CLEAN (#1221) (#1222)
+
+holderOf() handed the operator's merge chip only to a green head, so neo-stage (hosted CI paused) and pages (no workflows), whose heads report no rollup, never reached awaitingMerge. The snapshot query now reads mergeStateStatus, the reducer carries it as mergeState, and a no-CI head approved on the head, with no review requested, MERGEABLE and not a draft, is the operator's when GitHub reports it CLEAN."
+- 2026-10-20T10:23:20Z @tobiu closed this issue
 

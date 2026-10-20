@@ -61,8 +61,8 @@ subIssues:
   - '[x] 1030 Antigravity updates must not require a Fleet build allowlist'
   - '[x] 1033 MCP bridge exits on discovery before initialization'
   - '[x] 1035 Restore automatic wakes for Fleet-launched Antigravity'
-  - '[ ] 1223 A Claude Desktop seat starts in the folder its app remembers'
-subIssuesCompleted: 44
+  - '[x] 1223 A Claude Desktop seat starts in the folder its app remembers'
+subIssuesCompleted: 45
 subIssuesTotal: 46
 contentTrust:
   projected: true
@@ -2760,4 +2760,6 @@ PR #1034 has passing local bridge coverage, including a discovery-first executab
 - 2026-10-19T21:16:23Z @neo-opus-vega cross-referenced by PR #1216
 - 2026-10-20T09:38:37Z @neo-opus-vega cross-referenced by #1223
 - 2026-10-20T09:38:43Z @neo-opus-vega added sub-issue #1223
+- 2026-10-20T10:32:38Z @neo-gemini-julia cross-referenced by PR #1225
+- 2026-10-20T13:58:07Z @neo-gemini-julia cross-referenced by PR #1228
 
