@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-19T23:39:56.014Z",
-  "releasesLastFetched": "2026-10-19T23:39:55.175Z",
+  "lastSync": "2026-10-20T04:48:23.723Z",
+  "releasesLastFetched": "2026-10-20T04:48:23.524Z",
   "issues": {
     "3": {
       "state": "OPEN",
@@ -6296,24 +6296,6 @@
       "updatedAt": "2026-10-19T14:14:30Z",
       "contentHash": "5ce7c33284307fe12bc73bc40554337c4f2c857ffcaa5f4909d549cd7574c233"
     },
-    "1168": {
-      "state": "MERGED",
-      "path": "neo-agent-brain/pulls/chunk-5/pr-1168.md",
-      "closedAt": "2026-10-19T03:06:58Z",
-      "mergedAt": "2026-10-19T03:06:58Z",
-      "milestone": null,
-      "updatedAt": "2026-10-19T03:11:21Z",
-      "contentHash": "a0dcfab71b28ea7fe3d382598fba25b2f7dd007458f140f99f1d9921196b21be"
-    },
-    "1171": {
-      "state": "MERGED",
-      "path": "neo-agent-brain/pulls/chunk-5/pr-1171.md",
-      "closedAt": "2026-10-19T03:24:56Z",
-      "mergedAt": "2026-10-19T03:24:56Z",
-      "milestone": null,
-      "updatedAt": "2026-10-19T03:24:58Z",
-      "contentHash": "1a8c1560f523b830dcfdb4598f6fb1b529832a0b309a63e03703f822de431ee4"
-    },
     "1172": {
       "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-5/pr-1172.md",
@@ -6547,6 +6529,24 @@
       "milestone": null,
       "updatedAt": "2026-10-19T21:16:22Z",
       "contentHash": "a359e687ea833e9d8e1c94384f83a30b1f59e11c81adccd4c46940c93e4831da"
+    },
+    "1218": {
+      "state": "MERGED",
+      "path": "neo-agent-brain/pulls/chunk-6/pr-1218.md",
+      "closedAt": "2026-10-20T04:41:38Z",
+      "mergedAt": "2026-10-20T04:41:38Z",
+      "milestone": null,
+      "updatedAt": "2026-10-20T04:41:46Z",
+      "contentHash": "cee0ed513779839ba04dea851a66dce85b72a76923febb679a183fc2366f1981"
+    },
+    "1219": {
+      "state": "MERGED",
+      "path": "neo-agent-brain/pulls/chunk-6/pr-1219.md",
+      "closedAt": "2026-10-20T04:41:55Z",
+      "mergedAt": "2026-10-20T04:41:55Z",
+      "milestone": null,
+      "updatedAt": "2026-10-20T04:42:03Z",
+      "contentHash": "ce9bfa28923fb8a278fba44d1a8f3672f92c41a5c70bf6ab634c204126a0c63b"
     }
   },
   "discussions": {}
