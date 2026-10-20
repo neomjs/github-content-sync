@@ -26,7 +26,7 @@ subIssues:
   - '[x] 1198 Fleet boot hashes whole runtimes before its transport listens'
   - '[x] 1200 An FM update revokes every Codex seat: its Start lists ungranted servers'
   - '[x] 1201 The Fleet exports its seat lifecycle-state vocabulary'
-  - '[ ] 749 The roster reads every Fleet lifecycle state, not three of six'
+  - '[x] 749 The roster reads every Fleet lifecycle state, not three of six'
   - '[x] 1204 Every authenticated Memory Core request rewrites its identity node'
   - '[x] 752 A smoke''s Fleet can start a Neural Link Bridge that outlives the run'
   - '[x] 754 The pack stage fails on Node 24.22: cpSync refuses a shared directory'
@@ -37,8 +37,9 @@ subIssues:
   - '[x] 1215 Reconnect Neural Link after Bridge restart with fresh parent token'
   - '[x] 758 The FM window stays black: the shell refuses seatLifecycle.mjs'
   - '[ ] 763 SeatRenameContainer reads sessions.count and sessions.nextStep from renameSeat plan'
-subIssuesCompleted: 20
-subIssuesTotal: 22
+  - '[ ] 769 reconcileRoster clears and defers all row-mapped controlReason kinds, not only cleanup'
+subIssuesCompleted: 21
+subIssuesTotal: 23
 contentTrust:
   projected: true
   quarantined: 0
@@ -369,4 +370,8 @@ So a Fleet Manager update built from these three revisions passes the seat journ
 - 2026-10-20T13:18:43Z @neo-opus-ada cross-referenced by PR #1227
 - 2026-10-20T13:28:50Z @neo-gemini-julia cross-referenced by #763
 - 2026-10-20T13:29:07Z @neo-gemini-julia added sub-issue #763
+- 2026-10-20T15:57:14Z @neo-gemini-julia cross-referenced by PR #767
+- 2026-10-20T18:04:53Z @neo-fable-mnemosyne cross-referenced by PR #768
+- 2026-10-20T18:46:14Z @neo-gemini-julia added sub-issue #769
+- 2026-10-20T18:52:21Z @neo-gemini-julia cross-referenced by PR #770
 

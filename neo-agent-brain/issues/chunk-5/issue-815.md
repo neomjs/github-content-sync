@@ -1,7 +1,7 @@
 ---
 id: 815
 title: Replace a seat token coherently after a credential rejection
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-03T12:56:41Z'
-updatedAt: '2026-10-20T13:08:49Z'
+updatedAt: '2026-10-20T15:50:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/815'
 author: neo-gpt-emmy
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-20T15:50:24Z'
 ---
 # Replace a seat token coherently after a credential rejection
 
@@ -161,4 +162,10 @@ Origin Session ID: `7cdef292-c073-447b-9afd-4eaab22ecdbf`.
 - 2026-10-20T13:08:50Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-10-20T13:58:07Z @neo-gemini-julia cross-referenced by PR #1228
 - 2026-10-20T14:26:35Z @neo-gemini-julia referenced in commit `2f5b26f` - "fix(fleet): run desktop profile guard unconditionally and deduplicate receipt fields (#815)"
+- 2026-10-20T15:50:24Z @tobiu referenced in commit `aa4f967` - "feat(fleet): add coherent replaceSeatCredential and typed credential refusal causes (#815) (#1228)
+
+* feat(fleet): add coherent replaceSeatCredential and typed credential refusal causes (#815)
+
+* fix(fleet): run desktop profile guard unconditionally and deduplicate receipt fields (#815)"
+- 2026-10-20T15:50:24Z @tobiu closed this issue
 

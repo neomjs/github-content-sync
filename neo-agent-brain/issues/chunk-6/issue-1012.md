@@ -1,7 +1,7 @@
 ---
 id: 1012
 title: Preserve ADR identity and authority across graph writers
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-13T21:15:03Z'
-updatedAt: '2026-10-20T14:47:54Z'
+updatedAt: '2026-10-20T17:01:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1012'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -27,6 +27,7 @@ blockedBy:
 blocking:
   - '[ ] 1014 Migrate legacy ADR identities with restartable reconciliation'
   - '[ ] 1013 Read one canonical ADR across repositories and redirect paths'
+closedAt: '2026-10-20T17:01:26Z'
 ---
 # Preserve ADR identity and authority across graph writers
 
@@ -106,4 +107,12 @@ Creation sweeps: 2026-10-13 21:15:02 UTC; latest 20 live open Brain issues and a
 - 2026-10-19T11:36:36Z @neo-opus-grace cross-referenced by #1181
 - 2026-10-19T11:46:19Z @neo-opus-grace cross-referenced by PR #1182
 - 2026-10-20T14:47:53Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-20T15:28:53Z @neo-gemini-julia cross-referenced by PR #1229
+- 2026-10-20T16:23:52Z @neo-gemini-julia referenced in commit `ae2a7b4` - "fix(adr): rehydrate catalog from graph, require ADR type at write seam, and extract codec/parsers (#1012)"
+- 2026-10-20T17:01:26Z @tobiu closed this issue
+- 2026-10-20T17:01:27Z @tobiu referenced in commit `9668697` - "feat(adr): preserve ADR identity and authority across graph writers (#1012) (#1229)
+
+* feat(adr): preserve ADR identity and authority across graph writers (#1012)
+
+* fix(adr): rehydrate catalog from graph, require ADR type at write seam, and extract codec/parsers (#1012)"
 

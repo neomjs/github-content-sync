@@ -31,7 +31,7 @@ subIssues:
   - '[x] 687 A Codex seat behind a symlink loses its Fleet trust row: the row keys the lexical path'
   - '[x] 699 Retire the Fleet''s local stdio Memory Core and Knowledge Base target'
   - '[x] 704 Start silently provisions a fresh home for a seat that already has one'
-  - '[ ] 815 Replace a seat token coherently after a credential rejection'
+  - '[x] 815 Replace a seat token coherently after a credential rejection'
   - '[x] 825 The Fleet serves existing agents'' memory candidates to the cockpit'
   - '[x] 826 The Fleet reports where a desktop seat''s first session opened'
   - '[x] 521 Add Agent offers an existing agent''s memory, only when one exists'
@@ -62,7 +62,7 @@ subIssues:
   - '[x] 1033 MCP bridge exits on discovery before initialization'
   - '[x] 1035 Restore automatic wakes for Fleet-launched Antigravity'
   - '[x] 1223 A Claude Desktop seat starts in the folder its app remembers'
-subIssuesCompleted: 45
+subIssuesCompleted: 46
 subIssuesTotal: 46
 contentTrust:
   projected: true
@@ -2762,4 +2762,5 @@ PR #1034 has passing local bridge coverage, including a discovery-first executab
 - 2026-10-20T09:38:43Z @neo-opus-vega added sub-issue #1223
 - 2026-10-20T10:32:38Z @neo-gemini-julia cross-referenced by PR #1225
 - 2026-10-20T13:58:07Z @neo-gemini-julia cross-referenced by PR #1228
+- 2026-10-20T16:39:42Z @neo-opus-ada cross-referenced by #1230
 

@@ -7,9 +7,10 @@ labels:
   - enhancement
   - ai
   - architecture
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-13T21:16:00Z'
-updatedAt: '2026-10-16T16:52:39Z'
+updatedAt: '2026-10-20T15:41:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/174'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -24,8 +25,8 @@ contentTrust:
 blockedBy:
   - '[x] 1011 Define repository-scoped ADR identity and custody contracts'
 blocking:
-  - '[ ] 19730 Replace old FM ADR paths with explicit canonical redirects'
-  - '[ ] 686 Publish the five Fleet Manager ADRs in Institution'
+  - '[x] 19730 Replace old FM ADR paths with explicit canonical redirects'
+  - '[x] 686 Publish the five Fleet Manager ADRs in Institution'
 ---
 # Teach ADR redirects and repository-qualified references once
 
@@ -99,4 +100,14 @@ Creation sweeps: 2026-10-13 21:15:59 UTC; latest 20 live open neo-agent-skills i
 - 2026-10-13T21:54:49Z @neo-opus-ada cross-referenced by PR #1015
 - 2026-10-16T12:59:54Z @neo-opus-ada cross-referenced by #175
 - 2026-10-16T16:50:41Z @neo-gpt-sophie cross-referenced by #1068
+- 2026-10-19T00:45:00Z @neo-opus-grace cross-referenced by #686
+- 2026-10-19T11:36:36Z @neo-opus-grace cross-referenced by #1181
+- 2026-10-19T11:57:52Z @neo-opus-grace cross-referenced by PR #19862
+- 2026-10-20T15:41:38Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-20T16:07:17Z @neo-gemini-julia cross-referenced by PR #197
+- 2026-10-20T16:34:08Z @neo-gemini-julia referenced in commit `b9fd453` - "fix(skills): align ADR 0006 §7 contract, census 0010 slug, and qualified slug lint (#174)
+
+Addresses Round-1 review RAs on #197: fixes ADR 0010 census slug to 0010-lane-intent-coordination-primitive.md, aligns guide-authoring-bar.md §7 with ADR 0006 §§2.6-2.11 (including worked fixtures, Aliases table rules, incompleteHistory vs admission eligibility, and retirement trigger), keys decisionRowsByOwnerSlug by canonicalOwner + slug while rejecting unqualified cross-repo adr:<slug> in skill payloads, and completes the AC1 numeric ADR citation sweep across conditional payloads.
+
+[skill-growth-justified: neomjs/neo-agent-skills#174 AC2/AC5/AC6 worked fixtures and census rows in conditional payloads with 0 router/AGENTS.md byte growth]"
 

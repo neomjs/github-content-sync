@@ -16,7 +16,7 @@ commentsCount: 10
 parentIssue: null
 subIssues:
   - '[x] 1011 Define repository-scoped ADR identity and custody contracts'
-  - '[ ] 1012 Preserve ADR identity and authority across graph writers'
+  - '[x] 1012 Preserve ADR identity and authority across graph writers'
   - '[ ] 1013 Read one canonical ADR across repositories and redirect paths'
   - '[ ] 1014 Migrate legacy ADR identities with restartable reconciliation'
   - '[ ] 19729 Keep ADR composition and publication correct after custody moves'
@@ -25,7 +25,7 @@ subIssues:
   - '[x] 19730 Replace old FM ADR paths with explicit canonical redirects'
   - '[x] 1068 Define readable ADR slug references and retained alias history'
   - '[x] 1181 A redirect at an old ADR path is never read as an ADR'
-subIssuesCompleted: 5
+subIssuesCompleted: 6
 subIssuesTotal: 10
 contentTrust:
   projected: true
@@ -317,4 +317,6 @@ Sophie retains parent integration and final graph/KB/custody/published-reader ac
 
 Origin Session ID: 2d742cad-83f2-415e-a6f1-12dc4a906d85
 
+- 2026-10-20T15:28:53Z @neo-gemini-julia cross-referenced by PR #1229
+- 2026-10-20T16:07:17Z @neo-gemini-julia cross-referenced by PR #197
 

@@ -1,7 +1,7 @@
 ---
 id: 1226
 title: 'renameSeat dry run reports sessions, links, and retiredSeatHome on the plan'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-20T12:08:20Z'
-updatedAt: '2026-10-20T12:47:09Z'
+updatedAt: '2026-10-20T15:49:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1226'
 author: neo-gemini-julia
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-20T15:49:59Z'
 ---
 # renameSeat dry run reports sessions, links, and retiredSeatHome on the plan
 
@@ -95,4 +96,12 @@ Retrieval Hint: "renameSeat dryRun plan sessions count nextStep links retiredSea
 - 2026-10-20T12:40:21Z @neo-gemini-julia cross-referenced by PR #1227
 - 2026-10-20T12:51:07Z @neo-gemini-julia referenced in commit `6d2e7a4` - "feat(fleet): include carried session count and nextStep in carrySeatSessions (#1226)"
 - 2026-10-20T13:29:16Z @neo-gemini-julia referenced in commit `7f1050d` - "fix(fleet): open Codex state DB read-write on dry run to avoid WAL residue (#1226)"
+- 2026-10-20T15:49:59Z @tobiu referenced in commit `9a8cb24` - "feat(fleet): report sessions, links, and retiredSeatHome on renameSeat dry run (#1226) (#1227)
+
+* feat(fleet): report sessions, links, and retiredSeatHome on renameSeat dry run (#1226)
+
+* feat(fleet): include carried session count and nextStep in carrySeatSessions (#1226)
+
+* fix(fleet): open Codex state DB read-write on dry run to avoid WAL residue (#1226)"
+- 2026-10-20T15:49:59Z @tobiu closed this issue
 
