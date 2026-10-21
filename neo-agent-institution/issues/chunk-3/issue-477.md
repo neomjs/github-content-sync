@@ -34,8 +34,8 @@ subIssues:
   - '[x] 690 Keep Fleet header counts current after roster lifecycle changes'
   - '[x] 706 Explain partial Activity sources and what Recheck can do'
   - '[x] 726 The cockpit says when the plane cannot own seats yet'
-  - '[ ] 772 Show both Stop fleet and Start fleet when the active fleet is split'
-subIssuesCompleted: 17
+  - '[x] 772 Show both Stop fleet and Start fleet when the active fleet is split'
+subIssuesCompleted: 18
 subIssuesTotal: 20
 contentTrust:
   projected: true

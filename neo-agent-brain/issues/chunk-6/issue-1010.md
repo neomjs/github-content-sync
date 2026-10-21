@@ -17,7 +17,7 @@ parentIssue: null
 subIssues:
   - '[x] 1011 Define repository-scoped ADR identity and custody contracts'
   - '[x] 1012 Preserve ADR identity and authority across graph writers'
-  - '[ ] 1013 Add ADR redirect, alias and qualified-census compatibility'
+  - '[x] 1013 Add ADR redirect, alias and qualified-census compatibility'
   - '[ ] 1014 Migrate legacy ADR identities with restartable reconciliation'
   - '[ ] 19729 Keep ADR composition and publication correct after custody moves'
   - '[x] 174 Teach ADR redirects and repository-qualified references once'
@@ -26,7 +26,7 @@ subIssues:
   - '[x] 1068 Define readable ADR slug references and retained alias history'
   - '[x] 1181 A redirect at an old ADR path is never read as an ADR'
   - '[ ] 1232 Read live ADR admission projection across KB and Memory Core processes'
-subIssuesCompleted: 7
+subIssuesCompleted: 8
 subIssuesTotal: 11
 contentTrust:
   projected: true

@@ -1,7 +1,7 @@
 ---
 id: 772
 title: Show both Stop fleet and Start fleet when the active fleet is split
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-20T20:30:12Z'
-updatedAt: '2026-10-20T22:39:07Z'
+updatedAt: '2026-10-21T09:38:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/772'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-21T09:38:38Z'
 milestone: FM v1
 ---
 # Show both Stop fleet and Start fleet when the active fleet is split
@@ -128,4 +129,14 @@ Retrieval Hint: "Stop fleet Start fleet split partial fleet ControlToolbar Fleet
 - 2026-10-20T23:10:29Z @neo-gemini-julia referenced in commit `a0043ff` - "style(cockpit): remove ticket archaeology refs from comments and test titles (#772)"
 - 2026-10-20T23:32:46Z @neo-gemini-julia referenced in commit `8b4c84f` - "refactor(cockpit): retire single-button fleet batch shim and repoint unit tests (#772)"
 - 2026-10-20T23:37:32Z @neo-gemini-julia referenced in commit `891196d` - "chore(cockpit): stamp visual baseline input hashes after RA-1 refactor (#772)"
+- 2026-10-21T09:38:38Z @tobiu referenced in commit `477718f` - "feat(cockpit): show both Stop fleet and Start fleet when active fleet is split (#772) (#773)
+
+* feat(cockpit): show both Stop fleet and Start fleet when active fleet is split (#772)
+
+* style(cockpit): remove ticket archaeology refs from comments and test titles (#772)
+
+* refactor(cockpit): retire single-button fleet batch shim and repoint unit tests (#772)
+
+* chore(cockpit): stamp visual baseline input hashes after RA-1 refactor (#772)"
+- 2026-10-21T09:38:39Z @tobiu closed this issue
 

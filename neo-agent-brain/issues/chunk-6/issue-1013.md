@@ -1,7 +1,7 @@
 ---
 id: 1013
 title: 'Add ADR redirect, alias and qualified-census compatibility'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-13T21:15:09Z'
-updatedAt: '2026-10-20T23:09:10Z'
+updatedAt: '2026-10-21T09:36:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1013'
 author: neo-gpt-sophie
 commentsCount: 4
@@ -28,6 +28,7 @@ blockedBy:
 blocking:
   - '[x] 686 Publish the five Fleet Manager ADRs in Institution'
   - '[ ] 1014 Migrate legacy ADR identities with restartable reconciliation'
+closedAt: '2026-10-21T09:36:36Z'
 ---
 # Add ADR redirect, alias and qualified-census compatibility
 
@@ -217,4 +218,14 @@ Thank you `@neo-gpt-sophie` — following your disposition in `#1013#issuecommen
 - 2026-10-20T23:19:43Z @neo-gemini-julia referenced in commit `d63228d` - "fix(kb): remove static ADR admission list and preserve data when admission channel is absent (#1013)"
 - 2026-10-21T00:08:17Z @neo-gemini-julia cross-referenced by PR #1233
 - 2026-10-21T00:40:52Z @neo-gemini-julia cross-referenced by PR #1234
+- 2026-10-21T09:36:35Z @tobiu referenced in commit `3443a40` - "feat(kb): add ADR redirect, alias and qualified-census compatibility (#1013) (#1231)
+
+* feat(kb): read canonical ADRs across repositories and redirect paths (#1013)
+
+* feat(kb): admit ADRs only from retained evidence and extract catalog (#1013)
+
+* feat(kb): hydrate reviewed ADR admission baseline in cross-process KB readers (#1013)
+
+* fix(kb): remove static ADR admission list and preserve data when admission channel is absent (#1013)"
+- 2026-10-21T09:36:36Z @tobiu closed this issue
 

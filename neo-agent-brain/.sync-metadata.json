@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-21T07:38:32.413Z",
-  "releasesLastFetched": "2026-10-21T07:38:32.205Z",
+  "lastSync": "2026-10-21T10:48:28.786Z",
+  "releasesLastFetched": "2026-10-21T10:48:28.001Z",
   "issues": {
     "3": {
       "state": "OPEN",
@@ -5362,7 +5362,7 @@
       "path": "neo-agent-brain/issues/chunk-6/issue-1010.md",
       "closedAt": null,
       "updatedAt": "2026-10-20T14:44:25Z",
-      "contentHash": "29b30d926c5ac4d2bcd470798053e1558b2e8435d916316b9bdecf9a34f8e930",
+      "contentHash": "5365f47429b813d39d22f81b58c4d7fcd755884107437d49bca9c3964fa067d2",
       "milestone": null,
       "commentsTotal": 10
     },
@@ -5385,11 +5385,11 @@
       "commentsTotal": 0
     },
     "1013": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-6/issue-1013.md",
-      "closedAt": null,
-      "updatedAt": "2026-10-20T23:09:10Z",
-      "contentHash": "351fa9af2fd85af114ae744ff58f9ceb7096db7511f27b36fd80366a9ef3e07a",
+      "closedAt": "2026-10-21T09:36:36Z",
+      "updatedAt": "2026-10-21T09:36:36Z",
+      "contentHash": "d3d4b5c1d1572cd1d910c7aba858c7aa8aee894d8ba29278cb7db1dad07342a1",
       "milestone": null,
       "commentsTotal": 4
     },
@@ -6549,13 +6549,13 @@
       "contentHash": "009c61551a13e0054829664795c34f6f3a53cd40157fbcfe5720f1de30351b0a"
     },
     "1231": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-6/pr-1231.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-10-21T09:36:34Z",
+      "mergedAt": "2026-10-21T09:36:34Z",
       "milestone": null,
-      "updatedAt": "2026-10-20T23:30:06Z",
-      "contentHash": "3a78a5d17fd715bb8c3108fede1d36e35b3dc3796e667703c1cd5feb71887f38"
+      "updatedAt": "2026-10-21T09:36:37Z",
+      "contentHash": "a44a830cb2d9a6c12989f1b283095ee410e22140dd9777aa99f096a562df79cb"
     },
     "1233": {
       "state": "OPEN",
@@ -6563,8 +6563,8 @@
       "closedAt": null,
       "mergedAt": null,
       "milestone": null,
-      "updatedAt": "2026-10-21T00:59:30Z",
-      "contentHash": "e897deed68ec209ec989a709b1ad162341ad79ed6e2cdc389a90b2976fc37e28"
+      "updatedAt": "2026-10-21T09:41:25Z",
+      "contentHash": "9f4ef827a065d8a23e5a467c97c1139711a52cc5213994378818d55389afc5b7"
     },
     "1234": {
       "state": "OPEN",
@@ -6572,8 +6572,8 @@
       "closedAt": null,
       "mergedAt": null,
       "milestone": null,
-      "updatedAt": "2026-10-21T01:01:09Z",
-      "contentHash": "0972194f86b62405bf6004ed7f5374b95f8c311b34fa8c457eb02924f3fb1be3"
+      "updatedAt": "2026-10-21T10:47:56Z",
+      "contentHash": "8a5b4da715160f1d52e894eda6d13084a6ab6a1574b1a69b965b14f28f166297"
     },
     "1235": {
       "state": "MERGED",
