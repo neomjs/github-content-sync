@@ -19,15 +19,15 @@ subIssues:
   - '[x] 1012 Preserve ADR identity and authority across graph writers'
   - '[x] 1013 Add ADR redirect, alias and qualified-census compatibility'
   - '[x] 1014 Migrate legacy ADR identities with restartable reconciliation'
-  - '[ ] 19729 Keep ADR composition and publication correct after custody moves'
+  - '[x] 19729 Keep ADR composition and publication correct after custody moves'
   - '[x] 174 Teach ADR redirects and repository-qualified references once'
   - '[x] 686 Publish the five Fleet Manager ADRs in Institution'
   - '[x] 19730 Replace old FM ADR paths with explicit canonical redirects'
   - '[x] 1068 Define readable ADR slug references and retained alias history'
   - '[x] 1181 A redirect at an old ADR path is never read as an ADR'
   - '[x] 1232 Read live ADR admission projection across KB and Memory Core processes'
-  - '[ ] 1237 Compact one-shot legacy ADR migration scaffolding and re-stamp neo-stage cut'
-subIssuesCompleted: 10
+  - '[x] 1237 Compact one-shot legacy ADR migration scaffolding and re-stamp neo-stage cut'
+subIssuesCompleted: 12
 subIssuesTotal: 12
 contentTrust:
   projected: true
