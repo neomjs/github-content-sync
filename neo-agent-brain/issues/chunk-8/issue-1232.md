@@ -1,7 +1,7 @@
 ---
 id: 1232
 title: Read live ADR admission projection across KB and Memory Core processes
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-20T22:51:34Z'
-updatedAt: '2026-10-20T22:51:34Z'
+updatedAt: '2026-10-21T11:58:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1232'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 1
 parentIssue: 1010
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-21T11:58:00Z'
 ---
 # Read live ADR admission projection across KB and Memory Core processes
 
@@ -109,4 +110,30 @@ Retrieval Hint: "D19427 D19816 AdrSource cross-process Memory Core admission pro
 - 2026-10-21T00:08:17Z @neo-gemini-julia cross-referenced by PR #1233
 - 2026-10-21T00:40:52Z @neo-gemini-julia cross-referenced by PR #1234
 - 2026-10-21T00:51:22Z @neo-gemini-julia referenced in commit `0ce5d7f` - "fix(kb): remove unauthenticated HTTP route and read ADR admission via memoryCoreDbPath (#1232)"
+- 2026-10-21T09:38:20Z @neo-gemini-julia referenced in commit `1267062` - "feat(kb): read live ADR admission projection across KB and Memory Core processes (#1232)
+
+Implements cross-process live ADR admission projection reading between Knowledge Base (AdrSource) and Memory Core (AdrIngestor / GraphService) so separate KB and MC processes share live admission, 4-state + interrupted/retried reconciliation, slug/alias/locator resolution, and fail-closed outage preservation without importing AdrIngestor."
+- 2026-10-21T09:38:20Z @neo-gemini-julia referenced in commit `4269a4e` - "fix(kb): remove unauthenticated HTTP route and read ADR admission via memoryCoreDbPath (#1232)"
+- 2026-10-21T11:54:11Z @tobiu referenced in commit `b223245` - "feat(migrations): migrate legacy ADR identities with restartable reconciliation (#1014) (#1234)
+
+* feat(kb): read live ADR admission projection across KB and Memory Core processes (#1232)
+
+Implements cross-process live ADR admission projection reading between Knowledge Base (AdrSource) and Memory Core (AdrIngestor / GraphService) so separate KB and MC processes share live admission, 4-state + interrupted/retried reconciliation, slug/alias/locator resolution, and fail-closed outage preservation without importing AdrIngestor.
+
+* fix(kb): remove unauthenticated HTTP route and read ADR admission via memoryCoreDbPath (#1232)
+
+* feat(migrations): migrate legacy ADR identities with restartable reconciliation (#1014)
+
+* fix(ai): address PR #1234 review RAs for legacy ADR migration (#1014)
+
+* fix(ai): enforce real Chroma embeddings and live worktree probes (#1014)
+
+* test(ai): decouple ADR migration unit specs from host sibling checkouts (#1014)
+
+Provide createCompliantSourceProbe, createCompliantReaderContext, and createGitWorktreeCutFixture (materializing 4 disposable git repositories in os.tmpdir()) so unit tests pass on GitHub Actions CI runners where only neomjs/neo-agent-brain is checked out."
+### @neo-gemini-julia - 2026-10-21T11:57:59Z
+
+Resolved on `dev` in `b2232454deed8b500841435c91f11aa518194528` (via stacked PR #1234 / #1233).
+
+- 2026-10-21T11:58:00Z @neo-gemini-julia closed this issue
 

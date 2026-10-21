@@ -1,7 +1,7 @@
 ---
 id: 1014
 title: Migrate legacy ADR identities with restartable reconciliation
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-13T21:15:15Z'
-updatedAt: '2026-10-21T00:16:19Z'
+updatedAt: '2026-10-21T11:54:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1014'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -23,10 +23,11 @@ contentTrust:
   signals: []
 blockedBy:
   - '[x] 1068 Define readable ADR slug references and retained alias history'
-  - '[ ] 1013 Add ADR redirect, alias and qualified-census compatibility'
+  - '[x] 1013 Add ADR redirect, alias and qualified-census compatibility'
   - '[x] 1012 Preserve ADR identity and authority across graph writers'
 blocking:
   - '[x] 19730 Replace old FM ADR paths with explicit canonical redirects'
+closedAt: '2026-10-21T11:54:10Z'
 ---
 # Migrate legacy ADR identities with restartable reconciliation
 
@@ -109,4 +110,29 @@ Creation sweeps: 2026-10-13 21:15:14 UTC; latest 20 live open Brain issues and a
 - 2026-10-21T00:16:18Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-10-21T00:40:52Z @neo-gemini-julia cross-referenced by PR #1234
 - 2026-10-21T00:53:38Z @neo-gemini-julia referenced in commit `98b6a35` - "feat(migrations): migrate legacy ADR identities with restartable reconciliation (#1014)"
+- 2026-10-21T09:58:52Z @neo-gemini-julia referenced in commit `ae01a9c` - "feat(migrations): migrate legacy ADR identities with restartable reconciliation (#1014)"
+- 2026-10-21T09:58:53Z @neo-gemini-julia referenced in commit `54d65a8` - "fix(ai): address PR #1234 review RAs for legacy ADR migration (#1014)"
+- 2026-10-21T10:31:57Z @neo-gemini-julia referenced in commit `0a39be4` - "fix(ai): enforce real Chroma embeddings and live worktree probes (#1014)"
+- 2026-10-21T10:47:55Z @neo-gemini-julia referenced in commit `3ab81da` - "test(ai): decouple ADR migration unit specs from host sibling checkouts (#1014)
+
+Provide createCompliantSourceProbe, createCompliantReaderContext, and createGitWorktreeCutFixture (materializing 4 disposable git repositories in os.tmpdir()) so unit tests pass on GitHub Actions CI runners where only neomjs/neo-agent-brain is checked out."
+- 2026-10-21T11:54:10Z @tobiu referenced in commit `b223245` - "feat(migrations): migrate legacy ADR identities with restartable reconciliation (#1014) (#1234)
+
+* feat(kb): read live ADR admission projection across KB and Memory Core processes (#1232)
+
+Implements cross-process live ADR admission projection reading between Knowledge Base (AdrSource) and Memory Core (AdrIngestor / GraphService) so separate KB and MC processes share live admission, 4-state + interrupted/retried reconciliation, slug/alias/locator resolution, and fail-closed outage preservation without importing AdrIngestor.
+
+* fix(kb): remove unauthenticated HTTP route and read ADR admission via memoryCoreDbPath (#1232)
+
+* feat(migrations): migrate legacy ADR identities with restartable reconciliation (#1014)
+
+* fix(ai): address PR #1234 review RAs for legacy ADR migration (#1014)
+
+* fix(ai): enforce real Chroma embeddings and live worktree probes (#1014)
+
+* test(ai): decouple ADR migration unit specs from host sibling checkouts (#1014)
+
+Provide createCompliantSourceProbe, createCompliantReaderContext, and createGitWorktreeCutFixture (materializing 4 disposable git repositories in os.tmpdir()) so unit tests pass on GitHub Actions CI runners where only neomjs/neo-agent-brain is checked out."
+- 2026-10-21T11:54:11Z @tobiu closed this issue
+- 2026-10-21T13:36:22Z @neo-opus-ada cross-referenced by PR #1238
 
