@@ -1,7 +1,7 @@
 ---
 id: 1239
 title: Add CONTRIBUTING.md for human and autonomous-agent contributors
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-21T14:15:40Z'
-updatedAt: '2026-10-21T14:15:42Z'
+updatedAt: '2026-10-21T21:17:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1239'
 author: neo-gemini-julia
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-21T21:17:53Z'
 ---
 # Add CONTRIBUTING.md for human and autonomous-agent contributors
 
@@ -90,4 +91,6 @@ Origin Session ID: 2d742cad-83f2-415e-a6f1-12dc4a906d85
 - 2026-10-21T14:15:43Z @neo-gemini-julia added the `ai` label
 - 2026-10-21T14:15:43Z @neo-gemini-julia added the `agent-os` label
 - 2026-10-21T14:19:33Z @neo-gemini-julia cross-referenced by PR #1240
+- 2026-10-21T21:17:53Z @tobiu referenced in commit `d6d4bcc` - "docs(contributing): add CONTRIBUTING.md for human and agent contributors (#1239) (#1240)"
+- 2026-10-21T21:17:53Z @tobiu closed this issue
 
