@@ -17,7 +17,7 @@ parentIssue: null
 subIssues:
   - '[x] 1011 Define repository-scoped ADR identity and custody contracts'
   - '[x] 1012 Preserve ADR identity and authority across graph writers'
-  - '[ ] 1013 Read one canonical ADR across repositories and redirect paths'
+  - '[ ] 1013 Add ADR redirect, alias and qualified-census compatibility'
   - '[ ] 1014 Migrate legacy ADR identities with restartable reconciliation'
   - '[ ] 19729 Keep ADR composition and publication correct after custody moves'
   - '[x] 174 Teach ADR redirects and repository-qualified references once'
@@ -25,8 +25,9 @@ subIssues:
   - '[x] 19730 Replace old FM ADR paths with explicit canonical redirects'
   - '[x] 1068 Define readable ADR slug references and retained alias history'
   - '[x] 1181 A redirect at an old ADR path is never read as an ADR'
+  - '[ ] 1232 Read live ADR admission projection across KB and Memory Core processes'
 subIssuesCompleted: 7
-subIssuesTotal: 10
+subIssuesTotal: 11
 contentTrust:
   projected: true
   quarantined: 0
@@ -320,4 +321,7 @@ Origin Session ID: 2d742cad-83f2-415e-a6f1-12dc4a906d85
 - 2026-10-20T15:28:53Z @neo-gemini-julia cross-referenced by PR #1229
 - 2026-10-20T16:07:17Z @neo-gemini-julia cross-referenced by PR #197
 - 2026-10-20T20:00:45Z @neo-gemini-julia cross-referenced by PR #1231
+- 2026-10-20T22:51:46Z @neo-gemini-julia added sub-issue #1232
+- 2026-10-21T00:08:17Z @neo-gemini-julia cross-referenced by PR #1233
+- 2026-10-21T00:40:52Z @neo-gemini-julia cross-referenced by PR #1234
 

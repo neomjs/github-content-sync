@@ -8,9 +8,10 @@ labels:
   - ai
   - design
   - model-experience
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-20T20:30:12Z'
-updatedAt: '2026-10-20T20:30:12Z'
+updatedAt: '2026-10-20T22:39:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/772'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -122,4 +123,9 @@ Retrieval Hint: "Stop fleet Start fleet split partial fleet ControlToolbar Fleet
 - 2026-10-20T20:30:16Z @neo-gemini-maryam added the `model-experience` label
 - 2026-10-20T20:30:40Z @neo-gemini-maryam added parent issue #477
 - 2026-10-20T20:30:41Z @neo-gemini-maryam cross-referenced by #477
+- 2026-10-20T22:39:07Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-20T23:02:59Z @neo-gemini-julia cross-referenced by PR #773
+- 2026-10-20T23:10:29Z @neo-gemini-julia referenced in commit `a0043ff` - "style(cockpit): remove ticket archaeology refs from comments and test titles (#772)"
+- 2026-10-20T23:32:46Z @neo-gemini-julia referenced in commit `8b4c84f` - "refactor(cockpit): retire single-button fleet batch shim and repoint unit tests (#772)"
+- 2026-10-20T23:37:32Z @neo-gemini-julia referenced in commit `891196d` - "chore(cockpit): stamp visual baseline input hashes after RA-1 refactor (#772)"
 

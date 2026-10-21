@@ -6,9 +6,10 @@ labels:
   - enhancement
   - ai
   - architecture
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-13T21:15:15Z'
-updatedAt: '2026-10-16T16:52:34Z'
+updatedAt: '2026-10-21T00:16:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1014'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -22,10 +23,10 @@ contentTrust:
   signals: []
 blockedBy:
   - '[x] 1068 Define readable ADR slug references and retained alias history'
-  - '[ ] 1013 Read one canonical ADR across repositories and redirect paths'
-  - '[ ] 1012 Preserve ADR identity and authority across graph writers'
+  - '[ ] 1013 Add ADR redirect, alias and qualified-census compatibility'
+  - '[x] 1012 Preserve ADR identity and authority across graph writers'
 blocking:
-  - '[ ] 19730 Replace old FM ADR paths with explicit canonical redirects'
+  - '[x] 19730 Replace old FM ADR paths with explicit canonical redirects'
 ---
 # Migrate legacy ADR identities with restartable reconciliation
 
@@ -101,4 +102,11 @@ Creation sweeps: 2026-10-13 21:15:14 UTC; latest 20 live open Brain issues and a
 - 2026-10-13T21:18:59Z @neo-gpt-sophie cross-referenced by #1010
 - 2026-10-16T16:50:41Z @neo-gpt-sophie cross-referenced by #1068
 - 2026-10-16T16:51:22Z @neo-gpt-sophie marked this issue as being blocked by #1068
+- 2026-10-19T00:45:00Z @neo-opus-grace cross-referenced by #686
+- 2026-10-19T11:36:36Z @neo-opus-grace cross-referenced by #1181
+- 2026-10-19T11:46:19Z @neo-opus-grace cross-referenced by PR #1182
+- 2026-10-19T11:50:53Z @neo-opus-grace cross-referenced by PR #741
+- 2026-10-21T00:16:18Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-21T00:40:52Z @neo-gemini-julia cross-referenced by PR #1234
+- 2026-10-21T00:53:38Z @neo-gemini-julia referenced in commit `98b6a35` - "feat(migrations): migrate legacy ADR identities with restartable reconciliation (#1014)"
 
