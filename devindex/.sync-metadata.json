@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-20T04:48:31.479Z",
-  "releasesLastFetched": "2026-10-20T04:48:31.167Z",
+  "lastSync": "2026-10-21T07:38:40.146Z",
+  "releasesLastFetched": "2026-10-21T07:38:39.862Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -175,24 +175,6 @@
       "milestone": null,
       "updatedAt": "2026-10-05T13:32:00Z",
       "contentHash": "e9b98d4b8352e96a11b655cc9ccba7f98f81d0e44f8a5d537ebe7cd6e263a843"
-    },
-    "54": {
-      "state": "MERGED",
-      "path": "devindex/pulls/chunk-1/pr-54.md",
-      "closedAt": "2026-10-05T13:30:05Z",
-      "mergedAt": "2026-10-05T13:30:05Z",
-      "milestone": null,
-      "updatedAt": "2026-10-05T13:30:14Z",
-      "contentHash": "05a1bd4971bfbfe082fed7fb6e50c56f2269dbb0912cbf37d03657bbdc18519f"
-    },
-    "55": {
-      "state": "CLOSED",
-      "path": "devindex/pulls/chunk-1/pr-55.md",
-      "closedAt": "2026-10-05T13:31:04Z",
-      "mergedAt": null,
-      "milestone": null,
-      "updatedAt": "2026-10-05T13:31:06Z",
-      "contentHash": "c9f7f5a5f3a474cf9731e45d11924a05d15361f500da83a1e7af9965b1372c8c"
     },
     "56": {
       "state": "MERGED",
@@ -436,6 +418,24 @@
       "milestone": null,
       "updatedAt": "2026-10-20T02:07:27Z",
       "contentHash": "7b2466c5ac7568652dd4cedc3b956786fa9d1bd3320679ef3e5c69862d6d49b6"
+    },
+    "87": {
+      "state": "MERGED",
+      "path": "devindex/pulls/chunk-1/pr-87.md",
+      "closedAt": "2026-10-21T02:06:36Z",
+      "mergedAt": "2026-10-21T02:06:36Z",
+      "milestone": null,
+      "updatedAt": "2026-10-21T02:06:45Z",
+      "contentHash": "264ff299ae5cce5bea26093a43b5fa71496d206cb61e42aac93f36abf8e4693a"
+    },
+    "88": {
+      "state": "MERGED",
+      "path": "devindex/pulls/chunk-1/pr-88.md",
+      "closedAt": "2026-10-21T02:07:03Z",
+      "mergedAt": "2026-10-21T02:07:03Z",
+      "milestone": null,
+      "updatedAt": "2026-10-21T02:07:12Z",
+      "contentHash": "5a37edfed2dd60b7a9cdfc0c79bd479862b4dbff227290509ec39129f6895786"
     }
   },
   "discussions": {}

@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-21T01:34:58.949Z",
-  "releasesLastFetched": "2026-10-21T01:34:58.155Z",
+  "lastSync": "2026-10-21T07:38:32.413Z",
+  "releasesLastFetched": "2026-10-21T07:38:32.205Z",
   "issues": {
     "3": {
       "state": "OPEN",
@@ -6323,24 +6323,6 @@
   },
   "releases": {},
   "pulls": {
-    "1187": {
-      "state": "MERGED",
-      "path": "neo-agent-brain/pulls/chunk-6/pr-1187.md",
-      "closedAt": "2026-10-19T14:23:29Z",
-      "mergedAt": "2026-10-19T14:23:29Z",
-      "milestone": null,
-      "updatedAt": "2026-10-19T14:23:31Z",
-      "contentHash": "a10d8f4e7ad70a0c56040c5f5a5c2b4133185c24d52438790e87e1d174d26c60"
-    },
-    "1189": {
-      "state": "MERGED",
-      "path": "neo-agent-brain/pulls/chunk-6/pr-1189.md",
-      "closedAt": "2026-10-19T14:16:01Z",
-      "mergedAt": "2026-10-19T14:16:00Z",
-      "milestone": null,
-      "updatedAt": "2026-10-19T14:16:04Z",
-      "contentHash": "bcd971feaa98755bd36e62538ce6945f5875651d92c290fedeea18d3289c1a2a"
-    },
     "1191": {
       "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-6/pr-1191.md",
@@ -6592,6 +6574,24 @@
       "milestone": null,
       "updatedAt": "2026-10-21T01:01:09Z",
       "contentHash": "0972194f86b62405bf6004ed7f5374b95f8c311b34fa8c457eb02924f3fb1be3"
+    },
+    "1235": {
+      "state": "MERGED",
+      "path": "neo-agent-brain/pulls/chunk-6/pr-1235.md",
+      "closedAt": "2026-10-21T04:41:29Z",
+      "mergedAt": "2026-10-21T04:41:29Z",
+      "milestone": null,
+      "updatedAt": "2026-10-21T04:41:38Z",
+      "contentHash": "6faf4cd553b83eda82ec9d9c0bce22e09e430c1bd2d4a8d33a8c81e43659893d"
+    },
+    "1236": {
+      "state": "MERGED",
+      "path": "neo-agent-brain/pulls/chunk-6/pr-1236.md",
+      "closedAt": "2026-10-21T04:40:09Z",
+      "mergedAt": "2026-10-21T04:40:09Z",
+      "milestone": null,
+      "updatedAt": "2026-10-21T04:40:16Z",
+      "contentHash": "adbc65c0c4ab25969ae33e15c103316bec84f376211f3d39175245a8939e2c2f"
     }
   },
   "discussions": {}
