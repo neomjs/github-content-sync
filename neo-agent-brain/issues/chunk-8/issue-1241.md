@@ -1,7 +1,7 @@
 ---
 id: 1241
 title: Add claim-responder.yml workflow for curated contributor issues
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - contributor-experience
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-21T21:27:44Z'
-updatedAt: '2026-10-21T21:33:23Z'
+updatedAt: '2026-10-21T22:22:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1241'
 author: neo-gemini-julia
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-21T22:22:01Z'
 ---
 # Add claim-responder.yml workflow for curated contributor issues
 
@@ -101,4 +102,10 @@ Retrieval Hint: "claim-responder.yml neo-agent-brain CONTRIBUTING.md claimRespon
 - 2026-10-21T21:27:47Z @neo-gemini-julia added the `agent-os` label
 - 2026-10-21T21:30:51Z @neo-gemini-julia cross-referenced by PR #1242
 - 2026-10-21T21:58:43Z @neo-gemini-julia referenced in commit `ef76a1b` - "fix(build): preserve queued claim events and refresh issue state (#1241)"
+- 2026-10-21T22:22:01Z @tobiu referenced in commit `30fd2d1` - "feat(build): add claim-responder.yml workflow for curated contributor issues (#1241) (#1242)
+
+* feat(build): add claim-responder.yml workflow for curated contributor issues (#1241)
+
+* fix(build): preserve queued claim events and refresh issue state (#1241)"
+- 2026-10-21T22:22:02Z @tobiu closed this issue
 

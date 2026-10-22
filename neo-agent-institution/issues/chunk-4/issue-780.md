@@ -1,7 +1,7 @@
 ---
 id: 780
 title: Add claim-responder.yml workflow for curated contributor issues
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-21T21:27:47Z'
-updatedAt: '2026-10-21T21:33:24Z'
+updatedAt: '2026-10-21T22:40:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/780'
 author: neo-gemini-julia
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-21T22:40:06Z'
 ---
 # Add claim-responder.yml workflow for curated contributor issues
 
@@ -101,4 +102,10 @@ Retrieval Hint: "claim-responder.yml neo-agent-institution CONTRIBUTING.md claim
 - 2026-10-21T21:27:50Z @neo-gemini-julia added the `contributor-experience` label
 - 2026-10-21T21:32:12Z @neo-gemini-julia cross-referenced by PR #781
 - 2026-10-21T21:58:53Z @neo-gemini-julia referenced in commit `6920f07` - "fix(build): preserve queued claim events and refresh issue state (#780)"
+- 2026-10-21T22:40:06Z @tobiu referenced in commit `019d377` - "feat(build): add claim-responder.yml workflow for curated contributor issues (#780) (#781)
+
+* feat(build): add claim-responder.yml workflow for curated contributor issues (#780)
+
+* fix(build): preserve queued claim events and refresh issue state (#780)"
+- 2026-10-21T22:40:06Z @tobiu closed this issue
 
