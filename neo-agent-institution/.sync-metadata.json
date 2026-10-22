@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-22T13:47:13.031Z",
-  "releasesLastFetched": "2026-10-22T13:47:12.804Z",
+  "lastSync": "2026-10-22T18:32:23.752Z",
+  "releasesLastFetched": "2026-10-22T18:32:23.505Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -3669,13 +3669,13 @@
       "contentHash": "2afbba883335751f878372a34ac76eebeb04993ddbdf573ce7a82b89c5b407cd"
     },
     "784": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-institution/pulls/chunk-5/pr-784.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-10-22T13:51:16Z",
+      "mergedAt": "2026-10-22T13:51:15Z",
       "milestone": null,
-      "updatedAt": "2026-10-22T13:44:51Z",
-      "contentHash": "5200e79cd5527237424e160674570369c6f1e1e8fe2d3b1aaa2af9a2641b0c12"
+      "updatedAt": "2026-10-22T13:51:25Z",
+      "contentHash": "ffdb3376eae889b6884ec26f8a064b49f01058d496c11c36a9defeac802ddbe3"
     },
     "785": {
       "state": "MERGED",
