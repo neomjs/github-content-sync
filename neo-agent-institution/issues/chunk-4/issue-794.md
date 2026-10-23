@@ -1,7 +1,7 @@
 ---
 id: 794
 title: The cockpit keys its vessel bookkeeping by item id; the engine now keys by the minted Group key — every PR red
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-23T17:24:19Z'
-updatedAt: '2026-10-23T17:57:50Z'
+updatedAt: '2026-10-23T21:00:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/794'
 author: neo-fable-clio
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-23T21:00:31Z'
 ---
 # The cockpit keys its vessel bookkeeping by item id; the engine now keys by the minted Group key — every PR red
 
@@ -54,6 +55,17 @@ A consumer drift: the engine's vessel bookkeeping changed its key and the engine
 Port the pattern into `VesselContainer.mjs`: resolve the key once per site (`vesselKey(itemId)` over `keyOf`) and pass it to `getOwner` / `getAdmission` / `getConnection` / `retire`; carry `workspaceKey` through the window-name and park/reshow/dispose seams the way `VesselWorkspace` does; read `ownerEntries` / `connectionEntries` by key and take the item from the record; the open-effect guard reads the owner records' items. Add `headerActions` to the projection spec's config regex. Update the cockpit unit fixtures and arms to mint and bind with the key the engine's own test utility uses. No engine change; no Workstation change.
 
 Design authority: the engine's vessel contract after neomjs/neo#20006; the institution's consumer follows it (#591: the shared `VesselContainer` owns the vessel repair).
+
+## Contract Ledger (the consumed vessel contract, PR #796 · review RA)
+
+| Surface (cockpit) | Pinned Engine authority (395f4c83dc) | Shipped behavior | Fallback / refusal | Owning JSDoc | Evidence |
+|---|---|---|---|---|---|
+| `VesselContainer#vesselKey(itemId)` — the minted-key lookup; `isVesselOwned` / `isVesselPending` read `getOwner` / `getAdmission` / `getConnection(id, key)` | `NativeLifecycle#keyOf(sourceId, itemId)` (`src/manager/transaction/NativeLifecycle.mjs:129`): "the key of an item's newest resource: a pending admission first, then a connection, then committed ownership"; the Group keys every record by the key minted at admission (neo #20006) | an item's newest native record is its vessel; every key-addressed read goes through this one resolver | no record → `null`, and every read answers false (no vessel); the open-effect guard does **not** use it: `acquire` stores the new admission before the open effect runs, so `keyOf` names the slot being opened — the guard scans `ownerEntries(id)` for `owner.itemId === itemId` (the older committed owner) | `vesselKey` `@summary`; the guard's inline comment in `openTearOutVessel` | unit `vessel.spec.mjs:211` (with the plain guard the cockpit opened `fm-tearout-stream:2-…` for an owned pane), `:397` (REAL Group lifecycle: admission and connection read by key) |
+| `workspaceKey` custody through park, reshow, dispose and return: `parkNativeVessel` / `reshowNativeVessel({itemId, windowName, workspaceKey = vesselKey(itemId)})`, `suspendNativeWindowDrag` → `onConversionIn({itemId, windowName, workspaceKey})`, `disposeNativeVessel` → `returnPane(vessel.itemId, vessel.workspaceKey)`, `returnPane(itemId, workspaceKey = vesselKey(itemId))` → `retire(id, {...owner, itemId, workspaceKey})` | `VesselPark`'s dispose callback `({itemId, workspaceKey})` and `NativeVesselTransaction.closeVessel({…, workspaceKey})` (neo commit 41b554a798); `NativeLifecycle.retire` keeps exact key, generation and name custody (the late-old-close / newer-resource control) | an explicit key names the exact resource end to end (a parked old key retires itself, never the item's newer vessel) | without a key the item's newest vessel answers (`vesselKey`); no owner for the key → `returnPane` answers `{returned: false, errors: […]}` and retains the retirement, the admission and the connection | the `@param {String} [vessel.workspaceKey]` lines on `parkNativeVessel`, `reshowNativeVessel`, `returnPane` | unit `vessel.spec.mjs:397` (a refused or failed platform close retains the records, gates the next admission, the retirement completes); NL `FleetCockpitTearOutNL` (stream, operator), the permanence-matrix-row-4 spec |
+| Key-suffixed window naming: `tearOutWindowName(itemId, workspaceKey)` = `fm-tearout-${itemId}${tearOutKeySuffix(itemId, workspaceKey)}-${id}`; `openTearOutVessel` names the window with `topologyIdentity?.workspaceKey` | `Workspace#tearOutKeySuffix(itemId, workspaceKey)` and `windowNameFor(itemId, workspaceKey)` (neo #20006; the suffix exists from engine 395f4c83dc, the lock's pin — on 8abdcf9 it threw `tearOutKeySuffix is not a function`, the reason the lock moved) | the preferred key yields the unchanged name (`fm-tearout-stream-<id>`); a minted `:2` key yields `fm-tearout-stream:2-<id>` — two live vessels of one pane never share a name, which `Main#windowOpen` would answer by reusing the first window | no key → no suffix (the old name) | the override's `@summary` | unit `vessel.spec.mjs:239` (asserts the `:2` suffix); NL `FleetCockpitNWindowNL` (the keyed connection read through `vesselKey`) |
+| Record consumers: `resolveNativeWindowDrag` reads `owner.itemId`; `pushVesselTitles` destructures `[, {itemId, windowId}]` | the Group's records each name the item they were opened for (neo commit 41b554a798); the map key is the minted key | dragging a vessel window's title bar back to main resolves its pane again; a vessel window is titled by its pane, not `popup:<item>` | an entry without `itemId` resolves nothing (no drag-back) / no title push | the methods' existing JSDoc (unchanged) | the rewritten unit fixture keys every record `popup:<item>` with `itemId`; NL `FleetCockpitTearOutNL` (the return by drag) |
+
+Not a consumed contract, recorded for completeness: the projection spec's prototype-spy host now admits `headerActions*` configs (neo #19983's reactive `headerActionsShowOnHover_`) — a test fixture census, no cockpit behavior.
 
 ## Acceptance Criteria
 
@@ -93,4 +105,47 @@ Handoff Retrieval Hints: `query_raw_memories("institution VesselContainer keyOf 
 - 2026-10-23T17:25:03Z @neo-fable-clio cross-referenced by PR #793
 - 2026-10-23T17:56:47Z @neo-fable-clio cross-referenced by #795
 - 2026-10-23T17:57:54Z @neo-fable-clio cross-referenced by PR #796
+- 2026-10-23T19:14:45Z @neo-fable-clio referenced in commit `ae53218` - "build(deps): the lock's engine carries the minted Group key (#794)
+
+The Isolated Institution job runs the unit tier on the lock's engine before
+resolve-org-dev, and 8abdcf9 predates the Group's `keyOf` (neomjs/neo#20006).
+The lock now resolves neo.mjs to 395f4c83dc, the engine's dev tip."
+- 2026-10-23T19:14:46Z @neo-fable-clio referenced in commit `1b3b8c0` - "test(visual): the baseline stamp follows the vessel port (#794)
+
+Stamped on a fresh `npm ci` (engine 395f4c83dc). The visual suite fails
+only dev's nine stale goldens, each with dev's pixel count on the same
+engine; the AgentCardSynthesisRenderNL capture passes. No golden changed."
+- 2026-10-23T21:00:31Z @tobiu referenced in commit `b30a83e` - "fix(cockpit): the vessel bookkeeping keys by the minted Group key (#794) (#796)
+
+* fix(cockpit): the vessel bookkeeping keys by the minted Group key (#794)
+
+The engine's native-lifecycle Group keys admissions, connections and owners
+by the workspace key it mints at admission (neomjs/neo#20006); each record
+names the item it was opened for. VesselContainer resolves an item's vessel
+through `keyOf` (`vesselKey`) for every key-addressed read and for the
+retirement, reads the item from the `ownerEntries`/`connectionEntries`
+records, carries the key through the native-return park/reshow/dispose
+seams, and names a vessel's window with its key suffix (`tearOutWindowName`).
+
+The open effect runs while the Group already holds the new slot as the
+item's newest record, so its singly-owned precondition reads the owner
+records' items: a `keyOf` read there can never see an older vessel.
+
+The four projection arms failed on a separate upstream change: the spy
+host's derived dock configs missed `headerActionsShowOnHover`
+(neomjs/neo#19983), whose inherited getter throws without `#configs`.
+The unit fixtures and the N-window NL probe key by the minted Group key.
+
+* build(deps): the lock's engine carries the minted Group key (#794)
+
+The Isolated Institution job runs the unit tier on the lock's engine before
+resolve-org-dev, and 8abdcf9 predates the Group's `keyOf` (neomjs/neo#20006).
+The lock now resolves neo.mjs to 395f4c83dc, the engine's dev tip.
+
+* test(visual): the baseline stamp follows the vessel port (#794)
+
+Stamped on a fresh `npm ci` (engine 395f4c83dc). The visual suite fails
+only dev's nine stale goldens, each with dev's pixel count on the same
+engine; the AgentCardSynthesisRenderNL capture passes. No golden changed."
+- 2026-10-23T21:00:32Z @tobiu closed this issue
 

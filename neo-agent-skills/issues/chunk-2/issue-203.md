@@ -1,17 +1,17 @@
 ---
 id: 203
 title: 'context-recovery reads a repository''s VISION.md, when present, before it asserts lane state'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-23T12:14:09Z'
-updatedAt: '2026-10-23T12:14:09Z'
+updatedAt: '2026-10-23T21:04:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/203'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-23T21:04:04Z'
 ---
 # context-recovery reads a repository's VISION.md, when present, before it asserts lane state
 
@@ -69,4 +70,30 @@ Retrieval Hint: "context-recovery VISION.md direction check before lane state"
 - 2026-10-23T12:14:09Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
 - 2026-10-23T12:14:11Z @neo-fable-mnemosyne added the `enhancement` label
 - 2026-10-23T12:14:11Z @neo-fable-mnemosyne added the `ai` label
+### @neo-fable-mnemosyne - 2026-10-23T20:26:32Z
+
+### Contract Ledger (T3) — the direction check in the recovery runbook
+
+Posted on the source ticket before the PR opens (the Contract-Completeness audit reads the originating ticket). Both surfaces are **new**; the existing surfaces they attach to were verified at `neo-agent-skills` dev `498a96c`: `context-recovery-workflow.md` §3 step 5 (lines 63–65) and the §4 ledger block (lines 106–116); `VISION.md` exists in `neo-stage` at `bc55e52` (33 lines; its first line asks for the read at every boot and after every compaction) and does not exist in `neomjs/neo`.
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `context-recovery-workflow.md` §3 step **5a** (new) | #203; neo-stage#321 / neo-stage#322 (the Stage `AGENTS.md` boot route reads the page; this runbook was the third load path with no direction read) | After the live-state check and before any lane-state assertion, the recovering seat reads the checked-out repository's `VISION.md`; a lane that contradicts it is re-planned against the roadmap, not resumed | No `VISION.md` in the checkout → the step is a no-op recorded as `none in this repository`; a direction page under another name is out of scope (the engine trigger line is #203's Out of Scope) | The payload is the doc; `SKILL.md` unchanged | L1: the diff + the corpus lint with the growth marker; L3: the first recovery of a consumer on the released pin shows the ledger line (`VISION.md read` on a Stage seat, `none in this repository` on the engine) |
+| `context-recovery` ledger line `direction:` (new) | #203 | §4's ledger gains `- direction: <VISION.md read \| none in this repository>` between `live-state` and `confidence` | A ledger without the line means an older pin, not a failed check — the runbook versions by the package pin (AC-3) | same | same as above |
+
+Sunset (both rows): retire when every harness loads the page itself through the repository `AGENTS.md` route, measured by boot receipts.
+
+🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · Memory Core session b9535c15-9729-4bef-a8d4-c80998f1fc69
+
+
+- 2026-10-23T20:27:01Z @neo-fable-mnemosyne cross-referenced by PR #204
+- 2026-10-23T20:28:11Z @neo-fable-mnemosyne referenced in commit `7f6dac1` - "chore(release): 0.1.57 (#203)"
+- 2026-10-23T21:04:04Z @tobiu referenced in commit `d39d58f` - "feat(skills): the recovery runbook reads a repository's VISION.md before asserting lane state (#203) (#204)
+
+* feat(skills): the recovery runbook reads a repository's VISION.md before asserting lane state (#203)
+
+[skill-growth-justified: 259 bytes in the conditional payload, zero in the router; the step retires when every harness loads the page itself through the repository AGENTS.md route, measured by boot receipts]
+
+* chore(release): 0.1.57 (#203)"
+- 2026-10-23T21:04:05Z @tobiu closed this issue
 

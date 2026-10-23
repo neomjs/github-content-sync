@@ -1,7 +1,7 @@
 ---
 id: 788
 title: 'Every engine Splitter in the cockpit wears the engine theme, not the dock''s splitter tokens'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
   - design
 assignees: []
 createdAt: '2026-10-23T15:11:57Z'
-updatedAt: '2026-10-23T16:46:10Z'
+updatedAt: '2026-10-23T21:39:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/788'
 author: neo-fable-clio
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-23T21:39:25Z'
 ---
 # Every engine Splitter in the cockpit wears the engine theme, not the dock's splitter tokens
 
@@ -92,4 +93,62 @@ Handoff Retrieval Hints: `query_raw_memories("cockpit engine Splitter tokens doc
 - 2026-10-23T17:04:04Z @neo-fable-clio cross-referenced by PR #792
 - 2026-10-23T17:04:07Z @neo-fable-clio cross-referenced by PR #793
 - 2026-10-23T17:24:21Z @neo-fable-clio cross-referenced by #794
+- 2026-10-23T21:10:49Z @neo-fable-clio referenced in commit `42026c0` - "fix(cockpit): engine splitters wear the dock's splitter tokens (#788)
+
+The engine Splitter a cockpit pane composes (Memories, the Activity observer, the Mailbox) painted the
+engine theme's splitter tokens. The dock splitter's FM values are now declared on .neo-splitter as well:
+they sit on the reading element, so pane content inherited only the engine's .neo-dashboard floor. One
+frame rule maps the engine tokens onto them: rest and hover paint, no border, the dock's radius, no margin.
+
+A visual arm lands three session summaries through a new Memories driver, opens the reading at 1280x1000
+and asserts the splitter computes the dock splitter's rest and hover paint in both skins, with a golden each."
+- 2026-10-23T21:10:49Z @neo-fable-clio referenced in commit `59bc717` - "fix(cockpit): the splitter drag proxy wears the dock's active color (#788)
+
+The engine Splitter's drag proxy mounts on document.body, outside the cockpit's splitter mapping, so a
+drag painted the theme's hover color (rgb(67, 93, 177) dark, rgb(85, 149, 245) light) with its 5px radius.
+A body-level rule in the shell stylesheet, which already owns the floating body-level menus, now gives the
+proxy the dock's active formula on the FM signal its own theme class declares, plus the dock's flat,
+borderless geometry.
+
+The Memories reading arm drags the splitter 30px for real, in both skins, and asserts the proxy computes
+the dock splitter's active paint; the pointer returns before the release, so the goldens stay as they were."
+- 2026-10-23T21:10:49Z @neo-fable-clio referenced in commit `c7227d4` - "test(visual): the baseline stamp follows the rebase onto dev (#788)
+
+Both replayed commits resolved their stamp conflict by taking origin/dev's stamp, which dropped this
+branch's entries. Re-stamped at dev's engine 395f4c83dc after a visual run on it: the cockpit and shell
+SCSS, the cockpit visual spec, and the two Memories reading goldens."
+- 2026-10-23T21:39:25Z @tobiu referenced in commit `9650a04` - "fix(cockpit): engine splitters wear the dock's splitter tokens (#788) (#792)
+
+* fix(cockpit): engine splitters wear the dock's splitter tokens (#788)
+
+The engine Splitter a cockpit pane composes (Memories, the Activity observer, the Mailbox) painted the
+engine theme's splitter tokens. The dock splitter's FM values are now declared on .neo-splitter as well:
+they sit on the reading element, so pane content inherited only the engine's .neo-dashboard floor. One
+frame rule maps the engine tokens onto them: rest and hover paint, no border, the dock's radius, no margin.
+
+A visual arm lands three session summaries through a new Memories driver, opens the reading at 1280x1000
+and asserts the splitter computes the dock splitter's rest and hover paint in both skins, with a golden each.
+
+* fix(cockpit): the splitter drag proxy wears the dock's active color (#788)
+
+The engine Splitter's drag proxy mounts on document.body, outside the cockpit's splitter mapping, so a
+drag painted the theme's hover color (rgb(67, 93, 177) dark, rgb(85, 149, 245) light) with its 5px radius.
+A body-level rule in the shell stylesheet, which already owns the floating body-level menus, now gives the
+proxy the dock's active formula on the FM signal its own theme class declares, plus the dock's flat,
+borderless geometry.
+
+The Memories reading arm drags the splitter 30px for real, in both skins, and asserts the proxy computes
+the dock splitter's active paint; the pointer returns before the release, so the goldens stay as they were.
+
+* test(visual): the baseline stamp follows the rebase onto dev (#788)
+
+Both replayed commits resolved their stamp conflict by taking origin/dev's stamp, which dropped this
+branch's entries. Re-stamped at dev's engine 395f4c83dc after a visual run on it: the cockpit and shell
+SCSS, the cockpit visual spec, and the two Memories reading goldens."
+- 2026-10-23T21:39:25Z @tobiu closed this issue
+- 2026-10-23T22:06:33Z @neo-fable-clio referenced in commit `127cf87` - "test(visual): the reading golden and the baseline stamp follow the selection paint (#789)
+
+The Memories reading goldens from #788 show the selected card in the ring paint; with the row's tint and
+border they are re-captured, dark and light. Re-stamped after the rebase onto dev at the engine its lock
+pins (0ab667195e, moved by the all-deps bump after the last stamp)."
 
