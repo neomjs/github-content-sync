@@ -34,8 +34,12 @@ subIssues:
   - '[x] 715 A Memories row re-norms to its rail in two frames on selection'
   - '[x] 724 Add an agent: the empty-memory row, the focus ring and the lock glyph'
   - '[x] 743 Awaiting-merge menu lacks structural FM token scope and link reset styles'
+  - '[ ] 788 Every engine Splitter in the cockpit wears the engine theme, not the dock''s splitter tokens'
+  - '[ ] 789 A selected Memories row draws a hard double ring where the roster draws a soft tint'
+  - '[ ] 790 The Activity stream has no keyboard path: rows never take focus, arrows do nothing'
+  - '[ ] 791 Selecting a card reveals Agent detail without moving the roster; close goes, pin stays reachable'
 subIssuesCompleted: 17
-subIssuesTotal: 18
+subIssuesTotal: 22
 contentTrust:
   projected: true
   quarantined: 0
@@ -945,4 +949,15 @@ Boundary recorded with it: a cloud plane heals itself (Agent OS self-diagnostics
 - 2026-10-19T13:06:21Z @neo-gemini-julia cross-referenced by #743
 - 2026-10-19T13:08:30Z @neo-gemini-julia added sub-issue #743
 - 2026-10-19T13:23:06Z @neo-gemini-julia cross-referenced by PR #745
+- 2026-10-23T15:11:58Z @neo-fable-clio cross-referenced by #788
+- 2026-10-23T15:12:18Z @neo-fable-clio cross-referenced by #789
+- 2026-10-23T15:12:44Z @neo-fable-clio cross-referenced by #790
+- 2026-10-23T15:13:23Z @neo-fable-clio cross-referenced by #791
+- 2026-10-23T15:13:36Z @neo-fable-clio added sub-issue #788
+- 2026-10-23T15:13:38Z @neo-fable-clio added sub-issue #789
+- 2026-10-23T15:13:40Z @neo-fable-clio added sub-issue #790
+- 2026-10-23T15:13:42Z @neo-fable-clio added sub-issue #791
+- 2026-10-23T17:04:04Z @neo-fable-clio cross-referenced by PR #792
+- 2026-10-23T17:04:07Z @neo-fable-clio cross-referenced by PR #793
+- 2026-10-23T17:24:21Z @neo-fable-clio cross-referenced by #794
 

@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-03T12:04:32Z'
-updatedAt: '2026-10-09T07:05:36Z'
+updatedAt: '2026-10-23T15:13:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/507'
 author: neo-fable-clio
-commentsCount: 1
+commentsCount: 2
 parentIssue: 505
 subIssues:
   - '[x] 636 Default perspective design page: the inventory''s homes, measured'
@@ -124,4 +124,26 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session fc9a1ad6-b0f5-47d6-99dd-3d42784c4fcb
 
 - 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
+- 2026-10-10T13:40:53Z @neo-fable-clio cross-referenced by #654
+- 2026-10-10T13:56:23Z @neo-fable-clio cross-referenced by #655
+- 2026-10-10T14:07:27Z @neo-fable-clio cross-referenced by #658
+- 2026-10-10T17:51:35Z @neo-fable-clio cross-referenced by #664
+- 2026-10-10T19:07:12Z @neo-fable-clio cross-referenced by #667
+- 2026-10-10T22:32:05Z @neo-fable-clio cross-referenced by #673
+- 2026-10-10T23:03:35Z @neo-fable-clio cross-referenced by #674
+- 2026-10-17T18:29:12Z @neo-fable-clio cross-referenced by #724
+- 2026-10-17T18:29:33Z @neo-fable-clio cross-referenced by #725
+- 2026-10-17T18:36:35Z @neo-fable-clio cross-referenced by #726
+- 2026-10-18T22:58:28Z @neo-fable-clio cross-referenced by #735
+- 2026-10-23T15:11:58Z @neo-fable-clio cross-referenced by #788
+- 2026-10-23T15:12:18Z @neo-fable-clio cross-referenced by #789
+- 2026-10-23T15:12:44Z @neo-fable-clio cross-referenced by #790
+- 2026-10-23T15:13:23Z @neo-fable-clio cross-referenced by #791
+### @neo-fable-clio - 2026-10-23T15:13:50Z
+
+Scope note (author): the Agent detail's home in Overview is decided in #791 — the rail's transient reveal on selection, a committed column only by the operator's pin, no close. This leaf keeps the other views' homes (the lower tab strip's six views and the roster's room).
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session d0801374-2558-4c56-97d0-ba4a719149a3
+
+- 2026-10-23T17:24:21Z @neo-fable-clio cross-referenced by #794
 
