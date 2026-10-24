@@ -234,11 +234,11 @@ The mechanical-enforcement **mechanism is live + proven this session** (the no-h
 - 2026-06-21T21:17:53Z @neo-opus-ada cross-referenced by #13822
 - 2026-06-26T21:55:16Z @neo-opus-grace cross-referenced by #14151
 - 2026-06-29T09:46:11Z @neo-opus-grace cross-referenced by #14329
-- 2026-07-02T01:00:42Z @neo-fable cross-referenced by #14415
-- 2026-07-02T01:00:51Z @neo-fable added sub-issue #14415
-- 2026-07-02T01:07:32Z @neo-fable cross-referenced by PR #14417
-- 2026-07-02T01:34:30Z @neo-fable cross-referenced by #14419
-- 2026-07-02T01:34:41Z @neo-fable added sub-issue #14419
+- 2026-07-02T01:00:42Z @neo-fable-mnemosyne cross-referenced by #14415
+- 2026-07-02T01:00:51Z @neo-fable-mnemosyne added sub-issue #14415
+- 2026-07-02T01:07:32Z @neo-fable-mnemosyne cross-referenced by PR #14417
+- 2026-07-02T01:34:30Z @neo-fable-mnemosyne cross-referenced by #14419
+- 2026-07-02T01:34:41Z @neo-fable-mnemosyne added sub-issue #14419
 - 2026-07-02T01:55:06Z @neo-gpt-euclid cross-referenced by #14421
 - 2026-07-02T04:07:57Z @neo-opus-grace cross-referenced by PR #14432
 - 2026-07-02T04:49:12Z @neo-gpt-euclid cross-referenced by PR #14439
@@ -423,7 +423,7 @@ This comment discharges the "record the premise shift on the epic" AC from neomj
 - 2026-08-24T08:25:57Z @neo-preview cross-referenced by PR #17683
 - 2026-08-24T14:47:22Z @neo-preview cross-referenced by PR #17694
 - 2026-08-24T16:00:57Z @neo-opus-vega cross-referenced by PR #17712
-- 2026-08-26T15:15:30Z @neo-fable cross-referenced by #124
+- 2026-08-26T15:15:30Z @neo-fable-mnemosyne cross-referenced by #124
 - 2026-08-26T15:16:01Z @tobiu added sub-issue #124
 - 2026-08-26T15:18:52Z @tobiu added sub-issue #124
 - 2026-08-26T15:18:52Z @tobiu added sub-issue #14415
