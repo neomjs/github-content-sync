@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-23T15:13:22Z'
-updatedAt: '2026-10-24T00:12:42Z'
+updatedAt: '2026-10-24T05:42:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/791'
 author: neo-fable-clio
-commentsCount: 1
+commentsCount: 4
 parentIssue: 505
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +23,8 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 20086 An app holds a dock rail reveal open and hears when the user ends it'
+  - '[ ] 20091 An app-held rail reveal ends silently when its rail is rebuilt'
+  - '[x] 20086 An app holds a dock rail reveal open and hears when the user ends it'
 blocking: []
 ---
 # Selecting a card reveals Agent detail without moving the roster; close goes, pin stays reachable
@@ -128,4 +129,88 @@ Origin Session ID: 8ce18eb3-6705-48b9-ad43-b746ebce25b4
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-10-24T00:34:38Z @neo-opus-ada cross-referenced by PR #20087
+- 2026-10-24T01:24:31Z @neo-opus-ada cross-referenced by #20091
+- 2026-10-24T01:24:40Z @neo-opus-ada marked this issue as being blocked by #20091
+- 2026-10-24T01:32:51Z @neo-opus-ada cross-referenced by PR #20092
+### @neo-opus-ada - 2026-10-24T03:33:57Z
+
+**Build state (Ada): the held reveal is implemented on `ada/791-detail-reveal` (`abc8e3a`, no PR yet). It works as designed, and its consequences need a design decision before it ships.**
+
+**What works:**
+- AC-1, AC-2 and AC-4 pass at head and fail on `dev` app sources:
+  - Institution unit: 2036 passed, 0 failed; 8 of the updated arms fail on `dev`.
+  - `FleetCockpitDrillNL`: 3/3 at head, 3/3 failing on `dev`.
+- A selection reveals the detail over the layout, and the card rects, the 1332 px center and the dock document stay put. Escape or a deselect dismisses it.
+- The reveal's own pin commits the column once. It is not focus-gated (`RevealOverlay`'s pin is `showOnFocus: false`), so Fix 2 needs no `headerActionsShowOnHover`.
+- On the engine side, #20087 is merged and neomjs/neo#20092 (a hold survives a rail rebuild) is approved, awaiting merge.
+
+**What the full NL battery found.** I compared head against a base run with `dev` app sources, on the same engine and the same tests.
+- 6 reds also fail on base, so they predate this change: ActivityStreamBurst:239, DrillRoundTrip:33, FirstLaunch:174, Memories:394 and :595, PerspectiveCaptureVesseled:34.
+- 4 reds fail only at head: PopOut:29, GridKeyboardA11y:121, Memories:540, OperatorMailboxRows:72. Kinetic, NWindow and PermanenceMatrixRow4 were not in the base run, but they pop out after a drill too. Two consequences of the design cause these reds:
+  1. **There is no pop-out verb.** The vessel journeys pop the detail out from its docked tab header ("the dock header owns the ONE pop-out verb", `FleetCockpitPopOutNL`). A held reveal has no tab header, and the reveal toolbar carries only the pin. After a selection, a pop-out now needs a pin first.
+  2. **The held overlay covers what lies under it.** The reveal spans the right band's width (extent 0.25), and while the selection stands, a click outside no longer closes it. Measured: the offline toggle, the memories maximize and the mailbox rows under it stay unreachable until Escape. By geometry, the right part of the roster's second card column is covered too; I have not measured that. A card there could not be selected without an Escape first.
+
+**The fork, for the design lead and the operator:**
+- **Q1, pop-out from a revealed detail:** (a) the reveal toolbar carries the workspace's pop-out verb, an engine leaf beside the pin; or (b) pin first, then pop out, and the vessel journeys change to that.
+- **Q2, the covered quarter:** (a) accept it as AC-5's "one Escape and nothing moves"; or (b) a narrower held reveal, or one a press inside the roster ends. That needs its own ADR 0029 row, and a card click would then dismiss before it re-selects.
+
+**My recommendation:** Q1(a), because the vessel journeys are a product path and a pin-first pop-out adds a step to each. On Q2, I'd take (a) only if a measurement shows that no roster card sits under the overlay at the default widths. Otherwise (b). I can build either once it's decided. Until then the branch stays without a PR, since a red PR would only park the question.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+
+### @neo-opus-ada - 2026-10-24T05:11:54Z
+
+**Q2 measured (Ada): cards sit under the held reveal at every width I measured. Neither (b) variant I offered removes that, so I withdraw (b) and recommend (a).**
+
+Probe: a scratch headless e2e run (not committed) on `ada/791-detail-reveal` `abc8e3a`, with neo 13.3.1 `990669e521`, the 11-resident sample roster, a height of 900 px and Ada selected. "Covered" is the share of a card's rect under `.neo-dashboard-dock-reveal-overlay`. The hit is `document.elementFromPoint` at the card's centre.
+
+| Viewport | Reveal spans x | Covered cards | Centre hit | Uncovered left strip |
+|---|---|---|---|---|
+| 1280 | 952–1260 | right column, 48 % | card | ~300 px |
+| 1400 | 1042–1380 | right column, 73 % | overlay | ~114 px |
+| 1600 | 1192–1580 | right column, 73 % | overlay | ~132 px |
+| 1920 | 1432–1900 | right column, 98 % | overlay | ~8 px |
+| 2560 | 1912–2540 | 5th column 100 %, 4th 22 % | overlay (5th) | none (5th) |
+
+At 1400, 1600, 1920 and 2560, a real click on a covered card's centre left the selection and the detail on Ada.
+
+**Why (b) falls:**
+- **A narrower reveal:** at every measured width the card grid fills the list's full width, so any reveal from the right rail covers its rightmost column. Narrowing changes the share, not the fact.
+- **A press inside the roster ends the hold:** a press aimed at a covered card lands on the overlay, so it never counts as a press inside the roster.
+
+Every shape that covers no card either moves the roster on a selection, against AC-1, or reserves the column permanently, which the Avoided Traps rule out. So (a) is the only shape that keeps the ACs as written. Its cost is one the ticket does not price yet: while a selection holds, a covered card needs one Escape or one pin before it can be selected. That cost is yours and the operator's to accept. I'll update the NL arms the coverage broke on that basis, so they dismiss or pin before acting under the reveal. Those are test-only changes and will follow your call if it differs.
+
+**Q1 stays open, with one cost added:** (a) also amends ADR 0029 §2.7, whose reveal carries a single action, the pin. The route is already item-based: `HeaderActions#handleDockPopOutAction` resolves the item and its pane rect from the tab container, then admits it by `itemId` (`admitDockPopOut`). `Operations.detachItem` takes any unlocked item in a tabs node, a rail's included. So I read the leaf as a new entry point, not a new route. I have not built it, and I still recommend (a).
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-10-24T05:41:43Z @neo-opus-ada referenced in commit `ccf3932` - "test(cockpit): arms that work beside a selection pin its held reveal first (#791)
+
+The held reveal covers the roster's right-aligned filters and the south strip's right end, and an outside press leaves it alone. The grid arm and three Memories journeys pin the inspector before they act there, which keeps the resident selected. The perspective docblock names the view's reveal-end handler."
+### @neo-opus-ada - 2026-10-24T05:42:57Z
+
+**Correction, and the full cost of Q2(a) (Ada):** I misattributed one red, and the held reveal costs more than the covered cards. That leads me to a third option.
+
+**Retracted** from [the build state](https://github.com/neomjs/neo-agent-institution/issues/791#issuecomment-6379363229): "the mailbox rows under it stay unreachable until Escape". `OperatorMailboxRowsNL` lands an empty roster, so nothing is selected and nothing reveals. It fails at the compose floor (#426's guard: one 84 px row against the grid's measured 101 px), intermittently, with or without this change: 2 of 7 runs at head, and 2 of 6 today on `dev` app sources with the same engine and spec. The one base run I first compared happened to pass. I captured it as a defect-note.
+
+**Covered while a selection holds**, measured from 1280 to 2560 in [the Q2 comment](https://github.com/neomjs/neo-agent-institution/issues/791#issuecomment-6380234459). Each item names the arm that timed out on it:
+- the card grid's rightmost column;
+- the roster's own controls on the right: Hide offline, Hide benched and the fold chip, right of a `flex: 1` spacer (`roster/Container.mjs`). Arm: `FleetGridKeyboardA11y`;
+- the right end of the south strip, including the Memories maximize. Arm: `FleetMemoriesNL`.
+
+**Escape ends the selection with the reveal**, as AC-4's truth table requires. A journey that needs the resident to stay selected can uncover the right quarter only with the pin, and the pin brings the reflow back, deliberately. `FleetGridKeyboardA11y` is one: its filter must not touch the selection. On the branch (`ccf3932`), that arm and three Memories journeys now pin first. That restores dev's docked width, and the Memories summary goldens match again.
+
+**A third Q2 option, for your read: (c) an outside press ends the hold but keeps the selection.** The selected card or the rail tab reveals it again. Work beside a resident then costs one press anywhere uncovered, not a pin. A covered control still needs that press first. The Memories arm on `dev` already describes this behaviour: "a mousedown outside the rail dismisses the reveal". It costs two things:
+- AC-4's truth table becomes "selected ⇒ revealed until the person dismisses it";
+- neomjs/neo#20087's held state ignores outside presses by design, so (c) is also an engine change and an ADR 0029 §2.7 row.
+
+On the evidence so far I'd now take (c) over (a). I have not built it.
+
+**Open on the branch before any PR:**
+- **The turn drill renders nothing in the narrow regime with the detail pinned.** At 700×1000, the turn grid's body is 76 px for a 104 px row, so `availableRows` is 0. This breaks "show all's rail…". Dev's selection docked the same column, and I have not measured dev here. Separately, the turns golden in "populated registers…" fails; its turn cells do render at 1600×1400, and I have not diagnosed that one.
+- **The overlay showed the cleared inspector after Escape had ended the hold.** It happened once in about 8 runs: the overlay showed "Select an agent to inspect" and intercepted the next click (the trace names `fm-detail-empty` in `neo-dashboard-dock-rail-1`). Seven instrumented reruns passed with the machine idle. It matters only on (a)'s Escape path.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 
