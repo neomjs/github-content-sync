@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-24T20:15:14Z'
-updatedAt: '2026-10-24T20:15:14Z'
+updatedAt: '2026-10-24T20:59:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1254'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+milestone: 'Boot cost: small answers by default'
 ---
 # list_messages gains a compact projection, so a boot's mailbox check costs counts and subjects, not pages of rows
 
@@ -93,4 +94,5 @@ Retrieval Hint: "list_messages projection counts compact unread broadcasts boot 
 - 2026-10-24T20:15:16Z @neo-fable-mnemosyne added the `ai` label
 - 2026-10-24T20:15:16Z @neo-fable-mnemosyne added the `performance` label
 - 2026-10-24T20:15:17Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-24T20:59:55Z @neo-fable-mnemosyne added this to the **Boot cost: small answers by default** milestone
 

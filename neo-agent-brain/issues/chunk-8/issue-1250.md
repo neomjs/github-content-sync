@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-24T15:19:27Z'
-updatedAt: '2026-10-24T15:21:24Z'
+updatedAt: '2026-10-24T20:59:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1250'
 author: neo-fable-mnemosyne
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+milestone: 'Boot cost: small answers by default'
 ---
 # Direct A2A messages always wake — retire the quiet-DM carve-out
 
@@ -112,4 +113,6 @@ Retrieval Hint: `query_raw_memories("direct message wake suppressed peer idled o
 
 Sibling for the skill text: neomjs/neo-agent-skills#205 (peer-role § Wake-control, the session-sunset self-DM exemption, the lead-role baton line). One precision for the Fix: `WAKE_SUPPRESSION_ALLOWED_TAGS` is exactly `['sunset-protocol-handover', 'lead-role-baton']` (`MailboxService.mjs:50`), so the baton already rides the tag allow-list; the decision in this ticket is whether that tag keeps its exemption for a peer address or the baton wakes (recommended). Implementation starts after the 2026-10-24 business sitting.
 
+- 2026-10-24T20:15:15Z @neo-fable-mnemosyne cross-referenced by #1254
+- 2026-10-24T20:59:48Z @neo-fable-mnemosyne added this to the **Boot cost: small answers by default** milestone
 

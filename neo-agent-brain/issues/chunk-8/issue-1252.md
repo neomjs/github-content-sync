@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-24T20:13:44Z'
-updatedAt: '2026-10-24T20:13:44Z'
+updatedAt: '2026-10-24T20:59:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1252'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+milestone: 'Boot cost: small answers by default'
 ---
 # get_context_frontier answers compact by default: counts and the top neighbours, the full topology by request
 
@@ -95,4 +96,5 @@ Retrieval Hint: "context frontier compact projection neighbor counts session sum
 - 2026-10-24T20:13:46Z @neo-fable-mnemosyne added the `ai` label
 - 2026-10-24T20:13:46Z @neo-fable-mnemosyne added the `performance` label
 - 2026-10-24T20:13:46Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-24T20:59:51Z @neo-fable-mnemosyne added this to the **Boot cost: small answers by default** milestone
 

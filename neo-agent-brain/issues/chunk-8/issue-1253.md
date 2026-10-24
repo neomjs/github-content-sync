@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-24T20:14:40Z'
-updatedAt: '2026-10-24T20:14:40Z'
+updatedAt: '2026-10-24T22:33:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1253'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+milestone: 'Boot cost: small answers by default'
 ---
 # The boot focus read: one short business focus block, first in the handoff, derived from the business dashboard
 
@@ -46,28 +47,44 @@ A fresh session has no cheap, authoritative answer to "what does the business ne
 
 ## The Fix
 
-1. **One source, one writer.** The lead keeps `strategy/FOCUS.md` in the business repository: at most 1,200 bytes (≈ 300 tokens), a hard cap. Content: the question of the day and its decision rule with the date; the money events' next dates (≤ 3 lines); the week's outcomes, one line each with the owner; the dates of the week; one link to the long dashboard. No client names, no prices (categories and dates only, per #123).
-2. **The node.** A host-edge writer (the business clone is host-local, like #957's GitHub inputs) upserts the block as the first populated `BUSINESS_GOAL` node, id `business-focus`, `publicFlag: false`, `windowSemantics` = the week, `falsifyingQuery` = the dashboard commit it was derived from. The graph now has the business in it; Golden Path v2 (#122) can rank against it later; nothing ranks on it here (ADR 0033: reporting, additive).
-3. **The section.** The synthesizer renders the node as `## Focus (business)` **as the first section of the handoff**, before the gap audit, with the source commit and the as-of time; when the file is absent or over the cap the section says so (`unknown: no FOCUS.md`, `over-cap: 1,312 bytes, first 1,200 rendered`) rather than rendering nothing. With the sibling `get_sandman_handoff` filing, the section is one addressable slug (`focus`) and a bare read returns the route plus this block.
+**Sequencing (the operator via Emmy, 2026-10-25 00:07 CEST): the dashboard is a session-start read before any context-recovery or tool integration, and the Gemini seats run under a 258k cap — so the first screen must carry the business-to-technical alignment and each seat's actionable index as a plain document FIRST (Emmy's document-only cut, this weekend); the node and the handoff section below consume that screen afterwards and add no dependency to it. Links alone fail a seat that cannot afford the trail.**
+
+1. **One source, one writer (refined 2026-10-25 with Emmy, the Map-vs-Atlas pass on the business repository): the focus block IS the dashboard's first screen.** No second file. `strategy/DASHBOARD.md` becomes the map: the focus block of at most 1,200 bytes (≈ 300 tokens) at the top — the question of the day and its decision rule with the date, the money events' next dates (≤ 3 lines), the week's outcomes one line each with the owner, the dates of the week — followed only by trails, one line per record (the decision record, the week plan, the by-seat block, the review-pack plan, each area file with its State word), each trail naming the condition under which it is read. The whole map stays under 2,500 bytes. **The guard is a repository-workflow change, not a sentence (Emmy, 2026-10-25): the business repository has no package or check hook today; until AC-7 lands, the writer measures the bytes at each commit and reports them, and nothing here calls the cap enforced.** The cap is held by that guard, never by habit: the file doubled from 28.5 KB to 64.8 KB in three hours on 2026-10-24 under one careful writer, and the document-only cut brought it to 2,272 bytes at `13dd6c1` (business #9) the same night — the plain-document half of this ticket is delivered; what remains here is the node, the section and the guard. History (convergence notes, evening notes) goes to dated immutable log files, linked once. No client names, no prices (categories and dates only, per #123). The lead remains the one writer.
+2. **The node.** The host-edge reader, when `orchestrator.focusSourcePath` is configured (the section below), upserts the block as the first populated `BUSINESS_GOAL` node, id `business-focus`, `publicFlag: false`, `windowSemantics` = the week, `falsifyingQuery` = the dashboard commit it was derived from. The graph now has the business in it; Golden Path v2 (#122) can rank against it later; nothing ranks on it here (ADR 0033: reporting, additive).
+3. **The section.** The synthesizer renders the node as `## Focus (business)` **as the first section of the handoff**, before the gap audit, with the source commit and the as-of time; when the block is absent the section says `unknown` with the reason; **when the block is over the cap nothing is truncated (a live instruction cut mid-sentence or mid-UTF-8 is worse than none — Emmy): the previous in-cap node stays, flagged `stale: over-cap` with the byte count and the source commit, and the section renders that previous block with the flag.** With the sibling `get_sandman_handoff` filing, the section is one addressable slug (`focus`) and a bare read returns the route plus this block.
 4. **The readers.** The recovery runbook reads the section first (Clio's leaf; this ticket hands it the surface); the AGENTS.md boot rule points at the section instead of the 28 KB file (a one-line neo-agent-skills follow-up, filed when this lands); `/overview` prints it; the Fleet pane renders it with #957's envelope field.
+
+## The source is configured, not assumed (the operator via Emmy, 2026-10-25 00:09 CEST; ADR 0019 read in full before this section)
+
+**Our team's need is not a shared prerequisite.** Other teams may run the Agent OS with no business dashboard at all; the capability may one day be a paid extension. So the shared recovery path and the shared tools consume a **configured, optional** focus source, and Neo's deployment enables its own private one:
+
+- **One leaf, empty by default.** `orchestrator.focusSourcePath` — `leaf('', 'NEO_AI_FOCUS_SOURCE_PATH', 'string', {planeMember: false, planeMemberReason: 'an operator-placed private file outside the plane, never beneath its root'})` in the Tier-1 config base; **no default path, no required-ness** (the `authorityProfile` precedent: a declared role, never an inherited one — here a declared source, never an assumed one). Declaration and env binding belong to the leaf alone (ADR 0019 §2, §5.2); the business clone's location is a deployment input, never a literal in code.
+- **Read at the use site, by the host-edge role only.** The host-edge reader (the `authorityProfile=host-edge` lane owns local filesystem effects, §10.8) reads `AiConfig.orchestrator.focusSourcePath` where it runs; empty → the reader does nothing and the synthesizer writes no section. No pass-along into the synthesizer's arguments (B5), no `?.` (B3), no second resolver (C1), no global seed of a `business-focus` node, no requirement that any team create a dashboard.
+- **Absence is ordinary.** An unconfigured deployment keeps today's recovery path and today's handoff; the section is absent, not `unknown`, and nothing logs an error. Only a configured path that cannot be read reports `unknown` with its reason.
+- **Tests isolate by construction** (§5.4): the pure read-and-cap function takes the path as a scalar (rung iii); no spec mutates `AiConfig` (B4).
+- **The block's content follows the equal-peer working model (the operator's correction via Emmy, 2026-10-25 00:25):** the human is an equal peer and the gardener (his words, 2026-10-25 00:26: "I am an equal peer too, willing to help and dive into topics when needed, plus gardener role"): shared business and technical judgment includes him, and his row reads "joins where needed"; the human-only execution boundaries — the merge gate, signatures, account actions — are boundaries, not his role, so the block never casts him as an external decision authority or as a hands-only executor; authority is shared by the peers, and the block says so where it names owners. Peers managing a company, not only its technology, is the story the block tells. This is Neo's configured focus, never a governance requirement the capability imposes on another team; the fixtures (AC-1) carry the same distinction.
+- **Two things stay separate** from the generic small-entrypoint discipline of this ticket: the private business-goal projection (Neo's own, `publicFlag: false`) and any commercial extension built on this capability — the paid-extension idea is a product option recorded here, not a licence decision or an entitlement mechanism.
 
 ## Contract Ledger
 
 | Target surface | Source of authority | Proposed behavior | Fallback / edge | Docs | Evidence |
 |---|---|---|---|---|---|
-| `strategy/FOCUS.md` (business repo, private) | the lead (one writer, the dashboard's rule) | ≤ 1,200 bytes; the five content lines above; derived from the dashboard's top block | over the cap → the writer sees `over-cap` in the handoff; the first 1,200 bytes render | the file's own header | the cap asserted by the host-edge writer's unit arm |
-| `BUSINESS_GOAL` node `business-focus` | `businessSchema` (#14446), #123's boundary | upserted by the host-edge writer with `publicFlag: false` | no file → no node write, the previous node stays with its as-of | schema docs | unit arm: the node validates; a negative projection test: the public corpus projection excludes it |
+| the focus block = `strategy/DASHBOARD.md`'s first screen (business repo, private) | the lead (one writer); the map cap in the business repository's workflow | ≤ 1,200 bytes; the five content lines above; the whole map ≤ 2,500 bytes with trails only | over the cap → the previous in-cap node stays, flagged `stale: over-cap` with the byte count and source; nothing truncated | the file's own header | the cap asserted by the host-edge writer's unit arm |
+| `orchestrator.focusSourcePath` (Tier-1 leaf, new) | ADR 0019 §2/§5 (declarative leaf, read at the use site); §10.5 (`planeMember: false` + reason) | empty default; env `NEO_AI_FOCUS_SOURCE_PATH`; read only by the host-edge reader | empty → no read, no section, no error (absence is ordinary) | the leaf's metadata + `learn/agentos/AiConfigModel.md` | the config-parity lint green; a unit arm: empty leaf → the producer emits no section |
+| `BUSINESS_GOAL` node `business-focus` | `businessSchema` (#14446), #123's boundary | upserted by the host-edge reader with `publicFlag: false` only when the source is configured | no file → no node write, the previous node stays with its as-of | schema docs | unit arm: the node validates; a negative projection test: the public corpus projection excludes it |
 | `## Focus (business)` handoff section | the synthesizer (producer-owned) | first section; as-of + source commit; `unknown`/`over-cap` shapes | synthesizer runs without the node → the section says `unknown` | synthesizer section JSDoc | snapshot arm with and without the node |
 | `get_sandman_handoff` slug `focus` | the sibling filing | returned with the default read | — | — | the sibling's arms |
 
-Decision Record impact: aligned-with ADR 0033 (additive reporting); depends-on #14446's schema; none amended.
+Decision Record impact: aligned-with ADR 0033 (additive reporting); **depends-on ADR 0019 (one new declarative leaf, read at the use site, `planeMember: false`)**; depends-on #14446's schema; none amended.
 
 ## Acceptance Criteria
 
-- [ ] AC-1 A `FOCUS.md` of ≤ 1,200 bytes becomes a `BUSINESS_GOAL` node `business-focus` with `publicFlag: false`; a 1,300-byte file produces the node with `over-cap` recorded and the first 1,200 bytes (unit arms).
+- [ ] AC-1 **Fixture: business `strategy/DASHBOARD.md` at `13dd6c1` (published 2026-10-25 00:27 CET, business #9, Emmy; operator-approved): the whole map 2,272 bytes, the first screen through the by-seat rows 1,196 bytes, the original retained byte-for-byte as `strategy/2026-10-24-dashboard-record.md`; the map carries its own rule — replace current rows, archive history, measure the first screen ≤ 1,200 and the map ≤ 2,500.** The dashboard's first-screen block of ≤ 1,200 bytes becomes a `BUSINESS_GOAL` node `business-focus` with `publicFlag: false`; a 1,300-byte block leaves the previous node in place, flagged `stale: over-cap` with the byte count and the source commit, and truncates nothing (unit arms).
 - [ ] AC-2 The handoff's first level-two section is `## Focus (business)` carrying the block, the as-of time and the source commit; absent node → the section reads `unknown` with the reason (snapshot arm).
 - [ ] AC-3 The negative projection test: the public corpus projection never contains the section or the node.
 - [ ] AC-4 The section costs under 400 tokens in a bare `get_sandman_handoff` read (byte count asserted).
+- [ ] AC-8 (the optional source) With `orchestrator.focusSourcePath` empty, a synthesizer run writes no focus section and no error, and a seat's recovery is byte-identical to today's; with it set, the section appears. The leaf carries `planeMember: false` with its reason; `check-aiconfig-antipatterns`, `lint-config-template-ssot` and the config-parity lint stay green; no spec mutates `AiConfig`.
+- [ ] AC-7 (the guard) A commit guard in the business repository's workflow fails a `DASHBOARD.md` over 2,500 bytes and a first-screen block over 1,200 bytes; the acceptance names the hook, its run and one refused fixture commit. Until it lands, every map commit message carries the measured bytes.
 - [ ] AC-5 (post-merge) one fresh session of another family reads the section first and names its week row from it without opening the business dashboard (receipt on this ticket); the runbook and boot-rule follow-ups are filed with their numbers here.
 
 ## Out of Scope
@@ -76,6 +93,9 @@ Decision Record impact: aligned-with ADR 0033 (additive reporting); depends-on #
 
 ## Avoided Traps
 
+- A hardcoded business-clone path or a globally seeded `business-focus` goal: our dashboard is our deployment's input; another team's plane has none and must not know ours.
+- Treating absence as a failure: an unconfigured source is the ordinary case for every deployment but ours.
+
 - Putting the block on the context frontier: measured at 160 KB tonight, it cannot be a boot surface.
 - A second writer: the block is derived from the dashboard's top block by the lead; peers send state lines, never edits.
 - A cap enforced by prose: the writer measures bytes and records `over-cap`; a seat never reads a truncated block without knowing it.
@@ -83,13 +103,20 @@ Decision Record impact: aligned-with ADR 0033 (additive reporting); depends-on #
 
 ## Related
 
-Parent #123 (the business engine; this is the first populated goal node); sibling #957 (the Focus (v1) section — same handoff, different blocks; the cap and the ordering are proposed to its author by comment tonight); #14446 (the schema, done); #122 (ranking later); the sibling filings on the boot cost tonight (handoff default, frontier default, mailbox projection, skills description budget); the Oct 26 week plan's outcome 8 (Clio's runbook leaf); the business repository's dashboard READ THIS FIRST block (private).
+Parent #123 (the business engine; this is the first populated goal node); the Map-vs-Atlas pass on the business repository and Stage (Emmy, 2026-10-25: the dashboard as the map, #363 the Stage README front door, #362/#364 untouched); sibling #957 (the Focus (v1) section — same handoff, different blocks; the cap and the ordering are proposed to its author by comment tonight); #14446 (the schema, done); #122 (ranking later); the sibling filings on the boot cost tonight (handoff default, frontier default, mailbox projection, skills description budget); the Oct 26 week plan's outcome 8 (Clio's runbook leaf); the business repository's dashboard READ THIS FIRST block (private).
 
 Live latest-open sweep: the latest 20 open issues, created-descending, at 2026-10-24 19:5xZ; no equivalent (#957 is the closest and is linked, not duplicated). A2A in-flight claim sweep: the latest 30 `[lane-claim]` rows, none on this scope. MC sweep: three problem-noun queries (handoff payload, frontier payload, boot cost), 6 results each, initialization noise, no prior decision found; the June concept and D#14430 are the record and are cited. Own-assignment sweep: 11 open, none overlapping (#122 and #117 are mine and are the ranking layer this ticket stays out of). Structure map: `ai/services/graph` (the synthesizer and its section modules), `ai/services/memory-core` (the graph writers); the host-edge writer follows #957's reader pattern — structural pre-flight runs at authoring.
 
 Origin Session ID: 542d408d-b0eb-497c-8f57-a19ca5833f5a
 
 Retrieval Hint: "business focus block handoff first section BUSINESS_GOAL node publicFlag FOCUS.md 1200 bytes boot read"
+
+
+
+
+
+
+
 
 ## Timeline
 
@@ -100,4 +127,6 @@ Retrieval Hint: "business focus block handoff first section BUSINESS_GOAL node p
 - 2026-10-24T20:14:42Z @neo-fable-mnemosyne added the `agent-os` label
 - 2026-10-24T20:16:14Z @neo-fable-mnemosyne added parent issue #123
 - 2026-10-24T20:17:12Z @neo-fable-mnemosyne cross-referenced by #957
+- 2026-10-24T20:59:53Z @neo-fable-mnemosyne added this to the **Boot cost: small answers by default** milestone
+- 2026-10-24T21:49:04Z @neo-fable-mnemosyne cross-referenced by #1258
 

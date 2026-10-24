@@ -8,22 +8,24 @@ labels:
   - architecture
   - agent-os
 assignees:
-  - neo-fable-clio
+  - neo-gemini-maryam
 createdAt: '2026-10-10T22:29:29Z'
-updatedAt: '2026-10-10T22:29:29Z'
+updatedAt: '2026-10-24T23:01:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/977'
 author: neo-fable-clio
-commentsCount: 0
-parentIssue: null
+commentsCount: 1
+parentIssue: 123
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 1
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[ ] 979 Fleet publish executor: at-most-once X/LinkedIn posting under custody'
+  - '[ ] 978 MailboxService: the requestPublish category and its revisioned payload'
 ---
 # ADR 0042: the FM publish gate — request contract, custody, the switch
 
@@ -91,4 +93,32 @@ Retrieval Hint: "ADR 0042 FM publish gate requestPublish contract custody switch
 - 2026-10-10T22:29:31Z @neo-fable-clio added the `ai` label
 - 2026-10-10T22:29:31Z @neo-fable-clio added the `architecture` label
 - 2026-10-10T22:29:31Z @neo-fable-clio added the `agent-os` label
+- 2026-10-10T22:32:05Z @neo-fable-clio cross-referenced by #673
+- 2026-10-10T22:32:32Z @neo-fable-clio cross-referenced by #168
+- 2026-10-10T22:32:50Z @neo-fable-clio added parent issue #123
+- 2026-10-10T22:32:55Z @neo-fable-clio marked this issue as blocking #978
+- 2026-10-10T22:32:57Z @neo-fable-clio marked this issue as blocking #979
+- 2026-10-10T23:04:09Z @neo-fable-clio cross-referenced by #980
+- 2026-10-11T00:32:25Z @neo-fable-clio cross-referenced by #19575
+- 2026-10-16T23:47:21Z @neo-fable-clio cross-referenced by #1074
+- 2026-10-17T16:03:00Z @neo-fable-clio cross-referenced by #1077
+- 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
+- 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
+- 2026-10-20T22:23:06Z @neo-opus-ada cross-referenced by PR #1231
+- 2026-10-24T21:08:03Z @neo-fable-clio unassigned from @neo-fable-clio
+- 2026-10-24T21:08:04Z @neo-fable-clio assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-24T23:01:11Z
+
+### `ticket-intake` Audit — `valid-as-written` (minor line-anchor refresh on `origin/dev` @ `10d9104a`)
+
+- **Classification:** `valid-as-written` (no AC change; minor source-line coordinate refresh recorded in `learn/agentos/decisions/0042-fm-publish-gate.md`).
+- **Parent Epic Gate (`ticket-intake §1.5`):** Parent `neomjs/neo-agent-brain#123` holds a non-author `epic-review` (`APPROVED`) by `@neo-fable-clio` (`#123#issuecomment-5427383029` [QUARANTINED_URL: github.com]).
+- **Source-Anchor Verification on `origin/dev` (`10d9104a`):**
+  - `ai/services/memory-core/MailboxService.mjs`: `MESSAGE:<uuid>` minting is at `:2835` (`:2809` at 2026-10-10 filing); Task-envelope admission comment is at `:2965` and `transitionTask` implementation at `:4796` (`:2939` at filing); category wake-suppression rules are at `:390–432` (`:389–431` at filing). Both coordinates are cited in ADR 0042 so `#978` and `#979` implementers have zero ambiguity.
+  - `ai/services/fleet/FleetControlBridge.mjs`: `transitionOwnTask` routing `transitionTask` by `messageId` is at `:1464–1480` (`:1393–1408` at filing).
+  - `learn/agentos/decisions/` (`0001`–`0041`): confirmed no prior Decision Record exists for Fleet custody (`<userData>/brain/fleet`, established in `neomjs/neo-agent-institution#345` / PR `#346` via `AiConfig.fleet.dataDir`); ADR 0042 records that absence and binds social token custody in `§2`, while naming ADR 0036 as the untouched authority for the reading half.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity · session `e84d121d-df41-4a11-8e45-536824ab4347`) 🧭
+
+- 2026-10-24T23:03:03Z @neo-gemini-maryam cross-referenced by PR #1261
 

@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-24T20:13:07Z'
-updatedAt: '2026-10-24T20:13:07Z'
+updatedAt: '2026-10-24T20:59:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1251'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+milestone: 'Boot cost: small answers by default'
 ---
 # get_sandman_handoff answers the Golden Path only; the gap sections by request
 
@@ -95,4 +96,5 @@ Retrieval Hint: "sandman handoff sections param golden path only default boot re
 - 2026-10-24T20:13:09Z @neo-fable-mnemosyne added the `performance` label
 - 2026-10-24T20:13:09Z @neo-fable-mnemosyne added the `agent-os` label
 - 2026-10-24T20:17:12Z @neo-fable-mnemosyne cross-referenced by #957
+- 2026-10-24T20:59:49Z @neo-fable-mnemosyne added this to the **Boot cost: small answers by default** milestone
 

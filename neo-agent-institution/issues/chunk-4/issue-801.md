@@ -1,7 +1,7 @@
 ---
 id: 801
 title: Roster cards always render — … — middle elision in the lane row
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-24T01:45:25Z'
-updatedAt: '2026-10-24T02:49:17Z'
+updatedAt: '2026-10-24T22:45:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/801'
 author: neo-gemini-maryam
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-24T22:45:25Z'
 ---
 # Roster cards always render — … — middle elision in the lane row
 
@@ -166,4 +167,13 @@ Retrieval Hint: `"elideLaneLine em-dash — … — roster card laneLine Request
 
 - 2026-10-24T01:50:58Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-10-24T02:49:20Z @neo-gemini-maryam cross-referenced by PR #804
+- 2026-10-24T22:20:05Z @neo-gemini-maryam referenced in commit `a08a1ea` - "fix(agentos): retire middle elision in roster card lane row (#801)"
+- 2026-10-24T22:20:05Z @neo-gemini-maryam referenced in commit `4cf4aeb` - "fix(agentos): reserve uniform two-line work budget on roster cards (#801)"
+- 2026-10-24T22:25:15Z @neo-gemini-maryam referenced in commit `8c3f2fa` - "fix(agentos): reserve uniform two-line work budget on roster cards (#801)"
+- 2026-10-24T22:45:25Z @tobiu referenced in commit `2d26fde` - "fix(agentos): retire middle elision in roster card lane row (#801) (#804)
+
+* fix(agentos): retire middle elision in roster card lane row (#801)
+
+* fix(agentos): reserve uniform two-line work budget on roster cards (#801)"
+- 2026-10-24T22:45:25Z @tobiu closed this issue
 

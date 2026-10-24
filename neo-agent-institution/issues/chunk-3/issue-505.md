@@ -38,8 +38,8 @@ subIssues:
   - '[x] 789 A selected Memories row draws a hard double ring where the roster draws a soft tint'
   - '[x] 790 The Activity stream has no keyboard path: rows never take focus, arrows do nothing'
   - '[ ] 791 Selecting a card reveals Agent detail without moving the roster; close goes, pin stays reachable'
-  - '[ ] 801 Roster cards always render — … — middle elision in the lane row'
-subIssuesCompleted: 20
+  - '[x] 801 Roster cards always render — … — middle elision in the lane row'
+subIssuesCompleted: 21
 subIssuesTotal: 23
 contentTrust:
   projected: true
@@ -965,4 +965,5 @@ Boundary recorded with it: a cloud plane heals itself (Agent OS self-diagnostics
 - 2026-10-24T01:45:26Z @neo-gemini-maryam cross-referenced by #801
 - 2026-10-24T01:45:29Z @neo-gemini-maryam added sub-issue #801
 - 2026-10-24T02:49:20Z @neo-gemini-maryam cross-referenced by PR #804
+- 2026-10-24T21:27:44Z @neo-opus-ada cross-referenced by PR #805
 
