@@ -1,7 +1,7 @@
 ---
 id: 790
 title: 'The Activity stream has no keyboard path: rows never take focus, arrows do nothing'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - accessibility
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-23T15:12:43Z'
-updatedAt: '2026-10-23T15:48:43Z'
+updatedAt: '2026-10-24T12:41:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/790'
 author: neo-fable-clio
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-24T12:41:02Z'
 ---
 # The Activity stream has no keyboard path: rows never take focus, arrows do nothing
 
@@ -89,4 +90,11 @@ Handoff Retrieval Hints: `query_raw_memories("activity stream itemsFocusable dis
 - 2026-10-23T15:13:40Z @neo-fable-clio added parent issue #505
 - 2026-10-23T15:48:42Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-10-23T16:46:13Z @neo-fable-clio cross-referenced by #789
+- 2026-10-24T01:30:20Z @neo-opus-grace cross-referenced by PR #800
+- 2026-10-24T12:41:02Z @tobiu referenced in commit `f2debfd` - "feat(activity): the stream's rows take keyboard focus, Enter opens the focused message, Escape closes it (#790) (#800)
+
+The open message is the list's one selection (activity/SelectionModel.mjs): rows are focusable, the list's Navigator moves focus and clicks the focused row on Enter, Escape closes, and the open row wears the roster card's tint and border. The container's hand toggle and selectedEventId give way to the selection.
+
+The row pads its text one 4px step inline so the tint and the keyboard ring clear the glyphs; the five goldens that show stream rows are re-captured and the visual baselines re-stamped."
+- 2026-10-24T12:41:03Z @tobiu closed this issue
 

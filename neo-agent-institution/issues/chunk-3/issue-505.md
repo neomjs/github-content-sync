@@ -36,10 +36,10 @@ subIssues:
   - '[x] 743 Awaiting-merge menu lacks structural FM token scope and link reset styles'
   - '[x] 788 Every engine Splitter in the cockpit wears the engine theme, not the dock''s splitter tokens'
   - '[x] 789 A selected Memories row draws a hard double ring where the roster draws a soft tint'
-  - '[ ] 790 The Activity stream has no keyboard path: rows never take focus, arrows do nothing'
+  - '[x] 790 The Activity stream has no keyboard path: rows never take focus, arrows do nothing'
   - '[ ] 791 Selecting a card reveals Agent detail without moving the roster; close goes, pin stays reachable'
   - '[ ] 801 Roster cards always render — … — middle elision in the lane row'
-subIssuesCompleted: 19
+subIssuesCompleted: 20
 subIssuesTotal: 23
 contentTrust:
   projected: true
