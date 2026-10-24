@@ -17,8 +17,12 @@ subIssues:
   - '[x] 14446 Business-engine schema: BUSINESS_GOAL/METRIC nodes + read-only probe'
   - '[ ] 113 Serving-cost measurement program: inference duty cycle + hardware-option economics (no numbers until measured)'
   - '[ ] 957 A focus section in the Sandman handoff: v1 rows, views, reach, the word'
+  - '[ ] 977 ADR 0042: the FM publish gate — request contract, custody, the switch'
+  - '[ ] 978 MailboxService: the requestPublish category and its revisioned payload'
+  - '[ ] 979 Fleet publish executor: at-most-once X/LinkedIn posting under custody'
+  - '[ ] 1253 The boot focus read: one short business focus block, first in the handoff, derived from the business dashboard'
 subIssuesCompleted: 1
-subIssuesTotal: 3
+subIssuesTotal: 7
 contentTrust:
   projected: true
   quarantined: 0
@@ -137,7 +141,7 @@ Origin Session ID: c82afc7d-dffe-400e-984d-c670b62f39dc
 
 - 2026-07-02T06:45:09Z @neo-fable-clio cross-referenced by #14446
 - 2026-07-02T06:45:20Z @neo-fable-clio added sub-issue #14446
-- 2026-07-02T08:18:06Z @neo-fable cross-referenced by #14454
+- 2026-07-02T08:18:06Z @neo-fable-mnemosyne cross-referenced by #14454
 - 2026-07-02T08:31:40Z @neo-fable-clio cross-referenced by PR #14455
 - 2026-07-02T09:23:06Z @tobiu referenced in commit `c279a0c` - "feat(ai): business-engine schema, decay shield + metric probe (#14446) (#14455)
 
@@ -163,7 +167,7 @@ Pure DI'd core (gate → measure → build → validate → append-only guard �
 
 createMetricId joined slugified parts with a single dash while parts themselves contain dashes, so distinct identities collided (git/review-latency vs git-review/latency — the cross-family-verified falsifier). The double-dash join is injective by construction: slugifyIdPart collapses runs to a single dash and strips edges, so no part can contain a double dash or edge dash, making part boundaries unambiguous. JSDoc states the invariant; both reviewer falsifier pairs are pinned as a regression test; probe-core expected ids updated."
 - 2026-07-02T09:30:04Z @neo-opus-grace cross-referenced by PR #14458
-### @neo-gpt - 2026-07-03T03:30:48Z
+### @neo-gpt-euclid - 2026-07-03T03:30:48Z
 
 ## Epic Review by @neo-gpt (Codex Desktop)
 
@@ -212,10 +216,10 @@ PASS, with one addition to keep in the epic closeout record: the metric-theater 
 Origin Session ID: 7186fa08-ba22-48eb-bc1e-84325fa26e40
 
 - 2026-07-04T01:07:26Z @neo-fable-clio cross-referenced by #14564
-- 2026-07-04T01:12:14Z @neo-fable cross-referenced by #117
-- 2026-07-04T01:13:38Z @neo-fable cross-referenced by #14569
+- 2026-07-04T01:12:14Z @neo-fable-mnemosyne cross-referenced by #117
+- 2026-07-04T01:13:38Z @neo-fable-mnemosyne cross-referenced by #14569
 - 2026-07-04T01:47:36Z @neo-opus-ada cross-referenced by #14581
-- 2026-07-04T01:56:12Z @neo-fable cross-referenced by PR #14585
+- 2026-07-04T01:56:12Z @neo-fable-mnemosyne cross-referenced by PR #14585
 - 2026-07-04T02:21:56Z @neo-opus-vega cross-referenced by #14601
 - 2026-07-04T02:23:33Z @neo-opus-vega cross-referenced by PR #14604
 - 2026-07-04T03:33:54Z @neo-opus-vega cross-referenced by #14646
@@ -262,8 +266,8 @@ genuinely awaits a claimant. Scoped the steward sentence to cornerstone
 level (Mnemosyne's recommended fallback); Resolves survives. The 12
 milestone edits + #14442 mirror are the operator-side/self-select
 post-merge item (cross-author bulk metadata writes correctly blocked)."
-- 2026-07-05T09:13:55Z @neo-gpt cross-referenced by #14841
-- 2026-07-05T09:14:24Z @neo-gpt cross-referenced by #14782
+- 2026-07-05T09:13:55Z @neo-gpt-euclid cross-referenced by #14841
+- 2026-07-05T09:14:24Z @neo-gpt-euclid cross-referenced by #14782
 - 2026-07-10T14:08:43Z @neo-opus-grace assigned to @neo-opus-grace
 ### @neo-opus-grace - 2026-07-10T14:08:45Z
 
@@ -374,7 +378,7 @@ This is a targeted refinement for Grace's steward disposition, not a lane claim.
 - 2026-07-12T13:52:42Z @neo-opus-grace cross-referenced by PR #15074
 - 2026-07-16T20:23:56Z @neo-opus-grace cross-referenced by PR #15305
 - 2026-07-16T21:20:37Z @neo-opus-grace cross-referenced by #15220
-- 2026-07-18T16:02:11Z @neo-fable cross-referenced by PR #15479
+- 2026-07-18T16:02:11Z @neo-fable-mnemosyne cross-referenced by PR #15479
 ### @neo-opus-grace - 2026-07-26T07:22:53Z
 
 ## Leaf 1 correction: the decay AC conflates node classes with edge classes — and its edge half already shipped
@@ -496,16 +500,28 @@ Correcting the A2A broadcast that carried the same claim to the swarm.
 - 2026-08-10T19:51:40Z @neo-opus-grace cross-referenced by #15490
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
 - 2026-08-26T15:14:29Z @tobiu added sub-issue #113
-- 2026-08-26T15:15:06Z @neo-fable cross-referenced by #14566
-- 2026-08-26T15:15:06Z @neo-fable cross-referenced by #14567
-- 2026-08-26T15:15:26Z @neo-fable cross-referenced by #122
+- 2026-08-26T15:15:06Z @neo-fable-mnemosyne cross-referenced by #14566
+- 2026-08-26T15:15:06Z @neo-fable-mnemosyne cross-referenced by #14567
+- 2026-08-26T15:15:26Z @neo-fable-mnemosyne cross-referenced by #122
 - 2026-08-26T15:15:57Z @tobiu added sub-issue #14446
 - 2026-08-26T15:15:57Z @tobiu added sub-issue #113
 - 2026-08-26T15:16:36Z @neo-opus-grace marked this issue as being blocked by #122
-- 2026-09-22T22:26:39Z @neo-fable cross-referenced by #19055
+- 2026-09-22T22:26:39Z @neo-fable-mnemosyne cross-referenced by #19055
 - 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
 - 2026-10-04T11:03:57Z @neo-opus-grace unassigned from @neo-opus-grace
 - 2026-10-09T21:29:22Z @neo-fable-clio cross-referenced by #957
 - 2026-10-09T21:32:59Z @neo-fable-clio added sub-issue #957
 - 2026-10-09T22:07:37Z @neo-opus-vega cross-referenced by #651
+- 2026-10-10T22:26:34Z @neo-fable-clio cross-referenced by #19575
+- 2026-10-10T22:29:30Z @neo-fable-clio cross-referenced by #977
+- 2026-10-10T22:30:06Z @neo-fable-clio cross-referenced by #978
+- 2026-10-10T22:30:45Z @neo-fable-clio cross-referenced by #979
+- 2026-10-10T22:32:50Z @neo-fable-clio added sub-issue #977
+- 2026-10-10T22:32:52Z @neo-fable-clio added sub-issue #978
+- 2026-10-10T22:32:54Z @neo-fable-clio added sub-issue #979
+- 2026-10-24T20:13:08Z @neo-fable-mnemosyne cross-referenced by #1251
+- 2026-10-24T20:13:45Z @neo-fable-mnemosyne cross-referenced by #1252
+- 2026-10-24T20:14:41Z @neo-fable-mnemosyne cross-referenced by #1253
+- 2026-10-24T20:15:15Z @neo-fable-mnemosyne cross-referenced by #1254
+- 2026-10-24T20:16:14Z @neo-fable-mnemosyne added sub-issue #1253
 
