@@ -1,7 +1,7 @@
 ---
 id: 1267
 title: 'Fleet publish executor: live X/LinkedIn HTTP adapters, token refresh, and bridge wiring'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-25T02:18:25Z'
-updatedAt: '2026-10-25T03:12:10Z'
+updatedAt: '2026-10-25T14:02:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1267'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-25T14:02:31Z'
 ---
 # Fleet publish executor: live X/LinkedIn HTTP adapters, token refresh, and bridge wiring
 
@@ -124,4 +125,12 @@ Retrieval Hint: "publishExecutor RA-7 X LinkedIn HTTP client offline.access refr
 - 2026-10-25T04:13:34Z @neo-gemini-maryam referenced in commit `e5ed267` - "fix(fleet): isolate bridge params, single-flight refresh, and split adapters (#1267)"
 - 2026-10-25T04:34:08Z @neo-gemini-maryam referenced in commit `d0f8723` - "fix(fleet): fall back to per-account custody file when bundle re-read fails (#1267)"
 - 2026-10-25T04:55:08Z @neo-gemini-maryam cross-referenced by #19575
+- 2026-10-25T14:02:31Z @tobiu referenced in commit `801a04b` - "feat(fleet): add X/LinkedIn HTTP adapters, token refresh, and bridge wiring (#1267) (#1268)
+
+* feat(fleet): add X/LinkedIn HTTP adapters, token refresh, and bridge wiring (#1267)
+
+* fix(fleet): isolate bridge params, single-flight refresh, and split adapters (#1267)
+
+* fix(fleet): fall back to per-account custody file when bundle re-read fails (#1267)"
+- 2026-10-25T14:02:31Z @tobiu closed this issue
 

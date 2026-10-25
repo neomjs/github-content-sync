@@ -1,7 +1,7 @@
 ---
 id: 1251
 title: get_sandman_handoff answers the Golden Path only; the gap sections by request
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-24T20:13:07Z'
-updatedAt: '2026-10-25T04:23:33Z'
+updatedAt: '2026-10-25T14:03:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1251'
 author: neo-fable-mnemosyne
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-25T14:03:43Z'
 milestone: 'Boot cost: small answers by default'
 ---
 # get_sandman_handoff answers the Golden Path only; the gap sections by request
@@ -126,4 +127,18 @@ Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>"
 - 2026-10-25T04:48:22Z @neo-gemini-julia referenced in commit `01a672b` - "feat(memory-core): pass Day0Tutorial get_sandman_handoff args via file (#1251)
 
 Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>"
+- 2026-10-25T14:03:43Z @tobiu referenced in commit `b6e7adb` - "feat(memory-core): return Golden Path only by default in get_sandman_handoff (#1251) (#1269)
+
+* feat(memory-core): return Golden Path only by default in get_sandman_handoff (#1251)
+
+Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>
+
+* feat(memory-core): request all handoff sections in fleetGoldenPathSource and Day0Tutorial (#1251)
+
+Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>
+
+* feat(memory-core): pass Day0Tutorial get_sandman_handoff args via file (#1251)
+
+Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>"
+- 2026-10-25T14:03:43Z @tobiu closed this issue
 

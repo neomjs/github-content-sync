@@ -1,7 +1,7 @@
 ---
 id: 673
 title: The operator's inbox renders a publish request and holds the gate switch
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-10T22:32:04Z'
-updatedAt: '2026-10-25T06:38:26Z'
+updatedAt: '2026-10-25T15:19:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/673'
 author: neo-fable-clio
 commentsCount: 2
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-25T15:19:55Z'
 ---
 # The operator's inbox renders a publish request and holds the gate switch
 
@@ -173,4 +174,17 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session `e84d121d-df41-4a11-8e
 - 2026-10-25T05:15:39Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-10-25T06:22:50Z @neo-gemini-maryam cross-referenced by PR #809
 - 2026-10-25T06:27:47Z @neo-gemini-maryam referenced in commit `b350326` - "chore(agentos): remove ticket archaeology refs from source comments (#673)"
+- 2026-10-25T14:39:58Z @neo-gemini-maryam referenced in commit `bb0e0d8` - "fix(agentos): size publish card and switch strip to container width (#673)"
+- 2026-10-25T14:45:08Z @neo-gemini-maryam referenced in commit `95e7f8b` - "chore(agentos): refresh visual baseline input stamp (#673)"
+- 2026-10-25T15:17:35Z @neo-gemini-maryam cross-referenced by PR #1273
+- 2026-10-25T15:19:54Z @tobiu referenced in commit `3898cc9` - "feat(agentos): render operator inbox publish request card and gate switch (#673) (#809)
+
+* feat(agentos): render operator inbox publish request card and gate switch (#673)
+
+* chore(agentos): remove ticket archaeology refs from source comments (#673)
+
+* fix(agentos): size publish card and switch strip to container width (#673)
+
+* chore(agentos): refresh visual baseline input stamp (#673)"
+- 2026-10-25T15:19:55Z @tobiu closed this issue
 

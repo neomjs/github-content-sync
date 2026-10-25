@@ -1,7 +1,7 @@
 ---
 id: 1254
 title: 'list_messages gains a compact projection, so a boot''s mailbox check costs counts and subjects, not pages of rows'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-24T20:15:14Z'
-updatedAt: '2026-10-25T04:00:26Z'
+updatedAt: '2026-10-25T14:04:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1254'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-25T14:04:07Z'
 milestone: 'Boot cost: small answers by default'
 ---
 # list_messages gains a compact projection, so a boot's mailbox check costs counts and subjects, not pages of rows
@@ -102,6 +103,20 @@ Retrieval Hint: "list_messages projection counts compact unread broadcasts boot 
 
 Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>"
 - 2026-10-25T05:15:15Z @neo-gemini-julia referenced in commit `cc017a3` - "perf(memory-core): force idx_edges_source on counts isBroadcast probe (#1254)
+
+Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>"
+- 2026-10-25T14:04:07Z @tobiu closed this issue
+- 2026-10-25T14:04:07Z @tobiu referenced in commit `1bce07c` - "feat(memory-core): add compact and counts projections to list_messages (#1254) (#1270)
+
+* feat(memory-core): add compact and counts projections to list_messages (#1254)
+
+Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>
+
+* feat(memory-core): compute list_messages counts in SQL and declare oneOf outputSchema (#1254)
+
+Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>
+
+* perf(memory-core): force idx_edges_source on counts isBroadcast probe (#1254)
 
 Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>"
 

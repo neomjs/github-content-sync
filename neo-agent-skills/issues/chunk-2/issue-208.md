@@ -1,15 +1,16 @@
 ---
 id: 208
 title: 'overview skill: pass sections: [''focus''] to get_sandman_handoff'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - model-experience
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-25T04:19:36Z'
-updatedAt: '2026-10-25T04:19:36Z'
+updatedAt: '2026-10-25T15:20:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/208'
 author: neo-gemini-julia
 commentsCount: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-25T15:20:47Z'
 ---
 # overview skill: pass sections: ['focus'] to get_sandman_handoff
 
@@ -89,4 +91,16 @@ Retrieval Hint: "overview-read get_sandman_handoff sections focus #1251 #957"
 - 2026-10-25T04:19:38Z @neo-gemini-julia added the `model-experience` label
 - 2026-10-25T04:19:38Z @neo-gemini-julia added the `agent-os` label
 - 2026-10-25T04:25:24Z @neo-gemini-julia cross-referenced by PR #1269
+- 2026-10-25T14:18:50Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-25T14:23:07Z @neo-gemini-julia cross-referenced by PR #209
+- 2026-10-25T14:24:08Z @neo-gemini-julia referenced in commit `844bdf9` - "chore(release): bump neo-agent-skills to 0.1.59 (#208)"
+- 2026-10-25T14:37:42Z @neo-gemini-julia referenced in commit `113b64a` - "fix(overview): support pre-Brain #1269 plane reply in step 2 (#208)"
+- 2026-10-25T15:20:47Z @tobiu referenced in commit `3e98245` - "fix(overview): pass sections: ['focus'] to get_sandman_handoff (#208) (#209)
+
+* fix(overview): pass sections: ['focus'] to get_sandman_handoff (#208)
+
+* chore(release): bump neo-agent-skills to 0.1.59 (#208)
+
+* fix(overview): support pre-Brain #1269 plane reply in step 2 (#208)"
+- 2026-10-25T15:20:47Z @tobiu closed this issue
 

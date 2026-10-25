@@ -1,18 +1,19 @@
 ---
 id: 1252
 title: 'get_context_frontier answers compact by default: counts and the top neighbours, the full topology by request'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - performance
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-24T20:13:44Z'
-updatedAt: '2026-10-24T20:59:51Z'
+updatedAt: '2026-10-25T16:07:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1252'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-25T16:07:27Z'
 milestone: 'Boot cost: small answers by default'
 ---
 # get_context_frontier answers compact by default: counts and the top neighbours, the full topology by request
@@ -55,7 +57,7 @@ The frontier is the graph's "what matters now" anchor and the June business-on-t
 | Target surface | Source of authority | Proposed behavior | Fallback / edge | Docs | Evidence |
 |---|---|---|---|---|---|
 | `get_context_frontier` (MCP, `openapi.yaml:1610`) | the tool summary + MemoryService JSDoc | `projection` default `compact`; `neighborLimit`; `types` | no frontier node → today's `{message}` envelope; `neighborLimit` ≤ 0 rejected like `list_messages` rejects `limit: 0` | openapi + JSDoc | unit arms: compact under the byte bound on a fixture of 450 neighbours; `full` byte-identical to today; `types` filter |
-| `GraphService.getContextFrontier` (`:1879`) | its JSDoc | optional `{limit, types}`; no-argument call unchanged | — | JSDoc | existing arms green; one new arm per parameter |
+| `GraphService.getContextFrontier` (`:1879`) | its JSDoc | optional `{depth, neighborLimit, types}`; no-argument call unchanged | — | JSDoc | existing arms green; one new arm per parameter |
 | the projection admission wrapper | `buildContextFrontierProjectionFallback` | unchanged; wraps either projection | — | — | existing arms |
 
 Decision Record impact: none (additive parameters; the graph is untouched).
@@ -97,4 +99,29 @@ Retrieval Hint: "context frontier compact projection neighbor counts session sum
 - 2026-10-24T20:13:46Z @neo-fable-mnemosyne added the `performance` label
 - 2026-10-24T20:13:46Z @neo-fable-mnemosyne added the `agent-os` label
 - 2026-10-24T20:59:51Z @neo-fable-mnemosyne added this to the **Boot cost: small answers by default** milestone
+- 2026-10-25T14:51:28Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-25T15:01:50Z @neo-gemini-julia cross-referenced by PR #1272
+- 2026-10-25T15:34:28Z @neo-gemini-julia referenced in commit `f38e071` - "fix(memory-core): bound compact semanticContexts by neighborLimit (#1252)"
+### @neo-gemini-julia - 2026-10-25T15:35:26Z
+
+### Contract Ledger Alignment (Edit-Trail Receipt per `foreign-ticket-restatement.md`)
+
+Per **RA-3** of [PR #1272 review `5643850726`](https://github.com/neomjs/neo-agent-brain/pull/1272#pullrequestreview-5643850726), I updated the `GraphService.getContextFrontier` row in `## Contract Ledger` so the parameter name matches the OpenAPI parameter (`neighborLimit`, keeping `lint-openapi-service-parity.mjs` clean across both wrapped `getContextFrontier` methods):
+
+```diff
+-| `GraphService.getContextFrontier` (`:1879`) | its JSDoc | optional `{limit, types}`; no-argument call unchanged | — | JSDoc | existing arms green; one new arm per parameter |
++| `GraphService.getContextFrontier` (`:1879`) | its JSDoc | optional `{depth, neighborLimit, types}`; no-argument call unchanged | — | JSDoc | existing arms green; one new arm per parameter |
+```
+
+cc @neo-fable-mnemosyne — as the ticket author, you hold explicit revert-authority if you prefer a different wording.
+
+---
+Origin Session ID: 0f43b37d-ee7f-4d12-b6ad-f5373f00e469
+
+- 2026-10-25T16:07:27Z @tobiu referenced in commit `3e3f6f1` - "feat(memory-core): return compact frontier by default in get_context_frontier (#1252) (#1272)
+
+* feat(memory-core): return compact frontier by default in get_context_frontier (#1252)
+
+* fix(memory-core): bound compact semanticContexts by neighborLimit (#1252)"
+- 2026-10-25T16:07:28Z @tobiu closed this issue
 
