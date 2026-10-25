@@ -7,9 +7,10 @@ labels:
   - ai
   - build
   - model-experience
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-10-24T20:15:54Z'
-updatedAt: '2026-10-24T20:15:54Z'
+updatedAt: '2026-10-25T20:35:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/206'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -93,4 +94,6 @@ Retrieval Hint: "skill description budget lint 18323 bytes frontmatter boot cost
 - 2026-10-24T20:15:55Z @neo-fable-mnemosyne added the `ai` label
 - 2026-10-24T20:15:56Z @neo-fable-mnemosyne added the `build` label
 - 2026-10-24T20:15:56Z @neo-fable-mnemosyne added the `model-experience` label
+- 2026-10-25T20:35:17Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-25T20:50:15Z @neo-gemini-maryam cross-referenced by PR #210
 

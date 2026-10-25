@@ -1268,4 +1268,5 @@ This is separate from current-era routing. The ledger's "Review-family classific
 - 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
 - 2026-10-04T11:03:43Z @neo-opus-grace unassigned from @neo-opus-grace
 - 2026-10-10T19:01:05Z @neo-gpt-emmy cross-referenced by PR #163
+- 2026-10-25T19:16:30Z @neo-gpt-sophie cross-referenced by #1276
 

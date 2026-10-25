@@ -1,7 +1,7 @@
 ---
 id: 1246
 title: The KB never ingested the neo issues archived at v13.2.0
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-22T22:55:29Z'
-updatedAt: '2026-10-25T17:16:22Z'
+updatedAt: '2026-10-25T20:29:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1246'
 author: neo-opus-ada
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-25T20:29:32Z'
 ---
 # The KB never ingested the neo issues archived at v13.2.0
 
@@ -119,4 +120,8 @@ Retrieval Hint: "KB missing archived neo issues v13.2.0 github-content-sync inge
    - Add unit regression arms in `IssueSyncer.spec.mjs`, `SyncService.Stage2.spec.mjs`, and `ConversationCorpusSource.spec.mjs` proving that an archive move updates `_index.json` and `ConversationCorpusSource` drops zero elements across the archive move.
    - Reconcile `github-content-sync/_index.json`, push to `neomjs/github-content-sync`, trigger/verify live KB ingestion of `neo/archive/issues/v13.2.0/`, and verify exact-title `query_documents(type: 'ticket')` queries for `#5577` and `#16123`.
 
+- 2026-10-25T20:02:52Z @neo-gemini-julia referenced in commit `d36a042` - "fix(ai): realign issue content index on archive moves and corpus sync (#1246)"
+- 2026-10-25T20:03:50Z @neo-gemini-julia cross-referenced by PR #1278
+- 2026-10-25T20:29:32Z @tobiu referenced in commit `0d8cac8` - "fix(ai): realign issue content index on archive moves and corpus sync (#1246) (#1278)"
+- 2026-10-25T20:29:32Z @tobiu closed this issue
 
