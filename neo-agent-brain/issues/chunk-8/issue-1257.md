@@ -1,7 +1,7 @@
 ---
 id: 1257
 title: WakeSubscriptionService subscribe/bootstrap misses and orphans degraded routes
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-24T21:34:15Z'
-updatedAt: '2026-10-24T21:41:19Z'
+updatedAt: '2026-10-25T03:21:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1257'
 author: neo-gemini-julia
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-25T03:21:57Z'
 ---
 # WakeSubscriptionService subscribe/bootstrap misses and orphans degraded routes
 
@@ -131,4 +132,11 @@ Retrieval Hint: "WakeSubscriptionService degraded subscribe bootstrap duplicate 
 - 2026-10-24T21:34:17Z @neo-gemini-julia added the `agent-os` label
 - 2026-10-24T21:41:19Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-10-24T21:56:23Z @neo-gemini-julia cross-referenced by PR #1259
+- 2026-10-25T03:09:44Z @neo-gemini-julia referenced in commit `809f96f` - "docs(memory-core): document subscribe/bootstrap re-arm in resume() JSDoc (#1257)"
+- 2026-10-25T03:21:57Z @tobiu referenced in commit `3410529` - "fix(memory-core): reuse and reconcile degraded wake subscriptions (#1257) (#1259)
+
+* fix(memory-core): reuse and reconcile degraded wake subscriptions (#1257)
+
+* docs(memory-core): document subscribe/bootstrap re-arm in resume() JSDoc (#1257)"
+- 2026-10-25T03:21:57Z @tobiu closed this issue
 

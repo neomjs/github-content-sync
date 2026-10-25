@@ -1,7 +1,7 @@
 ---
 id: 978
 title: 'MailboxService: the requestPublish category and its revisioned payload'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-10T22:30:04Z'
-updatedAt: '2026-10-24T23:15:16Z'
+updatedAt: '2026-10-25T02:41:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/978'
 author: neo-fable-clio
 commentsCount: 1
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 977 ADR 0042: the FM publish gate — request contract, custody, the switch'
 blocking: []
+closedAt: '2026-10-25T02:41:08Z'
 ---
 # MailboxService: the requestPublish category and its revisioned payload
 
@@ -124,4 +125,17 @@ Retrieval Hint: "requestPublish mailbox category revision digest publication sta
 - 2026-10-25T00:32:32Z @neo-gemini-maryam cross-referenced by PR #1263
 - 2026-10-25T00:35:38Z @neo-gemini-maryam referenced in commit `e757f6f` - "fix(mailbox): resolve operator recipient authority from graph node (#978)"
 - 2026-10-25T01:03:54Z @neo-gemini-maryam referenced in commit `77f2098` - "fix(memory-core): declare nullable on RequestPublishAttestationInput schema (#978)"
+- 2026-10-25T01:19:45Z @neo-gemini-maryam cross-referenced by PR #1264
+- 2026-10-25T01:31:53Z @neo-gemini-maryam referenced in commit `b9ea721` - "feat(mailbox): gate transitionPublishState to operator and terminal Task guard (#978)"
+- 2026-10-25T02:41:08Z @tobiu referenced in commit `75b015f` - "feat(mailbox): implement requestPublish category, revision digest, and publication state (#978) (#1263)
+
+* feat(mailbox): implement requestPublish category, revision digest, and publication state (#978)
+
+* fix(mailbox): resolve operator recipient authority from graph node (#978)
+
+* fix(memory-core): declare nullable on RequestPublishAttestationInput schema (#978)
+
+* feat(mailbox): gate transitionPublishState to operator and terminal Task guard (#978)"
+- 2026-10-25T02:41:08Z @tobiu closed this issue
+- 2026-10-25T04:55:08Z @neo-gemini-maryam cross-referenced by #19575
 

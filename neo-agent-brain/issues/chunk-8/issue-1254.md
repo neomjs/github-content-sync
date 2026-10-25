@@ -7,9 +7,10 @@ labels:
   - ai
   - performance
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-24T20:15:14Z'
-updatedAt: '2026-10-24T20:59:55Z'
+updatedAt: '2026-10-25T04:00:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1254'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -95,4 +96,12 @@ Retrieval Hint: "list_messages projection counts compact unread broadcasts boot 
 - 2026-10-24T20:15:16Z @neo-fable-mnemosyne added the `performance` label
 - 2026-10-24T20:15:17Z @neo-fable-mnemosyne added the `agent-os` label
 - 2026-10-24T20:59:55Z @neo-fable-mnemosyne added this to the **Boot cost: small answers by default** milestone
+- 2026-10-25T04:00:27Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-25T04:15:08Z @neo-gemini-julia cross-referenced by PR #1270
+- 2026-10-25T04:54:46Z @neo-gemini-julia referenced in commit `dad0442` - "feat(memory-core): compute list_messages counts in SQL and declare oneOf outputSchema (#1254)
+
+Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>"
+- 2026-10-25T05:15:15Z @neo-gemini-julia referenced in commit `cc017a3` - "perf(memory-core): force idx_edges_source on counts isBroadcast probe (#1254)
+
+Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>"
 

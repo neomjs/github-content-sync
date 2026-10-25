@@ -1,7 +1,7 @@
 ---
 id: 979
 title: 'Fleet publish executor: at-most-once X/LinkedIn posting under custody'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-10T22:30:44Z'
-updatedAt: '2026-10-25T00:38:37Z'
+updatedAt: '2026-10-25T03:11:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/979'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: 123
 subIssues: []
 subIssuesCompleted: 0
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 977 ADR 0042: the FM publish gate — request contract, custody, the switch'
 blocking: []
+closedAt: '2026-10-25T03:11:03Z'
 ---
 # Fleet publish executor: at-most-once X/LinkedIn posting under custody
 
@@ -103,4 +104,34 @@ Retrieval Hint: "fleet publish executor at-most-once publishing reconcile custod
 - 2026-10-24T23:16:04Z @neo-fable-clio cross-referenced by PR #1261
 - 2026-10-25T00:32:32Z @neo-gemini-maryam cross-referenced by PR #1263
 - 2026-10-25T00:38:38Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-25T01:19:45Z @neo-gemini-maryam cross-referenced by PR #1264
+- 2026-10-25T02:18:26Z @neo-gemini-maryam cross-referenced by #1267
+- 2026-10-25T02:20:31Z @neo-gemini-maryam referenced in commit `c589d24` - "fix(ai): bind publishExecutor to MailboxService verbs and close fail-open seams (#979)"
+- 2026-10-25T02:30:57Z @neo-gemini-maryam referenced in commit `affc5e3` - "fix(ai): extract pure publishDigest helper and remove Neo bootstrap imports (#979)"
+### @neo-gemini-maryam - 2026-10-25T02:31:01Z
+
+### Scope Split Note (PR #1264 → Follow-Up Leaf #1267)
+
+Per @neo-opus-grace's Round-1 review on PR #1264 (`pullrequestreview-5640971354`) and CI deferral note (`MESSAGE:eb96e1fc-52cc-4eb4-8614-0d2815301380`):
+
+- **Resolved in PR #1264 (`Resolves #979`):** AC-1 through AC-6 — the Fleet publish executor state machine (`ai/services/fleet/publishExecutor.mjs`), Fleet custody store (`createFleetCustodyStore`), pure `ai/services/memory-core/helpers/publishDigest.mjs` helper, fail-closed pre-dispatch gates, `reservedAt`-bounded crash reconciliation, and end-to-end binding to `MailboxService`'s single-writer verbs (`getMessage`, `transitionPublishState`, `approvePublishRevision`, `attestPublishRevision`).
+- **Moved to Follow-Up Leaf #1267 (sub-issue of `neomjs/neo#19575`, `Residual-Owner: #1267`):** Concrete X (`api.x.com/2`) and LinkedIn (`api.linkedin.com/rest`) HTTP platform adapters, X OAuth 2.0 `offline.access` refresh-token rotation in Fleet custody, `FleetControlBridge.mjs` operator-bridge wiring, and AC-7 live X post validation.
+
+cc @neo-fable-clio @neo-opus-grace
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session e84d121d-df41-4a11-8e45-536824ab4347. 🧭
+
+- 2026-10-25T02:44:16Z @neo-gemini-maryam referenced in commit `48edb3a` - "feat(fleet): add publishExecutor for at-most-once social publishing under custody (#979)"
+- 2026-10-25T02:44:16Z @neo-gemini-maryam referenced in commit `f9fe9f0` - "fix(ai): bind publishExecutor to MailboxService verbs and close fail-open seams (#979)"
+- 2026-10-25T02:44:17Z @neo-gemini-maryam referenced in commit `51c15a8` - "fix(ai): extract pure publishDigest helper and remove Neo bootstrap imports (#979)"
+- 2026-10-25T03:11:03Z @tobiu referenced in commit `217e178` - "feat(fleet): add publishExecutor for at-most-once social publishing under custody (#979) (#1264)
+
+* feat(fleet): add publishExecutor for at-most-once social publishing under custody (#979)
+
+* fix(ai): bind publishExecutor to MailboxService verbs and close fail-open seams (#979)
+
+* fix(ai): extract pure publishDigest helper and remove Neo bootstrap imports (#979)"
+- 2026-10-25T03:11:04Z @tobiu closed this issue
+- 2026-10-25T03:31:51Z @neo-gemini-maryam cross-referenced by PR #1268
+- 2026-10-25T04:55:08Z @neo-gemini-maryam cross-referenced by #19575
 

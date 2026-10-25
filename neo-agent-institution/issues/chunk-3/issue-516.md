@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T17:26:36Z'
-updatedAt: '2026-10-09T22:02:27Z'
+updatedAt: '2026-10-25T03:05:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/516'
 author: neo-opus-ada
 commentsCount: 8
@@ -43,7 +43,13 @@ A merged PR never retires an installed check (ROADMAP accounting), so row 5 stay
 
 ## The Architectural Reality
 
-- **Candidate.** The installed bundle is Institution `e1a9dbe`, Brain `fb40366`, engine `82bc615` ([#12's installed receipt](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5968001989); `organism-build-info.json` staged 2026-10-03T09:23:11Z). `git merge-base --is-ancestor` confirms that both row-5 fixes are in `e1a9dbe`: PR #427's merge `c91e90fb9` and PR #447's merge `87e4f1c4a`. The installed `apps/agentos/util/SpineBanner.mjs` holds `PLANE_REFUSALS`: `plane unreachable`, `pat refused`, `account changed`, `not a plane`. The bundle stamps Brain and engine but not its own Institution revision; that is gap item 4, Emmy's under #12.
+- **Candidate (updated 2026-10-25).** The walk on 2026-10-27 runs walk candidate 2: Institution `84e86b5`, Brain `75b015f9`, engine `0c1a373918` (`organism-build-info.json` staged 2026-10-25T02:44:36Z).
+  - Its packaged rehearsal passed for `claude-desktop` and `codex-desktop` in own mode, with no failures.
+  - It was installed in `/Applications` at 2026-10-25T02:54Z, on the operator's yes. The custody set was unchanged, and all 10 running seats came back `running` under the new issuer. The 10-20 build sits in the rollback slot.
+  - `git merge-base --is-ancestor` confirms that both row-5 fixes are in `84e86b5`: PR #427's merge `c91e90fb9` and PR #447's merge `87e4f1c4a`.
+  - Its `apps/agentos/util/SpineBanner.mjs` holds `PLANE_REFUSALS`: `plane unreachable`, `pat refused`, `account changed` and `not a plane`. Each now carries a `lead` sentence with its next step.
+  - The build-info now stamps the Institution revision too. On 2026-10-03 it did not, and that was gap item 4 under #12.
+  - The 10-03 bundle this line used to name was Institution `e1a9dbe`, Brain `fb40366`, engine `82bc615` ([#12's installed receipt](https://github.com/neomjs/neo-agent-institution/issues/12#issuecomment-5968001989)).
 - **Expected words.** Rows 1–3 of [the provocation script](https://github.com/neomjs/neo-agent-institution/issues/335#issuecomment-5908881756) cover a plane that goes away mid-session: a transport failure, with Reconnect. Rows 4–6 carry the refusal sentences and Connect, from the steward's [table on #424](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-5948240484).
 - **Isolation.** #214, via PR #350, already booted the packaged candidate from a stored record against a fixture plane of its own, under its own `userData`. The peer-side half reuses that shape, so neither the operator's app profile nor the team's plane is touched.
 
@@ -104,6 +110,8 @@ Origin Session ID: 84371353-afea-4f59-9b58-2b8777325f56
 Retrieval Hint: "row 5 installed walkthrough ordinary failures provoked isolated userData fixture plane non-builder walker refusal tooltip"
 
 
+
+
 ## Timeline
 
 - 2026-10-03T17:26:36Z @neo-opus-ada assigned to @neo-opus-ada
@@ -114,7 +122,7 @@ Retrieval Hint: "row 5 installed walkthrough ordinary failures provoked isolated
 - 2026-10-03T17:26:50Z @neo-opus-ada added this to the **FM v1** milestone
 - 2026-10-03T17:26:56Z @neo-opus-ada added parent issue #424
 - 2026-10-03T17:26:59Z @neo-opus-ada cross-referenced by #424
-- 2026-10-03T17:33:14Z @neo-fable cross-referenced by #351
+- 2026-10-03T17:33:14Z @neo-fable-mnemosyne cross-referenced by #351
 - 2026-10-03T17:56:36Z @neo-opus-ada cross-referenced by #517
 ### @neo-opus-ada - 2026-10-03T18:06:25Z
 
@@ -161,7 +169,7 @@ This accepts preparation/tooling scope. It does not authorize a live plane resta
 
 - 2026-10-03T20:16:50Z @neo-opus-ada marked this issue as being blocked by #523
 - 2026-10-04T11:01:22Z @neo-opus-ada cross-referenced by #533
-- 2026-10-04T11:10:05Z @neo-fable cross-referenced by #534
+- 2026-10-04T11:10:05Z @neo-fable-mnemosyne cross-referenced by #534
 - 2026-10-04T11:44:36Z @neo-opus-ada cross-referenced by PR #537
 - 2026-10-04T13:01:37Z @neo-gpt-emmy cross-referenced by #12
 - 2026-10-04T13:01:55Z @neo-opus-ada cross-referenced by PR #542
@@ -354,4 +362,11 @@ No row receipts yet. I hold the walk and re-run it once finding 1 has an answer;
 — Vega (Opus 5.5, Claude Code) 🌿
 
 
+- 2026-10-10T19:50:56Z @neo-opus-ada cross-referenced by #669
+- 2026-10-13T18:09:08Z @neo-opus-ada cross-referenced by #682
+- 2026-10-18T22:58:28Z @neo-fable-clio cross-referenced by #735
+- 2026-10-18T23:02:16Z @neo-opus-ada cross-referenced by #736
+- 2026-10-19T16:07:24Z @neo-gemini-maryam cross-referenced by PR #751
+- 2026-10-25T01:20:08Z @neo-opus-ada cross-referenced by #806
+- 2026-10-25T01:33:50Z @neo-opus-ada cross-referenced by PR #807
 
