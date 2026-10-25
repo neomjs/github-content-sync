@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-10-07T16:24:22Z'
+updatedAt: '2026-10-25T18:32:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
 commentsCount: 7
@@ -22,8 +22,9 @@ subIssues:
   - '[x] 523 A walker can hold smoke''s isolated organism open and drive its plane'
   - '[x] 533 A non-live banner shows its reason beside the pill, not only on hover'
   - '[x] 735 At login, a plane that answers after the FM''s boot is never attached'
-subIssuesCompleted: 6
-subIssuesTotal: 7
+  - '[x] 812 A held walk run boots live and cleans up its sealed runtime store'
+subIssuesCompleted: 7
+subIssuesTotal: 8
 contentTrust:
   projected: true
   quarantined: 0
@@ -36,7 +37,7 @@ milestone: FM v1
 
 Terminal predicate: on one installed Fleet Manager, each failure FM v1 ROADMAP row 5 names is provoked, and the product returns to `live` by its own guidance alone, with one receipt per failure. The failures are: the plane restarts, the plane is cut to a new Brain commit, the vessel is updated, the saved plane goes stale, the PAT expires or is wrong, the endpoint is wrong. This is row 5's installed check, recorded once.
 
-Row state: row 5 · Ada (walker Vega, accepted 10-05; Euclid alternate) · ready · 2026-10-07 16:25Z, candidate C is built and installed: Institution `85d52828` (tree-equal to `dev` `3b68995f`) / Brain `a8dd1ae4` / engine `82bc6158`, artifact SHA-256 `cd01c251…` (#516: 6042123621) · plan: planned 3 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S · done 2 · added 1 (denominator sitting 2026-10-04: 5978785003 + 5978806870) · depends on: Vega's isolated held-run walk on C (#516: 5981942004 + 6042123621); row 2's cold frames (#477); one operator slot · forecast: passed by 2026-10-11 if the walk runs by 10-09 and the operator slot lands by 10-11 · next: the walk → Vega; the slot → @tobiu
+Row state: row 5 · Ada (walker Vega, Tue Oct 27; Euclid alternate) · ready · 2026-10-25 19:3x CET, walk candidate 3 (Institution `ee6ab02` / Brain `3c4f227` / engine `0eb2229acf`, SHA-256 `ab5072ac…`, installed 18:30Z): the peer-side walk starts from the held run's own baseline. That baseline reads `fleet degraded` because the PR-lane activity slot finds no synced content tree (`ENOENT`), not because of the plane, and the banner ranks row 5's failures above it; the connect card's refusals keep the plane, so no Connect is needed (#516: 6400333196, corrected 18:0x CET) · plan: planned 4 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S, #812 S · done 2 · added 2 (denominator sitting 2026-10-04: 5978785003 + 5978806870; #812 on 2026-10-25) · depends on: Vega's walk; one operator slot for the `[human]` half, which witnesses the return to `live` on the real plane · forecast: passed by Fri 2026-10-30 if the walk runs Tue 10-27 and the operator slot follows · next: the walk → Vega; #812's review → a cross-family reviewer
 
 ## Problem scope
 
@@ -83,6 +84,7 @@ Origin Session ID: 6f7d14a3-e126-4b47-888f-fc28c748ae83
 Retrieval Hint: "FM v1 row 5 ordinary recovery plane restart stale saved plane expired PAT product guidance"
 
 ⚖️ Ada (Claude Opus 5.5, Claude Code)
+
 
 
 
@@ -303,4 +305,7 @@ The `Row state:` line is updated to match.
 - 2026-10-18T22:59:28Z @neo-fable-clio cross-referenced by #734
 - 2026-10-18T23:02:16Z @neo-opus-ada cross-referenced by #736
 - 2026-10-19T16:07:24Z @neo-gemini-maryam cross-referenced by PR #751
+- 2026-10-25T16:28:24Z @neo-opus-ada cross-referenced by #812
+- 2026-10-25T16:28:34Z @neo-opus-ada added sub-issue #812
+- 2026-10-25T17:21:02Z @neo-opus-ada cross-referenced by #814
 

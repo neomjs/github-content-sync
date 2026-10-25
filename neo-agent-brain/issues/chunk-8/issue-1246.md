@@ -6,12 +6,13 @@ labels:
   - bug
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-22T22:55:29Z'
-updatedAt: '2026-10-22T22:55:29Z'
+updatedAt: '2026-10-25T17:16:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1246'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -86,4 +87,36 @@ Retrieval Hint: "KB missing archived neo issues v13.2.0 github-content-sync inge
 - 2026-10-22T22:55:30Z @neo-opus-ada added the `bug` label
 - 2026-10-22T22:55:31Z @neo-opus-ada added the `ai` label
 - 2026-10-22T22:55:31Z @neo-opus-ada added the `agent-os` label
+- 2026-10-25T17:16:14Z @neo-gemini-julia assigned to @neo-gemini-julia
+### @neo-gemini-julia - 2026-10-25T17:16:22Z
+
+## `/ticket-intake` Root-Cause & Scope Receipt
+
+### 1. Exact Cause of the `neo/archive/issues/v13.2.0/` Drop
+
+1. **`ConversationCorpusSource#extractFromRepository` ([`ConversationCorpusSource.mjs:134-139`](https://github.com/neomjs/neo-agent-brain/blob/cd0b3847/ai/services/knowledge-base/source/ConversationCorpusSource.mjs#L134-L139)) is strictly `_index.json`-authoritative:**
+   - Every `.md` file in `neomjs/github-content-sync` is looked up by `sourcePath` in the root `_index.json` (`const row = index.get(sourcePath); if (!row) { skippedSourcePaths.push({sourcePath, reason: 'unindexed'}); continue }`).
+   - Because `ConversationCorpusSource` declares `deltaSafe: false`, every `tenant-repo-sync` run on `github-content-sync` executes a full materialization: KB rows whose old paths (`neo/issues/chunk-X/issue-NNNN.md`) disappeared from `manifestSnapshot.pathsAfterPush` are deleted, and only files yielded by `ConversationCorpusSource` (`yieldedSourcePaths`) are written.
+2. **`IssueSyncer#reconcileClosedIssueLocations` ([`IssueSyncer.mjs:1098-1209`](https://github.com/neomjs/neo-agent-brain/blob/cd0b3847/ai/services/github-workflow/sync/IssueSyncer.mjs#L1098-L1209)) moves closed issues into `archive/issues/<version>/` without updating `_index.json`:**
+   - When `v13.2.0` was cut (`19b7b8dd` / `10da7652` in `github-content-sync`), `IssueSyncer#reconcileClosedIssueLocations` renamed closed issues from `neo/issues/chunk-X/issue-NNNN.md` to `neo/archive/issues/v13.2.0/chunk-Y/issue-NNNN.md` and updated `metadata.issues[issueNumber].path`, **but never called `updateContentIndex`**.
+   - Subsequent `IssueSyncer#pullFromGitHub` runs only upserted `_index.json` for `allIssues` (issues updated on GitHub since `metadata.lastSync`) and `relatedIssuesToUpdate`, while `reconcileActiveChunks` only re-indexed files remaining in active `neo/issues/`.
+   - **Empirical verification in `github-content-sync/_index.json` at `origin/dev` (`f35204aa`) and the live KB:**
+     - Out of `1,910` files in `neo/archive/issues/v13.2.0/`, exactly **9** (`#39, #174, #15252, #17057, #19625, #19629, #19631, #19632, #19635` — touched by `pullFromGitHub` after the `v13.2.0` cut) have `version: "v13.2.0"` in `_index.json`, and querying the live KB for e.g. `#15252` returns `neo/archive/issues/v13.2.0/chunk-4/issue-15252.md`.
+     - The remaining **1,901** issues in `neo/archive/issues/v13.2.0/` (plus **5** issues in `neo/archive/issues/v13.3.0/` cut on Oct 25 = **1,906** stale index entries) still carry their deleted pre-archive paths (`path: "neo/issues/chunk-X/issue-NNNN.md"`, `version: null`) in `_index.json` and were skipped by `ConversationCorpusSource` as `unindexed`.
+3. **Why `neo/archive/pulls/v13.2.0/` arrived intact:**
+   - `PullRequestSyncer#reconcileClosedPullRequestLocations` ([`PullRequestSyncer.mjs:456-489`](https://github.com/neomjs/neo-agent-brain/blob/cd0b3847/ai/services/github-workflow/sync/PullRequestSyncer.mjs#L456-L489)) batches `createContentIndexEntryFromPath` upserts for every moved PR and writes them via `updateContentIndex`, and `PullRequestSyncer#reconcilePullRequestIndex` ([`PullRequestSyncer.mjs:938-1011`](https://github.com/neomjs/neo-agent-brain/blob/cd0b3847/ai/services/github-workflow/sync/PullRequestSyncer.mjs#L938-L1011)) realigns the `pulls` slice of `_index.json` from the on-disk corpus on every sync.
+
+### 2. Implementation Plan
+
+1. **`IssueSyncer#reconcileClosedIssueLocations` (`ai/services/github-workflow/sync/IssueSyncer.mjs`):**
+   - Upsert `_index.json` via `createContentIndexEntryFromPath` + `updateContentIndex` for every issue moved to `archive/issues/<version>/` (throwing if the index write fails after files have moved, matching `PullRequestSyncer#reconcileClosedPullRequestLocations`).
+   - Resolve the active on-disk source path from `inventory` when `reconcileActiveChunks` has shifted an active issue between `chunk-N` directories without updating `.sync-metadata.json`, and refuse to rename over an already-existing destination copy (`collisions`).
+2. **`IssueSyncer#pullFromGitHub` & `IssueSyncer#refetchIssuesByNumber`:**
+   - Derive `indexMutations.upsert` entries from the actual written `targetPath` via `createContentIndexEntryFromPath` (matching `PullRequestSyncer`), preventing inconsistent `chunkNumber` coordinates when sealed-chunk retention keeps an existing archive path.
+3. **`IssueSyncer#reconcileIssueIndex` + `SyncService#emitGeneratedContent`:**
+   - Add `IssueSyncer#reconcileIssueIndex(inventory = null)` (mirroring `PullRequestSyncer#reconcilePullRequestIndex` to heal stranded/inconsistent `issues` rows in `_index.json` from on-disk single-copy artifacts, while leaving out-of-scope historical multi-version issues untouched when their existing index row already resolves to one of their on-disk copies) and wire it into `SyncService#emitGeneratedContent`'s `issues` facet.
+4. **Regression Tests (AC-3) + Corpus & Live KB Repair (AC-1 & AC-2):**
+   - Add unit regression arms in `IssueSyncer.spec.mjs`, `SyncService.Stage2.spec.mjs`, and `ConversationCorpusSource.spec.mjs` proving that an archive move updates `_index.json` and `ConversationCorpusSource` drops zero elements across the archive move.
+   - Reconcile `github-content-sync/_index.json`, push to `neomjs/github-content-sync`, trigger/verify live KB ingestion of `neo/archive/issues/v13.2.0/`, and verify exact-title `query_documents(type: 'ticket')` queries for `#5577` and `#16123`.
+
 

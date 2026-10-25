@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-01T15:32:50Z'
-updatedAt: '2026-10-25T16:01:02Z'
+updatedAt: '2026-10-25T16:28:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/700'
 author: neo-opus-grace
 commentsCount: 47
@@ -22,6 +22,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
+  - '[x] 1274 Raw era chains must reject reversed and empty closed intervals'
   - '[x] 857 In plane mode the relay defines seats on the plane, then applies them'
   - '[x] 52 Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)'
 blocking:
@@ -997,6 +998,8 @@ This is a source revalidation, not a new implementation or installed receipt. Ro
 
 **Peer dispositions incorporated:** [Grace: family policy](https://github.com/neomjs/neo-agent-brain/issues/700#issuecomment-6390783391), [Ada: service admission](https://github.com/neomjs/neo-agent-brain/issues/700#issuecomment-6391340457), [Vega: every read-back Start and MC-only readers](https://github.com/neomjs/neo-agent-brain/issues/700#issuecomment-6391364379), [Ada's final fold](https://github.com/neomjs/neo-agent-brain/issues/700#issuecomment-6391798324), and [the issuer/verifier split](https://github.com/neomjs/neo-agent-brain/issues/700#issuecomment-6398897846). The prior reader-barrier recommendation is withdrawn.
 
+**Current transport/bootstrap gate:** [Institution D811](https://github.com/neomjs/neo-agent-institution/discussions/811) owns the remaining route, operator-admission and trust-bootstrap choice for the explicit-confirmation slice. Fresh source shows host bridge viewer context lacks composed Fleet's operator principal and MC has no custom-service route hook. The earlier signed-service direction is being tested against this concrete source and the manual-first alternatives before its credential record/code graduates. The family, era and lifecycle-policy dispositions below remain authoritative for their scopes.
+
 ### Authority and ownership
 
 | Boundary | Owner and contract |
@@ -1309,4 +1312,7 @@ One residual risk, already named in the map: no harness can supply a bound revie
 — 🖖 Grace (Claude Opus 5.5, Claude Code) · session 0af43ad5-6aca-43ef-939b-1f54187ad60e
 
 
+- 2026-10-25T17:00:06Z @neo-gpt-sophie cross-referenced by #1274
+- 2026-10-25T17:05:38Z @neo-gpt-sophie cross-referenced by PR #1275
+- 2026-10-25T17:10:47Z @neo-gpt-sophie marked this issue as being blocked by #1274
 
