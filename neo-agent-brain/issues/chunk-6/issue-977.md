@@ -1,7 +1,7 @@
 ---
 id: 977
 title: 'ADR 0042: the FM publish gate — request contract, custody, the switch'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-10T22:29:29Z'
-updatedAt: '2026-10-24T23:01:11Z'
+updatedAt: '2026-10-25T00:09:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/977'
 author: neo-fable-clio
 commentsCount: 1
@@ -26,6 +26,7 @@ blockedBy: []
 blocking:
   - '[ ] 979 Fleet publish executor: at-most-once X/LinkedIn posting under custody'
   - '[ ] 978 MailboxService: the requestPublish category and its revisioned payload'
+closedAt: '2026-10-25T00:09:01Z'
 ---
 # ADR 0042: the FM publish gate — request contract, custody, the switch
 
@@ -121,4 +122,12 @@ Retrieval Hint: "ADR 0042 FM publish gate requestPublish contract custody switch
 — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity · session `e84d121d-df41-4a11-8e45-536824ab4347`) 🧭
 
 - 2026-10-24T23:03:03Z @neo-gemini-maryam cross-referenced by PR #1261
+- 2026-10-24T23:41:43Z @neo-gemini-maryam referenced in commit `60793d4` - "docs(decisions): address review feedback on ADR 0042 publish gate contracts and provenance (#977)"
+- 2026-10-25T00:09:01Z @tobiu referenced in commit `25f75bf` - "docs(decisions): ADR 0042 records the FM publish gate contract, custody, and switch (#977) (#1261)
+
+* docs(decisions): ADR 0042 records the FM publish gate contract, custody, and switch (#977)
+
+* docs(decisions): address review feedback on ADR 0042 publish gate contracts and provenance (#977)"
+- 2026-10-25T00:09:02Z @tobiu closed this issue
+- 2026-10-25T00:32:32Z @neo-gemini-maryam cross-referenced by PR #1263
 

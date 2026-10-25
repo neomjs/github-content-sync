@@ -7,13 +7,14 @@ labels:
   - ai
   - security
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-10-10T22:30:44Z'
-updatedAt: '2026-10-10T22:30:44Z'
+updatedAt: '2026-10-25T00:38:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/979'
 author: neo-fable-clio
 commentsCount: 0
-parentIssue: null
+parentIssue: 123
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -21,7 +22,8 @@ contentTrust:
   projected: true
   quarantined: 0
   signals: []
-blockedBy: []
+blockedBy:
+  - '[x] 977 ADR 0042: the FM publish gate — request contract, custody, the switch'
 blocking: []
 ---
 # Fleet publish executor: at-most-once X/LinkedIn posting under custody
@@ -95,4 +97,10 @@ Retrieval Hint: "fleet publish executor at-most-once publishing reconcile custod
 - 2026-10-10T22:30:45Z @neo-fable-clio added the `ai` label
 - 2026-10-10T22:30:46Z @neo-fable-clio added the `security` label
 - 2026-10-10T22:30:46Z @neo-fable-clio added the `agent-os` label
+- 2026-10-10T22:32:54Z @neo-fable-clio added parent issue #123
+- 2026-10-10T22:32:57Z @neo-fable-clio marked this issue as being blocked by #977
+- 2026-10-10T23:04:09Z @neo-fable-clio cross-referenced by #980
+- 2026-10-24T23:16:04Z @neo-fable-clio cross-referenced by PR #1261
+- 2026-10-25T00:32:32Z @neo-gemini-maryam cross-referenced by PR #1263
+- 2026-10-25T00:38:38Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 

@@ -1,7 +1,7 @@
 ---
 id: 791
 title: 'Selecting a card reveals Agent detail without moving the roster; close goes, pin stays reachable'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-23T15:13:22Z'
-updatedAt: '2026-10-24T20:01:55Z'
+updatedAt: '2026-10-25T00:20:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/791'
 author: neo-fable-clio
 commentsCount: 5
@@ -26,6 +26,7 @@ blockedBy:
   - '[x] 20091 An app-held rail reveal ends silently when its rail is rebuilt'
   - '[x] 20086 An app holds a dock rail reveal open and hears when the user ends it'
 blocking: []
+closedAt: '2026-10-25T00:20:57Z'
 ---
 # Selecting a card reveals Agent detail without moving the roster; close goes, pin stays reachable
 
@@ -249,4 +250,49 @@ Ada, the call is made; build (c) app-side and the Q1 leaf, and I read the PR.
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code
 
+- 2026-10-24T20:56:25Z @neo-opus-ada cross-referenced by #20095
+- 2026-10-24T21:27:35Z @neo-opus-ada referenced in commit `ee324aa` - "build(deps): the engine lock moves to neo dev d454606718, which carries #20092's held reveal across a rail rebuild (#791)"
+- 2026-10-24T21:27:35Z @neo-opus-ada referenced in commit `b74bd5e` - "feat(cockpit): an outside press ends the held detail reveal and keeps the selection; the selected card or the rail tab reveals it again (#791)"
+- 2026-10-24T21:27:36Z @neo-opus-ada referenced in commit `d4eff7d` - "test(cockpit): every declared perspective keeps the inspector unclosable (#791)"
+- 2026-10-24T21:27:36Z @neo-opus-ada referenced in commit `45a1c51` - "test(cockpit): the journeys that pop the detail out after a selection pin its reveal first, until the reveal toolbar carries pop-out (#791)"
+- 2026-10-24T21:27:37Z @neo-opus-ada referenced in commit `1bd6624` - "chore(cockpit): merge dev, the stream's keyboard focus (#800) beside the detail reveal (#791)"
+- 2026-10-24T21:27:37Z @neo-opus-ada referenced in commit `7f76e56` - "test(visual): the inspector's goldens at the reveal's width, the cards captured after an outside press uncovers them; stamped at neo d454606718 (#791)"
+- 2026-10-24T21:27:44Z @neo-opus-ada cross-referenced by PR #805
+- 2026-10-24T21:37:03Z @neo-opus-ada referenced in commit `505065a` - "test(cockpit): pinRevealedDetail names neo #20095 as its deletion anchor (#791)"
+- 2026-10-24T21:41:21Z @neo-opus-ada referenced in commit `66bfd19` - "test(cockpit): pinRevealedDetail states its deletion condition in behaviour terms; neo #20095's body is the anchor, as the archaeology guard requires (#791)"
+- 2026-10-24T23:06:42Z @neo-opus-ada referenced in commit `fd55631` - "merge: dev into ada/791-detail-reveal — #804's lane-row elision; the four card goldens and the baseline stamp re-made on the merged tree (#791)"
+- 2026-10-24T23:06:43Z @neo-opus-ada referenced in commit `8f51c6b` - "test(fleet): the drill arm reads the cards once the roster has sized and shown them — #804's measured row height lands after first paint (#791)"
+- 2026-10-25T00:06:02Z @neo-opus-ada referenced in commit `991182b` - "test(cockpit): pinRevealedDetail waits for the detail's own docked tab — a pop-out admits only the visible pane, and the tab container takes it after the pin commits (#791)"
+- 2026-10-25T00:20:57Z @tobiu referenced in commit `f8bfa66` - "feat(cockpit): a selection reveals Agent detail over the roster, and nothing moves (#791) (#805)
+
+* feat(cockpit): a selection reveals Agent detail over the roster (#791)
+
+A card selection holds the rail's reveal of the detail instead of opening the
+right band as a column, so no card moves. When the person ends the reveal
+(Escape, its rail tab, another rail tool) the roster's selection ends with it.
+The reveal's own pin still commits the column, and the detail has no close
+action. The engine lock moves to 990669e521 for Workspace#revealRailItem.
+
+* test(cockpit): arms that work beside a selection pin its held reveal first (#791)
+
+The held reveal covers the roster's right-aligned filters and the south strip's right end, and an outside press leaves it alone. The grid arm and three Memories journeys pin the inspector before they act there, which keeps the resident selected. The perspective docblock names the view's reveal-end handler.
+
+* build(deps): the engine lock moves to neo dev d454606718, which carries #20092's held reveal across a rail rebuild (#791)
+
+* feat(cockpit): an outside press ends the held detail reveal and keeps the selection; the selected card or the rail tab reveals it again (#791)
+
+* test(cockpit): every declared perspective keeps the inspector unclosable (#791)
+
+* test(cockpit): the journeys that pop the detail out after a selection pin its reveal first, until the reveal toolbar carries pop-out (#791)
+
+* test(visual): the inspector's goldens at the reveal's width, the cards captured after an outside press uncovers them; stamped at neo d454606718 (#791)
+
+* test(cockpit): pinRevealedDetail names neo #20095 as its deletion anchor (#791)
+
+* test(cockpit): pinRevealedDetail states its deletion condition in behaviour terms; neo #20095's body is the anchor, as the archaeology guard requires (#791)
+
+* test(fleet): the drill arm reads the cards once the roster has sized and shown them — #804's measured row height lands after first paint (#791)
+
+* test(cockpit): pinRevealedDetail waits for the detail's own docked tab — a pop-out admits only the visible pane, and the tab container takes it after the pin commits (#791)"
+- 2026-10-25T00:20:57Z @tobiu closed this issue
 

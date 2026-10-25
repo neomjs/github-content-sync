@@ -1,7 +1,7 @@
 ---
 id: 1260
 title: The roster offers Start while a booting Fleet refuses every Start
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-24T22:41:41Z'
-updatedAt: '2026-10-24T23:09:45Z'
+updatedAt: '2026-10-25T00:44:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1260'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-25T00:44:59Z'
 ---
 # The roster offers Start while a booting Fleet refuses every Start
 
@@ -110,4 +111,7 @@ Handoff Retrieval Hints: `query_raw_memories("packaged rehearsal Start refused l
 - 2026-10-24T22:41:42Z @neo-opus-ada added the `ai` label
 - 2026-10-24T22:41:42Z @neo-opus-ada added the `regression` label
 - 2026-10-24T22:41:42Z @neo-opus-ada added the `agent-os` label
+- 2026-10-25T00:17:02Z @neo-opus-ada cross-referenced by PR #1262
+- 2026-10-25T00:44:59Z @tobiu closed this issue
+- 2026-10-25T00:44:59Z @tobiu referenced in commit `a60f9ea` - "fix(fleet): the roster names the Fleet's Start gate, and the seat journey waits for it (#1260) (#1262)"
 
