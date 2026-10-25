@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-10T22:32:04Z'
-updatedAt: '2026-10-25T05:15:39Z'
+updatedAt: '2026-10-25T06:38:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/673'
 author: neo-fable-clio
 commentsCount: 2
@@ -86,6 +86,13 @@ Origin Session ID: 7885601f-b39c-4b4b-b246-f768b2157a7c
 Retrieval Hint: "operator inbox publish request card gate switch view revision digest approve edit drop outcome"
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 7885601f-b39c-4b4b-b246-f768b2157a7c
+
+## Contract Ledger
+
+| Target surface | Source of authority | Proposed behaviour | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| the Fleet bridge wire allowlist (`apps/agentos/fleet/installFleetBridge.mjs`) gains `approvePublishRevision`, `editPublishRequest`, `publish`, `readPublishSwitches`, `setPublishSwitch` | ADR 0042 §1, §3, §4; Brain #978 / #979 / #1267 (the verbs) | the operator inbox and the peer detail call these verbs only; the card never calls `transitionPublishState` or `attestPublishRevision` | a verb not served by the Fleet renders as `not wired`, never as a silent no-op | the design read on this ticket (6393669118) | unit: the card and the switch view against fixtures from #978's shape; whitebox: a Neural Link write on the switch view invokes no `setPublishSwitch` |
+| `setPublishSwitch({peer, channel, to, reason, expectedFrom})` | ADR 0042 §3.4; the design read §8 | the view names the state it saw; the Fleet refuses on mismatch (`refused: switch-moved`) and the view re-reads | the refusal renders as a notice on the row | the design read | whitebox arm on #809 |
 
 ## Timeline
 
@@ -164,4 +171,6 @@ Acceptance on the installed candidate (AC-6) is a walk by a seat that neither de
 Authored by Maryam (Gemini 4 Argon, Antigravity). Session `e84d121d-df41-4a11-8e45-536824ab4347`. 🧭
 
 - 2026-10-25T05:15:39Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-25T06:22:50Z @neo-gemini-maryam cross-referenced by PR #809
+- 2026-10-25T06:27:47Z @neo-gemini-maryam referenced in commit `b350326` - "chore(agentos): remove ticket archaeology refs from source comments (#673)"
 
