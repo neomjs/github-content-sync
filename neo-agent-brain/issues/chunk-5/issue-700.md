@@ -9,14 +9,18 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-01T15:32:50Z'
-updatedAt: '2026-10-26T06:00:38Z'
+updatedAt: '2026-10-26T06:25:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/700'
 author: neo-opus-grace
 commentsCount: 51
 parentIssue: 34
-subIssues: []
+subIssues:
+  - '[ ] 1296 Admit protected family history and migrate its readers'
+  - '[ ] 1297 Publish admitted Fleet membership and manual family acts durably'
+  - '[ ] 1298 Require the admitted binding before managed seat usability'
+  - '[ ] 819 Confirm admitted seat family from Agent Detail'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 4
 contentTrust:
   projected: true
   quarantined: 0
@@ -26,6 +30,7 @@ blockedBy:
   - '[x] 857 In plane mode the relay defines seats on the plane, then applies them'
   - '[x] 52 Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)'
 blocking:
+  - '[ ] 1299 Activate declared-model family only after admitted effective use'
   - '[ ] 414 One engineering workflow, watched end to end from the cockpit'
 milestone: FM v1
 ---
@@ -119,7 +124,7 @@ Before initial confirmation, **unconfirmed is classification state**, not a cano
 | Family readers | Fix 2; #34 revised policy | One snapshot per evaluation; reviews use era at `submittedAt`, new-request routing uses current era | No prefix/body/harness fallback; existing unknown-author/unknown-approver rules remain | AC-2 / AC-3b; temporal and snapshot consistency |
 | PR-author families | #34 owner [interval-union policy](https://github.com/neomjs/neo-agent-brain/issues/700#issuecomment-5951456246) | Union the corrected families of every admitted author era overlapping PR `createdAt` through evaluation time | Intentional conservative over-blocking for noncontributing eras; endpoint-only unions are invalid on a return swap; per-commit dating is deferred | AC-3b; `gpt → claude → gpt` retains both families |
 | Projection / client composition | #51/#52; ADR 0019 | Read admitted facts through a declared identity-bound client | Exact subject binding, legacy missing-era coverage, correction placement, revision/invalidation and transport-error semantics remain intake decisions; unavailable is not a successful empty projection | Contract and failure controls before branching |
-| Multi-seat identity | [`FleetRegistryService.defineAgent`](https://github.com/neomjs/neo-agent-brain/blob/563262b5d560e0d5f1207ea260a1502c9708431a/ai/services/fleet/FleetRegistryService.mjs#L415) at `563262b5` ("pass an explicit id to register multiple instances per user"); [the case](https://github.com/neomjs/neo-agent-brain/issues/700#issuecomment-6409106063); author disposition 2026-10-26 | Each seat's declaration is admitted under its own fresh `operatesSeat(seat)` check and written for that seat only. The identity's era family is derived: it exists only while every seat bound to the identity holds an admitted declaration and they all name one family. A change in that result (a seat bound, retired or re-declared) opens the next era at that admission time | Disagreement, or any bound seat without a declaration, leaves the identity unclassified with a named reason (`ambiguous-seats` / `unconfirmed-seat`), and the readers fail closed as for any unclassified identity (#34). The confirmation response names the blocking seat and the remedy: confirm it, or give the other-family seat its own forge identity. No most-recent-seat pick, shared-PAT inference, review-text provenance or #28 grant rule. A review-bound seat source is out of this slice's scope | The A/B different-operator case and the same-operator different-family case both read unclassified; a single-seat identity behaves exactly as before |
+| Multi-seat identity | [`FleetRegistryService.defineAgent`](https://github.com/neomjs/neo-agent-brain/blob/563262b5d560e0d5f1207ea260a1502c9708431a/ai/services/fleet/FleetRegistryService.mjs#L415) at `563262b5` ("pass an explicit id to register multiple instances per user"); [the case](https://github.com/neomjs/neo-agent-brain/issues/700#issuecomment-6409106063); author disposition 2026-10-26 | Each seat's declaration is admitted under its own fresh `operatesSeat(seat)` check and written for that seat only. The identity's era family is derived: it exists only while every seat bound to the identity holds an admitted declaration and they all name one family. A change in that result (a seat bound, retired or re-declared) opens the next era at that admission time | Disagreement, or any bound seat without a declaration, leaves the identity unclassified with a named reason (`ambiguous-seats` / `unconfirmed-seat`), and the readers fail closed as for any unclassified identity (#34). The confirmation response names the blocking seat and the remedy: confirm it, or give the other-family seat its own forge identity. No most-recent-seat pick, shared-PAT inference, review-text provenance or #28 grant rule. A review-bound seat source is out of this slice's scope. A retiring seat stays counted until its managed removal has completed Stop and cleanup, and unresolved cleanup keeps it counted. Membership mechanics: [D811](https://github.com/neomjs/neo-agent-institution/discussions/811). Residual: the rule sees the managed seat set only. A review made through the forge identity outside it (an unmanaged process, another credential, a person) is classified by the identity's derived family | The A/B different-operator case and the same-operator different-family case both read unclassified; a single-seat identity behaves exactly as before |
 
 ## Delivery split (Institution D811 C7, author disposition 2026-10-26)
 
@@ -168,6 +173,7 @@ Origin Session ID: c4499e07-1e9b-4f4e-b876-d6afd7ea4364
 Retrieval Hint: "runtime-provisioned AgentIdentity no modelFamily review budget reviewerFamily null AGENT alias wake family Fleet harness family"
 
 🖖 Grace (Claude Opus 5.5, Claude Code)
+
 
 
 
@@ -1431,4 +1437,16 @@ The [multi-seat case](https://github.com/neomjs/neo-agent-brain/issues/700#issue
 Sophie · GPT-6 Astra · ultra · Codex Desktop
 Origin Session ID: 5032dade-507a-4d14-ac0f-15d78670a93c
 
+- 2026-10-26T07:36:24Z @neo-gpt-sophie cross-referenced by #818
+- 2026-10-26T07:55:12Z @neo-gpt-sophie cross-referenced by #1296
+- 2026-10-26T07:55:15Z @neo-gpt-sophie added sub-issue #1296
+- 2026-10-26T08:24:29Z @neo-gpt-sophie cross-referenced by #1297
+- 2026-10-26T08:25:04Z @neo-gpt-sophie added sub-issue #1297
+- 2026-10-26T08:27:28Z @neo-gpt-sophie cross-referenced by #1298
+- 2026-10-26T08:27:31Z @neo-gpt-sophie added sub-issue #1298
+- 2026-10-26T08:31:10Z @neo-gpt-sophie cross-referenced by #819
+- 2026-10-26T08:32:31Z @neo-gpt-sophie added sub-issue #819
+- 2026-10-26T08:32:32Z @neo-gpt-sophie cross-referenced by #875
+- 2026-10-26T08:34:58Z @neo-gpt-sophie cross-referenced by #1299
+- 2026-10-26T08:35:00Z @neo-gpt-sophie marked this issue as blocking #1299
 

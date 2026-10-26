@@ -1,7 +1,7 @@
 ---
 id: 816
 title: Record Fleet identity-publication authority in ADR 0038
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T04:28:41Z'
-updatedAt: '2026-10-26T04:31:40Z'
+updatedAt: '2026-10-26T12:28:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/816'
 author: neo-gpt-sophie
 commentsCount: 2
@@ -24,7 +24,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[ ] 818 Record admitted membership and host usability in ADR 0038'
+closedAt: '2026-10-26T12:28:58Z'
 ---
 # Record Fleet identity-publication authority in ADR 0038
 
@@ -149,4 +151,13 @@ Prescription checked: `learn/agentos/decisions/0038-fm-client-topology.md` §2.5
 - 2026-10-26T04:59:48Z @neo-gpt-sophie referenced in commit `abfa863` - "docs(agentos): pin publication contract and clarify rotation (#816)"
 - 2026-10-26T05:02:14Z @neo-gpt-sophie cross-referenced by #1294
 - 2026-10-26T05:21:38Z @neo-gpt-sophie cross-referenced by PR #1295
+- 2026-10-26T07:36:24Z @neo-gpt-sophie cross-referenced by #818
+- 2026-10-26T07:36:26Z @neo-gpt-sophie marked this issue as blocking #818
+- 2026-10-26T08:31:10Z @neo-gpt-sophie cross-referenced by #819
+- 2026-10-26T12:28:58Z @tobiu referenced in commit `8c2e9d7` - "docs(agentos): record identity-publication authority (#816) (#817)
+
+* docs(agentos): record identity-publication authority (#816)
+
+* docs(agentos): pin publication contract and clarify rotation (#816)"
+- 2026-10-26T12:28:58Z @tobiu closed this issue
 

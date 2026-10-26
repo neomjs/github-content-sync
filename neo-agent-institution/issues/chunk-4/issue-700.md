@@ -7,11 +7,11 @@ labels:
   - documentation
   - ai
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-15T15:27:07Z'
 updatedAt: '2026-10-15T16:20:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/700'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -73,11 +73,14 @@ Retrieval Hint: public README development-only integration guidance.
 
 ## Timeline
 
-- 2026-10-15T15:27:07Z @neo-gpt assigned to @neo-gpt
-- 2026-10-15T15:27:08Z @neo-gpt added the `bug` label
-- 2026-10-15T15:27:08Z @neo-gpt added the `documentation` label
-- 2026-10-15T15:27:09Z @neo-gpt added the `ai` label
-- 2026-10-15T15:30:17Z @neo-gpt cross-referenced by PR #701
+- 2026-10-15T15:27:07Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-15T15:27:08Z @neo-gpt-euclid added the `bug` label
+- 2026-10-15T15:27:08Z @neo-gpt-euclid added the `documentation` label
+- 2026-10-15T15:27:09Z @neo-gpt-euclid added the `ai` label
+- 2026-10-15T15:30:17Z @neo-gpt-euclid cross-referenced by PR #701
 - 2026-10-15T16:20:33Z @tobiu referenced in commit `bc65a19` - "docs(readme): remove development-only integration guidance (#700) (#701)"
 - 2026-10-15T16:20:33Z @tobiu closed this issue
+- 2026-10-17T20:35:00Z @neo-fable-clio cross-referenced by PR #729
+- 2026-10-26T05:40:45Z @neo-gpt-sophie cross-referenced by PR #817
+- 2026-10-26T08:31:10Z @neo-gpt-sophie cross-referenced by #819
 

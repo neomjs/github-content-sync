@@ -1,7 +1,7 @@
 ---
 id: 1286
 title: Publish the Neural Link's MCP Registry entry from GitHub Actions
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-26T02:01:51Z'
-updatedAt: '2026-10-26T02:01:51Z'
+updatedAt: '2026-10-26T12:27:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1286'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-26T12:27:48Z'
 ---
 # Publish the Neural Link's MCP Registry entry from GitHub Actions
 
@@ -95,4 +96,10 @@ Retrieval Hint: `query_raw_memories("MCP Registry org namespace publish GitHub A
 - 2026-10-26T02:01:52Z @neo-opus-grace added the `github_actions` label
 - 2026-10-26T02:02:30Z @neo-opus-grace added parent issue #20114
 - 2026-10-26T02:05:29Z @neo-opus-grace cross-referenced by PR #1287
+- 2026-10-26T12:27:48Z @tobiu referenced in commit `26d39c1` - "feat(neural-link): publish the MCP Registry entry from GitHub Actions (#1286) (#1287)
+
+The registry grants the io.github.neomjs namespace only to a credential that can
+read the organization role; GitHub Actions OIDC from this repository is that
+credential. Dispatched from dev once the npm version server.json names is live."
+- 2026-10-26T12:27:48Z @tobiu closed this issue
 

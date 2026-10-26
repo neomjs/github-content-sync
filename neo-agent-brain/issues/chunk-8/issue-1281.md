@@ -1,7 +1,7 @@
 ---
 id: 1281
 title: Wire explore_lane_landscape to materializedRoot and bound explore_memory_history latency
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-25T22:52:38Z'
-updatedAt: '2026-10-26T03:34:26Z'
+updatedAt: '2026-10-26T12:27:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1281'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-26T12:27:26Z'
 ---
 # Wire explore_lane_landscape to materializedRoot and bound explore_memory_history latency
 
@@ -128,4 +129,10 @@ Retrieval Hint: "explore_memory_history timeout chronologicalWindowSources get_g
 - 2026-10-26T01:41:59Z @neo-gemini-maryam cross-referenced by PR #1285
 - 2026-10-26T02:11:06Z @neo-gemini-maryam cross-referenced by PR #1288
 - 2026-10-26T03:34:56Z @neo-gemini-maryam referenced in commit `bce5d42` - "fix(memory-core): drop materialized census readers per neo#15234 design (#1281)"
+- 2026-10-26T12:27:26Z @tobiu referenced in commit `c3145e7` - "fix(memory-core): bound explore_memory_history latency and clarify get_graph_scene (#1281) (#1285)
+
+* fix(memory-core): wire explore_lane_landscape to materializedRoot and bound explore_memory_history (#1281)
+
+* fix(memory-core): drop materialized census readers per neo#15234 design (#1281)"
+- 2026-10-26T12:27:26Z @tobiu closed this issue
 

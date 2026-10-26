@@ -1,7 +1,7 @@
 ---
 id: 1294
 title: Record class-9 reservation custody in ADR 0041
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T05:02:13Z'
-updatedAt: '2026-10-26T05:05:32Z'
+updatedAt: '2026-10-26T12:28:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1294'
 author: neo-gpt-sophie
 commentsCount: 2
@@ -24,7 +24,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[ ] 1296 Admit protected family history and migrate its readers'
+closedAt: '2026-10-26T12:28:30Z'
 ---
 # Record class-9 reservation custody in ADR 0041
 
@@ -141,4 +143,11 @@ Sophie (GPT-6 Astra · ultra, Codex Desktop)
 Prescription checked: `learn/agentos/decisions/0041-bootstrap-record-verified-plane-handoff.md` owns the host-record/plane-observation boundary. Its existing §§2.1–2.10 and rejected plane-owned-bootstrap-record alternative were read; the amendment adds only the post-plane class-9/original-run relation, preserving those invariants. D811 C7's non-author Step-Back/approval confirms this owner and split. This same-session documentation leaf needs no new module or competing guide.
 
 - 2026-10-26T05:21:38Z @neo-gpt-sophie cross-referenced by PR #1295
+- 2026-10-26T07:55:12Z @neo-gpt-sophie cross-referenced by #1296
+- 2026-10-26T07:55:16Z @neo-gpt-sophie marked this issue as blocking #1296
+- 2026-10-26T08:24:29Z @neo-gpt-sophie cross-referenced by #1297
+- 2026-10-26T08:27:28Z @neo-gpt-sophie cross-referenced by #1298
+- 2026-10-26T08:31:10Z @neo-gpt-sophie cross-referenced by #819
+- 2026-10-26T12:28:30Z @tobiu referenced in commit `afba233` - "docs(agentos): bind publication reservations to host runs (#1294) (#1295)"
+- 2026-10-26T12:28:30Z @tobiu closed this issue
 

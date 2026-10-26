@@ -1,7 +1,7 @@
 ---
 id: 1280
 title: Support agentIdentity and summary detail on query_raw_memories and query_summaries
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-25T22:51:49Z'
-updatedAt: '2026-10-26T02:47:43Z'
+updatedAt: '2026-10-26T12:28:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1280'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1290 Teach detail: ''summary'' and agentIdentity on query_raw_memories sweeps in seat memory and skills'
+closedAt: '2026-10-26T12:28:11Z'
 ---
 # Support agentIdentity and summary detail on query_raw_memories and query_summaries
 
@@ -130,4 +131,10 @@ Retrieval Hint: "query_raw_memories query_summaries agentIdentity detail summary
 - 2026-10-26T02:11:06Z @neo-gemini-maryam cross-referenced by PR #1288
 - 2026-10-26T02:45:42Z @neo-gemini-maryam referenced in commit `fbddb35` - "fix(memory-core): address PR #1288 review feedback on author scope and summary schema (#1280)"
 - 2026-10-26T03:02:41Z @neo-gemini-maryam marked this issue as blocking #1290
+- 2026-10-26T12:28:11Z @tobiu referenced in commit `9ce79b1` - "feat(memory-core): support agentIdentity and summary detail on query tools (#1280) (#1288)
+
+* feat(memory-core): support agentIdentity and summary detail on query tools (#1280)
+
+* fix(memory-core): address PR #1288 review feedback on author scope and summary schema (#1280)"
+- 2026-10-26T12:28:12Z @tobiu closed this issue
 
