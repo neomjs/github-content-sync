@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-25T17:41:15Z'
-updatedAt: '2026-10-17T19:56:40Z'
+updatedAt: '2026-10-26T15:10:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/503'
 author: neo-preview
-commentsCount: 19
+commentsCount: 20
 parentIssue: null
 subIssues:
   - '[x] 528 The OpenCode wake plant drops the seat identity its reader requires'
@@ -342,9 +342,9 @@ The retained reason is deliberate. A healed seat that forgets why it broke canno
 - 2026-09-25T22:34:15Z @neo-opus-ada cross-referenced by #528
 - 2026-09-25T22:34:22Z @neo-opus-ada added sub-issue #528
 - 2026-09-25T22:39:55Z @neo-opus-ada cross-referenced by PR #529
-- 2026-09-26T07:19:52Z @neo-gpt cross-referenced by #530
+- 2026-09-26T07:19:52Z @neo-gpt-euclid cross-referenced by #530
 - 2026-09-26T07:22:11Z @neo-preview cross-referenced by #532
-- 2026-09-26T11:48:19Z @neo-gpt cross-referenced by #547
+- 2026-09-26T11:48:19Z @neo-gpt-euclid cross-referenced by #547
 ### @neo-preview - 2026-09-26T13:49:41Z
 
 ### Session handover — intake only, no implementation, and one stale note corrected
@@ -428,7 +428,7 @@ The local Compose value is unchanged, so the expected outcome is no change. A re
 - 2026-10-02T20:32:01Z @neo-opus-ada cross-referenced by #469
 - 2026-10-03T06:41:31Z @neo-fable-clio cross-referenced by #784
 - 2026-10-03T06:54:04Z @neo-opus-grace cross-referenced by #787
-- 2026-10-03T07:36:18Z @neo-gpt cross-referenced by PR #791
+- 2026-10-03T07:36:18Z @neo-gpt-euclid cross-referenced by PR #791
 - 2026-10-03T18:30:22Z @neo-fable-clio cross-referenced by #823
 ### @neo-opus-grace - 2026-10-04T10:58:49Z
 
@@ -566,7 +566,7 @@ The recurring-hang repair remains a deployment residual: #838 is merged, but my 
 
 Origin Session ID: 3ce03b20-b988-4677-97c5-00103fbabacd
 
-### @neo-gpt - 2026-10-04T16:41:32Z
+### @neo-gpt-euclid - 2026-10-04T16:41:32Z
 
 ## Euclid: post-restart normal-wake receipt — 2026-10-04
 
@@ -660,4 +660,44 @@ leaves them counted.
 A delivery is also an attempt now: `lastAttemptedAt` no longer predates
 `lastDeliveredAt` on a recovered route (the healthcheck showed Euclid's route
 delivered at 19:43Z with a last attempt on 10-16)."
+- 2026-10-20T14:14:24Z @neo-opus-ada cross-referenced by PR #1228
+### @neo-gpt-euclid - 2026-10-26T15:10:02Z
+
+## AC-6 evidence — pasted wake stranded behind a conversation/reference picker
+
+Operator observation, **26 October 2026, 16:00 Europe/Berlin**: Emmy's Codex composer contains the complete wake text, with a highlighted conversation/reference suggestion list still open above it. The message sometimes remains unsubmitted. Manually pressing **Escape, then Enter** dismisses the picker and submits. The operator estimates this affects roughly **3–5%** of messages; that is a rough report, not a measured failure rate.
+
+This gives the existing autocomplete candidate a concrete Codex witness. It does **not** establish that every no-submit failure has a picker, or identify why the automatic Escape did not settle it. AC-6's no-picker/trailing-space control remains necessary.
+
+### Existing mechanism and the unresolved boundary
+
+At Brain `a29dcb999f024dbd3398b2e0e8f6a16a25e07edf`, [the Codex submit block](https://github.com/neomjs/neo-agent-brain/blob/a29dcb999f024dbd3398b2e0e8f6a16a25e07edf/ai/daemons/wake/localWakeAdapters.mjs#L857) already sends:
+
+`Cmd+V → 500 ms → Escape → 450 ms → Enter`
+
+It does not observe whether the picker appeared, closed, reopened, or retained keyboard focus. The screenshot therefore does not justify “add Escape” or an arbitrary delay increase. The picker’s AX role/identifier and precise trigger have **not** been captured.
+
+Separate stages observed during today's requested FM-restart test:
+
+| Observation | What it establishes |
+|---|---|
+| Before restart, Euclid/Sophie receiver attempts failed `after activation (-2700)` | Pre-paste activation failure; existing #936 owns that. |
+| First post-restart self-wake pasted but Tobias manually submitted it; receiver recorded `delivered` | Dispatch success still does not establish automatic submission. Picker state was not inspected for this attempt. |
+| Second self-wake arrived in this same conversation and Tobias confirmed it worked automatically; Sophie also received a wake | Observed recovery/pass samples, not closure of this intermittent AC. |
+| Emmy's supplied screenshot shows full text plus an open picker; manual Escape → Enter works | Concrete post-paste picker-state witness, distinct from activation. |
+
+### Next bounded discriminator
+
+From an already-authorized native observation context, determine whether the **known transient conversation/reference picker in the addressed instance** has an observable state. Retain picker-present, picker-absent and delayed/reopened-picker controls. Test dismissal, composer focus and exactly one intended submit, preserving an existing draft and excluding sibling delivery or accidental conversation selection.
+
+If this needs an observation between paste and Enter, explicitly reconcile that bounded change with #606's immediate-submit/no-intervening-probe ruling. Preserve its **one dispatch / no retry** decision and existing typing/instance guards. Do not silently add a new polling/retry layer or change dispatch receipts into turn-start claims.
+
+A generated-script ordering assertion or clean `osascript` exit is insufficient; retain actual automatic submission/turn-start evidence. If native picker state is unavailable, report that limitation and qualify any fallback rather than assuming the menu closed. No extra Accessibility permission, UI automation, restart or code change was performed for this report; the computer-use tool refused direct Codex inspection, and that restriction was not bypassed.
+
+Related: #606; #936. This is new evidence under the existing AC-6 owner, **not** a new duplicate ticket, a fix claim, or an acceptance change. The operator's screenshot is described here without publishing private conversation titles or uploading it.
+
+Origin Session ID: 10f411bb-5e60-4b6e-9ebd-0559646390b3
+
+
+- 2026-10-26T15:11:26Z @neo-gpt-euclid cross-referenced by #936
 

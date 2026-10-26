@@ -1,7 +1,7 @@
 ---
 id: 205
 title: 'Direct messages never suppressed: retire peer-role''s ack carve-out'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-24T15:20:16Z'
-updatedAt: '2026-10-24T15:20:16Z'
+updatedAt: '2026-10-26T16:40:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/205'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-26T16:38:16Z'
 ---
 # Direct messages never suppressed: retire peer-role's ack carve-out
 
@@ -56,11 +57,11 @@ Three reference files, no SKILL.md router touched (Progressive Disclosure kept; 
 
 ## Acceptance Criteria
 
-- [ ] `peer-role-mode.md` § Wake-control no longer names any class of direct message that may be suppressed; it states the address rule and the server's rejection in two sentences.
-- [ ] `session-sunset-workflow.md` names the self-DM as the exemption and why.
-- [ ] `lead-role-mode.md:172` matches the baton decision recorded in neo-agent-brain#1250's guard JSDoc.
-- [ ] A grep for `wakeSuppressed: true` across `.agents/skills/**` returns only the self-DM (and the baton line if the exception is kept).
-- [ ] Loaded-bytes of the three files do not grow (`wc -c` before/after in the PR body).
+- [x] `peer-role-mode.md` § Wake-control no longer names any class of direct message that may be suppressed; it states the address rule and the server's rejection in two sentences.
+- [x] `session-sunset-workflow.md` names the self-DM as the exemption and why.
+- [x] `lead-role-mode.md:172` matches the baton decision recorded in neo-agent-brain#1250's guard JSDoc.
+- [x] A grep for `wakeSuppressed: true` across `.agents/skills/**` returns only the self-DM (and the baton line if the exception is kept).
+- [x] Loaded-bytes of the three files do not grow (`wc -c` before/after in the PR body).
 
 ## Out of Scope
 
@@ -85,4 +86,27 @@ Retrieval Hint: `query_raw_memories("direct message wake suppressed peer-role wa
 - 2026-10-24T15:20:18Z @neo-fable-mnemosyne added the `ai` label
 - 2026-10-24T15:20:18Z @neo-fable-mnemosyne added the `agent-os` label
 - 2026-10-24T15:21:25Z @neo-fable-mnemosyne cross-referenced by #1250
+- 2026-10-24T20:15:55Z @neo-fable-mnemosyne cross-referenced by #206
+### @neo-fable-mnemosyne - 2026-10-26T14:31:15Z
+
+**The baton decision, from Brain #1250 (PR opening today):** the lead-role baton **wakes**. Its `lead-role-baton` tag leaves the mailbox's wake-suppression allow-list, and a `wakeSuppressed: true` direct message to a peer is refused at acceptance whatever its tag, subject, priority or task — the new lead is exactly a seat that may have idled out. The one quiet direct message that remains is a seat's own continuity self-DM (`to === sender`, `sunset-protocol-handover`); messages to the human operator and system audit records keep their contextual defaults.
+
+For this ticket's skill text, the three edits become:
+- `peer-role-mode.md` § Wake-control: "Suppress a direct message only for non-overlapping awareness — observer notes, lane-progress, acks" → "a direct message to a peer always wakes; fleet awareness goes to `AGENT:*`, quiet by default".
+- `lead-role-mode.md` (the baton line): drop `wakeSuppressed: true` from the baton send; the server now refuses it.
+- `session-sunset`: the self-DM exemption stands unchanged.
+
+Mnemosyne · `@neo-fable-mnemosyne` · Claude Fable 5.1 · Claude Code · MC session `9d80941e-e7e3-4110-8734-818aa478bc61`
+
+
+- 2026-10-26T14:32:05Z @neo-fable-mnemosyne cross-referenced by PR #1300
+- 2026-10-26T15:40:12Z @neo-fable-mnemosyne cross-referenced by PR #214
+- 2026-10-26T16:01:46Z @neo-fable-mnemosyne referenced in commit `a2f86c4` - "fix(skills): quiet-DM statements scoped to agent addresses — a human or system address keeps its own policy (#205)"
+- 2026-10-26T16:38:16Z @tobiu referenced in commit `a88d004` - "feat(skills): a direct message to a peer always wakes — the wake-control carve-out retired (#205) (#214)
+
+* feat(skills): a direct message to a peer always wakes — the wake-control carve-out retired (#205)
+
+* fix(skills): quiet-DM statements scoped to agent addresses — a human or system address keeps its own policy (#205)"
+- 2026-10-26T16:38:17Z @tobiu closed this issue
+- 2026-10-26T16:43:07Z @neo-fable-mnemosyne cross-referenced by #20133
 

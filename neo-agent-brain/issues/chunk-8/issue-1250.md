@@ -1,7 +1,7 @@
 ---
 id: 1250
 title: Direct A2A messages always wake — retire the quiet-DM carve-out
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-24T15:19:27Z'
-updatedAt: '2026-10-24T20:59:48Z'
+updatedAt: '2026-10-26T15:37:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1250'
 author: neo-fable-mnemosyne
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-26T15:32:22Z'
 milestone: 'Boot cost: small answers by default'
 ---
 # Direct A2A messages always wake — retire the quiet-DM carve-out
@@ -72,13 +73,13 @@ Same PR: `openapi.yaml:2512` description rewritten (direct → always wake; quie
 
 ## Acceptance Criteria
 
-- [ ] `add_message` with `to: '@neo-…'` (≠ sender), `wakeSuppressed: true`, a non-actionable subject (e.g. `[re: …] ack`) and no task/high priority is **rejected** with a message that states the rule; the spec pins it.
-- [ ] The sunset self-DM (`to === sender`, tag `sunset-protocol-handover`, `wakeSuppressed: true`) is still accepted and persisted mailbox-only; the spec pins it.
-- [ ] `AGENT:*` behaviour is byte-for-byte unchanged: the #15987 test passes untouched.
-- [ ] A `human`-class sender and a `system`-class sender keep their contextual defaults; the spec pins the system `[alert]` case.
-- [ ] The baton decision (wake, or the one named exception) is recorded in the guard's JSDoc and mirrored in the skills ticket.
-- [ ] `openapi.yaml:2512` and `A2A.md:276-284` state the new rule; no surface still recommends a quiet direct ack.
-- [ ] Unit tier green: `MailboxService.spec.mjs` (the existing guard arms + the new ones).
+- [x] `add_message` with `to: '@neo-…'` (≠ sender), `wakeSuppressed: true`, a non-actionable subject (e.g. `[re: …] ack`) and no task/high priority is **rejected** with a message that states the rule; the spec pins it.
+- [x] The sunset self-DM (`to === sender`, tag `sunset-protocol-handover`, `wakeSuppressed: true`) is still accepted and persisted mailbox-only; the spec pins it.
+- [x] `AGENT:*` behaviour is byte-for-byte unchanged: the #15987 test passes untouched.
+- [x] A `human`-class sender and a `system`-class sender keep their contextual defaults; the spec pins the system `[alert]` case.
+- [x] The baton decision (wake, or the one named exception) is recorded in the guard's JSDoc and mirrored in the skills ticket.
+- [x] `openapi.yaml:2512` and `A2A.md:276-284` state the new rule; no surface still recommends a quiet direct ack.
+- [x] Unit tier green: `MailboxService.spec.mjs` (the existing guard arms + the new ones).
 
 ## Out of Scope
 
@@ -102,6 +103,7 @@ Retrieval Hint: `query_raw_memories("direct message wake suppressed peer idled o
 
 — Mnemosyne · @neo-fable-mnemosyne · Claude Fable 5.1 · Claude Code
 
+
 ## Timeline
 
 - 2026-10-24T15:19:27Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
@@ -115,4 +117,11 @@ Sibling for the skill text: neomjs/neo-agent-skills#205 (peer-role § Wake-contr
 
 - 2026-10-24T20:15:15Z @neo-fable-mnemosyne cross-referenced by #1254
 - 2026-10-24T20:59:48Z @neo-fable-mnemosyne added this to the **Boot cost: small answers by default** milestone
+- 2026-10-25T04:15:08Z @neo-gemini-julia cross-referenced by PR #1270
+- 2026-10-26T14:32:05Z @neo-fable-mnemosyne cross-referenced by PR #1300
+- 2026-10-26T15:32:22Z @tobiu closed this issue
+- 2026-10-26T15:32:22Z @tobiu referenced in commit `16cfb23` - "feat(memory-core): a direct A2A message to a peer always wakes (#1250) (#1300)"
+- 2026-10-26T15:40:12Z @neo-fable-mnemosyne cross-referenced by PR #214
+- 2026-10-26T16:43:07Z @neo-fable-mnemosyne cross-referenced by #20133
+- 2026-10-26T16:52:54Z @neo-gpt-sophie cross-referenced by PR #20134
 

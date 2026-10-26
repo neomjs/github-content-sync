@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T04:28:41Z'
-updatedAt: '2026-10-26T12:28:58Z'
+updatedAt: '2026-10-26T18:22:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/816'
 author: neo-gpt-sophie
 commentsCount: 2
@@ -29,6 +29,10 @@ blocking:
 closedAt: '2026-10-26T12:28:58Z'
 ---
 # Record Fleet identity-publication authority in ADR 0038
+
+## Delivered — documentation only
+
+[PR #817](https://github.com/neomjs/neo-agent-institution/pull/817) was human-merged on 2026-10-26 at `8c2e9d772b9222ca85d0addbfa28660cde3f7ac6`. Its formally approved head was `abfa8635035ede5bd370bcdf49f638c9083a52e0`; the reviewed and merged ADR share Git blob `491c659fd242f852644c0d54c3d28b45e27ffc3c`. The 5 documentation ACs below are verified. This closes decision-record delivery only; executable and installed acceptance remain on their existing source/UI and witness tickets.
 
 ## Context
 
@@ -79,11 +83,11 @@ Decision Record: **Required — ADR 0038 amendment**, quorum-backed design sourc
 
 ## Acceptance Criteria
 
-- [ ] AC-1: the existing ledger has one complete class-9 row and coherent class-count references; every other credential class retains its meaning.
-- [ ] AC-2: subject/issuer/kid, audience, typed scope, private/public custody, fixed-purpose envelope, confidential transport and two-direction non-alias rules match C7.
-- [ ] AC-3: the bounded custody section records boot-owned reservation, original-run provenance, split reserve/generate effects, lost-ack reconciliation, create-once refusal and consumed-generation rotation/revocation without granting ordinary PATs provisioner authority.
-- [ ] AC-4: the supported restore fence and administrative-recovery limits are explicit, with the C7 writer census linked; source delivery, installed manual acceptance and later automatic activation stay distinct.
-- [ ] AC-5: existing ADR history is preserved, the Brain ADR 0041/0019 relations and dependent-implementation merge gate are linked, and a cross-family reviewer verifies the exact amendment against the bound C7 signals.
+- [x] AC-1: the existing ledger has one complete class-9 row and coherent class-count references; every other credential class retains its meaning.
+- [x] AC-2: subject/issuer/kid, audience, typed scope, private/public custody, fixed-purpose envelope, confidential transport and two-direction non-alias rules match C7.
+- [x] AC-3: the bounded custody section records boot-owned reservation, original-run provenance, split reserve/generate effects, lost-ack reconciliation, create-once refusal and consumed-generation rotation/revocation without granting ordinary PATs provisioner authority.
+- [x] AC-4: the supported restore fence and administrative-recovery limits are explicit, with the C7 writer census linked; source delivery, installed manual acceptance and later automatic activation stay distinct.
+- [x] AC-5: existing ADR history is preserved, the Brain ADR 0041/0019 relations and dependent-implementation merge gate are linked, and a cross-family reviewer verifies the exact amendment against the bound C7 signals.
 
 ## Discussion Criteria Mapping
 
@@ -125,6 +129,8 @@ Retrieval Hint: D811 C7 class9 Fleet MC publication boot reservation originRunId
 
 Sophie (GPT-6 Astra · ultra, Codex Desktop)
 
+
+
 ## Timeline
 
 - 2026-10-26T04:28:41Z @neo-gpt-sophie assigned to @neo-gpt-sophie
@@ -160,4 +166,5 @@ Prescription checked: `learn/agentos/decisions/0038-fm-client-topology.md` §2.5
 
 * docs(agentos): pin publication contract and clarify rotation (#816)"
 - 2026-10-26T12:28:58Z @tobiu closed this issue
+- 2026-10-26T18:33:12Z @neo-opus-ada cross-referenced by PR #824
 

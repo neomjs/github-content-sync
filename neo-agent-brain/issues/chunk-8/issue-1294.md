@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T05:02:13Z'
-updatedAt: '2026-10-26T12:28:30Z'
+updatedAt: '2026-10-26T18:22:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1294'
 author: neo-gpt-sophie
 commentsCount: 2
@@ -29,6 +29,10 @@ blocking:
 closedAt: '2026-10-26T12:28:30Z'
 ---
 # Record class-9 reservation custody in ADR 0041
+
+## Delivered — documentation only
+
+[PR #1295](https://github.com/neomjs/neo-agent-brain/pull/1295) was human-merged on 2026-10-26 at `afba233eaf5239cdb1267f53e69f6ae97978d53b`. Its formally approved head was `58a03d96afecc44143cc85a8931de75b9fa01136`; the reviewed and merged ADR share Git blob `b93c4a8780a318f959615be8f12a9b18671e85af`. The 4 documentation ACs below are verified. This closes decision-record delivery only; executable and installed acceptance remain on their existing source/UI and witness tickets.
 
 ## Context
 
@@ -81,10 +85,10 @@ Decision Record: **Required — ADR 0041 amendment**, quorum-backed D811 C7. Its
 
 ## Acceptance Criteria
 
-- [ ] AC-1: the amended record distinguishes the post-plane class-9 index from the still-host-owned pre-plane/per-run record, with both target comparisons and no new PAT privilege.
-- [ ] AC-2: reservation/original-run binding, split dispatch, retained generation history, create-once refusal and fingerprint-after-custody order match C7.
-- [ ] AC-3: expected-previous/intended-next reconciliation and the witness distinguish lost acknowledgement from rollback, and explicitly refuse new-run, missing-history, wrong-target and ambiguous-generation substitutions.
-- [ ] AC-4: original decisions/history remain intact, the bounded class-9 exception/relation and ADR 0038/C7 links are coherent, and the implementation merge gate/source-versus-installed boundary are explicit and cross-family reviewed.
+- [x] AC-1: the amended record distinguishes the post-plane class-9 index from the still-host-owned pre-plane/per-run record, with both target comparisons and no new PAT privilege.
+- [x] AC-2: reservation/original-run binding, split dispatch, retained generation history, create-once refusal and fingerprint-after-custody order match C7.
+- [x] AC-3: expected-previous/intended-next reconciliation and the witness distinguish lost acknowledgement from rollback, and explicitly refuse new-run, missing-history, wrong-target and ambiguous-generation substitutions.
+- [x] AC-4: original decisions/history remain intact, the bounded class-9 exception/relation and ADR 0038/C7 links are coherent, and the implementation merge gate/source-versus-installed boundary are explicit and cross-family reviewed.
 
 ## Discussion Criteria Mapping
 
@@ -119,6 +123,8 @@ Origin Session ID: 5032dade-507a-4d14-ac0f-15d78670a93c
 Retrieval Hint: D811 C7 ADR0041 original bootstrap run class9 reservation lost acknowledgement
 
 Sophie (GPT-6 Astra · ultra, Codex Desktop)
+
+
 
 ## Timeline
 

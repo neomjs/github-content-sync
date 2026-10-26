@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T08:24:27Z'
-updatedAt: '2026-10-26T08:24:27Z'
+updatedAt: '2026-10-26T14:38:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1297'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -67,10 +67,12 @@ Implement the Fleet half of the graduated protocol as one usable publisher:
 | Class-9 signer / provisioner | D811 C7; ADR0038/0041/0019 | Create once, stable issuer, verifier-first same-update resume; missing custody/history refuses | Config/custody docs; interruption matrix and actual file permissions |
 | Host-facing binding read | MC admitted membership, relayed by Fleet | Exact active incarnation and pending state; unavailable remains unavailable | Typed wire docs; wrong target/credential/old-incarnation negatives |
 
+Baseline completeness clarification: [Ada's source read](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6418428269) and [Grace's product-capacity boundary](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6418663412). The 102,400-byte measurement is the current outer JSON parser limit; framing and the supported capacity must be measured together. No truncation or multipart baseline is adopted.
+
 ## Acceptance Criteria
 
 - [ ] AC-1: all six operation kinds share durable per-identity ordering and domain-separated provider-stable keys. Concurrent bind/confirmation cannot overtake; same-token same-intent recovers exact bytes; changed intent conflicts; restart preserves pending work and tombstones.
-- [ ] AC-2: first baseline is complete and never recreated from unreadable/missing history. Bind/remove/recreate/rekey preserve exact incarnations; rekey is one MC transition, and local failure/retry cannot expose a false smaller canonical set.
+- [ ] AC-2: first enablement captures the complete plane-wide binding set under mutation serialization and admits it as one atomic baseline revision; unreadable/missing history never recreates it. Every entry must be representable under #1296's typed field caps and declared supported plane/byte bound: refuse the whole capture by name on any invalid entry or overflow, retain the complete census, and name the failing entry, seat count, limit and correct-or-retire remedy. Pre-baseline bind/confirm refuse and remain pending in their durable queues. Bind/remove/recreate/rekey preserve exact incarnations; rekey is one MC transition, and local failure/retry cannot expose a false smaller canonical set.
 - [ ] AC-3: the real typed methods admit only the current operating principal, preserve distinct relation failures, explicit null and novel-family intent, and constrain correction to the original author's tenure/target. Ordinary seat credentials and forged provenance cannot publish.
 - [ ] AC-4: every signing or re-signing checks current authority; exact purpose/domain/target/kid/issuer and 300000 ms clock rules hold. Logical identity survives expiry/key rotation; receipt/status reaches the client without signing material.
 - [ ] AC-5: normal install and the first ordinary upgrade provision the verifier, observe the exact reserved attempt, durably dispatch generation, stage the Fleet-only secret and public trust, and verify final consumed agreement in one resumable update. Interim health is not completion; no live credentials are used in source tests.
@@ -123,6 +125,7 @@ Sophie (GPT-6 Astra · ultra, Codex Desktop)
 Retrieval Hint: D811 C8 Fleet membership outbox class9 originalRunId create-once generation history
 
 
+
 ## Timeline
 
 - 2026-10-26T08:24:28Z @neo-gpt-sophie assigned to @neo-gpt-sophie
@@ -139,4 +142,5 @@ Retrieval Hint: D811 C8 Fleet membership outbox class9 originalRunId create-once
 - 2026-10-26T08:31:10Z @neo-gpt-sophie cross-referenced by #819
 - 2026-10-26T08:32:32Z @neo-gpt-sophie cross-referenced by #875
 - 2026-10-26T10:03:10Z @neo-gpt-sophie cross-referenced by #1296
+- 2026-10-26T18:33:12Z @neo-opus-ada cross-referenced by PR #824
 
