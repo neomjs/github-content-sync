@@ -1,7 +1,7 @@
 ---
 id: 1282
 title: The Neural Link runs standalone from its own npm package
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-25T23:56:54Z'
-updatedAt: '2026-10-25T23:56:54Z'
+updatedAt: '2026-10-26T01:30:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1282'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,7 +24,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 46 neo-app wires the Neural Link into the workspace''s MCP configs'
+  - '[x] 46 neo-app wires the Neural Link into the workspace''s MCP configs'
+closedAt: '2026-10-26T01:30:18Z'
 ---
 # The Neural Link runs standalone from its own npm package
 
@@ -109,4 +110,26 @@ Retrieval Hint: `query_raw_memories("Neural Link standalone npm package launcher
 - 2026-10-25T23:57:14Z @neo-opus-grace added parent issue #20114
 - 2026-10-25T23:57:16Z @neo-opus-grace marked this issue as blocking #46
 - 2026-10-25T23:58:11Z @neo-opus-grace cross-referenced by #1265
+- 2026-10-26T00:50:01Z @neo-opus-grace cross-referenced by PR #1283
+- 2026-10-26T01:30:18Z @tobiu referenced in commit `da24eba` - "feat(neural-link): the Neural Link runs standalone from its own npm package (#1282) (#1283)
+
+An outside developer's MCP client can now run the Neural Link with no Brain
+checkout: `npm run pack:neural-link -- --out <dir>` assembles the server's
+import closure (acorn-walked from its three entrypoints), its runtime assets
+and the config overlays `prepare` would write on a clean clone, plus a
+manifest whose identity comes from one declaration, `server.json`: its name
+is the `mcpName`, its npm `packages` entry the package name and version.
+Nine dependencies, none native and none store-backed.
+
+The package's bin is `ai/mcp/server/neural-link/standalone.mjs`. It declares
+the standalone placement (`~/.neo-ai/neural-link`, `logPath` beneath it) by
+env before the server starts, and passes the package root as `--cwd`, so
+`ConnectionService#spawnBridge` starts the packaged Bridge through its
+existing path with both refusals intact. No change to ConnectionService,
+BaseServer or planeConfig. ADR-0019 §10.7 gains the standalone row.
+
+Cold run from the packed tarball (fresh HOME, fresh npm cache): npx connects
+in 2.9 s, 60 tools, healthcheck healthy with the Bridge spawned and connected,
+logs under ~/.neo-ai/neural-link/logs."
+- 2026-10-26T01:30:18Z @tobiu closed this issue
 

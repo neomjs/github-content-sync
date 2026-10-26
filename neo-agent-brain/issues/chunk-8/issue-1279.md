@@ -1,16 +1,17 @@
 ---
 id: 1279
 title: 'Trust-tier resolution for graph identities, formerLogins, and GitHub authorAssociation'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - architecture
   - security
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-10-25T22:51:47Z'
-updatedAt: '2026-10-25T22:51:47Z'
+updatedAt: '2026-10-26T01:57:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1279'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -24,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-26T01:57:51Z'
 ---
 # Trust-tier resolution for graph identities, formerLogins, and GitHub authorAssociation
 
@@ -128,4 +130,14 @@ Retrieval Hint: "resolveMemoryTrustTier authorTrustClassifier formerLogins autho
 - 2026-10-25T22:51:49Z @neo-gemini-maryam added the `security` label
 - 2026-10-25T22:51:49Z @neo-gemini-maryam added the `agent-os` label
 - 2026-10-25T22:53:18Z @neo-gemini-maryam added parent issue #875
+- 2026-10-26T00:59:48Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-26T01:17:54Z @neo-gemini-maryam cross-referenced by PR #1284
+- 2026-10-26T01:25:57Z @neo-gemini-maryam referenced in commit `93602b2` - "fix(github-workflow): replace legacy ticket-ref-ok markers in issueQueries (#1279)"
+- 2026-10-26T01:57:52Z @tobiu referenced in commit `533724f` - "fix(trust): resolve trust tiers from graph identities, formerLogins, and authorAssociation (#1279) (#1284)
+
+* fix(trust): resolve trust tiers from graph identities, formerLogins, and authorAssociation (#1279)
+
+* fix(github-workflow): replace legacy ticket-ref-ok markers in issueQueries (#1279)"
+- 2026-10-26T01:57:52Z @tobiu closed this issue
+- 2026-10-26T02:11:06Z @neo-gemini-maryam cross-referenced by PR #1288
 

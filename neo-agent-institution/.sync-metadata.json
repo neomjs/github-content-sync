@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-26T00:22:57.436Z",
-  "releasesLastFetched": "2026-10-26T00:22:57.177Z",
+  "lastSync": "2026-10-26T06:12:00.206Z",
+  "releasesLastFetched": "2026-10-26T06:11:59.712Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -3511,6 +3511,15 @@
       "contentHash": "bca4ee41a61016f7f13bb0a4fbe7d4b228bb36b4530644c4a6860a779a482a88",
       "milestone": null,
       "commentsTotal": 0
+    },
+    "816": {
+      "state": "OPEN",
+      "path": "neo-agent-institution/issues/chunk-4/issue-816.md",
+      "closedAt": null,
+      "updatedAt": "2026-10-26T04:31:40Z",
+      "contentHash": "4e575b146135adc6b25ad9df98a8466732be4c4c9710f6481478413a52891dce",
+      "milestone": null,
+      "commentsTotal": 2
     }
   },
   "releases": {},
@@ -3523,15 +3532,6 @@
       "milestone": null,
       "updatedAt": "2026-10-21T12:19:00Z",
       "contentHash": "bfdcc601ed91e33bd81940912157698dcc8f94b57060246a6629135c31fecb09"
-    },
-    "773": {
-      "state": "MERGED",
-      "path": "neo-agent-institution/pulls/chunk-4/pr-773.md",
-      "closedAt": "2026-10-21T09:38:37Z",
-      "mergedAt": "2026-10-21T09:38:37Z",
-      "milestone": null,
-      "updatedAt": "2026-10-21T09:38:40Z",
-      "contentHash": "547d7ff6b59e82617a3c413d219323b02943e82f27005057df1e843fa15495ed"
     },
     "774": {
       "state": "MERGED",
@@ -3784,6 +3784,15 @@
       "milestone": null,
       "updatedAt": "2026-10-25T18:12:11Z",
       "contentHash": "253bdec9abf75f3a0c014c1ecae0fd334a933bf2923a765c9b13ea1747797ba3"
+    },
+    "817": {
+      "state": "OPEN",
+      "path": "neo-agent-institution/pulls/chunk-5/pr-817.md",
+      "closedAt": null,
+      "mergedAt": null,
+      "milestone": null,
+      "updatedAt": "2026-10-26T05:40:44Z",
+      "contentHash": "bdeee39cf755ac1c392924a2402ef67236ba26e7b6a4588f0f16fec3fb758643"
     }
   },
   "discussions": {
@@ -3800,8 +3809,8 @@
       "path": "neo-agent-institution/discussions/chunk-1/discussion-811.md",
       "closed": false,
       "closedAt": null,
-      "contentHash": "ed3f60961889bc36026dd2c14e66d873122ed385b15d224b41cb5238db85a020",
-      "updatedAt": "2026-10-25T20:46:50Z"
+      "contentHash": "ca627569a84537fd510883cc01faf371d7a896127463602cb075a5eaaf680545",
+      "updatedAt": "2026-10-26T06:11:50Z"
     }
   }
 }

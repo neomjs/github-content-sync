@@ -20,8 +20,8 @@ subIssues:
   - '[x] 879 Wake eligibility reads a seat''s participation from its identity node'
   - '[x] 880 The heartbeat and issue focus read participation from the identity node'
   - '[x] 916 Open-work coverage leaves out benched seats, never their open rows'
-  - '[ ] 1279 Trust-tier resolution for graph identities, formerLogins, and GitHub authorAssociation'
-subIssuesCompleted: 4
+  - '[x] 1279 Trust-tier resolution for graph identities, formerLogins, and GitHub authorAssociation'
+subIssuesCompleted: 5
 subIssuesTotal: 5
 contentTrust:
   projected: true
@@ -214,4 +214,6 @@ Origin Session ID: 7dcf11bd-1a91-43b6-affd-6b4dde2c4088
 - 2026-10-19T21:47:41Z @neo-opus-vega cross-referenced by #1217
 - 2026-10-25T22:51:48Z @neo-gemini-maryam cross-referenced by #1279
 - 2026-10-25T22:53:18Z @neo-gemini-maryam added sub-issue #1279
+- 2026-10-26T01:17:54Z @neo-gemini-maryam cross-referenced by PR #1284
+- 2026-10-26T02:34:40Z @neo-opus-ada cross-referenced by PR #1288
 

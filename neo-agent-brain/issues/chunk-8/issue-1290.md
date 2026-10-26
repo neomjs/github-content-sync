@@ -1,0 +1,120 @@
+---
+id: 1290
+title: 'Teach detail: ''summary'' and agentIdentity on query_raw_memories sweeps in seat memory and skills'
+state: OPEN
+labels:
+  - enhancement
+  - ai
+  - model-experience
+  - agent-os
+assignees: []
+createdAt: '2026-10-26T02:46:41Z'
+updatedAt: '2026-10-26T03:36:07Z'
+githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1290'
+author: neo-gemini-maryam
+commentsCount: 0
+parentIssue: null
+subIssues: []
+subIssuesCompleted: 0
+subIssuesTotal: 0
+contentTrust:
+  projected: true
+  quarantined: 6
+  signals: []
+blockedBy:
+  - '[ ] 1280 Support agentIdentity and summary detail on query_raw_memories and query_summaries'
+blocking: []
+---
+# Teach detail: 'summary' and agentIdentity on query_raw_memories sweeps in seat memory and skills
+
+## Context
+
+Follow-up leaf to `neomjs/neo-agent-brain#1280` (`PR #1288`) and `neomjs/neo-agent-brain#1281` (`PR #1285`), requested in Cycle-1 reviews (`pullrequestreview-5646779645` [QUARANTINED_URL: github.com] `RA-5` by `@neo-opus-ada` and `pullrequestreview-5647022042` [QUARANTINED_URL: github.com] `RA-4` by `@neo-opus-grace`) and grounded in `neomjs/neo` Discussion `#20111` (comment `19184520` [QUARANTINED_URL: github.com], dispositioned by `@neo-fable-clio` in `comment 19184558` [QUARANTINED_URL: github.com]).
+
+## The Problem
+
+1. **Teaching `detail: 'summary'` and `agentIdentity` on `query_raw_memories` discovery sweeps (`PR #1288` `RA-5`):**
+   - `neomjs/neo-agent-brain#1280` (`PR #1288`) adds `agentIdentity`, `detail: 'summary' | 'full'`, and `projection: 'public' | 'private'` to `query_raw_memories` (and `agentIdentity` to `query_summaries`), keeping `detail: 'full'` as the default on `query_raw_memories` so existing callers and unit specs remain 100% backward compatible.
+   - Keeping `detail: 'full'` as the default means the 30k–80k char context-window savings only materialize when agents and skills pass `detail: 'summary'` during discovery sweeps and reserve `detail: 'full'` for hydrating specific hits. Today, `ai/services/fleet/seatMemoryLayerTemplate.mjs:99-100` and `.agents/skills/memory-mining/references/memory-mining-protocol.md` (`lines 38-40`) still point at `query_raw_memories` without `detail: 'summary'`.
+2. **Neutralizing `SummaryService.resolveAuthorScope` error prefix (`PR #1288` Round-2 note):**
+   - `SummaryService.resolveAuthorScope` (`ai/services/memory-core/SummaryService.mjs:94`) starts its error string with `"SummaryService.listSummaries:"` even when called from `query_raw_memories` or `query_summaries`.
+3. **Post-Merge L3 Live-Plane Latency Verification for `explore_memory_history` (`PR #1285` `RA-4` `Residual-Owner: #1290`):**
+   - `neomjs/neo-agent-brain#1281` (`PR #1285`) bounds `explore_memory_history` via parallel per-identity turn walks and a 15s synthesis timeout (`L1` unit verified). Once `#1285` deploys to the Memory Core container plane, verify one live `explore_memory_history` call over the incident's window completes under the 60s MCP deadline (`L3`).
+
+## The Architectural Reality
+
+- `ai/services/fleet/seatMemoryLayerTemplate.mjs` (`410` LOC in `neomjs/neo-agent-brain`):
+  - Line `100` renders the `MEMORY.md` header note pointing to `query_raw_memories` and `query_recent_turns`.
+  - `test/playwright/unit/ai/services/fleet/seatMemoryLayerTemplate.spec.mjs` tests the rendered template output.
+- `ai/services/memory-core/SummaryService.mjs` (`line 94`):
+  - `resolveAuthorScope` error prefix.
+- `.agents/skills/memory-mining/references/memory-mining-protocol.md` (canonical in `neomjs/neo-agent-skills`, synced to `neomjs/neo`):
+  - `§2 Tool order by freshness` (`lines 34-42`) defines when to call `query_raw_memories` vs `query_summaries`.
+
+Structure map (`npm run ai:structure-map -- --files --loc` run `2026-10-26T02:43Z`): `ai/services/fleet/seatMemoryLayerTemplate.mjs` and `ai/services/memory-core/SummaryService.mjs` own the Brain-side surfaces; skill markdown lives in `neomjs/neo-agent-skills`.
+
+## The Fix
+
+1. **In `neomjs/neo-agent-brain` (`ai/services/fleet/seatMemoryLayerTemplate.mjs` & `SummaryService.mjs`):**
+   - Update the Memory Core pointer in `renderMemoryIndexMd` (`line 100`) and `renderAboutThisLayerMd` (`lines 157, 176, 206`) so generated seat memory layers teach `query_raw_memories({ query, detail: 'summary' })` (and optional `agentIdentity` / `memorySharing: 'team'`) for discovery sweeps, followed by targeted `detail: 'full'` (or `projection: 'public'`) hydration on matching hits.
+   - Update `SummaryService.resolveAuthorScope` (`line 94`) error prefix from `"SummaryService.listSummaries:"` to `"SummaryService.resolveAuthorScope:"`.
+   - Add assertions in `test/playwright/unit/ai/services/fleet/seatMemoryLayerTemplate.spec.mjs`.
+2. **In `neomjs/neo-agent-skills` (mirrored to `neomjs/neo`):**
+   - Update `.agents/skills/memory-mining/references/memory-mining-protocol.md` `§2 Tool order by freshness` to teach the two-step pattern: run `query_raw_memories({ query, detail: 'summary' })` (and `agentIdentity` when author-scoped) for the 2–4 discovery sweeps, then hydrate only relevant hits with `detail: 'full'` (`projection: 'public'` for cross-seat team reads).
+3. **Post-Deploy L3 Verification (`Residual-Owner` for `#1281` / `PR #1285`):**
+   - Run one live `explore_memory_history` call on the deployed Memory Core plane over a 7d window and record the `< 60s` completion receipt.
+
+## Contract Ledger Matrix
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `ai/services/fleet/seatMemoryLayerTemplate.mjs` (`lines 99-100, 157, 176, 206`) | `neomjs/neo-agent-brain#1280` (`PR #1288`) + Discussion `#20111` Option F | Teaches `detail: 'summary'` (and `agentIdentity`) on `query_raw_memories` discovery sweeps before `detail: 'full'` hydration | Existing `MEMORY.md` files remain valid | `seatMemoryLayerTemplate.mjs` JSDoc + rendered markdown | `seatMemoryLayerTemplate.spec.mjs` unit test |
+| `SummaryService.resolveAuthorScope` (`SummaryService.mjs:94`) | `PR #1288` Round-2 review note | Uses neutral `"SummaryService.resolveAuthorScope:"` prefix on unbound `@me` error | Throws `Error` as before | `SummaryService.mjs` JSDoc | `SummaryService.AuthorScope.spec.mjs` |
+| `explore_memory_history` live plane call (`Residual-Owner` for `#1281` / `PR #1285`) | `neomjs/neo-agent-brain#1281` (`PR #1285` `RA-4`) | Completes under the 60s MCP deadline on the deployed plane | Degrades synthesis via `synthesis-failed: timeout` at 15s | `PR #1285` Post-Merge Validation | L3 live plane receipt |
+
+## Decision Record impact
+
+`aligned-with` `learn/agentos/decisions/0007-agents-md-compaction-taxonomy.md` — any `AGENTS.md` touch must stay net-neutral or net-negative in loaded bytes; primary procedural detail lives in `seatMemoryLayerTemplate.mjs` and `memory-mining-protocol.md`.
+
+## Acceptance Criteria
+
+- [ ] `ai/services/fleet/seatMemoryLayerTemplate.mjs` teaches `detail: 'summary'` (and `agentIdentity`) on `query_raw_memories` discovery sweeps, and `SummaryService.resolveAuthorScope` uses a neutral error prefix, with `seatMemoryLayerTemplate.spec.mjs` and `SummaryService.AuthorScope.spec.mjs` passing.
+- [ ] `memory-mining-protocol.md` (`§2 Tool order by freshness`) teaches `detail: 'summary'` for initial `query_raw_memories` sweeps and `detail: 'full'` (`projection: 'public'` for cross-seat reads) for hit hydration.
+- [ ] Post-deploy L3 residual from `#1281` / `PR #1285`: one `explore_memory_history` call on the live Memory Core plane over the incident's window completes under 60s.
+
+## Out of Scope
+
+- Changing `query_raw_memories`'s schema default from `detail: 'full'` to `detail: 'summary'` (intentionally kept `'full'` in `#1280` to preserve backward compatibility for existing callers/tests).
+
+## Avoided Traps
+
+- **Bloating `AGENTS.md` loaded byte count:** Detailed parameter guidance belongs in `memory-mining-protocol.md` and `seatMemoryLayerTemplate.mjs`, not in turn-loaded `AGENTS.md` prose (`ADR-0007`).
+
+## Related
+
+- Follow-up to `neomjs/neo-agent-brain#1280` (`PR #1288` Cycle-1 review `pullrequestreview-5646779645` `RA-5` and Round-2 review `pullrequestreview-5646882329` by `@neo-opus-ada`)
+- Residual owner (`Residual-Owner: #1290`) for `neomjs/neo-agent-brain#1281` (`PR #1285` Cycle-1 review `pullrequestreview-5647022042` `RA-4` by `@neo-opus-grace`)
+- `neomjs/neo` Discussion `#20111` (Option F — comment `19184520` [QUARANTINED_URL: github.com], disposition `19184558` [QUARANTINED_URL: github.com])
+
+unowned-rationale: Blocked by `#1280` (`PR #1288`) and sequenced immediately after `#1288` and `#1285` merge so the documented parameters and bounded `explore_memory_history` are live on `dev`.
+
+Live latest-open sweep: checked latest 20 open issues in `neomjs/neo-agent-brain` at `2026-10-26T02:43Z` (newest `#1286`); no duplicate found.
+A2A in-flight claim sweep: checked `list_messages({ status: 'all', limit: 15 })` at `2026-10-26T02:43Z`; no competing claim.
+MC sweep: `query_raw_memories` on `query_raw_memories summary seatMemoryLayerTemplate`, 5 results, no prior teaching ticket found.
+Own-assignment sweep: `#1280` and `#1281` currently assigned in `neomjs/neo-agent-brain`.
+
+Origin Session ID: 06cf8283-28b4-42b3-b137-ae9da8ab6995
+Retrieval Hint: "seatMemoryLayerTemplate memory-mining query_raw_memories detail summary agentIdentity explore_memory_history 1280 1281 20111"
+
+
+## Timeline
+
+- 2026-10-26T02:46:42Z @neo-gemini-maryam added the `enhancement` label
+- 2026-10-26T02:46:43Z @neo-gemini-maryam added the `ai` label
+- 2026-10-26T02:46:43Z @neo-gemini-maryam added the `model-experience` label
+- 2026-10-26T02:46:43Z @neo-gemini-maryam added the `agent-os` label
+- 2026-10-26T02:47:02Z @neo-gemini-maryam cross-referenced by #20118
+- 2026-10-26T02:49:09Z @neo-gemini-maryam cross-referenced by PR #1288
+- 2026-10-26T03:02:41Z @neo-gemini-maryam marked this issue as being blocked by #1280
+- 2026-10-26T03:35:24Z @neo-gemini-maryam cross-referenced by PR #1285
+

@@ -6,7 +6,7 @@ title: >-
 author: neo-opus-grace
 category: Ideas
 createdAt: '2026-10-25T23:31:05Z'
-updatedAt: '2026-10-25T23:57:58Z'
+updatedAt: '2026-10-26T01:12:52Z'
 closed: true
 closedAt: '2026-10-25T23:57:58Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -112,7 +112,7 @@ The contract:
 - **OQ2** Bridge ownership. `[RESOLVED_TO_AC]` Spawn on a supplied `--cwd` (the package root), as contract 3 says. Spawning a co-located Bridge when `cwd` is omitted is not adopted: it brings back the hidden default `spawnBridge` refuses on purpose. The Agent OS path is untouched.
 - **OQ3** The v1 `app` skills. `[RESOLVED_TO_AC]` `neural-link` and `neo-app-authoring`.
 - **OQ4** Harness trust. `[RESOLVED_TO_AC]` Write project-level configs only. Claude Code's approval for project `.mcp.json` servers and Codex's trusted-project rule are harness-native consent. The cold run records them as consent steps, apart from setup steps.
-- **OQ5** The package name and npm owner. `[OQ_RESOLUTION_PENDING]` These are human-owned (the operator): a new package's first publish and its trusted publisher. Recommendation: publish from the npm account that already publishes `neo.mjs` and `neo-app`. Julia proposes `@neomjs/neural-link`, or an unscoped `neo-neural-link-mcp` if no `@neomjs` npm org exists. `mcpName` is fixed either way.
+- **OQ5** The package name and npm owner. `[RESOLVED_TO_AC]` The name is `neo-neural-link`, unscoped like `neo-app` and `neo-agent-skills`, and free on npm. The operator delegated the choice (2026-10-26: "equal peer stands. if you want a specific package name, and it is free, ok."). The first publish and its trusted publisher stay his, because they run under his npm account. `mcpName` is `io.github.neomjs/neural-link`.
 
 ## STEP_BACK record
 

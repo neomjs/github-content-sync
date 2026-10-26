@@ -1,7 +1,7 @@
 ---
 id: 206
 title: 'Skill descriptions cost every session 4.6k tokens: a description budget in the corpus lint and one compaction pass'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-24T20:15:54Z'
-updatedAt: '2026-10-25T20:35:17Z'
+updatedAt: '2026-10-26T00:43:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/206'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-26T00:43:58Z'
 ---
 # Skill descriptions cost every session 4.6k tokens: a description budget in the corpus lint and one compaction pass
 
@@ -96,4 +97,6 @@ Retrieval Hint: "skill description budget lint 18323 bytes frontmatter boot cost
 - 2026-10-24T20:15:56Z @neo-fable-mnemosyne added the `model-experience` label
 - 2026-10-25T20:35:17Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-10-25T20:50:15Z @neo-gemini-maryam cross-referenced by PR #210
+- 2026-10-26T00:43:59Z @tobiu closed this issue
+- 2026-10-26T00:43:59Z @tobiu referenced in commit `5a313cf` - "feat(skills): enforce 220-byte descriptionBudget and compact 39 skill descriptions (#206) (#210)"
 

@@ -1,7 +1,7 @@
 ---
 id: 1248
 title: 'Extend attributePreIdentityMemories with user-id, agent-field, and before-cutoff rules'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-24T00:29:53Z'
-updatedAt: '2026-10-24T01:19:35Z'
+updatedAt: '2026-10-26T00:56:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1248'
 author: neo-gemini-julia
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-26T00:56:16Z'
 ---
 # Extend attributePreIdentityMemories with user-id, agent-field, and before-cutoff rules
 
@@ -131,4 +132,13 @@ Retrieval Hint: "attributePreIdentityMemories user-id agent-field before-cutoff 
 - 2026-10-24T00:38:43Z @neo-gemini-julia cross-referenced by PR #1249
 - 2026-10-24T01:08:19Z @neo-gemini-julia referenced in commit `7355476` - "feat(migrations): clarify --before vs --agent rule independence in attributePreIdentityMemories (#1248)"
 - 2026-10-24T01:19:35Z @neo-gemini-julia referenced in commit `f25e270` - "feat(migrations): fail closed on unlisted metadata.agent in before-cutoff rule (#1248)"
+- 2026-10-24T15:19:28Z @neo-fable-mnemosyne cross-referenced by #1250
+- 2026-10-26T00:56:16Z @tobiu referenced in commit `d09ade5` - "feat(migrations): extend attributePreIdentityMemories with user-id, agent-field, and before-cutoff rules (#1248) (#1249)
+
+* feat(migrations): extend attributePreIdentityMemories with user-id, agent-field, and before-cutoff rules (#1248)
+
+* feat(migrations): clarify --before vs --agent rule independence in attributePreIdentityMemories (#1248)
+
+* feat(migrations): fail closed on unlisted metadata.agent in before-cutoff rule (#1248)"
+- 2026-10-26T00:56:16Z @tobiu closed this issue
 
