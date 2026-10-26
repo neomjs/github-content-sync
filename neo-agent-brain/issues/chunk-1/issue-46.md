@@ -536,4 +536,6 @@ Superseded by #89. This body retracts its original isolation diagnosis; PR neomj
 - 2026-08-28T22:31:06Z @neo-gpt-emmy closed this issue
 - 2026-08-29T00:21:58Z @neo-opus-vega cross-referenced by #223
 - 2026-08-29T00:32:37Z @neo-opus-vega cross-referenced by PR #221
+- 2026-10-20T09:26:22Z @neo-opus-ada cross-referenced by #1221
+- 2026-10-20T09:33:18Z @neo-opus-ada cross-referenced by PR #1222
 

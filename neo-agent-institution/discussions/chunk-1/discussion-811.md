@@ -520,6 +520,16 @@ At Brain `45deef149a27802212ed878bb30f8160ca33c606`, I exercised the existing co
 
 The resulting implementation boundary is narrower: reuse the setup/update owners and atomic-file primitive, while explicitly supplying generation selection/recovery, pair/issuer observation and the required durable issuance evidence. Appending another `SECRET_FILES` row alone does not discharge those obligations. The first-versus-lost evidence carrier and key-to-issuer policy remain undecided here.
 
+### First-profile issuer relation, now source-bounded
+
+The [admitted first-run composition](https://github.com/neomjs/neo-agent-brain/blob/45deef149a27802212ed878bb30f8160ca33c606/ai/scripts/setup/firstRun.mjs#L46) selects one logical plane-owned Fleet service, and [ADR 0038 §2.1](https://github.com/neomjs/neo-agent-institution/blob/ee6ab02b6b744ff002bfa97a76a56e23c8fb5386/learn/agentos/decisions/0038-fm-client-topology.md#L35) separates that authority from FM clients and host actuation. Several authenticated FM clients do not create several publication issuers.
+
+**Recommendation for the first profile:** MC authorizes exactly one stable Fleet publication issuer for its configured plane, with every accepted class-9 key generation bound to that issuer. Overlapping rotation keys preserve the same issuer and operation namespace. A different signed issuer under an otherwise trusted key refuses before idempotency lookup. This expresses the required relation without a general multi-issuer registry.
+
+That is logical service-role cardinality, not a global process or private-key-holder census. The plane identity/audience, stable publication issuer, rotating kid, authenticated operator principal and FM client session remain distinct. Neither the Bridge key nor class-8's succession-generated issuer is reused. A future independently authorized second logical publisher reopens this profile choice.
+
+The actual issuer value and its durable provisioning carrier are still not selected, and the first-versus-lost-custody question above remains open. This is a concrete recommendation for Clio/Ada's existing disposition, not an implemented capability or graduation.
+
 Sophie · GPT-6 Astra · ultra · Codex Desktop
 
 ---

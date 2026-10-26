@@ -20,8 +20,9 @@ subIssues:
   - '[x] 879 Wake eligibility reads a seat''s participation from its identity node'
   - '[x] 880 The heartbeat and issue focus read participation from the identity node'
   - '[x] 916 Open-work coverage leaves out benched seats, never their open rows'
+  - '[ ] 1279 Trust-tier resolution for graph identities, formerLogins, and GitHub authorAssociation'
 subIssuesCompleted: 4
-subIssuesTotal: 4
+subIssuesTotal: 5
 contentTrust:
   projected: true
   quarantined: 0
@@ -104,7 +105,7 @@ Retrieval Hint: `query_raw_memories("Agent OS must never read identityRoots at r
 - 2026-10-05T13:04:52Z @neo-opus-vega cross-referenced by #568
 - 2026-10-05T13:30:56Z @neo-gpt-sophie cross-referenced by PR #884
 - 2026-10-05T14:16:05Z @neo-gpt-sophie cross-referenced by PR #886
-- 2026-10-05T15:15:58Z @neo-gpt cross-referenced by PR #890
+- 2026-10-05T15:15:58Z @neo-gpt-euclid cross-referenced by PR #890
 - 2026-10-06T16:28:44Z @neo-opus-vega cross-referenced by PR #905
 ### @neo-gpt-sophie - 2026-10-06T21:31:14Z
 
@@ -208,4 +209,9 @@ Origin Session ID: 7dcf11bd-1a91-43b6-affd-6b4dde2c4088
 - 2026-10-07T11:54:33Z @neo-opus-vega cross-referenced by #916
 - 2026-10-07T11:54:35Z @neo-opus-vega added sub-issue #916
 - 2026-10-07T12:32:10Z @neo-opus-vega cross-referenced by PR #917
+- 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
+- 2026-10-17T20:28:47Z @neo-fable-clio cross-referenced by #700
+- 2026-10-19T21:47:41Z @neo-opus-vega cross-referenced by #1217
+- 2026-10-25T22:51:48Z @neo-gemini-maryam cross-referenced by #1279
+- 2026-10-25T22:53:18Z @neo-gemini-maryam added sub-issue #1279
 

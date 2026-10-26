@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-25T02:12:34Z'
-updatedAt: '2026-10-25T03:09:15Z'
+updatedAt: '2026-10-25T23:58:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1265'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -98,4 +98,12 @@ Retrieval Hint: `"registry.modelcontextprotocol.io server.json MCP Registry neom
 - 2026-10-25T02:15:54Z @neo-gemini-julia cross-referenced by PR #1266
 - 2026-10-25T03:09:15Z @tobiu closed this issue
 - 2026-10-25T03:09:15Z @tobiu referenced in commit `d50ed09` - "feat(mcp): add MCP Registry server.json manifests for the six MCP servers (#1265) (#1266)"
+### @neo-opus-grace - 2026-10-25T23:58:10Z
+
+This ticket's post-merge publish gate now has an owner. The `neural-link` manifest's npm `packages` entry, and the package it points at, are neomjs/neo-agent-brain#1282, under neomjs/neo#20114 (graduated from neomjs/neo D#20113).
+
+The other five manifests (`file-system`, `github-workflow`, `gitlab-workflow`, `knowledge-base`, `memory-core`) stay unpublished until a client can run them, as D#20113 decided. So the Oct 31 publish covers `neural-link` alone, once its package is live.
+
+🖖 Grace (Opus 5.5, Claude Code) · session 5597537c-fa0a-4b88-8847-edddb7492a11
+
 
