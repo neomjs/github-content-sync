@@ -8,24 +8,25 @@ labels:
   - testing
   - architecture
   - security
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-07-14T05:32:12Z'
-updatedAt: '2026-08-26T15:10:53Z'
+updatedAt: '2026-10-26T22:50:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/98'
-author: neo-gpt
-commentsCount: 0
+author: neo-gpt-euclid
+commentsCount: 1
 parentIssue: 106
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 1
   signals: []
 blockedBy:
   - '[ ] 3 Calibrate community policy from measured evidence'
-  - '[ ] 101 Project bounded tenant community-attention counts'
-  - '[ ] 102 Bind community events to canonical A2A Tasks'
+  - '[x] 101 Project bounded tenant community-attention counts'
+  - '[x] 102 Bind community events to canonical A2A Tasks'
   - '[x] 103 Expose a temporal community Bird View and seen state'
   - '[x] 15156 Push hosted GitHub community batches securely'
   - '[x] 104 Coordinate local GitHub community reconciliation'
@@ -137,20 +138,46 @@ Creation duplicate sweep: immediately before filing at 2026-07-14T05:32:12.123Z,
 
 ## Timeline
 
-- 2026-07-14T05:32:14Z @neo-gpt added the `enhancement` label
-- 2026-07-14T05:32:14Z @neo-gpt added the `ai` label
-- 2026-07-14T05:32:14Z @neo-gpt added the `testing` label
-- 2026-07-14T05:32:15Z @neo-gpt added the `architecture` label
-- 2026-07-14T05:32:15Z @neo-gpt added the `security` label
-- 2026-07-14T05:33:13Z @neo-gpt marked this issue as being blocked by #15156
-- 2026-07-14T05:34:32Z @neo-gpt cross-referenced by #106
+- 2026-07-14T05:32:14Z @neo-gpt-euclid added the `enhancement` label
+- 2026-07-14T05:32:14Z @neo-gpt-euclid added the `ai` label
+- 2026-07-14T05:32:14Z @neo-gpt-euclid added the `testing` label
+- 2026-07-14T05:32:15Z @neo-gpt-euclid added the `architecture` label
+- 2026-07-14T05:32:15Z @neo-gpt-euclid added the `security` label
+- 2026-07-14T05:33:13Z @neo-gpt-euclid marked this issue as being blocked by #15156
+- 2026-07-14T05:34:32Z @neo-gpt-euclid cross-referenced by #106
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
+- 2026-08-24T11:39:13Z @neo-gpt-euclid marked this issue as being blocked by #3
 - 2026-08-26T15:10:55Z @tobiu added the `enhancement` label
 - 2026-08-26T15:10:55Z @tobiu added the `ai` label
 - 2026-08-26T15:10:55Z @tobiu added the `testing` label
 - 2026-08-26T15:10:55Z @tobiu added the `architecture` label
 - 2026-08-26T15:10:56Z @tobiu added the `security` label
-- 2026-08-26T15:11:05Z @neo-gpt marked this issue as being blocked by #15156
+- 2026-08-26T15:11:05Z @neo-gpt-euclid marked this issue as being blocked by #15156
+- 2026-08-26T15:11:06Z @neo-gpt-euclid marked this issue as being blocked by #3
+- 2026-08-26T15:13:19Z @neo-gpt-euclid marked this issue as being blocked by #102
+- 2026-08-26T15:13:19Z @neo-gpt-euclid marked this issue as being blocked by #101
+- 2026-08-26T15:13:31Z @neo-gpt-euclid marked this issue as being blocked by #104
+- 2026-08-26T15:13:34Z @neo-gpt-euclid marked this issue as being blocked by #103
+- 2026-08-26T15:14:31Z @tobiu added parent issue #106
 - 2026-08-26T15:24:34Z @neo-gpt-emmy cross-referenced by #99
 - 2026-08-26T15:31:17Z @tobiu cross-referenced by PR #176
+- 2026-10-26T22:50:37Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-26T22:50:40Z
+
+## Ticket Intake Evaluation (`#98`)
+
+- **Prescription checked:** `test/playwright/unit/ai/services/memory-core/communityAuthorityChainE2E.spec.mjs` + `learn/agentos/measurements/community-authority-chain-criteria-matrix.md` — owns the concern (capstone multi-tenant, multi-source end-to-end authority-chain verification suite + public criterion-to-test matrix mapping `OQ1`–`OQ10`, the three `STEP_BACK` partials, and `AC1`–`AC12`).
+- **Epic-Review Citation:** `neomjs/neo-agent-brain#106#issuecomment-6426058715` [QUARANTINED_URL: github.com] (`Greenlight`).
+- **Ticket Reality Classification:**
+  - `Ticket age`: `createdAt: 2026-07-14T05:32:12Z`, `updatedAt: 2026-10-26Z` (`pre-stale`).
+  - `ADR successor-risk`: `adr-aligned — artifact #98/2026-07-14; ADR 0036/Accepted/2026-07-18; evidence learn/agentos/decisions/0036-durable-community-activity-authority.md; route continue`.
+  - `Decision Record impact`: `aligned-with ADR 0036`
+  - `Verdict`: `valid-as-written` (Positive ROI).
+
+Claiming `#98` on branch `agent/98-community-authority-chain-e2e` (stacked on `#1312` / `#1311`).
+
+— Maryam 🧭
+
+- 2026-10-26T23:09:34Z @neo-gemini-maryam cross-referenced by PR #1313
+- 2026-10-26T23:33:25Z @neo-gemini-maryam referenced in commit `c86036b` - "feat(memory-core): prove community-activity authority chain end to end (#98)"
 

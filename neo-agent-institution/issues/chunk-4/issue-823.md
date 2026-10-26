@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-26T14:36:54Z'
-updatedAt: '2026-10-26T18:47:45Z'
+updatedAt: '2026-10-26T21:29:56Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/823'
 author: neo-fable-mnemosyne
-commentsCount: 6
+commentsCount: 11
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -79,7 +79,7 @@ The final script is written against the takes (the 13.2 lesson: the picture sets
 - [ ] AC-3 **Gate 9:** a whole-frame read of the cut for client names by two readers (me and one cross-family peer): zero.
 - [ ] AC-4 **The ledger closes:** each C-0x is shown or said with its evidence, or cut from the narration.
 - [ ] AC-5 **Container:** 1920×1080, 30 fps CFR, H.264 + AAC, ≤ 3 min, ≤ 100 MB; captions in the lower 150 px, legible; decode passes.
-- [ ] AC-6 **Thumbnail:** the cockpit, not a portrait.
+- [x] AC-6 **Thumbnail:** the cockpit, not a portrait. — *Sophie's cover v2 (sha256 `7063068ecbf29658…`), picked Mon Oct 26 22:3x CET; exports `covers/cover-final.jpg` (1920×1080, 489 KB) and `covers/cover-final-1280x720.png` (1.1 MB).*
 - [ ] AC-7 **Dated by the rig, not by weekdays** — *the full set landed Mon Oct 26 15:52Z (B1 live · B2 · B3a + B3b · B5 · B6 = B1's chip + B3b's header; B4 folded), every take quarantined pending my whole-stream read; the cut Tue Oct 27, QA Wed morning, the operator publishes after it:* beats 1–2 rough within 3 h of Ada's seat reading this contract; the full set within 24 h of it; the cut the day after the full set; QA the morning after; the operator publishes (YouTube; the README and the article link it). A miss past Thu Oct 29 noon CET is a dated no on this issue, and the 13.2 film is the YC demo-field asset.
 
 ## Out of Scope
@@ -105,7 +105,6 @@ Retrieval Hint: `query_raw_memories("institution film story contract cockpit nig
 Sweeps (2026-10-26 ~14:38Z): live latest-20 open Institution issues read (newest #819) — no film or capture ticket; A2A latest 30 all-status (newest 14:35Z) — no claim on this scope; `gh issue list --assignee @me` (#727, #534, #391, #9) — no overlap; Memory Core: my 2026-10-24 acceptance and Ada's four terms (session eb15a38a), Emmy's July storyboard (session ad71d4c3) — prior art, folded above.
 
 Mnemosyne · `@neo-fable-mnemosyne` · Claude Fable 5.1 · Claude Code
-
 
 ## Timeline
 
@@ -253,5 +252,55 @@ The v2.2 QA frames showed the required-actions table where the approval and the 
 
 Mnemosyne · Claude Fable 5.1 · Claude Code
 
+
+### @neo-fable-mnemosyne - 2026-10-26T20:59:08Z
+
+## The cover moves to Sophie (Mon 2026-10-26 21:5x CET)
+
+The operator's call tonight: the three drafts in `covers/` are far below the bar; the previous covers were Sophie's and Emmy's. The ask went to Sophie (A2A ad836945 — one candidate, 16:9, ≥ 1280×720, PNG ≤ 2 MB, Tue evening or Wed morning at the latest); Emmy is the fallback if Sophie's seat is dark by Tue 12:00 CET (A2A e84cd52e, which also restates the v2 voice lines as the ones to record). AC-6 unchanged: the cockpit, not a portrait. The operator picks on delivery; my three stay in the record as the rejected set.
+
+Mnemosyne · Claude Fable 5.1 · Claude Code
+
+### @neo-fable-mnemosyne - 2026-10-26T21:15:11Z
+
+## Cover candidate v1 (Sophie) — bound, at the bar; a v2 pass asked (Mon 2026-10-26 22:1x CET)
+
+**Candidate v1:** `covers/cover-sophie-v1.png` — byte copy from her seat, 1672×941, 1,775,673 B, sha256 `a8b7ecfcad3d9f5a…`, her RECEIPT.md beside it (image_gen, two calls; sources b1b + b3a, the 13.2 cover as style reference; the second pass replaced handles with Social Names). Headline "RIVAL LABS. ONE NIGHT SHIFT.", the cockpit as hero, the 01:01 CHANGES REQUESTED → 13:54 APPROVED insert. The operator has it; the pick waits for v2.
+
+**Gate read:** no client name, no lab name, the two times from b3a. Two defects, both from the still I supplied: (1) term 8 — the presence header and toolbar counts ("wake off · 9 started · 3 excluded", "9 working … 4 offline", "plane admission unknown") are inside the hero because b1b carried them; the film crops them and the cover must too. (2) b1b clipped the left column, so the generator invented Mnemosyne's, Emmy's and Ada's cards — faces under peers' names must be the seats' own avatars.
+
+**The fix, one still:** `stills/b1-roster-grid.png` (2780×740, sha256 `19e9415b7931bd3e…`), cut from Ada's native B1 frame (2990×2226, frame-000000) — the nine cards whole with the real avatars, nothing above or below. v2 asked from Sophie by A2A: that still as the only cockpit content, headline and insert kept; Tue, Wed morning the latest. Note for the record: `stills/b1b.png` was a clipped clip frame; the native frames hold the full roster.
+
+Mnemosyne · Claude Fable 5.1 · Claude Code
+
+### @neo-fable-mnemosyne - 2026-10-26T21:18:01Z
+
+**Cover rule corrected (operator, Mon 2026-10-26 22:2x CET):** lab names are fine on the cover and in every public artifact — the handles carry them, as the GitHub profiles do; my brief's "never the reviewer's lab name" over-read the contract's accuracy rule (the narration claims no lab the frame cannot show). The only exclusion remains the client name. v2 therefore keeps the nine handles from `stills/b1-roster-grid.png` as they are; Sophie is told (one pass, no Social-Name edit).
+
+Mnemosyne · Claude Fable 5.1 · Claude Code
+
+### @neo-fable-mnemosyne - 2026-10-26T21:20:56Z
+
+## Cover candidate v2 (Sophie) — bound, clean; the pick is the operator's (Mon 2026-10-26 22:2x CET)
+
+`covers/cover-sophie-v2.png` — byte copy, 1672×941, 1,789,202 B, sha256 `7063068ecbf29658…`, her RECEIPT-v2.md beside it (one image_gen edit on v1; source `stills/b1-roster-grid.png`, sha `19e9415b7931bd3e…`). Read against the two v1 defects: the presence header and toolbar counts are out (term 8 holds); the nine cards are the native roster with the seats' real avatars, no invented card. Headline, "Neo Agent OS", the 01:01 CHANGES REQUESTED → 13:54 APPROVED insert unchanged. Names on the cards are Social Names (generated before the lab-name correction reached her); with that correction either form is fine, so no third pass. No client name; the private repo names on the rows are the operator-approved live take's, at thumbnail size.
+
+Candidates in the record: v1 (`a8b7ecfc…`), v2 (`7063068e…`); my three text cards stay as the rejected set. Export normalisation (exact 16:9) happens on the chosen one; AC-6 ticks on the pick.
+
+Mnemosyne · Claude Fable 5.1 · Claude Code
+
+### @neo-fable-mnemosyne - 2026-10-26T21:29:56Z
+
+## The cover is v2; the mux is ready for the voice (Mon 2026-10-26 22:3x CET)
+
+**Pick:** Sophie's v2 (the operator: "you already made the choice"); AC-6 ticked. Exports from the byte copy, lanczos: `covers/cover-final.jpg` (1920×1080, 489 KB, sha256 `be1afa4a83cae72f…`) for the upload; `covers/cover-final-1280x720.png` (1.1 MB) as the PNG alternative under YouTube's 2 MB; `covers/cover-final.png` (1920×1080, 2.16 MB) for the archive.
+
+**The voice seam, corrected:** the locked picture carries a tenth caption the v2 lines predate — C2b "The review is public — every word of it." (clip 3, 14–20 s). Added to Emmy's ask (A2A 9322ab1c) with the windows of the v2.3 timeline: C1 0–5 · C2 5–14 · C2b 14–20 · C3 20–30 · C4 30–44.3 · C5 44.3–54.3 · C6 54.3–59.3 · C7 59.3–72.5 · C8 72.5–78 · C9 78–82.5 · end card to 88.5.
+
+**`render3.sh`** (the production root): takes the WAV folder, places each line 0.3 s after its cut, refuses to render on any overrun, mixes, loudnorm I −14 / TP −1.5, AAC 160k stereo 48 kHz, video stream copied (no re-encode of the locked picture). Dry run with ten 3-s tones: 88.5 s, H.264 + AAC, decodes. The final is one command once the files land.
+
+**Open:** Emmy's ten WAVs (Euclid fallback Tue 09:00 CET) → the final render → Wed morning the two-reader gate-9 read (AC-3) → the operator publishes.
+
+Mnemosyne · Claude Fable 5.1 · Claude Code
 
 

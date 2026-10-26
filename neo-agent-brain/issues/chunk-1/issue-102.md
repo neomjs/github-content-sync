@@ -1,32 +1,34 @@
 ---
 id: 102
 title: Bind community events to canonical A2A Tasks
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - architecture
   - security
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-07-14T05:31:21Z'
-updatedAt: '2026-09-20T02:10:32Z'
+updatedAt: '2026-10-26T22:41:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/102'
-author: neo-gpt
-commentsCount: 0
+author: neo-gpt-euclid
+commentsCount: 2
 parentIssue: 106
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 1
   signals: []
 blockedBy:
   - '[x] 15152 Reconcile GitHub issue activity exhaustively'
   - '[x] 15151 Admit idempotent community batches into durable history'
 blocking:
   - '[ ] 98 Prove the community-activity authority chain end to end'
-  - '[ ] 101 Project bounded tenant community-attention counts'
+  - '[x] 101 Project bounded tenant community-attention counts'
+closedAt: '2026-10-26T22:41:20Z'
 ---
 # Bind community events to canonical A2A Tasks
 
@@ -124,18 +126,66 @@ The uniqueness/race/crash acceptance criteria remain unchanged. Before code, res
 
 ## Timeline
 
-- 2026-07-14T05:31:23Z @neo-gpt added the `enhancement` label
-- 2026-07-14T05:31:23Z @neo-gpt added the `ai` label
-- 2026-07-14T05:31:23Z @neo-gpt added the `architecture` label
-- 2026-07-14T05:31:23Z @neo-gpt added the `security` label
-- 2026-07-14T05:32:55Z @neo-gpt marked this issue as being blocked by #15151
-- 2026-07-14T05:32:57Z @neo-gpt marked this issue as being blocked by #15152
-- 2026-07-14T05:34:32Z @neo-gpt cross-referenced by #106
+- 2026-07-14T05:31:23Z @neo-gpt-euclid added the `enhancement` label
+- 2026-07-14T05:31:23Z @neo-gpt-euclid added the `ai` label
+- 2026-07-14T05:31:23Z @neo-gpt-euclid added the `architecture` label
+- 2026-07-14T05:31:23Z @neo-gpt-euclid added the `security` label
+- 2026-07-14T05:32:55Z @neo-gpt-euclid marked this issue as being blocked by #15151
+- 2026-07-14T05:32:57Z @neo-gpt-euclid marked this issue as being blocked by #15152
+- 2026-07-14T05:34:32Z @neo-gpt-euclid cross-referenced by #106
+- 2026-08-26T15:11:06Z @neo-gpt-euclid marked this issue as blocking #98
 - 2026-08-26T15:13:15Z @tobiu added the `enhancement` label
 - 2026-08-26T15:13:15Z @tobiu added the `ai` label
 - 2026-08-26T15:13:15Z @tobiu added the `architecture` label
 - 2026-08-26T15:13:16Z @tobiu added the `security` label
-- 2026-08-26T15:13:18Z @neo-gpt marked this issue as being blocked by #15151
-- 2026-08-26T15:13:18Z @neo-gpt marked this issue as being blocked by #15152
-- 2026-09-19T23:01:07Z @neo-gpt cross-referenced by PR #392
+- 2026-08-26T15:13:18Z @neo-gpt-euclid marked this issue as being blocked by #15151
+- 2026-08-26T15:13:18Z @neo-gpt-euclid marked this issue as being blocked by #15152
+- 2026-08-26T15:13:19Z @neo-gpt-euclid marked this issue as blocking #101
+- 2026-08-26T15:13:19Z @neo-gpt-euclid marked this issue as blocking #98
+- 2026-08-26T15:14:31Z @tobiu added parent issue #106
+- 2026-09-19T23:01:07Z @neo-gpt-euclid cross-referenced by PR #392
+- 2026-10-26T20:04:05Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-26T20:04:08Z
+
+*Previously reviewed this epic: neomjs/neo-agent-brain#106#issuecomment-6426058715 [QUARANTINED_URL: github.com] (`IC_kwDOUBzDFM8AAAABfwXf2w`). Proceeding with sub pickup per `ticket-intake`.*
+
+## Ticket Intake & Acceptance-Point Resolution (`#102`)
+
+1. **Duplicate & Blocker Sweep:**
+   - Upstream blockers `neomjs/neo#15151` (`PR #15513`) and `neomjs/neo#15152` (`PR #15524`) are both `CLOSED` and merged on `dev`.
+   - Checked open PRs, issues, and recent A2A messages; no competing claim or duplicate implementation exists.
+
+2. **Resolution of the `2026-09-20` Intake Evidence (One-Transaction Acceptance Point):**
+   - As recorded in the `2026-09-20` intake note, wrapping `MailboxService.addMessage()` in a SQLite transaction cannot make canonical Task creation atomic with the `sourceEventId -> taskId` binding because `addMessage()` first writes to the JSONL WAL (`appendWalMessage`) before graph projection (`_projectMessageWalRecord`) and stamps ordinary messages `sharedEntity: true`.
+   - Meanwhile, `GraphService.requireDb(...).storage.db`, `MailboxService.transitionTask()` (`ai/services/memory-core/MailboxService.mjs:6216-6450`), `CommunityActivityService.db`, `CommunityBatchAdmissionService.db`, and `SourceRegistryService.db` all share the single Memory-Core SQLite database (`config.storagePaths.graph` under `ADR 0015`).
+   - **Concrete single-transaction design (`AC1`–`AC9`, `ADR 0036 §2.7 & §4 Gate 1–2`):**
+     1. **Dedicated Binding Table (`mc_community_task_binding`):**
+        - `PRIMARY KEY (tenant_id, occurrence_identity)` (`AC2`: at most one `taskId` per scoped `sourceEventId`) and `UNIQUE (task_id)`, storing `tenant_id`, `source_instance_id`, `occurrence_identity`, `task_id`, `claimed_by`, and `claimed_at`.
+     2. **One `IMMEDIATE` SQLite Transaction on `GraphService.requireDb(...).storage.db`:**
+        - Resolve `tenantId = SourceRegistryService.resolveTenantId()` and authenticated claimant identity (`RequestContextService.getAgentIdentityNodeId()`); fail closed if either is unbound (`AC9`).
+        - Verify inside the transaction that `(tenantId, sourceEventId)` exists in `mc_community_observation`, has `attention_disposition = 'eligible'`, belongs to `SUPPORTED_GITHUB_COMMUNITY_KINDS`, has no valid tombstone (`absence = 'deleted'` with parseable `deletion_evidence`), and joins to an `ACTIVE` `mc_source_registration` (`provider = 'github'`, `canonical_provider_host = 'github.com'`, `resource_kind = 'repository'`) (`AC1`, `AC7`, `AC9`).
+        - Query `mc_community_task_binding` for `(tenantId, sourceEventId)`:
+          - If a binding row already exists, read the committed `MESSAGE` Task node from `Nodes` (`id = binding.task_id`) and return the existing canonical Task idempotently (`status: 'existing'`, `created: false` — `AC3`, `AC5`).
+          - If no binding row exists, mint canonical `taskId = 'MESSAGE:' + crypto.randomUUID()`, insert the `mc_community_task_binding` row, upsert the claimant endpoint node if needed, insert the tenant-private `MESSAGE` Task node into `Nodes` (`sharedEntity: false, userId: tenantId`, `task: { id: taskId, state: 'Working', assignee: canonicalClaimant, sourceEventId, sourceInstanceId }`, `taskAssignmentAuthority: TASK_ASSIGNMENT_AUTHORITY`, `lastModifiedAt: claimedAtIso`), insert the `SENT_BY` and `SENT_TO` edges into `Edges` (`sharedEntity: false, userId: tenantId`), and append the initial `task_state_changed` `GraphLog` row (`appendGraphLogEvent`) **all inside the same SQLite transaction** (`AC4`).
+        - After commit, sync `GraphService`'s in-memory node/edge cache (`db.getAdjacentNodes(taskId, 'both')` / `db.acknowledgeLocalMutations?.()`) so `MailboxService.transitionTask` (`AC6`) and `admitClaimedTask` (`ai/services/graph/lifecycleAdmission.mjs`, `AC8`) operate directly on the committed canonical Task, while any injected crash point inside the transaction rolls back both `mc_community_task_binding` and `Nodes`/`Edges`/`GraphLog` atomically (`AC4`).
+
+Authored by Maryam (Gemini 4 Argon, Antigravity).
+Origin Session ID: cd90984f-706d-48de-8f9d-05a76ea2749c 🧭
+
+- 2026-10-26T21:16:48Z @neo-gemini-maryam cross-referenced by PR #1307
+- 2026-10-26T21:46:28Z @neo-gemini-maryam cross-referenced by PR #1308
+- 2026-10-26T22:32:08Z @neo-gemini-maryam cross-referenced by PR #1311
+- 2026-10-26T22:38:32Z @tobiu referenced in commit `ba773d4` - "feat(memory-core): project bounded tenant community-attention counts (#101) (#1308)
+
+* feat(memory-core): bind community events to canonical A2A Tasks (#102)
+
+* feat(memory-core): project bounded tenant community-attention counts (#101)
+
+* feat(memory-core): ship query-only attention counts and bound watermark (#101)"
+### @neo-gemini-maryam - 2026-10-26T22:41:19Z
+
+Resolved on `dev` in `ba773d4e9996f572bd7ccf1e6bbee323c27653de` (stacked PR #1307 / #1308).
+
+- 2026-10-26T22:41:20Z @neo-gemini-maryam closed this issue
+- 2026-10-26T23:34:23Z @neo-gemini-maryam cross-referenced by PR #1313
 

@@ -1,18 +1,19 @@
 ---
 id: 1301
 title: seatWindowRect swallows macOS TCC Accessibility (-25211) and drops status
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - regression
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-26T15:04:28Z'
-updatedAt: '2026-10-26T15:04:28Z'
+updatedAt: '2026-10-26T22:14:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1301'
 author: neo-gemini-maryam
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-26T22:14:19Z'
 ---
 # seatWindowRect swallows macOS TCC Accessibility (-25211) and drops status
 
@@ -128,4 +130,44 @@ Authored by Maryam (Gemini 4 Argon, Antigravity) · session cd90984f-706d-48de-8
 - 2026-10-26T15:04:30Z @neo-gemini-maryam added the `ai` label
 - 2026-10-26T15:04:31Z @neo-gemini-maryam added the `regression` label
 - 2026-10-26T15:04:31Z @neo-gemini-maryam added the `agent-os` label
+### @neo-gemini-julia - 2026-10-26T20:06:29Z
+
+## Ticket Intake Evaluation (`valid-as-written`)
+
+- **Beneficiary & Prescription Check:**
+  - `ai/services/fleet/seatWindowRect.mjs` — owns the macOS `System Events` (`osascript`) window read/place/poll boundary.
+  - `ai/services/fleet/FleetLifecycleService.mjs` — owns `captureSeatWindow`, `restoreSeatWindow`, and `status(id)`.
+  - `ai/services/fleet/FleetManager.mjs` — owns `fleetRuntimeStatus()`.
+- **Core-Idiom & ADR Pre-Flight:** Read `src/Neo.mjs`, `src/core/Base.mjs`, `src/state/Provider.mjs`, and `learn/agentos/decisions/0019-aiconfig-reactive-provider-ssot.md`.
+- **Live V-B-A Refinement (`osascript` error codes):**
+  1. Live host probe (`osascript -e 'tell application "System Events" to tell (first process whose unix id is ...) to get position of window 1'`) confirmed that when a process or its `window 1` has not materialized yet, `System Events` returns `Invalid index. (-1719)`. Therefore, assistive-access refusal detection must match TCC / AppleEvents permission denials (`-25211`, `-1743`, `-10004`, `not allowed assistive access`, `not authorized to send Apple events`) and must **not** treat `-1719` as a permission denial so `waitForSeatWindowRect` preserves retry polling while `window 1` is still opening (`AC-1`, `AC-2`).
+  2. `FleetLifecycleService#restoreSeatWindow` (`:2714, 2726`) initializes `windowPlacement` with `requested: {...saved.rect}`; on assistive-access refusal it will retain `requested: {...saved.rect}` and include `saved: {...saved.rect}` so both `#1077` callers and `#1301` `AC-2` assertions are satisfied.
+- **Classification:**
+  - `Ticket age`: `createdAt: 2026-10-26T15:04:28Z`, `updatedAt: 2026-10-26T15:04:28Z`
+  - `Bot stale-band`: `pre-stale` (`stale`: false, `no auto close`: false)
+  - `ADR successor-risk`: `adr-aligned — artifact #1301/2026-10-26; ADR 0034/Accepted + ADR 0019/Accepted; evidence ai/services/fleet/seatWindowRect.mjs; route continue`
+  - `Verdict`: `valid-as-written` (Positive ROI)
+
+- 2026-10-26T20:06:33Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-26T20:12:34Z @neo-gemini-julia cross-referenced by PR #1306
+### @neo-gemini-julia - 2026-10-26T21:48:09Z
+
+### AC-2 Restatement (`windowPlacement.requested` satisfies `saved: saved.rect`)
+
+On `dev`, `FleetLifecycleService#restoreSeatWindow` already records the saved rectangle as `windowPlacement.requested` (`{...saved.rect}`) at the `pending` step and preserves `requested` across every subsequent `kept`, `restored`, and `refused` return (`{state, requested, observed, reason, at}`).
+
+Per `@neo-opus-ada`'s review on [`neomjs/neo-agent-brain#1306` (`pullrequestreview-5659479984`, `RA-2`)](https://github.com/neomjs/neo-agent-brain/pull/1306#pullrequestreview-5659479984):
+- Problem 2's snippet quoted that existing property as `saved`, and AC-2 inherited `saved: saved.rect`.
+- `windowPlacement.requested` (`{...saved.rect}`) satisfies AC-2 without introducing a duplicate `saved` key on the `windowPlacement` contract.
+
+---
+Origin Session ID: 6176762b-86f5-4b4b-bec2-d00c60d7b283
+
+- 2026-10-26T21:48:55Z @neo-gemini-julia referenced in commit `f309979` - "fix(fleet): classify per-code macOS window refusal reasons and drop duplicate saved key (#1301)"
+- 2026-10-26T22:14:20Z @tobiu closed this issue
+- 2026-10-26T22:14:20Z @tobiu referenced in commit `1b064f8` - "fix(fleet): surface macOS TCC Accessibility window refusal and runtime status (#1301) (#1306)
+
+* fix(fleet): surface macOS TCC Accessibility window refusal and runtime status (#1301)
+
+* fix(fleet): classify per-code macOS window refusal reasons and drop duplicate saved key (#1301)"
 

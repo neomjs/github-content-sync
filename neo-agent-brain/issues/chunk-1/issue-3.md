@@ -8,22 +8,23 @@ labels:
   - ai
   - architecture
   - performance
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-07-14T05:32:05Z'
-updatedAt: '2026-08-24T11:39:03Z'
+updatedAt: '2026-10-26T21:56:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/3'
-author: neo-gpt
-commentsCount: 0
+author: neo-gpt-euclid
+commentsCount: 1
 parentIssue: 106
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 1
   signals: []
 blockedBy:
-  - '[ ] 101 Project bounded tenant community-attention counts'
+  - '[x] 101 Project bounded tenant community-attention counts'
   - '[x] 103 Expose a temporal community Bird View and seen state'
   - '[x] 15156 Push hosted GitHub community batches securely'
   - '[x] 104 Coordinate local GitHub community reconciliation'
@@ -119,17 +120,69 @@ Creation duplicate sweep: immediately before filing at 2026-07-14T05:32:04.397Z,
 
 ## Timeline
 
-- 2026-07-14T05:32:05Z @neo-gpt added the `documentation` label
-- 2026-07-14T05:32:06Z @neo-gpt added the `enhancement` label
-- 2026-07-14T05:32:06Z @neo-gpt added the `ai` label
-- 2026-07-14T05:32:06Z @neo-gpt added the `architecture` label
-- 2026-07-14T05:32:06Z @neo-gpt added the `performance` label
-- 2026-07-14T05:33:05Z @neo-gpt marked this issue as being blocked by #15156
-- 2026-07-14T05:34:32Z @neo-gpt cross-referenced by #106
+- 2026-07-14T05:32:05Z @neo-gpt-euclid added the `documentation` label
+- 2026-07-14T05:32:06Z @neo-gpt-euclid added the `enhancement` label
+- 2026-07-14T05:32:06Z @neo-gpt-euclid added the `ai` label
+- 2026-07-14T05:32:06Z @neo-gpt-euclid added the `architecture` label
+- 2026-07-14T05:32:06Z @neo-gpt-euclid added the `performance` label
+- 2026-07-14T05:33:05Z @neo-gpt-euclid marked this issue as being blocked by #15156
+- 2026-07-14T05:34:32Z @neo-gpt-euclid cross-referenced by #106
 - 2026-07-19T00:44:18Z @neo-gpt-emmy cross-referenced by #15526
 - 2026-08-24T11:38:03Z @neo-gpt-emmy cross-referenced by #17701
-- 2026-08-24T11:39:12Z @neo-gpt marked this issue as being blocked by #15156
+- 2026-08-24T11:39:12Z @neo-gpt-euclid marked this issue as being blocked by #15156
+- 2026-08-26T15:11:06Z @neo-gpt-euclid marked this issue as blocking #98
+- 2026-08-26T15:11:43Z @neo-gpt-euclid marked this issue as blocking #100
+- 2026-08-26T15:13:19Z @neo-gpt-euclid marked this issue as being blocked by #101
+- 2026-08-26T15:13:31Z @neo-gpt-euclid marked this issue as being blocked by #104
+- 2026-08-26T15:13:34Z @neo-gpt-euclid marked this issue as being blocked by #103
+- 2026-08-26T15:14:31Z @tobiu added parent issue #106
 - 2026-08-26T15:17:45Z @neo-opus-ada cross-referenced by #136
 - 2026-09-02T02:41:33Z @neo-opus-grace cross-referenced by #298
-- 2026-09-19T23:01:07Z @neo-gpt cross-referenced by PR #392
+- 2026-09-19T23:01:07Z @neo-gpt-euclid cross-referenced by PR #392
+- 2026-10-05T13:58:56Z @tobiu referenced in commit `a38f232` - "fix(sync): the GitHub Workflow sync stops deriving Portal indexes and SEO (#888) (#889)
+
+The derive step, `SyncService.rebuildContentIndexesAndSeo`, ran only in the manual modes
+(`runFullSync` and `--emit-only`). The one scheduled caller, github-content-sync's
+publish-corpus, runs `--corpus-only`, which never derived. The Portal's deploy now derives
+from the published corpus (neomjs/pages#14). The step also called the engine with `{root}`
+alone, so moving the pin past neomjs/neo#19408 would have made it throw.
+
+- SyncService: `rebuildContentIndexesAndSeo` and the `deriveContent` option are removed, and
+  `emitGeneratedContentAndDerive` becomes `emitGeneratedContent`. The auto-push allowlist
+  drops the three `apps/portal/*` paths that only the derive wrote.
+- syncGithubWorkflow.mjs: the docblock names the real scheduled caller and its mode.
+- Specs: the derive arms are removed. Stage2 counts passes with `pullRuns`, and its
+  allowlist arm asserts that no Portal path remains. RechunkOrdering keeps its property,
+  re-anchored on the aggregate verdict. Its provenance paragraph moves here: the spec is
+  half B of arm #3 of the Engine's RebuildContentIndexesAndSeo.spec.mjs (deleted by
+  neomjs/neo@c623b2f63c), whose half A stays Engine-side under neomjs/neo#17922 (#298)."
+- 2026-10-15T11:28:33Z @neo-opus-ada cross-referenced by #1049
+- 2026-10-26T21:56:42Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-26T21:56:45Z
+
+### Ticket Intake & Sharpening (`#3` — Calibrate community policy from measured evidence)
+
+- **Epic-Review Pre-Requisite:** Satisfied by `@neo-opus-ada`'s review (`#15145#issuecomment-5036518069`) and non-author Gemini-family `/epic-review` + Gemini Liveness Revalidation on `neomjs/neo-agent-brain#106#issuecomment-6426058715` [QUARANTINED_URL: github.com] (`commentId: IC_kwDOUBzDFM8AAAABfwXf2w`, verdict: `Greenlight`).
+- **Ticket Reality Classification:**
+  - `Ticket age`: `createdAt: 2026-07-14T05:32:05Z`, `updatedAt: 2026-08-24T11:39:03Z`
+  - `Bot stale-band`: `in-stale-window` (`stale: false`, `no auto close: false`)
+  - `Currency / successor-risk evidence`: Checked merged leaves (`#15473` ADR 0036, `#15479` shadow measurement `#15149`, `#381` registration `#15150`, `#383` admission `#15151`, `#385`/`#387`/`#388` GitHub family reconcilers `#15152`, `#393` hosted connector `#105`, `#395` local coordinator `#104`, `#396` Bird View/seen `#103`) and stacked open PRs (`#1307` canonical Task claim `#102`, `#1308` bounded attention counts `#101`). All upstream measurement and runtime seams required by `#3` are now in place.
+  - `ADR successor-risk`: `adr-amendment-required — artifact neomjs/neo-agent-brain#3 (2026-07-14); ADR 0036 (Accepted 2026-07-18) & ADR 0019 (Accepted 2026-06-04); evidence learn/agentos/decisions/0036-durable-community-activity-authority.md + learn/agentos/measurements/community-activity-shadow-2026-07-18.md; route amendment-required (amends ADR 0036 with §9 Operational Calibration & Option Revalidation while preserving all ADR 0036 authority boundaries and ADR 0019 read-at-use-site / zero-hidden-default invariants).`
+  - `Verdict`: `valid-as-written` (accepted and sharpened below).
+- **Prescription & Structural Pre-Flight:**
+  - `Prescription checked`:
+    - `ai/scripts/maintenance/communityActivityPolicyCalibrationCore.mjs` + `ai/scripts/maintenance/calibrateCommunityActivityPolicy.mjs` — matches sibling pattern of `ai/scripts/maintenance/communityActivityShadowProbeCore.mjs` + `ai/scripts/maintenance/probeCommunityActivityShadow.mjs` (`sibling-file-lift`).
+    - `ai/daemons/orchestrator/scheduling/communityReconciliation.mjs` + `ai/daemons/orchestrator/services/CommunityReconciliationService.mjs` — owns boundary validation of configured reconciliation intervals and admission retry counts while keeping all `AiConfig` defaults `false` / `null` (`AC4`, `AC6`).
+    - `learn/agentos/measurements/community-activity-calibration-2026-10-26.md`, `learn/agentos/decisions/0036-durable-community-activity-authority.md`, and `learn/agentos/tooling/CommunitySourceRunbook.md` — record the reproducible calibration report, derived bounds, explicit unset dispositions (`retentionMs: null`, `archiveThreshold: null`, `paginationCap: null`), `E/F/K/O/V/X` (`keep-deferred`) and `J` stage-2 steward lease/wake (`activate-gated` for `#100` under measured bounds while disabled-by-default in config).
+
+---
+*Authored by Maryam (Gemini 4 Argon, Antigravity). Session `cd90984f-706d-48de-8f9d-05a76ea2749c`. 🧭*
+
+- 2026-10-26T22:32:08Z @neo-gemini-maryam cross-referenced by PR #1311
+- 2026-10-26T22:36:30Z @neo-gemini-maryam referenced in commit `0ae0a32` - "test(memory-core): import config.template.mjs in calibration spec (#3)"
+- 2026-10-26T22:40:50Z @neo-gemini-maryam referenced in commit `2a620aa` - "feat(memory-core): calibrate community policy from measured evidence (#3)"
+- 2026-10-26T22:40:50Z @neo-gemini-maryam referenced in commit `070639a` - "test(memory-core): import config.template.mjs in calibration spec (#3)"
+- 2026-10-26T22:48:38Z @neo-gemini-maryam cross-referenced by PR #1312
+- 2026-10-26T23:09:34Z @neo-gemini-maryam cross-referenced by PR #1313
+- 2026-10-26T23:17:59Z @neo-gemini-maryam referenced in commit `16152c7` - "fix(memory-core): address review feedback on community policy calibration (#3)"
 

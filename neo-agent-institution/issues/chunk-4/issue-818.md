@@ -1,7 +1,7 @@
 ---
 id: 818
 title: Record admitted membership and host usability in ADR 0038
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T07:36:23Z'
-updatedAt: '2026-10-26T08:41:29Z'
+updatedAt: '2026-10-26T19:29:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/818'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -26,8 +26,13 @@ blockedBy:
   - '[x] 816 Record Fleet identity-publication authority in ADR 0038'
 blocking:
   - '[ ] 1296 Admit protected family history and migrate its readers'
+closedAt: '2026-10-26T19:27:42Z'
 ---
 # Record admitted membership and host usability in ADR 0038
+
+## Delivered — documentation only
+
+Human-merged in [PR #824](https://github.com/neomjs/neo-agent-institution/pull/824) at `c79c3e1e1329f51d97c094ad296a0256c17d2256` (2026-10-26T19:27:41Z). The merged ADR blob `0c172134b877620872a2cee56516c12530bff3e9` is byte-identical to reviewed head `f1fd16a690475d1d77a24049b235cb22150c41fc`, approved by Ada in [review 5657520308](https://github.com/neomjs/neo-agent-institution/pull/824#pullrequestreview-5657520308). All five documentation criteria below are delivered. Brain #700's implementation leaves and Institution #414's installed witness remain open; this merge supplies their C8 decision-record prerequisite.
 
 ## Context
 
@@ -69,11 +74,11 @@ Amend the existing ADR in one follow-up documentation PR after #817:
 
 ## Acceptance Criteria
 
-- [ ] AC-1: row 9 accurately names all six typed operation variants while preserving the other eight credential rows byte-for-byte and keeping the class count unchanged.
-- [ ] AC-2: stable provider identity, domain-separated record keys, exact incarnation/revision checks, serialized retries, atomic re-key and first-enable baseline/reconciliation match the bound C8 contract.
-- [ ] AC-3: the host→plane credential/direction and all usability boundaries are explicit; completed managed removal precedes canonical retirement, and revoked grants or unobserved cleanup are not presented as process-stop proof.
-- [ ] AC-4: the named UI states, roster precedence, historical attribution and managed-set/account residual remain explicit, with full controls linked to C8 rather than copied. An unclassified author interval remains uncertifiable; a correction is an exit only where the existing target/provenance rules allow it, otherwise use a PR created after that interval. First confirmation is never backdated.
-- [ ] AC-5: prior ADR history and C7 provenance are preserved; C8 has its own version-bound signals, Brain ADR0019/0041 relations stay accurate, and the dependent implementation merge gate is named without claiming source or installed delivery.
+- [x] AC-1: row 9 accurately names all six typed operation variants while preserving the other eight credential rows byte-for-byte and keeping the class count unchanged.
+- [x] AC-2: stable provider identity, domain-separated record keys, exact incarnation/revision checks, serialized retries, atomic re-key and first-enable baseline/reconciliation match the bound C8 contract.
+- [x] AC-3: the host→plane credential/direction and all usability boundaries are explicit; completed managed removal precedes canonical retirement, and revoked grants or unobserved cleanup are not presented as process-stop proof.
+- [x] AC-4: the named UI states, roster precedence, historical attribution and managed-set/account residual remain explicit, with full controls linked to C8 rather than copied. An unclassified author interval remains uncertifiable; a correction is an exit only where the existing target/provenance rules allow it, otherwise use a PR created after that interval. First confirmation is never backdated.
+- [x] AC-5: prior ADR history and C7 provenance are preserved; C8 has its own version-bound signals, Brain ADR0019/0041 relations stay accurate, and the dependent implementation merge gate is named without claiming source or installed delivery.
 
 ## Decision Record impact
 
@@ -113,6 +118,7 @@ Retrieval Hint: D811 C8 membership stable forge id incarnation host usability re
 Sophie (GPT-6 Astra · ultra, Codex Desktop)
 
 
+
 ## Timeline
 
 - 2026-10-26T07:36:23Z @neo-gpt-sophie assigned to @neo-gpt-sophie
@@ -125,4 +131,12 @@ Sophie (GPT-6 Astra · ultra, Codex Desktop)
 - 2026-10-26T08:27:28Z @neo-gpt-sophie cross-referenced by #1298
 - 2026-10-26T08:31:10Z @neo-gpt-sophie cross-referenced by #819
 - 2026-10-26T08:32:30Z @neo-gpt-sophie marked this issue as blocking #1296
+- 2026-10-26T18:14:42Z @neo-gpt-sophie cross-referenced by PR #824
+- 2026-10-26T18:39:22Z @neo-gpt-sophie referenced in commit `f1fd16a` - "docs(agentos): clarify incarnation scope and receipt evidence (#818)"
+- 2026-10-26T19:27:42Z @tobiu referenced in commit `c79c3e1` - "docs(agentos): record admitted membership and host usability (#818) (#824)
+
+* docs(agentos): record admitted membership and host usability (#818)
+
+* docs(agentos): clarify incarnation scope and receipt evidence (#818)"
+- 2026-10-26T19:27:43Z @tobiu closed this issue
 

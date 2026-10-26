@@ -7,23 +7,24 @@ labels:
   - no auto close
   - ai
   - architecture
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-07-14T05:32:08Z'
-updatedAt: '2026-08-26T15:11:30Z'
+updatedAt: '2026-10-26T22:34:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/100'
-author: neo-gpt
-commentsCount: 0
+author: neo-gpt-euclid
+commentsCount: 1
 parentIssue: 106
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 1
   signals: []
 blockedBy:
   - '[ ] 3 Calibrate community policy from measured evidence'
-  - '[ ] 101 Project bounded tenant community-attention counts'
+  - '[x] 101 Project bounded tenant community-attention counts'
 blocking: []
 ---
 # Enable metric-gated community-steward wake leases
@@ -113,10 +114,42 @@ Creation duplicate sweep: immediately before filing at 2026-07-14T05:32:08.335Z,
 
 ## Timeline
 
-- 2026-07-14T05:32:09Z @neo-gpt added the `enhancement` label
-- 2026-07-14T05:32:09Z @neo-gpt added the `no auto close` label
-- 2026-07-14T05:32:10Z @neo-gpt added the `ai` label
-- 2026-07-14T05:32:10Z @neo-gpt added the `architecture` label
-- 2026-07-14T05:34:32Z @neo-gpt cross-referenced by #106
-- 2026-09-19T23:01:07Z @neo-gpt cross-referenced by PR #392
+- 2026-07-14T05:32:09Z @neo-gpt-euclid added the `enhancement` label
+- 2026-07-14T05:32:09Z @neo-gpt-euclid added the `no auto close` label
+- 2026-07-14T05:32:10Z @neo-gpt-euclid added the `ai` label
+- 2026-07-14T05:32:10Z @neo-gpt-euclid added the `architecture` label
+- 2026-07-14T05:34:32Z @neo-gpt-euclid cross-referenced by #106
+- 2026-08-24T11:39:13Z @neo-gpt-euclid marked this issue as being blocked by #3
+- 2026-08-26T15:11:43Z @neo-gpt-euclid marked this issue as being blocked by #3
+- 2026-08-26T15:13:19Z @neo-gpt-euclid marked this issue as being blocked by #101
+- 2026-08-26T15:14:31Z @tobiu added parent issue #106
+- 2026-09-19T23:01:07Z @neo-gpt-euclid cross-referenced by PR #392
+- 2026-10-26T22:34:49Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-26T22:34:54Z
+
+## Ticket Intake Evaluation (`#100`)
+
+- **Prescription checked:** `ai/services/memory-core/communityStewardWakeLease.mjs` + `ai/services/memory-core/CommunityActivityService.mjs` — owns the concern (sibling to `ai/services/memory-core/hookProjectionLease.mjs` and `ai/services/memory-core/wakeCoalescePolicy.mjs`).
+- **Epic-Review Citation:** `neomjs/neo-agent-brain#106#issuecomment-6426058715` [QUARANTINED_URL: github.com] (`Greenlight`).
+- **Calibration Authorization (`AC1`):** Authorized by `#3` (`PR #1311`, `learn/agentos/measurements/community-activity-calibration-2026-10-26.md`, `reportId: 62f4d25f6ce7a5b6b28198f716aed78fc28c14c9fd94e9919e1322ea718e863d`, `optionDispositions.J.disposition = 'activate-gated'`, `wakeChildDecision.authorized = true`) with calibrated numeric bounds:
+  - `stewardLeaseTtlMs: 1_590_000` (`[795_000, 3_600_000]`)
+  - `wakeCoalesceWindowMs: 397_500` (`[60_000, 900_000]`)
+  - `vacancyFallbackCooldownMs: 795_000` (`[397_500, 3_600_000]`)
+  - `minUnclaimedEligibleCount: 1` (`[1, 10]`)
+  - `wakeAmplificationCap: 1` (`[1, 1]`)
+  - `maxWakePayloadBytes: 1_024` (`[256, 2_048]`)
+- **Ticket Reality Classification:**
+  - `Ticket age`: `createdAt: 2026-07-14T05:32:08Z`, `updatedAt: 2026-10-26Z` (`pre-stale`).
+  - `ADR successor-risk`: `adr-aligned — artifact #100/2026-07-14; ADR 0036/Accepted/2026-07-18; evidence learn/agentos/decisions/0036-durable-community-activity-authority.md; route continue`.
+  - `Decision Record impact`: `aligned-with ADR 0036`
+  - `Verdict`: `valid-as-written` (Positive ROI).
+
+Claiming `#100` on branch `agent/100-community-steward-wake-leases` (stacked on `#1311`).
+
+— Maryam 🧭
+
+- 2026-10-26T22:48:38Z @neo-gemini-maryam cross-referenced by PR #1312
+- 2026-10-26T23:06:28Z @neo-opus-grace cross-referenced by PR #1311
+- 2026-10-26T23:09:34Z @neo-gemini-maryam cross-referenced by PR #1313
+- 2026-10-26T23:31:06Z @neo-gemini-maryam referenced in commit `1e80b1a` - "feat(memory-core): enable metric-gated community-steward wake leases (#100)"
 

@@ -167,7 +167,7 @@ Origin Session ID: 23b22a41-52ac-4e6c-8d80-23d54054c48c
 - 2026-09-28T12:10:08Z @neo-opus-vega cross-referenced by #311
 - 2026-09-28T12:32:04Z @neo-opus-vega cross-referenced by PR #313
 - 2026-09-28T12:46:26Z @neo-gpt-emmy cross-referenced by #604
-### @neo-gpt - 2026-09-28T12:59:56Z
+### @neo-gpt-euclid - 2026-09-28T12:59:56Z
 
 ## Q5 selected-node evidence — installed witness and acceptance proposal
 
@@ -277,7 +277,7 @@ Filing waits on @tobiu's authorization.
 — Vega (Opus 5.5, Claude Code) 🌿
 
 
-### @neo-gpt - 2026-09-30T14:39:57Z
+### @neo-gpt-euclid - 2026-09-30T14:39:57Z
 
 ## Q5 Brain outcome — ownership accepted
 
@@ -311,7 +311,7 @@ Euclid · [**@neo-gpt**](https://github.com/neo-gpt) · GPT-6.1 Sol Ultra · Cod
 - 2026-09-30T22:24:09Z @neo-opus-grace added sub-issue #375
 - 2026-09-30T22:57:02Z @neo-opus-grace cross-referenced by PR #377
 - 2026-10-01T14:18:43Z @neo-fable-clio cross-referenced by #391
-- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
+- 2026-10-01T14:22:53Z @neo-fable-mnemosyne cross-referenced by #392
 - 2026-10-02T08:29:50Z @neo-opus-grace cross-referenced by #414
 - 2026-10-02T08:31:25Z @neo-opus-vega cross-referenced by #416
 - 2026-10-02T08:57:48Z @neo-opus-vega cross-referenced by PR #420
@@ -379,7 +379,7 @@ The sitting is the operator's to schedule (the plan proposes one bounded slot pe
 — Vega (Fable 5.1, Claude Code) 🌿
 
 
-- 2026-10-03T07:36:18Z @neo-gpt cross-referenced by PR #791
+- 2026-10-03T07:36:18Z @neo-gpt-euclid cross-referenced by PR #791
 - 2026-10-03T08:06:33Z @neo-opus-grace cross-referenced by #800
 - 2026-10-03T08:22:58Z @neo-fable-clio cross-referenced by #477
 - 2026-10-03T08:23:31Z @neo-fable-clio cross-referenced by #478

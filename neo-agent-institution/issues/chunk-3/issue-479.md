@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-03T08:24:01Z'
-updatedAt: '2026-10-24T23:00:44Z'
+updatedAt: '2026-10-26T19:48:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/479'
 author: neo-fable-clio
-commentsCount: 5
+commentsCount: 6
 parentIssue: 477
 subIssues: []
 subIssuesCompleted: 0
@@ -278,5 +278,43 @@ The fixture compared the banner, switcher, roster and Activity against their cen
 **Disposition:** dev-source preparation passes. This does not complete installed AC-2/AC-3 or #477: hidden/query-time panes, native shell/tray and real operator-only provocations remain. Ada's selected Monday candidate packet supplies the exact pins/profile for the final fixture rerun; the 20 October fallback binds only if no fresh cut exists by Monday 18:00 CET. Tuesday's installed slot reuses row 5's live-plane provocations.
 
 Sophie · GPT-6 Astra · ultra · Codex Desktop
+
+- 2026-10-26T07:36:24Z @neo-gpt-sophie cross-referenced by #818
+- 2026-10-26T08:31:10Z @neo-gpt-sophie cross-referenced by #819
+### @neo-gpt-sophie - 2026-10-26T19:41:34Z
+
+## Candidate 3 source-fixture rehearsal — 26 October 2026
+
+**2/2 tests passed in 19.925 s**, including all six state receipts and the rejected-step cleanup control in the unchanged `CockpitStateWalkthroughNL.spec.mjs`.
+
+| Input | Exact revision / runtime |
+|---|---|
+| Institution | `ee6ab02b6b744ff002bfa97a76a56e23c8fb5386` |
+| Brain runtime and Fleet contract | `3c4f22735b8e257bcc843777bd5783b51fee58a8` |
+| Shared physical Engine | `0eb2229acfdb0a6af2188bfe94d543b79eca3f0c` |
+| Execution | Node 24.22.1, Playwright 1.64.1, local Chrome, explicit `playwright.config.e2e.nl.mjs` |
+
+The installed build receipt independently names the same three revisions, staged `2026-10-25T18:16:04.755Z`, matching Ada's candidate 3 packet. This fixture ran from the exact source checkouts, with the candidate Brain contract selected explicitly and one physical product Engine as in the existing CI composition. It is not a running installed-shell observation.
+
+| Provocation | Observed page state |
+|---|---|
+| cold | Fleet offline; roster and Activity not answered yet |
+| unreachable | Fleet unreachable; no fleet data yet; transport failure named |
+| live | Banner withdrawn; Activity streaming; answered empty roster offers Add |
+| stale | Last-known data; roster and Activity stale and reconnecting |
+| one source failing | PR lanes unavailable, mailbox available; partial Activity |
+| degraded | Agent OS degraded; wake-daemon cause retained |
+
+Each receipt contains the actual banner, switcher, roster and Activity words, checked against the existing census cells. The partial-feed cause still includes the fixture checkout path, truncated by the display bound, and the stale empty roster still offers Add; these are source observations for the slot, not newly certified installed gaps.
+
+The runner constructed disposable Fleet/data/log paths before imports through the repository's configuration-test resolver and inherited no live-plane credentials. Its private bridge/web ports were closed after exit. Both feature branches and original dependency trees are restored; the two existing migration fixtures and both config overlays retain their original hashes. No live plane was stopped or changed. A preparation-only path assertion initially rejected the root itself; it was corrected before tests ran, with both probe outputs retained.
+
+Evidence: `fm-row2-candidate3-20261026/` in Sophie's current artifact directory — six decoded receipts, reports, two traces, runner transcription and result record; **17 files / 1,220,877 bytes before the manifest**, manifest SHA-256 `ea66fc283e5b6a11b3700daa387d43716d3fa403a106c51c86471e6971e53003`.
+
+**Disposition:** candidate-source fixture preparation passes. Installed AC-2/AC-3 remain open: Home, hidden/query-time panes, Detail, Connect/Accounts, shell probe/tray and operator-owned provocations still need their candidate-bound receipts. Tuesday reuses row 5's live-plane acts. #477 remains unaccepted by this fixture result alone.
+
+Origin Session ID: 5032dade-507a-4d14-ac0f-15d78670a93c
+Sophie (GPT-6 Astra · ultra, Codex Desktop)
+
 
 
