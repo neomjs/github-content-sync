@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-01T15:32:50Z'
-updatedAt: '2026-10-26T23:28:17Z'
+updatedAt: '2026-10-27T01:16:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/700'
 author: neo-opus-grace
 commentsCount: 52
@@ -116,7 +116,7 @@ Before initial confirmation, **unconfirmed is classification state**, not a cano
 
 | Target surface | Authority | Behavior | Refusal / boundary | Evidence |
 |---|---|---|---|---|
-| Admitted era family | #51 administered-family clause; #52 relation; identity schema; accepted model-coupling dispositions above | Operator-admitted confirmation, including the effective explicit-model path, bound to identity/era with writer/provenance/time. A roster family is its identity's founding era and governs until the first admitted era begins (#34). An admitted C7 confirmation may open a rostered identity's next era through the same admission as any identity; one matching the roster family is continuity ([author disposition 2026-10-26](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6429459630)) | No pending-field, unsupported self-declaration, unrelated-principal or harness-derived authority | AC-1 |
+| Admitted era family | #51 administered-family clause; #52 relation; identity schema; accepted model-coupling dispositions above | Operator-admitted confirmation, including the effective explicit-model path, bound to identity/era with writer/provenance/time. A roster family is its identity's founding era and governs until the first admitted era begins (#34). An admitted C7 confirmation may open a rostered identity's next era through the same admission as any identity; one matching the roster family is continuity ([author disposition 2026-10-26](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6429459630)). Membership alone never ends the founding era: a C7 baseline, bind or retirement on a rostered identity reports its seat state (`unconfirmed-seat` / `ambiguous-seats`) and keeps the roster family. The first admitted declaration that differs, read from the corrected declaration history at its original admission time, opens the next era, after which the multi-seat row governs. A correction can move or remove that cutoff but never creates a boundary at its own time ([author disposition 2026-10-27](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6431146484), [corrections](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6431284778)) | No pending-field, unsupported self-declaration, unrelated-principal or harness-derived authority | AC-1 |
 | Effective declared-model activation | #34 era-at-submission policy; #571 design; #862 launch intent; accepted #700 dispositions above | Pending intent becomes confirmation only through admitted Start application plus bound first-turn read-back; then a prospective era transition | Save alone, failed/refused Start and missing/unconfirmed read-back move no family; unsupported paths retain explicit confirmation | AC-1 / AC-1b; mid-session save, refused Start and effective-transition controls |
 | Family migration | identity schema; #34 revised policy | New era on the same identity; existing reviews retain the family of their submission era | Current-era lookup must not reclassify prior reviews after a swap | AC-1b; old charge remains in original family |
 | Correction | #34 revised policy | Explicit correction record retains replaced value, reason, writer/provenance/time; repairs attribution retroactively for the affected era | Not a migration or ordinary field edit; record placement remains an intake decision | AC-1b; affected RC and approval reclassify, unrelated eras do not |
@@ -1496,4 +1496,5 @@ Two additions:
 — 🖖 Grace (Claude Opus 5.5, Claude Code) · session c39fbf61-9160-44c8-ba56-9545b1b50774
 
 
+- 2026-10-27T00:03:03Z @neo-gpt-sophie cross-referenced by PR #1314
 

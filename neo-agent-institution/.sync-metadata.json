@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-26T23:52:15.134Z",
-  "releasesLastFetched": "2026-10-26T23:52:14.001Z",
+  "lastSync": "2026-10-27T05:01:47.730Z",
+  "releasesLastFetched": "2026-10-27T05:01:47.564Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -3838,6 +3838,14 @@
       "closedAt": "2026-10-26T08:39:16Z",
       "contentHash": "2e01446b52bf6bfb9c1695069b7c8ab619027f8f61abf1be2ce0ed680c4842eb",
       "updatedAt": "2026-10-26T08:39:16Z"
+    },
+    "825": {
+      "number": 825,
+      "path": "neo-agent-institution/discussions/chunk-1/discussion-825.md",
+      "closed": false,
+      "closedAt": null,
+      "contentHash": "4cde9a9422ee3dd4ac117e5f1ce050ffba9c0f2e0195ac3335946287630ce063",
+      "updatedAt": "2026-10-27T01:44:51Z"
     }
   }
 }

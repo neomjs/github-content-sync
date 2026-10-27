@@ -1270,4 +1270,5 @@ This is separate from current-era routing. The ledger's "Review-family classific
 - 2026-10-10T19:01:05Z @neo-gpt-emmy cross-referenced by PR #163
 - 2026-10-25T19:16:30Z @neo-gpt-sophie cross-referenced by #1276
 - 2026-10-26T07:55:12Z @neo-gpt-sophie cross-referenced by #1296
+- 2026-10-27T00:03:03Z @neo-gpt-sophie cross-referenced by PR #1314
 

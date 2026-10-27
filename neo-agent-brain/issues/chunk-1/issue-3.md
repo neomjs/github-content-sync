@@ -1,7 +1,7 @@
 ---
 id: 3
 title: Calibrate community policy from measured evidence
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-07-14T05:32:05Z'
-updatedAt: '2026-10-26T21:56:45Z'
+updatedAt: '2026-10-27T00:45:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/3'
 author: neo-gpt-euclid
 commentsCount: 1
@@ -21,7 +21,7 @@ subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 1
+  quarantined: 2
   signals: []
 blockedBy:
   - '[x] 101 Project bounded tenant community-attention counts'
@@ -30,7 +30,8 @@ blockedBy:
   - '[x] 104 Coordinate local GitHub community reconciliation'
 blocking:
   - '[ ] 98 Prove the community-activity authority chain end to end'
-  - '[ ] 100 Enable metric-gated community-steward wake leases'
+  - '[ ] 100 Instrument a shadow-only community-steward experiment'
+closedAt: '2026-10-27T00:40:03Z'
 ---
 # Calibrate community policy from measured evidence
 
@@ -160,20 +161,18 @@ alone, so moving the pin past neomjs/neo#19408 would have made it throw.
 - 2026-10-26T21:56:42Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 ### @neo-gemini-maryam - 2026-10-26T21:56:45Z
 
-### Ticket Intake & Sharpening (`#3` — Calibrate community policy from measured evidence)
+### Ticket Intake & Post-Merge Verification (`#3` — Calibrate community policy from measured evidence)
 
 - **Epic-Review Pre-Requisite:** Satisfied by `@neo-opus-ada`'s review (`#15145#issuecomment-5036518069`) and non-author Gemini-family `/epic-review` + Gemini Liveness Revalidation on `neomjs/neo-agent-brain#106#issuecomment-6426058715` [QUARANTINED_URL: github.com] (`commentId: IC_kwDOUBzDFM8AAAABfwXf2w`, verdict: `Greenlight`).
 - **Ticket Reality Classification:**
   - `Ticket age`: `createdAt: 2026-07-14T05:32:05Z`, `updatedAt: 2026-08-24T11:39:03Z`
   - `Bot stale-band`: `in-stale-window` (`stale: false`, `no auto close: false`)
-  - `Currency / successor-risk evidence`: Checked merged leaves (`#15473` ADR 0036, `#15479` shadow measurement `#15149`, `#381` registration `#15150`, `#383` admission `#15151`, `#385`/`#387`/`#388` GitHub family reconcilers `#15152`, `#393` hosted connector `#105`, `#395` local coordinator `#104`, `#396` Bird View/seen `#103`) and stacked open PRs (`#1307` canonical Task claim `#102`, `#1308` bounded attention counts `#101`). All upstream measurement and runtime seams required by `#3` are now in place.
-  - `ADR successor-risk`: `adr-amendment-required — artifact neomjs/neo-agent-brain#3 (2026-07-14); ADR 0036 (Accepted 2026-07-18) & ADR 0019 (Accepted 2026-06-04); evidence learn/agentos/decisions/0036-durable-community-activity-authority.md + learn/agentos/measurements/community-activity-shadow-2026-07-18.md; route amendment-required (amends ADR 0036 with §9 Operational Calibration & Option Revalidation while preserving all ADR 0036 authority boundaries and ADR 0019 read-at-use-site / zero-hidden-default invariants).`
-  - `Verdict`: `valid-as-written` (accepted and sharpened below).
-- **Prescription & Structural Pre-Flight:**
-  - `Prescription checked`:
-    - `ai/scripts/maintenance/communityActivityPolicyCalibrationCore.mjs` + `ai/scripts/maintenance/calibrateCommunityActivityPolicy.mjs` — matches sibling pattern of `ai/scripts/maintenance/communityActivityShadowProbeCore.mjs` + `ai/scripts/maintenance/probeCommunityActivityShadow.mjs` (`sibling-file-lift`).
-    - `ai/daemons/orchestrator/scheduling/communityReconciliation.mjs` + `ai/daemons/orchestrator/services/CommunityReconciliationService.mjs` — owns boundary validation of configured reconciliation intervals and admission retry counts while keeping all `AiConfig` defaults `false` / `null` (`AC4`, `AC6`).
-    - `learn/agentos/measurements/community-activity-calibration-2026-10-26.md`, `learn/agentos/decisions/0036-durable-community-activity-authority.md`, and `learn/agentos/tooling/CommunitySourceRunbook.md` — record the reproducible calibration report, derived bounds, explicit unset dispositions (`retentionMs: null`, `archiveThreshold: null`, `paginationCap: null`), `E/F/K/O/V/X` (`keep-deferred`) and `J` stage-2 steward lease/wake (`activate-gated` for `#100` under measured bounds while disabled-by-default in config).
+  - `Currency / successor-risk evidence`: Checked merged leaves (`#15473` ADR 0036, `#15479` shadow measurement `#15149`, `#381` registration `#15150`, `#383` admission `#15151`, `#385`/`#387`/`#388` GitHub family reconcilers `#15152`, `#393` hosted connector `#105`, `#395` local coordinator `#104`, `#396` Bird View/seen `#103`, `#1307` canonical Task claim `#102`, `#1308` bounded attention counts `#101`).
+  - `ADR successor-risk`: `adr-amendment-required — artifact neomjs/neo-agent-brain#3 (2026-07-14); ADR 0036 (Accepted 2026-07-18) & ADR 0019 (Accepted 2026-06-04); route amendment-required (amends ADR 0036 with §9 Operational Calibration & Option Revalidation while preserving all ADR 0036 authority boundaries and ADR 0019 read-at-use-site / zero-hidden-default invariants).`
+  - `Verdict`: `valid-as-written`.
+- **Merged Delivery (`neomjs/neo-agent-brain#1311` → `dev` at `d0481ce1` [QUARANTINED_URL: github.com]):**
+  - `AC1`–`AC8` delivered and verified in CI (`24/24` checks green on `#1311`, `APPROVED` by `@neo-opus-grace` in `pullrequestreview-5660554691`).
+  - Calibration report (`reportId: dd78a28718cf0db9a526876c271053c674e713c9dc4b0fe99882f410ee7f2664`) sets `reconciliationCadenceMs = 2,131,596`, `providerRootPageSize = 50`, `providerChildPageSize = 100`, leaves all retention/archive/pagination/steward/wake thresholds explicitly `null` (`unset`), and authorizes `#100` (`#1312`) as a shadow-only steward experiment (`optionDispositions.J.disposition = 'shadow-only steward experiment authorized; activation thresholds unset until its window'`).
 
 ---
 *Authored by Maryam (Gemini 4 Argon, Antigravity). Session `cd90984f-706d-48de-8f9d-05a76ea2749c`. 🧭*
@@ -185,4 +184,13 @@ alone, so moving the pin past neomjs/neo#19408 would have made it throw.
 - 2026-10-26T22:48:38Z @neo-gemini-maryam cross-referenced by PR #1312
 - 2026-10-26T23:09:34Z @neo-gemini-maryam cross-referenced by PR #1313
 - 2026-10-26T23:17:59Z @neo-gemini-maryam referenced in commit `16152c7` - "fix(memory-core): address review feedback on community policy calibration (#3)"
+- 2026-10-26T23:59:13Z @neo-gpt-euclid cross-referenced by #100
+- 2026-10-27T00:40:03Z @tobiu referenced in commit `d0481ce` - "feat(memory-core): calibrate community policy from measured evidence (#3) (#1311)
+
+* feat(memory-core): calibrate community policy from measured evidence (#3)
+
+* test(memory-core): import config.template.mjs in calibration spec (#3)
+
+* fix(memory-core): address review feedback on community policy calibration (#3)"
+- 2026-10-27T00:40:04Z @tobiu closed this issue
 

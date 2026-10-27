@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-07-14T04:56:13Z'
-updatedAt: '2026-10-26T20:03:31Z'
+updatedAt: '2026-10-27T01:52:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/106'
 author: neo-gpt-euclid
-commentsCount: 8
+commentsCount: 9
 parentIssue: null
 subIssues:
   - '[x] 15148 Define community-activity authority in ADR 0036'
@@ -27,11 +27,12 @@ subIssues:
   - '[x] 103 Expose a temporal community Bird View and seen state'
   - '[x] 102 Bind community events to canonical A2A Tasks'
   - '[x] 101 Project bounded tenant community-attention counts'
-  - '[ ] 3 Calibrate community policy from measured evidence'
-  - '[ ] 100 Enable metric-gated community-steward wake leases'
+  - '[x] 3 Calibrate community policy from measured evidence'
+  - '[ ] 100 Instrument a shadow-only community-steward experiment'
   - '[ ] 98 Prove the community-activity authority chain end to end'
-subIssuesCompleted: 12
-subIssuesTotal: 15
+  - '[ ] 1315 Issue children carry their issue, and Discussion closes become occurrences'
+subIssuesCompleted: 13
+subIssuesTotal: 16
 contentTrust:
   projected: true
   quarantined: 1
@@ -580,4 +581,20 @@ Origin Session ID: cd90984f-706d-48de-8f9d-05a76ea2749c 🧭
 - 2026-10-26T22:32:08Z @neo-gemini-maryam cross-referenced by PR #1311
 - 2026-10-26T22:48:38Z @neo-gemini-maryam cross-referenced by PR #1312
 - 2026-10-26T23:09:34Z @neo-gemini-maryam cross-referenced by PR #1313
+### @neo-gpt-euclid - 2026-10-26T23:59:19Z
+
+**J-stage residual custody after the shadow-only amendment to #100**
+
+The [approved calibration](https://github.com/neomjs/neo-agent-brain/blob/16152c752aeb43bbf287e5ccb3b14f5ee4662f17/learn/agentos/measurements/community-activity-calibration-2026-10-26.md#2-shadow-measurements-fixture-determinism-checks--unknown-slots-ac1) still has unknown steward vacancy and acknowledge/claim/respond latencies. Its §5 authorizes a shadow experiment, with `activationAuthorized:false`; it does not justify live wake thresholds. The #100 author amendment makes that experiment the implementation target rather than pretending activation was achieved.
+
+**Outstanding outcome / owner:** I retain custody on #106 (Euclid, current parent assignee) of the source-bound observation window and its subsequent calibration/activation disposition. Instrumentation/unit completion on #1312 alone does not discharge that evidence. This is the explicit open-owner handoff allowed by amended AC8 if the code lands before the window; it neither closes the outcome nor authorizes activation.
+
+**Next input/action:** after the observer is independently accepted and integrated, bind a bounded tenant/source observation window to actual admitted occurrence/count/lease records and their coverage, preserving fixture and unknown slots separately. Record vacancy, would-be wakes/bytes and available acknowledgment/claim/response times without live dispatch. Then decide the measured activation successor under this parent; it is not code-ready from the present report.
+
+**Falsifier / closure boundary:** can a retained caller reproduce those source-bound observations with zero live dispatch and no degraded-to-zero normalization? Missing coverage or latencies keep the relevant values unknown and thresholds unset. At the parent's disposition, this residual must be evidenced, explicitly owned by a qualified successor, or explicitly deferred/retired; it is not completed by #100 closing. Maryam retains implementation ownership and Grace retains the #1312 review.
+
+**Convergent session handoff — 27 October:** the current checkpoint for #1312 is `OPEN` / `APPROVED` at `4892dad908274764ed13f3db63da44fe5c064e9b`; #1313 is `OPEN` / `CHANGES_REQUESTED` at `be1e5c22daece0e3f90ce063d48d8e5e1fdc3d1a`. Maryam retains implementation and Grace retains formal review. Next session first verifies their actual merged/review state, then takes the accepted/integrated observer into the retained-window step above. The real observation window, unknown latency slots and activation disposition remain this parent's outcome; source/CI completion does not silently discharge them. Tobias's relayed end-of-day boundary ends this session's work at that checkpoint.
+
+- 2026-10-27T00:52:19Z @neo-opus-grace cross-referenced by #1315
+- 2026-10-27T00:52:40Z @neo-opus-grace added sub-issue #1315
 
