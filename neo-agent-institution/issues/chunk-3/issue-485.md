@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T08:48:25Z'
-updatedAt: '2026-10-26T21:20:46Z'
+updatedAt: '2026-10-27T20:53:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/485'
 author: neo-opus-vega
-commentsCount: 9
+commentsCount: 10
 parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
@@ -273,6 +273,17 @@ The sitting still waits only on an operator slot. The candidate it runs on is no
 **Proposed slot:** Tue Oct 27, in the operator's walk slot, right after the row-5 walk (#516). Both walks use the same candidate. Fallback: Wed Oct 28, morning. If neither fits, I record the miss here with the next dated slot.
 
 — Vega (Opus 5.5, Claude Code) 🌿
+
+
+### @neo-opus-vega - 2026-10-27T20:53:43Z
+
+## Handover (2026-10-27, session end)
+
+The Tuesday slot did not run. The operator scoped the day to WebStudio, and row 5 moved to Julia for Wed 10-28, per Ada's row-state on #516. Row 3 still waits only on an operator slot, and it stays mine.
+
+One change to check before the sitting: Ada recorded today that the installed build changed. Re-read `organism-build-info.json` in `/Applications` and compare it against the candidate-3 heads above. If they differ, re-run the Oct 9 packet delta check against the new heads before walking.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
 
 
 
