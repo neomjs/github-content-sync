@@ -28,18 +28,26 @@ on:
     - cron: '17 * * * *'
   workflow_dispatch:
     # A one-off heal for corpus files that drifted from GitHub without an
-    # `updatedAt` change, which the delta sync never revisits: the named issues of
-    # one origin are refetched inside this run's emission and published with it.
-    # A pending dispatch can be replaced by a newer scheduled run (the
-    # concurrency group keeps one pending run), so confirm the dispatched run
-    # itself completed.
+    # `updatedAt` change, which the delta sync never revisits: the named issues,
+    # pull requests and discussions of one origin are refetched inside this run's
+    # emission and published with it. A pending dispatch can be replaced by a
+    # newer scheduled run (the concurrency group keeps one pending run), so
+    # confirm the dispatched run itself completed.
     inputs:
       refetch_origin:
-        description: 'Origin whose issues refetch_issues names (one of ORIGINS)'
+        description: 'Origin the refetch lists name (one of ORIGINS)'
         type: string
         default: neo
       refetch_issues:
         description: 'Issue numbers to force-refetch, comma-separated (e.g. 19565,19637)'
+        type: string
+        default: ''
+      refetch_pulls:
+        description: 'Pull-request numbers to force-refetch, comma-separated'
+        type: string
+        default: ''
+      refetch_discussions:
+        description: 'Discussion numbers to force-refetch, comma-separated'
         type: string
         default: ''
 
@@ -65,9 +73,11 @@ jobs:
       # choice: the emitter's lease and the shared `_index.json` are corpus-wide.
       ORIGINS: neo neo-agent-brain neo-agent-institution neo-agent-skills devindex
       # Dispatch inputs reach every shell through env, never through `${{ }}`
-      # inside a `run`. A scheduled run has no inputs, so both are empty.
+      # inside a `run`. A scheduled run has no inputs, so all of them are empty.
       REFETCH_ORIGIN: ${{ inputs.refetch_origin }}
       REFETCH_ISSUES: ${{ inputs.refetch_issues }}
+      REFETCH_PULLS: ${{ inputs.refetch_pulls }}
+      REFETCH_DISCUSSIONS: ${{ inputs.refetch_discussions }}
 
     steps:
       # Before anything is checked out or installed: a refetch request is either
@@ -75,14 +85,17 @@ jobs:
       - name: Validate the refetch request
         run: |
           set -euo pipefail
-          if [ -z "${REFETCH_ISSUES}" ]; then
+          if [ -z "${REFETCH_ISSUES}${REFETCH_PULLS}${REFETCH_DISCUSSIONS}" ]; then
             echo "No refetch requested."
             exit 0
           fi
-          if ! [[ "${REFETCH_ISSUES}" =~ ^[1-9][0-9]*(,[1-9][0-9]*)*$ ]]; then
-            echo "::error::refetch_issues must be comma-separated positive integers."
-            exit 1
-          fi
+          for input in "refetch_issues=${REFETCH_ISSUES}" "refetch_pulls=${REFETCH_PULLS}" "refetch_discussions=${REFETCH_DISCUSSIONS}"; do
+            list="${input#*=}"
+            if [ -n "${list}" ] && ! [[ "${list}" =~ ^[1-9][0-9]*(,[1-9][0-9]*)*$ ]]; then
+              echo "::error::${input%%=*} must be comma-separated positive integers."
+              exit 1
+            fi
+          done
           # Exact equality per origin: a substring test would admit two adjacent
           # origins as one value, which then matches no origin and refetches nothing.
           matched=''
@@ -93,7 +106,7 @@ jobs:
             echo "::error::refetch_origin must be one of: ${ORIGINS}"
             exit 1
           fi
-          echo "Refetch requested for ${REFETCH_ORIGIN}: ${REFETCH_ISSUES}"
+          echo "Refetch requested for ${REFETCH_ORIGIN}: issues '${REFETCH_ISSUES}', pulls '${REFETCH_PULLS}', discussions '${REFETCH_DISCUSSIONS}'"
 
       - name: Check out the corpus
         uses: actions/checkout@v7
@@ -164,11 +177,14 @@ jobs:
           fi
           echo "Corpus mode present in the runtime."
           # An older runtime ignores an unknown flag, so a refetch request would
-          # publish without refetching anything.
-          if [ -n "${REFETCH_ISSUES}" ] && ! grep -qs -- '--refetch-issues' ai/scripts/maintenance/syncGithubWorkflow.mjs; then
-            echo "::error::Brain dev at ${BRAIN_RUNTIME} has no --refetch-issues. The request would be IGNORED. Refusing to run."
-            exit 1
-          fi
+          # publish without refetching anything. Each non-empty list needs its own flag.
+          for request in "--refetch-issues=${REFETCH_ISSUES}" "--refetch-pulls=${REFETCH_PULLS}" "--refetch-discussions=${REFETCH_DISCUSSIONS}"; do
+            flag="${request%%=*}"
+            if [ -n "${request#*=}" ] && ! grep -qs -- "${flag}" ai/scripts/maintenance/syncGithubWorkflow.mjs; then
+              echo "::error::Brain dev at ${BRAIN_RUNTIME} has no ${flag}. The request would be IGNORED. Refusing to run."
+              exit 1
+            fi
+          done
 
       - name: Emit the corpus
         working-directory: .runtime
@@ -201,11 +217,13 @@ jobs:
           # output to decide.
           for repo in $ORIGINS; do
             echo "::group::Origin ${repo}"
-            refetch=''
-            if [ -n "${REFETCH_ISSUES}" ] && [ "${repo}" = "${REFETCH_ORIGIN}" ]; then
-              refetch="--refetch-issues=${REFETCH_ISSUES}"
+            refetch=()
+            if [ "${repo}" = "${REFETCH_ORIGIN}" ]; then
+              if [ -n "${REFETCH_ISSUES}" ]; then refetch+=("--refetch-issues=${REFETCH_ISSUES}"); fi
+              if [ -n "${REFETCH_PULLS}" ]; then refetch+=("--refetch-pulls=${REFETCH_PULLS}"); fi
+              if [ -n "${REFETCH_DISCUSSIONS}" ]; then refetch+=("--refetch-discussions=${REFETCH_DISCUSSIONS}"); fi
             fi
-            NEO_MCP_GITHUB_REPO="$repo" npm run ai:sync-github-workflow -- --corpus-only --verbose ${refetch:+"$refetch"}
+            NEO_MCP_GITHUB_REPO="$repo" npm run ai:sync-github-workflow -- --corpus-only --verbose ${refetch[@]+"${refetch[@]}"}
             echo "::endgroup::"
           done
 
@@ -297,6 +315,6 @@ jobs:
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "- Brain runtime (dev tip at checkout): \`${BRAIN_RUNTIME}\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- revision: \`$(git rev-parse HEAD)\`" >> "$GITHUB_STEP_SUMMARY"
-          if [ -n "${REFETCH_ISSUES}" ]; then
-            echo "- refetched (${REFETCH_ORIGIN}): ${REFETCH_ISSUES}" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "${REFETCH_ISSUES}${REFETCH_PULLS}${REFETCH_DISCUSSIONS}" ]; then
+            echo "- refetched (${REFETCH_ORIGIN}): issues '${REFETCH_ISSUES}', pulls '${REFETCH_PULLS}', discussions '${REFETCH_DISCUSSIONS}'" >> "$GITHUB_STEP_SUMMARY"
           fi
