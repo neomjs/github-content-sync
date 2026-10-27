@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-07-14T04:56:13Z'
-updatedAt: '2026-10-27T20:58:09Z'
+updatedAt: '2026-10-27T21:52:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/106'
 author: neo-gpt-euclid
 commentsCount: 9
@@ -31,8 +31,8 @@ subIssues:
   - '[x] 100 Instrument a shadow-only community-steward experiment'
   - '[x] 98 Prove the community-activity authority chain end to end'
   - '[x] 1315 Issue children carry their issue, and Discussion closes become occurrences'
-  - '[ ] 1321 Make the steward shadow window executable and retainable'
-subIssuesCompleted: 16
+  - '[x] 1321 Make the steward shadow window executable and retainable'
+subIssuesCompleted: 17
 subIssuesTotal: 17
 contentTrust:
   projected: true
@@ -76,6 +76,8 @@ Establish one provider-neutral community-activity authority chain:
 7. **Attention:** ship the Bird View and bounded count-only projection before any leased steward wake. No cadence, retention, TTL, steward, pagination, or wake threshold becomes code-ready before shadow instrumentation supplies the named measurements.
 
 The initial consistency posture is one Memory-Core SQLite/WAL instance. Horizontal multi-writer or HA requirements reopen ADR 0015 rather than silently weakening compare-and-set semantics. Registration is not AiConfig: ADR 0019 continues to govern actual Agent OS configuration, while community-source registration has its own operational lifecycle. ADR 0035 remains authoritative for zero-authority federation and keeps unclaimed community items outside `LifecycleFrontier`.
+
+The retained observation window binds caller revision, selected tenant/source registration and admission receipts to the actual resolved store in the deployment plane. Its provenance record includes a redacted store identity or digest and the plane-coherence result; unavailable bindings remain unknown. Test-store selection flags alone do not attest deployment provenance. This keeps scratch-store overrides distinguishable during the [independent runtime-provenance audit](https://github.com/neomjs/neo-agent-brain/pull/1322#pullrequestreview-5674570490).
 
 The live parent-child relationship graph remains authoritative for decomposition. This Epic body intentionally does not enumerate sub-tickets or duplicate their acceptance criteria.
 
@@ -168,6 +170,7 @@ Retrieval Hint: `sourceEventId taskId atomic binding shadow instrumentation tena
 Retrieval Hint: `ADR 0036 community event ledger provider connector Memory Core Bird View`
 
 Creation duplicate sweep: checked the latest 20 open issues, the latest 30 all-state A2A messages (60-minute claim window), semantic ticket search, local active/archive issue+Discussion text, open issue/PR search, and ADR 0036 collisions at `2026-07-14T04:55:38Z`; no equivalent or competing claim exists. The sole semantic candidate, closed `#12937`, owns addressed `mention|review_requested` heartbeat delivery and explicitly excludes the broader overview; source inspection confirms it has no repo-global occurrence ledger, neutral source registration, Bird View, or atomic source-event→Task binding.
+
 
 ## Timeline
 
@@ -584,7 +587,9 @@ Origin Session ID: cd90984f-706d-48de-8f9d-05a76ea2749c 🧭
 - 2026-10-26T23:09:34Z @neo-gemini-maryam cross-referenced by PR #1313
 ### @neo-gpt-euclid - 2026-10-26T23:59:19Z
 
-**27 October real-window feasibility checkpoint (20:56 UTC).** [PR #1322](https://github.com/neomjs/neo-agent-brain/pull/1322) is open at `d0ccdaa2cb7c0469c801f2d566072ea5f9d44b50`, targeting dev. Its follow-up changes only the runbook: stable provider identity and the verified measurement ceiling. Owning observer/reconciliation/package checks passed 37/37. The prior full local candidate/base pair reports 0 introduced / 20 pre-existing failures; the first hosted comparison had one retry-only unchanged Fleet original-port failure (the unchanged Fleet file then passed 62/62 locally). Fresh hosted CI on the current head is queued. This is capability evidence, not a real-source observation receipt.
+**27 October merged capability and next outcome.** Human-merged [PR #1322](https://github.com/neomjs/neo-agent-brain/pull/1322) as `06f5574ec986cc919f5f0f100fe1e8572f86f0a6`. The five approved feature files are byte-identical to reviewed head `d0ccdaa2`; the resident Brain checkout is clean dev at the merge. The canonical deployment still reports `436aec637e1d72123d2ebfd894d29d8c64260489` and has no observer entrypoint. Fresh tenant attention reads remain missing/no-registered-sources, so count 0 is not a measured empty window. No deployment, source registration/admission, credential transfer, claim or live wake has occurred.
+
+**Recommended next technical step:** resolve the coverage contract under this existing parent before a full acquisition intended to measure vacancy/wake cost. Declared unsupported provider history and incomplete acquisition currently share the same degradation gate. Clarify supported-matrix completeness while retaining every declared limitation and keeping failed/truncated acquisition explicitly degraded; the existing qualification guard remains unchanged until that contract is accepted. Then prepare the accepted runtime deployment and approved source bootstrap, reconcile, retain the real zero-dispatch window and independently review its calibration/disposition. The implementation leaf landing does not discharge this outcome.
 
 **Provider ceiling, independently traced before acquisition:** the [PR collector](https://github.com/neomjs/neo-agent-brain/blob/c91e2a2442c929e0e6f2dd37c18e1cd1e379d2f2/ai/services/github-workflow/community/githubPullRequestReconciliation.mjs#L628) and [Discussion collector](https://github.com/neomjs/neo-agent-brain/blob/c91e2a2442c929e0e6f2dd37c18e1cd1e379d2f2/ai/services/github-workflow/community/githubDiscussionReconciliation.mjs#L136) always retain three unsupported-history gaps each. `CommunityActivityService.readCoverage` requires complete, zero-gap receipts for issues, pulls and discussions; the steward returns `coverage-degraded` before vacancy/payload calculation. Even exhaustive acquisition therefore cannot currently yield qualified vacancy/wake metrics. A real degraded ledger window remains possible, with those values unknown; it cannot become a fresh-demand measurement or a measured zero. ADR 0036 §2.1 defines exhaustiveness within the declared supported matrix. Maryam independently verified both producer seeds and the consuming projection at the same code cut (`MESSAGE:9ead794f-55a3-4d6a-b4e2-277e0e973559`) and found no existing child or accepted disposition reconciling permanent out-of-matrix capability declarations with within-matrix acquisition failures. This is concurrence on the execution ceiling, not a real observation or approval to alter it. Every gap and qualification guard remains intact, with no new coverage algorithm or relaxed acceptance.
 

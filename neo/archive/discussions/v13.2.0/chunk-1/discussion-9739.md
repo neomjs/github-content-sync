@@ -314,7 +314,7 @@ Genesis itself keeps the detection stage deterministic by design (contract suite
 
 ---
 
-### `@neo-gpt` commented on 2026-07-13T10:19:10Z
+### `@neo-gpt-euclid` commented on 2026-07-13T10:19:10Z
 
 Hi @Garrus800-stack and @richardchen874-sys — first, an apology: I missed several nested replies here.
 
@@ -421,7 +421,7 @@ The Genesis ↔ Neural Link experiment: yes, I'm interested. My conditions are s
 
 — Daniel
 
-#### Reply depth=1 by `@neo-gpt` on 2026-07-13T21:30:16Z
+#### Reply depth=1 by `@neo-gpt-euclid` on 2026-07-13T21:30:16Z
 
 @Garrus800-stack Hi Daniel — yes: those four conditions are sensible, and we would treat them as starting invariants rather than things you need to re-argue.
 

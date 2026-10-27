@@ -1,7 +1,7 @@
 ---
 id: 1323
 title: Corpus emission can force-refetch named pulls and discussions
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-27T21:18:09Z'
-updatedAt: '2026-10-27T21:18:09Z'
+updatedAt: '2026-10-27T22:08:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1323'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-27T22:08:49Z'
 ---
 # Corpus emission can force-refetch named pulls and discussions
 
@@ -48,8 +49,14 @@ The content-sync repository owns publication (its README, design decision 2). It
 
 - `SyncService.emitConversationCorpus({refetchIssues})` → `emitGeneratedContent` → facet `issues` → `IssueSyncer.pullFromGitHub(metadata, {refetchIssues})`. Named numbers join the force-update set even when the delta already returned them, and the pull throws when one does not come back.
 - Facet `discussions` → `DiscussionSyncer.syncDiscussions(metadata)`. Facet `pulls` → reconcile → `PullRequestSyncer.syncPullRequests(metadata)` → `repairDuplicateArtifacts` → `reconcilePullRequestIndex` → `verifyCorpusIntegrity`. When the integrity verdict fails, the facet does not advance.
-- `PullRequestSyncer.refetchPullsByNumber(numbers, metadata, indexMutations)` and `DiscussionSyncer.refetchDiscussionsByNumber(…)` fetch one item each and render it with the bulk renderer. They place it against the complete inventory, so an archived file is rewritten where it lives, and they write its metadata row.
+- `PullRequestSyncer.refetchPullsByNumber(numbers, metadata, indexMutations)` and `DiscussionSyncer.refetchDiscussionsByNumber(…)` fetch one item each, render it with the bulk renderer, and write its metadata row. Placement differs between the two:
+  - A terminal PR with one archived copy is rewritten at that path (`#getPullRequestPath`).
+  - A discussion's bucket is recomputed from `closedAt` and the release list. At `9e6bc469`, that bucket is the folder every archived discussion already lives in.
 - **Containment gap:** `syncDiscussions` quarantines entries of `issueSync.discussionDenylist` (`#isDenylisted`), but `refetchDiscussionsByNumber` never consults the list, and `#getDiscussionPath` has no gate. A named denylisted discussion would therefore be written. The issue path is safe: `#getIssuePath` returns `null` for a denylisted issue, so the issue is not written, and naming it fails the pull. The gap is latent today because the default denylist is empty, and the publisher cannot reach it until this ticket wires the path in.
+- **Copy gap** (found while implementing): once the delta stops visiting a closed discussion, no pass ever archives it.
+  - At `9e6bc469`, 58 of the 350 neo discussion files are closed but still sit in the active tier. The planner would bucket them into `v13.2.0` (49) and `v13.3.0` (9).
+  - `refetchDiscussionsByNumber` writes the planned path and leaves the old file where it is. The emission's collision check scans only the archive, so the run would publish both copies.
+  - The issue path deletes its stale active copies (`IssueSyncer#removeOtherCopies`). The pull facet archives closed PRs before it syncs.
 
 Owning folders (structure map): `ai/services/github-workflow/sync/`, `ai/services/github-workflow/SyncService.mjs`, `ai/scripts/maintenance/syncGithubWorkflow.mjs`. No new files, and no config keys.
 
@@ -59,6 +66,7 @@ Owning folders (structure map): `ai/services/github-workflow/sync/`, `ai/service
 2. `SyncService`: `emitConversationCorpus` and `emitGeneratedContent` take `refetchPulls` and `refetchDiscussions` and hand each list to its facet.
 3. `PullRequestSyncer.syncPullRequests(metadata, {refetchPulls})` and `DiscussionSyncer.syncDiscussions(metadata, {refetchDiscussions})`: after the delta, refetch the named items through the existing primitive, inside the same index update. A named item that does not come back throws, so its facet does not advance and the run publishes nothing. The pull facet's duplicate repair, index realign and integrity verdict then also cover the rewritten files.
 4. `refetchDiscussionsByNumber` never writes a denylisted discussion. It removes the discussion's index entry instead, as the issue path does for a denylisted issue.
+5. `refetchDiscussionsByNumber` leaves its rendering as the discussion's only active copy, as `IssueSyncer#removeOtherCopies` does for issues.
 
 ## Acceptance Criteria
 
@@ -66,6 +74,7 @@ Owning folders (structure map): `ai/services/github-workflow/sync/`, `ai/service
 - [ ] A named PR or discussion that does not come back fails its facet, and the emitter exits nonzero.
 - [ ] The pull facet's integrity verdict runs after the named refetch.
 - [ ] The refetch path never writes a denylisted discussion: the spec is red on `dev` and green at head.
+- [ ] A refetched discussion leaves one copy. A closed discussion still in the active tier moves into its release bucket: the spec is red on `dev` and green at head.
 - [ ] An emission without the new flags behaves as before: the existing emitter and syncer specs stay green.
 
 ## Out of Scope
@@ -100,6 +109,7 @@ Retrieval Hint: "corpus emission force-refetch named pulls discussions publisher
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+
 ## Timeline
 
 - 2026-10-27T21:18:09Z @neo-opus-ada assigned to @neo-opus-ada
@@ -107,4 +117,21 @@ Retrieval Hint: "corpus emission force-refetch named pulls discussions publisher
 - 2026-10-27T21:18:11Z @neo-opus-ada added the `ai` label
 - 2026-10-27T21:18:12Z @neo-opus-ada added the `agent-os` label
 - 2026-10-27T21:18:18Z @neo-opus-ada added parent issue #1174
+- 2026-10-27T21:37:34Z @neo-opus-ada cross-referenced by #24
+- 2026-10-27T21:38:43Z @neo-opus-ada cross-referenced by PR #1324
+- 2026-10-27T22:08:49Z @tobiu referenced in commit `40bb74c` - "feat(github-workflow): corpus emission force-refetches named pulls and discussions (#1323) (#1324)
+
+* feat(github-workflow): corpus emission force-refetches named pulls and discussions (#1323)
+
+The emitter healed named issues only (--refetch-issues, #1049). Pulls and
+discussions gain --refetch-pulls and --refetch-discussions under the same
+rules: parsed before the emitter loads, refetched inside their facet's own
+index update, and a named item that does not come back fails the facet.
+
+refetchDiscussionsByNumber now honors the discussion denylist, so a
+recovery run cannot write back what the bulk sync quarantines. The gate
+reads its leaf without a fallback (ADR 0019 B3), like its issue sibling.
+
+* fix(github-workflow): a discussion refetch leaves its rendering as the only active copy (#1323)"
+- 2026-10-27T22:08:49Z @tobiu closed this issue
 

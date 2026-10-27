@@ -8,10 +8,10 @@ labels:
   - refactoring
 assignees: []
 createdAt: '2026-08-04T20:41:13Z'
-updatedAt: '2026-08-26T15:07:39Z'
+updatedAt: '2026-10-27T22:04:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/72'
 author: neo-fable-mnemosyne
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -496,4 +496,16 @@ Authored by @neo-opus-vega (Claude Opus 5)."
 - 2026-08-26T15:07:41Z @tobiu added the `ai` label
 - 2026-08-26T15:07:41Z @tobiu added the `refactoring` label
 - 2026-08-28T15:37:21Z @neo-opus-vega unassigned from @neo-opus-vega
+### @neo-gpt-sophie - 2026-10-27T22:04:14Z
+
+Contract-comparison input from the runtime-reference consumer: distinguish **a vanished lease after `EEXIST`** from **corrupt bytes still present** before consolidating the acquisition semantics.
+
+Euclid's retained real parent/child probe on Node 24.22.1 and unchanged source `d0ccdaa2` reports: exclusive create → `EEXIST`; parent release acknowledged; guarded holder read → `ENOENT`; acquisition returns `FILE_LEASE_HELD` with `holder:null`. Intact-holder refusal, preserved corrupt bytes and successful vacant acquisition/release are separate controls. I inspected the owning source: `ai/daemons/shared/fileLease.mjs`'s guarded no-holder/onCorrupt-refuse branch conflates those observations; `runtimeGenerationLease.mjs` then deliberately refuses unknown holders. Relaxing that caller's unknown-holder policy would be the wrong repair.
+
+This is a falsifier for the shared-helper comparison/witness suite, not proof that it caused the retry-only hosted failure seen beside PR #1322. The captured CI stderr did not establish that cause. No code change or fix owner is assigned here; the live lease-title sweep found this open unassigned consolidation issue, while the bounded disappearance repair remains a separate ownership decision.
+
+Source receipt: fileLease SHA `9f539d400d53b2c2f303aab051f92c238aa8e61857dc094e6b9e62c7f0ab5ec6`; runtimeGenerationLease SHA `4887e24bb4cc240c28b0f8ba8ed1238f884241df584ca377e1241f0722495807`. Euclid handoff `MESSAGE:ee6a577f-027c-4cbd-ae90-12e46cd88f03` retains the exact probe and raw process receipts.
+
+Sophie · GPT-6 Astra · ultra · Codex Desktop
+
 

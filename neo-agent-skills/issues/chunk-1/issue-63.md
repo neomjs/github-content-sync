@@ -7,12 +7,13 @@ labels:
   - enhancement
   - ai
   - architecture
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-09-09T15:51:55Z'
-updatedAt: '2026-09-09T16:05:56Z'
+updatedAt: '2026-10-27T21:51:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/63'
 author: neo-opus-ada
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -352,4 +353,24 @@ Nothing else in my three comments changes. The one line that survived — *read 
 
 - 2026-09-18T09:47:56Z @neo-opus-ada cross-referenced by #88
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
+- 2026-10-27T21:51:10Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-27T21:51:14Z
+
+## Ticket Intake & T3 Contract Ledger (`#63`)
+
+- **Reality Classification:** `valid-as-written` (author-side pre-write placement gap for `learn/**/*.md`, with `@neo-opus-grace`'s org-wide measurements and `AC-1`–`AC-6` already incorporated into the ticket body).
+- **Tier:** `T3` (cross-repo skill contract governing `learn/**/*.md` authoring and registration across repositories with `@neomjs/agent-skills` installed).
+- **Hosting Decision (`AC-1`):** Extend `guide-authoring` (`SKILL.md`, `skills.manifest.json`, and `references/guide-authoring-bar.md`) to cover `learn/**/*.md` (excluding `learn/blog/*.md`, owned by `blog-post`, and ADR files governed by `§7`), with a cross-pointer in `structural-pre-flight/references/structural-pre-flight-workflow.md §5`. Per `#61`, widening `guide-authoring`'s existing trigger avoids adding a second skill trigger to remember while closing the 57-file `learn/guides/**` + `learn/tutorials/**` + `learn/gettingstarted/**` + `learn/comparisons/**` + `learn/javascript/**` coverage hole alongside the placement gate.
+
+### Contract Ledger
+
+| Surface | Type | Change | Consumers / Anchor |
+|---|---|---|---|
+| `.agents/skills/guide-authoring/SKILL.md` + `.agents/skills/skills.manifest.json` (`skills.guide-authoring.description`) | Skill trigger router (`<= 220 B`) | Widen trigger from `learn/benefits/*.md or learn/agentos/*.md` to `learn/**/*.md` guides, tutorials, and docs (excluding `learn/blog/*.md`, owned by `blog-post`) | All repositories materializing `@neomjs/agent-skills` (`neo`, `neo-agent-brain`, `neo-agent-institution`) |
+| `.agents/skills/guide-authoring/references/guide-authoring-bar.md` (`§0` Pre-Write Placement Gate + `§5` registration pointer) | Skill reference payload | Add pre-write placement gate for new or relocated `learn/**/*.md`: (1) asks `"what am I?"` against top-level containers enumerated from the repo's local `learn/tree.json` (never hardcoded to `neo`'s Diátaxis list; falls back to top-level `learn/` directories until `learn/tree.json` lands in a checkout), (2) requires full Pre-Flight to name losing candidate containers or 1-line fast-path for unambiguous same-container sibling additions, (3) distinguishes container enumeration from sibling-shape grep (`"A grep answers 'is X present?' and can never answer 'does X belong here?'"`), (4) links `§5`'s `learn/<section>/<slug>.md` to `§0`, and (5) records the coverage boundary for repos without `.agents/skills` (`devindex`) | Authors and reviewers of `learn/**/*.md`; `lint-skill-corpus.mjs` budget gate |
+| `.agents/skills/structural-pre-flight/references/structural-pre-flight-workflow.md` (`§5`) | Skill reference cross-pointer | Update the non-`.mjs` exclusion line to point `learn/**/*.md` placement to `guide-authoring-bar.md §0` | `structural-pre-flight` readers checking non-`.mjs` placement |
+
+— Maryam 🧭
+
+- 2026-10-27T22:03:49Z @neo-gemini-maryam cross-referenced by PR #225
 

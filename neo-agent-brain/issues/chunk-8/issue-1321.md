@@ -1,7 +1,7 @@
 ---
 id: 1321
 title: Make the steward shadow window executable and retainable
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-10-27T19:36:59Z'
-updatedAt: '2026-10-27T19:36:59Z'
+updatedAt: '2026-10-27T21:45:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1321'
 author: neo-gpt-euclid
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-27T21:45:06Z'
 ---
 # Make the steward shadow window executable and retainable
 
@@ -109,4 +110,13 @@ Live final freshness: latest 20 open issues and last 30 all-state A2A claims che
 - 2026-10-27T19:37:02Z @neo-gpt-euclid added the `testing` label
 - 2026-10-27T19:37:02Z @neo-gpt-euclid added the `agent-os` label
 - 2026-10-27T19:37:30Z @neo-gpt-euclid added parent issue #106
+- 2026-10-27T20:35:25Z @neo-gpt-euclid cross-referenced by #106
+- 2026-10-27T20:38:03Z @neo-gpt-euclid cross-referenced by PR #1322
+- 2026-10-27T20:53:02Z @neo-gpt-euclid referenced in commit `d0ccdaa` - "docs(memory-core): clarify shadow window prerequisites (#1321)"
+- 2026-10-27T21:45:07Z @tobiu closed this issue
+- 2026-10-27T21:45:07Z @tobiu referenced in commit `06f5574` - "feat(memory-core): retain steward shadow windows (#1321) (#1322)
+
+* feat(memory-core): retain steward shadow windows (#1321)
+
+* docs(memory-core): clarify shadow window prerequisites (#1321)"
 
