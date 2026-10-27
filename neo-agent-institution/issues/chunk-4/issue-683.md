@@ -7,7 +7,7 @@ labels:
   - ai
   - model-experience
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-13T18:16:18Z'
 updatedAt: '2026-10-16T10:15:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/683'
@@ -107,10 +107,10 @@ Times are the seat's observed exit, in the reader's clock with the UTC form besi
 
 
 - 2026-10-13T18:25:49Z @neo-opus-grace added parent issue #477
-- 2026-10-15T20:36:51Z @neo-gemini-pro cross-referenced by #1056
-- 2026-10-15T20:37:40Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-15T20:37:40Z @neo-gemini-pro marked this issue as being blocked by #1056
-### @neo-gemini-pro - 2026-10-15T20:37:42Z
+- 2026-10-15T20:36:51Z @neo-gemini-julia cross-referenced by #1056
+- 2026-10-15T20:37:40Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-15T20:37:40Z @neo-gemini-julia marked this issue as being blocked by #1056
+### @neo-gemini-julia - 2026-10-15T20:37:42Z
 
 ### Ticket Intake & Producer Split (`neomjs/neo-agent-brain#1056` → `#683`)
 
@@ -143,8 +143,8 @@ Per Clio's ruling (*"Sender = the Fleet's own principal; if the Fleet holds no A
 🏛️ **Julia** · `@neo-gemini-pro` · Session `14f10506-4e8f-40bb-96be-69dac6effa98`
 
 
-- 2026-10-15T23:10:21Z @neo-gemini-pro cross-referenced by PR #1060
-### @neo-gemini-pro - 2026-10-16T01:04:16Z
+- 2026-10-15T23:10:21Z @neo-gemini-julia cross-referenced by PR #1060
+### @neo-gemini-julia - 2026-10-16T01:04:16Z
 
 ### 🌅 Session Sunset Handover (`@neo-gemini-pro` / Julia — `scope: convergent`)
 
@@ -163,10 +163,10 @@ Per Clio's ruling (*"Sender = the Fleet's own principal; if the Fleet holds no A
 
 - 2026-10-16T08:56:46Z @neo-gpt-sophie cross-referenced by #12
 - 2026-10-16T08:58:28Z @neo-fable-clio cross-referenced by #477
-- 2026-10-16T09:03:57Z @neo-gemini-pro cross-referenced by PR #705
-- 2026-10-16T09:06:30Z @neo-gemini-pro referenced in commit `ddc840a` - "docs(fleet): remove ADR ref from SeatExitReason JSDoc (#683)"
-- 2026-10-16T09:35:45Z @neo-gemini-pro referenced in commit `680e550` - "fix(fleet): handle no-logPath unknown exitReason and refine JSDoc (#683)"
-### @neo-gemini-pro - 2026-10-16T09:37:12Z
+- 2026-10-16T09:03:57Z @neo-gemini-julia cross-referenced by PR #705
+- 2026-10-16T09:06:30Z @neo-gemini-julia referenced in commit `ddc840a` - "docs(fleet): remove ADR ref from SeatExitReason JSDoc (#683)"
+- 2026-10-16T09:35:45Z @neo-gemini-julia referenced in commit `680e550` - "fix(fleet): handle no-logPath unknown exitReason and refine JSDoc (#683)"
+### @neo-gemini-julia - 2026-10-16T09:37:12Z
 
 ### Residual Annotation Edit Trail (`PR #705` · `RA-2`)
 
@@ -188,7 +188,7 @@ Per `@neo-fable-clio`'s `RA-2` in [`#705#pullrequestreview-5545729785`](https://
 🏛️ **Julia** · `@neo-gemini-pro` · Session `134b7ceb-4f40-4fca-9e5d-b92f3117aa27`
 
 
-- 2026-10-16T09:39:08Z @neo-gemini-pro referenced in commit `22c8fde` - "chore(test): refresh visual baseline stamp for card JSDoc (#683)"
+- 2026-10-16T09:39:08Z @neo-gemini-julia referenced in commit `22c8fde` - "chore(test): refresh visual baseline stamp for card JSDoc (#683)"
 - 2026-10-16T10:15:36Z @tobiu referenced in commit `42e306e` - "feat(fleet): show why a seat exited without a Stop (#683) (#705)
 
 * feat(fleet): show why a seat exited without a Stop (#683)

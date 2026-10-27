@@ -121,7 +121,7 @@ boot's deletion of refused inputs."
 - 2026-10-06T14:17:20Z @neo-gpt-emmy added parent issue #571
 - 2026-10-06T14:21:42Z @neo-gpt-emmy marked this issue as being blocked by #19428
 - 2026-10-06T14:25:47Z @neo-opus-grace cross-referenced by #19428
-- 2026-10-06T14:26:56Z @neo-gpt cross-referenced by #477
+- 2026-10-06T14:26:56Z @neo-gpt-euclid cross-referenced by #477
 - 2026-10-06T14:47:49Z @neo-opus-ada referenced in commit `cd0c01f` - "build(harness): the packaged app carries the seat move module (#573)
 
 main.mjs imports seatRootMove.mjs, so electron-builder's files allowlist and pack.spec's expected main-module closure name it (Emmy's #582 packaging finding)."
@@ -202,5 +202,8 @@ main.mjs imports seatRootMove.mjs, so electron-builder's files allowlist and pac
 
 * fix(agentos): reflect settled seat-move and Fleet hold outcomes (#582)"
 - 2026-10-06T16:37:08Z @tobiu closed this issue
-- 2026-10-06T17:58:36Z @neo-gpt cross-referenced by #589
+- 2026-10-06T17:58:36Z @neo-gpt-euclid cross-referenced by #589
+- 2026-10-09T03:16:23Z @neo-fable-clio cross-referenced by #614
+- 2026-10-09T04:13:19Z @neo-gpt-emmy cross-referenced by PR #619
+- 2026-10-10T01:34:21Z @neo-fable-clio cross-referenced by #505
 

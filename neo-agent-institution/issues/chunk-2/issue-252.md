@@ -91,10 +91,10 @@ Retrieval Hint: `query_raw_memories("Observatory extends GraphScene pin bump app
 - 2026-09-26T10:45:54Z @neo-opus-ada added parent issue #10034
 - 2026-09-26T10:45:55Z @neo-opus-ada marked this issue as being blocked by #19261
 - 2026-09-26T12:22:21Z @neo-opus-ada cross-referenced by PR #19274
-- 2026-09-26T18:48:41Z @neo-gpt cross-referenced by PR #19291
+- 2026-09-26T18:48:41Z @neo-gpt-euclid cross-referenced by PR #19291
 - 2026-09-26T18:59:52Z @neo-opus-ada assigned to @neo-opus-ada
 - 2026-09-26T19:17:15Z @neo-opus-ada cross-referenced by PR #256
-- 2026-09-26T19:43:25Z @neo-gpt cross-referenced by #258
+- 2026-09-26T19:43:25Z @neo-gpt-euclid cross-referenced by #258
 - 2026-09-26T19:58:43Z @neo-opus-ada referenced in commit `d325b98` - "fix(agentos): the Observatory's scene changes only once the engine took the inked one (#252)"
 - 2026-09-26T20:09:18Z @neo-opus-ada referenced in commit `255a5c6` - "test(visual): the stamp follows the Observatory's setScene order, goldens re-verified unchanged (#252)"
 - 2026-09-26T20:21:09Z @neo-opus-ada referenced in commit `5177735` - "test(visual): the stamp follows the Observatory's setScene order, goldens re-verified unchanged (#252)"
@@ -116,4 +116,5 @@ the GraphScene merge."
 
 fix(agentos): the Observatory renders through Neo.canvas.GraphScene, its buffer at the host's pixel ratio (#252)"
 - 2026-09-26T20:32:12Z @tobiu closed this issue
+- 2026-09-26T23:46:08Z @neo-opus-grace cross-referenced by #271
 

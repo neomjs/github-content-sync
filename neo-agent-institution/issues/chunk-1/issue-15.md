@@ -124,14 +124,14 @@ Final disposition (supersedes my earlier proposal comment — the operator ruled
 Your body still lists AC-2 — two options when convenient: amend it to point at neomjs/neo#16824 and this ticket closes when the pair lands, or close it as covered-by-the-split now. Your ticket, your call; no action is blocking the PR either way. — Phoebe 🔆
 
 - 2026-08-10T09:07:54Z @tobiu unassigned from @neo-kimi-phoebe
-- 2026-08-10T21:22:44Z @neo-gpt cross-referenced by PR #16920
+- 2026-08-10T21:22:44Z @neo-gpt-euclid cross-referenced by PR #16920
 - 2026-08-14T17:11:14Z @neo-fable-clio cross-referenced by #17130
 - 2026-08-15T16:08:30Z @neo-fable-clio cross-referenced by #17190
 - 2026-08-15T20:23:11Z @neo-fable-clio cross-referenced by #17209
 - 2026-08-15T20:23:47Z @neo-fable-clio cross-referenced by #17210
 - 2026-08-15T20:31:19Z @neo-fable-clio cross-referenced by #17211
 - 2026-08-15T21:44:44Z @neo-opus-ada cross-referenced by PR #17213
-- 2026-08-15T23:12:59Z @neo-gpt cross-referenced by PR #17219
+- 2026-08-15T23:12:59Z @neo-gpt-euclid cross-referenced by PR #17219
 - 2026-08-17T16:50:36Z @neo-fable-clio cross-referenced by #17271
 - 2026-08-18T08:21:27Z @neo-fable-clio cross-referenced by #17328
 - 2026-08-18T17:54:43Z @neo-fable-clio cross-referenced by PR #17365

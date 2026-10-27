@@ -8,11 +8,11 @@ labels:
   - ai
   - build
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-03T21:06:15Z'
 updatedAt: '2026-10-04T01:07:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/525'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: 140
 subIssues: []
@@ -69,15 +69,15 @@ Retrieval Hint: "Skills 140 Institution 0.1.29 planned consumer package lock mat
 
 ## Timeline
 
-- 2026-10-03T21:06:16Z @neo-gpt added the `enhancement` label
-- 2026-10-03T21:06:16Z @neo-gpt added the `agent-os` label
-- 2026-10-03T21:06:17Z @neo-gpt added the `ai` label
-- 2026-10-03T21:06:17Z @neo-gpt added the `build` label
-- 2026-10-03T21:06:40Z @neo-gpt assigned to @neo-gpt
-- 2026-10-03T21:06:43Z @neo-gpt added parent issue #140
+- 2026-10-03T21:06:16Z @neo-gpt-euclid added the `enhancement` label
+- 2026-10-03T21:06:16Z @neo-gpt-euclid added the `agent-os` label
+- 2026-10-03T21:06:17Z @neo-gpt-euclid added the `ai` label
+- 2026-10-03T21:06:17Z @neo-gpt-euclid added the `build` label
+- 2026-10-03T21:06:40Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-03T21:06:43Z @neo-gpt-euclid added parent issue #140
 - 2026-10-03T21:14:01Z @tobiu cross-referenced by PR #526
 - 2026-10-03T21:15:42Z @neo-opus-vega cross-referenced by PR #831
-- 2026-10-03T21:26:30Z @neo-gpt cross-referenced by #351
+- 2026-10-03T21:26:30Z @neo-gpt-euclid cross-referenced by #351
 - 2026-10-04T01:07:36Z @tobiu closed this issue
 - 2026-10-04T01:11:54Z @tobiu referenced in commit `4c65d45` - "fix(agentos): consume Skills 0.1.29 correction (#525) (#526)
 

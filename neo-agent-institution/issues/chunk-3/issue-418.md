@@ -11,7 +11,7 @@ assignees:
 createdAt: '2026-10-02T08:52:44Z'
 updatedAt: '2026-10-02T19:05:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/418'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: 414
 subIssues: []
@@ -97,18 +97,18 @@ Retrieval Hint: "roster card lane line laneClaimedAt sources.lane RosterRow cons
 
 ## Timeline
 
-- 2026-10-02T08:52:45Z @neo-fable added the `enhancement` label
-- 2026-10-02T08:52:45Z @neo-fable added the `agent-os` label
-- 2026-10-02T08:52:45Z @neo-fable added the `ai` label
-- 2026-10-02T08:53:15Z @neo-fable marked this issue as being blocked by #740
-- 2026-10-02T08:53:18Z @neo-fable added parent issue #414
-- 2026-10-02T08:57:45Z @neo-fable cross-referenced by PR #419
+- 2026-10-02T08:52:45Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-02T08:52:45Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-02T08:52:45Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-02T08:53:15Z @neo-fable-mnemosyne marked this issue as being blocked by #740
+- 2026-10-02T08:53:18Z @neo-fable-mnemosyne added parent issue #414
+- 2026-10-02T08:57:45Z @neo-fable-mnemosyne cross-referenced by PR #419
 - 2026-10-02T08:57:57Z @neo-fable-clio cross-referenced by #421
-- 2026-10-02T11:28:03Z @neo-fable cross-referenced by PR #745
+- 2026-10-02T11:28:03Z @neo-fable-mnemosyne cross-referenced by PR #745
 - 2026-10-02T11:38:26Z @neo-opus-grace cross-referenced by #414
-- 2026-10-02T11:39:03Z @neo-fable cross-referenced by #435
-- 2026-10-02T11:44:53Z @neo-fable cross-referenced by #391
-- 2026-10-02T13:04:29Z @neo-fable cross-referenced by #440
+- 2026-10-02T11:39:03Z @neo-fable-mnemosyne cross-referenced by #435
+- 2026-10-02T11:44:53Z @neo-fable-mnemosyne cross-referenced by #391
+- 2026-10-02T13:04:29Z @neo-fable-mnemosyne cross-referenced by #440
 - 2026-10-02T13:08:31Z @neo-gpt-emmy cross-referenced by #442
 - 2026-10-02T13:30:04Z @neo-gpt-emmy marked this issue as being blocked by #442
 - 2026-10-02T13:34:04Z @neo-gpt-emmy cross-referenced by PR #445
@@ -138,4 +138,8 @@ Co-authored-by: Sophie <neo-gpt-sophie@neomjs.com>"
 - 2026-10-02T19:05:54Z @tobiu referenced in commit `98d4093` - "feat(fleet): show roster lane claims and their age (#418) (#461)"
 - 2026-10-02T19:05:54Z @tobiu closed this issue
 - 2026-10-02T19:34:24Z @neo-gpt-emmy cross-referenced by PR #466
+- 2026-10-03T07:16:55Z @neo-fable-mnemosyne cross-referenced by #476
+- 2026-10-03T08:24:43Z @neo-fable-clio cross-referenced by #480
+- 2026-10-03T09:05:10Z @neo-opus-grace cross-referenced by #490
+- 2026-10-15T11:09:24Z @neo-opus-vega cross-referenced by #1046
 

@@ -10,7 +10,7 @@ assignees: []
 createdAt: '2026-07-04T15:09:22Z'
 updatedAt: '2026-09-30T11:56:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/13'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 14
 parentIssue: null
 subIssues:
@@ -77,20 +77,20 @@ Retrieval Hint: "agentos design conformance consume loaded tokens agent-button c
 
 ## Timeline
 
-- 2026-07-04T15:09:24Z @neo-fable added the `epic` label
-- 2026-07-04T15:09:24Z @neo-fable added the `design` label
-- 2026-07-04T15:09:24Z @neo-fable added the `ai` label
-- 2026-07-04T15:15:36Z @neo-fable cross-referenced by #14807
+- 2026-07-04T15:09:24Z @neo-fable-mnemosyne added the `epic` label
+- 2026-07-04T15:09:24Z @neo-fable-mnemosyne added the `design` label
+- 2026-07-04T15:09:24Z @neo-fable-mnemosyne added the `ai` label
+- 2026-07-04T15:15:36Z @neo-fable-mnemosyne cross-referenced by #14807
 - 2026-07-04T15:16:27Z @neo-opus-vega cross-referenced by #14809
 - 2026-07-04T15:22:25Z @neo-opus-vega cross-referenced by PR #14810
 - 2026-07-04T16:14:24Z @tobiu referenced in commit `5c804e0` - "feat(agentos): button-hierarchy consumption layer + toolbar collision fix (#14809) (#14810)
 
 First slice of the agentos-components.css consumption layer (epic #14805): binds the SSOT tokens (tokens.css) to the agent-button hierarchy the views never consumed. Base buttons are quiet panel-toned controls (--fm-panel-2/--fm-line/--fm-ink); the primary action (submit) reaches for --fm-signal sparingly; the action toolbars (agent-form-actions/agent-fleet-actions) wrap+gap instead of colliding (the operator-flagged default-toolbar bug). Wires agentos-components.css into index.html. Verified live on :8085 -- submit button color rgb(94,234,212)=--fm-signal (was default blue); toolbar flex-wrap:wrap, height 48 to 104 (buttons wrap, no collision)."
-- 2026-07-05T03:23:15Z @neo-fable cross-referenced by #13349
+- 2026-07-05T03:23:15Z @neo-fable-mnemosyne cross-referenced by #13349
 - 2026-07-05T11:19:17Z @neo-opus-vega cross-referenced by #14846
 - 2026-07-05T11:31:09Z @neo-opus-vega cross-referenced by PR #14847
-- 2026-07-06T10:38:00Z @neo-gpt cross-referenced by #14884
-- 2026-07-06T10:42:40Z @neo-gpt cross-referenced by PR #14887
+- 2026-07-06T10:38:00Z @neo-gpt-euclid cross-referenced by #14884
+- 2026-07-06T10:42:40Z @neo-gpt-euclid cross-referenced by PR #14887
 - 2026-07-10T01:11:42Z @neo-opus-vega cross-referenced by #14909
 - 2026-07-10T11:55:49Z @neo-opus-vega cross-referenced by PR #14960
 - 2026-07-10T18:24:36Z @neo-opus-ada cross-referenced by PR #14979
@@ -488,12 +488,12 @@ This replaces the broad execution signal in https://github.com/neomjs/neo-agent-
 - 2026-07-19T08:15:18Z @neo-gpt-emmy cross-referenced by PR #15565
 - 2026-07-20T19:13:36Z @neo-kimi-iris cross-referenced by #15621
 - 2026-07-20T19:33:34Z @neo-opus-vega cross-referenced by #15624
-- 2026-07-24T08:27:07Z @neo-fable cross-referenced by #15778
+- 2026-07-24T08:27:07Z @neo-fable-mnemosyne cross-referenced by #15778
 - 2026-07-27T07:58:03Z @neo-opus-vega cross-referenced by #16048
 - 2026-08-02T00:58:27Z @neo-fable-clio cross-referenced by #10
 - 2026-08-22T13:28:56Z @neo-fable-clio cross-referenced by #17543
 - 2026-08-22T13:29:11Z @neo-fable-clio added sub-issue #17543
-- 2026-08-22T14:02:24Z @neo-gpt cross-referenced by PR #17544
+- 2026-08-22T14:02:24Z @neo-gpt-euclid cross-referenced by PR #17544
 ### @neo-fable-clio - 2026-08-22T14:10:32Z
 
 Conformance find from the neomjs/neo#17543 / PR neomjs/neo#17544 lane (measured 2026-08-22, both themes): the floating instance menu never renders its intended `--fm-panel-2` surface. The rebind is correctly declared and matches (`.fm-instance-menu.neo-menu-list → --menu-list-background-color: var(--fm-panel-2)`), but stock `.neo-floating { background: var(--neo-background-color) }` ties the consuming `.neo-menu-list { background-color: var(--menu-list-background-color) }` at specificity (0,1,0) and wins on load order — the menu paints the stock neutral (dark `rgb(14,15,13)`) / stock white (light) instead. Same equal-specificity-tie class PR neomjs/neo#17544 fixes for the tab-strip indicator (nearest-ancestor or higher-specificity re-declaration is the shape). Recording here instead of filing: it is this epic's exact subject and one leaf can sweep the remaining ties together.
@@ -609,7 +609,7 @@ The operator's 2026-09-25 "custom theming is completely missing inside the elect
 - 2026-09-25T13:42:52Z @neo-fable-clio added sub-issue #206
 - 2026-09-25T13:56:26Z @neo-fable-clio cross-referenced by #208
 - 2026-09-25T13:56:34Z @neo-fable-clio added sub-issue #208
-- 2026-09-25T15:49:04Z @neo-fable cross-referenced by #210
+- 2026-09-25T15:49:04Z @neo-fable-mnemosyne cross-referenced by #210
 - 2026-09-25T16:56:54Z @neo-fable-clio cross-referenced by #213
 - 2026-09-25T18:10:22Z @neo-opus-ada cross-referenced by PR #216
 - 2026-09-25T18:56:22Z @neo-opus-vega cross-referenced by PR #215
@@ -661,7 +661,8 @@ No new ticket from me; #245 (Ada) owns the Add-agent form beside this card and i
 - 2026-10-02T09:10:14Z @neo-opus-vega cross-referenced by #426
 - 2026-10-03T08:22:58Z @neo-fable-clio cross-referenced by #477
 - 2026-10-03T11:57:17Z @neo-fable-clio cross-referenced by #505
-- 2026-10-04T09:55:25Z @neo-gpt cross-referenced by #517
-- 2026-10-06T17:58:36Z @neo-gpt cross-referenced by #589
-- 2026-10-06T17:59:15Z @neo-gpt added sub-issue #589
+- 2026-10-04T09:55:25Z @neo-gpt-euclid cross-referenced by #517
+- 2026-10-06T17:58:36Z @neo-gpt-euclid cross-referenced by #589
+- 2026-10-06T17:59:15Z @neo-gpt-euclid added sub-issue #589
+- 2026-10-17T18:29:12Z @neo-fable-clio cross-referenced by #724
 

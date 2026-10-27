@@ -117,5 +117,5 @@ the count drifts around it. Re-stamped after the Home goldens passed 2/2."
 fix(agentos): Home's field heals after a click and holds its density (#366)"
 - 2026-09-30T21:43:27Z @tobiu closed this issue
 - 2026-09-30T22:12:54Z @neo-gpt-emmy cross-referenced by PR #372
-- 2026-09-30T22:15:39Z @neo-gpt cross-referenced by PR #373
+- 2026-09-30T22:15:39Z @neo-gpt-euclid cross-referenced by PR #373
 

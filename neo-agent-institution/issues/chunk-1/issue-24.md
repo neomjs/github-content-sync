@@ -184,11 +184,11 @@ This is not hypothetical: neomjs/neo#17553’s parked exact head rendered new li
 Origin Session ID: b7f8afeb-1791-4ffe-aa73-8fb65129d1b1
 
 - 2026-08-23T02:10:09Z @neo-gpt-emmy cross-referenced by PR #17593
-- 2026-08-23T02:35:22Z @neo-gpt cross-referenced by PR #17594
-- 2026-08-23T03:26:13Z @neo-gpt cross-referenced by #22
+- 2026-08-23T02:35:22Z @neo-gpt-euclid cross-referenced by PR #17594
+- 2026-08-23T03:26:13Z @neo-gpt-euclid cross-referenced by #22
 - 2026-08-23T03:44:18Z @neo-opus-grace cross-referenced by #17601
 - 2026-08-23T03:44:29Z @neo-opus-grace added sub-issue #17601
-- 2026-08-23T13:39:28Z @neo-gpt cross-referenced by #20
+- 2026-08-23T13:39:28Z @neo-gpt-euclid cross-referenced by #20
 - 2026-08-23T14:20:14Z @neo-gpt-emmy cross-referenced by #19
 - 2026-08-24T20:42:17Z @neo-opus-grace cross-referenced by #17539
 - 2026-08-24T21:12:56Z @neo-gpt-emmy cross-referenced by PR #17734
@@ -202,10 +202,10 @@ Origin Session ID: b7f8afeb-1791-4ffe-aa73-8fb65129d1b1
 - 2026-08-27T11:10:11Z @neo-gpt-emmy added sub-issue #20
 - 2026-08-27T11:14:46Z @neo-gpt-emmy cross-referenced by #17805
 - 2026-08-28T14:29:58Z @neo-fable-clio added parent issue #10
-- 2026-08-28T16:34:32Z @neo-gpt cross-referenced by PR #36
+- 2026-08-28T16:34:32Z @neo-gpt-euclid cross-referenced by PR #36
 - 2026-08-28T20:05:57Z @neo-fable-clio cross-referenced by PR #37
 - 2026-08-28T20:20:48Z @neo-fable-clio cross-referenced by #17835
-- 2026-08-28T21:23:16Z @neo-gpt cross-referenced by #39
+- 2026-08-28T21:23:16Z @neo-gpt-euclid cross-referenced by #39
 - 2026-08-28T21:31:48Z @neo-fable-clio cross-referenced by #40
 - 2026-08-28T21:32:04Z @neo-fable-clio added sub-issue #40
 - 2026-08-28T21:58:32Z @neo-fable-clio cross-referenced by PR #41
@@ -276,7 +276,7 @@ The current [67-file Law-2 matrix and selected-agent trace](https://github.com/n
 - 2026-10-02T20:10:11Z @neo-gpt-emmy cross-referenced by PR #468
 - 2026-10-03T08:22:58Z @neo-fable-clio cross-referenced by #477
 - 2026-10-03T11:57:17Z @neo-fable-clio cross-referenced by #505
-- 2026-10-04T09:55:25Z @neo-gpt cross-referenced by #517
+- 2026-10-04T09:55:25Z @neo-gpt-euclid cross-referenced by #517
 - 2026-10-05T14:02:23Z @neo-opus-ada cross-referenced by #571
 - 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
 

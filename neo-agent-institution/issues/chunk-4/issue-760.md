@@ -127,4 +127,51 @@ Read against dev `17c3d6d`: the roster card (`view/fleet/roster/card/Container.m
 - 2026-10-20T12:42:29Z @tobiu closed this issue
 - 2026-10-20T13:18:43Z @neo-opus-ada cross-referenced by PR #1227
 - 2026-10-20T13:28:50Z @neo-gemini-julia cross-referenced by #763
+- 2026-10-25T15:15:29Z @neo-opus-ada cross-referenced by PR #810
+- 2026-10-25T16:08:52Z @tobiu referenced in commit `7ddcd78` - "feat(agentos): the detail reveal reads its end cause, pops out in place and comes home revealed (#808) (#810)
+
+* build(deps): pin the engine to neo dev a97cb2d5f8, which carries the reveal pop-out and its end causes (#808)
+
+The lock resolved neo.mjs to 0c1a373918, which predates neo #20103. The src/ delta to a97cb2d5f8 is the
+eight dock files of #20103 and calendar/view/week/Component.mjs (#19958): no package.json, SCSS or
+version change.
+
+* feat(agentos): the detail reveal reads its end cause, pops out in place and comes home revealed (#808)
+
+CockpitPerspectives#detailRevealChange ends the selection only on the person's causes (personEnds). The
+cockpit's own end (`release`) and the item leaving its rail (`item-left`, a pop-out from the reveal's
+toolbar) keep it, so Container#dismissingDetailReveal and #dismissDetailReveal go: the cockpit ends
+the reveal with dismissRailReveal('detail').
+
+Two behaviors the reveal pop-out needed, found by the arms:
+- Container#onDockPaneReturn reveals the inspector again when it comes home to its rail while a
+  resident is selected.
+- CockpitPerspectives#revealsFromRail keeps a vesseled inspector from being revealed. A perspective
+  restored while it is away rails it first, and a reveal then cached a placeholder that kept the live
+  pane in the closed vessel's viewport after the return.
+
+The six arms that pinned the reveal before popping out now pop out from it: three by the toolbar's
+button, three by Workspace#popOutRailItem. pinRevealedDetail goes. FleetCockpitPopOutNL asserts that
+the pop-out keeps the selection: red with dev's handler at this engine, green here. The two 271 px
+goldens of FleetCockpitDrillRoundTripNL are re-captured. Their drift is the portrait, the rename
+action (#760) and the thought-stream copy, all merged earlier.
+
+* test(agentos): re-capture five drifted cockpit goldens after design reads, and re-stamp (#808)
+
+The reveal handler and the cockpit container are style-owning inputs, so the stamp moves with them. Before
+re-stamping, each failing golden got a design read:
+- the merge-queue heads (open, Stage-enabled, its light twin) and the two setup rows differ only in the
+  list focus ring, which the engine changed;
+- the Memories pane at 720 (and its light twin) carries the rewritten head copy.
+
+pane-agent-detail is left red: at 1280 the capture loses the pane's inset and clips the avatar at the top.
+That is not drift to accept.
+
+* test(agentos): pane-agent-detail frames the reveal's pane slot, which carries the inspector's inset (#808)
+
+Since the selection reveals the railed inspector (#805), its 12 px inset belongs to the reveal's pane slot,
+and `.fm-agent-detail` itself has no padding. The element capture cropped at the detail's own box, so it
+looked inset-less, with the avatar at the edge. The page at 1280 shows the full inset and the whole avatar.
+The capture now frames the slot, as the operator reads it (306×671), and is re-captured after a design
+read."
 

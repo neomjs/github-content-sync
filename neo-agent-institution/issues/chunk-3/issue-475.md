@@ -7,11 +7,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-03T07:04:30Z'
 updatedAt: '2026-10-17T19:10:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/475'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: 351
 subIssues:
@@ -106,22 +106,22 @@ Retrieval Hint: "setup card reconcile-required fresh run exit shell-setup-evalua
 
 ## Timeline
 
-- 2026-10-03T07:04:30Z @neo-fable assigned to @neo-fable
-- 2026-10-03T07:04:31Z @neo-fable added the `enhancement` label
-- 2026-10-03T07:04:31Z @neo-fable added the `agent-os` label
-- 2026-10-03T07:04:31Z @neo-fable added the `ai` label
-- 2026-10-03T07:04:43Z @neo-fable added parent issue #351
-- 2026-10-03T07:04:44Z @neo-fable marked this issue as being blocked by #786
-- 2026-10-03T07:04:45Z @neo-fable cross-referenced by #786
-- 2026-10-03T07:05:49Z @neo-fable cross-referenced by PR #790
-- 2026-10-03T07:15:03Z @neo-fable cross-referenced by #19377
-- 2026-10-03T07:16:09Z @neo-fable cross-referenced by #351
-- 2026-10-03T07:16:55Z @neo-fable cross-referenced by #476
+- 2026-10-03T07:04:30Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-03T07:04:31Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-03T07:04:31Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-03T07:04:31Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-03T07:04:43Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-03T07:04:44Z @neo-fable-mnemosyne marked this issue as being blocked by #786
+- 2026-10-03T07:04:45Z @neo-fable-mnemosyne cross-referenced by #786
+- 2026-10-03T07:05:49Z @neo-fable-mnemosyne cross-referenced by PR #790
+- 2026-10-03T07:15:03Z @neo-fable-mnemosyne cross-referenced by #19377
+- 2026-10-03T07:16:09Z @neo-fable-mnemosyne cross-referenced by #351
+- 2026-10-03T07:16:55Z @neo-fable-mnemosyne cross-referenced by #476
 - 2026-10-03T08:50:04Z @neo-opus-ada cross-referenced by #484
 - 2026-10-03T08:51:22Z @neo-opus-ada cross-referenced by PR #488
 - 2026-10-03T10:59:34Z @neo-fable-clio cross-referenced by #499
-- 2026-10-03T12:40:36Z @neo-fable referenced in commit `bb99a2c` - "chore(merge): bring origin/dev into the branch (#475)"
-- 2026-10-03T12:40:36Z @neo-fable referenced in commit `c9d6055` - "feat(harness): the setup broker starts a fresh run on request and names the run it retires (#475)
+- 2026-10-03T12:40:36Z @neo-fable-mnemosyne referenced in commit `bb99a2c` - "chore(merge): bring origin/dev into the branch (#475)"
+- 2026-10-03T12:40:36Z @neo-fable-mnemosyne referenced in commit `c9d6055` - "feat(harness): the setup broker starts a fresh run on request and names the run it retires (#475)
 
 setupEvaluate({target, fresh: true}) binds a new record for the target, the shell's form of a CLI run that names no run id, and answers {ok, evaluation, retiredRunId}. The record the broker held is neither read nor written, so a record that cannot be read does not stand in the way; the new record is bound once it is on disk, so a rejected write leaves the binding where it was. A fresh that is not a boolean is refused by name.
 
@@ -130,14 +130,14 @@ The ShellPlane addon forwards the flag as given; main is the one validator.
 Arms over the pinned Brain's own modules: the retired record stays byte-identical and takes no later consent, no effect is replayed, a later boot resumes the fresh run, an unreadable bound record is left as it is, a rejected record write binds nothing."
 - 2026-10-03T12:59:24Z @neo-fable-clio cross-referenced by #19382
 - 2026-10-03T13:00:11Z @neo-fable-clio added sub-issue #19382
-- 2026-10-03T13:02:43Z @neo-fable cross-referenced by PR #19383
-- 2026-10-04T09:57:33Z @neo-fable cross-referenced by PR #813
-- 2026-10-04T11:10:05Z @neo-fable cross-referenced by #534
-- 2026-10-04T11:16:32Z @neo-fable cross-referenced by #535
-- 2026-10-04T12:42:07Z @neo-fable cross-referenced by #540
-- 2026-10-04T14:50:56Z @neo-fable cross-referenced by #547
-- 2026-10-04T16:22:47Z @neo-fable cross-referenced by #550
-### @neo-fable - 2026-10-16T20:42:08Z
+- 2026-10-03T13:02:43Z @neo-fable-mnemosyne cross-referenced by PR #19383
+- 2026-10-04T09:57:33Z @neo-fable-mnemosyne cross-referenced by PR #813
+- 2026-10-04T11:10:05Z @neo-fable-mnemosyne cross-referenced by #534
+- 2026-10-04T11:16:32Z @neo-fable-mnemosyne cross-referenced by #535
+- 2026-10-04T12:42:07Z @neo-fable-mnemosyne cross-referenced by #540
+- 2026-10-04T14:50:56Z @neo-fable-mnemosyne cross-referenced by #547
+- 2026-10-04T16:22:47Z @neo-fable-mnemosyne cross-referenced by #550
+### @neo-fable-mnemosyne - 2026-10-16T20:42:08Z
 
 ## Pickup (2026-10-17, Mnemosyne — the Friday lane, per the FM lead's Row-1 ask)
 
@@ -151,21 +151,21 @@ Arms over the pinned Brain's own modules: the retired record stays byte-identica
 
 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 81bc670d-4d53-41d2-91e7-4c630710dc1c
 
-- 2026-10-17T16:04:24Z @neo-fable referenced in commit `ba50f3e` - "chore(merge): bring origin/dev into the branch (#475)"
-- 2026-10-17T16:54:55Z @neo-fable referenced in commit `aec1081` - "feat(agentos): the setup card offers a fresh run where a re-check could not settle an effect (#475)
+- 2026-10-17T16:04:24Z @neo-fable-mnemosyne referenced in commit `ba50f3e` - "chore(merge): bring origin/dev into the branch (#475)"
+- 2026-10-17T16:54:55Z @neo-fable-mnemosyne referenced in commit `aec1081` - "feat(agentos): the setup card offers a fresh run where a re-check could not settle an effect (#475)
 
 A host-file effect whose receipt was interrupted and whose result the host no longer shows stays reconcile-required through every re-check, and the card had re-check alone. The operator's own re-check in this card now earns the row a quiet second chip, start a fresh run; the first press says what it leaves behind, the second sends setupEvaluate({fresh: true}), and the broker binds a new record for the same target while the retired one stays on disk as history. A read that refuses with no live row left offers the same exit beside its consent line. The preset choices under Other choices move into their own PresetCards class."
-- 2026-10-17T16:56:53Z @neo-fable cross-referenced by PR #721
-- 2026-10-17T16:57:24Z @neo-fable cross-referenced by PR #19836
-- 2026-10-17T17:14:17Z @neo-fable referenced in commit `8646e9e` - "fix(agentos): a re-checked row says the fact before its controls, the card-level exit gets its goldens, the preset cards end with Container (#475)
+- 2026-10-17T16:56:53Z @neo-fable-mnemosyne cross-referenced by PR #721
+- 2026-10-17T16:57:24Z @neo-fable-mnemosyne cross-referenced by PR #19836
+- 2026-10-17T17:14:17Z @neo-fable-mnemosyne referenced in commit `8646e9e` - "fix(agentos): a re-checked row says the fact before its controls, the card-level exit gets its goldens, the preset cards end with Container (#475)
 
 The design seat's read of the built rows: 're-check' on the re-checked row read as a disabled imperative, so the row now says 're-checked · unsettled' before the chip that performs the re-check; the card-level fresh-run block has its two goldens; the carved-out class follows the view-topology rule (a container ends with Container)."
-- 2026-10-17T17:16:35Z @neo-fable cross-referenced by #722
+- 2026-10-17T17:16:35Z @neo-fable-mnemosyne cross-referenced by #722
 - 2026-10-17T18:28:30Z @neo-gpt-emmy cross-referenced by #505
 - 2026-10-17T18:29:12Z @neo-fable-clio cross-referenced by #724
 - 2026-10-17T18:36:35Z @neo-fable-clio cross-referenced by #726
-- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
-- 2026-10-17T18:48:15Z @neo-fable referenced in commit `be34cb5` - "chore(agentos): merge dev after #723 into the fresh-run branch (#475)"
+- 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
+- 2026-10-17T18:48:15Z @neo-fable-mnemosyne referenced in commit `be34cb5` - "chore(agentos): merge dev after #723 into the fresh-run branch (#475)"
 - 2026-10-17T19:10:52Z @tobiu referenced in commit `fa1a460` - "feat(agentos): the setup card offers a fresh run where a re-check could not settle an effect (#475) (#721)
 
 * test(harness): the vessel's broker settles an interrupted host-file effect by its own observation and the run goes on (#475)

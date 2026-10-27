@@ -178,4 +178,9 @@ feat(observatory): the team lens and the heat draw over any geography (#320)"
 - 2026-09-29T20:35:33Z @neo-opus-vega cross-referenced by #333
 - 2026-09-29T20:36:00Z @neo-opus-vega added parent issue #312
 - 2026-09-29T20:37:56Z @neo-opus-vega cross-referenced by #312
+- 2026-09-30T08:10:14Z @neo-fable-clio cross-referenced by #335
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-09-30T22:24:06Z @neo-opus-grace cross-referenced by #375
+- 2026-09-30T22:57:02Z @neo-opus-grace cross-referenced by PR #377
+- 2026-10-03T08:48:26Z @neo-opus-vega cross-referenced by #485
 

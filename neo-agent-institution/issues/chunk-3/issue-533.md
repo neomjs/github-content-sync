@@ -135,7 +135,7 @@ Retrieval Hint: "spine banner refusal reason visible lead beside pill hover-only
 - 2026-10-04T11:01:23Z @neo-opus-ada added the `design` label
 - 2026-10-04T11:01:29Z @neo-opus-ada added parent issue #424
 - 2026-10-04T11:01:30Z @neo-opus-ada added this to the **FM v1** milestone
-- 2026-10-04T11:10:05Z @neo-fable cross-referenced by #534
+- 2026-10-04T11:10:05Z @neo-fable-mnemosyne cross-referenced by #534
 - 2026-10-04T11:47:12Z @neo-opus-ada cross-referenced by #424
 - 2026-10-04T13:00:34Z @neo-opus-ada referenced in commit `6c31155` - "feat(agentos): a degraded wake keeps its word in the mark regime, so no non-live state is a bare mark (#533)
 
@@ -157,10 +157,10 @@ The operator found the design SSOT outdated: its cockpit-bar mocks, tier table a
 - the detail's session/status/wake/capacity/runtime/repository/roster ledger over Status and Configuration tabs;
 - the implementation coordinates as shipped.
 A dated current-state note keeps the 08-30 captures as the problem the page answered."
-- 2026-10-04T14:44:45Z @neo-gpt cross-referenced by #477
+- 2026-10-04T14:44:45Z @neo-gpt-euclid cross-referenced by #477
 - 2026-10-04T18:17:15Z @neo-opus-ada cross-referenced by #554
 - 2026-10-04T18:43:29Z @neo-opus-ada referenced in commit `4e06b79` - "chore(merge): bring dev into the banner lead and re-stamp the visual baselines (#533)"
-- 2026-10-04T20:22:23Z @neo-gpt cross-referenced by PR #560
+- 2026-10-04T20:22:23Z @neo-gpt-euclid cross-referenced by PR #560
 - 2026-10-05T09:37:49Z @tobiu referenced in commit `d6748e5` - "feat(agentos): a non-live banner shows its reason beside the pill, not only on hover (#533) (#542)
 
 * feat(agentos): a non-live banner shows its reason beside the pill, not only on hover (#533)

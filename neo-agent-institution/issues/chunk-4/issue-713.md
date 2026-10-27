@@ -8,11 +8,11 @@ labels:
   - ai
   - design
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-16T14:35:18Z'
 updatedAt: '2026-10-16T19:56:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/713'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: 505
 subIssues: []
@@ -87,14 +87,14 @@ Mnemosyne (Fable 5.1, Claude Code) · session 8be1b284-089e-4f28-94be-d1a45be666
 
 ## Timeline
 
-- 2026-10-16T14:35:20Z @neo-fable added the `enhancement` label
-- 2026-10-16T14:35:20Z @neo-fable added the `agent-os` label
-- 2026-10-16T14:35:20Z @neo-fable added the `ai` label
-- 2026-10-16T14:35:20Z @neo-fable added the `design` label
-- 2026-10-16T14:36:11Z @neo-fable added parent issue #505
-- 2026-10-16T18:38:19Z @neo-fable cross-referenced by #476
-- 2026-10-16T18:42:42Z @neo-gemini-pro assigned to @neo-gemini-pro
-### @neo-gemini-pro - 2026-10-16T18:42:44Z
+- 2026-10-16T14:35:20Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-16T14:35:20Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-16T14:35:20Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-16T14:35:20Z @neo-fable-mnemosyne added the `design` label
+- 2026-10-16T14:36:11Z @neo-fable-mnemosyne added parent issue #505
+- 2026-10-16T18:38:19Z @neo-fable-mnemosyne cross-referenced by #476
+- 2026-10-16T18:42:42Z @neo-gemini-julia assigned to @neo-gemini-julia
+### @neo-gemini-julia - 2026-10-16T18:42:44Z
 
 ## Ticket Intake · `#713` (`The Memories surfaces carry their provenance key within one glance`)
 
@@ -108,9 +108,9 @@ Claiming `#713` and opening branch `feat/713-memories-provenance-key`.
 
 Julia (`@neo-gemini-pro` · Gemini 4 Argon) · session `134b7ceb-4f40-4fca-9e5d-b92f3117aa27`
 
-- 2026-10-16T19:06:42Z @neo-gemini-pro cross-referenced by PR #717
-- 2026-10-16T19:11:32Z @neo-gemini-pro referenced in commit `3cf5789` - "chore(memories): reword pre-existing ticket refs in touched comments (#713)"
-- 2026-10-16T19:37:48Z @neo-gemini-pro referenced in commit `fc23141` - "fix(memories): wrap drill legend in narrow regime and polish target docs (#713)"
+- 2026-10-16T19:06:42Z @neo-gemini-julia cross-referenced by PR #717
+- 2026-10-16T19:11:32Z @neo-gemini-julia referenced in commit `3cf5789` - "chore(memories): reword pre-existing ticket refs in touched comments (#713)"
+- 2026-10-16T19:37:48Z @neo-gemini-julia referenced in commit `fc23141` - "fix(memories): wrap drill legend in narrow regime and polish target docs (#713)"
 - 2026-10-16T19:56:48Z @tobiu referenced in commit `99af377` - "feat(memories): carry provenance key and turn authoring identity (#713) (#717)
 
 * feat(memories): carry provenance key and turn authoring identity (#713)
@@ -119,4 +119,6 @@ Julia (`@neo-gemini-pro` · Gemini 4 Argon) · session `134b7ceb-4f40-4fca-9e5d-
 
 * fix(memories): wrap drill legend in narrow regime and polish target docs (#713)"
 - 2026-10-16T19:56:49Z @tobiu closed this issue
+- 2026-10-23T15:11:58Z @neo-fable-clio cross-referenced by #788
+- 2026-10-23T15:12:18Z @neo-fable-clio cross-referenced by #789
 

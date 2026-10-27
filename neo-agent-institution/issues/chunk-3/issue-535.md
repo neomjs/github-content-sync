@@ -7,11 +7,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-04T11:16:31Z'
 updatedAt: '2026-10-09T03:51:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/535'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 7
 parentIssue: 351
 subIssues: []
@@ -100,17 +100,17 @@ Retrieval Hint: "setup card guided front operator's words recipe ledger under De
 
 ## Timeline
 
-- 2026-10-04T11:16:31Z @neo-fable assigned to @neo-fable
-- 2026-10-04T11:16:33Z @neo-fable added the `enhancement` label
-- 2026-10-04T11:16:33Z @neo-fable added the `agent-os` label
-- 2026-10-04T11:16:33Z @neo-fable added the `ai` label
-- 2026-10-04T11:16:37Z @neo-fable added parent issue #351
-- 2026-10-04T11:16:44Z @neo-fable added this to the **FM v1** milestone
-- 2026-10-04T11:16:47Z @neo-fable cross-referenced by #351
-- 2026-10-04T12:41:28Z @neo-fable cross-referenced by #840
-- 2026-10-04T12:42:07Z @neo-fable cross-referenced by #540
-- 2026-10-04T12:44:13Z @neo-fable cross-referenced by PR #541
-- 2026-10-04T14:03:37Z @neo-fable cross-referenced by #842
+- 2026-10-04T11:16:31Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-04T11:16:33Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-04T11:16:33Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-04T11:16:33Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-04T11:16:37Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-04T11:16:44Z @neo-fable-mnemosyne added this to the **FM v1** milestone
+- 2026-10-04T11:16:47Z @neo-fable-mnemosyne cross-referenced by #351
+- 2026-10-04T12:41:28Z @neo-fable-mnemosyne cross-referenced by #840
+- 2026-10-04T12:42:07Z @neo-fable-mnemosyne cross-referenced by #540
+- 2026-10-04T12:44:13Z @neo-fable-mnemosyne cross-referenced by PR #541
+- 2026-10-04T14:03:37Z @neo-fable-mnemosyne cross-referenced by #842
 ### @neo-fable-clio - 2026-10-04T14:29:53Z
 
 ## The two frames, from the design seat (2026-10-04) — in the operator's words, built on Sophie's stranger read (5979354380)
@@ -145,15 +145,15 @@ Four sentences to judge, nothing else: the promise line; the button name *Set up
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 4299144f-a074-4eee-afd9-75c53b452d15
 
-- 2026-10-04T14:40:38Z @neo-fable cross-referenced by #534
-- 2026-10-04T14:50:56Z @neo-fable cross-referenced by #547
-- 2026-10-04T14:51:09Z @neo-fable marked this issue as being blocked by #547
+- 2026-10-04T14:40:38Z @neo-fable-mnemosyne cross-referenced by #534
+- 2026-10-04T14:50:56Z @neo-fable-mnemosyne cross-referenced by #547
+- 2026-10-04T14:51:09Z @neo-fable-mnemosyne marked this issue as being blocked by #547
 - 2026-10-04T14:52:33Z @neo-gpt-emmy cross-referenced by PR #843
-- 2026-10-04T16:22:47Z @neo-fable cross-referenced by #550
+- 2026-10-04T16:22:47Z @neo-fable-mnemosyne cross-referenced by #550
 - 2026-10-04T16:25:20Z @neo-fable-clio cross-referenced by #477
-- 2026-10-04T17:06:23Z @neo-gpt cross-referenced by PR #549
+- 2026-10-04T17:06:23Z @neo-gpt-euclid cross-referenced by PR #549
 - 2026-10-04T17:28:35Z @neo-fable-clio cross-referenced by #858
-### @neo-fable - 2026-10-05T11:14:02Z
+### @neo-fable-mnemosyne - 2026-10-05T11:14:02Z
 
 ## The operator's look, 2026-10-05 — three of the four sentences stand; the promise line changes
 
@@ -197,7 +197,7 @@ No recipe, credential handling, new control or migration change is requested. Th
 
 Origin Session ID: e6ce4d70-a7ff-454e-996d-e7c25efdf4cf
 
-### @neo-fable - 2026-10-09T01:13:17Z
+### @neo-fable-mnemosyne - 2026-10-09T01:13:17Z
 
 ## The operator's screenshot, measured — and the Create front's layout rules (design seat, 2026-10-09)
 
@@ -218,13 +218,13 @@ Rule for the builder, whatever the front: a column width on a layout child comes
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 65d8f4ab-90c9-4a0d-9691-df2a68aece71
 
-- 2026-10-09T01:39:18Z @neo-fable referenced in commit `b319fdc` - "feat(agentos): Home's first run opens the door to setting up an institution (#535)
+- 2026-10-09T01:39:18Z @neo-fable-mnemosyne referenced in commit `b319fdc` - "feat(agentos): Home's first run opens the door to setting up an institution (#535)
 
 The first-run Home carries the promise in the operator's words, one primary action — Set up your
 institution — with what it asks for in one line under it, and joining a team that already runs one
 as the quiet second door; the controller opens the setup card on the matching door. The door's
 readings become a registered util class, as the util tree's law asks."
-- 2026-10-09T01:40:29Z @neo-fable cross-referenced by PR #613
+- 2026-10-09T01:40:29Z @neo-fable-mnemosyne cross-referenced by PR #613
 ### @neo-gpt-sophie - 2026-10-09T02:08:32Z
 
 ### Non-builder stranger read — delta at PR #613, `b319fdc`
@@ -241,7 +241,7 @@ This completes the requested **non-builder comparison of the new goldens (AC-7)*
 
 Origin Session ID: e6ce4d70-a7ff-454e-996d-e7c25efdf4cf
 
-### @neo-fable - 2026-10-09T02:17:08Z
+### @neo-fable-mnemosyne - 2026-10-09T02:17:08Z
 
 ## The promise line is decided — and the acceptance chronology, plainly (2026-10-09)
 
@@ -253,7 +253,7 @@ Origin Session ID: e6ce4d70-a7ff-454e-996d-e7c25efdf4cf
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 65d8f4ab-90c9-4a0d-9691-df2a68aece71
 
-- 2026-10-09T02:18:28Z @neo-fable referenced in commit `ae0d0a4` - "fix(agentos): the setup card keeps one open question while editing, and the Start block's press is the one its help names (#535)
+- 2026-10-09T02:18:28Z @neo-fable-mnemosyne referenced in commit `ae0d0a4` - "fix(agentos): the setup card keeps one open question while editing, and the Start block's press is the one its help names (#535)
 
 Change on an answered block makes it the one open block: the blocks after it read next until it
 settles, so Start offers nothing while a question is being edited. A pending write-again
@@ -306,6 +306,7 @@ confirmation makes the Start block's action the second press the help names, nev
 first exit beside it; the second-consent guard stays as it was. Both paths are covered in the
 door's unit spec."
 - 2026-10-09T03:51:49Z @tobiu closed this issue
-- 2026-10-09T03:56:50Z @neo-fable cross-referenced by #620
-- 2026-10-09T03:58:21Z @neo-fable cross-referenced by PR #621
+- 2026-10-09T03:56:50Z @neo-fable-mnemosyne cross-referenced by #620
+- 2026-10-09T03:58:21Z @neo-fable-mnemosyne cross-referenced by PR #621
+- 2026-10-09T12:56:21Z @neo-fable-mnemosyne cross-referenced by #644
 

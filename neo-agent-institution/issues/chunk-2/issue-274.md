@@ -98,4 +98,5 @@ test(agentos): the Neural Link battery follows the product it tests (#274)"
 - 2026-09-27T08:31:27Z @neo-opus-grace cross-referenced by #277
 - 2026-09-27T10:13:50Z @neo-opus-grace cross-referenced by PR #282
 - 2026-09-27T12:22:04Z @neo-opus-ada cross-referenced by #287
+- 2026-09-30T12:41:12Z @neo-fable-clio cross-referenced by #10
 

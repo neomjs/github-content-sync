@@ -7,11 +7,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-09T03:56:49Z'
 updatedAt: '2026-10-09T14:07:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/620'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: 351
 subIssues: []
@@ -76,18 +76,18 @@ Retrieval Hint: "first-run promise line no-break space app's own window Connect 
 
 ## Timeline
 
-- 2026-10-09T03:56:49Z @neo-fable assigned to @neo-fable
-- 2026-10-09T03:56:50Z @neo-fable added the `enhancement` label
-- 2026-10-09T03:56:51Z @neo-fable added the `agent-os` label
-- 2026-10-09T03:56:51Z @neo-fable added the `ai` label
-- 2026-10-09T03:57:43Z @neo-fable added parent issue #351
-- 2026-10-09T03:58:21Z @neo-fable cross-referenced by PR #621
-- 2026-10-09T12:27:42Z @neo-fable referenced in commit `32e1fc0` - "fix(agentos): the first run's words hold — an unbroken possessive, the app's own window, the verb as the link (#620)
+- 2026-10-09T03:56:49Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-09T03:56:50Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-09T03:56:51Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-09T03:56:51Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-09T03:57:43Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-09T03:58:21Z @neo-fable-mnemosyne cross-referenced by PR #621
+- 2026-10-09T12:27:42Z @neo-fable-mnemosyne referenced in commit `32e1fc0` - "fix(agentos): the first run's words hold — an unbroken possessive, the app's own window, the verb as the link (#620)
 
 A no-break space keeps "other's work" on one line at the door's measure; the token block's hint
 names the app, not the vessel; Home's second door shows its question as text with "Connect to it"
 as the only link. Six goldens re-captured on the pinned host."
-- 2026-10-09T12:27:43Z @neo-fable referenced in commit `916e7b4` - "test(agentos): the witness row's arm walks the Create front's own route (#620)
+- 2026-10-09T12:27:43Z @neo-fable-mnemosyne referenced in commit `916e7b4` - "test(agentos): the witness row's arm walks the Create front's own route (#620)
 
 Since #613 the setup card's presets sit under the where block's Other choices
 and the ledger's rows behind Details, so the visual arm "the witness row with
@@ -102,12 +102,12 @@ The three row goldens are re-captured from a full run: the row is one pixel
 shorter than the 2026-10-05 capture because #613 set the ledger's rows in the
 detail font (11 px over 15.4 px lines), the metrics the approved Details golden
 already carries; the row's box holds the second line with six pixels to spare."
-- 2026-10-09T12:55:25Z @neo-fable referenced in commit `5d3464b` - "fix(agentos): the first run's words hold — an unbroken possessive, the app's own window, the verb as the link (#620)
+- 2026-10-09T12:55:25Z @neo-fable-mnemosyne referenced in commit `5d3464b` - "fix(agentos): the first run's words hold — an unbroken possessive, the app's own window, the verb as the link (#620)
 
 A no-break space keeps "other's work" on one line at the door's measure; the token block's hint
 names the app, not the vessel; Home's second door shows its question as text with "Connect to it"
 as the only link. Six goldens re-captured on the pinned host."
-- 2026-10-09T12:55:25Z @neo-fable referenced in commit `97ebf51` - "test(agentos): the witness row's arm walks the Create front's own route (#620)
+- 2026-10-09T12:55:25Z @neo-fable-mnemosyne referenced in commit `97ebf51` - "test(agentos): the witness row's arm walks the Create front's own route (#620)
 
 Since #613 the setup card's presets sit under the where block's Other choices
 and the ledger's rows behind Details, so the visual arm "the witness row with
@@ -122,7 +122,7 @@ The three row goldens are re-captured from a full run: the row is one pixel
 shorter than the 2026-10-05 capture because #613 set the ledger's rows in the
 detail font (11 px over 15.4 px lines), the metrics the approved Details golden
 already carries; the row's box holds the second line with six pixels to spare."
-- 2026-10-09T12:55:26Z @neo-fable referenced in commit `623e2d0` - "test(agentos): the witness row's captures come from its unobscured reading area (#620)
+- 2026-10-09T12:55:26Z @neo-fable-mnemosyne referenced in commit `623e2d0` - "test(agentos): the witness row's captures come from its unobscured reading area (#620)
 
 The Create door's foot fades under a sticky 28 px gradient, and the previous
 captures took the row where that fade dimmed its second line. Before each of
@@ -131,7 +131,7 @@ scroll surface and asserts the boundary: the row's box clips nothing, the
 wrapped reason ends inside it, and the row ends above the fade. The fade stays
 as designed; the three goldens are re-captured from a full run with the second
 line painted whole."
-- 2026-10-09T12:56:21Z @neo-fable cross-referenced by #644
+- 2026-10-09T12:56:21Z @neo-fable-mnemosyne cross-referenced by #644
 - 2026-10-09T14:07:34Z @tobiu referenced in commit `3bfe24f` - "fix(agentos): the first run's words hold — an unbroken possessive, the app's own window, the verb as the link (#620) (#621)
 
 * fix(agentos): the first run's words hold — an unbroken possessive, the app's own window, the verb as the link (#620)

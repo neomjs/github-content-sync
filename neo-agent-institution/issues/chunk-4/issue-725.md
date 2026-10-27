@@ -8,7 +8,7 @@ labels:
   - ai
   - design
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-17T18:29:32Z'
 updatedAt: '2026-10-17T20:11:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/725'
@@ -97,14 +97,14 @@ Retrieval Hint: "card prints helper cleanup unresolved reason Start fleet plan r
 - 2026-10-17T18:29:33Z @neo-fable-clio added the `design` label
 - 2026-10-17T18:30:12Z @neo-fable-clio added parent issue #12
 - 2026-10-17T18:36:35Z @neo-fable-clio cross-referenced by #726
-- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
-- 2026-10-17T18:45:15Z @neo-gemini-pro cross-referenced by PR #1082
-- 2026-10-17T18:55:34Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-17T19:15:22Z @neo-gemini-pro cross-referenced by PR #728
-- 2026-10-17T19:17:10Z @neo-gemini-pro referenced in commit `a46aa3a` - "chore(agentos): remove ticket archaeology refs from FleetAgent field comments (#725)"
-- 2026-10-17T19:22:52Z @neo-gemini-pro referenced in commit `c7c1267` - "chore(agentos): refresh visual baseline stamp for FleetAgent comment edit (#725)"
-- 2026-10-17T19:39:15Z @neo-gemini-pro referenced in commit `8b6d2c4` - "fix(agentos): drop cleanup provenance borrow and keep 3-field controlReason (#725)"
-- 2026-10-17T19:43:22Z @neo-gemini-pro referenced in commit `19ec32d` - "test(agentos): include cleanupUnresolved in rosterStore mapRosterRow snapshots (#725)"
+- 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
+- 2026-10-17T18:45:15Z @neo-gemini-julia cross-referenced by PR #1082
+- 2026-10-17T18:55:34Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-17T19:15:22Z @neo-gemini-julia cross-referenced by PR #728
+- 2026-10-17T19:17:10Z @neo-gemini-julia referenced in commit `a46aa3a` - "chore(agentos): remove ticket archaeology refs from FleetAgent field comments (#725)"
+- 2026-10-17T19:22:52Z @neo-gemini-julia referenced in commit `c7c1267` - "chore(agentos): refresh visual baseline stamp for FleetAgent comment edit (#725)"
+- 2026-10-17T19:39:15Z @neo-gemini-julia referenced in commit `8b6d2c4` - "fix(agentos): drop cleanup provenance borrow and keep 3-field controlReason (#725)"
+- 2026-10-17T19:43:22Z @neo-gemini-julia referenced in commit `19ec32d` - "test(agentos): include cleanupUnresolved in rosterStore mapRosterRow snapshots (#725)"
 - 2026-10-17T20:11:18Z @tobiu referenced in commit `c52ca9b` - "feat(agentos): the card and the Start fleet plan name a seat's unresolved helper cleanup (#725) (#728)
 
 * feat(agentos): the card and the Start fleet plan name a seat's unresolved helper cleanup (#725)
@@ -117,4 +117,6 @@ Retrieval Hint: "card prints helper cleanup unresolved reason Start fleet plan r
 
 * test(agentos): include cleanupUnresolved in rosterStore mapRosterRow snapshots (#725)"
 - 2026-10-17T20:11:18Z @tobiu closed this issue
+- 2026-10-19T13:31:48Z @neo-gpt-emmy cross-referenced by PR #744
+- 2026-10-19T15:32:54Z @neo-fable-mnemosyne cross-referenced by #749
 

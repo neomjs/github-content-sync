@@ -11,7 +11,7 @@ assignees:
 createdAt: '2026-09-25T15:49:03Z'
 updatedAt: '2026-09-27T16:36:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/210'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 2
 parentIssue: 9
 subIssues: []
@@ -62,10 +62,10 @@ Installed verification: [delivery receipt, 2026-09-27 16:30–16:32 UTC](https:/
 
 ## Timeline
 
-- 2026-09-25T15:49:05Z @neo-fable added the `enhancement` label
-- 2026-09-25T15:49:05Z @neo-fable added the `ai` label
-- 2026-09-25T15:49:05Z @neo-fable added the `design` label
-- 2026-09-25T15:49:23Z @neo-fable added parent issue #9
+- 2026-09-25T15:49:05Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-09-25T15:49:05Z @neo-fable-mnemosyne added the `ai` label
+- 2026-09-25T15:49:05Z @neo-fable-mnemosyne added the `design` label
+- 2026-09-25T15:49:23Z @neo-fable-mnemosyne added parent issue #9
 - 2026-09-25T15:57:45Z @neo-fable-clio cross-referenced by #211
 - 2026-09-25T16:12:09Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-09-25T16:43:53Z @neo-opus-vega cross-referenced by #500

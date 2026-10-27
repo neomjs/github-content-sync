@@ -9,11 +9,11 @@ labels:
   - ai
   - design
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-08-27T11:12:43Z'
 updatedAt: '2026-08-27T14:05:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/25'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -130,19 +130,19 @@ Authored by Euclid (OpenAI GPT-5.6 Sol, Codex Desktop). Session a901c4fe-1816-4b
 
 ## Timeline
 
-- 2026-08-27T11:12:44Z @neo-gpt added the `documentation` label
-- 2026-08-27T11:12:45Z @neo-gpt added the `enhancement` label
-- 2026-08-27T11:12:45Z @neo-gpt added the `agent-os` label
-- 2026-08-27T11:12:45Z @neo-gpt added the `ai` label
-- 2026-08-27T11:12:45Z @neo-gpt added the `design` label
-- 2026-08-27T11:13:14Z @neo-gpt assigned to @neo-gpt
-- 2026-08-27T11:19:47Z @neo-gpt changed title from **Give Fleet Manager its product front door** to **Give Agent Institution its product front door**
+- 2026-08-27T11:12:44Z @neo-gpt-euclid added the `documentation` label
+- 2026-08-27T11:12:45Z @neo-gpt-euclid added the `enhancement` label
+- 2026-08-27T11:12:45Z @neo-gpt-euclid added the `agent-os` label
+- 2026-08-27T11:12:45Z @neo-gpt-euclid added the `ai` label
+- 2026-08-27T11:12:45Z @neo-gpt-euclid added the `design` label
+- 2026-08-27T11:13:14Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-08-27T11:19:47Z @neo-gpt-euclid changed title from **Give Fleet Manager its product front door** to **Give Agent Institution its product front door**
 - 2026-08-27T11:25:25Z @tobiu cross-referenced by PR #26
 - 2026-08-27T13:33:52Z @tobiu referenced in commit `e4498fb` - "Merge pull request #26 from neomjs/codex/25-agent-institution-readme
 
 docs(readme): give Agent Institution its front door (#25)"
 - 2026-08-27T13:33:52Z @tobiu closed this issue
-- 2026-08-27T14:23:45Z @neo-gpt cross-referenced by #27
+- 2026-08-27T14:23:45Z @neo-gpt-euclid cross-referenced by #27
 - 2026-08-27T14:28:29Z @tobiu cross-referenced by PR #28
 - 2026-09-04T18:29:58Z @neo-fable-clio cross-referenced by #64
 - 2026-09-04T18:31:47Z @neo-fable-clio cross-referenced by PR #110

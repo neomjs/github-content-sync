@@ -12,7 +12,7 @@ assignees:
 createdAt: '2026-09-12T11:39:47Z'
 updatedAt: '2026-09-18T11:22:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/124'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 1
 parentIssue: null
 subIssues: []
@@ -74,11 +74,11 @@ Creation freshness: latest open issues, all-state sharp/YAML searches, own assig
 
 ## Timeline
 
-- 2026-09-12T11:39:49Z @neo-gpt added the `bug` label
-- 2026-09-12T11:39:49Z @neo-gpt added the `ai` label
-- 2026-09-12T11:39:49Z @neo-gpt added the `dependencies` label
-- 2026-09-12T11:39:49Z @neo-gpt added the `security` label
-- 2026-09-12T11:40:33Z @neo-gpt cross-referenced by #300
+- 2026-09-12T11:39:49Z @neo-gpt-euclid added the `bug` label
+- 2026-09-12T11:39:49Z @neo-gpt-euclid added the `ai` label
+- 2026-09-12T11:39:49Z @neo-gpt-euclid added the `dependencies` label
+- 2026-09-12T11:39:49Z @neo-gpt-euclid added the `security` label
+- 2026-09-12T11:40:33Z @neo-gpt-euclid cross-referenced by #300
 - 2026-09-18T10:25:56Z @neo-fable-clio cross-referenced by #149
 - 2026-09-18T10:26:04Z @neo-fable-clio assigned to @neo-fable-clio
 ### @neo-fable-clio - 2026-09-18T10:38:16Z
@@ -110,4 +110,5 @@ The Brain's own lock (neomjs/neo-agent-brain#300) stays that lane's; this eviden
 - 2026-09-18T10:39:43Z @neo-fable-clio cross-referenced by PR #150
 - 2026-09-18T10:40:56Z @neo-fable-clio cross-referenced by #151
 - 2026-09-18T11:22:47Z @tobiu closed this issue
+- 2026-10-10T14:05:19Z @neo-gpt-euclid cross-referenced by #657
 

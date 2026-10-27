@@ -9,11 +9,11 @@ labels:
   - design
   - testing
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-14T10:45:09Z'
 updatedAt: '2026-10-14T13:32:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/690'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: 477
 subIssues: []
@@ -100,18 +100,18 @@ Operator clarification (2026-10-14): `8 started · 4 excluded` beside `Start fle
 
 ## Timeline
 
-- 2026-10-14T10:45:09Z @neo-gpt assigned to @neo-gpt
-- 2026-10-14T10:45:10Z @neo-gpt added the `bug` label
-- 2026-10-14T10:45:10Z @neo-gpt added the `agent-os` label
-- 2026-10-14T10:45:11Z @neo-gpt added the `ai` label
-- 2026-10-14T10:45:11Z @neo-gpt added the `design` label
-- 2026-10-14T10:45:11Z @neo-gpt added the `testing` label
-- 2026-10-14T10:45:14Z @neo-gpt added parent issue #477
-- 2026-10-14T10:47:49Z @neo-gpt cross-referenced by #505
-- 2026-10-14T11:04:01Z @neo-gpt changed title from **Retire stale fleet-action feedback after roster lifecycle changes** to **Keep Fleet header counts current after roster lifecycle changes**
-- 2026-10-14T11:42:46Z @neo-gpt cross-referenced by PR #691
-- 2026-10-14T12:01:54Z @neo-gpt referenced in commit `2371582` - "fix(fleet): preserve roster order and refresh captures (#690)"
-- 2026-10-14T13:15:34Z @neo-gpt referenced in commit `1cdeac1` - "fix(fleet): keep count labels together and revalidate captures (#690)"
+- 2026-10-14T10:45:09Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-14T10:45:10Z @neo-gpt-euclid added the `bug` label
+- 2026-10-14T10:45:10Z @neo-gpt-euclid added the `agent-os` label
+- 2026-10-14T10:45:11Z @neo-gpt-euclid added the `ai` label
+- 2026-10-14T10:45:11Z @neo-gpt-euclid added the `design` label
+- 2026-10-14T10:45:11Z @neo-gpt-euclid added the `testing` label
+- 2026-10-14T10:45:14Z @neo-gpt-euclid added parent issue #477
+- 2026-10-14T10:47:49Z @neo-gpt-euclid cross-referenced by #505
+- 2026-10-14T11:04:01Z @neo-gpt-euclid changed title from **Retire stale fleet-action feedback after roster lifecycle changes** to **Keep Fleet header counts current after roster lifecycle changes**
+- 2026-10-14T11:42:46Z @neo-gpt-euclid cross-referenced by PR #691
+- 2026-10-14T12:01:54Z @neo-gpt-euclid referenced in commit `2371582` - "fix(fleet): preserve roster order and refresh captures (#690)"
+- 2026-10-14T13:15:34Z @neo-gpt-euclid referenced in commit `1cdeac1` - "fix(fleet): keep count labels together and revalidate captures (#690)"
 - 2026-10-14T13:32:08Z @tobiu referenced in commit `afabdef` - "fix(fleet): refresh header counts from current roster (#690) (#691)
 
 * fix(fleet): refresh header counts from current roster (#690)
@@ -120,5 +120,7 @@ Operator clarification (2026-10-14): `8 started · 4 excluded` beside `Start fle
 
 * fix(fleet): keep count labels together and revalidate captures (#690)"
 - 2026-10-14T13:32:08Z @tobiu closed this issue
-- 2026-10-14T13:39:46Z @neo-gpt cross-referenced by #477
+- 2026-10-14T13:39:46Z @neo-gpt-euclid cross-referenced by #477
+- 2026-10-17T18:29:33Z @neo-fable-clio cross-referenced by #725
+- 2026-10-17T19:33:04Z @neo-fable-clio cross-referenced by PR #728
 

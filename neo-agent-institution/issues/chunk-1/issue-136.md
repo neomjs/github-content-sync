@@ -105,11 +105,12 @@ yields the cockpit's raw pane contract (module, header text, reference) and `pre
 (`dockItemId` on the config, the data and the header) — the arm had asserted the stamped shape off `resolveItem`.
 The visual-baseline stamp is re-taken here, after the docblock rewrites moved the app inputs past the first one.
 Unit 811/811, visual 14/14, FleetMemoriesNL + FleetCockpitDockNL 4/4, FleetCockpitTearOutNL ×11 = 22/22 at the pin."
-- 2026-09-14T01:11:30Z @neo-gpt cross-referenced by #10
+- 2026-09-14T01:11:30Z @neo-gpt-euclid cross-referenced by #10
 - 2026-09-14T01:13:24Z @tobiu referenced in commit `0d5eed2` - "Merge pull request #137 from neomjs/agent/136-engine-pin-9
 
 chore(deps): engine pin 9 — dev@337c9fd5d1; the registers select nothing through viewConfig, the field/config guard found nothing to sweep (#136)"
 - 2026-09-14T01:13:25Z @tobiu closed this issue
 - 2026-09-18T10:40:56Z @neo-fable-clio cross-referenced by #151
 - 2026-09-18T14:17:27Z @neo-fable-clio cross-referenced by #157
+- 2026-09-25T10:54:24Z @neo-fable-clio cross-referenced by #195
 

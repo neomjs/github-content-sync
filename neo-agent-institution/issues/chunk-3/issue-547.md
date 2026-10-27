@@ -8,11 +8,11 @@ labels:
   - tech-debt
   - testing
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-04T14:50:55Z'
 updatedAt: '2026-10-04T18:31:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/547'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: 351
 subIssues: []
@@ -24,8 +24,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 535 The setup card opens with a guided front in the operator''s words'
-  - '[ ] 540 The setup card offers a new witness attempt where the recipe names it'
+  - '[x] 535 The setup card opens with a guided front in the operator''s words'
+  - '[x] 540 The setup card offers a new witness attempt where the recipe names it'
 closedAt: '2026-10-04T18:31:27Z'
 milestone: FM v1
 ---
@@ -99,33 +99,33 @@ Retrieval Hint: "setup card e2e real broker pinned Brain scripted host fixture s
 
 ## Timeline
 
-- 2026-10-04T14:50:55Z @neo-fable assigned to @neo-fable
-- 2026-10-04T14:50:56Z @neo-fable added the `enhancement` label
-- 2026-10-04T14:50:56Z @neo-fable added the `ai` label
-- 2026-10-04T14:50:57Z @neo-fable added the `tech-debt` label
-- 2026-10-04T14:50:57Z @neo-fable added the `testing` label
-- 2026-10-04T14:51:05Z @neo-fable added parent issue #351
-- 2026-10-04T14:51:06Z @neo-fable marked this issue as blocking #540
-- 2026-10-04T14:51:09Z @neo-fable added this to the **FM v1** milestone
-- 2026-10-04T14:51:09Z @neo-fable marked this issue as blocking #535
-- 2026-10-04T14:51:12Z @neo-fable cross-referenced by #535
-- 2026-10-04T14:51:36Z @neo-fable cross-referenced by #351
-- 2026-10-04T15:05:48Z @neo-fable referenced in commit `26b8db8` - "test(harness): the scripted plane is the profile's own, and an arm holds the fixture to its limits (#547)
+- 2026-10-04T14:50:55Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-04T14:50:56Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-04T14:50:56Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-04T14:50:57Z @neo-fable-mnemosyne added the `tech-debt` label
+- 2026-10-04T14:50:57Z @neo-fable-mnemosyne added the `testing` label
+- 2026-10-04T14:51:05Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-04T14:51:06Z @neo-fable-mnemosyne marked this issue as blocking #540
+- 2026-10-04T14:51:09Z @neo-fable-mnemosyne added this to the **FM v1** milestone
+- 2026-10-04T14:51:09Z @neo-fable-mnemosyne marked this issue as blocking #535
+- 2026-10-04T14:51:12Z @neo-fable-mnemosyne cross-referenced by #535
+- 2026-10-04T14:51:36Z @neo-fable-mnemosyne cross-referenced by #351
+- 2026-10-04T15:05:48Z @neo-fable-mnemosyne referenced in commit `26b8db8` - "test(harness): the scripted plane is the profile's own, and an arm holds the fixture to its limits (#547)
 
 The plane that comes up answers as the Brain's canonical local plane (the profile's compose file pins that id in its health checks), whatever target a run was bound to; nothing answers before the project is up. The pinned arms bind the profile's target. A new arm asserts that a run bound to another id reads served-plane failed in the recipe's words, that the one compose command is recorded and never run, and that files land under the run's temp roots."
-- 2026-10-04T15:09:57Z @neo-fable referenced in commit `f3816d7` - "test(agentos): the setup card's e2e asks the real broker over the pinned recipe (#547)
+- 2026-10-04T15:09:57Z @neo-fable-mnemosyne referenced in commit `f3816d7` - "test(agentos): the setup card's e2e asks the real broker over the pinned recipe (#547)
 
 The cold card, the consents and the first effect now run against the setup broker over the pinned Brain on a scripted host: twelve rows, the recipe's own verdicts and reasons, the credentials kept as paths under the run's root, no command asked for. The completed run's chrome stays on the recorded sample shell in its own describe until a run the card starts can reach done on the real broker."
-- 2026-10-04T16:12:11Z @neo-fable referenced in commit `db96a06` - "test(agentos): the setup card's view spec reads the pinned recipe's cold run, presets, probe and placement (#547)
+- 2026-10-04T16:12:11Z @neo-fable-mnemosyne referenced in commit `db96a06` - "test(agentos): the setup card's view spec reads the pinned recipe's cold run, presets, probe and placement (#547)
 
 The hand-written sample's constants are gone from the unit tier: the cold evaluation, the preset table, the probe and the placement come from the setup broker over the pinned Brain on the scripted laptop host. Rows an arm constructs are written by id, so the recipe's order is the recipe's to change. The sample had drifted: twelve rows instead of eleven, a hosted preset that is recommended rather than a candidate, another chat model in the table."
-- 2026-10-04T16:13:23Z @neo-fable cross-referenced by PR #549
-- 2026-10-04T16:21:11Z @neo-fable referenced in commit `6128e4b` - "test(harness): the card's own cold request is an arm that fails until a run binds its profile's target (#547)
+- 2026-10-04T16:13:23Z @neo-fable-mnemosyne cross-referenced by PR #549
+- 2026-10-04T16:21:11Z @neo-fable-mnemosyne referenced in commit `6128e4b` - "test(harness): the card's own cold request is an arm that fails until a run binds its profile's target (#547)
 
 The arm asks the broker as the card does, with no target bound by hand, and expects done ok. It is annotated as an expected failure: today write-env cannot render the run's missing target. With the profile's target bound the same arm reaches done ok, so the annotation turns CI red on the day the fix arrives and has to be removed with it."
-- 2026-10-04T16:22:30Z @neo-fable cross-referenced by #848
-- 2026-10-04T16:22:47Z @neo-fable cross-referenced by #550
-- 2026-10-04T17:08:04Z @neo-fable cross-referenced by #540
+- 2026-10-04T16:22:30Z @neo-fable-mnemosyne cross-referenced by #848
+- 2026-10-04T16:22:47Z @neo-fable-mnemosyne cross-referenced by #550
+- 2026-10-04T17:08:04Z @neo-fable-mnemosyne cross-referenced by #540
 - 2026-10-04T18:31:26Z @tobiu referenced in commit `c6d9e33` - "test(agentos): the setup card's tests run the pinned recipe through the real broker (#547) (#549)
 
 * test(harness): the pinned setup host is one shared fixture, with a page installer for the card's e2e (#547)
@@ -148,5 +148,32 @@ The hand-written sample's constants are gone from the unit tier: the cold evalua
 
 The arm asks the broker as the card does, with no target bound by hand, and expects done ok. It is annotated as an expected failure: today write-env cannot render the run's missing target. With the profile's target bound the same arm reaches done ok, so the annotation turns CI red on the day the fix arrives and has to be removed with it."
 - 2026-10-04T18:31:27Z @tobiu closed this issue
-- 2026-10-04T19:08:55Z @neo-gpt cross-referenced by PR #555
+- 2026-10-04T19:08:55Z @neo-gpt-euclid cross-referenced by PR #555
+- 2026-10-09T01:40:29Z @neo-fable-mnemosyne cross-referenced by PR #613
+- 2026-10-09T03:51:48Z @tobiu referenced in commit `6f17596` - "feat(agentos): the setup card speaks the operator's words — Home's door and the three-question Create front (#535) (#613)
+
+* feat(agentos): the setup card's Create door leads with three questions in the operator's words (#535)
+
+The five key/value rows and the preset cards leave the front. Three question blocks take their
+place — the token, where it runs, start — one open at a time, on one left edge, with the recipe's
+ledger under Details and the preset choices under Other choices. The Where block carries the
+recipe's own recommendation in its words; the Start block sends the next row's own request. The
+door's pure readings move to util/SetupAsks.mjs. The goldens render the pinned Brain's recipe
+through the #547 host, and the hand-written sample fixture goes.
+
+* feat(agentos): Home's first run opens the door to setting up an institution (#535)
+
+The first-run Home carries the promise in the operator's words, one primary action — Set up your
+institution — with what it asks for in one line under it, and joining a team that already runs one
+as the quiet second door; the controller opens the setup card on the matching door. The door's
+readings become a registered util class, as the util tree's law asks.
+
+* fix(agentos): the setup card keeps one open question while editing, and the Start block's press is the one its help names (#535)
+
+Change on an answered block makes it the one open block: the blocks after it read next until it
+settles, so Start offers nothing while a question is being edited. A pending write-again
+confirmation makes the Start block's action the second press the help names, never the row's
+first exit beside it; the second-consent guard stays as it was. Both paths are covered in the
+door's unit spec."
+- 2026-10-09T03:58:21Z @neo-fable-mnemosyne cross-referenced by PR #621
 

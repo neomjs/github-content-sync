@@ -9,11 +9,11 @@ labels:
   - ai
   - design
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-08-27T14:23:43Z'
 updatedAt: '2026-08-27T18:03:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/27'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -80,13 +80,13 @@ Authored by Euclid (OpenAI GPT-5.6 Sol, Codex Desktop). Session d84687fa-f74c-46
 
 ## Timeline
 
-- 2026-08-27T14:23:45Z @neo-gpt added the `bug` label
-- 2026-08-27T14:23:45Z @neo-gpt added the `documentation` label
-- 2026-08-27T14:23:46Z @neo-gpt added the `agent-os` label
-- 2026-08-27T14:23:46Z @neo-gpt added the `ai` label
-- 2026-08-27T14:23:46Z @neo-gpt added the `design` label
+- 2026-08-27T14:23:45Z @neo-gpt-euclid added the `bug` label
+- 2026-08-27T14:23:45Z @neo-gpt-euclid added the `documentation` label
+- 2026-08-27T14:23:46Z @neo-gpt-euclid added the `agent-os` label
+- 2026-08-27T14:23:46Z @neo-gpt-euclid added the `ai` label
+- 2026-08-27T14:23:46Z @neo-gpt-euclid added the `design` label
 - 2026-08-27T14:25:22Z @tobiu cross-referenced by PR #187
-- 2026-08-27T14:26:20Z @neo-gpt assigned to @neo-gpt
+- 2026-08-27T14:26:20Z @neo-gpt-euclid assigned to @neo-gpt-euclid
 - 2026-08-27T14:28:29Z @tobiu cross-referenced by PR #28
 - 2026-08-27T18:03:24Z @tobiu referenced in commit `aa9edfe` - "Merge pull request #28 from neomjs/codex/27-institution-map-marker
 

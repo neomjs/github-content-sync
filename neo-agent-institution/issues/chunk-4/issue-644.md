@@ -7,11 +7,11 @@ labels:
   - ai
   - design
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-09T12:56:20Z'
 updatedAt: '2026-10-17T23:49:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/644'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: 351
 subIssues: []
@@ -72,19 +72,19 @@ Retrieval Hint: "setup door foot fade conditional overflow scroll-state sticky g
 
 ## Timeline
 
-- 2026-10-09T12:56:21Z @neo-fable assigned to @neo-fable
-- 2026-10-09T12:56:21Z @neo-fable added the `bug` label
-- 2026-10-09T12:56:21Z @neo-fable added the `ai` label
-- 2026-10-09T12:56:21Z @neo-fable added the `design` label
-- 2026-10-09T12:56:58Z @neo-fable cross-referenced by PR #621
-- 2026-10-09T12:57:03Z @neo-fable added parent issue #351
-- 2026-10-17T17:16:35Z @neo-fable cross-referenced by #722
+- 2026-10-09T12:56:21Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-09T12:56:21Z @neo-fable-mnemosyne added the `bug` label
+- 2026-10-09T12:56:21Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-09T12:56:21Z @neo-fable-mnemosyne added the `design` label
+- 2026-10-09T12:56:58Z @neo-fable-mnemosyne cross-referenced by PR #621
+- 2026-10-09T12:57:03Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-17T17:16:35Z @neo-fable-mnemosyne cross-referenced by #722
 - 2026-10-17T18:29:12Z @neo-fable-clio cross-referenced by #724
-- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
-- 2026-10-17T22:06:01Z @neo-fable cross-referenced by PR #731
+- 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
+- 2026-10-17T22:06:01Z @neo-fable-mnemosyne cross-referenced by PR #731
 - 2026-10-17T22:08:51Z @neo-fable-clio cross-referenced by PR #730
-- 2026-10-17T22:11:47Z @neo-fable referenced in commit `60293ff` - "fix(agentos): the setup door's foot fade shows only while the door can still scroll (#644)"
-- 2026-10-17T22:48:22Z @neo-fable referenced in commit `999d8af` - "fix(agentos): the setup door's foot fade shows only while the door can still scroll (#644)"
+- 2026-10-17T22:11:47Z @neo-fable-mnemosyne referenced in commit `60293ff` - "fix(agentos): the setup door's foot fade shows only while the door can still scroll (#644)"
+- 2026-10-17T22:48:22Z @neo-fable-mnemosyne referenced in commit `999d8af` - "fix(agentos): the setup door's foot fade shows only while the door can still scroll (#644)"
 - 2026-10-17T23:49:14Z @tobiu referenced in commit `2f9056a` - "fix(agentos): the setup door's foot fade shows only while the door can still scroll (#644) (#731)"
 - 2026-10-17T23:49:14Z @tobiu closed this issue
 

@@ -8,11 +8,11 @@ labels:
   - ai
   - testing
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-17T17:16:33Z'
 updatedAt: '2026-10-17T18:47:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/722'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -72,15 +72,15 @@ Retrieval Hint: "chromeBinding partial guidance arm quiet since fixed occurredAt
 
 ## Timeline
 
-- 2026-10-17T17:16:34Z @neo-fable assigned to @neo-fable
-- 2026-10-17T17:16:35Z @neo-fable added the `bug` label
-- 2026-10-17T17:16:35Z @neo-fable added the `agent-os` label
-- 2026-10-17T17:16:35Z @neo-fable added the `ai` label
-- 2026-10-17T17:16:36Z @neo-fable added the `testing` label
-- 2026-10-17T17:17:43Z @neo-fable cross-referenced by PR #723
+- 2026-10-17T17:16:34Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-17T17:16:35Z @neo-fable-mnemosyne added the `bug` label
+- 2026-10-17T17:16:35Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-17T17:16:35Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-17T17:16:36Z @neo-fable-mnemosyne added the `testing` label
+- 2026-10-17T17:17:43Z @neo-fable-mnemosyne cross-referenced by PR #723
 - 2026-10-17T18:29:12Z @neo-fable-clio cross-referenced by #724
 - 2026-10-17T18:29:33Z @neo-fable-clio cross-referenced by #725
-- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
+- 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
 - 2026-10-17T18:47:16Z @tobiu referenced in commit `7832582` - "test(agentos): the partial-guidance arm stamps its wire events relative to the run (#722) (#723)
 
 The three fixed 2026-10-16 instants aged past the activity pane's quiet threshold a day after they were written, so the recovery step read 'quiet since' instead of '● streaming' on every run since. The stamps are now minutes before the run; the pane and its rule are untouched."

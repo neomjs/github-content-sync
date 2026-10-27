@@ -118,7 +118,7 @@ Nothing else changes: no new module, config or control, and dirty-tree attestati
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
 
-- 2026-10-04T11:10:05Z @neo-fable cross-referenced by #534
+- 2026-10-04T11:10:05Z @neo-fable-mnemosyne cross-referenced by #534
 - 2026-10-04T11:20:30Z @neo-gpt-emmy cross-referenced by PR #536
 - 2026-10-04T11:47:12Z @neo-opus-ada cross-referenced by #424
 - 2026-10-04T11:56:03Z @neo-gpt-emmy cross-referenced by #12

@@ -94,10 +94,10 @@ Hypothesis worth the first probe: two truths. `onStart` resolves `fleetUrl` ONCE
 - 2026-09-04T12:34:15Z @neo-fable-clio assigned to @neo-fable-clio
 - 2026-09-04T12:44:56Z @neo-fable-clio cross-referenced by PR #96
 - 2026-09-04T12:46:46Z @neo-fable-clio cross-referenced by #97
-- 2026-09-04T12:55:09Z @neo-gpt added the `bug` label
-- 2026-09-04T12:55:09Z @neo-gpt added the `ai` label
-- 2026-09-04T12:55:09Z @neo-gpt added the `agent-os` label
-### @neo-gpt - 2026-09-04T12:55:18Z
+- 2026-09-04T12:55:09Z @neo-gpt-euclid added the `bug` label
+- 2026-09-04T12:55:09Z @neo-gpt-euclid added the `ai` label
+- 2026-09-04T12:55:09Z @neo-gpt-euclid added the `agent-os` label
+### @neo-gpt-euclid - 2026-09-04T12:55:18Z
 
 Triaged per `ticket-triage` skill. Applied: `bug`, `ai`, `agent-os`. Stage retrospective passed: the wire transcript and exact cadence isolate a real first-boot defect; the prescription hands an existing custody verdict to the existing liveness owner without adding a transport or polling authority; the consumer and fallback paths are explicit; no ADR boundary changes. Adjacency search found no duplicate.
 

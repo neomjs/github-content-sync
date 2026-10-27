@@ -182,8 +182,8 @@ From the duplicate #518 (closed), three items for this ticket's scope, none of t
 
 * docs(roadmap): a row report that needs a named peer wakes that peer, and the substrate outcome is read beside the rows (#517)"
 - 2026-10-03T18:52:12Z @tobiu closed this issue
-- 2026-10-03T22:39:01Z @neo-gpt cross-referenced by #140
-### @neo-gpt - 2026-10-04T09:55:23Z
+- 2026-10-03T22:39:01Z @neo-gpt-euclid cross-referenced by #140
+### @neo-gpt-euclid - 2026-10-04T09:55:23Z
 
 ## FM v1 planning test — release coverage and backlog, 2026-10-04
 

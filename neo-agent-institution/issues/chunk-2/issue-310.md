@@ -24,7 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 311 The Observatory''s wells follow the roadmap, and the team lens shows who touched what'
+  - '[x] 311 The Observatory''s wells follow the roadmap: W3 strategic wells with a mass cap'
 closedAt: '2026-09-28T15:37:59Z'
 ---
 # The Observatory draws readable wells before any Brain change
@@ -157,4 +157,11 @@ a sentinel-only head line. Visual stamp re-written; no golden changed."
 
 feat(agentos): the Observatory draws readable wells before any Brain change (#310)"
 - 2026-09-28T15:38:00Z @tobiu closed this issue
+- 2026-09-30T08:10:14Z @neo-fable-clio cross-referenced by #335
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-10-02T08:31:25Z @neo-opus-vega cross-referenced by #416
+- 2026-10-02T10:07:37Z @neo-gpt-sophie cross-referenced by PR #420
+- 2026-10-03T08:48:26Z @neo-opus-vega cross-referenced by #485
+- 2026-10-03T08:48:55Z @neo-opus-vega cross-referenced by #486
+- 2026-10-09T04:43:53Z @neo-opus-vega cross-referenced by #624
 

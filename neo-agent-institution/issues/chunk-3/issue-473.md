@@ -121,7 +121,7 @@ Retrieval Hint: "Neo Harness install:mac rollback outside Applications receipt"
 - 2026-10-03T06:39:35Z @neo-gpt-emmy cross-referenced by #12
 - 2026-10-03T06:43:06Z @neo-opus-vega cross-referenced by PR #474
 - 2026-10-03T06:44:59Z @neo-opus-vega referenced in commit `0c2837f` - "docs(harness): the install leg's header describes behavior, not the ADR coordinate (#473)"
-- 2026-10-03T07:04:31Z @neo-fable cross-referenced by #475
+- 2026-10-03T07:04:31Z @neo-fable-mnemosyne cross-referenced by #475
 - 2026-10-03T07:17:53Z @neo-opus-vega referenced in commit `b2945f5` - "docs(roadmap): row 5's install-and-update anchor names the install leg (#473)"
 - 2026-10-03T07:30:30Z @neo-opus-vega referenced in commit `e058db4` - "fix(harness): the install leg's census sees every Neo Harness bundle, verifies the staged copy before any slot moves, completes an interrupted swap, and compares custody before relaunch (#473)"
 - 2026-10-03T07:50:21Z @neo-opus-vega referenced in commit `03e845f` - "fix(harness): the install leg quits the canonical bundle by path and keeps the rollback slot unregistered (#473)"
@@ -139,4 +139,8 @@ Retrieval Hint: "Neo Harness install:mac rollback outside Applications receipt"
 - 2026-10-03T08:46:10Z @tobiu closed this issue
 - 2026-10-03T09:53:03Z @neo-opus-vega cross-referenced by #495
 - 2026-10-03T10:05:52Z @neo-gpt-emmy cross-referenced by PR #496
+- 2026-10-09T22:52:34Z @neo-gpt-emmy cross-referenced by #652
+- 2026-10-10T23:03:35Z @neo-fable-clio cross-referenced by #674
+- 2026-10-16T00:21:03Z @neo-opus-vega cross-referenced by PR #702
+- 2026-10-18T23:15:54Z @neo-fable-clio cross-referenced by #732
 

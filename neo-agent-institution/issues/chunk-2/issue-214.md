@@ -127,7 +127,7 @@ Anchored at Institution `dev@1d592e1` and Brain `dev@c252773`. The sections abov
 - 2026-09-26T20:57:47Z @neo-gpt-emmy cross-referenced by PR #260
 - 2026-09-26T21:04:30Z @neo-opus-grace cross-referenced by #261
 - 2026-09-26T21:09:53Z @neo-opus-grace cross-referenced by PR #262
-### @neo-gpt - 2026-09-29T15:06:42Z
+### @neo-gpt-euclid - 2026-09-29T15:06:42Z
 
 ## Intake hand-back for #214
 
@@ -285,4 +285,9 @@ Delivered by #350, merged to `dev` at 0446d77. Its post-merge validation passed 
 - 2026-09-30T15:02:43Z @neo-opus-grace closed this issue
 - 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
 - 2026-09-30T15:08:28Z @neo-fable-clio cross-referenced by PR #363
+- 2026-10-03T08:26:26Z @neo-fable-clio cross-referenced by #481
+- 2026-10-03T17:15:57Z @neo-opus-ada cross-referenced by #424
+- 2026-10-03T17:26:37Z @neo-opus-ada cross-referenced by #516
+- 2026-10-03T20:16:40Z @neo-opus-ada cross-referenced by #523
+- 2026-10-04T11:44:36Z @neo-opus-ada cross-referenced by PR #537
 

@@ -83,6 +83,7 @@ Related, added 2026-09-12 after the operator challenged the fixed itemHeight: ne
 - 2026-09-12T13:17:37Z @neo-fable-clio added the `enhancement` label
 - 2026-09-12T13:17:38Z @neo-fable-clio added the `ai` label
 - 2026-09-12T13:17:38Z @neo-fable-clio added the `design` label
+- 2026-09-12T13:18:13Z @neo-fable-clio added parent issue #10
 - 2026-09-12T13:25:45Z @neo-fable-clio cross-referenced by #18604
 - 2026-09-12T16:48:04Z @neo-fable-clio cross-referenced by #131
 - 2026-09-12T17:09:33Z @neo-fable-clio cross-referenced by PR #132
@@ -90,7 +91,7 @@ Related, added 2026-09-12 after the operator challenged the fixed itemHeight: ne
 - 2026-09-13T15:53:13Z @neo-fable-clio cross-referenced by PR #18670
 - 2026-09-13T19:10:55Z @neo-fable-clio cross-referenced by #136
 - 2026-09-14T00:40:14Z @neo-fable-clio cross-referenced by PR #137
-- 2026-09-14T01:11:30Z @neo-gpt cross-referenced by #10
+- 2026-09-14T01:11:30Z @neo-gpt-euclid cross-referenced by #10
 - 2026-09-18T10:25:56Z @neo-fable-clio cross-referenced by #149
 - 2026-09-18T10:40:56Z @neo-fable-clio cross-referenced by #151
 - 2026-09-18T12:36:38Z @neo-fable-clio cross-referenced by #18874
@@ -116,4 +117,5 @@ feat(roster): the roster's cards take one measured height instead of a fixed 126
 - 2026-09-18T15:08:45Z @tobiu closed this issue
 - 2026-09-18T17:04:02Z @neo-fable-clio cross-referenced by #123
 - 2026-09-19T12:53:40Z @neo-gpt-emmy cross-referenced by PR #169
+- 2026-09-23T09:22:35Z @neo-fable-clio cross-referenced by #182
 

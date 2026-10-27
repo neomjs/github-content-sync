@@ -6,11 +6,11 @@ labels:
   - bug
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-04T16:22:46Z'
 updatedAt: '2026-10-05T09:37:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/550'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: 351
 subIssues: []
@@ -105,21 +105,21 @@ Retrieval Hint: "setup broker resolveRun target null layout target cold request 
 
 ## Timeline
 
-- 2026-10-04T16:22:46Z @neo-fable assigned to @neo-fable
-- 2026-10-04T16:22:47Z @neo-fable added the `bug` label
-- 2026-10-04T16:22:47Z @neo-fable added the `ai` label
-- 2026-10-04T16:22:56Z @neo-fable added parent issue #351
-- 2026-10-04T16:23:00Z @neo-fable marked this issue as being blocked by #848
-- 2026-10-04T16:23:01Z @neo-fable added this to the **FM v1** milestone
-- 2026-10-04T16:23:58Z @neo-fable cross-referenced by #351
-- 2026-10-04T16:28:45Z @neo-fable cross-referenced by PR #849
+- 2026-10-04T16:22:46Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-04T16:22:47Z @neo-fable-mnemosyne added the `bug` label
+- 2026-10-04T16:22:47Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-04T16:22:56Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-04T16:23:00Z @neo-fable-mnemosyne marked this issue as being blocked by #848
+- 2026-10-04T16:23:01Z @neo-fable-mnemosyne added this to the **FM v1** milestone
+- 2026-10-04T16:23:58Z @neo-fable-mnemosyne cross-referenced by #351
+- 2026-10-04T16:28:45Z @neo-fable-mnemosyne cross-referenced by PR #849
 - 2026-10-04T16:47:38Z @neo-fable-clio cross-referenced by #850
 - 2026-10-04T17:33:44Z @neo-gpt-emmy cross-referenced by PR #852
-- 2026-10-04T17:37:24Z @neo-fable cross-referenced by #540
+- 2026-10-04T17:37:24Z @neo-fable-mnemosyne cross-referenced by #540
 - 2026-10-04T17:37:27Z @neo-gpt-emmy cross-referenced by #12
-- 2026-10-04T17:37:28Z @neo-fable marked this issue as blocking #540
-- 2026-10-04T17:49:56Z @neo-fable cross-referenced by #848
-- 2026-10-04T18:34:00Z @neo-fable cross-referenced by PR #555
+- 2026-10-04T17:37:28Z @neo-fable-mnemosyne marked this issue as blocking #540
+- 2026-10-04T17:49:56Z @neo-fable-mnemosyne cross-referenced by #848
+- 2026-10-04T18:34:00Z @neo-fable-mnemosyne cross-referenced by PR #555
 - 2026-10-05T09:37:20Z @tobiu referenced in commit `3d337eb` - "fix(harness): a run the setup card starts binds the plane its profile declares (#550) (#555)
 
 * fix(harness): a run the setup card starts binds the plane its profile declares (#550)

@@ -13,7 +13,7 @@ assignees:
 createdAt: '2026-09-26T19:43:23Z'
 updatedAt: '2026-09-27T09:45:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/258'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 1
 parentIssue: 10034
 subIssues:
@@ -115,12 +115,12 @@ Retrieval Hint: "Observatory bounded graph scene snapshotId canonical selection 
 
 ## Timeline
 
-- 2026-09-26T19:43:25Z @neo-gpt added the `enhancement` label
-- 2026-09-26T19:43:25Z @neo-gpt added the `accessibility` label
-- 2026-09-26T19:43:25Z @neo-gpt added the `agent-os` label
-- 2026-09-26T19:43:26Z @neo-gpt added the `ai` label
-- 2026-09-26T19:43:26Z @neo-gpt added the `performance` label
-- 2026-09-26T19:43:42Z @neo-gpt added parent issue #10034
+- 2026-09-26T19:43:25Z @neo-gpt-euclid added the `enhancement` label
+- 2026-09-26T19:43:25Z @neo-gpt-euclid added the `accessibility` label
+- 2026-09-26T19:43:25Z @neo-gpt-euclid added the `agent-os` label
+- 2026-09-26T19:43:26Z @neo-gpt-euclid added the `ai` label
+- 2026-09-26T19:43:26Z @neo-gpt-euclid added the `performance` label
+- 2026-09-26T19:43:42Z @neo-gpt-euclid added parent issue #10034
 - 2026-09-26T19:57:26Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-09-26T21:31:43Z @neo-gpt-emmy cross-referenced by #10
 - 2026-09-26T22:06:46Z @neo-opus-grace cross-referenced by #264
@@ -152,7 +152,7 @@ content policy's allowlist is unchanged."
 - 2026-09-27T08:22:44Z @tobiu referenced in commit `613e094` - "feat(agentos): the Observatory side panel on the FM scale; the Golden Path graph button is a compact glyph (#258)"
 - 2026-09-27T08:22:45Z @tobiu referenced in commit `55fbca4` - "test(visual): a withheld Golden Path route beside a current graph read, in the Observatory's goldens (#258)"
 - 2026-09-27T08:22:45Z @tobiu referenced in commit `448ef01` - "test(visual): re-stamp the baseline inputs on the rebased head (#258)"
-- 2026-09-27T08:25:04Z @neo-gpt cross-referenced by PR #19302
+- 2026-09-27T08:25:04Z @neo-gpt-euclid cross-referenced by PR #19302
 - 2026-09-27T08:31:27Z @neo-opus-grace cross-referenced by #277
 - 2026-09-27T08:46:46Z @neo-opus-grace cross-referenced by #278
 - 2026-09-27T08:59:51Z @tobiu referenced in commit `71915bc` - "feat(agentos): the Observatory lists its nodes and the selected node's relations, and the Golden Path shares its selection (#258)"
@@ -183,4 +183,9 @@ feat(agentos): the Observatory lists its nodes and relations, and the Golden Pat
 - 2026-09-27T09:45:44Z @tobiu closed this issue
 - 2026-09-27T10:13:50Z @neo-opus-grace cross-referenced by PR #282
 - 2026-09-27T12:26:31Z @neo-opus-grace cross-referenced by #288
+- 2026-09-29T20:35:33Z @neo-opus-vega cross-referenced by #333
+- 2026-09-30T22:24:06Z @neo-opus-grace cross-referenced by #375
+- 2026-09-30T23:39:05Z @neo-gpt-emmy cross-referenced by PR #377
+- 2026-10-04T12:58:46Z @neo-opus-vega cross-referenced by PR #529
+- 2026-10-04T13:48:12Z @neo-opus-vega cross-referenced by #312
 

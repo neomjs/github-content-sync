@@ -14,7 +14,7 @@ assignees:
 createdAt: '2026-08-28T21:23:15Z'
 updatedAt: '2026-09-01T20:54:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/39'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 2
 parentIssue: null
 subIssues: []
@@ -134,20 +134,22 @@ Creation freshness: checked all 19 live open Institution issues (created-descend
 
 ## Timeline
 
-- 2026-08-28T21:23:16Z @neo-gpt added the `documentation` label
-- 2026-08-28T21:23:17Z @neo-gpt added the `enhancement` label
-- 2026-08-28T21:23:17Z @neo-gpt added the `ai` label
-- 2026-08-28T21:23:17Z @neo-gpt added the `architecture` label
-- 2026-08-28T21:23:17Z @neo-gpt added the `dependencies` label
-- 2026-08-28T21:23:17Z @neo-gpt added the `testing` label
-- 2026-08-28T21:25:41Z @neo-gpt cross-referenced by #17837
-- 2026-08-28T21:25:43Z @neo-gpt cross-referenced by #17838
-- 2026-08-28T21:34:13Z @neo-gpt cross-referenced by #17836
-- 2026-08-28T21:59:38Z @neo-fable cross-referenced by #17539
+- 2026-08-28T21:23:16Z @neo-gpt-euclid added the `documentation` label
+- 2026-08-28T21:23:17Z @neo-gpt-euclid added the `enhancement` label
+- 2026-08-28T21:23:17Z @neo-gpt-euclid added the `ai` label
+- 2026-08-28T21:23:17Z @neo-gpt-euclid added the `architecture` label
+- 2026-08-28T21:23:17Z @neo-gpt-euclid added the `dependencies` label
+- 2026-08-28T21:23:17Z @neo-gpt-euclid added the `testing` label
+- 2026-08-28T21:23:32Z @neo-gpt-euclid marked this issue as being blocked by #17837
+- 2026-08-28T21:23:33Z @neo-gpt-euclid marked this issue as being blocked by #17838
+- 2026-08-28T21:25:41Z @neo-gpt-euclid cross-referenced by #17837
+- 2026-08-28T21:25:43Z @neo-gpt-euclid cross-referenced by #17838
+- 2026-08-28T21:34:13Z @neo-gpt-euclid cross-referenced by #17836
+- 2026-08-28T21:59:38Z @neo-fable-mnemosyne cross-referenced by #17539
 - 2026-08-28T22:05:03Z @neo-fable-clio cross-referenced by #42
 - 2026-08-28T23:04:38Z @neo-fable-clio cross-referenced by #44
-- 2026-08-28T23:04:57Z @neo-gpt assigned to @neo-gpt
-- 2026-08-29T11:08:11Z @neo-gpt cross-referenced by PR #17845
+- 2026-08-28T23:04:57Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-08-29T11:08:11Z @neo-gpt-euclid cross-referenced by PR #17845
 ### @neo-gpt-emmy - 2026-09-01T00:30:40Z
 
 ## Ticket intake — positive ROI; one final-path mismatch blocks implementation
@@ -225,7 +227,7 @@ Origin Session ID: 8c42ad77-48b0-448a-992a-219df09cd4c6
 
 📜 Clio
 
-- 2026-09-01T19:44:13Z @neo-fable-clio unassigned from @neo-gpt
+- 2026-09-01T19:44:13Z @neo-fable-clio unassigned from @neo-gpt-euclid
 - 2026-09-01T19:44:16Z @neo-fable-clio assigned to @neo-fable-clio
 - 2026-09-01T20:02:52Z @neo-fable-clio cross-referenced by PR #65
 - 2026-09-01T20:36:26Z @neo-fable-clio referenced in commit `cdc737d` - "test(agentos): derive the spy-host Engine configs and witness the perspective active-tab round-trip (#39)"

@@ -97,7 +97,7 @@ Authored by Emmy (GPT-5.6 Sol Ultra, Codex). Session d39e8182-295f-418a-82cd-a96
 - 2026-08-27T08:55:08Z @tobiu cross-referenced by #1
 - 2026-08-27T09:04:00Z @tobiu cross-referenced by PR #5
 - 2026-08-27T09:09:56Z @neo-gpt-emmy cross-referenced by PR #6
-- 2026-08-27T11:12:44Z @neo-gpt cross-referenced by #25
+- 2026-08-27T11:12:44Z @neo-gpt-euclid cross-referenced by #25
 - 2026-08-28T11:11:09Z @tobiu cross-referenced by PR #31
 - 2026-08-28T11:19:23Z @neo-fable-clio cross-referenced by PR #32
 - 2026-08-28T15:36:57Z @neo-fable-clio assigned to @neo-fable-clio

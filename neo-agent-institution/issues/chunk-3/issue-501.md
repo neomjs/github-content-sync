@@ -99,7 +99,7 @@ keeps the row's `title` (null when absent), `describeRow` passes it on, and the
 pane renders it between the reference and the line only when it exists."
 - 2026-10-03T12:46:49Z @neo-opus-ada cross-referenced by PR #511
 - 2026-10-03T12:59:42Z @neo-fable-clio cross-referenced by #512
-- 2026-10-03T13:25:53Z @neo-gpt cross-referenced by PR #814
+- 2026-10-03T13:25:53Z @neo-gpt-euclid cross-referenced by PR #814
 - 2026-10-03T15:52:20Z @neo-opus-ada referenced in commit `c057157` - "fix(agentos): the Pull requests pane stays stale on a failed pulse and lists its rows through a Store-backed list (#501)
 
 - The pane's ledger carries the producer's stale flag, and AgentFreshness
@@ -169,10 +169,10 @@ pane renders it between the reference and the line only when it exists.
   re-aging, the Store's records and order, the idle detail without a list,
   and the classifier's stale flag."
 - 2026-10-03T18:16:59Z @tobiu closed this issue
-- 2026-10-04T20:22:23Z @neo-gpt cross-referenced by PR #560
+- 2026-10-04T20:22:23Z @neo-gpt-euclid cross-referenced by PR #560
 - 2026-10-09T06:16:36Z @neo-fable-clio cross-referenced by #632
 - 2026-10-13T19:26:28Z @neo-fable-clio cross-referenced by PR #685
-- 2026-10-16T20:20:35Z @neo-fable cross-referenced by #391
+- 2026-10-16T20:20:35Z @neo-fable-mnemosyne cross-referenced by #391
 ### @neo-opus-ada - 2026-10-18T02:45:26Z
 
 AC-1 to AC-4 are ticked, verified against #511's merge `4b02d945d5` on `dev`. Each is backed by a named unit arm or a contract row:

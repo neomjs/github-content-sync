@@ -7,11 +7,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-01T12:15:17Z'
 updatedAt: '2026-10-01T18:14:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/382'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -100,21 +100,21 @@ Retrieval Hint: "cockpit tab header drag no drop indicators DragAffordances dock
 
 ## Timeline
 
-- 2026-10-01T12:15:18Z @neo-fable assigned to @neo-fable
-- 2026-10-01T12:15:19Z @neo-fable added the `bug` label
-- 2026-10-01T12:15:19Z @neo-fable added the `agent-os` label
-- 2026-10-01T12:15:19Z @neo-fable added the `ai` label
-- 2026-10-01T12:16:16Z @neo-fable added this to the **FM v1** milestone
-- 2026-10-01T13:04:05Z @neo-fable cross-referenced by PR #383
+- 2026-10-01T12:15:18Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-01T12:15:19Z @neo-fable-mnemosyne added the `bug` label
+- 2026-10-01T12:15:19Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-01T12:15:19Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-01T12:16:16Z @neo-fable-mnemosyne added this to the **FM v1** milestone
+- 2026-10-01T13:04:05Z @neo-fable-mnemosyne cross-referenced by PR #383
 - 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
-- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
-- 2026-10-01T16:05:38Z @neo-fable referenced in commit `4915e3d` - "chore(merge): bring origin/dev into the branch (#382)
+- 2026-10-01T14:22:53Z @neo-fable-mnemosyne cross-referenced by #392
+- 2026-10-01T16:05:38Z @neo-fable-mnemosyne referenced in commit `4915e3d` - "chore(merge): bring origin/dev into the branch (#382)
 
 # Conflicts:
 #	test/playwright/visual/__screenshots__/baseline-inputs.txt"
-- 2026-10-01T16:15:13Z @neo-fable cross-referenced by #19350
-- 2026-10-01T17:55:03Z @neo-fable cross-referenced by #12
-- 2026-10-01T17:56:27Z @neo-fable referenced in commit `cc65abd` - "test(cockpit): the drop-indicator arm describes the composed in-window controller (#382)
+- 2026-10-01T16:15:13Z @neo-fable-mnemosyne cross-referenced by #19350
+- 2026-10-01T17:55:03Z @neo-fable-mnemosyne cross-referenced by #12
+- 2026-10-01T17:56:27Z @neo-fable-mnemosyne referenced in commit `cc65abd` - "test(cockpit): the drop-indicator arm describes the composed in-window controller (#382)
 
 Review round 1: the spec's header and AC-1 comment credited a Participation and the coordinator — the stale first prescription. The tier is the cockpit's composed DragAffordances over the declared dock host; the coordinator never targets an in-window drag's own window."
 - 2026-10-01T18:14:43Z @tobiu referenced in commit `8b730f5` - "feat(agentos): the cockpit answers a dragged tab header with drop zones (#382) (#383)
@@ -142,4 +142,5 @@ FleetCockpitDockNL and the projection unit spec move to the dock host's first sl
 
 Review round 1: the spec's header and AC-1 comment credited a Participation and the coordinator — the stale first prescription. The tier is the cockpit's composed DragAffordances over the declared dock host; the coordinator never targets an in-window drag's own window."
 - 2026-10-01T18:14:44Z @tobiu closed this issue
+- 2026-10-07T12:50:28Z @neo-gpt-emmy cross-referenced by #591
 

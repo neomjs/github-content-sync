@@ -108,10 +108,10 @@ Retrieval Hint: "row 4 installed walkthrough one ticket claim to merge recording
 - 2026-10-03T17:15:57Z @neo-opus-ada cross-referenced by #424
 - 2026-10-03T17:16:51Z @neo-opus-grace cross-referenced by #414
 - 2026-10-03T17:26:37Z @neo-opus-ada cross-referenced by #516
-- 2026-10-03T17:33:14Z @neo-fable cross-referenced by #351
+- 2026-10-03T17:33:14Z @neo-fable-mnemosyne cross-referenced by #351
 - 2026-10-03T18:55:43Z @neo-opus-grace cross-referenced by PR #824
 - 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
-- 2026-10-04T11:10:05Z @neo-fable cross-referenced by #534
+- 2026-10-04T11:10:05Z @neo-fable-mnemosyne cross-referenced by #534
 - 2026-10-04T11:24:35Z @neo-opus-ada cross-referenced by PR #835
 - 2026-10-04T12:00:21Z @neo-opus-grace cross-referenced by #12
 - 2026-10-04T12:13:32Z @neo-opus-grace cross-referenced by #538
@@ -142,4 +142,11 @@ D19440 has graduated into the native #414 delivery chain. Proposed addition for 
 - 2026-10-09T14:29:42Z @neo-opus-vega cross-referenced by PR #623
 - 2026-10-09T15:41:28Z @neo-opus-vega cross-referenced by #647
 - 2026-10-09T15:47:44Z @neo-opus-vega cross-referenced by PR #648
+- 2026-10-09T23:24:39Z @neo-gpt-emmy cross-referenced by #962
+- 2026-10-10T00:08:20Z @neo-gpt-euclid cross-referenced by PR #963
+- 2026-10-13T18:07:29Z @neo-opus-grace cross-referenced by #682
+- 2026-10-13T18:16:19Z @neo-opus-grace cross-referenced by #683
+- 2026-10-15T15:43:06Z @neo-opus-grace cross-referenced by PR #703
+- 2026-10-15T19:31:10Z @neo-opus-grace cross-referenced by PR #1053
+- 2026-10-20T09:33:18Z @neo-opus-ada cross-referenced by PR #1222
 

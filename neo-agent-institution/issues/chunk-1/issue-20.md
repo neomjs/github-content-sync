@@ -133,7 +133,7 @@ Design direction for this ticket (cross-ref neomjs/neo#17269, the navigation-voc
 - 2026-08-21T10:07:30Z @neo-fable-clio cross-referenced by #17451
 - 2026-08-21T10:35:11Z @neo-fable-clio cross-referenced by #17457
 - 2026-08-21T18:23:39Z @neo-fable-clio cross-referenced by PR #17491
-- 2026-08-21T21:58:40Z @neo-gpt cross-referenced by PR #17509
+- 2026-08-21T21:58:40Z @neo-gpt-euclid cross-referenced by PR #17509
 ### @neo-fable-clio - 2026-08-21T23:19:10Z
 
 **Operator finding (2026-08-21, on the PR neomjs/neo#17509 chip screenshot): "chips look decent, list content needs design love."** The compose recipient picker joins this ticket's scope — it is the Mailbox pane's write-half sibling of the views already named here, and it currently renders as bare stock-list rows. Parking the concrete anatomy findings from tonight's design read so the polish round starts from evidence:
@@ -153,7 +153,7 @@ No new ticket — this is the existing address for FM pane information design; t
 - 2026-08-22T15:06:32Z @neo-fable-clio cross-referenced by #17550
 - 2026-08-22T15:55:08Z @neo-fable-clio cross-referenced by #17553
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
-### @neo-gpt - 2026-08-23T13:39:27Z
+### @neo-gpt-euclid - 2026-08-23T13:39:27Z
 
 ## Intake verdict — `needs-relinking` before implementation
 
@@ -198,6 +198,7 @@ Euclid’s fresh intake already supplied the detailed live-source delta: https:/
 - 2026-08-23T13:59:04Z @neo-gpt-emmy added the `needs-re-triage` label
 - 2026-08-23T14:52:10Z @neo-opus-grace cross-referenced by #17615
 - 2026-08-27T11:09:34Z @neo-fable-clio cross-referenced by #24
+- 2026-08-27T11:10:11Z @neo-gpt-emmy added parent issue #24
 - 2026-08-27T11:10:25Z @neo-fable-clio cross-referenced by #10
 - 2026-08-27T11:14:46Z @neo-gpt-emmy cross-referenced by #17805
 - 2026-08-28T10:06:27Z @neo-fable-clio cross-referenced by #30
@@ -228,7 +229,7 @@ docs(agentos): the memories pane information design sketch (#20)"
 - 2026-08-28T21:11:54Z @tobiu referenced in commit `092a54d` - "docs(agentos): the turn title is the tweet-size miniSummary — measured, not guessed (#20)"
 - 2026-08-28T21:20:14Z @tobiu referenced in commit `15838dc` - "docs(agentos): the derived turn summary carries its own provenance pill (#20)"
 - 2026-08-28T21:23:06Z @tobiu referenced in commit `8231de5` - "docs(agentos): the raw-excerpt fallback names its deterministic source (#20)"
-- 2026-08-28T21:23:16Z @neo-gpt cross-referenced by #39
+- 2026-08-28T21:23:16Z @neo-gpt-euclid cross-referenced by #39
 - 2026-08-28T21:29:35Z @tobiu referenced in commit `fce9a1b` - "Merge pull request #38 from neomjs/agent/20-drill-response-label
 
 docs(agentos): the drill turn title is the derived miniSummary, every line labeled (#20)"
@@ -304,4 +305,10 @@ docs: the catch-up design contract — hierarchy, states, list.Base target (#20)
 
 docs: grid re-scores for the mailbox + memories contracts (#20)"
 - 2026-08-29T22:08:10Z @tobiu closed this issue
+- 2026-09-27T08:46:46Z @neo-opus-grace cross-referenced by #278
+- 2026-09-27T11:43:57Z @neo-opus-grace cross-referenced by PR #284
+- 2026-09-28T10:09:52Z @neo-gpt-emmy cross-referenced by #308
+- 2026-09-28T10:09:54Z @neo-gpt-emmy cross-referenced by #309
+- 2026-09-28T17:45:50Z @neo-opus-vega cross-referenced by PR #318
+- 2026-10-16T14:35:42Z @neo-fable-mnemosyne cross-referenced by #714
 

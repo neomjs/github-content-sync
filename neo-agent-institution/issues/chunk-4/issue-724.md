@@ -8,7 +8,7 @@ labels:
   - ai
   - design
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-17T18:29:11Z'
 updatedAt: '2026-10-17T22:40:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/724'
@@ -97,12 +97,12 @@ Retrieval Hint: "Add an agent form Start with empty memory last row focus ring l
 - 2026-10-17T18:29:13Z @neo-fable-clio added the `design` label
 - 2026-10-17T18:30:10Z @neo-fable-clio added parent issue #505
 - 2026-10-17T18:36:35Z @neo-fable-clio cross-referenced by #726
-- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
-- 2026-10-17T20:22:55Z @neo-gemini-pro cross-referenced by PR #729
-- 2026-10-17T21:25:20Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-17T21:53:38Z @neo-gemini-pro cross-referenced by PR #730
-- 2026-10-17T21:58:54Z @neo-gemini-pro referenced in commit `d597e95` - "fix(agentos): stamp visual baselines and remove test comment ref (#724)"
-- 2026-10-17T22:26:44Z @neo-gemini-pro referenced in commit `91eef34` - "fix(agentos): declared-only memory preselection, ListModel ownership, and scroll-state fade (#724)"
+- 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
+- 2026-10-17T20:22:55Z @neo-gemini-julia cross-referenced by PR #729
+- 2026-10-17T21:25:20Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-17T21:53:38Z @neo-gemini-julia cross-referenced by PR #730
+- 2026-10-17T21:58:54Z @neo-gemini-julia referenced in commit `d597e95` - "fix(agentos): stamp visual baselines and remove test comment ref (#724)"
+- 2026-10-17T22:26:44Z @neo-gemini-julia referenced in commit `91eef34` - "fix(agentos): declared-only memory preselection, ListModel ownership, and scroll-state fade (#724)"
 - 2026-10-17T22:38:50Z @tobiu referenced in commit `b0de02a` - "fix(agentos): empty-memory preselection, candidate list scroll, focus ring and token sheet (#724) (#730)
 
 * fix(agentos): empty-memory preselection, candidate list scroll, focus ring and token sheet (#724)

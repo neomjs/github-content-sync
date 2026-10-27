@@ -8,11 +8,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-16T09:06:16Z'
 updatedAt: '2026-10-16T11:24:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/706'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: 477
 subIssues: []
@@ -100,24 +100,27 @@ Retrieval Hint: "partial Activity missing source recheck no direct producer repa
 
 ## Timeline
 
-- 2026-10-16T09:06:17Z @neo-gpt added the `bug` label
-- 2026-10-16T09:06:17Z @neo-gpt added the `accessibility` label
-- 2026-10-16T09:06:18Z @neo-gpt added the `agent-os` label
-- 2026-10-16T09:06:18Z @neo-gpt added the `ai` label
-- 2026-10-16T09:06:30Z @neo-gpt added parent issue #477
-- 2026-10-16T09:08:11Z @neo-gpt cross-referenced by #477
+- 2026-10-16T09:06:17Z @neo-gpt-euclid added the `bug` label
+- 2026-10-16T09:06:17Z @neo-gpt-euclid added the `accessibility` label
+- 2026-10-16T09:06:18Z @neo-gpt-euclid added the `agent-os` label
+- 2026-10-16T09:06:18Z @neo-gpt-euclid added the `ai` label
+- 2026-10-16T09:06:30Z @neo-gpt-euclid added parent issue #477
+- 2026-10-16T09:08:11Z @neo-gpt-euclid cross-referenced by #477
 - 2026-10-16T09:21:03Z @neo-gpt-sophie cross-referenced by #12
-- 2026-10-16T09:24:01Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-16T10:26:18Z @neo-gemini-pro cross-referenced by PR #709
-- 2026-10-16T10:55:19Z @neo-gemini-pro referenced in commit `6a1c543` - "test(cockpit): witness deriveActivityGuidance edge arms and deduplicate head title (#706)"
-- 2026-10-16T10:59:30Z @neo-gemini-pro referenced in commit `2d5921e` - "test(cockpit): witness deriveActivityGuidance edge arms and deduplicate head title (#706)"
-- 2026-10-16T11:05:25Z @neo-gemini-pro referenced in commit `cd4157b` - "test(cockpit): witness deriveActivityGuidance edge arms and deduplicate head title (#706)"
-- 2026-10-16T11:09:07Z @neo-gemini-pro referenced in commit `842df35` - "feat(cockpit): explain partial Activity sources and Recheck scope (#706)"
-- 2026-10-16T11:09:07Z @neo-gemini-pro referenced in commit `8d81ff0` - "test(cockpit): witness deriveActivityGuidance edge arms and deduplicate head title (#706)"
+- 2026-10-16T09:24:01Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-16T10:26:18Z @neo-gemini-julia cross-referenced by PR #709
+- 2026-10-16T10:55:19Z @neo-gemini-julia referenced in commit `6a1c543` - "test(cockpit): witness deriveActivityGuidance edge arms and deduplicate head title (#706)"
+- 2026-10-16T10:59:30Z @neo-gemini-julia referenced in commit `2d5921e` - "test(cockpit): witness deriveActivityGuidance edge arms and deduplicate head title (#706)"
+- 2026-10-16T11:05:25Z @neo-gemini-julia referenced in commit `cd4157b` - "test(cockpit): witness deriveActivityGuidance edge arms and deduplicate head title (#706)"
+- 2026-10-16T11:09:07Z @neo-gemini-julia referenced in commit `842df35` - "feat(cockpit): explain partial Activity sources and Recheck scope (#706)"
+- 2026-10-16T11:09:07Z @neo-gemini-julia referenced in commit `8d81ff0` - "test(cockpit): witness deriveActivityGuidance edge arms and deduplicate head title (#706)"
 - 2026-10-16T11:24:07Z @tobiu referenced in commit `c7ca702` - "feat(cockpit): explain partial Activity sources and Recheck scope (#706) (#709)
 
 * feat(cockpit): explain partial Activity sources and Recheck scope (#706)
 
 * test(cockpit): witness deriveActivityGuidance edge arms and deduplicate head title (#706)"
 - 2026-10-16T11:24:07Z @tobiu closed this issue
+- 2026-10-17T17:14:52Z @neo-fable-mnemosyne cross-referenced by PR #721
+- 2026-10-17T17:16:35Z @neo-fable-mnemosyne cross-referenced by #722
+- 2026-10-17T17:17:43Z @neo-fable-mnemosyne cross-referenced by PR #723
 

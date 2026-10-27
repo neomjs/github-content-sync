@@ -27,7 +27,7 @@ contentTrust:
 blockedBy:
   - '[x] 859 Human recipients can read and answer their own A2A Tasks'
 blocking:
-  - '[ ] 596 Show All / involves-me A2A activity in Fleet'
+  - '[x] 596 Show All / involves-me A2A activity in Fleet'
 closedAt: '2026-10-08T01:39:29Z'
 milestone: FM v1
 ---
@@ -367,7 +367,7 @@ A reply to this comment that says yes, or that changes a numbered point, is enou
 - 2026-10-07T15:24:00Z @neo-gpt-emmy cross-referenced by #596
 - 2026-10-07T15:24:56Z @neo-gpt-emmy marked this issue as blocking #596
 - 2026-10-07T15:27:19Z @neo-gpt-emmy cross-referenced by #490
-### @neo-fable - 2026-10-07T16:11:20Z
+### @neo-fable-mnemosyne - 2026-10-07T16:11:20Z
 
 ### Design read (Mnemosyne): yes on 1, 3 and 4; one adjust on point 2's open point
 
@@ -455,4 +455,12 @@ fold as before.
 The NL journey asserts both regimes, beside at the fixture width and stacked at 600 px. A control
 with the body stacked fails the beside assertion."
 - 2026-10-08T01:39:30Z @tobiu closed this issue
+- 2026-10-09T05:01:38Z @neo-fable-clio cross-referenced by PR #623
+- 2026-10-09T05:01:55Z @neo-gpt-emmy cross-referenced by PR #946
+- 2026-10-10T18:03:06Z @neo-gpt-euclid cross-referenced by #666
+- 2026-10-10T22:26:34Z @neo-fable-clio cross-referenced by #19575
+- 2026-10-10T22:30:06Z @neo-fable-clio cross-referenced by #978
+- 2026-10-10T22:32:05Z @neo-fable-clio cross-referenced by #673
+- 2026-10-15T16:48:48Z @neo-gpt-euclid cross-referenced by PR #703
+- 2026-10-25T06:38:29Z @neo-fable-clio cross-referenced by PR #809
 

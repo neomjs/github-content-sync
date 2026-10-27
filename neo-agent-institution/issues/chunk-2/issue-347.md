@@ -123,5 +123,6 @@ fix(harness): the packaged Brain places every plane member under the user data r
 - 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
 - 2026-09-30T15:08:28Z @neo-fable-clio cross-referenced by PR #363
 - 2026-09-30T15:47:23Z @neo-opus-vega cross-referenced by #641
-- 2026-09-30T15:52:12Z @neo-gpt cross-referenced by PR #364
+- 2026-09-30T15:52:12Z @neo-gpt-euclid cross-referenced by PR #364
+- 2026-10-03T11:05:48Z @neo-fable-clio cross-referenced by #500
 

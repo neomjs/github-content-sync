@@ -7,11 +7,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-16T14:36:02Z'
 updatedAt: '2026-10-17T00:13:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/715'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: 505
 subIssues: []
@@ -79,13 +79,13 @@ Mnemosyne (Fable 5.1, Claude Code) · session 8be1b284-089e-4f28-94be-d1a45be666
 
 ## Timeline
 
-- 2026-10-16T14:36:03Z @neo-fable added the `bug` label
-- 2026-10-16T14:36:04Z @neo-fable added the `agent-os` label
-- 2026-10-16T14:36:04Z @neo-fable added the `ai` label
-- 2026-10-16T14:36:15Z @neo-fable added parent issue #505
+- 2026-10-16T14:36:03Z @neo-fable-mnemosyne added the `bug` label
+- 2026-10-16T14:36:04Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-16T14:36:04Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-16T14:36:15Z @neo-fable-mnemosyne added parent issue #505
 - 2026-10-16T19:21:38Z @neo-fable-clio cross-referenced by PR #717
-- 2026-10-16T20:24:56Z @neo-gemini-pro assigned to @neo-gemini-pro
-### @neo-gemini-pro - 2026-10-16T20:24:58Z
+- 2026-10-16T20:24:56Z @neo-gemini-julia assigned to @neo-gemini-julia
+### @neo-gemini-julia - 2026-10-16T20:24:58Z
 
 ## Intake
 
@@ -109,9 +109,9 @@ On first selection in `MemoriesPane` (`ReadingController#syncReader(false, true)
   - `AC-2` (`test/playwright/unit/apps/agentos/view/fleet/memories/reading.spec.mjs`): asserts the reading switch issues a single batched update transaction covering the register and its wrapper.
   - `AC-3`: post-merge on the next `#12` cut.
 
-- 2026-10-16T22:12:49Z @neo-gemini-pro cross-referenced by PR #719
-- 2026-10-16T23:26:49Z @neo-gemini-pro referenced in commit `cb0a76f` - "fix(memories): replace RowModel closure patch with registered subclass and pin fallback (#715)"
-- 2026-10-16T23:43:39Z @neo-gemini-pro referenced in commit `eb4c77f` - "fix(memories): drop ticket archaeology from comments and re-stamp visual baselines (#715)"
+- 2026-10-16T22:12:49Z @neo-gemini-julia cross-referenced by PR #719
+- 2026-10-16T23:26:49Z @neo-gemini-julia referenced in commit `cb0a76f` - "fix(memories): replace RowModel closure patch with registered subclass and pin fallback (#715)"
+- 2026-10-16T23:43:39Z @neo-gemini-julia referenced in commit `eb4c77f` - "fix(memories): drop ticket archaeology from comments and re-stamp visual baselines (#715)"
 - 2026-10-17T00:13:44Z @tobiu referenced in commit `f641328` - "fix(memories): re-norm row to rail in one frame on selection (#715) (#719)
 
 * fix(memories): re-norm row to rail in one frame on selection (#715)
@@ -120,4 +120,6 @@ On first selection in `MemoriesPane` (`ReadingController#syncReader(false, true)
 
 * fix(memories): drop ticket archaeology from comments and re-stamp visual baselines (#715)"
 - 2026-10-17T00:13:44Z @tobiu closed this issue
+- 2026-10-23T15:11:58Z @neo-fable-clio cross-referenced by #788
+- 2026-10-23T15:12:18Z @neo-fable-clio cross-referenced by #789
 

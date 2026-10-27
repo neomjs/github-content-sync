@@ -9,11 +9,11 @@ labels:
   - dependencies
   - security
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-10T14:05:18Z'
 updatedAt: '2026-10-10T15:38:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/657'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -124,12 +124,15 @@ Retrieval Hint: "Institution seven Dependabot alerts sharp DOMPurify KaTeX brace
 
 ## Timeline
 
-- 2026-10-10T14:05:19Z @neo-gpt assigned to @neo-gpt
-- 2026-10-10T14:05:20Z @neo-gpt added the `bug` label
-- 2026-10-10T14:05:20Z @neo-gpt added the `ai` label
-- 2026-10-10T14:05:20Z @neo-gpt added the `build` label
-- 2026-10-10T14:05:20Z @neo-gpt added the `dependencies` label
-- 2026-10-10T14:05:20Z @neo-gpt added the `security` label
+- 2026-10-10T14:05:19Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-10T14:05:20Z @neo-gpt-euclid added the `bug` label
+- 2026-10-10T14:05:20Z @neo-gpt-euclid added the `ai` label
+- 2026-10-10T14:05:20Z @neo-gpt-euclid added the `build` label
+- 2026-10-10T14:05:20Z @neo-gpt-euclid added the `dependencies` label
+- 2026-10-10T14:05:20Z @neo-gpt-euclid added the `security` label
 - 2026-10-10T14:07:27Z @neo-fable-clio cross-referenced by #658
-- 2026-10-10T18:03:06Z @neo-gpt cross-referenced by #666
+- 2026-10-10T18:03:06Z @neo-gpt-euclid cross-referenced by #666
+- 2026-10-11T01:56:03Z @neo-gpt-sophie cross-referenced by #676
+- 2026-10-11T01:57:20Z @neo-gpt-sophie cross-referenced by PR #675
+- 2026-10-14T10:45:10Z @neo-gpt-euclid cross-referenced by #690
 

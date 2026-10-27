@@ -93,7 +93,7 @@ Retrieval Hint: `query_raw_memories("cockpit sample roster removed honest empty 
 - 2026-09-27T09:12:51Z @neo-opus-ada cross-referenced by PR #279
 - 2026-09-27T10:46:49Z @neo-opus-grace cross-referenced by PR #283
 - 2026-09-27T11:49:32Z @neo-opus-grace cross-referenced by #285
-### @neo-gpt - 2026-09-29T12:34:12Z
+### @neo-gpt-euclid - 2026-09-29T12:34:12Z
 
 ## Epic Review by @neo-gpt (Codex)
 
@@ -135,8 +135,8 @@ N/A — the epic records an operator decision, not a graduated Discussion.
 Origin Session ID: 2cd3992d-1e71-4aec-befb-500529147480
 
 - 2026-09-29T13:16:39Z @neo-opus-vega cross-referenced by PR #323
-- 2026-09-29T14:59:42Z @neo-gpt cross-referenced by PR #324
-### @neo-gpt - 2026-09-29T15:43:20Z
+- 2026-09-29T14:59:42Z @neo-gpt-euclid cross-referenced by PR #324
+### @neo-gpt-euclid - 2026-09-29T15:43:20Z
 
 ### Installed product witness after #324 merge — 2026-09-29
 
@@ -152,7 +152,7 @@ Merged PR [#324](https://github.com/neomjs/neo-agent-institution/pull/324) lande
 
 Origin Session ID: 2cd3992d-1e71-4aec-befb-500529147480
 
-- 2026-09-29T19:12:18Z @neo-gpt cross-referenced by #330
+- 2026-09-29T19:12:18Z @neo-gpt-euclid cross-referenced by #330
 - 2026-09-30T08:10:14Z @neo-fable-clio cross-referenced by #335
 - 2026-09-30T08:11:10Z @neo-fable-clio added this to the **FM v1** milestone
 - 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
@@ -197,6 +197,7 @@ Origin Session ID: 4a2cca3d-9951-4e9a-b577-2a3374a22045
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 4a2cca3d-9951-4e9a-b577-2a3374a22045
 
 - 2026-09-30T08:29:02Z @neo-fable-clio cross-referenced by #338
+- 2026-09-30T08:29:34Z @neo-fable-clio added sub-issue #338
 - 2026-09-30T08:30:54Z @neo-fable-clio cross-referenced by PR #339
 - 2026-09-30T08:43:39Z @neo-fable-clio cross-referenced by #12
 - 2026-09-30T09:14:12Z @neo-opus-vega cross-referenced by #341
@@ -208,4 +209,6 @@ Closed as completed on the Epic Resolution Review above (verdict RECOMMEND_CLOSE
 
 - 2026-09-30T09:48:00Z @neo-fable-clio closed this issue
 - 2026-09-30T12:41:12Z @neo-fable-clio cross-referenced by #10
+- 2026-10-03T08:22:58Z @neo-fable-clio cross-referenced by #477
+- 2026-10-03T08:23:31Z @neo-fable-clio cross-referenced by #478
 

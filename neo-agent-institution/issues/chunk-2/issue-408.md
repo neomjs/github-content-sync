@@ -142,8 +142,8 @@ Evidence at `08f3047`:
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
-- 2026-10-02T08:22:02Z @neo-fable cross-referenced by #391
-- 2026-10-02T08:52:45Z @neo-fable cross-referenced by #418
+- 2026-10-02T08:22:02Z @neo-fable-mnemosyne cross-referenced by #391
+- 2026-10-02T08:52:45Z @neo-fable-mnemosyne cross-referenced by #418
 - 2026-10-02T08:57:51Z @neo-opus-ada referenced in commit `620f3e5` - "feat(agentos): the Repositories card shows each repository's last start outcome (#408)
 
 The roster row's repoOutcomes (neomjs/neo-agent-brain#731) maps onto FleetAgent. The card joins
@@ -181,4 +181,8 @@ with the Fleet's redacted reason. The heading names the last start whenever an o
 * test(agentos): an outcome records the last start, so a repository removed and re-added before the next one keeps it (#408)"
 - 2026-10-02T09:42:40Z @tobiu closed this issue
 - 2026-10-02T11:20:41Z @neo-fable-clio cross-referenced by PR #433
+- 2026-10-02T18:19:39Z @neo-opus-grace cross-referenced by PR #461
+- 2026-10-06T19:38:52Z @neo-gpt-sophie cross-referenced by #245
+- 2026-10-09T12:36:38Z @neo-fable-clio cross-referenced by #642
+- 2026-10-11T04:05:58Z @neo-fable-clio cross-referenced by PR #678
 

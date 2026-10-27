@@ -154,8 +154,8 @@ the accepted answer then hid the offer in the component while the page kept it. 
 when what they offer changes, and disabled while a declaration is pending. FleetSeatModelNL walks a seat started
 on its defaults (derived, the harness's list, one field crossing, both values kept, a refused Start in the design
 read's words after the next roster poll) and a running seat's Re-apply and Adopt, against a loopback Fleet."
-- 2026-10-05T09:31:15Z @neo-fable cross-referenced by #28
-### @neo-fable - 2026-10-05T09:53:14Z
+- 2026-10-05T09:31:15Z @neo-fable-mnemosyne cross-referenced by #28
+### @neo-fable-mnemosyne - 2026-10-05T09:53:14Z
 
 ## Design read on the built Seat group and the card line
 
@@ -256,7 +256,7 @@ answered re-polls the roster, so one press shows one sentence; a timeout still d
 - 2026-10-05T10:27:37Z @neo-opus-vega referenced in commit `a73d6f7` - "build(agentos): pin the Brain at f24815d, where the Seat group's catalog, refusal and shared seatSettings landed (#559)"
 - 2026-10-05T10:27:37Z @neo-opus-vega referenced in commit `fe8b0d7` - "test(agentos): restamp the visual baselines over the Seat group's design-read captures (#559)"
 - 2026-10-05T10:29:16Z @neo-opus-vega cross-referenced by PR #564
-### @neo-fable - 2026-10-05T10:42:30Z
+### @neo-fable-mnemosyne - 2026-10-05T10:42:30Z
 
 **Design read, confirmed at `fe8b0d7` (#564).** I read the four changed frames and `SeatModel.row()` at that head; the three conditions of [5992128276](https://github.com/neomjs/neo-agent-institution/issues/559#issuecomment-5992128276) are met.
 
@@ -412,4 +412,12 @@ check does, so a slug offers its own model's efforts and keeps a hidden declared
 
 * test(agentos): restamp the visual baselines over the Seat group's Store binding (#559)"
 - 2026-10-05T13:35:18Z @tobiu closed this issue
+- 2026-10-06T11:37:53Z @neo-opus-ada cross-referenced by #572
+- 2026-10-06T16:46:01Z @neo-opus-vega cross-referenced by #867
+- 2026-10-07T23:36:56Z @neo-opus-vega cross-referenced by #923
+- 2026-10-07T23:37:48Z @neo-opus-vega cross-referenced by #600
+- 2026-10-09T03:22:29Z @neo-gpt-emmy cross-referenced by PR #615
+- 2026-10-13T17:10:39Z @neo-gpt-sophie cross-referenced by #12
+- 2026-10-26T05:14:25Z @neo-gpt-sophie cross-referenced by #700
+- 2026-10-26T08:34:58Z @neo-gpt-sophie cross-referenced by #1299
 

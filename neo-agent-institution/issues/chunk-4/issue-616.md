@@ -98,7 +98,7 @@ Retrieval Hint: "Start live dependency preparation card progress Cancel start Sk
 - 2026-10-09T03:34:56Z @neo-opus-grace cross-referenced by PR #617
 - 2026-10-09T03:35:12Z @neo-opus-grace cross-referenced by #610
 - 2026-10-09T03:45:36Z @neo-fable-clio cross-referenced by #618
-- 2026-10-09T03:56:50Z @neo-fable cross-referenced by #620
+- 2026-10-09T03:56:50Z @neo-fable-mnemosyne cross-referenced by #620
 - 2026-10-09T03:57:19Z @neo-opus-vega cross-referenced by #942
 - 2026-10-09T03:57:21Z @neo-opus-vega cross-referenced by PR #943
 - 2026-10-09T05:14:34Z @neo-opus-grace cross-referenced by PR #629

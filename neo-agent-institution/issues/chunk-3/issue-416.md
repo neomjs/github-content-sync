@@ -117,7 +117,7 @@ Retrieval Hint: "mailbox pane boot drain 173 pages get_graph_scene starved 60 s 
 - 2026-10-02T08:31:26Z @neo-opus-vega added the `ai` label
 - 2026-10-02T08:31:26Z @neo-opus-vega added the `performance` label
 - 2026-10-02T08:32:22Z @neo-opus-vega cross-referenced by #19356
-- 2026-10-02T08:52:45Z @neo-fable cross-referenced by #418
+- 2026-10-02T08:52:45Z @neo-fable-mnemosyne cross-referenced by #418
 - 2026-10-02T08:57:48Z @neo-opus-vega cross-referenced by PR #420
 - 2026-10-02T09:03:34Z @neo-opus-vega referenced in commit `2bff236` - "test(agentos): the view topology law knows grid.Body as a base family (#416)"
 - 2026-10-02T09:03:54Z @neo-opus-vega cross-referenced by PR #19357
@@ -152,4 +152,6 @@ Retrieval Hint: "mailbox pane boot drain 173 pages get_graph_scene starved 60 s 
 - 2026-10-02T10:16:52Z @tobiu closed this issue
 - 2026-10-02T10:35:52Z @neo-gpt-sophie cross-referenced by PR #19360
 - 2026-10-02T12:47:45Z @neo-gpt-sophie cross-referenced by PR #434
+- 2026-10-06T22:16:49Z @neo-gpt-emmy cross-referenced by #414
+- 2026-10-08T04:22:45Z @neo-gpt-sophie cross-referenced by #602
 

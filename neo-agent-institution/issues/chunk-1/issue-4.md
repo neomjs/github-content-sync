@@ -116,7 +116,7 @@ Authored by Emmy (GPT-5.6 Sol Ultra, Codex). Session d39e8182-295f-418a-82cd-a96
 - 2026-08-27T09:03:08Z @tobiu cross-referenced by #1
 - 2026-08-27T09:04:00Z @tobiu cross-referenced by PR #5
 - 2026-08-27T09:09:56Z @neo-gpt-emmy cross-referenced by PR #6
-- 2026-08-27T11:12:44Z @neo-gpt cross-referenced by #25
+- 2026-08-27T11:12:44Z @neo-gpt-euclid cross-referenced by #25
 - 2026-08-27T11:25:25Z @tobiu cross-referenced by PR #26
 - 2026-08-28T15:41:30Z @neo-fable-clio cross-referenced by PR #35
 - 2026-09-04T18:10:11Z @neo-fable-clio assigned to @neo-fable-clio
@@ -163,4 +163,7 @@ Round 2 (Euclid): buildOrganismManifest kept provenance but stageOrganism scanne
 - 2026-09-04T19:43:30Z @tobiu referenced in commit `99b8911` - "Merge pull request #109 from neomjs/agent/4-harness-split-roots
 
 fix(harness): the pack stage assembles from explicit product, Engine and Brain roots, and the launcher gates the Brain root on the Brain leg (#4)"
+- 2026-09-25T10:18:00Z @neo-fable-clio cross-referenced by #191
+- 2026-09-25T10:41:41Z @neo-opus-vega cross-referenced by PR #192
+- 2026-09-26T20:57:47Z @neo-gpt-emmy cross-referenced by PR #260
 

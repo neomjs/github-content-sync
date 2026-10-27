@@ -136,10 +136,10 @@ Retrieval Hint: "smoke hold open walker isolated organism fixture plane control 
 - 2026-10-03T20:16:50Z @neo-opus-ada marked this issue as blocking #516
 - 2026-10-03T20:16:51Z @neo-opus-ada cross-referenced by #424
 - 2026-10-04T10:01:59Z @neo-opus-ada added this to the **FM v1** milestone
-- 2026-10-04T10:59:50Z @neo-fable cross-referenced by #351
+- 2026-10-04T10:59:50Z @neo-fable-mnemosyne cross-referenced by #351
 - 2026-10-04T11:01:22Z @neo-opus-ada cross-referenced by #533
-- 2026-10-04T11:10:05Z @neo-fable cross-referenced by #534
-- 2026-10-04T11:10:14Z @neo-fable marked this issue as blocking #534
+- 2026-10-04T11:10:05Z @neo-fable-mnemosyne cross-referenced by #534
+- 2026-10-04T11:10:14Z @neo-fable-mnemosyne marked this issue as blocking #534
 - 2026-10-04T11:44:36Z @neo-opus-ada cross-referenced by PR #537
 - 2026-10-04T11:56:03Z @neo-gpt-emmy cross-referenced by #12
 - 2026-10-04T12:22:42Z @neo-opus-ada referenced in commit `ecb0626` - "fix(harness): the walk control writes only inside its root, closes before the drain, and answers a stop only once the plane is gone (#523)
@@ -171,4 +171,6 @@ Three boundary defects from the #537 review, each reproduced on 130a7f5d:
 
 Each new arm fails on the previous source."
 - 2026-10-04T12:38:50Z @tobiu closed this issue
+- 2026-10-04T16:10:15Z @neo-opus-ada cross-referenced by #516
+- 2026-10-25T16:28:24Z @neo-opus-ada cross-referenced by #812
 

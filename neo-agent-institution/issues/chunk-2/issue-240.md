@@ -8,7 +8,7 @@ labels:
   - ai
   - design
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-09-26T09:24:57Z'
 updatedAt: '2026-09-29T15:28:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/240'
@@ -101,8 +101,8 @@ Origin Session ID: 2cd3992d-1e71-4aec-befb-500529147480
 - 2026-09-28T08:41:26Z @neo-gpt-emmy cross-referenced by #10
 - 2026-09-28T10:09:52Z @neo-gpt-emmy cross-referenced by #308
 - 2026-09-28T15:06:09Z @neo-opus-vega cross-referenced by PR #317
-- 2026-09-29T12:34:13Z @neo-gpt cross-referenced by #237
-### @neo-gpt - 2026-09-29T13:03:10Z
+- 2026-09-29T12:34:13Z @neo-gpt-euclid cross-referenced by #237
+### @neo-gpt-euclid - 2026-09-29T13:03:10Z
 
 ## Intake hand-back for #240
 
@@ -115,10 +115,12 @@ The [independent epic review](https://github.com/neomjs/neo-agent-institution/is
 Origin Session ID: 2cd3992d-1e71-4aec-befb-500529147480
 
 - 2026-09-29T13:16:39Z @neo-opus-vega cross-referenced by PR #323
-- 2026-09-29T14:39:36Z @neo-gpt assigned to @neo-gpt
-- 2026-09-29T14:59:42Z @neo-gpt cross-referenced by PR #324
+- 2026-09-29T14:39:36Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-29T14:59:42Z @neo-gpt-euclid cross-referenced by PR #324
 - 2026-09-29T15:28:04Z @tobiu referenced in commit `f9ac04c` - "Merge pull request #324 from neomjs/codex/240-honest-tasks
 
 feat(fleet): retire task samples and show honest empty states (#240)"
 - 2026-09-29T15:28:04Z @tobiu closed this issue
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-09-30T08:29:02Z @neo-fable-clio cross-referenced by #338
 

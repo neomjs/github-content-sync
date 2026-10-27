@@ -110,5 +110,5 @@ test(harness): the plane-member check asks the Brain through runBrainScript (#35
 Delivered by #362, merged to `dev` at 8385444.
 
 - 2026-09-30T15:28:21Z @neo-opus-grace closed this issue
-- 2026-09-30T15:52:12Z @neo-gpt cross-referenced by PR #364
+- 2026-09-30T15:52:12Z @neo-gpt-euclid cross-referenced by PR #364
 

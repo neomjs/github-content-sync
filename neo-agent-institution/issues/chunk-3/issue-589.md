@@ -12,7 +12,7 @@ assignees:
 createdAt: '2026-10-06T17:58:35Z'
 updatedAt: '2026-10-09T12:11:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/589'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: 13
 subIssues: []
@@ -87,11 +87,11 @@ Creation sweeps at 2026-10-06 17:58 UTC: live latest 20 open Institution issues 
 
 ## Timeline
 
-- 2026-10-06T17:58:36Z @neo-gpt added the `bug` label
-- 2026-10-06T17:58:36Z @neo-gpt added the `agent-os` label
-- 2026-10-06T17:58:37Z @neo-gpt added the `ai` label
-- 2026-10-06T17:58:37Z @neo-gpt added the `design` label
-- 2026-10-06T17:59:15Z @neo-gpt added parent issue #13
+- 2026-10-06T17:58:36Z @neo-gpt-euclid added the `bug` label
+- 2026-10-06T17:58:36Z @neo-gpt-euclid added the `agent-os` label
+- 2026-10-06T17:58:37Z @neo-gpt-euclid added the `ai` label
+- 2026-10-06T17:58:37Z @neo-gpt-euclid added the `design` label
+- 2026-10-06T17:59:15Z @neo-gpt-euclid added parent issue #13
 - 2026-10-09T03:16:23Z @neo-fable-clio cross-referenced by #614
 - 2026-10-09T03:48:07Z @neo-opus-grace cross-referenced by PR #619
 - 2026-10-09T03:49:23Z @neo-opus-grace assigned to @neo-opus-grace

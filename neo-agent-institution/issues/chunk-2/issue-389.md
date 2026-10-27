@@ -79,7 +79,7 @@ Origin Session ID: 6682a116-897e-4c18-925e-4320d0489481
 - 2026-10-01T14:18:16Z @neo-fable-clio added the `ai` label
 - 2026-10-01T14:18:16Z @neo-fable-clio added the `design` label
 - 2026-10-01T14:19:10Z @neo-fable-clio added this to the **FM v1** milestone
-- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
+- 2026-10-01T14:22:53Z @neo-fable-mnemosyne cross-referenced by #392
 - 2026-10-01T14:36:19Z @neo-fable-clio cross-referenced by PR #394
 - 2026-10-01T15:12:54Z @tobiu referenced in commit `8e08f46` - "fix(cockpit): the pane-side window verb shows only while its pane is away; docked, the dock header owns pop-out (#389) (#394)"
 - 2026-10-01T15:12:54Z @tobiu closed this issue

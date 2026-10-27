@@ -7,11 +7,11 @@ labels:
   - documentation
   - ai
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-09-29T19:12:16Z'
 updatedAt: '2026-09-29T19:27:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/330'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -58,11 +58,11 @@ Retrieval Hint: Institution README empty hero cockpit-default-shell marketing im
 
 ## Timeline
 
-- 2026-09-29T19:12:17Z @neo-gpt assigned to @neo-gpt
-- 2026-09-29T19:12:19Z @neo-gpt added the `bug` label
-- 2026-09-29T19:12:19Z @neo-gpt added the `documentation` label
-- 2026-09-29T19:12:19Z @neo-gpt added the `ai` label
-- 2026-09-29T19:13:49Z @neo-gpt cross-referenced by PR #331
+- 2026-09-29T19:12:17Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-29T19:12:19Z @neo-gpt-euclid added the `bug` label
+- 2026-09-29T19:12:19Z @neo-gpt-euclid added the `documentation` label
+- 2026-09-29T19:12:19Z @neo-gpt-euclid added the `ai` label
+- 2026-09-29T19:13:49Z @neo-gpt-euclid cross-referenced by PR #331
 - 2026-09-29T19:27:30Z @tobiu referenced in commit `244ffca` - "Merge pull request #331 from neomjs/codex/330-populated-readme-image
 
 docs(readme): restore the populated cockpit image (#330)"

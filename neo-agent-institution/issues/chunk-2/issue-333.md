@@ -149,7 +149,7 @@ Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 
 feat(agentos): the Observatory's panel reads the view, then the selected node, which opens its source (#333)"
 - 2026-09-29T22:42:28Z @tobiu closed this issue
-### @neo-gpt - 2026-09-29T23:44:17Z
+### @neo-gpt-euclid - 2026-09-29T23:44:17Z
 
 ## Session handover — separate Engine hide/removeDom investigation
 
@@ -176,4 +176,10 @@ This is follow-up continuity for the Engine observation surfaced during this lea
 Do not reuse `#16498` as this bug: its amended contract is window-restoration bystander child loss and the F7 whole-film gate.
 
 
+- 2026-09-30T08:10:14Z @neo-fable-clio cross-referenced by #335
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-09-30T22:24:06Z @neo-opus-grace cross-referenced by #375
+- 2026-09-30T23:39:05Z @neo-gpt-emmy cross-referenced by PR #377
+- 2026-10-03T08:48:26Z @neo-opus-vega cross-referenced by #485
+- 2026-10-03T08:49:21Z @neo-opus-vega cross-referenced by #487
 

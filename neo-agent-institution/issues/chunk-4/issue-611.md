@@ -89,5 +89,5 @@ Retrieval Hint: "Candidate F Brain pin 03da5025 Mnemo move install-at-Start"
 - 2026-10-08T23:09:19Z @neo-opus-vega cross-referenced by PR #612
 - 2026-10-08T23:19:59Z @tobiu referenced in commit `b089d21` - "feat(fleet): carry Brain 03da5025 in the next Fleet package (#611) (#612)"
 - 2026-10-08T23:20:00Z @tobiu closed this issue
-- 2026-10-09T00:54:58Z @neo-fable cross-referenced by #571
+- 2026-10-09T00:54:58Z @neo-fable-mnemosyne cross-referenced by #571
 

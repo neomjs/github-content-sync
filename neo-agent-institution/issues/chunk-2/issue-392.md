@@ -7,11 +7,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-01T14:22:52Z'
 updatedAt: '2026-10-01T16:45:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/392'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -85,20 +85,20 @@ Retrieval Hint: "Claude Desktop seat card clone path Code tab mapRosterRow repoP
 
 ## Timeline
 
-- 2026-10-01T14:22:52Z @neo-fable assigned to @neo-fable
-- 2026-10-01T14:22:54Z @neo-fable added the `enhancement` label
-- 2026-10-01T14:22:54Z @neo-fable added the `agent-os` label
-- 2026-10-01T14:22:54Z @neo-fable added the `ai` label
-- 2026-10-01T14:23:30Z @neo-fable added this to the **FM v1** milestone
-- 2026-10-01T14:31:51Z @neo-fable cross-referenced by PR #393
-- 2026-10-01T14:44:29Z @neo-fable referenced in commit `9a390ec` - "refactor(agentos): the roster row mapping leaves the liveness controller (#392)
+- 2026-10-01T14:22:52Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-01T14:22:54Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-01T14:22:54Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-01T14:22:54Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-01T14:23:30Z @neo-fable-mnemosyne added this to the **FM v1** milestone
+- 2026-10-01T14:31:51Z @neo-fable-mnemosyne cross-referenced by PR #393
+- 2026-10-01T14:44:29Z @neo-fable-mnemosyne referenced in commit `9a390ec` - "refactor(agentos): the roster row mapping leaves the liveness controller (#392)
 
 The app-file size bar refused LivenessController.mjs at 1003 lines after the clone-path facts joined mapRosterRow. The mapping is its own responsibility — one pure DTO-to-record function the reconcile path calls — so it moves to AgentOS.util.RosterRow (the SourceHealth sibling shape: a Base class with one static), and the controller keeps a one-line delegate so the reconcile path and its witnesses are unchanged. 1003 → 972 lines; the four warn-band files are untouched."
-- 2026-10-01T14:50:11Z @neo-fable referenced in commit `2f46d3f` - "chore(visual): re-stamp the baselines for the roster-row seam (#392)
+- 2026-10-01T14:50:11Z @neo-fable-mnemosyne referenced in commit `2f46d3f` - "chore(visual): re-stamp the baselines for the roster-row seam (#392)
 
 The visual-baseline stamp records the staged blob of every style-owning input under apps/agentos; the seam move (a new util module plus the controller's delegate) moved two inputs past the stamp written for the first commit. Pixels are unchanged — the goldens stayed as they were — only the input identity is re-recorded."
-- 2026-10-01T14:52:40Z @neo-gpt cross-referenced by PR #692
-- 2026-10-01T15:16:08Z @neo-gpt cross-referenced by #571
+- 2026-10-01T14:52:40Z @neo-gpt-euclid cross-referenced by PR #692
+- 2026-10-01T15:16:08Z @neo-gpt-euclid cross-referenced by #571
 - 2026-10-01T15:32:43Z @neo-fable-clio cross-referenced by #669
 - 2026-10-01T16:45:23Z @tobiu referenced in commit `5c992c6` - "feat(agentos): a seat card names the clone path a Claude Desktop seat must open (#392) (#393)
 
@@ -125,4 +125,6 @@ The app-file size bar refused LivenessController.mjs at 1003 lines after the clo
 The visual-baseline stamp records the staged blob of every style-owning input under apps/agentos; the seam move (a new util module plus the controller's delegate) moved two inputs past the stamp written for the first commit. Pixels are unchanged — the goldens stayed as they were — only the input identity is re-recorded."
 - 2026-10-01T16:45:23Z @tobiu closed this issue
 - 2026-10-01T18:30:26Z @neo-fable-clio cross-referenced by #351
+- 2026-10-03T10:59:34Z @neo-fable-clio cross-referenced by #499
+- 2026-10-03T13:55:11Z @neo-gpt-sophie cross-referenced by PR #504
 

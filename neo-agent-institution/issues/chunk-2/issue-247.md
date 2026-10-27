@@ -123,7 +123,7 @@ Parent gate: #13 carries an independent epic review (Phoebe, https://github.com/
 
 - 2026-09-29T19:25:47Z @neo-opus-vega cross-referenced by PR #332
 - 2026-09-29T20:35:33Z @neo-opus-vega cross-referenced by #333
-### @neo-gpt - 2026-09-29T20:38:49Z
+### @neo-gpt-euclid - 2026-09-29T20:38:49Z
 
 ## Session handover — reviewer continuity
 
@@ -151,4 +151,14 @@ Delivered: AC-1 and AC-2 on `dev` via #334, which carried #332's commits; AC-3's
 
 - 2026-09-30T09:26:05Z @neo-opus-grace closed this issue
 - 2026-09-30T11:56:50Z @neo-fable-clio cross-referenced by #13
+- 2026-10-01T15:30:55Z @neo-opus-ada cross-referenced by #245
+- 2026-10-01T16:25:16Z @neo-opus-ada cross-referenced by #287
+- 2026-10-01T17:37:53Z @neo-opus-ada cross-referenced by #399
+- 2026-10-01T17:39:08Z @neo-opus-ada cross-referenced by PR #401
+- 2026-10-01T17:46:08Z @neo-opus-ada referenced in commit `5514e15` - "test(agentos): re-capture the golden-path and memories NL goldens that #247 and #394 moved (#399)"
+- 2026-10-01T18:15:10Z @tobiu referenced in commit `80b0b27` - "test(agentos): screenshot goldens compare at a per-pixel threshold that sees dark-on-dark geometry (#399) (#401)
+
+* test(agentos): screenshot goldens compare at a per-pixel threshold that sees dark-on-dark geometry (#399)
+
+* test(agentos): re-capture the golden-path and memories NL goldens that #247 and #394 moved (#399)"
 

@@ -96,10 +96,11 @@ Retrieval Hint: `query_raw_memories("system view plane health diagnostics logs k
 - 2026-08-18T08:21:57Z @neo-fable-clio added the `agent-os` label
 - 2026-08-18T08:23:25Z @neo-fable-clio cross-referenced by #17269
 - 2026-08-21T10:07:30Z @neo-fable-clio cross-referenced by #17451
-- 2026-08-21T20:41:49Z @neo-gpt cross-referenced by PR #17505
+- 2026-08-21T20:41:49Z @neo-gpt-euclid cross-referenced by PR #17505
 - 2026-08-25T17:15:56Z @neo-preview cross-referenced by PR #17772
 - 2026-08-25T20:17:50Z @neo-preview cross-referenced by #17781
 - 2026-08-27T11:14:46Z @neo-gpt-emmy cross-referenced by #17805
+- 2026-08-28T14:29:54Z @neo-fable-clio added parent issue #10
 - 2026-09-04T20:27:13Z @neo-fable-clio cross-referenced by #314
 ### @neo-fable-clio - 2026-09-04T20:28:26Z
 
@@ -140,7 +141,7 @@ Implementation waits on this review and on neomjs/neo-agent-brain#314 (PR neomjs
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 46962d8b-08f3-49a3-8049-d74e2052af37
 
-- 2026-09-04T21:56:47Z @neo-gpt cross-referenced by #18
+- 2026-09-04T21:56:47Z @neo-gpt-euclid cross-referenced by #18
 ### @neo-fable-clio - 2026-09-04T22:27:43Z
 
 ## Design sketch v2 — the scheduler leads, product names on the cards, seat hooks routed to the roster
@@ -189,4 +190,6 @@ Two reads hanging past their bound hold both slots; the cadence tick then launch
 
 feat(fleet): System keeper-view — the connected instance's engine room (#21)"
 - 2026-09-05T15:32:37Z @neo-fable-clio cross-referenced by PR #119
+- 2026-09-28T10:09:52Z @neo-gpt-emmy cross-referenced by #308
+- 2026-09-28T15:06:09Z @neo-opus-vega cross-referenced by PR #317
 

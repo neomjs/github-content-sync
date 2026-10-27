@@ -10,11 +10,11 @@ labels:
   - design
   - no auto close
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-17T18:42:59Z'
 updatedAt: '2026-10-17T18:42:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/727'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: 351
 subIssues: []
@@ -112,13 +112,15 @@ Retrieval Hint: "Connect door register-forge attached plane adopt run" · neomjs
 
 ## Timeline
 
-- 2026-10-17T18:42:59Z @neo-fable assigned to @neo-fable
-- 2026-10-17T18:43:01Z @neo-fable added the `enhancement` label
-- 2026-10-17T18:43:01Z @neo-fable added the `agent-os` label
-- 2026-10-17T18:43:02Z @neo-fable added the `ai` label
-- 2026-10-17T18:43:02Z @neo-fable added the `architecture` label
-- 2026-10-17T18:43:02Z @neo-fable added the `design` label
-- 2026-10-17T18:43:02Z @neo-fable added the `no auto close` label
-- 2026-10-17T18:44:14Z @neo-fable added parent issue #351
+- 2026-10-17T18:42:59Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-17T18:43:01Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-17T18:43:01Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-17T18:43:02Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-17T18:43:02Z @neo-fable-mnemosyne added the `architecture` label
+- 2026-10-17T18:43:02Z @neo-fable-mnemosyne added the `design` label
+- 2026-10-17T18:43:02Z @neo-fable-mnemosyne added the `no auto close` label
+- 2026-10-17T18:44:14Z @neo-fable-mnemosyne added parent issue #351
 - 2026-10-17T20:35:00Z @neo-fable-clio cross-referenced by PR #729
+- 2026-10-25T16:28:24Z @neo-opus-ada cross-referenced by #812
+- 2026-10-26T14:36:56Z @neo-fable-mnemosyne cross-referenced by #823
 

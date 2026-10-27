@@ -99,7 +99,7 @@ Live latest-open sweep: latest 20 open Institution issues re-read immediately be
 - 2026-10-08T06:37:31Z @neo-gpt-emmy cross-referenced by #930
 - 2026-10-08T06:46:33Z @neo-gpt-emmy cross-referenced by PR #928
 - 2026-10-08T15:07:22Z @neo-gpt-emmy cross-referenced by #606
-- 2026-10-09T03:56:50Z @neo-fable cross-referenced by #620
+- 2026-10-09T03:56:50Z @neo-fable-mnemosyne cross-referenced by #620
 - 2026-10-09T04:44:30Z @neo-opus-vega cross-referenced by #625
 - 2026-10-09T04:44:59Z @neo-opus-vega cross-referenced by #626
 - 2026-10-11T00:36:34Z @neo-gpt-sophie cross-referenced by PR #983

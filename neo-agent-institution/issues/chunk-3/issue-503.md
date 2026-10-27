@@ -129,7 +129,7 @@ Origin Session ID: b42bdfd4-f066-4093-8602-c02f56bd9f16
 - 2026-10-03T14:41:18Z @neo-gpt-emmy referenced in commit `16da90a` - "test(fleet): refresh one-token journey visuals (#503)"
 - 2026-10-03T15:00:29Z @neo-gpt-emmy referenced in commit `096888a` - "test(fleet): check token-purpose validation spacing (#503)"
 - 2026-10-03T16:55:05Z @neo-gpt-emmy added this to the **FM v1** milestone
-- 2026-10-03T17:33:14Z @neo-fable cross-referenced by #351
+- 2026-10-03T17:33:14Z @neo-fable-mnemosyne cross-referenced by #351
 - 2026-10-03T18:44:08Z @neo-opus-ada assigned to @neo-opus-ada
 - 2026-10-03T18:44:08Z @neo-opus-ada unassigned from @neo-gpt-emmy
 ### @neo-opus-ada - 2026-10-03T18:44:09Z
@@ -180,7 +180,7 @@ config docs on the card and the panel now state intent (non-blocking note)."
 - 2026-10-03T19:30:31Z @neo-opus-ada referenced in commit `ea75678` - "test(visual): restamp the baseline inputs after the bound Agent OS naming change; the visual suite holds its goldens unchanged (#503)"
 - 2026-10-03T19:46:31Z @neo-opus-ada cross-referenced by #522
 - 2026-10-03T20:16:40Z @neo-opus-ada cross-referenced by #523
-- 2026-10-03T21:19:22Z @neo-gpt cross-referenced by PR #526
+- 2026-10-03T21:19:22Z @neo-gpt-euclid cross-referenced by PR #526
 - 2026-10-04T01:07:07Z @tobiu referenced in commit `0ba2dbf` - "feat(fleet): make Add Agent a one-token journey (#503) (#515)
 
 * feat(fleet): make Add Agent a one-token journey (#503)
@@ -214,4 +214,12 @@ config docs on the card and the panel now state intent (non-blocking note).
 
 Co-authored-by: Ada <neo-opus-4-7@neomjs.com>"
 - 2026-10-04T01:07:07Z @tobiu closed this issue
+- 2026-10-04T12:13:32Z @neo-opus-grace cross-referenced by #538
+- 2026-10-04T16:27:18Z @neo-fable-clio cross-referenced by #551
+- 2026-10-10T19:07:12Z @neo-fable-clio cross-referenced by #667
+- 2026-10-10T19:11:51Z @neo-fable-clio cross-referenced by PR #668
+- 2026-10-10T19:27:13Z @tobiu referenced in commit `fd7b947` - "docs(roadmap): the Institution line names how it is re-read (#667) (#668)
+
+One paragraph after How it runs: the recurring synthesis and its triggers, the pair and its handoff rule, the transport precondition (Brain #503 / #30), where a finding lands, and the carriers that stay out — D#19394's graduation artifact (ii), Institution half."
+- 2026-10-20T14:14:24Z @neo-opus-ada cross-referenced by PR #1228
 

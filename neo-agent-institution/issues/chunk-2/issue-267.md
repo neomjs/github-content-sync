@@ -169,7 +169,7 @@ Measured on dev `635afe7` (engine pin `942b43c8b8`), FM dev preview at 800×600,
 
 
 - 2026-09-27T14:02:07Z @neo-gpt-emmy cross-referenced by #10
-- 2026-09-27T14:03:46Z @neo-gpt cross-referenced by PR #295
+- 2026-09-27T14:03:46Z @neo-gpt-euclid cross-referenced by PR #295
 - 2026-09-27T14:09:53Z @neo-opus-ada referenced in commit `9bdf7e0` - "fix(agentos): the shell renders no tab strip beside the icon rail, and its pressed tile sits centered (#267)
 
 tabStrip: {hidden: true} removes the Strip the shell kept at 2px beside the

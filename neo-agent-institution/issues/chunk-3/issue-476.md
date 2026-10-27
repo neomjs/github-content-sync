@@ -7,11 +7,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-03T07:16:54Z'
 updatedAt: '2026-10-16T20:20:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/476'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: 391
 subIssues: []
@@ -112,19 +112,19 @@ Retrieval Hint: "Agent Detail thought-stream pane fleetRecentTurns Store ledger 
 
 ## Timeline
 
-- 2026-10-03T07:16:54Z @neo-fable assigned to @neo-fable
-- 2026-10-03T07:16:55Z @neo-fable added the `enhancement` label
-- 2026-10-03T07:16:55Z @neo-fable added the `agent-os` label
-- 2026-10-03T07:16:55Z @neo-fable added the `ai` label
-- 2026-10-03T07:17:06Z @neo-fable added parent issue #391
-- 2026-10-03T07:17:07Z @neo-fable marked this issue as being blocked by #792
-- 2026-10-03T07:17:08Z @neo-fable cross-referenced by #792
-- 2026-10-03T07:17:42Z @neo-fable cross-referenced by PR #795
+- 2026-10-03T07:16:54Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-03T07:16:55Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-03T07:16:55Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-03T07:16:55Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-03T07:17:06Z @neo-fable-mnemosyne added parent issue #391
+- 2026-10-03T07:17:07Z @neo-fable-mnemosyne marked this issue as being blocked by #792
+- 2026-10-03T07:17:08Z @neo-fable-mnemosyne cross-referenced by #792
+- 2026-10-03T07:17:42Z @neo-fable-mnemosyne cross-referenced by PR #795
 - 2026-10-03T11:12:52Z @neo-fable-clio cross-referenced by #501
 - 2026-10-03T11:58:54Z @neo-fable-clio cross-referenced by #506
-- 2026-10-04T11:10:05Z @neo-fable cross-referenced by #534
-- 2026-10-16T14:34:56Z @neo-fable cross-referenced by #712
-### @neo-fable - 2026-10-16T18:12:32Z
+- 2026-10-04T11:10:05Z @neo-fable-mnemosyne cross-referenced by #534
+- 2026-10-16T14:34:56Z @neo-fable-mnemosyne cross-referenced by #712
+### @neo-fable-mnemosyne - 2026-10-16T18:12:32Z
 
 ## Handover at sunset (2026-10-16 18:2xZ, scope solo-refresh — the same seat resumes after a clear)
 
@@ -138,9 +138,9 @@ Retrieval Hint: "Agent Detail thought-stream pane fleetRecentTurns Store ledger 
 
 Mnemosyne (Fable 5.1, Claude Code) · session 8be1b284-089e-4f28-94be-d1a45be666b8
 
-- 2026-10-16T18:47:29Z @neo-fable cross-referenced by PR #716
-- 2026-10-16T18:49:32Z @neo-fable referenced in commit `2a1ccdd` - "chore(agentos): the Thought stream's source comments carry no ticket references (#476)"
-- 2026-10-16T19:27:48Z @neo-fable referenced in commit `98c1b21` - "chore(agentos): the Thought stream's body and reader own their state, under the apps file-size bar (#476)"
+- 2026-10-16T18:47:29Z @neo-fable-mnemosyne cross-referenced by PR #716
+- 2026-10-16T18:49:32Z @neo-fable-mnemosyne referenced in commit `2a1ccdd` - "chore(agentos): the Thought stream's source comments carry no ticket references (#476)"
+- 2026-10-16T19:27:48Z @neo-fable-mnemosyne referenced in commit `98c1b21` - "chore(agentos): the Thought stream's body and reader own their state, under the apps file-size bar (#476)"
 - 2026-10-16T20:19:11Z @tobiu referenced in commit `6108e70` - "feat(agentos): the Agent Detail's Thought stream pane reads the seat's recent turns (#476) (#716)
 
 * feat(agentos): the Agent Detail's Thought stream pane reads the seat's recent turns (#476)
@@ -149,5 +149,5 @@ Mnemosyne (Fable 5.1, Claude Code) · session 8be1b284-089e-4f28-94be-d1a45be666
 
 * chore(agentos): the Thought stream's body and reader own their state, under the apps file-size bar (#476)"
 - 2026-10-16T20:19:11Z @tobiu closed this issue
-- 2026-10-16T20:20:35Z @neo-fable cross-referenced by #391
+- 2026-10-16T20:20:35Z @neo-fable-mnemosyne cross-referenced by #391
 

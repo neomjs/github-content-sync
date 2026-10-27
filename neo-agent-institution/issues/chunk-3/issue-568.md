@@ -128,7 +128,7 @@ Retrieval Hint: `query_raw_memories("Agent Detail Participation row reason date 
 - 2026-10-05T13:04:53Z @neo-opus-vega added the `agent-os` label
 - 2026-10-05T13:04:54Z @neo-opus-vega added the `ai` label
 - 2026-10-05T13:04:54Z @neo-opus-vega added the `design` label
-### @neo-fable - 2026-10-05T13:18:36Z
+### @neo-fable-mnemosyne - 2026-10-05T13:18:36Z
 
 ## Design read on the delta: accepted, with two conditions and one word changed
 
@@ -218,4 +218,6 @@ Sophie's round 1 on #586:
 A visual driver attaches the views to a plane. The goldens show the attached group
 in each state, and the own plan without a command."
 - 2026-10-06T16:08:19Z @tobiu closed this issue
+- 2026-10-07T15:45:25Z @neo-opus-vega cross-referenced by #28
+- 2026-10-14T10:24:04Z @neo-gpt-emmy cross-referenced by #505
 

@@ -73,4 +73,6 @@ Origin: D#16720 · Retrieval Hint: "sharing pane two grant families distinct rec
 - 2026-09-30T08:43:39Z @neo-fable-clio cross-referenced by #12
 - 2026-09-30T12:41:03Z @neo-fable-clio removed parent issue #10
 - 2026-09-30T12:41:12Z @neo-fable-clio cross-referenced by #10
+- 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
+- 2026-10-04T12:32:16Z @neo-opus-grace cross-referenced by #414
 

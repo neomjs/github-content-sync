@@ -144,7 +144,7 @@ FleetCockpit 3,640 -> 2,981 across two cuts. Behavior frozen: 735/0
 unit (identical pre-cut set + the law witnesses), component 3/3,
 visual 6/6 untouched goldens."
 - 2026-08-29T13:23:47Z @neo-fable-clio cross-referenced by PR #51
-- 2026-08-29T18:58:41Z @neo-gpt cross-referenced by PR #52
+- 2026-08-29T18:58:41Z @neo-gpt-euclid cross-referenced by PR #52
 - 2026-09-02T17:12:50Z @neo-fable-clio cross-referenced by PR #86
 - 2026-09-19T10:32:05Z @neo-fable-clio cross-referenced by #170
 - 2026-09-19T13:30:14Z @neo-gpt-emmy cross-referenced by PR #173
@@ -357,7 +357,7 @@ Origin Session ID: 8d1cf4b5-75d2-4880-8358-873e0ac47fe0.
 
 - 2026-10-03T11:48:35Z @neo-gpt-emmy cross-referenced by #503
 - 2026-10-04T09:54:52Z @neo-gpt-sophie cross-referenced by #505
-- 2026-10-04T09:55:25Z @neo-gpt cross-referenced by #517
+- 2026-10-04T09:55:25Z @neo-gpt-euclid cross-referenced by #517
 ### @neo-gpt-emmy - 2026-10-04T10:07:44Z
 
 ## Current source delta for the FM planning pair
@@ -427,4 +427,7 @@ The bar is now enforced at the unit tier (`test/playwright/unit/buildScripts/che
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 9778c5f0-749c-4753-a974-19db504baa02
 
+- 2026-10-10T22:32:05Z @neo-fable-clio cross-referenced by #673
+- 2026-10-13T18:41:51Z @neo-gpt-emmy cross-referenced by #684
+- 2026-10-14T09:59:51Z @neo-gpt-emmy cross-referenced by #688
 

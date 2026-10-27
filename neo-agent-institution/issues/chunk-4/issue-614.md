@@ -101,7 +101,7 @@ Retrieval Hint: "System seat-move block outlives the committed move · SeatRootC
 - 2026-10-09T03:36:24Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-10-09T03:48:07Z @neo-opus-grace cross-referenced by PR #619
 - 2026-10-09T03:52:55Z @neo-fable-clio cross-referenced by #505
-- 2026-10-09T03:56:50Z @neo-fable cross-referenced by #620
+- 2026-10-09T03:56:50Z @neo-fable-mnemosyne cross-referenced by #620
 - 2026-10-09T04:15:58Z @tobiu referenced in commit `32627ab` - "fix(agentos): System's seat-move block reads by state, and its rows scroll in their own box (#614) (#619)
 
 * fix(agentos): System's seat-move block reads by state, and its rows scroll in their own box (#614)
@@ -120,4 +120,37 @@ only a clean commit reduces the block to its receipt. New System goldens at
 first card's head reads without a scroll). Baselines re-stamped."
 - 2026-10-09T04:15:58Z @tobiu closed this issue
 - 2026-10-09T06:16:36Z @neo-fable-clio cross-referenced by #632
+- 2026-10-09T12:11:10Z @tobiu referenced in commit `ad98d3b` - "fix(agentos): the seat-move rows sit on the FM panel and every text node picks a documented role (#589) (#622)
+
+* fix(agentos): System's seat-move block reads by state, and its rows scroll in their own box (#614)
+
+A committed move leaves no decision, so the plan box (line, copy-note, rows)
+gives way to the receipt on the status line even though the consent record
+still carries the rows. While the rows are a decision they scroll inside a
+40vh box, so the plane list keeps the view's scroll and stays in reach.
+
+* fix(agentos): a held retirement keeps the seat-move rows in their box, and the frames at the operator's window (#614)
+
+Fleet start stays held while old folders are not all archived, so that state
+keeps the plan line and rows (scrolling, 24vh) without the pre-move copy-note;
+only a clean commit reduces the block to its receipt. New System goldens at
+1552x850: committed (receipt, planes in view) and pending (rows scroll, the
+first card's head reads without a scroll). Baselines re-stamped.
+
+* fix(agentos): the seat-move rows sit on the FM panel and every text node picks a documented role (#589)
+
+The sheet named --fm-text-subhead, --fm-text-label and --fm-radius, none of
+which the FM token block defines, so the title, the copy-note and the seat
+names fell back to the 16px default. The engine list's state tokens are bound
+to --fm-panel and the rows lose the pointer: they are information, not a
+selection.
+
+* test(agentos): the reviewed-move fixture's rows carry the destination every plan row needs (#589)
+
+* test(agentos): the reviewed move on the FM skin, both skins, wide and narrow (#589)
+
+Mixed dispositions and a refused row, the row's surface read against a
+--fm-panel probe at rest, hover and press in both skins, every capture at rest.
+The System frames carrying the seat-root title are refreshed for its display
+role; baselines re-stamped."
 

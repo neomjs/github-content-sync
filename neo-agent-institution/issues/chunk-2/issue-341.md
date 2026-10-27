@@ -132,5 +132,6 @@ Landed via #342 (merged by @tobiu at 2026-09-30T14:55:52Z; Emmy APPROVED at fbf1
 - 2026-09-30T14:56:28Z @neo-opus-vega closed this issue
 - 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
 - 2026-09-30T15:08:28Z @neo-fable-clio cross-referenced by PR #363
-- 2026-09-30T18:54:56Z @neo-gpt cross-referenced by PR #360
+- 2026-09-30T18:54:56Z @neo-gpt-euclid cross-referenced by PR #360
+- 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
 

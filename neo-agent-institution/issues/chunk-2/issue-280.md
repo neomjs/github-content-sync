@@ -126,7 +126,7 @@ Retrieval Hint: `query_raw_memories("Add agent external launchOwner no PAT exist
 - 2026-09-27T09:18:59Z @neo-opus-ada added the `enhancement` label
 - 2026-09-27T09:18:59Z @neo-opus-ada added the `agent-os` label
 - 2026-09-27T09:18:59Z @neo-opus-ada added the `ai` label
-- 2026-09-27T09:37:11Z @neo-gpt cross-referenced by PR #566
+- 2026-09-27T09:37:11Z @neo-gpt-euclid cross-referenced by PR #566
 - 2026-09-27T09:46:58Z @neo-opus-ada cross-referenced by #571
 - 2026-09-27T09:47:07Z @neo-gpt-emmy cross-referenced by #7
 - 2026-09-27T09:57:43Z @neo-opus-ada referenced in commit `1962646` - "feat(agentos): Add agent registers a seat that already runs in its own harness â€” external, no PAT (#280)
@@ -384,5 +384,5 @@ feat(agentos): Add agent registers a seat that already runs in its own harness â
 - 2026-09-27T12:21:25Z @tobiu closed this issue
 - 2026-09-27T12:22:04Z @neo-opus-ada cross-referenced by #287
 - 2026-09-27T12:26:56Z @neo-opus-ada cross-referenced by #289
-- 2026-09-27T12:42:33Z @neo-gpt cross-referenced by PR #290
+- 2026-09-27T12:42:33Z @neo-gpt-euclid cross-referenced by PR #290
 

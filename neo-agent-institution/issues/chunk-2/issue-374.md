@@ -82,7 +82,7 @@ Retrieval Hint: "Add agent form Required error line overlaps inline label margin
 - 2026-09-30T22:13:32Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-09-30T22:29:27Z @neo-opus-vega cross-referenced by PR #376
 - 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
-- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
+- 2026-10-01T14:22:53Z @neo-fable-mnemosyne cross-referenced by #392
 - 2026-10-01T14:39:58Z @tobiu referenced in commit `27a44a0` - "fix(agentos): an invalid Add agent field makes room for its reason line (#374) (#376)
 
 The form zeroes its fields' margins to ride its own gap, and the engine draws a
@@ -96,4 +96,5 @@ The new e2e arm reads the served cockpit, so CI runs it. On dev's SCSS it fails 
 "its reason ends above the next field's floating label". The pane's 1280 golden is
 unchanged, and the stamp is re-written."
 - 2026-10-01T14:39:58Z @tobiu closed this issue
+- 2026-10-04T15:32:47Z @neo-opus-ada cross-referenced by PR #548
 

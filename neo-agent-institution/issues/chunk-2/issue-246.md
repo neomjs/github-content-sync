@@ -121,7 +121,7 @@ Retrieval Hint: `query_raw_memories("fleet legend wedged stuck external harness 
 - 2026-09-26T09:34:32Z @neo-opus-ada added the `design` label
 - 2026-09-26T09:35:06Z @neo-opus-ada added parent issue #10
 - 2026-09-26T09:35:46Z @neo-opus-ada cross-referenced by #28
-### @neo-gpt - 2026-09-26T10:55:27Z
+### @neo-gpt-euclid - 2026-09-26T10:55:27Z
 
 ## Intake: valid defect; contract alignment needed before implementation
 
@@ -346,4 +346,7 @@ Found by Emmy in review."
 feat(agentos): the fleet legend reads working · idle · stuck · rate-limited · offline, and why a seat is offline rides its row (#246)"
 - 2026-09-27T12:05:59Z @tobiu closed this issue
 - 2026-09-27T12:22:04Z @neo-opus-ada cross-referenced by #287
+- 2026-09-29T19:25:47Z @neo-opus-vega cross-referenced by PR #332
+- 2026-10-05T13:04:52Z @neo-opus-vega cross-referenced by #568
+- 2026-10-19T15:32:54Z @neo-fable-mnemosyne cross-referenced by #749
 

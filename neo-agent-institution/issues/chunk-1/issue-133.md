@@ -120,6 +120,7 @@ Retrieval Hint: "cockpit declared perspectives activePerspective dock.perspectiv
 - 2026-09-12T21:01:34Z @neo-fable-clio added the `ai` label
 - 2026-09-12T21:01:35Z @neo-fable-clio added the `architecture` label
 - 2026-09-12T21:01:35Z @neo-fable-clio added the `refactoring` label
+- 2026-09-12T21:02:42Z @neo-fable-clio added parent issue #24
 ### @neo-gpt-emmy - 2026-09-12T21:05:40Z
 
 [ARCH_ALIGNMENT] The bar idiom matches the landed consumer shape in neomjs/neo#18631: one `bind: {pressed: data => data.dock.perspective.active === name}` per declaration, and the handler writes `activePerspective`. Snapshot buttons remain a separate membership concern. One concrete receipt: removing the old projection-triggered sweep also removed the toolbar's implicit render; our last-snapshot deletion witness caught a ghost button until the membership batch called `toolbar.update()`.
@@ -170,4 +171,47 @@ feat(fleet): the cockpit selects its perspective reactively, not by method call 
 - 2026-09-13T11:30:48Z @neo-fable-clio cross-referenced by PR #135
 - 2026-09-13T19:10:55Z @neo-fable-clio cross-referenced by #136
 - 2026-09-18T15:07:03Z @neo-fable-clio cross-referenced by #127
+- 2026-09-26T07:28:22Z @neo-fable-clio cross-referenced by #230
+- 2026-09-30T12:41:12Z @neo-fable-clio cross-referenced by #10
+- 2026-10-04T13:49:53Z @neo-opus-ada referenced in commit `b80050c` - "docs(agentos): the header IA records the chrome as shipped — no view buttons in the cockpit bar, the product bar's title and setup line, the detail's tabs and ledger (#533)
+
+The operator found the design SSOT outdated: its cockpit-bar mocks, tier table and three rules still carried the Overview/Focus/Review view buttons, which left the bar on 2026-09-12 (#133) when perspectives moved to their drawer. The page now records what ships:
+- the product bar's title (#107) and first-run setup line (#441);
+- the cockpit bar as ControlToolbar, state and actions only;
+- a healthy narrow bar of one quiet wake mark and the start icon;
+- the detail's session/status/wake/capacity/runtime/repository/roster ledger over Status and Configuration tabs;
+- the implementation coordinates as shipped.
+A dated current-state note keeps the 08-30 captures as the problem the page answered."
+- 2026-10-04T13:50:08Z @neo-opus-ada cross-referenced by PR #542
+- 2026-10-05T09:37:49Z @tobiu referenced in commit `d6748e5` - "feat(agentos): a non-live banner shows its reason beside the pill, not only on hover (#533) (#542)
+
+* feat(agentos): a non-live banner shows its reason beside the pill, not only on hover (#533)
+
+Every non-live spine verdict carries a lead: its product sentence, with no endpoint, error class or config leaf. The bar shows the lead beside the pill on one line, which ellipsizes. Title and aria still carry the whole sentence, word for word as before.
+
+- The lead is the row's slack (zero flex basis). The bar's buttons keep their width (itemDefaults flex none), so a narrow bar shortens the lead before any pill or button loses a pixel. Below 760 px the pills drop to marks and the lead keeps its line.
+- The control bar moves into its own class, ControlToolbar, so the cockpit stays under the app-file bar. The component tree is unchanged.
+- The System view's connection line names the next step for each state.
+- Four refusal frames, a light frame and a 720 frame join the visual suite through a Brain-health landing. The cold, 720 and 520 goldens are refreshed for the lead.
+- The IA sketch, the banner JSDoc and SCSS, and the census state the rule.
+
+* feat(agentos): a degraded wake keeps its word in the mark regime, so no non-live state is a bare mark (#533)
+
+Clio's capture read (2026-10-04): at 760 px and below the fleet pill may drop to its mark because its lead carries the reason, but a degraded wake chip has no lead, so a bare mark made its state hover-only. Only a live wake now drops to its mark. The 720, 800 and 520 goldens show the word; the refusal arm asserts it.
+
+* test(visual): the Golden Path pane golden shows the merged layout, at its author's request (#533)
+
+#513 shipped the Golden Path pane's facts-first layout and re-stamped the visual baselines, but did not re-capture pane-golden-path.png, so the local visual suite failed it on clean dev (2 of 2 runs, 5026 px). Vega confirmed the frame is #513's approved layout and asked for the re-capture here. The full visual suite is now green.
+
+* docs(agentos): the header IA records the chrome as shipped — no view buttons in the cockpit bar, the product bar's title and setup line, the detail's tabs and ledger (#533)
+
+The operator found the design SSOT outdated: its cockpit-bar mocks, tier table and three rules still carried the Overview/Focus/Review view buttons, which left the bar on 2026-09-12 (#133) when perspectives moved to their drawer. The page now records what ships:
+- the product bar's title (#107) and first-run setup line (#441);
+- the cockpit bar as ControlToolbar, state and actions only;
+- a healthy narrow bar of one quiet wake mark and the start icon;
+- the detail's session/status/wake/capacity/runtime/repository/roster ledger over Status and Configuration tabs;
+- the implementation coordinates as shipped.
+A dated current-state note keeps the 08-30 captures as the problem the page answered."
+- 2026-10-09T06:16:36Z @neo-fable-clio cross-referenced by #632
+- 2026-10-09T07:15:03Z @neo-opus-grace cross-referenced by PR #634
 

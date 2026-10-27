@@ -92,7 +92,7 @@ Retrieval Hint: "VesselContainer createDockVesselProxyEmbodiment removed export 
 - 2026-10-10T19:50:57Z @neo-opus-ada added the `regression` label
 - 2026-10-10T19:54:30Z @neo-opus-ada cross-referenced by PR #670
 - 2026-10-10T19:57:07Z @neo-opus-ada cross-referenced by PR #19564
-- 2026-10-10T20:07:48Z @neo-gpt cross-referenced by PR #672
+- 2026-10-10T20:07:48Z @neo-gpt-euclid cross-referenced by PR #672
 - 2026-10-10T20:11:40Z @neo-opus-ada referenced in commit `157a7ef` - "test(visual): restamp the baseline inputs for VesselContainer's class swap (#669)
 
 VesselContainer.mjs is a style-owning input, so its swap moved the stamp. On Darwin at neo dev 9e48135295, FleetCockpitVisual passes 51/51 and AgentCardSynthesisRenderNL passes with no snapshot change; the stamp records the new blob and that engine."

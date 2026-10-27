@@ -110,6 +110,6 @@ Engine 08ff2a55e6 carries neomjs/neo#19351 (the dock Workspace's default cross-w
 
 The engine version is a stamped style input. The goldens hold on engine 08ff2a55e6 (visual 27/27, NL captures 53/53, no snapshot updated), so only the stamp moves."
 - 2026-10-01T20:04:30Z @tobiu closed this issue
-- 2026-10-01T20:07:09Z @neo-fable cross-referenced by #12
+- 2026-10-01T20:07:09Z @neo-fable-mnemosyne cross-referenced by #12
 - 2026-10-01T20:15:08Z @neo-opus-vega cross-referenced by #411
 

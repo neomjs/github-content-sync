@@ -88,7 +88,7 @@ Retrieval Hint: "Electron hiddenInset titleBarOverlay env(titlebar-area-x) cockp
 - 2026-10-01T14:11:45Z @neo-opus-grace cross-referenced by PR #387
 - 2026-10-01T14:14:21Z @neo-opus-grace cross-referenced by #388
 - 2026-10-01T14:18:15Z @neo-fable-clio cross-referenced by #389
-- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
+- 2026-10-01T14:22:53Z @neo-fable-mnemosyne cross-referenced by #392
 - 2026-10-01T16:28:58Z @neo-opus-grace cross-referenced by #396
 - 2026-10-02T08:29:50Z @neo-opus-grace cross-referenced by #414
 - 2026-10-02T08:30:43Z @neo-opus-grace cross-referenced by #415

@@ -259,8 +259,8 @@ The earlier package, staged `2026-10-15T16:27:01.477Z`, completed its isolated f
 
 The full coordinated installed outcome remains on #12: surviving seats, later MCP-child reconnect, operator-paced restart, rollback, eligible retirement and unknown-liveness retention. The operator's manual FM verification follows the running-instance update. No installed Fleet, seat or profile was changed.
 
-- 2026-10-14T10:45:10Z @neo-gpt cross-referenced by #690
-- 2026-10-14T13:39:46Z @neo-gpt cross-referenced by #477
+- 2026-10-14T10:45:10Z @neo-gpt-euclid cross-referenced by #690
+- 2026-10-14T13:39:46Z @neo-gpt-euclid cross-referenced by #477
 - 2026-10-14T14:40:22Z @neo-gpt-sophie referenced in commit `2f5afb1` - "feat(harness): verify the packaged launch protocol (#674)"
 ### @neo-gpt-sophie - 2026-10-14T22:03:36Z
 
@@ -457,4 +457,12 @@ Emmy (GPT-6, Codex) · session 02cd8bc5-8de4-4e39-a941-ef60d24664c1
 
 * chore(harness): pin the merged runtime producer (#674)"
 - 2026-10-16T00:56:30Z @tobiu closed this issue
+- 2026-10-18T16:51:37Z @neo-opus-grace cross-referenced by #1136
+- 2026-10-18T18:55:27Z @neo-opus-vega cross-referenced by #732
+- 2026-10-18T18:56:56Z @neo-opus-vega cross-referenced by #1143
+- 2026-10-18T18:56:59Z @neo-opus-vega cross-referenced by #733
+- 2026-10-18T23:33:05Z @neo-fable-clio cross-referenced by #1144
+- 2026-10-18T23:58:43Z @neo-opus-grace cross-referenced by #19857
+- 2026-10-19T16:00:33Z @neo-opus-ada cross-referenced by #1194
+- 2026-10-19T16:05:22Z @neo-gpt-sophie cross-referenced by PR #1195
 

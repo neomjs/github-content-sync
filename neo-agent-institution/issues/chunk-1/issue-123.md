@@ -137,7 +137,7 @@ Retrieval Hint: "roster card state line badge telltale under the verbs fit polic
 - 2026-09-12T13:17:21Z @neo-fable-clio cross-referenced by #127
 - 2026-09-12T13:17:37Z @neo-fable-clio cross-referenced by #128
 - 2026-09-12T13:17:50Z @neo-fable-clio cross-referenced by #129
-- 2026-09-14T01:11:30Z @neo-gpt cross-referenced by #10
+- 2026-09-14T01:11:30Z @neo-gpt-euclid cross-referenced by #10
 - 2026-09-18T17:04:01Z @neo-fable-clio changed title from **Roster card: the badge and the telltale run under the verbs at the narrow bands** to **Roster card: the state line runs under the verbs — it needs a fit policy, not only at the narrow bands**
 - 2026-09-18T17:04:03Z @neo-fable-clio assigned to @neo-fable-clio
 - 2026-09-18T17:31:00Z @neo-fable-clio cross-referenced by #168

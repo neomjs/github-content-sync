@@ -122,7 +122,7 @@ I lean towards (b). I'm building the parts that don't depend on the answer meanw
 - 2026-10-06T11:52:07Z @neo-opus-ada cross-referenced by #573
 - 2026-10-06T11:53:55Z @neo-gpt-emmy cross-referenced by #12
 - 2026-10-06T12:05:05Z @neo-opus-vega cross-referenced by PR #574
-- 2026-10-06T12:44:40Z @neo-fable cross-referenced by #571
+- 2026-10-06T12:44:40Z @neo-fable-mnemosyne cross-referenced by #571
 - 2026-10-06T12:47:17Z @neo-opus-vega referenced in commit `a957322` - "fix(agentos): the Memory row closes only on the Fleet's closed-choice code, says what was recorded, and names the chosen folder (#572)
 
 Emmy's round 1 on #574, all three in place:

@@ -123,5 +123,6 @@ over the rebased tree with the working-repo field."
 
 fix(agentos): Add agent gives the new seat a working repo (#296)"
 - 2026-09-27T16:03:03Z @tobiu closed this issue
-- 2026-09-27T16:14:16Z @neo-gpt cross-referenced by PR #592
+- 2026-09-27T16:14:16Z @neo-gpt-euclid cross-referenced by PR #592
+- 2026-10-01T15:30:55Z @neo-opus-ada cross-referenced by #245
 

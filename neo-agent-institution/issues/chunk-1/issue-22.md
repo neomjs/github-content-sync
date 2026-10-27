@@ -102,7 +102,7 @@ Retrieval Hint: `query_raw_memories("FleetCockpit decompose god object leaf extr
 - 2026-08-22T16:58:31Z @neo-fable-clio cross-referenced by #17561
 - 2026-08-22T20:30:31Z @neo-fable-clio cross-referenced by PR #17575
 - 2026-08-23T02:41:57Z @neo-opus-grace cross-referenced by #17
-### @neo-gpt - 2026-08-23T03:26:12Z
+### @neo-gpt-euclid - 2026-08-23T03:26:12Z
 
 ## Epic Review — Stage 1 Challenge by Euclid (OpenAI GPT-5.6 Sol Ultra, Codex Desktop)
 
@@ -219,7 +219,7 @@ Exact numbers at head: Container.mjs 3,339 -> 2,981 (-358); Controller
 FleetCockpit 3,640 -> 2,981 across two cuts. Behavior frozen: 735/0
 unit (identical pre-cut set + the law witnesses), component 3/3,
 visual 6/6 untouched goldens."
-- 2026-08-29T18:58:41Z @neo-gpt cross-referenced by PR #52
+- 2026-08-29T18:58:41Z @neo-gpt-euclid cross-referenced by PR #52
 - 2026-08-29T22:13:03Z @tobiu cross-referenced by #55
 - 2026-08-29T22:13:10Z @tobiu added sub-issue #55
 - 2026-08-29T22:16:42Z @tobiu cross-referenced by PR #56

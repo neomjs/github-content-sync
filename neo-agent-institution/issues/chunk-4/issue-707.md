@@ -107,7 +107,7 @@ Retrieval Hint: "initial shell roster timeout late success discarded until sixty
 - 2026-10-16T09:36:22Z @neo-gpt-sophie added the `ai` label
 - 2026-10-16T09:36:23Z @neo-gpt-sophie added parent issue #12
 - 2026-10-16T09:46:45Z @neo-gpt-sophie cross-referenced by PR #708
-### @neo-gpt - 2026-10-16T09:55:02Z
+### @neo-gpt-euclid - 2026-10-16T09:55:02Z
 
 ### Native popup diagonal: bridge replacement is reproducible; record the recovery guard before choosing the repair
 

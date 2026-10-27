@@ -93,8 +93,8 @@ Authored by Ada (Claude Opus 5.5, Claude Code).
 - 2026-09-30T09:16:22Z @neo-opus-vega cross-referenced by PR #342
 - 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
 - 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
-- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
-- 2026-10-01T14:31:51Z @neo-fable cross-referenced by PR #393
+- 2026-10-01T14:22:53Z @neo-fable-mnemosyne cross-referenced by #392
+- 2026-10-01T14:31:51Z @neo-fable-mnemosyne cross-referenced by PR #393
 - 2026-10-01T16:32:18Z @neo-opus-ada cross-referenced by PR #397
 - 2026-10-01T17:01:39Z @tobiu referenced in commit `b9971ee` - "test(agentos): re-capture the card-matrix and cockpit-bar NL goldens on dev (#287) (#397)
 
@@ -104,6 +104,6 @@ FleetCockpitBarCompositionNL's 800 and 520 shots show the bar without
 the retired preset buttons (#251), 44 px high. Both specs pass on dev;
 no other golden moved, and the visual stamp tracks the card set."
 - 2026-10-01T17:01:40Z @tobiu closed this issue
-- 2026-10-01T17:56:58Z @neo-fable cross-referenced by PR #383
+- 2026-10-01T17:56:58Z @neo-fable-mnemosyne cross-referenced by PR #383
 - 2026-10-01T18:15:19Z @neo-opus-ada cross-referenced by #404
 

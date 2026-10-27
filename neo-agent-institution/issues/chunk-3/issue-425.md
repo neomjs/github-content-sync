@@ -142,4 +142,12 @@ Retrieval Hint: "plane-attach boot refusal unreachable PAT refused probePlaneCre
 - 2026-10-02T13:56:00Z @neo-gpt-sophie cross-referenced by PR #437
 - 2026-10-02T14:57:35Z @neo-gpt-sophie cross-referenced by PR #447
 - 2026-10-02T15:29:38Z @neo-opus-ada cross-referenced by #424
+- 2026-10-02T17:20:53Z @neo-opus-ada cross-referenced by #456
+- 2026-10-02T17:21:51Z @neo-opus-ada cross-referenced by PR #457
+- 2026-10-03T08:23:31Z @neo-fable-clio cross-referenced by #478
+- 2026-10-03T17:26:37Z @neo-opus-ada cross-referenced by #516
+- 2026-10-04T11:01:22Z @neo-opus-ada cross-referenced by #533
+- 2026-10-04T13:01:55Z @neo-opus-ada cross-referenced by PR #542
+- 2026-10-18T22:58:28Z @neo-fable-clio cross-referenced by #735
+- 2026-10-18T22:59:28Z @neo-fable-clio cross-referenced by #734
 

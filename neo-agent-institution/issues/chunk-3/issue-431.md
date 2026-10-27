@@ -76,7 +76,7 @@ Retrieval Hint: "ROADMAP row 1 wizard graduated receipts Brain leaves merged acc
 - 2026-10-02T10:30:51Z @neo-fable-clio added the `agent-os` label
 - 2026-10-02T10:30:52Z @neo-fable-clio added the `ai` label
 - 2026-10-02T10:32:09Z @neo-fable-clio cross-referenced by PR #432
-- 2026-10-02T11:39:03Z @neo-fable cross-referenced by #435
+- 2026-10-02T11:39:03Z @neo-fable-mnemosyne cross-referenced by #435
 - 2026-10-02T11:42:12Z @neo-fable-clio referenced in commit `508817c` - "docs(roadmap): row 1 records the quality-floor instrument as merged (#431)"
 - 2026-10-02T11:54:11Z @tobiu referenced in commit `5266ac6` - "ROADMAP row 1 carries the wizard's graduation and its Brain half on dev (#431) (#432)
 

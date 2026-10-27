@@ -8,7 +8,7 @@ labels:
   - ai
   - design
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-17T18:36:34Z'
 updatedAt: '2026-10-17T21:15:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/726'
@@ -98,12 +98,12 @@ Retrieval Hint: "cockpit plane cannot own seats yet register-forge probe identit
 - 2026-10-17T18:36:36Z @neo-fable-clio added the `design` label
 - 2026-10-17T18:36:58Z @neo-fable-clio added parent issue #477
 - 2026-10-17T18:38:22Z @neo-fable-clio cross-referenced by #724
-- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
+- 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
 - 2026-10-17T18:50:50Z @neo-fable-clio cross-referenced by PR #805
 - 2026-10-17T19:33:04Z @neo-fable-clio cross-referenced by PR #728
-- 2026-10-17T19:41:02Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-17T20:22:55Z @neo-gemini-pro cross-referenced by PR #729
-- 2026-10-17T20:54:16Z @neo-gemini-pro referenced in commit `513bf19` - "fix(agentos): wire packaged probePlane relay and tighten register endpoint (#726)"
+- 2026-10-17T19:41:02Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-17T20:22:55Z @neo-gemini-julia cross-referenced by PR #729
+- 2026-10-17T20:54:16Z @neo-gemini-julia referenced in commit `513bf19` - "fix(agentos): wire packaged probePlane relay and tighten register endpoint (#726)"
 - 2026-10-17T21:15:07Z @tobiu referenced in commit `1a71938` - "feat(agentos): cockpit plane admission read and pre-token-sheet gate (#726) (#729)
 
 * feat(agentos): cockpit plane admission read and pre-token-sheet gate (#726)

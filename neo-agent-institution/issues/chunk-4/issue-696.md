@@ -7,11 +7,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-15T10:39:34Z'
 updatedAt: '2026-10-15T13:52:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/696'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -72,16 +72,16 @@ Retrieval Hint: "Stage59 optional awaiting-merge secondary action one held raw o
 
 ## Timeline
 
-- 2026-10-15T10:39:34Z @neo-gpt assigned to @neo-gpt
-- 2026-10-15T10:39:35Z @neo-gpt added the `enhancement` label
-- 2026-10-15T10:39:35Z @neo-gpt added the `agent-os` label
-- 2026-10-15T10:39:35Z @neo-gpt added the `ai` label
-- 2026-10-15T10:53:53Z @neo-gpt cross-referenced by #19751
-- 2026-10-15T11:03:34Z @neo-gpt cross-referenced by PR #19752
-- 2026-10-15T11:19:48Z @neo-gpt cross-referenced by PR #697
-- 2026-10-15T11:53:45Z @neo-gpt referenced in commit `5449925` - "fix(fleet): report the Stage close request truthfully (#696)"
-- 2026-10-15T11:53:46Z @neo-gpt referenced in commit `4062605` - "fix(fleet): retain addressed Stage feedback after queue changes (#696)"
-- 2026-10-15T12:37:28Z @neo-gpt referenced in commit `093ada1` - "chore(fleet): integrate the merged harness fixture (#696)"
+- 2026-10-15T10:39:34Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-15T10:39:35Z @neo-gpt-euclid added the `enhancement` label
+- 2026-10-15T10:39:35Z @neo-gpt-euclid added the `agent-os` label
+- 2026-10-15T10:39:35Z @neo-gpt-euclid added the `ai` label
+- 2026-10-15T10:53:53Z @neo-gpt-euclid cross-referenced by #19751
+- 2026-10-15T11:03:34Z @neo-gpt-euclid cross-referenced by PR #19752
+- 2026-10-15T11:19:48Z @neo-gpt-euclid cross-referenced by PR #697
+- 2026-10-15T11:53:45Z @neo-gpt-euclid referenced in commit `5449925` - "fix(fleet): report the Stage close request truthfully (#696)"
+- 2026-10-15T11:53:46Z @neo-gpt-euclid referenced in commit `4062605` - "fix(fleet): retain addressed Stage feedback after queue changes (#696)"
+- 2026-10-15T12:37:28Z @neo-gpt-euclid referenced in commit `093ada1` - "chore(fleet): integrate the merged harness fixture (#696)"
 - 2026-10-15T13:52:13Z @tobiu referenced in commit `0f01c91` - "feat(fleet): open observed work in a Stage sibling (#696) (#697)
 
 * feat(fleet): open observed work in a Stage dev sibling (#696)
@@ -92,4 +92,5 @@ Retrieval Hint: "Stage59 optional awaiting-merge secondary action one held raw o
 
 * fix(fleet): retain addressed Stage feedback after queue changes (#696)"
 - 2026-10-15T13:52:13Z @tobiu closed this issue
+- 2026-10-19T13:06:21Z @neo-gemini-julia cross-referenced by #743
 

@@ -105,7 +105,7 @@ Origin Session ID: 31c9ca1a-ded8-4b19-8d99-682d259efeca
 - 2026-10-02T14:37:29Z @neo-opus-grace marked this issue as being blocked by #760
 - 2026-10-02T14:37:48Z @neo-opus-grace cross-referenced by #759
 - 2026-10-02T14:39:36Z @neo-opus-grace cross-referenced by #414
-- 2026-10-02T15:52:17Z @neo-gpt cross-referenced by PR #764
+- 2026-10-02T15:52:17Z @neo-gpt-euclid cross-referenced by PR #764
 - 2026-10-02T16:39:25Z @neo-gpt-sophie cross-referenced by #418
 - 2026-10-02T18:03:37Z @neo-opus-ada cross-referenced by #460
 - 2026-10-02T18:12:11Z @neo-opus-ada cross-referenced by PR #462
@@ -225,7 +225,7 @@ Premise accepted: the card has no reveal pane, and the roster item's disclosure 
 🖖 **Grace** · `@neo-opus-grace` · Claude Opus 5.5 · Claude Code
 
 
-- 2026-10-03T07:16:55Z @neo-fable cross-referenced by #476
+- 2026-10-03T07:16:55Z @neo-fable-mnemosyne cross-referenced by #476
 - 2026-10-03T08:43:18Z @neo-opus-ada referenced in commit `e5c73e3` - "feat(agentos): the cockpit reads the open work on its liveness cadence (#449)
 
 OpenWorkRead reads fleetOpenWork through the bridge with the tasks read's laws (in-flight accounting, a generation fence, a typed unavailable envelope) and retires a held answer when the bridge belongs to another profile (TargetBinding.retireOpenWork). The read joins LivenessCadence.READS at a one-minute interval, the cockpit's mount reads and the Reconnect re-drive. The owner-held snapshot feeds the surfaces that follow."
@@ -339,4 +339,7 @@ in both skins.
 
 * test(agentos): re-stamp the visual baseline inputs for the review fixes, goldens unchanged (#449)"
 - 2026-10-03T10:44:31Z @tobiu closed this issue
+- 2026-10-03T12:54:32Z @neo-gpt-sophie cross-referenced by PR #497
+- 2026-10-13T19:26:28Z @neo-fable-clio cross-referenced by PR #685
+- 2026-10-19T13:06:21Z @neo-gemini-julia cross-referenced by #743
 

@@ -62,7 +62,7 @@ Authored by Grace (Claude Opus 5.5, Claude Code) 🖖
 - 2026-09-24T20:19:46Z @neo-opus-grace added the `build` label
 - 2026-09-24T20:20:30Z @neo-opus-grace cross-referenced by PR #190
 - 2026-09-24T20:38:17Z @neo-opus-grace referenced in commit `93c150e` - "ci: the baseline caller passes the team roster, so commit authorship checks commits (#189)"
-### @neo-gpt - 2026-09-24T20:42:33Z
+### @neo-gpt-euclid - 2026-09-24T20:42:33Z
 
 ## Contract Ledger (T3) for PR #190 at `93c150e`
 

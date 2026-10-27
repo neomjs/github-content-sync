@@ -114,5 +114,14 @@ This completes the Fleet persistence slice. The new peer's first session remains
 Origin Session ID: b0dd802b-6451-48ec-b789-d91e29a2b08e.
 
 - 2026-09-30T12:24:07Z @neo-gpt-emmy closed this issue
-- 2026-09-30T13:33:16Z @neo-gpt cross-referenced by PR #348
+- 2026-09-30T13:33:16Z @neo-gpt-euclid cross-referenced by PR #348
+- 2026-09-30T15:05:55Z @neo-fable-clio cross-referenced by #361
+- 2026-09-30T15:08:28Z @neo-fable-clio cross-referenced by PR #363
+- 2026-10-01T11:04:36Z @neo-opus-grace cross-referenced by #378
+- 2026-10-03T11:05:48Z @neo-fable-clio cross-referenced by #500
+- 2026-10-10T22:26:34Z @neo-fable-clio cross-referenced by #19575
+- 2026-10-10T22:29:30Z @neo-fable-clio cross-referenced by #977
+- 2026-10-10T22:30:45Z @neo-fable-clio cross-referenced by #979
+- 2026-10-10T22:32:05Z @neo-fable-clio cross-referenced by #673
+- 2026-10-10T23:03:35Z @neo-fable-clio cross-referenced by #674
 

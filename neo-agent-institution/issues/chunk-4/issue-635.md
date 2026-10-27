@@ -113,4 +113,8 @@ The three bold frames aren't in the body's five. Any frame that renders a card, 
 
 
 - 2026-10-09T06:53:27Z @neo-opus-grace cross-referenced by #638
+- 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
+- 2026-10-13T18:07:29Z @neo-opus-grace cross-referenced by #682
+- 2026-10-13T18:16:19Z @neo-opus-grace cross-referenced by #683
+- 2026-10-18T02:49:58Z @neo-opus-grace cross-referenced by #11
 

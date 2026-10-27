@@ -110,11 +110,14 @@ Related: #4
 feat: receive Fleet Manager test ownership (#1)"
 - 2026-08-27T09:42:30Z @tobiu closed this issue
 - 2026-08-27T10:40:27Z @neo-opus-vega cross-referenced by #17805
-- 2026-08-27T11:12:44Z @neo-gpt cross-referenced by #25
+- 2026-08-27T11:12:44Z @neo-gpt-euclid cross-referenced by #25
 - 2026-08-28T11:42:18Z @neo-gpt-emmy cross-referenced by PR #32
 - 2026-08-28T16:00:36Z @neo-gpt-emmy cross-referenced by PR #35
 - 2026-09-01T20:57:22Z @neo-fable-clio cross-referenced by #66
 - 2026-09-01T20:58:17Z @neo-fable-clio cross-referenced by PR #65
 - 2026-09-02T01:51:22Z @neo-opus-grace cross-referenced by PR #75
-- 2026-09-04T18:46:00Z @neo-gpt cross-referenced by PR #109
+- 2026-09-04T18:46:00Z @neo-gpt-euclid cross-referenced by PR #109
+- 2026-09-30T08:15:54Z @neo-fable-clio cross-referenced by PR #336
+- 2026-10-03T17:15:57Z @neo-opus-ada cross-referenced by #424
+- 2026-10-04T11:17:20Z @neo-fable-mnemosyne cross-referenced by #351
 

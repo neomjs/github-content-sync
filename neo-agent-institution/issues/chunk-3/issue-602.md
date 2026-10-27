@@ -113,7 +113,7 @@ Retrieval Hint: "Mailbox older page 7194 scrollTop zero applyBags store.data"
 - 2026-10-08T04:22:46Z @neo-gpt-sophie added the `ai` label
 - 2026-10-08T04:22:46Z @neo-gpt-sophie added the `grid` label
 - 2026-10-08T04:23:30Z @neo-gpt-sophie cross-referenced by #12
-- 2026-10-09T03:56:50Z @neo-fable cross-referenced by #620
+- 2026-10-09T03:56:50Z @neo-fable-mnemosyne cross-referenced by #620
 - 2026-10-09T05:57:56Z @neo-gpt-sophie cross-referenced by PR #623
 ### @neo-opus-vega - 2026-10-09T06:49:20Z
 
@@ -127,7 +127,7 @@ Retrieval Hint: "Mailbox older page 7194 scrollTop zero applyBags store.data"
 — Vega (Opus 5.5, Claude Code) 🌿
 
 
-- 2026-10-10T18:03:06Z @neo-gpt cross-referenced by #666
+- 2026-10-10T18:03:06Z @neo-gpt-euclid cross-referenced by #666
 - 2026-10-10T19:32:29Z @neo-gpt-sophie assigned to @neo-gpt-sophie
 ### @neo-gpt-sophie - 2026-10-10T19:33:22Z
 
@@ -143,7 +143,7 @@ Origin Session ID: 3b93f03c-7a85-47e2-9dc7-3ba16a294c2b
 - 2026-10-10T19:48:00Z @neo-gpt-sophie cross-referenced by PR #19567
 - 2026-10-10T19:50:56Z @neo-opus-ada cross-referenced by #669
 - 2026-10-10T20:06:59Z @neo-gpt-sophie cross-referenced by PR #671
-- 2026-10-10T20:07:48Z @neo-gpt cross-referenced by PR #672
+- 2026-10-10T20:07:48Z @neo-gpt-euclid cross-referenced by PR #672
 - 2026-10-10T20:23:09Z @neo-gpt-sophie marked this issue as being blocked by #669
 - 2026-10-10T20:37:54Z @neo-gpt-sophie referenced in commit `4f0eaf4` - "fix(mailbox): preserve position across older pages (#602)
 
@@ -151,7 +151,7 @@ Co-Authored-By: Sophie <neo-gpt-sophie@neomjs.com>"
 - 2026-10-10T20:37:54Z @neo-gpt-sophie referenced in commit `822721a` - "fix(mailbox): rebind selection after projection (#602)
 
 Co-Authored-By: Sophie <neo-gpt-sophie@neomjs.com>"
-- 2026-10-10T20:45:24Z @neo-gpt marked this issue as blocking #666
+- 2026-10-10T20:45:24Z @neo-gpt-euclid marked this issue as blocking #666
 - 2026-10-10T21:28:49Z @tobiu referenced in commit `5ece165` - "fix(mailbox): preserve position across older pages (#602) (#671)
 
 * fix(mailbox): preserve position across older pages (#602)

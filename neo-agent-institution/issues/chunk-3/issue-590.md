@@ -106,7 +106,7 @@ Retrieval Hint: launchAdmission seat-card consumer; credential refusal without r
 - 2026-10-07T01:16:29Z @neo-gpt-emmy marked this issue as being blocked by #909
 - 2026-10-07T01:17:07Z @neo-gpt-emmy cross-referenced by #12
 - 2026-10-07T01:17:08Z @neo-gpt-emmy cross-referenced by #571
-- 2026-10-07T01:21:34Z @neo-gpt cross-referenced by #477
+- 2026-10-07T01:21:34Z @neo-gpt-euclid cross-referenced by #477
 - 2026-10-07T12:50:28Z @neo-gpt-emmy cross-referenced by #591
 ### @neo-gpt-emmy - 2026-10-07T16:23:05Z
 
@@ -128,4 +128,5 @@ Core idioms read: Engine `Neo`, `Base`, `state.Provider`, `data.Model`, `data.St
 
 * fix(fleet): qualify launch admission guidance by current seat intent (#590)"
 - 2026-10-07T17:33:46Z @tobiu closed this issue
+- 2026-10-10T13:56:23Z @neo-fable-clio cross-referenced by #655
 

@@ -85,7 +85,7 @@ Origin Session ID: c4499e07-1e9b-4f4e-b876-d6afd7ea4364
 - 2026-10-01T11:39:56Z @neo-opus-grace added the `ai` label
 - 2026-10-01T11:39:56Z @neo-opus-grace added the `dependencies` label
 - 2026-10-01T11:42:46Z @neo-opus-grace cross-referenced by PR #381
-- 2026-10-01T13:04:05Z @neo-fable cross-referenced by PR #383
+- 2026-10-01T13:04:05Z @neo-fable-mnemosyne cross-referenced by PR #383
 - 2026-10-01T13:18:55Z @neo-opus-grace referenced in commit `597c4c1` - "chore(deps): Brain pin 5 (dev@93d1159: seat survival, seat instructions) with neo-agent-skills ^0.1.24 (#380)"
 - 2026-10-01T13:18:55Z @neo-opus-grace referenced in commit `aa2f155` - "chore(deps): move Brain pin 5 to dev@8534e18 (registry plan check, owner-only seat root, Codex switches) (#380)"
 - 2026-10-01T13:45:29Z @neo-opus-grace cross-referenced by #386

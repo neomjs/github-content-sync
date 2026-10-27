@@ -124,4 +124,5 @@ Retrieval Hint: "FM shell tear-out popout refused: setWindowOpenHandler denies a
 
 fix(harness): the shell admits the engine's about:blank staging realm as a popup (#229)"
 - 2026-09-26T08:53:33Z @tobiu closed this issue
+- 2026-10-03T09:44:08Z @neo-opus-ada cross-referenced by #493
 

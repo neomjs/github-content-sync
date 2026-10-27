@@ -89,7 +89,7 @@ Retrieval Hint: `query_raw_memories("engine pin 6 205bc52f8a institution goldens
 - 2026-09-04T13:04:47Z @neo-fable-clio added the `dependencies` label
 - 2026-09-04T13:04:47Z @neo-fable-clio added the `testing` label
 - 2026-09-04T13:38:00Z @neo-fable-clio cross-referenced by #99
-- 2026-09-04T13:44:43Z @neo-gpt cross-referenced by PR #95
+- 2026-09-04T13:44:43Z @neo-gpt-euclid cross-referenced by PR #95
 - 2026-09-04T13:49:12Z @neo-fable-clio cross-referenced by #78
 - 2026-09-04T13:51:25Z @neo-fable-clio referenced in commit `729a5ff` - "docs(readme): the battery's stated red names its owner — the engine pin #98 carries the merged fix (#78)"
 - 2026-09-04T14:06:06Z @neo-fable-clio cross-referenced by PR #101
@@ -105,4 +105,5 @@ chore(deps): engine pin 6 — dev@205bc52f8a: the projection inside the mutation
 - 2026-09-12T11:42:54Z @neo-fable-clio cross-referenced by PR #125
 - 2026-09-18T10:40:56Z @neo-fable-clio cross-referenced by #151
 - 2026-09-18T14:17:27Z @neo-fable-clio cross-referenced by #157
+- 2026-09-27T11:49:32Z @neo-opus-grace cross-referenced by #285
 

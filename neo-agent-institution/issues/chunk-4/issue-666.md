@@ -7,11 +7,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-10T18:03:05Z'
 updatedAt: '2026-10-10T22:31:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/666'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: 477
 subIssues: []
@@ -113,23 +113,25 @@ Retrieval Hint: "FM Mailbox October 9 09:56 updated 5s Activity new message load
 
 ## Timeline
 
-- 2026-10-10T18:03:06Z @neo-gpt assigned to @neo-gpt
-- 2026-10-10T18:03:07Z @neo-gpt added the `bug` label
-- 2026-10-10T18:03:07Z @neo-gpt added the `agent-os` label
-- 2026-10-10T18:03:07Z @neo-gpt added the `ai` label
-- 2026-10-10T18:03:40Z @neo-gpt added parent issue #477
+- 2026-10-10T18:03:06Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-10T18:03:07Z @neo-gpt-euclid added the `bug` label
+- 2026-10-10T18:03:07Z @neo-gpt-euclid added the `agent-os` label
+- 2026-10-10T18:03:07Z @neo-gpt-euclid added the `ai` label
+- 2026-10-10T18:03:40Z @neo-gpt-euclid added parent issue #477
 - 2026-10-10T19:07:12Z @neo-fable-clio cross-referenced by #667
 - 2026-10-10T19:33:23Z @neo-gpt-sophie cross-referenced by #602
 - 2026-10-10T19:50:56Z @neo-opus-ada cross-referenced by #669
-- 2026-10-10T20:07:48Z @neo-gpt cross-referenced by PR #672
-- 2026-10-10T20:38:19Z @neo-gpt referenced in commit `5f582d3` - "feat(mailbox): refresh the inbox and age retained observations (#666)"
-- 2026-10-10T20:45:24Z @neo-gpt marked this issue as being blocked by #602
-- 2026-10-10T21:40:36Z @neo-gpt referenced in commit `a3555e1` - "feat(mailbox): refresh the inbox and age retained observations (#666)"
-- 2026-10-10T22:01:56Z @neo-gpt referenced in commit `74cea08` - "fix(mailbox): publish inbox read outcomes as one config batch (#666)"
+- 2026-10-10T20:07:48Z @neo-gpt-euclid cross-referenced by PR #672
+- 2026-10-10T20:38:19Z @neo-gpt-euclid referenced in commit `5f582d3` - "feat(mailbox): refresh the inbox and age retained observations (#666)"
+- 2026-10-10T20:45:24Z @neo-gpt-euclid marked this issue as being blocked by #602
+- 2026-10-10T21:40:36Z @neo-gpt-euclid referenced in commit `a3555e1` - "feat(mailbox): refresh the inbox and age retained observations (#666)"
+- 2026-10-10T22:01:56Z @neo-gpt-euclid referenced in commit `74cea08` - "fix(mailbox): publish inbox read outcomes as one config batch (#666)"
 - 2026-10-10T22:31:26Z @tobiu referenced in commit `cb82cb2` - "feat(mailbox): refresh the inbox and age retained observations (#666) (#672)
 
 * feat(mailbox): refresh the inbox and age retained observations (#666)
 
 * fix(mailbox): publish inbox read outcomes as one config batch (#666)"
 - 2026-10-10T22:31:26Z @tobiu closed this issue
+- 2026-10-10T22:32:05Z @neo-fable-clio cross-referenced by #673
+- 2026-10-10T23:03:35Z @neo-fable-clio cross-referenced by #674
 

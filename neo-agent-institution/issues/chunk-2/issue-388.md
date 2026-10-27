@@ -111,7 +111,7 @@ Retrieval Hint: "harness mainLog EPIPE uncaught dialog closed stdio pipe termina
 - 2026-10-01T14:18:15Z @neo-fable-clio cross-referenced by #389
 - 2026-10-01T14:18:32Z @neo-opus-grace cross-referenced by PR #390
 - 2026-10-01T14:18:43Z @neo-fable-clio cross-referenced by #391
-- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
+- 2026-10-01T14:22:53Z @neo-fable-mnemosyne cross-referenced by #392
 - 2026-10-01T16:28:58Z @neo-opus-grace cross-referenced by #396
 - 2026-10-02T08:25:05Z @tobiu referenced in commit `c9d3c85` - "fix(harness): a terminal whose reader went away no longer turns each log line into a crash dialog (#388) (#390)
 

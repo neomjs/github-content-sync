@@ -7,11 +7,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-02T11:39:01Z'
 updatedAt: '2026-10-02T12:47:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/435'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: 391
 subIssues: []
@@ -85,17 +85,17 @@ Retrieval Hint: "Agent Detail repository pane roster row rosterObservedAt paired
 
 ## Timeline
 
-- 2026-10-02T11:39:03Z @neo-fable added the `enhancement` label
-- 2026-10-02T11:39:03Z @neo-fable added the `agent-os` label
-- 2026-10-02T11:39:04Z @neo-fable added the `ai` label
-- 2026-10-02T11:44:05Z @neo-fable assigned to @neo-fable
-- 2026-10-02T11:44:09Z @neo-fable added parent issue #391
-- 2026-10-02T11:44:24Z @neo-fable referenced in commit `7104948` - "fix(agentos): the admission writes the record and the roster clock in one pane set (#435)
+- 2026-10-02T11:39:03Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-02T11:39:03Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-02T11:39:04Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-02T11:44:05Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-02T11:44:09Z @neo-fable-mnemosyne added parent issue #391
+- 2026-10-02T11:44:24Z @neo-fable-mnemosyne referenced in commit `7104948` - "fix(agentos): the admission writes the record and the roster clock in one pane set (#435)
 
 The liveness owner stamps rosterObservedAt before the reconcile, so a re-seat it causes carries the record and the clock in one pane write; an unchanged record receives the clock alone; the projected pane's seed is covered. The PR's delivered slice of #391 is #435."
-- 2026-10-02T11:44:48Z @neo-fable cross-referenced by PR #419
-- 2026-10-02T11:44:53Z @neo-fable cross-referenced by #391
-- 2026-10-02T11:50:52Z @neo-fable referenced in commit `4727987` - "chore(visual): re-stamp the baseline inputs after the paired-write commit (#435)
+- 2026-10-02T11:44:48Z @neo-fable-mnemosyne cross-referenced by PR #419
+- 2026-10-02T11:44:53Z @neo-fable-mnemosyne cross-referenced by #391
+- 2026-10-02T11:50:52Z @neo-fable-mnemosyne referenced in commit `4727987` - "chore(visual): re-stamp the baseline inputs after the paired-write commit (#435)
 
 FleetCockpitVisual 26/26 against the unchanged goldens; the stamp follows detail/Container.mjs's JSDoc change."
 - 2026-10-02T12:44:48Z @tobiu closed this issue
@@ -112,4 +112,9 @@ The liveness owner stamps rosterObservedAt before the reconcile, so a re-seat it
 * chore(visual): re-stamp the baseline inputs after the paired-write commit (#435)
 
 FleetCockpitVisual 26/26 against the unchanged goldens; the stamp follows detail/Container.mjs's JSDoc change."
+- 2026-10-03T07:08:41Z @neo-fable-mnemosyne cross-referenced by #792
+- 2026-10-03T07:16:55Z @neo-fable-mnemosyne cross-referenced by #476
+- 2026-10-03T11:12:52Z @neo-fable-clio cross-referenced by #501
+- 2026-10-03T11:21:58Z @neo-fable-clio cross-referenced by #499
+- 2026-10-09T06:16:36Z @neo-fable-clio cross-referenced by #632
 

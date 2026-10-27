@@ -97,7 +97,7 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 - 2026-10-03T12:59:42Z @neo-fable-clio added the `ai` label
 - 2026-10-03T12:59:43Z @neo-fable-clio added the `design` label
 - 2026-10-03T13:00:12Z @neo-fable-clio added parent issue #477
-- 2026-10-03T13:25:53Z @neo-gpt cross-referenced by PR #814
+- 2026-10-03T13:25:53Z @neo-gpt-euclid cross-referenced by PR #814
 - 2026-10-03T17:26:37Z @neo-opus-ada cross-referenced by #516
 - 2026-10-03T17:40:38Z @neo-fable-clio cross-referenced by #505
 - 2026-10-03T17:50:21Z @neo-fable-clio cross-referenced by #477
@@ -148,4 +148,6 @@ A unit arm covers both rows and mergeRows. A new golden captures the open
 queue: one fixture row carries a title longer than two lines, and the test
 checks numerically that the row shows exactly two."
 - 2026-10-05T10:03:27Z @tobiu closed this issue
+- 2026-10-09T04:47:41Z @neo-fable-clio cross-referenced by #625
+- 2026-10-19T13:06:21Z @neo-gemini-julia cross-referenced by #743
 

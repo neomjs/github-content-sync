@@ -110,10 +110,12 @@ Retrieval Hint: "Activity PR row state review verdict getActivityObjectText getP
 - 2026-10-02T08:30:52Z @neo-opus-grace added parent issue #414
 - 2026-10-02T08:30:56Z @neo-opus-grace added this to the **FM v1** milestone
 - 2026-10-02T08:42:22Z @neo-opus-grace cross-referenced by PR #417
-- 2026-10-02T08:52:45Z @neo-fable cross-referenced by #418
+- 2026-10-02T08:52:45Z @neo-fable-mnemosyne cross-referenced by #418
 - 2026-10-02T09:16:42Z @tobiu referenced in commit `af1e5ee` - "feat(agentos): the Activity PR row names the pull request's state and review verdict (#415) (#417)
 
 getPullRequestStatus reads the pr-activity payload the Brain already sends (state, isDraft, reviewDecision, and humanGateState where GitHub computes no decision) into one closed vocabulary, and the row's object cell appends it. RowContainer reacts to the lastRecordVersion stamp Neo.list.Buffered sets before every bind, so an event upserted in place redraws its row instead of keeping its first rendering until it is recycled."
 - 2026-10-02T09:16:43Z @tobiu closed this issue
 - 2026-10-02T11:38:26Z @neo-opus-grace cross-referenced by #414
+- 2026-10-03T08:24:43Z @neo-fable-clio cross-referenced by #480
+- 2026-10-03T09:05:10Z @neo-opus-grace cross-referenced by #490
 

@@ -7,11 +7,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-02T13:04:28Z'
 updatedAt: '2026-10-03T07:16:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/440'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: 351
 subIssues: []
@@ -99,36 +99,36 @@ Retrieval Hint: "setup card run re-check effect channel setupBroker performEffec
 
 ## Timeline
 
-- 2026-10-02T13:04:30Z @neo-fable added the `enhancement` label
-- 2026-10-02T13:04:30Z @neo-fable added the `agent-os` label
-- 2026-10-02T13:04:30Z @neo-fable added the `ai` label
-- 2026-10-02T13:05:26Z @neo-fable added parent issue #351
-- 2026-10-02T13:05:27Z @neo-fable marked this issue as being blocked by #750
-- 2026-10-02T13:07:27Z @neo-fable cross-referenced by PR #441
-- 2026-10-02T13:08:20Z @neo-fable cross-referenced by #384
+- 2026-10-02T13:04:30Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-02T13:04:30Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-02T13:04:30Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-02T13:05:26Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-02T13:05:27Z @neo-fable-mnemosyne marked this issue as being blocked by #750
+- 2026-10-02T13:07:27Z @neo-fable-mnemosyne cross-referenced by PR #441
+- 2026-10-02T13:08:20Z @neo-fable-mnemosyne cross-referenced by #384
 - 2026-10-02T13:08:31Z @neo-gpt-emmy cross-referenced by #442
-- 2026-10-02T13:09:57Z @neo-fable cross-referenced by #750
+- 2026-10-02T13:09:57Z @neo-fable-mnemosyne cross-referenced by #750
 - 2026-10-02T15:19:36Z @neo-opus-ada cross-referenced by PR #765
 - 2026-10-02T16:27:35Z @neo-gpt-emmy cross-referenced by #451
 - 2026-10-02T16:27:54Z @neo-gpt-emmy marked this issue as being blocked by #451
 - 2026-10-02T16:34:06Z @neo-gpt-emmy cross-referenced by PR #452
-- 2026-10-02T17:22:43Z @neo-fable cross-referenced by #19366
-- 2026-10-02T18:02:28Z @neo-fable cross-referenced by PR #19367
-- 2026-10-02T18:29:01Z @neo-fable assigned to @neo-fable
-- 2026-10-02T18:35:41Z @neo-fable cross-referenced by PR #464
-- 2026-10-02T18:37:12Z @neo-fable referenced in commit `9612823` - "chore(visual): re-stamp the baseline inputs for the effect channel (#440)
+- 2026-10-02T17:22:43Z @neo-fable-mnemosyne cross-referenced by #19366
+- 2026-10-02T18:02:28Z @neo-fable-mnemosyne cross-referenced by PR #19367
+- 2026-10-02T18:29:01Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-02T18:35:41Z @neo-fable-mnemosyne cross-referenced by PR #464
+- 2026-10-02T18:37:12Z @neo-fable-mnemosyne referenced in commit `9612823` - "chore(visual): re-stamp the baseline inputs for the effect channel (#440)
 
 FleetCockpitVisual 27/27; no golden changed."
 - 2026-10-02T19:26:54Z @neo-opus-vega cross-referenced by #14
 - 2026-10-02T19:29:40Z @neo-fable-clio cross-referenced by #351
 - 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
-- 2026-10-03T06:39:43Z @neo-fable referenced in commit `5ffda9a` - "chore(merge): bring origin/dev into the branch (#440)"
-- 2026-10-03T06:39:44Z @neo-fable referenced in commit `6a1c792` - "fix(harness): every setup record operation starts from the record on disk, so an effect whose acknowledgement write was rejected is never replayed (#440)
+- 2026-10-03T06:39:43Z @neo-fable-mnemosyne referenced in commit `5ffda9a` - "chore(merge): bring origin/dev into the branch (#440)"
+- 2026-10-03T06:39:44Z @neo-fable-mnemosyne referenced in commit `6a1c792` - "fix(harness): every setup record operation starts from the record on disk, so an effect whose acknowledgement write was rejected is never replayed (#440)
 
 The broker kept the run's record in memory and re-read it only on a fresh boot. A host that rejected the write acknowledging an effect left the pending receipt on disk and an older record in the broker: the next request ran the handler again, and the next consent wrote the guard away. The broker now holds the record's path only; every serialized operation reads the bound record from disk, a bound record that is gone or unreadable refuses the operation, and the writer's returned record is the working copy inside one operation.
 
 The regression arms run the broker over the pinned Brain's own recipe, record, host-effect and orchestration modules on a temp layout: the rejected-acknowledgement arm (same broker, fresh broker), the consent arm, the accepted control and the unreadable-record arm. The fixture e2e reads the completed run's density from the mounted provider (6 decisions, 0 manual actions). The Create door no longer matches the retired unwired reason."
-- 2026-10-03T07:04:31Z @neo-fable cross-referenced by #475
+- 2026-10-03T07:04:31Z @neo-fable-mnemosyne cross-referenced by #475
 - 2026-10-03T07:13:39Z @tobiu referenced in commit `424fa0e` - "feat(agentos): the setup card's run and re-check reach the vessel's effect channel through the shared orchestration (#440) (#464)
 
 * feat(agentos): the setup card's run and re-check reach the vessel's effect channel through the shared orchestration (#440)
@@ -145,7 +145,8 @@ The broker kept the run's record in memory and re-read it only on a fresh boot. 
 
 The regression arms run the broker over the pinned Brain's own recipe, record, host-effect and orchestration modules on a temp layout: the rejected-acknowledgement arm (same broker, fresh broker), the consent arm, the accepted control and the unreadable-record arm. The fixture e2e reads the completed run's density from the mounted provider (6 decisions, 0 manual actions). The Create door no longer matches the retired unwired reason."
 - 2026-10-03T07:13:39Z @tobiu closed this issue
-- 2026-10-03T07:15:03Z @neo-fable cross-referenced by #19377
+- 2026-10-03T07:15:03Z @neo-fable-mnemosyne cross-referenced by #19377
 - 2026-10-03T07:24:28Z @neo-fable-clio cross-referenced by PR #796
 - 2026-10-03T08:26:26Z @neo-fable-clio cross-referenced by #481
+- 2026-10-04T10:04:31Z @neo-gpt-emmy cross-referenced by PR #19378
 

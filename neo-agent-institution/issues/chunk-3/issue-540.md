@@ -7,11 +7,11 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-04T12:42:06Z'
 updatedAt: '2026-10-05T11:06:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/540'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 2
 parentIssue: 351
 subIssues: []
@@ -125,27 +125,27 @@ Retrieval Hint: "setup card verify row new attempt exit refused write reconcile-
 
 ## Timeline
 
-- 2026-10-04T12:42:06Z @neo-fable assigned to @neo-fable
-- 2026-10-04T12:42:07Z @neo-fable added the `enhancement` label
-- 2026-10-04T12:42:08Z @neo-fable added the `agent-os` label
-- 2026-10-04T12:42:08Z @neo-fable added the `ai` label
-- 2026-10-04T12:42:20Z @neo-fable added parent issue #351
-- 2026-10-04T12:42:22Z @neo-fable marked this issue as being blocked by #840
-- 2026-10-04T12:42:23Z @neo-fable marked this issue as being blocked by #19395
-- 2026-10-04T12:42:24Z @neo-fable added this to the **FM v1** milestone
-- 2026-10-04T12:44:13Z @neo-fable cross-referenced by PR #541
-- 2026-10-04T12:44:30Z @neo-fable cross-referenced by #351
+- 2026-10-04T12:42:06Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-04T12:42:07Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-04T12:42:08Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-04T12:42:08Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-04T12:42:20Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-04T12:42:22Z @neo-fable-mnemosyne marked this issue as being blocked by #840
+- 2026-10-04T12:42:23Z @neo-fable-mnemosyne marked this issue as being blocked by #19395
+- 2026-10-04T12:42:24Z @neo-fable-mnemosyne added this to the **FM v1** milestone
+- 2026-10-04T12:44:13Z @neo-fable-mnemosyne cross-referenced by PR #541
+- 2026-10-04T12:44:30Z @neo-fable-mnemosyne cross-referenced by #351
 - 2026-10-04T12:48:38Z @neo-fable-clio cross-referenced by #481
-- 2026-10-04T13:50:02Z @neo-fable cross-referenced by PR #19396
-- 2026-10-04T14:03:37Z @neo-fable cross-referenced by #842
-- 2026-10-04T14:24:03Z @neo-fable cross-referenced by PR #844
+- 2026-10-04T13:50:02Z @neo-fable-mnemosyne cross-referenced by PR #19396
+- 2026-10-04T14:03:37Z @neo-fable-mnemosyne cross-referenced by #842
+- 2026-10-04T14:24:03Z @neo-fable-mnemosyne cross-referenced by PR #844
 - 2026-10-04T14:29:54Z @neo-fable-clio cross-referenced by #535
-- 2026-10-04T14:50:56Z @neo-fable cross-referenced by #547
-- 2026-10-04T14:51:06Z @neo-fable marked this issue as being blocked by #547
+- 2026-10-04T14:50:56Z @neo-fable-mnemosyne cross-referenced by #547
+- 2026-10-04T14:51:06Z @neo-fable-mnemosyne marked this issue as being blocked by #547
 - 2026-10-04T14:52:33Z @neo-gpt-emmy cross-referenced by PR #843
-- 2026-10-04T16:17:27Z @neo-fable cross-referenced by #840
-- 2026-10-04T16:22:47Z @neo-fable cross-referenced by #550
-### @neo-fable - 2026-10-04T17:08:03Z
+- 2026-10-04T16:17:27Z @neo-fable-mnemosyne cross-referenced by #840
+- 2026-10-04T16:22:47Z @neo-fable-mnemosyne cross-referenced by #550
+### @neo-fable-mnemosyne - 2026-10-04T17:08:03Z
 
 ## Design fork for the design seat: a verify row with two exits
 
@@ -170,16 +170,16 @@ The one rule: chip labels are the operator's verbs, never the contract's nouns �
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 4299144f-a074-4eee-afd9-75c53b452d15
 
-- 2026-10-04T17:37:28Z @neo-fable marked this issue as being blocked by #550
-- 2026-10-05T09:49:31Z @neo-fable cross-referenced by PR #561
-- 2026-10-05T09:53:16Z @neo-fable cross-referenced by #559
-- 2026-10-05T10:10:31Z @neo-fable referenced in commit `e93b09d` - "chore(merge): bring origin/dev into the branch (#540)"
-- 2026-10-05T10:10:31Z @neo-fable referenced in commit `364db31` - "test(agentos): re-stamp the visual baselines after dev's merges (#540)"
-- 2026-10-05T10:47:33Z @neo-fable referenced in commit `13214c7` - "chore(merge): bring origin/dev into the branch (#540)"
-- 2026-10-05T10:47:33Z @neo-fable referenced in commit `0e0cdd7` - "fix(agentos): an answer equal to the held one also takes a pending confirmation back (#540)
+- 2026-10-04T17:37:28Z @neo-fable-mnemosyne marked this issue as being blocked by #550
+- 2026-10-05T09:49:31Z @neo-fable-mnemosyne cross-referenced by PR #561
+- 2026-10-05T09:53:16Z @neo-fable-mnemosyne cross-referenced by #559
+- 2026-10-05T10:10:31Z @neo-fable-mnemosyne referenced in commit `e93b09d` - "chore(merge): bring origin/dev into the branch (#540)"
+- 2026-10-05T10:10:31Z @neo-fable-mnemosyne referenced in commit `364db31` - "test(agentos): re-stamp the visual baselines after dev's merges (#540)"
+- 2026-10-05T10:47:33Z @neo-fable-mnemosyne referenced in commit `13214c7` - "chore(merge): bring origin/dev into the branch (#540)"
+- 2026-10-05T10:47:33Z @neo-fable-mnemosyne referenced in commit `0e0cdd7` - "fix(agentos): an answer equal to the held one also takes a pending confirmation back (#540)
 
 The door cleared the witness row's pending confirmation in afterSetEvaluation, which the config setter skips for an equal value: an equal answer left the confirmation in the row. The door's evaluation is an observation, so its config now never reports equality (the engine's per-config isEqual, as container items use it) and every answer re-projects. The arm holds an exactly equal answer and a changed one."
-- 2026-10-05T10:47:33Z @neo-fable referenced in commit `7a04c8b` - "test(agentos): re-stamp the visual baselines after dev's merges (#540)"
+- 2026-10-05T10:47:33Z @neo-fable-mnemosyne referenced in commit `7a04c8b` - "test(agentos): re-stamp the visual baselines after dev's merges (#540)"
 - 2026-10-05T11:05:33Z @tobiu referenced in commit `9406ce8` - "feat(agentos): the setup card offers the witness row's exits (#540) (#561)
 
 * feat(agentos): the setup card offers the witness row's exits (#540)
@@ -198,4 +198,7 @@ The door cleared the witness row's pending confirmation in afterSetEvaluation, w
 
 * test(agentos): re-stamp the visual baselines after dev's merges (#540)"
 - 2026-10-05T11:05:33Z @tobiu closed this issue
+- 2026-10-09T03:45:36Z @neo-fable-clio cross-referenced by #618
+- 2026-10-17T16:04:06Z @neo-fable-mnemosyne cross-referenced by #475
+- 2026-10-17T16:57:24Z @neo-fable-mnemosyne cross-referenced by PR #19836
 

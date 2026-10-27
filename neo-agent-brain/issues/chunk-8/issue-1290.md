@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-26T02:46:41Z'
-updatedAt: '2026-10-27T18:58:34Z'
+updatedAt: '2026-10-27T19:47:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1290'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -57,7 +57,7 @@ Structure map (`npm run ai:structure-map -- --files --loc` run `2026-10-26T02:43
 ## The Fix
 
 1. **In `neomjs/neo-agent-brain` (`ai/services/fleet/seatMemoryLayerTemplate.mjs` & `SummaryService.mjs`):**
-   - Update the Memory Core pointer in `renderMemoryIndexMd` (`line 100`) and `renderAboutThisLayerMd` (`lines 157, 176, 206`) so generated seat memory layers teach `query_raw_memories` with `detail: 'summary'` and `agentIdentity` for discovery sweeps before `detail: 'full'` hydration.
+   - Update the Memory Core pointer in `renderMemoryIndexMd` (`line 100`) and `renderAboutThisLayerMd` (`lines 157, 176, 206`) so generated seat memory layers teach `query_raw_memories` with `detail: 'summary'` (plus `agentIdentity` when author-scoped) for discovery sweeps before `detail: 'full'` hydration.
    - Update `SummaryService.resolveAuthorScope` (`line 94`) error prefix from `"SummaryService.listSummaries:"` to `"SummaryService.resolveAuthorScope:"`.
    - Update `test/playwright/unit/ai/services/fleet/seatMemoryLayerTemplate.spec.mjs`, `test/playwright/unit/ai/services/memory-core/SummaryService.AuthorScope.spec.mjs`, and the SHA-256 digest pins in `generateKimiSeatConfig.spec.mjs` and `generateOpenCodeSeatConfig.spec.mjs`.
 2. **Post-Deploy L3 Verification (`Residual-Owner` for `#1281` / `PR #1285`):**
@@ -67,7 +67,7 @@ Structure map (`npm run ai:structure-map -- --files --loc` run `2026-10-26T02:43
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `ai/services/fleet/seatMemoryLayerTemplate.mjs` (`lines 99-100, 157, 176, 206`) | `neomjs/neo-agent-brain#1280` (`PR #1288`) + Discussion `#20111` Option F | Teaches `detail: 'summary'` (and `agentIdentity`) on `query_raw_memories` discovery sweeps before `detail: 'full'` hydration | Existing `MEMORY.md` files remain valid | `seatMemoryLayerTemplate.mjs` JSDoc + rendered markdown | `seatMemoryLayerTemplate.spec.mjs`, `generateKimiSeatConfig.spec.mjs`, `generateOpenCodeSeatConfig.spec.mjs` |
+| `ai/services/fleet/seatMemoryLayerTemplate.mjs` (`lines 99-100, 157, 176, 206`) | `neomjs/neo-agent-brain#1280` (`PR #1288`) + Discussion `#20111` Option F | Teaches `detail: 'summary'` (plus `agentIdentity` when author-scoped) on `query_raw_memories` discovery sweeps before `detail: 'full'` hydration | Existing `MEMORY.md` files remain valid | `seatMemoryLayerTemplate.mjs` JSDoc + rendered markdown | `seatMemoryLayerTemplate.spec.mjs`, `generateKimiSeatConfig.spec.mjs`, `generateOpenCodeSeatConfig.spec.mjs` |
 | `SummaryService.resolveAuthorScope` (`SummaryService.mjs:94`) | `PR #1288` Round-2 review note | Uses neutral `"SummaryService.resolveAuthorScope:"` prefix on unbound `@me` error | Throws `Error` as before | `SummaryService.mjs` JSDoc | `SummaryService.AuthorScope.spec.mjs` |
 | `explore_memory_history` live plane call (`Residual-Owner` for `#1281` / `PR #1285`) | `neomjs/neo-agent-brain#1281` (`PR #1285` `RA-4`) | Completes under the 60s MCP deadline on the deployed plane | Degrades synthesis via `synthesis-failed: timeout` at 15s | `PR #1285` Post-Merge Validation | L3 live plane receipt (`21s` weekly / `40s` daily) |
 
@@ -77,7 +77,7 @@ Structure map (`npm run ai:structure-map -- --files --loc` run `2026-10-26T02:43
 
 ## Acceptance Criteria
 
-- [ ] `ai/services/fleet/seatMemoryLayerTemplate.mjs` teaches `detail: 'summary'` (and `agentIdentity`) on `query_raw_memories` discovery sweeps, and `SummaryService.resolveAuthorScope` uses a neutral error prefix, with `seatMemoryLayerTemplate.spec.mjs` and `SummaryService.AuthorScope.spec.mjs` passing.
+- [ ] `ai/services/fleet/seatMemoryLayerTemplate.mjs` teaches `detail: 'summary'` (plus `agentIdentity` when author-scoped) on `query_raw_memories` discovery sweeps, and `SummaryService.resolveAuthorScope` uses a neutral error prefix, with `seatMemoryLayerTemplate.spec.mjs` and `SummaryService.AuthorScope.spec.mjs` passing.
 - [ ] ~~`memory-mining-protocol.md` (`§2 Tool order by freshness`) teaches `detail: 'summary'` for initial `query_raw_memories` sweeps and `detail: 'full'` (`projection: 'public'` for cross-seat reads) for hit hydration.~~ *(Split to companion repository-local leaf `neomjs/neo-agent-skills#221` [QUARANTINED_URL: github.com] per `pull-request-workflow.md §9.1`)*
 - [ ] Post-deploy L3 residual from `#1281` / `PR #1285`: one `explore_memory_history` call on the live Memory Core plane over the incident's window completes under 60s.
 
@@ -120,4 +120,5 @@ Retrieval Hint: "seatMemoryLayerTemplate memory-mining query_raw_memories detail
 - 2026-10-27T18:57:53Z @neo-gemini-maryam cross-referenced by #221
 - 2026-10-27T19:00:17Z @neo-gemini-maryam cross-referenced by PR #222
 - 2026-10-27T19:00:28Z @neo-gemini-maryam cross-referenced by PR #1320
+- 2026-10-27T19:47:38Z @neo-gemini-maryam referenced in commit `92f5fcb` - "fix(memory-core): scope agentIdentity teaching to author-scoped sweeps (#1290)"
 

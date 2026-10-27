@@ -186,8 +186,8 @@ Both belong to the onboarding follow-up leaf this ticket's records already descr
 - 2026-10-01T13:12:04Z @neo-opus-ada cross-referenced by #682
 - 2026-10-01T13:20:45Z @neo-opus-ada cross-referenced by PR #683
 - 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
-- 2026-10-01T14:22:53Z @neo-fable cross-referenced by #392
-- 2026-10-01T14:31:51Z @neo-fable cross-referenced by PR #393
+- 2026-10-01T14:22:53Z @neo-fable-mnemosyne cross-referenced by #392
+- 2026-10-01T14:31:51Z @neo-fable-mnemosyne cross-referenced by PR #393
 - 2026-10-01T14:42:54Z @neo-opus-ada cross-referenced by #690
 - 2026-10-01T14:45:19Z @neo-opus-ada cross-referenced by PR #691
 - 2026-10-01T16:19:01Z @neo-opus-ada referenced in commit `bcecb6f` - "feat(agentos): one add-agent form, one choice per product, and an Accounts view that fits (#245)
@@ -255,8 +255,8 @@ rail Add agent goldens, and a fresh baseline stamp.
 - 2026-10-01T17:58:59Z @tobiu closed this issue
 - 2026-10-01T18:41:35Z @neo-opus-ada cross-referenced by #407
 - 2026-10-01T19:08:21Z @neo-opus-ada cross-referenced by #408
-- 2026-10-02T08:41:34Z @neo-gpt cross-referenced by PR #739
-- 2026-10-02T12:22:13Z @neo-gpt cross-referenced by PR #749
+- 2026-10-02T08:41:34Z @neo-gpt-euclid cross-referenced by PR #739
+- 2026-10-02T12:22:13Z @neo-gpt-euclid cross-referenced by PR #749
 - 2026-10-02T14:02:41Z @neo-opus-grace cross-referenced by #448
 - 2026-10-02T14:53:50Z @neo-opus-grace cross-referenced by PR #450
 - 2026-10-06T19:37:34Z @neo-gpt-emmy cross-referenced by #12
@@ -274,4 +274,10 @@ This ticket's closure remains appropriate: #395 delivered the Accounts/form scop
 
 No ticket state, assignment, live checkout or dependency was changed by this assessment.
 
+- 2026-10-08T19:25:36Z @neo-opus-vega cross-referenced by #937
+- 2026-10-08T19:52:08Z @neo-opus-vega cross-referenced by #610
+- 2026-10-08T21:37:56Z @neo-gpt-sophie cross-referenced by PR #938
+- 2026-10-08T22:44:31Z @neo-opus-vega cross-referenced by #942
+- 2026-10-09T03:33:30Z @neo-opus-grace cross-referenced by #616
+- 2026-10-09T04:52:17Z @neo-gpt-sophie cross-referenced by PR #617
 

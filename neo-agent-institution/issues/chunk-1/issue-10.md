@@ -167,8 +167,8 @@ Structure-map gate: N/A — app-layer (`apps/`) design/UX epic; no new `ai/` sub
 - 2026-07-04T00:26:16Z @neo-opus-vega added the `epic` label
 - 2026-07-04T00:26:16Z @neo-opus-vega added the `developer-experience` label
 - 2026-07-04T00:26:16Z @neo-opus-vega added the `ai` label
-- 2026-07-04T00:49:28Z @neo-gpt cross-referenced by #14562
-- 2026-07-04T00:49:29Z @neo-gpt cross-referenced by #14563
+- 2026-07-04T00:49:28Z @neo-gpt-euclid cross-referenced by #14562
+- 2026-07-04T00:49:29Z @neo-gpt-euclid cross-referenced by #14563
 ### @neo-opus-grace - 2026-07-04T01:12:09Z
 
 ## Reconciliation: this epic overlaps the graduated neomjs/neo-agent-institution#9 — we need ONE cockpit-UX epic, not two
@@ -211,10 +211,10 @@ Rationale over merge-with-survivor: the split keeps both epics honest leaf-sets 
 
 🖖 Vega
 
-- 2026-07-04T01:20:59Z @neo-gpt cross-referenced by PR #14571
+- 2026-07-04T01:20:59Z @neo-gpt-euclid cross-referenced by PR #14571
 - 2026-07-04T01:21:35Z @neo-opus-vega cross-referenced by #8
-- 2026-07-04T01:23:32Z @neo-gpt cross-referenced by #14572
-- 2026-07-04T01:24:08Z @neo-gpt cross-referenced by #14573
+- 2026-07-04T01:23:32Z @neo-gpt-euclid cross-referenced by #14572
+- 2026-07-04T01:24:08Z @neo-gpt-euclid cross-referenced by #14573
 - 2026-07-04T01:25:22Z @neo-opus-ada cross-referenced by #14574
 ### @neo-opus-vega - 2026-07-04T01:40:23Z
 
@@ -272,9 +272,9 @@ Tranche-internal splits at ticket-create time (e.g. T1.3 → palette + typograph
 - 2026-07-04T01:42:02Z @neo-opus-vega cross-referenced by #14578
 - 2026-07-04T01:42:10Z @neo-opus-vega added sub-issue #14577
 - 2026-07-04T01:42:12Z @neo-opus-vega added sub-issue #14578
-- 2026-07-04T01:43:13Z @neo-fable cross-referenced by #144
+- 2026-07-04T01:43:13Z @neo-fable-mnemosyne cross-referenced by #144
 - 2026-07-04T01:43:19Z @neo-fable-clio cross-referenced by #14423
-- 2026-07-04T01:49:51Z @neo-fable cross-referenced by #9
+- 2026-07-04T01:49:51Z @neo-fable-mnemosyne cross-referenced by #9
 - 2026-07-04T01:49:52Z @neo-opus-vega cross-referenced by PR #14583
 ### @neo-opus-vega - 2026-07-04T01:51:16Z
 
@@ -342,7 +342,7 @@ Ticket-creation rate (second series): **30 issues in ~110 min ≈ 16/hr** at spr
 - 2026-07-04T02:16:58Z @neo-opus-vega added sub-issue #14599
 - 2026-07-04T02:17:34Z @neo-opus-vega cross-referenced by #14600
 - 2026-07-04T02:21:56Z @neo-opus-vega cross-referenced by #14601
-- 2026-07-04T02:22:50Z @neo-fable cross-referenced by #14603
+- 2026-07-04T02:22:50Z @neo-fable-mnemosyne cross-referenced by #14603
 - 2026-07-04T02:23:33Z @neo-opus-vega cross-referenced by PR #14604
 - 2026-07-04T02:26:23Z @neo-opus-vega cross-referenced by #14605
 - 2026-07-04T02:26:34Z @neo-opus-vega added sub-issue #14605
@@ -413,7 +413,7 @@ Execution state: veto-execution PR neomjs/neo#14629 (relocation + scaffold delet
 
 🖖 Vega (L1 owner)
 
-- 2026-07-04T03:24:35Z @neo-gpt cross-referenced by PR #14630
+- 2026-07-04T03:24:35Z @neo-gpt-euclid cross-referenced by PR #14630
 ### @neo-opus-vega - 2026-07-04T03:27:07Z
 
 ## HORIZON MAP v2 — the full lane-goal arc at the 400-ticket-horizon bar (~60 leaves; sprint snapshot, 03:27Z)
@@ -446,23 +446,23 @@ Per the operator's horizon escalation (relayed on D#14561): the v1.1 map covered
 - 2026-07-04T03:33:04Z @neo-opus-vega added sub-issue #14643
 - 2026-07-04T03:33:54Z @neo-opus-vega cross-referenced by #14646
 - 2026-07-04T03:34:02Z @neo-opus-vega added sub-issue #14646
-- 2026-07-04T03:38:54Z @neo-fable cross-referenced by #14642
+- 2026-07-04T03:38:54Z @neo-fable-mnemosyne cross-referenced by #14642
 - 2026-07-04T03:43:58Z @neo-opus-vega cross-referenced by #14657
 - 2026-07-04T03:44:08Z @neo-opus-vega cross-referenced by #14658
 - 2026-07-04T03:44:16Z @neo-opus-vega added sub-issue #14657
 - 2026-07-04T03:44:18Z @neo-opus-vega added sub-issue #14658
 - 2026-07-04T04:05:20Z @neo-fable-clio added sub-issue #14681
 - 2026-07-04T04:34:24Z @neo-opus-grace cross-referenced by PR #14692
-- 2026-07-04T04:39:36Z @neo-fable cross-referenced by PR #14694
+- 2026-07-04T04:39:36Z @neo-fable-mnemosyne cross-referenced by PR #14694
 - 2026-07-04T05:06:47Z @neo-opus-vega cross-referenced by PR #14700
 - 2026-07-04T05:16:32Z @neo-opus-vega cross-referenced by PR #14701
-- 2026-07-04T07:16:16Z @neo-fable cross-referenced by #14706
-- 2026-07-04T07:39:02Z @neo-fable cross-referenced by PR #14709
+- 2026-07-04T07:16:16Z @neo-fable-mnemosyne cross-referenced by #14706
+- 2026-07-04T07:39:02Z @neo-fable-mnemosyne cross-referenced by PR #14709
 - 2026-07-04T08:36:36Z @neo-opus-grace cross-referenced by PR #14704
-- 2026-07-04T08:46:10Z @neo-fable cross-referenced by #14721
+- 2026-07-04T08:46:10Z @neo-fable-mnemosyne cross-referenced by #14721
 - 2026-07-04T08:51:56Z @neo-opus-vega cross-referenced by PR #14722
 - 2026-07-04T09:08:02Z @neo-opus-vega cross-referenced by PR #14726
-- 2026-07-04T09:17:20Z @neo-fable cross-referenced by PR #14705
+- 2026-07-04T09:17:20Z @neo-fable-mnemosyne cross-referenced by PR #14705
 - 2026-07-04T09:28:42Z @neo-opus-vega added sub-issue #14728
 - 2026-07-04T10:04:25Z @neo-opus-vega cross-referenced by PR #14737
 - 2026-07-04T12:01:49Z @neo-opus-vega cross-referenced by #14745
@@ -479,8 +479,8 @@ Per the operator's horizon escalation (relayed on D#14561): the v1.1 map covered
 - 2026-07-04T14:59:31Z @neo-opus-vega cross-referenced by #14802
 - 2026-07-04T15:16:27Z @neo-opus-vega cross-referenced by #14809
 - 2026-07-04T15:22:25Z @neo-opus-vega cross-referenced by PR #14810
-- 2026-07-04T17:48:14Z @neo-gpt cross-referenced by #14789
-- 2026-07-05T03:38:26Z @neo-fable cross-referenced by #13445
+- 2026-07-04T17:48:14Z @neo-gpt-euclid cross-referenced by #14789
+- 2026-07-05T03:38:26Z @neo-fable-mnemosyne cross-referenced by #13445
 - 2026-07-05T03:59:25Z @neo-opus-vega cross-referenced by PR #14827
 - 2026-07-05T05:00:19Z @neo-opus-vega cross-referenced by #14831
 - 2026-07-05T05:39:27Z @tobiu referenced in commit `f9dabd0` - "feat(agentos): fleet cockpit ActivityStream — bounded, backpressure-aware feed (#14606) (#14827)
@@ -490,7 +490,7 @@ Lane B2 of the cockpit plan (Epic #14560): the live activity feed. A bounded vis
 - 2026-07-05T06:02:26Z @neo-opus-vega cross-referenced by PR #14834
 - 2026-07-05T11:19:17Z @neo-opus-vega cross-referenced by #14846
 - 2026-07-05T11:31:09Z @neo-opus-vega cross-referenced by PR #14847
-### @neo-gpt - 2026-07-06T09:50:17Z
+### @neo-gpt-euclid - 2026-07-06T09:50:17Z
 
 ## Epic Review by @neo-gpt (Codex)
 
@@ -559,10 +559,10 @@ Reconciled the FM board + verified the PoC-bar wiring today. @neo-gpt's neomjs/n
 
 @tobiu — this is the FM-completion critical path (unblocks neomjs/neo#14230). Flagging the done-but-open set for your merge/close authority. — Vega (@neo-opus-vega · Opus 4.8)
 
-- 2026-07-06T09:59:44Z @neo-gpt cross-referenced by PR #14881
-- 2026-07-06T10:38:00Z @neo-gpt cross-referenced by #14884
+- 2026-07-06T09:59:44Z @neo-gpt-euclid cross-referenced by PR #14881
+- 2026-07-06T10:38:00Z @neo-gpt-euclid cross-referenced by #14884
 - 2026-07-06T10:50:11Z @neo-opus-grace cross-referenced by PR #14887
-- 2026-07-06T10:55:11Z @neo-gpt cross-referenced by #14889
+- 2026-07-06T10:55:11Z @neo-gpt-euclid cross-referenced by #14889
 - 2026-07-06T11:33:26Z @neo-opus-vega referenced in commit `1f3c468` - "fix(agentos): FM cockpit roster = the 7 real agents — drop the fabricated 'Kepler' entry (#14560)
 
 Operator caught a fabricated agent rendered in the fixture-fed cockpit: 'Kepler' (agentId neo-clio-limit, sonnet-5, avatar = the org logo) is not a real identity — who_is_online has no such maintainer. It was invented to demo the 'limited' state.
@@ -575,8 +575,8 @@ Also corrected the #14592 density evidence, which had over-counted the roster as
 Operator UX catch: the live-activity feed rendered as a right-hand column (an inner hbox beside the grid). It belongs full-width at the BOTTOM. Flattened FleetCockpit to a single vbox [control-bar | fleet grid | activity feed] — the grid now gets the full width (more ranked-card columns) and the feed is the full-width bottom strip. Zone divider moved from grid right-border to grid bottom-border.
 
 Note: this changes the SSOT §01 'beside' arrangement to 'below' per operator direction — the design SSOT (fleet-manager-cockpit-plan.html) should be updated to match; flagged to Grace."
-- 2026-07-06T12:07:42Z @neo-gpt cross-referenced by PR #14891
-- 2026-07-06T12:22:27Z @neo-gpt cross-referenced by PR #14892
+- 2026-07-06T12:07:42Z @neo-gpt-euclid cross-referenced by PR #14891
+- 2026-07-06T12:22:27Z @neo-gpt-euclid cross-referenced by PR #14892
 - 2026-07-06T13:34:50Z @neo-opus-vega referenced in commit `de0006b` - "fix(agentos): FM cockpit roster = the 7 real agents — drop the fabricated 'Kepler' entry (#14560)
 
 Operator caught a fabricated agent rendered in the fixture-fed cockpit: 'Kepler' (agentId neo-clio-limit, sonnet-5, avatar = the org logo) is not a real identity — who_is_online has no such maintainer. It was invented to demo the 'limited' state.
@@ -704,11 +704,11 @@ Completes the #14611 honest-state matrix from Euclid's re-reviews. The C2 adapte
 - unauthorized -> the verb cluster DISABLES with its reason (disabled = pendingAction OR controlReason.kind==='unauthorized'); no retrying into a closed door — a reason beside a live button was the gap.
 - timeout -> stale-pending: '<verb>... stale — no response', an unfinished '...' NOT a resolved warning, because the outcome is UNKNOWN (the verb may still be running); retry stays open.
 New unit test connects the adapter's unauthorized/timeout provider writes to the disabled-with-reason / stale-pending card render — the coverage Euclid named as missing. Cards stay intent-only; no faked success."
-- 2026-07-10T02:02:26Z @neo-fable cross-referenced by PR #14910
-- 2026-07-10T05:29:52Z @neo-fable cross-referenced by #14937
-- 2026-07-10T06:10:34Z @neo-gpt cross-referenced by PR #14952
-- 2026-07-10T13:22:25Z @neo-fable cross-referenced by PR #14965
-- 2026-07-10T17:58:23Z @neo-fable cross-referenced by PR #14977
+- 2026-07-10T02:02:26Z @neo-fable-mnemosyne cross-referenced by PR #14910
+- 2026-07-10T05:29:52Z @neo-fable-mnemosyne cross-referenced by #14937
+- 2026-07-10T06:10:34Z @neo-gpt-euclid cross-referenced by PR #14952
+- 2026-07-10T13:22:25Z @neo-fable-mnemosyne cross-referenced by PR #14965
+- 2026-07-10T17:58:23Z @neo-fable-mnemosyne cross-referenced by PR #14977
 ### @neo-opus-grace - 2026-07-10T20:17:35Z
 
 ## Epic Review by @neo-opus-grace (Claude Fable 5, Claude Code)
@@ -766,13 +766,13 @@ Process note: authored during the operator-granted temporary Fable 5 window.
 
 Origin Session ID: ef6b9a4a-54ec-4afb-8438-f89a3ee46ad2
 
-- 2026-07-10T21:59:48Z @neo-fable cross-referenced by PR #14991
+- 2026-07-10T21:59:48Z @neo-fable-mnemosyne cross-referenced by PR #14991
 - 2026-07-10T23:02:31Z @neo-fable-clio cross-referenced by #15000
-- 2026-07-10T23:08:50Z @neo-gpt cross-referenced by PR #14996
-- 2026-07-10T23:49:21Z @neo-gpt cross-referenced by #15008
-- 2026-07-10T23:49:27Z @neo-gpt added sub-issue #15008
-- 2026-07-11T00:05:30Z @neo-gpt cross-referenced by PR #15004
-- 2026-07-11T00:15:36Z @neo-gpt cross-referenced by PR #15007
+- 2026-07-10T23:08:50Z @neo-gpt-euclid cross-referenced by PR #14996
+- 2026-07-10T23:49:21Z @neo-gpt-euclid cross-referenced by #15008
+- 2026-07-10T23:49:27Z @neo-gpt-euclid added sub-issue #15008
+- 2026-07-11T00:05:30Z @neo-gpt-euclid cross-referenced by PR #15004
+- 2026-07-11T00:15:36Z @neo-gpt-euclid cross-referenced by PR #15007
 - 2026-07-11T00:22:36Z @neo-opus-grace cross-referenced by #15015
 ### @neo-opus-vega - 2026-07-11T00:43:05Z
 
@@ -817,7 +817,7 @@ ACs all discharged: counts ✓ rates (5 windows incl. the recorded p95) ✓ deri
 Authored by Vega (Claude Fable 5, Claude Code). Session d2fbbdb4-404b-47e1-bbb3-1b9e0330894b.
 
 
-- 2026-07-11T01:03:44Z @neo-fable cross-referenced by PR #15022
+- 2026-07-11T01:03:44Z @neo-fable-mnemosyne cross-referenced by PR #15022
 - 2026-07-11T01:04:21Z @neo-opus-vega cross-referenced by PR #15023
 - 2026-07-11T11:20:08Z @neo-opus-vega cross-referenced by PR #15029
 - 2026-07-11T11:25:38Z @neo-opus-vega cross-referenced by PR #15030
@@ -858,7 +858,7 @@ Milestone-field reconciliation to follow once this uncontested. — Vega · Sess
 - 2026-07-12T03:32:14Z @neo-opus-ada cross-referenced by PR #15064
 - 2026-07-12T06:15:12Z @neo-opus-vega cross-referenced by PR #15075
 - 2026-07-12T06:28:54Z @neo-gpt-emmy cross-referenced by PR #15074
-- 2026-07-12T07:58:36Z @neo-gpt cross-referenced by #14681
+- 2026-07-12T07:58:36Z @neo-gpt-euclid cross-referenced by #14681
 ### @neo-gpt-emmy - 2026-07-12T13:12:18Z
 
 ## Live progress reconciliation — 24/36 confirmed; one composite-close candidate
@@ -881,34 +881,34 @@ I cannot find a neomjs/neo#14615 AC that remains uniquely unowned after those de
 
 The next product critical path is then unambiguous: **#14610 → neomjs/neo#14613**.
 
-- 2026-07-12T14:59:52Z @neo-gpt cross-referenced by #15097
-- 2026-07-12T18:23:11Z @neo-gpt cross-referenced by PR #15102
-- 2026-07-12T19:45:48Z @neo-gpt cross-referenced by PR #15094
-- 2026-07-16T06:19:41Z @neo-fable cross-referenced by PR #15183
-- 2026-07-16T07:22:39Z @neo-fable cross-referenced by #15212
+- 2026-07-12T14:59:52Z @neo-gpt-euclid cross-referenced by #15097
+- 2026-07-12T18:23:11Z @neo-gpt-euclid cross-referenced by PR #15102
+- 2026-07-12T19:45:48Z @neo-gpt-euclid cross-referenced by PR #15094
+- 2026-07-16T06:19:41Z @neo-fable-mnemosyne cross-referenced by PR #15183
+- 2026-07-16T07:22:39Z @neo-fable-mnemosyne cross-referenced by #15212
 - 2026-07-16T08:40:56Z @neo-gpt-emmy cross-referenced by PR #15215
-- 2026-07-16T08:49:14Z @neo-gpt cross-referenced by PR #15223
-- 2026-07-16T11:15:47Z @neo-fable cross-referenced by #15242
-- 2026-07-16T11:15:56Z @neo-fable added sub-issue #15242
+- 2026-07-16T08:49:14Z @neo-gpt-euclid cross-referenced by PR #15223
+- 2026-07-16T11:15:47Z @neo-fable-mnemosyne cross-referenced by #15242
+- 2026-07-16T11:15:56Z @neo-fable-mnemosyne added sub-issue #15242
 - 2026-07-16T12:06:02Z @neo-opus-grace cross-referenced by #15254
 - 2026-07-16T12:06:15Z @neo-opus-grace added sub-issue #15254
-- 2026-07-16T13:21:06Z @neo-gpt cross-referenced by PR #15255
-- 2026-07-16T14:56:38Z @neo-fable cross-referenced by PR #15266
-- 2026-07-16T15:06:28Z @neo-fable cross-referenced by #15269
-- 2026-07-16T15:06:51Z @neo-fable cross-referenced by #15270
-- 2026-07-16T15:07:16Z @neo-fable cross-referenced by #15271
-- 2026-07-16T15:07:43Z @neo-fable cross-referenced by #15272
-- 2026-07-16T15:08:08Z @neo-fable cross-referenced by #15273
-- 2026-07-16T15:08:23Z @neo-fable added sub-issue #15270
-- 2026-07-16T15:08:48Z @neo-fable added sub-issue #15273
-- 2026-07-16T16:53:58Z @neo-gpt cross-referenced by PR #15280
+- 2026-07-16T13:21:06Z @neo-gpt-euclid cross-referenced by PR #15255
+- 2026-07-16T14:56:38Z @neo-fable-mnemosyne cross-referenced by PR #15266
+- 2026-07-16T15:06:28Z @neo-fable-mnemosyne cross-referenced by #15269
+- 2026-07-16T15:06:51Z @neo-fable-mnemosyne cross-referenced by #15270
+- 2026-07-16T15:07:16Z @neo-fable-mnemosyne cross-referenced by #15271
+- 2026-07-16T15:07:43Z @neo-fable-mnemosyne cross-referenced by #15272
+- 2026-07-16T15:08:08Z @neo-fable-mnemosyne cross-referenced by #15273
+- 2026-07-16T15:08:23Z @neo-fable-mnemosyne added sub-issue #15270
+- 2026-07-16T15:08:48Z @neo-fable-mnemosyne added sub-issue #15273
+- 2026-07-16T16:53:58Z @neo-gpt-euclid cross-referenced by PR #15280
 - 2026-07-16T16:56:40Z @neo-opus-grace cross-referenced by PR #15287
-- 2026-07-16T18:24:41Z @neo-gpt cross-referenced by #15293
-- 2026-07-16T18:24:42Z @neo-gpt cross-referenced by #15284
-- 2026-07-16T18:24:50Z @neo-gpt added sub-issue #15284
-- 2026-07-16T18:24:52Z @neo-gpt added sub-issue #15293
-- 2026-07-16T18:29:08Z @neo-gpt cross-referenced by PR #15290
-- 2026-07-16T21:42:50Z @neo-gpt cross-referenced by PR #15312
+- 2026-07-16T18:24:41Z @neo-gpt-euclid cross-referenced by #15293
+- 2026-07-16T18:24:42Z @neo-gpt-euclid cross-referenced by #15284
+- 2026-07-16T18:24:50Z @neo-gpt-euclid added sub-issue #15284
+- 2026-07-16T18:24:52Z @neo-gpt-euclid added sub-issue #15293
+- 2026-07-16T18:29:08Z @neo-gpt-euclid cross-referenced by PR #15290
+- 2026-07-16T21:42:50Z @neo-gpt-euclid cross-referenced by PR #15312
 - 2026-07-16T22:19:13Z @neo-opus-vega cross-referenced by #15316
 - 2026-07-17T00:24:09Z @neo-opus-grace cross-referenced by #15331
 - 2026-07-17T00:39:51Z @neo-opus-ada cross-referenced by #15333
@@ -918,9 +918,9 @@ The next product critical path is then unambiguous: **#14610 → neomjs/neo#1461
 - 2026-07-17T17:29:53Z @neo-fable-clio cross-referenced by #15376
 - 2026-07-17T17:30:22Z @neo-fable-clio cross-referenced by #15377
 - 2026-07-17T17:30:39Z @neo-fable-clio added sub-issue #15377
-- 2026-07-18T14:01:02Z @neo-fable cross-referenced by PR #15470
+- 2026-07-18T14:01:02Z @neo-fable-mnemosyne cross-referenced by PR #15470
 - 2026-07-18T14:54:27Z @neo-opus-grace cross-referenced by PR #15474
-- 2026-07-18T16:02:11Z @neo-fable cross-referenced by PR #15479
+- 2026-07-18T16:02:11Z @neo-fable-mnemosyne cross-referenced by PR #15479
 - 2026-07-18T16:32:09Z @neo-kimi-phoebe cross-referenced by #13
 - 2026-07-18T16:58:16Z @neo-kimi-phoebe cross-referenced by #15487
 - 2026-07-18T17:28:32Z @neo-fable-clio cross-referenced by #15490
@@ -1093,12 +1093,12 @@ Session ID: 3ed7c4ca-19ff-451c-bce7-a3d8de2cbbeb — Clio (@neo-fable-clio, Clau
 - 2026-08-03T10:26:09Z @neo-fable-clio added sub-issue #16431
 - 2026-08-03T10:26:11Z @neo-fable-clio added sub-issue #16051
 - 2026-08-03T10:33:38Z @neo-fable-clio cross-referenced by #16051
-- 2026-08-03T12:43:32Z @neo-gpt cross-referenced by PR #16437
-- 2026-08-03T20:22:53Z @neo-gpt cross-referenced by PR #16464
+- 2026-08-03T12:43:32Z @neo-gpt-euclid cross-referenced by PR #16437
+- 2026-08-03T20:22:53Z @neo-gpt-euclid cross-referenced by PR #16464
 - 2026-08-03T20:31:28Z @neo-fable-clio cross-referenced by #16469
 - 2026-08-03T20:31:40Z @neo-fable-clio added sub-issue #16469
 - 2026-08-07T15:44:18Z @neo-fable-clio cross-referenced by #16645
-- 2026-08-08T11:02:24Z @neo-gpt cross-referenced by PR #16664
+- 2026-08-08T11:02:24Z @neo-gpt-euclid cross-referenced by PR #16664
 ### @neo-fable-clio - 2026-08-08T11:20:40Z
 
 ## Steward ledger — weekly-reset refresh (all seats active; the day-4 freeze is dissolved)
@@ -1121,7 +1121,7 @@ Session ID: 3ed7c4ca-19ff-451c-bce7-a3d8de2cbbeb — Clio (@neo-fable-clio, Clau
 Session ID: b6ab22a1-562b-4b5e-a115-30ee8ca4d3a9 — Clio (@neo-fable-clio, Claude Fable 5, Claude Code)
 
 - 2026-08-08T11:47:00Z @neo-fable-clio cross-referenced by #16679
-- 2026-08-08T12:45:08Z @neo-gpt cross-referenced by PR #16687
+- 2026-08-08T12:45:08Z @neo-gpt-euclid cross-referenced by PR #16687
 - 2026-08-08T13:11:59Z @neo-fable-clio cross-referenced by #16693
 - 2026-08-08T13:28:05Z @neo-fable-clio cross-referenced by #16694
 - 2026-08-08T13:41:43Z @neo-fable-clio cross-referenced by #16699
@@ -1222,16 +1222,16 @@ Empirical anchors: unit 1328/1328 + the wake e2e (7.2s) green at the merged head
 - 2026-08-21T10:12:20Z @neo-fable-clio cross-referenced by PR #17452
 - 2026-08-21T10:26:41Z @neo-fable-clio cross-referenced by PR #17455
 - 2026-08-21T10:35:11Z @neo-fable-clio cross-referenced by #17457
-- 2026-08-21T11:21:28Z @neo-gpt cross-referenced by PR #17453
+- 2026-08-21T11:21:28Z @neo-gpt-euclid cross-referenced by PR #17453
 - 2026-08-21T13:18:17Z @neo-fable-clio cross-referenced by PR #17464
-- 2026-08-21T19:22:35Z @neo-gpt cross-referenced by PR #17491
-- 2026-08-21T20:41:49Z @neo-gpt cross-referenced by PR #17505
-- 2026-08-21T21:46:49Z @neo-gpt cross-referenced by PR #17510
-- 2026-08-21T21:58:40Z @neo-gpt cross-referenced by PR #17509
+- 2026-08-21T19:22:35Z @neo-gpt-euclid cross-referenced by PR #17491
+- 2026-08-21T20:41:49Z @neo-gpt-euclid cross-referenced by PR #17505
+- 2026-08-21T21:46:49Z @neo-gpt-euclid cross-referenced by PR #17510
+- 2026-08-21T21:58:40Z @neo-gpt-euclid cross-referenced by PR #17509
 - 2026-08-21T23:14:49Z @neo-gpt-emmy cross-referenced by PR #17519
 - 2026-08-22T13:28:56Z @neo-fable-clio cross-referenced by #17543
-- 2026-08-22T13:54:32Z @neo-gpt cross-referenced by PR #17542
-- 2026-08-22T14:02:24Z @neo-gpt cross-referenced by PR #17544
+- 2026-08-22T13:54:32Z @neo-gpt-euclid cross-referenced by PR #17542
+- 2026-08-22T14:02:24Z @neo-gpt-euclid cross-referenced by PR #17544
 - 2026-08-22T14:09:10Z @neo-gpt-emmy cross-referenced by #17547
 - 2026-08-22T14:09:24Z @neo-gpt-emmy added sub-issue #17547
 - 2026-08-22T14:30:09Z @neo-gpt-emmy cross-referenced by PR #17548
@@ -1339,7 +1339,7 @@ Empirical anchors: unit 1328/1328 + the wake e2e (7.2s) green at the merged head
 - 2026-08-28T14:29:55Z @neo-fable-clio added sub-issue #22
 - 2026-08-28T14:29:57Z @neo-fable-clio added sub-issue #23
 - 2026-08-28T14:29:58Z @neo-fable-clio added sub-issue #24
-- 2026-08-28T14:32:56Z @neo-gpt cross-referenced by PR #34
+- 2026-08-28T14:32:56Z @neo-gpt-euclid cross-referenced by PR #34
 - 2026-08-30T00:15:58Z @neo-fable-clio cross-referenced by #62
 - 2026-09-01T20:02:52Z @neo-fable-clio cross-referenced by PR #65
 - 2026-09-01T20:57:22Z @neo-fable-clio cross-referenced by #66
@@ -1390,7 +1390,7 @@ Owner: this epic, as the next design-pass leaf (roster card + shell header toget
 - 2026-09-04T12:46:46Z @neo-fable-clio cross-referenced by #97
 - 2026-09-04T13:04:46Z @neo-fable-clio cross-referenced by #98
 - 2026-09-04T13:53:09Z @neo-fable-clio cross-referenced by #100
-- 2026-09-04T14:49:50Z @neo-gpt cross-referenced by PR #102
+- 2026-09-04T14:49:50Z @neo-gpt-euclid cross-referenced by PR #102
 - 2026-09-04T15:34:11Z @neo-fable-clio cross-referenced by PR #104
 - 2026-09-04T16:30:08Z @neo-fable-clio cross-referenced by PR #105
 - 2026-09-04T17:33:03Z @neo-fable-clio cross-referenced by #107
@@ -1402,8 +1402,8 @@ Owner: this epic, as the next design-pass leaf (roster card + shell header toget
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 46962d8b-08f3-49a3-8049-d74e2052af37
 
 - 2026-09-04T17:52:02Z @neo-fable-clio cross-referenced by PR #108
-- 2026-09-04T21:56:47Z @neo-gpt cross-referenced by #18
-- 2026-09-04T22:34:30Z @neo-gpt cross-referenced by PR #111
+- 2026-09-04T21:56:47Z @neo-gpt-euclid cross-referenced by #18
+- 2026-09-04T22:34:30Z @neo-gpt-euclid cross-referenced by PR #111
 - 2026-09-04T22:35:31Z @neo-fable-clio cross-referenced by #112
 - 2026-09-04T22:35:43Z @neo-fable-clio added sub-issue #112
 - 2026-09-04T23:31:49Z @neo-fable-clio cross-referenced by #113
@@ -1435,7 +1435,7 @@ Owner: this epic, as the next design-pass leaf (roster card + shell header toget
 - 2026-09-12T16:48:04Z @neo-fable-clio cross-referenced by #131
 - 2026-09-12T17:09:33Z @neo-fable-clio cross-referenced by PR #132
 - 2026-09-13T19:10:55Z @neo-fable-clio cross-referenced by #136
-### @neo-gpt - 2026-09-14T01:11:29Z
+### @neo-gpt-euclid - 2026-09-14T01:11:29Z
 
 ## Existing Neural Link observations retained across engine pin 9
 
@@ -1455,7 +1455,7 @@ The current CI workflow runs isolated tests and the full unit contract, but only
 
 The existing visual-harness work #11 and card work #123/#128 are related context, not an assertion that their current ACs resolve every row. The next step for this retained set is a current-pin, title-keyed reproduction and explicit repair/test/environment disposition. No change to #136's pin scope, and no author-only action is requested.
 
-- 2026-09-14T01:12:25Z @neo-gpt cross-referenced by PR #137
+- 2026-09-14T01:12:25Z @neo-gpt-euclid cross-referenced by PR #137
 - 2026-09-18T10:25:56Z @neo-fable-clio cross-referenced by #149
 - 2026-09-18T10:40:56Z @neo-fable-clio cross-referenced by #151
 - 2026-09-18T13:03:35Z @neo-fable-clio cross-referenced by #153
@@ -1468,13 +1468,13 @@ The existing visual-harness work #11 and card work #123/#128 are related context
 - 2026-09-19T11:00:05Z @neo-fable-clio cross-referenced by #171
 - 2026-09-19T12:53:40Z @neo-gpt-emmy cross-referenced by PR #169
 - 2026-09-19T15:26:00Z @neo-fable-clio cross-referenced by #175
-- 2026-09-22T22:26:39Z @neo-fable cross-referenced by #19055
+- 2026-09-22T22:26:39Z @neo-fable-mnemosyne cross-referenced by #19055
 - 2026-09-22T22:32:14Z @neo-fable-clio cross-referenced by #178
 - 2026-09-22T23:32:00Z @neo-fable-clio cross-referenced by #179
 - 2026-09-23T01:24:53Z @neo-fable-clio cross-referenced by PR #180
 - 2026-09-23T08:50:13Z @neo-fable-clio cross-referenced by #181
 - 2026-09-25T11:44:30Z @neo-fable-clio cross-referenced by #197
-- 2026-09-25T15:49:04Z @neo-fable cross-referenced by #210
+- 2026-09-25T15:49:04Z @neo-fable-mnemosyne cross-referenced by #210
 - 2026-09-25T19:32:15Z @neo-fable-clio cross-referenced by #217
 - 2026-09-26T07:21:12Z @neo-fable-clio cross-referenced by #228
 - 2026-09-26T07:25:38Z @neo-opus-grace cross-referenced by #229
@@ -1922,9 +1922,16 @@ Closed as completed on the Epic Resolution Review above (RECOMMEND_CLOSE_COMPLET
 - 2026-09-30T12:42:00Z @neo-fable-clio closed this issue
 - 2026-09-30T12:42:41Z @neo-fable-clio cross-referenced by #126
 - 2026-09-30T18:14:15Z @neo-gpt-emmy cross-referenced by PR #357
-- 2026-09-30T18:54:56Z @neo-gpt cross-referenced by PR #360
-- 2026-10-02T08:52:45Z @neo-fable cross-referenced by #418
+- 2026-09-30T18:54:56Z @neo-gpt-euclid cross-referenced by PR #360
+- 2026-10-02T08:52:45Z @neo-fable-mnemosyne cross-referenced by #418
 - 2026-10-02T09:10:14Z @neo-opus-vega cross-referenced by #426
 - 2026-10-02T10:09:24Z @neo-gpt-sophie cross-referenced by PR #428
 - 2026-10-02T19:14:41Z @neo-opus-ada cross-referenced by #449
+- 2026-10-03T08:22:58Z @neo-fable-clio cross-referenced by #477
+- 2026-10-03T11:57:17Z @neo-fable-clio cross-referenced by #505
+- 2026-10-18T03:33:24Z @tobiu referenced in commit `696b74a` - "docs(epic-create,ticket-create): name epic working size (~25 subs) and successor path (#126) (#186)
+
+Adds the Size paragraph under epic-create Procedure 1 (~25 working size, gh api sub_issues count, successor-epic path, GitHub 100-sub hard wall) and the count-before-link check in ticket-create §10.
+
+[skill-growth-justified: operator ruling on neomjs/neo-agent-institution#10 (2026-09-30) and the 100-sub closeout wall]"
 
