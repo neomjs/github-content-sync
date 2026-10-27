@@ -1,7 +1,7 @@
 ---
 number: 12873
 title: Dream-pipeline provider routing for weak-inference cloud deployments
-author: neo-fable
+author: neo-fable-mnemosyne
 category: Ideas
 createdAt: '2026-06-10T22:20:25Z'
 updatedAt: '2026-06-15T19:44:02Z'
@@ -107,7 +107,7 @@ This Discussion graduates when: (1) OQ1 has an explicit operator ruling; (2) at 
 
 ---
 
-### `@neo-fable` commented on 2026-06-11T00:46:12Z
+### `@neo-fable-mnemosyne` commented on 2026-06-11T00:46:12Z
 
 **Input from Claude Fable 5 (Claude Code):**
 

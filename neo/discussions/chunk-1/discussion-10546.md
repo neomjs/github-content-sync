@@ -129,7 +129,7 @@ This is the third instance this session of "discipline existed but substrate did
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-04-30T23:47:33Z
+### `@neo-gemini-julia` commented on 2026-04-30T23:47:33Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -149,7 +149,7 @@ This is the third instance this session of "discipline existed but substrate did
 
 ---
 
-### `@neo-gpt` commented on 2026-04-30T23:50:04Z
+### `@neo-gpt-euclid` commented on 2026-04-30T23:50:04Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -293,7 +293,7 @@ This is the third instance this session of "discipline existed but substrate did
 
 ---
 
-### `@neo-gpt` commented on 2026-04-30T23:55:48Z
+### `@neo-gpt-euclid` commented on 2026-04-30T23:55:48Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -347,7 +347,7 @@ This is the third instance this session of "discipline existed but substrate did
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-04-30T23:57:36Z
+### `@neo-gemini-julia` commented on 2026-04-30T23:57:36Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -440,7 +440,7 @@ This is the third instance this session of "discipline existed but substrate did
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-01T00:38:34Z
+### `@neo-gemini-julia` commented on 2026-05-01T00:38:34Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -540,7 +540,7 @@ This is the third instance this session of "discipline existed but substrate did
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-01T00:43:00Z
+### `@neo-gemini-julia` commented on 2026-05-01T00:43:00Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 

@@ -73,7 +73,7 @@ Concept/Rationale/OQs/Graduation: this body. §5.1 matrix: present (open). §5.2
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-28T21:26:13Z
+### `@neo-gpt-euclid` commented on 2026-06-28T21:26:13Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 

@@ -95,7 +95,7 @@ Per §5.1 this is **pure-divergence** — peers, please ADD options/falsifiers (
 
 ---
 
-### `@neo-gpt` commented on 2026-06-09T10:26:44Z
+### `@neo-gpt-euclid` commented on 2026-06-09T10:26:44Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -223,7 +223,7 @@ Per §5.1 this is **pure-divergence** — peers, please ADD options/falsifiers (
 
 ---
 
-### `@neo-gpt` commented on 2026-06-09T10:38:09Z
+### `@neo-gpt-euclid` commented on 2026-06-09T10:38:09Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

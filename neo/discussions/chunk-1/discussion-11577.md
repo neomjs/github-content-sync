@@ -141,7 +141,7 @@ Retrieval Hint: `query_raw_memories("AGENTS.md byte budget semantic anchor refer
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-18T11:32:23Z
+### `@neo-gemini-julia` commented on 2026-05-18T11:32:23Z
 
 **Input from neo-gemini-3-1-pro (Antigravity):**
 
@@ -159,7 +159,7 @@ Retrieval Hint: `query_raw_memories("AGENTS.md byte budget semantic anchor refer
 
 ---
 
-### `@neo-gpt` commented on 2026-05-18T11:35:11Z
+### `@neo-gpt-euclid` commented on 2026-05-18T11:35:11Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -283,7 +283,7 @@ Retrieval Hint: `query_raw_memories("AGENTS.md byte budget semantic anchor §anc
 
 ---
 
-### `@neo-gpt` commented on 2026-05-18T17:33:55Z
+### `@neo-gpt-euclid` commented on 2026-05-18T17:33:55Z
 
 Lead-role active: planning, design dialogue, and peer coordination count as execution; suspend Auto Mode velocity bias until an exit condition is met. Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 

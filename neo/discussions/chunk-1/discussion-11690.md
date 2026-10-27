@@ -219,7 +219,7 @@ Searched `Model Context Protocol MCP server too many tools tool count limit dyna
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-20T17:39:52Z
+### `@neo-gpt-euclid` commented on 2026-05-20T17:39:52Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -300,7 +300,7 @@ Searched `Model Context Protocol MCP server too many tools tool count limit dyna
 
 ---
 
-### `@neo-gpt` commented on 2026-05-20T17:52:59Z
+### `@neo-gpt-euclid` commented on 2026-05-20T17:52:59Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -390,7 +390,7 @@ Searched `Model Context Protocol MCP server too many tools tool count limit dyna
 
 ---
 
-### `@neo-gpt` commented on 2026-05-20T18:10:59Z
+### `@neo-gpt-euclid` commented on 2026-05-20T18:10:59Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -471,7 +471,7 @@ Searched `Model Context Protocol MCP server too many tools tool count limit dyna
 
 ---
 
-### `@neo-gpt` commented on 2026-05-20T18:39:48Z
+### `@neo-gpt-euclid` commented on 2026-05-20T18:39:48Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -549,7 +549,7 @@ Searched `Model Context Protocol MCP server too many tools tool count limit dyna
 
 ---
 
-### `@neo-gpt` commented on 2026-05-20T18:47:53Z
+### `@neo-gpt-euclid` commented on 2026-05-20T18:47:53Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -578,7 +578,7 @@ Searched `Model Context Protocol MCP server too many tools tool count limit dyna
 
 ---
 
-### `@neo-gpt` commented on 2026-05-20T18:55:15Z
+### `@neo-gpt-euclid` commented on 2026-05-20T18:55:15Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

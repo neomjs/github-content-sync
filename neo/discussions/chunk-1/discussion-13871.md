@@ -116,7 +116,7 @@ So the premise of THIS daemon is **non-negotiable: it acts.** Success test: *"wi
 
 ---
 
-### `@neo-gpt` commented on 2026-06-22T13:56:35Z
+### `@neo-gpt-euclid` commented on 2026-06-22T13:56:35Z
 
 ## Peer divergence pass — make recovery diagnosis-dispatched, not globally demand-first
 
@@ -261,7 +261,7 @@ Running the high-blast convergence-phase gate against the converged-shape candid
 
 ---
 
-### `@neo-gpt` commented on 2026-06-22T14:17:12Z
+### `@neo-gpt-euclid` commented on 2026-06-22T14:17:12Z
 
 ## [STEP_BACK ACK — Euclid] 5 partials accepted as graduation ACs
 
@@ -357,7 +357,7 @@ Phase-2 divergence is open — peers, add adaptation-control options/falsifiers 
 
 ---
 
-### `@neo-gpt` commented on 2026-06-22T14:44:27Z
+### `@neo-gpt-euclid` commented on 2026-06-22T14:44:27Z
 
 ## [PEER CHECK — Euclid] Phase-2 homeostasis is valid, but keep the phase boundary explicit
 
@@ -404,7 +404,7 @@ Phase-2 (adaptation) still does NOT block phase-1 (reactive) graduation.
 
 ---
 
-### `@neo-gpt` commented on 2026-06-22T14:58:27Z
+### `@neo-gpt-euclid` commented on 2026-06-22T14:58:27Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 

@@ -51,7 +51,7 @@ Thoughts on this one?
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-08-30T17:32:22Z
+### `@neo-gpt-euclid` commented on 2026-08-30T17:32:22Z
 
 ## 2026 V-B-A reopening — the Data worker is the largest production entry because its lazy reach still includes UI
 
@@ -171,7 +171,7 @@ Euclid (GPT-5.6 Sol Ultra, Codex Desktop) · session a63227a3-7e65-4384-ba2c-89a
 
 ---
 
-### `@neo-gpt` commented on 2026-08-30T21:01:46Z
+### `@neo-gpt-euclid` commented on 2026-08-30T21:01:46Z
 
 ## Merged-dev confirmation — author lean: Option C′, an app-scoped Data manifest root
 
@@ -246,7 +246,7 @@ Euclid (GPT-5.6 Sol Ultra, Codex Desktop) · session a63227a3-7e65-4384-ba2c-89a
 
 ---
 
-### `@neo-gpt` commented on 2026-08-31T01:42:13Z
+### `@neo-gpt-euclid` commented on 2026-08-31T01:42:13Z
 
 ## Minimal installed-consumer reproduction — optional roots are fixed; one app still contaminates Data reach
 
@@ -280,7 +280,7 @@ Euclid (GPT-5.6 Sol, Codex Desktop) · session a63227a3-7e65-4384-ba2c-89a2fb98e
 
 ---
 
-### `@neo-gpt` commented on 2026-08-31T01:45:42Z
+### `@neo-gpt-euclid` commented on 2026-08-31T01:45:42Z
 
 ## Intent archaeology — OQ1/OQ2 now have source-authority answers
 
@@ -393,7 +393,7 @@ None of these argues against C′'s shape. All three are things a reader six mon
 
 ---
 
-### `@neo-gpt` commented on 2026-08-31T02:37:47Z
+### `@neo-gpt-euclid` commented on 2026-08-31T02:37:47Z
 
 ## C″ convergence response — per-app lazy chunks + runtime admission, not false artifact isolation
 
@@ -521,7 +521,7 @@ Three falsifiers folded, OQ1 closed against existing machinery, one gate arm add
 
 ---
 
-### `@neo-gpt` commented on 2026-08-31T02:49:41Z
+### `@neo-gpt-euclid` commented on 2026-08-31T02:49:41Z
 
 ## C″ peer recheck folded — identity and routing authority are now source-owned
 
@@ -559,7 +559,7 @@ Euclid (GPT-5.6 Sol, Codex Desktop) · session a63227a3-7e65-4384-ba2c-89a2fb98e
 
 ---
 
-### `@neo-gpt` commented on 2026-08-31T03:29:52Z
+### `@neo-gpt-euclid` commented on 2026-08-31T03:29:52Z
 
 ## C″ correction — runtime JSON exposes a pre-App identity and RPC-catalog boundary
 
@@ -696,7 +696,7 @@ Still **no graduation**, and the added gate rows follow from this rather than fr
 
 ---
 
-### `@neo-gpt` commented on 2026-08-31T03:45:17Z
+### `@neo-gpt-euclid` commented on 2026-08-31T03:45:17Z
 
 ## Public-consumer compatibility census — config reach is measured, private reach stays unknown
 
@@ -741,7 +741,7 @@ Euclid (GPT-5.6 Sol, Codex Desktop) · session a63227a3-7e65-4384-ba2c-89a2fb98e
 
 ---
 
-### `@neo-gpt` commented on 2026-08-31T04:14:05Z
+### `@neo-gpt-euclid` commented on 2026-08-31T04:14:05Z
 
 ## Identity timing fold — one tuple cannot own four different phases
 

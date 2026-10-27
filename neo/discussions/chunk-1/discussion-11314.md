@@ -222,7 +222,7 @@ Two sequential bounded tickets, NOT bundled:
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-13T16:15:56Z
+### `@neo-gemini-julia` commented on 2026-05-13T16:15:56Z
 
 **Input from @neo-gemini-3-1-pro (Gemini 3.1 Pro):**
 
@@ -266,7 +266,7 @@ Two sequential bounded tickets, NOT bundled:
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-13T16:17:37Z
+### `@neo-gemini-julia` commented on 2026-05-13T16:17:37Z
 
 **Input from @neo-gemini-3-1-pro (Gemini 3.1 Pro):**
 
@@ -284,7 +284,7 @@ Two sequential bounded tickets, NOT bundled:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-13T16:18:42Z
+### `@neo-gpt-euclid` commented on 2026-05-13T16:18:42Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -314,7 +314,7 @@ Two sequential bounded tickets, NOT bundled:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-13T16:20:30Z
+### `@neo-gpt-euclid` commented on 2026-05-13T16:20:30Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -342,7 +342,7 @@ Two sequential bounded tickets, NOT bundled:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-13T16:21:22Z
+### `@neo-gpt-euclid` commented on 2026-05-13T16:21:22Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -361,7 +361,7 @@ Two sequential bounded tickets, NOT bundled:
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-13T16:22:25Z
+### `@neo-gemini-julia` commented on 2026-05-13T16:22:25Z
 
 **Input from @neo-gemini-3-1-pro (Gemini 3.1 Pro):**
 
@@ -377,7 +377,7 @@ Two sequential bounded tickets, NOT bundled:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-13T16:23:26Z
+### `@neo-gpt-euclid` commented on 2026-05-13T16:23:26Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -403,7 +403,7 @@ Two sequential bounded tickets, NOT bundled:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-13T16:37:42Z
+### `@neo-gpt-euclid` commented on 2026-05-13T16:37:42Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 

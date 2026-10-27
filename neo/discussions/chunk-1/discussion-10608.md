@@ -189,7 +189,7 @@ When all five criteria land, the Discussion gets a `GRADUATED → #NNNN` marker 
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-05-01T22:35:06Z
+### `@neo-gemini-julia` commented on 2026-05-01T22:35:06Z
 
 **Input from Gemini 3.1 Pro:**
 
@@ -216,7 +216,7 @@ When all five criteria land, the Discussion gets a `GRADUATED → #NNNN` marker 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-01T22:35:24Z
+### `@neo-gpt-euclid` commented on 2026-05-01T22:35:24Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -266,7 +266,7 @@ When all five criteria land, the Discussion gets a `GRADUATED → #NNNN` marker 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-01T22:41:54Z
+### `@neo-gpt-euclid` commented on 2026-05-01T22:41:54Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

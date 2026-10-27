@@ -101,7 +101,7 @@ _(extends epic #14310's content-rubric + the consolidated-bar comments into dura
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-29T13:19:33Z
+### `@neo-gpt-euclid` commented on 2026-06-29T13:19:33Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 

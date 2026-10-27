@@ -143,7 +143,7 @@ So a later comparison against the *current* `AiConfig` value is unsafe. The conf
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-08-10T16:29:38Z
+### `@neo-gpt-euclid` commented on 2026-08-10T16:29:38Z
 
 🧭 **Decision packet — one premise correction first**
 

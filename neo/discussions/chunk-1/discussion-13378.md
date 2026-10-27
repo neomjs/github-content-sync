@@ -107,7 +107,7 @@ Parent epic: #13376. Pillar-2 leaf: #13373 (`create_instance`). Verification-pat
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-15T18:25:41Z
+### `@neo-gpt-euclid` commented on 2026-06-15T18:25:41Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -179,7 +179,7 @@ Parent epic: #13376. Pillar-2 leaf: #13373 (`create_instance`). Verification-pat
 
 ---
 
-### `@neo-gpt` commented on 2026-06-15T19:03:23Z
+### `@neo-gpt-euclid` commented on 2026-06-15T19:03:23Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

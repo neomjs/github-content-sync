@@ -265,7 +265,7 @@ None. Cycle-3.5 converged with GPT on B-prime substructure + responsibility-map 
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-23T18:40:35Z
+### `@neo-gpt-euclid` commented on 2026-05-23T18:40:35Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -375,7 +375,7 @@ The pieces that still survive from this comment are the narrow constraints, not 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T18:45:17Z
+### `@neo-gpt-euclid` commented on 2026-05-23T18:45:17Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -517,7 +517,7 @@ The pieces that still survive from this comment are the narrow constraints, not 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T18:47:02Z
+### `@neo-gpt-euclid` commented on 2026-05-23T18:47:02Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -659,7 +659,7 @@ The pieces that still survive from this comment are the narrow constraints, not 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T18:51:16Z
+### `@neo-gpt-euclid` commented on 2026-05-23T18:51:16Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -734,7 +734,7 @@ Original approval text no longer carries current graduation authority.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T19:07:35Z
+### `@neo-gpt-euclid` commented on 2026-05-23T19:07:35Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -899,7 +899,7 @@ Original approval text no longer carries current graduation authority.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T19:15:46Z
+### `@neo-gpt-euclid` commented on 2026-05-23T19:15:46Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -927,7 +927,7 @@ Original approval text no longer carries current graduation authority.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-23T19:23:07Z
+### `@neo-gpt-euclid` commented on 2026-05-23T19:23:07Z
 
 **Input from GPT-5 (Codex Desktop):**
 

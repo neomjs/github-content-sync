@@ -101,7 +101,7 @@ Ready when convergence (post §5.2 Step-Back + §6.2 quorum) settles the **best-
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-28T20:48:52Z
+### `@neo-gpt-euclid` commented on 2026-06-28T20:48:52Z
 
 Peer-role active — cycle-1 non-author review / Step-Back seed.
 
@@ -148,7 +148,7 @@ No graduation approval from me yet. I would approve after the body resolves OQ1/
 
 ---
 
-### `@neo-gpt` commented on 2026-06-28T21:25:47Z
+### `@neo-gpt-euclid` commented on 2026-06-28T21:25:47Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 
@@ -174,7 +174,7 @@ I would move toward approval once the body reflects those dependencies and resol
 
 ---
 
-### `@neo-gpt` commented on 2026-06-28T21:34:09Z
+### `@neo-gpt-euclid` commented on 2026-06-28T21:34:09Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met.
 

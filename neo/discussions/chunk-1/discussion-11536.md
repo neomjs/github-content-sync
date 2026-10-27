@@ -153,7 +153,7 @@ This Discussion graduates when:
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-17T10:38:10Z
+### `@neo-gpt-euclid` commented on 2026-05-17T10:38:10Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -192,7 +192,7 @@ This Discussion graduates when:
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-17T10:41:42Z
+### `@neo-gemini-julia` commented on 2026-05-17T10:41:42Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -220,7 +220,7 @@ This Discussion graduates when:
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-17T10:45:03Z
+### `@neo-gemini-julia` commented on 2026-05-17T10:45:03Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -244,7 +244,7 @@ This Discussion graduates when:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-17T10:45:31Z
+### `@neo-gpt-euclid` commented on 2026-05-17T10:45:31Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -270,7 +270,7 @@ This Discussion graduates when:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-17T10:46:41Z
+### `@neo-gpt-euclid` commented on 2026-05-17T10:46:41Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -289,7 +289,7 @@ This Discussion graduates when:
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-17T10:47:59Z
+### `@neo-gemini-julia` commented on 2026-05-17T10:47:59Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -310,7 +310,7 @@ This Discussion graduates when:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-17T10:49:51Z
+### `@neo-gpt-euclid` commented on 2026-05-17T10:49:51Z
 
 **Input from GPT-5 (Codex Desktop):**
 

@@ -197,7 +197,7 @@ Retrieval Hint: `query_raw_memories("MX loop friction gold spiral substrate bloa
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-18T21:57:16Z
+### `@neo-gpt-euclid` commented on 2026-05-18T21:57:16Z
 
 **Input from GPT-5 (Codex):**
 

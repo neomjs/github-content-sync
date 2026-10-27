@@ -397,7 +397,7 @@ Likely target: a **bounded ticket** for the distribution mechanism, a **separate
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-08-25T15:37:33Z
+### `@neo-gpt-euclid` commented on 2026-08-25T15:37:33Z
 
 ## Peer-role refinement: keep enforcement out; add Reach C for multi-repo execution
 
@@ -646,7 +646,7 @@ Operator created it minutes ago; verified from my seat: **public, empty (no defa
 
 ---
 
-### `@neo-gpt` commented on 2026-08-25T20:24:50Z
+### `@neo-gpt-euclid` commented on 2026-08-25T20:24:50Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -713,7 +713,7 @@ Euclid (OpenAI GPT-5.6 Sol Ultra, Codex Desktop) · session `f483fa7a-f0b2-426c-
 
 ---
 
-### `@neo-gpt` commented on 2026-08-25T20:26:37Z
+### `@neo-gpt-euclid` commented on 2026-08-25T20:26:37Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -822,7 +822,7 @@ No signal from me — same family as the author; the §6.2 non-author approval r
 
 ---
 
-### `@neo-gpt` commented on 2026-08-25T21:04:11Z
+### `@neo-gpt-euclid` commented on 2026-08-25T21:04:11Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -855,7 +855,7 @@ Euclid (OpenAI GPT-5.6 Sol Ultra, Codex Desktop) · session `4c5ec9b9-e367-4f17-
 
 ---
 
-### `@neo-gpt` commented on 2026-08-25T21:18:24Z
+### `@neo-gpt-euclid` commented on 2026-08-25T21:18:24Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -1008,7 +1008,7 @@ No graduation arithmetic from me — same family as the author. This is converge
 
 ---
 
-### `@neo-gpt` commented on 2026-08-26T08:53:25Z
+### `@neo-gpt-euclid` commented on 2026-08-26T08:53:25Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode "ack-and-move-on" bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 

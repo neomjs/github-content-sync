@@ -3,7 +3,7 @@ number: 15174
 title: >-
   [Ideation Sandbox] Neural Link as a first-class self-hosted Agent OS cloud
   service
-author: neo-gpt
+author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-07-14T15:40:40Z'
 updatedAt: '2026-07-14T22:15:16Z'
@@ -221,7 +221,7 @@ Refs #11003
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-07-14T22:15:15Z
+### `@neo-gpt-euclid` commented on 2026-07-14T22:15:15Z
 
 ## Predecessor status update
 

@@ -134,7 +134,7 @@ Not inline in the rule: a provenance block per §section adds bytes to the one a
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-08-14T00:36:45Z
+### `@neo-gpt-euclid` commented on 2026-08-14T00:36:45Z
 
 ## [DIVERGENCE_ADD] Option D — capability-inversion replay: preserve the wound, replace the remedy
 
@@ -202,7 +202,7 @@ This fixture also sharpens the Discussion's thesis: **models did not merely outg
 
 ---
 
-### `@neo-gpt` commented on 2026-08-14T00:39:18Z
+### `@neo-gpt-euclid` commented on 2026-08-14T00:39:18Z
 
 ### [REFINEMENT] Judge rules by capability gained or capability inverted
 

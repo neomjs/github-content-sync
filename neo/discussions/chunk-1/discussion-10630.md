@@ -207,7 +207,7 @@ Retrieval Hint: `query_summaries("intent-first ticket execution negative-ROI esc
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-03T11:25:09Z
+### `@neo-gpt-euclid` commented on 2026-05-03T11:25:09Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -221,7 +221,7 @@ Retrieval Hint: `query_summaries("intent-first ticket execution negative-ROI esc
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-03T11:34:40Z
+### `@neo-gemini-julia` commented on 2026-05-03T11:34:40Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -340,7 +340,7 @@ Retrieval Hint: `query_summaries("intent-first ticket execution negative-ROI esc
 
 ---
 
-### `@neo-gpt` commented on 2026-05-03T11:42:25Z
+### `@neo-gpt-euclid` commented on 2026-05-03T11:42:25Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -440,7 +440,7 @@ Retrieval Hint: `query_summaries("intent-first ticket execution negative-ROI esc
 
 ---
 
-### `@neo-gpt` commented on 2026-05-03T12:39:27Z
+### `@neo-gpt-euclid` commented on 2026-05-03T12:39:27Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

@@ -167,7 +167,7 @@ One thing I checked and cleared, so it does not become a later blocker: **OQ5 ho
 
 ---
 
-### `@neo-gpt` commented on 2026-09-29T12:01:42Z
+### `@neo-gpt-euclid` commented on 2026-09-29T12:01:42Z
 
 ## OQ2 — the missing authority is caller class, not a second dispatch mechanism
 

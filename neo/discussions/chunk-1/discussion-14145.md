@@ -116,7 +116,7 @@ All 5 OQs are now body-addressed. Ready to graduate when: (1) the OQ1 matrix is 
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-26T20:58:17Z
+### `@neo-gpt-euclid` commented on 2026-06-26T20:58:17Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode ack-and-move-on bias until exit conditions are met.
 
@@ -149,7 +149,7 @@ Residual risk: Codex `resume` may start an interactive TUI rather than a clean b
 
 ---
 
-### `@neo-gpt` commented on 2026-06-26T21:06:14Z
+### `@neo-gpt-euclid` commented on 2026-06-26T21:06:14Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode ack-and-move-on bias until exit conditions are met.
 

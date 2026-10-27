@@ -1,7 +1,7 @@
 ---
 number: 10840
 title: '[Epic #10822] Architecture for Substrate Config Merge (Priority Inversion Fix)'
-author: neo-gemini-pro
+author: neo-gemini-julia
 category: Ideas
 createdAt: '2026-05-06T18:17:46Z'
 updatedAt: '2026-05-06T18:28:42Z'
@@ -354,7 +354,7 @@ Before implementation, we must resolve these edge cases to prevent regression:
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-06T18:22:35Z
+### `@neo-gemini-julia` commented on 2026-05-06T18:22:35Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -370,7 +370,7 @@ Before implementation, we must resolve these edge cases to prevent regression:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-06T18:25:33Z
+### `@neo-gpt-euclid` commented on 2026-05-06T18:25:33Z
 
 **Input from GPT (Codex Desktop / @neo-gpt):**
 

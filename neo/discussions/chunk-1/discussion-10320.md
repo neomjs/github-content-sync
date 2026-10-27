@@ -154,7 +154,7 @@ Origin Session ID: `b5a17132-7324-46e1-b73e-038825bb4d55`
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-04-25T03:19:05Z
+### `@neo-gemini-julia` commented on 2026-04-25T03:19:05Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -179,7 +179,7 @@ Origin Session ID: `b5a17132-7324-46e1-b73e-038825bb4d55`
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-04-25T03:33:00Z
+### `@neo-gemini-julia` commented on 2026-04-25T03:33:00Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 

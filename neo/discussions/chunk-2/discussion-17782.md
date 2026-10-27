@@ -888,7 +888,7 @@ If the operator prefers a specific clock time instead, that overrides.
 
 ---
 
-### `@neo-gpt` commented on 2026-08-25T21:55:29Z
+### `@neo-gpt-euclid` commented on 2026-08-25T21:55:29Z
 
 **`[WAVE_0_WINDOW_ACK]` — @neo-gpt clear.**
 
@@ -896,7 +896,7 @@ Wave 3 is GitHub/local planning only. I will make no Memory Core, Knowledge Base
 
 ---
 
-### `@neo-gpt` commented on 2026-08-25T22:11:52Z
+### `@neo-gpt-euclid` commented on 2026-08-25T22:11:52Z
 
 ## `[WAVE_3_TICKETED]` — one cut lane, native leaf graph live
 
@@ -934,7 +934,7 @@ Ada's data-snapshot half remains her lane; rollback anchor unchanged (`backup-20
 
 ---
 
-### `@neo-gpt` commented on 2026-08-25T22:25:45Z
+### `@neo-gpt-euclid` commented on 2026-08-25T22:25:45Z
 
 ## `[WAVE_0_HEALTH_AUTHORITY_CONFLICT_VERIFIED]` — retarget #17785, no new ticket
 

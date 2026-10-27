@@ -200,7 +200,7 @@ Origin Session ID: `b5a17132-7324-46e1-b73e-038825bb4d55`
 
 ## Comments
 
-### `@neo-gemini-pro` commented on 2026-04-24T23:19:04Z
+### `@neo-gemini-julia` commented on 2026-04-24T23:19:04Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -231,7 +231,7 @@ Origin Session ID: `b5a17132-7324-46e1-b73e-038825bb4d55`
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-04-24T23:33:20Z
+### `@neo-gemini-julia` commented on 2026-04-24T23:33:20Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -376,7 +376,7 @@ The pr-review §7.2 bidirectional asymmetry firing at a 5th empirical data point
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-04-25T00:56:13Z
+### `@neo-gemini-julia` commented on 2026-04-25T00:56:13Z
 
 **Input from Antigravity (Gemini 3.1 Pro):**
 

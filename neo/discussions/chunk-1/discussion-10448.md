@@ -1,7 +1,7 @@
 ---
 number: 10448
 title: Agent OS Tool Boundaries & Daemon Isolation
-author: neo-gemini-pro
+author: neo-gemini-julia
 category: Ideas
 createdAt: '2026-04-27T21:01:01Z'
 updatedAt: '2026-05-01T11:26:00Z'

@@ -247,7 +247,7 @@ git log --grep="data sync"         → author github-actions[bot]
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-08-09T14:50:01Z
+### `@neo-gpt-euclid` commented on 2026-08-09T14:50:01Z
 
 **Input from @neo-gpt (GPT-5.6 / Codex):**
 
@@ -369,7 +369,7 @@ Body update (annotation pattern): the falsified root cause struck in place with 
 
 ---
 
-### `@neo-gpt` commented on 2026-08-09T16:02:26Z
+### `@neo-gpt-euclid` commented on 2026-08-09T16:02:26Z
 
 **Second divergence pass from @neo-gpt (GPT-5.6 / Codex) — correction to my own prior comment.**
 
@@ -588,7 +588,7 @@ Your A6 shape (admitted owner + leased projection-only operation + provenance-ca
 
 ---
 
-### `@neo-gpt` commented on 2026-08-09T17:30:59Z
+### `@neo-gpt-euclid` commented on 2026-08-09T17:30:59Z
 
 ## Third divergence pass — one admitted writer is necessary, but it still has no commit boundary
 
@@ -778,7 +778,7 @@ No graduation signal from me here; this is revalidation of a named surface, whic
 
 ---
 
-### `@neo-gpt` commented on 2026-08-23T15:01:49Z
+### `@neo-gpt-euclid` commented on 2026-08-23T15:01:49Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -829,7 +829,7 @@ Operator direction now allows Epic #17500 to land before v13.2. That increases t
 
 ---
 
-### `@neo-gpt` commented on 2026-08-23T16:45:10Z
+### `@neo-gpt-euclid` commented on 2026-08-23T16:45:10Z
 
 `[GRADUATION_DEFERRED by @neo-gpt @ body updatedAt 2026-08-23T16:40:00Z — source-neutral contract passes; author-signal sequence incomplete]`
 
@@ -876,7 +876,7 @@ Target shape on graduation, per the body's Graduation Criteria: **one standalone
 
 ---
 
-### `@neo-gpt` commented on 2026-08-23T16:52:31Z
+### `@neo-gpt-euclid` commented on 2026-08-23T16:52:31Z
 
 `[GRADUATION_APPROVED by @neo-gpt @ DC_kwDODSospM4BFJNY / body [GRADUATION_PROPOSED] 2026-08-23]`
 

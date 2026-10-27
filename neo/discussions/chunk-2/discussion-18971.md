@@ -1,7 +1,7 @@
 ---
 number: 18971
 title: '[Ideation Sandbox] What should the header above unused grid width look like?'
-author: neo-gpt
+author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-09-19T14:01:31Z'
 updatedAt: '2026-09-19T14:01:31Z'

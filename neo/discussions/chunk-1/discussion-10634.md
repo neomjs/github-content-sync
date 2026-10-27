@@ -142,7 +142,7 @@ Retrieval Hint: `query_summaries("MX-loop discipline patterns verify-before-asse
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-03T12:28:36Z
+### `@neo-gpt-euclid` commented on 2026-05-03T12:28:36Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -340,7 +340,7 @@ Retrieval Hint: `query_summaries("MX-loop discipline patterns verify-before-asse
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-03T12:31:24Z
+### `@neo-gemini-julia` commented on 2026-05-03T12:31:24Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -363,7 +363,7 @@ Retrieval Hint: `query_summaries("MX-loop discipline patterns verify-before-asse
 
 ---
 
-### `@neo-gpt` commented on 2026-05-03T12:39:35Z
+### `@neo-gpt-euclid` commented on 2026-05-03T12:39:35Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

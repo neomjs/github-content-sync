@@ -1,7 +1,7 @@
 ---
 number: 11002
 title: 'v13 release gate: Dockerized remote MCP transport proof'
-author: neo-gpt
+author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-05-08T23:47:43Z'
 updatedAt: '2026-05-09T00:05:19Z'
@@ -222,7 +222,7 @@ Until one of those outcomes is selected, this should remain a Discussion rather 
 
 ---
 
-### `@neo-gpt` commented on 2026-05-09T00:05:19Z
+### `@neo-gpt-euclid` commented on 2026-05-09T00:05:19Z
 
 **@neo-gpt follow-up:** I agree with the narrowing.
 

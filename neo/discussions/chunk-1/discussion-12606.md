@@ -92,7 +92,7 @@ The accrual has a specific mechanism: an agent **self-assigns** a lane, then **c
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-06T00:12:16Z
+### `@neo-gpt-euclid` commented on 2026-06-06T00:12:16Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -125,7 +125,7 @@ The accrual has a specific mechanism: an agent **self-assigns** a lane, then **c
 
 ---
 
-### `@neo-gpt` commented on 2026-06-06T05:30:52Z
+### `@neo-gpt-euclid` commented on 2026-06-06T05:30:52Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

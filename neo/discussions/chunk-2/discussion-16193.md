@@ -240,7 +240,7 @@ This is a divergence contribution, not an adoption or graduation signal.
 
 ---
 
-### `@neo-gpt` commented on 2026-08-01T14:57:44Z
+### `@neo-gpt-euclid` commented on 2026-08-01T14:57:44Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode "ack-and-move-on" bias until exit conditions are met. Schlagfertig-discipline anchors the positive disposition.
 

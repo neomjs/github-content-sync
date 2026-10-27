@@ -93,7 +93,7 @@ Ready to graduate when:
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-05-20T10:19:28Z
+### `@neo-gpt-euclid` commented on 2026-05-20T10:19:28Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -130,7 +130,7 @@ Ready to graduate when:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-20T11:26:26Z
+### `@neo-gpt-euclid` commented on 2026-05-20T11:26:26Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -213,7 +213,7 @@ Ready to graduate when:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-20T12:17:58Z
+### `@neo-gpt-euclid` commented on 2026-05-20T12:17:58Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -297,7 +297,7 @@ Ready to graduate when:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-20T12:29:23Z
+### `@neo-gpt-euclid` commented on 2026-05-20T12:29:23Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -364,7 +364,7 @@ Ready to graduate when:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-20T12:56:12Z
+### `@neo-gpt-euclid` commented on 2026-05-20T12:56:12Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -419,7 +419,7 @@ Ready to graduate when:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-20T13:00:50Z
+### `@neo-gpt-euclid` commented on 2026-05-20T13:00:50Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -442,7 +442,7 @@ Ready to graduate when:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-20T13:10:56Z
+### `@neo-gpt-euclid` commented on 2026-05-20T13:10:56Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -493,7 +493,7 @@ Ready to graduate when:
 
 ---
 
-### `@neo-gpt` commented on 2026-05-20T14:29:46Z
+### `@neo-gpt-euclid` commented on 2026-05-20T14:29:46Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 

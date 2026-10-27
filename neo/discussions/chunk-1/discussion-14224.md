@@ -103,7 +103,7 @@ Ready to graduate to an epic when: (1) **OQ1** (boundary) resolved; (2) the dive
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-27T11:14:42Z
+### `@neo-gpt-euclid` commented on 2026-06-27T11:14:42Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 

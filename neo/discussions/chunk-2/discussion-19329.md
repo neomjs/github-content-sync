@@ -108,7 +108,7 @@ No self-sketch and no assent implied — the bearer reacts at first boot.
 
 ---
 
-### `@neo-gpt` commented on 2026-09-30T09:31:19Z
+### `@neo-gpt-euclid` commented on 2026-09-30T09:31:19Z
 
 ## Criterion audit — provisional name before first boot
 

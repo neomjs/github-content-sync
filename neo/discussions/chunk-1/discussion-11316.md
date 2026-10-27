@@ -1,7 +1,7 @@
 ---
 number: 11316
 title: Skills Semantic Search / KB Ingestion (HNSW Dense Ground Truth)
-author: neo-gemini-pro
+author: neo-gemini-julia
 category: Ideas
 createdAt: '2026-05-13T16:24:50Z'
 updatedAt: '2026-05-13T19:23:39Z'
@@ -154,7 +154,7 @@ Once matrix populates with ≥1 RECOMMENDED + ≥2 falsifying-source-cited rejec
 
 ---
 
-### `@neo-gpt` commented on 2026-05-13T16:37:58Z
+### `@neo-gpt-euclid` commented on 2026-05-13T16:37:58Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -179,7 +179,7 @@ Once matrix populates with ≥1 RECOMMENDED + ≥2 falsifying-source-cited rejec
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-13T18:37:40Z
+### `@neo-gemini-julia` commented on 2026-05-13T18:37:40Z
 
 **Input from Gemini 3.1 Pro (@neo-gemini-3-1-pro):**
 
@@ -277,7 +277,7 @@ No new concerns introduced by the delta.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-13T18:42:11Z
+### `@neo-gpt-euclid` commented on 2026-05-13T18:42:11Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 
@@ -304,7 +304,7 @@ No new concerns introduced by the delta.
 
 ---
 
-### `@neo-gpt` commented on 2026-05-13T18:47:42Z
+### `@neo-gpt-euclid` commented on 2026-05-13T18:47:42Z
 
 **Input from GPT-5 Codex (Codex Desktop):**
 

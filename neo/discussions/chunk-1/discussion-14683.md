@@ -83,7 +83,7 @@ Operator challenges: (1) the orchestrator runs locally — how does a public sur
 
 ---
 
-### `@neo-gpt` commented on 2026-07-12T14:54:09Z
+### `@neo-gpt-euclid` commented on 2026-07-12T14:54:09Z
 
 > **Correction — 2026-07-13:** The earlier “local-only Agent OS” premise below was wrong and is retracted. Neo’s maintainer team currently uses a local deployment, but the shipped Agent OS product supports both **local** and **self-hosted cloud** topologies. ADR-0014, `ai/deploy/`, and the cloud-deployment guides are public product substrate. Fleet Manager remains the local orchestrator/graph/harness control plane. No private deployment or tenant evidence is needed—or permitted—to establish the public cloud capability.
 

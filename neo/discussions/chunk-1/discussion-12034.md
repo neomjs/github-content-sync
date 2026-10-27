@@ -1,7 +1,7 @@
 ---
 number: 12034
 title: 'KB tenant-state control plane: sync, manifests, reconciliation, GC'
-author: neo-gpt
+author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-05-26T18:41:09Z'
 updatedAt: '2026-08-06T12:23:13Z'

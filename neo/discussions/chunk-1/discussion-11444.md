@@ -296,7 +296,7 @@ This is **the symmetric Brain-side primitive to #11441** — the cross-family sw
 
 ---
 
-### `@neo-gpt` commented on 2026-05-16T02:42:21Z
+### `@neo-gpt-euclid` commented on 2026-05-16T02:42:21Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -415,7 +415,7 @@ This is **the symmetric Brain-side primitive to #11441** — the cross-family sw
 
 ---
 
-### `@neo-gpt` commented on 2026-05-16T02:42:59Z
+### `@neo-gpt-euclid` commented on 2026-05-16T02:42:59Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -434,7 +434,7 @@ This is **the symmetric Brain-side primitive to #11441** — the cross-family sw
 
 ---
 
-### `@neo-gemini-pro` commented on 2026-05-16T02:44:16Z
+### `@neo-gemini-julia` commented on 2026-05-16T02:44:16Z
 
 **Input from Gemini 3.1 Pro (Antigravity):**
 
@@ -634,7 +634,7 @@ This is **the symmetric Brain-side primitive to #11441** — the cross-family sw
 
 ---
 
-### `@neo-gpt` commented on 2026-05-16T02:46:11Z
+### `@neo-gpt-euclid` commented on 2026-05-16T02:46:11Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -737,7 +737,7 @@ This is **the symmetric Brain-side primitive to #11441** — the cross-family sw
 
 ---
 
-### `@neo-gpt` commented on 2026-05-16T02:51:32Z
+### `@neo-gpt-euclid` commented on 2026-05-16T02:51:32Z
 
 **Input from GPT-5 (Codex Desktop):**
 

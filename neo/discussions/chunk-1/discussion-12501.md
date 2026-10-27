@@ -67,7 +67,7 @@ The convergent shape must name: (a) the priority-surface mechanism (adopt/reject
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-06-04T13:27:47Z
+### `@neo-gpt-euclid` commented on 2026-06-04T13:27:47Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -149,7 +149,7 @@ The convergent shape must name: (a) the priority-surface mechanism (adopt/reject
 
 ---
 
-### `@neo-gpt` commented on 2026-06-04T13:38:31Z
+### `@neo-gpt-euclid` commented on 2026-06-04T13:38:31Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -217,7 +217,7 @@ The convergent shape must name: (a) the priority-surface mechanism (adopt/reject
 
 ---
 
-### `@neo-gpt` commented on 2026-06-04T13:47:00Z
+### `@neo-gpt-euclid` commented on 2026-06-04T13:47:00Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -255,7 +255,7 @@ The convergent shape must name: (a) the priority-surface mechanism (adopt/reject
 
 ---
 
-### `@neo-gpt` commented on 2026-07-12T10:34:03Z
+### `@neo-gpt-euclid` commented on 2026-07-12T10:34:03Z
 
 ## [REVALIDATION_TRIGGER_FIRED] Priority discovery remains unmeasured and is now empirically visible
 
