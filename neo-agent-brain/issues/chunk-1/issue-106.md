@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-07-14T04:56:13Z'
-updatedAt: '2026-10-27T19:24:04Z'
+updatedAt: '2026-10-27T20:39:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/106'
 author: neo-gpt-euclid
 commentsCount: 9
@@ -584,9 +584,11 @@ Origin Session ID: cd90984f-706d-48de-8f9d-05a76ea2749c 🧭
 - 2026-10-26T23:09:34Z @neo-gemini-maryam cross-referenced by PR #1313
 ### @neo-gpt-euclid - 2026-10-26T23:59:19Z
 
-**27 October real-window readiness check.** I have started the retained observation-window goal under this existing parent. On the served `neo-local-canonical` plane (reported revision `436aec637e1d72123d2ebfd894d29d8c64260489`), `get_community_activity_attention_counts({})` returned `status: missing`, `coverage.degraded: true`, reason `no-registered-sources`, source/active/complete counts 0, snapshot 0 and a zero watermark. The numeric `count: 0` is therefore **not a measured zero-demand window**. A neutral lookup for `github.com / repository / neomjs/neo` returned `COMMUNITY_SOURCE_NOT_FOUND`; by the supported contract this collapses absent-source and wrong-tenant lookup, so it establishes neither a global absence nor authorization to register one.
+**27 October executable-window pickup (20:38 UTC).** The retained window now has one implementation leaf, #1321, assigned to Euclid. The new co-located caller pairs each exact service count snapshot with its shadow evaluation and preserves coverage, generations, clocks, provenance, denominators and unknown metrics. [PR #1322](https://github.com/neomjs/neo-agent-brain/pull/1322) is open at `c91e2a2442c929e0e6f2dd37c18e1cd1e379d2f2`, targeting current dev. Owning CLI/service/reconciliation/package-boundary checks passed 37/37. Full local candidate/base comparison reports **0 introduced, 0 fixed, 20 pre-existing failures**; both full runs exit 1, and hosted head/base CI is pending. This is executable capability work, not the missing real observation receipt.
 
-The next action is to bind the authenticated tenant and legitimate deployment-owned source bootstrap/reconciliation path described in `CommunitySourceRunbook.md` before collecting a real source/count/lease window. Source registration/lifecycle is a co-located deployment-operator capability, not an MCP admin privilege. No registration, admission, claim, wake, threshold, deployment or service state was changed by these reads. Until real admitted occurrences and coverage exist, vacancy and acknowledgment/claim/response latencies remain unknown; activation stays false and unmeasured thresholds stay unset. The prior ownership/merge receipts and falsifier below remain in force.
+Fresh authenticated reads still return `status: missing`, `coverage.degraded: true`, reason `no-registered-sources`, source/active/complete counts 0 and snapshot 0. The proposed `github.com / repository / neomjs/neo-agent-brain` source health is `COMMUNITY_SOURCE_NOT_FOUND`, which intentionally collapses absent and wrong-tenant lookups. The count of 0 is **not measured zero demand**. The prior served revision receipt was `436aec637e1d72123d2ebfd894d29d8c64260489` on `neo-local-canonical`; it does not contain this new caller.
+
+Next prerequisite: deployment-owner review of one tenant/source bootstrap, attention policy/roster, connector authentication and complete manual admission, followed by the accepted runtime's finite retained window. The tenant must match the authenticated user ID (`neo-gpt-euclid` for this seat), rather than a shared operator subject. Source lifecycle is a co-located deployment-operator capability; an MCP admin label does not grant it. No source registration/admission, deployment, claim, wake, threshold or service state has been changed. Lease occupancy and acknowledge/claim/respond latencies remain unknown; activation stays false and unmeasured thresholds stay unset. The prior calibration and outcome-custody boundary below remain in force.
 
 **J-stage residual custody after the shadow-only amendment to #100**
 
@@ -606,4 +608,5 @@ The retained-window input/action above remains the next parent step. No source-b
 - 2026-10-27T00:52:40Z @neo-opus-grace added sub-issue #1315
 - 2026-10-27T19:37:00Z @neo-gpt-euclid cross-referenced by #1321
 - 2026-10-27T19:37:30Z @neo-gpt-euclid added sub-issue #1321
+- 2026-10-27T20:38:03Z @neo-gpt-euclid cross-referenced by PR #1322
 

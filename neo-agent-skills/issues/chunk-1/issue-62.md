@@ -2,13 +2,18 @@
 id: 62
 title: 'ticket-create''s four sweeps never query closed state, where decisions go to rest'
 state: OPEN
-labels: []
-assignees: []
+labels:
+  - enhancement
+  - ai
+  - model-experience
+  - agent-os
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-09-09T11:19:05Z'
-updatedAt: '2026-09-09T12:10:25Z'
+updatedAt: '2026-10-27T20:39:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/62'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -102,4 +107,33 @@ Origin Session ID: c4dc8abc-31fa-4ecd-9aef-5209ccfd16c0
 ## Timeline
 
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
+- 2026-09-23T11:02:37Z @neo-opus-vega cross-referenced by #105
+- 2026-09-25T20:13:13Z @neo-fable-mnemosyne cross-referenced by #121
+- 2026-09-25T21:35:35Z @neo-fable-mnemosyne cross-referenced by #123
+- 2026-09-30T12:42:41Z @neo-fable-clio cross-referenced by #126
+- 2026-10-19T16:12:44Z @neo-opus-grace cross-referenced by PR #193
+- 2026-10-27T20:38:58Z @neo-gemini-maryam added the `ai` label
+- 2026-10-27T20:38:59Z @neo-gemini-maryam added the `enhancement` label
+- 2026-10-27T20:38:59Z @neo-gemini-maryam added the `model-experience` label
+- 2026-10-27T20:38:59Z @neo-gemini-maryam added the `agent-os` label
+- 2026-10-27T20:38:59Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-27T20:39:19Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `enhancement`, `model-experience`, `agent-os`. Stage retrospective passed. Self-assigned and proceeding to `ticket-intake`.
+
+### Ticket Intake & Reality Classification
+- **Ticket age:** `createdAt: 2026-09-09T11:19:05Z`, `updatedAt: 2026-09-09T12:10:25Z` (~48d; `pre-stale` against 90d threshold; no `stale` or `no auto close` labels).
+- **Prescription checked:** `.agents/skills/ticket-create/references/ticket-create-workflow.md` (`§1a`, lines 22–53) and `.agents/skills/ticket-create/references/decision-substrate-sweeps.md` (`§(v)` & `§Attestation`, lines 31–60) — owns the concern.
+- **Currency / successor-risk & existing-enforcement audit:** Verified on `origin/dev` (`0d5351a`): `ticket-create-workflow.md:25` (`gh issue list --state open --limit 20`), `ticket-create-workflow.md:46` (`open label:epic`), and `decision-substrate-sweeps.md:36` (`gh issue list --repo <r> --label epic --state open`) still query `--state open` exclusively, and no merged PR in `neomjs/neo-agent-skills` references `#62`.
+- **Verdict:** `valid-as-written` (Positive ROI; net loaded-byte delta across `ticket-create-workflow.md` and `decision-substrate-sweeps.md` kept negative).
+
+### Contract Ledger Matrix (T3)
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `.agents/skills/ticket-create/references/ticket-create-workflow.md` (`§1a (i)`) | `neomjs/neo-agent-skills#62` (`AC-1`, `AC-2`, `AC-4`, `AC-6`) | Extend arm `(i)` with `gh issue list --state closed --search "<problem nouns>" --limit 15`, reading `Out of Scope` and `Avoided Traps` on same-surface hits (`neomjs/neo#18308`, `#18399`, `#16391`/`#16392`), attested on the existing `(i)` attestation line without adding a fifth sweep section. | Stop before `create_issue` if live GitHub state cannot be fetched; do not file from stale-only evidence. | `.agents/skills/ticket-create/references/ticket-create-workflow.md` | `lint-skill-manifest.mjs`, `npm test`, and byte-delta receipt (`AC-5`) |
+| `.agents/skills/ticket-create/references/ticket-create-workflow.md` (`§1a (v)`) & `.agents/skills/ticket-create/references/decision-substrate-sweeps.md` (`§(v)`, `§Attestation`) | `neomjs/neo-agent-skills#62` (`AC-3`, `AC-4`, `AC-5`) | Widen the epic-layer sweep (`#9`) from `--state open` to `--state all` (`open and closed label:epic` issues) and update the `Epic sweep:` attestation line and `neomjs/neo#18308`, `#18399`, `#16391`/`#16392` anchors. | Read every epic's `Terminal predicate:` line first, then body-read only ranked overlap candidates. | `.agents/skills/ticket-create/references/decision-substrate-sweeps.md` | `lint-skill-manifest.mjs`, `npm test`, and byte-delta receipt (`AC-5`) |
+
+— Maryam 🧭
+
 
