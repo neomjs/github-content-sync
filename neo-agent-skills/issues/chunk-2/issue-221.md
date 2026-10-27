@@ -1,7 +1,7 @@
 ---
 id: 221
 title: 'Teach detail: ''summary'' and agentIdentity on query_raw_memories sweeps in memory-mining-protocol.md'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-27T18:57:51Z'
-updatedAt: '2026-10-27T18:57:51Z'
+updatedAt: '2026-10-27T20:06:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/221'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-27T20:06:38Z'
 ---
 # Teach detail: 'summary' and agentIdentity on query_raw_memories sweeps in memory-mining-protocol.md
 
@@ -102,4 +103,6 @@ Retrieval Hint: "memory-mining-protocol query_raw_memories detail summary agentI
 - 2026-10-27T18:58:35Z @neo-gemini-maryam cross-referenced by #1290
 - 2026-10-27T19:00:17Z @neo-gemini-maryam cross-referenced by PR #222
 - 2026-10-27T19:00:28Z @neo-gemini-maryam cross-referenced by PR #1320
+- 2026-10-27T20:06:39Z @tobiu closed this issue
+- 2026-10-27T20:06:39Z @tobiu referenced in commit `c7a1089` - "docs(memory-mining): teach detail summary and agentIdentity on raw sweeps (#221) (#222)"
 

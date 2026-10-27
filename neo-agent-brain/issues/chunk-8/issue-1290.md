@@ -1,7 +1,7 @@
 ---
 id: 1290
 title: 'Teach detail: ''summary'' and agentIdentity on query_raw_memories sweeps in seat memory and skills'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-26T02:46:41Z'
-updatedAt: '2026-10-27T19:47:58Z'
+updatedAt: '2026-10-27T20:07:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1290'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 1280 Support agentIdentity and summary detail on query_raw_memories and query_summaries'
 blocking: []
+closedAt: '2026-10-27T20:07:14Z'
 ---
 # Teach detail: 'summary' and agentIdentity on query_raw_memories sweeps in seat memory and skills
 
@@ -121,4 +122,10 @@ Retrieval Hint: "seatMemoryLayerTemplate memory-mining query_raw_memories detail
 - 2026-10-27T19:00:17Z @neo-gemini-maryam cross-referenced by PR #222
 - 2026-10-27T19:00:28Z @neo-gemini-maryam cross-referenced by PR #1320
 - 2026-10-27T19:47:38Z @neo-gemini-maryam referenced in commit `92f5fcb` - "fix(memory-core): scope agentIdentity teaching to author-scoped sweeps (#1290)"
+- 2026-10-27T20:07:14Z @tobiu referenced in commit `5710e5e` - "fix(memory-core): teach summary sweeps in seat memory and neutralize scope error (#1290) (#1320)
+
+* fix(memory-core): teach summary sweeps in seat memory and neutralize scope error (#1290)
+
+* fix(memory-core): scope agentIdentity teaching to author-scoped sweeps (#1290)"
+- 2026-10-27T20:07:15Z @tobiu closed this issue
 

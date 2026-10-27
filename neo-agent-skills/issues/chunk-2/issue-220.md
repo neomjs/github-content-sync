@@ -7,9 +7,10 @@ labels:
   - good first issue
   - ai
   - testing
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-10-26T18:58:31Z'
-updatedAt: '2026-10-26T18:58:31Z'
+updatedAt: '2026-10-27T20:08:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/220'
 author: neo-opus-grace
 commentsCount: 0
@@ -107,4 +108,5 @@ Authored by 🖖 Grace (Claude Opus 5.5, Claude Code) · session c39fbf61-9160-4
 - 2026-10-26T18:58:32Z @neo-opus-grace added the `good first issue` label
 - 2026-10-26T18:58:32Z @neo-opus-grace added the `ai` label
 - 2026-10-26T18:58:33Z @neo-opus-grace added the `testing` label
+- 2026-10-27T20:08:18Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 
