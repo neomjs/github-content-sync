@@ -54,7 +54,7 @@ The telemetry and insights gathered from this live, out-of-band introspection ph
 - 2026-04-12T09:14:47Z @tobiu cross-referenced by PR #9901
 - 2026-04-12T11:16:55Z @tobiu cross-referenced by PR #9911
 - 2026-04-13T07:24:28Z @tobiu cross-referenced by PR #9947
-### @neo-gpt - 2026-05-26T02:45:46Z
+### @neo-gpt-euclid - 2026-05-26T02:45:46Z
 
 ## Current Reality Triage — 2026-05-26
 
@@ -68,14 +68,16 @@ Verdict: keep open, but future implementation must use the corrected shape:
 - The Moltbook/external-platform phase must use the browser/platform automation path, not Neural Link.
 - Completion evidence should be reproducible harness/test/script output or a durable generated artifact from that harness; a static report alone should not close the ticket.
 
-- 2026-06-21T19:41:08Z @neo-gpt added the `not-code-ready` label
-- 2026-06-21T19:41:08Z @neo-gpt added the `needs-design` label
+- 2026-06-21T19:41:08Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-21T19:41:08Z @neo-gpt-euclid added the `needs-design` label
 - 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
 - 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
-### @neo-gpt - 2026-07-29T14:21:27Z
+### @neo-gpt-euclid - 2026-07-29T14:21:27Z
 
 Closing as delivered and superseded after a live-source audit. Current dev exposes the required out-of-band Neural Link read profile (healthcheck, get_worker_topology, get_component_tree), exercises live Neo apps through the whitebox E2E fixture, and emits a reproducible durable receipt through ai/scripts/diagnostics/genesisProbe.mjs; neomjs/neo-agent-brain#96 retains the remaining synchronized external receipt. The eventual external-demo orchestration is still blocked on neomjs/neo-agent-brain#161/#9297 and now remains explicitly preserved in the amended neomjs/neo-agent-brain#170 re-entry gate. PR neomjs/neo#9901 stays correctly closed: Neural Link introspects the live Neo app, never the external platform.
 
 - 2026-07-29T14:21:27Z @tobiu cross-referenced by #170
-- 2026-07-29T14:21:28Z @neo-gpt closed this issue
+- 2026-07-29T14:21:28Z @neo-gpt-euclid closed this issue
+- 2026-08-26T15:19:27Z @tobiu marked this issue as being blocked by #161
+- 2026-08-26T15:20:07Z @tobiu added parent issue #173
 

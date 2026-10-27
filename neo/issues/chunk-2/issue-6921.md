@@ -76,7 +76,9 @@ This enhancement would significantly improve the ergonomics and consistency of m
 
 - 2025-07-01T00:23:17Z @tobiu added the `enhancement` label
 - 2025-07-01T00:23:17Z @tobiu added the `no auto close` label
-- 2026-06-23T05:24:08Z @neo-gpt added the `not-code-ready` label
-- 2026-06-23T05:24:08Z @neo-gpt added the `needs-design` label
-- 2026-06-23T05:24:08Z @neo-gpt added the `needs-re-triage` label
+- 2026-06-23T05:24:08Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-23T05:24:08Z @neo-gpt-euclid added the `needs-design` label
+- 2026-06-23T05:24:08Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 

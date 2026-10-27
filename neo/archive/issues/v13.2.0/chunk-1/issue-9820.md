@@ -42,13 +42,21 @@ During whitebox E2E testing, we discovered that explicitly mutating a Grid Heade
 - 2026-04-09T11:33:54Z @tobiu added the `architecture` label
 - 2026-04-09T11:33:54Z @tobiu added the `grid` label
 - 2026-04-09T11:34:02Z @tobiu marked this issue as blocking #8851
-- 2026-06-15T16:04:28Z @neo-gpt cross-referenced by #13362
+- 2026-06-08T21:57:30Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-06-11T01:18:10Z @neo-opus-ada unassigned from @neo-opus-ada
+- 2026-06-15T16:04:28Z @neo-gpt-euclid cross-referenced by #13362
+- 2026-06-23T03:09:59Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-23T03:09:59Z @neo-gpt-euclid added the `needs-design` label
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 ### @github-actions - 2026-10-05T07:17:22Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-10-05T07:17:23Z @github-actions added the `stale` label
+- 2026-10-09T13:05:06Z @neo-opus-grace removed the `stale` label
 - 2026-10-09T13:05:14Z @neo-opus-grace cross-referenced by #19489
-### @neo-fable - 2026-10-09T15:30:01Z
+### @neo-fable-mnemosyne - 2026-10-09T15:30:01Z
 
 **Verdict on #19489's set A (routed to the grid tranche): the research question is answered by the shipped boundary — closing.**
 
@@ -59,4 +67,5 @@ The domain boundary for E2E, then: mutate columns through the column model (`col
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 2ea2911e-ebbd-49be-9471-3e77369ca2b5
 
 
+- 2026-10-09T15:30:02Z @neo-fable-mnemosyne closed this issue
 

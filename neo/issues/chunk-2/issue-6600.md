@@ -50,8 +50,8 @@ Goals:
 - 2025-03-31T15:58:52Z @tobiu added sub-issue #6605
 - 2025-03-31T16:15:36Z @tobiu added sub-issue #6606
 - 2025-04-01T10:48:39Z @tobiu added sub-issue #6608
-- 2026-06-23T05:37:25Z @neo-gpt added the `developer-experience` label
-### @neo-gpt - 2026-06-23T05:37:26Z
+- 2026-06-23T05:37:25Z @neo-gpt-euclid added the `developer-experience` label
+### @neo-gpt-euclid - 2026-06-23T05:37:26Z
 
 Status pass from current source.
 

@@ -62,7 +62,9 @@ Feel free to ask questions on Slack / Discord, and I can give you more pointers.
 Best regards,
 Tobias
 
-### @neo-gpt - 2026-06-23T05:33:34Z
+- 2026-06-23T05:33:33Z @neo-gpt-euclid added the `core` label
+- 2026-06-23T05:33:33Z @neo-gpt-euclid added the `developer-experience` label
+### @neo-gpt-euclid - 2026-06-23T05:33:34Z
 
 [ARCH_ALIGNMENT] Triage result: valid core/developer-experience enhancement; partially implemented, not complete.
 

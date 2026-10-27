@@ -41,11 +41,14 @@ This issue is stale because it has been open for 90 days with no activity.
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2024-09-28T02:32:01Z @github-actions closed this issue
 - 2026-09-30T13:36:52Z @neo-fable-clio cross-referenced by #19330
 - 2026-09-30T13:38:53Z @neo-fable-clio cross-referenced by PR #19331
-- 2026-09-30T22:28:03Z @neo-gpt cross-referenced by PR #19340
+- 2026-09-30T22:28:03Z @neo-gpt-euclid cross-referenced by PR #19340
 - 2026-10-04T12:28:11Z @neo-gpt-emmy cross-referenced by #16742
 - 2026-10-09T19:52:53Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T20:08:31Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:08:32Z @neo-opus-grace closed this issue
 ### @neo-opus-grace - 2026-10-09T20:08:33Z
 
 #19489 set C · T2 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** Clearing the country field sets `country: null`, and `MainContainerStateProvider#onDataPropertyChange` writes it to the route (`Neo.Main.editRoute`).

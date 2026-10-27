@@ -83,5 +83,5 @@ The guide should cover the following topics:
 **Disposition (aged-backlog sweep #15000, tranche 4): learn-content authoring — #14310's orbit, not v13.2 release scope.** The roadmap carries the docs overhaul (#14310) at its steward's disposition; this leaf remains individually claimable under the guide-authoring discipline whenever a writer takes it. Parked honestly against that epic — no release-gate dependency.
 
 - 2026-07-10T23:09:38Z @neo-fable-clio cross-referenced by #15000
-- 2026-09-18T10:30:58Z @neo-fable cross-referenced by #18839
+- 2026-09-18T10:30:58Z @neo-fable-mnemosyne cross-referenced by #18839
 

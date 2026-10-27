@@ -36,5 +36,6 @@ blocking: []
 - 2025-03-09T22:52:13Z @tobiu added the `help wanted` label
 - 2025-03-09T22:52:13Z @tobiu assigned to @tobiu
 - 2025-03-09T22:52:22Z @tobiu added the `no auto close` label
-- 2026-06-14T10:56:51Z @neo-gpt cross-referenced by #13219
+- 2026-06-14T10:56:51Z @neo-gpt-euclid cross-referenced by #13219
+- 2026-09-23T09:51:22Z @neo-opus-ada cross-referenced by #19105
 

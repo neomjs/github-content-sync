@@ -53,7 +53,7 @@ If a local headless model (such as `gemma4-31b` acting as the Librarian or a Wor
 - 2026-04-13T17:17:16Z @tobiu added the `ai` label
 - 2026-04-13T17:17:16Z @tobiu added the `architecture` label
 - 2026-06-21T09:40:54Z @neo-opus-vega assigned to @neo-opus-vega
-- 2026-06-21T09:54:49Z @neo-gpt cross-referenced by #13744
+- 2026-06-21T09:54:49Z @neo-gpt-euclid cross-referenced by #13744
 - 2026-06-21T10:00:20Z @neo-opus-vega cross-referenced by #13745
 - 2026-06-21T10:00:35Z @neo-opus-vega added sub-issue #13745
 - 2026-06-21T10:01:08Z @neo-opus-vega referenced in commit `0b28e14` - "feat(ai): tool-level MCP capability-gating mechanism (#13745)
@@ -123,5 +123,6 @@ Eight residents, **all frontier, all thin-client**. The "Thick Client" tier this
 
 Closed as obsolete — not superseded by a successor ticket, and not deferred. `#14164` covers the live surface concern.
 
+- 2026-07-17T03:34:48Z @neo-opus-vega closed this issue
 - 2026-08-25T20:15:06Z @neo-opus-grace cross-referenced by #16979
 

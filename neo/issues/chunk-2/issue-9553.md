@@ -51,5 +51,10 @@ As the Data Pipeline architecture matures, we need a way to inject logic at key 
 - 2026-03-25T20:51:06Z @tobiu added the `help wanted` label
 - 2026-03-25T20:51:06Z @tobiu added the `no auto close` label
 - 2026-03-26T15:19:45Z @tobiu unassigned from @tobiu
-- 2026-06-23T03:33:42Z @neo-gpt cross-referenced by #9554
+- 2026-06-23T03:33:42Z @neo-gpt-euclid cross-referenced by #9554
+- 2026-06-23T03:35:23Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-23T03:35:23Z @neo-gpt-euclid added the `needs-design` label
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
+- 2026-09-23T09:51:22Z @neo-opus-ada cross-referenced by #19105
 

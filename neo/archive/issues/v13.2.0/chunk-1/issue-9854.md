@@ -99,16 +99,24 @@ This blog post positions Neo.mjs as the established leader in multi-window web a
 - 2026-04-10T08:58:57Z @tobiu added the `ai` label
 - 2026-04-20T02:07:08Z @tobiu cross-referenced by #158
 - 2026-06-15T18:48:51Z @neo-opus-vega cross-referenced by #13383
+- 2026-06-15T18:49:46Z @neo-opus-vega added parent issue #13383
 - 2026-06-15T23:02:27Z @neo-opus-vega cross-referenced by #13394
-- 2026-06-23T03:08:15Z @neo-gpt cross-referenced by #9850
-- 2026-09-22T22:48:39Z @neo-fable cross-referenced by #19057
+- 2026-06-23T03:02:40Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-23T03:02:40Z @neo-gpt-euclid added the `needs-design` label
+- 2026-06-23T03:08:15Z @neo-gpt-euclid cross-referenced by #9850
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
+- 2026-09-22T22:48:39Z @neo-fable-mnemosyne cross-referenced by #19057
 ### @github-actions - 2026-10-05T07:17:17Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-10-05T07:17:18Z @github-actions added the `stale` label
 - 2026-10-09T12:46:37Z @neo-opus-grace cross-referenced by #19488
 - 2026-10-09T12:47:28Z @neo-opus-grace cross-referenced by PR #19490
+- 2026-10-09T12:57:12Z @neo-opus-grace removed the `stale` label
 - 2026-10-09T12:57:31Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T13:05:45Z @neo-opus-grace assigned to @neo-opus-grace
 ### @neo-opus-grace - 2026-10-09T13:07:28Z
 
 **Intake · Grace · 2026-10-09: accepted for 13.2, sharpened. The body stays yours; the proposals are below.**
@@ -133,6 +141,66 @@ Origin Session ID: e76b2469-377c-4fec-85a7-4c47b10269b9
 - 2026-10-09T13:11:38Z @neo-opus-grace cross-referenced by PR #19492
 - 2026-10-09T13:33:31Z @neo-opus-grace cross-referenced by #19494
 - 2026-10-09T13:33:34Z @neo-opus-grace cross-referenced by #19495
+- 2026-10-09T13:43:42Z @neo-opus-grace referenced in commit `7c78e43` - "docs(blog): the multi-window post frames instances and per-window documents (#9854)
+
+Sophie's facts read on #19492. A second window is not always a second
+heap: the post now frames the problem as an app starting a second
+instance, names the opener-realm answer and its cost from the windows
+guide, and says the app's windows share the App Worker rather than
+every window of an origin. The Workstation keeps one document per
+workspace; a move between windows commits both in one Group
+transaction, and the second diagram shows that. The unmeasured scroll
+offset is gone, the green-tests line is limited to the emulated tour,
+and the close points at Agent Institution as a real app on these
+layouts."
+- 2026-10-09T13:50:06Z @neo-opus-grace referenced in commit `ae1d012` - "docs(blog): the post names how windows find the shared worker (#9854)
+
+Euclid's review: a window reaches the running App Worker because Neo
+constructs it from the same script under the same name and the browser
+reuses a matching SharedWorker, not because of the origin alone.
+Messages carry events in and DOM changes out. Each workspace projects
+its own document; persistence receives the documents and the topology
+that relates them. Dedicated workers give each window its own App
+Worker."
 - 2026-10-09T14:24:17Z @neo-opus-grace cross-referenced by #19501
+- 2026-10-09T15:22:30Z @neo-opus-grace referenced in commit `9a4aa4f` - "docs(blog): the multi-window post shows the drag, the rail and a held drop (#9854)
+
+Three frames from pages #19 (resources_pub/website/release-notes/v13.2.0/), the set that replaced the rejected before/after pair: D1, a tab mid-drag with the drop region painted and the indicators up, opens the post; D2, a pane revealed from the edge rail, follows the arrangement paragraph; D4, a second window answering a held tab with its drop zones, is the war story's frame. Rendered in the local portal: all three load and both diagrams still render."
 - 2026-10-09T15:24:59Z @neo-opus-grace cross-referenced by PR #19507
+- 2026-10-09T15:52:10Z @tobiu referenced in commit `dc4e3b3` - "docs(blog): a workspace that can leave its window, multi-window apps in Neo.mjs 13.2 (#9854) (#19507)
+
+* docs(blog): a workspace that can leave its window, multi-window apps in Neo.mjs 13.2 (#9854)
+
+* docs(blog): the multi-window post frames instances and per-window documents (#9854)
+
+Sophie's facts read on #19492. A second window is not always a second
+heap: the post now frames the problem as an app starting a second
+instance, names the opener-realm answer and its cost from the windows
+guide, and says the app's windows share the App Worker rather than
+every window of an origin. The Workstation keeps one document per
+workspace; a move between windows commits both in one Group
+transaction, and the second diagram shows that. The unmeasured scroll
+offset is gone, the green-tests line is limited to the emulated tour,
+and the close points at Agent Institution as a real app on these
+layouts.
+
+* docs(blog): the post names how windows find the shared worker (#9854)
+
+Euclid's review: a window reaches the running App Worker because Neo
+constructs it from the same script under the same name and the browser
+reuses a matching SharedWorker, not because of the origin alone.
+Messages carry events in and DOM changes out. Each workspace projects
+its own document; persistence receives the documents and the topology
+that relates them. Dedicated workers give each window its own App
+Worker.
+
+* docs(blog): the multi-window post shows the drag, the rail and a held drop (#9854)
+
+Three frames from pages #19 (resources_pub/website/release-notes/v13.2.0/), the set that replaced the rejected before/after pair: D1, a tab mid-drag with the drop region painted and the indicators up, opens the post; D2, a pane revealed from the edge rail, follows the arrangement paragraph; D4, a second window answering a held tab with its drop zones, is the war story's frame. Rendered in the local portal: all three load and both diagrams still render."
+- 2026-10-09T15:52:11Z @tobiu closed this issue
+- 2026-10-09T17:11:09Z @neo-opus-grace cross-referenced by #19519
+- 2026-10-11T15:24:43Z @neo-opus-ada cross-referenced by #19602
+- 2026-10-11T15:25:25Z @neo-opus-vega cross-referenced by #19603
+- 2026-10-11T23:47:03Z @neo-opus-grace cross-referenced by #19638
+- 2026-10-12T00:07:10Z @neo-opus-ada cross-referenced by PR #19639
 

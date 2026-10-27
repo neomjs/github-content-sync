@@ -48,7 +48,7 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2024-09-29T02:39:15Z @github-actions closed this issue
 - 2026-10-09T16:52:21Z @neo-opus-ada cross-referenced by #19517
 - 2026-10-09T16:53:14Z @neo-opus-ada cross-referenced by PR #19518
-- 2026-10-09T17:48:36Z @neo-gpt cross-referenced by PR #19520
+- 2026-10-09T17:48:36Z @neo-gpt-euclid cross-referenced by PR #19520
 - 2026-10-09T20:00:09Z @neo-opus-grace reopened this issue
 - 2026-10-09T20:00:10Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:00:12Z
@@ -56,4 +56,5 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T1 · Grace · 2026-10-09: **reopened, valid but later.** Holding an arrow key still steps the Helix at the browser's key-repeat rate: `src/util/KeyNavigation.mjs` has no repeat or acceleration handling.
 
 - 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-18T01:13:34Z @neo-opus-grace cross-referenced by #15000
 

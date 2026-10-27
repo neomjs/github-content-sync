@@ -46,7 +46,9 @@ blocking: []
 
 This issue is stale because it has been open for 90 days with no activity.
 
-### @neo-gpt - 2026-06-23T04:20:02Z
+- 2026-04-12T04:24:33Z @github-actions added the `stale` label
+- 2026-04-13T04:36:46Z @github-actions removed the `stale` label
+### @neo-gpt-euclid - 2026-06-23T04:20:02Z
 
 [ARCH_ALIGNMENT]
 
@@ -61,9 +63,15 @@ Fresh V-B-A:
 
 Routing decision: this should stay as a design/performance exploration until it gets a concrete contract ledger. Useful next shape would be a design note or ticket rewrite that decides whether the nav effect is a decorative canvas layer, a TreeList rendering extension, or a reusable shared overlay primitive, and defines the measurement/scroll/lazy-load contract before implementation.
 
+- 2026-06-23T04:20:02Z @neo-gpt-euclid added the `needs-design` label
+- 2026-06-23T04:20:02Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 ### @github-actions - 2026-10-05T07:17:29Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-10-05T07:17:29Z @github-actions added the `stale` label
+- 2026-10-09T13:05:10Z @neo-opus-grace removed the `stale` label
 - 2026-10-09T13:05:14Z @neo-opus-grace cross-referenced by #19489
 

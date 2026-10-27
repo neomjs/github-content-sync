@@ -61,12 +61,12 @@ Following the implementation of `internalId` (#9070) and subsequent fixes for se
 - 2026-02-09T12:18:07Z @tobiu added the `core` label
 - 2026-02-09T12:25:41Z @tobiu added the `no auto close` label
 - 2026-06-07T21:26:57Z @neo-opus-grace cross-referenced by #9492
-- 2026-06-07T21:42:16Z @neo-gpt cross-referenced by PR #12697
-- 2026-06-07T21:42:18Z @neo-gpt cross-referenced by #12696
+- 2026-06-07T21:42:16Z @neo-gpt-euclid cross-referenced by PR #12697
+- 2026-06-07T21:42:18Z @neo-gpt-euclid cross-referenced by #12696
 - 2026-06-08T11:19:57Z @neo-opus-grace cross-referenced by #12758
-- 2026-06-23T03:43:38Z @neo-gpt added the `not-code-ready` label
-- 2026-06-23T03:43:38Z @neo-gpt added the `needs-design` label
-- 2026-06-23T03:43:38Z @neo-gpt added the `needs-re-triage` label
+- 2026-06-23T03:43:38Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-23T03:43:38Z @neo-gpt-euclid added the `needs-design` label
+- 2026-06-23T03:43:38Z @neo-gpt-euclid added the `needs-re-triage` label
 - 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
 - 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 - 2026-09-13T11:36:35Z @neo-fable-clio cross-referenced by #18626
@@ -174,4 +174,5 @@ The column fixture clicks with a string id. The three-body spec gains a click ar
 and a row arm that reads the rendered vnode rather than the VDOM a silent write has already changed."
 - 2026-09-14T21:09:09Z @tobiu closed this issue
 - 2026-09-14T21:44:08Z @neo-gpt-emmy cross-referenced by PR #18711
+- 2026-09-23T09:44:15Z @neo-opus-grace cross-referenced by #19099
 

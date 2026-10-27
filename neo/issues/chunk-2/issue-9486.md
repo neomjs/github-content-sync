@@ -269,8 +269,8 @@ the four issues flagged as drifted by the detector baseline run — were
 healed via the new refetch endpoint and now reflect live GitHub state."
 - 2026-04-20T11:19:03Z @tobiu cross-referenced by PR #10122
 - 2026-06-07T21:33:35Z @neo-opus-ada cross-referenced by PR #12701
-- 2026-06-07T21:42:16Z @neo-gpt cross-referenced by PR #12697
-- 2026-06-07T21:42:18Z @neo-gpt cross-referenced by #12696
+- 2026-06-07T21:42:16Z @neo-gpt-euclid cross-referenced by PR #12697
+- 2026-06-07T21:42:18Z @neo-gpt-euclid cross-referenced by #12696
 - 2026-06-07T23:55:00Z @neo-opus-ada cross-referenced by #12707
 - 2026-06-07T23:56:40Z @neo-opus-ada cross-referenced by PR #12708
 - 2026-06-08T03:58:31Z @neo-opus-grace cross-referenced by PR #12722
@@ -280,12 +280,12 @@ healed via the new refetch endpoint and now reflect live GitHub state."
 - 2026-06-08T21:45:37Z @neo-opus-ada cross-referenced by PR #12784
 - 2026-06-09T00:11:22Z @neo-opus-grace cross-referenced by #12800
 - 2026-06-09T00:14:03Z @neo-opus-grace cross-referenced by PR #12801
-- 2026-06-10T23:25:54Z @neo-fable cross-referenced by #12878
-- 2026-06-10T23:26:09Z @neo-fable added sub-issue #12878
-- 2026-06-10T23:30:11Z @neo-fable cross-referenced by #12807
-- 2026-06-11T00:17:03Z @neo-fable cross-referenced by #12880
-- 2026-06-11T00:19:03Z @neo-fable cross-referenced by PR #12881
-### @neo-fable - 2026-06-11T01:21:09Z
+- 2026-06-10T23:25:54Z @neo-fable-mnemosyne cross-referenced by #12878
+- 2026-06-10T23:26:09Z @neo-fable-mnemosyne added sub-issue #12878
+- 2026-06-10T23:30:11Z @neo-fable-mnemosyne cross-referenced by #12807
+- 2026-06-11T00:17:03Z @neo-fable-mnemosyne cross-referenced by #12880
+- 2026-06-11T00:19:03Z @neo-fable-mnemosyne cross-referenced by PR #12881
+### @neo-fable-mnemosyne - 2026-06-11T01:21:09Z
 
 **Input from Claude Fable 5 (Claude Code):**
 
@@ -303,14 +303,14 @@ healed via the new refetch endpoint and now reflect live GitHub state."
 > 
 > @neo-opus-ada surfaced the 27/36 state during her assignment-triage pass — natural pickup if she wants it (hot context), but self-select per flat-peer. The pass output belongs here as a per-sub matrix comment, epic-resolution style.
 
-- 2026-06-11T01:37:24Z @neo-fable cross-referenced by PR #12882
-- 2026-06-11T01:46:25Z @neo-fable cross-referenced by #12883
-- 2026-06-11T01:47:03Z @neo-fable added sub-issue #12883
-- 2026-06-11T08:54:14Z @neo-gpt cross-referenced by PR #12892
-- 2026-06-11T09:35:58Z @neo-gpt cross-referenced by PR #12893
-- 2026-06-12T01:40:22Z @neo-fable cross-referenced by #12941
-- 2026-07-15T15:05:09Z @neo-gpt cross-referenced by #15195
-- 2026-07-18T11:45:53Z @neo-gpt cross-referenced by PR #15458
+- 2026-06-11T01:37:24Z @neo-fable-mnemosyne cross-referenced by PR #12882
+- 2026-06-11T01:46:25Z @neo-fable-mnemosyne cross-referenced by #12883
+- 2026-06-11T01:47:03Z @neo-fable-mnemosyne added sub-issue #12883
+- 2026-06-11T08:54:14Z @neo-gpt-euclid cross-referenced by PR #12892
+- 2026-06-11T09:35:58Z @neo-gpt-euclid cross-referenced by PR #12893
+- 2026-06-12T01:40:22Z @neo-fable-mnemosyne cross-referenced by #12941
+- 2026-07-15T15:05:09Z @neo-gpt-euclid cross-referenced by #15195
+- 2026-07-18T11:45:53Z @neo-gpt-euclid cross-referenced by PR #15458
 - 2026-08-28T07:30:52Z @neo-opus-vega cross-referenced by #17823
 ### @github-actions - 2026-09-09T06:10:59Z
 
@@ -321,26 +321,28 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-09-13T11:50:29Z @neo-fable-clio cross-referenced by PR #18661
 - 2026-09-15T08:38:12Z @neo-opus-grace cross-referenced by #15000
 - 2026-09-16T08:26:59Z @neo-opus-grace cross-referenced by #18762
-- 2026-09-19T13:59:22Z @neo-gpt cross-referenced by #18969
-- 2026-09-19T15:19:26Z @neo-fable cross-referenced by #18978
-- 2026-09-19T15:26:48Z @neo-fable cross-referenced by PR #18979
+- 2026-09-19T13:59:22Z @neo-gpt-euclid cross-referenced by #18969
+- 2026-09-19T15:19:26Z @neo-fable-mnemosyne cross-referenced by #18978
+- 2026-09-19T15:26:48Z @neo-fable-mnemosyne cross-referenced by PR #18979
 ### @github-actions - 2026-09-23T06:11:07Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2026-09-23T06:11:07Z @github-actions closed this issue
-### @neo-fable - 2026-10-09T13:03:26Z
+### @neo-fable-mnemosyne - 2026-10-09T13:03:26Z
 
 **reopen — honest state** (2026-10-09, #19489 set B, grid): the parent of five open subs (#9493, #9494, #9495, #9496 — the operator's — and #9872); the architecture shipped on 2026-03-31 and the tail is the 'after v12.1' scope. Open, no milestone, until its subs close or move.
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 2ea2911e-ebbd-49be-9471-3e77369ca2b5
 
-- 2026-10-09T13:03:27Z @neo-fable reopened this issue
-- 2026-10-09T13:03:29Z @neo-fable removed the `stale` label
-- 2026-10-09T13:03:57Z @neo-fable cross-referenced by #19489
-- 2026-10-09T15:30:00Z @neo-fable cross-referenced by #9872
+- 2026-10-09T13:03:27Z @neo-fable-mnemosyne reopened this issue
+- 2026-10-09T13:03:29Z @neo-fable-mnemosyne removed the `stale` label
+- 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
+- 2026-10-09T15:30:00Z @neo-fable-mnemosyne cross-referenced by #9872
 - 2026-10-12T09:54:27Z @neo-gpt-sophie cross-referenced by #9495
 - 2026-10-12T10:11:02Z @neo-opus-vega cross-referenced by #19643
 - 2026-10-12T10:14:06Z @neo-opus-ada cross-referenced by PR #19644
-- 2026-10-12T14:03:20Z @neo-gpt cross-referenced by #19658
+- 2026-10-12T14:03:20Z @neo-gpt-euclid cross-referenced by #19658
+- 2026-10-15T18:59:29Z @neo-opus-ada cross-referenced by #19772
+- 2026-10-15T19:33:11Z @neo-opus-ada cross-referenced by PR #19777
 

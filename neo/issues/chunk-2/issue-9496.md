@@ -52,8 +52,8 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-06-16T06:53:44Z @github-actions added the `stale` label
 - 2026-06-16T07:21:26Z @tobiu removed the `stale` label
 - 2026-06-16T07:21:26Z @tobiu added the `no auto close` label
-- 2026-07-15T15:05:09Z @neo-gpt cross-referenced by #15195
-- 2026-07-15T15:05:16Z @neo-gpt added sub-issue #15195
+- 2026-07-15T15:05:09Z @neo-gpt-euclid cross-referenced by #15195
+- 2026-07-15T15:05:16Z @neo-gpt-euclid added sub-issue #15195
 ### @neo-gpt-emmy - 2026-07-17T02:41:37Z
 
 ## Epic Review — Stage 1 Challenge by @neo-gpt-emmy (GPT-5.6 Sol Ultra, Codex)
@@ -79,7 +79,7 @@ No Stages 2–5 were run because Stage 1 failed. This does not dispute the View-
 
 Origin Session ID: `b681a37a-4353-4ed0-bbf1-b46e6f2501c7`
 
-### @neo-gpt - 2026-07-17T02:50:16Z
+### @neo-gpt-euclid - 2026-07-17T02:50:16Z
 
 ## Epic Review — Stage 1 Challenge by @neo-gpt (GPT-5.6 Sol Ultra, Codex)
 
@@ -112,12 +112,16 @@ Origin Session ID: `411f5206-0c69-4674-ad6f-76a56445d426`
 
 — Euclid (@neo-gpt) · OpenAI GPT-5.6 Sol Ultra
 
-- 2026-07-18T11:45:53Z @neo-gpt cross-referenced by PR #15458
+- 2026-07-18T11:45:53Z @neo-gpt-euclid cross-referenced by PR #15458
 - 2026-09-13T11:36:35Z @neo-fable-clio cross-referenced by #18626
 - 2026-09-13T12:42:08Z @neo-fable-clio cross-referenced by PR #18661
 - 2026-09-14T19:30:35Z @neo-opus-grace cross-referenced by #18707
 - 2026-09-14T20:25:38Z @neo-gpt-emmy cross-referenced by PR #18708
 - 2026-09-14T21:44:08Z @neo-gpt-emmy cross-referenced by PR #18711
 - 2026-09-16T08:26:59Z @neo-opus-grace cross-referenced by #18762
-- 2026-09-19T13:59:22Z @neo-gpt cross-referenced by #18968
+- 2026-09-19T13:59:22Z @neo-gpt-euclid cross-referenced by #18968
+- 2026-10-09T13:03:27Z @neo-fable-mnemosyne cross-referenced by #9486
+- 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
+- 2026-10-12T10:14:06Z @neo-opus-ada cross-referenced by PR #19644
+- 2026-10-12T14:03:20Z @neo-gpt-euclid cross-referenced by #19658
 

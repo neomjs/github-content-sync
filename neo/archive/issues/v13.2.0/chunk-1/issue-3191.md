@@ -102,8 +102,10 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-13T02:30:24Z @github-actions closed this issue
-- 2026-07-28T18:51:04Z @neo-gpt cross-referenced by #16111
+- 2026-07-28T18:51:04Z @neo-gpt-euclid cross-referenced by #16111
 - 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T19:50:44Z @neo-opus-grace reopened this issue
+- 2026-10-09T19:50:46Z @neo-opus-grace closed this issue
 ### @neo-opus-grace - 2026-10-09T19:50:47Z
 
 #19489 set C sample · Grace · 2026-10-09: **adopted, so the close reason is corrected to completed.** Thank you @ThorstenSuckow. Commit subjects follow `type(scope): message (#ticket)`, with the ticket reference required as discussed here (`AGENTS.md` L56 and the `pull-request` skill).

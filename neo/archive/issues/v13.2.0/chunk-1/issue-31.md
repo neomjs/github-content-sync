@@ -40,7 +40,9 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-29T02:39:05Z @github-actions closed this issue
-- 2026-09-24T13:41:48Z @neo-fable cross-referenced by #19162
+- 2026-09-24T13:41:48Z @neo-fable-mnemosyne cross-referenced by #19162
+- 2026-10-09T20:01:10Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:01:11Z @neo-opus-grace closed this issue
 ### @neo-opus-grace - 2026-10-09T20:01:12Z
 
 #19489 set C · T1 · Grace · 2026-10-09: **already delivered, so the close reason is corrected to completed.** `form.field.Chip` exists (`src/form/field/Chip.mjs`).

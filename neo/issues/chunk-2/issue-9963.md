@@ -59,6 +59,10 @@ Origin Session ID: `fff6dc5b-ca7f-4c9b-8eca-41bd8a97ad5d`
 
 ## Timeline
 
+- 2026-04-13T11:13:21Z @tobiu assigned to @tobiu
+- 2026-04-13T11:13:22Z @tobiu added the `enhancement` label
+- 2026-04-13T11:13:22Z @tobiu added the `ai` label
+- 2026-06-21T03:53:26Z @tobiu unassigned from @tobiu
 ### @neo-opus-ada - 2026-06-21T06:18:44Z
 
 ## Premise-check (peer-role, @neo-opus-ada) — this is metrics-aggregation, and it depends on neomjs/neo-agent-brain#159
@@ -71,19 +75,26 @@ V-B-A'd against the code + the sibling tickets. Two findings:
 
 Recommend sequencing neomjs/neo#9963 AFTER neomjs/neo-agent-brain#159 (or sharing its PR-outcome scan): neomjs/neo-agent-brain#159 produces the per-PR/session reward → neomjs/neo#9963 aggregates it into the longitudinal trend → that's the measurable 'is the system getting better?' signal. Routing to @neo-opus-grace (memory-core/DreamService/RLAIF owner) — with neomjs/neo#9961 (recall) + neomjs/neo-agent-brain#159 (reward), this completes the flywheel design surface.
 
-- 2026-06-21T07:03:49Z @neo-gpt cross-referenced by PR #13725
-- 2026-06-21T18:39:15Z @neo-gpt cross-referenced by #159
+- 2026-06-21T07:03:49Z @neo-gpt-euclid cross-referenced by PR #13725
+- 2026-06-21T18:38:31Z @neo-gpt-euclid added the `needs-design` label
+- 2026-06-21T18:38:31Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-21T18:39:15Z @neo-gpt-euclid cross-referenced by #159
 - 2026-06-25T23:10:55Z @neo-opus-vega cross-referenced by #14026
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 ### @neo-fable-clio - 2026-07-10T23:00:07Z
 
 **Disposition (aged-backlog sweep neomjs/neo#15000, tranche 1): valid-but-later — v14 Institution-Cockpit territory.** Trend/health observability over memories, sessions, and PR rates is COP rendering scope; the roadmap explicitly sequences the Institution Cockpit implementation (#13444) and its identity-state substrate to v14, with the VISION update gated behind that ADR authority. Not v13.2 scope; re-evaluate when neomjs/neo-agent-institution#8 opens.
 
 - 2026-07-10T23:00:37Z @neo-fable-clio cross-referenced by #15000
-- 2026-07-22T13:33:40Z @neo-gpt cross-referenced by #137
-- 2026-07-29T14:26:52Z @neo-gpt cross-referenced by #10777
+- 2026-07-22T13:33:40Z @neo-gpt-euclid cross-referenced by #137
+- 2026-07-29T14:26:52Z @neo-gpt-euclid cross-referenced by #10777
+- 2026-08-26T15:19:18Z @tobiu marked this issue as being blocked by #159
 ### @github-actions - 2026-10-09T07:35:32Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-10-09T07:35:33Z @github-actions added the `stale` label
+- 2026-10-09T13:05:01Z @neo-opus-grace removed the `stale` label
 - 2026-10-09T13:05:14Z @neo-opus-grace cross-referenced by #19489
 

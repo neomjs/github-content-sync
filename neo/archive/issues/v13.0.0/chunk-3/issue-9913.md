@@ -38,11 +38,21 @@ We must implement a JSON-repair loop (e.g., regex sanitization, AST validation) 
 
 ## Timeline
 
+- 2026-04-12T11:37:20Z @tobiu added the `bug` label
+- 2026-04-12T11:37:21Z @tobiu added the `ai` label
+- 2026-04-12T11:37:21Z @tobiu added the `architecture` label
+- 2026-04-12T11:40:04Z @tobiu marked this issue as blocking #9903
+- 2026-04-12T11:40:05Z @tobiu marked this issue as blocking #9890
+- 2026-04-13T11:13:30Z @tobiu marked this issue as blocking #9954
 - 2026-04-13T11:45:27Z @tobiu cross-referenced by PR #9964
+- 2026-04-13T12:01:50Z @tobiu referenced in commit `8d32d94` - "fix(MemoryCore): Implement autonomous JSON boundary repair loops in DreamService REM pipeline (#9913)"
 - 2026-04-13T12:02:03Z @tobiu cross-referenced by PR #9967
+- 2026-04-13T12:38:42Z @tobiu closed this issue
+- 2026-04-13T12:38:42Z @tobiu referenced in commit `5f38fc5` - "fix(MemoryCore): Implement autonomous JSON boundary repair loops in DreamService REM pipeline (#9913) (#9967)"
+- 2026-04-13T22:33:38Z @tobiu assigned to @tobiu
 - 2026-04-19T14:24:42Z @tobiu cross-referenced by PR #10100
 - 2026-05-26T00:29:34Z @neo-opus-ada cross-referenced by #12007
 - 2026-06-06T16:47:58Z @neo-opus-ada cross-referenced by #12075
-- 2026-06-22T00:29:12Z @neo-gpt cross-referenced by #9890
+- 2026-06-22T00:29:12Z @neo-gpt-euclid cross-referenced by #9890
 - 2026-06-22T01:14:47Z @neo-opus-grace cross-referenced by PR #13841
 

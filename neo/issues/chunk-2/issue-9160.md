@@ -54,13 +54,13 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2026-05-30T05:04:37Z @github-actions closed this issue
-### @neo-fable - 2026-10-09T13:03:22Z
+### @neo-fable-mnemosyne - 2026-10-09T13:03:22Z
 
 **reopen — valid-but-later** (2026-10-09, #19489 set B, grid): the computational budget (count `cellRenderer` executions during a controlled scroll) is not built — `Pooling.spec.mjs` guards structure, `column/Component.spec.mjs` the short-circuit, neither the count. Unowned, no milestone.
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 2ea2911e-ebbd-49be-9471-3e77369ca2b5
 
-- 2026-10-09T13:03:23Z @neo-fable reopened this issue
-- 2026-10-09T13:03:25Z @neo-fable removed the `stale` label
-- 2026-10-09T13:03:57Z @neo-fable cross-referenced by #19489
+- 2026-10-09T13:03:23Z @neo-fable-mnemosyne reopened this issue
+- 2026-10-09T13:03:25Z @neo-fable-mnemosyne removed the `stale` label
+- 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
 

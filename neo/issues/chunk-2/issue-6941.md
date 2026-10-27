@@ -48,7 +48,9 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2025-10-03T09:11:50Z @tobiu removed the `stale` label
 - 2025-10-03T09:11:50Z @tobiu added the `no auto close` label
 - 2025-12-31T14:24:16Z @tobiu cross-referenced by #8230
-- 2026-06-23T05:13:06Z @neo-gpt added the `not-code-ready` label
-- 2026-06-23T05:13:07Z @neo-gpt added the `needs-design` label
-- 2026-06-23T05:13:07Z @neo-gpt added the `needs-re-triage` label
+- 2026-06-23T05:13:06Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-23T05:13:07Z @neo-gpt-euclid added the `needs-design` label
+- 2026-06-23T05:13:07Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 

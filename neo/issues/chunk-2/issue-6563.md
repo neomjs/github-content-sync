@@ -33,5 +33,5 @@ blocking: []
 - 2025-03-09T22:47:26Z @tobiu added the `enhancement` label
 - 2025-03-09T22:47:26Z @tobiu added the `no auto close` label
 - 2025-03-09T22:47:26Z @tobiu assigned to @tobiu
-- 2026-06-14T10:56:51Z @neo-gpt cross-referenced by #13219
+- 2026-06-14T10:56:51Z @neo-gpt-euclid cross-referenced by #13219
 

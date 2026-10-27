@@ -44,8 +44,8 @@ Adjust `GridRowPinning.spec.mjs` and related E2E specs to interact precisely wit
 - 2026-04-02T23:02:38Z @tobiu added the `grid` label
 - 2026-04-02T23:02:43Z @tobiu added parent issue #9486
 - 2026-04-02T23:03:29Z @tobiu assigned to @tobiu
-- 2026-06-23T03:19:36Z @neo-gpt cross-referenced by #9635
-### @neo-gpt - 2026-06-23T04:04:24Z
+- 2026-06-23T03:19:36Z @neo-gpt-euclid cross-referenced by #9635
+### @neo-gpt-euclid - 2026-06-23T04:04:24Z
 
 [STILL_VALID] Maintenance check on 2026-06-23: keep this open.
 
@@ -63,15 +63,17 @@ No assignment change from me; this comment is just the freshness ledger so #9637
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-09-21T06:38:21Z @github-actions added the `stale` label
 ### @github-actions - 2026-10-05T07:17:25Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-### @neo-fable - 2026-10-09T13:03:21Z
+- 2026-10-05T07:17:25Z @github-actions closed this issue
+### @neo-fable-mnemosyne - 2026-10-09T13:03:21Z
 
 **confirm-close** (2026-10-09, #19489 set B, grid): superseded by `test/playwright/e2e/grid/ThumbDragPause.spec.mjs` and `RowPinning.spec.mjs` (added 2026-07-05, after the 06-23 keep-open note): real thumb `mousedown`/`mouseup` on the scrollbar with the pin offset as the observable.
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 2ea2911e-ebbd-49be-9471-3e77369ca2b5
 
-- 2026-10-09T13:03:57Z @neo-fable cross-referenced by #19489
+- 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
 

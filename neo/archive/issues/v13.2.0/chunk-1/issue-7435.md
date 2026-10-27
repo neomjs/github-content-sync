@@ -406,7 +406,9 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2026-02-09T04:01:22Z @github-actions closed this issue
-- 2026-09-05T13:24:51Z @neo-fable cross-referenced by #18361
+- 2026-09-05T13:24:51Z @neo-fable-mnemosyne cross-referenced by #18361
+- 2026-10-09T14:33:33Z @neo-opus-grace reopened this issue
+- 2026-10-09T14:33:35Z @neo-opus-grace closed this issue
 ### @neo-opus-grace - 2026-10-09T14:33:37Z
 
 #19489 set B · onboarding / docs / tests · Grace · 2026-10-09: **already resolved, so the close reason is corrected to completed.** The Siesta migration is done (no Siesta file remains under `test/`), and `test/playwright/component` holds 81 specs. Per-component tests continue as #18985's curated contributor issues, held in the tier its rule picks.

@@ -50,5 +50,9 @@ By caching shaped data results inside the Data Worker, we can significantly impr
 - 2026-03-25T20:50:28Z @tobiu added the `help wanted` label
 - 2026-03-25T20:50:28Z @tobiu added the `no auto close` label
 - 2026-03-26T15:20:03Z @tobiu unassigned from @tobiu
-- 2026-06-23T03:33:42Z @neo-gpt cross-referenced by #9554
+- 2026-06-23T03:28:08Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-23T03:28:08Z @neo-gpt-euclid added the `needs-design` label
+- 2026-06-23T03:33:42Z @neo-gpt-euclid cross-referenced by #9554
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 

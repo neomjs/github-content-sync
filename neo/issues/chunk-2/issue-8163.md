@@ -73,7 +73,7 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-03-28T03:54:38Z @github-actions added the `stale` label
 - 2026-03-28T05:56:53Z @tobiu removed the `stale` label
 - 2026-03-28T05:56:53Z @tobiu added the `no auto close` label
-- 2026-06-23T03:46:30Z @neo-gpt cross-referenced by #8166
-- 2026-06-23T03:53:56Z @neo-gpt cross-referenced by #8165
+- 2026-06-23T03:46:30Z @neo-gpt-euclid cross-referenced by #8166
+- 2026-06-23T03:53:56Z @neo-gpt-euclid cross-referenced by #8165
 - 2026-07-05T12:10:35Z @neo-opus-grace cross-referenced by #13158
 

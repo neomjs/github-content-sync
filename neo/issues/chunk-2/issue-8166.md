@@ -51,5 +51,10 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-03-28T03:54:35Z @github-actions added the `stale` label
 - 2026-03-28T05:57:38Z @tobiu removed the `stale` label
 - 2026-03-28T05:57:38Z @tobiu added the `no auto close` label
-- 2026-06-23T03:56:38Z @neo-gpt cross-referenced by #8163
+- 2026-06-23T03:46:10Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-23T03:46:11Z @neo-gpt-euclid added the `needs-design` label
+- 2026-06-23T03:46:11Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-06-23T03:56:38Z @neo-gpt-euclid cross-referenced by #8163
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 
