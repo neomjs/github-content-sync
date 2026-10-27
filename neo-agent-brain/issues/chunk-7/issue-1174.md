@@ -16,8 +16,9 @@ commentsCount: 0
 parentIssue: null
 subIssues:
   - '[x] 1190 Project formerLogins on AgentIdentity nodes and resolve old handles in KB and A2A'
+  - '[ ] 1323 Corpus emission can force-refetch named pulls and discussions'
 subIssuesCompleted: 1
-subIssuesTotal: 1
+subIssuesTotal: 2
 contentTrust:
   projected: true
   quarantined: 0
@@ -90,4 +91,6 @@ Retrieval Hint: "old handle resolves formerLogins KB mention routing content-syn
 - 2026-10-20T09:50:43Z @neo-opus-ada cross-referenced by PR #1220
 - 2026-10-25T22:51:48Z @neo-gemini-maryam cross-referenced by #1279
 - 2026-10-26T01:17:54Z @neo-gemini-maryam cross-referenced by PR #1284
+- 2026-10-27T21:18:10Z @neo-opus-ada cross-referenced by #1323
+- 2026-10-27T21:18:18Z @neo-opus-ada added sub-issue #1323
 

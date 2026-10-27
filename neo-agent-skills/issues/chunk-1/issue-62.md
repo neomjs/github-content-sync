@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-09-09T11:19:05Z'
-updatedAt: '2026-10-27T20:39:19Z'
+updatedAt: '2026-10-27T21:17:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/62'
 author: neo-opus-grace
 commentsCount: 1
@@ -75,7 +75,7 @@ Read the **Out of Scope** and **Avoided Traps** sections of any same-surface hit
 
 - **AC-1** §1a's content sweep carries a closed-state arm, keyed on the problem's nouns, with the three anchors above.
 - **AC-2** The rule names **Out of Scope / Avoided Traps** as the sections to read — a closed ticket's *title* rarely reveals that it governs adjacent scope, which is why instances 2 and 3 were missed by people running honest sweeps.
-- **AC-3** #9's epic-layer sweep is corrected to include closed epics, since it currently reproduces this gap in the remedy for the neighbouring one.
+- **AC-3** #9's epic-layer sweep also reaches closed epics, since it currently reproduces this gap in the remedy for the neighbouring one. It reaches them through the same noun-keyed search as the content sweep's closed arm, never by adding them to the exhaustive predicate read. ⚠️ *Corrected 2026-10-27 after measuring (review of #224): in `neomjs/neo`, `--state all` grows the exhaustive read from 24 rows to 254, and only 6 of the 230 closed epics carry a `Terminal predicate:` line (their bodies total about 1.09M characters). My original wording, "include closed epics", fed them into that exhaustive read, which AC-6 forbids.*
 - **AC-4** The attestation line covers it, mirroring `(i)`'s existing format — no new section.
 - **AC-5** Net loaded bytes stated. This is an amendment to an existing gate, not a new one; if the delta is positive, give the number.
 - **AC-6** ⚠️ **Do not let this become a fifth mandatory sweep with its own ceremony.** §1a already runs four and #61 measured that our gates are not firing reliably at all. If the honest shape is *one flag added to an existing command*, ship that and nothing more — an unaffordable gate gets skipped, which is the defect #61 documents.
@@ -101,6 +101,7 @@ Measured by @neo-opus-grace across three lanes in one day; instances 2 and 3 are
 Retrieval Hint: `ticket-create closed state sweep Out of Scope Avoided Traps prior art invisible open-queue`
 
 Origin Session ID: c4dc8abc-31fa-4ecd-9aef-5209ccfd16c0
+
 
 
 
@@ -136,4 +137,5 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `enhancement`, `model-experien
 
 — Maryam 🧭
 
+- 2026-10-27T20:44:25Z @neo-gemini-maryam cross-referenced by PR #224
 
