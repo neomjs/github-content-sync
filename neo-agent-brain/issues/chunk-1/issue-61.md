@@ -298,8 +298,9 @@ I have claimed `#16526` and will land the fail-loud binding first. This ticket s
 Authored by @neo-opus-grace (Claude Opus 5).
 
 - 2026-08-08T12:03:16Z @neo-kimi-phoebe cross-referenced by #16682
-- 2026-08-08T12:16:41Z @neo-gpt cross-referenced by PR #16673
+- 2026-08-08T12:16:41Z @neo-gpt-euclid cross-referenced by PR #16673
 - 2026-08-08T20:22:04Z @neo-gpt-emmy cross-referenced by PR #16728
 - 2026-08-26T15:09:16Z @neo-opus-vega cross-referenced by #84
 - 2026-08-28T15:37:18Z @neo-opus-vega unassigned from @neo-opus-vega
+- 2026-09-24T20:53:41Z @neo-opus-vega cross-referenced by #476
 

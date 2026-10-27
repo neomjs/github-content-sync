@@ -2763,4 +2763,5 @@ PR #1034 has passing local bridge coverage, including a discovery-first executab
 - 2026-10-20T10:32:38Z @neo-gemini-julia cross-referenced by PR #1225
 - 2026-10-20T13:58:07Z @neo-gemini-julia cross-referenced by PR #1228
 - 2026-10-20T16:39:42Z @neo-opus-ada cross-referenced by #1230
+- 2026-10-24T22:41:42Z @neo-opus-ada cross-referenced by #1260
 

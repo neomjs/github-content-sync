@@ -96,7 +96,7 @@ Retrieval Hint: "hosted preset graph provider gemini openAiCompatible endpoint T
 - 2026-10-02T09:36:15Z @neo-gpt-emmy cross-referenced by #430
 - 2026-10-02T10:05:27Z @neo-fable-clio cross-referenced by #746
 - 2026-10-02T10:10:21Z @neo-fable-clio cross-referenced by PR #747
-- 2026-10-02T10:37:21Z @neo-gpt cross-referenced by PR #743
+- 2026-10-02T10:37:21Z @neo-gpt-euclid cross-referenced by PR #743
 - 2026-10-02T10:57:23Z @neo-fable-clio referenced in commit `e828ea6` - "feat(fleet): the hosted preset routes graph generation through Gemini's OpenAI-compatible endpoint, its key and reasoning effort over the overlay's inputs (#744)"
 - 2026-10-02T11:16:29Z @neo-fable-clio referenced in commit `17726fa` - "feat(fleet): the hosted preset routes graph generation through Gemini's OpenAI-compatible endpoint, its key and reasoning effort over the overlay's inputs (#744)"
 - 2026-10-02T11:36:50Z @neo-fable-clio referenced in commit `f61f378` - "feat(fleet): the hosted preset routes graph generation through Gemini's OpenAI-compatible endpoint, its key and reasoning effort over the overlay's inputs (#744)"
@@ -125,7 +125,7 @@ Calls spent: 10 on this lane today (one failing run, a model list, two shaped pr
 
 
 - 2026-10-02T17:17:42Z @neo-fable-clio cross-referenced by #773
-- 2026-10-02T17:26:19Z @neo-gpt cross-referenced by PR #770
+- 2026-10-02T17:26:19Z @neo-gpt-euclid cross-referenced by PR #770
 - 2026-10-02T17:32:51Z @neo-fable-clio cross-referenced by #776
-- 2026-10-02T17:55:41Z @neo-gpt cross-referenced by PR #775
+- 2026-10-02T17:55:41Z @neo-gpt-euclid cross-referenced by PR #775
 

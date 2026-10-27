@@ -8,11 +8,11 @@ labels:
   - ai
   - architecture
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-11T02:23:08Z'
 updatedAt: '2026-10-11T02:45:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/989'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: 107
 subIssues: []
@@ -95,16 +95,16 @@ Creation sweep at 2026-10-11T02:22Z: latest 20 open Brain issues (number/title/a
 
 ## Timeline
 
-- 2026-10-11T02:23:08Z @neo-gpt assigned to @neo-gpt
-- 2026-10-11T02:23:10Z @neo-gpt added the `documentation` label
-- 2026-10-11T02:23:10Z @neo-gpt added the `enhancement` label
-- 2026-10-11T02:23:10Z @neo-gpt added the `ai` label
-- 2026-10-11T02:23:11Z @neo-gpt added the `architecture` label
-- 2026-10-11T02:23:39Z @neo-gpt added parent issue #107
-- 2026-10-11T02:28:01Z @neo-gpt cross-referenced by #107
-- 2026-10-11T02:28:32Z @neo-gpt cross-referenced by PR #990
+- 2026-10-11T02:23:08Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-11T02:23:10Z @neo-gpt-euclid added the `documentation` label
+- 2026-10-11T02:23:10Z @neo-gpt-euclid added the `enhancement` label
+- 2026-10-11T02:23:10Z @neo-gpt-euclid added the `ai` label
+- 2026-10-11T02:23:11Z @neo-gpt-euclid added the `architecture` label
+- 2026-10-11T02:23:39Z @neo-gpt-euclid added parent issue #107
+- 2026-10-11T02:28:01Z @neo-gpt-euclid cross-referenced by #107
+- 2026-10-11T02:28:32Z @neo-gpt-euclid cross-referenced by PR #990
 - 2026-10-11T02:46:00Z @tobiu referenced in commit `dddc1bc` - "docs(agentos): record local hook projection placement (#989) (#990)"
 - 2026-10-11T02:46:00Z @tobiu closed this issue
-- 2026-10-11T03:21:45Z @neo-gpt cross-referenced by #992
+- 2026-10-11T03:21:45Z @neo-gpt-euclid cross-referenced by #992
 - 2026-10-11T05:36:59Z @neo-opus-grace cross-referenced by PR #996
 

@@ -9,11 +9,11 @@ labels:
   - architecture
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-09-19T19:50:15Z'
 updatedAt: '2026-09-19T21:13:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/387'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: 17416
 subIssues: []
@@ -128,17 +128,18 @@ Creation checks: live latest 20 open Brain issues and the corpus repository's em
 
 ## Timeline
 
-- 2026-09-19T19:50:15Z @neo-gpt assigned to @neo-gpt
-- 2026-09-19T19:50:16Z @neo-gpt added the `enhancement` label
-- 2026-09-19T19:50:16Z @neo-gpt added the `ai` label
-- 2026-09-19T19:50:17Z @neo-gpt added the `testing` label
-- 2026-09-19T19:50:17Z @neo-gpt added the `architecture` label
-- 2026-09-19T19:50:17Z @neo-gpt added the `agent-os` label
-- 2026-09-19T20:14:33Z @neo-gpt cross-referenced by PR #19002
+- 2026-09-19T19:50:15Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-19T19:50:16Z @neo-gpt-euclid added the `enhancement` label
+- 2026-09-19T19:50:16Z @neo-gpt-euclid added the `ai` label
+- 2026-09-19T19:50:17Z @neo-gpt-euclid added the `testing` label
+- 2026-09-19T19:50:17Z @neo-gpt-euclid added the `architecture` label
+- 2026-09-19T19:50:17Z @neo-gpt-euclid added the `agent-os` label
+- 2026-09-19T19:51:24Z @neo-gpt-euclid added parent issue #17416
+- 2026-09-19T20:14:33Z @neo-gpt-euclid cross-referenced by PR #19002
 - 2026-09-19T20:48:07Z @neo-opus-vega cross-referenced by #1
 - 2026-09-19T20:52:03Z @neo-opus-vega cross-referenced by PR #2
-- 2026-09-19T20:53:30Z @neo-gpt cross-referenced by PR #388
-- 2026-09-19T20:56:01Z @neo-gpt referenced in commit `15576b8` - "test(github): prove per-origin corpus progress isolation (#387)
+- 2026-09-19T20:53:30Z @neo-gpt-euclid cross-referenced by PR #388
+- 2026-09-19T20:56:01Z @neo-gpt-euclid referenced in commit `15576b8` - "test(github): prove per-origin corpus progress isolation (#387)
 
 Co-Authored-By: Euclid <neo-gpt@neomjs.com>"
 - 2026-09-19T21:13:33Z @tobiu referenced in commit `91bbf14` - "Merge pull request #388 from neomjs/codex/387-corpus-producer
@@ -146,6 +147,11 @@ Co-Authored-By: Euclid <neo-gpt@neomjs.com>"
 feat(github): emit origin-qualified conversation corpus (#387)"
 - 2026-09-19T21:13:33Z @tobiu closed this issue
 - 2026-09-19T21:13:56Z @neo-opus-vega cross-referenced by #3
-- 2026-09-19T21:48:43Z @neo-gpt cross-referenced by PR #4
+- 2026-09-19T21:48:43Z @neo-gpt-euclid cross-referenced by PR #4
 - 2026-09-21T12:04:23Z @neo-opus-vega cross-referenced by #403
+- 2026-09-26T20:54:49Z @neo-opus-vega cross-referenced by #558
+- 2026-10-09T16:12:40Z @neo-opus-grace cross-referenced by #7644
+- 2026-10-09T16:12:41Z @neo-opus-grace cross-referenced by #7645
+- 2026-10-09T16:14:32Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-15T09:20:10Z @neo-opus-ada cross-referenced by #1038
 

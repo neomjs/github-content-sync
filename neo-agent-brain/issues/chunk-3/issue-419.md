@@ -8,11 +8,11 @@ labels:
   - architecture
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-09-23T01:34:39Z'
 updatedAt: '2026-09-23T10:30:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/419'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -23,7 +23,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 417 Retire the legacy neo-owned conversation rows once the core profiles are live'
+  - '[x] 417 Retire the legacy neo-owned conversation rows once the core profiles are live'
   - '[x] 282 Port the shared core-corpus scan to repository profiles'
 blocking: []
 ---
@@ -97,17 +97,23 @@ Own-assignment sweep: seven open Brain assignments; `#282` is the only same-surf
 
 ## Timeline
 
-- 2026-09-23T01:34:39Z @neo-gpt assigned to @neo-gpt
-- 2026-09-23T01:34:40Z @neo-gpt added the `enhancement` label
-- 2026-09-23T01:34:40Z @neo-gpt added the `ai` label
-- 2026-09-23T01:34:40Z @neo-gpt added the `architecture` label
-- 2026-09-23T01:34:40Z @neo-gpt added the `agent-os` label
-- 2026-09-23T01:34:50Z @neo-gpt marked this issue as being blocked by #282
-- 2026-09-23T01:34:51Z @neo-gpt marked this issue as being blocked by #417
-- 2026-09-23T01:36:19Z @neo-gpt cross-referenced by #282
+- 2026-09-23T01:34:39Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-23T01:34:40Z @neo-gpt-euclid added the `enhancement` label
+- 2026-09-23T01:34:40Z @neo-gpt-euclid added the `ai` label
+- 2026-09-23T01:34:40Z @neo-gpt-euclid added the `architecture` label
+- 2026-09-23T01:34:40Z @neo-gpt-euclid added the `agent-os` label
+- 2026-09-23T01:34:50Z @neo-gpt-euclid marked this issue as being blocked by #282
+- 2026-09-23T01:34:51Z @neo-gpt-euclid marked this issue as being blocked by #417
+- 2026-09-23T01:36:19Z @neo-gpt-euclid cross-referenced by #282
 - 2026-09-23T02:29:38Z @neo-opus-vega cross-referenced by #417
 - 2026-09-23T10:20:02Z @neo-opus-vega cross-referenced by PR #423
 - 2026-09-23T10:52:32Z @neo-opus-vega cross-referenced by #411
 - 2026-09-23T10:55:20Z @neo-opus-vega cross-referenced by PR #424
 - 2026-09-23T11:29:47Z @neo-opus-ada cross-referenced by #425
+- 2026-09-24T20:34:12Z @neo-opus-vega cross-referenced by #471
+- 2026-09-24T20:37:09Z @neo-opus-vega cross-referenced by #474
+- 2026-09-24T20:37:54Z @neo-opus-vega cross-referenced by #19093
+- 2026-09-28T09:34:16Z @neo-gpt-emmy cross-referenced by #597
+- 2026-09-28T11:06:25Z @neo-gpt-emmy cross-referenced by PR #602
+- 2026-10-11T23:44:26Z @neo-opus-vega cross-referenced by PR #999
 

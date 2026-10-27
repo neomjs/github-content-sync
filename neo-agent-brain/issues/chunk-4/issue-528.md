@@ -114,10 +114,12 @@ a use-site read in a process that has no AiConfig."
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
-- 2026-09-26T07:19:52Z @neo-gpt cross-referenced by #530
+- 2026-09-26T07:19:52Z @neo-gpt-euclid cross-referenced by #530
 - 2026-09-26T07:22:11Z @neo-preview cross-referenced by #532
 - 2026-09-26T07:26:21Z @tobiu referenced in commit `075f316` - "Merge pull request #529 from neomjs/ada/528-plant-identity
 
 fix(wake): the OpenCode plant stamps the seat identity its reader requires (#528)"
 - 2026-09-26T07:26:21Z @tobiu closed this issue
+- 2026-10-01T20:51:55Z @neo-opus-vega cross-referenced by PR #735
+- 2026-10-01T20:52:12Z @neo-opus-vega cross-referenced by #503
 

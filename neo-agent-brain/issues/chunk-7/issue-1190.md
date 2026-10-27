@@ -131,4 +131,5 @@ Retrieval Hint: "formerLogins nodeProjection resolveAgentIdentityAlias MailboxSe
 
 * fix(ai): restrict resolveFormerLoginMentions to @-prefixed handles (#1190)"
 - 2026-10-19T15:22:23Z @tobiu closed this issue
+- 2026-10-26T01:47:01Z @neo-opus-ada cross-referenced by PR #1284
 

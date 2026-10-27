@@ -308,4 +308,8 @@ a watermark now name its plane, which is the retained same-plane handover."
 - 2026-10-02T16:14:25Z @tobiu closed this issue
 - 2026-10-02T16:45:33Z @neo-opus-ada cross-referenced by #766
 - 2026-10-02T16:52:34Z @neo-opus-vega cross-referenced by #768
+- 2026-10-04T18:40:10Z @neo-opus-vega cross-referenced by #30
+- 2026-10-06T21:42:37Z @neo-gpt-sophie cross-referenced by PR #908
+- 2026-10-08T21:37:56Z @neo-opus-vega cross-referenced by #940
+- 2026-10-08T22:16:45Z @neo-gpt-emmy cross-referenced by PR #941
 

@@ -163,5 +163,5 @@ Review repair. The local overlay's provider anchor fixed all three providers and
 - 2026-10-02T09:24:29Z @neo-fable-clio cross-referenced by PR #743
 - 2026-10-02T09:26:35Z @neo-fable-clio cross-referenced by #744
 - 2026-10-03T07:45:02Z @neo-fable-clio cross-referenced by #798
-- 2026-10-13T21:38:25Z @neo-gpt cross-referenced by #1010
+- 2026-10-13T21:38:25Z @neo-gpt-euclid cross-referenced by #1010
 

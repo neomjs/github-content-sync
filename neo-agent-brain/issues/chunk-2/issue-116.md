@@ -6,11 +6,11 @@ labels:
   - enhancement
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-07-04T01:13:51Z'
 updatedAt: '2026-08-26T15:14:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/116'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: 117
 subIssues: []
@@ -66,23 +66,23 @@ Retrieval Hint: "direction weather handoff render additive skill-gated notAuthor
 
 ## Timeline
 
-- 2026-07-04T01:13:52Z @neo-fable added the `enhancement` label
-- 2026-07-04T01:13:52Z @neo-fable added the `ai` label
-- 2026-07-04T01:14:14Z @neo-fable marked this issue as being blocked by #14569
-- 2026-07-04T01:46:37Z @neo-fable cross-referenced by #14579
-- 2026-07-04T01:56:12Z @neo-fable cross-referenced by PR #14585
-- 2026-07-04T02:22:50Z @neo-fable cross-referenced by #14603
-- 2026-07-04T03:15:36Z @neo-fable cross-referenced by PR #14626
-- 2026-07-04T04:39:36Z @neo-fable cross-referenced by PR #14694
-- 2026-07-04T07:16:16Z @neo-fable cross-referenced by #14706
-- 2026-07-04T07:39:02Z @neo-fable cross-referenced by PR #14709
-- 2026-07-04T14:11:13Z @neo-fable cross-referenced by #14788
-- 2026-07-04T14:11:42Z @neo-fable cross-referenced by #14568
-- 2026-07-04T15:02:07Z @neo-fable cross-referenced by PR #14803
-- 2026-07-04T15:54:03Z @neo-fable cross-referenced by #109
-- 2026-07-04T15:54:50Z @neo-fable cross-referenced by #14569
-- 2026-07-05T10:59:55Z @neo-gpt cross-referenced by #14845
-- 2026-07-12T17:10:19Z @neo-fable assigned to @neo-fable
+- 2026-07-04T01:13:52Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-07-04T01:13:52Z @neo-fable-mnemosyne added the `ai` label
+- 2026-07-04T01:14:14Z @neo-fable-mnemosyne marked this issue as being blocked by #14569
+- 2026-07-04T01:46:37Z @neo-fable-mnemosyne cross-referenced by #14579
+- 2026-07-04T01:56:12Z @neo-fable-mnemosyne cross-referenced by PR #14585
+- 2026-07-04T02:22:50Z @neo-fable-mnemosyne cross-referenced by #14603
+- 2026-07-04T03:15:36Z @neo-fable-mnemosyne cross-referenced by PR #14626
+- 2026-07-04T04:39:36Z @neo-fable-mnemosyne cross-referenced by PR #14694
+- 2026-07-04T07:16:16Z @neo-fable-mnemosyne cross-referenced by #14706
+- 2026-07-04T07:39:02Z @neo-fable-mnemosyne cross-referenced by PR #14709
+- 2026-07-04T14:11:13Z @neo-fable-mnemosyne cross-referenced by #14788
+- 2026-07-04T14:11:42Z @neo-fable-mnemosyne cross-referenced by #14568
+- 2026-07-04T15:02:07Z @neo-fable-mnemosyne cross-referenced by PR #14803
+- 2026-07-04T15:54:03Z @neo-fable-mnemosyne cross-referenced by #109
+- 2026-07-04T15:54:50Z @neo-fable-mnemosyne cross-referenced by #14569
+- 2026-07-05T10:59:55Z @neo-gpt-euclid cross-referenced by #14845
+- 2026-07-12T17:10:19Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
 - 2026-07-16T07:38:21Z @neo-opus-grace cross-referenced by #15217
 - 2026-07-16T07:40:00Z @neo-opus-grace cross-referenced by PR #15218
 - 2026-07-16T08:42:03Z @neo-opus-ada cross-referenced by PR #15231
@@ -192,5 +192,7 @@ Resolves #15306 · Refs #15217"
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
 - 2026-08-26T15:14:32Z @tobiu added the `enhancement` label
 - 2026-08-26T15:14:33Z @tobiu added the `ai` label
-- 2026-08-26T15:15:13Z @neo-fable marked this issue as being blocked by #14569
+- 2026-08-26T15:15:13Z @neo-fable-mnemosyne marked this issue as being blocked by #14569
+- 2026-08-26T15:27:54Z @tobiu added parent issue #117
+- 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
 

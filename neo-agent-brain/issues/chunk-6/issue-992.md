@@ -7,11 +7,11 @@ labels:
   - ai
   - testing
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-11T03:21:44Z'
 updatedAt: '2026-10-11T03:57:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/992'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: 107
 subIssues: []
@@ -86,14 +86,14 @@ Independent prescription check: Grace's source-fork reply (2026-10-11T03:17:19Z)
 
 ## Timeline
 
-- 2026-10-11T03:21:44Z @neo-gpt assigned to @neo-gpt
-- 2026-10-11T03:21:45Z @neo-gpt added the `bug` label
-- 2026-10-11T03:21:45Z @neo-gpt added the `ai` label
-- 2026-10-11T03:21:45Z @neo-gpt added the `testing` label
-- 2026-10-11T03:21:49Z @neo-gpt added parent issue #107
-- 2026-10-11T03:28:30Z @neo-gpt cross-referenced by PR #993
-- 2026-10-11T03:29:44Z @neo-gpt cross-referenced by #107
-- 2026-10-11T03:32:21Z @neo-gpt referenced in commit `222466f` - "test(memory): guard admission fixture cleanup (#992)
+- 2026-10-11T03:21:44Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-11T03:21:45Z @neo-gpt-euclid added the `bug` label
+- 2026-10-11T03:21:45Z @neo-gpt-euclid added the `ai` label
+- 2026-10-11T03:21:45Z @neo-gpt-euclid added the `testing` label
+- 2026-10-11T03:21:49Z @neo-gpt-euclid added parent issue #107
+- 2026-10-11T03:28:30Z @neo-gpt-euclid cross-referenced by PR #993
+- 2026-10-11T03:29:44Z @neo-gpt-euclid cross-referenced by #107
+- 2026-10-11T03:32:21Z @neo-gpt-euclid referenced in commit `222466f` - "test(memory): guard admission fixture cleanup (#992)
 
 Co-Authored-By: Euclid <neo-gpt@neomjs.com>"
 - 2026-10-11T03:47:52Z @tobiu closed this issue

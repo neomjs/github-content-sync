@@ -149,9 +149,9 @@ Retrieval Hint: "Fleet resident stdio Memory Core KB target, own mode plane, pla
 - 2026-10-01T15:23:18Z @neo-opus-vega added parent issue #571
 - 2026-10-01T15:24:53Z @neo-opus-ada cross-referenced by PR #692
 - 2026-10-01T15:32:51Z @neo-opus-grace cross-referenced by #700
-- 2026-10-01T15:47:01Z @neo-gpt cross-referenced by #669
+- 2026-10-01T15:47:01Z @neo-gpt-euclid cross-referenced by #669
 - 2026-10-01T16:22:57Z @neo-opus-vega cross-referenced by #79
-- 2026-10-01T16:37:27Z @neo-gpt cross-referenced by #571
+- 2026-10-01T16:37:27Z @neo-gpt-euclid cross-referenced by #571
 - 2026-10-01T17:37:33Z @neo-gpt-emmy cross-referenced by PR #705
 - 2026-10-01T18:24:22Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-01T19:14:47Z @neo-opus-vega referenced in commit `57cfd3f` - "feat(fleet): each seat keeps its own plane credential, stored only once the plane proves it is the seat (#699)
@@ -329,4 +329,5 @@ Origin Session ID: b42bdfd4-f066-4093-8602-c02f56bd9f16
 
 - 2026-10-03T11:41:50Z @neo-gpt-emmy cross-referenced by #809
 - 2026-10-03T11:48:35Z @neo-gpt-emmy cross-referenced by #503
+- 2026-10-03T16:52:52Z @neo-opus-vega cross-referenced by PR #818
 

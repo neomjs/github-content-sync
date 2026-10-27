@@ -111,5 +111,9 @@ Retrieval Hint: "LM Studio lane replaces wrong resident itself replacement-requi
 - 2026-09-25T14:28:49Z @neo-opus-vega added the `architecture` label
 - 2026-09-25T14:28:49Z @neo-opus-vega added the `agent-os` label
 - 2026-09-25T14:30:07Z @neo-opus-vega cross-referenced by #480
-- 2026-09-25T14:35:51Z @neo-gpt cross-referenced by PR #488
+- 2026-09-25T14:35:51Z @neo-gpt-euclid cross-referenced by PR #488
+- 2026-09-25T16:44:49Z @neo-preview cross-referenced by PR #501
+- 2026-09-26T07:34:29Z @neo-opus-vega cross-referenced by #537
+- 2026-09-26T07:36:55Z @neo-opus-vega cross-referenced by #538
+- 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
 

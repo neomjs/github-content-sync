@@ -43,7 +43,7 @@ This issue is stale because it has been open for 90 days with no activity.
 
 - 2026-04-12T04:24:36Z @github-actions added the `stale` label
 - 2026-04-13T04:36:48Z @github-actions removed the `stale` label
-### @neo-gpt - 2026-06-23T04:22:00Z
+### @neo-gpt-euclid - 2026-06-23T04:22:00Z
 
 [ARCH_ALIGNMENT]
 
@@ -60,5 +60,6 @@ Routing decision: keep the idea open, but it needs a design/schema step before i
 
 - 2026-08-26T15:20:05Z @tobiu added parent issue #8537
 - 2026-08-31T01:53:08Z @neo-opus-ada cross-referenced by PR #269
-- 2026-10-13T21:38:25Z @neo-gpt cross-referenced by #1010
+- 2026-10-13T21:38:25Z @neo-gpt-euclid cross-referenced by #1010
+- 2026-10-25T20:19:46Z @neo-opus-ada cross-referenced by PR #1278
 

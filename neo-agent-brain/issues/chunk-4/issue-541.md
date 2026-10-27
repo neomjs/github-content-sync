@@ -7,7 +7,7 @@ labels:
   - ai
   - architecture
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-09-26T08:18:21Z'
 updatedAt: '2026-10-17T22:54:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/541'
@@ -164,17 +164,17 @@ discrimination, the two-way ownership relation, and its non-vacuity feed);
 - 2026-09-30T22:14:00Z @neo-fable-clio cross-referenced by #656
 - 2026-10-01T13:11:43Z @neo-fable-clio unassigned from @neo-preview
 - 2026-10-04T16:29:17Z @neo-gpt-sophie cross-referenced by PR #844
-- 2026-10-04T16:42:52Z @neo-fable cross-referenced by PR #849
-- 2026-10-17T20:56:58Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-17T21:26:44Z @neo-gemini-pro cross-referenced by PR #1086
-- 2026-10-17T21:41:32Z @neo-gemini-pro referenced in commit `0e2128b` - "fix(memory-core): preserve deploy coordinate read anchors in TextEmbeddingService (#541)"
-- 2026-10-17T21:55:47Z @neo-gemini-pro referenced in commit `b409175` - "fix(memory-core): bind lexical this for #getConfig in #ollamaAdmission (#541)"
-- 2026-10-17T22:38:30Z @neo-gemini-pro cross-referenced by #1090
-### @neo-gemini-pro - 2026-10-17T22:38:42Z
+- 2026-10-04T16:42:52Z @neo-fable-mnemosyne cross-referenced by PR #849
+- 2026-10-17T20:56:58Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-17T21:26:44Z @neo-gemini-julia cross-referenced by PR #1086
+- 2026-10-17T21:41:32Z @neo-gemini-julia referenced in commit `0e2128b` - "fix(memory-core): preserve deploy coordinate read anchors in TextEmbeddingService (#541)"
+- 2026-10-17T21:55:47Z @neo-gemini-julia referenced in commit `b409175` - "fix(memory-core): bind lexical this for #getConfig in #ollamaAdmission (#541)"
+- 2026-10-17T22:38:30Z @neo-gemini-julia cross-referenced by #1090
+### @neo-gemini-julia - 2026-10-17T22:38:42Z
 
 Successor ticket filed for the remaining ADR-0019 B4 shared-config write concentrations across `test/**` (`577` writes across `55` files / `142` leaves) and the remaining `TextEmbeddingService` snapshot seam items (`TextEmbeddingService.spec.mjs`, `VectorService.batchFailureIsolation.spec.mjs` -> retiring `openAiCompatibleHostFn_`, resetting `ollamaProvider` on `configSnapshot` change, and cloning whole consumed subtrees in `createConfigSnapshot()`): #1090.
 
-- 2026-10-17T22:39:18Z @neo-gemini-pro referenced in commit `ab49787` - "fix(memory-core): re-pin deploy coordinate anchors and clean configSnapshot reads (#541)"
+- 2026-10-17T22:39:18Z @neo-gemini-julia referenced in commit `ab49787` - "fix(memory-core): re-pin deploy coordinate anchors and clean configSnapshot reads (#541)"
 - 2026-10-17T22:54:36Z @tobiu referenced in commit `a91935d` - "feat(ai): inject isolated configSnapshot on TextEmbeddingService and convert retry spec (#541) (#1086)
 
 * feat(ai): inject isolated configSnapshot on TextEmbeddingService and convert retry spec (#541)
@@ -191,4 +191,13 @@ Co-authored-by: Ada <neo-opus-4-7@neomjs.com>
 
 Co-authored-by: Ada <neo-opus-4-7@neomjs.com>"
 - 2026-10-17T22:54:36Z @tobiu closed this issue
+- 2026-10-18T00:04:07Z @neo-gemini-julia cross-referenced by #1091
+- 2026-10-18T00:06:08Z @neo-gemini-julia cross-referenced by PR #1092
+- 2026-10-18T02:19:54Z @neo-opus-grace cross-referenced by #1096
+- 2026-10-18T02:34:47Z @neo-gemini-julia cross-referenced by #1098
+- 2026-10-18T02:38:12Z @neo-gemini-julia cross-referenced by PR #1099
+- 2026-10-18T04:08:30Z @neo-gemini-julia cross-referenced by #1102
+- 2026-10-18T04:52:11Z @neo-opus-grace cross-referenced by PR #1103
+- 2026-10-18T05:53:46Z @neo-gemini-julia cross-referenced by #1115
+- 2026-10-18T06:05:13Z @neo-gemini-julia cross-referenced by PR #1116
 

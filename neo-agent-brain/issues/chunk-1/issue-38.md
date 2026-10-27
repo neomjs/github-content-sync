@@ -107,9 +107,25 @@ This workstream closes when its hardening subs are delivered and a fresh session
 - 2026-08-13T22:00:02Z @neo-opus-vega added the `epic` label
 - 2026-08-13T22:00:02Z @neo-opus-vega added the `ai` label
 - 2026-08-13T22:00:03Z @neo-opus-vega added the `agent-os` label
+- 2026-08-13T22:00:16Z @neo-opus-vega added sub-issue #17046
+- 2026-08-13T22:00:18Z @neo-opus-vega added sub-issue #17048
+- 2026-08-13T22:00:20Z @neo-opus-vega added sub-issue #17049
+- 2026-08-13T22:00:22Z @neo-opus-vega added sub-issue #17062
+- 2026-08-13T22:00:23Z @neo-opus-vega added sub-issue #17063
+- 2026-08-13T22:00:25Z @neo-opus-vega added sub-issue #17064
+- 2026-08-13T22:00:35Z @neo-opus-vega added sub-issue #17065
+- 2026-08-13T22:00:36Z @neo-opus-vega added sub-issue #17066
+- 2026-08-13T22:00:38Z @neo-opus-vega added sub-issue #17067
+- 2026-08-13T22:00:39Z @neo-opus-vega added sub-issue #17068
+- 2026-08-13T22:00:41Z @neo-opus-vega added sub-issue #17069
+- 2026-08-13T22:00:43Z @neo-opus-vega added sub-issue #17070
+- 2026-08-13T22:11:59Z @neo-opus-vega added sub-issue #16561
+- 2026-08-13T22:12:01Z @neo-opus-vega added sub-issue #17047
+- 2026-08-13T22:12:03Z @neo-opus-vega added sub-issue #16677
 - 2026-08-13T22:17:24Z @neo-opus-vega cross-referenced by #17073
+- 2026-08-13T22:17:44Z @neo-opus-vega added sub-issue #17073
 - 2026-08-13T22:26:40Z @neo-opus-vega cross-referenced by PR #17074
-### @neo-gpt - 2026-08-13T22:33:01Z
+### @neo-gpt-euclid - 2026-08-13T22:33:01Z
 
 ## Epic Review by @neo-gpt — GPT-5.6 Sol (Codex Desktop)
 
@@ -159,18 +175,21 @@ Sub pickup unblocked under the recorded topology.
 - 2026-08-13T22:54:17Z @neo-opus-vega cross-referenced by PR #17075
 - 2026-08-13T23:08:56Z @neo-kimi-phoebe cross-referenced by PR #17078
 - 2026-08-13T23:32:22Z @neo-opus-vega cross-referenced by #9
-- 2026-08-13T23:56:24Z @neo-gpt cross-referenced by PR #17086
-- 2026-08-14T00:45:45Z @neo-gpt cross-referenced by #17066
-- 2026-08-14T00:57:19Z @neo-gpt cross-referenced by PR #17089
+- 2026-08-13T23:56:24Z @neo-gpt-euclid cross-referenced by PR #17086
+- 2026-08-14T00:30:20Z @tobiu added sub-issue #17087
+- 2026-08-14T00:31:12Z @tobiu added sub-issue #17076
+- 2026-08-14T00:45:45Z @neo-gpt-euclid cross-referenced by #17066
+- 2026-08-14T00:57:19Z @neo-gpt-euclid cross-referenced by PR #17089
 - 2026-08-14T00:57:47Z @neo-kimi-phoebe cross-referenced by PR #17090
-- 2026-08-14T01:26:48Z @neo-gpt cross-referenced by PR #17091
-- 2026-08-14T01:54:24Z @neo-gpt cross-referenced by PR #17092
-- 2026-08-14T02:07:20Z @neo-gpt cross-referenced by PR #17093
+- 2026-08-14T01:26:48Z @neo-gpt-euclid cross-referenced by PR #17091
+- 2026-08-14T01:54:24Z @neo-gpt-euclid cross-referenced by PR #17092
+- 2026-08-14T02:07:20Z @neo-gpt-euclid cross-referenced by PR #17093
 - 2026-08-14T06:24:26Z @neo-gpt-emmy cross-referenced by #17070
 - 2026-08-14T06:56:44Z @neo-opus-vega cross-referenced by PR #17097
 - 2026-08-14T07:37:36Z @neo-opus-grace cross-referenced by PR #17095
 - 2026-08-14T07:52:43Z @neo-opus-grace cross-referenced by #17067
 - 2026-08-14T08:05:54Z @neo-opus-vega cross-referenced by PR #17099
+- 2026-08-14T09:34:29Z @neo-opus-vega added sub-issue #16997
 - 2026-08-14T09:34:51Z @neo-opus-vega cross-referenced by #16997
 - 2026-08-14T10:07:36Z @neo-opus-grace cross-referenced by PR #17106
 - 2026-08-14T10:09:01Z @neo-opus-ada cross-referenced by PR #17107
@@ -180,19 +199,28 @@ Sub pickup unblocked under the recorded topology.
 - 2026-08-14T13:06:41Z @neo-opus-vega cross-referenced by #36
 - 2026-08-14T13:06:50Z @neo-opus-vega cross-referenced by #17114
 - 2026-08-14T13:06:59Z @neo-opus-vega cross-referenced by #17115
+- 2026-08-14T13:07:30Z @neo-opus-vega added sub-issue #17111
+- 2026-08-14T13:07:32Z @neo-opus-vega added sub-issue #17112
+- 2026-08-14T13:07:35Z @neo-opus-vega added sub-issue #17114
+- 2026-08-14T13:07:37Z @neo-opus-vega added sub-issue #17115
 - 2026-08-14T13:27:22Z @neo-opus-ada cross-referenced by PR #17118
 - 2026-08-14T13:31:00Z @neo-opus-vega cross-referenced by PR #17120
 - 2026-08-14T13:46:01Z @neo-opus-vega cross-referenced by #17121
+- 2026-08-14T13:46:16Z @neo-opus-vega added sub-issue #17121
 - 2026-08-14T13:50:24Z @neo-gpt-emmy cross-referenced by PR #17122
-- 2026-08-14T14:19:45Z @neo-gpt cross-referenced by PR #17117
+- 2026-08-14T14:19:45Z @neo-gpt-euclid cross-referenced by PR #17117
 - 2026-08-14T15:03:32Z @neo-opus-grace cross-referenced by #17125
+- 2026-08-14T15:03:38Z @neo-opus-grace added sub-issue #17125
 - 2026-08-14T16:25:25Z @neo-opus-ada cross-referenced by PR #17128
 - 2026-08-14T17:06:43Z @neo-opus-vega cross-referenced by #17129
+- 2026-08-14T17:06:52Z @neo-opus-vega added sub-issue #17129
 - 2026-08-14T17:16:09Z @neo-opus-vega cross-referenced by #17132
+- 2026-08-14T17:16:18Z @neo-opus-vega added sub-issue #17132
 - 2026-08-14T17:25:47Z @neo-opus-vega cross-referenced by PR #17133
 - 2026-08-14T18:37:37Z @neo-gpt-emmy cross-referenced by PR #17135
 - 2026-08-14T20:48:27Z @neo-opus-vega cross-referenced by #17139
-- 2026-08-15T07:50:32Z @neo-gpt cross-referenced by #16780
+- 2026-08-14T20:48:41Z @neo-opus-vega added sub-issue #17139
+- 2026-08-15T07:50:32Z @neo-gpt-euclid cross-referenced by #16780
 - 2026-08-15T08:05:28Z @neo-gpt-emmy cross-referenced by PR #17137
 - 2026-08-15T08:19:08Z @neo-opus-vega cross-referenced by PR #17152
 - 2026-08-15T09:19:33Z @neo-opus-vega cross-referenced by #17158
@@ -233,4 +261,6 @@ Sub pickup unblocked under the recorded topology.
 - 2026-08-26T15:08:40Z @tobiu added parent issue #54
 - 2026-08-28T21:12:54Z @neo-fable-clio cross-referenced by #210
 - 2026-08-29T19:55:00Z @neo-opus-vega cross-referenced by #237
+- 2026-10-04T11:41:43Z @neo-opus-vega cross-referenced by #15000
+- 2026-10-26T21:57:56Z @neo-fable-mnemosyne cross-referenced by #1309
 

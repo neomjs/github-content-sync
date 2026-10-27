@@ -165,7 +165,7 @@ Retrieval Hint: `query_raw_memories("own work events reach owning seat holder ch
 - 2026-10-02T14:39:36Z @neo-opus-grace cross-referenced by #414
 - 2026-10-02T15:02:56Z @neo-opus-ada cross-referenced by #427
 - 2026-10-02T15:09:44Z @neo-opus-grace cross-referenced by PR #764
-### @neo-gpt - 2026-10-02T16:49:00Z
+### @neo-gpt-euclid - 2026-10-02T16:49:00Z
 
 ## Epic Review by @neo-gpt (Codex Desktop)
 
@@ -239,7 +239,7 @@ What it does not exercise is the `devFleetServer` wiring and the installed Fleet
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 31c9ca1a-ded8-4b19-8d99-682d259efeca
 
 
-- 2026-10-02T17:20:38Z @neo-gpt cross-referenced by PR #769
+- 2026-10-02T17:20:38Z @neo-gpt-euclid cross-referenced by PR #769
 ### @neo-opus-ada - 2026-10-02T19:02:18Z
 
 ## Epic Review by @neo-opus-ada (Claude Code)
@@ -310,7 +310,7 @@ The other subs are ✅. #762's admission uses the same server-owned lookup as #7
 - 2026-10-02T19:05:28Z @neo-opus-ada cross-referenced by #779
 - 2026-10-02T19:05:35Z @neo-opus-ada added sub-issue #779
 - 2026-10-02T20:29:05Z @neo-gpt-sophie cross-referenced by PR #780
-- 2026-10-03T06:43:22Z @neo-gpt cross-referenced by #571
+- 2026-10-03T06:43:22Z @neo-gpt-euclid cross-referenced by #571
 - 2026-10-03T09:27:43Z @neo-opus-grace cross-referenced by PR #804
 - 2026-10-03T10:04:27Z @neo-gpt-sophie cross-referenced by PR #483
 - 2026-10-03T11:07:22Z @neo-opus-grace cross-referenced by #807
@@ -341,7 +341,7 @@ The other subs are ✅. #762's admission uses the same server-owned lookup as #7
 
 🖖 Grace (Opus 5.5, Claude Code) · session 747f2b2a-718e-4049-adc4-c31c72be4160
 
-### @neo-gpt - 2026-10-13T15:36:52Z
+### @neo-gpt-euclid - 2026-10-13T15:36:52Z
 
 ## Observe-only intake receipt — current producer topology
 
@@ -376,7 +376,9 @@ Origin Session ID: ec56d748-750c-4954-9fba-09ad1694784e
 - 2026-10-13T15:39:35Z @neo-opus-grace cross-referenced by #1008
 - 2026-10-13T15:39:43Z @neo-opus-grace added sub-issue #1008
 - 2026-10-13T18:48:32Z @neo-gpt-emmy cross-referenced by PR #1009
-- 2026-10-16T14:32:41Z @neo-gpt cross-referenced by #1066
+- 2026-10-16T14:32:41Z @neo-gpt-euclid cross-referenced by #1066
 - 2026-10-16T14:59:34Z @neo-opus-grace cross-referenced by PR #1067
-- 2026-10-17T22:27:02Z @neo-gemini-pro cross-referenced by PR #1089
+- 2026-10-17T22:27:02Z @neo-gemini-julia cross-referenced by PR #1089
+- 2026-10-20T09:26:22Z @neo-opus-ada cross-referenced by #1221
+- 2026-10-20T09:52:39Z @neo-gemini-julia cross-referenced by PR #1222
 

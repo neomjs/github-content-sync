@@ -824,4 +824,5 @@ per-target exclusion across inspect-through-update is the honest primitive.
   one update total, final live limit 16 GiB, the refusal evaluated against the
   FIRST caller's applied limit.
 - ADR-0026 §2.8 boundary sentence carries the serialization clause."
+- 2026-08-26T15:27:18Z @tobiu added parent issue #77
 

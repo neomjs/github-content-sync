@@ -592,4 +592,16 @@ Scope note: one host, and it is the operator's box. This measures our fleet, not
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code
 
+- 2026-09-27T09:46:58Z @neo-opus-ada cross-referenced by #571
+- 2026-09-27T10:30:23Z @neo-opus-ada cross-referenced by #572
+- 2026-09-27T11:04:26Z @neo-opus-ada cross-referenced by PR #573
+- 2026-10-01T12:38:36Z @neo-opus-ada cross-referenced by #675
+- 2026-10-01T13:12:04Z @neo-opus-ada cross-referenced by #682
+- 2026-10-01T17:07:46Z @neo-gpt-emmy cross-referenced by PR #683
+- 2026-10-01T18:54:48Z @neo-opus-ada cross-referenced by #721
+- 2026-10-01T20:27:33Z @neo-opus-ada cross-referenced by #730
+- 2026-10-03T07:27:49Z @neo-opus-ada cross-referenced by #797
+- 2026-10-04T19:50:47Z @neo-opus-ada cross-referenced by #863
+- 2026-10-06T11:36:06Z @neo-opus-ada cross-referenced by #898
+- 2026-10-07T23:52:37Z @neo-opus-ada cross-referenced by #924
 

@@ -9,11 +9,11 @@ labels:
   - architecture
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-11T05:16:35Z'
 updatedAt: '2026-10-11T06:44:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/995'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: 107
 subIssues: []
@@ -95,17 +95,17 @@ Creation sweeps at2026-10-11T05:16Z: live latest20 open(created-descending), all
 
 ## Timeline
 
-- 2026-10-11T05:16:35Z @neo-gpt assigned to @neo-gpt
-- 2026-10-11T05:16:36Z @neo-gpt added the `documentation` label
-- 2026-10-11T05:16:36Z @neo-gpt added the `enhancement` label
-- 2026-10-11T05:16:37Z @neo-gpt added the `ai` label
-- 2026-10-11T05:16:37Z @neo-gpt added the `architecture` label
-- 2026-10-11T05:16:37Z @neo-gpt added the `agent-os` label
-- 2026-10-11T05:17:07Z @neo-gpt added parent issue #107
-- 2026-10-11T05:25:41Z @neo-gpt cross-referenced by PR #996
-- 2026-10-11T05:32:53Z @neo-gpt cross-referenced by #107
+- 2026-10-11T05:16:35Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-11T05:16:36Z @neo-gpt-euclid added the `documentation` label
+- 2026-10-11T05:16:36Z @neo-gpt-euclid added the `enhancement` label
+- 2026-10-11T05:16:37Z @neo-gpt-euclid added the `ai` label
+- 2026-10-11T05:16:37Z @neo-gpt-euclid added the `architecture` label
+- 2026-10-11T05:16:37Z @neo-gpt-euclid added the `agent-os` label
+- 2026-10-11T05:17:07Z @neo-gpt-euclid added parent issue #107
+- 2026-10-11T05:25:41Z @neo-gpt-euclid cross-referenced by PR #996
+- 2026-10-11T05:32:53Z @neo-gpt-euclid cross-referenced by #107
 - 2026-10-11T06:44:52Z @tobiu referenced in commit `4dd2054` - "docs(agentos): define unavailable lifecycle clocks (#995) (#996)"
 - 2026-10-11T06:44:53Z @tobiu closed this issue
-- 2026-10-11T06:47:50Z @neo-gpt cross-referenced by #997
-- 2026-10-11T07:07:39Z @neo-gpt cross-referenced by PR #998
+- 2026-10-11T06:47:50Z @neo-gpt-euclid cross-referenced by #997
+- 2026-10-11T07:07:39Z @neo-gpt-euclid cross-referenced by PR #998
 

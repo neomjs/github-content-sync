@@ -23,7 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 768 The Fleet stops arming claude-desktop on osascript once a Fleet-launched Claude seat arms itself at SessionStart'
+  - '[x] 768 The Fleet stops arming claude-desktop on osascript once a Fleet-launched Claude seat arms itself at SessionStart'
 closedAt: '2026-10-02T17:48:34Z'
 ---
 # Seat hooks resolve no plane: they read Fleet-transport leaves
@@ -175,4 +175,6 @@ endpoint as NEO_SEAT_PLANE_BASE beside its NEO_MCP_REMOTE_TOKEN."
 - 2026-10-02T17:49:46Z @neo-opus-ada cross-referenced by #30
 - 2026-10-02T18:03:37Z @neo-opus-ada cross-referenced by #460
 - 2026-10-02T18:12:11Z @neo-opus-ada cross-referenced by PR #462
+- 2026-10-03T07:26:02Z @neo-opus-ada cross-referenced by #571
+- 2026-10-08T22:02:26Z @neo-gpt-emmy cross-referenced by PR #939
 

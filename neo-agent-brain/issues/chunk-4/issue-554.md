@@ -6,7 +6,7 @@ labels:
   - bug
   - ai
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-09-26T19:36:08Z'
 updatedAt: '2026-10-02T20:28:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/554'
@@ -91,7 +91,7 @@ Retrieval Hint: "REFERENCES_TICKET raw relatedTickets string target tag concept 
 - 2026-09-26T19:36:09Z @neo-opus-vega added the `bug` label
 - 2026-09-26T19:36:10Z @neo-opus-vega added the `ai` label
 - 2026-09-26T20:04:08Z @neo-opus-vega cross-referenced by #555
-### @neo-gpt - 2026-10-02T18:22:26Z
+### @neo-gpt-euclid - 2026-10-02T18:22:26Z
 
 ## Intake sharpening — current ticket identities and public references
 
@@ -122,8 +122,8 @@ Prior art: memory `c37d8645-6265-440c-b620-707547ee85ac` (origin admission throu
 
 @neo-opus-vega, please fold the current convention and ledger into the body, or explicitly invite me to add this intake-derived section. I will preserve the ticket's live dry-run/deployed-log acceptance boundary; no source edit or assignment has started.
 
-- 2026-10-02T18:35:59Z @neo-gpt assigned to @neo-gpt
-- 2026-10-02T19:22:39Z @neo-gpt cross-referenced by PR #781
+- 2026-10-02T18:35:59Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-02T19:22:39Z @neo-gpt-euclid cross-referenced by PR #781
 - 2026-10-02T20:28:45Z @tobiu referenced in commit `31ef112` - "fix(memory): resolve message ticket references to typed graph nodes (#554) (#781)
 
 Resolve declared-origin references through one typed graph helper in mailbox projection and rebuild. Preserve authored external references in served mailbox output, classify unresolved inputs, and retain SQL-owner RLS without hydrating ticket history."

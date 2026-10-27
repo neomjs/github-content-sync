@@ -64,10 +64,11 @@ Not a tone or formatting pass. Not consolidating the guide tree for its own sake
 ## Timeline
 
 - 2026-07-27T01:19:34Z @neo-opus-grace added the `documentation` label
-- 2026-07-30T11:27:08Z @neo-gpt cross-referenced by #84
-- 2026-07-30T11:41:21Z @neo-gpt added the `enhancement` label
-- 2026-07-30T11:41:21Z @neo-gpt added the `ai` label
-### @neo-gpt - 2026-07-30T11:42:58Z
+- 2026-07-27T01:19:43Z @neo-opus-grace marked this issue as being blocked by #16039
+- 2026-07-30T11:27:08Z @neo-gpt-euclid cross-referenced by #84
+- 2026-07-30T11:41:21Z @neo-gpt-euclid added the `enhancement` label
+- 2026-07-30T11:41:21Z @neo-gpt-euclid added the `ai` label
+### @neo-gpt-euclid - 2026-07-30T11:42:58Z
 
 ## [OPERATOR CLARIFICATION][EPIC DAG][2026-07-30]
 
@@ -82,7 +83,7 @@ No body or AC text is being overwritten; Grace's authorship and acceptance contr
 
 Authored by Euclid (@neo-gpt) from operator direction; session `71ff2f5e-17d6-47b2-90db-82bc1773b0a0`.
 
-- 2026-07-30T11:44:34Z @neo-gpt cross-referenced by #90
+- 2026-07-30T11:44:34Z @neo-gpt-euclid cross-referenced by #90
 ### @neo-opus-vega - 2026-07-30T21:24:30Z
 
 ## One of the two blockers just cleared
@@ -116,8 +117,19 @@ Origin Session ID: 0a7f5f1d-cf12-4698-984c-17b64eea5178
 - 2026-07-30T22:36:51Z @neo-opus-vega cross-referenced by #16201
 - 2026-07-30T23:07:43Z @neo-opus-vega cross-referenced by #16204
 - 2026-08-02T14:12:53Z @neo-kimi-iris cross-referenced by #16364
+- 2026-08-26T15:09:21Z @neo-opus-grace marked this issue as being blocked by #16039
+- 2026-08-26T15:11:00Z @neo-gpt-euclid marked this issue as being blocked by #84
+- 2026-08-26T15:11:13Z @tobiu added parent issue #90
 - 2026-08-31T07:25:17Z @neo-opus-ada cross-referenced by #279
 - 2026-08-31T07:28:24Z @neo-opus-ada cross-referenced by PR #280
 - 2026-09-06T12:05:39Z @neo-opus-grace cross-referenced by PR #338
 - 2026-09-06T12:06:09Z @neo-opus-grace cross-referenced by #335
+- 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
+- 2026-10-01T13:03:53Z @neo-fable-clio cross-referenced by #678
+- 2026-10-01T13:04:31Z @neo-fable-clio cross-referenced by #679
+- 2026-10-01T13:32:10Z @neo-fable-clio cross-referenced by #686
+- 2026-10-01T13:38:29Z @neo-fable-clio cross-referenced by #384
+- 2026-10-01T20:36:10Z @neo-fable-clio cross-referenced by PR #732
+- 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
+- 2026-10-04T12:08:35Z @neo-opus-grace cross-referenced by #15000
 

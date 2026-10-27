@@ -14,7 +14,7 @@ assignees:
 createdAt: '2026-08-25T22:10:02Z'
 updatedAt: '2026-08-30T23:19:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/12'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 12
 parentIssue: 213
 subIssues:
@@ -30,7 +30,7 @@ blockedBy:
   - '[x] 252 Retain the pre-Brain container cohort as a rollback target'
   - '[x] 13 Receive Agent OS source and package topology in the Brain'
 blocking:
-  - '[ ] 253 Cut the local Agent OS to Brain-built images without moving data'
+  - '[x] 253 Cut the local Agent OS to Brain-built images without moving data'
   - '[x] 17791 Remove received Brain executables from the Engine'
 closedAt: '2026-08-30T23:19:19Z'
 ---
@@ -120,18 +120,18 @@ Origin Session ID: 975b7d3f-ebb0-46bd-8b5a-ac7fa64ba0d0
 
 ## Timeline
 
-- 2026-08-25T22:10:03Z @neo-gpt added the `enhancement` label
-- 2026-08-25T22:10:04Z @neo-gpt added the `ai` label
-- 2026-08-25T22:10:04Z @neo-gpt added the `testing` label
-- 2026-08-25T22:10:04Z @neo-gpt added the `architecture` label
-- 2026-08-25T22:10:04Z @neo-gpt added the `build` label
-- 2026-08-25T22:10:06Z @neo-gpt added the `agent-os` label
-- 2026-08-25T22:10:21Z @neo-gpt added parent issue #17786
-- 2026-08-25T22:11:08Z @neo-gpt marked this issue as blocking #17791
+- 2026-08-25T22:10:03Z @neo-gpt-euclid added the `enhancement` label
+- 2026-08-25T22:10:04Z @neo-gpt-euclid added the `ai` label
+- 2026-08-25T22:10:04Z @neo-gpt-euclid added the `testing` label
+- 2026-08-25T22:10:04Z @neo-gpt-euclid added the `architecture` label
+- 2026-08-25T22:10:04Z @neo-gpt-euclid added the `build` label
+- 2026-08-25T22:10:06Z @neo-gpt-euclid added the `agent-os` label
+- 2026-08-25T22:10:21Z @neo-gpt-euclid added parent issue #17786
+- 2026-08-25T22:11:08Z @neo-gpt-euclid marked this issue as blocking #17791
 - 2026-08-25T22:33:56Z @neo-opus-ada cross-referenced by #17786
-- 2026-08-26T09:56:28Z @neo-gpt cross-referenced by #17787
-- 2026-08-26T09:56:59Z @neo-gpt removed the block on #17791
-- 2026-08-26T09:57:05Z @neo-gpt marked this issue as blocking #17791
+- 2026-08-26T09:56:28Z @neo-gpt-euclid cross-referenced by #17787
+- 2026-08-26T09:56:59Z @neo-gpt-euclid removed the block on #17791
+- 2026-08-26T09:57:05Z @neo-gpt-euclid marked this issue as blocking #17791
 - 2026-08-26T10:47:07Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-08-26T11:29:57Z @tobiu cross-referenced by PR #9
 - 2026-08-26T12:21:51Z @tobiu cross-referenced by #17800
@@ -195,9 +195,9 @@ no target yet. Repathing it would bake a retiring surface into the image."
 - 2026-08-26T14:48:30Z @tobiu added the `architecture` label
 - 2026-08-26T14:48:30Z @tobiu added the `build` label
 - 2026-08-26T14:48:30Z @tobiu added the `agent-os` label
-- 2026-08-26T14:48:43Z @neo-gpt marked this issue as blocking #17791
+- 2026-08-26T14:48:43Z @neo-gpt-euclid marked this issue as blocking #17791
 - 2026-08-26T14:48:43Z @tobiu added parent issue #17786
-- 2026-08-26T14:50:17Z @neo-gpt marked this issue as being blocked by #13
+- 2026-08-26T14:50:17Z @neo-gpt-euclid marked this issue as being blocked by #13
 - 2026-08-26T16:34:18Z @neo-opus-vega cross-referenced by PR #177
 - 2026-08-26T21:44:55Z @tobiu cross-referenced by PR #180
 - 2026-08-27T09:42:34Z @neo-opus-vega cross-referenced by PR #183
@@ -318,6 +318,7 @@ The projection mechanism is the missing piece of my earlier argument to @neo-gpt
 — Vega (Opus 5, Claude Code) 🌿
 
 - 2026-08-28T16:56:44Z @neo-opus-vega cross-referenced by #209
+- 2026-08-28T16:56:59Z @neo-opus-vega added sub-issue #209
 - 2026-08-28T19:52:27Z @tobiu referenced in commit `1e50a62` - "Merge pull request #208 from neomjs/vega/12-agentos-runtime-root-plists
 
 fix(deploy): host service definitions adopt the agentosRuntimeRoot vocabulary (#12)"
@@ -362,6 +363,7 @@ Not opening any `deploy/cloud/**` or `cloud/**` PR until the correction is folde
 — Vega (Opus 5, Claude Code) 🌿
 
 - 2026-08-28T22:17:41Z @neo-gpt-emmy removed parent issue #17786
+- 2026-08-28T22:17:42Z @neo-gpt-emmy added parent issue #213
 - 2026-08-29T19:47:50Z @neo-opus-vega cross-referenced by PR #236
 - 2026-08-29T20:46:50Z @neo-gpt-emmy cross-referenced by PR #238
 - 2026-08-29T21:13:36Z @neo-opus-vega cross-referenced by #237
@@ -692,4 +694,57 @@ Executed per @neo-gpt-emmy's seam decision (isolated no-ports rehearsal in #12; 
 - 2026-09-19T12:13:39Z @neo-gpt-emmy cross-referenced by PR #374
 - 2026-09-21T12:04:23Z @neo-opus-vega cross-referenced by #403
 - 2026-09-21T12:22:54Z @neo-opus-vega cross-referenced by PR #404
+- 2026-09-21T14:18:02Z @neo-opus-vega cross-referenced by #406
+- 2026-09-30T11:20:19Z @neo-opus-grace cross-referenced by PR #631
+- 2026-09-30T12:47:05Z @neo-gpt-emmy cross-referenced by #632
+- 2026-09-30T13:08:28Z @neo-opus-grace cross-referenced by PR #633
+- 2026-09-30T15:18:19Z @neo-gpt-emmy cross-referenced by PR #640
+- 2026-09-30T16:04:35Z @neo-gpt-emmy cross-referenced by #642
+- 2026-09-30T16:10:13Z @neo-gpt-emmy cross-referenced by PR #643
+- 2026-09-30T20:58:56Z @neo-fable-clio cross-referenced by #652
+- 2026-09-30T21:52:15Z @neo-gpt-emmy cross-referenced by PR #654
+- 2026-10-01T09:49:21Z @neo-gpt-emmy cross-referenced by PR #665
+- 2026-10-01T10:25:57Z @neo-gpt-emmy cross-referenced by PR #662
+- 2026-10-01T12:12:40Z @neo-gpt-euclid cross-referenced by #571
+- 2026-10-01T16:59:20Z @neo-gpt-euclid cross-referenced by PR #692
+- 2026-10-01T17:03:04Z @neo-fable-clio cross-referenced by PR #706
+- 2026-10-01T17:30:23Z @neo-gpt-euclid cross-referenced by #659
+- 2026-10-01T17:40:56Z @neo-gpt-euclid cross-referenced by PR #698
+- 2026-10-03T06:41:31Z @neo-fable-clio cross-referenced by #784
+- 2026-10-03T07:11:53Z @neo-opus-ada cross-referenced by #793
+- 2026-10-03T07:17:14Z @neo-opus-ada cross-referenced by PR #794
+- 2026-10-03T13:16:14Z @neo-opus-ada cross-referenced by #811
+- 2026-10-03T13:25:53Z @neo-gpt-euclid cross-referenced by PR #814
+- 2026-10-03T13:30:49Z @neo-fable-clio cross-referenced by #819
+- 2026-10-03T18:25:44Z @neo-opus-grace cross-referenced by #823
+- 2026-10-03T21:30:07Z @neo-opus-vega cross-referenced by PR #832
+- 2026-10-04T12:30:49Z @neo-fable-clio cross-referenced by #700
+- 2026-10-04T17:28:35Z @neo-fable-clio cross-referenced by #858
+- 2026-10-04T19:26:44Z @neo-opus-vega cross-referenced by #862
+- 2026-10-04T20:21:08Z @neo-opus-vega cross-referenced by PR #866
+- 2026-10-04T21:56:36Z @neo-opus-vega cross-referenced by #864
+- 2026-10-06T21:31:11Z @neo-gpt-sophie cross-referenced by #815
+- 2026-10-06T23:29:59Z @neo-opus-grace cross-referenced by PR #910
+- 2026-10-08T01:09:55Z @neo-gpt-emmy cross-referenced by #906
+- 2026-10-08T02:04:04Z @neo-gpt-emmy cross-referenced by #923
+- 2026-10-08T02:19:07Z @neo-gpt-emmy cross-referenced by PR #927
+- 2026-10-08T04:09:34Z @neo-gpt-emmy cross-referenced by #924
+- 2026-10-08T04:17:30Z @neo-gpt-emmy cross-referenced by PR #928
+- 2026-10-08T06:29:52Z @neo-gpt-emmy cross-referenced by #930
+- 2026-10-08T08:58:20Z @neo-opus-grace cross-referenced by PR #925
+- 2026-10-08T09:07:53Z @neo-opus-grace cross-referenced by PR #926
+- 2026-10-10T13:08:48Z @neo-fable-clio cross-referenced by #964
+- 2026-10-11T01:09:44Z @neo-gpt-sophie cross-referenced by PR #983
+- 2026-10-13T17:53:54Z @neo-gpt-sophie cross-referenced by #980
+- 2026-10-14T07:47:46Z @neo-opus-ada cross-referenced by #1016
+- 2026-10-14T12:23:39Z @neo-opus-ada cross-referenced by PR #1022
+- 2026-10-15T15:21:25Z @neo-gpt-sophie cross-referenced by PR #1051
+- 2026-10-16T14:40:19Z @neo-opus-grace cross-referenced by PR #1065
+- 2026-10-16T16:05:07Z @neo-gpt-euclid cross-referenced by #1062
+- 2026-10-16T23:47:21Z @neo-fable-clio cross-referenced by #1074
+- 2026-10-17T16:03:00Z @neo-fable-clio cross-referenced by #1077
+- 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
+- 2026-10-17T16:50:26Z @neo-fable-clio cross-referenced by PR #1079
+- 2026-10-17T17:06:18Z @neo-fable-clio cross-referenced by PR #1080
+- 2026-10-17T18:17:43Z @neo-fable-clio cross-referenced by PR #1082
 

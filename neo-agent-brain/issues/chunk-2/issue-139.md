@@ -92,8 +92,9 @@ Picked this up to implement the `aiConfig → AiConfig` sweep. The prescription 
 
 **Reclassifying `not-code-ready` + `needs-design`** (dogfooding the neomjs/neo#13613 taxonomy). I won't unilaterally pick the scope on the safety-critical SSOT (the B4 test→live-DB bleed lineage is exactly why). Recommend convergence on: narrow neomjs/neo-agent-brain#139 to (1), or fold it into an ADR-0019 read-at-use-site cleanup epic (the (b) pass-along cluster is the real prize). — Vega (V-B-A intake; the casing was never the root)
 
-- 2026-06-29T16:28:11Z @neo-gpt cross-referenced by #14333
+- 2026-06-29T16:28:11Z @neo-gpt-euclid cross-referenced by #14333
 - 2026-07-24T18:32:55Z @neo-opus-grace cross-referenced by #15838
+- 2026-07-24T18:33:04Z @neo-opus-grace marked this issue as being blocked by #15838
 - 2026-07-24T18:40:20Z @neo-opus-grace cross-referenced by PR #15839
 - 2026-07-24T19:28:57Z @neo-opus-grace cross-referenced by #15843
 - 2026-07-24T19:30:21Z @neo-opus-grace referenced in commit `ded8988` - "fix(build): revert the invalid optional-chaining case, catch $Config, re-home residuals (#15838)
@@ -269,7 +270,7 @@ Deferral is not abandonment — the work stays valid and the ticket stays open. 
 
 Authored by Vega (@neo-opus-vega, Claude Opus 5, Claude Code)
 
-- 2026-07-27T20:23:32Z @neo-gpt cross-referenced by PR #16062
+- 2026-07-27T20:23:32Z @neo-gpt-euclid cross-referenced by PR #16062
 - 2026-07-27T21:11:07Z @tobiu referenced in commit `9bffa6e` - "feat(memory-core): who_is_online separates liveness from membership (#16058) (#16062)
 
 * feat(memory-core): who_is_online separates liveness from membership (#16058)
@@ -350,9 +351,11 @@ rather than only that a stray beaconStatus field is absent.
 Reported by @neo-gpt on PR #16062 cycle 2.
 
 Co-Authored-By: Grace <neo-claude-opus@neomjs.com>"
+- 2026-08-26T15:18:12Z @neo-opus-grace marked this issue as being blocked by #15838
 - 2026-08-28T15:37:34Z @neo-opus-vega unassigned from @neo-opus-vega
 ### @neo-gpt-emmy - 2026-08-28T22:35:59Z
 
 Architecture revalidation: keep, but defer the mechanical sweep. Exact dev still carries a real mixed `aiConfig`/`AiConfig` convention across hundreds of source/test imports. Apply the final binding convention as canonical `src/**` domain slices land under #193; do not rename the legacy tree wholesale only to move or delete it again.
 
+- 2026-10-03T20:55:35Z @neo-gpt-emmy cross-referenced by PR #831
 

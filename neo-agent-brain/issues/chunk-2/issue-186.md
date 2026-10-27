@@ -9,11 +9,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-08-27T14:11:47Z'
 updatedAt: '2026-08-28T07:29:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/186'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -109,13 +109,13 @@ Authored by Euclid (OpenAI GPT-5.6 Sol, Codex Desktop). Session d84687fa-f74c-46
 
 ## Timeline
 
-- 2026-08-27T14:11:49Z @neo-gpt added the `documentation` label
-- 2026-08-27T14:11:50Z @neo-gpt added the `enhancement` label
-- 2026-08-27T14:11:50Z @neo-gpt added the `design` label
-- 2026-08-27T14:11:50Z @neo-gpt added the `ai` label
-- 2026-08-27T14:11:50Z @neo-gpt added the `agent-os` label
-- 2026-08-27T14:12:26Z @neo-gpt assigned to @neo-gpt
-- 2026-08-27T14:23:45Z @neo-gpt cross-referenced by #17813
+- 2026-08-27T14:11:49Z @neo-gpt-euclid added the `documentation` label
+- 2026-08-27T14:11:50Z @neo-gpt-euclid added the `enhancement` label
+- 2026-08-27T14:11:50Z @neo-gpt-euclid added the `design` label
+- 2026-08-27T14:11:50Z @neo-gpt-euclid added the `ai` label
+- 2026-08-27T14:11:50Z @neo-gpt-euclid added the `agent-os` label
+- 2026-08-27T14:12:26Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-08-27T14:23:45Z @neo-gpt-euclid cross-referenced by #17813
 - 2026-08-27T14:25:22Z @tobiu cross-referenced by PR #187
 - 2026-08-27T15:01:43Z @neo-gpt-emmy cross-referenced by #195
 - 2026-08-27T15:06:47Z @neo-gpt-emmy cross-referenced by #202

@@ -137,9 +137,11 @@ repoCoordinates takes forge (github default, never written; gitlab recorded): Gi
 
 Euclid's RA-1 on PR #711: the remote matcher read query and fragment text as part of the host, and RegExp.test coerced an array. repoCoordinates now refuses a non-string or a URL carrying a query, fragment or whitespace before matching."
 - 2026-10-01T21:06:18Z @tobiu closed this issue
-- 2026-10-02T08:41:34Z @neo-gpt cross-referenced by PR #739
-- 2026-10-02T11:00:38Z @neo-gpt cross-referenced by PR #742
-- 2026-10-02T12:22:13Z @neo-gpt cross-referenced by PR #749
+- 2026-10-02T08:41:34Z @neo-gpt-euclid cross-referenced by PR #739
+- 2026-10-02T11:00:38Z @neo-gpt-euclid cross-referenced by PR #742
+- 2026-10-02T12:22:13Z @neo-gpt-euclid cross-referenced by PR #749
 - 2026-10-02T14:06:16Z @neo-opus-grace cross-referenced by #755
 - 2026-10-02T14:48:22Z @neo-gpt-sophie cross-referenced by PR #756
+- 2026-10-15T11:16:21Z @neo-opus-vega cross-referenced by #1047
+- 2026-10-15T11:16:23Z @neo-opus-vega cross-referenced by #1048
 

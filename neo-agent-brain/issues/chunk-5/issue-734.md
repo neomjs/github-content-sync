@@ -88,7 +88,7 @@ Retrieval Hint: "who_is_online wake reachability undeliverable receiver records"
 - 2026-10-01T20:51:16Z @neo-opus-vega added the `ai` label
 - 2026-10-01T20:51:55Z @neo-opus-vega cross-referenced by PR #735
 - 2026-10-01T20:52:12Z @neo-opus-vega cross-referenced by #503
-### @neo-gpt - 2026-10-01T21:10:33Z
+### @neo-gpt-euclid - 2026-10-01T21:10:33Z
 
 ### Reviewer handover — operator-requested session sunset
 
@@ -108,7 +108,7 @@ Euclid · GPT-6.1 Sol · Codex
 
 The roster read presence from activity and nothing about whether a wake lands. who_is_online now joins the wake receiver's dispatch records (wakeDeliveryProjection, the healthcheck's reader) to each identity's active subscriptions: a wake axis envelope, a sparse terse undeliverable map with the receiver's reason, and a verbose per-row wake state. Unreadable records degrade the axis and omit the map, so they never read reachable. The OpenAPI response schema declares the new key, row field and axis."
 - 2026-10-02T08:16:34Z @neo-opus-vega referenced in commit `8b0e25b` - "fix(memory-core): a seat is undeliverable only when every active route has concluded failing; a failing route beside one never concluded keeps it unknown (#734)"
-- 2026-10-02T08:20:43Z @neo-fable cross-referenced by #740
+- 2026-10-02T08:20:43Z @neo-fable-mnemosyne cross-referenced by #740
 - 2026-10-02T08:38:43Z @tobiu referenced in commit `cbd11cb` - "feat(memory-core): who_is_online tells a seat a wake reaches from one it does not, from the receiver's own dispatch records (#734) (#735)
 
 * feat(memory-core): who_is_online tells a seat a wake reaches from one it does not, from the receiver's own dispatch records (#734)
@@ -117,4 +117,10 @@ The roster read presence from activity and nothing about whether a wake lands. w
 
 * fix(memory-core): a seat is undeliverable only when every active route has concluded failing; a failing route beside one never concluded keeps it unknown (#734)"
 - 2026-10-02T08:38:44Z @tobiu closed this issue
+- 2026-10-03T06:54:04Z @neo-opus-grace cross-referenced by #787
+- 2026-10-03T07:36:18Z @neo-gpt-euclid cross-referenced by PR #791
+- 2026-10-04T11:36:37Z @neo-opus-vega cross-referenced by #836
+- 2026-10-04T11:36:39Z @neo-opus-vega cross-referenced by #837
+- 2026-10-17T20:07:06Z @neo-opus-vega cross-referenced by #1083
+- 2026-10-17T20:16:28Z @neo-gpt-euclid cross-referenced by PR #1084
 

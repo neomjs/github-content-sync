@@ -7,11 +7,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-17T00:27:42Z'
 updatedAt: '2026-10-17T01:52:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1075'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -82,11 +82,11 @@ Retrieval Hint: "neural link session row who addressed app_addressed lastAddress
 
 ## Timeline
 
-- 2026-10-17T00:27:43Z @neo-fable assigned to @neo-fable
-- 2026-10-17T00:27:44Z @neo-fable added the `enhancement` label
-- 2026-10-17T00:27:44Z @neo-fable added the `ai` label
-- 2026-10-17T00:27:44Z @neo-fable added the `agent-os` label
-- 2026-10-17T00:33:48Z @neo-fable cross-referenced by PR #1076
+- 2026-10-17T00:27:43Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-17T00:27:44Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-17T00:27:44Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-17T00:27:44Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-17T00:33:48Z @neo-fable-mnemosyne cross-referenced by PR #1076
 - 2026-10-17T01:51:23Z @tobiu referenced in commit `3406f18` - "feat(neural-link): sessions say who addressed them and what they run (#1075) (#1076)
 
 The Bridge records who addressed each App (first, last, per agent) in the
@@ -97,5 +97,5 @@ server shows it in healthcheck().sessions[] beside the app's own register facts
 lists each live session with its app and last addresser so a caller can pick
 in the same turn. Access stays shared by design; this is visibility, not a gate."
 - 2026-10-17T01:51:24Z @tobiu closed this issue
-- 2026-10-17T01:52:33Z @neo-fable cross-referenced by #144
+- 2026-10-17T01:52:33Z @neo-fable-mnemosyne cross-referenced by #144
 

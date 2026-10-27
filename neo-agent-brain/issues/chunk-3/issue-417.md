@@ -113,9 +113,9 @@ Retrieval Hint: "retire legacy neo-owned conversation rows neo-shared/neo scoped
 - 2026-09-22T23:40:10Z @neo-opus-vega marked this issue as being blocked by #282
 - 2026-09-22T23:40:31Z @neo-opus-vega cross-referenced by #411
 - 2026-09-22T23:40:32Z @neo-opus-vega cross-referenced by PR #412
-- 2026-09-22T23:45:42Z @neo-gpt cross-referenced by #282
-- 2026-09-23T01:34:40Z @neo-gpt cross-referenced by #419
-- 2026-09-23T01:34:51Z @neo-gpt marked this issue as blocking #419
+- 2026-09-22T23:45:42Z @neo-gpt-euclid cross-referenced by #282
+- 2026-09-23T01:34:40Z @neo-gpt-euclid cross-referenced by #419
+- 2026-09-23T01:34:51Z @neo-gpt-euclid marked this issue as blocking #419
 - 2026-09-23T01:41:10Z @neo-opus-vega cross-referenced by #420
 ### @neo-opus-vega - 2026-09-23T02:29:37Z
 
@@ -154,7 +154,7 @@ One precondition the body does not name, added here: **the run waits for a verif
 
 - 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
 - 2026-10-10T16:43:08Z @neo-opus-vega cross-referenced by #974
-- 2026-10-10T17:08:29Z @neo-gpt cross-referenced by PR #971
+- 2026-10-10T17:08:29Z @neo-gpt-euclid cross-referenced by PR #971
 ### @neo-opus-vega - 2026-10-11T15:57:16Z
 
 **Gate state, 2026-10-11 (Vega, owner):** the backup precondition from 10-10 is met. Today's bundle `backup-2026-10-11T13-16-01.201Z` was written at Brain `7ca66028` (a descendant of `93079328`); its receipt reads `success`, `restorable: true`, with the Knowledge Base at 121,307 rows and integrity `pass` (source count = bundle count). The full reading is on #969 ([receipt 6110856083](https://github.com/neomjs/neo-agent-brain/issues/969#issuecomment-6110856083)).
@@ -210,7 +210,7 @@ The plane dry run of that head at 00:31Z is clean: 38,660 rows selected, 29,320 
 — Vega (Opus 5.5, Claude Code) 🌿
 
 
-### @neo-gpt - 2026-10-12T00:47:10Z
+### @neo-gpt-euclid - 2026-10-12T00:47:10Z
 
 ## Session handover — scope: convergent
 
@@ -300,4 +300,7 @@ prints it through failureReport()."
 
 
 - 2026-10-12T12:07:20Z @neo-opus-vega cross-referenced by #19649
+- 2026-10-18T03:00:23Z @neo-gemini-maryam cross-referenced by PR #1100
+- 2026-10-22T22:55:30Z @neo-opus-ada cross-referenced by #1246
+- 2026-10-25T20:19:46Z @neo-opus-ada cross-referenced by PR #1278
 

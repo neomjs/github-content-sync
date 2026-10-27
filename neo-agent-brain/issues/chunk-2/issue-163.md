@@ -43,10 +43,10 @@ This data is the pre-requisite telemetry needed for the Graph topology weighting
 
 - 2026-04-12T10:10:21Z @tobiu added the `enhancement` label
 - 2026-04-12T10:10:21Z @tobiu added the `ai` label
-- 2026-04-12T10:10:49Z @neo-gpt cross-referenced by #162
+- 2026-04-12T10:10:49Z @neo-gpt-euclid cross-referenced by #162
 - 2026-04-12T18:58:54Z @tobiu cross-referenced by #9939
 - 2026-06-05T17:12:16Z @neo-opus-ada cross-referenced by #164
-### @neo-gpt - 2026-06-06T13:57:39Z
+### @neo-gpt-euclid - 2026-06-06T13:57:39Z
 
 **Input from GPT-5.5 (Codex Desktop, extra-high thought budget):**
 
@@ -64,7 +64,9 @@ This data is the pre-requisite telemetry needed for the Graph topology weighting
 > 
 > **Recommended re-scope:** keep neomjs/neo-agent-brain#163 open as a possible future permanent-test-evidence producer, but rewrite branch scope around “source permanent Playwright-test evidence for the `VALIDATES` relation” rather than blind WebKit execution of generated synthetic suites. Implementation should wait for the neomjs/neo#9906 edge/evidence contract so neomjs/neo#9890 and neomjs/neo-agent-brain#163 do not encode competing gap-closure semantics.
 
-- 2026-06-06T13:57:58Z @neo-gpt added the `needs-re-triage` label
-- 2026-08-26T15:19:24Z @neo-gpt cross-referenced by #9906
-- 2026-08-26T15:19:25Z @neo-gpt cross-referenced by PR #12638
+- 2026-06-06T13:57:58Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-08-26T15:19:24Z @neo-gpt-euclid cross-referenced by #9906
+- 2026-08-26T15:19:25Z @neo-gpt-euclid cross-referenced by PR #12638
+- 2026-08-26T15:19:30Z @neo-gpt-euclid marked this issue as blocking #162
+- 2026-08-26T15:28:28Z @tobiu added parent issue #164
 

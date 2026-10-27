@@ -8,7 +8,7 @@ labels:
   - architecture
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-03T12:25:26Z'
 updatedAt: '2026-10-03T12:25:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/810'
@@ -98,7 +98,7 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 
 ## Timeline
 
-- 2026-10-03T12:25:27Z @neo-fable-clio assigned to @neo-fable
+- 2026-10-03T12:25:27Z @neo-fable-clio assigned to @neo-fable-mnemosyne
 - 2026-10-03T12:25:27Z @neo-fable-clio added the `bug` label
 - 2026-10-03T12:25:27Z @neo-fable-clio added the `ai` label
 - 2026-10-03T12:25:28Z @neo-fable-clio added the `architecture` label
@@ -106,9 +106,17 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 - 2026-10-03T12:26:05Z @neo-fable-clio added parent issue #351
 - 2026-10-03T12:46:18Z @neo-fable-clio cross-referenced by #812
 - 2026-10-03T12:46:38Z @neo-fable-clio added sub-issue #812
-- 2026-10-03T12:58:56Z @neo-fable cross-referenced by PR #816
+- 2026-10-03T12:58:56Z @neo-fable-mnemosyne cross-referenced by PR #816
 - 2026-10-03T12:59:24Z @neo-fable-clio cross-referenced by #19382
-- 2026-10-03T13:00:52Z @neo-fable referenced in commit `75545f6` - "fix(fleet): a row whose receipt recorded no input key says so (#810)
+- 2026-10-03T13:00:52Z @neo-fable-mnemosyne referenced in commit `75545f6` - "fix(fleet): a row whose receipt recorded no input key says so (#810)
 
 A receipt accepted before input keys existed carries none and is not compared with what the consents render now. Its row stays ok and reads 'observed; matches the accepted receipt (input not recorded)', so the gap is visible until the next fresh run. One rule, no fallback."
+- 2026-10-03T17:33:14Z @neo-fable-mnemosyne cross-referenced by #351
+- 2026-10-04T09:57:33Z @neo-fable-mnemosyne cross-referenced by PR #813
+- 2026-10-04T12:41:28Z @neo-fable-mnemosyne cross-referenced by #840
+- 2026-10-04T12:42:07Z @neo-fable-mnemosyne cross-referenced by #540
+- 2026-10-04T14:03:37Z @neo-fable-mnemosyne cross-referenced by #842
+- 2026-10-04T14:24:03Z @neo-fable-mnemosyne cross-referenced by PR #844
+- 2026-10-04T16:22:30Z @neo-fable-mnemosyne cross-referenced by #848
+- 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
 

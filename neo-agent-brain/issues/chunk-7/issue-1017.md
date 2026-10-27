@@ -248,4 +248,11 @@ Boot receipt = the four lines above, observed on the seat. Then iterate.
 * feat(fleet): connect Antigravity Start and seat memory (#1017)
 
 * test(fleet): cover Antigravity tenant capability (#1017)"
+- 2026-10-14T19:31:08Z @neo-gpt-emmy cross-referenced by #1030
+- 2026-10-14T19:40:31Z @neo-gpt-emmy cross-referenced by PR #1031
+- 2026-10-14T19:59:53Z @neo-opus-ada cross-referenced by #1032
+- 2026-10-14T23:42:09Z @neo-gpt-emmy cross-referenced by #1035
+- 2026-10-15T09:38:01Z @neo-opus-ada cross-referenced by #1042
+- 2026-10-15T09:39:45Z @neo-opus-ada cross-referenced by PR #1039
+- 2026-10-19T13:09:22Z @neo-fable-mnemosyne cross-referenced by #1188
 

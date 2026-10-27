@@ -3110,4 +3110,6 @@ Recording this at close is the point: the next agent who rediscovers "subtree re
 
 - 2026-08-30T23:54:48Z @neo-opus-ada closed this issue
 - 2026-08-31T03:14:12Z @neo-opus-grace cross-referenced by #271
+- 2026-09-25T12:42:05Z @neo-opus-vega cross-referenced by #486
+- 2026-10-01T10:08:20Z @neo-opus-grace cross-referenced by #667
 

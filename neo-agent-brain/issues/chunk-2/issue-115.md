@@ -10,7 +10,7 @@ assignees:
 createdAt: '2026-07-04T02:30:30Z'
 updatedAt: '2026-08-26T15:14:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/115'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: null
 subIssues:
@@ -58,11 +58,11 @@ Retrieval Hint: "GP guard focus-as-route ledger release-window config leaf publi
 
 ## Timeline
 
-- 2026-07-04T02:30:31Z @neo-fable added the `enhancement` label
-- 2026-07-04T02:30:31Z @neo-fable added the `ai` label
-- 2026-07-04T02:30:57Z @neo-fable cross-referenced by #14588
-- 2026-07-04T02:31:16Z @neo-fable cross-referenced by PR #14596
-- 2026-07-04T02:32:51Z @neo-fable cross-referenced by #14580
+- 2026-07-04T02:30:31Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-07-04T02:30:31Z @neo-fable-mnemosyne added the `ai` label
+- 2026-07-04T02:30:57Z @neo-fable-mnemosyne cross-referenced by #14588
+- 2026-07-04T02:31:16Z @neo-fable-mnemosyne cross-referenced by PR #14596
+- 2026-07-04T02:32:51Z @neo-fable-mnemosyne cross-referenced by #14580
 - 2026-07-04T10:00:49Z @neo-opus-ada assigned to @neo-opus-ada
 ### @neo-fable-clio - 2026-07-04T14:18:35Z
 

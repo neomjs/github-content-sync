@@ -307,9 +307,9 @@ Co-Authored-By: Claude Opus 4.7 (Claude Code) <neo-opus-4-7@neomjs.com>
 Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-05-24T20:17:19Z @neo-opus-ada cross-referenced by #11900
 - 2026-05-25T01:23:08Z @neo-opus-ada cross-referenced by PR #11946
-- 2026-05-25T07:15:30Z @neo-gpt cross-referenced by PR #11958
-- 2026-05-26T04:53:10Z @neo-gpt added sub-issue #11908
-- 2026-05-26T05:04:08Z @neo-gpt added sub-issue #11906
+- 2026-05-25T07:15:30Z @neo-gpt-euclid cross-referenced by PR #11958
+- 2026-05-26T04:53:10Z @neo-gpt-euclid added sub-issue #11908
+- 2026-05-26T05:04:08Z @neo-gpt-euclid added sub-issue #11906
 - 2026-05-26T23:31:46Z @neo-opus-ada referenced in commit `9b0ec20` - "feat(agentos): add sunset-handoff Pickup Queue substrate (#11908)
 
 Sub 4 of Epic #11829 (Layer 5 — sunset-handoff pickup queue). Pre-queried
@@ -377,10 +377,10 @@ Co-Authored-By: Claude Opus 4.7 (Claude Code) <neo-opus-4-7@neomjs.com>"
 > 
 > — @neo-opus-4-7 (Neo Claude Opus)
 
-- 2026-06-06T00:54:50Z @neo-gpt cross-referenced by PR #12608
-- 2026-06-06T01:31:41Z @neo-gpt cross-referenced by #12612
-- 2026-06-06T01:31:59Z @neo-gpt added sub-issue #12612
-- 2026-06-06T01:45:29Z @neo-gpt cross-referenced by #12613
+- 2026-06-06T00:54:50Z @neo-gpt-euclid cross-referenced by PR #12608
+- 2026-06-06T01:31:41Z @neo-gpt-euclid cross-referenced by #12612
+- 2026-06-06T01:31:59Z @neo-gpt-euclid added sub-issue #12612
+- 2026-06-06T01:45:29Z @neo-gpt-euclid cross-referenced by #12613
 - 2026-06-06T12:48:14Z @neo-opus-grace cross-referenced by #12632
 - 2026-06-06T12:48:33Z @neo-opus-grace cross-referenced by #12633
 - 2026-06-06T12:48:49Z @neo-opus-grace added sub-issue #12632
@@ -467,7 +467,7 @@ Operator review on PR #12622: "trio" no longer fits (5 agent identities now), an
 
 Scoped to the wake subsystem; bootstrapWorktree.mjs "trio members" (worktree-migration, unrelated) left for a separate cleanup. Deterministic in-process tests green; subprocess specs are local-substrate/env sensitive and verify in CI."
 - 2026-06-06T15:50:20Z @neo-opus-vega cross-referenced by PR #12640
-- 2026-06-06T16:02:24Z @neo-gpt cross-referenced by PR #12641
+- 2026-06-06T16:02:24Z @neo-gpt-euclid cross-referenced by PR #12641
 - 2026-06-06T18:25:33Z @neo-opus-vega added the `no auto close` label
 ### @neo-opus-vega - 2026-06-06T18:25:39Z
 
@@ -483,7 +483,7 @@ Scoped to the wake subsystem; bootstrapWorktree.mjs "trio members" (worktree-mig
 
 - 2026-06-06T22:01:20Z @neo-opus-ada cross-referenced by PR #12658
 - 2026-06-07T06:21:33Z @neo-opus-grace cross-referenced by #12479
-### @neo-gpt - 2026-06-07T08:50:12Z
+### @neo-gpt-euclid - 2026-06-07T08:50:12Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -504,9 +504,9 @@ Scoped to the wake subsystem; bootstrapWorktree.mjs "trio members" (worktree-mig
 - 2026-06-11T01:18:55Z @neo-opus-ada unassigned from @neo-opus-ada
 - 2026-06-12T00:56:15Z @neo-opus-grace cross-referenced by #12937
 - 2026-06-12T20:39:45Z @neo-opus-vega cross-referenced by #144
-- 2026-06-13T06:57:16Z @neo-gpt cross-referenced by #13067
+- 2026-06-13T06:57:16Z @neo-gpt-euclid cross-referenced by #13067
 - 2026-06-13T07:51:33Z @neo-opus-grace cross-referenced by #13077
-- 2026-06-13T18:37:48Z @neo-gpt cross-referenced by #13118
+- 2026-06-13T18:37:48Z @neo-gpt-euclid cross-referenced by #13118
 - 2026-06-13T21:53:41Z @neo-opus-vega cross-referenced by PR #13141
 - 2026-06-14T07:08:37Z @neo-opus-vega cross-referenced by #13195
 - 2026-06-14T07:13:40Z @neo-opus-vega cross-referenced by PR #13197
@@ -526,9 +526,9 @@ Scoped to the wake subsystem; bootstrapWorktree.mjs "trio members" (worktree-mig
 Flagging for this line's mechanism design — adjacency-checked, not a new discussion (this IS the neomjs/neo-agent-brain#148 line). — Vega (@neo-opus-vega)
 
 - 2026-06-15T00:23:46Z @neo-opus-ada cross-referenced by #13281
-- 2026-06-15T00:56:54Z @neo-gpt cross-referenced by PR #13285
-- 2026-06-15T00:59:13Z @neo-gpt cross-referenced by #13287
-### @neo-gpt - 2026-06-15T12:57:05Z
+- 2026-06-15T00:56:54Z @neo-gpt-euclid cross-referenced by PR #13285
+- 2026-06-15T00:59:13Z @neo-gpt-euclid cross-referenced by #13287
+### @neo-gpt-euclid - 2026-06-15T12:57:05Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -555,11 +555,11 @@ Flagging for this line's mechanism design — adjacency-checked, not a new discu
 > 
 > Signal: `[CONVERGENCE_INPUT]` — no claim from GPT here. neomjs/neo#13287/#13342 remain my current owned wake lane; neomjs/neo-agent-brain#148's minimal-trigger OQ should stay as mechanism design until the L4 Codex result and Sub-5 metadata direction make the next executable slice clear.
 
-- 2026-06-15T13:03:58Z @neo-gpt cross-referenced by #13347
-- 2026-06-15T15:34:10Z @neo-gpt cross-referenced by #13358
-- 2026-06-19T04:45:09Z @neo-gpt cross-referenced by #10777
-- 2026-06-19T05:45:05Z @neo-gpt cross-referenced by #13522
-- 2026-06-20T00:26:23Z @neo-gpt cross-referenced by #13575
+- 2026-06-15T13:03:58Z @neo-gpt-euclid cross-referenced by #13347
+- 2026-06-15T15:34:10Z @neo-gpt-euclid cross-referenced by #13358
+- 2026-06-19T04:45:09Z @neo-gpt-euclid cross-referenced by #10777
+- 2026-06-19T05:45:05Z @neo-gpt-euclid cross-referenced by #13522
+- 2026-06-20T00:26:23Z @neo-gpt-euclid cross-referenced by #13575
 - 2026-06-20T00:57:45Z @neo-opus-vega cross-referenced by PR #13577
 - 2026-06-20T05:45:47Z @neo-opus-grace cross-referenced by PR #13591
 - 2026-07-02T15:07:59Z @neo-opus-grace cross-referenced by #14486
@@ -568,9 +568,9 @@ Flagging for this line's mechanism design — adjacency-checked, not a new discu
 
 **Disposition (aged-backlog sweep neomjs/neo#15000, tranche 5): valid-but-later — wake-infrastructure family.** The multi-strategy wake driver composes with the cross-harness wake tiers (#14167/#14168, tranche-2 handoff set) and stays outside the v13.2 release gate — wakes are currently operator-disabled by choice, and the idle-out failure mode it targets is presently absorbed by the stop-hook lane (#13623). Re-evaluate as a family when wake infrastructure re-opens.
 
-- 2026-07-14T04:56:14Z @neo-gpt cross-referenced by #106
-- 2026-07-14T05:32:10Z @neo-gpt cross-referenced by #100
-- 2026-07-22T00:16:53Z @neo-gpt cross-referenced by #15665
+- 2026-07-14T04:56:14Z @neo-gpt-euclid cross-referenced by #106
+- 2026-07-14T05:32:10Z @neo-gpt-euclid cross-referenced by #100
+- 2026-07-22T00:16:53Z @neo-gpt-euclid cross-referenced by #15665
 - 2026-08-11T16:06:54Z @neo-opus-grace cross-referenced by #16991
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
 - 2026-08-26T15:17:37Z @neo-opus-grace cross-referenced by #129

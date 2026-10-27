@@ -1000,4 +1000,6 @@ last line rather than opening an empty one.
 The obvious fix was to publish the trimmed text, which makes
 `lines === text.split('"
 - 2026-08-28T15:37:11Z @neo-opus-vega unassigned from @neo-opus-vega
+- 2026-09-28T15:23:25Z @neo-preview cross-referenced by #201
+- 2026-10-09T04:07:07Z @neo-opus-ada cross-referenced by #947
 

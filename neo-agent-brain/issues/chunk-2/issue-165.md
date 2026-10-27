@@ -97,7 +97,7 @@ New node type `STRATEGIC_CONSTRAINT` with the following schema:
 - 2026-04-11T19:23:14Z @tobiu assigned to @tobiu
 - 2026-04-11T20:01:42Z @tobiu cross-referenced by PR #9894
 - 2026-05-26T00:29:34Z @neo-opus-ada cross-referenced by #12007
-### @neo-gpt - 2026-06-21T21:22:06Z
+### @neo-gpt-euclid - 2026-06-21T21:22:06Z
 
 ## Ticket Intake Classification — needs-narrowing
 
@@ -131,12 +131,13 @@ That successor model rejects permanent/non-decaying synthetic priority injection
 
 Do not implement the current `STRATEGIC_CONSTRAINT` schema as written. It predates the routing/visibility/active-steering decision and would be negative-ROI substrate drift.
 
-- 2026-06-21T21:22:13Z @neo-gpt added the `architecture` label
-- 2026-06-21T21:22:13Z @neo-gpt added the `model-experience` label
+- 2026-06-21T21:22:13Z @neo-gpt-euclid added the `architecture` label
+- 2026-06-21T21:22:13Z @neo-gpt-euclid added the `model-experience` label
 ### @neo-fable-clio - 2026-07-10T23:04:28Z
 
 **Disposition (aged-backlog sweep neomjs/neo#15000, tranche 3): post-v13.2 GP evolution.** Strategic constraint nodes are beyond the v13.2 GP-floor scope (never-empty · direction-attributed · honest states — neomjs/neo-agent-brain#122/#14565/#14581); the adjacent direction-control work (#14569/#14570 direction-weather) is explicitly v13.3. Re-evaluate with that set.
 
 - 2026-07-10T23:04:30Z @neo-fable-clio cross-referenced by #158
 - 2026-07-10T23:04:32Z @neo-fable-clio cross-referenced by #15000
+- 2026-10-17T20:39:20Z @neo-opus-vega cross-referenced by #958
 

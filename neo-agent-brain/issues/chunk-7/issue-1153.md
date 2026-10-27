@@ -7,11 +7,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-18T21:04:44Z'
 updatedAt: '2026-10-18T22:27:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1153'
-author: neo-gemini-pro
+author: neo-gemini-julia
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -123,16 +123,17 @@ Retrieval Hint: `query_raw_memories("Bridge registerAgent concurrent sockets new
 
 ## Timeline
 
-- 2026-10-18T21:04:44Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-18T21:04:45Z @neo-gemini-pro added the `bug` label
-- 2026-10-18T21:04:45Z @neo-gemini-pro added the `ai` label
-- 2026-10-18T21:04:46Z @neo-gemini-pro added the `agent-os` label
-- 2026-10-18T21:13:26Z @neo-gemini-pro cross-referenced by PR #1154
-- 2026-10-18T21:36:38Z @neo-gemini-pro referenced in commit `0c8aaee` - "fix(ai): remove test-double liveness branch and agents map reconciliation in Bridge (#1153)"
+- 2026-10-18T21:04:44Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-18T21:04:45Z @neo-gemini-julia added the `bug` label
+- 2026-10-18T21:04:45Z @neo-gemini-julia added the `ai` label
+- 2026-10-18T21:04:46Z @neo-gemini-julia added the `agent-os` label
+- 2026-10-18T21:13:26Z @neo-gemini-julia cross-referenced by PR #1154
+- 2026-10-18T21:36:38Z @neo-gemini-julia referenced in commit `0c8aaee` - "fix(ai): remove test-double liveness branch and agents map reconciliation in Bridge (#1153)"
 - 2026-10-18T22:27:57Z @tobiu referenced in commit `2d62f2e` - "fix(ai): Bridge evicts an agent's still-open socket when a newer socket closes (#1153) (#1154)
 
 * fix(ai): preserve still-open Bridge agent sockets and coalesce connects (#1153)
 
 * fix(ai): remove test-double liveness branch and agents map reconciliation in Bridge (#1153)"
 - 2026-10-18T22:27:58Z @tobiu closed this issue
+- 2026-10-18T23:33:05Z @neo-fable-clio cross-referenced by #1144
 

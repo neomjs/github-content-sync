@@ -7,11 +7,11 @@ labels:
   - ai
   - architecture
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-07-04T01:12:13Z'
 updatedAt: '2026-08-26T15:14:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/117'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: null
 subIssues:
@@ -110,34 +110,34 @@ Retrieval Hint: "direction-weighted golden path evolution direction attribution 
 
 ## Timeline
 
-- 2026-07-04T01:12:14Z @neo-fable added the `epic` label
-- 2026-07-04T01:12:15Z @neo-fable added the `ai` label
-- 2026-07-04T01:12:15Z @neo-fable added the `architecture` label
-- 2026-07-04T01:12:51Z @neo-fable cross-referenced by #14566
-- 2026-07-04T01:13:08Z @neo-fable cross-referenced by #14567
-- 2026-07-04T01:13:23Z @neo-fable cross-referenced by #14568
-- 2026-07-04T01:13:38Z @neo-fable cross-referenced by #14569
-- 2026-07-04T01:13:52Z @neo-fable cross-referenced by #116
-- 2026-07-04T01:14:02Z @neo-fable added sub-issue #14566
-- 2026-07-04T01:14:04Z @neo-fable added sub-issue #14567
-- 2026-07-04T01:14:05Z @neo-fable added sub-issue #14568
-- 2026-07-04T01:14:07Z @neo-fable added sub-issue #14569
-- 2026-07-04T01:14:14Z @neo-fable assigned to @neo-fable
-- 2026-07-04T01:21:56Z @neo-fable cross-referenced by #14445
+- 2026-07-04T01:12:14Z @neo-fable-mnemosyne added the `epic` label
+- 2026-07-04T01:12:15Z @neo-fable-mnemosyne added the `ai` label
+- 2026-07-04T01:12:15Z @neo-fable-mnemosyne added the `architecture` label
+- 2026-07-04T01:12:51Z @neo-fable-mnemosyne cross-referenced by #14566
+- 2026-07-04T01:13:08Z @neo-fable-mnemosyne cross-referenced by #14567
+- 2026-07-04T01:13:23Z @neo-fable-mnemosyne cross-referenced by #14568
+- 2026-07-04T01:13:38Z @neo-fable-mnemosyne cross-referenced by #14569
+- 2026-07-04T01:13:52Z @neo-fable-mnemosyne cross-referenced by #116
+- 2026-07-04T01:14:02Z @neo-fable-mnemosyne added sub-issue #14566
+- 2026-07-04T01:14:04Z @neo-fable-mnemosyne added sub-issue #14567
+- 2026-07-04T01:14:05Z @neo-fable-mnemosyne added sub-issue #14568
+- 2026-07-04T01:14:07Z @neo-fable-mnemosyne added sub-issue #14569
+- 2026-07-04T01:14:14Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-07-04T01:21:56Z @neo-fable-mnemosyne cross-referenced by #14445
 - 2026-07-04T01:41:42Z @neo-opus-vega cross-referenced by #14577
-- 2026-07-04T01:43:13Z @neo-fable cross-referenced by #144
-- 2026-07-04T01:46:37Z @neo-fable cross-referenced by #14579
+- 2026-07-04T01:43:13Z @neo-fable-mnemosyne cross-referenced by #144
+- 2026-07-04T01:46:37Z @neo-fable-mnemosyne cross-referenced by #14579
 - 2026-07-04T01:47:36Z @neo-opus-ada cross-referenced by #14581
-- 2026-07-04T01:56:12Z @neo-fable cross-referenced by PR #14585
-- 2026-07-04T01:58:10Z @neo-fable cross-referenced by #14588
-- 2026-07-04T02:03:57Z @neo-gpt cross-referenced by PR #14583
-- 2026-07-04T02:07:27Z @neo-fable cross-referenced by PR #14596
+- 2026-07-04T01:56:12Z @neo-fable-mnemosyne cross-referenced by PR #14585
+- 2026-07-04T01:58:10Z @neo-fable-mnemosyne cross-referenced by #14588
+- 2026-07-04T02:03:57Z @neo-gpt-euclid cross-referenced by PR #14583
+- 2026-07-04T02:07:27Z @neo-fable-mnemosyne cross-referenced by PR #14596
 - 2026-07-04T02:21:56Z @neo-opus-vega cross-referenced by #14601
 - 2026-07-04T02:22:40Z @neo-opus-grace cross-referenced by PR #14584
-- 2026-07-04T02:22:50Z @neo-fable cross-referenced by #14603
+- 2026-07-04T02:22:50Z @neo-fable-mnemosyne cross-referenced by #14603
 - 2026-07-04T02:23:33Z @neo-opus-vega cross-referenced by PR #14604
 - 2026-07-04T02:29:09Z @neo-opus-vega cross-referenced by #14608
-- 2026-07-04T03:15:36Z @neo-fable cross-referenced by PR #14626
+- 2026-07-04T03:15:36Z @neo-fable-mnemosyne cross-referenced by PR #14626
 - 2026-07-04T03:29:38Z @neo-opus-ada cross-referenced by #14633
 - 2026-07-04T03:29:57Z @neo-opus-ada cross-referenced by #14634
 - 2026-07-04T03:42:44Z @neo-opus-vega cross-referenced by #8
@@ -184,8 +184,8 @@ Co-Authored-By: Ada (Claude Opus 4.8) <ada@neomjs.dev>
 
 Co-authored-by: tobiu <tobiasuhlig78@gmail.com>
 Co-authored-by: Ada (Claude Opus 4.8) <ada@neomjs.dev>"
-- 2026-07-04T07:16:16Z @neo-fable cross-referenced by #14706
-- 2026-07-04T15:02:07Z @neo-fable cross-referenced by PR #14803
+- 2026-07-04T07:16:16Z @neo-fable-mnemosyne cross-referenced by #14706
+- 2026-07-04T15:02:07Z @neo-fable-mnemosyne cross-referenced by PR #14803
 - 2026-07-06T09:24:29Z @neo-opus-ada cross-referenced by #14879
 - 2026-07-06T10:03:04Z @neo-opus-ada cross-referenced by PR #14882
 - 2026-07-06T10:07:49Z @neo-opus-ada cross-referenced by #14883
@@ -193,10 +193,10 @@ Co-authored-by: Ada (Claude Opus 4.8) <ada@neomjs.dev>"
 - 2026-07-10T22:57:34Z @neo-fable-clio cross-referenced by #15000
 - 2026-07-12T10:02:32Z @neo-gpt-emmy cross-referenced by #158
 - 2026-07-12T10:14:16Z @neo-gpt-emmy cross-referenced by #15087
-- 2026-07-12T17:42:45Z @neo-gpt cross-referenced by #107
-- 2026-07-12T17:46:25Z @neo-gpt cross-referenced by #15101
-- 2026-07-12T18:18:24Z @neo-fable cross-referenced by PR #15103
-- 2026-07-12T19:55:37Z @neo-gpt cross-referenced by #15105
+- 2026-07-12T17:42:45Z @neo-gpt-euclid cross-referenced by #107
+- 2026-07-12T17:46:25Z @neo-gpt-euclid cross-referenced by #15101
+- 2026-07-12T18:18:24Z @neo-fable-mnemosyne cross-referenced by PR #15103
+- 2026-07-12T19:55:37Z @neo-gpt-euclid cross-referenced by #15105
 - 2026-07-12T20:09:43Z @neo-gpt-emmy cross-referenced by #122
 - 2026-07-16T07:38:21Z @neo-opus-grace cross-referenced by #15217
 - 2026-08-10T19:51:40Z @neo-opus-grace cross-referenced by #15490
@@ -206,4 +206,7 @@ Co-authored-by: Ada (Claude Opus 4.8) <ada@neomjs.dev>"
 - 2026-08-26T15:15:41Z @tobiu added sub-issue #14566
 - 2026-08-26T15:15:41Z @tobiu added sub-issue #14569
 - 2026-08-26T15:27:54Z @tobiu added sub-issue #116
+- 2026-09-22T22:58:46Z @neo-fable-mnemosyne cross-referenced by #19057
+- 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
+- 2026-10-24T20:14:41Z @neo-fable-mnemosyne cross-referenced by #1253
 

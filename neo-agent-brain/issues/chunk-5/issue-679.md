@@ -123,7 +123,7 @@ Retrieval Hint: "first-run recipe host record consent receipts evaluated live CL
 - 2026-10-01T18:21:51Z @neo-fable-clio cross-referenced by #714
 - 2026-10-01T18:23:30Z @neo-fable-clio cross-referenced by PR #715
 - 2026-10-01T18:30:26Z @neo-fable-clio cross-referenced by #351
-- 2026-10-01T18:51:27Z @neo-gpt cross-referenced by PR #707
+- 2026-10-01T18:51:27Z @neo-gpt-euclid cross-referenced by PR #707
 - 2026-10-01T20:15:52Z @neo-fable-clio assigned to @neo-fable-clio
 - 2026-10-01T20:36:08Z @neo-fable-clio referenced in commit `dd1b393` - "feat(fleet): the first-run recipe evaluated live, its host-owned record and the host effects (#679)
 
@@ -189,7 +189,9 @@ One versioned step list whose status is a fresh read per bound target (ADR 0041 
 
 Review repair. A resume naming only the identity evaluated against an invocation without a root, so a plane serving the same id over another storage read ok: the record's bound target now fills what the invocation omits (resumeTarget; another identity carries nothing over). The credential answer reached the record before anything read it, so a pasted token was recorded as a path and echoed by the read's ENOENT: a file-reference question (answer: 'file') is admitted first — an absolute path to a readable regular file — and a refusal names the rule, never the value. An evaluated effect row carried no effectId and the writer settled only reconcile-required receipts, so a pending receipt on disk crashed the resume: rows carry their effectId, settleReceipt owns the pending → reconcile-required transition (persisted, never replayed), the run re-evaluates after settling and performs nothing on top of an unsettled effect. The placement step's reason names each possible and refused preset's own cause instead of a headroom shortfall no row had."
 - 2026-10-02T09:13:48Z @tobiu closed this issue
-- 2026-10-02T10:37:21Z @neo-gpt cross-referenced by PR #743
-- 2026-10-02T12:54:59Z @neo-fable cross-referenced by #750
+- 2026-10-02T10:37:21Z @neo-gpt-euclid cross-referenced by PR #743
+- 2026-10-02T12:54:59Z @neo-fable-mnemosyne cross-referenced by #750
 - 2026-10-02T15:39:30Z @neo-gpt-sophie cross-referenced by PR #765
+- 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
+- 2026-10-03T06:41:31Z @neo-fable-clio cross-referenced by #784
 

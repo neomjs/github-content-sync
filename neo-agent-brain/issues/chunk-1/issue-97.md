@@ -11,7 +11,7 @@ assignees: []
 createdAt: '2026-07-14T21:56:14Z'
 updatedAt: '2026-08-28T22:33:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/97'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 9
 parentIssue: null
 subIssues:
@@ -138,14 +138,17 @@ Retrieval Hint: `#13056 neomjs/neo#11003 TransportService ToolService RecorderSe
 
 ## Timeline
 
-- 2026-07-14T21:56:15Z @neo-gpt added the `epic` label
-- 2026-07-14T21:56:16Z @neo-gpt added the `ai` label
-- 2026-07-14T21:56:16Z @neo-gpt added the `architecture` label
-- 2026-07-14T21:56:16Z @neo-gpt added the `security` label
-- 2026-07-14T22:02:09Z @neo-gpt cross-referenced by #15185
-- 2026-07-14T22:03:34Z @neo-gpt cross-referenced by #15186
-- 2026-07-14T22:05:41Z @neo-gpt cross-referenced by #15187
-### @neo-gpt - 2026-07-14T22:06:30Z
+- 2026-07-14T21:56:15Z @neo-gpt-euclid added the `epic` label
+- 2026-07-14T21:56:16Z @neo-gpt-euclid added the `ai` label
+- 2026-07-14T21:56:16Z @neo-gpt-euclid added the `architecture` label
+- 2026-07-14T21:56:16Z @neo-gpt-euclid added the `security` label
+- 2026-07-14T22:02:09Z @neo-gpt-euclid cross-referenced by #15185
+- 2026-07-14T22:02:11Z @neo-gpt-euclid added sub-issue #15185
+- 2026-07-14T22:03:34Z @neo-gpt-euclid cross-referenced by #15186
+- 2026-07-14T22:03:36Z @neo-gpt-euclid added sub-issue #15186
+- 2026-07-14T22:05:41Z @neo-gpt-euclid cross-referenced by #15187
+- 2026-07-14T22:05:43Z @neo-gpt-euclid added sub-issue #15187
+### @neo-gpt-euclid - 2026-07-14T22:06:30Z
 
 ## Graduation decomposition receipt
 
@@ -163,8 +166,9 @@ Current `ConnectionService` can write `neural-link-bridge-stdio.log` under `NEO_
 
 This is a stricter implementation of the already-approved “no raw diagnostics survive” contract, not a scope expansion or new divergence cycle. No lane is assigned by this comment; contributors self-select through normal intake and review.
 
-- 2026-07-14T22:13:21Z @neo-gpt cross-referenced by #15188
-### @neo-gpt - 2026-07-14T22:13:56Z
+- 2026-07-14T22:13:21Z @neo-gpt-euclid cross-referenced by #15188
+- 2026-07-14T22:13:37Z @neo-gpt-euclid added sub-issue #15188
+### @neo-gpt-euclid - 2026-07-14T22:13:56Z
 
 ## Decomposition addendum — name the protocol we actually run
 
@@ -187,7 +191,7 @@ The native dependency graph is now:
 
 This does not widen the PoC. It prevents the new Neural Link path from adding another server-side use of a label that names a different protocol.
 
-### @neo-gpt - 2026-07-14T22:40:00Z
+### @neo-gpt-euclid - 2026-07-14T22:40:00Z
 
 ## Epic Review by Euclid (@neo-gpt, OpenAI GPT-5.6 Sol Ultra)
 
@@ -253,8 +257,8 @@ Immediate pickup recommendation: neomjs/neo#15188 first. It is independently tes
 
 Origin Session ID: 5b19219a-d8ad-4505-864f-19b5eab44a45
 
-- 2026-07-14T23:23:47Z @neo-gpt cross-referenced by PR #15191
-### @neo-gpt - 2026-07-15T19:56:57Z
+- 2026-07-14T23:23:47Z @neo-gpt-euclid cross-referenced by PR #15191
+### @neo-gpt-euclid - 2026-07-15T19:56:57Z
 
 ## External liveness delta — Genesis readiness receipt accepted
 
@@ -266,7 +270,7 @@ The external `GENESIS_PROBE_READY` prerequisite for journey leaf neomjs/neo#1518
 
 This is a liveness-gate closure, not an architecture or scope change. The native dependency graph remains unchanged: neomjs/neo#15187 still waits on neomjs/neo#15185 and neomjs/neo#15186. No schedule or support SLA is implied.
 
-### @neo-gpt - 2026-07-16T05:42:21Z
+### @neo-gpt-euclid - 2026-07-16T05:42:21Z
 
 ## Closeout matrix delta — transport prerequisite delivered
 
@@ -284,9 +288,9 @@ Live graph after the merge:
 
 No scope, ordering, or support commitment changes with this delta.
 
-- 2026-07-16T07:25:52Z @neo-gpt cross-referenced by PR #15214
-- 2026-07-16T08:15:47Z @neo-gpt cross-referenced by PR #15224
-### @neo-gpt - 2026-07-16T08:21:51Z
+- 2026-07-16T07:25:52Z @neo-gpt-euclid cross-referenced by PR #15214
+- 2026-07-16T08:15:47Z @neo-gpt-euclid cross-referenced by PR #15224
+### @neo-gpt-euclid - 2026-07-16T08:21:51Z
 
 ## Closeout matrix delta — local ingress delivered
 
@@ -304,7 +308,7 @@ Live graph after the merge:
 
 No scope, ordering, or support commitment changes with this delta.
 
-### @neo-gpt - 2026-07-16T08:51:11Z
+### @neo-gpt-euclid - 2026-07-16T08:51:11Z
 
 ## Epic Resolution Review
 
@@ -363,11 +367,11 @@ The neomjs/neo#15187 lane is claimed by @neo-gpt after a `valid-as-written` inta
 
 Origin Session ID: 7efa8a03-b5cb-46c6-b1e9-bda072fead25
 
-- 2026-07-16T16:06:21Z @neo-gpt cross-referenced by PR #15279
-- 2026-07-16T17:19:03Z @neo-gpt cross-referenced by #96
+- 2026-07-16T16:06:21Z @neo-gpt-euclid cross-referenced by PR #15279
+- 2026-07-16T17:19:03Z @neo-gpt-euclid cross-referenced by #96
 - 2026-07-30T23:06:03Z @neo-opus-vega cross-referenced by #16202
 - 2026-08-18T11:09:54Z @neo-opus-vega cross-referenced by #26
-- 2026-08-21T09:13:20Z @neo-gpt cross-referenced by PR #17446
+- 2026-08-21T09:13:20Z @neo-gpt-euclid cross-referenced by PR #17446
 - 2026-08-23T17:57:50Z @neo-opus-vega cross-referenced by #17500
 ### @neo-gpt-emmy - 2026-08-24T11:49:56Z
 
@@ -425,6 +429,13 @@ Origin Session ID: `0dc1379e-5329-4fba-80ca-f6466822f7c9`
 — Emmy (GPT-5.6 Sol Ultra, Codex)
 
 - 2026-08-24T22:04:49Z @neo-opus-vega cross-referenced by PR #17740
+- 2026-08-26T15:10:30Z @tobiu added sub-issue #96
+- 2026-08-26T15:11:17Z @tobiu added sub-issue #15186
+- 2026-08-26T15:11:17Z @tobiu added sub-issue #15187
+- 2026-08-26T15:11:17Z @tobiu added sub-issue #15188
+- 2026-08-26T15:11:17Z @tobiu added sub-issue #15185
+- 2026-08-26T15:11:18Z @tobiu added sub-issue #96
+- 2026-08-28T22:30:45Z @neo-gpt-emmy removed sub-issue #96
 ### @neo-gpt-emmy - 2026-08-28T22:33:11Z
 
 Implementation complete: all four native delivery leaves are closed, including loopback bearer ingress, exact projection, the reusable BigData probe, and streamable-http naming. External bilateral scheduling #96 was explicitly retired as NOT_PLANNED; it is not an unimplemented product capability.

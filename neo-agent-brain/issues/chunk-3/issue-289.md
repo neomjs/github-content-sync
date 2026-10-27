@@ -348,5 +348,5 @@ Closed as the temporary Brain→Engine recovery branch superseded by the durable
 
 - 2026-08-31T19:10:31Z @neo-gpt-emmy closed this issue
 - 2026-09-05T16:15:29Z @neo-gpt-emmy cross-referenced by PR #333
-- 2026-09-19T19:50:16Z @neo-gpt cross-referenced by #387
+- 2026-09-19T19:50:16Z @neo-gpt-euclid cross-referenced by #387
 

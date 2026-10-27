@@ -9,11 +9,11 @@ labels:
   - testing
   - architecture
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-18T00:04:06Z'
 updatedAt: '2026-10-18T03:49:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1091'
-author: neo-gemini-pro
+author: neo-gemini-julia
 commentsCount: 0
 parentIssue: null
 subIssues:
@@ -106,21 +106,21 @@ Retrieval Hint: "VectorService GoldenPathSynthesizer configSnapshot createConfig
 
 ## Timeline
 
-- 2026-10-18T00:04:08Z @neo-gemini-pro added the `enhancement` label
-- 2026-10-18T00:04:08Z @neo-gemini-pro added the `ai` label
-- 2026-10-18T00:04:08Z @neo-gemini-pro added the `refactoring` label
-- 2026-10-18T00:04:08Z @neo-gemini-pro added the `testing` label
-- 2026-10-18T00:04:09Z @neo-gemini-pro added the `architecture` label
-- 2026-10-18T00:06:08Z @neo-gemini-pro cross-referenced by PR #1092
-- 2026-10-18T01:41:11Z @neo-gemini-pro assigned to @neo-gemini-pro
+- 2026-10-18T00:04:08Z @neo-gemini-julia added the `enhancement` label
+- 2026-10-18T00:04:08Z @neo-gemini-julia added the `ai` label
+- 2026-10-18T00:04:08Z @neo-gemini-julia added the `refactoring` label
+- 2026-10-18T00:04:08Z @neo-gemini-julia added the `testing` label
+- 2026-10-18T00:04:09Z @neo-gemini-julia added the `architecture` label
+- 2026-10-18T00:06:08Z @neo-gemini-julia cross-referenced by PR #1092
+- 2026-10-18T01:41:11Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-10-18T02:19:54Z @neo-opus-grace cross-referenced by #1096
 - 2026-10-18T02:20:04Z @neo-opus-grace added sub-issue #1096
 - 2026-10-18T02:32:52Z @neo-opus-grace cross-referenced by PR #1097
-- 2026-10-18T02:34:47Z @neo-gemini-pro cross-referenced by #1098
-- 2026-10-18T02:35:21Z @neo-gemini-pro changed title from **Convert remaining non-TextEmbeddingService B4 shared-config write concentrations** to **Convert VectorService and GoldenPathSynthesizer B4 shared-config test writes**
-- 2026-10-18T02:38:12Z @neo-gemini-pro cross-referenced by PR #1099
-- 2026-10-18T02:52:57Z @neo-gemini-pro referenced in commit `8c72b9b` - "fix(ai): align providerLaneComposition consumer census anchors with configSnapshot reads (#1091)"
-- 2026-10-18T03:25:04Z @neo-gemini-pro referenced in commit `79c336b` - "fix(ai): address Round-1 review on VectorService and GoldenPathSynthesizer snapshots (#1091)"
+- 2026-10-18T02:34:47Z @neo-gemini-julia cross-referenced by #1098
+- 2026-10-18T02:35:21Z @neo-gemini-julia changed title from **Convert remaining non-TextEmbeddingService B4 shared-config write concentrations** to **Convert VectorService and GoldenPathSynthesizer B4 shared-config test writes**
+- 2026-10-18T02:38:12Z @neo-gemini-julia cross-referenced by PR #1099
+- 2026-10-18T02:52:57Z @neo-gemini-julia referenced in commit `8c72b9b` - "fix(ai): align providerLaneComposition consumer census anchors with configSnapshot reads (#1091)"
+- 2026-10-18T03:25:04Z @neo-gemini-julia referenced in commit `79c336b` - "fix(ai): address Round-1 review on VectorService and GoldenPathSynthesizer snapshots (#1091)"
 - 2026-10-18T03:49:55Z @tobiu referenced in commit `9b01acf` - "feat(ai): convert VectorService and GoldenPathSynthesizer B4 test writes (#1091) (#1099)
 
 * feat(ai): convert VectorService and GoldenPathSynthesizer B4 test writes (#1091)
@@ -129,5 +129,8 @@ Retrieval Hint: "VectorService GoldenPathSynthesizer configSnapshot createConfig
 
 * fix(ai): address Round-1 review on VectorService and GoldenPathSynthesizer snapshots (#1091)"
 - 2026-10-18T03:49:55Z @tobiu closed this issue
-- 2026-10-18T04:08:30Z @neo-gemini-pro cross-referenced by #1102
+- 2026-10-18T04:08:30Z @neo-gemini-julia cross-referenced by #1102
+- 2026-10-18T04:52:11Z @neo-opus-grace cross-referenced by PR #1103
+- 2026-10-18T05:53:46Z @neo-gemini-julia cross-referenced by #1115
+- 2026-10-18T06:05:13Z @neo-gemini-julia cross-referenced by PR #1116
 

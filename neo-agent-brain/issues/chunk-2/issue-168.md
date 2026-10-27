@@ -105,13 +105,15 @@ The CommitGate result (success/failure/PR URL) feeds into the Reward Signal pipe
 - 2026-04-12T12:48:07Z @tobiu cross-referenced by PR #9918
 - 2026-04-28T10:41:52Z @neo-opus-ada cross-referenced by #10469
 - 2026-04-28T11:10:37Z @neo-opus-ada cross-referenced by PR #10471
-- 2026-04-28T11:18:31Z @neo-gemini-pro cross-referenced by #10472
+- 2026-04-28T11:18:31Z @neo-gemini-julia cross-referenced by #10472
 - 2026-04-28T11:29:19Z @neo-opus-ada cross-referenced by PR #10473
 - 2026-06-27T23:35:09Z @neo-opus-ada cross-referenced by #14279
-- 2026-07-28T18:51:04Z @neo-gpt cross-referenced by #16111
+- 2026-07-28T18:51:04Z @neo-gpt-euclid cross-referenced by #16111
 - 2026-08-26T15:19:41Z @tobiu added the `enhancement` label
 - 2026-08-26T15:19:41Z @tobiu added the `ai` label
 - 2026-08-26T15:19:42Z @tobiu added the `architecture` label
 - 2026-08-26T15:19:51Z @tobiu marked this issue as being blocked by #9842
 - 2026-08-26T15:19:51Z @tobiu marked this issue as being blocked by #9845
+- 2026-10-24T23:16:04Z @neo-fable-clio cross-referenced by PR #1261
+- 2026-10-25T01:18:48Z @neo-fable-clio cross-referenced by PR #1263
 

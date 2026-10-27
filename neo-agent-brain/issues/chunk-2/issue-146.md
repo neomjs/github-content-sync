@@ -59,13 +59,13 @@ With two `Claude.app` instances running — the default maintainer + the `@neo-o
 - 2026-06-03T01:25:22Z @neo-opus-ada cross-referenced by #12406
 - 2026-06-03T01:29:27Z @neo-opus-ada cross-referenced by PR #12407
 - 2026-06-03T01:46:25Z @neo-opus-ada cross-referenced by #12408
-- 2026-06-03T02:55:20Z @neo-gpt cross-referenced by #11812
+- 2026-06-03T02:55:20Z @neo-gpt-euclid cross-referenced by #11812
 - 2026-06-03T03:49:31Z @neo-opus-ada cross-referenced by #12418
-- 2026-06-03T04:03:01Z @neo-gpt cross-referenced by #12416
+- 2026-06-03T04:03:01Z @neo-gpt-euclid cross-referenced by #12416
 - 2026-06-03T04:31:05Z @neo-opus-ada cross-referenced by PR #12421
 - 2026-06-03T04:42:51Z @neo-opus-ada cross-referenced by #12422
-- 2026-06-06T01:45:29Z @neo-gpt cross-referenced by #12613
-### @neo-gpt - 2026-06-07T13:37:40Z
+- 2026-06-06T01:45:29Z @neo-gpt-euclid cross-referenced by #12613
+### @neo-gpt-euclid - 2026-06-07T13:37:40Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -83,11 +83,11 @@ With two `Claude.app` instances running — the default maintainer + the `@neo-o
 > 
 > This is **not transfer-ready implementation work** for GPT. The code prerequisite is already merged; the remaining proof is human/operator environment validation. Treat neomjs/neo-agent-brain#146 as human-gated L3 validation unless the live two-instance proof has already happened elsewhere, in which case the issue can be closed with the evidence link.
 
-- 2026-06-08T22:09:42Z @neo-gpt cross-referenced by #12793
+- 2026-06-08T22:09:42Z @neo-gpt-euclid cross-referenced by #12793
 - 2026-06-10T17:42:55Z @neo-opus-ada cross-referenced by #12850
 - 2026-06-11T01:18:58Z @neo-opus-ada unassigned from @neo-opus-ada
-- 2026-06-12T19:14:13Z @neo-gpt added the `enhancement` label
-### @neo-gpt - 2026-06-12T19:14:25Z
+- 2026-06-12T19:14:13Z @neo-gpt-euclid added the `enhancement` label
+### @neo-gpt-euclid - 2026-06-12T19:14:25Z
 
 **Input from GPT-5 (Codex Desktop, @neo-gpt):**
 
@@ -97,11 +97,11 @@ With two `Claude.app` instances running — the default maintainer + the `@neo-o
 > 
 > Stage retrospective passed for label hygiene only: the ticket is real post-merge validation work, but it remains operator-run/live-L3 rather than implementation-ready code work. The adjacent same-family wake/negative-route proofs do not close this ticket because neomjs/neo-agent-brain#146 specifically requires the two-`Claude.app` `@neo-claude-opus`/default-instance proof, wrong-instance probe, `--user-data-dir` confirmation, and artifact comment on neomjs/neo#11812.
 
-- 2026-06-18T20:22:07Z @neo-gpt cross-referenced by #13481
+- 2026-06-18T20:22:07Z @neo-gpt-euclid cross-referenced by #13481
 - 2026-06-19T04:32:52Z @neo-opus-grace cross-referenced by #13510
-- 2026-06-21T02:06:42Z @neo-gpt added the `needs-re-triage` label
-- 2026-06-21T09:54:49Z @neo-gpt cross-referenced by #13744
-- 2026-07-12T01:24:46Z @neo-gpt cross-referenced by #15054
+- 2026-06-21T02:06:42Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-06-21T09:54:49Z @neo-gpt-euclid cross-referenced by #13744
+- 2026-07-12T01:24:46Z @neo-gpt-euclid cross-referenced by #15054
 - 2026-07-27T08:10:31Z @neo-opus-grace cross-referenced by #129
 - 2026-08-15T23:53:26Z @neo-opus-vega cross-referenced by #30
 - 2026-08-21T14:21:37Z @neo-opus-ada cross-referenced by PR #17463

@@ -9,11 +9,11 @@ labels:
   - architecture
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-03T06:59:36Z'
 updatedAt: '2026-10-03T09:10:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/788'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: 351
 subIssues: []
@@ -84,22 +84,23 @@ Retrieval Hint: "ADR 0041 §3 host-file effect settles by its own observation am
 
 ## Timeline
 
-- 2026-10-03T06:59:36Z @neo-fable assigned to @neo-fable
-- 2026-10-03T06:59:37Z @neo-fable added the `documentation` label
-- 2026-10-03T06:59:37Z @neo-fable added the `enhancement` label
-- 2026-10-03T06:59:37Z @neo-fable added the `ai` label
-- 2026-10-03T06:59:38Z @neo-fable added the `architecture` label
-- 2026-10-03T06:59:38Z @neo-fable added the `agent-os` label
-- 2026-10-03T06:59:59Z @neo-fable cross-referenced by #786
-- 2026-10-03T07:00:00Z @neo-fable added parent issue #351
-- 2026-10-03T07:00:01Z @neo-fable marked this issue as blocking #786
-- 2026-10-03T07:02:40Z @neo-fable cross-referenced by PR #789
-- 2026-10-03T07:05:49Z @neo-fable cross-referenced by PR #790
-- 2026-10-03T07:08:41Z @neo-fable cross-referenced by #792
+- 2026-10-03T06:59:36Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-03T06:59:37Z @neo-fable-mnemosyne added the `documentation` label
+- 2026-10-03T06:59:37Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-03T06:59:37Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-03T06:59:38Z @neo-fable-mnemosyne added the `architecture` label
+- 2026-10-03T06:59:38Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-03T06:59:59Z @neo-fable-mnemosyne cross-referenced by #786
+- 2026-10-03T07:00:00Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-03T07:00:01Z @neo-fable-mnemosyne marked this issue as blocking #786
+- 2026-10-03T07:02:40Z @neo-fable-mnemosyne cross-referenced by PR #789
+- 2026-10-03T07:05:49Z @neo-fable-mnemosyne cross-referenced by PR #790
+- 2026-10-03T07:08:41Z @neo-fable-mnemosyne cross-referenced by #792
 - 2026-10-03T08:27:29Z @tobiu referenced in commit `a96d857` - "docs(adr): ADR 0041 §3 names how a host-file effect settles (#788) (#789)
 
 A host-file effect ordered before the plane's own exists to bring that plane up, so it settles by the file's own fresh matching observation; the plane's effect and every step after it settle only by the plane's. One sentence in §3, the amendment named in the Status row; §2 item 6 is unchanged."
 - 2026-10-03T08:27:30Z @tobiu closed this issue
 - 2026-10-03T08:41:48Z @neo-fable-clio cross-referenced by #802
 - 2026-10-03T08:42:36Z @neo-fable-clio cross-referenced by PR #803
+- 2026-10-03T12:46:18Z @neo-fable-clio cross-referenced by #812
 

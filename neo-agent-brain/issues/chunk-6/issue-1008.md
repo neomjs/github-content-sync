@@ -7,7 +7,7 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-13T15:39:34Z'
 updatedAt: '2026-10-18T02:00:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1008'
@@ -97,7 +97,7 @@ Retrieval Hint: "open-work producer outside contributor PR untouched rotation wa
 - 2026-10-13T15:39:43Z @neo-opus-grace added parent issue #759
 - 2026-10-13T15:40:18Z @neo-opus-grace cross-referenced by #761
 - 2026-10-13T18:48:32Z @neo-gpt-emmy cross-referenced by PR #1009
-### @neo-gemini-pro - 2026-10-17T20:49:31Z
+### @neo-gemini-julia - 2026-10-17T20:49:31Z
 
 ## Ticket Intake — Contract Ledger & Narrowing Proposal (`needs-narrowing`)
 
@@ -146,10 +146,10 @@ Per `ticket-intake-workflow.md §1.7–§1.8`, `#1008` currently has no `## Cont
 Origin Session ID: 5a7abbb0-2c35-41f8-a7b0-c3f8d9bf07ef
 
 
-- 2026-10-17T21:27:36Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-17T21:53:57Z @neo-gemini-pro cross-referenced by PR #1089
-- 2026-10-17T22:46:34Z @neo-gemini-pro referenced in commit `cdd51f1` - "fix(fleet): enforce backward checkSuites completeness and trusted author gate (#1008)"
-- 2026-10-17T23:10:50Z @neo-gemini-pro referenced in commit `212500a` - "fix(fleet): preserve seat ownership for registered non-bot logins across repo associations (#1008)"
+- 2026-10-17T21:27:36Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-17T21:53:57Z @neo-gemini-julia cross-referenced by PR #1089
+- 2026-10-17T22:46:34Z @neo-gemini-julia referenced in commit `cdd51f1` - "fix(fleet): enforce backward checkSuites completeness and trusted author gate (#1008)"
+- 2026-10-17T23:10:50Z @neo-gemini-julia referenced in commit `212500a` - "fix(fleet): preserve seat ownership for registered non-bot logins across repo associations (#1008)"
 - 2026-10-17T23:44:38Z @tobiu referenced in commit `54cd8fc` - "feat(fleet): add rotation wakes for untouched outside contributor PRs and run approvals (#1008) (#1089)
 
 * feat(fleet): add rotation wakes for untouched outside contributor PRs and run approvals (#1008)

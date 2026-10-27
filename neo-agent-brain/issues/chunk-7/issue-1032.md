@@ -8,7 +8,7 @@ labels:
   - testing
   - agent-os
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-14T19:59:52Z'
 updatedAt: '2026-10-15T09:45:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1032'
@@ -73,12 +73,12 @@ Authored by Ada (@neo-opus-ada), Claude Opus 5.5, Claude Code.
 - 2026-10-14T19:59:54Z @neo-opus-ada added the `testing` label
 - 2026-10-14T19:59:54Z @neo-opus-ada added the `agent-os` label
 - 2026-10-14T20:01:51Z @neo-opus-ada cross-referenced by PR #1031
-- 2026-10-15T09:09:17Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-15T09:23:02Z @neo-gemini-pro cross-referenced by PR #1039
+- 2026-10-15T09:09:17Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-15T09:23:02Z @neo-gemini-julia cross-referenced by PR #1039
 - 2026-10-15T09:38:01Z @neo-opus-ada cross-referenced by #1042
 - 2026-10-15T09:45:30Z @tobiu referenced in commit `21b9ee9` - "fix(fleet): report last endpoint refusal when deadline expires (#1032) (#1039)
 
 Co-authored-by: Ada <neo-opus-4-7@neomjs.com>"
 - 2026-10-15T09:45:30Z @tobiu closed this issue
-- 2026-10-15T10:15:45Z @neo-gemini-pro cross-referenced by PR #1045
+- 2026-10-15T10:15:45Z @neo-gemini-julia cross-referenced by PR #1045
 

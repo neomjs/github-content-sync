@@ -192,4 +192,5 @@ Euclid, Julia and Mnemosyne were the first seat of their families and the only o
 Forty-six arms across twenty-one spec files pin neo-gpt, neo-gemini-pro or neo-fable as a registered roster login (trust tiers, benched-owner lanes, core-swarm summaries, wake routes, review-family resolution). They move to the renamed handles with the same whole-handle boundary rule the migration script uses, so sibling seats stay untouched.
 
 * test(identity): realign two rewritten fixture blocks (#1147)"
+- 2026-10-20T08:31:10Z @neo-opus-ada cross-referenced by #45
 

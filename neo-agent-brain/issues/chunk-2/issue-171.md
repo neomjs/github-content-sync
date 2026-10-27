@@ -62,8 +62,8 @@ This ticket becomes claimable only after neomjs/neo-agent-brain#161 determines t
 
 - 2026-02-24T19:32:14Z @tobiu added the `enhancement` label
 - 2026-02-24T19:32:14Z @tobiu added the `ai` label
-- 2026-05-26T03:02:17Z @neo-gpt added the `needs-re-triage` label
-### @neo-gpt - 2026-05-26T03:02:18Z
+- 2026-05-26T03:02:17Z @neo-gpt-euclid added the `needs-re-triage` label
+### @neo-gpt-euclid - 2026-05-26T03:02:18Z
 
 ## Current Reality Triage — 2026-05-26
 
@@ -79,7 +79,7 @@ Next valid action: resolve neomjs/neo-agent-brain#161 first, then rewrite or clo
 
 - 2026-05-26T03:14:09Z @tobiu cross-referenced by #170
 - 2026-05-26T03:32:54Z @tobiu cross-referenced by #173
-### @neo-gpt - 2026-05-28T05:26:20Z
+### @neo-gpt-euclid - 2026-05-28T05:26:20Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -89,10 +89,18 @@ Next valid action: resolve neomjs/neo-agent-brain#161 first, then rewrite or clo
 > 
 > Rationale: neomjs/neo-agent-brain#161 is now the current Moltbook API / identity feasibility gate. Until it determines the supported API/auth path, neomjs/neo-agent-brain#171 should not be implemented from the old disposable-email / inbound-mail premise. If neomjs/neo-agent-brain#161 proves Moltbook's identity flow is API-key or dashboard-link based, this ticket may need rewrite or closure rather than an email pipeline.
 
-- 2026-06-03T08:05:16Z @neo-gpt changed title from **Implement Programmatic Email Identity for Agents** to **External-agent identity/auth boundary after Moltbook API decision**
+- 2026-06-03T08:05:16Z @neo-gpt-euclid changed title from **Implement Programmatic Email Identity for Agents** to **External-agent identity/auth boundary after Moltbook API decision**
 - 2026-06-03T08:05:17Z @tobiu cross-referenced by #161
-- 2026-06-03T08:05:27Z @neo-gpt removed the `needs-re-triage` label
-- 2026-06-23T03:37:54Z @neo-gpt added the `needs-re-triage` label
-- 2026-07-29T14:21:28Z @neo-gpt cross-referenced by #9299
+- 2026-06-03T08:05:27Z @neo-gpt-euclid removed the `needs-re-triage` label
+- 2026-06-23T03:37:54Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-07-29T14:21:28Z @neo-gpt-euclid cross-referenced by #9299
+- 2026-08-26T15:19:28Z @neo-gpt-euclid marked this issue as being blocked by #161
+- 2026-08-26T15:20:00Z @neo-gpt-euclid marked this issue as being blocked by #161
+- 2026-08-26T15:20:01Z @neo-gpt-euclid marked this issue as blocking #170
+- 2026-08-26T15:20:07Z @neo-gpt-euclid marked this issue as blocking #173
+- 2026-08-26T15:28:34Z @tobiu added parent issue #173
+- 2026-08-26T15:28:37Z @tobiu marked this issue as blocking #172
 - 2026-09-19T14:44:44Z @neo-gpt-emmy cross-referenced by PR #377
+- 2026-09-27T09:12:58Z @neo-opus-vega cross-referenced by #565
+- 2026-10-03T09:51:05Z @neo-opus-ada cross-referenced by #797
 

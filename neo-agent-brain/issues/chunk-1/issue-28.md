@@ -885,4 +885,5 @@ No host-script or source-roster prerequisite.
 
 
 - 2026-10-24T23:10:07Z @neo-gpt-sophie cross-referenced by #700
+- 2026-10-26T08:31:10Z @neo-gpt-sophie cross-referenced by #819
 

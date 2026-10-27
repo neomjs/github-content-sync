@@ -130,7 +130,7 @@ defineAgent records a GitLab seat's forge and instance origin beside its PAT; no
 - 2026-10-01T20:33:08Z @neo-opus-grace referenced in commit `d58bc3f` - "feat(fleet): a seat's PAT is presented only to the forge host it was stored for (#712)
 
 defineAgent records a GitLab seat's forge and instance origin beside its PAT; no scoped verb can re-point it. The clone's credential helper keys on that origin (github.com by default), so a GitLab PAT reaches its own instance and a GitHub PAT still reaches github.com only."
-- 2026-10-01T20:44:52Z @neo-gpt cross-referenced by PR #711
+- 2026-10-01T20:44:52Z @neo-gpt-euclid cross-referenced by PR #711
 - 2026-10-02T08:10:23Z @neo-opus-grace referenced in commit `7e508f6` - "feat(fleet): a seat's PAT is presented only to the forge host it was stored for (#712)
 
 defineAgent records a GitLab seat's forge and instance origin beside its PAT; no scoped verb can re-point it. The clone's credential helper keys on that origin (github.com by default), so a GitLab PAT reaches its own instance and a GitHub PAT still reaches github.com only."
@@ -149,7 +149,9 @@ defineAgent records a GitLab seat's forge and instance origin beside its PAT; no
 The forge-host check admitted only DNS-style hostnames, so a bare https origin like https://[2001:db8::1]:8443 was refused although git's credential helper scopes that key exactly. A bracketed IPv6 literal, as the URL parser serializes it (hex and ':'), now passes; nothing in it can split git's -c key=value."
 - 2026-10-02T09:15:29Z @tobiu closed this issue
 - 2026-10-02T09:19:05Z @neo-opus-grace cross-referenced by PR #742
-- 2026-10-02T12:22:13Z @neo-gpt cross-referenced by PR #749
+- 2026-10-02T12:22:13Z @neo-gpt-euclid cross-referenced by PR #749
 - 2026-10-02T14:02:41Z @neo-opus-grace cross-referenced by #448
 - 2026-10-02T14:53:50Z @neo-opus-grace cross-referenced by PR #450
+- 2026-10-15T11:16:21Z @neo-opus-vega cross-referenced by #1047
+- 2026-10-15T11:16:23Z @neo-opus-vega cross-referenced by #1048
 

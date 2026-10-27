@@ -9,11 +9,11 @@ labels:
   - architecture
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-04T14:03:36Z'
 updatedAt: '2026-10-04T15:04:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/842'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -25,7 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 840 One effect order, and each setup row names its wait and its exit'
+  - '[x] 840 One effect order, and each setup row names its wait and its exit'
 closedAt: '2026-10-04T15:04:00Z'
 milestone: FM v1
 ---
@@ -94,19 +94,20 @@ Retrieval Hint: "ADR 0041 row contract waitsFor exits duplicatePossible one effe
 
 ## Timeline
 
-- 2026-10-04T14:03:36Z @neo-fable assigned to @neo-fable
-- 2026-10-04T14:03:38Z @neo-fable added the `documentation` label
-- 2026-10-04T14:03:38Z @neo-fable added the `enhancement` label
-- 2026-10-04T14:03:38Z @neo-fable added the `ai` label
-- 2026-10-04T14:03:38Z @neo-fable added the `architecture` label
-- 2026-10-04T14:03:39Z @neo-fable added the `agent-os` label
-- 2026-10-04T14:03:50Z @neo-fable added this to the **FM v1** milestone
-- 2026-10-04T14:03:53Z @neo-fable cross-referenced by #840
-- 2026-10-04T14:05:32Z @neo-fable cross-referenced by PR #843
-- 2026-10-04T14:06:20Z @neo-fable cross-referenced by #351
-- 2026-10-04T14:24:03Z @neo-fable cross-referenced by PR #844
-- 2026-10-04T14:30:13Z @neo-fable referenced in commit `e6b2ef3` - "docs(adr): ADR 0041 §2.10 refuses a new attempt on an accepted witness and keeps the exits each attempt was offered (#842)"
-- 2026-10-04T14:39:02Z @neo-fable referenced in commit `f4da4ac` - "docs(adr): ADR 0041 §2.10 names the wait of a question the preset decides (#842)"
+- 2026-10-04T14:03:36Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-04T14:03:38Z @neo-fable-mnemosyne added the `documentation` label
+- 2026-10-04T14:03:38Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-04T14:03:38Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-04T14:03:38Z @neo-fable-mnemosyne added the `architecture` label
+- 2026-10-04T14:03:39Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-04T14:03:46Z @neo-fable-mnemosyne marked this issue as blocking #840
+- 2026-10-04T14:03:50Z @neo-fable-mnemosyne added this to the **FM v1** milestone
+- 2026-10-04T14:03:53Z @neo-fable-mnemosyne cross-referenced by #840
+- 2026-10-04T14:05:32Z @neo-fable-mnemosyne cross-referenced by PR #843
+- 2026-10-04T14:06:20Z @neo-fable-mnemosyne cross-referenced by #351
+- 2026-10-04T14:24:03Z @neo-fable-mnemosyne cross-referenced by PR #844
+- 2026-10-04T14:30:13Z @neo-fable-mnemosyne referenced in commit `e6b2ef3` - "docs(adr): ADR 0041 §2.10 refuses a new attempt on an accepted witness and keeps the exits each attempt was offered (#842)"
+- 2026-10-04T14:39:02Z @neo-fable-mnemosyne referenced in commit `f4da4ac` - "docs(adr): ADR 0041 §2.10 names the wait of a question the preset decides (#842)"
 - 2026-10-04T15:04:00Z @tobiu referenced in commit `9254cbf` - "docs(adr): ADR 0041 §2.10 states the setup row contract: one order, the wait and the exits as data (#842) (#843)
 
 * docs(adr): ADR 0041 §2.10 states the setup row contract: one order, the wait and the exits as data (#842)
@@ -117,4 +118,7 @@ Retrieval Hint: "ADR 0041 row contract waitsFor exits duplicatePossible one effe
 
 * docs(adr): ADR 0041 §2.10 names the wait of a question the preset decides (#842)"
 - 2026-10-04T15:04:00Z @tobiu closed this issue
+- 2026-10-04T16:42:52Z @neo-fable-mnemosyne cross-referenced by PR #849
+- 2026-10-04T16:47:38Z @neo-fable-clio cross-referenced by #850
+- 2026-10-04T16:50:31Z @neo-fable-clio cross-referenced by PR #852
 

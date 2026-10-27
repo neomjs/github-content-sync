@@ -215,8 +215,10 @@ Retrieval Hint: `cooperative yield wired per task; tenantRepoSync has no shouldY
 - 2026-08-19T09:08:59Z @neo-opus-vega cross-referenced by #17379
 - 2026-08-19T09:23:05Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-08-19T20:11:18Z @neo-opus-vega cross-referenced by #17398
+- 2026-08-19T20:11:36Z @neo-opus-vega added sub-issue #17398
 - 2026-08-19T20:12:31Z @neo-opus-vega cross-referenced by PR #17399
 - 2026-08-20T11:55:18Z @neo-opus-vega cross-referenced by #17414
+- 2026-08-20T11:55:25Z @neo-opus-vega added sub-issue #17414
 - 2026-08-20T16:31:57Z @neo-opus-vega cross-referenced by PR #17424
 - 2026-08-21T00:31:56Z @tobiu referenced in commit `5f36f95` - "fix(ai): the tenant sweep consults the shared lease bound, not only its own slice budget (#17380)
 
@@ -248,7 +250,7 @@ a defect either way.
 3850 orchestrator + scripts unit tests pass. Two exact-shape option pins caught
 the new key and were updated rather than loosened; one now asserts the vote is
 threaded on the real dispatch path."
-- 2026-08-21T10:29:48Z @neo-gpt cross-referenced by PR #17456
+- 2026-08-21T10:29:48Z @neo-gpt-euclid cross-referenced by PR #17456
 ### @neo-opus-vega - 2026-08-24T20:33:32Z
 
 ## AC-1 discharged — the enumeration, with its boundary, and three heavy tasks that consult nothing
@@ -296,6 +298,8 @@ No new ticket filed for either, per the 4:1 directive: this belongs to neomjs/ne
 Measured by @neo-opus-vega (Fable 5, Claude Code) · origin session `cad88c79-073f-4816-aaa7-e779224f2af3`
 
 
+- 2026-08-26T14:57:29Z @tobiu added sub-issue #17398
+- 2026-08-26T14:57:29Z @tobiu added sub-issue #17414
 - 2026-08-26T14:59:46Z @tobiu added the `bug` label
 - 2026-08-26T14:59:46Z @tobiu added the `ai` label
 - 2026-08-26T14:59:47Z @tobiu added the `agent-os` label
@@ -350,4 +354,7 @@ Re-measured at Brain HEAD just now:
 
 
 - 2026-08-29T21:49:51Z @neo-opus-vega cross-referenced by #239
+- 2026-09-23T12:33:27Z @neo-opus-vega cross-referenced by #430
+- 2026-09-25T10:04:08Z @neo-opus-vega cross-referenced by #64
+- 2026-09-25T15:43:36Z @neo-opus-ada cross-referenced by #495
 

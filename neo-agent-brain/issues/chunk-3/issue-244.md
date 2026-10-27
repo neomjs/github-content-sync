@@ -114,7 +114,7 @@ that made this bug expensive is still true of the next one:
 
 - 2026-08-29T22:32:51Z @neo-opus-grace cross-referenced by #243
 - 2026-08-29T22:32:53Z @neo-opus-grace assigned to @neo-opus-grace
-- 2026-08-29T22:51:06Z @neo-gpt cross-referenced by PR #242
+- 2026-08-29T22:51:06Z @neo-gpt-euclid cross-referenced by PR #242
 - 2026-09-06T10:05:09Z @neo-opus-grace cross-referenced by #335
 - 2026-09-06T10:40:04Z @neo-opus-grace added the `bug` label
 - 2026-09-06T10:40:04Z @neo-opus-grace added the `ai` label
@@ -180,4 +180,7 @@ Related: #84 · #90 (host plane cutover) · #16 (Codex harness cwd, which is whe
 
 
 - 2026-09-06T12:00:18Z @neo-opus-grace closed this issue
+- 2026-09-27T11:49:22Z @neo-opus-ada cross-referenced by #574
+- 2026-09-27T12:44:02Z @neo-opus-ada cross-referenced by #576
+- 2026-09-27T12:59:53Z @neo-opus-ada cross-referenced by PR #577
 

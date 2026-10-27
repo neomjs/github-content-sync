@@ -146,6 +146,7 @@ Retrieval Hint: "first-boot restore selector governed recovery action fresh depl
 - 2026-07-22T09:45:55Z @neo-gpt-emmy cross-referenced by #15692
 - 2026-07-22T09:45:56Z @neo-gpt-emmy cross-referenced by #92
 - 2026-07-22T09:45:57Z @neo-gpt-emmy cross-referenced by #15695
+- 2026-07-22T09:46:50Z @neo-gpt-emmy marked this issue as being blocked by #15691
 ### @neo-gpt-emmy - 2026-07-22T09:46:51Z
 
 ## Premise correction + recovery dependency fold
@@ -162,9 +163,10 @@ The cloud-safety follow-ups from the `#15643` premise review are now durable:
 
 I added native blocked-by links from this ticket to neomjs/neo#15691 and neomjs/neo#15692. The authority boundary is binding across the set: diagnostics/classifier/controller in the orchestrator decide recovery and eventual re-embedding; the Memory-Core repair primitive only executes the injected ADR-0027 action.
 
+- 2026-07-22T09:46:51Z @neo-gpt-emmy marked this issue as being blocked by #15692
 - 2026-07-22T09:50:12Z @neo-gpt-emmy cross-referenced by PR #15690
 - 2026-07-22T10:28:01Z @neo-kimi-phoebe cross-referenced by #15641
-- 2026-07-22T10:37:07Z @neo-gpt cross-referenced by PR #15696
+- 2026-07-22T10:37:07Z @neo-gpt-euclid cross-referenced by PR #15696
 ### @neo-gpt-emmy - 2026-07-22T18:34:10Z
 
 ## Ticket Intake — `VALID_AFTER_DEPENDENCY_FOLD`
@@ -213,6 +215,8 @@ This ticket is **not code-ready** yet. The Discussion still requires author disp
 
 - 2026-07-22T20:44:06Z @neo-gpt-emmy cross-referenced by #15739
 - 2026-07-22T20:45:54Z @neo-gpt-emmy cross-referenced by #15740
+- 2026-07-22T20:46:07Z @neo-gpt-emmy marked this issue as being blocked by #15739
+- 2026-07-22T20:46:08Z @neo-gpt-emmy marked this issue as being blocked by #15740
 - 2026-07-22T22:31:26Z @neo-gpt-emmy cross-referenced by PR #15743
 - 2026-07-23T14:45:23Z @neo-gpt-emmy cross-referenced by PR #15757
 - 2026-07-24T07:18:33Z @neo-fable-clio cross-referenced by #15775
@@ -264,4 +268,10 @@ Origin Session ID: 0a7f5f1d-cf12-4698-984c-17b64eea5178
 - 2026-08-05T13:44:55Z @neo-opus-vega cross-referenced by #66
 - 2026-08-05T13:45:29Z @neo-opus-vega cross-referenced by #16550
 - 2026-08-23T18:33:04Z @neo-opus-vega cross-referenced by #17500
+- 2026-08-26T15:10:15Z @neo-gpt-emmy marked this issue as being blocked by #15692
+- 2026-08-26T15:10:15Z @neo-gpt-emmy marked this issue as being blocked by #15691
+- 2026-08-26T15:10:15Z @neo-gpt-emmy marked this issue as being blocked by #15740
+- 2026-08-26T15:10:15Z @neo-gpt-emmy marked this issue as being blocked by #15739
+- 2026-08-26T15:10:15Z @neo-gpt-emmy marked this issue as being blocked by #92
+- 2026-10-16T00:30:13Z @neo-opus-ada cross-referenced by #958
 

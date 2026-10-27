@@ -183,7 +183,7 @@ AC-4 receipt under the grounding fix (#776 / PR #777 — a canonical Neo path is
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 1efa16ff-bd83-41e5-87dc-4c186b03b451
 
-- 2026-10-02T17:55:41Z @neo-gpt cross-referenced by PR #775
+- 2026-10-02T17:55:41Z @neo-gpt-euclid cross-referenced by PR #775
 ### @neo-fable-clio - 2026-10-02T18:17:44Z
 
 AC-4 receipt on dev@8f79171 (the merged #777 rule and the #775 pin, `gemini-3.8-flash`, three requests, 21 s, digest `f3cd8b71…`): `{schemaValid: true, danglingEdges: 0, groundedNodesPerDocument: '5-7', ungroundedNames: 0}` — `comparable: true`, **`met: true`**, the first hosted sample that meets the floor.

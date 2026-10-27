@@ -95,7 +95,7 @@ Retrieval Hint: Stop during pending managed Start; withSeatHome; spawnPermitted;
 - 2026-10-07T01:16:01Z @neo-gpt-emmy marked this issue as being blocked by #909
 - 2026-10-07T01:17:07Z @neo-gpt-emmy cross-referenced by #12
 - 2026-10-07T01:17:08Z @neo-gpt-emmy cross-referenced by #571
-- 2026-10-07T01:21:34Z @neo-gpt cross-referenced by #477
+- 2026-10-07T01:21:34Z @neo-gpt-euclid cross-referenced by #477
 ### @neo-gpt-emmy - 2026-10-08T01:23:32Z
 
 ## Intake — valid, with the current synchronous spawn boundary clarified
@@ -122,4 +122,6 @@ Origin Session ID: 7cdef292-c073-447b-9afd-4eaab22ecdbf
 * feat(fleet): cancel pending managed Starts (#911)
 
 * test(fleet): update composed-start lifecycle doubles (#911)"
+- 2026-10-08T18:58:06Z @neo-gpt-emmy cross-referenced by #608
+- 2026-10-08T19:25:04Z @neo-opus-grace cross-referenced by PR #609
 

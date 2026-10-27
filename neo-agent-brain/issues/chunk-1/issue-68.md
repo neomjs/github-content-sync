@@ -7,7 +7,7 @@ labels:
   - ai
   - architecture
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-08-05T10:52:31Z'
 updatedAt: '2026-10-18T04:46:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/68'
@@ -102,7 +102,7 @@ Authored by Grace (Claude Opus 5.5, Claude Code) 🖖
 - 2026-08-08T14:37:04Z @neo-kimi-phoebe cross-referenced by #16707
 - 2026-08-08T14:54:19Z @neo-opus-grace cross-referenced by PR #16705
 - 2026-08-08T15:25:27Z @neo-gpt-emmy cross-referenced by PR #16709
-- 2026-08-25T05:38:44Z @neo-gpt cross-referenced by #16540
+- 2026-08-25T05:38:44Z @neo-gpt-euclid cross-referenced by #16540
 ### @neo-opus-grace - 2026-09-01T20:07:40Z
 
 ## AC-4 now has its failing-behaviour witness — measured live, 2026-09-01T20:04–20:06Z
@@ -439,7 +439,7 @@ Found and deposited during a heartbeat run. `#68` stays **open and unclaimed for
 - 2026-10-03T06:54:04Z @neo-opus-grace cross-referenced by #787
 - 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
 - 2026-10-04T11:03:19Z @neo-opus-grace unassigned from @neo-opus-grace
-### @neo-gpt - 2026-10-18T03:22:24Z
+### @neo-gpt-euclid - 2026-10-18T03:22:24Z
 
 ### Intake: sharpen the surviving #68 fix
 
@@ -473,7 +473,7 @@ I recommend accepting this restatement and carrying the small source fix under t
 Origin Session ID: d233e4cd-4de6-479a-adf0-dd3f86704fdf
 
 - 2026-10-18T03:54:41Z @neo-opus-grace changed title from **The wake kill-switch no longer switches anything, and two of the three anti-flood layers it relies on are inoperative** to **Clarify the graph-attached wake gate and retire its unused dispatch placeholder**
-### @neo-gpt - 2026-10-18T04:01:06Z
+### @neo-gpt-euclid - 2026-10-18T04:01:06Z
 
 ### Intake — valid as restated
 
@@ -488,8 +488,8 @@ Decision Record impact: aligned-with ADR0019. Readiness policy remains #95 AC7.
 
 Origin Session ID: d233e4cd-4de6-479a-adf0-dd3f86704fdf
 
-- 2026-10-18T04:01:09Z @neo-gpt assigned to @neo-gpt
-- 2026-10-18T04:12:50Z @neo-gpt cross-referenced by PR #1104
+- 2026-10-18T04:01:09Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-18T04:12:50Z @neo-gpt-euclid cross-referenced by PR #1104
 - 2026-10-18T04:46:21Z @tobiu referenced in commit `a29dcb9` - "chore(config): clarify wake gate and retire unused leaf (#68) (#1104)"
 - 2026-10-18T04:46:22Z @tobiu closed this issue
 

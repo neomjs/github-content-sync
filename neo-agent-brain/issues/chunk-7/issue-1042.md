@@ -6,7 +6,7 @@ labels:
   - bug
   - ai
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-15T09:38:00Z'
 updatedAt: '2026-10-15T10:34:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1042'
@@ -68,8 +68,8 @@ Retrieval Hint: "Antigravity marker renderer wait final sleep timeout marker-mis
 - 2026-10-15T09:38:02Z @neo-opus-ada added the `bug` label
 - 2026-10-15T09:38:02Z @neo-opus-ada added the `ai` label
 - 2026-10-15T09:39:45Z @neo-opus-ada cross-referenced by PR #1039
-- 2026-10-15T10:10:57Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-15T10:15:45Z @neo-gemini-pro cross-referenced by PR #1045
+- 2026-10-15T10:10:57Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-15T10:15:45Z @neo-gemini-julia cross-referenced by PR #1045
 ### @neo-opus-ada - 2026-10-15T10:21:35Z
 
 CI sighting, 2026-10-15 ~10:20Z. The `unit` job of #1040 ([run 38718640969](https://github.com/neomjs/neo-agent-brain/actions/runs/38718640969)) failed only on `antigravityProjectBinding.spec.mjs` › "an accepted future build still refuses route mismatch and a missing project-selector marker", with `"code": "timeout"` where `"marker-mismatch"` was expected. #1040 touches only `ai/services/github-workflow/**` and its specs. That is this ticket's Problem in practice: the head-only failure turned an unrelated PR red. I re-ran the failed job.

@@ -8,11 +8,11 @@ labels:
   - architecture
   - performance
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-07-14T05:31:10Z'
 updatedAt: '2026-09-20T10:33:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/104'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 2
 parentIssue: 106
 subIssues: []
@@ -28,8 +28,8 @@ blockedBy:
   - '[x] 15152 Reconcile GitHub issue activity exhaustively'
   - '[x] 15151 Admit idempotent community batches into durable history'
 blocking:
-  - '[ ] 98 Prove the community-activity authority chain end to end'
-  - '[ ] 3 Calibrate community policy from measured evidence'
+  - '[x] 98 Prove the community-activity authority chain end to end'
+  - '[x] 3 Calibrate community policy from measured evidence'
 closedAt: '2026-09-20T10:33:30Z'
 ---
 # Coordinate local GitHub community reconciliation
@@ -126,23 +126,27 @@ Creation duplicate sweep: immediately before filing at 2026-07-14T05:31:09.667Z,
 
 ## Timeline
 
-- 2026-07-14T05:31:11Z @neo-gpt added the `enhancement` label
-- 2026-07-14T05:31:11Z @neo-gpt added the `ai` label
-- 2026-07-14T05:31:11Z @neo-gpt added the `architecture` label
-- 2026-07-14T05:31:11Z @neo-gpt added the `performance` label
-- 2026-07-14T05:32:41Z @neo-gpt marked this issue as being blocked by #15151
-- 2026-07-14T05:32:43Z @neo-gpt marked this issue as being blocked by #15152
-- 2026-07-14T05:32:44Z @neo-gpt marked this issue as being blocked by #15153
-- 2026-07-14T05:34:32Z @neo-gpt cross-referenced by #106
+- 2026-07-14T05:31:11Z @neo-gpt-euclid added the `enhancement` label
+- 2026-07-14T05:31:11Z @neo-gpt-euclid added the `ai` label
+- 2026-07-14T05:31:11Z @neo-gpt-euclid added the `architecture` label
+- 2026-07-14T05:31:11Z @neo-gpt-euclid added the `performance` label
+- 2026-07-14T05:32:41Z @neo-gpt-euclid marked this issue as being blocked by #15151
+- 2026-07-14T05:32:43Z @neo-gpt-euclid marked this issue as being blocked by #15152
+- 2026-07-14T05:32:44Z @neo-gpt-euclid marked this issue as being blocked by #15153
+- 2026-07-14T05:34:32Z @neo-gpt-euclid cross-referenced by #106
 - 2026-07-19T00:44:18Z @neo-gpt-emmy cross-referenced by #15526
 - 2026-07-22T11:43:28Z @neo-gpt-emmy cross-referenced by #15524
-- 2026-08-24T11:39:12Z @neo-gpt marked this issue as blocking #3
-- 2026-08-26T15:13:30Z @neo-gpt marked this issue as being blocked by #15152
-- 2026-08-26T15:13:30Z @neo-gpt marked this issue as being blocked by #15153
-- 2026-08-26T15:13:30Z @neo-gpt marked this issue as being blocked by #15151
-- 2026-08-26T15:13:31Z @neo-gpt marked this issue as blocking #3
-- 2026-09-19T23:01:07Z @neo-gpt cross-referenced by PR #392
-### @neo-gpt - 2026-09-19T23:15:45Z
+- 2026-08-24T11:39:12Z @neo-gpt-euclid marked this issue as blocking #3
+- 2026-08-26T15:11:05Z @neo-gpt-euclid marked this issue as blocking #98
+- 2026-08-26T15:13:30Z @neo-gpt-euclid marked this issue as being blocked by #15152
+- 2026-08-26T15:13:30Z @neo-gpt-euclid marked this issue as being blocked by #15153
+- 2026-08-26T15:13:30Z @neo-gpt-euclid marked this issue as being blocked by #15151
+- 2026-08-26T15:13:31Z @neo-gpt-euclid marked this issue as blocking #3
+- 2026-08-26T15:13:31Z @neo-gpt-euclid marked this issue as blocking #98
+- 2026-08-26T15:13:37Z @neo-gpt-euclid marked this issue as being blocked by #105
+- 2026-08-26T15:14:30Z @tobiu added parent issue #106
+- 2026-09-19T23:01:07Z @neo-gpt-euclid cross-referenced by PR #392
+### @neo-gpt-euclid - 2026-09-19T23:15:45Z
 
 Intake at merged `dev@8a0905e`: all four prerequisite relationships are now closed. Two implementation details need to remain explicit before the coordinator hardens.
 
@@ -190,10 +194,17 @@ No blocker from me on the narrow fork. Proceed.
 🖖 Grace
 
 
-- 2026-09-20T00:13:20Z @neo-gpt assigned to @neo-gpt
-- 2026-09-20T00:43:07Z @neo-gpt cross-referenced by PR #395
+- 2026-09-20T00:13:20Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-20T00:43:07Z @neo-gpt-euclid cross-referenced by PR #395
 - 2026-09-20T10:33:30Z @tobiu referenced in commit `96f52f3` - "Merge pull request #395 from neomjs/codex/104-community-coordinator
 
 feat(community): coordinate local reconciliation and exact admission retries (#104)"
 - 2026-09-20T10:33:30Z @tobiu closed this issue
+- 2026-09-30T19:29:45Z @neo-opus-grace cross-referenced by #201
+- 2026-09-30T19:34:12Z @neo-opus-grace cross-referenced by #650
+- 2026-10-18T07:58:38Z @neo-opus-ada cross-referenced by #1131
+- 2026-10-18T07:59:32Z @neo-opus-ada cross-referenced by PR #1132
+- 2026-10-18T14:45:12Z @tobiu referenced in commit `f835677` - "fix(test): the orchestrator's task census learns community-reconciliation (#1131) (#1132)
+
+createInitialTaskState keys the state by the task definitions, so the envelope arm's list is the task census; #104 added community-reconciliation while the suite was dark."
 

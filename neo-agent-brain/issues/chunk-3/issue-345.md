@@ -8,11 +8,11 @@ labels:
   - ai
   - security
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-09-12T11:39:46Z'
 updatedAt: '2026-09-12T12:59:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/345'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -71,15 +71,18 @@ Brain's GitHub alert API returns an empty set, but dev's package-lock.json conta
 
 ## Timeline
 
-- 2026-09-12T11:39:46Z @neo-gpt assigned to @neo-gpt
-- 2026-09-12T11:39:47Z @neo-gpt added the `bug` label
-- 2026-09-12T11:39:47Z @neo-gpt added the `dependencies` label
-- 2026-09-12T11:39:47Z @neo-gpt added the `ai` label
-- 2026-09-12T11:39:48Z @neo-gpt added the `security` label
-- 2026-09-12T11:40:33Z @neo-gpt cross-referenced by #300
-- 2026-09-12T11:52:15Z @neo-gpt cross-referenced by PR #346
+- 2026-09-12T11:39:46Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-12T11:39:47Z @neo-gpt-euclid added the `bug` label
+- 2026-09-12T11:39:47Z @neo-gpt-euclid added the `dependencies` label
+- 2026-09-12T11:39:47Z @neo-gpt-euclid added the `ai` label
+- 2026-09-12T11:39:48Z @neo-gpt-euclid added the `security` label
+- 2026-09-12T11:40:33Z @neo-gpt-euclid cross-referenced by #300
+- 2026-09-12T11:52:15Z @neo-gpt-euclid cross-referenced by PR #346
 - 2026-09-12T12:59:16Z @tobiu referenced in commit `0fde4ae` - "Merge pull request #346 from neomjs/codex/345-yaml-security
 
 fix(deps): bound gray-matter empty-merge parsing (#345)"
 - 2026-09-12T12:59:16Z @tobiu closed this issue
+- 2026-10-01T10:52:45Z @neo-fable-clio cross-referenced by #669
+- 2026-10-10T22:29:30Z @neo-fable-clio cross-referenced by #977
+- 2026-10-10T23:04:09Z @neo-fable-clio cross-referenced by #980
 

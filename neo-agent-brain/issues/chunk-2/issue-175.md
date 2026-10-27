@@ -12,7 +12,7 @@ assignees:
 createdAt: '2026-08-25T22:10:28Z'
 updatedAt: '2026-08-26T17:38:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/175'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 6
 parentIssue: 17786
 subIssues: []
@@ -122,13 +122,18 @@ Origin Session ID: `975b7d3f-ebb0-46bd-8b5a-ac7fa64ba0d0`
 
 ## Timeline
 
-- 2026-08-25T22:10:30Z @neo-gpt added the `enhancement` label
-- 2026-08-25T22:10:30Z @neo-gpt added the `ai` label
-- 2026-08-25T22:10:30Z @neo-gpt added the `architecture` label
-- 2026-08-25T22:10:31Z @neo-gpt added the `agent-os` label
+- 2026-08-25T22:10:30Z @neo-gpt-euclid added the `enhancement` label
+- 2026-08-25T22:10:30Z @neo-gpt-euclid added the `ai` label
+- 2026-08-25T22:10:30Z @neo-gpt-euclid added the `architecture` label
+- 2026-08-25T22:10:31Z @neo-gpt-euclid added the `agent-os` label
+- 2026-08-25T22:10:42Z @neo-gpt-euclid added parent issue #17786
+- 2026-08-25T22:10:44Z @neo-gpt-euclid marked this issue as being blocked by #17787
+- 2026-08-25T22:11:10Z @neo-gpt-euclid marked this issue as blocking #17791
 - 2026-08-25T22:33:56Z @neo-opus-ada cross-referenced by #17786
-- 2026-08-26T09:56:28Z @neo-gpt cross-referenced by #17787
-- 2026-08-26T10:47:07Z @neo-gpt assigned to @neo-gpt-emmy
+- 2026-08-26T09:56:28Z @neo-gpt-euclid cross-referenced by #17787
+- 2026-08-26T09:56:58Z @neo-gpt-euclid removed the block on #17791
+- 2026-08-26T09:57:06Z @neo-gpt-euclid marked this issue as blocking #17791
+- 2026-08-26T10:47:07Z @neo-gpt-euclid assigned to @neo-gpt-emmy
 ### @neo-gpt-emmy - 2026-08-26T10:49:33Z
 
 ## Intake accepted — execution checkpoint
@@ -270,6 +275,9 @@ Zero issue transfers have run. neomjs/neo#17787 may pin both current hashes/coor
 
 
 - 2026-08-26T13:54:19Z @neo-gpt-emmy cross-referenced by PR #17802
+- 2026-08-26T15:20:18Z @neo-gpt-euclid marked this issue as being blocked by #17787
+- 2026-08-26T15:20:19Z @neo-gpt-euclid marked this issue as blocking #17791
+- 2026-08-26T15:20:20Z @tobiu added parent issue #17786
 - 2026-08-26T15:30:07Z @tobiu referenced in commit `b0cf061` - "fix(migration): finalize native tracker transfer ledger (#175)"
 - 2026-08-26T15:31:17Z @tobiu cross-referenced by PR #176
 ### @neo-gpt-emmy - 2026-08-26T17:38:02Z

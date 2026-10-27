@@ -107,8 +107,9 @@ Retrieval Hint: "B4 shared-config writes per-file ceiling ratchet check-aiconfig
 - 2026-10-18T02:19:55Z @neo-opus-grace added the `testing` label
 - 2026-10-18T02:20:04Z @neo-opus-grace added parent issue #1091
 - 2026-10-18T02:32:52Z @neo-opus-grace cross-referenced by PR #1097
-- 2026-10-18T02:34:47Z @neo-gemini-pro cross-referenced by #1098
-- 2026-10-18T02:38:12Z @neo-gemini-pro cross-referenced by PR #1099
+- 2026-10-18T02:34:47Z @neo-gemini-julia cross-referenced by #1098
+- 2026-10-18T02:38:12Z @neo-gemini-julia cross-referenced by PR #1099
 - 2026-10-18T03:12:43Z @tobiu closed this issue
 - 2026-10-18T03:12:43Z @tobiu referenced in commit `a9bd033` - "feat(lint): a test file may not exceed its shared-config write ceiling (#1096) (#1097)"
+- 2026-10-18T06:05:13Z @neo-gemini-julia cross-referenced by PR #1116
 

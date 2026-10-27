@@ -66,7 +66,7 @@ Origin: D#16720 · Retrieval Hint: "wake delivery ingress pull-bridge no host li
 
 - 2026-08-08T19:56:58Z @neo-fable-clio added the `enhancement` label
 - 2026-08-08T19:56:58Z @neo-fable-clio added the `ai` label
-- 2026-08-09T01:01:49Z @neo-gpt cross-referenced by PR #16762
+- 2026-08-09T01:01:49Z @neo-gpt-euclid cross-referenced by PR #16762
 - 2026-08-09T05:22:52Z @neo-fable-clio cross-referenced by #17
 - 2026-08-09T12:20:17Z @neo-kimi-iris assigned to @neo-kimi-iris
 ### @neo-kimi-iris - 2026-08-09T12:30:22Z
@@ -235,20 +235,24 @@ The operator's challenge on PR neomjs/neo#16796 ("we already use webhooks to MC 
 — Clio (@neo-fable-clio; Fable 5, Claude Code) 📜 · Session `7b51208b-bfd4-4372-94c6-49f6242e709d`
 
 - 2026-08-09T14:57:35Z @neo-kimi-iris cross-referenced by #16800
+- 2026-08-09T14:58:10Z @neo-kimi-iris added sub-issue #16800
 - 2026-08-09T15:46:30Z @neo-kimi-phoebe cross-referenced by #54
 - 2026-08-09T15:50:33Z @tobiu referenced in commit `bdea6d0` - "feat(ai): wake poll-digest action derives the caller digest at read time (#16741) (#16796)"
 - 2026-08-10T20:37:53Z @tobiu unassigned from @neo-kimi-iris
-- 2026-08-11T00:31:59Z @neo-gpt cross-referenced by PR #16936
+- 2026-08-11T00:31:59Z @neo-gpt-euclid cross-referenced by PR #16936
 - 2026-08-14T08:05:50Z @neo-fable-clio assigned to @neo-fable-clio
 - 2026-08-14T08:14:55Z @neo-fable-clio cross-referenced by #17100
 - 2026-08-14T08:15:10Z @neo-fable-clio cross-referenced by #17101
 - 2026-08-14T08:15:20Z @neo-fable-clio cross-referenced by #17102
+- 2026-08-14T08:15:35Z @neo-fable-clio added sub-issue #17100
+- 2026-08-14T08:15:37Z @neo-fable-clio added sub-issue #17101
+- 2026-08-14T08:15:38Z @neo-fable-clio added sub-issue #17102
 - 2026-08-14T08:37:19Z @neo-fable-clio cross-referenced by PR #17103
 - 2026-08-14T13:22:52Z @neo-fable-clio cross-referenced by PR #17116
 - 2026-08-14T13:27:37Z @neo-fable-clio cross-referenced by PR #17119
 - 2026-08-14T17:11:14Z @neo-fable-clio cross-referenced by #17130
 - 2026-08-15T08:32:32Z @neo-fable-clio cross-referenced by #17153
-- 2026-08-15T09:05:28Z @neo-gpt cross-referenced by PR #17154
+- 2026-08-15T09:05:28Z @neo-gpt-euclid cross-referenced by PR #17154
 - 2026-08-15T16:39:28Z @neo-fable-clio cross-referenced by PR #17194
 - 2026-08-15T23:53:26Z @neo-opus-vega cross-referenced by #30
 - 2026-08-16T00:52:47Z @neo-opus-vega cross-referenced by #17231
@@ -258,8 +262,42 @@ The operator's challenge on PR neomjs/neo#16796 ("we already use webhooks to MC 
 - 2026-08-24T18:04:37Z @neo-preview cross-referenced by #17723
 - 2026-08-24T18:44:11Z @neo-gpt-emmy cross-referenced by PR #17721
 - 2026-08-25T15:41:22Z @dawesi referenced in commit `95a8c00` - "feat(ai): wake poll-digest action derives the caller digest at read time (#16741) (#16796)"
+- 2026-08-26T15:06:00Z @tobiu added sub-issue #16800
+- 2026-08-26T15:06:00Z @tobiu added sub-issue #17100
+- 2026-08-26T15:06:00Z @tobiu added sub-issue #17102
+- 2026-08-26T15:06:00Z @tobiu added sub-issue #17101
+- 2026-08-26T15:09:28Z @tobiu added parent issue #83
+- 2026-08-27T11:09:36Z @neo-fable-clio marked this issue as blocking #17
 - 2026-08-29T21:56:42Z @tobiu cross-referenced by #240
 - 2026-09-04T20:27:13Z @neo-fable-clio cross-referenced by #314
 - 2026-09-05T00:48:45Z @neo-fable-clio cross-referenced by #323
 - 2026-09-05T00:54:44Z @neo-fable-clio cross-referenced by #324
+- 2026-09-26T22:05:35Z @neo-opus-ada cross-referenced by #562
+- 2026-10-01T09:09:05Z @neo-fable-clio cross-referenced by #659
+- 2026-10-01T09:35:01Z @neo-fable-clio cross-referenced by #663
+- 2026-10-01T13:03:53Z @neo-fable-clio cross-referenced by #678
+- 2026-10-01T13:04:31Z @neo-fable-clio cross-referenced by #679
+- 2026-10-01T13:31:25Z @neo-fable-clio cross-referenced by #685
+- 2026-10-01T13:32:10Z @neo-fable-clio cross-referenced by #686
+- 2026-10-01T14:56:35Z @neo-fable-clio cross-referenced by #694
+- 2026-10-01T15:15:27Z @neo-fable-clio cross-referenced by #696
+- 2026-10-01T15:16:05Z @neo-fable-clio cross-referenced by #697
+- 2026-10-02T09:26:35Z @neo-fable-clio cross-referenced by #744
+- 2026-10-02T10:05:27Z @neo-fable-clio cross-referenced by #746
+- 2026-10-02T16:49:20Z @neo-fable-clio cross-referenced by #767
+- 2026-10-02T17:17:42Z @neo-fable-clio cross-referenced by #773
+- 2026-10-02T17:32:51Z @neo-fable-clio cross-referenced by #776
+- 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
+- 2026-10-03T06:41:31Z @neo-fable-clio cross-referenced by #784
+- 2026-10-03T07:45:02Z @neo-fable-clio cross-referenced by #798
+- 2026-10-10T13:08:48Z @neo-fable-clio cross-referenced by #964
+- 2026-10-10T16:41:16Z @neo-fable-clio cross-referenced by #973
+- 2026-10-10T22:29:30Z @neo-fable-clio cross-referenced by #977
+- 2026-10-10T22:30:06Z @neo-fable-clio cross-referenced by #978
+- 2026-10-10T22:30:45Z @neo-fable-clio cross-referenced by #979
+- 2026-10-10T23:04:09Z @neo-fable-clio cross-referenced by #980
+- 2026-10-16T23:47:21Z @neo-fable-clio cross-referenced by #1074
+- 2026-10-17T16:03:00Z @neo-fable-clio cross-referenced by #1077
+- 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
+- 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
 

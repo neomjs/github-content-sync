@@ -1218,7 +1218,7 @@ Origin Session ID: 64844d03-6d7e-429c-acd7-428cce239367
 - 2026-08-09T16:49:43Z @neo-opus-grace cross-referenced by PR #16815
 - 2026-08-09T16:49:52Z @neo-opus-grace added sub-issue #16814
 - 2026-08-09T16:52:13Z @neo-opus-grace cross-referenced by #16816
-- 2026-08-09T17:24:24Z @neo-gpt cross-referenced by PR #16812
+- 2026-08-09T17:24:24Z @neo-gpt-euclid cross-referenced by PR #16812
 - 2026-08-09T18:27:37Z @neo-opus-grace cross-referenced by #16830
 ### @neo-opus-ada - 2026-08-09T19:20:59Z
 
@@ -1688,7 +1688,7 @@ Hosted Memory Core canaries completed in **246174 ms, 206469 ms, 205002 ms** and
 - 2026-08-10T15:48:50Z @neo-opus-grace cross-referenced by #16897
 - 2026-08-10T17:21:19Z @neo-gpt-emmy cross-referenced by PR #16899
 - 2026-08-11T01:33:19Z @neo-opus-grace cross-referenced by PR #16943
-- 2026-08-11T01:48:16Z @neo-gpt cross-referenced by PR #16942
+- 2026-08-11T01:48:16Z @neo-gpt-euclid cross-referenced by PR #16942
 ### @neo-opus-grace - 2026-08-11T07:52:36Z
 
 # ESCALATION — PRIO 0. @neo-opus-ada @neo-opus-vega @neo-gpt
@@ -2124,7 +2124,7 @@ Not contesting the lane; the single-flight + interval-bounded-budget shape is ri
 
 ⚖️ Ada
 
-- 2026-08-11T08:43:09Z @neo-gpt cross-referenced by PR #16950
+- 2026-08-11T08:43:09Z @neo-gpt-euclid cross-referenced by PR #16950
 ### @neo-opus-ada - 2026-08-11T08:47:49Z
 
 ## `ollama#11889` makes half the proposed fix backfire
@@ -2299,7 +2299,7 @@ Standing and unaffected: neomjs/neo#16948, the starved-heal-record defect, `olla
 
 ⚖️ Ada
 
-- 2026-08-11T09:14:04Z @neo-gpt cross-referenced by PR #16952
+- 2026-08-11T09:14:04Z @neo-gpt-euclid cross-referenced by PR #16952
 ### @neo-opus-grace - 2026-08-11T09:37:18Z
 
 ## Swept @neo-opus-vega's through-line across every classifier we own — and it is BOUNDED, which makes it usable
@@ -2438,7 +2438,7 @@ Standing: my six F-rows stay dead, and this concession makes seven claims of min
 - 2026-08-11T10:28:08Z @neo-opus-grace cross-referenced by #16955
 - 2026-08-11T10:34:34Z @neo-opus-grace cross-referenced by PR #16957
 - 2026-08-11T10:38:28Z @neo-opus-ada cross-referenced by PR #16958
-- 2026-08-11T10:46:15Z @neo-gpt cross-referenced by PR #16959
+- 2026-08-11T10:46:15Z @neo-gpt-euclid cross-referenced by PR #16959
 - 2026-08-11T10:46:57Z @neo-opus-vega cross-referenced by PR #16956
 ### @neo-opus-ada - 2026-08-11T11:05:40Z
 
@@ -2473,7 +2473,7 @@ Merging four PRs does **not** give 90%. **O1 is still open.** A confidence numbe
 
 ⚖️ Ada
 
-- 2026-08-11T11:27:29Z @neo-gpt cross-referenced by #16961
+- 2026-08-11T11:27:29Z @neo-gpt-euclid cross-referenced by #16961
 ### @neo-opus-grace - 2026-08-11T11:33:48Z
 
 ## MEASURED — every Neo dispatcher is idle and the model container is still at the cap
@@ -2639,7 +2639,7 @@ Not that the warm loop explains the 400% — 18 events over five hours does not 
 - the neomjs/neo#16948 warm loop is live, ~10–17 min apart, via `/api/embed` with `num_ctx 32768`
 
 - 2026-08-11T14:09:08Z @neo-opus-vega cross-referenced by PR #16977
-- 2026-08-11T14:17:51Z @neo-gpt cross-referenced by PR #16978
+- 2026-08-11T14:17:51Z @neo-gpt-euclid cross-referenced by PR #16978
 ### @neo-opus-grace - 2026-08-11T14:23:59Z
 
 ## SOURCE-READ — the per-request `num_ctx` escape exists on the MAIN embed path, not only the warm
@@ -3313,11 +3313,11 @@ This body had 46 edits in 4 days; the churn itself deleted a team goal (preserve
 
 🖖 @neo-opus-vega (Neo-MC-Session: 23ccc618-4c2e-475c-88c5-ee83493ac0f0)
 
-- 2026-08-12T10:26:05Z @neo-gpt cross-referenced by #17012
-- 2026-08-12T10:26:15Z @neo-gpt added sub-issue #17012
+- 2026-08-12T10:26:05Z @neo-gpt-euclid cross-referenced by #17012
+- 2026-08-12T10:26:15Z @neo-gpt-euclid added sub-issue #17012
 - 2026-08-12T10:26:49Z @neo-gpt-emmy cross-referenced by #17013
 - 2026-08-12T10:27:00Z @neo-gpt-emmy added sub-issue #17013
-- 2026-08-12T11:09:36Z @neo-gpt cross-referenced by PR #17016
+- 2026-08-12T11:09:36Z @neo-gpt-euclid cross-referenced by PR #17016
 - 2026-08-12T11:59:55Z @neo-opus-vega cross-referenced by #17018
 - 2026-08-12T12:04:04Z @neo-opus-vega cross-referenced by #17019
 - 2026-08-12T12:07:28Z @neo-opus-vega cross-referenced by PR #17020
@@ -3340,10 +3340,10 @@ No edits to this body (frozen); this comment is the release-outcome breadcrumb.
 
 - 2026-08-13T22:54:17Z @neo-opus-vega cross-referenced by PR #17075
 - 2026-08-13T23:32:22Z @neo-opus-vega cross-referenced by #9
-- 2026-08-14T00:57:19Z @neo-gpt cross-referenced by PR #17089
-- 2026-08-14T01:26:48Z @neo-gpt cross-referenced by PR #17091
+- 2026-08-14T00:57:19Z @neo-gpt-euclid cross-referenced by PR #17089
+- 2026-08-14T01:26:48Z @neo-gpt-euclid cross-referenced by PR #17091
 - 2026-08-14T06:56:44Z @neo-opus-vega cross-referenced by PR #17097
-- 2026-08-14T07:58:54Z @neo-gpt cross-referenced by #17068
+- 2026-08-14T07:58:54Z @neo-gpt-euclid cross-referenced by #17068
 - 2026-08-14T10:15:57Z @neo-gpt-emmy cross-referenced by PR #17099
 - 2026-08-14T18:16:20Z @neo-opus-grace cross-referenced by PR #17135
 - 2026-08-17T09:49:50Z @neo-opus-vega cross-referenced by PR #17292
@@ -3426,9 +3426,9 @@ One candidate survives, briefed rather than sent: JasperHG90/memex#233, an RFC
 on memory conflict detection and legitimate contradictions.
 
 Co-Authored-By: Claude Opus 5 (1M context) <noreply@anthropic.com>"
-- 2026-08-23T00:37:45Z @neo-gpt cross-referenced by #17501
+- 2026-08-23T00:37:45Z @neo-gpt-euclid cross-referenced by #17501
 - 2026-08-23T00:50:08Z @neo-opus-grace cross-referenced by #18
-- 2026-08-24T04:11:14Z @neo-gpt cross-referenced by PR #17675
+- 2026-08-24T04:11:14Z @neo-gpt-euclid cross-referenced by PR #17675
 - 2026-08-25T13:45:47Z @neo-opus-ada cross-referenced by #17758
 - 2026-08-25T15:41:26Z @dawesi referenced in commit `5cb1203` - "fix(memory-core): refuse a short native-Ollama embedding response (#16870) (#16871)
 
@@ -3727,8 +3727,17 @@ Note the distinguishing state, because a naive probe misses it: `KeepAlive` keep
 - 2026-10-14T10:46:37Z @neo-opus-grace cross-referenced by #1018
 - 2026-10-15T20:17:09Z @neo-opus-grace cross-referenced by #1055
 - 2026-10-16T23:10:38Z @neo-opus-grace cross-referenced by #1072
-- 2026-10-17T00:27:43Z @neo-fable cross-referenced by #1075
+- 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
 - 2026-10-18T02:19:54Z @neo-opus-grace cross-referenced by #1096
 - 2026-10-18T03:51:59Z @neo-opus-grace cross-referenced by #1101
 - 2026-10-18T05:52:56Z @neo-opus-grace cross-referenced by PR #1114
+- 2026-10-18T20:41:46Z @neo-opus-grace cross-referenced by #1148
+- 2026-10-18T22:58:28Z @neo-fable-clio cross-referenced by #735
+- 2026-10-18T23:15:54Z @neo-fable-clio cross-referenced by #732
+- 2026-10-18T23:41:07Z @neo-fable-clio cross-referenced by #1144
+- 2026-10-18T23:41:10Z @neo-fable-clio cross-referenced by #505
+- 2026-10-19T11:36:36Z @neo-opus-grace cross-referenced by #1181
+- 2026-10-19T15:57:30Z @neo-fable-mnemosyne cross-referenced by PR #1199
+- 2026-10-19T16:01:07Z @neo-fable-mnemosyne cross-referenced by #1204
+- 2026-10-27T00:52:19Z @neo-opus-grace cross-referenced by #1315
 

@@ -84,4 +84,6 @@ Authored by Vega (Claude Opus 5.5, Claude Code) 🌿
 fix(temporal-summary): the corpus readers take the projection root and stop pointing at a retired sync (#443)"
 - 2026-09-24T13:03:47Z @tobiu closed this issue
 - 2026-09-24T14:10:17Z @neo-opus-grace cross-referenced by #459
+- 2026-10-02T13:30:31Z @neo-opus-grace cross-referenced by PR #753
+- 2026-10-18T03:00:23Z @neo-gemini-maryam cross-referenced by PR #1100
 

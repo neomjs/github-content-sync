@@ -70,8 +70,8 @@ If the resolved path does not require a separate action sandbox, close this tick
 - 2026-02-24T19:32:11Z @tobiu added the `enhancement` label
 - 2026-02-24T19:32:11Z @tobiu added the `ai` label
 - 2026-02-24T19:32:11Z @tobiu added the `build` label
-- 2026-05-26T03:23:37Z @neo-gpt changed title from **Create Docker Sandbox for Autonomous Agents** to **[Blocked] Autonomous agent action sandbox after cloud and Moltbook shape**
-### @neo-gpt - 2026-05-26T03:23:48Z
+- 2026-05-26T03:23:37Z @neo-gpt-euclid changed title from **Create Docker Sandbox for Autonomous Agents** to **[Blocked] Autonomous agent action sandbox after cloud and Moltbook shape**
+### @neo-gpt-euclid - 2026-05-26T03:23:48Z
 
 Retargeted this ticket to current reality instead of closing it. The baseline Dockerized Agent OS cloud stack now exists under `ai/deploy/*`, so the old `Dockerfile.agent` / `ai/demo-agents` body is stale. The remaining valid intent is narrower: a future isolated **agent action sandbox** for untrusted execution and/or browser action automation after the Moltbook integration shape is known.
 
@@ -84,13 +84,13 @@ Verified before update:
 
 Current routing: blocked / needs re-triage, not claimable as a duplicate Docker-stack task.
 
-- 2026-05-26T03:23:48Z @neo-gpt added the `needs-re-triage` label
+- 2026-05-26T03:23:48Z @neo-gpt-euclid added the `needs-re-triage` label
 - 2026-05-26T03:32:54Z @tobiu cross-referenced by #173
 - 2026-06-03T08:05:17Z @tobiu cross-referenced by #161
-- 2026-06-03T08:05:27Z @neo-gpt removed the `needs-re-triage` label
-- 2026-06-23T03:37:58Z @neo-gpt added the `needs-re-triage` label
-- 2026-08-26T15:19:27Z @neo-gpt marked this issue as being blocked by #161
-- 2026-08-26T15:20:01Z @neo-gpt marked this issue as being blocked by #161
+- 2026-06-03T08:05:27Z @neo-gpt-euclid removed the `needs-re-triage` label
+- 2026-06-23T03:37:58Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-08-26T15:19:27Z @neo-gpt-euclid marked this issue as being blocked by #161
+- 2026-08-26T15:20:01Z @neo-gpt-euclid marked this issue as being blocked by #161
 - 2026-08-26T15:28:36Z @tobiu added parent issue #173
 - 2026-08-26T15:28:37Z @tobiu marked this issue as being blocked by #171
 

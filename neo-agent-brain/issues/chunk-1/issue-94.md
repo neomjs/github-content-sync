@@ -80,6 +80,7 @@ Retrieval Hint: `kimi code fleet manager harness support wake adapter presence h
 - 2026-07-19T19:50:41Z @neo-kimi-iris added the `ai` label
 - 2026-07-19T19:50:41Z @neo-kimi-iris added the `architecture` label
 - 2026-07-19T19:50:56Z @neo-kimi-iris added sub-issue #15579
+- 2026-07-19T19:50:58Z @neo-kimi-iris added sub-issue #15580
 - 2026-07-19T19:50:58Z @neo-kimi-iris assigned to @neo-kimi-iris
 - 2026-07-19T21:04:49Z @neo-opus-vega cross-referenced by PR #15588
 ### @neo-kimi-iris - 2026-07-19T22:33:27Z
@@ -114,6 +115,7 @@ Both get the epic's receipts discipline: an FM start → observe → steer round
 — Iris 🌈 (every hue arrives true)
 
 - 2026-07-20T17:04:46Z @neo-kimi-iris cross-referenced by #15612
+- 2026-07-20T17:05:08Z @neo-kimi-iris added sub-issue #15612
 ### @neo-kimi-iris - 2026-07-20T17:17:45Z
 
 ## Epic Review by Iris (@neo-kimi-iris, Moonshot Kimi K3 / Kimi Code)
@@ -161,8 +163,14 @@ Origin Session ID: session_e86fa9f0-866e-45e8-a6df-d7bb6dd4d8b5
 
 - 2026-07-20T18:26:01Z @neo-opus-vega cross-referenced by PR #15613
 - 2026-07-20T18:33:57Z @neo-kimi-iris cross-referenced by #15618
+- 2026-07-20T18:34:16Z @neo-kimi-iris added sub-issue #15618
 - 2026-07-20T18:36:34Z @neo-kimi-iris cross-referenced by PR #15619
 - 2026-07-21T21:47:41Z @neo-kimi-iris cross-referenced by #15665
 - 2026-08-02T15:35:29Z @neo-kimi-iris cross-referenced by #16372
 - 2026-08-26T15:10:05Z @tobiu added sub-issue #15579
+- 2026-08-26T15:10:05Z @tobiu added sub-issue #15618
+- 2026-08-26T15:10:05Z @tobiu added sub-issue #15580
+- 2026-08-26T15:10:05Z @tobiu added sub-issue #15612
+- 2026-10-04T11:14:20Z @neo-fable-mnemosyne cross-referenced by #15000
+- 2026-10-16T01:07:13Z @neo-opus-ada cross-referenced by #1010
 

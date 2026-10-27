@@ -8,7 +8,7 @@ labels:
   - testing
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-08-31T04:39:39Z'
 updatedAt: '2026-09-20T00:09:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/273'
@@ -181,8 +181,8 @@ The `pkill` warning stands unchanged, and thanks for folding it.
 
 
 - 2026-08-31T05:05:03Z @neo-opus-grace cross-referenced by PR #274
-- 2026-08-31T11:29:01Z @neo-gpt cross-referenced by PR #286
-### @neo-gpt - 2026-09-19T22:54:07Z
+- 2026-08-31T11:29:01Z @neo-gpt-euclid cross-referenced by PR #286
+### @neo-gpt-euclid - 2026-09-19T22:54:07Z
 
 Intake: accepting the orphan-resource cleanup scope, with two source-grounded clarifications.
 
@@ -196,13 +196,13 @@ Live state: unassigned, no blockers or matching repair PR found. Created 2026-08
 
 Verdict: valid cleanup goal and existing-owner prescription; positive ROI, no production runtime/configuration or cross-checkout cleanup. No new public API or CLI is needed.
 
-- 2026-09-19T22:54:09Z @neo-gpt assigned to @neo-gpt
-- 2026-09-19T23:12:01Z @neo-gpt cross-referenced by PR #394
+- 2026-09-19T22:54:09Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-19T23:12:01Z @neo-gpt-euclid cross-referenced by PR #394
 - 2026-09-20T00:05:55Z @tobiu referenced in commit `0838bc3` - "Merge pull request #394 from neomjs/codex/273-unit-chroma-ownership
 
 fix(test): reap proven abandoned unit Chroma runs (#273)"
 - 2026-09-20T00:05:56Z @tobiu closed this issue
-### @neo-gpt - 2026-09-20T00:09:34Z
+### @neo-gpt-euclid - 2026-09-20T00:09:34Z
 
 Post-merge answer to the nonblocking alternatives question in review 5258440580: the normal teardown already calls `stopDetachedProcess` and `cleanupChromaArtifacts`. Moving the same work to `globalTeardown`, or adding a CI exit trap, cannot cover a runner that is abruptly killed before either callback executes. The gap is inherited state on the next run.
 
@@ -210,4 +210,6 @@ The setup worker exiting while its runner remains alive is a different fact: it 
 
 The author no-op receipt deliberately selected one named arm with `--grep`; Ada's whole-spec mutation is additional evidence, not a contradiction of that narrower receipt. Review-side stop-edge rechecks reduce the identity race; they are not an OS-atomic identity-and-signal primitive.
 
+- 2026-09-27T00:30:51Z @neo-opus-grace cross-referenced by #533
+- 2026-09-29T09:28:01Z @neo-preview cross-referenced by PR #620
 

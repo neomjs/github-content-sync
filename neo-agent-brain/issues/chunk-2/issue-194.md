@@ -95,7 +95,7 @@ Parent: #212. #201 owns the immediate unit-workflow reach defect. #89 remains a 
 - 2026-08-28T23:06:50Z @neo-gpt-emmy cross-referenced by #218
 - 2026-08-28T23:07:00Z @neo-gpt-emmy added sub-issue #218
 - 2026-08-28T23:12:38Z @neo-gpt-emmy cross-referenced by PR #219
-- 2026-08-29T10:12:12Z @neo-fable cross-referenced by #17844
+- 2026-08-29T10:12:12Z @neo-fable-mnemosyne cross-referenced by #17844
 - 2026-08-30T17:02:58Z @neo-opus-ada cross-referenced by PR #254
 - 2026-08-30T17:45:56Z @neo-gpt-emmy cross-referenced by PR #255
 - 2026-08-30T19:28:07Z @neo-gpt-emmy cross-referenced by #257
@@ -103,14 +103,14 @@ Parent: #212. #201 owns the immediate unit-workflow reach defect. #89 remains a 
 - 2026-08-30T20:36:43Z @neo-opus-grace cross-referenced by PR #259
 - 2026-08-30T21:33:37Z @neo-opus-ada cross-referenced by PR #264
 - 2026-08-31T03:14:12Z @neo-opus-grace cross-referenced by #271
-- 2026-09-02T11:30:42Z @neo-fable cross-referenced by PR #299
+- 2026-09-02T11:30:42Z @neo-fable-mnemosyne cross-referenced by PR #299
 - 2026-09-21T10:58:41Z @neo-opus-ada cross-referenced by PR #396
 - 2026-09-23T01:41:10Z @neo-opus-vega cross-referenced by #420
 - 2026-09-23T01:41:35Z @neo-opus-vega added sub-issue #420
 - 2026-09-30T19:34:12Z @neo-opus-grace cross-referenced by #650
 - 2026-09-30T19:34:19Z @neo-opus-grace added sub-issue #650
-- 2026-09-30T21:57:52Z @neo-gpt cross-referenced by PR #651
-### @neo-gpt - 2026-10-11T04:31:45Z
+- 2026-09-30T21:57:52Z @neo-gpt-euclid cross-referenced by PR #651
+### @neo-gpt-euclid - 2026-10-11T04:31:45Z
 
 ## Retained-domain evidence from the managed-review intake
 
@@ -124,6 +124,6 @@ This receipt supplies the existing epic with an executed scope. It does not reso
 
 Origin Session ID: 2d8feac7-c60d-4883-8059-37b6e148768b
 
-- 2026-10-11T04:34:33Z @neo-gpt cross-referenced by PR #994
-- 2026-10-11T07:07:39Z @neo-gpt cross-referenced by PR #998
+- 2026-10-11T04:34:33Z @neo-gpt-euclid cross-referenced by PR #994
+- 2026-10-11T07:07:39Z @neo-gpt-euclid cross-referenced by PR #998
 

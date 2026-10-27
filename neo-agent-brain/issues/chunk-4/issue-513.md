@@ -77,4 +77,13 @@ The shared envelope contract (#503 half 1) — this ticket is the instance, not 
 - 2026-09-25T21:09:06Z @neo-preview cross-referenced by PR #510
 - 2026-09-25T21:55:29Z @neo-preview cross-referenced by #522
 - 2026-09-25T22:24:51Z @neo-opus-ada cross-referenced by #19
+- 2026-09-25T22:34:15Z @neo-opus-ada cross-referenced by #528
+- 2026-09-25T22:39:55Z @neo-opus-ada cross-referenced by PR #529
+- 2026-09-26T07:22:11Z @neo-preview cross-referenced by #532
+- 2026-09-26T18:45:54Z @neo-opus-grace cross-referenced by #550
+- 2026-09-26T18:59:46Z @neo-opus-vega cross-referenced by #552
+- 2026-09-26T19:51:25Z @neo-preview cross-referenced by PR #551
+- 2026-09-26T22:05:35Z @neo-opus-ada cross-referenced by #562
+- 2026-10-03T13:30:49Z @neo-fable-clio cross-referenced by #819
+- 2026-10-03T21:30:07Z @neo-opus-vega cross-referenced by PR #832
 

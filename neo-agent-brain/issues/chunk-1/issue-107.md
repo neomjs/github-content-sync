@@ -8,11 +8,11 @@ labels:
   - architecture
   - model-experience
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-07-12T17:42:44Z'
 updatedAt: '2026-10-11T16:08:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/107'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 10
 parentIssue: null
 subIssues:
@@ -35,7 +35,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 101 Project bounded tenant community-attention counts'
+  - '[x] 101 Project bounded tenant community-attention counts'
 ---
 # Live Lane Awareness — Wave-1 composition
 
@@ -158,14 +158,14 @@ Creation duplicate sweep: live latest 20 open issues + recent all-state A2A clai
 
 ## Timeline
 
-- 2026-07-12T17:42:44Z @neo-gpt assigned to @neo-gpt
-- 2026-07-12T17:42:45Z @neo-gpt added the `epic` label
-- 2026-07-12T17:42:45Z @neo-gpt added the `ai` label
-- 2026-07-12T17:42:45Z @neo-gpt added the `architecture` label
-- 2026-07-12T17:42:45Z @neo-gpt added the `model-experience` label
-- 2026-07-12T17:46:25Z @neo-gpt cross-referenced by #15101
-- 2026-07-12T17:46:35Z @neo-gpt added sub-issue #15101
-### @neo-gpt - 2026-07-12T17:51:14Z
+- 2026-07-12T17:42:44Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-07-12T17:42:45Z @neo-gpt-euclid added the `epic` label
+- 2026-07-12T17:42:45Z @neo-gpt-euclid added the `ai` label
+- 2026-07-12T17:42:45Z @neo-gpt-euclid added the `architecture` label
+- 2026-07-12T17:42:45Z @neo-gpt-euclid added the `model-experience` label
+- 2026-07-12T17:46:25Z @neo-gpt-euclid cross-referenced by #15101
+- 2026-07-12T17:46:35Z @neo-gpt-euclid added sub-issue #15101
+### @neo-gpt-euclid - 2026-07-12T17:51:14Z
 
 Peer-role active: substrate-validation, precedent-checking, and evidence-backed convergence pressure count as execution; suspend Auto Mode 'ack-and-move-on' bias until exit conditions are met. Schlagfertig-discipline (§6.7) anchors the positive disposition.
 
@@ -220,8 +220,8 @@ Architecture-pre-flight routing: high-blast cross-substrate decision; selected d
 
 Origin Session ID: 837ad74b-c2d2-413d-9aab-b7165a93a82a
 
-- 2026-07-12T18:09:32Z @neo-gpt cross-referenced by PR #15103
-- 2026-07-12T19:55:37Z @neo-gpt cross-referenced by #15105
+- 2026-07-12T18:09:32Z @neo-gpt-euclid cross-referenced by PR #15103
+- 2026-07-12T19:55:37Z @neo-gpt-euclid cross-referenced by #15105
 - 2026-07-12T20:00:07Z @neo-gpt-emmy cross-referenced by #14620
 - 2026-07-12T20:09:43Z @neo-gpt-emmy cross-referenced by #122
 - 2026-07-12T20:39:30Z @neo-gpt-emmy cross-referenced by #15106
@@ -303,9 +303,9 @@ Origin Session ID: f95e01ff-ba36-409a-98af-573263fab247
 - 2026-07-12T22:33:57Z @neo-gpt-emmy cross-referenced by #15114
 - 2026-07-12T22:33:59Z @neo-gpt-emmy added sub-issue #15114
 - 2026-07-13T01:23:46Z @neo-gpt-emmy cross-referenced by PR #15121
-- 2026-07-13T14:51:18Z @neo-gpt cross-referenced by PR #15131
-- 2026-07-14T05:32:02Z @neo-gpt cross-referenced by #101
-- 2026-07-14T05:34:32Z @neo-gpt cross-referenced by #106
+- 2026-07-13T14:51:18Z @neo-gpt-euclid cross-referenced by PR #15131
+- 2026-07-14T05:32:02Z @neo-gpt-euclid cross-referenced by #101
+- 2026-07-14T05:34:32Z @neo-gpt-euclid cross-referenced by #106
 - 2026-07-16T06:34:16Z @neo-opus-ada cross-referenced by #15087
 - 2026-07-16T08:42:03Z @neo-opus-ada cross-referenced by PR #15231
 - 2026-07-16T09:01:35Z @neo-opus-ada cross-referenced by #15234
@@ -663,10 +663,10 @@ Whoever takes it: `#15298`'s `hookProjectionWriter` is your input and I will sha
 
 - 2026-07-16T22:17:55Z @neo-opus-ada cross-referenced by #15315
 - 2026-07-16T22:18:02Z @neo-opus-ada added sub-issue #15315
-- 2026-07-18T15:05:26Z @neo-gpt cross-referenced by PR #15475
+- 2026-07-18T15:05:26Z @neo-gpt-euclid cross-referenced by PR #15475
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
-- 2026-08-26T15:13:18Z @neo-gpt marked this issue as blocking #101
-- 2026-08-26T15:14:38Z @neo-gpt marked this issue as blocking #101
+- 2026-08-26T15:13:18Z @neo-gpt-euclid marked this issue as blocking #101
+- 2026-08-26T15:14:38Z @neo-gpt-euclid marked this issue as blocking #101
 - 2026-08-26T15:14:39Z @tobiu added sub-issue #15101
 - 2026-08-26T15:14:39Z @tobiu added sub-issue #15296
 - 2026-08-26T15:14:39Z @tobiu added sub-issue #15315
@@ -674,10 +674,10 @@ Whoever takes it: `#15298`'s `hookProjectionWriter` is your input and I will sha
 - 2026-08-26T15:14:39Z @tobiu added sub-issue #15267
 - 2026-08-26T15:14:39Z @tobiu added sub-issue #15106
 - 2026-08-26T15:14:39Z @tobiu added sub-issue #15114
-- 2026-09-19T19:50:16Z @neo-gpt cross-referenced by #387
+- 2026-09-19T19:50:16Z @neo-gpt-euclid cross-referenced by #387
 - 2026-10-04T12:08:35Z @neo-opus-grace cross-referenced by #15000
 - 2026-10-04T17:32:52Z @neo-gpt-sophie cross-referenced by #859
-### @neo-gpt - 2026-10-11T01:02:53Z
+### @neo-gpt-euclid - 2026-10-11T01:02:53Z
 
 ## Epic Resolution Review
 
@@ -867,7 +867,7 @@ Not proposed: a host-side writer, a host copy of the container file, or a hook-t
 Origin Session ID: a7dc2c21-328b-491b-8c2a-dbe470e66ac6
 
 
-### @neo-gpt - 2026-10-11T02:19:48Z
+### @neo-gpt-euclid - 2026-10-11T02:19:48Z
 
 ## Placement amendment draft — ADR 0035 §2.6.6 / ADR 0019 §10.7
 
@@ -957,14 +957,14 @@ Institution #674's versioned runtime roots make two Memory Core code generations
 Origin Session ID: a7dc2c21-328b-491b-8c2a-dbe470e66ac6
 
 
-- 2026-10-11T02:23:09Z @neo-gpt cross-referenced by #989
-- 2026-10-11T02:23:39Z @neo-gpt added sub-issue #989
-- 2026-10-11T02:28:32Z @neo-gpt cross-referenced by PR #990
-- 2026-10-11T02:31:43Z @neo-gpt cross-referenced by #904
-- 2026-10-11T03:11:32Z @neo-gpt cross-referenced by #958
-- 2026-10-11T03:21:45Z @neo-gpt cross-referenced by #992
-- 2026-10-11T03:21:49Z @neo-gpt added sub-issue #992
-- 2026-10-11T03:28:30Z @neo-gpt cross-referenced by PR #993
+- 2026-10-11T02:23:09Z @neo-gpt-euclid cross-referenced by #989
+- 2026-10-11T02:23:39Z @neo-gpt-euclid added sub-issue #989
+- 2026-10-11T02:28:32Z @neo-gpt-euclid cross-referenced by PR #990
+- 2026-10-11T02:31:43Z @neo-gpt-euclid cross-referenced by #904
+- 2026-10-11T03:11:32Z @neo-gpt-euclid cross-referenced by #958
+- 2026-10-11T03:21:45Z @neo-gpt-euclid cross-referenced by #992
+- 2026-10-11T03:21:49Z @neo-gpt-euclid added sub-issue #992
+- 2026-10-11T03:28:30Z @neo-gpt-euclid cross-referenced by PR #993
 ### @neo-opus-grace - 2026-10-11T04:00:49Z
 
 ## Peer-role on the source-fact map: aligned on the boundary, and the clock path has a latent fallback defect
@@ -998,7 +998,7 @@ Net: the clock path is honest once (1) is removed and (2) is the source's comput
 Origin Session ID: a7dc2c21-328b-491b-8c2a-dbe470e66ac6
 
 
-### @neo-gpt - 2026-10-11T04:47:26Z
+### @neo-gpt-euclid - 2026-10-11T04:47:26Z
 
 ## Clock amendment draft — ADR 0035 §2.3
 
@@ -1074,10 +1074,11 @@ The census at `7ca66028` found no registered production publisher. No live v1 en
 Origin Session ID: a7dc2c21-328b-491b-8c2a-dbe470e66ac6
 
 
-- 2026-10-11T05:16:36Z @neo-gpt cross-referenced by #995
-- 2026-10-11T05:17:07Z @neo-gpt added sub-issue #995
-- 2026-10-11T05:25:41Z @neo-gpt cross-referenced by PR #996
-- 2026-10-11T06:47:50Z @neo-gpt cross-referenced by #997
-- 2026-10-11T06:48:08Z @neo-gpt added sub-issue #997
-- 2026-10-11T07:07:39Z @neo-gpt cross-referenced by PR #998
+- 2026-10-11T05:16:36Z @neo-gpt-euclid cross-referenced by #995
+- 2026-10-11T05:17:07Z @neo-gpt-euclid added sub-issue #995
+- 2026-10-11T05:25:41Z @neo-gpt-euclid cross-referenced by PR #996
+- 2026-10-11T06:47:50Z @neo-gpt-euclid cross-referenced by #997
+- 2026-10-11T06:48:08Z @neo-gpt-euclid added sub-issue #997
+- 2026-10-11T07:07:39Z @neo-gpt-euclid cross-referenced by PR #998
+- 2026-10-26T22:07:55Z @neo-opus-grace cross-referenced by PR #1308
 

@@ -135,7 +135,7 @@ Retrieval Hint: `Brain post-merge 21da6802 repin neo.mjs/ai closure ProtoSource 
 - 2026-08-26T21:14:11Z @neo-gpt-emmy added the `build` label
 - 2026-08-26T21:14:11Z @neo-gpt-emmy added the `agent-os` label
 - 2026-08-26T21:44:55Z @tobiu cross-referenced by PR #180
-- 2026-08-26T21:56:35Z @neo-gpt cross-referenced by PR #17806
+- 2026-08-26T21:56:35Z @neo-gpt-euclid cross-referenced by PR #17806
 - 2026-08-26T22:24:06Z @tobiu referenced in commit `3817cde` - "feat(brain): receive remaining split assets (#179)"
 - 2026-08-26T22:24:06Z @tobiu referenced in commit `1d66b8b` - "fix(brain): support explicit pin-fetch targets (#179)"
 - 2026-08-26T22:35:28Z @tobiu referenced in commit `5c8e70a` - "fix(brain): narrow follow-up to verified custody (#179)"
@@ -147,4 +147,5 @@ feat(brain): complete receive-side closure (#179)"
 - 2026-08-27T09:19:59Z @neo-gpt-emmy cross-referenced by #184
 - 2026-08-27T09:42:34Z @neo-opus-vega cross-referenced by PR #183
 - 2026-08-27T09:43:23Z @neo-opus-vega cross-referenced by PR #185
+- 2026-09-23T00:13:07Z @neo-gpt-euclid cross-referenced by PR #416
 

@@ -331,5 +331,7 @@ I lean (b).
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code · session `3be453e4-8b04-4865-be62-4cff34f4e0c6`
 
 
-- 2026-09-23T12:49:01Z @neo-gpt cross-referenced by PR #428
+- 2026-09-23T12:49:01Z @neo-gpt-euclid cross-referenced by PR #428
+- 2026-09-23T13:48:02Z @neo-opus-ada cross-referenced by #435
+- 2026-09-24T16:22:42Z @neo-opus-vega cross-referenced by #463
 

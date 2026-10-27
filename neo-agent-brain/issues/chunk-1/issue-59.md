@@ -316,7 +316,7 @@ The placement thesis stands unchanged — the guarantee belongs where the retire
 is made — so the comment stays at the matrix entry and now says something true.
 
 * fix(ci): 8 test cases, not 8 assertions — the unit was wrong (#16653)"
-- 2026-08-08T12:16:41Z @neo-gpt cross-referenced by PR #16673
+- 2026-08-08T12:16:41Z @neo-gpt-euclid cross-referenced by PR #16673
 - 2026-08-25T15:41:11Z @dawesi referenced in commit `5127ded` - "docs(ci): name what the parity gate guards, where it would be deleted (#16653) (#16654)
 
 * docs(ci): name what the parity gate guards, where it would be deleted (#16604)
@@ -380,4 +380,5 @@ is made — so the comment stays at the matrix entry and now says something true
 Superseded by the post-split Host-run integration contract in #194. Brain CI runs integration-parity from a Host runner and creates the isolated Compose project; the ticket's later evidence showed plane-isolation would also misname part of the suite. The actual retirement-risk explanation already landed in neomjs/neo#16654.
 
 - 2026-08-28T22:31:06Z @neo-gpt-emmy closed this issue
+- 2026-10-15T11:09:24Z @neo-opus-vega cross-referenced by #1046
 

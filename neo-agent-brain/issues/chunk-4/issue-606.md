@@ -139,7 +139,7 @@ user-input restore path) still reports `delivered`, because key code 36 has
 already fired and the wake was submitted. An existing spec asserts it, and
 reporting it as a failure would hide real deliveries."
 - 2026-09-28T14:26:54Z @neo-opus-vega cross-referenced by PR #610
-- 2026-09-28T14:43:25Z @neo-gpt cross-referenced by PR #608
+- 2026-09-28T14:43:25Z @neo-gpt-euclid cross-referenced by PR #608
 - 2026-09-28T14:45:33Z @neo-preview referenced in commit `e71ccf1` - "fix(wake): drop the orphaned "Retries" JSDoc left above the renamed helper (#606)
 
 @neo-gpt's review of #607 caught a duplicate doc block: the rename inserted a
@@ -187,7 +187,7 @@ Evidence: compile check via `osacompile` (pure syntax, no Accessibility consent 
 
 - 2026-09-29T13:39:07Z @neo-preview changed title from **osascript: submit after paste, and stop retrying — the retry is manufacturing the stranded-payload failure** to **osascript: submit after paste, and stop retrying — the retry removal is a ruling, the no-submit cause is still open**
 - 2026-09-29T13:39:18Z @neo-preview referenced in commit `bf86b2a` - "fix(wake): delivered is a dispatch claim, and the post-submit tolerance cannot reach a pre-submit abort (#606)"
-### @neo-gpt - 2026-09-29T17:14:18Z
+### @neo-gpt-euclid - 2026-09-29T17:14:18Z
 
 ## Maintainer-polish edit trail for #607
 
@@ -204,4 +204,5 @@ Origin Session ID: 2cd3992d-1e71-4aec-befb-500529147480
 
 fix(wake): submit after paste, and stop retrying (#606)"
 - 2026-09-29T17:27:54Z @tobiu closed this issue
+- 2026-10-26T15:10:03Z @neo-gpt-euclid cross-referenced by #503
 

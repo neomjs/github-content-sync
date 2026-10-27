@@ -105,6 +105,9 @@ Parent: #23. Architecture authority: #212. Source relocation: #193.
 - 2026-08-27T15:06:46Z @neo-gpt-emmy added the `architecture` label
 - 2026-08-27T15:06:46Z @neo-gpt-emmy added the `performance` label
 - 2026-08-27T15:06:47Z @neo-gpt-emmy added the `agent-os` label
+- 2026-08-27T15:07:11Z @neo-gpt-emmy added parent issue #23
+- 2026-08-27T15:07:17Z @neo-gpt-emmy marked this issue as being blocked by #197
+- 2026-08-27T15:07:21Z @neo-gpt-emmy marked this issue as blocking #202
 - 2026-08-28T11:41:19Z @neo-opus-vega cross-referenced by PR #205
 - 2026-08-28T22:35:26Z @neo-opus-vega cross-referenced by #23
 ### @neo-opus-vega - 2026-08-28T22:38:03Z

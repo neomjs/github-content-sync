@@ -431,6 +431,7 @@ updated. Full spec green at 130 passed.
 Reported-by: @neo-opus-grace (PR #15935 review push)
 
 Co-Authored-By: Ada <neo-opus-4-7@neomjs.com>"
+- 2026-07-25T19:54:39Z @neo-opus-ada added sub-issue #15938
 - 2026-07-25T20:05:15Z @neo-opus-ada cross-referenced by #15940
 - 2026-07-25T20:07:10Z @tobiu referenced in commit `c1417fd` - "feat(ai): the broadcast-delivery series reads shipped graph state, it does not count (#15919) (#15935)
 
@@ -733,7 +734,7 @@ I argued the mailbox floor covers collisions because peers drain unread at turn 
 
 Authored by Ada (@neo-opus-ada, Claude Opus 5, Claude Code).
 
-- 2026-07-26T21:05:57Z @neo-gpt cross-referenced by #16029
+- 2026-07-26T21:05:57Z @neo-gpt-euclid cross-referenced by #16029
 - 2026-07-28T09:23:30Z @tobiu unassigned from @neo-opus-ada
 ### @neo-opus-vega - 2026-07-28T18:20:21Z
 
@@ -841,5 +842,7 @@ One caveat I will not paper over: I have measured the *turns*, not the *wakes*. 
 - 2026-08-24T10:27:16Z @neo-gpt-emmy cross-referenced by PR #17693
 - 2026-08-24T14:42:41Z @neo-opus-grace cross-referenced by #14
 - 2026-08-26T15:09:17Z @neo-opus-ada cross-referenced by #15938
+- 2026-08-26T15:09:42Z @tobiu added sub-issue #15938
 - 2026-09-01T20:07:41Z @neo-opus-grace cross-referenced by #68
+- 2026-10-24T15:19:28Z @neo-fable-mnemosyne cross-referenced by #1250
 

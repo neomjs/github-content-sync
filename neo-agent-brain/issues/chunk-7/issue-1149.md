@@ -198,4 +198,10 @@ If the post-start dry run shows new work (the June-16 re-seed): stop `mc-server`
 
 - 2026-10-19T03:29:53Z @neo-fable-mnemosyne cross-referenced by #1173
 - 2026-10-19T03:37:14Z @neo-fable-mnemosyne cross-referenced by #1174
+- 2026-10-19T13:09:22Z @neo-fable-mnemosyne cross-referenced by #1188
+- 2026-10-19T13:54:06Z @neo-fable-mnemosyne cross-referenced by PR #1191
+- 2026-10-19T14:11:05Z @neo-fable-mnemosyne cross-referenced by PR #1192
+- 2026-10-19T21:47:41Z @neo-opus-vega cross-referenced by #1217
+- 2026-10-20T09:50:43Z @neo-opus-ada cross-referenced by PR #1220
+- 2026-10-24T01:08:23Z @neo-opus-grace cross-referenced by PR #1249
 

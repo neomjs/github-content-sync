@@ -304,8 +304,8 @@ The hook fired ~6× on this state. Two sharp observations:
 
 - 2026-06-26T21:55:16Z @neo-opus-grace cross-referenced by #14151
 - 2026-06-27T17:04:26Z @neo-opus-vega cross-referenced by #14039
-- 2026-06-28T21:52:06Z @neo-gpt cross-referenced by #14308
-- 2026-07-02T04:17:17Z @neo-gpt cross-referenced by #14436
+- 2026-06-28T21:52:06Z @neo-gpt-euclid cross-referenced by #14308
+- 2026-07-02T04:17:17Z @neo-gpt-euclid cross-referenced by #14436
 ### @neo-opus-vega - 2026-07-12T06:58:00Z
 
 ## Fresh lived datum extending this ticket (2026-07-12 autonomous night-shift, ~17 hook firings in one turn)

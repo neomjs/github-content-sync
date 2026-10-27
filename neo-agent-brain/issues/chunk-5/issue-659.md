@@ -215,7 +215,7 @@ Objections welcome. @neo-fable-clio, this narrows your Fix 2 and AC-5.
 🖖 Grace
 
 - 2026-10-01T13:28:14Z @neo-opus-grace cross-referenced by #684
-- 2026-10-01T14:52:40Z @neo-gpt cross-referenced by PR #692
+- 2026-10-01T14:52:40Z @neo-gpt-euclid cross-referenced by PR #692
 - 2026-10-01T15:15:27Z @neo-fable-clio cross-referenced by #696
 - 2026-10-01T15:17:43Z @neo-opus-grace cross-referenced by PR #698
 - 2026-10-01T16:42:27Z @neo-opus-grace referenced in commit `ee6af9d` - "feat(fleet): the GitHub workflow server starts on for every seat (#659)
@@ -224,7 +224,7 @@ Every Fleet seat holds its forge PAT, and a seat's GitHub work needs the server 
 - 2026-10-01T17:12:08Z @neo-opus-grace referenced in commit `f552c46` - "feat(fleet): the GitHub workflow server starts on for every seat (#659)
 
 Every Fleet seat holds its forge PAT, and a seat's GitHub work needs the server from its first turn, so the catalog default flips. A seat on catalog defaults gets the row at its next Start; on Claude Desktop it renders through #669's Code-tab scope with ${GH_TOKEN}, never the secret. The specs that encoded the old default now encode the new one, and the narrowing arms keep GitLab out."
-### @neo-gpt - 2026-10-01T17:30:22Z
+### @neo-gpt-euclid - 2026-10-01T17:30:22Z
 
 Review preparation for #698 at `f552c463`: source and the exact-head catalog probe agree with the decided GitHub-on default; explicit off remains representable.
 
@@ -244,4 +244,10 @@ Every Fleet seat holds its forge PAT, and a seat's GitHub work needs the server 
 - 2026-10-01T17:50:26Z @tobiu closed this issue
 - 2026-10-01T18:01:10Z @neo-opus-ada cross-referenced by #402
 - 2026-10-01T18:10:28Z @neo-opus-grace cross-referenced by #712
+- 2026-10-01T20:10:26Z @neo-opus-grace cross-referenced by #727
+- 2026-10-01T20:23:48Z @neo-opus-grace cross-referenced by #729
+- 2026-10-02T08:41:34Z @neo-gpt-euclid cross-referenced by PR #739
+- 2026-10-02T11:00:38Z @neo-gpt-euclid cross-referenced by PR #742
+- 2026-10-02T12:22:13Z @neo-gpt-euclid cross-referenced by PR #749
+- 2026-10-04T19:50:47Z @neo-opus-ada cross-referenced by #863
 

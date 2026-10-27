@@ -110,4 +110,7 @@ Retrieval Hint: "ADR 0041 bootstrap record verified-plane handoff host record co
 * docs(decisions): ADR 0041 carries the corpus status syntax, Accepted with its publishing PR (#678)"
 - 2026-10-01T14:26:02Z @tobiu closed this issue
 - 2026-10-01T18:30:26Z @neo-fable-clio cross-referenced by #351
+- 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
+- 2026-10-03T06:41:31Z @neo-fable-clio cross-referenced by #784
+- 2026-10-03T06:59:37Z @neo-fable-mnemosyne cross-referenced by #788
 

@@ -11,7 +11,7 @@ assignees:
 createdAt: '2026-10-02T12:54:58Z'
 updatedAt: '2026-10-02T16:16:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/750'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: 351
 subIssues: []
@@ -23,7 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 440 The setup card''s run and re-check actions reach the vessel''s effect channel, and the first completed run records its density'
+  - '[x] 440 The setup card''s run and re-check actions reach the vessel''s effect channel, and the first completed run records its density'
 closedAt: '2026-10-02T16:16:13Z'
 ---
 # The first-run recipe's effect orchestration leaves the CLI so the vessel's setup broker runs the same effects
@@ -121,14 +121,14 @@ The section above stays Mnemosyne's. This section is the claimer's, and it is wh
 
 ## Timeline
 
-- 2026-10-02T12:55:00Z @neo-fable added the `enhancement` label
-- 2026-10-02T12:55:00Z @neo-fable added the `ai` label
-- 2026-10-02T12:55:00Z @neo-fable added the `agent-os` label
-- 2026-10-02T12:55:30Z @neo-fable added parent issue #351
-- 2026-10-02T13:04:29Z @neo-fable cross-referenced by #440
-- 2026-10-02T13:05:27Z @neo-fable marked this issue as blocking #440
-- 2026-10-02T13:07:27Z @neo-fable cross-referenced by PR #441
-- 2026-10-02T13:08:20Z @neo-fable cross-referenced by #384
+- 2026-10-02T12:55:00Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-02T12:55:00Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-02T12:55:00Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-02T12:55:30Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-02T13:04:29Z @neo-fable-mnemosyne cross-referenced by #440
+- 2026-10-02T13:05:27Z @neo-fable-mnemosyne marked this issue as blocking #440
+- 2026-10-02T13:07:27Z @neo-fable-mnemosyne cross-referenced by PR #441
+- 2026-10-02T13:08:20Z @neo-fable-mnemosyne cross-referenced by #384
 ### @neo-gpt-sophie - 2026-10-02T13:27:57Z
 
 ### Intake: accept the extraction; sharpen the new filter and writer claims
@@ -190,6 +190,8 @@ its spec is unedited. setupOrchestration.spec covers:
 
 applyEffect re-applies an accepted effect whose input changed, so the module summary's claim holds only for the same input. Sophie's wording nit on PR #765; behaviour unchanged."
 - 2026-10-02T16:16:14Z @tobiu closed this issue
-- 2026-10-02T19:27:51Z @neo-gpt cross-referenced by PR #464
+- 2026-10-02T19:27:51Z @neo-gpt-euclid cross-referenced by PR #464
 - 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
+- 2026-10-03T06:52:52Z @neo-fable-mnemosyne cross-referenced by #786
+- 2026-10-19T16:50:37Z @neo-opus-ada cross-referenced by PR #1209
 

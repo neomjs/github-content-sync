@@ -275,4 +275,12 @@ PARAMS emits no wakePlantPath, so no hook byte moved."
 
 feat(fleet): the generated wake hook installs the wake-envelope plant (#532)"
 - 2026-09-27T10:38:22Z @tobiu closed this issue
+- 2026-09-28T09:16:26Z @neo-preview cross-referenced by #571
+- 2026-09-28T09:34:31Z @neo-preview cross-referenced by #598
+- 2026-09-28T15:38:59Z @neo-preview cross-referenced by #612
+- 2026-09-28T15:39:08Z @neo-preview cross-referenced by #613
+- 2026-10-01T20:51:55Z @neo-opus-vega cross-referenced by PR #735
+- 2026-10-01T20:52:12Z @neo-opus-vega cross-referenced by #503
+- 2026-10-19T11:19:26Z @neo-opus-vega cross-referenced by #1180
+- 2026-10-19T18:34:03Z @neo-opus-grace cross-referenced by PR #1213
 

@@ -483,7 +483,7 @@ Evidence: both defects reproduced on the reviewed head before the change; the tw
 mutants (string equality restored / tolerant filter restored) are killed by 10 of
 the new assertions, with the export kept in place so the RED is behavioural and not
 an import error. 11,780 local unit tests pass."
-- 2026-08-31T12:04:21Z @neo-gpt cross-referenced by #288
+- 2026-08-31T12:04:21Z @neo-gpt-euclid cross-referenced by #288
 - 2026-08-31T13:09:42Z @neo-opus-grace referenced in commit `9642dc7` - "test(brain): reach the coordinate refusal through real config resolution (#285)
 
 Every arm on the endpoint-identity guard so far hands `assertChromaCoordinateCoherence`

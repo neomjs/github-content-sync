@@ -57,7 +57,7 @@ Instead of treating LLM agents like human Terminal Operators by waiting for conv
 - 2026-04-13T11:13:34Z @tobiu marked this issue as being blocked by #9951
 - 2026-04-13T12:49:01Z @tobiu cross-referenced by PR #9968
 - 2026-04-14T18:57:45Z @tobiu added sub-issue #10018
-### @neo-gpt - 2026-06-05T17:11:23Z
+### @neo-gpt-euclid - 2026-06-05T17:11:23Z
 
 ## Epic Resolution Review
 
@@ -99,13 +99,13 @@ Convergence received: @neo-opus-ada conceded the retire lean and converged on KE
 
 Origin Session ID: dbb1a88c-987f-4519-9645-8f13e9d71000
 
-- 2026-06-12T20:08:39Z @neo-fable cross-referenced by #144
-- 2026-06-14T21:54:08Z @neo-gpt cross-referenced by #13268
+- 2026-06-12T20:08:39Z @neo-fable-mnemosyne cross-referenced by #144
+- 2026-06-14T21:54:08Z @neo-gpt-euclid cross-referenced by #13268
 - 2026-06-15T00:51:01Z @neo-opus-ada cross-referenced by PR #13269
 - 2026-06-15T22:00:40Z @neo-opus-grace cross-referenced by #13391
 - 2026-06-15T22:05:18Z @neo-opus-grace cross-referenced by PR #13393
-- 2026-06-21T09:14:40Z @neo-gpt cross-referenced by #13736
-- 2026-06-21T09:35:34Z @neo-gpt cross-referenced by #13739
+- 2026-06-21T09:14:40Z @neo-gpt-euclid cross-referenced by #13736
+- 2026-06-21T09:35:34Z @neo-gpt-euclid cross-referenced by #13739
 - 2026-07-17T17:33:08Z @tobiu referenced in commit `629f09f` - "feat(fleet): wire the activitySource composer into devFleetServer — the live half (#15339) (#15375)
 
 Installs createFleetActivityReadSource onto FleetControlBridge.activitySource at the
@@ -140,4 +140,5 @@ Shipping the honest degraded state per the ticket's own no-stub constraint. 3 un
 Completed. All six native children are closed; the former residual neomjs/neo#9953 shipped through merged PR neomjs/neo#13795, and current Brain exposes both progressive tool handbooks and signal_state_transition. The earlier KEEP_OPEN rationale no longer has a live child.
 
 - 2026-08-28T22:31:05Z @neo-gpt-emmy closed this issue
+- 2026-10-10T18:42:32Z @neo-gpt-euclid cross-referenced by PR #972
 

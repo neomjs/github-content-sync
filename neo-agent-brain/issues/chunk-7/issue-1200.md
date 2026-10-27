@@ -113,4 +113,5 @@ A Codex Desktop Start plans every server but the issuer admits Neural Link alone
 target comparison failed by construction and every FM update revoked every Codex seat. The granted
 servers stay the check; a planned target that never held a grant is set aside."
 - 2026-10-19T19:26:43Z @neo-opus-vega cross-referenced by PR #1214
+- 2026-10-20T10:00:49Z @neo-opus-ada cross-referenced by PR #1224
 

@@ -7,11 +7,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-09-04T13:55:32Z'
 updatedAt: '2026-09-04T23:56:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/310'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: null
 subIssues: []
@@ -81,31 +81,31 @@ Retrieval Hint: `query_raw_memories("get_instance_properties required property r
 
 ## Timeline
 
-- 2026-09-04T13:55:33Z @neo-fable added the `bug` label
-- 2026-09-04T13:55:33Z @neo-fable added the `ai` label
-- 2026-09-04T13:55:33Z @neo-fable added the `agent-os` label
-### @neo-fable - 2026-09-04T13:57:14Z
+- 2026-09-04T13:55:33Z @neo-fable-mnemosyne added the `bug` label
+- 2026-09-04T13:55:33Z @neo-fable-mnemosyne added the `ai` label
+- 2026-09-04T13:55:33Z @neo-fable-mnemosyne added the `agent-os` label
+### @neo-fable-mnemosyne - 2026-09-04T13:57:14Z
 
 Live positive control (2026-09-04 13:56Z, Agent OS app, session e2fb1159, instance `neo-button-2`, properties `[id, text]`): the MCP call fails in the client with `Structured content does not match the tool's output schema: data must have required property 'result'`. Same instance reads fine through `find_instances` with `returnProperties`, which declares an object response. — Mnemosyne, session ee061205-8271-4458-b73b-b132c1bec310
 
-- 2026-09-04T22:59:57Z @neo-fable assigned to @neo-fable
-- 2026-09-04T23:04:27Z @neo-fable referenced in commit `ab290ee` - "fix(mcp): an untyped response schema lists as an open object, never as a `result` promise (#310)
+- 2026-09-04T22:59:57Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-09-04T23:04:27Z @neo-fable-mnemosyne referenced in commit `ab290ee` - "fix(mcp): an untyped response schema lists as an open object, never as a `result` promise (#310)
 
 `buildOutputZodSchema` wrapped every response schema whose resolved type was not `object` — including schemas with no type at all — while `BaseServer#formatToolResult` wraps only non-object runtime values. For an untyped schema whose runtime value is an object, the listing promised `result`, the payload never carried it, and a strict client rejected every call: `get_instance_properties` (bare schema) and `ingest_source_files` (a `oneOf` composition) were the two instances across the six OpenAPI documents.
 
 The builder now lists a typeless schema — bare or a composition — as an open object, so only a declared non-object type carries the wrapper, the exact set the envelope wraps. `get_instance_properties` declares the property map it already returns (`type: object`, `additionalProperties: true`). A validation spec walks every operation of every server and asserts the listing/envelope agreement, red-first on both instances, plus the untyped and declared-primitive probes."
-- 2026-09-04T23:06:08Z @neo-fable cross-referenced by PR #319
-- 2026-09-04T23:37:50Z @neo-fable referenced in commit `8efaf6d` - "fix(mcp): a composed response keeps its branches beneath the object root, and the property reader declares its exact shape (#310)
+- 2026-09-04T23:06:08Z @neo-fable-mnemosyne cross-referenced by PR #319
+- 2026-09-04T23:37:50Z @neo-fable-mnemosyne referenced in commit `8efaf6d` - "fix(mcp): a composed response keeps its branches beneath the object root, and the property reader declares its exact shape (#310)
 
 Round 2 of review. A response schema with no top-level type is either a composition or bare. A composition (`oneOf` / `anyOf` / `allOf`) still declares its branches, so the listing keeps them: the root stays `type: object` — the MCP outputSchema contract requires it — and the compiled branches ride beneath it as `anyOf` / `allOf`, so a client rejects a value neither branch declares exactly as it did under the old wrapper. Only a bare schema lists as an open object.
 
 `get_instance_properties` declares what the engine returns — the requested values keyed by name under one `properties` key — rather than an open object. The agreement spec now witnesses both sides: the real `BaseServer#formatToolResult` envelope validated against the emitted listing through the SDK's own Ajv provider, for an object result, a declared primitive, the composed KB ingest contract (two declared shapes accepted, a malformed value rejected) and a bare untyped probe, beside the six-document listing walk."
-- 2026-09-04T23:38:30Z @neo-fable referenced in commit `4d3d9cb` - "fix(mcp): an untyped response schema lists as an open object, never as a `result` promise (#310)
+- 2026-09-04T23:38:30Z @neo-fable-mnemosyne referenced in commit `4d3d9cb` - "fix(mcp): an untyped response schema lists as an open object, never as a `result` promise (#310)
 
 `buildOutputZodSchema` wrapped every response schema whose resolved type was not `object` — including schemas with no type at all — while `BaseServer#formatToolResult` wraps only non-object runtime values. For an untyped schema whose runtime value is an object, the listing promised `result`, the payload never carried it, and a strict client rejected every call: `get_instance_properties` (bare schema) and `ingest_source_files` (a `oneOf` composition) were the two instances across the six OpenAPI documents.
 
 The builder now lists a typeless schema — bare or a composition — as an open object, so only a declared non-object type carries the wrapper, the exact set the envelope wraps. `get_instance_properties` declares the property map it already returns (`type: object`, `additionalProperties: true`). A validation spec walks every operation of every server and asserts the listing/envelope agreement, red-first on both instances, plus the untyped and declared-primitive probes."
-- 2026-09-04T23:38:30Z @neo-fable referenced in commit `ccea894` - "fix(mcp): a composed response keeps its branches beneath the object root, and the property reader declares its exact shape (#310)
+- 2026-09-04T23:38:30Z @neo-fable-mnemosyne referenced in commit `ccea894` - "fix(mcp): a composed response keeps its branches beneath the object root, and the property reader declares its exact shape (#310)
 
 Round 2 of review. A response schema with no top-level type is either a composition or bare. A composition (`oneOf` / `anyOf` / `allOf`) still declares its branches, so the listing keeps them: the root stays `type: object` — the MCP outputSchema contract requires it — and the compiled branches ride beneath it as `anyOf` / `allOf`, so a client rejects a value neither branch declares exactly as it did under the old wrapper. Only a bare schema lists as an open object.
 
@@ -114,4 +114,7 @@ Round 2 of review. A response schema with no top-level type is either a composit
 
 fix(mcp): an untyped response schema lists as an open object, never as a `result` promise (#310)"
 - 2026-09-04T23:56:06Z @tobiu closed this issue
+- 2026-09-25T13:22:35Z @neo-preview cross-referenced by #487
+- 2026-09-25T14:31:12Z @neo-preview cross-referenced by #480
+- 2026-09-25T15:07:52Z @neo-opus-vega cross-referenced by PR #492
 

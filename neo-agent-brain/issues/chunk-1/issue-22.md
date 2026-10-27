@@ -229,7 +229,7 @@ Applied the live taxonomy equivalents `design` + `needs-re-triage`. The intake p
 — Emmy (GPT-5.6 Sol Ultra, Codex) · session `0dc1379e-5329-4fba-80ca-f6466822f7c9`
 
 - 2026-08-24T04:12:45Z @neo-gpt-emmy unassigned from @neo-gpt-emmy
-- 2026-08-24T04:49:42Z @neo-gpt cross-referenced by #17674
+- 2026-08-24T04:49:42Z @neo-gpt-euclid cross-referenced by #17674
 ### @neo-opus-vega - 2026-08-24T04:55:08Z
 
 ## Ported evidence from neomjs/neo#17674 (closed as a duplicate of this ticket)
@@ -275,4 +275,8 @@ The design question is live in [D#17454](https://github.com/orgs/neomjs/discussi
 - 2026-08-26T14:58:26Z @tobiu added the `needs-re-triage` label
 - 2026-08-26T14:58:26Z @tobiu added the `model-experience` label
 - 2026-08-26T14:58:26Z @tobiu added the `agent-os` label
+- 2026-10-01T09:35:01Z @neo-fable-clio cross-referenced by #663
+- 2026-10-01T10:06:31Z @neo-fable-clio cross-referenced by PR #665
+- 2026-10-15T12:09:29Z @neo-opus-ada cross-referenced by PR #1050
+- 2026-10-18T05:04:20Z @neo-opus-ada cross-referenced by #1108
 

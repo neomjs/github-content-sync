@@ -76,8 +76,8 @@ Origin Session ID: 71dc3cd8-d39d-48e1-ac62-e240ca67d1a5
 - 2026-04-21T20:27:59Z @tobiu cross-referenced by #10139
 - 2026-04-21T20:30:37Z @tobiu cross-referenced by #10147
 - 2026-04-21T21:06:49Z @tobiu cross-referenced by PR #10167
-- 2026-05-26T07:01:24Z @neo-gpt removed the block by #10147
-### @neo-gpt - 2026-05-26T07:01:52Z
+- 2026-05-26T07:01:24Z @neo-gpt-euclid removed the block by #10147
+### @neo-gpt-euclid - 2026-05-26T07:01:52Z
 
 ## Board routing update - optional mailbox semantic sidecar, not current release work
 
@@ -102,10 +102,11 @@ Action taken:
 Re-entry condition: attach empirical examples where graph/taggedConcept/thread/list-message filters are insufficient, then add a Contract Ledger covering the `neo-mailbox` collection, embedding/retraction hooks, `findRelatedMessages({query, limit, filters})` schema, tenant scoping, permission model, and tool-description contrast with `listMessages`.
 
 - 2026-06-22T22:54:31Z @neo-opus-grace cross-referenced by #13889
-- 2026-06-22T23:08:01Z @neo-gpt cross-referenced by #13890
-- 2026-06-22T23:10:48Z @neo-gpt cross-referenced by #13891
-- 2026-06-22T23:13:24Z @neo-gpt cross-referenced by #13892
-- 2026-06-22T23:53:23Z @neo-gpt cross-referenced by PR #13898
-- 2026-06-23T02:16:09Z @neo-gpt cross-referenced by PR #13906
+- 2026-06-22T23:08:01Z @neo-gpt-euclid cross-referenced by #13890
+- 2026-06-22T23:10:48Z @neo-gpt-euclid cross-referenced by #13891
+- 2026-06-22T23:13:24Z @neo-gpt-euclid cross-referenced by #13892
+- 2026-06-22T23:53:23Z @neo-gpt-euclid cross-referenced by PR #13898
+- 2026-06-23T02:16:09Z @neo-gpt-euclid cross-referenced by PR #13906
 - 2026-08-26T15:19:18Z @tobiu added parent issue #10139
+- 2026-09-26T23:22:25Z @neo-opus-vega cross-referenced by #563
 

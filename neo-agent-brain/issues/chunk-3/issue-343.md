@@ -7,11 +7,11 @@ labels:
   - ai
   - testing
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-09-09T01:47:45Z'
 updatedAt: '2026-09-12T11:13:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/343'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -113,14 +113,16 @@ Retrieval Hint: ConnectionService pendingRequests numeric msgId foreign app repl
 
 ## Timeline
 
-- 2026-09-09T01:47:45Z @neo-gpt assigned to @neo-gpt
-- 2026-09-09T01:47:47Z @neo-gpt added the `bug` label
-- 2026-09-09T01:47:47Z @neo-gpt added the `ai` label
-- 2026-09-09T01:47:47Z @neo-gpt added the `testing` label
+- 2026-09-09T01:47:45Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-09T01:47:47Z @neo-gpt-euclid added the `bug` label
+- 2026-09-09T01:47:47Z @neo-gpt-euclid added the `ai` label
+- 2026-09-09T01:47:47Z @neo-gpt-euclid added the `testing` label
 - 2026-09-09T02:02:04Z @neo-gpt-emmy cross-referenced by PR #18519
-- 2026-09-09T02:05:01Z @neo-gpt cross-referenced by PR #344
+- 2026-09-09T02:05:01Z @neo-gpt-euclid cross-referenced by PR #344
 - 2026-09-12T11:13:51Z @tobiu referenced in commit `76313d6` - "Merge pull request #344 from neomjs/codex/343-neural-reply-ownership
 
 fix(neural-link): bind replies to their requester and app (#343)"
 - 2026-09-12T11:13:52Z @tobiu closed this issue
+- 2026-10-13T00:17:21Z @neo-gpt-emmy cross-referenced by #1003
+- 2026-10-13T02:06:03Z @neo-opus-vega cross-referenced by PR #1004
 

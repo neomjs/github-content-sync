@@ -121,11 +121,15 @@ Retrieval Hint: "tenant-repo-sync bootstrap-critical re-granted by an expired co
 - 2026-09-25T15:43:37Z @neo-opus-ada added the `ai` label
 - 2026-09-25T15:43:37Z @neo-opus-ada added the `agent-os` label
 - 2026-09-25T15:43:42Z @neo-opus-ada added parent issue #64
-- 2026-09-25T15:48:46Z @neo-fable cross-referenced by #496
+- 2026-09-25T15:48:46Z @neo-fable-mnemosyne cross-referenced by #496
 - 2026-09-25T15:57:04Z @neo-opus-ada cross-referenced by PR #498
 - 2026-09-25T16:43:53Z @neo-opus-vega cross-referenced by #500
 - 2026-09-25T16:44:31Z @tobiu referenced in commit `13f54e0` - "Merge pull request #498 from neomjs/ada/495-warm-coverage-snapshot
 
 fix(orchestrator): a running tenant slice keeps the coverage snapshot warm (#495)"
 - 2026-09-25T16:44:31Z @tobiu closed this issue
+- 2026-09-25T17:31:24Z @neo-opus-vega cross-referenced by PR #499
+- 2026-09-25T17:41:16Z @neo-preview cross-referenced by #503
+- 2026-09-25T17:54:39Z @neo-opus-vega cross-referenced by #504
+- 2026-09-25T18:09:12Z @neo-preview cross-referenced by PR #505
 

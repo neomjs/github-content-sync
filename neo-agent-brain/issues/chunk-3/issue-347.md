@@ -7,11 +7,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-09-12T14:07:53Z'
 updatedAt: '2026-09-13T10:23:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/347'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -71,14 +71,14 @@ Retrieval Hint: "neural-link list_perspectives restore_perspective declared pers
 
 ## Timeline
 
-- 2026-09-12T14:07:55Z @neo-fable added the `enhancement` label
-- 2026-09-12T14:07:55Z @neo-fable added the `ai` label
-- 2026-09-12T14:07:55Z @neo-fable added the `agent-os` label
-- 2026-09-12T14:08:30Z @neo-fable cross-referenced by #18613
-- 2026-09-12T16:55:11Z @neo-gpt cross-referenced by #348
-- 2026-09-12T21:49:15Z @neo-fable cross-referenced by PR #18634
-- 2026-09-12T22:18:16Z @neo-fable assigned to @neo-fable
-- 2026-09-12T22:23:34Z @neo-fable referenced in commit `e4d1d42` - "docs(neural-link): perspective tools state the declared contract (#347)
+- 2026-09-12T14:07:55Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-09-12T14:07:55Z @neo-fable-mnemosyne added the `ai` label
+- 2026-09-12T14:07:55Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-09-12T14:08:30Z @neo-fable-mnemosyne cross-referenced by #18613
+- 2026-09-12T16:55:11Z @neo-gpt-euclid cross-referenced by #348
+- 2026-09-12T21:49:15Z @neo-fable-mnemosyne cross-referenced by PR #18634
+- 2026-09-12T22:18:16Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-09-12T22:23:34Z @neo-fable-mnemosyne referenced in commit `e4d1d42` - "docs(neural-link): perspective tools state the declared contract (#347)
 
 The engine's list_perspectives and restore_perspective now see declared
 perspectives (neomjs/neo#18613, merged as neomjs/neo#18634). The Brain's
@@ -94,8 +94,8 @@ compliance rule for output schemas holds.
 Spec: the dispatch arms stay; one arm parses the OpenAPI document and
 pins the contract words in both descriptions, so a drift between the
 wire description and the engine fails a Brain test."
-- 2026-09-12T22:23:36Z @neo-fable cross-referenced by PR #350
-- 2026-09-13T09:30:45Z @neo-fable referenced in commit `b1448cf` - "docs(neural-link): the list refusal condition is non-exclusive (#347)
+- 2026-09-12T22:23:36Z @neo-fable-mnemosyne cross-referenced by PR #350
+- 2026-09-13T09:30:45Z @neo-fable-mnemosyne referenced in commit `b1448cf` - "docs(neural-link): the list refusal condition is non-exclusive (#347)
 
 list_perspectives said it fails closed ONLY when the holder declares nothing and
 exposes no store. The engine also returns a topology collection's validation errors
@@ -106,4 +106,6 @@ docblock and the description-pinning arm now name both."
 
 docs(neural-link): perspective tools state the declared contract (#347)"
 - 2026-09-13T10:23:48Z @tobiu closed this issue
+- 2026-09-30T19:31:21Z @neo-gpt-euclid cross-referenced by PR #646
+- 2026-10-01T10:52:45Z @neo-fable-clio cross-referenced by #669
 

@@ -7,11 +7,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-04T12:41:27Z'
 updatedAt: '2026-10-04T16:54:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/840'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: 351
 subIssues: []
@@ -25,7 +25,7 @@ blockedBy:
   - '[x] 842 ADR 0041 §2.10: the evaluated setup row is the consumer''s contract'
   - '[x] 19395 ADR-0034 §2.3 item 10: setupEffect carries the operator''s new attempt'
 blocking:
-  - '[ ] 540 The setup card offers a new witness attempt where the recipe names it'
+  - '[x] 540 The setup card offers a new witness attempt where the recipe names it'
 closedAt: '2026-10-04T16:54:17Z'
 milestone: FM v1
 ---
@@ -111,36 +111,36 @@ Retrieval Hint: "setup recipe one effect order EFFECT_ORDER silent halt verify e
 
 ## Timeline
 
-- 2026-10-04T12:41:27Z @neo-fable assigned to @neo-fable
-- 2026-10-04T12:41:31Z @neo-fable added the `enhancement` label
-- 2026-10-04T12:41:31Z @neo-fable added the `ai` label
-- 2026-10-04T12:41:32Z @neo-fable added the `agent-os` label
-- 2026-10-04T12:41:47Z @neo-fable cross-referenced by #19395
-- 2026-10-04T12:42:07Z @neo-fable cross-referenced by #540
-- 2026-10-04T12:42:20Z @neo-fable added parent issue #351
-- 2026-10-04T12:42:22Z @neo-fable marked this issue as blocking #540
-- 2026-10-04T12:42:24Z @neo-fable marked this issue as being blocked by #19395
-- 2026-10-04T12:42:26Z @neo-fable added this to the **FM v1** milestone
-- 2026-10-04T12:44:13Z @neo-fable cross-referenced by PR #541
-- 2026-10-04T12:44:30Z @neo-fable cross-referenced by #351
+- 2026-10-04T12:41:27Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-04T12:41:31Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-04T12:41:31Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-04T12:41:32Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-04T12:41:47Z @neo-fable-mnemosyne cross-referenced by #19395
+- 2026-10-04T12:42:07Z @neo-fable-mnemosyne cross-referenced by #540
+- 2026-10-04T12:42:20Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-04T12:42:22Z @neo-fable-mnemosyne marked this issue as blocking #540
+- 2026-10-04T12:42:24Z @neo-fable-mnemosyne marked this issue as being blocked by #19395
+- 2026-10-04T12:42:26Z @neo-fable-mnemosyne added this to the **FM v1** milestone
+- 2026-10-04T12:44:13Z @neo-fable-mnemosyne cross-referenced by PR #541
+- 2026-10-04T12:44:30Z @neo-fable-mnemosyne cross-referenced by #351
 - 2026-10-04T12:48:38Z @neo-fable-clio cross-referenced by #481
-- 2026-10-04T13:50:02Z @neo-fable cross-referenced by PR #19396
-- 2026-10-04T14:03:37Z @neo-fable cross-referenced by #842
-- 2026-10-04T14:03:46Z @neo-fable marked this issue as being blocked by #842
-- 2026-10-04T14:05:32Z @neo-fable cross-referenced by PR #843
+- 2026-10-04T13:50:02Z @neo-fable-mnemosyne cross-referenced by PR #19396
+- 2026-10-04T14:03:37Z @neo-fable-mnemosyne cross-referenced by #842
+- 2026-10-04T14:03:46Z @neo-fable-mnemosyne marked this issue as being blocked by #842
+- 2026-10-04T14:05:32Z @neo-fable-mnemosyne cross-referenced by PR #843
 - 2026-10-04T14:14:02Z @neo-fable-clio cross-referenced by #52
-- 2026-10-04T14:24:03Z @neo-fable cross-referenced by PR #844
-- 2026-10-04T14:29:45Z @neo-fable referenced in commit `f4b24c1` - "feat(fleet): an accepted witness refuses a new attempt, and each attempt keeps the exits it was offered (#840)
+- 2026-10-04T14:24:03Z @neo-fable-mnemosyne cross-referenced by PR #844
+- 2026-10-04T14:29:45Z @neo-fable-mnemosyne referenced in commit `f4b24c1` - "feat(fleet): an accepted witness refuses a new attempt, and each attempt keeps the exits it was offered (#840)
 
 performVerify makes no new attempt once the witness is accepted, and the orchestration says so before it builds a plane client. A new attempt consented while the row did not name one is still made; every attempt records the exits the row named when it was consented (attempt.offered)."
-- 2026-10-04T14:38:43Z @neo-fable referenced in commit `4f045d5` - "feat(fleet): the provider-key question says as data that it waits for the preset (#840)
+- 2026-10-04T14:38:43Z @neo-fable-mnemosyne referenced in commit `4f045d5` - "feat(fleet): the provider-key question says as data that it waits for the preset (#840)
 
 The Institution's card chose that row's action by the reason's first word; the row now carries waitsFor: 'preset' until a preset is consented, so no consumer has to."
-- 2026-10-04T14:40:38Z @neo-fable cross-referenced by #534
-- 2026-10-04T16:19:45Z @neo-fable referenced in commit `4f5ff57` - "feat(fleet): a host effect whose last attempt failed reads failed with the receipt's reason (#840)
+- 2026-10-04T14:40:38Z @neo-fable-mnemosyne cross-referenced by #534
+- 2026-10-04T16:19:45Z @neo-fable-mnemosyne referenced in commit `4f5ff57` - "feat(fleet): a host effect whose last attempt failed reads failed with the receipt's reason (#840)
 
 The row read pending with the observer's sentence, so a failed write-env told nobody why. The absent result is still what decides; the failed receipt beside it says why it is absent, the way an accepted receipt already says a result is gone. A run retries it, and nothing turns green from a receipt."
-- 2026-10-04T16:22:30Z @neo-fable cross-referenced by #848
+- 2026-10-04T16:22:30Z @neo-fable-mnemosyne cross-referenced by #848
 - 2026-10-04T16:47:38Z @neo-fable-clio cross-referenced by #850
 - 2026-10-04T16:50:31Z @neo-fable-clio cross-referenced by PR #852
 - 2026-10-04T16:54:17Z @tobiu referenced in commit `4f28585` - "feat(fleet): the first-run recipe is the one effect order, and each row names its wait and its exits (#840) (#844)
@@ -161,4 +161,6 @@ The Institution's card chose that row's action by the reason's first word; the r
 
 The row read pending with the observer's sentence, so a failed write-env told nobody why. The absent result is still what decides; the failed receipt beside it says why it is absent, the way an accepted receipt already says a result is gone. A run retries it, and nothing turns green from a receipt."
 - 2026-10-04T16:54:17Z @tobiu closed this issue
+- 2026-10-05T11:00:10Z @neo-gpt-euclid cross-referenced by PR #561
+- 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
 

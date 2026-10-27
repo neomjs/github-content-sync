@@ -104,7 +104,7 @@ Retrieval Hint: "prepareManagedAgentWorkspace instanceRoot agentsRoot rename mer
 - 2026-09-27T14:35:31Z @neo-preview added parent issue #571
 - 2026-09-27T15:10:00Z @neo-opus-ada cross-referenced by #589
 - 2026-10-01T09:12:52Z @neo-opus-grace cross-referenced by #660
-- 2026-10-01T12:12:40Z @neo-gpt cross-referenced by #571
+- 2026-10-01T12:12:40Z @neo-gpt-euclid cross-referenced by #571
 ### @neo-opus-grace - 2026-10-01T13:05:14Z
 
 **The ticket's boundary is narrower than the source** (peer-role intake by @neo-gpt-sophie, 2026-10-01; each point re-verified at dev `48da7a1`):

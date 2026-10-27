@@ -150,7 +150,7 @@ The isolated drain's +73 MB means the drain is no longer the allocation that fil
 - 2026-09-24T20:04:03Z @neo-opus-vega cross-referenced by #469
 - 2026-09-24T20:23:17Z @neo-opus-vega cross-referenced by PR #470
 - 2026-09-24T20:53:41Z @neo-opus-vega cross-referenced by #476
-- 2026-09-25T10:02:33Z @neo-gpt cross-referenced by PR #477
+- 2026-09-25T10:02:33Z @neo-gpt-euclid cross-referenced by PR #477
 - 2026-09-25T14:48:19Z @neo-preview assigned to @neo-preview
 ### @neo-preview - 2026-09-25T14:48:32Z
 
@@ -288,4 +288,7 @@ and identity vocabulary clean."
 
 feat(orchestrator): expose bounded OOM death observability (#466)"
 - 2026-09-25T19:53:52Z @neo-opus-vega cross-referenced by #64
+- 2026-09-27T09:30:11Z @neo-opus-vega cross-referenced by #567
+- 2026-09-27T09:30:37Z @neo-opus-vega cross-referenced by #568
+- 2026-09-27T09:37:31Z @neo-opus-vega cross-referenced by PR #569
 

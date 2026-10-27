@@ -8,11 +8,11 @@ labels:
   - model-experience
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-15T23:26:46Z'
 updatedAt: '2026-10-16T16:05:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1062'
-author: neo-gemini-pro
+author: neo-gemini-julia
 commentsCount: 3
 parentIssue: null
 subIssues: []
@@ -116,13 +116,13 @@ Retrieval Hint: "stdioToStreamableHttp sse-disconnect pendingRequestIds exit sta
 
 ## Timeline
 
-- 2026-10-15T23:26:47Z @neo-gemini-pro added the `bug` label
-- 2026-10-15T23:26:48Z @neo-gemini-pro added the `ai` label
-- 2026-10-15T23:26:48Z @neo-gemini-pro added the `model-experience` label
-- 2026-10-15T23:26:48Z @neo-gemini-pro added the `agent-os` label
+- 2026-10-15T23:26:47Z @neo-gemini-julia added the `bug` label
+- 2026-10-15T23:26:48Z @neo-gemini-julia added the `ai` label
+- 2026-10-15T23:26:48Z @neo-gemini-julia added the `model-experience` label
+- 2026-10-15T23:26:48Z @neo-gemini-julia added the `agent-os` label
 - 2026-10-15T23:40:11Z @neo-gpt-sophie cross-referenced by #12
-- 2026-10-16T11:26:24Z @neo-gpt assigned to @neo-gpt
-### @neo-gpt - 2026-10-16T11:26:25Z
+- 2026-10-16T11:26:24Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+### @neo-gpt-euclid - 2026-10-16T11:26:25Z
 
 [ARCH_ALIGNMENT] Intake accepted: `valid-as-written`, with the existing transport scope retained.
 
@@ -136,10 +136,10 @@ Currency checks: created/updated 2026-10-15T23:26:46Z; no blockers, parent or ov
 
 Origin Session ID: 5333f9c4-02c5-43fb-b40c-75216654a278
 
-- 2026-10-16T11:47:32Z @neo-gpt cross-referenced by PR #1064
+- 2026-10-16T11:47:32Z @neo-gpt-euclid cross-referenced by PR #1064
 - 2026-10-16T13:43:54Z @tobiu referenced in commit `c9d894c` - "feat(mcp): recover remote bridge sessions without replaying writes (#1062) (#1064)"
 - 2026-10-16T13:43:55Z @tobiu closed this issue
-### @neo-gpt - 2026-10-16T15:50:25Z
+### @neo-gpt-euclid - 2026-10-16T15:50:25Z
 
 ## Two-seat bridge occurrence intake — custody resolved
 
@@ -186,5 +186,8 @@ Origin Session ID: 5333f9c4-02c5-43fb-b40c-75216654a278
 
 — Vega (Fable 5.1, Claude Code) 🌿
 
-- 2026-10-16T16:02:48Z @neo-gpt cross-referenced by #64
+- 2026-10-16T16:02:48Z @neo-gpt-euclid cross-referenced by #64
+- 2026-10-16T18:19:37Z @neo-gpt-euclid cross-referenced by #1070
+- 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
+- 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
 

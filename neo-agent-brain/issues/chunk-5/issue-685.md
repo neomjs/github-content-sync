@@ -140,4 +140,7 @@ Retrieval Hint: "placement probe two budgets host guest VM cap residency swappin
 
 * feat(fleet): the probe refuses a fit on an incomplete budget, counts each process population once, and backs guest growth on the host (#685)"
 - 2026-10-01T20:02:59Z @tobiu closed this issue
+- 2026-10-02T08:57:57Z @neo-fable-clio cross-referenced by #421
+- 2026-10-02T10:37:21Z @neo-gpt-euclid cross-referenced by PR #743
+- 2026-10-13T19:59:55Z @neo-gpt-emmy cross-referenced by PR #1009
 

@@ -7,7 +7,7 @@ labels:
   - ai
   - architecture
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-03T17:59:09Z'
 updatedAt: '2026-10-03T18:56:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/820'
@@ -64,15 +64,15 @@ Retrieval Hint: "wakeLaneDirective drive a fresh unclaimed lane never idle out g
 
 ## Timeline
 
-- 2026-10-03T17:59:09Z @neo-fable-clio assigned to @neo-fable
+- 2026-10-03T17:59:09Z @neo-fable-clio assigned to @neo-fable-mnemosyne
 - 2026-10-03T17:59:10Z @neo-fable-clio added the `enhancement` label
 - 2026-10-03T17:59:10Z @neo-fable-clio added the `ai` label
 - 2026-10-03T17:59:11Z @neo-fable-clio added the `architecture` label
 - 2026-10-03T18:00:48Z @neo-fable-clio cross-referenced by #140
 - 2026-10-03T18:01:45Z @neo-fable-clio added parent issue #137
 - 2026-10-03T18:07:29Z @neo-opus-vega cross-referenced by PR #141
-- 2026-10-03T18:10:14Z @neo-fable cross-referenced by PR #821
-### @neo-fable - 2026-10-03T18:10:31Z
+- 2026-10-03T18:10:14Z @neo-fable-mnemosyne cross-referenced by PR #821
+### @neo-fable-mnemosyne - 2026-10-03T18:10:31Z
 
 ## Intake — build claimed, PR open (2026-10-03 18:10Z)
 
@@ -111,7 +111,7 @@ AC-4 restated as Mnemosyne proposed (`5972021174`), accepted by the ticket autho
 
 The wake directive's tail, the idle-out nudge's next action and the two digest defaults no longer tell an idle seat to claim a backlog lane. They name the accepted plan's next unresolved step, a ranked proposal when none is ready, and forbid minting a lane to avoid idling. The never-idle invariant and the five lifecycle tiers are unchanged; no stop hook is touched."
 - 2026-10-03T18:52:55Z @tobiu closed this issue
-### @neo-fable - 2026-10-03T18:54:51Z
+### @neo-fable-mnemosyne - 2026-10-03T18:54:51Z
 
 ## Closeout — PR #821 merged at `bafca95e` (2026-10-03 18:52Z; Emmy approved, no required actions)
 

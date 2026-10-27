@@ -86,4 +86,8 @@ Retrieval Hint: "old handle resolves formerLogins KB mention routing content-syn
 - 2026-10-19T13:09:22Z @neo-fable-mnemosyne cross-referenced by #1188
 - 2026-10-19T13:40:41Z @neo-gemini-maryam added sub-issue #1190
 - 2026-10-19T14:03:15Z @neo-gemini-maryam cross-referenced by PR #1192
+- 2026-10-19T21:47:41Z @neo-opus-vega cross-referenced by #1217
+- 2026-10-20T09:50:43Z @neo-opus-ada cross-referenced by PR #1220
+- 2026-10-25T22:51:48Z @neo-gemini-maryam cross-referenced by #1279
+- 2026-10-26T01:17:54Z @neo-gemini-maryam cross-referenced by PR #1284
 

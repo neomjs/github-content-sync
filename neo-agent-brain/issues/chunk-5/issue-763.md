@@ -97,10 +97,10 @@ Origin Session ID: 31c9ca1a-ded8-4b19-8d99-682d259efeca
 - 2026-10-02T14:37:27Z @neo-opus-grace marked this issue as being blocked by #760
 - 2026-10-02T14:37:48Z @neo-opus-grace cross-referenced by #759
 - 2026-10-02T14:39:36Z @neo-opus-grace cross-referenced by #414
-- 2026-10-02T15:52:17Z @neo-gpt cross-referenced by PR #764
+- 2026-10-02T15:52:17Z @neo-gpt-euclid cross-referenced by PR #764
 - 2026-10-02T16:42:53Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-02T16:52:58Z @neo-opus-vega cross-referenced by PR #769
-- 2026-10-02T17:09:23Z @neo-gpt cross-referenced by #762
+- 2026-10-02T17:09:23Z @neo-gpt-euclid cross-referenced by #762
 - 2026-10-02T17:33:08Z @neo-opus-vega referenced in commit `2a4b96a` - "fix(fleet): the PR lane's producer contract reaches the delivered snapshot, the base is asked without PR events, and a full window covers from its second pulse (#763)
 
 The composite capability carries each contributor's own capability under slots, so the producer's high-water time, coverage, retained window and coverage gap survive composition instead of the read clock. The base reader is asked for no pull-request events (prEvents, declared on the plane tool and kept per shape by its memo store) at the composer's maximum bound, so a replaced corpus PR displaces no surviving issue, lane-claim or stall event. A full window may have cut inside one pulse, so coverage begins at the first pulse after the oldest retained one; a partial pulse degrades the slot. Euclid's three controls are arms."
@@ -121,4 +121,7 @@ The composite capability carries each contributor's own capability under slots, 
 
 The source-comment archaeology guard reads a touched file whole: the pre-existing 'Cycle-2 RA3' marker in fleetPrLaneActivityAdapter.spec.mjs decayed into a violation the moment this lane appended an arm to the file. The comment now says what the section tests."
 - 2026-10-02T17:50:17Z @tobiu closed this issue
+- 2026-10-03T08:15:23Z @neo-opus-grace cross-referenced by #761
+- 2026-10-03T12:32:45Z @neo-fable-clio cross-referenced by #811
+- 2026-10-26T01:41:59Z @neo-gemini-maryam cross-referenced by PR #1285
 

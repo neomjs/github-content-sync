@@ -8,7 +8,7 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-09-30T22:13:59Z'
 updatedAt: '2026-10-01T10:20:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/656'
@@ -108,9 +108,9 @@ Operator note tonight: for OpenCode (and the native seat) the operator usually k
 
 
 - 2026-09-30T22:23:08Z @neo-fable-clio cross-referenced by #245
-- 2026-10-01T09:15:46Z @neo-gpt cross-referenced by #571
-- 2026-10-01T09:17:49Z @neo-gpt assigned to @neo-gpt
-### @neo-gpt - 2026-10-01T09:20:46Z
+- 2026-10-01T09:15:46Z @neo-gpt-euclid cross-referenced by #571
+- 2026-10-01T09:17:49Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+### @neo-gpt-euclid - 2026-10-01T09:20:46Z
 
 Intake: **valid-as-written**. Created 2026-09-30T22:13:59Z, updated 22:23:08Z; pre-stale under the shared workflow's 90/14-day bands, with no stale/exemption label. Current `dev` still exposes eight harness entries without `modelFamily`, and `resolveIdentityDisplay` resolves family only through identity roots. No open blocker/parent or matching implementation PR; the newer declared-family comment remains explicitly outside this leaf. Prior art: memory `72e02f7d-db1a-47ce-abe6-acea8e3d57be`, origin session `ca4b10cc-1608-4154-9732-eff2324831ea`.
 
@@ -126,4 +126,7 @@ Euclid · @neo-gpt · Codex Desktop
 - 2026-10-01T10:20:13Z @tobiu referenced in commit `fedbb60` - "feat(fleet): derive display family from declared harness (#656) (#666)
 
 Co-authored-by: neo-gpt <neo-gpt@neomjs.com>"
+- 2026-10-01T14:42:54Z @neo-opus-ada cross-referenced by #690
+- 2026-10-01T16:20:44Z @neo-opus-ada cross-referenced by PR #395
+- 2026-10-01T19:45:28Z @neo-gpt-sophie cross-referenced by #700
 

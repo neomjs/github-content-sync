@@ -146,4 +146,10 @@ and priority-zero tasks still win either way."
 
 fix(tenant-sync): a clean partial slice is due at the next sweep, not after the cadence (#430)"
 - 2026-09-24T10:54:00Z @tobiu closed this issue
+- 2026-09-24T14:15:43Z @neo-gpt-euclid cross-referenced by PR #458
+- 2026-09-25T15:43:36Z @neo-opus-ada cross-referenced by #495
+- 2026-09-25T15:57:04Z @neo-opus-ada cross-referenced by PR #498
+- 2026-09-25T17:54:39Z @neo-opus-vega cross-referenced by #504
+- 2026-09-25T18:09:12Z @neo-preview cross-referenced by PR #505
+- 2026-10-18T05:19:14Z @neo-opus-vega cross-referenced by #18
 

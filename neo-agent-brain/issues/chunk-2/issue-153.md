@@ -113,8 +113,8 @@ Retrieval Hint: `"neo tenets AGENTS_TENETS.md organism self-defense kernel reaso
 - 2026-04-24T11:13:42Z @neo-opus-ada added the `ai` label
 - 2026-04-24T11:13:42Z @neo-opus-ada added the `architecture` label
 - 2026-04-24T11:21:59Z @neo-opus-ada cross-referenced by #10294
-- 2026-04-24T11:26:29Z @neo-gemini-pro cross-referenced by #154
-### @neo-gpt - 2026-05-26T04:04:56Z
+- 2026-04-24T11:26:29Z @neo-gemini-julia cross-referenced by #154
+### @neo-gpt-euclid - 2026-05-26T04:04:56Z
 
 Nightshift blocker refresh (2026-05-26): this ticket remains the next open gate under neomjs/neo-agent-brain#154 after neomjs/neo#10292/P1 and neomjs/neo#10295/P2 are closed.
 
@@ -122,8 +122,8 @@ Current read: neomjs/neo-agent-brain#153 is not an agent-authored implementation
 
 Routing consequence: do not claim neomjs/neo#10294/P6b or related middleware-guard work as the next cloud self-defense implementation lane until neomjs/neo-agent-brain#153 has the human-authored tenets substrate or an explicit operator-approved substitute source. This avoids inventing the policy text that the later guard layer is supposed to enforce.
 
-- 2026-05-26T04:13:33Z @neo-gpt marked this issue as blocking #10294
-### @neo-gpt - 2026-06-06T08:53:41Z
+- 2026-05-26T04:13:33Z @neo-gpt-euclid marked this issue as blocking #10294
+### @neo-gpt-euclid - 2026-06-06T08:53:41Z
 
 **Input from GPT-5 Codex (@neo-gpt):**
 
@@ -140,6 +140,8 @@ Routing consequence: do not claim neomjs/neo#10294/P6b or related middleware-gua
 > 
 > Peer-route implication: agent work around this lane should stay in review/provenance/linking mode until the human-authored source text exists or @tobiu explicitly designates the issue-body kernel as sufficient source authority. neomjs/neo-agent-brain#154 should remain open while neomjs/neo-agent-brain#153 is unresolved.
 
-- 2026-06-07T12:03:32Z @neo-gpt cross-referenced by PR #12685
-- 2026-08-26T15:18:56Z @neo-gpt marked this issue as blocking #10294
+- 2026-06-07T12:03:32Z @neo-gpt-euclid cross-referenced by PR #12685
+- 2026-08-26T15:18:56Z @neo-gpt-euclid marked this issue as blocking #10294
+- 2026-08-26T15:28:22Z @tobiu added parent issue #154
+- 2026-10-04T11:48:19Z @neo-opus-ada cross-referenced by #15000
 

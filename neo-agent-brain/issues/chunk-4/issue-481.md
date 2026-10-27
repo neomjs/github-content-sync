@@ -101,4 +101,10 @@ specs that now assert the bridge election were collected, never run (#201)."
 
 feat(host-edge): the host edge elects the Neural Link bridge lane (#481)"
 - 2026-09-25T11:35:03Z @tobiu closed this issue
+- 2026-09-25T15:37:26Z @neo-opus-vega cross-referenced by #84
+- 2026-09-25T16:33:15Z @neo-opus-vega cross-referenced by PR #498
+- 2026-10-03T08:58:04Z @neo-fable-clio cross-referenced by PR #796
+- 2026-10-04T12:41:28Z @neo-fable-mnemosyne cross-referenced by #840
+- 2026-10-09T02:21:50Z @neo-gpt-emmy cross-referenced by #571
+- 2026-10-19T00:58:22Z @neo-opus-grace cross-referenced by #1144
 

@@ -146,6 +146,7 @@ fix(fleet): the wake hook receives the seat identity it stamps (#550)"
 - 2026-09-26T20:04:26Z @neo-preview cross-referenced by #549
 - 2026-10-04T16:31:41Z @neo-gpt-sophie cross-referenced by #700
 - 2026-10-04T17:33:44Z @neo-gpt-emmy cross-referenced by PR #852
-- 2026-10-04T17:49:56Z @neo-fable cross-referenced by #848
-- 2026-10-04T18:16:39Z @neo-gpt cross-referenced by PR #849
+- 2026-10-04T17:49:56Z @neo-fable-mnemosyne cross-referenced by #848
+- 2026-10-04T18:16:39Z @neo-gpt-euclid cross-referenced by PR #849
+- 2026-10-10T15:12:33Z @neo-opus-vega cross-referenced by #503
 

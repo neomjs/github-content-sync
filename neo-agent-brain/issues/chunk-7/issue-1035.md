@@ -8,7 +8,7 @@ labels:
   - model-experience
   - agent-os
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-14T23:42:08Z'
 updatedAt: '2026-10-15T12:58:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1035'
@@ -89,10 +89,10 @@ Authored by Emmy · `@neo-gpt-emmy`.
 - 2026-10-14T23:42:10Z @neo-gpt-emmy added the `agent-os` label
 - 2026-10-14T23:42:30Z @neo-gpt-emmy added parent issue #571
 - 2026-10-14T23:52:56Z @neo-gpt-emmy changed title from **Arm Antigravity wake routes from Fleet Start** to **Restore automatic wakes for Fleet-launched Antigravity**
-- 2026-10-15T09:38:39Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-15T10:08:52Z @neo-gemini-pro cross-referenced by PR #1044
-- 2026-10-15T10:18:40Z @neo-gemini-pro referenced in commit `cb356ad` - "feat(fleet): update wake daemon Antigravity shortcut and spec parity (#1035)"
-- 2026-10-15T11:44:09Z @neo-gemini-pro referenced in commit `2ee4ed1` - "fix(wake): dismiss Antigravity autocomplete with Space without blurring composer (#1035)"
+- 2026-10-15T09:38:39Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-15T10:08:52Z @neo-gemini-julia cross-referenced by PR #1044
+- 2026-10-15T10:18:40Z @neo-gemini-julia referenced in commit `cb356ad` - "feat(fleet): update wake daemon Antigravity shortcut and spec parity (#1035)"
+- 2026-10-15T11:44:09Z @neo-gemini-julia referenced in commit `2ee4ed1` - "fix(wake): dismiss Antigravity autocomplete with Space without blurring composer (#1035)"
 - 2026-10-15T12:58:43Z @tobiu referenced in commit `feb2965` - "feat(fleet): restore automatic wakes for Fleet-launched Antigravity (#1035) (#1044)
 
 * feat(fleet): restore automatic wakes for Fleet-launched Antigravity (#1035)
@@ -101,4 +101,8 @@ Authored by Emmy · `@neo-gpt-emmy`.
 
 * fix(wake): dismiss Antigravity autocomplete with Space without blurring composer (#1035)"
 - 2026-10-15T12:58:43Z @tobiu closed this issue
+- 2026-10-16T14:40:19Z @neo-opus-grace cross-referenced by PR #1065
+- 2026-10-17T20:28:47Z @neo-fable-clio cross-referenced by #700
+- 2026-10-17T21:08:05Z @neo-gemini-julia cross-referenced by #180
+- 2026-10-17T21:10:45Z @neo-gemini-julia cross-referenced by PR #181
 

@@ -70,9 +70,11 @@ Retrieval Hint: `query_raw_memories("fleet content root pulls dir env leaf ENOEN
 - 2026-09-22T22:00:47Z @neo-fable-clio assigned to @neo-fable-clio
 - 2026-09-22T22:14:38Z @neo-fable-clio cross-referenced by PR #410
 - 2026-09-22T22:25:57Z @neo-opus-vega cross-referenced by #411
-- 2026-09-22T22:26:39Z @neo-fable cross-referenced by #19055
+- 2026-09-22T22:26:39Z @neo-fable-mnemosyne cross-referenced by #19055
 - 2026-09-22T22:50:06Z @tobiu referenced in commit `2812f94` - "Merge pull request #410 from neomjs/agent/246-fleet-content-root
 
 feat(fleet): the activity feed reads a declared content root (#246)"
 - 2026-09-22T22:50:06Z @tobiu closed this issue
+- 2026-09-22T23:10:05Z @neo-fable-clio cross-referenced by #413
+- 2026-09-23T00:13:07Z @neo-gpt-euclid cross-referenced by PR #416
 

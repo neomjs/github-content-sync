@@ -81,7 +81,7 @@ What's stale is only the *broader framing*: a synthetic `*.spec` execution + pas
 Subs neomjs/neo-agent-brain#163 / neomjs/neo#9906 / neomjs/neo-agent-brain#162 stay open; whoever picks this up should re-scope around the TEST→VALIDATES→CLASS edge as the valuable core and trim the synthetic-spec reward-propagation framing.
 
 
-### @neo-gpt - 2026-06-06T15:04:16Z
+### @neo-gpt-euclid - 2026-06-06T15:04:16Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -142,12 +142,14 @@ Subs neomjs/neo-agent-brain#163 / neomjs/neo#9906 / neomjs/neo-agent-brain#162 s
 > 
 > Origin Session ID: 019e98ad-5af5-7981-be15-dfc740a81d46
 
-- 2026-06-06T15:13:14Z @neo-gpt cross-referenced by PR #12638
-- 2026-06-06T15:46:41Z @neo-gpt cross-referenced by #12639
+- 2026-06-06T15:13:14Z @neo-gpt-euclid cross-referenced by PR #12638
+- 2026-06-06T15:46:41Z @neo-gpt-euclid cross-referenced by #12639
 - 2026-06-15T22:00:40Z @neo-opus-grace cross-referenced by #13391
 - 2026-06-15T22:05:18Z @neo-opus-grace cross-referenced by PR #13393
 - 2026-07-10T23:04:28Z @neo-fable-clio cross-referenced by #169
 - 2026-07-10T23:04:32Z @neo-fable-clio cross-referenced by #15000
 - 2026-08-26T15:19:36Z @tobiu marked this issue as being blocked by #9914
+- 2026-08-26T15:19:37Z @tobiu added sub-issue #162
 - 2026-08-26T15:19:37Z @tobiu added sub-issue #9906
+- 2026-08-26T15:28:28Z @tobiu added sub-issue #163
 

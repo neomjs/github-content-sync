@@ -6,8 +6,7 @@ labels:
   - enhancement
   - ai
   - architecture
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-07-04T04:16:21Z'
 updatedAt: '2026-08-26T15:14:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/113'
@@ -63,11 +62,11 @@ Retrieval Hint: "serving cost measurement duty cycle hardware economics unmeasur
 - 2026-07-11T00:06:35Z @neo-opus-grace referenced in commit `5386c2b` - "feat(ai): serving-cost meter CLI + the zero-numbers results doc — the measurement instrument lands (#14687)"
 - 2026-07-11T00:07:05Z @neo-opus-grace referenced in commit `e39918d` - "feat(ai): serving-cost meter CLI + the zero-numbers results doc — the measurement instrument lands (#14687)"
 - 2026-07-11T00:07:55Z @neo-opus-grace cross-referenced by PR #15013
-- 2026-07-11T00:12:50Z @neo-gpt cross-referenced by #15014
-- 2026-07-11T00:13:00Z @neo-gpt added sub-issue #15014
+- 2026-07-11T00:12:50Z @neo-gpt-euclid cross-referenced by #15014
+- 2026-07-11T00:13:00Z @neo-gpt-euclid added sub-issue #15014
 - 2026-07-11T00:17:13Z @neo-opus-grace referenced in commit `9069e77` - "fix(ai): serving-cost meter samples LISTENERS only + declared remote-endpoint skips + startup validation (#14687)"
 - 2026-07-11T00:33:07Z @neo-opus-grace referenced in commit `79810e4` - "fix(ai): serving-cost meter — zero-window refused at parse, boundary coverage honesty vs the requested window (#14687)"
-- 2026-07-11T00:58:35Z @neo-gpt cross-referenced by #15020
+- 2026-07-11T00:58:35Z @neo-gpt-euclid cross-referenced by #15020
 - 2026-07-11T01:00:25Z @tobiu referenced in commit `ba6645a` - "feat(ai): serving-cost meter — the measurement instrument for the always-on inference load (#14687) (#15013)
 
 * feat(ai): serving-cost meter pure core — phase-honest duty-cycle aggregation + schema-valid metric bags (#14687)
@@ -77,7 +76,7 @@ Retrieval Hint: "serving cost measurement duty cycle hardware economics unmeasur
 * fix(ai): serving-cost meter samples LISTENERS only + declared remote-endpoint skips + startup validation (#14687)
 
 * fix(ai): serving-cost meter — zero-window refused at parse, boundary coverage honesty vs the requested window (#14687)"
-- 2026-07-11T01:08:41Z @neo-gpt cross-referenced by PR #15025
+- 2026-07-11T01:08:41Z @neo-gpt-euclid cross-referenced by PR #15025
 ### @neo-opus-grace - 2026-07-16T07:05:47Z
 
 **[ledger-hygiene][D#15209] Explicitly DEFERRED from v13.2** — the serving-cost measurement program serves the business-engine arc (#14442), not the release-gate sentence; it stays unmilestoned by design and re-enters at the v13.3 planning beat. Deferral recorded per the scope-ledger ask (a leaf that isn't milestoned doesn't exist for the release — this one intentionally doesn't). 🖖 Grace
@@ -85,5 +84,8 @@ Retrieval Hint: "serving cost measurement duty cycle hardware economics unmeasur
 - 2026-07-16T21:20:37Z @neo-opus-grace cross-referenced by #15220
 - 2026-08-26T15:14:28Z @tobiu added sub-issue #15014
 - 2026-08-26T15:15:20Z @neo-opus-grace cross-referenced by #123
-- 2026-09-05T13:30:52Z @neo-gpt cross-referenced by PR #329
+- 2026-08-26T15:15:57Z @tobiu added parent issue #123
+- 2026-09-05T13:30:52Z @neo-gpt-euclid cross-referenced by PR #329
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:04:00Z @neo-opus-grace unassigned from @neo-opus-grace
 

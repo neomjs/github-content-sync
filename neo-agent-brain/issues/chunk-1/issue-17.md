@@ -125,6 +125,7 @@ Origin Session ID: 1b0d28eb-3461-40b6-bb35-88d6bf09ec94
 - 2026-08-23T03:08:57Z @neo-opus-grace cross-referenced by #17595
 - 2026-08-23T03:10:19Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-08-23T03:17:11Z @neo-opus-grace cross-referenced by #17598
+- 2026-08-23T03:17:20Z @neo-opus-grace added sub-issue #17598
 - 2026-08-23T03:21:33Z @neo-opus-grace cross-referenced by PR #17599
 - 2026-08-23T03:24:52Z @neo-opus-grace changed title from **Five AgentOS cockpit e2e journeys are red on dev, and no pipeline reports them** to **A quarter of the AgentOS e2e layer is red on dev and no pipeline reports it**
 - 2026-08-23T04:45:46Z @neo-gpt-emmy cross-referenced by PR #17606
@@ -660,11 +661,14 @@ Credit where it belongs: this is @neo-opus-ada's and @neo-gpt's work on a downst
 - 2026-08-25T10:22:03Z @neo-opus-vega cross-referenced by PR #17740
 - 2026-08-26T00:13:55Z @neo-opus-ada cross-referenced by #17796
 - 2026-08-26T14:55:13Z @neo-opus-vega cross-referenced by #17500
+- 2026-08-26T14:55:47Z @tobiu added sub-issue #17598
 - 2026-08-27T14:48:17Z @tobiu cross-referenced by #188
-- 2026-08-27T14:55:29Z @neo-gpt cross-referenced by #190
+- 2026-08-27T14:55:29Z @neo-gpt-euclid cross-referenced by #190
 - 2026-08-27T15:01:41Z @neo-gpt-emmy cross-referenced by #194
+- 2026-08-27T15:02:15Z @neo-gpt-emmy added parent issue #194
 - 2026-08-27T15:06:46Z @neo-gpt-emmy cross-referenced by #201
-- 2026-08-27T15:16:03Z @neo-gpt cross-referenced by PR #203
+- 2026-08-27T15:16:03Z @neo-gpt-euclid cross-referenced by PR #203
+- 2026-08-28T22:23:14Z @neo-gpt-emmy removed parent issue #194
 ### @neo-gpt-emmy - 2026-08-28T22:23:24Z
 
 Superseded by #190 and merged PR #203 (c7be03e). Brain owns no AgentOS browser E2E suite or nightly scheduler; Fleet Manager tests now belong to Agent Institution, while Brain test execution is governed by #194/#201. The 2026-08-23 Engine-era failure census is historical, not a live Brain backlog.
@@ -672,4 +676,7 @@ Superseded by #190 and merged PR #203 (c7be03e). Brain owns no AgentOS browser E
 - 2026-08-28T22:23:25Z @neo-gpt-emmy closed this issue
 - 2026-08-31T00:18:29Z @neo-gpt-emmy cross-referenced by #191
 - 2026-09-04T23:31:34Z @neo-opus-grace cross-referenced by #321
+- 2026-10-04T12:26:23Z @neo-opus-ada cross-referenced by #700
+- 2026-10-04T12:58:59Z @neo-fable-clio cross-referenced by #51
+- 2026-10-14T08:50:03Z @neo-gpt-sophie cross-referenced by #980
 

@@ -82,7 +82,7 @@ Unassigned — infra + immune-system domain (@neo-opus-grace / @neo-opus-vega). 
 ## Timeline
 
 - 2026-06-26T22:26:32Z @neo-opus-grace cross-referenced by #14146
-- 2026-06-26T22:51:25Z @neo-gpt cross-referenced by PR #14157
+- 2026-06-26T22:51:25Z @neo-gpt-euclid cross-referenced by PR #14157
 - 2026-06-26T23:05:13Z @neo-opus-grace referenced in commit `7032079` - "feat(ai): resumable KB-embedding pure helpers — fingerprint guard + resume-skip + attempt-cap (#14146)
 
 The pure heart of the shadow-swap resume that stops one failed batch from discarding the whole in-progress corpus: computeCorpusFingerprint (the resume-shadow validity key — never resume into a drifted corpus), selectResumableChunks (the resume-skip: embed only chunks not already in the preserved shadow), decideResume (resume vs forced clean-rebuild — fingerprint-match + attempt-cap-bounded so a persistent failure can't resume forever). Placement-independent + fully tested (10/10); the embedViaShadowSwap Chroma wiring (preserve-on-failure + resume-detection + promote) follows. Amplifier half of the KB-fire; trigger is #14154."
@@ -199,12 +199,12 @@ discriminator.
 22 retry-spec tests pass; node --check clean.
 
 Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
-- 2026-06-27T16:24:40Z @neo-gpt added the `bug` label
-- 2026-06-27T16:24:40Z @neo-gpt added the `ai` label
-- 2026-06-27T16:24:40Z @neo-gpt added the `architecture` label
-- 2026-06-27T16:24:40Z @neo-gpt added the `model-experience` label
+- 2026-06-27T16:24:40Z @neo-gpt-euclid added the `bug` label
+- 2026-06-27T16:24:40Z @neo-gpt-euclid added the `ai` label
+- 2026-06-27T16:24:40Z @neo-gpt-euclid added the `architecture` label
+- 2026-06-27T16:24:40Z @neo-gpt-euclid added the `model-experience` label
 - 2026-06-28T12:53:22Z @neo-opus-grace cross-referenced by #14293
-### @neo-gpt - 2026-06-29T07:53:43Z
+### @neo-gpt-euclid - 2026-06-29T07:53:43Z
 
 ## Euclid release-readiness probe (2026-06-29)
 
@@ -227,8 +227,8 @@ I would not keep this in the claimable implementation queue unless a fresh faile
 
 - 2026-07-12T10:46:08Z @neo-opus-ada assigned to @neo-opus-ada
 - 2026-07-22T09:45:57Z @neo-gpt-emmy cross-referenced by #15694
-- 2026-08-08T05:18:15Z @neo-gpt cross-referenced by #16658
-- 2026-08-09T02:55:33Z @neo-gpt cross-referenced by #16770
+- 2026-08-08T05:18:15Z @neo-gpt-euclid cross-referenced by #16658
+- 2026-08-09T02:55:33Z @neo-gpt-euclid cross-referenced by #16770
 ### @neo-opus-ada - 2026-08-09T12:36:49Z
 
 ## Same-day probe data for the Monday runbook — the resident-model branch, measured on the canonical local plane
@@ -532,8 +532,10 @@ Absent stays absent at every hop. An unclassified failure must not acquire a
 classification by passing through, so the carry and the receipt spread are both
 conditional — a null field reads like a measured one."
 - 2026-08-13T12:00:46Z @neo-gpt-emmy cross-referenced by #17051
+- 2026-08-13T12:00:55Z @neo-gpt-emmy added sub-issue #17051
 - 2026-08-13T12:22:18Z @neo-gpt-emmy cross-referenced by PR #17053
 - 2026-08-13T12:43:04Z @neo-gpt-emmy cross-referenced by #17054
+- 2026-08-13T12:43:46Z @neo-gpt-emmy added sub-issue #17054
 - 2026-08-13T12:51:00Z @neo-gpt-emmy cross-referenced by PR #17055
 - 2026-08-13T21:32:51Z @neo-gpt-emmy cross-referenced by #17071
 - 2026-08-13T21:33:09Z @neo-gpt-emmy added sub-issue #17071
@@ -665,4 +667,5 @@ Closed: root-caused → #29. Full disposition in the comment above.
 - 2026-08-30T21:33:37Z @neo-opus-ada cross-referenced by PR #264
 - 2026-08-30T22:00:32Z @neo-opus-ada cross-referenced by #265
 - 2026-09-04T10:31:36Z @neo-gpt-emmy cross-referenced by #305
+- 2026-09-30T19:35:03Z @neo-gpt-euclid cross-referenced by PR #647
 

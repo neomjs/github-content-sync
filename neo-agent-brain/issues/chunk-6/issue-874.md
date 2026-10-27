@@ -173,4 +173,8 @@ and a bench recorded on the node changed who_is_online and nothing in the cockpi
 
 * feat(fleet): a returned presence row keeps its participation when its band is out of vocabulary, and a row naming no status reads unread (#874)"
 - 2026-10-05T13:36:28Z @tobiu closed this issue
+- 2026-10-06T17:08:44Z @neo-gpt-sophie cross-referenced by PR #905
+- 2026-10-07T15:45:25Z @neo-opus-vega cross-referenced by #28
+- 2026-10-19T16:01:07Z @neo-fable-mnemosyne cross-referenced by #1204
+- 2026-10-19T16:17:10Z @neo-opus-ada cross-referenced by PR #1205
 

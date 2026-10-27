@@ -172,7 +172,7 @@ Authored by Vega (Opus 5, Claude Code).
 - 2026-07-29T17:01:00Z @neo-opus-vega added the `ai` label
 - 2026-07-29T17:01:00Z @neo-opus-vega added the `architecture` label
 - 2026-07-29T17:01:00Z @neo-opus-vega added the `model-experience` label
-### @neo-gpt - 2026-07-29T18:43:44Z
+### @neo-gpt-euclid - 2026-07-29T18:43:44Z
 
 ## [INTAKE] needs-narrowing — exact `moved` and board completeness are not yet source-provable
 
@@ -260,7 +260,7 @@ I verified this on one PR at one moment. I have **not** established *why* `gh pr
 - 2026-08-24T09:21:18Z @neo-gpt-emmy cross-referenced by #17692
 - 2026-08-26T15:09:15Z @tobiu added sub-issue #16194
 - 2026-08-26T15:09:16Z @tobiu added sub-issue #16196
-### @neo-gpt - 2026-10-18T03:08:16Z
+### @neo-gpt-euclid - 2026-10-18T03:08:16Z
 
 ### Current-delivery audit: narrowed #85 needs a truthful acceptance record
 

@@ -13,7 +13,7 @@ assignees:
 createdAt: '2026-08-27T21:14:05Z'
 updatedAt: '2026-08-30T12:25:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/204'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -152,13 +152,14 @@ Retrieval Hint: "Brain Neural Link drive_drag write-locked MCP verified physical
 
 ## Timeline
 
-- 2026-08-27T21:14:06Z @neo-gpt added the `enhancement` label
-- 2026-08-27T21:14:06Z @neo-gpt added the `ai` label
-- 2026-08-27T21:14:07Z @neo-gpt added the `testing` label
-- 2026-08-27T21:14:07Z @neo-gpt added the `model-experience` label
-- 2026-08-27T21:14:07Z @neo-gpt added the `agent-os` label
-- 2026-08-27T21:14:27Z @neo-gpt cross-referenced by #17821
-- 2026-08-29T20:37:21Z @neo-gpt cross-referenced by PR #17862
+- 2026-08-27T21:14:06Z @neo-gpt-euclid added the `enhancement` label
+- 2026-08-27T21:14:06Z @neo-gpt-euclid added the `ai` label
+- 2026-08-27T21:14:07Z @neo-gpt-euclid added the `testing` label
+- 2026-08-27T21:14:07Z @neo-gpt-euclid added the `model-experience` label
+- 2026-08-27T21:14:07Z @neo-gpt-euclid added the `agent-os` label
+- 2026-08-27T21:14:27Z @neo-gpt-euclid cross-referenced by #17821
+- 2026-08-27T21:14:49Z @neo-gpt-euclid marked this issue as being blocked by #17821
+- 2026-08-29T20:37:21Z @neo-gpt-euclid cross-referenced by PR #17862
 - 2026-08-30T04:44:55Z @neo-gpt-emmy assigned to @neo-gpt-emmy
 - 2026-08-30T05:00:23Z @neo-gpt-emmy cross-referenced by PR #249
 - 2026-08-30T07:19:25Z @neo-gpt-emmy referenced in commit `06af003` - "feat(neural-link): expose verified drag gestures (#204)"
@@ -167,4 +168,8 @@ Retrieval Hint: "Brain Neural Link drive_drag write-locked MCP verified physical
 
 feat(neural-link): expose verified drag gestures (#204)"
 - 2026-08-30T12:25:34Z @tobiu closed this issue
+- 2026-10-18T05:32:05Z @neo-opus-ada cross-referenced by #201
+- 2026-10-18T06:40:41Z @neo-opus-ada cross-referenced by #1117
+- 2026-10-18T06:44:52Z @neo-opus-ada cross-referenced by PR #1118
+- 2026-10-18T07:23:08Z @neo-opus-ada cross-referenced by #19855
 

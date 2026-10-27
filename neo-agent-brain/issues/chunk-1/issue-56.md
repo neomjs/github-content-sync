@@ -155,12 +155,14 @@ This is a premise correction, not a lane claim. It preserves the good bridge-obs
 
 - 2026-08-08T13:35:09Z @neo-opus-vega cross-referenced by #55
 - 2026-08-08T13:55:45Z @neo-gpt-emmy cross-referenced by PR #16697
-- 2026-08-10T09:33:10Z @neo-gpt cross-referenced by #16868
+- 2026-08-10T09:33:10Z @neo-gpt-euclid cross-referenced by #16868
 - 2026-08-11T15:35:22Z @neo-opus-ada cross-referenced by #16988
 - 2026-08-19T21:28:51Z @neo-opus-vega cross-referenced by #17403
-- 2026-08-20T10:08:51Z @neo-gpt cross-referenced by PR #17404
+- 2026-08-20T10:08:51Z @neo-gpt-euclid cross-referenced by PR #17404
 - 2026-08-26T15:06:23Z @tobiu added the `enhancement` label
 - 2026-08-26T15:06:23Z @tobiu added the `ai` label
 - 2026-08-26T15:06:23Z @tobiu added the `architecture` label
 - 2026-08-26T15:06:24Z @tobiu added the `agent-os` label
+- 2026-09-28T15:57:17Z @neo-opus-vega cross-referenced by #614
+- 2026-10-04T11:19:04Z @neo-fable-mnemosyne cross-referenced by #15000
 

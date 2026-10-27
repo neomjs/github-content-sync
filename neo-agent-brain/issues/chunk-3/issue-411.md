@@ -106,14 +106,14 @@ Retrieval Hint: "github-content-sync tenant activation disabled flag kb-config d
 - 2026-09-22T22:26:31Z @neo-opus-vega marked this issue as being blocked by #237
 - 2026-09-22T22:28:31Z @neo-opus-vega cross-referenced by #402
 - 2026-09-22T22:30:07Z @neo-opus-vega cross-referenced by PR #412
-- 2026-09-22T22:48:39Z @neo-fable cross-referenced by #19057
-- 2026-09-22T22:50:21Z @neo-fable cross-referenced by #19058
+- 2026-09-22T22:48:39Z @neo-fable-mnemosyne cross-referenced by #19057
+- 2026-09-22T22:50:21Z @neo-fable-mnemosyne cross-referenced by #19058
 - 2026-09-22T23:29:12Z @neo-opus-vega cross-referenced by #415
 - 2026-09-22T23:39:58Z @neo-opus-vega cross-referenced by #417
-- 2026-09-22T23:45:42Z @neo-gpt cross-referenced by #282
+- 2026-09-22T23:45:42Z @neo-gpt-euclid cross-referenced by #282
 - 2026-09-23T00:19:56Z @neo-opus-ada cross-referenced by #253
 - 2026-09-23T00:49:59Z @neo-gpt-emmy cross-referenced by PR #418
-- 2026-09-23T01:34:40Z @neo-gpt cross-referenced by #419
+- 2026-09-23T01:34:40Z @neo-gpt-euclid cross-referenced by #419
 - 2026-09-23T01:41:10Z @neo-opus-vega cross-referenced by #420
 ### @neo-opus-vega - 2026-09-23T02:29:35Z
 
@@ -191,7 +191,7 @@ Provenance for neomjs/neo-agent-brain#426: activation 11:44–11:45Z · runtime 
 - 2026-09-23T13:31:04Z @neo-opus-vega cross-referenced by #434
 - 2026-09-23T14:46:24Z @neo-opus-vega cross-referenced by #442
 - 2026-09-24T11:19:55Z @neo-opus-vega cross-referenced by #448
-- 2026-09-24T14:15:43Z @neo-gpt cross-referenced by PR #458
+- 2026-09-24T14:15:43Z @neo-gpt-euclid cross-referenced by PR #458
 - 2026-09-24T20:37:09Z @neo-opus-vega cross-referenced by #474
 - 2026-10-01T20:27:15Z @neo-opus-vega cross-referenced by #699
 - 2026-10-01T20:27:32Z @neo-opus-vega cross-referenced by PR #728

@@ -9,11 +9,11 @@ labels:
   - testing
   - architecture
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-18T02:34:45Z'
 updatedAt: '2026-10-18T05:24:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1098'
-author: neo-gemini-pro
+author: neo-gemini-julia
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -96,20 +96,20 @@ Retrieval Hint: "findSharedConfigMutations B4 RemDigestion github-workflow creat
 
 ## Timeline
 
-- 2026-10-18T02:34:46Z @neo-gemini-pro added the `enhancement` label
-- 2026-10-18T02:34:47Z @neo-gemini-pro added the `ai` label
-- 2026-10-18T02:34:47Z @neo-gemini-pro added the `refactoring` label
-- 2026-10-18T02:34:47Z @neo-gemini-pro added the `testing` label
-- 2026-10-18T02:34:47Z @neo-gemini-pro added the `architecture` label
-- 2026-10-18T02:38:12Z @neo-gemini-pro cross-referenced by PR #1099
-- 2026-10-18T02:40:54Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-18T04:08:30Z @neo-gemini-pro cross-referenced by #1102
-- 2026-10-18T04:09:31Z @neo-gemini-pro changed title from **Convert remaining Orchestrator, RemDigestion, and daemon B4 shared-config writes** to **Convert RemDigestion and github-workflow B4 shared-config test writes**
-- 2026-10-18T04:11:52Z @neo-gemini-pro cross-referenced by PR #1103
-- 2026-10-18T04:23:10Z @neo-gemini-pro referenced in commit `e9dfa73` - "feat(ai): preserve pullFilenamePrefix config access in PullRequestSyncer (#1098)"
-- 2026-10-18T04:52:34Z @neo-gemini-pro referenced in commit `f8e5eee` - "feat(ai): convert RemDigestion and github-workflow B4 test writes (#1098)"
-- 2026-10-18T04:52:34Z @neo-gemini-pro referenced in commit `53bf5d8` - "feat(ai): preserve pullFilenamePrefix config access in PullRequestSyncer (#1098)"
-- 2026-10-18T04:55:38Z @neo-gemini-pro referenced in commit `9c2b917` - "refactor(ai): derive github-workflow snapshot paths from ConfigBase SSOT (#1098)"
+- 2026-10-18T02:34:46Z @neo-gemini-julia added the `enhancement` label
+- 2026-10-18T02:34:47Z @neo-gemini-julia added the `ai` label
+- 2026-10-18T02:34:47Z @neo-gemini-julia added the `refactoring` label
+- 2026-10-18T02:34:47Z @neo-gemini-julia added the `testing` label
+- 2026-10-18T02:34:47Z @neo-gemini-julia added the `architecture` label
+- 2026-10-18T02:38:12Z @neo-gemini-julia cross-referenced by PR #1099
+- 2026-10-18T02:40:54Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-18T04:08:30Z @neo-gemini-julia cross-referenced by #1102
+- 2026-10-18T04:09:31Z @neo-gemini-julia changed title from **Convert remaining Orchestrator, RemDigestion, and daemon B4 shared-config writes** to **Convert RemDigestion and github-workflow B4 shared-config test writes**
+- 2026-10-18T04:11:52Z @neo-gemini-julia cross-referenced by PR #1103
+- 2026-10-18T04:23:10Z @neo-gemini-julia referenced in commit `e9dfa73` - "feat(ai): preserve pullFilenamePrefix config access in PullRequestSyncer (#1098)"
+- 2026-10-18T04:52:34Z @neo-gemini-julia referenced in commit `f8e5eee` - "feat(ai): convert RemDigestion and github-workflow B4 test writes (#1098)"
+- 2026-10-18T04:52:34Z @neo-gemini-julia referenced in commit `53bf5d8` - "feat(ai): preserve pullFilenamePrefix config access in PullRequestSyncer (#1098)"
+- 2026-10-18T04:55:38Z @neo-gemini-julia referenced in commit `9c2b917` - "refactor(ai): derive github-workflow snapshot paths from ConfigBase SSOT (#1098)"
 - 2026-10-18T05:24:11Z @tobiu referenced in commit `7d5359b` - "feat(ai): convert RemDigestion and github-workflow B4 test writes (#1098) (#1103)
 
 * feat(ai): convert RemDigestion and github-workflow B4 test writes (#1098)
@@ -118,7 +118,7 @@ Retrieval Hint: "findSharedConfigMutations B4 RemDigestion github-workflow creat
 
 * refactor(ai): derive github-workflow snapshot paths from ConfigBase SSOT (#1098)"
 - 2026-10-18T05:24:11Z @tobiu closed this issue
-- 2026-10-18T05:53:46Z @neo-gemini-pro cross-referenced by #1115
-- 2026-10-18T06:05:13Z @neo-gemini-pro cross-referenced by PR #1116
-- 2026-10-18T09:03:04Z @neo-gemini-pro cross-referenced by PR #1135
+- 2026-10-18T05:53:46Z @neo-gemini-julia cross-referenced by #1115
+- 2026-10-18T06:05:13Z @neo-gemini-julia cross-referenced by PR #1116
+- 2026-10-18T09:03:04Z @neo-gemini-julia cross-referenced by PR #1135
 

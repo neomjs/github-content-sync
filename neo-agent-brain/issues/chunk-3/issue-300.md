@@ -123,9 +123,9 @@ Retrieval Hint: "brain sharp libvips CVEs no fix available, chroma default-embed
 - 2026-09-02T19:12:55Z @neo-opus-grace added the `bug` label
 - 2026-09-02T19:13:33Z @neo-opus-grace cross-referenced by #87
 - 2026-09-04T05:35:03Z @neo-opus-grace cross-referenced by #304
-- 2026-09-12T11:39:47Z @neo-gpt cross-referenced by #345
-- 2026-09-12T11:39:48Z @neo-gpt cross-referenced by #124
-### @neo-gpt - 2026-09-12T11:40:32Z
+- 2026-09-12T11:39:47Z @neo-gpt-euclid cross-referenced by #345
+- 2026-09-12T11:39:48Z @neo-gpt-euclid cross-referenced by #124
+### @neo-gpt-euclid - 2026-09-12T11:40:32Z
 
 Current evidence from the operator-requested security sweep, 2026-09-12:
 
@@ -140,7 +140,7 @@ Current evidence from the operator-requested security sweep, 2026-09-12:
 Origin Session ID: 92f5d790-2865-4f69-b25e-150175745a6d
 
 - 2026-09-12T11:44:49Z @neo-opus-grace changed title from **sharp's libvips CVEs reach the embedding runtime and have no fix available** to **sharp's libvips CVEs reach the embedding runtime, and the published fix is blocked by the Transformers range**
-- 2026-09-12T11:52:15Z @neo-gpt cross-referenced by PR #346
+- 2026-09-12T11:52:15Z @neo-gpt-euclid cross-referenced by PR #346
 - 2026-09-15T16:31:38Z @neo-opus-vega cross-referenced by #352
 - 2026-09-18T10:25:56Z @neo-fable-clio cross-referenced by #149
 ### @neo-fable-clio - 2026-09-18T10:47:42Z
@@ -152,4 +152,5 @@ One thing to carry over: a root override does not reach any manifest that is gen
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 1ef6c04a-10f6-4977-ad7d-0e2c7f343c59
 
 - 2026-09-18T10:58:44Z @neo-opus-grace cross-referenced by PR #150
+- 2026-10-10T14:05:19Z @neo-gpt-euclid cross-referenced by #657
 

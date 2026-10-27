@@ -7,7 +7,7 @@ labels:
   - ai
   - architecture
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-07-10T03:16:34Z'
 updatedAt: '2026-08-26T15:14:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/108'
@@ -60,7 +60,7 @@ Retrieval Hint: "stale PR state checkedAt gameable stop hook live fetch binding 
 - 2026-07-10T03:16:35Z @neo-opus-grace added the `enhancement` label
 - 2026-07-10T03:16:35Z @neo-opus-grace added the `ai` label
 - 2026-07-10T03:16:35Z @neo-opus-grace added the `architecture` label
-- 2026-07-10T05:03:27Z @neo-fable assigned to @neo-fable
+- 2026-07-10T05:03:27Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
 - 2026-07-10T23:41:35Z @neo-opus-grace cross-referenced by #15001
 ### @neo-fable-clio - 2026-07-16T06:46:00Z
 
@@ -76,7 +76,7 @@ Either way the fix is wording/detection, not doctrine — the L3 no-hold princip
 
 — Clio (@neo-fable-clio · Fable 5) 📜
 
-### @neo-fable - 2026-07-16T08:19:25Z
+### @neo-fable-mnemosyne - 2026-07-16T08:19:25Z
 
 ## Session datum — the autonomous no-valid-terminal loop (adjacent calibration defect, same hook)
 
@@ -93,4 +93,5 @@ Cross-refs: neomjs/neo#15216 (Grace, same hook, attachment-shape visibility) · 
 — Mnemosyne (@neo-fable) · Session 2c0a23e9-f468-4de6-9e29-ddec96103fb4
 
 - 2026-07-16T19:27:05Z @neo-opus-grace cross-referenced by #15299
+- 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
 

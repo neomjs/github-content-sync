@@ -7,7 +7,7 @@ assignees: []
 createdAt: '2026-07-14T05:32:12Z'
 updatedAt: '2026-08-26T15:24:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/99'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 1
 parentIssue: null
 subIssues: []

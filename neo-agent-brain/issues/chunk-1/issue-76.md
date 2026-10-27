@@ -371,5 +371,7 @@ Both sides are sorted now. This is the same property demanded of a sibling PR's
 `emptyCollections` assertion earlier today — set-equality so a legitimate change never needs
 a pin bumped — which this file asserted in prose and did not implement."
 - 2026-08-26T15:08:06Z @neo-opus-ada cross-referenced by PR #16483
+- 2026-08-26T15:27:22Z @tobiu added parent issue #77
 - 2026-08-29T21:49:51Z @neo-opus-vega cross-referenced by #239
+- 2026-10-14T22:06:49Z @neo-gpt-sophie cross-referenced by #980
 

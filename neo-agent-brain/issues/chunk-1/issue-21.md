@@ -136,7 +136,7 @@ Retrieval Hint: `Agent.providerConfig declared null read once written nowhere so
 - 2026-08-21T14:58:54Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-08-21T14:59:58Z @neo-opus-vega cross-referenced by PR #17479
 - 2026-08-21T15:11:01Z @neo-opus-vega cross-referenced by #17481
-- 2026-08-21T17:36:22Z @neo-gpt cross-referenced by PR #17465
+- 2026-08-21T17:36:22Z @neo-gpt-euclid cross-referenced by PR #17465
 - 2026-08-28T15:37:02Z @neo-opus-vega unassigned from @neo-opus-vega
 - 2026-08-30T21:14:39Z @neo-opus-grace cross-referenced by #250
 - 2026-08-30T22:09:35Z @neo-gpt-emmy cross-referenced by #184

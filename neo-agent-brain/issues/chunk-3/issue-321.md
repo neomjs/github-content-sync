@@ -8,7 +8,7 @@ labels:
   - testing
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-09-04T23:31:33Z'
 updatedAt: '2026-09-05T13:41:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/321'
@@ -144,9 +144,9 @@ Retrieval Hint: `query_raw_memories("defect ledger has no machine producer, CI f
 - 2026-09-04T23:31:34Z @neo-opus-grace added the `testing` label
 - 2026-09-04T23:31:35Z @neo-opus-grace added the `agent-os` label
 - 2026-09-05T00:40:49Z @neo-opus-grace cross-referenced by #18348
-- 2026-09-05T01:50:01Z @neo-fable assigned to @neo-fable
-- 2026-09-05T02:26:36Z @neo-fable cross-referenced by PR #327
-- 2026-09-05T12:03:20Z @neo-fable referenced in commit `cda0519` - "fix(brain): the CI producer admits per observation, proves recovery at the green head, reads the mailbox to its end and matches blocks by full identity (#321)
+- 2026-09-05T01:50:01Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-09-05T02:26:36Z @neo-fable-mnemosyne cross-referenced by PR #327
+- 2026-09-05T12:03:20Z @neo-fable-mnemosyne referenced in commit `cda0519` - "fix(brain): the CI producer admits per observation, proves recovery at the green head, reads the mailbox to its end and matches blocks by full identity (#321)
 
 Round 1 of the review on the defect ledger's machine producer. Four executed
 controls showed the first head could lose an observation, recover a record
@@ -171,7 +171,7 @@ The Actions client lists runs across every status, reads one run by id and
 answers a Contents existence read (404 as absent, other failures thrown). The
 ticket's ledger and ACs now state these rules (AC-4/5/6/7 amended, AC-9/10
 added); the module docblock carries the retirement trigger AC-7 names."
-- 2026-09-05T13:11:53Z @neo-fable referenced in commit `18542dc` - "fix(brain): recovery needs the test named passing in the green job's log, and a bounded run listing leaves a continuation slice instead of losing its oldest run (#321)
+- 2026-09-05T13:11:53Z @neo-fable-mnemosyne referenced in commit `18542dc` - "fix(brain): recovery needs the test named passing in the green job's log, and a bounded run listing leaves a continuation slice instead of losing its oldest run (#321)
 
 Round 2 of the review. Two controls at the round-1 head still fell: a green
 job whose head held the spec file but not the affected test recovered the
@@ -194,10 +194,12 @@ oldest run it read — as a continuation slice in the receipt, drained oldest
 first before the next window; a slice too large to finish narrows to what it
 did not read. An open continuation certifies no recovery, like an incomplete
 mailbox scan. The ticket's AC-4 and AC-10 carry both rules."
-- 2026-09-05T13:24:51Z @neo-fable cross-referenced by #18361
-- 2026-09-05T13:28:39Z @neo-fable cross-referenced by PR #18362
+- 2026-09-05T13:24:51Z @neo-fable-mnemosyne cross-referenced by #18361
+- 2026-09-05T13:28:39Z @neo-fable-mnemosyne cross-referenced by PR #18362
 - 2026-09-05T13:41:07Z @tobiu referenced in commit `26f61e9` - "Merge pull request #327 from neomjs/agent/321-ci-failure-ingestor
 
 feat(brain): CI failures reach the defect ledger, one note per failing test with the run as its independence (#321)"
 - 2026-09-05T13:41:07Z @tobiu closed this issue
+- 2026-09-30T19:34:12Z @neo-opus-grace cross-referenced by #650
+- 2026-09-30T21:57:52Z @neo-gpt-euclid cross-referenced by PR #651
 

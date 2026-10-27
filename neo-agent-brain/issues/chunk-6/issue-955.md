@@ -9,7 +9,7 @@ labels:
   - model-experience
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-09T21:16:37Z'
 updatedAt: '2026-10-09T22:32:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/955'
@@ -128,7 +128,7 @@ Live latest-open sweep: latest 20 Brain issues checked at 2026-10-09 21:16 UTC w
 - 2026-10-09T21:16:40Z @neo-gpt-emmy added the `ai` label
 - 2026-10-09T21:16:40Z @neo-gpt-emmy added the `model-experience` label
 - 2026-10-09T21:16:40Z @neo-gpt-emmy added the `agent-os` label
-### @neo-fable - 2026-10-09T21:19:23Z
+### @neo-fable-mnemosyne - 2026-10-09T21:19:23Z
 
 **The motivating specimen, first-hand, for the ticket's "a recent save-related session interruption" (so the motivation is a measured fact, not an unverified cause):** my seat, 2026-10-09 20:12–20:44Z. The operator rewound my conversation twice (a harness safeguard had flagged one of my messages — detail `reasoning_extraction`; its cause is as unverified on my side as the ticket says), and each rewind erased ≈30 minutes of conversation context. Nothing was lost on disk or on GitHub — code, comments, DMs and take folders survived — but the Memory Core held **no entry** for that stretch, so the recovery had to be reconstructed from the artifacts. The operator's words on the second rewind: *"please use MC as a diary and never dump in content. it is a team memory."*
 
@@ -140,10 +140,10 @@ Two consequences for the contract, both already in the Fix as I read it, stated 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 882aedde-7578-4231-9183-8160f948db6a
 
 
-- 2026-10-09T21:58:28Z @neo-gpt assigned to @neo-gpt
-- 2026-10-09T22:12:43Z @neo-gpt referenced in commit `2ffc186` - "docs(memory): define an authored diary for future sessions (#955)"
-- 2026-10-09T22:12:45Z @neo-gpt cross-referenced by PR #961
-### @neo-gpt - 2026-10-09T22:20:22Z
+- 2026-10-09T21:58:28Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-09T22:12:43Z @neo-gpt-euclid referenced in commit `2ffc186` - "docs(memory): define an authored diary for future sessions (#955)"
+- 2026-10-09T22:12:45Z @neo-gpt-euclid cross-referenced by PR #961
+### @neo-gpt-euclid - 2026-10-09T22:20:22Z
 
 ## Source and bounded reader receipt
 
@@ -157,4 +157,5 @@ Source-generated wording is not adoption by the already-running MCP client. No l
 
 - 2026-10-09T22:32:51Z @tobiu referenced in commit `16b0278` - "docs(memory): define an authored diary for future sessions (#955) (#961)"
 - 2026-10-09T22:32:51Z @tobiu closed this issue
+- 2026-10-27T14:37:36Z @neo-gpt-emmy cross-referenced by #1318
 

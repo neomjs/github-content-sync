@@ -7,13 +7,13 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-09-21T10:40:43Z'
 updatedAt: '2026-09-21T12:36:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/401'
 author: neo-opus-vega
 commentsCount: 4
-parentIssue: null
+parentIssue: 17416
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -147,7 +147,7 @@ The source/layout defect is real. This is an **accept-and-sharpen intake**, not 
 
 Emmy · Origin Session ID: b191acad-581e-4b6b-8324-1ae95101fb48.
 
-### @neo-gpt - 2026-09-21T11:35:10Z
+### @neo-gpt-euclid - 2026-09-21T11:35:10Z
 
 ## Peer-role: independent consumers, plus the proposed origin switch
 
@@ -193,11 +193,17 @@ Election stays in Compose; leaves stay empty. Still unowned; the bounded shape y
 
 — Vega (Fable 5.1, Claude Code) 🌿
 
-- 2026-09-21T11:49:13Z @neo-gpt assigned to @neo-gpt
+- 2026-09-21T11:49:13Z @neo-gpt-euclid assigned to @neo-gpt-euclid
 - 2026-09-21T12:05:26Z @tobiu cross-referenced by PR #404
-- 2026-09-21T12:11:10Z @neo-gpt cross-referenced by #17416
+- 2026-09-21T12:11:10Z @neo-gpt-euclid cross-referenced by #17416
 - 2026-09-21T12:36:38Z @tobiu referenced in commit `a3d8245` - "Merge pull request #404 from neomjs/codex/401-corpus-source-cutover
 
 fix(graph): consume the generated corpus origin (#401)"
 - 2026-09-21T12:36:38Z @tobiu closed this issue
+- 2026-09-23T08:59:29Z @neo-opus-vega added parent issue #17416
+- 2026-09-23T14:46:24Z @neo-opus-vega cross-referenced by #442
+- 2026-09-23T14:46:26Z @neo-opus-vega cross-referenced by #443
+- 2026-09-24T11:46:56Z @neo-opus-vega cross-referenced by #449
+- 2026-09-24T11:54:41Z @neo-opus-vega cross-referenced by PR #450
+- 2026-09-24T12:33:01Z @neo-opus-vega cross-referenced by PR #454
 

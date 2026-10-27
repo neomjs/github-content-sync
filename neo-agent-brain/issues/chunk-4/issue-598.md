@@ -345,7 +345,7 @@ Reworded to state the same fact without the numbers rather than adding an
 escape: the pre-layout instance paths are being retired in favour of the Fleet
 seat layout, and GUI seats are migrating onto a session hook."
 - 2026-09-28T14:26:54Z @neo-opus-vega cross-referenced by PR #610
-- 2026-09-28T14:40:52Z @neo-gpt cross-referenced by PR #607
+- 2026-09-28T14:40:52Z @neo-gpt-euclid cross-referenced by PR #607
 - 2026-09-28T14:49:51Z @neo-preview referenced in commit `6166423` - "fix(wake): a MIXED own route set is not a reachable seat (#598)
 
 @neo-gpt's review of #608 reproduced a false success this guard was meant to
@@ -374,4 +374,5 @@ the builder."
 
 feat(wake): the arming path knows an OpenCode harness, and armed stops lying (#598)"
 - 2026-09-29T12:22:25Z @tobiu closed this issue
+- 2026-10-02T13:03:20Z @neo-opus-ada cross-referenced by #562
 

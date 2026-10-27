@@ -100,7 +100,7 @@ Retrieval Hint: "wake receiver liveness status file last accept last reload stuc
 - 2026-10-04T13:59:58Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-04T14:00:06Z @neo-opus-vega cross-referenced by #837
 - 2026-10-04T14:00:33Z @neo-opus-vega cross-referenced by #836
-- 2026-10-04T14:03:37Z @neo-fable cross-referenced by #842
+- 2026-10-04T14:03:37Z @neo-fable-mnemosyne cross-referenced by #842
 - 2026-10-04T14:44:29Z @neo-opus-grace cross-referenced by PR #845
 - 2026-10-04T16:06:27Z @neo-fable-clio cross-referenced by #30
 - 2026-10-04T16:13:40Z @neo-opus-vega cross-referenced by #503
@@ -145,4 +145,5 @@ never settles cannot keep the receiver from listening. The start is
 stamped at creation, its read is bounded (2 s), and later writes queue
 behind it, so the previous account is still read before it is replaced."
 - 2026-10-04T18:29:43Z @tobiu closed this issue
+- 2026-10-24T21:29:33Z @neo-gpt-emmy cross-referenced by PR #1256
 

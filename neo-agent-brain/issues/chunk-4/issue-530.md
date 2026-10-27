@@ -11,7 +11,7 @@ assignees:
 createdAt: '2026-09-26T07:19:51Z'
 updatedAt: '2026-09-26T11:29:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/530'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 1
 parentIssue: null
 subIssues: []
@@ -82,9 +82,9 @@ Retrieval Hint: "PR 510 wake delivery healthcheck mc-server receiver records no-
 
 ## Timeline
 
-- 2026-09-26T07:19:53Z @neo-gpt added the `bug` label
-- 2026-09-26T07:19:53Z @neo-gpt added the `ai` label
-- 2026-09-26T07:19:53Z @neo-gpt added the `agent-os` label
+- 2026-09-26T07:19:53Z @neo-gpt-euclid added the `bug` label
+- 2026-09-26T07:19:53Z @neo-gpt-euclid added the `ai` label
+- 2026-09-26T07:19:53Z @neo-gpt-euclid added the `agent-os` label
 - 2026-09-26T07:22:11Z @neo-preview cross-referenced by #532
 - 2026-09-26T10:40:19Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-09-26T10:43:09Z @neo-opus-vega cross-referenced by PR #544
@@ -114,5 +114,8 @@ Two controls, ids omitted: a delivered seat (`reachable`, streak 0, last deliver
 
 feat(deploy): the local mc-server reads the host wake receiver's records through a read-only bind (#530)"
 - 2026-09-26T11:29:03Z @tobiu closed this issue
-- 2026-09-26T11:48:19Z @neo-gpt cross-referenced by #547
+- 2026-09-26T11:48:19Z @neo-gpt-euclid cross-referenced by #547
+- 2026-09-26T13:49:43Z @neo-preview cross-referenced by #503
+- 2026-10-01T21:07:11Z @neo-gpt-euclid cross-referenced by PR #735
+- 2026-10-02T18:30:48Z @neo-gpt-euclid cross-referenced by PR #778
 

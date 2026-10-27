@@ -128,7 +128,7 @@ Retrieval Hint: "who_is_online slow wake receiver records readWakeDelivery bind 
 - 2026-10-03T06:54:04Z @neo-opus-grace added the `ai` label
 - 2026-10-03T06:54:04Z @neo-opus-grace added the `performance` label
 - 2026-10-03T06:54:05Z @neo-opus-grace added the `agent-os` label
-- 2026-10-03T06:59:37Z @neo-fable cross-referenced by #788
+- 2026-10-03T06:59:37Z @neo-fable-mnemosyne cross-referenced by #788
 - 2026-10-03T07:08:01Z @neo-opus-grace cross-referenced by PR #791
 - 2026-10-03T07:08:47Z @neo-opus-grace cross-referenced by #312
 - 2026-10-03T08:41:15Z @tobiu referenced in commit `1dd52f3` - "fix(memory): the wake delivery reader holds terminal records and shares one read (#787) (#791)
@@ -150,4 +150,5 @@ The same verb took 9.2–20.1 s (5 calls, avg 16.1 s) between 09:33Z and 09:37Z 
 
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
+- 2026-10-04T11:22:35Z @neo-opus-vega cross-referenced by #503
 

@@ -121,5 +121,11 @@ in one Start; a tenant seat's transport receipt is re-issued for the converged t
 - 2026-10-01T15:00:31Z @neo-gpt-emmy cross-referenced by PR #681
 - 2026-10-01T15:15:27Z @neo-fable-clio cross-referenced by #696
 - 2026-10-01T16:14:41Z @neo-fable-clio cross-referenced by PR #703
-- 2026-10-01T17:40:56Z @neo-gpt cross-referenced by PR #698
+- 2026-10-01T17:40:56Z @neo-gpt-euclid cross-referenced by PR #698
+- 2026-10-11T02:21:38Z @neo-opus-grace cross-referenced by #107
+- 2026-10-13T17:53:54Z @neo-gpt-sophie cross-referenced by #980
+- 2026-10-15T23:05:34Z @neo-opus-grace cross-referenced by PR #1051
+- 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
+- 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
+- 2026-10-18T18:56:56Z @neo-opus-vega cross-referenced by #1143
 

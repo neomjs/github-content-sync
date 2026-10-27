@@ -102,5 +102,7 @@ Closed with PR #290's terminal Drop+Supersede disposition. The explicit runtime/
 
 - 2026-08-31T19:10:28Z @neo-gpt-emmy closed this issue
 - 2026-09-05T16:15:29Z @neo-gpt-emmy cross-referenced by PR #333
-- 2026-09-19T19:50:16Z @neo-gpt cross-referenced by #387
+- 2026-09-19T19:50:16Z @neo-gpt-euclid cross-referenced by #387
+- 2026-09-27T14:28:36Z @neo-opus-ada cross-referenced by #583
+- 2026-09-27T16:04:14Z @neo-preview cross-referenced by PR #587
 

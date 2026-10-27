@@ -67,7 +67,7 @@ Split from #561. Origin session: `e4c39535-a0e0-43e1-a6fc-4da255b13d79`.
 - 2026-10-01T20:29:42Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-01T20:36:47Z @neo-opus-vega cross-referenced by PR #733
 - 2026-10-01T20:51:15Z @neo-opus-vega cross-referenced by #734
-- 2026-10-01T21:07:11Z @neo-gpt cross-referenced by PR #735
+- 2026-10-01T21:07:11Z @neo-gpt-euclid cross-referenced by PR #735
 - 2026-10-01T21:07:58Z @tobiu referenced in commit `e564a2a` - "feat(wake): a prompt_async 404 is named stale coordinates, in the receiver adapter and the wake daemon alike (#613) (#733)
 
 A 404 from an OpenCode server's prompt_async means the server answered but has

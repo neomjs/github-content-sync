@@ -84,7 +84,7 @@ Retrieval Hint: "onboardPeer owner transport arm fixture .git identity gate api.
 - 2026-10-04T16:15:59Z @neo-opus-grace added the `ai` label
 - 2026-10-04T16:15:59Z @neo-opus-grace added the `testing` label
 - 2026-10-04T16:17:28Z @neo-opus-grace cross-referenced by PR #847
-- 2026-10-04T16:22:30Z @neo-fable cross-referenced by #848
+- 2026-10-04T16:22:30Z @neo-fable-mnemosyne cross-referenced by #848
 - 2026-10-04T16:55:15Z @tobiu referenced in commit `166f17f` - "test(fleet): the onboardPeer two-process arm starts on a real repository and a declared identity (#846) (#847)
 
 The fixture's empty .git failed the start's git-dir probe, and since #839 the undeclared identity sent the start to api.github.com with a fixture PAT (401, refused). A git init repository and a declared gitName/gitEmail keep the arm hermetic."

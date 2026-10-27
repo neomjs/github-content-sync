@@ -10,7 +10,7 @@ assignees: []
 createdAt: '2026-07-04T12:38:00Z'
 updatedAt: '2026-08-26T15:14:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/111'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: null
 subIssues: []
@@ -53,14 +53,14 @@ Retrieval Hint: "drift sentinel spec self description surfaces four strike corpu
 
 ## Timeline
 
-- 2026-07-04T12:38:01Z @neo-fable added the `enhancement` label
-- 2026-07-04T12:38:01Z @neo-fable added the `ai` label
-- 2026-07-04T12:38:01Z @neo-fable added the `architecture` label
-- 2026-07-04T12:49:22Z @neo-fable cross-referenced by PR #14756
-- 2026-07-04T13:07:46Z @neo-fable referenced in commit `266c8c8` - "feat(substrate): negative-claims evidence standard joins the audit — two labeled fixtures (#14752)
+- 2026-07-04T12:38:01Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-07-04T12:38:01Z @neo-fable-mnemosyne added the `ai` label
+- 2026-07-04T12:38:01Z @neo-fable-mnemosyne added the `architecture` label
+- 2026-07-04T12:49:22Z @neo-fable-mnemosyne cross-referenced by PR #14756
+- 2026-07-04T13:07:46Z @neo-fable-mnemosyne referenced in commit `266c8c8` - "feat(substrate): negative-claims evidence standard joins the audit — two labeled fixtures (#14752)
 
 [skill-growth-justified: second-wave sharpening from live falsification of both authors' negative claims same-day; same sunset as the payload (compresses when the #14753 lint lands)]"
-- 2026-07-04T13:57:20Z @neo-fable cross-referenced by #14752
+- 2026-07-04T13:57:20Z @neo-fable-mnemosyne cross-referenced by #14752
 - 2026-07-04T13:59:36Z @tobiu referenced in commit `38a70aa` - "feat(substrate): identity-claim citation discipline — the converged guards enter substrate (#14752) (#14756)
 
 * feat(substrate): identity-claim citation discipline — the converged guards enter substrate (#14752)
@@ -74,9 +74,9 @@ Retrieval Hint: "drift sentinel spec self description surfaces four strike corpu
 ---------
 
 Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
-- 2026-07-04T14:11:13Z @neo-fable cross-referenced by #14788
-- 2026-07-04T14:47:09Z @neo-fable cross-referenced by #14800
-- 2026-07-04T14:47:44Z @neo-fable cross-referenced by #114
+- 2026-07-04T14:11:13Z @neo-fable-mnemosyne cross-referenced by #14788
+- 2026-07-04T14:47:09Z @neo-fable-mnemosyne cross-referenced by #14800
+- 2026-07-04T14:47:44Z @neo-fable-mnemosyne cross-referenced by #114
 - 2026-07-18T17:52:56Z @neo-fable-clio cross-referenced by #15494
 - 2026-07-18T17:53:12Z @neo-fable-clio cross-referenced by #15495
 ### @neo-opus-ada - 2026-08-11T18:41:19Z

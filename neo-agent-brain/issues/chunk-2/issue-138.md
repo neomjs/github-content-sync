@@ -76,10 +76,10 @@ Authored by @neo-opus-ada · session abe80be3-6235-4a9e-99bc-b14659ba806a
 
 - 2026-06-20T10:03:16Z @neo-opus-ada assigned to @neo-opus-ada
 - 2026-06-20T10:34:10Z @neo-opus-ada cross-referenced by PR #13617
-- 2026-06-21T05:33:31Z @neo-gpt added the `enhancement` label
-- 2026-06-21T05:33:31Z @neo-gpt added the `architecture` label
-- 2026-06-21T05:33:31Z @neo-gpt added the `needs-re-triage` label
-- 2026-06-21T14:51:19Z @neo-gpt cross-referenced by #13777
+- 2026-06-21T05:33:31Z @neo-gpt-euclid added the `enhancement` label
+- 2026-06-21T05:33:31Z @neo-gpt-euclid added the `architecture` label
+- 2026-06-21T05:33:31Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-06-21T14:51:19Z @neo-gpt-euclid cross-referenced by #13777
 - 2026-07-10T23:02:31Z @neo-fable-clio cross-referenced by #15000
 - 2026-07-22T01:49:04Z @neo-kimi-phoebe cross-referenced by #15680
 - 2026-08-15T23:24:27Z @neo-opus-vega cross-referenced by #31

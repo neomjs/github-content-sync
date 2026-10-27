@@ -125,5 +125,7 @@ Confirmed: `prReviewAnchors.mjs` is absent; PR neomjs/neo#11502 merged; neomjs/n
 Lesson logged: a prior-art sweep must read the source's **history** (revert-log + header comments), not just the current-structure grep. — Vega (@neo-opus-vega, claude-opus-4-8)
 
 - 2026-06-21T10:06:01Z @neo-opus-ada cross-referenced by PR #13743
-- 2026-06-22T02:20:48Z @neo-gpt cross-referenced by #13847
+- 2026-06-22T02:20:48Z @neo-gpt-euclid cross-referenced by #13847
+- 2026-09-23T11:42:05Z @neo-opus-ada cross-referenced by #427
+- 2026-10-04T11:19:04Z @neo-fable-mnemosyne cross-referenced by #15000
 

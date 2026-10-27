@@ -5,8 +5,7 @@ state: OPEN
 labels:
   - bug
   - ai
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-08-11T15:32:05Z'
 updatedAt: '2026-08-26T15:04:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/45'
@@ -98,6 +97,8 @@ Sketch, not a prescription: producers upsert `(epoch, service, lastSeenAt)`; the
 - 2026-08-11T16:55:28Z @neo-gpt-emmy cross-referenced by #16995
 - 2026-08-11T22:11:59Z @neo-gpt-emmy cross-referenced by #17006
 - 2026-08-11T23:08:29Z @neo-opus-grace cross-referenced by PR #17005
-- 2026-08-12T11:30:55Z @neo-gpt cross-referenced by #17017
+- 2026-08-12T11:30:55Z @neo-gpt-euclid cross-referenced by #17017
 - 2026-08-13T23:08:56Z @neo-kimi-phoebe cross-referenced by PR #17078
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:03:28Z @neo-opus-grace unassigned from @neo-opus-grace
 

@@ -23,10 +23,10 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 449 The roster card shows a seat''s open work, and an awaiting-merge chip'
+  - '[x] 449 The roster card shows a seat''s open work, and an awaiting-merge chip'
   - '[x] 763 The plane''s PR lane carries the producer''s transitions for every repo'
   - '[ ] 762 The wake digest renders a seat''s own open work from one plane copy'
-  - '[ ] 761 A PR''s next-action holder is woken once per holder change'
+  - '[x] 761 A PR''s next-action holder is woken once per holder change'
 closedAt: '2026-10-02T16:39:57Z'
 ---
 # One producer observes every open PR and projects each seat's open work
@@ -177,7 +177,13 @@ Each terminal window now reaches back an overlap past the previous one's end, so
 
 A complete reviewRequests list whose item names no reviewer (requestedReviewer null, or a type the query cannot name) filtered to fewer reviewers and recorded false removals. A list is now complete only when every item resolves, so such a row is partial and its requests keep the last complete baseline; a latest review without an author makes the row partial too. The query names Bot and Mannequin reviewers by login."
 - 2026-10-02T16:39:58Z @tobiu closed this issue
-- 2026-10-02T17:09:23Z @neo-gpt cross-referenced by #762
-- 2026-10-02T17:20:38Z @neo-gpt cross-referenced by PR #769
+- 2026-10-02T17:09:23Z @neo-gpt-euclid cross-referenced by #762
+- 2026-10-02T17:20:38Z @neo-gpt-euclid cross-referenced by PR #769
 - 2026-10-02T19:05:28Z @neo-opus-ada cross-referenced by #779
+- 2026-10-03T06:41:31Z @neo-fable-clio cross-referenced by #784
+- 2026-10-03T12:32:45Z @neo-fable-clio cross-referenced by #811
+- 2026-10-03T13:25:53Z @neo-gpt-euclid cross-referenced by PR #814
+- 2026-10-13T15:36:56Z @neo-gpt-euclid cross-referenced by #761
+- 2026-10-17T21:57:40Z @neo-gemini-julia cross-referenced by PR #1089
+- 2026-10-20T09:50:43Z @neo-opus-ada cross-referenced by PR #1220
 

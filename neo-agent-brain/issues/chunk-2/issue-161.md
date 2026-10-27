@@ -94,8 +94,8 @@ If dashboard/API keys, early-access approval, email setup, or X verification are
 - 2026-05-26T03:14:09Z @tobiu cross-referenced by #170
 - 2026-05-26T03:23:38Z @tobiu cross-referenced by #172
 - 2026-05-26T03:32:54Z @tobiu cross-referenced by #173
-- 2026-05-26T03:43:47Z @neo-gpt changed title from **[Research] Evaluate Moltbook API capabilities and MCP infrastructure** to **[Blocked Research] Moltbook API / identity feasibility for Neo AgentOS demo**
-### @neo-gpt - 2026-05-26T03:43:57Z
+- 2026-05-26T03:43:47Z @neo-gpt-euclid changed title from **[Research] Evaluate Moltbook API capabilities and MCP infrastructure** to **[Blocked Research] Moltbook API / identity feasibility for Neo AgentOS demo**
+### @neo-gpt-euclid - 2026-05-26T03:43:57Z
 
 Updated with live official-source findings.
 
@@ -107,11 +107,11 @@ Finding: Moltbook has an official API surface, but the publicly visible official
 
 Routing: keep open but blocked / needs re-triage. The next valid step requires official credentialed docs, dashboard/API-key access, or a negative-ROI decision. Do not implement from third-party mirrors or the old Chrome DevTools-first shape.
 
-- 2026-05-26T03:43:57Z @neo-gpt added the `needs-re-triage` label
-- 2026-06-03T08:05:27Z @neo-gpt removed the `needs-re-triage` label
-- 2026-06-03T08:05:33Z @neo-gpt added the `no auto close` label
-- 2026-06-03T08:05:33Z @neo-gpt added the `question` label
-### @neo-gpt - 2026-06-06T13:59:32Z
+- 2026-05-26T03:43:57Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-06-03T08:05:27Z @neo-gpt-euclid removed the `needs-re-triage` label
+- 2026-06-03T08:05:33Z @neo-gpt-euclid added the `no auto close` label
+- 2026-06-03T08:05:33Z @neo-gpt-euclid added the `question` label
+### @neo-gpt-euclid - 2026-06-06T13:59:32Z
 
 **Input from GPT-5.5 (Codex Desktop, extra-high thought budget):**
 
@@ -128,6 +128,11 @@ Routing: keep open but blocked / needs re-triage. The next valid step requires o
 > **Verdict:** no change from the current ticket body. neomjs/neo-agent-brain#161 should remain a parked research/credential gate. Downstream Moltbook implementation tickets stay blocked until an official or credentialed source proves a supported content/action API, or until the integration is explicitly declared negative ROI.
 
 - 2026-07-10T23:00:37Z @neo-fable-clio cross-referenced by #15000
-- 2026-07-29T14:21:28Z @neo-gpt cross-referenced by #9299
+- 2026-07-29T14:21:28Z @neo-gpt-euclid cross-referenced by #9299
 - 2026-08-26T15:19:27Z @tobiu marked this issue as blocking #9299
+- 2026-08-26T15:19:57Z @neo-gpt-euclid marked this issue as blocking #170
+- 2026-08-26T15:20:00Z @neo-gpt-euclid marked this issue as blocking #171
+- 2026-08-26T15:20:01Z @neo-gpt-euclid marked this issue as blocking #172
+- 2026-08-26T15:20:07Z @neo-gpt-euclid marked this issue as blocking #173
+- 2026-10-17T17:49:56Z @neo-opus-grace cross-referenced by #958
 

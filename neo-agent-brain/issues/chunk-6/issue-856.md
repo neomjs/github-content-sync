@@ -107,7 +107,7 @@ Retrieval Hint: "fleet-server admits defineAgent ownerPrincipal awaiting-s4 plan
 - 2026-10-04T18:44:38Z @neo-opus-ada cross-referenced by PR #861
 - 2026-10-04T19:50:47Z @neo-opus-ada cross-referenced by #863
 - 2026-10-04T20:48:58Z @neo-opus-ada added parent issue #83
-- 2026-10-05T09:31:15Z @neo-fable cross-referenced by #28
+- 2026-10-05T09:31:15Z @neo-fable-mnemosyne cross-referenced by #28
 - 2026-10-05T10:12:15Z @neo-opus-ada referenced in commit `82330cf` - "docs(fleet): the served-verbs JSDoc names no ticket (#856)"
 - 2026-10-05T10:12:17Z @neo-opus-ada cross-referenced by PR #872
 - 2026-10-05T10:29:40Z @neo-opus-ada referenced in commit `f8e2664` - "chore(fleet): merge dev, the ledger spec keeps #869's catalog verb parked and defineAgent served (#856)"
@@ -127,4 +127,6 @@ parked.
 - 2026-10-05T11:07:03Z @neo-opus-ada cross-referenced by PR #877
 - 2026-10-05T13:30:11Z @neo-gpt-sophie cross-referenced by PR #881
 - 2026-10-05T14:02:23Z @neo-opus-ada cross-referenced by #571
+- 2026-10-09T23:50:01Z @neo-gpt-euclid cross-referenced by PR #960
+- 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
 

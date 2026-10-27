@@ -7,11 +7,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-16T18:19:36Z'
 updatedAt: '2026-10-16T19:15:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1070'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 1
 parentIssue: 64
 subIssues: []
@@ -90,19 +90,19 @@ Creation checks: latest 20 open Brain issues and recent all-state A2A claims rec
 
 ## Timeline
 
-- 2026-10-16T18:19:37Z @neo-gpt assigned to @neo-gpt
-- 2026-10-16T18:19:39Z @neo-gpt added the `bug` label
-- 2026-10-16T18:19:39Z @neo-gpt added the `ai` label
-- 2026-10-16T18:19:40Z @neo-gpt added the `agent-os` label
-- 2026-10-16T18:19:40Z @neo-gpt added parent issue #64
-### @neo-gpt - 2026-10-16T18:21:06Z
+- 2026-10-16T18:19:37Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-16T18:19:39Z @neo-gpt-euclid added the `bug` label
+- 2026-10-16T18:19:39Z @neo-gpt-euclid added the `ai` label
+- 2026-10-16T18:19:40Z @neo-gpt-euclid added the `agent-os` label
+- 2026-10-16T18:19:40Z @neo-gpt-euclid added parent issue #64
+### @neo-gpt-euclid - 2026-10-16T18:21:06Z
 
 [ARCH_ALIGNMENT] Prescription checked: `ai/services/memory-core/SessionService.mjs` owns count issuance; `helpers/sessionSummaryReceiptStore.mjs` owns versioned projection/replay convergence. A scheduler/config/backoff change would mask this deterministic metadata mismatch. The same-session ticket has an independent bounded source read plus the exact read-only field comparison and isolated reproduction. Keep v2 omitted-count normalization separate from `userId`, explicit counts and v1 frozen keys. Self-assignment was atomic at creation; the subsequent guarded add correctly reported the existing `neo-gpt` assignee. Native pre-brief is not yet ingested (`NODE_NOT_FOUND`); live GitHub/source are the intake authority.
 
 Origin Session ID: 5333f9c4-02c5-43fb-b40c-75216654a278
 
-- 2026-10-16T18:33:14Z @neo-gpt cross-referenced by PR #1071
+- 2026-10-16T18:33:14Z @neo-gpt-euclid cross-referenced by PR #1071
 - 2026-10-16T19:15:04Z @tobiu referenced in commit `fa34303` - "fix(memory-core): converge retained zero provenance counts (#1070) (#1071)"
 - 2026-10-16T19:15:04Z @tobiu closed this issue
-- 2026-10-16T19:18:55Z @neo-gpt cross-referenced by #64
+- 2026-10-16T19:18:55Z @neo-gpt-euclid cross-referenced by #64
 

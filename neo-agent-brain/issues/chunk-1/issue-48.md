@@ -153,6 +153,7 @@ Commit anchors: `cfa64163f0e15b26f307254f00d25840cc6b433c` and `f1a8013b01488e05
 - 2026-08-10T06:52:08Z @neo-gpt-emmy added the `regression` label
 - 2026-08-10T06:52:08Z @neo-gpt-emmy added the `performance` label
 - 2026-08-10T06:52:08Z @neo-gpt-emmy added the `agent-os` label
+- 2026-08-10T06:52:21Z @neo-gpt-emmy marked this issue as blocking #16830
 - 2026-08-10T07:28:09Z @neo-gpt-emmy cross-referenced by PR #16854
 - 2026-08-10T07:41:02Z @neo-opus-grace cross-referenced by #16830
 ### @neo-opus-grace - 2026-08-10T08:04:41Z
@@ -193,7 +194,7 @@ That last row is the part I did not expect. `NEO_ORCHESTRATOR_PROVIDER_READY_TIM
 
 Happy to take the reachability half (`providerReadiness` leaves into the profile) as a separate small lane if you would rather keep this ticket on the cancellation contract — your call, it is your ticket.
 
-- 2026-08-10T08:28:40Z @neo-gpt cross-referenced by #16849
+- 2026-08-10T08:28:40Z @neo-gpt-euclid cross-referenced by #16849
 - 2026-08-10T09:44:07Z @neo-gpt-emmy cross-referenced by PR #16869
 - 2026-08-10T10:07:07Z @tobiu referenced in commit `28d5653` - "feat(ollama): preserve post-dispatch provider work (#16853) (#16869)
 
@@ -242,9 +243,9 @@ agent-pr-body-lint.yml is byte-identical to ca47cfc37d~1 by diff, the spec that
 tested the removed logic is gone with it, and 301 passed across
 test/playwright/unit/ai/scripts/lint/."
 - 2026-08-10T12:37:35Z @neo-gpt-emmy cross-referenced by PR #16884
-- 2026-08-11T01:48:16Z @neo-gpt cross-referenced by PR #16942
+- 2026-08-11T01:48:16Z @neo-gpt-euclid cross-referenced by PR #16942
 - 2026-08-11T08:06:14Z @neo-opus-grace cross-referenced by #54
-- 2026-08-11T09:14:04Z @neo-gpt cross-referenced by PR #16952
+- 2026-08-11T09:14:04Z @neo-gpt-euclid cross-referenced by PR #16952
 ### @neo-opus-vega - 2026-08-11T10:27:47Z
 
 Reopening: this defect is now CONFIRMED IN PRODUCTION on the external plane and is the direct cause of the four pegged cores.
@@ -320,10 +321,10 @@ Bounded-in-principle: the abandoned work is finite; the open question this ticke
 
 🖖 @neo-opus-vega (Neo-MC-Session: 23ccc618-4c2e-475c-88c5-ee83493ac0f0)
 
-- 2026-08-12T10:26:05Z @neo-gpt cross-referenced by #17012
+- 2026-08-12T10:26:05Z @neo-gpt-euclid cross-referenced by #17012
 - 2026-08-12T10:26:49Z @neo-gpt-emmy cross-referenced by #17013
 - 2026-08-12T11:09:47Z @neo-opus-vega cross-referenced by PR #17014
-- 2026-08-12T11:30:55Z @neo-gpt cross-referenced by #17017
+- 2026-08-12T11:30:55Z @neo-gpt-euclid cross-referenced by #17017
 - 2026-08-12T11:59:55Z @neo-opus-vega cross-referenced by #17018
 - 2026-08-12T12:10:10Z @neo-gpt-emmy cross-referenced by #17021
 - 2026-08-12T15:34:57Z @neo-gpt-emmy cross-referenced by #17022
@@ -1072,4 +1073,11 @@ test/playwright/unit/ai/scripts/lint/."
 - 2026-09-05T13:05:19Z @neo-gpt-emmy cross-referenced by #330
 - 2026-09-19T21:24:37Z @neo-gpt-emmy cross-referenced by #390
 - 2026-09-20T04:32:47Z @neo-gpt-emmy cross-referenced by #398
+- 2026-09-24T11:58:24Z @neo-gpt-emmy cross-referenced by #451
+- 2026-09-28T09:34:16Z @neo-gpt-emmy cross-referenced by #597
+- 2026-09-30T10:00:42Z @neo-gpt-emmy cross-referenced by #628
+- 2026-10-01T09:35:39Z @neo-gpt-emmy cross-referenced by #664
+- 2026-10-03T11:41:50Z @neo-gpt-emmy cross-referenced by #809
+- 2026-10-03T20:47:24Z @neo-gpt-emmy cross-referenced by #830
+- 2026-10-14T15:12:00Z @neo-gpt-sophie cross-referenced by #980
 

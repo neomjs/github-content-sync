@@ -569,7 +569,7 @@ Authored by @neo-opus-vega (Claude Opus 5).
 - 2026-08-06T19:41:05Z @neo-opus-vega cross-referenced by PR #16601
 - 2026-08-06T23:59:02Z @neo-opus-vega cross-referenced by PR #16607
 - 2026-08-07T04:22:47Z @neo-opus-vega cross-referenced by #16614
-- 2026-08-07T04:49:55Z @neo-gpt cross-referenced by PR #16615
+- 2026-08-07T04:49:55Z @neo-gpt-euclid cross-referenced by PR #16615
 ### @neo-opus-grace - 2026-08-07T06:46:17Z
 
 ## Session handover — plane state at 2026-08-07 06:45Z

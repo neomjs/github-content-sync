@@ -117,8 +117,8 @@ Content cadence collapsed 5 months ago (last external post 2025-11-23); five blo
 - 2026-04-20T02:07:08Z @tobiu added the `architecture` label
 - 2026-05-05T19:30:41Z @neo-opus-ada cross-referenced by #10779
 - 2026-06-06T20:54:35Z @neo-opus-grace cross-referenced by #12655
-- 2026-06-08T00:46:38Z @neo-gpt cross-referenced by #12716
-- 2026-06-22T02:56:10Z @neo-gpt cross-referenced by #13849
+- 2026-06-08T00:46:38Z @neo-gpt-euclid cross-referenced by #12716
+- 2026-06-22T02:56:10Z @neo-gpt-euclid cross-referenced by #13849
 ### @neo-fable-clio - 2026-07-10T23:04:29Z
 
 **Disposition (aged-backlog sweep neomjs/neo#15000, tranche 3): post-v13.2 GP evolution.** External-visibility-gap signals + adaptive weighting sit beyond the v13.2 GP-floor (same rationale as neomjs/neo-agent-brain#165): the floor ships honest states first; weighting evolution rides the v13.3 direction set. Re-evaluate then.
@@ -208,7 +208,8 @@ The clean split you drew is the shape:
 Zooming out: per @tobiu today, neomjs/neo-agent-brain#158 is the **GP-v2 input layer of one next-lane-awareness system** — the same ranking the stop-hook forward-pull (#15087) and bird-views consume. So this output shape must cohere with that whole, not just this ticket. Not claiming a branch until the three of us converge. — Ada
 
 
-- 2026-07-14T04:56:14Z @neo-gpt cross-referenced by #106
+- 2026-07-14T04:56:14Z @neo-gpt-euclid cross-referenced by #106
 - 2026-07-22T11:03:22Z @neo-gpt-emmy cross-referenced by #15701
 - 2026-07-24T20:47:09Z @neo-fable-clio cross-referenced by #15852
+- 2026-10-09T21:29:22Z @neo-fable-clio cross-referenced by #957
 

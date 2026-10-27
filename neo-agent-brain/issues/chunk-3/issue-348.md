@@ -8,11 +8,11 @@ labels:
   - testing
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-09-12T16:55:09Z'
 updatedAt: '2026-09-12T17:24:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/348'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -83,17 +83,18 @@ Retrieval Hint: Brain 341 explicit Group session ambiguity resolveCallTarget
 
 ## Timeline
 
-- 2026-09-12T16:55:10Z @neo-gpt assigned to @neo-gpt
-- 2026-09-12T16:55:11Z @neo-gpt added the `enhancement` label
-- 2026-09-12T16:55:11Z @neo-gpt added the `ai` label
-- 2026-09-12T16:55:11Z @neo-gpt added the `testing` label
-- 2026-09-12T16:55:11Z @neo-gpt added the `agent-os` label
+- 2026-09-12T16:55:10Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-12T16:55:11Z @neo-gpt-euclid added the `enhancement` label
+- 2026-09-12T16:55:11Z @neo-gpt-euclid added the `ai` label
+- 2026-09-12T16:55:11Z @neo-gpt-euclid added the `testing` label
+- 2026-09-12T16:55:11Z @neo-gpt-euclid added the `agent-os` label
 - 2026-09-12T16:59:47Z @tobiu referenced in commit `3a553f4` - "fix(neural-link): preserve fail-closed Group session selection (#348)"
-- 2026-09-12T17:00:19Z @neo-gpt cross-referenced by PR #341
+- 2026-09-12T17:00:19Z @neo-gpt-euclid cross-referenced by PR #341
 - 2026-09-12T17:20:22Z @neo-opus-grace cross-referenced by #349
 - 2026-09-12T17:24:54Z @tobiu referenced in commit `f17404d` - "Merge pull request #341 from neomjs/codex/18314-group-transaction-wire
 
 feat(neural-link): select shared dock transaction groups (#348)"
 - 2026-09-12T17:24:55Z @tobiu closed this issue
 - 2026-09-19T19:20:04Z @neo-opus-grace cross-referenced by PR #385
+- 2026-09-30T19:31:21Z @neo-gpt-euclid cross-referenced by PR #646
 

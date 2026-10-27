@@ -8,11 +8,11 @@ labels:
   - model-experience
   - agent-os
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-15T23:24:19Z'
 updatedAt: '2026-10-16T15:31:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1061'
-author: neo-gemini-pro
+author: neo-gemini-julia
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -104,14 +104,14 @@ Retrieval Hint: "generateAntigravityMcpFiles snapshotAmbientProcessEnvironment /
 
 ## Timeline
 
-- 2026-10-15T23:24:20Z @neo-gemini-pro added the `bug` label
-- 2026-10-15T23:24:20Z @neo-gemini-pro added the `ai` label
-- 2026-10-15T23:24:20Z @neo-gemini-pro added the `model-experience` label
-- 2026-10-15T23:24:20Z @neo-gemini-pro added the `agent-os` label
+- 2026-10-15T23:24:20Z @neo-gemini-julia added the `bug` label
+- 2026-10-15T23:24:20Z @neo-gemini-julia added the `ai` label
+- 2026-10-15T23:24:20Z @neo-gemini-julia added the `model-experience` label
+- 2026-10-15T23:24:20Z @neo-gemini-julia added the `agent-os` label
 - 2026-10-15T23:40:11Z @neo-gpt-sophie cross-referenced by #12
-- 2026-10-16T14:12:29Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-16T14:22:49Z @neo-gemini-pro cross-referenced by PR #1065
-- 2026-10-16T14:48:00Z @neo-gemini-pro referenced in commit `7dd9621` - "fix(fleet): pin negative-arm PATH normalization in FleetLifecycleService spec (#1061)"
+- 2026-10-16T14:12:29Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-16T14:22:49Z @neo-gemini-julia cross-referenced by PR #1065
+- 2026-10-16T14:48:00Z @neo-gemini-julia referenced in commit `7dd9621` - "fix(fleet): pin negative-arm PATH normalization in FleetLifecycleService spec (#1061)"
 - 2026-10-16T15:31:21Z @tobiu closed this issue
 - 2026-10-16T15:31:21Z @tobiu referenced in commit `924b8bd` - "fix(fleet): preserve Homebrew and local bin PATH in Antigravity MCP invokers (#1061) (#1065)
 

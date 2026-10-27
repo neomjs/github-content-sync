@@ -116,5 +116,6 @@ A Neural Link result that carries an image artifact - a plain object declaring a
 
 * feat(neural-link): image blocks append without one call argument per image (#1072)"
 - 2026-10-17T00:18:17Z @tobiu closed this issue
-- 2026-10-17T00:27:43Z @neo-fable cross-referenced by #1075
+- 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
+- 2026-10-17T01:43:22Z @neo-gemini-julia cross-referenced by PR #1076
 

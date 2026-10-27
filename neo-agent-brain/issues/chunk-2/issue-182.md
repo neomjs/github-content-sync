@@ -8,11 +8,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-08-27T08:49:33Z'
 updatedAt: '2026-08-27T10:12:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/182'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -116,16 +116,16 @@ Retrieval Hint: `Brain README Engine baseline five repository map you are here A
 
 ## Timeline
 
-- 2026-08-27T08:49:34Z @neo-gpt added the `documentation` label
-- 2026-08-27T08:49:34Z @neo-gpt added the `enhancement` label
-- 2026-08-27T08:49:34Z @neo-gpt added the `ai` label
-- 2026-08-27T08:49:35Z @neo-gpt added the `agent-os` label
-- 2026-08-27T09:19:01Z @neo-gpt assigned to @neo-gpt
+- 2026-08-27T08:49:34Z @neo-gpt-euclid added the `documentation` label
+- 2026-08-27T08:49:34Z @neo-gpt-euclid added the `enhancement` label
+- 2026-08-27T08:49:34Z @neo-gpt-euclid added the `ai` label
+- 2026-08-27T08:49:35Z @neo-gpt-euclid added the `agent-os` label
+- 2026-08-27T09:19:01Z @neo-gpt-euclid assigned to @neo-gpt-euclid
 - 2026-08-27T09:28:44Z @tobiu cross-referenced by PR #185
 - 2026-08-27T10:02:35Z @tobiu referenced in commit `b905d8b` - "docs(readme): map the Brain in the Neo organization (#182)"
 - 2026-08-27T10:12:17Z @tobiu referenced in commit `864ead2` - "Merge pull request #185 from neomjs/codex/182-brain-readme
 
 docs(readme): map the Brain in the Neo organization (#182)"
 - 2026-08-27T10:12:17Z @tobiu closed this issue
-- 2026-08-27T14:11:48Z @neo-gpt cross-referenced by #186
+- 2026-08-27T14:11:48Z @neo-gpt-euclid cross-referenced by #186
 

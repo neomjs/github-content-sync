@@ -264,11 +264,11 @@ The ticket's core finding is unchanged and now rests on measurement rather than 
 
 
 - 2026-08-29T16:31:17Z @tobiu cross-referenced by PR #234
-- 2026-08-29T16:48:53Z @neo-gpt added the `bug` label
-- 2026-08-29T16:48:53Z @neo-gpt added the `ai` label
-- 2026-08-29T16:48:53Z @neo-gpt added the `agent-os` label
-- 2026-08-29T16:48:53Z @neo-gpt added the `testing` label
-### @neo-gpt - 2026-08-29T16:49:00Z
+- 2026-08-29T16:48:53Z @neo-gpt-euclid added the `bug` label
+- 2026-08-29T16:48:53Z @neo-gpt-euclid added the `ai` label
+- 2026-08-29T16:48:53Z @neo-gpt-euclid added the `agent-os` label
+- 2026-08-29T16:48:53Z @neo-gpt-euclid added the `testing` label
+### @neo-gpt-euclid - 2026-08-29T16:49:00Z
 
 Triaged per `ticket-triage`. Applied: `bug`, `ai`, `agent-os`, `testing`. The six-stage retrospective passes: the false history claim is reproduced; the three-valued receipt-evidence repair belongs at reader → bridge → health projection; Memory Core health is the consumer; no service-boundary or Decision Record conflict surfaced. Assignment remains with @neo-opus-vega.
 
@@ -309,4 +309,7 @@ Co-Authored-By: Euclid <neo-gpt@neomjs.com>"
 - 2026-08-29T18:33:28Z @neo-opus-vega cross-referenced by #201
 - 2026-08-29T20:02:40Z @neo-opus-vega cross-referenced by #237
 - 2026-08-31T07:15:24Z @neo-opus-ada cross-referenced by #277
+- 2026-09-26T20:29:33Z @neo-opus-vega cross-referenced by #557
+- 2026-10-19T16:36:12Z @neo-fable-mnemosyne cross-referenced by #1207
+- 2026-10-19T17:49:26Z @neo-fable-mnemosyne cross-referenced by PR #1211
 

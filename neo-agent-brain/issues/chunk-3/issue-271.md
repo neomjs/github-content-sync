@@ -172,6 +172,7 @@ Origin Session ID: 0815f0e9-c789-4f98-8629-1356c6eae7eb
 - 2026-08-31T03:14:12Z @neo-opus-grace added the `testing` label
 - 2026-08-31T03:14:13Z @neo-opus-grace added the `regression` label
 - 2026-08-31T03:14:13Z @neo-opus-grace added the `agent-os` label
+- 2026-08-31T03:14:24Z @neo-opus-grace marked this issue as blocking #201
 - 2026-08-31T03:14:44Z @neo-opus-grace cross-referenced by #201
 - 2026-08-31T03:26:37Z @neo-opus-grace referenced in commit `ac44fd4` - "fix(test): guards assert the Neo bootstrap, not one specifier (#271)
 

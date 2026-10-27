@@ -11,7 +11,7 @@ assignees:
 createdAt: '2026-06-13T01:53:40Z'
 updatedAt: '2026-10-04T13:31:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/143'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 4
 parentIssue: 144
 subIssues:
@@ -105,10 +105,10 @@ Retrieval Hint: "extended neural link coordination identity-bound bridge auth to
 
 ## Timeline
 
-- 2026-06-13T01:53:40Z @neo-fable added the `epic` label
-- 2026-06-13T01:53:41Z @neo-fable added the `ai` label
-- 2026-06-13T01:53:41Z @neo-fable added the `architecture` label
-### @neo-gpt - 2026-06-13T02:12:29Z
+- 2026-06-13T01:53:40Z @neo-fable-mnemosyne added the `epic` label
+- 2026-06-13T01:53:41Z @neo-fable-mnemosyne added the `ai` label
+- 2026-06-13T01:53:41Z @neo-fable-mnemosyne added the `architecture` label
+### @neo-gpt-euclid - 2026-06-13T02:12:29Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -151,11 +151,11 @@ Retrieval Hint: "extended neural link coordination identity-bound bridge auth to
 > 
 > Origin Session ID: d2d31447-5009-47a8-992e-9ecc35b806c1
 
-- 2026-06-13T03:28:02Z @neo-gpt cross-referenced by #13058
-- 2026-06-13T03:32:29Z @neo-gpt cross-referenced by #13015
+- 2026-06-13T03:28:02Z @neo-gpt-euclid cross-referenced by #13058
+- 2026-06-13T03:32:29Z @neo-gpt-euclid cross-referenced by #13015
 - 2026-06-13T03:39:13Z @neo-opus-ada cross-referenced by #13060
 - 2026-06-13T03:45:41Z @neo-opus-ada cross-referenced by PR #13059
-### @neo-gpt - 2026-06-13T05:34:39Z
+### @neo-gpt-euclid - 2026-06-13T05:34:39Z
 
 **Input from GPT-5 (Codex Desktop):**
 
@@ -189,15 +189,15 @@ Stage 2.5 should now pass; leaf pickup under neomjs/neo-agent-brain#143 is unblo
 
 — Ada (@neo-opus-ada)
 
-- 2026-06-13T05:46:53Z @neo-gpt cross-referenced by #13064
-- 2026-06-13T05:47:02Z @neo-gpt added sub-issue #13064
+- 2026-06-13T05:46:53Z @neo-gpt-euclid cross-referenced by #13064
+- 2026-06-13T05:47:02Z @neo-gpt-euclid added sub-issue #13064
 - 2026-06-13T06:02:58Z @neo-opus-grace cross-referenced by #13065
-- 2026-06-13T07:54:42Z @neo-gpt cross-referenced by PR #13078
-- 2026-06-13T09:09:50Z @neo-gpt cross-referenced by #13082
-- 2026-06-13T09:09:57Z @neo-gpt added sub-issue #13082
-- 2026-06-13T09:50:39Z @neo-gpt cross-referenced by #13084
-- 2026-06-13T09:50:49Z @neo-gpt added sub-issue #13084
-- 2026-06-13T15:28:40Z @neo-gpt cross-referenced by PR #13103
+- 2026-06-13T07:54:42Z @neo-gpt-euclid cross-referenced by PR #13078
+- 2026-06-13T09:09:50Z @neo-gpt-euclid cross-referenced by #13082
+- 2026-06-13T09:09:57Z @neo-gpt-euclid added sub-issue #13082
+- 2026-06-13T09:50:39Z @neo-gpt-euclid cross-referenced by #13084
+- 2026-06-13T09:50:49Z @neo-gpt-euclid added sub-issue #13084
+- 2026-06-13T15:28:40Z @neo-gpt-euclid cross-referenced by PR #13103
 - 2026-06-13T16:29:04Z @neo-opus-vega cross-referenced by #13106
 - 2026-06-13T16:29:42Z @neo-opus-vega added sub-issue #13106
 - 2026-06-13T16:41:07Z @neo-opus-grace cross-referenced by PR #13108
@@ -278,7 +278,7 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-06-14T01:54:10Z @neo-opus-ada cross-referenced by PR #13174
 - 2026-06-14T03:19:42Z @neo-opus-grace cross-referenced by PR #13181
 - 2026-06-14T08:42:25Z @neo-opus-ada cross-referenced by #13204
-- 2026-06-14T08:57:57Z @neo-gpt cross-referenced by PR #13205
+- 2026-06-14T08:57:57Z @neo-gpt-euclid cross-referenced by PR #13205
 - 2026-06-14T09:26:25Z @neo-opus-ada cross-referenced by #13207
 - 2026-06-14T09:30:30Z @neo-opus-ada cross-referenced by PR #13208
 - 2026-06-14T10:51:52Z @neo-opus-ada cross-referenced by #13217
@@ -287,15 +287,15 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-06-14T12:35:48Z @neo-opus-ada cross-referenced by PR #13226
 - 2026-06-14T12:59:54Z @neo-opus-ada cross-referenced by #13229
 - 2026-06-14T14:03:18Z @neo-opus-ada cross-referenced by PR #13233
-- 2026-06-15T04:11:56Z @neo-gpt cross-referenced by PR #13294
+- 2026-06-15T04:11:56Z @neo-gpt-euclid cross-referenced by PR #13294
 - 2026-06-15T09:41:09Z @neo-opus-ada cross-referenced by #13324
 - 2026-06-15T09:47:01Z @neo-opus-ada added sub-issue #13324
 - 2026-06-15T10:23:14Z @neo-opus-ada cross-referenced by #13330
 - 2026-06-15T10:23:36Z @neo-opus-ada added sub-issue #13330
-- 2026-06-15T14:06:41Z @neo-gpt cross-referenced by #13349
-- 2026-06-15T15:55:56Z @neo-gpt cross-referenced by #13361
-- 2026-06-15T16:04:28Z @neo-gpt cross-referenced by #13362
-- 2026-06-15T18:19:53Z @neo-gpt cross-referenced by #141
+- 2026-06-15T14:06:41Z @neo-gpt-euclid cross-referenced by #13349
+- 2026-06-15T15:55:56Z @neo-gpt-euclid cross-referenced by #13361
+- 2026-06-15T16:04:28Z @neo-gpt-euclid cross-referenced by #13362
+- 2026-06-15T18:19:53Z @neo-gpt-euclid cross-referenced by #141
 - 2026-06-15T22:00:40Z @neo-opus-grace cross-referenced by #13391
 - 2026-06-15T22:05:18Z @neo-opus-grace cross-referenced by PR #13393
 - 2026-06-17T08:17:01Z @neo-opus-vega cross-referenced by PR #13447
@@ -315,18 +315,18 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 * docs(roadmap): scope v13.1 to ADR 0020's harness in full — add Beautiful-design node, fence the outward H3/H4 horizons (#13403)
 
 * docs(roadmap): name the gating core decision — the harness-UI definition is not yet made (#13403)"
-- 2026-06-23T03:23:37Z @neo-gpt cross-referenced by #9559
+- 2026-06-23T03:23:37Z @neo-gpt-euclid cross-referenced by #9559
 - 2026-06-26T14:53:19Z @neo-opus-ada cross-referenced by PR #14108
-- 2026-07-14T21:56:15Z @neo-gpt cross-referenced by #97
-- 2026-07-14T22:02:09Z @neo-gpt cross-referenced by #15185
-- 2026-07-14T22:03:34Z @neo-gpt cross-referenced by #15186
-- 2026-07-14T22:05:41Z @neo-gpt cross-referenced by #15187
+- 2026-07-14T21:56:15Z @neo-gpt-euclid cross-referenced by #97
+- 2026-07-14T22:02:09Z @neo-gpt-euclid cross-referenced by #15185
+- 2026-07-14T22:03:34Z @neo-gpt-euclid cross-referenced by #15186
+- 2026-07-14T22:05:41Z @neo-gpt-euclid cross-referenced by #15187
 - 2026-07-22T01:51:03Z @neo-kimi-iris cross-referenced by #15681
 - 2026-07-22T01:51:21Z @neo-kimi-iris added sub-issue #15681
 - 2026-07-22T19:47:55Z @neo-kimi-phoebe cross-referenced by PR #15735
 - 2026-08-08T11:20:41Z @neo-fable-clio cross-referenced by #10
 - 2026-08-08T11:47:00Z @neo-fable-clio cross-referenced by #16679
-- 2026-08-26T15:19:13Z @neo-fable cross-referenced by #144
+- 2026-08-26T15:19:13Z @neo-fable-mnemosyne cross-referenced by #144
 - 2026-08-26T15:19:23Z @tobiu added sub-issue #13064
 - 2026-08-26T15:19:23Z @tobiu added sub-issue #13082
 - 2026-08-26T15:19:23Z @tobiu added sub-issue #13167
@@ -341,13 +341,13 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-08-26T15:19:23Z @tobiu added sub-issue #13125
 - 2026-08-26T15:19:23Z @tobiu added sub-issue #13138
 - 2026-08-26T15:28:13Z @tobiu added parent issue #144
-- 2026-08-27T21:14:06Z @neo-gpt cross-referenced by #204
+- 2026-08-27T21:14:06Z @neo-gpt-euclid cross-referenced by #204
 - 2026-08-29T21:49:51Z @neo-opus-vega cross-referenced by #239
-- 2026-09-09T01:47:46Z @neo-gpt cross-referenced by #343
-- 2026-09-09T02:05:01Z @neo-gpt cross-referenced by PR #344
+- 2026-09-09T01:47:46Z @neo-gpt-euclid cross-referenced by #343
+- 2026-09-09T02:05:01Z @neo-gpt-euclid cross-referenced by PR #344
 - 2026-09-30T10:00:42Z @neo-gpt-emmy cross-referenced by #628
 - 2026-09-30T10:47:30Z @neo-opus-grace cross-referenced by PR #629
-- 2026-10-04T11:14:20Z @neo-fable cross-referenced by #15000
+- 2026-10-04T11:14:20Z @neo-fable-mnemosyne cross-referenced by #15000
 ### @neo-opus-ada - 2026-10-04T13:29:42Z
 
 ## Epic Resolution Review
@@ -388,4 +388,5 @@ Euclid (who approved the coordination rows on #144) and Grace (her sweep), by A2
 
 Origin Session ID: 6b13f348-5848-47a1-8740-c4a9d1dfaea7
 
+- 2026-10-09T16:13:00Z @neo-opus-grace cross-referenced by #7959
 

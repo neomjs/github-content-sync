@@ -6,7 +6,7 @@ labels:
   - bug
   - ai
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-07T12:51:47Z'
 updatedAt: '2026-10-11T01:46:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/918'
@@ -63,7 +63,7 @@ Origin Session ID: 9aa8aa9b-2502-458b-976b-eec8a223218e
 
 - 2026-10-07T12:51:48Z @neo-opus-grace added the `bug` label
 - 2026-10-07T12:51:49Z @neo-opus-grace added the `ai` label
-### @neo-gpt - 2026-10-07T16:31:42Z
+### @neo-gpt-euclid - 2026-10-07T16:31:42Z
 
 ### Intake — valid-as-written, with an adjacency clarification
 
@@ -77,8 +77,8 @@ No new authority or public contract: this restores the documented citation/repor
 
 I am taking the existing ticket, with isolated source work and focused red/green coverage; no broader hook or governance change.
 
-- 2026-10-07T16:31:45Z @neo-gpt assigned to @neo-gpt
-### @neo-gpt - 2026-10-07T17:01:43Z
+- 2026-10-07T16:31:45Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+### @neo-gpt-euclid - 2026-10-07T17:01:43Z
 
 ### Tested proposal; source checkout blocked
 
@@ -99,7 +99,7 @@ Local executable: `/private/tmp/euclid-918-citation-concept.cjs`; receipt: `/pri
 The first attempt to post this comment returned a GraphQL error; a primary REST read confirmed only the prior intake existed before this retry.
 
 - 2026-10-11T00:02:29Z @neo-opus-vega cross-referenced by #981
-### @neo-gpt - 2026-10-11T00:53:07Z
+### @neo-gpt-euclid - 2026-10-11T00:53:07Z
 
 Resuming the [validated intake](https://github.com/neomjs/neo-agent-brain/issues/918#issuecomment-6042258479): the resident checkout is now writable; current source still matches blob `bd7e07ead9565af8f322d7e9a7059a79e42f3ad3`. A fresh 26-control replay gives original 10 failures /16 passes and proposal 26 passes. No matching repair PR or newer prescription surfaced. Created 2026-10-07T12:51:47Z, last updated 17:01:43Z; no stale labels and no close-inactive workflow here. `valid-as-written`; no ADR impact or new beneficiary obligation.
 
@@ -112,7 +112,7 @@ Prescription checked: `ai/scripts/lifecycle/deferencePhraseMatch.mjs` owns this 
 
 Structural fast-path: new `test/playwright/unit/ai/scripts/lifecycle/deferencePhraseMatch.spec.mjs` matches the lifecycle-helper spec role beside `validateMergeReady.spec.mjs` and `hookProjectionReader.spec.mjs`; no novel directory or map change. Native pre-brief cannot find this repository-qualified ticket node; current GitHub/source and the prior intake provide the context.
 
-- 2026-10-11T00:58:35Z @neo-gpt cross-referenced by PR #985
+- 2026-10-11T00:58:35Z @neo-gpt-euclid cross-referenced by PR #985
 - 2026-10-11T01:34:58Z @neo-opus-ada cross-referenced by #987
 - 2026-10-11T01:46:47Z @tobiu referenced in commit `4ec8f35` - "fix(hooks): exempt executed-decision reports from deference matching (#918) (#985)"
 - 2026-10-11T01:46:48Z @tobiu closed this issue

@@ -10,7 +10,7 @@ assignees: []
 createdAt: '2026-08-04T20:41:13Z'
 updatedAt: '2026-08-26T15:07:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/72'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: null
 subIssues: []
@@ -80,9 +80,9 @@ Retrieval Hint: `query_raw_memories("four lock lease implementations fileLease d
 
 ## Timeline
 
-- 2026-08-04T20:41:14Z @neo-fable added the `enhancement` label
-- 2026-08-04T20:41:14Z @neo-fable added the `ai` label
-- 2026-08-04T20:41:14Z @neo-fable added the `refactoring` label
+- 2026-08-04T20:41:14Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-08-04T20:41:14Z @neo-fable-mnemosyne added the `ai` label
+- 2026-08-04T20:41:14Z @neo-fable-mnemosyne added the `refactoring` label
 - 2026-08-04T21:04:29Z @neo-opus-vega assigned to @neo-opus-vega
 ### @neo-opus-vega - 2026-08-04T21:17:42Z
 
@@ -125,7 +125,7 @@ Origin Session ID: 11695cce-9854-4be2-80c3-8ea4322298bf
 - 2026-08-04T21:23:57Z @neo-opus-vega cross-referenced by #71
 - 2026-08-04T22:33:01Z @neo-opus-vega cross-referenced by #16528
 - 2026-08-05T18:19:55Z @neo-opus-vega cross-referenced by #16561
-- 2026-08-07T07:38:23Z @neo-gpt cross-referenced by PR #16607
+- 2026-08-07T07:38:23Z @neo-gpt-euclid cross-referenced by PR #16607
 - 2026-08-07T08:07:29Z @neo-opus-vega referenced in commit `e584943` - "revert(kb): remove the writer fence — it excluded nothing, and said otherwise (#16599)
 
 Reverts 122f0d397f. Two independent falsifiers, both from @neo-gpt, and the
@@ -326,8 +326,8 @@ A detector that refuses honestly beats a fence that reports exclusion it never
 had.
 
 Authored by @neo-opus-vega (Claude Opus 5)."
-- 2026-08-07T11:50:44Z @neo-fable cross-referenced by #16515
-- 2026-08-07T12:49:27Z @neo-fable cross-referenced by #16629
+- 2026-08-07T11:50:44Z @neo-fable-mnemosyne cross-referenced by #16515
+- 2026-08-07T12:49:27Z @neo-fable-mnemosyne cross-referenced by #16629
 - 2026-08-25T15:41:09Z @dawesi referenced in commit `a56c765` - "A content digest is not an identity, so merge refuses before it duplicates the corpus (#16599) (#16607)
 
 * fix(kb): a content digest is not an identity, so merge refuses before it duplicates (#16599)

@@ -136,7 +136,7 @@ Live latest-open sweep: checked latest 20 open issues at 2026-09-15T18:56:32Z; A
 - 2026-09-15T18:57:21Z @neo-opus-vega added the `ai` label
 - 2026-09-15T18:57:22Z @neo-opus-vega added the `testing` label
 - 2026-09-15T18:57:22Z @neo-opus-vega added the `tech-debt` label
-- 2026-09-19T14:00:01Z @neo-fable cross-referenced by PR #376
+- 2026-09-19T14:00:01Z @neo-fable-mnemosyne cross-referenced by PR #376
 - 2026-09-21T14:18:02Z @neo-opus-vega cross-referenced by #406
 - 2026-09-22T22:25:57Z @neo-opus-vega cross-referenced by #411
 - 2026-09-22T23:13:08Z @neo-opus-vega cross-referenced by PR #414
@@ -145,4 +145,5 @@ Live latest-open sweep: checked latest 20 open issues at 2026-09-15T18:56:32Z; A
 
 fix(brain-tier): the tier's membership is written once and dependabot is asserted against it (#362)"
 - 2026-09-22T23:35:48Z @tobiu closed this issue
+- 2026-10-24T22:02:52Z @neo-fable-mnemosyne cross-referenced by #1253
 

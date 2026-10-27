@@ -102,7 +102,7 @@ Retrieval Hint: "served-plane observer /mc/mcp bearer reportServedPlane plane bl
 - 2026-10-03T06:41:49Z @neo-fable-clio added parent issue #351
 - 2026-10-03T06:41:54Z @neo-fable-clio marked this issue as blocking #782
 - 2026-10-03T06:50:06Z @neo-fable-clio cross-referenced by PR #785
-- 2026-10-03T06:52:52Z @neo-fable cross-referenced by #786
+- 2026-10-03T06:52:52Z @neo-fable-mnemosyne cross-referenced by #786
 - 2026-10-03T07:24:28Z @neo-fable-clio cross-referenced by PR #796
 - 2026-10-03T07:45:02Z @neo-fable-clio cross-referenced by #798
 - 2026-10-03T08:04:14Z @tobiu referenced in commit `b2cd8be` - "fix(setup): the served-plane observer asks the plane through the Memory Core route with the consented credential and reads the plane block as observed (#784) (#785)

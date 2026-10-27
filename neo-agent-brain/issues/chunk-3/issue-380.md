@@ -100,4 +100,7 @@ Retrieval Hint: "Round-1 Review ID placeholder markdown link Round 2 refused"
 
 fix(github-workflow): a Round 2 may link its Round-1 Review ID, and an empty one is refused (#380)"
 - 2026-09-19T18:18:23Z @tobiu closed this issue
+- 2026-10-01T11:52:56Z @neo-fable-clio cross-referenced by #669
+- 2026-10-01T12:12:40Z @neo-gpt-euclid cross-referenced by #571
+- 2026-10-01T13:09:01Z @neo-opus-ada cross-referenced by PR #681
 

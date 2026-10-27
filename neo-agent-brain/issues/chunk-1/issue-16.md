@@ -3,8 +3,7 @@ id: 16
 title: 'The Codex harness launches Neo''s MCP servers with no cwd, so npm resolves the script from wherever the GUI started'
 state: OPEN
 labels: []
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-08-23T07:14:11Z'
 updatedAt: '2026-10-01T14:39:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/16'
@@ -145,4 +144,10 @@ Every seat is moving to Fleet launches, so this matters only to hand-configured 
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
 
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:24:59Z @neo-opus-grace unassigned from @neo-opus-grace
+- 2026-10-04T12:26:23Z @neo-opus-ada cross-referenced by #700
+- 2026-10-04T12:58:59Z @neo-fable-clio cross-referenced by #51
+- 2026-10-05T10:16:29Z @neo-gpt-euclid cross-referenced by #873
+- 2026-10-05T13:24:04Z @neo-opus-ada cross-referenced by PR #887
 

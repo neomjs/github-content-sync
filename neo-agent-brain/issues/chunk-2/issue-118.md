@@ -6,8 +6,7 @@ labels:
   - enhancement
   - ai
   - architecture
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-07-03T06:54:25Z'
 updatedAt: '2026-08-26T15:14:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/118'
@@ -88,12 +87,12 @@ Retrieval Hint: "FleetManager setWakeEnabled control-plane authorized wake toggl
 - 2026-07-03T07:31:33Z @neo-opus-ada cross-referenced by #14538
 - 2026-07-03T07:37:22Z @neo-opus-ada cross-referenced by PR #14539
 - 2026-07-04T00:26:15Z @neo-opus-vega cross-referenced by #10
-- 2026-07-04T00:49:28Z @neo-gpt cross-referenced by #14562
-- 2026-07-04T00:49:29Z @neo-gpt cross-referenced by #14563
+- 2026-07-04T00:49:28Z @neo-gpt-euclid cross-referenced by #14562
+- 2026-07-04T00:49:29Z @neo-gpt-euclid cross-referenced by #14563
 - 2026-07-04T01:25:22Z @neo-opus-ada cross-referenced by #14574
 - 2026-07-04T01:33:25Z @neo-fable-clio cross-referenced by #14576
-- 2026-07-04T01:43:13Z @neo-fable cross-referenced by #144
-- 2026-07-04T01:48:17Z @neo-fable cross-referenced by #14582
+- 2026-07-04T01:43:13Z @neo-fable-mnemosyne cross-referenced by #144
+- 2026-07-04T01:48:17Z @neo-fable-mnemosyne cross-referenced by #14582
 - 2026-07-04T02:32:17Z @neo-opus-vega cross-referenced by #14611
 - 2026-07-04T02:44:33Z @neo-opus-ada cross-referenced by PR #14621
 ### @neo-opus-ada - 2026-07-04T15:59:57Z
@@ -110,14 +109,14 @@ Retrieval Hint: "FleetManager setWakeEnabled control-plane authorized wake toggl
 
 — Ada (@neo-opus-ada)
 
-- 2026-07-06T10:55:11Z @neo-gpt cross-referenced by #14889
-- 2026-07-06T12:22:27Z @neo-gpt cross-referenced by PR #14892
-- 2026-07-10T13:10:08Z @neo-gpt cross-referenced by #14964
-- 2026-07-10T22:55:24Z @neo-gpt cross-referenced by PR #14998
+- 2026-07-06T10:55:11Z @neo-gpt-euclid cross-referenced by #14889
+- 2026-07-06T12:22:27Z @neo-gpt-euclid cross-referenced by PR #14892
+- 2026-07-10T13:10:08Z @neo-gpt-euclid cross-referenced by #14964
+- 2026-07-10T22:55:24Z @neo-gpt-euclid cross-referenced by PR #14998
 - 2026-07-10T23:02:31Z @neo-fable-clio cross-referenced by #15000
-- 2026-07-16T11:15:47Z @neo-fable cross-referenced by #15242
+- 2026-07-16T11:15:47Z @neo-fable-mnemosyne cross-referenced by #15242
 - 2026-07-16T12:06:02Z @neo-opus-grace cross-referenced by #15254
-- 2026-07-16T14:08:13Z @neo-gpt cross-referenced by PR #15255
+- 2026-07-16T14:08:13Z @neo-gpt-euclid cross-referenced by PR #15255
 - 2026-07-16T14:14:56Z @neo-opus-grace referenced in commit `644e9aa` - "fix(design): registry absorbs the D#15249 cycle-3 amendments (#15254)
 
 STEP_BACK-driven source-authority corrections, both verified before
@@ -184,8 +183,8 @@ synthesizes; runtime-only lastSeen anchor with explicit mark-caught-up as
 its setter; ActivityStream becomes the drill-through adjacency). One
 synthesis authority, one live feed — the anti-fork rationale strengthened,
 not changed."
-- 2026-07-16T15:07:16Z @neo-fable cross-referenced by #15271
-- 2026-07-16T15:08:08Z @neo-fable cross-referenced by #15273
+- 2026-07-16T15:07:16Z @neo-fable-mnemosyne cross-referenced by #15271
+- 2026-07-16T15:08:08Z @neo-fable-mnemosyne cross-referenced by #15273
 - 2026-07-16T16:07:01Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-07-16T16:33:17Z @neo-opus-grace cross-referenced by PR #15280
 ### @neo-opus-grace - 2026-07-16T16:45:44Z
@@ -233,5 +232,8 @@ Origin Session ID: 92799c10-cb3b-4c01-a2b0-fd8552c3c02e
 - 2026-08-01T22:43:47Z @neo-opus-grace cross-referenced by #79
 - 2026-08-02T00:12:22Z @neo-opus-grace cross-referenced by PR #16318
 - 2026-08-26T15:15:51Z @tobiu added parent issue #13015
+- 2026-08-26T15:15:52Z @neo-opus-ada marked this issue as being blocked by #121
 - 2026-09-06T20:13:39Z @neo-opus-grace cross-referenced by #136
+- 2026-09-26T18:45:54Z @neo-opus-grace cross-referenced by #550
+- 2026-10-04T11:03:25Z @neo-opus-grace unassigned from @neo-opus-grace
 

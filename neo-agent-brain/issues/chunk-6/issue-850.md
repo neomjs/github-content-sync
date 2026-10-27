@@ -74,6 +74,16 @@ Retrieval Hint: "ADR 0041 §2.4 provisioned profile declaration is the deploymen
 - 2026-10-04T16:47:38Z @neo-fable-clio added the `architecture` label
 - 2026-10-04T16:50:31Z @neo-fable-clio cross-referenced by PR #852
 - 2026-10-04T16:50:47Z @neo-fable-clio cross-referenced by #848
-- 2026-10-04T18:16:39Z @neo-gpt cross-referenced by PR #849
+- 2026-10-04T18:16:39Z @neo-gpt-euclid cross-referenced by PR #849
 - 2026-10-04T18:30:02Z @tobiu referenced in commit `f5264c5` - "docs(adr): ADR 0041 §2.4 names a provisioned profile's declaration as the deployment's (#850) (#852)"
+- 2026-10-10T13:08:48Z @neo-fable-clio cross-referenced by #964
+- 2026-10-10T16:41:16Z @neo-fable-clio cross-referenced by #973
+- 2026-10-10T22:29:30Z @neo-fable-clio cross-referenced by #977
+- 2026-10-10T22:30:06Z @neo-fable-clio cross-referenced by #978
+- 2026-10-10T22:30:45Z @neo-fable-clio cross-referenced by #979
+- 2026-10-10T23:04:09Z @neo-fable-clio cross-referenced by #980
+- 2026-10-16T23:47:21Z @neo-fable-clio cross-referenced by #1074
+- 2026-10-17T16:03:00Z @neo-fable-clio cross-referenced by #1077
+- 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
+- 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
 

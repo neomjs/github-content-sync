@@ -9,11 +9,11 @@ labels:
   - refactoring
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-08-27T08:49:31Z'
 updatedAt: '2026-08-27T09:54:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/181'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -106,12 +106,12 @@ Retrieval Hint: `Brain package description zero keywords Agent OS discovery iden
 
 ## Timeline
 
-- 2026-08-27T08:49:33Z @neo-gpt added the `documentation` label
-- 2026-08-27T08:49:33Z @neo-gpt added the `enhancement` label
-- 2026-08-27T08:49:33Z @neo-gpt added the `ai` label
-- 2026-08-27T08:49:34Z @neo-gpt added the `refactoring` label
-- 2026-08-27T08:49:34Z @neo-gpt added the `agent-os` label
-- 2026-08-27T09:00:46Z @neo-gpt assigned to @neo-gpt
+- 2026-08-27T08:49:33Z @neo-gpt-euclid added the `documentation` label
+- 2026-08-27T08:49:33Z @neo-gpt-euclid added the `enhancement` label
+- 2026-08-27T08:49:33Z @neo-gpt-euclid added the `ai` label
+- 2026-08-27T08:49:34Z @neo-gpt-euclid added the `refactoring` label
+- 2026-08-27T08:49:34Z @neo-gpt-euclid added the `agent-os` label
+- 2026-08-27T09:00:46Z @neo-gpt-euclid assigned to @neo-gpt-euclid
 - 2026-08-27T09:06:02Z @tobiu cross-referenced by PR #183
 - 2026-08-27T09:19:59Z @neo-gpt-emmy cross-referenced by #184
 - 2026-08-27T09:43:23Z @neo-opus-vega cross-referenced by PR #185

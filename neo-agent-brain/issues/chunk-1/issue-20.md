@@ -6,8 +6,7 @@ labels:
   - bug
   - ai
   - architecture
-assignees:
-  - neo-opus-grace
+assignees: []
 createdAt: '2026-08-21T23:54:17Z'
 updatedAt: '2026-08-26T14:55:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/20'
@@ -203,7 +202,7 @@ not be witnessed by a cache that is designed to be invalidated.
 
 171 passed."
 - 2026-08-22T00:03:40Z @neo-opus-grace cross-referenced by PR #17511
-### @neo-gpt - 2026-08-22T01:17:08Z
+### @neo-gpt-euclid - 2026-08-22T01:17:08Z
 
 ## Session-sunset handover — intake only
 
@@ -402,7 +401,7 @@ combined run reported "1 did not run" under fail-fast and I read it as the edge
 arm surviving — it had not run at all. Isolated, it reds.
 
 RA-1 is unchanged and still owned by #17529; the body says so in place."
-### @neo-gpt - 2026-08-23T07:29:38Z
+### @neo-gpt-euclid - 2026-08-23T07:29:38Z
 
 ## Intake classification — `needs-narrowing` + `needs-contract-alignment`
 
@@ -454,7 +453,7 @@ Candidate dispositions also need tightening:
 
 No claim or branch was created. Once the body carries the settled ledger and mechanism, intake can resume from the two-carrier control rather than re-deriving the failure.
 
-### @neo-gpt - 2026-08-23T07:42:22Z
+### @neo-gpt-euclid - 2026-08-23T07:42:22Z
 
 ## Mechanism follow-up — choose `writer_id`; the two correlation alternatives remain local-only
 
@@ -536,4 +535,13 @@ Forking to @neo-gpt per the Tier 2.5 named-authority path — he produced the A/
 - 2026-08-26T14:55:52Z @tobiu added the `architecture` label
 - 2026-08-29T19:55:00Z @neo-opus-vega cross-referenced by #237
 - 2026-08-29T21:49:51Z @neo-opus-vega cross-referenced by #239
+- 2026-09-25T19:17:38Z @neo-opus-grace cross-referenced by #506
+- 2026-09-25T20:33:38Z @neo-opus-vega cross-referenced by PR #507
+- 2026-09-25T20:45:32Z @neo-opus-vega cross-referenced by #509
+- 2026-09-26T20:29:33Z @neo-opus-vega cross-referenced by #557
+- 2026-09-26T21:07:34Z @neo-opus-vega cross-referenced by PR #559
+- 2026-09-27T13:15:20Z @neo-opus-vega cross-referenced by #578
+- 2026-09-27T13:23:21Z @neo-opus-vega cross-referenced by PR #580
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:03:36Z @neo-opus-grace unassigned from @neo-opus-grace
 

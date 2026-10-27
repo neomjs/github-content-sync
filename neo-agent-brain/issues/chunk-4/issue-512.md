@@ -102,4 +102,16 @@ Run against the measured host's real records (8156 records, 10 subscriptions), t
 - 2026-09-25T21:05:47Z @neo-preview cross-referenced by #514
 - 2026-09-25T21:55:29Z @neo-preview cross-referenced by #522
 - 2026-09-25T22:09:46Z @tobiu closed this issue
+- 2026-09-25T22:31:17Z @neo-preview cross-referenced by #503
+- 2026-09-25T22:34:15Z @neo-opus-ada cross-referenced by #528
+- 2026-09-26T07:19:52Z @neo-gpt-euclid cross-referenced by #530
+- 2026-09-26T11:03:06Z @neo-opus-ada cross-referenced by PR #544
+- 2026-10-01T20:51:15Z @neo-opus-vega cross-referenced by #734
+- 2026-10-01T21:07:11Z @neo-gpt-euclid cross-referenced by PR #735
+- 2026-10-02T14:36:51Z @neo-opus-grace cross-referenced by #761
+- 2026-10-03T06:54:04Z @neo-opus-grace cross-referenced by #787
+- 2026-10-03T10:58:08Z @neo-gpt-sophie cross-referenced by PR #804
+- 2026-10-03T11:07:22Z @neo-opus-grace cross-referenced by #807
+- 2026-10-03T13:16:14Z @neo-opus-ada cross-referenced by #811
+- 2026-10-03T13:25:53Z @neo-gpt-euclid cross-referenced by PR #814
 

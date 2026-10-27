@@ -14,7 +14,7 @@ assignees:
 createdAt: '2026-08-25T22:09:39Z'
 updatedAt: '2026-08-26T21:11:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/13'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 2
 parentIssue: 17786
 subIssues: []
@@ -102,17 +102,30 @@ Engine deletion: `neomjs/neo#17791`
 
 ## Timeline
 
-- 2026-08-25T22:09:41Z @neo-gpt added the `enhancement` label
-- 2026-08-25T22:09:41Z @neo-gpt added the `ai` label
-- 2026-08-25T22:09:41Z @neo-gpt added the `refactoring` label
-- 2026-08-25T22:09:42Z @neo-gpt added the `architecture` label
-- 2026-08-25T22:09:42Z @neo-gpt added the `build` label
-- 2026-08-25T22:09:42Z @neo-gpt added the `agent-os` label
+- 2026-08-25T22:09:41Z @neo-gpt-euclid added the `enhancement` label
+- 2026-08-25T22:09:41Z @neo-gpt-euclid added the `ai` label
+- 2026-08-25T22:09:41Z @neo-gpt-euclid added the `refactoring` label
+- 2026-08-25T22:09:42Z @neo-gpt-euclid added the `architecture` label
+- 2026-08-25T22:09:42Z @neo-gpt-euclid added the `build` label
+- 2026-08-25T22:09:42Z @neo-gpt-euclid added the `agent-os` label
+- 2026-08-25T22:09:52Z @neo-gpt-euclid added parent issue #17786
+- 2026-08-25T22:09:53Z @neo-gpt-euclid marked this issue as being blocked by #17787
+- 2026-08-25T22:09:55Z @neo-gpt-euclid marked this issue as being blocked by #17783
+- 2026-08-25T22:09:56Z @neo-gpt-euclid marked this issue as being blocked by #17784
+- 2026-08-25T22:11:07Z @neo-gpt-euclid marked this issue as blocking #17791
 - 2026-08-25T22:33:56Z @neo-opus-ada cross-referenced by #17786
-- 2026-08-26T09:56:28Z @neo-gpt cross-referenced by #17787
+- 2026-08-26T09:56:28Z @neo-gpt-euclid cross-referenced by #17787
+- 2026-08-26T09:56:50Z @neo-gpt-euclid removed the block by #17783
+- 2026-08-26T09:56:50Z @neo-gpt-euclid removed the block by #17784
+- 2026-08-26T09:56:51Z @neo-gpt-euclid removed the block by #17787
+- 2026-08-26T09:56:54Z @neo-gpt-euclid marked this issue as being blocked by #17783
+- 2026-08-26T09:56:55Z @neo-gpt-euclid marked this issue as being blocked by #17787
+- 2026-08-26T09:56:57Z @neo-gpt-euclid marked this issue as being blocked by #17798
+- 2026-08-26T09:56:59Z @neo-gpt-euclid removed the block on #17791
+- 2026-08-26T09:57:03Z @neo-gpt-euclid marked this issue as blocking #17791
 - 2026-08-26T10:32:26Z @neo-opus-vega cross-referenced by #17783
 - 2026-08-26T10:33:31Z @neo-opus-vega assigned to @neo-opus-vega
-- 2026-08-26T10:38:46Z @neo-gpt cross-referenced by PR #8
+- 2026-08-26T10:38:46Z @neo-gpt-euclid cross-referenced by PR #8
 - 2026-08-26T11:29:57Z @tobiu cross-referenced by PR #9
 - 2026-08-26T12:21:51Z @tobiu cross-referenced by #17800
 - 2026-08-26T12:24:41Z @neo-gpt-emmy cross-referenced by #10
@@ -171,12 +184,19 @@ Accepting the successor filing rather than challenging with a green receipt — 
 — Vega (Claude Opus 5, Claude Code) 🌿
 
 
+- 2026-08-26T14:48:42Z @neo-gpt-euclid marked this issue as blocking #12
 - 2026-08-26T14:50:01Z @tobiu added the `enhancement` label
 - 2026-08-26T14:50:02Z @tobiu added the `ai` label
 - 2026-08-26T14:50:02Z @tobiu added the `refactoring` label
 - 2026-08-26T14:50:02Z @tobiu added the `architecture` label
 - 2026-08-26T14:50:02Z @tobiu added the `build` label
 - 2026-08-26T14:50:03Z @tobiu added the `agent-os` label
+- 2026-08-26T14:50:16Z @neo-gpt-euclid marked this issue as being blocked by #17798
+- 2026-08-26T14:50:16Z @neo-gpt-euclid marked this issue as being blocked by #17787
+- 2026-08-26T14:50:16Z @neo-gpt-euclid marked this issue as being blocked by #17783
+- 2026-08-26T14:50:17Z @neo-gpt-euclid marked this issue as blocking #17791
+- 2026-08-26T14:50:17Z @neo-gpt-euclid marked this issue as blocking #12
+- 2026-08-26T14:50:17Z @tobiu added parent issue #17786
 - 2026-08-26T15:40:34Z @tobiu cross-referenced by PR #177
 - 2026-08-26T15:51:57Z @tobiu referenced in commit `56457ca` - "feat(migration): receive the 178 Agent OS source movers (#13)
 
@@ -875,8 +895,8 @@ stays ported to walk both plane roots, and prepare invokes it.
 Kept for the same reason: the Playwright harness. Brain #13 requires the received
 suites to run here, the test census specified duplicating setup and
 resolveFreePort per plane, and it was asked for by name."
-- 2026-08-26T19:05:11Z @neo-gpt unassigned from @neo-opus-vega
-- 2026-08-26T19:05:13Z @neo-gpt assigned to @neo-gpt-emmy
+- 2026-08-26T19:05:11Z @neo-gpt-euclid unassigned from @neo-opus-vega
+- 2026-08-26T19:05:13Z @neo-gpt-euclid assigned to @neo-gpt-emmy
 - 2026-08-26T19:47:26Z @tobiu cross-referenced by PR #178
 - 2026-08-26T20:02:03Z @tobiu referenced in commit `9e056af` - "fix(brain): retain Fleet Manager harness in Neo (#13)"
 - 2026-08-26T20:06:26Z @tobiu referenced in commit `9c196a2` - "fix(docs): preserve subject-owned guide custody (#13)"
@@ -888,4 +908,13 @@ feat(brain): receive the Agent OS (#13)"
 - 2026-08-26T21:14:10Z @neo-gpt-emmy cross-referenced by #179
 - 2026-08-27T09:42:34Z @neo-opus-vega cross-referenced by PR #183
 - 2026-09-05T00:54:44Z @neo-fable-clio cross-referenced by #324
+- 2026-09-23T11:29:47Z @neo-opus-ada cross-referenced by #425
+- 2026-09-23T11:32:17Z @neo-opus-ada cross-referenced by #49
+- 2026-09-25T22:18:49Z @neo-opus-grace cross-referenced by #526
+- 2026-09-26T08:43:14Z @neo-opus-vega cross-referenced by PR #527
+- 2026-09-26T18:38:54Z @neo-opus-grace cross-referenced by PR #548
+- 2026-09-26T18:45:54Z @neo-opus-grace cross-referenced by #550
+- 2026-10-02T10:25:40Z @neo-fable-clio cross-referenced by #37
+- 2026-10-02T16:49:20Z @neo-fable-clio cross-referenced by #767
+- 2026-10-03T08:06:33Z @neo-opus-grace cross-referenced by #800
 

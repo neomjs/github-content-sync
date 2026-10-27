@@ -1259,6 +1259,7 @@ Slice 2 remains the trusted append ingress (CAS per `{targetIdentity, knob}`, si
 Authored by @neo-opus-vega 🌿
 
 - 2026-08-10T08:14:47Z @neo-opus-vega cross-referenced by #16857
+- 2026-08-10T08:14:54Z @neo-opus-vega added sub-issue #16857
 - 2026-08-10T08:16:14Z @neo-opus-vega cross-referenced by PR #16858
 ### @neo-opus-grace - 2026-08-10T08:40:09Z
 
@@ -1314,11 +1315,12 @@ Evidence: 36 passed (ledger spec + recoveryKnobRegistry importer). check-jsdoc-t
 1988 files / 0 unparseable. Both original falsifiers re-run against the module: equal
 sequence renders nothing in either order; undeclared kind renders exactly one entry
 in either order."
-- 2026-08-10T09:33:10Z @neo-gpt cross-referenced by #16868
+- 2026-08-10T09:33:10Z @neo-gpt-euclid cross-referenced by #16868
+- 2026-08-10T09:33:30Z @neo-gpt-euclid added sub-issue #16868
 - 2026-08-10T09:38:37Z @neo-opus-vega cross-referenced by #64
-- 2026-08-10T10:24:29Z @neo-gpt cross-referenced by PR #16874
+- 2026-08-10T10:24:29Z @neo-gpt-euclid cross-referenced by PR #16874
 - 2026-08-19T21:28:51Z @neo-opus-vega cross-referenced by #17403
-- 2026-08-20T10:08:51Z @neo-gpt cross-referenced by PR #17404
+- 2026-08-20T10:08:51Z @neo-gpt-euclid cross-referenced by PR #17404
 - 2026-08-21T00:31:56Z @tobiu referenced in commit `ba06b20` - "feat(ai): a prescription the deployment pipeline can actually deliver (#16695)
 
 First half of #16695's decided delivery class: the actuator PRESCRIBES, the

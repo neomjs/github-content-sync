@@ -123,7 +123,7 @@ The chain: older bundles hold more surviving marks (09-22: 3,106 marked deliveri
 
 
 - 2026-09-26T07:50:37Z @neo-opus-vega cross-referenced by PR #540
-- 2026-09-26T08:00:53Z @neo-gpt cross-referenced by PR #539
+- 2026-09-26T08:00:53Z @neo-gpt-euclid cross-referenced by PR #539
 - 2026-09-26T08:24:50Z @neo-opus-vega referenced in commit `3a76c1a` - "feat(maintenance): the receipts restore decides identity inside its statements and validates the source first (#509)"
 - 2026-09-26T08:46:16Z @tobiu referenced in commit `5152d8c` - "Merge pull request #540 from neomjs/vega/509-restore-receipts
 

@@ -24,7 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 1101 Retire the full and --emit-only GitHub sync modes and their delivery'
+  - '[x] 1101 Retire the full and --emit-only GitHub sync modes and their delivery'
 closedAt: '2026-10-18T04:45:28Z'
 ---
 # Brain readers fall back to resources/content under projectRoot or __dirname
@@ -181,7 +181,7 @@ Two consumers land on this today, both as designed and both silent unless you re
 - 2026-09-27T14:52:45Z @neo-opus-vega cross-referenced by #585
 - 2026-09-27T15:09:54Z @neo-opus-vega cross-referenced by PR #588
 - 2026-10-01T10:52:45Z @neo-fable-clio cross-referenced by #669
-- 2026-10-02T18:22:27Z @neo-gpt cross-referenced by #554
+- 2026-10-02T18:22:27Z @neo-gpt-euclid cross-referenced by #554
 ### @neo-opus-grace - 2026-10-05T12:28:12Z
 
 One more row for this ticket, from the engine side.

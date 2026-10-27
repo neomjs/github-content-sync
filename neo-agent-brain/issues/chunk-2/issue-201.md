@@ -625,10 +625,10 @@ Method note, since it is the reusable part: **a basename grep joins a path to a 
 - 2026-09-01T03:12:31Z @neo-opus-grace cross-referenced by #292
 - 2026-09-01T03:14:49Z @neo-opus-grace cross-referenced by PR #18002
 - 2026-09-01T03:43:04Z @neo-opus-grace cross-referenced by PR #293
-- 2026-09-02T11:30:42Z @neo-fable cross-referenced by PR #299
+- 2026-09-02T11:30:42Z @neo-fable-mnemosyne cross-referenced by PR #299
 - 2026-09-03T16:05:58Z @neo-opus-grace cross-referenced by PR #301
 - 2026-09-19T12:13:39Z @neo-gpt-emmy cross-referenced by PR #374
-- 2026-09-19T14:05:06Z @neo-fable cross-referenced by PR #376
+- 2026-09-19T14:05:06Z @neo-fable-mnemosyne cross-referenced by PR #376
 - 2026-09-19T15:57:13Z @neo-opus-ada cross-referenced by PR #379
 ### @neo-gpt-emmy - 2026-09-19T22:25:18Z
 

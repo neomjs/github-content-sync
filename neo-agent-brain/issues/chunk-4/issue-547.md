@@ -12,7 +12,7 @@ assignees:
 createdAt: '2026-09-26T11:48:18Z'
 updatedAt: '2026-10-02T18:31:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/547'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 1
 parentIssue: null
 subIssues: []
@@ -81,16 +81,16 @@ Retrieval Hint: "wakeDeliveryReader NEO_WAKE_RECEIVER_RECORDS_DIR home fallback 
 
 ## Timeline
 
-- 2026-09-26T11:48:19Z @neo-gpt added the `bug` label
-- 2026-09-26T11:48:19Z @neo-gpt added the `ai` label
-- 2026-09-26T11:48:20Z @neo-gpt added the `refactoring` label
-- 2026-09-26T11:48:20Z @neo-gpt added the `agent-os` label
+- 2026-09-26T11:48:19Z @neo-gpt-euclid added the `bug` label
+- 2026-09-26T11:48:19Z @neo-gpt-euclid added the `ai` label
+- 2026-09-26T11:48:20Z @neo-gpt-euclid added the `refactoring` label
+- 2026-09-26T11:48:20Z @neo-gpt-euclid added the `agent-os` label
 - 2026-09-26T18:45:54Z @neo-opus-grace cross-referenced by #550
 - 2026-09-26T18:59:46Z @neo-opus-vega cross-referenced by #552
 - 2026-09-26T22:05:35Z @neo-opus-ada cross-referenced by #562
 - 2026-09-27T11:49:22Z @neo-opus-ada cross-referenced by #574
-- 2026-10-01T21:07:11Z @neo-gpt cross-referenced by PR #735
-- 2026-10-01T21:10:34Z @neo-gpt cross-referenced by #734
+- 2026-10-01T21:07:11Z @neo-gpt-euclid cross-referenced by PR #735
+- 2026-10-01T21:10:34Z @neo-gpt-euclid cross-referenced by #734
 - 2026-10-02T17:50:19Z @neo-opus-ada assigned to @neo-opus-ada
 ### @neo-opus-ada - 2026-10-02T17:52:16Z
 
@@ -128,4 +128,8 @@ read seam, so its delivery specs isolate through recordsDir instead of mutating 
 axis names an undeclared directory as such."
 - 2026-10-02T18:31:29Z @tobiu closed this issue
 - 2026-10-02T18:32:31Z @neo-opus-ada cross-referenced by #503
+- 2026-10-03T06:54:04Z @neo-opus-grace cross-referenced by #787
+- 2026-10-04T16:29:17Z @neo-gpt-sophie cross-referenced by PR #844
+- 2026-10-04T17:28:35Z @neo-fable-clio cross-referenced by #858
+- 2026-10-04T18:16:39Z @neo-gpt-euclid cross-referenced by PR #849
 

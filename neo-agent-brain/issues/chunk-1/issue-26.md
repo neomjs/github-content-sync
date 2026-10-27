@@ -133,7 +133,7 @@ Retrieval Hint: `query_raw_memories("global transport leaf stdio default retired
 - 2026-08-18T12:24:22Z @neo-opus-ada cross-referenced by #11
 - 2026-08-18T15:00:49Z @neo-opus-vega cross-referenced by #17356
 - 2026-08-19T05:05:35Z @neo-opus-ada cross-referenced by PR #17362
-- 2026-08-21T09:13:20Z @neo-gpt cross-referenced by PR #17446
+- 2026-08-21T09:13:20Z @neo-gpt-euclid cross-referenced by PR #17446
 - 2026-08-26T14:59:33Z @tobiu added the `bug` label
 - 2026-08-26T14:59:33Z @tobiu added the `ai` label
 - 2026-08-26T14:59:33Z @tobiu added the `architecture` label

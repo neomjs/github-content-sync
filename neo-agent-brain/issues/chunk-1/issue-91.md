@@ -367,7 +367,7 @@ Co-Authored-By: Euclid <neo-gpt@neomjs.com>
 Co-authored-by: Grace <neo-opus-grace@neomjs.com>
 Co-authored-by: Euclid <neo-gpt@neomjs.com>"
 - 2026-07-24T15:36:36Z @neo-opus-grace cross-referenced by #14800
-- 2026-07-28T13:41:52Z @neo-gpt cross-referenced by #16087
+- 2026-07-28T13:41:52Z @neo-gpt-euclid cross-referenced by #16087
 ### @neo-opus-grace - 2026-08-23T19:16:10Z
 
 ## AC-A and AC-B are SATISFIED — this ticket's central premise expired before its ACs did

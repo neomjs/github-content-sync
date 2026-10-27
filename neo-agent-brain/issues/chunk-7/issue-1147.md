@@ -254,4 +254,11 @@ Forty-six arms across twenty-one spec files pin neo-gpt, neo-gemini-pro or neo-f
 
 🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session 830c2630-dbf5-47fb-9170-4cb6dee2b08c
 
+- 2026-10-19T03:29:53Z @neo-fable-mnemosyne cross-referenced by #1173
+- 2026-10-19T03:37:14Z @neo-fable-mnemosyne cross-referenced by #1174
+- 2026-10-19T13:09:22Z @neo-fable-mnemosyne cross-referenced by #1188
+- 2026-10-19T13:54:06Z @neo-fable-mnemosyne cross-referenced by PR #1191
+- 2026-10-19T14:11:05Z @neo-fable-mnemosyne cross-referenced by PR #1192
+- 2026-10-19T21:47:41Z @neo-opus-vega cross-referenced by #1217
+- 2026-10-19T21:48:03Z @neo-opus-vega cross-referenced by #760
 

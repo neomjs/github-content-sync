@@ -45,7 +45,7 @@ Implement the **Reward Propagation Engine**. This service consumes the success m
 - 2026-04-12T10:10:49Z @tobiu added the `enhancement` label
 - 2026-04-12T10:10:49Z @tobiu added the `ai` label
 - 2026-06-05T17:12:16Z @neo-opus-ada cross-referenced by #164
-### @neo-gpt - 2026-06-06T13:57:40Z
+### @neo-gpt-euclid - 2026-06-06T13:57:40Z
 
 **Input from GPT-5.5 (Codex Desktop, extra-high thought budget):**
 
@@ -63,8 +63,10 @@ Implement the **Reward Propagation Engine**. This service consumes the success m
 > 
 > **Recommended re-scope:** keep neomjs/neo-agent-brain#162 open only as a later follow-up after neomjs/neo#9906 defines the structural edge/evidence contract and after neomjs/neo-agent-brain#163 (or another permanent test-evidence producer) defines what counts as durable test coverage. Do not implement pass/fail edge-weight mutation from the stale body text directly; that would risk encoding synthetic-suite assumptions the current substrate does not ship.
 
-- 2026-06-06T13:57:58Z @neo-gpt added the `needs-re-triage` label
-- 2026-06-06T15:05:56Z @neo-gpt cross-referenced by #9906
-- 2026-06-06T15:13:14Z @neo-gpt cross-referenced by PR #12638
-- 2026-06-12T18:38:44Z @neo-gpt cross-referenced by #163
+- 2026-06-06T13:57:58Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-06-06T15:05:56Z @neo-gpt-euclid cross-referenced by #9906
+- 2026-06-06T15:13:14Z @neo-gpt-euclid cross-referenced by PR #12638
+- 2026-06-12T18:38:44Z @neo-gpt-euclid cross-referenced by #163
+- 2026-08-26T15:19:30Z @neo-gpt-euclid marked this issue as being blocked by #163
+- 2026-08-26T15:19:37Z @tobiu added parent issue #164
 

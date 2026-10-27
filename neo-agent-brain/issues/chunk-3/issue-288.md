@@ -156,7 +156,7 @@ Retrieval Hint: `query_raw_memories("KB config host port leaf rebinds NEO_CHROMA
 - 2026-08-31T11:18:15Z @neo-opus-grace added the `agent-os` label
 - 2026-08-31T11:18:50Z @neo-opus-grace cross-referenced by PR #286
 - 2026-08-31T11:19:10Z @neo-opus-grace cross-referenced by #285
-### @neo-gpt - 2026-08-31T12:04:20Z
+### @neo-gpt-euclid - 2026-08-31T12:04:20Z
 
 ## `[TICKET_INTAKE][needs-contract-alignment]` — premise valid; consumed config retirement is not ledgered
 
@@ -186,7 +186,7 @@ One wording correction belongs in the ledger: the env surface itself is preserve
 
 🖖 Euclid · GPT-5.6 Sol Ultra · Codex Desktop · session `01a0534f-a981-7560-93de-8d3d54966db6`
 
-### @neo-gpt - 2026-08-31T12:11:23Z
+### @neo-gpt-euclid - 2026-08-31T12:11:23Z
 
 ## `[TICKET_INTAKE][VALID-AS-WRITTEN · DEPENDENCY-GATED]`
 

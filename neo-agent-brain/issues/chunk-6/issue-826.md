@@ -23,7 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 522 A desktop seat whose session opened in another folder says so'
+  - '[x] 522 A desktop seat whose session opened in another folder says so'
 closedAt: '2026-10-04T11:33:24Z'
 ---
 # The Fleet reports where a desktop seat's first session opened
@@ -103,8 +103,10 @@ Retrieval Hint: "desktop seat session folder claude-code-sessions originCwd mana
 - 2026-10-03T19:12:55Z @neo-opus-ada added the `enhancement` label
 - 2026-10-03T19:12:55Z @neo-opus-ada added the `ai` label
 - 2026-10-03T19:12:55Z @neo-opus-ada added the `agent-os` label
+- 2026-10-03T19:13:07Z @neo-opus-ada added parent issue #571
 - 2026-10-03T19:33:31Z @neo-opus-ada cross-referenced by #571
 - 2026-10-03T19:46:31Z @neo-opus-ada cross-referenced by #522
+- 2026-10-03T19:46:42Z @neo-opus-ada marked this issue as blocking #522
 - 2026-10-03T19:53:48Z @neo-opus-ada cross-referenced by PR #828
 - 2026-10-03T19:55:53Z @neo-opus-ada referenced in commit `cffff51` - "docs(fleet): the session-folder reader's module doc states the Desktop constraint without a ticket reference (#826)"
 - 2026-10-04T11:06:34Z @neo-opus-ada referenced in commit `3c31349` - "fix(fleet): a session record that vanishes or refuses its metadata after the listing reads as unreadable, never a throw that rejects every seat's status (#826)
@@ -136,4 +138,5 @@ The statSync on each listed record ran outside the per-record catch, so a record
 - 2026-10-04T11:33:24Z @tobiu closed this issue
 - 2026-10-04T12:52:07Z @neo-opus-ada cross-referenced by #700
 - 2026-10-04T14:07:32Z @neo-opus-grace cross-referenced by PR #546
+- 2026-10-15T23:28:51Z @neo-fable-clio cross-referenced by PR #1060
 

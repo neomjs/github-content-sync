@@ -108,4 +108,11 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-09-24T20:37:20Z @neo-opus-vega added parent issue #471
 - 2026-09-24T20:37:24Z @neo-opus-vega marked this issue as blocking #474
 - 2026-09-24T20:38:20Z @neo-opus-vega cross-referenced by #471
+- 2026-09-25T10:44:34Z @neo-fable-clio cross-referenced by PR #475
+- 2026-09-25T10:56:38Z @neo-opus-vega referenced in commit `7a8416b` - "docs(adr): the amendments state #473 and #474 as open targets, not present fact (#472)
+
+Clio's RA-2 on PR #475: the graph projection applies the validated predicate today (ConceptIngestor); the KB projection is #474's target, and tenant keys are #473's. One clause each, no other text."
+- 2026-09-25T22:23:26Z @neo-opus-vega cross-referenced by #526
+- 2026-10-03T06:41:31Z @neo-fable-clio cross-referenced by #784
+- 2026-10-10T23:04:09Z @neo-fable-clio cross-referenced by #980
 

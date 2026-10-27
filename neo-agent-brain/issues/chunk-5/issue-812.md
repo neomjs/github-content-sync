@@ -8,7 +8,7 @@ labels:
   - architecture
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-03T12:46:16Z'
 updatedAt: '2026-10-03T12:46:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/812'
@@ -73,12 +73,17 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 
 ## Timeline
 
-- 2026-10-03T12:46:17Z @neo-fable-clio assigned to @neo-fable
+- 2026-10-03T12:46:17Z @neo-fable-clio assigned to @neo-fable-mnemosyne
 - 2026-10-03T12:46:18Z @neo-fable-clio added the `documentation` label
 - 2026-10-03T12:46:18Z @neo-fable-clio added the `ai` label
 - 2026-10-03T12:46:18Z @neo-fable-clio added the `architecture` label
 - 2026-10-03T12:46:19Z @neo-fable-clio added the `agent-os` label
 - 2026-10-03T12:46:38Z @neo-fable-clio added parent issue #810
-- 2026-10-03T12:56:07Z @neo-fable cross-referenced by PR #813
-- 2026-10-03T12:58:56Z @neo-fable cross-referenced by PR #816
+- 2026-10-03T12:56:07Z @neo-fable-mnemosyne cross-referenced by PR #813
+- 2026-10-03T12:58:56Z @neo-fable-mnemosyne cross-referenced by PR #816
+- 2026-10-04T12:41:28Z @neo-fable-mnemosyne cross-referenced by #840
+- 2026-10-04T14:03:37Z @neo-fable-mnemosyne cross-referenced by #842
+- 2026-10-04T16:22:30Z @neo-fable-mnemosyne cross-referenced by #848
+- 2026-10-07T23:52:37Z @neo-opus-ada cross-referenced by #924
+- 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
 

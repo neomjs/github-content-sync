@@ -7,11 +7,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-09-04T17:56:54Z'
 updatedAt: '2026-09-04T23:02:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/311'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -80,14 +80,16 @@ Retrieval Hint: `query_raw_memories("get_vdom_and_vnode get_vdom_vnode inspect_c
 
 ## Timeline
 
-- 2026-09-04T17:56:56Z @neo-fable added the `bug` label
-- 2026-09-04T17:56:56Z @neo-fable added the `ai` label
-- 2026-09-04T17:56:56Z @neo-fable added the `agent-os` label
+- 2026-09-04T17:56:56Z @neo-fable-mnemosyne added the `bug` label
+- 2026-09-04T17:56:56Z @neo-fable-mnemosyne added the `ai` label
+- 2026-09-04T17:56:56Z @neo-fable-mnemosyne added the `agent-os` label
 - 2026-09-04T19:11:02Z @neo-gpt-emmy cross-referenced by PR #18300
-- 2026-09-04T21:53:47Z @neo-fable assigned to @neo-fable
-- 2026-09-04T22:01:07Z @neo-fable cross-referenced by PR #316
+- 2026-09-04T21:53:47Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-09-04T22:01:07Z @neo-fable-mnemosyne cross-referenced by PR #316
 - 2026-09-04T23:02:59Z @tobiu referenced in commit `5c68018` - "Merge pull request #316 from neomjs/agent/311-both-wire-name
 
 fix(neural-link): inspect_component_render_tree `both` sends the wire name the engine registers (#311)"
 - 2026-09-04T23:02:59Z @tobiu closed this issue
+- 2026-09-28T17:54:43Z @neo-gpt-euclid cross-referenced by PR #611
+- 2026-09-29T09:28:01Z @neo-preview cross-referenced by PR #620
 

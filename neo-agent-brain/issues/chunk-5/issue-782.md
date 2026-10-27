@@ -147,7 +147,7 @@ One attribution bound on the proposed canary: `providerReadinessHelper` probes t
 
 The packet stays on the same receipt/observation contract. No competing implementation claimed.
 
-### @neo-gpt - 2026-10-02T20:57:37Z
+### @neo-gpt-euclid - 2026-10-02T20:57:37Z
 
 Peer-role contract refinement before implementation: **keep an ambiguous witness write in reconciliation**.
 
@@ -182,7 +182,7 @@ Verified against the live ticket body on 2026-10-03. These are contract disposit
 
 - 2026-10-03T06:41:31Z @neo-fable-clio cross-referenced by #784
 - 2026-10-03T06:41:54Z @neo-fable-clio marked this issue as being blocked by #784
-- 2026-10-03T06:52:52Z @neo-fable cross-referenced by #786
+- 2026-10-03T06:52:52Z @neo-fable-mnemosyne cross-referenced by #786
 - 2026-10-03T07:24:28Z @neo-fable-clio cross-referenced by PR #796
 - 2026-10-03T07:24:37Z @neo-fable-clio assigned to @neo-fable-clio
 - 2026-10-03T07:36:23Z @neo-gpt-sophie cross-referenced by PR #785
@@ -267,4 +267,6 @@ Sophie's review packet on the first head:
 * test(setup): two spec comments name the bootstrap-record decision by title, as the rest of the tree does (#782)"
 - 2026-10-03T10:52:48Z @tobiu closed this issue
 - 2026-10-03T12:25:27Z @neo-fable-clio cross-referenced by #810
+- 2026-10-04T12:41:28Z @neo-fable-mnemosyne cross-referenced by #840
+- 2026-10-04T14:03:37Z @neo-fable-mnemosyne cross-referenced by #842
 

@@ -8,11 +8,11 @@ labels:
   - model-experience
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-05T10:16:28Z'
 updatedAt: '2026-10-05T13:24:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/873'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -89,12 +89,12 @@ Retrieval Hint: MCP CLI GitHub Workflow missing npm script from Engine caller cw
 
 ## Timeline
 
-- 2026-10-05T10:16:28Z @neo-gpt assigned to @neo-gpt
-- 2026-10-05T10:16:30Z @neo-gpt added the `bug` label
-- 2026-10-05T10:16:30Z @neo-gpt added the `ai` label
-- 2026-10-05T10:16:31Z @neo-gpt added the `model-experience` label
-- 2026-10-05T10:16:31Z @neo-gpt added the `agent-os` label
-- 2026-10-05T13:08:04Z @neo-gpt cross-referenced by PR #887
+- 2026-10-05T10:16:28Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-05T10:16:30Z @neo-gpt-euclid added the `bug` label
+- 2026-10-05T10:16:30Z @neo-gpt-euclid added the `ai` label
+- 2026-10-05T10:16:31Z @neo-gpt-euclid added the `model-experience` label
+- 2026-10-05T10:16:31Z @neo-gpt-euclid added the `agent-os` label
+- 2026-10-05T13:08:04Z @neo-gpt-euclid cross-referenced by PR #887
 - 2026-10-05T13:24:52Z @tobiu referenced in commit `8b0e239` - "fix(mcp): resolve GitHub Workflow from its owning package (#873) (#887)"
 - 2026-10-05T13:24:52Z @tobiu closed this issue
 

@@ -7,7 +7,7 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-16T23:47:19Z'
 updatedAt: '2026-10-17T18:46:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1074'
@@ -103,10 +103,12 @@ Retrieval Hint: "Stop fleet Codex Desktop helper cleanup unresolved start refuse
 - 2026-10-17T16:50:26Z @neo-fable-clio cross-referenced by PR #1079
 - 2026-10-17T17:06:18Z @neo-fable-clio cross-referenced by PR #1080
 - 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
-- 2026-10-17T17:48:27Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-17T17:59:07Z @neo-gemini-pro cross-referenced by PR #1082
-- 2026-10-17T18:43:00Z @neo-fable cross-referenced by #727
+- 2026-10-17T17:48:27Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-17T17:59:07Z @neo-gemini-julia cross-referenced by PR #1082
+- 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
 - 2026-10-17T18:46:26Z @tobiu referenced in commit `afae1ef` - "fix(fleet): reprove Codex Desktop helper cleanup on start after stop failure (#1074) (#1082)"
 - 2026-10-17T18:46:27Z @tobiu closed this issue
-- 2026-10-17T19:15:22Z @neo-gemini-pro cross-referenced by PR #728
+- 2026-10-17T19:15:22Z @neo-gemini-julia cross-referenced by PR #728
+- 2026-10-19T02:42:48Z @neo-opus-vega cross-referenced by #1169
+- 2026-10-19T03:13:35Z @neo-opus-vega cross-referenced by PR #1172
 

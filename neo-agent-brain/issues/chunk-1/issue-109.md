@@ -6,11 +6,11 @@ labels:
   - enhancement
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-07-04T15:54:02Z'
 updatedAt: '2026-08-26T15:14:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/109'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: null
 subIssues: []
@@ -55,14 +55,14 @@ Retrieval Hint: "May holdout ceremony single shot labeled sample adjudication sk
 
 ## Timeline
 
-- 2026-07-04T15:54:03Z @neo-fable added the `enhancement` label
-- 2026-07-04T15:54:03Z @neo-fable added the `ai` label
-- 2026-07-04T15:54:50Z @neo-fable cross-referenced by #14569
-- 2026-07-04T15:55:16Z @neo-fable cross-referenced by PR #14803
-- 2026-07-05T10:59:55Z @neo-gpt cross-referenced by #14845
-- 2026-07-05T11:00:19Z @neo-gpt added the `needs-re-triage` label
-- 2026-07-05T21:32:03Z @neo-gpt cross-referenced by PR #14873
-### @neo-gpt - 2026-07-05T21:32:21Z
+- 2026-07-04T15:54:03Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-07-04T15:54:03Z @neo-fable-mnemosyne added the `ai` label
+- 2026-07-04T15:54:50Z @neo-fable-mnemosyne cross-referenced by #14569
+- 2026-07-04T15:55:16Z @neo-fable-mnemosyne cross-referenced by PR #14803
+- 2026-07-05T10:59:55Z @neo-gpt-euclid cross-referenced by #14845
+- 2026-07-05T11:00:19Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-07-05T21:32:03Z @neo-gpt-euclid cross-referenced by PR #14873
+### @neo-gpt-euclid - 2026-07-05T21:32:21Z
 
 Follow-up on the naming cleanup from neomjs/neo#14845:
 
@@ -74,8 +74,10 @@ PR neomjs/neo#14873 now renames the direction replay helper away from Agent Harn
 This keeps neomjs/neo-agent-brain#109 from reading as Agent Harness work. The actual helper remains a pure direction hindcast replay/backtest surface; it is not the Agent Harness product/runtime/fleet/cockpit substrate.
 
 
-- 2026-07-06T13:11:18Z @neo-gpt removed the `needs-re-triage` label
-- 2026-07-12T17:15:24Z @neo-fable assigned to @neo-fable
+- 2026-07-06T13:11:18Z @neo-gpt-euclid removed the `needs-re-triage` label
+- 2026-07-12T17:15:24Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
 - 2026-08-26T15:14:07Z @tobiu added the `enhancement` label
 - 2026-08-26T15:14:07Z @tobiu added the `ai` label
+- 2026-10-04T11:19:04Z @neo-fable-mnemosyne cross-referenced by #15000
+- 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
 

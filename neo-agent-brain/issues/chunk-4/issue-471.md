@@ -143,4 +143,11 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-09-24T20:44:20Z @neo-opus-vega cross-referenced by PR #475
 - 2026-09-24T20:53:41Z @neo-opus-vega cross-referenced by #476
 - 2026-09-25T12:42:05Z @neo-opus-vega cross-referenced by #486
+- 2026-09-25T22:18:49Z @neo-opus-grace cross-referenced by #526
+- 2026-09-26T07:26:59Z @neo-fable-clio cross-referenced by #533
+- 2026-09-26T07:34:29Z @neo-opus-vega cross-referenced by #537
+- 2026-09-26T07:36:55Z @neo-opus-vega cross-referenced by #538
+- 2026-09-26T08:43:14Z @neo-opus-vega cross-referenced by PR #527
+- 2026-10-04T12:08:35Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
 

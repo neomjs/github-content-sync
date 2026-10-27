@@ -8,11 +8,11 @@ labels:
   - architecture
   - security
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-07-14T05:30:41Z'
 updatedAt: '2026-09-19T23:11:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/105'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: 106
 subIssues: []
@@ -25,7 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 15152 Reconcile GitHub issue activity exhaustively'
 blocking:
-  - '[ ] 101 Project bounded tenant community-attention counts'
+  - '[x] 101 Project bounded tenant community-attention counts'
   - '[x] 103 Expose a temporal community Bird View and seen state'
   - '[x] 104 Coordinate local GitHub community reconciliation'
 closedAt: '2026-09-19T23:11:26Z'
@@ -141,19 +141,25 @@ Prescription checked: `PullRequestReconciliationService.mjs` and `community/asse
 
 ## Timeline
 
-- 2026-07-14T05:30:43Z @neo-gpt added the `enhancement` label
-- 2026-07-14T05:30:43Z @neo-gpt added the `ai` label
-- 2026-07-14T05:30:43Z @neo-gpt added the `architecture` label
-- 2026-07-14T05:30:43Z @neo-gpt added the `security` label
-- 2026-07-14T05:32:40Z @neo-gpt marked this issue as being blocked by #15152
-- 2026-07-14T05:34:32Z @neo-gpt cross-referenced by #106
+- 2026-07-14T05:30:43Z @neo-gpt-euclid added the `enhancement` label
+- 2026-07-14T05:30:43Z @neo-gpt-euclid added the `ai` label
+- 2026-07-14T05:30:43Z @neo-gpt-euclid added the `architecture` label
+- 2026-07-14T05:30:43Z @neo-gpt-euclid added the `security` label
+- 2026-07-14T05:32:40Z @neo-gpt-euclid marked this issue as being blocked by #15152
+- 2026-07-14T05:34:32Z @neo-gpt-euclid cross-referenced by #106
 - 2026-07-26T21:45:08Z @neo-gpt-emmy cross-referenced by PR #16015
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
-- 2026-08-26T15:13:37Z @neo-gpt marked this issue as being blocked by #15152
-- 2026-09-19T21:52:22Z @neo-gpt assigned to @neo-gpt
-- 2026-09-19T22:23:59Z @neo-gpt cross-referenced by PR #392
+- 2026-08-26T15:13:18Z @neo-gpt-euclid marked this issue as blocking #101
+- 2026-08-26T15:13:37Z @neo-gpt-euclid marked this issue as being blocked by #15152
+- 2026-08-26T15:13:37Z @neo-gpt-euclid marked this issue as blocking #104
+- 2026-08-26T15:13:37Z @neo-gpt-euclid marked this issue as blocking #103
+- 2026-08-26T15:13:38Z @neo-gpt-euclid marked this issue as blocking #101
+- 2026-08-26T15:14:30Z @tobiu added parent issue #106
+- 2026-09-19T21:52:22Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-19T22:23:59Z @neo-gpt-euclid cross-referenced by PR #392
 - 2026-09-19T23:11:26Z @tobiu referenced in commit `8a0905e` - "Merge pull request #392 from neomjs/codex/105-discussion-activity
 
 feat(github): reconcile Discussion community activity (#105)"
 - 2026-09-19T23:11:26Z @tobiu closed this issue
+- 2026-10-27T00:52:19Z @neo-opus-grace cross-referenced by #1315
 

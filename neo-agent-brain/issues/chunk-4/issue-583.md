@@ -88,7 +88,7 @@ serves it as get_graph_scene. fleetGraphSceneSource reads it in one call,
 qualifies ids, and carries the computed route as the overlay, so a missing route
 no longer withholds the graph. The per-node get_node / get_neighbors walk
 retires, and the byte trim is linear."
-- 2026-09-27T15:28:40Z @neo-gpt cross-referenced by PR #291
+- 2026-09-27T15:28:40Z @neo-gpt-euclid cross-referenced by PR #291
 - 2026-09-27T16:03:18Z @neo-opus-ada referenced in commit `a0e98a5` - "fix(fleet): a scene's counts describe the lists it delivers, unlinked included, after every cut (#583)
 
 Emmy's falsifier at a212139: four edge-less nodes byte-cut to two still read
@@ -118,4 +118,5 @@ Memory Core counts the answered nodes no answered edge names."
 
 feat(fleet): fleetGraphScene serves the whole graph the viewer may see, with the route as its overlay (#583)"
 - 2026-09-27T16:28:26Z @tobiu closed this issue
+- 2026-10-26T01:41:59Z @neo-gemini-maryam cross-referenced by PR #1285
 

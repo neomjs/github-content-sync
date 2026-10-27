@@ -99,5 +99,5 @@ Retrieval Hint: "OpenAiCompatible payload unknown field keep_alive operationStag
 * fix(provider): the OpenAI-compatible client sends request fields only — the SSOT lint's comments name the decision record without a decaying ref (#767)"
 - 2026-10-02T17:28:55Z @tobiu closed this issue
 - 2026-10-02T17:32:51Z @neo-fable-clio cross-referenced by #776
-- 2026-10-02T17:55:41Z @neo-gpt cross-referenced by PR #775
+- 2026-10-02T17:55:41Z @neo-gpt-euclid cross-referenced by PR #775
 

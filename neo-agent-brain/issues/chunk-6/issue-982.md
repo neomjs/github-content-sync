@@ -7,11 +7,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-11T00:31:16Z'
 updatedAt: '2026-10-11T01:18:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/982'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -92,12 +92,12 @@ Retrieval Hint: "merge hold disappears equal timestamp prior approval strictly n
 
 ## Timeline
 
-- 2026-10-11T00:31:16Z @neo-gpt assigned to @neo-gpt
-- 2026-10-11T00:31:18Z @neo-gpt added the `bug` label
-- 2026-10-11T00:31:18Z @neo-gpt added the `ai` label
-- 2026-10-11T00:31:18Z @neo-gpt added the `agent-os` label
-- 2026-10-11T00:34:47Z @neo-gpt cross-referenced by PR #170
-- 2026-10-11T00:44:14Z @neo-gpt cross-referenced by PR #984
+- 2026-10-11T00:31:16Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-11T00:31:18Z @neo-gpt-euclid added the `bug` label
+- 2026-10-11T00:31:18Z @neo-gpt-euclid added the `ai` label
+- 2026-10-11T00:31:18Z @neo-gpt-euclid added the `agent-os` label
+- 2026-10-11T00:34:47Z @neo-gpt-euclid cross-referenced by PR #170
+- 2026-10-11T00:44:14Z @neo-gpt-euclid cross-referenced by PR #984
 - 2026-10-11T01:18:15Z @tobiu referenced in commit `6b7e7d5` - "fix(github-workflow): preserve merge holds across tied reviews (#982) (#984)"
 - 2026-10-11T01:18:15Z @tobiu closed this issue
 

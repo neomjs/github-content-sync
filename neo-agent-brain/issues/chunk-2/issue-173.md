@@ -96,9 +96,9 @@ If neomjs/neo-agent-brain#161 finds no viable supported Moltbook API/auth/integr
 > Ticket **#9299** has been added to track this critical prerequisite.
 
 - 2026-04-12T11:16:55Z @tobiu cross-referenced by PR #9911
-- 2026-05-26T03:02:19Z @neo-gpt cross-referenced by #171
-- 2026-05-26T03:32:53Z @neo-gpt changed title from **[Epic] Autonomous Neo Agent Demo (Moltbook Integration)** to **[Blocked Epic] Autonomous Neo Agent Demo after Moltbook API and identity research**
-### @neo-gpt - 2026-05-26T03:33:02Z
+- 2026-05-26T03:02:19Z @neo-gpt-euclid cross-referenced by #171
+- 2026-05-26T03:32:53Z @neo-gpt-euclid changed title from **[Epic] Autonomous Neo Agent Demo (Moltbook Integration)** to **[Blocked Epic] Autonomous Neo Agent Demo after Moltbook API and identity research**
+### @neo-gpt-euclid - 2026-05-26T03:33:02Z
 
 Parent epic reconciled with the live child-ticket state instead of leaving the February Moltbook premise as actionable.
 
@@ -111,8 +111,8 @@ Verified before update:
 
 Current routing: keep neomjs/neo-agent-brain#173 open as blocked / needs re-triage. Re-enter only after neomjs/neo-agent-brain#161 and identity/auth shape resolve; close as superseded/negative ROI if neomjs/neo-agent-brain#161 finds no viable supported Moltbook path.
 
-- 2026-05-26T03:33:02Z @neo-gpt added the `needs-re-triage` label
-### @neo-gpt - 2026-05-28T05:25:31Z
+- 2026-05-26T03:33:02Z @neo-gpt-euclid added the `needs-re-triage` label
+### @neo-gpt-euclid - 2026-05-28T05:25:31Z
 
 **Input from GPT-5.5 (Codex Desktop):**
 
@@ -132,18 +132,19 @@ Current routing: keep neomjs/neo-agent-brain#173 open as blocked / needs re-tria
 > No implementation lane opened; this cluster remains parked until neomjs/neo-agent-brain#161 and neomjs/neo-agent-brain#171 resolve.
 
 - 2026-06-03T08:05:17Z @tobiu cross-referenced by #161
-- 2026-06-03T08:05:27Z @neo-gpt removed the `needs-re-triage` label
+- 2026-06-03T08:05:27Z @neo-gpt-euclid removed the `needs-re-triage` label
 ### @neo-fable-clio - 2026-07-10T23:00:08Z
 
 **Disposition (aged-backlog sweep neomjs/neo#15000, tranche 1; covers neomjs/neo-agent-brain#173 + neomjs/neo-agent-brain#170 + neomjs/neo-agent-brain#161): blocked-external, correctly parked.** The family self-describes as blocked on external API/identity research and remains so — no v13.2 relevance, no action available. Parked honestly; unblocking evidence (the research leaf neomjs/neo-agent-brain#161 resolving) reopens the lane.
 
 - 2026-07-10T23:00:37Z @neo-fable-clio cross-referenced by #15000
-- 2026-08-26T15:19:28Z @neo-gpt marked this issue as being blocked by #161
+- 2026-08-26T15:19:28Z @neo-gpt-euclid marked this issue as being blocked by #161
 - 2026-08-26T15:19:58Z @tobiu added sub-issue #170
-- 2026-08-26T15:20:07Z @neo-gpt marked this issue as being blocked by #171
+- 2026-08-26T15:20:07Z @neo-gpt-euclid marked this issue as being blocked by #171
 - 2026-08-26T15:20:07Z @tobiu added sub-issue #170
 - 2026-08-26T15:20:07Z @tobiu added sub-issue #9299
-- 2026-08-26T15:20:07Z @neo-gpt marked this issue as being blocked by #161
+- 2026-08-26T15:20:07Z @neo-gpt-euclid marked this issue as being blocked by #161
 - 2026-08-26T15:28:34Z @tobiu added sub-issue #171
 - 2026-08-26T15:28:36Z @tobiu added sub-issue #172
+- 2026-10-18T02:00:55Z @neo-opus-grace cross-referenced by #1008
 

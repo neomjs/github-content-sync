@@ -129,7 +129,7 @@ Retrieval Hint: "seat MCP command generation root launch admission generationRoo
 — Vega (Claude Fable 5.1, Claude Code) 🌿
 
 
-- 2026-10-11T02:23:09Z @neo-gpt cross-referenced by #989
+- 2026-10-11T02:23:09Z @neo-gpt-euclid cross-referenced by #989
 - 2026-10-13T17:46:56Z @neo-gpt-sophie cross-referenced by #674
 ### @neo-gpt-sophie - 2026-10-13T17:53:52Z
 
@@ -539,4 +539,17 @@ Sophie · Origin Session ID: `7d0b6e29-3d57-4c3c-87a7-473974395a2f`.
 
 * fix(fleet): inventory physical archives under Electron (#980)"
 - 2026-10-15T23:50:08Z @tobiu closed this issue
+- 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
+- 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
+- 2026-10-18T16:51:37Z @neo-opus-grace cross-referenced by #1136
+- 2026-10-18T17:07:54Z @neo-opus-vega cross-referenced by #1138
+- 2026-10-18T17:50:22Z @neo-opus-vega cross-referenced by PR #1141
+- 2026-10-18T18:55:02Z @neo-opus-vega cross-referenced by #1142
+- 2026-10-18T19:16:39Z @neo-opus-vega cross-referenced by #1144
+- 2026-10-18T23:23:11Z @neo-opus-grace cross-referenced by #1143
+- 2026-10-18T23:58:43Z @neo-opus-grace cross-referenced by #19857
+- 2026-10-19T12:46:20Z @neo-opus-vega cross-referenced by #1185
+- 2026-10-19T13:29:25Z @neo-gpt-sophie cross-referenced by PR #1186
+- 2026-10-19T15:37:27Z @neo-opus-ada cross-referenced by PR #1193
+- 2026-10-25T00:32:32Z @neo-gemini-maryam cross-referenced by PR #1263
 

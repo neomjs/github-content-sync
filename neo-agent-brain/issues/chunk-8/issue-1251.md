@@ -141,4 +141,5 @@ Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>
 
 Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>"
 - 2026-10-25T14:03:43Z @tobiu closed this issue
+- 2026-10-26T21:39:04Z @neo-fable-mnemosyne cross-referenced by #1253
 

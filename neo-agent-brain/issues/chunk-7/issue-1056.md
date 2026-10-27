@@ -8,11 +8,11 @@ labels:
   - model-experience
   - agent-os
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-15T20:36:49Z'
 updatedAt: '2026-10-16T00:55:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1056'
-author: neo-gemini-pro
+author: neo-gemini-julia
 commentsCount: 1
 parentIssue: null
 subIssues: []
@@ -24,7 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 683 A seat that exits without a Stop shows why, and peers hear it'
+  - '[x] 683 A seat that exits without a Stop shows why, and peers hear it'
 closedAt: '2026-10-16T00:55:39Z'
 ---
 # The Fleet reports why a managed seat exited without a Stop
@@ -115,14 +115,14 @@ Retrieval Hint: "seatExitReason FleetLifecycleService finalizeExitedProcess befo
 
 ## Timeline
 
-- 2026-10-15T20:36:51Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-15T20:36:52Z @neo-gemini-pro added the `enhancement` label
-- 2026-10-15T20:36:52Z @neo-gemini-pro added the `ai` label
-- 2026-10-15T20:36:52Z @neo-gemini-pro added the `model-experience` label
-- 2026-10-15T20:36:53Z @neo-gemini-pro added the `agent-os` label
-- 2026-10-15T20:37:40Z @neo-gemini-pro marked this issue as blocking #683
-- 2026-10-15T20:37:43Z @neo-gemini-pro cross-referenced by #683
-### @neo-gemini-pro - 2026-10-15T20:46:24Z
+- 2026-10-15T20:36:51Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-15T20:36:52Z @neo-gemini-julia added the `enhancement` label
+- 2026-10-15T20:36:52Z @neo-gemini-julia added the `ai` label
+- 2026-10-15T20:36:52Z @neo-gemini-julia added the `model-experience` label
+- 2026-10-15T20:36:53Z @neo-gemini-julia added the `agent-os` label
+- 2026-10-15T20:37:40Z @neo-gemini-julia marked this issue as blocking #683
+- 2026-10-15T20:37:43Z @neo-gemini-julia cross-referenced by #683
+### @neo-gemini-julia - 2026-10-15T20:46:24Z
 
 ### Phase 0 Self-Repair Notice — Seat MCP Attachment Stale (`issuer-unavailable`)
 
@@ -142,13 +142,13 @@ Retrieval Hint: "seatExitReason FleetLifecycleService finalizeExitedProcess befo
 - **Retry/Expiry Guidance:** Will resume immediately upon managed seat restart in Fleet Manager.
 - **Public Artifact Link:** https://github.com/neomjs/neo-agent-brain/issues/1056
 
-- 2026-10-15T23:10:21Z @neo-gemini-pro cross-referenced by PR #1060
-- 2026-10-15T23:10:39Z @neo-gemini-pro referenced in commit `98d9d7e` - "feat(fleet): report why a managed seat exited without a Stop (#1056)"
-- 2026-10-15T23:37:55Z @neo-gemini-pro referenced in commit `8477a8c` - "fix(fleet): observe adopted seat before recording Stop intent (#1056)"
-- 2026-10-15T23:56:48Z @neo-gemini-pro referenced in commit `0bb2af3` - "fix(fleet): check record.cleanupUnresolved boolean flag on stop(id) (#1056)"
-- 2026-10-16T00:04:30Z @neo-gemini-pro referenced in commit `af396ae` - "feat(fleet): report why a managed seat exited without a Stop (#1056)"
-- 2026-10-16T00:04:30Z @neo-gemini-pro referenced in commit `a36aa16` - "fix(fleet): observe adopted seat before recording Stop intent (#1056)"
-- 2026-10-16T00:04:31Z @neo-gemini-pro referenced in commit `cec7d88` - "fix(fleet): check record.cleanupUnresolved boolean flag on stop(id) (#1056)"
+- 2026-10-15T23:10:21Z @neo-gemini-julia cross-referenced by PR #1060
+- 2026-10-15T23:10:39Z @neo-gemini-julia referenced in commit `98d9d7e` - "feat(fleet): report why a managed seat exited without a Stop (#1056)"
+- 2026-10-15T23:37:55Z @neo-gemini-julia referenced in commit `8477a8c` - "fix(fleet): observe adopted seat before recording Stop intent (#1056)"
+- 2026-10-15T23:56:48Z @neo-gemini-julia referenced in commit `0bb2af3` - "fix(fleet): check record.cleanupUnresolved boolean flag on stop(id) (#1056)"
+- 2026-10-16T00:04:30Z @neo-gemini-julia referenced in commit `af396ae` - "feat(fleet): report why a managed seat exited without a Stop (#1056)"
+- 2026-10-16T00:04:30Z @neo-gemini-julia referenced in commit `a36aa16` - "fix(fleet): observe adopted seat before recording Stop intent (#1056)"
+- 2026-10-16T00:04:31Z @neo-gemini-julia referenced in commit `cec7d88` - "fix(fleet): check record.cleanupUnresolved boolean flag on stop(id) (#1056)"
 - 2026-10-16T00:55:39Z @tobiu referenced in commit `b96b4d3` - "feat(fleet): report why a managed seat exited without a Stop (#1056) (#1060)
 
 * feat(fleet): report why a managed seat exited without a Stop (#1056)
@@ -157,4 +157,6 @@ Retrieval Hint: "seatExitReason FleetLifecycleService finalizeExitedProcess befo
 
 * fix(fleet): check record.cleanupUnresolved boolean flag on stop(id) (#1056)"
 - 2026-10-16T00:55:40Z @tobiu closed this issue
+- 2026-10-16T09:03:57Z @neo-gemini-julia cross-referenced by PR #705
+- 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
 

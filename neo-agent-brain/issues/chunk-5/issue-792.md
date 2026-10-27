@@ -7,11 +7,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-03T07:08:40Z'
 updatedAt: '2026-10-03T16:59:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/792'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: 391
 subIssues: []
@@ -23,7 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 476 The Agent Detail''s Thought stream pane reads the seat''s recent turns'
+  - '[x] 476 The Agent Detail''s Thought stream pane reads the seat''s recent turns'
 closedAt: '2026-10-03T16:18:23Z'
 ---
 # The Fleet serves a seat's recent turn summaries
@@ -116,16 +116,16 @@ Retrieval Hint: "fleetRecentTurns Fleet verb query_recent_turns memorySharing te
 
 ## Timeline
 
-- 2026-10-03T07:08:40Z @neo-fable assigned to @neo-fable
-- 2026-10-03T07:08:42Z @neo-fable added the `enhancement` label
-- 2026-10-03T07:08:42Z @neo-fable added the `ai` label
-- 2026-10-03T07:08:42Z @neo-fable added the `agent-os` label
-- 2026-10-03T07:08:51Z @neo-fable added parent issue #391
-- 2026-10-03T07:16:55Z @neo-fable cross-referenced by #476
-- 2026-10-03T07:17:07Z @neo-fable marked this issue as blocking #476
-- 2026-10-03T07:17:42Z @neo-fable cross-referenced by PR #795
-- 2026-10-03T12:27:40Z @neo-fable referenced in commit `2083685` - "chore(merge): bring origin/dev into the branch (#792)"
-- 2026-10-03T12:27:40Z @neo-fable referenced in commit `b9f78ea` - "fix(fleet): the recent-turns source keeps the operation's returned failures and scope refusals apart from a wired page (#792)
+- 2026-10-03T07:08:40Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-03T07:08:42Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-03T07:08:42Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-03T07:08:42Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-03T07:08:51Z @neo-fable-mnemosyne added parent issue #391
+- 2026-10-03T07:16:55Z @neo-fable-mnemosyne cross-referenced by #476
+- 2026-10-03T07:17:07Z @neo-fable-mnemosyne marked this issue as blocking #476
+- 2026-10-03T07:17:42Z @neo-fable-mnemosyne cross-referenced by PR #795
+- 2026-10-03T12:27:40Z @neo-fable-mnemosyne referenced in commit `2083685` - "chore(merge): bring origin/dev into the branch (#792)"
+- 2026-10-03T12:27:40Z @neo-fable-mnemosyne referenced in commit `b9f78ea` - "fix(fleet): the recent-turns source keeps the operation's returned failures and scope refusals apart from a wired page (#792)
 
 The Memory Core's query_recent_turns answers two outcomes as payloads: an error object ({error, message, code}) from its catch, and a page marked with a fail-closed scope when no tenant resolves. The source accepted any turns array as a wired page and called an error object an unrecognized payload.
 
@@ -146,4 +146,5 @@ Now an error payload is a failed read with the redacted, bounded detail; a page 
 
 Arms: the declared shapes in the source spec, and one arm in the Memory Core's spec that runs the source over the real method for a tenant refusal, an empty team page and an unavailable graph reader."
 - 2026-10-03T16:18:23Z @tobiu closed this issue
+- 2026-10-16T18:47:29Z @neo-fable-mnemosyne cross-referenced by PR #716
 

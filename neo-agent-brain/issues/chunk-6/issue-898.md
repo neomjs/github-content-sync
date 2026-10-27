@@ -127,7 +127,7 @@ Both late-consent refusals (the seat runs, or already holds its memory) now
 carry code: 'FLEET_SEAT_MEMORY_IMPORT_CLOSED', in the bridge's own rejection
 idiom. A consumer closes the choice on that code and keeps it open on any
 other rejection, which a person can correct (Institution #574, RA-1)."
-- 2026-10-06T12:44:40Z @neo-fable cross-referenced by #571
+- 2026-10-06T12:44:40Z @neo-fable-mnemosyne cross-referenced by #571
 - 2026-10-06T13:29:47Z @tobiu referenced in commit `0b8477c` - "feat(fleet): a never-started seat takes its memory consent through configureAgent (#898) (#899)
 
 * feat(fleet): a never-started seat takes its memory consent through configureAgent (#898)
@@ -196,4 +196,6 @@ Emmy's round 1 on #574, all three in place:
 - RA-3: Details under the choice names the chosen candidate's folder before Save, in one
   rule shared with Add Agent (AddAgentFlow.memoryDetail). Two candidates that read alike
   are told apart."
+- 2026-10-07T23:52:37Z @neo-opus-ada cross-referenced by #924
+- 2026-10-08T06:29:52Z @neo-gpt-emmy cross-referenced by #930
 

@@ -71,7 +71,7 @@ Origin Session ID: 0b27b21a-2146-4976-945f-f1682c6a1c9c
 - 2026-06-16T11:39:49Z @neo-opus-grace added the `enhancement` label
 - 2026-06-16T11:39:49Z @neo-opus-grace added the `ai` label
 - 2026-06-16T11:39:50Z @neo-opus-grace added the `architecture` label
-### @neo-gpt - 2026-06-19T03:19:55Z
+### @neo-gpt-euclid - 2026-06-19T03:19:55Z
 
 ## Ideation routing
 
@@ -80,12 +80,12 @@ I linked this ticket into Discussion #13505 as the healthcheck-auth policy bound
 Reason: neomjs/neo-agent-brain#140 challenges the prior `#12990` healthcheck-token decision, so it should not be folded into a fail-loud env-validator PR by accident. The Discussion keeps the security decision explicit: either split this to a dedicated security follow-up or fold it only with a threat model and a clear `#12990` disposition.
 
 - 2026-06-22T11:49:26Z @neo-opus-grace cross-referenced by #13860
-- 2026-06-22T11:55:38Z @neo-gpt cross-referenced by #13861
+- 2026-06-22T11:55:38Z @neo-gpt-euclid cross-referenced by #13861
 - 2026-06-22T12:20:20Z @neo-opus-grace cross-referenced by PR #13864
-- 2026-06-25T05:21:54Z @neo-gpt cross-referenced by #13432
+- 2026-06-25T05:21:54Z @neo-gpt-euclid cross-referenced by #13432
 - 2026-06-26T16:49:25Z @neo-opus-vega cross-referenced by #14124
-- 2026-07-26T13:38:46Z @neo-gpt cross-referenced by #15990
-- 2026-07-26T14:30:24Z @neo-gpt cross-referenced by #15992
+- 2026-07-26T13:38:46Z @neo-gpt-euclid cross-referenced by #15990
+- 2026-07-26T14:30:24Z @neo-gpt-euclid cross-referenced by #15992
 - 2026-07-31T09:31:19Z @neo-opus-ada cross-referenced by #16222
 - 2026-09-27T09:30:11Z @neo-opus-vega cross-referenced by #567
 - 2026-09-27T09:30:37Z @neo-opus-vega cross-referenced by #568
@@ -94,5 +94,5 @@ Reason: neomjs/neo-agent-brain#140 challenges the prior `#12990` healthcheck-tok
 - 2026-10-03T20:02:57Z @neo-gpt-emmy cross-referenced by #571
 - 2026-10-03T20:47:24Z @neo-gpt-emmy cross-referenced by #830
 - 2026-10-03T20:55:35Z @neo-gpt-emmy cross-referenced by PR #831
-- 2026-10-03T23:02:35Z @neo-gpt cross-referenced by PR #834
+- 2026-10-03T23:02:35Z @neo-gpt-euclid cross-referenced by PR #834
 

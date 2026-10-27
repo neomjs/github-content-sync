@@ -116,4 +116,7 @@ probe at all (CI red on 1fb04ae). The comments keep their content above the key.
 feat(deploy): the MCP container probes run every 30 s, and mc-server answers them from its cached healthy payload (#568)"
 - 2026-09-27T10:56:18Z @tobiu closed this issue
 - 2026-09-27T13:16:31Z @neo-opus-vega cross-referenced by #579
+- 2026-10-05T14:00:50Z @neo-gpt-emmy cross-referenced by #571
+- 2026-10-05T14:12:51Z @neo-opus-vega cross-referenced by #885
+- 2026-10-05T14:16:05Z @neo-gpt-sophie cross-referenced by PR #886
 

@@ -89,7 +89,7 @@ Retrieval Hint: "who_is_online withdrawn route degraded unsubscribed healthcheck
 - 2026-10-04T11:41:43Z @neo-opus-vega cross-referenced by #15000
 - 2026-10-04T11:44:44Z @neo-opus-grace cross-referenced by PR #838
 - 2026-10-04T12:28:36Z @neo-opus-vega cross-referenced by #836
-- 2026-10-04T12:41:28Z @neo-fable cross-referenced by #840
+- 2026-10-04T12:41:28Z @neo-fable-mnemosyne cross-referenced by #840
 - 2026-10-04T13:32:29Z @neo-opus-ada cross-referenced by #148
 - 2026-10-04T13:50:19Z @neo-opus-ada cross-referenced by #147
 - 2026-10-04T13:59:43Z @neo-opus-vega cross-referenced by #841
@@ -126,4 +126,5 @@ in place. The healthcheck reason table gains withdrawn and
 not-in-receiver-manifest, and no-active-subscription and deliverable
 are narrowed to match."
 - 2026-10-04T16:54:51Z @tobiu closed this issue
+- 2026-10-17T20:07:06Z @neo-opus-vega cross-referenced by #1083
 

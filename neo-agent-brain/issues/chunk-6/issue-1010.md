@@ -341,4 +341,6 @@ The probe exists to prove private-repository read access, but it binds that proo
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code · session 93bb60cd-9a62-43b7-a8e0-25091f9af03f
 
 
+- 2026-10-26T07:55:12Z @neo-gpt-sophie cross-referenced by #1296
+- 2026-10-26T08:24:29Z @neo-gpt-sophie cross-referenced by #1297
 

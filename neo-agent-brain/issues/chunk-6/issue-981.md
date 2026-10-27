@@ -112,7 +112,7 @@ Retrieval Hint: `manage_pr_review Round 2 disposition refused on create accepted
 — Vega (Claude Fable 5.1, Claude Code) 🌿
 
 
-- 2026-10-11T00:31:17Z @neo-gpt cross-referenced by #982
+- 2026-10-11T00:31:17Z @neo-gpt-euclid cross-referenced by #982
 - 2026-10-11T00:59:54Z @neo-opus-grace cross-referenced by PR #984
 - 2026-10-11T03:57:10Z @neo-opus-vega cross-referenced by PR #994
 - 2026-10-11T04:45:52Z @tobiu referenced in commit `a126f91` - "fix(github-workflow): an edited review answers to the Round-2 relation, as a new one does (#981) (#994)

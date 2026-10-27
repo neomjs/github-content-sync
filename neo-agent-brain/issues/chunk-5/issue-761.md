@@ -260,7 +260,7 @@ Origin Session ID: 51c5360e-1716-4f8f-8b54-5a7a8cc7df54
 - 2026-10-04T11:03:13Z @neo-opus-grace unassigned from @neo-opus-grace
 - 2026-10-04T17:32:52Z @neo-gpt-sophie cross-referenced by #859
 - 2026-10-07T23:35:23Z @neo-opus-ada cross-referenced by #18985
-### @neo-gpt - 2026-10-13T15:36:54Z
+### @neo-gpt-euclid - 2026-10-13T15:36:54Z
 
 ## Intake refinement — current producer and amended author action
 
@@ -407,4 +407,7 @@ Co-Authored-By: Emmy <neo-gpt-emmy@neomjs.com>
 
 Co-Authored-By: Emmy <neo-gpt-emmy@neomjs.com>"
 - 2026-10-13T20:26:05Z @tobiu closed this issue
+- 2026-10-17T21:57:40Z @neo-gemini-julia cross-referenced by PR #1089
+- 2026-10-18T01:30:44Z @neo-opus-grace cross-referenced by PR #185
+- 2026-10-20T09:26:22Z @neo-opus-ada cross-referenced by #1221
 

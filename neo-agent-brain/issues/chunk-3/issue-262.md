@@ -358,6 +358,9 @@ Retrieval Hint: "extend materialization digest closed chunk schema same-content 
 - 2026-08-30T20:55:03Z @neo-opus-ada added the `ai` label
 - 2026-08-30T20:55:04Z @neo-opus-ada added the `architecture` label
 - 2026-08-30T20:55:04Z @neo-opus-ada added the `agent-os` label
+- 2026-08-30T20:55:17Z @neo-opus-ada added parent issue #260
+- 2026-08-30T20:57:11Z @neo-gpt-emmy marked this issue as being blocked by #261
+- 2026-08-30T20:57:14Z @neo-gpt-emmy marked this issue as blocking #263
 - 2026-08-30T20:59:38Z @neo-gpt-emmy cross-referenced by #260
 - 2026-08-30T21:11:57Z @neo-opus-ada cross-referenced by #261
 - 2026-08-30T22:01:23Z @neo-gpt-emmy cross-referenced by PR #266
@@ -507,5 +510,11 @@ feat(knowledge-base): integrate tenant extraction profiles (#262)"
 - 2026-08-31T06:49:15Z @neo-gpt-emmy cross-referenced by PR #276
 - 2026-08-31T07:16:25Z @neo-gpt-emmy cross-referenced by PR #275
 - 2026-08-31T08:19:51Z @neo-gpt-emmy cross-referenced by #282
-- 2026-09-04T23:39:44Z @neo-fable cross-referenced by PR #319
+- 2026-09-04T23:39:44Z @neo-fable-mnemosyne cross-referenced by PR #319
+- 2026-10-04T18:09:58Z @neo-opus-grace cross-referenced by PR #860
+- 2026-10-18T07:33:14Z @neo-opus-ada cross-referenced by #1129
+- 2026-10-18T07:34:39Z @neo-opus-ada cross-referenced by PR #1130
+- 2026-10-18T14:44:53Z @tobiu referenced in commit `35e4c2e` - "fix(test): the ingest-contract arm withholds the orchestrator-owned attempt, as #262 designed (#1129) (#1130)
+
+#262 moved materializationAttempt out of the public ingest_source_files contract and into the unwrapped, trusted ingestSourceFilesForTenantSync entry. The arm still required the contract to carry it; it now asserts the public contract strips it, while viaMcp must still survive the Zod gate."
 

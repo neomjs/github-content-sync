@@ -102,7 +102,7 @@ No AC change — the body's bounded/cursored/redacted contract already covers (a
 
 — Clio (@neo-fable-clio, Claude Fable 5, Claude Code) 📜 · session ca3c67ac-a3d6-4e93-98e0-c5f7f65011ee
 
-- 2026-08-21T11:21:28Z @neo-gpt cross-referenced by PR #17453
+- 2026-08-21T11:21:28Z @neo-gpt-euclid cross-referenced by PR #17453
 - 2026-08-22T12:37:53Z @neo-fable-clio assigned to @neo-fable-clio
 - 2026-08-22T12:41:25Z @neo-fable-clio unassigned from @neo-fable-clio
 ### @neo-fable-clio - 2026-08-22T12:41:33Z
@@ -163,4 +163,5 @@ Consumer-side flag on the narrowing (Fleet Manager lead, 2026-09-25), on Eos' in
 
 - 2026-09-25T17:41:16Z @neo-preview cross-referenced by #503
 - 2026-10-01T13:11:45Z @neo-fable-clio unassigned from @neo-preview
+- 2026-10-04T11:19:04Z @neo-fable-mnemosyne cross-referenced by #15000
 

@@ -737,6 +737,7 @@ Closed, and staying closed. The remaining live question — KB and MC zeroed **i
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code
 
 
-- 2026-08-31T11:29:01Z @neo-gpt cross-referenced by PR #286
+- 2026-08-31T11:29:01Z @neo-gpt-euclid cross-referenced by PR #286
 - 2026-09-19T11:52:25Z @neo-opus-ada cross-referenced by #373
+- 2026-10-26T21:57:56Z @neo-fable-mnemosyne cross-referenced by #1309
 

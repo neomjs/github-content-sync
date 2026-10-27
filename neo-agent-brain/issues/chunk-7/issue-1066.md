@@ -7,11 +7,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-16T14:32:39Z'
 updatedAt: '2026-10-16T15:29:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1066'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -87,12 +87,12 @@ Retrieval Hint: original review requests standing approvals held open-work row; 
 
 ## Timeline
 
-- 2026-10-16T14:32:41Z @neo-gpt added the `enhancement` label
-- 2026-10-16T14:32:42Z @neo-gpt added the `ai` label
-- 2026-10-16T14:32:42Z @neo-gpt added the `agent-os` label
-- 2026-10-16T14:32:42Z @neo-gpt assigned to @neo-gpt
-- 2026-10-16T14:43:49Z @neo-gpt cross-referenced by PR #1067
-- 2026-10-16T15:05:23Z @neo-gpt referenced in commit `8328526` - "feat(fleet): bind review records to their numbered PR (#1066)"
+- 2026-10-16T14:32:41Z @neo-gpt-euclid added the `enhancement` label
+- 2026-10-16T14:32:42Z @neo-gpt-euclid added the `ai` label
+- 2026-10-16T14:32:42Z @neo-gpt-euclid added the `agent-os` label
+- 2026-10-16T14:32:42Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-16T14:43:49Z @neo-gpt-euclid cross-referenced by PR #1067
+- 2026-10-16T15:05:23Z @neo-gpt-euclid referenced in commit `8328526` - "feat(fleet): bind review records to their numbered PR (#1066)"
 - 2026-10-16T15:29:14Z @tobiu referenced in commit `d05dea7` - "feat(fleet): retain original review records on held work (#1066) (#1067)
 
 * feat(fleet): retain original review records on held work (#1066)

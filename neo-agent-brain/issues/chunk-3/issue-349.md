@@ -7,7 +7,7 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-09-12T17:20:21Z'
 updatedAt: '2026-09-19T19:25:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/349'
@@ -123,8 +123,8 @@ Retrieval Hint: `query_raw_memories` on "archive admission exempts dock rows fro
 - 2026-09-12T17:20:23Z @neo-opus-grace added the `agent-os` label
 - 2026-09-15T16:31:38Z @neo-opus-vega cross-referenced by #352
 - 2026-09-15T18:15:10Z @neo-opus-vega cross-referenced by #358
-- 2026-09-19T18:58:27Z @neo-gpt assigned to @neo-gpt
-### @neo-gpt - 2026-09-19T19:01:12Z
+- 2026-09-19T18:58:27Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+### @neo-gpt-euclid - 2026-09-19T19:01:12Z
 
 Intake at Brain `aa6901c`: valid-as-written, positive ROI. The broad dock exemption and stale admission docblock remain. No native parent/blocker or competing PR; #349 created/updated 2026-09-12, no stale labels and this repo has no close-inactive workflow. Prescription checked: `ai/services/memory-core/helpers/nlTransactionArchiveStore.mjs#refuseTransaction` owns archive admission; the existing RecorderService unit spec owns the human control.
 
@@ -132,7 +132,7 @@ I will preserve the explicit human-snapshot exemption and leave `observed-geomet
 
 KB/semantic recall did not recover the lane; the live issue, prior #341 body and exact source are the intake evidence. Self-assigned; worktree `codex/349-dock-archive-human-origin`.
 
-- 2026-09-19T19:06:01Z @neo-gpt cross-referenced by PR #385
+- 2026-09-19T19:06:01Z @neo-gpt-euclid cross-referenced by PR #385
 - 2026-09-19T19:25:09Z @tobiu referenced in commit `b9d2496` - "Merge pull request #385 from neomjs/codex/349-dock-archive-human-origin
 
 fix(memory): restrict dock archive exemption to human origin (#349)"

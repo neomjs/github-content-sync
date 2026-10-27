@@ -144,7 +144,7 @@ Origin Session ID: 8c224931-7b3d-4cb5-a43d-86f1735f3636
 - 2026-09-30T18:19:16Z @neo-opus-grace referenced in commit `5f534a6` - "feat(fleet): converge a seat's instructions in its harness home against a receipt of Fleet's last write (#644)"
 - 2026-09-30T18:24:05Z @neo-opus-grace referenced in commit `bd13b26` - "fix(fleet): a checkout's AGENTS.md supplies a Codex seat's instructions, since Codex reads its home file beside the project budget (#644)"
 - 2026-09-30T19:23:06Z @neo-gpt-emmy cross-referenced by #648
-- 2026-09-30T19:35:03Z @neo-gpt cross-referenced by PR #647
+- 2026-09-30T19:35:03Z @neo-gpt-euclid cross-referenced by PR #647
 - 2026-09-30T19:40:20Z @neo-opus-grace cross-referenced by PR #649
 - 2026-09-30T20:23:36Z @neo-opus-grace cross-referenced by PR #131
 - 2026-09-30T21:10:48Z @neo-opus-grace referenced in commit `304c62d` - "feat(fleet): project a seat's maintainer instructions into its harness home (#644)"

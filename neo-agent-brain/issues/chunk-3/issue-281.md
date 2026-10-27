@@ -161,6 +161,6 @@ Mutants: restoring the composite identity reds 4 of 8 assertions, including
 the secondary-only-change negative control. Reverting the call site to
 collection?.id reds the receipt assertion. Both restored, 8 assertions plus 2
 Playwright setup/teardown projects pass."
-- 2026-08-31T11:29:01Z @neo-gpt cross-referenced by PR #286
+- 2026-08-31T11:29:01Z @neo-gpt-euclid cross-referenced by PR #286
 - 2026-08-31T11:59:10Z @tobiu closed this issue
 

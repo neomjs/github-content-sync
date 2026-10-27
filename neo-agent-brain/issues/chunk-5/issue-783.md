@@ -25,7 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 19370 ADR 0038 §2.2: the owner principal is backed by a plane-governed forge connection'
 blocking:
-  - '[ ] 52 Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)'
+  - '[x] 52 Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)'
 closedAt: '2026-10-03T11:57:07Z'
 ---
 # Fleet admission resolves its owner through a plane-governed forge connection
@@ -250,4 +250,7 @@ strings before the lookup, for bindings and tombstones alike, and any structural
 throw while checking the store reads as corrupt, never escapes. Malformed-type
 controls join the integrity arm."
 - 2026-10-03T11:57:07Z @tobiu closed this issue
+- 2026-10-04T19:08:52Z @neo-gpt-sophie cross-referenced by PR #861
+- 2026-10-04T19:12:33Z @neo-gpt-euclid cross-referenced by #83
+- 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
 

@@ -8,11 +8,11 @@ labels:
   - architecture
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-03T06:52:50Z'
 updatedAt: '2026-10-03T09:10:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/786'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: 351
 subIssues: []
@@ -25,7 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 788 ADR 0041 §3 names how a host-file effect settles'
 blocking:
-  - '[ ] 475 The setup card recovers a run stuck behind an interrupted effect'
+  - '[x] 475 The setup card recovers a run stuck behind an interrupted effect'
 closedAt: '2026-10-03T08:36:20Z'
 ---
 # An interrupted file effect deadlocks the first run on a cold host
@@ -129,21 +129,21 @@ Retrieval Hint: "settlePending planeMatches cold host pending write-secrets reco
 
 ## Timeline
 
-- 2026-10-03T06:52:51Z @neo-fable assigned to @neo-fable
-- 2026-10-03T06:52:52Z @neo-fable added the `bug` label
-- 2026-10-03T06:52:52Z @neo-fable added the `ai` label
-- 2026-10-03T06:52:52Z @neo-fable added the `architecture` label
-- 2026-10-03T06:52:53Z @neo-fable added the `agent-os` label
-- 2026-10-03T06:53:07Z @neo-fable added parent issue #351
-- 2026-10-03T06:59:37Z @neo-fable cross-referenced by #788
-- 2026-10-03T07:00:01Z @neo-fable marked this issue as being blocked by #788
-- 2026-10-03T07:02:40Z @neo-fable cross-referenced by PR #789
-- 2026-10-03T07:04:31Z @neo-fable cross-referenced by #475
-- 2026-10-03T07:04:44Z @neo-fable marked this issue as blocking #475
-- 2026-10-03T07:05:49Z @neo-fable cross-referenced by PR #790
-- 2026-10-03T07:16:09Z @neo-fable cross-referenced by #351
-- 2026-10-03T08:19:14Z @neo-fable referenced in commit `306e366` - "chore(merge): bring origin/dev into the branch (#786)"
-- 2026-10-03T08:19:14Z @neo-fable referenced in commit `7c1928c` - "fix(fleet): the secret-file observer reads the consented preset's whole set, so a partly written set never settles (#786)
+- 2026-10-03T06:52:51Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-03T06:52:52Z @neo-fable-mnemosyne added the `bug` label
+- 2026-10-03T06:52:52Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-03T06:52:52Z @neo-fable-mnemosyne added the `architecture` label
+- 2026-10-03T06:52:53Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-03T06:53:07Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-03T06:59:37Z @neo-fable-mnemosyne cross-referenced by #788
+- 2026-10-03T07:00:01Z @neo-fable-mnemosyne marked this issue as being blocked by #788
+- 2026-10-03T07:02:40Z @neo-fable-mnemosyne cross-referenced by PR #789
+- 2026-10-03T07:04:31Z @neo-fable-mnemosyne cross-referenced by #475
+- 2026-10-03T07:04:44Z @neo-fable-mnemosyne marked this issue as blocking #475
+- 2026-10-03T07:05:49Z @neo-fable-mnemosyne cross-referenced by PR #790
+- 2026-10-03T07:16:09Z @neo-fable-mnemosyne cross-referenced by #351
+- 2026-10-03T08:19:14Z @neo-fable-mnemosyne referenced in commit `306e366` - "chore(merge): bring origin/dev into the branch (#786)"
+- 2026-10-03T08:19:14Z @neo-fable-mnemosyne referenced in commit `7c1928c` - "fix(fleet): the secret-file observer reads the consented preset's whole set, so a partly written set never settles (#786)
 
 write-secrets writes its files one at a time, and the observer read any owner-only file in the directory as the result. With the settle rule matching a host-file effect by its own observation, an interruption after the first of three files settled as done and the run went on without a secret. The observer now reads the set the consented preset needs, from the one list the composer writes by, and names what is missing; the halt line repeats the observation's reason."
 - 2026-10-03T08:36:20Z @tobiu referenced in commit `36b17f4` - "feat(fleet): an interrupted host-file effect settles by its own observation, so a cold host's first run is never deadlocked behind it (#786) (#790)
@@ -159,4 +159,6 @@ The CLI refuses a --run-id whose record is unreadable or malformed instead of re
 write-secrets writes its files one at a time, and the observer read any owner-only file in the directory as the result. With the settle rule matching a host-file effect by its own observation, an interruption after the first of three files settled as done and the run went on without a secret. The observer now reads the set the consented preset needs, from the one list the composer writes by, and names what is missing; the halt line repeats the observation's reason."
 - 2026-10-03T08:36:20Z @tobiu closed this issue
 - 2026-10-03T12:25:27Z @neo-fable-clio cross-referenced by #810
+- 2026-10-03T12:46:18Z @neo-fable-clio cross-referenced by #812
+- 2026-10-17T16:56:53Z @neo-fable-mnemosyne cross-referenced by PR #721
 

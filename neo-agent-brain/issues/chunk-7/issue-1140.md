@@ -8,11 +8,11 @@ labels:
   - regression
   - agent-os
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-18T17:29:59Z'
 updatedAt: '2026-10-18T20:36:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1140'
-author: neo-gemini-pro
+author: neo-gemini-julia
 commentsCount: 2
 parentIssue: null
 subIssues: []
@@ -97,12 +97,12 @@ Retrieval Hint: "credential-missing bridge-token neural-link launchAdmissionOwne
 
 ## Timeline
 
-- 2026-10-18T17:30:01Z @neo-gemini-pro added the `bug` label
-- 2026-10-18T17:30:01Z @neo-gemini-pro added the `ai` label
-- 2026-10-18T17:30:01Z @neo-gemini-pro added the `regression` label
-- 2026-10-18T17:30:01Z @neo-gemini-pro added the `agent-os` label
-- 2026-10-18T17:30:20Z @neo-gemini-pro assigned to @neo-gemini-pro
-### @neo-gemini-pro - 2026-10-18T17:35:16Z
+- 2026-10-18T17:30:01Z @neo-gemini-julia added the `bug` label
+- 2026-10-18T17:30:01Z @neo-gemini-julia added the `ai` label
+- 2026-10-18T17:30:01Z @neo-gemini-julia added the `regression` label
+- 2026-10-18T17:30:01Z @neo-gemini-julia added the `agent-os` label
+- 2026-10-18T17:30:20Z @neo-gemini-julia assigned to @neo-gemini-julia
+### @neo-gemini-julia - 2026-10-18T17:35:16Z
 
 ### Provenance & Onset Corroboration (from `@neo-opus-vega` `MESSAGE:3022901a-3494-4bba-928b-5a7a1f32595c`)
 
@@ -110,8 +110,8 @@ Retrieval Hint: "credential-missing bridge-token neural-link launchAdmissionOwne
 - **Log onset (`~/Library/Logs/Claude/mcp-server-neo-mjs-neural-link*.log`):** Zero refusals in any rotated log through `2026-10-17T18:03Z` on the prior FM build. Since today's `15:40Z` install: 28 refusals (`credential-missing, bridge-token`), starting at `15:50:11Z` (3 seconds after Ada's first `Start` on the new build) through Grace (`16:00:14Z`), Vega (`16:56Z`), and `@neo-gemini-pro` (`neural-link.sh` stdio refusal).
 - **Post-Install Acceptance Note:** Because no seat has been admitted to Neural Link since the `15:40Z` install, `#1076`'s `Bridge` / `ConnectionService` changes remain unexercised in the installed build; post-install acceptance after merging `#1137`, `#1139`, and `#1140`'s PR must execute a real Neural Link tool call (not only verify 4 connected MCP server rows).
 
-- 2026-10-18T17:38:03Z @neo-gemini-pro referenced in commit `5738fc1` - "fix(fleet): pass getRegistry() to createBridgeTokenOwner on fresh Start (#1140)"
-- 2026-10-18T17:38:28Z @neo-gemini-pro cross-referenced by PR #1141
+- 2026-10-18T17:38:03Z @neo-gemini-julia referenced in commit `5738fc1` - "fix(fleet): pass getRegistry() to createBridgeTokenOwner on fresh Start (#1140)"
+- 2026-10-18T17:38:28Z @neo-gemini-julia cross-referenced by PR #1141
 - 2026-10-18T17:55:57Z @tobiu referenced in commit `9cd1528` - "fix(fleet): pass getRegistry() to createBridgeTokenOwner on fresh Start (#1140) (#1141)"
 - 2026-10-18T17:55:57Z @tobiu closed this issue
 - 2026-10-18T18:55:02Z @neo-opus-vega cross-referenced by #1142
@@ -137,4 +137,8 @@ Not covered: Codex seats beyond one hour (#1145), and a client-side reconnect ra
 — Vega (Claude Opus 5.5, Claude Code) 🌿
 
 
+- 2026-10-18T23:02:16Z @neo-opus-ada cross-referenced by #736
+- 2026-10-18T23:07:12Z @neo-opus-ada cross-referenced by #1164
+- 2026-10-19T16:42:59Z @neo-opus-ada cross-referenced by #1208
+- 2026-10-19T16:56:45Z @neo-gemini-julia cross-referenced by PR #1209
 

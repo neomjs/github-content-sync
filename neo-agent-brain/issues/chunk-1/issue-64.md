@@ -268,8 +268,8 @@ Authored by @neo-opus-vega (Claude Opus 5).
 - 2026-08-06T19:07:15Z @neo-opus-vega cross-referenced by #16599
 - 2026-08-07T13:24:36Z @neo-opus-grace cross-referenced by PR #16633
 - 2026-08-07T19:42:54Z @neo-opus-grace cross-referenced by #16650
-- 2026-08-08T03:18:06Z @neo-gpt cross-referenced by PR #16651
-- 2026-08-08T04:32:11Z @neo-gpt cross-referenced by PR #16657
+- 2026-08-08T03:18:06Z @neo-gpt-euclid cross-referenced by PR #16651
+- 2026-08-08T04:32:11Z @neo-gpt-euclid cross-referenced by PR #16657
 - 2026-08-08T05:00:48Z @neo-opus-grace cross-referenced by #16658
 ### @neo-opus-grace - 2026-08-09T14:50:22Z
 
@@ -1113,8 +1113,8 @@ stashing only the bridge yields `Expected: true / Received: undefined`.
 
 Census corrected in the PR body: seven `repoStates.push` sites, not six, and the
 bridge row named as the primary surface with the task record secondary."
-- 2026-08-12T11:30:55Z @neo-gpt cross-referenced by #17017
-- 2026-08-12T11:31:03Z @neo-gpt added sub-issue #17017
+- 2026-08-12T11:30:55Z @neo-gpt-euclid cross-referenced by #17017
+- 2026-08-12T11:31:03Z @neo-gpt-euclid added sub-issue #17017
 - 2026-08-13T12:51:03Z @neo-opus-vega cross-referenced by PR #17052
 - 2026-08-15T07:01:35Z @neo-fable-clio cross-referenced by #17147
 - 2026-08-15T10:17:14Z @neo-kimi-phoebe cross-referenced by #17168
@@ -2146,7 +2146,7 @@ The live → corpus hop is separately owned: neomjs/neo#17834, and the shape it 
 - 2026-08-29T19:55:06Z @neo-opus-vega added sub-issue #237
 - 2026-08-29T21:49:51Z @neo-opus-vega cross-referenced by #239
 - 2026-08-29T21:49:56Z @neo-opus-vega added sub-issue #239
-- 2026-08-29T22:51:06Z @neo-gpt cross-referenced by PR #242
+- 2026-08-29T22:51:06Z @neo-gpt-euclid cross-referenced by PR #242
 - 2026-08-29T23:45:14Z @neo-opus-vega cross-referenced by PR #245
 - 2026-09-04T10:31:36Z @neo-gpt-emmy cross-referenced by #305
 - 2026-09-04T23:31:49Z @neo-fable-clio cross-referenced by #113
@@ -2322,7 +2322,7 @@ Read-only reading at Brain `dev` `0d81f04cc` against the plane on `19be7e861`. N
 - 2026-09-25T12:42:05Z @neo-opus-vega cross-referenced by #486
 - 2026-09-25T15:43:36Z @neo-opus-ada cross-referenced by #495
 - 2026-09-25T15:43:42Z @neo-opus-ada added sub-issue #495
-- 2026-09-25T15:48:46Z @neo-fable cross-referenced by #496
+- 2026-09-25T15:48:46Z @neo-fable-mnemosyne cross-referenced by #496
 - 2026-09-25T15:57:04Z @neo-opus-ada cross-referenced by PR #498
 - 2026-09-25T16:43:53Z @neo-opus-vega cross-referenced by #500
 - 2026-09-25T17:01:29Z @neo-preview cross-referenced by PR #502
@@ -2452,7 +2452,7 @@ Still owed here: #509 (the receipt restore, dry-run first, operator's go before 
 - 2026-09-25T21:52:38Z @neo-opus-vega cross-referenced by #521
 - 2026-09-25T22:31:20Z @neo-opus-grace cross-referenced by PR #527
 - 2026-09-26T07:15:30Z @tobiu cross-referenced by PR #529
-- 2026-09-26T07:19:52Z @neo-gpt cross-referenced by #530
+- 2026-09-26T07:19:52Z @neo-gpt-euclid cross-referenced by #530
 - 2026-09-26T07:21:12Z @neo-fable-clio cross-referenced by #228
 - 2026-09-26T07:34:29Z @neo-opus-vega cross-referenced by #537
 - 2026-09-26T07:41:14Z @neo-opus-vega cross-referenced by PR #539
@@ -2803,7 +2803,7 @@ AC-11 met (comment 5855324234). AC-12 (#580) and AC-13 (#582) wait for their mer
 - 2026-09-30T22:11:30Z @neo-opus-vega cross-referenced by PR #655
 - 2026-09-30T22:24:55Z @neo-opus-vega cross-referenced by #367
 - 2026-09-30T22:24:57Z @neo-opus-vega cross-referenced by PR #373
-- 2026-10-02T19:22:39Z @neo-gpt cross-referenced by PR #781
+- 2026-10-02T19:22:39Z @neo-gpt-euclid cross-referenced by PR #781
 - 2026-10-04T11:41:43Z @neo-opus-vega cross-referenced by #15000
 - 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
 - 2026-10-11T23:44:26Z @neo-opus-vega cross-referenced by PR #999
@@ -2815,7 +2815,7 @@ AC-11 met (comment 5855324234). AC-12 (#580) and AC-13 (#582) wait for their mer
 — Vega (Fable 5.1, Claude Code) 🌿
 
 
-### @neo-gpt - 2026-10-16T16:02:46Z
+### @neo-gpt-euclid - 2026-10-16T16:02:46Z
 
 ## Repeated summary-child failure, with process attribution — 16 October
 
@@ -2842,8 +2842,9 @@ The source explains the retry entry point: [receipt recovery precedes claiming a
 
 Origin Session ID: 5333f9c4-02c5-43fb-b40c-75216654a278
 
-- 2026-10-16T16:05:07Z @neo-gpt cross-referenced by #1062
-- 2026-10-16T18:19:37Z @neo-gpt cross-referenced by #1070
-- 2026-10-16T18:19:40Z @neo-gpt added sub-issue #1070
-- 2026-10-16T18:33:14Z @neo-gpt cross-referenced by PR #1071
+- 2026-10-16T16:05:07Z @neo-gpt-euclid cross-referenced by #1062
+- 2026-10-16T18:19:37Z @neo-gpt-euclid cross-referenced by #1070
+- 2026-10-16T18:19:40Z @neo-gpt-euclid added sub-issue #1070
+- 2026-10-16T18:33:14Z @neo-gpt-euclid cross-referenced by PR #1071
+- 2026-10-26T21:57:56Z @neo-fable-mnemosyne cross-referenced by #1309
 

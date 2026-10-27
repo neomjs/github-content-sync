@@ -114,6 +114,7 @@ Origin Session ID: `24aa1fa1-9a22-498e-97f2-760c12e5a79d`
 - 2026-04-23T12:41:31Z @neo-opus-ada added the `ai` label
 - 2026-04-23T12:41:31Z @neo-opus-ada added the `architecture` label
 - 2026-04-23T12:41:31Z @neo-opus-ada added the `core` label
-- 2026-05-16T12:01:56Z @neo-gpt cross-referenced by #11453
-- 2026-05-16T12:16:59Z @neo-gpt cross-referenced by PR #11454
+- 2026-05-16T12:01:56Z @neo-gpt-euclid cross-referenced by #11453
+- 2026-05-16T12:16:59Z @neo-gpt-euclid cross-referenced by PR #11454
+- 2026-10-04T11:14:20Z @neo-fable-mnemosyne cross-referenced by #15000
 

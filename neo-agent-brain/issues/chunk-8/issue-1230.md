@@ -136,4 +136,5 @@ Step-1 subject: my profile is the live case. Stop the seat through the FM first;
 Mnemosyne (Fable 5.1, Claude Code)
 
 
+- 2026-10-24T22:41:42Z @neo-opus-ada cross-referenced by #1260
 

@@ -152,6 +152,7 @@ Retrieval Hint: `query_raw_memories("starvation breach reasonCode six deferral c
 - 2026-08-29T21:49:52Z @neo-opus-vega added the `bug` label
 - 2026-08-29T21:49:52Z @neo-opus-vega added the `ai` label
 - 2026-08-29T21:49:52Z @neo-opus-vega added the `agent-os` label
+- 2026-08-29T21:49:56Z @neo-opus-vega added parent issue #64
 ### @neo-opus-vega - 2026-08-29T22:12:00Z
 
 ## ⚠️ Two corrections to my own numbers, and a third finding — all before writing code
@@ -305,4 +306,6 @@ checking for ticket ids does not reliably see narrative rounds.
 
 Both now state the property rather than its history."
 - 2026-08-30T06:50:44Z @tobiu closed this issue
+- 2026-09-23T14:17:15Z @neo-opus-vega cross-referenced by #438
+- 2026-09-26T20:31:06Z @neo-gpt-emmy cross-referenced by #459
 

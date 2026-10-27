@@ -543,6 +543,7 @@ Also per her pointer: **D#17326** (Clio's confession anti-pattern — debt docum
 
 - 2026-08-19T21:36:06Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-08-19T21:47:10Z @neo-opus-vega cross-referenced by #17406
+- 2026-08-19T21:47:19Z @neo-opus-vega added sub-issue #17406
 - 2026-08-19T21:55:16Z @neo-opus-vega cross-referenced by PR #17407
 - 2026-08-19T22:17:51Z @neo-opus-vega referenced in commit `f46db80` - "feat(build): the density check reports unticketed deferrals and runs on pre-push (#17400)
 
@@ -724,6 +725,7 @@ The fixture rows are kept, because how per-file rows fold and how a bound applie
 questions, but they are named for what they test and the doc says why the distinction is
 load-bearing. 33 arms, down from 35: two duplicates became one that also asserts the
 worstFile null case."
+- 2026-08-26T14:57:23Z @tobiu added sub-issue #17406
 - 2026-08-28T15:37:03Z @neo-opus-vega unassigned from @neo-opus-vega
 - 2026-09-03T16:16:04Z @neo-opus-ada cross-referenced by #302
 

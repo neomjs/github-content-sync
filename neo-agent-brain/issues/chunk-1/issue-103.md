@@ -8,11 +8,11 @@ labels:
   - architecture
   - security
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-07-14T05:31:18Z'
 updatedAt: '2026-09-21T10:59:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/103'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 1
 parentIssue: 106
 subIssues: []
@@ -28,8 +28,8 @@ blockedBy:
   - '[x] 15152 Reconcile GitHub issue activity exhaustively'
   - '[x] 15151 Admit idempotent community batches into durable history'
 blocking:
-  - '[ ] 98 Prove the community-activity authority chain end to end'
-  - '[ ] 3 Calibrate community policy from measured evidence'
+  - '[x] 98 Prove the community-activity authority chain end to end'
+  - '[x] 3 Calibrate community policy from measured evidence'
 closedAt: '2026-09-21T10:59:51Z'
 ---
 # Expose a temporal community Bird View and seen state
@@ -145,22 +145,26 @@ Creation duplicate sweep: immediately before filing at 2026-07-14T05:31:17.761Z,
 
 ## Timeline
 
-- 2026-07-14T05:31:19Z @neo-gpt added the `enhancement` label
-- 2026-07-14T05:31:20Z @neo-gpt added the `ai` label
-- 2026-07-14T05:31:20Z @neo-gpt added the `architecture` label
-- 2026-07-14T05:31:20Z @neo-gpt added the `security` label
-- 2026-07-14T05:32:50Z @neo-gpt marked this issue as being blocked by #15151
-- 2026-07-14T05:32:51Z @neo-gpt marked this issue as being blocked by #15152
-- 2026-07-14T05:32:53Z @neo-gpt marked this issue as being blocked by #15153
-- 2026-07-14T05:34:32Z @neo-gpt cross-referenced by #106
+- 2026-07-14T05:31:19Z @neo-gpt-euclid added the `enhancement` label
+- 2026-07-14T05:31:20Z @neo-gpt-euclid added the `ai` label
+- 2026-07-14T05:31:20Z @neo-gpt-euclid added the `architecture` label
+- 2026-07-14T05:31:20Z @neo-gpt-euclid added the `security` label
+- 2026-07-14T05:32:50Z @neo-gpt-euclid marked this issue as being blocked by #15151
+- 2026-07-14T05:32:51Z @neo-gpt-euclid marked this issue as being blocked by #15152
+- 2026-07-14T05:32:53Z @neo-gpt-euclid marked this issue as being blocked by #15153
+- 2026-07-14T05:34:32Z @neo-gpt-euclid cross-referenced by #106
 - 2026-07-22T11:43:28Z @neo-gpt-emmy cross-referenced by #15524
-- 2026-08-24T11:39:12Z @neo-gpt marked this issue as blocking #3
-- 2026-08-26T15:13:33Z @neo-gpt marked this issue as being blocked by #15152
-- 2026-08-26T15:13:33Z @neo-gpt marked this issue as being blocked by #15151
-- 2026-08-26T15:13:34Z @neo-gpt marked this issue as being blocked by #15153
-- 2026-08-26T15:13:34Z @neo-gpt marked this issue as blocking #3
-- 2026-09-19T23:01:07Z @neo-gpt cross-referenced by PR #392
-### @neo-gpt - 2026-09-20T00:54:08Z
+- 2026-08-24T11:39:12Z @neo-gpt-euclid marked this issue as blocking #3
+- 2026-08-26T15:11:05Z @neo-gpt-euclid marked this issue as blocking #98
+- 2026-08-26T15:13:33Z @neo-gpt-euclid marked this issue as being blocked by #15152
+- 2026-08-26T15:13:33Z @neo-gpt-euclid marked this issue as being blocked by #15151
+- 2026-08-26T15:13:34Z @neo-gpt-euclid marked this issue as being blocked by #15153
+- 2026-08-26T15:13:34Z @neo-gpt-euclid marked this issue as blocking #98
+- 2026-08-26T15:13:34Z @neo-gpt-euclid marked this issue as blocking #3
+- 2026-08-26T15:13:37Z @neo-gpt-euclid marked this issue as being blocked by #105
+- 2026-08-26T15:14:30Z @tobiu added parent issue #106
+- 2026-09-19T23:01:07Z @neo-gpt-euclid cross-referenced by PR #392
+### @neo-gpt-euclid - 2026-09-20T00:54:08Z
 
 Intake has started against the landed admission/reconciliation substrate. Two source constraints will shape the read implementation:
 
@@ -171,11 +175,12 @@ The default projection will use the stored attention disposition and metadata on
 
 No implementation branch or claim yet. The half-open window's event-time semantics and server-derived viewer identity are being checked against the existing temporal and request-context contracts before the public schema is fixed.
 
-- 2026-09-20T01:37:04Z @neo-gpt assigned to @neo-gpt
-- 2026-09-20T02:05:34Z @neo-gpt cross-referenced by PR #396
+- 2026-09-20T01:37:04Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-20T02:05:34Z @neo-gpt-euclid cross-referenced by PR #396
 - 2026-09-21T10:43:27Z @tobiu referenced in commit `86da615` - "fix(memory-core): retain community content disclosure (#103)"
 - 2026-09-21T10:59:51Z @tobiu referenced in commit `bb52842` - "Merge pull request #396 from neomjs/codex/103-community-bird-view
 
 feat(memory-core): expose community activity and seen state (#103)"
 - 2026-09-21T10:59:52Z @tobiu closed this issue
+- 2026-10-27T00:54:23Z @neo-opus-grace cross-referenced by PR #1313
 

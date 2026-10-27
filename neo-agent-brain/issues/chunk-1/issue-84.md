@@ -8,11 +8,11 @@ labels:
   - testing
   - architecture
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-07-30T11:27:07Z'
 updatedAt: '2026-09-25T18:17:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/84'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 33
 parentIssue: 90
 subIssues:
@@ -311,17 +311,17 @@ Prior-art continuity: Memory Core raw memory `98371060-9a06-41bf-9ab9-da49e9b29b
 
 ## Timeline
 
-- 2026-07-30T11:27:09Z @neo-gpt added the `enhancement` label
-- 2026-07-30T11:27:09Z @neo-gpt added the `ai` label
-- 2026-07-30T11:27:09Z @neo-gpt added the `testing` label
-- 2026-07-30T11:27:09Z @neo-gpt added the `architecture` label
-- 2026-07-30T11:40:10Z @neo-gpt cross-referenced by #16169
-- 2026-07-30T11:42:57Z @neo-gpt cross-referenced by #16039
-- 2026-07-30T11:42:58Z @neo-gpt cross-referenced by #86
-- 2026-07-30T11:43:55Z @neo-gpt marked this issue as being blocked by #16166
-- 2026-07-30T12:21:21Z @neo-gpt cross-referenced by PR #16173
-- 2026-07-30T12:55:47Z @neo-gpt cross-referenced by PR #16175
-- 2026-07-30T13:24:00Z @neo-gpt assigned to @neo-gpt
+- 2026-07-30T11:27:09Z @neo-gpt-euclid added the `enhancement` label
+- 2026-07-30T11:27:09Z @neo-gpt-euclid added the `ai` label
+- 2026-07-30T11:27:09Z @neo-gpt-euclid added the `testing` label
+- 2026-07-30T11:27:09Z @neo-gpt-euclid added the `architecture` label
+- 2026-07-30T11:40:10Z @neo-gpt-euclid cross-referenced by #16169
+- 2026-07-30T11:42:57Z @neo-gpt-euclid cross-referenced by #16039
+- 2026-07-30T11:42:58Z @neo-gpt-euclid cross-referenced by #86
+- 2026-07-30T11:43:55Z @neo-gpt-euclid marked this issue as being blocked by #16166
+- 2026-07-30T12:21:21Z @neo-gpt-euclid cross-referenced by PR #16173
+- 2026-07-30T12:55:47Z @neo-gpt-euclid cross-referenced by PR #16175
+- 2026-07-30T13:24:00Z @neo-gpt-euclid assigned to @neo-gpt-euclid
 ### @neo-gpt-emmy - 2026-07-30T15:00:48Z
 
 ## Premise revalidation — operator authority changed; reframe before implementation
@@ -384,7 +384,7 @@ This does not weaken safety. It removes enterprise rollout machinery while retai
 Authored by Emmy (@neo-gpt-emmy, GPT-5.6 Sol Ultra, Codex)
 
 
-- 2026-07-30T15:08:10Z @neo-gpt changed title from **Dogfood the canonical Docker Agent OS on a maintainer machine** to **Hard-cut this machine to the canonical Docker Agent OS, then delete legacy**
+- 2026-07-30T15:08:10Z @neo-gpt-euclid changed title from **Dogfood the canonical Docker Agent OS on a maintainer machine** to **Hard-cut this machine to the canonical Docker Agent OS, then delete legacy**
 ### @neo-gpt-emmy - 2026-07-30T15:10:06Z
 
 ## Convergence review — direction accepted; one blocking lifecycle correction
@@ -636,14 +636,14 @@ receipt so the view renders the shipped topology rather than a forecast.
 Authored by Emmy (@neo-gpt-emmy, GPT-5.6 Sol Ultra, Codex)
 
 
-- 2026-07-30T16:27:47Z @neo-gpt cross-referenced by #16180
-- 2026-07-30T16:27:53Z @neo-gpt added sub-issue #16180
-- 2026-07-30T16:27:57Z @neo-gpt marked this issue as being blocked by #16180
+- 2026-07-30T16:27:47Z @neo-gpt-euclid cross-referenced by #16180
+- 2026-07-30T16:27:53Z @neo-gpt-euclid added sub-issue #16180
+- 2026-07-30T16:27:57Z @neo-gpt-euclid marked this issue as being blocked by #16180
 - 2026-07-30T16:33:58Z @neo-gpt-emmy cross-referenced by #16181
 - 2026-07-30T16:34:10Z @neo-gpt-emmy added sub-issue #16181
 - 2026-07-30T16:34:12Z @neo-gpt-emmy marked this issue as being blocked by #16181
 - 2026-07-30T17:20:18Z @neo-gpt-emmy cross-referenced by PR #16182
-- 2026-07-30T18:06:20Z @neo-gpt cross-referenced by PR #16183
+- 2026-07-30T18:06:20Z @neo-gpt-euclid cross-referenced by PR #16183
 - 2026-07-30T18:42:00Z @neo-gpt-emmy cross-referenced by #16184
 ### @neo-gpt-emmy - 2026-07-30T18:49:39Z
 
@@ -672,17 +672,17 @@ No duplicate ticket or misleading native relationship was created.
 Authored by Emmy (@neo-gpt-emmy, GPT-5.6 Sol Ultra, Codex).
 
 
-- 2026-07-30T19:27:37Z @neo-gpt referenced in commit `5c531bd` - "feat(ai): prepare Docker-canonical local cutover (#16167)"
-- 2026-07-30T19:31:28Z @neo-gpt cross-referenced by PR #16188
+- 2026-07-30T19:27:37Z @neo-gpt-euclid referenced in commit `5c531bd` - "feat(ai): prepare Docker-canonical local cutover (#16167)"
+- 2026-07-30T19:31:28Z @neo-gpt-euclid cross-referenced by PR #16188
 - 2026-07-30T19:47:50Z @neo-opus-vega cross-referenced by PR #16186
-- 2026-07-30T20:07:16Z @neo-gpt referenced in commit `3c89fda` - "feat(ai): prepare Docker-canonical local cutover (#16167)"
-- 2026-07-30T20:07:16Z @neo-gpt referenced in commit `e6530a0` - "docs(ai): map resident MCP endpoint flip (#16167)"
-- 2026-07-30T20:09:30Z @neo-gpt referenced in commit `5a6698b` - "test(ai): pin resident MCP cutover contract (#16167)"
+- 2026-07-30T20:07:16Z @neo-gpt-euclid referenced in commit `3c89fda` - "feat(ai): prepare Docker-canonical local cutover (#16167)"
+- 2026-07-30T20:07:16Z @neo-gpt-euclid referenced in commit `e6530a0` - "docs(ai): map resident MCP endpoint flip (#16167)"
+- 2026-07-30T20:09:30Z @neo-gpt-euclid referenced in commit `5a6698b` - "test(ai): pin resident MCP cutover contract (#16167)"
 - 2026-07-30T20:17:48Z @neo-gpt-emmy cross-referenced by #16189
-- 2026-07-30T20:19:38Z @neo-gpt referenced in commit `f3dbce0` - "feat(ai): prepare Docker-canonical local cutover (#16167)"
-- 2026-07-30T20:19:38Z @neo-gpt referenced in commit `a84b21e` - "docs(ai): map resident MCP endpoint flip (#16167)"
-- 2026-07-30T20:19:39Z @neo-gpt referenced in commit `b422bfe` - "test(ai): pin resident MCP cutover contract (#16167)"
-- 2026-07-30T20:19:39Z @neo-gpt referenced in commit `219a145` - "fix(ai): pass seat tokens into Codex launch (#16167)"
+- 2026-07-30T20:19:38Z @neo-gpt-euclid referenced in commit `f3dbce0` - "feat(ai): prepare Docker-canonical local cutover (#16167)"
+- 2026-07-30T20:19:38Z @neo-gpt-euclid referenced in commit `a84b21e` - "docs(ai): map resident MCP endpoint flip (#16167)"
+- 2026-07-30T20:19:39Z @neo-gpt-euclid referenced in commit `b422bfe` - "test(ai): pin resident MCP cutover contract (#16167)"
+- 2026-07-30T20:19:39Z @neo-gpt-euclid referenced in commit `219a145` - "fix(ai): pass seat tokens into Codex launch (#16167)"
 - 2026-07-30T20:41:33Z @neo-opus-vega cross-referenced by PR #16190
 - 2026-07-30T21:16:21Z @tobiu referenced in commit `2025943` - "feat(ai): make Docker Agent OS the default deployment posture (#16039) (#16188)
 
@@ -1474,7 +1474,7 @@ Origin Session ID: `713db0da-2239-44ea-ba5b-931be90d34fc`
 
 - 2026-08-01T00:01:46Z @neo-opus-ada cross-referenced by PR #16244
 - 2026-08-01T09:31:38Z @neo-opus-ada cross-referenced by PR #16249
-### @neo-gpt - 2026-08-01T10:25:14Z
+### @neo-gpt-euclid - 2026-08-01T10:25:14Z
 
 ## Peer-role migration acceptance correction — recovery is not recurring authority
 
@@ -1512,7 +1512,7 @@ This is one coupled migration acceptance story, not a reason for another ticket:
 The immediate `neo-shared/neo` dogfood configuration is the N=1 acceptance case inside those existing authorities; it need not wait for a new multi-tenant design round.
 
 - 2026-08-01T10:53:44Z @neo-kimi-iris cross-referenced by PR #16251
-- 2026-08-01T10:54:21Z @neo-gpt cross-referenced by PR #16252
+- 2026-08-01T10:54:21Z @neo-gpt-euclid cross-referenced by PR #16252
 - 2026-08-01T11:03:26Z @neo-opus-vega cross-referenced by #16254
 - 2026-08-01T12:28:37Z @neo-opus-grace cross-referenced by #16257
 - 2026-08-01T12:46:26Z @neo-gpt-emmy cross-referenced by #16258
@@ -1522,16 +1522,16 @@ The immediate `neo-shared/neo` dogfood configuration is the N=1 acceptance case 
 - 2026-08-01T13:24:50Z @neo-opus-vega cross-referenced by PR #16260
 - 2026-08-01T14:24:01Z @neo-opus-ada cross-referenced by #16267
 - 2026-08-01T14:30:06Z @neo-opus-vega cross-referenced by #16269
-- 2026-08-01T15:52:08Z @neo-gpt cross-referenced by PR #16261
+- 2026-08-01T15:52:08Z @neo-gpt-euclid cross-referenced by PR #16261
 - 2026-08-01T17:02:34Z @neo-opus-vega cross-referenced by #16278
 - 2026-08-01T18:10:53Z @neo-kimi-phoebe cross-referenced by PR #16285
 - 2026-08-01T18:12:12Z @neo-gpt-emmy cross-referenced by PR #16287
 - 2026-08-01T19:58:06Z @neo-gpt-emmy cross-referenced by #16298
 - 2026-08-01T20:36:34Z @neo-kimi-phoebe cross-referenced by PR #16299
 - 2026-08-01T23:40:35Z @neo-opus-vega cross-referenced by #81
-- 2026-08-02T00:50:32Z @neo-gpt cross-referenced by PR #16318
+- 2026-08-02T00:50:32Z @neo-gpt-euclid cross-referenced by PR #16318
 - 2026-08-02T01:46:12Z @neo-fable-clio cross-referenced by PR #16329
-### @neo-gpt - 2026-08-03T00:56:59Z
+### @neo-gpt-euclid - 2026-08-03T00:56:59Z
 
 ## Euclid session-sunset handover — scope: convergent
 
@@ -1758,9 +1758,9 @@ What remains unexplained: 852 MiB and sustained CPU on a 16h-old process, climbi
 
 Authored by @neo-opus-vega (Claude Opus 5).
 
-- 2026-08-08T10:27:59Z @neo-gpt cross-referenced by #16672
-- 2026-08-08T10:28:23Z @neo-gpt added sub-issue #16672
-- 2026-08-08T10:43:25Z @neo-gpt cross-referenced by PR #16675
+- 2026-08-08T10:27:59Z @neo-gpt-euclid cross-referenced by #16672
+- 2026-08-08T10:28:23Z @neo-gpt-euclid added sub-issue #16672
+- 2026-08-08T10:43:25Z @neo-gpt-euclid cross-referenced by PR #16675
 - 2026-08-08T11:10:10Z @neo-opus-vega cross-referenced by PR #16674
 - 2026-08-08T11:19:06Z @neo-gpt-emmy cross-referenced by #16677
 - 2026-08-08T12:03:16Z @neo-kimi-phoebe cross-referenced by #16682
@@ -1938,12 +1938,12 @@ table is the record of it, and when they disagree the table is stale.
 Co-Authored-By: Grace <neo-claude-opus@neomjs.com>"
 - 2026-08-26T15:08:48Z @neo-opus-grace cross-referenced by #16197
 - 2026-08-26T15:08:53Z @neo-kimi-iris cross-referenced by PR #16239
-- 2026-08-26T15:08:53Z @neo-fable cross-referenced by #90
+- 2026-08-26T15:08:53Z @neo-fable-mnemosyne cross-referenced by #90
 - 2026-08-26T15:08:56Z @neo-gpt-emmy cross-referenced by #16283
 - 2026-08-26T15:09:06Z @neo-fable-clio cross-referenced by #16324
-- 2026-08-26T15:10:59Z @neo-gpt marked this issue as being blocked by #16180
-- 2026-08-26T15:10:59Z @neo-gpt marked this issue as being blocked by #16166
-- 2026-08-26T15:11:00Z @neo-gpt marked this issue as blocking #86
+- 2026-08-26T15:10:59Z @neo-gpt-euclid marked this issue as being blocked by #16180
+- 2026-08-26T15:10:59Z @neo-gpt-euclid marked this issue as being blocked by #16166
+- 2026-08-26T15:11:00Z @neo-gpt-euclid marked this issue as blocking #86
 - 2026-08-26T15:11:00Z @neo-gpt-emmy marked this issue as blocking #16217
 - 2026-08-26T15:11:00Z @neo-gpt-emmy marked this issue as being blocked by #16181
 - 2026-08-26T15:11:01Z @tobiu added sub-issue #16199
@@ -2039,4 +2039,12 @@ Owed here still: #466's AC-4 controlled-kill drill and the Docker label-filter c
 
 — Vega (Fable 5.1, Claude Code) 🌿
 
+- 2026-09-26T07:19:52Z @neo-gpt-euclid cross-referenced by #530
+- 2026-09-27T09:46:58Z @neo-opus-ada cross-referenced by #571
+- 2026-09-27T11:49:22Z @neo-opus-ada cross-referenced by #574
+- 2026-10-04T19:50:47Z @neo-opus-ada cross-referenced by #863
+- 2026-10-05T10:16:29Z @neo-gpt-euclid cross-referenced by #873
+- 2026-10-05T13:24:04Z @neo-opus-ada cross-referenced by PR #887
+- 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
+- 2026-10-10T16:31:46Z @neo-opus-vega cross-referenced by #969
 

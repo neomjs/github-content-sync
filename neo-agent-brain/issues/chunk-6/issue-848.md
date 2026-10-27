@@ -7,11 +7,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-04T16:22:28Z'
 updatedAt: '2026-10-04T18:28:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/848'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: 351
 subIssues: []
@@ -23,7 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 550 A run the setup card starts takes the profile''s target'
+  - '[x] 550 A run the setup card starts takes the profile''s target'
 closedAt: '2026-10-04T18:28:56Z'
 milestone: FM v1
 ---
@@ -118,19 +118,19 @@ Retrieval Hint: "setup wizard run has no target plane write-env fails hostLayout
 
 ## Timeline
 
-- 2026-10-04T16:22:29Z @neo-fable assigned to @neo-fable
-- 2026-10-04T16:22:31Z @neo-fable added the `bug` label
-- 2026-10-04T16:22:31Z @neo-fable added the `ai` label
-- 2026-10-04T16:22:31Z @neo-fable added the `agent-os` label
-- 2026-10-04T16:22:47Z @neo-fable cross-referenced by #550
-- 2026-10-04T16:22:59Z @neo-fable added parent issue #351
-- 2026-10-04T16:23:00Z @neo-fable marked this issue as blocking #550
-- 2026-10-04T16:23:03Z @neo-fable added this to the **FM v1** milestone
-- 2026-10-04T16:23:58Z @neo-fable cross-referenced by #351
-- 2026-10-04T16:28:45Z @neo-fable cross-referenced by PR #849
-- 2026-10-04T16:31:02Z @neo-fable cross-referenced by #193
+- 2026-10-04T16:22:29Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-04T16:22:31Z @neo-fable-mnemosyne added the `bug` label
+- 2026-10-04T16:22:31Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-04T16:22:31Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-04T16:22:47Z @neo-fable-mnemosyne cross-referenced by #550
+- 2026-10-04T16:22:59Z @neo-fable-mnemosyne added parent issue #351
+- 2026-10-04T16:23:00Z @neo-fable-mnemosyne marked this issue as blocking #550
+- 2026-10-04T16:23:03Z @neo-fable-mnemosyne added this to the **FM v1** milestone
+- 2026-10-04T16:23:58Z @neo-fable-mnemosyne cross-referenced by #351
+- 2026-10-04T16:28:45Z @neo-fable-mnemosyne cross-referenced by PR #849
+- 2026-10-04T16:31:02Z @neo-fable-mnemosyne cross-referenced by #193
 - 2026-10-04T16:31:41Z @neo-gpt-sophie cross-referenced by #700
-- 2026-10-04T16:34:09Z @neo-fable referenced in commit `3b40ec7` - "fix(fleet): compose-up asks for the whole plane: the profile's cloud, fleet and ingress services (#848)
+- 2026-10-04T16:34:09Z @neo-fable-mnemosyne referenced in commit `3b40ec7` - "fix(fleet): compose-up asks for the whole plane: the profile's cloud, fleet and ingress services (#848)
 
 hostLayout() declares the local profile's compose profiles and the compose-up effect passes them. Without them a first run started the Memory Core, the Knowledge Base and Chroma only: no orchestrator, no Fleet service, and no ingress at the endpoint the run is bound to. A test holds the declared set against the base compose file; local-model stays out, the local presets use the host's own model server."
 - 2026-10-04T16:47:38Z @neo-fable-clio cross-referenced by #850
@@ -139,10 +139,10 @@ hostLayout() declares the local profile's compose profiles and the compose-up ef
 
 The record half named in this ticket's Decision Record line is filed and open: #850 → PR #852 (one sentence in ADR 0041 §2 item 4, dated and anchored here; merges before or beside #849). 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 4299144f-a074-4eee-afd9-75c53b452d15
 
-- 2026-10-04T17:14:39Z @neo-fable referenced in commit `f7d768b` - "fix(fleet): a run that names no plane binds the target its profile declares (#848)
+- 2026-10-04T17:14:39Z @neo-fable-mnemosyne referenced in commit `f7d768b` - "fix(fleet): a run that names no plane binds the target its profile declares (#848)
 
 hostLayout() states the local profile's target once: the canonical local plane id, its container-side data root, the loopback endpoint. setupRunRecord.runTarget decides a run's target for every renderer: what the invocation names, else what the record is bound to, else the profile's, whose root comes only with its id. The CLI uses it, so a cold run without --plane-id and --data-root no longer fails write-env on a null entry. A test holds the declared target against the profile's compose file."
-- 2026-10-04T17:14:40Z @neo-fable referenced in commit `94d6857` - "fix(fleet): compose-up asks for the whole plane: the profile's cloud, fleet and ingress services (#848)
+- 2026-10-04T17:14:40Z @neo-fable-mnemosyne referenced in commit `94d6857` - "fix(fleet): compose-up asks for the whole plane: the profile's cloud, fleet and ingress services (#848)
 
 hostLayout() declares the local profile's compose profiles and the compose-up effect passes them. Without them a first run started the Memory Core, the Knowledge Base and Chroma only: no orchestrator, no Fleet service, and no ingress at the endpoint the run is bound to. A test holds the declared set against the base compose file; local-model stays out, the local presets use the host's own model server."
 - 2026-10-04T17:28:35Z @neo-fable-clio cross-referenced by #858
@@ -156,5 +156,19 @@ hostLayout() states the local profile's target once: the canonical local plane i
 
 hostLayout() declares the local profile's compose profiles and the compose-up effect passes them. Without them a first run started the Memory Core, the Knowledge Base and Chroma only: no orchestrator, no Fleet service, and no ingress at the endpoint the run is bound to. A test holds the declared set against the base compose file; local-model stays out, the local presets use the host's own model server."
 - 2026-10-04T18:28:57Z @tobiu closed this issue
-- 2026-10-04T18:34:00Z @neo-fable cross-referenced by PR #555
+- 2026-10-04T18:34:00Z @neo-fable-mnemosyne cross-referenced by PR #555
+- 2026-10-05T09:37:20Z @tobiu referenced in commit `3d337eb` - "fix(harness): a run the setup card starts binds the plane its profile declares (#550) (#555)
+
+* fix(harness): a run the setup card starts binds the plane its profile declares (#550)
+
+The card names no target, and resolveRun created the run with none: write-env could not render the plane's data root and the run never reached done. resolveRun now asks the Brain's runTarget, as the CLI does: what the request names, else the record's binding, else the target the profile's layout declares. A new run is created already bound, so a first evaluation retires nothing.
+
+Tests: the fixture reads the profile's target from the pinned layout instead of stating it; the broker's cold arm and its done arm were the same run once the target is the profile's, so they are one arm; the card's e2e carries its run to done on the real broker and the hand-written sample has no e2e consumer left.
+
+Needs the Brain pin that carries neomjs/neo-agent-brain#848.
+
+* feat(deps): pin Brain 01fa9fd4 — the row contract and the profile's target (#550)
+
+The pin carries neomjs/neo-agent-brain#844 (the recipe is the one effect order; rows name their wait and their exits) and neomjs/neo-agent-brain#848 (hostLayout declares the profile's target and compose profiles; runTarget). The broker's call to runTarget needs it. The lock also takes the Brain's dotenv 18.0.5."
+- 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
 

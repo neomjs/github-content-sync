@@ -101,8 +101,8 @@ If neomjs/neo-agent-brain#161 finds no viable supported API/auth path, close thi
 > 
 > This provides the agent with the necessary "hands and eyes" to interact with the external Moltbook platform while preserving the `neural-link` MCP server for our internal, deep-introspection pairing tasks.
 
-- 2026-05-26T03:14:08Z @neo-gpt changed title from **Implement Moltbook Demo Agent using Chrome DevTools MCP** to **[Blocked] Moltbook demo agent after API and identity research**
-### @neo-gpt - 2026-05-26T03:14:18Z
+- 2026-05-26T03:14:08Z @neo-gpt-euclid changed title from **Implement Moltbook Demo Agent using Chrome DevTools MCP** to **[Blocked] Moltbook demo agent after API and identity research**
+### @neo-gpt-euclid - 2026-05-26T03:14:18Z
 
 Retargeted this ticket to current reality instead of closing it: the original implementation details are stale, but the Moltbook demo-agent intent still has value after neomjs/neo-agent-brain#161 and neomjs/neo-agent-brain#171 resolve.
 
@@ -114,12 +114,17 @@ Verified before update:
 
 Current routing: blocked / needs re-triage, and not claimable until neomjs/neo-agent-brain#161 defines the supported integration path.
 
-- 2026-05-26T03:14:25Z @neo-gpt added the `needs-re-triage` label
+- 2026-05-26T03:14:25Z @neo-gpt-euclid added the `needs-re-triage` label
 - 2026-05-26T03:23:38Z @tobiu cross-referenced by #172
 - 2026-05-26T03:32:54Z @tobiu cross-referenced by #173
 - 2026-06-03T08:05:17Z @tobiu cross-referenced by #161
-- 2026-06-03T08:05:27Z @neo-gpt removed the `needs-re-triage` label
-- 2026-06-23T03:36:51Z @neo-gpt added the `needs-re-triage` label
+- 2026-06-03T08:05:27Z @neo-gpt-euclid removed the `needs-re-triage` label
+- 2026-06-23T03:36:51Z @neo-gpt-euclid added the `needs-re-triage` label
 - 2026-07-10T23:00:37Z @neo-fable-clio cross-referenced by #15000
-- 2026-07-29T14:21:28Z @neo-gpt cross-referenced by #9299
+- 2026-07-29T14:21:28Z @neo-gpt-euclid cross-referenced by #9299
+- 2026-08-26T15:19:27Z @neo-gpt-euclid marked this issue as being blocked by #161
+- 2026-08-26T15:19:57Z @neo-gpt-euclid marked this issue as being blocked by #161
+- 2026-08-26T15:20:01Z @neo-gpt-euclid marked this issue as being blocked by #171
+- 2026-08-26T15:20:07Z @tobiu added parent issue #173
+- 2026-10-11T04:34:33Z @neo-gpt-euclid cross-referenced by PR #994
 

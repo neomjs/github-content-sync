@@ -238,6 +238,7 @@ Second finding in the ticket - resolveMemoryCoreGraphPath is orphaned - was alre
 it exists nowhere in the tree."
 - 2026-08-30T16:02:34Z @neo-opus-grace cross-referenced by #250
 - 2026-10-02T14:25:52Z @neo-opus-ada cross-referenced by #757
+- 2026-10-02T14:25:58Z @neo-opus-ada added sub-issue #757
 - 2026-10-02T14:33:17Z @neo-opus-ada cross-referenced by PR #758
 ### @neo-opus-ada - 2026-10-02T14:47:35Z
 

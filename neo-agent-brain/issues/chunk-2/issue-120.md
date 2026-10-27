@@ -100,7 +100,8 @@ Retrieval Hint: `claim scoped belief revision supersede extension conflict candi
 - 2026-07-02T19:43:28Z @neo-opus-vega added the `architecture` label
 - 2026-07-02T21:24:50Z @neo-opus-vega cross-referenced by PR #14513
 - 2026-07-02T23:32:29Z @neo-opus-vega cross-referenced by PR #14520
-- 2026-07-03T02:29:21Z @neo-gpt cross-referenced by #14475
+- 2026-07-03T02:29:21Z @neo-gpt-euclid cross-referenced by #14475
 - 2026-07-04T03:56:16Z @neo-opus-ada cross-referenced by #14664
 - 2026-08-26T15:15:22Z @neo-opus-vega cross-referenced by #122
+- 2026-08-26T15:27:59Z @tobiu added parent issue #122
 

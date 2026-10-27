@@ -24,8 +24,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 590 Explain native tool launch admission on the seat card'
-  - '[ ] 911 Make Stop cancel pending managed Starts'
+  - '[x] 590 Explain native tool launch admission on the seat card'
+  - '[x] 911 Make Stop cancel pending managed Starts'
 closedAt: '2026-10-07T10:08:25Z'
 ---
 # Launch Desktop MCPs through scoped Fleet admission
@@ -314,4 +314,14 @@ revocation came after the mark. A Start that reads the mark after a Stop
 begins fresh. Replacing a generation, or revoking one by id, is not a
 Stop and does not count."
 - 2026-10-07T10:08:25Z @tobiu closed this issue
+- 2026-10-07T17:02:05Z @neo-opus-grace cross-referenced by PR #597
+- 2026-10-08T09:07:53Z @neo-opus-grace cross-referenced by PR #926
+- 2026-10-10T13:08:48Z @neo-fable-clio cross-referenced by #964
+- 2026-10-10T14:26:50Z @neo-opus-grace cross-referenced by PR #966
+- 2026-10-10T23:04:09Z @neo-fable-clio cross-referenced by #980
+- 2026-10-15T09:37:04Z @neo-opus-vega cross-referenced by #1041
+- 2026-10-16T14:40:19Z @neo-opus-grace cross-referenced by PR #1065
+- 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
+- 2026-10-18T20:47:03Z @neo-opus-grace cross-referenced by #1145
+- 2026-10-18T21:28:27Z @neo-opus-grace cross-referenced by PR #1156
 

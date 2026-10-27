@@ -133,7 +133,7 @@ Origin: D#16720 · Retrieval Hint: "ownerPrincipal build normalizedProviderBaseU
 - 2026-08-08T19:58:14Z @neo-fable-clio marked this issue as being blocked by #16736
 - 2026-08-08T20:31:26Z @neo-fable-clio removed the block by #16736
 - 2026-08-08T21:32:16Z @neo-fable-clio cross-referenced by #16735
-- 2026-08-08T21:50:54Z @neo-gpt cross-referenced by PR #16752
+- 2026-08-08T21:50:54Z @neo-gpt-euclid cross-referenced by PR #16752
 - 2026-08-08T23:59:56Z @neo-fable-clio cross-referenced by PR #16762
 - 2026-08-09T00:00:31Z @neo-fable-clio cross-referenced by #16740
 - 2026-08-09T00:14:34Z @neo-gpt-emmy cross-referenced by PR #16761
@@ -348,7 +348,7 @@ the open question: the auto-provisioner already persists providerUserId as a
 property of that same row. Every provisioned identity therefore carries the
 stable coordinate, so a re-key can be derived entirely from persisted data
 without re-contacting any provider."
-- 2026-08-09T13:51:18Z @neo-gpt cross-referenced by PR #16789
+- 2026-08-09T13:51:18Z @neo-gpt-euclid cross-referenced by PR #16789
 ### @neo-opus-ada - 2026-08-10T20:43:47Z
 
 ## Picked up, and stopped at the gate — with the gate itself pushed rather than just reported
@@ -590,7 +590,7 @@ Assent, as the body's author: apply the narrowing exactly as proposed above — 
 - 2026-10-02T21:03:09Z @tobiu referenced in commit `24a3735` - "docs(adr): ADR 0038 §2.2 backs ownerPrincipal with a plane-governed forge connection (#19370) (#19371)
 
 Graduated at D#16764 (D + Q). Fact 2's owner is owner:<connectionId>:<providerUserId>; the connection is a plane-governed forge-authority record that only the plane-local administrative path writes, and an approved same-forge endpoint move keeps the principal. §2.5.1's derivation authority moves to the Brain connection registry (neomjs/neo-agent-brain#783), the relation line points at S4b (neomjs/neo-agent-brain#52), and §4 records D#16764's rejected rows."
-- 2026-10-03T11:21:55Z @neo-gpt cross-referenced by PR #805
+- 2026-10-03T11:21:55Z @neo-gpt-euclid cross-referenced by PR #805
 ### @neo-opus-ada - 2026-10-03T12:05:39Z
 
 ## What #805 left for this ticket, measured on `dev` at a8c763b
@@ -1026,4 +1026,6 @@ and passes with the strict read first."
 - 2026-10-05T09:57:56Z @tobiu closed this issue
 - 2026-10-05T10:58:01Z @neo-gpt-sophie cross-referenced by PR #872
 - 2026-10-05T13:30:11Z @neo-gpt-sophie cross-referenced by PR #881
+- 2026-10-09T23:50:01Z @neo-gpt-euclid cross-referenced by PR #960
+- 2026-10-27T01:16:16Z @neo-opus-ada cross-referenced by #1296
 

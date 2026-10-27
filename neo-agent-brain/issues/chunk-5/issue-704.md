@@ -103,7 +103,7 @@ Retrieval Hint: "Start provisions fresh home registered seat root changed record
 - 2026-10-01T16:29:02Z @neo-opus-grace added the `agent-os` label
 - 2026-10-01T16:29:10Z @neo-opus-grace added parent issue #571
 - 2026-10-01T16:32:20Z @neo-fable-clio assigned to @neo-fable-clio
-### @neo-gpt - 2026-10-01T16:40:58Z
+### @neo-gpt-euclid - 2026-10-01T16:40:58Z
 
 A bounded peer-role read on the legacy-registration arm, while #692's full suites run.
 
@@ -123,8 +123,8 @@ Euclid · @neo-gpt
 - 2026-10-01T16:42:41Z @neo-fable-clio cross-referenced by PR #706
 - 2026-10-01T16:44:55Z @neo-gpt-emmy cross-referenced by PR #398
 - 2026-10-01T16:45:35Z @neo-gpt-emmy cross-referenced by #12
-- 2026-10-01T16:46:56Z @neo-gpt cross-referenced by #571
-### @neo-gpt - 2026-10-01T16:54:05Z
+- 2026-10-01T16:46:56Z @neo-gpt-euclid cross-referenced by #571
+### @neo-gpt-euclid - 2026-10-01T16:54:05Z
 
 ### Peer-role follow-up: the already-existing stray home
 
@@ -167,7 +167,7 @@ Origin Session ID: 6682a116-897e-4c18-925e-4320d0489481
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 6682a116-897e-4c18-925e-4320d0489481
 
-### @neo-gpt - 2026-10-01T17:34:59Z
+### @neo-gpt-euclid - 2026-10-01T17:34:59Z
 
 ### Source boundary to falsify: a local GUI seat without a repo
 
@@ -208,4 +208,12 @@ Origin Session ID: 6682a116-897e-4c18-925e-4320d0489481
 
 * feat(fleet): the seat-home guard covers every Fleet-launched seat, repo or not (#704)"
 - 2026-10-01T18:13:52Z @tobiu closed this issue
+- 2026-10-01T18:54:15Z @neo-gpt-emmy cross-referenced by PR #403
+- 2026-10-01T20:30:12Z @neo-gpt-euclid cross-referenced by PR #711
+- 2026-10-03T07:27:49Z @neo-opus-ada cross-referenced by #797
+- 2026-10-03T11:25:33Z @neo-gpt-sophie cross-referenced by PR #806
+- 2026-10-06T11:52:07Z @neo-opus-ada cross-referenced by #573
+- 2026-10-06T12:12:19Z @neo-opus-ada cross-referenced by #900
+- 2026-10-06T12:44:44Z @neo-opus-ada cross-referenced by PR #901
+- 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
 

@@ -100,15 +100,17 @@ Retrieval Hint: `OQ1 anchoring disposition graph-native derived candidate-promot
 - 2026-07-02T19:45:49Z @neo-opus-vega cross-referenced by #13015
 - 2026-07-02T19:46:33Z @neo-opus-vega cross-referenced by #13158
 - 2026-07-02T21:24:50Z @neo-opus-vega cross-referenced by PR #14513
-- 2026-07-02T21:35:10Z @neo-gpt cross-referenced by #14515
+- 2026-07-02T21:35:10Z @neo-gpt-euclid cross-referenced by #14515
 - 2026-07-02T22:38:07Z @neo-opus-vega cross-referenced by #14503
 - 2026-07-02T23:32:29Z @neo-opus-vega cross-referenced by PR #14520
-- 2026-07-03T02:29:21Z @neo-gpt cross-referenced by #14475
+- 2026-07-03T02:29:21Z @neo-gpt-euclid cross-referenced by #14475
 - 2026-07-04T03:56:11Z @neo-opus-ada cross-referenced by #14662
 - 2026-07-04T03:56:14Z @neo-opus-ada cross-referenced by #14663
 - 2026-07-04T03:56:16Z @neo-opus-ada cross-referenced by #14664
 - 2026-07-04T03:56:19Z @neo-opus-ada cross-referenced by #14665
 - 2026-07-04T03:56:22Z @neo-opus-ada cross-referenced by #14666
-- 2026-07-13T10:45:43Z @neo-gpt cross-referenced by #15125
+- 2026-07-13T10:45:43Z @neo-gpt-euclid cross-referenced by #15125
 - 2026-08-26T15:15:22Z @neo-opus-vega cross-referenced by #122
+- 2026-08-26T15:27:58Z @tobiu added parent issue #122
+- 2026-10-04T11:19:04Z @neo-fable-mnemosyne cross-referenced by #15000
 

@@ -9,11 +9,11 @@ labels:
   - testing
   - architecture
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-17T22:38:29Z'
 updatedAt: '2026-10-18T01:23:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1090'
-author: neo-gemini-pro
+author: neo-gemini-julia
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -102,25 +102,28 @@ Retrieval Hint: "TextEmbeddingService configSnapshot openAiCompatibleHostFn find
 
 ## Timeline
 
-- 2026-10-17T22:38:30Z @neo-gemini-pro added the `enhancement` label
-- 2026-10-17T22:38:30Z @neo-gemini-pro added the `ai` label
-- 2026-10-17T22:38:31Z @neo-gemini-pro added the `refactoring` label
-- 2026-10-17T22:38:31Z @neo-gemini-pro added the `testing` label
-- 2026-10-17T22:38:31Z @neo-gemini-pro added the `architecture` label
-- 2026-10-17T22:38:43Z @neo-gemini-pro cross-referenced by #541
-- 2026-10-17T22:40:03Z @neo-gemini-pro cross-referenced by PR #1086
-- 2026-10-17T23:28:54Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-18T00:04:07Z @neo-gemini-pro cross-referenced by #1091
-- 2026-10-18T00:06:08Z @neo-gemini-pro cross-referenced by PR #1092
-- 2026-10-18T00:25:29Z @neo-gemini-pro changed title from **Complete TextEmbeddingService snapshot seams and remaining B4 test slices** to **Complete TextEmbeddingService snapshot seams and convert B4 specs**
-- 2026-10-18T00:32:08Z @neo-gemini-pro referenced in commit `5f6e624` - "feat(ai): extract shared configSnapshot seam and add makeSafe set trap (#1090)"
+- 2026-10-17T22:38:30Z @neo-gemini-julia added the `enhancement` label
+- 2026-10-17T22:38:30Z @neo-gemini-julia added the `ai` label
+- 2026-10-17T22:38:31Z @neo-gemini-julia added the `refactoring` label
+- 2026-10-17T22:38:31Z @neo-gemini-julia added the `testing` label
+- 2026-10-17T22:38:31Z @neo-gemini-julia added the `architecture` label
+- 2026-10-17T22:38:43Z @neo-gemini-julia cross-referenced by #541
+- 2026-10-17T22:40:03Z @neo-gemini-julia cross-referenced by PR #1086
+- 2026-10-17T23:28:54Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-18T00:04:07Z @neo-gemini-julia cross-referenced by #1091
+- 2026-10-18T00:06:08Z @neo-gemini-julia cross-referenced by PR #1092
+- 2026-10-18T00:25:29Z @neo-gemini-julia changed title from **Complete TextEmbeddingService snapshot seams and remaining B4 test slices** to **Complete TextEmbeddingService snapshot seams and convert B4 specs**
+- 2026-10-18T00:32:08Z @neo-gemini-julia referenced in commit `5f6e624` - "feat(ai): extract shared configSnapshot seam and add makeSafe set trap (#1090)"
 - 2026-10-18T01:23:52Z @tobiu referenced in commit `1b49965` - "feat(ai): complete TextEmbeddingService snapshot seams and convert B4 specs (#1090) (#1092)
 
 * feat(ai): complete TextEmbeddingService snapshot seams and convert B4 specs (#1090)
 
 * feat(ai): extract shared configSnapshot seam and add makeSafe set trap (#1090)"
 - 2026-10-18T01:23:52Z @tobiu closed this issue
-- 2026-10-18T02:34:47Z @neo-gemini-pro cross-referenced by #1098
-- 2026-10-18T02:38:12Z @neo-gemini-pro cross-referenced by PR #1099
-- 2026-10-18T04:08:30Z @neo-gemini-pro cross-referenced by #1102
+- 2026-10-18T02:34:47Z @neo-gemini-julia cross-referenced by #1098
+- 2026-10-18T02:38:12Z @neo-gemini-julia cross-referenced by PR #1099
+- 2026-10-18T04:08:30Z @neo-gemini-julia cross-referenced by #1102
+- 2026-10-18T04:52:11Z @neo-opus-grace cross-referenced by PR #1103
+- 2026-10-18T05:53:46Z @neo-gemini-julia cross-referenced by #1115
+- 2026-10-18T06:05:13Z @neo-gemini-julia cross-referenced by PR #1116
 

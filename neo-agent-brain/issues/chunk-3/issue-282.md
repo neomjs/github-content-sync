@@ -9,7 +9,7 @@ labels:
   - architecture
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-08-31T08:19:49Z'
 updatedAt: '2026-09-23T10:26:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/282'
@@ -26,7 +26,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 419 Retire replaced legacy core rows by profile receipt'
-  - '[ ] 417 Retire the legacy neo-owned conversation rows once the core profiles are live'
+  - '[x] 417 Retire the legacy neo-owned conversation rows once the core profiles are live'
 closedAt: '2026-09-23T10:26:43Z'
 ---
 # Port the shared core-corpus scan to repository profiles
@@ -159,11 +159,11 @@ Authored by Emmy (GPT-5.6 Sol Ultra, Codex).
 - 2026-09-15T18:15:10Z @neo-opus-vega cross-referenced by #358
 - 2026-09-21T10:40:44Z @neo-opus-vega cross-referenced by #401
 - 2026-09-21T11:14:33Z @neo-opus-vega cross-referenced by #402
-- 2026-09-22T23:35:26Z @neo-gpt cross-referenced by PR #412
+- 2026-09-22T23:35:26Z @neo-gpt-euclid cross-referenced by PR #412
 - 2026-09-22T23:35:53Z @neo-opus-vega cross-referenced by #411
 - 2026-09-22T23:39:58Z @neo-opus-vega cross-referenced by #417
 - 2026-09-22T23:40:10Z @neo-opus-vega marked this issue as blocking #417
-### @neo-gpt - 2026-09-22T23:45:41Z
+### @neo-gpt-euclid - 2026-09-22T23:45:41Z
 
 ## Intake refinement — shared core scan after the corpus Source cut
 
@@ -178,10 +178,10 @@ This began as read-only intake; I subsequently self-assigned and claimed #282 (`
 `VectorService.embed()` defaults to `delete-upfront` within one `{tenantId, repoSlug}`. The new Engine profile cannot safely treat every legacy `neo-shared/neo` row absent from its fresh output as disposable: #417 owns the old conversation-row retirement, while a post-cut core scan still needs a separate source-code-row migration receipt. I recommend making #282's code cut **additive** (`deleteStale: false` for the two separately stamped profile writes) until the AC-9 migration plan has a named activation owner. A full stale-deletion pass can resume only after that owner verifies the Engine/Brain profile outputs and preservation counts. The alternative, using the current default or `shadow-swap` immediately, would retire the old conversation rows as a side effect of this PR and bypass #417's scoped control. I am continuing extraction/identity tests while this fork is checked with the ticket and activation owners.
 
 
-- 2026-09-22T23:47:37Z @neo-gpt assigned to @neo-gpt
-- 2026-09-23T01:34:40Z @neo-gpt cross-referenced by #419
-- 2026-09-23T01:34:50Z @neo-gpt marked this issue as blocking #419
-### @neo-gpt - 2026-09-23T01:36:18Z
+- 2026-09-22T23:47:37Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-09-23T01:34:40Z @neo-gpt-euclid cross-referenced by #419
+- 2026-09-23T01:34:50Z @neo-gpt-euclid marked this issue as blocking #419
+### @neo-gpt-euclid - 2026-09-23T01:36:18Z
 
 ## AC-9 execution owner
 
@@ -194,7 +194,7 @@ The prepared #282 migration notes in the isolated source snapshot name `#419` an
 Origin Session ID: 01a0cb1e-0bdb-75c2-a73e-e298588de439
 
 
-### @neo-gpt - 2026-09-23T03:19:13Z
+### @neo-gpt-euclid - 2026-09-23T03:19:13Z
 
 ## Session-sunset handover — scope: convergent
 
@@ -214,4 +214,9 @@ Euclid (GPT-6 Sol, Codex)
 feat(kb): shared core sync uses repository profiles (#282)"
 - 2026-09-23T10:26:43Z @tobiu closed this issue
 - 2026-09-23T10:55:20Z @neo-opus-vega cross-referenced by PR #424
+- 2026-09-24T20:34:12Z @neo-opus-vega cross-referenced by #471
+- 2026-09-24T20:37:09Z @neo-opus-vega cross-referenced by #474
+- 2026-10-10T16:43:08Z @neo-opus-vega cross-referenced by #974
+- 2026-10-11T23:44:26Z @neo-opus-vega cross-referenced by PR #999
+- 2026-10-18T21:39:08Z @neo-fable-mnemosyne cross-referenced by PR #1155
 

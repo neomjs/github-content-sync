@@ -9,11 +9,11 @@ labels:
   - testing
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-08-27T14:55:28Z'
 updatedAt: '2026-08-28T07:30:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/190'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: 191
 subIssues: []
@@ -122,15 +122,17 @@ Retrieval Hint: Brain PR #178 and Engine PR #17806 exact six-file symmetry
 
 ## Timeline
 
-- 2026-08-27T14:55:28Z @neo-gpt assigned to @neo-gpt
-- 2026-08-27T14:55:31Z @neo-gpt added the `bug` label
-- 2026-08-27T14:55:31Z @neo-gpt added the `ai` label
-- 2026-08-27T14:55:31Z @neo-gpt added the `refactoring` label
-- 2026-08-27T14:55:32Z @neo-gpt added the `testing` label
-- 2026-08-27T14:55:32Z @neo-gpt added the `agent-os` label
+- 2026-08-27T14:55:28Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-08-27T14:55:31Z @neo-gpt-euclid added the `bug` label
+- 2026-08-27T14:55:31Z @neo-gpt-euclid added the `ai` label
+- 2026-08-27T14:55:31Z @neo-gpt-euclid added the `refactoring` label
+- 2026-08-27T14:55:32Z @neo-gpt-euclid added the `testing` label
+- 2026-08-27T14:55:32Z @neo-gpt-euclid added the `agent-os` label
 - 2026-08-27T14:55:48Z @tobiu cross-referenced by #188
+- 2026-08-27T15:02:11Z @neo-gpt-emmy added parent issue #191
+- 2026-08-27T15:07:19Z @neo-gpt-emmy marked this issue as blocking #201
 - 2026-08-27T15:08:12Z @neo-gpt-emmy cross-referenced by #189
-- 2026-08-27T15:16:03Z @neo-gpt cross-referenced by PR #203
+- 2026-08-27T15:16:03Z @neo-gpt-euclid cross-referenced by PR #203
 - 2026-08-27T15:38:20Z @tobiu referenced in commit `6f56ebb` - "test(neural-link): strengthen listener red control (#190)"
 - 2026-08-28T07:30:17Z @tobiu referenced in commit `c7be03e` - "Merge pull request #203 from neomjs/codex/190-retire-nightly-e2e
 

@@ -8,11 +8,11 @@ labels:
   - architecture
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-11T06:47:48Z'
 updatedAt: '2026-10-11T14:48:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/997'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 1
 parentIssue: 107
 subIssues: []
@@ -96,18 +96,18 @@ Retrieval Hint: "107 unavailable lifecycle clock commit creation evergreen green
 
 ## Timeline
 
-- 2026-10-11T06:47:49Z @neo-gpt assigned to @neo-gpt
-- 2026-10-11T06:47:50Z @neo-gpt added the `enhancement` label
-- 2026-10-11T06:47:50Z @neo-gpt added the `ai` label
-- 2026-10-11T06:47:50Z @neo-gpt added the `architecture` label
-- 2026-10-11T06:47:51Z @neo-gpt added the `agent-os` label
-- 2026-10-11T06:48:08Z @neo-gpt added parent issue #107
-### @neo-gpt - 2026-10-11T06:50:28Z
+- 2026-10-11T06:47:49Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-11T06:47:50Z @neo-gpt-euclid added the `enhancement` label
+- 2026-10-11T06:47:50Z @neo-gpt-euclid added the `ai` label
+- 2026-10-11T06:47:50Z @neo-gpt-euclid added the `architecture` label
+- 2026-10-11T06:47:51Z @neo-gpt-euclid added the `agent-os` label
+- 2026-10-11T06:48:08Z @neo-gpt-euclid added parent issue #107
+### @neo-gpt-euclid - 2026-10-11T06:50:28Z
 
 Prescription checked independently before edits: lifecycleAdmission/frontier/producer, hookProjectionLease's channel pin and shared hookProjectionReader own this adoption; no new service or upstream adapter. Normalized PR declarations retain stage fields+head provenance with companion ClockBasis/ClockReason; review requests carry per-target requestedAt/headSha/clockBasis/clockReason. Controlled unavailable reason: one nonempty line, ≤240 characters. Root retains architecture/integration. Native pre-brief is not yet ingested; live ticket, merged ADR and session prior-art are the authority. Branch codex/997-lifecycle-clock-adoption from merged4dd2054a.
 
-- 2026-10-11T07:07:39Z @neo-gpt cross-referenced by PR #998
-- 2026-10-11T07:10:12Z @neo-gpt cross-referenced by #107
+- 2026-10-11T07:07:39Z @neo-gpt-euclid cross-referenced by PR #998
+- 2026-10-11T07:10:12Z @neo-gpt-euclid cross-referenced by #107
 - 2026-10-11T14:48:25Z @tobiu referenced in commit `e589f54` - "feat(lifecycle): retain obligations with unavailable clocks (#997) (#998)"
 - 2026-10-11T14:48:25Z @tobiu closed this issue
 

@@ -88,4 +88,5 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 
 * fix(fleet): converge only local presets, skip when no account, and log Start outcome (#1223)"
 - 2026-10-20T12:07:51Z @tobiu closed this issue
+- 2026-10-20T16:39:42Z @neo-opus-ada cross-referenced by #1230
 

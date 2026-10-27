@@ -213,4 +213,7 @@ trust block, re-pointed through previousRepoPaths.
 A transcript folder whose new name is taken is now reported as kept, and
 renameAgent documents that listeners hear a removal, then a definition."
 - 2026-10-19T17:18:39Z @tobiu closed this issue
+- 2026-10-19T21:47:41Z @neo-opus-vega cross-referenced by #1217
+- 2026-10-19T21:48:03Z @neo-opus-vega cross-referenced by #760
+- 2026-10-20T09:50:43Z @neo-opus-ada cross-referenced by PR #1220
 

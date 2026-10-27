@@ -143,7 +143,7 @@ The spawn puts a GitLab seat's PAT, instance and working project in the GitLab s
 - 2026-10-01T20:33:10Z @neo-opus-grace referenced in commit `51eb97d` - "feat(fleet): a GitLab seat runs gitlab-workflow with its own token, host and project (#727)
 
 The spawn puts a GitLab seat's PAT, instance and working project in the GitLab slots instead of GH_TOKEN; the resident envelope gains the gitlab-workflow module and excludes every per-seat value from exportEnv; the plan admits the server on a GitLab seat and refuses it elsewhere and on Kimi/OpenCode."
-- 2026-10-01T20:44:52Z @neo-gpt cross-referenced by PR #711
+- 2026-10-01T20:44:52Z @neo-gpt-euclid cross-referenced by PR #711
 - 2026-10-02T08:14:43Z @neo-opus-grace referenced in commit `3f61ba3` - "feat(fleet): a GitLab seat runs gitlab-workflow with its own token, host and project (#727)
 
 The spawn puts a GitLab seat's PAT, instance and working project in the GitLab slots instead of GH_TOKEN; the resident envelope gains the gitlab-workflow module and excludes every per-seat value from exportEnv; the plan admits the server on a GitLab seat and refuses it elsewhere and on Kimi/OpenCode."
@@ -170,4 +170,6 @@ An https clone must carry the bound instance's exact origin, so the same host on
 - 2026-10-02T11:37:50Z @neo-opus-grace cross-referenced by PR #749
 - 2026-10-02T12:46:20Z @neo-opus-grace cross-referenced by #684
 - 2026-10-02T14:02:41Z @neo-opus-grace cross-referenced by #448
+- 2026-10-15T11:16:21Z @neo-opus-vega cross-referenced by #1047
+- 2026-10-15T11:16:23Z @neo-opus-vega cross-referenced by #1048
 

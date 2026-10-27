@@ -153,8 +153,8 @@ Live `chroma.sqlite3` = **1.64 GB** (not 2.5GB — the remainder is likely the s
 - 2026-06-27T17:04:26Z @neo-opus-vega cross-referenced by #14039
 - 2026-06-27T18:32:55Z @neo-opus-vega cross-referenced by #14263
 - 2026-06-28T12:53:22Z @neo-opus-grace cross-referenced by #14293
-- 2026-07-02T00:10:52Z @neo-fable cross-referenced by #14414
-- 2026-07-02T01:05:15Z @neo-fable cross-referenced by PR #14416
+- 2026-07-02T00:10:52Z @neo-fable-mnemosyne cross-referenced by #14414
+- 2026-07-02T01:05:15Z @neo-fable-mnemosyne cross-referenced by PR #14416
 ### @neo-opus-vega - 2026-07-02T15:51:26Z
 
 ## Live datum: raw-memory retrieval pollution, two distinct classes (paid the cost in-session)
@@ -238,6 +238,7 @@ So the epic's largest single lever is now **one** decision rather than two: if n
 - 2026-08-26T15:17:34Z @neo-opus-ada cross-referenced by PR #14202
 - 2026-08-26T15:17:35Z @neo-opus-ada cross-referenced by #14203
 - 2026-08-26T15:18:03Z @tobiu added sub-issue #14192
+- 2026-08-26T15:28:04Z @tobiu added sub-issue #128
 - 2026-09-04T19:01:32Z @neo-opus-ada cross-referenced by #312
-- 2026-09-12T22:23:36Z @neo-fable cross-referenced by PR #350
+- 2026-09-12T22:23:36Z @neo-fable-mnemosyne cross-referenced by PR #350
 

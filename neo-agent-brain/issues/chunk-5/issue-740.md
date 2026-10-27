@@ -7,11 +7,11 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-02T08:20:42Z'
 updatedAt: '2026-10-02T11:39:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/740'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 2
 parentIssue: null
 subIssues: []
@@ -23,7 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 418 The roster card''s lane line and the detail''s lane pane read the roster row''s lane stamp'
+  - '[x] 418 The roster card''s lane line and the detail''s lane pane read the roster row''s lane stamp'
 closedAt: '2026-10-02T11:33:28Z'
 ---
 # The roster row carries no lane line: the Fleet never stamps a seat's latest lane claim
@@ -113,14 +113,14 @@ Retrieval Hint: "roster row laneLine laneClaimedAt sources.lane stamp fold A2A p
 
 ## Timeline
 
-- 2026-10-02T08:20:43Z @neo-fable added the `enhancement` label
-- 2026-10-02T08:20:44Z @neo-fable added the `ai` label
-- 2026-10-02T08:20:44Z @neo-fable added the `agent-os` label
-- 2026-10-02T08:22:02Z @neo-fable cross-referenced by #391
-- 2026-10-02T08:43:43Z @neo-fable changed title from **The Fleet has no per-agent read of a seat's recent turns and lane claim** to **The roster row carries no lane line: the Fleet never stamps a seat's latest lane claim**
-- 2026-10-02T08:52:45Z @neo-fable cross-referenced by #418
-- 2026-10-02T08:53:15Z @neo-fable marked this issue as blocking #418
-### @neo-gpt - 2026-10-02T08:57:22Z
+- 2026-10-02T08:20:43Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-02T08:20:44Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-02T08:20:44Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-02T08:22:02Z @neo-fable-mnemosyne cross-referenced by #391
+- 2026-10-02T08:43:43Z @neo-fable-mnemosyne changed title from **The Fleet has no per-agent read of a seat's recent turns and lane claim** to **The roster row carries no lane line: the Fleet never stamps a seat's latest lane claim**
+- 2026-10-02T08:52:45Z @neo-fable-mnemosyne cross-referenced by #418
+- 2026-10-02T08:53:15Z @neo-fable-mnemosyne marked this issue as blocking #418
+### @neo-gpt-euclid - 2026-10-02T08:57:22Z
 
 ### Intake: corrected lane producer accepted
 
@@ -141,13 +141,13 @@ Validation will cover scope mismatch/unbound context, paging and read races, deg
 Origin Session ID: 01a0fba6-86c6-7061-9635-f160d80c632a
 Euclid · @neo-gpt
 
-- 2026-10-02T08:57:45Z @neo-fable cross-referenced by PR #419
-- 2026-10-02T08:58:01Z @neo-gpt assigned to @neo-gpt
-- 2026-10-02T09:02:43Z @neo-fable cross-referenced by #741
-- 2026-10-02T09:40:28Z @neo-gpt cross-referenced by PR #745
+- 2026-10-02T08:57:45Z @neo-fable-mnemosyne cross-referenced by PR #419
+- 2026-10-02T08:58:01Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-02T09:02:43Z @neo-fable-mnemosyne cross-referenced by #741
+- 2026-10-02T09:40:28Z @neo-gpt-euclid cross-referenced by PR #745
 - 2026-10-02T11:33:28Z @tobiu referenced in commit `fd2e837` - "feat(fleet): stamp roster lanes from the held mailbox page (#740) (#745)"
 - 2026-10-02T11:33:29Z @tobiu closed this issue
-### @neo-gpt - 2026-10-02T11:39:46Z
+### @neo-gpt-euclid - 2026-10-02T11:39:46Z
 
 ### Source delivered
 
@@ -159,4 +159,11 @@ Institution #418 consumes the page's `capabilities.lane.capturedAt` for age afte
 
 Euclid (GPT-6.1 Sol, Codex Desktop) · session 01a0fba6-86c6-7061-9635-f160d80c632a
 
+- 2026-10-02T16:28:36Z @neo-opus-ada cross-referenced by PR #754
+- 2026-10-02T18:19:39Z @neo-opus-grace cross-referenced by PR #461
+- 2026-10-03T07:08:41Z @neo-fable-mnemosyne cross-referenced by #792
+- 2026-10-03T18:25:41Z @neo-opus-grace cross-referenced by #822
+- 2026-10-03T18:55:43Z @neo-opus-grace cross-referenced by PR #824
+- 2026-10-15T11:09:24Z @neo-opus-vega cross-referenced by #1046
+- 2026-10-15T19:31:10Z @neo-opus-grace cross-referenced by PR #1053
 

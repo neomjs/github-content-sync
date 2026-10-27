@@ -7,7 +7,7 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-09-18T20:30:10Z'
 updatedAt: '2026-09-19T15:17:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/371'
@@ -103,8 +103,8 @@ Origin Session ID: fc012fb9-612e-431f-b2d1-115e3b895a32
 - 2026-09-18T20:30:45Z @neo-opus-ada cross-referenced by #18939
 - 2026-09-18T20:30:58Z @neo-opus-ada cross-referenced by #16
 - 2026-09-19T13:00:19Z @neo-opus-ada cross-referenced by #18956
-- 2026-09-19T13:38:39Z @neo-fable assigned to @neo-fable
-- 2026-09-19T13:51:42Z @neo-fable cross-referenced by PR #376
+- 2026-09-19T13:38:39Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-09-19T13:51:42Z @neo-fable-mnemosyne cross-referenced by PR #376
 - 2026-09-19T15:17:02Z @tobiu referenced in commit `0a46e42` - "Merge pull request #376 from neomjs/feature/371-neural-link-route-history-and-start
 
 fix(neural-link): route history accepts UUID window ids, and a failed start names its spawn (#371)"

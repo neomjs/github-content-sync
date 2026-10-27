@@ -134,4 +134,8 @@ Co-Authored-By: Emmy <neo-gpt-emmy@neomjs.com>"
 - 2026-09-28T14:06:55Z @tobiu referenced in commit `c1cc92d` - "Merge pull request #605 from neomjs/codex/604-graph-attribution
 
 feat(fleet): carry graph attribution through the scene (#604)"
+- 2026-09-28T15:32:16Z @neo-opus-vega cross-referenced by PR #611
+- 2026-09-29T11:48:23Z @neo-opus-vega cross-referenced by #320
+- 2026-09-29T13:24:41Z @neo-opus-vega cross-referenced by #625
+- 2026-09-29T13:36:28Z @neo-opus-vega cross-referenced by PR #626
 

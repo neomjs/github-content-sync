@@ -76,6 +76,7 @@ Origin: D#16720 · Retrieval Hint: "viewer-scoped roster projection banded prese
 
 - 2026-08-08T19:56:51Z @neo-fable-clio added the `enhancement` label
 - 2026-08-08T19:56:51Z @neo-fable-clio added the `ai` label
+- 2026-08-08T19:58:13Z @neo-fable-clio marked this issue as being blocked by #16736
 - 2026-08-09T00:14:34Z @neo-gpt-emmy cross-referenced by PR #16761
 - 2026-08-09T00:19:33Z @neo-fable-clio cross-referenced by #16735
 - 2026-08-09T11:55:27Z @neo-fable-clio assigned to @neo-fable-clio
@@ -99,6 +100,7 @@ Write-surface collision check: Ada holds `AuthService`/principal (#16738), Grace
 - 2026-08-09T12:28:11Z @neo-fable-clio referenced in commit `2e69b04` - "feat(fleet): the roster carries the plane's presence band as its own axis (#16737)"
 - 2026-08-09T12:29:06Z @neo-fable-clio cross-referenced by PR #16781
 - 2026-08-09T12:46:17Z @neo-fable-clio referenced in commit `170a635` - "test(agentos): the roster contract pins the presence passthrough (#16737)"
+- 2026-08-09T13:21:34Z @neo-fable-clio added sub-issue #16787
 - 2026-08-09T14:12:03Z @tobiu referenced in commit `55219f4` - "feat(fleet): the roster carries the plane's presence band as its own axis (#16737) (#16781)
 
 * feat(fleet): the roster carries the plane's presence band as its own axis (#16737)
@@ -123,11 +125,14 @@ Also composting into the beacon-horizon AC: the band vocabulary upgrade (`active
 — Clio (@neo-fable-clio; Fable 5, Claude Code) 📜 · Session ff94e740-acb8-4f25-a94b-b614bdd91ea1
 
 - 2026-08-10T21:36:39Z @neo-fable-clio cross-referenced by #16924
+- 2026-08-10T21:58:03Z @neo-fable-clio added sub-issue #16927
 - 2026-08-10T21:58:30Z @neo-fable-clio cross-referenced by PR #16928
+- 2026-08-10T22:20:23Z @neo-fable-clio added sub-issue #16931
 - 2026-08-10T22:27:20Z @neo-fable-clio cross-referenced by PR #16934
-- 2026-08-10T22:35:20Z @neo-gpt cross-referenced by PR #16926
+- 2026-08-10T22:35:20Z @neo-gpt-euclid cross-referenced by PR #16926
+- 2026-08-11T00:06:26Z @neo-fable-clio added sub-issue #16937
 - 2026-08-11T00:11:01Z @neo-fable-clio cross-referenced by PR #16939
-- 2026-08-11T00:31:59Z @neo-gpt cross-referenced by PR #16936
+- 2026-08-11T00:31:59Z @neo-gpt-euclid cross-referenced by PR #16936
 - 2026-08-11T21:39:06Z @neo-opus-grace cross-referenced by PR #17003
 - 2026-08-14T16:06:39Z @neo-fable-clio cross-referenced by #16736
 - 2026-08-14T16:25:18Z @neo-fable-clio cross-referenced by PR #17127
@@ -143,8 +148,10 @@ Pickup: verify-scope sweep (adapter + who_is_online emission + routes-source row
 
 
 - 2026-08-15T08:32:32Z @neo-fable-clio cross-referenced by #17153
+- 2026-08-15T08:32:49Z @neo-fable-clio added sub-issue #17153
 - 2026-08-15T08:35:02Z @neo-fable-clio cross-referenced by PR #17154
 - 2026-08-15T09:18:10Z @neo-fable-clio cross-referenced by #17157
+- 2026-08-15T09:18:18Z @neo-fable-clio added sub-issue #17157
 - 2026-08-15T09:23:28Z @neo-fable-clio cross-referenced by PR #17159
 - 2026-08-15T23:24:27Z @neo-opus-vega cross-referenced by #31
 - 2026-08-17T18:04:58Z @neo-fable-clio cross-referenced by #28
@@ -160,10 +167,50 @@ Pickup: verify-scope sweep (adapter + who_is_online emission + routes-source row
 * fix(fleet): the presence join accepts the registry's full spelling domain (#16787)
 
 * fix(fleet): both presence consumers share the canonical identity boundary (#16787)"
+- 2026-08-26T15:06:01Z @neo-fable-clio marked this issue as being blocked by #16736
+- 2026-08-26T15:06:02Z @tobiu added sub-issue #16931
+- 2026-08-26T15:06:02Z @tobiu added sub-issue #16787
+- 2026-08-26T15:06:02Z @tobiu added sub-issue #16927
+- 2026-08-26T15:06:02Z @tobiu added sub-issue #17153
+- 2026-08-26T15:06:02Z @tobiu added sub-issue #17157
+- 2026-08-26T15:06:02Z @tobiu added sub-issue #16937
+- 2026-08-26T15:09:28Z @tobiu added parent issue #83
 - 2026-09-04T20:27:13Z @neo-fable-clio cross-referenced by #314
 - 2026-09-04T22:35:19Z @neo-fable-clio cross-referenced by #318
 - 2026-09-05T00:48:45Z @neo-fable-clio cross-referenced by #323
 - 2026-09-05T00:54:44Z @neo-fable-clio cross-referenced by #324
 - 2026-09-05T15:09:43Z @neo-fable-clio cross-referenced by PR #332
 - 2026-09-05T15:32:37Z @neo-fable-clio cross-referenced by PR #119
+- 2026-09-26T09:23:41Z @neo-fable-clio cross-referenced by #237
+- 2026-09-27T09:12:58Z @neo-opus-vega cross-referenced by #565
+- 2026-09-27T09:17:24Z @neo-opus-vega cross-referenced by PR #566
+- 2026-09-27T09:46:58Z @neo-opus-ada cross-referenced by #571
+- 2026-10-01T09:09:05Z @neo-fable-clio cross-referenced by #659
+- 2026-10-01T09:35:01Z @neo-fable-clio cross-referenced by #663
+- 2026-10-01T13:03:53Z @neo-fable-clio cross-referenced by #678
+- 2026-10-01T13:04:31Z @neo-fable-clio cross-referenced by #679
+- 2026-10-01T13:31:25Z @neo-fable-clio cross-referenced by #685
+- 2026-10-01T13:32:10Z @neo-fable-clio cross-referenced by #686
+- 2026-10-01T14:56:35Z @neo-fable-clio cross-referenced by #694
+- 2026-10-01T15:15:27Z @neo-fable-clio cross-referenced by #696
+- 2026-10-01T15:16:05Z @neo-fable-clio cross-referenced by #697
+- 2026-10-02T09:26:35Z @neo-fable-clio cross-referenced by #744
+- 2026-10-02T10:05:27Z @neo-fable-clio cross-referenced by #746
+- 2026-10-02T16:49:20Z @neo-fable-clio cross-referenced by #767
+- 2026-10-02T17:17:42Z @neo-fable-clio cross-referenced by #773
+- 2026-10-02T17:32:51Z @neo-fable-clio cross-referenced by #776
+- 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
+- 2026-10-03T06:41:31Z @neo-fable-clio cross-referenced by #784
+- 2026-10-03T07:45:02Z @neo-fable-clio cross-referenced by #798
+- 2026-10-04T10:01:06Z @neo-gpt-euclid cross-referenced by #477
+- 2026-10-10T13:08:48Z @neo-fable-clio cross-referenced by #964
+- 2026-10-10T16:41:16Z @neo-fable-clio cross-referenced by #973
+- 2026-10-10T22:29:30Z @neo-fable-clio cross-referenced by #977
+- 2026-10-10T22:30:06Z @neo-fable-clio cross-referenced by #978
+- 2026-10-10T22:30:45Z @neo-fable-clio cross-referenced by #979
+- 2026-10-10T23:04:09Z @neo-fable-clio cross-referenced by #980
+- 2026-10-16T23:47:21Z @neo-fable-clio cross-referenced by #1074
+- 2026-10-17T16:03:00Z @neo-fable-clio cross-referenced by #1077
+- 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
+- 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
 

@@ -257,4 +257,6 @@ Co-Authored-By: Ada <neo-opus-4-7@neomjs.com>"
 - 2026-08-26T15:01:52Z @tobiu added the `bug` label
 - 2026-08-26T15:01:53Z @tobiu added the `ai` label
 - 2026-08-26T15:01:53Z @tobiu added the `agent-os` label
+- 2026-08-26T15:03:05Z @tobiu added parent issue #38
+- 2026-10-04T11:41:43Z @neo-opus-vega cross-referenced by #15000
 

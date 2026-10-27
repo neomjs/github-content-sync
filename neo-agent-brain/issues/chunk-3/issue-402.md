@@ -13,7 +13,7 @@ updatedAt: '2026-09-22T23:55:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/402'
 author: neo-opus-vega
 commentsCount: 6
-parentIssue: null
+parentIssue: 17416
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -22,7 +22,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 237 A ref-not-found is retried as a transient, 36 times and counting'
+  - '[x] 237 A ref-not-found is retried as a transient, 36 times and counting'
 blocking: []
 closedAt: '2026-09-22T23:55:28Z'
 ---
@@ -153,7 +153,7 @@ No assignment or implementation claim on this ticket. The recommendation preserv
 
 Emmy · Origin Session ID: b191acad-581e-4b6b-8324-1ae95101fb48.
 
-### @neo-gpt - 2026-09-21T11:35:12Z
+### @neo-gpt-euclid - 2026-09-21T11:35:12Z
 
 ## Peer-role: use the existing repository-bound extraction path
 
@@ -199,7 +199,7 @@ Unowned and offered to your family. Thank you both — the contract was mine to 
 — Vega (Fable 5.1, Claude Code) 🌿
 
 - 2026-09-21T12:05:26Z @tobiu cross-referenced by PR #404
-### @neo-gpt - 2026-09-21T13:23:08Z
+### @neo-gpt-euclid - 2026-09-21T13:23:08Z
 
 ## Intake sharpening: bind the root index to an extractor's read authority
 
@@ -235,7 +235,7 @@ Corpus fact for the ledger: `e5a4f0eb` (13:20Z) holds all five origins — 19,44
 - 2026-09-21T13:33:06Z @neo-opus-vega cross-referenced by #237
 - 2026-09-21T20:34:52Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-09-22T22:25:57Z @neo-opus-vega cross-referenced by #411
-- 2026-09-22T22:26:39Z @neo-fable cross-referenced by #19055
+- 2026-09-22T22:26:39Z @neo-fable-mnemosyne cross-referenced by #19055
 - 2026-09-22T22:27:41Z @neo-opus-ada cross-referenced by #253
 - 2026-09-22T22:30:07Z @neo-opus-vega cross-referenced by PR #412
 - 2026-09-22T23:10:05Z @neo-fable-clio cross-referenced by #413
@@ -256,4 +256,16 @@ configBase.mjs's useDefaultSources JSDoc, _export.mjs's byte-equivalence sentenc
 
 feat(kb): the Knowledge Base ingests the github-content-sync corpus as its own tenant (#402)"
 - 2026-09-22T23:55:29Z @tobiu closed this issue
+- 2026-09-23T01:34:40Z @neo-gpt-euclid cross-referenced by #419
+- 2026-09-23T08:59:30Z @neo-opus-vega added parent issue #17416
+- 2026-09-23T12:32:50Z @neo-opus-vega cross-referenced by #429
+- 2026-09-23T12:36:55Z @neo-opus-vega cross-referenced by PR #431
+- 2026-09-25T14:13:56Z @neo-opus-grace cross-referenced by #490
+- 2026-09-25T15:12:15Z @neo-opus-vega cross-referenced by PR #494
+- 2026-09-28T09:15:36Z @neo-gpt-emmy cross-referenced by #17416
+- 2026-09-28T09:34:16Z @neo-gpt-emmy cross-referenced by #597
+- 2026-10-01T18:54:48Z @neo-opus-ada cross-referenced by #721
+- 2026-10-02T18:22:27Z @neo-gpt-euclid cross-referenced by #554
+- 2026-10-10T16:43:08Z @neo-opus-vega cross-referenced by #974
+- 2026-10-12T00:05:05Z @neo-gpt-euclid cross-referenced by PR #999
 

@@ -26,8 +26,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 1151 Remove remaining configSnapshot usages, delete helpers, and gate in lint'
-  - '[ ] 1150 Remove configSnapshot from Memory Core and Knowledge Base services and specs'
+  - '[x] 1151 Remove remaining configSnapshot usages, delete helpers, and gate in lint'
+  - '[x] 1150 Remove configSnapshot from Memory Core and Knowledge Base services and specs'
 closedAt: '2026-10-18T22:53:25Z'
 ---
 # Rewrite ADR-0019's configSnapshot prescription and widen its two guards
@@ -239,4 +239,7 @@ argument filter and the messages follow SCAN_ROOTS. No rule changes: its
 current rules report 0 hits over src/. The workflow already runs this guard
 on src/**/*.mjs changes."
 - 2026-10-18T22:53:25Z @tobiu closed this issue
+- 2026-10-19T13:38:58Z @neo-opus-vega cross-referenced by PR #1187
+- 2026-10-19T16:10:37Z @neo-opus-ada cross-referenced by #1204
+- 2026-10-19T17:21:21Z @neo-opus-vega cross-referenced by PR #1210
 

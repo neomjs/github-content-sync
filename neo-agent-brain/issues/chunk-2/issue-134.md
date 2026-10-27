@@ -12,7 +12,7 @@ assignees: []
 createdAt: '2026-06-23T17:10:44Z'
 updatedAt: '2026-08-28T22:31:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/134'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 2
 parentIssue: null
 subIssues: []
@@ -102,43 +102,43 @@ Retrieval Hint: `deployment immune-system live smoke closeout neomjs/neo#13860 n
 
 ## Timeline
 
-- 2026-06-23T17:10:45Z @neo-gpt assigned to @neo-gpt
-- 2026-06-23T17:10:45Z @neo-gpt added the `enhancement` label
-- 2026-06-23T17:10:46Z @neo-gpt added the `ai` label
-- 2026-06-23T17:10:46Z @neo-gpt added the `testing` label
-- 2026-06-23T17:10:46Z @neo-gpt added the `architecture` label
-- 2026-06-23T17:10:46Z @neo-gpt added the `model-experience` label
-- 2026-06-23T17:11:03Z @neo-gpt added parent issue #13860
-- 2026-06-23T17:11:22Z @neo-gpt cross-referenced by #13889
-- 2026-06-23T17:11:32Z @neo-gpt cross-referenced by #13874
-- 2026-06-23T18:18:02Z @neo-gpt cross-referenced by #13860
-- 2026-06-23T18:34:42Z @neo-gpt cross-referenced by #13914
-- 2026-06-23T19:30:25Z @neo-gpt cross-referenced by PR #13938
-- 2026-06-24T08:52:07Z @neo-gpt cross-referenced by #13942
-- 2026-06-24T09:18:51Z @neo-gpt cross-referenced by PR #13943
-- 2026-06-24T10:10:40Z @neo-gpt cross-referenced by #13944
-- 2026-06-24T12:28:21Z @neo-gpt cross-referenced by #13950
-- 2026-06-24T13:28:37Z @neo-gpt cross-referenced by #13952
-- 2026-06-24T13:32:20Z @neo-gpt cross-referenced by PR #13953
+- 2026-06-23T17:10:45Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-23T17:10:45Z @neo-gpt-euclid added the `enhancement` label
+- 2026-06-23T17:10:46Z @neo-gpt-euclid added the `ai` label
+- 2026-06-23T17:10:46Z @neo-gpt-euclid added the `testing` label
+- 2026-06-23T17:10:46Z @neo-gpt-euclid added the `architecture` label
+- 2026-06-23T17:10:46Z @neo-gpt-euclid added the `model-experience` label
+- 2026-06-23T17:11:03Z @neo-gpt-euclid added parent issue #13860
+- 2026-06-23T17:11:22Z @neo-gpt-euclid cross-referenced by #13889
+- 2026-06-23T17:11:32Z @neo-gpt-euclid cross-referenced by #13874
+- 2026-06-23T18:18:02Z @neo-gpt-euclid cross-referenced by #13860
+- 2026-06-23T18:34:42Z @neo-gpt-euclid cross-referenced by #13914
+- 2026-06-23T19:30:25Z @neo-gpt-euclid cross-referenced by PR #13938
+- 2026-06-24T08:52:07Z @neo-gpt-euclid cross-referenced by #13942
+- 2026-06-24T09:18:51Z @neo-gpt-euclid cross-referenced by PR #13943
+- 2026-06-24T10:10:40Z @neo-gpt-euclid cross-referenced by #13944
+- 2026-06-24T12:28:21Z @neo-gpt-euclid cross-referenced by #13950
+- 2026-06-24T13:28:37Z @neo-gpt-euclid cross-referenced by #13952
+- 2026-06-24T13:32:20Z @neo-gpt-euclid cross-referenced by PR #13953
 - 2026-06-24T16:18:01Z @tobiu removed parent issue #13860
 ### @tobiu - 2026-06-24T16:18:57Z
 
 detached this ticket from the parent epic. implementation and CI green need to stay separate from follow-up deployments.
 
-- 2026-06-24T23:49:07Z @neo-gpt cross-referenced by #13978
-- 2026-06-25T03:27:59Z @neo-gpt cross-referenced by #13989
-- 2026-06-25T03:31:15Z @neo-gpt cross-referenced by PR #13990
-- 2026-06-25T08:06:56Z @neo-gpt cross-referenced by #13994
-- 2026-06-25T10:06:35Z @neo-gpt cross-referenced by #13997
-- 2026-06-25T13:14:47Z @neo-gpt cross-referenced by #14005
+- 2026-06-24T23:49:07Z @neo-gpt-euclid cross-referenced by #13978
+- 2026-06-25T03:27:59Z @neo-gpt-euclid cross-referenced by #13989
+- 2026-06-25T03:31:15Z @neo-gpt-euclid cross-referenced by PR #13990
+- 2026-06-25T08:06:56Z @neo-gpt-euclid cross-referenced by #13994
+- 2026-06-25T10:06:35Z @neo-gpt-euclid cross-referenced by #13997
+- 2026-06-25T13:14:47Z @neo-gpt-euclid cross-referenced by #14005
 - 2026-06-25T23:10:55Z @neo-opus-vega cross-referenced by #14026
-- 2026-06-26T13:56:06Z @tobiu unassigned from @neo-gpt
-- 2026-06-27T18:56:20Z @neo-gpt assigned to @neo-gpt
-- 2026-06-27T18:57:46Z @neo-gpt unassigned from @neo-gpt
-- 2026-06-27T21:40:48Z @neo-gpt assigned to @neo-gpt
-- 2026-06-27T21:42:49Z @neo-gpt unassigned from @neo-gpt
-- 2026-08-12T09:43:34Z @neo-gpt cross-referenced by #16596
-- 2026-08-12T09:46:55Z @neo-gpt cross-referenced by PR #17011
+- 2026-06-26T13:56:06Z @tobiu unassigned from @neo-gpt-euclid
+- 2026-06-27T18:56:20Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-27T18:57:46Z @neo-gpt-euclid unassigned from @neo-gpt-euclid
+- 2026-06-27T21:40:48Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-06-27T21:42:49Z @neo-gpt-euclid unassigned from @neo-gpt-euclid
+- 2026-08-12T09:43:34Z @neo-gpt-euclid cross-referenced by #16596
+- 2026-08-12T09:46:55Z @neo-gpt-euclid cross-referenced by PR #17011
 - 2026-08-26T15:17:36Z @tobiu added the `enhancement` label
 - 2026-08-26T15:17:36Z @tobiu added the `ai` label
 - 2026-08-26T15:17:36Z @tobiu added the `testing` label

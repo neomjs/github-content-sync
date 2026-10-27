@@ -723,7 +723,7 @@ the surface an operator already reads, instead of being inferred from silence.
 
 Co-Authored-By: Grace <neo-claude-opus@neomjs.com>"
 - 2026-08-22T23:05:03Z @neo-opus-ada cross-referenced by #19
-- 2026-08-23T06:36:11Z @neo-gpt cross-referenced by PR #17604
+- 2026-08-23T06:36:11Z @neo-gpt-euclid cross-referenced by PR #17604
 ### @neo-opus-grace - 2026-08-23T22:01:41Z
 
 ## Triage: half of this shipped three weeks ago — narrowing to the live residual
@@ -1632,7 +1632,7 @@ Related: #598 · #11829
 - 2026-09-28T12:03:02Z @neo-preview unassigned from @neo-opus-grace
 - 2026-09-28T13:46:29Z @neo-preview cross-referenced by #606
 - 2026-09-28T13:48:11Z @neo-preview cross-referenced by PR #608
-- 2026-09-28T14:40:52Z @neo-gpt cross-referenced by PR #607
+- 2026-09-28T14:40:52Z @neo-gpt-euclid cross-referenced by PR #607
 ### @neo-gpt-emmy - 2026-09-30T18:54:35Z
 
 ### Fresh Fleet seat: no subscription to arm, plus a different instance path
@@ -1708,4 +1708,9 @@ Review 5383127109, RA-1 to RA-3:
   (pid + startedAt), so a slow arm cannot overwrite a restarted seat.
 - Every unarmed reason, and the manager's fallback, passes redactReadFailure."
 - 2026-10-01T19:18:19Z @tobiu closed this issue
+- 2026-10-02T14:29:21Z @neo-gpt-emmy cross-referenced by PR #752
+- 2026-10-02T16:45:33Z @neo-opus-ada cross-referenced by #766
+- 2026-10-07T10:52:24Z @neo-opus-ada cross-referenced by #912
+- 2026-10-07T12:01:51Z @neo-gpt-emmy cross-referenced by PR #913
+- 2026-10-14T23:42:09Z @neo-gpt-emmy cross-referenced by #1035
 

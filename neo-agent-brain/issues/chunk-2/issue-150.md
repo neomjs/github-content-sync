@@ -186,12 +186,12 @@ Search for `GitLab workflow MCP server epic parallel-substrate IssueSyncer Merge
 - 2026-05-15T09:06:57Z @neo-opus-ada added the `architecture` label
 - 2026-05-15T09:06:57Z @neo-opus-ada added the `build` label
 - 2026-05-15T09:06:58Z @neo-opus-ada added the `model-experience` label
-- 2026-05-17T19:19:20Z @neo-gemini-pro closed this issue
+- 2026-05-17T19:19:20Z @neo-gemini-julia closed this issue
 - 2026-05-18T13:25:36Z @tobiu reopened this issue
-- 2026-05-22T14:15:33Z @neo-gemini-pro cross-referenced by #11768
-- 2026-05-22T14:15:54Z @neo-gemini-pro added sub-issue #11768
+- 2026-05-22T14:15:33Z @neo-gemini-julia cross-referenced by #11768
+- 2026-05-22T14:15:54Z @neo-gemini-julia added sub-issue #11768
 - 2026-05-22T16:17:34Z @neo-opus-ada cross-referenced by PR #11773
-### @neo-gpt - 2026-06-06T01:57:49Z
+### @neo-gpt-euclid - 2026-06-06T01:57:49Z
 
 ## Epic Resolution Review
 
@@ -226,7 +226,7 @@ Do **not** close neomjs/neo-agent-brain#150 based on the native 100% subissue su
 - 2026-06-06T07:02:30Z @neo-opus-vega cross-referenced by #12624
 - 2026-06-06T07:03:24Z @neo-opus-vega added sub-issue #12624
 - 2026-06-06T07:57:40Z @neo-opus-vega cross-referenced by PR #12625
-### @neo-gpt - 2026-06-06T08:43:15Z
+### @neo-gpt-euclid - 2026-06-06T08:43:15Z
 
 ## Epic Resolution Review
 
@@ -271,12 +271,14 @@ Origin Session ID: dbb1a88c-987f-4519-9645-8f13e9d71000
 - 2026-06-06T20:29:51Z @neo-opus-vega cross-referenced by PR #12653
 - 2026-06-15T22:00:40Z @neo-opus-grace cross-referenced by #13391
 - 2026-06-15T22:05:18Z @neo-opus-grace cross-referenced by PR #13393
-- 2026-06-29T13:57:55Z @neo-gpt cross-referenced by #14333
-- 2026-06-29T16:33:23Z @neo-gpt cross-referenced by #14358
+- 2026-06-29T13:57:55Z @neo-gpt-euclid cross-referenced by #14333
+- 2026-06-29T16:33:23Z @neo-gpt-euclid cross-referenced by #14358
 - 2026-07-10T12:17:01Z @neo-opus-grace cross-referenced by PR #14960
 - 2026-07-27T10:57:46Z @neo-opus-grace cross-referenced by #15805
 - 2026-07-27T14:42:54Z @neo-opus-vega cross-referenced by PR #16053
 - 2026-08-26T15:18:57Z @tobiu added sub-issue #12631
 - 2026-08-26T15:18:57Z @tobiu added sub-issue #12624
 - 2026-08-26T15:18:57Z @tobiu added sub-issue #11768
+- 2026-10-15T11:16:21Z @neo-opus-vega cross-referenced by #1047
+- 2026-10-15T11:16:23Z @neo-opus-vega cross-referenced by #1048
 

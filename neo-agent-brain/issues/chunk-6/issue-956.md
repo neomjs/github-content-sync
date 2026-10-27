@@ -7,7 +7,7 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-09T21:28:35Z'
 updatedAt: '2026-10-09T23:52:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/956'
@@ -96,19 +96,19 @@ Retrieval Hint: "placement probe unverified recommendation cause nextStep observ
 - 2026-10-09T21:28:37Z @neo-fable-clio added the `agent-os` label
 - 2026-10-09T21:33:39Z @neo-fable-clio added parent issue #351
 - 2026-10-09T21:36:28Z @neo-fable-clio cross-referenced by #858
-- 2026-10-09T21:38:32Z @neo-fable assigned to @neo-fable
-### @neo-fable - 2026-10-09T21:38:34Z
+- 2026-10-09T21:38:32Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+### @neo-fable-mnemosyne - 2026-10-09T21:38:34Z
 
 **Intake (row 1's builder, 21:4xZ) — taken.** Prescription check against `probePlacement.mjs` and `firstRunRecipe.mjs` at dev `0b678f47`: the data already splits the classes (`observed` per reader, `uncertainty[] = {reader, reason}`, `fitsPreset`'s distinct reason strings), and `evaluatePlacement` collapses them into `ok`/`failed` — the ticket's reading holds. One refinement I carry into the leaf: `recommendPlacement` must propagate `kind` per preset so the recipe's `ok · unverified` is computed from the verdicts, not re-derived from the budget. Arms: AC-1 red first; the four fixture classes; the recipe's two statuses; the vocabulary table as the single source the Institution card leaf renders. Reviewer at PR time: a GPT seat (Sophie ran the fixtures). Branch `fable/956-probe-cause-next-step`.
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 882aedde-7578-4231-9183-8160f948db6a
 
-- 2026-10-09T21:52:45Z @neo-fable cross-referenced by PR #959
-- 2026-10-09T21:56:27Z @neo-fable referenced in commit `3617f99` - "docs(fleet): the vocabulary's docblock names the card, not a ticket (#956)"
-- 2026-10-09T23:13:27Z @neo-fable referenced in commit `4d8a0e9` - "fix(fleet): a negative balance and observed swap stay observed refusals on the unknown-data path (#956)"
-- 2026-10-09T23:14:05Z @neo-fable referenced in commit `97cf0c9` - "test(fleet): the negative-evidence arm's comments describe the hosts, not the review (#956)"
-- 2026-10-09T23:23:43Z @neo-fable referenced in commit `ceb4e08` - "test(fleet): the negative-evidence hosts are pinned through the recipe's placement status (#956)"
-### @neo-fable - 2026-10-09T23:31:06Z
+- 2026-10-09T21:52:45Z @neo-fable-mnemosyne cross-referenced by PR #959
+- 2026-10-09T21:56:27Z @neo-fable-mnemosyne referenced in commit `3617f99` - "docs(fleet): the vocabulary's docblock names the card, not a ticket (#956)"
+- 2026-10-09T23:13:27Z @neo-fable-mnemosyne referenced in commit `4d8a0e9` - "fix(fleet): a negative balance and observed swap stay observed refusals on the unknown-data path (#956)"
+- 2026-10-09T23:14:05Z @neo-fable-mnemosyne referenced in commit `97cf0c9` - "test(fleet): the negative-evidence arm's comments describe the hosts, not the review (#956)"
+- 2026-10-09T23:23:43Z @neo-fable-mnemosyne referenced in commit `ceb4e08` - "test(fleet): the negative-evidence hosts are pinned through the recipe's placement status (#956)"
+### @neo-fable-mnemosyne - 2026-10-09T23:31:06Z
 
 **Handover (session sunset, 2026-10-10 00:4xZ) — the lane stays mine; PR #959 is in round two.** State: branch `fable/956-probe-cause-next-step` at `ceb4e08a` (pushed; the clone is back on `dev`); Sophie's R1 CHANGES_REQUESTED repaired (a signed balance is guarded by `Number.isFinite`, swap in use reads swapping before the total is needed), her four hosts pinned at the verdict and through the recipe's placement status; 44/44 fleet arms + the probed recipe arm; author responses on the PR; her six-specimen falsifier passes; the R2 verdict is pending. One reading flagged to her: a swapping host with its total unread refuses the local presets and leaves hosted `unverified`, so the step reads `ok · unverified: hosted`, per AC-3's own words. Pickup for my next session: read the PR thread's latest review; if approved, the merge is the operator's; if changes are requested, address them on the branch. Nothing else is owed on this ticket; AC-5 is post-merge with Institution #351's first card leaf.
 

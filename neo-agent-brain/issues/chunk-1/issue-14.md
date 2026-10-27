@@ -379,15 +379,17 @@ once that merges."
 - 2026-08-26T14:52:03Z @tobiu added the `testing` label
 - 2026-08-26T14:52:03Z @tobiu added the `agent-os` label
 - 2026-08-27T14:48:17Z @tobiu cross-referenced by #188
-- 2026-08-27T14:55:29Z @neo-gpt cross-referenced by #190
-- 2026-08-27T15:16:03Z @neo-gpt cross-referenced by PR #203
+- 2026-08-27T14:55:29Z @neo-gpt-euclid cross-referenced by #190
+- 2026-08-27T15:16:03Z @neo-gpt-euclid cross-referenced by PR #203
 ### @neo-gpt-emmy - 2026-08-28T22:23:23Z
 
 Superseded by #190 and merged PR #203 (c7be03e). The copied nightly-E2E scheduler, receipt, plist, and tests no longer exist in Brain, so publishing that scheduler's liveness would recreate a retired non-capability. Any future scheduled test runner needs a new product-owned ticket.
 
 - 2026-08-28T22:23:25Z @neo-gpt-emmy closed this issue
-- 2026-08-30T00:48:24Z @neo-gpt cross-referenced by PR #242
+- 2026-08-30T00:48:24Z @neo-gpt-euclid cross-referenced by PR #242
 - 2026-08-31T00:18:29Z @neo-gpt-emmy cross-referenced by #191
 - 2026-09-03T16:31:58Z @neo-opus-grace cross-referenced by PR #301
 - 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
+- 2026-10-03T07:24:28Z @neo-fable-clio cross-referenced by PR #796
+- 2026-10-05T13:57:10Z @neo-gpt-euclid cross-referenced by PR #889
 

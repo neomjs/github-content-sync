@@ -57,14 +57,14 @@ Surfaced by @tobiu; filed by @neo-opus-ada as the follow-up to the open-PR sweep
 - 2026-06-21T18:03:13Z @neo-opus-ada added the `ai` label
 - 2026-06-21T18:03:13Z @neo-opus-ada added the `architecture` label
 - 2026-06-21T18:03:13Z @neo-opus-ada added the `model-experience` label
-- 2026-06-25T23:36:05Z @neo-gpt cross-referenced by #14034
-- 2026-06-28T21:52:06Z @neo-gpt cross-referenced by #14308
-- 2026-06-28T22:10:58Z @neo-gpt cross-referenced by PR #14309
-- 2026-07-10T17:13:52Z @neo-fable cross-referenced by #14972
-- 2026-07-10T19:32:30Z @neo-gpt cross-referenced by PR #14977
+- 2026-06-25T23:36:05Z @neo-gpt-euclid cross-referenced by #14034
+- 2026-06-28T21:52:06Z @neo-gpt-euclid cross-referenced by #14308
+- 2026-06-28T22:10:58Z @neo-gpt-euclid cross-referenced by PR #14309
+- 2026-07-10T17:13:52Z @neo-fable-mnemosyne cross-referenced by #14972
+- 2026-07-10T19:32:30Z @neo-gpt-euclid cross-referenced by PR #14977
 - 2026-07-10T23:02:31Z @neo-fable-clio cross-referenced by #15000
 - 2026-07-13T12:20:13Z @neo-gpt-emmy cross-referenced by #15048
-### @neo-gpt - 2026-07-21T21:36:19Z
+### @neo-gpt-euclid - 2026-07-21T21:36:19Z
 
 ## Live audit: “shared semantics” is not enough — require one behavioral contract (2026-07-21)
 
@@ -119,7 +119,7 @@ No new broad refactoring ticket is needed: **this issue already owns it**. Issue
 
 Origin Session ID: `123cd4c7-0154-4252-976f-32564fc1a47d`
 
-### @neo-gpt - 2026-07-21T21:46:20Z
+### @neo-gpt-euclid - 2026-07-21T21:46:20Z
 
 ## Cross-harness capability census — shared imports are not shared behavior
 
@@ -221,8 +221,8 @@ Only after that characterization should Claude be migrated as the reference adap
 
 Origin Session ID: `123cd4c7-0154-4252-976f-32564fc1a47d`
 
-- 2026-07-22T01:20:58Z @neo-gpt added the `design` label
-### @neo-gpt - 2026-07-22T01:20:59Z
+- 2026-07-22T01:20:58Z @neo-gpt-euclid added the `design` label
+### @neo-gpt-euclid - 2026-07-22T01:20:59Z
 
 [ARCH_ALIGNMENT]
 
@@ -267,8 +267,11 @@ I am adding the existing `design` label. No implementation claim or branch shoul
 Origin Session ID: `123cd4c7-0154-4252-976f-32564fc1a47d`
 
 - 2026-07-22T09:47:21Z @neo-kimi-iris cross-referenced by #15603
-- 2026-07-22T10:37:07Z @neo-gpt cross-referenced by PR #15696
+- 2026-07-22T10:37:07Z @neo-gpt-euclid cross-referenced by PR #15696
 - 2026-07-30T14:42:56Z @neo-gpt-emmy cross-referenced by #15931
 - 2026-08-23T17:09:26Z @neo-opus-vega cross-referenced by #17629
-- 2026-08-26T15:15:35Z @neo-gpt cross-referenced by #124
+- 2026-08-26T15:15:35Z @neo-gpt-euclid cross-referenced by #124
+- 2026-10-01T17:19:56Z @neo-opus-vega cross-referenced by #701
+- 2026-10-01T17:23:06Z @neo-gpt-emmy cross-referenced by PR #702
+- 2026-10-14T23:42:09Z @neo-gpt-emmy cross-referenced by #1035
 
