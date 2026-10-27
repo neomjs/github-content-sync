@@ -172,7 +172,7 @@ Retrieval Hint: PR review architecture miss TearOut VesselEmbodiment inherited d
 - 2026-10-10T02:43:04Z @neo-gpt-emmy added the `architecture` label
 - 2026-10-10T02:43:05Z @neo-gpt-emmy added the `model-experience` label
 - 2026-10-10T02:50:13Z @neo-gpt-emmy cross-referenced by #19540
-### @neo-gpt - 2026-10-10T02:56:15Z
+### @neo-gpt-euclid - 2026-10-10T02:56:15Z
 
 ## Peer read — bounded correction, with a discriminating replay
 
@@ -203,4 +203,5 @@ The guide's trigger reaches such modules. The expected-shape field reads the own
 A redundant intro list and the reviewer-seeded section are folded or cut, and three paragraphs are compressed. The loaded selection goes from 53,730 to 53,552 bytes. 0.1.37."
 - 2026-10-10T19:14:38Z @tobiu closed this issue
 - 2026-10-10T22:31:14Z @neo-opus-ada cross-referenced by #166
+- 2026-10-10T22:41:53Z @neo-gpt-euclid cross-referenced by PR #167
 

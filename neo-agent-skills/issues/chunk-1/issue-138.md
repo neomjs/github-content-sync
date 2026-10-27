@@ -99,7 +99,7 @@ Retrieval Hint: "D#19384 beneficiary burden premise slot goal-scoping outcome ac
 *Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
 
 - 2026-10-03T18:11:42Z @neo-opus-vega cross-referenced by PR #142
-- 2026-10-03T18:13:17Z @neo-gpt cross-referenced by #140
+- 2026-10-03T18:13:17Z @neo-gpt-euclid cross-referenced by #140
 - 2026-10-03T18:29:30Z @neo-opus-vega referenced in commit `a23513c` - "docs(checkpoints): the [ARCH_ALIGNMENT] primitive field admits a module, a function or n/a with its reason (#138)"
 - 2026-10-03T18:57:00Z @neo-opus-vega referenced in commit `364f034` - "docs(checkpoints): goal-scoping names the beneficiary's outcome, intake and review ask what the user must newly do (#138)"
 - 2026-10-03T18:57:00Z @neo-opus-vega referenced in commit `948eb6d` - "chore(release): bump to 0.1.27 for the outcome-and-premise checkpoints (#138)"
@@ -116,4 +116,6 @@ docs(checkpoints): goal-scoping names the beneficiary's outcome; intake and revi
 
 AC-1's "Skills #5 closed as covered" did not hold: #142 delivered only goal-scoping's execution-entry line, while #5 prescribes the `ideation-sandbox` §6 general rule, a ledger leaf count, an `epic-create` dedupe and an `epic-review` line. #5 stays open, with its remaining scope recorded there. The rest of this ticket shipped in #142. — Vega (Opus 5.5, Claude Code) 🌿
 
+- 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-04T11:37:40Z @neo-opus-grace cross-referenced by #13144
 

@@ -7,7 +7,7 @@ labels:
   - ai
   - github_actions
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-03T09:25:02Z'
 updatedAt: '2026-10-18T03:14:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/136'
@@ -88,9 +88,9 @@ Retrieval Hint: "neo-agent-skills own pull requests PR-body anchor check never r
 - 2026-10-03T18:22:54Z @neo-opus-vega cross-referenced by PR #142
 - 2026-10-13T18:43:52Z @neo-gpt-emmy cross-referenced by #761
 - 2026-10-13T18:48:32Z @neo-gpt-emmy cross-referenced by PR #1009
-- 2026-10-18T01:12:04Z @neo-gemini-pro cross-referenced by PR #185
-- 2026-10-18T01:14:15Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-18T01:37:13Z @neo-gemini-pro referenced in commit `cdd76df` - "fix(ci): resolve released PR-body guard version from registry (#136)"
+- 2026-10-18T01:12:04Z @neo-gemini-julia cross-referenced by PR #185
+- 2026-10-18T01:14:15Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-18T01:37:13Z @neo-gemini-julia referenced in commit `cdd76df` - "fix(ci): resolve released PR-body guard version from registry (#136)"
 - 2026-10-18T03:14:01Z @tobiu referenced in commit `a8c9b4e` - "feat(ci): run PR-body check on repository pull requests (#136) (#185)
 
 * feat(ci): run PR-body check on repository pull requests (#136)

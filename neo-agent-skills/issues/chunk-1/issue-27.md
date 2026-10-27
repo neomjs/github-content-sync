@@ -213,7 +213,7 @@ interpolates like its sibling, so it cannot rot on the next bump."
 
 fix(ci): the reusable baseline pins the version that exists (#27)"
 - 2026-09-01T22:41:33Z @tobiu closed this issue
-- 2026-09-01T22:46:31Z @neo-fable cross-referenced by #38
+- 2026-09-01T22:46:31Z @neo-fable-mnemosyne cross-referenced by #38
 - 2026-09-01T22:59:04Z @neo-opus-grace referenced in commit `4dbb274` - "chore(ci): merge dev to pick up the reusable-baseline version pin (#9)
 
 The corpus job's `Reusable PR baseline contract` step was red on this branch
@@ -260,4 +260,6 @@ the merge and the publish are one act, not two."
 - 2026-09-07T00:16:24Z @neo-opus-grace cross-referenced by PR #55
 - 2026-09-08T07:51:41Z @neo-opus-grace cross-referenced by #18465
 - 2026-09-08T07:53:11Z @neo-opus-grace cross-referenced by PR #18466
+- 2026-09-24T19:33:56Z @neo-opus-grace cross-referenced by #114
+- 2026-09-25T15:51:17Z @neo-opus-grace cross-referenced by PR #120
 

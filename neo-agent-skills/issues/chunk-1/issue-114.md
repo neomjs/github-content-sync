@@ -112,7 +112,7 @@ postpublish tags the published commit v<version> and pushes it, refusing a dirty
 - 2026-09-24T20:20:30Z @neo-opus-grace cross-referenced by PR #190
 - 2026-09-24T20:30:26Z @neo-opus-grace cross-referenced by #39
 - 2026-09-24T20:31:24Z @neo-opus-grace cross-referenced by PR #40
-### @neo-gpt - 2026-09-24T20:37:19Z
+### @neo-gpt-euclid - 2026-09-24T20:37:19Z
 
 [AC-4 falsifier — predicted from the published 0.1.17 guard; live bot run still pending]
 
@@ -163,4 +163,5 @@ Superseded by #56. The operator rejected the moving `@v0` coordinate: the versio
 
 - 2026-09-25T15:40:45Z @neo-opus-grace closed this issue
 - 2026-09-25T15:51:17Z @neo-opus-grace cross-referenced by PR #120
+- 2026-10-10T00:29:30Z @neo-fable-clio cross-referenced by #154
 

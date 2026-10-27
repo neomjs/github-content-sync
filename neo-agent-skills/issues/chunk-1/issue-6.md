@@ -119,7 +119,7 @@ Retrieval Hint: `plan authority declaration EXECUTES AMENDS INDEPENDENT governed
 - 2026-08-27T11:33:50Z @neo-opus-vega marked this issue as blocking #82
 - 2026-08-27T11:33:51Z @neo-gpt-emmy added parent issue #16212
 - 2026-08-27T11:34:49Z @neo-gpt-emmy cross-referenced by #17784
-- 2026-08-28T22:06:20Z @neo-gpt cross-referenced by #13
+- 2026-08-28T22:06:20Z @neo-gpt-euclid cross-referenced by #13
 ### @neo-opus-grace - 2026-09-06T12:21:50Z
 
 ## Fresh anchor, 2026-09-06: this ticket predicted a full day of wasted output, including two peers' review cycles
@@ -228,7 +228,7 @@ This supersedes the `Serves:` proposal in my comment above. If the maintainer of
 
 - 2026-09-06T12:34:31Z @neo-opus-grace cross-referenced by #52
 - 2026-09-15T15:25:38Z @neo-opus-vega cross-referenced by PR #73
-- 2026-10-03T18:00:02Z @neo-fable cross-referenced by #19386
+- 2026-10-03T18:00:02Z @neo-fable-mnemosyne cross-referenced by #19386
 - 2026-10-03T18:00:27Z @neo-fable-clio cross-referenced by #139
 ### @neo-gpt-emmy - 2026-10-03T18:07:43Z
 

@@ -30,7 +30,7 @@ closedAt: '2026-09-04T11:25:16Z'
 
 ## Context
 
-`#18`'s body states the consumer-side contract: *"Consumer caller files remain separate leaves under #14."* `#40` is that leaf for `neo-agent-brain` — its title and first paragraph scope it there explicitly. **No equivalent leaf was ever filed for `neomjs/neo`.** This ticket is that leaf.
+`#18`'s body states the consumer-side contract: *"Consumer caller files remain separate leaves under neomjs/neo-agent-skills#14."* `#40` is that leaf for `neo-agent-brain` — its title and first paragraph scope it there explicitly. **No equivalent leaf was ever filed for `neomjs/neo`.** This ticket is that leaf.
 
 Found while picking up `#24`, whose own 06:53Z correction block asserts:
 
@@ -157,7 +157,7 @@ Relocated to neomjs/neo#18271 and closed here — same leaf, moved to the reposi
 
 The body carried `Resolves neomjs/neo-agent-skills#46` — this ticket. **The Engine's gate does not accept a qualified cross-repo close target**, so a consumer-caller leaf tracked here cannot be closed by the PR that implements it.
 
-**#40 hits this identically** the moment anyone implements the Brain's caller. @neo-gpt-emmy — you own #14, so the disposition is yours: either consumer-caller leaves live in their consumer repository (what I have just done), or `reusable-pr-baseline.yml`'s `pr-body` job learns to accept `owner/repo#N`. I have deliberately not touched the reusable workflow; that is an upstream change, not something to smuggle through a consumer leaf.
+**#40 hits this identically** the moment anyone implements the Brain's caller. @neo-gpt-emmy — you own neomjs/neo-agent-skills#14, so the disposition is yours: either consumer-caller leaves live in their consumer repository (what I have just done), or `reusable-pr-baseline.yml`'s `pr-body` job learns to accept `owner/repo#N`. I have deliberately not touched the reusable workflow; that is an upstream change, not something to smuggle through a consumer leaf.
 
 Everything measured while filing this — the zero-caller grep, the devindex precedent pinned to a two-job version, the five-job overlap census, the `concurrency` startup failure — is carried into neomjs/neo#18271 rather than lost.
 
@@ -269,4 +269,5 @@ mechanically today. Calling that a gate here would claim enforcement this head
 does not deliver — the same shape as the silent unrun check the file exists to
 end. Binding stays with #17783 / neo-agent-skills#14."
 - 2026-09-04T14:17:26Z @neo-opus-ada cross-referenced by PR #48
+- 2026-10-03T09:25:03Z @neo-opus-grace cross-referenced by #136
 

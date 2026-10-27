@@ -163,5 +163,69 @@ Origin Session ID: eb5c78bf-b451-4ed0-ae82-2e9c60e8cbff
 
 ## Timeline
 
+- 2026-09-20T00:27:02Z @neo-opus-grace assigned to @neo-opus-grace
+- 2026-09-20T00:27:02Z @neo-opus-grace added the `enhancement` label
+- 2026-09-20T00:27:02Z @neo-opus-grace added the `contributor-experience` label
+- 2026-09-20T00:27:03Z @neo-opus-grace added the `ai` label
+- 2026-09-20T00:27:03Z @neo-opus-grace added the `model-experience` label
 - 2026-09-20T00:34:20Z @neo-opus-grace cross-referenced by PR #98
+- 2026-09-20T00:40:02Z @neo-opus-grace referenced in commit `97fdd9c` - "feat(pr-review): the micro-review gains a contributor-facing opening slot (#97)
+
+The external-contributor register rule has existed in pr-review-guide §1 for
+months. Measured across one contributor's three PRs, it reached the artifact in
+3 of 5 reviews — and the variable was not the reviewer. All three full-form
+reviews opened with a personal address, because that template carries a
+`Peer-Review Opening` slot. Neither micro-review did, because that one has no
+opening slot at all.
+
+§6.4 routes a mechanical PR to the micro form as a rule, not a permission, and a
+curated `good first issue` is mechanical by construction. The better we scope a
+newcomer ticket, the more certainly its review lands on the template with no
+person in it. Rigour-scaling and person-scaling were riding one switch.
+
+The slot is conditional — external contributors only — so maintainer-to-
+maintainer micro-reviews keep their shape. Its example carries the two things
+the operator asked for: thanks, and one ecosystem entry point, using the
+`build-themes` + `server-start` dev path rather than `build-all`, which is
+heavier than a first checkout needs.
+
+`learn/benefits/Introduction.md` enters the document-reference census as the
+11th `neomjs/neo` row, so the pointer resolves for consumers that ship no
+`learn/` tree rather than dangling outside this repository.
+
+[skill-growth-justified: +1321 B, trimmed from 1633 before asking. The corpus carried a register rule it could not discharge, so 651 B buys the slot that discharges it, and 358 B is the census row this repository's own lint demands before the pointer may exist — the package ships no learn/ tree, so an unregistered path dangles for every consumer that is not neomjs/neo. The rest is the measurement that makes both auditable (3/3 slot-bearing reviews opened with a personal address, 0/2 slotless ones did) plus the one §6.4 sentence separating rigour-scaling from register-scaling. No net-reduction is offered; the sunset is stated in #97 — retire the slot when an external-contributor review path exists as its own skill, or when a body lint enforces the opening, whichever lands first.]"
+- 2026-09-20T00:42:02Z @neo-opus-grace referenced in commit `c3fcde1` - "feat(pr-review): the micro-review gains a contributor-facing opening slot (#97)
+
+The external-contributor register rule has existed in pr-review-guide §1 for
+months. Measured across one contributor's three PRs, it reached the artifact in
+3 of 5 reviews — and the variable was not the reviewer. All three full-form
+reviews opened with a personal address, because that template carries a
+`Peer-Review Opening` slot. Neither micro-review did, because that one has no
+opening slot at all.
+
+§6.4 routes a mechanical PR to the micro form as a rule, not a permission, and a
+curated `good first issue` is mechanical by construction. The better we scope a
+newcomer ticket, the more certainly its review lands on the template with no
+person in it. Rigour-scaling and person-scaling were riding one switch.
+
+The slot is conditional — external contributors only — so maintainer-to-
+maintainer micro-reviews keep their shape. Its example carries the two things
+the operator asked for: thanks, and one ecosystem entry point, using the
+`build-themes` + `server-start` dev path rather than `build-all`, which is
+heavier than a first checkout needs.
+
+`learn/benefits/Introduction.md` enters the document-reference census as the
+11th `neomjs/neo` row, so the pointer resolves for consumers that ship no
+`learn/` tree rather than dangling outside this repository.
+
+[skill-growth-justified: +1321 B, trimmed from 1633 before asking. The corpus carried a register rule it could not discharge, so 651 B buys the slot that discharges it, and 358 B is the census row this repository's own lint demands before the pointer may exist — the package ships no learn/ tree, so an unregistered path dangles for every consumer that is not neomjs/neo. The rest is the measurement that makes both auditable (3/3 slot-bearing reviews opened with a personal address, 0/2 slotless ones did) plus the one §6.4 sentence separating rigour-scaling from register-scaling. No net-reduction is offered; the sunset is stated in #97 — retire the slot when an external-contributor review path exists as its own skill, or when a body lint enforces the opening, whichever lands first.]"
+- 2026-09-21T10:44:55Z @neo-opus-grace referenced in commit `7528a1e` - "fix(pr-review): the contributor opening names its repository and its evidence bound (#97)
+
+RA-1: the example handed a reader a bare build-themes + server-start pair with no repository context. Neither this package nor neo-agent-brain declares those scripts, and the Engine fresh-clone setup runs bundle-browser-deps first and passes -n -e dev -t all to build-themes. The slot now links the canonical CONTRIBUTING setup instead of republishing a partial recipe.
+
+RA-2: all three slot-bearing reviews in the sample were one maintainer, both slotless ones the other, so reviewer and form covary. The guide keeps the 3-vs-0 measurement and drops the causal reading.
+
+[skill-growth-justified: +339 B over the reviewed head — the repository-scoping clause a shared package needs plus the evidence qualifier RA-2 requires; net +1660 B against 4253d70, sunset condition on #97 unchanged]"
+- 2026-09-21T11:12:00Z @tobiu closed this issue
+- 2026-10-21T22:52:39Z @neo-gpt-emmy cross-referenced by #199
 

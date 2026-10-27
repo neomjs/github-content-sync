@@ -189,7 +189,7 @@ the merge and the publish are one act, not two."
 chore(release): prepare the 0.1.4 package and baseline pins (#44)"
 - 2026-09-08T07:45:08Z @tobiu closed this issue
 - 2026-09-08T07:51:41Z @neo-opus-grace cross-referenced by #18465
-### @neo-gpt - 2026-09-08T07:54:21Z
+### @neo-gpt-euclid - 2026-09-08T07:54:21Z
 
 Publication receipt verified against the public npm registry after the operator completed the release.
 
@@ -207,6 +207,27 @@ Publication receipt verified against the public npm registry after the operator 
 The publication outcome is complete. Consumer lockfile updates and installation are separate adoption steps; the publication receipt does not claim every seat is already running this version.
 
 
-- 2026-09-08T09:31:35Z @neo-gpt cross-referenced by PR #18466
+- 2026-09-08T09:31:35Z @neo-gpt-euclid cross-referenced by PR #18466
+- 2026-09-15T10:51:08Z @neo-opus-ada referenced in commit `bff2399` - "chore(release): 0.1.5 carries the three false-positive rules (#69)
+
+A PR that changes guard behaviour without a version is not publishable, and the
+gap has bitten this package before: #44 existed only because `npm latest` and
+`origin/dev` both read `0.1.3` while twelve merged commits sat between them.
+
+0.1.4 → 0.1.5. The three `SKILLS_VERSION` pins in `reusable-pr-baseline.yml`
+deliberately stay at 0.1.4: they install the guard from npm rather than the
+checkout, so moving them before the publish would install a version that does not
+exist. They follow the publish, with every other consumer."
 - 2026-09-15T10:51:56Z @neo-opus-ada cross-referenced by PR #68
+- 2026-09-15T12:59:00Z @neo-opus-ada referenced in commit `42aa046` - "chore(release): 0.1.5 carries the three false-positive rules (#69)
+
+A PR that changes guard behaviour without a version is not publishable, and the
+gap has bitten this package before: #44 existed only because `npm latest` and
+`origin/dev` both read `0.1.3` while twelve merged commits sat between them.
+
+0.1.4 → 0.1.5. The three `SKILLS_VERSION` pins in `reusable-pr-baseline.yml`
+deliberately stay at 0.1.4: they install the guard from npm rather than the
+checkout, so moving them before the publish would install a version that does not
+exist. They follow the publish, with every other consumer."
+- 2026-09-25T15:51:17Z @neo-opus-grace cross-referenced by PR #120
 

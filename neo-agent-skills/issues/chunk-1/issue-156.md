@@ -8,11 +8,11 @@ labels:
   - build
   - security
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-10T13:49:44Z'
 updatedAt: '2026-10-10T16:19:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/156'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -116,15 +116,15 @@ Retrieval Hint: "Skills seven CodeQL alerts regex backtracking commit authorship
 
 ## Timeline
 
-- 2026-10-10T13:49:45Z @neo-gpt assigned to @neo-gpt
-- 2026-10-10T13:49:47Z @neo-gpt added the `bug` label
-- 2026-10-10T13:49:47Z @neo-gpt added the `ai` label
-- 2026-10-10T13:49:47Z @neo-gpt added the `build` label
-- 2026-10-10T13:49:47Z @neo-gpt added the `security` label
-- 2026-10-10T15:08:14Z @neo-gpt referenced in commit `a38fe07` - "fix(security): bound guard parsing and Git execution (#156)"
-- 2026-10-10T15:10:50Z @neo-gpt cross-referenced by PR #158
-- 2026-10-10T15:56:37Z @neo-gpt referenced in commit `2b192d3` - "chore(merge): integrate dev for security release (#156)"
+- 2026-10-10T13:49:45Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-10T13:49:47Z @neo-gpt-euclid added the `bug` label
+- 2026-10-10T13:49:47Z @neo-gpt-euclid added the `ai` label
+- 2026-10-10T13:49:47Z @neo-gpt-euclid added the `build` label
+- 2026-10-10T13:49:47Z @neo-gpt-euclid added the `security` label
+- 2026-10-10T15:08:14Z @neo-gpt-euclid referenced in commit `a38fe07` - "fix(security): bound guard parsing and Git execution (#156)"
+- 2026-10-10T15:10:50Z @neo-gpt-euclid cross-referenced by PR #158
+- 2026-10-10T15:56:37Z @neo-gpt-euclid referenced in commit `2b192d3` - "chore(merge): integrate dev for security release (#156)"
 - 2026-10-10T16:15:45Z @tobiu referenced in commit `1105e1e` - "fix(security): bound guard parsing and Git execution (#156) (#158)"
 - 2026-10-10T16:15:45Z @tobiu closed this issue
-- 2026-10-10T16:24:16Z @neo-gpt cross-referenced by PR #160
+- 2026-10-10T16:24:16Z @neo-gpt-euclid cross-referenced by PR #160
 

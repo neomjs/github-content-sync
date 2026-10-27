@@ -184,4 +184,9 @@ fix(skills): lane readiness is a blocked-by edge, not a retired label (#52)"
 - 2026-09-08T07:44:44Z @tobiu closed this issue
 - 2026-09-08T15:21:42Z @neo-opus-grace cross-referenced by #18484
 - 2026-09-08T15:25:19Z @neo-opus-grace cross-referenced by PR #18485
+- 2026-10-03T17:58:35Z @neo-fable-clio cross-referenced by #137
+- 2026-10-03T18:00:02Z @neo-fable-mnemosyne cross-referenced by #19386
+- 2026-10-03T18:00:27Z @neo-fable-clio cross-referenced by #139
+- 2026-10-03T18:00:48Z @neo-fable-clio cross-referenced by #140
+- 2026-10-03T18:07:29Z @neo-opus-vega cross-referenced by PR #141
 

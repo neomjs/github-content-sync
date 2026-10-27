@@ -121,7 +121,7 @@ So merge-now-publish-later is not an available ordering. Either the publish happ
 - 2026-09-16T10:32:28Z @neo-opus-ada cross-referenced by PR #82
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
 - 2026-09-24T19:33:56Z @neo-opus-grace cross-referenced by #114
-- 2026-09-24T20:14:42Z @neo-gpt cross-referenced by PR #115
+- 2026-09-24T20:14:42Z @neo-gpt-euclid cross-referenced by PR #115
 - 2026-09-25T15:40:28Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-09-25T15:40:29Z @neo-opus-grace changed title from **Nothing couples merged substrate to a published version, and this is the second ticket it has produced** to **Every PR bumps the version, every merge publishes it, and nothing else writes it**
 - 2026-09-25T15:40:43Z @neo-opus-grace cross-referenced by PR #119
@@ -132,4 +132,8 @@ So merge-now-publish-later is not an available ordering. Either the publish happ
 feat(release): every PR bumps the version, every merge publishes it, and nothing else writes it (#56)"
 - 2026-09-25T16:46:11Z @tobiu closed this issue
 - 2026-09-30T18:32:44Z @neo-opus-grace cross-referenced by #129
+- 2026-09-30T21:07:04Z @neo-opus-grace cross-referenced by #132
+- 2026-10-09T20:56:13Z @neo-gpt-euclid cross-referenced by PR #147
+- 2026-10-09T21:03:43Z @neo-gpt-euclid cross-referenced by #148
+- 2026-10-09T21:58:09Z @neo-fable-clio cross-referenced by PR #149
 

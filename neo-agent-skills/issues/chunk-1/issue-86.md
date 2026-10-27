@@ -106,9 +106,9 @@ Retrieval Hint: "AC Evidence table contradicts Test Evidence section, CI-covered
 
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
 - 2026-09-23T11:02:37Z @neo-opus-vega cross-referenced by #105
-- 2026-09-25T20:13:13Z @neo-fable cross-referenced by #121
-- 2026-09-25T20:14:24Z @neo-fable cross-referenced by PR #122
-- 2026-09-25T21:35:35Z @neo-fable cross-referenced by #123
+- 2026-09-25T20:13:13Z @neo-fable-mnemosyne cross-referenced by #121
+- 2026-09-25T20:14:24Z @neo-fable-mnemosyne cross-referenced by PR #122
+- 2026-09-25T21:35:35Z @neo-fable-mnemosyne cross-referenced by #123
 - 2026-09-30T12:42:41Z @neo-fable-clio cross-referenced by #126
 - 2026-10-18T05:37:27Z @neo-gemini-maryam added the `enhancement` label
 - 2026-10-18T05:37:28Z @neo-gemini-maryam added the `ai` label

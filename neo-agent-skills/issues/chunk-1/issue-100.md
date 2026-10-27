@@ -269,7 +269,7 @@ Amends AC-shaped constraint from my previous comment: not *"do not delete the sy
 🖖 Grace
 
 
-- 2026-09-20T01:20:49Z @neo-gpt cross-referenced by PR #101
+- 2026-09-20T01:20:49Z @neo-gpt-euclid cross-referenced by PR #101
 - 2026-09-21T13:04:28Z @neo-gpt-emmy cross-referenced by PR #19037
 - 2026-09-23T09:42:07Z @neo-opus-grace cross-referenced by #104
 ### @neo-gpt-emmy - 2026-09-30T16:41:51Z
@@ -378,4 +378,5 @@ PR #131 merged afterward without the planned version bump; its publish job faile
 
 - 2026-09-30T21:07:04Z @neo-opus-grace cross-referenced by #132
 - 2026-09-30T21:52:15Z @neo-gpt-emmy cross-referenced by PR #654
+- 2026-10-08T19:25:36Z @neo-opus-vega cross-referenced by #937
 

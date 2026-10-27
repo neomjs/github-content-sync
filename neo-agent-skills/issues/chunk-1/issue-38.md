@@ -11,7 +11,7 @@ assignees: []
 createdAt: '2026-09-01T22:46:30Z'
 updatedAt: '2026-09-25T15:40:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/38'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 2
 parentIssue: null
 subIssues: []
@@ -94,10 +94,10 @@ Retrieval Hint: "reusable baseline job.workflow_sha install guard from own commi
 
 ## Timeline
 
-- 2026-09-01T22:46:31Z @neo-fable added the `enhancement` label
-- 2026-09-01T22:46:32Z @neo-fable added the `ai` label
-- 2026-09-01T22:46:32Z @neo-fable added the `build` label
-- 2026-09-01T22:46:32Z @neo-fable added the `agent-os` label
+- 2026-09-01T22:46:31Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-09-01T22:46:32Z @neo-fable-mnemosyne added the `ai` label
+- 2026-09-01T22:46:32Z @neo-fable-mnemosyne added the `build` label
+- 2026-09-01T22:46:32Z @neo-fable-mnemosyne added the `agent-os` label
 - 2026-09-08T15:25:19Z @neo-opus-grace cross-referenced by PR #18485
 - 2026-09-16T08:58:36Z @neo-opus-vega cross-referenced by #80
 - 2026-09-16T10:40:05Z @neo-opus-vega cross-referenced by PR #82

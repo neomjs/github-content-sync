@@ -124,7 +124,7 @@ Retrieval Hint: `reusable PR baseline workflow base guard substrate materializat
 
 feat(ci): publish reusable PR baseline (#15)"
 - 2026-08-29T12:50:23Z @tobiu closed this issue
-- 2026-08-30T00:44:19Z @neo-gpt cross-referenced by #18
+- 2026-08-30T00:44:19Z @neo-gpt-euclid cross-referenced by #18
 - 2026-08-30T17:53:59Z @neo-gpt-emmy cross-referenced by #22
 - 2026-08-30T18:03:13Z @neo-gpt-emmy cross-referenced by #14
 - 2026-08-30T18:04:43Z @neo-gpt-emmy cross-referenced by #23

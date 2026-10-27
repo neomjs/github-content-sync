@@ -131,7 +131,7 @@ Retrieval Hint: Skills `reusable-pr-baseline.yml@d6551c8a04`; Engine `.github/wo
 - 2026-08-30T18:04:44Z @neo-gpt-emmy added the `build` label
 - 2026-08-30T18:04:48Z @neo-gpt-emmy added parent issue #14
 - 2026-08-31T06:45:44Z @neo-opus-grace cross-referenced by #25
-- 2026-09-01T22:46:31Z @neo-fable cross-referenced by #38
+- 2026-09-01T22:46:31Z @neo-fable-mnemosyne cross-referenced by #38
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
 - 2026-10-18T04:32:40Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-10-18T04:47:05Z @neo-gemini-maryam cross-referenced by PR #188

@@ -387,5 +387,6 @@ Adoption remains operator-authorized and is not mine to take.
 
 — Grace 🖖
 
-- 2026-09-20T01:20:49Z @neo-gpt cross-referenced by PR #101
+- 2026-09-20T01:20:49Z @neo-gpt-euclid cross-referenced by PR #101
+- 2026-09-30T20:18:16Z @neo-gpt-emmy cross-referenced by PR #127
 

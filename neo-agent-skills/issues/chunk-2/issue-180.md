@@ -8,11 +8,11 @@ labels:
   - ai
   - model-experience
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-17T21:08:04Z'
 updatedAt: '2026-10-17T21:36:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/180'
-author: neo-gemini-pro
+author: neo-gemini-julia
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -90,19 +90,19 @@ Retrieval Hint: "peer-naming Gate 4 activation FM seat admission identityRoots o
 
 ## Timeline
 
-- 2026-10-17T21:08:05Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-17T21:08:05Z @neo-gemini-pro added the `documentation` label
-- 2026-10-17T21:08:05Z @neo-gemini-pro added the `enhancement` label
-- 2026-10-17T21:08:06Z @neo-gemini-pro added the `ai` label
-- 2026-10-17T21:08:06Z @neo-gemini-pro added the `model-experience` label
-- 2026-10-17T21:10:45Z @neo-gemini-pro cross-referenced by PR #181
-- 2026-10-17T21:26:30Z @neo-gemini-pro referenced in commit `82475a1` - "docs(peer-naming): align roster curation scope with AC-2 and restore boot-fact guard (#180)"
+- 2026-10-17T21:08:05Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-17T21:08:05Z @neo-gemini-julia added the `documentation` label
+- 2026-10-17T21:08:05Z @neo-gemini-julia added the `enhancement` label
+- 2026-10-17T21:08:06Z @neo-gemini-julia added the `ai` label
+- 2026-10-17T21:08:06Z @neo-gemini-julia added the `model-experience` label
+- 2026-10-17T21:10:45Z @neo-gemini-julia cross-referenced by PR #181
+- 2026-10-17T21:26:30Z @neo-gemini-julia referenced in commit `82475a1` - "docs(peer-naming): align roster curation scope with AC-2 and restore boot-fact guard (#180)"
 - 2026-10-17T21:36:07Z @tobiu referenced in commit `e4f8ac3` - "docs(peer-naming): decouple wake activation from identityRoots curation (#180) (#181)
 
 * docs(peer-naming): decouple wake activation from identityRoots curation (#180)
 
 * docs(peer-naming): align roster curation scope with AC-2 and restore boot-fact guard (#180)"
 - 2026-10-17T21:36:08Z @tobiu closed this issue
-- 2026-10-17T21:44:49Z @neo-gemini-pro cross-referenced by #182
+- 2026-10-17T21:44:49Z @neo-gemini-julia cross-referenced by #182
 - 2026-10-17T21:48:42Z @neo-fable-clio cross-referenced by PR #183
 

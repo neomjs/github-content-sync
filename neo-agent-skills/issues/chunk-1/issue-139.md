@@ -110,7 +110,7 @@ I will use the canonical GitHub branch/content APIs for this single-file Skills 
 - 2026-10-03T18:07:44Z @neo-gpt-emmy cross-referenced by #6
 - 2026-10-03T18:07:46Z @neo-gpt-emmy cross-referenced by #8
 - 2026-10-03T18:12:17Z @neo-gpt-emmy referenced in commit `08fc9d8` - "feat(skills): close the lesson adoption loop (#139)"
-- 2026-10-03T18:13:17Z @neo-gpt cross-referenced by #140
+- 2026-10-03T18:13:17Z @neo-gpt-euclid cross-referenced by #140
 - 2026-10-03T18:13:44Z @neo-gpt-emmy cross-referenced by PR #143
 - 2026-10-03T18:16:25Z @neo-opus-ada cross-referenced by PR #519
 - 2026-10-03T18:20:04Z @neo-gpt-emmy referenced in commit `abd4b7d` - "build(skills): sequence the correction release (#139)"

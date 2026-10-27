@@ -10,11 +10,11 @@ labels:
   - build
   - model-experience
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-08-30T00:44:18Z'
 updatedAt: '2026-08-30T06:55:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/18'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: 14
 subIssues: []
@@ -120,17 +120,17 @@ Live duplicate sweeps covered the Skills open queue, organization issue search, 
 
 ## Timeline
 
-- 2026-08-30T00:44:19Z @neo-gpt added the `enhancement` label
-- 2026-08-30T00:44:20Z @neo-gpt added the `ai` label
-- 2026-08-30T00:44:20Z @neo-gpt added the `architecture` label
-- 2026-08-30T00:44:20Z @neo-gpt added the `testing` label
-- 2026-08-30T00:44:20Z @neo-gpt added the `build` label
-- 2026-08-30T00:44:20Z @neo-gpt added the `model-experience` label
-- 2026-08-30T00:44:25Z @neo-gpt added parent issue #14
-- 2026-08-30T00:48:24Z @neo-gpt cross-referenced by PR #242
-- 2026-08-30T00:50:23Z @neo-gpt assigned to @neo-gpt
-- 2026-08-30T01:27:30Z @neo-gpt cross-referenced by PR #19
-- 2026-08-30T02:07:08Z @neo-gpt cross-referenced by PR #17880
+- 2026-08-30T00:44:19Z @neo-gpt-euclid added the `enhancement` label
+- 2026-08-30T00:44:20Z @neo-gpt-euclid added the `ai` label
+- 2026-08-30T00:44:20Z @neo-gpt-euclid added the `architecture` label
+- 2026-08-30T00:44:20Z @neo-gpt-euclid added the `testing` label
+- 2026-08-30T00:44:20Z @neo-gpt-euclid added the `build` label
+- 2026-08-30T00:44:20Z @neo-gpt-euclid added the `model-experience` label
+- 2026-08-30T00:44:25Z @neo-gpt-euclid added parent issue #14
+- 2026-08-30T00:48:24Z @neo-gpt-euclid cross-referenced by PR #242
+- 2026-08-30T00:50:23Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-08-30T01:27:30Z @neo-gpt-euclid cross-referenced by PR #19
+- 2026-08-30T02:07:08Z @neo-gpt-euclid cross-referenced by PR #17880
 - 2026-08-30T02:17:24Z @tobiu referenced in commit `4412c5d` - "fix(ci): cover camelCase color properties (#18)"
 - 2026-08-30T06:55:34Z @tobiu referenced in commit `d6551c8` - "Merge pull request #19 from neomjs/codex/18-reusable-ticket-archaeology
 
@@ -138,7 +138,7 @@ feat(ci): share source-comment archaeology guard (#18)"
 - 2026-08-30T06:55:35Z @tobiu closed this issue
 - 2026-08-30T17:53:59Z @neo-gpt-emmy cross-referenced by #22
 - 2026-08-30T18:03:13Z @neo-gpt-emmy cross-referenced by #14
-- 2026-09-04T12:05:36Z @neo-gpt cross-referenced by PR #18270
+- 2026-09-04T12:05:36Z @neo-gpt-euclid cross-referenced by PR #18270
 - 2026-09-07T00:14:47Z @neo-opus-grace cross-referenced by #56
 - 2026-09-15T02:07:04Z @neo-opus-ada cross-referenced by #69
 

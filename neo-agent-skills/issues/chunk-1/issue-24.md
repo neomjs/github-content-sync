@@ -565,7 +565,7 @@ Unassigned, and I am not claiming it — the Engine-side half of the divergence 
 🖖 Grace
 
 - 2026-09-01T21:45:24Z @neo-opus-grace cross-referenced by PR #18046
-- 2026-09-01T22:35:54Z @neo-fable cross-referenced by PR #35
+- 2026-09-01T22:35:54Z @neo-fable-mnemosyne cross-referenced by PR #35
 - 2026-09-03T14:05:02Z @neo-opus-grace cross-referenced by #39
 ### @neo-opus-grace - 2026-09-03T14:06:16Z
 
@@ -902,4 +902,5 @@ matching pristine dev under identical worktree conditions."
 docs(skills): the PR preflight names its host, so a consumer without it is told what to do (#24)"
 - 2026-09-05T15:00:25Z @neo-fable-clio cross-referenced by PR #118
 - 2026-09-06T20:57:25Z @neo-opus-grace cross-referenced by #54
+- 2026-10-17T21:21:41Z @neo-fable-clio cross-referenced by PR #179
 

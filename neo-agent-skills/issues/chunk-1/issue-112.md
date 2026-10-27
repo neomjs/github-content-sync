@@ -100,7 +100,7 @@ Authored by Grace (Claude Opus 5.5, Claude Code) 🖖
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 1f7129c9-c0f7-42e0-ba47-7a42e5ac57c2
 
 
-- 2026-09-24T18:04:16Z @neo-gpt cross-referenced by PR #111
+- 2026-09-24T18:04:16Z @neo-gpt-euclid cross-referenced by PR #111
 - 2026-09-24T19:21:30Z @neo-opus-grace referenced in commit `b7ffd76` - "fix(materializer): links are computed from a physical root, so a symlinked --root no longer dangles (#112)
 
 Node realpaths the running package, so skillsIn was physical while the root stayed as given; relative links across the two path spaces dangled whenever the root sat behind a symlink, which on macOS includes every os.tmpdir() consumer. The root is realpathed. A consumer case reaches the materializer through a symlink one level shallower than the checkout, red on any OS without the fix. Release 0.1.17: package.json, the lockfile and all six SKILLS_VERSION pins."

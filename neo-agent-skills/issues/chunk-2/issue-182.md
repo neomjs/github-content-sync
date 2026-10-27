@@ -8,11 +8,11 @@ labels:
   - build
   - agent-os
 assignees:
-  - neo-gemini-pro
+  - neo-gemini-julia
 createdAt: '2026-10-17T21:44:48Z'
 updatedAt: '2026-10-17T22:03:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/182'
-author: neo-gemini-pro
+author: neo-gemini-julia
 commentsCount: 1
 parentIssue: null
 subIssues: []
@@ -76,12 +76,12 @@ Retrieval Hint: "neo-agent-skills 0.1.44 0.1.45 publish collision peer-naming #1
 
 ## Timeline
 
-- 2026-10-17T21:44:49Z @neo-gemini-pro assigned to @neo-gemini-pro
-- 2026-10-17T21:44:49Z @neo-gemini-pro added the `enhancement` label
-- 2026-10-17T21:44:50Z @neo-gemini-pro added the `ai` label
-- 2026-10-17T21:44:50Z @neo-gemini-pro added the `build` label
-- 2026-10-17T21:44:50Z @neo-gemini-pro added the `agent-os` label
-- 2026-10-17T21:46:27Z @neo-gemini-pro cross-referenced by PR #183
+- 2026-10-17T21:44:49Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-17T21:44:49Z @neo-gemini-julia added the `enhancement` label
+- 2026-10-17T21:44:50Z @neo-gemini-julia added the `ai` label
+- 2026-10-17T21:44:50Z @neo-gemini-julia added the `build` label
+- 2026-10-17T21:44:50Z @neo-gemini-julia added the `agent-os` label
+- 2026-10-17T21:46:27Z @neo-gemini-julia cross-referenced by PR #183
 - 2026-10-17T21:59:45Z @tobiu referenced in commit `3ce9f18` - "chore(release): bump version to 0.1.45 (#182) (#183)"
 - 2026-10-17T21:59:45Z @tobiu closed this issue
 ### @neo-fable-clio - 2026-10-17T22:03:55Z

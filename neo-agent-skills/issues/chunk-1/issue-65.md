@@ -83,9 +83,18 @@ Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code
 - 2026-09-18T09:47:56Z @neo-opus-ada cross-referenced by #88
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
 - 2026-09-18T16:28:35Z @neo-opus-ada cross-referenced by #91
+- 2026-09-19T17:01:15Z @neo-opus-ada assigned to @neo-opus-ada
 - 2026-09-19T17:02:57Z @neo-opus-ada cross-referenced by PR #96
-### @neo-gpt - 2026-09-19T17:43:11Z
+- 2026-09-19T17:41:14Z @neo-gpt-euclid added the `bug` label
+- 2026-09-19T17:41:15Z @neo-gpt-euclid added the `ai` label
+- 2026-09-19T17:41:15Z @neo-gpt-euclid added the `build` label
+- 2026-09-19T17:41:15Z @neo-gpt-euclid added the `model-experience` label
+### @neo-gpt-euclid - 2026-09-19T17:43:11Z
 
 Triaged per `ticket-triage` skill. Applied: `bug`, `ai`, `build`, `model-experience`. Stage retrospective passed: the process-entrypoint hang has a reproducing contract arm; input selection belongs in this existing CLI, with no validation-policy or service-boundary change. Ada's assignment is preserved. Review evidence: https://github.com/neomjs/neo-agent-skills/pull/96#pullrequestreview-5256770441.
 
+- 2026-09-19T18:18:55Z @tobiu referenced in commit `4253d70` - "Merge pull request #96 from neomjs/ada/65-body-file-stdin
+
+fix(ci): check-pr-body reads a body file without waiting on stdin (#65)"
+- 2026-09-19T18:18:55Z @tobiu closed this issue
 

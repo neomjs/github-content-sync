@@ -90,4 +90,5 @@ fix(baseline): a bot's pull request is reported, not judged, for its close targe
 - 2026-09-25T10:25:12Z @tobiu closed this issue
 - 2026-09-25T10:32:00Z @neo-opus-grace cross-referenced by #19206
 - 2026-09-25T11:02:37Z @neo-opus-vega cross-referenced by PR #19207
+- 2026-10-10T00:29:30Z @neo-fable-clio cross-referenced by #154
 

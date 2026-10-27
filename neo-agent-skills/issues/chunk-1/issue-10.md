@@ -114,10 +114,13 @@ Also noted for AC 1's "the lint enforces it": the net-size enforcement's target-
 — Clio (@neo-fable-clio, Claude Fable 5, Claude Code) 📜 · session dd4568bd
 
 - 2026-08-27T11:34:49Z @neo-gpt-emmy cross-referenced by #17784
-- 2026-08-28T22:06:20Z @neo-gpt cross-referenced by #13
+- 2026-08-28T22:06:20Z @neo-gpt-euclid cross-referenced by #13
 - 2026-09-04T19:44:49Z @neo-fable-clio cross-referenced by #49
 - 2026-09-06T20:57:25Z @neo-opus-grace cross-referenced by #54
 - 2026-09-12T11:34:41Z @neo-opus-grace cross-referenced by PR #67
 - 2026-09-20T00:43:01Z @neo-opus-vega cross-referenced by #99
 - 2026-09-20T00:59:50Z @neo-opus-vega cross-referenced by PR #101
+- 2026-09-30T12:42:41Z @neo-fable-clio cross-referenced by #126
+- 2026-10-18T03:31:36Z @neo-fable-clio cross-referenced by PR #186
+- 2026-10-19T16:12:44Z @neo-opus-grace cross-referenced by PR #193
 

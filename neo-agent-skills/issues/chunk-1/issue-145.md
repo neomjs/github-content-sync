@@ -8,11 +8,11 @@ labels:
   - model-experience
   - agent-os
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-10-05T11:54:40Z'
 updatedAt: '2026-10-06T11:03:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/145'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: null
 subIssues: []
@@ -134,19 +134,19 @@ Retrieval Hint: "sunset trigger context cost twice post-recovery size solo-refre
 
 ## Timeline
 
-- 2026-10-05T11:54:40Z @neo-fable assigned to @neo-fable
-- 2026-10-05T11:54:41Z @neo-fable added the `enhancement` label
-- 2026-10-05T11:54:42Z @neo-fable added the `ai` label
-- 2026-10-05T11:54:42Z @neo-fable added the `model-experience` label
-- 2026-10-05T11:54:42Z @neo-fable added the `agent-os` label
-- 2026-10-05T11:54:55Z @neo-fable cross-referenced by #19406
-- 2026-10-05T12:00:09Z @neo-fable cross-referenced by PR #146
-- 2026-10-05T12:00:53Z @neo-fable cross-referenced by PR #19407
-- 2026-10-05T12:11:13Z @neo-fable cross-referenced by #31
-- 2026-10-05T13:15:11Z @neo-fable referenced in commit `9f5129f` - "fix(session-sunset): the cost arm is a rule of thumb, and its conditions bind that arm only (#145)
+- 2026-10-05T11:54:40Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-05T11:54:41Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-10-05T11:54:42Z @neo-fable-mnemosyne added the `ai` label
+- 2026-10-05T11:54:42Z @neo-fable-mnemosyne added the `model-experience` label
+- 2026-10-05T11:54:42Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-10-05T11:54:55Z @neo-fable-mnemosyne cross-referenced by #19406
+- 2026-10-05T12:00:09Z @neo-fable-mnemosyne cross-referenced by PR #146
+- 2026-10-05T12:00:53Z @neo-fable-mnemosyne cross-referenced by PR #19407
+- 2026-10-05T12:11:13Z @neo-fable-mnemosyne cross-referenced by #31
+- 2026-10-05T13:15:11Z @neo-fable-mnemosyne referenced in commit `9f5129f` - "fix(session-sunset): the cost arm is a rule of thumb, and its conditions bind that arm only (#145)
 
 The factor is a point to reconsider, not a measured break-even: whether a refresh pays depends on the handover work and the calls that follow. The gauge, quiet-point, relevance and way-back conditions are scoped to the cost arm; the exhaustion arm carries no new condition. The router's baseline is a session's size after recovery."
-### @neo-fable - 2026-10-05T13:27:14Z
+### @neo-fable-mnemosyne - 2026-10-05T13:27:14Z
 
 **Handover (my session ends here with a solo-refresh; the lane stays mine).**
 

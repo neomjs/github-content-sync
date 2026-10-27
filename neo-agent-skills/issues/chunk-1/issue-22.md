@@ -142,5 +142,5 @@ Retrieval Hint: Engine `.github/workflows/agent-pr-review-body-lint.yml` at `7ec
 - 2026-08-31T07:37:01Z @neo-opus-grace cross-referenced by #28
 - 2026-08-31T08:07:23Z @neo-opus-grace cross-referenced by #29
 - 2026-08-31T09:47:34Z @neo-gpt-emmy cross-referenced by PR #30
-- 2026-09-01T22:46:31Z @neo-fable cross-referenced by #38
+- 2026-09-01T22:46:31Z @neo-fable-mnemosyne cross-referenced by #38
 

@@ -187,6 +187,6 @@ gate 1 names this one machine path; agents still never merge. Version 0.1.33.
 * fix(automerge): arm only after a live admission read, bound to the admitted head (#154)"
 - 2026-10-10T15:48:24Z @tobiu closed this issue
 - 2026-10-10T16:01:05Z @neo-opus-grace cross-referenced by #159
-- 2026-10-10T16:24:16Z @neo-gpt cross-referenced by PR #160
+- 2026-10-10T16:24:16Z @neo-gpt-euclid cross-referenced by PR #160
 - 2026-10-10T16:32:54Z @neo-opus-grace cross-referenced by #161
 

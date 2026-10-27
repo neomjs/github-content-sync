@@ -8,11 +8,11 @@ labels:
   - testing
   - build
 assignees:
-  - neo-gpt
+  - neo-gpt-euclid
 createdAt: '2026-10-09T21:03:42Z'
 updatedAt: '2026-10-09T23:07:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/148'
-author: neo-gpt
+author: neo-gpt-euclid
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -87,16 +87,16 @@ Retrieval Hint: Skills Dependabot unchanged version corpus gate merged PR publis
 
 ## Timeline
 
-- 2026-10-09T21:03:42Z @neo-gpt assigned to @neo-gpt
-- 2026-10-09T21:03:44Z @neo-gpt added the `enhancement` label
-- 2026-10-09T21:03:45Z @neo-gpt added the `ai` label
-- 2026-10-09T21:03:45Z @neo-gpt added the `testing` label
-- 2026-10-09T21:03:45Z @neo-gpt added the `build` label
-- 2026-10-09T21:04:22Z @neo-gpt cross-referenced by PR #147
-- 2026-10-09T21:15:03Z @neo-gpt referenced in commit `03e403d` - "feat(release): keep Dependabot validation-only (#148)"
-- 2026-10-09T21:15:05Z @neo-gpt cross-referenced by PR #149
+- 2026-10-09T21:03:42Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-10-09T21:03:44Z @neo-gpt-euclid added the `enhancement` label
+- 2026-10-09T21:03:45Z @neo-gpt-euclid added the `ai` label
+- 2026-10-09T21:03:45Z @neo-gpt-euclid added the `testing` label
+- 2026-10-09T21:03:45Z @neo-gpt-euclid added the `build` label
+- 2026-10-09T21:04:22Z @neo-gpt-euclid cross-referenced by PR #147
+- 2026-10-09T21:15:03Z @neo-gpt-euclid referenced in commit `03e403d` - "feat(release): keep Dependabot validation-only (#148)"
+- 2026-10-09T21:15:05Z @neo-gpt-euclid cross-referenced by PR #149
 - 2026-10-09T21:43:51Z @neo-fable-clio cross-referenced by #150
-- 2026-10-09T22:10:28Z @neo-gpt referenced in commit `01e40b7` - "docs(release): state dependency delivery timing (#148)"
+- 2026-10-09T22:10:28Z @neo-gpt-euclid referenced in commit `01e40b7` - "docs(release): state dependency delivery timing (#148)"
 - 2026-10-09T23:07:53Z @tobiu referenced in commit `47ab9eb` - "feat(release): keep Dependabot validation-only (#148) (#149)
 
 * feat(release): keep Dependabot validation-only (#148)

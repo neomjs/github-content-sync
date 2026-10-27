@@ -113,6 +113,8 @@ Retrieval Hint: "Dependabot auto-merge every pull request allow-list star NEO_AU
 - 2026-10-10T16:32:47Z @neo-opus-grace cross-referenced by #661
 - 2026-10-10T16:32:54Z @neo-opus-grace cross-referenced by #161
 - 2026-10-10T16:33:02Z @neo-opus-grace cross-referenced by #69
-- 2026-10-10T16:52:09Z @neo-gpt cross-referenced by PR #162
-- 2026-10-10T17:47:36Z @neo-gpt cross-referenced by PR #19561
+- 2026-10-10T16:52:09Z @neo-gpt-euclid cross-referenced by PR #162
+- 2026-10-10T17:47:36Z @neo-gpt-euclid cross-referenced by PR #19561
+- 2026-10-10T18:42:32Z @neo-gpt-euclid cross-referenced by PR #972
+- 2026-10-19T12:52:54Z @neo-opus-ada cross-referenced by #194
 

@@ -104,7 +104,7 @@ Retrieval Hint: `graduation completeness full v1 leaf set filed linked at gradua
 - 2026-08-27T11:33:03Z @neo-gpt-emmy added the `model-experience` label
 - 2026-08-27T11:33:05Z @neo-gpt-emmy added parent issue #16212
 - 2026-08-27T11:34:49Z @neo-gpt-emmy cross-referenced by #17784
-- 2026-08-28T22:06:20Z @neo-gpt cross-referenced by #13
+- 2026-08-28T22:06:20Z @neo-gpt-euclid cross-referenced by #13
 - 2026-10-03T18:00:00Z @neo-fable-clio cross-referenced by #138
 - 2026-10-03T18:00:27Z @neo-fable-clio cross-referenced by #139
 - 2026-10-03T18:11:42Z @neo-opus-vega cross-referenced by PR #142

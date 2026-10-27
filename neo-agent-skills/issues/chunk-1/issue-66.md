@@ -65,7 +65,7 @@ Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code
 ## Timeline
 
 - 2026-09-10T00:10:00Z @neo-opus-ada cross-referenced by #18548
-- 2026-09-13T09:33:30Z @neo-gpt cross-referenced by #18474
+- 2026-09-13T09:33:30Z @neo-gpt-euclid cross-referenced by #18474
 - 2026-09-15T16:31:17Z @neo-opus-vega cross-referenced by #74
 - 2026-09-18T09:47:56Z @neo-opus-ada cross-referenced by #88
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
@@ -101,4 +101,5 @@ The corpus lint's net-growth gate (250 bytes against the base) read +264; the bl
 
 fix(guide-authoring): render-verify names the portal check instead of a peer (#66)"
 - 2026-09-24T19:20:28Z @tobiu closed this issue
+- 2026-10-10T00:29:30Z @neo-fable-clio cross-referenced by #154
 

@@ -6,11 +6,11 @@ labels:
   - enhancement
   - ai
 assignees:
-  - neo-fable
+  - neo-fable-mnemosyne
 createdAt: '2026-09-25T20:13:12Z'
 updatedAt: '2026-09-25T21:35:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/121'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 1
 parentIssue: null
 subIssues: []
@@ -71,30 +71,30 @@ Origin Session ID: 4c0a5550-17ba-4752-9852-846afa537c86
 
 ## Timeline
 
-- 2026-09-25T20:13:12Z @neo-fable assigned to @neo-fable
-- 2026-09-25T20:13:14Z @neo-fable added the `enhancement` label
-- 2026-09-25T20:13:14Z @neo-fable added the `ai` label
-- 2026-09-25T20:14:24Z @neo-fable cross-referenced by PR #122
-- 2026-09-25T20:55:19Z @neo-fable referenced in commit `28a27bd` - "chore(release): bump to 0.1.21, every PR bumps because every merge publishes (#121)"
-- 2026-09-25T21:03:26Z @neo-fable referenced in commit `63c0395` - "docs(skills): the design-authority rule loads behind a §0 pointer, inside the corpus budgets (#121)
+- 2026-09-25T20:13:12Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-09-25T20:13:14Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-09-25T20:13:14Z @neo-fable-mnemosyne added the `ai` label
+- 2026-09-25T20:14:24Z @neo-fable-mnemosyne cross-referenced by PR #122
+- 2026-09-25T20:55:19Z @neo-fable-mnemosyne referenced in commit `28a27bd` - "chore(release): bump to 0.1.21, every PR bumps because every merge publishes (#121)"
+- 2026-09-25T21:03:26Z @neo-fable-mnemosyne referenced in commit `63c0395` - "docs(skills): the design-authority rule loads behind a §0 pointer, inside the corpus budgets (#121)
 
 [skill-growth-justified: a premise gate for tickets that call a designed behavior a defect — neo PR #19231 was nearly approved on such a ticket; the rule loads only on its trigger through a one-line §0 pointer; sunset = a body lint on the line]"
-- 2026-09-25T21:20:10Z @neo-fable referenced in commit `d8b9bd3` - "docs(skills): a ticket that calls a designed behavior wrong carries its design authority, and review reads it (#121)
+- 2026-09-25T21:20:10Z @neo-fable-mnemosyne referenced in commit `d8b9bd3` - "docs(skills): a ticket that calls a designed behavior wrong carries its design authority, and review reads it (#121)
 
 ticket-create §0 gains the Design-authority line: a ticket that declares an existing behavior a defect with no crash, no red and no JSDoc contradiction quotes the record sentence that defines the behavior as intended (ADR section, guide, owning JSDoc) or writes none-found with the searches run and files a fork on the record instead of a defect; §5's Reality bullet names the line, §8 gains the receipt-as-design-verdict row. pr-review §9.0 gains the handle: no line, or a line the diff contradicts, is a visible false premise, one RA, never an approval on tests and green; the template's Premise Snapshot reads the line. Sunset: a body lint on the line retires the prose gate. Specimen: neomjs/neo#19225 / PR #19231."
-- 2026-09-25T21:20:10Z @neo-fable referenced in commit `ba9a483` - "chore(release): bump to 0.1.21, every PR bumps because every merge publishes (#121)"
-- 2026-09-25T21:20:10Z @neo-fable referenced in commit `a04ea80` - "docs(skills): the design-authority rule loads behind a §0 pointer, inside the corpus budgets (#121)
+- 2026-09-25T21:20:10Z @neo-fable-mnemosyne referenced in commit `ba9a483` - "chore(release): bump to 0.1.21, every PR bumps because every merge publishes (#121)"
+- 2026-09-25T21:20:10Z @neo-fable-mnemosyne referenced in commit `a04ea80` - "docs(skills): the design-authority rule loads behind a §0 pointer, inside the corpus budgets (#121)
 
 [skill-growth-justified: a premise gate for tickets that call a designed behavior a defect — neo PR #19231 was nearly approved on such a ticket; the rule loads only on its trigger through a one-line §0 pointer; sunset = a body lint on the line]"
-- 2026-09-25T21:20:10Z @neo-fable referenced in commit `e70f6e5` - "docs(skills): the design-authority trigger keys on the observable, the reviewer verdict is stated once, intake reads the line first (#121)
+- 2026-09-25T21:20:10Z @neo-fable-mnemosyne referenced in commit `e70f6e5` - "docs(skills): the design-authority trigger keys on the observable, the reviewer verdict is stated once, intake reads the line first (#121)
 
 Review round 1 (Ada) RA-1: the reference fired on the conclusion ('declares a designed behavior a defect') instead of the observable ('calls an existing behavior wrong'); pr-review §9.0 regained #121's scope and the unverified-vs-false verdict classes; the reference's second paragraph is now a pointer to §9.0. Plus the suggested ticket-intake step-3 pointer."
 - 2026-09-25T21:32:51Z @tobiu referenced in commit `5b4d9a8` - "Merge pull request #122 from neomjs/fix/121-design-authority-line
 
 docs(skills): a ticket that calls a designed behavior wrong carries its design authority, and review reads it (#121)"
 - 2026-09-25T21:32:51Z @tobiu closed this issue
-- 2026-09-25T21:35:35Z @neo-fable cross-referenced by #123
-### @neo-fable - 2026-09-25T21:35:59Z
+- 2026-09-25T21:35:35Z @neo-fable-mnemosyne cross-referenced by #123
+### @neo-fable-mnemosyne - 2026-09-25T21:35:59Z
 
 Post-merge (PR #122 → dev 5b4d9a8, 2026-09-25 21:32Z):
 

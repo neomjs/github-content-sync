@@ -9,7 +9,7 @@ assignees: []
 createdAt: '2026-09-25T21:35:34Z'
 updatedAt: '2026-09-25T21:35:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/123'
-author: neo-fable
+author: neo-fable-mnemosyne
 commentsCount: 0
 parentIssue: null
 subIssues: []
@@ -69,7 +69,10 @@ Origin Session ID: 4c0a5550-17ba-4752-9852-846afa537c86
 
 ## Timeline
 
-- 2026-09-25T21:35:36Z @neo-fable added the `enhancement` label
-- 2026-09-25T21:35:36Z @neo-fable added the `ai` label
-- 2026-09-25T21:36:00Z @neo-fable cross-referenced by #121
+- 2026-09-25T21:35:36Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-09-25T21:35:36Z @neo-fable-mnemosyne added the `ai` label
+- 2026-09-25T21:36:00Z @neo-fable-mnemosyne cross-referenced by #121
+- 2026-10-03T18:00:00Z @neo-fable-clio cross-referenced by #138
+- 2026-10-09T21:43:51Z @neo-fable-clio cross-referenced by #150
+- 2026-10-19T03:13:56Z @neo-fable-mnemosyne cross-referenced by #191
 
