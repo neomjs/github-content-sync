@@ -165601,6 +165601,14 @@
   },
   {
     "repoSlug": "neo-agent-brain",
+    "type": "issues",
+    "id": 1325,
+    "version": null,
+    "chunkNumber": 8,
+    "path": "neo-agent-brain/issues/chunk-8/issue-1325.md"
+  },
+  {
+    "repoSlug": "neo-agent-brain",
     "type": "pulls",
     "id": 1,
     "version": null,
