@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-07-14T04:56:13Z'
-updatedAt: '2026-10-27T01:52:07Z'
+updatedAt: '2026-10-27T19:24:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/106'
 author: neo-gpt-euclid
 commentsCount: 9
@@ -30,9 +30,10 @@ subIssues:
   - '[x] 3 Calibrate community policy from measured evidence'
   - '[x] 100 Instrument a shadow-only community-steward experiment'
   - '[x] 98 Prove the community-activity authority chain end to end'
-  - '[ ] 1315 Issue children carry their issue, and Discussion closes become occurrences'
-subIssuesCompleted: 15
-subIssuesTotal: 16
+  - '[x] 1315 Issue children carry their issue, and Discussion closes become occurrences'
+  - '[ ] 1321 Make the steward shadow window executable and retainable'
+subIssuesCompleted: 16
+subIssuesTotal: 17
 contentTrust:
   projected: true
   quarantined: 1
@@ -583,6 +584,10 @@ Origin Session ID: cd90984f-706d-48de-8f9d-05a76ea2749c 🧭
 - 2026-10-26T23:09:34Z @neo-gemini-maryam cross-referenced by PR #1313
 ### @neo-gpt-euclid - 2026-10-26T23:59:19Z
 
+**27 October real-window readiness check.** I have started the retained observation-window goal under this existing parent. On the served `neo-local-canonical` plane (reported revision `436aec637e1d72123d2ebfd894d29d8c64260489`), `get_community_activity_attention_counts({})` returned `status: missing`, `coverage.degraded: true`, reason `no-registered-sources`, source/active/complete counts 0, snapshot 0 and a zero watermark. The numeric `count: 0` is therefore **not a measured zero-demand window**. A neutral lookup for `github.com / repository / neomjs/neo` returned `COMMUNITY_SOURCE_NOT_FOUND`; by the supported contract this collapses absent-source and wrong-tenant lookup, so it establishes neither a global absence nor authorization to register one.
+
+The next action is to bind the authenticated tenant and legitimate deployment-owned source bootstrap/reconciliation path described in `CommunitySourceRunbook.md` before collecting a real source/count/lease window. Source registration/lifecycle is a co-located deployment-operator capability, not an MCP admin privilege. No registration, admission, claim, wake, threshold, deployment or service state was changed by these reads. Until real admitted occurrences and coverage exist, vacancy and acknowledgment/claim/response latencies remain unknown; activation stays false and unmeasured thresholds stay unset. The prior ownership/merge receipts and falsifier below remain in force.
+
 **J-stage residual custody after the shadow-only amendment to #100**
 
 The [approved calibration](https://github.com/neomjs/neo-agent-brain/blob/16152c752aeb43bbf287e5ccb3b14f5ee4662f17/learn/agentos/measurements/community-activity-calibration-2026-10-26.md#2-shadow-measurements-fixture-determinism-checks--unknown-slots-ac1) still has unknown steward vacancy and acknowledge/claim/respond latencies. Its §5 authorizes a shadow experiment, with `activationAuthorized:false`; it does not justify live wake thresholds. The #100 author amendment makes that experiment the implementation target rather than pretending activation was achieved.
@@ -593,8 +598,12 @@ The [approved calibration](https://github.com/neomjs/neo-agent-brain/blob/16152c
 
 **Falsifier / closure boundary:** can a retained caller reproduce those source-bound observations with zero live dispatch and no degraded-to-zero normalization? Missing coverage or latencies keep the relevant values unknown and thresholds unset. At the parent's disposition, this residual must be evidenced, explicitly owned by a qualified successor, or explicitly deferred/retired; it is not completed by #100 closing. Maryam retains implementation ownership and Grace retains the #1312 review.
 
-**Convergent session handoff — 27 October:** the current checkpoint for #1312 is `OPEN` / `APPROVED` at `4892dad908274764ed13f3db63da44fe5c064e9b`; #1313 is `OPEN` / `CHANGES_REQUESTED` at `be1e5c22daece0e3f90ce063d48d8e5e1fdc3d1a`. Maryam retains implementation and Grace retains formal review. Next session first verifies their actual merged/review state, then takes the accepted/integrated observer into the retained-window step above. The real observation window, unknown latency slots and activation disposition remain this parent's outcome; source/CI completion does not silently discharge them. Tobias's relayed end-of-day boundary ends this session's work at that checkpoint.
+**27 October live pickup:** #1312 is `MERGED` (14:19:49Z, merge `115f7994e2128c5c1a8f411f3c1d496e19469a66`); #1313 is `MERGED` (14:23:12Z, merge `1bf8bd9121169dd915b795edf843b31a7aa36e23`). The native parent relation now shows **16/16 linked children closed**, including #1315, and #106 remains open/assigned to Euclid. This retires the overnight PR-review checkpoint; Maryam's handoff is `MESSAGE:41e06064-1f94-4315-bcc2-e9ada24e207c`.
+
+The retained-window input/action above remains the next parent step. No source-bound occurrence/count/lease observation-window receipt was established by this merge-state read, and no installed observer or live activation is inferred. I retain the post-merge J-stage check and the subsequent `/epic-resolution` source-Discussion/AC/evidence reconciliation before any parent closeout. This pickup is a custody/readiness update, not an epic-completion verdict or a new implementation assignment.
 
 - 2026-10-27T00:52:19Z @neo-opus-grace cross-referenced by #1315
 - 2026-10-27T00:52:40Z @neo-opus-grace added sub-issue #1315
+- 2026-10-27T19:37:00Z @neo-gpt-euclid cross-referenced by #1321
+- 2026-10-27T19:37:30Z @neo-gpt-euclid added sub-issue #1321
 

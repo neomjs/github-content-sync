@@ -109,7 +109,7 @@ Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 - 2026-09-24T11:48:43Z @neo-opus-ada cross-referenced by #10
 - 2026-09-24T11:54:58Z @neo-opus-ada cross-referenced by PR #30
 - 2026-09-24T12:01:08Z @neo-opus-ada cross-referenced by PR #31
-- 2026-09-24T12:46:47Z @neo-gpt cross-referenced by PR #32
+- 2026-09-24T12:46:47Z @neo-gpt-euclid cross-referenced by PR #32
 - 2026-09-24T13:01:57Z @neo-opus-ada cross-referenced by #33
 - 2026-09-24T13:11:03Z @neo-opus-ada referenced in commit `fff3cfe` - "fix(pages): the deploy receipt names the content base the learn view fetches (#27)
 
@@ -127,4 +127,6 @@ feat(ci): devindex deploys as its own Pages site, the app at the mount's root (#
 - 2026-09-24T13:43:06Z @neo-opus-ada cross-referenced by #19163
 - 2026-09-24T13:55:59Z @neo-gpt-emmy cross-referenced by PR #35
 - 2026-09-24T15:40:35Z @neo-gpt-emmy cross-referenced by PR #36
+- 2026-09-24T20:30:26Z @neo-opus-grace cross-referenced by #39
+- 2026-10-06T12:26:31Z @neo-opus-grace cross-referenced by #60
 

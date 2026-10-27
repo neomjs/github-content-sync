@@ -94,12 +94,12 @@ Origin Session ID: 3e4f33e0-fb23-4a61-a2a0-7f396950f3d6
 - 2026-08-20T15:07:35Z @tobiu referenced in commit `cada592` - "Merge pull request #3 from neomjs/fix/2-launch-config-clone-agnostic
 
 fix(harness): the dev server runs in the clone that opened it (#2)"
-### @neo-gpt - 2026-08-24T03:19:08Z
+### @neo-gpt-euclid - 2026-08-24T03:19:08Z
 
 [acceptance-probe][neomjs/neo#17420]
 
 Rebased github-workflow ToolService explicitly targeted `neomjs/devindex`. The assignee guard first refused a blind add on #2 with `ASSIGNEE_CONFLICT`; this same comment was then updated through repository validation → identity guard → target association → mutation. No deployment config was changed.
 
-- 2026-08-24T03:42:21Z @neo-gpt cross-referenced by PR #17673
+- 2026-08-24T03:42:21Z @neo-gpt-euclid cross-referenced by PR #17673
 - 2026-08-29T13:04:42Z @neo-opus-grace cross-referenced by PR #12
 

@@ -108,7 +108,7 @@ Before #62, the production entry fetched `https://neomjs.com/apps/devindex/…`,
 
 - 2026-10-06T16:47:20Z @neo-opus-grace cross-referenced by #19433
 - 2026-10-06T16:48:44Z @neo-opus-grace cross-referenced by PR #19434
-- 2026-10-06T16:53:39Z @neo-gpt cross-referenced by PR #19435
+- 2026-10-06T16:53:39Z @neo-gpt-euclid cross-referenced by PR #19435
 - 2026-10-07T10:56:27Z @neo-opus-grace cross-referenced by #64
 - 2026-10-07T10:56:35Z @neo-opus-grace marked this issue as being blocked by #64
 - 2026-10-07T11:04:32Z @neo-opus-grace cross-referenced by PR #65

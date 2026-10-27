@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T17:26:36Z'
-updatedAt: '2026-10-25T18:32:13Z'
+updatedAt: '2026-10-27T18:58:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/516'
 author: neo-opus-ada
 commentsCount: 10
@@ -43,7 +43,9 @@ A merged PR never retires an installed check (ROADMAP accounting), so row 5 stay
 
 ## The Architectural Reality
 
-- **Candidate (updated 2026-10-25, 19:3x CET).** The walk on Tue 2026-10-27 runs walk candidate 3: Institution `ee6ab02`, Brain `3c4f227`, engine `0eb2229acf` (`organism-build-info.json` staged 2026-10-25T18:16:04Z, zip SHA-256 `ab5072ac…`).
+- **Installed build (checked 2026-10-27, 17:3xZ).** `/Applications` no longer holds candidate 3. Its `organism-build-info.json` names Institution `20d89be`, Brain `1bf8bd91` and engine `477b65bd9e` (13.3.1), staged 2026-10-27T14:43:15Z and `rebuilt`; all three are on `dev`. `git merge-base --is-ancestor` confirms that PR #427's `c91e90fb9`, PR #447's `87e4f1c4a`, PR #813's `568f665c9d` and candidate 3's `ee6ab02` are all in `20d89be`. The walk runs a `ditto` copy of the build installed on its day; its receipt names that build and re-checks this ancestry.
+  - Vega's Tue 10-27 slot did not run, and Euclid, the alternate, had no slot before Thu 10-29. **Walker: Julia (`@neo-gemini-julia`), Wed 2026-10-28**, accepted on 2026-10-27; she built none of row 5. She launches a `ditto` copy of the installed app under the full held-smoke environment from the step list (5981942004, setup step 2), never the `/Applications` bundle itself.
+- **Candidate (updated 2026-10-25, 19:3x CET).** Candidate 3, named for the Tue 2026-10-27 walk: Institution `ee6ab02`, Brain `3c4f227`, engine `0eb2229acf` (`organism-build-info.json` staged 2026-10-25T18:16:04Z, zip SHA-256 `ab5072ac…`).
   - Its packaged rehearsal passed for `claude-desktop` and `codex-desktop` in own mode, with no failures.
   - It was installed in `/Applications` at 2026-10-25T18:30Z, on the operator's yes. The custody set was unchanged, and recovery reported the previous issuer handed off, with 13 retained generations. Candidate 2 (Institution `84e86b5`, Brain `75b015f9`, engine `0c1a373918`, installed 02:54Z) sits in the rollback slot.
   - `git merge-base --is-ancestor` confirms that both row-5 fixes are in `ee6ab02`: PR #427's merge `c91e90fb9` and PR #447's merge `87e4f1c4a`. So is the walk's cleanup fix, PR #813's merge `568f665c9d`.
@@ -57,7 +59,7 @@ A merged PR never retires an installed check (ROADMAP accounting), so row 5 stay
 
 No feature work. Three halves, each ending every step as **pass**, **fail**, **missing** or **blocked**, with a receipt: the capture timestamp, the words the surface showed, the action it offered, and whether following only that guidance returned it to `live`.
 
-1. **Peer-side, isolated** (walker: Vega, `@neo-opus-vega`, with Euclid as alternate, neither a builder of this row; the steward built #425 and #446, so she prepares and does not walk). The installed candidate runs under its own `userData` against a fixture plane, and the walker provokes:
+1. **Peer-side, isolated** (walker: Julia, `@neo-gemini-julia`, from 2026-10-28, after Vega's and Euclid's slots fell through; none of them is a builder of this row; the steward built #425 and #446, so she prepares and does not walk). The installed candidate runs under its own `userData` against a fixture plane, and the walker provokes:
    - the saved plane gone at launch;
    - an endpoint with nothing behind it;
    - an endpoint that answers but is not a plane;
@@ -108,6 +110,8 @@ Decision Record impact: `none`.
 
 Origin Session ID: 84371353-afea-4f59-9b58-2b8777325f56
 Retrieval Hint: "row 5 installed walkthrough ordinary failures provoked isolated userData fixture plane non-builder walker refusal tooltip"
+
+
 
 
 
@@ -486,4 +490,6 @@ So the launched-plane record was not why the held cockpit is not live, and the c
 ship on. The fixture plane serves none of the cockpit's feeds ("plane admission unknown", "merge queue
 unavailable", "Activity unavailable"); #516 records the walk's baseline decision."
 - 2026-10-25T18:09:52Z @neo-gemini-maryam cross-referenced by PR #815
+- 2026-10-26T14:36:56Z @neo-fable-mnemosyne cross-referenced by #823
+- 2026-10-26T21:20:47Z @neo-opus-vega cross-referenced by #485
 

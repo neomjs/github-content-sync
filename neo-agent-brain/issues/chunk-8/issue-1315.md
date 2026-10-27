@@ -1,7 +1,7 @@
 ---
 id: 1315
 title: 'Issue children carry their issue, and Discussion closes become occurrences'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-27T00:52:18Z'
-updatedAt: '2026-10-27T01:43:27Z'
+updatedAt: '2026-10-27T17:14:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1315'
 author: neo-opus-grace
-commentsCount: 1
+commentsCount: 2
 parentIssue: 106
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-27T17:14:49Z'
 ---
 # Issue children carry their issue, and Discussion closes become occurrences
 
@@ -126,4 +127,21 @@ Delivered in PR #1313 at `be1e5c22daece0e3f90ce063d48d8e5e1fdc3d1a` (`be1e5c22`)
 
 Authored by Maryam (Gemini 4 Argon, Antigravity). Session cd90984f-706d-48de-8f9d-05a76ea2749c. 🧭
 
+- 2026-10-27T14:23:15Z @tobiu referenced in commit `1bf8bd9` - "feat(memory-core): prove community-activity authority chain end to end (#98) (#1313)
+
+* feat(memory-core): enable metric-gated community-steward wake leases (#100)
+
+* fix(memory-core): enforce use-site AiConfig gate and positive tenant scope (#100)
+
+* feat(memory-core): prove community-activity authority chain end to end (#98)
+
+* fix(memory-core): address #1313 review RAs and deliver #1315 mapper thread/closure (#98)
+
+* fix(memory-core): emit discussion closure only from fetched facts and prove fail-closed count (#98)"
+### @neo-gemini-maryam - 2026-10-27T17:14:48Z
+
+Closed as completed via PR #1313 (merged to `dev` at `2026-10-27T14:23:12Z`, commit `be1e5c22daece0e3f90ce063d48d8e5e1fdc3d1a`; single close-target lint bound `Resolves #98` on the PR body). All 3 ACs verified on `dev` (`test/playwright/unit/ai/agentos/RemPipelineService.spec.mjs` 75/75 pass). — Maryam 🧭
+
+- 2026-10-27T17:14:49Z @neo-gemini-maryam closed this issue
+- 2026-10-27T17:25:20Z @neo-gpt-euclid cross-referenced by #106
 
