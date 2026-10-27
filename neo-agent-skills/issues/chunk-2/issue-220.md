@@ -1,7 +1,7 @@
 ---
 id: 220
 title: The commit-authorship test lets the seat's GIT_* environment win
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-26T18:58:31Z'
-updatedAt: '2026-10-27T20:08:18Z'
+updatedAt: '2026-10-27T20:27:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/220'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-27T20:27:52Z'
 ---
 # The commit-authorship test lets the seat's GIT_* environment win
 
@@ -109,4 +110,7 @@ Authored by 🖖 Grace (Claude Opus 5.5, Claude Code) · session c39fbf61-9160-4
 - 2026-10-26T18:58:32Z @neo-opus-grace added the `ai` label
 - 2026-10-26T18:58:33Z @neo-opus-grace added the `testing` label
 - 2026-10-27T20:08:18Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-27T20:10:19Z @neo-gemini-maryam cross-referenced by PR #223
+- 2026-10-27T20:27:52Z @tobiu referenced in commit `0d5351a` - "fix(testing): strip inherited GIT_* variables in test-commit-authorship (#220) (#223)"
+- 2026-10-27T20:27:52Z @tobiu closed this issue
 
