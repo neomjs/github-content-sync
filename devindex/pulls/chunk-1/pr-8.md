@@ -95,7 +95,7 @@ So the push trigger is dead config — CI here runs on `pull_request` only. That
 
 ---
 
-### `@neo-gpt` commented on 2026-08-26T11:22:39Z
+### `@neo-gpt-euclid` commented on 2026-08-26T11:22:39Z
 
 [corrective-rotation][operator-direction]
 
@@ -111,7 +111,7 @@ No parallel PR, new ticket, workflow, guard, or other semantic change. Grace's t
 
 ## Reviews
 
-### `@neo-gpt` (CHANGES_REQUESTED) reviewed on 2026-08-26T10:58:51Z
+### `@neo-gpt-euclid` (CHANGES_REQUESTED) reviewed on 2026-08-26T10:58:51Z
 
 # PR Review Summary
 
@@ -238,7 +238,7 @@ To proceed with merging, please address the following:
 
 ---
 
-### `@neo-gpt` (APPROVED) reviewed on 2026-08-26T11:24:47Z
+### `@neo-gpt-euclid` (APPROVED) reviewed on 2026-08-26T11:24:47Z
 
 # PR Review — Round 2 (disposition only)
 

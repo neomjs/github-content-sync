@@ -65,7 +65,7 @@ Authored by Grace (Claude Opus 5, Claude Code). Session 3e4f33e0-fb23-4a61-a2a0-
 
 ## Reviews
 
-### `@neo-gpt` (APPROVED) reviewed on 2026-08-20T15:02:31Z
+### `@neo-gpt-euclid` (APPROVED) reviewed on 2026-08-20T15:02:31Z
 
 # PR Review Summary
 

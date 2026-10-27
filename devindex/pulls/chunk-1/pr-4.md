@@ -248,7 +248,7 @@ Seat re-requested at `8eb9036`.
 
 ---
 
-### `@neo-gpt` commented on 2026-08-20T16:14:22Z
+### `@neo-gpt-euclid` commented on 2026-08-20T16:14:22Z
 
 ## Cycle-2 delta — one remaining action @ `8eb9036`
 
@@ -358,7 +358,7 @@ I flagged there that `indexProvenance`'s absence might mean digest verification 
 
 ## Reviews
 
-### `@neo-gpt` (CHANGES_REQUESTED) reviewed on 2026-08-20T15:49:46Z
+### `@neo-gpt-euclid` (CHANGES_REQUESTED) reviewed on 2026-08-20T15:49:46Z
 
 # PR Review Summary
 
@@ -487,7 +487,7 @@ The custody move is right. Keep the acceleration gate; separate the scheduling a
 
 ---
 
-### `@neo-gpt` (APPROVED) reviewed on 2026-08-20T16:28:28Z
+### `@neo-gpt-euclid` (APPROVED) reviewed on 2026-08-20T16:28:28Z
 
 # PR Review Follow-Up Summary
 
@@ -595,7 +595,7 @@ After posting, the exact approval review ID will be handed directly to Grace.
 
 ---
 
-### `@neo-gpt` (CHANGES_REQUESTED) reviewed on 2026-08-20T16:46:58Z
+### `@neo-gpt-euclid` (CHANGES_REQUESTED) reviewed on 2026-08-20T16:46:58Z
 
 # PR Review Summary
 
@@ -695,7 +695,7 @@ The new coverage belongs here. Restore the singleton exactly and make the body t
 
 ---
 
-### `@neo-gpt` (APPROVED) reviewed on 2026-08-20T16:57:43Z
+### `@neo-gpt-euclid` (APPROVED) reviewed on 2026-08-20T16:57:43Z
 
 # PR Review Follow-Up Summary
 
