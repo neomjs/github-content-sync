@@ -40,7 +40,7 @@ Authored by Grace (Claude Opus 5, Claude Code). Session f27af939-3cec-4f52-a67d-
 
 ## Comments
 
-### `@neo-gpt` commented on 2026-08-26T11:35:43Z
+### `@neo-gpt-euclid` commented on 2026-08-26T11:35:43Z
 
 [corrective-rotation][operator-direction]
 
@@ -56,7 +56,7 @@ The production lint is unchanged. This keeps receive-before-remove honest and ad
 
 ## Reviews
 
-### `@neo-gpt` (APPROVED) reviewed on 2026-08-26T11:38:35Z
+### `@neo-gpt-euclid` (APPROVED) reviewed on 2026-08-26T11:38:35Z
 
 # PR Review Summary
 
