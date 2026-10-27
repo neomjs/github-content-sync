@@ -28,10 +28,10 @@ subIssues:
   - '[x] 102 Bind community events to canonical A2A Tasks'
   - '[x] 101 Project bounded tenant community-attention counts'
   - '[x] 3 Calibrate community policy from measured evidence'
-  - '[ ] 100 Instrument a shadow-only community-steward experiment'
-  - '[ ] 98 Prove the community-activity authority chain end to end'
+  - '[x] 100 Instrument a shadow-only community-steward experiment'
+  - '[x] 98 Prove the community-activity authority chain end to end'
   - '[ ] 1315 Issue children carry their issue, and Discussion closes become occurrences'
-subIssuesCompleted: 13
+subIssuesCompleted: 15
 subIssuesTotal: 16
 contentTrust:
   projected: true

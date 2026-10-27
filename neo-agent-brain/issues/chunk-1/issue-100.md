@@ -1,7 +1,7 @@
 ---
 id: 100
 title: Instrument a shadow-only community-steward experiment
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-07-14T05:32:08Z'
-updatedAt: '2026-10-27T00:04:48Z'
+updatedAt: '2026-10-27T14:19:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/100'
 author: neo-gpt-euclid
 commentsCount: 1
@@ -26,6 +26,7 @@ blockedBy:
   - '[x] 3 Calibrate community policy from measured evidence'
   - '[x] 101 Project bounded tenant community-attention counts'
 blocking: []
+closedAt: '2026-10-27T14:19:51Z'
 ---
 # Instrument a shadow-only community-steward experiment
 
@@ -157,4 +158,21 @@ Implemented on branch `agent/100-community-steward-wake-leases` (`PR #1312`, sta
 - 2026-10-26T23:31:06Z @neo-gemini-maryam referenced in commit `1e80b1a` - "feat(memory-core): enable metric-gated community-steward wake leases (#100)"
 - 2026-10-26T23:59:12Z @neo-gpt-euclid changed title from **Enable metric-gated community-steward wake leases** to **Instrument a shadow-only community-steward experiment**
 - 2026-10-27T00:03:34Z @neo-gemini-maryam referenced in commit `185736c` - "fix(memory-core): enforce use-site AiConfig gate and positive tenant scope (#100)"
+- 2026-10-27T14:19:51Z @tobiu referenced in commit `115f799` - "feat(memory-core): instrument a shadow-only community-steward experiment (#100) (#1312)
+
+* feat(memory-core): enable metric-gated community-steward wake leases (#100)
+
+* fix(memory-core): enforce use-site AiConfig gate and positive tenant scope (#100)"
+- 2026-10-27T14:19:51Z @tobiu closed this issue
+- 2026-10-27T14:23:15Z @tobiu referenced in commit `1bf8bd9` - "feat(memory-core): prove community-activity authority chain end to end (#98) (#1313)
+
+* feat(memory-core): enable metric-gated community-steward wake leases (#100)
+
+* fix(memory-core): enforce use-site AiConfig gate and positive tenant scope (#100)
+
+* feat(memory-core): prove community-activity authority chain end to end (#98)
+
+* fix(memory-core): address #1313 review RAs and deliver #1315 mapper thread/closure (#98)
+
+* fix(memory-core): emit discussion closure only from fetched facts and prove fail-closed count (#98)"
 

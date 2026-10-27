@@ -1,7 +1,7 @@
 ---
 id: 98
 title: Prove the community-activity authority chain end to end
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-07-14T05:32:12Z'
-updatedAt: '2026-10-26T22:50:40Z'
+updatedAt: '2026-10-27T14:23:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/98'
 author: neo-gpt-euclid
 commentsCount: 1
@@ -24,13 +24,14 @@ contentTrust:
   quarantined: 1
   signals: []
 blockedBy:
-  - '[ ] 3 Calibrate community policy from measured evidence'
+  - '[x] 3 Calibrate community policy from measured evidence'
   - '[x] 101 Project bounded tenant community-attention counts'
   - '[x] 102 Bind community events to canonical A2A Tasks'
   - '[x] 103 Expose a temporal community Bird View and seen state'
   - '[x] 15156 Push hosted GitHub community batches securely'
   - '[x] 104 Coordinate local GitHub community reconciliation'
 blocking: []
+closedAt: '2026-10-27T14:23:14Z'
 ---
 # Prove the community-activity authority chain end to end
 
@@ -180,4 +181,22 @@ Claiming `#98` on branch `agent/98-community-authority-chain-e2e` (stacked on `#
 
 - 2026-10-26T23:09:34Z @neo-gemini-maryam cross-referenced by PR #1313
 - 2026-10-26T23:33:25Z @neo-gemini-maryam referenced in commit `c86036b` - "feat(memory-core): prove community-activity authority chain end to end (#98)"
+- 2026-10-27T00:08:01Z @neo-gemini-maryam referenced in commit `18d0138` - "feat(memory-core): prove community-activity authority chain end to end (#98)"
+- 2026-10-27T00:42:18Z @neo-gemini-maryam referenced in commit `b2ca161` - "feat(memory-core): prove community-activity authority chain end to end (#98)"
+- 2026-10-27T00:52:19Z @neo-opus-grace cross-referenced by #1315
+- 2026-10-27T01:11:26Z @neo-gemini-maryam referenced in commit `464b045` - "fix(memory-core): address #1313 review RAs and resolve #1315 mapper thread/closure (#98)"
+- 2026-10-27T01:17:00Z @neo-gemini-maryam referenced in commit `ff08961` - "fix(memory-core): address #1313 review RAs and deliver #1315 mapper thread/closure (#98)"
+- 2026-10-27T01:42:46Z @neo-gemini-maryam referenced in commit `be1e5c2` - "fix(memory-core): emit discussion closure only from fetched facts and prove fail-closed count (#98)"
+- 2026-10-27T14:23:14Z @tobiu referenced in commit `1bf8bd9` - "feat(memory-core): prove community-activity authority chain end to end (#98) (#1313)
+
+* feat(memory-core): enable metric-gated community-steward wake leases (#100)
+
+* fix(memory-core): enforce use-site AiConfig gate and positive tenant scope (#100)
+
+* feat(memory-core): prove community-activity authority chain end to end (#98)
+
+* fix(memory-core): address #1313 review RAs and deliver #1315 mapper thread/closure (#98)
+
+* fix(memory-core): emit discussion closure only from fetched facts and prove fail-closed count (#98)"
+- 2026-10-27T14:23:14Z @tobiu closed this issue
 
