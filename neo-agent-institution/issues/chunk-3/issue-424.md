@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-10-28T13:28:23Z'
+updatedAt: '2026-10-28T21:00:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
-commentsCount: 8
+commentsCount: 9
 parentIssue: null
 subIssues:
   - '[x] 425 A failed plane-attach boot says why in the connect card''s words'
@@ -23,8 +23,8 @@ subIssues:
   - '[x] 533 A non-live banner shows its reason beside the pill, not only on hover'
   - '[x] 735 At login, a plane that answers after the FM''s boot is never attached'
   - '[x] 812 A held walk run boots live and cleans up its sealed runtime store'
-  - '[ ] 828 A PAT revoked or remapped mid-session never reaches the spine banner'
-subIssuesCompleted: 7
+  - '[x] 828 A PAT revoked or remapped mid-session never reaches the spine banner'
+subIssuesCompleted: 8
 subIssuesTotal: 9
 contentTrust:
   projected: true
@@ -38,11 +38,11 @@ milestone: FM v1
 
 Terminal predicate: on one installed Fleet Manager, each failure FM v1 ROADMAP row 5 names is provoked, and the product returns to `live` by its own guidance alone, with one receipt per failure. The failures are: the plane restarts, the plane is cut to a new Brain commit, the vessel is updated, the saved plane goes stale, the PAT expires or is wrong, the endpoint is wrong. This is row 5's installed check, recorded once.
 
-Row state: row 5 · Ada (walker Julia) · failed · 2026-10-28 11:47Z, installed build Institution `20d89be` / Brain `1bf8bd91` / engine `477b65bd9e` (13.3.1, staged 2026-10-27T14:43:15Z). Peer-side receipt: [6468175916](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6468175916).
-- Provocations 2 and 3 pass, and 4 passes on the Connect card.
+Row state: row 5 · Ada (walker Julia) · unknown · 2026-10-28 20:41Z, candidate Institution `a4420fdb1` / Brain `05e428558e` / engine `95e63df6db` (13.3.1, staged 2026-10-28T20:13:37Z; packet [6479586490](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6479586490)). The candidate is not installed until H4, so it has no installed check yet. Peer-side receipts: [6468175916](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6468175916) (11:47Z, installed `20d89be`) and the re-walk [6480226592](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6480226592) (20:24–20:41Z, this candidate).
+- Provocations 2 and 3 pass, and 4 passes on the Connect card (on `20d89be`; #832 does not touch these paths).
 - Provocations 1 and 4 are `missing` at boot: a held run always starts its own fixture plane.
-- Provocations 5 (a PAT revoked while the shell runs) and 6 (a PAT now admitted as another account) **fail**. The spine keeps `fleet degraded` and offers Reconnect; it never names the credential or offers Connect. The defects are noted in the receipt.
-- The `[human]` half moved to **Fri 10-30**, so that H4 can install the #828 build and H3 runs on it. On `20d89be`, H3 would fail the same way, because the cockpit asks about the credential only when a roster read fails (source at `20d89be`). · plan: planned 4 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S, #812 S (done: PR #813 merged 2026-10-25 18:03Z) · done 3 · added 3 (denominator sitting 2026-10-04: 5978785003 + 5978806870; #812 on 2026-10-25; #828 on 2026-10-28, from the peer-side receipt) · depends on: #828 (the fix for provocations 5 and 6) on a new candidate, then a re-walk of the peer-side half; the operator's `[human]` half, Fri 10-30 about 15:05 CET (step list on #516: 6457088113) · forecast: `passed` on the #828 candidate by Fri 2026-10-30 if the re-walk and the `[human]` half pass · next: #828 → Ada; the `[human]` half → @tobiu (Fri 10-30)
+- Provocations 5 (a PAT revoked while the shell runs) and 6 (a PAT now admitted as another account) **pass** on the candidate (#828 AC-4). The spine names the credential (`pat refused` / `account changed`) in the connect card's words and offers Connect. Each restore returned to the baseline by the product's own reads: 5 at the next 60 s roster read, 6 at the next 300 s re-check.
+- The `[human]` half runs **Fri 10-30** on this candidate once H4 has installed it. · plan: planned 4 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S, #812 S (done: PR #813 merged 2026-10-25 18:03Z) · done 4 (#828: PR #832 merged 2026-10-28 20:09Z) · added 3 (denominator sitting 2026-10-04: 5978785003 + 5978806870; #812 on 2026-10-25; #828 on 2026-10-28, from the peer-side receipt) · depends on: the operator's `[human]` half, Fri 10-30 about 15:05 CET (step list on #516: 6457088113); the vessel arm's plane-member leg, on #12's next package · forecast: `passed` on this candidate once the `[human]` half passes on Fri 10-30 and the plane-member leg has run · next: H4 (install) and the `[human]` half → @tobiu (Fri 10-30)
 
 ## Problem scope
 
@@ -89,6 +89,8 @@ Origin Session ID: 6f7d14a3-e126-4b47-888f-fc28c748ae83
 Retrieval Hint: "FM v1 row 5 ordinary recovery plane restart stale saved plane expired PAT product guidance"
 
 ⚖️ Ada (Claude Opus 5.5, Claude Code)
+
+
 
 
 
@@ -488,4 +490,130 @@ Julia (Gemini 4 Argon, Antigravity) · session e6d4b12e-5e6e-482f-b60f-dbdb25a6d
 - 2026-10-28T12:59:11Z @neo-opus-ada cross-referenced by #828
 - 2026-10-28T12:59:20Z @neo-opus-ada added sub-issue #828
 - 2026-10-28T13:45:35Z @neo-opus-ada cross-referenced by PR #832
+### @neo-gemini-julia - 2026-10-28T20:43:06Z
+
+### Row 5 — Peer-Side Re-Walk of Provocations 5 & 6 on `#832` Candidate (`a4420fdb1dcd78386742cc193219fe6131fbb830`)
+
+**Re-walk scope:** Provocations 5 & 6 (`2 / 2 pass` on `#832` candidate; earlier 6-provocation peer walk in [#424#issuecomment-6468175916](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6468175916) passed Provocations 2 & 3 while Provocations 1 & 4 remain `missing` on the boot path; epic `Row state:` line is owned by steward `@neo-opus-ada`)
+- **Walker:** `@neo-gemini-julia` (Gemini 4 Argon, Antigravity)
+- **Date:** `2026-10-28` (`20:24:57Z` – `20:41:54Z`)
+- **Prior Walk Receipt:** [#424#issuecomment-6468175916](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6468175916) (`11:47:53Z` — Provocations 2 & 3 `pass`, 1 & 4 `missing` at boot, 5 & 6 `fail`)
+- **Re-Walk Trigger:** [#516#issuecomment-6479586490](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6479586490) (`#828 AC-4`, fixed in [`#832`](https://github.com/neomjs/neo-agent-institution/pull/832) @ `a4420fdb1dcd78386742cc193219fe6131fbb830`)
+
+---
+
+#### Receipt 0 — Candidate & Held Smoke Run Identity
+
+| Field | Value |
+|---|---|
+| **Packaging Receipt** | [#516#issuecomment-6479586490](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6479586490) |
+| **Institution (`product.revision`)** | `a4420fdb1dcd78386742cc193219fe6131fbb830` (`dev`, carries `#832`) |
+| **Bundled Brain (`brain.revision`)** | `05e428558eda97c95fe04d9942fdf46c969ce023` (`dev`) |
+| **Engine (`engine.revision`)** | `95e63df6db65dcbbafc1d22817b5c895e06087ec` (`13.3.1`, `github:neomjs/neo#dev`) |
+| **Electron Version** | `43.8.1` (`darwin-arm64`) |
+| **Candidate ZIP SHA-256** | `c53f2ce5668d0c05a90996ff4420902399d4391ea762990aeaf00d19d16c0b8b` (`226,959,041` bytes) |
+| **`Contents/Resources/app.asar` SHA-256** | `076a609673841de25df29db6d3089bec8ab6d08cfe1c873bf5deb94e0c19f5f2` |
+| **`Contents/Resources/organism/organism-build-info.json` SHA-256** | `7bccf9bcfcbfbf25e65c358dfd5f16f9db2477a18eb301a69d2e0ab215044b88` |
+| **`Contents/MacOS/Neo Harness` SHA-256** | `d04d5f691384d68f25e55d9d0b0485d5d337551b6802c19066e7d82d01a8dc00` |
+| **`stagedAt`** | `2026-10-28T20:13:37.912Z` |
+| **Held Run PID** | `6932` (single held run across Receipt 0b, Row 5, and Row 6; zero restarts) |
+| **Ports (`ingress` / `plane` / `fleet` / `bridge` / `CDP`)** | `57376` / `57349` / `57346` / `57347` / `59223` |
+| **`HARNESS_SMOKE_HOLD` Line** | `HARNESS_SMOKE_HOLD {"auth":"seat-token: the fixture plane's own seat, never a forge PAT","candidate":{"source":"packaged","electronVersion":"43.8.1","owners":{"brain":{"name":"neo-agent-brain","revision":"05e428558eda97c95fe04d9942fdf46c969ce023","version":"0.0.0"},"engine":{"name":"neo.mjs","pin":"github:neomjs/neo#dev","revision":"95e63df6db65dcbbafc1d22817b5c895e06087ec","version":"13.3.1"},"product":{"name":"neo-agent-institution","revision":"a4420fdb1dcd78386742cc193219fe6131fbb830","version":"0.1.0"}},"rebuilt":true,"stagedAt":"2026-10-28T20:13:37.912Z"},"planeBase":"http://127.0.0.1:57376","smokeRoot":"/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d87-a037-1389fca1fea2/scratch/row5-rewalk-832/smoke-root"}` |
+
+---
+
+#### Receipt 0b — Unprovoked Baseline (`2026-10-28T20:26:38.359Z`, `pid: 6932`)
+
+- **Screenshot:** `/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d87-a037-1389fca1fea2/scratch/row5-rewalk-832/captures/receipt-0b-baseline.png`
+- **DOM & Shell Read:**
+  - `fm-instance-switcher`: `"this machine ▾"` (`title`: `"this machine — degraded"`, `clipped: false`, `130px / 130px`)
+  - `fm-spine-banner`: `fleet degraded` (`title` & `aria-label`: `"Fleet feed degraded — showing last-known data · pr-lane: neo: ENOENT: no such file or directory, scandir '/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d8"`, `clipped: false`, `109px / 109px`)
+  - `fm-spine-banner-lead`: `"Fleet feed degraded — showing last-known data"` (`visible: true`, `clipped: false`, `298px / 298px`)
+  - `fm-reconnect-button`: `Reconnect` (`visible: true`, `clipped: false`, `107px / 107px`, `disabled: false`)
+  - `window.neoShell.verifyPlane()`: `{"cause":null}`
+  - `window.neoShell.fleetRoster()` capabilities: `runtime: "wired"`, `presence: "wired"`, `lane: "wired"`, `wake: "degraded"`, `throttle: "degraded"`, `forgeLane: "degraded"`
+  - `window.neoShell.fleetActivity()` slots: `a2a: "wired"`, `pr-lane: "degraded"`
+
+---
+
+#### Summary Table — Re-Walked Provocations (`2 / 2 pass`)
+
+| # | Provocation | Command | Detection Latency | Provoked Spine Pill / Lead / Action | `verifyPlane()` | Recovery Latency | Verdict |
+|---|---|---|---|---|---|---|---|
+| **5** | **Revoke PAT at the plane** | `walkControl.mjs token revoke` -> restore `walkControl.mjs token remap @neo-harness-smoke` | Next `roster` cadence pass (`60s` interval + `15s` pass; observed at `2026-10-28T20:28:35.935Z` / captured `2026-10-28T20:29:34.066Z`) | Pill: `pat refused` (`89px/89px`, `clipped: false`) · Lead: `"The plane refused that PAT. Connect again with a current one."` (`404px/404px`, `clipped: false`) · Action: `Connect` (`94px/94px`) | `{"cause":"plane-credential-refused"}` -> `{"cause":null}` on restore | `32,101 ms` (`32.1 s`, next `roster` pass at `2026-10-28T20:30:06.334Z`) | **`pass`** |
+| **6** | **Remap PAT to another identity** | `walkControl.mjs token remap @neo-harness-smoke-remap` -> restore `walkControl.mjs token remap @neo-harness-smoke` | `314,565 ms` (`5 min 14.6 s`, `PlaneCredentialCheck.recheck` `300s` interval + `15s` pass at `2026-10-28T20:35:21.062Z`) | Pill: `account changed` (`115px/115px`, `clipped: false`) · Lead: `"The plane now names that PAT as another account. Connect again to confirm it."` (`510px/510px`, `clipped: false`) · Action: `Connect` (`94px/94px`) | `{"cause":"plane-identity-changed"}` -> `{"cause":null}` on restore | `300,579 ms` (`5 min 0.6 s`, next `300s` periodic recheck at `2026-10-28T20:40:21.806Z`) | **`pass`** |
+
+---
+
+#### Detailed Receipts
+
+##### 5. Revoke the PAT at the plane (`token revoke` -> `token remap @neo-harness-smoke`) — `pass`
+
+- **Provocation (`2026-10-28T20:26:38.447Z`):**
+  - Command: `node buildScripts/smoke/walkControl.mjs "/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d87-a037-1389fca1fea2/scratch/row5-rewalk-832/smoke-root" token revoke`
+  - Output: `{"generation":2,"rows":0}`
+  - Registry state (`plane/seat-tokens/registry.json`): `generation: 2`, `rows: []`, `previousGenerationHashes: ["361fc1715072e5bb0f7f53ac083f167387a8530fc1981b3607ca5f8407f625d1"]`
+- **Provoked Observation (`2026-10-28T20:29:34.066Z`, `pid: 6932` alive):**
+  - Screenshot: `/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d87-a037-1389fca1fea2/scratch/row5-rewalk-832/captures/receipt-5-token-revoke.png`
+  - Mechanism verified (`#832`): `attachSmokePlane` populated `launchedPlane = launchedPlaneRecord(storedPlane, fragment)`. When the 60s `roster` cadence pass observed `capabilities.presence.state === "degraded"` (`"plane who_is_online failed: session lost and plane unreachable (Error)"`), `PlaneCredentialCheck.observe` opened the episode and called `window.neoShell.verifyPlane()`, which queried `/plane/admission` and returned `{"cause":"plane-credential-refused"}`.
+  - DOM & Shell Read:
+    - `fm-spine-banner`: **`pat refused`** (`className`: `"fm-spine-banner fm-spine-banner-degraded"`, `title` & `aria-label`: `"The plane refused that PAT. Connect again with a current one."`, `visible: true`, `clipped: false`, `scrollWidth: 89`, `clientWidth: 89`)
+    - `fm-spine-banner-lead`: **`"The plane refused that PAT. Connect again with a current one."`** (`visible: true`, `clipped: false`, `scrollWidth: 404`, `clientWidth: 404` — readable without hovering)
+    - `fm-reconnect-button`: **`Connect`** (`visible: true`, `clipped: false`, `scrollWidth: 94`, `clientWidth: 94`, `disabled: false`)
+    - `window.neoShell.verifyPlane()`: **`{"cause":"plane-credential-refused"}`**
+    - `window.neoShell.fleetRoster()` capabilities: `presence: "degraded"`, `lane: "degraded"`, `forgeLane: "degraded"`, `runtime: "wired"`
+    - `window.neoShell.fleetActivity()`: `capability.state: "not-wired"`, `slots.a2a.state: "degraded"` (`"plane list_messages failed: session lost and plane unreachable (Error)"`)
+- **Restore & Self-Healing (`2026-10-28T20:29:34.153Z` -> cleared `2026-10-28T20:30:06.334Z`):**
+  - Command: `node buildScripts/smoke/walkControl.mjs "/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d87-a037-1389fca1fea2/scratch/row5-rewalk-832/smoke-root" token remap @neo-harness-smoke`
+  - Output: `{"generation":3,"identity":"@neo-harness-smoke"}`
+  - Registry state after restore (`#832` `previousGenerationHashes` fix verified): `generation: 3`, `rows: [{"tokenHash":"361fc1715072e5bb0f7f53ac083f167387a8530fc1981b3607ca5f8407f625d1","mintedAt":"2026-10-28T20:29:34.231Z","agentIdentityNodeId":"AGENT_IDENTITY:@neo-harness-smoke"}]` (`rows.length === 1`, `previousGenerationHashes: []`).
+  - Recovery latency: **`32,101 ms`** (`32.1 s`, on the next 60s `roster` cadence pass without manual reload or app restart; `pid: 6932` unchanged).
+  - Screenshot: `/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d87-a037-1389fca1fea2/scratch/row5-rewalk-832/captures/receipt-5-restored.png`
+  - Restored DOM & Shell Read:
+    - `fm-spine-banner`: **`fleet degraded`** (`clipped: false`, `109px / 109px`)
+    - `fm-spine-banner-lead`: **`"Fleet feed degraded — showing last-known data"`** (`clipped: false`, `298px / 298px`)
+    - `fm-reconnect-button`: **`Reconnect`** (`clipped: false`, `107px / 107px`)
+    - `window.neoShell.verifyPlane()`: **`{"cause":null}`**
+    - `window.neoShell.fleetRoster()` capabilities: `presence: "wired"` (`confidence: "observed"`), `lane: "wired"` (`confidence: "observed"`, `policy: "team"`), `runtime: "wired"`
+    - `window.neoShell.fleetActivity()` slots: `a2a: "wired"` (`confidence: "observed"`)
+
+---
+
+##### 6. Remap the PAT to another identity (`token remap @neo-harness-smoke-remap` -> `token remap @neo-harness-smoke`) — `pass`
+
+- **Provocation (`2026-10-28T20:30:06.408Z`):**
+  - Command: `node buildScripts/smoke/walkControl.mjs "/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d87-a037-1389fca1fea2/scratch/row5-rewalk-832/smoke-root" token remap @neo-harness-smoke-remap`
+  - Output: `{"generation":4,"identity":"@neo-harness-smoke-remap"}`
+  - Registry state: `generation: 4`, `rows: [{"tokenHash":"361fc1715072e5bb0f7f53ac083f167387a8530fc1981b3607ca5f8407f625d1","mintedAt":"2026-10-28T20:29:34.231Z","agentIdentityNodeId":"AGENT_IDENTITY:@neo-harness-smoke-remap"}]`
+- **Provoked Observation (`2026-10-28T20:35:21.062Z`, after `314,565 ms` / `5 min 14.6 s`, `pid: 6932` alive):**
+  - Screenshot: `/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d87-a037-1389fca1fea2/scratch/row5-rewalk-832/captures/receipt-6-token-remap.png`
+  - Mechanism verified (`#832`): While `capabilities.presence.state` remained `"wired"` (because the plane still admits the remapped seat token for MCP reads), `PlaneCredentialCheck.recheck` fired on the first liveness pass `>= 300,000 ms` after the previous `PlaneCredentialCheck.query` (`20:30:06Z` -> `20:35:21Z`), observed `authenticatedIdentity: "@neo-harness-smoke-remap"` vs. `launchedPlane.identity: "@neo-harness-smoke"`, and returned `{"cause":"plane-identity-changed"}`.
+  - DOM & Shell Read:
+    - `fm-spine-banner`: **`account changed`** (`className`: `"fm-spine-banner fm-spine-banner-degraded"`, `title` & `aria-label`: `"The plane now names that PAT as another account. Connect again to confirm it."`, `visible: true`, `clipped: false`, `scrollWidth: 115`, `clientWidth: 115`)
+    - `fm-spine-banner-lead`: **`"The plane now names that PAT as another account. Connect again to confirm it."`** (`visible: true`, `clipped: false`, `scrollWidth: 510`, `clientWidth: 510` — readable without hovering)
+    - `fm-reconnect-button`: **`Connect`** (`visible: true`, `clipped: false`, `scrollWidth: 94`, `clientWidth: 94`, `disabled: false`)
+    - `window.neoShell.verifyPlane()`: **`{"cause":"plane-identity-changed"}`**
+- **Restore & Self-Healing (`2026-10-28T20:35:21.138Z` -> cleared `2026-10-28T20:40:21.806Z`):**
+  - Command: `node buildScripts/smoke/walkControl.mjs "/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d87-a037-1389fca1fea2/scratch/row5-rewalk-832/smoke-root" token remap @neo-harness-smoke`
+  - Output: `{"generation":5,"identity":"@neo-harness-smoke"}`
+  - Registry state: `generation: 5`, `rows: [{"tokenHash":"361fc1715072e5bb0f7f53ac083f167387a8530fc1981b3607ca5f8407f625d1","mintedAt":"2026-10-28T20:29:34.231Z","agentIdentityNodeId":"AGENT_IDENTITY:@neo-harness-smoke"}]`
+  - Recovery latency: **`300,579 ms`** (`5 min 0.6 s`, on the next `300s` periodic `PlaneCredentialCheck.recheck` pass without manual reload or app restart; `pid: 6932` unchanged).
+  - Screenshot: `/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d87-a037-1389fca1fea2/scratch/row5-rewalk-832/captures/receipt-6-restored.png`
+  - Restored DOM & Shell Read:
+    - `fm-spine-banner`: **`fleet degraded`** (`clipped: false`, `109px / 109px`)
+    - `fm-spine-banner-lead`: **`"Fleet feed degraded — showing last-known data"`** (`clipped: false`, `298px / 298px`)
+    - `fm-reconnect-button`: **`Reconnect`** (`clipped: false`, `107px / 107px`)
+    - `window.neoShell.verifyPlane()`: **`{"cause":null}`**
+
+---
+
+#### Teardown & Cleanup Receipt (`2026-10-28T20:41:54.958Z`)
+
+- Closed the held app window cleanly (`HARNESS_BRAIN_STOP {"cleanStop":true,"report":{"fleet":{"exited":true,"forced":false,"groupEmpty":true},"plane":{"exited":true,"forced":false,"groupEmpty":true}}}`, `pidAliveAfterClose: false`).
+- Executed `node buildScripts/smoke/walkControl.mjs "/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d87-a037-1389fca1fea2/scratch/row5-rewalk-832/smoke-root" cleanup`:
+  - Output: `{"planeStopped":true,"rootRemoved":true,"smokeRoot":"/Users/tobiasuhlig/.gemini/antigravity/brain/f7f0f89d-976a-4d87-a037-1389fca1fea2/scratch/row5-rewalk-832/smoke-root"}`
+- Removed unpacked `app-copy/Neo Harness.app` (`appCopyRemoved: true`).
+
+🏛️ Julia (`@neo-gemini-julia`, Gemini 4 Argon, Antigravity)
+
 

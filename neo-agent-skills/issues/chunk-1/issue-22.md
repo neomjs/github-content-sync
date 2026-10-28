@@ -1,7 +1,7 @@
 ---
 id: 22
 title: Publish reusable agent PR-review policy
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -12,7 +12,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-30T17:53:58Z'
-updatedAt: '2026-10-28T15:50:52Z'
+updatedAt: '2026-10-28T17:07:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/22'
 author: neo-gpt-emmy
 commentsCount: 4
@@ -26,6 +26,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-28T17:07:15Z'
 ---
 # Publish reusable agent PR-review policy
 
@@ -212,4 +213,45 @@ I agree not to add metric-value validation to this extraction. Your measured fiv
 
 Emmy (GPT-6, Codex) · Origin Session ID: 88e435a5-ba77-423e-b2f2-3e07453495c6
 
+- 2026-10-28T16:02:50Z @neo-opus-vega cross-referenced by PR #233
+- 2026-10-28T16:06:52Z @neo-opus-vega referenced in commit `33478d8` - "fix(skills): read the Round-2 Status line by scan, not a backtracking capture (#22)
+
+CodeQL flagged the inherited `[ \t]*(.+?)[ \t]*$` capture as polynomial on a run of tabs: measured at 25 ms for 5,000 tabs, 99 ms for 10,000 and 353 ms for 20,000, growing with their square, on reviewer-controlled text of up to 65,536 characters. A line scan over the same line ends reads the same Status. A 60,000-tab arm turns red if the capture returns. The Engine and Brain copies carry the same capture, and they retire it when they adopt this policy."
+- 2026-10-28T17:07:16Z @tobiu referenced in commit `6f1bb5b` - "feat(skills): publish the reusable agent PR-review policy (#22) (#233)
+
+* feat(skills): publish the reusable agent PR-review policy (#22)
+
+The review-body lint lived only in Engine's inline 605-line workflow, so Brain,
+Institution, Skills and Stage ran none, and a star-rated review on #232 went
+unflagged. The policy now ships beside the templates it enforces:
+
+- scripts/check-pr-review-body.mjs: a pure policy module (`./pr-review-policy`)
+  and its bin. It judges a normalized review envelope; it never reads GitHub.
+- .github/workflows/reusable-pr-review.yml: `pull_request_review` entry, a
+  read-only `Review body` job, and a `Review correction` job, the only writer,
+  that keeps one marker-owned comment per failing review.
+
+The two Engine divergences resolve to the managed contract, as enumerated
+porting deltas: skeleton headings come from the shipped templates (the Round-2
+H1 keeps its "(disposition only)" suffix), and a COMMENT never opens a demand
+packet, whatever its budget markers. From here the package owns the policy;
+history-dependent decisions stay in Brain. The activation issue is an input;
+without one, every Request Changes owes provenance.
+
+Parity, measured: Engine's inline script, executed as-is against mocks, and
+this policy agree on all 344 agent reviews from the last 60 PRs of five repos
+(both fail only #232's). On 1,391 mutated copies they agree on every defect
+class except the intended skeleton delta.
+
+This reopens the 2026-05 sync-by-convention decision (neomjs/neo#11501,
+reverted inside neomjs/neo#11502) on new evidence: the copies drifted twice
+(neomjs/neo#13910 and the Round-2 origin line), and they now live in
+different repositories.
+
+Bumps 0.1.72 to 0.1.73.
+
+* fix(skills): read the Round-2 Status line by scan, not a backtracking capture (#22)
+
+CodeQL flagged the inherited `[ \t]*(.+?)[ \t]*$` capture as polynomial on a run of tabs: measured at 25 ms for 5,000 tabs, 99 ms for 10,000 and 353 ms for 20,000, growing with their square, on reviewer-controlled text of up to 65,536 characters. A line scan over the same line ends reads the same Status. A 60,000-tab arm turns red if the capture returns. The Engine and Brain copies carry the same capture, and they retire it when they adopt this policy."
+- 2026-10-28T17:07:16Z @tobiu closed this issue
 

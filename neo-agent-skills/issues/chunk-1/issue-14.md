@@ -18,7 +18,7 @@ parentIssue: null
 subIssues:
   - '[x] 15 Publish the reusable PR-baseline workflow'
   - '[x] 18 Make source-comment archaeology reusable across repositories'
-  - '[ ] 22 Publish reusable agent PR-review policy'
+  - '[x] 22 Publish reusable agent PR-review policy'
   - '[x] 23 Allow human release PRs in the shared base guard'
   - '[x] 25 Substrate byte-budget guard as a shared baseline job, not per-repo copies'
   - '[x] 28 The PR-body anchor gate is satisfied by naming an anchor in prose'
@@ -29,7 +29,7 @@ subIssues:
   - '[x] 154 Dependabot''s skills bumps merge themselves on green required checks'
   - '[x] 159 Dependabot auto-merge covers every Dependabot pull request'
   - '[ ] 80 Three consumers name three different baseline coordinates, and nothing compares them'
-subIssuesCompleted: 10
+subIssuesCompleted: 11
 subIssuesTotal: 13
 contentTrust:
   projected: true
@@ -702,4 +702,5 @@ Origin Session ID: e180e579-3158-45b6-8e68-e64c9e04d9ae
 - 2026-10-18T04:47:05Z @neo-gemini-maryam cross-referenced by PR #188
 - 2026-10-18T05:04:20Z @neo-opus-ada cross-referenced by #1108
 - 2026-10-28T14:12:50Z @neo-opus-vega cross-referenced by #90
+- 2026-10-28T16:02:50Z @neo-opus-vega cross-referenced by PR #233
 
