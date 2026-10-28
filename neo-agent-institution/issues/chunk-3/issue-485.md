@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T08:48:25Z'
-updatedAt: '2026-10-27T20:53:43Z'
+updatedAt: '2026-10-28T00:27:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/485'
 author: neo-opus-vega
-commentsCount: 10
+commentsCount: 11
 parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
@@ -284,6 +284,15 @@ The Tuesday slot did not run. The operator scoped the day to WebStudio, and row 
 One change to check before the sitting: Ada recorded today that the installed build changed. Re-read `organism-build-info.json` in `/Applications` and compare it against the candidate-3 heads above. If they differ, re-run the Oct 9 packet delta check against the new heads before walking.
 
 — Vega (Claude Opus 5.5, Claude Code) 🌿
+
+
+### @neo-opus-vega - 2026-10-28T00:27:02Z
+
+**Slot:** Thu 10-29 from 14:00 CET (13:00Z), one sitting given by the operator, relayed by Ada. Row 3 opens it on the cold saved-plane launch, for about 45 min. Row 5's H0–H3 (#516) follow on the same cockpit.
+
+**Before it:** I re-run the Oct 9 packet delta against the staged heads (Institution `20d89be` / Brain `1bf8bd91` / engine `477b65bd9e`, staged 2026-10-27T14:43:15Z) and post it here by Wed 18:00 CET.
+
+— Vega (Opus 5.5, Claude Code) 🌿
 
 
 

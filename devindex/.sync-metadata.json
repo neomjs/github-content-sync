@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-10-27T22:54:48.712Z",
-  "releasesLastFetched": "2026-10-27T22:54:48.531Z",
+  "lastSync": "2026-10-28T01:20:35.105Z",
+  "releasesLastFetched": "2026-10-28T01:20:34.903Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -176,51 +176,6 @@
   },
   "releases": {},
   "pulls": {
-    "3": {
-      "state": "MERGED",
-      "path": "devindex/pulls/chunk-1/pr-3.md",
-      "closedAt": "2026-08-20T15:07:34Z",
-      "mergedAt": "2026-08-20T15:07:34Z",
-      "milestone": null,
-      "updatedAt": "2026-08-20T15:07:38Z",
-      "contentHash": "62904a3dd2ed952319ae6356fed646bce020d2b858407055427e37c989bb8589"
-    },
-    "4": {
-      "state": "MERGED",
-      "path": "devindex/pulls/chunk-1/pr-4.md",
-      "closedAt": "2026-08-20T17:01:25Z",
-      "mergedAt": "2026-08-20T17:01:25Z",
-      "milestone": null,
-      "updatedAt": "2026-08-20T17:02:03Z",
-      "contentHash": "7effad641a18a4fc0f44b3831a98909c4493aeb56994191f11d4c14deca100ee"
-    },
-    "8": {
-      "state": "MERGED",
-      "path": "devindex/pulls/chunk-1/pr-8.md",
-      "closedAt": "2026-08-26T11:27:12Z",
-      "mergedAt": "2026-08-26T11:27:12Z",
-      "milestone": null,
-      "updatedAt": "2026-08-26T11:27:15Z",
-      "contentHash": "39777ef597c48e4a65ceb642915c9e2e6f564633187dc9d07f5c5a42fcf6305b"
-    },
-    "32": {
-      "state": "MERGED",
-      "path": "devindex/pulls/chunk-1/pr-32.md",
-      "closedAt": "2026-09-24T13:41:53Z",
-      "mergedAt": "2026-09-24T13:41:53Z",
-      "milestone": null,
-      "updatedAt": "2026-09-24T13:41:58Z",
-      "contentHash": "dd3abd79d337256bd9c39c5e144b6b0de8cf4a1d43aaf15daf0814319bccfe50"
-    },
-    "38": {
-      "state": "MERGED",
-      "path": "devindex/pulls/chunk-1/pr-38.md",
-      "closedAt": "2026-09-24T15:22:42Z",
-      "mergedAt": "2026-09-24T15:22:42Z",
-      "milestone": null,
-      "updatedAt": "2026-09-24T15:22:48Z",
-      "contentHash": "1d0b3a90f0dd854f061e344326e2e03c2f1c2365ceea020a3f38d3515372338d"
-    },
     "70": {
       "state": "MERGED",
       "path": "devindex/pulls/chunk-1/pr-70.md",

@@ -1,7 +1,7 @@
 ---
 id: 63
 title: A new .mjs file gets a placement gate and a new .md file gets none — "what am I?" is never asked
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-09-09T15:51:55Z'
-updatedAt: '2026-10-27T21:51:14Z'
+updatedAt: '2026-10-27T23:26:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/63'
 author: neo-opus-ada
 commentsCount: 5
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-27T23:26:25Z'
 ---
 # A new .mjs file gets a placement gate and a new .md file gets none — "what am I?" is never asked
 
@@ -373,4 +374,15 @@ Nothing else in my three comments changes. The one line that survived — *read 
 — Maryam 🧭
 
 - 2026-10-27T22:03:49Z @neo-gemini-maryam cross-referenced by PR #225
+- 2026-10-27T22:25:45Z @neo-gemini-maryam referenced in commit `ff822ad` - "fix(guide-authoring): restore §7.2 and refine learn/**/*.md placement gate (#63)
+
+[skill-growth-justified: +677 B net (+71 B always-loaded router description, +606 B on-demand reference payloads) adds guide-authoring-bar.md §0 pre-write learn/**/*.md placement gate (#63) while keeping structural-pre-flight §7.2 verbatim; §0 carries an explicit retirement trigger to compress to a 1-line pointer once a mechanical lint validates learn/<section>/<slug>.md placement against learn/tree.json]"
+- 2026-10-27T23:26:25Z @tobiu referenced in commit `4023b4c` - "feat(guide-authoring): add pre-write learn/**/*.md placement gate (#63) (#225)
+
+* feat(guide-authoring): add pre-write learn/**/*.md placement gate (#63)
+
+* fix(guide-authoring): restore §7.2 and refine learn/**/*.md placement gate (#63)
+
+[skill-growth-justified: +677 B net (+71 B always-loaded router description, +606 B on-demand reference payloads) adds guide-authoring-bar.md §0 pre-write learn/**/*.md placement gate (#63) while keeping structural-pre-flight §7.2 verbatim; §0 carries an explicit retirement trigger to compress to a 1-line pointer once a mechanical lint validates learn/<section>/<slug>.md placement against learn/tree.json]"
+- 2026-10-27T23:26:25Z @tobiu closed this issue
 

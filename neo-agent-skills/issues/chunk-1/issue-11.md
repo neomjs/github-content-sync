@@ -1,18 +1,19 @@
 ---
 id: 11
 title: 'Deliberate duplication has no written rule, so each instance re-derives it'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
   - ai
   - architecture
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-08-18T12:24:20Z'
-updatedAt: '2026-08-27T11:33:49Z'
+updatedAt: '2026-10-28T01:17:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/11'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-28T01:17:58Z'
 ---
 # Deliberate duplication has no written rule, so each instance re-derives it
 
@@ -123,4 +125,42 @@ Retrieval Hint: `query_raw_memories("parity twin duplication pinned by test not 
 - 2026-08-27T11:34:49Z @neo-gpt-emmy cross-referenced by #17784
 - 2026-09-04T04:02:05Z @neo-opus-vega cross-referenced by #43
 - 2026-09-04T19:44:49Z @neo-fable-clio cross-referenced by #49
+- 2026-10-28T00:15:00Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-28T00:15:04Z
+
+### Intake & T3 Contract Ledger (`neomjs/neo-agent-skills#11`)
+
+- **Ticket reality classification:** `valid-as-written` (`createdAt: 2026-08-18T12:24:20Z`, `updatedAt: 2026-08-27T11:33:49Z`, `pre-stale` / no bot-stale label).
+- **Prescription checked:**
+  - `.agents/skills/pr-review/audits/deliberate-duplication-audit.md` — owns the conditional audit payload beside `core-idiom-audit.md` and `identity-claim-audit.md`.
+  - `.agents/skills/pr-review/references/pr-review-guide.md` (`§7.5.5`) — owns the reviewer trigger line (`<!-- trigger: diff introduces a deliberate duplication -> read ../audits/deliberate-duplication-audit.md -->`).
+  - `.agents/skills/pull-request/references/pull-request-workflow.md` (`§1`) — owns the author-side pre-commit reflection pointer so authors wire the shared-fixture parity spec before opening a PR.
+- **Verified in-repo anchors (Written-Claim Precedent Gate):**
+  - **Duplicated-because-impossible (`neomjs/neo#17348`, boundary `neomjs/neo#17239`):** `describeOperatorSeatConflation` (`ai/services/fleet/operatorSeatConflation.mjs`) and `FleetCockpitController#deriveOperatorIdentityPosture` across the app→Brain boundary, pinned by one shared truth table in `neomjs/neo-agent-institution` `test/playwright/unit/apps/agentos/view/fleet/mailbox/operatorSeatConflationParity.spec.mjs:21-75`.
+  - **Delegated-because-possible (`neomjs/neo#17325`):** `satisfiesRequiredModelIdOnOpenAiCompatibleLane` in `neomjs/neo-agent-brain` `ai/services/graph/providerReadinessHelper.mjs:125-135` delegates to `satisfiesRequiredModelId(required, observed, 'ollama')` rather than restating the predicate across `DeploymentStateBridgeService.mjs` and `TextEmbeddingService.mjs`.
+
+## Contract Ledger
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `.agents/skills/pr-review/audits/deliberate-duplication-audit.md` (new conditional audit payload) | `neomjs/neo-agent-skills#11`, `neomjs/neo#17348`, `neomjs/neo#17325`, `neomjs/neo#17239` | Codifies the two-clause rule with the restraining discriminator first (*"Duplicate only when importing is structurally impossible. When you do, pin the copies by test, never by comment"*), cites real instances in both directions (`#17348` / `#17325`) with verbatim docblock quotes, states that a cross-boundary import in a test is not a runtime coupling, and names the reviewer trigger question (*"what fails when these diverge?"*). | Ordinary intra-layer duplication where import is possible is rejected (delegate instead); unpinned or spec-per-side twins receive a Required Action | `.agents/skills/pr-review/audits/deliberate-duplication-audit.md` | `npm run lint` (`lint-skill-corpus.mjs --base origin/dev`) + `npm test` |
+| `.agents/skills/pr-review/references/pr-review-guide.md` (`§7.5.5` trigger router) | `neomjs/neo-agent-skills#11`, `create-skill` (`skill-authoring-guide.md §2`) | Routes diffs introducing deliberate boundary/cycle-forced duplication via `<!-- trigger: diff introduces a deliberate duplication -> read ../audits/deliberate-duplication-audit.md -->` without adding a new skill or `SKILL.md` router entry. | Diffs without deliberate duplication skip loading the audit payload | `.agents/skills/pr-review/references/pr-review-guide.md` | `lint-skill-corpus.mjs` reference integrity + `COMBINED_BUDGETS` (`< 41,357` bytes) |
+| `.agents/skills/pull-request/references/pull-request-workflow.md` (`§1` author-side reader) | `neomjs/neo-agent-skills#11` AC-3 | Wires a one-line author-side pre-commit pointer to `../../pr-review/audits/deliberate-duplication-audit.md` when a branch introduces boundary- or cycle-forced duplication. | Delegate when import is structurally possible | `.agents/skills/pull-request/references/pull-request-workflow.md` | `lint-skill-corpus.mjs` reference integrity + net-growth budget check |
+
+Maryam (Gemini 4 Argon, Antigravity) · session 58b07b45-1fe9-40ad-80f8-db0f380332b8 🧭
+
+- 2026-10-28T00:49:47Z @neo-gemini-maryam cross-referenced by PR #226
+- 2026-10-28T01:08:46Z @neo-gemini-maryam referenced in commit `ff9ee7d` - "docs(pr-review): qualify cross-repo paths, CI pin scope, and single trigger (#11)
+
+[skill-growth-justified: +662 B net from Round 1 review (#226 RA-1..RA-3: repo-qualifying neo-agent-brain and neo-agent-institution paths and adding cross-repo CI pin requirement in deliberate-duplication-audit.md while trimming -190 B duplicate prose router in pr-review-guide.md §7.5.5)]"
+- 2026-10-28T01:17:57Z @tobiu referenced in commit `5d208af` - "docs(pr-review,pull-request): codify deliberate-duplication audit and routers (#11) (#226)
+
+* docs(pr-review,pull-request): codify deliberate-duplication audit and routers (#11)
+
+[skill-growth-justified: +4526 B net (+0 B always-loaded SKILL.md routers, +3912 B on-demand pr-review/audits/deliberate-duplication-audit.md, +339 B pr-review-guide.md §7.5.5 trigger, +275 B pull-request-workflow.md §1 author pointer) delivers neomjs/neo-agent-skills#11 without adding a new skill or SKILL.md router entry]
+
+* docs(pr-review): qualify cross-repo paths, CI pin scope, and single trigger (#11)
+
+[skill-growth-justified: +662 B net from Round 1 review (#226 RA-1..RA-3: repo-qualifying neo-agent-brain and neo-agent-institution paths and adding cross-repo CI pin requirement in deliberate-duplication-audit.md while trimming -190 B duplicate prose router in pr-review-guide.md §7.5.5)]"
+- 2026-10-28T01:17:58Z @tobiu closed this issue
 

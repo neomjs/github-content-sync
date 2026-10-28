@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-07-14T04:56:13Z'
-updatedAt: '2026-10-27T22:43:34Z'
+updatedAt: '2026-10-28T00:14:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/106'
 author: neo-gpt-euclid
 commentsCount: 9
@@ -32,8 +32,10 @@ subIssues:
   - '[x] 98 Prove the community-activity authority chain end to end'
   - '[x] 1315 Issue children carry their issue, and Discussion closes become occurrences'
   - '[x] 1321 Make the steward shadow window executable and retainable'
-subIssuesCompleted: 17
-subIssuesTotal: 17
+  - '[x] 1327 Define matrix-bound community coverage qualification'
+  - '[ ] 1329 Qualify community coverage without promoting legacy receipts'
+subIssuesCompleted: 18
+subIssuesTotal: 19
 contentTrust:
   projected: true
   quarantined: 1
@@ -587,19 +589,21 @@ Origin Session ID: cd90984f-706d-48de-8f9d-05a76ea2749c 🧭
 - 2026-10-26T23:09:34Z @neo-gemini-maryam cross-referenced by PR #1313
 ### @neo-gpt-euclid - 2026-10-26T23:59:19Z
 
-**27 October — merged observer; coverage design opened.** I retain the real source-bound shadow-window and calibration/disposition outcome on this open parent. [PR `1322`](https://github.com/neomjs/neo-agent-brain/pull/1322) was human-merged as `06f5574ec986cc919f5f0f100fe1e8572f86f0a6`; its approved feature files match `d0ccdaa2`. That delivery does not establish a real observation window.
+**28 October — ADR merged; qualification runtime implementation active.** I retain the full real tenant/source/store-bound zero-dispatch observation window and calibration/disposition outcome on this open parent.
 
-**Current next action:** [Discussion `20161`](https://github.com/orgs/neomjs/discussions/20161) is the scoped successor to graduated `15139`. It retains open divergence between a real degraded study, a shared distinction between supported acquisition and provider limitations, and explicitly limited shadow analysis. Grace and Maryam were invited through `/peer-role`; no option, ADR amendment or implementation is selected. The discussion retains the source/consumer ledger and a reproducible pure-compiler falsifier: hosted coverage accepts range gaps but refuses the production `{axis,reason}` gap. That is compiler/schema evidence, not a hosted network or admitted-window result.
+[Discussion `20161`](https://github.com/orgs/neomjs/discussions/20161) is resolved at its retained contract anchor. [ADR leaf `1327`](https://github.com/neomjs/neo-agent-brain/issues/1327) is closed after [PR `1328`](https://github.com/neomjs/neo-agent-brain/pull/1328) human-merged at `d02bdd77c0400a29411b9846ec37959ded08d0f7` (2026-10-27T23:55:25Z), with Ada’s independent approval 5676025638 at the exact docs head. The ADR implementation gate is now satisfied.
 
-**Why this precedes a costly acquisition:** production PR and Discussion collectors retain three unsupported-history gaps each; `readCoverage` requires complete/zero-gap receipts for issues, pulls and Discussions, and the steward exits at `coverage-degraded` before vacancy/payload evaluation. Exhausted acquisition therefore cannot currently yield qualified vacancy/wake metrics. A real degraded study is still an option, with unavailable metrics unknown. Every current gap and qualification guard remains intact.
+[Runtime leaf `1329`](https://github.com/neomjs/neo-agent-brain/issues/1329) is self-assigned and native-linked here. Local implementation began on `codex/1329-community-coverage-qualification`, base `3bc4a9a9`. The first uncommitted change fixes the shared hosted-gap shape: nine positive producer/legacy shapes and eleven malformed shapes agree across neutral and compiled validation; fields are preserved, the schema definition agrees, and a fixed legacy digest remains unchanged. This is a pure-validator checkpoint, not completed qualification, a unit-suite/CI receipt, admission replay proof or a real observation window.
 
-**Operational readiness:** the fresh canonical MC health read reports runtime `436aec637e1d72123d2ebfd894d29d8c64260489`. Authenticated counts remain `missing/no-registered-sources`, snapshot 0; these zeros are not observed empty demand. The exact tenant-relative source lookup still returns `COMMUNITY_SOURCE_NOT_FOUND` (absent/wrong tenant deliberately collapsed). Stable source identity is GitHub repository ID `1344062228`, with mutable locator `neomjs/neo-agent-brain`. No deployment, source registration/admission, real credential transfer, lease acquisition, claim or live dispatch was performed.
+The accepted contract separates real acquisition gaps from exact/version-bound provider limitations, persists the generation binding inside coverage evidence, preserves closer/actor policy, and bounds conclusions to eligible admitted items. All three consumer conditions remain mandatory: old/mixed generations cannot qualify; qualified empty demand records observed vacancy/false would-wake; assembly and strict public schemas preserve declarations. The unknown-closer waiver, blanket closed bucket and inferred reopen were rejected to preserve late post-close replies. Corpus ratios are not measured false-positive rates.
 
-**Remaining sequence:** accepted coverage disposition → deployment-owner-approved runtime/source/policy/roster/credential preparation → actual reconciliation and retained zero-dispatch window → independent calibration/defer review. Source administration remains deployment-operator authority; it is not an MCP admin privilege. The parent body's resolved-store/plane provenance requirement applies; test-store flags or a co-location label do not attest that binding.
+**Source decision:** propose Neo, stable GitHub repository ID `220867748`, locator `neomjs/neo`, for the main window. Metadata implies 399 initial root pages before child/edit/verification/census reads; total acquisition cost remains unmeasured and operator-owned. The cheaper Institution candidate is at most an optional empty control and cannot replace wake-cost evidence. No source is provisioned by this decision; the prior former-Brain proposal does not authorize Neo bootstrap.
 
-The [retained calibration](https://github.com/neomjs/neo-agent-brain/blob/16152c752aeb43bbf287e5ccb3b14f5ee4662f17/learn/agentos/measurements/community-activity-calibration-2026-10-26.md) still has unknown vacancy and acknowledgment/claim/response latencies. `activationAuthorized:false` stays false and unmeasured thresholds stay unset. The shadow-only amendment to `100` and merged instrumentation leaves do not retire this parent outcome.
+**Last operational preflight (2026-10-27, before this code checkpoint):** the canonical read reports runtime `436aec637e1d72123d2ebfd894d29d8c64260489`; authenticated counts are `missing/no-registered-sources`. Exact Neo-source health is `COMMUNITY_SOURCE_NOT_FOUND` (absent/wrong tenant deliberately collapsed). These zeros are not an observed empty window. No source lifecycle/admission, acquisition, real credential transfer, deployment/restart, lease acquisition, claim or live dispatch occurred.
 
-**Closure falsifier:** a retained caller must reproduce actual tenant/source/generation-bound observations with explicit coverage and resolved-store provenance, zero live dispatch, and no degraded-to-zero normalization. At disposition, unmeasured slots need evidence, explicit successor custody, or explicit defer/retirement. No epic-completion verdict is claimed here.
+**Next sequence:** finish `1329` qualification/runtime delivery, actual producer-path proof and independent exact-head review/human merge; owning-operator-reviewed source/policy/credential/deployment preparation; actual acquisition and retained shared-evaluator window; independent calibration or explicit defer. The main goal remains active. Runtime qualification and the source window are not supplied by the ADR, unit fixtures or merged observer capability.
+
+`activationAuthorized:false` stays false and unmeasured thresholds stay unset. Available vacancy/would-wake/byte/latency observations need actual source/generation/policy and resolved-store/plane provenance; unavailable values remain unknown. Claims are never created to clean metrics. This parent remains the residual owner and no epic-completion verdict is claimed.
 
 Euclid (OpenAI GPT-6.1 Sol Ultra, Codex Desktop) · session 607243d1-f786-4b5c-b0a2-028defcc0310
 
@@ -608,4 +612,10 @@ Euclid (OpenAI GPT-6.1 Sol Ultra, Codex Desktop) · session 607243d1-f786-4b5c-b
 - 2026-10-27T19:37:00Z @neo-gpt-euclid cross-referenced by #1321
 - 2026-10-27T19:37:30Z @neo-gpt-euclid added sub-issue #1321
 - 2026-10-27T20:38:03Z @neo-gpt-euclid cross-referenced by PR #1322
+- 2026-10-27T23:30:11Z @neo-gpt-euclid cross-referenced by #1327
+- 2026-10-27T23:30:56Z @neo-gpt-euclid added sub-issue #1327
+- 2026-10-27T23:41:42Z @neo-gpt-euclid cross-referenced by PR #1328
+- 2026-10-28T00:08:34Z @neo-gpt-euclid cross-referenced by #1329
+- 2026-10-28T00:08:47Z @neo-gpt-euclid added sub-issue #1329
+- 2026-10-28T01:13:31Z @neo-gpt-euclid cross-referenced by PR #1330
 

@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-27T21:18:09Z'
-updatedAt: '2026-10-27T22:08:49Z'
+updatedAt: '2026-10-27T22:56:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1323'
 author: neo-opus-ada
 commentsCount: 0
@@ -70,12 +70,12 @@ Owning folders (structure map): `ai/services/github-workflow/sync/`, `ai/service
 
 ## Acceptance Criteria
 
-- [ ] `--corpus-only --refetch-pulls=<n,…> --refetch-discussions=<n,…>` rewrites exactly the named items of the origin, and rewrites archived ones in place. A malformed or repeated flag is refused before any request.
-- [ ] A named PR or discussion that does not come back fails its facet, and the emitter exits nonzero.
-- [ ] The pull facet's integrity verdict runs after the named refetch.
-- [ ] The refetch path never writes a denylisted discussion: the spec is red on `dev` and green at head.
-- [ ] A refetched discussion leaves one copy. A closed discussion still in the active tier moves into its release bucket: the spec is red on `dev` and green at head.
-- [ ] An emission without the new flags behaves as before: the existing emitter and syncer specs stay green.
+- [x] `--corpus-only --refetch-pulls=<n,…> --refetch-discussions=<n,…>` rewrites exactly the named items of the origin, and rewrites archived ones in place. A malformed or repeated flag is refused before any request.
+- [x] A named PR or discussion that does not come back fails its facet, and the emitter exits nonzero.
+- [x] The pull facet's integrity verdict runs after the named refetch.
+- [x] The refetch path never writes a denylisted discussion: the spec is red on `dev` and green at head.
+- [x] A refetched discussion leaves one copy. A closed discussion still in the active tier moves into its release bucket: the spec is red on `dev` and green at head.
+- [x] An emission without the new flags behaves as before: the existing emitter and syncer specs stay green. Delivered by PR #1324 (merged 40bb74cc); live: content-sync pilot run 40592691854 and the 11-run campaign.
 
 ## Out of Scope
 
@@ -110,6 +110,7 @@ Retrieval Hint: "corpus emission force-refetch named pulls discussions publisher
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 
+
 ## Timeline
 
 - 2026-10-27T21:18:09Z @neo-opus-ada assigned to @neo-opus-ada
@@ -134,4 +135,5 @@ reads its leaf without a fallback (ADR 0019 B3), like its issue sibling.
 
 * fix(github-workflow): a discussion refetch leaves its rendering as the only active copy (#1323)"
 - 2026-10-27T22:08:49Z @tobiu closed this issue
+- 2026-10-27T22:56:56Z @neo-opus-ada cross-referenced by #1174
 

@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-10-26T17:59:11Z'
+updatedAt: '2026-10-28T00:30:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
 commentsCount: 7
@@ -37,7 +37,7 @@ milestone: FM v1
 
 Terminal predicate: on one installed Fleet Manager, each failure FM v1 ROADMAP row 5 names is provoked, and the product returns to `live` by its own guidance alone, with one receipt per failure. The failures are: the plane restarts, the plane is cut to a new Brain commit, the vessel is updated, the saved plane goes stale, the PAT expires or is wrong, the endpoint is wrong. This is row 5's installed check, recorded once.
 
-Row state: row 5 · Ada (walker Vega, Tue Oct 27; Euclid alternate) · ready · 2026-10-25 19:3x CET, walk candidate 3 (Institution `ee6ab02` / Brain `3c4f227` / engine `0eb2229acf`, SHA-256 `ab5072ac…`, installed 18:30Z): the peer-side walk starts from the held run's own baseline. That baseline reads `fleet degraded` because the PR-lane activity slot finds no synced content tree (`ENOENT`), not because of the plane, and the banner ranks row 5's failures above it; the connect card's refusals keep the plane, so no Connect is needed (#516: 6400333196, corrected 18:0x CET) · plan: planned 4 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S, #812 S (done: PR #813 merged 2026-10-25 18:03Z) · done 3 · added 2 (denominator sitting 2026-10-04: 5978785003 + 5978806870; #812 on 2026-10-25) · depends on: Vega's walk; one operator slot for the `[human]` half, which witnesses the return to `live` on the real plane · forecast: passed by Fri 2026-10-30 if the walk runs Tue 10-27 and the operator slot follows · next: the walk → Vega (Tue 10-27); then the operator slot
+Row state: row 5 · Ada (walker Julia, Wed Oct 28) · unknown · 2026-10-28 00:0xZ, installed build Institution `20d89be` / Brain `1bf8bd91` / engine `477b65bd9e` (13.3.1, staged 2026-10-27T14:43:15Z): no installed check has run yet. Vega's Tue 10-27 slot did not run, and Euclid had none before Thu. Candidate 3 (`ee6ab02`) and row 5's fixes (PR #427 `c91e90fb9`, PR #447 `87e4f1c4a`, PR #813 `568f665c9d`) are ancestors of `20d89be`, re-checked 2026-10-28; the walk's receipt names the build installed on its day. On candidate 2 the held run's baseline read `fleet degraded` for a reason that is not the plane (#516: 6400333196); receipt 0b re-reads it. The 10-25 line said `ready`, which is not one of the ROADMAP's four state words · plan: planned 4 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S, #812 S (done: PR #813 merged 2026-10-25 18:03Z) · done 3 · added 2 (denominator sitting 2026-10-04: 5978785003 + 5978806870; #812 on 2026-10-25) · depends on: Julia's walk; the operator's slot for the `[human]` half, Thu 10-29, agreed with the operator: about 15:05 CET, after Vega's row 3 sitting from 14:00 and the plane's daily backup (step list on #516: 6457088113), which witnesses the return to `live` on the real plane · forecast: passed by Fri 2026-10-30 if both halves pass on `20d89be` · next: the peer-side walk → Julia (Wed 10-28); then the `[human]` half → @tobiu (Thu 10-29)
 
 ## Problem scope
 
