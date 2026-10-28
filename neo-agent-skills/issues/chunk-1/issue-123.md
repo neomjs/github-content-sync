@@ -5,12 +5,13 @@ state: OPEN
 labels:
   - enhancement
   - ai
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-09-25T21:35:34Z'
-updatedAt: '2026-09-25T21:35:34Z'
+updatedAt: '2026-10-28T02:02:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/123'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -75,4 +76,19 @@ Origin Session ID: 4c0a5550-17ba-4752-9852-846afa537c86
 - 2026-10-03T18:00:00Z @neo-fable-clio cross-referenced by #138
 - 2026-10-09T21:43:51Z @neo-fable-clio cross-referenced by #150
 - 2026-10-19T03:13:56Z @neo-fable-mnemosyne cross-referenced by #191
+- 2026-10-28T02:01:11Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-10-28T02:02:20Z
+
+## Contract Ledger (`ticket-intake` §7 & `create-skill` PR-Open Gate)
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| `scripts/check-ticket-body.mjs` (`neo-agent-skills-ticket-body`, new) | `neomjs/neo-agent-skills#123`, `.agents/skills/ticket-create/references/design-authority.md` | Pure transport-free validator (`findTicketBodyViolations`, `hasDesignAuthorityLine`, `hasDefectExcuse`, `run`) with two arms: (1) passes when content carries `Design authority:` in either canonical grammar (`Design authority: "<quoted record sentence>"` / `Design authority: n/a — <reason>` or `Design authority: none found (searched: <sources>)`); (2) when absent, passes if the body carries at least one of the three defect excuses: a fenced crash/error block, a spec path or failing test title in Problem/Context, or a quoted `@`-JSDoc line; otherwise exits `1` pointing to `.agents/skills/ticket-create/references/design-authority.md`. | Exits `1` with unreadable `--body-file` or missing design-authority / defect-excuse evidence; rejects unknown CLI flags via strict `parseArgs`. | JSDoc (`@summary`, `@param`, `@returns`) + `.agents/skills/ticket-create/references/design-authority.md` | `node scripts/test-check-ticket-body.mjs` |
+| `.github/workflows/skill-corpus.yml` (`ticket-body` job + `corpus` step + tarball allow-list) | `neomjs/neo-agent-skills#123` AC-2 & AC-4, `.github/workflows/skill-corpus.yml` (`pr-body` sibling pattern at lines 99–138, 214–307) | Triggers on `issues: types: [opened, edited, reopened]`, gates `corpus` with `if: ${{ github.event_name != 'issues' }}`, and runs a `ticket-body` job (`if: ${{ github.event_name == 'issues' }}`) that fetches the live issue body via `github.rest.issues.get` and validates non-bot, non-epic `neo-` / `ai`-labeled issues with `scripts/check-ticket-body.mjs`. Adds `scripts/check-ticket-body.mjs` to the packed tarball allow-list and `scripts/test-check-ticket-body.mjs` to the exclusion list. | Bot issues and `epic`-labeled parent issues report unjudged (`exit 0`). | Inline workflow comments | `node scripts/test-check-ticket-body.mjs` + `skill-corpus.yml` CI |
+| `.agents/skills/ticket-create/references/design-authority.md` | `neomjs/neo-agent-skills#123` AC-3 (verified at line 7) | Retires the trailing sunset sentence (`*Retire this reference once a body lint enforces the line on behavior-change tickets.*`) while retaining the 6-line reference that `check-ticket-body.mjs` points to on failure. | `lint-skill-corpus.mjs` fails if reference integrity or budget regresses. | `.agents/skills/ticket-create/references/design-authority.md` (`-88 B`) | `node scripts/lint-skill-corpus.mjs --base origin/dev` |
+| `package.json` & `package-lock.json` | `neomjs/neo-agent-skills#123` AC-4, `scripts/check-version-bump.mjs` | Registers `"neo-agent-skills-ticket-body": "./scripts/check-ticket-body.mjs"` in `bin`, `"scripts/check-ticket-body.mjs"` in `files`, `node scripts/test-check-ticket-body.mjs` in `scripts.test`, and bumps `version` (`0.1.69` → `0.1.70`). | `check-version-bump.mjs` and tarball checks fail if missing. | `package.json` | `npm test` |
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session 58b07b45-1fe9-40ad-80f8-db0f380332b8. 🧭
+
+- 2026-10-28T02:08:21Z @neo-gemini-maryam cross-referenced by PR #228
 

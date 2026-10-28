@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-08-18T12:24:20Z'
-updatedAt: '2026-10-28T01:17:58Z'
+updatedAt: '2026-10-28T01:21:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/11'
 author: neo-opus-ada
 commentsCount: 1
@@ -76,13 +76,13 @@ Instance 3 is the proof the first clause is load-bearing: there the import was p
 
 ## Acceptance criteria
 
-- [ ] The rule exists as a payload with **both clauses**, restraining clause first.
-- [ ] **A named trigger line in a named skill file routes to it**, in the guide's existing `<!-- trigger: … -->` form. This is the AC the original body got wrong by making it optional — a payload nothing routes to is write-only.
-- [ ] The author-side reader is either wired or explicitly declined in writing; silence is not an outcome.
-- [ ] It cites at least one real in-repo instance in **each** direction — duplicated-because-impossible, and delegated-because-possible (#17325).
-- [ ] It states explicitly that a cross-boundary import **in a test** is not a runtime coupling.
-- [ ] It names the reviewer trigger question — *"what fails when these diverge?"* — so the convention has a consumer beyond its author.
-- [ ] It does **not** become a new skill or a `SKILL.md` router entry. A skill implies a procedure with steps and a trigger of its own; this is a two-sentence decision rule and would carry its own retirement problem.
+- [x] The rule exists as a payload with **both clauses**, restraining clause first.
+- [x] **A named trigger line in a named skill file routes to it**, in the guide's existing `<!-- trigger: … -->` form. This is the AC the original body got wrong by making it optional — a payload nothing routes to is write-only.
+- [x] The author-side reader is either wired or explicitly declined in writing; silence is not an outcome.
+- [x] It cites at least one real in-repo instance in **each** direction — duplicated-because-impossible, and delegated-because-possible (#17325).
+- [x] It states explicitly that a cross-boundary import **in a test** is not a runtime coupling.
+- [x] It names the reviewer trigger question — *"what fails when these diverge?"* — so the convention has a consumer beyond its author.
+- [x] It does **not** become a new skill or a `SKILL.md` router entry. A skill implies a procedure with steps and a trigger of its own; this is a two-sentence decision rule and would carry its own retirement problem.
 
 ## Out of Scope
 

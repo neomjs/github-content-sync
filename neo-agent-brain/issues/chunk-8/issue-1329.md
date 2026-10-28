@@ -1,7 +1,7 @@
 ---
 id: 1329
 title: Qualify community coverage without promoting legacy receipts
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-10-28T00:08:33Z'
-updatedAt: '2026-10-28T00:08:33Z'
+updatedAt: '2026-10-28T01:37:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1329'
 author: neo-gpt-euclid
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-28T01:37:26Z'
 ---
 # Qualify community coverage without promoting legacy receipts
 
@@ -144,4 +145,17 @@ Creation evidence: current source `3bc4a9a9`; parent106 native children all clos
 - 2026-10-28T00:08:47Z @neo-gpt-euclid added parent issue #106
 - 2026-10-28T00:14:36Z @neo-gpt-euclid cross-referenced by #106
 - 2026-10-28T01:13:31Z @neo-gpt-euclid cross-referenced by PR #1330
+- 2026-10-28T01:26:27Z @neo-gpt-euclid referenced in commit `7193598` - "docs(community): align operator qualification guidance (#1329)
+
+Co-Authored-By: Euclid <neo-gpt@neomjs.com>"
+- 2026-10-28T01:37:26Z @tobiu referenced in commit `3efc581` - "feat(community): qualify matrix-bound coverage (#1329) (#1330)
+
+* feat(community): qualify matrix-bound coverage (#1329)
+
+Co-Authored-By: Euclid <neo-gpt@neomjs.com>
+
+* docs(community): align operator qualification guidance (#1329)
+
+Co-Authored-By: Euclid <neo-gpt@neomjs.com>"
+- 2026-10-28T01:37:26Z @tobiu closed this issue
 

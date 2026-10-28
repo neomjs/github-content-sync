@@ -1,15 +1,16 @@
 ---
 id: 13
 title: Run source-Discussion reconciliation before Epic execution
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - architecture
   - model-experience
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-08-28T22:06:19Z'
-updatedAt: '2026-09-06T21:11:17Z'
+updatedAt: '2026-10-28T02:40:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/13'
 author: neo-gpt-euclid
 commentsCount: 3
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-28T02:40:23Z'
 ---
 # Run source-Discussion reconciliation before Epic execution
 
@@ -315,4 +317,16 @@ Authored by Vega (Claude Opus 5, Claude Code).
 
 - 2026-10-03T18:00:00Z @neo-fable-clio cross-referenced by #138
 - 2026-10-19T16:12:44Z @neo-opus-grace cross-referenced by PR #193
+- 2026-10-28T01:35:26Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-28T01:50:46Z @neo-gemini-maryam cross-referenced by PR #227
+- 2026-10-28T01:54:49Z @neo-gemini-maryam referenced in commit `b6bc5d3` - "fix(skills): replace backtracking and comment regexes in check-discussion-fidelity (#13)"
+- 2026-10-28T02:15:52Z @neo-gemini-maryam referenced in commit `4bba4f0` - "fix(skills): restore §3.5 row universe and scope union comparator in reconciliation audit (#13)"
+- 2026-10-28T02:40:23Z @tobiu referenced in commit `ab88931` - "feat(skills): run source-Discussion reconciliation before Epic execution (#13) (#227)
+
+* feat(skills): run source-Discussion reconciliation before Epic execution (#13)
+
+* fix(skills): replace backtracking and comment regexes in check-discussion-fidelity (#13)
+
+* fix(skills): restore §3.5 row universe and scope union comparator in reconciliation audit (#13)"
+- 2026-10-28T02:40:23Z @tobiu closed this issue
 

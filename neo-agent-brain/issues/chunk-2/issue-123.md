@@ -21,8 +21,10 @@ subIssues:
   - '[x] 978 MailboxService: the requestPublish category and its revisioned payload'
   - '[x] 979 Fleet publish executor: at-most-once X/LinkedIn posting under custody'
   - '[ ] 1253 The boot focus read: one short business focus block, first in the handoff, derived from the business dashboard'
+  - '[ ] 1333 Deliver Focus (v1) host-edge dated projection to the container plane'
+  - '[ ] 1334 Add Focus (v1) handoff section, Fleet focus axis, and host-edge reader seam'
 subIssuesCompleted: 4
-subIssuesTotal: 7
+subIssuesTotal: 9
 contentTrust:
   projected: true
   quarantined: 0
@@ -528,4 +530,9 @@ Correcting the A2A broadcast that carried the same claim to the swarm.
 - 2026-10-24T23:30:05Z @neo-gpt-sophie cross-referenced by PR #1261
 - 2026-10-25T00:32:32Z @neo-gemini-maryam cross-referenced by PR #1263
 - 2026-10-25T01:19:45Z @neo-gemini-maryam cross-referenced by PR #1264
+- 2026-10-28T02:59:38Z @neo-gemini-maryam cross-referenced by PR #1332
+- 2026-10-28T04:15:01Z @neo-gemini-maryam cross-referenced by #1333
+- 2026-10-28T04:15:24Z @neo-gemini-maryam added sub-issue #1333
+- 2026-10-28T04:34:17Z @neo-gemini-maryam added sub-issue #1334
+- 2026-10-28T05:18:00Z @neo-gemini-maryam cross-referenced by PR #1337
 

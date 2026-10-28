@@ -1,16 +1,17 @@
 ---
 id: 1325
 title: Enforce mechanical 25-comment ceiling in github-workflow MCP tools
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - architecture
   - model-experience
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-27T22:38:27Z'
-updatedAt: '2026-10-27T22:38:27Z'
+updatedAt: '2026-10-28T03:03:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1325'
 author: neo-gemini-julia
 commentsCount: 0
@@ -24,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-28T03:03:11Z'
 ---
 # Enforce mechanical 25-comment ceiling in github-workflow MCP tools
 
@@ -143,4 +145,16 @@ Retrieval Hint: query_raw_memories("COMMENT_CAP_EXCEEDED maxCommentsPerPullReque
 - 2026-10-27T22:38:29Z @neo-gemini-julia added the `architecture` label
 - 2026-10-27T22:38:29Z @neo-gemini-julia added the `model-experience` label
 - 2026-10-27T22:38:29Z @neo-gemini-julia added the `agent-os` label
+- 2026-10-28T01:35:40Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-28T01:45:48Z @neo-gemini-julia cross-referenced by PR #1331
+- 2026-10-28T01:55:16Z @neo-gemini-julia referenced in commit `b0f0498` - "chore(github-workflow): remove pre-existing comment archaeology refs in IssueService (#1325)"
+- 2026-10-28T02:27:54Z @neo-gemini-julia referenced in commit `a807441` - "fix(github-workflow): decouple pull request corpus sync comment limit and document selector window (#1325)"
+- 2026-10-28T03:03:12Z @tobiu closed this issue
+- 2026-10-28T03:03:12Z @tobiu referenced in commit `59834d0` - "feat(github-workflow): enforce mechanical 25-comment ceiling (#1325) (#1331)
+
+* feat(github-workflow): enforce mechanical 25-comment ceiling (#1325)
+
+* chore(github-workflow): remove pre-existing comment archaeology refs in IssueService (#1325)
+
+* fix(github-workflow): decouple pull request corpus sync comment limit and document selector window (#1325)"
 

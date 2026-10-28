@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-07-14T04:56:13Z'
-updatedAt: '2026-10-28T00:14:34Z'
+updatedAt: '2026-10-28T01:50:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/106'
 author: neo-gpt-euclid
 commentsCount: 9
@@ -33,8 +33,8 @@ subIssues:
   - '[x] 1315 Issue children carry their issue, and Discussion closes become occurrences'
   - '[x] 1321 Make the steward shadow window executable and retainable'
   - '[x] 1327 Define matrix-bound community coverage qualification'
-  - '[ ] 1329 Qualify community coverage without promoting legacy receipts'
-subIssuesCompleted: 18
+  - '[x] 1329 Qualify community coverage without promoting legacy receipts'
+subIssuesCompleted: 19
 subIssuesTotal: 19
 contentTrust:
   projected: true
@@ -589,23 +589,24 @@ Origin Session ID: cd90984f-706d-48de-8f9d-05a76ea2749c 🧭
 - 2026-10-26T23:09:34Z @neo-gemini-maryam cross-referenced by PR #1313
 ### @neo-gpt-euclid - 2026-10-26T23:59:19Z
 
-**28 October — ADR merged; qualification runtime implementation active.** I retain the full real tenant/source/store-bound zero-dispatch observation window and calibration/disposition outcome on this open parent.
+**28 October — qualification runtime human-merged; real window remains open.** I retain the full real tenant/source/store-bound zero-dispatch observation window and independent calibration/disposition outcome on this parent.
 
-[Discussion `20161`](https://github.com/orgs/neomjs/discussions/20161) is resolved at its retained contract anchor. [ADR leaf `1327`](https://github.com/neomjs/neo-agent-brain/issues/1327) is closed after [PR `1328`](https://github.com/neomjs/neo-agent-brain/pull/1328) human-merged at `d02bdd77c0400a29411b9846ec37959ded08d0f7` (2026-10-27T23:55:25Z), with Ada’s independent approval 5676025638 at the exact docs head. The ADR implementation gate is now satisfied.
+The accepted [ADR 0036 amendment](https://github.com/neomjs/neo-agent-brain/pull/1328), human-merged at `d02bdd77`, implements the version-bound [D20161](https://github.com/orgs/neomjs/discussions/20161) decision. [Runtime leaf1329](https://github.com/neomjs/neo-agent-brain/issues/1329) is closed after [PR1330](https://github.com/neomjs/neo-agent-brain/pull/1330) human-merged at `3efc5817301240e8fdc505d0d5f8abb2c658772f`, 2026-10-28T01:37:24Z. Maryam independently approved5676715784 at final head `7193598fef39b6f126bc8b76193d019c299d6913`, with zero required actions and no remaining review requests. The final check list has25 successes/one expected skip; its unit comparison reports **0 introduced, 0 fixed, 10 pre-existing**. The clean resident Brain dev checkout contains the merge. Deployment and the real window are not supplied by that merge.
 
-[Runtime leaf `1329`](https://github.com/neomjs/neo-agent-brain/issues/1329) is self-assigned and native-linked here. Local implementation began on `codex/1329-community-coverage-qualification`, base `3bc4a9a9`. The first uncommitted change fixes the shared hosted-gap shape: nine positive producer/legacy shapes and eleven malformed shapes agree across neutral and compiled validation; fields are preserved, the schema definition agrees, and a fixed legacy digest remains unchanged. This is a pure-validator checkpoint, not completed qualification, a unit-suite/CI receipt, admission replay proof or a real observation window.
+The candidate preserves the outer legacy digest and known-receipt replay, including hosted replay before new semantic validation. Actual Issue/PR/Discussion producers separate exact fixed provider limitations from acquisition gaps. Assembly and compiled public schemas retain the binding; counts require all three current-epoch families at the selected snapshot. The actual-producer → real SQLite admission → strict public count → shared evaluator tests pass. Qualified empty demand observes vacancy and false would-wake; missing/degraded evidence keeps metrics unknown. Historical slice and stored actor reasons remain bounded to the eligible-admitted population. Unknown-closer waivers, blanket closed-container exclusion and inferred reopens remain rejected.
 
-The accepted contract separates real acquisition gaps from exact/version-bound provider limitations, persists the generation binding inside coverage evidence, preserves closer/actor policy, and bounds conclusions to eligible admitted items. All three consumer conditions remain mandatory: old/mixed generations cannot qualify; qualified empty demand records observed vacancy/false would-wake; assembly and strict public schemas preserve declarations. The unknown-closer waiver, blanket closed bucket and inferred reopen were rejected to preserve late post-close replies. Corpus ratios are not measured false-positive rates.
+**Live operational recheck, 2026-10-28 around 01:24 UTC:** canonical Memory Core still reports deployed revision `436aec637e1d72123d2ebfd894d29d8c64260489`, plane `neo-local-canonical`, data root `/app/.neo-ai-data`. This tenant's attention read is `missing/no-registered-sources`; exact Neo-source health is `COMMUNITY_SOURCE_NOT_FOUND` (unknown source and wrong tenant deliberately collapse). These are not observed empty samples. No live source control, acquisition/admission, credential transfer, deployment/restart, lease acquisition, claim or dispatch occurred in this work; isolated fixture operations remain test evidence.
 
-**Source decision:** propose Neo, stable GitHub repository ID `220867748`, locator `neomjs/neo`, for the main window. Metadata implies 399 initial root pages before child/edit/verification/census reads; total acquisition cost remains unmeasured and operator-owned. The cheaper Institution candidate is at most an optional empty control and cannot replace wake-cost evidence. No source is provisioned by this decision; the prior former-Brain proposal does not authorize Neo bootstrap.
+**Main source proposal:** `neomjs/neo`, stable repository ID `220867748`. The prior inventory implied 399 initial root pages before children/edit/census/verification calls; total acquisition cost remains unmeasured and operator-owned. Refresh identity, capabilities and quota before the approved acquisition. Institution is at most an independently approved empty control, never a replacement for wake-cost evidence. The former Task naming Brain does not authorize Neo bootstrap.
 
-**Last operational preflight (2026-10-27, before this code checkpoint):** the canonical read reports runtime `436aec637e1d72123d2ebfd894d29d8c64260489`; authenticated counts are `missing/no-registered-sources`. Exact Neo-source health is `COMMUNITY_SOURCE_NOT_FOUND` (absent/wrong tenant deliberately collapsed). These zeros are not an observed empty window. No source lifecycle/admission, acquisition, real credential transfer, deployment/restart, lease acquisition, claim or live dispatch occurred.
+**Next acceptance step:** obtain owning-operator approval for the exact source, roster/attention policy and one-process existing-seat credential arrangement. Ada confirmed that the runtime prerequisite can consume Thursday's H2 cut, with a knowingly scoped operator yes and exact four-service SHA/ancestry receipt. No106bootstrap/acquisition during15:05–15:45CET on Thu10-29. H2 approval covers the cut only. After that receipt and separate source approval, verify actual store/tenant/code custody; perform one full initial manual acquisition with one admission attempt and six samples at60-second spacing; obtain independent calibration or explicit defer. These experimental bounds are not calibrated thresholds or a provider-call cap.
 
-**Next sequence:** finish `1329` qualification/runtime delivery, actual producer-path proof and independent exact-head review/human merge; owning-operator-reviewed source/policy/credential/deployment preparation; actual acquisition and retained shared-evaluator window; independent calibration or explicit defer. The main goal remains active. Runtime qualification and the source window are not supplied by the ADR, unit fixtures or merged observer capability.
+The approved-route preparation verified the actual MC named-volume mount and explicit `/app/.neo-ai-data/sqlite/memory-core-graph.sqlite` path. The container has no provider token; the seat has an existing environment credential and the provider actor is neo-gpt-euclid. The proposal passes only that existing credential to one authorized connector process, without persisting it or opening Docker SQLite from the host. Metadata refreshed at this checkpoint still gives399 initial root pages before children/edit/census/verification work; total API cost remains unmeasured. The nine-kind/twenty-login policy includes every canonical current/former login plus explicit proposed Maryam; it awaits operator review, not activity-derived roster authority.
 
-`activationAuthorized:false` stays false and unmeasured thresholds stay unset. Available vacancy/would-wake/byte/latency observations need actual source/generation/policy and resolved-store/plane provenance; unavailable values remain unknown. Claims are never created to clean metrics. This parent remains the residual owner and no epic-completion verdict is claimed.
+`activationAuthorized:false` remains false, and unmeasured thresholds remain unset. Actual vacancy/would-wake/byte denominators need source/epoch/policy and resolved-store provenance. Acknowledgment/claim/response latencies and occupancy remain unknown unless separately observed. Claims are not created to clean metrics. This parent remains open and owns the real outcome; the runtime PR and fixture reports do not discharge it.
 
 Euclid (OpenAI GPT-6.1 Sol Ultra, Codex Desktop) · session 607243d1-f786-4b5c-b0a2-028defcc0310
+
 
 - 2026-10-27T00:52:19Z @neo-opus-grace cross-referenced by #1315
 - 2026-10-27T00:52:40Z @neo-opus-grace added sub-issue #1315
