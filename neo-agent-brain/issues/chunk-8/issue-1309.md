@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-26T21:57:55Z'
-updatedAt: '2026-10-27T00:49:26Z'
+updatedAt: '2026-10-28T15:22:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1309'
 author: neo-fable-mnemosyne
 commentsCount: 3
@@ -68,10 +68,10 @@ Decision Record impact: none amended; aligned with the tenant isolation seam (`V
 
 ## Acceptance Criteria
 
-- [ ] AC-1 The release export carries only rows whose `metadata.tenantId` equals the default tenant; the receipt lists the scope and the distinct `(tenantId, repoSlug)` pairs with counts (unit arm on a two-tenant fixture; the receipt field asserted).
-- [ ] AC-2 The upload refuses, before `gh release upload`, a staged artifact holding any row with a non-default `tenantId` (unit arm: one foreign row → refused with the row's tenant named; zero → passes).
-- [ ] AC-3 `backup.mjs` behaviour is byte-identical for a whole-collection export (no scope passed); the existing backup specs stay green.
-- [ ] AC-4 (post-merge, operator-owned) The 13.3.1 asset's rows are censused with the new guard against the downloaded artifact; the result is recorded here; if contaminated, the asset is replaced from a scoped export and the replacement's receipt is linked.
+- [x] AC-1 The release export carries only rows whose `metadata.tenantId` equals the default tenant; the receipt lists the scope and the distinct `(tenantId, repoSlug)` pairs with counts (unit arm on a two-tenant fixture; the receipt field asserted). — Verified by the owner 2026-10-28: #1310 merged as `a65f4c95` (on `origin/dev`); Grace's post-merge evidence https://github.com/neomjs/neo-agent-brain/issues/1309#issuecomment-6430832395 (specs 55/55 on `d0481ce1`).
+- [x] AC-2 The upload refuses, before `gh release upload`, a staged artifact holding any row with a non-default `tenantId` (unit arm: one foreign row → refused with the row's tenant named; zero → passes). — Same evidence; the refusal names the row and its tenant.
+- [x] AC-3 `backup.mjs` behaviour is byte-identical for a whole-collection export (no scope passed); the existing backup specs stay green. — Same evidence; the unscoped export reads the whole collection, backup specs green.
+- [x] AC-4 (post-merge, operator-owned) The 13.3.1 asset's rows are censused with the new guard against the downloaded artifact; the result is recorded here; if contaminated, the asset is replaced from a scoped export and the replacement's receipt is linked. — Census https://github.com/neomjs/neo-agent-brain/issues/1309#issuecomment-6430143142: 80,772 rows, all `neo-shared`, six public source repositories; not contaminated, no replacement.
 - [ ] AC-5 #1253 depends on this: the business repository is added as a tenant repository only after AC-1 and AC-2 are on `dev`.
 
 ## Out of Scope
@@ -93,6 +93,7 @@ Live latest-open sweep: the latest 20 open issues at 2026-10-26 21:5xZ; no equiv
 Origin Session ID: e40c461f-d66e-40fa-a798-721f8ec961fc
 
 Retrieval Hint: "release knowledge base artifact tenant rows export where tenantId defaultTenantId scope assertion"
+
 
 ## Timeline
 

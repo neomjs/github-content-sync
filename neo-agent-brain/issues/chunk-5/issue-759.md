@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-02T14:35:17Z'
-updatedAt: '2026-10-13T15:36:52Z'
+updatedAt: '2026-10-28T14:11:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/759'
 author: neo-opus-grace
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues:
   - '[x] 760 One producer observes every open PR and projects each seat''s open work'
@@ -381,4 +381,30 @@ Origin Session ID: ec56d748-750c-4954-9fba-09ad1694784e
 - 2026-10-17T22:27:02Z @neo-gemini-julia cross-referenced by PR #1089
 - 2026-10-20T09:26:22Z @neo-opus-ada cross-referenced by #1221
 - 2026-10-20T09:52:39Z @neo-gemini-julia cross-referenced by PR #1222
+### @neo-gpt-emmy - 2026-10-28T14:11:06Z
+
+## Merge-notification follow-through — operator request, 28 October
+
+The operator still has to announce completed merges manually. He requested automatic merge notifications, then explicitly left the audience **TBD: author-only or a team broadcast**. An automatic broadcast could replace the author's own mechanical post-merge announcement. **Dependabot-authored PR merges must be excluded as noise**, whichever audience is chosen.
+
+This belongs on this existing outcome, not a duplicate feature ticket. #761 closed through #1009 on 13 October, and the current source already contains the author-only path:
+
+- [`openWorkReducer.mjs`](https://github.com/neomjs/neo-agent-brain/blob/c09f24dfa0151cf91d64b2d55e5521b883b2c76e/ai/services/fleet/openWorkReducer.mjs#L49) classifies GitHub `Bot` authors as outside, which excludes Dependabot from the existing seat-author wake.
+- [`openWorkWakes.mjs`](https://github.com/neomjs/neo-agent-brain/blob/c09f24dfa0151cf91d64b2d55e5521b883b2c76e/ai/services/fleet/openWorkWakes.mjs#L199) consumes observed `merged` transitions and creates `post-merge` wakes for the owning seat, with baseline and deduplication handling.
+- [`wireFleetOpenWorkWakes.mjs`](https://github.com/neomjs/neo-agent-brain/blob/c09f24dfa0151cf91d64b2d55e5521b883b2c76e/ai/services/fleet/wireFleetOpenWorkWakes.mjs#L228) requires enablement, fresh observations and retained certification before sending.
+
+I compared these modules and `openWorkProducer.mjs` with live `dev`; all four blobs match the inspected resident source. This verifies implementation presence, **not installed enablement or delivered notifications**. The prior [post-merge handoff](https://github.com/neomjs/neo-agent-brain/issues/761#issuecomment-6152660489) already assigns deployed observation, activation and delivery follow-through to this parent.
+
+### Remaining decision and acceptance
+
+1. Establish the installed producer version, repository/seat coverage, effective enablement and certification/delivery state before adding another mechanism. Do not infer the cause of missing notifications from source defaults alone.
+2. Resolve **author-only versus automatic broadcast** here before changing the graduated audience. If broadcast is selected, decide wake behavior explicitly and remove the need for authors to repeat the same mechanical merge announcement; substantive author follow-up remains distinct.
+3. Preserve **Dependabot exclusion before notification publication**, including any future broadcast route. The current bot-to-outside filter must not be bypassed merely because a broadcast has no individual recipient.
+4. Retain a live non-bot merge receipt linking the observed merge to the intended recipient/audience, plus a Dependabot negative control and duplicate/restart controls. An absent PR or closed-unmerged PR is not a merge event; no backlog flood on activation.
+
+No new poller, source change or live wake enablement was performed in this pass. The audience is unresolved; this comment does not amend the existing author-only contract by implication.
+
+Origin Session ID: 88e435a5-ba77-423e-b2f2-3e07453495c6
+Retrieval Hint: manual merge confirmations; automatic author versus broadcast notification; Dependabot exclusion; #761 source versus #759 installed delivery.
+
 

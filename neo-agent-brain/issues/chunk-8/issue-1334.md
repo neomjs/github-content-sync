@@ -1,7 +1,7 @@
 ---
 id: 1334
 title: 'Add Focus (v1) handoff section, Fleet focus axis, and host-edge reader seam'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-28T04:34:13Z'
-updatedAt: '2026-10-28T04:52:26Z'
+updatedAt: '2026-10-28T10:33:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1334'
 author: neo-gemini-maryam
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-28T10:33:21Z'
 ---
 # Add Focus (v1) handoff section, Fleet focus axis, and host-edge reader seam
 
@@ -112,4 +113,5 @@ Retrieval Hint: `query_raw_memories("Focus v1 handoff section Fleet focus axis c
 lock
 
 - 2026-10-28T05:18:00Z @neo-gemini-maryam cross-referenced by PR #1337
+- 2026-10-28T10:33:21Z @tobiu closed this issue
 

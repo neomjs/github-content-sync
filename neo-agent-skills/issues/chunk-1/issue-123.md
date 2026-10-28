@@ -1,14 +1,14 @@
 ---
 id: 123
 title: 'Nothing enforces the Design-authority line: a ticket that calls an existing behavior wrong can still ship without it'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-09-25T21:35:34Z'
-updatedAt: '2026-10-28T02:02:20Z'
+updatedAt: '2026-10-28T13:01:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/123'
 author: neo-fable-mnemosyne
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-28T12:44:28Z'
 ---
 # Nothing enforces the Design-authority line: a ticket that calls an existing behavior wrong can still ship without it
 
@@ -49,12 +50,20 @@ A body check with two arms, keyed the way Ada framed it:
 
 The check does not decide from prose whether a ticket "calls an existing behavior wrong"; arm 2 fires for every ticket without the line, and the three excuses are what a defect ticket carries anyway. Placement is decided in this leaf: a `scripts/check-ticket-body.mjs` shipped in the package for the MCP `create_issue` path to run, or a workflow on issue events; the package tarball allow-list in `skill-corpus.yml` grows by that one script. Then the reference's sunset line is retired.
 
+## Contract Ledger
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `neo-agent-skills-ticket-body` (`scripts/check-ticket-body.mjs` CLI / `run(argv, options)`) | `#123` / `.agents/skills/ticket-create/references/design-authority.md` | Reads a ticket body from `--body-file <path>` or `stdin`; exits `0` when `findTicketBodyViolations({body}).ok` is `true` (satisfied by `design-authority` or `defect-excuse`). | Exits `1` and writes diagnostic pointing to `.agents/skills/ticket-create/references/design-authority.md` when neither arm holds or when `--body-file` cannot be read; throws on unknown CLI flags (`strict: true`). | JSDoc in `scripts/check-ticket-body.mjs` + `.agents/skills/ticket-create/references/design-authority.md` | `scripts/test-check-ticket-body.mjs` (unit + packed tarball CLI) |
+| `findTicketBodyViolations({body})`, `hasDesignAuthorityLine(body)`, `hasDefectExcuse(body)` (`scripts/check-ticket-body.mjs`) | `#123` / `.agents/skills/ticket-create/references/design-authority.md` | Pure, network-free validator. Arm 1 (`design-authority`) passes when prose outside code fences/tables carries `Design authority: "<record sentence, quoted>"`, `Design authority: none found (searched: <non-placeholder list>)`, or `Design authority: n/a — <reason>`. Arm 2 (`defect-excuse`) passes when the body carries a fenced crash/error/stack block (`crash`), a spec/test path or named failing test title in `## Context` / `## The Problem` (`red`), or a quoted/blockquoted `@`-JSDoc clause (`jsdoc`). | Returns `{ok: false, satisfiedBy: null, excuses, violations: ['Ticket body carries neither a valid `Design authority:` line nor a defect excuse. See .agents/skills/ticket-create/references/design-authority.md.']}` when neither arm holds. | JSDoc in `scripts/check-ticket-body.mjs` + `.agents/skills/ticket-create/references/design-authority.md` | `scripts/test-check-ticket-body.mjs` |
+| `.github/workflows/skill-corpus.yml#ticket-body` (`on.issues.types: [opened, edited, reopened]`) | `#123` (AC-2, AC-3) | Scope rule: runs on non-bot, non-`epic` issues authored by `neo-*` or labeled `ai`. Fetches live issue body via `github.rest.issues.get` into a temp file and runs `node scripts/check-ticket-body.mjs --body-file "${BODY_FILE}"`. On pass, removes label `needs-design-authority` if present (`404` ignored). | On validation failure, job fails (`exit 1`) and applies label `needs-design-authority` via `github.rest.issues.addLabels` (with `issues: write` scoped to `ticket-body`) so the failure reaches the ticket. | `.agents/skills/ticket-create/references/design-authority.md` | `scripts/test-check-ticket-body.mjs` (workflow contract) + Post-Merge Validation live test-issue receipt on `dev` |
+
 ## Acceptance Criteria
 
-- [ ] AC-1 Red-first arms: a body without the line and without any of the three excuses fails; the same body with the line passes (both grammars); the same body with a fenced error, a spec path, or a quoted JSDoc line passes.
-- [ ] AC-2 The check runs on the path tickets are created through (the MCP `create_issue` validator or a workflow on issue events), not only by hand — the placement named in the PR body with its wiring receipt.
-- [ ] AC-3 `design-authority.md`'s sunset sentence is retired in the same PR; the reference itself stays (it is what the failure message points at).
-- [ ] AC-4 The package tarball allow-list and the version bump follow the repository's rules (`skill-corpus.yml`).
+- [x] AC-1 Red-first arms: a body without the line and without any of the three excuses fails; the same body with the line passes (both grammars); the same body with a fenced error, a spec path, or a quoted JSDoc line passes.
+- [x] AC-2 The check runs on the path tickets are created through (the MCP `create_issue` validator or a workflow on issue events), not only by hand — the placement named in the PR body with its wiring receipt.
+- [x] AC-3 `design-authority.md`'s sunset sentence is retired in the same PR; the reference itself stays (it is what the failure message points at).
+- [x] AC-4 The package tarball allow-list and the version bump follow the repository's rules (`skill-corpus.yml`).
 
 ## Out of Scope
 
@@ -67,6 +76,7 @@ Deciding from prose semantics whether a ticket calls an existing behavior wrong;
 Live latest-open sweep: the 20 latest open issues of this repository at 2026-09-25T21:33Z — no ticket-body lint (#86 = AC table vs body; #62 = sweeps vs closed state). A2A in-flight sweep: no claim on it. Unassigned on purpose: a gfi-door leaf for whoever takes the lint; its author (me) stewards the gate.
 
 Origin Session ID: 4c0a5550-17ba-4752-9852-846afa537c86
+
 
 ## Timeline
 
@@ -91,4 +101,13 @@ Origin Session ID: 4c0a5550-17ba-4752-9852-846afa537c86
 Authored by Maryam (Gemini 4 Argon, Antigravity). Session 58b07b45-1fe9-40ad-80f8-db0f380332b8. 🧭
 
 - 2026-10-28T02:08:21Z @neo-gemini-maryam cross-referenced by PR #228
+- 2026-10-28T11:10:45Z @neo-gemini-maryam referenced in commit `fdc799a` - "feat(skills): enforce Design-authority line and defect excuses on ticket bodies (#123)"
+- 2026-10-28T12:19:18Z @neo-gemini-maryam referenced in commit `4fda73e` - "fix(skills): align design-authority reference and issue-failure label (#123)"
+- 2026-10-28T12:44:28Z @tobiu referenced in commit `88c16f3` - "feat(skills): enforce Design-authority line and defect excuses on ticket bodies (#123) (#228)
+
+* feat(skills): enforce Design-authority line and defect excuses on ticket bodies (#123)
+
+* fix(skills): align design-authority reference and issue-failure label (#123)"
+- 2026-10-28T12:44:28Z @tobiu closed this issue
+- 2026-10-28T12:47:07Z @neo-gemini-maryam cross-referenced by #230
 

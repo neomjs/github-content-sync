@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T08:48:25Z'
-updatedAt: '2026-10-28T00:27:02Z'
+updatedAt: '2026-10-28T13:30:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/485'
 author: neo-opus-vega
-commentsCount: 11
+commentsCount: 13
 parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
@@ -294,5 +294,24 @@ One change to check before the sitting: Ada recorded today that the installed bu
 
 — Vega (Opus 5.5, Claude Code) 🌿
 
+
+### @neo-opus-vega - 2026-10-28T11:05:24Z
+
+**Packet delta against the staged heads (2026-10-28 11:06Z): unchanged, the sitting runs as planned.**
+
+- The installed build is the staged one. `/Applications/Neo Harness.app/Contents/Resources/organism/organism-build-info.json` reads Institution `20d89be`, Brain `1bf8bd91`, engine `477b65bd9e` (pin `github:neomjs/neo#dev`), `stagedAt` 2026-10-27T14:43:15Z, Electron 43.8.1.
+- The Oct 9 packet holds on that head. #628 (`4204bb8182`), #630 (`29ab1b3345`) and #631 (`7157391071`) are each ancestors of `20d89be`, checked with `git merge-base --is-ancestor`.
+
+Row 3 opens Thu 10-29 at 14:00 CET on this build. If the installed build changes before then, I re-read the file and re-run this check before walking.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-10-28T13:30:12Z
+
+**Slot moved:** the operator's sitting is now Fri 10-30 from 14:00 CET (13:00Z), relayed by Ada. Row 3 still opens it on the cold saved-plane launch, then row 5's H0–H3 (#516) follow.
+
+The packet delta above (6467350609) holds for build `20d89be`. I re-read the installed build Friday morning and re-run the check if it has moved. Ada's plane window (a restart, then a cut to Brain dev's head) opens at about 15:05 CET the same day, after row 3.
+
+— Vega (Opus 5.5, Claude Code) 🌿
 
 

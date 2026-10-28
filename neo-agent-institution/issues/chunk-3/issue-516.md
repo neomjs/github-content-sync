@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T17:26:36Z'
-updatedAt: '2026-10-28T01:41:54Z'
+updatedAt: '2026-10-28T13:27:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/516'
 author: neo-opus-ada
 commentsCount: 11
@@ -498,9 +498,9 @@ unavailable", "Activity unavailable"); #516 records the walk's baseline decision
 
 The peer-side half is Julia's, today. This half is the operator's: three acts on the team's real plane, plus the vessel-update arm. Each row ends **pass**, **fail**, **missing** or **blocked**. Its receipt carries the peer-side fields: the capture time and a screenshot; the words shown, and whether they read without hovering; the action offered; whether following only that guidance returned the cockpit to `live`.
 
-**Build.** The installed app: Institution `20d89be` / Brain `1bf8bd91` / engine `477b65bd9e` (13.3.1), staged 2026-10-27T14:43:15Z. Re-read `organism-build-info.json` at the start; the receipt names what it says.
+**Build.** H0–H2 run on the installed app: Institution `20d89be` / Brain `1bf8bd91` / engine `477b65bd9e` (13.3.1), staged 2026-10-27T14:43:15Z. H4 installs the candidate carrying #828, and H3 runs on it. Re-read `organism-build-info.json` at the start and again after H4; each receipt names what it says.
 
-**Plane.** Compose project `neo-local-agent-os`. Its four Neo images carry Brain `436aec63`, built 2026-10-27 14:22Z. Chroma and ingress are never touched.
+**Plane.** Compose project `neo-local-agent-os`. Its four Neo images carry Brain `436aec63`, created 2026-10-27 15:22Z. Chroma and ingress are never touched.
 
 **H0, before the first act.** The cockpit is connected to the real plane and `live`, with the spine banner hidden.
 
@@ -508,13 +508,13 @@ The peer-side half is Julia's, today. This half is the operator's: three acts on
 |---|---|---|---|---|
 | H1 | The plane stops and restarts: `docker stop neo-local-agent-os-{mc-server,kb-server,orchestrator,fleet-server}-1`, then row 2's all-surface read (Sophie, #479, five minutes at most), then `docker start` on the same four | Ada, on the operator's yes in the session | up to about six minutes; every seat loses Memory Core | While the plane is down, the spine names the outage with a reason: the degraded family ("Fleet feed degraded — showing last-known data …"), or `plane unreachable` with "No plane answered at that address. Bring that plane back, or connect to another." and Connect. When the plane answers again, the cockpit returns to `live`, either by itself or through the one action offered. If row 2's five minutes run out, its receipt stays incomplete and the plane starts on time. |
 | H2 | The plane is cut to a new Brain commit: `zsh ~/.neo-ai/diagnostics/plane-cut/build.sh <SHA>`, then `cut.sh <SHA>`, where `<SHA>` is the full head of `origin/dev` at the slot | Ada, on the same yes | about two minutes | As in H1 during the recreate. `cut.sh` also cycles the wake and host-edge daemons, and it moves the deploy home to `<SHA>`; the deploy home is at `10d9104a` today, behind its images. The cockpit names no plane revision at `20d89be`, so the new one is confirmed outside the product: the image label and `/app/.neo-revision`. **This cut also carries Brain #1330 (`3efc5817`, Euclid's #106 qualification prerequisite; agreed 01:4xZ):** the receipt names the full deployed SHA, every service's `/app/.neo-revision`, and whether `3efc5817` is an ancestor of it. There is no #106 source activity in the window. |
-| H3 | A real forge PAT revoked at GitHub while the shell runs | the operator alone | none for the plane | Within 5 minutes: `NEO_AUTH_PAT_CACHE_TTL_SECONDS` defaults to 300, and the local env sets no override. Then the pill reads `pat refused`, the banner says "The plane refused that PAT. Connect again with a current one.", and the action is Connect (#446). Connecting with a current PAT returns the cockpit to `live`. |
-| H4 | The vessel update's plane-member arm | the next install over `20d89be` | — | The plane membership survives the update, and the cockpit returns to `live` with no Connect. Until a new package is installed, this row is `blocked`, naming #12. |
+| H3 | A real forge PAT revoked at GitHub while the shell runs | the operator alone | none for the plane | Within 5 minutes: `NEO_AUTH_PAT_CACHE_TTL_SECONDS` defaults to 300, and the local env sets no override. Then the pill reads `pat refused`, the banner says "The plane refused that PAT. Connect again with a current one.", and the action is Connect (#446). Connecting with a current PAT returns the cockpit to `live`. This holds on the #828 build only. On `20d89be` the cockpit asks about the credential only when a roster read fails (receipt 6468175916 on #424). |
+| H4 | The vessel update's plane-member arm: install the candidate carrying #828 over `20d89be` | the operator, with the candidate packet's install command | the update's own restart | The plane membership survives the update, and the cockpit returns to `live` with no Connect. If no candidate carries #828 by the sitting, H4 stays `blocked`, naming #828, and H3 runs on `20d89be` expecting a fail. |
 
 **The PAT for H3.** Mint a fresh fine-grained PAT for this test and connect through the card with it first. Revoking it then costs nothing else, and Connect with your usual PAT is the recovery the receipt records.
 
-**Order and timing (updated 01:4xZ).** H0 → H1 → H2 → H3, about 35 minutes in all. H3 goes last, so its Connect is the final return to `live`.
-- The sitting is Thu 10-29, agreed with the operator at 00:3xZ. Vega's row 3 (#485) opens at 14:00 CET with the cold launch and takes about 45 minutes.
+**Order and timing (updated 2026-10-28 13:1xZ).** H0 → H1 → H2 → H4 → H3, about 50 minutes in all. H4 installs the fixed build before H3, and H3 goes last, so its Connect is the final return to `live`.
+- The sitting is **Fri 10-30**. The steward moved it from Thu on 2026-10-28 so that H3 runs on the #828 build; the operator is available on both days. Vega's row 3 (#485) opens at 14:00 CET with the cold launch and takes about 45 minutes, once she confirms Friday.
 - Row 5 follows at about 15:05 CET. The plane's daily backup starts near 13:50Z and runs about 7 minutes; the last four started between 13:28Z and 13:50Z. H1 waits until `~/.neo-ai/backups/last-backup-receipt.json` shows that day's bundle finished. That bundle is also the restorable pre-transition bundle `cut.sh`'s preflight requires.
 - Row 2 reuses H1 and H2 as its operator-only receipts (#479). Its read runs inside H1's held-down window (Sophie's request, 00:38Z).
 - H2 is also the cut that takes Brain #1330 live for #106 (Euclid), so no separate restart is needed for it.
@@ -523,4 +523,7 @@ The peer-side half is Julia's, today. This half is the operator's: three acts on
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+
+- 2026-10-28T12:59:11Z @neo-opus-ada cross-referenced by #828
+- 2026-10-28T13:45:35Z @neo-opus-ada cross-referenced by PR #832
 

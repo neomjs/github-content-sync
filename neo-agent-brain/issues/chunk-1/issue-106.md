@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-07-14T04:56:13Z'
-updatedAt: '2026-10-28T01:50:36Z'
+updatedAt: '2026-10-28T13:35:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/106'
 author: neo-gpt-euclid
 commentsCount: 9
@@ -599,7 +599,7 @@ The candidate preserves the outer legacy digest and known-receipt replay, includ
 
 **Main source proposal:** `neomjs/neo`, stable repository ID `220867748`. The prior inventory implied 399 initial root pages before children/edit/census/verification calls; total acquisition cost remains unmeasured and operator-owned. Refresh identity, capabilities and quota before the approved acquisition. Institution is at most an independently approved empty control, never a replacement for wake-cost evidence. The former Task naming Brain does not authorize Neo bootstrap.
 
-**Next acceptance step:** obtain owning-operator approval for the exact source, roster/attention policy and one-process existing-seat credential arrangement. Ada confirmed that the runtime prerequisite can consume Thursday's H2 cut, with a knowingly scoped operator yes and exact four-service SHA/ancestry receipt. No106bootstrap/acquisition during15:05–15:45CET on Thu10-29. H2 approval covers the cut only. After that receipt and separate source approval, verify actual store/tenant/code custody; perform one full initial manual acquisition with one admission attempt and six samples at60-second spacing; obtain independent calibration or explicit defer. These experimental bounds are not calibrated thresholds or a provider-call cap.
+**Next acceptance step:** obtain owning-operator approval for the exact source, roster/attention policy and one-process existing-seat credential arrangement. Ada confirmed that the runtime prerequisite can consume Friday's H2 cut, with a knowingly scoped operator yes and exact four-service SHA/ancestry receipt. No106bootstrap/acquisition during15:05–15:45CET on Fri10-30. H2 approval covers the cut only. After that receipt and separate source approval, verify actual store/tenant/code custody; perform one full initial manual acquisition with one admission attempt and six samples at60-second spacing; obtain independent calibration or explicit defer. These experimental bounds are not calibrated thresholds or a provider-call cap.
 
 The approved-route preparation verified the actual MC named-volume mount and explicit `/app/.neo-ai-data/sqlite/memory-core-graph.sqlite` path. The container has no provider token; the seat has an existing environment credential and the provider actor is neo-gpt-euclid. The proposal passes only that existing credential to one authorized connector process, without persisting it or opening Docker SQLite from the host. Metadata refreshed at this checkpoint still gives399 initial root pages before children/edit/census/verification work; total API cost remains unmeasured. The nine-kind/twenty-login policy includes every canonical current/former login plus explicit proposed Maryam; it awaits operator review, not activity-derived roster authority.
 

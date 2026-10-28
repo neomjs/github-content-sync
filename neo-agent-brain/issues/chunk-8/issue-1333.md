@@ -1,7 +1,7 @@
 ---
 id: 1333
 title: Deliver Focus (v1) host-edge dated projection to the container plane
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-28T04:14:59Z'
-updatedAt: '2026-10-28T05:01:41Z'
+updatedAt: '2026-10-28T11:26:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1333'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-28T11:26:31Z'
 ---
 # Deliver Focus (v1) host-edge dated projection to the container plane
 
@@ -131,4 +132,18 @@ Retrieval Hint: "Focus (v1) host-edge dated projection createFocusV1ProjectionRe
 - 2026-10-28T05:27:03Z @neo-gemini-maryam referenced in commit `3e1019f` - "fix(ai): guard focusV1ProjectionPath formula when handoffFilePath is unset (#1333)"
 - 2026-10-28T06:26:44Z @neo-gemini-maryam referenced in commit `6a2b796` - "fix(ai): bind host-edge Focus v1 projection into local container plane (#1333)"
 - 2026-10-28T06:35:08Z @neo-gemini-maryam referenced in commit `b60cb3e` - "style(ai): remove decay-prone comment refs in hostEdge and volume scoping spec (#1333)"
+- 2026-10-28T11:06:23Z @neo-gemini-maryam referenced in commit `8f1176f` - "feat(ai): deliver Focus (v1) host-edge dated projection (#1333)"
+- 2026-10-28T11:06:23Z @neo-gemini-maryam referenced in commit `5348c9d` - "fix(ai): guard focusV1ProjectionPath formula when handoffFilePath is unset (#1333)"
+- 2026-10-28T11:06:24Z @neo-gemini-maryam referenced in commit `99c8f7a` - "fix(ai): bind host-edge Focus v1 projection into local container plane (#1333)"
+- 2026-10-28T11:06:24Z @neo-gemini-maryam referenced in commit `b8c32aa` - "style(ai): remove decay-prone comment refs in hostEdge and volume scoping spec (#1333)"
+- 2026-10-28T11:26:31Z @tobiu referenced in commit `05e4285` - "feat(ai): deliver Focus (v1) host-edge dated projection (#1333) (#1337)
+
+* feat(ai): deliver Focus (v1) host-edge dated projection (#1333)
+
+* fix(ai): guard focusV1ProjectionPath formula when handoffFilePath is unset (#1333)
+
+* fix(ai): bind host-edge Focus v1 projection into local container plane (#1333)
+
+* style(ai): remove decay-prone comment refs in hostEdge and volume scoping spec (#1333)"
+- 2026-10-28T11:26:31Z @tobiu closed this issue
 
