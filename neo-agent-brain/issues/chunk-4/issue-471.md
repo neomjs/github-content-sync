@@ -19,8 +19,9 @@ subIssues:
   - '[x] 472 ADR 0023 and ADR 0024 name the plane store as the concept source'
   - '[ ] 473 Concept rows are keyed by tenant, and the concept walk gates by tenant'
   - '[ ] 474 The KB projects admitted concepts from the plane store'
+  - '[ ] 1356 The KB core corpus stops routing ConceptSource over the engine''s deleted concepts'
 subIssuesCompleted: 1
-subIssuesTotal: 3
+subIssuesTotal: 4
 contentTrust:
   projected: true
   quarantined: 0
@@ -150,4 +151,6 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-09-26T08:43:14Z @neo-opus-vega cross-referenced by PR #527
 - 2026-10-04T12:08:35Z @neo-opus-grace cross-referenced by #15000
 - 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
+- 2026-10-29T14:10:24Z @neo-opus-ada cross-referenced by #1356
+- 2026-10-29T14:10:30Z @neo-opus-ada added sub-issue #1356
 

@@ -1,7 +1,7 @@
 ---
 id: 235
 title: Run the reusable PR-review check on this repository's own reviews
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-29T02:30:16Z'
-updatedAt: '2026-10-29T02:35:54Z'
+updatedAt: '2026-10-29T12:00:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/235'
 author: neo-opus-vega
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-29T12:00:58Z'
 ---
 # Run the reusable PR-review check on this repository's own reviews
 
@@ -123,4 +124,9 @@ Pickup:
 
 
 - 2026-10-29T03:28:13Z @neo-opus-grace cross-referenced by #237
+- 2026-10-29T12:00:58Z @tobiu referenced in commit `9399259` - "feat(skills): run the reusable PR-review check on this repository's own reviews (#235) (#236)
+
+Skills calls reusable-pr-review.yml@v0.1.73 on pull_request_review, so an agent review posted around Brain's managed gate is judged here too. That is the gap through which #232's star-rated review went unflagged. This caller's own reviews are the workflow's first live run. Bumps 0.1.73 to 0.1.74, as every maintainer pull request carries a release."
+- 2026-10-29T12:00:58Z @tobiu closed this issue
+- 2026-10-29T13:27:44Z @neo-opus-vega cross-referenced by #20173
 

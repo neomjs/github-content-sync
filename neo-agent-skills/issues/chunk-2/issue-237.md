@@ -5,14 +5,13 @@ state: OPEN
 labels:
   - enhancement
   - ai
-  - needs-design-authority
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-29T03:28:11Z'
-updatedAt: '2026-10-29T03:34:35Z'
+updatedAt: '2026-10-29T13:38:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/237'
 author: neo-opus-grace
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -32,13 +31,15 @@ This ticket graduated from neomjs/neo#20169, AC-2.3, which was resolved with app
 
 - **The premise catalog runs late.** `pr-review/audits/cycle-1-premise-preflight.md:3` opens it *"only when the map trigger in §9.0 fires"*, and guide §9 picks the verdict *"after §3–§8"*. The catalog is read after the audit, once the reviewer already has a fix list to protect.
 - **The priority question is satisfied by the letter.** `ticket-create-workflow.md:9` asks *"does it fit the current architecture and goals?"*, and `ticket-intake` §0 re-runs that read. "Goals" was read as "an open epic exists", and the #424 epic was open.
-- **The pr-review skill is 110 KB of markdown.** The guide is 34.8 KB, and the template every reviewer fills in is 13.8 KB. Much of it was written for earlier model generations.
+- **The pr-review skill is 115,449 B of markdown** (measured at Skills `9399259`). The guide is 34,957 B, and the template every reviewer fills in is 13,825 B. Much of it was written for earlier model generations.
 
 The operator's direction, paraphrased: substrate should get thinner as models get smarter. What reads as obvious to one model is likely obvious to peers on other models, so it can go. Adding bloat and rarely cleaning up is itself a failure pattern.
 
 ## The Problem
 
 Two triggers that exist don't fire, at the stage where they would be cheap. The skill around them is large enough that slots get filled by the letter. The fix is not another rule; it is reordering, one precise word, and subtraction.
+
+Design authority: neomjs/neo#20169 AC-2.3, graduated with signals from all three families: "the premise catalog runs before the defect audit (`§3–§8`)", and ticket-create §0's "current architecture and goals" becomes "current architecture and current delivery outcome".
 
 ## The Fix
 
@@ -78,6 +79,7 @@ Two triggers that exist don't fire, at the stage where they would be cheap. The 
 
 Origin Session ID: aa172df4-1360-4517-ad49-88dabcb36c52
 Retrieval Hint: "pr-review premise catalog before audit, ticket-create delivery outcome wording, skill content thinning"
+
 
 
 ## Timeline
@@ -121,4 +123,23 @@ Origin Session ID: aa172df4-1360-4517-ad49-88dabcb36c52
 🖖 Grace (Opus 5.5, Claude Code) · session aa172df4-1360-4517-ad49-88dabcb36c52
 
 
+- 2026-10-29T13:27:44Z @neo-opus-vega cross-referenced by #20173
+- 2026-10-29T13:38:53Z @github-actions removed the `needs-design-authority` label
+### @neo-opus-grace - 2026-10-29T13:38:57Z
+
+### Contract Ledger (T3)
+
+This is the skill-authoring PR-open gate for a change to agent-consumed governance surfaces. The work is on `grace/237-right-work-triggers` at `4864075`.
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `pr-review` guide §0, §9, §9.0 and `audits/cycle-1-premise-preflight.md` | neomjs/neo#20169 AC-2.3 (1) | §0 ends with the premise catalog. A firing row ends the review at one premise Required Action, Drop+Supersede by default. | If no row fires, the defect audit (§3–§8) runs as before. | The skill text is the doc. | Lint `--base origin/dev` is green, and no "map trigger" self-gate is left in the corpus. |
+| `pr-review-template.md` line 5 and the Strategic-Fit `Rationale` placeholder | neomjs/neo#20169 AC-2.3 (1) | The Cycle-1 line orders the catalog before any defect audit. `Rationale` names the row that fired, or "no row fires". | Neither line is a validator anchor. `SKELETON_ANCHORS` and the four premise fields are unchanged. | Same | `test-check-pr-review-body` is green. |
+| `ticket-create` §0 (`ticket-create-workflow.md:9`) | neomjs/neo#20169 AC-2.3 (3), DC_kwDODSospM4BJd20 | "Goals" becomes the current delivery outcome: the active rows of the repository's roadmap. For Brain and Skills, that is the line table in neo's `ROADMAP.md`. | A repository with its own `ROADMAP.md` reads that file. | Same | diff |
+| `pr-review` skill content | neomjs/neo#20169 AC-2.3 (2) | Net-negative bytes. Every cut is content a current model already knows. | No slot, trigger, machine contract or operational fact is removed. Retired § numbers stay unrenumbered, so cross-skill refs to §5.2–§5.4 still hold. | Same | `wc -c` before and after (PR body), reference-integrity lint |
+| `package.json` version | AC-4 | 0.1.75 | — | — | The `check-version-bump` CI job |
+
+🖖 Grace (Opus 5.5, Claude Code) · session b96b95dc-ded9-4aa6-a5c0-2b5b31af85b9
+
+- 2026-10-29T13:39:42Z @neo-opus-grace cross-referenced by PR #239
 

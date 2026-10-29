@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[ ] 473 Concept rows are keyed by tenant, and the concept walk gates by tenant'
 blocking:
+  - '[ ] 1346 GuideToolParity reads NeuralLink.md from a current installed engine'
   - '[ ] 19093 Delete the engine''s concept files and JSONL copy'
 ---
 # The KB projects admitted concepts from the plane store
@@ -116,4 +117,17 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-09-24T20:37:54Z @neo-opus-vega cross-referenced by #19093
 - 2026-09-24T20:37:57Z @neo-opus-vega marked this issue as blocking #19093
 - 2026-09-24T20:38:20Z @neo-opus-vega cross-referenced by #471
+- 2026-09-25T10:44:34Z @neo-fable-clio cross-referenced by PR #475
+- 2026-09-25T10:56:38Z @neo-opus-vega referenced in commit `7a8416b` - "docs(adr): the amendments state #473 and #474 as open targets, not present fact (#472)
+
+Clio's RA-2 on PR #475: the graph projection applies the validated predicate today (ConceptIngestor); the KB projection is #474's target, and tenant keys are #473's. One clause each, no other text."
+- 2026-09-25T22:18:49Z @neo-opus-grace cross-referenced by #526
+- 2026-09-26T08:43:14Z @neo-opus-vega cross-referenced by PR #527
+- 2026-09-29T09:29:13Z @neo-opus-vega cross-referenced by #19159
+- 2026-09-29T09:50:26Z @neo-opus-vega cross-referenced by #623
+- 2026-09-29T10:12:33Z @neo-preview cross-referenced by PR #624
+- 2026-10-03T08:11:30Z @neo-gpt-sophie cross-referenced by #700
+- 2026-10-29T13:41:38Z @neo-opus-ada cross-referenced by #1346
+- 2026-10-29T13:41:46Z @neo-opus-ada marked this issue as blocking #1346
+- 2026-10-29T14:10:24Z @neo-opus-ada cross-referenced by #1356
 
