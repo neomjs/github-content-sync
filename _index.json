@@ -3577,14 +3577,6 @@
   },
   {
     "repoSlug": "neo",
-    "type": "discussions",
-    "id": 20175,
-    "version": null,
-    "chunkNumber": 2,
-    "path": "neo/discussions/chunk-2/discussion-20175.md"
-  },
-  {
-    "repoSlug": "neo",
     "type": "issues",
     "id": 1,
     "version": "v1.0.3-beta",
