@@ -1,7 +1,7 @@
 ---
 id: 1346
 title: GuideToolParity reads NeuralLink.md from a current installed engine
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-29T13:22:26Z'
-updatedAt: '2026-10-29T14:17:05Z'
+updatedAt: '2026-10-29T23:08:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1346'
 author: neo-opus-ada
 commentsCount: 0
@@ -25,6 +25,7 @@ blockedBy:
   - '[x] 1356 The KB core corpus stops routing ConceptSource over the engine''s deleted concepts'
   - '[ ] 474 The KB projects admitted concepts from the plane store'
 blocking: []
+closedAt: '2026-10-29T23:01:06Z'
 ---
 # GuideToolParity reads NeuralLink.md from a current installed engine
 
@@ -79,11 +80,11 @@ Decision Record impact: aligned-with `adr:agentos-extraction-topology`.
 
 ## Acceptance Criteria
 
-- [ ] AC-1: `GuideToolParity` reads the guide from the installed engine and passes at the new pin.
-- [ ] AC-2: a stated count that differs from the operationId count fails and no stated count passes, proven by a test of the extraction as well as the live guide.
-- [ ] AC-3: `package.json` and the lock name `cc24c59e0d`, and `npm run ai:pin-drift` reports the installed engine equal to the lock.
-- [ ] AC-4: Brain Unit on the PR reports 0 introduced reds, with `GuideToolParity` among the fixed.
-- [ ] AC-5 (post-merge): #201's dated count drops to two reds.
+- [x] AC-1: `GuideToolParity` reads the guide from the installed engine and passes at the new pin.
+- [x] AC-2: a stated count that differs from the operationId count fails and no stated count passes, proven by a test of the extraction as well as the live guide.
+- [x] AC-3: `package.json` and the lock name `cc24c59e0d`, and `npm run ai:pin-drift` reports the installed engine equal to the lock.
+- [x] AC-4: Brain Unit on the PR reports 0 introduced reds, with `GuideToolParity` among the fixed.
+- [x] AC-5 (post-merge): #201's dated count drops to zero reds, since the other two closed first (run 40970147950, #201 comment 6510648993).
 
 ## Out of Scope
 
@@ -147,4 +148,33 @@ createKnowledgeBase throws ENOENT at the new engine pin.
 #	package-lock.json
 #	package.json"
 - 2026-10-29T18:37:40Z @neo-opus-ada cross-referenced by PR #1363
+- 2026-10-29T23:01:07Z @tobiu referenced in commit `b6f2406` - "fix(test): GuideToolParity reads the guide from a current installed engine, at engine pin cc24c59e0d (#1346) (#1363)
+
+* fix(test): GuideToolParity reads the guide from a current installed engine (#1346)
+
+The arm read learn/agentos/NeuralLink.md from the Brain root, where the
+Engine-owned guide does not exist, and asserted an operation count
+unconditionally. It now reads the guide through the installed engine
+and checks a count only when the guide states one. The neo.mjs tarball
+moves from 7f16355a to cc24c59e0d (neomjs/neo#20168), whose guide
+states no count.
+
+* fix(test): four arms read what the current engine ships (#1346)
+
+Moving the engine pin past 09-25 turned four arms red, each written
+against the old engine:
+
+- discussionRoutingDisposition (2): read four discussions from the
+  engine's content mirror, which neomjs/neo#19322 deleted. They now
+  read verbatim excerpts in discussion-corpus-excerpts.json, taken
+  from neomjs/github-content-sync@f414d87c. Each excerpt classifies
+  exactly as its whole body does, and the bodies are unchanged since
+  the old pin.
+- ConceptIngestor: expected the stale DreamService ontology row that
+  neomjs/neo#19236 fixed, so all 182 declared edges now project. The
+  fixture arms keep MISSING_FILE covered.
+- CoalescingEngineService: pinned the Provider enumeration trap that
+  neomjs/neo#19269 fixed. The arm keeps configure's by-reference read
+  of an inherited node."
+- 2026-10-29T23:01:07Z @tobiu closed this issue
 
