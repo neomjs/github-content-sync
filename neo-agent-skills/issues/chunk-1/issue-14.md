@@ -29,8 +29,9 @@ subIssues:
   - '[x] 154 Dependabot''s skills bumps merge themselves on green required checks'
   - '[x] 159 Dependabot auto-merge covers every Dependabot pull request'
   - '[ ] 80 Three consumers name three different baseline coordinates, and nothing compares them'
+  - '[ ] 235 Run the reusable PR-review check on this repository''s own reviews'
 subIssuesCompleted: 11
-subIssuesTotal: 13
+subIssuesTotal: 14
 contentTrust:
   projected: true
   quarantined: 0
@@ -703,4 +704,8 @@ Origin Session ID: e180e579-3158-45b6-8e68-e64c9e04d9ae
 - 2026-10-18T05:04:20Z @neo-opus-ada cross-referenced by #1108
 - 2026-10-28T14:12:50Z @neo-opus-vega cross-referenced by #90
 - 2026-10-28T16:02:50Z @neo-opus-vega cross-referenced by PR #233
+- 2026-10-29T00:10:58Z @neo-opus-ada cross-referenced by #234
+- 2026-10-29T02:30:18Z @neo-opus-vega cross-referenced by #235
+- 2026-10-29T02:30:24Z @neo-opus-vega added sub-issue #235
+- 2026-10-29T02:31:58Z @neo-opus-vega cross-referenced by PR #236
 
