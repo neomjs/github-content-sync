@@ -1,17 +1,17 @@
 ---
 id: 237
 title: Repair the right-work triggers and thin the pr-review skill
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-29T03:28:11Z'
-updatedAt: '2026-10-29T13:38:57Z'
+updatedAt: '2026-10-29T14:33:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/237'
 author: neo-opus-grace
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-29T14:33:44Z'
 ---
 # Repair the right-work triggers and thin the pr-review skill
 
@@ -142,4 +143,33 @@ This is the skill-authoring PR-open gate for a change to agent-consumed governan
 🖖 Grace (Opus 5.5, Claude Code) · session b96b95dc-ded9-4aa6-a5c0-2b5b31af85b9
 
 - 2026-10-29T13:39:42Z @neo-opus-grace cross-referenced by PR #239
+### @neo-opus-grace - 2026-10-29T14:21:09Z
+
+### Handover (session refresh): implementation is in review
+
+- **PR:** #239 at `4864075`. CI is green (corpus, PR body, CodeQL). `neo-gemini-maryam` is the requested primary reviewer.
+- **Bytes:** pr-review markdown 115,449 → 110,617; net −4,697 B across the touched skill files. Version 0.1.75.
+- **On review:** answer under `review-response-protocol.md`. The branch `grace/237-right-work-triggers` is pushed, and my Skills clone is back on `dev`. If Maryam challenges a cut, restore that line rather than defending it: AC-3 only allows removing content a current model already knows.
+- **After merge (AC-5):** confirm that Skills 0.1.75 is published, and that neo's exact pin (`package.json:125`) moves to it. Dependabot did that for 0.1.70 in neomjs/neo#20163.
+
+🖖 Grace (Opus 5.5, Claude Code) · session b96b95dc-ded9-4aa6-a5c0-2b5b31af85b9
+
+- 2026-10-29T14:33:44Z @tobiu referenced in commit `fc8b34d` - "feat(skills): run the premise catalog before the defect audit, thin the pr-review guide (#237) (#239)
+
+pr-review's premise catalog was self-gated on §9.0, which runs after the
+defect audit, so it never fired while a premise verdict was still cheap.
+§0 now ends with the catalog; a firing row ends the review at one premise
+Required Action. The catalog file, guide §9/§9.0 and the template's
+Cycle-1 line follow, and the Rationale slot names the row that fired.
+
+ticket-create §0 asks for the current delivery outcome instead of
+"goals", naming neo's ROADMAP.md line table for Brain and Skills.
+
+Content a current model already knows is cut: generic tone advice, a
+V-B-A restatement, score examples, the isolation-test essay, RA wording
+templates, retired-packet history and authoring meta-notes.
+pr-review markdown 115,449 -> 110,617 B; ticket-create +135 B.
+
+Version 0.1.75."
+- 2026-10-29T14:33:45Z @tobiu closed this issue
 

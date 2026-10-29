@@ -1,7 +1,7 @@
 ---
 id: 1350
 title: 'github-content-sync re-ingests all 56,454 records every sweep at an unchanged head'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-29T13:47:16Z'
-updatedAt: '2026-10-29T13:54:34Z'
+updatedAt: '2026-10-29T18:34:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1350'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-29T18:34:28Z'
 ---
 # github-content-sync re-ingests all 56,454 records every sweep at an unchanged head
 
@@ -40,24 +41,31 @@ The four other tenant repos log `ingested=0` at their unchanged heads. The 13:34
 
 ## The Architectural Reality
 
-- **The persisted checkpoint is current.** `tenant-repo-sync-revisions.json` holds, for this repo: `lastIngestedRev: f414d87c…` (the head), `ingestContractVersion: 2`, a `lastCommittedMaterializationAttemptId`, `corpusOutstanding.state: complete` with `remaining: 0`, and `consecutiveFailures: 0`.
-- **A null base anyway.** `TenantRepoSyncService` builds the envelope with `lastIngestedRev: fullReplay || revalidationRequired ? null : priorState.lastIngestedRev` (`TenantRepoSyncService.mjs:2757`). `fullReplay` is a manual-CLI option, so on a daemon sweep a null base means `revalidationRequired` is true.
-- **The only true branch for a complete checkpoint.** For a `COMPLETE` checkpoint, `requiresTenantRepoCheckpointRevalidation` (`tenantRepoCheckpointValidity.mjs`) returns true only when the persisted `extractionIdentity` differs from the repo's current `extractionIdentity`.
-- **Why it would never heal (hypothesis).** After a manifest replay, the commit stores `envelope.extractionIdentity` (`TenantRepoSyncService.mjs:3230`). If that value is derived differently from `repo.extractionIdentity`, the stored identity never equals the current one, and every sweep replays again.
+*Corrected 2026-10-29 ~16:35Z: the identity hypothesis below was falsified by reading the code, before anything was implemented.*
+
+- **The persisted checkpoint is current.** `tenant-repo-sync-revisions.json` holds `lastIngestedRev: f414d87c…` (the head), a committed materialization attempt, `corpusOutstanding.state: complete` with `remaining: 0`, and `consecutiveFailures: 0`.
+- **It is not an extraction-identity mismatch.** `buildIngestEnvelope` throws `KB_INGEST_ENVELOPE_EXTRACTION_IDENTITY_MISMATCH` when the repo's identity differs from the derived one (`tenantRepoIngestEnvelopeBuilder.mjs:432`), and the commit stores that same derived identity. A completed sweep therefore cannot leave the two unequal. The base revision is the persisted `lastIngestedRev`, not null.
+- **The cause is delta safety.** The corpus extractor `ConversationCorpusSource` is `deltaSafe: false` (`ExtractorCatalogue.mjs`). On every linear advance the builder sets `fullMaterialization = !profileDeltaSafe` (`tenantRepoIngestEnvelopeBuilder.mjs`, the linear branch), and that includes an advance that changed nothing (base === head). The other four tenant repos use delta-safe extractors, which is why they log `ingested=0`.
+- **The runner already handles the empty case.** `selectAssignments` gives an extractor that is not delta-safe all its assignments when anything changed and none when nothing did (`extractionProfileRunner.mjs:401–407`). The builder's blanket full materialization pre-empts that rule.
 
 ## The Fix
 
-1. **Falsify first:** log the persisted and the current `extractionIdentity` when `revalidationRequired` is true. The logged pair either confirms the mismatch or moves the cause.
-2. **If confirmed:** derive the committed identity and the compared identity from one source, so a completed replay converges. Add a regression spec: a completed manifest replay followed by an unchanged-head sweep builds an incremental, zero-delta envelope.
+In the builder's linear branch, a profile that is not delta-safe re-materializes in full only when the advance changed something:
+
+`fullMaterialization = !profileDeltaSafe && (diff.addedOrChanged.length > 0 || diff.deleted.length > 0)`
+
+An empty advance becomes a zero-delta incremental envelope (`changedPaths: []`, `deleted: []`, no manifest), the path that delta-safe tenants already take on every sweep. Identity changes and incomplete checkpoints still reach the builder as a null base and replay in full. Extraction is a function of the tree at the head plus the extraction identity, and the hierarchy identity is part of that identity, so an unchanged commit at an unchanged identity has nothing to re-materialize.
 
 Decision Record impact: none.
 
 ## Acceptance Criteria
 
-- [ ] AC-1: The revalidation decision logs both identities (or the cause it finds instead), and the cause of the 10-29 replays is named on this ticket.
-- [ ] AC-2: A unit spec drives a completed replay and then an unchanged-head sweep, and asserts a non-null `lastIngestedRev` base with `ingested=0`.
-- [ ] Post-merge, on a plane running the fix: two consecutive `github-content-sync` sweeps at an unchanged head log `ingested=0`.
-- [ ] Post-merge, one combined 24-h reading of the plane sampler once this fix and neo-agent-brain#1349 run: `pending-summarization` passes per day down at least 80% against the 2026-10-29 log, and Chroma-to-orchestrator traffic falls by the share both loops held.
+- [x] AC-1: The cause of the 10-29 replays is named on this ticket: non-delta-safe full materialization at an unmoved head, not an identity mismatch.
+- [ ] AC-2: A unit spec shows that a non-delta-safe profile with base === head builds a zero-delta incremental envelope (no `manifestSnapshot`, empty `changedPaths` and `deleted`), and that the same profile with a non-empty diff still builds a full materialization.
+
+## Post-Merge Validation
+
+Moved 2026-10-29 to neo-agent-brain#64 AC-17: the unchanged-head sweep reading and the combined 24-h traffic reading both need a plane running the merged head, and #64 is the receipt ledger that survives this ticket's close.
 
 ## Out of Scope
 
@@ -75,6 +83,8 @@ Owner: @neo-opus-vega, self-assigned beside #64 and #65.
 Retrieval Hint: "tenant repo sync full replay unchanged head extraction identity"
 
 
+
+
 ## Timeline
 
 - 2026-10-29T13:47:16Z @neo-opus-vega assigned to @neo-opus-vega
@@ -82,4 +92,47 @@ Retrieval Hint: "tenant repo sync full replay unchanged head extraction identity
 - 2026-10-29T13:47:18Z @neo-opus-vega added the `ai` label
 - 2026-10-29T13:47:18Z @neo-opus-vega added the `performance` label
 - 2026-10-29T13:55:33Z @neo-opus-vega cross-referenced by PR #1352
+### @neo-opus-vega - 2026-10-29T16:24:33Z
+
+**More cost evidence (2026-10-29 ~16:23Z):** a scoped one-shot of the existing tenant-sync CLI (`--repo-slug github-content-sync`, default Node heap) exited 134 with V8's "Reached heap limit" at about 1.94 GB used of about 2.11 GB, right after `Refreshing neo-shared/github-content-sync`. It wrote no completion receipt.
+
+The replay from a null base that this ticket describes therefore needs more than the default heap just to re-ingest an unchanged corpus. Only the orchestrator's larger process budget completes it on schedule; it peaked at 5.5 GiB heap in the plane sampler's 38.5 h window. An incremental sweep at an unchanged head should need neither.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-10-29T16:31:19Z
+
+**Session handover (2026-10-29 ~16:40Z, solo-refresh).** Still mine; nothing is implemented yet. The body states the corrected cause and the fix.
+
+Pickup:
+1. Branch from Brain `dev`. In `ai/services/knowledge-base/helpers/tenantRepoIngestEnvelopeBuilder.mjs`, linear branch: `fullMaterialization = !profileDeltaSafe && (diff.addedOrChanged.length > 0 || diff.deleted.length > 0)`. Keep the existing comment and extend it by one clause: an empty advance has nothing for non-delta-safe extractors to depend on.
+2. AC-2 spec beside the builder's existing specs. Cover two cases:
+   - base === head with a `deltaSafe:false` profile gives an incremental envelope with no `manifestSnapshot` and empty `changedPaths` and `deleted`;
+   - a non-empty diff gives a full materialization.
+
+   The runner's `selectAssignments` (`extractionProfileRunner.mjs:401–407`) already returns `[]` for a non-delta-safe extractor on an empty change set.
+3. Cross-family review. It touches no `ai/` config, so ADR 0019 does not gate it.
+
+The post-merge reading pairs with the merged #1352: the arm R sampler keeps running to Nov 3.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+- 2026-10-29T17:40:47Z @neo-opus-vega cross-referenced by PR #1362
+- 2026-10-29T17:41:05Z @neo-opus-vega cross-referenced by #64
+- 2026-10-29T18:34:28Z @tobiu referenced in commit `c2d061b` - "fix(kb): a non-delta-safe profile stays incremental when no file changed (#1350) (#1362)
+
+ConversationCorpusSource is deltaSafe:false, so the envelope builder turned
+every linear advance into a full materialization, including an advance that
+changed nothing: github-content-sync re-ingested all 56,454 corpus records
+every ~31 min at an unchanged head. A non-delta-safe profile now
+re-materializes in full only when the diff is non-empty. An empty advance
+builds the zero-delta incremental envelope that delta-safe tenants already
+build, and the runner hands a non-delta-safe extractor no assignments for it.
+Identity changes and incomplete checkpoints still reach the builder with a
+null base and replay in full.
+
+The spec's raw-text parser profile becomes a helper shared by the full-replay
+test and the new zero-delta test. Two comments in the spec drop their ticket
+refs because the archaeology guard reads the whole file."
+- 2026-10-29T18:34:29Z @tobiu closed this issue
 

@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-09-24T20:37:08Z'
-updatedAt: '2026-09-24T20:37:08Z'
+updatedAt: '2026-10-29T14:37:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/474'
 author: neo-opus-vega
 commentsCount: 0
@@ -61,7 +61,7 @@ blocking:
 
 - **Projection.** An orchestrator-side concept projection reads the store through the store leaf's plane-member path and parses it with `ConceptIngestor`'s JSONL parse, so one parser feeds two projections. It embeds tenant-scoped `type: concept` vectors under `buildOwnedScopeFilter`.
 - **Admission.** Rows whose `validated` is `false` are never projected into the KB. `resolveConcepts` skips them too, so a candidate that reaches the graph cannot reach `resolvedConcepts`.
-- **Route retirement.** Removed: the Engine-pin route, its catalogue descriptor and the `sourcePaths.ConceptSource` leaf. `ConceptSource.mjs` goes too if nothing else routes to it.
+- ~~**Route retirement.** Removed: the Engine-pin route, its catalogue descriptor and the `sourcePaths.ConceptSource` leaf. `ConceptSource.mjs` goes too if nothing else routes to it.~~ **Moved to neo-agent-brain#1356** (2026-10-29): the route had been dead since the concept tree left the engine on 09-29, and splitting it out lets the Brain's engine pin move.
 
 ## Contract Ledger
 
@@ -69,7 +69,7 @@ blocking:
 |---|---|---|---|---|---|
 | `type: concept` KB vectors | the plane store, via the store leaf's path | projected per tenant; admitted rows only | none: a seedless plane has none | ADR 0023 / 0024 (sibling leaf) | the projection receipt |
 | `ask(conceptWalk: true)` / `resolveConcepts` (`conceptAnchoredRetrieval.mjs:109–168`) | this ticket | skips `validated: false` | — | — | AC-3's pair |
-| The Engine-pin `ConceptSource` route and the `sourcePaths.ConceptSource` leaf (`coreCorpusProfilePlan.mjs:56`, `ExtractorCatalogue.mjs:282`, `knowledge-base/configBase.mjs:613`) | #282 / PR #423 | removed | — | — | the profile-plan spec and config parity |
+| The Engine-pin `ConceptSource` route and the `sourcePaths.ConceptSource` leaf (`coreCorpusProfilePlan.mjs:56`, `ExtractorCatalogue.mjs:282`, `knowledge-base/configBase.mjs:613`) | #282 / PR #423 | removed by neo-agent-brain#1356 | — | — | the profile-plan spec and config parity |
 
 Decision Record impact: aligned-with ADR 0019 (leaf removal and the use-site read); depends-on the ADR 0023 / 0024 amendment (sibling leaf).
 
@@ -106,6 +106,7 @@ Retrieval Hint: `query_raw_memories("KB concept projection plane store admission
 Authored by Vega (Opus 5.5, Claude Code) 🌿
 
 
+
 ## Timeline
 
 - 2026-09-24T20:37:10Z @neo-opus-vega added the `enhancement` label
@@ -130,4 +131,22 @@ Clio's RA-2 on PR #475: the graph projection applies the validated predicate tod
 - 2026-10-29T13:41:38Z @neo-opus-ada cross-referenced by #1346
 - 2026-10-29T13:41:46Z @neo-opus-ada marked this issue as blocking #1346
 - 2026-10-29T14:10:24Z @neo-opus-ada cross-referenced by #1356
+- 2026-10-29T14:18:58Z @neo-opus-ada cross-referenced by PR #1357
+- 2026-10-29T16:10:33Z @neo-opus-ada cross-referenced by #201
+- 2026-10-29T18:33:26Z @tobiu referenced in commit `838f244` - "fix(knowledge-base): the core corpus stops routing ConceptSource over the engine's deleted concepts (#1356) (#1357)
+
+The Engine profile routed ConceptSource over resources/content/concepts.
+neomjs/neo#19322 deleted that tree on 09-29 (the plane store holds the
+concept pages), so createKnowledgeBase throws ENOENT at any engine past
+the Brain's 09-25 pin and the pin cannot move (#1346).
+
+Removed with it: the profile root, the ExtractorCatalogue descriptor,
+ConceptSource.mjs and its spec (deleted, not orphaned, so no Brain
+reader derives the path from projectRoot), the sourcePaths.ConceptSource
+default, the export entries, the KB-relevance prefix in
+PrimaryRepoSyncService and the spec rows that enumerated the source.
+The Engine-profile corpus test keeps a concept page in its fixture and
+now asserts that nothing routes it. Legacy type: concept vectors stay:
+embedKnowledgeBase is additive (#419 AC-4). This splits the route item
+out of #474."
 

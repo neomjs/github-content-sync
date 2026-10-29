@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-29T13:22:26Z'
-updatedAt: '2026-10-29T13:41:37Z'
+updatedAt: '2026-10-29T14:17:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1346'
 author: neo-opus-ada
 commentsCount: 0
@@ -22,7 +22,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1356 The KB core corpus stops routing ConceptSource over the engine''s deleted concepts'
+  - '[x] 1356 The KB core corpus stops routing ConceptSource over the engine''s deleted concepts'
   - '[ ] 474 The KB projects admitted concepts from the plane store'
 blocking: []
 ---
@@ -49,7 +49,7 @@ The pin is also 480 engine commits behind `cc24c59e0d`. 44 of them are fixes tou
 | `discussionRoutingDisposition` › two corpus arms | four discussions under the engine's `resources/content`, which neomjs/neo#19322 deleted on 09-29 | verbatim excerpts from `neomjs/github-content-sync`, here |
 | `ConceptIngestor` › the complete repository fixture | the stale `DreamService.mjs` ontology row that neomjs/neo#19236 fixed | expect no findings, here |
 | `CoalescingEngineService` › the inherited-leaves regression | the Provider enumeration trap that neomjs/neo#19269 fixed | keep the by-reference check, drop the trap pin, here |
-| KB `DatabaseService.sync` › the exact Engine pin… | **production** `createKnowledgeBase`: `coreCorpusProfilePlan.mjs:97` routes `ConceptSource` over the engine's deleted `resources/content/concepts` | **blocker**: #474 AC-4 retires that route |
+| KB `DatabaseService.sync` › the exact Engine pin… | **production** `createKnowledgeBase`: `coreCorpusProfilePlan.mjs:97` routes `ConceptSource` over the engine's deleted `resources/content/concepts` | **blocker**: #1356 retires that route (split from #474 AC-4) |
 
 ## The Architectural Reality
 
@@ -64,7 +64,7 @@ The pin is also 480 engine commits behind `cc24c59e0d`. 44 of them are fixes tou
 1. `package.json` + `package-lock.json`: the `neo.mjs` tarball moves from `7f16355a` to `cc24c59e0d`, neo `dev` at the #20168 merge.
 2. `GuideToolParity.spec.mjs`: the guide is read from the installed engine (the `readEngineFile` shape) and the OpenAPI from the Brain root. The count check runs only when the guide states `<N> operation IDs`, and then N must equal the operationId count. The count extraction gets its own test, so the conditional cannot pass vacuously.
 3. The three test adaptations in the table above.
-4. Lands after the `ConceptSource` route retirement (#474 AC-4, or a leaf split from it).
+4. Lands after the `ConceptSource` route retirement, #1356, which was split from #474 AC-4.
 
 ## Contract Ledger
 
@@ -88,7 +88,7 @@ Decision Record impact: aligned-with `adr:agentos-extraction-topology`.
 ## Out of Scope
 
 - `graphBackup` and `lintGuides`, #201's other two reds, which need separate decisions.
-- The `ConceptSource` route itself (#474), and Brain code changes that adopt the 44 engine fixes beyond what keeps the suite green.
+- The `ConceptSource` route itself (#1356), and Brain code changes that adopt the 44 engine fixes beyond what keeps the suite green.
 - Following `#dev` the way the Institution does. The tarball pin is #482's choice.
 
 ## Avoided Traps
@@ -100,7 +100,7 @@ Decision Record impact: aligned-with `adr:agentos-extraction-topology`.
 
 ## Related
 
-Parent: #201. Engine half: neomjs/neo#19855, neomjs/neo#20168. Receive decision: #1117. Pin form: #482. Blocker: #474. Sibling slices: #1110, #1112, #1125.
+Parent: #201. Engine half: neomjs/neo#19855, neomjs/neo#20168. Receive decision: #1117. Pin form: #482. Blocker: #1356 (split from #474). Sibling slices: #1110, #1112, #1125.
 
 Live latest-open + closed sweep: latest 20 open Brain issues + a closed search (GuideToolParity, NeuralLink.md, engine pin) at 2026-10-29T13:20:30Z, re-checked at 13:22:00Z; the hits (#1117, #1125, #184, #482-era) are the decision and sibling slices, with no equivalent. A2A claim sweep: the latest 30 messages, all states, with no claim. Own assignments: #201 (parent). Structure map: N/A, since this adds or moves no `.mjs` file.
 
@@ -118,4 +118,33 @@ Retrieval Hint: "GuideToolParity ENOENT NeuralLink.md installed engine; Brain ne
 - 2026-10-29T13:57:10Z @neo-opus-ada cross-referenced by #1353
 - 2026-10-29T14:10:24Z @neo-opus-ada cross-referenced by #1356
 - 2026-10-29T14:10:33Z @neo-opus-ada marked this issue as being blocked by #1356
+- 2026-10-29T14:18:58Z @neo-opus-ada cross-referenced by PR #1357
+- 2026-10-29T16:10:33Z @neo-opus-ada cross-referenced by #201
+- 2026-10-29T16:12:50Z @neo-opus-ada cross-referenced by #1360
+- 2026-10-29T18:33:25Z @tobiu referenced in commit `838f244` - "fix(knowledge-base): the core corpus stops routing ConceptSource over the engine's deleted concepts (#1356) (#1357)
+
+The Engine profile routed ConceptSource over resources/content/concepts.
+neomjs/neo#19322 deleted that tree on 09-29 (the plane store holds the
+concept pages), so createKnowledgeBase throws ENOENT at any engine past
+the Brain's 09-25 pin and the pin cannot move (#1346).
+
+Removed with it: the profile root, the ExtractorCatalogue descriptor,
+ConceptSource.mjs and its spec (deleted, not orphaned, so no Brain
+reader derives the path from projectRoot), the sourcePaths.ConceptSource
+default, the export entries, the KB-relevance prefix in
+PrimaryRepoSyncService and the spec rows that enumerated the source.
+The Engine-profile corpus test keeps a concept page in its fixture and
+now asserts that nothing routes it. Legacy type: concept vectors stay:
+embedKnowledgeBase is additive (#419 AC-4). This splits the route item
+out of #474."
+- 2026-10-29T18:36:37Z @neo-opus-ada referenced in commit `91b3c6c` - "Merge dev into ada/1346-guide-parity-installed-engine: pick up the ConceptSource route retirement (#1346)
+
+dev carries #1357 (Resolves #1356), which retires the KB Engine-profile
+route over the engine's deleted resources/content/concepts; without it
+createKnowledgeBase throws ENOENT at the new engine pin.
+
+# Conflicts:
+#	package-lock.json
+#	package.json"
+- 2026-10-29T18:37:40Z @neo-opus-ada cross-referenced by PR #1363
 

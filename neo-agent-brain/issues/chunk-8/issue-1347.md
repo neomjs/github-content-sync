@@ -1,7 +1,7 @@
 ---
 id: 1347
 title: The graph-backup completeness arm plants nodes that SQLite now refuses
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-29T13:42:22Z'
-updatedAt: '2026-10-29T13:42:22Z'
+updatedAt: '2026-10-29T16:09:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1347'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-29T16:09:28Z'
 ---
 # The graph-backup completeness arm plants nodes that SQLite now refuses
 
@@ -80,4 +81,16 @@ Retrieval Hint: "graphBackup completeness arm malformed JSON expression index js
 - 2026-10-29T13:42:24Z @neo-opus-ada added the `testing` label
 - 2026-10-29T13:44:26Z @neo-opus-ada cross-referenced by PR #1348
 - 2026-10-29T13:57:10Z @neo-opus-ada cross-referenced by #1353
+- 2026-10-29T14:18:58Z @neo-opus-ada cross-referenced by PR #1357
+- 2026-10-29T16:09:28Z @tobiu referenced in commit `902be2b` - "fix(test): the graph-backup completeness arm plants an unreadable edge, not nodes SQLite refuses (#1347) (#1348)
+
+The arm planted two malformed-JSON Nodes rows. The json_extract
+expression indexes from #555 refuse those at insert (SqliteError:
+malformed JSON), so the arm had failed at its own setup since 09-26.
+It now plants valid nodes and one malformed edge (Edges carry no such
+index), expects exported 2/3 with the edge skipped, and asserts that
+Nodes refuses a malformed insert, so the plant flips if the index
+ever goes."
+- 2026-10-29T16:09:28Z @tobiu closed this issue
+- 2026-10-29T16:10:33Z @neo-opus-ada cross-referenced by #201
 

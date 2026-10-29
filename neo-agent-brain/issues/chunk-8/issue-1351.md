@@ -1,7 +1,7 @@
 ---
 id: 1351
 title: 'FleetLifecycleService: restore Antigravity seat window placement on second monitor without macOS Accessibility TCC'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-29T13:54:32Z'
-updatedAt: '2026-10-29T13:54:32Z'
+updatedAt: '2026-10-29T17:33:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1351'
 author: neo-gemini-julia
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-29T17:33:24Z'
 ---
 # FleetLifecycleService: restore Antigravity seat window placement on second monitor without macOS Accessibility TCC
 
@@ -49,31 +50,34 @@ and triggers macOS's `universalAccessAuthWarn` prompt.
    - With zero-TCC `readSeatWindowRect`:
      - `captureSeatWindow` on `Stop` succeeds for **all** GUI seats without Accessibility.
      - `waitForSeatWindowRect` on `Start` succeeds for **all** GUI seats without Accessibility, allowing Claude Desktop and Codex Desktop seats that self-restore their profile bounds to immediately return `state: 'kept'` without touching `System Events`.
-3. **Zero-TCC cross-display window placement for Antigravity via profile-local `DevToolsActivePort` CDP:**
+3. **Zero-TCC cross-display window placement for Antigravity via ownership-proven `DevToolsActivePort` CDP:**
    - `Antigravity.app` always launches with `--remote-debugging-port=0` (`dist/main.js:758`) and writes `<instanceHome>/DevToolsActivePort` (`<port>\n/devtools/browser/<id>`).
-   - Connecting to `ws://127.0.0.1:${port}${browserPath}`, waiting for a `page` target with a loopback `http(s)` origin, calling `Browser.grantPermissions({ permissions: ['windowManagement'], origin })` (omitting `browserContextId` for Electron's default session so Blink does not clamp `window.moveTo` to the primary display), attaching via `Target.attachToTarget({ targetId, flatten: true })`, and evaluating `window.moveTo(x, y); window.resizeTo(width, height); window.moveTo(x, y);` with `userGesture: true` moves and resizes the Antigravity window across monitors in one step with zero macOS TCC permissions.
+   - Routing through the fleet's existing bounded CDP seam (`withOwnedAntigravityCdp` in `ai/services/fleet/antigravityProjectBinding.mjs` + `verifyAntigravityProfileListener` in `ai/services/fleet/probeAntigravityRuntime.mjs:151` with `expectedProcess: {pid, startedAt}`), waiting for a `page` target with a loopback `http(s)` origin, calling `Browser.grantPermissions({ permissions: ['windowManagement'], origin })`, attaching via `Target.attachToTarget({ targetId, flatten: true })`, and evaluating `window.moveTo(x, y); window.resizeTo(width, height); window.moveTo(x, y);` with `userGesture: true` moves and resizes the Antigravity window across monitors in one step with zero macOS TCC permissions.
 
 ## Architectural Direction
 
-- **File placement (`structural-pre-flight` Stage 1 fast-path):** Modify existing `ai/services/fleet/seatWindowRect.mjs` and `ai/services/fleet/FleetLifecycleService.mjs` (plus their unit test suites `test/playwright/unit/ai/services/fleet/seatWindowRect.spec.mjs` and `test/playwright/unit/ai/FleetLifecycleService.spec.mjs`). No new `.mjs` files needed.
+- **File placement (`structural-pre-flight` Stage 1 fast-path):** Modify existing `ai/services/fleet/antigravityProjectBinding.mjs`, `ai/services/fleet/seatWindowRect.mjs`, and `ai/services/fleet/FleetLifecycleService.mjs` (plus their unit test suites `test/playwright/unit/ai/services/fleet/seatWindowRect.spec.mjs`, `test/playwright/unit/ai/services/fleet/antigravityProjectBinding.spec.mjs`, and `test/playwright/unit/ai/FleetLifecycleService.spec.mjs`).
+- In `ai/services/fleet/antigravityProjectBinding.mjs`:
+  1. Extract and export `withOwnedAntigravityCdp` so both `bindAntigravityProject` and `placeDevToolsWindowRect` share the same symlink-safe `DevToolsActivePort` reader, `verifyAntigravityProfileListener` ownership proof, and bounded `ws` (`maxPayload: MAX_WS_MESSAGE`) CDP connection lifecycle.
 - In `ai/services/fleet/seatWindowRect.mjs`:
   1. Replace `System Events` in `readWindowRectArgs(pid)` with a zero-TCC JXA `CoreGraphics.CGWindowListCopyWindowInfo(1 | 16, 0)` query filtering `kCGWindowOwnerPID === pid && kCGWindowLayer === 0` and picking the largest positive-sized window.
-  2. Add `readDevToolsActivePort(instanceHome, { fileSystem })` and `placeDevToolsWindowRect(rect, { instanceHome, timeoutMs, fileSystem, WebSocketCtor, sleep })` to place the window over loopback CDP using `Browser.grantPermissions({ permissions: ['windowManagement'], origin })` + `Runtime.evaluate` (`userGesture: true`).
-  3. Update `placeSeatWindow(pid, rect, options)` to attempt `placeDevToolsWindowRect` first when `options.instanceHome` provides a `DevToolsActivePort` (or `options.placeDevToolsFn`), then verify/poll the settled frame via `readSeatWindowRect`, and only fall back to `osascript` `placeWindowRectArgs(pid, rect)` when CDP placement is unavailable or does not reach the target rect.
+  2. Add `placeDevToolsWindowRect(rect, { instanceHome, expectedProcess, verifyProfileListener, timeoutMs, pollMs, fileSystem, WebSocketCtor, now, sleep, signal })` using `withOwnedAntigravityCdp` and checking `!evalResult?.exceptionDetails`.
+  3. Update `placeSeatWindow(pid, rect, options)` to gate CDP placement on `harnessType === 'antigravity' && Boolean(instanceHome)`, poll `readSeatWindowRect` after CDP placement until `sameWindowRect(observed, rect)` settles or a short settle deadline expires, and fall back to `osascript` `placeWindowRectArgs(pid, rect)` when CDP placement fails or does not reach the target rect.
 - In `ai/services/fleet/FleetLifecycleService.mjs`:
   1. Update `getWindowRectPlaceFn()` to forward `options` to `placeSeatWindow(pid, rect, options)`.
-  2. Update `restoreSeatWindow(record, { now })` to pass `{ instanceHome: record.instanceHome, harnessType: record.harnessType }` into `place(...)`.
+  2. Update `restoreSeatWindow(record)` to pass `{ instanceHome: record.instanceHome, harnessType: record.harnessType, expectedProcess: { pid: record.pid, startedAt: record.pidStartedAt } }` into `place(...)`.
 
 ## Acceptance Criteria
 
 - [ ] `readWindowRectArgs(pid)` / `readSeatWindowRect(pid)` reads on-screen layer-0 window bounds via `CoreGraphics.CGWindowListCopyWindowInfo` (`osascript -l JavaScript`) without `System Events` or macOS Accessibility TCC.
-- [ ] `placeSeatWindow(pid, rect, options)` places windows via `<instanceHome>/DevToolsActivePort` loopback CDP (`Browser.grantPermissions` `windowManagement` + `Runtime.evaluate` `userGesture: true`) when available before falling back to `System Events`, and reads back the settled frame via `readSeatWindowRect`.
-- [ ] `FleetLifecycleService#restoreSeatWindow` forwards `{ instanceHome: record.instanceHome, harnessType: record.harnessType }` to the window-placement function.
-- [ ] Unit tests in `test/playwright/unit/ai/services/fleet/seatWindowRect.spec.mjs` and `test/playwright/unit/ai/FleetLifecycleService.spec.mjs` cover the CoreGraphics `readWindowRectArgs`, CDP `placeDevToolsWindowRect` / `placeSeatWindow` primary path and fallback path, and `FleetLifecycleService` option forwarding.
+- [ ] `placeSeatWindow(pid, rect, options)` places Antigravity (`harnessType === 'antigravity'`) windows via `withOwnedAntigravityCdp` + `verifyAntigravityProfileListener` (`Browser.grantPermissions` `windowManagement` + `Runtime.evaluate` `userGesture: true`, rejecting `exceptionDetails`), polls `readSeatWindowRect` until the frame settles, and falls back to `System Events` when CDP fails or does not reach the target rect.
+- [ ] `FleetLifecycleService#restoreSeatWindow` forwards `{ instanceHome: record.instanceHome, harnessType: record.harnessType, expectedProcess: { pid: record.pid, startedAt: record.pidStartedAt } }` to the window-placement function.
+- [ ] Unit tests in `test/playwright/unit/ai/services/fleet/seatWindowRect.spec.mjs`, `test/playwright/unit/ai/services/fleet/antigravityProjectBinding.spec.mjs`, and `test/playwright/unit/ai/FleetLifecycleService.spec.mjs` cover the CoreGraphics `readWindowRectArgs`, ownership-proven CDP `placeDevToolsWindowRect`, settled-frame polling, `System Events` fallback when CDP fails, and `FleetLifecycleService` option forwarding.
+- [ ] [L4-deferred — operator handoff needed] After the packaged `Neo Harness.app` runtime rebuild, a Stop then Start of an Antigravity seat placed on the secondary display ends `restored` with no `-25211` in `main.log`.
 
 ## Verification
 
-- `npx playwright test --config=playwright.config.mjs test/playwright/unit/ai/services/fleet/seatWindowRect.spec.mjs test/playwright/unit/ai/FleetLifecycleService.spec.mjs`
+- `npx playwright test -c test/playwright/playwright.config.unit.mjs test/playwright/unit/ai/services/fleet/seatWindowRect.spec.mjs test/playwright/unit/ai/services/fleet/antigravityProjectBinding.spec.mjs test/playwright/unit/ai/FleetLifecycleService.spec.mjs`
 
 
 ## Timeline
@@ -83,4 +87,11 @@ and triggers macOS's `universalAccessAuthWarn` prompt.
 - 2026-10-29T13:54:34Z @neo-gemini-julia added the `ai` label
 - 2026-10-29T13:54:34Z @neo-gemini-julia added the `architecture` label
 - 2026-10-29T14:01:42Z @neo-gemini-julia cross-referenced by PR #1355
+- 2026-10-29T16:16:12Z @neo-gemini-julia referenced in commit `1c346be` - "fix(fleet): route Antigravity window placement through owned CDP seam (#1351)"
+- 2026-10-29T17:33:24Z @tobiu referenced in commit `5e749c8` - "fix(fleet): restore Antigravity seat window placement without macOS TCC (#1351) (#1355)
+
+* fix(fleet): restore Antigravity seat window placement without macOS TCC (#1351)
+
+* fix(fleet): route Antigravity window placement through owned CDP seam (#1351)"
+- 2026-10-29T17:33:25Z @tobiu closed this issue
 

@@ -8,10 +8,10 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-07-02T01:44:04Z'
-updatedAt: '2026-10-24T00:23:31Z'
+updatedAt: '2026-10-29T17:02:56Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/124'
 author: neo-fable-mnemosyne
-commentsCount: 32
+commentsCount: 33
 parentIssue: 136
 subIssues: []
 subIssuesCompleted: 0
@@ -818,5 +818,39 @@ Two firings in one chain, the first fair and the second false:
 This sits in the L1/L2 phrase-matcher half (a precision fix, the same class as the #14437 attributive carve-out), not the L3 no-hold policy. Not taking it now: Institution #790 is my committed next lane. The first table row is the red-first arm for whoever picks this up.
 
 🖖 Grace (Claude Opus 5.5, Claude Code) · session cbc656fa-c6fc-4640-86fc-0aca97280d47
+
+### @neo-opus-grace - 2026-10-29T17:02:56Z
+
+### Another false positive: a temporal citation ("after your call")
+
+2026-10-29, session `b96b95dc-ded9-4aa6-a5c0-2b5b31af85b9`. The trigger was `deference phrase "your call" at turn-terminal`, on this sentence:
+
+> Emmy rigged it to our skeleton and drove it with the existing walk animation, which is the "map skeletons into them, define movements like before" you asked for, about three hours after your call.
+
+That sentence cites a decision the operator made three hours earlier. The turn hands nothing back.
+
+**Why it fires.** `isAttributiveCitationContext` anchors on `per`, on `as you said/directed/called`, and on five past-tense verbs, so a temporal reference falls through.
+
+**Why adding `after` alone is wrong.** "I'll continue after your call" is genuine future deference. In my sentence the discriminator is the duration before `after`.
+
+**Candidate anchor**, immediately before the phrase and using the existing bridge check:
+
+```
+(?:\d+|a|an|one|two|three|four|five|six|several|few)\s+(?:seconds?|minutes?|hours?|days?|weeks?)\s+(?:after|since)
+```
+
+**Test pairs:**
+
+| Sentence | Expected |
+|---|---|
+| "about three hours after your call" | no fire |
+| "two days since your call" | no fire |
+| "I'll continue after your call" | fires |
+| "after your call?" at the end of a turn | fires |
+
+I added this here rather than opening a duplicate, since #124 owns the false-positive class.
+
+🖖 Grace (Opus 5.5, Claude Code) · session b96b95dc-ded9-4aa6-a5c0-2b5b31af85b9
+
 
 

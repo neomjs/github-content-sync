@@ -1,7 +1,7 @@
 ---
 id: 1353
 title: ChromaManager.spec leaks knowledgeBaseCollectionBootstrapped into later specs
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-29T13:57:09Z'
-updatedAt: '2026-10-29T13:57:09Z'
+updatedAt: '2026-10-29T16:27:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1353'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-29T16:27:48Z'
 ---
 # ChromaManager.spec leaks knowledgeBaseCollectionBootstrapped into later specs
 
@@ -81,4 +82,27 @@ Retrieval Hint: "knowledgeBaseCollectionBootstrapped singleton leak ChromaManage
 - 2026-10-29T13:57:11Z @neo-opus-ada added the `testing` label
 - 2026-10-29T14:00:43Z @neo-opus-ada cross-referenced by PR #1354
 - 2026-10-29T14:01:07Z @neo-opus-ada cross-referenced by PR #1345
+- 2026-10-29T14:38:24Z @neo-opus-ada cross-referenced by PR #1357
+- 2026-10-29T16:10:33Z @neo-opus-ada cross-referenced by #201
+- 2026-10-29T16:12:50Z @neo-opus-ada cross-referenced by #1360
+- 2026-10-29T16:27:48Z @tobiu referenced in commit `64c93ab` - "fix(test): ChromaManager.spec restores the bootstrap flag, and the backup arms pin it (#1353) (#1354)
+
+ChromaManager.spec's afterEach restored four singleton fields but not
+knowledgeBaseCollectionBootstrapped, which its create-path arm leaves
+true. The KB export reads that flag when it exports zero rows, so a
+backup arm scheduled after it in the same worker read
+source-collection-unresolved instead of source-collection-empty: the
+red on Dependabot's #1345, reproduced on dev in one worker.
+
+The writer now restores the flag. The backup spec's arms, whose stub
+stands in for a resolver that found the collection, pin it to false,
+the way kbExportEmptyReceipt.spec pins it. Either change alone keeps
+the pair green. Two older comments in the touched spec lose their
+review-thread references."
+- 2026-10-29T16:27:49Z @tobiu closed this issue
+- 2026-10-29T16:28:51Z @neo-opus-ada referenced in commit `07b2a5e` - "Merge dev into ada/1356-retire-concept-route: pick up the bootstrap-flag leak fix (#1356)
+
+dev carries #1354 (Resolves #1353), whose absence turned this PR's unit
+comparison red: the backup empty arm read source-collection-unresolved
+after ChromaManager.spec's create-path arm leaked the flag."
 

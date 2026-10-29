@@ -1,7 +1,7 @@
 ---
 id: 1356
 title: The KB core corpus stops routing ConceptSource over the engine's deleted concepts
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-29T14:10:22Z'
-updatedAt: '2026-10-29T14:16:09Z'
+updatedAt: '2026-10-29T18:33:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1356'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1346 GuideToolParity reads NeuralLink.md from a current installed engine'
+closedAt: '2026-10-29T18:33:25Z'
 ---
 # The KB core corpus stops routing ConceptSource over the engine's deleted concepts
 
@@ -104,4 +105,40 @@ Retrieval Hint: "ConceptSource route retirement resources/content/concepts engin
 - 2026-10-29T14:10:25Z @neo-opus-ada added the `architecture` label
 - 2026-10-29T14:10:30Z @neo-opus-ada added parent issue #471
 - 2026-10-29T14:10:33Z @neo-opus-ada marked this issue as blocking #1346
+- 2026-10-29T14:17:06Z @neo-opus-ada cross-referenced by #1346
+- 2026-10-29T14:18:58Z @neo-opus-ada cross-referenced by PR #1357
+- 2026-10-29T16:10:33Z @neo-opus-ada cross-referenced by #201
+- 2026-10-29T16:12:50Z @neo-opus-ada cross-referenced by #1360
+- 2026-10-29T16:28:51Z @neo-opus-ada referenced in commit `07b2a5e` - "Merge dev into ada/1356-retire-concept-route: pick up the bootstrap-flag leak fix (#1356)
+
+dev carries #1354 (Resolves #1353), whose absence turned this PR's unit
+comparison red: the backup empty arm read source-collection-unresolved
+after ChromaManager.spec's create-path arm leaked the flag."
+- 2026-10-29T18:33:25Z @tobiu referenced in commit `838f244` - "fix(knowledge-base): the core corpus stops routing ConceptSource over the engine's deleted concepts (#1356) (#1357)
+
+The Engine profile routed ConceptSource over resources/content/concepts.
+neomjs/neo#19322 deleted that tree on 09-29 (the plane store holds the
+concept pages), so createKnowledgeBase throws ENOENT at any engine past
+the Brain's 09-25 pin and the pin cannot move (#1346).
+
+Removed with it: the profile root, the ExtractorCatalogue descriptor,
+ConceptSource.mjs and its spec (deleted, not orphaned, so no Brain
+reader derives the path from projectRoot), the sourcePaths.ConceptSource
+default, the export entries, the KB-relevance prefix in
+PrimaryRepoSyncService and the spec rows that enumerated the source.
+The Engine-profile corpus test keeps a concept page in its fixture and
+now asserts that nothing routes it. Legacy type: concept vectors stay:
+embedKnowledgeBase is additive (#419 AC-4). This splits the route item
+out of #474."
+- 2026-10-29T18:33:25Z @tobiu closed this issue
+- 2026-10-29T18:36:38Z @neo-opus-ada referenced in commit `91b3c6c` - "Merge dev into ada/1346-guide-parity-installed-engine: pick up the ConceptSource route retirement (#1346)
+
+dev carries #1357 (Resolves #1356), which retires the KB Engine-profile
+route over the engine's deleted resources/content/concepts; without it
+createKnowledgeBase throws ENOENT at the new engine pin.
+
+# Conflicts:
+#	package-lock.json
+#	package.json"
+- 2026-10-29T18:37:40Z @neo-opus-ada cross-referenced by PR #1363
 

@@ -30,8 +30,8 @@ subIssues:
   - '[x] 159 Dependabot auto-merge covers every Dependabot pull request'
   - '[ ] 80 Three consumers name three different baseline coordinates, and nothing compares them'
   - '[x] 235 Run the reusable PR-review check on this repository''s own reviews'
-  - '[ ] 20173 Run neo''s agent review check from the shared Skills workflow'
-subIssuesCompleted: 12
+  - '[x] 20173 Run neo''s agent review check from the shared Skills workflow'
+subIssuesCompleted: 13
 subIssuesTotal: 15
 contentTrust:
   projected: true

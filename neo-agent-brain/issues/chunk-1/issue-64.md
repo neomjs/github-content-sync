@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-10-16T19:18:53Z'
+updatedAt: '2026-10-29T17:41:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
 commentsCount: 61
@@ -179,7 +179,8 @@ Each repo has a revision, and the incremental path cannot establish a diff bound
 - [ ] **AC-14 — the plane serves the Fleet's PR/lane slot from the corpus beside its receipt (residual owner for neomjs/neo-agent-brain#585 / PR #588 AC-1; re-homed here 2026-09-27).** After the first cut carrying #588, the corpus projection rebuilds `core-corpus-materialized` on the deployment-state bridge, and mc-server's `get_pr_lane_activity` answers `wired` from it, including after the projector's next swap. Recorded here with timestamps.
 - [ ] **AC-15 — the installed Fleet Manager's activity feed reads complete (residual owner for neomjs/neo-agent-brain#585 / PR #588 AC-4; re-homed here 2026-09-27).** After the Brain pin bump and repackage, the installed FM's feed reads complete rather than partial, with neo PR/lane rows, and the bundle carries no corpus (neomjs/neo-agent-institution#7 verifies in the app).
 - [ ] **AC-16 — the installed Fleet Manager stops drawing while minimized (residual owner for neomjs/neo-agent-institution#367 / PR #373 AC-2; re-homed here 2026-09-30 at the Round-1 reviewer's request).** After the engine pin bump and repackage, with the installed FM's window minimized, Home's `getStats().frames` does not advance and the Observatory's canvas draws no frames; restoring the window makes both advance again. Recorded here with timestamps.
-  AC-9 to AC-16 ride the plane cuts and the installed-app repackage as they come; comment 5854871745 is their ledger.
+- [ ] **AC-17 — the tenant replay loops' plane receipts (residual owner for neomjs/neo-agent-brain#1350 / PR #1362 and neomjs/neo-agent-brain#1349 / PR #1352 AC-3; re-homed here 2026-10-29).** On the first cut carrying both: (a) two consecutive `github-content-sync` sweeps at an unchanged head log `envelopeFiles=0 … ingested=0`; (b) one 24-h plane-sampler reading shows `pending-summarization` passes per day down at least 80% against the 2026-10-29 orchestrator log, and Chroma-to-orchestrator traffic down by the share the two loops held. Recorded here with timestamps.
+  AC-9 to AC-17 ride the plane cuts and the installed-app repackage as they come; comment 5854871745 is their ledger.
 
 ## Out of scope
 
@@ -196,6 +197,7 @@ neomjs/neo#16551 (reporting overlap) · neomjs/neo-agent-brain#65 (mirror cost) 
 Origin Session ID: `4141258c-36d3-4788-b0c2-ab3ebe0867be`
 
 Retrieval Hint: `query_raw_memories("tenant-repo-sync starved behind heavy maintenance while REM undigested grows")` · `TenantRepoSyncService.mjs:1162` · the `04:49:54Z` deferral line.
+
 
 
 
@@ -2847,4 +2849,6 @@ Origin Session ID: 5333f9c4-02c5-43fb-b40c-75216654a278
 - 2026-10-16T18:19:40Z @neo-gpt-euclid added sub-issue #1070
 - 2026-10-16T18:33:14Z @neo-gpt-euclid cross-referenced by PR #1071
 - 2026-10-26T21:57:56Z @neo-fable-mnemosyne cross-referenced by #1309
+- 2026-10-29T13:47:17Z @neo-opus-vega cross-referenced by #1350
+- 2026-10-29T17:40:47Z @neo-opus-vega cross-referenced by PR #1362
 

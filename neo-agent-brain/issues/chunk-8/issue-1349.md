@@ -1,7 +1,7 @@
 ---
 id: 1349
 title: Every closed MCP transport session triggers an all-time summary drift scan
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-29T13:46:31Z'
-updatedAt: '2026-10-29T13:49:48Z'
+updatedAt: '2026-10-29T16:27:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1349'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-29T16:27:04Z'
 ---
 # Every closed MCP transport session triggers an all-time summary drift scan
 
@@ -90,4 +91,25 @@ Retrieval Hint: "summary pass per closed MCP transport session drift scan Chroma
 - 2026-10-29T13:46:34Z @neo-opus-vega added the `ai` label
 - 2026-10-29T13:46:34Z @neo-opus-vega added the `performance` label
 - 2026-10-29T13:55:33Z @neo-opus-vega cross-referenced by PR #1352
+### @neo-opus-vega - 2026-10-29T16:25:53Z
+
+**A second cost, observed 2026-10-29:** each summary pass holds the orchestrator's heavy-maintenance lease, so the loop also delays other maintenance.
+- The orchestrator log at 13:15:27Z reads `Deferring tenant repo sync (cloud); heavy maintenance task session summarization is active`.
+- At ~16:25Z a scoped tenant-sync one-shot exited deferred (code 4) behind the same lease, running with the orchestrator's own 6 GB heap budget.
+
+With passes every 15 s to 2 min, the lease is held often enough to push other maintenance back. PR #1352 removes the marker-triggered share of those passes.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+- 2026-10-29T16:27:05Z @tobiu closed this issue
+- 2026-10-29T16:27:05Z @tobiu referenced in commit `d308b3d` - "fix(memory-core): queue a summarization marker only for a session that wrote a memory (#1349) (#1352)
+
+Every closed Streamable-HTTP transport session queued a SummarizationJobs
+marker, and each marker started a summary pass that ends with the all-time
+drift scan (~170 MB from Chroma). Most transport sessions write nothing: the
+plane held 28,488 failed markers against 4,128 completed. addMemory now
+records the session after the durable WAL append, and onSessionClosed
+queues a marker only for a recorded session, consuming the record. A
+restart loses the record; the periodic drift sweep still finds the session."
+- 2026-10-29T17:41:05Z @neo-opus-vega cross-referenced by #64
 

@@ -12,10 +12,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-08-27T15:06:45Z'
-updatedAt: '2026-10-29T00:15:58Z'
+updatedAt: '2026-10-29T16:10:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/201'
 author: neo-gpt-emmy
-commentsCount: 21
+commentsCount: 22
 parentIssue: 194
 subIssues: []
 subIssuesCompleted: 0
@@ -965,4 +965,27 @@ Execution is already whole-suite: #650 runs every spec on head and base, single 
 
 - 2026-10-28T23:26:50Z @neo-opus-ada cross-referenced by #1342
 - 2026-10-28T23:34:37Z @neo-opus-ada cross-referenced by PR #1343
+- 2026-10-29T01:33:34Z @neo-opus-ada cross-referenced by PR #20168
+- 2026-10-29T13:22:27Z @neo-opus-ada cross-referenced by #1346
+- 2026-10-29T13:42:23Z @neo-opus-ada cross-referenced by #1347
+- 2026-10-29T13:44:26Z @neo-opus-ada cross-referenced by PR #1348
+- 2026-10-29T13:57:10Z @neo-opus-ada cross-referenced by #1353
+- 2026-10-29T14:00:43Z @neo-opus-ada cross-referenced by PR #1354
+### @neo-opus-ada - 2026-10-29T16:10:31Z
+
+**Burn-down progress, 2026-10-29 16:1xZ.** Three reds were left after #1343 (comment 6482850355). Their state now:
+
+| spec | state |
+|---|---|
+| `memory-core/DatabaseService.graphBackup` | **fixed**: #1347 → #1348, merged 902be2b3b4. #555's expression index refuses malformed `Nodes` rows at insert, so the arm now plants an unreadable edge and asserts the node refusal. |
+| `mcp/validation/GuideToolParity` | **in flight**. #1346 moves the engine pin to `cc24c59e0d`, which carries neomjs/neo#20168. The move surfaced five Brain reads of the 09-25 engine. Four test adaptations ride on #1346's branch. The production one, the KB `ConceptSource` route over the engine's deleted `resources/content/concepts`, is #1356 → PR #1357, split from #474. Merge order: #1354 → #1357 → #1346. |
+| `lint/lintGuides` | **open**: still the custody call named in 6482850355. |
+
+One addition to this ticket's shared-state class. Dependabot #1345 went red on an order leak, not on its bump: `ChromaManager.spec` never restored `knowledgeBaseCollectionBootstrapped`, and any later zero-row backup arm in the same worker read `source-collection-unresolved`. #1353 → PR #1354 fixes both halves. #1357 hits the same leak until #1354 lands.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-10-29T16:12:50Z @neo-opus-ada cross-referenced by #1360
+- 2026-10-29T16:14:27Z @neo-opus-ada cross-referenced by PR #1361
+- 2026-10-29T18:37:40Z @neo-opus-ada cross-referenced by PR #1363
 
