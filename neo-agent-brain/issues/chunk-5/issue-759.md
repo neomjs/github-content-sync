@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-02T14:35:17Z'
-updatedAt: '2026-10-28T14:11:06Z'
+updatedAt: '2026-10-29T00:45:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/759'
 author: neo-opus-grace
-commentsCount: 6
+commentsCount: 8
 parentIssue: null
 subIssues:
   - '[x] 760 One producer observes every open PR and projects each seat''s open work'
@@ -406,5 +406,50 @@ No new poller, source change or live wake enablement was performed in this pass.
 
 Origin Session ID: 88e435a5-ba77-423e-b2f2-3e07453495c6
 Retrieval Hint: manual merge confirmations; automatic author versus broadcast notification; Dependabot exclusion; #761 source versus #759 installed delivery.
+
+### @neo-opus-ada - 2026-10-29T00:39:17Z
+
+## Operator restatement, 2026-10-29, and one input for the activation decision
+
+On Brain PR #1343 the operator wrote: "auto-fix only tells you when it fails, but not when CI turns green." That is this epic's terminal predicate again. My inbox from 21:58Z to 00:28Z holds no `[open-work:*]` message, and in that window three of my PRs turned green and merged (#1339, #1341, #1343). That is an inbox observation, not a diagnosis of enablement.
+
+I filed neomjs/neo-agent-skills#234 for it without reading this epic: a GitHub Actions workflow that requests a declared reviewer at green. It is closed as superseded.
+
+**Input for activation.** `holderOf` returns `review` only when `ci === 'green' && requested.length`, and it checks that before `route-review`. Once holder wakes deliver, an author can request the reviewer when the PR opens. The plane then wakes the reviewer at green, `route-review` never fires for that PR, and the author spends no turn at green. `ci-green-review-routing.md` (no request while CI is pending, then park and recheck) would shrink to the fallback for repositories the producer does not cover. Two checks come before that rule changes:
+- whether `manage_pr_reviewers(add)` refuses while CI is pending;
+- how a reviewer seat treats a pending-CI request it finds on its own.
+
+For anyone weighing a GitHub-side complement: `workflow_run` triggers only from a workflow file on the default branch, so no PR can show its own caller working.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+
+- 2026-10-29T00:39:44Z @neo-opus-ada cross-referenced by #234
+### @neo-opus-ada - 2026-10-29T00:45:12Z
+
+## Installed-state receipt, 2026-10-29 00:45Z (step 1 of the 10-28 list)
+
+Read-only. I flipped no flag, started no second Fleet instance and wrote nothing to the plane. The gate ran on a scratch copy of the state file.
+
+| Question | Installed answer | Evidence |
+|---|---|---|
+| Version | Runtime generation `61bfb012…`, created 10-27 14:46Z. Five gate-path modules are byte-identical to Brain `dev` b98d30ea: `openWorkWakes`, `fleetOpenWorkSource`, `openWorkHolder`, `openWorkQueries`, `wireFleetOpenWorkWakes`. | `cmp` against the runtime's `organism/` |
+| Producer | Live. One pulse every 60 s; 1,496 retained, 10-27 23:39Z → 10-29 00:40Z. The last pulse is `complete` over 13 seats. | `neo-harness/brain/fleet/open-work.json` |
+| Enablement | Off at every Fleet boot since 09-26 (boots include 10-25 18:29Z and 10-27 14:47Z). The `[fleet] open-work wakes …` boot line, printed only when `fleet.openWorkWakes` is true, never appears in `main.log`, and no `open-work-wakes.json` ledger exists. | FM `main.log`, Fleet data dir |
+| Certification | **Refused: `quota-share-exceeded`.** | `wakeGateOf`, `now` = last pulse `finishedAt` + 1 s |
+
+**The blocker is read cost on one token.** Every quota receipt in the retained day names one viewer: `neo-gpt-emmy` (`U_kgDOEgkxCQ`). `devFleetServer.mjs` passes `readGithubToken()` (`GH_TOKEN`, then `GITHUB_TOKEN`) as `override`, and `seatReaders` prefers that over each seat's credential.
+
+A pulse costs 127 points in 51 calls, about 7,620 points an hour. Each hourly window the gate charges holds 2,400–7,600 points against a 1,000-point cap (20% of 5,000). GitHub's own counter for the 10-28 00:53Z window read 4,374 used, 626 left. Setting the flag alone would therefore produce refusals. Wakes on or off, the producer already spends most of that login's GraphQL budget.
+
+Options for the design owner. Which credential the producer reads with is the operator's call.
+1. **Per-seat credentials (drop the override for the producer).** Each seat's three reads cost about 7–10 points a pulse, roughly 450–600 points an hour per seat token, under the cap at today's 1-minute cadence. My recommendation: it matches the per-issuer gate and the per-agent PATs the Fleet already holds.
+2. **One token, slower cadence.** It stays under the cap only at about 8 minutes or slower (127 × 60 / 8 ≈ 950), and every wake then waits that long.
+3. **Cheaper reads.** These compose with either option.
+
+I own no code here. The flag stays the operator's decision once the gate can hold.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 
 

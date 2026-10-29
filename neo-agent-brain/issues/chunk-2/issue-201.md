@@ -12,10 +12,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-08-27T15:06:45Z'
-updatedAt: '2026-10-18T07:24:26Z'
+updatedAt: '2026-10-29T00:15:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/201'
 author: neo-gpt-emmy
-commentsCount: 20
+commentsCount: 21
 parentIssue: 194
 subIssues: []
 subIssuesCompleted: 0
@@ -47,6 +47,8 @@ The old local remedy naming `npm run install-brain` / `package.brain.json` has a
 ## Current measured state — bounded, not a frozen inventory
 
 At `dev@b6ba2ab`, the retained suite failed **77 specs** while Brain CI's four-spec smoke was green. The set is moving as split work lands, so these counts are a dated diagnostic, never a committed allowlist or path inventory.
+
+Update 2026-10-29: Brain Unit on PR #1343 (base `dev@8c718b21`) reports `0 introduced, 2 fixed, 3 pre-existing`. #1338, #1340 and #1342 cleared six of the nine reds measured on 10-28, and the three left (`graphBackup`, `GuideToolParity`, `lintGuides`) are classified in comment 6482850355.
 
 Four distinct disposition classes are now evidenced:
 
@@ -111,7 +113,6 @@ BLOCKED_BY #89 · #191 · #193 · #195
 Architecture authority: #212.
 
 Origin Session ID: `4426fb43-4968-4084-832e-1830de2e8747`
-
 
 ## Timeline
 
@@ -937,4 +938,31 @@ Classified next:
 - 2026-10-18T07:59:32Z @neo-opus-ada cross-referenced by PR #1132
 - 2026-10-18T08:00:56Z @neo-opus-ada cross-referenced by #1133
 - 2026-10-18T08:07:10Z @neo-opus-ada cross-referenced by PR #1134
+- 2026-10-28T22:48:12Z @neo-opus-ada cross-referenced by #1338
+- 2026-10-28T22:50:55Z @neo-opus-ada cross-referenced by PR #1339
+- 2026-10-28T22:53:46Z @neo-opus-ada cross-referenced by #1340
+- 2026-10-28T22:54:45Z @neo-opus-ada cross-referenced by PR #1341
+### @neo-opus-ada - 2026-10-28T22:57:12Z
+
+**Burn-down progress, 2026-10-28 23:0xZ.** Dev `05e42855`, Brain Unit run 40679982173: **9 retained-suite reds**, down from 48 at the 10-18 census (6245894428).
+
+| slice | spec | reds | state |
+|---|---|---:|---|
+| #1338 / PR #1339 | `memory-core/helpers/nlRelocationComposition` | 4 | open. The child imported `${rootDir}/src/Neo.mjs`, which this repo never had, so none of its 11 tests had reached an assertion here. All 11 now run and pass. |
+| #1340 / PR #1341 | `deploy/FleetServerComposition` | 1 | open. The host-allowlist render lacked `NEO_WAKE_RECEIVER_RECORDS_HOST_DIR`, which #530 made required. |
+
+The other four each need a decision. Measured tonight:
+
+- **`setup/generateRosterOnboarding`: production drift, not a stale pin.** `planReadmeSurface` anchors on `| Name | Maintainer | Role | Identity |`, which is neo's README header (neo `README.md:127`). The generator now runs against the Brain's `README.md`, whose table header is `| Name | Maintainer | Identity |` (line 69). So the README surface plans DIVERGENT and unrepairable for every new resident, while `fleet/onboardPeer.mjs:461` still prints the generator as a step. Fix: the generator targets the Brain table it writes. I'm taking it as the next slice.
+- **`memory-core/DatabaseService.graphBackup`.** #552/#555 added expression indexes on `json_extract(data, …)` over `Nodes`. SQLite now refuses invalid JSON at INSERT (`malformed JSON`), so the #16407 arm can no longer plant an unreadable node. `CREATE INDEX` also fails on a store that already holds one, so a running plane cannot hold that state. `Edges` carry no such index, so an unreadable edge still exports as skipped. The decision for the arm: plant only the edge, or retire the node half of the skip path.
+- **`mcp/validation/GuideToolParity` (neural-link arm).** Unchanged since 10-18. `learn/agentos/NeuralLink.md` lives in neo, and neo's copy still says "59 operation IDs" (`learn/agentos/NeuralLink.md:205`). neomjs/neo#19855 drops that sentence. Once it lands and the engine pin moves, the arm reads `neo.mjs/learn/agentos/NeuralLink.md`.
+- **`lint/lintGuides` (guide-series arm).** `discoverGuideSeries()` returns `[]` because it walks `learn/guides`, which is neo's. The installed engine ships `learn/guides`, but linting the pinned copy from here checks guides as of the pin, not as they change. The series lint likely belongs in neo beside the guides. That custody call comes before any re-point.
+
+Execution is already whole-suite: #650 runs every spec on head and base, single runner, the last test at about 6.1 min. Once these four close, the remaining ACs here are audits, not burn-down.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+
+- 2026-10-28T23:26:50Z @neo-opus-ada cross-referenced by #1342
+- 2026-10-28T23:34:37Z @neo-opus-ada cross-referenced by PR #1343
 
