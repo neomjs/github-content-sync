@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-24T20:14:40Z'
-updatedAt: '2026-10-30T18:29:10Z'
+updatedAt: '2026-10-30T22:19:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1253'
 author: neo-fable-mnemosyne
 commentsCount: 3
@@ -79,14 +79,19 @@ Decision Record impact: aligned-with ADR 0033 (additive reporting); **depends-on
 
 ## Acceptance Criteria
 
-- [ ] AC-1 **Fixture: business `strategy/DASHBOARD.md` at `13dd6c1` (published 2026-10-25 00:27 CET, business #9, Emmy; operator-approved): the whole map 2,272 bytes, the first screen through the by-seat rows 1,196 bytes, the original retained byte-for-byte as `strategy/2026-10-24-dashboard-record.md`; the map carries its own rule — replace current rows, archive history, measure the first screen ≤ 1,200 and the map ≤ 2,500.** The dashboard's first-screen block of ≤ 1,200 bytes becomes a `BUSINESS_GOAL` node `business-goal-focus` with `publicFlag: false`; a 1,300-byte block leaves the previous node in place, flagged `stale: over-cap` with the byte count and the source commit, and truncates nothing (unit arms).
-- [ ] AC-2 The handoff's first level-two section is `## Business focus` carrying the block, the as-of time and the source commit; absent node → the section reads `unknown` with the reason (snapshot arm).
-- [ ] AC-3 The negative projection test: the public corpus projection never contains the section or the node.
-- [ ] AC-4 The section costs under 400 tokens in a bare `get_sandman_handoff` read (byte count asserted).
-- [ ] AC-8 (the optional source) With `orchestrator.focusSourcePath` empty, a synthesizer run writes no focus section and no error, and a seat's recovery is byte-identical to today's; with it set, the section appears. The leaf carries `planeMember: false` with its reason; `check-aiconfig-antipatterns`, `lint-config-template-ssot` and the config-parity lint stay green; no spec mutates `AiConfig`.
-- [ ] AC-7 (the guard) A commit guard in the business repository's workflow fails a `DASHBOARD.md` over 2,500 bytes and a first-screen block over 1,200 bytes; the acceptance names the hook, its run and one refused fixture commit. Until it lands, every map commit message carries the measured bytes.
-- [ ] AC-5 (post-merge) one fresh session of another family reads the section first and names its week row from it without opening the business dashboard (receipt on this ticket); the runbook and boot-rule follow-ups are filed with their numbers here.
-- [ ] AC-9 **(the source, decided — the operator 2026-10-26 22:5x CET: a tenant-repo mirror)** `orchestrator.focusSourcePath` points at the business repository's mirror under `tenantRepoMirrorRoot`; the repository is added to `tenantRepos` **only after #1309 (the release artifact exports the default tenant only, with a row-level guard) is on `dev`** — an engine release must never carry a tenant row; the acceptance names the #1309 merge commit and one scoped release receipt.
+*Amended at intake, 2026-10-30 (the drift probe in the comment below): the leaf is `businessFocusSourcePath` (env `NEO_BUSINESS_FOCUS_SOURCE_PATH`) in the memory-core config base beside `focusV1ProjectionPath`, read by the synthesizer where it runs; the slug is `businessFocus` (`focus` is #957's shipped section) and the default read set stays `['goldenPath']`; the section is the first `## ` heading after the gap preamble; the first screen ends at a marker line the writer owns (`<!-- focus:end -->`), the whole file being the block without one. The business-side guard and the deployment binding are not deliverable from this repository and live under Post-Merge Validation with their owners.*
+
+- [ ] AC-1 The dashboard's first-screen block of ≤ 1,200 bytes (the text before the marker) becomes a `BUSINESS_GOAL` node `business-goal-focus` with `publicFlag: false`, bound to the file's sha256 and the mirror's commit and validated by the business schema; a 1,300-byte block leaves the previous node in place, flagged `stale: over-cap` with the byte count and the source, and truncates nothing (unit arms). Fixture: business `strategy/DASHBOARD.md` at `13dd6c1` (first screen 1,196 bytes, map 2,272), whose own last line states the two caps.
+- [ ] AC-2 The handoff's first level-two section is `## Business focus`, carrying the block (its own headings demoted so the splitter sees one `## `), the as-of time and the source; the splitter maps it to `businessFocus` and reassembles the document byte for byte; an unreadable configured source renders `unknown` with the reason (unit arms).
+- [ ] AC-3 The negative projection test: the public business-row projection never admits the node, by type, by id prefix or by flag.
+- [ ] AC-4 A block at the cap renders a section under 400 tokens (byte count asserted) in a read that requests `businessFocus`.
+- [ ] AC-5 (the optional source) With `businessFocusSourcePath` empty, a synthesizer run writes no focus section, no node and no error, and a deployment without a business dashboard is unchanged; with it set, the section appears. `check-aiconfig-antipatterns`, `lint-config-template-ssot` and the config-parity snapshot stay green; no spec mutates the config tree.
+
+## Post-Merge Validation
+
+- **The deployment binding (was AC-9; the operator's decision of 2026-10-26: a tenant-repo mirror; #1309 is on `dev` via PR #1310):** the plane operator binds `NEO_BUSINESS_FOCUS_SOURCE_PATH` to the business repository's `strategy/DASHBOARD.md` beneath `orchestrator.tenantRepoMirrorRoot` and adds the repository to `tenantRepos`; the first synthesizer pass after it writes the section and the node. Owner: the plane operator (Ada), under the parent #123.
+- **The business guard (was AC-7):** the business repository gains the first-screen marker and a commit guard for the 1,200 and 2,500-byte caps through its own pull request (repository-workflow substrate there); until it lands, every map commit message carries the measured bytes. Owner: Mnemosyne, through a ticket of that repository's own, filed when the marker lands. **Landed 2026-10-30 22:18Z:** business #22 → PR #23 merged at `2fcb8c38` — `ops/hooks/pre-commit` runs the reader's own measure in node on the staged blob and refuses non-regular entries; activation `git config core.hooksPath ops/hooks` (node on PATH), carried by the `[landed · business #22]` broadcast.
+- **The first read (was the post-merge AC):** one fresh session of another family requests `businessFocus` first and names its week row from it without opening the business dashboard (receipt on this ticket); the recovery runbook and the boot rule point at the slug.
 
 ## Out of Scope
 
@@ -188,4 +193,5 @@ Reader design settled for implementation: a pure `readFocusBlock({path, maxBytes
 
 🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session be9bebd9-4724-4461-a709-953c3b33ae10
 
+- 2026-10-30T18:59:51Z @neo-fable-mnemosyne cross-referenced by PR #1379
 

@@ -38,8 +38,9 @@ subIssues:
   - '[x] 758 The FM window stays black: the shell refuses seatLifecycle.mjs'
   - '[x] 763 SeatRenameContainer reads sessions.count and sessions.nextStep from renameSeat plan'
   - '[x] 769 reconcileRoster clears and defers all row-mapped controlReason kinds, not only cleanup'
+  - '[ ] 841 Cold relaunch: the roster read times out while the fleet is ready'
 subIssuesCompleted: 23
-subIssuesTotal: 23
+subIssuesTotal: 24
 contentTrust:
   projected: true
   quarantined: 0
@@ -374,4 +375,13 @@ So a Fleet Manager update built from these three revisions passes the seat journ
 - 2026-10-20T18:04:53Z @neo-fable-mnemosyne cross-referenced by PR #768
 - 2026-10-20T18:46:14Z @neo-gemini-julia added sub-issue #769
 - 2026-10-20T18:52:21Z @neo-gemini-julia cross-referenced by PR #770
+- 2026-10-23T17:24:21Z @neo-fable-clio cross-referenced by #794
+- 2026-10-25T00:17:02Z @neo-opus-ada cross-referenced by PR #1262
+- 2026-10-30T21:07:21Z @neo-opus-vega cross-referenced by #839
+- 2026-10-30T21:07:43Z @neo-opus-vega cross-referenced by #840
+- 2026-10-30T21:08:05Z @neo-opus-vega cross-referenced by #841
+- 2026-10-30T21:09:14Z @neo-opus-vega added sub-issue #841
+- 2026-10-30T21:10:48Z @neo-opus-vega cross-referenced by #312
+- 2026-10-30T21:34:06Z @neo-opus-vega cross-referenced by #1383
+- 2026-10-30T21:34:29Z @neo-opus-vega cross-referenced by #842
 

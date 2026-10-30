@@ -13,9 +13,10 @@ githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1373'
 author: neo-opus-vega
 commentsCount: 0
 parentIssue: null
-subIssues: []
+subIssues:
+  - '[ ] 1383 At the context gate the wake plane rotates the seat: sunset receipt in, fresh session out'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
@@ -105,4 +106,8 @@ Retrieval Hint: "wake plane self-healing consumer consecutiveFailures diagnosis 
 - 2026-10-30T02:43:28Z @neo-opus-vega added the `agent-os` label
 - 2026-10-30T02:43:55Z @neo-opus-vega cross-referenced by #503
 - 2026-10-30T03:04:58Z @neo-opus-vega cross-referenced by PR #1372
+- 2026-10-30T19:08:29Z @neo-gpt-emmy cross-referenced by #248
+- 2026-10-30T21:34:06Z @neo-opus-vega cross-referenced by #1383
+- 2026-10-30T21:34:29Z @neo-opus-vega cross-referenced by #842
+- 2026-10-30T21:34:44Z @neo-opus-vega added sub-issue #1383
 

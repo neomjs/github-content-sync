@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-10-28T21:00:17Z'
+updatedAt: '2026-10-30T22:39:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
 commentsCount: 9
@@ -24,8 +24,11 @@ subIssues:
   - '[x] 735 At login, a plane that answers after the FM''s boot is never attached'
   - '[x] 812 A held walk run boots live and cleans up its sealed runtime store'
   - '[x] 828 A PAT revoked or remapped mid-session never reaches the spine banner'
+  - '[ ] 843 A PAT update must not restart the Fleet Manager'
+  - '[ ] 844 A plane outage shorter than the cockpit''s refresh is never named'
+  - '[ ] 845 A revoked PAT can take ~10 min to reach the spine: two 300 s intervals stack'
 subIssuesCompleted: 8
-subIssuesTotal: 9
+subIssuesTotal: 12
 contentTrust:
   projected: true
   quarantined: 0
@@ -38,7 +41,7 @@ milestone: FM v1
 
 Terminal predicate: on one installed Fleet Manager, each failure FM v1 ROADMAP row 5 names is provoked, and the product returns to `live` by its own guidance alone, with one receipt per failure. The failures are: the plane restarts, the plane is cut to a new Brain commit, the vessel is updated, the saved plane goes stale, the PAT expires or is wrong, the endpoint is wrong. This is row 5's installed check, recorded once.
 
-Row state: row 5 · Ada (walker Julia) · unknown · 2026-10-28 20:41Z, candidate Institution `a4420fdb1` / Brain `05e428558e` / engine `95e63df6db` (13.3.1, staged 2026-10-28T20:13:37Z; packet [6479586490](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6479586490)). The candidate is not installed until H4, so it has no installed check yet. Peer-side receipts: [6468175916](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6468175916) (11:47Z, installed `20d89be`) and the re-walk [6480226592](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6480226592) (20:24–20:41Z, this candidate).
+Row state: row 5 · Ada (operator @tobiu; peer read Sophie, #479) · passed with gaps · 2026-10-30 22:38Z, installed candidate Institution `a4420fd` / Brain `05e4285` / engine `95e63df` on plane Brain `4ca0f506`. Every provoked failure returned without extra guidance. H1 passed against a degraded baseline. H2 recovered, but its ~35 s outage was never named. H3 showed "pat refused" within 4 min, and Connect returned it to `live`. H4 kept plane membership and reached `live` with no Connect. H0 failed: the cold start was not `live` (#841). Receipt: [6534998715](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6534998715). Gaps that become leaves: a PAT update relaunches the whole FM (operator: no restart), H2's unnamed short outage, the PAT detection bound (two stacked 300 s intervals), and "8→7 started" across H1.
 - Provocations 2 and 3 pass, and 4 passes on the Connect card (on `20d89be`; #832 does not touch these paths).
 - Provocations 1 and 4 are `missing` at boot: a held run always starts its own fixture plane.
 - Provocations 5 (a PAT revoked while the shell runs) and 6 (a PAT now admitted as another account) **pass** on the candidate (#828 AC-4). The spine names the credential (`pat refused` / `account changed`) in the connect card's words and offers Connect. Each restore returned to the baseline by the product's own reads: 5 at the next 60 s roster read, 6 at the next 300 s re-check.
@@ -89,18 +92,6 @@ Origin Session ID: 6f7d14a3-e126-4b47-888f-fc28c748ae83
 Retrieval Hint: "FM v1 row 5 ordinary recovery plane restart stale saved plane expired PAT product guidance"
 
 ⚖️ Ada (Claude Opus 5.5, Claude Code)
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Timeline
 
@@ -616,4 +607,11 @@ Julia (Gemini 4 Argon, Antigravity) · session e6d4b12e-5e6e-482f-b60f-dbdb25a6d
 
 🏛️ Julia (`@neo-gemini-julia`, Gemini 4 Argon, Antigravity)
 
+- 2026-10-30T21:08:05Z @neo-opus-vega cross-referenced by #841
+- 2026-10-30T22:40:40Z @neo-opus-ada cross-referenced by #843
+- 2026-10-30T22:44:48Z @neo-opus-ada cross-referenced by #844
+- 2026-10-30T22:44:55Z @neo-opus-ada cross-referenced by #845
+- 2026-10-30T22:45:37Z @neo-opus-ada added sub-issue #843
+- 2026-10-30T22:45:39Z @neo-opus-ada added sub-issue #844
+- 2026-10-30T22:45:41Z @neo-opus-ada added sub-issue #845
 

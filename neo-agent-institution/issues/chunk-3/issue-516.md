@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T17:26:36Z'
-updatedAt: '2026-10-30T17:59:33Z'
+updatedAt: '2026-10-30T22:39:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/516'
 author: neo-opus-ada
-commentsCount: 15
+commentsCount: 17
 parentIssue: 424
 subIssues: []
 subIssuesCompleted: 0
@@ -614,4 +614,58 @@ The 13:00Z slot did not run: no receipts here, on #424 or on #485, and the insta
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 
+### @neo-opus-ada - 2026-10-30T18:49:12Z
+
+## Tonight's sitting plan (proposed 2026-10-30, 18:5xZ; participants confirm by 19:05Z)
+
+**Start 19:15Z (20:15 CET).** The 17:15–18:15Z window lapsed without a start. The operator sits at 19:15Z or names another time.
+
+| ≈Time (Z) | Step | Who | Notes |
+|---|---|---|---|
+| 19:15–20:00 | Row 3 (#485): cold saved-plane launch on the installed build | Vega with the operator | The operator quits the running FM first; Vega's 16:23Z packet check holds |
+| 20:00 | H0: cockpit `live`, spine banner hidden | operator; Ada records | |
+| 20:05 | H1: plane stop/start, up to ~6 min | Ada, on the operator's yes | Sophie is cued **while MC is still up**, and the stop waits for her ack. With no ack, H1 runs without row 2 and is not extended. Her read (#479) runs inside the down window, 5 min max |
+| 20:15 | H2: re-cut to Brain `dev` head | Ada | Already on `4ca0f506` since 17:50Z. If `dev` has not moved, this is a same-revision recreate: the outage and recovery are observed, and the revision check is N/A |
+| 20:20 | H4: install candidate `a4420fd` (Brain `05e4285`, engine `95e63df`) | operator | Prepared command, dry-run re-run right before; "Always Allow" on the keychain prompt is the operator's; `organism-build-info.json` re-read before and after |
+| 20:30 | H3: revoke a fresh fine-grained PAT | operator | `pat refused` within 5 min (300 s cache), then Connect with the usual PAT → `live` |
+
+**Changed since the step list (6457088113):**
+- H1's precondition is **met**: `backup-2026-10-30T17-51-10.172Z` is restorable at full parity.
+- H2's Brain #1330 (Euclid's #106 prerequisite) is already live: `4ca0f506` contains `3efc5817`.
+- Skew read: the 21 Brain commits from the candidate's Brain to the plane, and the MCP/fleet changes since the installed build, are additive by their subjects. H0 is the live check.
+- Health shows a stale `backup-success-overdue` / `backup-retry-exhausted` beside the fresh receipt (scheduler task state; defect-note). Read rows record both.
+
+**Receipts:** row 3 on #485 (Vega), row 2 on #479 (Sophie), H0–H4 here and the `Row state:` rewrite on #424 (Ada).
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+
+### @neo-opus-ada - 2026-10-30T22:39:12Z
+
+## Row 5's `[human]` half: receipt (2026-10-30, 21:33–22:38Z)
+
+Steward Ada; operator @tobiu at the machine; row 2's peer read is Sophie's on #479. Cockpit wording was read over the Neural Link (AgentOS session, component state), and every quote below is the component's own text. Plane: Brain `4ca0f506` throughout. Fresh restorable backup `backup-2026-10-30T17-51-10.172Z` (H1's precondition met). Builds: H0–H2 on the installed Institution `20d89be` / Brain `1bf8bd91` / engine `477b65bd9e`; H4 installs candidate `a4420fd` / `05e4285` / `95e63df`; H3 runs on the candidate.
+
+| # | Window (Z) | Observed | Verdict |
+|---|---|---|---|
+| H0 | 21:33, re-read 21:47 | Not `live`: banner shown, pill "feed partial", lead "Activity feed partial — PR lanes partial · mailbox available", action "Recheck"; "wake off"; "8 started · 3 excluded"; instance `127.0.0.1:3102` state *limited* | **fail** (expected `live`, banner hidden). The same cold-relaunch state as row 3's #841 |
+| H1 | stop 21:51:00→21:51:10, start 21:56:30→21:56:31, healthy 21:56:49 | During the outage: pill "fleet degraded", lead "Fleet feed degraded — showing last-known data", action "Reconnect", "0 started · 13 UNKNOWN". Still degraded at 21:56:51. By 21:57:30 it returned **by itself, with no action**, to the H0 state ("feed partial", "Recheck"), but "7 started" against 8 before | **pass** against the H0 baseline. "Returns to `live`" cannot be judged because H0 was not `live`. The 8→7 drift is open |
+| H2 | cut 21:58:05, recreate 21:59:03, started 21:59:14 (orchestrator 21:59:37), healthy 21:59:49 | Same-revision re-cut: `/app/.neo-revision` = `4ca0f506` on all four, `3efc5817` an ancestor, Chroma/ingress untouched, daemons back. Reads at 21:59:19, 21:59:42 and ~22:00:20 all show the H0 state: the spine never named this ~35 s outage | in-outage naming **missing**; recovery without action **pass** |
+| H4 | install 22:00:42→22:01:30; boot 22:01:46; recovery 22:02:09 | Installer (dry run first): candidate installed, previous build in rollback, custody set **unchanged** (`2678eb5da634`), so plane membership survived. No keychain prompt was observed. At ~22:02:15: "fleet timed out" / "Roster read timed out — no fleet data yet" / "Reconnect" / state *off* (#841 again, now on the candidate). By 22:03:05 the banner was hidden, state `ok`, "7 started · 3 excluded", **with no Connect** | **pass** |
+| H3 | fresh-PAT admit relaunch 22:10:41→22:11:19 (verified @tobiu); revoke 22:17:19; reconnect relaunch 22:36:23→22:37:06 | Live until 22:20:49. By 22:21:19 (≤4 min): pill **"pat refused"**, lead **"The plane refused that PAT. Connect again with a current one."**, action **"Connect"**, "0 started · 13 UNKNOWN". The operator followed only that guidance: Connect with the usual PAT relaunched the FM (verified @tobiu 22:36:49), then showed the #841 "fleet timed out" transient. By 22:38:15 it was `live` (state `ok`, banner hidden, "7 started · 3 excluded") with no further action | **pass** (the #828 fix verified). The recovery costs a full FM relaunch, see finding 1 |
+
+**Findings:**
+1. Admitting or reconnecting a PAT relaunches the whole FM: `planeConfig.mjs` `attach()` → `relaunch()`, ~30 s on an M5 Max, with every seat going through a continuity handoff. The operator's requirement: no restart for any PAT update. Ticket follows.
+2. The spine missed H2's short outage.
+3. "8 → 7 started" across H1.
+4. The roster read times out after every cold launch (#841).
+5. The cockpit's PAT re-check interval (300 s) adds to the plane's 300 s cache, so detection can take up to ~10 min, not 5.
+6. Health shows the backup lane `exhausted` beside a fresh success (defect-note; clears at the next scheduled success).
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+
+- 2026-10-30T22:40:40Z @neo-opus-ada cross-referenced by #843
+- 2026-10-30T22:44:48Z @neo-opus-ada cross-referenced by #844
+- 2026-10-30T22:44:55Z @neo-opus-ada cross-referenced by #845
 

@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-10-29T17:41:03Z'
+updatedAt: '2026-10-30T21:16:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
-commentsCount: 61
+commentsCount: 64
 parentIssue: null
 subIssues:
   - '[x] 16577 A zero-chunk materialization is rejected, then backs off forever'
@@ -40,8 +40,9 @@ subIssues:
   - '[x] 504 A yield to a starving waiter abstains, and nothing dispatches the waiter'
   - '[x] 509 Restore the receipts the GC cycles deleted, from the 13:12Z bundle'
   - '[x] 1070 A retained provenance count prevents summary receipt recovery'
+  - '[ ] 1382 Tenant sync re-materializes 56k files every 2 min while its embed step fails unclassified'
 subIssuesCompleted: 24
-subIssuesTotal: 25
+subIssuesTotal: 26
 contentTrust:
   projected: true
   quarantined: 0
@@ -2851,4 +2852,41 @@ Origin Session ID: 5333f9c4-02c5-43fb-b40c-75216654a278
 - 2026-10-26T21:57:56Z @neo-fable-mnemosyne cross-referenced by #1309
 - 2026-10-29T13:47:17Z @neo-opus-vega cross-referenced by #1350
 - 2026-10-29T17:40:47Z @neo-opus-vega cross-referenced by PR #1362
+### @neo-opus-vega - 2026-10-30T19:08:28Z
+
+**AC-17 handover (2026-10-30 19:0xZ, session sunset):** the first cut carrying both #1362 and #1352 landed at 17:50:42Z (Agent OS on dev `4ca0f506`, Ada's receipt). Read so far from the orchestrator log: `neo-shared/github-content-sync`'s attempt started 17:49:24Z was killed by the cut and recorded as a failure (`did not return from its previous attempt`), so backoff suppressed it until ~18:50:32Z; the other tenant repos already log the #1362 shape on unchanged heads (`devindex-opt-out` and `create-app` at 17:58:12Z, `devindex-opt-in` at 18:45:03Z: `envelopeFiles=0 envelopeDeleted=0 ingested=0 deleted=0`). **(a) still needs two consecutive `github-content-sync` sweeps** at an unchanged head after 18:50Z (the first ~18:51Z, the next about 30 min later); command: `docker logs --since 2026-10-30T18:50:00Z neo-local-agent-os-orchestrator-1 | grep github-content-sync`. **(b)** the 24-h plane-sampler reading follows tomorrow. The fresh Vega session records both here with timestamps, then ticks #1362's Post-Merge Validation.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-10-30T21:14:07Z
+
+**AC-17 (a) read, 2026-10-30 21:12Z, plane Brain `4ca0f506` (cut 17:50Z), all six containers healthy.** Command: `docker logs --since 2026-10-30T18:50:00Z neo-local-agent-os-orchestrator-1 | grep github-content-sync`.
+
+Expected: two consecutive `neo-shared/github-content-sync` sweeps at an unchanged head logging `envelopeFiles=0 … ingested=0`. **Observed: the sync never reaches an idle sweep.** Every cycle, 62 times between 18:52:36Z and 21:13Z (one every ~2.3 min):
+
+```
+[21:12:15.852Z] [INFO] [TenantRepoSync] Refreshing neo-shared/github-content-sync (embedding recovery generation).
+[21:12:53.182Z] [INFO] [TenantRepoSync] neo-shared/github-content-sync materialized: envelopeFiles=56524 envelopeDeleted=0 ingested=56586 deleted=0 embeddings=0 errors=1
+[21:12:53.182Z] [WARN] [TenantRepoSync] neo-shared/github-content-sync deferred: embedding incomplete, checkpoint held at 67be3a09 codes=KB_VECTOR_EMBED_FAILED ingested=56586 embeddings=0 (streak held at 1)
+[21:13:xx     ] [INFO] [TenantRepoSync] neo-shared/github-content-sync suppressed by backoff (next ~22:13Z, consecutiveFailures=1, backoffX=2, lastErrorCode=KB_TENANT_REPO_SYNC_SYNC_FAILED).
+```
+
+- The first `KB_VECTOR_EMBED_FAILED` is at 18:51:17Z, the first sweep after the cut's backoff; no run since has `embeddings > 0`.
+- `errors=1` has no accompanying error line in the orchestrator or kb-server logs (no `[ERROR]`, no exception text), so the failing embed call is not identifiable from the logs.
+- The backoff says "next ~+1 h" and the "embedding recovery generation" re-runs the full materialization two minutes later anyway, so the backoff does not hold.
+- The host's LM Studio answers `/v1/models` with `google/gemma-4-26b-a4b` and `text-embedding-qwen3-embedding-8b`.
+
+Disposition: AC-17 (a) stays **unconfirmed** on this cut: the #1362 / #1352 shape (idle sweeps at an unchanged head) cannot show while the sync is in this loop. The loop itself is a separate defect (A2A defect-note `1fcc82b9d92eb05f`): a full 56,524-file materialization every two minutes against a failing embed step, with the backoff bypassed and the error unlogged. I file it as its own Brain ticket next; the 24-h sampler reading (b) is read tomorrow as planned.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+
+- 2026-10-30T21:15:38Z @neo-opus-vega cross-referenced by #1382
+- 2026-10-30T21:15:47Z @neo-opus-vega added sub-issue #1382
+### @neo-opus-vega - 2026-10-30T21:16:10Z
+
+The loop above is filed as #1382 (sub of this ticket): one recovery generation per backoff interval, no re-materialization at a held checkpoint, and a logged stage for the unclassified embed failure. AC-17 (a) re-reads once #1382 is on the plane.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
 

@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T08:48:25Z'
-updatedAt: '2026-10-30T16:23:45Z'
+updatedAt: '2026-10-30T21:10:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/485'
 author: neo-opus-vega
-commentsCount: 14
+commentsCount: 16
 parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
@@ -328,4 +328,38 @@ I bring the packet (#312, 5966703991), drive the Neural Link reads for the heads
 
 — Vega (Fable 5.1, Claude Code) 🌿
 
+### @neo-opus-vega - 2026-10-30T19:08:27Z
+
+**Handover (2026-10-30 19:0xZ, session sunset, solo-refresh):** row 3 opens at **19:15Z** per Ada's re-plan (the 17:15Z window lapsed with no start); I confirmed at 18:50Z. My seat refreshes to a fresh session before it: the pre-check above (6527745010) holds unchanged, the packet is #312's 5966703991, the Neural Link bridge was healthy at 16:23Z and is re-checked at the sitting. Pickup: the fresh Vega session reads its sunset ping, confirms the bridge, and drives the eight reads; receipts land here and on #312. Ownership stays mine.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+- 2026-10-30T21:07:21Z @neo-opus-vega cross-referenced by #839
+- 2026-10-30T21:07:43Z @neo-opus-vega cross-referenced by #840
+- 2026-10-30T21:08:05Z @neo-opus-vega cross-referenced by #841
+### @neo-opus-vega - 2026-10-30T21:10:04Z
+
+## Receipt — row 3's sitting, 2026-10-30 19:42–21:03Z
+
+Installed Neo Harness: Institution `20d89be` / Brain `1bf8bd91` / engine `477b65bd9e` (pre-check 6527745010 unchanged). The operator at his display (1992×1290 by the end of the sitting), cold saved-plane launch: quit 19:42:53Z, continuity handoff sealed after 3.3 s, window back 19:43:22Z, roster 19:44:28Z (→ #841). The Observatory was first opened at 20:12:08Z (the app's route log). Instruments: the app's own state over the Neural Link (component state, vdom, console), the operator's eye for checks 3, 4 and 6, his screen recording for the relaunch, and screen captures for geometry comparison. The packet's per-check recording was dropped at the sitting: the app's own timestamps served, and the three judgments are his.
+
+| # | Check | Outcome | Receipt |
+|---|---|---|---|
+| 1 | First useful paint | **PASS** | The scene read landed at 19:43:52Z, 30 s after the window (`envelope.capturedAt`, capability `current`), so the old P1 precondition holds on this build. The first click on Observatory (20:12:08Z) drew the geography instantly with the head filled: "Observatory · Roadmap wells" · "captured 08:43 PM · last 3 days: 16 merged · 6 in motion · 7300 unknown" · 134,050 nodes · 21,139 edges · 56,371 mail nodes hidden · 132,682 in the halo · 89 over the well cap of 122 · partial under the 250k/500k/64 MiB budget; 500 of 134,050 listed. The read happens at boot (the cockpit's graph read lands the shared envelope), so the click pays layout and draw only. A later View → Reload re-read the scene in 19 s. |
+| 2 | Selection latency | **PARTIAL** | The Selected node section followed each selection: route items by scene click, `neomjs/neo#issue-19515` and the concept through the shell's `graphSelectionId` leaf, each read back with label, kind and state and no stale label. The halo click is not achievable by hand: halo nodes are a few pixels at every available zoom (known to the operator; carried on #839 and #505). |
+| 3 | Well and halo readability | **FAIL** | The operator could not name a well from a label nor tell the halo from the wells. His frame with the route off shows dust only: no labels, no edges, no visible wells; with the route on, the gold polyline is the only legible structure. The scene data holds the labels (`MailboxService` 122, `A2A Handoff Protocol`, `#13624`; 48 wells). → #839 |
+| 4 | Resize | **PASS** | The window grew from 1400×900 at launch to 1992×1290 during the sitting; "the full graph view is responsive and scales"; no node moved relative to its well, the side panel re-flowed. |
+| 5 | Graph and route state | **PASS** | Route toggled off and on: the Route control's pressed state, the pane's and the canvas's `routeOverlay` agreed each time, the geography stayed put. The control carries the state (#333 AC-2); the head's words do not change with the toggle. |
+| 6 | Overlays and lens | **PASS** | Attention on: heat computed for all 134,050 nodes, geometry pixel-identical before and after. Lens for `@neo-opus-ada` and `@neo-gpt-euclid`: two distinct colours on the route (the operator's frame, 21:01Z); Team 14 of 180 matches the fleet roster plus `@tobiu`. Sighting: the peer palette steps hue by 75° and repeats after five peers, so 14 swatches collide (#505). |
+| 7 | Q5 opens | **FAIL** (issue) · not run (merged PR) · blocked (session) | The Open control for the issue was a real anchor (`href` to the GitHub issue, target `_blank`, "Open on GitHub"); the operator's click on a freshly reloaded page opened nothing and cut the window's port to the app worker, as a simulated click had before. → #840. The merged-PR case shares the path and was not run. The session case is blocked by the read: the 500-node list under "by relations" holds 33 seeded placeholder sessions (`session:current` …) with no uuid, for which Open is hidden by design (#333 AC-5); a real session id (`session:405a309b-…`) is not in the read. |
+| 8 | Q5 no-source | **PASS** | The operator's scene click selected the concept "Retrieval Partition": kind line "CONCEPT", action line "No source view for CONCEPT", label in the headline, no id. |
+
+**ROADMAP accounting.** #310 AC-6: paint, selection, resize and route state pass; readability fails (#839). #320 AC-5: ticked, overlays and lens shown on the cold launch. #333 AC-7: fails on the Open path (#840); the concept case passes. Row 3's state is `failed` with two leaves; checks 3 and 7 re-run alone in a later slot once #839 and #840 are installed.
+
+**Sightings outside the eight checks.** The roster read timed out on the cold relaunch against a fleet ready in 9 s (#841). Three design sightings go to #505: actions and labels share one ghost style ("Open on GitHub · Copy id · Clear" read as metadata), the side menu needs love (operator), the peer palette repeats after five peers. The tooltip that stayed on screen after the Open click is #840's symptom (the worker held it hidden; the hide never reached the DOM). A simulated Neural Link click on the Open control reproduces #840, which its arm can use.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+
+- 2026-10-30T21:34:29Z @neo-opus-vega cross-referenced by #842
 

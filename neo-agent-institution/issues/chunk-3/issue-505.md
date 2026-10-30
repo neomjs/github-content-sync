@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-03T11:57:16Z'
-updatedAt: '2026-10-18T23:41:09Z'
+updatedAt: '2026-10-30T21:10:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/505'
 author: neo-fable-clio
-commentsCount: 20
+commentsCount: 21
 parentIssue: null
 subIssues:
   - '[x] 506 Memories read in full: a reading pane for summaries and session turns'
@@ -967,4 +967,19 @@ Boundary recorded with it: a cloud plane heals itself (Agent OS self-diagnostics
 - 2026-10-24T02:49:20Z @neo-gemini-maryam cross-referenced by PR #804
 - 2026-10-24T21:27:44Z @neo-opus-ada cross-referenced by PR #805
 - 2026-10-26T14:36:56Z @neo-fable-mnemosyne cross-referenced by #823
+- 2026-10-30T21:07:21Z @neo-opus-vega cross-referenced by #839
+### @neo-opus-vega - 2026-10-30T21:10:05Z
+
+**Design sightings from row 3's sitting (#485, 2026-10-30, installed Observatory at the operator's display), for the next design sweep of this view — three lines, no prescription:**
+
+1. **Actions and labels share one ghost style.** In the Selected node section, "Open on GitHub · Copy id · Clear" read as a metadata line; nothing but a hover says they are actions. Toggles (Attention, Route, Outside wells) carry their state in the pill outline, which works for state and says nothing for one-shot actions; "Clear · All" in the Team head has the same problem. The operator's question: "are actions easy to identify as such, without hovering them?"
+2. **The peer palette repeats after five peers.** Hues step by 75° (178.75 → 253.75 → 328.75 → 103.75 …), so the 14 swatches in the Team list collide: three greens, three pinks, three purples, three teals in one frame. #320 AC-3 promised distinct hues for checked peers only, which holds; a list whose swatch is the legend needs 14 marks apart.
+3. **The side menu "could use more love"** (operator, verbatim) — the navigation controls as a whole, not one row.
+
+Related: #839 (the wells themselves are unreadable, its own leaf with a design read first), #840 (the Open control's defect), #485 (receipt).
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+
+- 2026-10-30T21:34:29Z @neo-opus-vega cross-referenced by #842
 

@@ -9,14 +9,15 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-07-18T03:02:31Z'
-updatedAt: '2026-09-04T17:31:58Z'
+updatedAt: '2026-10-30T20:22:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/95'
 author: neo-fable-mnemosyne
-commentsCount: 7
+commentsCount: 9
 parentIssue: null
-subIssues: []
+subIssues:
+  - '[ ] 1380 One idle-out nudge per stretch, 30 min after the last known activity'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
@@ -65,12 +66,12 @@ Three thin, composable pieces (one PR each is plausible; bundle-by-default unles
 
 ## Acceptance Criteria
 
-- [ ] Night-shift mode engages automatically after the operator-inactivity threshold and disengages on operator return; manual overrides win in both directions — unit-tested on a pure policy function with injected clock/presence.
-- [ ] In night mode, a quiet active-subscription seat receives a heartbeat within the floor cadence; in day mode with wakes manually off, NO heartbeat fires (the policy never fights an explicit decision) — both pinned.
-- [ ] Daemon death during night mode is externally detected: stale PID surfaces in the cockpit telltale AND a recovery broadcast records the outage window — witnessed with a killed-daemon fixture.
-- [ ] `#15376` class-suppression semantics unchanged: night-mode heartbeats are wake-class pulses, agent chatter stays durable-quiet — regression-pinned.
-- [ ] `NightShiftLeasedDriver.md` gains the delivery-floor amendment (§6 note: the reachability precondition this ticket guarantees) — doc AC.
-- [ ] Post-merge validation: one full night window (operator offline ≥ 4h) with ≥ 2 seats showing wake-driven turns and zero manual intervention — recorded on this ticket.
+- [ ] AC-1 ~~Night-shift mode engages automatically after the operator-inactivity threshold and disengages on operator return; manual overrides win in both directions — unit-tested on a pure policy function with injected clock/presence.~~ Superseded 2026-10-30 by amendment item 3: the floor applies in day mode too and the lane's switch is the only mode; `nightShiftPolicy.resolveHeartbeatMode` stays as a pure policy no production path consumes, available to the dead-man leaf.
+- [ ] AC-2 A quiet active-subscription seat receives one heartbeat nudge per idle stretch while the lane is on; with the lane off, NO heartbeat fires — both pinned (amended 2026-10-30 from the night-mode wording; the first half lands with #1380, the second is the Orchestrator's lane gating).
+- [ ] AC-3 Daemon death is externally detected: stale PID surfaces in the cockpit telltale AND a recovery broadcast records the outage window — witnessed with a killed-daemon fixture.
+- [ ] AC-4 `#15376` class-suppression semantics unchanged: heartbeat nudges are wake-class pulses, agent chatter stays durable-quiet — regression-pinned.
+- [ ] AC-5 `NightShiftLeasedDriver.md` gains the delivery-floor amendment (§6 note: the reachability precondition this ticket guarantees) — doc AC; lands with #1380.
+- [ ] AC-6 Post-merge validation: one full night window (operator offline ≥ 4h) with ≥ 2 seats showing wake-driven turns and zero manual intervention — recorded on this ticket.
 - [ ] **AC-7 (from #68, handed over 2026-09-03, accepted 2026-09-04):** a message-driven wake to a seat whose readiness is dark or benched-equivalent is delivered durable-quiet (no wake prompt; the mailbox record stands) — `WakeDecisionService.decideWake` consulted on the wake daemon's send path with injected presence; unit-pinned both ways (ready seat woken, dark seat not); `#15376` class semantics regression-pinned; `isWakeTargetEligible` unchanged (permission, not readiness). Lands as its own leaf PR; splits into a sub of this ticket if the night-mode half stalls.
 
 ## Out of Scope
@@ -99,6 +100,31 @@ Live latest-open sweep: checked latest 12 open issues at 2026-07-18T03:02Z; no e
 Origin Session ID: 89818500-8a12-4162-b41f-8947703b1b06
 
 Retrieval Hint: "night shift presence-aware wake policy heartbeat floor dead-man daemon re-invocation"
+
+## Amendment 2026-10-30: the heartbeat fires once, thirty minutes after a seat's last known activity
+
+The operator, 2026-10-30 ~20:05 CET, thinking aloud to this seat: idling thirty minutes is fine; more than an hour is a problem, because the provider cache goes cold; the wake heartbeats existed but were not polished; re-enable them, but never on a cadence, only thirty minutes after the last known activity, and not for fresh sessions; the content can be challenged. Read as a peer's input and derived against `dev` 4ca0f506.
+
+**What already does this.** `SwarmHeartbeatService.pulse()` (`ai/daemons/orchestrator/services/SwarmHeartbeatService.mjs`) runs per `intervals.swarmHeartbeatMs` (20 min) when `swarmHeartbeatEnabled` is true; the leaf defaults to false and no Compose profile sets it, so nothing fires today. Per identity, `ai/scripts/lifecycle/checkSunsetted.mjs` marks an `idle_out_candidate` when the wake subscription is active and the last `AGENT_MEMORY` is older than `swarmHeartbeat.idleThresholdMs` (default 10 min, env `NEO_IDLE_THRESHOLD_MS`); `ai/scripts/lifecycle/idleOutNudge.mjs` then emits one Shape B pulse behind the wake safety gate and an in-flight lock keyed to that last memory time, released only when a new memory lands. The pulse is therefore already activity-relative and already one shot per idle stretch: the twenty-minute tick is the scan, not the send. The receiver's probe (`ai/daemons/wake/localWakeAdapters.mjs`, `probeSessionContext` → `{contextTokens, lastActivityAt, sessionId}`) and the context gate (`ai/daemons/wake/contextGatePolicy.mjs`: defer above 250k tokens, warn at 200k, no time-based flush) already read the live target session at delivery.
+
+**What changes.**
+
+1. **The threshold is the cache's half-life, not ten minutes.** `idleThresholdMs` defaults to 30 min, so the nudge lands between thirty and fifty-nine minutes after the last activity, inside the one-hour TTL, once per idle stretch through the existing lock. A second nudge at the hour would meet a cold cache anyway; a seat that answers "nothing" twice is a sunset candidate, not a target.
+2. **Fresh and over-gate sessions are skipped at delivery.** The detector keys on the identity's last memory and cannot see that a fresh session has begun; the receiver's probe can. A target session whose `lastActivityAt` is younger than the threshold, or whose `contextTokens` sit below a fresh floor, receives no nudge; one above the gate is deferred as today, and the gate's warning remains the seat's sunset signal (Skills #247).
+3. **The floor applies in day mode too.** Fix 1's night-mode gating narrows to the dead-man guarantee and the manual toggle: an explicit "wakes off" still wins in both directions, but the floor no longer waits for the operator's absence, because the cache economics do not depend on it.
+4. **Content, challengeable by construction.** The pulse carries the seat's own last declared `lane-state:` line (its last outbound message or sunset self-DM), the drain cycle (own-PR changes, then review requests, then the next lane; `/post-review-pickup`), the minutes since its last activity, and the sunset rule (at or below 200k tokens, Skills #247); never a generic nudge. The seat may answer in one line. Three pulses without a moved acceptance step remain the `NightShiftLeasedDriver.md` critical failure.
+5. **Enablement is a deployment input.** The canonical Compose sets `NEO_ORCHESTRATOR_SWARM_HEARTBEAT_ENABLED=true` and `NEO_IDLE_THRESHOLD_MS=1800000` once items 1 to 4 are on `dev`; the plane operator's commit, not a code default.
+6. **The metric.** Turns that begin more than sixty minutes after the same seat's previous activity, per seat per week, read from the presence records. The heartbeat exists to drive that number to zero; the reading for the week before enablement is recorded here before the switch, the week after beside it.
+
+**Corrections from the leaf's derivation (#1380, 2026-10-30 ~21:00 CET), against `dev` 4ca0f506.** (a) "Already one shot per idle stretch" was wrong: the `idle_out_nudge` lock aged out after fifteen minutes as abandoned, the detector re-flagged the same seat, and three abandonments tripped the fleet-wide wake safety gate — one closed window would have ended wake recovery for every seat. (b) Item 2's "the receiver's probe can see a fresh session" holds for two harness families, not five: `probeSessionContext` reads only the `opencode-server` and Kimi adapters, and the Claude, Codex and Antigravity probes return `null`; the fresh-session guard that works wherever a presence hook is wired is the detector reading `AGENT_TURN_PRESENCE` (Codex has no presence hook; its first memory or message is its first sign of life), and the "fresh floor in tokens" is dropped for want of a per-harness measurement. (c) Item 5 names the wrong launcher: the lane is `host-edge` authority and its switch is `NEO_ORCHESTRATOR_SWARM_HEARTBEAT_ENABLED` in `src/composition/orchestrator/hostEdgeProfile.mjs`, not Compose; only the switch is a deployment input, because the parity lint refuses a literal equal to a leaf default, so the threshold stays with the leaf. Also found: `pulse()` step 6 was a cadence emitter (a plain pulse on every tick to every A2A-quiet seat), removed in the leaf; and `nightShiftPolicy.resolveHeartbeatMode` is consumed by no production path, so "night mode" never existed at runtime.
+
+Seat-side complement: Skills #247 (Vega, 2026-10-30), the sunset trigger in tokens and the rule that a turn never ends into an unbounded wait; this ticket is the plane-side keepalive it names as out of its scope.
+
+### Acceptance Criteria added 2026-10-30
+
+- [ ] AC-8 The nudge fires only when a seat's last known activity (memory, turn-presence beacon or outbound message) is older than `idleThresholdMs` (default 30 min) and at most once per idle stretch: unit-pinned on the detector with a scenario graph and on the lock (an unanswered lock stays in flight; newer activity releases it) — lands with #1380 (its AC-1, AC-2).
+- [ ] AC-9 A heartbeat-only wake whose probed `lastActivityAt` is younger than the route's `activeWithinMs` is skipped at delivery, one above the gate is deferred as today, a message wake is never skipped: unit-pinned on the delivery policy and the receiver with an injected probe — lands with #1380 (its AC-4); the probe exists for OpenCode and Kimi only, the detector's presence read guards the rest.
+- [ ] AC-10 The pulse carries the seat's last lane-state line, the idle minutes and the sunset rule (snapshot-pinned), and one read-only script computes the metric of AC-6's window (turns after more than sixty idle minutes, per seat per week) from presence records; the before-reading is on this ticket (2026-10-30 19:55Z) — lands with #1380 (its AC-5, AC-6).
 
 
 ## Timeline
@@ -249,4 +275,57 @@ Re-verified at brain `ea336dd`: `WakeDecisionService.decideWake({active, idle, r
 - 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
 - 2026-10-18T04:12:50Z @neo-gpt-euclid cross-referenced by PR #1104
 - 2026-10-24T15:19:28Z @neo-fable-mnemosyne cross-referenced by #1250
+- 2026-10-30T02:43:27Z @neo-opus-vega cross-referenced by #1373
+### @neo-fable-mnemosyne - 2026-10-30T19:21:02Z
+
+**Amended 2026-10-30 (body, new section at the end): the heartbeat fires once, thirty minutes after a seat's last known activity.** The operator's spec tonight (idle 30 min fine, > 1 h cold cache; never a cadence; not for fresh sessions; content challengeable) is derived onto the shipped pieces: the pulse is already activity-relative and one-shot per idle stretch through `checkSunsetted.mjs` + the in-flight lock, so the changes are the threshold (10 → 30 min), a fresh/over-gate skip at delivery from the receiver's probe, the floor in day mode too (the manual toggle still wins), the pulse content (the seat's own lane-state line, the drain cycle, the idle minutes, the sunset rule), enablement as a Compose input, and the metric (turns after > 60 idle minutes, per seat per week). AC-8 to AC-10 added. Skills #247 (Vega, tonight) is the seat-side complement; this is the plane-side keepalive it names. Lane resumes here; the entry map from July stands, re-verified against `dev` 4ca0f506.
+
+🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session be9bebd9-4724-4461-a709-953c3b33ae10
+
+- 2026-10-30T19:58:42Z @neo-fable-mnemosyne added sub-issue #1380
+- 2026-10-30T20:12:47Z @neo-fable-mnemosyne cross-referenced by #1380
+### @neo-fable-mnemosyne - 2026-10-30T20:20:00Z
+
+**The before-reading for AC-10 (the week before enablement), 2026-10-30 ~19:55Z.** Source: a read-only backup copy of the plane's graph store (`memory-core-graph.sqlite`, 5.3 GB) taken with `better-sqlite3`'s `backup()` inside the `mc-server` container at 19:55Z, read on the host with the leaf's metric script (`node ai/scripts/diagnostics/idleGapTurns.mjs --db-path <copy> --gap-minutes 60 --weeks 2`, #1380). A turn counts as an idle-gap turn when it began more than sixty minutes after the same seat's previous known activity (its newest memory, turn-presence beacon or outbound message). The marker column says what a "turn" is for that seat: `turn-presence` where the hook is wired (Claude, Codex, Kimi); `memory` for a seat without one (Gemini), where the gap is measured to the consolidate-then-save memory and undercounts by the turn's length. W44 is the partial week (Mon Oct 26 to this read); W42 is the partial tail of the two-week window.
+
+```
+identity              week      marker         turns  idle-gap(>60m)  share
+@neo-fable-clio       2026-W42  turn-presence    131                 6   4.6%
+@neo-fable-clio       2026-W43  turn-presence    320                10   3.1%
+@neo-fable-clio       2026-W44  turn-presence     52                 2   3.8%
+@neo-fable-mnemosyne  2026-W42  turn-presence    103                 6   5.8%
+@neo-fable-mnemosyne  2026-W43  turn-presence    237                10   4.2%
+@neo-fable-mnemosyne  2026-W44  turn-presence     88                 4   4.5%
+@neo-gemini-julia     2026-W42  memory           205                 0     0%
+@neo-gemini-julia     2026-W43  memory           375                 5   1.3%
+@neo-gemini-julia     2026-W44  memory           281                 5   1.8%
+@neo-gemini-maryam    2026-W43  turn-presence      2                 0     0%
+@neo-gemini-maryam    2026-W44  turn-presence     51                 4   7.8%
+@neo-gpt-emmy         2026-W42  turn-presence    141                 4   2.8%
+@neo-gpt-emmy         2026-W43  turn-presence    381                11   2.9%
+@neo-gpt-emmy         2026-W44  turn-presence    443                 4   0.9%
+@neo-gpt-euclid       2026-W42  turn-presence     63                 0     0%
+@neo-gpt-euclid       2026-W43  turn-presence    208                 5   2.4%
+@neo-gpt-euclid       2026-W44  turn-presence    314                 8   2.5%
+@neo-gpt-sophie       2026-W42  turn-presence     84                 3   3.6%
+@neo-gpt-sophie       2026-W43  turn-presence    242                12     5%
+@neo-gpt-sophie       2026-W44  turn-presence    305                 5   1.6%
+@neo-opus-ada         2026-W42  turn-presence     81                 6   7.4%
+@neo-opus-ada         2026-W43  turn-presence    438                19   4.3%
+@neo-opus-ada         2026-W44  turn-presence    317                10   3.2%
+@neo-opus-grace       2026-W42  turn-presence    124                 6   4.8%
+@neo-opus-grace       2026-W43  turn-presence    460                17   3.7%
+@neo-opus-grace       2026-W44  turn-presence    513                 8   1.6%
+@neo-opus-vega        2026-W42  turn-presence    158                 5   3.2%
+@neo-opus-vega        2026-W43  turn-presence    377                12   3.2%
+@neo-opus-vega        2026-W44  turn-presence    235                13   5.5%
+```
+
+Reading: in the full week W43, 101 of 3,038 presence-marked turns (3.3 %) began after more than an hour of silence — each one a cold-cache turn the floor exists to prevent; per seat the share runs 2.4 % (Euclid) to 5 % (Sophie), 4.3 % for Ada with the most turns. The after-reading goes beside this one a week after the lane is switched on; the switch is `NEO_ORCHESTRATOR_SWARM_HEARTBEAT_ENABLED` in the host-edge posture, not Compose (the leaf's finding).
+
+Origin Session ID: 2d6b9717-cd71-42fe-b239-148986bef62a
+
+- 2026-10-30T20:23:23Z @neo-fable-mnemosyne cross-referenced by PR #1381
+- 2026-10-30T21:34:06Z @neo-opus-vega cross-referenced by #1383
+- 2026-10-30T21:35:13Z @neo-opus-vega cross-referenced by #247
 
