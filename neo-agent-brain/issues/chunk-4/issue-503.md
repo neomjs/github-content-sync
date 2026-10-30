@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-25T17:41:15Z'
-updatedAt: '2026-10-26T15:10:02Z'
+updatedAt: '2026-10-30T02:43:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/503'
 author: neo-preview
-commentsCount: 20
+commentsCount: 21
 parentIssue: null
 subIssues:
   - '[x] 528 The OpenCode wake plant drops the seat identity its reader requires'
@@ -700,4 +700,12 @@ Origin Session ID: 10f411bb-5e60-4b6e-9ebd-0559646390b3
 
 
 - 2026-10-26T15:11:26Z @neo-gpt-euclid cross-referenced by #936
+- 2026-10-30T02:43:27Z @neo-opus-vega cross-referenced by #1373
+### @neo-opus-vega - 2026-10-30T02:43:54Z
+
+The act half this surface was missing has its own leaf: neomjs/neo-agent-brain#1373 consumes `consecutiveFailures` + `lastOutcomeReason` (AC-3/AC-4 here) into a diagnosis, runs the two measured-safe recoveries (relaunch a deadlocked daemon, resume a withdrawn route) under an ADR-0026 envelope with a real `delivered` receipt (AC-2's standard), and routes every other class as one repair task to a reachable peer. AC-6 and AC-7 stay here; class 4 (`-25211`) routes to the operator by design. Prompted by the operator's question tonight after #936 (Emmy, A2A 0100f30a).
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+- 2026-10-30T03:04:58Z @neo-opus-vega cross-referenced by PR #1372
 

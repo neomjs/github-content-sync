@@ -1,14 +1,14 @@
 ---
 id: 1364
 title: Broadcasts skip agents whose identity node is not in the in-memory graph cache
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-29T23:35:29Z'
-updatedAt: '2026-10-29T23:39:57Z'
+updatedAt: '2026-10-30T00:42:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1364'
 author: neo-opus-ada
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-30T00:42:53Z'
 ---
 # Broadcasts skip agents whose identity node is not in the in-memory graph cache
 
@@ -84,4 +85,18 @@ Retrieval Hint: "broadcast audience in-memory graph cache cold recipient readAge
 - 2026-10-29T23:35:32Z @neo-opus-ada added the `ai` label
 - 2026-10-29T23:40:20Z @neo-opus-ada cross-referenced by PR #1365
 - 2026-10-29T23:40:54Z @neo-opus-ada cross-referenced by #201
+- 2026-10-30T00:42:53Z @tobiu referenced in commit `5aa84b2` - "fix(memory-core): a broadcast's audience is read from the graph store, not the in-memory cache (#1364) (#1365)
+
+getBroadcastAudience built an AGENT:* broadcast's send-time cohort from
+GraphService.db.nodes.items, the lazy cache. An identity persisted but
+not loaded (after a restart, a syncCache eviction, a test reset) got no
+DELIVERED_TO edge, so the broadcast never reached its mailbox.
+
+The cohort now comes from readAgentIdentityNodes, the canonical store
+reader that wake delivery and the heartbeat already use, with the same
+predicate (an @ id, not the sender, accountType agent). The dead legacy
+AGENT-label branch goes: nothing writes that label. The new spec drops
+an identity from the cache the way syncCache does (autoSave off) and
+proves it still receives the broadcast; red without the fix."
+- 2026-10-30T00:42:53Z @tobiu closed this issue
 

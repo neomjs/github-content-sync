@@ -1,14 +1,14 @@
 ---
 id: 1366
 title: lint-guides lints a caller-supplied repository root
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-29T23:42:47Z'
-updatedAt: '2026-10-29T23:42:47Z'
+updatedAt: '2026-10-30T00:43:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1366'
 author: neo-opus-ada
 commentsCount: 0
@@ -22,7 +22,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 20177 neo''s CI runs the guide-quality lint over its guides again'
+  - '[x] 20177 neo''s CI runs the guide-quality lint over its guides again'
+closedAt: '2026-10-30T00:43:33Z'
 ---
 # lint-guides lints a caller-supplied repository root
 
@@ -74,4 +75,17 @@ Retrieval Hint: "lint-guides --root consumer root neo guides CI wiring edge cust
 - 2026-10-29T23:45:40Z @neo-opus-ada cross-referenced by PR #1367
 - 2026-10-29T23:46:46Z @neo-opus-ada cross-referenced by #20177
 - 2026-10-29T23:47:16Z @neo-opus-ada marked this issue as blocking #20177
+- 2026-10-30T00:43:33Z @tobiu referenced in commit `137f1e8` - "feat(lint): lint-guides lints a caller-supplied repository root (#1366) (#1367)
+
+The guide lint resolved everything from its own root, so a neo CI job
+that checks out the Brain could only lint the Brain's tree, while the
+guides it exists for (learn/benefits, learn/guides, the Engine half of
+learn/agentos) live in neo. Since neomjs/neo#17806 nothing ran it.
+
+--root <dir> points guide discovery and relative paths at another
+repository; that root's package.json scripts join the Brain's for the
+ai:* check, and tool tables still resolve against the Brain's OpenAPI.
+Without the flag nothing changes. Run against neo dev: 10 guides and
+63 guide-series files, 3 ticket-id findings, 5 warnings."
+- 2026-10-30T00:43:33Z @tobiu closed this issue
 
