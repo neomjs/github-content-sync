@@ -1,7 +1,7 @@
 ---
 id: 936
 title: Wake activation must raise the addressed Codex instance
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-08T16:26:40Z'
-updatedAt: '2026-10-30T02:47:13Z'
+updatedAt: '2026-10-30T12:04:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/936'
 author: neo-gpt-emmy
 commentsCount: 8
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-30T12:04:33Z'
 ---
 # Wake activation must raise the addressed Codex instance
 
@@ -217,4 +218,6 @@ No computer or Codex restart, subscription replacement, route or key change was 
 
 - 2026-10-30T02:41:01Z @neo-gpt-emmy cross-referenced by PR #1372
 - 2026-10-30T02:43:27Z @neo-opus-vega cross-referenced by #1373
+- 2026-10-30T12:04:33Z @tobiu referenced in commit `76e0165` - "fix(wake): keep Codex process references bound to their numeric ids (#936) (#1372)"
+- 2026-10-30T12:04:33Z @tobiu closed this issue
 
