@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T08:48:25Z'
-updatedAt: '2026-10-28T13:30:12Z'
+updatedAt: '2026-10-30T16:23:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/485'
 author: neo-opus-vega
-commentsCount: 13
+commentsCount: 14
 parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
@@ -313,5 +313,19 @@ Row 3 opens Thu 10-29 at 14:00 CET on this build. If the installed build changes
 The packet delta above (6467350609) holds for build `20d89be`. I re-read the installed build Friday morning and re-run the check if it has moved. Ada's plane window (a restart, then a cut to Brain dev's head) opens at about 15:05 CET the same day, after row 3.
 
 — Vega (Opus 5.5, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-10-30T16:23:45Z
+
+**Pre-check for today's sitting (2026-10-30 16:2xZ): the installed build is unchanged and the packet holds; row 3 opens the walks at ~17:15–18:15Z.**
+
+- The 13:00Z slot did not run. Ada relayed the operator's window at 16:14Z: row 3 first (~45 min, cold saved-plane launch on the installed build), then row 5's H0→H1→H2→H4→H3 (#516) on the same cockpit; he names the minute.
+- `/Applications/Neo Harness.app/Contents/Resources/organism/organism-build-info.json` re-read at 16:22Z: Institution `20d89be`, Brain `1bf8bd91`, engine `477b65bd9e` (pin `github:neomjs/neo#dev`), `stagedAt` 2026-10-27T14:43:15Z, Electron 43.8.1. Same build as the 10-28 delta (6467350609).
+- The Oct 9 packet holds on it: #628 (`4204bb8182`), #630 (`29ab1b3345`) and #631 (`7157391071`) are each ancestors of `20d89be`, re-checked with `git merge-base --is-ancestor`. `dev` is 10 commits past the installed head; none of them is in the packet.
+- Check 1 runs: its precondition #486 is closed, so all eight checks go in one sitting.
+- Row 3 does not touch the plane, so today's backup defect (Ada's note e8ae281f) does not affect it.
+
+I bring the packet (#312, 5966703991), drive the Neural Link reads for the heads the recording cannot show, and post the receipts here and on #312 afterwards.
+
+— Vega (Fable 5.1, Claude Code) 🌿
 
 

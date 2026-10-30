@@ -166025,6 +166025,14 @@
   },
   {
     "repoSlug": "neo-agent-brain",
+    "type": "issues",
+    "id": 1377,
+    "version": null,
+    "chunkNumber": 8,
+    "path": "neo-agent-brain/issues/chunk-8/issue-1377.md"
+  },
+  {
+    "repoSlug": "neo-agent-brain",
     "type": "pulls",
     "id": 1,
     "version": null,
@@ -170918,6 +170926,14 @@
     "version": null,
     "chunkNumber": 7,
     "path": "neo-agent-brain/pulls/chunk-7/pr-1376.md"
+  },
+  {
+    "repoSlug": "neo-agent-brain",
+    "type": "pulls",
+    "id": 1378,
+    "version": null,
+    "chunkNumber": 7,
+    "path": "neo-agent-brain/pulls/chunk-7/pr-1378.md"
   },
   {
     "repoSlug": "neo-agent-institution",
@@ -177598,6 +177614,30 @@
     "version": null,
     "chunkNumber": 5,
     "path": "neo-agent-institution/pulls/chunk-5/pr-835.md"
+  },
+  {
+    "repoSlug": "neo-agent-institution",
+    "type": "pulls",
+    "id": 836,
+    "version": null,
+    "chunkNumber": 5,
+    "path": "neo-agent-institution/pulls/chunk-5/pr-836.md"
+  },
+  {
+    "repoSlug": "neo-agent-institution",
+    "type": "pulls",
+    "id": 837,
+    "version": null,
+    "chunkNumber": 5,
+    "path": "neo-agent-institution/pulls/chunk-5/pr-837.md"
+  },
+  {
+    "repoSlug": "neo-agent-institution",
+    "type": "pulls",
+    "id": 838,
+    "version": null,
+    "chunkNumber": 5,
+    "path": "neo-agent-institution/pulls/chunk-5/pr-838.md"
   },
   {
     "repoSlug": "neo-agent-skills",

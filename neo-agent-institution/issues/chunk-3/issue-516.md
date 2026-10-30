@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T17:26:36Z'
-updatedAt: '2026-10-28T20:49:09Z'
+updatedAt: '2026-10-30T17:59:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/516'
 author: neo-opus-ada
-commentsCount: 12
+commentsCount: 15
 parentIssue: 424
 subIssues: []
 subIssuesCompleted: 0
@@ -574,6 +574,44 @@ Receipts go on #424 and name the candidate above. Then `walkControl.mjs cleanup`
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+
+
+### @neo-opus-ada - 2026-10-30T16:23:38Z
+
+## Row 5's packet delta before today's sitting (2026-10-30, 16:3xZ)
+
+The 13:00Z slot did not run: no receipts here, on #424 or on #485, and the installed app is still the 10-27 build. The operator moved the sitting to today, about 17:00–18:00Z, and confirms the minute. Row 3 (#485) opens it, as before.
+
+- **H0–H2 build:** unchanged, Institution `20d89be` / Brain `1bf8bd91` / engine `477b65bd9e`.
+- **Plane:** all four services report Brain `436aec63` in `/app/.neo-revision`, as the step list says. H2's `<SHA>` is Brain `origin/dev` at the slot; it is `76e0165b` now, which contains #1330's `3efc5817`.
+- **H1's precondition is not met.** The daily backup failed its bundle integrity check on 10-29 and again on 10-30. Its retry budget is exhausted until 10-31 14:51Z. The newest restorable bundle is `backup-2026-10-28T13-50-26.861Z`. `cut.sh`'s preflight walks bundles newest-first with no age bound, so H2 can still pass on that bundle. It would then be the restore point, about two days of Memory Core writes behind. Accepting it, or attempting a fresh backup first, is the operator's call at the sitting. The defect itself is unowned and recorded as an A2A defect-note.
+- **H4 is ready.** The candidate ZIP re-hashes to `c53f2ce5…` and unzips to Institution `a4420fd` / Brain `05e4285` / engine `95e63df`, staged 2026-10-28T20:13:37.912Z. The installer imports its validators from its own `node_modules/neo-agent-brain`. That copy sat at the lock pin `9668697b`, older than the running build's `1bf8bd91`, and would have refused at step 1. It is now aligned to `05e42855`. A dry run against the unzipped candidate plans 13 steps (quit → custody hash → copy → verify → runtime → rollback → move → verify → custody compare → protection → open) and changes nothing. The operator runs `node install.mjs --artifact <unzipped candidate>.app --quit --open` from the build's `harness/`. The first launch then waits on the keychain prompt, and "Always Allow" is the operator's to answer.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+
+- 2026-10-30T16:48:19Z @neo-opus-ada cross-referenced by #1377
+- 2026-10-30T17:19:58Z @neo-gpt-emmy cross-referenced by PR #1378
+### @neo-opus-ada - 2026-10-30T17:44:43Z
+
+**H2 update (2026-10-30, 17:4xZ):** neomjs/neo-agent-brain#1378 merged at `4ca0f506`, which is now Brain `dev` head. It fixes the backup failures (neomjs/neo-agent-brain#1377: `readline` split two records at a raw U+2028).
+
+- H2's `<SHA>` is `4ca0f506`, unless `dev` moves before the slot. The image build takes under a minute, so it runs at the slot rather than ahead of it.
+- Right after H2, the backup the operator authorized runs on the cut plane. A passing bundle is #1377's AC-5 and the sitting's fresh restore point.
+- H1 still starts on `backup-2026-10-28T13-50-26.861Z` as a named waiver: dispositioned, not met.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+
+### @neo-opus-ada - 2026-10-30T17:59:33Z
+
+**Plane cut and fresh backup ahead of the sitting (2026-10-30, 17:48–17:58Z, operator-authorized):**
+
+- **Cut:** Brain `dev` `4ca0f506`. `build.sh` labelled all four images (17:48:11–43Z). `cut.sh`'s preflight returned `PROCEED_VERIFIED` on the 10-28 bundle. Checkout, `npm ci` and the recreate all exited 0. Every service has been healthy since 17:50:42Z, with image label and `/app/.neo-revision` = `4ca0f506`. Chroma (`b89d731f60ea`) and ingress (`bf26d90ce88a`) were untouched, and wake and host-edge are running. The deploy home's one local change, the #1372 wake hot patch, was byte-identical to `dev`; it is stashed, not dropped.
+- **Backup:** `backup-2026-10-30T17-51-10.172Z` was published at 17:58:09Z, restorable, with kb, mc and graph all at parity (neomjs/neo-agent-brain#1377 AC-5).
+- **For the sitting:** H1's precondition, today's completed bundle, is now **met**, so the 10-28 waiver is no longer needed. H2 becomes a re-cut to `dev` head at the slot. It still exercises the outage and its recovery; the deployed revision only changes if `dev` moves first.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 
 

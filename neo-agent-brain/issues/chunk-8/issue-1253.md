@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-24T20:14:40Z'
-updatedAt: '2026-10-26T21:58:34Z'
+updatedAt: '2026-10-30T18:29:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1253'
 author: neo-fable-mnemosyne
-commentsCount: 2
+commentsCount: 3
 parentIssue: 123
 subIssues: []
 subIssuesCompleted: 0
@@ -175,4 +175,17 @@ Mnemosyne · Claude Fable 5.1 · Claude Code
 Mnemosyne · Claude Fable 5.1 · Claude Code
 
 - 2026-10-26T22:24:12Z @neo-opus-grace cross-referenced by PR #1310
+### @neo-fable-mnemosyne - 2026-10-30T18:29:09Z
+
+**Intake drift probe, Fri 2026-10-30 19:4x CET (`dev` 4ca0f506), parked before implementation at the operator's redirect to Stage #522.** Four things changed since the body was written; the body will be corrected when the lane resumes:
+
+1. **#1309 is on `dev`** (PR #1310, Oct 27): AC-9's precondition is met; the business repository may join `tenantRepos` and `orchestrator.focusSourcePath` may point at its mirror.
+2. **The slug `focus` is taken.** #957's `## Focus (v1)` shipped (`ai/services/graph/focusV1Section.mjs`; `sandmanHandoffSections.mjs` maps `## Focus…` to `focus`, and it excludes every `BUSINESS_GOAL` node by design). This section renders as `## Business focus`, slug `businessFocus` by the splitter's camelCase rule. The default read stays `['goldenPath']` (#1251): a deployment without the source must not see a `missingSections` nag on every bare read, so our readers (the recovery runbook, the boot rule, `/overview`) request `businessFocus` explicitly; AC-4 reads "in a read that requests the section".
+3. **Placement:** the handoff's preamble (title + gap audit) is the `gaps` slug by position, so a section inserted "before the gap audit" would either swallow the audit or break the splitter's byte-exact reassembly. The section becomes the **first `## ` heading** after the preamble, ahead of `## Consolidation Gaps`; a seat requests it by slug, so first-screen position is the reader's, not the file's.
+4. **The source file today:** `strategy/DASHBOARD.md` at 77da7a7 is 2,198 bytes, but its first screen through the by-seat rows is 1,413 bytes, 213 over the 1,200 cap (business #9 comment). The block's end needs a mechanical marker the writer owns (proposed: an HTML comment line closing the first screen); without it the whole file is the block and renders `stale: over-cap` with the byte count, nothing truncated. The business guard (AC-7) is repository-workflow substrate and goes through a business PR, not a direct push.
+
+Reader design settled for implementation: a pure `readFocusBlock({path, maxBytes, marker})` taking the path as a scalar (ADR 0019 §5.4 rung iii); the block's own headings demoted to bold lines so the handoff splitter never sees a second `## `; identity = sha256 of the file bytes plus the mirror's HEAD when resolvable; the node upserted through `GraphService.upsertNode` with the five-field contract (`claimClass: 'declared'` is not in the metric taxonomy — the goal uses `measured` with `falsifyingQuery` = the source commit, to be checked against `validateBusinessGoalProperties`). Sibling-file lift for the new `ai/services/graph/businessFocusSection.mjs` beside `focusV1Section.mjs`; spec beside the sibling's under `test/playwright/unit/ai/services/graph/`.
+
+🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session be9bebd9-4724-4461-a709-953c3b33ae10
+
 
