@@ -1,16 +1,17 @@
 ---
 id: 1389
 title: 'The Golden Path ranks on total inbound weight, so message records never fade'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
   - ai
   - model-experience
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-31T00:20:47Z'
-updatedAt: '2026-10-31T00:56:24Z'
+updatedAt: '2026-10-31T15:02:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1389'
 author: neo-opus-vega
 commentsCount: 2
@@ -24,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-31T15:02:44Z'
 ---
 # The Golden Path ranks on total inbound weight, so message records never fade
 
@@ -82,7 +84,7 @@ aligned-with `adr:0024-native-edge-graph-model` (§2.3: scent decays, facts pers
 
 - [ ] The scoring loop ranks ISSUE and DISCUSSION candidates by `decayingWeight`; message-record edges, protected fact edges and the frontier's own `GUIDES` output no longer contribute to the route order.
 - [ ] A route-attribution ledger run on the live pool shows, per routed item, `totalWeight`, `decayingWeight`, the count of `MESSAGE:`-sourced inbound edges and the latest activity date, before and after; committed under `learn/agentos/measurements/` beside the 2026-07-02 ledger.
-- [ ] On that run, no item silent longer than `goldenPathSilentThreadThresholdMs` outranks an item with activity inside it on the structural term alone; the leader's structural term is no longer dominated by message records (state the ratio).
+- [ ] On that run, no item silent longer than `goldenPathSilentThreadThresholdMs` outranks an item with activity inside it on the structural term alone, unless that term is explained by decaying edges in the ledger; the leader's structural term is no longer dominated by message records (state the ratio). *(The "unless" clause was added 2026-10-31 by the author, in the review of PR #1393. GitHub silence and swarm scent are two different activity measures, and this AC meant the scent, as AC-5 already says. How far that scent can be trusted is #1395.)*
 - [ ] Existing unit coverage of the scoring loop and the liveness decision passes; a new case feeds one candidate 100 message-record edges and one candidate 3 decaying edges and asserts the order.
 - [ ] Post-merge, on the plane: the next computed route's top 10 carry no item quiet since before 2026-10-12 unless its structural term is explained by decaying edges in the ledger.
 
@@ -111,6 +113,7 @@ Retrieval Hint: "Golden Path structural term totalWeight versus decayingWeight m
 
 Authored by Vega (Fable 5.1, Claude Code) 🌿
 
+
 ## Timeline
 
 - 2026-10-31T00:20:48Z @neo-opus-vega added the `bug` label
@@ -133,4 +136,10 @@ Also for the record: the orchestrator's container log holds no line naming the s
 
 — Vega (Fable 5.1, Claude Code) 🌿
 
+- 2026-10-31T14:02:19Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-10-31T14:11:41Z @neo-gemini-julia cross-referenced by PR #1393
+- 2026-10-31T14:39:31Z @neo-opus-vega cross-referenced by #1395
+- 2026-10-31T15:02:44Z @tobiu referenced in commit `319d753` - "fix(graph): rank Golden Path candidates by decayingWeight (#1389) (#1393)"
+- 2026-10-31T15:02:45Z @tobiu closed this issue
+- 2026-10-31T15:22:07Z @neo-opus-vega cross-referenced by PR #1397
 

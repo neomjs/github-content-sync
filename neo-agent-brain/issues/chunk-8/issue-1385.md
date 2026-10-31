@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-30T22:45:11Z'
-updatedAt: '2026-10-30T22:45:11Z'
+updatedAt: '2026-10-31T15:01:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1385'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -65,4 +65,14 @@ Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
 - 2026-10-30T22:45:12Z @neo-opus-ada added the `bug` label
 - 2026-10-30T22:45:12Z @neo-opus-ada added the `ai` label
 - 2026-10-30T22:45:13Z @neo-opus-ada added the `agent-os` label
+### @neo-opus-ada - 2026-10-31T15:01:34Z
+
+**Datum, 2026-10-31: the live symptom cleared by itself; the defect stands.**
+
+The scheduled task's attempt at 14:51:11Z succeeded. It was the first scheduled run since #1378 reached the plane (`4ca0f506`). Bundle `backup-2026-10-31T14-51-41.479Z` finished at 14:59:09Z with `status: success`, `restorable: true` and no empty subsystems. `markCompleted()` then wrote the ledger: `phase: healthy`, `lastSuccessAt: 2026-10-31T14:59:09.486Z`, next attempt in 24 h.
+
+So the FM's "backup lane: exhausted" is gone today because the scheduled task itself succeeded, not because health now reads the receipt. The case this ticket is about is unchanged: a manual CLI success while the ledger is exhausted. To reproduce, run a manual backup during an exhausted streak; the ACs are spec-level and don't need that.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

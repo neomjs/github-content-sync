@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-07-18T03:02:31Z'
-updatedAt: '2026-10-30T20:22:52Z'
+updatedAt: '2026-10-31T14:02:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/95'
 author: neo-fable-mnemosyne
-commentsCount: 9
+commentsCount: 10
 parentIssue: null
 subIssues:
   - '[x] 1380 One idle-out nudge per stretch, 30 min after the last known activity'
@@ -70,7 +70,7 @@ Three thin, composable pieces (one PR each is plausible; bundle-by-default unles
 - [ ] AC-2 A quiet active-subscription seat receives one heartbeat nudge per idle stretch while the lane is on; with the lane off, NO heartbeat fires — both pinned (amended 2026-10-30 from the night-mode wording; the first half lands with #1380, the second is the Orchestrator's lane gating).
 - [ ] AC-3 Daemon death is externally detected: stale PID surfaces in the cockpit telltale AND a recovery broadcast records the outage window — witnessed with a killed-daemon fixture.
 - [ ] AC-4 `#15376` class-suppression semantics unchanged: heartbeat nudges are wake-class pulses, agent chatter stays durable-quiet — regression-pinned.
-- [ ] AC-5 `NightShiftLeasedDriver.md` gains the delivery-floor amendment (§6 note: the reachability precondition this ticket guarantees) — doc AC; lands with #1380.
+- [x] AC-5 `NightShiftLeasedDriver.md` gains the delivery-floor amendment (§6 note: the reachability precondition this ticket guarantees) — doc AC; lands with #1380.
 - [ ] AC-6 Post-merge validation: one full night window (operator offline ≥ 4h) with ≥ 2 seats showing wake-driven turns and zero manual intervention — recorded on this ticket.
 - [ ] **AC-7 (from #68, handed over 2026-09-03, accepted 2026-09-04):** a message-driven wake to a seat whose readiness is dark or benched-equivalent is delivered durable-quiet (no wake prompt; the mailbox record stands) — `WakeDecisionService.decideWake` consulted on the wake daemon's send path with injected presence; unit-pinned both ways (ready seat woken, dark seat not); `#15376` class semantics regression-pinned; `isWakeTargetEligible` unchanged (permission, not readiness). Lands as its own leaf PR; splits into a sub of this ticket if the night-mode half stalls.
 
@@ -122,9 +122,10 @@ Seat-side complement: Skills #247 (Vega, 2026-10-30), the sunset trigger in toke
 
 ### Acceptance Criteria added 2026-10-30
 
-- [ ] AC-8 The nudge fires only when a seat's last known activity (memory, turn-presence beacon or outbound message) is older than `idleThresholdMs` (default 30 min) and at most once per idle stretch: unit-pinned on the detector with a scenario graph and on the lock (an unanswered lock stays in flight; newer activity releases it) — lands with #1380 (its AC-1, AC-2).
-- [ ] AC-9 A heartbeat-only wake whose probed `lastActivityAt` is younger than the route's `activeWithinMs` is skipped at delivery, one above the gate is deferred as today, a message wake is never skipped: unit-pinned on the delivery policy and the receiver with an injected probe — lands with #1380 (its AC-4); the probe exists for OpenCode and Kimi only, the detector's presence read guards the rest.
-- [ ] AC-10 The pulse carries the seat's last lane-state line, the idle minutes and the sunset rule (snapshot-pinned), and one read-only script computes the metric of AC-6's window (turns after more than sixty idle minutes, per seat per week) from presence records; the before-reading is on this ticket (2026-10-30 19:55Z) — lands with #1380 (its AC-5, AC-6).
+- [x] AC-8 The nudge fires only when a seat's last known activity (memory, turn-presence beacon or outbound message) is older than `idleThresholdMs` (default 30 min) and at most once per idle stretch: unit-pinned on the detector with a scenario graph and on the lock (an unanswered lock stays in flight; newer activity releases it) — lands with #1380 (its AC-1, AC-2).
+- [x] AC-9 A heartbeat-only wake whose probed `lastActivityAt` is younger than the route's `activeWithinMs` is skipped at delivery, one above the gate is deferred as today, a message wake is never skipped: unit-pinned on the delivery policy and the receiver with an injected probe — lands with #1380 (its AC-4); the probe exists for OpenCode and Kimi only, the detector's presence read guards the rest.
+- [x] AC-10 The pulse carries the seat's last lane-state line, the idle minutes and the sunset rule (snapshot-pinned), and one read-only script computes the metric of AC-6's window (turns after more than sixty idle minutes, per seat per week) from presence records; the before-reading is on this ticket (2026-10-30 19:55Z) — lands with #1380 (its AC-5, AC-6).
+
 
 
 ## Timeline
@@ -329,4 +330,10 @@ Origin Session ID: 2d6b9717-cd71-42fe-b239-148986bef62a
 - 2026-10-30T21:34:06Z @neo-opus-vega cross-referenced by #1383
 - 2026-10-30T21:35:13Z @neo-opus-vega cross-referenced by #247
 - 2026-10-31T00:59:37Z @neo-opus-vega cross-referenced by PR #251
+### @neo-fable-mnemosyne - 2026-10-31T14:02:00Z
+
+**AC-5, AC-8, AC-9 and AC-10 ticked — landed with PR #1381** (merged by the operator 2026-10-31 04:58Z at d2180e99; Sophie's round-2 approval 5721202066 after all five RAs). AC-2's first half (one nudge per idle stretch with the lane on) landed there too; its second half (lane off → no heartbeat) stays the Orchestrator's lane gating, so that box stays open.
+
+Still open: AC-2 (second half), AC-3, AC-4, AC-6 (the after-reading a week after enablement with `idleGapTurns.mjs`; the before-reading is the 2026-10-30 19:55Z comment above), AC-7 (its own leaf).
+
 

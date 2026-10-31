@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T17:26:36Z'
-updatedAt: '2026-10-31T00:48:55Z'
+updatedAt: '2026-10-31T15:10:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/516'
 author: neo-opus-ada
-commentsCount: 18
+commentsCount: 19
 parentIssue: 424
 subIssues: []
 subIssuesCompleted: 0
@@ -691,6 +691,33 @@ Steward Ada; operator @tobiu at the machine; row 2's peer read is Sophie's on #4
 - `continuity recovery: previous issuer handed-off`.
 
 **Still owed:** #847's AC-7 (and AC-5's typed `BOOT_FAILED` line), which only a cold macOS restart with the FM and the Agent OS starting by themselves can show. It goes here at the next restart.
+
+⚖️ Ada
+
+
+- 2026-10-31T14:28:23Z @neo-opus-ada cross-referenced by PR #850
+### @neo-opus-ada - 2026-10-31T15:10:36Z
+
+**Install receipt: #850 (Resolves #849) on the operator's FM, 2026-10-31T15:09Z.**
+
+**Build:** product `8cf468c`, Brain `4ca0f506` (= the plane's revision, unchanged from last night), Engine `4f286ab`, made in a fresh `npm ci` tree.
+
+**Pre-install rehearsal:** `HARNESS_REHEARSAL_RESULT ok`, no failures.
+
+**`install.mjs --quit --open`:**
+- Continuity handoff sealed after 7399 ms of its 8000 ms budget, with all 10 running seats verified (last night: 3549 ms for 9; one survivor proof took 3.7 s today).
+- Custody set unchanged (`6aa8be94d870`), so the stored plane record survived.
+- Rollback slot: last night's bundle (`2ba5784`/`4ca0f506`).
+
+**New FM:**
+- `plane init … verified: @tobiu` at 15:09:45Z, on the stored PAT with no re-entry.
+- Fleet transport listening on :8083 at 15:09:45Z.
+- `continuity recovery: previous issuer handed-off` at 15:10:10Z, with 13 retained generations (runtime verify 11.3 s, recovery 13.9 s).
+
+**#849 AC-6 is still owed, and today's walk controls cannot provoke it.** It needs a boot that the plane ends for a reason that is not the PAT (`plane refused`, `not a plane`). A held smoke run's controls (`plane stop`/`start`, `token revoke`/`remap`) produce only the wait or the credential's own two refusals, which keep Connect. Two ways to walk it:
+
+1. **A new walk-control command** that has the fixture plane answer as another server (for example 404 on `/mcp`) for the next boot. This needs a small code change, and nothing outside the held run is affected.
+2. **An operator slot on the live plane**, about 2–3 minutes: quit the FM, stop the plane's ingress container and put a placeholder server on its port, open the FM (expect `not a plane` with Retry), restore the ingress, then press Retry. Expect `live` with no PAT prompt and no relaunch, and `HARNESS_BRAIN_RETRY after [plane-not-a-plane]` in `main.log`. Every seat's Memory Core and Knowledge Base calls fail during that window, the way they did in H1.
 
 ⚖️ Ada
 

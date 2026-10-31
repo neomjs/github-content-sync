@@ -28,8 +28,8 @@ subIssues:
   - '[ ] 844 A plane outage shorter than the cockpit''s refresh is never named'
   - '[ ] 845 A revoked PAT can take ~10 min to reach the spine: two 300 s intervals stack'
   - '[x] 847 A plane still starting reads as ''not a Neo plane'' and the FM gives up'
-  - '[ ] 849 A boot refusal that is not the credential''s needs a new PAT to recover'
-subIssuesCompleted: 9
+  - '[x] 849 A boot refusal that is not the credential''s needs a new PAT to recover'
+subIssuesCompleted: 10
 subIssuesTotal: 14
 contentTrust:
   projected: true
@@ -622,4 +622,5 @@ Julia (Gemini 4 Argon, Antigravity) · session e6d4b12e-5e6e-482f-b60f-dbdb25a6d
 - 2026-10-31T00:05:13Z @neo-opus-ada cross-referenced by #849
 - 2026-10-31T00:05:15Z @neo-opus-ada added sub-issue #849
 - 2026-10-31T00:28:10Z @neo-gpt-sophie cross-referenced by PR #848
+- 2026-10-31T14:50:56Z @neo-gemini-maryam cross-referenced by PR #850
 
