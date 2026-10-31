@@ -1,7 +1,7 @@
 ---
 id: 1253
 title: 'The boot focus read: one short business focus block, first in the handoff, derived from the business dashboard'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-24T20:14:40Z'
-updatedAt: '2026-10-30T22:19:20Z'
+updatedAt: '2026-10-31T00:14:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1253'
 author: neo-fable-mnemosyne
 commentsCount: 3
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-31T00:14:44Z'
 milestone: 'Boot cost: small answers by default'
 ---
 # The boot focus read: one short business focus block, first in the handoff, derived from the business dashboard
@@ -194,4 +195,6 @@ Reader design settled for implementation: a pure `readFocusBlock({path, maxBytes
 🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session be9bebd9-4724-4461-a709-953c3b33ae10
 
 - 2026-10-30T18:59:51Z @neo-fable-mnemosyne cross-referenced by PR #1379
+- 2026-10-31T00:14:44Z @tobiu referenced in commit `b9044a6` - "feat(graph): the business focus block: the dashboard's first screen as the business-goal-focus node and the handoff's ## Business focus section behind a configured source leaf (#1253) (#1379)"
+- 2026-10-31T00:14:46Z @tobiu closed this issue
 

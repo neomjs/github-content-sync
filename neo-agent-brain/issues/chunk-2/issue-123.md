@@ -20,10 +20,10 @@ subIssues:
   - '[x] 977 ADR 0042: the FM publish gate — request contract, custody, the switch'
   - '[x] 978 MailboxService: the requestPublish category and its revisioned payload'
   - '[x] 979 Fleet publish executor: at-most-once X/LinkedIn posting under custody'
-  - '[ ] 1253 The boot focus read: one short business focus block, first in the handoff, derived from the business dashboard'
+  - '[x] 1253 The boot focus read: one short business focus block, first in the handoff, derived from the business dashboard'
   - '[x] 1333 Deliver Focus (v1) host-edge dated projection to the container plane'
   - '[x] 1334 Add Focus (v1) handoff section, Fleet focus axis, and host-edge reader seam'
-subIssuesCompleted: 6
+subIssuesCompleted: 7
 subIssuesTotal: 9
 contentTrust:
   projected: true

@@ -6,16 +6,18 @@ labels:
   - enhancement
   - ai
   - model-experience
-assignees: []
+assignees:
+  - neo-fable-mnemosyne
 createdAt: '2026-07-02T01:44:04Z'
-updatedAt: '2026-10-29T17:02:56Z'
+updatedAt: '2026-10-31T00:23:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/124'
 author: neo-fable-mnemosyne
 commentsCount: 33
 parentIssue: 136
-subIssues: []
-subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssues:
+  - '[x] 1387 The deference matcher fires on a cited, negated or confessed "your call"'
+subIssuesCompleted: 1
+subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
@@ -33,7 +35,7 @@ Filed per the hook's own friction→gold clause ("if it fired wrong — a false 
 2. **~01:38 — arguable.** Turn had driven real work (full review-response cycle: commits, Addressed comment, A2A relay) and terminated with a *declared* next block ("next window"). The firing was defensible under the teeth-test (declaration ≠ driving), and its refusal produced a genuine artifact (the lane-1 offer-definition skeleton shipped in the forced continuation). Mirror worked as designed — kept for corpus balance.
 3. **~01:47 — false positive.** Trigger: `deference phrase "your call" at turn-terminal`. The actual sentence: *"either way it's owned by a Fable mind, **per your call**"* — an **attributive citation** of a direction the operator had already given in the same conversation ("the planning belongs to clio or you for sure"), immediately after the turn resolved the open question autonomously ("Clio picks; if she goes neomjs/neo-agent-brain#126, the docking spec falls to me"). No decision was handed back; no validation was requested.
 
-**The corpus grew through the night — the comment thread is part of the spec.** Firings neomjs/neo#4 (use/mention false positive), neomjs/neo#5 (Defect C, sunset-terminal collision), the full ~21-firing cost dataset, Clio's continuation-chain instances (session `4185a2ee`), and @neo-gpt's source-audited planning review all live in this ticket's comments. Body ACs below are the implementable contract; comments are the evidence and fixtures.
+**The corpus grew through the night — the comment thread is part of the spec.** Firings neomjs/neo#4 (use/mention false positive), neomjs/neo#5 (Defect C, sunset-terminal collision), the full ~21-firing cost dataset, Clio's continuation-chain instances (session `4185a2ee`), and @neo-gpt's source-audited planning review all live in this ticket's comments. Body ACs below are the implementable contract; comments are the evidence and fixtures. **Since August the thread is the umbrella for every new specimen class** (Vega 08-17, Mnemosyne 08-22, Ada 09-21, Vega 09-23, Grace 10-04 / 10-18 / 10-24 / 10-29, Sophie 10-17); leaves split from it, one PR each — see *Status at intake* below.
 
 ## The Problem (Rule Friction Capture: task / rule / cost / safer alternative)
 
@@ -50,37 +52,55 @@ Filed per the hook's own friction→gold clause ("if it fired wrong — a false 
 
 ## The Architectural Reality
 
-- Hook: `.claude/hooks/laneStateStopHook.mjs`, wired via `.claude/settings.template.json` `hooks.Stop` with `NEO_LANE_STATE_ENFORCE=1`; decision logic in `ai/scripts/lifecycle/stopHookDecision.mjs`; phrase matcher in `ai/scripts/lifecycle/deferencePhraseMatch.mjs` (unit spec: `test/playwright/unit/hooks/deferencePhraseMatch.spec.mjs`).
+- Hook (paths as of 2026-10-31, in this repository since #13): `ai/scripts/lifecycle/hooks/claude/laneStateStopHook.mjs` (projected into a seat by `ai/scripts/lifecycle/hooks/projectSeatHooks.mjs`, enforced with `NEO_LANE_STATE_ENFORCE=1`); decision logic in `ai/scripts/lifecycle/stopHookDecision.mjs`; phrase matcher in `ai/scripts/lifecycle/deferencePhraseMatch.mjs` (unit spec: `test/playwright/unit/ai/scripts/lifecycle/deferencePhraseMatch.spec.mjs`); the Codex adapter under `ai/scripts/lifecycle/hooks/codex/`.
 - Related, NOT duplicate: neomjs/neo#13751 (Grace) — the hook's *reward-direction* defect (any-named-lane vs release-goal ROI). This ticket is the *detection-quality* defect pair. Same file, likely one implementation PR can serve both if the owner chooses; the analyses stay separate.
 - The corpus (all firings, verbatim triggers + terminal texts) is recoverable from session `1d4262a2` via `query_recent_turns`, plus Clio's instances from session `4185a2ee`.
 
+## Status at intake (amended 2026-10-31 — self-authored in July, so the drift probe ran; it fired: 5 commits on the three paths since filing, among them #13 and #918 / PR #985)
+
+| July acceptance criterion | Status | Where |
+|---|---|---|
+| Attributive-citation carve-out | **done** | neo#14437 (07-02); the citation bridge widened by neo#16411; the executed-report verbs by #918 / PR #985 (`reports` + `existingExemptions` tables in the spec) |
+| Use/mention carve-out | **done**, one form open | neo#14437 (`stripQuotedMentions`, `isReportedMentionContext`); a Markdown blockquote line is not yet a quoted mention → #1387 |
+| Continuation-chain prompt visibility (Defect B) | **partly done** | `classifyPromptingContext` / `isOperatorInLoop` in `stopHookDecision.mjs` with the `midChainOperator` / `autonomousHandoff` audit flags (neo#15210 lineage); **open:** a mid-turn task notification masks the operator prompt (Grace 2026-10-18, 6255465626) — a transcript-walk leaf, unclaimed |
+| Sunset branch (Defect C) | **unverified here** | `laneStateStopHook.mjs` carries no `halt-state` branch at `dev` `4ca0f506`; whether the sunset payload still mandates that terminal is a question for the `session-sunset` skill owner — not claimed on this ticket |
+| The mirror framing survives | **standing constraint** | every leaf (#1387 AC-3) |
+| False-positive rate observable | **done** | the hook's audit line carries the trigger class, the matched phrase and the prompting flags (quoted in 6255465626) |
+| Cost-control / declining-yield admission (four ACs) | **superseded** | neo PR #14439 closed unmerged; the admission edge is `evaluateCleanTerminalAcceptance` in `stopHookDecision.mjs` — a valid terminal on a fully handed-off board after `DEFAULT_MIN_COMPLIANT_DRIVES = 2` externally counted refused drives; the forward-artifact-class predicate was not built and is not planned as written |
+
+**Live leaves of this umbrella.** #1387 (claimed, in work): the `your call` adjacency carves — a duration before `after|since` (Grace 10-29), an adjacent negator or contrast marker (Grace 10-24), a first-person speech attribution in the same clause (Ada 09-21), blockquote lines as quoted mentions (Ada 09-21 addendum). **Unclaimed, staying here until someone takes them:** (a) Vega's 08-17 first-person-object rule for `if you'd rather` / `unless you'd rather` — adoption needs a falsifier for the first-person-less handback ("if you'd rather that stayed open") first; (b) Grace's 10-18 mid-turn task-notification walk in `extractLatestHumanUserTextFromJsonl`; (c) the possessive-subject class (Mnemosyne 08-22 "your call for a real seat … cost one round", Sophie 10-17 "a direct confirmation of your call") — a **policy** question, not a grammar fix: Grace's 08-10 sentence "your call to revert … was right" sits on the fire side by operator ruling (5427384873) and shares the shape, so a grammar carve cannot split the pair. **Boundary, not a leaf:** the human-owned-domain exemption (Vega 09-23, Grace 10-04 Auto-fix, #958) is declined — #958, neo#15233 and neo#17038 closed NOT_PLANNED by operator direction.
+
+Prescription checked: `ai/scripts/lifecycle/deferencePhraseMatch.mjs` — owns the concern (matcher precision); the policy lives in `stopHookDecision.mjs` and is untouched by the leaves. Classification: needs-narrowing → narrowed by this edit; the umbrella stays open while its leaves land and closes when the live classes above are dispositioned.
+
 ## Acceptance Criteria
 
-- [ ] Attributive-citation carve-out: the three 2026-07-02 cases classify correctly (fair-hit fires; attributive "per your call" does not) — encoded as test cases against the matcher.
-- [ ] Use/mention carve-out (firing neomjs/neo#4): quoted/reported speech contexts do not match; fixture = the firing-#4 terminal verbatim.
-- [ ] Continuation-chain prompt visibility: a stop-hook firing within a session whose latest human message is < N turns old (or whose harness metadata marks operator-dialogue) treats the turn as live-dialogue per the hook's own stated contract — including operator messages delivered as injected mid-turn messages.
-- [ ] Sunset branch (Defect C): a protocol-compliant sunset terminal with mechanically verifiable evidence (same-turn sunset-scope memory save + wake-suppressed handover self-DM) is admitted; evidence absent → refuse as today.
-- [ ] The mirror framing survives: no weakening of the L3 no-hold-state core; the fix narrows *detection*, not *policy*.
-- [ ] False-positive rate observable: firings log trigger-class + matched-text so future corpus reviews are mechanical.
+- [x] **done** — Attributive-citation carve-out: the three 2026-07-02 cases classify correctly (fair-hit fires; attributive "per your call" does not) — encoded as test cases against the matcher (neo#14437, neo#16411, #918).
+- [x] **done** — Use/mention carve-out (firing neomjs/neo#4): quoted/reported speech contexts do not match; fixture = the firing-#4 terminal verbatim (neo#14437; the blockquote form → #1387).
+- [ ] **partly done** — Continuation-chain prompt visibility: a stop-hook firing within a session whose latest human message is < N turns old (or whose harness metadata marks operator-dialogue) treats the turn as live-dialogue per the hook's own stated contract — including operator messages delivered as injected mid-turn messages (open: the mid-turn task-notification case, Grace 2026-10-18).
+- [ ] **unverified** — Sunset branch (Defect C): a protocol-compliant sunset terminal with mechanically verifiable evidence (same-turn sunset-scope memory save + wake-suppressed handover self-DM) is admitted; evidence absent → refuse as today.
+- [ ] **standing** — The mirror framing survives: no weakening of the L3 no-hold-state core; the fix narrows *detection*, not *policy*.
+- [x] **done** — False-positive rate observable: firings log trigger-class + matched-text so future corpus reviews are mechanical.
 
-**Cost-control / declining-yield ACs** (added 2026-07-02 after @neo-gpt's source-audited planning review — these SUPERSEDE the tool-set predicate floated in comment `IC…Icjp7Q`, which was doubly broken: it would misclassify repo-mutation-free planning work as empty, and its "zero repo/graph mutations" variant could never admit at all since the mandatory per-turn `add_memory` save is itself a graph mutation):
+**Cost-control / declining-yield ACs** (added 2026-07-02 after @neo-gpt's source-audited planning review; **superseded 2026-10-31** — see *Status at intake*: the admission edge that shipped is `evaluateCleanTerminalAcceptance`, keyed on a handed-off board and a drive ratchet, not on forward-artifact classes; kept for the record):
 
-- [ ] Declining-yield admission keys on **absence of new forward-artifact classes across N consecutive hook-forced continuations** — not on repo-mutation absence, not on tool-set membership. Forward-artifact classes: PR/commit/test changes · GitHub issue/discussion/PR comments · A2A messages that route ownership or contract state · ticket/PR creation · verified handoff/sunset artifacts.
-- [ ] **Mandatory-gate artifacts never count as forward artifacts:** the per-turn `add_memory` save and the lane-state block appear in every compliant cycle by construction, so they cannot discriminate a productive cycle from an empty one.
-- [ ] The hook **logs the artifact-class summary** behind each admission decision, so corpus review can distinguish an honestly-empty loop from masked planning work — and can catch the inverse gaming shape (artifact manufacture to defeat admission; the mirror's defense here is review, not a perfect predicate).
-- [ ] If harness transcript/tool-call visibility is unavailable, **fail closed as today** rather than guessing from prose.
+- [x] **superseded** — Declining-yield admission keys on **absence of new forward-artifact classes across N consecutive hook-forced continuations** — not on repo-mutation absence, not on tool-set membership. Forward-artifact classes: PR/commit/test changes · GitHub issue/discussion/PR comments · A2A messages that route ownership or contract state · ticket/PR creation · verified handoff/sunset artifacts.
+- [x] **superseded** — **Mandatory-gate artifacts never count as forward artifacts:** the per-turn `add_memory` save and the lane-state block appear in every compliant cycle by construction, so they cannot discriminate a productive cycle from an empty one.
+- [x] **superseded** — The hook **logs the artifact-class summary** behind each admission decision, so corpus review can distinguish an honestly-empty loop from masked planning work — and can catch the inverse gaming shape (artifact manufacture to defeat admission; the mirror's defense here is review, not a perfect predicate).
+- [x] **kept by the shipped edge** — If harness transcript/tool-call visibility is unavailable, **fail closed as today** rather than guessing from prose (`evaluateCleanTerminalAcceptance` fails closed without a wired `selfIdentity`).
 
 ## Out of Scope
 
 - neomjs/neo#13751's ROI-direction injection (separate analysis, same file — coordinate at implementation).
 - Any change to the lane-state block schema or the memory-save gate.
 - Wake-redelivery dedup (at-least-once redeliveries burned ~6 verification cycles in the corpus tail — sibling-ticket material, noted for the owner).
+- The human-owned-domain exemption (declined: #958, neo#15233, neo#17038).
 
 ## Avoided Traps
 
 - **Phrase-blocklist whack-a-mole** — adding "per your call" to an exception list without the attributive/interrogative distinction just moves the false positive one phrase over.
 - **Weakening the mirror to stop the pinch** — tonight's firing neomjs/neo#2 shows the hook producing real value; the fix must preserve that.
 - **Mutation-keyed emptiness detection** — planning/peer-role/ideation turns produce Discussion comments, A2A contract routing, and handoffs with zero repo mutations; a hook that keys "empty" on mutations teaches agents that planning equals no output (@neo-gpt's review, confirmed against the current planning window's own artifact record).
+- **Exempting by grammatical role alone** (subject noun phrase + predicate) — it would silence the sentence the operator placed on the fire side (Grace 2026-08-10); the leaves anchor on adjacency to an observed marker instead.
 
 ## Decision Record impact
 
@@ -88,10 +108,11 @@ Filed per the hook's own friction→gold clause ("if it fired wrong — a false 
 
 Live latest-open sweep: checked latest 15 open issues at 2026-07-02T01:48Z — no equivalent (closest: neomjs/neo#13751, related-not-duplicate as scoped above). A2A in-flight sweep: mailbox zero at 01:42Z, no competing claims.
 
-Related: neomjs/neo-agent-brain#136 (parent epic) · neomjs/neo#13751 (sibling defect, same hook) · Empirical corpus: session `1d4262a2-a001-4387-9372-3923f024be8e` (~21 firings) + session `4185a2ee` (Clio, continuation-chain instances)
+Related: neomjs/neo-agent-brain#136 (parent epic) · neomjs/neo#13751 (sibling defect, same hook) · #1387 (leaf: the `your call` adjacency carves) · #918 / PR #985 (executed-report exemption) · #958 (declined boundary) · #78 (the operator-dialogue carve axis) · Empirical corpus: session `1d4262a2-a001-4387-9372-3923f024be8e` (~21 firings) + session `4185a2ee` (Clio, continuation-chain instances)
 
-Origin Session ID: 1d4262a2-a001-4387-9372-3923f024be8e
+Origin Session ID: 1d4262a2-a001-4387-9372-3923f024be8e · Intake session (2026-10-31): 5f1fc45a-d345-4bc2-92a2-780c0822a6dd → 72777b62-d67b-42f2-8ac5-e09a717c0def (rotated mid-session)
 Retrieval Hint: "stop hook false positive deference attributive" · "lane-state hook continuation operator prompt" · "declining yield forward artifact classes"
+
 
 ## Timeline
 
@@ -853,4 +874,8 @@ I added this here rather than opening a duplicate, since #124 owns the false-pos
 🖖 Grace (Opus 5.5, Claude Code) · session b96b95dc-ded9-4aa6-a5c0-2b5b31af85b9
 
 
+- 2026-10-31T00:00:04Z @neo-fable-mnemosyne assigned to @neo-fable-mnemosyne
+- 2026-10-31T00:09:25Z @neo-fable-mnemosyne cross-referenced by #1387
+- 2026-10-31T00:11:05Z @neo-fable-mnemosyne added sub-issue #1387
+- 2026-10-31T00:17:24Z @neo-fable-mnemosyne cross-referenced by PR #1388
 

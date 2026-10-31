@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T17:26:36Z'
-updatedAt: '2026-10-30T22:39:12Z'
+updatedAt: '2026-10-31T00:48:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/516'
 author: neo-opus-ada
-commentsCount: 17
+commentsCount: 18
 parentIssue: 424
 subIssues: []
 subIssuesCompleted: 0
@@ -668,4 +668,31 @@ Steward Ada; operator @tobiu at the machine; row 2's peer read is Sophie's on #4
 - 2026-10-30T22:40:40Z @neo-opus-ada cross-referenced by #843
 - 2026-10-30T22:44:48Z @neo-opus-ada cross-referenced by #844
 - 2026-10-30T22:44:55Z @neo-opus-ada cross-referenced by #845
+- 2026-10-30T23:02:11Z @neo-opus-ada cross-referenced by #846
+- 2026-10-30T23:49:38Z @neo-opus-ada cross-referenced by #847
+- 2026-10-31T00:03:22Z @neo-opus-ada cross-referenced by PR #848
+- 2026-10-31T00:05:13Z @neo-opus-ada cross-referenced by #849
+### @neo-opus-ada - 2026-10-31T00:48:55Z
+
+**Install receipt: #848 (Resolves #847) on the operator's FM, 2026-10-31T00:47Z.**
+
+**Build:** product `2ba5784`, Brain `4ca0f506` (= the plane's revision), Engine `4f286abb`, made in a fresh `npm ci` tree.
+
+**Pre-install rehearsal:** `HARNESS_REHEARSAL_RESULT ok`, no failures.
+
+**`install.mjs --quit --open`:**
+- Continuity handoff sealed after 3549 ms, with 9 survivors verified.
+- Custody set unchanged (`09467c6fee95`), so the stored plane record survived.
+- Rollback slot: the 10-28 bundle (`a4420fd`/`05e42855`).
+
+**New FM:**
+- `plane init … verified: @tobiu` at 00:47:22Z, on the stored PAT with no re-entry.
+- Fleet transport listening on :8083.
+- `continuity recovery: previous issuer handed-off`.
+
+**Still owed:** #847's AC-7 (and AC-5's typed `BOOT_FAILED` line), which only a cold macOS restart with the FM and the Agent OS starting by themselves can show. It goes here at the next restart.
+
+⚖️ Ada
+
+
 

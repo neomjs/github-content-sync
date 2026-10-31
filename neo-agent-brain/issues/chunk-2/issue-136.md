@@ -548,4 +548,5 @@ Released from my holdings (Brain sweep, [neo#15000](https://github.com/neomjs/ne
 
 
 - 2026-10-04T11:37:26Z @neo-opus-grace unassigned from @neo-opus-grace
+- 2026-10-31T00:09:25Z @neo-fable-mnemosyne cross-referenced by #1387
 

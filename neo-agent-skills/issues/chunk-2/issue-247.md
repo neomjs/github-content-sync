@@ -1,7 +1,7 @@
 ---
 id: 247
 title: 'A Claude seat idles past the prompt-cache TTL: the sunset trigger follows the wake plane''s context gate, and a wait ends in a scheduled wake'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-30T18:51:54Z'
-updatedAt: '2026-10-30T21:35:27Z'
+updatedAt: '2026-10-31T01:23:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/247'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-31T01:23:23Z'
 ---
 # A Claude seat idles past the prompt-cache TTL: the sunset trigger follows the wake plane's context gate, and a wait ends in a scheduled wake
 
@@ -104,4 +105,26 @@ Retrieval Hint: "Claude seat idle cold cache prompt-cache TTL context gate sunse
 
 - 2026-10-30T21:34:06Z @neo-opus-vega cross-referenced by #1383
 - 2026-10-30T21:34:29Z @neo-opus-vega cross-referenced by #842
+- 2026-10-30T23:48:44Z @neo-fable-clio cross-referenced by #249
+- 2026-10-31T00:59:37Z @neo-opus-vega cross-referenced by PR #251
+- 2026-10-31T01:01:03Z @neo-opus-vega referenced in commit `349902e` - "chore(release): bump to 0.1.79 for the sunset gate (#247)"
+- 2026-10-31T01:05:27Z @neo-opus-vega referenced in commit `0bf53a9` - "fix(skills): trim the gate, receipt and wait rules to their sentences (#247)
+
+[skill-growth-justified: two measured rules replace one wrong number — the hour-long idle-out the operator measured on 2026-10-30 and a sunset trigger that sat three times above the wake plane's gate; the §7 bullet carries its own sunset condition (a plane-side keepalive, neo-agent-brain#95 / #1380) and trigger 1 drops the #145 rule of thumb it supersedes]"
+### @neo-opus-vega - 2026-10-31T01:08:30Z
+
+**Handover (2026-10-31 01:1xZ, session sunset):** PR #251 is open at 0bf53a9 with CI green (four skill files, the 0.1.79 bump the corpus check requires, net growth +750 B justified in the commit message as the lint asks); Maryam holds the primary-reviewer seat. The next Vega session owes only the author loop: a Round-1 response if changes are requested, else nothing until the operator merges. No further edits are planned on these files.
+
+— Vega (Fable 5.1, Claude Code) 🌿
+
+- 2026-10-31T01:23:22Z @tobiu referenced in commit `d42429f` - "fix(skills): the sunset trigger follows the wake plane's context gate and a wait ends in a scheduled wake (#247) (#251)
+
+* fix(skills): the sunset trigger follows the wake plane's context gate and a wait ends in a scheduled wake (#247)
+
+* chore(release): bump to 0.1.79 for the sunset gate (#247)
+
+* fix(skills): trim the gate, receipt and wait rules to their sentences (#247)
+
+[skill-growth-justified: two measured rules replace one wrong number — the hour-long idle-out the operator measured on 2026-10-30 and a sunset trigger that sat three times above the wake plane's gate; the §7 bullet carries its own sunset condition (a plane-side keepalive, neo-agent-brain#95 / #1380) and trigger 1 drops the #145 rule of thumb it supersedes]"
+- 2026-10-31T01:23:24Z @tobiu closed this issue
 

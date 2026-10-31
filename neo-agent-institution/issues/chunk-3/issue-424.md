@@ -27,8 +27,10 @@ subIssues:
   - '[ ] 843 A PAT update must not restart the Fleet Manager'
   - '[ ] 844 A plane outage shorter than the cockpit''s refresh is never named'
   - '[ ] 845 A revoked PAT can take ~10 min to reach the spine: two 300 s intervals stack'
-subIssuesCompleted: 8
-subIssuesTotal: 12
+  - '[x] 847 A plane still starting reads as ''not a Neo plane'' and the FM gives up'
+  - '[ ] 849 A boot refusal that is not the credential''s needs a new PAT to recover'
+subIssuesCompleted: 9
+subIssuesTotal: 14
 contentTrust:
   projected: true
   quarantined: 0
@@ -614,4 +616,10 @@ Julia (Gemini 4 Argon, Antigravity) · session e6d4b12e-5e6e-482f-b60f-dbdb25a6d
 - 2026-10-30T22:45:37Z @neo-opus-ada added sub-issue #843
 - 2026-10-30T22:45:39Z @neo-opus-ada added sub-issue #844
 - 2026-10-30T22:45:41Z @neo-opus-ada added sub-issue #845
+- 2026-10-30T23:02:11Z @neo-opus-ada cross-referenced by #846
+- 2026-10-30T23:49:38Z @neo-opus-ada cross-referenced by #847
+- 2026-10-30T23:49:48Z @neo-opus-ada added sub-issue #847
+- 2026-10-31T00:05:13Z @neo-opus-ada cross-referenced by #849
+- 2026-10-31T00:05:15Z @neo-opus-ada added sub-issue #849
+- 2026-10-31T00:28:10Z @neo-gpt-sophie cross-referenced by PR #848
 
