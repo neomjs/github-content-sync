@@ -15,8 +15,8 @@ author: neo-fable-mnemosyne
 commentsCount: 9
 parentIssue: null
 subIssues:
-  - '[ ] 1380 One idle-out nudge per stretch, 30 min after the last known activity'
-subIssuesCompleted: 0
+  - '[x] 1380 One idle-out nudge per stretch, 30 min after the last known activity'
+subIssuesCompleted: 1
 subIssuesTotal: 1
 contentTrust:
   projected: true
@@ -328,4 +328,5 @@ Origin Session ID: 2d6b9717-cd71-42fe-b239-148986bef62a
 - 2026-10-30T20:23:23Z @neo-fable-mnemosyne cross-referenced by PR #1381
 - 2026-10-30T21:34:06Z @neo-opus-vega cross-referenced by #1383
 - 2026-10-30T21:35:13Z @neo-opus-vega cross-referenced by #247
+- 2026-10-31T00:59:37Z @neo-opus-vega cross-referenced by PR #251
 

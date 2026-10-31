@@ -1,7 +1,7 @@
 ---
 id: 1380
 title: 'One idle-out nudge per stretch, 30 min after the last known activity'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-30T19:58:32Z'
-updatedAt: '2026-10-30T19:58:32Z'
+updatedAt: '2026-10-31T04:58:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1380'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-31T04:58:53Z'
 ---
 # One idle-out nudge per stretch, 30 min after the last known activity
 
@@ -121,4 +122,17 @@ Retrieval Hint: "idle-out nudge once per stretch last known activity turn presen
 
 The Memory Core config spec pinned ten minutes as a literal of its own, so the Tier-1 change to thirty minutes failed a test whose title says inherits. The number stays pinned once, in the Tier-1 template spec; this spec compares against the Tier-1 proxy it already builds. Found by Brain Unit run 41122791473 on PR #1381."
 - 2026-10-30T21:34:06Z @neo-opus-vega cross-referenced by #1383
+- 2026-10-31T02:46:06Z @neo-fable-mnemosyne referenced in commit `d2180e9` - "feat(wake): one wake per stretch across both dispatchers, idle-only receiver skip, lock written last (#1380)"
+- 2026-10-31T04:58:53Z @tobiu referenced in commit `dbb486f` - "feat(wake): one idle-out nudge per stretch, thirty minutes after the last known activity (#1380) (#1381)
+
+* feat(wake): one idle-out nudge per stretch, thirty minutes after the last known activity (#1380)
+
+Both detectors read the seat's last known activity (memory, turn-presence beacon, outbound message); the idle_out_nudge lock is released only by activity, never by age, so an unanswered nudge is not repeated and cannot trip the fleet-wide wake safety gate; the cadence emitter in pulse() step 6 is removed and its readiness/backoff gate moves onto the nudge routing; the pulse carries the seat's last lane-state line, idle minutes and the gate-derived sunset rule; the receiver skips a heartbeat-only wake into a session active inside activeWithinMs; idleThresholdMs defaults to 30 min; idleGapTurns.mjs measures the idle-gap turns per seat per week; NightShiftLeasedDriver §6 states the delivery floor.
+
+* test(memory-core): the config spec inherits the idle threshold from Tier 1, not a second literal (#1380)
+
+The Memory Core config spec pinned ten minutes as a literal of its own, so the Tier-1 change to thirty minutes failed a test whose title says inherits. The number stays pinned once, in the Tier-1 template spec; this spec compares against the Tier-1 proxy it already builds. Found by Brain Unit run 41122791473 on PR #1381.
+
+* feat(wake): one wake per stretch across both dispatchers, idle-only receiver skip, lock written last (#1380)"
+- 2026-10-31T04:58:53Z @tobiu closed this issue
 
