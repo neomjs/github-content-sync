@@ -1,14 +1,15 @@
 ---
 id: 844
 title: A plane outage shorter than the cockpit's refresh is never named
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
   - ai
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-10-30T22:44:46Z'
-updatedAt: '2026-10-30T22:44:46Z'
+updatedAt: '2026-10-31T22:58:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/844'
 author: neo-opus-ada
 commentsCount: 0
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-31T22:58:05Z'
 ---
 # A plane outage shorter than the cockpit's refresh is never named
 
@@ -41,13 +43,15 @@ A plane outage shorter than the cockpit's read cadence passes without a trace. S
 
 The spine derives from the cockpit's most recent fleet/roster/activity reads. These are polled (`FleetAdmission` `DEFAULT_ACTIVITY_RECHECK_MS` = 60 000), so a failed or refused read inside a short window leaves no state behind once the next read succeeds. The plane-side deployment state (`get_deployment_state_snapshot`) records service restarts independently of the cockpit's polling.
 
+*(Corrected 2026-10-31, in review of PR #854.)* The cockpit never reads that snapshot. It reads `fleetDeploymentState`, whose per-service projection keeps no start time, so a restart between two of its reads (every 120 s) leaves nothing on the cockpit's wire. neomjs/neo-agent-brain#1409 adds `services[].startedAt`.
+
 ## The Fix
 
-Name a recent outage even when it ends between reads. Two routes:
+Name a recent outage even when it ends between reads. An outage that ends between two reads leaves no failed read behind, so the restart route below is the one AC-1 needs; the failed-read route also names an outage that a read did observe.
 - the cockpit keeps the last failed read or transport error (time + reason) and shows a dismissible "Plane restarted HH:MM–HH:MM — recovered" note once it recovers;
-- or the spine reads service restart times from the deployment-state snapshot and names any restart newer than the last view.
+- the spine reads each service's start time from `fleetDeploymentState` (`services[].startedAt`, neomjs/neo-agent-brain#1409) and names any restart newer than the previous read.
 
-Whichever is cheaper must also cover a plane cut.
+The restart route is the one that names a plane cut (AC-3).
 
 ## Acceptance Criteria
 
@@ -61,7 +65,7 @@ Long outages (already named, H1) and the cold-launch roster timeout (#841).
 
 ## Related
 
-#424, #516, #843.
+#424, #516, #843. Blocked by neomjs/neo-agent-brain#1409 (the start time on the wire).
 
 Live latest-open + closed sweep: checked the latest 20 open issues plus a search ("outage spine short") at 2026-10-30T22:5xZ; no equivalent. A2A sweep (last 15, through 22:25Z): no claim on this scope.
 
@@ -71,10 +75,28 @@ Retrieval Hint: "cockpit spine short plane outage between reads never named H2"
 
 Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
 
+
 ## Timeline
 
 - 2026-10-30T22:44:48Z @neo-opus-ada added the `bug` label
 - 2026-10-30T22:44:48Z @neo-opus-ada added the `agent-os` label
 - 2026-10-30T22:44:48Z @neo-opus-ada added the `ai` label
 - 2026-10-30T22:45:39Z @neo-opus-ada added parent issue #424
+- 2026-10-31T20:36:02Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-31T20:54:52Z @neo-gemini-maryam cross-referenced by PR #854
+- 2026-10-31T21:00:15Z @neo-gemini-maryam referenced in commit `3ad4aec` - "chore(test): stamp visual baseline inputs for #844 (#844)"
+- 2026-10-31T21:20:34Z @neo-opus-ada cross-referenced by #1409
+- 2026-10-31T21:30:40Z @neo-opus-ada cross-referenced by PR #1413
+- 2026-10-31T22:03:08Z @neo-gemini-maryam referenced in commit `fc8d7f2` - "fix(agentos): address PR #854 review feedback on plane outage note (#844)"
+- 2026-10-31T22:29:21Z @neo-gemini-maryam referenced in commit `e5693aa` - "fix(agentos): expire and clear plane outage note on partial feed (#844)"
+- 2026-10-31T22:58:05Z @tobiu referenced in commit `ec62d81` - "fix(agentos): name recovered <= 60 s plane outages on the spine (#844) (#854)
+
+* fix(agentos): name recovered <= 60 s plane outages on the spine (#844)
+
+* chore(test): stamp visual baseline inputs for #844 (#844)
+
+* fix(agentos): address PR #854 review feedback on plane outage note (#844)
+
+* fix(agentos): expire and clear plane outage note on partial feed (#844)"
+- 2026-10-31T22:58:06Z @tobiu closed this issue
 

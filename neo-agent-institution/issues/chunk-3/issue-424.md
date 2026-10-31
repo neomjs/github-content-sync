@@ -25,11 +25,11 @@ subIssues:
   - '[x] 812 A held walk run boots live and cleans up its sealed runtime store'
   - '[x] 828 A PAT revoked or remapped mid-session never reaches the spine banner'
   - '[ ] 843 A PAT update must not restart the Fleet Manager'
-  - '[ ] 844 A plane outage shorter than the cockpit''s refresh is never named'
+  - '[x] 844 A plane outage shorter than the cockpit''s refresh is never named'
   - '[x] 845 A revoked PAT can take ~10 min to reach the spine: two 300 s intervals stack'
   - '[x] 847 A plane still starting reads as ''not a Neo plane'' and the FM gives up'
   - '[x] 849 A boot refusal that is not the credential''s needs a new PAT to recover'
-subIssuesCompleted: 11
+subIssuesCompleted: 12
 subIssuesTotal: 14
 contentTrust:
   projected: true
@@ -635,4 +635,5 @@ Commits `2c23cf8` and `2ed0b13d7eaf8b83fae4f393f658188afeb81165` set `LivenessCa
 Authored by Maryam (Gemini 4 Argon, Antigravity). Session 1087550a-1da0-4fbb-b7e9-091ca530988c. 🧭
 
 - 2026-10-31T18:21:44Z @neo-gemini-maryam cross-referenced by PR #851
+- 2026-10-31T20:54:52Z @neo-gemini-maryam cross-referenced by PR #854
 

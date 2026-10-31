@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-30T22:40:38Z'
-updatedAt: '2026-10-31T17:43:22Z'
+updatedAt: '2026-10-31T20:41:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/843'
 author: neo-opus-ada
 commentsCount: 0
@@ -42,7 +42,7 @@ Each relaunch takes about 30 s, even on an M5 Max (operator). Every running seat
 ## The Architectural Reality
 
 - The main process keeps PAT custody; the renderer never holds it (`planeConfig.mjs` header). The Brain child receives the credential at spawn.
-- `verify()` already asks at runtime whether the plane still admits the launched PAT (`PlaneCredentialCheck`, `planeCredentialRecheckInterval` 300 s). Adopting a *new* PAT at runtime is the missing half.
+- `verify()` already asks at runtime whether the plane still admits the launched PAT (`PlaneCredentialCheck`, every 45 s since #845). Adopting a *new* PAT at runtime is the missing half.
 - The cockpit already renders a plane outage and its recovery without a restart (H1 on #516).
 - *(drift probe, 2026-10-31)* ADR 0034 item 8: plane configuration never routes through `FleetControlBridge` / `FLEET_WIRE_METHODS` ("the shell's boot input, not a fleet verb"), and its transitional seam hands the bearer to the fleet child in the child's environment.
 - *(drift probe, 2026-10-31)* The Brain arms its plane clients once: `devFleetServer.mjs` resolves its client "ONCE at boot, BEFORE viewer binding", and `fleetServer.mjs` arms through `assertFleetPlaneBearerClass`. The Brain child is a `node:child_process` spawn (`harness/brain.mjs`), so no main↔child channel exists besides `FleetControlBridge`.
@@ -56,27 +56,28 @@ Live rebind:
 2. The Brain's plane clients adopt a bearer from the pipe only after the plane proves its subject is the bound identity. They hold it as their own state and never write it into `AiConfig` (ADR-0019 B4).
 3. Main persists `plane.json` only after the Brain confirms.
 4. No `app.relaunch()`. The window, renderer state and seats stay up, and the spine shows a short "verifying PAT" state.
-5. If the plane refuses the new PAT, the old binding stays active and the card shows the refusal in the existing vocabulary.
+5. If the plane refuses the new PAT, or names another account than the one this FM launched with, the old binding stays active and the card shows the refusal. For another account, the refusal names both.
 
 Rejected routes:
 - A `FleetControlBridge` verb: ruled out by item 8's ownership boundary.
 - Re-reading `fleet.planeBearerFile` at use: it needs the plaintext bearer at rest on the desktop, which the sealed `plane-bearer.bin` exists to avoid.
 - Waiting for #17's pure-client FM: #17 is open and has been unassigned since 2026-10-14.
 
-**Open question for the operator:** the client binds its viewer identity at boot. Should a PAT whose subject differs from the bound identity also rebind live, or keep today's relaunch? Same-subject rotation (expired or revoked PAT) is live either way.
+*(Decided 2026-10-31: a PAT for another account is refused, never adopted. This replaces the open question on it.)* The plane names a PAT's subject as a canonical `@login` (`list_permissions` inside `probePlaneCredential`), and it admits agent accounts too: this seat's own plane session resolves `@neo-opus-ada` through that call. The operator handles a PAT for every agent account, so another subject at this form is most likely a wrong paste. Today `attach()` writes whatever subject the plane names and relaunches, so after a wrong paste the fleet child comes back up as that agent.
 
 ## Acceptance Criteria
 
-- [ ] AC-1 Admitting a PAT through the plane admission form updates the running FM with no relaunch: no SIGINT or relaunch in `main.log`, the renderer session survives, and seats are untouched. The cockpit returns to `live` with the new identity verified.
+- [ ] AC-1 Admitting a PAT through the plane admission form updates the running FM with no relaunch: no SIGINT or relaunch in `main.log`, the renderer session survives, and seats are untouched. The cockpit returns to `live`, with the new PAT verified for the same identity.
 - [ ] AC-2 After "pat refused", Connect with a current PAT returns the cockpit to `live` with no relaunch.
-- [ ] AC-3 A PAT the plane refuses at admission leaves the current binding active and shows the refusal on the card, with no relaunch and no lost state.
+- [ ] AC-3 A PAT the plane refuses at admission, or admits for another account, leaves the current binding and `plane.json` unchanged and shows the refusal on the card, naming both accounts in the second case. No relaunch and no lost state.
 - [ ] AC-4 The bearer never reaches the renderer (the existing custody invariant), covered by a spec.
 - [ ] AC-5 (installed) Row 5's H3 re-walk receipt shows refuse → Connect → `live` with no relaunch.
 
 ## Out of Scope
 
 - The roster read timing out after a cold launch (#841).
-- PAT-refusal detection latency: the cockpit's 300 s re-check stacks on the plane's 300 s cache, so detection can take up to ~10 min. That's a separate leaf.
+- PAT-refusal detection latency: #845 bounded it at 360 s (PR #851).
+- Changing the account the FM runs as. That is not a PAT update; it gets its own ticket if it is ever needed.
 
 ## Avoided Traps
 
@@ -107,4 +108,5 @@ Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
 - 2026-10-31T00:05:13Z @neo-opus-ada cross-referenced by #849
 - 2026-10-31T14:50:56Z @neo-gemini-maryam cross-referenced by PR #850
 - 2026-10-31T18:39:10Z @neo-opus-ada cross-referenced by PR #851
+- 2026-10-31T20:54:52Z @neo-gemini-maryam cross-referenced by PR #854
 

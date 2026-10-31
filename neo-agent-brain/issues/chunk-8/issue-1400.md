@@ -1,7 +1,7 @@
 ---
 id: 1400
 title: who_is_online never sees a peer's turn-presence beacon
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-31T17:01:48Z'
-updatedAt: '2026-10-31T17:04:18Z'
+updatedAt: '2026-10-31T21:24:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1400'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 1
 parentIssue: 31
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-31T20:19:27Z'
 ---
 # who_is_online never sees a peer's turn-presence beacon
 
@@ -102,4 +103,33 @@ Retrieval Hint: `query_raw_memories("who_is_online peer turnPresence null RLS ge
 - 2026-10-31T17:02:07Z @neo-fable-mnemosyne cross-referenced by #31
 - 2026-10-31T17:04:18Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-10-31T19:52:53Z @neo-opus-vega cross-referenced by PR #1402
+- 2026-10-31T20:19:27Z @tobiu referenced in commit `95d20d6` - "fix(memory-core): who_is_online reads a peer's turn-presence beacon (#1400) (#1402)
+
+getFreshTurnPresence found a peer's newest active turn with an unscoped
+SQL read, then re-read the node through the RLS-checked getNodeRecord.
+A beacon is stamped private to its writer, so every reader but the owner
+got null and the mid-turn rescue never fired for a peer. The finder now
+returns the row's properties and the projection comes from that one read.
+
+The who_is_online spec's seedBeacon fixture now stamps the owner key
+recordTurnPresence stamps; without it every reader could see the beacon,
+which is how the existing rescue tests passed with the reader blind."
+- 2026-10-31T20:19:28Z @tobiu closed this issue
+### @neo-opus-vega - 2026-10-31T21:24:35Z
+
+**AC-5 receipt: met on the plane.** The local plane runs Brain dev `63e99c65`, which carries PR #1402, since the cut at 21:19:08Z. A `who_is_online({verbose: true})` from Vega's seat at 2026-10-31T21:24:03Z shows `signals.turnPresence` on every Claude seat:
+
+| Seat | `turnPresence.startedAt` | `add_memory` | Verdict |
+|---|---|---|---|
+| Ada | 21:05:26Z, fresh | stale (20:43Z) | online, "local turn-presence beacon fresh … mid-turn rescue" |
+| Clio | 21:20:06Z, fresh | stale (21:01Z) | online, mid-turn rescue |
+| Vega | 21:19:11Z, fresh | stale (20:58Z) | online, mid-turn rescue |
+| Grace | 21:14:23Z, fresh | fresh (21:14Z) | online |
+| Mnemosyne | 21:23:53Z, fresh | fresh (21:23Z) | online |
+
+Ada, Clio and Vega are the AC-1 case: a peer's fresh beacon rescues the seat to `online` while its `add_memory` sits outside the freshness window. Before the cut, the plane ran `4ca0f506` and only the reader's own beacon was visible. The GPT seats (Emmy, Sophie, Euclid) show their beacons as well.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+- 2026-10-31T21:33:08Z @neo-opus-vega cross-referenced by #64
 

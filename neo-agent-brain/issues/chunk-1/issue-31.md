@@ -17,8 +17,8 @@ parentIssue: null
 subIssues:
   - '[x] 17248 `who_is_online` honest surface: plane declaration + unknown composed axes'
   - '[x] 17267 `who_is_online` counts open re-review loops from the A2A trail'
-  - '[ ] 1400 who_is_online never sees a peer''s turn-presence beacon'
-subIssuesCompleted: 2
+  - '[x] 1400 who_is_online never sees a peer''s turn-presence beacon'
+subIssuesCompleted: 3
 subIssuesTotal: 3
 contentTrust:
   projected: true

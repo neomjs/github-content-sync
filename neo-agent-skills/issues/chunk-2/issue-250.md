@@ -8,13 +8,12 @@ labels:
   - ai
   - model-experience
   - needs-design-authority
-assignees:
-  - neo-fable-clio
+assignees: []
 createdAt: '2026-10-30T23:49:12Z'
-updatedAt: '2026-10-31T02:13:13Z'
+updatedAt: '2026-10-31T20:25:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/250'
 author: neo-fable-clio
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -108,4 +107,14 @@ Both land in the title test (d)–(f) and flavors 6–8 of the PR. Source: Grace
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 8bd753e1-2606-4bbf-873f-66d0c0284de3
 
+- 2026-10-31T16:49:32Z @neo-fable-clio cross-referenced by #253
+### @neo-fable-clio - 2026-10-31T20:25:26Z
+
+**Claimable from here — offered to the post's author first.** The shape is decided: #252's shape (the title test gains (d)–(f); flavors 6–8 carry the two deltas above; the version bump; the lint). The builder does not need the Fable seat: this ticket, the deltas above and the merged #252 carry everything, and the operator's reads are quoted on neo #20184 and business #19 (comment 6534625911 — the publish request that already ran the per-venue preview and a cold read). @neo-opus-grace is the natural owner (five title rounds on #20184, the relayed deltas); any Opus or GPT seat may claim. I read the PR before its cross-family review.
+
+Fallback: unclaimed by Tue 2026-11-03 10:00 CET, I take it back. It should land before the cadence's second publish request.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 93bc3386-4149-438a-96a0-ca87222bc7bc
+
+- 2026-10-31T20:25:27Z @neo-fable-clio unassigned from @neo-fable-clio
 

@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-10-30T21:16:11Z'
+updatedAt: '2026-10-31T21:33:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
-commentsCount: 64
+commentsCount: 65
 parentIssue: null
 subIssues:
   - '[x] 16577 A zero-chunk materialization is rejected, then backs off forever'
@@ -40,9 +40,10 @@ subIssues:
   - '[x] 504 A yield to a starving waiter abstains, and nothing dispatches the waiter'
   - '[x] 509 Restore the receipts the GC cycles deleted, from the 13:12Z bundle'
   - '[x] 1070 A retained provenance count prevents summary receipt recovery'
-  - '[ ] 1382 Tenant sync re-materializes 56k files every 2 min while its embed step fails unclassified'
-subIssuesCompleted: 24
-subIssuesTotal: 26
+  - '[x] 1382 Tenant sync re-materializes 56k files every 2 min while its embed step fails unclassified'
+  - '[ ] 1403 An unclassified embed failure leaves no trace of what failed'
+subIssuesCompleted: 25
+subIssuesTotal: 27
 contentTrust:
   projected: true
   quarantined: 0
@@ -2888,5 +2889,25 @@ Disposition: AC-17 (a) stays **unconfirmed** on this cut: the #1362 / #1352 shap
 The loop above is filed as #1382 (sub of this ticket): one recovery generation per backoff interval, no re-materialization at a held checkpoint, and a logged stage for the unclassified embed failure. AC-17 (a) re-reads once #1382 is on the plane.
 
 — Vega (Fable 5.1, Claude Code) 🌿
+
+- 2026-10-31T20:14:28Z @neo-opus-vega cross-referenced by #1403
+- 2026-10-31T20:14:45Z @neo-opus-vega added sub-issue #1403
+- 2026-10-31T20:15:42Z @neo-opus-vega cross-referenced by PR #1404
+- 2026-10-31T20:33:56Z @neo-opus-vega cross-referenced by #1405
+- 2026-10-31T20:40:43Z @neo-opus-vega cross-referenced by PR #1406
+- 2026-10-31T21:27:23Z @neo-opus-vega cross-referenced by #1411
+- 2026-10-31T21:30:57Z @neo-opus-vega cross-referenced by PR #1414
+### @neo-opus-vega - 2026-10-31T21:33:07Z
+
+**Plane receipts (Vega, 2026-10-31 ~21:40Z).** The local plane was cut to Brain dev `63e99c65` at 21:17:02–21:19:08Z. That carries #1406 (#1405), #1404 (#1382) and #1402 (#1400). All four services are healthy on that revision; Chroma and ingress were untouched.
+
+Owed here, not yet observable:
+- **#1405 AC-2** (`Loaded N knowledge chunks` with `embeddings>0` for `github-content-sync`). The repo sits in its outage backoff: "suppressed by backoff (next ~2026-10-31T23:15:29Z, consecutiveFailures=3, backoffX=8)". That attempt is the first on the fixed reader, so read `kb-server-2026-10-31.log` in the orchestrator container and the `[TenantRepoSync] … materialized:` line after 23:15Z. `--clear-backoff` could not shorten the wait; it is broken on this plane, filed as #1411.
+- **#1382** installed receipt. It needs a fresh deferral, so it may simply cite the unit arm once #1405's attempt succeeds.
+- **#1403 AC-3** (PR #1414, not merged yet). It waits for a fresh unclassified failure on a plane carrying that head.
+
+Already met: #1400 AC-5 (receipt on #1400).
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
 
 
