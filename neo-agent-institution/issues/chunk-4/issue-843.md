@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-30T22:40:38Z'
-updatedAt: '2026-10-30T22:40:38Z'
+updatedAt: '2026-10-31T17:43:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/843'
 author: neo-opus-ada
 commentsCount: 0
@@ -44,15 +44,26 @@ Each relaunch takes about 30 s, even on an M5 Max (operator). Every running seat
 - The main process keeps PAT custody; the renderer never holds it (`planeConfig.mjs` header). The Brain child receives the credential at spawn.
 - `verify()` already asks at runtime whether the plane still admits the launched PAT (`PlaneCredentialCheck`, `planeCredentialRecheckInterval` 300 s). Adopting a *new* PAT at runtime is the missing half.
 - The cockpit already renders a plane outage and its recovery without a restart (H1 on #516).
+- *(drift probe, 2026-10-31)* ADR 0034 item 8: plane configuration never routes through `FleetControlBridge` / `FLEET_WIRE_METHODS` ("the shell's boot input, not a fleet verb"), and its transitional seam hands the bearer to the fleet child in the child's environment.
+- *(drift probe, 2026-10-31)* The Brain arms its plane clients once: `devFleetServer.mjs` resolves its client "ONCE at boot, BEFORE viewer binding", and `fleetServer.mjs` arms through `assertFleetPlaneBearerClass`. The Brain child is a `node:child_process` spawn (`harness/brain.mjs`), so no main↔child channel exists besides `FleetControlBridge`.
 
 ## The Fix
 
+*(Sharpened 2026-10-31 by a pre-implementation drift probe. Step 1 first sent the bearer over "the existing authenticated main↔Brain channel", which is `FleetControlBridge`, the route ADR 0034 item 8 forbids.)*
+
 Live rebind:
-1. `attach()`, and the Connect recovery that reuses it, hands the new bearer to the running Brain child over the existing authenticated main↔Brain channel.
-2. The Brain's plane client verifies the identity with the plane before adopting it, then swaps its bearer for subsequent requests.
+1. Main opens a dedicated credential pipe to the Brain child at spawn: an extra stdio fd, named in the child's environment. It carries the plane bearer at boot, and again after `attach()` (and the Connect recovery that reuses it) has verified a new PAT with the plane. The pipe is boot input, never a fleet verb. ADR 0034 item 8's transitional seam is amended in the same change.
+2. The Brain's plane clients adopt a bearer from the pipe only after the plane proves its subject is the bound identity. They hold it as their own state and never write it into `AiConfig` (ADR-0019 B4).
 3. Main persists `plane.json` only after the Brain confirms.
 4. No `app.relaunch()`. The window, renderer state and seats stay up, and the spine shows a short "verifying PAT" state.
 5. If the plane refuses the new PAT, the old binding stays active and the card shows the refusal in the existing vocabulary.
+
+Rejected routes:
+- A `FleetControlBridge` verb: ruled out by item 8's ownership boundary.
+- Re-reading `fleet.planeBearerFile` at use: it needs the plaintext bearer at rest on the desktop, which the sealed `plane-bearer.bin` exists to avoid.
+- Waiting for #17's pure-client FM: #17 is open and has been unassigned since 2026-10-14.
+
+**Open question for the operator:** the client binds its viewer identity at boot. Should a PAT whose subject differs from the bound identity also rebind live, or keep today's relaunch? Same-subject rotation (expired or revoked PAT) is live either way.
 
 ## Acceptance Criteria
 
@@ -74,13 +85,14 @@ Live rebind:
 
 ## Related
 
-#424 (row 5's outcome), #516 (step list and receipts), #828 / PR #832 (refusal reaches the spine), #841, #211 (attach from first-run config).
+#424 (row 5's outcome), #516 (step list and receipts), #828 / PR #832 (refusal reaches the spine), #841, #211 (attach from first-run config), #17 (pure-client FM).
 
-Live latest-open + closed sweep: checked the latest 20 open issues plus closed/all searches ("relaunch PAT", "restart credential attach"; read #211 and #727, no prior decision on relaunch-after-attach) at 2026-10-30T22:4xZ. A2A sweep (last 15, through 22:25Z): no claim on this scope. Memory Core sweep and own-assignment sweep: no equivalent.
+Live latest-open + closed sweep: checked the latest 20 open issues plus closed/all searches ("relaunch PAT", "restart credential attach"; read #211 and #727, no prior decision on relaunch-after-attach) at 2026-10-30T22:4xZ. A2A sweep (last 15, through 22:25Z): no claim on this scope. Memory Core sweep and own-assignment sweep: no equivalent. Re-swept 2026-10-31 (Memory Core + issue search for bearer rotation without restart): no prior decision.
 
 Retrieval Hint: "FM PAT update relaunch planeConfig attach live rebind no restart"
 
 Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
+
 
 ## Timeline
 
@@ -91,4 +103,8 @@ Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
 - 2026-10-30T22:44:48Z @neo-opus-ada cross-referenced by #844
 - 2026-10-30T22:44:55Z @neo-opus-ada cross-referenced by #845
 - 2026-10-30T22:45:37Z @neo-opus-ada added parent issue #424
+- 2026-10-30T23:49:38Z @neo-opus-ada cross-referenced by #847
+- 2026-10-31T00:05:13Z @neo-opus-ada cross-referenced by #849
+- 2026-10-31T14:50:56Z @neo-gemini-maryam cross-referenced by PR #850
+- 2026-10-31T18:39:10Z @neo-opus-ada cross-referenced by PR #851
 

@@ -1,7 +1,7 @@
 ---
 id: 1384
 title: 'endBundlePayload can resolve when its file cannot be opened, under load'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-30T22:45:04Z'
-updatedAt: '2026-10-31T14:34:21Z'
+updatedAt: '2026-10-31T15:47:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1384'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-31T15:47:00Z'
 ---
 # endBundlePayload can resolve when its file cannot be opened, under load
 
@@ -70,4 +71,17 @@ Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
 - 2026-10-30T22:45:06Z @neo-opus-ada added the `ai` label
 - 2026-10-30T22:45:06Z @neo-opus-ada added the `agent-os` label
 - 2026-10-31T14:39:46Z @neo-opus-ada cross-referenced by PR #1396
+- 2026-10-31T15:47:00Z @tobiu referenced in commit `c56515a` - "fix(backup): a payload whose file fails to open rejects at endBundlePayload (#1384) (#1396)
+
+The compressing writer composed zlib into the file with stream.compose, and the composed duplex
+settled finished() while its file was still opening: a .jsonl.br or .jsonl.gz payload whose open
+failed late read as written (deterministic with a 50 ms late open, 3/3). An open that failed
+before end() met no 'error' listener and crashed the exporter instead of rejecting.
+
+The writer now mirrors the reader's decodeThrough: it holds the compressor, which pipes into
+the file, with the file's errors forwarded onto it. endBundlePayload settles on the writer and
+on its file. An error before end() stays on the stream and rejects there; a listener keeps it
+from being uncaught. compose leaves the module."
+- 2026-10-31T15:47:01Z @tobiu closed this issue
+- 2026-10-31T17:17:04Z @neo-opus-ada cross-referenced by PR #1399
 

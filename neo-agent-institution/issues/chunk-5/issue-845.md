@@ -1,14 +1,15 @@
 ---
 id: 845
 title: 'A revoked PAT can take ~10 min to reach the spine: two 300 s intervals stack'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
   - ai
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-10-30T22:44:54Z'
-updatedAt: '2026-10-30T22:44:54Z'
+updatedAt: '2026-10-31T19:06:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/845'
 author: neo-opus-ada
 commentsCount: 0
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-31T19:06:32Z'
 ---
 # A revoked PAT can take ~10 min to reach the spine: two 300 s intervals stack
 
@@ -68,4 +70,18 @@ Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
 - 2026-10-30T22:44:56Z @neo-opus-ada added the `agent-os` label
 - 2026-10-30T22:44:56Z @neo-opus-ada added the `ai` label
 - 2026-10-30T22:45:41Z @neo-opus-ada added parent issue #424
+- 2026-10-31T17:56:28Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-31T18:21:44Z @neo-gemini-maryam cross-referenced by PR #851
+- 2026-10-31T18:26:55Z @neo-gemini-maryam referenced in commit `f35989d` - "fix(agentos): stamp visual baseline inputs for #845 (#845)"
+- 2026-10-31T18:45:43Z @neo-gemini-maryam referenced in commit `2ed0b13` - "fix(agentos): set DEFAULT_RECHECK to 45 s for 360 s off-grid bound (#845)"
+- 2026-10-31T18:54:16Z @neo-opus-ada cross-referenced by #424
+- 2026-10-31T18:54:38Z @neo-opus-ada cross-referenced by #516
+- 2026-10-31T19:06:32Z @tobiu referenced in commit `c0da3d0` - "fix(agentos): bound revoked-PAT spine detection to 6 min via 45 s re-check (#845) (#851)
+
+* fix(agentos): bound revoked-PAT spine detection to 6 min via 60 s re-check (#845)
+
+* fix(agentos): stamp visual baseline inputs for #845 (#845)
+
+* fix(agentos): set DEFAULT_RECHECK to 45 s for 360 s off-grid bound (#845)"
+- 2026-10-31T19:06:33Z @tobiu closed this issue
 

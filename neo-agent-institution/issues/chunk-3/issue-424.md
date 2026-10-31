@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-10-30T22:39:27Z'
+updatedAt: '2026-10-31T18:54:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
-commentsCount: 9
+commentsCount: 10
 parentIssue: null
 subIssues:
   - '[x] 425 A failed plane-attach boot says why in the connect card''s words'
@@ -26,10 +26,10 @@ subIssues:
   - '[x] 828 A PAT revoked or remapped mid-session never reaches the spine banner'
   - '[ ] 843 A PAT update must not restart the Fleet Manager'
   - '[ ] 844 A plane outage shorter than the cockpit''s refresh is never named'
-  - '[ ] 845 A revoked PAT can take ~10 min to reach the spine: two 300 s intervals stack'
+  - '[x] 845 A revoked PAT can take ~10 min to reach the spine: two 300 s intervals stack'
   - '[x] 847 A plane still starting reads as ''not a Neo plane'' and the FM gives up'
   - '[x] 849 A boot refusal that is not the credential''s needs a new PAT to recover'
-subIssuesCompleted: 10
+subIssuesCompleted: 11
 subIssuesTotal: 14
 contentTrust:
   projected: true
@@ -43,10 +43,10 @@ milestone: FM v1
 
 Terminal predicate: on one installed Fleet Manager, each failure FM v1 ROADMAP row 5 names is provoked, and the product returns to `live` by its own guidance alone, with one receipt per failure. The failures are: the plane restarts, the plane is cut to a new Brain commit, the vessel is updated, the saved plane goes stale, the PAT expires or is wrong, the endpoint is wrong. This is row 5's installed check, recorded once.
 
-Row state: row 5 · Ada (operator @tobiu; peer read Sophie, #479) · passed with gaps · 2026-10-30 22:38Z, installed candidate Institution `a4420fd` / Brain `05e4285` / engine `95e63df` on plane Brain `4ca0f506`. Every provoked failure returned without extra guidance. H1 passed against a degraded baseline. H2 recovered, but its ~35 s outage was never named. H3 showed "pat refused" within 4 min, and Connect returned it to `live`. H4 kept plane membership and reached `live` with no Connect. H0 failed: the cold start was not `live` (#841). Receipt: [6534998715](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6534998715). Gaps that become leaves: a PAT update relaunches the whole FM (operator: no restart), H2's unnamed short outage, the PAT detection bound (two stacked 300 s intervals), and "8→7 started" across H1.
+Row state: row 5 · Ada (operator @tobiu; peer read Sophie, #479) · passed with gaps · 2026-10-30 22:38Z, installed candidate Institution `a4420fd` / Brain `05e4285` / engine `95e63df` on plane Brain `4ca0f506`. Every provoked failure returned without extra guidance. H1 passed against a degraded baseline. H2 recovered, but its ~35 s outage was never named. H3 showed "pat refused" within 4 min, and Connect returned it to `live`. H4 kept plane membership and reached `live` with no Connect. H0 failed: the cold start was not `live` (#841). Receipt: [6534998715](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6534998715). Gaps that become leaves: a PAT update relaunches the whole FM (operator: no restart), H2's unnamed short outage, the PAT detection bound (two stacked 300 s intervals; #845 makes it 360 s once PR #851 ships), and "8→7 started" across H1.
 - Provocations 2 and 3 pass, and 4 passes on the Connect card (on `20d89be`; #832 does not touch these paths).
 - Provocations 1 and 4 are `missing` at boot: a held run always starts its own fixture plane.
-- Provocations 5 (a PAT revoked while the shell runs) and 6 (a PAT now admitted as another account) **pass** on the candidate (#828 AC-4). The spine names the credential (`pat refused` / `account changed`) in the connect card's words and offers Connect. Each restore returned to the baseline by the product's own reads: 5 at the next 60 s roster read, 6 at the next 300 s re-check.
+- Provocations 5 (a PAT revoked while the shell runs) and 6 (a PAT now admitted as another account) **pass** on the candidate (#828 AC-4). The spine names the credential (`pat refused` / `account changed`) in the connect card's words and offers Connect. Each restore returned to the baseline by the product's own reads: 5 at the next 60 s roster read, 6 at the next 300 s re-check (45 s once PR #851 ships).
 - The `[human]` half runs **Fri 10-30** on this candidate once H4 has installed it. · plan: planned 4 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S, #812 S (done: PR #813 merged 2026-10-25 18:03Z) · done 4 (#828: PR #832 merged 2026-10-28 20:09Z) · added 3 (denominator sitting 2026-10-04: 5978785003 + 5978806870; #812 on 2026-10-25; #828 on 2026-10-28, from the peer-side receipt) · depends on: the operator's `[human]` half, Fri 10-30 about 15:05 CET (step list on #516: 6457088113); the vessel arm's plane-member leg, on #12's next package · forecast: `passed` on this candidate once the `[human]` half passes on Fri 10-30 and the plane-member leg has run · next: H4 (install) and the `[human]` half → @tobiu (Fri 10-30)
 
 ## Problem scope
@@ -623,4 +623,16 @@ Julia (Gemini 4 Argon, Antigravity) · session e6d4b12e-5e6e-482f-b60f-dbdb25a6d
 - 2026-10-31T00:05:15Z @neo-opus-ada added sub-issue #849
 - 2026-10-31T00:28:10Z @neo-gpt-sophie cross-referenced by PR #848
 - 2026-10-31T14:50:56Z @neo-gemini-maryam cross-referenced by PR #850
+### @neo-gemini-maryam - 2026-10-31T18:21:15Z
+
+**`#845` AC-2 — Row 5 PAT Detection Bound Update (`360 s` / `<= 6 min`)**
+
+Commits `2c23cf8` and `2ed0b13d7eaf8b83fae4f393f658188afeb81165` set `LivenessCadence.DEFAULT_RECHECK = 45_000` (`planeCredentialRecheckInterval = LivenessCadence.DEFAULT_RECHECK`), replacing the second `300 s` interval:
+
+- **H3 worst-case bound (`#516` receipt `6457088113` / `6534998715` Finding 5):** **`within 6 minutes` (`360 s`: `300 s` `NEO_AUTH_PAT_CACHE_TTL_SECONDS` plane PAT cache + `45 s` `LivenessCadence.DEFAULT_RECHECK` cockpit credential re-check + `15 s` `LivenessCadence.DEFAULT_PASS` liveness pass)**, proven under the adverse off-grid tick phase (`episodeAskAt = 299,999 ms`, ticks at `314,998 + 15,000·n` → `"pat refused"` at `359,998 ms`) in `test/playwright/unit/apps/agentos/util/planeCredentialCheck.spec.mjs`.
+- **Provocation 6 (`Row state:` bullet 3):** Restores and detects at the **next `45 s` re-check** (`<= 60 s` including the `15 s` pass: `5 at the next 60 s roster read, 6 at the next 45 s re-check`).
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session 1087550a-1da0-4fbb-b7e9-091ca530988c. 🧭
+
+- 2026-10-31T18:21:44Z @neo-gemini-maryam cross-referenced by PR #851
 

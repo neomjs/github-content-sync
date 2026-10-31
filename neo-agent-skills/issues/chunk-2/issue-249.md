@@ -1,7 +1,7 @@
 ---
 id: 249
 title: 'Sunset payload: the operator''s focus items each get an owner and a date'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-30T23:48:43Z'
-updatedAt: '2026-10-30T23:48:54Z'
+updatedAt: '2026-10-31T17:56:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/249'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-31T17:52:40Z'
 ---
 # Sunset payload: the operator's focus items each get an owner and a date
 
@@ -100,4 +101,33 @@ Retrieval Hint: "sunset focus items pickup list owner date fresh session first r
 - 2026-10-30T23:48:45Z @neo-fable-clio added the `ai` label
 - 2026-10-30T23:48:45Z @neo-fable-clio added the `model-experience` label
 - 2026-10-30T23:48:54Z @github-actions added the `needs-design-authority` label
+- 2026-10-31T16:03:35Z @neo-fable-clio cross-referenced by PR #252
+### @neo-fable-clio - 2026-10-31T16:04:02Z
+
+## Contract Ledger at PR time — PR #252 (eecd4e0)
+
+| Target surface | Evidence at eecd4e0 |
+|---|---|
+| `references/session-sunset-workflow.md` Step 3.5 | landed, lines 125–132: the test sentence, the four points, the two-line fixture; `SKILL.md` and the manifest row untouched |
+| Step 8's subject | `focus items: N, N placed` in Step 8's first paragraph; the receipt is the next sunset's self-DM on the shipped version (AC-4, post-merge) |
+| the manifest / budgets | manifest unchanged; the skills tree +108 B against `dev` (cap 250); the payload 22,576 B (cap 25,000); `lint-skill-corpus.mjs --base origin/dev` exit 0; `npm test` 40/40; version 0.1.79 → 0.1.80 |
+
+Deltas from this body: the repository's lint is `scripts/lint-skill-corpus.mjs` (the name above is stale, same arm); #251 had moved the payload to 22,434 B before this PR; the offset came from Step 1 as planned, and the `v13-path.md` link that went with it drops `session-sunset` from that token's census row (one line in `document-references.v1.json`). Reviewer: @neo-gemini-maryam (cross-family). The retirement ticket — a lint over the continuity ping's subject — is filed on close.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session f4c084a9-b72b-4d41-b37c-cc9e5c602d11
+
+- 2026-10-31T16:49:32Z @neo-fable-clio cross-referenced by #253
+- 2026-10-31T17:52:40Z @tobiu referenced in commit `a849185` - "feat(session-sunset): Step 3.5 places the operator's focus items with an owner and a date (#249) (#252)
+
+Step 3.5 lists the operator's focus items from the session's own turns and refuses a sunset that has not placed each one with an owner and a date; Step 8's subject carries the count. Offset in Step 1: the division-of-labor blockquote and the why-at-sunset paragraph said the same thing twice, the probe's daemon list and the handover block's parenthetical a third time; the v13-path link went with the archaeology, so the document-reference census drops session-sunset for that token. Payload 22,434 to 22,576 B; the skills tree +108 B against dev. Version 0.1.79 to 0.1.80."
+- 2026-10-31T17:52:41Z @tobiu closed this issue
+### @neo-fable-clio - 2026-10-31T17:56:59Z
+
+## Closed by PR #252 (a849185, 0.1.80, merged 2026-10-31 17:52Z) — the two receipts owed at close
+
+- **The retirement ticket is filed:** neomjs/neo-agent-brain#1401 — the orchestrator's sunset-handover consumer (`ai/daemons/orchestrator/scheduling/summary.mjs`, the `sunset-handover` trigger) parses the continuity ping's subject with `/focus items: (\d+), (\d+) placed/`, writes `focusItemsReceipt` on the node, and emits a `defect-note:` into the fold on a missing or short receipt; the no-operator sunset writes `0, 0 placed` (Maryam's note on PR #252), so one pattern covers every sunset; #1383's rotation reads the same property. With that lint in place, Step 3.5 moves from `DISCIPLINE-ONLY` to `MACHINE-ENFORCEABLE`.
+- **AC-4 (post-merge):** the next sunset of a seat on 0.1.80 shows the block in its self-DM — my own next sunset at the latest; the receipt lands here as a comment with the self-DM's subject.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session f1a2960c-f590-43c6-aae3-29f3a2f4d128
+
 

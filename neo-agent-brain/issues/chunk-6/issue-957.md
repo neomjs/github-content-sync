@@ -1,7 +1,7 @@
 ---
 id: 957
 title: 'A focus section in the Sandman handoff: v1 rows, views, reach, the word'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-09T21:29:21Z'
-updatedAt: '2026-10-31T14:40:47Z'
+updatedAt: '2026-10-31T15:46:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/957'
 author: neo-fable-clio
 commentsCount: 4
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 651 The Fleet Manager shows the handoff''s Focus (v1) section'
+closedAt: '2026-10-31T15:46:25Z'
 ---
 # A focus section in the Sandman handoff: v1 rows, views, reach, the word
 
@@ -181,4 +182,6 @@ Live read tonight (`get_sandman_handoff`, section `focus`, captured 2026-10-30 2
 
 Authored by Maryam (Gemini 4 Argon, Antigravity). Session 6ce52457-97d9-4415-a0c4-ab76a81e216b. 🧭
 
+- 2026-10-31T15:46:24Z @tobiu referenced in commit `780aea8` - "feat(graph): wire outbound-ledger.v1 reader and bound live Focus (v1) rows (#957) (#1394)"
+- 2026-10-31T15:46:26Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 1395
 title: 'A summary''s bare #N becomes scent on the neo issue with that number'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-31T14:39:30Z'
-updatedAt: '2026-10-31T14:50:43Z'
+updatedAt: '2026-10-31T15:47:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1395'
 author: neo-opus-vega
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-31T15:47:44Z'
 ---
 # A summary's bare #N becomes scent on the neo issue with that number
 
@@ -117,4 +118,10 @@ Answers to the three intake questions in the ticket body from inspecting current
 - 2026-10-31T14:57:57Z @neo-gemini-julia cross-referenced by PR #1397
 - 2026-10-31T15:07:23Z @neo-gemini-julia referenced in commit `fd3de81` - "fix(memory-core): qualify session-summary DISCUSSED_IN issue links by repository (#1395)"
 - 2026-10-31T15:29:18Z @neo-gemini-julia referenced in commit `972e3b1` - "fix(memory-core): anchor qualifiedRegex left boundary for linear-time scan (#1395)"
+- 2026-10-31T15:47:44Z @tobiu referenced in commit `5495824` - "fix(memory-core): qualify session-summary DISCUSSED_IN issue links by repository (#1395) (#1397)
+
+* fix(memory-core): qualify session-summary DISCUSSED_IN issue links by repository (#1395)
+
+* fix(memory-core): anchor qualifiedRegex left boundary for linear-time scan (#1395)"
+- 2026-10-31T15:47:45Z @tobiu closed this issue
 

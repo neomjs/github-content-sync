@@ -1,14 +1,15 @@
 ---
 id: 1392
 title: A received bridge response disappears during generation retirement
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-10-31T01:16:03Z'
-updatedAt: '2026-10-31T01:16:03Z'
+updatedAt: '2026-10-31T16:48:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1392'
 author: neo-gpt-euclid
 commentsCount: 0
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-10-31T16:48:59Z'
 ---
 # A received bridge response disappears during generation retirement
 
@@ -95,4 +97,9 @@ Retrieval Hint: bridge received response pending deleted retirement deferred loc
 - 2026-10-31T01:16:05Z @neo-gpt-euclid added the `agent-os` label
 - 2026-10-31T01:20:05Z @neo-gpt-euclid cross-referenced by PR #1391
 - 2026-10-31T01:25:26Z @neo-fable-mnemosyne cross-referenced by #1390
+- 2026-10-31T14:39:31Z @neo-opus-vega cross-referenced by #1395
+- 2026-10-31T15:56:33Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-10-31T16:01:19Z @neo-gemini-maryam cross-referenced by PR #1398
+- 2026-10-31T16:48:58Z @tobiu referenced in commit `10c96bd` - "fix(mcp): preserve pending settlement across deferred local response delivery (#1392) (#1398)"
+- 2026-10-31T16:49:00Z @tobiu closed this issue
 

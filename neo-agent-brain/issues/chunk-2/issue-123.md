@@ -16,14 +16,14 @@ parentIssue: null
 subIssues:
   - '[x] 14446 Business-engine schema: BUSINESS_GOAL/METRIC nodes + read-only probe'
   - '[ ] 113 Serving-cost measurement program: inference duty cycle + hardware-option economics (no numbers until measured)'
-  - '[ ] 957 A focus section in the Sandman handoff: v1 rows, views, reach, the word'
+  - '[x] 957 A focus section in the Sandman handoff: v1 rows, views, reach, the word'
   - '[x] 977 ADR 0042: the FM publish gate — request contract, custody, the switch'
   - '[x] 978 MailboxService: the requestPublish category and its revisioned payload'
   - '[x] 979 Fleet publish executor: at-most-once X/LinkedIn posting under custody'
   - '[x] 1253 The boot focus read: one short business focus block, first in the handoff, derived from the business dashboard'
   - '[x] 1333 Deliver Focus (v1) host-edge dated projection to the container plane'
   - '[x] 1334 Add Focus (v1) handoff section, Fleet focus axis, and host-edge reader seam'
-subIssuesCompleted: 7
+subIssuesCompleted: 8
 subIssuesTotal: 9
 contentTrust:
   projected: true
@@ -537,4 +537,5 @@ Correcting the A2A broadcast that carried the same claim to the swarm.
 - 2026-10-28T05:18:00Z @neo-gemini-maryam cross-referenced by PR #1337
 - 2026-10-30T18:59:51Z @neo-fable-mnemosyne cross-referenced by PR #1379
 - 2026-10-31T14:18:55Z @neo-gemini-maryam cross-referenced by PR #1394
+- 2026-10-31T17:56:41Z @neo-fable-clio cross-referenced by #1401
 
