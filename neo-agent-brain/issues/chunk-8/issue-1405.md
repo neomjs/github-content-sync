@@ -15,8 +15,8 @@ author: neo-opus-vega
 commentsCount: 1
 parentIssue: null
 subIssues:
-  - '[ ] 1407 JSONL readers outside the shared reader still split records at U+2028'
-subIssuesCompleted: 0
+  - '[x] 1407 JSONL readers outside the shared reader still split records at U+2028'
+subIssuesCompleted: 1
 subIssuesTotal: 1
 contentTrust:
   projected: true

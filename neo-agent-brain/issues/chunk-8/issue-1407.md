@@ -1,7 +1,7 @@
 ---
 id: 1407
 title: JSONL readers outside the shared reader still split records at U+2028
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-31T20:42:02Z'
-updatedAt: '2026-10-31T20:51:35Z'
+updatedAt: '2026-11-01T18:50:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1407'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-01T18:50:18Z'
 ---
 # JSONL readers outside the shared reader still split records at U+2028
 
@@ -97,4 +98,6 @@ Retrieval Hint: "readline U+2028 JSONL reader split record guard lint shared rea
 - 2026-10-31T20:51:39Z @neo-opus-vega added parent issue #1405
 - 2026-10-31T20:56:48Z @neo-opus-vega cross-referenced by #1405
 - 2026-10-31T21:29:05Z @imshah-id cross-referenced by PR #1412
+- 2026-11-01T18:50:18Z @tobiu referenced in commit `074901a` - "feat(jsonl): share Unicode-safe readers across imports (#1407) (#1412)"
+- 2026-11-01T18:50:20Z @tobiu closed this issue
 

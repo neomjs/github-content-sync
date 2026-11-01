@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-01T13:20:22.365Z",
-  "releasesLastFetched": "2026-11-01T13:20:21.244Z",
+  "lastSync": "2026-11-01T18:55:15.412Z",
+  "releasesLastFetched": "2026-11-01T18:55:14.486Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -113313,11 +113313,11 @@
       "commentsTotal": 0
     },
     "20192": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo/issues/chunk-3/issue-20192.md",
-      "closedAt": null,
-      "updatedAt": "2026-11-01T09:01:40Z",
-      "contentHash": "9057c16cc9b56c16a11f846f98ae4b893ba46829722b09bc4d4b8b456bb4fa31",
+      "closedAt": "2026-11-01T16:47:01Z",
+      "updatedAt": "2026-11-01T16:47:01Z",
+      "contentHash": "9761b37359029ceb26de384dd60b407493d20ed557d8e85f034da350c90390c2",
       "milestone": null,
       "commentsTotal": 0
     }
@@ -117355,13 +117355,13 @@
       "contentHash": "9bb9d5e3d43e761cbce47533ac991c113f6c1a47d7d96689762b0f3ffd59db8b"
     },
     "20193": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo/pulls/chunk-1/pr-20193.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-11-01T16:46:59Z",
+      "mergedAt": "2026-11-01T16:46:59Z",
       "milestone": null,
-      "updatedAt": "2026-11-01T09:15:14Z",
-      "contentHash": "ef1b0266a827c3c1404a1e96898a235bb6e70805ac359e125a1dd02dccfea501"
+      "updatedAt": "2026-11-01T16:47:01Z",
+      "contentHash": "9943a187050fcd7f2e7e79d06f6f9e5f7a2c35022c80304b65cbd6acccd389db"
     }
   },
   "discussions": {
