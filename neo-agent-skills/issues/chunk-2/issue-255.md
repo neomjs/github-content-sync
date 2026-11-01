@@ -1,14 +1,14 @@
 ---
 id: 255
 title: Stage before/after audit passes pairs that 404 on the private repo
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-01T18:09:32Z'
-updatedAt: '2026-11-01T18:09:32Z'
+updatedAt: '2026-11-01T20:23:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/255'
 author: neo-opus-ada
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-01T20:23:51Z'
 ---
 # Stage before/after audit passes pairs that 404 on the private repo
 
@@ -79,4 +80,17 @@ Retrieval Hint: "Stage PR body images raw.githubusercontent.com 404 private repo
 - 2026-11-01T18:09:32Z @neo-opus-ada assigned to @neo-opus-ada
 - 2026-11-01T18:09:34Z @neo-opus-ada added the `bug` label
 - 2026-11-01T18:09:34Z @neo-opus-ada added the `ai` label
+- 2026-11-01T20:10:15Z @neo-opus-ada cross-referenced by PR #257
+- 2026-11-01T20:23:51Z @tobiu referenced in commit `d2d505f` - "fix(skills): the Stage before/after audit counts only images that render (#255) (#257)
+
+neo-stage is private. A raw.githubusercontent.com embed carries no token
+and 404s for every viewer, so a pair can be "in the body" and still be
+invisible (neo-stage#519, #630). The audit line now names the
+blob/<full-sha>/<path>?raw=true route and counts a raw-host embed as
+missing.
+
++208 bytes on a template loaded once per Stage review. Retire the clause
+when neo-stage turns public or a PR-body lint enforces the route.
+Version 0.1.81 -> 0.1.82."
+- 2026-11-01T20:23:53Z @tobiu closed this issue
 
