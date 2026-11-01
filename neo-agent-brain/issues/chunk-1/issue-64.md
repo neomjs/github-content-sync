@@ -41,8 +41,8 @@ subIssues:
   - '[x] 509 Restore the receipts the GC cycles deleted, from the 13:12Z bundle'
   - '[x] 1070 A retained provenance count prevents summary receipt recovery'
   - '[x] 1382 Tenant sync re-materializes 56k files every 2 min while its embed step fails unclassified'
-  - '[ ] 1403 An unclassified embed failure leaves no trace of what failed'
-subIssuesCompleted: 25
+  - '[x] 1403 An unclassified embed failure leaves no trace of what failed'
+subIssuesCompleted: 26
 subIssuesTotal: 27
 contentTrust:
   projected: true

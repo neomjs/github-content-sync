@@ -1,7 +1,7 @@
 ---
 id: 1403
 title: An unclassified embed failure leaves no trace of what failed
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-31T20:14:27Z'
-updatedAt: '2026-10-31T21:33:06Z'
+updatedAt: '2026-11-01T09:16:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1403'
 author: neo-opus-vega
 commentsCount: 3
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-01T09:16:45Z'
 ---
 # An unclassified embed failure leaves no trace of what failed
 
@@ -131,4 +132,32 @@ This is no longer urgent. It is next in my queue after the two merges land.
 — Vega (Claude Opus 5.5, Claude Code) 🌿
 
 - 2026-10-31T21:33:08Z @neo-opus-vega cross-referenced by #64
+- 2026-11-01T05:33:16Z @neo-opus-vega referenced in commit `d0081cb` - "fix(knowledge-base): a numeric raw code counts as present, and the formatter promises shape, not provenance (#1403)
+
+Raw-code presence no longer depends on the code being a string, so a returned
+429 reads present on the unclassified path; the ingestion-to-WARN control now
+covers it and fails on the old predicate. The formatter's JSDoc and test title
+claim what it checks: malformed fields refuse, a well-formed object formats."
+- 2026-11-01T09:16:45Z @tobiu referenced in commit `6f28d0c` - "feat(knowledge-base): an unclassified embed failure names its stage, error class and raw-code presence (#1403) (#1414)
+
+* feat(knowledge-base): an unclassified embed failure names its stage, error class and raw-code presence (#1403)
+
+Both embed error sites in IngestionService.embedChunkGroups attach a
+code-authored trace to an unclassified error entry: the stage (a returned
+error result or a throw), the error's class read from its prototype, and
+whether any raw code was present. TenantRepoSync writes one WARN per
+attempt from it beside the materialized line, so a deferred attempt and a
+failed one both name where they failed. The message, the raw code and the
+details never cross; the formatter re-validates each field on read.
+
+The cause-chain walk moves into one generator that the classifier and the
+trace share.
+
+* fix(knowledge-base): a numeric raw code counts as present, and the formatter promises shape, not provenance (#1403)
+
+Raw-code presence no longer depends on the code being a string, so a returned
+429 reads present on the unclassified path; the ingestion-to-WARN control now
+covers it and fails on the old predicate. The formatter's JSDoc and test title
+claim what it checks: malformed fields refuse, a well-formed object formats."
+- 2026-11-01T09:16:46Z @tobiu closed this issue
 

@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-01T06:00:03.087Z",
-  "releasesLastFetched": "2026-11-01T06:00:02.135Z",
+  "lastSync": "2026-11-01T13:20:30.345Z",
+  "releasesLastFetched": "2026-11-01T13:20:29.883Z",
   "issues": {
     "3": {
       "state": "CLOSED",
@@ -484,7 +484,7 @@
       "path": "neo-agent-brain/issues/chunk-1/issue-64.md",
       "closedAt": null,
       "updatedAt": "2026-10-31T21:33:07Z",
-      "contentHash": "b87a0c2e03e1b8ec8a2e3580e1184a5b3980cc6cd82e98c8f70246ae4618985e",
+      "contentHash": "5f10a474417fee361e3dd7456d1c79fe8e2d7fa9df2d4fd45d0a95dcccf63d75",
       "milestone": null,
       "commentsTotal": 65
     },
@@ -6996,11 +6996,11 @@
       "commentsTotal": 1
     },
     "1403": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-8/issue-1403.md",
-      "closedAt": null,
-      "updatedAt": "2026-10-31T21:33:06Z",
-      "contentHash": "a47fae94116bc61c1d059e9f46eba057c53e7a851016270d3d94e0f1bb64376f",
+      "closedAt": "2026-11-01T09:16:45Z",
+      "updatedAt": "2026-11-01T09:16:45Z",
+      "contentHash": "f86ce4c52544698e71cfe13e17378f0bffcc74d0bb8a8d1546696d37e6fc4930",
       "milestone": null,
       "commentsTotal": 3
     },
@@ -7310,8 +7310,8 @@
       "closedAt": null,
       "mergedAt": null,
       "milestone": null,
-      "updatedAt": "2026-10-31T21:29:04Z",
-      "contentHash": "ef938647631d9a8f4efae6e80b8dcafb17894c31745f81e49d1ba54487fc2ed1"
+      "updatedAt": "2026-11-01T09:25:41Z",
+      "contentHash": "f890271c930ae47a8f2d5c4700bbe18ae977c0aac3a9dcfa5e895d4e54247952"
     },
     "1413": {
       "state": "MERGED",
@@ -7323,13 +7323,13 @@
       "contentHash": "b50cd2107fc97205f84a91939877389ccb8d77d8d121f41b91219b42080f7110"
     },
     "1414": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-7/pr-1414.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-11-01T09:16:43Z",
+      "mergedAt": "2026-11-01T09:16:43Z",
       "milestone": null,
-      "updatedAt": "2026-11-01T05:35:27Z",
-      "contentHash": "f39d0df8549a7ef5d8815e30f31b0e3238831089936607ae083db2a4ebdaecd3"
+      "updatedAt": "2026-11-01T09:16:46Z",
+      "contentHash": "f4cba65e935fc8d12869fadd0df6c111a38097b524ead8678e814d296067a865"
     },
     "1417": {
       "state": "MERGED",
