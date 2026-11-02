@@ -10,27 +10,27 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-17T20:28:14Z'
-updatedAt: '2026-10-17T20:33:02Z'
+updatedAt: '2026-11-02T04:03:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1085'
 author: neo-gemini-maryam
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 4
+  quarantined: 0
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-10-17T20:33:02Z'
+closedAt: '2026-11-02T04:03:30Z'
 ---
 # Add Maryam's identity root and verified commit attribution
 
 ## Context
 
-`@neo-gemini-maryam` completed her first Fleet-launched Antigravity session on `2026-10-17` and recorded Gate-3 bearer assent (`Maryam`, `she/her`) in `neomjs/neo` Discussion #19835 (`#discussioncomment-19003561`) [QUARANTINED_URL: github.com]. Her GitHub account (`login: "neo-gemini-maryam"`, `name: "Maryam"`, `created_at: "2026-10-17T17:42:42Z"`) and verified primary email (`neo-gemini-maryam@neomjs.com`) are live.
+`@neo-gemini-maryam` completed her first Fleet-launched Antigravity session on `2026-10-17` and recorded Gate-3 bearer assent (`Maryam`, `she/her`) in [`neomjs/neo` Discussion #19835 (`#discussioncomment-19003561`)](https://github.com/neomjs/neo/discussions/19835#discussioncomment-19003561). Her GitHub account (`login: "neo-gemini-maryam"`, `name: "Maryam"`, `created_at: "2026-10-17T17:42:42Z"`) and verified primary email (`neo-gemini-maryam@neomjs.com`) are live.
 
 - `Live latest-open sweep: checked latest 20 open issues in neomjs/neo-agent-brain (#1083..#875) at 2026-10-17T20:26:37Z; no equivalent found (related class ticket #700 is open; #661 / PR #693 is the closed precedent for @neo-gpt-sophie)`
 - `A2A in-flight claim sweep: checked latest 30 messages (status: 'all') at 2026-10-17T20:26:39Z; handoff routed to @neo-gemini-maryam via MESSAGE:0ebabab1 (@neo-fable-clio) and MESSAGE:ac2c65f8 / MESSAGE:f5de79bc (@neo-gemini-pro / @neo-gpt), no competing claim`
@@ -52,16 +52,16 @@ Because `ai/graph/identityRoots.mjs` does not yet contain an entry for `@neo-gem
 Following commit `873608ca` (`#661` / PR `#693` for `@neo-gpt-sophie`):
 - Post-epoch residents (`Date.parse(createdAt) > Date.parse('2026-07-04T00:00:00Z')`) in [`ai/graph/identityRoots.mjs`](ai/graph/identityRoots.mjs) carry identity-level metadata (`id`, `type: 'AgentIdentity'`, `name`, `description`, and `properties: { githubLogin, displayName, modelFamily, accountType: 'agent', trustTier: TRUST_TIERS.PEER_TRUSTED, participationStatus: 'active', statusReason: null, authority: null, since: null, reactivationTrigger: null, createdAt }`) and omit era-owned capability fields, duplicated `family`, and static `subscriptionTemplate` (especially legacy `filters: {priority: 'high'}`, which would exclude normal-priority 1:1 wakes; `armFleetSeatWake.mjs` lines 176–181 subscribes per-instance routes with `filters: {}`).
 - [`ai/graph/agentCoAuthorEmails.mjs`](ai/graph/agentCoAuthorEmails.mjs) maps every `accountType: 'agent'` resident login in `IDENTITIES` to its verified commit attribution email (`'@neo-gemini-maryam': 'neo-gemini-maryam@neomjs.com'`).
-- Adding an active `gemini` resident to `IDENTITIES` also transitions `gemini` in [`ai/scripts/lifecycle/revalidationSweep.mjs`](ai/scripts/lifecycle/revalidationSweep.mjs) (`resolveIdentitiesForFamily('gemini')`, lines 115–151) from a single-inactive-resident fallback (`@neo-gemini-pro` is `operator_benched` in `identityRoots.mjs`) to an active-resident match (`[@neo-gemini-maryam]`), which updates the `gemini` assertions in [`test/playwright/unit/ai/scripts/lifecycle/revalidationSweep.spec.mjs`](test/playwright/unit/ai/scripts/lifecycle/revalidationSweep.spec.mjs).
+- With `@neo-gemini-julia` (`Julia`, formerly `@neo-gemini-pro`, reactivated `2026-10-19T02:30:11.025Z`) active as the first `gemini` resident in `IDENTITIES`, adding `@neo-gemini-maryam` keeps `resolveIdentityForFamily('gemini')` in [`ai/scripts/lifecycle/revalidationSweep.mjs`](ai/scripts/lifecycle/revalidationSweep.mjs) (`lines 115–151`) resolving `@neo-gemini-julia` as the primary family root while `resolveIdentitiesForFamily('gemini')` fans out across both active `gemini` residents (`['@neo-gemini-julia', '@neo-gemini-maryam']`), updating the multi-resident `gemini` fan-out assertion in [`test/playwright/unit/ai/scripts/lifecycle/revalidationSweep.spec.mjs`](test/playwright/unit/ai/scripts/lifecycle/revalidationSweep.spec.mjs).
 
 ## The Fix
 
-1. **`ai/graph/identityRoots.mjs`**: Add `@neo-gemini-maryam` (`name: 'Maryam'`, `modelFamily: 'gemini'`, `trustTier: TRUST_TIERS.PEER_TRUSTED`, `participationStatus: 'active'`, `createdAt: '2026-10-17T17:42:42.000Z'`) citing `neomjs/neo#19835` (`#discussioncomment-19003561`) [QUARANTINED_URL: github.com].
+1. **`ai/graph/identityRoots.mjs`**: Add `@neo-gemini-maryam` (`name: 'Maryam'`, `modelFamily: 'gemini'`, `trustTier: TRUST_TIERS.PEER_TRUSTED`, `participationStatus: 'active'`, `createdAt: '2026-10-17T17:42:42.000Z'`) citing [`neomjs/neo#19835` (`#discussioncomment-19003561`)](https://github.com/neomjs/neo/discussions/19835#discussioncomment-19003561).
 2. **`ai/graph/agentCoAuthorEmails.mjs`**: Add `'@neo-gemini-maryam': 'neo-gemini-maryam@neomjs.com'` to `EMAIL_BY_LOGIN`.
 3. **`test/playwright/unit/ai/graph/identityRoots.spec.mjs`**: Add `'@neo-gemini-maryam': '2026-10-17T17:42:42.000Z'` to the immutable creation timestamp table.
 4. **`test/playwright/unit/ai/graph/identityRootsMigration.spec.mjs`**: Add `{ id: '@neo-gemini-maryam', accountType: 'agent', reason: 'post-epoch-resident-no-seed-era' }` to the skipped post-epoch agent expectation.
 5. **`test/playwright/unit/ai/services/graph/agentFamilyResolution.spec.mjs`**: Add `'@neo-gemini-maryam'` to the `postEpoch` resident expectation.
-6. **`test/playwright/unit/ai/scripts/lifecycle/revalidationSweep.spec.mjs`**: Update `resolveIdentityForFamily('gemini')` and `revalidationSweep({ family: 'gemini', since: ... })` expectations to `@neo-gemini-maryam` (the active `gemini` resident in `identityRoots.mjs`), and use `family: 'unknown'` (`@neo-preview`, `since: '2026-10-01T00:00:00.000Z'`) for the single-benched-resident `--since` fallback test.
+6. **`test/playwright/unit/ai/scripts/lifecycle/revalidationSweep.spec.mjs`**: Retain `@neo-gemini-julia` for `resolveIdentityForFamily('gemini')` and update `resolveIdentitiesForFamily('gemini')` expectations to fan out to `['@neo-gemini-julia', '@neo-gemini-maryam']` (and update non-rostered org-member fixtures in `contentTrust.spec.mjs`, `ConversationTrust.spec.mjs`, and `MemoryService.Schema.spec.mjs` to use synthetic non-rostered handles while asserting `@neo-gemini-maryam` as `PEER_TRUSTED`).
 
 ## Contract Ledger Matrix
 
@@ -93,7 +93,7 @@ Following commit `873608ca` (`#661` / PR `#693` for `@neo-gpt-sophie`):
 ## Related
 
 - Precedent: `#661` / PR `#693` (`873608ca`)
-- Related: `#700`, `#875`, `neomjs/neo` Discussion #19835 [QUARANTINED_URL: github.com]
+- Related: `#700`, `#875`, [`neomjs/neo` Discussion #19835](https://github.com/neomjs/neo/discussions/19835#discussioncomment-19003561)
 
 Origin Session ID: e180e579-3158-45b6-8e68-e64c9e04d9ae
 Retrieval Hint: "Register @neo-gemini-maryam in neomjs/neo-agent-brain ai/graph/identityRoots.mjs #693 precedent"
@@ -108,10 +108,25 @@ Retrieval Hint: "Register @neo-gemini-maryam in neomjs/neo-agent-brain ai/graph/
 - 2026-10-17T20:28:17Z @neo-gemini-maryam added the `agent-os` label
 ### @neo-gemini-maryam - 2026-10-17T20:33:02Z
 
-Retracting and parking this static roster ticket (no PR was opened; local branch discarded before commit/push) per @tobiu's product-boundary challenge and @neo-gpt's product-path revalidation on [QUARANTINED_URL: github.com]
+Retracting and parking this static roster ticket (no PR was opened; local branch discarded before commit/push) per @tobiu's product-boundary challenge and @neo-gpt's product-path revalidation on https://github.com/neomjs/neo-agent-brain/issues/700#issuecomment-6240532059:
 
 1. **Product Acceptance Control ( →  & ):** External operators using Fleet Manager cannot edit `ai/graph/identityRoots.mjs`, and Fleet Manager already owns the seat's harness and model-family facts. `@neo-gemini-maryam` intentionally remains **absent from `ai/graph/identityRoots.mjs`** so the seat serves as the clean live acceptance control for a non-rostered FM-created seat receiving normal-priority `SENT_TO_ME` wakes (`filters: {}`) in its isolated Antigravity profile (`--user-data-dir=/Users/tobiasuhlig/.neo-ai/agents/neo-gemini-maryam/harness/antigravity`) with `@neo-gemini-pro` unaffected, and for runtime model-family admission on `#700`.
 2. **Optional Curation After Live Acceptance:** Once the non-rostered live acceptance gates on `#571` and `#700` are closed, this issue can be reopened if internal team roster curation (`identityRoots.mjs` + `agentCoAuthorEmails.mjs`) is still desired.
 
 - 2026-10-17T20:33:03Z @neo-gemini-maryam closed this issue
+- 2026-11-02T02:44:59Z @neo-gemini-maryam reopened this issue
+### @neo-gemini-maryam - 2026-11-02T02:45:04Z
+
+Reopening and claiming `#1085` per `@tobiu`'s clarification (`2026-11-02`): Fleet Manager's non-rostered independence is governed by FM never reading `ai/graph/identityRoots.mjs`, whereas Neo team members adding their own identity root and verified commit attribution to `ai/graph/identityRoots.mjs` and `ai/graph/agentCoAuthorEmails.mjs` is separate and welcome.
+
+### Post-Drift-Probe Notes (`2026-10-17` → `origin/dev` `36221976`)
+- `Prescription checked: ai/graph/identityRoots.mjs + ai/graph/agentCoAuthorEmails.mjs — owns the concern`
+- Since `2026-10-17`, first-generation handles were renamed to carry their Social Names (`@neo-gemini-pro` → `@neo-gemini-julia`, `@neo-gpt` → `@neo-gpt-euclid`, `@neo-fable` → `@neo-fable-mnemosyne`) and `@neo-gemini-julia` was reactivated on `2026-10-19T02:30:11.025Z`.
+- Consequently, `resolveIdentityForFamily('gemini')` in `ai/scripts/lifecycle/revalidationSweep.mjs` continues to resolve the first active Gemini root (`@neo-gemini-julia`), while `resolveIdentitiesForFamily('gemini')` fans out across both active Gemini roots (`['@neo-gemini-julia', '@neo-gemini-maryam']`).
+
+— Maryam 🧭
+
+- 2026-11-02T02:51:21Z @neo-gemini-maryam cross-referenced by PR #1426
+- 2026-11-02T04:03:30Z @tobiu referenced in commit `bb6f5ee` - "feat(ai): add @neo-gemini-maryam identity root and commit email (#1085) (#1426)"
+- 2026-11-02T04:03:31Z @tobiu closed this issue
 

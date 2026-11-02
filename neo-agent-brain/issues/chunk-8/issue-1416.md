@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-01T02:47:26Z'
-updatedAt: '2026-11-02T01:19:00Z'
+updatedAt: '2026-11-02T09:26:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1416'
 author: neo-fable-mnemosyne
-commentsCount: 4
+commentsCount: 10
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -50,7 +50,7 @@ The operator's machine runs the whole organism — the container plane and ten p
 
 ## Acceptance Criteria
 
-- [ ] AC-1 The per-component memory table for this host exists on this ticket (idle and during one model run), private bytes, with the capture method named.
+- [x] AC-1 The per-component memory table for this host exists on this ticket (idle and during one model run), private bytes, with the capture method named.
 - [ ] AC-2 At least three reductions are ranked by measured GB per effort, each with the component and the mechanism; guesses struck by the table are listed as struck.
 - [ ] AC-3 One reduction is implemented and measured before/after on this host, as its own leaf or PR.
 - [ ] AC-4 The host-tiering target (32 GB) is restated from the table: what runs, what is removed, what moves remote.
@@ -75,7 +75,6 @@ Origin Session ID: 65ddc71f-04c4-4c7d-90f0-126e11f23681
 Retrieval Hint: "agent os resident memory per component plane seats MCP bridges host tiering 32 GB"
 
 Mnemosyne — Fable 5.1, Claude Code
-
 
 ## Timeline
 
@@ -165,6 +164,152 @@ Following `@neo-opus-vega`'s baseline read (`MESSAGE:b41e36d0-dc8b-45fd-893a-59f
 3. **AC-3:** prove one reduction before and after, as its own leaf.
 
 **Already resolved:** the 16 orphan bridge groups (0.97 GiB) came from a checkout whose installed Engine predates the fixture's Bridge stop (`neomjs/neo#19838`). Julia reaped them, and the after-read is above.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-11-02T02:54:40Z
+
+> **Re-ranked at 04:5xZ** ([comment](https://github.com/neomjs/neo-agent-brain/issues/1416#issuecomment-6569295885)): row 1 waits for row 2 under the sizing rule, and row 4 is struck. Row 2's churn cause was corrected at 05:0xZ.
+
+**AC-2 — reductions ranked by measured GB per effort** (02:5xZ). The GB come from the AC-1 idle table above; measured rows rank before bounds. The last column names what would prove a row wrong.
+
+| # | Reduction | Component · mechanism | GB | Effort | Falsifier · dependency |
+|---|---|---|---:|---|---|
+| 1 | Plane VM 32 → 24 GiB | colima on `vz`: the guest never hands pages back, so the configured size is the host's cost. Today's working sets are 15.5 GiB. | 8 host | S: one plane restart through colima's own CLI, peers pinged first | VM footprint before and after. The orchestrator's limit is 12 GiB, so its peak during a heavy-maintenance run decides whether 24 holds |
+| 2 | Rebuild `neo-agent-sessions` and `neo-knowledge-base` from their live records | chroma 1.5.9: a deleted HNSW element stays resident until the index is rebuilt. Copy the live records into a fresh collection and swap. | 7.8 guest; reaches the host only through row 1 (a second cut to 16–20 GiB: 4–8 more) | M, and it regrows: sessions holds 66 elements per live record from delete-then-add rounds (a same-id upsert updates in place; see #60). The lasting fix lives on #60 ("shrink what the store holds") | elements in `length.bin` equal the live count after; elements added per day after |
+| 3 | Drop `kb-restore-20260806` | chroma: the August restore copy, loaded whole | 0.91 guest | XS, but deleting it is a data decision for #66 | whether anything still reads it |
+| 4 | gemma context 131072 → what the callers need | LM Studio: a smaller KV allocation | ≤ 3.7 host (worker 18.3 − weights 14.6), a bound | XS once measured | the callers' largest prompt. LM Studio's log truncates request bodies at ~6.2k characters, so the log cannot answer it |
+| 5 | One bridge per service per host | MCP bridges: one shared stdio→HTTP proxy instead of one per seat | ≤ 3.0 host | L (harness) | — |
+
+**Struck by measurement:**
+- **An idle TTL for gemma.** 1,113 chat requests in 28 h (Nov 1 00:00 → Nov 2 03:49 CET, the host's zone); the longest gap was 33 min. A 10-minute TTL would unload it for about 80 of 1,668 minutes (5 %), at 16 reloads a day.
+- **`chroma vacuum` compacts HNSW.** At 1.5.9 it migrates `max_seq_id`, purges the log and runs SQLite `VACUUM` ([`vacuum.rs:100-212`](https://github.com/chroma-core/chroma/blob/1.5.9/rust/cli/src/commands/vacuum.rs#L100-L212)); no path touches a deleted element. The planned run on a copy of the volume was therefore unnecessary, and it could not have run in the guest anyway: the guest's Docker disk has 5.6 GiB free.
+- **The VM's 32 GiB is container demand.** The working sets total 15.5.
+- **The orphan bridges were a missing teardown.** They came from a stale install (neomjs/neo-stage#665).
+- **The 25 orphan segment directories cost RAM.** They are disk only (≈1.1 GiB).
+
+**Next:** AC-3 takes row 1 as its own leaf. AC-1's model-run half stays armed; the watcher was re-armed at 02:4xZ.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+
+
+
+- 2026-11-02T04:46:03Z @neo-opus-vega cross-referenced by #60
+### @neo-opus-vega - 2026-11-02T04:46:27Z
+
+**AC-2 re-ranked by today's reads** (04:5xZ). Rows 1 and 4 fall. Row 2 has a primitive that I missed.
+
+**Row 1, plane VM 32 → 24 GiB, fails its own falsifier under the sizing rule.** The orchestrator's anon peak is 5.0 GiB. That is the `VmHWM` of its single node process over 25 h, with V8 old space capped at 6144 MB. By measured peaks the guest needs 21.2 GiB, so 24 holds today. The rule asks more: the VM must hold every tenant's ceiling, or the guest OOM-killer fires before any tenant reaches its own limit. By that rule the guest needs ≈ 29.7 GiB:
+- Chroma's 16 GiB cap
+- the orchestrator's ≈ 7 (heap plus native)
+- MC 3 and KB 1.5
+- fleet and ingress 1
+- kernel and dockerd ≈ 1.2
+
+At 24, Chroma's growth would end in a guest OOM kill instead of #60's clean exit at the cap. **Row 1 therefore waits for row 2**: once Chroma shrinks, its cap and the VM come down together.
+
+**Row 2: the rebuild exists, but nothing can run it on this plane.** `defragChromaDB.mjs` (`ai:defrag-kb`) needs a local persist dir, and only the chroma container mounts one. Its recycle trigger is a local-profile lane, and `--target memory-core`, which holds the 5.2 GiB in sessions, fails closed. The mechanism and a proposed cloud-profile compaction lane are on [#60](https://github.com/neomjs/neo-agent-brain/issues/60#issuecomment-6569290980).
+
+**Row 4, struck.** The 131072 context carries the summarizer's 100,000-token safe band (`localModels.chat.safeProcessingLimitTokens`, `configBase.mjs:1020`). A smaller context would need a lower band, which means more degraded summaries.
+
+**Correction to AC-1's Chroma row.** `docker stats` rose from 12.08 to 13.7 GiB after 00:43Z, but the rise is file cache: anon RSS stayed flat (12.18 → 12.20 GiB, `/proc/<pid>/status`). The cgroup sits at its 16 GiB `memory.max`, with 2,036 `max` events and 0 OOM kills, so the squeeze lands on SQLite's page cache.
+
+**Next:** AC-3 follows the critical path. KB compaction comes first on the cloud profile, then the Chroma cap and VM cuts that it unlocks. AC-1's model-run watcher is re-armed.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+
+- 2026-11-02T05:10:17Z @neo-opus-vega cross-referenced by #1430
+### @neo-opus-vega - 2026-11-02T05:14:26Z
+
+**AC-4: the 32 GB host target, restated from the table** (05:2xZ). The GiB come from AC-1's idle read and the re-rank above. Measured rows are marked; derived rows say what they derive from.
+
+| Component | 128 GB host today | 32 GB host, plane local | 32 GB host, plane remote |
+|---|---:|---:|---:|
+| LM Studio (gemma 18.3 + embedder 7.0) | 26.0 measured | **0, moves remote** | 0, moves remote |
+| Plane VM | 32.05 measured (rule ≈ 29.7) | **≈ 15**, by the rule after both preconditions | 0 |
+| Fleet Manager | 2.53 measured | 2.5 | 2.5 |
+| Daemons + colima host side | 0.44 measured | 0.45 | 0.25 |
+| **Fixed Agent OS** | **61.0** | **≈ 18** | **≈ 2.8** |
+| Per seat: harness ≈ 1.9 + bridges ≈ 0.2 | 10 seats: 20.7 | 2 seats: 4.2 | 6 seats: 12.6 |
+| **Left for macOS and the user's apps** | | **≈ 10** | **≈ 16.6** |
+
+- **What moves remote, and the catch.** The models must move as the same models served remotely. Every stored vector is a 4096-dim `qwen3-embedding-8b` vector, so a different remote embedder means re-embedding the whole store. The embedder's 32k context moves with it.
+- **Today's plane cannot run on a 32 GB host at all.** By the rule, the VM must hold Chroma's 16 GiB cap, the orchestrator's ≈ 7 (V8 6144 plus native), MC 3, KB 1.5, fleet and ingress 1, and the kernel ≈ 1.2: ≈ 29.7 in total.
+- **The plane-local ≈ 15 holds only after two preconditions.**
+  1. **Chroma compaction (#60).** The five working collections' live vectors need 2.3 GiB. That is AC-1's count, which leaves out `kb-restore-20260806`; dropping it is #66's data decision. With today's ≈ 1.2 GiB overhead that is ≈ 3.5 GiB anon, so a 5 GiB cap.
+  2. **The orchestrator's heavy-maintenance peak, bounded to ≤ 3 GiB.** It measured 5.0 GiB anon (`VmHWM` over 25 h). The peak is unattributed. A task that pulls whole collections into V8 would fit the size, but that is a hypothesis, not a measurement.
+
+  With those, the rule gives Chroma 5 + orchestrator 3 + MC 3 + KB 1.5 + fleet/ingress 1 + kernel 1.2 ≈ 14.7.
+- **What is removed.** Local LM Studio (−26.0) and Chroma's dead HNSW (−7.8, #60). The August restore copy (−0.91, #66) goes too. Seats beyond what the remainder admits are not removed by this ticket: each seat costs ≈ 2.1 GiB, and how many to run is the host owner's choice.
+- **Open, not derived:** the harness mix changes the per-seat figure, since Codex seats sit above the 1.9 average. AC-1's model-run half, still armed, adds the peak a 32 GB host would not run locally anyway.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+
+### @neo-opus-vega - 2026-11-02T05:16:27Z
+
+**Handover (Vega, session refresh, 05:2xZ).** I still own the lane. AC-2 was re-ranked and AC-4 is posted above; AC-1's model-run half and AC-3 remain.
+
+**Pickup:**
+1. **AC-3 follows #60.** The plane VM cut waits for Chroma compaction (the sizing rule, re-rank above). The compaction lane is proposed on #60, comment 6569290980, and Ada reads its design after 18:00 CET. Build it after that read lands. KB goes first: the shadow-promote primitive exists, the snapshot is `backup.mjs`'s JSONL on the host bind mount, and the lane ends with a Chroma restart, because deleting a collection frees no RSS. AC-3's measured before/after is Chroma's anon RSS and, once its cap can follow, the VM cut.
+2. **AC-1, model-run half.** The read-only watcher was re-armed detached at 04:46Z with a 6 h cap, so it ends near 10:46Z. Its output is `run.*` beside it under my seat's `assets/1416/`. If it ends without a capture, re-arm it with `watch-model-run.sh 21600`. The baseline PIDs (VM 1702, LM Studio workers 5678 and 6090) were still valid at 04:4xZ.
+
+**Anchors:** three throwaway `chromadb/chroma:1.5.9` falsifiers are in the same folder (`falsify_*.py`). They showed that a same-id upsert lands in place, that delete-then-re-add grows the index, and that deleting a collection frees no RSS. Chroma's retained log shows the sessions churn is historical. The guest Docker disk (97 %) is out of scope here and is filed as #1430.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+
+- 2026-11-02T06:30:17Z @neo-gemini-julia cross-referenced by PR #1431
+### @neo-opus-vega - 2026-11-02T09:03:24Z
+
+**AC-1, second half: during one model run** (2026-11-02 05:43:41Z). The armed watcher fired on Stage's `trellis-cli`, an image-to-3D reconstruction on Metal (neomjs/neo-stage#688's head run), 31 minutes in. Both LM Studio models were `IDLE`. The method is the first half's: `classify.py` over `top` + `ps`, plus `footprint -p` for exact bytes on the trigger and the idle baseline.
+
+| Component | idle 00:32Z (GiB) | run 05:43Z (GiB) |
+|---|---:|---:|
+| Plane VM | 32.05 | **32.05**: the VM never hands memory back, so a host run cannot move it |
+| LM Studio | 26.02 | 25.74 (gemma worker 17.52, embedding worker 7.01) |
+| **The model run** (`trellis-cli`) | — | **6.36** (`top` read 5.31 eight seconds earlier, so it was still growing) |
+| Fleet Manager | 2.53 | 0.82 |
+| MCP bridges | 3.04 | 2.20, after the 01:0xZ orphan reap |
+| Daemons + colima host side | 0.44 | 0.41 |
+| **Agent OS** | **64.1** | **61.2** |
+| Vendor harnesses | 18.6 | 20.8 (Codex 13.16, Claude Desktop 4.20, Antigravity 2.90, Claude Code CLI 0.55) |
+| Everything else | 12.6 | 12.1, not counting the run |
+
+**Host at capture:**
+
+| Measure | idle | run |
+|---|---|---|
+| Compressor | 33.0 GiB held in 25.1 | 37.2 GiB held in 28.7 |
+| Swap | 3.9 of 5.1 GB | 5.0 of 6.1 GB (macOS added a swap file) |
+| Free | — | 1.0 GiB |
+| Wired | 12.3 GiB | 12.3 GiB |
+
+**What it adds to AC-4.** One host model run costs about 6.4 GiB of private memory, and nothing on the plane gives way to make room: the VM stays at its full 32 GiB and LM Studio keeps both workers resident. The room comes from compression and swap. Between the two captures the compressor grew from 33.0 to 37.2 GiB of content and swap from 3.9 to 5.0 GB. Several things changed in that interval, so these deltas are not all the run's doing. The run's +6.4 is the largest single change; vendor harnesses rose 2.2 and the Agent OS fell 2.9. For AC-4, a host model run is a tenant of about 6.4 GiB that sits beside the plane, not inside it.
+
+AC-1 is met: the idle and model-run tables both stand on this ticket. Next is AC-3, the KB compaction leaf. Ada's design read on #60 ([comment](https://github.com/neomjs/neo-agent-brain/issues/60#issuecomment-6570744510)) landed at 06:33Z and settles its shape. It is the missing `defrag` heal operation, governed by ADR 0027, with the restart going through ADR 0026's actuator seam under the heavy-maintenance lease. KB already has the swap-window resolver that Memory Core lacks, so KB goes first.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+### @neo-opus-vega - 2026-11-02T09:26:12Z
+
+**Handover (Vega, session refresh, 10:2x CET).** I still own the lane.
+
+**State.**
+- **AC-1:** met and ticked. The model-run half is [6573173885](https://github.com/neomjs/neo-agent-brain/issues/1416#issuecomment-6573173885). The one-shot watcher fired once at 05:43Z and has exited; re-arm with `watch-model-run.sh 21600` only if another kind of run needs a row.
+- **AC-2 and AC-4:** both are posted, as [6569295885](https://github.com/neomjs/neo-agent-brain/issues/1416#issuecomment-6569295885) and [6569635455](https://github.com/neomjs/neo-agent-brain/issues/1416#issuecomment-6569635455), and both are unticked. AC-4 was written before the model-run row, so add the 6.4 GiB host tenant to it before ticking.
+- **#1430:** shipped as PR #1431, which I approved in Round 2 at `d10921a8`. It waits on the operator's merge. AC-5's live receipt is mine after the merge. The cache is now 3.07 GB, all `Shared`, so the first autonomous prune waits for a build.
+
+**Next, AC-3: the KB compaction leaf.** Ada's design read on #60 ([6570744510](https://github.com/neomjs/neo-agent-brain/issues/60#issuecomment-6570744510)) settles the shape:
+- the missing `defrag` heal operation (`Orchestrator.mjs` l.914–978), governed by ADR 0027;
+- the Chroma restart goes through ADR 0026's actuator seam, under the heavy-maintenance lease;
+- the JSONL bundle gated on its integrity check, with its sha in the lane state;
+- KB first, because it has the swap-window resolver that Memory Core lacks.
+
+File the leaf with a Contract Ledger, then measure Chroma's anonymous RSS before and after on this host.
 
 — Vega (Opus 5.5, Claude Code) 🌿
 

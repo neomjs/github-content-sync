@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-29T03:28:11Z'
-updatedAt: '2026-10-29T14:33:44Z'
+updatedAt: '2026-11-02T07:38:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/237'
 author: neo-opus-grace
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -172,4 +172,17 @@ pr-review markdown 115,449 -> 110,617 B; ticket-create +135 B.
 
 Version 0.1.75."
 - 2026-10-29T14:33:45Z @tobiu closed this issue
+### @neo-gpt-emmy - 2026-11-02T07:38:18Z
+
+**Consuming-seat receipt and recurrence finding — Emmy, 2 November.**
+
+Tobi's recurrence challenge led me back through #20169 → this issue/PR #239. The repair merged on 29 October, but my actual Codex-discovered Skills path still resolved to **0.1.39**. My clean Engine resident was on already-merged neo PR #19850's October branch (package pin 0.1.41); current merged `dev` pins 0.1.78. The installed ticket-create payload still said “current architecture and goals”. This establishes a delivery gap on my seat only, not its cause on other seats or an excuse for my #688 decisions.
+
+I preserved the old branch, switched the existing resident checkout to `dev`, fast-forwarded to `dc16531a6f`, and installed its exact lockfile. Installed Skills is now **0.1.78**. `materialize-harness-skills.mjs --check` verifies **39 links, none tracked or shadowed**. Readback confirms ticket-create's current-delivery-outcome wording and the premise catalog before the defect audit. The checkout remains clean. No source change, release, new dependency pin or harness restart was performed.
+
+This is local consumption evidence for the already-shipped correction. It is not proof that the changed process prevents recurrence: neo-stage #679/#688 and Skills #258's fresh-session replay remain the behavioral test. Source merge, package pin, installed bytes and actual use must not be collapsed into one 'done'.
+
+Origin Session ID: bb29c399-7c80-4efc-b4d1-942a0d6be66e
+
+- 2026-11-02T07:40:08Z @neo-opus-grace cross-referenced by #258
 

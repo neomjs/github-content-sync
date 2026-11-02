@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-02T02:30:15.647Z",
-  "releasesLastFetched": "2026-11-02T02:30:15.165Z",
+  "lastSync": "2026-11-02T11:00:38.138Z",
+  "releasesLastFetched": "2026-11-02T11:00:37.488Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -3669,10 +3669,10 @@
       "state": "OPEN",
       "path": "neo-agent-institution/issues/chunk-5/issue-857.md",
       "closedAt": null,
-      "updatedAt": "2026-11-02T02:25:00Z",
-      "contentHash": "4152ef9a0127aff21f6a8c3f1f51363b420cde78d817a418ecdbe0045818a686",
+      "updatedAt": "2026-11-02T02:45:16Z",
+      "contentHash": "6980c217a6ee64e07389cdb9737bf882422b691237b4e44742a3b5e107168c58",
       "milestone": null,
-      "commentsTotal": 1
+      "commentsTotal": 2
     }
   },
   "releases": {},
@@ -3684,7 +3684,7 @@
       "mergedAt": "2026-10-24T22:45:24Z",
       "milestone": null,
       "updatedAt": "2026-10-24T22:47:45Z",
-      "contentHash": "a11dea55c7c42625fd7879563317b5142d432a5ac754cf1065c0b7090e30e0a3"
+      "contentHash": "3476d446ab35d3c3b8377100a5a9d9635f2dd9508e25c97e655cd01d870bd402"
     },
     "805": {
       "state": "MERGED",
@@ -3711,7 +3711,7 @@
       "mergedAt": "2026-10-25T15:19:53Z",
       "milestone": null,
       "updatedAt": "2026-10-25T15:19:55Z",
-      "contentHash": "bf737d5593f7132ad84bfc8a0ee1fd64a74f88b78927b800812fda97c9f1fa1c"
+      "contentHash": "eb173e5d6b01ceb87c645a12783ad519258711ad315789a784a1a000e045b045"
     },
     "810": {
       "state": "MERGED",
@@ -3918,7 +3918,7 @@
       "mergedAt": "2026-10-31T19:06:30Z",
       "milestone": null,
       "updatedAt": "2026-10-31T19:06:32Z",
-      "contentHash": "9c0ff30a72c1736a4d5d1fc9bc72e798177763e1450da343fe6bdd1ab9f0e05a"
+      "contentHash": "21202d08bbbe67e411e1e775cef185a292897d3be934467f0454ebaa606c48e3"
     },
     "853": {
       "state": "MERGED",
@@ -3936,7 +3936,7 @@
       "mergedAt": "2026-10-31T22:58:04Z",
       "milestone": null,
       "updatedAt": "2026-10-31T22:58:06Z",
-      "contentHash": "d6efdd6f072b7d66cbfc5728b5444c65dacdcc788edfefb129df1dec43f22add"
+      "contentHash": "64f744ab45cc8851c808a5d820dab75cd69aaf2ea27548f3baa515ad7e99977d"
     },
     "856": {
       "state": "MERGED",
@@ -3970,7 +3970,7 @@
       "path": "neo-agent-institution/discussions/chunk-1/discussion-825.md",
       "closed": false,
       "closedAt": null,
-      "contentHash": "27e9cca4df1dce04323c998f22807983e1b4adc47d301545befe67e3db203762",
+      "contentHash": "43b73c93131996f057d009ab734cee95d7fe51e6abc7ac7e8f102a3870ab1d54",
       "updatedAt": "2026-10-27T17:35:16Z"
     }
   }

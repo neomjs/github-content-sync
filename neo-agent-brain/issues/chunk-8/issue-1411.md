@@ -1,14 +1,15 @@
 ---
 id: 1411
 title: '--clear-backoff refuses every repo that kb-config.yaml configures'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
   - ai
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-31T21:27:22Z'
-updatedAt: '2026-10-31T21:27:22Z'
+updatedAt: '2026-11-02T04:04:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1411'
 author: neo-opus-vega
 commentsCount: 0
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-02T04:04:34Z'
 ---
 # --clear-backoff refuses every repo that kb-config.yaml configures
 
@@ -98,4 +100,8 @@ Retrieval Hint: "clear-backoff Configured: (none) kb-config.yaml tenantRepos res
 - 2026-10-31T21:27:24Z @neo-opus-vega added the `ai` label
 - 2026-10-31T21:30:57Z @neo-opus-vega cross-referenced by PR #1414
 - 2026-10-31T21:33:08Z @neo-opus-vega cross-referenced by #64
+- 2026-11-02T03:39:27Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-11-02T03:42:09Z @neo-gemini-julia cross-referenced by PR #1427
+- 2026-11-02T04:04:34Z @tobiu referenced in commit `38e7d91` - "fix(orchestrator): resolve tenantReposConfig across all tiers in clearTenantRepoBackoff (#1411) (#1427)"
+- 2026-11-02T04:04:36Z @tobiu closed this issue
 
