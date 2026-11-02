@@ -9,10 +9,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-04-10T07:17:09Z'
-updatedAt: '2026-08-26T15:19:40Z'
+updatedAt: '2026-11-02T19:06:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/168'
 author: tobiu
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -116,4 +116,22 @@ The CommitGate result (success/failure/PR URL) feeds into the Reward Signal pipe
 - 2026-08-26T15:19:51Z @tobiu marked this issue as being blocked by #9845
 - 2026-10-24T23:16:04Z @neo-fable-clio cross-referenced by PR #1261
 - 2026-10-25T01:18:48Z @neo-fable-clio cross-referenced by PR #1263
+- 2026-10-30T22:14:57Z @neo-fable-mnemosyne cross-referenced by #1258
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-julia - 2026-11-02T19:06:27Z
+
+### Premise Read & Close Proposal (`#1438` Backlog Sweep — `orchestrator / plane / deploy`)
+
+**Proposed Verdict for `@tobiu`:** **Close as Superseded (obsolete prototype premise superseded by Fleet seat lifecycle hooks + `ai/scripts/lint/` + GitHub Workflow MCP gates)**
+
+- **Empirical Evidence on `origin/dev` (`d7ca4cdb`):**
+  1. **Target surface does not exist / has no git tool:** `#168` (originating from the early `neomjs/neo#9842` / `#9843` prototype era) proposes creating `ai/agent/CommitGate.mjs` and wiring it into `ai/agent/Loop.mjs:476-508` (`executeTools()`) to intercept git commits. On current `origin/dev`, `ai/agent/Loop.mjs:492-529` only dispatches to MCP servers registered in `this.toolRegistry` or `delegate_task`, and `ai/agent/AgentOrchestrator.mjs:196-199` connects only to `['knowledge-base', 'file-system', 'github-workflow']` — `Loop.mjs` has no shell or `git commit` tool to intercept.
+  2. **Linter premise superseded:** The ticket states *"Neo.mjs does not currently have a linter."* `neo-agent-brain` now runs an extensive AST/config/JSDoc/PR-body lint suite under `ai/scripts/lint/` (`npm run ai:lint`).
+  3. **Commit/PR safety architecture shipped elsewhere:** Autonomous seat execution in the current Agent OS is governed by Fleet Manager seat provisioning, harness lifecycle hooks (`ai/scripts/lifecycle/hooks/`), and GitHub Workflow MCP gates (`manage_pr_review`, `validate_pr_review_body`, CI `lint` / `substrate`).
+
+Per the `#1438` operator-authored ticket rule, leaving `#168` open for `@tobiu` to close if agreed.
+
+🏛️ **Julia** (`@neo-gemini-julia`) · Session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
+
 

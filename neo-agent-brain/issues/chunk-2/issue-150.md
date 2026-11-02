@@ -10,10 +10,10 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-05-15T09:06:54Z'
-updatedAt: '2026-08-26T15:18:35Z'
+updatedAt: '2026-11-02T19:08:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/150'
 author: neo-opus-ada
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues:
   - '[x] 11768 GitLab-workflow MCP server scaffold'
@@ -30,153 +30,54 @@ blocking: []
 ---
 # Epic: GitLab Workflow MCP Server (parity with gh-workflow for issues + merge requests)
 
-## Context
+## Problem Scope
 
-Neo currently has a comprehensive **GitHub Workflow MCP Server** (`ai/services/github-workflow/` + `ai/mcp/server/github-workflow/`) that handles tickets, pull requests, discussions, archives, and Memory-Core-integrated A2A coordination. This epic creates a parallel **GitLab Workflow MCP Server** matching the same architectural pattern, scoped to **issues + merge requests only** (no GitLab Discussions equivalent).
+External client projects use GitLab as their forge, while Neo's primary Agent OS forge integration is `github-workflow` (`ai/services/github-workflow/` + `ai/mcp/server/github-workflow/`). This Epic delivers a parallel **GitLab Workflow MCP Server** (`ai/mcp/server/gitlab-workflow/` + `ai/services/gitlab-workflow/`) scoped to **issues and merge requests** so client-project deployments can consume the same MCP, Memory Core, and Knowledge Base workflows without replacing Neo's internal GitHub-only coordination.
 
-**Operator-stated rationale (2026-05-15)**: substrate lives inside Neo; usage is for client projects, not Neo-internal coordination. *"create the mcp server and services (and testing) inside neo, but only use it for the client project."*
+**Operator-stated boundary (2026-05-15):** *"create the mcp server and services (and testing) inside neo, but only use it for the client project."*
 
-**Empirical anchor**: tonight's substrate-evolution work (#11381 `contentPath.mjs` + ADR 0004 §1.3 strategic principle) made this MORE viable than a week ago — the universal-ordinal-100 path math + GitHub-as-source-of-truth → regeneratable-cache strategic principle generalize to any forge (GitHub, GitLab, etc.).
+## Current Shipped Baseline on `origin/dev` (`d7ca4cdb`)
 
-## The Problem
+1. **MCP Server & OpenAPI Surface (SHIPPED):**
+   - `ai/mcp/server/gitlab-workflow/{Server.mjs,mcp-server.mjs,toolService.mjs,configBase.mjs,config.template.mjs,openapi.yaml,server.json}` (shipped in `neomjs/neo#11768` / PR `neomjs/neo#11773`; MCP Registry manifest added in `neomjs/neo-agent-brain#1265` / PR `#1266`).
+2. **GitLab GraphQL Client & Issue Service + Unit Tests (SHIPPED):**
+   - `ai/services/gitlab-workflow/GitLabClient.mjs`, `ai/services/gitlab-workflow/IssueService.mjs`, `ai/services/gitlab-workflow/queries/{issueQueries,mutations}.mjs`, and `test/playwright/unit/ai/services/gitlab-workflow/{GitLabClient,IssueService}.spec.mjs` (shipped in `neomjs/neo#12624` / PR `neomjs/neo#12625`, `0e8e4008b4`).
+3. **MergeRequestService + MR Queries/Mutations + Unit Tests (SHIPPED):**
+   - `ai/services/gitlab-workflow/MergeRequestService.mjs`, `ai/services/gitlab-workflow/queries/{mrQueries,mrMutations}.mjs`, and `test/playwright/unit/ai/services/gitlab-workflow/MergeRequestService.spec.mjs` (shipped in `neomjs/neo#12631` / PR `neomjs/neo#12653`, `21568f609a`).
 
-External client projects use GitLab as their forge. Neo's Agent OS substrate (Memory Core integration, A2A coordination, ticket/PR lifecycle tracking, ingestion-to-Knowledge-Base) is currently locked to GitHub via `github-workflow`. Without a parallel `gitlab-workflow` server:
-- Client projects can't use Neo's agent-coordination patterns (A2A on tickets/MRs, ingestion of tickets-as-Memory-Core-graph-nodes, etc.)
-- Agents working on client projects fall back to manual `gh`-CLI-style coordination without the substrate-evolution-guard layer ADR 0004 + 0005 + 0006 provides
-- Each client deployment re-derives integration patterns instead of consuming canonical Neo substrate
+## Remaining Solution Shape
 
-## The Architectural Reality
-
-**Reusable from `github-workflow` (no rebuild)**:
-- `ai/services/github-workflow/shared/contentPath.mjs` — provider-agnostic universal ordinal-100 path math (just-merged via PR neomjs/neo#11381); applies identically for GitLab
-- `_index.json` schema (`ContentIndexEntry` typedef on `contentPath.mjs`) — provider-agnostic
-- ADR 0004 §1.3 strategic principle (GitHub-as-source-of-truth → `resources/content/` regeneratable cache) generalizes verbatim to GitLab-as-source-of-truth
-- MCP server scaffolding pattern (`ai/mcp/server/<name>/server.mjs`, `openapi.yaml`, `config.template.mjs` shape)
-- Memory Core integration patterns (`add_memory`, A2A `add_message`, KB ingestion)
-- Testing patterns (`test/playwright/unit/ai/services/<name>/*.spec.mjs`)
-
-**Need new implementation**:
-- GitLab API client (REST + GraphQL via `@gitbeaker/node` or native-fetch)
-- `IssueSyncer` for GitLab Issues
-- `MergeRequestSyncer` for GitLab MRs (GitLab's PR-equivalent; no Discussions analog)
-- `LocalFileService` for GitLab-specific paths (folder shape under `resources/content/`)
-- MCP server `gitlab-workflow` with OpenAPI tool surface mirroring `github-workflow`'s tool set (e.g., `get_issue`, `create_issue`, `get_merge_request`, `update_issue_assignees`, `manage_pr_reviewers`, etc.)
-- Config + auth (GitLab Personal Access Token handling, env-var integration; optional OIDC parallel to KB/MC v12.1 stack)
-
-**Architectural-decision commitment (operator-aligned, NOT an open question)**:
-
-Parallel-substrate-with-shared-helpers, NOT enforced base-class extraction. Same pattern as Knowledge Base + Memory Core servers (parallel, sibling). Rationale:
-- Copy `IssueSyncer.mjs` skeleton → swap API client → reuse `shared/contentPath.mjs` for path math
-- Diverging signatures (GitLab Issue API vs GitHub Issue API) make enforced base-class inheritance more cost than benefit
-- If shared-base extraction surfaces empirically during implementation (e.g., 3 sites of duplication > 50 lines each), file follow-up ticket; do NOT pre-design
-
-## The Fix (sequenced sub-tasks)
-
-Filing the epic now with the task enumeration; sub-issues will be filed as agents claim them per `ticket-create-workflow.md §10` chained-call pattern.
-
-### Sub-task 1: MCP server scaffolding + OpenAPI tool surface
-
-Create `ai/mcp/server/gitlab-workflow/`:
-- `server.mjs` (entry point; mirror `github-workflow/server.mjs` shape)
-- `openapi.yaml` (tool surface declaring `get_issue`, `list_issues`, `create_issue`, `update_issue_assignees`, `update_issue_labels`, `get_merge_request`, `list_merge_requests`, `manage_pr_reviewers`, `add_message`/A2A-bridge if applicable, etc.)
-- `config.template.mjs` (gitignored template; GitLab host URL, PAT env-var, sync intervals)
-- `config.mjs` (gitignored runtime)
-
-### Sub-task 2: GitLab API client
-
-Create `ai/services/gitlab-workflow/api/GitLabClient.mjs`:
-- REST + GraphQL methods for Issues + MRs
-- Auth via PAT (`Authorization: Bearer ${token}` header)
-- Pagination handling (GitLab uses link headers; different from GitHub's `?per_page`)
-- Rate-limit handling
-- Reuse Neo's existing HTTP-client patterns (probably the same `httpModule.request` + `Promise` wrapper pattern from `TextEmbeddingService.mjs`)
-
-### Sub-task 3: `IssueSyncer` + `MergeRequestSyncer` + `LocalFileService`
-
-Create `ai/services/gitlab-workflow/`:
-- `sync/IssueSyncer.mjs` — mirrors `github-workflow/sync/IssueSyncer.mjs` shape; consumes `shared/contentPath.mjs` from gh-workflow OR duplicates the path-math (decision: import from `github-workflow/shared/contentPath.mjs` since it's provider-agnostic)
-- `sync/MergeRequestSyncer.mjs` — mirrors `github-workflow/sync/PullRequestSyncer.mjs` shape
-- `LocalFileService.mjs` — file-IO for `resources/content/gitlab/...` substrate
-
-**Folder shape decision** (operator-aligned, NOT open):
-- `resources/content/gitlab/issues/chunk-N/issue-<NNN>.md`
-- `resources/content/gitlab/merge-requests/chunk-N/mr-<NNN>.md`
-- `resources/content/gitlab/archive/issues/v<X.Y.Z>/chunk-N/...`
-- `resources/content/gitlab/archive/merge-requests/v<X.Y.Z>/chunk-N/...`
-
-Universal ordinal-100 substrate; matches ADR 0004 §2.1 target shape under a `gitlab/` namespace prefix.
-
-### Sub-task 4: Tests (Playwright unit + integration)
-
-Create `test/playwright/unit/ai/services/gitlab-workflow/`:
-- `GitLabClient.spec.mjs` — mock-HTTP-server pattern (same as `TextEmbeddingService.retry.spec.mjs`); covers auth, pagination, rate-limit
-- `IssueSyncer.spec.mjs` — end-to-end sync logic with mock API responses
-- `MergeRequestSyncer.spec.mjs` — same
-- `LocalFileService.spec.mjs` — file-path round-trips
-- MCP-server smoke spec at `test/playwright/unit/ai/mcp/server/gitlab-workflow/` (mirror gh-workflow's MCP tests)
-
-### Sub-task 5: Config integration + auth + docs
-
-- Add `gitlab-workflow` config to `ai/mcp/server/gitlab-workflow/config.template.mjs` per `config.mjs` pattern; env-var bindings for `NEO_GITLAB_HOST`, `NEO_GITLAB_PAT`, etc.
-- Add gitignore entry for `ai/mcp/server/gitlab-workflow/config.mjs`
-- Add `worktree-bootstrap.mjs` integration (the script that copies gitignored `config.mjs` files from main checkout to worktrees on session boot)
-- Document in `learn/agentos/` how to point the server at a GitLab instance (PAT generation, env-var setup, host URL configuration)
-- Add to `package.json` script registry if any new `npm run` invocations needed (e.g., `ai:sync-gitlab`)
-
-### Optional Sub-task 6: Memory Core integration validation
-
-- Verify GitLab tickets/MRs ingest cleanly into Memory Core graph
-- Verify A2A flows work end-to-end with GitLab-side artifact references (commentIds, MR review IDs)
-- Verify Knowledge Base ingestion picks up GitLab-sourced markdown without special-case logic
-
-If Memory Core integration "just works" via the substrate-agnostic patterns (which it should — `add_message` + `add_memory` are forge-agnostic), this sub-task closes via empirical-test rather than implementation.
-
-## Acceptance Criteria
-
-- [ ] **AC1:** `ai/mcp/server/gitlab-workflow/server.mjs` + `openapi.yaml` + `config.template.mjs` exist and mirror the `github-workflow` shape
-- [ ] **AC2:** `ai/services/gitlab-workflow/api/GitLabClient.mjs` implements REST + GraphQL methods for Issues + MRs with PAT auth
-- [ ] **AC3:** `IssueSyncer` + `MergeRequestSyncer` + `LocalFileService` implemented in `ai/services/gitlab-workflow/`
-- [ ] **AC4:** All services consume `ai/services/github-workflow/shared/contentPath.mjs` directly (NO duplication of path math; the universal ordinal-100 helper IS provider-agnostic per ADR 0004 §1.3)
-- [ ] **AC5:** Folder shape under `resources/content/gitlab/...` matches ADR 0004 §2.1 universal ordinal-100 pattern with `gitlab/` namespace prefix
-- [ ] **AC6:** Test coverage parity with `github-workflow` for the equivalent surface area (IssueSyncer + MergeRequestSyncer + LocalFileService + MCP-server-smoke)
-- [ ] **AC7:** Config + auth integration: env-var bindings, gitignore, `worktree-bootstrap.mjs` updated
-- [ ] **AC8:** Docs in `learn/agentos/` cover PAT setup + host configuration + how a client-project deployment points at a specific GitLab instance
-- [ ] **AC9:** Memory Core + Knowledge Base integration validated empirically (ingestion of GitLab markdown to KB, A2A flows with GitLab artifact refs)
-- [ ] **AC10:** Neo's own development continues to use `github-workflow` exclusively — `gitlab-workflow` is opt-in via client-project-specific config + env-vars; no Neo-internal coordination uses it.
+1. **Real `LocalFileService` & Markdown Syncers (`ai/services/gitlab-workflow/`):**
+   - Replace the stub in `ai/services/gitlab-workflow/LocalFileService.mjs:1-43` (currently returning `{status: 'scaffolded', tool: 'get_local_issue_by_id'}`) with real file I/O under `resources/content/gitlab/{issues,merge-requests,archive}/` using the universal ordinal-100 path math (`ai/services/github-workflow/shared/contentPath.mjs` and current `ai/services/github-workflow/sync/{IssueSyncer,PullRequestSyncer,MetadataManager}.mjs` patterns).
+   - Implement `IssueSyncer` and `MergeRequestSyncer` (plus unit specs `LocalFileService.spec.mjs`, `IssueSyncer.spec.mjs`, `MergeRequestSyncer.spec.mjs`).
+2. **Package Script, Client Deployment Docs & Live Validation:**
+   - Add package/script wiring and `learn/agentos/` documentation for pointing `gitlab-workflow` at a client GitLab instance (`NEO_GITLAB_HOST`, `NEO_GITLAB_TOKEN`, `projectPath`).
+   - Validate Knowledge Base ingestion of synced GitLab markdown and A2A artifact references end-to-end while keeping Neo's own development exclusively on `github-workflow`.
 
 ## Out of Scope
 
-- **GitLab Discussions / Wiki / Snippets**: no analog to GitHub Discussions tab; not in this epic's scope. If client project needs them, file separate follow-up tickets.
-- **GitLab Pipelines / CI integration**: separate domain (CI orchestration is its own substrate; not part of "tickets + MRs" parity scope).
-- **Shared-base-class extraction** between `github-workflow` and `gitlab-workflow`: explicitly rejected per the architectural-decision commitment above. If empirical duplication surfaces post-implementation (e.g., 3+ sites of >50 lines each), file follow-up substrate-evolution ticket.
-- **Replacing Neo's internal `github-workflow` usage**: Neo continues using GitHub as forge; `gitlab-workflow` exists for external client deployments only.
-- **OIDC / OAuth2.1 / SSO integration** beyond PAT-based auth: optional Sub-task; gate on client-project requirement. Initial scope is PAT-only.
+- **GitLab Discussions / Wiki / Snippets / Pipelines:** Scoped strictly to issues and merge requests.
+- **Shared base-class extraction between `github-workflow` and `gitlab-workflow`:** Parallel sibling services sharing pure helpers (`contentPath.mjs`) remain the canonical pattern.
+- **Replacing Neo's internal `github-workflow` usage:** `gitlab-workflow` is opt-in for client-project deployments only.
 
 ## Avoided Traps
 
-- **Pre-designing the shared-base-class abstraction**: rejected. Per Neo's KB + MC sibling-server precedent + ADR 0001 single-writer pattern, parallel-substrate-with-shared-helpers is the canonical shape. Pre-design adds cognitive load without empirical demand.
-- **Mapping GitHub Discussions to GitLab MR comments**: rejected as scope-creep. No semantic equivalence; if client project needs threaded discussion, file separately.
-- **Adding `gitlab-workflow` to Neo's daemon orchestrator**: rejected. Daemon orchestration is Neo-internal substrate; `gitlab-workflow` is opt-in client-project substrate. Different lifecycle classes.
-- **Pre-filing all 5 sub-issues at epic-creation time**: rejected as backlog-pollution. Sub-issues file as agents claim them per `ticket-create-workflow.md §10` chained-call pattern. The epic body's task enumeration is the durable substrate; sub-issues materialize on demand.
-- **Treating this as "external substrate not in Neo"**: rejected per operator-stated framing 2026-05-15. *"create the mcp server and services (and testing) inside neo, but only use it for the client project."* The substrate is Neo's; the deployment is client-side via env-var/config.
+- **Pre-designing a shared forge base class:** Diverging GraphQL/REST shapes between GitHub and GitLab make forced inheritance higher cost than parallel sibling services.
+- **Adding `gitlab-workflow` to Neo's default daemon orchestrator:** Client-project forge sync is opt-in per deployment, not a default Neo-internal daemon lane.
+- **Hardcoding a static sub-issue checklist in the Epic body:** Sub-issues are linked via native GitHub relationships as they are claimed (`epic-create`).
 
 ## Related
 
-- **Substrate precedent**: `ai/mcp/server/github-workflow/` + `ai/services/github-workflow/` — full-feature parallel substrate.
-- **Sibling parallel-substrate pattern**: `ai/mcp/server/knowledge-base/` + `ai/mcp/server/memory-core/` — also parallel sibling servers; same architectural pattern.
-- **Foundational substrate (provider-agnostic)**: `ai/services/github-workflow/shared/contentPath.mjs` (PR neomjs/neo#11381, merged 2026-05-15T08:19:41Z).
-- **Strategic anchor**: ADR 0004 §1.3 Regeneratable-Cache Strategic Principle (PR neomjs/neo#11401, merged 2026-05-15T08:25:15Z) — generalizes to GitLab-as-source-of-truth verbatim.
-- **Substrate-evolution-guard anchors**: ADR 0004 §2.6 Clean-Cut Pattern + §5.6 Deprecation-theater anti-pattern (PR neomjs/neo#11398, merged 2026-05-15T08:23:55Z) — apply to any future `gitlab-workflow` substrate evolution.
-- **Empirical velocity anchor**: this epic is scoped to closeable inside ~1 calendar day with 3-agent focus per operator velocity-calibration 2026-05-15 (~20-30 PRs/day swarm throughput observed during this nightshift session arc).
+- Shipped slices: `neomjs/neo#11768` (`neomjs/neo#11773`), `neomjs/neo#12624` (`neomjs/neo#12625`, `0e8e4008b4`), `neomjs/neo#12631` (`neomjs/neo#12653`, `21568f609a`), `neomjs/neo-agent-brain#1265` (`#1266`).
+- Sibling substrate: `ai/mcp/server/github-workflow/` + `ai/services/github-workflow/sync/`.
 
 ## Origin Session
 
 - Origin Session ID: `b8a152e1-a41c-49aa-8196-8e5d2eba84ca`
-- Operator-direction A2A: 2026-05-15 nightshift conversation — *"my take would be: create the mcp server and services (and testing) inside neo, but only use it for the client project."*
 
 ## Retrieval Hint
 
-Search for `GitLab workflow MCP server epic parallel-substrate IssueSyncer MergeRequestSyncer contentPath universal ordinal-100 client project`.
+Search for `GitLab workflow MCP server epic parallel-substrate IssueSyncer MergeRequestSyncer LocalFileService contentPath universal ordinal-100 client project`.
 
 
 ## Timeline
@@ -281,4 +182,26 @@ Origin Session ID: dbb1a88c-987f-4519-9645-8f13e9d71000
 - 2026-08-26T15:18:57Z @tobiu added sub-issue #11768
 - 2026-10-15T11:16:21Z @neo-opus-vega cross-referenced by #1047
 - 2026-10-15T11:16:23Z @neo-opus-vega cross-referenced by #1048
+- 2026-11-02T02:25:56Z @neo-fable-mnemosyne cross-referenced by #1425
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-julia - 2026-11-02T19:08:38Z
+
+### Premise Read & Verdict (`#1438` Backlog Sweep — `fleet / FM / seat`)
+
+**Verdict:** **Rewrite in Place (update Epic body to `epic-create` format reflecting shipped `GitLabClient` / `IssueService` / `MergeRequestService` and remaining `LocalFileService` / syncer scope)**
+
+- **Empirical Evidence on `origin/dev` (`d7ca4cdb`):**
+  - **Already shipped on `origin/dev`:**
+    1. `ai/mcp/server/gitlab-workflow/{Server.mjs,mcp-server.mjs,toolService.mjs,configBase.mjs,config.template.mjs,openapi.yaml,server.json}` (`neomjs/neo#11768` / PR `neomjs/neo#11773` + registry manifest in `brain#1265`/`#1266`).
+    2. `ai/services/gitlab-workflow/GitLabClient.mjs`, `IssueService.mjs`, `queries/{issueQueries,mutations}.mjs`, and `test/playwright/unit/ai/services/gitlab-workflow/{GitLabClient,IssueService}.spec.mjs` (`neomjs/neo#12624` / PR `neomjs/neo#12625`, `0e8e4008b4`).
+    3. `ai/services/gitlab-workflow/MergeRequestService.mjs`, `queries/{mrQueries,mrMutations}.mjs`, and `test/playwright/unit/ai/services/gitlab-workflow/MergeRequestService.spec.mjs` (`neomjs/neo#12631` / PR `neomjs/neo#12653`, `21568f609a`).
+  - **Remaining unbuilt scope:**
+    1. `ai/services/gitlab-workflow/LocalFileService.mjs:1-43` is still a stub returning `{status: 'scaffolded', tool: 'get_local_issue_by_id'}`.
+    2. GitLab markdown syncers (`IssueSyncer`, `MergeRequestSyncer`) and their unit specs.
+    3. Package/docs wiring and live Knowledge Base / Memory Core validation.
+- Rewrote the Epic body in place (`epic-create` format, removing the stale hardcoded subtask/AC checklist) to reflect the shipped baseline and remaining scope.
+
+🏛️ **Julia** (`@neo-gemini-julia`) · Session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
+
 

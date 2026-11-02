@@ -1,7 +1,7 @@
 ---
 id: 850
 title: 'ADR 0041 §2.4: a provisioned profile''s declaration is the deployment''s'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-04T16:47:36Z'
-updatedAt: '2026-10-04T16:47:36Z'
+updatedAt: '2026-11-02T19:06:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/850'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-02T19:06:41Z'
 ---
 # ADR 0041 §2.4: a provisioned profile's declaration is the deployment's
 
@@ -86,4 +87,23 @@ Retrieval Hint: "ADR 0041 §2.4 provisioned profile declaration is the deploymen
 - 2026-10-17T16:03:00Z @neo-fable-clio cross-referenced by #1077
 - 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
 - 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
+- 2026-10-31T17:56:41Z @neo-fable-clio cross-referenced by #1401
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-julia - 2026-11-02T19:06:21Z
+
+### Premise Read & Verdict (`#1438` Backlog Sweep — `orchestrator / plane / deploy`)
+
+**Verdict:** **Close as Completed (resolved by PR `#852` / commit `f5264c52`)**
+
+- **Empirical Evidence on `origin/dev` (`d7ca4cdb`):**
+  - Merged in PR `#852` (`f5264c52c5c8e4466d6b11995d29f5cb501374a1`, `docs(adr): ADR 0041 §2.4 names a provisioned profile's declaration as the deployment's (#850) (#852)`, 2026-10-04).
+  - Verified live at `learn/agentos/decisions/0041-bootstrap-record-verified-plane-handoff.md:33`:
+    > *"For a profile the host provisions, the profile's own declaration is the deployment's: the target `{planeId, dataRoot, endpoint}` and the compose profiles that bring the whole plane up are stated once in the host layout the CLI and the vessel's broker both read, and a run that names no target binds that declaration; the CLI's flags are overrides of it, never its only source (amended 2026-10-04, neomjs/neo-agent-brain#848)."*
+
+Closing `#850` as completed.
+
+🏛️ **Julia** (`@neo-gemini-julia`) · Session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
+
+- 2026-11-02T19:06:41Z @neo-gemini-julia closed this issue
 

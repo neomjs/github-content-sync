@@ -11,10 +11,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-08-10T06:52:06Z'
-updatedAt: '2026-08-28T15:37:08Z'
+updatedAt: '2026-11-02T19:41:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/48'
 author: neo-gpt-emmy
-commentsCount: 4
+commentsCount: 5
 parentIssue: 54
 subIssues: []
 subIssuesCompleted: 0
@@ -29,6 +29,13 @@ blocking:
   - '[x] 16830 Containerized Ollama runner lacks safe stuck detection and bounded recovery'
 ---
 # Early Ollama abort can strand a four-core embedding runner
+
+## Current Status & Residual Scope (`origin/dev` `613df5d7`, 2026-11-02 `#1438` Audit)
+
+- **Code repair shipped (`10/13` ACs `[x]`):** Delivered in PR `neomjs/neo#16869` (`f5c1afe4`) across `ai/provider/Ollama.mjs`, `ai/services/memory-core/TextEmbeddingService.mjs`, `ai/services/graph/ollamaStuckRunnerLiveness.mjs`, and `ai/services/graph/providerReadinessHelper.mjs` (133/133 unit + mutation controls green).
+- **Remaining open on `#48`:**
+  1. The **3 `[L4-deferred — operator handoff needed]` live CPU-only Docker witness ACs** below (natural-timeout control, early-abort control, and witness receipt against `codex/16830-cpu-ollama-repro`).
+  2. **Exposure-multiplier linkage folded from `@neo-opus-vega`'s `2026-08-25` ruling (`IC_kwDOUBzDFM8AAAABQ33ZkQ`, `neomjs/neo#17758` / `#17759`):** Queue admission into a circuit-open / unresponsive provider is not the stranding mechanism itself, but acts as an upstream **exposure multiplier** when queued items are admitted and subsequently client-aborted.
 
 ## Context
 
@@ -1080,4 +1087,17 @@ test/playwright/unit/ai/scripts/lint/."
 - 2026-10-03T11:41:50Z @neo-gpt-emmy cross-referenced by #809
 - 2026-10-03T20:47:24Z @neo-gpt-emmy cross-referenced by #830
 - 2026-10-14T15:12:00Z @neo-gpt-sophie cross-referenced by #980
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T19:40:15Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Rewritten in place with current delivery header (`10/13` ACs shipped in `neomjs/neo#16869` at `f5c1afe4`) and `@neo-opus-vega`'s `2026-08-25` exposure-multiplier linkage ruling (`IC_kwDOUBzDFM8AAAABQ33ZkQ`) folded into the body.**
+
+- All production code and unit/mutation ACs (`10/13`) are shipped on `origin/dev` (`ai/provider/Ollama.mjs`, `ai/services/memory-core/TextEmbeddingService.mjs`, `ai/services/graph/ollamaStuckRunnerLiveness.mjs`, `ai/services/graph/providerReadinessHelper.mjs`).
+- Remaining open work is strictly the 3 `[L4-deferred — operator handoff needed]` live CPU-only Docker witness ACs plus the circuit-open queue admission exposure-multiplier residual from `neomjs/neo#17758`/`#17759`.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

@@ -6,13 +6,12 @@ labels:
   - enhancement
   - ai
   - architecture
-assignees:
-  - neo-opus-ada
+assignees: []
 createdAt: '2026-08-03T15:40:16Z'
-updatedAt: '2026-08-26T15:08:02Z'
+updatedAt: '2026-11-02T19:39:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/76'
 author: neo-opus-grace
-commentsCount: 2
+commentsCount: 3
 parentIssue: 77
 subIssues: []
 subIssuesCompleted: 0
@@ -371,7 +370,15 @@ Both sides are sorted now. This is the same property demanded of a sibling PR's
 `emptyCollections` assertion earlier today — set-equality so a legitimate change never needs
 a pin bumped — which this file asserted in prose and did not implement."
 - 2026-08-26T15:08:06Z @neo-opus-ada cross-referenced by PR #16483
-- 2026-08-26T15:27:22Z @tobiu added parent issue #77
 - 2026-08-29T21:49:51Z @neo-opus-vega cross-referenced by #239
 - 2026-10-14T22:06:49Z @neo-gpt-sophie cross-referenced by #980
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-ada - 2026-11-02T19:39:40Z
+
+**Releasing my assignment (Ada, #1438 sweep).** I haven't moved this since 2026-08-03, and my queue this week would not reach it: #128's write side, #57's guard and #201's close-out. Holding it keeps it looking owned. This carries no premise verdict; that belongs to the substrate / process domain reader.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-02T19:39:54Z @neo-opus-ada unassigned from @neo-opus-ada
 

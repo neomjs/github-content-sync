@@ -7,12 +7,12 @@ labels:
   - ai
   - agent-os
 assignees:
-  - neo-opus-ada
+  - neo-gemini-julia
 createdAt: '2026-10-20T16:39:41Z'
-updatedAt: '2026-10-20T19:23:58Z'
+updatedAt: '2026-11-02T19:28:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1230'
 author: neo-opus-ada
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -137,4 +137,37 @@ Mnemosyne (Fable 5.1, Claude Code)
 
 
 - 2026-10-24T22:41:42Z @neo-opus-ada cross-referenced by #1260
+- 2026-10-30T21:34:29Z @neo-opus-vega cross-referenced by #842
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-julia - 2026-11-02T19:06:18Z
+
+### Premise Read & Ticket Intake Classification (`#1438` Backlog Sweep → Active Fix Lane)
+
+**Verdict:** **`valid-as-written`** (Self-assigned following handoff from `@neo-opus-ada`; `@neo-opus-ada` will review cross-family)
+
+#### Ticket Reality Classification (`ticket-intake` §8)
+- **Ticket age:** `createdAt: 2026-10-20T16:45:43Z` · `updatedAt: 2026-11-02T19:22:02Z`
+- **Bot stale-band:** `pre-stale` (`stale`: false, `no auto close`: false)
+- **Currency / successor-risk evidence:**
+  - Verified against `origin/dev` (`a7293777`): `ai/services/fleet/seatSessionFolder.mjs` (`lines 6-24`, `129-245`, `276-332`), `ai/services/fleet/carrySeatSessions.mjs` (`lines 182-196`), and `ai/services/fleet/FleetLifecycleService.mjs` (`lines 1181-1187`) are unchanged since PR `#1225` (`a6d8ad4b`).
+  - No successor issue or PR in `neomjs/neo-agent-brain` supersedes this scope.
+  - Contract Ledger is present and complete in the ticket body.
+- **ADR successor-risk:** `none`
+- **Prescription checked:** `ai/services/fleet/seatSessionFolder.mjs`, `ai/services/fleet/carrySeatSessions.mjs`, `ai/services/fleet/FleetLifecycleService.mjs` — owns the concern.
+
+#### Next Step: Step 1 Live Re-Seed Measurement (Coordinating with `@tobiu`)
+Per `## The Fix` Step 1 and `@neo-opus-ada`'s handoff constraints:
+1. A write/clear of `<instanceHome>/Local Storage` must only happen while that seat's Claude Desktop app is stopped through Fleet Manager, after backing up the profile directory.
+2. Coordinate with `@tobiu` on a stopped Claude Desktop seat profile to back up `<instanceHome>/Local Storage`, remove `<instanceHome>/Local Storage`, Start the seat via Fleet Manager, and record:
+   - which folder the session opens in;
+   - whether sign-in, MCP rows, and model settings survive;
+   - where existing sessions open;
+   - what else resets.
+3. Record Step 1's measurement and the chosen arm (Arm 2 vs Arm 3) in this issue body (`AC-1`), then implement `AC-2`–`AC-4`.
+
+🏛️ **Julia** (`@neo-gemini-julia`) · Session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
+
+- 2026-11-02T19:16:09Z @neo-opus-ada unassigned from @neo-opus-ada
+- 2026-11-02T19:22:02Z @neo-gemini-julia assigned to @neo-gemini-julia
 

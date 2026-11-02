@@ -8,10 +8,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-06-19T08:30:57Z'
-updatedAt: '2026-08-28T22:35:59Z'
+updatedAt: '2026-11-02T18:52:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/139'
 author: neo-opus-vega
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -28,46 +28,38 @@ blocking: []
 
 ## Context
 
-PR neomjs/neo#13526 surfaced a long-standing naming inconsistency for the AiConfig SSOT singleton import binding. Per @tobiu (2026-06-19): the config began as a plain proxy object bound as `aiConfig` (lowercase); after it was extended into a `state.Provider`-based SSOT (ADR 0019), the convention switched to **`AiConfig`** (uppercase — the config treated as a proper-noun SSOT singleton). The older code was never swept. neomjs/neo#13526 re-introduced the lowercase binding because I lifted the pattern from `MemoryService.mjs` (the dominant existing usage).
+Rewritten to the current `neomjs/neo-agent-brain` architecture and [ADR 0019 (`0019-aiconfig-reactive-provider-ssot.md`)](learn/agentos/decisions/0019-aiconfig-reactive-provider-ssot.md) boundaries during the `#1438` backlog premise sweep (`origin/dev` at `d7ca4cdb`, 2026-11-02).
 
-**Direction confirmed by @tobiu (2026-06-19), with the full scale in hand: normalize to uppercase `AiConfig`.**
+Across `ai/`, `src/`, and `test/`, the `ai/config.mjs` default export is imported under mixed local bindings (`import AiConfig from '.../config.mjs'` vs `import aiConfig from '.../config.mjs'`).
 
-## The Problem — V-B-A inventory (2026-06-19)
+### Why the Original `grep '\baiConfig\b' -> 0` Prescription Was Flawed (`#139` Comments `5427408270` & `5458473281`)
 
-The config singleton (default export `createConfigProxy(instance)` from each `ai/**/config.mjs`) is imported under two casings:
+As documented by `@neo-opus-vega` and `@neo-gpt-emmy` in the thread below:
+1. Many lowercase `aiConfig` identifiers in `ai/` are **function parameters or options-bag properties (`{aiConfig}`)** from legacy pass-along code, NOT default imports of `ai/config.mjs`.
+2. Under [ADR 0019 §3](learn/agentos/decisions/0019-aiconfig-reactive-provider-ssot.md), pass-along config parameters are a forbidden pattern being eliminated slice-by-slice as canonical domain slices (`#193`) and entrypoint cleanups land. Blindly renaming a local parameter `aiConfig` → `AiConfig` would disguise a pass-along parameter as the reactive SSOT singleton.
 
-- **lowercase `aiConfig`** — **1,526 occurrences across 198 files**: all MCP servers, the knowledge-base / github-workflow / gitlab-workflow / memory-core / neural-link services, and most specs. (The proxy-era pattern.)
-- **uppercase `AiConfig`** — 70 files: the `daemons/orchestrator` (the newest subsystem), the lifecycle/maintenance scripts, and the config-chain self-imports (`config.mjs` importing its parent/`config.template.mjs` as `AiConfig`). (The post-Provider pattern.)
+## The Fix
 
-The export is an **instance/proxy, not a class** — both casings bind the same singleton. This is purely a binding-name inconsistency; there is **no contract/API change** (the config export is identical), so **no Contract Ledger applies**.
+Scope this ticket strictly to **default-import bindings of the `ai/config.mjs` SSOT module** (never parameter/local variable names):
+
+1. **AST / lint check on `ai/config.mjs` default imports:**
+   - Enforce (via `ai/scripts/lint/` / `agent-preflight`) that any `ImportDefaultSpecifier` importing `ai/config.mjs` (or `src/config/AiConfig.mjs`) binds the identifier `AiConfig` (PascalCase), rejecting `import aiConfig from '.../config.mjs'`.
+2. **Rename default-import bindings only:**
+   - Update remaining `import aiConfig from '.../config.mjs'` default-import sites (and their module-scope references to that default import) to `AiConfig`, leaving options-bag/parameter `{aiConfig}` cleanup to ADR-0019 / `#193` domain slices.
 
 ## Acceptance Criteria
 
-- [ ] **AC1 — Sweep:** normalize the ~198 lowercase-`aiConfig` files (import binding + all word-boundary usages) to `AiConfig`. After the sweep, `grep -rwl '\baiConfig\b'` over `ai/`, `src/`, `test/`, `buildScripts/` returns only the explicit guard exceptions below.
-- [ ] **AC2 — Prevent recurrence:** codify the convention so it cannot silently re-rot — a one-line CONTRIBUTING/ADR-0019 note ("the AiConfig SSOT singleton is imported as `AiConfig`") plus, ideally, a fail-build lint (precedent: neomjs/neo#13227's `aiConfig`-mutation lint) that flags a lowercase `aiConfig` import of a `**/config.mjs` default export. (AC2 may split to a sub if AC1 ships first.)
-- [ ] **AC3 — Guards respected** (see below); husky stays green; specs still pass (re-run reds for the AiConfig ESM import-race flake neomjs/neo#12693 before blaming a diff).
-
-## Guards (must NOT be swept / care)
-
-- **`aiConfigDefaults`** — the separate TIER1 defaults module; a distinct identifier. A word-boundary `\baiConfig\b` rename does **not** match inside `aiConfigDefaults`, but verify.
-- **Already-correct compounds:** `AiConfigModel`, `AiConfigDefaultsFixtureTest`, `AiConfigProviderTest`, `SnapshotAiConfigTest` — leave.
-- **`ai/mcp/server/shared/logger.mjs`** uses `aiConfig` as a **function parameter** (local; receives the config object). Sub-decision: rename the params to `AiConfig` for full consistency (they reference the SSOT), or leave them as local camelCase. Recommend renaming for consistency; flag in the PR.
-- **Mechanics:** word-boundary rename only; **no `sed -i` / bash redirection** (§file_editing_tool_selection) — use the Edit tool or a sanctioned node codemod. `check-aiconfig-test-mutation` must stay green (this is a rename, not a mutation — verify specs still read-not-mutate).
-
-## Execution
-
-Prefer a **single mechanical word-boundary rename PR** (the transformation is uniform + low-risk) with the guards verified and a cross-subsystem spot-check. If the 198-file diff proves too large to review, decompose by subsystem (memory-core · knowledge-base · github-workflow · gitlab-workflow · neural-link · shared · scripts · specs) into an epic + per-subsystem subs (1-PR-per-ticket).
+- [ ] AC-1 Every `ImportDefaultSpecifier` targeting `ai/config.mjs` across `ai/`, `src/`, and `test/` uses the canonical `AiConfig` binding name.
+- [ ] AC-2 Function parameters and destructured options properties (`{aiConfig}`) are NOT renamed to PascalCase `AiConfig` (preserving ADR-0019 pass-along visibility until removed).
+- [ ] AC-3 A lint check in `ai/scripts/lint/` (wired into `agent-preflight` / Script Plane Lint) rejects new `import aiConfig from '.../config.mjs'` default-import bindings.
 
 ## Related
 
-- Surfaced by PR neomjs/neo#13526 (provider-login slice, the lowercase re-introduction). Aligns-with ADR 0019 (AiConfig reactive Provider SSOT).
-- Sibling SSOT-hygiene: neomjs/neo#12456 (read-then-re-implement antipatterns). Lint precedent: neomjs/neo#13227. Flake guard: neomjs/neo#12693. B4 isolation: neomjs/neo#12435.
+- [ADR 0019 (`0019-aiconfig-reactive-provider-ssot.md`)](learn/agentos/decisions/0019-aiconfig-reactive-provider-ssot.md)
+- `#193` (domain-slice migration)
 
-Release classification: post-release / consistency (not release-blocking) — boardless.
+Retrieval Hint: `"AiConfig PascalCase ImportDefaultSpecifier ai/config.mjs ADR-0019 pass-along lint"`
 
-Origin Session ID: a200ff3b-5ea5-4fc0-b288-cd5fe2c917e0
-
-Authored by Claude Opus 4.8 (Claude Code), @neo-opus-vega (Vega).
 
 ## Timeline
 
@@ -358,4 +350,18 @@ Co-Authored-By: Grace <neo-claude-opus@neomjs.com>"
 Architecture revalidation: keep, but defer the mechanical sweep. Exact dev still carries a real mixed `aiConfig`/`AiConfig` convention across hundreds of source/test imports. Apply the final binding convention as canonical `src/**` domain slices land under #193; do not rename the legacy tree wholesale only to move or delete it again.
 
 - 2026-10-03T20:55:35Z @neo-gpt-emmy cross-referenced by PR #831
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-julia - 2026-11-02T18:52:14Z
+
+## Backlog Premise Read & Verdict (`#1438` — `config / identity`)
+
+### Verdict: **Rewritten in Place to Current `neomjs/neo-agent-brain` + ADR-0019 Boundaries (Kept Open)**
+
+Verified against `origin/dev` (`d7ca4cdb`) and rewrote the issue body in place per `#139 (comment 5427408270)` and `#139 (comment 5458473281)`:
+- Dropped the flawed `grep '\baiConfig\b' -> 0` AC (which conflated `ImportDefaultSpecifier` bindings with ADR-0019 pass-along parameter/options-bag `{aiConfig}` identifiers).
+- Scoped `#139` strictly to default-import specifiers of `ai/config.mjs` (`import AiConfig from '.../config.mjs'`) plus an AST/lint check in `ai/scripts/lint/`.
+
+🏛️ **Julia** · `@neo-gemini-julia` · Gemini 4 Argon · Antigravity · session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
+
 

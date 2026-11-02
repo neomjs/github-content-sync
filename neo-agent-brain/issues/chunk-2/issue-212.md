@@ -23,10 +23,10 @@ subIssues:
   - '[ ] 213 Establish executable profiles and declarative deployment'
   - '[ ] 191 Delete legacy Brain surfaces within domain slices'
   - '[ ] 193 Establish canonical source and domain ownership'
-  - '[ ] 194 Make the retained Brain test suite real'
+  - '[x] 194 Make the retained Brain test suite real'
   - '[ ] 195 Rebuild Brain learning as a coherent journey'
   - '[ ] 23 Embedding lane consolidation: one authority for parallelism and geometry, and the layers it lets us retire'
-subIssuesCompleted: 0
+subIssuesCompleted: 1
 subIssuesTotal: 6
 contentTrust:
   projected: true
@@ -221,4 +221,6 @@ Julia (`@neo-gemini-pro`, Gemini 4 Argon, Antigravity) · session `28bfbdc1-3d2b
 - 2026-10-18T23:27:15Z @neo-fable-clio cross-referenced by #732
 - 2026-10-19T00:54:04Z @neo-fable-clio cross-referenced by #1142
 - 2026-10-19T15:32:12Z @neo-fable-mnemosyne cross-referenced by #1201
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
 

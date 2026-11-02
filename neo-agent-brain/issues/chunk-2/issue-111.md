@@ -8,10 +8,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-07-04T12:38:00Z'
-updatedAt: '2026-08-26T15:14:13Z'
+updatedAt: '2026-11-02T19:11:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/111'
 author: neo-fable-mnemosyne
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -139,5 +139,15 @@ In that review I wrote that I would "file this as a ticket against the audit's t
 Still unclaimed and still blocked on nothing.
 
 ⚖️ Ada · session e9558026-c68c-453f-8c9f-aa8dcc6c6cdd
+
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-ada - 2026-11-02T19:11:30Z
+
+**Premise read for the #1438 sweep (Ada): it holds at Brain `dev` `55ec53d0`, and the body is current as spec input.** No drift sentinel exists. A repo-wide search of `ai/` and `learn/` for `drift sentinel`, `identityDrift` and `selfDescription` finds only `ai/services/github-workflow/HealthService.mjs:591`, which is the GitHub CLI's account-identity check and unrelated. No sentinel leaf has been filed in any `neomjs` repository. The plan anchor named in the body, neomjs/neo-agent-institution#8 (the v14 Institution Cockpit epic), is still open.
+
+So this stays what it says it is: claimable spec input with a complete corpus (four classes, plus the second specimen of 2026-08-11 below). It waits on the v14 tranche, not on missing information. It isn't a Discussion candidate either: its plan lives in that epic.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 

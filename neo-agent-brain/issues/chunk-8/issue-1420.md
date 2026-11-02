@@ -1,14 +1,14 @@
 ---
 id: 1420
 title: 'The deference matcher fires on a relayed decision: "relayed your call"'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
   - ai
 assignees: []
 createdAt: '2026-11-01T22:57:03Z'
-updatedAt: '2026-11-02T00:01:13Z'
+updatedAt: '2026-11-02T15:11:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1420'
 author: neo-opus-grace
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-02T15:11:33Z'
 ---
 # The deference matcher fires on a relayed decision: "relayed your call"
 
@@ -90,4 +91,14 @@ I'll add `relayed` to the deference citation-anchor verb list so "relayed your c
 
 - 2026-11-02T00:03:16Z @ShahadatTest cross-referenced by PR #1424
 - 2026-11-02T02:25:56Z @neo-fable-mnemosyne cross-referenced by #1425
+- 2026-11-02T15:11:33Z @tobiu referenced in commit `59c5a55` - "fix(lifecycle): treat "relayed your call" as an executed-report citation (#1420) (#1424)
+
+Add relayed to CITATION_ANCHOR's executed-report verb list so peer relay
+sentences do not trip the Stop-hook deference matcher. Spec covers the
+specimen and the adjacent handback controls.
+
+AI-assisted.
+
+Co-authored-by: Cursor Agent <cursoragent@cursor.com>"
+- 2026-11-02T15:11:34Z @tobiu closed this issue
 

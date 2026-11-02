@@ -1,17 +1,17 @@
 ---
 id: 50
 title: Wake delivery over the ingress for clients without host-reachable listeners
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-fable-clio
 createdAt: '2026-08-08T19:56:57Z'
-updatedAt: '2026-08-26T15:05:09Z'
+updatedAt: '2026-11-02T19:38:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/50'
 author: neo-fable-clio
-commentsCount: 8
+commentsCount: 9
 parentIssue: 83
 subIssues:
   - '[x] 16800 Wake poll-digest verb on manage_wake_subscription (S7 slice 1)'
@@ -27,6 +27,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 17 Harness demotion — dissolve loadFleetRuntimeContracts; FM stops supervising the organism'
+closedAt: '2026-11-02T19:38:16Z'
 ---
 # Wake delivery over the ingress for clients without host-reachable listeners
 
@@ -266,8 +267,6 @@ The operator's challenge on PR neomjs/neo#16796 ("we already use webhooks to MC 
 - 2026-08-26T15:06:00Z @tobiu added sub-issue #17100
 - 2026-08-26T15:06:00Z @tobiu added sub-issue #17102
 - 2026-08-26T15:06:00Z @tobiu added sub-issue #17101
-- 2026-08-26T15:09:28Z @tobiu added parent issue #83
-- 2026-08-27T11:09:36Z @neo-fable-clio marked this issue as blocking #17
 - 2026-08-29T21:56:42Z @tobiu cross-referenced by #240
 - 2026-09-04T20:27:13Z @neo-fable-clio cross-referenced by #314
 - 2026-09-05T00:48:45Z @neo-fable-clio cross-referenced by #323
@@ -300,4 +299,26 @@ The operator's challenge on PR neomjs/neo#16796 ("we already use webhooks to MC 
 - 2026-10-17T16:03:00Z @neo-fable-clio cross-referenced by #1077
 - 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
 - 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
+- 2026-10-30T02:43:27Z @neo-opus-vega cross-referenced by #1373
+- 2026-10-31T17:56:41Z @neo-fable-clio cross-referenced by #1401
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T19:38:14Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Close (`completed` — all three slices shipped on `dev`).**
+
+Verified against `origin/dev` (`613df5d7`):
+1. **Slice 1 — Authenticated derive-at-read `poll-digest` over MCP ingress (`neomjs/neo#16741` / PR `neomjs/neo#16796`, `95a8c0099a`):**
+   - `ai/services/memory-core/WakeSubscriptionService.mjs:522,2052-2126` (`pollDigest`) and `ai/mcp/server/memory-core/openapi.yaml:3250,3263` (`action: 'poll-digest'`) derive the caller's wake digest at read time over client-tracked `sinceLogId` watermarks without requiring a host-reachable listener.
+   - `ai/daemons/wake/armSeatWakePull.mjs:10` and `ai/scripts/lifecycle/hooks/claude/wakeListenerHook.mjs:261` wire seat-side pull-route arming and `poll-digest` consumption.
+2. **Slice 2 — Observational `lastPollAt` pull-route telemetry (`neomjs/neo#17102` / PR `neomjs/neo#17119`, `337d73a0dd`):**
+   - `ai/services/memory-core/WakeSubscriptionService.mjs:1826` and `openapi.yaml:3250` stamp observational `lastPollAt` on each authenticated poll and expose redacted pull-route recency via `fleet-identities` while keeping the plane cursor-stateless.
+3. **Slice 3 — Composed `fleet-server` push + SSE fan-out with `poll-digest` catch-up (`11552b08`, `7f22b0a4` `#897`):**
+   - `ai/services/fleet/fleetServer.mjs:402-535,870,1101-1120` (`GET /fleet/events`, `POST /fleet/events/digest`, `pollDigestForViewer`), `ai/services/fleet/fleetWakeFanout.mjs:387`, `ai/services/fleet/fleetWakeReceiver.mjs:137`, and `ai/services/fleet/fleetWakeSseConsumer.mjs:8-305` (`resolveDeliveryLiveness`) deliver the push-for-latency + `poll-digest`-for-truth remote cockpit wake architecture.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
+- 2026-11-02T19:38:16Z @neo-gemini-maryam closed this issue
 

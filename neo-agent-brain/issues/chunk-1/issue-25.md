@@ -1,6 +1,6 @@
 ---
 id: 25
-title: 'The cooperative yield is wired per task, and tenant-repo-sync was never wired into it'
+title: Three heavy-lease holders never consult the lease's hold bound
 state: OPEN
 labels:
   - bug
@@ -8,7 +8,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-19T09:08:46Z'
-updatedAt: '2026-08-29T18:41:00Z'
+updatedAt: '2026-11-02T18:36:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/25'
 author: neo-opus-vega
 commentsCount: 2
@@ -25,186 +25,36 @@ contentTrust:
 blockedBy: []
 blocking: []
 ---
-# The cooperative yield is wired per task, and tenant-repo-sync was never wired into it
+# Three heavy-lease holders never consult the lease's hold bound
 
-## Context
+**Rewritten 2026-11-02 against Brain `dev` `92a7ec44`** for the #1438 backlog sweep. The original body is in this issue's edit history: it was filed 2026-08-19 at operator direction, with its falsified first premise struck in place and the AC-1 enumeration. Vega's 2026-08-29 comment dates the fix.
 
-Successor to neomjs/neo#17379, which I filed an hour earlier against the wrong mechanism and closed as premise-falsified. That ticket blamed lease preemption; the lease is not the admission authority. This one is filed after the falsification, against a premise that was verified rather than assumed.
+## Shipped
 
-Filed at operator direction (@tobiu, 2026-08-19) as the item blocking the next deployment.
+The original headline, `tenant-repo-sync` holding the shared heavy-maintenance lease without consulting its hold bound, is fixed by neomjs/neo#17398 (PR neomjs/neo#17424, merged 2026-08-21, with neomjs/neo#17456). On `dev`:
+- the container one-shot passes `leaseYieldVoter: createLeaseYieldVoter(acquisition)` (`ai/scripts/maintenance/syncTenantRepos.mjs:214`);
+- the pipeline injects the voter into in-process tasks (`MaintenanceBackpressureService.mjs:1133`);
+- `TenantRepoSyncService` resolves its yield cause from that voter and its own slice budget (`:2846`).
 
-**Live latest-open sweep** at 2026-08-19T09:0xZ; `state:all` keyword sweeps for `preempt non-terminating holder lease`, `heavy maintenance watchdog abort`, `lease holder never yields`, `shouldYield tenant repo sync`. No equivalent. A2A claim sweep: no in-flight claim.
+## What remains
 
-## The Problem
+Three paths take the shared lease through `withHeavyMaintenanceLease` and consult no hold bound. None references `shouldYield`, `leaseYieldVoter`, `createLeaseYieldVoter`, `maxActiveHoldMs` or `shouldYieldHeavyMaintenanceLease`:
+- `ai/scripts/lifecycle/backfill-memory-summaries.mjs:77` (`memory-summary-backfill`)
+- `ai/scripts/maintenance/syncGithubWorkflow.mjs:234` (owner `syncGithubWorkflow`)
+- `ai/scripts/maintenance/ingestTenant.mjs:201` (the tenant ingest CLI)
 
-### What is actually happening, and it is not a lease problem
-
-The admission authority for scheduled heavy contenders is the **picker gate**, not the lease:
-
-1. `ai/daemons/orchestrator/scheduling/picker.mjs:78` — `filterExclusiveHeavyConflict` drops conflicting heavy candidates whenever `runningHeavyTasks` is non-empty (`:79-85`).
-2. `ai/daemons/orchestrator/scheduling/pipeline.mjs:218` — `getRunningHeavyTaskNames` derives that set from **persisted task state**, evaluated **before** any lease acquisition.
-3. `running` clears only on `markCompleted` / `markFailed` — **when the task returns.**
-
-So the starvation duration is the holder's checkpoint interval. neomjs/neo#16822 established that arithmetic and PR neomjs/neo#16823 closed it **for `kbSync`**, by consulting the lease yield predicate **per provider chunk**.
-
-### The gap: the remedy is per-task, and this holder is not one of them
-
-~~`ai/daemons/orchestrator/scheduling/tenantRepoSync.mjs` contains **no** `shouldYield`, no `maxActiveHoldMs`, and no yield consultation of any kind. It carries durable checkpoint *state* (`:206`, `:223`) and never asks whether to hand the slot back.~~
-
-> **⚠️ FALSIFIED 2026-08-19 by the AC-1 enumeration, before any implementation. Struck rather than deleted, because the wrong sentence is the specimen.**
->
-> **The task DOES consult a yield predicate.** `ai/daemons/orchestrator/services/TenantRepoSyncService.mjs:2402` — the only `shouldYield` site in the file — passes `shouldYield: createSliceBudgetPredicate({startedMs, sliceBudgetMs})` into the ingestion path. So *"no yield consultation of any kind"* and *"never asks whether to hand the slot back"* are both false. I judged the task by grepping the **pure scheduling module**, which *defines* `createSliceBudgetPredicate` but does not consume it; the consuming service is a different file and I never opened it.
->
-> **What is actually true, and it is a narrower and better problem.** `tenant-repo-sync` bounds **one repo's share of one sweep** via `sliceBudgetMs`, and never consults the **heavy-maintenance lease's own** hold bound. So a sweep across N repos can occupy the exclusive-heavy slot for roughly N × `sliceBudgetMs` while honouring every per-repo budget: the slice budget rotates *within* the sweep rather than ending it.
->
-> **And the "inert knob" hypothesis I formed while checking this is also falsified.** `maxActiveHoldMs` is `leaf(HOUR_MS / 2, …)` — **30 minutes**, live, and not overridden on any plane I checked. The cooperative mechanism is armed; it is simply not consulted here.
-
-### AC-1 delivered — the enumeration, with its boundary and its control stated
-
-**Boundary:** I searched **all of `ai/`, non-spec**, for `shouldYield` and for `maxActiveHoldMs`, and separately for `withHeavyMaintenanceLease(` call sites. I did **not** search `test/`, `apps/`, or `src/`, and I did not inspect any task's transitive callees beyond the files named below. The heavy-class set is the 11 names in `DEFAULT_HEAVY_MAINTENANCE_TASK_NAMES` (`MaintenanceBackpressureService.mjs:65`), not a set I chose.
-
-**Control:** `kbSync` is known lease-wired by `#16823`, so the instrument had to find it or be discarded. It did — `syncKnowledgeBase.mjs` reads `shouldYield`×3, `maxActiveHoldMs`×2, and its own comment names the config trap (the value must come from `orchestrator.heavyMaintenance`, **not** the sibling `orchestrator.heavyMaintenanceLease`).
-
-| lease-acquiring path | `shouldYield` | `maxActiveHoldMs` | consults the LEASE bound? |
-|---|---|---|---|
-| `syncKnowledgeBase.mjs` (`kbSync`) — **control** | 3 | 2 | **yes** |
-| `backfill-memory-summaries.mjs` (`memory-summary-backfill`) | 0 | 0 | **no** |
-| `syncGithubWorkflow.mjs` (`githubWorkflowSync`) | 0 | 0 | **no** |
-| `ingestTenant.mjs` (tenant ingest CLI) | 0 | 0 | **no** |
-| `TenantRepoSyncService.mjs` (`tenant-repo-sync`) | 1 | 0 | **no** — its own slice budget only |
-| **`syncTenantRepos.mjs`** (`tenant-repo-sync`) — **the live holder** | **0** | **0** | **no** — none at all |
-| `defragChromaDB.mjs` (`defrag`) | 0 | 0 | **no** |
-| `runSandman.mjs` (`sandman`) | 0 | 0 | **no** |
-| `Orchestrator.mjs` (`restore-empty-target`) | 0 | 0 | **no** |
-
-> **⚠️ Enumeration CORRECTED 2026-08-19 — the first table missed four paths, and one of them is the owner the watchdog names.**
->
-> **The matcher was the boundary, and I stated the wrong one.** The original boundary said it searched for `withHeavyMaintenanceLease(` call sites. Four lease-acquiring paths call the wrapper by its other spelling — `withLease(` — so a search naming only the first cannot see them. The control (`kbSync`) survived that stage, which is exactly why the sweep read as complete: a control that does not share the target's blind spot proves nothing about the target.
->
-> **The consequential miss:** `ai/scripts/maintenance/syncTenantRepos.mjs` takes the **shared** heavy-maintenance lease (`resolveHeavyMaintenanceLeasePath`, `:206`) as `owner: 'tenant-repo-sync'` (`:207`) with `reason: 'container-one-shot'`, and contains **zero** `shouldYield` references. Its own docblock states the two-lease topology plainly: *"The service retains its narrower tenant-repo-sync lease inside `runTask`; this outer lease adds the scheduler's deployment-wide exclusion contract."* The **outer** lease is the one the starvation watchdog reports as holder, and until now the sweep beneath it had no way to ask how long it had been held.
->
-> **The owner string is the discriminator.** `TenantRepoSyncService` stamps `tenant-repo-sync:${'manual'|'scheduler'}`; the CLI stamps the bare `tenant-repo-sync`. The live watchdog reports exactly `'tenant-repo-sync'` — the bare form — so the shared-lease holder is the CLI path, not the in-process service whose predicate I corrected this morning. **So 1 of 9 lease-acquiring paths consults the fairness bound**, not 1 of 5.
->
-> **What is NOT established, so it is not claimed.** `starvedForMs` measures how long a WAITER has waited, not how long the holder has held. A continuously re-acquiring holder and a single long hold produce the same waiter reading, so the live numbers below cannot distinguish them and this ticket's earlier "re-acquisition, not one long hold" note remains an open question rather than a settled one. The fix is warranted either way: a path that takes the shared exclusive slot and consults no fairness bound is a defect independent of which shape the current instance has.
->
-> **Live reading, 2026-08-19 ~19:50Z — now FIVE breaches, not four:** `summary` 33.8h, `memory-summary-backfill` 33.1h, `message-concept-harvest` 29.2h, `graphlog-compaction` 11.2h, and `provider-residency-repair` newly crossed at 4.0h. Holder on every breach: `tenant-repo-sync`.
-
-**So the gap is wider than this ticket's title.** Three further paths acquire the lease through `withHeavyMaintenanceLease` and reference neither identifier. `kbSync` is the **only** heavy task that consults the lease's hold bound. Lease *acquisition* is central — `Orchestrator.mjs:842` and `HeavyMaintenanceLeaseService.mjs:158` — so every task gets a lease; what varies is whether it ever asks the lease to be given back.
-
-**Stated as absence with its limit:** the four zero-counts are absences of those two identifiers in those files. A path consulting a yield predicate under a different name would not appear, and I did not follow callees. That is the boundary, not a claim of exhaustiveness.
-
-`kbSync` was fixed because it was the holder in the measured instance (#16566, a 13-hour hold). **`tenant-repo-sync` is the holder now**, and the cooperative remedy does not reach it.
-
-### The live instance
-
-Affected plane, `mc` healthcheck 2026-08-19T08:56Z:
-
-```
-status: degraded
-"Heavy-maintenance starvation: memory-summary-backfill deferred since 2026-08-18T10:42:28Z,
- message-concept-harvest since 2026-08-18T14:38:01Z,
- provider-residency-repair since 2026-08-18T08:19:10Z,
- summary since 2026-08-18T10:03:31Z   (lease holder: tenant-repo-sync)"
-```
-
-`heavyMaintenance.retry`: `lastSuccessAt 2026-08-18T12:26:25Z` (20.6 h before observation), `retriesRemaining: 0`, `nextAttemptAtMs` = exactly 24 h after the last success.
-
-**Four tasks deferred 18.3–24.6 hours. neomjs/neo#16823 is already deployed on that plane** (`c40003db01` is an ancestor of the deployed `2397b940`), so this is not a missing-deployment condition — the fix is present and does not apply to the task holding the slot.
-
-**And it is durable:** `mc-server` restarted at 2026-08-19T04:51:45Z and the deferral timestamps still read from 2026-08-18. A container bounce does not clear it.
-
-### ESTABLISHED — corrected 2026-08-19, and this demotes the finding above
-
-**An earlier revision of this body said "why `tenant-repo-sync` is not returning" was not established. That was wrong, and it was not caution — the evidence was one snapshot field away and I had the upstream context from the same session's parser-gate work.** Recording the correction rather than editing it out.
-
-The deployment-state snapshot's `tenantRepoSync.task.lastCompletion` reports, for **all four** tenant repos:
-
-```
-lastSourceErrorCode : KB_VECTOR_EMBED_INPUT_TRUNCATED
-lastErrorCode       : KB_TENANT_REPO_SYNC_SYNC_FAILED
-consecutiveFailures : 238 · 291 · 260 · 309
-lastIngestedRev     : null on 3 of 4 — never ingested anything
-lastSuccessAt       : 2026-08-18T10:00:35Z      lastErrorAt: 2026-08-19T09:20:45Z
-scheduler           : sweepCadenceMs 60000, due:true       completedCount 0 / failedCount 4
-```
-
-**Oversized chunks exceed the embed input bound, the embed refuses, the sync fails, and the sweep retries every 60 seconds — ~300 consecutive failures per repo with zero ingestion progress.** The queue is not slow; it is reprocessing input it can never admit.
-
-**So the yield-wiring gap this ticket names is real but SECONDARY.** `tenant-repo-sync` is not a non-terminating holder that refuses to yield — it fails fast and **re-acquires every 60 s**, which occupies the exclusive-heavy slot a high fraction of the time and starves the four waiters by repeated acquisition rather than by one long hold. That is a third mechanism, distinct from both neomjs/neo#16817's (non-terminating holder) and this ticket's original framing.
-
-**And the remedy for the root cause already exists and is pending, not missing:**
-
-| remedy | state |
-|---|---|
-| parser gates that take over-band chunks 50 → 0 at the source | open MR on the deployment repo, unmerged |
-| neomjs/neo#17343 / neomjs/neo#17347 — admission keys on the engine slot, in the unit the engine counts | merged to `dev`, **not yet deployed** |
-| neomjs/neo#17336 — a chunk that kills the embedding provider never graduates to undeliverable | OPEN — the "why it retries forever" half |
-| neomjs/neo#17345 — an undeliverable chunk is quarantined until the generation changes | OPEN — the "why a fix never retries" half |
-
-**This ticket's scope narrows accordingly:** the yield wiring is worth doing because the next holder should not be able to starve peers, and it is **not** the fix for the live condition. neomjs/neo#17336 and neomjs/neo#17345 are closer to it, and the pending deployment closes the source of the oversized chunks.
-- Whether other heavy tasks are also unwired. `kbSync` is wired, `tenant-repo-sync` is not; the remaining heavy tasks were not enumerated. **A sweep with a stated boundary is part of the work below, not a claim made here** — the predecessor ticket died of exactly that kind of unbounded absence.
-
-## The Architectural Reality
-
-- `ai/daemons/orchestrator/scheduling/tenantRepoSync.mjs` — the unwired holder.
-- `ai/daemons/orchestrator/scheduling/picker.mjs:65-90` — the exclusive-heavy gate and its own docblock stating the contract.
-- `ai/daemons/orchestrator/scheduling/pipeline.mjs:218-234` — where `runningHeavyTasks` is computed.
-- `ai/daemons/orchestrator/services/HeavyMaintenanceLeaseService.mjs:158` — `withHeavyMaintenanceLease`, and the `shouldYield()` predicate (#14259) tasks are expected to consult.
-- `ai/daemons/orchestrator/services/leaseMonitor.mjs` — a force-release monitor with **zero production callers**. Named here because I asserted it did not exist. **ADR 0022 anti-anchors hard preemption**, so this is a retire-or-redesign question and explicitly *not* the fix proposed below.
-
-## The Fix
-
-1. **Enumerate every heavy-class task and record which consult the yield predicate** — with the sweep's boundary and a control stated, not just a matcher. This is the deliverable that stops the next holder being a surprise.
-2. ~~**Wire `tenant-repo-sync` to consult `shouldYield()` at its own natural checkpoint**~~ — **restated after the falsification above.** The checkpoint exists *and it already asks*; what it asks is its own `sliceBudgetMs`, not the lease. So the change is not "add a consultation" but **"add the lease's hold bound to the predicate already consulted at that boundary"**, which is a different and smaller edit.
-
-   Note for whoever implements it: a lease `shouldYield()` would not have fixed the live instance either. This ticket's own ESTABLISHED section records that the observed mechanism was **re-acquisition every 60 s**, not one long hold — and a cooperative yield does nothing about a holder that returns promptly and comes straight back. Do not let the enumeration's tidiness imply the live starvation is addressed by it.
-3. **Make "a heavy task that never consults the yield predicate" mechanically visible** rather than discoverable per incident. A task-definition assertion or a lint over heavy-class tasks costs once and removes the class.
-
-Deliberately **not** proposed: a watchdog, an abort signal, or wiring `leaseMonitor.mjs`. ADR 0022 anti-anchors hard preemption, and neomjs/neo#17379 died proposing it.
+Each can keep the exclusive heavy slot past `maxActiveHoldMs`, which defaults to 30 minutes (`ai/configBase.mjs:2075`), while every starved heavy peer waits. The search's boundary is the three files themselves, with `syncKnowledgeBase.mjs` as its positive control. A callee that consults the bound under another name would not show up, as Vega's 2026-08-29 comment warns about the original table.
 
 ## Acceptance Criteria
 
-- [ ] Every heavy-class task is enumerated with its yield-consultation status recorded, and the enumeration states its boundary — which files were searched and which were not.
-- [ ] `tenant-repo-sync` consults `shouldYield()` at a checkpoint, asserted by a fixture whose task would otherwise run past `maxActiveHoldMs`. A task that completes quickly passes under both implementations and does not count as coverage.
-- [ ] A starved peer interleaves within the fairness bound while `tenant-repo-sync` is running, asserted by observing the peer actually run — not by observing the yield predicate return true.
-- [ ] Negative control: a heavy task that already yields is unchanged, and a task holding the slot for less than the bound is not preempted.
-- [ ] A heavy-class task that consults nothing is detectable without an incident.
-- [ ] A mutation removing the new consultation fails the never-yields fixture and only it.
+- [ ] Each of the three paths consults the lease voter at a checkpoint, or this ticket records the measurement that shows it cannot outlive the bound.
+- [ ] For each path that yields, a fixture whose work would otherwise run past `maxActiveHoldMs` shows the hand-back, and a starved peer is observed to run. A task that finishes quickly is not coverage.
+- [ ] A heavy-lease holder that consults nothing is detectable without an incident.
+- [ ] A mutation that removes a new consultation fails its own fixture and only that one.
 
-## Out of Scope
+Related: neomjs/neo#17398, neomjs/neo#17424, #64 (which deferral cause ran the clock).
 
-- **#17349** — the holder's self-throttling. Upstream; this fix must work regardless of *why* a holder is slow.
-- Hard preemption, `leaseMonitor.mjs`, and any lease-side change. ADR 0022, and neomjs/neo#17379's falsification.
-- The four starved tasks' own behaviour — they are the victims.
-- Clearing the current live instance: neomjs/neo#17352 (clear tenant-sync backoff without restarting) is merged and is the operational lever.
-
-## Avoided Traps
-
-**Blaming the lease.** neomjs/neo#17379 did, and neomjs/neo#16817 before it. The lease is not the admission authority for scheduled contenders — `picker.mjs:78` is, before any acquisition. Written here because this is now the third ticket in this family to reach for the lease first.
-
-**Claiming an absence from one file's grep.** neomjs/neo#17379 asserted "no preemption primitive anywhere" from a single-file matcher while `leaseMonitor.mjs` sat in the same directory, findable by name. The enumeration AC above exists so this ticket cannot be closed on the same kind of evidence that killed its predecessor.
-
-**Treating the pending deployment as the remedy.** neomjs/neo#16823 is already deployed on the affected plane and does not reach this holder.
-
-## Related
-
-- neomjs/neo#17379 — CLOSED, premise-falsified predecessor (lease preemption). Its closing comment carries the full falsification.
-- neomjs/neo#16817 — CLOSED, superseded by neomjs/neo#16822; @neo-opus-ada's closing comment established that the lease is not the admission authority.
-- neomjs/neo#16822 / PR neomjs/neo#16823 — CLOSED; wired the per-chunk yield into `kbSync`. Deployed, and the reason this ticket exists is that it stopped there.
-- neomjs/neo-agent-brain#64 — OPEN; the original 13-hour instance, `kbSync` as holder.
-- neomjs/neo#17349 — OPEN; the current holder's possible self-throttling upstream.
-- neomjs/neo#14259 — CLOSED; added `maxActiveHoldMs` + `shouldYield()`, the cooperative contract this task ignores.
-- neomjs/neo#17049 / neomjs/neo#16561 / neomjs/neo#17295 / neomjs/neo#16564 — CLOSED; the observability half, all deployed and all correctly reporting this starvation.
-
-Origin Session ID: fb387768-e68f-4a71-9b6a-3cf9ad4a9e7e
-
-Retrieval Hint: `cooperative yield wired per task; tenantRepoSync has no shouldYield; picker gate not the lease is the admission authority`
-
-— Vega (Claude Opus 5, Claude Code) 🌿
-
-
-
-
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 
 ## Timeline
@@ -215,10 +65,8 @@ Retrieval Hint: `cooperative yield wired per task; tenantRepoSync has no shouldY
 - 2026-08-19T09:08:59Z @neo-opus-vega cross-referenced by #17379
 - 2026-08-19T09:23:05Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-08-19T20:11:18Z @neo-opus-vega cross-referenced by #17398
-- 2026-08-19T20:11:36Z @neo-opus-vega added sub-issue #17398
 - 2026-08-19T20:12:31Z @neo-opus-vega cross-referenced by PR #17399
 - 2026-08-20T11:55:18Z @neo-opus-vega cross-referenced by #17414
-- 2026-08-20T11:55:25Z @neo-opus-vega added sub-issue #17414
 - 2026-08-20T16:31:57Z @neo-opus-vega cross-referenced by PR #17424
 - 2026-08-21T00:31:56Z @tobiu referenced in commit `5f36f95` - "fix(ai): the tenant sweep consults the shared lease bound, not only its own slice budget (#17380)
 
@@ -298,8 +146,6 @@ No new ticket filed for either, per the 4:1 directive: this belongs to neomjs/ne
 Measured by @neo-opus-vega (Fable 5, Claude Code) · origin session `cad88c79-073f-4816-aaa7-e779224f2af3`
 
 
-- 2026-08-26T14:57:29Z @tobiu added sub-issue #17398
-- 2026-08-26T14:57:29Z @tobiu added sub-issue #17414
 - 2026-08-26T14:59:46Z @tobiu added the `bug` label
 - 2026-08-26T14:59:46Z @tobiu added the `ai` label
 - 2026-08-26T14:59:47Z @tobiu added the `agent-os` label
@@ -357,4 +203,8 @@ Re-measured at Brain HEAD just now:
 - 2026-09-23T12:33:27Z @neo-opus-vega cross-referenced by #430
 - 2026-09-25T10:04:08Z @neo-opus-vega cross-referenced by #64
 - 2026-09-25T15:43:36Z @neo-opus-ada cross-referenced by #495
+- 2026-10-27T22:56:56Z @neo-opus-ada cross-referenced by #1174
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+- 2026-11-02T18:36:09Z @neo-opus-ada changed title from **The cooperative yield is wired per task, and tenant-repo-sync was never wired into it** to **Three heavy-lease holders never consult the lease's hold bound**
 

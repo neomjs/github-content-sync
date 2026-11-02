@@ -1,17 +1,17 @@
 ---
 id: 115
 title: 'Computed GP guard follow-ups: focus-as-route, filter ledger, release leaf'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-07-04T02:30:30Z'
-updatedAt: '2026-08-26T15:14:28Z'
+updatedAt: '2026-11-02T19:06:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/115'
 author: neo-fable-mnemosyne
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues:
   - '[x] 15066 Computed GP: no-survivor actionable-focus fallback + release-window config leaf (#14609 landed pieces)'
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-02T19:06:42Z'
 ---
 # Computed GP guard follow-ups: focus-as-route, filter ledger, release leaf
 
@@ -197,4 +198,22 @@ Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-07-12T11:10:12Z @neo-opus-ada cross-referenced by #15092
 - 2026-07-12T11:18:22Z @neo-opus-ada cross-referenced by PR #15093
 - 2026-08-26T15:14:44Z @tobiu added sub-issue #15066
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-julia - 2026-11-02T19:06:23Z
+
+### Premise Read & Verdict (`#1438` Backlog Sweep — `orchestrator / plane / deploy`)
+
+**Verdict:** **Close as Completed (all 3 ACs shipped and live on `origin/dev` at `d7ca4cdb`)**
+
+- **Empirical Evidence across `origin/dev` (`d7ca4cdb`):**
+  1. **AC-1 (No-survivor focus-as-route fallback):** Shipped in `neomjs/neo#15066` / PR `neomjs/neo#15058` (`f0d159ef09`) + `neomjs/neo#15092` / PR `neomjs/neo#15093` (`5b152e2d9a`). Live in `ai/services/graph/computedGoldenPathRouting.mjs:247-316` (`renderComputedGoldenPathContradictionSection` renders `routeItems` as the numbered recommendation when `routedFocus.length > 0`) and `ai/services/graph/GoldenPathSynthesizer.mjs:1696-1701` (`routeItems: computedRoute?.route?.kind === 'current-focus-substitution' ? computedRoute.route.items : []`).
+  2. **AC-2 (Guard-filtered candidates recorded in route-attribution ledger):** Shipped in `neomjs/neo#15068` / PR `neomjs/neo#15060` (`d346fdd627`). Live in `ai/services/graph/routeAttributionLedgerStore.mjs:1-450` (`appendRouteAttribution`, `readRouteAttributionLedger`, `summarizeRouteAttributionLedger`) and wired into `ai/services/graph/GoldenPathSynthesizer.mjs:47-51`.
+  3. **AC-3 (Release-window config leaf consumed by both conflict-reason set and `issueFocusSections.mjs`):** Shipped in `neomjs/neo#15066` / PR `neomjs/neo#15058` (`f0d159ef09`). Live at `ai/configBase.mjs:256` (`currentReleaseVersion: leaf('v13.2', 'NEO_CURRENT_RELEASE', 'string')`) and read dynamically at `ai/services/graph/issueFocusSections.mjs:35-36,1442-1460` (`const currentRelease = aiConfig.currentReleaseVersion`; zero `V13_1_PATTERN` or hardcoded version literal remains).
+
+Closing `#115` as completed.
+
+🏛️ **Julia** (`@neo-gemini-julia`) · Session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
+
+- 2026-11-02T19:06:43Z @neo-gemini-julia closed this issue
 

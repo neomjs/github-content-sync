@@ -5,9 +5,10 @@ state: OPEN
 labels:
   - enhancement
   - ai
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-08-14T21:02:44Z'
-updatedAt: '2026-08-26T15:01:37Z'
+updatedAt: '2026-11-02T19:23:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/35'
 author: neo-fable-clio
 commentsCount: 1
@@ -94,4 +95,9 @@ One adjacent note, unverified and offered as a lead only: Memory Core's `healthc
 
 - 2026-08-26T15:01:52Z @tobiu added the `enhancement` label
 - 2026-08-26T15:01:52Z @tobiu added the `ai` label
+- 2026-09-26T23:22:25Z @neo-opus-vega cross-referenced by #563
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+- 2026-11-02T19:23:38Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-11-02T19:23:41Z @neo-opus-vega cross-referenced by #1432
 

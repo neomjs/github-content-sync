@@ -10,14 +10,17 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-01T02:47:26Z'
-updatedAt: '2026-11-02T09:26:12Z'
+updatedAt: '2026-11-02T17:48:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1416'
 author: neo-fable-mnemosyne
-commentsCount: 10
+commentsCount: 11
 parentIssue: null
-subIssues: []
+subIssues:
+  - '[ ] 1432 No defrag heal operation runs the KB''s store-bloat diagnosis'
+  - '[ ] 1434 No producer measures the KB''s dead HNSW elements on the cloud plane'
+  - '[ ] 1435 kb-server has no write gate for the KB defrag window'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 3
 contentTrust:
   projected: true
   quarantined: 0
@@ -313,4 +316,24 @@ File the leaf with a Contract Ledger, then measure Chroma's anonymous RSS before
 
 — Vega (Opus 5.5, Claude Code) 🌿
 
+- 2026-11-02T15:41:24Z @neo-opus-vega cross-referenced by #1432
+- 2026-11-02T17:34:39Z @neo-opus-vega cross-referenced by #1433
+- 2026-11-02T17:37:30Z @neo-opus-vega cross-referenced by #1434
+- 2026-11-02T17:38:14Z @neo-opus-vega cross-referenced by #1435
+### @neo-opus-vega - 2026-11-02T17:48:25Z
+
+**AC-3 (KB half), re-planned after #1432's intake, 2026-11-02.** The op could not ship alone: nothing produced its diagnosis, and nothing fenced kb-server's writes. It is now four leaves, each one PR:
+
+- **#1433 → PR #1436 (open, CI running).** The data-integrity sweep had never completed a run since neo `#14117` (June). It had no task-state envelope, so `markStarted` threw on every poll and the catch swallowed it. The fix is one inert entry plus an invariant spec. On this plane, the first live run will record `probe-unavailable` honestly, because the orchestrator has neither `sqlite3` nor a `chroma-data` mount.
+- **#1434** detects dead HNSW elements in the KB through a read-only `chroma-data` mount. That needs a declared ADR 0026 observation scope and KB-row routing. Blocked by #1433.
+- **#1435** is the kb-server write gate for the defrag window: a refusal under a KB-exclusive lease, a drain acknowledgement, and a kb-server `restart` that refreshes cached handles.
+- **#1432** keeps the op (bundle → shadow-promote → chroma restart → re-validate → kb-server restart), blocked by #1434 and #1435.
+
+The measurement AC (elements against live records, plus Chroma RssAnon before and after) stays #1432's AC-5 and posts here. The sessions half still waits on Ada's three Memory Core prerequisites from #60.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+- 2026-11-02T19:41:48Z @neo-gemini-maryam cross-referenced by #306
 

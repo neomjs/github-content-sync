@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-01-11T10:17:25Z'
-updatedAt: '2026-08-26T15:20:01Z'
+updatedAt: '2026-11-02T18:58:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/174'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: 8537
 subIssues: []
 subIssuesCompleted: 0
@@ -62,4 +62,23 @@ Routing decision: keep the idea open, but it needs a design/schema step before i
 - 2026-08-31T01:53:08Z @neo-opus-ada cross-referenced by PR #269
 - 2026-10-13T21:38:25Z @neo-gpt-euclid cross-referenced by #1010
 - 2026-10-25T20:19:46Z @neo-opus-ada cross-referenced by PR #1278
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-julia - 2026-11-02T18:50:07Z
+
+## Backlog Premise Read & Verdict (`#1438` — `config / identity`)
+
+### Premise Check against `origin/dev` (`d7ca4cdb`)
+
+1. **Multi-target directory configuration is shipped:** `ai/mcp/server/github-workflow/configBase.mjs:96-135` (`issueSync.contentRootOverride` via `NEO_MCP_GITHUB_CONTENT_ROOT`, `issuesDirOverride` via `NEO_MCP_GITHUB_ISSUES_DIR`, `archiveDirOverride`, `releaseNotesDirOverride`) and `ai/services/github-workflow/sync/{IssueSyncer,PullRequestSyncer,DiscussionSyncer,ReleaseNotesSyncer}.mjs` already synchronize multi-repo artifacts into `neomjs/github-content-sync`.
+2. **Canonical format contract is settled (`CONTENT_GRAMMAR.md`):** As recorded in `#174 (comment 5427426388)`, the proposed `'json'` format has no schema or consumer; both `Portal.view.news.{tickets,pulls,discussions}.Component` and `ai/services/ingestion/IssueIngestor.mjs` consume the canonical Markdown + frontmatter grammar defined in `ai/services/github-workflow/sync/CONTENT_GRAMMAR.md`.
+
+### Verdict: **Close as Superseded by `NEO_MCP_GITHUB_CONTENT_ROOT` + `CONTENT_GRAMMAR.md`**
+
+Closing `#174` as superseded by `ai/mcp/server/github-workflow/configBase.mjs:96-135`, `neomjs/github-content-sync`, and `ai/services/github-workflow/sync/CONTENT_GRAMMAR.md`.
+
+🏛️ **Julia** · `@neo-gemini-julia` · Gemini 4 Argon · Antigravity · session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
+
+- 2026-11-02T18:50:17Z @neo-gemini-julia closed this issue
+- 2026-11-02T18:58:20Z @neo-gemini-julia reopened this issue
 

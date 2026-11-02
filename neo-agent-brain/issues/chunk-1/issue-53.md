@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-08-08T19:56:50Z'
-updatedAt: '2026-08-26T15:05:26Z'
+updatedAt: '2026-11-02T19:42:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/53'
 author: neo-fable-clio
-commentsCount: 3
+commentsCount: 4
 parentIssue: 83
 subIssues:
   - '[x] 16787 Roster presence axis — the plane''s who_is_online band as the third telltale'
@@ -32,6 +32,17 @@ blocking: []
 ---
 # Viewer-scoped roster projection under the truth-preserving presence contract
 
+## Current Remaining Scope (`origin/dev` `613df5d7`, 2026-11-02 `#1438` Audit)
+
+- **Delivered (`[x]` AC-1 through AC-4):**
+  - **AC-1:** `neomjs/neo#16787` / PR `neomjs/neo#16781` (`55219f40d8`, `ai/services/fleet/fleetPresenceStateAdapter.mjs`).
+  - **AC-2:** `neomjs/neo#17153` / PR `neomjs/neo#17154` (`52d8a8c616`, `ai/services/fleet/fleetPresenceStateAdapter.mjs:59` `PRESENCE_BANDS`).
+  - **AC-3:** `neomjs/neo#17157` / PR `neomjs/neo#17159` (`88e4739465`, `ai/services/fleet/fleetCockpitStatus.mjs` `binding unavailable`).
+  - **AC-4:** `ai/services/fleet/fleetWakeStateAdapter.mjs` (`resolveAgentWakeState`).
+- **Remaining open on `#53`:**
+  1. **AC-5 (Post-v1 multi-operator viewer scoping):** Own-peers default via the S5 `CAN_OBSERVE_FLEET_OF` grant family (sequenced behind **#51**) + `scoped-empty-with-reason` rendering.
+  2. **Roster-header `capabilities.presence` degraded chip (`IC_kwDOUBzDFM8AAAABQ33sEQ`):** Naming all-tiers-failed `capabilities.presence: "degraded"` at the grid header (`presence unobservable · <capability reason>`) so total observation loss never reads as "no peers online".
+
 **Graduated from D#16720 (body v12 @ 2026-08-08T19:52:47Z).** Concept 4: the roster is a viewer-scoped plane-graph projection under a truth-preserving presence contract (falsifier-backed from live seats, cycle-3).
 
 ## Context
@@ -40,10 +51,10 @@ A cockpit reading a stale local graph can never show a live peer (operator falsi
 
 ## Acceptance Criteria
 
-- [ ] **Tier-degradation rendering contract** (operator-ratified): *a liveness tier a deployment cannot emit produces ABSENCE OF SIGNAL, never a verdict.* Per-peer presence renders from tiers that ANSWERED and names them; recency is the portable floor; tiers order by portability.
-- [ ] **Banded presence vocabulary** (active-turn / fresh / recent / dark) from the beacon horizons (`freshUntil`/`expiresAt`) — never boolean online/offline (70-min-turn flap specimen is the falsifier).
-- [ ] **Three independent signals, none inferring another:** presence-fresh ≠ wake-route-healthy ≠ identity-bound. A broken VIEWER binding renders "binding unavailable" (blocker-code pattern), never "no peers online".
-- [ ] Wake-route health renders from subscription STATE, never delivery-event counts (delivery is at-least-once).
+- [x] **Tier-degradation rendering contract** *(delivered in neomjs/neo#16787 / PR neomjs/neo#16781 `55219f40d8`, `ai/services/fleet/fleetPresenceStateAdapter.mjs`)* — (operator-ratified): *a liveness tier a deployment cannot emit produces ABSENCE OF SIGNAL, never a verdict.* Per-peer presence renders from tiers that ANSWERED and names them; recency is the portable floor; tiers order by portability.
+- [x] **Banded presence vocabulary** *(delivered in neomjs/neo#17153 / PR neomjs/neo#17154 `52d8a8c616`, `ai/services/fleet/fleetPresenceStateAdapter.mjs:59`)* — (active-turn / fresh / recent / dark) from the beacon horizons (`freshUntil`/`expiresAt`) — never boolean online/offline (70-min-turn flap specimen is the falsifier).
+- [x] **Three independent signals, none inferring another** *(delivered in neomjs/neo#17157 / PR neomjs/neo#17159 `88e4739465`, `ai/services/fleet/fleetCockpitStatus.mjs`)*: presence-fresh ≠ wake-route-healthy ≠ identity-bound. A broken VIEWER binding renders "binding unavailable" (blocker-code pattern), never "no peers online".
+- [x] Wake-route health renders from subscription STATE *(delivered in `ai/services/fleet/fleetWakeStateAdapter.mjs`)*, never delivery-event counts (delivery is at-least-once).
 - [ ] Viewer scoping: own-peers default via the S5 grant family; scoped-empty carries its reason (C3 renders it).
 
 ## Delivery State (post-split, 2026-08-09)
@@ -174,7 +185,6 @@ Pickup: verify-scope sweep (adapter + who_is_online emission + routes-source row
 - 2026-08-26T15:06:02Z @tobiu added sub-issue #17153
 - 2026-08-26T15:06:02Z @tobiu added sub-issue #17157
 - 2026-08-26T15:06:02Z @tobiu added sub-issue #16937
-- 2026-08-26T15:09:28Z @tobiu added parent issue #83
 - 2026-09-04T20:27:13Z @neo-fable-clio cross-referenced by #314
 - 2026-09-04T22:35:19Z @neo-fable-clio cross-referenced by #318
 - 2026-09-05T00:48:45Z @neo-fable-clio cross-referenced by #323
@@ -213,4 +223,22 @@ Pickup: verify-scope sweep (adapter + who_is_online emission + routes-source row
 - 2026-10-17T16:03:00Z @neo-fable-clio cross-referenced by #1077
 - 2026-10-17T16:11:54Z @neo-fable-clio cross-referenced by #1078
 - 2026-10-17T17:25:41Z @neo-fable-clio cross-referenced by #1081
+- 2026-10-31T17:01:49Z @neo-fable-mnemosyne cross-referenced by #1400
+- 2026-10-31T17:56:41Z @neo-fable-clio cross-referenced by #1401
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T19:41:33Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Rewritten in place to check `[x]` on delivered `AC-1`, `AC-2`, `AC-3`, `AC-4` and scope `#53`'s remaining work to `AC-5` (post-v1 `CAN_OBSERVE_FLEET_OF` viewer scoping behind `#51`) plus the grid-header `capabilities.presence` degraded chip (`IC_kwDOUBzDFM8AAAABQ33sEQ`).**
+
+- **AC-1 (Tier-degradation rendering contract):** Shipped in `neomjs/neo#16787` / PR `neomjs/neo#16781` (`55219f40d8`, `ai/services/fleet/fleetPresenceStateAdapter.mjs`).
+- **AC-2 (Banded presence vocabulary `active-turn / fresh / recent / dark / benched / neverConnected`):** Shipped in `neomjs/neo#17153` / PR `neomjs/neo#17154` (`52d8a8c616`, `ai/services/fleet/fleetPresenceStateAdapter.mjs:59`).
+- **AC-3 (Three independent signals; broken viewer binding renders `binding unavailable`):** Shipped in `neomjs/neo#17157` / PR `neomjs/neo#17159` (`88e4739465`, `ai/services/fleet/fleetCockpitStatus.mjs`).
+- **AC-4 (Wake-route health from subscription state, never delivery counts):** Shipped in `ai/services/fleet/fleetWakeStateAdapter.mjs`.
+- **Remaining open (`AC-5`):** Post-v1 `CAN_OBSERVE_FLEET_OF` viewer scoping + `scoped-empty-with-reason` (sequenced behind `#51`) and the roster-header `capabilities.presence` degraded chip noted in `IC_kwDOUBzDFM8AAAABQ33sEQ`.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

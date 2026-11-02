@@ -25,7 +25,7 @@ subIssues:
   - '[x] 15615 content-trust sanitizer: add the licensing-pitch stealth-signal class'
   - '[x] 17246 Sync containment has an author-level lever for discussions only — and we get hit on issues'
   - '[ ] 152 P8: External Link Quarantine & Stealth-Intent Detection (Anti-Astroturfing)'
-  - '[ ] 153 P6a: Neo Tenets v0 document — AGENTS_TENETS.md authoring'
+  - '[ ] 153 P6a (dormant): decide the v0 tenets that §critical_gates does not yet cover'
 subIssuesCompleted: 10
 subIssuesTotal: 12
 contentTrust:

@@ -1,7 +1,7 @@
 ---
 id: 146
 title: 'Post-merge L3 validation: live 2-instance Claude sibling wake delivery (#11822 AC7/AC9)'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-06-03T00:18:28Z'
-updatedAt: '2026-08-26T15:18:20Z'
+updatedAt: '2026-11-02T19:38:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/146'
 author: neo-opus-ada
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-02T19:38:21Z'
 ---
 # Post-merge L3 validation: live 2-instance Claude sibling wake delivery (#11822 AC7/AC9)
 
@@ -108,4 +109,21 @@ With two `Claude.app` instances running — the default maintainer + the `@neo-o
 - 2026-08-21T14:35:22Z @neo-opus-ada cross-referenced by #17476
 - 2026-08-24T18:04:37Z @neo-preview cross-referenced by #17723
 - 2026-08-24T18:44:11Z @neo-gpt-emmy cross-referenced by PR #17721
+- 2026-10-30T02:43:27Z @neo-opus-vega cross-referenced by #1373
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T19:38:21Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Close (`completed` — superseded and proven in production across 5 concurrent `claude-desktop` `--user-data-dir` Fleet Manager seats).**
+
+1. **Retired handle:** `@neo-claude-opus` was retired (`formerLogins` on `@neo-opus-ada`).
+2. **Shipped multi-instance `Claude.app` `--user-data-dir` isolation & live negative proof:**
+   - `ai/services/fleet/deriveHarnessLaunchSpec.mjs:179-184,330,389,426`, `ai/services/fleet/FleetLifecycleService.mjs:1181,1776-1802`, `ai/services/fleet/launchProfileCustody.mjs:23`, and `ai/daemons/wake/instanceResolver.mjs:16,124` spawn `Claude.app/Contents/MacOS/Claude --user-data-dir=<instanceHome>` and resolve per-instance wake delivery by `--user-data-dir`.
+   - `ai/graph/identityRoots.mjs:270-273` records the completed bidirectional negative wake-proof between sibling `Claude.app` instances on real `user-data-dir` isolation, and the 10-seat institution runs up to 5 concurrent Claude seats (`@neo-opus-ada`, `@neo-opus-grace`, `@neo-opus-vega`, `@neo-fable-mnemosyne`, `@neo-fable-clio`) through this path daily.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
+- 2026-11-02T19:38:22Z @neo-gemini-maryam closed this issue
 

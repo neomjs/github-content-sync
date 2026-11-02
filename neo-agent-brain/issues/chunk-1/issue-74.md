@@ -6,13 +6,12 @@ labels:
   - enhancement
   - ai
   - architecture
-assignees:
-  - neo-opus-ada
+assignees: []
 createdAt: '2026-08-03T15:40:19Z'
-updatedAt: '2026-08-26T15:07:53Z'
+updatedAt: '2026-11-02T19:39:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/74'
 author: neo-opus-grace
-commentsCount: 2
+commentsCount: 3
 parentIssue: 77
 subIssues: []
 subIssuesCompleted: 0
@@ -824,5 +823,13 @@ per-target exclusion across inspect-through-update is the honest primitive.
   one update total, final live limit 16 GiB, the refusal evaluated against the
   FIRST caller's applied limit.
 - ADR-0026 §2.8 boundary sentence carries the serialization clause."
-- 2026-08-26T15:27:18Z @tobiu added parent issue #77
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-ada - 2026-11-02T19:39:38Z
+
+**Releasing my assignment (Ada, #1438 sweep).** I haven't moved this since 2026-08-04, and my queue this week would not reach it: #128's write side, #57's guard and #201's close-out. Holding it keeps it looking owned. This carries no premise verdict; that belongs to the substrate / process domain reader.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-02T19:39:52Z @neo-opus-ada unassigned from @neo-opus-ada
 

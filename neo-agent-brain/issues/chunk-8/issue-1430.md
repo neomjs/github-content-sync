@@ -1,7 +1,7 @@
 ---
 id: 1430
 title: No daemon diagnoses the plane's Docker disk or prunes its build cache
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-02T05:09:57Z'
-updatedAt: '2026-11-02T08:57:31Z'
+updatedAt: '2026-11-02T17:12:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1430'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-02T14:42:29Z'
 ---
 # No daemon diagnoses the plane's Docker disk or prunes its build cache
 
@@ -127,4 +128,46 @@ Vega (Claude Opus 5.5, Claude Code) 🌿
 
 Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>"
 - 2026-11-02T09:15:12Z @neo-gemini-julia referenced in commit `d10921a` - "fix(orchestrator): address Round-1 review on plane docker disk pressure (#1430)"
+- 2026-11-02T14:42:29Z @tobiu referenced in commit `b07a507` - "feat(orchestrator): diagnose plane docker disk pressure and prune build cache (#1430) (#1431)
+
+* feat(orchestrator): diagnose plane docker disk pressure and prune build cache (#1430)
+
+Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>
+
+* feat(orchestrator): satisfy ADR-0019 leaf-read lint and additive snapshot section spec (#1430)
+
+Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>
+
+* fix(orchestrator): address Round-1 review on plane docker disk pressure (#1430)"
+- 2026-11-02T14:42:30Z @tobiu closed this issue
+### @neo-opus-vega - 2026-11-02T17:12:08Z
+
+**Deployed on the local plane at 17:11Z, 2026-11-02: Brain `59c5a551` (containing #1431 at `b07a5074`), up from `804908b7`.** AC-5's autonomous prune is not due yet; the disk sits below the trigger.
+
+**Cut receipt.** `cut.sh 59c5a551` ran 17:09:22–17:11:05Z.
+- **Preflight:** `PROCEED_VERIFIED`. A restorable pre-transition bundle exists (146,454 rows).
+- **Services:** mc-server, kb-server, orchestrator and fleet-server were recreated from prebuilt images (build 17:04:44–17:05:14Z). All four were healthy at 17:11:04Z, with the image label and `/app/.neo-revision` both reading `59c5a551`.
+- **Untouched:** chroma (`b89d731f60ea`) and ingress (`bf26d90ce88a`) have the same ids before and after.
+- **Writable layers:** `docker diff` beforehand showed only the `/app/.neo-ai-data` mountpoint on each container.
+- **Wake and host-edge daemons:** booted out and back in, both exit 0, both running.
+- **Memory Core** reports `deployedRevision 59c5a551`.
+- **Allowlists:** no env-file or compose override pins `NEO_ORCHESTRATOR_RUNTIME_ACCESS_{READ,LIFECYCLE}_OPERATIONS`, so the defaults with `system-df` and `prune-build-cache` apply.
+
+**AC-5 baseline, guest `statfs` at 17:11:28Z (after the cut).**
+
+| field | value |
+|---|---|
+| blocks × bsize | 38,557,897 × 4,096 = 157,933,146,112 B |
+| `bfree` | 27,406,811,136 B |
+| `bavail` | 19,874,041,856 B |
+| build cache | 5.296 GB, of which 2.208 GB is reclaimable |
+
+The lane computes `freeBytes` from `bfree` (`DeploymentRuntimeAccessService.mjs` l.1464), so it reads the disk at **82.65 % used**. The trigger is ≥ 90 % sustained for 30 s, with at least 1 GiB of reclaimable cache. So no autonomous prune is due, and none should be. The cut itself freed about 2.8 GB: `bavail` went from 17,040,080,896 B at 17:05:41Z to 19,874,041,856 B.
+
+The lane writes nothing below the threshold, so its liveness at 82.65 % is unobserved. AC-5's before/after receipt stays open under #1416 until the disk first crosses 90 %.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+
+- 2026-11-02T17:34:39Z @neo-opus-vega cross-referenced by #1433
 

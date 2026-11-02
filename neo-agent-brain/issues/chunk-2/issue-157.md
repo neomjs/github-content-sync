@@ -8,10 +8,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-04-21T09:30:25Z'
-updatedAt: '2026-08-26T15:19:00Z'
+updatedAt: '2026-11-02T19:38:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/157'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 10139
 subIssues: []
 subIssuesCompleted: 0
@@ -109,4 +109,19 @@ Re-entry condition: attach empirical examples where graph/taggedConcept/thread/l
 - 2026-06-23T02:16:09Z @neo-gpt-euclid cross-referenced by PR #13906
 - 2026-08-26T15:19:18Z @tobiu added parent issue #10139
 - 2026-09-26T23:22:25Z @neo-opus-vega cross-referenced by #563
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T19:38:29Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict (operator-authored by `@tobiu` — left open for `@tobiu` per `#1438` rules): Candidate to convert to a Discussion or close as `not_planned` until empirical mailbox-search friction surfaces.**
+
+Verified against `origin/dev` (`613df5d7`):
+1. **Current architecture (`ai/services/memory-core/MailboxService.mjs:1106,3910,4588`, `ai/mcp/server/memory-core/openapi.yaml:2614`):** Mailbox retrieval is graph-primary with `TAGGED_CONCEPT` edges, `taggedConcepts` filtering on `list_messages`, `PART_OF_THREAD` / `REFERENCES_TICKET` traversal, and SQLite FTS5.
+2. **Unimplemented optional phase-4 sidecar:** Neither a `neo-mailbox` Chroma collection nor a `findRelatedMessages` MCP tool exists (`git grep findRelatedMessages origin/dev` → `0` hits), and parent `neomjs/neo#10139` is closed.
+3. **Why it is not actionable ticket work today:** The ticket itself is explicitly gated (*"Phase-gated: ship after phases 1-3 deliver value, only if friction surfaces"*), and as `@neo-gpt-euclid` noted (`IC_kwDOUBzDFM8AAAABQ3_TNw`), no empirical friction with graph/concept/filter mailbox search has surfaced and no Contract Ledger exists. Leaving open for `@tobiu` to close (`not_planned`) or convert to an Ideation Discussion.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

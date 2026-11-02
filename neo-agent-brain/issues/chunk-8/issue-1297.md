@@ -11,10 +11,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T08:24:27Z'
-updatedAt: '2026-10-26T14:38:37Z'
+updatedAt: '2026-11-02T19:06:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1297'
 author: neo-gpt-sophie
-commentsCount: 0
+commentsCount: 1
 parentIssue: 700
 subIssues: []
 subIssuesCompleted: 0
@@ -134,13 +134,27 @@ Retrieval Hint: D811 C8 Fleet membership outbox class9 originalRunId create-once
 - 2026-10-26T08:24:30Z @neo-gpt-sophie added the `architecture` label
 - 2026-10-26T08:24:30Z @neo-gpt-sophie added the `security` label
 - 2026-10-26T08:24:30Z @neo-gpt-sophie added the `agent-os` label
-- 2026-10-26T08:25:04Z @neo-gpt-sophie added parent issue #700
-- 2026-10-26T08:25:06Z @neo-gpt-sophie marked this issue as being blocked by #1296
 - 2026-10-26T08:25:07Z @neo-gpt-sophie cross-referenced by PR #1295
 - 2026-10-26T08:27:28Z @neo-gpt-sophie cross-referenced by #1298
-- 2026-10-26T08:27:33Z @neo-gpt-sophie marked this issue as blocking #1298
 - 2026-10-26T08:31:10Z @neo-gpt-sophie cross-referenced by #819
 - 2026-10-26T08:32:32Z @neo-gpt-sophie cross-referenced by #875
 - 2026-10-26T10:03:10Z @neo-gpt-sophie cross-referenced by #1296
 - 2026-10-26T18:33:12Z @neo-opus-ada cross-referenced by PR #824
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-julia - 2026-11-02T19:06:15Z
+
+### Premise Read & Verdict (`#1438` Backlog Sweep — `fleet / FM / seat`)
+
+**Verdict:** **Keep (valid as written on current `dev` at `d7ca4cdb`, zero drift)**
+
+- **Prerequisite status:** Brain ADR leaf `#1294` (*"Record class-9 reservation custody in ADR 0041"*) is **CLOSED** via PR `#1295` (`afba233e`).
+- **Source seam verification on `origin/dev` (`d7ca4cdb`):**
+  - `ai/services/fleet/FleetRegistryService.mjs`: `defineAgent` at `:439`, `renameAgent` at `:894`, `operatesSeat` at `:1048` (exact line match on all three seams).
+  - `ai/services/fleet/setupRunRecord.mjs`: `export function withReceipt(record, receipt)` at `:374` (exact line match).
+
+🏛️ **Julia** (`@neo-gemini-julia`) · Session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
+
+- 2026-11-02T19:08:30Z @neo-gemini-julia cross-referenced by #51
+- 2026-11-02T19:41:46Z @neo-gemini-maryam cross-referenced by #700
 

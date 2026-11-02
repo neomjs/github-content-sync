@@ -1,13 +1,13 @@
 ---
 id: 62
-title: Corpus-loss cause capture must be a live event stream — the daemon retains no history to reconstruct from
+title: 'Corpus-loss attribution: a before-and-after corpus series beside the bridge''s death record'
 state: OPEN
 labels:
   - enhancement
   - ai
 assignees: []
 createdAt: '2026-08-05T23:03:19Z'
-updatedAt: '2026-08-26T15:06:49Z'
+updatedAt: '2026-11-02T18:49:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/62'
 author: neo-opus-vega
 commentsCount: 0
@@ -22,60 +22,40 @@ contentTrust:
 blockedBy: []
 blocking: []
 ---
-# Corpus-loss cause capture must be a live event stream — the daemon retains no history to reconstruct from
+# Corpus-loss attribution: a before-and-after corpus series beside the bridge's death record
 
-## Problem
+**Rewritten 2026-11-02 against Brain `dev` `92a7ec44`** for the #1438 backlog sweep. The original body (filed 2026-08-05) is in this issue's edit history.
 
-A corpus loss can currently happen without attribution. Detection exists in part (#16512 makes an empty KB degrade health), but **cause capture does not** — and the obvious approach cannot work.
+## What changed since filing
 
-`docker events` retains **nothing** on the observed daemon. Positive control: a query spanning a 100-minute window that provably contained a container restart returned **0 events for all containers**. So a `--since` poller can never reconstruct a death after the fact; only an already-open stream observes it. Arming before the occurrence is the only option.
+- **Death capture shipped for plane services** (#466, closed 2026-09-25). The deployment-state bridge reads Docker's `oom` and `die` events per service from a cursor on every snapshot cycle (`ai/daemons/orchestrator/services/DeploymentStateBridgeService.mjs:852`–`:905`; on by default, `ai/configBase.mjs:1698`). It keeps the last 10 deaths per service as `{at, exitCode, oomKilled}`, and both MCP healthchecks report the last one as `lastDeath`.
+- **The retention premise is sharper.** The original body read Docker's event retention as zero. #466 found a bounded buffer instead, one that a 1 Hz `docker exec` sampler rotated within minutes. That is why the bridge reads a short window from a cursor rather than reconstructing a death after the fact.
 
-That also corrects a natural assumption: it is not that retention had lapsed for one old occurrence — retention is effectively zero, so reconstruction was never available for any of them.
+## What remains
 
-## Requirements (each learned empirically)
+The bridge records why a container died. It does not record what the corpus looked like before and after the death. The bridge also runs in the orchestrator, which is itself one of the suspects. Still missing:
 
-1. **Live open event stream.** Exit code and signal arrive on the `die` event and exist nowhere afterwards.
-2. **Output on the host.** The subject of measurement is a container dying; output written inside that container is exactly what gets lost.
-3. **Continuous sampling, not event-driven.** The observed kills are unlogged and externally triggered — there is no in-process trigger to hang a handler on.
-4. **Record collection id alongside count.** The id change is the delete-and-recreate vs emptied-in-place discriminator; it is free to capture and it took multiple maintainers several hours to establish once by hand.
-5. **Sample host memory pressure.** A host-level reclaim kills without setting `OOMKilled` and without leaving time to log — every observed restart was `ExitCode=0`, unlogged, external.
-6. **Sample counts through a container that is not itself the suspect.** The orchestrator is a suspect; a serving MCP container works.
+1. A continuous series of per-collection count **and** collection id, sampled through a container that is not a suspect. A changed id is what tells delete-and-recreate apart from emptied-in-place.
+2. Host memory pressure beside that series, because a host-level reclaim kills a container without setting `OOMKilled`.
+3. An owner that survives the orchestrator's own death and a host restart. That is likely a host-edge lane, so ADR-0014's re-review trigger fires: classify the lane against the current host-edge / container-plane vocabulary (`ai/daemons/orchestrator/taskAuthority.mjs`) before implementation.
+4. A retention bound for the series, and retirement of the unversioned stopgap `~/.neo-ai/diagnostics/kb-loss-watch.sh`, which is still on the host and was last written 2026-08-05.
 
-## Prior art to lift
+## Acceptance Criteria
 
-A working stopgap exists at `~/.neo-ai/diagnostics/kb-loss-watch.sh` (host-side, unversioned). Proven by positive control: it captured `die exitCode:137` and an id-change row (`id=A/count=2650 → id=B/count=59754`) timestamped to the minute. It dies on reboot and is not tracked — hence this ticket.
-
-## ⚠️ ADR-0014 amendment is a hard prerequisite, not a follow-up
-
-If the durable owner is an **`Orchestrator` scheduler lane**, ADR-0014 §9's own re-review trigger fires: every new lane is classified **at the decision level** before implementation. Precedent — `swarm-heartbeat` (#11766), `tenant-repo-sync` (#11740), and `temporal-summary` (#14938) each required an amendment naming the lane's kind, its authority class, and its disable toggle.
-
-Two things that amendment must get right, because tonight showed both failure modes:
-
-- **Classify against the CURRENT vocabulary**, not the original §2.1 table. The live axis is **host-edge vs container-plane** (#16166), not cloud-vs-local; `ai/daemons/orchestrator/taskAuthority.mjs` (`TASK_AUTHORITY_BY_NAME`) is the runtime SSOT. See neomjs/neo#16571 — ADR-0014 still carries superseded per-lane prose that reads authoritative.
-- **The topology question is load-bearing here and unusual.** A watcher inside the container plane cannot observe its own plane dying — which is requirement 2. That may make this the rare lane that belongs on the **host edge**, and that is precisely the kind of call a decision record exists to capture rather than leave implicit in a config default.
-
-## Acceptance criteria
-
-- [ ] **ADR-0014 amendment landed** classifying this lane (kind, authority class, disable toggle) against the current host-edge / container-plane vocabulary, with the in-plane-observability constraint recorded as its rationale. Blocks implementation if the owner is a scheduler lane.
-- [ ] A durable owner exists and survives a host restart without manual intervention.
-- [ ] All six requirements above satisfied, each with coverage.
-- [ ] A loss produces an attributable record: timestamp, exit code, `OOMKilled`, `RestartCount`, per-collection count and id before/after, host pressure.
-- [ ] Retention policy for the captured series, so it does not grow unbounded.
-- [ ] Substrate-accretion note recorded: what this replaces (the unversioned host script) and its own sunset condition.
+- [ ] If the owner is a scheduler lane, an ADR-0014 amendment classifies it (kind, authority class, disable toggle), with the in-plane-observability constraint as its rationale.
+- [ ] A loss produces one attributable record that joins the bridge's death record with the corpus series: per-collection count and id before and after, and host pressure.
+- [ ] The owner survives a host restart and the orchestrator's own death without manual intervention.
+- [ ] The series has a retention bound, and the host stopgap is retired, with its replacement named.
 
 ## Out of scope
 
-- Diagnosing any specific past loss — neomjs/neo-agent-brain#66 owns that; this exists so the *next* one is attributable.
-- Health-degradation signalling on an empty KB — neomjs/neo#16512.
+- Diagnosing any past loss: #66.
+- Health degradation on an empty KB: neomjs/neo#16512.
+- Death capture for plane services: shipped by #466.
 
-## Related
+Related: #466, #66, neomjs/neo#16571 (ADR-0014 currency), neomjs/neo#16166 (the host-edge / container-plane projection).
 
-- neomjs/neo#16512 — empty KB degrades health (detection half).
-- neomjs/neo-agent-brain#66 — the unexplained emptying this exists to attribute next time.
-- neomjs/neo#16571 — ADR-0014 currency; the amendment this ticket needs must not repeat the stale-prose pattern.
-- neomjs/neo#16166 — the host-edge / container-plane authority projection to classify against.
-
-Authored by @neo-opus-vega (Claude Opus 5).
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 
 ## Timeline
@@ -84,4 +64,7 @@ Authored by @neo-opus-vega (Claude Opus 5).
 - 2026-08-05T23:03:20Z @neo-opus-vega added the `ai` label
 - 2026-08-26T15:06:51Z @tobiu added the `enhancement` label
 - 2026-08-26T15:06:51Z @tobiu added the `ai` label
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+- 2026-11-02T18:49:30Z @neo-opus-ada changed title from **Corpus-loss cause capture must be a live event stream — the daemon retains no history to reconstruct from** to **Corpus-loss attribution: a before-and-after corpus series beside the bridge's death record**
 

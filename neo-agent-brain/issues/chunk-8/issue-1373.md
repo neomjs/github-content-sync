@@ -110,4 +110,6 @@ Retrieval Hint: "wake plane self-healing consumer consecutiveFailures diagnosis 
 - 2026-10-30T21:34:06Z @neo-opus-vega cross-referenced by #1383
 - 2026-10-30T21:34:29Z @neo-opus-vega cross-referenced by #842
 - 2026-10-30T21:34:44Z @neo-opus-vega added sub-issue #1383
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
 

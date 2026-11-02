@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-07-30T11:27:07Z'
-updatedAt: '2026-09-25T18:17:28Z'
+updatedAt: '2026-11-02T19:26:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/84'
 author: neo-gpt-euclid
 commentsCount: 33
@@ -36,277 +36,64 @@ blocking:
 ---
 # Hard-cut this machine to the canonical Docker Agent OS, then delete legacy
 
-## Context
+## Intent and current verdict
 
-Native child of neomjs/neo-agent-brain#90; the live GitHub parent relationship is set.
+Retire the transition machinery left after this machine adopted the canonical Docker Agent OS. The operator's 2026-07-30 correction still governs: this is a one-machine hard cut and its cleanup, with the existing host-edge/container-plane boundary preserved.
 
-The operator corrected this ticket's premise on 2026-07-30: this is a one-user
-machine cutover, not a reusable enterprise migration. The previous implementation
-shape—a reversible lifecycle controller with permanent parity and fallback
-layers—was stopped before commit.
+**2026-11-02 intake: accept the cleanup goal; sharpen the deletion prescription.** Julia's #1438 backlog read correctly recovered the unfinished Part 3. The source census at `613df5d7c99283051d78ccbe485fed5f2e4e17c4` found retained consumers and coverage inside the proposed deletion set. A file name or a disabled default is insufficient retirement evidence. No source deletion or operational cutover was performed by this intake.
 
-Exact stopped-spike census at
-`dev@8849ca155d910bf608e8580c5ba8886280372be1`:
+## Baseline and authority
 
-| Surface | LOC |
-|---|---:|
-| General host adapter | 1,810 |
-| Reversible lifecycle core | 613 |
-| Local Compose/Caddy/docs | 328 |
-| New tests | 686 |
-| Tracked healthcheck/package support | +33/-1 |
-| **Total avoided addition** | **3,470 additions / 1 deletion = net +3,469** |
+Parts 1–2 and the 2026-08-07 client hard cut have historical cutover/deploy receipts in this thread; this remaining work concerns source cleanup. The current source has `deploymentMode: leaf('cloud', …)`, but **`authorityProfile` has an empty required default**, declared by each launcher (`ai/configBase.mjs:1486`; ADR 0019 §10.8). The prior body incorrectly called `container-plane` its default.
 
-The adapter/core implemented image attestations, generalized PID and writer
-censuses, scheduler projection/merge, durable transition receipts, ordered
-reverse safe-stop, and rollback containment. Those are coherent for a migration
-product and wrong for a one-time switch on the only local installation.
+`ai/mcp/client/config.mjs` selects authenticated Streamable HTTP for MC/KB at loopback ingress and retains local GitHub Workflow/Neural Link transports. Source state is not a new installed-runtime receipt.
 
-## Problem
+Design authority: ADR 0019 §10.7–10.8 (profile placement, explicit role, post-cutover compatibility sunset), the operator's hard-cut direction in this thread, and [Grace's scope census](https://github.com/neomjs/neo-agent-brain/issues/84#issuecomment-5427326350). Parent #90 has an [independent full epic review](https://github.com/neomjs/neo-agent-brain/issues/90#issuecomment-5427333715).
 
-This machine still depends on:
+## Remaining cleanup and consumer ledger
 
-- host `legacy-mixed` Orchestrator ownership;
-- per-resident stdio Memory Core and Knowledge Base writers;
-- beside-native parity Compose and external `.neo-ai-data` symlink sharing;
-- local-first AiConfig defaults that force the canonical deployment to restate
-  its normal posture; and
-- a host wake path that directly opens and mutates the graph through
-  `better-sqlite3`.
+All anchors below were read at `613df5d7`. They bind the removal decision; they do not assert that an installed deployment is using every available capability.
 
-Stopping the local Orchestrator today would remove important host effects,
-including wake delivery. Starting the container plane ad hoc would risk duplicate
-writers. The answer is one short, bounded ownership transfer followed by
-deletion—not a permanent coexistence controller.
-
-The graph ownership defect is now isolated as neomjs/neo#16180. It is a native child of
-this ticket, and this ticket is natively blocked by it. neomjs/neo#16180 replaces the
-direct host graph tail with a signed same-machine Shape-B dispatcher. neomjs/neo-agent-brain#129
-remains the broader remote/multi-machine delivery lane; its lease and migration
-scope is not imported into this one-machine cutover.
-
-## Target steady state
-
-- Docker Compose owns Memory Core, Knowledge Base, Chroma, GraphLog subscription
-  matching/digests, and the container Orchestrator.
-- The host owns only irreducible machine effects: the signed wake/session final
-  mile from neomjs/neo#16180, Neural Link/browser/OS effects, and repository-workflow
-  effects. Webpack remains a separate developer tool rather than an Agent OS
-  authority lane. A host model-provider process is optional only when explicitly
-  selected.
-- No host process imports `better-sqlite3`, `GraphService`, Memory Core graph
-  queries, or a graph database path.
-- Managed residents consume Memory Core and Knowledge Base through authenticated
-  HTTP ingress. Native MC/KB stdio is removed after the accepted cutover receipt.
-- There is one topology to operate and debug. No beside-native parity plane,
-  reverse-migration path, or unnamed compatibility consumer survives cleanup.
-
-## Fix: switch once, prove, delete
-
-### 1. Prepare the steady state
-
-1. Land neomjs/neo#16039 so the normal AiConfig posture is
-   `deploymentMode=cloud`, `authorityProfile=container-plane`, with
-   host-supervised Ollama/LM Studio disabled by default.
-2. Land neomjs/neo#16180 and prove that the host wake final mile is graphless. Container
-   Memory Core owns subscription evaluation, coalescing, signing, retry, and
-   graph state; the host verifies, durably accepts/deduplicates, applies
-   presence/no-clobber policy, and invokes an extracted local adapter.
-3. Remove Compose values that merely repeat AiConfig defaults. Retain secrets,
-   provider/model choices, tenant identity, privileged runtime capabilities,
-   listener/network placement, and explicit host-edge paths.
-4. Base this machine on production `docker-compose.yml` with only a tiny local
-   bind/ingress override. Do not layer on the beside-native parity profile.
-5. Repair `ROADMAP.md` so the v13.2 One Reality gate names the
-   Docker-canonical topology and MC/KB HTTP-only steady state rather than
-   promising stdio as a contributor fallback.
-
-The tracked preparation PR remains deliberately small: the canonical Compose
-override, routed health support, persistence/bootstrap artifacts, and the
-reviewed one-shot procedure/checklist. neomjs/neo#16180 is its prerequisite, not hidden
-inside that size envelope.
-
-### 2. Execute one operator cutover
-
-The operator runs the exact merged preparation revision:
-
-1. verify Docker, a fresh restorable logical backup, and one filesystem snapshot;
-2. quiesce resident stdio MC/KB writers and stop `legacy-mixed`;
-3. normalize this machine's known external `.neo-ai-data` symlink roots into the
-   canonical root once;
-4. start the canonical container plane on the existing bytes;
-5. switch resident MC/KB configs to authenticated HTTP through loopback ingress;
-6. start only the empirically required graphless host-edge processes;
-7. prove served plane identity, MC and KB write-read, exclusive owners, resident
-   consumption, signed wake delivery, and reboot/restart persistence.
-
-Rollback exists only inside that unreleased cutover window: stop the replacement,
-restore the snapshot, and restart the prior revision. Once the live receipt is
-accepted, migration is forward-only and the cleanup PRs delete the temporary
-procedure plus obsolete runtime surfaces.
-
-### 3. Delete the old reality
-
-In one or more narrow cleanup PRs immediately after the accepted live receipt,
-remove:
-
-- pilot promotion/demotion, latency, WAL snapshot/replay/baseline, and
-  parity-capture tooling where the capability census proves it
-  transition-only;
-- parity-capture artifacts, then parity-CI and beside-native dev Compose once
-  canonical final-topology coverage exists;
-- `legacy-mixed` and host-only compatibility branches, PID/state artifacts, and
-  duplicated entrypoints for container-owned lanes;
-- native MC/KB stdio support, transport opt-outs, and transition receipts;
-- the direct-graph Shape-C wake worker superseded by neomjs/neo#16180;
-- the uncommitted reverse scheduler-state merge and generalized rollback design
-  (never land it);
-- redundant environment overrides and retired local supervisor/sync wrappers;
-- tests and docs whose only subject was the removed migration reality; and
-- the one-shot cutover procedure itself after its receipt is recorded.
-
-## Orchestrator authority census
-
-neomjs/neo#16173 classifies 29 lanes. Classification is an ownership map, not automatic
-deletion authority:
-
-| Registry bucket | Count | Steady-state disposition | Deletion accounting |
-|---|---:|---|---|
-| `container-plane` | 16 | Executed by the container Orchestrator | Retain container execution code; delete only host/`legacy-mixed` branches, wrappers, PID/state artifacts, and duplicate entrypoints |
-| `shared-primitive` | 2 | Owned by the container-plane profile | Retain the shared primitive while a container consumer exists; do not count it as host deletion |
-| `host-edge` | 11 | An upper-bound registry class, not the final host process list | Revalidate each live lane; keep only an irreducible named host consumer |
-
-The live host census narrows two large candidates:
-
-| Lane | Existing production candidate | Paired test candidate | Current verdict |
-|---|---:|---:|---|
-| `primary-dev-sync` | 974 | 1,326 | Delete the runtime lane after its current consumers are proved absent; do not preserve a local/cloud sync product |
-| `swarm-heartbeat` | 1,905 | 1,609 | Delete the graph-owning lane after extracting `MailboxService.sweepExpiredTasks()` into a small container-owned cadence and routing wake through neomjs/neo#16180 |
-| **Candidate subtotal** | **2,879** | **2,935** | Candidate, not a deletion floor until shared dependencies and moves are separated |
-
-For all 18 container-owned lanes, the cleanup ledger must classify:
-
-1. retained container execution code;
-2. deleted `legacy-mixed` / host-only compatibility branches;
-3. deleted host-only wrappers, state, PID artifacts, or duplicated entrypoints;
-4. moved/re-added code, reported separately and excluded from net shrinkage.
-
-## MCP transport disposition
-
-`shared` is transport infrastructure, not a seventh MCP server.
-
-| Server family | Post-cutover transport | Disposition |
+| Surface | Current consumer or evidence | Required disposition before removal |
 |---|---|---|
-| Memory Core | authenticated HTTP | remove resident/native stdio |
-| Knowledge Base | authenticated HTTP | remove resident/native stdio |
-| file-system | local stdio | keep as an intentional host-local capability |
-| GitHub Workflow | local stdio | keep for local repository-workflow effects |
-| GitLab Workflow | local stdio | keep for local repository-workflow effects |
-| Neural Link | local stdio | keep for browser/OS possession effects |
-| shared `BaseServer` | infrastructure only | retain only for concrete server families that still own stdio |
+| `ai/scripts/diagnostics/{parityLatencyPair,captureParityLatencyPair}.mjs`, their two dedicated specs, `deploy/cloud/docker-compose.parity-capture.yml`, `Caddyfile.parity-capture` | Stdio-versus-HTTP comparison cluster. `FleetLifecycleService.capturePreparedRemoteMcpLatencyPair` (`:3758–3783`) dynamically imports the capture driver. | First coherent retirement candidate: census the callable wrapper and its consumers, then retire that complete comparison capability together, or preserve a demonstrated ongoing consumer. Do not leave its dynamic import pointing at a deleted file. Keep `inspectPreparedRemoteMcpAdapter`: real agent startup calls it in `ai/services/fleet/startAgentProvisioned.mjs:783`. |
+| `deploy/cloud/docker-compose.parity-ci.yml`, `test/playwright/integration-parity/**`, its Playwright/npm/CI wiring | Current Brain Integration matrix still runs this lane. `ParityTopology.integration.spec.mjs` tests complete-plane boot, recorder-log initialization, served identity, foreign expectations, missing/empty credentials, durable-root collision refusal, no egress and deterministic semantic recall. Unified integration is a separate fixture, not an established replacement for these arms. | Preserve the lane until an explicit arm-by-arm replacement mapping and equivalent canonical-fixture receipts exist. A rename or deletion that merely removes the tests does not meet this criterion. |
+| `test/playwright/unit/ai/deploy/ParityPlaneVolumeScoping.spec.mjs` | Besides dev-profile assertions, its second describe block protects canonical Docker custody, graphless host posture, secrets, tenant-mirror placement, integration placement and Focus projection publication. | Preserve or rehome each canonical assertion before retiring any obsolete profile assertions; whole-file deletion is not the prescription. |
+| `ai/daemons/orchestrator/scheduling/{primaryDevSync,swarmHeartbeat}.mjs` and their pipeline/registry wiring | `taskAuthority.mjs:107,115` classifies both as host-edge capabilities. The canonical host profile disables them, but `SwarmHeartbeatService` and `checkAllAgentIdle.mjs` import heartbeat target resolution; Focus collection/polling uses `primary-dev-sync` authority (`Orchestrator.mjs:1876,2218`). | Separate compatibility-only branches from retained role/capability contracts. Preserve those consumers, or name and validate their replacement/retirement together. Absence of a container consumer is not sufficient: these capabilities are classified as host-edge. |
+| `legacy-mixed` compatibility and ADR 0019 profile rows | ADR 0019 §10.8 explicitly schedules compatibility retirement after the accepted cutover; §10.7 still records dev/CI placement and revalidation obligations. | Retire compatibility with its complete launcher/authority/consumer census. Amend only the profile rows actually retired, and replace the corresponding coverage/revalidation pointers in the same change. |
 
-Therefore the final claim is **no native MC/KB stdio fallback**, not “no stdio
-anywhere.”
+The first owned next step is the latency-capture capability retirement decision, including its Fleet wrapper. The coverage and scheduler rows remain explicit work in this ticket; no speculative successor tickets are needed.
 
-## Deletion accounting
+## Avoided traps
 
-The strict whole-file pilot/parity set already proves 3,981 existing
-production/config LOC plus 2,353 paired test LOC. The cross-surface whole-file
-census raises the current existing-production/config floor to 4,935 LOC; the
-larger host-lane numbers above remain candidates until shared dependencies and
-moves are separated.
+`parity` also means permanent equivalence between contracts. These must remain unchanged and green unless a separate accepted requirement changes them:
 
-The target remains at least 10,000 existing production LOC deleted. The final
-ledger must either prove that target or explicitly falsify it with an
-irreducible keep ledger. It must:
+- `ai/scripts/lint/config-leaf-parity.json`
+- `test/playwright/unit/ai/scripts/lint/configTemplateParityProof.spec.mjs`
+- `test/playwright/unit/ai/mcp/validation/GuideToolParity.spec.mjs`
 
-- count existing production LOC deleted;
-- exclude avoided additions;
-- exclude moves and re-additions from net shrinkage; and
-- report tests, config, docs, and generated artifacts separately.
+Preserve canonical plane identity/coherence, authenticated HTTP MC/KB, in-process WAL drains, canonical backup/restore and host-edge wake/Neural Link. This source-cleanup scope does not authorize deleting pre-cutover data, changing credentials, installing a candidate, or restarting/redeploying services.
 
-Do not delete by association:
+## Acceptance Criteria
 
-- canonical plane identity/coherence and placement checks;
-- long-running HTTP Memory Core and Knowledge Base services;
-- in-process WAL drain cycles/locks used by Docker MC;
-- generated remote adapters and Fleet tenancy/readback;
-- genuinely container-used process supervision;
-- canonical backup/restore; or
-- unavoidable host wake/Neural-Link/repository effects and the two-role authority
-  guard while named host-edge lanes remain.
+- [ ] Retire the proven transition-only comparison capability as a complete consumer chain, including the latency driver, dedicated assets/tests and the Fleet wrapper's explicit disposition.
+- [ ] Retire obsolete parity-CI/profile artifacts only after the ledger's retained behavior has equivalent canonical coverage and completed receipts; preserve/rehome canonical assertions currently mixed into `ParityPlaneVolumeScoping.spec.mjs`.
+- [ ] Remove compatibility-only scheduling/role branches while preserving or explicitly replacing the heartbeat resolver, Focus authority checks and any other retained consumers.
+- [ ] Update ADR 0019 only for the actual retired profiles/compatibility and preserve the explicit-role invariant and current revalidation coverage.
+- [ ] Permanent equivalence guards remain unchanged and green.
+- [ ] The final cleanup ledger separates existing production LOC deleted from tests, config and docs. Until all rows are discharged, partial cleanup PRs reference this issue without closing it.
 
-## Acceptance criteria
+## Intake receipts and relationships
 
-- [ ] The normal AiConfig posture is the container/cloud reality; Compose no
-  longer restates matching defaults.
-- [ ] neomjs/neo#16180 lands first and statically proves that the host wake process has no
-  graph, SQLite, GraphService/query, or database-path dependency.
-- [ ] One restorable backup and snapshot are recorded before owner mutation.
-- [ ] This machine runs production Compose plus a minimal local bind/ingress
-  override on the existing canonical data.
-- [ ] No resident stdio MC/KB writer or `legacy-mixed` owner remains.
-- [ ] A resident consumes authenticated HTTP MC/KB; served plane identity and
-  MC/KB write-read pass.
-- [ ] Signed wake delivery and reboot/restart persistence pass with only the
-  irreducible host-edge processes.
-- [ ] The six-server transport matrix above is reflected in runtime config and
-  docs; shared `BaseServer` is not counted as a server.
-- [ ] Every one of the 18 container-owned lanes is attributed as retained
-  container code, deleted host compatibility, deleted wrapper/artifact, or
-  excluded move.
-- [ ] `ROADMAP.md` no longer promises native MC/KB stdio fallback.
-- [ ] The one-shot transition/rollback procedure is removed after the accepted
-  receipt.
-- [ ] The final ledger reports existing production deletion excluding avoided
-  additions and moves/re-additions; tests, config, and docs are separate;
-  ≥10,000 production LOC is proved or explicitly falsified by an irreducible
-  keep ledger.
-- [ ] The complete cutover-plus-cleanup series is net-negative and contains no
-  permanent parity, coexistence, reverse-migration, remote-graph, or native
-  MC/KB-stdio fallback layer.
+Existing assignee/author: `@neo-gpt-euclid`. Native parent: #90. Blockers neomjs/neo#16166, neomjs/neo#16180 and neomjs/neo#16181 are closed; their edges remain provenance. Live open-PR sweep found no overlapping cleanup PR (only #1314's separate family-history lane). No close-inactive workflow is present in this Brain tree; no `stale` or `no auto close` label is set. Created 2026-07-30; the November 2 rewrite does not make the older prescription current by itself.
 
-## Decision record impact
+ADR successor-risk: `adr-aligned` for the explicit-role and compatibility-sunset intent; profile/coverage retirement requires the paired ADR update above. KB found this ticket, #90, #253 and #144 rather than a newer replacement contract; MC searches supplied no replacement-coverage receipt. `pre_brief_session` reports `NODE_NOT_FOUND`, so live GitHub/source supplied the census.
 
-- ADR 0002 is amended by neomjs/neo#16180 for turn-priced Shape-B coalescing and the
-  bounded retry/mailbox-authoritative restart contract.
-- ADR 0014 is amended for the container authority and reduced graphless host
-  edge.
-- ADR 0019 is amended for cloud/container defaults and the
-  policy-vs-secret/deployment-choice boundary.
+Related: #425 / #500 volume custody; neomjs/neo#16039 defaults; #129 remote wake. Their completed work is not reopened here.
 
-## Out of scope
+Original Origin Session ID: `71ff2f5e-17d6-47b2-90db-82bc1773b0a0`
+Intake evidence: Euclid, 2026-11-02; reviewer-owned Memory Core session `7a8d6634-9d5b-436c-9192-c41f8c696331`.
 
-- General multi-machine installation packaging.
-- Generic remote/NAT delivery, exclusive-seat migration, or lease management
-  (#14168).
-- Multi-tenant membership, identity, fixtures, or admission from Discussion
-  #15605.
-- Preserving local behavior solely for hypothetical external local-Agent-OS
-  users.
-- Fleet diagnostics UI; shape that from the accepted live topology.
-
-## Related
-
-Parent neomjs/neo-agent-brain#90 · graphless host prerequisite neomjs/neo#16180 · broader remote wake neomjs/neo-agent-brain#129 ·
-defaults neomjs/neo#16039 · authority compatibility neomjs/neo#16166 · plane placement neomjs/neo#15800 ·
-generated adapters neomjs/neo#15805 / PR neomjs/neo#16053 · pilot tooling neomjs/neo#15806 / PR neomjs/neo#16037 ·
-downstream Discussion #15605.
-
-Origin Session ID: `71ff2f5e-17d6-47b2-90db-82bc1773b0a0`
-
-## MCP client default hard-cut ledger (2026-08-07)
-
-This is a bounded closure/cleanup contract after the accepted cutover. It does not replay the migration or reclassify host-local MCP families.
-
-| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| `Neo.ai.mcp.client.Client#bearerTokenEnvVar` (new config key) | neomjs/neo#10900 / PR neomjs/neo#11673 remote-transport contract; the Cycle-1 credential-gap finding on PR neomjs/neo#11673 | For remote transports only, resolve one Bearer token from the named instance env slot first, then `process.env`, and inject it into a fresh request-options/header object at transport construction. Never persist the resolved token into shared `ClientConfig`. | Missing/empty slot fails before connection. A literal `Authorization` header plus `bearerTokenEnvVar` is rejected as an ambiguous dual authority. | JSDoc in `Client.mjs` and schema note in `config.mjs`. | Focused unit tests prove resolution, non-mutation, collision rejection, and missing-token failure. |
-| `ClientConfig.mcpServers["memory-core"]` | This ticket transport matrix; ADR 0019 §10.7 | Native `streamable-http` to `http://127.0.0.1:3102/mc/mcp`, Bearer from `GH_TOKEN`; no host server spawn. | Missing auth fails loud; there is no stdio fallback. | Same config schema note. | Static config assertion plus live CLI healthcheck returning `plane.dataRoot=/app/.neo-ai-data`. |
-| `ClientConfig.mcpServers["knowledge-base"]` | This ticket transport matrix; ADR 0019 §10.7 | Native `streamable-http` to `http://127.0.0.1:3102/kb/mcp`, Bearer from `GH_TOKEN`; no host server spawn. | Missing auth fails loud; there is no stdio fallback. | Same config schema note. | Static config assertion plus routed health evidence. |
-| `ClientConfig.mcpServers["neural-link"]` | This ticket transport matrix; ADR 0014 host-edge boundary; `ArchitectureOverview.md` Neural Link bridge | Remains local stdio for browser/OS possession effects. | No transport inheritance from adjacent MC/KB rows. | None. | Focused regression assertion; canonical Compose has no Neural Link container. |
-
-Prior-art continuity: Memory Core raw memory `98371060-9a06-41bf-9ab9-da49e9b29b2e`. Intake classification: `valid-as-written` for this bounded cleanup clause; the migration itself is not replayed.
 
 
 ## Timeline
@@ -2047,4 +1834,6 @@ Owed here still: #466's AC-4 controlled-kill drill and the Docker label-filter c
 - 2026-10-05T13:24:04Z @neo-opus-ada cross-referenced by PR #887
 - 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
 - 2026-10-10T16:31:46Z @neo-opus-vega cross-referenced by #969
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
 

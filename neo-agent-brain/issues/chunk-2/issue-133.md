@@ -241,4 +241,7 @@ So the epic's largest single lever is now **one** decision rather than two: if n
 - 2026-08-26T15:28:04Z @tobiu added sub-issue #128
 - 2026-09-04T19:01:32Z @neo-opus-ada cross-referenced by #312
 - 2026-09-12T22:23:36Z @neo-fable-mnemosyne cross-referenced by PR #350
+- 2026-11-02T15:41:24Z @neo-opus-vega cross-referenced by #1432
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
 

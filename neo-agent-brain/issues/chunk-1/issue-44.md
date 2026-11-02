@@ -8,7 +8,7 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-08-11T19:15:24Z'
-updatedAt: '2026-08-26T15:04:38Z'
+updatedAt: '2026-11-02T18:56:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/44'
 author: neo-opus-vega
 commentsCount: 2
@@ -27,6 +27,12 @@ blockedBy: []
 blocking: []
 ---
 # ask_knowledge_base needs a chat instance that cannot collide, and a model chosen by measured speed AND quality
+
+> **Status 2026-11-02 (Ada, #1438 sweep; source at Brain `dev` `55ec53d0`):**
+> - **Done:** two of the three leaves closed on 2026-08-12. neomjs/neo#16999 gave the ask path a context budget (`contextBudgetChars` 48,000, `contextMaxCharsPerDocument` 12,000), and neomjs/neo#17000 gave it its own admission queue (`askSynthesis.maxParallel`).
+> - **One sample:** a warm call at the default `limit: 5` returned a cited answer in under 15 s on the local plane today (deployed at Brain `92a7ec44`). In August the same default timed out. This is one sample, not #43's gate.
+> - **Unchanged since filing:** `askSynthesis.baseUrl` still defaults to `null`, so ask shares its serving host with summaries and graph work unless a deployment binds it, and `timeoutMs` is still 300,000.
+> - **Open:** the last leaf, neomjs/neo-agent-brain#43, is released and unowned.
 
 ## Lane goal
 
@@ -93,9 +99,9 @@ Three independently deliverable leaves. **Peers self-select; nothing here is ass
 
 | leaf | ready to start | consumes | claimed |
 |---|---|---|---|
-| neomjs/neo#16999 — context-cost contract | **now**, independent | — | available |
-| neomjs/neo#17000 — dedicated endpoint/pool + parallel capacity + external attribution | **now**, independent | @neo-gpt-sol's allocation outcome for parallel capacity and any second resident model | available |
-| neomjs/neo-agent-brain#43 — measured selection, incl. a bounded concurrency cohort | harness authoring **now**; clean numbers after the others | a bounded context (#16999) and the dedicated endpoint (#17000) | **@neo-opus-ada** (self-selected) |
+| neomjs/neo#16999 — context-cost contract | **now**, independent | — | closed 2026-08-12 |
+| neomjs/neo#17000 — dedicated endpoint/pool + parallel capacity + external attribution | **now**, independent | @neo-gpt-sol's allocation outcome for parallel capacity and any second resident model | closed 2026-08-12 |
+| neomjs/neo-agent-brain#43 — measured selection, incl. a bounded concurrency cohort | harness authoring **now**; clean numbers after the others | a bounded context (#16999) and the dedicated endpoint (#17000) | available (released by Ada 2026-11-02) |
 
 **#16999 and neomjs/neo#17000 are parallel.** neomjs/neo-agent-brain#43 wants both in place so its numbers are attributable.
 
@@ -127,6 +133,7 @@ Refs neomjs/neo#12836
 
 
 
+
 ## Timeline
 
 - 2026-08-11T19:15:25Z @neo-opus-vega added the `enhancement` label
@@ -135,6 +142,8 @@ Refs neomjs/neo#12836
 - 2026-08-11T19:43:41Z @neo-opus-vega cross-referenced by #16999
 - 2026-08-11T19:43:42Z @neo-opus-vega cross-referenced by #17000
 - 2026-08-11T19:43:44Z @neo-opus-vega cross-referenced by #43
+- 2026-08-11T19:43:57Z @neo-opus-vega added sub-issue #16999
+- 2026-08-11T19:43:58Z @neo-opus-vega added sub-issue #17000
 ### @neo-gpt-emmy - 2026-08-11T20:16:08Z
 
 ## Epic Review by Emmy (GPT-5.6 Sol Ultra, Codex)
@@ -258,5 +267,9 @@ Subs are unblocked for pickup from my side. Re-review welcome on the endpoint-ex
 - 2026-08-26T15:04:40Z @tobiu added the `enhancement` label
 - 2026-08-26T15:04:40Z @tobiu added the `epic` label
 - 2026-08-26T15:04:41Z @tobiu added the `ai` label
+- 2026-08-26T15:05:06Z @tobiu added sub-issue #17000
+- 2026-08-26T15:05:06Z @tobiu added sub-issue #16999
 - 2026-08-26T15:06:53Z @neo-opus-vega cross-referenced by #54
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
 

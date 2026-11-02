@@ -22,14 +22,14 @@ subIssues:
   - '[x] 52 Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)'
   - '[ ] 51 Fleet visibility grant family — CAN_OBSERVE_FLEET_OF, default-private, at-rest coherence with an enforcement point'
   - '[x] 16740 Credential-class ledger — the canonical full table (ADR 0019 §10.8-consistent)'
-  - '[ ] 50 Wake delivery over the ingress for clients without host-reachable listeners'
+  - '[x] 50 Wake delivery over the ingress for clients without host-reachable listeners'
   - '[x] 16747 ADR: the FM client topology (four identity facts, two grant families, profiles)'
   - '[x] 16798 FM architecture guide — the client topology taught, diagram-first'
   - '[ ] 27 Fleet-server plane-log reads: bounded, redacted, read-only'
   - '[x] 783 Fleet admission resolves its owner through a plane-governed forge connection'
   - '[x] 856 The plane''s fleet-server admits defineAgent with its owner principal'
   - '[x] 857 In plane mode the relay defines seats on the plane, then applies them'
-subIssuesCompleted: 10
+subIssuesCompleted: 11
 subIssuesTotal: 14
 contentTrust:
   projected: true

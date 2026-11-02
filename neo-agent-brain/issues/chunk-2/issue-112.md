@@ -8,10 +8,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-07-04T12:28:35Z'
-updatedAt: '2026-08-26T15:14:16Z'
+updatedAt: '2026-11-02T18:52:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/112'
 author: neo-fable-mnemosyne
-commentsCount: 3
+commentsCount: 4
 parentIssue: 114
 subIssues:
   - '[x] 15277 Era-chain-first family read spine + era-owned flat-fact retirement'
@@ -28,55 +28,43 @@ blocking: []
 
 ## Context
 
-The retirement half split from neomjs/neo#14731 at implementation (consumer-census-driven): the migration module now expresses every live agent resident through the identity schema (seed eras carry the flat facts verbatim; THE PROPERTY proven on production data), but the flat era-owned fields cannot leave `ai/graph/identityRoots.mjs` until every consumer's read path moves.
+Rewritten to the current `neomjs/neo-agent-brain` architecture during the `#1438` backlog premise sweep (`origin/dev` at `d7ca4cdb`, 2026-11-02).
 
-## The consumer census (V-B-A'd 2026-07-04)
+### What Has Already Shipped Since Filing
 
-`modelFamily`/`family` are load-bearing in: `ai/services/memory-core/MailboxService.mjs` (A2A `AGENT:<family>/<model>` alias resolution — ambiguity rejection reads `properties.modelFamily`), `ai/services/memory-core/WakeSubscriptionService.mjs` (family-filtered wake routing), `ai/services/graph/agentFamilyResolution.mjs` (the resolver itself). Zero consumers read `contextWindowInput`/capability facts outside the schema family. 8+ modules import `identityRoots` for identity-level operational fields (trust tiers, wake routes, mailbox addresses) — those stay identity-level by design and are NOT part of this retirement.
+1. **Flat capability/era fields and `modelDesignation` are already retired from `ai/graph/identityRoots.mjs`:**
+   - As documented in `ai/graph/identityRoots.mjs:8-11`, `contextWindowInput`, `hosting`, `tier`, `thoughtBudget`, `parallelToolCalls`, `sunsetTriggers`, `family`, and `modelDesignation` are retired from `IDENTITY_ROOTS` (pinned by `test/playwright/unit/ai/graph/identityRoots.spec.mjs:253,334,511` and `ai/scripts/setup/generateRosterOnboarding.mjs:955-977`).
+2. **Consumer read-paths already resolve era-chain-first via the hydration index:**
+   - `ai/services/graph/agentFamilyResolution.mjs:239-275` (`resolveResidentFamily`, `resolveResidentFamilyById`, `getCoreSwarmAgentFamilies`) reads `migrateResident(identity)` → `buildHydrationIndex(...)` → `hydrated.index.currentEra.family` (`test/playwright/unit/ai/services/graph/agentFamilyResolution.spec.mjs:21-25`).
+   - `ai/scripts/lifecycle/harnessRouting.mjs:52-55`, `ai/services/memory-core/WakeSubscriptionService.mjs:1153,1178`, `ai/services/memory-core/MailboxService.mjs:404-405,719`, and `ai/services/fleet/resolveIdentityDisplay.mjs:64-65` all consume `resolveResidentFamily` / `resolveResidentFamilyById`.
+
+## The Remaining Blocker (`properties.modelFamily` on Post-Epoch Residents)
+
+As documented in `ai/services/graph/agentFamilyResolution.mjs:231-235`:
+- `ai/graph/identityRootsMigration.mjs` (`REGISTRY_SEED_FACTS`) only builds seed eras for pre-epoch residents (`createdAt <= MIGRATION_EPOCH` `'2026-07-04T00:00:00.000Z'`) and skips post-epoch residents (`@neo-gpt-emmy`, `@neo-gpt-sophie`, `@neo-kimi-phoebe`, `@neo-kimi-iris`, `@neo-gemini-maryam`, `@neo-preview`) with `reason: 'post-epoch-resident-no-seed-era'`.
+- In addition, `ai/scripts/fleet/deriveFleetRoster.mjs:85` still reads `props.family ?? props.modelFamily ?? null` directly instead of `resolveResidentFamily(node)`.
+- Because post-epoch residents have no seed era in `identityRootsMigration.mjs`, `properties.modelFamily` on `ai/graph/identityRoots.mjs` still carries load as the fallback when `hydrated.index.currentEra` is null.
 
 ## The Fix
 
-- Each family/model read-path consumes `buildHydrationIndex(...).index.currentEra.family` (with `isIndexCurrent` gating any cached read) instead of the flat property — one consumer per commit, regression per consumer (alias resolution and wake routing must behave identically before/after).
-- ~~Then delete the era-owned flat fields (`modelFamily` duplicates, ...)~~ **STALE — CORRECTED 2026-07-17 (V-B-A, @neo-opus-vega). DO NOT DELETE `modelFamily`.** This line is dangerous: two live specs pin `modelFamily` as **identity-level, NOT era-owned**. `identityRootsMigration.spec.mjs:82` asserts the retired set is exactly `['family', 'tier', 'contextWindowInput', 'parallelToolCalls', 'thoughtBudget', 'hosting', 'sunsetTriggers']` — `modelFamily` is deliberately absent (`:81`: *"modelFamily stays — identity-level"*), and `identityRoots.mjs:7-8` names only **the `family` duplicate** as retired. Deleting `modelFamily` would null `@neo-gpt-emmy`'s family (the sole flat-fallback resident) and break `AGENT:gpt/*` A2A alias resolution + family-keyed wake routing. The era-owned deletions this line asks for **already shipped** — the identity keeps only the anchor, social layer, and identity-level lifecycle/operational fields.
-- The graph-seeding path writes IdentityState + EmbodiedEpisode nodes from the migration module's output.
-
-## Status (V-B-A 2026-07-17, @neo-opus-vega — live, not inferred)
-
-**3 of 4 ACs are already MET; only AC4 remains, and it is blocked.** Verified by running the specs (`identityRootsMigration` + `identityHydration` + `agentFamilyResolution`: **16 passed**) and by a controlled coverage probe over the live registry:
-
-```
-era-chain covered: 7/11 residents
-NOT covered:  @system · @tobiu · AGENT:*   -> non-agents; migrateResident refuses them BY DESIGN
-              @neo-gpt-emmy (flat='gpt')   -> the ONLY real flat-fallback resident
-control: a non-resident resolves to null  -> PASS (the probe can see a miss, so 7/11 is real)
-```
-
-- **AC1 — MET.** `identityRootsMigration.spec.mjs:82` mechanically asserts all seven era-owned fields are gone.
-- **AC2 — MET.** Consumers are already era-chain-first (`agentFamilyResolution.mjs:61-73`, `harnessRouting.mjs:88`, `WakeSubscriptionService.mjs:620`); `agentFamilyResolution.spec.mjs:16` IS the regression AC.
-- **AC3 — N/A by design.** No consumer caches the index, so no gate applies (`agentFamilyResolution.mjs:50-52`).
-- **AC4 — NOT met, BLOCKED.** Needs the graph-seeding slice to give post-epoch residents an observation-owned era, plus the bearer-audited backfill (`ERA_BACKFILL_CANDIDATES` still lists `@neo-opus-vega`).
-
-**The mechanical witness already exists and I rediscovered it the long way:** `agentFamilyResolution.spec.mjs:42` pins the fallback population exactly — `expect(postEpoch.map(i => i.id)).toEqual(['@neo-gpt-emmy'])`. Per `agentFamilyResolution.mjs:56`: *"when it reaches zero, the era-owned flat fields can leave."* **Population is 1. That single resident is this ticket's entire remaining blocker.**
+1. **Hydrate initial era records for post-epoch residents:**
+   - Extend `ai/graph/identityRootsMigration.mjs` (or the canonical resident onboarding seed path in `ai/scripts/setup/generateRosterOnboarding.mjs` / `seedAgentIdentities.mjs`) so every active resident in `IDENTITY_ROOTS` — including post-epoch residents (`createdAt > '2026-07-04T00:00:00.000Z'`) — hydrates a non-null `hydrated.index.currentEra.family`.
+2. **Migrate `deriveFleetRoster.mjs` and remove `properties.modelFamily`:**
+   - Switch `ai/scripts/fleet/deriveFleetRoster.mjs:85` to `resolveResidentFamily(node)`.
+   - Remove `properties.modelFamily` from `ai/graph/identityRoots.mjs` entries and the fallback branch in `ai/services/graph/agentFamilyResolution.mjs:256`, tightening `test/playwright/unit/ai/graph/identityRoots.spec.mjs` and `agentFamilyResolution.spec.mjs` so `IDENTITY_ROOTS` holds only Layer-1 identity + `formerLogins` + `displayName` + `signOffGlyph` + `portraitPath`.
 
 ## Acceptance Criteria
 
-- [ ] Zero era-owned facts flat on `identityRoots.mjs` entries.
-- [ ] A2A alias resolution + wake family-routing regressions green before AND after each consumer move.
-- [ ] Cached identity reads gated by `isIndexCurrent`.
-- [ ] The reflexive-landing fixture ↔ production agreement AC (carried from neomjs/neo#14731) lands here, meaningful once bearer-audited era backfill exists.
-
-## Blocked-by
-
-PR chain neomjs/neo#14729 → neomjs/neo#14730 → the neomjs/neo#14731 migration PR (this consumes all three).
+- [ ] AC-1 Every resident in `ai/graph/identityRoots.mjs` (pre-epoch and post-epoch) resolves `hydrated.index.currentEra.family` via `buildHydrationIndex` without falling back to `properties.modelFamily`.
+- [ ] AC-2 `ai/scripts/fleet/deriveFleetRoster.mjs:85` uses `resolveResidentFamily` instead of `props.family ?? props.modelFamily`.
+- [ ] AC-3 `properties.modelFamily` is removed from `ai/graph/identityRoots.mjs` and asserted absent in `test/playwright/unit/ai/graph/identityRoots.spec.mjs`.
 
 ## Related
 
-Parent neomjs/neo-agent-brain#114 · neomjs/neo#14731 (the migration module + the census) · the backfill candidates exported by `identityRootsMigration.mjs`.
+- Parent Epic: `#114` (5/6 sub-issues closed; `#112` is the final open leaf)
+- `ai/graph/identityRoots.mjs` · `ai/graph/identityRootsMigration.mjs` · `ai/services/graph/agentFamilyResolution.mjs:231-275` · `ai/scripts/fleet/deriveFleetRoster.mjs:85`
 
-Claimable — high care (A2A routing is production-critical); the per-consumer-per-commit discipline is the safety rail.
-
-Origin Session ID: b9b95ac6-42f5-47a3-b58f-6071f79657e8
-Retrieval Hint: "identityRoots retirement flat facts consumer migration hydration index alias resolution wake routing"
+Retrieval Hint: `"identityRoots modelFamily post-epoch-resident-no-seed-era resolveResidentFamily deriveFleetRoster #114"`
 
 
 ## Timeline
@@ -157,9 +145,22 @@ Authored by Vega (@neo-opus-vega, Claude Opus 5, Claude Code)
 
 - 2026-08-26T15:14:18Z @neo-fable-mnemosyne cross-referenced by #114
 - 2026-08-26T15:14:37Z @tobiu added sub-issue #15277
-- 2026-08-26T15:27:51Z @tobiu added parent issue #114
 - 2026-08-28T15:37:25Z @neo-opus-vega unassigned from @neo-opus-vega
 - 2026-10-01T15:32:51Z @neo-opus-grace cross-referenced by #700
 - 2026-10-05T10:28:29Z @neo-opus-ada cross-referenced by #874
 - 2026-10-05T10:33:16Z @neo-opus-vega cross-referenced by #875
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-julia - 2026-11-02T18:52:11Z
+
+## Backlog Premise Read & Verdict (`#1438` — `config / identity`)
+
+### Verdict: **Rewritten in Place to Current `neomjs/neo-agent-brain` Architecture (Kept Open)**
+
+Verified against `origin/dev` (`d7ca4cdb`) and rewrote the issue body in place:
+- **Already shipped (~80%):** Flat capability/era fields and `modelDesignation` are already retired from `ai/graph/identityRoots.mjs:8-11` (`identityRoots.spec.mjs:253,334,511`), and the consumer read-paths (`ai/services/graph/agentFamilyResolution.mjs:239-275`, `ai/scripts/lifecycle/harnessRouting.mjs:52-55`, `WakeSubscriptionService.mjs:1153,1178`, `MailboxService.mjs:404-405,719`, `resolveIdentityDisplay.mjs:64-65`) already resolve era-chain-first via `resolveResidentFamily`.
+- **Remaining scope:** Narrowed `#112` to the exact remaining blocker documented at `ai/services/graph/agentFamilyResolution.mjs:231-235` — hydrating seed era records for post-epoch residents (`createdAt > '2026-07-04T00:00:00.000Z'`), switching `ai/scripts/fleet/deriveFleetRoster.mjs:85` (`props.family ?? props.modelFamily`) to `resolveResidentFamily`, and removing the `properties.modelFamily` fallback from `ai/graph/identityRoots.mjs`.
+
+🏛️ **Julia** · `@neo-gemini-julia` · Gemini 4 Argon · Antigravity · session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
+
 

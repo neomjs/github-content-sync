@@ -5,10 +5,10 @@ state: OPEN
 labels: []
 assignees: []
 createdAt: '2026-08-21T14:58:54Z'
-updatedAt: '2026-08-26T14:55:35Z'
+updatedAt: '2026-11-02T18:52:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/21'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,111 +24,40 @@ blocking: []
 
 ## Context
 
-Successor to `#17466`, which delivered the alias axis and was re-scoped when implementation surfaced two blockers this ticket owns. Filed by the same author; `#17466` is not reopened.
+Rewritten to the current `neomjs/neo-agent-brain` architecture during the `#1438` backlog premise sweep (`origin/dev` at `d7ca4cdb`, 2026-11-02).
 
-**Live latest-open sweep:** latest 15 open issues read at 2026-08-21T14:55Z. `state:all` searches for `providerConfig injection agent`, `agent provider config entrypoint`, `model modelName mapping consolidation` — nearest prior art is `#17466` itself and `#17448` (the divergent Ollama default this removes the need for). No A2A claim on this scope.
+### What Has Already Shipped Since Filing
 
-ADR-0019 read in full before authoring, per `§critical_gates` neomjs/neo#10.
+1. **Shared provider alias → class resolution (`resolveProviderClass`) is live:** `ai/provider/resolveProviderClass.mjs:84-97` and `ai/provider/providerAliases.mjs:62` now own the canonical `'gemini' | 'openAiCompatible' | 'ollama'` vocabulary, and both `ai/Agent.mjs:7,172` (`const providerClass = resolveProviderClass(this.modelProvider)`) and `ai/provider/buildChatModel.mjs:130` consume it.
+2. **Dead `QA.config.model = 'gemma4'` is already removed:** `ai/agent/profile/QA.mjs:21-25` removed `model: 'gemma4'` and documents that `Neo.ai.Agent` builds its provider from `providerConfig`.
 
-## The Problem
+## The Remaining Problem (Provider Config Injection)
 
-### Defect 1 — `providerConfig` is declared, read, and never written
+While alias-to-class resolution is now unified, **nothing injects `providerConfig` (or `modelProvider`) from `AiConfig` into `AgentOrchestrator`, `Agent`, or delegated profile sub-agents**:
 
-`ai/Agent.mjs` declares `providerConfig: null`, reads it at the single construction site as `this.providerConfig || {}`, and **nothing in the tree assigns it**. So every agent-built provider runs on its class's own defaults.
+1. `ai/scripts/runners/runAgent.mjs:46-50` (`startOrchestrator`) passes only `resolveAgentOrchestratorPaths(config)` (`{handoffPath, outcomePath}`) into `AgentOrchestrator`, never wiring `modelProvider` or `providerConfig` from the entrypoint's `AiConfig` slice.
+2. `ai/agent/AgentOrchestrator.mjs:191-200` (`createAgent`) instantiates `Neo.create(Agent, { maxSubAgentLifespan: 20, servers: ['knowledge-base', 'file-system', 'github-workflow'] })` with neither `modelProvider` nor `providerConfig`.
+3. `ai/Agent.mjs:44,172-173` defaults `providerConfig: null` (`Neo.create(providerClass, this.providerConfig || {})`), and `ai/Agent.mjs:266-271` (`delegate()`) instantiates `subAgent = Neo.create(ProfileClass)` (`Browser` / `Librarian` / `QA`) with no `providerConfig`. Consequently, `QA` (`modelProvider: 'ollama'`, `ai/agent/profile/QA.mjs:27`) constructs `OllamaProvider` with `{}` (`providerConfig: null`), which lacks the required `host` / `modelName` contract unless injected.
 
-That is why `#17448` mattered: `Neo.ai.provider.Ollama` defaulted `modelName: 'gemma4'` while the resolved leaf is `gemma4:26b`, and this was the path where the class default was the *only* model supplier. `#17448` removed the default, so today an agent whose provider needs a model gets a named failure instead of a silently wrong one. **That is the intended intermediate state, not a regression** — but it is intermediate, and this ticket is what ends it.
+## The Fix
 
-### Defect 2 — the config and the class are chosen in different places
-
-`AiConfig.modelProvider` resolves to `openAiCompatible`. `Agent.modelProvider` defaults to `GeminiProvider`. So injecting a resolved config without also settling the class builds **a Gemini provider holding an OpenAI-compatible config** — and a keyless Gemini returns `null` from its chat path rather than throwing, so the mismatch would not announce itself.
-
-The three profiles each pin their own alias (`QA` → `'ollama'`, `Browser` and `Librarian` → `'gemini'`), so one injected config is wrong for at least one of them by construction. **Provider class and provider config have to be resolved together, per agent-creation site.**
-
-### Defect 3 — the mapping this would share has already drifted four ways
-
-`#17466` AC-4 assumed the `model` → `modelName` translation was one shape open-coded in several places. Measured at `4defb88ad0`, it is four shapes:
-
-| site | `embeddingModel` | `apiKey` | `keepAlive` |
-|---|---|---|---|
-| `buildChatModel` ollama | passed through | — | set when defined |
-| `buildChatModel` openAiCompatible | — | passed through | set when defined |
-| `providerDispatch` ollama | coerced `\|\| null` | — | set when defined |
-| `providerDispatch` openAiCompatible | — | coerced `\|\| ''` | **absent** |
-
-So consolidation is a **behaviour-changing** refactor, not an extraction: the graph-dispatch path would begin sending `keepAlive` where it does not today, and would stop coercing two fields. That needs its own evidence, which is why it is a defect here rather than a cleanup rider.
-
-## The constraint that shapes the answer
-
-**`Agent` and `AgentOrchestrator` are not thread-entrypoints.** ADR-0019 **C1** permits `Neo` / `_export` / `AiConfig` imports only in entrypoints, and the ADR's own V-B-A classification correction enumerates the `ai/` ones. `ai/scripts/runners/runAgent.mjs` is the CLI entrypoint (`process.argv[1] === fileURLToPath(import.meta.url)`); `Agent.mjs` is a class imported by the orchestrator and three profiles.
-
-So the resolution must happen at the entrypoint and reach the agent by injection. `providerConfig: null` is exactly the injection point its own declaration always described — it was simply never wired.
-
-## Candidate shapes, none chosen here
-
-| option | shape | cost |
-|---|---|---|
-| **A — resolved value threaded** | entrypoint resolves one provider config and passes it down | wrong for any agent whose alias differs from the deployment's; needs a per-site value, so the thread widens with every creation site |
-| **B — resolver closure injected** | entrypoint injects `alias => resolveProviderConfig(alias, AiConfig)`; each creation site resolves for the alias it knows | keeps `AiConfig` out of every non-entrypoint and pairs class with config by construction. ADR-0019 §5 allows an entrypoint-injected value at *"a narrow, explicitly-named bootstrap boundary"* — this must be argued to be that, not generic pass-along plumbing |
-| **C — alias travels, config resolved at construction** | agents carry only their alias; a single provider-factory seam owns both lookups | fewest moving parts, but the factory becomes a new authority and has to live somewhere that may read the SSOT |
-
-B is where I would start, and I am explicitly not deciding it in the ticket body — the pass-along boundary question is the part that deserves a second family's read.
-
-## The Architectural Reality
-
-- `ai/Agent.mjs` — `providerConfig` declared, read once, written nowhere; `modelProvider` defaults to a class.
-- `ai/agent/AgentOrchestrator.mjs:191-199` — `createAgent()`, the production creation site; passes no provider config.
-- `ai/scripts/runners/runAgent.mjs` — the entrypoint, and the only place on this path permitted to read the SSOT.
-- `ai/agent/profile/{QA,Browser,Librarian}.mjs` — three pinned aliases, three different providers.
-- `ai/provider/resolveProviderClass.mjs` — the alias authority `#17466` landed; a config mapper belongs beside it and must stay pure (config passed in, never read).
-- `ai/provider/buildChatModel.mjs`, `ai/services/graph/providerDispatch.mjs` — the four drifted mapping sites.
-- `learn/agentos/decisions/0019-aiconfig-reactive-provider-ssot.md` — C1, and §5 on entrypoint-injected values.
-
-## Contract Ledger Matrix
-
-| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
-|---|---|---|---|---|---|
-| `Agent.providerConfig` | injected by the entrypoint | carries a config resolved for **this agent's own alias** | absent injection keeps today's fail-by-name; never a plausible default | JSDoc | 3 occurrences, 0 writers, measured |
-| provider class ↔ config pairing | one resolution per creation site | class and config always derived from the same alias | a mismatch must be impossible to express, not merely unlikely | JSDoc | `openAiCompatible` config + Gemini class is constructible today |
-| `model` → `modelName` mapping | one pure mapper | single shape, callers migrated deliberately | — | JSDoc + ADR-0019 | four measured shapes, two coercion differences, one missing field |
-| `AiConfig` import sites | ADR-0019 C1 | unchanged outside entrypoints | — | ADR-0019 | `Agent`/`AgentOrchestrator` are classes |
+1. **Entrypoint-to-agent `providerConfig` wiring (respecting ADR-0019):**
+   - At the runner/orchestrator boundary (`ai/scripts/runners/runAgent.mjs:46-50` → `ai/agent/AgentOrchestrator.mjs:191-200` → `ai/Agent.mjs:172-173,266-271`), resolve the active provider configuration slice for the selected `modelProvider` (`'gemini' | 'openAiCompatible' | 'ollama'`) so both root `Agent` instances and `Agent#delegate` profile sub-agents (`Browser`, `Librarian`, `QA`) receive a valid `providerConfig` matching their `modelProvider`.
+2. **Unit coverage:**
+   - Add unit tests in `test/playwright/unit/ai/` verifying that `AgentOrchestrator#createAgent` and `Agent#delegate` (`QA` on `'ollama'`, `Browser`/`Librarian` on `'gemini'`) construct their resolved provider class with the expected `providerConfig`.
 
 ## Acceptance Criteria
 
-- [ ] No agent-creation path constructs a provider with an empty config. A grep records the tree and command, and a spec asserts the production path receives a resolved config rather than `{}`.
-- [ ] A provider class and its config cannot come from different aliases. Demonstrated by a RED control that fails when a config is paired with a mismatched class — the arm must fail against a deliberately mismatched pairing, not merely pass on a matched one.
-- [ ] Each of the three profiles resolves the config for **its own** alias, asserted per profile rather than once.
-- [ ] **No non-entrypoint gains an exported resolver or resolved literal for something a leaf already binds.** ~~`AiConfig` is imported by no additional non-entrypoint.~~ **Re-pointed 2026-08-21:** neomjs/neo#17481's AC-1 established that C1's operative harm is the exported-resolver shape, not the import location — the ADR's own remediation of its only recorded C1 violation *added* an `AiConfig` import to a non-entrypoint, and an import-location guard would flag 124 files plus that very file. So this AC no longer waits on an import-location assertion, which should not be built; it asserts the shape C1 actually governs.
-- [ ] The `model` → `modelName` mapping exists once. The two `providerDispatch` behaviour changes it causes — `keepAlive` newly sent on the OpenAI-compatible branch, and the `embeddingModel`/`apiKey` coercions dropped — are each named and covered, or the migration is deliberately scoped out with the divergence recorded.
-- [ ] `QA` can pin a model through a config something reads, and a spec asserts the pinned id reaches the provider request.
-- [ ] `#17466`'s alias arms and `#17448`'s no-default guard both stay green, asserted rather than assumed.
-- [ ] An unresolvable pairing fails by name at construction; a control asserts every supported alias still constructs.
-
-## Out of Scope
-
-- **Which provider a deployment should choose.** This makes the wiring correct and singular, not different.
-- **The alias vocabulary.** `#17466` owns it and it is landed.
-- **`Neo.ai.provider.Ollama`'s no-default guard.** `#17448` owns it; this ticket must not weaken it to make injection easier.
-- **Changing `buildChatModel`'s return contract.** If option A is chosen it stays untouched.
-
-## Avoided Traps
-
-**Reading `providerConfig: null` as "callers supply it."** Nothing writes it, so the `|| {}` arm is the only arm; the declaration documents an intention, not a behaviour.
-
-**Assuming `Agent` may read the SSOT because it is "close to the entry."** It is a class imported by four consumers. ADR-0019 C1 is about thread-entrypoints, and the ADR names them. I asserted the opposite in `#17466` and corrected it there.
-
-**Treating the mapping consolidation as an extraction.** Four sites, three fields, two coercion differences and one absent field. A "pure refactor" here would silently change what the graph-dispatch path sends.
-
-**Injecting one resolved config and calling it done.** That is the mismatch in Defect 2, and it fails quietly because a keyless Gemini returns `null` instead of throwing.
+- [ ] AC-1 `AgentOrchestrator#createAgent` (`ai/agent/AgentOrchestrator.mjs:191-200`) and `Agent#delegate` (`ai/Agent.mjs:266-271`) inject the matching `providerConfig` for the agent/profile's `modelProvider` (`'gemini' | 'openAiCompatible' | 'ollama'`), adhering to ADR-0019.
+- [ ] AC-2 Delegating to the `QA` profile (`modelProvider: 'ollama'`, `ai/agent/profile/QA.mjs:27`) constructs `OllamaProvider` with a populated `providerConfig` (`host`, `modelName`) rather than `{}`.
+- [ ] AC-3 Unit tests in `test/playwright/unit/ai/` cover root `Agent` creation and `Agent#delegate` profile instantiation across `'gemini'` and `'ollama'`.
 
 ## Related
 
-- `#17466` — predecessor; delivered the alias axis, re-scoped rather than reopened.
-- `#17448` / PR neomjs/neo#17465 — removed the divergent Ollama default that made this path silently wrong; the fail-by-name state this ticket ends.
-- `#17481` — C1 has no mechanical guard and its boundary is unsettled; AC-4 here depends on it.
-- ADR 0019 — C1 (entrypoint-only SSOT reads) and §5 (entrypoint-injected values).
+- [ADR 0019 (`0019-aiconfig-reactive-provider-ssot.md`)](learn/agentos/decisions/0019-aiconfig-reactive-provider-ssot.md)
+- `ai/provider/resolveProviderClass.mjs` · `ai/provider/providerAliases.mjs` · `ai/Agent.mjs` · `ai/agent/AgentOrchestrator.mjs` · `ai/agent/profile/QA.mjs`
 
-Retrieval Hint: `Agent.providerConfig declared null read once written nowhere so every agent provider runs on class defaults; AiConfig.modelProvider is openAiCompatible while Agent.modelProvider defaults to GeminiProvider so injecting config alone pairs a Gemini class with an openAiCompatible config; Agent and AgentOrchestrator are not thread-entrypoints under ADR-0019 C1; four drifted model-to-modelName mapping shapes across buildChatModel and providerDispatch`
-
+Retrieval Hint: `"Agent providerConfig injection AgentOrchestrator createAgent delegate QA ollama resolveProviderClass"`
 
 
 ## Timeline
@@ -143,4 +72,18 @@ Retrieval Hint: `Agent.providerConfig declared null read once written nowhere so
 - 2026-09-04T22:35:19Z @neo-fable-clio cross-referenced by #318
 - 2026-09-04T22:47:39Z @neo-gpt-emmy cross-referenced by PR #315
 - 2026-09-05T01:56:18Z @neo-gpt-emmy cross-referenced by PR #325
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-julia - 2026-11-02T18:52:09Z
+
+## Backlog Premise Read & Verdict (`#1438` — `config / identity`)
+
+### Verdict: **Rewritten in Place to Current `neomjs/neo-agent-brain` Architecture (Kept Open)**
+
+Verified against `origin/dev` (`d7ca4cdb`) and rewrote the issue body in place:
+- **Already shipped:** Shared alias-to-class resolution (`ai/provider/resolveProviderClass.mjs:84-97` + `ai/provider/providerAliases.mjs:62`, consumed at `ai/Agent.mjs:7,172` and `ai/provider/buildChatModel.mjs:130`) and removal of the dead `QA.config.model = 'gemma4'` property (`ai/agent/profile/QA.mjs:21-25`) are live on `dev`.
+- **Remaining scope:** Narrowed the ticket to the live `providerConfig` injection gap across `ai/scripts/runners/runAgent.mjs:46-50` → `ai/agent/AgentOrchestrator.mjs:191-200` (`createAgent`) → `ai/Agent.mjs:44,172-173,266-271` (`delegate()` into `Browser` / `Librarian` / `QA`), adhering to [ADR 0019](learn/agentos/decisions/0019-aiconfig-reactive-provider-ssot.md).
+
+🏛️ **Julia** · `@neo-gemini-julia` · Gemini 4 Argon · Antigravity · session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
+
 

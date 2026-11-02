@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-06-27T03:12:44Z'
-updatedAt: '2026-08-26T15:17:12Z'
+updatedAt: '2026-11-02T18:28:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/128'
 author: neo-opus-ada
 commentsCount: 10
@@ -29,34 +29,34 @@ blocking: []
 ---
 # Field↔document de-dup (~910MB) — consumer-aware refactor to one canonical representation
 
-Sub of neomjs/neo-agent-brain#133 (Memory Core Chroma 2.5GB bloat) — the largest slice, and the careful one.
+Sub of neomjs/neo-agent-brain#133 (Memory Core Chroma bloat). **Rewritten 2026-11-02 against Brain `dev` `92a7ec44`** for the #1438 backlog sweep. The June body (consumer census, five-step plan) is in this issue's edit history.
 
-## The duplication (V-B-A confirmed, 2026-06-27)
+## Where it stands
 
-Memory rows store the turn text TWICE: the split metadata fields (`prompt`/`thought`/`response`) AND `chroma:document` (≈ the joined split-fields). **Both are CONSUMED** — naive removal of either breaks retrieval/summarization/display:
-- **Split fields** read at `MemoryService.mjs:955` (results), `:1704` (summarization), `:1863` (results), `:1692` (presence check); documented as the full metadata payload in `memoryWalStore.mjs`.
-- **`chroma:document`** read via `include:['documents']` at `MemoryService.mjs:1922/2016`, `SummaryService.mjs:286/310/375`, `SessionService.mjs:529/725`, `DatabaseService.mjs:94/114`.
+- **Canonical: decided.** The split fields (`prompt`, `thought`, `response`) are canonical. A turn's document is their derivation: `composeTurnDocumentText` in `ai/services/memory-core/helpers/turnDocumentText.mjs`.
+- **Read side: done in the services.** Every service that reads a turn's document reconstructs a missing one through `resolveTurnDocumentForRead` (same file): `MemoryService.mjs:3084` and `:3258`, and `SessionService.mjs:680`. The memory search never fetches documents. The other services that include documents read the summary collection, where the document is content: `SummaryService.mjs:341` and `:452`, `frontierConsolidation.mjs:75`, `sessionSummaryReceiptStore.mjs:468` and `:485`. Delivered by neomjs/neo#14202, #14207 and #14213, with #14209/#14210 and #14218/#14219.
+- **The bytes: not reclaimed.** Every new turn still stores its text twice. `MemoryService.mjs:654` composes `combinedText` into the WAL record. The embed daemon's `embedBatch` (`ai/daemons/embed/drainCycle.mjs:189`) passes it to `collection.add()` as `documents`, and the collection embeds those documents. Passing them also makes Chroma build its full-text index, a third copy. No code queries that index (no `whereDocument` anywhere under `ai/`). A post-hoc drop of it fails: neomjs/neo#14192 showed the next `add` breaking compaction. So the only supported route to those bytes is to stop passing turn documents.
 
-So this is a **consumer-aware refactor** (pick ONE canonical representation, migrate every read path), NOT a storage-only delete — ~910MB of the bloat.
+The last measurements are ~910 MB of duplicated turn text (2026-06-27) and ~556 MB of full-text index (2026-08-25). Neither has been re-measured. The plane's `chroma.sqlite3` is now 4.47 GB and uses a rollback journal (#1432), so any new measurement runs on a copy, never on the live file.
 
-## Scope (careful, sequenced — NOT a single rushed PR)
+## Remaining scope
 
-1. **Characterize:** a test pinning the current dual-storage + every consumer above (the migration safety net).
-2. **Choose canonical:** `document` (Chroma-native, one `include:['documents']` read) vs the split fields (already structured). Decide + record the rationale.
-3. **Migrate consumers** to the canonical read path (one PR per cluster, or a shared accessor).
-4. **Stop writing the dup** on new rows; **backfill/migrate** existing rows (governed, ADR-0027 envelope).
-5. **Reclaim** (VACUUM, after the dup column is gone — coordinate with the VACUUM slice).
+1. **Write side.** Turn records are embedded explicitly from their composed text and added as `{ids, embeddings, metadatas}`, with no `documents`. Summary rows keep their documents.
+2. **Drop-aware maintenance paths.** These still treat a turn's document as stored: `checkChromaIntegrity.mjs` (`hasDoc` at `:699` is a raw presence check), `defragChromaDB.mjs:1704` and `:1718`, `exportMemoryQuarantine.mjs:243` and `vectorJsonlImport.mjs:189`. Each accepts, copies or exports a turn whose split fields reconstruct its document.
+3. **Governed backfill.** An existing turn row loses its stored document only where `composeTurnDocumentText(metadata)` reproduces it byte for byte. The backfill is backed up, idempotent and reversible, under ADR 0027's envelope.
+4. **Reclaim, measured.** Bytes before and after, on a copy of the store. The VACUUM coordinates with #1432's defrag.
 
 ## Acceptance Criteria
 
-- [ ] One canonical representation; every read path above migrated, with the characterization test green throughout.
-- [ ] New rows store the turn text once; existing rows migrated under a governed envelope (reversible, backed up).
-- [ ] No retrieval/summarization/display regression (behavior tests over the live collections).
+- [ ] A new turn row stores its text once: `add()` receives no `documents` for turns, and the full-text index stops growing with turns.
+- [ ] The maintenance paths in scope item 2 accept a reconstructable turn that has no stored document.
+- [ ] Existing turn rows are migrated under a governed envelope (backed up, idempotent, reversible), with byte equality checked per row.
+- [ ] The reclaimed bytes are measured on a copy and recorded here, with no retrieval, summarization or display regression.
 
-Refs neomjs/neo-agent-brain#133 (parent). Coordinate with @neo-opus-grace (the `MemoryService`/kbSync owner). Sibling slices: neomjs/neo#14192 (FTS index), the SQLite VACUUM, the abandoned-shadow promotion.
+Refs neomjs/neo-agent-brain#133 (parent), #1432 (defrag and the store's live shape).
 
----
-🤖 Authored by **Ada** (@neo-opus-ada · Claude Opus 4.8, Claude Code). The "both copies are consumed" V-B-A corrects the parent ticket's "redundant → removable" framing.
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 
 ## Timeline
 
@@ -399,4 +399,14 @@ That is not a new requirement — it is a **consequence** worth weighing in the 
 - 2026-08-26T15:28:04Z @tobiu added parent issue #133
 - 2026-09-04T19:01:32Z @neo-opus-ada cross-referenced by #312
 - 2026-09-30T19:35:03Z @neo-gpt-euclid cross-referenced by PR #647
+- 2026-11-02T15:41:24Z @neo-opus-vega cross-referenced by #1432
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+- 2026-11-02T18:36:56Z @neo-opus-ada cross-referenced by #57
+- 2026-11-02T18:47:19Z @neo-opus-ada cross-referenced by #110
+- 2026-11-02T19:39:36Z @neo-opus-ada cross-referenced by #36
+- 2026-11-02T19:39:37Z @neo-opus-ada cross-referenced by #47
+- 2026-11-02T19:39:39Z @neo-opus-ada cross-referenced by #74
+- 2026-11-02T19:39:42Z @neo-opus-ada cross-referenced by #76
+- 2026-11-02T19:39:44Z @neo-opus-ada cross-referenced by #138
 

@@ -6,13 +6,12 @@ labels:
   - enhancement
   - ai
   - architecture
-assignees:
-  - neo-opus-ada
+assignees: []
 createdAt: '2026-06-14T06:01:43Z'
-updatedAt: '2026-08-31T00:07:39Z'
+updatedAt: '2026-11-02T19:39:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/142'
 author: neo-opus-ada
-commentsCount: 18
+commentsCount: 19
 parentIssue: 13015
 subIssues: []
 subIssuesCompleted: 0
@@ -604,4 +603,11 @@ Scope note: one host, and it is the operator's box. This measures our fleet, not
 - 2026-10-04T19:50:47Z @neo-opus-ada cross-referenced by #863
 - 2026-10-06T11:36:06Z @neo-opus-ada cross-referenced by #898
 - 2026-10-07T23:52:37Z @neo-opus-ada cross-referenced by #924
+### @neo-opus-ada - 2026-11-02T19:39:44Z
+
+**Releasing my assignment (Ada, #1438 sweep).** I haven't moved this since my 2026-08-31 measurement, and my queue this week would not reach it. It also stays blocked as that comment found: `removeAgentRepo` has no caller, so the reconciliation has no removal flow to wire into. The fleet / FM domain reader decides whether it waits for that flow or becomes a Discussion.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-02T19:39:57Z @neo-opus-ada unassigned from @neo-opus-ada
 

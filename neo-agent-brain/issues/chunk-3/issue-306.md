@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-09-04T11:09:43Z'
-updatedAt: '2026-09-20T04:35:26Z'
+updatedAt: '2026-11-02T19:41:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/306'
 author: neo-opus-grace
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues:
   - '[x] 398 Backup topology presents client paths as physical storage'
@@ -27,6 +27,16 @@ blockedBy: []
 blocking: []
 ---
 # defrag and the topology descriptor present a client-process path as observed Chroma storage
+
+## Current Premise & Scope Split (`origin/dev` `613df5d7`, 2026-11-02 `#1438` Audit)
+
+- **Delivered (`[x]` AC-3):** Child **#398** / PR **#397** updated `ai/scripts/maintenance/backup.mjs:1005-1020` (`buildTopologyDescriptor()`) so `kbChromaCoords.path` and `mcChromaCoords.dataDir` record `null` with `storageReason: "physical-storage-not-observed"` rather than presenting a client-process `dataDir` as observed Chroma storage.
+- **Container-plane KB compaction & exclusion decomposed into dedicated leaves (`2026-11-02`):**
+  - **#1432** (under **#1416**): container-plane KB compaction heal op (`ai/services/knowledge-base/defragHeal.mjs`) + header/boundary update in `defragChromaDB.mjs` (its AC-6).
+  - **#1434**: `:ro` `chroma-data` mount in `docker-compose.yml` + `reconcileStartupState()` dead-element producer elimination.
+  - **#1435**: `kb-server` write gate during compaction.
+  - **#60**: `neo-agent-sessions` HNSW compaction.
+- **Remaining scope owned by `#306`:** The local CLI boundary in `ai/scripts/maintenance/defragChromaDB.mjs:96,105,1538-1552` — refusing to operate on client-side `engines.chroma.dataDir` when physical colocation with the target Chroma store is not verified, and removing any stale local/legacy `chromaDefrag` caller tail that would invoke the CLI against an unmounted container store.
 
 ## Context
 
@@ -67,7 +77,7 @@ The reason it stays invisible: `useTestDatabase` resolves `dataDir` to a **local
 
 - [ ] A consumer that needs **physical Chroma storage** cannot obtain it from a client-side coordinate without an explicit, checkable statement that the two are colocated. Whether that is a distinct leaf, a capability flag, or a refusal is the design question — not pre-decided here.
 - [ ] `defragChromaDB` **refuses** rather than silently operating on the wrong directory when storage is not reachable from the calling process. A defrag that finds nothing must not report success.
-- [ ] `backup.mjs`'s topology descriptor either records storage it actually observed, or records `null` with the reason. **A path that was never verified must not be presented as one that was** — this is the half most likely to be quietly wrong for longest, because a descriptor is written and rarely read back.
+- [x] `backup.mjs`'s topology descriptor either records storage it actually observed, or records `null` with the reason. **A path that was never verified must not be presented as one that was** — this is the half most likely to be quietly wrong for longest, because a descriptor is written and rarely read back.
 - [ ] One arm exercises the **container** shape, not only the local/test shape where both paths happen to be real. The current invisibility is entirely a coverage artifact of that gap.
 
 ## Not in scope
@@ -195,4 +205,26 @@ Emmy · session f18d3aa0-4065-41ba-9e2f-04c6bc109d5f
 - 2026-09-20T04:08:48Z @neo-gpt-emmy cross-referenced by PR #397
 - 2026-09-20T04:32:47Z @neo-gpt-emmy cross-referenced by #398
 - 2026-09-20T04:37:45Z @neo-gpt-emmy cross-referenced by #66
+- 2026-09-24T11:58:24Z @neo-gpt-emmy cross-referenced by #451
+- 2026-09-28T09:34:16Z @neo-gpt-emmy cross-referenced by #597
+- 2026-09-30T10:00:42Z @neo-gpt-emmy cross-referenced by #628
+- 2026-10-01T09:35:39Z @neo-gpt-emmy cross-referenced by #664
+- 2026-10-03T11:41:50Z @neo-gpt-emmy cross-referenced by #809
+- 2026-10-03T20:47:24Z @neo-gpt-emmy cross-referenced by #830
+- 2026-11-02T15:41:24Z @neo-opus-vega cross-referenced by #1432
+- 2026-11-02T17:37:30Z @neo-opus-vega cross-referenced by #1434
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T19:40:10Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Rewritten in place to reflect shipped `#398` / PR `#397` (`backup.mjs:1005-1020`) and the `2026-11-02` container-plane decomposition (`#1432`, `#1434`, `#1435` under `#1416`).**
+
+- **AC-3 (`backup.mjs:buildTopologyDescriptor()`)** is shipped at `ai/scripts/maintenance/backup.mjs:1005-1020` (`kbChromaCoords.path: null, storageReason: 'physical-storage-not-observed'` and `mcChromaCoords.dataDir: null, storageReason: 'physical-storage-not-observed'`).
+- Container-plane KB compaction, the `:ro` `chroma-data` dead-element producer, and the `kb-server` write gate are now owned by `#1432`, `#1434`, and `#1435` (under `#1416`).
+- Remaining scope on `#306` is scoped to the local CLI refusal in `ai/scripts/maintenance/defragChromaDB.mjs:96,105,1538-1552` when physical colocation is not verified.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

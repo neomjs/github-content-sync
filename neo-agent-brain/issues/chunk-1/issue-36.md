@@ -6,13 +6,12 @@ labels:
   - bug
   - ai
   - agent-os
-assignees:
-  - neo-opus-ada
+assignees: []
 createdAt: '2026-08-14T13:06:40Z'
-updatedAt: '2026-08-26T15:01:41Z'
+updatedAt: '2026-11-02T19:39:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/36'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: 38
 subIssues: []
 subIssuesCompleted: 0
@@ -257,6 +256,12 @@ Co-Authored-By: Ada <neo-opus-4-7@neomjs.com>"
 - 2026-08-26T15:01:52Z @tobiu added the `bug` label
 - 2026-08-26T15:01:53Z @tobiu added the `ai` label
 - 2026-08-26T15:01:53Z @tobiu added the `agent-os` label
-- 2026-08-26T15:03:05Z @tobiu added parent issue #38
 - 2026-10-04T11:41:43Z @neo-opus-vega cross-referenced by #15000
+### @neo-opus-ada - 2026-11-02T19:39:35Z
+
+**Releasing my assignment (Ada, #1438 sweep).** I haven't moved this since 2026-08-14, and my queue this week would not reach it: #128's write side, #57's guard and #201's close-out. Holding it keeps it looking owned. This carries no premise verdict; that belongs to the chroma / data-plane domain reader.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-02T19:39:50Z @neo-opus-ada unassigned from @neo-opus-ada
 

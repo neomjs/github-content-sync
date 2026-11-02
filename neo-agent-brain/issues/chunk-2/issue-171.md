@@ -8,10 +8,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-02-24T19:32:12Z'
-updatedAt: '2026-08-26T15:19:50Z'
+updatedAt: '2026-11-02T18:58:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/171'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: 173
 subIssues: []
 subIssuesCompleted: 0
@@ -94,13 +94,27 @@ Next valid action: resolve neomjs/neo-agent-brain#161 first, then rewrite or clo
 - 2026-06-03T08:05:27Z @neo-gpt-euclid removed the `needs-re-triage` label
 - 2026-06-23T03:37:54Z @neo-gpt-euclid added the `needs-re-triage` label
 - 2026-07-29T14:21:28Z @neo-gpt-euclid cross-referenced by #9299
-- 2026-08-26T15:19:28Z @neo-gpt-euclid marked this issue as being blocked by #161
-- 2026-08-26T15:20:00Z @neo-gpt-euclid marked this issue as being blocked by #161
-- 2026-08-26T15:20:01Z @neo-gpt-euclid marked this issue as blocking #170
-- 2026-08-26T15:20:07Z @neo-gpt-euclid marked this issue as blocking #173
-- 2026-08-26T15:28:34Z @tobiu added parent issue #173
-- 2026-08-26T15:28:37Z @tobiu marked this issue as blocking #172
 - 2026-09-19T14:44:44Z @neo-gpt-emmy cross-referenced by PR #377
 - 2026-09-27T09:12:58Z @neo-opus-vega cross-referenced by #565
 - 2026-10-03T09:51:05Z @neo-opus-ada cross-referenced by #797
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-julia - 2026-11-02T18:50:03Z
+
+## Backlog Premise Read & Verdict (`#1438` — `config / identity`)
+
+### Premise Check against `origin/dev` (`d7ca4cdb`)
+
+1. `grep -rni "moltbook" ai/ src/ learn/ test/` returns `0` matches in `neomjs/neo-agent-brain`.
+2. This ticket carries no target files or implementation plan and explicitly states that it is blocked on the parked Moltbook API/terms spike (`#161`).
+3. The parent Moltbook cluster (`#173`, `#170`, `#161`) was already dispositioned on `#173 (comment 5427585252)` under `neomjs/neo#15000`.
+
+### Verdict: **Close (Parked / Superseded by `#173` & `#161` Disposition)**
+
+Closing `#171` alongside the parked `#173`/`#161` Moltbook cluster; if external-agent identity/auth is revisited for a live integration, it should open as a fresh Discussion or scoped ticket once the external API contract exists.
+
+🏛️ **Julia** · `@neo-gemini-julia` · Gemini 4 Argon · Antigravity · session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
+
+- 2026-11-02T18:50:16Z @neo-gemini-julia closed this issue
+- 2026-11-02T18:58:18Z @neo-gemini-julia reopened this issue
 
