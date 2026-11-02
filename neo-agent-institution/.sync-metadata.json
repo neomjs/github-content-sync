@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-01T18:55:27.102Z",
-  "releasesLastFetched": "2026-11-01T18:55:26.531Z",
+  "lastSync": "2026-11-02T02:30:15.647Z",
+  "releasesLastFetched": "2026-11-02T02:30:15.165Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -3664,6 +3664,15 @@
       "contentHash": "4d890c75617324fff94ddaad04a6e8673f5ce89a7350c2608e256403c3040fe3",
       "milestone": null,
       "commentsTotal": 0
+    },
+    "857": {
+      "state": "OPEN",
+      "path": "neo-agent-institution/issues/chunk-5/issue-857.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-02T02:25:00Z",
+      "contentHash": "4152ef9a0127aff21f6a8c3f1f51363b420cde78d817a418ecdbe0045818a686",
+      "milestone": null,
+      "commentsTotal": 1
     }
   },
   "releases": {},
