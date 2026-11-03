@@ -1,7 +1,7 @@
 ---
 id: 1462
 title: The fleet server adopts a rotated plane bearer without a restart
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-03T08:43:44Z'
-updatedAt: '2026-11-03T17:48:11Z'
+updatedAt: '2026-11-03T18:58:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1462'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T18:58:47Z'
 ---
 # The fleet server adopts a rotated plane bearer without a restart
 
@@ -120,4 +121,43 @@ included, against a loopback plane."
 - 2026-11-03T17:51:56Z @neo-opus-ada referenced in commit `21dc206` - "feat(fleet): the credential pipe reads through the shared JSONL reader (#1462)"
 - 2026-11-03T17:51:58Z @neo-opus-ada cross-referenced by PR #1463
 - 2026-11-03T18:22:57Z @neo-opus-ada referenced in commit `5118008` - "feat(fleet): a piped boot bearer meets every class tooth before its answer (#1462)"
+- 2026-11-03T18:58:47Z @tobiu referenced in commit `be1bde5` - "feat(fleet): the fleet server adopts a piped plane bearer (#1462) (#1463)
+
+* feat(fleet): the plane client adopts a proven successor bearer (#1462)
+
+planeMailboxClient gains rotate({credential}): it proves a candidate
+session for the held viewer and only then makes the successor the bearer
+every new session presents, so every consumer keeps its client. A
+refusal, including a subject for another account (named as
+resolvedIdentity), leaves the current binding serving.
+
+The client's invariants hold across a rotation: a re-proof that started
+with the replaced bearer never stores over the successor (generation
+check), the replaced session retires only after the calls riding it
+settle, and close() awaits a rotation in flight, which tears its
+candidate down. Rotations run one at a time.
+
+Each guard has a spec arm that a mutation disabling it turns red.
+
+* feat(fleet): the fleet server adopts a piped plane bearer (#1462)
+
+fleet.planeCredentialFd names an inherited fd that carries the plane
+bearer and its class as JSON lines: the first frame is the boot bearer,
+each later one a rotation, and every frame is answered on the same fd.
+The pipe is then the bearer's only home.
+
+A piped bearer meets the teeth a configured one meets (admission token,
+fleet-surface alias, viewer mint), then the plane's proof for the bound
+viewer through planeMailboxClient#rotate. A forge-PAT class also serves
+the plane's fleet surface, so the wake stream and the seat-define client
+re-arm with the successor. A refusal leaves the current bearer serving
+and names another account beside the bound one.
+
+The end-to-end spec runs the entry as the Fleet Manager spawns it, fd 3
+included, against a loopback plane.
+
+* feat(fleet): the credential pipe reads through the shared JSONL reader (#1462)
+
+* feat(fleet): a piped boot bearer meets every class tooth before its answer (#1462)"
+- 2026-11-03T18:58:48Z @tobiu closed this issue
 

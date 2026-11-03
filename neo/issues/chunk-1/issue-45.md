@@ -3,13 +3,16 @@ id: 45
 title: 'Docs App: Theme button texts'
 state: OPEN
 labels:
+  - documentation
   - enhancement
-assignees: []
+  - ai
+assignees:
+  - neo-gemini-maryam
 createdAt: '2019-11-18T01:12:19Z'
-updatedAt: '2026-10-09T21:01:13Z'
+updatedAt: '2026-11-03T21:19:15Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/45'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -70,4 +73,32 @@ skills#56 still owns automating the hop; doing it by hand does not discharge it.
 
 #19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). **Reopened, valid.** Checked today on neomjs.com: the embedded Docs app renders dark while its buttons still offer "Theme Dark" and "Source View Theme Dark", since the texts are hardcoded (`docs/app/view/HeaderContainer.mjs`).
 
+- 2026-11-03T21:19:07Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T21:19:07Z @neo-gemini-maryam added the `documentation` label
+- 2026-11-03T21:19:11Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-03T21:19:15Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `documentation` (alongside existing `enhancement`). Stage retrospective passed. Self-assigning and proceeding to `ticket-intake`.
+
+### Ticket Intake Classification & Contract Ledger (`#45`)
+
+- **Ticket age:** `createdAt: 2019-11-18T01:12:19Z`, `updatedAt: 2026-10-09T21:01:13Z`
+- **Bot stale-band:** `pre-stale` (reopened and re-verified on `2026-10-09T21:01:13Z` in `IC_kwDODSospM8AAAABavGX9w`; `stale`: false, `no auto close`: false)
+- **Currency / successor-risk evidence:** Verified on `dev` that `docs/app/view/HeaderContainer.mjs` still hardcodes `text: 'Theme Dark'` (`reference: 'theme-button'`) and `text: 'Source View Theme Dark'` (`reference: 'source-view-theme-button'`), while `docs/app/view/MainContainerController.mjs` always initializes HighlightJS with `highlightjs-custom-github-theme.css` and never syncs either button's text to the effective initial theme (`me.component.getTheme()`). Also verified that `docs/app/view/MainContainer.mjs` still carries the temporary `theme: 'neo-theme-light'` override from `#5455` (`"Important for the Portal App, until the new theme fully supports it"`), which was superseded when `#8731` / `#8737` added `resources/scss/theme-neo-dark/apps/docs/` and `resources/scss/theme-neo-light/apps/docs/`.
+- **ADR successor-risk:** Not triggered.
+- **Core-Idiom Pre-Flight (`§9.6` & `apps/**` gate):** Verified `src/Neo.mjs` (`setupClass`, `create`), `src/core/Base.mjs` (`onAfterConstructed` -> `constructed` event), `src/component/Base.mjs` (`getTheme()`, `afterSetTheme()`), `src/controller/Component.mjs` (`onComponentConstructed()`, `getReference()`), `src/state/Provider.mjs`, `src/data/Model.mjs`, `src/data/Store.mjs`, and sibling `apps/portal/view/ViewportController.mjs`.
+- **Prescription checked:** `docs/app/view/MainContainerController.mjs` & `docs/app/view/MainContainer.mjs` — owns the concern.
+- **Verdict:** `valid-as-written` (positive ROI).
+
+#### Contract Ledger
+
+| Surface | Owner | Contract |
+|---|---|---|
+| `Docs.view.MainContainer` (`docs/app/view/MainContainer.mjs`) | Docs view | Removes the obsolete `theme: 'neo-theme-light'` override so `getTheme()` resolves the component's own `theme`, inherited parent theme (when embedded in Portal), or `Neo.config.themes[0]` (when run standalone). |
+| `Docs.view.MainContainerController#onComponentConstructed` (`docs/app/view/MainContainerController.mjs`) | Docs controller | Reads `me.component.getTheme()` after component construction, sets `theme-button.text` (`'Theme Light'` when dark, `'Theme Dark'` when light) and `source-view-theme-button.text` (`'Source View Theme Light'` when dark, `'Source View Theme Dark'` when light), and passes the matching initial `themePath` (`highlightjs-custom-dark-theme.css` when dark, `highlightjs-custom-github-theme.css` when light) to `Neo.main.addon.HighlightJS.loadFiles`. |
+| `Docs.view.MainContainerController#onSwitchThemeButtonClick` & `#onSwitchSourceViewThemeButtonClick` (`docs/app/view/MainContainerController.mjs`) | Docs controller | Toggles `view.theme` / `view.cls` and `hljs-theme` stylesheet path (`../../docs/resources/lib/` when embedded in `Portal`, `./resources/lib/` when standalone) in lockstep with the button texts. |
+
+— Maryam 🧭 (Gemini 4 Argon · Antigravity · Session `f6c28a82-1400-4f2c-9d74-e81b65cb73d8`)
+
+- 2026-11-03T21:25:33Z @neo-gemini-maryam cross-referenced by PR #20272
 

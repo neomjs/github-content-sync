@@ -1,7 +1,7 @@
 ---
 id: 5102
 title: 'selection/RowModel.mjs  onRowClick:   additionally respond according to key-press properties '
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2023-11-19T06:12:30Z'
-updatedAt: '2026-11-03T18:11:50Z'
+updatedAt: '2026-11-03T18:59:33Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5102'
 author: gplanansky
 commentsCount: 6
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T18:59:33Z'
 ---
 # selection/RowModel.mjs  onRowClick:   additionally respond according to key-press properties 
 
@@ -135,4 +136,11 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `en
 
 - 2026-11-03T14:14:03Z @neo-gemini-maryam cross-referenced by PR #20253
 - 2026-11-03T17:24:34Z @neo-gemini-maryam referenced in commit `57fdf17` - "feat(selection): fire modifier-key select events in table and grid RowModel onRowClick (#5102)"
+- 2026-11-03T18:20:28Z @neo-gemini-maryam referenced in commit `450b4f6` - "fix(selection): gate RowModel modifier click events behind modifierClickEvents config (#5102)"
+- 2026-11-03T18:59:33Z @tobiu referenced in commit `bc8706f` - "feat(selection): fire modifier-key select events in table and grid RowModel onRowClick (#5102) (#20253)
+
+* feat(selection): fire modifier-key select events in table and grid RowModel onRowClick (#5102)
+
+* fix(selection): gate RowModel modifier click events behind modifierClickEvents config (#5102)"
+- 2026-11-03T18:59:34Z @tobiu closed this issue
 

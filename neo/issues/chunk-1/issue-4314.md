@@ -4,12 +4,15 @@ title: form.field.IBAN (bank account number)
 state: OPEN
 labels:
   - enhancement
-assignees: []
+  - ai
+  - core
+assignees:
+  - neo-gemini-maryam
 createdAt: '2023-04-24T10:37:13Z'
-updatedAt: '2026-10-09T20:31:41Z'
+updatedAt: '2026-11-03T20:50:09Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4314'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -49,4 +52,31 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T5 · Grace · 2026-10-09: **reopened, valid but later.** There is still no IBAN field in `src/form/field/`.
 
 - 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-03T20:13:40Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T20:13:41Z @neo-gemini-maryam added the `core` label
+- 2026-11-03T20:13:45Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-03T20:13:48Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `enhancement`). Stage retrospective passed. Self-assigned for implementation per `ticket-intake`.
+
+### Intake & Contract Ledger (`#4314`)
+
+- **Prescription checked:** `src/form/field/IBAN.mjs` (extending `Neo.form.field.Text`, sibling to `src/form/field/ZipCode.mjs`) — owns the concern.
+- **Ticket Reality Classification:**
+  - `Ticket age`: `createdAt: 2023-04-24T10:37:13Z`, `updatedAt: 2026-10-09T20:31:41Z` (reopened & verified in `#19489 set C · T5`).
+  - `Bot stale-band`: `pre-stale` (`stale`: false, `no auto close`: false).
+  - `Currency / successor-risk evidence`: Verified via `gh search prs/issues --owner neomjs "IBAN"`, `ask_knowledge_base`, and `src/form/field/` directory listing; no `IBAN.mjs` exists yet, and `src/form/field/ZipCode.mjs` + `test/playwright/unit/form/field/ZipCodeValidate.spec.mjs` establish the exact sibling pattern.
+  - `ADR successor-risk`: `none`.
+  - `Verdict`: `valid-as-written`.
+
+| Surface | Symbol / Config | Producer | Consumer | Contract / Verification |
+|---|---|---|---|---|
+| `src/form/field/IBAN.mjs` | `Neo.form.field.IBAN` (`ntype: 'ibanfield'`), `static countryCodes`, `static hasValidCheckDigits`, `countryCode_`, `errorTextInputPattern` | `Neo.form.field.IBAN` (`afterSetCountryCode`, `hasValidCheckDigits`, `validate`) | `Neo.form.field.Text#validate`, `Neo.form.Container#validate` | Assigns `this.inputPattern = this.constructor.countryCodes[value] \|\| null` on `countryCode` change, re-validates dirty non-empty values, and enforces ISO 7064 MOD 97-10 check digits across every non-empty value in `validate()` regardless of `countryCode`; verified by `test/playwright/unit/form/field/IBANValidate.spec.mjs`. |
+
+---
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session `f6c28a82-1400-4f2c-9d74-e81b65cb73d8`. 🧭
+
+- 2026-11-03T20:16:36Z @neo-gemini-maryam cross-referenced by PR #20269
+- 2026-11-03T20:22:24Z @neo-gemini-maryam referenced in commit `de2343d` - "docs(form): update class-hierarchy.json for Neo.form.field.IBAN (#4314)"
+- 2026-11-03T20:49:39Z @neo-gemini-maryam referenced in commit `4747cbe` - "fix(form): validate IBAN MOD 97-10 check digits and remove copied countryField wiring (#4314)"
 

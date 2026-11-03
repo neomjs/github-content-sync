@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-30T22:40:38Z'
-updatedAt: '2026-11-03T18:25:47Z'
+updatedAt: '2026-11-03T19:03:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/843'
 author: neo-opus-ada
 commentsCount: 0
@@ -70,9 +70,10 @@ Rejected routes:
 *(Intake 2026-11-03: drift probe since the 10-31 sharpening.)* The prescription stands. Since then only #849 / PR #850 touched these files: an in-process Retry for a refused boot, while the Brain child is down. It amended ADR 0034 §2.3 item 8, so this ticket's amendment builds on that text.
 
 Two repositories, one PR each, in order:
-1. neomjs/neo-agent-brain#1462: the fleet server adopts a bearer from the pipe without a restart. It builds a candidate client and proves it before the swap, because `planeMailboxClient#init` closes its prior life first.
-2. The Institution's Brain pin move to a SHA that carries #1462.
-3. This ticket's PR: the pipe at spawn, `attach()` and Connect over it, persistence after the Brain confirms, the spine state, and the ADR 0034 amendment.
+1. neomjs/neo-agent-brain#1462: the fleet server adopts a bearer from the pipe without a restart. It builds a candidate client and proves it before the swap, because `planeMailboxClient#init` closes its prior life first. Done: PR neomjs/neo-agent-brain#1463, merged 2026-11-03 as `be1bde55`.
+2. This ticket's PR: the pipe at spawn, `attach()` and Connect over it, persistence after the Brain confirms, the spine state, and the ADR 0034 amendment.
+
+*(Corrected 2026-11-03: no separate Brain pin move.)* CI installs the Brain at `dev` (`npm run resolve-org-dev`, per #646). A packaged cut takes the Brain runtime root's own revision and checks it against `origin/dev` (`harness/pack.mjs`, `resolveCutRevisions` and `assessBrainFreshness`). Both therefore already reach `be1bde55`. The `package.json` SHA decides only what a plain `npm ci` installs, so this ticket's PR moves it in passing, as #854 did.
 
 ## Implementation notes
 
@@ -110,6 +111,7 @@ Live latest-open + closed sweep: checked the latest 20 open issues plus closed/a
 Retrieval Hint: "FM PAT update relaunch planeConfig attach live rebind no restart"
 
 Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
+
 
 
 
