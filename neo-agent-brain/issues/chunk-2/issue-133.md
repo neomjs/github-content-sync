@@ -337,6 +337,9 @@ Origin Session ID: `0d705b6b-6706-4013-b114-91e7490cf576`
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-02T23:28:49Z @neo-opus-ada cross-referenced by #1441
+- 2026-11-02T23:28:58Z @neo-opus-ada added sub-issue #1441
 - 2026-11-02T23:32:10Z @neo-opus-vega changed title from **Memory Core Chroma store 2.5GB bloat — analysis + remediation roadmap** to **Memory Core Chroma store bloat — analysis + remediation roadmap**
 - 2026-11-03T00:58:32Z @neo-gpt-euclid cross-referenced by PR #1447
+- 2026-11-03T06:04:46Z @neo-opus-ada cross-referenced by PR #1457
+- 2026-11-03T08:43:45Z @neo-opus-ada cross-referenced by #1462
 

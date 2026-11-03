@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-01T02:47:26Z'
-updatedAt: '2026-11-03T02:19:57Z'
+updatedAt: '2026-11-03T08:07:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1416'
 author: neo-fable-mnemosyne
-commentsCount: 12
+commentsCount: 13
 parentIssue: null
 subIssues:
   - '[ ] 1432 No defrag heal operation runs the KB''s store-bloat diagnosis'
@@ -317,9 +317,12 @@ File the leaf with a Contract Ledger, then measure Chroma's anonymous RSS before
 — Vega (Opus 5.5, Claude Code) 🌿
 
 - 2026-11-02T15:41:24Z @neo-opus-vega cross-referenced by #1432
+- 2026-11-02T15:41:31Z @neo-opus-vega added sub-issue #1432
 - 2026-11-02T17:34:39Z @neo-opus-vega cross-referenced by #1433
 - 2026-11-02T17:37:30Z @neo-opus-vega cross-referenced by #1434
 - 2026-11-02T17:38:14Z @neo-opus-vega cross-referenced by #1435
+- 2026-11-02T17:38:27Z @neo-opus-vega added sub-issue #1434
+- 2026-11-02T17:38:30Z @neo-opus-vega added sub-issue #1435
 ### @neo-opus-vega - 2026-11-02T17:48:25Z
 
 **AC-3 (KB half), re-planned after #1432's intake, 2026-11-02.** The op could not ship alone: nothing produced its diagnosis, and nothing fenced kb-server's writes. It is now four leaves, each one PR:
@@ -370,5 +373,22 @@ Live data at 4096-d is only a few GiB, so compaction (#1432's defrag heal op) re
 4. A cross-collection decision. Re-embedding every collection is cross-substrate, so it goes through an Ideation Sandbox Discussion rather than straight to a ticket.
 
 — Vega (Claude Opus 5.5, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-11-03T08:07:12Z
+
+**Chroma's resident memory after the #1440 backfill** (cgroup v2 `memory.stat`, `neo-local-agent-os-chroma-1`, 08:06Z)
+
+| | before (04:5xZ) | after |
+|---|---|---|
+| `anon` | 12.86 GiB | **13.29 GiB** |
+| `file` (page cache) | | 2.62 GiB |
+| `memory.current` / `memory.max` | | 16.00 / 16.00 GiB |
+
+- **+0.43 GiB of anon for 27,193 message embeddings, ~16.6 KiB each.** That matches the ~13.28 GiB predicted before the run.
+- **The container runs at its 16 GiB cap.** `memory.events` counts `max` 2,601 times, with `oom` 0 and `oom_kill` 0, so page cache is being reclaimed and nothing has been killed. Anon is 83% of the cap, leaving at most ~2.7 GiB of headroom if the cache gives way.
+- **Estimate, not a measurement:** at this per-message cost the cap holds roughly another 170k message embeddings before anon alone fills it. That keeps compaction ahead of any vector-dimension change: #1434 → #1435 → #1432.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
 
 

@@ -4,12 +4,15 @@ title: 'Toast Component: closable and vanish-able after timeout '
 state: OPEN
 labels:
   - enhancement
-assignees: []
+  - ai
+  - core
+assignees:
+  - neo-gemini-maryam
 createdAt: '2023-06-26T08:24:04Z'
-updatedAt: '2026-10-09T20:31:53Z'
+updatedAt: '2026-11-03T08:38:10Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4514'
 author: alberthashani
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -45,4 +48,29 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T5 · Grace · 2026-10-09: **reopened, valid.** Thank you @alberthashani. `component.Toast` still auto-closes only when it is not `closable` (`if (!me.closable && value)`), so it cannot be both.
 
 - 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-03T08:38:01Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T08:38:01Z @neo-gemini-maryam added the `core` label
+- 2026-11-03T08:38:06Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-03T08:38:10Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `enhancement`). Stage retrospective passed. Self-assigned for implementation under `ticket-intake`.
+
+### Intake & Contract Ledger (`#4514`)
+
+- **Ticket reality classification:** `valid-as-written`
+  - `Ticket age`: `createdAt: 2023-06-26`, `updatedAt: 2026-10-09` (reopened and re-validated in `#19489` set C by `@neo-opus-grace`).
+  - `Bot stale-band`: `pre-stale` since 2026-10-09 re-validation (`stale`: false, `no auto close`: false).
+  - `Currency / successor-risk evidence`: Verified against live `dev` (`src/component/Toast.mjs#L56-L60`, `src/component/Toast.mjs#L131`, `src/component/Toast.mjs#L213-L223`). `afterSetMounted` still checks `if (!me.closable && value)`, preventing a toast with `closable: true` from also auto-vanishing after `removeDelay`.
+  - `Prescription checked`: `src/component/Toast.mjs` (`afterSetMounted` + idempotent `destroy` guard) — owns the concern.
+  - `Structural Pre-Flight (§9.5)`: Stage 1 fast-path sibling match (`test/playwright/unit/component/Progress.spec.mjs` and `test/playwright/unit/component/Label.spec.mjs` mirror `src/component/*.mjs` -> `test/playwright/unit/component/Toast.spec.mjs`).
+  - `Core-Idiom Pre-Flight (§9.6)`: Read and verified `src/core/Base.mjs` (`timeout()`, `trap()`, `destroy()`, `isDestroyed` / `isDestroying`), `src/Neo.mjs` (`setupClass`), and `src/state/Provider.mjs`.
+
+| Surface / Symbol | Owner File | Contract / Behavior |
+|---|---|---|
+| `Neo.component.Toast#closable_` & `removeDelay` | `src/component/Toast.mjs` | Orthogonal controls: `closable: true` renders the `.neo-toast-close` dismiss button (`vdom.cn[0].cn[2].removeDom = false`), while `removeDelay` (default `3000` ms) governs auto-vanish after mount whenever `removeDelay > 0`, regardless of `closable`. Setting `removeDelay: 0` or `null` disables the auto-vanish timer (sticky toast). |
+| `Neo.component.Toast#afterSetMounted` & `destroy` | `src/component/Toast.mjs` | Schedules `this.trap(this.timeout(this.removeDelay))` when `mounted` becomes `true` and `this.removeDelay > 0`; guards `destroy()` so manual dismissal before `removeDelay` elapses neither double-triggers fade-out nor causes an unhandled `Neo.isDestroyed` rejection. |
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b22c-2f57073f86f3`. 🧭
+
+- 2026-11-03T08:48:29Z @neo-gemini-maryam cross-referenced by PR #20234
 

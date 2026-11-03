@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-02T23:28:48Z'
-updatedAt: '2026-11-02T23:28:48Z'
+updatedAt: '2026-11-03T06:03:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1441'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: 133
 subIssues: []
 subIssuesCompleted: 0
@@ -77,13 +77,44 @@ The bytes come back only when each existing turn row stops holding its document 
    - skips rows that already have no stored document, which makes it idempotent.
 3. **Reclaim, measured.** Measure the bytes of `chroma.sqlite3` and of the full-text index before and after, on a copy. Then run a VACUUM, coordinated with #1432.
 
+## Intake (Ada, 2026-11-03)
+
+- **Drift probe fired.** 17 files on this ticket's surface changed after its creation. They came from #1447 (#128, this ticket's prerequisite, now closed) and from #1443 and #1449 (A2A messages embedded through the existing drain). None supersedes the prescription.
+- **Classification:** `valid-as-written`.
+- **Prescription checked:** `ai/scripts/migrations/` (sibling `backfillChromaSharedUserId.mjs`) owns the concern. The only other layer, `ai/scripts/maintenance/defragChromaDB.mjs`, rebuilds from a full physical copy. #1432 measured that a 4.47 GB copy does not fit beside the store on the guest disk.
+- **Epic review on #133:** [6591079092](https://github.com/neomjs/neo-agent-brain/issues/133#issuecomment-6591079092).
+- **Tech-debt radar: clean.** The ticket backlog returns only #14192's falsified FTS drop, already listed under Avoided Traps. Memory Core holds no abandoned attempt.
+- **What AC-1's measurement changes** ([6596490206](https://github.com/neomjs/neo-agent-brain/issues/1441#issuecomment-6596490206)):
+  - The mechanism is the in-place update. B loses a whole batch on a crash between its delete and its add.
+  - A request killed after it commits still fails on the client. So after any request error, the migration re-reads that batch and classifies it before going on; it never trusts the error.
+  - Only VACUUM returns bytes, and VACUUM needs temporary space up to the post-migration file size. AC-4's run plans that headroom with #1432.
+
+## Contract Ledger
+
+| Surface | Consumer | Contract | Verification |
+|---|---|---|---|
+| `node ai/scripts/migrations/dropTurnDocuments.mjs` (dry-run by default) | the operator, before AC-4 | Scans the memory collection and writes nothing. It reports the counts of turn rows that qualify, those whose stored document differs from `composeTurnDocumentText(metadata)`, those already empty, and non-turn rows, plus the document bytes that would be freed. | unit spec on a scratch collection |
+| `--apply` | the operator, AC-4 | Batch by batch, it first appends each qualifying row's `{id, document}` to the snapshot file and flushes it to disk. Then it updates with `''` documents and the row's own vectors. Re-running skips rows that are already empty. | unit spec: vectors byte-identical, 0 embedding calls, idempotent rerun |
+| `--restore <snapshot>` | the operator, on regression | Writes each snapshotted document back, with the row's current vector. | unit spec: round trip restores every document |
+| The memory collection's rows | every Memory Core reader | Turn rows read back `''` and are rebuilt by `resolveTurnDocumentForRead`. Non-turn rows and mismatched turn rows are untouched. | unit spec plus AC-5 |
+
 ## Acceptance Criteria
 
-- [ ] The removal mechanism is chosen on a scratch store, and the three deciding measurements are recorded here.
+- [x] The removal mechanism is chosen on a scratch store, and the three deciding measurements are recorded here. A, the in-place update: [6596490206](https://github.com/neomjs/neo-agent-brain/issues/1441#issuecomment-6596490206).
 - [ ] The migration drops a turn row's stored document only where `composeTurnDocumentText(metadata)` reproduces it byte for byte. It leaves every other row untouched and keeps each turn's vector byte-identical.
 - [ ] It snapshots each row's prior document before mutating it, restores from that snapshot, and is idempotent and resumable.
-- [ ] *(post-merge, operator-run)* It runs against the plane with the operator's yes. The reclaimed bytes of `chroma.sqlite3` and the full-text index are measured and recorded here.
-- [ ] *(post-merge)* Memory search, session summarization and turn display show no regression on migrated rows.
+
+## Post-Merge Validation
+
+Both need the operator's run against the plane. After this ticket closes, the residual owner is #133.
+
+- [ ] `[L4-deferred — operator handoff needed]` The operator runs `dropTurnDocuments.mjs` against the plane, in three steps:
+  1. A dry-run.
+  2. `--apply --snapshot <file>`, with the snapshot on a disk with room for about the dry-run's `documentBytes`.
+  3. A VACUUM planned with #1432, since it needs temporary space up to the post-migration file size.
+
+  The reclaimed bytes of `chroma.sqlite3` and the full-text index are measured and recorded on #133.
+- [ ] `[L4-deferred — operator handoff needed]` Memory search, session summarization and turn display show no regression on migrated rows.
 
 ## Out of Scope
 
@@ -119,6 +150,9 @@ Origin Session ID: `0d705b6b-6706-4013-b114-91e7490cf576`
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+
+
+
 ## Timeline
 
 - 2026-11-02T23:28:48Z @neo-opus-ada assigned to @neo-opus-ada
@@ -130,4 +164,51 @@ Origin Session ID: `0d705b6b-6706-4013-b114-91e7490cf576`
 - 2026-11-02T23:29:00Z @neo-opus-ada marked this issue as being blocked by #128
 - 2026-11-02T23:30:16Z @neo-opus-ada cross-referenced by #128
 - 2026-11-02T23:58:29Z @neo-opus-ada cross-referenced by PR #1447
+### @neo-opus-ada - 2026-11-03T05:48:53Z
+
+**AC-1: the removal mechanism is A, the in-place update.**
+
+Setup: a throwaway Chroma, server 1.0.0 via chromadb 3.5.0's `chroma run` (darwin-arm64 bindings 1.3.4). It held 2,000 seeded turn rows whose documents are in `composeTurnDocumentText` form, embedded by an 8-dimension deterministic function that counts its calls. Writes went in batches of 250, each mechanism on its own copy of the seed, and sqlite was read and VACUUMed on copies only.
+
+| Measurement | A: `update({ids, documents: '', embeddings: preserved})` | B: `delete`, then `add({ids, embeddings: preserved, metadatas})` |
+|---|---|---|
+| Vectors byte-identical | 2,000 / 2,000 | 2,000 / 2,000 |
+| Embedding calls during the run | 0 | 0 |
+| Split metadata intact | 2,000 / 2,000 | 2,000 / 2,000 |
+| `$contains` on each row's unique token (50 rows) | 50 → 0 | 50 → 0 |
+| `chroma:document` metadata rows | 2,000 kept, all `''` | 0 |
+| `embedding_fulltext_search` rows | 2,000 kept, empty | 0 |
+| Document read-back | `''` | `null` |
+| `chroma.sqlite3` after VACUUM (seed: 6.83 MB) | 4.79 MB | 4.60 MB |
+| Rows absent after a SIGKILL | **never** | **250, in 2 of 3 runs** |
+
+**Crash runs** (SIGKILL, restart, then every id classified as old, new or missing):
+- A, killed between batches (after batch 3): 1,250 old, 750 new.
+- A, killed 13 and 14 ms into batch 4: 1,000 / 1,000, because the 250-row update finished before the kill.
+- A, one 2,000-row update killed at 5, 15, 30, 50 and 80 ms: all old, all old, all new, all new, all new. Never mixed, never missing.
+- B, killed after batch 3: 1,250 / 750 / 0 missing.
+- B, killed 26 ms into batch 4's delete: 250 missing.
+- B, killed after batch 4's delete returned, before its add: 250 missing.
+
+**Why A:** it is the only mechanism that never leaves a row absent. B loses the whole batch on any crash between its delete and its add. A's cost is one empty `chroma:document` row and one empty full-text row per turn, about 98 bytes a row here (4.79 vs 4.60 MB over 2,000 rows), against the text it frees. Both read-backs are rebuilt on read: `resolveTurnDocumentForRead` returns the stored document only `if (stored)`, so `''` and `null` both fall through to `composeTurnDocumentText` (checked at `origin/dev`).
+
+**Two findings that shape the migration (AC-2, AC-3):**
+1. A request killed after it commits still fails on the client ("Failed to connect"): at 30–80 ms the update had been applied. The migration must therefore classify rows by reading them back after any error, never by the request's result.
+2. Only VACUUM returns the bytes. Unvacuumed, `chroma.sqlite3` stayed at 8.22 MB under both mechanisms.
+
+Side finding: `chroma run` logs "Received SIGTERM, shutting down service" and its process never exits. Anything that waits on that exit hangs, so it needs a SIGKILL after a grace period.
+
+Next: the migration in `ai/scripts/migrations/` (AC-2, AC-3).
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-03T06:04:46Z @neo-opus-ada cross-referenced by PR #1457
+- 2026-11-03T07:42:07Z @neo-opus-ada referenced in commit `defd869` - "fix(memory-core): restore turn snapshots through the shared JSONL reader (#1441)
+
+JSON.stringify leaves U+2028 and U+2029 raw, and readline breaks a line
+at each, so --restore split the record of a turn holding either character
+into two unparseable halves. The restore now reads through
+openJsonlStream, which the JSONL reader census requires of every reader
+under ai/. The new spec test failed on the previous head with
+"Unterminated string in JSON" and passes on this one."
 

@@ -4,12 +4,15 @@ title: 'form.Container: fieldDefaults config'
 state: OPEN
 labels:
   - enhancement
-assignees: []
+  - ai
+  - core
+assignees:
+  - neo-gemini-maryam
 createdAt: '2022-12-03T19:43:11Z'
-updatedAt: '2026-10-09T19:49:55Z'
+updatedAt: '2026-11-03T08:22:36Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3575'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -47,4 +50,29 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 #19489 set C sample · Grace · 2026-10-09: **reopened, valid but later.** `itemDefaults` still reaches direct children only, and nothing in `src` provides a `fieldDefaults` for nested or dynamically added fields.
 
+- 2026-11-03T08:22:24Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T08:22:24Z @neo-gemini-maryam added the `core` label
+- 2026-11-03T08:22:31Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-03T08:22:35Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `enhancement`). Stage retrospective passed. Self-assigned for implementation under `ticket-intake`.
+
+### Intake & Contract Ledger (`#3575`)
+
+- **Ticket reality classification:** `valid-as-written`
+  - `Ticket age`: `createdAt: 2022-10-25`, `updatedAt: 2026-10-09` (reopened and re-validated in `#19489` set C by `@neo-opus-grace`).
+  - `Bot stale-band`: `pre-stale` since 2026-10-09 re-validation (`stale`: false, `no auto close`: false).
+  - `Currency / successor-risk evidence`: Verified against live `dev` (`src/container/Base.mjs#L45-L49`, `src/container/Base.mjs#L391-L504`, `src/form/Container.mjs`, `src/form/field/Base.mjs`). `itemDefaults_` only reaches direct children of a container; `form.Container` still lacks `fieldDefaults_`.
+  - `Prescription checked`: `src/form/Container.mjs` (`fieldDefaults_` descriptor config + `afterSetFieldDefaults` + `toJSON` serialization) and `src/form/field/Base.mjs` (`mergeConfig` + `afterSetParentId` ancestor `form.Container` resolution) — owns the concern.
+  - `Core-Idiom Pre-Flight (§9.6)`: Read and verified `src/core/Base.mjs` (reactive configs, `isDescriptor` deep merge, `mergeConfig`, `originalConfig`), `src/Neo.mjs` (`setupClass`, `assignDefaults`), and `src/state/Provider.mjs`.
+
+| Surface / Symbol | Owner File | Contract / Behavior |
+|---|---|---|
+| `Neo.form.Container#fieldDefaults_` | `src/form/Container.mjs` | Reactive config `{[isDescriptor]: true, merge: 'deep', value: null}` providing default configuration for all descendant `Neo.form.field.Base` instances at any nesting level, including dynamically inserted fields and runtime updates to `form.fieldDefaults`. |
+| `Neo.form.Container#afterSetFieldDefaults` | `src/form/Container.mjs` | When `fieldDefaults` is updated at runtime (`oldValue !== undefined`), propagates new default values to existing descendant fields for keys not explicitly provided in each field's own `originalConfig` or closer nested `form.Container#fieldDefaults`. |
+| `Neo.form.field.Base#mergeConfig` & `afterSetParentId` | `src/form/field/Base.mjs` | Resolves ancestor `Neo.form.Container` instances from closest to outermost during construction (`mergeConfig` via `config.parentId`) and when a detached field/subtree is dynamically inserted (`afterSetParentId`), applying `fieldDefaults` via `Neo.assignDefaults` without overwriting explicit field configs or closer container `itemDefaults`. |
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b22c-2f57073f86f3`. 🧭
+
+- 2026-11-03T08:29:11Z @neo-gemini-maryam cross-referenced by PR #20233
 

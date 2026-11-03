@@ -4,12 +4,15 @@ title: 'component.wrapper.GoogleMaps: once the component gets mounted multiple t
 state: OPEN
 labels:
   - bug
-assignees: []
+  - ai
+  - core
+assignees:
+  - neo-gemini-maryam
 createdAt: '2023-07-10T13:20:44Z'
-updatedAt: '2026-10-09T20:32:02Z'
+updatedAt: '2026-11-03T05:46:54Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4531'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -48,4 +51,30 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T5 · Grace · 2026-10-09: **reopened, valid (from the code, not run).** `GoogleMaps` re-adds markers when the marker store changes, not when the map mounts again. This pairs with #6609's marker rework.
 
 - 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-03T05:46:47Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T05:46:47Z @neo-gemini-maryam added the `core` label
+### @neo-gemini-maryam - 2026-11-03T05:46:50Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `core` (existing primary label: `bug`). Stage 1–6 retrospective challenge passed.
+
+### Ticket Intake & Reality Classification (`ticket-intake`)
+
+- **Prescription checked:** `src/component/wrapper/GoogleMaps.mjs` (`afterSetMounted` + `removeMap`) — owns the concern.
+- **Core-Idiom Pre-Flight (`§9.6`):** Verified against `src/core/Base.mjs` (reactive `mounted_` lifecycle hook `afterSetMounted(value, oldValue)`), `src/Neo.mjs` (`Neo.setupClass`), and `src/state/Provider.mjs`.
+- **Ticket age:** `createdAt: 2023-06-19T12:06:16Z`, `updatedAt: 2026-10-09T20:32:03Z` (reopened and re-verified by `@neo-opus-grace` in `#19489`).
+- **Bot stale-band:** `post-stale-with-exemption` (`stale` removed on reopen; active in backlog after sibling PRs `#20209` (`#4529`) and `#20210` (`#4955`) merged).
+- **Currency / successor-risk evidence:** Inspected `src/component/wrapper/GoogleMaps.mjs:178-207,348-356` and `src/main/addon/GoogleMaps.mjs:290-293` on `dev` (`bb9f031168`). When `mounted` changes to `false`, `removeMap()` invokes `Neo.main.addon.GoogleMaps.removeMap()`, which deletes both `this.maps[data.mapId]` and `this.markers[data.mapId]` in the main-thread addon. When `mounted` changes back to `true`, `afterSetMounted()` creates a new map via `Neo.main.addon.GoogleMaps.create(opts)` but never re-invokes `onMarkerStoreLoad()`, because `markerStore` is already populated and does not fire `load` again. Additionally, `removeMap()` does not reset `this.mapCreated = false`.
+- **Verdict:** `valid-as-written` (positive ROI).
+
+### Contract Ledger
+
+| Surface | Owner | Change | Consumers | Verification |
+|---|---|---|---|---|
+| `Neo.component.wrapper.GoogleMaps#afterSetMounted` | `src/component/wrapper/GoogleMaps.mjs` | After `Neo.main.addon.GoogleMaps.create(opts)` resolves and sets `me.mapCreated = true`, check `if (me.markerStore?.getCount() > 0)` and call `me.onMarkerStoreLoad()` before `me.onComponentMounted()` | `Neo.component.wrapper.GoogleMaps` instances mounted with pre-populated `markerStore` or remounted (`mounted: false -> true`) | Unit test in `test/playwright/unit/component/GoogleMapsMarkerRemovals.spec.mjs` |
+| `Neo.component.wrapper.GoogleMaps#removeMap` | `src/component/wrapper/GoogleMaps.mjs` | Reset `this.mapCreated = false` when removing the map instance | `afterSetMounted(false, true)`, `destroy()`, `afterSetCenter()`, `afterSetZoom()` | Unit test in `test/playwright/unit/component/GoogleMapsMarkerRemovals.spec.mjs` |
+
+— Maryam (`@neo-gemini-maryam`) · Gemini 4 Argon (Antigravity) · Session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
+- 2026-11-03T05:46:54Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-03T05:51:49Z @neo-gemini-maryam cross-referenced by PR #20216
 

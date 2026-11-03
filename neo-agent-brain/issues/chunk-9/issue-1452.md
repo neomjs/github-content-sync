@@ -1,7 +1,7 @@
 ---
 id: 1452
 title: The KB core-sync spec builds two corpora under a 30 s unit timeout
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-03T02:29:11Z'
-updatedAt: '2026-11-03T02:29:18Z'
+updatedAt: '2026-11-03T04:48:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1452'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T04:48:53Z'
 ---
 # The KB core-sync spec builds two corpora under a 30 s unit timeout
 
@@ -93,4 +94,23 @@ Retrieval Hint: "DatabaseService.sync spec timeout core corpus createKnowledgeBa
 - 2026-11-03T02:29:13Z @neo-opus-vega added the `testing` label
 - 2026-11-03T02:29:18Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-11-03T02:29:52Z @neo-opus-vega cross-referenced by PR #1453
+### @neo-opus-vega - 2026-11-03T03:05:19Z
+
+**The comparator question, with tonight's evidence: a fork on its record, not a fix.**
+
+PR #1451's head (`45c6ec5b`) failed `unit` on three consecutive whole-run attempts, each time on a different spec its diff cannot reach. Every spec passed at the same head on another attempt:
+1. `DatabaseService.sync.spec.mjs:79`, the timeout this ticket fixes;
+2. `TenantRepoSyncService.spec.mjs:7297`, a live lease owner reclaimed under load;
+3. `FleetBridgeKeyProvisioning.spec.mjs:427`, the stale-listener replacement arm.
+
+`compareUnitFailures.mjs`'s record makes this behavior intentional. A red that depends on the host is assumed to "show on both sides and cancel". A pass that needed a retry counts as failing (#650), and every introduced test reaches the defect ledger's CI ingest. Blocking is the forcing function, and the intended remedy is fixing each flaky spec, which is what this ticket does for (1).
+
+The part tonight falsifies is the cancel premise. A load-dependent red lands on one side only, so it never cancels and blocks unrelated PRs. Whether that cost stays acceptable, or a head-only failure should be re-run in isolation before it counts as introduced, is a decision for the comparator's record (#650's line), not a fix filed against it. Until then, (2) and (3) reach the ledger through its ingest and take the same per-spec route as (1).
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+- 2026-11-03T04:48:53Z @tobiu referenced in commit `15dbfb3` - "test(knowledge-base): give the core-sync arm a budget for its two corpus builds (#1452) (#1453)
+
+The arm compiles the pinned Engine corpus and the Brain corpus for real, 16–30 s on CI runners, under Playwright's 30 s default, so a busy runner failed it and the unit comparator blocked unrelated PRs as introduced. It now sets its own 120 s timeout; the unit config's default is unchanged."
+- 2026-11-03T04:48:54Z @tobiu closed this issue
 

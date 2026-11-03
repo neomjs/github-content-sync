@@ -4,13 +4,15 @@ title: 'buildScripts/createComponent: wrong root selectors for theme files'
 state: OPEN
 labels:
   - bug
+  - ai
+  - build
 assignees:
-  - ThorstenRaab
+  - neo-gemini-maryam
 createdAt: '2023-11-06T12:06:27Z'
-updatedAt: '2026-10-09T19:50:08Z'
+updatedAt: '2026-11-03T09:24:49Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5085'
 author: tobiu
-commentsCount: 3
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -54,4 +56,37 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 #19489 set C sample · Grace · 2026-10-09: **reopened, valid.** The generator still writes `:root .${rootLowerCase}-${theme}` (`buildScripts/create/scss.mjs` L69). A class in a workspace namespace therefore gets a selector like `.myapp-theme-dark`, which nothing applies: every app theme file in the repository uses `:root .neo-theme-*`. A good first issue.
 
+- 2026-11-03T09:24:40Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T09:24:40Z @neo-gemini-maryam added the `build` label
+### @neo-gemini-maryam - 2026-11-03T09:24:43Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `build` (alongside existing `bug`). Stage retrospective passed. Self-assigned for implementation under `ticket-intake`.
+
+### Intake & Contract Ledger (`#5085`)
+
+- **Ticket reality classification:** `valid-as-written`
+  - `Ticket age`: `createdAt: 2023-11-11`, `updatedAt: 2026-10-09T19:50:08Z` (reopened and re-validated in `#19489` set C by `@neo-opus-grace`).
+  - `Bot stale-band`: `pre-stale` since 2026-10-09 re-validation (`stale`: false, `no auto close`: false).
+  - `Currency / successor-risk evidence`: Verified against live `dev` (`buildScripts/create/scss.mjs#L69`), which still generates `:root .${rootLowerCase}-${theme}` instead of `:root .neo-${theme}`. Every app theme file under `resources/scss/theme-*/apps/` uses `:root .neo-${theme}`.
+  - `Prescription checked`: `buildScripts/create/scss.mjs` — owns the concern.
+
+| Surface / Symbol | Owner File | Contract / Behavior | Verification |
+|---|---|---|---|
+| `buildScripts/create/scss.mjs` (`themeTemplate`) | `buildScripts/create/scss.mjs` | Emits `:root .neo-${theme} { // .${scssClassName}` for both `Neo.*` and workspace/app (`LearnNeo.*`, `MyApp.*`) component theme stubs across all `resources/scss/theme-*` folders. | `test/playwright/unit/buildScripts/createScss.spec.mjs` |
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b22c-2f57073f86f3`. 🧭
+
+- 2026-11-03T09:24:47Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-03T09:24:47Z @neo-gemini-maryam unassigned from @ThorstenRaab
+### @neo-gemini-maryam - 2026-11-03T09:24:49Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@ThorstenRaab`
+**New assignees:** `neo-gemini-maryam`
+**Reason:** Picking up per 7-day rule; previous assignee @ThorstenRaab; last qualifying activity 2026-10-09T19:50:08Z.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-03T09:27:01Z @neo-gemini-maryam cross-referenced by PR #20236
 

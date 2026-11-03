@@ -1,7 +1,7 @@
 ---
 id: 1440
 title: Backfill the message index from the graph's MESSAGE nodes
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-02T23:27:25Z'
-updatedAt: '2026-11-03T01:26:58Z'
+updatedAt: '2026-11-03T09:39:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1440'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 3
 parentIssue: 35
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 1439 Embed A2A messages through the existing drain'
 blocking: []
+closedAt: '2026-11-03T04:48:24Z'
 ---
 # Backfill the message index from the graph's MESSAGE nodes
 
@@ -116,9 +117,11 @@ Retrieval Hint: "backfill message index graph MESSAGE nodes cursor receipt DELIV
 - 2026-11-02T23:27:27Z @neo-opus-vega added the `enhancement` label
 - 2026-11-02T23:27:27Z @neo-opus-vega added the `ai` label
 - 2026-11-02T23:27:27Z @neo-opus-vega added the `agent-os` label
+- 2026-11-02T23:27:34Z @neo-opus-vega added parent issue #35
 - 2026-11-02T23:27:57Z @neo-opus-vega cross-referenced by #1439
 - 2026-11-02T23:30:55Z @neo-opus-vega cross-referenced by PR #1443
 - 2026-11-02T23:47:13Z @neo-opus-vega cross-referenced by #1445
+- 2026-11-02T23:47:21Z @neo-opus-vega marked this issue as being blocked by #1439
 - 2026-11-03T00:42:46Z @neo-opus-vega cross-referenced by PR #1449
 - 2026-11-03T01:13:45Z @neo-opus-vega cross-referenced by PR #1450
 - 2026-11-03T01:53:07Z @neo-opus-vega referenced in commit `85b0b69` - "fix(memory-core): only a broadcast can be open to everyone in the admission filter (#1440)
@@ -131,4 +134,72 @@ backfillMessageEmbeddings walks the graph's MESSAGE nodes in send order and embe
 
 admissionWhere's legacy branch now requires kind broadcast, like its known-zero branch, so a direct row can never be admitted by a cohort tag; queryMessages' JSDoc states that recall never repairs a projection gap. Both from Maryam's review of PR #1450."
 - 2026-11-03T02:04:44Z @neo-opus-vega cross-referenced by PR #1451
+- 2026-11-03T04:48:24Z @tobiu referenced in commit `cea6adc` - "feat(memory-core): backfill the message index from the graph (#1440) (#1451)
+
+* feat(memory-core): backfill the message index from the graph (#1440)
+
+backfillMessageEmbeddings walks the graph's MESSAGE nodes in send order and embeds each one the collection lacks, with the metadata the WAL drain writes: both mappers now share toMessageEmbedMetadata. The collection is the cursor, so a re-run resumes without a cursor file; a dry run projects the vector bytes before any write. A retraction marks only a record still pending embed, found without the graph-marker index.
+
+* fix(memory-core): only a broadcast can be open to everyone in the admission filter (#1440)
+
+admissionWhere's legacy branch now requires kind broadcast, like its known-zero branch, so a direct row can never be admitted by a cohort tag; queryMessages' JSDoc states that recall never repairs a projection gap. Both from Maryam's review of PR #1450."
+- 2026-11-03T04:48:25Z @tobiu closed this issue
+### @neo-opus-vega - 2026-11-03T04:53:37Z
+
+**AC-5, post-merge on the plane** at `15dbfb38`. The cut finished at 04:52Z on 11-03 with all four services healthy at that revision.
+
+**Dry run, inside the Memory Core container:**
+
+| messages | already indexed | pending | retracted | incomplete | projectedBytes |
+|---|---|---|---|---|---|
+| 60,313 | 25,790 | 27,305 | 28 | 7,190 | 447,365,120 (≈0.42 GiB) |
+
+**Sizing against the cap.** Chroma's cgroup holds 12.86 GiB anonymous against its 16 GiB `memory.max`. After the apply that is about 13.28 GiB, about 2.7 GiB under the cap. `--apply` started at 04:53Z in the background and logs to `/app/.neo-ai-data/backfill-1440.log`. The final receipt follows here.
+
+**The 7,190 incomplete messages, classified:**
+- **3,379 aren't messages.** They are graph entity nodes with a `MESSAGE:` id prefix (`logical_layer`, `gravity_well`, `strategic_weight` …), with no route edges. Skipping them is correct.
+- **3,810 are real messages from June–July 2026 without a `SENT_BY` edge.** They have a subject and body, a `SENT_TO` edge, and `from`/`to` on the node. They stay out of the index: `getMessage` itself treats them as unrouted, so indexing them would break admission parity. The designed fix is to restore their sender carrier through the graph integrity repair and then re-run the backfill. The collection is the cursor, so the re-run embeds only them. Tracked on #35.
+- 1 message lacks its `SENT_TO` edge.
+
+AC-5's identity "embedded + skipped = the graph's MESSAGE count" holds at dry-run time: 0 + (25,790 + 28 + 7,190) + 27,305 pending = 60,313.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+- 2026-11-03T04:53:40Z @neo-opus-vega cross-referenced by #35
+### @neo-opus-vega - 2026-11-03T08:07:11Z
+
+**#1440 backfill `--apply`: final receipt** (local plane, MC container, 04:53Z to about 07:5xZ)
+
+```json
+{"mode": "apply", "messages": 60313, "embedded": 27193, "pending": 27305,
+ "skipped": {"present": 25790, "retracted": 28, "incomplete": 7190}, "failed": 112}
+```
+
+- **Every pending message was attempted:** embedded plus failed equals pending (27,193 + 112 = 27,305).
+- **The 112 failures were transient.** Four batches failed at 06:52Z: first `socket hang up`, then `ECONNREFUSED` on the host's LM Studio (`:1234`) while it was briefly down. It answered 200 again by 07:18Z.
+- **A re-run started at 08:07Z** (pid 4974, log `backfill-1440-rerun.log`) to pick up those 112. It is idempotent, because messages already present are skipped. Its receipt follows here.
+- **Chroma after the run:** see #1416.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+
+- 2026-11-03T08:07:13Z @neo-opus-vega cross-referenced by #1416
+### @neo-opus-vega - 2026-11-03T09:39:24Z
+
+**#1440 re-runs: all 27,305 pending messages are now embedded** (follow-up to 6598549839)
+
+| Run | Pending | Embedded | Failed |
+|---|---|---|---|
+| `--apply` (04:53Z) | 27,305 | 27,193 | 112 |
+| re-run 1 (08:07Z) | 112 | 80 | 32 (`socket hang up`) |
+| re-run 2 (08:54Z) | 32 | 32 | 0 |
+
+- **The whole set is in:** 27,193 + 80 + 32 = 27,305, the original pending set. The scan grew from 60,313 to 60,573 messages overnight, yet pending only shrank, so new messages are embedded at write time by the live drain.
+- **A failed batch is counted and left for a rerun, as #1440's contract defines.** An automatic retry is an improvement, not a fix. My defect-note `5ff18932` overstated it as a defect, and the error string alone doesn't name a cause.
+- **Any retry must first cover the arm Emmy controlled on #35** (6599788553): an applied write whose response is lost while the message is retracted. That follow-up is mine. Until it lands, the rerun stays the recovery path.
+- **Chroma after the backfill:** see #1416 (6598550180).
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+
 

@@ -1,16 +1,16 @@
 ---
 id: 4477
 title: 'form.Container: setConfigs()'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
 assignees:
   - tobiu
 createdAt: '2023-05-28T17:51:26Z'
-updatedAt: '2026-10-09T20:31:49Z'
+updatedAt: '2026-11-03T09:37:35Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4477'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T09:37:35Z'
 ---
 # form.Container: setConfigs()
 
@@ -50,4 +51,16 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T5 · Grace · 2026-10-09: **reopened, valid but later.** `form.Container` still has no `setConfigs()` for changing a config (such as `readOnly`) on many fields at once.
 
 - 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
+### @neo-gemini-maryam - 2026-11-03T09:37:31Z
+
+## Ticket Intake — `already-resolved` (`ticket-intake §4`)
+
+* **`[ARCH_ALIGNMENT]`**: **Already Resolved** in commit `8ddccf5e44` (`form.Container: setConfigs() #4477`), which implemented `async setConfigs(configs={}, suspendEvents=false)` in [`src/form/Container.mjs#L325-L374`](https://github.com/neomjs/neo/blob/dev/src/form/Container.mjs#L325-L374) and rewired both `setErrors()` (`L383`) and `setValues()` (`L395`) to delegate to `setConfigs()`.
+* **Ticket Reality Classification:**
+  * `Ticket age`: created `2023-05-19`, reopened `2026-10-09` during the `#19489` stale-sweep without spotting commit `8ddccf5e44`.
+  * `Verdict`: `already-resolved` — closing under `ticket-intake §4`.
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session dadd700f-6b16-47b5-b22c-2f57073f86f3. 🧭
+
+- 2026-11-03T09:37:35Z @neo-gemini-maryam closed this issue
 

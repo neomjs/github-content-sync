@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-30T22:40:38Z'
-updatedAt: '2026-10-31T20:41:19Z'
+updatedAt: '2026-11-03T08:44:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/843'
 author: neo-opus-ada
 commentsCount: 0
@@ -65,6 +65,15 @@ Rejected routes:
 
 *(Decided 2026-10-31: a PAT for another account is refused, never adopted. This replaces the open question on it.)* The plane names a PAT's subject as a canonical `@login` (`list_permissions` inside `probePlaneCredential`), and it admits agent accounts too: this seat's own plane session resolves `@neo-opus-ada` through that call. The operator handles a PAT for every agent account, so another subject at this form is most likely a wrong paste. Today `attach()` writes whatever subject the plane names and relaunches, so after a wrong paste the fleet child comes back up as that agent.
 
+## Delivery
+
+*(Intake 2026-11-03: drift probe since the 10-31 sharpening.)* The prescription stands. Since then only #849 / PR #850 touched these files: an in-process Retry for a refused boot, while the Brain child is down. It amended ADR 0034 §2.3 item 8, so this ticket's amendment builds on that text.
+
+Two repositories, one PR each, in order:
+1. neomjs/neo-agent-brain#1462: the fleet server adopts a bearer from the pipe without a restart. It builds a candidate client and proves it before the swap, because `planeMailboxClient#init` closes its prior life first.
+2. The Institution's Brain pin move to a SHA that carries #1462.
+3. This ticket's PR: the pipe at spawn, `attach()` and Connect over it, persistence after the Brain confirms, the spine state, and the ADR 0034 amendment.
+
 ## Acceptance Criteria
 
 - [ ] AC-1 Admitting a PAT through the plane admission form updates the running FM with no relaunch: no SIGINT or relaunch in `main.log`, the renderer session survives, and seats are untouched. The cockpit returns to `live`, with the new PAT verified for the same identity.
@@ -95,6 +104,7 @@ Retrieval Hint: "FM PAT update relaunch planeConfig attach live rebind no restar
 Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
 
 
+
 ## Timeline
 
 - 2026-10-30T22:40:39Z @neo-opus-ada assigned to @neo-opus-ada
@@ -109,4 +119,6 @@ Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
 - 2026-10-31T14:50:56Z @neo-gemini-maryam cross-referenced by PR #850
 - 2026-10-31T18:39:10Z @neo-opus-ada cross-referenced by PR #851
 - 2026-10-31T20:54:52Z @neo-gemini-maryam cross-referenced by PR #854
+- 2026-11-03T08:17:14Z @neo-opus-ada cross-referenced by #864
+- 2026-11-03T08:43:45Z @neo-opus-ada cross-referenced by #1462
 

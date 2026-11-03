@@ -5,12 +5,14 @@ state: OPEN
 labels:
   - documentation
   - enhancement
-assignees: []
+  - ai
+assignees:
+  - neo-gemini-maryam
 createdAt: '2019-11-17T17:26:18Z'
-updatedAt: '2026-10-09T21:01:08Z'
+updatedAt: '2026-11-03T06:43:12Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/29'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -59,4 +61,36 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). **Reopened, valid but later.** Tab headers still show only `record.name` and carry no tooltip with the full class name (`onApiListLeafClick`).
 
 - 2026-10-11T16:22:04Z @neo-opus-ada cross-referenced by #14790
+- 2026-11-03T06:38:26Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T06:38:30Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-03T06:38:33Z
+
+### Ticket Triage & Intake (`ticket-triage` + `ticket-intake`)
+
+Triaged per `ticket-triage` skill. Applied: `ai` (alongside existing `enhancement`, `documentation`). Stage retrospective passed.
+
+- **Premise & Prescription (`§0` / Stage 1–2):**
+  - `Prescription checked: docs/app/view/MainContainerController.mjs — owns the concern`
+  - In `docs/app/view/MainContainerController.mjs`, `onApiListLeafClick(record)` (`L55-64`), `onExamplesListLeafClick(record)` (`L86-89`), and `onViewSourceRoute(data)` (`L237-247`) construct tab item `header` configs with `text: record.name` (the leaf name behind the last dot, e.g. `'Base'`), without a `tooltip` showing the full class/example path (`record.className` or dot-joined example path). When multiple tabs share the same leaf name (e.g. `Neo.button.Base`, `Neo.component.Base`, `Neo.container.Base`), tab headers are indistinguishable on hover.
+  - Passing `tooltip: record.className` on `header` in `onApiListLeafClick` and `onViewSourceRoute`, and `tooltip: name` (the dot-joined tree path before prefixing `'examples_'`) in `onExamplesListLeafClick`, configures `Neo.tab.header.Button#tooltip_` (`Neo.component.Base#tooltip_`) to display the full name via the shared `Neo.tooltip.Base` singleton.
+- **Core-Idiom & App-Work Gate (`§9.6`):** Read `src/Neo.mjs`, `src/core/Base.mjs`, `src/state/Provider.mjs`, `src/data/Model.mjs`, `src/data/Store.mjs`, `src/component/Base.mjs`, `src/tab/header/Button.mjs`, `src/tooltip/Base.mjs`, `docs/app/view/ContentTabContainer.mjs`, and `docs/app/view/MainContainer.mjs`.
+- **Ticket Reality Classification (`§1.8`):**
+  - `Ticket age`: `createdAt: 2019-11-17T17:26:18Z`, `updatedAt: 2026-10-09T21:01:08Z`
+  - `Bot stale-band`: `pre-stale` (`stale: false`, `no auto close: false`; reopened and verified by `@neo-opus-grace` on `2026-10-09`)
+  - `Currency / successor-risk evidence`: Verified against live `dev` (`docs/app/view/MainContainerController.mjs`), `ask_knowledge_base`, and `query_raw_memories`; no overlapping PR or successor exists.
+  - `Verdict`: `valid-as-written`
+
+### Contract Ledger
+
+| Surface | Path / Symbol | Change | Consumers | Verification |
+|---|---|---|---|---|
+| API class tab header tooltip | `docs/app/view/MainContainerController.mjs#onApiListLeafClick` | Pass `tooltip: record.className` inside `header` config passed to `contentTabContainer.add(...)` | `Docs.view.ContentTabContainer` → `Neo.tab.header.Button#tooltip_` | `test/playwright/unit/apps/docs/view/MainContainerController.spec.mjs` |
+| Example tab header tooltip | `docs/app/view/MainContainerController.mjs#onExamplesListLeafClick` | Pass `tooltip: name` (dot-joined example tree path prior to `'examples_'` id prefix) inside `header` config | `Docs.view.ContentTabContainer` → `Neo.tab.header.Button#tooltip_` | `test/playwright/unit/apps/docs/view/MainContainerController.spec.mjs` |
+| Source view tab header tooltip | `docs/app/view/MainContainerController.mjs#onViewSourceRoute` | Pass `tooltip: record.className` inside `header` config passed to `contentTabContainer.add(...)` | `Docs.view.ContentTabContainer` → `Neo.tab.header.Button#tooltip_` | `test/playwright/unit/apps/docs/view/MainContainerController.spec.mjs` |
+
+— Maryam 🧭
+
+- 2026-11-03T06:44:44Z @neo-gemini-maryam cross-referenced by PR #20224
+- 2026-11-03T06:56:50Z @neo-gemini-maryam referenced in commit `41b6ac3` - "test(docs): avoid classdetails-maincontainer ntype collision across Docs unit specs (#29)"
+- 2026-11-03T07:23:11Z @neo-gemini-maryam referenced in commit `23e7507` - "test(docs): share MockClassDetailsMainContainer fixture and restore HighlightJS stub (#29)"
 

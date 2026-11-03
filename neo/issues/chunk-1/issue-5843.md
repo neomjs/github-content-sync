@@ -1,15 +1,18 @@
 ---
 id: 5843
 title: buildScripts/tools/createExample => index.html => MicroLoader path not generic
-state: OPEN
+state: CLOSED
 labels:
   - bug
-assignees: []
+  - ai
+  - build
+assignees:
+  - neo-gemini-maryam
 createdAt: '2024-08-27T21:55:47Z'
-updatedAt: '2026-10-09T20:53:42Z'
+updatedAt: '2026-11-03T05:06:58Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5843'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T05:06:58Z'
 ---
 # buildScripts/tools/createExample => index.html => MicroLoader path not generic
 
@@ -51,4 +55,37 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 #19489 set C · T7 · Grace · 2026-10-09: **reopened, valid.** `buildScripts/create/example.mjs` still hardcodes `../../../src/MicroLoader.mjs`, regardless of the folder depth. A good first issue.
 
+- 2026-11-03T04:18:42Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T04:18:42Z @neo-gemini-maryam added the `build` label
+- 2026-11-03T04:18:52Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-03T04:19:01Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `build` (alongside existing `bug`). Stage retrospective passed. Self-assigning for implementation.
+
+### Ticket Intake & Contract Ledger (`ticket-intake` §0 / §1.7 / §1.8)
+
+- **Prescription check (`§0`):** `buildScripts/create/example.mjs` — owns the concern.
+  - Currently `createIndexHtml`, `createNeoConfig`, and `createMainContainer` hardcode 3-level relative paths (`../../../src/MicroLoader.mjs`, `"basePath": "../../../"`, `../../ConfigurationViewport.mjs`, and `../../../src/...`), which fails whenever the component namespace has more (or fewer) than 2 segments inside `examples/` (e.g. `Neo.form.field.Text` -> `examples/form/field/text/`, which requires `../../../../` to reach repo root and `../../../` to reach `examples/`).
+  - Additionally, line 30 (`componentPath = componentPath.toLowerCase()`) mutated `componentPath` before `createMainContainer` used it for `import ${name} from '.../src/${componentPath}.mjs'`, and line 74 had a stray trailing backtick in `'</html>`'`.
+  - Computing `rootPrefix = '../'.repeat(ns.length + 1)` and `examplesPrefix = '../'.repeat(ns.length)` before `ns.pop()` and keeping `folderPath = componentPath.toLowerCase()` distinct from `componentPath` makes generated `index.html`, `neo-config.json`, and `MainContainer.mjs` generic across any namespace depth.
+
+#### Contract Ledger
+
+| Surface | Path / Symbol | Contract |
+|---|---|---|
+| Example Generator CLI | `buildScripts/create/example.mjs` | Computes depth-aware `rootPrefix` (`'../'.repeat(ns.length + 1)`) and `examplesPrefix` (`'../'.repeat(ns.length)`) for `index.html` (`MicroLoader.mjs`), `neo-config.json` (`basePath`), and `MainContainer.mjs` imports (`ConfigurationViewport.mjs`, `NumberField`, and target component module). |
+| Unit Test Spec | `test/playwright/unit/buildScripts/CreateExample.spec.mjs` | Verifies generated `index.html`, `neo-config.json`, and `MainContainer.mjs` relative paths across both 2-segment (`Neo.button.Base` -> `../../../`) and 3-segment (`Neo.form.field.Text` -> `../../../../`) namespaces. |
+
+#### Ticket Reality Classification (`§1.8`)
+
+- **Ticket age:** `createdAt: 2024-08-27`, `updatedAt: 2026-10-09T20:53:42Z` (reopened and validated in `#19489` set C · T7).
+- **Bot stale-band:** `post-stale-with-exemption` (reopened after #19489 audit).
+- **Currency / successor-risk evidence:** Verified live `buildScripts/create/example.mjs` and `examples/form/field/text/index.html`.
+- **Verdict:** `valid-as-written`
+
+— Maryam 🧭
+
+- 2026-11-03T04:28:51Z @neo-gemini-maryam cross-referenced by PR #20208
+- 2026-11-03T05:06:58Z @tobiu referenced in commit `8ecf096` - "fix(build): compute depth-aware relative paths in createExample (#5843) (#20208)"
+- 2026-11-03T05:06:59Z @tobiu closed this issue
 

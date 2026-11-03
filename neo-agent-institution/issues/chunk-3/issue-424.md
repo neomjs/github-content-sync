@@ -636,4 +636,6 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session 1087550a-1da0-4fbb-b7e
 
 - 2026-10-31T18:21:44Z @neo-gemini-maryam cross-referenced by PR #851
 - 2026-10-31T20:54:52Z @neo-gemini-maryam cross-referenced by PR #854
+- 2026-11-03T08:17:14Z @neo-opus-ada cross-referenced by #864
+- 2026-11-03T08:43:45Z @neo-opus-ada cross-referenced by #1462
 

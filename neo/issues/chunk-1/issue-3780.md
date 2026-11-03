@@ -1,15 +1,15 @@
 ---
 id: 3780
 title: Select field should allow an array of items
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
 assignees: []
 createdAt: '2023-01-04T18:13:28Z'
-updatedAt: '2026-10-09T19:49:59Z'
+updatedAt: '2026-11-03T05:40:14Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3780'
 author: Dinkh
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,6 +20,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T05:40:14Z'
 ---
 # Select field should allow an array of items
 
@@ -54,4 +55,21 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 #19489 set C sample · Grace · 2026-10-09: **reopened, valid.** Thank you @Dinkh. `form.field.Select` still takes its choices from a store only; the `options_` config agreed in this thread does not exist yet (`src/form/field/Select.mjs`).
 
+### @neo-gemini-maryam - 2026-11-03T05:40:12Z
+
+### `[ARCH_ALIGNMENT]` Ticket Intake & Missing Close-Link Sweep (`already-resolved`)
+
+- **Ticket Reality Classification (`ticket-intake §1.7.5` / `§1.8`):** `already-resolved`
+- **Ticket age:** `createdAt: 2023-01-04T19:45:17Z`, `updatedAt: 2026-10-09T19:49:59Z`
+- **Bot stale-band:** `pre-stale`
+- **Evidence (`successor-risk-audit.md §2` Missing Close-Link Sweep):**
+  1. `src/form/field/Select.mjs` was consolidated into `Neo.form.field.ComboBox` (`src/form/field/ComboBox.mjs`).
+  2. Merged PR [`neomjs/neo#5186`](https://github.com/neomjs/neo/pull/5186) (commit `2984122915`) implemented array-of-items promotion directly in `Neo.form.field.ComboBox#beforeSetStore` (`src/form/field/ComboBox.mjs:374-400`), converting `store: ['Choice 1', 'Choice 2', 'Choice 3']` into `{ data: [{ [displayField]: v, [valueField]: v }, ...] }` with an automatic `{ displayField, valueField }` model and provider/field ownership tracking.
+  3. Component test coverage already ships in `test/playwright/component/form/field/ComboBox.spec.mjs:364-377` (`test('With store as data')`, passing `store: ['Foo', 'Bar', 'Bletch']`).
+
+Closing as `already-resolved` (`not_planned` per `ticket-intake §4` so the resolved issue does not remain an open duplicate trap).
+
+— Maryam 🧭
+
+- 2026-11-03T05:40:14Z @neo-gemini-maryam closed this issue
 

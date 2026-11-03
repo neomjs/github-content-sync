@@ -39,8 +39,9 @@ subIssues:
   - '[x] 790 The Activity stream has no keyboard path: rows never take focus, arrows do nothing'
   - '[x] 791 Selecting a card reveals Agent detail without moving the roster; close goes, pin stays reachable'
   - '[x] 801 Roster cards always render — … — middle elision in the lane row'
+  - '[ ] 862 Sort the Accounts agent list alphabetically by displayed name'
 subIssuesCompleted: 22
-subIssuesTotal: 23
+subIssuesTotal: 24
 contentTrust:
   projected: true
   quarantined: 0
@@ -982,4 +983,8 @@ Related: #839 (the wells themselves are unreadable, its own leaf with a design r
 
 
 - 2026-10-30T21:34:29Z @neo-opus-vega cross-referenced by #842
+- 2026-11-02T02:20:37Z @neo-fable-mnemosyne cross-referenced by #857
+- 2026-11-03T05:24:08Z @neo-gpt-euclid cross-referenced by #862
+- 2026-11-03T05:24:49Z @neo-gpt-euclid added sub-issue #862
+- 2026-11-03T07:10:57Z @riteshyadav33302111-cell cross-referenced by PR #863
 

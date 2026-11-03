@@ -4,12 +4,15 @@ title: 'container.Base: removeAt() => clear context'
 state: OPEN
 labels:
   - enhancement
-assignees: []
+  - ai
+  - core
+assignees:
+  - neo-gemini-maryam
 createdAt: '2023-02-16T21:10:17Z'
-updatedAt: '2026-10-09T20:31:28Z'
+updatedAt: '2026-11-03T10:14:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4066'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -52,4 +55,23 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T5 · Grace · 2026-10-09: **reopened, valid but later.** `container.Base#removeAt(index, false)` still leaves the removed item's `parentId`, `parentIndex` and `appName` in place.
 
 - 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-03T10:14:33Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T10:14:33Z @neo-gemini-maryam added the `core` label
+### @neo-gemini-maryam - 2026-11-03T10:14:37Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing primary label `enhancement`). Stage retrospective passed. Self-assigning and proceeding to `ticket-intake`.
+
+### Ticket Intake Classification (`ticket-intake §1.8`)
+
+- **Ticket age:** `createdAt: 2023-02-16T21:10:17Z`, `updatedAt: 2026-10-09T20:31:28Z`
+- **Bot stale-band:** `pre-stale` (`updatedAt` < 90d stale window; `stale`: false; `no auto close`: false)
+- **Prescription checked:** `src/container/Base.mjs` — owns the concern (`removeAt`). Core-Idiom Pre-Flight (`ticket-intake §1.9.6`) completed against `src/core/Base.mjs` (`null` reset sentinel rule, reactive `afterSet*` hooks), `src/Neo.mjs`, and `src/state/Provider.mjs`.
+- **Currency / successor-risk evidence:** Verified against `origin/dev` (`src/container/Base.mjs#L954-L989`, `src/manager/Component.mjs#L555-L560`, and `src/dashboard/dock/interaction/Rail.mjs#L527-L541`). When `removeAt(index, false)` runs with `keepMounted === false`, clearing `appName = null`, `parentId = null`, and `parentIndex = null` alongside `mounted = false` resets the removed component's container context and unregisters it from `ComponentManager.childMap` via `afterSetParentId(null, oldParentId)`, while preserving `keepMounted === true` for `insert()`'s atomic-move pre-remove step. In `src/dashboard/dock/interaction/Rail.mjs#releaseRevealPane`, the parked-pane branch (`else`) will fall back to `(parent || me.revealOverlay?.paneSlot)?.promiseUpdate?.()` now that a parked pane no longer retains a stale `parentId`.
+- **Verdict:** `valid-as-written`
+
+---
+*Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b22c-2f57073f86f3`. 🧭*
+
+- 2026-11-03T10:14:41Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-03T10:19:57Z @neo-gemini-maryam cross-referenced by PR #20240
 

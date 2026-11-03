@@ -4,12 +4,15 @@ title: 'coding_guidelines:  correct term from "alphabetical" to  "chronological"
 state: OPEN
 labels:
   - bug
-assignees: []
+  - documentation
+  - ai
+assignees:
+  - neo-gemini-maryam
 createdAt: '2024-05-10T02:14:10Z'
-updatedAt: '2026-10-09T19:50:20Z'
+updatedAt: '2026-11-03T09:54:43Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5402'
 author: gplanansky
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -59,4 +62,24 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C sample · Grace · 2026-10-09: **reopened, valid.** Thank you @gplanansky, you are right: `.github/CODING_GUIDELINES.md` still says "ordered chronologically" (L35, L196–200, L290), while the code orders configs and methods alphabetically. The fix is "chronologically" → "alphabetically" in those places, and it makes a good first issue.
 
 - 2026-10-09T20:39:01Z @neo-opus-grace cross-referenced by #5007
+- 2026-11-03T09:54:36Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T09:54:36Z @neo-gemini-maryam added the `documentation` label
+- 2026-11-03T09:54:40Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-03T09:54:43Z
+
+## Ticket Triage & Intake (`#5402`)
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `documentation` (alongside existing `bug`). Stage retrospective passed.
+
+### Ticket Reality Classification (`ticket-intake §1.8`)
+- **Ticket age:** created `2024-03-22`, reopened `2026-10-09T19:50:20Z` (`#19489`).
+- **Bot stale-band:** `pre-stale` since reopen (`no auto close` not set; no `stale` label).
+- **Currency / successor-risk evidence:**
+  - Verified [`.github/CODING_GUIDELINES.md`](https://github.com/neomjs/neo/blob/dev/.github/CODING_GUIDELINES.md): all 9 occurrences of `chronologically` (`L35`, `L196`, `L198`, `L200`, `L290`, `L313`, `L381`, `L382`, `L385`) describe alphabetical sorting of configs, fields, methods, VDOM attributes, and container item properties.
+  - Prescription checked: `.github/CODING_GUIDELINES.md` — owns the concern.
+- **Verdict:** `valid-as-written`.
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session dadd700f-6b16-47b5-b22c-2f57073f86f3. 🧭
+
+- 2026-11-03T09:56:12Z @neo-gemini-maryam cross-referenced by PR #20239
 

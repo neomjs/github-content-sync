@@ -4,13 +4,15 @@ title: 'list.plugin.Animate: combine onStoreFilter() and onStoreSort()'
 state: OPEN
 labels:
   - enhancement
+  - ai
+  - core
 assignees:
-  - tobiu
+  - neo-gemini-maryam
 createdAt: '2022-01-09T21:54:40Z'
-updatedAt: '2026-10-09T19:49:47Z'
+updatedAt: '2026-11-03T09:14:12Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2814'
 author: tobiu
-commentsCount: 3
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -51,4 +53,39 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 #19489 set C sample · Grace · 2026-10-09: **reopened, valid.** The filter path intercepts a transition still in flight (`transitionTimeoutId`, `src/list/plugin/Animate.mjs` L575–581). The sort path neither checks nor sets it, so a sort during a running filter animation still races it.
 
+- 2026-11-03T09:02:00Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T09:02:00Z @neo-gemini-maryam added the `core` label
+### @neo-gemini-maryam - 2026-11-03T09:02:06Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `enhancement`). Stage retrospective passed. Self-assigned for implementation under `ticket-intake`.
+
+### Intake & Contract Ledger (`#2814`)
+
+- **Ticket reality classification:** `valid-as-written`
+  - `Ticket age`: `createdAt: 2021-12-27`, `updatedAt: 2026-10-09` (reopened and re-validated in `#19489` set C by `@neo-opus-grace`).
+  - `Bot stale-band`: `pre-stale` since 2026-10-09 re-validation (`stale`: false, `no auto close`: false).
+  - `Currency / successor-risk evidence`: Verified against live `dev` (`src/list/plugin/Animate.mjs#L180-L189, L677-L848`). While `#19717` (`PR #19738`) added `pendingFilter` / `motionSerial` / `triggerTransitionCallback` to `sortComponentList` (`Neo.list.Component`) and gated `owner.onStoreLoad = me.ownerLoadHandler` on `owner instanceof Neo.list.Component`, `Neo.list.Base` (`sortBaseList`) still received `Store#onCollectionSort`'s coarse `load` (`{isSort: true}`) synchronously before `onStoreSort`, indexed `vdom.cn[fromIndex]` positionally against `data.previousItems`, and scheduled an untracked `me.timeout(50).then(() => owner.createItems())` after `onStoreSort` cleared `transitionTimeoutId`.
+  - `Prescription checked`: `src/list/plugin/Animate.mjs` (`construct`, `onStoreFilter`, `onStoreSort`, `sortBaseList`) — owns the concern.
+  - `Core-Idiom Pre-Flight (§9.6)`: Read and verified `src/core/Base.mjs`, `src/Neo.mjs`, and `src/state/Provider.mjs`.
+
+| Surface / Symbol | Owner File | Contract / Behavior |
+|---|---|---|
+| `Neo.list.plugin.Animate#construct`, `onStoreFilter`, `onStoreSort`, & `sortBaseList` | `src/list/plugin/Animate.mjs` | Wires `owner.onStoreLoad = me.ownerLoadHandler` unconditionally so `Neo.list.Base` also skips coarse `isSort: true` `load` events in favor of `onStoreSort`. `sortBaseList(data)` delegates to `onStoreFilter(data)`, accepting `data.oldItems \|\| data.previousItems`. When `intercept` is true (`Boolean(transitionTimeoutId \|\| me.pendingFilter)`), `onStoreFilter` preserves any leaving `renderedRecords` still present in `vdom.cn` from an interrupted filter pass so they fade out (`opacity: 0`), updates both `opacity: 1` and `transform` for re-added/moved items, and settles once via `triggerTransitionCallback()`. |
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b22c-2f57073f86f3`. 🧭
+
+- 2026-11-03T09:02:24Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-03T09:02:24Z @neo-gemini-maryam unassigned from @tobiu
+### @neo-gemini-maryam - 2026-11-03T09:02:25Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@tobiu`
+**New assignees:** `@me`
+**Reason:** Picking up per 7-day rule; previous assignee @tobiu; last qualifying activity 2026-10-09T19:49:47Z.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-03T09:14:31Z @neo-gemini-maryam cross-referenced by PR #20235
+- 2026-11-03T09:35:29Z @neo-gemini-maryam referenced in commit `dff7fdd` - "fix(list): restore no-op sort early return in Animate#sortBaseList (#2814)"
 

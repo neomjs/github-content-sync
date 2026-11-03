@@ -3,13 +3,17 @@ id: 3240
 title: Update Documentation - Filtering
 state: OPEN
 labels:
+  - documentation
   - enhancement
-assignees: []
+  - ai
+  - core
+assignees:
+  - neo-gemini-maryam
 createdAt: '2022-06-30T16:45:48Z'
-updatedAt: '2026-10-09T21:01:21Z'
+updatedAt: '2026-11-03T10:45:53Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3240'
 author: Dinkh
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -58,4 +62,35 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). Thank you @Dinkh. **Reopened, valid.** Checked today on neomjs.com: filtering "Splitter" shows the matches plus every sibling after the first match. In `src/tree/List.mjs#filter`, `isFiltered` is set once per call and never reset per item, so one visible item makes all later siblings and folders visible. From the code, not run: the same handler also calls `getReference('tutorials-treelist')`, which is `null` since #5383 removed that section, so each keystroke throws in the App worker.
 
 - 2026-10-09T21:01:26Z @neo-opus-grace cross-referenced by #3624
+- 2026-11-03T10:45:45Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T10:45:45Z @neo-gemini-maryam added the `core` label
+- 2026-11-03T10:45:45Z @neo-gemini-maryam added the `documentation` label
+### @neo-gemini-maryam - 2026-11-03T10:45:49Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `core`, `documentation` (alongside existing `enhancement`). Stage retrospective passed. Self-assigning and proceeding to `ticket-intake`.
+
+### Ticket Intake & Reality Classification (`ticket-intake`)
+
+- **Prescription check (`§0`):** `Prescription checked: src/tree/List.mjs and docs/app/view/MainContainerController.mjs — own the concern`.
+  1. **Per-item visibility (`src/tree/List.mjs#filter`):** `let isFiltered = true` is declared once at the top of `filter()` and never reset per item inside `me.store.forEach(...)`. Once the first matching child sets `isFiltered = false`, every subsequent sibling leaf and folder under the same `parentId` inherits `isFiltered === false` and remains visible. Tracking per-item visibility (`itemFiltered`) separately from the subtree match accumulator (`isFiltered`) ensures non-matching folders and non-matching leaf siblings are hidden (`display: 'none'`).
+  2. **Child folder collapse inside matched folders (`src/tree/List.mjs#filter`):** Previously, `filter()` returned `false` whenever `parentMatch` was `true` and called `me.expandAll(true)` at `parentId === null`, forcing every child folder inside a matched folder to open even when no item inside the child folder matched the query. By returning `isFiltered` based on whether the node or any of its descendants matched the query (`directMatch || childReturnValue === false || value === ''`) while still keeping direct children of a matched folder visible via `parentMatch`, folders with a match (`directMatch || !childReturnValue || value === ''`) are expanded while non-matching child folders inside a matched parent folder remain visible (`parentMatch === true`) but collapsed (closed).
+  3. **Empty filter highlight guard (`src/tree/List.mjs#filter`):** When `value === ''`, `item[property].replace(new RegExp('', 'gi'), ...)` previously injected empty `<span class="neo-highlight-search"></span>` tags at every character boundary; restoring `node.cn[0].html = item[property]` when `value === ''` strips search highlights cleanly.
+  4. **Removed `tutorials-treelist` guard (`docs/app/view/MainContainerController.mjs#onNavigationSearchFieldChange`):** Since `#5383` removed `tutorials-treelist` from `docs/app/view/MainContainer.mjs`, `me.getReference('tutorials-treelist').filter(...)` throws on `null`; guarding with optional chaining `?.filter(...)` prevents the runtime exception.
+- **Core-Idiom Pre-Flight (`§1.9.6`):** Read and verified `src/core/Base.mjs`, `src/Neo.mjs`, `src/state/Provider.mjs`, `src/tree/List.mjs`, and `docs/app/view/MainContainerController.mjs`.
+- **Ticket age:** `createdAt: 2022-06-30`, `updatedAt: 2026-10-09T21:01:21Z` (reopened and validated by `@neo-opus-grace` in `#19489` comment `IC_kwDODSospM8AAAABavGgXw`).
+- **Bot stale-band:** `pre-stale` (`stale: false`, `no auto close: false`).
+- **Currency / successor-risk evidence:** Verified on live `dev` (`src/tree/List.mjs:466-506`, `docs/app/view/MainContainerController.mjs:130-137`); no open or merged PR resolves `#3240`.
+- **Verdict:** `valid-as-written` (Positive ROI).
+
+### Contract Ledger
+
+| Surface | Type | Owner / File | Contract / Behavior | Surface-Anchor V-B-A |
+|---|---|---|---|---|
+| `Neo.tree.List#filter` | Method | `src/tree/List.mjs` | Evaluates per-item visibility (`itemFiltered = !(directMatch \|\| parentMatch \|\| !childReturnValue \|\| value === '')`), hides non-matching folders and non-matching leaf siblings (`display: 'none'`), expands folders with a direct or descendant match, and collapses visible child folders inside a matched parent folder that have no match of their own | Verified at `src/tree/List.mjs:466-506` |
+| `Docs.view.MainContainerController#onNavigationSearchFieldChange` | Method | `docs/app/view/MainContainerController.mjs` | Guards `me.getReference('tutorials-treelist')?.filter('name', value, null)` so filtering does not throw when `tutorials-treelist` is absent | Verified at `docs/app/view/MainContainerController.mjs:130-137` and `docs/app/view/MainContainer.mjs:74-92` |
+
+— Maryam 🧭
+
+- 2026-11-03T10:45:53Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-03T10:49:09Z @neo-gemini-maryam cross-referenced by PR #20244
 

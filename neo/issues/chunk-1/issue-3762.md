@@ -4,12 +4,15 @@ title: ComponentModel store entries should default to being typed as stores
 state: OPEN
 labels:
   - enhancement
-assignees: []
+  - ai
+  - core
+assignees:
+  - neo-gemini-maryam
 createdAt: '2023-01-04T01:51:00Z'
-updatedAt: '2026-10-09T20:24:09Z'
+updatedAt: '2026-11-03T05:26:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3762'
 author: maxrahder
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -46,4 +49,30 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T4 · Grace · 2026-10-09: **reopened, valid.** Thank you @maxrahder. `state.Provider` still instantiates `stores` entries through `ClassSystemUtil.beforeSetInstance(storeValue)` with no default class, so an entry without `module` or `ntype` does not become a store.
 
 - 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-03T05:26:29Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T05:26:29Z @neo-gemini-maryam added the `core` label
+### @neo-gemini-maryam - 2026-11-03T05:26:35Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `enhancement`). Stage retrospective passed. Self-assigning and proceeding to `ticket-intake`.
+
+### Ticket Intake & Reality Classification (`ticket-intake`)
+
+- **Prescription check (`§0`):** `Prescription checked: src/state/Provider.mjs + src/util/ClassSystem.mjs — owns the concern`. Every other store-bearing config in `src/` (`src/list/Base.mjs:482`, `src/grid/Container.mjs:911`, `src/table/Container.mjs:343`, `src/form/field/ComboBox.mjs:402`, `src/component/Carousel.mjs:160`, `src/component/Gallery.mjs:366`, `src/component/Helix.mjs:542`, `src/component/wrapper/GoogleMaps.mjs:240`) passes `Store` (`Neo.data.Store`) as the second (`DefaultClass`) parameter to `ClassSystemUtil.beforeSetInstance(value, Store)`. `Neo.state.Provider#beforeSetStores` (`src/state/Provider.mjs:378`) calls `ClassSystemUtil.beforeSetInstance(storeValue)` with no `DefaultClass`, so inline store configs omitting `module`, `className`, and `ntype` fail `Neo.create` validation (`console.error('Class created with object configuration missing className or module property')`) and resolve to `null`. Additionally, `Neo.util.ClassSystem.beforeSetInstance` (`src/util/ClassSystem.mjs:43`) should guard `if (DefaultClass && !config.className)` before assigning `newConfig.module = DefaultClass` so configs specifying `className` do not also receive `module: DefaultClass`.
+- **Core-Idiom Pre-Flight (`§1.9.6`):** Read and verified `src/core/Base.mjs`, `src/Neo.mjs`, and `src/state/Provider.mjs`.
+- **Ticket age:** `createdAt: 2023-01-04T01:51:00Z`, `updatedAt: 2026-10-09T20:24:09Z` (reopened and validated by `@neo-opus-grace` in `IC_kwDODSospM8AAAABauluDw`).
+- **Bot stale-band:** `pre-stale` (`stale: false`, `no auto close: false`).
+- **Currency / successor-risk evidence:** Verified on live `dev` (`src/state/Provider.mjs:378`, `src/util/ClassSystem.mjs:43`) and via `ask_knowledge_base` / `gh search issues`; no open or merged PR resolves `#3762`.
+- **Verdict:** `valid-as-written` (Positive ROI).
+
+### Contract Ledger
+
+| Surface | Type | Owner / File | Contract / Behavior | Surface-Anchor V-B-A |
+|---|---|---|---|---|
+| `Neo.state.Provider#beforeSetStores` | Protected config hook | `src/state/Provider.mjs` | Passes `Store` (`Neo.data.Store`) as `DefaultClass` to `ClassSystemUtil.beforeSetInstance(storeValue, Store)` so inline `stores` entries without `module`, `className`, or `ntype` instantiate `Neo.data.Store` by default | Verified at `src/state/Provider.mjs:378` and `test/playwright/unit/state/Provider.spec.mjs` |
+| `Neo.util.ClassSystem.beforeSetInstance` | Static helper | `src/util/ClassSystem.mjs` | Sets `newConfig.module = DefaultClass` only when `DefaultClass && !config.className` | Verified at `src/util/ClassSystem.mjs:43-52` and `src/Neo.mjs:319-326` |
+
+— Maryam 🧭
+
+- 2026-11-03T05:26:41Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-03T05:28:29Z @neo-gemini-maryam cross-referenced by PR #20214
 
