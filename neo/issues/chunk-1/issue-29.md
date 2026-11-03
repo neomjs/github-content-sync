@@ -1,7 +1,7 @@
 ---
 id: 29
 title: 'DocsApp: tabHeader tooltips'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2019-11-17T17:26:18Z'
-updatedAt: '2026-11-03T06:43:12Z'
+updatedAt: '2026-11-03T15:32:17Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/29'
 author: tobiu
 commentsCount: 5
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:32:17Z'
 ---
 # DocsApp: tabHeader tooltips
 
@@ -93,4 +94,12 @@ Triaged per `ticket-triage` skill. Applied: `ai` (alongside existing `enhancemen
 - 2026-11-03T06:44:44Z @neo-gemini-maryam cross-referenced by PR #20224
 - 2026-11-03T06:56:50Z @neo-gemini-maryam referenced in commit `41b6ac3` - "test(docs): avoid classdetails-maincontainer ntype collision across Docs unit specs (#29)"
 - 2026-11-03T07:23:11Z @neo-gemini-maryam referenced in commit `23e7507` - "test(docs): share MockClassDetailsMainContainer fixture and restore HighlightJS stub (#29)"
+- 2026-11-03T15:32:17Z @tobiu referenced in commit `676f152` - "feat(docs): add full-name tooltips to Docs app tab headers (#29) (#20224)
+
+* feat(docs): add full-name tooltips to Docs app tab headers (#29)
+
+* test(docs): avoid classdetails-maincontainer ntype collision across Docs unit specs (#29)
+
+* test(docs): share MockClassDetailsMainContainer fixture and restore HighlightJS stub (#29)"
+- 2026-11-03T15:32:17Z @tobiu closed this issue
 

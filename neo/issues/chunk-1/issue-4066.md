@@ -1,7 +1,7 @@
 ---
 id: 4066
 title: 'container.Base: removeAt() => clear context'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2023-02-16T21:10:17Z'
-updatedAt: '2026-11-03T10:14:41Z'
+updatedAt: '2026-11-03T15:43:22Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4066'
 author: tobiu
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:43:22Z'
 ---
 # container.Base: removeAt() => clear context
 
@@ -74,4 +75,11 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing pri
 
 - 2026-11-03T10:14:41Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-03T10:19:57Z @neo-gemini-maryam cross-referenced by PR #20240
+- 2026-11-03T11:10:54Z @neo-gemini-maryam referenced in commit `9a8d7d6` - "fix(container): batch removeAt context reset via item.set (#4066)"
+- 2026-11-03T15:43:22Z @tobiu referenced in commit `4578a71` - "feat(container): clear item context in removeAt when not destroyed (#4066) (#20240)
+
+* feat(container): clear item context in removeAt when not destroyed (#4066)
+
+* fix(container): batch removeAt context reset via item.set (#4066)"
+- 2026-11-03T15:43:23Z @tobiu closed this issue
 

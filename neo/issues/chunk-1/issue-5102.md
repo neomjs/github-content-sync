@@ -4,12 +4,15 @@ title: 'selection/RowModel.mjs  onRowClick:   additionally respond according to 
 state: OPEN
 labels:
   - enhancement
-assignees: []
+  - ai
+  - core
+assignees:
+  - neo-gemini-maryam
 createdAt: '2023-11-19T06:12:30Z'
-updatedAt: '2026-10-09T20:39:09Z'
+updatedAt: '2026-11-03T18:11:50Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5102'
 author: gplanansky
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -101,4 +104,35 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T6 · Grace · 2026-10-09: **reopened, valid but later.** Thank you @gplanansky. The row selection models (`src/selection/grid/RowModel.mjs`, `table/RowModel.mjs`) still ignore `ctrlKey` / `metaKey` / `shiftKey`.
 
 - 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-03T14:05:44Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T14:05:44Z @neo-gemini-maryam added the `core` label
+- 2026-11-03T14:05:48Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-03T14:05:52Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `enhancement`). Stage retrospective passed. Self-assigning and proceeding to `ticket-intake`.
+
+### Ticket Intake & Sharpened Scope (`#5102`)
+
+- **Verdict:** `valid-as-written` (extending to both `src/selection/table/RowModel.mjs` and `src/selection/grid/RowModel.mjs` per `@neo-opus-grace`'s reopen note, gated behind opt-in `modifierClickEvents: false` per `@neo-opus-ada`'s Round-1 review)
+- **Prescription checked:** `src/selection/table/RowModel.mjs` and `src/selection/grid/RowModel.mjs` own `onRowClick` selection and view event dispatch for `table.Body` and `grid.View`.
+- **Core-Idiom Pre-Flight (§9.6):** Read `src/core/Base.mjs` and `src/Neo.mjs`.
+- **Architectural Reality:**
+  1. `Neo.selection.table.RowModel#onRowClick(data)` and `Neo.selection.grid.RowModel#onRowClick(event)` default to `modifierClickEvents: false`, preserving `dev` behavior where any row click (including modifier clicks) toggles row selection and fires `select` / `deselect`.
+  2. When `modifierClickEvents: true` is configured on the row selection model and a row click carries `altKey`, `ctrlKey`, `metaKey`, or `shiftKey` on the DOM click payload (`data.data` / `event.data`), `onRowClick` fires `'altSelect'`, `'ctrlSelect'`, `'metaSelect'`, or `'shiftSelect'` on `me.view` with `{data, record}` (in chord precedence `altKey` > `ctrlKey` > `metaKey` > `shiftKey`) and skips the selection toggle.
+
+### Contract Ledger (`#5102`)
+| Surface | Owner | Contract |
+|---|---|---|
+| `modifierClickEvents: false` | `Neo.selection.table.RowModel`, `Neo.selection.grid.RowModel` | Opt-in boolean config (default `false`). When `false`, modified clicks toggle row selection as on `dev`. When `true`, modified clicks fire a modifier event on `view` and skip the selection toggle. |
+| `altSelect`, `ctrlSelect`, `metaSelect`, `shiftSelect` | Fired on `me.view` (`Neo.table.Body` / `Neo.grid.View`) | Fired when `modifierClickEvents: true` and the click's DOM payload carries `altKey`, `ctrlKey`, `metaKey`, or `shiftKey`. Payload: `{data, record}` where `data` is the DOM click event object and `record` is the clicked row's record. Chord precedence: `altKey` > `ctrlKey` > `metaKey` > `shiftKey`. |
+
+### Acceptance Criteria
+- [ ] **AC-1:** `Neo.selection.table.RowModel` adds `modifierClickEvents: false`; when `true`, `onRowClick(data)` fires `'altSelect'`, `'ctrlSelect'`, `'metaSelect'`, or `'shiftSelect'` on `view` with `{data: eventData, record}` without mutating selection state; when `false` or unmodified, clicks preserve existing `select` / `deselect` behavior and `{record}` payload.
+- [ ] **AC-2:** `Neo.selection.grid.RowModel` adds `modifierClickEvents: false`; when `true`, `onRowClick(event)` fires `'altSelect'`, `'ctrlSelect'`, `'metaSelect'`, or `'shiftSelect'` on `view` with `{data, record}` without mutating `selectedRows`; when `false` or unmodified, clicks preserve `select` / `deselect` and `selectionChange` behavior.
+- [ ] **AC-3:** Unit tests (`test/playwright/unit/selection/RowModelKeypressClick.spec.mjs`) and browser E2E tests (`test/playwright/e2e/grid/RowModelModifierClick.spec.mjs`) verify `modifierClickEvents: false` (default) and `modifierClickEvents: true` across both `Neo.selection.grid.RowModel` and `Neo.selection.table.RowModel`.
+
+— Maryam 🧭
+
+- 2026-11-03T14:14:03Z @neo-gemini-maryam cross-referenced by PR #20253
+- 2026-11-03T17:24:34Z @neo-gemini-maryam referenced in commit `57fdf17` - "feat(selection): fire modifier-key select events in table and grid RowModel onRowClick (#5102)"
 

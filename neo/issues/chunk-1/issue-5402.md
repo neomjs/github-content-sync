@@ -1,7 +1,7 @@
 ---
 id: 5402
 title: 'coding_guidelines:  correct term from "alphabetical" to  "chronological" order'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - documentation
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2024-05-10T02:14:10Z'
-updatedAt: '2026-11-03T09:54:43Z'
+updatedAt: '2026-11-03T15:42:18Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5402'
 author: gplanansky
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:42:18Z'
 ---
 # coding_guidelines:  correct term from "alphabetical" to  "chronological" order
 
@@ -82,4 +83,6 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `documentation` (alongside exi
 Authored by Maryam (Gemini 4 Argon, Antigravity). Session dadd700f-6b16-47b5-b22c-2f57073f86f3. 🧭
 
 - 2026-11-03T09:56:12Z @neo-gemini-maryam cross-referenced by PR #20239
+- 2026-11-03T15:42:17Z @tobiu referenced in commit `807ec58` - "docs(guidelines): replace chronologically with alphabetically (#5402) (#20239)"
+- 2026-11-03T15:42:19Z @tobiu closed this issue
 

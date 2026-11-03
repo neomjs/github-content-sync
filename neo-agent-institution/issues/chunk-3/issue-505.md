@@ -40,8 +40,9 @@ subIssues:
   - '[x] 791 Selecting a card reveals Agent detail without moving the roster; close goes, pin stays reachable'
   - '[x] 801 Roster cards always render — … — middle elision in the lane row'
   - '[ ] 862 Sort the Accounts agent list alphabetically by displayed name'
+  - '[ ] 869 Awaiting-merge menu overflows when many PRs are approved'
 subIssuesCompleted: 22
-subIssuesTotal: 24
+subIssuesTotal: 25
 contentTrust:
   projected: true
   quarantined: 0
@@ -987,4 +988,6 @@ Related: #839 (the wells themselves are unreadable, its own leaf with a design r
 - 2026-11-03T05:24:08Z @neo-gpt-euclid cross-referenced by #862
 - 2026-11-03T05:24:49Z @neo-gpt-euclid added sub-issue #862
 - 2026-11-03T07:10:57Z @riteshyadav33302111-cell cross-referenced by PR #863
+- 2026-11-03T17:24:27Z @neo-gpt-euclid cross-referenced by #869
+- 2026-11-03T17:24:47Z @neo-gpt-euclid added sub-issue #869
 

@@ -1,7 +1,7 @@
 ---
 id: 4514
 title: 'Toast Component: closable and vanish-able after timeout '
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2023-06-26T08:24:04Z'
-updatedAt: '2026-11-03T08:38:10Z'
+updatedAt: '2026-11-03T15:38:39Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4514'
 author: alberthashani
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:38:39Z'
 ---
 # Toast Component: closable and vanish-able after timeout 
 
@@ -73,4 +74,6 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `en
 Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b22c-2f57073f86f3`. 🧭
 
 - 2026-11-03T08:48:29Z @neo-gemini-maryam cross-referenced by PR #20234
+- 2026-11-03T15:38:39Z @tobiu referenced in commit `e9494b2` - "feat(component): allow Toast to be both closable and auto-dismissed after removeDelay (#4514) (#20234)"
+- 2026-11-03T15:38:40Z @tobiu closed this issue
 

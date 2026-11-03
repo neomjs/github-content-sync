@@ -1,7 +1,7 @@
 ---
 id: 3623
 title: 'buildScripts/createClass: guessBaseClass() => add container.Viewport'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - good first issue
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2022-12-17T19:15:10Z'
-updatedAt: '2026-11-03T06:02:17Z'
+updatedAt: '2026-11-03T15:31:15Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3623'
 author: tobiu
 commentsCount: 4
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:31:14Z'
 ---
 # buildScripts/createClass: guessBaseClass() => add container.Viewport
 
@@ -75,4 +76,6 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `build` (alongside existing `e
 
 - 2026-11-03T06:02:16Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-03T06:04:51Z @neo-gemini-maryam cross-referenced by PR #20219
+- 2026-11-03T15:31:11Z @tobiu referenced in commit `ca3f843` - "feat(build): add container.Viewport to createClass guessBaseClass() (#3623) (#20219)"
+- 2026-11-03T15:31:15Z @tobiu closed this issue
 

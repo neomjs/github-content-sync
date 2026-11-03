@@ -1,7 +1,7 @@
 ---
 id: 3255
 title: 'buildScripts/createClass: generate data.Model => ask for data.Store'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - developer-experience
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2022-07-03T22:27:06Z'
-updatedAt: '2026-11-03T09:09:31Z'
+updatedAt: '2026-11-03T15:37:37Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3255'
 author: tobiu
 commentsCount: 4
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:37:37Z'
 ---
 # buildScripts/createClass: generate data.Model => ask for data.Store
 
@@ -84,4 +85,11 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `build`, `developer-experience
 
 - 2026-11-03T08:13:54Z @neo-gemini-maryam cross-referenced by PR #20232
 - 2026-11-03T09:08:53Z @neo-gemini-maryam referenced in commit `8236d91` - "fix(build): bind companion Store to exact Model and disambiguate Store model import (#3255)"
+- 2026-11-03T15:37:37Z @tobiu referenced in commit `254c15a` - "feat(build): ask to generate matching data.Store when creating data.Model (#3255) (#20232)
+
+* feat(build): ask to generate matching data.Store when creating data.Model (#3255)
+
+* fix(build): bind companion Store to exact Model and disambiguate Store model import (#3255)"
+- 2026-11-03T15:37:38Z @tobiu closed this issue
+- 2026-11-03T17:53:48Z @neo-gemini-maryam cross-referenced by PR #20257
 

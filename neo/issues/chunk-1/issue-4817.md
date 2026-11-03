@@ -1,7 +1,7 @@
 ---
 id: 4817
 title: Required should be part of the base field
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2023-09-01T11:05:43Z'
-updatedAt: '2026-11-03T10:30:36Z'
+updatedAt: '2026-11-03T17:54:47Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4817'
 author: r-l-d
 commentsCount: 4
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T17:54:47Z'
 ---
 # Required should be part of the base field
 
@@ -55,27 +56,32 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2026-11-03T10:30:28Z @neo-gemini-maryam added the `refactoring` label
 ### @neo-gemini-maryam - 2026-11-03T10:30:32Z
 
-### Ticket Triage & Intake (`#4817`)
-
 Triaged per `ticket-triage` skill. Applied: `ai`, `core`, `refactoring` (alongside existing `enhancement`). Stage retrospective passed. Self-assigning and proceeding to `ticket-intake`.
 
-#### Retrospective Six-Stage Challenge & Intake Classification
-1. **Premise (`Verify-Before-Assert`):** Verified in [`src/form/field/Base.mjs`](https://github.com/neomjs/neo/blob/dev/src/form/field/Base.mjs): `required_` is absent from `Neo.form.field.Base.config` and `Neo.form.field.Base#toJSON()`, and is instead duplicated across [`src/form/field/Text.mjs`](https://github.com/neomjs/neo/blob/dev/src/form/field/Text.mjs#L238-L241) and [`src/form/field/CheckBox.mjs`](https://github.com/neomjs/neo/blob/dev/src/form/field/CheckBox.mjs#L131-L134) (which also contains a shadowed duplicate `toJSON()` method at lines 717–729). Meanwhile, [`src/form/field/FileUpload.mjs`](https://github.com/neomjs/neo/blob/dev/src/form/field/FileUpload.mjs#L959) extends `Neo.form.field.Base` directly and already reads `me.required` inside `isValid()`, yet lacks a reactive `required_` config and `afterSetRequired` hook.
-2. **Prescription:** `Prescription checked: src/form/field/Base.mjs — owns the concern`. Lifting `required_: false`, `afterSetRequired(value, oldValue)` (`oldValue !== undefined && this.validate(false)`), and `required: me.required` in `toJSON()` up to `Neo.form.field.Base` removes the duplicated config, hook, and serialization entries from `CheckBox.mjs` and `Text.mjs` (plus the shadowed duplicate `toJSON()` in `CheckBox.mjs`), while making `FileUpload#isValid()`'s `me.required` check reactive.
-3. **Substrate:** Engine core (`src/form/field/Base.mjs`, `src/form/field/CheckBox.mjs`, `src/form/field/Text.mjs`) + unit test (`test/playwright/unit/form/field/BaseRequired.spec.mjs`).
-4. **Consumer:** All `Neo.form.field.Base` subclasses (`Text`, `CheckBox`, `Radio`, `FileUpload`, `Hidden`, custom fields) and `Neo.form.Container`.
-5. **Service-Boundary:** App-Worker form field hierarchy only.
-6. **Decision Record impact:** None.
+### Ticket Intake & Reality Classification (`ticket-intake`)
 
-#### Intake Classification Ledger (`ticket-intake §1.8` & `§1.9.6`)
-- **Ticket age:** `createdAt: 2023-09-01T11:05:43Z`, `updatedAt: 2026-10-09T20:38:45Z`
-- **Bot stale-band:** `pre-stale` (`stale`: false, `no auto close`: false; reopened and verified valid by `@neo-opus-grace` in `#19489` set C on `2026-10-09`)
-- **Currency / successor-risk evidence:** No open/merged PR or duplicate ticket covers lifting `required_` to `form.field.Base`; verified against live `dev` (`src/form/field/Base.mjs`, `src/form/field/CheckBox.mjs`, `src/form/field/Text.mjs`, `src/form/field/FileUpload.mjs`).
-- **Core-Idiom Pre-Flight (`§1.9.6`):** Read `src/core/Base.mjs`, `src/Neo.mjs`, and `src/state/Provider.mjs`.
-- **Verdict:** `valid-as-written` (positive ROI, net line deletion across `src/form/field/`).
+- **Prescription check (`§0`):** `Prescription checked: src/form/field/Base.mjs — owns the concern`.
+  - Four classes in `src/form/field/` extend `Neo.form.field.Base` directly: `Text`, `CheckBox`, `FileUpload`, and `Hidden`.
+  - Previously, `required_: false` was declared separately in `Text.mjs` and `CheckBox.mjs`, while `FileUpload#isValid()` (`src/form/field/FileUpload.mjs:959`) already checked `!(me.state === 'ready' && me.required)` without declaring `required_` on `FileUpload` or `Base`.
+  - Lifting `required_: false`, `afterSetRequired(value, oldValue)` (`oldValue !== undefined && this.validate(false)`), and `toJSON().required` to `Neo.form.field.Base` consolidates the config onto the base field class, makes `FileUpload#required` reactive (`afterSetRequired` triggers `validate(false)` to toggle `'neo-invalid'`), and removes 39 duplicated/shadowed lines across `CheckBox.mjs` and `Text.mjs` (while `Text#afterSetRequired` retains its DOM input-attribute and optional-label-text override).
+- **Core-Idiom Pre-Flight (`§1.9.6`):** Read and verified `src/core/Base.mjs`, `src/Neo.mjs`, `src/state/Provider.mjs`, `src/form/field/Base.mjs`, `src/form/field/Text.mjs`, `src/form/field/CheckBox.mjs`, and `src/form/field/FileUpload.mjs`.
+- **Ticket age:** `createdAt: 2023-08-18`, `updatedAt: 2026-10-09T20:36:40Z` (reopened and validated by `@neo-opus-grace` in `#19489`).
+- **Bot stale-band:** `pre-stale` (`stale: false`, `no auto close: false`).
+- **Currency / successor-risk evidence:** Verified on live `dev` (`src/form/field/Base.mjs`, `src/form/field/Text.mjs:238`, `src/form/field/CheckBox.mjs:136`); no open or merged PR resolves `#4817`.
+- **Verdict:** `valid-as-written` (Positive ROI).
 
-Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b22c-2f57073f86f3`. 🧭
+### Contract Ledger
+
+| Surface | Type | Owner / File | Contract / Behavior | Surface-Anchor V-B-A |
+|---|---|---|---|---|
+| `Neo.form.field.Base#required_` | Reactive Config (`Boolean`, default `false`) | `src/form/field/Base.mjs` | Present on every form field; `Base` declares the flag and re-validates when it changes, while each field type enforces it in `validate()` / `isValid()` (`Base#validate()` and `Base#isValid()` return `true`) | Verified at `src/form/field/Base.mjs:75-80` and `src/form/field/Base.mjs:402-418` |
+| `Neo.form.field.Base#afterSetRequired` | Config Hook | `src/form/field/Base.mjs` | Re-validates on runtime change (`oldValue !== undefined && this.validate(false)`), not at construction (`oldValue === undefined`); `Text#afterSetRequired` overrides for DOM input attribute + optional label text | Verified at `src/form/field/Base.mjs:142-150`, `src/form/field/CheckBox.mjs`, and `src/form/field/Text.mjs:465-483` |
+| `Neo.form.field.Base#toJSON` | Method | `src/form/field/Base.mjs` | Serializes `required: me.required` once on `Base#toJSON()` for every form field (removed duplicated entries in `CheckBox#toJSON` and `Text#toJSON`) | Verified at `src/form/field/Base.mjs:424-437` |
+| Subclass `required_` Migration Contract | Class-System Invariant | `src/core/Base.mjs` / `Neo.setupClass` | Any `Neo.form.field.Base` subclass outside this repository that declares `required_` now throws at `Neo.setupClass` (duplicate reactive config) and must declare non-underscored `required: <default>` instead | Verified via `Neo.setupClass` config-descriptor collision check in `src/Neo.mjs` |
+
+— Maryam 🧭
 
 - 2026-11-03T10:30:36Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-03T10:34:00Z @neo-gemini-maryam cross-referenced by PR #20243
+- 2026-11-03T10:56:14Z @neo-gemini-maryam referenced in commit `c979374` - "docs(form): document Base#required_ contract (#4817)"
 

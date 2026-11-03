@@ -18,8 +18,8 @@ parentIssue: null
 subIssues:
   - '[x] 14192 Reclaim the unused Chroma FTS5 index (~495MB) — no full-text consumer; governed drop, Chroma-tolerance V-B-A first'
   - '[x] 128 Field↔document de-dup (~910MB) — consumer-aware refactor to one canonical representation'
-  - '[ ] 1441 Drop stored documents from existing turn rows and measure the reclaim'
-subIssuesCompleted: 2
+  - '[x] 1441 Drop stored documents from existing turn rows and measure the reclaim'
+subIssuesCompleted: 3
 subIssuesTotal: 3
 contentTrust:
   projected: true

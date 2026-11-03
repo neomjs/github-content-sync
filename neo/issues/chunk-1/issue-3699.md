@@ -1,15 +1,19 @@
 ---
 id: 3699
 title: Neo-Carousel should support less than 3 items
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
-assignees: []
+  - ai
+  - testing
+  - core
+assignees:
+  - neo-gemini-maryam
 createdAt: '2022-12-28T12:59:47Z'
-updatedAt: '2026-10-09T20:24:05Z'
+updatedAt: '2026-11-03T15:44:13Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3699'
 author: Dinkh
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:44:13Z'
 ---
 # Neo-Carousel should support less than 3 items
 
@@ -46,4 +51,44 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T4 · Grace · 2026-10-09: **reopened, valid (from the code, not run).** Thank you @Dinkh. `component.Carousel` still builds a fixed three-slot track (`for (i; i < 3; i++)`).
 
 - 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-03T11:13:47Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T11:13:47Z @neo-gemini-maryam added the `core` label
+- 2026-11-03T11:13:47Z @neo-gemini-maryam added the `testing` label
+- 2026-11-03T11:13:52Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-03T11:14:16Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `core`, `testing` (primary `enhancement` already present). Stage retrospective passed. Self-assigned for implementation.
+
+### Ticket Intake & Contract Ledger (`ticket-intake` §0, §1.7, §1.8)
+
+- **Prescription checked:** `src/component/Carousel.mjs` (`createBaseItems`, `createItem`, `onCarouselBtnClick`) — owns the concern.
+  - On `dev`, `Carousel#createBaseItems()` unconditionally runs `for (i = 0; i < 3; i++) { items.push(me.createItem(i, i)) }`, which throws in `me.itemTpl(data)` whenever `store.getCount() < 3` because `store.getAt(i)` is `null`.
+  - When `store.getCount()` is `1`, placing the single item at `positionIndex = 0` (`'neo-carousel--translate-x-full'`) translates it off-screen (`-100%`) instead of centering it (`'neo-carousel-translate-x-0'`, `positionIndex = 1`).
+  - When `store.getCount()` is `2`, `onCarouselBtnClick` assumes a 3-slot track and leaves neither item in `'neo-carousel-translate-x-0'` after rotation.
+  - Additionally, `createItem(recordIndex, positionIndex)` keys `me.itemData` by `positionIndex` (`0..2`) while `onCarouselBtnClick` updates `me.itemIndex` to `newRecordIndex - 1` (which becomes `-1` when `newRecordIndex === 0`), breaking both `onItemClick` (`me.itemData[me.itemIndex]`) and subsequent `back`/`forward` rotations, and `createBaseItems()` does not reset `positionArray`, `itemData`, or `itemIndex` when the store mutates dynamically (`store.remove` / `store.add` / `store.clear`).
+- **Core-Idiom Pre-Flight (`§9.6`):** Read `src/core/Base.mjs`, `src/Neo.mjs`, and `src/state/Provider.mjs`.
+
+#### Contract Ledger
+| Surface | Owner / File | Change | Consumer / Verification |
+|---|---|---|---|
+| `Neo.component.Carousel#createBaseItems` | `src/component/Carousel.mjs` | Reset `positionArray` and `itemData`, hide `.neo-carousel-btn-bar` (`removeDom = true`) when `count < 2` or `autoRun > 0`, render `0` items when `count === 0`, `1` centered item (`positionIndex = 1`, `itemIndex = 0`) when `count === 1`, and `Math.min(count, 3)` items (`itemIndex = 1`) when `count >= 2` | `test/playwright/unit/component/Carousel.spec.mjs` |
+| `Neo.component.Carousel#createItem` | `src/component/Carousel.mjs` | Key `me.itemData[recordIndex] = data` so `me.itemData[me.itemIndex]` always resolves the active middle record | `test/playwright/unit/component/Carousel.spec.mjs` |
+| `Neo.component.Carousel#onCarouselBtnClick` | `src/component/Carousel.mjs` | Guard `countItems < 2` as a no-op; for `countItems === 2`, toggle `me.itemIndex` (`(index + 1) % 2`) and place the active item at `'neo-carousel-translate-x-0'` and the inactive item at the directional off-screen class; for `countItems >= 3`, wrap `me.itemIndex` and `newRecordIndex` modulo `countItems` (`0 .. countItems - 1`) | `test/playwright/unit/component/Carousel.spec.mjs` |
+
+#### Ticket Reality Classification
+- **Ticket age:** `createdAt: 2022-12-28T12:59:47Z`, `updatedAt: 2026-10-09T20:24:05Z`
+- **Bot stale-band:** `post-stale-with-exemption` (reopened and re-validated in `#19489` set C · T4 by `@neo-opus-grace` on `2026-10-09`)
+- **Currency / successor-risk evidence:** Verified live `src/component/Carousel.mjs`; no open or merged PR resolves `< 3` items or dynamic store item removal in `Carousel`.
+- **Verdict:** `valid-as-written`
+
+— Maryam 🧭
+
+- 2026-11-03T11:18:48Z @neo-gemini-maryam cross-referenced by PR #20245
+- 2026-11-03T11:52:09Z @neo-gemini-maryam referenced in commit `29c2745` - "fix(component): initialize Carousel on assigned ready empty Store (#3699)"
+- 2026-11-03T15:44:12Z @tobiu referenced in commit `d187157` - "feat(component): support fewer than 3 items and dynamic store changes in Carousel (#3699) (#20245)
+
+* feat(component): support fewer than 3 items and dynamic store changes in Carousel (#3699)
+
+* fix(component): initialize Carousel on assigned ready empty Store (#3699)"
+- 2026-11-03T15:44:13Z @tobiu closed this issue
 

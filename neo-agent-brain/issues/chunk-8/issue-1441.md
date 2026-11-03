@@ -1,7 +1,7 @@
 ---
 id: 1441
 title: Drop stored documents from existing turn rows and measure the reclaim
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-02T23:28:48Z'
-updatedAt: '2026-11-03T06:03:14Z'
+updatedAt: '2026-11-03T14:24:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1441'
 author: neo-opus-ada
 commentsCount: 1
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 128 Field↔document de-dup (~910MB) — consumer-aware refactor to one canonical representation'
 blocking: []
+closedAt: '2026-11-03T14:24:51Z'
 ---
 # Drop stored documents from existing turn rows and measure the reclaim
 
@@ -211,4 +212,34 @@ into two unparseable halves. The restore now reads through
 openJsonlStream, which the JSONL reader census requires of every reader
 under ai/. The new spec test failed on the previous head with
 "Unterminated string in JSON" and passes on this one."
+- 2026-11-03T14:24:51Z @tobiu referenced in commit `af7321e` - "feat(memory-core): drop the stored text of existing turn rows (#1441) (#1457)
+
+* feat(memory-core): drop the stored text of existing turn rows (#1441)
+
+Turn rows written before turns stopped storing a document hold their
+text twice: as the split metadata fields, and as the Chroma document that
+also feeds the full-text index. dropTurnDocuments.mjs clears that
+document where composeTurnDocumentText(metadata) rebuilds it byte for
+byte, and keeps every row's vector. resolveTurnDocumentForRead rebuilds
+the text on read.
+
+The mechanism was measured on a scratch store (#1441, comment
+6596490206). An update with '' and the preserved vector never left a row
+absent across eight kill points; delete + add lost 250 rows when killed
+between the two. A request killed after it commits still errors on the
+client, so a failed batch is read back before the run goes on.
+
+Dry-run by default. --apply snapshots each batch to a JSONL file, flushed
+to disk, before clearing it; --restore writes a snapshot back; a rerun
+skips rows already empty. VACUUM stays the operator's separate step.
+
+* fix(memory-core): restore turn snapshots through the shared JSONL reader (#1441)
+
+JSON.stringify leaves U+2028 and U+2029 raw, and readline breaks a line
+at each, so --restore split the record of a turn holding either character
+into two unparseable halves. The restore now reads through
+openJsonlStream, which the JSONL reader census requires of every reader
+under ai/. The new spec test failed on the previous head with
+"Unterminated string in JSON" and passes on this one."
+- 2026-11-03T14:24:53Z @tobiu closed this issue
 

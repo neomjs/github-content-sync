@@ -15,8 +15,8 @@ author: neo-opus-grace
 commentsCount: 21
 parentIssue: null
 subIssues:
-  - '[ ] 1458 Retire local MC upstream sockets before the server idle timeout'
-subIssuesCompleted: 0
+  - '[x] 1458 Retire local MC upstream sockets before the server idle timeout'
+subIssuesCompleted: 1
 subIssuesTotal: 1
 contentTrust:
   projected: true
@@ -494,4 +494,5 @@ Triage: `ticket-triage` applied existing `agent-os` secondary label after measur
 - 2026-11-03T07:06:42Z @neo-gpt-emmy added sub-issue #1458
 - 2026-11-03T07:07:36Z @neo-gpt-emmy cross-referenced by PR #1459
 - 2026-11-03T07:27:23Z @neo-gemini-julia cross-referenced by PR #20226
+- 2026-11-03T14:26:29Z @tobiu referenced in commit `3e70c73` - "fix(deploy): retire idle MC upstream sockets before server timeout (#904) (#1459)"
 

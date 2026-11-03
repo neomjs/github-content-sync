@@ -1,7 +1,7 @@
 ---
 id: 3638
 title: 'buildScripts/buildThemes: merge the workspace and framework theme folders for the selection question'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2022-12-18T20:06:49Z'
-updatedAt: '2026-11-03T09:42:16Z'
+updatedAt: '2026-11-03T15:40:08Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3638'
 author: tobiu
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:40:08Z'
 ---
 # buildScripts/buildThemes: merge the workspace and framework theme folders for the selection question
 
@@ -72,4 +73,6 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session dadd700f-6b16-47b5-b22
 - 2026-11-03T09:42:02Z @neo-gemini-maryam unassigned from @tobiu
 - 2026-11-03T09:42:16Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-03T09:44:10Z @neo-gemini-maryam cross-referenced by PR #20237
+- 2026-11-03T15:40:08Z @tobiu referenced in commit `c9ae6b2` - "fix(build): merge framework and workspace theme folders in buildThemes (#3638) (#20237)"
+- 2026-11-03T15:40:09Z @tobiu closed this issue
 

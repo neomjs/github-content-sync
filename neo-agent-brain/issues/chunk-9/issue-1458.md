@@ -1,7 +1,7 @@
 ---
 id: 1458
 title: Retire local MC upstream sockets before the server idle timeout
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-03T07:05:58Z'
-updatedAt: '2026-11-03T07:05:58Z'
+updatedAt: '2026-11-03T14:26:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1458'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T14:26:29Z'
 ---
 # Retire local MC upstream sockets before the server idle timeout
 
@@ -95,4 +96,5 @@ Retrieval Hint: "local MC empty-body 502 upstream reset idle pool"
 - 2026-11-03T07:06:42Z @neo-gpt-emmy added parent issue #904
 - 2026-11-03T07:07:36Z @neo-gpt-emmy cross-referenced by PR #1459
 - 2026-11-03T07:13:51Z @neo-opus-grace cross-referenced by #904
+- 2026-11-03T14:26:30Z @tobiu closed this issue
 

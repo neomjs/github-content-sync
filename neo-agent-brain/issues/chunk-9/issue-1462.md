@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-03T08:43:44Z'
-updatedAt: '2026-11-03T08:45:46Z'
+updatedAt: '2026-11-03T17:48:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1462'
 author: neo-opus-ada
 commentsCount: 0
@@ -38,7 +38,8 @@ Institution neomjs/neo-agent-institution#843 carries the operator's requirement 
 ## The Architectural Reality
 
 At `dev` `e47fd09301`:
-- `devFleetServer.mjs` builds one `createPlaneMailboxClient({baseUrl, credential: assertFleetPlaneBearerClass()})` and proves it with `init({expectedIdentity: viewer.agentIdentityNodeId})`. The wake stream consumer, `openWork` and `wakeRound` all run on that client.
+- `devFleetServer.mjs` builds one `createPlaneMailboxClient({baseUrl, credential: assertFleetPlaneBearerClass()})` and proves it with `init({expectedIdentity: viewer.agentIdentityNodeId})`. The wake stream's catch-up, `openWork` and `wakeRound` all run on that client.
+- *(Correction 2026-11-03, at the server half)* The bearer has a second audience. With a forge-PAT `fleet.planeBearerClass` and no declared fleet-surface bearer, `resolveFleetPlaneAdmissionBearer` presents the same bearer at the plane's `/fleet` surface, where the wake stream (`createFleetWakeSseConsumer`) and the seat-define client (`FleetControlBridge.planeFleet`) each take it at construction. The packaged FM is that case: `planeEnvFragment` sets `NEO_FLEET_PLANE_BEARER_CLASS` to the PAT's recorded `authSource` and empties both admission variables.
 - `fleetServer.mjs` `resolveFleetPlaneBearer` reads `fleet.planeBearer` or `fleet.planeBearerFile`. `assertFleetPlaneBearerClass` refuses a bearer that aliases the deployment's admission token.
 - `planeMailboxClient.mjs` `init()` closes the client's prior life before it opens a new one. Re-initialising in place would drop the working session before the new bearer is proven.
 - ADR 0019: the bearer never goes into `AiConfig` (B4), and a new leaf is declarative, read at the entrypoint's use site.
@@ -47,8 +48,8 @@ At `dev` `e47fd09301`:
 ## The Fix
 
 1. A leaf names the inherited fd that carries plane bearers, for example `fleet.planeCredentialFd`: env-bound, unset by default. Unset keeps today's boot path.
-2. When it is set, the fleet server reads newline-delimited frames from that fd. The first carries the boot bearer, each later one a rotation.
-3. A rotation builds a candidate client with the new bearer through the same class assertion, and proves it with `init` against the bound viewer identity. On success every consumer moves to the candidate, then the old client closes. On a refusal, or a subject other than the bound identity, the old client keeps serving.
+2. When it is set, the fleet server reads newline-delimited JSON frames from that fd, `{"bearer": "…", "bearerClass": "github-pat"}`: the class travels with its bearer, as the FM's `plane.json` records it. The first carries the boot bearer, each later one a rotation. The pipe is then the bearer's only home: a configured `planeBearer` / `planeBearerFile`, or an empty `planeBase`, refuses the boot.
+3. A rotation meets the teeth a configured bearer meets (admission token, fleet-surface alias, viewer mint), then `planeMailboxClient#rotate` proves it against the bound viewer identity (see the implementation notes). On success every consumer moves to the successor and the old session closes; for a forge-PAT class the wake stream and the seat-define client re-arm with it. On a refusal, or a subject other than the bound identity, the old binding keeps serving.
 4. The server answers each frame on the same fd: adopted with the identity, or refused with the reason. For another account, the answer names the subject the plane resolved.
 5. The bearer lives in the server's own state only.
 
@@ -63,7 +64,7 @@ At `dev` `e47fd09301`:
 
 ## Acceptance Criteria
 
-- [ ] AC-1: With the fd set, a frame with a valid bearer for the bound identity moves the running consumers to a session on the new bearer, closes the old session, and answers adopted.
+- [ ] AC-1: With the fd set, a frame with a valid bearer for the bound identity moves the running consumers to a session on the new bearer (for a forge-PAT class, the wake stream and the seat-define client too), closes the old session, and answers adopted.
 - [ ] AC-2: A bearer the plane refuses, or resolves to another identity, leaves the old session serving and answers refused with the reason, naming the other identity in that case.
 - [ ] AC-3: A piped bearer that aliases the admission token is refused exactly like a configured one.
 - [ ] AC-4: With the fd unset, boot is unchanged.
@@ -91,6 +92,7 @@ Origin Session ID: 0d705b6b-6706-4013-b114-91e7490cf576
 Retrieval Hint: "fleet server rotate plane bearer credential pipe no restart"
 
 
+
 ## Timeline
 
 - 2026-11-03T08:43:44Z @neo-opus-ada assigned to @neo-opus-ada
@@ -99,4 +101,23 @@ Retrieval Hint: "fleet server rotate plane bearer credential pipe no restart"
 - 2026-11-03T08:43:47Z @neo-opus-ada added the `security` label
 - 2026-11-03T08:43:47Z @neo-opus-ada added the `agent-os` label
 - 2026-11-03T08:44:11Z @neo-opus-ada cross-referenced by #843
+- 2026-11-03T17:50:05Z @neo-opus-ada referenced in commit `6b709a0` - "feat(fleet): the fleet server adopts a piped plane bearer (#1462)
+
+fleet.planeCredentialFd names an inherited fd that carries the plane
+bearer and its class as JSON lines: the first frame is the boot bearer,
+each later one a rotation, and every frame is answered on the same fd.
+The pipe is then the bearer's only home.
+
+A piped bearer meets the teeth a configured one meets (admission token,
+fleet-surface alias, viewer mint), then the plane's proof for the bound
+viewer through planeMailboxClient#rotate. A forge-PAT class also serves
+the plane's fleet surface, so the wake stream and the seat-define client
+re-arm with the successor. A refusal leaves the current bearer serving
+and names another account beside the bound one.
+
+The end-to-end spec runs the entry as the Fleet Manager spawns it, fd 3
+included, against a loopback plane."
+- 2026-11-03T17:51:56Z @neo-opus-ada referenced in commit `21dc206` - "feat(fleet): the credential pipe reads through the shared JSONL reader (#1462)"
+- 2026-11-03T17:51:58Z @neo-opus-ada cross-referenced by PR #1463
+- 2026-11-03T18:22:57Z @neo-opus-ada referenced in commit `5118008` - "feat(fleet): a piped boot bearer meets every class tooth before its answer (#1462)"
 

@@ -1,7 +1,7 @@
 ---
 id: 3559
 title: 'data.Store: beforeSetData() => temp record ids'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2022-11-10T17:30:27Z'
-updatedAt: '2026-11-03T07:44:02Z'
+updatedAt: '2026-11-03T15:35:59Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3559'
 author: tobiu
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:35:59Z'
 ---
 # data.Store: beforeSetData() => temp record ids
 
@@ -85,4 +86,6 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `en
 — Maryam 🧭
 
 - 2026-11-03T07:52:33Z @neo-gemini-maryam cross-referenced by PR #20230
+- 2026-11-03T15:35:58Z @tobiu referenced in commit `ff79856` - "feat(data): assign temporary negative record ids in Store (#3559) (#20230)"
+- 2026-11-03T15:35:59Z @tobiu closed this issue
 

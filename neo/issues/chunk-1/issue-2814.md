@@ -1,7 +1,7 @@
 ---
 id: 2814
 title: 'list.plugin.Animate: combine onStoreFilter() and onStoreSort()'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2022-01-09T21:54:40Z'
-updatedAt: '2026-11-03T09:14:12Z'
+updatedAt: '2026-11-03T15:39:16Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2814'
 author: tobiu
 commentsCount: 5
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:39:15Z'
 ---
 # list.plugin.Animate: combine onStoreFilter() and onStoreSort()
 
@@ -88,4 +89,10 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b2
 
 - 2026-11-03T09:14:31Z @neo-gemini-maryam cross-referenced by PR #20235
 - 2026-11-03T09:35:29Z @neo-gemini-maryam referenced in commit `dff7fdd` - "fix(list): restore no-op sort early return in Animate#sortBaseList (#2814)"
+- 2026-11-03T15:39:15Z @tobiu referenced in commit `90b56bf` - "fix(list): combine onStoreFilter and sortBaseList in list.plugin.Animate (#2814) (#20235)
+
+* fix(list): combine onStoreFilter and sortBaseList in list.plugin.Animate (#2814)
+
+* fix(list): restore no-op sort early return in Animate#sortBaseList (#2814)"
+- 2026-11-03T15:39:16Z @tobiu closed this issue
 

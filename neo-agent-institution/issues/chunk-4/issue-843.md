@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-30T22:40:38Z'
-updatedAt: '2026-11-03T08:44:09Z'
+updatedAt: '2026-11-03T18:25:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/843'
 author: neo-opus-ada
 commentsCount: 0
@@ -74,6 +74,14 @@ Two repositories, one PR each, in order:
 2. The Institution's Brain pin move to a SHA that carries #1462.
 3. This ticket's PR: the pipe at spawn, `attach()` and Connect over it, persistence after the Brain confirms, the spine state, and the ADR 0034 amendment.
 
+## Implementation notes
+
+*(2026-11-03, from the Brain side as neomjs/neo-agent-brain#1463 has it at `5118008f`, in review.)*
+- **The pipe:** the spawn in `harness/brain.mjs` adds a fourth `stdio` entry, `'pipe'`, and sets `NEO_FLEET_PLANE_CREDENTIAL_FD=3`. Each frame is one JSON line, `{"bearer": "…", "bearerClass": "<authSource>"}`; the first is the boot bearer. The child answers every frame in order: `{"state": "adopted", "identity": "@x"}`, or `{"state": "refused", "reason": "…"}`, plus `resolvedIdentity` and `expectedIdentity` for another account. A refused boot frame is answered before the child exits 1.
+- **The env fragment:** with the pipe, `planeEnvFragment` keeps `NEO_FLEET_PLANE_BASE` and `NEO_AGENT_IDENTITY` and drops the bearer and its class. A declared `NEO_FLEET_PLANE_BEARER` or `NEO_FLEET_PLANE_BEARER_FILE` beside the pipe refuses the boot, even an unreadable one.
+- **`attach()`:** when the running child was launched with the pipe for the same plane base, it probes as today, writes a rotation frame and awaits the answer. Adopted: `writePlaneConfig`, then `{ok: true, relaunching: false}`. Refused: `plane.json` stays untouched and the refusal returns, naming both accounts from `resolvedIdentity` / `expectedIdentity`. A host-mode launch or a different plane base keeps today's relaunch.
+- **Closing the pipe** ends rotations only; the child keeps its bound bearer.
+
 ## Acceptance Criteria
 
 - [ ] AC-1 Admitting a PAT through the plane admission form updates the running FM with no relaunch: no SIGINT or relaunch in `main.log`, the renderer session survives, and seats are untouched. The cockpit returns to `live`, with the new PAT verified for the same identity.
@@ -105,6 +113,7 @@ Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
 
 
 
+
 ## Timeline
 
 - 2026-10-30T22:40:39Z @neo-opus-ada assigned to @neo-opus-ada
@@ -121,4 +130,5 @@ Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
 - 2026-10-31T20:54:52Z @neo-gemini-maryam cross-referenced by PR #854
 - 2026-11-03T08:17:14Z @neo-opus-ada cross-referenced by #864
 - 2026-11-03T08:43:45Z @neo-opus-ada cross-referenced by #1462
+- 2026-11-03T17:51:58Z @neo-opus-ada cross-referenced by PR #1463
 

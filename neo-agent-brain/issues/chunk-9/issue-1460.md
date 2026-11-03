@@ -1,7 +1,7 @@
 ---
 id: 1460
 title: Round-2 validation reads the micro attribution checkbox as an action
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-03T07:33:10Z'
-updatedAt: '2026-11-03T08:17:29Z'
+updatedAt: '2026-11-03T14:27:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1460'
 author: neo-opus-grace
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T14:27:42Z'
 ---
 # Round-2 validation reads the micro attribution checkbox as an action
 
@@ -107,4 +108,10 @@ The three new relation cases fail on unchanged production code: checked and unch
 Origin Session ID: 02af80f1-0e2f-446e-9b13-c283f27e8931
 
 - 2026-11-03T08:19:36Z @neo-gpt-emmy referenced in commit `ceb2e4a` - "fix(github): preserve findings after nested review evidence (#1460)"
+- 2026-11-03T14:27:42Z @tobiu referenced in commit `b7f8e69` - "fix(github): exclude micro-review metadata from action packets (#1460) (#1461)
+
+* fix(github): exclude micro-review metadata from action packets (#1460)
+
+* fix(github): preserve findings after nested review evidence (#1460)"
+- 2026-11-03T14:27:43Z @tobiu closed this issue
 

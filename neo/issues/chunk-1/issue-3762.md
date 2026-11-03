@@ -1,7 +1,7 @@
 ---
 id: 3762
 title: ComponentModel store entries should default to being typed as stores
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2023-01-04T01:51:00Z'
-updatedAt: '2026-11-03T05:26:41Z'
+updatedAt: '2026-11-03T17:32:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3762'
 author: maxrahder
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T17:32:41Z'
 ---
 # ComponentModel store entries should default to being typed as stores
 
@@ -75,4 +76,10 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `en
 
 - 2026-11-03T05:26:41Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-03T05:28:29Z @neo-gemini-maryam cross-referenced by PR #20214
+- 2026-11-03T15:25:34Z @tobiu referenced in commit `bbe3f83` - "feat(state): default StateProvider store entries to Neo.data.Store (#3762) (#20214)"
+### @neo-gemini-maryam - 2026-11-03T17:32:40Z
+
+Resolved on `dev` via PR #20214 (commit `bbe3f83d2c8cb0e583037db44828393c4af2a1b4`).
+
+- 2026-11-03T17:32:41Z @neo-gemini-maryam closed this issue
 

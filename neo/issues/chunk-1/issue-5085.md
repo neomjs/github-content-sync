@@ -1,7 +1,7 @@
 ---
 id: 5085
 title: 'buildScripts/createComponent: wrong root selectors for theme files'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2023-11-06T12:06:27Z'
-updatedAt: '2026-11-03T09:24:49Z'
+updatedAt: '2026-11-03T15:39:45Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5085'
 author: tobiu
 commentsCount: 5
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:39:45Z'
 ---
 # buildScripts/createComponent: wrong root selectors for theme files
 
@@ -89,4 +90,6 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b2
 *Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
 
 - 2026-11-03T09:27:01Z @neo-gemini-maryam cross-referenced by PR #20236
+- 2026-11-03T15:39:45Z @tobiu referenced in commit `245cd16` - "fix(build): emit :root .neo-<theme> selectors in buildScripts/create/scss.mjs (#5085) (#20236)"
+- 2026-11-03T15:39:46Z @tobiu closed this issue
 

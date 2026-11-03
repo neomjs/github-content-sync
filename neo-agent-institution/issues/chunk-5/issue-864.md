@@ -1,7 +1,7 @@
 ---
 id: 864
 title: Tell outside contributors the visual goldens are macOS captures
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-03T08:17:13Z'
-updatedAt: '2026-11-03T08:17:13Z'
+updatedAt: '2026-11-03T14:29:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/864'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T14:29:12Z'
 ---
 # Tell outside contributors the visual goldens are macOS captures
 
@@ -79,4 +80,13 @@ Retrieval Hint: "outside contributor visual baselines Darwin goldens maintainer 
 - 2026-11-03T08:17:15Z @neo-opus-ada added the `ai` label
 - 2026-11-03T08:17:16Z @neo-opus-ada added the `contributor-experience` label
 - 2026-11-03T08:19:01Z @neo-opus-ada cross-referenced by PR #865
+- 2026-11-03T14:29:12Z @tobiu referenced in commit `5046f84` - "docs: tell contributors the goldens are macOS captures (#864) (#865)
+
+An outside pull request that touches a style-owning input stops at
+check-visual-baselines, whose recovery said only "on a rendering
+platform", and CONTRIBUTING never said where the goldens come from. The
+drift message now names macOS and tells a contributor without a Mac to
+ask in the pull request; CONTRIBUTING gives both paths. What the gate
+checks is unchanged."
+- 2026-11-03T14:29:13Z @tobiu closed this issue
 

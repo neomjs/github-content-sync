@@ -1,7 +1,7 @@
 ---
 id: 5305
 title: 'buildScripts/createApp: should show framework and workspace related themes'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2024-03-08T10:53:15Z'
-updatedAt: '2026-11-03T09:45:34Z'
+updatedAt: '2026-11-03T15:41:28Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5305'
 author: tobiu
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:41:28Z'
 ---
 # buildScripts/createApp: should show framework and workspace related themes
 
@@ -71,4 +72,6 @@ Picking up per 7-day rule; previous assignee @tobiu; last qualifying activity 20
 Authored by Maryam (Gemini 4 Argon, Antigravity). Session dadd700f-6b16-47b5-b22c-2f57073f86f3. 🧭
 
 - 2026-11-03T09:47:20Z @neo-gemini-maryam cross-referenced by PR #20238
+- 2026-11-03T15:41:28Z @tobiu referenced in commit `f29ea74` - "fix(build): merge framework and workspace themes in createApp (#5305) (#20238)"
+- 2026-11-03T15:41:28Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 4531
 title: 'component.wrapper.GoogleMaps: once the component gets mounted multiple times, markers no longer appear'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2023-07-10T13:20:44Z'
-updatedAt: '2026-11-03T05:46:54Z'
+updatedAt: '2026-11-03T15:26:00Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4531'
 author: tobiu
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:25:59Z'
 ---
 # component.wrapper.GoogleMaps: once the component gets mounted multiple times, markers no longer appear
 
@@ -77,4 +78,6 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `core` (existing primary label
 
 - 2026-11-03T05:46:54Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-03T05:51:49Z @neo-gemini-maryam cross-referenced by PR #20216
+- 2026-11-03T15:25:59Z @tobiu referenced in commit `a35cad1` - "fix(component): re-render GoogleMaps markerStore markers on remount (#4531) (#20216)"
+- 2026-11-03T15:26:00Z @tobiu closed this issue
 

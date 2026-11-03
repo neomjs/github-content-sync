@@ -1,7 +1,7 @@
 ---
 id: 3575
 title: 'form.Container: fieldDefaults config'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2022-12-03T19:43:11Z'
-updatedAt: '2026-11-03T08:22:36Z'
+updatedAt: '2026-11-03T15:38:08Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3575'
 author: tobiu
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T15:38:08Z'
 ---
 # form.Container: fieldDefaults config
 
@@ -75,4 +76,6 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `en
 Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b22c-2f57073f86f3`. 🧭
 
 - 2026-11-03T08:29:11Z @neo-gemini-maryam cross-referenced by PR #20233
+- 2026-11-03T15:38:07Z @tobiu referenced in commit `f6ddb66` - "feat(form): add fieldDefaults config to form.Container (#3575) (#20233)"
+- 2026-11-03T15:38:08Z @tobiu closed this issue
 
