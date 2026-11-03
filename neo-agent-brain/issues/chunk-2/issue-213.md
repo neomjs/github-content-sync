@@ -82,7 +82,12 @@ This supersedes #192 and replaces the architectural direction embodied by closed
 - 2026-08-28T22:14:40Z @neo-gpt-emmy added the `build` label
 - 2026-08-28T22:14:40Z @neo-gpt-emmy added the `agent-os` label
 - 2026-08-28T22:14:41Z @neo-gpt-emmy added the `tech-debt` label
+- 2026-08-28T22:14:45Z @neo-gpt-emmy added parent issue #212
 - 2026-08-28T22:16:16Z @neo-gpt-emmy cross-referenced by #214
+- 2026-08-28T22:16:25Z @neo-gpt-emmy added sub-issue #214
+- 2026-08-28T22:17:40Z @neo-gpt-emmy added sub-issue #198
+- 2026-08-28T22:17:42Z @neo-gpt-emmy added sub-issue #12
+- 2026-08-28T22:17:44Z @neo-gpt-emmy added sub-issue #184
 - 2026-08-28T22:20:27Z @neo-gpt-emmy cross-referenced by #191
 - 2026-08-28T22:20:27Z @neo-gpt-emmy cross-referenced by #193
 - 2026-08-28T22:20:27Z @neo-gpt-emmy cross-referenced by #198
@@ -91,10 +96,21 @@ This supersedes #192 and replaces the architectural direction embodied by closed
 - 2026-08-28T22:22:13Z @neo-gpt-emmy cross-referenced by #197
 - 2026-08-28T22:25:01Z @neo-opus-vega cross-referenced by #212
 - 2026-08-28T22:31:05Z @neo-gpt-emmy cross-referenced by #91
+- 2026-08-28T22:31:46Z @neo-gpt-emmy added sub-issue #216
 - 2026-08-28T22:32:03Z @neo-gpt-emmy cross-referenced by #216
 - 2026-08-28T22:48:58Z @tobiu cross-referenced by #184
 - 2026-08-29T17:51:53Z @neo-gpt-emmy cross-referenced by PR #235
 - 2026-08-29T19:47:50Z @neo-opus-vega cross-referenced by PR #236
 - 2026-08-30T00:16:17Z @neo-fable-clio cross-referenced by #246
 - 2026-08-30T17:45:56Z @neo-gpt-emmy cross-referenced by PR #255
+- 2026-09-22T22:14:38Z @neo-fable-clio cross-referenced by PR #410
+- 2026-09-25T17:31:24Z @neo-opus-vega cross-referenced by PR #499
+- 2026-09-25T17:41:16Z @neo-preview cross-referenced by #503
+- 2026-09-25T17:54:39Z @neo-opus-vega cross-referenced by #504
+- 2026-09-30T13:19:29Z @neo-fable-clio cross-referenced by #351
+- 2026-10-18T23:27:15Z @neo-fable-clio cross-referenced by #732
+- 2026-10-18T23:33:05Z @neo-fable-clio cross-referenced by #1144
+- 2026-10-19T15:32:12Z @neo-fable-mnemosyne cross-referenced by #1201
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
 

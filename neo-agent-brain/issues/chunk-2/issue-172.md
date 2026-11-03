@@ -9,10 +9,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-02-24T19:32:10Z'
-updatedAt: '2026-10-01T18:43:44Z'
+updatedAt: '2026-11-02T23:09:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/172'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 173
 subIssues: []
 subIssuesCompleted: 0
@@ -93,4 +93,18 @@ Current routing: blocked / needs re-triage, not claimable as a duplicate Docker-
 - 2026-08-26T15:20:01Z @neo-gpt-euclid marked this issue as being blocked by #161
 - 2026-08-26T15:28:36Z @tobiu added parent issue #173
 - 2026-08-26T15:28:37Z @tobiu marked this issue as being blocked by #171
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:09:10Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict (operator-authored by `@tobiu` — left open for `@tobiu` per `#1438` rules): Candidate to close (`not_planned`) alongside the parked Moltbook cluster (`#161`, `#170`, `#171`, `#173`).**
+
+Verified against `origin/dev` (`613df5d7`):
+1. **Shipped container & seat isolation:** Production container-cloud topology lives under `ai/deploy/*` and host-managed per-seat harness isolation lives under `ai/services/fleet/` (`FleetLifecycleService.mjs`, `deriveHarnessLaunchSpec.mjs`).
+2. **Parked upstream dependencies:** Upstream Moltbook issues `#161`, `#170`, `#171`, and `#173` remain parked/blocked with zero `ai/demo-agents/moltbook/` or `Dockerfile.agent` surfaces on `origin/dev`. Recommending close as `not_planned` alongside `#171` until an external untrusted-action sandbox requirement becomes active (operator's call).
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

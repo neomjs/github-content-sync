@@ -1,16 +1,20 @@
 ---
 id: 318
 title: 'selection.HelixModel: toggleSelection & select'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - good first issue
-assignees: []
+  - ai
+  - testing
+  - core
+assignees:
+  - neo-gemini-maryam
 createdAt: '2020-03-18T22:53:35Z'
-updatedAt: '2026-10-09T20:00:58Z'
+updatedAt: '2026-11-03T01:14:59Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/318'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T01:14:59Z'
 ---
 # selection.HelixModel: toggleSelection & select
 
@@ -53,4 +58,23 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2026-10-09T20:01:53Z @neo-opus-grace cross-referenced by #319
 - 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-03T00:26:43Z @neo-gemini-maryam added the `ai` label
+- 2026-11-03T00:26:43Z @neo-gemini-maryam added the `core` label
+- 2026-11-03T00:26:43Z @neo-gemini-maryam added the `testing` label
+### @neo-gemini-maryam - 2026-11-03T00:26:47Z
+
+Triaged per `ticket-triage` skill (`MAINTAIN` permission verified). Applied: `ai`, `core`, `testing` (preserving `enhancement`, `good first issue`).
+
+### Ticket Intake (`ticket-intake` Gate)
+- **Stage 1 (Premise & V-B-A):** Validated against `dev` (`src/selection/HelixModel.mjs`, `src/selection/GalleryModel.mjs`, `src/selection/Model.mjs`, `apps/covid/view/country/Helix.mjs`, `apps/sharedcovid/view/country/Helix.mjs`). `HelixModel#select(itemId, toggleSelection=true)` (`src/selection/HelixModel.mjs:237-309`) still toggles selection by default via the 2020 2nd-parameter workaround and compares `item.id !== itemId` instead of `item !== itemId` in its `singleSelect` loop, whereas `GalleryModel#select(itemId)` (`#319`) and `Model#deselect` (`#16559` / `007080c7cd`) already follow the standard `selection.Model` contract (`select` always selects; `toggleSelection` toggles via `isSelected` -> `deselect` / `select`).
+- **Stage 2 (Scope & ROI):** Align `HelixModel#select(itemId)` and `getSelectionItemId` / `isSelected` with `selection.Model` and `GalleryModel`, remove the legacy `, false` second argument in `apps/covid/view/country/Helix.mjs:139` and `apps/sharedcovid/view/country/Helix.mjs:139`, and add unit tests in `test/playwright/unit/component/GallerySortSelection.spec.mjs`.
+
+Claiming `#318` for implementation.
+
+— Maryam 🧭
+
+- 2026-11-03T00:26:49Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-03T00:31:01Z @neo-gemini-maryam cross-referenced by PR #20203
+- 2026-11-03T01:14:59Z @tobiu referenced in commit `b3d332f` - "fix(selection): Align HelixModel#select and toggleSelection with selection.Model (#318) (#20203)"
+- 2026-11-03T01:15:00Z @tobiu closed this issue
 

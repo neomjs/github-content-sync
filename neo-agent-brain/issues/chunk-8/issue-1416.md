@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-01T02:47:26Z'
-updatedAt: '2026-11-02T17:48:25Z'
+updatedAt: '2026-11-03T02:19:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1416'
 author: neo-fable-mnemosyne
-commentsCount: 11
+commentsCount: 12
 parentIssue: null
 subIssues:
   - '[ ] 1432 No defrag heal operation runs the KB''s store-bloat diagnosis'
@@ -336,4 +336,39 @@ The measurement AC (elements against live records, plus Chroma RssAnon before an
 - 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
 - 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
 - 2026-11-02T19:41:48Z @neo-gemini-maryam cross-referenced by #306
+- 2026-11-03T00:58:05Z @neo-opus-vega cross-referenced by #1440
+- 2026-11-03T02:04:44Z @neo-opus-vega cross-referenced by PR #1451
+### @neo-opus-vega - 2026-11-03T02:19:57Z
+
+**Vector dimension as a RAM lever: measured 11-03, recorded here for when we decide.**
+
+The operator asked whether 1024-d vectors would be smarter than today's 4096-d across all Agent OS collections. Every collection grows without limit: memories, the KB's tickets and PR conversations, and now A2A messages. Smaller vectors would also embed faster with a smaller model.
+
+**Ranking cost of truncation.** `text-embedding-qwen3-embedding-8b` is Matryoshka-style, so its vectors can be cut to their first *k* dimensions and renormalized. The test used a 3,000-row sample of `neo-agent-messages` and 40 real message subjects as queries, measuring how many of the full 4096-d top-10 the truncated top-10 keeps:
+
+| dims | top-10 kept | per vector |
+|---|---|---|
+| 4096 | 100 % | 16 KiB |
+| 2048 | 74 % | 8 KiB |
+| 1024 | 66 % | 4 KiB |
+| 512 | 51 % | 2 KiB |
+
+Agreement is not relevance: the third of neighbours that changes at 1024 may be just as good. Deciding needs a small labeled relevance set across memory, KB and messages. That set should also cover a native 1024-d model such as qwen3-embedding-0.6b, the option that also embeds faster. Embedding currently takes about 146 ms per short text, measured while the message drain was busy.
+
+**The bigger lever comes first.** On 11-02, about 7.8 of Chroma's 12.3 GiB anonymous memory were deleted elements:
+- `neo-agent-sessions` held 5,250 live records in 344,668 elements;
+- `neo-knowledge-base` held 86,560 in 253,743.
+
+Live data at 4096-d is only a few GiB, so compaction (#1432's defrag heal op) reclaims more than any dimension change and costs no ranking quality. Dimension then cuts the live remainder by 4× at 1024-d. The message index alone is ≈0.92 GiB at 4096-d once #1451's backfill lands, and ≈0.23 GiB at 1024-d.
+
+**Messages, specifically.** The live check on #1445 found that a long body dominates a message's single embedding, so a subject-only query underranks it. Separate subject and body vectors would double the message index at 4096-d. At 1024-d the pair would cost half of today's single vector, so that fix rides on the dimension decision rather than on its own.
+
+**Order:**
+1. Compaction (#1432).
+2. Re-measure Chroma's anonymous memory.
+3. A labeled relevance eval comparing 4096, truncated 1024 and native 1024.
+4. A cross-collection decision. Re-embedding every collection is cross-substrate, so it goes through an Ideation Sandbox Discussion rather than straight to a ticket.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
 

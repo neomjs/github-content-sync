@@ -1,7 +1,7 @@
 ---
 id: 128
 title: Field↔document de-dup (~910MB) — consumer-aware refactor to one canonical representation
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-06-27T03:12:44Z'
-updatedAt: '2026-11-02T18:28:57Z'
+updatedAt: '2026-11-03T01:59:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/128'
 author: neo-opus-ada
-commentsCount: 10
+commentsCount: 11
 parentIssue: 133
 subIssues:
   - '[x] 14203 composeTurnDocumentText pure helper — single-source the turn-document derivation (slice 1 of the #14193 de-dup)'
@@ -25,35 +25,53 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[ ] 1441 Drop stored documents from existing turn rows and measure the reclaim'
+closedAt: '2026-11-03T01:59:21Z'
 ---
 # Field↔document de-dup (~910MB) — consumer-aware refactor to one canonical representation
 
-Sub of neomjs/neo-agent-brain#133 (Memory Core Chroma bloat). **Rewritten 2026-11-02 against Brain `dev` `92a7ec44`** for the #1438 backlog sweep. The June body (consumer census, five-step plan) is in this issue's edit history.
+Sub of neomjs/neo-agent-brain#133 (Memory Core Chroma bloat). **Rewritten 2026-11-02 against Brain `dev` `92a7ec44`** for the #1438 backlog sweep. The June body (consumer census, five-step plan) is in this issue's edit history. **Narrowed the same day at intake:** the governed backfill and the measured reclaim moved to #1441, so one PR can resolve this ticket. The census below was re-run at `dev` `613df5d7`.
 
 ## Where it stands
 
 - **Canonical: decided.** The split fields (`prompt`, `thought`, `response`) are canonical. A turn's document is their derivation: `composeTurnDocumentText` in `ai/services/memory-core/helpers/turnDocumentText.mjs`.
 - **Read side: done in the services.** Every service that reads a turn's document reconstructs a missing one through `resolveTurnDocumentForRead` (same file): `MemoryService.mjs:3084` and `:3258`, and `SessionService.mjs:680`. The memory search never fetches documents. The other services that include documents read the summary collection, where the document is content: `SummaryService.mjs:341` and `:452`, `frontierConsolidation.mjs:75`, `sessionSummaryReceiptStore.mjs:468` and `:485`. Delivered by neomjs/neo#14202, #14207 and #14213, with #14209/#14210 and #14218/#14219.
-- **The bytes: not reclaimed.** Every new turn still stores its text twice. `MemoryService.mjs:654` composes `combinedText` into the WAL record. The embed daemon's `embedBatch` (`ai/daemons/embed/drainCycle.mjs:189`) passes it to `collection.add()` as `documents`, and the collection embeds those documents. Passing them also makes Chroma build its full-text index, a third copy. No code queries that index (no `whereDocument` anywhere under `ai/`). A post-hoc drop of it fails: neomjs/neo#14192 showed the next `add` breaking compaction. So the only supported route to those bytes is to stop passing turn documents.
+- **The bytes: not reclaimed.** Every new turn still stores its text twice. `MemoryService.mjs:654` composes `combinedText` into the WAL record. The embed daemon's `embedBatch` (`ai/daemons/embed/drainCycle.mjs`) passes it to `collection.add()` as `documents`, and the collection embeds those documents. Passing them also makes Chroma build its full-text index, a third copy. No code queries that index (no `whereDocument` anywhere under `ai/`). A post-hoc drop of the index fails: neomjs/neo#14192 showed the next `add` breaking compaction. So the only supported route to those bytes is to stop passing turn documents.
 
-The last measurements are ~910 MB of duplicated turn text (2026-06-27) and ~556 MB of full-text index (2026-08-25). Neither has been re-measured. The plane's `chroma.sqlite3` is now 4.47 GB and uses a rollback journal (#1432), so any new measurement runs on a copy, never on the live file.
+The last measurements are ~910 MB of duplicated turn text (2026-06-27) and ~556 MB of full-text index (2026-08-25). Re-measuring them and reclaiming the existing rows is #1441.
 
-## Remaining scope
+## Scope
 
-1. **Write side.** Turn records are embedded explicitly from their composed text and added as `{ids, embeddings, metadatas}`, with no `documents`. Summary rows keep their documents.
-2. **Drop-aware maintenance paths.** These still treat a turn's document as stored: `checkChromaIntegrity.mjs` (`hasDoc` at `:699` is a raw presence check), `defragChromaDB.mjs:1704` and `:1718`, `exportMemoryQuarantine.mjs:243` and `vectorJsonlImport.mjs:189`. Each accepts, copies or exports a turn whose split fields reconstruct its document.
-3. **Governed backfill.** An existing turn row loses its stored document only where `composeTurnDocumentText(metadata)` reproduces it byte for byte. The backfill is backed up, idempotent and reversible, under ADR 0027's envelope.
-4. **Reclaim, measured.** Bytes before and after, on a copy of the store. The VACUUM coordinates with #1432's defrag.
+1. **Write side.** `embedBatch` (both the batch `add` and the per-record fallback) embeds turn records explicitly from their composed text, through the collection's own embedding function. It then adds them as `{ids, embeddings, metadatas}`, with no `documents`. chromadb 3.5.0's `add` accepts embeddings without documents. The memory collection is turn-only on this path: the embed daemon drains the `add_memory` WAL into `StorageRouter.getMemoryCollection()` (`ai/daemons/embed/daemon.mjs`).
+2. **Drop-aware paths.** Each of these accepts, copies, exports or re-embeds a turn row that has no stored document, and reconstructs that document where it needs the text:
+   - `checkChromaIntegrity.mjs`: `hasDoc` is a raw presence check.
+   - `defragChromaDB.mjs`: the copy and rewrite loops.
+   - `exportMemoryQuarantine.mjs` and `vectorJsonlImport.mjs`.
+   - `reEmbedMissingHeal.mjs`: re-embeds a missing-vector row from `data.documents[index]`, the raw stored document.
+   - Memory Core `DatabaseService.mjs`: export reads `documents`, and import re-adds them.
+
+   A turn row is `metadata.type === 'agent-interaction'`. The memory collection also holds `implementation_plan` rows (written by `SessionService`), whose document is their content. A missing document on one of those stays an integrity failure.
+
+## Contract Ledger
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+|---|---|---|---|---|---|
+| Stored turn row (memory collection, `type: 'agent-interaction'`) | `composeTurnDocumentText` / `resolveTurnDocumentForRead` | New turns land as `{ids, embeddings, metadatas}`: no document and no full-text entry | A row written before #1441 runs keeps its document, which readers still prefer | `drainCycle.mjs` module JSDoc | unit: a mock collection receives `embeddings` and no `documents` for turns |
+| Turn rows on maintenance paths (scope item 2) | same | A turn row without a document is valid, and is copied, exported, imported or re-embedded from its reconstruction | A non-turn row without a document is still flagged | each path's JSDoc | unit per path |
 
 ## Acceptance Criteria
 
-- [ ] A new turn row stores its text once: `add()` receives no `documents` for turns, and the full-text index stops growing with turns.
-- [ ] The maintenance paths in scope item 2 accept a reconstructable turn that has no stored document.
-- [ ] Existing turn rows are migrated under a governed envelope (backed up, idempotent, reversible), with byte equality checked per row.
-- [ ] The reclaimed bytes are measured on a copy and recorded here, with no retrieval, summarization or display regression.
+- [ ] A new turn row stores its text once: `add()` receives `embeddings` and no `documents` for turns, on the batch path and on the per-record fallback.
+- [ ] Every path in scope item 2 accepts a turn row with no stored document and reconstructs its text where it needs it. A non-turn row with no document is still reported.
+- [ ] On a real Chroma, a turn added through the drain is found by memory search and reads back with its full text, before and after a backup and restore. Witnessed by the integration suite (`integration-unified`: memory writes in `TeamPrivateRetrieval`, the backup round trip in `BackupRestoreWipe`) and by the unit suite's run-scoped Chroma (`drainCycle.realChroma.spec.mjs`). *(An earlier edit of this AC claimed CI does not run the integration suites. It does; that claim came from a grep for npm script names, not from the workflows.)*
 
-Refs neomjs/neo-agent-brain#133 (parent), #1432 (defrag and the store's live shape).
+## Out of Scope
+
+- **The governed backfill of existing turn rows and the measured reclaim:** #1441.
+- **Summary rows and `implementation_plan` rows:** their documents are content.
+
+Refs neomjs/neo-agent-brain#133 (parent), #1441 (the backfill, blocked by this), #1432 (defrag and the store's live shape).
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
@@ -409,4 +427,48 @@ That is not a new requirement — it is a **consequence** worth weighing in the 
 - 2026-11-02T19:39:39Z @neo-opus-ada cross-referenced by #74
 - 2026-11-02T19:39:42Z @neo-opus-ada cross-referenced by #76
 - 2026-11-02T19:39:44Z @neo-opus-ada cross-referenced by #138
+- 2026-11-02T23:28:49Z @neo-opus-ada cross-referenced by #1441
+- 2026-11-02T23:29:00Z @neo-opus-ada marked this issue as blocking #1441
+### @neo-opus-ada - 2026-11-02T23:32:09Z
+
+## Intake, 2026-11-02
+
+- **Drift probe.** Measured from `createdAt` (2026-06-27), it intersects every declared path, so the full gate ran. Measured from the rewrite baseline `92a7ec44`, the intersection is empty.
+- **Epic review.** #133 had none, so I posted [6591079092](https://github.com/neomjs/neo-agent-brain/issues/133#issuecomment-6591079092).
+- **Prescription checked: `ai/daemons/embed/drainCycle.mjs` owns the concern.** `embedBatch` is the only writer of new turns. In chromadb 3.5.0, `add` embeds documents that arrive without embeddings by calling `collection.embed(texts, false)`. Explicit embedding makes that same call, so today's vectors are reproduced by construction.
+- **Census, re-run at `613df5d7`.**
+  - Missing from the body: `reEmbedMissingHeal.mjs`, and Memory Core `DatabaseService` export and import.
+  - `implementation_plan` rows must keep their documents.
+  - Copy paths must partition each batch, because chromadb rejects a `null` entry in `documents` (`validateDocuments`).
+
+  All of this is now in the body.
+- **Split.** The backfill and the measured reclaim are now #1441, which this ticket blocks.
+- **Successor risk.**
+  - This repo has no close-inactive workflow.
+  - No merged PR resolves this; the drain still passes `documents`.
+  - One open draft, Sophie's #1314 (draft since 10-27), touches `DatabaseService.mjs`, in its graph-backup region.
+- **Core idiom (9.6).** Exempt: the change is to data-plane payload shapes, with no instance or reactive-state lifecycle.
+- **Verdict.** `valid-as-written` after the narrowing.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-02T23:58:29Z @neo-opus-ada cross-referenced by PR #1447
+- 2026-11-03T00:03:29Z @neo-opus-ada referenced in commit `935d104` - "docs(memory-core): keep ticket history out of the CollectionProxy comments (#128)"
+- 2026-11-03T00:10:48Z @neo-opus-ada referenced in commit `491276f` - "chore(memory-core): merge dev, A2A message embedding, into the #128 branch (#128)"
+- 2026-11-03T00:10:48Z @neo-opus-ada referenced in commit `a2d325c` - "fix(memory-core): the drain drops only a turn's derived document, never a message's content (#128)"
+- 2026-11-03T01:01:55Z @neo-opus-ada referenced in commit `5e51ff8` - "fix(memory-core): a documentless turn is recoverable only when its split fields are present (#128)"
+- 2026-11-03T01:59:21Z @tobiu referenced in commit `21f846e` - "feat(memory-core): turn rows store their text once (#128) (#1447)
+
+* feat(memory-core): embed WAL turns explicitly and add them without documents (#128)
+
+* feat(memory-core): copy, import, heal and audit turn rows that have no stored document (#128)
+
+* test(memory-core): a drained turn stores no document and survives restore on a real Chroma (#128)
+
+* docs(memory-core): keep ticket history out of the CollectionProxy comments (#128)
+
+* fix(memory-core): the drain drops only a turn's derived document, never a message's content (#128)
+
+* fix(memory-core): a documentless turn is recoverable only when its split fields are present (#128)"
+- 2026-11-03T01:59:23Z @tobiu closed this issue
 

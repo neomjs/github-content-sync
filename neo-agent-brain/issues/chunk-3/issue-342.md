@@ -2,13 +2,17 @@
 id: 342
 title: 'The deference mirror cannot fire from a non-neo workspace, and its ''unless you'' family misses preference verbs other than want/rather'
 state: OPEN
-labels: []
+labels:
+  - enhancement
+  - ai
+  - model-experience
+  - agent-os
 assignees: []
 createdAt: '2026-09-08T07:33:53Z'
-updatedAt: '2026-09-08T07:43:34Z'
+updatedAt: '2026-11-02T23:11:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/342'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +25,12 @@ blockedBy: []
 blocking: []
 ---
 # The deference mirror cannot fire from a non-neo workspace, and its 'unless you' family misses preference verbs other than want/rather
+
+> **Premise Read & In-Place Rewrite (`2026-11-02`, `#1438` against `origin/dev` `613df5d7`):**
+> - **Shipped since filing (Finding 1 / `AC-2` & `AC-3`):** `ai/scripts/lifecycle/hooks/projectSeatHooks.mjs:124-220` and `ai/scripts/lifecycle/hooks/seatProjectionCheck.mjs:1-100` (`#317`, wired into `SessionStart` in `ai/scripts/lifecycle/hooks/claude/events.manifest.json:36-46`) now materialize Brain-owned hooks into target checkouts with `agentosRuntimeRoot`-rewritten specifiers and report `missing` / `stale` projections on `SessionStart`, and Fleet seat projection (`#980` / PR `#1051` `f03961a8`) wires seat hooks across workspace checkouts.
+> - **Remaining open scope:**
+>   1. **`deferencePhraseMatch.mjs:19-30,131-135,350` (`AC-1` & `AC-4`):** `DEFERENCE_PHRASES` still carries the three separate entries (`'unless you want me'`, `'unless you want'` gated by `hasIndefiniteDeferenceObject`, and `"unless you'd rather"`) rather than the bare stem `'unless you'`.
+>   2. **`ai/scripts/setup/initServerConfigs.mjs:1158-1174` (`retargetClaudeHookCommands`):** Still rewrites non-Engine `.claude/settings.json` hook commands to `$(git rev-parse --show-toplevel)/node_modules/neo.mjs/.claude/hooks/`, a path emptied when `neomjs/neo@c623b2f63c` moved Agent-OS hooks to `neo-agent-brain`.
 
 ## Context
 
@@ -65,8 +75,9 @@ The module's "falsifier-backed follow-up" bar is met by the corpus below being d
 ## Acceptance Criteria
 
 - [ ] `unless you` matches as a stem, and the corpus proving it is sampled from real agent turn-final text rather than authored to fit. If a genuine false positive is later found in live output, it is evidence for a gate — a constructed one is not.
-- [ ] A seat whose cwd is outside its neo checkout either runs the Stop hook or reports that it cannot; the silent-absence case is closed. A repo-relative hook path that resolves to a repo with no `.claude/hooks/` is the failure to detect.
-- [ ] `turnPresence` is non-null for at least one seat after the wiring repair, confirming the sibling beacon recovered rather than only the Stop path.
+- [x] A seat whose cwd is outside its neo checkout either runs the Stop hook or reports that it cannot (`ai/scripts/lifecycle/hooks/projectSeatHooks.mjs` + `seatProjectionCheck.mjs` on `SessionStart`, `#317`).
+- [ ] Retire the stale `node_modules/neo.mjs/.claude/hooks/` rewrite in `ai/scripts/setup/initServerConfigs.mjs:1158-1174` (`retargetClaudeHookCommands`) so `npm prepare` does not point non-Engine checkouts at a path emptied by `c623b2f63c`.
+- [x] `turnPresence` beacon wiring recovered via `projectSeatHooks.mjs` (`events.manifest.json:55-76`).
 - [ ] The existing phrases keep their current verdicts — no regression in either direction on the fixtures already in the suite.
 
 ## Out of Scope
@@ -81,5 +92,26 @@ A bare stem is not a smaller change than a gated one; it is a larger one wearing
 
 Origin Session ID: 3581aef4-0bb5-4cb4-b428-856e9e60c9b3
 
+
+
+## Timeline
+
+- 2026-09-25T10:43:38Z @neo-opus-vega cross-referenced by #132
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+- 2026-11-02T23:09:05Z @neo-gemini-maryam added the `ai` label
+- 2026-11-02T23:09:05Z @neo-gemini-maryam added the `enhancement` label
+- 2026-11-02T23:09:05Z @neo-gemini-maryam added the `model-experience` label
+- 2026-11-02T23:09:05Z @neo-gemini-maryam added the `agent-os` label
+### @neo-gemini-maryam - 2026-11-02T23:11:37Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Triaged (`ai`, `enhancement`, `model-experience`, `agent-os`) and rewritten in place.**
+
+- **Shipped (`AC-2` / `AC-3`):** `ai/scripts/lifecycle/hooks/projectSeatHooks.mjs` + `seatProjectionCheck.mjs` (`#317`, wired on `SessionStart` in `events.manifest.json:36-46`) now project Brain-owned hooks into target checkouts and report `missing`/`stale` projections.
+- **Remaining (`AC-1` / `AC-4` + `initServerConfigs.mjs`):** `ai/scripts/lifecycle/deferencePhraseMatch.mjs:19-30,350` still lists `'unless you want me'`, `'unless you want'` (`hasIndefiniteDeferenceObject`), and `"unless you'd rather"` instead of the `'unless you'` stem, and `ai/scripts/setup/initServerConfigs.mjs:1158-1174` (`retargetClaudeHookCommands`) still rewrites hook paths to `node_modules/neo.mjs/.claude/hooks/`.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
 
 

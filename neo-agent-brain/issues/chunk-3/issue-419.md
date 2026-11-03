@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-09-23T01:34:39Z'
-updatedAt: '2026-09-23T10:30:32Z'
+updatedAt: '2026-11-02T23:32:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/419'
 author: neo-gpt-euclid
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -29,13 +29,20 @@ blocking: []
 ---
 # Retire replaced legacy core rows by profile receipt
 
+> **Status (2026-11-02, `#1438` backlog sweep — verified at `origin/dev` `613df5d7`):**
+> - **Unblocked:** Both `BLOCKED_BY` predecessors are now **CLOSED** on `origin/dev`:
+>   - `#282` (`Port the shared core-corpus scan to repository profiles`, closed `2026-09-23` via `PR #423` `050f8c70`): `ai/services/knowledge-base/helpers/coreCorpusProfileRunner.mjs:319-351` (`embedCoreCorpusProfiles`) embeds separate Engine and Brain profile manifests with `deleteStale: false` and explicitly cites `#419` as the owner of the replacement-proven code-row migration receipt required before routine stale deletion can resume (see also `ai/services/knowledge-base/DatabaseService.mjs:893-895`).
+>   - `#417` (`Retire the legacy neo-owned conversation rows once the core profiles are live`, closed `2026-10-12` via `PR #999` `b3cad9f1`): delivered `ai/scripts/maintenance/retireLegacyConversationRows.mjs`.
+>   - Related `#411` (`PR #424` `c47ce446`), `#253`, and `#402` (`47719cab`) are also **CLOSED**.
+> - **Concept-row boundary update:** `#472` (`PR #475` `77bfa56f`) and `#1356` (`PR #1357` `838f2449`) amended ADR 0023 / ADR 0024 to name the plane store as the concept source and stopped routing `ConceptSource` over the Engine's deleted `resources/content/concepts`. Legacy `type: concept` rows remain excluded from `#419`'s code-row delete set per AC-2 and AC-4.
+
 ## Context
 
 `#282` ports shared `kbSync` to separate Engine and Brain repository profiles. Its first embed is deliberately additive (`deleteStale: false`), and its AC-9 requires a full legacy-row migration plan but excludes executing it. `#417` owns only old GitHub conversation rows and refuses any non-conversation deletion. The code-row retirement therefore needs its own execution owner before the shared KB can be called current.
 
 ## The Problem
 
-At the shared tenant's existing `neo` stamp, `VectorService.createTenantAwareChunkId()` includes the new chunk hash in the Chroma ID (`ai/services/knowledge-base/VectorService.mjs:381-391`). The profile hash also includes extraction identity, so an unchanged Engine source fact can receive a new ID while retaining its legacy `(tenantId, repoSlug, source, name, type)` meaning. `VectorService.embed(..., {deleteStale: false})` sets `idsToDelete=[]` (`:2582-2584`) and upserts the new ID. This is safe from accidental deletion but can leave two searchable versions of one code fact. It is a source-level mechanism, not a claim that a deployed collection already has a measured duplicate count; AC-1 supplies that census.
+At the shared tenant's existing `neo` stamp, `VectorService.createTenantAwareChunkId()` includes the new chunk hash in the Chroma ID (`ai/services/knowledge-base/VectorService.mjs:392`). The profile hash also includes extraction identity, so an unchanged Engine source fact can receive a new ID while retaining its legacy `(tenantId, repoSlug, source, name, type)` meaning. `VectorService.embed(..., {deleteStale: false})` sets `STALE_STRATEGY_SKIP` (`ai/services/knowledge-base/VectorService.mjs:509-517,2460-2470`; invoked by `ai/services/knowledge-base/helpers/coreCorpusProfileRunner.mjs:371`) and upserts the new ID. This is safe from accidental deletion but can leave two searchable versions of one code fact. It is a source-level mechanism, not a claim that a deployed collection already has a measured duplicate count; AC-1 supplies that census.
 
 ## The Architectural Reality
 
@@ -82,7 +89,7 @@ Porting the core scan (`#282`) · retiring old conversations (`#417`) · activat
 
 ## Related
 
-BLOCKED_BY #282 · BLOCKED_BY #417 · Related: #411 · #253 · #402 · ADR 0014 §5.2.
+Unblocked (predecessors #282 [`PR #423`] and #417 [`PR #999`, `ai/scripts/maintenance/retireLegacyConversationRows.mjs`] closed) · Related: #411 (closed) · #253 (closed) · #402 (closed) · #472 / #1356 (`ConceptSource` plane-store cutover) · ADR 0014 §5.2.
 
 Ownership: @neo-gpt (the `#282` core-profile lane owner); implementation waits for the two predecessor code/receipt gates, not for a routine poll.
 
@@ -102,8 +109,6 @@ Own-assignment sweep: seven open Brain assignments; `#282` is the only same-surf
 - 2026-09-23T01:34:40Z @neo-gpt-euclid added the `ai` label
 - 2026-09-23T01:34:40Z @neo-gpt-euclid added the `architecture` label
 - 2026-09-23T01:34:40Z @neo-gpt-euclid added the `agent-os` label
-- 2026-09-23T01:34:50Z @neo-gpt-euclid marked this issue as being blocked by #282
-- 2026-09-23T01:34:51Z @neo-gpt-euclid marked this issue as being blocked by #417
 - 2026-09-23T01:36:19Z @neo-gpt-euclid cross-referenced by #282
 - 2026-09-23T02:29:38Z @neo-opus-vega cross-referenced by #417
 - 2026-09-23T10:20:02Z @neo-opus-vega cross-referenced by PR #423
@@ -116,4 +121,35 @@ Own-assignment sweep: seven open Brain assignments; `#282` is the only same-surf
 - 2026-09-28T09:34:16Z @neo-gpt-emmy cross-referenced by #597
 - 2026-09-28T11:06:25Z @neo-gpt-emmy cross-referenced by PR #602
 - 2026-10-11T23:44:26Z @neo-opus-vega cross-referenced by PR #999
+- 2026-10-29T13:41:38Z @neo-opus-ada cross-referenced by #1346
+- 2026-10-29T14:10:24Z @neo-opus-ada cross-referenced by #1356
+- 2026-10-29T14:18:58Z @neo-opus-ada cross-referenced by PR #1357
+- 2026-10-29T18:33:26Z @tobiu referenced in commit `838f244` - "fix(knowledge-base): the core corpus stops routing ConceptSource over the engine's deleted concepts (#1356) (#1357)
+
+The Engine profile routed ConceptSource over resources/content/concepts.
+neomjs/neo#19322 deleted that tree on 09-29 (the plane store holds the
+concept pages), so createKnowledgeBase throws ENOENT at any engine past
+the Brain's 09-25 pin and the pin cannot move (#1346).
+
+Removed with it: the profile root, the ExtractorCatalogue descriptor,
+ConceptSource.mjs and its spec (deleted, not orphaned, so no Brain
+reader derives the path from projectRoot), the sourcePaths.ConceptSource
+default, the export entries, the KB-relevance prefix in
+PrimaryRepoSyncService and the spec rows that enumerated the source.
+The Engine-profile corpus test keeps a concept page in its fixture and
+now asserts that nothing routes it. Legacy type: concept vectors stay:
+embedKnowledgeBase is additive (#419 AC-4). This splits the route item
+out of #474."
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:32:01Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Rewritten in place — unblocked and verified against `origin/dev`:**
+- Both `BLOCKED_BY` predecessors are now closed on `origin/dev`: `#282` (`PR #423` `050f8c70`, `ai/services/knowledge-base/helpers/coreCorpusProfileRunner.mjs:319-351` & `DatabaseService.mjs:893-895`) and `#417` (`PR #999` `b3cad9f1`, `ai/scripts/maintenance/retireLegacyConversationRows.mjs`), along with `#411` (`PR #424`), `#253`, and `#402`.
+- Also recorded the `#472` (`PR #475`) + `#1356` (`PR #1357`) `ConceptSource` plane-store cutover and updated `VectorService.mjs` / `coreCorpusProfileRunner.mjs` line anchors.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

@@ -1,7 +1,7 @@
 ---
 id: 262
 title: 'Scope §verify_before_assert by claim class: code and runtime claims are re-run, record claims with receipts are cited, business text gets one fact check at the final version'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-02T19:39:14Z'
-updatedAt: '2026-11-02T19:58:41Z'
+updatedAt: '2026-11-02T22:28:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/262'
 author: neo-fable-mnemosyne
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-02T22:28:10Z'
 ---
 # Scope §verify_before_assert by claim class: code and runtime claims are re-run, record claims with receipts are cited, business text gets one fact check at the final version
 
@@ -123,4 +124,22 @@ RA-1: restores §verify_before_assert's rule trigger and artifact scope alongsid
 RA-2: states in class (3) and blog-authoring-guide.md §2 that class (3) sets the cadence for every claim inside business or pitch text, including its class (1) and (2) claims.
 
 RA-3: specifies in .agents/skills/blog-post/references/blog-authoring-guide.md §2 that the single final-version fact check is run by a seat that did not draft the claims."
+- 2026-11-02T22:28:10Z @tobiu referenced in commit `55b1e6c` - "docs(skills): scope §verify_before_assert by claim class (#262) (#263)
+
+* docs(skills): scope §verify_before_assert by claim class (#262)
+
+Scopes §verify_before_assert (agents-md/sections/0600-verify-before-assert.md) across three claim classes: (1) code, runtime, and architecture claims re-run the falsifying tool every time (citing neomjs/neo#15780); (2) record claims that already carry a receipt cite the anchor and re-measure only when changed or missing (citing #262); and (3) business and pitch text mine the record first, write from the anchors, and run one consolidated fact check at the final version rather than per-point per-revision sweeps (#262).
+
+Extends .agents/skills/blog-post/SKILL.md, .agents/skills/skills.manifest.json, and .agents/skills/blog-post/references/blog-authoring-guide.md (§1 and §2) so blog posts, outbound posts, and funding/pitch copy share the reader/acceptance pre-flight ("why would the audience NOT click?" / "why would they NOT accept us, and why would they?") and the single final-version fact-check gate.
+
+Retrieval anchor (AC-3, Nov 2 YC application specimen — neomjs/business#26, #27, #30): the same submission-day counts were re-measured by three seats within one hour (15:28Z, 15:40Z/15:49-15:52Z, 16:10Z) while the author seat context window grew from 12% to 48% of 1M and measurable trivia steered the pitch before being withdrawn (review 5741744044).
+
+* docs(skills): address review 5742745219 on #263 (#262)
+
+RA-1: restores §verify_before_assert's rule trigger and artifact scope alongside the Pre-Flight statement, 'the tool RESULT is the V-B-A', and Step 2.5's cross-substrate sweep at exact 0 B net delta (1,411 -> 1,411 B), funded by retiring the duplicate closing rationale sentence from the turn-loaded section and compacting the Atlas cross-reference; extends scripts/test-generate-agents-md.mjs to assert the trigger survives.
+
+RA-2: states in class (3) and blog-authoring-guide.md §2 that class (3) sets the cadence for every claim inside business or pitch text, including its class (1) and (2) claims.
+
+RA-3: specifies in .agents/skills/blog-post/references/blog-authoring-guide.md §2 that the single final-version fact check is run by a seat that did not draft the claims."
+- 2026-11-02T22:28:11Z @tobiu closed this issue
 

@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-07-04T01:13:51Z'
-updatedAt: '2026-08-26T15:14:31Z'
+updatedAt: '2026-11-02T23:32:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/116'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 1
 parentIssue: 117
 subIssues: []
 subIssuesCompleted: 0
@@ -26,9 +26,17 @@ blocking: []
 ---
 # Handoff direction-weather section: additive, skill-gated render
 
+> **Status (2026-11-02, `#1438` backlog sweep — verified at `origin/dev` `613df5d7`):**
+> - **Unblocked — Leaves 1–4 of Epic `#117` are all CLOSED and live on `origin/dev`:**
+>   1. Leaf 1 (`neomjs/neo#14566`, closed `2026-07-04`): `learn/agentos/decisions/0033-direction-contract.md` + `ai/graph/directionSchema.mjs`.
+>   2. Leaf 2 (`neomjs/neo#14567`, closed `2026-07-04`): `ai/graph/directionAttribution.mjs` (`EVOLUTION_GOAL` anchors + `aligned` / `unattributed` / `INTENT_STARVED` motion mapping with `falsifyingQuery`).
+>   3. Leaf 3 (`neomjs/neo#14568`, closed `2026-07-04`): `ai/graph/directionVelocity.mjs` (per-direction `{v, s, r}` composition on the temporal pyramid).
+>   4. Leaf 4 (`neomjs/neo#14569`, closed `2026-07-04`): `ai/graph/directionHindcastReplay.mjs` (June-2026 `INTENT_STARVED` fixture + May divergence holdout skill report).
+> - **Current handoff render architecture on `origin/dev`:** `ai/services/memory-core/helpers/sandmanHandoffSections.mjs:26-38` (`#1251` / `PR #1269`) splits `sandman_handoff.md` into addressable section slugs (`KNOWN_HANDOFF_SECTION_SLUGS = ['gaps', 'consolidation', 'goldenPath', 'focus', 'businessFocus']`, with `DEFAULT_HANDOFF_SECTIONS = ['goldenPath']`), alongside section builders `ai/services/graph/focusV1Section.mjs` and `ai/services/graph/businessFocusSection.mjs`. `#116` is the final open leaf of Epic `#117`.
+
 ## Context
 
-Leaf 5 of Epic neomjs/neo-agent-brain#117 — the ONLY render leaf, deliberately last. Blocked-by the hindcast leaf: it consumes the skill report as a hard gate. Exists at filing time so the lane is fully defined (operator graduation bar, 2026-07-04) — claimable, but structurally inert until leaf 4 emits skill.
+Leaf 5 of Epic neomjs/neo-agent-brain#117 — the ONLY render leaf, deliberately last. Unblocked: Leaves 1–4 (`learn/agentos/decisions/0033-direction-contract.md`, `ai/graph/directionSchema.mjs`, `ai/graph/directionAttribution.mjs`, `ai/graph/directionVelocity.mjs`, and Leaf 4 `ai/graph/directionHindcastReplay.mjs`) are all shipped on `origin/dev`.
 
 ## The Problem
 
@@ -36,7 +44,7 @@ The sandman handoff says "next: ticket X" and cannot say "you are drifting towar
 
 ## The Architectural Reality
 
-- Render surface: handoff section first; HOME constellation (#13444) later — same ladder.
+- Render surface: handoff section first (registered in `ai/services/memory-core/helpers/sandmanHandoffSections.mjs` `KNOWN_HANDOFF_SECTION_SLUGS`, following the pattern of `ai/services/graph/businessFocusSection.mjs` and `ai/services/graph/focusV1Section.mjs`); HOME constellation (`neomjs/neo-agent-institution#8`) later — same ladder.
 - `notAuthority: true` (parent #11375 `DerivedSignalContract`); confidence-scored navigation aid, never hidden authority.
 - **Fail-open preserved**: the live `Selected routed nodes: 0` class must survive — the direction layer annotates an empty route surface honestly, never manufactures or suppresses routes.
 - Firewall discipline (#14548-adjacent OQ8): direction/convergence outputs render to human-facing decision surfaces; boot-consumed generator surfaces need the redaction disposition named before this leaf ships into them.
@@ -195,4 +203,14 @@ Resolves #15306 · Refs #15217"
 - 2026-08-26T15:15:13Z @neo-fable-mnemosyne marked this issue as being blocked by #14569
 - 2026-08-26T15:27:54Z @tobiu added parent issue #117
 - 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:32:23Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Rewritten in place — verified that Leaves 1–4 of Epic `#117` (`0033-direction-contract.md`, `ai/graph/directionSchema.mjs`, `ai/graph/directionAttribution.mjs`, `ai/graph/directionVelocity.mjs`, and the blocker Leaf 4 `ai/graph/directionHindcastReplay.mjs`) are all shipped on `origin/dev`, unblocking `#116`, and anchored the render surface to `ai/services/memory-core/helpers/sandmanHandoffSections.mjs` (`KNOWN_HANDOFF_SECTION_SLUGS`).**
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

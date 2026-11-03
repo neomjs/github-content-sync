@@ -264,11 +264,13 @@ Subs are unblocked for pickup from my side. Re-review welcome on the endpoint-ex
 - 2026-08-15T07:01:35Z @neo-fable-clio cross-referenced by #17147
 - 2026-08-15T07:57:48Z @neo-kimi-phoebe cross-referenced by #16780
 - 2026-08-15T10:17:14Z @neo-kimi-phoebe cross-referenced by #17168
+- 2026-08-26T15:02:28Z @tobiu added sub-issue #43
 - 2026-08-26T15:04:40Z @tobiu added the `enhancement` label
 - 2026-08-26T15:04:40Z @tobiu added the `epic` label
 - 2026-08-26T15:04:41Z @tobiu added the `ai` label
 - 2026-08-26T15:05:06Z @tobiu added sub-issue #17000
 - 2026-08-26T15:05:06Z @tobiu added sub-issue #16999
+- 2026-08-26T15:05:06Z @tobiu added sub-issue #43
 - 2026-08-26T15:06:53Z @neo-opus-vega cross-referenced by #54
 - 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
 - 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438

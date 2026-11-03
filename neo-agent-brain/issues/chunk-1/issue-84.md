@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-07-30T11:27:07Z'
-updatedAt: '2026-11-02T19:26:09Z'
+updatedAt: '2026-11-03T00:00:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/84'
 author: neo-gpt-euclid
 commentsCount: 33
@@ -20,8 +20,9 @@ subIssues:
   - '[x] 16181 Bridge Claude Desktop seats to remote MC/KB without local servers'
   - '[x] 16199 Fail required off-host backup runs after the local receipt'
   - '[x] 16672 Hard-cut built-in MC and KB clients to canonical HTTP'
-subIssuesCompleted: 4
-subIssuesTotal: 4
+  - '[x] 1442 Retire the completed stdio-to-HTTP latency comparison'
+subIssuesCompleted: 5
+subIssuesTotal: 5
 contentTrust:
   projected: true
   quarantined: 0
@@ -56,13 +57,30 @@ All anchors below were read at `613df5d7`. They bind the removal decision; they 
 
 | Surface | Current consumer or evidence | Required disposition before removal |
 |---|---|---|
-| `ai/scripts/diagnostics/{parityLatencyPair,captureParityLatencyPair}.mjs`, their two dedicated specs, `deploy/cloud/docker-compose.parity-capture.yml`, `Caddyfile.parity-capture` | Stdio-versus-HTTP comparison cluster. `FleetLifecycleService.capturePreparedRemoteMcpLatencyPair` (`:3758–3783`) dynamically imports the capture driver. | First coherent retirement candidate: census the callable wrapper and its consumers, then retire that complete comparison capability together, or preserve a demonstrated ongoing consumer. Do not leave its dynamic import pointing at a deleted file. Keep `inspectPreparedRemoteMcpAdapter`: real agent startup calls it in `ai/services/fleet/startAgentProvisioned.mjs:783`. |
+| `ai/scripts/diagnostics/{parityLatencyPair,captureParityLatencyPair}.mjs`, their two dedicated specs, `deploy/cloud/docker-compose.parity-capture.yml`, `Caddyfile.parity-capture` | Stdio-versus-HTTP comparison cluster. `FleetLifecycleService.capturePreparedRemoteMcpLatencyPair` (`:3758–3783`) dynamically imports the capture driver. | Completed by #1442 / merged PR #1444: both comparison modules, the unused wrapper, capture-plan construction, dedicated specs and capture-only deployment files retired together. `inspectPreparedRemoteMcpAdapter` and its real Start consumer remain. |
 | `deploy/cloud/docker-compose.parity-ci.yml`, `test/playwright/integration-parity/**`, its Playwright/npm/CI wiring | Current Brain Integration matrix still runs this lane. `ParityTopology.integration.spec.mjs` tests complete-plane boot, recorder-log initialization, served identity, foreign expectations, missing/empty credentials, durable-root collision refusal, no egress and deterministic semantic recall. Unified integration is a separate fixture, not an established replacement for these arms. | Preserve the lane until an explicit arm-by-arm replacement mapping and equivalent canonical-fixture receipts exist. A rename or deletion that merely removes the tests does not meet this criterion. |
 | `test/playwright/unit/ai/deploy/ParityPlaneVolumeScoping.spec.mjs` | Besides dev-profile assertions, its second describe block protects canonical Docker custody, graphless host posture, secrets, tenant-mirror placement, integration placement and Focus projection publication. | Preserve or rehome each canonical assertion before retiring any obsolete profile assertions; whole-file deletion is not the prescription. |
 | `ai/daemons/orchestrator/scheduling/{primaryDevSync,swarmHeartbeat}.mjs` and their pipeline/registry wiring | `taskAuthority.mjs:107,115` classifies both as host-edge capabilities. The canonical host profile disables them, but `SwarmHeartbeatService` and `checkAllAgentIdle.mjs` import heartbeat target resolution; Focus collection/polling uses `primary-dev-sync` authority (`Orchestrator.mjs:1876,2218`). | Separate compatibility-only branches from retained role/capability contracts. Preserve those consumers, or name and validate their replacement/retirement together. Absence of a container consumer is not sufficient: these capabilities are classified as host-edge. |
 | `legacy-mixed` compatibility and ADR 0019 profile rows | ADR 0019 §10.8 explicitly schedules compatibility retirement after the accepted cutover; §10.7 still records dev/CI placement and revalidation obligations. | Retire compatibility with its complete launcher/authority/consumer census. Amend only the profile rows actually retired, and replace the corresponding coverage/revalidation pointers in the same change. |
 
-The first owned next step is the latency-capture capability retirement decision, including its Fleet wrapper. The coverage and scheduler rows remain explicit work in this ticket; no speculative successor tickets are needed.
+The comparison retirement is **complete**: native child #1442 closed after the human merged PR #1444 at `41d360aba3b009c8c7834981eb6e367488686fe1` (2026-11-02T23:58:52Z). The reviewed head was `623a3194`; Grace approved it without findings, all required and emitted validation passed, and local exact-lock verification passed 450 tests. The whole diagnostic/deployment/wrapper/capture-plan chain is gone; actual startup inspection remains. This parent stays open for the coverage/profile and scheduler rows below. Runtime rollout receipts remain with the deployment owner.
+
+## Retained topology coverage census
+
+Source-only census at `613df5d7`, bound to `test/playwright/integration-parity/ParityTopology.integration.spec.mjs`. The unified fixture is `deploy/cloud/docker-compose.test.yml`; its health and remote-transport tests cover MCP/embedding/recall but it has no orchestrator service.
+
+| Retained arm | What a deletion still needs to preserve |
+|---|---|
+| Complete plane boot | Joined Chroma + KB + MC + orchestrator witness for the elected composition. |
+| Imported Neural Link loggers | Positive RecorderService output and absence of sink failures in both MC and orchestrator; path configuration alone is insufficient. |
+| Served plane identity/root | Real KB/MC wire observations, beyond pure comparator tests and configured probe paths. |
+| Foreign identity/root refusal | Actual CLI/MCP rejection against a live responder, beyond fake-client mismatch tests. |
+| Missing/empty provider credential | Compose materialization refusal and real pre-listen startup refusal, including timeout and redaction controls. |
+| Durable-root collision refusal | Proof that the real service entrypoint invokes the F-invariant and exits before serving. |
+| No external egress | Runtime refusal inside the **CI fixture's** internal network; this creates no production no-egress requirement. |
+| Deterministic semantic recall | Unified write → WAL → recall coverage overlaps; the dev-profile mock wiring inside its isolated network remains the profile-specific obligation. |
+
+Before retiring the dev profile, disposition these behaviors through the existing fixture/probe owners. Reuse the existing harness; this census does not prescribe another framework or ticket.
 
 ## Avoided traps
 
@@ -76,7 +94,7 @@ Preserve canonical plane identity/coherence, authenticated HTTP MC/KB, in-proces
 
 ## Acceptance Criteria
 
-- [ ] Retire the proven transition-only comparison capability as a complete consumer chain, including the latency driver, dedicated assets/tests and the Fleet wrapper's explicit disposition.
+- [x] Retire the proven transition-only comparison capability as a complete consumer chain, including the latency driver, dedicated assets/tests and the Fleet wrapper's explicit disposition. Delivered by #1442 / merged PR #1444.
 - [ ] Retire obsolete parity-CI/profile artifacts only after the ledger's retained behavior has equivalent canonical coverage and completed receipts; preserve/rehome canonical assertions currently mixed into `ParityPlaneVolumeScoping.spec.mjs`.
 - [ ] Remove compatibility-only scheduling/role branches while preserving or explicitly replacing the heartbeat resolver, Focus authority checks and any other retained consumers.
 - [ ] Update ADR 0019 only for the actual retired profiles/compatibility and preserve the explicit-role invariant and current revalidation coverage.
@@ -93,6 +111,9 @@ Related: #425 / #500 volume custody; neomjs/neo#16039 defaults; #129 remote wake
 
 Original Origin Session ID: `71ff2f5e-17d6-47b2-90db-82bc1773b0a0`
 Intake evidence: Euclid, 2026-11-02; reviewer-owned Memory Core session `7a8d6634-9d5b-436c-9192-c41f8c696331`.
+
+
+
 
 
 
@@ -1836,4 +1857,7 @@ Owed here still: #466's AC-4 controlled-kill drill and the Docker label-filter c
 - 2026-10-10T16:31:46Z @neo-opus-vega cross-referenced by #969
 - 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
 - 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+- 2026-11-02T23:28:50Z @neo-gpt-euclid cross-referenced by #1442
+- 2026-11-02T23:29:07Z @neo-gpt-euclid added sub-issue #1442
+- 2026-11-02T23:39:32Z @neo-gpt-euclid cross-referenced by PR #1444
 

@@ -1,17 +1,18 @@
 ---
 id: 309
 title: The Brain repo has no GitHub description and no topics
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
   - ai
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-09-04T13:53:06Z'
-updatedAt: '2026-09-15T20:27:41Z'
+updatedAt: '2026-11-03T00:08:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/309'
 author: neo-fable-clio
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,8 +23,14 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-03T00:08:53Z'
 ---
 # The Brain repo has no GitHub description and no topics
+
+> **Premise Read & In-Place Rewrite (`2026-11-02`, `#1438` against `origin/dev` `613df5d7`):**
+> - **`AC-1` (Shipped):** `neomjs/neo-agent-brain` has its live GitHub description (*"Point a cross-model AI engineering team at your own codebases. The Agent OS keeps named AI maintainers' identity, memory and review across labs alive between sessions — the Brain Neo.mjs runs on itself. Multi-tenant: onboarding a codebase is a config entry, not a fork."*) and 20 topics (`agent-memory, agents, ai, ai-agent, autonomous-agents, claude-code, context-engineering, embeddings, knowledge-base, knowledge-graph, llm, machine-learning, mcp, mcp-server, multi-agent-systems, rag, retrieval-augmented-generation, semantic-search, sqlite, vector-database`).
+> - **`AC-2` (Shipped):** `neomjs/neo` carries 16 Body-only topics (`ai-native, application-engine, es-modules, frontend, frontend-runtime, javascript, json, multi-threaded, multi-window, neural-link, object-permanence, offscreencanvas, scene-graph, sharedworker, web-workers, zero-build`) with **0 topic overlap** against `neomjs/neo-agent-brain`.
+> - **Remaining scope (`AC-3` only):** Update `package.json:7` `description` on `origin/dev` (`"The Agent OS and Brain of Neo.mjs: Memory Core, Knowledge Base, Active Hybrid GraphRAG, RemDigestion, MCP services, and cross-model collaboration."`) so `package.json` and the GitHub repository description match.
 
 ## Context
 
@@ -55,8 +62,8 @@ gh repo edit neomjs/neo-agent-brain --add-topic ai --add-topic ai-agents --add-t
 
 ## Acceptance Criteria
 
-- [ ] AC-1 `gh repo view neomjs/neo-agent-brain --json description,repositoryTopics` shows a non-empty description and 20 topics (the list above or the operator's edit, recorded in a closing comment).
-- [ ] AC-2 The engine's leaf has removed the same Brain-only terms from `neomjs/neo` — no term lives on both.
+- [x] AC-1 `gh repo view neomjs/neo-agent-brain --json description,repositoryTopics` shows a non-empty description and 20 topics (operator wording recorded in comment `5427254101`).
+- [x] AC-2 `neomjs/neo` carries 16 Body-only topics with 0 overlap against `neomjs/neo-agent-brain` (verified via `gh repo view neomjs/neo --json repositoryTopics` on `2026-11-02`).
 - [ ] AC-3 `package.json` description and the GitHub description say the same thing (edit whichever drifted).
 
 ## Out of Scope
@@ -130,4 +137,19 @@ The GitHub side is the newer, deliberate wording, so `package.json` is the side 
 🖖 Grace
 
 
+- 2026-09-29T09:44:22Z @neo-preview cross-referenced by #621
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:11:39Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Rewritten in place — `AC-1` and `AC-2` are complete (`0` topic overlap between `neomjs/neo` and `neomjs/neo-agent-brain` verified live); narrowed strictly to `AC-3` (`package.json:7` `description` sync).**
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
+- 2026-11-02T23:55:37Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-02T23:56:55Z @neo-gemini-maryam cross-referenced by PR #1446
+- 2026-11-03T00:08:53Z @tobiu referenced in commit `f06845a` - "docs(package): sync description with live GitHub repository (#309) (#1446)"
+- 2026-11-03T00:08:55Z @tobiu closed this issue
 

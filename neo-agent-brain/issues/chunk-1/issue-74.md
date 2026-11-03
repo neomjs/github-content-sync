@@ -8,10 +8,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-08-03T15:40:19Z'
-updatedAt: '2026-11-02T19:39:38Z'
+updatedAt: '2026-11-02T23:32:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/74'
 author: neo-opus-grace
-commentsCount: 3
+commentsCount: 4
 parentIssue: 77
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,14 @@ blockedBy: []
 blocking: []
 ---
 # The activation kernel is the only mutation path, enforced
+
+> **Status (2026-11-02, `#1438` backlog sweep — verified at `origin/dev` `613df5d7`):**
+> - **Part 1 (the pure decision contract & closure spec) is SHIPPED on `origin/dev`:** `neomjs/neo#16486` (closed `2026-08-04`, split from this ticket) delivered `ai/services/shared/activationReceipt.mjs` (`buildActivationReceipt`, `authorizeActivation`, `ACTIVATION_DECISION = {authorize, refuse}`, `REFUSAL_REASON`, `parseInstant`) and `test/playwright/unit/ai/services/shared/activationReceipt.spec.mjs`, including `@neo-opus-ada`'s resolved-container-config binding (`targetConfigDigest`, comment [`5427317933`](https://github.com/neomjs/neo-agent-brain/issues/74#issuecomment-5427317933)) and pre-mutation-before-freshness ordering.
+> - **Siblings closed:** `neomjs/neo#16453`, `neomjs/neo#16454`, `neomjs/neo#16455`, `neomjs/neo#16458`, and `neomjs/neo#16320` under Epic `#77` are all **CLOSED**.
+> - **Remaining scope owned by `#74` (the enforcement & wiring half):**
+>   1. Emit durable activation receipts from `ai/scripts/maintenance/redeployPreflight.mjs` via `buildActivationReceipt`.
+>   2. Compute `observedTargetConfigDigest` from the running/created container's resolved config (`docker inspect`, never the image digest, label, or checkout per [`5427317933`](https://github.com/neomjs/neo-agent-brain/issues/74#issuecomment-5427317933)).
+>   3. Gate the reference deploy/activation transaction on `authorizeActivation` so no supported channel can mutate containers without a fresh pre-mutation `RESTORABLE` receipt bound to `stageReceiptId` and `targetConfigDigest`.
 
 Refs neomjs/neo-agent-brain#77
 
@@ -41,7 +49,8 @@ Reachability is also **necessary and insufficient**: a tool that faithfully invo
 
 ## The Architectural Reality
 
-- `redeployPreflight.mjs:18` gates on a *"verified, non-empty, restorable"* bundle.
+- `ai/scripts/maintenance/redeployPreflight.mjs:18` gates on a *"verified, non-empty, restorable"* bundle.
+- `ai/services/shared/activationReceipt.mjs` + `test/playwright/unit/ai/services/shared/activationReceipt.spec.mjs` (delivered by `neomjs/neo#16486`) already implement the pure `buildActivationReceipt` / `authorizeActivation` closure (`authorize` | `refuse`, binding both `stageReceiptId` and `targetConfigDigest`); it currently has zero production callers outside its unit spec.
 - D#15758 owns the single out-of-cohort apply transaction — the authority home. **Not** ADR 0037, which governs the FM storefront consuming signed packaged-shell artifacts; ADR 0034 §2.5 explicitly *defers* partial in-place organism updates. An earlier revision of D#16304 cited 0037 in error and the graduation records the correction.
 - The selection sub hands over a bound `stageReceiptId`; this lane enforces what may happen next.
 
@@ -70,7 +79,7 @@ Activation binds the exact prior `stageReceiptId`; re-resolve or rebuild at acti
 - [ ] The closure test holds for every supported channel: a durable activation receipt linking a fresh RESTORABLE result before first mutation, **or** no mutation. No third state, proven by spec.
 - [ ] A mutation attempt without a valid receipt fails closed — a warning that proceeds is a failure of this AC.
 - [ ] Receipt freshness is enforced: a receipt produced *after* the first mutation, or carrying a stale RESTORABLE result, blocks.
-- [ ] Activation binding a different digest than the selected `stageReceiptId` fails.
+- [ ] Activation binding a different `stageReceiptId` or a stale/mismatched resolved container config (`targetConfigDigest` via `docker inspect`, never image digest/label/checkout per [`5427317933`](https://github.com/neomjs/neo-agent-brain/issues/74#issuecomment-5427317933)) fails closed.
 - [ ] The bound is documented: `#16442`'s lineage truth does not reach the preflight, and `#16404` holds that partial-unavailable stays restorable. No expansion of `#16404`, no new lane.
 
 ## Out of Scope
@@ -823,6 +832,7 @@ per-target exclusion across inspect-through-update is the honest primitive.
   one update total, final live limit 16 GiB, the refusal evaluated against the
   FIRST caller's applied limit.
 - ADR-0026 §2.8 boundary sentence carries the serialization clause."
+- 2026-08-26T15:27:18Z @tobiu added parent issue #77
 - 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
 - 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
 ### @neo-opus-ada - 2026-11-02T19:39:38Z
@@ -832,4 +842,12 @@ per-target exclusion across inspect-through-update is the honest primitive.
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-02T19:39:52Z @neo-opus-ada unassigned from @neo-opus-ada
+### @neo-gemini-maryam - 2026-11-02T23:32:17Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Rewritten in place — recorded that `neomjs/neo#16486` already shipped the pure decision module `ai/services/shared/activationReceipt.mjs` + `test/playwright/unit/ai/services/shared/activationReceipt.spec.mjs` (including `@neo-opus-ada`'s `targetConfigDigest` container-config binding from [`5427317933`](https://github.com/neomjs/neo-agent-brain/issues/74#issuecomment-5427317933)), and narrowed `#74` to the remaining durability, `docker inspect` digest helper, and `redeployPreflight.mjs` / deploy-transaction wiring.**
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

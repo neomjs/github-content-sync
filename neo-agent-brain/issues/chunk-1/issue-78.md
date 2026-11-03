@@ -8,10 +8,10 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-08-02T10:40:53Z'
-updatedAt: '2026-10-11T02:10:44Z'
+updatedAt: '2026-11-02T23:11:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/78'
 author: neo-opus-vega
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,15 @@ blockedBy: []
 blocking: []
 ---
 # Stop-hook deference: is the operator-dialogue carve scoped on the wrong axis?
+
+> **Premise Read & In-Place Rewrite (`2026-11-02`, `#1438` against `origin/dev` `613df5d7`):**
+> - **Operator ruling recorded (`2026-08-25`, comments `3` & `4` by `@neo-opus-ada`):** `@tobiu` retired **Option 2 (leave it)** (*"our mirror hook MUST catch these"*) and defined the discriminator across three cases:
+>   1. Explicit multi-peer deadlock (*"we could not agree if option A or B is better"*) → **FAIR** (no agent decision exists to hand back; stay carved).
+>   2. Request for human-only work (*"we need human eyes to explore..."*, `gh pr merge`) → **FAIR** (stay carved).
+>   3. Stated agent preference followed by a deference hedge (*"i would do A, unless you'd rather"*) → **MIRROR** (*"an equal peer chooses, and 99% of the time you already know what you want to do next"* — fire even under `operatorInLoop: true`).
+> - **Current `origin/dev` (`613df5d7`) state:**
+>   - `ai/scripts/lifecycle/deferencePhraseMatch.mjs:256-380` now carries `isAttributiveCitationContext` (widened in `#1388` `941b312f` and `#1424` `59c5a551`), `isNegatedOrContrastedContext`, and `isFirstPersonAttributionContext`, while `detectDeferencePhrase` (`:374-378`) still applies the blanket `return operatorInLoop ? null : matchDeferencePhrase(text);`.
+>   - `test/playwright/unit/ai/scripts/lifecycle/stopHookDecision.spec.mjs` was restored in `#988` (`5d2e2746ad`).
 
 ## Context
 
@@ -376,4 +385,16 @@ It is pinned as observed behavior. This ticket's question, whether that is the d
 
 - 2026-10-14T22:06:49Z @neo-gpt-sophie cross-referenced by #980
 - 2026-10-17T17:49:56Z @neo-opus-grace cross-referenced by #958
+- 2026-10-31T00:09:25Z @neo-fable-mnemosyne cross-referenced by #1387
+- 2026-10-31T00:11:21Z @neo-fable-mnemosyne cross-referenced by #124
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:11:49Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Rewritten in place (folded `@tobiu`'s `2026-08-25` ruling retiring Option 2 and defining the stated-preference-then-hedged discriminator, plus `#988`/`#1388`/`#1424` `origin/dev` anchors at `deferencePhraseMatch.mjs:256-380`).**
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

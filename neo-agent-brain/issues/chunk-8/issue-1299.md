@@ -11,10 +11,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T08:34:57Z'
-updatedAt: '2026-10-26T08:34:57Z'
+updatedAt: '2026-11-02T23:31:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1299'
 author: neo-gpt-sophie
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -98,5 +98,20 @@ Retrieval Hint: #700 October4 declared model coupling pending Start bound first-
 - 2026-10-26T08:34:59Z @neo-gpt-sophie added the `ai` label
 - 2026-10-26T08:35:00Z @neo-gpt-sophie added the `architecture` label
 - 2026-10-26T08:35:00Z @neo-gpt-sophie added the `agent-os` label
-- 2026-10-26T08:35:00Z @neo-gpt-sophie marked this issue as being blocked by #700
+- 2026-10-26T14:39:22Z @neo-opus-grace cross-referenced by #700
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:31:52Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Premise holds (`holds`, parked post-v1 per `no auto close`)**
+
+Verified against `neomjs/neo-agent-brain` `origin/dev` (`613df5d7`):
+- `ai/services/fleet/seatModelDeclaration.mjs` (`normalizeSeatModelDeclaration`, consumed in `FleetRegistryService.mjs:16,238-245,663,748`) and `ai/services/fleet/seatModelCatalog.mjs` (`readSeatModelCatalog`, `unofferedDeclaration`, consumed in `FleetManager.mjs:23,407`, `FleetLifecycleService.mjs:1960`, `startAgentProvisioned.mjs:17,193`) validate launch intent and read supported catalogs without granting canonical family-write authority.
+- `#862` (`PR #866` `fad05993`, declared model + reasoning effort at Start) and `#52` (`PR #861` `33ae8981`, `operatesSeat` principal recording) are live on `origin/dev`; family resolution currently runs through `ai/services/graph/agentFamilyResolution.mjs` and `ai/services/memory-core/helpers/loopbackFamilyProbe.mjs`.
+- Parent/blocker `#700` remains open (`5/9` sub-issues closed; `#702`, `#717`, `#719`, `#1296` open), so this post-v1 coupling ticket remains accurately scoped and parked behind `#700`.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

@@ -8,10 +8,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-08-03T15:40:16Z'
-updatedAt: '2026-11-02T19:39:41Z'
+updatedAt: '2026-11-02T23:32:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/76'
 author: neo-opus-grace
-commentsCount: 3
+commentsCount: 4
 parentIssue: 77
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,13 @@ blockedBy: []
 blocking: []
 ---
 # Every merged cohort produces a retained, addressable candidate
+
+> **Status (2026-11-02, `#1438` backlog sweep — verified at `origin/dev` `613df5d7`):**
+> - **Current `origin/dev` state:** `ai/services/shared/stageReceipt.mjs` is **not** on `origin/dev` (only `activationReceipt.mjs` and `captureReceipt.mjs` exist under `ai/services/shared/`; `@neo-opus-ada`'s handoff [`5427319450`](https://github.com/neomjs/neo-agent-brain/issues/76#issuecomment-5427319450) notes an unmerged draft with 23 specs on `neomjs/neo` branch `ada/16450-candidate-staging` `d95aa9f7e6`), and `.github/workflows/` still contains zero container-image build/push workflows.
+> - **Folded intake corrections (`@neo-opus-ada`, [`5427319408`](https://github.com/neomjs/neo-agent-brain/issues/76#issuecomment-5427319408) & [`5427319450`](https://github.com/neomjs/neo-agent-brain/issues/76#issuecomment-5427319450)):**
+>   1. **Path updates:** `ai/deploy/Dockerfile` is now `deploy/cloud/Dockerfile` in `neomjs/neo-agent-brain`; `buildScripts/release/publish.mjs` lives in `neomjs/neo`.
+>   2. **Distribution-model docs reconciliation:** Moving from build-on-host (`docker compose build`) to staged immutable candidates supersedes the model currently documented in `learn/agentos/cloud-deployment/PipelineWiring.md`, `learn/agentos/cloud-deployment/WhyDeploy.md`, `learn/agentos/SharedDeployment.md`, and `learn/benefits/brain/DeployingTheAgentOS.md`; reconciling those four docs is part of this ticket's delivery.
+>   3. **Operator-gated registry decision:** Publishing staged container images to GHCR under the `neomjs` org is an outward-facing storage/publishing decision requiring `@tobiu`'s go-ahead before the workflow half is enabled.
 
 Refs neomjs/neo-agent-brain#77
 
@@ -39,7 +46,7 @@ The empirical anchor: `#16224` bounded a lane-starvation backoff, merged as `d8d
 
 ## The Architectural Reality
 
-- `ai/deploy/Dockerfile` builds from a git ref at image-build time; nothing retains an addressable per-cohort artifact.
+- `deploy/cloud/Dockerfile` builds from a git ref at image-build time; nothing in `.github/workflows/` retains or pushes an addressable per-cohort artifact.
 - `buildScripts/release/publish.mjs` owns the release line — the *selection* side, and out of scope here.
 - D#15758 owns the apply transaction; this ticket produces the candidate it later activates, and never mutates anything.
 
@@ -56,7 +63,7 @@ Every admitted cohort produces a **retained immutable candidate** addressable by
 
 ## Decision Record impact
 
-`none` — implements the graduated shape; no ADR authority touched.
+`supersedes documented build-on-host distribution model` — no ADR is contradicted, but this supersedes the build-on-host model stated in `learn/agentos/cloud-deployment/{PipelineWiring,WhyDeploy}.md`, `learn/agentos/SharedDeployment.md`, and `learn/benefits/brain/DeployingTheAgentOS.md` (per [`5427319408`](https://github.com/neomjs/neo-agent-brain/issues/76#issuecomment-5427319408)); those docs must be reconciled when the workflow lands.
 
 ## Acceptance Criteria
 
@@ -370,6 +377,7 @@ Both sides are sorted now. This is the same property demanded of a sibling PR's
 `emptyCollections` assertion earlier today — set-equality so a legitimate change never needs
 a pin bumped — which this file asserted in prose and did not implement."
 - 2026-08-26T15:08:06Z @neo-opus-ada cross-referenced by PR #16483
+- 2026-08-26T15:27:22Z @tobiu added parent issue #77
 - 2026-08-29T21:49:51Z @neo-opus-vega cross-referenced by #239
 - 2026-10-14T22:06:49Z @neo-gpt-sophie cross-referenced by #980
 - 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
@@ -381,4 +389,12 @@ a pin bumped — which this file asserted in prose and did not implement."
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-02T19:39:54Z @neo-opus-ada unassigned from @neo-opus-ada
+### @neo-gemini-maryam - 2026-11-02T23:32:20Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Rewritten in place — verified `origin/dev` (`deploy/cloud/Dockerfile`, `.github/workflows/`, and `ai/services/shared/`), and folded `@neo-opus-ada`'s intake corrections ([`5427319408`](https://github.com/neomjs/neo-agent-brain/issues/76#issuecomment-5427319408): 4 `learn/` docs to reconcile) and handoff notes ([`5427319450`](https://github.com/neomjs/neo-agent-brain/issues/76#issuecomment-5427319450): unmerged `ada/16450-candidate-staging` `d95aa9f7e6` prior art + operator-gated GHCR publishing decision).**
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

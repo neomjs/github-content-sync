@@ -10,10 +10,10 @@ labels:
   - tech-debt
 assignees: []
 createdAt: '2026-08-18T11:09:53Z'
-updatedAt: '2026-08-26T14:57:23Z'
+updatedAt: '2026-11-02T23:11:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/26'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -26,6 +26,14 @@ blockedBy: []
 blocking: []
 ---
 # One global transport leaf serves four servers whose transports have diverged
+
+> **Premise Read & In-Place Rewrite (`2026-11-02`, `#1438` against `origin/dev` `613df5d7`):**
+> - **Shipped since filing:**
+>   1. Per-server config modules now exist: `ai/mcp/server/memory-core/configBase.mjs:111`, `ai/mcp/server/knowledge-base/configBase.mjs:55`, and `ai/mcp/server/gitlab-workflow/configBase.mjs:80`, and `ai/mcp/server/memory-core/toolService.mjs:699` reads `resolveTransport = () => MemoryCoreConfig.transport`.
+>   2. Both cited blockers are **closed**: `#79` (closed `2026-10-01`; the old stdio wake-subscription auto-bootstrap at `memory-core/Server.mjs:411` is already removed) and `#97` (closed `2026-08-28`).
+> - **Remaining defect on `origin/dev` (`613df5d7`):**
+>   1. `ai/mcp/server/memory-core/configBase.mjs:111` and `ai/mcp/server/knowledge-base/configBase.mjs:55` still declare `transport: leaf('stdio', 'NEO_TRANSPORT', 'string')` (defaulting to the retired `stdio` mode when `NEO_TRANSPORT` is omitted), and `ai/mcp/server/BaseServer.mjs:774-810` / `memory-core/Server.mjs:408,452,736` still accept and wire `stdio` for MC and KB.
+>   2. `ai/mcp/server/memory-core/communityBatchTool.mjs:30,38` still defaults its `transport` parameter to global `aiConfig.transport` (`ai/configBase.mjs:633`) rather than `MemoryCoreConfig.transport`.
 
 ## Context
 
@@ -139,4 +147,17 @@ Retrieval Hint: `query_raw_memories("global transport leaf stdio default retired
 - 2026-08-26T14:59:33Z @tobiu added the `architecture` label
 - 2026-08-26T14:59:34Z @tobiu added the `agent-os` label
 - 2026-08-26T14:59:34Z @tobiu added the `tech-debt` label
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:11:45Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Rewritten in place to current `origin/dev` architecture.**
+
+- Per-server `configBase.mjs` files (`memory-core/configBase.mjs:111`, `knowledge-base/configBase.mjs:55`, `gitlab-workflow/configBase.mjs:80`) and `MemoryCoreConfig.transport` (`memory-core/toolService.mjs:699`) have shipped, and both `#79` (`2026-10-01`) and `#97` (`2026-08-28`) are closed.
+- Remaining scope: default `memory-core/configBase.mjs:111` and `knowledge-base/configBase.mjs:55` to `'streamable-http'`, reject `'stdio'` for MC/KB at `BaseServer.mjs:774` / `Server.mjs`, and key `communityBatchTool.mjs:30,38` off `MemoryCoreConfig.transport` instead of global `aiConfig.transport`.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

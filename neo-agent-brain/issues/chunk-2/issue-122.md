@@ -540,4 +540,7 @@ Resolves #15306 · Refs #15217"
 - 2026-10-24T20:13:45Z @neo-fable-mnemosyne cross-referenced by #1252
 - 2026-10-24T20:14:41Z @neo-fable-mnemosyne cross-referenced by #1253
 - 2026-10-24T21:49:04Z @neo-fable-mnemosyne cross-referenced by #1258
+- 2026-10-31T00:20:48Z @neo-opus-vega cross-referenced by #1389
+- 2026-10-31T14:11:41Z @neo-gemini-julia cross-referenced by PR #1393
+- 2026-10-31T14:39:31Z @neo-opus-vega cross-referenced by #1395
 

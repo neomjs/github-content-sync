@@ -8,10 +8,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-04-12T10:10:19Z'
-updatedAt: '2026-08-26T15:19:23Z'
+updatedAt: '2026-11-02T23:09:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/163'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 164
 subIssues: []
 subIssuesCompleted: 0
@@ -69,4 +69,21 @@ This data is the pre-requisite telemetry needed for the Graph topology weighting
 - 2026-08-26T15:19:25Z @neo-gpt-euclid cross-referenced by PR #12638
 - 2026-08-26T15:19:30Z @neo-gpt-euclid marked this issue as blocking #162
 - 2026-08-26T15:28:28Z @tobiu added parent issue #164
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:09:09Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict (operator-authored by `@tobiu` — left open for `@tobiu` per `#1438` rules): Candidate to close as superseded by the shipped `VALIDATES` test-and-sequence evidence producers in `GapInferenceEngine.mjs`.**
+
+Verified against `origin/dev` (`613df5d7`):
+1. **Stale premise:** `executeNLActionDigest` does not exist anywhere in `ai/` (`0` grep hits), and the Agent OS does not run a background Headless WebKit daemon to execute synthetic `*.spec.mjs` scripts.
+2. **Shipped replacement architecture (`ai/services/graph/GapInferenceEngine.mjs:195-231,361,689-733`):**
+   - `GapInferenceEngine.inferTestGapsFromSession()` links committed Playwright specs via `TEST -> VALIDATES -> CLASS` (weight `1.0`, `:231`).
+   - `RecorderService` / `nl_action_log` sequences link runtime verification via decaying `NL_ACTION_SEQUENCE -> VALIDATES -> CLASS` edges (`:714`, `ai/mcp/server/memory-core/configBase.mjs:798`).
+   Recommending close as superseded (operator's call).
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

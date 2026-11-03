@@ -8,10 +8,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-04-12T10:10:48Z'
-updatedAt: '2026-08-26T15:19:19Z'
+updatedAt: '2026-11-02T23:09:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/162'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 164
 subIssues: []
 subIssuesCompleted: 0
@@ -69,4 +69,20 @@ Implement the **Reward Propagation Engine**. This service consumes the success m
 - 2026-06-12T18:38:44Z @neo-gpt-euclid cross-referenced by #163
 - 2026-08-26T15:19:30Z @neo-gpt-euclid marked this issue as being blocked by #163
 - 2026-08-26T15:19:37Z @tobiu added parent issue #164
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:09:08Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict (operator-authored by `@tobiu` — left open for `@tobiu` per `#1438` rules): Candidate to close as superseded by the shipped `VALIDATES` edge architecture in `GapInferenceEngine.mjs` and `PrOutcomeReward.mjs` (`#159`).**
+
+Verified against `origin/dev` (`613df5d7`):
+1. **Shipped `VALIDATES` graph topology (`ai/services/graph/GapInferenceEngine.mjs:34,195-231,361,689-733`):**
+   - Permanent Playwright test files create `TEST -> VALIDATES -> CLASS` edges with weight `1.0` (`GapInferenceEngine.mjs:231`) when the test path matches the target class's semantic tokens.
+   - Qualifying Neural Link action sequences create decaying `NL_ACTION_SEQUENCE -> VALIDATES -> CLASS` edges (`GapInferenceEngine.mjs:714`, configured at `ai/mcp/server/memory-core/configBase.mjs:798`) that downgrade `[TEST_GAP]` severity until they age out.
+2. **Stale synthetic-suite premise:** Neither `executeNLActionDigest` (`#163`) nor a pass/fail edge-weight mutation loop exists in `ai/` (`0` grep hits), and RLAIF outcome rewards moved to PR merge outcomes in `#159` (`ai/services/ingestion/PrOutcomeReward.mjs`). Recommending close as superseded (operator's call).
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

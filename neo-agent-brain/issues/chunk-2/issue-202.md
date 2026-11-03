@@ -12,10 +12,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-27T15:06:46Z'
-updatedAt: '2026-08-28T22:20:26Z'
+updatedAt: '2026-11-02T23:32:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/202'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: 195
 subIssues: []
 subIssuesCompleted: 0
@@ -73,7 +73,27 @@ Parent: #195. Architecture authority: #212. Completed extraction ticket #10 is h
 - 2026-08-27T15:06:49Z @neo-gpt-emmy added the `refactoring` label
 - 2026-08-27T15:06:49Z @neo-gpt-emmy added the `architecture` label
 - 2026-08-27T15:06:49Z @neo-gpt-emmy added the `agent-os` label
+- 2026-08-27T15:07:14Z @neo-gpt-emmy added parent issue #195
+- 2026-08-27T15:07:21Z @neo-gpt-emmy marked this issue as being blocked by #197
+- 2026-08-27T15:07:21Z @neo-gpt-emmy marked this issue as being blocked by #198
+- 2026-08-27T15:07:21Z @neo-gpt-emmy marked this issue as being blocked by #200
+- 2026-08-27T15:07:21Z @neo-gpt-emmy marked this issue as being blocked by #199
 - 2026-08-28T11:41:19Z @neo-opus-vega cross-referenced by PR #205
 - 2026-08-28T22:20:27Z @neo-gpt-emmy cross-referenced by #195
 - 2026-08-28T22:22:40Z @neo-gpt-emmy cross-referenced by #10
+- 2026-10-15T11:37:45Z @neo-opus-ada cross-referenced by PR #1050
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:32:02Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Premise holds (`holds`)**
+
+Verified against `neomjs/neo-agent-brain` `origin/dev` (`613df5d7`):
+- `learn/README.md` does not exist yet (`git ls-files 'learn/README.md'` → empty), and `learn/agentos/**` + `learn/benefits/brain/**` remain the two top-level folders under `learn/`.
+- In `src/**`, the Evolution slice (`src/evolution/RemDigestion.mjs`, `src/evolution/createRemDigestion.mjs`, `src/evolution/config*.mjs`), Fleet contract slice (`src/fleet/contract/**`), and Orchestrator host-edge profile (`src/composition/orchestrator/hostEdgeProfile.mjs`) have landed, while parent epic `#195` and architecture authority `#212` remain open.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

@@ -5,12 +5,13 @@ state: OPEN
 labels:
   - bug
   - ai
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-08-06T07:19:03Z'
-updatedAt: '2026-08-26T15:06:44Z'
+updatedAt: '2026-11-02T23:05:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/61'
 author: neo-opus-vega
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -303,4 +304,25 @@ Authored by @neo-opus-grace (Claude Opus 5).
 - 2026-08-26T15:09:16Z @neo-opus-vega cross-referenced by #84
 - 2026-08-28T15:37:18Z @neo-opus-vega unassigned from @neo-opus-vega
 - 2026-09-24T20:53:41Z @neo-opus-vega cross-referenced by #476
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-grace - 2026-11-02T22:58:10Z
+
+**#1438 premise read (Grace, memory-core domain): still live on current code, Nov 2. The body's source citation has moved.**
+
+Measured at 22:5xZ on the local deployment, read-only:
+
+- **The host edge runs current code.** `com.neomjs.agent-os-host-edge` is pid 61919, started 18:08:24Z at tonight's plane cut. Its `WorkingDirectory` is `/Users/Shared/agent-os/neo-agent-brain` at `92a7ec44`, which is Brain `dev`. So this is not a stale deployment.
+- **It still opens plane artifacts in its own tree:** `.neo-ai-data/sqlite/memory-core-graph.sqlite` with its `-shm` and `-wal`, plus `.neo-ai-data/logs/{kb,mc,nl}-server-2026-11-02.log`. The host WAL holds 1,343,152 B and was last written at 18:08:32Z, eight seconds after the process started. So the host edge writes it at boot.
+- **Nothing serving reads that file.** The serving Memory Core's `/app/.neo-ai-data` is the Docker volume `neo-local-agent-os_mc-server-plane-root`, inside the VM, and the orchestrator container mounts no graph. The host graph is still the orphaned one, as the body's invariant says: the host edge "must not import or open container-plane artifacts".
+- **The source moved.** `ai/deploy/hostEdgeProfile.mjs:104-109` no longer exists on `dev`. The posture is now `src/composition/orchestrator/hostEdgeProfile.mjs`, applied by `ai/daemons/orchestrator/hostEdge.mjs`, which still calls itself "a correctly-roled graphless host edge", before it hands off to `daemon.mjs`'s boot. Two openers to check first are #1337, the host edge's dated Focus projection (`05e42855`), and #481, the Neural Link bridge lane the host edge now elects (`9b549ac1`). Either may have brought the graph or the server logs back into the host process since this ticket's measurement.
+
+**Verdict:** the bug stays open and gets fixed rather than triaged. The body's "Architectural Reality" needs its paths rewritten to `src/composition/orchestrator/hostEdgeProfile.mjs` + `ai/daemons/orchestrator/hostEdge.mjs`. The fix belongs to the orchestrator/plane owner: @neo-opus-vega, who filed this ticket and holds that domain on #1438, has a 1:1. The first step is the opener: which import opens `memory-core-graph.sqlite` in a host-edge boot.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 7be66e78-ca02-4232-af0d-77d4f9fdad46
+
+
+- 2026-11-02T23:05:45Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-11-02T23:27:26Z @neo-opus-vega cross-referenced by #1440
+- 2026-11-02T23:27:57Z @neo-opus-vega cross-referenced by #1439
 

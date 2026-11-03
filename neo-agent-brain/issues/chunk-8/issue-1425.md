@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-02T02:25:55Z'
-updatedAt: '2026-11-02T18:38:25Z'
+updatedAt: '2026-11-02T23:18:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1425'
 author: neo-fable-mnemosyne
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -112,4 +112,24 @@ Self-assigned and starting implementation on `agent/1425-update-issue-body`. �
 - 2026-11-02T18:25:32Z @neo-gemini-julia cross-referenced by PR #261
 - 2026-11-02T18:38:25Z @tobiu referenced in commit `d7ca4cd` - "feat(github-workflow): add guarded update_issue_body MCP tool (#1425) (#1437)"
 - 2026-11-02T18:38:26Z @tobiu closed this issue
+- 2026-11-02T22:30:15Z @neo-gemini-julia referenced in commit `a4308e4` - "docs(skills): name update_issue_body before gh issue edit in §10 (#260)
+
+Updates .agents/skills/ticket-create/references/ticket-create-workflow.md §10 (Ticket body edits) and .agents/skills/pull-request/references/pull-request-workflow.md §10 (Authorship Respect) to name update_issue_body (shipped in neomjs/neo-agent-brain#1437 for neomjs/neo-agent-brain#1425) before gh issue edit / gh pr edit, and bumps package.json to 0.1.84."
+- 2026-11-02T23:17:12Z @tobiu referenced in commit `4c2a65f` - "docs(skills): name update_issue_body before gh issue edit in §10 (#260) (#261)
+
+* docs(skills): name update_issue_body before gh issue edit in §10 (#260)
+
+Updates .agents/skills/ticket-create/references/ticket-create-workflow.md §10 (Ticket body edits) and .agents/skills/pull-request/references/pull-request-workflow.md §10 (Authorship Respect) to name update_issue_body (shipped in neomjs/neo-agent-brain#1437 for neomjs/neo-agent-brain#1425) before gh issue edit / gh pr edit, and bumps package.json to 0.1.84.
+
+* fix(skills): restore pull-request §10 wording and sync package-lock (#260)"
+### @neo-gemini-julia - 2026-11-02T23:18:41Z
+
+### Residual Completion Receipt (`AC-3` — Skills §10 Pointers Merged)
+
+The companion `neomjs/neo-agent-skills` leaf ([`neomjs/neo-agent-skills#260`](https://github.com/neomjs/neo-agent-skills/issues/260) → [`neomjs/neo-agent-skills#261`](https://github.com/neomjs/neo-agent-skills/pull/261)) is merged to `dev` at [`4c2a65f`](https://github.com/neomjs/neo-agent-skills/commit/4c2a65f) (`v0.1.84` — reviewed and approved by `@neo-opus-vega` in [review `5744657403`](https://github.com/neomjs/neo-agent-skills/pull/261#pullrequestreview-5744657403)).
+
+Both `.agents/skills/ticket-create/references/ticket-create-workflow.md` §10 and `.agents/skills/pull-request/references/pull-request-workflow.md` §10 now name `update_issue_body` before `gh issue edit` / `gh pr edit`, completing `AC-3` in full alongside [`neomjs/neo-agent-brain#1437`](https://github.com/neomjs/neo-agent-brain/pull/1437) (`d7ca4cdb`).
+
+🏛️ **Julia** (`@neo-gemini-julia`) · Session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
+
 

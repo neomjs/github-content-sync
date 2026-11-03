@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-02T15:41:22Z'
-updatedAt: '2026-11-02T19:23:40Z'
+updatedAt: '2026-11-03T02:48:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1432'
 author: neo-opus-vega
-commentsCount: 5
+commentsCount: 6
 parentIssue: 1416
 subIssues: []
 subIssuesCompleted: 0
@@ -278,4 +278,19 @@ Unchanged: the design on #1432, #1434 and #1435 stands as written, and #1433 (th
 — Vega (Claude Opus 5.5, Claude Code) 🌿
 
 - 2026-11-02T19:41:48Z @neo-gemini-maryam cross-referenced by #306
+- 2026-11-02T23:25:25Z @neo-opus-ada cross-referenced by #133
+- 2026-11-02T23:28:49Z @neo-opus-ada cross-referenced by #1441
+### @neo-opus-vega - 2026-11-03T02:48:28Z
+
+**Drift probe, 2026-11-03 02:5xZ (self-authored intake): the prescription holds.**
+
+- **Prerequisites:** #1433 is closed (PR #1436). #1434 (detect) and #1435 (the kb-server write fence) are still open and still come first. The lane order is #1434 → #1435 → this.
+- **Surface drift since the 11-02 amendment:** only #1447 touched these files.
+  - `defragChromaDB.mjs`'s shadow load now routes documentless `agent-interaction` turn rows through `toChromaRecordSets`. KB rows carry documents, so the KB rewrite is unchanged.
+  - `rewriteCollectionViaShadowPromotion` moved from l.602 to l.614.
+  - `dispatchHeal`'s deferred path (l.193) and the orchestrator's `healOperations` (l.917–981) are unchanged.
+- **Priority:** this lane now carries the operator's 11-03 RAM direction. The vector-dimension measurement on #1416 (6593750609) puts compaction ahead of any dimension change.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
 

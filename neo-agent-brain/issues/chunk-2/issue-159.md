@@ -8,10 +8,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-04-13T11:13:18Z'
-updatedAt: '2026-08-26T15:19:08Z'
+updatedAt: '2026-11-02T23:09:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/159'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -131,4 +131,23 @@ Slice 2 of #9962 (PR Outcome Tracker — RLAIF reward signal), sibling of #13724
 Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-06-21T10:04:40Z @neo-opus-vega cross-referenced by #9980
 - 2026-08-26T15:19:18Z @tobiu marked this issue as blocking #9963
+- 2026-10-10T16:32:40Z @neo-opus-grace cross-referenced by #970
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:09:07Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict (operator-authored by `@tobiu` — left open for `@tobiu` per `#1438` rules): Premise holds — pure reward & revert-detection cores are shipped on `origin/dev`; the `gh` outcome-scan + dry-run/tenant-scoped ChromaDB session-summary tagging slice remains.**
+
+Verified against `origin/dev` (`613df5d7`):
+1. **Shipped pure cores:**
+   - `ai/services/ingestion/PrOutcomeReward.mjs:1-68` + `test/playwright/unit/ai/services/ingestion/PrOutcomeReward.spec.mjs` (`neomjs/neo#13725`): implements `PR_OUTCOME_REWARDS` (`mergedClean: 1.0`, `mergedWithChanges: 0.7`, `closedUnmerged: 0.0`, `reverted: -1.0`), `classifyPrOutcome`, and `computeOutcomeReward`.
+   - `ai/services/ingestion/RevertDetection.mjs:1-65` + `test/playwright/unit/ai/services/ingestion/RevertDetection.spec.mjs` (`neomjs/neo#13729`): implements `parseRevertTrailer` and `isRevertOf`.
+2. **Remaining unbuilt integration slice:**
+   - No caller in `ai/` yet invokes `computeOutcomeReward` or `isRevertOf` (`git grep computeOutcomeReward origin/dev -- ai/` hits only `PrOutcomeReward.mjs`).
+   - The remaining work is the standalone/Sandman scan + dry-run-first, tenant-scoped ChromaDB session-summary tagging described in `@neo-opus-ada`'s comments above (linking via PR author + `Origin Session ID`, defining `hadRequestedChanges`, and walking revert chains to net parity).
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 

@@ -8,10 +8,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-04-23T12:42:15Z'
-updatedAt: '2026-08-26T15:18:54Z'
+updatedAt: '2026-11-02T23:23:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/155'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -25,11 +25,17 @@ blocking: []
 ---
 # Extract and prepare swarm trajectory dataset for local-model training
 
+> **Premise Read & In-Place Rewrite (`2026-11-02`, `#1438` against `origin/dev` `613df5d7`):**
+> - **Premise holds in part** *(corrected by Ada the same day: the first read searched for the two planned file names, but a narrower writer for the same dataset already exists)*. Neither `ai/scripts/extractTrajectoryDataset.mjs` nor `learn/agentos/TrajectoryDataset.md` exists. `ai/scripts/diagnostics/analyzeNlTelemetry.mjs`, however, already extracts one session's Neural Link turns from the Memory Core SQLite. It writes them as chat-message rows (`{metadata, messages}`) and appends them, unredacted, to the configured `datasets.rlaif.trajectories` file (`ai/mcp/server/memory-core/configBase.mjs:343`), which `backup.mjs` and `restore.mjs` already carry. This ticket generalizes that lane; it does not add a second, unrelated writer.
+> - **Architecture updates folded:**
+>   1. **Local model target (`ai/configBase.mjs:893,932-940,2557`, `ai/mcp/server/knowledge-base/configBase.mjs:216`):** The local inference target migrated from `gemma4:31b` (`ai/mcp/server/memory-core/config.mjs`) to **`gemma-4-26b-a4b`** (`google/gemma-4-26b-a4b` via LM Studio / `openAiCompatible`, `gemma4:26b` via Ollama, `mlx-community/gemma-4-26b-a4b-it-bf16` via MLX).
+>   2. **Shipped outcome-reward helpers (`ai/services/ingestion/PrOutcomeReward.mjs` & `RevertDetection.mjs`):** The extraction script's `outcome` join can now consume `classifyPrOutcome` / `computeOutcomeReward` (neomjs/neo#13725) and `parseRevertTrailer` / `isRevertOf` (neomjs/neo#13729) directly.
+
 # Context
 
 The Memory Core holds 8500+ verbatim `Thought → Action → Response` trajectories with cross-model validation (per-model GitHub identities, graph-linked outcomes, cross-family PR reviews documented). This corpus is a rare training-signal asset — higher fidelity than web-scraped data because the outcomes are validated by a multi-model review process, and the structure (graph edges, ticket citations, ADR references) is preserved.
 
-`ai/Agent.mjs` has `OllamaProvider` configured with `gemma4:31b` as the local sub-agent inference target. The sub-agent profiles (Librarian, QA, Browser) currently run the stock model. Fine-tuning against the swarm's own trajectory corpus is the natural next step — sub-agent quality on Neo-shaped work goes up, which reduces frontier-model dependency for routine tasks.
+`ai/configBase.mjs:893,932-940,2557` configures `gemma-4-26b-a4b` (`google/gemma-4-26b-a4b` / `gemma4:26b` / `mlx-community/gemma-4-26b-a4b-it-bf16`) as the local inference target. The sub-agent profiles (Librarian, QA, Browser) currently run the stock model. Fine-tuning against the swarm's own trajectory corpus is the natural next step — sub-agent quality on Neo-shaped work goes up, which reduces frontier-model dependency for routine tasks.
 
 This ticket is deliberately scoped to **extraction and preparation only**. The fine-tuning itself + benchmarking + routing is the follow-up, scoped after we see what the extracted dataset actually looks like.
 
@@ -68,15 +74,16 @@ Three landing items together:
    - Row shape: `{ prompt, thought, toolCalls: string[], response, sessionId, agent, model, timestamp, outcome: {merged, rejected, deferred, null}, crossFamilyReview: {status, reviewer, citations[]}, tags: {kbGap, toolingGap, retrospective}[] }`
    - Redaction guarantees + limitations (human review recommended for any release)
    - Field provenance (which Memory Core / Graph source populates each field)
-   - Register in `learn/tree.json`
+   - Lands beside its sibling guides in `learn/agentos/`. Brain has no `learn/tree.json`, and neo's does not list Brain guides such as `SwarmIntelligence` or `MemoryCore`.
 
 # Acceptance Criteria
 
 - [ ] `ai/scripts/extractTrajectoryDataset.mjs` exists, CLI-invokable, emits valid JSONL
 - [ ] Row schema matches the documented shape (Playwright unit test validates a fixture row)
+- [ ] One dataset, one shape: the rows `analyzeNlTelemetry.mjs` already appends and the new rows either share the documented schema or live under separate `datasets.rlaif.*` leaves, and the redaction pass covers both writers.
 - [ ] Redaction patterns catch at least these eight categories: `GH_TOKEN`, `GEMINI_API_KEY`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `NEO_*_SECRET`, `.env` file contents fingerprint, GitHub PAT shape (`ghp_*`, `github_pat_*`), generic base64-encoded-secret heuristic. Each has a unit test.
 - [ ] Default mode fails-loud on any match; `--include-secrets-at-own-risk` override documented + logged to stderr when used
-- [ ] `learn/agentos/TrajectoryDataset.md` published, registered in `learn/tree.json`
+- [ ] `learn/agentos/TrajectoryDataset.md` published beside its sibling guides
 - [ ] Post-merge validation: run the extraction against the current Memory Core, manually inspect a 100-row sample for redaction correctness + schema conformance
 - [ ] No row in the sample output contains any recognized secret pattern (empirical verification of the redaction pass)
 
@@ -100,7 +107,9 @@ Three landing items together:
 
 - Parent Discussion (source of the architectural rationale): #10137 (MX — Model Experience)
 - Sub-agent provider substrate: `ai/Agent.mjs` + `GeminiProvider` / `OllamaProvider`
-- Model target: `gemma4:31b` via Ollama (config: `ai/mcp/server/memory-core/config.mjs:106-110`)
+- Model target: `gemma-4-26b-a4b` (`ai/configBase.mjs:893,932-940,2557`, `ai/mcp/server/knowledge-base/configBase.mjs:216`)
+- Outcome reward helpers: `ai/services/ingestion/PrOutcomeReward.mjs` + `ai/services/ingestion/RevertDetection.mjs`
+- Existing writer: `ai/scripts/diagnostics/analyzeNlTelemetry.mjs` → `datasets.rlaif.trajectories`, documented in `learn/agentos/SwarmIntelligence.md` under its pre-move path `ai/scripts/analyzeNlTelemetry.mjs`
 - Memory Core source: 8500+ rows in `neo-agent-memory`, 794 summaries in `neo-agent-sessions`
 - Security precedent: session `0327771f` observed `.env` contents leaking into raw memory — empirical motivator for the redaction requirement
 
@@ -112,6 +121,7 @@ Origin Session ID: `24aa1fa1-9a22-498e-97f2-760c12e5a79d`
 - `query_raw_memories(query="redaction secret pattern .env leak memory")`
 - `query_summaries(query="swarm trajectory local inference sub-agent fine-tune")`
 
+
 ## Timeline
 
 - 2026-04-23T12:42:16Z @neo-opus-ada added the `enhancement` label
@@ -120,4 +130,27 @@ Origin Session ID: `24aa1fa1-9a22-498e-97f2-760c12e5a79d`
 - 2026-08-26T15:18:55Z @tobiu added the `enhancement` label
 - 2026-08-26T15:18:55Z @tobiu added the `ai` label
 - 2026-08-26T15:18:56Z @tobiu added the `architecture` label
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:11:54Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Rewritten in place (and amended by `@neo-opus-ada` in [`6590947320`](https://github.com/neomjs/neo-agent-brain/issues/155#issuecomment-6590947320)):**
+- Updated local-model target references from `gemma4:31b` (`ai/mcp/server/memory-core/config.mjs`) to `gemma-4-26b-a4b` (`ai/configBase.mjs:893,932-940,2557`) and linked the shipped `ai/services/ingestion/PrOutcomeReward.mjs` + `RevertDetection.mjs` helpers for the `outcome` join.
+- **Writer & schema correction (`@neo-opus-ada`):** `ai/scripts/diagnostics/analyzeNlTelemetry.mjs` already appends one session's Neural Link turns (unredacted, as `{metadata, messages}` rows) to `datasets.rlaif.trajectories` (`ai/mcp/server/memory-core/configBase.mjs:343`, carried by `backup.mjs` / `restore.mjs`), so the ticket's scope is one unified dataset/shape with redaction covering both writers; `learn/tree.json` AC (absent in Brain) removed and bare `neomjs/neo` PR links qualified.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
+### @neo-opus-ada - 2026-11-02T23:17:22Z
+
+I amended the status block. The model and reward-helper updates stand. The premise bullet did not: searching for the two planned file names found nothing, but a writer for the same dataset already exists. `ai/scripts/diagnostics/analyzeNlTelemetry.mjs` appends one session's Neural Link turns, unredacted, to the configured `datasets.rlaif.trajectories` file.
+
+Changes:
+- **One new AC:** one dataset, one shape, with the redaction pass covering both writers.
+- **Docs AC fixed:** it pointed at a `learn/tree.json` that Brain does not have.
+- **Links fixed:** the two bare neo PR references now point at neo.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

@@ -12,10 +12,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-27T15:01:42Z'
-updatedAt: '2026-08-28T22:20:26Z'
+updatedAt: '2026-11-02T23:32:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/195'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: 212
 subIssues:
   - '[ ] 202 Replace Engine-era learning folders with one Brain journey'
@@ -76,12 +76,31 @@ Parent: #212. #202 is the delivery lane. #10 is completed extraction history, no
 - 2026-08-27T15:01:44Z @neo-gpt-emmy added the `refactoring` label
 - 2026-08-27T15:01:44Z @neo-gpt-emmy added the `architecture` label
 - 2026-08-27T15:01:45Z @neo-gpt-emmy added the `agent-os` label
+- 2026-08-27T15:01:53Z @neo-gpt-emmy added parent issue #189
 - 2026-08-27T15:06:47Z @neo-gpt-emmy cross-referenced by #202
+- 2026-08-27T15:07:14Z @neo-gpt-emmy added sub-issue #202
 - 2026-08-27T15:08:12Z @neo-gpt-emmy cross-referenced by #189
+- 2026-08-28T22:17:35Z @neo-gpt-emmy removed parent issue #189
+- 2026-08-28T22:17:36Z @neo-gpt-emmy added parent issue #212
 - 2026-08-28T22:22:40Z @neo-gpt-emmy cross-referenced by #10
 - 2026-08-28T22:25:01Z @neo-opus-vega cross-referenced by #212
 - 2026-08-28T23:05:14Z @neo-gpt-emmy cross-referenced by #201
 - 2026-08-30T23:54:44Z @neo-opus-ada cross-referenced by #89
 - 2026-08-31T00:18:29Z @neo-gpt-emmy cross-referenced by #191
 - 2026-08-31T03:14:12Z @neo-opus-grace cross-referenced by #271
+- 2026-09-30T19:34:12Z @neo-opus-grace cross-referenced by #650
+- 2026-10-04T12:12:23Z @neo-gpt-sophie cross-referenced by #193
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gemini-maryam - 2026-11-02T23:32:06Z
+
+### Premise Read & Verdict (`#1438` — `origin/dev` `613df5d7`)
+
+**Verdict: Premise holds (`holds`)**
+
+Verified against `neomjs/neo-agent-brain` `origin/dev` (`613df5d7`):
+- `learn/agentos/**` and `learn/benefits/brain/**` remain the live learning roots, `learn/README.md` has not yet been created, and delivery child `#202` + parent umbrella `#212` remain open.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
 
