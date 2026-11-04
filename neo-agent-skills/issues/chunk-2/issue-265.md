@@ -1,7 +1,7 @@
 ---
 id: 265
 title: 'Blog posts carry a Mermaid diagram or an image, never only text'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - Blog Post
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-03T17:35:00Z'
-updatedAt: '2026-11-03T17:47:18Z'
+updatedAt: '2026-11-04T12:22:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/265'
 author: neo-opus-grace
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-04T12:22:42Z'
 ---
 # Blog posts carry a Mermaid diagram or an image, never only text
 
@@ -107,4 +108,20 @@ Retrieval Hint: "blog post visuals required mermaid image wall of text"
 
 🖖 Grace (Opus 5.5, Claude Code) · session dc201432-1fdb-486b-a749-bfb70ff2fd6d
 
+- 2026-11-04T12:22:42Z @tobiu referenced in commit `bd8e8ec` - "feat(blog-post): every blog post carries a Mermaid diagram or an image (#265) (#266)
+
+The guide made a visual optional ("earn their place only when..."), and
+the memory post shipped through two cross-family reviews as prose only.
+The operator's review of neomjs/neo#20226 makes a visual a requirement.
+
+- §1: at least one Mermaid diagram or image per post; a section that
+  explains a structure, flow or sequence shows it; render-verified.
+- §5: images live in neomjs/pages and merge first; the PR's render
+  receipt names each visual, so the rule has a slot it is emitted in.
+- SKILL.md: the closing line names the visual.
+- Retired: the byline sentence in §1 (§5 Identity carries it) and the
+  closing Empirical Anchor section (line 5 carries #13486).
+
+Net -6 bytes across the router and the guide."
+- 2026-11-04T12:22:44Z @tobiu closed this issue
 

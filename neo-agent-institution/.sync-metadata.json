@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-03T23:58:45.470Z",
-  "releasesLastFetched": "2026-11-03T23:58:44.911Z",
+  "lastSync": "2026-11-04T15:24:59.832Z",
+  "releasesLastFetched": "2026-11-04T15:24:59.236Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -3597,8 +3597,8 @@
       "state": "OPEN",
       "path": "neo-agent-institution/issues/chunk-4/issue-843.md",
       "closedAt": null,
-      "updatedAt": "2026-11-03T19:03:59Z",
-      "contentHash": "b968771c99c0a7e2151ed6a50f9bfe26fc05382d5973dd8e19d06d69b37bb307",
+      "updatedAt": "2026-11-04T12:54:06Z",
+      "contentHash": "54f9e441f4173fcc7a757e64bac3a3457fb227da8c7d237791b811f4ec45a8e6",
       "milestone": null,
       "commentsTotal": 0
     },
@@ -3704,33 +3704,6 @@
   },
   "releases": {},
   "pulls": {
-    "821": {
-      "state": "MERGED",
-      "path": "neo-agent-institution/pulls/chunk-5/pr-821.md",
-      "closedAt": "2026-10-26T13:46:02Z",
-      "mergedAt": "2026-10-26T13:46:02Z",
-      "milestone": null,
-      "updatedAt": "2026-10-26T13:46:13Z",
-      "contentHash": "bb169d82a371adb2da73a3c0e51275cc9de699fa20c5660574e6de403f85d015"
-    },
-    "822": {
-      "state": "MERGED",
-      "path": "neo-agent-institution/pulls/chunk-5/pr-822.md",
-      "closedAt": "2026-10-26T13:46:10Z",
-      "mergedAt": "2026-10-26T13:46:10Z",
-      "milestone": null,
-      "updatedAt": "2026-10-26T13:46:10Z",
-      "contentHash": "2e3b554faf2c2637e5bf3c5442ab3e3faf06b0883391576518bed29805505830"
-    },
-    "824": {
-      "state": "MERGED",
-      "path": "neo-agent-institution/pulls/chunk-5/pr-824.md",
-      "closedAt": "2026-10-26T19:27:41Z",
-      "mergedAt": "2026-10-26T19:27:41Z",
-      "milestone": null,
-      "updatedAt": "2026-10-26T19:27:44Z",
-      "contentHash": "1624d343f25e88b8a2d5ca3bb65f43e0088bb62b676df996c8f2d0cb5860eb5d"
-    },
     "826": {
       "state": "MERGED",
       "path": "neo-agent-institution/pulls/chunk-5/pr-826.md",
@@ -3739,15 +3712,6 @@
       "milestone": null,
       "updatedAt": "2026-10-27T13:42:04Z",
       "contentHash": "c16660486463f2a8bd17d795ed2c255a0b8b73d8c84cf08cb89f56ca9963f2a7"
-    },
-    "827": {
-      "state": "MERGED",
-      "path": "neo-agent-institution/pulls/chunk-5/pr-827.md",
-      "closedAt": "2026-10-27T13:41:41Z",
-      "mergedAt": "2026-10-27T13:41:41Z",
-      "milestone": null,
-      "updatedAt": "2026-10-27T13:41:50Z",
-      "contentHash": "a9983f19a33779e0e2f795b9bc8b807a45a4c2e595abaddc99bd925e21a0bd99"
     },
     "829": {
       "state": "MERGED",
@@ -3973,6 +3937,42 @@
       "milestone": null,
       "updatedAt": "2026-11-03T13:42:48Z",
       "contentHash": "ba59d42eb5a38066e072304ddcf2aceedea963d70515de0860b8be2b94c2371c"
+    },
+    "870": {
+      "state": "OPEN",
+      "path": "neo-agent-institution/pulls/chunk-5/pr-870.md",
+      "closedAt": null,
+      "mergedAt": null,
+      "milestone": null,
+      "updatedAt": "2026-11-04T13:30:34Z",
+      "contentHash": "1c3666f07ae132ab900b86ab627ba309e6018eb1453af57a94ff6273ae448b44"
+    },
+    "871": {
+      "state": "MERGED",
+      "path": "neo-agent-institution/pulls/chunk-5/pr-871.md",
+      "closedAt": "2026-11-04T13:43:44Z",
+      "mergedAt": "2026-11-04T13:43:44Z",
+      "milestone": null,
+      "updatedAt": "2026-11-04T13:43:53Z",
+      "contentHash": "376ecea2d7b1c7a487b25412fa81c88e322cb9a8e60707ca4b5ec0e25aaeb5e2"
+    },
+    "872": {
+      "state": "MERGED",
+      "path": "neo-agent-institution/pulls/chunk-5/pr-872.md",
+      "closedAt": "2026-11-04T13:43:30Z",
+      "mergedAt": "2026-11-04T13:43:30Z",
+      "milestone": null,
+      "updatedAt": "2026-11-04T13:43:40Z",
+      "contentHash": "f2639b501671c4d9b33f887d3c2bebd95062d38d234a15fe52cc4945bdc68cb6"
+    },
+    "873": {
+      "state": "MERGED",
+      "path": "neo-agent-institution/pulls/chunk-5/pr-873.md",
+      "closedAt": "2026-11-04T13:43:54Z",
+      "mergedAt": "2026-11-04T13:43:54Z",
+      "milestone": null,
+      "updatedAt": "2026-11-04T13:44:04Z",
+      "contentHash": "619d02975b311924b3c055cc3809af7015c326cf09de7f33cfff25776f2e5c56"
     }
   },
   "discussions": {

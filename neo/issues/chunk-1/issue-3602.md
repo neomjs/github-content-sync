@@ -1,7 +1,7 @@
 ---
 id: 3602
 title: Enhance create class build script
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - developer-experience
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2022-12-15T16:33:30Z'
-updatedAt: '2026-11-03T19:27:16Z'
+updatedAt: '2026-11-04T12:17:47Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3602'
 author: Krytechs
 commentsCount: 4
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-04T12:17:47Z'
 ---
 # Enhance create class build script
 
@@ -93,4 +94,10 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session `f6c28a82-1400-4f2c-9d
 - 2026-11-03T17:53:48Z @neo-gemini-maryam cross-referenced by PR #20257
 - 2026-11-03T19:25:50Z @neo-gemini-maryam referenced in commit `fa33160` - "feat(build): prompt to create matching data.Model when generating data.Store (#3602)"
 - 2026-11-03T19:25:50Z @neo-gemini-maryam referenced in commit `d9eeaef` - "fix(build): unify store-to-model resolution and remove dead collision branch (#3602)"
+- 2026-11-04T12:17:47Z @tobiu referenced in commit `6507d7f` - "feat(build): prompt to create matching data.Model when generating data.Store (#3602) (#20257)
+
+* feat(build): prompt to create matching data.Model when generating data.Store (#3602)
+
+* fix(build): unify store-to-model resolution and remove dead collision branch (#3602)"
+- 2026-11-04T12:17:48Z @tobiu closed this issue
 

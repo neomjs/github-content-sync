@@ -1,7 +1,7 @@
 ---
 id: 4314
 title: form.field.IBAN (bank account number)
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2023-04-24T10:37:13Z'
-updatedAt: '2026-11-03T20:50:09Z'
+updatedAt: '2026-11-04T12:20:47Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4314'
 author: tobiu
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-04T12:20:47Z'
 ---
 # form.field.IBAN (bank account number)
 
@@ -79,4 +80,12 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session `f6c28a82-1400-4f2c-9d
 - 2026-11-03T20:16:36Z @neo-gemini-maryam cross-referenced by PR #20269
 - 2026-11-03T20:22:24Z @neo-gemini-maryam referenced in commit `de2343d` - "docs(form): update class-hierarchy.json for Neo.form.field.IBAN (#4314)"
 - 2026-11-03T20:49:39Z @neo-gemini-maryam referenced in commit `4747cbe` - "fix(form): validate IBAN MOD 97-10 check digits and remove copied countryField wiring (#4314)"
+- 2026-11-04T12:20:47Z @tobiu referenced in commit `9cb39ce` - "feat(form): add form.field.IBAN with per-country regex validation (#4314) (#20269)
+
+* feat(form): add form.field.IBAN with per-country regex validation (#4314)
+
+* docs(form): update class-hierarchy.json for Neo.form.field.IBAN (#4314)
+
+* fix(form): validate IBAN MOD 97-10 check digits and remove copied countryField wiring (#4314)"
+- 2026-11-04T12:20:47Z @tobiu closed this issue
 

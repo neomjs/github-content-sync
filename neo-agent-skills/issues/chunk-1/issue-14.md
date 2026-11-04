@@ -25,13 +25,13 @@ subIssues:
   - '[x] 29 The PR-body lint gate belongs to the shared baseline, not to one repository'
   - '[x] 523 neo-agent-brain calls no PR baseline, so five shipped guards never run'
   - '[x] 117 A dependabot pull request can never pass the close-target check, so every version bump reds PR body'
-  - '[ ] 144 Each neo-agent-skills release reaches every consumer as a standalone Dependabot PR on its next run'
+  - '[x] 144 Each neo-agent-skills release reaches every consumer as a standalone Dependabot PR on its next run'
   - '[x] 154 Dependabot''s skills bumps merge themselves on green required checks'
   - '[x] 159 Dependabot auto-merge covers every Dependabot pull request'
   - '[ ] 80 Three consumers name three different baseline coordinates, and nothing compares them'
   - '[x] 235 Run the reusable PR-review check on this repository''s own reviews'
   - '[x] 20173 Run neo''s agent review check from the shared Skills workflow'
-subIssuesCompleted: 13
+subIssuesCompleted: 14
 subIssuesTotal: 15
 contentTrust:
   projected: true

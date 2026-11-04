@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-30T22:40:38Z'
-updatedAt: '2026-11-03T19:03:59Z'
+updatedAt: '2026-11-04T12:54:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/843'
 author: neo-opus-ada
 commentsCount: 0
@@ -30,7 +30,7 @@ blocking: []
 
 Row 5's installed walk on 2026-10-30 (receipt [#516 6534998715](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6534998715)) measured two whole-app relaunches caused by credential changes:
 
-- Admitting a fresh PAT through "Plane admission (operator PAT)" → **Admit**: SIGINT 22:10:41Z → relaunch → recovery 22:11:19Z.
+- Admitting a fresh PAT through the plane card → **Connect**: SIGINT 22:10:41Z → relaunch → recovery 22:11:19Z. *(Corrected 2026-11-04: this line first said "Plane admission (operator PAT)" → Admit. Admit is `connectTenant`, which never relaunches; only `attach()` and the seat-root move call `app.relaunch()` in `harness/`.)*
 - The recovery the product itself offers after a refused PAT ("The plane refused that PAT. Connect again with a current one." → **Connect**): SIGINT 22:36:23Z → recovery 22:37:06Z, then the #841 roster-timeout transient until ~22:38Z.
 
 Each relaunch takes about 30 s, even on an M5 Max (operator). Every running seat goes through a continuity handoff (7 tonight), open views are lost, and the form never says it will restart. **Operator requirement (2026-10-30): no FM restart for any PAT update; a label or confirm is not enough.**
@@ -83,6 +83,14 @@ Two repositories, one PR each, in order:
 - **`attach()`:** when the running child was launched with the pipe for the same plane base, it probes as today, writes a rotation frame and awaits the answer. Adopted: `writePlaneConfig`, then `{ok: true, relaunching: false}`. Refused: `plane.json` stays untouched and the refusal returns, naming both accounts from `resolvedIdentity` / `expectedIdentity`. A host-mode launch or a different plane base keeps today's relaunch.
 - **Closing the pipe** ends rotations only; the child keeps its bound bearer.
 
+*(2026-11-04, shell side, from the implementation read.)*
+- **Spawn:** `startBrainChild({credentialPipe: true})` owns the fourth `stdio` entry and names it in the child's env. Main's end is `harness/planeCredentialPipe.mjs`: answers are matched to frames in order, and a pipe that closes answers every pending frame as refused. A respawn pipes the current record, the rotated one included.
+- **The fragment blanks** `NEO_FLEET_PLANE_BEARER`, `_FILE`, `_CLASS` and both admission variables: an env fragment can override an inherited value but never remove it, and the Brain refuses a boot that declares a bearer beside the pipe.
+- **A refused boot:** when no child is running (the boot settled down with `plane-credential-refused` or `plane-identity-changed`), there is no working binding to keep, so `attach()` stores the record and runs the boot again in this process (`retryBrainBoot`). That is also "pat refused" → Connect, at boot.
+- **Another account** is refused whenever this shell launched from a record for the same plane base, in every path, not only in a rotation. The `plane-identity-changed` banner therefore stops saying "Connect again to confirm it".
+- **The cockpit:** after an adopted rotation, the card hands off to the viewport, which re-drives the cockpit (the `onConnectPlane` precedent). A reconnect asks `verifyPlane()` again while a credential cause stands, and `verifyPlane()` now probes the rotated record. Without that, "pat refused" would clear only at the 300 s re-check.
+- **"Verifying PAT"** moves from the spine (step 4) to the card's status line, where the operator acted and waits for the reply. The spine keeps naming the fault until the shell's verdict clears it.
+
 ## Acceptance Criteria
 
 - [ ] AC-1 Admitting a PAT through the plane admission form updates the running FM with no relaunch: no SIGINT or relaunch in `main.log`, the renderer session survives, and seats are untouched. The cockpit returns to `live`, with the new PAT verified for the same identity.
@@ -116,6 +124,7 @@ Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
 
 
 
+
 ## Timeline
 
 - 2026-10-30T22:40:39Z @neo-opus-ada assigned to @neo-opus-ada
@@ -133,4 +142,5 @@ Origin Session ID: 2e07d6d3-af03-4b39-9254-f979cc291d2f
 - 2026-11-03T08:17:14Z @neo-opus-ada cross-referenced by #864
 - 2026-11-03T08:43:45Z @neo-opus-ada cross-referenced by #1462
 - 2026-11-03T17:51:58Z @neo-opus-ada cross-referenced by PR #1463
+- 2026-11-04T13:23:04Z @neo-opus-ada cross-referenced by PR #870
 

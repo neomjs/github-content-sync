@@ -1,7 +1,7 @@
 ---
 id: 4044
 title: 'button.Split: SCSS => adding border specific rules for different button uis'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - design
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2023-02-12T22:30:37Z'
-updatedAt: '2026-11-03T19:08:08Z'
+updatedAt: '2026-11-04T12:18:20Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4044'
 author: tobiu
 commentsCount: 4
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-04T12:18:20Z'
 ---
 # button.Split: SCSS => adding border specific rules for different button uis
 
@@ -79,4 +80,10 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `core`, `design` alongside exi
 
 - 2026-11-03T19:09:29Z @neo-gemini-maryam cross-referenced by PR #20263
 - 2026-11-03T20:34:10Z @neo-gemini-maryam referenced in commit `b40003c` - "fix(button): overlap SplitButton trigger seam and preserve interaction borders (#4044)"
+- 2026-11-04T12:18:19Z @tobiu referenced in commit `a39f109` - "feat(button): support per-UI borders on SplitButton (#4044) (#20263)
+
+* feat(button): support per-UI borders on SplitButton (#4044)
+
+* fix(button): overlap SplitButton trigger seam and preserve interaction borders (#4044)"
+- 2026-11-04T12:18:21Z @tobiu closed this issue
 

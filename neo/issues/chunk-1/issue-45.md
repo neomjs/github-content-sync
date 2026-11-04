@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2019-11-18T01:12:19Z'
-updatedAt: '2026-11-03T21:19:15Z'
+updatedAt: '2026-11-04T12:54:54Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/45'
 author: tobiu
 commentsCount: 5
@@ -94,11 +94,15 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `documentation` (alongside exi
 
 | Surface | Owner | Contract |
 |---|---|---|
-| `Docs.view.MainContainer` (`docs/app/view/MainContainer.mjs`) | Docs view | Removes the obsolete `theme: 'neo-theme-light'` override so `getTheme()` resolves the component's own `theme`, inherited parent theme (when embedded in Portal), or `Neo.config.themes[0]` (when run standalone). |
-| `Docs.view.MainContainerController#onComponentConstructed` (`docs/app/view/MainContainerController.mjs`) | Docs controller | Reads `me.component.getTheme()` after component construction, sets `theme-button.text` (`'Theme Light'` when dark, `'Theme Dark'` when light) and `source-view-theme-button.text` (`'Source View Theme Light'` when dark, `'Source View Theme Dark'` when light), and passes the matching initial `themePath` (`highlightjs-custom-dark-theme.css` when dark, `highlightjs-custom-github-theme.css` when light) to `Neo.main.addon.HighlightJS.loadFiles`. |
-| `Docs.view.MainContainerController#onSwitchThemeButtonClick` & `#onSwitchSourceViewThemeButtonClick` (`docs/app/view/MainContainerController.mjs`) | Docs controller | Toggles `view.theme` / `view.cls` and `hljs-theme` stylesheet path (`../../docs/resources/lib/` when embedded in `Portal`, `./resources/lib/` when standalone) in lockstep with the button texts. |
+| `Docs.view.MainContainer` (`docs/app/view/MainContainer.mjs`) | Docs view | Removes the obsolete `theme: 'neo-theme-light'` override so `getTheme()` resolves the component's own `theme`, inherited parent theme (when embedded in Portal without publishing `neo-theme-light` to `document.body` on construct), or `Neo.config.themes[0]` (when run standalone). |
+| `Docs.view.MainContainerController#onComponentConstructed` (`docs/app/view/MainContainerController.mjs`) | Docs controller | Reads `me.component.getTheme()` after component construction, hides `theme-button` when `appName === 'Portal'` (where the Portal header switch owns the page theme) or sets `theme-button.text` (`'Theme Light'` when dark, `'Theme Dark'` when light) when standalone, sets `source-view-theme-button.text` (`'Source View Theme Light'` when dark, `'Source View Theme Dark'` when light), and passes the matching initial `themePath` (`highlightjs-custom-dark-theme.css` when dark, `highlightjs-custom-github-theme.css` when light) to `Neo.main.addon.HighlightJS.loadFiles`. |
+| `Docs.view.MainContainerController#onSwitchThemeButtonClick` & `#onSwitchSourceViewThemeButtonClick` (`docs/app/view/MainContainerController.mjs`) | Docs controller | Toggles `view.theme` (delegating `view.cls` and standalone `document.body` sync to `afterSetTheme`) and the `hljs-theme` stylesheet path (`../../docs/resources/lib/` when embedded in `Portal`, `./resources/lib/` when standalone) in lockstep with the button texts. |
 
 — Maryam 🧭 (Gemini 4 Argon · Antigravity · Session `f6c28a82-1400-4f2c-9d74-e81b65cb73d8`)
 
 - 2026-11-03T21:25:33Z @neo-gemini-maryam cross-referenced by PR #20272
+- 2026-11-04T12:55:29Z @neo-gemini-maryam referenced in commit `b0bc03b` - "feat(docs): adjust Docs theme button texts to initial theme (#45)
+
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>"
+- 2026-11-04T12:55:30Z @neo-gemini-maryam referenced in commit `e76f285` - "fix(docs): hide Portal Docs theme button and delegate cls to afterSetTheme (#45)"
 

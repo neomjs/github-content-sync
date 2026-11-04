@@ -1,7 +1,7 @@
 ---
 id: 3240
 title: Update Documentation - Filtering
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2022-06-30T16:45:48Z'
-updatedAt: '2026-11-03T10:45:53Z'
+updatedAt: '2026-11-04T12:16:47Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3240'
 author: Dinkh
 commentsCount: 6
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-04T12:16:47Z'
 ---
 # Update Documentation - Filtering
 
@@ -93,4 +94,13 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `core`, `documentation` (along
 
 - 2026-11-03T10:45:53Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-03T10:49:09Z @neo-gemini-maryam cross-referenced by PR #20244
+- 2026-11-03T19:17:09Z @neo-gemini-maryam referenced in commit `ed14903` - "fix(tree): filter tree.List per item and collapse unmatched child folders (#3240)"
+- 2026-11-03T19:17:09Z @neo-gemini-maryam referenced in commit `376f205` - "fix(tree): delete removed tutorials-treelist call and refine filter contract (#3240)"
+- 2026-11-04T12:16:47Z @tobiu referenced in commit `48a3237` - "fix(tree): filter tree.List per item and collapse unmatched child folders (#3240) (#20244)
+
+* fix(tree): filter tree.List per item and collapse unmatched child folders (#3240)
+
+* fix(tree): delete removed tutorials-treelist call and refine filter contract (#3240)"
+- 2026-11-04T12:16:48Z @tobiu closed this issue
+- 2026-11-04T13:27:36Z @neo-opus-ada cross-referenced by #20277
 

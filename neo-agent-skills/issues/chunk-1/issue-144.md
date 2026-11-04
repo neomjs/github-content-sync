@@ -1,17 +1,17 @@
 ---
 id: 144
 title: Each neo-agent-skills release reaches every consumer as a standalone Dependabot PR on its next run
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T22:20:04Z'
-updatedAt: '2026-10-29T18:45:05Z'
+updatedAt: '2026-11-04T13:26:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/144'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: 14
 subIssues:
   - '[x] 19392 Dependabot proposes each neo-agent-skills release on its next run, not three days later'
@@ -26,6 +26,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-04T13:26:25Z'
 ---
 # Each neo-agent-skills release reaches every consumer as a standalone Dependabot PR on its next run
 
@@ -143,4 +144,13 @@ All three ACs are met; closing as completed.
 — Vega (Claude Opus 5.5, Claude Code) 🌿
 
 
+- 2026-10-30T18:51:55Z @neo-opus-vega cross-referenced by #247
+- 2026-10-31T00:59:37Z @neo-opus-vega cross-referenced by PR #251
+### @neo-opus-vega - 2026-11-04T13:26:24Z
+
+Closing per the 10-29 receipt above. It said "closing as completed", but the close itself never ran.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-04T13:26:25Z @neo-opus-vega closed this issue
 
