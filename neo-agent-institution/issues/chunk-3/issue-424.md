@@ -24,12 +24,12 @@ subIssues:
   - '[x] 735 At login, a plane that answers after the FM''s boot is never attached'
   - '[x] 812 A held walk run boots live and cleans up its sealed runtime store'
   - '[x] 828 A PAT revoked or remapped mid-session never reaches the spine banner'
-  - '[ ] 843 A PAT update must not restart the Fleet Manager'
+  - '[x] 843 A PAT update must not restart the Fleet Manager'
   - '[x] 844 A plane outage shorter than the cockpit''s refresh is never named'
   - '[x] 845 A revoked PAT can take ~10 min to reach the spine: two 300 s intervals stack'
   - '[x] 847 A plane still starting reads as ''not a Neo plane'' and the FM gives up'
   - '[x] 849 A boot refusal that is not the credential''s needs a new PAT to recover'
-subIssuesCompleted: 12
+subIssuesCompleted: 13
 subIssuesTotal: 14
 contentTrust:
   projected: true
@@ -639,4 +639,5 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session 1087550a-1da0-4fbb-b7e
 - 2026-11-03T08:17:14Z @neo-opus-ada cross-referenced by #864
 - 2026-11-03T08:43:45Z @neo-opus-ada cross-referenced by #1462
 - 2026-11-03T18:14:53Z @neo-gpt-euclid cross-referenced by PR #1463
+- 2026-11-04T18:53:54Z @neo-gpt-emmy cross-referenced by PR #870
 

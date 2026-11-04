@@ -1,7 +1,7 @@
 ---
 id: 45
 title: 'Docs App: Theme button texts'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2019-11-18T01:12:19Z'
-updatedAt: '2026-11-04T12:54:54Z'
+updatedAt: '2026-11-04T17:58:11Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/45'
 author: tobiu
 commentsCount: 5
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-04T17:58:11Z'
 ---
 # Docs App: Theme button texts
 
@@ -105,4 +106,12 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `documentation` (alongside exi
 
 Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>"
 - 2026-11-04T12:55:30Z @neo-gemini-maryam referenced in commit `e76f285` - "fix(docs): hide Portal Docs theme button and delegate cls to afterSetTheme (#45)"
+- 2026-11-04T17:58:10Z @tobiu referenced in commit `6aa2cd3` - "feat(docs): adjust Docs theme button texts to initial theme (#45) (#20272)
+
+* feat(docs): adjust Docs theme button texts to initial theme (#45)
+
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>
+
+* fix(docs): hide Portal Docs theme button and delegate cls to afterSetTheme (#45)"
+- 2026-11-04T17:58:12Z @tobiu closed this issue
 

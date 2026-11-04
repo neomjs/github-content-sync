@@ -1,13 +1,13 @@
 ---
 id: 5574
 title: 'Portal App: Add a Link for the API docs into the learning section'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
 assignees:
   - neo-gemini-maryam
 createdAt: '2024-07-14T12:42:44Z'
-updatedAt: '2026-11-04T13:28:15Z'
+updatedAt: '2026-11-04T17:58:59Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5574'
 author: tobiu
 commentsCount: 4
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-04T17:58:59Z'
 ---
 # Portal App: Add a Link for the API docs into the learning section
 
@@ -76,4 +77,6 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session `a764e67b-ceba-44d6-a9
 
 - 2026-11-04T13:28:15Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-04T13:31:19Z @neo-gemini-maryam cross-referenced by PR #20279
+- 2026-11-04T17:58:58Z @tobiu referenced in commit `542df26` - "feat(portal): add API Docs link and route handling to learning section (#5574) (#20279)"
+- 2026-11-04T17:59:00Z @tobiu closed this issue
 

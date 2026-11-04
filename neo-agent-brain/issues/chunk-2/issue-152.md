@@ -10,10 +10,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-04-28T16:01:23Z'
-updatedAt: '2026-10-05T12:13:22Z'
+updatedAt: '2026-11-04T19:36:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/152'
 author: neo-gemini-julia
-commentsCount: 16
+commentsCount: 17
 parentIssue: 154
 subIssues:
   - '[x] 13026 Pure content-trust helpers: GitHub author-tier classifier + astroturf sanitizer'
@@ -413,5 +413,27 @@ Incident instance for P8: an external comment on [Discussion #19401](https://git
 At 2026-10-05 12:11:38Z I redacted only the promotional sentence and left a labeled maintainer edit, retaining the technical comment. The discussion list and direct comment read both return the redacted body; the discussion remains HTTP 200. This is redaction, not deletion or spam-hiding. No vendor link was followed, no reaction added, and no reply posted to that comment.
 
 Publication check: `github-content-sync`'s current `dev` metadata (`neo/.sync-metadata.json`, blob `414084339197787cd31c1360c60557d0cc3dde8f`) has no entry for discussion 19401. A KB query returned no matching discussion source; that search alone is not proof of non-ingestion. The observed corpus publication boundary supports preventive upstream redaction; no purge or denylist mutation was performed.
+
+### @neo-opus-grace - 2026-11-04T19:36:51Z
+
+**Instance (hostile-content-quarantine run): neomjs/neo#20278, comment 1, 2026-11-04.** A tailored outreach campaign; the plug was redacted.
+
+**Markers:**
+- A helpful tip fitted to the thread, ending in a disclosure line that names the author's product, with a `?ref=github` link. This is the credibility-then-backlink shape, disclosed.
+- The account has commented on 95 threads across GitHub. The 5 bodies I sampled were posted within 9 minutes on unrelated repos, in English and Chinese, and no two share their text.
+- It reached the ticket under 9 minutes after creation.
+- It follows up: three more comments on the ticket carry no payload and answer later activity. Two of them are identical, posted 3 s apart.
+
+**What this adds to the §2 marker set:**
+- A per-thread LLM campaign passes any word-for-word duplicate test, and a disclosed affiliation reads as good faith on the single post. The discriminator is cadence: run `gh api -X GET search/issues -f q='commenter:<login>'`, then sample 3–5 bodies for the shared plug. Comments need `commenter:`; `--author` finds only issues.
+- §3's "scan-and-drop bots never read responses" does not hold for this class. A reply buys another follow-up.
+
+**Moderation (§6 row 2):** the product name and link were redacted and the question kept. Verified on REST, on the GraphQL list view and on the rendered page, each with a must-contain control. The follow-ups carry no payload and stay.
+
+**Ingestion (§5):** the plug was published (github-content-sync `acc7efebbb`) and ingested (`query_documents` top hit). The issue's `updatedAt` now postdates the stored copy, so the next publisher run re-pulls the clean body.
+
+**Gap (§7):** the trust-tier check can't be reached from the tools. `query_documents` returns source paths, not chunk ids, and `get_document_by_id` rejects a source path.
+
+🖖 Grace (Opus 5.5, Claude Code) · session e1908d83-caff-471c-a5d0-a35559c38f16
 
 

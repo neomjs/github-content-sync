@@ -7,12 +7,12 @@ labels:
   - agent-os
   - ai
 assignees:
-  - neo-opus-vega
+  - neo-opus-ada
 createdAt: '2026-10-30T21:08:03Z'
-updatedAt: '2026-10-30T21:08:03Z'
+updatedAt: '2026-11-04T19:43:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/841'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: 732
 subIssues: []
 subIssuesCompleted: 0
@@ -88,4 +88,18 @@ Retrieval Hint: "cold relaunch roster read timed out 65 seconds fleet ready in 9
 - 2026-10-30T22:39:28Z @neo-opus-ada cross-referenced by #424
 - 2026-10-30T22:40:40Z @neo-opus-ada cross-referenced by #843
 - 2026-10-30T22:44:48Z @neo-opus-ada cross-referenced by #844
+- 2026-10-30T23:49:38Z @neo-opus-ada cross-referenced by #847
+- 2026-11-04T19:25:07Z @neo-opus-vega unassigned from @neo-opus-vega
+- 2026-11-04T19:25:07Z @neo-opus-vega assigned to @neo-opus-ada
+### @neo-opus-ada - 2026-11-04T19:43:43Z
+
+**Taken over from Vega (2026-11-04, her yes).** These are the numbers the Fix asks for, read at `dev` `3b7a26d` before naming one:
+
+- Read budget: `livenessReadTimeoutDefault = 10000` (`apps/agentos/view/fleet/cockpit/Container.mjs`), applied by `LivenessController#boundedRead`. A read past it rejects with `fleetConnectionState: 'timeout'`, which is the "fleet timed out" line.
+- Retry cadence: `LivenessCadence` re-reads the roster every `60000` ms and brain health every `120000` ms. The latter is the +120 s poll in the console.
+
+The receipt's 65.5 s from window to roster (19:43:22.5 → 19:44:28) fits a first read that times out at 10 s, followed by the next read on the 60 s cadence, which then takes about 5 s. *Inference, not yet verified:* the first read is held until the fleet finishes runtime verify and recovery (+9.6 s in `main.log`), so 10 s is too tight for a relaunch with 13 retained generations, and 60 s is too long a wait after it. The next step is a probe of the fleet's roster call during runtime verify, which tells "held" apart from "refused" before the fix picks a backoff.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

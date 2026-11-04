@@ -104569,6 +104569,30 @@
   },
   {
     "repoSlug": "neo",
+    "type": "issues",
+    "id": 20284,
+    "version": null,
+    "chunkNumber": 4,
+    "path": "neo/issues/chunk-4/issue-20284.md"
+  },
+  {
+    "repoSlug": "neo",
+    "type": "issues",
+    "id": 20285,
+    "version": null,
+    "chunkNumber": 4,
+    "path": "neo/issues/chunk-4/issue-20285.md"
+  },
+  {
+    "repoSlug": "neo",
+    "type": "issues",
+    "id": 20286,
+    "version": null,
+    "chunkNumber": 4,
+    "path": "neo/issues/chunk-4/issue-20286.md"
+  },
+  {
+    "repoSlug": "neo",
     "type": "pulls",
     "id": 4,
     "version": "v1.0.3-beta",
@@ -160776,6 +160800,30 @@
     "path": "neo/pulls/chunk-2/pr-20281.md"
   },
   {
+    "repoSlug": "neo",
+    "type": "pulls",
+    "id": 20283,
+    "version": null,
+    "chunkNumber": 2,
+    "path": "neo/pulls/chunk-2/pr-20283.md"
+  },
+  {
+    "repoSlug": "neo",
+    "type": "pulls",
+    "id": 20287,
+    "version": null,
+    "chunkNumber": 2,
+    "path": "neo/pulls/chunk-2/pr-20287.md"
+  },
+  {
+    "repoSlug": "neo",
+    "type": "pulls",
+    "id": 20288,
+    "version": null,
+    "chunkNumber": 2,
+    "path": "neo/pulls/chunk-2/pr-20288.md"
+  },
+  {
     "repoSlug": "neo-agent-brain",
     "type": "issues",
     "id": 3,
@@ -179486,6 +179534,14 @@
     "version": null,
     "chunkNumber": 5,
     "path": "neo-agent-institution/pulls/chunk-5/pr-873.md"
+  },
+  {
+    "repoSlug": "neo-agent-institution",
+    "type": "pulls",
+    "id": 874,
+    "version": null,
+    "chunkNumber": 5,
+    "path": "neo-agent-institution/pulls/chunk-5/pr-874.md"
   },
   {
     "repoSlug": "neo-agent-skills",

@@ -1,7 +1,7 @@
 ---
 id: 4723
 title: 'component.Splitter: DD should honor potential minHeight or minWidth on their sibblings'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2023-08-15T13:53:18Z'
-updatedAt: '2026-11-03T13:39:32Z'
+updatedAt: '2026-11-04T17:57:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4723'
 author: tobiu
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-04T17:57:41Z'
 ---
 # component.Splitter: DD should honor potential minHeight or minWidth on their sibblings
 
@@ -76,4 +77,11 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `en
 
 - 2026-11-03T13:45:33Z @neo-gemini-maryam cross-referenced by PR #20252
 - 2026-11-03T13:53:57Z @neo-gemini-maryam referenced in commit `5963a7e` - "fix(component): emit oppositeId in Splitter resizeConfig only when opposite sibling has a min bound (#4723)"
+- 2026-11-04T17:57:41Z @tobiu referenced in commit `e530972` - "feat(component): honor sibling minWidth and minHeight during Splitter drag (#4723) (#20252)
+
+* feat(component): honor sibling minWidth and minHeight during Splitter drag (#4723)
+
+* fix(component): emit oppositeId in Splitter resizeConfig only when opposite sibling has a min bound (#4723)"
+- 2026-11-04T17:57:42Z @tobiu closed this issue
+- 2026-11-04T19:11:45Z @neo-gemini-maryam cross-referenced by PR #20283
 
