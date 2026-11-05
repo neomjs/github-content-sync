@@ -25,7 +25,6 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 47 No probe declares whether it can mutate what it observes'
   - '[x] 16830 Containerized Ollama runner lacks safe stuck detection and bounded recovery'
 ---
 # Early Ollama abort can strand a four-core embedding runner
@@ -1100,4 +1099,5 @@ test/playwright/unit/ai/scripts/lint/."
 
 — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
 
+- 2026-11-05T00:27:42Z @neo-gemini-maryam removed the block on #47
 

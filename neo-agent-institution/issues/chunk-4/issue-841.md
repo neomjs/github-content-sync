@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-30T21:08:03Z'
-updatedAt: '2026-11-04T19:43:43Z'
+updatedAt: '2026-11-05T00:06:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/841'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 3
 parentIssue: 732
 subIssues: []
 subIssuesCompleted: 0
@@ -99,6 +99,65 @@ Retrieval Hint: "cold relaunch roster read timed out 65 seconds fleet ready in 9
 - Retry cadence: `LivenessCadence` re-reads the roster every `60000` ms and brain health every `120000` ms. The latter is the +120 s poll in the console.
 
 The receipt's 65.5 s from window to roster (19:43:22.5 → 19:44:28) fits a first read that times out at 10 s, followed by the next read on the 60 s cadence, which then takes about 5 s. *Inference, not yet verified:* the first read is held until the fleet finishes runtime verify and recovery (+9.6 s in `main.log`), so 10 s is too tight for a relaunch with 13 retained generations, and 60 s is too long a wait after it. The next step is a probe of the fleet's roster call during runtime verify, which tells "held" apart from "refused" before the fix picks a backoff.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-04T23:12:01Z @neo-opus-ada cross-referenced by #1468
+### @neo-opus-ada - 2026-11-04T23:16:16Z
+
+**Probe result: held or refused?** Neither at the transport: nothing in the fleet holds a read during boot. `fleetBridgeServer` dispatches each `/fleet` request on arrival, and `FleetControlBridge#fleetRoster` awaits no boot gate (`startGateRefusal()` only stamps rows). What the roster does await is its axes. In plane mode two of them are plane calls on every read: wake (`manage_wake_subscription {action: 'fleet-identities'}`) and presence (`who_is_online`). Each is bounded only by the MCP SDK's 60 s default, which the fleet's plane client keeps on purpose (plane calls measured at 17–25 s under embed/WAL load). A unit probe on Brain `dev` `f1fc04b9` confirms the wait: with a presence axis that never answers, `fleetRoster()` is still waiting after 3,002 ms, while the control answers in 1 ms.
+
+That fits the receipt. `recoverInitialRoster` (#707) was in the candidate, so 65.5 s reads as a first wire read that answered about 60 s late, followed by the fresh read it woke (~5 s). *Inference:* no fleet or plane log times a single read. `main.log` has nothing between recovery (19:43:32.1) and the roster, and the plane's MC server logs no tool timings, so the sitting can't be timed after the fact.
+
+What this changes:
+- If the plane is the slow leg, a renderer backoff would make it worse: each retry is another plane call. The bound belongs where the wait is, and is filed as neomjs/neo-agent-brain#1468. The roster waits on each plane axis for at most a few seconds, and a slow axis reads as pending. Concurrent `who_is_online` reads share one call, and a late axis logs its duration. That log line is the instrument AC-2's installed receipt needs.
+- "Fleet ready 9 s after the window" is a floor. Later cold boots in the same `main.log` spent 5.0–14.6 s in runtime verify and up to 13.9 s in recovery (2026-10-31 15:09Z).
+
+This ticket keeps the renderer half: AC-3's boot-phase line, and the AC-1 arm once #1468 ships in an FM build.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-04T23:24:18Z @neo-opus-ada cross-referenced by PR #1469
+- 2026-11-04T23:29:00Z @neo-opus-ada cross-referenced by #875
+- 2026-11-04T23:54:42Z @neo-opus-ada cross-referenced by #1471
+- 2026-11-04T23:57:10Z @tobiu referenced in commit `f963b01` - "fix(fleet): the roster stops waiting out a slow plane call (#1468) (#1469)
+
+* fix(fleet): the roster stops waiting out a slow plane call (#1468)
+
+fleetRoster awaited its wake and presence axes. In plane mode each is a
+plane call that only the MCP SDK's 60 s bounds, so a loaded plane after a
+relaunch held the cockpit's first read past its 10 s budget
+(neomjs/neo-agent-institution#841).
+
+- FleetManager's roster producers bound their plane reads by the new
+  AiConfig.fleet.rosterAxisTimeoutMs leaf (4 s). An axis still reading
+  reports pending through its adapter's own fail-honest path, and the
+  call runs on.
+- A read that settles after the bound logs its axis and duration once.
+- The plane who_is_online reader shares one call between overlapping
+  reads.
+
+* test(fleet): the roster answers with both plane axes still out (#1468)
+
+Extends the roster arm to stall the wake scan beside the presence read, so AC-2 is witnessed at the roster as the ticket asks, not only at the producer."
+- 2026-11-04T23:57:35Z @neo-opus-ada cross-referenced by PR #1472
+### @neo-opus-ada - 2026-11-04T23:58:02Z
+
+**Plan for the renderer half (AC-1, AC-3)**, now that the Brain side is in review:
+
+- neomjs/neo-agent-brain#1469 (merged): the roster answers within about 4 s whatever the plane does, so a cold relaunch gets its roster while the fleet still binds.
+- neomjs/neo-agent-brain#1472: the roster DTO carries `startGate: {state, reason}`.
+  - `state: 'booting'` while runtime verify or recovery runs; its reason is "the Fleet is verifying its runtime: Start opens when it finishes".
+  - `state: 'refused'` for a gate that holds, such as a failed verification.
+  - `null` once Start may run.
+  - Today the reason reaches the cockpit only on each seat's Start.
+
+What remains here, in one PR:
+1. **AC-3:** while `startGate` is set, the cockpit's state line names it: a starting line while it boots, a refusal line while it's refused.
+2. **The re-read:** while the gate is `booting`, the roster re-reads on a short interval instead of the 60 s cadence, so the line clears and Start opens within seconds of the fleet finishing. A refused gate keeps the normal cadence.
+3. **AC-1:** an arm with a fleet whose roster first answers with the gate booting, then open. It never shows "timed out", the line names the boot phase, and it clears on the next short read.
+
+AC-2 stays the installed receipt: window-to-roster time plus any `[fleet] roster … read … after` line in `main.log`.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 

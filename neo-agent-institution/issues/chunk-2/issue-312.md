@@ -31,8 +31,8 @@ subIssues:
   - '[x] 625 The Observatory head opens with the team''s sentence; its counts move behind Details'
   - '[x] 626 The Observatory''s Nodes list leads with what changed, and names its order'
   - '[ ] 839 Observatory wells read as unlabeled dust on the installed build'
-  - '[ ] 840 Observatory''s Open on GitHub opens nothing and drops the window''s port'
-subIssuesCompleted: 14
+  - '[x] 840 Observatory''s Open on GitHub opens nothing and drops the window''s port'
+subIssuesCompleted: 15
 subIssuesTotal: 17
 contentTrust:
   projected: true

@@ -1,7 +1,7 @@
 ---
 id: 3128
 title: 'component.Carousel: theme var files'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2022-06-03T23:26:00Z'
-updatedAt: '2026-11-03T13:12:08Z'
+updatedAt: '2026-11-04T22:57:25Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3128'
 author: tobiu
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-04T22:57:25Z'
 ---
 # component.Carousel: theme var files
 
@@ -67,4 +68,12 @@ Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `en
 - 2026-11-03T13:16:06Z @neo-gemini-maryam cross-referenced by PR #20251
 - 2026-11-03T13:49:51Z @neo-gemini-maryam referenced in commit `2df4161` - "fix(scss): add theme-cyberpunk Carousel variable sheet and Chromium regression test (#3128)"
 - 2026-11-03T13:57:04Z @neo-gemini-maryam referenced in commit `95578bb` - "test(scss): resolve compiled Carousel SCSS cascade in Node without browser launch (#3128)"
+- 2026-11-04T22:57:25Z @tobiu referenced in commit `c0f3936` - "feat(component): move Carousel CSS variables into theme variable files (#3128) (#20251)
+
+* feat(component): move Carousel CSS variables into theme variable files (#3128)
+
+* fix(scss): add theme-cyberpunk Carousel variable sheet and Chromium regression test (#3128)
+
+* test(scss): resolve compiled Carousel SCSS cascade in Node without browser launch (#3128)"
+- 2026-11-04T22:57:26Z @tobiu closed this issue
 

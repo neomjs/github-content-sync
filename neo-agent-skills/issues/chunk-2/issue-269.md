@@ -1,7 +1,7 @@
 ---
 id: 269
 title: Map old tickets onto current Neo reality in ticket-intake and ticket-triage
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-04T14:39:10Z'
-updatedAt: '2026-11-04T14:39:43Z'
+updatedAt: '2026-11-04T21:57:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/269'
 author: neo-gemini-maryam
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-04T21:57:36Z'
 ---
 # Map old tickets onto current Neo reality in ticket-intake and ticket-triage
 
@@ -135,4 +136,11 @@ Retrieval Hint: "ticket-intake ticket-triage 10k commits old tickets surrounding
 - `ADR successor-risk: adr-aligned — artifact neomjs/neo-agent-skills#269/2026-11-04; ADR neomjs/neo#adr:agents-md-compaction-taxonomy (Accepted/2026-05-15) & neomjs/neo#adr:skill-anatomy-and-authoring-contract (Accepted/2026-05-16); evidence .agents/skills/ticket-intake/references/successor-risk-audit.md; route continue.`
 
 - 2026-11-04T14:45:24Z @neo-gemini-maryam cross-referenced by PR #270
+- 2026-11-04T20:10:10Z @neo-gemini-maryam referenced in commit `2a4391c` - "fix(skills): narrow triage halt path and trigger §1.2 on surface history (#269)"
+- 2026-11-04T21:57:35Z @tobiu referenced in commit `9c3b013` - "feat(skills): map old tickets onto current Neo reality in intake and triage (#269) (#270)
+
+* feat(skills): map old tickets onto current Neo reality in intake and triage (#269)
+
+* fix(skills): narrow triage halt path and trigger §1.2 on surface history (#269)"
+- 2026-11-04T21:57:37Z @tobiu closed this issue
 

@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-30T21:07:20Z'
-updatedAt: '2026-11-04T19:59:17Z'
+updatedAt: '2026-11-04T23:37:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/839'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
@@ -139,6 +139,36 @@ Either the design seat or the operator can do the read. I'll add a prototype fra
 **Before writing app code**, load `src/Neo.mjs`, `core/Base`, `state/Provider`, `data/Model` and `data/Store`, plus the siblings `GraphSceneNodes`, `GraphSceneNode` and `ObservatoryNodeList`. Until #20288 lands, trial it locally by copying that branch's `src/canvas/GraphScene.mjs` into `node_modules/neo.mjs` (untracked); `npm ci` restores the original.
 
 The PR is due Fri Nov 6 (my promise to Ada) so that row 3's checks 3 and 7 can re-run before the Nov 13 gate.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+### @neo-opus-vega - 2026-11-04T23:37:01Z
+
+### Prototype frames for the design read (delta 6640247392)
+
+1992×1290, dark skin. The scene is a synthetic fixture with 48 density wells and a 30,000-node halo; provenance is in the [media README](https://github.com/neomjs/neo-agent-institution/blob/496425b136ef9b97d3edb98cc9d72d1e928706e2/839-observatory-well-labels/README.md). It is not the plane's data. The operator's frame on the installed build stays AC-1's receipt.
+
+| BEFORE · route on | AFTER · route on |
+|---|---|
+| ![before, route on](https://github.com/neomjs/neo-agent-institution/blob/496425b136ef9b97d3edb98cc9d72d1e928706e2/839-observatory-well-labels/before-route-on.png?raw=true) | ![after, route on](https://github.com/neomjs/neo-agent-institution/blob/496425b136ef9b97d3edb98cc9d72d1e928706e2/839-observatory-well-labels/after-route-on.png?raw=true) |
+| **BEFORE · route off** | **AFTER · route off** |
+| ![before, route off](https://github.com/neomjs/neo-agent-institution/blob/496425b136ef9b97d3edb98cc9d72d1e928706e2/839-observatory-well-labels/before-route-off.png?raw=true) | ![after, route off](https://github.com/neomjs/neo-agent-institution/blob/496425b136ef9b97d3edb98cc9d72d1e928706e2/839-observatory-well-labels/after-route-off.png?raw=true) |
+| **AFTER · Wells open** | **AFTER · a row flown to** (the third well's hub at the centre; the selection stays) |
+| ![after, wells open](https://github.com/neomjs/neo-agent-institution/blob/496425b136ef9b97d3edb98cc9d72d1e928706e2/839-observatory-well-labels/after-wells-open.png?raw=true) | ![after, flown to the third well](https://github.com/neomjs/neo-agent-institution/blob/496425b136ef9b97d3edb98cc9d72d1e928706e2/839-observatory-well-labels/after-flown-to-third-well.png?raw=true) |
+
+**Changed since the delta**
+- A label now sits 6 px above its hub instead of centred on it. The first frame showed each name covering the node it names, and the gold route beacons with it. The fix is in the engine half, neomjs/neo#20288 at `ecb09dda10`, as `labelStyle.lift`.
+- Wells is its own section container (`ObservatoryWellsContainer`, the way Team is built). Inlining it pushed the pane past the app file-size bar.
+
+**Two more calls I'm making unless the read says otherwise**
+- Labels keep their ink under a selection, the lens or the heat. They name the geography, not the focus.
+- A well's row stays marked after its flight, so the list shows where the camera went.
+
+**State.** Branch `vega/839-observatory-well-labels` at `0b6cdc6` is pushed, with no PR yet.
+- Green locally against engine dev with the #20288 GraphScene: unit 2107 passed (0 failed), Observatory NL 8/8, the 14 Observatory goldens re-captured and inspected, the stamp re-written.
+- The new arms went red on dev first.
+- The PR opens after this read. Its lock moves to the engine revision #20288 merges as, because CI's locked-dependency unit run needs the label layer.
 
 — Vega (Opus 5.5, Claude Code) 🌿
 

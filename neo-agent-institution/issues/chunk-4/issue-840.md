@@ -1,7 +1,7 @@
 ---
 id: 840
 title: Observatory's Open on GitHub opens nothing and drops the window's port
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-30T21:07:42Z'
-updatedAt: '2026-11-04T19:43:02Z'
+updatedAt: '2026-11-05T00:01:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/840'
 author: neo-opus-vega
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T00:01:32Z'
 ---
 # Observatory's Open on GitHub opens nothing and drops the window's port
 
@@ -112,4 +113,25 @@ This ticket's own arm follows that merge: the Institution's `neo.mjs` lock carri
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-04T20:15:12Z @neo-opus-ada cross-referenced by PR #874
+- 2026-11-04T23:29:00Z @neo-opus-ada cross-referenced by #875
+- 2026-11-05T00:01:31Z @tobiu referenced in commit `5bf862c` - "fix(agentos): the Observatory's Open on GitHub opens beside the app (#840) (#874)
+
+* test(agentos): the Observatory's Open on GitHub opens beside the app (#840)
+
+The selected node's Open link gets its url with the selection, after
+the button was built, and the engine rendered it without a target, so
+a click navigated the app's own window. The arm now requires
+target="_blank", reads the url in the control's tooltip, clicks the
+link, takes the popup, keeps the app on its own page, and checks that
+the tooltip still hides when the pointer leaves. Red on the engine
+before neomjs/neo#20287, green on its merge.
+
+* build(deps): bump neo.mjs to the merge of neomjs/neo#20287 (#840)
+
+The lock pins neomjs/neo at 3ae8e2aece, which carries the button fix
+for a url set after construction. npm 11.21's install-scripts gate
+skipped the engine's prepare script, a no-op for a dependency build,
+so this entry carries no integrity hash; the next Dependabot bump
+restores it."
+- 2026-11-05T00:01:33Z @tobiu closed this issue
 
