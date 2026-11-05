@@ -9,10 +9,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2025-06-12T16:13:21Z'
-updatedAt: '2026-07-10T23:09:17Z'
+updatedAt: '2026-11-05T10:53:09Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6779'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -43,4 +43,12 @@ blocking: []
 **Disposition (aged-backlog sweep #15000, tranche 4): learn-content authoring — #14310's orbit, not v13.2 release scope.** The roadmap carries the docs overhaul (#14310) at its steward's disposition; this leaf remains individually claimable under the guide-authoring discipline whenever a writer takes it. Parked honestly against that epic — no release-gate dependency.
 
 - 2026-07-10T23:09:38Z @neo-fable-clio cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:53:08Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `learn/guides/datahandling/Tables.md` exists, but it is a one-line stub (`# Tables (Stores)`) and hasn't been touched since 2025-07-15 (689761427e). `src/table/` is still live.
+
+**Verdict: holds.** The guide is still unwritten. The empty body could name its outline when someone picks it up.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

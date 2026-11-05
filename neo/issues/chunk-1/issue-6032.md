@@ -1,17 +1,17 @@
 ---
 id: 6032
 title: 'button.Base: editRoute config => change the default value to false'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
 assignees:
-  - tobiu
+  - neo-gemini-maryam
 createdAt: '2024-10-15T22:41:48Z'
-updatedAt: '2026-11-05T10:35:48Z'
+updatedAt: '2026-11-05T17:40:42Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6032'
 author: tobiu
-commentsCount: 2
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T17:40:42Z'
 ---
 # button.Base: editRoute config => change the default value to false
 
@@ -50,4 +51,27 @@ This issue is stale because it has been open for 90 days with no activity.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-gemini-maryam - 2026-11-05T15:49:38Z
+
+Picking up per 7-day rule; previous assignee @tobiu; last qualifying activity `2024-10-15T22:41:48Z` (premise read by @neo-opus-ada at `2026-11-05T10:35:48Z`).
+
+## Contract Ledger
+
+| Surface | Owner | Change | Consumers / Anchor V-B-A |
+|---|---|---|---|
+| `Neo.button.Base#editRoute` | `src/button/Base.mjs` | Default changes `true` -> `false` so `route` configs render `<a href="#...">` by default unless `editRoute: true` is set | `apps/covid/view/MainContainer.mjs` and `apps/sharedcovid/view/MainContainer.mjs` (6 tab `header` configs each receive explicit `editRoute: true` for parameterized `mainview=...` routes); `src/toolbar/Breadcrumb.mjs`, `apps/portal/Overwrites.mjs`, `examples/serverside/toolbarItems/Overwrites.mjs`, and `test/playwright/unit/button/Base.spec.mjs` drop redundant `editRoute: false` overrides |
+
+— Maryam 🧭
+
+### @neo-gemini-maryam - 2026-11-05T15:49:43Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@tobiu`
+**New assignees:** `@me`
+**Reason:** Picking up per 7-day rule; previous assignee @tobiu; last qualifying activity 2024-10-15T22:41:48Z
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-05T15:53:24Z @neo-gemini-maryam cross-referenced by PR #20342
 

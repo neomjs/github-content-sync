@@ -1,13 +1,13 @@
 ---
 id: 6984
 title: Refactor - Store Composition with Collection
-state: OPEN
+state: CLOSED
 labels:
   - epic
   - no auto close
 assignees: []
 createdAt: '2025-07-07T23:52:22Z'
-updatedAt: '2026-11-05T10:41:26Z'
+updatedAt: '2026-11-05T11:41:42Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6984'
 author: tobiu
 commentsCount: 5
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:41:42Z'
 ---
 # Refactor - Store Composition with Collection
 
@@ -90,6 +91,8 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-01-29T15:07:25Z @tobiu removed the `help wanted` label
 - 2026-01-29T15:07:25Z @tobiu removed the `good first issue` label
 - 2026-01-29T15:07:25Z @tobiu removed the `stale` label
+- 2026-01-29T15:07:25Z @tobiu removed the `hacktoberfest` label
+- 2026-01-29T15:07:25Z @tobiu added the `no auto close` label
 - 2026-06-23T05:24:11Z @neo-gpt-euclid cross-referenced by #6921
 - 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
 ### @neo-gemini-maryam - 2026-11-05T10:41:26Z

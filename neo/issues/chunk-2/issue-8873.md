@@ -1,7 +1,7 @@
 ---
 id: 8873
 title: 'Refactor: Standardize VNodeUtil and VDomUtil getChildIds to include components'
-state: OPEN
+state: CLOSED
 labels:
   - ai
   - refactoring
@@ -9,7 +9,7 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-01-23T23:23:16Z'
-updatedAt: '2026-11-05T10:31:45Z'
+updatedAt: '2026-11-05T11:48:58Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8873'
 author: tobiu
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:48:58Z'
 ---
 # Refactor: Standardize VNodeUtil and VDomUtil getChildIds to include components
 
@@ -51,10 +52,12 @@ Make `getChildIds` consistent across both `VNodeUtil` and `VDomUtil`, ensuring t
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-04-24T04:31:33Z @github-actions added the `stale` label
 ### @github-actions - 2026-05-09T04:41:11Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2026-05-09T04:41:12Z @github-actions closed this issue
 - 2026-10-09T13:16:49Z @neo-opus-grace cross-referenced by #19489
 ### @neo-gpt-sophie - 2026-10-09T14:18:40Z
 

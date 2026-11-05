@@ -1,7 +1,7 @@
 ---
 id: 9404
 title: '[Epic] Tree Grid & Hierarchical Data Support'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - epic
@@ -12,7 +12,7 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-09T10:43:40Z'
-updatedAt: '2026-11-05T10:41:29Z'
+updatedAt: '2026-11-05T11:43:48Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9404'
 author: tobiu
 commentsCount: 3
@@ -58,6 +58,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:43:16Z'
 ---
 # [Epic] Tree Grid & Hierarchical Data Support
 
@@ -80,22 +81,92 @@ The Tree Grid implementation is designed to integrate seamlessly with the existi
 
 ## Timeline
 
+- 2026-03-09T10:43:41Z @tobiu added the `enhancement` label
+- 2026-03-09T10:43:41Z @tobiu added the `epic` label
+- 2026-03-09T10:43:41Z @tobiu added the `ai` label
+- 2026-03-09T10:43:42Z @tobiu added the `architecture` label
+- 2026-03-09T10:43:42Z @tobiu added the `grid` label
+- 2026-03-09T10:44:15Z @tobiu added sub-issue #9405
+- 2026-03-09T10:44:23Z @tobiu added sub-issue #9406
+- 2026-03-09T10:52:27Z @tobiu added sub-issue #9407
+- 2026-03-09T10:59:33Z @tobiu added sub-issue #9408
+- 2026-03-09T11:01:33Z @tobiu added sub-issue #9409
+- 2026-03-09T11:01:40Z @tobiu added sub-issue #9410
+- 2026-03-09T11:03:54Z @tobiu added sub-issue #9411
+- 2026-03-09T11:03:57Z @tobiu added sub-issue #9412
+- 2026-03-09T11:10:33Z @tobiu assigned to @tobiu
+- 2026-03-09T11:34:01Z @tobiu added sub-issue #9413
+- 2026-03-09T14:13:27Z @tobiu added sub-issue #9414
+- 2026-03-09T14:14:06Z @tobiu added sub-issue #9415
+- 2026-03-09T14:47:34Z @tobiu added sub-issue #9416
+- 2026-03-09T15:00:11Z @tobiu added sub-issue #9417
 - 2026-03-09T15:45:19Z @tobiu cross-referenced by #9418
+- 2026-03-09T15:45:33Z @tobiu added sub-issue #9418
 - 2026-03-09T15:46:10Z @tobiu cross-referenced by #9419
+- 2026-03-09T15:46:22Z @tobiu added sub-issue #9419
+- 2026-03-09T15:46:48Z @tobiu added sub-issue #9420
 - 2026-03-09T18:16:54Z @tobiu cross-referenced by #9422
+- 2026-03-09T18:19:04Z @tobiu added sub-issue #9422
+- 2026-03-09T18:41:22Z @tobiu added sub-issue #9423
+- 2026-03-09T18:59:56Z @tobiu referenced in commit `c478860` - "docs(data): Enhance TreeStore JSDoc with Projection Architecture details (#9404)"
+- 2026-03-09T20:22:37Z @tobiu added sub-issue #9425
+- 2026-03-10T10:32:06Z @tobiu added sub-issue #9426
+- 2026-03-10T11:33:25Z @tobiu added sub-issue #9427
+- 2026-03-10T13:16:02Z @tobiu added sub-issue #9428
+- 2026-03-10T13:16:05Z @tobiu added sub-issue #9429
+- 2026-03-10T13:25:32Z @tobiu added sub-issue #9430
 ### @tobiu - 2026-03-10T13:35:16Z
 
 https://github.com/user-attachments/assets/4787104c-fb87-479f-8c9a-00abc29c1ca7
 
 wip
 
+- 2026-03-10T14:26:53Z @tobiu added sub-issue #9431
+- 2026-03-10T14:26:56Z @tobiu added sub-issue #9432
+- 2026-03-10T14:27:16Z @tobiu added sub-issue #9433
+- 2026-03-10T14:27:18Z @tobiu added sub-issue #9434
+- 2026-03-10T21:17:56Z @tobiu added sub-issue #9435
+- 2026-03-11T10:00:18Z @tobiu added sub-issue #9437
+- 2026-03-11T10:09:55Z @tobiu added sub-issue #9438
+- 2026-03-11T10:53:13Z @tobiu added sub-issue #9439
+- 2026-03-12T09:16:30Z @tobiu added sub-issue #9445
+- 2026-03-12T10:37:00Z @tobiu added sub-issue #9447
+- 2026-03-12T11:30:51Z @tobiu added sub-issue #9448
 - 2026-03-12T14:20:26Z @tobiu cross-referenced by #9449
+- 2026-03-12T14:21:14Z @tobiu removed sub-issue #9418
+- 2026-03-12T14:21:17Z @tobiu removed sub-issue #9419
+- 2026-03-12T14:21:21Z @tobiu removed sub-issue #9420
 - 2026-03-17T18:48:48Z @tobiu cross-referenced by PR #9501
 - 2026-06-08T00:45:43Z @neo-opus-ada cross-referenced by #9409
 ### @github-actions - 2026-06-09T05:37:11Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-06-09T05:37:11Z @github-actions added the `stale` label
+- 2026-06-09T07:21:04Z @tobiu removed the `stale` label
+- 2026-06-09T07:21:04Z @tobiu added the `no auto close` label
+- 2026-07-17T17:33:08Z @tobiu referenced in commit `629f09f` - "feat(fleet): wire the activitySource composer into devFleetServer — the live half (#15339) (#15375)
+
+Installs createFleetActivityReadSource onto FleetControlBridge.activitySource at the
+fleet-bridge-server boot, mirroring wireBootIdentityReadSource: config + the memory-core
+mailbox/graph singletons are resolved lazily at the entry use site and INJECTED (the slot
+readers never import a singleton — identity/permission binding stays at the boundary).
+Fail-soft: no readable slot -> activitySource left unwired (honest not-wired), never a
+fabricated one. No stub.
+
+The PR/lane slot owns the substantive reading: local-synced issue records
+(readWorkGraphIssueRecords — the same records the stall inference walks, so they stay
+graph-consistent) + work-graph stall findings + injected PRs, fed to the pure builder.
+
+Verified LIVE (node devFleetServer + fleetActivity): the PR/lane slot returns real
+work-stall events (#9404/#9492/#9950); the #15348 redaction fires in the reason path
+(authorization=[redacted]).
+
+V-B-A finding (live): the A2A slot is identity-gated — the Fleet transport binds no viewer
+identity until #15320 (ingress auth, out of scope), so it honestly degrades naming its slot
+and the composite is `degraded` (never fabricated, never not-wired). AC1/AC2 (`wired`/`live`)
+were over-specified at filing; they auto-follow when #15320 lands — corrected on the ticket.
+Shipping the honest degraded state per the ticket's own no-stub constraint. 3 unit specs green."
 - 2026-09-15T08:38:12Z @neo-opus-grace cross-referenced by #15000
 - 2026-09-16T08:26:59Z @neo-opus-grace cross-referenced by #18762
 - 2026-10-12T14:03:20Z @neo-gpt-euclid cross-referenced by #19658
@@ -103,17 +174,35 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-11-03T05:04:02Z @neo-opus-grace cross-referenced by #20212
 ### @neo-gemini-maryam - 2026-11-05T10:41:29Z
 
-### Backlog Premise-Read & Epic Resolution Check (`neomjs/neo#15000`, `2026-11-05`)
+## Epic Resolution Review
 
-- **Current Code Reality:**
-  - **All `33/33` linked sub-issues (`#9405`–`#9448`) are `CLOSED`.**
-  - All 4 architectural pillars in the Epic description are shipped and verified on `dev`:
-    1. **Data Abstraction:** `src/data/TreeStore.mjs` & `src/data/TreeModel.mjs` (`#childrenMap`, `#allRecordsMap`, flat 1D visible projection, `expand()`, `collapse()`, `expandAll()`, `collapseAll()`, path materialization, Turbo Mode, and hierarchical `doSort` / `filter`).
-    2. **Visual Representation:** `src/grid/column/Tree.mjs` and `src/grid/column/component/Tree.mjs` (`--tree-depth`, toggle icon states, cell pooling).
-    3. **Accessibility (WAI-ARIA):** `aria-expanded`, `aria-level`, `aria-setsize`, and `aria-posinset` managed on `TreeModel` / `TreeStore` and rendered in `src/grid/column/component/Tree.mjs` / `src/grid/Row.mjs`.
-    4. **Interaction, Examples & Tests:** `src/grid/Body.mjs`, `examples/grid/tree/`, `examples/grid/treeBigData/`, `test/playwright/unit/data/TreeStore.spec.mjs`, `test/playwright/e2e/grid/Tree.spec.mjs`, and `test/playwright/e2e/grid/TreeBigData.spec.mjs`.
-- **Verdict (`op` — for `@tobiu`):** **Recommend Close as Completed (`33/33` sub-issues closed; all Epic deliverables shipped on `dev`).**
+**Reviewer:** @neo-gemini-maryam
+**Started:** 2026-11-05T10:41:00Z (in-progress claim)
+**Completed:** 2026-11-05T11:42:00Z
+**Verdict:** RECOMMEND_CLOSE_COMPLETED
 
-— Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
+### Matrix
 
+| Parent AC | Required evidence | Owning sub(s) | Delivered PR(s) | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| 1. Data Abstraction (`Neo.data.TreeStore` & `TreeModel`) | L1 (Unit tests) | `#9405`–`#9420`, `#9430`–`#9448` (`33/33` closed) | Shipped on `dev` (`src/data/TreeStore.mjs`, `src/data/TreeModel.mjs`) | L1 (`test/playwright/unit/data/TreeStore.spec.mjs`) + L2 (`test/playwright/e2e/grid/Tree.spec.mjs`, `TreeBigData.spec.mjs`) | `none — closed` |
+| 2. Visual Representation (`Neo.grid.column.Tree`) | L2 (Component/E2E) | `#9421`–`#9425` (closed) | Shipped on `dev` (`src/grid/column/Tree.mjs`, `src/grid/column/component/Tree.mjs`) | L2 (`test/playwright/e2e/grid/Tree.spec.mjs`) | `none — closed` |
+| 3. Accessibility (WAI-ARIA `aria-expanded`, `aria-level`, `aria-setsize`, `aria-posinset`) | L2 (DOM / E2E) | `#9426`–`#9429` (closed) | Shipped on `dev` (`src/grid/column/component/Tree.mjs`, `src/grid/Row.mjs`) | L2 (`test/playwright/e2e/grid/Tree.spec.mjs`) | `none — closed` |
+| 4. Interaction (`expand`, `collapse` delegation on `grid.Body`) | L2 (E2E) | `#9430`–`#9448` (closed) | Shipped on `dev` (`src/grid/Body.mjs`, `examples/grid/tree/`, `examples/grid/treeBigData/`) | L2 (`test/playwright/e2e/grid/Tree.spec.mjs`, `TreeBigData.spec.mjs`) | `none — closed` |
+
+### Rationale
+
+All `33/33` linked sub-issues (`#9405`–`#9448`) are `CLOSED` and all four architectural pillars of the Epic (`TreeStore`/`TreeModel`, `grid.column.Tree`, WAI-ARIA attributes, and `grid.Body` expand/collapse delegation + examples + unit/E2E suites) are live on `dev` with zero unresolved residuals.
+
+### Required operator action
+
+None — closed as `completed` per `epic-resolution-workflow.md §4` and the 2026-11-05 operator backlog ruling (`#15000#issuecomment-6655505297`).
+
+### A2A coordination
+
+Broadcast via `AGENT:*` on `neomjs/neo#15000` (`IC_kwDODSospM8AAAABjLlJdw`).
+
+Origin Session ID: 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
+
+- 2026-11-05T11:43:16Z @neo-gemini-maryam closed this issue
 

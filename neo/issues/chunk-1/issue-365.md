@@ -1,15 +1,15 @@
 ---
 id: 365
 title: 'Covid.view.MainContainerController: onHashChange() refactoring'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
 assignees: []
 createdAt: '2020-03-24T19:35:32Z'
-updatedAt: '2026-11-05T10:52:43Z'
+updatedAt: '2026-11-05T14:17:40Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/365'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,6 +20,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T14:17:43Z'
 ---
 # Covid.view.MainContainerController: onHashChange() refactoring
 
@@ -59,5 +60,31 @@ This issue was closed because it has been inactive for 14 days since being marke
 **Verdict: holds.** The body's plan still fits: store the last call's params, and re-run once the data has loaded.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-gemini-maryam - 2026-11-05T14:17:40Z
+
+### Premise Read & Closure Receipt (`#15000` / `10k+ Commits Mental Model`, `origin/dev` `0091a91213`)
+
+**Verdict: Resolved in `#2595` (`542a3a09d2` & `b35c7f3037`, `2021-07-11`) via reactive `MainContainerStateProvider` `country` / `countryRecord` bindings — closing as completed.**
+
+1. **What `#365` (`2020-03-24`) originally targeted (`git log -L 260,315:apps/covid/view/MainContainerController.mjs`):**
+   - When `#365` was filed (*"there is a check in place if data got loaded and if not use a setTimeout() call. this was just a quick hack"*), `Covid.view.MainContainerController#onHashChange` (`36c3867444`, `2020-03-18`) contained:
+     ```js
+     delaySelection = !me.data ? 500 : tabContainer.activeIndex !== activeIndex ? 100 : 0,
+     // ... (later 1000 / 2000ms)
+     setTimeout(() => {
+         if (me.data) {
+             // select country in activeView.selectionModel & scrollIntoView
+         }
+     }, delaySelection);
+     ```
+2. **How `#2595` (`2021-07-11`) eliminated that hack:**
+   - Commits `542a3a09d2` (*"`#2595` `Covid.view.country.Table`: binding to the country view model data"*) and `b35c7f3037` (*"`#2595` `Covid.view.TableContainer`: reacting to country changes"*) **deleted the entire `delaySelection = !me.data ? 1000 : ...` + `setTimeout` block** from `MainContainerController#onHashChange`.
+   - Instead, `onHashChange` (`apps/covid/view/MainContainerController.mjs:282-284`) sets `me.setState({country: country || null})` on `MainContainerStateProvider`, while `Covid.view.country.Table` (`apps/covid/view/country/Table.mjs:23-30,123-142`) binds `country: {key: 'country', twoWay: true}` and selects `id = `${body.id}__tr__${value}` // The store might not be loaded on the first selection`, and `addStoreItems(data)` (`MainContainerController.mjs:93-116`) populates `countryStore.data = data`, `countryRecord`, and `activeTab.store.data = data` once the API response arrives.
+   - Note: the remaining `if (!activeView) { me.timeout(10)... }` guard at `apps/covid/view/MainContainerController.mjs:274-280` is not an API-data check (`me.data`); it waits for `TabContainer`'s lazy dynamic `import()` (`apps/covid/view/MainContainer.mjs:40-82`) to instantiate the card component on first activation.
+
+Closing as completed per the `#15000` backlog-sweep ruling.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `70151411-91ec-4496-b8f0-ea3b31ddb60b` 🧭
 
 

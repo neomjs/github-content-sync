@@ -4,13 +4,15 @@ title: 'calendar.view.WeekComponent: trigger the infinite scrolling onDragScroll
 state: OPEN
 labels:
   - enhancement
+  - ai
+  - core
 assignees:
-  - tobiu
+  - neo-gemini-maryam
 createdAt: '2020-08-14T20:49:59Z'
-updatedAt: '2026-11-05T10:34:17Z'
+updatedAt: '2026-11-05T18:19:57Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/1069'
 author: tobiu
-commentsCount: 4
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -56,4 +58,47 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-gemini-maryam - 2026-11-05T18:19:54Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@tobiu`
+**New assignees:** `neo-gemini-maryam`
+**Reason:** true
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+### @neo-gemini-maryam - 2026-11-05T18:19:57Z
+
+### Ticket Triage & Intake (`ticket-triage` + `ticket-intake`)
+
+**Attribution (7-Day Rule & Backlog Sweep `#15000`):**
+Picking up per 7-day rule and `#15000` backlog sweep; previous assignee `@tobiu`; last qualifying activity `2020-08-14T20:49:59Z` (re-verified by `@neo-opus-grace` on `2026-10-09T20:08:25Z` and `@neo-opus-ada` on `2026-11-05T10:34:17Z`).
+
+**Triage (`ticket-triage`):**
+Triaged per `ticket-triage` skill. Applied: `enhancement`, `ai`, `core`. Stage retrospective passed. Self-assigned for implementation.
+
+**Intake Classification (`ticket-intake §0 / §1.8`):**
+- **Ticket age:** `createdAt: 2020-08-14T20:49:59Z`, `updatedAt: 2026-11-05T17:26:06Z`
+- **Bot stale-band:** `post-stale-with-exemption` (`stale: false`, `no auto close: false`)
+- **Currency / successor-risk evidence:**
+  1. `Neo.main.DomEvents` gained the global `scroll` listener in `#4706` (`0d885e26ac`), forwarding `{clientHeight, clientWidth, scrollLeft, scrollTop, target, path}` to the App Worker.
+  2. `Neo.calendar.view.week.Component` (`src/calendar/view/week/Component.mjs`) currently only registers `{wheel: me.onWheel, scope: me}` and lacks a `scroll` listener (`onScroll`) on `.neo-c-w-scrollcontainer`, plus `createColumnAndHeader(date)` omits the deterministic column/header VDOM IDs (`getColumnId(date)`, `getColumnHeaderId(date)`) that `updateHeader()` assigns.
+  3. Across the `10k+ Commits Mental Model` sweep, `#1245` (`bed4ea72f3`) moved the `scrollContainerId` main-thread handshake into `Neo.draggable.DragZone#dragStart`, which `Neo.calendar.view.week.EventDragZone#dragStart` overrides without calling `Neo.main.addon.DragDrop.setConfigs(...)`, and `Neo.calendar.view.week.plugin.DragDrop#getEventDragZone` only passed `scrollContainerId` on initial instantiation even though `DragZone#dragEnd` resets `scrollContainerId = null`. In addition, `Neo.main.addon.DragDrop#onDragStart` did not initialize `me.clientX` / `me.clientY` before the first `scrollContainer(data)` call.
+- **Prescription checked:** `src/calendar/view/week/Component.mjs`, `src/calendar/view/week/plugin/DragDrop.mjs`, `src/calendar/view/week/EventDragZone.mjs`, `src/main/addon/DragDrop.mjs` — owns the concern.
+- **Core-Idiom Pre-Flight (`§1.9.6`):** Read and verified `src/core/Base.mjs`, `src/Neo.mjs`, and `src/state/Provider.mjs`.
+- **Verdict:** `valid-as-written` (sharpened with Contract Ledger below).
+
+## Contract Ledger
+
+| Surface | Owner (`file:symbol`) | Change | Consumers / Invariants |
+|---|---|---|---|
+| `Neo.calendar.view.week.Component#onScroll` & `#onWheel` | `src/calendar/view/week/Component.mjs:onScroll`, `src/calendar/view/week/Component.mjs:onWheel` | Register `{scroll: me.onScroll, scope: me}` in `construct()`; delegate horizontal `.neo-c-w-scrollcontainer` scroll events into `onWheel()` with derived `deltaX` and update `me.scrollLeft` after edge-paging `scrollBy` compensation | Ignores vertical `.neo-c-w-column-timeaxis-container` scroll events; pages `columnsBuffer` columns at left (`< 1`) and right (`> columnsBuffer + columnsVisible - 1`) edges when `!me.isUpdating` |
+| `Neo.calendar.view.week.Component#createColumnAndHeader` | `src/calendar/view/week/Component.mjs:createColumnAndHeader` | Populate deterministic `id: me.getColumnId(date)` on column VDOM and `id: headerId` / `${headerId}_day` / `${headerId}_date` on header VDOM | Matches `updateHeader()` VDOM ID contract so `EventDragZone` column targeting (`proxyParentId`) resolves valid column IDs on paged columns |
+| `Neo.calendar.view.week.plugin.DragDrop#getEventDragZone` & `EventDragZone#dragStart` | `src/calendar/view/week/plugin/DragDrop.mjs:getEventDragZone`, `src/calendar/view/week/EventDragZone.mjs:dragStart` | Include `scrollContainerId: owner.getScrollContainer().id` in `getEventDragZone` `config` and call `Neo.main.addon.DragDrop?.setConfigs({appName, windowId, ...me.getMainThreadConfigs()})` in `EventDragZone#dragStart` | Re-establishes `scrollContainerId` on every drag gesture after `DragZone#dragEnd()` resets it |
+| `Neo.main.addon.DragDrop#onDragStart` & `#resetDragState` | `src/main/addon/DragDrop.mjs:onDragStart`, `src/main/addon/DragDrop.mjs:resetDragState` | Initialize `clientX: event.detail.clientX, clientY: event.detail.clientY` in `onDragStart` and reset to `0` in `resetDragState` | Prevents first `scrollContainer(data)` frame from computing `NaN` or stale `deltaX` / `deltaY` |
+
+— Maryam 🧭
+
+- 2026-11-05T18:25:13Z @neo-gemini-maryam cross-referenced by PR #20360
 

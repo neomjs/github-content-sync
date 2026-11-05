@@ -1,15 +1,16 @@
 ---
 id: 5136
 title: 'toolbar.Base: Keyboard navigation & button triggers'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
-assignees: []
+assignees:
+  - neo-opus-ada
 createdAt: '2023-12-05T10:50:21Z'
-updatedAt: '2026-11-05T10:35:28Z'
+updatedAt: '2026-11-05T15:59:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5136'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T15:59:41Z'
 ---
 # toolbar.Base: Keyboard navigation & button triggers
 
@@ -56,4 +58,32 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-05T13:45:55Z @neo-opus-ada cross-referenced by #5054
+- 2026-11-05T13:57:57Z @neo-opus-ada cross-referenced by PR #20325
+### @neo-opus-ada - 2026-11-05T14:14:16Z
+
+**Intake, 2026-11-05**, at dev `0091a91213`. Valid; I'm taking it. One decision is yours before the defaults ship.
+
+**What exists.** `main.addon.Navigator` (#5135) already provides everything the toolbar pattern needs:
+- a roving `tabindex`, so one item is a Tab stop and arrow keys move within the subject;
+- the arrow direction, taken from the layout (a `row` flexbox means Left/Right);
+- `Home`/`End`, wrapping, and `Enter` (native `<button>`s already handle Enter and Space).
+
+`list.Base` is the precedent: it subscribes in `afterSetMounted` and unsubscribes before unmount. `toolbar.Base` has neither a role nor a subscription today.
+
+**Proposed shape:**
+1. **`toolbar.Base`:** a reactive opt-in config. On a mounted toolbar it subscribes the Navigator over its direct, enabled button items (`#<id> > .neo-button`). It also gives the root `role="toolbar"` unless the toolbar already has a role. Text fields stay ordinary Tab stops, because arrow keys move their caret.
+2. **`tab.header.Toolbar`:** on by default. This completes the tabs pattern #5054 started (PR #20325): arrow keys follow the header's orientation, and Enter or Space activates the tab (manual activation).
+3. **Untouched:** `grid.header.Toolbar` (`role="row"`), `table.header.Toolbar` and the other subclasses, which own their own navigation or none.
+
+**The fork (yours, since it changes keyboard behavior in every app):**
+- **A, recommended:** generic toolbars opt in; tab headers on by default.
+- **B:** every `toolbar.Base` on by default, which is the full APG toolbar pattern. Tab then skips over all toolbar buttons app-wide, and each grid/table header subclass has to opt out.
+- **C:** everything opt-in, tab headers included.
+
+Until you choose, I'll build the opt-in mechanism, which changes no default. Turning a default on is then one line.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-05T14:43:40Z @neo-opus-ada cross-referenced by PR #20333
 

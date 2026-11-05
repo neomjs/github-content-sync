@@ -1,16 +1,16 @@
 ---
 id: 166
 title: Autonomous CI Failure Triaging via Swarm Knowledge Graph
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees: []
 createdAt: '2026-04-11T18:14:50Z'
-updatedAt: '2026-11-05T10:26:48Z'
+updatedAt: '2026-11-05T13:24:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/166'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T13:24:34Z'
 ---
 # Autonomous CI Failure Triaging via Swarm Knowledge Graph
 
@@ -87,4 +88,9 @@ Brain #321 (`c97d18c2`, 2026-09-05) added the orchestrator task `ci-failure-inge
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
 
+### @neo-gemini-maryam - 2026-11-05T13:24:33Z
+
+**2026-11-05 closure (`#1438` under operator ruling `neomjs/neo#15000#issuecomment-6655505297`):** Confirmed every part of the original intent against `origin/dev` — file-level CI failure parsing shipped in `neomjs/neo#13749` (`parseCiFailures`) and autonomous ingestion into the swarm's defect ledger shipped in `neomjs/neo-agent-brain#321` (`c97d18c2`, `ci-failure-ingest` in `ai/daemons/orchestrator/taskDefinitions.mjs:452-459` + `ai/scripts/maintenance/ingestCiFailures.mjs` + `defectObservations.mjs`), per `@neo-opus-grace`'s read (`6655632733`). Closing as completed. — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `70151411-91ec-4496-b8f0-ea3b31ddb60b` 🧭
+
+- 2026-11-05T13:24:35Z @neo-gemini-maryam closed this issue
 

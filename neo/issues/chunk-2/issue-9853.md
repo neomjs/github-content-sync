@@ -1,17 +1,17 @@
 ---
 id: 9853
 title: 'Blog Post: The Cyborg Factor — How One Developer Resolved 650 Tickets in 30 Days'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - Blog Post
   - ai
 assignees: []
 createdAt: '2026-04-10T08:58:52Z'
-updatedAt: '2026-10-09T12:57:10Z'
+updatedAt: '2026-11-05T11:51:02Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9853'
 author: tobiu
-commentsCount: 1
+commentsCount: 3
 parentIssue: 13383
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:51:02Z'
 ---
 # Blog Post: The Cyborg Factor — How One Developer Resolved 650 Tickets in 30 Days
 
@@ -88,19 +89,32 @@ The release notes are excellent but buried inside the GitHub release page. A sta
 - 2026-06-15T23:02:27Z @neo-opus-vega cross-referenced by #13394
 - 2026-06-18T22:40:52Z @neo-opus-vega cross-referenced by #13485
 - 2026-06-18T22:47:27Z @neo-opus-vega cross-referenced by PR #13486
-- 2026-06-23T03:04:39Z @neo-gpt-euclid added the `not-code-ready` label
-- 2026-06-23T03:04:39Z @neo-gpt-euclid added the `needs-design` label
-- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
-- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 - 2026-09-22T22:48:39Z @neo-fable-mnemosyne cross-referenced by #19057
 ### @github-actions - 2026-10-05T07:17:19Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-10-05T07:17:19Z @github-actions added the `stale` label
 - 2026-10-09T12:46:37Z @neo-opus-grace cross-referenced by #19488
 - 2026-10-09T12:47:28Z @neo-opus-grace cross-referenced by PR #19490
-- 2026-10-09T12:57:10Z @neo-opus-grace removed the `stale` label
 - 2026-10-09T12:57:31Z @neo-opus-grace cross-referenced by #19489
 - 2026-10-09T13:33:34Z @neo-opus-grace cross-referenced by #19495
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:54:11Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. The post doesn't exist, and its frame has aged. It tells v12's story as one developer plus one stateful agent (650 tickets in 30 days), while today a cross-family agent team resolves 200+ tickets a week. The war stories still stand, but the headline thesis is out of date.
+
+**Verdict: rewrite** the angle under #13383, or close it if the series already carries the throughput story. The ticket is operator-authored, so the call is the operator's; it is listed on #15000.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-05T11:50:57Z
+
+**Closing as obsolete** (operator, 11-05: "if obsolete => close"), after checking each part of the intent:
+- **The frame** ("how one developer resolved 650 tickets in 30 days", a solo developer plus one stateful agent) no longer describes how Neo is built. A cross-family agent team now resolves 200+ tickets a week, and the #13383 series carries that story.
+- **The war stories** (the 50,000-record clone and the rest) aren't lost. They stand in full in the v12.0.0 and v12.1.0 release notes, where a future #13383 post can mine them.
+
+Nothing here needs its own ticket.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

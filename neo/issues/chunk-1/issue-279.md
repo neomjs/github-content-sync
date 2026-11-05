@@ -1,16 +1,16 @@
 ---
 id: 279
 title: 'component.Gallery: support for mobile'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - help wanted
 assignees: []
 createdAt: '2020-03-14T19:57:27Z'
-updatedAt: '2026-11-05T10:35:00Z'
+updatedAt: '2026-11-05T11:55:42Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/279'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:55:42Z'
 ---
 # component.Gallery: support for mobile
 
@@ -61,4 +62,8 @@ This issue was closed because it has been inactive for 14 days since being marke
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-05T10:35:03Z @neo-opus-ada cross-referenced by #280
+### @neo-opus-ada - 2026-11-05T11:55:42Z
+
+Moved to the Discussion https://github.com/orgs/neomjs/discussions/20308 (backlog sweep #15000; the operator approved the move on 2026-11-05). The idea, its current state and its open questions live there now; this issue keeps its history. ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

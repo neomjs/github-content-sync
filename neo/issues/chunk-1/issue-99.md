@@ -1,13 +1,15 @@
 ---
 id: 99
 title: 'Docs App: show mixins'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
-assignees: []
+  - ai
+assignees:
+  - neo-gpt-sophie
 createdAt: '2019-11-25T13:07:30Z'
-updatedAt: '2026-11-05T10:38:01Z'
+updatedAt: '2026-11-05T16:49:55Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/99'
 author: tobiu
 commentsCount: 5
@@ -21,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T16:49:55Z'
 ---
 # Docs App: show mixins
 
@@ -58,10 +61,26 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
 ### @neo-gpt-sophie - 2026-11-05T10:38:01Z
 
-**2026-11-05 premise read — holds.** Both requested behaviors are still missing in the current source (`43a052081a`). The Docs app is active: `apps/portal/view/Viewport.mjs:57` imports its `MainContainer`. `docs/app/view/classdetails/HierarchyTreeList.mjs:75` builds the class list by following `augments[0]` only; it adds no mixin entries. `MembersList.mjs:469` then restricts `neoClassName` to the checked hierarchy entries, so mixin-declared members have no selectable path into this list.
+**Intake, 5 November 2026 — valid; Sophie taking implementation.** The active Docs app is embedded by `apps/portal/view/Viewport.mjs`. `HierarchyTreeList#createStoreItems` follows `augments[0]` only, and `MembersList#filterAndSortItems` restricts members to checked class sources. Both original requests remain unmet. The ticket was created 2019-11-25 and updated today; it is pre-stale under the current 90-day marking-only workflow, without a stale/exemption label. No open blocker, parent, active owner or superseding implementation was found; Ada independently confirmed the ownership check.
 
-The original intent survives: users need to discover the methods supplied by mixins and toggle their inclusion. Keep the ticket open for the Docs UI implementation. The next acceptance check should use a real mixed class such as `Neo.data.Store` / `Neo.core.Observable`, verify the mixin toggle changes the visible members, and preserve class override precedence. This is a source premise read, not a rendered-UI acceptance claim. Grace's corrected October disposition remains current; no new successor or active mixin PR was found in the bounded live search.
+Prescription checked: `docs/app/view/classdetails/HierarchyTreeList.mjs` owns mixin toggles; `MembersList.mjs` owns member selection, provenance and collision handling. `MainContainer.mjs` consumes raw `all.json` doclets; the Api model serves navigation only. A read-only JSDoc probe confirms Store and Collection both document `mixes: ['Neo.core.Observable']`; original mixin methods must be selected by source-derived `neoClassName`, since JSDoc does not flatten their instance methods into Store. No generator schema change is needed.
+
+Maryam peer-checked the #4528/#20215 boundary: ancestor classes and ancestor-only mixins remain unchecked; mixins attached directly to the selected class start checked. Repeated providers get one toggle. A runtime probe against `Neo.setupClass` confirms that an ordinary mixin method replaces a same-name class method, an existing reactive config setter survives, static mixin helpers are not copied, and excluded metadata such as `toJSON` is not supplied by mixing. The UI must preserve those distinctions, not assume class-wins universally.
+
+| Surface | Acceptance |
+| --- | --- |
+| Hierarchy tree | Show labelled, independently toggleable documented mixins; deduplicate repeated providers and retain the selected-class-only ancestor policy. Missing/repeated metadata must not create recursion or duplicate rows. |
+| Member selection | Include the selected mixin's supplied members under the selected class view; toggling that provider removes/restores its contributions without toggling ancestors. |
+| Member precedence | Within selected sources, resolve ordinary method and reactive-config collisions according to the verified composition rules; keep static and instance members distinct and omit static/excluded members that mixing does not supply. |
+| Provenance and controls | Keep the actual selected class as the target regardless of row order, use canonical source names separately from display labels, identify mixin contributions, and preserve filters and source links. Rendering must not mutate source member names. |
+| Real class acceptance | Render `Neo.data.Store` with `Neo.core.Observable`, toggle its methods, and verify the behavior against generated Docs data as well as focused test fixtures. |
+
+**Native-click evidence:** the real hierarchy click toggled Observable's 10 entries (97 total members to 87) but also entered a separate row-selection path. That path called `getInternalId` on the raw Collection; an attempted `useInternalId: false` instead reached the equally unavailable `getCanonicalKey`. The hierarchy consumes checkbox filter state, with no selected-record consumer, so `disableSelection: true` removes that unrelated selection path. Maryam confirmed the bounded choice. The retained browser spec generates the canonical Docs payload, uses native clicks with Neural Link state checks, and opens the actual Observable source. It passes without worker errors; the screenshot was inspected.
+
+Core class/config and existing Docs list/collection patterns were read. KB supplied no additional implementation mapping; three Memory Core framings supplied no relevant prior solution. Native Graph pre-brief for #99 returned node-not-found, so the live ticket, current source, peer checks and probes are the authority. ADR successor-risk: no-adr-impact found. Triaged per `ticket-triage`: existing enhancement/documentation retained, verified `ai` added for implementation.
 
 Sophie · GPT-6 Astra · ultra · Codex Desktop.
 
+- 2026-11-05T14:19:52Z @neo-gpt-sophie cross-referenced by PR #20327
+- 2026-11-05T17:57:17Z @neo-gpt-sophie cross-referenced by #20356
 

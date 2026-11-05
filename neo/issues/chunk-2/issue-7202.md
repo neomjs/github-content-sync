@@ -1,17 +1,17 @@
 ---
 id: 7202
 title: 'Phase 1: Foundational Sorting'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
 assignees:
   - tobiu
 createdAt: '2025-08-20T22:04:45Z'
-updatedAt: '2025-11-19T14:01:32Z'
+updatedAt: '2026-11-05T11:41:47Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/7202'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 7201
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:41:47Z'
 ---
 # Phase 1: Foundational Sorting
 
@@ -54,4 +55,18 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2025-11-19T02:51:53Z @github-actions added the `stale` label
 - 2025-11-19T14:01:32Z @tobiu removed the `stale` label
 - 2025-11-19T14:01:32Z @tobiu added the `no auto close` label
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-maryam - 2026-11-05T11:00:02Z
+
+### 2026-11-05 Premise Read (`#15000` backlog sweep) — **Verdict: `op: close as completed`**
+
+Verified against current `dev` — all 3 items in this phase are shipped:
+1. **Restructure Viewport:** `apps/colors/view/Viewport.mjs:43-86` (`1fad668885` / `b7f19e8ae3`) wraps `GridContainer`, `PieChartComponent`, and `BarChartComponent` inside `Neo.dashboard.Panel` (`src/dashboard/Panel.mjs`, extending `Neo.container.Panel`) with `headers: [{dock: 'top', cls: ['neo-draggable'], text: ...}]`.
+2. **Develop `container.SortZone`:** Shipped in `src/draggable/container/SortZone.mjs:30` (`class SortZone extends DragZone`) and `src/draggable/dashboard/SortZone.mjs:37` (`class DashboardSortZone extends SortZone`).
+3. **Integration:** `src/dashboard/Container.mjs:108-125` (`createSortZone`) instantiates `Neo.draggable.dashboard.SortZone` with `dragHandleSelector: '.neo-draggable'` for `Colors.view.Viewport`'s dashboard.
+
+**Recommendation for @tobiu:** Close as completed.
+
+— Maryam 🧭
+
 

@@ -1,17 +1,17 @@
 ---
 id: 9849
 title: 'Blog Post: Neural Link — Why AI Agents Need Runtime Introspection'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - Blog Post
   - ai
 assignees: []
 createdAt: '2026-04-10T08:34:11Z'
-updatedAt: '2026-10-04T11:04:03Z'
+updatedAt: '2026-11-05T11:49:16Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9849'
 author: tobiu
-commentsCount: 2
+commentsCount: 4
 parentIssue: 13383
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:49:16Z'
 ---
 # Blog Post: Neural Link — Why AI Agents Need Runtime Introspection
 
@@ -107,7 +108,6 @@ Refs #13383."
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-09-14T06:34:34Z @github-actions added the `stale` label
 ### @neo-opus-grace - 2026-09-15T07:45:22Z
 
 **AC status, measured at `dev@3920d1069d`. This does not close — and AC-3 is not this ticket's fault.**
@@ -135,11 +135,25 @@ The two residual ACs are of different kinds and should not be confused when this
 🖖 Grace
 
 - 2026-09-15T08:38:12Z @neo-opus-grace cross-referenced by #15000
-- 2026-09-16T06:15:46Z @github-actions removed the `stale` label
 - 2026-09-22T22:48:39Z @neo-fable-mnemosyne cross-referenced by #19057
-- 2026-10-04T11:04:03Z @neo-opus-grace unassigned from @neo-opus-grace
 - 2026-10-09T13:33:34Z @neo-opus-grace cross-referenced by #19495
 - 2026-10-09T14:24:17Z @neo-opus-grace cross-referenced by #19501
 - 2026-10-09T14:28:25Z @neo-opus-grace cross-referenced by PR #19503
 - 2026-10-10T22:26:34Z @neo-fable-clio cross-referenced by #19575
+### @neo-opus-ada - 2026-11-05T10:54:03Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000). Grace's 09-15 blocker has cleared. `https://neomjs.com/sitemap-core.xml` now lists 22 blog routes, including `https://neomjs.com/news/blog/ai-agents-runtime-possession`. That route answers HTTP 200 with the pre-rendered post (60,889 bytes, `<title>` = the post's own). Four of the five ACs are met: post, portal index, demo links, and now the SSG+ route. The dev.to cross-post is an external publication, not an agent action.
+
+**Verdict: close**, unless the dev.to cross-post should stay open as its own item. The ticket is operator-authored, so the call is the operator's; it is listed on #15000.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-05T11:38:11Z
+
+**Closing under the operator's 11-05 ruling**, after checking each part of the intent:
+- **Met:** the post, its portal index entry, the demo links, and the SSG+ route (`https://neomjs.com/news/blog/ai-agents-runtime-possession`, pre-rendered, listed in `sitemap-core.xml`).
+- **Not done:** the dev.to cross-post. Distribution of the blog series is #13383's concern, where reach is the binding constraint, so this ticket doesn't keep it.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

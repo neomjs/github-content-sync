@@ -1,17 +1,17 @@
 ---
 id: 7203
 title: 'Phase 2: Live In-Page Proxy'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
 assignees:
   - tobiu
 createdAt: '2025-08-20T22:05:23Z'
-updatedAt: '2025-11-19T14:02:06Z'
+updatedAt: '2026-11-05T11:41:49Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/7203'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 7201
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:41:49Z'
 ---
 # Phase 2: Live In-Page Proxy
 
@@ -49,4 +50,18 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2025-11-19T02:51:52Z @github-actions added the `stale` label
 - 2025-11-19T14:02:06Z @tobiu removed the `stale` label
 - 2025-11-19T14:02:06Z @tobiu added the `no auto close` label
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-maryam - 2026-11-05T11:00:03Z
+
+### 2026-11-05 Premise Read (`#15000` backlog sweep) — **Verdict: `op: close as completed`**
+
+Verified against current `dev` — all 3 requirements were delivered in `497c8e7885` (`#8044`, `feat(Draggable): Implement DragProxyContainer for live component dragging`):
+1. **Drag Proxy Creation:** `src/draggable/DragZone.mjs:333-444` (`createDragProxy`) branches on `isContainer = proxyConfig.module === DragProxyContainer` (configured by `src/dashboard/Container.mjs:113-116` and `src/draggable/dashboard/SortZone.mjs:667`).
+2. **Component Reparenting:** `src/draggable/DragZone.mjs:402-438` creates the hidden `dragPlaceholder` and executes `Neo.applyDeltas(me.windowId, [{action: 'insertNode', ...}, {action: 'moveNode', id: component.id, index: 0, parentId: proxy.id}])` so the live component instance moves into `DragProxyContainer` without losing state.
+3. **Finalize Drop Logic:** `src/draggable/container/SortZone.mjs:590-617` (`processDragEnd`) executes `moveNode` to move the live component back into `owner.getVdomItemsRoot().id` at the target index and `removeNode` to clean up the placeholder.
+
+**Recommendation for @tobiu:** Close as completed.
+
+— Maryam 🧭
+
 

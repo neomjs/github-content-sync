@@ -1,22 +1,22 @@
 ---
 id: 164
 title: 'Epic: RLAIF Reward Function and Model Orchestration Pipeline'
-state: OPEN
+state: CLOSED
 labels:
   - epic
   - ai
 assignees: []
 createdAt: '2026-04-12T10:10:12Z'
-updatedAt: '2026-08-26T15:19:26Z'
+updatedAt: '2026-11-05T12:14:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/164'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues:
   - '[x] 9906 Sub-Task: Graph Topology Linkage (TEST -> VALIDATES -> CLASS)'
-  - '[ ] 162 Sub-Task: RLAIF Reward Propagation Engine'
-  - '[ ] 163 Sub-Task: Automated Playwright Evaluation Node for RLAIF'
-subIssuesCompleted: 1
+  - '[x] 162 Sub-Task: RLAIF Reward Propagation Engine'
+  - '[x] 163 Sub-Task: Automated Playwright Evaluation Node for RLAIF'
+subIssuesCompleted: 3
 subIssuesTotal: 3
 contentTrust:
   projected: true
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 9914 Epic: Native Edge Graph Auditing and Deduplication Pipeline'
 blocking: []
+closedAt: '2026-11-05T12:14:20Z'
 ---
 # Epic: RLAIF Reward Function and Model Orchestration Pipeline
 
@@ -152,4 +153,42 @@ Subs neomjs/neo-agent-brain#163 / neomjs/neo#9906 / neomjs/neo-agent-brain#162 s
 - 2026-08-26T15:19:37Z @tobiu added sub-issue #162
 - 2026-08-26T15:19:37Z @tobiu added sub-issue #9906
 - 2026-08-26T15:28:28Z @tobiu added sub-issue #163
+### @neo-gemini-maryam - 2026-11-05T12:14:20Z
+
+## Epic Resolution Review
+
+**Reviewer:** @neo-gemini-maryam
+**Started:** 2026-11-05T12:12:40Z (in-progress claim)
+**Completed:** 2026-11-05T12:13:00Z
+**Verdict:** RECOMMEND_CLOSE_COMPLETED
+
+### Matrix
+
+| Parent AC | Required evidence | Owning sub(s) | Delivered PR(s) | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| 1. Concrete test evidence can be queried structurally as `TEST/FILE -> VALIDATES -> CLASS` | L2 unit/in-process graph evidence | `neomjs/neo#9906` (`neomjs/neo#12639`) | `neomjs/neo#12638` (`44f86e347a`), `neomjs/neo#12643` (`c8db8f63ba`) | L2 (`GapInferenceEngine.mjs:34,195-231,361` + unit specs) | `none — closed` |
+| 2. Permanent Playwright-test evidence feeds the `VALIDATES` relation without inventing a second gap state | L2 unit/in-process graph evidence | `neomjs/neo-agent-brain#163`, `neomjs/neo#9906` | `neomjs/neo#12638` (`44f86e347a`), `neomjs/neo#12643` (`c8db8f63ba`) | L2 (`GapInferenceEngine.inferTestGapsFromSession()` links committed Playwright `test/**` specs via `TEST -> VALIDATES -> CLASS` with weight `1.0`) | `none — closed` |
+| 3. Reward / gap-downgrade logic consumes relation semantics without equating weak runtime evidence to permanent coverage | L2 unit/in-process graph evidence | `neomjs/neo-agent-brain#162`, `neomjs/neo#9890` | `neomjs/neo#13841` (`93c8c36f9f`), `neomjs/neo#13725`, `neomjs/neo#13729` | L2 (`GapInferenceEngine.mjs:689-733` decaying `NL_ACTION_SEQUENCE -> VALIDATES -> CLASS` edges downgrade `[TEST_GAP]` severity until expiry at `memory-core/configBase.mjs:798`; PR merge outcome reward tracked in `neomjs/neo-agent-brain#159` `PrOutcomeReward.mjs`) | `none — closed` |
+
+### Rationale
+
+Per `@tobiu`'s `2026-06-05` steering (`"9904 => test->validates->class graph edge"`) and `@neo-gpt-euclid`'s entry `epic-review` matrix above, all three narrowed outcomes of `neomjs/neo-agent-brain#164` have shipped on `origin/dev`:
+
+1. **Permanent Playwright `TEST -> VALIDATES -> CLASS` edges (`neomjs/neo#9906` / `#163`):** Delivered in `neomjs/neo#12638` (`44f86e347a`) and `neomjs/neo#12643` (`c8db8f63ba`) inside `ai/services/graph/GapInferenceEngine.mjs:195-231,361`.
+2. **Runtime Neural Link `NL_ACTION_SEQUENCE -> VALIDATES -> CLASS` decaying edges (`neomjs/neo#9890` / `#162`):** Delivered in `neomjs/neo#13841` (`93c8c36f9f`) inside `ai/services/graph/GapInferenceEngine.mjs:689-733` (`ai/mcp/server/memory-core/configBase.mjs:798`), distinguishing temporary runtime action-sequence validation from permanent Playwright test coverage.
+3. **RLAIF PR-outcome reward signal:** Tracked independently in `neomjs/neo-agent-brain#159` (`ai/services/ingestion/PrOutcomeReward.mjs` + `RevertDetection.mjs`), while trajectory curation lives in `ai/scripts/diagnostics/analyzeNlTelemetry.mjs`.
+
+All three sub-issues (`neomjs/neo#9906`, `neomjs/neo-agent-brain#162`, `neomjs/neo-agent-brain#163`) and `neomjs/neo#9890` are closed. Closing `neomjs/neo-agent-brain#164` as completed per `epic-resolution-workflow.md §4`.
+
+### Required operator action
+
+None — epic closed as completed per `epic-resolution-workflow.md §4` (`RECOMMEND_CLOSE_COMPLETED` with zero unresolved residuals).
+
+### A2A coordination
+
+Broadcast FYI to `AGENT:*` (referencing `@neo-opus-ada` and `@neo-gpt-euclid`) after posting and closing.
+
+Origin Session ID: 70151411-91ec-4496-b8f0-ea3b31ddb60b
+
+- 2026-11-05T12:14:21Z @neo-gemini-maryam closed this issue
 

@@ -9,10 +9,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2025-12-27T21:33:19Z'
-updatedAt: '2026-07-06T13:23:00Z'
+updatedAt: '2026-11-05T11:00:46Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8166'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 8163
 subIssues: []
 subIssuesCompleted: 0
@@ -57,4 +57,17 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-06-23T03:56:38Z @neo-gpt-euclid cross-referenced by #8163
 - 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
 - 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-maryam - 2026-11-05T11:00:46Z
+
+### 2026-11-05 Premise Read (`#15000` backlog sweep) — **Verdict: `holds` (or `op: close` if ADR 0029 seams suffice)**
+
+Verified against current `dev`:
+- Since `2025-12-27`, cross-window drop validation in the dock stack shipped via ADR 0029: `src/manager/DragCoordinator.mjs:857-905, 972-1010` enforces `admitsOwnership(sourceOwnershipId, targetOwnershipId)` (`#18284` / PR `#18368` cross-root Group isolation) alongside `sortGroup` matching and `zone.acceptsRemoteDrag(localX, localY)`, while `src/dashboard/dock/window/Participation.mjs:40-52, 85-136` validates drops through `hitTest`, `previewFor`, `commitTransfer`, and `WorkspaceDocument#transferItem` (collision & root-transfer rejection).
+- However, legacy `Neo.draggable.dashboard.SortZone#acceptsRemoteDrag` (`src/draggable/dashboard/SortZone.mjs:86-104`) still checks only `ownerRect` bounds, without a declarative `allowDrop(draggedItem, sourceSortZone, targetSortZone) => Boolean` predicate hook for asymmetric sender/receiver topology rules (e.g., Child → Parent allowed, Parent → Child blocked).
+
+**Recommendation for @tobiu:** Either **close** as superseded by ADR 0029's `admitsOwnership` + `Participation` seams, or **keep open (`holds`)** narrowed to adding an optional `allowDrop(draggedItem, sourceZone, targetZone)` predicate on `DashboardSortZone` / `DragCoordinator`.
+
+— Maryam 🧭
+
 

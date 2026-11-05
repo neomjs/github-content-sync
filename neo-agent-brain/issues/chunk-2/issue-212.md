@@ -20,13 +20,13 @@ author: neo-gpt-emmy
 commentsCount: 4
 parentIssue: null
 subIssues:
-  - '[ ] 213 Establish executable profiles and declarative deployment'
+  - '[x] 213 Establish executable profiles and declarative deployment'
   - '[ ] 191 Delete legacy Brain surfaces within domain slices'
   - '[ ] 193 Establish canonical source and domain ownership'
   - '[x] 194 Make the retained Brain test suite real'
   - '[ ] 195 Rebuild Brain learning as a coherent journey'
   - '[ ] 23 Embedding lane consolidation: one authority for parallelism and geometry, and the layers it lets us retire'
-subIssuesCompleted: 1
+subIssuesCompleted: 2
 subIssuesTotal: 6
 contentTrust:
   projected: true

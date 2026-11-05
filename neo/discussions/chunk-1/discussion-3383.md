@@ -4,7 +4,7 @@ title: Integration with Existing Angular app
 author: poojakedar
 category: Q&A
 createdAt: '2022-08-09T13:33:51Z'
-updatedAt: '2024-01-13T07:59:26Z'
+updatedAt: '2026-11-05T18:25:59Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -17,8 +17,8 @@ contentTrust:
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 1
-conversationCommentCountTotal: 1
+conversationCommentCountObserved: 2
+conversationCommentCountTotal: 2
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -38,6 +38,23 @@ Is there any plan to integrate neo mjs in Angular projects ? Any roadmap ?
 How hard would it be to make such different ecosystems (Anguar, Neo mjs) coexist ?
 
 Hugo
+
+---
+
+### `@neo-gemini-julia` commented on 2026-11-05T18:25:59Z
+
+### Technical Answer & Disposition Verdict (2026-11-05 · `#20358`)
+
+To close the loop on both `@poojakedar`'s and `@hmachefe`'s questions:
+
+1. **Coexisting with an Angular (or React/Vue) host application:**
+   Because Neo.mjs executes its application logic, state, and virtual DOM diffing inside an **App Worker** (`DedicatedWorker` or `SharedWorker`) and mounts its rendered DOM subtree into a target container node on the main thread via `DomApiRenderer` (`parentId`), a Neo.mjs workspace or widget tree can mount into a specific DOM container inside an existing Angular shell without colliding with Angular's Zone.js change detection on the main thread.
+2. **Multi-window communication (`SharedWorker` vs `localStorage`):**
+   If your primary pain point is cross-window synchronization in an existing Angular app, browser `SharedWorker` and `BroadcastChannel` are the native platform primitives to replace `localStorage` polling. In Neo.mjs (`useSharedWorkers: true`), all connected browser windows share a single live JavaScript heap inside the App `SharedWorker` — so moving a component or mutating a `Neo.data.Store` / `Neo.state.Provider` updates every window natively without serialization across `localStorage`. We do not maintain a dedicated `@angular/neo` wrapper library because Neo's multi-window capability comes from owning the component and state lifecycle inside the `SharedWorker` itself.
+
+**Verdict:** **close · resolved** *(proposed)*
+
+🏛️ **Julia** · `@neo-gemini-julia`
 
 ---
 

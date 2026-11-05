@@ -1,15 +1,18 @@
 ---
 id: 4574
 title: 'table.View: createViewData() => allow renderers to return neo instances'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
-assignees: []
+  - ai
+  - core
+assignees:
+  - neo-gemini-maryam
 createdAt: '2023-07-26T12:54:54Z'
-updatedAt: '2026-11-05T10:38:35Z'
+updatedAt: '2026-11-05T18:35:52Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4574'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T18:35:51Z'
 ---
 # table.View: createViewData() => allow renderers to return neo instances
 
@@ -59,4 +63,32 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 — Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
 
+### @neo-gemini-maryam - 2026-11-05T17:07:35Z
+
+### Ticket Triage & Intake Evaluation (`#4574`)
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `core` (alongside existing `enhancement`). Stage retrospective passed. Self-assigned for implementation.
+
+- **Ticket Reality Classification:**
+  - `Ticket age`: `createdAt: 2023-06-12`, `updatedAt: 2026-11-05`
+  - `Bot stale-band`: `pre-stale` (reopened by `@neo-opus-grace` in `#19489` set C on `2026-10-09`, premise-read on `2026-11-05`; `stale: false`, `no auto close: false`)
+  - `Currency / successor-risk evidence`:
+    - `table.View` was renamed to `Neo.table.Body` (`src/table/Body.mjs`), and `applyRendererOutput()` was extracted in `#4584` (`eca0292208`) so `createViewData()` and `onStoreRecordChange()` share one cell-output pipeline.
+    - In `#7021` (`bdbd48ff9d`), `Neo.mixin.VdomLifecycle#createVdomReference()` (mixed into `Neo.component.Abstract`) replaced raw `instance.vdom` embedding as the canonical mechanism for nesting any `Neo.component.Abstract` (both class and functional components) inside another component's VDOM (`src/mixin/VdomLifecycle.mjs:169-194`, `src/grid/Row.mjs:224-232`, `src/table/plugin/CellEditing.mjs:164-168`), paired with `updateDepth = -1` on the host component so `TreeBuilder` expands component references symmetrically across `vdom` and `vnode`.
+  - `Prescription checked`: `src/table/Body.mjs` — owns `applyRendererOutput()`, `createRow()`, `createViewData()`, `onStoreLoad()`, `onStoreRecordChange()`, and component lifecycle cleanup on `destroy()`.
+  - `Core-Idiom Pre-Flight (§1.9.6)`: Read `src/core/Base.mjs`, `src/Neo.mjs`, `src/state/Provider.mjs`, `src/mixin/VdomLifecycle.mjs`, and `src/util/vdom/TreeBuilder.mjs`.
+  - `Verdict`: `valid-as-written` (mapped onto `Neo.table.Body#applyRendererOutput` and `Neo.component.Abstract#createVdomReference()`).
+
+## Contract Ledger
+
+| Surface | Producer | Consumer | Contract | Verification |
+|---|---|---|---|---|
+| `Neo.table.Body#applyRendererOutput` (`case 'NeoInstance'`) | `column.renderer` returning a `Neo.component.Abstract` (or `Neo.core.Base` with `.vdom`) instance | `Neo.table.Body#createRow`, `Neo.table.Body#onStoreRecordChange`, `Neo.util.vdom.TreeBuilder` | Sets `me.updateDepth = -1` and places `[rendererOutput instanceof Neo.component.Abstract ? rendererOutput.createVdomReference() : rendererOutput.vdom]` into `cellConfig.cn`. Returned instances remain the caller's. If the cell previously held an internal config-created component in `me.createdCellComponents`, destroys and removes that stale instance. | `test/playwright/unit/table/BodyRendererInstances.spec.mjs` |
+| `Neo.table.Body#applyRendererOutput` (`case 'Object'` with `className`, `module`, or `ntype`) | `column.renderer` returning a Neo component config object (`{className \| module \| ntype, ...}`) | `Neo.table.Body` (`me.createdCellComponents` keyed by `cellId`) | Instantiates via `ClassSystemUtil.beforeSetInstance(rendererOutput, null, {appName: me.appName, parentId: me.id, theme: me.theme, windowId: me.windowId})` on first render for `cellId`, reuses the existing instance via `instance.set(config)` (with `className`/`module`/`ntype` stripped) on subsequent `createViewData()` / `onStoreRecordChange()` passes when the exact class identity matches (`instance.constructor === rendererOutput.module`), sets `me.updateDepth = -1`, and places `[instance instanceof Neo.component.Abstract ? instance.createVdomReference() : instance.vdom]` into `cellConfig.cn`. | `test/playwright/unit/table/BodyRendererInstances.spec.mjs` |
+| `Neo.table.Body` cell-component lifecycle (`createViewData`, `onStoreLoad`, `afterSetTheme`, `afterSetWindowId`, `destroy`) | `Neo.table.Body` | Created cell components in `me.createdCellComponents` | Forwards `theme` and `windowId` updates to `me.createdCellComponents`; destroys and evicts orphaned cell components when rows/cells are filtered out in `createViewData()`, spanned over in `createRow()`, cleared in `onStoreLoad` (`items.length < 1`), replaced by primitive/HTML renderer output, or when `TableBody#destroy()` runs. | `test/playwright/unit/table/BodyRendererInstances.spec.mjs` |
+
+— Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
+
+- 2026-11-05T17:18:11Z @neo-gemini-maryam cross-referenced by PR #20352
+- 2026-11-05T18:40:57Z @neo-gemini-maryam cross-referenced by #20364
 

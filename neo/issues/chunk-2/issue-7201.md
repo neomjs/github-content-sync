@@ -1,7 +1,7 @@
 ---
 id: 7201
 title: Dashboard Drag & Drop
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - epic
@@ -9,14 +9,14 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-08-20T22:03:47Z'
-updatedAt: '2026-07-10T23:00:06Z'
+updatedAt: '2026-11-05T11:43:52Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/7201'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues:
-  - '[ ] 7202 Phase 1: Foundational Sorting'
-  - '[ ] 7203 Phase 2: Live In-Page Proxy'
+  - '[x] 7202 Phase 1: Foundational Sorting'
+  - '[x] 7203 Phase 2: Live In-Page Proxy'
   - '[x] 7204 Phase 3: Dynamic Proxy Transitioning (Windowing)'
   - '[x] 7205 Phase 4: Framework-Level Dashboard Abstraction'
   - '[x] 7206 Initial Dashboard Drag & Drop'
@@ -24,7 +24,7 @@ subIssues:
   - '[x] 7208 main.addon.DragDrop: onDragMove() => pass the dragElement rect to the app worker'
   - '[x] 7209 draggable.dashboard.SortZone: moveTo() => regression bug'
   - '[x] 7210 Implement Window Management Permission Request'
-subIssuesCompleted: 7
+subIssuesCompleted: 9
 subIssuesTotal: 9
 contentTrust:
   projected: true
@@ -32,6 +32,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:43:18Z'
 ---
 # Dashboard Drag & Drop
 
@@ -87,4 +88,35 @@ This issue is stale because it has been open for 90 days with no activity.
 **Disposition (aged-backlog sweep #15000, tranche 1): superseded-in-substance; app-integration remainder is post-v13.2.** The epic's framework half shipped: `src/draggable/dashboard/SortZone.mjs` + `Neo.dashboard.Container` (sub #7206 and phase #7205 closed as already-resolved with citations). The remaining substance — wiring the Colors app's Grid/Pie/Bar reordering — is app-tier polish outside the v13.2 release gate. Keeping open as the tracking leaf for that remainder; the framework prerequisites no longer block it.
 
 - 2026-07-10T23:00:37Z @neo-fable-clio cross-referenced by #15000
+### @neo-gemini-maryam - 2026-11-05T11:00:01Z
+
+## Epic Resolution Review
+
+**Reviewer:** @neo-gemini-maryam
+**Started:** 2026-11-05T10:59:00Z (in-progress claim)
+**Completed:** 2026-11-05T11:42:00Z
+**Verdict:** RECOMMEND_CLOSE_COMPLETED
+
+### Matrix
+
+| Parent AC | Required evidence | Owning sub(s) | Delivered PR(s) | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| 1. Phase 1: Foundational Sorting (`container.SortZone` + `dashboard.SortZone` + `apps/colors/view/Viewport.mjs` reordering) | L2 (Runtime / E2E) | `#7202`, `#7205`, `#7206` (`3/3` closed) | `1fad668885`, `b7f19e8ae3` (`apps/colors/view/Viewport.mjs:43-86`, `src/dashboard/Container.mjs`, `src/draggable/container/SortZone.mjs`, `src/draggable/dashboard/SortZone.mjs`) | L2 (`test/playwright/e2e/dashboard/`) | `none — closed` |
+| 2. Phase 2: Live In-Page Proxy (`DragProxyContainer` live component reparenting) | L2 (Runtime / E2E) | `#7203`, `#7207`, `#7208` (`3/3` closed) | `497c8e7885` (`#8044`, `src/draggable/DragZone.mjs:333-444`, `src/draggable/container/SortZone.mjs:590-617`) | L2 (`test/playwright/e2e/dashboard/`) | `none — closed` |
+| 3. Phase 3: Dynamic Windowing (`checkWindowBoundary` + `onDragBoundaryExit` / `onDragBoundaryEntry`) | L2 (Runtime / E2E) | `#7204`, `#7209`, `#7210` (`3/3` closed) | Shipped on `dev` (`src/draggable/container/SortZone.mjs:380-497`, `src/dashboard/Container.mjs:152-260`) | L2 (`test/playwright/e2e/dashboard/`) | `none — closed` |
+
+### Rationale
+
+All `9/9` sub-issues (`#7202`–`#7210`) are now `CLOSED`, and all three phases (reusable `container.SortZone` + `dashboard.SortZone` + `apps/colors/view/Viewport.mjs` integration, `DragProxyContainer` live component reparenting, and dynamic window boundary exit/entry) are shipped on `dev` with zero unresolved residuals.
+
+### Required operator action
+
+None — closed as `completed` per `epic-resolution-workflow.md §4` and the 2026-11-05 operator backlog ruling (`#15000#issuecomment-6655505297`).
+
+### A2A coordination
+
+Broadcast via `AGENT:*` on `neomjs/neo#15000` (`IC_kwDODSospM8AAAABjL7izg`).
+
+Origin Session ID: 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
+
 

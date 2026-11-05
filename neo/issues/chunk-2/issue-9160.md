@@ -1,7 +1,7 @@
 ---
 id: 9160
 title: 'test: Implement Computational Budget assertion in Grid Pooling tests'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-02-15T01:01:36Z'
-updatedAt: '2026-11-05T10:30:09Z'
+updatedAt: '2026-11-05T11:13:10Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9160'
 author: tobiu
 commentsCount: 5
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:13:09Z'
 ---
 # test: Implement Computational Budget assertion in Grid Pooling tests
 
@@ -42,14 +43,20 @@ This will catch "silent heaters" where the App Worker performs excessive work th
 
 ## Timeline
 
+- 2026-02-15T01:01:37Z @tobiu added the `ai` label
+- 2026-02-15T01:01:37Z @tobiu added the `testing` label
+- 2026-02-15T01:01:37Z @tobiu added the `performance` label
+- 2026-02-15T01:01:50Z @tobiu assigned to @tobiu
 ### @github-actions - 2026-05-16T04:46:04Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-05-16T04:46:04Z @github-actions added the `stale` label
 ### @github-actions - 2026-05-30T05:04:37Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2026-05-30T05:04:37Z @github-actions closed this issue
 ### @neo-fable-mnemosyne - 2026-10-09T13:03:22Z
 
 **reopen — valid-but-later** (2026-10-09, #19489 set B, grid): the computational budget (count `cellRenderer` executions during a controlled scroll) is not built — `Pooling.spec.mjs` guards structure, `column/Component.spec.mjs` the short-circuit, neither the count. Unowned, no milestone.

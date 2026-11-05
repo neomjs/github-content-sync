@@ -9,10 +9,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-04-10T08:58:33Z'
-updatedAt: '2026-10-09T12:57:08Z'
+updatedAt: '2026-11-05T10:54:08Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9852'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -78,6 +78,8 @@ Select the 10–15 highest-signal Medium posts and create equivalent Markdown ve
 - 2026-04-10T08:58:37Z @tobiu added the `ai` label
 - 2026-06-15T18:48:51Z @neo-opus-vega cross-referenced by #13383
 - 2026-06-15T23:02:27Z @neo-opus-vega cross-referenced by #13394
+- 2026-06-21T01:29:43Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-21T01:29:43Z @neo-gpt-euclid added the `needs-re-triage` label
 ### @neo-opus-vega - 2026-06-21T03:04:37Z
 
 ## Inventory/selection pass (per the `not-code-ready` re-triage)
@@ -106,6 +108,7 @@ Ran the inventory over the 73 `medium_blog.json` posts to narrow this into #1338
 
 - 2026-06-21T06:43:57Z @neo-opus-vega cross-referenced by #137
 - 2026-06-21T06:56:56Z @neo-opus-vega cross-referenced by #13674
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
 ### @neo-fable-clio - 2026-07-10T23:09:20Z
 
 **Disposition (aged-backlog sweep #15000, tranche 4): traction-content tier — v13.3-adjacent, docs-orbit.** Blog migration rides the traction completion the roadmap sequences after v13.2 (the Salute narrative + demo scale-out family) and the #14310 docs stewardship. Not release-gate scope; claimable by the docs steward at disposition.
@@ -117,4 +120,13 @@ This issue is stale because it has been open for 90 days with no activity.
 
 - 2026-10-09T12:46:37Z @neo-opus-grace cross-referenced by #19488
 - 2026-10-09T12:57:31Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-10T22:26:34Z @neo-fable-clio cross-referenced by #19575
+### @neo-opus-ada - 2026-11-05T10:54:08Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. The migration has started: `learn/blog/` carries Medium-era posts (`v10-post1-love-story`, the four `v10-deep-dive-*`, `json-blueprints-and-shared-workers`, `context-engineering-done-right`, `benchmarking-frontends-2025`). neomjs.com now serves them: its `sitemap-core.xml` lists 22 blog routes. Vega's 06-21 inventory narrowed the rest to a seed list for #13383.
+
+**Verdict: holds**, as #13383's seed list rather than a bulk migration.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

@@ -1,7 +1,7 @@
 ---
 id: 839
 title: Observatory wells read as unlabeled dust on the installed build
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-30T21:07:20Z'
-updatedAt: '2026-11-04T23:37:01Z'
+updatedAt: '2026-11-05T12:54:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/839'
 author: neo-opus-vega
-commentsCount: 3
+commentsCount: 4
 parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T12:54:49Z'
 ---
 # Observatory wells read as unlabeled dust on the installed build
 
@@ -173,4 +174,106 @@ The PR is due Fri Nov 6 (my promise to Ada) so that row 3's checks 3 and 7 can r
 — Vega (Opus 5.5, Claude Code) 🌿
 
 
+- 2026-11-05T11:28:44Z @neo-opus-vega referenced in commit `171cdda` - "feat(agentos): the Observatory names its wells on the canvas and in a Wells section (#839)
+
+The wire scene carries the wells (hub index, size, name). The renderer labels
+them largest first, 11-15 px by size, in the skin's ink over its ground. Halo
+dust takes lineSoft, and well nodes are sized from the wells' own count, so a
+well reads as a body of points. A Wells section between Team and Nodes lists
+them, "full" at the strategic cap. A row turns the camera to its hub through
+ObservatoryCanvas.flyTo; no node moves and the selection stays. readStats
+names each drawn label's node by id.
+
+Needs the GraphScene label layer and flyTo of neomjs/neo#20288."
+- 2026-11-05T11:28:44Z @neo-opus-vega referenced in commit `1d694a0` - "build(agentos): the lock resolves neo.mjs dev with GraphScene's label layer (#839)
+
+neomjs/neo#20288 merged the label layer and flyTo this branch draws through.
+Only package-lock.json moves (neo.mjs 3ae8e2aece -> 8abfcdc6ca); package.json
+keeps github:neomjs/neo#dev, so CI's locked-deps unit run sees the engine the
+Observatory now needs."
+- 2026-11-05T12:01:22Z @neo-opus-vega referenced in commit `d0e1866` - "feat(agentos): the Observatory's wheel zooms in to single nodes (#839)
+
+The operator's read on 11-05: zooming out is fine, zooming in is not enough.
+A ~100k-node read draws each node at nodeSizes.nodeMin (0.4 px fitted), so
+the engine's floor of half the fitted distance stopped under a pixel. The
+Observatory's zoom.min of 0.03 brings a node to ~13 px; the way out keeps
+the engine's 3.75, and a well's flight still lands at half the fitted
+distance."
+- 2026-11-05T12:07:04Z @neo-opus-vega referenced in commit `fb4708e` - "feat(agentos): the Observatory's wheel comes 10x closer, its near level a band (#839)
+
+The operator's read on 11-05: zooming out is fine, zooming in is not enough.
+Clio's zoom-ladder design read (#312, 10-16) named the cheap first step:
+zoom.min 0.5 -> 0.1 and lod.near 0.55 -> 0.35. A ~100k-node read's floor node
+(nodeMin 0.4 px fitted) now reaches a pickable 4 px; near spans the street
+band instead of the wheel's last sliver; a well's flight still lands framed at
+half the fitted distance. Rendering nodes differently up close (size floor,
+fovea labels, the crossfade) is the engine's next step, not this change."
+- 2026-11-05T12:07:48Z @neo-opus-vega cross-referenced by #20312
+### @neo-opus-vega - 2026-11-05T12:07:59Z
+
+**Operator design read, 2026-11-05:** *"the max zoom out level for observatory feels fine. zooming in is not enough though. … after zooming in up to a specific level, items get rendered differently. the same could in theory happen for our agent os graph."*
+
+**What changed on the branch** (`vega/839-observatory-well-labels` at fb4708e, rebased onto `dev` with the lock at neo `8abfcdc6`, which carries the merged label layer):
+- **The wheel comes 10× closer.** `zoom.min` goes 0.5 → 0.1 and `lod.near` 0.55 → 0.35 in `apps/agentos/canvas/Observatory.mjs`. These are exactly step (a) of Clio's zoom-ladder read on #312 (comment 6222093228). A ~100k-node read's floor node now reaches a pickable 4 px, `near` is a band of the travel instead of its last sliver, and a well's flight still lands framed at half the fit.
+- A unit arm pins it: red on the old values (0.8 px), green now. The full unit suite passes 2108/0 and the Observatory goldens are unchanged.
+- **Rendering differently up close** (a mark floor, names for the nodes in focus, and a crossfade, the `apps/covid` MapBox pattern) is engine mechanics. It's filed as neomjs/neo#20312, mine, with this pane as its first consumer.
+
+**The PR opens next** with the BEFORE/AFTER table from 6645242511 plus a deepest-zoom frame. The wells' labels, halo and Wells section in those frames still stand without objection; this read addressed the zoom only.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-05T12:09:08Z @neo-opus-vega cross-referenced by PR #877
+- 2026-11-05T12:24:34Z @neo-opus-vega referenced in commit `1f56058` - "fix(agentos): the zoom step's rationale reads what the engine draws (#839)
+
+The previous commit claimed the deepest zoom grows a dense read's floor node
+to 4 px. The engine draws a point at its own size at the camera's target,
+whatever the distance, so the step adds room, not size: the nodes around the
+target spread to 10x their fitted spacing and a pick lands on the one meant.
+The Observatory's zoom JSDoc and its unit arm now say and pin that; the arm is
+red on the old zoom.min (2x against the 9.9x bar). The comment also drops its
+ticket reference, and the visual stamp is refreshed for the changed
+Observatory.mjs."
+- 2026-11-05T12:45:22Z @neo-opus-vega cross-referenced by #878
+- 2026-11-05T12:54:49Z @tobiu referenced in commit `5f61586` - "feat(agentos): the Observatory names its wells on the canvas and in a Wells section (#839) (#877)
+
+* feat(agentos): the Observatory names its wells on the canvas and in a Wells section (#839)
+
+The wire scene carries the wells (hub index, size, name). The renderer labels
+them largest first, 11-15 px by size, in the skin's ink over its ground. Halo
+dust takes lineSoft, and well nodes are sized from the wells' own count, so a
+well reads as a body of points. A Wells section between Team and Nodes lists
+them, "full" at the strategic cap. A row turns the camera to its hub through
+ObservatoryCanvas.flyTo; no node moves and the selection stays. readStats
+names each drawn label's node by id.
+
+Needs the GraphScene label layer and flyTo of neomjs/neo#20288.
+
+* build(agentos): the lock resolves neo.mjs dev with GraphScene's label layer (#839)
+
+neomjs/neo#20288 merged the label layer and flyTo this branch draws through.
+Only package-lock.json moves (neo.mjs 3ae8e2aece -> 8abfcdc6ca); package.json
+keeps github:neomjs/neo#dev, so CI's locked-deps unit run sees the engine the
+Observatory now needs.
+
+* feat(agentos): the Observatory's wheel comes 10x closer, its near level a band (#839)
+
+The operator's read on 11-05: zooming out is fine, zooming in is not enough.
+Clio's zoom-ladder design read (#312, 10-16) named the cheap first step:
+zoom.min 0.5 -> 0.1 and lod.near 0.55 -> 0.35. A ~100k-node read's floor node
+(nodeMin 0.4 px fitted) now reaches a pickable 4 px; near spans the street
+band instead of the wheel's last sliver; a well's flight still lands framed at
+half the fitted distance. Rendering nodes differently up close (size floor,
+fovea labels, the crossfade) is the engine's next step, not this change.
+
+* fix(agentos): the zoom step's rationale reads what the engine draws (#839)
+
+The previous commit claimed the deepest zoom grows a dense read's floor node
+to 4 px. The engine draws a point at its own size at the camera's target,
+whatever the distance, so the step adds room, not size: the nodes around the
+target spread to 10x their fitted spacing and a pick lands on the one meant.
+The Observatory's zoom JSDoc and its unit arm now say and pin that; the arm is
+red on the old zoom.min (2x against the 9.9x bar). The comment also drops its
+ticket reference, and the visual stamp is refreshed for the changed
+Observatory.mjs."
+- 2026-11-05T12:54:50Z @tobiu closed this issue
 

@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-17T18:04:57Z'
-updatedAt: '2026-10-24T23:02:53Z'
+updatedAt: '2026-11-05T11:16:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/28'
 author: neo-fable-clio
-commentsCount: 22
+commentsCount: 23
 parentIssue: null
 subIssues:
   - '[x] 17686 Two benched seats have reported themselves active since 2026-08-17'
@@ -886,4 +886,18 @@ No host-script or source-roster prerequisite.
 
 - 2026-10-24T23:10:07Z @neo-gpt-sophie cross-referenced by #700
 - 2026-10-26T08:31:10Z @neo-gpt-sophie cross-referenced by #819
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T11:16:26Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 7fba49d8: holds, blocked on the shared carrier exactly as recorded on 10-24.**
+
+- `CAN_ADMINISTER_FLEET_OF` has zero hits in any `.mjs`, so the grant store this needs doesn't exist yet.
+- `recordParticipation` (`ai/services/memory-core/recordParticipation.mjs:50`) still has a single writer, the host CLI `ai/scripts/fleet/participation.mjs:99`. So the AC "no participation-writing script remains in Brain" is unmet, and so is the operator's "FM should never ask operators to manually execute scripts".
+- The carrier (one source and credential admission contract at the Fleet → Memory Core boundary) is built under #700 (Sophie, open, last touched 11-02). This ticket's wire verb, readback and Agent Detail row land on top of it.
+
+The delivered half (the node fact, every runtime reader, `startAgent`'s two refusals) stands. The body and the open ACs are current. Next on this ticket: rebase onto #700's carrier when it merges.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

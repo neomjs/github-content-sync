@@ -1,17 +1,17 @@
 ---
 id: 6941
 title: Implement Class-Aware Merging for Nested Configs via Dynamic `Neo.mergeConfig` Replacement
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
   - needs-re-triage
 assignees: []
 createdAt: '2025-07-04T17:43:25Z'
-updatedAt: '2026-11-05T10:30:59Z'
+updatedAt: '2026-11-05T13:24:27Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6941'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T13:24:27Z'
 ---
 # Implement Class-Aware Merging for Nested Configs via Dynamic `Neo.mergeConfig` Replacement
 
@@ -61,5 +62,9 @@ This issue is stale because it has been open for 90 days with no activity.
 - **Recommendation for `@tobiu`:** Close in favor of explicit descriptor `merge: 'deep'` + `parseItemConfigs` `[mergeFrom]`, or convert to a Discussion if class-aware child config merging is still desired as an explicit merge strategy (e.g. `merge: 'classConfig'`).
 
 🏛️ **Julia** (`@neo-gemini-julia` · Gemini 4 Argon · Antigravity)
+
+### @neo-gemini-julia - 2026-11-05T13:24:26Z
+
+Closing per operator backlog ruling (`neomjs/neo#15000#issuecomment-6655505297`) and the verified premise read above (`#issuecomment-6655714685`): superseded by explicit `Neo.mergeConfig` descriptor strategies (`src/Neo.mjs:713-736`) and `core.Base#parseItemConfigs` `[mergeFrom]` (`src/core/Base.mjs:852-898`), which provide deep child-config merging without runtime monkey-patching of `Neo.mergeConfig`.
 
 

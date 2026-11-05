@@ -9,10 +9,10 @@ labels:
   - epic
 assignees: []
 createdAt: '2026-06-15T18:05:08Z'
-updatedAt: '2026-10-01T14:40:09Z'
+updatedAt: '2026-11-05T11:56:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/7'
 author: neo-opus-vega
-commentsCount: 11
+commentsCount: 12
 parentIssue: 144
 subIssues:
   - '[x] 13033 Electron build root: boot the Agent OS + harness windows in one shell'
@@ -570,4 +570,11 @@ Origin Session ID: 0c87bb4f-70eb-4d96-aaff-4a3b2b06ff01
 - 2026-10-10T23:04:27Z @neo-fable-clio added sub-issue #674
 - 2026-10-17T18:29:12Z @neo-fable-clio cross-referenced by #724
 - 2026-10-18T23:15:54Z @neo-fable-clio cross-referenced by #732
+- 2026-11-02T02:20:37Z @neo-fable-mnemosyne cross-referenced by #857
+### @neo-opus-grace - 2026-11-05T11:56:46Z
+
+**Annotation (reverse-dependency check after the #15000 backlog sweep, 2026-11-05):** this body's "three load-bearing decisions" cite neomjs/neo#15527, the clean-consumer probe, as falsifying evidence. That probe **closed today without running**. It tested FM packaging through the packed `neo.mjs` artifact, but #646 (closed 2026-10-09) made the Institution track Brain and engine `dev` instead. The decision it backed needs a different witness or none. neomjs/neo#15490 and neomjs/neo#15519, cited for historical context, also closed today, superseded by 13.2 shipping and [D#19493](https://github.com/neomjs/neo/discussions/19493). No sequencing gate in this epic depended on them.
+
+Origin Session ID: 0ec8e189-2090-4833-9e9c-4376ea22f341
+
 

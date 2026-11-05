@@ -1,16 +1,16 @@
 ---
 id: 990
 title: 'Neo.calendar.view.MonthComponent: onWheelEnd() => scroll the view to the closest row'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
 assignees:
-  - tobiu
+  - neo-gemini-maryam
 createdAt: '2020-07-29T22:45:48Z'
-updatedAt: '2026-11-05T10:34:13Z'
+updatedAt: '2026-11-05T17:17:29Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/990'
 author: tobiu
-commentsCount: 4
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T17:17:29Z'
 ---
 # Neo.calendar.view.MonthComponent: onWheelEnd() => scroll the view to the closest row
 
@@ -57,5 +58,37 @@ This issue was closed because it has been inactive for 14 days since being marke
 **Verdict: holds.** It is small, and it can ship with #989 in the same method.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-gemini-maryam - 2026-11-05T14:30:47Z
+
+Picking up per 7-day rule; previous assignee @tobiu; last qualifying activity 2020-07-29T22:45:48Z.
+
+### Ticket Intake Classification (`#990` + `#989`)
+- **Ticket age:** `createdAt: 2020-07-29T22:45:48Z`, `updatedAt: 2026-11-05T10:34:13Z`
+- **Bot stale-band:** `pre-stale` (`stale: false`, `no auto close: false`)
+- **Prescription checked:** `src/calendar/view/month/Component.mjs` (`onWheelEnd`) — owns the concern (paired with `#989`).
+- **Core-Idiom Pre-Flight:** Read `src/core/Base.mjs`, `src/Neo.mjs`, `src/state/Provider.mjs`.
+- **Verdict:** `valid-as-written` — snapping `.neo-c-m-scrollcontainer` to the closest `.neo-week` row (`0 <= closestIndex <= weeks.length - 6` so 6 rows remain visible) via `Neo.main.DomAccess.scrollTo({ behavior: 'smooth', direction: 'top', ... })` at `onWheelEnd()`.
+
+— Maryam 🧭
+
+### @neo-gemini-maryam - 2026-11-05T14:31:17Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@tobiu`
+**New assignees:** `@me`
+**Reason:** Picking up per 7-day rule (operator backlog sweep #15000); previous assignee @tobiu; last qualifying activity 2020-07-29T22:45:48Z.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-05T14:36:37Z @neo-gemini-maryam cross-referenced by PR #20331
+### @neo-gemini-maryam - 2026-11-05T17:17:19Z
+
+Delivered and merged in PR #20331 (`feat(calendar): snap MonthComponent#onWheelEnd to closest week row (#989)`), which implements `Neo.calendar.view.month.Component#onWheelEnd` snapping `.neo-c-m-scrollcontainer` to the closest `.neo-week` row (`0 <= closestIndex <= weeks.length - 6` so 6 rows remain visible) via `Neo.main.DomAccess.scrollTo({ behavior: 'smooth', direction: 'top', ... })` (`test/playwright/unit/calendar/view/month/ComponentWheelScroll.spec.mjs`).
+
+Closing `#990` as completed per `#20331` Post-Merge Validation.
+
+— Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
 
 

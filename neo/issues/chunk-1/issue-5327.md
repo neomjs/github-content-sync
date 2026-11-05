@@ -1,16 +1,16 @@
 ---
 id: 5327
 title: 'list.Base: useCheckBoxes_ => make it possible to link the checked state to a record field'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
 assignees:
-  - tobiu
+  - neo-gemini-maryam
 createdAt: '2024-03-13T13:22:09Z'
-updatedAt: '2026-11-05T10:36:11Z'
+updatedAt: '2026-11-05T17:19:42Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5327'
 author: tobiu
-commentsCount: 4
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T17:19:42Z'
 ---
 # list.Base: useCheckBoxes_ => make it possible to link the checked state to a record field
 
@@ -58,4 +59,36 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-gemini-maryam - 2026-11-05T15:03:43Z
+
+Picking up per 7-day rule; previous assignee `@tobiu`; last qualifying assignee activity `2024-02-18T19:23:52Z` (reopened in backlog sweep `2026-10-09T20:53:12Z`).
+
+### Ticket Intake (`#5327` · `10k+ Commits Mental Model`)
+
+- **Verdict:** `valid-as-written`
+- **Scope (`src/list/Base.mjs`):**
+  1. Add `checkedField: 'checked'` config to `Neo.list.Base` alongside `disabledField: 'disabled'` and `displayField: 'name'`, with `hasCheckedField(record)` verifying `useCheckBoxes && checkedField && (Boolean(store?.model?.getField?.(checkedField)) || checkedField in record)` so lists without the field keep selection-only checkbox semantics.
+  2. Synchronize initial `record[checkedField] === true` records into `selectionModel.items` in `createItems()` and apply `selectionModel.selectedCls` in `createItem()` when `record[checkedField]` is truthy.
+  3. Subscribe to `selectionModel`'s `selectionChange` event (`onSelectionChange`) so explicit item selection/deselection (`select`/`deselect`) writes back to `record[checkedField]` (`true`/`false`) while view-initiated resets (`disableSelection`, `selectedIndex = null`, `deselectAll()`) do not rewrite record data, and handle `checkedField` mutations in `onStoreRecordChange` so direct record updates sync `selectionModel` (`select`/`deselect`) and re-render the list item.
+
+## Contract Ledger
+
+| Surface | Type / Default | Activation Rule | Write-Back & `singleSelect` Semantics |
+|---|---|---|---|
+| `Neo.list.Base#checkedField` | `String`, default `'checked'` | Activates when `useCheckBoxes === true`, `checkedField` is non-empty, and the store's `model` declares the field (`store.model.getField(checkedField)`) or a raw record carries the property (`checkedField in record`). | Explicit item selection/deselection (`selectionModel.select()` / `selectionModel.deselect()`) writes `true`/`false` back to `record[checkedField]`, while view resets (`disableSelection`, `selectedIndex = null`, `deselectAll()`) never overwrite record state. When `selectionModel.singleSelect === true` and multiple records are initially checked, `createItems()` seeds `selectionModel.items` with the first checked record only, and subsequent `select()` calls uncheck any previously checked record. |
+
+— Maryam (`@neo-gemini-maryam` · Gemini 4 Argon · Antigravity) 🧭
+
+### @neo-gemini-maryam - 2026-11-05T15:03:49Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@tobiu`
+**New assignees:** `@me`
+**Reason:** Picking up per 7-day rule; previous assignee @tobiu has no activity on #5327 since 2024-03-13.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-05T15:06:04Z @neo-gemini-maryam cross-referenced by PR #20336
+- 2026-11-05T16:55:40Z @neo-opus-vega cross-referenced by #20350
 

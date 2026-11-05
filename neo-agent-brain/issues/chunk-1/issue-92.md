@@ -1,7 +1,7 @@
 ---
 id: 92
 title: Implement orchestrator-governed restore-delta-merge
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-07-22T09:45:55Z'
-updatedAt: '2026-08-26T15:09:45Z'
+updatedAt: '2026-11-05T11:20:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/92'
 author: neo-gpt-emmy
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -26,6 +26,7 @@ blockedBy:
   - '[x] 15691 Validate embedding compatibility before restore mutation'
 blocking:
   - '[ ] 93 Cloud deployment: opt-in first-boot restore from latest backup bundle'
+closedAt: '2026-11-05T11:20:05Z'
 ---
 # Implement orchestrator-governed restore-delta-merge
 
@@ -161,6 +162,8 @@ Retrieval Hint: "ADR 0027 v13.2 restore delta merge selector authoritative delta
 - 2026-07-22T09:45:57Z @neo-gpt-emmy added the `testing` label
 - 2026-07-22T09:45:57Z @neo-gpt-emmy added the `architecture` label
 - 2026-07-22T09:45:57Z @neo-gpt-emmy cross-referenced by #15694
+- 2026-07-22T09:46:47Z @neo-gpt-emmy marked this issue as being blocked by #15691
+- 2026-07-22T09:46:49Z @neo-gpt-emmy marked this issue as being blocked by #15692
 - 2026-07-22T09:46:52Z @neo-gpt-emmy cross-referenced by #93
 - 2026-07-22T09:46:54Z @neo-gpt-emmy cross-referenced by #15689
 - 2026-07-22T09:50:12Z @neo-gpt-emmy cross-referenced by PR #15690
@@ -195,4 +198,22 @@ I have therefore:
 - 2026-07-30T22:36:51Z @neo-opus-vega cross-referenced by #16201
 - 2026-08-05T13:44:55Z @neo-opus-vega cross-referenced by #66
 - 2026-08-05T13:45:29Z @neo-opus-vega cross-referenced by #16550
+- 2026-08-26T15:10:06Z @neo-gpt-emmy marked this issue as being blocked by #15691
+- 2026-08-26T15:10:07Z @neo-gpt-emmy marked this issue as being blocked by #15692
+- 2026-08-26T15:10:15Z @neo-gpt-emmy marked this issue as blocking #93
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T11:20:04Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 7fba49d8: closed as superseded. The action this ticket would implement no longer exists.**
+
+- **ADR-0027 was amended 2026-07-22 via neomjs/neo#15739.** It retired the overloaded `restore-delta-merge` name (`learn/agentos/decisions/0027-autonomous-data-recovery-actuator.md:101` AC-7, `:169`, `:180` OQ5). The closed vocabulary is now `re-embed-missing, re-embed-rows, restore-empty-target, quarantine, freeze, defrag, none` (`:56`).
+- **Exact first-boot recovery became `restore-empty-target`,** implemented by neomjs/neo#15740 (closed 2026-07-23) and wired in `DataRecoveryActuatorService.mjs:19,90`. Both prerequisites named here, neomjs/neo#15691 and neomjs/neo#15692, are closed.
+- **The rest stays ungraduated by design,** recorded in the ADR itself (AC-7): `restore-shadow-fill`, journal replay, the corruption-%×mode selector and the authoritative post-backup delta source. None of it needs this shell. A graduation would file its own leaf against the ADR's named surfaces.
+
+The `[PROVISIONAL_UNGRADUATED]` reservation has nothing left to reserve.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-05T11:20:05Z @neo-opus-vega closed this issue
 

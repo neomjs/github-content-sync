@@ -1,14 +1,14 @@
 ---
 id: 6563
 title: 'grid.plugin.AnimateRows: add rows => check the store'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
 assignees:
   - tobiu
 createdAt: '2025-03-09T22:47:26Z'
-updatedAt: '2026-11-05T10:38:39Z'
+updatedAt: '2026-11-05T11:41:39Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6563'
 author: tobiu
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:41:39Z'
 ---
 # grid.plugin.AnimateRows: add rows => check the store
 

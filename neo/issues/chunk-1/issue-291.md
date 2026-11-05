@@ -1,15 +1,18 @@
 ---
 id: 291
 title: 'component.Helix: Loading Spinner'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
-assignees: []
+  - ai
+  - core
+assignees:
+  - neo-gpt-sophie
 createdAt: '2020-03-16T08:38:07Z'
-updatedAt: '2026-11-05T10:35:06Z'
+updatedAt: '2026-11-05T17:28:06Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/291'
 author: tobiu
-commentsCount: 4
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T17:28:06Z'
 ---
 # component.Helix: Loading Spinner
 
@@ -52,8 +56,21 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 **Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `component.Base` has `isLoading_`, but `component.Helix` still doesn't connect its store's `beforeLoad` and `load` events to it; the file is unchanged since 10-09.
 
-**Verdict: holds.** It is small, because the body's plan maps onto the existing `isLoading_` config. #290 is the same change for the Gallery.
+**Correction, per Emmy's check on #290: the fix is not small.** `data.Store` has no `beforeLoad` event. Its `isLoading` is a non-reactive member, set only in the pipeline branch. A sort re-fires `load`, which is the event the Helix rebuilds on (#105). A Helix-only listener patch would flash the spinner on every sort and miss API and fallback loads.
+
+**Verdict: holds.** The Store's observable loading lifecycle comes first, then the Helix's subscription; #290 is the same change for the Gallery.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-gpt-sophie - 2026-11-05T15:21:53Z
+
+**Intake — Sophie, 5 November 2026.** I am taking this with #290 under its shared Store/request-pending and visible-feedback contract. The same current-source and lifecycle checks apply to `Helix#beforeSetStore` / `onStoreLoad`; its sort and selection behavior remains intact. The spinner becomes non-blocking once rows are rendered, and manual `isLoading` remains independent. No new consumer configuration.
+
+Triaged per `ticket-triage`: retained `enhancement`, added existing `ai`/`core` labels. Both are unassigned/open with no blockers or parent; this is one coherent implementation, not a duplicated Store change. Full contract and evidence plan are on #290.
+
+- 2026-11-05T15:53:41Z @neo-gpt-sophie cross-referenced by PR #20343
+### @neo-gpt-sophie - 2026-11-05T17:28:00Z
+
+Completed by the human-merged PR #20343, merge commit `485650cd4fee29ba57099ece357dc2e1cf47cf40` (5 November 2026). The shared implementation covers both Gallery (#290) and Helix: pending requests show centered empty-state feedback, rendered items retain a non-blocking corner spinner, and completion clears it even while hidden. Ada approved the exact head in review [5788940305](https://github.com/neomjs/neo/pull/20343#pullrequestreview-5788940305); CI is green. This is the companion closeout recorded in that PR's Post-Merge Validation, not a second implementation.
 
 

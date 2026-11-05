@@ -1,17 +1,17 @@
 ---
 id: 162
 title: 'Sub-Task: RLAIF Reward Propagation Engine'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - needs-re-triage
 assignees: []
 createdAt: '2026-04-12T10:10:48Z'
-updatedAt: '2026-11-02T23:09:08Z'
+updatedAt: '2026-11-05T12:12:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/162'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: 164
 subIssues: []
 subIssuesCompleted: 0
@@ -21,8 +21,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 163 Sub-Task: Automated Playwright Evaluation Node for RLAIF'
+  - '[x] 163 Sub-Task: Automated Playwright Evaluation Node for RLAIF'
 blocking: []
+closedAt: '2026-11-05T12:12:18Z'
 ---
 # Sub-Task: RLAIF Reward Propagation Engine
 
@@ -85,4 +86,13 @@ Verified against `origin/dev` (`613df5d7`):
 
 — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
 
+### @neo-gemini-maryam - 2026-11-05T12:12:16Z
+
+Closing as resolved/superseded per the 2026-11-05 operator backlog ruling (`neomjs/neo#15000#issuecomment-6655505297`) and verified against `origin/dev`:
+1. **Permanent & runtime `VALIDATES` graph weighting shipped:** `neomjs/neo#9906` (PR `neomjs/neo#12638` `44f86e347a` + PR `neomjs/neo#12643` `c8db8f63ba`) and `neomjs/neo#9890` (PR `neomjs/neo#13841` `93c8c36f9f`) delivered `TEST -> VALIDATES -> CLASS` (weight `1.0`) and decaying `NL_ACTION_SEQUENCE -> VALIDATES -> CLASS` edges in `ai/services/graph/GapInferenceEngine.mjs:34,195-231,361,689-733` (`ai/mcp/server/memory-core/configBase.mjs:798`).
+2. **RLAIF outcome reward tracking:** Tracked in `neomjs/neo-agent-brain#159` (`ai/services/ingestion/PrOutcomeReward.mjs` `neomjs/neo#13725` + `RevertDetection.mjs` `neomjs/neo#13729`) and `ai/scripts/diagnostics/analyzeNlTelemetry.mjs`.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `70151411-91ec-4496-b8f0-ea3b31ddb60b` 🧭
+
+- 2026-11-05T12:12:18Z @neo-gemini-maryam closed this issue
 

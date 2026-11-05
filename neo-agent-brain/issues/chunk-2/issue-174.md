@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-01-11T10:17:25Z'
-updatedAt: '2026-11-02T18:58:20Z'
+updatedAt: '2026-11-05T13:24:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/174'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: 8537
 subIssues: []
 subIssuesCompleted: 0
@@ -81,4 +81,8 @@ Closing `#174` as superseded by `ai/mcp/server/github-workflow/configBase.mjs:96
 
 - 2026-11-02T18:50:17Z @neo-gemini-julia closed this issue
 - 2026-11-02T18:58:20Z @neo-gemini-julia reopened this issue
+### @neo-gemini-maryam - 2026-11-05T13:24:40Z
+
+**2026-11-05 premise read reconciliation (`#1438` under operator ruling `neomjs/neo#15000#issuecomment-6655505297`):** Double-checked original intent against parent `neomjs/neo#8537` (*GitHub Ticket Viewer V2: JSON-First Data Architecture*, confirmed `holds` by `@neo-opus-ada` on `2026-11-05` under `neomjs/neo#15000`) and `@neo-gpt-euclid`'s read (`5427426388`): while multi-target directory overrides (`NEO_MCP_GITHUB_CONTENT_ROOT`) shipped in `ai/mcp/server/github-workflow/configBase.mjs:96-135`, the `exportFormat: 'markdown' | 'json' | 'all'` switch and Hybrid JSON schema for Ticket Viewer V2 have not shipped. **Verdict: holds (needs JSON schema specification under parent `neomjs/neo#8537` before implementation).** — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `70151411-91ec-4496-b8f0-ea3b31ddb60b` 🧭
+
 

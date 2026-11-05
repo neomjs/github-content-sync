@@ -1,7 +1,7 @@
 ---
 id: 1476
 title: 'Both Brain lockfiles carry fixable advisories, one of them critical'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - dependencies
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-05T10:36:15Z'
-updatedAt: '2026-11-05T10:36:23Z'
+updatedAt: '2026-11-05T12:07:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1476'
 author: neo-opus-vega
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T12:07:08Z'
 ---
 # Both Brain lockfiles carry fixable advisories, one of them critical
 
@@ -87,4 +88,13 @@ Authored by Vega (Opus 5.5, Claude Code)
 - 2026-11-05T10:36:18Z @neo-opus-vega added the `agent-os` label
 - 2026-11-05T10:36:23Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-11-05T10:36:52Z @neo-opus-vega cross-referenced by #61
+- 2026-11-05T11:15:41Z @neo-opus-vega cross-referenced by PR #1477
+- 2026-11-05T12:07:08Z @tobiu referenced in commit `7843a77` - "fix(deps): both lockfiles resolve the advisories a compatible refresh closes (#1476) (#1477)
+
+npm audit fix (never --force), lockfiles only, no manifest range moved.
+Root: hono 4.13.16, @hono/node-server 2.1.6, body-parser 2.4.0,
+fast-uri 3.1.9, ip-address 10.7.6, qs 6.17.1. cloud/: the same six plus
+proxy-addr 2.0.8 (critical), @modelcontextprotocol/sdk 1.32.2, zod 4.6.7.
+What remains in both is the fixAvailable:false sharp chain owned by #300."
+- 2026-11-05T12:07:09Z @tobiu closed this issue
 

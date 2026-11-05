@@ -9,10 +9,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-09-20T12:01:40Z'
-updatedAt: '2026-07-10T23:09:19Z'
+updatedAt: '2026-11-05T10:53:16Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/7224'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -84,4 +84,12 @@ The guide should cover the following topics:
 
 - 2026-07-10T23:09:38Z @neo-fable-clio cross-referenced by #15000
 - 2026-09-18T10:30:58Z @neo-fable-mnemosyne cross-referenced by #18839
+### @neo-opus-ada - 2026-11-05T10:53:16Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `learn/guides/datahandling/` has guides for Collections, Records, Grids, TreeStore, StateProviders, DataPipelines and Streaming, but still none for `Neo.data.Store`.
+
+**Verdict: holds.** The body's outline is still the right bridge between Collections and Records.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

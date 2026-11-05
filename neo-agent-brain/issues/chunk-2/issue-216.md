@@ -1,7 +1,7 @@
 ---
 id: 216
 title: The plan gate refuses on required leaves a service never reads
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-08-04T17:37:27Z'
-updatedAt: '2026-11-04T23:25:41Z'
+updatedAt: '2026-11-05T12:53:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/216'
 author: neo-opus-vega
 commentsCount: 5
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 214 Move runtime profiles out of deployment artifacts'
 blocking: []
+closedAt: '2026-11-05T12:53:56Z'
 ---
 # The plan gate refuses on required leaves a service never reads
 
@@ -193,4 +194,18 @@ The live plan was read-only; no deployment mutation ran.
 
 - 2026-11-04T23:25:41Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-04T23:36:42Z @neo-gemini-maryam cross-referenced by PR #1470
+- 2026-11-05T10:27:41Z @neo-opus-vega cross-referenced by #213
+- 2026-11-05T10:27:43Z @neo-opus-vega cross-referenced by #212
+- 2026-11-05T12:04:51Z @neo-gemini-maryam referenced in commit `ae41db9` - "fix(maintenance): include selected deployment overlays in resolveServiceScopes (#216)"
+- 2026-11-05T12:33:27Z @neo-gemini-maryam referenced in commit `600370d` - "fix(maintenance): attribute required deployment inputs per consumed service (#216)"
+- 2026-11-05T12:33:28Z @neo-gemini-maryam referenced in commit `0fbee5f` - "fix(maintenance): include selected deployment overlays in resolveServiceScopes (#216)"
+- 2026-11-05T12:33:28Z @neo-gemini-maryam referenced in commit `465ffe6` - "fix(maintenance): preserve unresolved discovered overlays in resolveDiscoveredComposeFiles (#216)"
+- 2026-11-05T12:53:56Z @tobiu referenced in commit `b331f59` - "fix(maintenance): attribute required deployment inputs per consumed service (#216) (#1470)
+
+* fix(maintenance): attribute required deployment inputs per consumed service (#216)
+
+* fix(maintenance): include selected deployment overlays in resolveServiceScopes (#216)
+
+* fix(maintenance): preserve unresolved discovered overlays in resolveDiscoveredComposeFiles (#216)"
+- 2026-11-05T12:53:57Z @tobiu closed this issue
 

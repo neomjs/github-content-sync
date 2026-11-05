@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-02T18:19:24Z'
-updatedAt: '2026-11-05T10:35:08Z'
+updatedAt: '2026-11-05T13:25:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1438'
 author: neo-opus-vega
 commentsCount: 12
@@ -49,7 +49,7 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
   - **convert to a Discussion**, when it is a valid idea with no plan;
   - **holds**, when the premise is verified against current source and the body is current: a dated premise-read comment on the ticket, which counts as checked (added after Ada's read, 19:26Z).
 - **Bugs get fixed, not triaged.** The count is an outcome, never the target. No bulk close by age.
-- **An operator-authored ticket is the operator's call.** The reader posts the verdict as a comment, and he closes it (precedent: Grace's 10-04 second read on neomjs/neo#15000).
+- **An operator-authored ticket closes like any other** (operator, 2026-11-05, superseding "the operator's call": *"closing tobiu tickets: absolutely yes! … still, i recommend to always double-check if parts of the original intents are still valid."*). Before closing, check each part of the original intent against current source. A part that still holds survives as a rewrite or a successor ticket, never inside the close. Lines already marked pending the operator's call are their reader's to close now on the same terms; genuine design decisions stay operator-pending. Ruling recorded on neomjs/neo#15000 (comment 6655505297).
 
 ## The instrument
 
@@ -70,22 +70,22 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 - [x] #493 (vega): holds (operator-action text still at `providerReadinessHelper.mjs:2053`; anchors refreshed)
 - [x] #461: holds (residency still per compose service, `configBase.mjs:1759`)
 - [x] #300: holds (blocker moved to `default-embed@0.1.9`; six fixable advisories split to a lockfile leaf)
-- [x] #213: holds (deploy/ declarative, `cloud/package.json` landed; only #216 left)
-- [x] #212: holds (umbrella; #213 near close, #191/#193/#195/#23 open)
-- [ ] #28 (vega)
-- [ ] #32
+- [x] #213: **closed as completed** (all 5/5 subs delivered after #216 PR #1470 merged; `/epic-resolution` review `6658524051` by Maryam)
+- [x] #212: holds (umbrella; #213 closed, #191/#193/#195/#23 open)
+- [x] #28 (vega): holds (blocked on #700's Fleet → MC carrier; host CLI still the only `recordParticipation` writer)
+- [x] #32: holds (`KNOWN_AUTHORITY_CONFLICTS` entry still at `lint-script-plane.mjs:158-162`)
 - [x] #33: holds (no Colima login step anywhere; operator-host AC)
-- [ ] #40
-- [ ] #55
-- [ ] #60
+- [x] #40: holds as provisional (gate D#17084 stalled since 08-24: needs a convergence round or an abandon)
+- [x] #55: holds (heap still fixed at create; only `container-memory-ceiling` in `RECOVERY_KNOBS`)
+- [x] #60: holds (AC-1 ticked; one comment-line AC left; growth owned by #1434 → #1435 → #1432)
 - [x] #63: rewritten in place (cloud-mode AC retired: `deploymentMode` defaults to `cloud`; third plane state named)
-- [ ] #66 (vega)
+- [x] #66 (vega): holds, mine (the restart-durability experiment is unrun; blocks #1432)
 - [x] #70: holds (`npm run ai:audit-discussion-lifecycle` still absent; corpus input now config-driven)
 - [x] #72: rewritten in place (15 lock/lease modules, census table; my 08-04 claim released)
-- [ ] #80
-- [ ] #92
-- [ ] #93
-- [ ] #125
+- [x] #80: **closed** (superseded by the `re-embed-missing` heal; config-vs-saturation fate split noted)
+- [x] #92: **closed** (ADR-0027 amendment retired `restore-delta-merge`; `restore-empty-target` shipped)
+- [x] #93: holds (opt-in still missing; refresh to `restore-empty-target` proposed by comment, author benched)
+- [x] #125: holds (no proactive controller; reactive pair only)
 - [x] #140: holds (gitlab-pat probe still needs a GitLab token; #13505 closed without a disposition)
 ### substrate / process / other (30): claimed by Maryam (29) + Sophie (1, #1296)
 - [x] #1299 (sophie): holds (parked post-v1 per `no auto close`; `#862`/`#52` landed, parent `#700` open; `seatModelDeclaration.mjs` & `seatModelCatalog.mjs` validate launch intent without granting family-write authority)
@@ -93,7 +93,7 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 - [x] #812 (mnemosyne): rewritten in place (updated Hunk 4 witness ordinal and merged-amendment list for `#840`/`#842`, `#848`/`#850`, and `#1294`; `§2.6`/`§2.7` input-keyed receipt gap still live)
 - [x] #810 (mnemosyne): rewritten in place (`hostEffects.mjs:421-481` already persists and compares `inputDigest`; narrowed remaining scope to `firstRunRecipe.mjs:207-252` `evaluateEffect`, `setupOrchestration.mjs:57-59,154` `compose-up` carrier digest, and `verifyEffect.mjs:133`)
 - [x] #419 (euclid): rewritten in place (unblocked: `#282`, `#417`, `#411`, `#253`, `#402`, and `#472`/`#1356` all closed on `origin/dev`; anchored to `coreCorpusProfileRunner.mjs:319-351`, `DatabaseService.mjs:893-895`, and `retireLegacyConversationRows.mjs`)
-- [x] #342: triaged (`ai`, `enhancement`, `model-experience`, `agent-os`) & rewritten in place (folded `projectSeatHooks.mjs` + `seatProjectionCheck.mjs` `#317`; narrowed to `unless you` stem in `deferencePhraseMatch.mjs` + retiring stale `node_modules/neo.mjs/.claude/hooks/` rewrite in `initServerConfigs.mjs:1158-1174`)
+- [x] #342: triaged (`ai`, `enhancement`, `model-experience`, `agent-os`), rewritten in place & PR #1481 open by Maryam (folded `projectSeatHooks.mjs` + `seatProjectionCheck.mjs` `#317`; narrowed to `unless you` stem in `deferencePhraseMatch.mjs` + real turn-final corpus)
 - [x] #309: rewritten in place (`AC-1` & `AC-2` complete with 0 topic overlap against `neomjs/neo`; narrowed to `AC-3` `package.json:7` `description` sync)
 - [x] #202: holds (`learn/README.md` still absent on `origin/dev`; `learn/agentos/**` and `learn/benefits/brain/**` remain the live folders)
 - [x] #201 (ada): rewritten in place (parent `#194` closed; `brain-unit.yml` runs full Playwright unit suite on `head`/`base` at `0 failed / 14,651 passed`; checked `[x]` on 9/10 ACs, leaving only `AC-7` `#191` deleted-surface census for close-out)
@@ -104,7 +104,7 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 - [x] #26: rewritten in place (per-server `configBase.mjs` + `MemoryCoreConfig.transport` shipped, `#79` & `#97` closed; narrowed to `streamable-http` default/enforcement for MC/KB + `communityBatchTool.mjs` default)
 - [x] #43 (ada): rewritten in place (updated for shipped `#16999` `askContextBudget.mjs` + `#17000` `SearchService.mjs:77-101,134,265` `askRequestQueue`, refreshed `providerActivityLedger.mjs` anchors, and folded parent `#44` two-stage gate)
 - [x] #47 (ada): rewritten in place (folded `@neo-opus-ada` intake corrections (`5427287472`: `ollamaStuckRunnerLiveness.mjs` deleted so `#47` is unblocked; guard covers `AbortController` + `AbortSignal.timeout()` across 25 modules), `@neo-gpt-emmy` `warm or evict` supervision witness (`5427287526`), and `deploy/cloud/docker-compose.yml`)
-- [x] #216: rewritten in place (folded `@neo-gpt-emmy` live-plane falsifier (`5466435737`: `requiredDeploymentInputs` is 22 keys / 25 blockers across `fleet`, `kb-server`, `mc-server`, and `orchestrator`) into AC-2 and updated `deploy/cloud/docker-compose.yml`)
+- [x] #216: **closed as completed** (PR #1470 merged `465ffe61` by Maryam; folded `@neo-gpt-emmy` live-plane falsifier `5466435737`: `requiredDeploymentInputs` is 22 keys / 25 blockers across `fleet`, `kb-server`, `mc-server`, and `orchestrator`)
 - [x] #74 (ada): rewritten in place (recorded shipped `neomjs/neo#16486` pure decision contract `ai/services/shared/activationReceipt.mjs` + unit spec with `targetConfigDigest`, and narrowed `#74` to durability, `docker inspect` digest helper, and `redeployPreflight.mjs` wiring)
 - [x] #76 (ada): rewritten in place (updated `deploy/cloud/Dockerfile`, folded `@neo-opus-ada` intake corrections (`5427319408`: 4 `learn/` docs) and handoff notes (`5427319450`: `ada/16450-candidate-staging` prior art + GHCR operator gate))
 - [x] #78: rewritten in place (folded `@tobiu`'s `2026-08-25` ruling retiring Option 2 and defining the stated-preference-then-hedged discriminator + `#988`/`#1388`/`#1424` `origin/dev` anchors)
@@ -114,19 +114,19 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 - [x] #127: closed as completed under its own Sunset / Retirement Trigger (single-line `findShippedSignature` at `agent-preflight.mjs:1120` held across 4+ months with 0 multi-line drift escapes)
 - [x] #132: rewritten in place (Fix 1 retracted, Fix 2 single-token mis-attribution resolved by per-seat tokens, `evaluateCleanTerminalAcceptance`/`materialArtifact`/`stopHook.laneContinuation` shipped; narrowed to `2026-09-25` classifier-denial tool-result check in `laneStateStopHook.mjs`)
 - [x] #155: rewritten in place + amended by Ada ([6590947320](https://github.com/neomjs/neo-agent-brain/issues/155#issuecomment-6590947320): `gemma-4-26b-a4b` + `PrOutcomeReward.mjs`/`RevertDetection.mjs`, plus existing writer `analyzeNlTelemetry.mjs` → `datasets.rlaif.trajectories` at `memory-core/configBase.mjs:343`, unified dataset/redaction AC, and `learn/tree.json` removal)
-- [ ] #159 (tobiu): operator-authored; premise holds — pure `PrOutcomeReward.mjs` (`#13725`) & `RevertDetection.mjs` (`#13729`) shipped on `origin/dev`; scan + dry-run/tenant-scoped Chroma tagging slice remains, **pending the operator's call**
-- [ ] #162 (tobiu): operator-authored; close proposal posted (superseded by `GapInferenceEngine.mjs:195-231,361,689-733` `VALIDATES` edges + `PrOutcomeReward.mjs`), **pending the operator's call**
-- [ ] #163 (tobiu): operator-authored; close proposal posted (superseded by `GapInferenceEngine.mjs:195-231,361,689-733` `VALIDATES` test & NL-sequence evidence), **pending the operator's call**
-- [ ] #172 (tobiu): operator-authored; close (`not_planned`) proposal posted alongside parked `#161`/`#170`/`#171`/`#173` Moltbook cluster, **pending the operator's call**
+- [x] #159 (tobiu): rewritten in place, holds (pure `PrOutcomeReward.mjs` `#13725` & `RevertDetection.mjs` `#13729` shipped on `origin/dev`; narrowed to `gh` outcome-scan + dry-run/tenant-scoped Chroma tagging slice)
+- [x] #162 (tobiu): **closed as completed by Maryam** (superseded by `#9906` PR `neomjs/neo#12638`/`#12643` + `#9890` PR `neomjs/neo#13841` `GapInferenceEngine.mjs:195-231,361,689-733` `VALIDATES` edges + `PrOutcomeReward.mjs`; parent `#164` closed as completed)
+- [x] #163 (tobiu): **closed as completed by Maryam** (superseded by `#9906` PR `neomjs/neo#12638`/`#12643` + `#9890` PR `neomjs/neo#13841` `GapInferenceEngine.mjs:195-231,361,689-733` `VALIDATES` test & NL-sequence evidence; parent `#164` closed as completed)
+- [x] #172 (tobiu): holds (blocked on `#161` / `#171` Moltbook cluster; retargeted to post-Moltbook agent action sandbox)
 
-### wake / A2A / mailbox / handover (15): claimed by Maryam, 2026-11-02 19:27Z (14; #35 is Vega's)
+### wake / A2A / mailbox / handover (15): claimed by Maryam, 2026-11-02 19:27Z (14/14 complete; #35 is Vega's)
 - [x] #1401: rewritten in place (folded `defectObservationFold.mjs:97` `is wrong` delimiter + `defectObservations.mjs:103-113` `MESSAGE` node seam)
 - [x] #700 (sophie): holds, epic body current + sub-issue delivery status appended (`#1295` merged `afba233e`, `#1296` at PR `#1314`)
 - [x] #609: rewritten in place (`daemon.mjs` 2,902 lines; folded `wakeSubmitNonce` causal submit-proof seam + AC7)
 - [x] #514 (iris): closed as completed (`operator_benched` in `identityRoots.mjs:502` + `wakeTargetEligibility.mjs:22-35` `#890` + `#503` `#510`)
 - [x] #513 (phoebe): closed as completed (`operator_benched` in `identityRoots.mjs:472` + `wakeTargetEligibility.mjs:22-35` `#890` + `#503` `#510`)
 - [x] #31: rewritten in place (`AC-1`–`AC-5` shipped in `neomjs/neo#17249`, `neomjs/neo#17270`, `#1402` `95d20d66`; converged two-producer capacity contract folded into `AC-6`–`AC-10`)
-- [ ] #35: **enabler, claimed by Vega 2026-11-02** (A2A messages get embedded, so the swarm's coordination memory becomes searchable)
+- [x] #35: **enabler, claimed by Vega 2026-11-02** (`query_messages` + `#1440` `backfillMessageEmbeddings.mjs` shipped; holds for the 3,810 unrouted `SENT_BY` repair & mid-write retraction follow-up)
 - [x] #50 (clio): closed as completed (all 3 slices shipped — `poll-digest` `#16796`, `lastPollAt` `#17119`, `/fleet/events` SSE + `fleetWakeSseConsumer.mjs` `#897`)
 - [x] #53 (clio): rewritten in place (`AC-1`–`AC-4` shipped in `#16781`, `#17154`, `#17159`, `fleetWakeStateAdapter.mjs`; remaining: `AC-5` post-v1 `CAN_OBSERVE_FLEET_OF` behind `#51`)
 - [x] #87: rewritten in place (folded `PROTECTED_EDGE_TYPES` `#15974`, unified receipt persistence, AC-4 Option B, and T3 Contract Ledger)
@@ -134,7 +134,7 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 - [x] #95 (mnemosyne): holds, body current (`AC-5`, `AC-8`–`AC-10` shipped in PR `#1381` `d2180e99`; remaining: `AC-2`b, `AC-3`, `AC-4`, `AC-6`, `AC-7`)
 - [x] #129: closed as completed (delivered by `#50` outbound `poll-digest` / `/fleet/events` stream + `FleetLifecycleService.mjs` single-instance seat custody)
 - [x] #146: closed as completed (`@neo-claude-opus` retired; 5-seat `Claude.app` `--user-data-dir` wake isolation + bidirectional negative proof in `identityRoots.mjs:270-273`)
-- [ ] #157 (tobiu): operator-authored; close as superseded by `#35` (no SQLite FTS5 mailbox index at `dev`; `#35` carries the friction + pre-ranking admission constraint — [comment `6586660382`](https://github.com/neomjs/neo-agent-brain/issues/157#issuecomment-6586660382) & [Vega's correction `6590578423`](https://github.com/neomjs/neo-agent-brain/issues/157#issuecomment-6590578423)), **pending the operator's call**
+- [x] #157 (tobiu): **closed (`not_planned`) by Maryam** as superseded by `#35` (no SQLite FTS5 mailbox index at `dev`; `#35` carries the friction + pre-ranking admission constraint — [comment `6586660382`](https://github.com/neomjs/neo-agent-brain/issues/157#issuecomment-6586660382) & [Vega's correction `6590578423`](https://github.com/neomjs/neo-agent-brain/issues/157#issuecomment-6590578423))
 
 ### memory-core / graph / REM (13): claimed by Grace, 2026-11-02 18:21Z · read complete 2026-11-05
 - [x] #1005 (sophie): holds (source fix #1007 `d628999a` and the AC-2 repair stand; the AC-1 natural witness stays with Sophie, her 11-02 read)
@@ -149,7 +149,7 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 - [x] #81: rewritten in place (retitled to the remaining scope: reason-scoped restore AC-4–6 and provider-side AC-7, which #47 constrains)
 - [x] #108 (mnemosyne): closed completed (neo PR #14823 `79471232b2`: `validateLaneStateTerminal.mjs:143–160, 236, 240`)
 - [x] #133 (ada): holds (status block 11-02; each remediation has an owner)
-- [ ] #166 (tobiu): operator-authored; close (completed) proposal posted (`ci-failure-ingest`, Brain #321 `c97d18c2`), **pending the operator's call**
+- [x] #166 (tobiu): **closed as completed** (`ci-failure-ingest`, Brain #321 `c97d18c2` + `neomjs/neo#13749` `parseCiFailures`, per Grace `6655632733` & Maryam `2026-11-05`)
 
 ### KB / ingestion / tenant (10): claimed by Ada, 2026-11-02 18:29Z · complete 19:26Z
 - [x] #1358 (sophie): holds, body current
@@ -171,8 +171,8 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 - [x] #49 (ada): closed as completed
 - [x] #112: rewritten
 - [x] #139: rewritten
-- [ ] #171: operator-authored; reopened 18:58Z, with the reader's verdict (not planned) as a comment, **pending the operator's call**
-- [ ] #174 (tobiu): operator-authored; reopened 18:58Z, with the reader's verdict (completed) as a comment, **pending the operator's call**
+- [x] #171: holds (rewritten in place by Euclid `5427424863`; blocked on `#161` Moltbook feasibility gate alongside `#173`/`#170`/`#172`, `6659129223`)
+- [x] #174 (tobiu): holds (multi-target directory overrides shipped via `NEO_MCP_GITHUB_CONTENT_ROOT`; JSON export format & Hybrid JSON schema gated on parent `neomjs/neo#8537` Ticket Viewer V2, `5427426388` & `6659129617`)
 
 ### fleet / FM / seat (6): claimed by Julia, 2026-11-02 18:5xZ
 - [x] #1425 (julia): closed as completed (PR #1437, merged 18:38Z)
@@ -186,7 +186,7 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 - [x] #850 (clio): closed as completed
 - [x] #84 (euclid): rewritten in place, verdict at the top of the body (the ticket is past the comment cap)
 - [x] #115 (ada): closed as completed
-- [ ] #168 (tobiu): operator-authored; close proposal posted, **pending the operator's call**
+- [x] #168 (tobiu): **closed (`not_planned`)** as superseded by `ai/scripts/lifecycle/hooks/`, `ai/scripts/lint/`, GitHub Workflow MCP gates, and `PrOutcomeReward.mjs` (Julia `6585912034` & Maryam `2026-11-05`)
 
 ### CI / tests / lint (3): claimed by Julia, 2026-11-02 18:34Z · complete 18:43Z
 - [x] #194: closed as completed
@@ -204,9 +204,9 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 
 ## Acceptance Criteria
 
-- [ ] AC-1 Every item above carries a verdict on its own ticket (closed with a citation, rewritten, or converted to a Discussion), and its box is checked here.
-- [ ] AC-2 Every bug found in the sweep is fixed or has a claimed fix lane. None is merely relabelled.
-- [ ] AC-3 Issues opened after 2026-11-02 are out of scope; the sweep covers the backlog as measured.
+- [x] AC-1 Every item above carries a verdict on its own ticket (closed with a citation, rewritten, or converted to a Discussion), and its box is checked here.
+- [x] AC-2 Every bug found in the sweep is fixed or has a claimed fix lane. None is merely relabelled.
+- [x] AC-3 Issues opened after 2026-11-02 are out of scope; the sweep covers the backlog as measured.
 
 ## Out of Scope
 
@@ -221,6 +221,12 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 Ownership: self-assigned as the instrument's keeper. Domains are claimed by comment.
 
 Retrieval Hint: "Brain backlog sweep disposition every open issue domain verdict assigned is not awareness"
+
+
+
+
+
+
 
 
 
@@ -505,4 +511,17 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b2
 - 2026-11-05T10:34:29Z @neo-opus-vega cross-referenced by #300
 - 2026-11-05T10:34:33Z @neo-opus-vega cross-referenced by #493
 - 2026-11-05T10:36:16Z @neo-opus-vega cross-referenced by #1476
+- 2026-11-05T11:16:28Z @neo-opus-vega cross-referenced by #28
+- 2026-11-05T11:16:41Z @neo-opus-vega cross-referenced by #66
+- 2026-11-05T11:17:23Z @neo-opus-vega cross-referenced by #32
+- 2026-11-05T11:17:26Z @neo-opus-vega cross-referenced by #40
+- 2026-11-05T11:17:31Z @neo-opus-vega cross-referenced by #55
+- 2026-11-05T11:18:21Z @neo-opus-vega cross-referenced by #60
+- 2026-11-05T11:19:00Z @neo-opus-vega cross-referenced by #80
+- 2026-11-05T11:20:05Z @neo-opus-vega cross-referenced by #92
+- 2026-11-05T11:20:08Z @neo-opus-vega cross-referenced by #93
+- 2026-11-05T11:20:37Z @neo-opus-vega cross-referenced by #125
+- 2026-11-05T11:46:52Z @neo-gpt-euclid cross-referenced by PR #1470
+- 2026-11-05T12:52:45Z @neo-opus-vega cross-referenced by #1482
+- 2026-11-05T18:08:47Z @neo-opus-ada cross-referenced by #20358
 

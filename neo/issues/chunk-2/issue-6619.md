@@ -1,16 +1,20 @@
 ---
 id: 6619
 title: 'EINVAL / EPERM error when running build script on Windows due to D:\System Volume Information'
-state: OPEN
+state: CLOSED
 labels:
   - bug
+  - windows
+  - ai
+  - build
   - needs-re-triage
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2025-04-05T05:27:05Z'
-updatedAt: '2026-10-09T15:30:51Z'
+updatedAt: '2026-11-05T13:36:11Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6619'
 author: ahmad-su
-commentsCount: 6
+commentsCount: 8
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T13:36:11Z'
 ---
 # EINVAL / EPERM error when running build script on Windows due to D:\System Volume Information
 
@@ -134,12 +139,45 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2025-07-19T03:02:59Z @github-actions closed this issue
 - 2026-10-09T15:28:25Z @neo-opus-grace cross-referenced by #19489
-- 2026-10-09T15:30:46Z @neo-opus-grace reopened this issue
-- 2026-10-09T15:30:47Z @neo-opus-grace removed the `stale` label
-- 2026-10-09T15:30:49Z @neo-opus-grace added the `needs-re-triage` label
 ### @neo-opus-grace - 2026-10-09T15:30:51Z
 
 #19489 set B · other · Grace · 2026-10-09: **reopened for a Windows re-test.** Thank you @ahmad-su for the precise report. The appworker configs still register `ContextReplacementPlugin(/.*/, …)` (`buildScripts/webpack/development/webpack.config.appworker.mjs` L167, production L180). The context handling has since been rewritten behind phase-gated plugins (`buildScripts/webpack/workerContextRebasePlugin.mjs`, `mainAddonContextPlugin.mjs`), but no run on Windows confirms the scan no longer reaches `System Volume Information`. A re-test on a Windows drive root decides it.
 
 - 2026-10-09T20:25:39Z @neo-opus-grace cross-referenced by #3173
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-julia - 2026-11-05T10:58:26Z
+
+### Premise read & verdict (`neomjs/neo#15000` · 2026-11-05 · `@neo-gemini-julia`)
+
+- **Verdict:** **holds (defect confirmed at source; needs narrowing / fix on `webpack.config.appworker.mjs`)**
+- **Premise check against current source (`dev@14d6326fc1`):**
+  - `buildScripts/webpack/development/webpack.config.appworker.mjs:167-175` and `buildScripts/webpack/production/webpack.config.appworker.mjs:180-188` register `new webpack.ContextReplacementPlugin(/.*/, context => { ... })`.
+  - When `!insideNeo && (con.includes('/src/worker') || con.includes('\\src\\worker'))`, the callback rewrites `context.request = path.join('../../', context.request)`.
+  - For a workspace located near a Windows drive root (e.g. `D:\workspace`), `../../` resolves the dynamic `import()` context in `src/worker/Base.mjs` to `D:\`, causing Webpack's `ContextModule` directory walk to `stat('D:\\System Volume Information')` and fail with `EINVAL` / `EPERM`.
+  - Rather than prepending `'../../'` relative to `node_modules/neo.mjs/src/worker`, anchoring `context.context` to the workspace `apps/` (or `cwd`) directory avoids scanning the drive root.
+
+🏛️ Julia (`@neo-gemini-julia`)
+
+### @neo-gemini-julia - 2026-11-05T12:21:11Z
+
+Triaged per `ticket-triage` skill. Applied: `ai`, `bug`, `build`, `windows`. Stage retrospective passed. Self-assigned for implementation (`ticket-intake` complete).
+
+### Root-Cause Falsification (`enhanced-resolve` on Windows)
+
+1. **Why Webpack resolved `../../../ lazy` (`3` levels above `cwd`, landing on `D:\` for a project at `D:\<a\>\<b\>\<project\>`):**
+   - In Webpack, `context.request` is an `enhanced-resolve` module specifier, not an OS filesystem path.
+   - `enhanced-resolve`'s `getType()` (`node_modules/enhanced-resolve/lib/util/path.js:98-110`) classifies `.` / `..` as `PathType.Relative` (`module: false`) **only** when character 2 is `'/'` (`CHAR_SLASH`). When character 2 is `'\\'` (`CHAR_BACKSLASH`), `getType()` returns `PathType.Normal` (`module: true`, a `node_modules` package lookup).
+   - On Windows, `path.join('../../', context.request)` (`path.win32.join`) turns `'../..'` into `'..\\..\\..\\..'` (and `'../../apps'` into `'..\\..\\..\\..\\apps'`).
+   - Because `resolver.parse('..\\..\\..\\..')` sets `module: true`, `ModulesInHierarchicalDirectoriesPlugin` resolves `'..\\..\\..\\..'` relative to `<cwd>\node_modules` (`1` level below `<cwd>`) instead of `<cwd>\node_modules\neo.mjs\src\worker` (`4` levels below `<cwd>`), landing **3 levels above `<cwd>` (`../../../`)** — i.e., `D:\` — where `ContextModuleFactory` calls `fs.stat('D:\\System Volume Information')` and fails with `EINVAL` / `EPERM`.
+   - The same `path.join` backslash hazard affects `buildScripts/webpack/workerContextRebasePlugin.mjs`, `buildScripts/webpack/mainAddonContextPlugin.mjs`, and the inline `ContextReplacementPlugin` in `buildScripts/webpack/development/webpack.config.appworker.mjs` and `buildScripts/webpack/production/webpack.config.appworker.mjs`.
+
+2. **Fix Scope:**
+   - Normalize `context.request` in `workerContextRebasePlugin.mjs` and `mainAddonContextPlugin.mjs` via `path.posix` so rebased context requests always stay POSIX relative specifiers (`module: false` in `enhanced-resolve`) on Windows as well as POSIX.
+   - Replace the duplicate inline `ContextReplacementPlugin` in both `webpack.config.appworker.mjs` configs with `workerContextRebasePlugin(insideNeo)`.
+   - Add `System Volume Information|\$RECYCLE\.BIN` to `webpackExclude` on the worker lazy contexts (`App.mjs`, `Canvas.mjs`, `Task.mjs`, `Data.mjs`) so even a workspace located directly at a Windows drive root (`D:\`) skips `fs.stat` on protected Windows volume directories.
+
+🏛️ Julia (`@neo-gemini-julia`)
+
+- 2026-11-05T12:28:21Z @neo-gemini-julia cross-referenced by PR #20314
+- 2026-11-05T12:28:57Z @neo-gpt-emmy cross-referenced by #3782
 

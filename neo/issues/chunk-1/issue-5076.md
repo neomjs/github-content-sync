@@ -1,15 +1,18 @@
 ---
 id: 5076
 title: Radio button error message shown only once for the whole radio group
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
-assignees: []
+  - ai
+  - core
+assignees:
+  - neo-gpt-sophie
 createdAt: '2023-11-03T09:34:41Z'
-updatedAt: '2026-11-05T10:34:37Z'
+updatedAt: '2026-11-05T14:05:54Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5076'
 author: linchen
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T14:05:54Z'
 ---
 # Radio button error message shown only once for the whole radio group
 
@@ -53,4 +57,30 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-gpt-sophie - 2026-11-05T12:35:00Z
+
+**Intake, 5 November 2026 — valid; Sophie taking implementation.** A real `Neo.form.Container` with two unchecked, required `Radio` children currently renders the same group error twice. This confirms the source reads above. No matching implementation PR, open blocker or parent was found; the issue was unassigned before pickup. Created 2023-11-03, updated today: pre-stale under the current 90-day marking-only workflow, with no `stale` or exemption label. Age is not the validity evidence.
+
+Prescription checked: `src/form/field/CheckBox.mjs` owns group validation and error rendering; `Radio.mjs` inherits them. The value reader already scopes by full field path and closest form, but validation and radio exclusivity scan globally by name. A nested-form probe confirms `getClosestForm()` returns the inner form, while selecting its radio clears the outer form's same-name checked config. A separate `container.moveTo(0, 1)` probe confirms `items` reorder while `ComponentManager.getDirectChildren()` retains registration order. Neither global name matching nor the registry's last entry is a sound error owner.
+
+**Rendered-owner falsifier:** `apps/form/view/FormPageContainer.mjs` extends the logical form class but renders a `div`. The first candidate used `getClosestForm()` for exclusivity; a browser probe with two such containers under one actual form produced DOM `checked: false` but config `checked: true` on the losing radio. The helper now exposes both scopes: its default logical group serves validation and `getGroupValue()`, while `getGroupItems(true)` follows the nearest rendered `<form>` root for radio exclusivity. A second boundary check requires a logical form with no selected value to remain invalid even when another logical form owns the native group's selection; native selection must not certify empty logical data. `renderPath: true` only adds a namespace when a `formGroup` is configured; it does not create one from form-container identity. The browser falsifier and value-boundary unit case now pass.
+
+| Surface | Acceptance |
+| --- | --- |
+| `CheckBox#getGroupItems(useDomGrouping=false)` inherited by Radio | Default: same full data path, closest logical form, input type and window. With `true`: rendered name and nearest rendered `<form>` root, type and window. Unnamed fields are independent. Both return current container order, with stable registration order for unattached peers. No new registry or mandatory container. |
+| Required group validation | Each required member retains its error/invalid state; one message appears on the last non-hidden required member that allows error text. Explicit `showErrorTexts: false` remains an opt-out. |
+| Validation lifecycle | Checked changes, explicit validation and error-text visibility changes refresh presentation. The next validation observes insertion, removal and reordering rather than a cached last member. |
+| Radio selection | Use the helper's DOM grouping mode; different actual form owners, windows, rendered names and types remain independent. |
+| `getGroupValue()`, validation and field-change data | Use the default logical group, preserving checkbox arrays and radio scalar values. A logical form with no own selection remains invalid; another logical form's selection cannot satisfy it. |
+| `updateError(value, silent, showText=true)` | The optional presentation argument hides a non-owner's group text while preserving its error and invalid class. Existing two-argument callers retain their behavior. |
+| Independent fields | Individual required errors and explicit field errors retain their own presentation; no suppression merely because another field has the same raw name. |
+| Consumer simplification | Remove the required-group `showErrorTexts` workaround in `apps/form/view/pages/Page4.mjs`; the engine selects the group message owner. |
+
+The implementation stays within the field family and does not add a user obligation. Core idioms checked: `src/Neo.mjs`, `src/core/Base.mjs`, `src/state/Provider.mjs`; no provider is needed for this derived field state. Unit coverage belongs beside `unit/form/field/TextReset.spec.mjs`, with browser cases beside the existing CheckBox/Radio specs. ADR successor-risk: no-adr-impact found. KB and three Memory Core framings supplied no relevant prior implementation; current source and the probes above are the evidence.
+
+Triaged per `ticket-triage`: the six-stage retrospective passed, existing `enhancement` retained, verified `ai` and `core` applied. Scope is core field behavior, consumed by forms, with no service boundary or decision-record change.
+
+Sophie · GPT-6 Astra · ultra · Codex Desktop.
+
+- 2026-11-05T13:03:10Z @neo-gpt-sophie cross-referenced by PR #20322
 

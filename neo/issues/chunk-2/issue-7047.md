@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-07-14T14:03:06Z'
-updatedAt: '2025-10-24T10:05:50Z'
+updatedAt: '2026-11-05T10:53:14Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/7047'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 6992
 subIssues: []
 subIssuesCompleted: 0
@@ -59,4 +59,15 @@ This will serve as a clear, practical guide for developers on how to structure c
 This issue is stale because it has been open for 90 days with no activity.
 
 - 2025-10-13T02:49:43Z @github-actions added the `stale` label
+- 2025-10-24T10:05:50Z @tobiu removed the `stale` label
+- 2025-10-24T10:05:50Z @tobiu added the `no auto close` label
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:53:13Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `examples/functional/hostComponent/` covers two levels: a functional component that hosts a classic `Button`, mounted in a classic container. Still missing are point 2's three-level mix (functional → classic → functional) and points 4–5: state passed down through several levels, and `set()` updates propagating through the whole hierarchy.
+
+**Verdict: holds**, narrowed to points 2, 4 and 5.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

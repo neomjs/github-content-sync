@@ -1,16 +1,16 @@
 ---
 id: 3805
 title: 'component.Toast: multi window support'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
 assignees:
-  - Dinkh
+  - neo-gemini-maryam
 createdAt: '2023-01-06T12:17:36Z'
-updatedAt: '2026-11-05T10:35:15Z'
+updatedAt: '2026-11-05T17:18:59Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3805'
 author: tobiu
-commentsCount: 4
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T17:18:59Z'
 ---
 # component.Toast: multi window support
 
@@ -56,4 +57,29 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-gemini-maryam - 2026-11-05T14:57:01Z
+
+Picking up per 7-day rule; previous assignee `@Dinkh`; last qualifying assignee activity `2023-01-06T00:00:00Z` (reopened in backlog sweep `2026-10-09T20:31:14Z`).
+
+### Ticket Intake (`#3805` · `10k+ Commits Mental Model`)
+
+- **Verdict:** `valid-as-written` (sharpened for multi-window `windowId` realms sharing an `appName`).
+- **Scope (`src/manager/Toast.mjs`):**
+  1. Track `running` position buckets per `appName` (`getRunning(appName)`) while preserving top-level `running[position]` arrays for backwards compatibility.
+  2. Scope `maxToasts` admission in `findFirstToast()` by `(appName, windowId, position)` so running toasts in one browser window do not block toast display in a second window.
+  3. In `updateItemsInPosition(id)`, group running toasts at `position` by `windowId` realm, fetch `getDomRect(ids, windowId)` per realm concurrently via `Promise.all()`, and accumulate `top`/`bottom` offsets (`acc`) independently per `windowId` realm.
+
+— Maryam (`@neo-gemini-maryam` · Gemini 4 Argon · Antigravity) 🧭
+
+### @neo-gemini-maryam - 2026-11-05T14:57:27Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@Dinkh`
+**New assignees:** `@me`
+**Reason:** Picking up per 7-day rule; previous assignee @Dinkh has no activity since 2023-01-06.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-05T14:59:45Z @neo-gemini-maryam cross-referenced by PR #20335
 

@@ -1,16 +1,16 @@
 ---
 id: 21
 title: 'Discussion: KeyNav -> boost the onKeyDown trigger speed'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - discussion
 assignees: []
 createdAt: '2019-11-17T16:33:15Z'
-updatedAt: '2026-11-05T10:34:51Z'
+updatedAt: '2026-11-05T11:55:38Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/21'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:55:38Z'
 ---
 # Discussion: KeyNav -> boost the onKeyDown trigger speed
 
@@ -65,5 +66,9 @@ This issue was closed because it has been inactive for 14 days since being marke
 **Verdict: convert to a Discussion.** The ticket is operator-authored, so the conversion is the operator's call; it is listed on #15000.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-05T11:55:38Z
+
+Moved to the Discussion https://github.com/orgs/neomjs/discussions/20306 (backlog sweep #15000; the operator approved the move on 2026-11-05). The idea, its current state and its open questions live there now; this issue keeps its history. ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 

@@ -1,16 +1,16 @@
 ---
 id: 80
 title: Vector rebuild failure receipts and bounded embed retry
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees: []
 createdAt: '2026-07-31T15:25:40Z'
-updatedAt: '2026-08-26T15:08:25Z'
+updatedAt: '2026-11-05T11:19:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/80'
 author: neo-opus-vega
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:19:00Z'
 ---
 # Vector rebuild failure receipts and bounded embed retry
 
@@ -180,4 +181,19 @@ Origin Session ID: `5814af6b-fe4e-41ba-819f-e1aeb5558643`
 - 2026-08-21T00:32:16Z @tobiu referenced in commit `3c4e3cc` - "feat(ai): fate-stamped failure receipts and bounded embed retry (#16227)"
 - 2026-08-28T15:37:22Z @neo-opus-vega unassigned from @neo-opus-vega
 - 2026-08-29T19:55:00Z @neo-opus-vega cross-referenced by #237
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+- 2026-11-02T23:27:26Z @neo-opus-vega cross-referenced by #1440
+### @neo-opus-vega - 2026-11-05T11:18:59Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 7fba49d8: closed as superseded.** This body specifies a standalone rebuild runner, a CLI with exit codes, a dry run and receipts, for the July `#16208` rebuild. The plane no longer repairs vectors that way:
+
+- **Orchestrator heal operations replaced it.** `re-embed-missing` (`ai/daemons/orchestrator/Orchestrator.mjs:921`; `ai/services/memory-core/helpers/reEmbedMissingHeal.mjs`) re-embeds orphaned rows in place, as an additive and idempotent upsert re-run per cycle. `restore-empty-target` (`:831-873`) and `throttle-shed` (`:978`) sit beside it, under the dispatcher's anti-thrash record (ADR-0026). Your AC-3 lives on as the write invariant: `partitionRowsByVectorValidity` rejects any wrong-dimension or non-finite vector and counts it, never writing it (`reEmbedMissingHeal.mjs:3,24`).
+- **A runner the operator has to invoke** is the shape his rulings retired: Agent OS heals itself, and the FM never asks operators to run scripts. Emmy's 07-31 verdict had also already struck the runner's source premise (the WAL cannot reconstruct history).
+
+**The one idea not yet carried over** is AC-1's fate split. A `401`/`403` config failure is terminal; a `429`/`5xx` saturation is retryable. The heal counts failures but doesn't classify them. If a config-class failure ever loops the heal, fix it there, as a classification in the heal's receipt, not as this runner.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-05T11:19:00Z @neo-opus-vega closed this issue
 

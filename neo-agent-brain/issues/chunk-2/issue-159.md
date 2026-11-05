@@ -8,7 +8,7 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-04-13T11:13:18Z'
-updatedAt: '2026-11-02T23:09:07Z'
+updatedAt: '2026-11-05T12:14:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/159'
 author: tobiu
 commentsCount: 4
@@ -22,44 +22,45 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 9963 Agent Health Observability Dashboard'
+  - '[ ] 1479 Agent Health Observability Dashboard'
 ---
 # PR Outcome Tracker — Reward Signal for RLAIF Pipeline
 
 ### Problem
 
-The RLAIF data pipeline collects action traces and session summaries, but has **no actual reward function**. Session quality metrics (`quality`, `productivity`, `impact`) are LLM-estimated at summarization time — the LLM judges effort and coherence, not outcomes.
+The RLAIF data pipeline collects action traces and session summaries, but has **no active outcome-scan writer** tagging session summaries from PR merge outcomes. Session quality metrics (`quality`, `productivity`, `impact`) are LLM-estimated at summarization time — the LLM judges effort and coherence, not outcomes.
 
 A session where an agent produced 3 PRs that all got reverted would still receive high `productivity` scores because the summarizer has no visibility into what happened *after* the session ended.
 
-### Proposal
+### Shipped Pure Cores (`origin/dev`)
 
-Implement a **PR Outcome Tracker** that retroactively tags session summaries based on the merge outcome of associated PRs.
+1. **`ai/services/ingestion/PrOutcomeReward.mjs` (`neomjs/neo#13725`):**
+   - `PR_OUTCOME_REWARDS` (`mergedClean: 1.0`, `mergedWithChanges: 0.7`, `closedUnmerged: 0.0`, `reverted: -1.0`), `classifyPrOutcome`, and `computeOutcomeReward` (+ `test/playwright/unit/ai/services/ingestion/PrOutcomeReward.spec.mjs`).
+2. **`ai/services/ingestion/RevertDetection.mjs` (`neomjs/neo#13729`):**
+   - `parseRevertTrailer` and `isRevertOf` (+ `test/playwright/unit/ai/services/ingestion/RevertDetection.spec.mjs`).
 
-#### Reward Signal Definition
+### Remaining Scope: PR Outcome Scan + Dry-Run / Tenant-Scoped ChromaDB Tagging
 
-| PR Outcome | Reward | Rationale |
-|---|---|---|
-| Merged without changes | 1.0 | Gold standard — agent produced merge-ready code |
-| Merged with requested changes | 0.7 | Good work, minor polish needed |
-| Closed without merge | 0.0 | Wasted effort — approach was wrong |
-| Reverted after merge | -1.0 | Actively harmful — introduced regression |
+Implement the standalone / `runSandman.mjs` outcome-scan and ChromaDB session-summary tagging integration consuming `PrOutcomeReward.mjs` and `RevertDetection.mjs`:
 
-#### Implementation
+1. **Session-Linking Granularity:** Attribute each PR's outcome to the session(s) that **authored** the PR — link via PR commit author + `Origin Session ID` (or `GoldenPathSynthesizer` self-id parse), not bare `#TICKET` references (which over-attribute across review/fix sessions).
+2. **`hadRequestedChanges` Discriminator:** Define and test the `mergedClean` (`1.0`) vs `mergedWithChanges` (`0.7`) scan rule (e.g., whether the PR received any `CHANGES_REQUESTED` review or required follow-up commits after a review).
+3. **Revert-Chain Net Parity:** Walk revert chains (`parseRevertTrailer` / `isRevertOf`) to net parity rather than stopping at the first revert trailer: an odd number of reverts in the chain = `reverted` (`-1.0`); an even number (revert-of-a-revert) = re-applied (merge outcome).
+4. **ChromaDB Mutation Safety & Dry-Run First:**
+   - Enforce tenant/RLS scoping on session-summary updates so multi-tenant cloud runs cannot cross-tag.
+   - Provide a **truly read-only `--dry-run` mode** reporting computed `outcomeReward` and `prNumber` per session before any ChromaDB metadata write.
+5. **Integration Point:** Run as a standalone task / `runSandman.mjs` step rather than coupling into `DreamService` REM graph inference.
 
-1. **Data Source:** Use `gh pr list --state merged --json number,mergedAt,closedAt` to scan recent PRs.
-2. **Session Linking:** Each PR's commit message contains `(#TICKET_ID)`. Cross-reference the ticket ID with session summaries that reference the same ticket (via the `Origin Session ID` or memory metadata).
-3. **Retroactive Tagging:** Update the session summary's metadata in ChromaDB with `outcomeReward: float` and `prNumber: int`.
-4. **Integration Point:** This could run as a periodic `DreamService` task or a standalone daemon invoked by `runSandman.mjs`.
+### Acceptance Criteria
 
-### Why This Matters for RLAIF
-
-Without outcome-based rewards, any future fine-tuning or retrieval weighting is based on the LLM's self-assessment, which is inherently biased toward "I did good work." Outcome-based rewards ground the learning signal in reality: did the code actually ship?
-
-This also enables **weighted memory retrieval** — when an agent queries past approaches, results from high-reward sessions should rank higher than those from sessions where the PR was rejected.
+- [x] Pure reward classification (`ai/services/ingestion/PrOutcomeReward.mjs`, `neomjs/neo#13725`)
+- [x] Pure revert trailer detection (`ai/services/ingestion/RevertDetection.mjs`, `neomjs/neo#13729`)
+- [ ] Read-only outcome scan computing `outcomeReward` per authoring `Origin Session ID` with defined `hadRequestedChanges` and net-parity revert-chain resolution
+- [ ] Tenant-scoped ChromaDB session-summary metadata tagging (`outcomeReward`, `prNumber`) with `--dry-run` verification and unit coverage
 
 ### A2A Context
 Origin Session ID: `fff6dc5b-ca7f-4c9b-8eca-41bd8a97ad5d`
+
 
 ## Timeline
 
@@ -67,7 +68,6 @@ Origin Session ID: `fff6dc5b-ca7f-4c9b-8eca-41bd8a97ad5d`
 - 2026-04-13T11:13:21Z @tobiu added the `enhancement` label
 - 2026-04-13T11:13:21Z @tobiu added the `ai` label
 - 2026-04-13T11:13:21Z @tobiu added the `architecture` label
-- 2026-04-13T11:13:35Z @tobiu marked this issue as blocking #9963
 - 2026-06-21T03:51:36Z @tobiu unassigned from @tobiu
 ### @neo-opus-ada - 2026-06-21T06:07:26Z
 
@@ -87,7 +87,7 @@ Before impl, four design points (the memory-core write + the linking are load-be
 
 Suggested slicing: (a) the read-only outcome-scan + reward-computation (pure, dry-run), then (b) the gated ChromaDB tagging. Routing to @neo-opus-grace as the memory-core/RLAIF owner.
 
-- 2026-06-21T06:18:46Z @neo-opus-ada cross-referenced by #9963
+- 2026-06-21T06:18:46Z @neo-opus-ada cross-referenced by #1479
 - 2026-06-21T06:47:00Z @neo-opus-ada cross-referenced by #13724
 - 2026-06-21T06:53:58Z @neo-opus-ada cross-referenced by PR #13725
 - 2026-06-21T06:59:48Z @neo-opus-ada cross-referenced by #13674
@@ -130,7 +130,6 @@ Slice 2 of #9962 (PR Outcome Tracker — RLAIF reward signal), sibling of #13724
 
 Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
 - 2026-06-21T10:04:40Z @neo-opus-vega cross-referenced by #9980
-- 2026-08-26T15:19:18Z @tobiu marked this issue as blocking #9963
 - 2026-10-10T16:32:40Z @neo-opus-grace cross-referenced by #970
 - 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
 - 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
@@ -150,4 +149,5 @@ Verified against `origin/dev` (`613df5d7`):
 
 — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
 
+- 2026-11-05T11:54:22Z @tobiu marked this issue as blocking #1479
 

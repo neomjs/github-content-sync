@@ -1,17 +1,18 @@
 ---
 id: 60
 title: 'Chroma grows toward a memory cap the daemons cannot pass, and hitting it is silent'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - architecture
-assignees: []
+assignees:
+  - neo-opus-vega
 createdAt: '2026-08-06T14:43:08Z'
-updatedAt: '2026-11-02T06:33:46Z'
+updatedAt: '2026-11-05T12:07:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/60'
 author: neo-opus-vega
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T12:07:37Z'
 ---
 # Chroma grows toward a memory cap the daemons cannot pass, and hitting it is silent
 
@@ -47,6 +49,10 @@ Measured on the local plane, 2026-09-28 14:52–14:56Z:
 **Still open from the original ticket:** a store that reaches its ceiling exits cleanly (`OOMKilled=false`, `ExitCode=0`), so a truncated import looks like an ordinary restart. Moving the cap does not make hitting it observable.
 
 New ACs are deliberately not written until the mechanism is chosen.
+
+**Owners as of 2026-11-05 (closing reconciliation, the #1438 read):** each part above that still holds now lives elsewhere, so this ticket closes on its own last AC (PR #1478) without dropping any of them:
+- **Hitting the ceiling, made observable.** The approach is diagnosed before the clean exit, at 80 % for stores (`storeMemorySaturationPercent`, `ai/daemons/orchestrator/services/ContainerHealthDiagnosisService.mjs:282-288`), on the reading #614 corrected (closed 2026-09-28). Every death is captured as a `die`/`oom` event (#466, `DeploymentStateBridgeService.mjs:852-905`). Attributing a death to a truncated corpus, the "looks like an ordinary restart" half, is #62.
+- **The cap question.** Shrinking what the store holds (dead HNSW elements, retired collections) is the compaction chain #1434 → #1435 → #1432 under #1416. A band that follows the host, or a homeostatic step, is #125.
 
 ## Context
 
@@ -124,7 +130,7 @@ At ~96,000 rows that predicts **~2.02 GiB** — and the observed cliff was 2.00.
 
 ## Acceptance Criteria
 
-- [ ] chroma's declared limit is `8g`, with the per-row measurement and the completion arithmetic recorded inline.
+- [x] chroma's declared limit is `8g`, with the per-row measurement and the completion arithmetic recorded inline. *(Verified 2026-11-05: `deploy/cloud/docker-compose.yml:51-66`.)*
 - [ ] The comment states that limits are caps rather than reservations, so the declared sum is not read as a VM requirement.
 - [x] *(post-merge, operator-owned)* After a chroma recreate, an operation that brings the store to a complete corpus finishes without a clean-exit restart.
 - [x] *(post-merge)* Resident memory at a complete corpus is recorded, turning the 4× headroom claim into a measurement.
@@ -162,6 +168,8 @@ Authored by @neo-opus-vega (Claude Opus 5).
 
 ---
 *(Client identity redacted 2026-08-24 per §critical_gates 9; the private lane records which tenant this is.)*
+
+
 
 
 
@@ -402,4 +410,30 @@ Not covered here: your RSS figures beyond your comment, and kb-gc's `defrag-reco
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-02T15:41:24Z @neo-opus-vega cross-referenced by #1432
+- 2026-11-02T17:37:30Z @neo-opus-vega cross-referenced by #1434
+- 2026-11-02T17:38:14Z @neo-opus-vega cross-referenced by #1435
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+- 2026-11-02T19:41:48Z @neo-gemini-maryam cross-referenced by #306
+### @neo-opus-vega - 2026-11-05T11:18:20Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 7fba49d8: holds, one small AC from done.**
+
+- **AC-1 is met and now ticked.** `deploy/cloud/docker-compose.yml:51-66` records the 77,044-row / 1.628 GiB measurement, the `rows × 16 KiB × ~1.38` arithmetic and the `8g` default inline. The three post-merge ACs were already ticked.
+- **AC-2 is open.** Nothing in the compose says limits are caps rather than reservations; `grep -i reservation` has zero hits. That's a one-line comment beside `:66`, so the declared sum isn't read as a VM requirement.
+- **The title's growth is owned elsewhere now.** The cap is raisable (the `container-memory-ceiling` knob, 8–16 GiB band). The growth toward it, mostly dead HNSW elements, is the compaction chain #1434 → #1435 → #1432, per Ada's 11-02 design read above.
+
+When AC-2 lands, this closes as completed.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-05T11:34:08Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-11-05T11:35:02Z @neo-opus-vega cross-referenced by PR #1478
+- 2026-11-05T12:07:37Z @tobiu referenced in commit `b282d7e` - "docs(deploy): the compose says its memory limits are caps, never reservations (#60) (#1478)
+
+Docker sets nothing aside at create, so the summed limits bound concurrent use;
+read as a VM requirement they overstate it. The note sits with chroma's sizing
+arithmetic, the block #60's other criteria already pinned."
+- 2026-11-05T12:07:39Z @tobiu closed this issue
 

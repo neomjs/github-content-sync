@@ -1,16 +1,16 @@
 ---
 id: 280
 title: 'component.Helix: support for mobile'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - help wanted
 assignees: []
 createdAt: '2020-03-14T19:59:43Z'
-updatedAt: '2026-11-05T10:35:02Z'
+updatedAt: '2026-11-05T11:55:45Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/280'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:55:45Z'
 ---
 # component.Helix: support for mobile
 
@@ -62,5 +63,9 @@ This issue was closed because it has been inactive for 14 days since being marke
 **Verdict: convert to a Discussion, together with #279**, because the touch gestures for both components are one design question. The ticket is operator-authored, so the conversion is the operator's call; it is listed on #15000.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-05T11:55:44Z
+
+Moved to the Discussion https://github.com/orgs/neomjs/discussions/20308 (backlog sweep #15000; the operator approved the move on 2026-11-05). The idea, its current state and its open questions live there now; this issue keeps its history. ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 

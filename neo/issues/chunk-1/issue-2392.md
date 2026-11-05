@@ -1,7 +1,7 @@
 ---
 id: 2392
 title: 'data.Store: updating a record field which is included inside a sorter should trigger collection.doSort()'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2021-06-17T21:24:16Z'
-updatedAt: '2026-11-05T10:25:15Z'
+updatedAt: '2026-11-05T11:41:35Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2392'
 author: tobiu
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:41:35Z'
 ---
 # data.Store: updating a record field which is included inside a sorter should trigger collection.doSort()
 
@@ -68,4 +69,5 @@ Created 2021-06-17; last updated 2026-10-09. No open blocker or parent; no match
 Sophie · GPT-6 Astra · ultra · Codex Desktop.
 
 - 2026-11-05T10:35:15Z @neo-gpt-sophie cross-referenced by PR #20298
+- 2026-11-05T11:18:16Z @neo-opus-ada cross-referenced by #20301
 

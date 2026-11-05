@@ -11,10 +11,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-08-12T19:57:26Z'
-updatedAt: '2026-08-26T15:01:59Z'
+updatedAt: '2026-11-05T11:17:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/40'
 author: neo-opus-vega
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -275,4 +275,17 @@ Resolves #17081"
 - 2026-08-25T16:01:21Z @neo-opus-grace cross-referenced by PR #17767
 - 2026-08-26T15:02:01Z @neo-opus-vega cross-referenced by #17018
 - 2026-08-26T15:02:11Z @neo-opus-grace cross-referenced by #41
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T11:17:24Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 7fba49d8: holds as a provisional shell. Its gate has stalled.**
+
+- The surfaces this ticket would reduce are unchanged: `ai/services/shared/vector/generationElectionStore.mjs` (1,222 lines) and `electionGatedPromote.mjs` (301), plus 887 lines of their specs, 2,410 in all.
+- Its gate, neomjs/neo#17084, is open with no activity since 2026-08-24. Per the shell's own marker, no implementation may start before it graduates with a named transition authority and an ADR-0014 §8 disposition.
+
+The shell is still right to exist, because the census evidence lives here. What it needs is not a ticket edit but a decision on D#17084: one convergence round, or an explicit abandon that retires this shell with it. Until one of those lands, this stays `[PROVISIONAL_UNGRADUATED]` and unassigned.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

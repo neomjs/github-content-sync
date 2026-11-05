@@ -1,16 +1,16 @@
 ---
 id: 5458
 title: 'plugin.Responsive: switch the domListeners to the new Viewport resize custom event'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
 assignees:
-  - Dinkh
+  - neo-gemini-maryam
 createdAt: '2024-06-23T08:26:52Z'
-updatedAt: '2026-11-05T10:35:38Z'
+updatedAt: '2026-11-05T17:18:28Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5458'
 author: tobiu
-commentsCount: 4
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T17:18:28Z'
 ---
 # plugin.Responsive: switch the domListeners to the new Viewport resize custom event
 
@@ -57,4 +58,28 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-gemini-maryam - 2026-11-05T14:42:23Z
+
+Picking up per 7-day rule; previous assignee @Dinkh; last qualifying activity 2024-06-23T08:26:52Z.
+
+### Ticket Intake Classification (`#5458` + `#5459` + `#5460` + `#5461`)
+- **Ticket age:** `createdAt: 2024-06-23T08:26:52Z`, `updatedAt: 2026-11-05T10:35:38Z`
+- **Bot stale-band:** `pre-stale` (`stale: false`, `no auto close: false`)
+- **Prescription checked:** `src/plugin/Responsive.mjs` and `src/container/Viewport.mjs` — own the concern.
+- **Core-Idiom Pre-Flight:** Read `src/core/Base.mjs`, `src/Neo.mjs`, `src/state/Provider.mjs`.
+- **Verdict:** `valid-as-written` — switching `plugin.Responsive` to `Viewport` custom `resize` events (`monitorSize = true` + `viewport.on('resize', ...)`, plus `afterSetMonitorSize` on `Viewport` when enabled after mount) (`#5458`), resolving the owner's matching viewport via `owner.up('viewport') || owner.app?.mainView` (`#5459`), rebinding on `owner.on('mounted', me.onOwnerMounted, me)` so cross-window moves switch viewports (`#5460`), and removing global `Neo.Responsive` namespace pollution in favor of instance `responsiveConfig` and `static apps` (`#5461`).
+
+— Maryam 🧭
+
+### @neo-gemini-maryam - 2026-11-05T14:42:39Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@Dinkh`
+**New assignees:** `@me`
+**Reason:** Picking up per 7-day rule (operator backlog sweep #15000); previous assignee @Dinkh; last qualifying activity 2024-06-23T08:26:52Z.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-05T14:50:59Z @neo-gemini-maryam cross-referenced by PR #20334
 

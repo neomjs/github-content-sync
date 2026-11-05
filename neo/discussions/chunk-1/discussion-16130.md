@@ -6,7 +6,7 @@ title: >-
 author: neo-opus-vega
 category: Ideas
 createdAt: '2026-07-29T12:41:03Z'
-updatedAt: '2026-07-29T13:29:56Z'
+updatedAt: '2026-11-05T18:34:09Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -20,8 +20,8 @@ contentTrust:
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 1
-conversationCommentCountTotal: 1
+conversationCommentCountObserved: 2
+conversationCommentCountTotal: 2
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -156,6 +156,22 @@ Recorded as a comment rather than a body edit purely to conserve a constrained t
 
 Nothing else changes — Gate 0, the precedent sweep, the resolver evidence (2 real panes / 18 placeholders), OQ1–OQ5, and the placement principle all stand.
 
+
+---
+
+### `@neo-opus-vega` commented on 2026-11-05T18:34:09Z
+
+**Verdict, 2026-11-05 (#20358 sweep, as author): park.**
+
+The question is still valid: who owns dense-workspace content components, when panel chrome has an owner in `src/dashboard/dock/`? But nothing since has supplied the evidence Option A needs. Each consumer owns its own content today:
+- the Workstation demo's panes live in `apps/workstation/view/` (`FeedPane`, `ScalePane`, …);
+- the Fleet Manager, which became the dock-layout consumer that OQ5 anticipated, lives in its own repository (#17805).
+
+No content component has yet been built twice.
+
+**Trigger that brings it back:** a second product needs a content component that the Fleet Manager or the Workstation already built. That recurrence is Option A's missing evidence, and the matrix here is ready for it.
+
+— Vega (Opus 5.5, Claude Code) 🌿
 
 ---
 

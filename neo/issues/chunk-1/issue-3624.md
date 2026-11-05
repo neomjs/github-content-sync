@@ -4,12 +4,15 @@ title: 'Docs should separate "app" from API tab, and should exclude empty folder
 state: OPEN
 labels:
   - enhancement
-assignees: []
+  - developer-experience
+  - ai
+assignees:
+  - neo-gpt-sophie
 createdAt: '2022-12-17T23:18:42Z'
-updatedAt: '2026-11-05T10:52:45Z'
+updatedAt: '2026-11-05T18:23:37Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3624'
 author: maxrahder
-commentsCount: 6
+commentsCount: 9
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -61,4 +64,42 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-gpt-sophie - 2026-11-05T17:30:09Z
+
+**Continuation intake — Sophie, 5 November 2026, source refreshed to dev `485650cd4f`.** The remaining outcome is separating application classes from the API tab; the empty-folder half is already delivered by #20244 / #3240, as Ada recorded above.
+
+The split has three concrete integration constraints:
+
+- `MainContainerController#onViewSourceRoute` currently resolves every class through `api-treelist.store`. Removing app records from that store without retaining full-structure lookup would break application and Docs-class source links, including links whose navigation leaf is hidden by search.
+- `onNavigationSearchFieldChange` explicitly filters only API and Examples. An Apps tree must join that same search behavior. Each scoped tree needs complete folder/parent chains: `tree.List` filtering and expansion traverse its store and expect corresponding VDOM nodes, so a partial rendering over an unrelated full store is unsafe.
+- `MainContainer#construct` disables Examples in dist environments by its numeric navigation position. Adding Apps must preserve that behavior through a stable reference, not accidentally disable the new tab.
+
+**Proposed acceptance boundary:** API contains the generated `src` subtree; Apps contains the generated `apps` subtree, including Docs application classes; Examples keeps its existing role. Default navigation remains API. Search covers all three; class and source routes retain their existing URLs and work independently of which navigation tab is open. Native tests should cover an app source link with Apps unopened, source lookup after search hides the leaf, and correct Examples disabling in dist mode.
+
+This is a source-grounded continuation plan, not a second empty-folder fix. No implementation or claim yet; the next implementation check is the complete subtree projection and global source lookup. Emmy's nearby #20318 has now merged and will be preserved on the fresh base.
+
+### @neo-gpt-sophie - 2026-11-05T18:14:09Z
+
+**Maintainer intake — Sophie.** Triaged per `ticket-triage`: retained `enhancement`, added `ai` and `developer-experience`; six-stage retrospective passed for the remaining navigation outcome. Created 2022-12-17, updated 2026-11-05; no stale/exemption label, pre-stale under the current 90-day mark-only workflow. No open blocker or competing PR. Ada's narrowing above and the delivered #3240/#20244 settle the empty-folder half. Verdict: valid for the remaining Apps/API separation; positive ROI, confined to Docs navigation.
+
+**Prescription checked:** `docs/app/view/MainContainer.mjs` owns navigation composition and a root `Neo.state.Provider` can own the complete structure Store. `ApiTreeList` consumes scoped `sourceId` Store projections; `MainContainerController` owns search and source routes. This uses the existing `Store`/`Model`, `Provider` and collection filter primitives, preserving complete parent chains rather than partially rendering one full tree. Core reads: `Neo.setupClass`, `core/Base` construction/ready/destroy, `state/Provider` stores, `data/Store` and `data/Model`. No engine API or generator change.
+
+**Intake contract (claimer-authored):**
+
+| Target surface | Source of authority | Behavior | Edge case | Docs | Evidence |
+|---|---|---|---|---|---|
+| Docs navigation tabs | Original request + prior narrowing | API defaults to `src`; Apps holds the `apps` subtree including Docs classes; Examples retains its role | Empty subtree stays empty; root names/parent chains, not fixed IDs | View JSDoc | Store/projection unit cases and browser tabs |
+| Structure Store ownership | `MainContainer`, `Provider` stores and `sourceId` | One root-owned full index, scoped native Store projections | Source lookup is independent of selected tab and search | View/controller JSDoc | App source link with Apps unopened and filtered out |
+| Navigation search | `onNavigationSearchFieldChange`, `tree.List#filter` | Same literal search reaches API, Apps and Examples | Clearing restores folders; every projected child retains ancestors | Controller JSDoc | Existing literal-search test plus Apps coverage |
+| Examples availability | Existing MainContainer dist behavior | Disabled only outside development | Stable reference survives the new tab position | Construct JSDoc | Development/dist unit assertions |
+
+**Acceptance:** (1) separate API/Apps with API default; (2) search all three; (3) existing class/source URLs work across scopes and hidden leaves; (4) Examples remains correctly disabled in dist; (5) one structure fetch and owned-store cleanup. The contributor's original prose remains intact.
+
+### @neo-gpt-sophie - 2026-11-05T18:23:37Z
+
+**Projection experiment retained.** Question: can one complete structure Store feed two independent navigation Stores without copying/rewriting generated rows? Native `sourceId` projections do; the focused full-view test passes source/API/Apps counts, global source routing, empty-branch reload and owned-store destruction.
+
+One rejected implementation assumption matters: `Filter#filterBy` receives `allItems` during a full filter pass, but insertion's `collection.Base#isFilteredItem` calls it without that argument. The first predicate therefore failed on the real source-mutation path. The final predicate reads the projection's `getSource()` and walks parent IDs in that complete source map; no engine fallback or copied index was added. The root provider loads structure once. Fourteen focused Docs unit cases pass. The existing literal-search browser case and the actual generated-data mixin/source Neural Link case also pass; the app-class-specific browser case is the remaining validation.
+
+- 2026-11-05T18:26:21Z @neo-gpt-sophie cross-referenced by PR #20361
 

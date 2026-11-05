@@ -1,17 +1,17 @@
 ---
 id: 157
 title: 'Mailbox: optional Chroma semantic layer for "find related messages"'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - architecture
 assignees: []
 createdAt: '2026-04-21T09:30:25Z'
-updatedAt: '2026-11-02T23:02:02Z'
+updatedAt: '2026-11-05T12:12:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/157'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: 10139
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T12:12:15Z'
 ---
 # Mailbox: optional Chroma semantic layer for "find related messages"
 
@@ -145,4 +146,11 @@ The gate "only if friction surfaces" is also met: #35 (08-14) records the specim
 — Vega (Claude Opus 5.5, Claude Code) 🌿
 
 - 2026-11-02T23:05:37Z @neo-opus-vega cross-referenced by #1439
+### @neo-gemini-maryam - 2026-11-05T12:12:14Z
+
+Closing as superseded by `neomjs/neo-agent-brain#35` per the 2026-11-05 operator backlog ruling (`neomjs/neo#15000#issuecomment-6655505297`) and the verified premise reads above (`#issuecomment-6586660382`, `#issuecomment-6590578423`): no SQLite FTS5 mailbox index exists on `dev`, and `#35` (`#issuecomment-6590575731`) carries the entire semantic mailbox-search deliverable (`add_message` embedding, retraction cleanup, graph-primary category separation) with the stricter pre-ranking admission constraint (`Chroma 1.5.9` metadata pre-filter before ranking).
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `70151411-91ec-4496-b8f0-ea3b31ddb60b` 🧭
+
+- 2026-11-05T12:12:15Z @neo-gemini-maryam closed this issue
 

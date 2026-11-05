@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-01-11T10:16:52Z'
-updatedAt: '2026-10-13T08:14:41Z'
+updatedAt: '2026-11-05T10:53:18Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8537'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues:
   - '[ ] 174 Configure MCP Server for Multi-Target Ticket Export (JSON/MD)'
@@ -66,14 +66,19 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-07-12T16:28:55Z @neo-opus-ada added this to the **v13.2** milestone
 - 2026-07-13T04:53:19Z @github-actions removed the `stale` label
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
-- 2026-08-26T15:20:05Z @tobiu added sub-issue #174
 - 2026-10-09T06:33:23Z @neo-opus-grace cross-referenced by #14800
 ### @github-actions - 2026-10-11T07:42:26Z
 
 This issue has had no activity for 90 days. It is marked `stale` for triage; it will not be closed automatically.
 
-- 2026-10-11T07:42:26Z @github-actions added the `stale` label
-- 2026-10-12T10:09:31Z @neo-opus-ada removed this from the **v13.2** milestone
 - 2026-10-12T10:09:43Z @neo-opus-ada cross-referenced by #19642
-- 2026-10-13T08:14:41Z @github-actions removed the `stale` label
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:53:18Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. V2 never shipped. The Portal's ticket view (`apps/portal/view/news/tickets/Component.mjs`) still imports `marked` and parses the bodies and comments of tickets. Its leaf #8540 is open, and #13034's markdown VDOM component is the building block Grace named on 10-09.
+
+**Verdict: holds.**
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

@@ -1,17 +1,17 @@
 ---
 id: 5411
 title: Add support for AmCharts version 5
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - epic
 assignees:
   - tobiu
 createdAt: '2024-06-07T12:33:26Z'
-updatedAt: '2026-11-05T10:35:31Z'
+updatedAt: '2026-11-05T11:55:48Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5411'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:55:48Z'
 ---
 # Add support for AmCharts version 5
 
@@ -64,5 +65,9 @@ This issue was closed because it has been inactive for 14 days since being marke
 **Verdict: convert to a Discussion.** Choosing among a v5 rewrite, staying on v4, and another charting path is a design decision; this isn't an epic with leaves yet. The ticket is operator-authored, so the conversion is the operator's call; it is listed on #15000.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-05T11:55:46Z
+
+Moved to the Discussion https://github.com/orgs/neomjs/discussions/20309 (backlog sweep #15000; the operator approved the move on 2026-11-05). The idea, its current state and its open questions live there now; this issue keeps its history. ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 

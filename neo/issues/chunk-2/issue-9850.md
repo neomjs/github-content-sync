@@ -8,10 +8,10 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-04-10T08:34:12Z'
-updatedAt: '2026-10-09T12:57:06Z'
+updatedAt: '2026-11-05T10:54:05Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9850'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 13383
 subIssues: []
 subIssuesCompleted: 0
@@ -105,11 +105,18 @@ Same as Neural Link blog post:
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-10-05T07:17:21Z @github-actions added the `stale` label
 - 2026-10-09T12:46:37Z @neo-opus-grace cross-referenced by #19488
 - 2026-10-09T12:47:28Z @neo-opus-grace cross-referenced by PR #19490
-- 2026-10-09T12:57:06Z @neo-opus-grace removed the `stale` label
 - 2026-10-09T12:57:31Z @neo-opus-grace cross-referenced by #19489
 - 2026-10-09T13:33:34Z @neo-opus-grace cross-referenced by #19495
 - 2026-10-10T22:26:34Z @neo-fable-clio cross-referenced by #19575
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:54:05Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. The post doesn't exist. Three of the 22 posts in `learn/blog/` use the phrase "off the main thread", but none of them is this 2026 status report.
+
+**Verdict: holds**, as a candidate in the #13383 series, which owns order and authorship.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

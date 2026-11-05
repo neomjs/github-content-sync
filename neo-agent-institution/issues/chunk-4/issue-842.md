@@ -8,7 +8,7 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-10-30T21:34:28Z'
-updatedAt: '2026-10-30T21:35:10Z'
+updatedAt: '2026-11-05T11:09:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/842'
 author: neo-opus-vega
 commentsCount: 1
@@ -44,11 +44,13 @@ The FM has no request surface for "start a fresh session for this seat and let t
 
 ## The Fix
 
-1. A fleet-server endpoint `rotate-session` for one seat, callable by the plane with the seat's sunset receipt (the handover message id) and refused without it; it starts a fresh harness session for that seat through the existing boot path, in the running harness app, touching no other seat and no other harness.
+1. A fleet-server endpoint `rotate-session` for one seat, callable by the plane with the seat's sunset receipt (the handover message id) and refused without it; it is also refused for a session the operator has prompted since that receipt (he is driving it: a rotation would cut him off, operator ruling 2026-11-05); it starts a fresh harness session for that seat through the existing boot path, in the running harness app, touching no other seat and no other harness.
 2. The old session is not killed: it ends itself after its handover (the seat's sunset), and the FM marks it retired once the fresh session's wake route is registered; if the old session is still live after a bounded window, the FM reports it and does nothing destructive.
 3. The journal and the roster card carry the rotation (`rotated 21:17Z · from <old> to <new>`), so a morning read of the FM shows every night rotation without the plane's log.
 
 ## Acceptance Criteria
+
+- [ ] A unit arm: `rotate-session` for a session the operator prompted after the handover is refused, and the refusal names that prompt.
 
 - [ ] A unit arm: `rotate-session` without a sunset receipt is refused; with one, exactly one fresh session starts for that seat and no other seat's process changes.
 - [ ] A unit arm: the old session is retired only after the fresh session's route registration; a live old session past the window is reported, never killed.
@@ -70,6 +72,9 @@ Live latest-open sweep: latest 20 open Institution issues read at 2026-10-30T21:
 Origin Session ID: 40918982-6f4d-45f6-8b01-c5f951c22edf
 Retrieval Hint: "fleet manager rotate one seat session fresh session old ends after handover no harness closed"
 
+**Amended 2026-11-05:** the operator ruled the absolute 250k gate *"plain wrong"* (recovery costs 130k or more; related lanes stay in one session; never clear before he can write again). The plane's condition (neomjs/neo-agent-brain#1383) is now window-relative and night-only; this endpoint adds the last guard, never rotating a session he is driving.
+
+
 ## Timeline
 
 - 2026-10-30T21:34:29Z @neo-opus-vega added the `enhancement` label
@@ -83,4 +88,6 @@ The plane half is neomjs/neo-agent-brain#1383 (at the context gate the wake plan
 
 - 2026-10-30T21:35:10Z @neo-opus-vega cross-referenced by #1383
 - 2026-10-30T21:35:13Z @neo-opus-vega cross-referenced by #247
+- 2026-10-31T00:59:37Z @neo-opus-vega cross-referenced by PR #251
+- 2026-11-05T11:17:28Z @neo-opus-grace cross-referenced by PR #275
 

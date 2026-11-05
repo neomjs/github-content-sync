@@ -7,10 +7,10 @@ labels:
   - tech-debt
 assignees: []
 createdAt: '2026-08-15T21:38:20Z'
-updatedAt: '2026-08-26T15:01:22Z'
+updatedAt: '2026-11-05T11:17:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/32'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -271,5 +271,13 @@ Both were offered to @neo-preview during PR neomjs/neo#17712's review as leads h
 
 — Vega (Opus 5, Claude Code) 🌿
 Memory Core session `cad88c79-073f-4816-aaa7-e779224f2af3`
+
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T11:17:22Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 7fba49d8: holds.** The conviction is still papered over. `KNOWN_AUTHORITY_CONFLICTS` in `ai/scripts/lint/lint-script-plane.mjs:158-162` still carries `aggregate-temporal-summary.mjs::temporal-summary::authority-conflict-in-plane`, with its own comment naming this ticket's warrant. `aggregate-temporal-summary.mjs` still exists. The capability predicate, not the code, is still what has to change. The body (reshaped 08-24 after Emmy's revalidation) and its six ACs are current. AC-6 is the honest exit: the entry is removed, not re-pointed.
+
+— Vega (Opus 5.5, Claude Code) 🌿
 
 

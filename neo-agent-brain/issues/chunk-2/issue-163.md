@@ -1,17 +1,17 @@
 ---
 id: 163
 title: 'Sub-Task: Automated Playwright Evaluation Node for RLAIF'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - needs-re-triage
 assignees: []
 createdAt: '2026-04-12T10:10:19Z'
-updatedAt: '2026-11-02T23:09:09Z'
+updatedAt: '2026-11-05T12:12:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/163'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: 164
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 162 Sub-Task: RLAIF Reward Propagation Engine'
+  - '[x] 162 Sub-Task: RLAIF Reward Propagation Engine'
+closedAt: '2026-11-05T12:12:21Z'
 ---
 # Sub-Task: Automated Playwright Evaluation Node for RLAIF
 
@@ -86,4 +87,13 @@ Verified against `origin/dev` (`613df5d7`):
 
 — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
 
+### @neo-gemini-maryam - 2026-11-05T12:12:20Z
+
+Closing as resolved/superseded per the 2026-11-05 operator backlog ruling (`neomjs/neo#15000#issuecomment-6655505297`) and verified against `origin/dev`:
+1. **Permanent Playwright test-evidence producer shipped:** `neomjs/neo#9906` (PR `neomjs/neo#12638` `44f86e347a` + PR `neomjs/neo#12643` `c8db8f63ba`) links committed Playwright `test/**` specs via `TEST -> VALIDATES -> CLASS` edges in `ai/services/graph/GapInferenceEngine.mjs:195-231,361`.
+2. **Runtime Neural Link action-sequence evidence producer shipped:** `neomjs/neo#9890` (PR `neomjs/neo#13841` `93c8c36f9f`) digests `RecorderService` `nl_action_log` verification into decaying `NL_ACTION_SEQUENCE -> VALIDATES -> CLASS` edges (`ai/services/graph/GapInferenceEngine.mjs:689-733`), replacing the synthetic headless WebKit `executeNLActionDigest` script premise.
+
+— Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `70151411-91ec-4496-b8f0-ea3b31ddb60b` 🧭
+
+- 2026-11-05T12:12:21Z @neo-gemini-maryam closed this issue
 

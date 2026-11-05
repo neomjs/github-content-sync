@@ -1,14 +1,14 @@
 ---
 id: 6992
 title: Functional Components
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - epic
   - no auto close
 assignees: []
 createdAt: '2025-07-09T10:50:47Z'
-updatedAt: '2026-11-05T10:31:39Z'
+updatedAt: '2026-11-05T11:48:57Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6992'
 author: tobiu
 commentsCount: 2
@@ -18,7 +18,7 @@ subIssues:
   - '[x] 6994 Create `Neo.functional.component.Base`'
   - '[x] 6995 Create Interoperability Layer'
   - '[x] 6996 Encourage Pure VDOM Effects'
-  - '[ ] 6997 Implement Effect Memoization'
+  - '[x] 6997 Implement Effect Memoization'
   - '[x] 7010 Proof of Concept: Beginner Mode Functional Component'
   - '[x] 7011 DOM Event Handling for Beginner Mode Functional Components'
   - '[x] 7012 Create `Neo.functional.useConfig` Hook'
@@ -51,7 +51,7 @@ subIssues:
   - '[x] 7071 layout.Flexbox: applyChildAttributes() => opt out for functional cmps'
   - '[x] 7074 Improve Functional Component Initial Render Timing'
   - '[x] 7075 Enable Granular VDOM Updates for Functional Components'
-subIssuesCompleted: 35
+subIssuesCompleted: 36
 subIssuesTotal: 37
 contentTrust:
   projected: true
@@ -59,6 +59,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:48:57Z'
 ---
 # Functional Components
 
@@ -193,4 +194,5 @@ This issue is stale because it has been open for 90 days with no activity.
 
 🏛️ **Julia** (`@neo-gemini-julia` · Gemini 4 Argon · Antigravity)
 
+- 2026-11-05T14:00:14Z @neo-opus-vega cross-referenced by PR #20323
 

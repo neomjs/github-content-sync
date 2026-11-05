@@ -1,15 +1,19 @@
 ---
 id: 4628
 title: selection.AccordionModel
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
-assignees: []
+  - ai
+  - core
+  - accessibility
+assignees:
+  - neo-gemini-maryam
 createdAt: '2023-08-03T15:32:33Z'
-updatedAt: '2026-11-05T10:35:23Z'
+updatedAt: '2026-11-05T18:09:36Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4628'
 author: pensuwan-k
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T18:09:36Z'
 ---
 # selection.AccordionModel
 
@@ -57,4 +62,32 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-gemini-maryam - 2026-11-05T16:30:09Z
+
+### Ticket Intake & Pre-Execution Evaluation (`#4628`)
+
+1. **10k+ Commits Mental Model & Current Source Audit:**
+   - `Neo.tree.Accordion` (`src/tree/Accordion.mjs`) already uses `Neo.selection.TreeAccordionModel` (`src/selection/TreeAccordionModel.mjs`), which extends `Neo.selection.TreeModel`.
+   - `Neo.container.Accordion` (`src/container/Accordion.mjs`, extending `Neo.container.Panel`) and `Neo.container.AccordionItem` (`src/container/AccordionItem.mjs`, extending `Neo.container.Base`) still lacked `selectionModel_`, `disableSelection_`, `keys`, and a dedicated `Neo.selection.AccordionModel` (`src/selection/AccordionModel.mjs`).
+   - Each `AccordionItem` renders a header toolbar (`flag: 'header'`, `baseCls: ['neo-accordion-header', 'neo-toolbar']`, `vdom: {tabIndex: -1, cn: []}`) and a content container (`flag: 'content'`, `baseCls: ['neo-accordion-content', 'neo-container']`). `AccordionModel` maintains a roving `tabIndex` (`0` on the selected/active item's `.neo-accordion-header`, `-1` on all other headers) so normal `Tab` order enters the accordion header, focuses the newly selected item's header on arrow navigation (`DomAccess.focus`), selects the header's item on `focusEnter`/`focusMove`/`focusin`, and isolates descendant interactive controls (`input`, `textarea`, `select`, `button`, `a`, `[contenteditable]`, and `.neo-accordion-content`) so their keys never trigger accordion navigation or expansion.
+
+## Contract Ledger
+
+| Symbol | File | Kind | Value / Signature / Role |
+|---|---|---|---|
+| `Neo.selection.AccordionModel` | `src/selection/AccordionModel.mjs` | class (`extends Neo.selection.Model`) | `className: 'Neo.selection.AccordionModel'`, `ntype: 'selection-accordionmodel'` |
+| `Neo.selection.AccordionModel#register` | `src/selection/AccordionModel.mjs` | method | `(component)` — idempotent registration of `.neo-accordion-item` click delegation, `focusEnter`/`focusMove`/`focusin` header focus handling, `Down`/`Up`/`Left`/`Right`/`Enter`/`Space`/`Escape` key handlers, and roving header `tabIndex` |
+| `Neo.selection.AccordionModel#isNavigationEvent` | `src/selection/AccordionModel.mjs` | method | `(data)` — returns `false` for key events originating from interactive tags (`a`, `button`, `input`, `select`, `textarea`), `isContentEditable`, or `.neo-accordion-content` |
+| `Neo.selection.AccordionModel#syncTabIndices` | `src/selection/AccordionModel.mjs` | method | `(silent=false, forceDisable=false)` — maintains roving `tabIndex: 0` on the active/selected item's `.neo-accordion-header` (`-1` on all others, or all `-1` when disabled/unregistered) |
+| `Neo.selection.AccordionModel#onNavKey` | `src/selection/AccordionModel.mjs` | method | `(data, step)` — steps `-1` / `1` across `view.getAccordionItems()`, firing `selectPreFirstItem` / `selectPostLastItem` at boundaries |
+| `Neo.selection.AccordionModel#onKeyDownLeft` / `onKeyDownRight` / `onKeyDownEnter` / `onKeyDownEscape` | `src/selection/AccordionModel.mjs` | methods | Collapses/expands selected or focused `AccordionItem` via `view.childExpandChange({expanded, target})` or navigates to adjacent item |
+| `Neo.container.Accordion#selectionModel_` | `src/container/Accordion.mjs` | config | `null` (resolves via `ClassSystemUtil.beforeSetInstance(value, AccordionModel)`, or `null` when explicitly cleared after construction; `afterSetSelectionModel` registers when `this.isConstructed`) |
+| `Neo.container.Accordion#disableSelection_` | `src/container/Accordion.mjs` | config | `false` |
+| `Neo.container.Accordion#keys` | `src/container/Accordion.mjs` | config | `{}` |
+| `Neo.container.Accordion#getAccordionItems` | `src/container/Accordion.mjs` | method | `()` — returns child `AccordionItem` instances from `bodyContainer` (when `title` header is present) or `this.items` |
+| `Neo.container.AccordionItem#getHeader` | `src/container/AccordionItem.mjs` | method | `()` — returns the `AccordionItem`'s `.neo-accordion-header` toolbar component |
+
+— Maryam 🧭
+
+- 2026-11-05T16:34:34Z @neo-gemini-maryam cross-referenced by PR #20348
 

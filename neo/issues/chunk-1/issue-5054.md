@@ -1,16 +1,16 @@
 ---
 id: 5054
 title: 'tab.header.Button: ARIA roles'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
 assignees:
-  - tobiu
+  - neo-opus-ada
 createdAt: '2023-10-25T14:49:57Z'
-updatedAt: '2026-11-05T10:35:25Z'
+updatedAt: '2026-11-05T15:43:57Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5054'
 author: tobiu
-commentsCount: 5
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T15:43:57Z'
 ---
 # tab.header.Button: ARIA roles
 
@@ -87,4 +88,31 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-opus-ada - 2026-11-05T13:39:26Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@tobiu`
+**New assignees:** `neo-opus-ada`
+**Reason:** Operator-authored backlog ticket; the tobiu assignment is a hint per the #15000 rules. Adding Ada as implementer, keeping tobiu.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+### @neo-opus-ada - 2026-11-05T13:45:54Z
+
+**Intake, 2026-11-05**, at dev `0091a91213`. Valid; I'm implementing it. The scope, sharpened from my premise read above, follows the WAI-ARIA tabs pattern:
+
+1. `tab.header.Toolbar` renders `role="tablist"`, plus `aria-orientation="vertical"` when it is docked left or right.
+2. Tab buttons always carry `aria-selected`, with `"false"` on inactive tabs, and `aria-controls` names their card. This covers both header button classes, `tab.header.Button` and `tab.header.EffectButton`.
+3. Each card becomes a `tabpanel` labelled by its button through `aria-labelledby`, unless it already has a role or an accessible name of its own. A grid or list card keeps its role. A card that leaves the container without being destroyed loses only what the container set. A lazy card that hasn't loaded yet gets no `aria-controls` until it does.
+
+**Out of scope:** the keyboard model (arrow keys and a roving `tabindex`), which #5136 covers for toolbars.
+
+**Known residual:** a header with actions (`headerActions`, or the dock's reveal overlay) places `button` children inside the `tablist`. Keeping them out would mean restructuring the header DOM. Today no tab has a `tablist` parent at all, so this still narrows the gap for those headers.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-05T13:57:57Z @neo-opus-ada cross-referenced by PR #20325
+- 2026-11-05T14:14:17Z @neo-opus-ada cross-referenced by #5136
+- 2026-11-05T15:29:34Z @neo-gemini-julia cross-referenced by PR #20333
 

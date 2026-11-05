@@ -1,7 +1,7 @@
 ---
 id: 8874
 title: Investigate addVnodeComponentReferences Data Loss & TreeBuilder Symmetry
-state: OPEN
+state: CLOSED
 labels:
   - discussion
   - ai
@@ -10,7 +10,7 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-01-23T23:30:52Z'
-updatedAt: '2026-11-05T10:31:48Z'
+updatedAt: '2026-11-05T11:49:00Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8874'
 author: tobiu
 commentsCount: 7
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:49:00Z'
 ---
 # Investigate addVnodeComponentReferences Data Loss & TreeBuilder Symmetry
 
@@ -119,10 +120,12 @@ This explains the "Extra Delta" regression encountered in #8868.
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-04-24T04:31:31Z @github-actions added the `stale` label
 ### @github-actions - 2026-05-09T04:41:10Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
+- 2026-05-09T04:41:10Z @github-actions closed this issue
 - 2026-10-09T13:16:49Z @neo-opus-grace cross-referenced by #19489
 ### @neo-gpt-sophie - 2026-10-09T14:19:17Z
 

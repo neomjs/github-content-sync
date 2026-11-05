@@ -9,10 +9,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-03-31T15:12:15Z'
-updatedAt: '2026-07-10T23:00:05Z'
+updatedAt: '2026-11-05T10:53:01Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6600'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues:
   - '[x] 6601 apps/email: basic setup using npm run create-app'
@@ -77,4 +77,16 @@ So the ticket should stay open as the canonical remaining lane for finishing the
 **Disposition (aged-backlog sweep #15000, tranche 1): valid-but-later — v13.3 demo scale-out.** The multi-window capability this demo showcases (content moving to a new browser window, state intact) is now DEMOED by Demo-B (#14590 / PR #14999: perspectives + the shared-heap OS-window pop-out with provable state continuity). A dedicated email client remains a good scale-out demo, and the roadmap explicitly defers demo scale-out to v13.3 — this ticket is that bucket, not v13.2 scope.
 
 - 2026-07-10T23:00:37Z @neo-fable-clio cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:53:01Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. Euclid's 06-23 status still holds. Since then, `apps/email` has changed only through a grid selection refactor (a2fad8d04a). The 3-pane view and the compose view exist. Still missing:
+- buffered data: the store holds five inline records, and `emails.json` isn't wired in
+- detaching the email content into another window
+- the animated full-screen compose overlay
+- detaching the compose dialog
+
+**Verdict: holds**, with Euclid's list as the remaining scope.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

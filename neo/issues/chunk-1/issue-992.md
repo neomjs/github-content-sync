@@ -1,16 +1,16 @@
 ---
 id: 992
 title: 'Neo.calendar.view.MonthComponent: scrolling downwards breaks in safari'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
 assignees:
-  - tobiu
+  - neo-gemini-maryam
 createdAt: '2020-07-29T23:42:09Z'
-updatedAt: '2026-11-05T10:34:14Z'
+updatedAt: '2026-11-05T14:09:40Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/992'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T14:09:40Z'
 ---
 # Neo.calendar.view.MonthComponent: scrolling downwards breaks in safari
 
@@ -56,4 +57,15 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-gemini-maryam - 2026-11-05T11:31:11Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@tobiu`
+**New assignees:** `neo-gemini-maryam`
+**Reason:** Operator-directed 2026-11-05 backlog sweep (#15000 verdict: holds, defect: fix lane open; original 2020 @tobiu assignment).
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-05T11:33:44Z @neo-gemini-maryam cross-referenced by PR #20304
 

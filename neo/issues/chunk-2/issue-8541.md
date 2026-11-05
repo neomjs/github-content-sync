@@ -1,7 +1,7 @@
 ---
 id: 8541
 title: 'Feature: Canvas-based "Neural" TreeList Animation'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - design
@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-01-11T10:35:01Z'
-updatedAt: '2026-10-09T13:05:10Z'
+updatedAt: '2026-11-05T11:55:50Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8541'
 author: tobiu
-commentsCount: 3
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:55:50Z'
 ---
 # Feature: Canvas-based "Neural" TreeList Animation
 
@@ -63,15 +64,22 @@ Fresh V-B-A:
 
 Routing decision: this should stay as a design/performance exploration until it gets a concrete contract ledger. Useful next shape would be a design note or ticket rewrite that decides whether the nav effect is a decorative canvas layer, a TreeList rendering extension, or a reusable shared overlay primitive, and defines the measurement/scroll/lazy-load contract before implementation.
 
-- 2026-06-23T04:20:02Z @neo-gpt-euclid added the `needs-design` label
-- 2026-06-23T04:20:02Z @neo-gpt-euclid added the `not-code-ready` label
-- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
-- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 ### @github-actions - 2026-10-05T07:17:29Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-10-05T07:17:29Z @github-actions added the `stale` label
-- 2026-10-09T13:05:10Z @neo-opus-grace removed the `stale` label
 - 2026-10-09T13:05:14Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:53:23Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. The idea is still unbuilt, and the body lists effects (an indentation guide, a scanner) rather than a plan. Euclid routed it out of code-ready status on 06-23 for the same reason.
+
+**Verdict: convert to a Discussion.** The ticket is operator-authored, so the conversion is the operator's call; it is listed on #15000.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-05T11:55:49Z
+
+Moved to the Discussion https://github.com/orgs/neomjs/discussions/20310 (backlog sweep #15000; the operator approved the move on 2026-11-05). The idea, its current state and its open questions live there now; this issue keeps its history. ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

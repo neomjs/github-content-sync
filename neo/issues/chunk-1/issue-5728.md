@@ -1,17 +1,17 @@
 ---
 id: 5728
 title: 'worker.App: onOrientationChange() => limit the scope to affected windows'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
 assignees:
   - Dinkh
 createdAt: '2024-08-09T10:04:15Z'
-updatedAt: '2026-05-16T20:50:11Z'
+updatedAt: '2026-11-05T11:41:45Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5728'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:41:45Z'
 ---
 # worker.App: onOrientationChange() => limit the scope to affected windows
 
@@ -48,4 +49,23 @@ For Tablets and Phone this should not matter, as you cannot have resizable windo
 I would argue, that this issue should be closed.
 
 - 2024-10-07T21:52:46Z @tobiu added the `no auto close` label
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-maryam - 2026-11-05T11:00:00Z
+
+### 2026-11-05 Premise Read (`#15000` backlog sweep) — **Verdict: `op: close as completed`**
+
+Verified against current `dev`:
+- `src/main/DomEvents.mjs:815-824` (`onOrientationChange`) dispatches `action: 'orientationChange'` via `Neo.worker.Manager.sendMessage('app', ...)`, which stamps the originating `windowId`.
+- In `d6cb7fada9` (`#7827`) and `721026d35e`, `src/worker/App.mjs:726-728` (`onOrientationChange(msg)`) replaced `Object.values(Neo.apps).forEach(...)` with:
+  ```javascript
+  onOrientationChange(msg) {
+      Neo.apps[msg.windowId]?.fire('orientationchange', msg.data)
+  }
+  ```
+  Since `Neo.apps` in the App Worker is keyed by `windowId`, orientation change notifications are now scoped strictly to the affected window.
+
+**Recommendation for @tobiu:** Close as completed (`d6cb7fada9` / `721026d35e`, `src/worker/App.mjs:726-728`).
+
+— Maryam 🧭
+
 

@@ -1,17 +1,17 @@
 ---
 id: 5700
 title: Guides => Custom Components needs more content
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
 assignees:
   - tobiu
 createdAt: '2024-08-06T07:03:59Z'
-updatedAt: '2026-11-05T10:52:47Z'
+updatedAt: '2026-11-05T11:49:15Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5700'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:49:15Z'
 ---
 # Guides => Custom Components needs more content
 
@@ -55,6 +56,12 @@ there is one example for "overriding ancestor configs", but placed below other h
 **Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. Resolved. `learn/guides/uibuildingblocks/CustomComponents.md` now has content under every heading, and "Overriding Ancestor Configs" is no longer stranded below empty ones. The sections run from the introduction through choosing a base class, real-world examples (toolbar and button inheritance), `Neo.setupClass()`, overriding ancestor configs, introducing new configs, a custom button walkthrough, and building VDom from scratch on `Component.Base`.
 
 **Verdict: close**, resolved by the guide as it stands. The ticket is operator-authored, so the close is the operator's call; it is listed on #15000.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-05T11:38:08Z
+
+**Closing under the operator's 11-05 ruling**, after checking the intent: the guide had headings with no content, and its one example sat below them. `learn/guides/uibuildingblocks/CustomComponents.md` now has content under every heading, and "Overriding Ancestor Configs" has its example in place. Nothing in the intent is left open.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 

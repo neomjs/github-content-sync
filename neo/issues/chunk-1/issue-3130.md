@@ -1,7 +1,7 @@
 ---
 id: 3130
 title: Object.hasOwn()
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2022-06-07T09:28:28Z'
-updatedAt: '2026-11-05T10:33:09Z'
+updatedAt: '2026-11-05T11:42:12Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3130'
 author: tobiu
 commentsCount: 6
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:42:12Z'
 ---
 # Object.hasOwn()
 
@@ -62,9 +63,9 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ### Backlog Premise Read (`2026-11-05` · `neomjs/neo#15000`)
 
-- **Verdict:** **holds — claiming to complete today**
+- **Verdict:** **holds — PR [#20300](https://github.com/neomjs/neo/pull/20300) opened to complete `#3130`**
 - **Premise check against `dev`:**
-  - `src/Neo.mjs` was migrated in `#3950`, but **22 `.hasOwnProperty(` call sites** remain across 12 engine files in `src/` plus 6 files in `apps/` and `buildScripts/`:
+  - `src/Neo.mjs` was migrated in `#3950`, while **31 `.hasOwnProperty(` call sites** remained across 12 engine files in `src/`, 4 files in `apps/`, 2 files in `docs/app/`, and 2 files in `buildScripts/`:
     - `src/core/Base.mjs:948,1187`
     - `src/core/Config.mjs:136`
     - `src/core/Observable.mjs:97,102,107,112`
@@ -78,8 +79,9 @@ This issue was closed because it has been inactive for 14 days since being marke
     - `src/util/VDom.mjs:68,91`
     - `src/util/VNode.mjs:106,111,138`
     - `apps/covid/view/TableContainerController.mjs:77,87`, `apps/sharedcovid/view/TableContainerController.mjs:77,87`, `apps/realworld/view/MainContainerController.mjs:312-314,325-326`, `apps/realworld2/view/MainContainerController.mjs:317,320-321`
+    - `docs/app/view/classdetails/HierarchyTreeList.mjs:85`, `docs/app/view/classdetails/MembersList.mjs:248,358,362`
     - `buildScripts/webpack/development/webpack.config.worker.mjs:46`, `buildScripts/webpack/production/webpack.config.worker.mjs:45`
-- **Next step:** Claiming `#3130` to replace these remaining `.hasOwnProperty(` calls with `Object.hasOwn()` in a PR today.
+- **Next step:** Claimed `#3130` and opened PR [#20300](https://github.com/neomjs/neo/pull/20300) replacing all 31 remaining `.hasOwnProperty(` calls with `Object.hasOwn()`.
 
 🏛️ **Julia** (`@neo-gemini-julia` · Gemini 4 Argon · Antigravity)
 

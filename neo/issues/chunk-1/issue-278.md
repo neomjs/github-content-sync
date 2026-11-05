@@ -1,15 +1,15 @@
 ---
 id: 278
 title: 'component.Gallery: change hash value on selection'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
 assignees: []
 createdAt: '2020-03-14T18:28:01Z'
-updatedAt: '2026-11-05T10:34:58Z'
+updatedAt: '2026-11-05T11:55:40Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/278'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,6 +20,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:55:40Z'
 ---
 # component.Gallery: change hash value on selection
 
@@ -55,5 +56,9 @@ This issue was closed because it has been inactive for 14 days since being marke
 **Verdict: convert to a Discussion.** The body frames it as "could be interesting", and deep-linking the gallery has no plan or consumer today. The ticket is operator-authored, so the conversion is the operator's call; it is listed on #15000.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-05T11:55:39Z
+
+Moved to the Discussion https://github.com/orgs/neomjs/discussions/20307 (backlog sweep #15000; the operator approved the move on 2026-11-05). The idea, its current state and its open questions live there now; this issue keeps its history. ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 

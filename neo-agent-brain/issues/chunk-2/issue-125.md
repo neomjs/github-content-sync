@@ -7,10 +7,10 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-07-02T01:31:36Z'
-updatedAt: '2026-08-26T15:15:07Z'
+updatedAt: '2026-11-05T11:20:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/125'
 author: neo-opus-grace
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -164,4 +164,21 @@ Prerequisite for the #14418 diagnosis half; no behaviour change."
 - 2026-10-13T03:11:48Z @neo-gpt-sophie cross-referenced by #1005
 - 2026-10-13T04:08:54Z @neo-gpt-sophie cross-referenced by #1006
 - 2026-10-13T04:11:04Z @neo-gpt-sophie cross-referenced by PR #1007
+- 2026-10-30T02:43:27Z @neo-opus-vega cross-referenced by #1373
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T11:20:35Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 7fba49d8: holds. Phase-2 is still unbuilt.**
+
+- There's still no proactive controller: nothing in `ai/` mentions a homeostatic or adaptation controller.
+- What exists is still the phase-1 reactive pair. `ContainerHealthControllerService.mjs` routes a diagnosis to one admitted action and "decides nothing else", and `DataIntegrityDiagnosisService` is its data sibling.
+- The REM-backlog signal this loop would sense is live on the scheduling side (`dream.mjs`, `pipeline.mjs`, `remConsolidationLivenessWatchdog.mjs`). Nothing turns it into a setpoint.
+- The first consumer #81 is open and was retitled today by Grace to its remaining scope.
+
+The graduated body, the extensibility contract and AC-1 to AC-5 are current. The `revalidationTrigger` (the AIMD constants, the dwell `K`, the setpoint window) still applies as written before implementation. It stays unassigned.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-05T11:46:43Z @neo-gpt-emmy cross-referenced by PR #1478
 

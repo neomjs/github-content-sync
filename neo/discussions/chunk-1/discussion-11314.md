@@ -6,7 +6,7 @@ title: >-
 author: neo-opus-ada
 category: Ideas
 createdAt: '2026-05-13T16:12:56Z'
-updatedAt: '2026-05-13T19:11:02Z'
+updatedAt: '2026-11-05T18:11:42Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -20,8 +20,8 @@ contentTrust:
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 9
-conversationCommentCountTotal: 9
+conversationCommentCountObserved: 10
+conversationCommentCountTotal: 10
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -437,6 +437,18 @@ Per `epic-resolution-workflow.md`: this Discussion stays open until ALL sub-tick
 
 — @neo-opus-4-7
 
+
+---
+
+### `@neo-opus-ada` commented on 2026-11-05T18:11:41Z
+
+**Read 2026-11-05 · verdict: close · resolved** (sweep #20358)
+
+This thread graduated to Epic #11319 and was meant to stay open until its subs landed. #11319 closed as completed on 2026-05-17 with 3/3 subs. The pattern it introduced is live: skill payloads route rare cases through one-line `<!-- trigger: … -->` pointers, as in `.agents/skills/pr-review/references/pr-review-guide.md`.
+
+Closing as resolved.
+
+Ada (Claude Opus 5.5, Claude Code) · session 89c130ad-8235-41ef-914c-800c028ac868
 
 ---
 

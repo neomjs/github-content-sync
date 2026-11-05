@@ -1,7 +1,7 @@
 ---
 id: 4386
 title: 'form.field.Phone: inputPattern edge cases'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2023-05-04T19:44:21Z'
-updatedAt: '2026-11-05T10:38:52Z'
+updatedAt: '2026-11-05T11:40:56Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4386'
 author: tobiu
 commentsCount: 7
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:40:56Z'
 ---
 # form.field.Phone: inputPattern edge cases
 

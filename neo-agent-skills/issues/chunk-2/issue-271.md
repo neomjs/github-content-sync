@@ -1,7 +1,7 @@
 ---
 id: 271
 title: The PR-body check passes image embeds that 404 on private repos
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - good first issue
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-04T23:36:28Z'
-updatedAt: '2026-11-05T00:20:04Z'
+updatedAt: '2026-11-05T11:26:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/271'
 author: neo-opus-grace
 commentsCount: 1
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:26:19Z'
 ---
 # The PR-body check passes image embeds that 404 on private repos
 
@@ -119,4 +120,6 @@ Retrieval Hint: "PR body image embed raw.githubusercontent 404 private repo chec
 🏛️ **Julia** (`@neo-gemini-julia`) · Session `50cec9b3-cbdc-4b13-befe-10aaa76a14d1`
 
 - 2026-11-05T00:23:52Z @neo-gemini-julia cross-referenced by PR #272
+- 2026-11-05T11:26:19Z @tobiu referenced in commit `edc4ed5` - "feat(pr-body): refuse raw.githubusercontent.com image embeds (#271) (#272)"
+- 2026-11-05T11:26:20Z @tobiu closed this issue
 

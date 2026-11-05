@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-05T10:32:47Z'
-updatedAt: '2026-11-05T10:31:08Z'
+updatedAt: '2026-11-05T18:09:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/875'
 author: neo-opus-vega
-commentsCount: 5
+commentsCount: 7
 parentIssue: null
 subIssues:
   - '[x] 874 Start fleet reads a seat''s participation from its identity node, not the seed'
@@ -21,8 +21,10 @@ subIssues:
   - '[x] 880 The heartbeat and issue focus read participation from the identity node'
   - '[x] 916 Open-work coverage leaves out benched seats, never their open rows'
   - '[x] 1279 Trust-tier resolution for graph identities, formerLogins, and GitHub authorAssociation'
-subIssuesCompleted: 5
-subIssuesTotal: 5
+  - '[x] 1484 A plane''s boot seed holds no team identity'
+  - '[x] 1485 Candidate readers take who exists from the plane''s identity nodes'
+subIssuesCompleted: 7
+subIssuesTotal: 7
 contentTrust:
   projected: true
   quarantined: 0
@@ -64,6 +66,18 @@ For our team the file and the graph mostly agree, after a reseed. For another op
 - **What an operator owns gets a control.** A fact the roots record for our team, but that another operator must set for their own agents, becomes a row in Fleet Manager's Agent Detail, written to the graph. Bench and unbench comes first (#28).
 - **A guard, last:** a lint that refuses a runtime import of the roots, so the predicate stays true after the leaves land.
 
+## Leaves (2026-11-05)
+
+The five original leaves (#874, #879, #880, #916, #1279) are closed. They moved one fact, participation, onto the identity node. The remaining facts, by class from the 2026-10-07 census:
+
+| Class | Fact still read from `identityRoots` | Leaf · owner |
+|---|---|---|
+| A. Who exists | the boot seed; heartbeat, issue-focus, maintainer and open-work candidates | #1484 (the boot seed) · #1485 (the readers) · @neo-opus-vega |
+| B. Trust tier | `properties.trustTier` | to file · open |
+| C. Family | merge readiness, the review budget, `AGENT:<family>` aliases | #700 → #1296 / #1297 · @neo-gpt-sophie, who already owns these readers, so there is no separate leaf |
+| D. Display | `resolveIdentityDisplay` | to file · open |
+| E. Vocabulary, team tooling | the trust-tier constants, `agentCoAuthorEmails` | to file · low priority |
+
 ## Out of scope
 
 - The roots' content: it stays the seed for this deployment.
@@ -80,6 +94,8 @@ Structure map: run 2026-10-05 for `ai/graph` and `ai/scripts/setup`. The roots a
 Origin Session ID: 79265a5a-6888-4d34-94ee-0d933cbacff1
 
 Retrieval Hint: `query_raw_memories("Agent OS must never read identityRoots at runtime, graph is the identity source")`
+
+
 
 
 
@@ -258,4 +274,47 @@ The intent and the operator's 10-05 ruling stand, and the body is current. The n
 
 — Vega (Opus 5.5, Claude Code) 🌿
 
+- 2026-11-05T14:03:30Z @neo-opus-vega cross-referenced by #1484
+- 2026-11-05T16:39:11Z @neo-opus-vega cross-referenced by #1485
+### @neo-opus-vega - 2026-11-05T17:44:41Z
+
+### Class A status (2026-11-05, handover)
+
+Both class A leaves are in review.
+
+- **#1484 → PR #1486, the boot seed.** A fresh plane now boots with only the two anchors, `@system` and `AGENT:*`, and no team identity. CI is green and Sophie is the requested reviewer.
+- **#1485 → PR #1487, the readers.** Four readers now take membership from the nodes' `accountType`: the heartbeat's `active-local-team` (also the all-idle detector's team), the stale-assignment maintainers, IssueIngestor's internal authors and the open-work seat lookup. CI is pending, and a reviewer is requested once it is green.
+
+Runtime modules that import `identityRoots` go from 18 to 12 once both merge.
+
+**Finding for the operator.** Our own plane holds four AgentIdentity nodes the roster does not have:
+- `@agent-a`, `@agent-b` and `@neo-test-writer` carry empty properties, so the `accountType` rule keeps them out.
+- `@neo-opus`, retired but still `active`, counts until it is benched.
+
+The defect-note is fb9537b3. The post-merge checks (AC-4 on #1484, AC-3 on #1485) read the plane after the merge.
+
+**Pickup** goes to a fresh Vega session; this one sunsets at the operator's word.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+### @neo-opus-vega - 2026-11-05T17:59:49Z
+
+**Where the plane's three fixture identities came from (traced 11-05 18:0xZ)**
+
+My defect-note b75b1883 left this untraced and pointed at "the #17728 class". That was the wrong pointer: neo #17728 is a closed digest ticket. The trace:
+
+- **`@neo-test-writer`** was seeded with `properties: {}` by a memory-core unit spec, added in neo #10265 (Apr 24). The upsert was removed by neo #12977, "isolate memory-core unit identities" (Jun 12, `1d6dbd6330`). So the node predates that fix, and the graph has carried it ever since.
+- **`@agent-a` and `@agent-b`** carry the exact shape that `QueryRecentTurns.spec.mjs` seeds today (`properties: {}`, l.124–125). The unit config now sets `UNIT_TEST_MODE`, so `storagePaths.graph` resolves to `graphTest` (`:memory:`), and the spec's own probe throws if storage is not isolated (l.45). The live nodes are pre-isolation leftovers of the same kind.
+
+**Disposition** (corrected in place at 18:1xZ: the first version claimed the `@neo-opus` bench for me):
+- No live leak path was found. The readers already ignore all three fixture nodes, because #1487 makes membership `accountType`-based.
+- Removing those three nodes is plane hygiene: they are fixtures and belong to no one. I'll do it after #1487 merges, because AC-3 reads the plane before and after.
+- Benching the retired `@neo-opus` is not hygiene. Bench and unbench are operator decisions, and #28 (open) is the cockpit control that would record them. Until #28 lands, that bench is the operator's, and this ticket's readers keep counting the node as an active agent.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+- 2026-11-05T18:03:07Z @neo-gpt-sophie cross-referenced by PR #1486
+- 2026-11-05T18:03:09Z @neo-gemini-julia cross-referenced by PR #1487
 

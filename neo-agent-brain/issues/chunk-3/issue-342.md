@@ -1,15 +1,16 @@
 ---
 id: 342
 title: 'The deference mirror cannot fire from a non-neo workspace, and its ''unless you'' family misses preference verbs other than want/rather'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - model-experience
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-09-08T07:33:53Z'
-updatedAt: '2026-11-02T23:11:37Z'
+updatedAt: '2026-11-05T14:11:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/342'
 author: neo-opus-vega
 commentsCount: 1
@@ -23,14 +24,15 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T14:11:04Z'
 ---
 # The deference mirror cannot fire from a non-neo workspace, and its 'unless you' family misses preference verbs other than want/rather
 
-> **Premise Read & In-Place Rewrite (`2026-11-02`, `#1438` against `origin/dev` `613df5d7`):**
-> - **Shipped since filing (Finding 1 / `AC-2` & `AC-3`):** `ai/scripts/lifecycle/hooks/projectSeatHooks.mjs:124-220` and `ai/scripts/lifecycle/hooks/seatProjectionCheck.mjs:1-100` (`#317`, wired into `SessionStart` in `ai/scripts/lifecycle/hooks/claude/events.manifest.json:36-46`) now materialize Brain-owned hooks into target checkouts with `agentosRuntimeRoot`-rewritten specifiers and report `missing` / `stale` projections on `SessionStart`, and Fleet seat projection (`#980` / PR `#1051` `f03961a8`) wires seat hooks across workspace checkouts.
-> - **Remaining open scope:**
->   1. **`deferencePhraseMatch.mjs:19-30,131-135,350` (`AC-1` & `AC-4`):** `DEFERENCE_PHRASES` still carries the three separate entries (`'unless you want me'`, `'unless you want'` gated by `hasIndefiniteDeferenceObject`, and `"unless you'd rather"`) rather than the bare stem `'unless you'`.
->   2. **`ai/scripts/setup/initServerConfigs.mjs:1158-1174` (`retargetClaudeHookCommands`):** Still rewrites non-Engine `.claude/settings.json` hook commands to `$(git rev-parse --show-toplevel)/node_modules/neo.mjs/.claude/hooks/`, a path emptied when `neomjs/neo@c623b2f63c` moved Agent-OS hooks to `neo-agent-brain`.
+> **Premise Read & In-Place Rewrite (`2026-11-05`, `#1438` against `origin/dev`):**
+> - **Shipped since filing (Finding 1 / `AC-2` & `AC-3`):** `ai/scripts/lifecycle/hooks/projectSeatHooks.mjs:124-220` and `ai/scripts/lifecycle/hooks/seatProjectionCheck.mjs:1-100` (`#317`, wired into `SessionStart` in `ai/scripts/lifecycle/hooks/claude/events.manifest.json:36-46`) materialize Brain-owned hooks into target checkouts with `agentosRuntimeRoot`-rewritten specifiers and report `missing` / `stale` projections on `SessionStart`, Fleet seat projection (`#980` / PR `#1051` `f03961a8`) wires seat hooks across workspace checkouts, and `#912` (`initServerConfigs.spec.mjs:1437-1604`) narrowed the Engine `.claude/settings.template.json` to Engine-owned `PreToolUse` contributor guards.
+> - **Remaining open scope (`AC-1` & `AC-4`):**
+>   - **`ai/scripts/lifecycle/deferencePhraseMatch.mjs:19-30,48-62,130-142,350-353`:** Replace the three subsumed compounds (`'unless you want me'`, `'unless you want'`, `"unless you'd rather"`) and the `'unless you want'`-only `INDEFINITE_DEFERENCE_OBJECTS` / `hasIndefiniteDeferenceObject` gate with the bare stem `'unless you'` in `DEFERENCE_PHRASES`, backed by a test corpus sampled from real agent turn-final text (with traceable session/Memory Core provenance) kept distinct from designed grammar/layout controls.
+>   - **Intentional fixture reclassification under the Finding 2 operator ruling (`AC-4`):** All non-`unless you` phrases and carves keep their current verdicts unchanged, while the prior `unless you` compound entries (`'unless you want me'`, `'unless you want'`, `"unless you'd rather"`) and the constructed technical-prose / concrete-object `unless you` exclusions (`'The test fails unless you mock the system clock.'` and the `#17370` concrete-object cases) intentionally reclassify from `null` to `'unless you'` under the operator ruling (`Finding 2` withdrawal).
 
 ## Context
 
@@ -76,9 +78,8 @@ The module's "falsifier-backed follow-up" bar is met by the corpus below being d
 
 - [ ] `unless you` matches as a stem, and the corpus proving it is sampled from real agent turn-final text rather than authored to fit. If a genuine false positive is later found in live output, it is evidence for a gate — a constructed one is not.
 - [x] A seat whose cwd is outside its neo checkout either runs the Stop hook or reports that it cannot (`ai/scripts/lifecycle/hooks/projectSeatHooks.mjs` + `seatProjectionCheck.mjs` on `SessionStart`, `#317`).
-- [ ] Retire the stale `node_modules/neo.mjs/.claude/hooks/` rewrite in `ai/scripts/setup/initServerConfigs.mjs:1158-1174` (`retargetClaudeHookCommands`) so `npm prepare` does not point non-Engine checkouts at a path emptied by `c623b2f63c`.
 - [x] `turnPresence` beacon wiring recovered via `projectSeatHooks.mjs` (`events.manifest.json:55-76`).
-- [ ] The existing phrases keep their current verdicts — no regression in either direction on the fixtures already in the suite.
+- [ ] All non-`unless you` phrases and carves keep their current verdicts unchanged, while the 3 subsumed `unless you` compounds (`unless you want me`, `unless you want`, `unless you'd rather`) and the 9 prior constructed technical-prose / concrete-object `unless you` exclusions intentionally reclassify to `'unless you'` under the Finding 2 operator ruling.
 
 ## Out of Scope
 
@@ -91,7 +92,6 @@ The module's "falsifier-backed follow-up" bar is met by the corpus below being d
 A bare stem is not a smaller change than a gated one; it is a larger one wearing fewer characters. And adding phrases to a hook that is not running would have looked like a fix and changed nothing — the wiring is the load-bearing half.
 
 Origin Session ID: 3581aef4-0bb5-4cb4-b428-856e9e60c9b3
-
 
 
 ## Timeline
@@ -114,4 +114,13 @@ Origin Session ID: 3581aef4-0bb5-4cb4-b428-856e9e60c9b3
 
 — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
 
+- 2026-11-05T12:21:57Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-05T12:28:20Z @neo-gemini-maryam cross-referenced by PR #1481
+- 2026-11-05T13:22:03Z @neo-gemini-maryam referenced in commit `887937a` - "test(lifecycle): add provenance anchors and reclassified fixture coverage (#342)"
+- 2026-11-05T14:11:03Z @tobiu referenced in commit `52158ed` - "feat(lifecycle): match 'unless you' as a stem in deferencePhraseMatch (#342) (#1481)
+
+* feat(lifecycle): match 'unless you' as a stem in deferencePhraseMatch (#342)
+
+* test(lifecycle): add provenance anchors and reclassified fixture coverage (#342)"
+- 2026-11-05T14:11:05Z @tobiu closed this issue
 

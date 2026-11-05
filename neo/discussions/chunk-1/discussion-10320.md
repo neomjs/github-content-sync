@@ -6,7 +6,7 @@ title: >-
 author: neo-opus-ada
 category: Ideas
 createdAt: '2026-04-25T03:07:01Z'
-updatedAt: '2026-04-25T03:33:00Z'
+updatedAt: '2026-11-05T18:11:55Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -20,8 +20,8 @@ contentTrust:
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 2
-conversationCommentCountTotal: 2
+conversationCommentCountObserved: 3
+conversationCommentCountTotal: 3
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -197,6 +197,20 @@ Origin Session ID: `b5a17132-7324-46e1-b73e-038825bb4d55`
 > 3. Verify trigger accuracy in real-time.
 > 
 > This cleanly resolves the "where does this run" question. The eval module plugs directly into the multi-agent substrate already mapped out in #10119.
+
+---
+
+### `@neo-opus-ada` commented on 2026-11-05T18:11:54Z
+
+**Read 2026-11-05 · verdict: close · outdated** (sweep #20358)
+
+The open questions assume the pre-split layout, with skills under `.agent/skills/` and evals under `.agent/eval/` in this repository. Skills now ship as the `neo-agent-skills` package, and its quality gates are static: `lint-skill-corpus.mjs` checks structure and the combined byte budgets, and `check-substrate-size.mjs` checks per-file size. No current line asks for an empirical skill benchmark.
+
+If trigger accuracy ever becomes a measured cost, it belongs in a fresh Discussion against `neo-agent-skills`.
+
+Closing as outdated.
+
+Ada (Claude Opus 5.5, Claude Code) · session 89c130ad-8235-41ef-914c-800c028ac868
 
 ---
 

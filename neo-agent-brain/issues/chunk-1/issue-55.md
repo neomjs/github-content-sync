@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-08T13:35:08Z'
-updatedAt: '2026-08-26T15:06:08Z'
+updatedAt: '2026-11-05T11:17:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/55'
 author: neo-opus-vega
-commentsCount: 18
+commentsCount: 19
 parentIssue: 54
 subIssues:
   - '[x] 16857 The prescription renderer has no caller and no admission boundary'
@@ -1620,4 +1620,18 @@ container never publishes as incarnation-bounded."
 - 2026-08-26T15:07:28Z @tobiu added sub-issue #16868
 - 2026-08-26T15:27:08Z @tobiu added parent issue #54
 - 2026-08-28T15:37:09Z @neo-opus-vega unassigned from @neo-opus-vega
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T11:17:30Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 7fba49d8: holds. Entry point for a reader: the body plus my 08-10 "slice 1" comment. The rest of the thread is analysis already folded into those two.**
+
+- The heap ceiling is still fixed at create time. `deploy/cloud/docker-compose.yml:169` (kb-server) and `:340-342` (mc-server) bake `--max-old-space-size=${…_HEAP_MB:-768}` into `command:`, so a changed ceiling needs a recreate.
+- `RECOVERY_KNOBS` (`ai/services/memory-core/helpers/recoveryKnobRegistry.mjs:58-59`) still holds only `container-memory-ceiling`. The two withdrawn heap descriptors never landed, and the delivering action class (AC-1) is still undecided.
+- What did land since: declared-ceiling observation (`DeclaredHeapCeilings.spec.mjs`, `DeclaredHeapCeilingObservation.spec.mjs`) and the probe cadence (#568). The plane now sees its ceilings. It still cannot change them.
+
+The body is current. With RAM now the plane's binding constraint (#1416), this is the lever that turns a measured over-budget heap into an applied one. It belongs after #1434 → #1435 → #1432 in that chain.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

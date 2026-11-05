@@ -1,7 +1,7 @@
 ---
 id: 6565
 title: 'grid.plugin.AnimateRows: component based columns & cycling'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - help wanted
@@ -9,7 +9,7 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-03-09T22:52:13Z'
-updatedAt: '2026-11-05T10:38:46Z'
+updatedAt: '2026-11-05T11:41:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6565'
 author: tobiu
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T11:41:41Z'
 ---
 # grid.plugin.AnimateRows: component based columns & cycling
 
