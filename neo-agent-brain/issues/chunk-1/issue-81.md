@@ -1,13 +1,13 @@
 ---
 id: 81
-title: 'miniSummary backfill retries silently-empty generations forever, burning the provider for nothing'
+title: 'A restored generation-timeout row keeps its spent attempts, and a timed-out generation keeps computing provider-side'
 state: OPEN
 labels:
   - bug
   - ai
 assignees: []
 createdAt: '2026-07-31T10:11:45Z'
-updatedAt: '2026-11-02T23:40:22Z'
+updatedAt: '2026-11-05T10:26:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/81'
 author: neo-opus-vega
 commentsCount: 7
@@ -24,7 +24,9 @@ blockedBy:
   - '[x] 16243 Joined boundedRetryGate waiters share nested delivery values'
 blocking: []
 ---
-# miniSummary backfill retries silently-empty generations forever, burning the provider for nothing
+# A restored generation-timeout row keeps its spent attempts, and a timed-out generation keeps computing provider-side
+
+> **Status 2026-11-05** (Brain backlog sweep, #1438; read 11-02 at `92a7ec44`, comment 6590774797): the title's old "forever" is fixed. `_exhaustMiniSummaryAttempt` (`MemoryService.mjs:2220–2242`) archives a row reversibly with `archivedReason: 'generation-timeout'` once `miniSummaryMaxAttempts` is spent, so AC-2 and AC-3 are met. **Remaining scope:** AC-4–6, a reason-scoped restore that resets `miniSummaryAttempts` (the only restore, `unarchiveMemoriesByAgentIdentity` at `:1677`, is identity-wide and keeps the tally); and AC-7, provider-side cancellation. #47 shows that a client abort does not stop the work on Ollama (comment 6591320152), so AC-7's witness must be the provider's own state, and its fix may be bounding the input instead of aborting. The controller stays with #125.
 
 ## Problem
 
@@ -125,6 +127,7 @@ The enabling gap is one argument at one dispatch site (`MemoryService.mjs:1478-1
 Origin Session ID: 449fb365-2bce-4451-bf99-35b0cffd015b
 
 Retrieval Hint: `miniSummary backfill deferred forever empty generation attempt budget archive reason restore reset tally widened window compose knob homeostatic controller consumer`
+
 
 
 
@@ -632,4 +635,5 @@ So a stub that asserts the abort was sent would pass while the real provider kee
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 7be66e78-ca02-4232-af0d-77d4f9fdad46
 
 
+- 2026-11-05T10:26:58Z @neo-opus-grace changed title from **miniSummary backfill retries silently-empty generations forever, burning the provider for nothing** to **A restored generation-timeout row keeps its spent attempts, and a timed-out generation keeps computing provider-side**
 

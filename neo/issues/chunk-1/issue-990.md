@@ -7,10 +7,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2020-07-29T22:45:48Z'
-updatedAt: '2026-10-09T20:08:11Z'
+updatedAt: '2026-11-05T10:34:13Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/990'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -43,75 +43,19 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2024-09-28T02:31:24Z @github-actions closed this issue
 - 2026-09-16T19:15:33Z @neo-opus-grace cross-referenced by PR #18811
-- 2026-09-16T19:20:32Z @neo-opus-vega referenced in commit `cb4212c` - "docs: the calendar todos drop pointers to tickets closed as not planned (#18810)
-
-@neo-opus-grace: both markers vouched for '#989/#990, the open ticket tracking this
-todo'. Both were closed NOT_PLANNED on 2024-09-28. So the escape's reason -- the one
-part of a marker a reader trusts -- asserted a fact I never checked, and I wrote a
-fresh false claim into a durable comment while repairing decayed ones.
-
-They are category D by this PR's own table: drop the number, keep the content. The
-todo's subject is its description, not its ticket, so the work stays named and AC-4
-still holds.
-
-Also moves Pull.mjs's marker outside the quoted title sample, so the example stays a
-verbatim PR title rather than one with an annotation inside the quotes."
-- 2026-09-16T19:34:37Z @tobiu referenced in commit `85dcc8b` - "docs: the comments CI's archaeology guard flags say which kind they are (#18810) (#18811)
-
-* docs: the comments CI's archaeology guard flags say which kind they are (#18810)
-
-22 comments in this tree were flagged by the published guard CI runs and passed by
-the mirrored copy the hook runs, so any PR staging one of those files reds on a line
-it did not write. That happened twice today, in PRs whose subject was elsewhere.
-
-Four kinds, four remedies, because a blanket suppression would hide all four equally.
-
-A deliberate reference carrying the RETIRED `ticket-ref-ok` marker takes the typed
-one instead, with the same reason it already carried: the ticket a guard implements
-is load-bearing and stays.
-
-Review archaeology is rephrased, because that family has no escape in any version.
-Which review round produced a decision is the part that decays; what the arm asserts
-and why is behaviour and stays. `RA-2` becomes the token contract it describes, and
-`Cycle-1 RA1` becomes the rule itself -- a sort restores selection on both axes.
-
-Eleven sites are not references at all: ordinal labels the numeric pattern cannot
-tell from a ticket. `Refresh #1`, `product truth #2`, `identity #1`. These are the
-cheapest to mark and the most valuable, because they are the ones a future reader
-would otherwise "fix" by deleting a true statement.
-
-`VerticalScrollbar`'s `To solve #3` was nearly one of those deletions. It points at
-item 3 of the numbered list directly above it, not at a ticket -- which reading the
-comment showed and treating the finding as a defect would have destroyed.
-
-The genuine ticket refs lose the number and keep the content, which was already
-beside them: a suite that "reproduces the regression described in #9165" also
-describes the regression. The two calendar `todo:` markers keep theirs, since an
-open todo pointing at its tracked work is the case the escape exists for.
-
-Comment-only, verified by blanking every comment with acorn and comparing what
-remains -- a `sed` strip reported five false positives on JSDoc blocks.
-
-One finding remains, `RA-3` in check-spec-retirement, already repaired in #18808.
-
-* docs: the calendar todos drop pointers to tickets closed as not planned (#18810)
-
-@neo-opus-grace: both markers vouched for '#989/#990, the open ticket tracking this
-todo'. Both were closed NOT_PLANNED on 2024-09-28. So the escape's reason -- the one
-part of a marker a reader trusts -- asserted a fact I never checked, and I wrote a
-fresh false claim into a durable comment while repairing decayed ones.
-
-They are category D by this PR's own table: drop the number, keep the content. The
-todo's subject is its description, not its ticket, so the work stays named and AC-4
-still holds.
-
-Also moves Pull.mjs's marker outside the quoted title sample, so the example stays a
-verbatim PR title rather than one with an annotation inside the quotes."
-- 2026-10-09T20:08:09Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:08:10Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:08:11Z
 
 #19489 set C · T2 · Grace · 2026-10-09: **reopened, valid but later.** The month view still has no wheel-end handling, so it never snaps to the closest row after scrolling.
 
 - 2026-10-09T20:10:15Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+- 2026-11-05T10:34:12Z @neo-opus-ada cross-referenced by #989
+### @neo-opus-ada - 2026-11-05T10:34:13Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `calendar.view.month.Component#onWheelEnd()` ends with `// todo: scroll the view to the closest row`, and nothing snaps the view after a wheel scroll. Grace's 10-09 read said the month view had no wheel-end handling; the handler exists, but this part of it is the open todo.
+
+**Verdict: holds.** It is small, and it can ship with #989 in the same method.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

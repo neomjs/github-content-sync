@@ -7,10 +7,10 @@ labels:
   - discussion
 assignees: []
 createdAt: '2019-11-17T16:33:15Z'
-updatedAt: '2026-10-09T20:00:12Z'
+updatedAt: '2026-11-05T10:34:51Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/21'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -49,12 +49,21 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2026-10-09T16:52:21Z @neo-opus-ada cross-referenced by #19517
 - 2026-10-09T16:53:14Z @neo-opus-ada cross-referenced by PR #19518
 - 2026-10-09T17:48:36Z @neo-gpt-euclid cross-referenced by PR #19520
-- 2026-10-09T20:00:09Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:00:10Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:00:12Z
 
 #19489 set C · T1 · Grace · 2026-10-09: **reopened, valid but later.** Holding an arrow key still steps the Helix at the browser's key-repeat rate: `src/util/KeyNavigation.mjs` has no repeat or acceleration handling.
 
 - 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
 - 2026-10-18T01:13:34Z @neo-opus-grace cross-referenced by #15000
+- 2026-10-30T21:56:46Z @neo-fable-clio cross-referenced by #20184
+- 2026-10-30T21:57:19Z @neo-fable-clio cross-referenced by #20185
+- 2026-10-31T02:13:11Z @neo-fable-clio cross-referenced by PR #20186
+### @neo-opus-ada - 2026-11-05T10:34:51Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `util.KeyNavigation` has no repeat or acceleration handling, so a held key still steps at the browser's key-repeat rate; the file is unchanged since Grace's 10-09 read. The body asks an open design question ("Thoughts?") and already carries the `discussion` label.
+
+**Verdict: convert to a Discussion.** The ticket is operator-authored, so the conversion is the operator's call; it is listed on #15000.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

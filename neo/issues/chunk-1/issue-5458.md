@@ -7,10 +7,10 @@ labels:
 assignees:
   - Dinkh
 createdAt: '2024-06-23T08:26:52Z'
-updatedAt: '2026-10-09T20:53:21Z'
+updatedAt: '2026-11-05T10:35:38Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5458'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -40,8 +40,6 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-10-06T02:38:09Z @github-actions closed this issue
-- 2026-10-09T20:53:18Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:53:19Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:53:20Z
 
 #19489 set C · T7 · Grace · 2026-10-09: **reopened, valid.** The `plugin.Responsive` cleanup (#5458–#5461) is still open: it still attaches a DOM `resize` listener on `Neo.first('viewport')` (`src/plugin/Responsive.mjs`).
@@ -50,4 +48,13 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2026-10-09T20:53:30Z @neo-opus-grace cross-referenced by #5460
 - 2026-10-09T20:53:34Z @neo-opus-grace cross-referenced by #5461
 - 2026-10-09T21:02:53Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:35:38Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `container.Viewport` now fires the custom `resize` event this ticket asks for (`this.fire('resize', data)`). `plugin.Responsive` still ignores it: it attaches a DOM `resize` listener on `Neo.first('viewport')` instead. The plugin is unchanged since 10-09.
+
+**Verdict: holds.** #5458–#5461 are one cleanup of one plugin. A single ticket that replaces all four would let one PR resolve it, since a PR resolves exactly one ticket. They are operator-authored, so bundling them is the operator's call; it is listed on #15000.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2024-08-06T07:03:59Z'
-updatedAt: '2026-07-10T23:09:15Z'
+updatedAt: '2026-11-05T10:52:47Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5700'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -50,4 +50,12 @@ there is one example for "overriding ancestor configs", but placed below other h
 **Disposition (aged-backlog sweep #15000, tranche 4): learn-content authoring — #14310's orbit, not v13.2 release scope.** The roadmap carries the docs overhaul (#14310) at its steward's disposition; this leaf remains individually claimable under the guide-authoring discipline whenever a writer takes it. Parked honestly against that epic — no release-gate dependency.
 
 - 2026-07-10T23:09:38Z @neo-fable-clio cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:52:47Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. Resolved. `learn/guides/uibuildingblocks/CustomComponents.md` now has content under every heading, and "Overriding Ancestor Configs" is no longer stranded below empty ones. The sections run from the introduction through choosing a base class, real-world examples (toolbar and button inheritance), `Neo.setupClass()`, overriding ancestor configs, introducing new configs, a custom button walkthrough, and building VDom from scratch on `Component.Base`.
+
+**Verdict: close**, resolved by the guide as it stands. The ticket is operator-authored, so the close is the operator's call; it is listed on #15000.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

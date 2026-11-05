@@ -1,7 +1,7 @@
 ---
 id: 1471
 title: 'The roster names the Fleet''s start gate once, not only per seat'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-04T23:54:41Z'
-updatedAt: '2026-11-05T00:05:58Z'
+updatedAt: '2026-11-05T10:50:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1471'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T10:50:39Z'
 ---
 # The roster names the Fleet's start gate once, not only per seat
 
@@ -85,4 +86,22 @@ Retrieval Hint: "roster DTO startGate fleet-level start gate verifying its runti
 - 2026-11-05T00:05:23Z @neo-opus-ada referenced in commit `84f927d` - "feat(fleet): the start gate says whether the Fleet is booting (#1471)
 
 A string could not tell a gate that opens by itself (runtime verification or recovery still running) from one that holds until something changes, and the cockpit needs that for its line and its re-read. FleetLifecycleService#startGate replaces startGateRefusal and returns {state: 'booting'|'refused', reason}; rows keep the reason as their launchRefusal, and the roster DTO carries the whole gate."
+- 2026-11-05T10:17:46Z @neo-opus-ada referenced in commit `ee7c347` - "chore(fleet): merge dev, bringing #1469's roster spec onto the start gate branch (#1471)"
+- 2026-11-05T10:17:47Z @neo-opus-ada referenced in commit `a7f9226` - "test(fleet): #1469's roster spec stubs the lifecycle service's startGate (#1471)
+
+The merged #1469 spec still stubbed startGateRefusal, which #1471 replaces; fleetRoster now calls startGate(), so that stub threw. Brain unit suite: 2128 passed, 2 skipped."
+- 2026-11-05T10:50:38Z @tobiu referenced in commit `7fba49d` - "feat(fleet): the roster names the Fleet's start gate once (#1471) (#1472)
+
+* feat(fleet): the roster names the Fleet's start gate once (#1471)
+
+fleetRoster folded the lifecycle's start gate into each row's launchRefusal, where a seat's own refusal outranks it, so a reader could not tell a booting Fleet from seats that each refuse. createFleetCockpitStatus now carries startGate at the DTO's top level, null when Start may run; rows are unchanged.
+
+* feat(fleet): the start gate says whether the Fleet is booting (#1471)
+
+A string could not tell a gate that opens by itself (runtime verification or recovery still running) from one that holds until something changes, and the cockpit needs that for its line and its re-read. FleetLifecycleService#startGate replaces startGateRefusal and returns {state: 'booting'|'refused', reason}; rows keep the reason as their launchRefusal, and the roster DTO carries the whole gate.
+
+* test(fleet): #1469's roster spec stubs the lifecycle service's startGate (#1471)
+
+The merged #1469 spec still stubbed startGateRefusal, which #1471 replaces; fleetRoster now calls startGate(), so that stub threw. Brain unit suite: 2128 passed, 2 skipped."
+- 2026-11-05T10:50:40Z @tobiu closed this issue
 

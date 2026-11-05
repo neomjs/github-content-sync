@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2024-10-15T22:41:48Z'
-updatedAt: '2025-01-25T22:34:55Z'
+updatedAt: '2026-11-05T10:35:48Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6032'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -41,4 +41,13 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2025-01-14T02:26:59Z @github-actions added the `stale` label
 - 2025-01-25T22:34:55Z @tobiu removed the `stale` label
 - 2025-01-25T22:34:55Z @tobiu added the `no auto close` label
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:35:48Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `button.Base#editRoute` still defaults to `true`. `editRoute` appears in `apps/covid`, `apps/sharedcovid`, `apps/portal/Overwrites.mjs` and `examples/serverside/toolbarItems/Overwrites.mjs`.
+
+**Verdict: holds.** The remaining work is the audit the body asks for. Every button with a `route` that relies on the `true` default needs an explicit `editRoute: true` before the default flips.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

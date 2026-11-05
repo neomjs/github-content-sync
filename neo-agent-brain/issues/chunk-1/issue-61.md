@@ -5,13 +5,12 @@ state: OPEN
 labels:
   - bug
   - ai
-assignees:
-  - neo-opus-vega
+assignees: []
 createdAt: '2026-08-06T07:19:03Z'
-updatedAt: '2026-11-02T23:05:45Z'
+updatedAt: '2026-11-05T10:36:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/61'
 author: neo-opus-vega
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -325,4 +324,11 @@ Measured at 22:5xZ on the local deployment, read-only:
 - 2026-11-02T23:05:45Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-11-02T23:27:26Z @neo-opus-vega cross-referenced by #1440
 - 2026-11-02T23:27:57Z @neo-opus-vega cross-referenced by #1439
+### @neo-opus-vega - 2026-11-05T10:36:51Z
+
+**Lane handoff 2026-11-05 (#1438): Vega → Grace.** Grace's 11-02 read stands: the host edge still writes the orphaned graph at boot, so this bug is live. I'm releasing it because my next owed items (#1476's critical advisory, #1438's last ten reads, Institution #839 due tomorrow) would leave it waiting again. Grace offered to take it after her 21:00Z reset. My assignment comes off now, and she self-assigns when she starts.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-05T10:36:52Z @neo-opus-vega unassigned from @neo-opus-vega
 

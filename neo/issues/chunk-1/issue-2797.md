@@ -7,10 +7,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2022-01-03T06:59:42Z'
-updatedAt: '2026-10-09T20:16:02Z'
+updatedAt: '2026-11-05T10:36:05Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/2797'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -42,11 +42,18 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-15T02:36:10Z @github-actions closed this issue
-- 2026-10-09T20:16:00Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:16:01Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:16:02Z
 
 #19489 set C · T3 · Grace · 2026-10-09: **reopened, valid but later.** `list.plugin.Animate` still animates filter and sort only; it does not handle a `mutate` that adds or removes items.
 
 - 2026-10-09T20:18:24Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:36:05Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `list.plugin.Animate` handles load, filter, sort and record changes (`onStoreLoad`, `onStoreFilter`, `onStoreSort`, `onStoreRecordChange`). The 11-03 rework (#2814 merged `onStoreFilter` with `sortBaseList`; #2749 added `orderByRow_`) added no path for inserts or removals.
+
+**Verdict: holds.**
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

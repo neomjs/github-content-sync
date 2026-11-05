@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-16T21:51:30Z'
-updatedAt: '2026-07-17T02:50:16Z'
+updatedAt: '2026-11-05T10:42:52Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9496'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: 9486
 subIssues:
   - '[x] 15195 Align Grid focus ownership after the multi-body split'
@@ -40,20 +40,11 @@ Currently, using Left/Right arrow keys navigates through the DOM structure of a 
 
 ## Timeline
 
-- 2026-03-16T21:51:31Z @tobiu added the `epic` label
-- 2026-03-16T21:51:31Z @tobiu added the `ai` label
-- 2026-03-16T21:51:31Z @tobiu added the `grid` label
-- 2026-03-16T21:51:56Z @tobiu added parent issue #9486
-- 2026-03-17T18:59:40Z @tobiu assigned to @tobiu
 ### @github-actions - 2026-06-16T06:53:44Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-06-16T06:53:44Z @github-actions added the `stale` label
-- 2026-06-16T07:21:26Z @tobiu removed the `stale` label
-- 2026-06-16T07:21:26Z @tobiu added the `no auto close` label
 - 2026-07-15T15:05:09Z @neo-gpt-euclid cross-referenced by #15195
-- 2026-07-15T15:05:16Z @neo-gpt-euclid added sub-issue #15195
 ### @neo-gpt-emmy - 2026-07-17T02:41:37Z
 
 ## Epic Review — Stage 1 Challenge by @neo-gpt-emmy (GPT-5.6 Sol Ultra, Codex)
@@ -124,4 +115,21 @@ Origin Session ID: `411f5206-0c69-4674-ad6f-76a56445d426`
 - 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
 - 2026-10-12T10:14:06Z @neo-opus-ada cross-referenced by PR #19644
 - 2026-10-12T14:03:20Z @neo-gpt-euclid cross-referenced by #19658
+- 2026-10-31T14:39:14Z @neo-opus-grace cross-referenced by #20187
+- 2026-10-31T15:10:37Z @neo-opus-grace cross-referenced by #20188
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-maryam - 2026-11-05T10:42:52Z
+
+### Backlog Premise-Read (`neomjs/neo#15000`, `2026-11-05`)
+
+- **Current Code Reality:**
+  - **Requirements 1 & 2 (Logical Coordinate System & Cross-Body Boundary Crossing) are already shipped on `dev`:**
+    - `Neo.grid.View` owns the single `SelectionModel` (`src/grid/View.mjs:39-45`) and single keyboard-focus state (`src/grid/Body.mjs:1407-1411`, shipped via `#12784` and `#15195`).
+    - `src/selection/grid/BaseModel.mjs:69-71` (`get dataFields()`) spans `this.view.gridContainer.columns.items` across all regions (`locked: 'start'`, unlocked center, `locked: 'end'`), and `updateCells` (`lines 171-179`) broadcasts logical cell IDs (`recordId__dataField`) across `this.view.bodies` (`bodyStart`, `body`, `bodyEnd`).
+    - `src/selection/grid/CellModel.mjs:120-150` (`onNavKeyColumn`) steps through `dataFields` logically across locked/unlocked body boundaries and calls `view.gridContainer.scrollByColumns(currentIndex, step)` (which skips `column.locked` and scrolls the center body when needed).
+  - **Requirement 3 (Cross-Window Support):** Because `SelectionModel` already lives on `Neo.grid.View` in the App Worker and updates `this.view.bodies` by logical ID, only cross-window key-event forwarding for detached popup windows remains, which is gated on `#9493` (Cross-Window SubGrid Detachment).
+- **Verdict (`op` — for `@tobiu`):** **Recommend Close as Superseded/Delivered for single-window multi-body grids (`src/selection/grid/CellModel.mjs:120-150`, `src/selection/grid/BaseModel.mjs:69-71, 171-179`), or Holds solely for `#9493`'s cross-window pop-out key forwarding.**
+
+— Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
+
 

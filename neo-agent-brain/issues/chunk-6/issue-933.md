@@ -1,6 +1,6 @@
 ---
 id: 933
-title: Codex and Kimi seats refuse to publish their own harness session id
+title: Codex seats refuse to publish their own harness session id
 state: OPEN
 labels:
   - enhancement
@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-08T11:01:28Z'
-updatedAt: '2026-11-03T00:20:17Z'
+updatedAt: '2026-11-05T10:27:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/933'
 author: neo-opus-ada
 commentsCount: 1
@@ -24,11 +24,11 @@ contentTrust:
 blockedBy: []
 blocking: []
 ---
-# Codex and Kimi seats refuse to publish their own harness session id
+# Codex seats refuse to publish their own harness session id
 
 ## Context
 
-#932 gives Claude seats a `PreToolUse` guard, and #944 narrows it to the ways into an artifact: the GitHub tools, the shell and written files. The operator's ruling (2026-10-09, quoted on #944) is that artifacts carry Memory Core's own crypto session ids, that harness ids from Claude and Codex never go into artifacts, and that storing them in Memory Core is allowed. Codex seats publish a large share of the fleet's artifacts, and public `Session` lines on Codex-authored issues already look like Codex thread ids (UUIDv7). This leaf extends the guard to Codex and Kimi.
+#932 gives Claude seats a `PreToolUse` guard, and #944 narrows it to the ways into an artifact: the GitHub tools, the shell and written files. The operator's ruling (2026-10-09, quoted on #944) is that artifacts carry Memory Core's own crypto session ids, that harness ids from Claude and Codex never go into artifacts, and that storing them in Memory Core is allowed. Codex seats publish a large share of the fleet's artifacts, and public `Session` lines on Codex-authored issues already look like Codex thread ids (UUIDv7). This leaf extends the guard to Codex. Kimi waits: both Kimi seats are benched (sweep read 2026-11-03, #1438), and a returning Kimi seat gets its own leaf.
 
 ## The Problem
 
@@ -57,14 +57,14 @@ Still unmeasured, and only a seat running these harnesses can measure them:
 ## Acceptance Criteria
 
 - [ ] On a Codex seat, a publishing call carrying its own session id is refused, and one without it runs. This is a live receipt, red first.
-- [ ] The same on a Kimi seat.
-- [ ] On both, a Memory Core write that carries the id runs.
-- [ ] Each harness's payload fields, tool names and refusal form are recorded in the PR.
-- [ ] A malformed payload passes in both.
+- [ ] On the Codex seat, a Memory Core write that carries the id runs.
+- [ ] Codex's payload fields, tool names and refusal form are recorded in the PR.
+- [ ] A malformed payload passes.
 
 ## Out of Scope
 
 - Claude seats (#932, #944).
+- Kimi seats, while benched.
 - Existing artifacts.
 - Memory Core's own binding of harness ids (D#19401).
 
@@ -86,6 +86,7 @@ Origin Session ID: 58ad7fe7-062f-4a99-a92c-e5867f6ba8aa
 Retrieval Hint: "harness session id guard PreToolUse Codex Kimi parity"
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 
 
 ## Timeline
@@ -113,4 +114,5 @@ Retrieval Hint: "harness session id guard PreToolUse Codex Kimi parity"
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 81e16430-2daa-4302-a051-6d0150543140
 
 
+- 2026-11-05T10:27:26Z @neo-opus-grace changed title from **Codex and Kimi seats refuse to publish their own harness session id** to **Codex seats refuse to publish their own harness session id**
 

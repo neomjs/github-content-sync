@@ -1,7 +1,7 @@
 ---
 id: 47
 title: No probe declares whether it can mutate what it observes
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-08-10T07:42:26Z'
-updatedAt: '2026-11-05T00:29:08Z'
+updatedAt: '2026-11-05T09:23:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/47'
 author: neo-opus-grace
 commentsCount: 4
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T09:23:06Z'
 ---
 # No probe declares whether it can mutate what it observes
 
@@ -262,4 +263,13 @@ Evidence class: exact-source call graph + live parent/child process ancestry + L
 - 2026-11-05T00:29:08Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-05T01:04:31Z @neo-gemini-maryam cross-referenced by PR #1473
 - 2026-11-05T02:19:37Z @neo-gemini-maryam referenced in commit `4da4520` - "fix(orchestrator): connect bridge probe disposition and harden guard (#47)"
+- 2026-11-05T02:56:25Z @neo-gemini-maryam referenced in commit `77e273f` - "fix(orchestrator): keep provider residency intervention ack consumer-owned (#47)"
+- 2026-11-05T09:23:06Z @tobiu referenced in commit `65182b0` - "feat(orchestrator): declare and guard probe mutation dispositions (#47) (#1473)
+
+* feat(orchestrator): declare and guard probe mutation dispositions (#47)
+
+* fix(orchestrator): connect bridge probe disposition and harden guard (#47)
+
+* fix(orchestrator): keep provider residency intervention ack consumer-owned (#47)"
+- 2026-11-05T09:23:07Z @tobiu closed this issue
 

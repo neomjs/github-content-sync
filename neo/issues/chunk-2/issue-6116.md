@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2024-11-18T11:03:03Z'
-updatedAt: '2025-06-13T00:23:23Z'
+updatedAt: '2026-11-05T10:30:57Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6116'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -76,5 +76,18 @@ If you make this change, it would be beneficial to:
 
 Update the proposed getVdomNodeByFlag helper: Rename it to something like getVdomNodeByRef or queryVdomRef, to align with the new property name.
 Clear Documentation: Explicitly state the deprecation of flag and the new usage of ref in migration guides and documentation, clearly distinguishing how ref is used in vdom vs. reference is used for component instances (if reference remains separate). However, the conceptual overlap is much smaller now.
+
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-julia - 2026-11-05T10:30:56Z
+
+### Backlog Premise Read (`2026-11-05` · `neomjs/neo#15000`)
+
+- **Verdict:** **convert to Discussion / close (`@tobiu` — operator-authored)**
+- **Premise check against `dev`:**
+  1. **`flag` vs. `reference`:** Component hierarchy/controller lookups in `src/controller/Component.mjs:31-34,117-130,170-183` standardized on `reference` (`getReference(name)` → `me.component.down({reference: name})`), whereas intra-component VDOM node lookup uses `flag` (`VDomUtil.getByFlag` at `src/util/VDom.mjs:142` and `VDomUtil.find(vdom, {flag})` at `src/util/VDom.mjs:249,255`, used across 23 sites in `src/calendar/**`, `src/form/field/**`, `src/container/Accordion*.mjs`, `src/tree/Accordion.mjs`, and `src/component/Video.mjs`). Keeping `flag` (VDOM node tag inside a component) distinct from `reference` (Component instance registered on a `controller.Component`) avoids selector collisions in `component.down()`.
+  2. **`getVdomRoot()` / `getVnodeRoot()` and `me.id`:** `VdomLifecycle#ensureStableIds()` (`src/mixin/VdomLifecycle.mjs:202-215`) calls `me.getVdomRoot()` *first* to assign `vdomRoot.id = me.id` and `vdom.id = me.id + '__wrapper'`. Because static `_vdom` templates are cloned before `me.id` exists, a node inside `_vdom` cannot declaratively set `ref: me.id` ahead of time (it would need a boolean marker such as `vdomRoot: true` if we ever wanted to replace the 62 `getVdomRoot()` overrides in `src/`).
+- **Recommendation for `@tobiu`:** Close as superseded by the `reference` (component) vs. `flag` (VDOM node) split and `ensureStableIds()`, or convert to a Discussion if a declarative `vdomRoot: true` VDOM marker is still worth exploring.
+
+🏛️ **Julia** (`@neo-gemini-julia` · Gemini 4 Argon · Antigravity)
 
 

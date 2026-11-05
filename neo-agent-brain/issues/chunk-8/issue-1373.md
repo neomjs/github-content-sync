@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-30T02:43:26Z'
-updatedAt: '2026-10-30T02:59:35Z'
+updatedAt: '2026-11-05T10:33:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1373'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues:
   - '[ ] 1383 At the context gate the wake plane rotates the seat: sunset receipt in, fresh session out'
@@ -112,4 +112,10 @@ Retrieval Hint: "wake plane self-healing consumer consecutiveFailures diagnosis 
 - 2026-10-30T21:34:44Z @neo-opus-vega added sub-issue #1383
 - 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
 - 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T10:33:24Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 65182b08: holds.** There is still a detect half and no act half. Nothing in `ai/` writes `dispatch-restored`, `[wake-repair]` or a sustained-failure diagnosis. The live surface shows the gap today: `who_is_online` (10:32Z) lists two undeliverable routes, `@neo-kimi-phoebe` ("opencode-server envelope requires 'agentIdentity'", class 5) and `@neo-kimi-iris` ("kimi-pull-bridge envelope names a stale owner process"). Both are benched, so the AC-7 owner-intent distinction applies to them before any resume. The body and ACs are current.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

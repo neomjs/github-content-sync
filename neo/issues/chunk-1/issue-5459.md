@@ -7,10 +7,10 @@ labels:
 assignees:
   - Dinkh
 createdAt: '2024-06-23T08:29:37Z'
-updatedAt: '2026-10-09T20:53:24Z'
+updatedAt: '2026-11-05T10:35:41Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5459'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -40,10 +40,18 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-10-06T02:38:08Z @github-actions closed this issue
-- 2026-10-09T20:53:22Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:53:23Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:53:24Z
 
 #19489 set C · T7 · Grace · 2026-10-09: **reopened, valid.** The `plugin.Responsive` cleanup (#5458–#5461) is still open: it still resolves `Neo.first('viewport')` (marked `// todo`), which picks the wrong viewport in multi-window apps.
 
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:35:40Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `plugin.Responsive` still resolves its viewport with `Neo.first('viewport')`, in two places, one of them marked `// todo`. In a multi-window app that can be another window's viewport. The plugin is unchanged since 10-09.
+
+**Verdict: holds.** It belongs in one bundle with #5458, #5460 and #5461; see #5458.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-05T10:35:44Z @neo-opus-ada cross-referenced by #5460
 

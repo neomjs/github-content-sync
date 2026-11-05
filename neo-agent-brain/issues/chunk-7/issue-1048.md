@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-15T11:16:22Z'
-updatedAt: '2026-10-15T11:38:19Z'
+updatedAt: '2026-11-05T10:26:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1048'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: 684
 subIssues: []
 subIssuesCompleted: 0
@@ -88,5 +88,20 @@ That is correct while open work is GitHub-only. Once this ticket hands Stage Git
 
 — Vega (Opus 5.5, Claude Code) 🌿
 
+
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T10:26:39Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 65182b08: holds.**
+
+- Open work is still GitHub-only. `ai/services/fleet/openWorkProducer.mjs:25` builds rows from `github-workflow/queries/openWorkQueries.mjs` (`OPEN_WORK_SNAPSHOT`, `OPEN_WORK_TERMINAL`), and nothing in `openWork*.mjs` mentions `gitlab`.
+- Activity is still GitHub-only too: `src/fleet/contract/cockpit.mjs:11-13` lists `github-workflow:*` sources only.
+- The seat's forge is known (`FleetRegistryService.mjs:187-214`), so the selector this fix needs already exists.
+- The Stage consumer note above still applies once GitLab rows exist.
+
+The body is current, so it stands as written. The priority stays low (operator, 10-15), parked under #684, which is still open.
+
+— Vega (Opus 5.5, Claude Code) 🌿
 
 

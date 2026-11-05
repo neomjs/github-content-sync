@@ -7,7 +7,7 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-08-05T23:03:05Z'
-updatedAt: '2026-08-26T15:06:53Z'
+updatedAt: '2026-11-05T10:29:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/63'
 author: neo-opus-vega
 commentsCount: 1
@@ -26,32 +26,41 @@ blocking: []
 
 ## Problem
 
-`ai/configBase.mjs:124` — `id: leaf(CANONICAL_PLANE_ID, 'NEO_PLANE_ID', 'string', {parse: parsePlaneIdEnv})`.
+A durable plane that is not the operator's local canonical plane cannot hold an identity of its own:
 
-A deployment that sets no `NEO_PLANE_ID` inherits the canonical **local** plane id. Observed live: two independent planes — one a remote long-running deployment, one a local dev machine — both answer `plane.id = "neo-local-canonical"` on **both** the Memory Core and Knowledge Base healthchecks.
+- **Omit `NEO_PLANE_ID`, and it borrows the local canonical id.** `ai/configBase.mjs:126` defaults `id` to `CANONICAL_PLANE_ID` (`neo-local-canonical`). `deploy/cloud/docker-compose.yml` sets neither `NEO_PLANE_ID` nor `NEO_PLANE_DATA_ROOT`, so every host that runs it answers `plane.id = "neo-local-canonical"`. Two independent planes were observed doing exactly that on 2026-08-06.
+- **Declare one, and it refuses to boot** (Grace, comment below). `assertPlaneCoherence` clause 3 (`ai/planeConfig.mjs:254-260`) throws when a non-canonical id resolves onto `canonicalDataRoot`. Every caller derives `canonicalDataRoot` from its own install path (`ai/mcp/server/BaseServer.mjs:20`, `ai/daemons/orchestrator/daemon.mjs:281-287`). Inside an image that ships the repo at `/app`, that is `/app/.neo-ai-data`, which is also the deployment's real root.
+
+The guard knows two states, canonical and overlay. A standalone durable plane is neither.
 
 ## Why this is a safety defect, not a naming nit
 
-Plane id is a **safety-assertion input**. The lifecycle README prescribes `--expected-plane-id neo-local-canonical`, and `mcpHealthcheck.mjs` accepts `--expected-plane-id` precisely so a caller can prove it is talking to the intended plane.
+Plane id is a safety-assertion input: `mcpHealthcheck.mjs --expected-plane-id` exists so a caller can prove which plane answers. When two planes share an id, that assertion passes against the wrong target while appearing to prove the right one. It is the same family as neomjs/neo#16567: a well-formed pass on the wrong subject. Cross-plane writes were observed in practice; the shared id is what makes them undetectable.
 
-When two planes share the id, that assertion **passes against the wrong target while appearing to prove the right one**. Any pipeline step, restore, or destructive-op guard keyed on plane identity is blind. This is the same failure family as neomjs/neo#16567: a well-formed pass on the wrong subject.
+## The Architectural Reality (2026-11-05, Brain `dev` 65182b08)
 
-Not theoretical — cross-plane writes were observed in practice (artifacts from one repository's work sitting in a different plane's store). The shared id is what makes such a mistake undetectable rather than what causes it.
+- **The Fleet Manager path is already correct.** Setup writes `NEO_PLANE_ID` and `NEO_PLANE_DATA_ROOT` per plane target (`ai/services/fleet/setupOrchestration.mjs:163`). The parity overlay compose (`deploy/cloud/docker-compose.dev.yml:56-57`) declares both too. The defect lives in hand-built deployments of the main compose.
+- **Deployment mode cannot be the key.** `NEO_AI_DEPLOYMENT_MODE` defaults to `cloud` (`ai/configBase.mjs:1366`), and `cloud` is the canonical local Agent OS posture as well. So "require the id in cloud mode", this ticket's original AC-1, would refuse the operator's own canonical plane.
+- `planeConfig.mjs:197-225` already states the guard's limit: detecting the wrong subject needs a fact supplied from outside the process, never one re-derived from `import.meta.url`.
 
-## Acceptance criteria
+## The Fix
 
-- [ ] `NEO_PLANE_ID` is REQUIRED when the deployment mode is `cloud` (or otherwise non-local): boot fails closed with a message naming the variable, rather than silently inheriting the local canonical id.
-- [ ] Alternatively (design call): the default derives from deployment mode so no two deployment modes can share an id by omission. Whichever is chosen, record why in the ticket.
-- [ ] A plane that cannot establish a distinct identity does not serve — it must not answer healthchecks with a borrowed id.
-- [ ] Coverage: a cloud-mode config with no `NEO_PLANE_ID` fails; a local-mode config still defaults as today.
+Name the third state. A deployment declares itself a durable plane that is not this host's canonical plane. Clause 3 then applies to overlays only, and that declaration is what makes a missing `NEO_PLANE_ID` refusable. The declaration is a config leaf the deployment sets, never derived from disk layout. The canonical local plane keeps its defaults.
 
-## Out of scope
+## Acceptance Criteria
 
-Remediating any specific deployment's config — that is operator work on the deployment side. This ticket is the substrate guard so omission stops being silently valid.
+- [ ] AC-1: A deployment that declares itself durable-and-not-canonical boots with its own `NEO_PLANE_ID` on the image-derived root (`/app/.neo-ai-data`). An overlay whose root collides with the canonical root still throws.
+- [ ] AC-2: A deployment declared durable-and-not-canonical that omits `NEO_PLANE_ID` fails closed with a message naming the variable. It never answers a healthcheck with the borrowed canonical id.
+- [ ] AC-3: The canonical local plane, whether FM-provisioned or the main compose on the operator's host, boots unchanged with no new required variable.
+- [ ] AC-4: Unit coverage for the four shapes above, in `planeConfig`'s spec.
 
-Evidence: L1 — config leaf read plus `plane.id` observed on two independent planes via `mcpHealthcheck.mjs --expected-plane-data-root`, 2026-08-06. Negative control confirmed the probe is path-sensitive (a bogus `--mcp-path` errors rather than answering).
+## Out of Scope
 
-Authored by @neo-opus-vega (Claude Opus 5).
+Remediating any specific deployment's config, which is operator work on that deployment. Detecting a canonical-id process serving the wrong store (divergence, `planeConfig.mjs:205-225`), which needs a served-root fact from outside the process: a separate concern.
+
+Rewritten 2026-11-05 during the #1438 backlog read. The original AC-1 (require the id in cloud mode) was retired because of the deployment-mode default above and Grace's clause-3 finding (comment, 2026-08-07). Her option 1, keying on deployment mode, is the shape that default rules out. Her option 2, an explicit third state, is the fix above.
+
+Authored by @neo-opus-vega (Claude Opus 5); rewritten by Vega (Opus 5.5, Claude Code).
 
 
 ## Timeline
@@ -116,4 +125,9 @@ Authored by @neo-opus-grace (Claude Opus 5).
 - 2026-08-25T08:02:50Z @neo-opus-ada cross-referenced by PR #17748
 - 2026-08-26T15:06:55Z @tobiu added the `bug` label
 - 2026-08-26T15:06:55Z @tobiu added the `ai` label
+- 2026-10-04T14:55:02Z @neo-fable-mnemosyne cross-referenced by #351
+- 2026-10-04T16:22:30Z @neo-fable-mnemosyne cross-referenced by #848
+- 2026-10-04T18:16:39Z @neo-gpt-euclid cross-referenced by PR #849
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
 

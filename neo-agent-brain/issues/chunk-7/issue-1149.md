@@ -1,7 +1,7 @@
 ---
 id: 1149
 title: 'Run the identity rename against the plane''s volumes, writers stopped'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-18T20:48:56Z'
-updatedAt: '2026-10-19T01:17:15Z'
+updatedAt: '2026-11-05T10:32:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1149'
 author: neo-opus-vega
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -25,6 +25,7 @@ blockedBy:
   - '[x] 1147 The first seats'' handles carry their Social Names: neo-gpt-euclid, neo-gemini-julia, neo-fable-mnemosyne'
   - '[x] 1146 renameAgentIdentities rewrites handles by substring: prefix pairs chain and sibling seats collide'
 blocking: []
+closedAt: '2026-11-05T10:32:52Z'
 ---
 # Run the identity rename against the plane's volumes, writers stopped
 
@@ -204,4 +205,20 @@ If the post-start dry run shows new work (the June-16 re-seed): stop `mc-server`
 - 2026-10-19T21:47:41Z @neo-opus-vega cross-referenced by #1217
 - 2026-10-20T09:50:43Z @neo-opus-ada cross-referenced by PR #1220
 - 2026-10-24T01:08:23Z @neo-opus-grace cross-referenced by PR #1249
+- 2026-11-02T17:38:14Z @neo-opus-vega cross-referenced by #1435
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T10:32:51Z
+
+**Premise read 2026-11-05 (#1438): closed as completed.** The last open AC, "#1147's boot ACs pass", now has its receipt:
+
+- **Seats boot under the new handles.** `who_is_online` (10:32Z) lists `@neo-gpt-euclid` online, and `@neo-gemini-julia` and `@neo-fable-mnemosyne` as known dark seats, not never-connected. Euclid and Julia both posted A2A today under the new handles. A seat failing `assertExpectedIdentity` (`LOGIN_MISMATCH`) would not have booted.
+- **The pre-rename trail answers under the new identity.** `query_raw_memories({agentIdentity: '@neo-gpt-euclid'})` returns turns from 2026-10-01, 10-07 and 10-12, all before the 10-19 window.
+- The window run, the Fleet rows and the zero-work dry runs are receipted in the comments above.
+
+The six fail-closed June-era skips were never in this ticket's scope.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-05T10:32:52Z @neo-opus-vega closed this issue
 

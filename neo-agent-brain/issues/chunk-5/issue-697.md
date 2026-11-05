@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-01T15:16:03Z'
-updatedAt: '2026-10-01T15:16:03Z'
+updatedAt: '2026-11-05T10:31:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/697'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: 351
 subIssues: []
 subIssuesCompleted: 0
@@ -101,4 +101,26 @@ Retrieval Hint: "cloud placement bundle compose env secret files probe on the ta
 - 2026-10-01T18:21:27Z @neo-fable-clio cross-referenced by #713
 - 2026-10-01T18:21:51Z @neo-fable-clio cross-referenced by #714
 - 2026-10-01T18:30:26Z @neo-fable-clio cross-referenced by #351
+- 2026-10-01T20:36:10Z @neo-fable-clio cross-referenced by PR #732
+- 2026-10-01T20:37:07Z @neo-fable-clio cross-referenced by #679
+- 2026-10-02T12:54:59Z @neo-fable-mnemosyne cross-referenced by #750
+- 2026-10-02T13:04:29Z @neo-fable-mnemosyne cross-referenced by #440
+- 2026-10-02T20:21:32Z @neo-fable-clio cross-referenced by #782
+- 2026-10-04T11:10:05Z @neo-fable-mnemosyne cross-referenced by #534
+- 2026-10-04T16:47:38Z @neo-fable-clio cross-referenced by #850
+- 2026-10-09T21:29:22Z @neo-fable-clio cross-referenced by #957
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T10:31:32Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 65182b08: holds, with two stale anchors for the next owner.**
+
+- Nothing prepares a remote placement yet: there is no `preparePlacement` anywhere in `ai/`. The parent neomjs/neo-agent-institution#351 is open, and so is the future transport #83. A remote host effect therefore stays an operator action, as this body says (ADR 0041 §2.6).
+- The upstream leaves closed. #679 (recipe and record), #686 (presets as env sets) and #685 all shipped. #685 shipped as a host/guest RAM-budget probe, `ai/services/fleet/probePlacement.mjs`, consumed through `fitsPreset` (`firstRunRecipe.mjs:24,110`).
+- **Stale anchors.** On `dev` there is no `--probe --json` CLI entry and no `attachPlane()` helper. The probe is a module the recipe calls, not a command to run on a remote host. AC-4's "pasted probe JSON" path and the attach half therefore need their entry points built here, not reused. The ACs themselves still describe the right outcome.
+
+The intent stands under #351, and the body holds apart from those two names.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

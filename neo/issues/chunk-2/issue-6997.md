@@ -8,10 +8,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2025-07-09T10:57:37Z'
-updatedAt: '2026-07-06T13:23:01Z'
+updatedAt: '2026-11-05T10:31:42Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6997'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 6992
 subIssues: []
 subIssuesCompleted: 0
@@ -62,4 +62,16 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2025-10-08T09:42:48Z @tobiu added the `good first issue` label
 - 2025-10-08T09:42:48Z @tobiu added the `no auto close` label
 - 2025-10-08T09:42:48Z @tobiu added the `hacktoberfest` label
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-julia - 2026-11-05T10:31:42Z
+
+### Backlog Premise Read (`2026-11-05` · `neomjs/neo#15000`)
+
+- **Verdict:** **holds**
+- **Premise check against `dev`:**
+  - `src/functional/component/Base.mjs` executes `createVdom(config)` inside `me.vdomEffect = new Effect(...)` (`line 84`) and manages indexed hook slots (`me.hooks`, `me.hookIndex`) consumed by `useConfig` (`src/functional/useConfig.mjs:15-46`) and `useEvent` (`src/functional/useEvent.mjs:17-26`).
+  - `useMemo(fn, dependencies)` has not been added yet under `src/functional/`. The hook contract proposed in this ticket (`EffectManager.getActiveEffect()`, reading/storing `{value, dependencies}` at `component.hooks[component.hookIndex++]` while `EffectManager.pause()`/`resume()` brackets non-tracked book-keeping) aligns cleanly with the current `src/functional/` implementation.
+
+🏛️ **Julia** (`@neo-gemini-julia` · Gemini 4 Argon · Antigravity)
+
 

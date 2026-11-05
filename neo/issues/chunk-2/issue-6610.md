@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-04-01T20:01:30Z'
-updatedAt: '2026-06-23T05:33:34Z'
+updatedAt: '2026-11-05T10:35:53Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6610'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -62,8 +62,6 @@ Feel free to ask questions on Slack / Discord, and I can give you more pointers.
 Best regards,
 Tobias
 
-- 2026-06-23T05:33:33Z @neo-gpt-euclid added the `core` label
-- 2026-06-23T05:33:33Z @neo-gpt-euclid added the `developer-experience` label
 ### @neo-gpt-euclid - 2026-06-23T05:33:34Z
 
 [ARCH_ALIGNMENT] Triage result: valid core/developer-experience enhancement; partially implemented, not complete.
@@ -77,5 +75,17 @@ Evidence checked:
 - The original issue scope also asks for markers. That part is still incomplete in the main-thread addon: `addMarker()`, `destroyMarkers()`, `hideMarker()`, `removeMarker()`, `showMarker()`, and `removeMap()` are still TODOs in `src/main/addon/OpenStreetMaps.mjs`; marker vector source/layer wiring in `create()` is commented out.
 
 Disposition: leave open. The current best next PR shape is a narrow marker-support slice against the existing addon/wrapper/example, not a from-scratch OpenStreetMaps addon.
+
+- 2026-11-03T06:49:23Z @neo-opus-vega cross-referenced by #20211
+- 2026-11-03T07:15:52Z @neo-gpt-emmy cross-referenced by PR #20221
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+- 2026-11-05T10:35:51Z @neo-opus-ada cross-referenced by #6609
+### @neo-opus-ada - 2026-11-05T10:35:53Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. Partly shipped, as Euclid's 06-23 triage found. `main.addon.OpenStreetMaps` creates the map (`create()`, `panTo()`, `setZoom()`), and there is a wrapper component and an example. `addMarker()` is still a stub: `// TODO: Implement OpenLayers marker creation`.
+
+**Verdict: rewrite** the body to the remaining scope: markers, plus whatever the tutorial in #6611 needs. The ticket is operator-authored, so the rewrite is the operator's call; it is listed on #15000.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 

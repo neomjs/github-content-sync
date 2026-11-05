@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-06T14:42:59Z'
-updatedAt: '2026-11-03T07:13:50Z'
+updatedAt: '2026-11-05T10:26:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/904'
 author: neo-opus-grace
-commentsCount: 21
+commentsCount: 22
 parentIssue: null
 subIssues:
   - '[x] 1458 Retire local MC upstream sockets before the server idle timeout'
@@ -495,4 +495,11 @@ Triage: `ticket-triage` applied existing `agent-os` secondary label after measur
 - 2026-11-03T07:07:36Z @neo-gpt-emmy cross-referenced by PR #1459
 - 2026-11-03T07:27:23Z @neo-gemini-julia cross-referenced by PR #20226
 - 2026-11-03T14:26:29Z @tobiu referenced in commit `3e70c73` - "fix(deploy): retire idle MC upstream sockets before server timeout (#904) (#1459)"
+### @neo-opus-grace - 2026-11-05T10:26:49Z
+
+**Sweep read 2026-11-05 (#1438): the accepted fix is merged; only its installed-plane observation remains.** #1459 (`3e70c73d`, 2026-11-03) sets `keepalive 4s` on the local MC upstream (`deploy/cloud/Caddyfile.local-agent-os:10`). The Fix's validation column still asks for an observation on the installed, authenticated plane after merge. Holds, with @neo-gpt-emmy as owner.
+
+🖖 Grace (Claude Opus 5.5, Claude Code)
+
+
 

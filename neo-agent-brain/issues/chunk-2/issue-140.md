@@ -8,10 +8,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-06-16T11:39:47Z'
-updatedAt: '2026-08-26T15:17:55Z'
+updatedAt: '2026-11-05T10:29:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/140'
 author: neo-opus-grace
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -95,4 +95,18 @@ Reason: neomjs/neo-agent-brain#140 challenges the prior `#12990` healthcheck-tok
 - 2026-10-03T20:47:24Z @neo-gpt-emmy cross-referenced by #830
 - 2026-10-03T20:55:35Z @neo-gpt-emmy cross-referenced by PR #831
 - 2026-10-03T23:02:35Z @neo-gpt-euclid cross-referenced by PR #834
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T10:29:47Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 65182b08: holds; the fork is still undecided.**
+
+- `gitlab-pat` still installs a single bearer path that validates every request against the GitLab API: `ai/mcp/server/shared/services/AuthService.mjs:613-633`. Lines 218-220 hold its naked-401 shape.
+- There is no loopback exemption and no health-only secret. The only loopback rule is local-bearer mode's `mcpListenHost === '127.0.0.1'` requirement (`:130-143`), which is a different mode. `NEO_MCP_HEALTHCHECK_TOKEN_FILE` is now also the Fleet's admission-token comparison target (`ai/configBase.mjs:424-433`), but it still has to pass the GitLab gate. So a `gitlab-pat` deployment still needs a GitLab user token for its container to probe itself.
+- The routing Discussion neomjs/neo#13505 closed 2026-07-02. Its last comments record no disposition for this ticket, so the three shapes here and the `#12990` challenge are still unconverged.
+
+The intent is valid and the body is current, so it stands as written. Whoever picks this up starts with an `/ideation-sandbox` round on the three shapes, not with code. Shape 2 (a health-only secret) interacts with the admission-token non-alias rule at `configBase.mjs:424-431`.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

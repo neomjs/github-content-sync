@@ -10,10 +10,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-15T06:38:33Z'
-updatedAt: '2026-08-26T15:01:27Z'
+updatedAt: '2026-11-05T10:27:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/33'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -101,4 +101,22 @@ Authored by **Emmy (GPT-5.6 Sol Ultra, Codex)** (`@neo-gpt-emmy`).
 - 2026-08-26T15:01:29Z @tobiu added the `ai` label
 - 2026-08-26T15:01:29Z @tobiu added the `testing` label
 - 2026-08-26T15:01:30Z @tobiu added the `agent-os` label
+- 2026-10-18T22:58:28Z @neo-fable-clio cross-referenced by #735
+- 2026-10-18T23:15:54Z @neo-fable-clio cross-referenced by #732
+- 2026-10-18T23:41:07Z @neo-fable-clio cross-referenced by #1144
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T10:27:44Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 65182b08: holds.**
+
+Nothing on `dev` establishes or verifies a login owner for the container runtime yet:
+- `ai/scripts/lifecycle/local-agent-os/README.md` still installs only the two Neo LaunchAgents (`:291-298`) and never mentions Colima.
+- The only Colima line in the Brain is `learn/agentos/cloud-deployment/Day0Tutorial.md:92` (`colima start --mount …`), a manual start with no login persistence.
+- The Fleet Manager's first-run path (`ai/services/fleet/firstRunRecipe.mjs`) has no container-runtime step either. A cold boot without a Colima service therefore still leaves Memory Core and the Knowledge Base down until someone starts it by hand.
+
+The fix stays as written: one bounded macOS/Colima step plus a receipt in the local procedure. Its AC-3 needs a real logout/reboot on the operator's host, so it is his machine's call when it runs. If the FM's setup journey later owns host prerequisites, this step moves there. That's not a reason to rewrite the body today.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-09-24T20:37:08Z'
-updatedAt: '2026-10-29T14:37:02Z'
+updatedAt: '2026-11-05T10:26:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/474'
 author: neo-opus-vega
 commentsCount: 0
@@ -24,10 +24,12 @@ contentTrust:
 blockedBy:
   - '[ ] 473 Concept rows are keyed by tenant, and the concept walk gates by tenant'
 blocking:
-  - '[ ] 1346 GuideToolParity reads NeuralLink.md from a current installed engine'
+  - '[x] 1346 GuideToolParity reads NeuralLink.md from a current installed engine'
   - '[ ] 19093 Delete the engine''s concept files and JSONL copy'
 ---
 # The KB projects admitted concepts from the plane store
+
+> **Status 2026-11-05** (Brain backlog sweep, #1438): the first Problem bullet is stale. #1356 (PR #1357, `838f2449`) removed the `ConceptSource` route, and `git grep ConceptSource` finds nothing under `ai/` at Brain `dev` `65182b08`. The KB has no concept source at all now, so this leaf adds the first one rather than swapping a route. The admission gap still holds: `QueryService.mjs:199` boosts `metadata.type === 'concept'` without checking `validated`, and stays dormant only while no concept document is ingested. Parent #471 is open.
 
 ## Context
 
@@ -107,6 +109,7 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 
 
 
+
 ## Timeline
 
 - 2026-09-24T20:37:10Z @neo-opus-vega added the `enhancement` label
@@ -149,4 +152,7 @@ The Engine-profile corpus test keeps a concept page in its fixture and
 now asserts that nothing routes it. Legacy type: concept vectors stay:
 embedKnowledgeBase is additive (#419 AC-4). This splits the route item
 out of #474."
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+- 2026-11-02T23:47:13Z @neo-opus-vega cross-referenced by #1445
 

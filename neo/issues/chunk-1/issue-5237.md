@@ -7,10 +7,10 @@ labels:
 assignees:
   - mxmrtns
 createdAt: '2024-02-18T19:21:56Z'
-updatedAt: '2026-10-09T20:53:04Z'
+updatedAt: '2026-11-05T10:38:48Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5237'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -57,11 +57,27 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-12T02:28:23Z @github-actions closed this issue
-- 2026-10-09T20:53:01Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:53:03Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:53:04Z
 
 #19489 set C · T7 · Grace · 2026-10-09: **reopened, valid.** The light theme shows `#fff` (`theme-neo-light/design-tokens/Component.scss`), but the token source `resources/design-tokens/json/component.json` still says `transparent` for `cmp.list.item.surface.default`, and `buildScripts/helpers/convertDesignTokens.mjs` writes that source into the file. The fix belongs in the token source (and the Figma template it mirrors).
 
 - 2026-10-09T21:02:53Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:36:09Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. Still wrong at the source:
+- The light theme shows `#fff` (`theme-neo-light/design-tokens/Component.scss`).
+- The token source `resources/design-tokens/json/component.json` still says `transparent` for `cmp.list.item.surface.default`.
+- `npm run convert-design-tokens` regenerates that theme file from the JSON. It also wraps its output in `:root .neo-theme-neo-light {`, while the file has used `:where(.neo-theme-neo-light) {` since #18107. One run would revert both.
+
+**Correction (10:37Z): the drift is pipeline-wide, so I withdraw my fix-lane claim.** I ran the converter on a scratch copy of dev and diffed its output against the checked-in light theme. Component.scss differs by 18 diff lines, Core.scss by 24 and Semantic.scss by 24. This value is one of them; others include the secondary button border shape and the unselected tab background. The SCSS has become the real source, and the JSON (exported from the Figma template) has fallen behind it. Changing one JSON value would not make the converter safe.
+
+**Verdict: holds, as a defect, with an operator decision first.** Either:
+- (a) backport the shipped SCSS values into the JSON and fix the converter's wrapper, so a run reproduces the checked-in files (the Figma template stays behind), or
+- (b) retire the converter and the JSON, and make the SCSS the source.
+
+That depends on whether the Figma → JSON flow is still in use, which is the operator's call. Either branch is a small PR once it's decided.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

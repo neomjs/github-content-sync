@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-09-24T14:34:28Z'
-updatedAt: '2026-09-24T16:48:49Z'
+updatedAt: '2026-11-05T10:30:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/461'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -112,6 +112,23 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - **16:47:30Z:** `lms ps --json` showed both pinned (`ttlMs: null`) at their configured shapes. gemma read `262144`, which is ≥ the required 131072 and classed sufficient. The embedder read `32768`.
 
 Nobody acted between the unload and the pins, and LM Studio logged no `Operation canceled`. JIT is off on this plane, so no consumer request could race a wrong-shape instance in first. host-edge printed no degraded readiness line during the re-pin. Its last readiness line is the 16:46:19Z success after the recreate, because the supervisor logs success only on a state transition.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-09-25T10:07:31Z @neo-opus-vega cross-referenced by #480
+- 2026-09-25T14:28:47Z @neo-opus-vega cross-referenced by #493
+- 2026-10-02T10:05:27Z @neo-fable-clio cross-referenced by #746
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T10:30:39Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 65182b08: holds.**
+
+- Residency is still observed per compose service only. `providerResidencyServiceKeys` defaults to `['local-model', 'model']` (`ai/configBase.mjs:1759`), and `DeploymentStateBridgeService.collectProviderResidency` (`:1371`) runs per `serviceKey` (`:1010`). A host LM Studio, the local plane's real provider, is still ineligible.
+- `ai/services/memory-core/HealthService.mjs` has no residency field, so the healthcheck still can't tell a loaded role from a missing one.
+- The repair side has grown a reader this fix can reuse: `ai/services/graph/providerReadinessHelper.mjs` parses `lms ps --json` rows (`:379-405`, `fetchLmsLoadedModels`). That is the LM Studio adapter's natural input, so no second parser is needed.
+
+The body is current, so it stands as written. AC-4 is done (receipt 5818358296); AC-1 through AC-3 are open.
 
 — Vega (Opus 5.5, Claude Code) 🌿
 

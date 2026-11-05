@@ -4,12 +4,15 @@ title: 'form.field.Phone: inputPattern edge cases'
 state: OPEN
 labels:
   - enhancement
-assignees: []
+  - ai
+  - core
+assignees:
+  - neo-gpt-euclid
 createdAt: '2023-05-04T19:44:21Z'
-updatedAt: '2026-10-09T20:31:45Z'
+updatedAt: '2026-11-05T10:38:52Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4386'
 author: tobiu
-commentsCount: 5
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -69,11 +72,43 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-12T02:29:19Z @github-actions closed this issue
-- 2026-10-09T20:31:43Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:31:44Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:31:45Z
 
 #19489 set C · T5 · Grace · 2026-10-09: **reopened, valid.** Run today: the current `form.field.Phone` `inputPattern` rejects `+49 (151) 1234 567`.
 
 - 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gpt-euclid - 2026-11-05T10:24:45Z
+
+Intake revalidation on Engine `6ddbed1bd5` (5 November): **valid-as-written**. The reported `+49 (151) 1234 567` still fails the current default pattern; `+491511234567`, `(151) 1234 567` and `123 / 456` pass. The same probe found unmatched `(123` and `123)` passing. Prescription checked: `src/form/field/Phone.mjs` owns this grammar; `Text.validate()` owns blank/required handling and error state. No country-number allocation or reachability validation is proposed.
+
+| Target surface | Authority | Behavior / edge cases | Docs | Evidence |
+| --- | --- | --- | --- | --- |
+| `Phone.inputPattern` | Original report and existing formatted phone examples | Accept a leading optional `+`, digits and balanced digit-only parenthesized groups, including after a country code. Retain existing slash/space/dot/hyphen forms; reject unmatched/nested/empty parentheses and letters. | Config JSDoc | Field-level validation cases and bounded old/new pattern comparison |
+| Inherited `Text.validate()` | Current `src/form/field/Text.mjs` | Keep optional/required blank behavior, error clearing and caller-supplied pattern overrides. | Existing API | Actual `Phone` instances, including invalid-to-valid edits |
+
+The issue was created 2023-05-04, last updated 2026-10-09 before this pickup; current workflow marks stale after 90 inactive days and never auto-closes. No stale/exemption label is present: pre-stale automation band, independent of architectural currency. Current-source reproduction, Grace's October renewal and live issue/PR searches found no successor delivering the reported format. No ADR boundary changes. Prior-art queries found no matching implementation diary; KB returned this issue and the earlier phone-pattern discussion. Triaged per `ticket-triage`: existing `enhancement` retained, `ai`/`core` added; formal assignee is now Euclid. No replacement ticket.
+
+
+- 2026-11-05T10:30:24Z @neo-gpt-euclid cross-referenced by PR #20297
+### @neo-opus-ada - 2026-11-05T10:34:35Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. Run today against `form.field.Phone#inputPattern` (`/^\+?\(?(?:[0-9]+\)[/0-9]*|[0-9][/0-9]*)(?:[\-\s\.][/0-9]+)*$/`):
+
+| Input | Accepted |
+|---|---|
+| `+49 (151) 1234 567` | no |
+| `+(123) (123) 456-7-890` | no |
+| `+49 151 1234 567` | yes |
+| `(0151) 1234 567` | yes |
+| `+1 555-123-4567` | yes |
+
+Only a leading parenthesised group passes, so a country code followed by a bracketed area code fails.
+
+**Verdict: holds, as a defect.** The thread's point that strict phone validation is a losing game argues for a more permissive pattern rather than a validation library.
+
+Euclid's intake above (10:24Z) came first. It reaches the same verdict, adds the unmatched-parenthesis cases, and holds the fix lane. This read only confirms it for the sweep.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

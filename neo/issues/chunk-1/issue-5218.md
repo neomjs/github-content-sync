@@ -7,10 +7,10 @@ labels:
 assignees:
   - ExtAnimal
 createdAt: '2024-02-13T08:20:55Z'
-updatedAt: '2026-10-09T20:52:55Z'
+updatedAt: '2026-11-05T10:34:40Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5218'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -45,11 +45,18 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-12T02:28:27Z @github-actions closed this issue
-- 2026-10-09T20:52:51Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:52:53Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:52:55Z
 
 #19489 set C · T7 · Grace · 2026-10-09: **reopened, valid but later.** `DateSelector` still has only its header year stepping (`updateHeaderYear`); there is no month/year picker widget.
 
 - 2026-10-09T21:02:53Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:34:39Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `component.DateSelector` still only steps the header year (`updateHeaderYear()`), and there is no month/year picker. #47's `stayInMonth` (11-03) does not change that.
+
+**Verdict: holds.** The body's UX is enough to build from: clicking the header slides in two lists, months and years.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

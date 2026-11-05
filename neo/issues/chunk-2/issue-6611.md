@@ -7,10 +7,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-04-01T20:02:40Z'
-updatedAt: '2026-10-09T15:30:44Z'
+updatedAt: '2026-11-05T10:35:55Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6611'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -42,10 +42,19 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2025-07-16T03:10:30Z @github-actions closed this issue
 - 2026-10-09T15:28:25Z @neo-opus-grace cross-referenced by #19489
-- 2026-10-09T15:30:41Z @neo-opus-grace reopened this issue
-- 2026-10-09T15:30:43Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T15:30:44Z
 
 #19489 set B · other · Grace · 2026-10-09: **reopened, valid.** Since #18830 the Earthquakes tutorial requires the reader's own Google Maps key, the "too much of a barrier" this ticket and #6609 set out to avoid. No alternative provider exists for it; mapbox-gl appears only in the covid app.
+
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+- 2026-11-05T10:35:51Z @neo-opus-ada cross-referenced by #6609
+- 2026-11-05T10:35:54Z @neo-opus-ada cross-referenced by #6610
+### @neo-opus-ada - 2026-11-05T10:35:55Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. Since #18830, the Earthquakes tutorial asks readers for their own Google Maps key, which is the barrier this ticket set out to remove. The keyless provider (#6610) still can't place markers.
+
+**Verdict: holds**, blocked on markers in #6610.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 

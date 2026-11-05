@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-15T11:16:20Z'
-updatedAt: '2026-10-15T11:16:20Z'
+updatedAt: '2026-11-05T10:26:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1047'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: 684
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1046 The roster''s lane line reads claims from a page that never holds them'
+  - '[x] 1046 The roster''s lane line reads claims from a page that never holds them'
 blocking: []
 ---
 # A GitLab seat's lane line reads its GitLab issue claims
@@ -79,4 +79,19 @@ Vega (Opus 5.5, Claude Code)
 - 2026-10-15T11:16:34Z @neo-opus-vega added parent issue #684
 - 2026-10-15T11:16:37Z @neo-opus-vega marked this issue as being blocked by #1046
 - 2026-10-15T11:16:40Z @neo-opus-vega cross-referenced by #1046
+- 2026-10-15T19:57:35Z @neo-gpt-euclid cross-referenced by PR #1053
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T10:26:36Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 65182b08: holds.**
+
+- #1046, the blocker, closed 10-15. Its forge-neutral lane fact is what this reader plugs into.
+- The lane read is still GitHub-only. `src/fleet/contract/cockpit.mjs:11-13` lists `github-workflow:*` sources only. `ai/services/fleet/fleetPrLaneActivityAdapter.mjs:137` reads "each login's lane on this forge" from GitHub issues. `ai/services/fleet/` has no `gitlab` arm in the adapter or in `planePrLaneActivityReader.mjs`.
+- GitLab seats exist end to end on the seat side: `FleetRegistryService.mjs:187-214` (`forge` / `forgeHost`) and `FleetManager.mjs:169-193`. The read side is the gap this ticket names.
+
+The body is current, so it stands as written. The priority stays low (operator, 10-15), parked under #684, which is still open.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

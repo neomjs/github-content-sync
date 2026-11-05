@@ -8,10 +8,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2024-06-07T12:33:26Z'
-updatedAt: '2026-10-09T20:53:17Z'
+updatedAt: '2026-11-05T10:35:31Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5411'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -51,11 +51,18 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-25T02:34:57Z @github-actions closed this issue
-- 2026-10-09T20:53:14Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:53:15Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:53:17Z
 
 #19489 set C · T7 · Grace · 2026-10-09: **reopened, valid but later.** `main.addon.AmCharts` still loads the v4 file layout (`core.js` first).
 
 - 2026-10-09T21:02:53Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:35:31Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `main.addon.AmCharts` still loads the v4 file layout, with `core.js` first. The body raises three open questions and decides none of them: a v5 port that would be close to a rewrite, v5's DOM `root`, which keeps it off the canvas worker, and the lack of an ES build with relative paths. The epic has no sub-issues.
+
+**Verdict: convert to a Discussion.** Choosing among a v5 rewrite, staying on v4, and another charting path is a design decision; this isn't an epic with leaves yet. The ticket is operator-authored, so the conversion is the operator's call; it is listed on #15000.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

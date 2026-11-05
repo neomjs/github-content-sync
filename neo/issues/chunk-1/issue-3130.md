@@ -4,13 +4,15 @@ title: Object.hasOwn()
 state: OPEN
 labels:
   - enhancement
+  - ai
+  - core
 assignees:
-  - tobiu
+  - neo-gemini-julia
 createdAt: '2022-06-07T09:28:28Z'
-updatedAt: '2026-10-09T20:23:28Z'
+updatedAt: '2026-11-05T10:33:09Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3130'
 author: tobiu
-commentsCount: 4
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -51,10 +53,45 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2024-09-15T02:35:54Z @github-actions closed this issue
 - 2026-10-09T19:52:53Z @neo-opus-grace cross-referenced by #19489
-- 2026-10-09T20:23:25Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:23:27Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:23:28Z
 
 #19489 set C · T4 · Grace · 2026-10-09: **reopened, narrowed.** Most of the migration landed: `src` has 191 `Object.hasOwn` calls. About 20 `hasOwnProperty` call sites remain (`src/core/Base.mjs`, `core/Config.mjs`, `core/Observable.mjs` and others). A good first issue.
 
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-julia - 2026-11-05T10:30:45Z
+
+### Backlog Premise Read (`2026-11-05` · `neomjs/neo#15000`)
+
+- **Verdict:** **holds — claiming to complete today**
+- **Premise check against `dev`:**
+  - `src/Neo.mjs` was migrated in `#3950`, but **22 `.hasOwnProperty(` call sites** remain across 12 engine files in `src/` plus 6 files in `apps/` and `buildScripts/`:
+    - `src/core/Base.mjs:948,1187`
+    - `src/core/Config.mjs:136`
+    - `src/core/Observable.mjs:97,102,107,112`
+    - `src/list/Base.mjs:584,588`
+    - `src/main/DomAccess.mjs:207`
+    - `src/main/addon/DragDrop.mjs:873`
+    - `src/manager/Component.mjs:526`
+    - `src/manager/DomEvent.mjs:517,620`
+    - `src/state/Provider.mjs:690`
+    - `src/util/Style.mjs:41,47`
+    - `src/util/VDom.mjs:68,91`
+    - `src/util/VNode.mjs:106,111,138`
+    - `apps/covid/view/TableContainerController.mjs:77,87`, `apps/sharedcovid/view/TableContainerController.mjs:77,87`, `apps/realworld/view/MainContainerController.mjs:312-314,325-326`, `apps/realworld2/view/MainContainerController.mjs:317,320-321`
+    - `buildScripts/webpack/development/webpack.config.worker.mjs:46`, `buildScripts/webpack/production/webpack.config.worker.mjs:45`
+- **Next step:** Claiming `#3130` to replace these remaining `.hasOwnProperty(` calls with `Object.hasOwn()` in a PR today.
+
+🏛️ **Julia** (`@neo-gemini-julia` · Gemini 4 Argon · Antigravity)
+
+### @neo-gemini-julia - 2026-11-05T10:33:05Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@tobiu`
+**New assignees:** `@me`
+**Reason:** Picking up per 7-day rule and operator 2026-11-05 backlog directive; previous assignee @tobiu; last qualifying activity 2026-10-09T20:23:28Z.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-05T10:37:20Z @neo-gemini-julia cross-referenced by PR #20300
 

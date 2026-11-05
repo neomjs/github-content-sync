@@ -7,10 +7,10 @@ labels:
 assignees:
   - Dinkh
 createdAt: '2023-01-06T12:17:36Z'
-updatedAt: '2026-10-09T20:31:15Z'
+updatedAt: '2026-11-05T10:35:15Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3805'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -42,11 +42,18 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-14T02:26:15Z @github-actions closed this issue
-- 2026-10-09T20:31:12Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:31:13Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:31:14Z
 
 #19489 set C · T5 · Grace · 2026-10-09: **reopened, valid but later.** `manager.Toast` still counts running toasts per position, not per window, so it is not multi-window aware.
 
 - 2026-10-09T20:34:19Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:35:14Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `manager.Toast` is unchanged since Grace's 10-09 read. It still counts running toasts per position, not per window. The 11-03 `component.Toast` change (#4514: closable plus auto-dismiss) doesn't touch that.
+
+**Verdict: holds.** The body's plan (a `running` config per app, and `domRects` per realm via `Promise.all()`) still fits.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

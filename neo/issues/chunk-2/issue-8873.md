@@ -9,10 +9,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-01-23T23:23:16Z'
-updatedAt: '2026-10-09T14:19:29Z'
+updatedAt: '2026-11-05T10:31:45Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8873'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -51,12 +51,10 @@ Make `getChildIds` consistent across both `VNodeUtil` and `VDomUtil`, ensuring t
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-04-24T04:31:33Z @github-actions added the `stale` label
 ### @github-actions - 2026-05-09T04:41:11Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2026-05-09T04:41:12Z @github-actions closed this issue
 - 2026-10-09T13:16:49Z @neo-opus-grace cross-referenced by #19489
 ### @neo-gpt-sophie - 2026-10-09T14:18:40Z
 
@@ -70,7 +68,21 @@ The old implementation prescription needs a fresh consumer read. `syncVnodeTree`
 
 Triaged per `ticket-triage`: prescription requires re-triage; retain the existing domain labels and add `needs-re-triage`. Reopen unassigned, outside the v13.2 repair claim. Source: `src/util/VNode.mjs:getChildIds`, `src/util/VDom.mjs:getChildIds`, `src/manager/Component.mjs:getChildren`, `src/mixin/VdomLifecycle.mjs:syncVnodeTree`. Parent sweep: #19489.
 
-- 2026-10-09T14:19:19Z @neo-gpt-sophie added the `needs-re-triage` label
-- 2026-10-09T14:19:21Z @neo-gpt-sophie removed the `stale` label
-- 2026-10-09T14:19:29Z @neo-gpt-sophie reopened this issue
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-julia - 2026-11-05T10:31:45Z
+
+### Backlog Premise Read (`2026-11-05` · `neomjs/neo#15000`)
+
+- **Verdict:** **close (`@tobiu` — operator-authored · premise falsified / superseded)**
+- **Premise check against `dev`:**
+  1. **`VDomUtil.getChildIds` (`src/util/VDom.mjs:193-207`):** Has **zero external callers** anywhere in `src/`, `apps/`, `examples/`, or `test/`.
+  2. **`VNodeUtil.getChildIds` (`src/util/VNode.mjs:219-229`):** Has only two callers in the entire repository:
+     - `ComponentManager.getChildren(component)` (`src/manager/Component.mjs:241`), called exclusively by `VdomLifecycle#syncVnodeTree` (`src/mixin/VdomLifecycle.mjs:1193`).
+     - `ComponentManager.getChildIds(vnode)` (`src/manager/Component.mjs:230`), called exclusively by `VdomLifecycle#onInitVnode` (`src/mixin/VdomLifecycle.mjs:1029`).
+  3. **Why `!childNode.componentId` at `src/util/VNode.mjs:221` is load-bearing:** During scoped updates (`updateDepth: 1`), `TreeBuilder.#buildTree` (`src/util/vdom/TreeBuilder.mjs:79-85`) prunes unexpanded child components into `{componentId: child.id, id: child.vdom.id, neoIgnore: true}` reference stubs. In `syncVnodeTree` (`src/mixin/VdomLifecycle.mjs:1219-1252`), `ComponentManager.getChildren(me)` must **only** return descendant components whose full VNodes were expanded in `me.vnode` (`!childNode.componentId`). Removing `!childNode.componentId` would include pruned reference stubs in `childComponents` and cause `syncVnodeTree` (`line 1239`) to overwrite `child._vnode` with a pruned `{componentId, id}` stub!
+  4. **General child component hierarchy traversal:** `ComponentManager` now uses O(1) `childMap` / `ownerMap` indexes via `getDirectChildren(parentId)` (`src/manager/Component.mjs:262`), `getChildComponents(component)` (`src/manager/Component.mjs:206`), and `getOwnedChildren(component)` (`src/manager/Component.mjs:406`).
+- **Recommendation for `@tobiu`:** Close `#8873` — the `!childNode.componentId` guard in `VNodeUtil.getChildIds` is required by `syncVnodeTree`, and general component-tree traversal is handled by `ComponentManager.childMap`.
+
+🏛️ **Julia** (`@neo-gemini-julia` · Gemini 4 Argon · Antigravity)
+
 

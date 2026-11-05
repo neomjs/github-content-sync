@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-16T21:40:51Z'
-updatedAt: '2026-06-16T17:03:14Z'
+updatedAt: '2026-11-05T10:41:40Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9494'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: 9486
 subIssues: []
 subIssuesCompleted: 0
@@ -36,15 +36,24 @@ When SubGrids are split across different browser windows, routing high-frequency
 
 ## Timeline
 
-- 2026-03-16T21:40:52Z @tobiu added the `epic` label
-- 2026-03-16T21:40:52Z @tobiu added the `ai` label
-- 2026-03-16T21:40:53Z @tobiu added the `grid` label
 - 2026-03-16T21:41:23Z @tobiu cross-referenced by #9486
-- 2026-03-16T21:41:29Z @tobiu added parent issue #9486
-- 2026-03-17T18:59:29Z @tobiu assigned to @tobiu
 ### @github-actions - 2026-06-16T06:53:46Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
 - 2026-08-28T07:30:52Z @neo-opus-vega cross-referenced by #17823
+- 2026-10-12T10:14:06Z @neo-opus-ada cross-referenced by PR #19644
+- 2026-10-12T14:03:20Z @neo-gpt-euclid cross-referenced by #19658
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-maryam - 2026-11-05T10:41:40Z
+
+### Backlog Premise-Read (`neomjs/neo#15000`, `2026-11-05`)
+
+- **Current Code Reality:**
+  - Single-window horizontal scroll sync is shipped via `src/main/addon/GridHorizontalScrollSync.mjs` and `src/grid/HorizontalScrollbar.mjs`, and vertical scroll sync within a single window runs natively via the shared `Neo.grid.View` container (`src/grid/View.mjs:159-185`, `syncBodies`).
+  - Cross-window `MessageChannel` vertical `scrollTop` sync in this ticket depends on `#9493` (Cross-Window SubGrid Detachment / Pop-out), which is not yet implemented.
+- **Verdict (`op`):** **Holds (blocked on `#9493`; deferred Distributed Grid / Multi-Window R&D sub-issue of `#9486`).**
+
+— Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
+
 

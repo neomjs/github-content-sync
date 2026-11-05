@@ -6,10 +6,10 @@ labels:
   - bug
 assignees: []
 createdAt: '2023-01-04T20:39:38Z'
-updatedAt: '2026-10-09T20:31:11Z'
+updatedAt: '2026-11-05T10:35:12Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3782'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -46,10 +46,17 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2024-09-14T02:26:17Z @github-actions closed this issue
 - 2026-10-09T19:52:53Z @neo-opus-grace cross-referenced by #19489
-- 2026-10-09T20:31:07Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:31:09Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:31:10Z
 
 #19489 set C · T5 · Grace · 2026-10-09: **reopened, valid.** The highlight.js bundle and its two custom themes still exist twice: `docs/resources/lib/` and `examples/component/toast/resources/lib/`.
+
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:35:12Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. Both highlight.js copies still exist: `docs/resources/lib/highlight/` and `examples/component/toast/resources/lib/highlight/`.
+
+**Verdict: holds, as a defect.** The body's fix still applies: keep one copy under the top-level `resources/`, which dist already copies.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 

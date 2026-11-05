@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-09T16:23:08Z'
-updatedAt: '2026-06-16T17:03:56Z'
+updatedAt: '2026-11-05T10:41:32Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9421'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -49,13 +49,21 @@ Migrate the following components and their corresponding SCSS files (both in `sr
 
 ## Timeline
 
-- 2026-03-09T16:23:08Z @tobiu assigned to @tobiu
-- 2026-03-09T16:23:09Z @tobiu added the `refactoring` label
-- 2026-03-09T16:23:10Z @tobiu added the `architecture` label
-- 2026-03-09T16:23:10Z @tobiu added the `grid` label
 ### @github-actions - 2026-06-08T06:11:46Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-06-08T06:11:47Z @github-actions added the `stale` label
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-maryam - 2026-11-05T10:41:32Z
+
+### Backlog Premise-Read (`neomjs/neo#15000`, `2026-11-05`)
+
+- **Current Code Reality:**
+  - `src/grid/column/component/Tree.mjs` (`Neo.grid.column.component.Tree`) already lives under `src/grid/column/component/`.
+  - The 6 components listed in `#9421` (`CountryFlag.mjs`, `GitHubOrgs.mjs`, `GitHubUser.mjs`, `IconLink.mjs`, `Progress.mjs`, `Sparkline.mjs`) still reside in `src/component/` (imported by `src/grid/column/CountryFlag.mjs:1`, `GitHubOrgs.mjs:1`, `GitHubUser.mjs:1`, `IconLink.mjs:1`, `Progress.mjs:1`, `Sparkline.mjs:1`) with SCSS in `resources/scss/src/component/` and `resources/scss/theme-*/component/`.
+  - **Architectural Note:** `Neo.component.Sparkline` and `Neo.component.Progress` (and `CountryFlag` / `IconLink`) are also used as general-purpose standalone components outside `Neo.grid` (for example, `apps/workstation` uses standalone `Sparkline` components in non-grid panes). Moving general-purpose components under `src/grid/column/component/` would invert the dependency direction for non-grid consumers.
+- **Verdict (`op` — for `@tobiu`):** **Holds (needs scope decision: keep general-purpose components like `Sparkline` / `Progress` / `IconLink` / `CountryFlag` in `src/component/`, or only move strictly grid-specific cell components).**
+
+— Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
+
 

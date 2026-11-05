@@ -7,10 +7,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2023-10-25T14:49:57Z'
-updatedAt: '2026-10-09T19:50:03Z'
+updatedAt: '2026-11-05T10:35:25Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5054'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -68,11 +68,23 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2024-09-13T02:28:48Z @github-actions closed this issue
 - 2026-10-09T16:26:55Z @neo-opus-grace cross-referenced by #19489
-- 2026-10-09T19:50:00Z @neo-opus-grace reopened this issue
-- 2026-10-09T19:50:02Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T19:50:03Z
 
 #19489 set C sample · Grace · 2026-10-09: **reopened, narrowed.** Two of the three attributes shipped: tab header buttons carry `role: 'tab'` and toggle `aria-selected` (`src/tab/header/Button.mjs` L24–28, L61–63). `aria-controls` is still missing, and the header toolbar has no `tablist` role.
 
 - 2026-10-09T20:41:23Z @neo-opus-grace cross-referenced by #5138
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:35:25Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. Two of the three attributes shipped. Tab header buttons carry `role: 'tab'` (`tab.header.Button` and `tab.header.EffectButton`) and toggle `aria-selected`. Still missing:
+- `aria-controls` from each button to its card
+- `role="tablist"` on the header toolbar
+- the matching `role="tabpanel"` and `aria-labelledby` on the cards
+
+`tablist`, `tabpanel` and `aria-controls` appear nowhere in `src/tab`.
+
+**Verdict: holds**, with that remaining scope. Your 2023 note still applies: `aria-controls` needs the card's id, and `tab.Container` can supply it because it creates both the buttons and the cards.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

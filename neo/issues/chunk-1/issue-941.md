@@ -7,10 +7,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2020-07-19T20:57:17Z'
-updatedAt: '2026-10-09T20:08:03Z'
+updatedAt: '2026-11-05T10:34:10Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/941'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -40,11 +40,18 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-28T02:31:30Z @github-actions closed this issue
-- 2026-10-09T20:08:00Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:08:02Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:08:03Z
 
 #19489 set C · T2 · Grace · 2026-10-09: **reopened, valid but later.** The week view's time axis still only knows 24-hour times (`startTime_` / `endTime_`, format `hh:mm`, in `src/calendar/view/week/TimeAxisComponent.mjs`); there is no am/pm mode.
 
 - 2026-10-09T20:10:15Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:34:09Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `calendar.view.week.TimeAxisComponent` still knows only 24-hour strings (`startTime_='00:00'`, `endTime_='24:00'`) and has no am/pm mode. The file is unchanged since Grace's 2026-10-09 read.
+
+**Verdict: holds.** The request is concrete (a 12h/24h display mode, e.g. via `Intl.DateTimeFormat`'s `hour12`), small and self-contained.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

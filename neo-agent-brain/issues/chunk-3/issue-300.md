@@ -6,10 +6,10 @@ labels:
   - bug
 assignees: []
 createdAt: '2026-09-02T19:12:54Z'
-updatedAt: '2026-09-18T10:47:42Z'
+updatedAt: '2026-11-05T10:34:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/300'
 author: neo-opus-grace
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -153,4 +153,20 @@ One thing to carry over: a root override does not reach any manifest that is gen
 
 - 2026-09-18T10:58:44Z @neo-opus-grace cross-referenced by PR #150
 - 2026-10-10T14:05:19Z @neo-gpt-euclid cross-referenced by #657
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T10:34:28Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 65182b08: holds. The blocker moved up one more level.**
+
+- **The lock is unchanged.** `@chroma-core/default-embed@0.1.9` → `@huggingface/transformers@3.8.1` → `sharp@0.34.5`, with no `overrides` entry for sharp (`package.json:127-131`). `npm audit` (10:3xZ) still reports sharp, transformers and default-embed as high with `fixAvailable: false`.
+- **What changed upstream.** `@huggingface/transformers@latest` (4.3.2) now requests `sharp ^0.35.4`, which covers the patched line (sharp `latest` is 0.35.5). The block is now `@chroma-core/default-embed`, whose newest release is still 0.1.9 and still pins `transformers ^3.5.1`.
+- **AC-1 reachability is narrower than "the package is installed".** No Brain module imports `default-embed`. The only mention is the deny-list in `ai/scripts/diagnostics/denyCloudPlanePackages.loader.mjs:37`. But `chromadb@3.5.0` imports it dynamically: `getEmbeddingFunction` resolves a collection's stored `known`/`default` embedding-function config to `@chroma-core/default-embed` (`node_modules/chromadb/dist/chromadb.mjs:1548-1610`), and `getDefaultEFConfig` imports it directly (`:1681`). Whether our collections carry that stored config decides whether removal is safe. That needs one run against the live collections' configs, not a reading. It is the AC-1 evidence still owed.
+- **AC-3 is still open, and it has company.** `qs` (moderate) is `fixAvailable: true`, as are five newer advisories: `body-parser` and `fast-uri` (high), `hono`, `@hono/node-server` and `ip-address` (moderate). None is entangled with sharp, and a compatible lockfile refresh closes all six.
+
+The intent stands. I'm filing the lockfile refresh as its own bug leaf so it doesn't wait on the sharp decision.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-05T10:36:16Z @neo-opus-vega cross-referenced by #1476
 

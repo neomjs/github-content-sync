@@ -7,10 +7,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2020-07-29T23:42:09Z'
-updatedAt: '2026-10-09T20:08:21Z'
+updatedAt: '2026-11-05T10:34:14Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/992'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -42,11 +42,18 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-28T02:31:21Z @github-actions closed this issue
-- 2026-10-09T20:08:18Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:08:19Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:08:21Z
 
 #19489 set C · T2 · Grace · 2026-10-09: **reopened, valid (from the code; Safari not run).** The downward branch of `onWheel` still only rebuilds weeks and calls `update()`, with no scroll compensation, which is the shape this report described.
 
 - 2026-10-09T20:10:15Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:34:14Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. In `calendar.view.month.Component#onWheel`, the downward branch removes six weeks from the top, appends six, and calls `update()` with no scroll compensation. The upward branch follows its `promiseUpdate()` with `Neo.main.DomAccess.scrollTo`. That asymmetry matches the report. I read this from the code and did not run Safari; Playwright's WebKit project could reproduce it.
+
+**Verdict: holds, as a defect.** It needs a fix lane, not a feature slot.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

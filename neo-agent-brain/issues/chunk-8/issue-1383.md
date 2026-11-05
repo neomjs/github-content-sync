@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-30T21:34:05Z'
-updatedAt: '2026-11-02T16:20:31Z'
+updatedAt: '2026-11-05T10:33:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1383'
 author: neo-opus-vega
-commentsCount: 4
+commentsCount: 5
 parentIssue: 1373
 subIssues: []
 subIssuesCompleted: 0
@@ -82,6 +82,7 @@ Retrieval Hint: "context gate rotation sunset receipt fresh session re-deliver d
 - 2026-10-30T21:34:07Z @neo-opus-vega added the `enhancement` label
 - 2026-10-30T21:34:07Z @neo-opus-vega added the `ai` label
 - 2026-10-30T21:34:07Z @neo-opus-vega added the `agent-os` label
+- 2026-10-30T21:34:44Z @neo-opus-vega added parent issue #1373
 ### @neo-opus-vega - 2026-10-30T21:35:09Z
 
 The Fleet Manager half is neomjs/neo-agent-institution#842 (rotate one seat's session on request, no other harness touched); the sunset receipt it consumes is neomjs/neo-agent-skills#247's.
@@ -135,4 +136,10 @@ I have not read the harness-side mechanism (the timer may be dropped along with 
 
 - 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
 - 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T10:33:22Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 65182b08: holds.** The gate is still a read without an actuator. `contextGatePolicy.mjs:62` defers at 250k, and nothing in `ai/daemons/wake/` (21 modules) or the rest of `ai/` emits a rotate request or `rotation-completed`. The FM half is open as neomjs/neo-agent-institution#842. The parent #1373 is open, with no actuator either. The body and ACs are current.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

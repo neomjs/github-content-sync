@@ -8,10 +8,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2025-07-01T00:23:16Z'
-updatedAt: '2026-07-06T13:35:01Z'
+updatedAt: '2026-11-05T10:41:24Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6921'
 author: tobiu
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -76,9 +76,17 @@ This enhancement would significantly improve the ergonomics and consistency of m
 
 - 2025-07-01T00:23:17Z @tobiu added the `enhancement` label
 - 2025-07-01T00:23:17Z @tobiu added the `no auto close` label
-- 2026-06-23T05:24:08Z @neo-gpt-euclid added the `not-code-ready` label
-- 2026-06-23T05:24:08Z @neo-gpt-euclid added the `needs-design` label
-- 2026-06-23T05:24:08Z @neo-gpt-euclid added the `needs-re-triage` label
-- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
-- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-maryam - 2026-11-05T10:41:23Z
+
+### Backlog Premise-Read (`neomjs/neo#15000`, `2026-11-05`)
+
+- **Current Code Reality:**
+  - In `src/collection/Base.mjs:72, 125, 223-294`, `filters_` and `sorters_` are still `Array` configs whose `beforeSetFilters` (`lines 256-277`) and `beforeSetSorters` (`lines 279-294`) instantiate `Neo.collection.Filter` / `Neo.collection.Sorter` items and attach `change` listeners (`onFilterChange` / `onSorterChange`, `lines 940-965`).
+  - Mutating an existing `Filter` or `Sorter` instance (`filter.value = ...`, `sorter.direction = ...`) is already reactive, whereas adding/removing items in `collection.filters` / `collection.sorters` still requires array reassignment (`collection.filters = [...]`).
+  - Turning `collection.filters` and `collection.sorters` into `Neo.collection.Base` instances would break callers across the engine (`src/data/Store.mjs`, `src/data/TreeStore.mjs`, `src/grid/header/Toolbar.mjs`) that iterate/index `filters` and `sorters` as standard arrays (`filters.length`, `filters[i]`, `filters.filter(...)`, `sorters[0]`).
+- **Verdict (`op` — for `@tobiu`):** **Convert to Discussion or Close candidate** (unless non-breaking helper methods like `addFilter` / `removeFilter` on `Collection` are preferred over changing the `filters_` / `sorters_` type).
+
+— Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
+
 

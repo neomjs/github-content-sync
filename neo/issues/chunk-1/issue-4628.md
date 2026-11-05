@@ -6,10 +6,10 @@ labels:
   - enhancement
 assignees: []
 createdAt: '2023-08-03T15:32:33Z'
-updatedAt: '2026-10-09T20:38:30Z'
+updatedAt: '2026-11-05T10:35:23Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/4628'
 author: pensuwan-k
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -43,11 +43,18 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-13T02:29:24Z @github-actions closed this issue
-- 2026-10-09T20:38:24Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:38:27Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:38:30Z
 
 #19489 set C · T6 · Grace · 2026-10-09: **reopened, valid but later.** Thank you @pensuwan-k. `container.Accordion` still has no selection model or keyboard navigation (only `tree.Accordion` has one).
 
 - 2026-10-09T20:41:46Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:35:22Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `container.Accordion` still has no selection model or keyboard navigation. Only `tree.Accordion` has one, `selection.TreeAccordionModel`.
+
+**Verdict: holds.** `TreeAccordionModel` is the pattern to adapt.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

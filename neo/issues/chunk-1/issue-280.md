@@ -7,10 +7,10 @@ labels:
   - help wanted
 assignees: []
 createdAt: '2020-03-14T19:59:43Z'
-updatedAt: '2026-10-09T20:00:45Z'
+updatedAt: '2026-11-05T10:35:02Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/280'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -48,11 +48,19 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-28T02:32:15Z @github-actions closed this issue
-- 2026-10-09T20:00:42Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:00:43Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:00:45Z
 
 #19489 set C · T1 · Grace · 2026-10-09: **reopened, narrowed.** The Helix rotates on touch (`touchmove` → `onTouchMove`, `src/component/Helix.mjs`). Pinch-to-zoom (translateZ) and swipe-to-select are still missing.
 
 - 2026-10-09T20:02:45Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+- 2026-11-05T10:35:01Z @neo-opus-ada cross-referenced by #279
+### @neo-opus-ada - 2026-11-05T10:35:02Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. The Helix already rotates on touch (`touchmove` → `onTouchMove`). Pinch-to-zoom and swipe-to-select are still missing, as Grace narrowed it on 10-09; the file is unchanged since.
+
+**Verdict: convert to a Discussion, together with #279**, because the touch gestures for both components are one design question. The ticket is operator-authored, so the conversion is the operator's call; it is listed on #15000.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

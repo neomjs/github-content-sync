@@ -10,10 +10,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-01-23T23:30:52Z'
-updatedAt: '2026-10-09T14:19:30Z'
+updatedAt: '2026-11-05T10:31:48Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8874'
 author: tobiu
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -119,12 +119,10 @@ This explains the "Extra Delta" regression encountered in #8868.
 
 This issue is stale because it has been open for 90 days with no activity.
 
-- 2026-04-24T04:31:31Z @github-actions added the `stale` label
 ### @github-actions - 2026-05-09T04:41:10Z
 
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
-- 2026-05-09T04:41:10Z @github-actions closed this issue
 - 2026-10-09T13:16:49Z @neo-opus-grace cross-referenced by #19489
 ### @neo-gpt-sophie - 2026-10-09T14:19:17Z
 
@@ -146,7 +144,22 @@ The wrapper reference keeps the wrapper ID and the component keeps its own full 
 
 Triaged per `ticket-triage`; existing domain labels retained. Parent sweep: #19489.
 
-- 2026-10-09T14:19:22Z @neo-gpt-sophie added the `needs-re-triage` label
-- 2026-10-09T14:19:24Z @neo-gpt-sophie removed the `stale` label
-- 2026-10-09T14:19:30Z @neo-gpt-sophie reopened this issue
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-julia - 2026-11-05T10:31:48Z
+
+### Backlog Premise Read (`2026-11-05` · `neomjs/neo#15000`)
+
+- **Verdict:** **close (`@tobiu` — operator-authored · investigation resolved)**
+- **Premise check against `dev`:**
+  1. **Hypothesis 1 (`addVnodeComponentReferences` discarding grand-child VNodes) is falsified by `src/mixin/VdomLifecycle.mjs:1191-1267` and `src/manager/Component.mjs:84-130`:**
+     - `VdomLifecycle#syncVnodeTree` (`src/mixin/VdomLifecycle.mjs:1193`) calls `ComponentManager.getChildren(me)` and builds `vnodeMap = VNodeUtil.createMap(me.vnode)` (`line 1214`) on the **unflattened** `me.vnode` *before* `addVnodeComponentReferences` runs.
+     - Pass 1 (`lines 1219-1230`) captures `map[component.id] = childVnode` for every expanded descendant component at every depth (children, grand-children, etc.).
+     - Pass 2 (`lines 1233-1252`) assigns `component._vnode = ComponentManager.addVnodeComponentReferences(childVnode, component.id)`. Because `addVnodeComponentReferences` shallow-copies `vnode = {...vnode}` and `childNodes = [...vnode.childNodes]` at every recursion level (`src/manager/Component.mjs:85-90`), collapsing a child's `vnode` into `{componentId, id}` references never mutates or discards the grand-child's `vnode` stored in `map[grandChild.id]`.
+  2. **Hypothesis 2 (`TreeBuilder` symmetry & unmounting) is resolved in `src/util/vdom/TreeBuilder.mjs:36-148` and `src/mixin/VdomLifecycle.mjs:1260-1325`:**
+     - `TreeBuilder.#buildTree` symmetrically handles `getVdomTree` (`'cn'`) and `getVnodeTree` (`'childNodes'`) with `boundaryIds` (`lines 69-72`), `mergedChildIds` sparse-tree pruning (`lines 79-86`), and `TreeBuilder.getComponentDepth(component)` (`lines 125-148`).
+     - `syncVnodeTree` also runs `unmountRemovedChildren(vnodeMap, childComponentsSet)` (`src/mixin/VdomLifecycle.mjs:1260-1264`) so pooled/nested descendants whose nodes left the synced tree are cleanly unmounted.
+- **Recommendation for `@tobiu`:** Close `#8874` as resolved.
+
+🏛️ **Julia** (`@neo-gemini-julia` · Gemini 4 Argon · Antigravity)
+
 

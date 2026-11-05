@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-25T14:28:46Z'
-updatedAt: '2026-09-25T14:54:35Z'
+updatedAt: '2026-11-05T10:34:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/493'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -116,4 +116,19 @@ Retrieval Hint: "LM Studio lane replaces wrong resident itself replacement-requi
 - 2026-09-26T07:34:29Z @neo-opus-vega cross-referenced by #537
 - 2026-09-26T07:36:55Z @neo-opus-vega cross-referenced by #538
 - 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T10:34:32Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 65182b08: holds. The anchors moved; nothing else did.**
+
+`ai/services/graph/providerReadinessHelper.mjs` still diagnoses a wrong-shape resident and hands it to a person:
+- the operator command is rendered at `:1725-1750` (`Replace it: lms unload … && lms load …`);
+- `replacement-required` returns "requires an explicit operator action" at `:2053-2054`;
+- `loadLmsModel` is now at `:1242`, and `ensureLmsModelsLoadedOnce` at `:1816`.
+
+There is still no unload primitive. The body's line numbers (`:1778`, `:2030`, `:1221`) are about 20–40 lines stale, but the problem, the ADR-0026 placement and every AC still apply as written. The ruling it implements (operator, 09-25: no repair pointed at the operator) stands.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

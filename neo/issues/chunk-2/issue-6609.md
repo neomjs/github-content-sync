@@ -6,10 +6,10 @@ labels:
   - bug
 assignees: []
 createdAt: '2025-04-01T19:59:24Z'
-updatedAt: '2026-10-09T15:30:40Z'
+updatedAt: '2026-11-05T10:35:50Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6609'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -57,12 +57,19 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2025-07-23T03:12:45Z @github-actions closed this issue
 - 2026-10-09T15:28:25Z @neo-opus-grace cross-referenced by #19489
-- 2026-10-09T15:30:37Z @neo-opus-grace reopened this issue
-- 2026-10-09T15:30:38Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T15:30:40Z
 
 #19489 set B · other · Grace · 2026-10-09: **reopened, valid.** `src/main/addon/GoogleMaps.mjs` still uses `google.maps.Marker`, the deprecated API, and advanced markers are unsupported. The barrier this ticket described now exists: since #18830 the Earthquakes tutorial asks readers to supply their own key.
 
 - 2026-10-09T15:30:46Z @neo-opus-grace cross-referenced by #6611
 - 2026-10-09T20:32:03Z @neo-opus-grace cross-referenced by #4531
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-opus-ada - 2026-11-05T10:35:50Z
+
+**Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `main.addon.GoogleMaps` still creates markers with `new google.maps.Marker`, the deprecated API. The 11-03 fixes (#4529, #4955) changed marker data, not the marker API.
+
+**Verdict: holds, as a defect.** Verifying advanced markers needs a map ID and a billing-bound key, which is an operator credential. #6610 and #6611 remain the keyless path for the tutorial.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

@@ -11,10 +11,10 @@ labels:
   - core
 assignees: []
 createdAt: '2026-03-25T20:12:22Z'
-updatedAt: '2026-07-06T13:22:55Z'
+updatedAt: '2026-11-05T10:42:57Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9554'
 author: tobiu
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -45,12 +45,15 @@ To support the strategic "Benchmark Reports" and assist in debugging complex dat
 
 ## Timeline
 
-- 2026-03-25T20:12:22Z @tobiu assigned to @tobiu
-- 2026-03-25T20:12:24Z @tobiu added the `enhancement` label
-- 2026-03-25T20:12:24Z @tobiu added the `ai` label
-- 2026-03-25T20:12:24Z @tobiu added the `performance` label
-- 2026-03-25T20:12:24Z @tobiu added the `core` label
-- 2026-03-25T20:50:50Z @tobiu added the `help wanted` label
-- 2026-03-25T20:50:50Z @tobiu added the `no auto close` label
-- 2026-03-26T15:20:24Z @tobiu unassigned from @tobiu
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-maryam - 2026-11-05T10:42:57Z
+
+### Backlog Premise-Read (`neomjs/neo#15000`, `2026-11-05`)
+
+- **Current Code Reality:**
+  - Inspected `src/data/Pipeline.mjs:114-232`: `execute()` and `onConnectionPush()` invoke `connection`, `parser`, and `normalizer` directly without capturing `Performance` stage timestamps (`connectionStart/End`, `parserStart/End`, `normalizerStart/End`) or payload-size telemetry.
+- **Verdict (`op`):** **Holds** (premise verified against `src/data/Pipeline.mjs:114-175`; unimplemented telemetry enhancement to `Neo.data.Pipeline`).
+
+— Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
+
 

@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-09-24T20:37:07Z'
-updatedAt: '2026-09-24T20:37:07Z'
+updatedAt: '2026-11-05T10:26:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/473'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: 471
 subIssues: []
 subIssuesCompleted: 0
@@ -115,4 +115,13 @@ Clio's RA-2 on PR #475: the graph projection applies the validated predicate tod
 - 2026-09-25T22:23:26Z @neo-opus-vega cross-referenced by #526
 - 2026-10-03T06:41:31Z @neo-fable-clio cross-referenced by #784
 - 2026-10-10T23:04:09Z @neo-fable-clio cross-referenced by #980
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-grace - 2026-11-05T10:26:52Z
+
+**Sweep read 2026-11-05 (#1438): holds.** At Brain `dev` `65182b08`: concept ids are still bare slugs (the default root is `{id: 'neo-mjs'}`, `ai/services/ConceptService.mjs:303`); the store path is still derived (`daemon.mjs:456`, was `:452`); and `GraphService` still gates visibility by the requester's user id (`ai/services/memory-core/GraphService.mjs:25–41`, `isRlsVisible`). Parent #471 is open.
+
+🖖 Grace (Claude Opus 5.5, Claude Code)
+
+
 

@@ -14,10 +14,10 @@ labels:
   - tech-debt
 assignees: []
 createdAt: '2026-08-28T22:13:54Z'
-updatedAt: '2026-10-18T20:50:37Z'
+updatedAt: '2026-11-05T10:27:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/212'
 author: neo-gpt-emmy
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues:
   - '[ ] 213 Establish executable profiles and declarative deployment'
@@ -223,4 +223,18 @@ Julia (`@neo-gemini-pro`, Gemini 4 Argon, Antigravity) · session `28bfbdc1-3d2b
 - 2026-10-19T15:32:12Z @neo-fable-mnemosyne cross-referenced by #1201
 - 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
 - 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-vega - 2026-11-05T10:27:42Z
+
+**Premise read 2026-11-05 (#1438), Brain `dev` 65182b08: holds.**
+
+The umbrella's intent, one domain-owned source tree with Host/Cloud as executable profiles, is still the live direction. Its subs carry real work:
+- #213 (profiles and declarative deployment) is mostly landed. `deploy/` has no `.mjs`, and `cloud/package.json` is the nested Cloud manifest. Only #216 (PR #1470, in review) is left. Read posted on #213 today.
+- #193 (domain ownership) and #195 (learning journey) both have holds reads on #1438.
+- #191 (delete legacy surfaces per domain slice) and #23 (embedding lane consolidation, mine) are open.
+- #194 (real test suite) is closed.
+
+Nothing here is superseded, so the body stands. It closes through `epic-resolution` when its last required sub closes.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

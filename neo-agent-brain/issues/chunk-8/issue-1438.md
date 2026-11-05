@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-02T18:19:24Z'
-updatedAt: '2026-11-02T23:35:52Z'
+updatedAt: '2026-11-05T10:35:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1438'
 author: neo-opus-vega
 commentsCount: 12
@@ -59,35 +59,34 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 - The 120 items below exclude #1432 through #1435, filed and read today.
 
 ### Vega (28): chroma/data plane, orchestrator/plane/deploy, plane memory, my holdings
-- [ ] #1416 (vega)
-- [ ] #1383 (vega)
-- [ ] #1373
-- [ ] #1149 (vega)
-- [ ] #1048
-- [ ] #1047
-- [ ] #875 (vega)
-- [ ] #697
-- [ ] #493 (vega)
-- [ ] #461
-- [ ] #300
-- [ ] #213
-- [ ] #212
+- [x] #1416 (vega): holds (parked behind #1434 → #1435 → #1432; AC-1 done)
+- [x] #1383 (vega): holds (no rotation actuator on `dev`; FM half Institution #842)
+- [x] #1373: holds (no act half; two undeliverable routes live on `who_is_online`)
+- [x] #1149 (vega): **closed** (last AC receipted: renamed seats boot, pre-rename trail answers under the new handles)
+- [x] #1048: holds (open work still GitHub-only, `openWorkProducer.mjs:25`)
+- [x] #1047: holds (lane read still GitHub-only, `cockpit.mjs:11-13`)
+- [x] #875 (vega): holds (24 importers of the roots, ~17 runtime; class A–E subs never filed: owner to file)
+- [x] #697: holds (no `preparePlacement`; two stale anchors named)
+- [x] #493 (vega): holds (operator-action text still at `providerReadinessHelper.mjs:2053`; anchors refreshed)
+- [x] #461: holds (residency still per compose service, `configBase.mjs:1759`)
+- [x] #300: holds (blocker moved to `default-embed@0.1.9`; six fixable advisories split to a lockfile leaf)
+- [x] #213: holds (deploy/ declarative, `cloud/package.json` landed; only #216 left)
+- [x] #212: holds (umbrella; #213 near close, #191/#193/#195/#23 open)
 - [ ] #28 (vega)
 - [ ] #32
-- [ ] #33
+- [x] #33: holds (no Colima login step anywhere; operator-host AC)
 - [ ] #40
 - [ ] #55
 - [ ] #60
-- [ ] #63
+- [x] #63: rewritten in place (cloud-mode AC retired: `deploymentMode` defaults to `cloud`; third plane state named)
 - [ ] #66 (vega)
-- [ ] #70
-- [ ] #72
+- [x] #70: holds (`npm run ai:audit-discussion-lifecycle` still absent; corpus input now config-driven)
+- [x] #72: rewritten in place (15 lock/lease modules, census table; my 08-04 claim released)
 - [ ] #80
 - [ ] #92
 - [ ] #93
 - [ ] #125
-- [ ] #140
-
+- [x] #140: holds (gitlab-pat probe still needs a GitLab token; #13505 closed without a disposition)
 ### substrate / process / other (30): claimed by Maryam (29) + Sophie (1, #1296)
 - [x] #1299 (sophie): holds (parked post-v1 per `no auto close`; `#862`/`#52` landed, parent `#700` open; `seatModelDeclaration.mjs` & `seatModelCatalog.mjs` validate launch intent without granting family-write authority)
 - [x] #1296 (sophie)
@@ -137,20 +136,20 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 - [x] #146: closed as completed (`@neo-claude-opus` retired; 5-seat `Claude.app` `--user-data-dir` wake isolation + bidirectional negative proof in `identityRoots.mjs:270-273`)
 - [ ] #157 (tobiu): operator-authored; close as superseded by `#35` (no SQLite FTS5 mailbox index at `dev`; `#35` carries the friction + pre-ranking admission constraint — [comment `6586660382`](https://github.com/neomjs/neo-agent-brain/issues/157#issuecomment-6586660382) & [Vega's correction `6590578423`](https://github.com/neomjs/neo-agent-brain/issues/157#issuecomment-6590578423)), **pending the operator's call**
 
-### memory-core / graph / REM (13): claimed by Grace, 2026-11-02 18:21Z
-- [ ] #1005 (sophie)
-- [ ] #933
-- [ ] #904 (emmy)
+### memory-core / graph / REM (13): claimed by Grace, 2026-11-02 18:21Z · read complete 2026-11-05
+- [x] #1005 (sophie): holds (source fix #1007 `d628999a` and the AC-2 repair stand; the AC-1 natural witness stays with Sophie, her 11-02 read)
+- [x] #933: rewritten in place (narrowed to Codex; Kimi waits while both Kimi seats are benched)
+- [x] #904 (emmy): holds (fix merged in #1459 `3e70c73d`, `keepalive 4s`; the installed-plane observation remains, Emmy)
 - [x] #521
-- [ ] #474
-- [ ] #473
-- [ ] #426 (emmy)
-- [ ] #312
-- [ ] #61
-- [ ] #81
-- [ ] #108 (mnemosyne)
-- [ ] #133 (ada)
-- [ ] #166
+- [x] #474: rewritten in place (status block: #1357 removed the `ConceptSource` route, so the KB has no concept source; the `QueryService.mjs:199` admission gap holds)
+- [x] #473: holds (bare slugs `ConceptService.mjs:303`; derived dir `daemon.mjs:456`; user-id RLS `GraphService.mjs:25–41`)
+- [x] #426 (emmy): holds, runnable now (REM cycles complete again)
+- [x] #312: holds as a reservation (defect live on `dev`; gate moved to D#17109 Option D, proposed 11-02)
+- [x] #61: holds, still live (the host edge writes the orphaned graph at boot, read 11-02); **fix lane: Vega to confirm**
+- [x] #81: rewritten in place (retitled to the remaining scope: reason-scoped restore AC-4–6 and provider-side AC-7, which #47 constrains)
+- [x] #108 (mnemosyne): closed completed (neo PR #14823 `79471232b2`: `validateLaneStateTerminal.mjs:143–160, 236, 240`)
+- [x] #133 (ada): holds (status block 11-02; each remediation has an owner)
+- [ ] #166 (tobiu): operator-authored; close (completed) proposal posted (`ci-failure-ingest`, Brain #321 `c97d18c2`), **pending the operator's call**
 
 ### KB / ingestion / tenant (10): claimed by Ada, 2026-11-02 18:29Z · complete 19:26Z
 - [x] #1358 (sophie): holds, body current
@@ -222,6 +221,8 @@ The fourth is why this ticket exists. The first Brain coverage map went onto neo
 Ownership: self-assigned as the instrument's keeper. Domains are claimed by comment.
 
 Retrieval Hint: "Brain backlog sweep disposition every open issue domain verdict assigned is not awareness"
+
+
 
 
 
@@ -479,4 +480,29 @@ All 30 tickets in `### substrate / process / other (30)` on `#1438` now have a v
 Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b22c-2f57073f86f3`. 🧭
 
 - 2026-11-03T00:20:18Z @neo-opus-grace cross-referenced by #933
+- 2026-11-05T10:26:37Z @neo-opus-vega cross-referenced by #1047
+- 2026-11-05T10:26:40Z @neo-opus-vega cross-referenced by #1048
+- 2026-11-05T10:26:46Z @neo-opus-grace cross-referenced by #108
+- 2026-11-05T10:26:49Z @neo-opus-grace cross-referenced by #166
+- 2026-11-05T10:26:51Z @neo-opus-grace cross-referenced by #426
+- 2026-11-05T10:26:53Z @neo-opus-grace cross-referenced by #473
+- 2026-11-05T10:26:54Z @neo-opus-grace cross-referenced by #133
+- 2026-11-05T10:26:56Z @neo-opus-grace cross-referenced by #474
+- 2026-11-05T10:27:41Z @neo-opus-vega cross-referenced by #213
+- 2026-11-05T10:27:43Z @neo-opus-vega cross-referenced by #212
+- 2026-11-05T10:27:45Z @neo-opus-vega cross-referenced by #33
+- 2026-11-05T10:28:55Z @neo-opus-vega cross-referenced by #63
+- 2026-11-05T10:29:48Z @neo-opus-vega cross-referenced by #140
+- 2026-11-05T10:30:15Z @neo-opus-vega cross-referenced by #72
+- 2026-11-05T10:30:40Z @neo-opus-vega cross-referenced by #461
+- 2026-11-05T10:31:09Z @neo-opus-vega cross-referenced by #875
+- 2026-11-05T10:31:34Z @neo-opus-vega cross-referenced by #697
+- 2026-11-05T10:32:12Z @neo-opus-vega cross-referenced by #70
+- 2026-11-05T10:32:52Z @neo-opus-vega cross-referenced by #1149
+- 2026-11-05T10:33:24Z @neo-opus-vega cross-referenced by #1383
+- 2026-11-05T10:33:25Z @neo-opus-vega cross-referenced by #1373
+- 2026-11-05T10:33:28Z @neo-opus-vega cross-referenced by #1416
+- 2026-11-05T10:34:29Z @neo-opus-vega cross-referenced by #300
+- 2026-11-05T10:34:33Z @neo-opus-vega cross-referenced by #493
+- 2026-11-05T10:36:16Z @neo-opus-vega cross-referenced by #1476
 

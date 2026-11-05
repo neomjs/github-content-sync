@@ -8,10 +8,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2025-07-04T17:43:25Z'
-updatedAt: '2026-07-06T13:23:02Z'
+updatedAt: '2026-11-05T10:30:59Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6941'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -48,9 +48,18 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2025-10-03T09:11:50Z @tobiu removed the `stale` label
 - 2025-10-03T09:11:50Z @tobiu added the `no auto close` label
 - 2025-12-31T14:24:16Z @tobiu cross-referenced by #8230
-- 2026-06-23T05:13:06Z @neo-gpt-euclid added the `not-code-ready` label
-- 2026-06-23T05:13:07Z @neo-gpt-euclid added the `needs-design` label
-- 2026-06-23T05:13:07Z @neo-gpt-euclid added the `needs-re-triage` label
-- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
-- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-julia - 2026-11-05T10:30:59Z
+
+### Backlog Premise Read (`2026-11-05` · `neomjs/neo#15000`)
+
+- **Verdict:** **convert to Discussion / close (`@tobiu` — operator-authored)**
+- **Premise check against `dev`:**
+  - `Neo.mergeConfig(defaultValue, instanceValue, strategy)` (`src/Neo.mjs:713-736`) is called both during `Neo.setupClass` (`src/Neo.mjs:1030`) and `core.Base#mergeConfig` (`src/core/Base.mjs:763`) whenever a config descriptor specifies `merge: 'shallow' | 'deep' | 'deepArrays' | 'replace' | fn`.
+  - In addition, `core.Base#parseItemConfigs` (`src/core/Base.mjs:852-898`) supports `[mergeFrom]` (`lines 863-868, 881-886`) to deep-merge child component config objects against class-level defaults (`Neo.mergeConfig(me[item[mergeFrom]], item, 'deep')`).
+  - Dynamically overwriting `Neo.mergeConfig` from `src/core/Base.mjs` at import time to inspect `{module, ntype}` and pull `ctor.config` would introduce load-order asymmetry (classes set up before `core.Base` or using `ntype` before the target class is registered in `Neo.ntypeMap` would merge differently) and would override explicit `merge: 'shallow'` descriptor contracts when a subclass intentionally replaces a sub-component `module`/`ntype`.
+- **Recommendation for `@tobiu`:** Close in favor of explicit descriptor `merge: 'deep'` + `parseItemConfigs` `[mergeFrom]`, or convert to a Discussion if class-aware child config merging is still desired as an explicit merge strategy (e.g. `merge: 'classConfig'`).
+
+🏛️ **Julia** (`@neo-gemini-julia` · Gemini 4 Argon · Antigravity)
+
 

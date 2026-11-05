@@ -1,7 +1,7 @@
 ---
 id: 108
 title: 'Lane-state stop hook: bind PR-gate claims to actual same-turn fetches (kill stamped checkedAt)'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-07-10T03:16:34Z'
-updatedAt: '2026-08-26T15:14:02Z'
+updatedAt: '2026-11-05T10:26:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/108'
 author: neo-opus-grace
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T10:26:46Z'
 ---
 # Lane-state stop hook: bind PR-gate claims to actual same-turn fetches (kill stamped checkedAt)
 
@@ -94,4 +95,18 @@ Cross-refs: neomjs/neo#15216 (Grace, same hook, attachment-shape visibility) · 
 
 - 2026-07-16T19:27:05Z @neo-opus-grace cross-referenced by #15299
 - 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-grace - 2026-11-05T10:26:45Z
+
+**Premise read 2026-11-05 (Grace, Brain backlog sweep #1438): resolved. Closing as completed.**
+
+- The binding shipped on 2026-07-05 in neomjs/neo PR #14823 (`79471232b2`, *verify lane-state PR gate evidence*) and moved here with the Agent OS. `hasSameTurnPrFetchEvidence` (`ai/scripts/lifecycle/validateLaneStateTerminal.mjs:143–160`) rejects a PR gate whose `checkedAt` has no same-turn `gh pr view/checks`, `gh api … pulls` or workflow-tool fetch (`:236`), and a merge claim must cite `mergedAt` (`:240`). That is AC-2 and the ticket's problem: a stamped `checkedAt` no longer passes.
+- AC-1 asked the hook to fetch live state itself. The evidence binding replaced that design: the agent fetches inside the turn and the hook makes no network call, so AC-3's degrade path has nothing to degrade.
+- If stale PR-state claims recur under the binding, a new ticket should carry the measured instance.
+
+🖖 Grace (Claude Opus 5.5, Claude Code)
+
+
+- 2026-11-05T10:26:46Z @neo-opus-grace closed this issue
 

@@ -7,10 +7,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2022-07-01T08:17:41Z'
-updatedAt: '2026-10-09T20:23:32Z'
+updatedAt: '2026-11-05T10:38:32Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3241'
 author: tobiu
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -40,11 +40,21 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-13T02:30:18Z @github-actions closed this issue
-- 2026-10-09T20:23:30Z @neo-opus-grace reopened this issue
-- 2026-10-09T20:23:31Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:23:32Z
 
 #19489 set C · T4 · Grace · 2026-10-09: **reopened, valid but later.** The grid's header resizes columns (`header/plugin/Resizable.mjs`); the table's header (`src/table/header`) still cannot.
 
 - 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-maryam - 2026-11-05T10:38:32Z
+
+### Backlog Premise-Read (`neomjs/neo#15000`, `2026-11-05`)
+
+- **Current Code Reality:**
+  - `src/grid/header/Toolbar.mjs:184-205` implements `afterSetResizable(value, oldValue)`, lazy-loading `src/grid/header/plugin/Resizable.mjs`.
+  - `src/table/header/Toolbar.mjs` (`lines 1–212`) has no `resizable_` config and no `plugin/Resizable.mjs` counterpart under `src/table/header/`.
+- **Verdict (`op`):** **Holds** (valid premise at `src/table/header/Toolbar.mjs:1-212`, low priority relative to `Neo.grid.*`; or operator close candidate if `Neo.table.*` feature parity is superseded by `Neo.grid.*`).
+
+— Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
+
 

@@ -223,4 +223,13 @@ The Out of Scope line "a seat with repositories on both forges (rare; a follow-u
 - 2026-10-15T11:16:34Z @neo-opus-vega added sub-issue #1047
 - 2026-10-15T11:16:36Z @neo-opus-vega added sub-issue #1048
 - 2026-10-15T11:16:40Z @neo-opus-vega cross-referenced by #1046
+- 2026-10-15T20:17:09Z @neo-opus-grace cross-referenced by #1055
+- 2026-10-16T23:10:38Z @neo-opus-grace cross-referenced by #1072
+- 2026-10-18T02:19:54Z @neo-opus-grace cross-referenced by #1096
+- 2026-10-18T03:51:59Z @neo-opus-grace cross-referenced by #1101
+- 2026-10-18T20:41:46Z @neo-opus-grace cross-referenced by #1148
+- 2026-10-19T11:36:36Z @neo-opus-grace cross-referenced by #1181
+- 2026-10-27T00:52:19Z @neo-opus-grace cross-referenced by #1315
+- 2026-11-01T22:57:04Z @neo-opus-grace cross-referenced by #1420
+- 2026-11-03T07:33:12Z @neo-opus-grace cross-referenced by #1460
 

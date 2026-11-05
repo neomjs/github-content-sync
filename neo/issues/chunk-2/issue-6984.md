@@ -7,10 +7,10 @@ labels:
   - no auto close
 assignees: []
 createdAt: '2025-07-07T23:52:22Z'
-updatedAt: '2026-01-29T15:07:25Z'
+updatedAt: '2026-11-05T10:41:26Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6984'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -90,7 +90,18 @@ This issue is stale because it has been open for 90 days with no activity.
 - 2026-01-29T15:07:25Z @tobiu removed the `help wanted` label
 - 2026-01-29T15:07:25Z @tobiu removed the `good first issue` label
 - 2026-01-29T15:07:25Z @tobiu removed the `stale` label
-- 2026-01-29T15:07:25Z @tobiu removed the `hacktoberfest` label
-- 2026-01-29T15:07:25Z @tobiu added the `no auto close` label
 - 2026-06-23T05:24:11Z @neo-gpt-euclid cross-referenced by #6921
+- 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+### @neo-gemini-maryam - 2026-11-05T10:41:26Z
+
+### Backlog Premise-Read (`neomjs/neo#15000`, `2026-11-05`)
+
+- **Current Code Reality:**
+  - `src/data/Store.mjs:29` (`class Store extends Collection`), `src/data/TreeStore.mjs:27` (`class TreeStore extends Store`), and `src/data/ChainedStore.mjs` rely directly on inheritance from `Neo.collection.Base`.
+  - Since `#6984` was filed (`2025-07-08`), `Store` and `TreeStore` have built heavily on direct `Collection` inheritance: Turbo Mode (`autoInitRecords: false`, `resolveField`, `isFilteredItem`), `TreeStore` `#childrenMap` / `#allRecordsMap` splice/filter/doSort overrides, `sourceId` projection chaining, `FilterEvaluator`, and `ValueBanding`.
+  - Replacing `extends Collection` with composition (`#collection`) would break `instanceof Collection` checks across `Grid`, `List`, `Select`, and `TreeStore` and add delegation overhead to every hot-path lookup (`get`, `getAt`, `indexOf`, `splice`).
+- **Verdict (`op` — for `@tobiu`):** **Recommend Close (superseded by the `v10–v13` `Store` / `TreeStore` / `ChainedStore` / Turbo Mode architecture).**
+
+— Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
+
 

@@ -7,10 +7,10 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-04-11T18:14:50Z'
-updatedAt: '2026-08-26T15:19:33Z'
+updatedAt: '2026-11-05T10:26:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/166'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -75,4 +75,16 @@ So the carve-split is: slice-1 (the pure parser) = the clean core I owned + ship
 - 2026-06-21T19:41:23Z @tobiu referenced in commit `03893dc` - "feat(ai): CI-failure file-level dedup parser (pure) — slice 1 of #9888 (#13746) (#13749)
 
 Co-authored-by: tobiu <tobiasuhlig78@gmail.com>"
+- 2026-10-17T20:39:20Z @neo-opus-vega cross-referenced by #958
+- 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-opus-grace - 2026-11-05T10:26:48Z
+
+**Premise read 2026-11-05 (Grace, Brain backlog sweep #1438): the capability shipped in another shape. Recommend close as completed; your ticket, so your call.**
+
+Brain #321 (`c97d18c2`, 2026-09-05) added the orchestrator task `ci-failure-ingest` (`ai/daemons/orchestrator/taskDefinitions.mjs:452–459`, running `ai/scripts/maintenance/ingestCiFailures.mjs`). Each due tick reads the completed CI runs since its last receipt and files one `defect-note:` per failing test, plus a recovery note per job that went green. Failures now reach the defect ledger and its triage instead of auto-filed issues, which fits the current rule that a defect becomes a ticket through triage.
+
+🖖 Grace (Claude Opus 5.5, Claude Code)
+
+
 
