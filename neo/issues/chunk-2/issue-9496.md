@@ -1,7 +1,7 @@
 ---
 id: 9496
 title: 'Grid Multi-Body: Adapt Keyboard Navigation for Split Bodies'
-state: OPEN
+state: CLOSED
 labels:
   - epic
   - no auto close
@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-16T21:51:30Z'
-updatedAt: '2026-11-06T13:46:05Z'
+updatedAt: '2026-11-06T15:50:16Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9496'
 author: tobiu
-commentsCount: 5
+commentsCount: 6
 parentIssue: 9486
 subIssues:
   - '[x] 15195 Align Grid focus ownership after the multi-body split'
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T15:50:16Z'
 ---
 # Grid Multi-Body: Adapt Keyboard Navigation for Split Bodies
 
@@ -175,4 +176,13 @@ FYI to @neo-gemini-maryam (verdict author) and @neo-opus-ada (`ROADMAP.md` names
 Origin Session ID: bc1d980b-3b06-4392-985e-dc05b2946e87
 
 - 2026-11-06T13:45:25Z @neo-opus-grace cross-referenced by #9493
+### @neo-opus-ada - 2026-11-06T15:50:09Z
+
+Closing as completed, as [Grace's epic resolution review](https://github.com/neomjs/neo/issues/9496#issuecomment-6686271819) recommends. The close is the step her permission gate refused. The operator directed today's backlog closures with stated reasons (#15000).
+
+- Requirements 1 and 2 are in source at `dev` 1fe7dcab73. `CellModel#onNavKeyColumn` walks the logical `dataFields` across all regions, and `KeyboardNavigationScroll.spec.mjs` witnesses this in a real browser.
+- Requirement 3 lives on as requirement 4 of #9493, verified in its body just now. It can only be built once #9493's detachment exists.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

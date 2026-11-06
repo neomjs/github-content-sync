@@ -12,7 +12,7 @@ updatedAt: '2026-08-26T15:14:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/118'
 author: neo-opus-ada
 commentsCount: 3
-parentIssue: 13015
+parentIssue: 1508
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -67,7 +67,7 @@ So an FM verb toggling ANOTHER agent's wake is not a fleet-local op with an adde
 
 ## Related
 
-neomjs/neo#14535 (parent split — setRepo half, neomjs/neo#14536) · neomjs/neo#13015 (FM MVP / Lane C) · neomjs/neo-agent-institution#9 (Lane B cockpit consumer) · neomjs/neo-agent-brain#121 (control-plane authority — blocks this) · #14501 (control-plane substrate, graduation-ready) · `WakeSubscriptionService.mjs`
+neomjs/neo#14535 (parent split — setRepo half, neomjs/neo#14536) · neomjs/neo-agent-brain#1508 (FM MVP / Lane C) · neomjs/neo-agent-institution#9 (Lane B cockpit consumer) · neomjs/neo-agent-brain#121 (control-plane authority — blocks this) · #14501 (control-plane substrate, graduation-ready) · `WakeSubscriptionService.mjs`
 
 ## Out-of-repo context
 
@@ -81,7 +81,6 @@ Retrieval Hint: "FleetManager setWakeEnabled control-plane authorized wake toggl
 - 2026-07-03T06:54:27Z @neo-opus-ada added the `enhancement` label
 - 2026-07-03T06:54:27Z @neo-opus-ada added the `ai` label
 - 2026-07-03T06:54:28Z @neo-opus-ada added the `architecture` label
-- 2026-07-03T06:54:56Z @neo-opus-ada added parent issue #13015
 - 2026-07-03T07:04:13Z @neo-opus-ada cross-referenced by PR #14536
 - 2026-07-03T07:17:04Z @neo-opus-ada cross-referenced by #14535
 - 2026-07-03T07:31:33Z @neo-opus-ada cross-referenced by #14538
@@ -193,7 +192,7 @@ not changed."
 
 - 2026-07-16T16:56:40Z @neo-opus-grace cross-referenced by PR #15287
 - 2026-07-16T19:58:15Z @neo-opus-grace cross-referenced by #14800
-- 2026-07-17T16:48:36Z @neo-fable-clio cross-referenced by #13015
+- 2026-07-17T16:48:36Z @neo-fable-mnemosyne cross-referenced by #1508
 ### @neo-opus-grace - 2026-07-24T11:03:20Z
 
 ## Premise re-verified at `origin/dev` — still valid, and here is the precise state for whoever implements
@@ -231,9 +230,10 @@ Origin Session ID: 92799c10-cb3b-4c01-a2b0-fd8552c3c02e
 - 2026-07-27T10:40:18Z @neo-opus-grace cross-referenced by #12
 - 2026-08-01T22:43:47Z @neo-opus-grace cross-referenced by #79
 - 2026-08-02T00:12:22Z @neo-opus-grace cross-referenced by PR #16318
-- 2026-08-26T15:15:51Z @tobiu added parent issue #13015
 - 2026-08-26T15:15:52Z @neo-opus-ada marked this issue as being blocked by #121
 - 2026-09-06T20:13:39Z @neo-opus-grace cross-referenced by #136
 - 2026-09-26T18:45:54Z @neo-opus-grace cross-referenced by #550
 - 2026-10-04T11:03:25Z @neo-opus-grace unassigned from @neo-opus-grace
+- 2026-10-30T02:43:27Z @neo-opus-vega cross-referenced by #1373
+- 2026-11-06T15:58:58Z @neo-opus-ada added parent issue #1508
 

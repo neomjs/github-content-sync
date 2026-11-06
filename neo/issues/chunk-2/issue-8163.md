@@ -1,7 +1,7 @@
 ---
 id: 8163
 title: Cross-Window Drag & Drop Refinement & Topology
-state: OPEN
+state: CLOSED
 labels:
   - epic
   - no auto close
@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-12-27T21:26:45Z'
-updatedAt: '2026-11-05T11:00:05Z'
+updatedAt: '2026-11-06T16:05:54Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8163'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues:
   - '[x] 8160 Decouple and Configure Window Detachment Thresholds in SortZone'
@@ -31,6 +31,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T15:49:52Z'
 ---
 # Cross-Window Drag & Drop Refinement & Topology
 
@@ -89,5 +90,42 @@ Verified against current `dev` (`5/7` sub-issues `#8160`, `#8161`, `#8162`, `#81
 **Recommendation for @tobiu:** Close `#8165`, and either close `#8166` + `#8163` as superseded by ADR 0029 (`admitsOwnership` + `Participation`) or keep `#8166` open narrowed to an optional `allowDrop` predicate on `DashboardSortZone`.
 
 — Maryam 🧭
+
+### @neo-opus-ada - 2026-11-06T15:49:34Z
+
+## Epic Resolution Review
+
+**Reviewer:** @neo-opus-ada
+**Started:** 2026-11-06T15:49:34Z (in-progress claim)
+**Completed:** 2026-11-06T15:49:46Z
+**Verdict:** RECOMMEND_CLOSE_COMPLETED
+
+### Matrix
+
+| Parent AC | Required evidence | Owning sub(s) | Delivered PR(s) | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| 1. Theming strategy (`adapt` / `retain` on drop) | L3 | #8165 | #18679 (for #18672) | inherited vs explicit `theme` on adoption, per Maryam's closing read on #8165 | none — closed |
+| 2. Topology and validation (asymmetric flows, `allowDrop`) | L3 | #8166, with #8160 and #8161 (thresholds, target rect) | ADR 0029 topology Groups (`DragCoordinator#admitsOwnership`, #18284) | Grace's closing read on #8166, 2026-11-06 | none — closed |
+| 3. Return trip A → B → A | L3 | #8167 | superseded by the 13.2 dock return path: #15501, #18684, #19181, #19208 | Mnemosyne's confirm-close on #8167; the real-window round trip was carried on #15252, closed completed | none — closed |
+| 4. Architecture and JSDoc (`SortZone`, `DashboardSortZone`, `DragCoordinator`) | L1 | none (epic-level) | ADR 0029 `0029-docking-design.md` sets `DragCoordinator`'s responsibility | measured at `dev` 1fe7dcab73: every method carries a docblock (`DragCoordinator` 26/26, container `SortZone` 16/16, dashboard `SortZone` 21/21) | none — closed |
+
+Also delivered under the epic: #8162 (PR #12661) and #8164 (window geometry). 7 of 7 subs are closed.
+
+### Rationale
+
+Each scope item is in source, either through its own sub or through the dock work that replaced the dashboard-era design. The last open sub, #8166, closed on 2026-11-06 as delivered by ADR 0029's topology Groups. Item 4 had no sub. ADR 0029 answers its architecture question, and the docblock count answers its JSDoc question. No residual remains.
+
+### Terminal action
+
+Closed as completed (backlog householding, #15000).
+
+### A2A coordination
+
+Closure FYI to `AGENT:*` (wake-suppressed), with this comment's id.
+
+Origin Session ID: cce149b2-f619-4e09-a7d8-3f0bc025c9a9
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 
 

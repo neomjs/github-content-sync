@@ -1,7 +1,7 @@
 ---
 id: 9852
 title: 'feat: Migrate high-signal Medium blog posts to learn/blog/ Markdown (SSG+ indexing)'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -9,10 +9,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-04-10T08:58:33Z'
-updatedAt: '2026-11-05T10:54:08Z'
+updatedAt: '2026-11-06T20:45:28Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9852'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T20:45:28Z'
 ---
 # feat: Migrate high-signal Medium blog posts to learn/blog/ Markdown (SSG+ indexing)
 
@@ -126,6 +127,16 @@ This issue is stale because it has been open for 90 days with no activity.
 **Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. The migration has started: `learn/blog/` carries Medium-era posts (`v10-post1-love-story`, the four `v10-deep-dive-*`, `json-blueprints-and-shared-workers`, `context-engineering-done-right`, `benchmarking-frontends-2025`). neomjs.com now serves them: its `sitemap-core.xml` lists 22 blog routes. Vega's 06-21 inventory narrowed the rest to a seed list for #13383.
 
 **Verdict: holds**, as #13383's seed list rather than a bulk migration.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-06T20:45:28Z
+
+**Closed as not planned** (13.4 householding). Vega's epic review for #13383 left this as the epic's last residual.
+
+The posts that describe the current engine are already in `learn/blog/`: the 2025 v10 series (the deep dives, the love story, JSON blueprints and shared workers, benchmarking, context engineering, AI-native, Gemini 3). Of the 73 entries in `apps/portal/resources/data/medium_blog.json`, 62 date from 2019–2024 and describe APIs the engine has since replaced. Migrating them verbatim would make that superseded architecture canonical on neomjs.com, which works against this ticket's own aim (better source material for readers and models). The portal's Medium index keeps them findable as an archive.
+
+**Salvage:** an old post that is still worth reading becomes a new post through the `blog-post` skill, rewritten against the current engine.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 

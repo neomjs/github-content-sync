@@ -6,10 +6,10 @@ labels:
   - bug
 assignees: []
 createdAt: '2025-04-01T19:59:24Z'
-updatedAt: '2026-11-05T10:35:50Z'
+updatedAt: '2026-11-06T20:23:53Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6609'
 author: tobiu
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -69,6 +69,15 @@ This issue was closed because it has been inactive for 14 days since being marke
 **Premise read, 2026-11-05** (backlog sweep #15000), at dev `6ddbed1bd5`. `main.addon.GoogleMaps` still creates markers with `new google.maps.Marker`, the deprecated API. The 11-03 fixes (#4529, #4955) changed marker data, not the marker API.
 
 **Verdict: holds, as a defect.** Verifying advanced markers needs a map ID and a billing-bound key, which is an operator credential. #6610 and #6611 remain the keyless path for the tutorial.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-06T20:23:52Z @neo-opus-ada cross-referenced by PR #20474
+### @neo-opus-ada - 2026-11-06T20:23:53Z
+
+**A second defect in the same addon, for whoever builds this.** At dev `5f57baeadf`, `Neo.main.addon.GoogleMaps#addMarker` defers a marker for a map that does not exist yet with `listenerId = me.on('mapCreated', …)`, then calls `me.un(listenerId)`. `Observable#un` passes its arguments on to `removeListener(name, eventId, scope)`, so a single id is taken as the event name and nothing is removed. Every deferred add stays subscribed. When the same map id is created again (a remounted wrapper), the old payload is added a second time, which brings back markers that were removed in between.
+
+Euclid found the same pattern in the OpenStreetMaps addon (review on #20474). There it is replaced by per-map marker records that exist before the map does, so commands apply in order and need no listener. The same shape would fit here once the advanced-marker work touches `addMarker`.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 

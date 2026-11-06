@@ -1,7 +1,7 @@
 ---
 id: 9421
 title: 'Refactor: Move grid column components into `src/grid/column/component/`'
-state: OPEN
+state: CLOSED
 labels:
   - no auto close
   - refactoring
@@ -9,11 +9,12 @@ labels:
   - grid
 assignees:
   - tobiu
+  - neo-opus-grace
 createdAt: '2026-03-09T16:23:08Z'
-updatedAt: '2026-11-06T13:42:44Z'
+updatedAt: '2026-11-06T17:52:34Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9421'
 author: tobiu
-commentsCount: 3
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T17:52:34Z'
 ---
 # Refactor: Move grid column components into `src/grid/column/component/`
 
@@ -93,4 +95,33 @@ What delivery has to handle:
 🖖 Grace (Opus 5.5, Claude Code) · session bc1d980b-3b06-4392-985e-dc05b2946e87
 
 - 2026-11-06T14:57:15Z @neo-opus-grace cross-referenced by PR #20435
+### @neo-opus-grace - 2026-11-06T15:33:24Z
+
+**Intake record before the move (Grace, 2026-11-06).**
+
+**The move tool's plan, kept to check the hand move against** (`npm run move-files -- --from src/component/Sparkline.mjs --to src/grid/column/component/Sparkline.mjs`, dry run at `dev` `1fe7dcab73`): 1 move and 9 rewrites (`src/component/_export.mjs`, `src/grid/column/Sparkline.mjs`, `CanvasGroupPainting.spec.mjs`, `WorkstationNL.spec.mjs`, `WorkstationStarvedTourNL.spec.mjs`, and the unit specs `CanvasBootstrap`, `CanvasColorScheme` and `Sparkline`). Apply refuses with 111 undeclared computed-import scopes across the engine. Its author keeps that exact-source boundary on purpose, so this move goes by hand.
+
+**Compatibility, a design point before code** (from Sophie, the tool's author): `Sparkline` is exported from the public barrel `src/component/_export.mjs`, and the canvas specs use it standalone, outside any grid. So "imported only by its grid column wrapper" holds for `src/`, `apps/` and `examples/`, but the public barrel and the tests make it a published component. Before moving anything I will check each of the five against the barrel and its standalone consumers. A component that is a public general-purpose part (Sparkline is a strong candidate) stays in `src/component/`, as `Progress` does. Only cell-only renderers move. Each move either keeps a barrel re-export or names the break in the release notes.
+
+🖖 Grace (Opus 5.5, Claude Code) · session b311b582-484b-4dce-8ff4-d456046c6c83
+
+- 2026-11-06T16:01:43Z @neo-gpt-sophie cross-referenced by #5086
+- 2026-11-06T17:04:48Z @neo-opus-grace cross-referenced by PR #20470
+### @neo-opus-grace - 2026-11-06T17:17:09Z
+
+## Contract Ledger (claimer-authored, for PR #20470)
+
+The goal and task list above stay as written. Keeping `Sparkline` and `Progress` in `src/component/` is recorded as a delta in the PR body. It is not a restatement of this ticket.
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `CountryFlag`, `GitHubOrgs`, `GitHubUser`, `IconLink`: module `src/component/<Name>.mjs` → `src/grid/column/component/<Name>.mjs`; `className` `Neo.component.<Name>` → `Neo.grid.column.component.<Name>` | This ticket's goal (components used only in grid cells move under `grid/column/component/`, beside `Tree`); the importer census in the intake comments | Same configs and rendering under the new path and `className`. The column wrappers (`CountryFlag`, `GitHubOrgs`, `GitHubUser`, `IconLink`, `LinkedIn`) import the new paths | No alias at the old paths, on purpose (the goal is an uncluttered `src/component/`). A direct importer fails at import time with a module-not-found error, never silently. The 13.4 release notes carry the migration line | `@class`, `className` and `@summary` updated; `docs/output/class-hierarchy.json` regenerated | Full unit suite 6460 passed, including `IconColumns` and `RecordConfigs`, which import through the columns; whole-tree search for the old paths and names is empty |
+| Column types `countryFlag`, `githubOrgs`, `githubUser`, `iconLink`, `linkedin` | `src/grid/Container.mjs:49-56` (the column type map) | Unchanged. Apps, examples and `neomjs/devindex` reach the four only through these types | None needed | None | No diff to the map; devindex grep for the old paths is empty |
+| CSS selectors `.neo-country-flag`, `.neo-github-orgs`, `.neo-github-user`, `.neo-icon-link` | The moved SCSS files | Unchanged: six byte-identical renames | None needed | None | The PR's renames (R100) |
+| Style loading by `className` | `src/main/addon/Stylesheet.mjs:120` maps a `className` to its CSS path | Structural SCSS under `resources/scss/src/grid/column/component/`, and `IconLink`'s variables under `theme-neo-dark` and `theme-neo-light` at `grid/column/component/`, load for the new class names | A class that moves without its SCSS renders unstyled and throws nothing. `CellComponentStyles.spec.mjs` turns that into a failure | None | `CellComponentStyles.spec.mjs`: 4/4 green at `03bc4c42ce` (hosted job 128031336133); 4/4 red with the SCSS left in `component/` |
+| `Sparkline`, `Progress` | Intake census: `Sparkline` is in the public barrel `src/component/_export.mjs` and used standalone by the canvas specs; `Progress` has the standalone example `examples/component/progress` | Stay in `src/component/` | None needed | None | No diff |
+
+🖖 Grace (Opus 5.5, Claude Code) · session b311b582-484b-4dce-8ff4-d456046c6c83
+
+
 

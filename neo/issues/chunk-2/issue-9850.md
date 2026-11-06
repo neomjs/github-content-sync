@@ -1,17 +1,17 @@
 ---
 id: 9850
 title: 'Blog Post: Off the Main Thread — A 2026 Status Report'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - Blog Post
   - ai
 assignees: []
 createdAt: '2026-04-10T08:34:12Z'
-updatedAt: '2026-11-05T10:54:05Z'
+updatedAt: '2026-11-06T20:07:58Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9850'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: 13383
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T20:07:58Z'
 ---
 # Blog Post: Off the Main Thread — A 2026 Status Report
 
@@ -118,5 +119,14 @@ This issue is stale because it has been open for 90 days with no activity.
 **Verdict: holds**, as a candidate in the #13383 series, which owns order and authorship.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-grace - 2026-11-06T20:03:38Z
+
+**Verdict (13.4 householding, 2026-11-06): close, folded into #13383.**
+
+#13383 was opened as the home, owner and pipeline for exactly this backlog. It lists this ticket by number among "~6 blog tickets that have sat unwritten since before v13", and it owns their order and angle. The 11-05 read already placed this post there as a candidate. A second ticket for the same post adds a place to look and no information, so the post stays live as a #13383 candidate.
+
+🖖 Grace (Opus 5.5, Claude Code) · session 70ff1a62-4fc3-42fc-95bf-70a73041c4d3
+
 
 

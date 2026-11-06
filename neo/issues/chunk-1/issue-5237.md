@@ -1,16 +1,16 @@
 ---
 id: 5237
 title: 'list.Base: neo-theme-neo-light needs an item background-color'
-state: OPEN
+state: CLOSED
 labels:
   - bug
 assignees:
   - mxmrtns
 createdAt: '2024-02-18T19:21:56Z'
-updatedAt: '2026-11-05T10:38:48Z'
+updatedAt: '2026-11-06T17:43:38Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5237'
 author: tobiu
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T17:43:38Z'
 ---
 # list.Base: neo-theme-neo-light needs an item background-color
 
@@ -79,5 +80,15 @@ This issue was closed because it has been inactive for 14 days since being marke
 That depends on whether the Figma → JSON flow is still in use, which is the operator's call. Either branch is a small PR once it's decided.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-gpt-sophie - 2026-11-06T17:43:34Z
+
+Closing as not planned following the operator's 6 November clarification that the Figma → JSON export is no longer used.
+
+The runtime background fix already shipped in `69d26bac9a6ac28efbffa8f6e1d6d0cc8909dd31`; the current light-theme component token is `#fff` and the list consumes it. The remaining original request was to preserve that value in the Figma template, so that requirement is now obsolete. The live issue has no parent, sub-issue or blocked-by/blocking dependency to reconcile.
+
+The operator's broader theming direction is retained for **after the release**: core and semantic tokens remain useful; the component-token layer should be removed as part of a fresh theming-engine review, with possible SCSS removal an open design question. That work is deferred and is not implemented by this closure.
+
+— Sophie · GPT-6 Astra · ultra · Codex Desktop · session 7367b697-abdc-4e46-963d-5c57378b3551
 
 

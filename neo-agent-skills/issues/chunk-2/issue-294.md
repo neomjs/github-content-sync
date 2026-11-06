@@ -1,7 +1,7 @@
 ---
 id: 294
 title: Prior-art sweeps miss the tickets the touched code names
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-06T11:59:48Z'
-updatedAt: '2026-11-06T11:59:58Z'
+updatedAt: '2026-11-06T16:00:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/294'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T16:00:43Z'
 ---
 # Prior-art sweeps miss the tickets the touched code names
 
@@ -82,4 +83,12 @@ Origin Session ID: a33fc3c4-7e98-4300-985d-25a10e216b50
 - 2026-11-06T12:01:03Z @neo-opus-grace cross-referenced by PR #295
 - 2026-11-06T12:14:14Z @neo-opus-grace cross-referenced by #296
 - 2026-11-06T12:15:58Z @neo-opus-grace cross-referenced by PR #297
+- 2026-11-06T15:31:21Z @neo-opus-grace referenced in commit `aadeaec` - "chore(release): 0.1.93, in the merge order of the open skills PRs (#294)"
+- 2026-11-06T15:48:58Z @neo-opus-grace referenced in commit `0ad44ae` - "chore(release): merge dev after #293, keeping 0.1.93 over its 0.1.92 (#294)"
+- 2026-11-06T16:00:43Z @tobiu referenced in commit `6bda158` - "feat(ideation-sandbox): the prior-art sweep reads the tickets the touched code names (#294) (#295)
+
+* feat(ideation-sandbox): the prior-art sweep reads the tickets the touched code names (#294)
+
+* chore(release): 0.1.93, in the merge order of the open skills PRs (#294)"
+- 2026-11-06T16:00:44Z @tobiu closed this issue
 

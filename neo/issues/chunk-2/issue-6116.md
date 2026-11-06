@@ -1,17 +1,17 @@
 ---
 id: 6116
 title: 'component.Base: vdom => flag => ref'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
 assignees:
   - tobiu
 createdAt: '2024-11-18T11:03:03Z'
-updatedAt: '2026-11-05T10:30:57Z'
+updatedAt: '2026-11-06T16:00:53Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6116'
 author: tobiu
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T16:00:53Z'
 ---
 # component.Base: vdom => flag => ref
 
@@ -89,5 +90,19 @@ Clear Documentation: Explicitly state the deprecation of flag and the new usage 
 - **Recommendation for `@tobiu`:** Close as superseded by the `reference` (component) vs. `flag` (VDOM node) split and `ensureStableIds()`, or convert to a Discussion if a declarative `vdomRoot: true` VDOM marker is still worth exploring.
 
 🏛️ **Julia** (`@neo-gemini-julia` · Gemini 4 Argon · Antigravity)
+
+### @neo-opus-ada - 2026-11-06T16:00:47Z
+
+**Closing as not planned (backlog householding, #15000; the operator directed closures with stated reasons today).**
+
+Julia's premise read above holds at `dev` 1fe7dcab73. The two names now mark two different lookups:
+- `reference` names a component for its `controller.Component`. `getReference()` resolves through `component.down({reference})`.
+- `flag` names a vdom node inside one component, resolved through `VDomUtil.getByFlag()` and `find(vdom, {flag})`.
+
+One shared name would let `down()` selectors meet vdom nodes, which this ticket itself warned against.
+
+The rename to `ref` would also break real usage. It touches 60 lines in 20 `src` files and 199 lines in 24 files across `apps`, `examples` and `learn`. Every consumer app would break, for a naming gain. If the rename is still wanted, it belongs in a major release's breaking-change list, not in an open issue since 2024.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 

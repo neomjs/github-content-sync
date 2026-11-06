@@ -1,7 +1,7 @@
 ---
 id: 9555
 title: 'Feature: Implementation of Data-Worker Side Caching'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - help wanted
@@ -12,10 +12,10 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-03-25T20:28:46Z'
-updatedAt: '2026-11-06T14:57:10Z'
+updatedAt: '2026-11-06T15:59:56Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9555'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -26,6 +26,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T15:59:56Z'
 ---
 # Feature: Implementation of Data-Worker Side Caching
 
@@ -92,4 +93,22 @@ Decision Record impact: no ADR change; local ownership follows the existing per-
 
 Origin Session ID: f2ae0cfb-5a79-458d-9fa6-ffdca5470395
 
+- 2026-11-06T15:27:21Z @neo-gpt-euclid cross-referenced by PR #20462
+### @neo-gpt-euclid - 2026-11-06T15:54:03Z
+
+## Intake-derived Contract Ledger
+
+Authored by Euclid, 2026-11-06, for the current-source implementation in #20462 at `0dee3efde0c6a2d0ab2867af60dbe61898cb60ad`. The operator's requirements above are preserved; the [intake disposition](https://github.com/neomjs/neo/issues/9555#issuecomment-6687815734) records the ownership and lifetime sharpening. Completed sequential reads are reused per retained executing Pipeline, including its existing Data counterpart; this does not claim a TTI benchmark, cross-Pipeline sharing or in-flight coalescing.
+
+| Target surface | Source of authority | Shipped behavior | Fallback / refusal | Docs | Evidence |
+|---|---|---|---|---|---|
+| `Pipeline.cache` | Requirement 1; `src/data/Pipeline.mjs` config, `construct`, `runLocal` and `readCached` | Construction option, default `false`; forwarded when the existing Data counterpart is constructed. Storage belongs to the executing Pipeline; the App proxy stores no entries in Data mode. Cached snapshots are isolated and keyed structurally by current connection URL and read params. | Default-off retains stage execution. Streaming, null/refusal terminals and unsupported behavioral values bypass caching. Stage replacement, mutations, parser push and destruction invalidate. | Config/method JSDoc and current-source intake above | `unit/data/PipelineCache.spec.mjs` default-off, identity/key/snapshot and invalidation controls; `component/data/PipelineCache.spec.mjs` App/Data on/off counted HTTP and ownership cases |
+| `Pipeline.cacheTTL` | Requirement 3; `src/data/Pipeline.mjs` config, `construct` and `readCached` | Construction option in milliseconds; absolute expiry begins when a completed result is stored. Default `0` keeps entries until invalidation/destruction. It is not a sliding read expiry. | Negative, non-finite or non-number TTL refuses before construction. Expired entries miss and execute the stages again. | Config and `readCached` JSDoc | `unit/data/PipelineCache.spec.mjs` completion-time expiry, boundary/zero lifetime and invalid-TTL controls |
+| `Pipeline.clearCache()` | Requirement 4; `src/data/Pipeline.mjs` remote declaration, `clearCache`, `invalidateReadCache` | Returns `Promise<Number>`: local removed-entry count, or the count forwarded from an already-existing Data counterpart. Clears pending entry identities so a late/older completion cannot republish an invalidated entry. | Does not construct a cold counterpart; absent counterpart returns the local count. Existing remote errors propagate. | Public method JSDoc | `unit/data/PipelineCache.spec.mjs` local/remote count, cold counterpart, pending-clear and out-of-order controls; native component clear/refetch cases |
+| Opted-in Store refresh | Pipeline cache config and `Store.load()`'s existing Pipeline read path; pre-code consumer contract read | Repeated identical `store.load()` calls on a retained opted-in Pipeline reuse its unexpired completed read. Explicit refresh is `await store.pipeline.clearCache(); await store.load()`. | With `cache: false`, every load keeps its existing transport/shaping behavior. A destroyed/replaced Pipeline has a new lifetime. | Cache config JSDoc, #20462 Deltas | `unit/data/PipelineCache.spec.mjs` explicit Store refresh control; native App/Data HTTP hit and clear/refetch controls |
+
+
+The original issue body is unchanged. This is the full claimer-authored contract backfill requested by review 5802806991; it records shipped behavior rather than adding requirements.
+
+- 2026-11-06T16:40:11Z @neo-gpt-sophie cross-referenced by #9553
 

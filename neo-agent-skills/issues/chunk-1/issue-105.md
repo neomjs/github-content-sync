@@ -7,14 +7,15 @@ labels:
   - documentation
   - ai
   - agent-os
+  - needs-design-authority
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-23T11:02:36Z'
-updatedAt: '2026-09-23T14:22:50Z'
+updatedAt: '2026-11-06T20:21:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/105'
 author: neo-opus-vega
 commentsCount: 0
-parentIssue: 17416
+parentIssue: 26
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -30,7 +31,7 @@ closedAt: '2026-09-23T14:22:50Z'
 
 ## Context
 
-Roadmap cornerstone 3 (neomjs/neo#17416) retires the engine's `resources/content` mirror; its reader census (https://github.com/neomjs/neo/issues/17416#issuecomment-5791980653, Stage 3) found eight skill payloads that instruct agents to sweep that mirror. One of them — `release-notes-workflow.md` §2's analyzer — is already neomjs/neo-agent-skills#104 (@neo-opus-grace). This ticket is the other seven.
+Roadmap cornerstone 3 (neomjs/github-content-sync#26) retires the engine's `resources/content` mirror; its reader census (https://github.com/neomjs/github-content-sync/issues/26#issuecomment-5791980653, Stage 3) found eight skill payloads that instruct agents to sweep that mirror. One of them — `release-notes-workflow.md` §2's analyzer — is already neomjs/neo-agent-skills#104 (@neo-opus-grace). This ticket is the other seven.
 
 ## The Problem
 
@@ -60,10 +61,10 @@ The only thing currently catching what these miss is `ticket-create` §1a's mand
 One PR over the seven payloads:
 
 1. Replace each mirror grep with the live pair — the GitHub sweep for filed artifacts, `query_documents` / `ask_knowledge_base` for exact and semantic recall — and delete the mirror path.
-2. `hostile-content-quarantine` steps 1–3: publication and ingestion are two observations, neither a run timestamp — *published?* is the corpus repository's `dev` tip holding a file for the artifact (a run's input commit and its published commit differ); *ingested?* is the tenant's `lastIngestedRev` against the publishing commit, and where the checkpoint cannot answer (it read `null` beside 260 settled chunks on 2026-09-23) a direct `query_documents` probe — unknown is never "no". A published copy is itself an ingestion source until a run republishes without it, so upstream moderation alone is preventive only while nothing is published; drop the `ls`/`git log` over the mirror. *(Corrected at PR #107 review R1, @neo-gpt-emmy; the first cut compared the artifact's `createdAt` with the newest run.)*
+2. `hostile-content-quarantine` steps 1–3: publication and ingestion are two observations, neither a run timestamp — *published?* is the corpus repository's `dev` tip holding a file for the artifact (a run's input commit and its published commit differ); *ingested?* is the tenant's `lastIngestedRev` against the publishing commit, and where the checkpoint cannot answer (it read `null` beside 260 settled chunks on 2026-09-23) a direct `query_documents` probe — unknown is never "no". A published copy is itself an ingestion source until a run republishes without it, so upstream moderation alone is preventive only while nothing is published; drop the `ls`/`git log` over the mirror. *(Corrected at PR neomjs/neo#107 review R1, @neo-gpt-emmy; the first cut compared the artifact's `createdAt` with the newest run.)*
 3. `industry-friction-radar`: point at the Discussions themselves (D#10119, D#10137).
 4. `tech-debt-radar`: name the backlog as the Knowledge Base's conversation rows, not a directory.
-5. Leave `release-notes-workflow.md` to #104.
+5. Leave `release-notes-workflow.md` to neomjs/neo#104.
 
 ## Contract Ledger Matrix
 
@@ -77,8 +78,8 @@ One PR over the seven payloads:
 
 ## Acceptance Criteria
 
-- [ ] **AC-1** `grep -rn "resources/content" .agents/skills` returns only `release-notes-workflow.md` (owned by #104), `update-roadmap-workflow.md` (a MUST-NOT example) and `guide-authoring-bar.md` (a historical measurement).
-- [ ] **AC-2** Each replaced instruction names its live substrate and the command or tool that runs it; the quarantine check binds the artifact to the corpus repository's published tip, keeps partial or unknown ingestion distinct from none, and treats a published copy as an ingestion source that needs containment *(re-stated at PR #107 R1; the first cut compared `createdAt` with the newest run and could call published-but-unswept content safe)*.
+- [ ] **AC-1** `grep -rn "resources/content" .agents/skills` returns only `release-notes-workflow.md` (owned by neomjs/neo#104), `update-roadmap-workflow.md` (a MUST-NOT example) and `guide-authoring-bar.md` (a historical measurement).
+- [ ] **AC-2** Each replaced instruction names its live substrate and the command or tool that runs it; the quarantine check binds the artifact to the corpus repository's published tip, keeps partial or unknown ingestion distinct from none, and treats a published copy as an ingestion source that needs containment *(re-stated at PR neomjs/neo#107 R1; the first cut compared `createdAt` with the newest run and could call published-but-unswept content safe)*.
 - [ ] **AC-3** `npm run lint` (the skill-corpus lint) passes and the total payload byte count does not grow.
 - [ ] **AC-4** One `ticket-create` dry run against a ticket filed after 2026-08-26 finds it through the replaced sweep — the case the mirror could never return.
 
@@ -86,7 +87,7 @@ One PR over the seven payloads:
 
 - `release-notes-workflow.md` and the analyzer's root (#104).
 - A freshness lint for content paths in skill payloads (recurrence-gated; the census is the first recurrence).
-- The mirror's deletion itself (cornerstone 3's retirement leaf under neomjs/neo#17416).
+- The mirror's deletion itself (cornerstone 3's retirement leaf under neomjs/github-content-sync#26).
 
 ## Avoided Traps
 
@@ -95,9 +96,9 @@ One PR over the seven payloads:
 
 ## Related
 
-neomjs/neo#17416 (epic; this is a consumer-boundary leaf) · neomjs/neo-agent-skills#104 · neomjs/neo-agent-skills#62 (closed-state sweeps — adjacent, not this) · D#17846 §8.5 · neomjs/neo-agent-brain#411
+neomjs/github-content-sync#26 (epic; this is a consumer-boundary leaf) · neomjs/neo-agent-skills#104 · neomjs/neo-agent-skills#62 (closed-state sweeps — adjacent, not this) · D#17846 §8.5 · neomjs/neo-agent-brain#411
 
-Live latest-open sweep: latest 20 open issues in this repository at 2026-09-23T11:00Z — #104 is the release-notes sibling, excluded above; no other equivalent. A2A in-flight sweep (30 most recent, all read-states, 11:02Z): no claim on skill sweeps; #104's `[ticket-filed + owner]` (09:46Z) confirms the split. Memory Core sweep: `query_raw_memories` returned unrelated `sync_all` memories (recall degraded today). Own-assignment sweep (this repository): #90, #87, #86, #85, #80, #51 — none equivalent. Epic layer: leaf, not an epic. Meta-skill sweep (`create-skill`): reference payloads only, routers untouched. Structure map: N/A — no `.mjs`.
+Live latest-open sweep: latest 20 open issues in this repository at 2026-09-23T11:00Z — neomjs/neo#104 is the release-notes sibling, excluded above; no other equivalent. A2A in-flight sweep (30 most recent, all read-states, 11:02Z): no claim on skill sweeps; neomjs/neo#104's `[ticket-filed + owner]` (09:46Z) confirms the split. Memory Core sweep: `query_raw_memories` returned unrelated `sync_all` memories (recall degraded today). Own-assignment sweep (this repository): neomjs/neo#90, neomjs/neo#87, neomjs/neo#86, neomjs/neo#85, neomjs/neo#80, neomjs/neo#51 — none equivalent. Epic layer: leaf, not an epic. Meta-skill sweep (`create-skill`): reference payloads only, routers untouched. Structure map: N/A — no `.mjs`.
 
 Origin Session ID: db85836e-f7c2-4da0-a614-fa0e93e8e727
 Retrieval Hint: `query_raw_memories("skill payloads frozen mirror resources/content live sweep replacement cornerstone 3")`
@@ -112,7 +113,6 @@ Authored by Vega (Fable 5.1, Claude Code) 🌿
 - 2026-09-23T11:02:37Z @neo-opus-vega added the `documentation` label
 - 2026-09-23T11:02:37Z @neo-opus-vega added the `ai` label
 - 2026-09-23T11:02:38Z @neo-opus-vega added the `agent-os` label
-- 2026-09-23T11:03:46Z @neo-opus-vega added parent issue #17416
 - 2026-09-23T11:29:06Z @neo-opus-grace cross-referenced by PR #106
 - 2026-09-23T12:03:33Z @neo-opus-vega cross-referenced by PR #107
 - 2026-09-23T12:21:32Z @neo-opus-vega referenced in commit `4dc71b8` - "chore(skills): bump to 0.1.16 (#105)"
@@ -123,5 +123,7 @@ Authored by Vega (Fable 5.1, Claude Code) 🌿
 
 fix(skills): seven payloads sweep the live corpus, not the frozen engine mirror (#105)"
 - 2026-09-23T14:22:50Z @tobiu closed this issue
-- 2026-09-23T14:47:27Z @neo-opus-vega cross-referenced by #17416
+- 2026-09-23T14:47:27Z @neo-opus-vega cross-referenced by #26
+- 2026-11-06T20:20:11Z @neo-opus-grace added parent issue #26
+- 2026-11-06T20:21:50Z @github-actions added the `needs-design-authority` label
 

@@ -9,10 +9,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-16T17:41:38Z'
-updatedAt: '2026-11-05T10:41:35Z'
+updatedAt: '2026-11-06T20:14:43Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9486'
 author: tobiu
-commentsCount: 10
+commentsCount: 11
 parentIssue: null
 subIssues:
   - '[x] 9487 Grid Multi-Body: Refactor Layout Engine & SubGrid Partitioning'
@@ -24,7 +24,7 @@ subIssues:
   - '[ ] 9493 Grid Multi-Body: Enable Cross-Window SubGrid Detachment (Pop-out)'
   - '[ ] 9494 Grid Multi-Body: Implement Direct Main-Thread Scroll Sync via MessageChannel'
   - '[x] 9495 Grid Multi-Body: Implement Data-Driven Variable Row Height Architecture'
-  - '[ ] 9496 Grid Multi-Body: Adapt Keyboard Navigation for Split Bodies'
+  - '[x] 9496 Grid Multi-Body: Adapt Keyboard Navigation for Split Bodies'
   - '[x] 9497 Grid Multi-Body: Split Column Collections and Orchestration'
   - '[x] 9498 Grid Multi-Body: Infinite Canvas Cross-Window Column Drag & Drop'
   - '[x] 9499 Grid Multi-Body: Test Suite Refactoring & Expansion'
@@ -52,7 +52,7 @@ subIssues:
   - '[ ] 9872 Grid Multi-Body: 3-Tier Component Orchestration and Architecture Refactoring'
   - '[x] 12878 Column-header DnD resort misbehaves in locked multi-region grids'
   - '[x] 12883 Column drag to the locked-end region fails to re-home (silent)'
-subIssuesCompleted: 33
+subIssuesCompleted: 34
 subIssuesTotal: 37
 contentTrust:
   projected: true
@@ -364,4 +364,15 @@ This issue was closed because it has been inactive for 14 days since being marke
 — Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
 
 - 2026-11-05T23:35:43Z @neo-opus-ada cross-referenced by #20401
+### @neo-opus-grace - 2026-11-06T20:14:43Z
+
+**Verdict (13.4 householding, 2026-11-06): close as completed; its three open subs stay as standalone tickets.**
+
+- **Delivered:** 34 of 37 sub-issues are closed, and the core Multi-Body V2 shipped. That is the locked-column, zero-jitter architecture this epic names (the 11-05 premise read on #15000).
+- **Not this epic's goal any more:** the three open subs are follow-on features, each with its own scope. #9493 (cross-window SubGrid pop-out) and #9494 (direct main-thread scroll sync, blocked on #9493) carry `no auto close`. #9872 is narrowed to the remaining `Container.mjs` → `View.mjs` sub-body instantiation. None of them is needed for locked columns to work, and each stays open on its own.
+- **Process note:** `epic-resolution` does not run its matrix here. The body has no articulated acceptance criteria, and the assignee owns the close-out. This verdict is the recommendation for that close.
+
+🖖 Grace (Opus 5.5, Claude Code) · session 70ff1a62-4fc3-42fc-95bf-70a73041c4d3
+
+
 

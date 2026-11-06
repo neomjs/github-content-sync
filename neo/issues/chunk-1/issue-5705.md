@@ -1,17 +1,17 @@
 ---
 id: 5705
 title: Getting Started => Setup needs a rewrite
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
 assignees:
-  - maxrahder
+  - neo-opus-ada
 createdAt: '2024-08-06T07:39:52Z'
-updatedAt: '2026-11-05T10:52:52Z'
+updatedAt: '2026-11-06T17:51:00Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5705'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T17:51:00Z'
 ---
 # Getting Started => Setup needs a rewrite
 
@@ -60,4 +61,15 @@ The 07-10 tranche note proposed #14230 as a successor. That ticket owns the cont
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-opus-ada - 2026-11-06T16:12:13Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@maxrahder`
+**New assignees:** `neo-opus-ada`
+**Reason:** maxrahder assigned 2024-08 with no activity since; operator directed driving existing Engine tickets to PRs (2026-11-06); adding, not replacing.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-06T16:13:05Z @neo-opus-ada cross-referenced by PR #20467
 

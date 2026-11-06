@@ -4,13 +4,16 @@ title: 'component.DateSelector: we need a new widget to pick the month & year mo
 state: OPEN
 labels:
   - enhancement
+  - design
+  - ai
+  - accessibility
 assignees:
-  - ExtAnimal
+  - neo-opus-ada
 createdAt: '2024-02-13T08:20:55Z'
-updatedAt: '2026-11-05T10:34:40Z'
+updatedAt: '2026-11-06T20:16:24Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5218'
 author: tobiu
-commentsCount: 4
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -29,6 +32,18 @@ blocking: []
 - we could use 2 lists => left side months, right side years
 
 open for other ideas, but we need the functionality.
+
+---
+
+## Contract Ledger (intake-derived, claimer: @neo-opus-ada, 2026-11-06)
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `Neo.component.MonthYearSelector` (new, `src/component/MonthYearSelector.mjs`) | this ticket | Two lists: 12 months, and 10 years per page with previous/next page buttons, plus OK and Cancel. A click or an arrow key moves the pending month or year. OK or Enter fires `select` with `{month, year}`; Cancel or Escape fires `cancel`. | Months and years outside `minValue` / `maxValue` are disabled and cannot be picked. | JSDoc | new unit spec `unit/component/MonthYearSelector.spec.mjs` |
+| `Neo.component.DateSelector` header label (existing: `.neo-center-region`, id `${id}__header-center`, `aria-live: polite`) | this ticket | New reactive config `useMonthYearSelector_` (default `true`): the label becomes a button (`role=button`, `tabIndex 0`, `aria-expanded`, `aria-controls`). A click, Enter or Space slides the selector in from the top, over the day view. `select` sets `value` to the same day in the chosen month and year, through the path the previous/next buttons use. Either outcome closes the selector and puts focus back on the label. | The day is clamped to the month's length and to `minValue` / `maxValue`. `useMonthYearSelector: false` keeps today's static label. `useAnimations: false` skips the slide. | JSDoc | `component/component/DateSelector.spec.mjs`: red on dev, green at head |
+| Keys inside the open selector | `Neo.util.KeyNavigation#onKeyDown` runs every matching handler of a component | Arrow keys do not move the day grid (`DateSelectorModel`). Escape closes only the selector, not `form.field.Date`'s picker (`onContainerKeyDownEscape`). | Keys the selector does not handle (Tab) behave as today. | none | same component spec |
+| `form.field.Date` (consumer of DateSelector's `change`) | existing `DateSelector#afterSetValue` | Unchanged: a selector choice reaches the field as a `change`, like a header-button click. | n/a | none | existing `component/form/field/Date.spec.mjs` stays green |
+| Tab order inside DateSelector (consumer: `form.field.Date`'s picker dialog, #5219) | this ticket; `Neo.main.DomAccess#trapFocus` (as `dialog.Base` uses it) | The label sits between Previous Month and Next Month in the Tab order. While the selector is open, Tab and Shift+Tab wrap inside it. | n/a | none | the Tab/Shift+Tab test in `component/form/field/Date.spec.mjs` gains the label |
 
 ## Timeline
 
@@ -59,4 +74,29 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-opus-ada - 2026-11-06T19:57:33Z
+
+Picking up per 7-day rule; previous assignee @ExtAnimal; last qualifying activity 2024-02-13T08:20:55Z (the assignment itself, with no comment since). Nige, if you are still on this, say so and I'll step back.
+
+**Intake, 2026-11-06**, at dev `d9eb21fa5f`. **Verdict: valid-as-written.**
+- `component.DateSelector` still changes month and year only through the header's previous/next buttons and the mouse wheel. Nothing in the org picks a month or year directly.
+- `date.SelectorContainer` (#5384, 2024) never replaced the component. `form.field.Date` and `calendar.view.MainContainer` both use `component.DateSelector`, so the widget goes there.
+
+**Shape:** a new `Neo.component.MonthYearSelector`, embedded in DateSelector as a child component, the way `table.header.Button` embeds its `filterField`. It has to be its own component because of how keys are dispatched. `KeyNavigation` runs every matching key handler on a component. If the panel were plain vdom inside DateSelector, an arrow key in it would also move the day grid, and Escape would also close `form.field.Date`'s picker. As a child component, the panel handles its own keys and stops them from reaching DateSelector.
+
+The contract is in the body's Contract Ledger.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-06T19:57:36Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@ExtAnimal`
+**New assignees:** `neo-opus-ada`
+**Reason:** 7-day rule: ExtAnimal assigned 2024-02-13T08:20:55Z with no activity since; attribution comment posted on #5218
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-06T20:17:50Z @neo-opus-ada cross-referenced by PR #20483
 

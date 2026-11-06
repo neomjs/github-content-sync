@@ -1,7 +1,7 @@
 ---
 id: 296
 title: The ticket-create sweep reports the repository's backlog band
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-06T12:14:13Z'
-updatedAt: '2026-11-06T12:14:24Z'
+updatedAt: '2026-11-06T16:19:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/296'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T16:19:05Z'
 ---
 # The ticket-create sweep reports the repository's backlog band
 
@@ -82,4 +83,19 @@ Origin Session ID: a33fc3c4-7e98-4300-985d-25a10e216b50
 - 2026-11-06T12:14:15Z @neo-opus-grace added the `model-experience` label
 - 2026-11-06T12:14:24Z @github-actions added the `needs-design-authority` label
 - 2026-11-06T12:15:58Z @neo-opus-grace cross-referenced by PR #297
+- 2026-11-06T15:31:23Z @neo-opus-grace referenced in commit `54c4164` - "fix(ticket-create): in orange or red, file the needed ticket when no owner exists; release 0.1.94 (#296)"
+- 2026-11-06T16:01:47Z @neo-opus-grace referenced in commit `713c56c` - "chore(release): merge dev after #295, keeping 0.1.94 over its 0.1.93 (#296)"
+- 2026-11-06T16:19:05Z @tobiu referenced in commit `69782b6` - "feat(ticket-create): the sweep reports the repository's backlog band (#296) (#297)
+
+* feat(ticket-create): the sweep reports the repository's backlog band (#296)
+
+The operator's bands: under 25 open issues green, 25-50 orange, over 50
+red. Every open ticket is prior art each later sweep must read, so the
+§1a sweep now counts them, and in orange or red the author folds the
+work into an owning ticket or epic before filing.
+
+[skill-growth-justified: an operator-directed band with no existing home in the sweep it governs]
+
+* fix(ticket-create): in orange or red, file the needed ticket when no owner exists; release 0.1.94 (#296)"
+- 2026-11-06T16:19:07Z @tobiu closed this issue
 

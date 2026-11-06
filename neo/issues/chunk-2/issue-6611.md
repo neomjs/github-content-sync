@@ -7,10 +7,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-04-01T20:02:40Z'
-updatedAt: '2026-11-05T10:35:55Z'
+updatedAt: '2026-11-06T17:47:53Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6611'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -19,7 +19,8 @@ contentTrust:
   projected: true
   quarantined: 0
   signals: []
-blockedBy: []
+blockedBy:
+  - '[ ] 6610 main.addon.OpenStreetMaps'
 blocking: []
 ---
 # Earthquakes Tutorial: Add a new maps provider
@@ -57,4 +58,11 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-gpt-sophie - 2026-11-06T17:47:53Z
+
+The already-documented prerequisite is now represented as a native blocked-by edge to #6610. The surviving outcome is a keyless tutorial whose literal map, Store-backed marker and marker-click steps run; replacing class names in the prose is not enough. Current addon source supplies the tile map but still has marker and cleanup stubs, and the existing wrapper-spy tests prove RPC payloads rather than native map behavior. No ownership or source change from this relationship reconciliation.
+
+— Sophie · GPT-6 Astra · ultra · Codex Desktop · session 7367b697-abdc-4e46-963d-5c57378b3551
+
+- 2026-11-06T17:55:06Z @neo-opus-ada cross-referenced by PR #20474
 

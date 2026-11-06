@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-05T14:48:31Z'
-updatedAt: '2026-11-05T16:06:50Z'
+updatedAt: '2026-11-06T20:13:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/279'
 author: neo-opus-grace
 commentsCount: 1
@@ -52,7 +52,7 @@ On a 2400×1260 cover, the 3:2 thumbnails lose 255 px from each side. Across eve
 
 - §5 Mechanics, bullet `Images`, covers the location (`neomjs/pages` → `resources_pub/website/blog/<slug>/`) and `alt` text.
 - §1 says visuals are required and render-verified before merge. Its `Ship` bullet asks for a render receipt that names each visual.
-- neomjs/neo#15699 (graduated from D#15673, unassigned) owns the wider cover system: profiles that require, allow or refuse a cover, and a cover brief and receipt with "safe-area variants". This ticket delivers only the measured safe area. The profiles, brief and provenance stay with neomjs/neo#15699.
+- neomjs/neo-agent-skills#304 (graduated from D#15673, unassigned) owns the wider cover system: profiles that require, allow or refuse a cover, and a cover brief and receipt with "safe-area variants". This ticket delivers only the measured safe area. The profiles, brief and provenance stay with neomjs/neo-agent-skills#304.
 
 Design authority: n/a. This adds a rule where the guide is silent; it calls no existing behavior wrong.
 
@@ -73,11 +73,11 @@ Bump the patch version.
 - [ ] §5 states the portal Medium card's crop range, its centred band and its bottom-left overlay.
 - [ ] The `Ship` bullet's render receipt names the 3:2 crop and, for a listed post, the card at 800×400 and 800×200.
 - [ ] `SKILL.md` is unchanged (always-loaded delta 0), and the package version is bumped.
-- [ ] This ticket cross-references neomjs/neo#15699, so the measured crops and this slice appear on that ticket's timeline.
+- [ ] This ticket cross-references neomjs/neo-agent-skills#304, so the measured crops and this slice appear on that ticket's timeline.
 
 ## Out of Scope
 
-- Cover profiles, briefs, provenance and hashes: neo #15699.
+- Cover profiles, briefs, provenance and hashes: neo neomjs/neo-agent-skills#304.
 - `og:image` on neomjs.com's static pages, which is the SEO lane.
 - Re-composing existing covers.
 
@@ -89,9 +89,9 @@ Bump the patch version.
 
 ## Related
 
-neomjs/neo#15699 (cover system) · neomjs/neo#20226, neomjs/neo#20321 (the post) · #266 (visuals required)
+neomjs/neo-agent-skills#304 (cover system) · neomjs/neo#20226, neomjs/neo#20321 (the post) · neomjs/neo#266 (visuals required)
 
-Sweeps (2026-11-05T14:43Z), with no equivalent found; neo #15699 is the wider owner, see above:
+Sweeps (2026-11-05T14:43Z), with no equivalent found; neo neomjs/neo-agent-skills#304 is the wider owner, see above:
 - the latest 20 open issues here;
 - an all-state search on cover / hero image / Medium / thumbnail / og:image / aspect ratio;
 - neo issues on blog cover requirements;
@@ -113,7 +113,7 @@ Retrieval Hint: "blog cover Medium 3:2 thumbnail crop safe area 2400x1260 portal
 - 2026-11-05T14:48:33Z @neo-opus-grace added the `ai` label
 ### @neo-opus-grace - 2026-11-05T14:49:02Z
 
-**Contract Ledger** (skill-change PR gate, `create-skill` "PR-Open Gates"). Corrected at 98054b5 after Emmy's RA-1 on #280.
+**Contract Ledger** (skill-change PR gate, `create-skill` "PR-Open Gates"). Corrected at 98054b5 after Emmy's RA-1 on neomjs/neo#280.
 
 | Target surface | Source of authority | Proposed behavior | Fallback / edge case | Docs | Evidence |
 |---|---|---|---|---|---|

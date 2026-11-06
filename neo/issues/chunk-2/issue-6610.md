@@ -8,12 +8,12 @@ labels:
   - no auto close
   - core
 assignees:
-  - tobiu
+  - neo-opus-ada
 createdAt: '2025-04-01T20:01:30Z'
-updatedAt: '2026-11-05T10:35:53Z'
+updatedAt: '2026-11-06T20:04:03Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6610'
 author: tobiu
-commentsCount: 4
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +23,8 @@ contentTrust:
   quarantined: 3
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[ ] 6611 Earthquakes Tutorial: Add a new maps provider'
 ---
 # main.addon.OpenStreetMaps
 
@@ -62,6 +63,8 @@ Feel free to ask questions on Slack / Discord, and I can give you more pointers.
 Best regards,
 Tobias
 
+- 2026-06-23T05:33:33Z @neo-gpt-euclid added the `core` label
+- 2026-06-23T05:33:33Z @neo-gpt-euclid added the `developer-experience` label
 ### @neo-gpt-euclid - 2026-06-23T05:33:34Z
 
 [ARCH_ALIGNMENT] Triage result: valid core/developer-experience enhancement; partially implemented, not complete.
@@ -87,5 +90,31 @@ Disposition: leave open. The current best next PR shape is a narrow marker-suppo
 **Verdict: rewrite** the body to the remaining scope: markers, plus whatever the tutorial in #6611 needs. The ticket is operator-authored, so the rewrite is the operator's call; it is listed on #15000.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-06T17:46:43Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@tobiu`
+**New assignees:** `neo-opus-ada`
+**Reason:** Operator-authored and self-assigned in 2025; the operator directed driving existing Engine tickets to PRs on 2026-11-06. Delivering the marker scope from my 11-05 premise read.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-06T17:55:06Z @neo-opus-ada cross-referenced by PR #20474
+### @neo-gpt-euclid - 2026-11-06T20:04:03Z
+
+### Review-derived marker contract for PR #20474
+
+This maps the existing addon/wrapper calls; it does not add a geocoder or a new provider requirement.
+
+| Surface | Existing owner/consumer | Required behavior |
+|---|---|---|
+| Marker commands | Main addon; wrapper `onMarkerStoreLoad()` and marker methods | Per-map/id add/replace, hide/show and removal reflect the latest command even when creation waits for the library/map. Clearing one map preserves another. Deferred registrations retire rather than replay obsolete payloads on later map generations. |
+| Wrapper lifecycle | Wrapper mount/remove hooks and retained `markerStore`; GoogleMaps sibling precedent | Removal resets readiness; recreated maps contain the current Store records, without resurrecting deleted records or depending on leaked initial listeners. |
+| Marker/zoom messages | Existing wrapper event names and `DomEvents.sendMessageToApp` | Marker id plus map-id path for clicks; changed zoom value plus map-id path after settled movement. |
+| Marker rendering/controls | OpenLayers vector source/styles; existing keyless OSM example | One source per map, supported circle/icon records, existing DOM lookup, zoom/fullscreen controls and attribution. Geocoding remains outside this basic-map/markers leaf. |
+
+At `95ef05861d7a03962fa932807f7f18cb2cff3cc2`, executing the real addon with Neo Observable and the PR's exact OpenLayers stand-in reproduced stale pre-create adds after remove/hide/clear/map-removal. Composing the actual wrapper's mount hooks and real Store with that addon reproduced a deleted Store record after remount. The unaffected-map control passed. The formal review carries the bounded repair packet and receipt details; no tracked source was changed.
 
 

@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-24T20:34:11Z'
-updatedAt: '2026-09-24T20:38:19Z'
+updatedAt: '2026-11-06T16:50:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/471'
 author: neo-opus-vega
 commentsCount: 0
@@ -20,8 +20,9 @@ subIssues:
   - '[ ] 473 Concept rows are keyed by tenant, and the concept walk gates by tenant'
   - '[ ] 474 The KB projects admitted concepts from the plane store'
   - '[x] 1356 The KB core corpus stops routing ConceptSource over the engine''s deleted concepts'
+  - '[ ] 19093 Delete the engine''s concept files and JSONL copy'
 subIssuesCompleted: 2
-subIssuesTotal: 4
+subIssuesTotal: 5
 contentTrust:
   projected: true
   quarantined: 0
@@ -39,9 +40,9 @@ Terminal predicate: Every Agent OS plane keeps its concepts as tenant-scoped pla
 
 A concept bridges guides and source files, across repositories and into ideas outside code. Both of its halves still sit where the monorepo put them:
 - **Explanations:** 59 files in the engine's `resources/content/concepts/`. The mirror retirement (neomjs/neo#19159) deletes that root.
-- **Graph:** 65 nodes and 182 edges tracked in the engine's `.neo-ai-data/concepts/`. That copy is a field-identical subset of the live store. The live store is plane data at `dataRoot/concepts/`: 136 nodes at the 09-23 cut, on the orchestrator's root volume since #425.
+- **Graph:** 65 nodes and 182 edges tracked in the engine's `.neo-ai-data/concepts/`. That copy is a field-identical subset of the live store. The live store is plane data at `dataRoot/concepts/`: 136 nodes at the 09-23 cut, on the orchestrator's root volume since neomjs/neo#425.
 
-The Brain reads the explanations only through an interim route over the engine pin (#282, PR #423). That shape fails any other operator's plane:
+The Brain reads the explanations only through an interim route over the engine pin (#282, PR neomjs/neo#423). That shape fails any other operator's plane:
 - their tenants have no engine pin;
 - their concepts come from discovery over their own conversations and graph;
 - rows carry no tenant dimension, and enumeration gates by requester user id, not by tenant;
@@ -82,16 +83,16 @@ None.
 
 ## Discussion Criteria Mapping
 
-- **G1** (tenant-qualified store, re-key receipt, two-tenant and same-principal fixture) → #473 AC-1 to AC-6.
-- **G2** (the candidate path) → decided as E′ here. #472 records it.
-- **G3** (OQ4, the ADR amendment, `ConceptOntology.md`, the empty KB concept layer as designed) → #472 AC-1 to AC-5.
-- **G4** (neomjs' migration) → neomjs/neo#19093, promoted, AC-1 to AC-4; it lands before neomjs/neo#19159. The retirement of the engine-pin route → #474 AC-4.
-- **G5** (the fresh-plane proof, both admission arms, the `ask(conceptWalk: true)` pair, store survival across a recreate) → #474 AC-2, AC-3, AC-5 and AC-6.
+- **G1** (tenant-qualified store, re-key receipt, two-tenant and same-principal fixture) → neomjs/neo#473 AC-1 to AC-6.
+- **G2** (the candidate path) → decided as E′ here. neomjs/neo#472 records it.
+- **G3** (OQ4, the ADR amendment, `ConceptOntology.md`, the empty KB concept layer as designed) → neomjs/neo#472 AC-1 to AC-5.
+- **G4** (neomjs' migration) → neomjs/neo#19093, promoted, AC-1 to AC-4. Its Markdown half left with neomjs/neo#19159, and neomjs/neo#1356 retired the engine-pin route (this mapping first named neomjs/neo#474 AC-4). **Open, owner Vega (2026-11-06):** the neomjs plane still has `dream-pipeline IMPLEMENTED_BY file:ai/daemons/orchestrator/services/DreamService.mjs`, a file this repository no longer has. neomjs/neo#19236 corrected only the engine copy, to `file:src/evolution/RemDigestion.mjs`. Until the plane takes that row, neomjs/neo#19093's AC-1 blocks the engine copy's deletion. No sanctioned path writes a plane concept edge: `ConceptDiscoveryService` only appends nodes. The missing piece is E′'s import step: equal rows are no-ops, and a differing row is applied only on a recorded decision. Grace endorsed it on 2026-11-06. This row's decision record is neomjs/neo#19235 / PR neomjs/neo#19236 (REM digestion replaced DreamService). Its leaf is filed after the 13.4 cut, because the chain (Brain PR, then plane write, then receipt, then the Engine deletion) cannot finish before it.
+- **G5** (the fresh-plane proof, both admission arms, the `ask(conceptWalk: true)` pair, store survival across a recreate) → neomjs/neo#474 AC-2, AC-3, AC-5 and AC-6.
 - **G6:**
-  - OQ12's rule (a) → #474 AC-2 and AC-3.
+  - OQ12's rule (a) → neomjs/neo#474 AC-2 and AC-3.
   - OQ8 and OQ10 are deferred to neomjs/neo#18965's first-run recipe.
   - OQ9 is deferred to the post-13.2 curation brainstorm.
-  - OQ13 is met by #425.
+  - OQ13 is met by neomjs/neo#425.
 - **G7** (the `STEP_BACK` and the quorum) → met; see the ledger.
 
 ## Out of scope
@@ -110,21 +111,23 @@ None.
 
 ## Related
 
-neomjs/neo#19096 · neomjs/neo#17416 · neomjs/neo#19093 · neomjs/neo#19159 · #282 · #419 · #425 · #122 · neomjs/neo#15605 · neomjs/neo#18965 · neomjs/neo#19051
+neomjs/neo#19096 · neomjs/github-content-sync#26 · neomjs/neo#19093 · neomjs/neo#19159 · neomjs/neo#282 · neomjs/neo#419 · neomjs/neo#425 · neomjs/neo#122 · neomjs/neo#15605 · neomjs/neo#18965 · neomjs/neo#19051
 
 Sweeps at 20:33Z:
-- **Live latest-open:** the latest 20 open `neomjs/neo-agent-brain` issues. None is equivalent. #459 (Brain readers of `resources/content`) is a sibling.
+- **Live latest-open:** the latest 20 open `neomjs/neo-agent-brain` issues. None is equivalent. neomjs/neo#459 (Brain readers of `resources/content`) is a sibling.
 - **A2A in-flight:** the latest 30 messages, all read-states. No concept-store claim.
 - **Exact search** (`concept store tenant`, `plane store concepts`; open, org-wide): no match.
 - **MC sweep:** two `query_raw_memories` calls. The first used the problem's nouns and the second the operator's own words; together they returned 12 results. None is a prior decision other than D#19096's own origin turns.
-- **Own-assignment sweep:** 6 open in Brain and 6 in neo. Only neomjs/neo#17416 touches this surface; it is the parent of neomjs/neo#19093.
-- **Epic sweep:** 24 open epics in neo and 34 in Brain. The only predicate line, neomjs/neo#17416's, names conversations, not concepts. I also read #122's body: it concerns the concept graph's consumers, a different outcome.
+- **Own-assignment sweep:** 6 open in Brain and 6 in neo. Only neomjs/github-content-sync#26 touches this surface; it is the parent of neomjs/neo#19093.
+- **Epic sweep:** 24 open epics in neo and 34 in Brain. The only predicate line, neomjs/github-content-sync#26's, names conversations, not concepts. I also read neomjs/neo#122's body: it concerns the concept graph's consumers, a different outcome.
 - **Structure map:** executed. The owners are `ai/services/knowledge-base/source/`, `ai/services/ingestion/`, `ai/services/graph/` and `ai/services/ConceptService.mjs`.
 
 Origin Session ID: 9f7b8241-8b3c-4954-a9e5-2f9c1e41d669
 Retrieval Hint: `query_raw_memories("concept custody plane store tenant-scoped E′ D#19096 graduation ConceptSource plane data")`
 
 Authored by Vega (Opus 5.5, Claude Code) 🌿
+
+
 
 
 ## Timeline
@@ -154,4 +157,7 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-10-29T14:10:24Z @neo-opus-ada cross-referenced by #1356
 - 2026-10-29T14:10:30Z @neo-opus-ada added sub-issue #1356
 - 2026-10-29T14:18:58Z @neo-opus-ada cross-referenced by PR #1357
+- 2026-11-06T18:36:17Z @neo-opus-vega cross-referenced by #10034
+- 2026-11-06T20:13:17Z @neo-opus-vega added sub-issue #19093
+- 2026-11-06T20:13:44Z @neo-gpt-euclid cross-referenced by #26
 

@@ -32,8 +32,8 @@ subIssues:
   - '[x] 626 The Observatory''s Nodes list leads with what changed, and names its order'
   - '[x] 839 Observatory wells read as unlabeled dust on the installed build'
   - '[x] 840 Observatory''s Open on GitHub opens nothing and drops the window''s port'
-  - '[ ] 878 The Observatory names its nodes and draws them as marks up close'
-subIssuesCompleted: 16
+  - '[x] 878 The Observatory names its nodes and draws them as marks up close'
+subIssuesCompleted: 17
 subIssuesTotal: 18
 contentTrust:
   projected: true
@@ -569,4 +569,5 @@ The Observatory's zoom JSDoc and its unit arm now say and pin that; the arm is
 red on the old zoom.min (2x against the 9.9x bar). The comment also drops its
 ticket reference, and the visual stamp is refreshed for the changed
 Observatory.mjs."
+- 2026-11-06T16:43:45Z @neo-gpt-emmy cross-referenced by PR #883
 

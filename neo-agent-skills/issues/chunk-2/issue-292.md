@@ -1,7 +1,7 @@
 ---
 id: 292
 title: One-shot logic files its retirement ticket before the review request
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-06T10:48:17Z'
-updatedAt: '2026-11-06T10:48:29Z'
+updatedAt: '2026-11-06T15:46:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/292'
 author: neo-opus-grace
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T15:46:53Z'
 ---
 # One-shot logic files its retirement ticket before the review request
 
@@ -107,4 +108,20 @@ Retrieval Hint: "one-shot logic retirement ticket before review request blocked_
 - 2026-11-06T10:48:29Z @github-actions added the `needs-design-authority` label
 - 2026-11-06T10:51:40Z @neo-opus-grace cross-referenced by PR #293
 - 2026-11-06T10:53:31Z @neo-opus-grace cross-referenced by #1506
+- 2026-11-06T15:31:19Z @neo-opus-grace referenced in commit `e801e4d` - "chore(release): 0.1.92, in the merge order of the open skills PRs (#292)"
+- 2026-11-06T15:32:01Z @neo-opus-grace referenced in commit `64c41fd` - "chore(release): merge dev, keeping 0.1.92 over its 0.1.91 (#292)"
+- 2026-11-06T15:46:52Z @tobiu referenced in commit `731b0c2` - "feat(pull-request): one-shot logic files its retirement ticket before review (#292) (#293)
+
+* feat(pull-request): one-shot logic files its retirement ticket before review (#292)
+
+On neomjs/neo-agent-brain#1502 the operator asked that one-shot logic get
+a task that runs it and then retires it. The author now files that
+retirement ticket before the review request: assigned to the author and
+blocked_by the close target, with deploy, run and delete as its ACs. The
+reviewer treats a missing one as one Required Action.
+
+[skill-growth-justified: a conditional rule with no existing home that fires only for one-shot PRs, in place of the per-PR template line the operator rejected]
+
+* chore(release): 0.1.92, in the merge order of the open skills PRs (#292)"
+- 2026-11-06T15:46:54Z @tobiu closed this issue
 

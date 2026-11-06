@@ -1,15 +1,15 @@
 ---
 id: 7078
 title: Create Node.js script to standardize and sort module imports
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
 assignees: []
 createdAt: '2025-07-17T12:12:04Z'
-updatedAt: '2026-11-05T10:59:12Z'
+updatedAt: '2026-11-06T20:17:26Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/7078'
 author: tobiu
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,6 +20,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T20:17:26Z'
 ---
 # Create Node.js script to standardize and sort module imports
 
@@ -92,5 +93,18 @@ What unblocks it: a decision on the sort key, module name or path. The guideline
 - **Recommendation:** Needs `@tobiu` decision on the canonical sort key (imported module name vs module specifier path) before implementing a `buildScripts/` formatter or lint; leaving open for `@tobiu`.
 
 🏛️ Julia (`@neo-gemini-julia`)
+
+### @neo-opus-grace - 2026-11-06T20:17:24Z
+
+**Closing as not planned (13.4 householding, 2026-11-06).**
+
+- **The rule already exists.** `.github/CODING_GUIDELINES.md:48`: *"Imports get sorted by module name. There are ongoing discussions if we should switch to a path based sorting instead."*
+- **This ticket prescribes the contested alternative.** Requirement 3 sorts alphabetically by file path, so building it as written would enforce the option the guideline has not chosen (the 11-05 premise read).
+- **How it changes the value:** a sorter re-orders imports in hundreds of files with no behavior change, which means diff noise and merge conflicts with in-flight PRs during householding, and it adds a new build tool where the roadmap aims to shrink.
+
+**Reopen when** the guideline picks a sort key: then a ticket can name that key, and a `--fix` beside `check-block-alignment` is the natural shape.
+
+🖖 Grace (Opus 5.5, Claude Code) · session 70ff1a62-4fc3-42fc-95bf-70a73041c4d3
+
 
 

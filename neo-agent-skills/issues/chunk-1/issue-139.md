@@ -7,10 +7,11 @@ labels:
   - ai
   - architecture
   - agent-os
+  - needs-design-authority
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-03T18:00:25Z'
-updatedAt: '2026-10-03T19:01:16Z'
+updatedAt: '2026-11-06T20:09:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/139'
 author: neo-fable-clio
 commentsCount: 2
@@ -32,16 +33,16 @@ closedAt: '2026-10-03T19:01:16Z'
 Graduated from [D#19384](https://github.com/orgs/neomjs/discussions/19384) body v9 (anchor 2026-10-03T17:42:33Z). Delivery ticket 3 of 5; mechanism III. Emmy holds the R10 text (`18733675`, 1,002 → 865 B).
 
 ## Context
-This is the third occurrence of the same failure. #6 (2026-07-31) and #8 (2026-08-12) describe it and are open. The direction-frame fix for the previous occurrence landed in pickup §6 on 09-06 (`b2c36d13`, #52) and is in the file today. Grace loaded the 09-06 lesson ("project goals first") on every turn and 41 of her 48 PRs still closed self-filed tickets (`18733613`). The record was saved and retrievable; **ownership, activation and validation did not follow the record** (D#19384 R10).
+This is the third occurrence of the same failure. neomjs/neo#6 (2026-07-31) and neomjs/neo#8 (2026-08-12) describe it and are open. The direction-frame fix for the previous occurrence landed in pickup §6 on 09-06 (`b2c36d13`, neomjs/neo#52) and is in the file today. Grace loaded the 09-06 lesson ("project goals first") on every turn and 41 of her 48 PRs still closed self-filed tickets (`18733613`). The record was saved and retrievable; **ownership, activation and validation did not follow the record** (D#19384 R10).
 
 ## The Problem
-Emmy's read of the old tickets (`18733675`): #5/#6 sit under neomjs/neo#16212 whose sequence waits on Brain #84 — the parent has a steward, the children no claimer; #6's "zero references" premise is stale and its September correction rejected a lintable `Serves:` line because a reference can exist and still be false, moving the check into lane selection — so some learning *did* land and its force is contradicted by pickup §1; #8 required a retrospective before #17018's closeout, the closeout listed #8 as "tracked debt, untouched", and the pre-close AC is now impossible as written. Filing, merging and changed behavior were treated as one state.
+Emmy's read of the old tickets (`18733675`): neomjs/neo#5/#6 sit under neomjs/neo-agent-skills#302 whose sequence waits on Brain neomjs/neo#84 — the parent has a steward, the children no claimer; neomjs/neo#6's "zero references" premise is stale and its September correction rejected a lintable `Serves:` line because a reference can exist and still be false, moving the check into lane selection — so some learning *did* land and its force is contradicted by pickup §1; neomjs/neo#8 required a retrospective before neomjs/neo#17018's closeout, the closeout listed neomjs/neo#8 as "tracked debt, untouched", and the pre-close AC is now impossible as written. Filing, merging and changed behavior were treated as one state.
 
 ## The Architectural Reality
-`create-skill`'s "The Lesson Promotion Path" is the existing home for turning a lesson into substrate; its smallest-surface and decision-atom rules stay. #61 (skill triggers measurably not firing) is adjacent evidence. The consumer boundary matters: the Engine loads `neo-agent-skills@0.1.19` via a symlink — a merge here changes nothing until ticket 5 bumps and verifies.
+`create-skill`'s "The Lesson Promotion Path" is the existing home for turning a lesson into substrate; its smallest-surface and decision-atom rules stay. neomjs/neo#61 (skill triggers measurably not firing) is adjacent evidence. The consumer boundary matters: the Engine loads `neo-agent-skills@0.1.19` via a symlink — a merge here changes nothing until ticket 5 bumps and verifies.
 
 ## The Fix
-Replace the Lesson Promotion Path's concluding rationale with **Emmy's accepted R10 block, verbatim from [18733675](https://github.com/neomjs/neo/discussions/19384#discussioncomment-18733675)** — the ticket links it rather than quoting it, so ticket and shipped substrate cannot drift (Ada, #143 review). Shorten the section's introductory prose to pay for it. Dispose #6 (what survives: lane-selection authority, delivered by ticket 1; withdrawn: the `Serves:` slot — not re-imported) and repair #8's impossible pre-close AC with a dated post-closeout receipt, never backdated.
+Replace the Lesson Promotion Path's concluding rationale with **Emmy's accepted R10 block, verbatim from [18733675](https://github.com/neomjs/neo/discussions/19384#discussioncomment-18733675)** — the ticket links it rather than quoting it, so ticket and shipped substrate cannot drift (Ada, neomjs/neo#143 review). Shorten the section's introductory prose to pay for it. Dispose neomjs/neo#6 (what survives: lane-selection authority, delivered by ticket 1; withdrawn: the `Serves:` slot — not re-imported) and repair neomjs/neo#8's impossible pre-close AC with a dated post-closeout receipt, never backdated.
 
 ## Decision Record impact
 `aligned-with ADR 0007`. Decision Record: Not needed.
@@ -51,26 +52,26 @@ R10 `[RESOLVED_TO_AC]`; STEP_BACK partial 4 (a deferred learning item can be orp
 
 ## Acceptance Criteria
 - [ ] The Lesson Promotion Path carries the text; net bytes ≤ current (865 ≤ 1,002 measured).
-- [ ] #6 carries a dated disposition comment: surviving half → ticket 1 (#137), withdrawn half named with the September correction cited; closed or re-scoped accordingly.
-- [ ] #8's pre-closeout AC replaced by a dated post-closeout receipt; the old miss stays visible; no backdating.
+- [ ] neomjs/neo#6 carries a dated disposition comment: surviving half → ticket 1 (#137), withdrawn half named with the September correction cited; closed or re-scoped accordingly.
+- [ ] neomjs/neo#8's pre-closeout AC replaced by a dated post-closeout receipt; the old miss stays visible; no backdating.
 - [ ] A **Substrate** outcome exists on the Institution FM v1 board with an owner and an activation condition (one `Row state:` line — coordinated with ticket 4), so substrate obligations survive parent closure.
-- [ ] Placement (Ada, #143 review): `epic-resolution`'s deferred states (`EXPLICITLY DEFERRED` / `CONVERTED TO FOLLOW-UP`, lines 72–82) load no closure rule at parent close. Disposition (Emmy, ticket owner): **validated first, written only if it fails** — #140's replay gains a parent-closure case (c); a failure there writes the one-clause rewrite as a sibling leaf. This ticket closes with #143.
+- [ ] Placement (Ada, neomjs/neo#143 review): `epic-resolution`'s deferred states (`EXPLICITLY DEFERRED` / `CONVERTED TO FOLLOW-UP`, lines 72–82) load no closure rule at parent close. Disposition (Emmy, ticket owner): **validated first, written only if it fails** — neomjs/neo#140's replay gains a parent-closure case (c); a failure there writes the one-clause rewrite as a sibling leaf. This ticket closes with neomjs/neo#143.
 - [ ] The validation case for this reset is named in the text's own terms: after ticket 5's load receipt, a fresh session from the consuming skill version replays (a) an adjacent scrap beside unfinished goal acceptance, (b) the second-PAT chain; expected: advance the named goal, challenge the new burden before optimizing it.
 
 ## Out of Scope
 A learning tracker, daemon or dashboard; a universal "first next lane" preference for retrospectives (the active goal sets priority); FM features.
 
 ## Avoided Traps
-Prescribing #6 verbatim (stale premise, rejected slot); declaring "gold delivered" at merge rather than at the validated case.
+Prescribing neomjs/neo#6 verbatim (stale premise, rejected slot); declaring "gold delivered" at merge rather than at the validated case.
 
 ## Related
-D#19384 · #5 (ticket 2) · #6, #8, #52, #61 · ticket 5.
+D#19384 · neomjs/neo#5 (ticket 2) · neomjs/neo#6, neomjs/neo#8, neomjs/neo#52, neomjs/neo#61 · ticket 5.
 
 ## Signal Ledger / Unresolved Dissent / Unresolved Liveness
 Ledger: D#19384 body v9. Dissent: none. Liveness: Gemini benched, Kimi dark — archived.
 
 Origin Session ID: c4ba9786-2c49-403c-b4bc-4258cefce10b
-Retrieval Hint: "lesson promotion path recorded lesson is not an adopted change activation condition D#19384 R10 Skills#6 #8"
+Retrieval Hint: "lesson promotion path recorded lesson is not an adopted change activation condition D#19384 R10 Skills#6 neomjs/neo#8"
 
 ## Timeline
 
@@ -100,8 +101,8 @@ Valid as written against D#19384 v9 and the current §3 source, with the already
 |---|---|---|---|---|---|
 | Lesson Promotion Path §3 | D#19384 III; R10 18733675 | Owner/disposition, deferred activation, consuming-version load receipt and later behavior validation | Evidence-backed rejection and explicit unknown remain valid | Existing payload | Exact before/after read and byte/corpus checks |
 | Existing atom and placement rules | ADR 0007/0008; current §3 | Preserve Bias/Rule/Rationale/Trigger, provenance separation, smallest existing surface | New skill only for a new operational domain | Same section | Semantic comparison |
-| Historical #6/#8 | September correction and #17018 closeout | Dated disposition/repair preserves author authority and the missed receipt | Unverified release/stabilization gates remain unverified | Existing issue records | Public permalinks; no backdating |
-| Consuming sessions | Shared integration #140 | Source completion is distinct from published, loaded and behavior-validated | #140 remains open through consumer receipts/replay | PR residual declaration | No installed-effect claim from Markdown lint |
+| Historical neomjs/neo#6/#8 | September correction and neomjs/neo#17018 closeout | Dated disposition/repair preserves author authority and the missed receipt | Unverified release/stabilization gates remain unverified | Existing issue records | Public permalinks; no backdating |
+| Consuming sessions | Shared integration neomjs/neo#140 | Source completion is distinct from published, loaded and behavior-validated | neomjs/neo#140 remains open through consumer receipts/replay | PR residual declaration | No installed-effect claim from Markdown lint |
 
 Existing enforcement was audited in D#19384: the placement rule exists, but the historical ownership/activation/validation chain failed. This replacement reduces the section and preserves its existing decision atom. The file is a conditional payload; its router is unchanged. The assigned source change is not blocked by the separate package/load integration.
 
@@ -120,4 +121,5 @@ I will use the canonical GitHub branch/content APIs for this single-file Skills 
 
 feat(skills): close the lesson adoption loop (#139)"
 - 2026-10-03T19:01:17Z @tobiu closed this issue
+- 2026-11-06T20:09:21Z @github-actions added the `needs-design-authority` label
 

@@ -13,7 +13,7 @@ updatedAt: '2026-09-15T15:58:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/7'
 author: neo-opus-vega
 commentsCount: 0
-parentIssue: 16212
+parentIssue: 302
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -29,7 +29,7 @@ closedAt: '2026-09-15T15:58:01Z'
 
 ## Context
 
-Sub of neomjs/neo#16212 (execution-fidelity epic, operator-commissioned 2026-07-31). Empirical anchor: PR `#16188` — nominally a config-default PR, its 28-file surface amended ADR 0014 to elect "No host-edge Orchestrator runs after the cut," reversing the same-day-merged two-role authority (D#15595 ratified; PR `#16173` merged 13:08Z). It was approved 21:15Z and merged 21:16Z; the approving review (mine) validated diff internals and CI and never ran the premise against the graduated authority the diff was reversing.
+Sub of neomjs/neo-agent-skills#302 (execution-fidelity epic, operator-commissioned 2026-07-31). Empirical anchor: PR `#16188` — nominally a config-default PR, its 28-file surface amended ADR 0014 to elect "No host-edge Orchestrator runs after the cut," reversing the same-day-merged two-role authority (D#15595 ratified; PR `#16173` merged 13:08Z). It was approved 21:15Z and merged 21:16Z; the approving review (mine) validated diff internals and CI and never ran the premise against the graduated authority the diff was reversing.
 
 ## The Problem
 
@@ -54,7 +54,7 @@ Record `#16188` as the empirical anchor alongside the audit's existing `#11083` 
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `cycle-1-premise-preflight.md` table | neomjs/neo#16212 + AGENTS.md consensus-mandate | one added row with signals + verdict class + `#16188` anchor | ADR edits WITH reopened authority pass the row explicitly | the audit file | row text + anchor paragraph |
+| `cycle-1-premise-preflight.md` table | neomjs/neo-agent-skills#302 + AGENTS.md consensus-mandate | one added row with signals + verdict class + `#16188` anchor | ADR edits WITH reopened authority pass the row explicitly | the audit file | row text + anchor paragraph |
 
 ## Decision Record impact
 
@@ -80,10 +80,10 @@ Record `#16188` as the empirical anchor alongside the audit's existing `#11083` 
 
 ## Related
 
-- Parent: neomjs/neo#16212. Sequencing: execution gated behind neomjs/neo-agent-brain#84 stabilization (see parent).
+- Parent: neomjs/neo-agent-skills#302. Sequencing: execution gated behind neomjs/neo-agent-brain#84 stabilization (see parent).
 - PR `#16188` / D#15595 / PR `#16173` — the anchor chain. `#11083` — the audit's original anchor.
 
-Live latest-open sweep + A2A claim sweep recorded on parent neomjs/neo#16212 at filing time (04:14Z, none competing).
+Live latest-open sweep + A2A claim sweep recorded on parent neomjs/neo-agent-skills#302 at filing time (04:14Z, none competing).
 
 Origin Session ID: dd39c5c1-8773-4c9d-a3d4-664f9fb0f952
 
@@ -94,9 +94,7 @@ Retrieval Hint: `cycle-1 premise row graduated decision reversal ADR election in
 - 2026-07-31T04:20:29Z @neo-opus-vega added the `enhancement` label
 - 2026-07-31T04:20:29Z @neo-opus-vega added the `ai` label
 - 2026-07-31T04:20:29Z @neo-opus-vega added the `model-experience` label
-- 2026-07-31T04:20:42Z @neo-opus-vega added parent issue #16212
-- 2026-07-31T04:29:00Z @neo-gpt-emmy cross-referenced by #16212
-- 2026-08-27T11:33:46Z @neo-gpt-emmy added parent issue #16212
+- 2026-07-31T04:29:00Z @neo-opus-vega cross-referenced by #302
 - 2026-08-27T11:34:49Z @neo-gpt-emmy cross-referenced by #17784
 - 2026-08-28T22:06:20Z @neo-gpt-euclid cross-referenced by #13
 - 2026-09-15T15:22:07Z @neo-opus-vega assigned to @neo-opus-vega
@@ -190,4 +188,6 @@ failure that test exists to catch, and it caught mine."
 
 The premise pre-flight asks the inverse question, so a diff cannot quietly reverse what was ratified (#7)"
 - 2026-09-15T15:58:01Z @tobiu closed this issue
+- 2026-10-28T02:07:03Z @neo-opus-vega cross-referenced by PR #227
+- 2026-11-06T20:09:17Z @neo-opus-grace added parent issue #302
 

@@ -1,7 +1,7 @@
 ---
 id: 878
 title: The Observatory names its nodes and draws them as marks up close
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-05T12:45:20Z'
-updatedAt: '2026-11-06T13:33:39Z'
+updatedAt: '2026-11-06T17:55:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/878'
 author: neo-opus-vega
 commentsCount: 2
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T17:55:25Z'
 ---
 # The Observatory names its nodes and draws them as marks up close
 
@@ -53,6 +54,16 @@ This leaf is the Observatory's half, and it carries neomjs/neo#20312's AC-5.
 2. `ink()` hands them on as `names`, in the wells' label colours for the skin.
 3. The Observatory's `nearStyle` sets Clio's floor (6 to 8 CSS px) and a name width that fits the panel's typography.
 4. The lock resolves a `neo.mjs` `dev` that carries neomjs/neo#20312.
+
+## Contract Ledger
+
+*Added 2026-11-06 for review 5803666715 on #883. Rows are anchored at PR head `df27ee549d`.*
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+|---|---|---|---|---|---|
+| `ObservatorySceneLayout#wire(scene).names`, App Worker → Canvas Worker (`ObservatorySceneLayout.mjs:944`, `:963`) | This ticket's design read (6686051920). Engine `GraphScene` scene `names` (neomjs/neo#20312) | `String[]` of length `count`. It is built from the same retained node order as `positions` and `clusters`, so index `i` names node `i`. Each entry is the node's `label`. | `''` for a node whose label is missing, or equals its id after `origin#` (a tag concept's id-only label). `null` when no node has a name, so an all-unnamed scene sends nothing extra. `wire(null)` stays `null`. | JSDoc on `wire` (`names` in `@returns`) | Unit: "the wire names each node from its label, none where the label is missing or only the id, and ink hands the names on in the wells' ink" |
+| `Observatory#ink(…).names`, Canvas Worker → Engine (`Observatory.mjs:325`) | As above, plus the skin palettes (`fmPalette.mjs`) | `{color: palette.ink, outline: palette.ground, texts: scene.names}`: the wells' ink over the skin's ground. A theme change re-inks the names with the scene. | `null` when `scene.names` is `null`. An empty or missing scene keeps `ink()` returning `null`. | JSDoc on `ink` (`names` in `@returns`) | The same unit test, on both skins |
+| `Observatory#nearStyle` config | This ticket's design read (floor 6 to 8 CSS px, a name width that fits the panel). The mechanics are `GraphScene#nearStyle`'s. | `{candidates: 120, fade: 1.25, floor: 7, width: 200}`. Closer than `lod.near`, every node draws at least 7 CSS px wide at the target. The nodes nearest it are named from the 120 nearest, each name at most 200 CSS px wide. Both fade in from 1.25 × `lod.near`. | It is a plain-object config, so it replaces the Engine default (`floor: 0, width: 240`) whole, and all four keys are given. Beyond the near band, nodes draw as inked. Camera, nearest-node selection, placement, the name atlas and the frame budget stay in `GraphScene`. | JSDoc on `nearStyle`, `zoom` and the class summary | Unit: "at the deepest zoom the floor lifts a dense read's smallest node to a mark; beyond the near band it draws as inked". NL (`FleetObservatoryNL`): "at the deepest zoom on a well, the nodes nearest the target are named where they lie, each once, beside the wells' labels and over the floor". Plus the Engine's nearest/clearance tests |
 
 ## Acceptance Criteria
 
@@ -94,6 +105,7 @@ Origin Session ID: 57180f73-f0b4-4ae5-bac8-095fd4813333
 Retrieval Hint: "Observatory near look node names mark floor street level zoom ladder"
 
 Authored by Vega (Opus 5.5, Claude Code)
+
 
 
 ## Timeline
@@ -168,4 +180,11 @@ The wire carries one name per node from its label, none where the label is only
 its id; ink() hands the names to the engine in the wells' ink, and nearStyle sets
 a 7 px floor and a 200 px name width for the street level. The engine half
 (neomjs/neo#20312) is in the Engine dev the lock already resolves."
+- 2026-11-06T17:55:25Z @tobiu referenced in commit `4ed7bd0` - "feat(agentos): the Observatory names its nodes and draws them as marks up close (#878) (#883)
+
+The wire carries one name per node from its label, none where the label is only
+its id; ink() hands the names to the engine in the wells' ink, and nearStyle sets
+a 7 px floor and a 200 px name width for the street level. The engine half
+(neomjs/neo#20312) is in the Engine dev the lock already resolves."
+- 2026-11-06T17:55:26Z @tobiu closed this issue
 

@@ -17,7 +17,7 @@ commentsCount: 8
 parentIssue: 144
 subIssues:
   - '[x] 13491 Accounts keeper-view: fleet agent-identity setup (provider + GitHub)'
-  - '[ ] 13521 Accounts keeper-view enhancements: AiConfig provider-login + basic NL-MCP entry + v14 slot'
+  - '[ ] 885 Accounts keeper-view enhancements: AiConfig provider-login + basic NL-MCP entry + v14 slot'
   - '[x] 13445 Relocate first-widget EvidencePane into a dashboard.Container host'
   - '[x] 210 A Golden Path pane renders the computed route as text with its currency'
   - '[x] 213 The Golden Path as a graph: a canvas-worker pane draws the computed route''s spine and its citations'
@@ -141,8 +141,7 @@ Following the neomjs/neo#13491 pre-build finding (the existing `apps/agentos/vie
 
 - 2026-06-19T04:56:57Z @neo-opus-vega cross-referenced by PR #13516
 - 2026-06-19T05:03:04Z @neo-opus-grace cross-referenced by PR #13518
-- 2026-06-19T05:30:15Z @neo-opus-vega cross-referenced by #13521
-- 2026-06-19T05:31:33Z @neo-opus-vega added sub-issue #13521
+- 2026-06-19T05:30:15Z @neo-opus-vega cross-referenced by #885
 - 2026-06-19T05:56:46Z @neo-opus-vega cross-referenced by PR #13500
 - 2026-06-19T06:52:28Z @neo-opus-vega cross-referenced by #13525
 - 2026-06-19T08:11:17Z @tobiu referenced in commit `94fe89a` - "chore(roadmap): sync gating-callout + cockpit nodes to graduated Epic #13448 (#13452) (#13518)
@@ -320,7 +319,6 @@ Cross-links: neomjs/neo-agent-institution#10 (the forward home) · neomjs/neo-ag
 - 2026-08-22T16:35:01Z @neo-opus-vega cross-referenced by #17500
 - 2026-08-26T15:23:31Z @tobiu added parent issue #144
 - 2026-08-27T11:10:20Z @neo-opus-vega cross-referenced by #10
-- 2026-08-27T11:11:14Z @neo-gpt-emmy added sub-issue #13521
 - 2026-08-27T11:11:14Z @neo-gpt-emmy added sub-issue #13491
 - 2026-08-27T11:11:14Z @neo-opus-ada marked this issue as being blocked by #14535
 - 2026-08-27T11:11:15Z @neo-gpt-emmy added sub-issue #13445
@@ -363,7 +361,7 @@ Cross-links: neomjs/neo-agent-institution#10 (the forward home) · neomjs/neo-ag
 
 ### Stage 1 — Roadmap Fit
 
-✅ The Fleet keeper view this epic defines is the cockpit FM v1 ships, and the Fleet Manager is the operator's main focus today (2026-10-02). No sibling conflicts: #8 (the v14 cockpit) is downstream by this body's own Out of scope, and neomjs/neo#13015 hangs under the Fleet keeper view.
+✅ The Fleet keeper view this epic defines is the cockpit FM v1 ships, and the Fleet Manager is the operator's main focus today (2026-10-02). No sibling conflicts: neomjs/neo#8 (the v14 cockpit) is downstream by this body's own Out of scope, and neomjs/neo-agent-brain#1508 hangs under the Fleet keeper view.
 
 ### Stage 2 — Approach Elegance
 
@@ -394,9 +392,9 @@ Decision Record: D#13436 declares none (N/A).
 
 ---
 
-**Review verdict:** Revisions Requested — the paste above, no re-shape. The gate covers sub pickups under this epic until the paste lands; #391 is the open one.
+**Review verdict:** Revisions Requested — the paste above, no re-shape. The gate covers sub pickups under this epic until the paste lands; neomjs/neo#391 is the open one.
 
-*Corrected 08:25Z:* this verdict first said I would pick up #391. @neo-fable's lane-intent for it (08:08Z) came before my look, and she claimed it at 08:22Z.
+*Corrected 08:25Z:* this verdict first said I would pick up neomjs/neo#391. @neo-fable's lane-intent for it (08:08Z) came before my look, and she claimed it at 08:22Z.
 
 Origin Session ID: 6f7d14a3-e126-4b47-888f-fc28c748ae83
 
@@ -412,4 +410,6 @@ Origin Session ID: 6f7d14a3-e126-4b47-888f-fc28c748ae83
 - 2026-10-17T17:16:35Z @neo-fable-mnemosyne cross-referenced by #722
 - 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
 - 2026-10-26T14:36:56Z @neo-fable-mnemosyne cross-referenced by #823
+- 2026-11-02T02:20:37Z @neo-fable-mnemosyne cross-referenced by #857
+- 2026-11-06T20:08:34Z @neo-opus-grace added sub-issue #885
 

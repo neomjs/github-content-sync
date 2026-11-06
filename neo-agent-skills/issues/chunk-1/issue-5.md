@@ -13,7 +13,7 @@ updatedAt: '2026-10-04T10:04:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/5'
 author: neo-opus-vega
 commentsCount: 1
-parentIssue: 16212
+parentIssue: 302
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -28,7 +28,7 @@ blocking: []
 
 ## Context
 
-Sub of neomjs/neo#16212 (execution-fidelity epic, operator-commissioned 2026-07-31). The operator already pushes "refine graduation epics with ALL subs" manually on every graduation; this makes it a graduation AC instead of a per-case push.
+Sub of neomjs/neo-agent-skills#302 (execution-fidelity epic, operator-commissioned 2026-07-31). The operator already pushes "refine graduation epics with ALL subs" manually on every graduation; this makes it a graduation AC instead of a per-case push.
 
 ## The Problem
 
@@ -53,7 +53,7 @@ The stricter model already exists in-repo: `epic-create-workflow.md` Procedure 6
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `ideation-sandbox-workflow.md` §6 graduation AC | neomjs/neo#16212 (operator commission) | epic-shaped graduation requires complete v1 leaf set filed + natively linked; ledger records leaf count | non-epic graduations unchanged | the amended section is the doc | section text + one worked example in the section |
+| `ideation-sandbox-workflow.md` §6 graduation AC | neomjs/neo-agent-skills#302 (operator commission) | epic-shaped graduation requires complete v1 leaf set filed + natively linked; ledger records leaf count | non-epic graduations unchanged | the amended section is the doc | section text + one worked example in the section |
 | `epic-create-workflow.md` Procedure 6 | same | cites §6 as general rule; goal-scoping special-case line deduped | — | same file | net-byte delta of the file ≤ 0 for this hunk |
 | `epic-review` Stage 4 cross-ref | same | reviewer reconciles graduation ledger leaf count vs live sub graph | — | epic-review payload | one added checklist line |
 
@@ -83,10 +83,10 @@ The stricter model already exists in-repo: `epic-create-workflow.md` Procedure 6
 
 ## Related
 
-- Parent: neomjs/neo#16212. Sequencing: execution gated behind neomjs/neo-agent-brain#84 stabilization (see parent).
+- Parent: neomjs/neo-agent-skills#302. Sequencing: execution gated behind neomjs/neo-agent-brain#84 stabilization (see parent).
 - neomjs/neo-agent-brain#84 / D#15595 — the measured incident.
 
-Live latest-open sweep + A2A claim sweep recorded on parent neomjs/neo#16212 at filing time (04:14Z, none competing).
+Live latest-open sweep + A2A claim sweep recorded on parent neomjs/neo-agent-skills#302 at filing time (04:14Z, none competing).
 
 Origin Session ID: dd39c5c1-8773-4c9d-a3d4-664f9fb0f952
 
@@ -97,12 +97,10 @@ Retrieval Hint: `graduation completeness full v1 leaf set filed linked at gradua
 - 2026-07-31T04:19:34Z @neo-opus-vega added the `enhancement` label
 - 2026-07-31T04:19:34Z @neo-opus-vega added the `ai` label
 - 2026-07-31T04:19:34Z @neo-opus-vega added the `model-experience` label
-- 2026-07-31T04:20:37Z @neo-opus-vega added parent issue #16212
-- 2026-07-31T04:29:00Z @neo-gpt-emmy cross-referenced by #16212
+- 2026-07-31T04:29:00Z @neo-opus-vega cross-referenced by #302
 - 2026-08-27T11:33:02Z @neo-gpt-emmy added the `enhancement` label
 - 2026-08-27T11:33:02Z @neo-gpt-emmy added the `ai` label
 - 2026-08-27T11:33:03Z @neo-gpt-emmy added the `model-experience` label
-- 2026-08-27T11:33:05Z @neo-gpt-emmy added parent issue #16212
 - 2026-08-27T11:34:49Z @neo-gpt-emmy cross-referenced by #17784
 - 2026-08-28T22:06:20Z @neo-gpt-euclid cross-referenced by #13
 - 2026-10-03T18:00:00Z @neo-fable-clio cross-referenced by #138
@@ -110,9 +108,9 @@ Retrieval Hint: `graduation completeness full v1 leaf set filed linked at gradua
 - 2026-10-03T18:11:42Z @neo-opus-vega cross-referenced by PR #142
 ### @neo-opus-vega - 2026-10-03T19:17:54Z
 
-## Disposition after #142 (2026-10-03): partly delivered, stays open
+## Disposition after neomjs/neo#142 (2026-10-03): partly delivered, stays open
 
-#138 listed this ticket as absorbed by #142. The merged diff (`b774f9a`) covers only the execution-entry half: `goal-scoping` now says "An epic enters execution only with its planned set complete in native links", beside its existing §3 graduation bar.
+neomjs/neo#138 listed this ticket as absorbed by neomjs/neo#142. The merged diff (`b774f9a`) covers only the execution-entry half: `goal-scoping` now says "An epic enters execution only with its planned set complete in native links", beside its existing §3 graduation bar.
 
 The ACs here are not met, so this stays open:
 - the general rule in `ideation-sandbox-workflow.md` §6 (dev has no leaf-set clause there);
@@ -124,4 +122,11 @@ Author: Vega.
 
 
 - 2026-10-04T10:04:50Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-10-28T02:07:03Z @neo-opus-vega cross-referenced by PR #227
+- 2026-10-29T02:30:18Z @neo-opus-vega cross-referenced by #235
+- 2026-10-30T18:51:55Z @neo-opus-vega cross-referenced by #247
+- 2026-11-02T06:01:52Z @neo-opus-grace cross-referenced by #258
+- 2026-11-05T21:49:46Z @neo-opus-vega cross-referenced by #284
+- 2026-11-06T18:01:51Z @neo-opus-vega cross-referenced by #300
+- 2026-11-06T20:09:17Z @neo-opus-grace added parent issue #302
 
