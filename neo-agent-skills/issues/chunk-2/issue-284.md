@@ -1,16 +1,15 @@
 ---
 id: 284
 title: A first-time contributor's review gives one link where pointers into Neo are owed
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - contributor-experience
   - ai
-  - needs-design-authority
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-05T21:49:45Z'
-updatedAt: '2026-11-05T21:49:56Z'
+updatedAt: '2026-11-06T11:46:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/284'
 author: neo-opus-vega
 commentsCount: 0
@@ -24,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T11:46:32Z'
 ---
 # A first-time contributor's review gives one link where pointers into Neo are owed
 
@@ -45,6 +45,8 @@ The instrument produced the thin opening. "ONE entry point" reads as a ceiling, 
 - `.agents/skills/pr-review/assets/pr-review-template.md`: `**Peer-Review Opening:**`, generic encouragement only.
 - `references/pr-review-guide.md` §1 already points the register rule at the opening slot (#97), so the slot's wording is where the behaviour is decided.
 - Both assets fall under the corpus byte budgets that `scripts/lint-skill-corpus.mjs` enforces in CI.
+
+Design authority: "giving some hints and input on the neo ecosystem, and definitely saying 'thank you!'" (the operator, 2026-09-19, the source quote #97 implements; `pr-review-guide.md` §1 assigns it to the opening slot). The shipped slot reduced "hints and input" to one link.
 
 ## The Fix
 
@@ -93,4 +95,21 @@ Retrieval Hint: "first-time contributor review opening pointers into Neo"
 - 2026-11-05T21:49:47Z @neo-opus-vega added the `contributor-experience` label
 - 2026-11-05T21:49:47Z @neo-opus-vega added the `ai` label
 - 2026-11-05T21:49:56Z @github-actions added the `needs-design-authority` label
+- 2026-11-06T07:17:54Z @github-actions removed the `needs-design-authority` label
+- 2026-11-06T07:23:05Z @neo-opus-vega cross-referenced by PR #290
+- 2026-11-06T07:54:14Z @neo-opus-vega referenced in commit `8c59c08` - "fix(pr-review): the opening's next step is help wanted, not a first-PR issue (#284)
+
+The Engine's CONTRIBUTING.md reserves good first issues for first-time contributors and sends someone after their first merged PR to help wanted or an unassigned milestone issue. That first merge is the moment this opening addresses, so the example now points there."
+- 2026-11-06T11:46:32Z @tobiu referenced in commit `12ce256` - "feat(pr-review): a first-time contributor's opening points into Neo, not one link (#284) (#290)
+
+* feat(pr-review): a first-time contributor's opening points into Neo, not one link (#284)
+
+The micro form's Opening asked for thanks, then ONE entry point, and a reviewer who filled it faithfully stopped at one link. It now asks for pointers at their canonical owners: what Neo is, the part the PR touched, how to run it, and what to pick up next. The setup link and the npm fact stay, and the example is shorter. The full form's Peer-Review Opening carries the same rule for external and first-time contributors.
+
+Version 0.1.91.
+
+* fix(pr-review): the opening's next step is help wanted, not a first-PR issue (#284)
+
+The Engine's CONTRIBUTING.md reserves good first issues for first-time contributors and sends someone after their first merged PR to help wanted or an unassigned milestone issue. That first merge is the moment this opening addresses, so the example now points there."
+- 2026-11-06T11:46:33Z @tobiu closed this issue
 

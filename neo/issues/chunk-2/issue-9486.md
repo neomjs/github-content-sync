@@ -97,12 +97,22 @@ This architecture changes the core assumption that "one record = one DOM node in
 
 ## Timeline
 
+- 2026-03-16T17:41:40Z @tobiu added the `epic` label
+- 2026-03-16T17:41:40Z @tobiu added the `ai` label
+- 2026-03-16T17:41:40Z @tobiu added the `grid` label
+- 2026-03-16T17:43:12Z @tobiu assigned to @tobiu
 - 2026-03-16T18:15:12Z @tobiu cross-referenced by #9487
+- 2026-03-16T18:15:26Z @tobiu added sub-issue #9487
 - 2026-03-16T18:15:39Z @tobiu cross-referenced by #9488
+- 2026-03-16T18:15:58Z @tobiu added sub-issue #9488
 - 2026-03-16T18:16:29Z @tobiu cross-referenced by #9489
+- 2026-03-16T18:16:41Z @tobiu added sub-issue #9489
 - 2026-03-16T18:18:09Z @tobiu cross-referenced by #9490
+- 2026-03-16T18:18:42Z @tobiu added sub-issue #9490
 - 2026-03-16T18:21:29Z @tobiu cross-referenced by #9491
+- 2026-03-16T18:21:43Z @tobiu added sub-issue #9491
 - 2026-03-16T18:21:55Z @tobiu cross-referenced by #9492
+- 2026-03-16T18:22:10Z @tobiu added sub-issue #9492
 ### @tobiu - 2026-03-16T21:41:22Z
 
 **Input from Gemini 3.1 Pro:**
@@ -116,10 +126,17 @@ This architecture changes the core assumption that "one record = one DOM node in
 > *   #9494 Grid Multi-Body: Implement Direct Main-Thread Scroll Sync via MessageChannel
 > *   #9495 Grid Multi-Body: Implement Data-Driven Variable Row Height Architecture
 
+- 2026-03-16T21:41:26Z @tobiu added sub-issue #9493
+- 2026-03-16T21:41:29Z @tobiu added sub-issue #9494
+- 2026-03-16T21:41:30Z @tobiu added sub-issue #9495
 - 2026-03-16T21:51:31Z @tobiu cross-referenced by #9496
+- 2026-03-16T21:51:56Z @tobiu added sub-issue #9496
 - 2026-03-16T22:13:45Z @tobiu cross-referenced by #9497
+- 2026-03-16T22:13:58Z @tobiu added sub-issue #9497
 - 2026-03-16T22:23:09Z @tobiu cross-referenced by #9498
+- 2026-03-16T22:23:19Z @tobiu added sub-issue #9498
 - 2026-03-16T22:29:03Z @tobiu cross-referenced by #9499
+- 2026-03-16T22:29:29Z @tobiu added sub-issue #9499
 ### @tobiu - 2026-03-17T19:00:57Z
 
 quick info: this epic is currently planned **after** the release of neo v12.1, since the scope is massive.
@@ -145,20 +162,111 @@ quick info: this epic is currently planned **after** the release of neo v12.1, s
 > 
 > We are now commencing Phase 1 (#9497: Split Column Collections and Orchestration) implementation based on this refined blueprint.
 
+- 2026-03-31T12:09:34Z @tobiu referenced in commit `098490d` - "fix: Grid Multi-Body Architecture Type Desynchronization (#9486)"
 ### @tobiu - 2026-03-31T12:10:42Z
 
 Resolved: Stabilized Grid Multi-Body Architecture by decoupling column instantiation from toolbar items creation. Passed tests.
 
+- 2026-03-31T12:10:43Z @tobiu closed this issue
+- 2026-03-31T12:12:40Z @tobiu reopened this issue
+- 2026-03-31T12:12:48Z @github-actions closed this issue
 ### @github-actions - 2026-03-31T12:12:50Z
 
 ❌ Tickets cannot be reopened. Created new ticket: #9609
 
 - 2026-03-31T12:12:50Z @github-actions cross-referenced by #9609
+- 2026-03-31T12:14:10Z @tobiu reopened this issue
+- 2026-03-31T14:07:03Z @tobiu added sub-issue #9611
 - 2026-03-31T14:25:27Z @tobiu cross-referenced by #9612
+- 2026-03-31T15:14:03Z @tobiu added sub-issue #9612
+- 2026-03-31T15:14:16Z @tobiu added sub-issue #9613
+- 2026-03-31T15:14:35Z @tobiu added sub-issue #9608
+- 2026-03-31T15:14:49Z @tobiu added sub-issue #9607
+- 2026-03-31T20:21:54Z @tobiu added sub-issue #9615
 - 2026-03-31T20:22:29Z @tobiu cross-referenced by #9616
+- 2026-03-31T20:22:36Z @tobiu added sub-issue #9616
 - 2026-03-31T20:45:04Z @tobiu cross-referenced by #9617
+- 2026-03-31T20:45:12Z @tobiu added sub-issue #9617
+- 2026-04-01T10:22:33Z @tobiu added sub-issue #9618
+- 2026-04-01T17:27:58Z @tobiu added sub-issue #9619
+- 2026-04-01T17:36:58Z @tobiu added sub-issue #9620
+- 2026-04-01T19:56:36Z @tobiu added sub-issue #9622
+- 2026-04-01T20:03:31Z @tobiu added sub-issue #9623
+- 2026-04-01T20:25:38Z @tobiu added sub-issue #9624
+- 2026-04-01T21:01:59Z @tobiu added sub-issue #9625
+- 2026-04-01T21:42:18Z @tobiu added sub-issue #9614
+- 2026-04-02T08:17:16Z @tobiu added sub-issue #9626
+- 2026-04-02T22:54:09Z @tobiu added sub-issue #9635
+- 2026-04-02T23:02:31Z @tobiu added sub-issue #9636
+- 2026-04-02T23:02:43Z @tobiu added sub-issue #9637
 - 2026-04-09T21:18:42Z @tobiu cross-referenced by #9839
+- 2026-04-10T16:35:19Z @tobiu added sub-issue #9868
+- 2026-04-10T18:19:43Z @tobiu added sub-issue #9872
+- 2026-04-19T11:34:22Z @tobiu referenced in commit `a32c0af` - "fix(github-workflow): paginate timelineItems to prevent silent content drop (#10090)
+
+The IssueSyncer rendered comment bodies through the unified timelineItems
+GraphQL channel, which was page-capped at maxTimelineItemsPerIssue (50) with
+no continuation logic. Once an issue's timeline grew past the cap, tail
+events including newly-authored comments were silently dropped from the
+local markdown while scalar frontmatter metadata (commentsCount, updatedAt)
+stayed correct — a divergence between metadata tracking and content
+rendering that gave a false appearance of successful sync.
+
+Changes:
+- issueQueries: add pageInfo on timelineItems in both FETCH queries and
+  introduce FETCH_ISSUE_TIMELINE_PAGE for continuation fetches.
+- IssueSyncer: add #exhaustTimelineItems pagination primitive with a warn
+  log on continuation; extract the related-issues force-update loop into
+  a reusable refetchIssuesByNumber(numbers, metadata) method that both
+  pullFromGitHub and external tooling share.
+- SyncService: expose refetchIssuesByNumber({numbers}) as the SDK entry
+  for surgical recovery bypassing delta-sync updatedAt gating.
+- ai/scripts/detectTruncatedTimelines.mjs: diagnostic that flags files
+  whose rendered comment blocks fall short of frontmatter commentsCount
+  or whose timeline sits exactly at the cap.
+- ai/scripts/refetchTruncatedIssues.mjs: thin recovery wrapper that
+  consumes the detector output (list or --stdin JSON) and delegates to
+  the SyncService endpoint.
+- IssueSyncer.spec: Playwright regression covering a 75-event mocked
+  issue that forces one continuation page and asserts every comment and
+  structural event lands in the rendered markdown.
+
+Recovery artifacts in this commit: issues #10030, #9486, #9999, #9535 —
+the four issues flagged as drifted by the detector baseline run — were
+healed via the new refetch endpoint and now reflect live GitHub state."
 - 2026-04-19T11:35:15Z @tobiu cross-referenced by PR #10091
+- 2026-04-19T11:41:29Z @tobiu referenced in commit `3ec8167` - "fix(github-workflow): paginate timelineItems to prevent silent content drop (#10090) (#10091)
+
+The IssueSyncer rendered comment bodies through the unified timelineItems
+GraphQL channel, which was page-capped at maxTimelineItemsPerIssue (50) with
+no continuation logic. Once an issue's timeline grew past the cap, tail
+events including newly-authored comments were silently dropped from the
+local markdown while scalar frontmatter metadata (commentsCount, updatedAt)
+stayed correct — a divergence between metadata tracking and content
+rendering that gave a false appearance of successful sync.
+
+Changes:
+- issueQueries: add pageInfo on timelineItems in both FETCH queries and
+  introduce FETCH_ISSUE_TIMELINE_PAGE for continuation fetches.
+- IssueSyncer: add #exhaustTimelineItems pagination primitive with a warn
+  log on continuation; extract the related-issues force-update loop into
+  a reusable refetchIssuesByNumber(numbers, metadata) method that both
+  pullFromGitHub and external tooling share.
+- SyncService: expose refetchIssuesByNumber({numbers}) as the SDK entry
+  for surgical recovery bypassing delta-sync updatedAt gating.
+- ai/scripts/detectTruncatedTimelines.mjs: diagnostic that flags files
+  whose rendered comment blocks fall short of frontmatter commentsCount
+  or whose timeline sits exactly at the cap.
+- ai/scripts/refetchTruncatedIssues.mjs: thin recovery wrapper that
+  consumes the detector output (list or --stdin JSON) and delegates to
+  the SyncService endpoint.
+- IssueSyncer.spec: Playwright regression covering a 75-event mocked
+  issue that forces one continuation page and asserts every comment and
+  structural event lands in the rendered markdown.
+
+Recovery artifacts in this commit: issues #10030, #9486, #9999, #9535 —
+the four issues flagged as drifted by the detector baseline run — were
+healed via the new refetch endpoint and now reflect live GitHub state."
 - 2026-04-20T11:19:03Z @tobiu cross-referenced by PR #10122
 - 2026-06-07T21:33:35Z @neo-opus-ada cross-referenced by PR #12701
 - 2026-06-07T21:42:16Z @neo-gpt-euclid cross-referenced by PR #12697
@@ -173,6 +281,7 @@ Resolved: Stabilized Grid Multi-Body Architecture by decoupling column instantia
 - 2026-06-09T00:11:22Z @neo-opus-grace cross-referenced by #12800
 - 2026-06-09T00:14:03Z @neo-opus-grace cross-referenced by PR #12801
 - 2026-06-10T23:25:54Z @neo-fable-mnemosyne cross-referenced by #12878
+- 2026-06-10T23:26:09Z @neo-fable-mnemosyne added sub-issue #12878
 - 2026-06-10T23:30:11Z @neo-fable-mnemosyne cross-referenced by #12807
 - 2026-06-11T00:17:03Z @neo-fable-mnemosyne cross-referenced by #12880
 - 2026-06-11T00:19:03Z @neo-fable-mnemosyne cross-referenced by PR #12881
@@ -196,6 +305,7 @@ Resolved: Stabilized Grid Multi-Body Architecture by decoupling column instantia
 
 - 2026-06-11T01:37:24Z @neo-fable-mnemosyne cross-referenced by PR #12882
 - 2026-06-11T01:46:25Z @neo-fable-mnemosyne cross-referenced by #12883
+- 2026-06-11T01:47:03Z @neo-fable-mnemosyne added sub-issue #12883
 - 2026-06-11T08:54:14Z @neo-gpt-euclid cross-referenced by PR #12892
 - 2026-06-11T09:35:58Z @neo-gpt-euclid cross-referenced by PR #12893
 - 2026-06-12T01:40:22Z @neo-fable-mnemosyne cross-referenced by #12941
@@ -206,6 +316,7 @@ Resolved: Stabilized Grid Multi-Body Architecture by decoupling column instantia
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-09-09T06:10:59Z @github-actions added the `stale` label
 - 2026-09-13T11:36:35Z @neo-fable-clio cross-referenced by #18626
 - 2026-09-13T11:50:29Z @neo-fable-clio cross-referenced by PR #18661
 - 2026-09-15T08:38:12Z @neo-opus-grace cross-referenced by #15000
@@ -252,4 +363,5 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 — Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
 
+- 2026-11-05T23:35:43Z @neo-opus-ada cross-referenced by #20401
 

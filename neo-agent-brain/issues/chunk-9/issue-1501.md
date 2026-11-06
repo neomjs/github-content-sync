@@ -1,7 +1,7 @@
 ---
 id: 1501
 title: Implement replacement-proven legacy core-row retirement
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-11-06T03:36:41Z'
-updatedAt: '2026-11-06T03:36:41Z'
+updatedAt: '2026-11-06T14:03:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1501'
 author: neo-gpt-euclid
 commentsCount: 0
@@ -24,7 +24,9 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
+  - '[ ] 1507 Use the core-row retirement operation, then remove its one-shot code'
   - '[ ] 419 Retire replaced legacy core rows by profile receipt'
+closedAt: '2026-11-06T14:03:19Z'
 ---
 # Implement replacement-proven legacy core-row retirement
 
@@ -103,4 +105,14 @@ Live latest-open + closed sweep: latest20 open Brain issues (created-descending)
 - 2026-11-06T03:56:53Z @neo-opus-vega cross-referenced by #1435
 - 2026-11-06T04:00:22Z @neo-gpt-euclid referenced in commit `57a0ec1` - "fix(kb): recheck replacement proof at completion (#1501)"
 - 2026-11-06T04:34:18Z @neo-gpt-euclid referenced in commit `ee775ff` - "fix(kb): honor the selected core corpus root (#1501)"
+- 2026-11-06T12:57:41Z @neo-gpt-euclid cross-referenced by #1507
+- 2026-11-06T12:58:18Z @neo-gpt-euclid marked this issue as blocking #1507
+- 2026-11-06T14:03:18Z @tobiu referenced in commit `281b8ee` - "feat(kb): retire exact replacement-proven legacy core rows (#1501) (#1502)
+
+* feat(kb): retire exact replacement-proven legacy core rows (#1501)
+
+* fix(kb): recheck replacement proof at completion (#1501)
+
+* fix(kb): honor the selected core corpus root (#1501)"
+- 2026-11-06T14:03:20Z @tobiu closed this issue
 

@@ -11,18 +11,19 @@ labels:
   - tech-debt
 assignees: []
 createdAt: '2026-08-27T15:01:35Z'
-updatedAt: '2026-11-02T23:32:08Z'
+updatedAt: '2026-11-06T10:39:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/191'
 author: neo-gpt-emmy
-commentsCount: 2
+commentsCount: 3
 parentIssue: 212
 subIssues:
   - '[x] 190 Retire the copied nightly E2E scheduler from Brain'
   - '[x] 196 Delete extraction-only machinery and its tests'
   - '[x] 229 Delete the orphaned review-cost meter'
   - '[x] 292 Retire the twelve Engine-owned src/ai unit specs the split left in Brain'
+  - '[ ] 1506 One-shot scripts leave the Brain once their run is done or impossible'
 subIssuesCompleted: 4
-subIssuesTotal: 4
+subIssuesTotal: 5
 contentTrust:
   projected: true
   quarantined: 0
@@ -89,7 +90,9 @@ The completed copied-scheduler retirement in #188 is a small precedent for delet
 - 2026-08-28T22:25:01Z @neo-opus-vega cross-referenced by #212
 - 2026-08-28T22:27:31Z @neo-gpt-emmy cross-referenced by #216
 - 2026-08-28T22:31:06Z @neo-gpt-emmy cross-referenced by #41
+- 2026-08-28T23:05:02Z @neo-gpt-emmy marked this issue as blocking #201
 - 2026-08-29T04:17:39Z @neo-gpt-emmy cross-referenced by #229
+- 2026-08-29T04:17:55Z @neo-gpt-emmy added sub-issue #229
 - 2026-08-29T04:21:07Z @neo-gpt-emmy cross-referenced by PR #230
 - 2026-08-30T23:54:44Z @neo-opus-ada cross-referenced by #89
 ### @neo-gpt-emmy - 2026-08-31T00:17:10Z
@@ -135,6 +138,7 @@ Origin Session ID: 4426fb43-4968-4084-832e-1830de2e8747
 
 - 2026-08-31T03:14:12Z @neo-opus-grace cross-referenced by #271
 - 2026-09-01T03:12:31Z @neo-opus-grace cross-referenced by #292
+- 2026-09-01T03:13:38Z @neo-opus-grace added sub-issue #292
 - 2026-09-06T12:05:39Z @neo-opus-grace cross-referenced by PR #338
 - 2026-09-06T12:06:09Z @neo-opus-grace cross-referenced by #335
 - 2026-09-06T12:06:11Z @neo-opus-grace cross-referenced by #336
@@ -157,4 +161,29 @@ Verified against `neomjs/neo-agent-brain` `origin/dev` (`613df5d7`):
 
 — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
 
+### @neo-opus-grace - 2026-11-06T10:39:35Z
+
+**Operator directive, 2026-11-06 (@tobiu, on #1502):** one-shot fix logic must come with a task that runs it and a task that deletes it. Whether a one-shot data fix belongs in the repository at all is open to challenge (history bloat).
+
+Measured on `origin/dev` today:
+- **`ai/scripts/migrations/`:** 17 of 18 modules (7,321 lines) have no production importer and no npm script. This comes from a static-import census with a positive control. The 18th, `bootstrapWorktree.mjs`, is product code imported by `prepareManagedAgentWorkspace.mjs`.
+- **New one-shots keep landing after this epic:**
+  - `retireLegacyConversationRows.mjs` (#417): run done, still on `dev`, and #1369 changed it again.
+  - `migrateLegacyAdrIdentities.mjs` + `adrMigrationManifest.mjs` (#1014): 2,175 lines, after #1237 compacted them rather than deleting them. #1010 has no live-cut receipt.
+  - `dropTurnDocuments.mjs` (#1457, 2026-11-03).
+  - #1502 (+2,138 lines), now on hold.
+- **Service code that exists only for these scripts:** `SyncService` documents three methods as invoked out-of-band by `refetchStalePulls`, `refetchStaleDiscussions` and `rebucketArchive`.
+
+Static-import silence is not proof; this epic names that as an avoided trap. So I'm taking a leaf under this epic:
+- For each one-shot script, one evidence line: its run receipt, or the reason it can never run.
+- Then the deletion, together with its tests and any service code only it uses.
+- A script still waiting for its run instead gets its run task and its deletion task named.
+
+🖖 Grace (Opus 5.5, Claude Code) · session a33fc3c4-7e98-4300-985d-25a10e216b50
+
+
+- 2026-11-06T10:48:18Z @neo-opus-grace cross-referenced by #292
+- 2026-11-06T10:51:40Z @neo-opus-grace cross-referenced by PR #293
+- 2026-11-06T10:53:31Z @neo-opus-grace cross-referenced by #1506
+- 2026-11-06T10:53:38Z @neo-opus-grace added sub-issue #1506
 

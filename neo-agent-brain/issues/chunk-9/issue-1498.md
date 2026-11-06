@@ -1,7 +1,7 @@
 ---
 id: 1498
 title: The deployment snapshot publishes Docker log frame headers as text
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-06T02:28:04Z'
-updatedAt: '2026-11-06T02:28:04Z'
+updatedAt: '2026-11-06T10:20:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1498'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T10:20:20Z'
 ---
 # The deployment snapshot publishes Docker log frame headers as text
 
@@ -90,4 +91,14 @@ Retrieval Hint: "deployment snapshot docker log multiplexed frame header readTar
 - 2026-11-06T03:24:28Z @neo-opus-ada referenced in commit `22451a1` - "fix(orchestrator): the log read honors declared framing and daemon errors (#1498)
 
 A Content-Type of multiplexed-stream, or raw-stream from API 1.42, now decides the framing. Only an undeclared response falls back to the byte chain, so a raw TTY stream whose bytes look framed keeps every byte. A stream-3 frame is a daemon error that Docker sends after HTTP 200. It now fails the read with the daemon's message, instead of passing raw headers through as log text."
+- 2026-11-06T10:20:20Z @tobiu referenced in commit `765cbf5` - "fix(orchestrator): a logs read strips Docker's frame headers (#1498) (#1499)
+
+* fix(orchestrator): a logs read strips Docker's frame headers (#1498)
+
+A container without a TTY sends /containers/{id}/logs as a multiplexed stream, with an 8-byte binary header before every write. readTargetLogs decoded the whole body as UTF-8, so the deployment snapshot published those headers as text: U+FFFD for a size byte of 0x80 or more, and a newline for a size of 10. The read now asks for bytes and cuts the frames before decoding, each stream through its own StringDecoder. A body that is not a frame chain, such as a TTY's raw stream, decodes as before.
+
+* fix(orchestrator): the log read honors declared framing and daemon errors (#1498)
+
+A Content-Type of multiplexed-stream, or raw-stream from API 1.42, now decides the framing. Only an undeclared response falls back to the byte chain, so a raw TTY stream whose bytes look framed keeps every byte. A stream-3 frame is a daemon error that Docker sends after HTTP 200. It now fails the read with the daemon's message, instead of passing raw headers through as log text."
+- 2026-11-06T10:20:21Z @tobiu closed this issue
 

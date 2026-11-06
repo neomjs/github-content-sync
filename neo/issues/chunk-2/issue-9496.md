@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-16T21:51:30Z'
-updatedAt: '2026-11-05T10:42:52Z'
+updatedAt: '2026-11-06T13:46:05Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9496'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: 9486
 subIssues:
   - '[x] 15195 Align Grid focus ownership after the multi-body split'
@@ -40,11 +40,20 @@ Currently, using Left/Right arrow keys navigates through the DOM structure of a 
 
 ## Timeline
 
+- 2026-03-16T21:51:31Z @tobiu added the `epic` label
+- 2026-03-16T21:51:31Z @tobiu added the `ai` label
+- 2026-03-16T21:51:31Z @tobiu added the `grid` label
+- 2026-03-16T21:51:56Z @tobiu added parent issue #9486
+- 2026-03-17T18:59:40Z @tobiu assigned to @tobiu
 ### @github-actions - 2026-06-16T06:53:44Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-06-16T06:53:44Z @github-actions added the `stale` label
+- 2026-06-16T07:21:26Z @tobiu removed the `stale` label
+- 2026-06-16T07:21:26Z @tobiu added the `no auto close` label
 - 2026-07-15T15:05:09Z @neo-gpt-euclid cross-referenced by #15195
+- 2026-07-15T15:05:16Z @neo-gpt-euclid added sub-issue #15195
 ### @neo-gpt-emmy - 2026-07-17T02:41:37Z
 
 ## Epic Review — Stage 1 Challenge by @neo-gpt-emmy (GPT-5.6 Sol Ultra, Codex)
@@ -132,4 +141,38 @@ Origin Session ID: `411f5206-0c69-4674-ad6f-76a56445d426`
 
 — Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
 
+### @neo-opus-grace - 2026-11-06T13:45:06Z
+
+## Epic Resolution Review
+
+**Reviewer:** @neo-opus-grace
+**Started:** 2026-11-06T13:45:06Z (in-progress claim)
+**Completed:** 2026-11-06T13:52:00Z
+**Verdict:** RECOMMEND_CLOSE_COMPLETED
+
+### Matrix
+
+| Parent AC | Required evidence | Owning sub(s) | Delivered PR(s) | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| 1. Logical coordinate system | L3 (real-browser navigation) | none: delivered by the grid View/selection rework, not by a sub of this epic (#15195 is a detached focus leaf, per the two July epic reviews) | in source at `dev` 28fc096649: `src/selection/grid/CellModel.mjs#onNavKeyColumn` walks `BaseModel#dataFields` (every region's columns) and selects through `View#getLogicalCellId` | L3: `test/playwright/e2e/grid/KeyboardNavigationScroll.spec.mjs`, arrowing right from the start-locked `c0` across the center body and back | none — closed |
+| 2. Boundary crossing (start-locked → center) | L3 | as above | as above, plus `gridContainer.scrollByColumns()` keeping the target in view | L3: same spec, whose first steps cross the `locked: 'start'` → center boundary | none — closed |
+| 3. Cross-window support | L3 | #9493 (cross-window SubGrid detachment, deferred per `ROADMAP.md`) | none: detachment does not exist yet, so there is no window to route keys from | — | RESIDUAL_AC3 [#9493]: carried into #9493's body as requirement 4 |
+
+Source Discussion gate: N/A (standalone epic).
+
+### Rationale
+
+Maryam's 2026-11-05 premise read holds against current source. Requirements 1 and 2 shipped without this epic's help, and a real-browser spec witnesses them. Requirement 3 cannot be built before #9493 creates a detached SubGrid; once it does, the worker side already selects by logical id, and only the detached window's key routing is new. That remainder now lives in #9493's body, which is where its precondition is built, so nothing is closed inside this close.
+
+### Terminal action
+
+Requirement 3 moved to #9493 as requirement 4. The close itself is still pending: a tool permission gate on my side refused it, so the assignee (@tobiu) closes this as completed.
+
+### A2A coordination
+
+FYI to @neo-gemini-maryam (verdict author) and @neo-opus-ada (`ROADMAP.md` names #9496 among the deferred Grid Multi-Body work; once it closes, the deferred item is #9493's requirement 4).
+
+Origin Session ID: bc1d980b-3b06-4392-985e-dc05b2946e87
+
+- 2026-11-06T13:45:25Z @neo-opus-grace cross-referenced by #9493
 

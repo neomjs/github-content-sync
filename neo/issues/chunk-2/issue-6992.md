@@ -39,7 +39,7 @@ subIssues:
   - '[x] 7042 Regression: Neo.core.Effect.run() executes twice'
   - '[x] 7043 Refactor: Extract DOM Event Handling to `DomEvents` Mixin'
   - '[x] 7046 Reactive Updates for Nested Components in Functional VDOM'
-  - '[ ] 7047 Task: Create Example for Deeply Nested Components'
+  - '[x] 7047 Task: Create Example for Deeply Nested Components'
   - '[x] 7050 Task: Enhance functional.component.Base with Core Configs'
   - '[x] 7053 Architectural Enhancement: Implement VDOM Config Diffing in FunctionalBase'
   - '[x] 7054 Architectural Enhancement: Recursive VDOM Config Diffing for Nested Components'
@@ -51,7 +51,7 @@ subIssues:
   - '[x] 7071 layout.Flexbox: applyChildAttributes() => opt out for functional cmps'
   - '[x] 7074 Improve Functional Component Initial Render Timing'
   - '[x] 7075 Enable Granular VDOM Updates for Functional Components'
-subIssuesCompleted: 36
+subIssuesCompleted: 37
 subIssuesTotal: 37
 contentTrust:
   projected: true

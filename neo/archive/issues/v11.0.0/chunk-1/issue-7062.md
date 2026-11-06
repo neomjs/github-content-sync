@@ -16,8 +16,8 @@ author: tobiu
 commentsCount: 3
 parentIssue: 6992
 subIssues:
-  - '[ ] 20414 destroy(true) on a functional component leaves its DOM in the parent'
-subIssuesCompleted: 0
+  - '[x] 20414 destroy(true) on a functional component leaves its DOM in the parent'
+subIssuesCompleted: 1
 subIssuesTotal: 1
 contentTrust:
   projected: true

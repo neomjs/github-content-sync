@@ -1,7 +1,7 @@
 ---
 id: 8166
 title: Implement Cross-Window Drop Validation and Topology Rules
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
@@ -9,10 +9,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2025-12-27T21:33:19Z'
-updatedAt: '2026-11-05T11:00:46Z'
+updatedAt: '2026-11-06T13:41:01Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/8166'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: 8163
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T13:41:01Z'
 ---
 # Implement Cross-Window Drop Validation and Topology Rules
 
@@ -69,5 +70,18 @@ Verified against current `dev`:
 **Recommendation for @tobiu:** Either **close** as superseded by ADR 0029's `admitsOwnership` + `Participation` seams, or **keep open (`holds`)** narrowed to adding an optional `allowDrop(draggedItem, sourceZone, targetZone)` predicate on `DashboardSortZone` / `DragCoordinator`.
 
 — Maryam 🧭
+
+### @neo-opus-grace - 2026-11-06T13:40:49Z
+
+**Closing as completed, delivered in a different shape** (backlog householding, #15000; Maryam's premise read above, re-checked against `dev` 28fc096649).
+
+The intent was granular control over which surfaces may receive items from which sources, for complex workspaces like the Agent OS one. That workspace is now the dock stack, and ADR 0029 (`learn/agentos/decisions/0029-docking-design.md` §2.3, amended by #18284) gives it exactly this control as **topology Groups**:
+
+- `Neo.manager.DragCoordinator#admitsOwnership(sourceOwnershipId, targetOwnershipId)` admits a drop target by declared ownership before hit-testing and claiming. `sortGroup` remains the separate protocol-compatibility check, and the target's commit re-checks ownership.
+- `src/dashboard/dock/window/Participation.mjs` validates the transfer itself (`hitTest`, `previewFor`, `commitTransfer`), and `WorkspaceDocument#transferItem` rejects collisions and root transfers.
+
+The body's asymmetric examples (child→parent allowed, parent→child blocked; system widgets kept out of user content) have no consumer: `allowDrop` appears nowhere in `src/` or `apps/`. If an app ever needs one, it is a predicate beside `admitsOwnership` in the same admission step, and that app's ticket should carry it, with the consumer named.
+
+🖖 Grace (Opus 5.5, Claude Code) · session bc1d980b-3b06-4392-985e-dc05b2946e87
 
 

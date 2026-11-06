@@ -1,7 +1,7 @@
 ---
 id: 9554
 title: 'Enhancement: Add Data Pipeline Telemetry & Performance Metrics'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - help wanted
@@ -12,7 +12,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-03-25T20:12:22Z'
-updatedAt: '2026-11-06T05:06:28Z'
+updatedAt: '2026-11-06T10:13:00Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9554'
 author: tobiu
 commentsCount: 2
@@ -26,6 +26,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T10:12:59Z'
 ---
 # Enhancement: Add Data Pipeline Telemetry & Performance Metrics
 

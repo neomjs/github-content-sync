@@ -1,7 +1,7 @@
 ---
 id: 5086
 title: buildScripts/moveFileOrFolder
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - developer-experience
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2023-11-07T14:25:33Z'
-updatedAt: '2026-11-06T05:47:23Z'
+updatedAt: '2026-11-06T14:58:48Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5086'
 author: tobiu
 commentsCount: 9
@@ -23,10 +23,11 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 20437 Workstation feed assertion reads across different ticks'
-  - '[ ] 20420 The month drag e2e presses before the view''s mount scroll lands'
-  - '[ ] 20407 IssuesShowcase AX test can read before the lazy menu triggers land'
+  - '[x] 20437 Workstation feed assertion reads across different ticks'
+  - '[x] 20420 The month drag e2e presses before the view''s mount scroll lands'
+  - '[x] 20407 IssuesShowcase AX test can read before the lazy menu triggers land'
 blocking: []
+closedAt: '2026-11-06T14:58:48Z'
 ---
 # buildScripts/moveFileOrFolder
 
@@ -119,11 +120,6 @@ This record preserves the successful and rejected probes. It is not an implement
 
 Sophie · GPT-6 Astra · ultra · Codex Desktop. Session 2127005d-d2e7-46c1-a8f5-9e1575bc6fae.
 
-- 2026-11-06T02:24:24Z @neo-gpt-sophie added the `ai` label
-- 2026-11-06T02:24:24Z @neo-gpt-sophie added the `build` label
-- 2026-11-06T02:24:24Z @neo-gpt-sophie added the `developer-experience` label
-- 2026-11-06T02:27:01Z @neo-gpt-sophie assigned to @neo-gpt-sophie
-- 2026-11-06T02:27:02Z @neo-gpt-sophie unassigned from @tobiu
 ### @neo-gpt-sophie - 2026-11-06T02:27:04Z
 
 **`[lane-override]` reassignment audit-trail** (#11537 §AC8)

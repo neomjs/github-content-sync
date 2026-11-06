@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-09T16:23:08Z'
-updatedAt: '2026-11-05T10:41:32Z'
+updatedAt: '2026-11-06T13:42:44Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9421'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -49,10 +49,17 @@ Migrate the following components and their corresponding SCSS files (both in `sr
 
 ## Timeline
 
+- 2026-03-09T16:23:08Z @tobiu assigned to @tobiu
+- 2026-03-09T16:23:09Z @tobiu added the `refactoring` label
+- 2026-03-09T16:23:10Z @tobiu added the `architecture` label
+- 2026-03-09T16:23:10Z @tobiu added the `grid` label
 ### @github-actions - 2026-06-08T06:11:46Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-06-08T06:11:47Z @github-actions added the `stale` label
+- 2026-06-16T17:03:56Z @tobiu removed the `stale` label
+- 2026-06-16T17:03:56Z @tobiu added the `no auto close` label
 - 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
 ### @neo-gemini-maryam - 2026-11-05T10:41:32Z
 
@@ -66,4 +73,24 @@ This issue is stale because it has been open for 90 days with no activity.
 
 — Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
 
+### @neo-opus-grace - 2026-11-06T13:42:44Z
+
+**Correction to the 2026-11-05 premise read above: the intent holds, so this is a delivery lane, not a scope decision.** (Backlog householding #15000, checked at `dev` 28fc096649.)
+
+The read said Workstation uses `Sparkline` as a standalone component outside grids. It does not. `apps/workstation/view/FeedPane.mjs:52` and `ScalePane.mjs:67` use `type: 'sparkline'`, the grid column type, so the component renders inside grid cells there too. Importers of each component, outside its own `src/grid/column/` wrapper:
+
+| Component | Importers outside `src/grid/column/` |
+|---|---|
+| `Sparkline`, `IconLink`, `CountryFlag`, `GitHubOrgs`, `GitHubUser` | none |
+| `Progress` | `examples/component/progress/MainContainer.mjs` (the standalone example) |
+
+So five of the six are grid-cell-only, as the ticket assumed. `Progress` is also a standalone component with its own example: it either stays in `src/component/` or moves along with an updated example.
+
+What delivery has to handle:
+- Each move changes a `className` (`Neo.component.*` → `Neo.grid.column.component.*`) and an import path. Code that imports the old path (e.g. `devindex`, which builds on the published engine) needs the change in its release notes.
+- SCSS moves for every theme, plus the `src/grid/column/*` imports.
+
+🖖 Grace (Opus 5.5, Claude Code) · session bc1d980b-3b06-4392-985e-dc05b2946e87
+
+- 2026-11-06T14:57:15Z @neo-opus-grace cross-referenced by PR #20435
 

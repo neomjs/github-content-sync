@@ -1,17 +1,17 @@
 ---
 id: 5007
 title: 'config order: add an exception for `layout` to always be in front of `items`'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - help wanted
   - good first issue
 assignees: []
 createdAt: '2023-10-12T05:42:21Z'
-updatedAt: '2026-11-05T10:30:54Z'
+updatedAt: '2026-11-06T13:40:28Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5007'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T13:40:28Z'
 ---
 # config order: add an exception for `layout` to always be in front of `items`
 
@@ -49,6 +50,8 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-13T02:29:00Z @github-actions closed this issue
+- 2026-10-09T20:38:56Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:38:57Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:38:59Z
 
 #19489 set C · T6 · Grace · 2026-10-09: **reopened, valid.** `.github/CODING_GUIDELINES.md` still has no layout-before-items exception; #5402 fixes the same section's ordering wording.
@@ -67,5 +70,19 @@ This issue was closed because it has been inactive for 14 days since being marke
 - **Recommendation for `@tobiu`:** If Rule 28's blank-line reset already covers the intended ergonomics in view/config objects while `static config` in `src/container/Base.mjs` stays alphabetical (`items_` before `layout_`), this ticket can be closed; if you still want `layout` explicitly exempted to precede `items` inside `static config` as well, confirm and we will update `.github/CODING_GUIDELINES.md` and container classes.
 
 🏛️ **Julia** (`@neo-gemini-julia` · Gemini 4 Argon · Antigravity)
+
+### @neo-opus-grace - 2026-11-06T13:40:10Z
+
+**Closing as not planned** (backlog householding, #15000; the operator left the call to us on 2026-11-06: *"if it does not make any difference for LLMs, you could close it"*).
+
+The intent was a human-perception one: `layout` and `items` read as one visible group. Checked against current source and against who writes most configs now:
+
+- **Instance configs already allow the grouping.** `.github/CODING_GUIDELINES.md` rule 28 (around line 383) lets a config object list its one-line keys first, then a blank line that "resets" the order, then the big ones. `layout: 'fit'` therefore already sits right above `items: [...]` in view definitions.
+- **Static configs stay alphabetical,** e.g. `items_` before `layout_` in `src/container/Base.mjs`. For a model reading or writing a config, keys sit in the same object either way; grouping two of them does not change what it understands. What does change its output is the number of special cases it has to apply. One fixed rule (alphabetical after `className`/`ntype`) is followed more reliably than a rule with an exception.
+- **Cost:** reordering the 100+ static config blocks you estimated would conflict with every open branch, for no behavior change.
+
+If a reader's experience ever says otherwise, the exception is a one-line guideline change plus a lint, not a manual reorder.
+
+🖖 Grace (Opus 5.5, Claude Code) · session bc1d980b-3b06-4392-985e-dc05b2946e87
 
 

@@ -1,18 +1,19 @@
 ---
 id: 7224
 title: 'Create Learning Guide: Using data.Store'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
   - no auto close
+  - ai
 assignees:
-  - tobiu
+  - neo-gpt-sophie
 createdAt: '2025-09-20T12:01:40Z'
-updatedAt: '2026-11-06T00:56:43Z'
+updatedAt: '2026-11-06T13:59:11Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/7224'
 author: tobiu
-commentsCount: 3
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,8 +23,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 20403 ComboBox steals a shared Store''s record-change notification route'
+  - '[x] 20403 ComboBox steals a shared Store''s record-change notification route'
 blocking: []
+closedAt: '2026-11-06T13:59:10Z'
 ---
 # Create Learning Guide: Using data.Store
 
@@ -72,6 +74,25 @@ The guide should cover the following topics:
 -   The guide follows the proposed content outline.
 -   The guide includes clear, practical code examples.
 -   The new guide is added to the `learn/tree.json` file.
+
+---
+
+## Intake-derived Contract Ledger · @neo-gpt-sophie · 2026-11-06
+
+The original four acceptance criteria above remain unchanged. The [scope reconciliation](https://github.com/neomjs/neo/issues/7224#issuecomment-6669947634) and [native proof](https://github.com/neomjs/neo/issues/7224#issuecomment-6682818163) sharpen the 2025 prescription against current source.
+
+| Target surface | Authority | Behavior taught | Boundary / fallback | Documentation | Evidence |
+|---|---|---|---|---|---|
+| New `learn/guides/datahandling/UsingStores.md` | Original path and outline; existing Tables/Records/Collections guides | One practical data-to-views workflow, linking the existing conceptual authority rather than duplicating it | Records are Model-created row objects, not instances of the Model class | New guide; brief companion link from Tables | All original outline topics mapped to sections; Portal route read |
+| Store subclass and Model/key contract | Existing ComboBox MainStore/MainModel; `src/data/Store.mjs` and `src/data/Model.mjs` | Explicit `keyProperty`, schema and local data; keyed `get()` | Each Store receives a Model class or its own Model instance; no shared instance routing ownership | Runnable/example code and ownership explanation | Execute literal final snippets; compare keys/record identity |
+| URL loading | Existing `resources/examples/data/us_states.json`, Fetch connection and Store loading path | Current public `url` and `autoLoad`; show the actual JSON success/data envelope and deliberate load timing | Explain example URL context; do not imply readiness means network completion or make pagination claims | Concrete loader example; link DataPipelines for transport detail | Real request and loaded records in browser |
+| Grid and ComboBox binding | Current shared-Store behavior after merged PR #20406 | Both bind the same provider-owned Store; picker typing changes only its private query | Provider owns the created Store; removing the field leaves source/Grid edits working | Complete view composition | Native typing, source counts, recordChange and Grid update through field teardown |
+| Application-owned `sourceId` projection | `Tables.md` and current Store/Collection behavior | Separate query/order over shared records; Model class reused as a fresh instance | Source record edits do not automatically broadcast/refilter every projection; show explicit refresh when relevant | Shortlist example and cleanup | Identity, independent filters/order, structural add/remove and refresh observations |
+| Navigation and discoverability | Existing Data Handling container in `learn/tree.json` | Register the requested companion page and rank its source SEO entry | Leave generated sitemap/llms outputs to the data-sync pipeline | Tree entry and PRIORITIES input | Tree/link checks; rendered Portal navigation and Mermaid diagram |
+
+Revalidation trigger: the literal combined example fails notification continuity, ownership or projection semantics on current dev. Revisit the owning primitive before documenting a workaround. Dynamic Model-schema propagation and remote paging are not new promises of this guide.
+
+
 
 ## Timeline
 
@@ -122,6 +143,50 @@ The #20403 fix is now in PR #20406 at `d37da9ecba`, with green CI and Ada's form
 — Sophie
 
 - 2026-11-05T23:42:42Z @neo-gpt-sophie cross-referenced by #20403
-- 2026-11-05T23:43:44Z @neo-gpt-sophie marked this issue as being blocked by #20403
 - 2026-11-05T23:53:25Z @neo-gpt-sophie cross-referenced by PR #20406
+### @neo-gpt-sophie - 2026-11-06T10:34:02Z
+
+### Unblocked intake and native example proof · 2026-11-06
+
+The sole blocker, #20403, is closed: PR #20406 merged as `7a97c18b43`. The [existing reconciliation](https://github.com/neomjs/neo/issues/7224#issuecomment-6669947634) remains the accepted residual scope; `UsingStores.md` and its navigation entry are still absent. No competing claim or matching open guide PR was found.
+
+**Question / inputs.** Can one provider-owned Store feed a Grid and ComboBox, keep source edits observable through field teardown, and support an independent application shortlist? A private native Chrome/Neural Link app used the existing ComboBox `MainStore`/`MainModel`, their real `us_states.json` URL, a Grid, and a separate-Model `sourceId` Store. Current checkout `06dd00ebc8` includes the prerequisite repair.
+
+**Observation.** One complete native journey passed. The resource loaded 59 entries. Typing `Arizo` narrowed only the picker to Arizona while source/Grid membership stayed at 59. Native edit actions updated the Grid and emitted source `recordChange` both during ComboBox lifetime and after removing it; the field's private Model was destroyed while the source Model remained alive. The application shortlist shared record identity but retained its own filter/order. Source add/remove changed counts `59 → 60 → 59` and shortlist `5 → 6 → 5`, with consistent final DOM/VDOM/items. An initial test expectation was corrected: `Ari` also matches Northern Mariana Islands; no engine change was needed.
+
+**Disposition / limits.** Use this demonstrated journey for the guide, with Tables.md as the conceptual anchor. The final literal snippets and Portal page/diagram still need validation. This probe does not establish automatic projection refilter/resort on record edits, remote pagination, or dynamic Model-schema propagation. Its source, JSON observations, screenshots and trace are retained for the guide's verification.
+
+**Intake:** original learning intent is valid, with the already-recorded current-code sharpening: public `url`/`autoLoad`; same Store bound to Grid/ComboBox first; an explicit `sourceId` view teaches an application query rather than a required typing workaround; reuse Model classes, not one Model instance. Existing documentation/enhancement triage remains valid; I will add `ai` for implementation provenance. The 2025 ticket is currently pre-stale by activity, with its existing exemption retained; that metadata is not the currency evidence. No native parent epic; the closed blocker remains as provenance.
+
+**Picking up per 7-day rule; previous assignee @tobiu; last qualifying activity 2025-09-20T12:01:40Z** (creation/assignment; later comments are premise/reconciliation reads, not an active implementation claim). I am taking the practical companion through executed examples and Portal rendering, preserving all four original acceptance criteria.
+
+### @neo-gpt-sophie - 2026-11-06T10:34:07Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@tobiu`
+**New assignees:** `@me`
+**Reason:** Picking up per 7-day rule after the sole blocker20403 merged. Previous assignee @tobiu; last qualifying activity2025-09-20T12:01:40Z. Later comments were premise/reconciliation reads, not in-progress claims. Sophie now owns the existing practical UsingStores guide with all original acceptance criteria and the documented current-code sharpening.
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+### @neo-gpt-sophie - 2026-11-06T11:02:19Z
+
+### Exact-guide verification · 2026-11-06
+
+The guide's literal modules were extracted into the stated `examples/my-store-guide/` layout and executed in Chrome with the existing Neural Link fixture. The local view, remote/literal operations, and actual Portal route passed **3/3** cases. A final prose-only Portal run passed **1/1**; all nine executable fence hashes remained unchanged.
+
+The literal test caught a real mistake in the draft: `data: []` marked the Store loaded, so `autoLoad: true` made **zero** JSON requests. The automatic descriptor now uses `data: null`; it fetched the real 59-entry resource. The manual `data: []` example correctly calls `load()` explicitly. Both the failed observation and corrected receipt are retained, and the guide explains the distinction.
+
+Executed statements confirmed custom-key `get()`, source edit notifications, add/remove identity, independent shortlist order, and explicit refilter counts `5 → 4 → 5`. The standalone Stores and their explicitly disposed Models were destroyed and unregistered. Provider teardown destroyed its created Store; its Model remained registered, so the guide makes no broader automatic Model-disposal claim. A source edit repainted the Grid and changed the picker's shared record getter, while the already-open picker label stayed unchanged; that boundary is stated rather than hidden behind structural mutations that later refresh the view.
+
+The registered Portal route is `#/learn/guides/datahandling/UsingStores`. Its navigation entry, heading and five sections rendered; the seven-node Mermaid SVG was **552 × 520** at intrinsic size inside a 737px parent, with no article overflow. Screenshots were visually checked. Final guide SHA-256: `679a0d0f70b4ca4db23c5565da2c897c6f3ace691fc9694443f697d2bc317ac1`.
+
+These are source-mode Chrome observations, not packaged-workspace or cross-browser certification. Only the guide, its Tables companion link, `learn/tree.json`, and the SEO priority input change; generated outputs remain with the data-sync pipeline.
+
+- 2026-11-06T11:05:31Z @neo-gpt-sophie cross-referenced by PR #20449
+- 2026-11-06T13:01:02Z @neo-opus-ada cross-referenced by #20452
+- 2026-11-06T13:01:21Z @neo-opus-ada cross-referenced by #20453
+- 2026-11-06T13:51:06Z @neo-gpt-sophie cross-referenced by PR #20458
+- 2026-11-06T14:02:51Z @neo-gpt-sophie cross-referenced by PR #20457
 

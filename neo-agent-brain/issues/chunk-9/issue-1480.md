@@ -1,14 +1,14 @@
 ---
 id: 1480
 title: 'Seat Start reuses checkouts as they are: no fast-forward, no npm install'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-05T12:20:54Z'
-updatedAt: '2026-11-06T03:25:44Z'
+updatedAt: '2026-11-06T10:21:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1480'
 author: neo-opus-grace
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T10:21:05Z'
 ---
 # Seat Start reuses checkouts as they are: no fast-forward, no npm install
 
@@ -151,4 +152,63 @@ the whole package tree. It skips npm's `.bin` links and never enters a linked
 package."
 - 2026-11-06T04:19:44Z @neo-opus-grace referenced in commit `3cc1960` - "chore(fleet): align the declaration blocks this branch added (#1480)"
 - 2026-11-06T04:57:45Z @neo-gpt-emmy cross-referenced by #20433
+- 2026-11-06T10:21:05Z @tobiu referenced in commit `01d5b63` - "feat(fleet): Start keeps each seat checkout current before launch (#1480) (#1500)
+
+* feat(fleet): Start fast-forwards each clean checkout before its install (#1480)
+
+A reused checkout stayed on whatever commit the seat last pulled, so the
+install read an old lockfile and the session ran on old code. Start now moves
+each checkout to its remote's default branch first, when the checkout proves
+it is the assignment, sits on that branch, has no tracked change and holds no
+commit its remote lacks. Anything else is skipped with its reason.
+
+The fetch goes to the declared remote, and the seat's PAT reaches it exactly
+as a clone carries it: gitRemoteCommand is extracted from gitCloneCommand. The
+checkout is the seat's to write, so its hooks and fsmonitor never run, and git
+inherits no host config and none of the Fleet's credentials.
+
+The outcome rides on the checkout's dependency row as `update`. No outcome
+stops the launch.
+
+* feat(fleet): Start reinstalls on a changed lockfile and adopts a current unowned tree (#1480)
+
+An owned install read `present` on every later Start, because the receipt
+recorded when it ran, not which lockfile it installed. The `installed` entry
+now records the lockfile's digest, written only once `npm ci` exits 0. A
+changed digest, or an entry from before it, installs again.
+
+A tree the Fleet did not install stayed `unverified` forever. It is now
+adopted when this Start's fast-forward left its checkout current and its
+node_modules holds no symlink the lockfile does not mark `link: true`, so an
+`npm link` no git status shows is never wiped. The receipt marks such a tree
+`adoptedFrom: 'unverified'`, through later failures and retries.
+
+The install receives each checkout's fast-forward outcome and reports it on
+its row, so Start no longer merges the outcome in itself.
+
+* feat(fleet): Start runs a repository's own seat:start after its install (#1480)
+
+A fresh Start can need more than dependencies, such as neo's built themes.
+Fleet must not name a tenant's build, so a repository declares that step as
+a `seat:start` script, and Start runs it after each install that leaves a
+tree. It uses the install's login-shell npm and the same credential-free
+environment. The outcome rides on the checkout's row as `seatStart`.
+
+A repository without the script is untouched, a failure never stops the
+launch, and the operator's Skip stops the script the way it stops an install.
+
+* feat(fleet): Start's refresh keeps ignored files and nested package links (#1480)
+
+The fast-forward checked tracked changes only, and `git merge --ff-only`
+overwrites an ignored file by default. A seat's ignored local file that the
+remote began tracking was therefore replaced. The merge now runs with
+`--no-overwrite-ignore`, so it fails instead and leaves HEAD and the file alone.
+
+Adoption checked links one scope deep, so it admitted an `npm link` inside a
+package's own node_modules, which `npm ci` would then wipe. The scan now walks
+the whole package tree. It skips npm's `.bin` links and never enters a linked
+package.
+
+* chore(fleet): align the declaration blocks this branch added (#1480)"
+- 2026-11-06T10:21:06Z @tobiu closed this issue
 

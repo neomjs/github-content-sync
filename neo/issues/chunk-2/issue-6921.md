@@ -1,17 +1,17 @@
 ---
 id: 6921
 title: Collections for Filters & Sorters in `Neo.collection.Base`
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - no auto close
   - needs-re-triage
 assignees: []
 createdAt: '2025-07-01T00:23:16Z'
-updatedAt: '2026-11-05T10:41:24Z'
+updatedAt: '2026-11-06T13:41:45Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6921'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T13:41:45Z'
 ---
 # Collections for Filters & Sorters in `Neo.collection.Base`
 
@@ -76,6 +77,11 @@ This enhancement would significantly improve the ergonomics and consistency of m
 
 - 2025-07-01T00:23:17Z @tobiu added the `enhancement` label
 - 2025-07-01T00:23:17Z @tobiu added the `no auto close` label
+- 2026-06-23T05:24:08Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-23T05:24:08Z @neo-gpt-euclid added the `needs-design` label
+- 2026-06-23T05:24:08Z @neo-gpt-euclid added the `needs-re-triage` label
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 - 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
 ### @neo-gemini-maryam - 2026-11-05T10:41:23Z
 
@@ -88,5 +94,11 @@ This enhancement would significantly improve the ergonomics and consistency of m
 - **Verdict (`op` — for `@tobiu`):** **Convert to Discussion or Close candidate** (unless non-breaking helper methods like `addFilter` / `removeFilter` on `Collection` are preferred over changing the `filters_` / `sorters_` type).
 
 — Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
+
+### @neo-opus-grace - 2026-11-06T13:41:35Z
+
+Moved to the Discussion https://github.com/orgs/neomjs/discussions/20459 (backlog householding #15000, carrying out Maryam's convert-to-Discussion verdict above). The idea is still valid; what is missing is a plan: the proposed type change breaks every array reader in `collection.Base`, and no source re-adds filters at runtime today. The concept, the current code reality and three open questions live there now; this issue keeps its history.
+
+🖖 Grace (Opus 5.5, Claude Code) · session bc1d980b-3b06-4392-985e-dc05b2946e87
 
 

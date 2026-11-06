@@ -1,7 +1,7 @@
 ---
 id: 285
 title: Commit messages can close a ticket the PR does not resolve
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-06T00:01:21Z'
-updatedAt: '2026-11-06T00:01:21Z'
+updatedAt: '2026-11-06T11:45:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/285'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T11:45:33Z'
 ---
 # Commit messages can close a ticket the PR does not resolve
 
@@ -116,4 +117,18 @@ Retrieval Hint: "a closing expression in a commit message reaches dev through ev
 - 2026-11-06T00:01:23Z @neo-opus-ada added the `ai` label
 - 2026-11-06T00:01:23Z @neo-opus-ada added the `build` label
 - 2026-11-06T00:01:23Z @neo-opus-ada added the `model-experience` label
+- 2026-11-06T00:34:23Z @neo-opus-ada cross-referenced by PR #286
+- 2026-11-06T01:02:26Z @neo-opus-ada referenced in commit `3d7edcd` - "fix(guard): read whole commit messages and judge every author's text (#285)
+
+Round 1 (Euclid): the closing check exempted a GitHub App PR author, and readCommits split messages at its in-band \x1f/\x1e delimiters, so an expression after either byte went unseen. The rule now reads the published text alone, and git log -z with newline-separated fields reads every message whole. Both arms were red before their repair."
+- 2026-11-06T11:45:33Z @tobiu referenced in commit `4360418` - "feat(guard): refuse closing keywords in commit messages (#285) (#286)
+
+* feat(guard): refuse closing keywords in commit messages (#285)
+
+The commit-authorship guard gains a third check, at pre-push and in CI, for every author except a GitHub App's PR: no commit message carries a closing expression, judged by GITHUB_CLOSING_EXPRESSION, the matcher the PR body already answers to. Squash bodies built from commit messages carry such a phrase to the default branch, where it closes the issue: measured on neo in May (#11185), nearly repeated on neo #20402. The two manual scans in pull-request-workflow and pr-review-guide shrink to a pointer (net -282 skill bytes).
+
+* fix(guard): read whole commit messages and judge every author's text (#285)
+
+Round 1 (Euclid): the closing check exempted a GitHub App PR author, and readCommits split messages at its in-band \x1f/\x1e delimiters, so an expression after either byte went unseen. The rule now reads the published text alone, and git log -z with newline-separated fields reads every message whole. Both arms were red before their repair."
+- 2026-11-06T11:45:34Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 26
 title: 'tab.Container: Closable tabs'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - good first issue
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2019-11-17T16:51:44Z'
-updatedAt: '2026-11-06T00:22:11Z'
+updatedAt: '2026-11-06T09:46:22Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/26'
 author: tobiu
 commentsCount: 5
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T09:46:22Z'
 milestone: v13.4
 ---
 # tab.Container: Closable tabs
@@ -93,9 +94,6 @@ This issue was closed because it has been inactive for 14 days since being marke
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-05T20:37:27Z @neo-gpt-sophie cross-referenced by #6781
-- 2026-11-05T22:43:39Z @neo-gpt-euclid added the `ai` label
-- 2026-11-05T22:43:39Z @neo-gpt-euclid added the `core` label
-- 2026-11-05T22:43:41Z @neo-gpt-euclid assigned to @neo-gpt-euclid
 - 2026-11-05T22:45:35Z @neo-gpt-euclid cross-referenced by #20390
 ### @neo-gpt-emmy - 2026-11-05T22:55:44Z
 
@@ -156,13 +154,8 @@ The subsequent head `02dc85b2dd11497201676a63445a5e2b04fc1d99` changes only `bui
 
 The agreed independent validation contribution is complete. Current-head hosted CI and the author's cross-family review handoff still govern PR readiness and the remaining goal exit.
 
-- 2026-11-05T23:28:35Z @neo-gpt-euclid referenced in commit `34f1a57` - "fix(container): retain functional item removal lifecycle (#26)"
 - 2026-11-05T23:29:07Z @neo-gpt-euclid cross-referenced by PR #20399
-- 2026-11-05T23:35:15Z @neo-gpt-euclid referenced in commit `a5f27cc` - "fix(tab): fence stale activation and preserve render-only moves (#26)"
 - 2026-11-05T23:35:43Z @neo-opus-ada cross-referenced by #20401
-- 2026-11-05T23:36:51Z @neo-gpt-euclid referenced in commit `02dc85b` - "chore(tab): record measured reparent guard size (#26)"
 - 2026-11-05T23:38:03Z @neo-opus-ada cross-referenced by PR #20402
 - 2026-11-05T23:51:00Z @neo-opus-ada cross-referenced by PR #20405
-- 2026-11-06T00:12:21Z @neo-opus-ada added this to the **v13.4** milestone
-- 2026-11-06T00:24:17Z @neo-gpt-euclid referenced in commit `19429f4` - "fix(tab): restore focus when closing from inside a card (#26)"
 

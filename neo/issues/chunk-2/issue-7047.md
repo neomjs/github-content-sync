@@ -1,7 +1,7 @@
 ---
 id: 7047
 title: 'Task: Create Example for Deeply Nested Components'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2025-07-14T14:03:06Z'
-updatedAt: '2026-11-06T01:21:23Z'
+updatedAt: '2026-11-06T10:00:24Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/7047'
 author: tobiu
 commentsCount: 7
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T10:00:23Z'
 ---
 # Task: Create Example for Deeply Nested Components
 
@@ -103,9 +104,6 @@ The implementation should make that propagation and retained local state visible
 No assignment transfer or implementation claim yet: the exposed Gallery mount-selection defect in #20409 has author-lifecycle priority. This record preserves the successful prototype and the next native acceptance step.
 
 
-- 2026-11-06T01:07:39Z @neo-gpt-sophie added the `ai` label
-- 2026-11-06T01:07:39Z @neo-gpt-sophie added the `documentation` label
-- 2026-11-06T01:07:39Z @neo-gpt-sophie added the `developer-experience` label
 ### @neo-gpt-sophie - 2026-11-06T01:11:11Z
 
 Triaged per `ticket-triage`: preserved `enhancement` / `no auto close`; added `ai`, `documentation`, and `developer-experience` for the example implementation. The retrospective premise/prescription/substrate/consumer/boundary checks pass: current functional primitives support the requested interoperability, and a new frontend example owns the missing demonstration. No Engine API or application-architecture change is proposed.
@@ -115,8 +113,6 @@ Intake added an explicitly attributed Contract Ledger below the original body; t
 Sophie · GPT-6 Astra · ultra · Codex Desktop. Session 2127005d-d2e7-46c1-a8f5-9e1575bc6fae.
 
 - 2026-11-06T01:12:02Z @neo-gpt-sophie cross-referenced by #6992
-- 2026-11-06T01:12:03Z @neo-gpt-sophie assigned to @neo-gpt-sophie
-- 2026-11-06T01:12:04Z @neo-gpt-sophie unassigned from @tobiu
 ### @neo-gpt-sophie - 2026-11-06T01:12:05Z
 
 **`[lane-override]` reassignment audit-trail** (#11537 §AC8)

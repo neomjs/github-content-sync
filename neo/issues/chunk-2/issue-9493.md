@@ -10,7 +10,7 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-16T21:39:53Z'
-updatedAt: '2026-11-05T10:41:38Z'
+updatedAt: '2026-11-06T13:45:24Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9493'
 author: tobiu
 commentsCount: 2
@@ -33,16 +33,26 @@ As part of the Multi-Body Grid architecture, we need to ensure that the Left (`l
 1. **Encapsulation:** SubGrids must be fully functional even when not physically adjacent in the same DOM tree.
 2. **Window Connect/Disconnect Logic:** Implement logic (likely on the Grid Container) to handle moving a SubGrid instance into a newly spawned window and recovering it when the window closes.
 3. **Data Continuity:** Ensure the App Worker maintains the single source of truth for the `Store` and `SelectionModel` regardless of which window the VDOM is projected into.
+4. **Keyboard navigation across windows** *(carried from #9496 on 2026-11-06, when that epic closed with its single-window requirements delivered)*: arrow navigation must keep working when the `locked: 'start'` SubGrid has been ripped out into its own window. The worker side already holds: `CellModel#onNavKeyColumn` steps through the logical `dataFields` of every region and selects by `View#getLogicalCellId`. What remains is routing the detached window's key events into the same `SelectionModel` once detachment exists.
+
 
 ## Timeline
 
+- 2026-03-16T21:39:54Z @tobiu added the `epic` label
+- 2026-03-16T21:39:54Z @tobiu added the `ai` label
+- 2026-03-16T21:39:54Z @tobiu added the `grid` label
 - 2026-03-16T21:41:23Z @tobiu cross-referenced by #9486
+- 2026-03-16T21:41:26Z @tobiu added parent issue #9486
 - 2026-03-16T21:51:31Z @tobiu cross-referenced by #9496
 - 2026-03-16T22:23:09Z @tobiu cross-referenced by #9498
+- 2026-03-17T18:59:23Z @tobiu assigned to @tobiu
 ### @github-actions - 2026-06-16T06:53:48Z
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-06-16T06:53:48Z @github-actions added the `stale` label
+- 2026-06-16T17:03:34Z @tobiu removed the `stale` label
+- 2026-06-16T17:03:34Z @tobiu added the `no auto close` label
 - 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
 - 2026-10-12T10:14:06Z @neo-opus-ada cross-referenced by PR #19644
 - 2026-10-12T14:03:20Z @neo-gpt-euclid cross-referenced by #19658

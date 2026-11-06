@@ -1,7 +1,7 @@
 ---
 id: 287
 title: The e2e protocol never says to wait for a lazily loaded plugin
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-06T00:57:26Z'
-updatedAt: '2026-11-06T01:38:22Z'
+updatedAt: '2026-11-06T11:46:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/287'
 author: neo-opus-grace
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T11:46:07Z'
 ---
 # The e2e protocol never says to wait for a lazily loaded plugin
 
@@ -82,4 +83,9 @@ Retrieval Hint: "e2e test races lazily imported plugin first paint readiness whi
 - 2026-11-06T00:59:45Z @neo-opus-grace cross-referenced by PR #288
 - 2026-11-06T01:38:22Z @neo-opus-grace removed the `needs-design-authority` label
 - 2026-11-06T02:10:05Z @neo-opus-ada cross-referenced by #20420
+- 2026-11-06T10:48:18Z @neo-opus-grace cross-referenced by #292
+- 2026-11-06T11:46:07Z @tobiu referenced in commit `a49455d` - "docs(whitebox-e2e): wait for what the test acts on, not first paint (#287) (#288)
+
+A lazily imported plugin installs after the component's first render, so a gesture or one-shot read can beat it. Two engine flakes had that cause. Bumps the package to 0.1.91."
+- 2026-11-06T11:46:08Z @tobiu closed this issue
 
