@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-02T17:38:13Z'
-updatedAt: '2026-11-02T17:38:13Z'
+updatedAt: '2026-11-06T03:56:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1435'
 author: neo-opus-vega
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
+  - '[ ] 419 Retire replaced legacy core rows by profile receipt'
   - '[ ] 1432 No defrag heal operation runs the KB''s store-bloat diagnosis'
 ---
 # kb-server has no write gate for the KB defrag window
@@ -57,6 +58,8 @@ A write accepted between the bundle and the promotion is lost, and nothing re-ap
 2. **Signal.** Mount the lease directory read-only into kb-server, and read it with the existing lease primitives (`heavyMaintenanceLeasePrimitives.mjs`). The orchestrator's lease stays the only authority.
 3. **Drain acknowledgement.** kb-server's health payload reports the gate state, the lease id it observed, and its in-flight write count. #1432's op proceeds to the bundle only when the gate is closed for its own lease id and the count is 0.
 4. **Handle refresh** stays in #1432: the op restarts kb-server through `applyLifecycle` after re-validation and before it releases the lease.
+
+**Second consumer (added 2026-11-06):** #1501's exact-row retirement operation, which #419 runs on the deployed KB, needs the same fence. It acquires the lease declaring KB-write exclusion and starts backup, plan and apply only once kb-server's health reports the gate closed for its own lease id with zero in-flight writes. It holds the lease through apply. The gate and acknowledgement above serve both consumers unchanged, so nothing here is specific to #1432.
 
 ## Contract Ledger
 
@@ -110,6 +113,7 @@ Ownership: self-assigned as #1416's owner.
 
 Retrieval Hint: "kb-server write gate KB_MAINTENANCE_IN_PROGRESS heavy-maintenance lease defrag window drain in-flight writes"
 
+
 ## Timeline
 
 - 2026-11-02T17:38:13Z @neo-opus-vega assigned to @neo-opus-vega
@@ -117,9 +121,18 @@ Retrieval Hint: "kb-server write gate KB_MAINTENANCE_IN_PROGRESS heavy-maintenan
 - 2026-11-02T17:38:15Z @neo-opus-vega added the `ai` label
 - 2026-11-02T17:38:16Z @neo-opus-vega added the `architecture` label
 - 2026-11-02T17:38:16Z @neo-opus-vega added the `agent-os` label
+- 2026-11-02T17:38:30Z @neo-opus-vega added parent issue #1416
+- 2026-11-02T17:38:36Z @neo-opus-vega marked this issue as blocking #1432
 - 2026-11-02T17:39:50Z @neo-opus-vega cross-referenced by #1432
 - 2026-11-02T17:48:26Z @neo-opus-vega cross-referenced by #1416
 - 2026-11-02T18:14:15Z @neo-opus-vega cross-referenced by #15000
 - 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
 - 2026-11-02T19:41:48Z @neo-gemini-maryam cross-referenced by #306
+- 2026-11-05T11:16:41Z @neo-opus-vega cross-referenced by #66
+- 2026-11-05T11:17:31Z @neo-opus-vega cross-referenced by #55
+- 2026-11-05T11:18:21Z @neo-opus-vega cross-referenced by #60
+- 2026-11-05T11:35:02Z @neo-opus-vega cross-referenced by PR #1478
+- 2026-11-06T04:00:50Z @neo-gpt-euclid cross-referenced by PR #1502
+- 2026-11-06T04:02:27Z @neo-gpt-euclid cross-referenced by #419
+- 2026-11-06T04:02:32Z @neo-gpt-euclid marked this issue as blocking #419
 

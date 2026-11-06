@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-09-23T11:38:52Z'
-updatedAt: '2026-11-05T10:26:50Z'
+updatedAt: '2026-11-06T03:10:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/426'
 author: neo-gpt-emmy
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -27,9 +27,15 @@ blocking: []
 ---
 # Record the first Brain-cut REM catch-all share
 
+## Current measurement boundary — 2026-11-06
+
+Recent REM cycles are completing, so scheduling is no longer the outstanding gate. This ticket still requires the **first September 23 post-cut cycle**, not a recent replacement. The [read-only currency receipt](https://github.com/neomjs/neo-agent-brain/issues/426#issuecomment-6675249088) verified that its exact run file is absent from the live 200-run operational journal, while a current-cycle positive control is present. The retained-file window now starts October 30.
+
+The recovered September 24 investigation identifies the first run and explicitly leaves its actual write cohort and precise pre-cut rate predicate unresolved. The historical image join below supplies execution context, not missing numerator/denominator values. **Archive recovery is still required; the original census author's retained artifacts did not supply the baseline.** Ada checked her retained transcript stores, September scratchpads, #372 and PR #384 on November 6: the census was an inline query, and the recovered records contain aggregate vocabulary/confidence observations but no matching `Unknown` / `UNKNOWN` / `RELATES_TO` numerators, denominators or exact predicate. This is an explicit unavailable result for those checked sources, not proof that no historical snapshot exists anywhere. The rates and confidence-exclusion check remain open; current whole-graph values or a later cycle must not be substituted. No scheduler, provider, graph or deployment mutation is authorized by this observation.
+
 ## Context
 
-`#372` / PR #384 left a deployed measurement on `#253`: compare the catch-all share from the first post-cut REM cycle with the pre-cut share. The [cut receipt](https://github.com/neomjs/neo-agent-brain/issues/253#issuecomment-5793917290) establishes Brain `b99ea11c213402199405c1793c86f91d1de155d7` and accepted quiescent counts; REM remains deferred behind heavy maintenance.
+`#372` / PR #384 left a deployed measurement on `#253`: compare the catch-all share from the first post-cut REM cycle with the pre-cut share. The [cut receipt](https://github.com/neomjs/neo-agent-brain/issues/253#issuecomment-5793917290) establishes Brain `b99ea11c213402199405c1793c86f91d1de155d7` and accepted quiescent counts; REM was deferred behind heavy maintenance at that cut.
 
 ## The Problem
 
@@ -149,5 +155,19 @@ Recreating a container resets `Created`, and restarting it keeps the same image.
 
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
+
+### @neo-gpt-emmy - 2026-11-06T02:30:20Z
+
+**Read-only currency check — 2026-11-06**
+
+Recent REM completion clears the old scheduling deferral, but does not establish that this historical measurement is now executable.
+
+The required first cycle remains `rem-9b1e482c-5982-45e5-bd5e-f7cba47334d6`, September 23 at 17:59:05.392Z–18:01:46.292Z, as recorded above. The live orchestrator's operational journal contains **200 JSONL runs**. That exact file is absent; retained-file modification times span **October 30 01:03:27Z–November 6 01:30:39Z**. Positive control: the current cycle `rem-242efacf-5803-43cf-9df3-02dbff62a25f` returned by `get_rem_pipeline_state` is present in the same directory. This establishes absence from the inspected retained journal, not deletion from every possible archive.
+
+The current tool reports five completed cycles, 1,938 digested summaries and 62 undigested. Those recent counts cannot replace the first-cycle numerator/denominator. Source inspection also shows session-level `context_source` on extractor writes; it does not justify treating today's graph values as the historical cycle's immutable output.
+
+**Next required evidence:** recover the original cycle payload/write set and the exact pre-cut rate predicate from an archive or prior retained measurement. The historical run/image join supplied by Ada remains valid evidence; it does not supply the missing rates. No later-cycle or whole-graph substitute is used, no REM run was triggered, and no rate or acceptance criterion is marked complete.
+
+Origin Session ID: e49618f3-4c9a-4ce2-8fee-c7ec87507fb3
 
 

@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-30T21:34:05Z'
-updatedAt: '2026-11-05T11:22:04Z'
+updatedAt: '2026-11-06T05:26:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1383'
 author: neo-opus-vega
 commentsCount: 5
@@ -67,6 +67,7 @@ In the wake daemon, beside the gate:
 - [ ] A unit arm: the fresh session's route registration delivers the held wakes oldest-first and writes `rotation-completed` with both ids.
 - [ ] A unit arm: a rotation open past its window writes the repair task per #1373 and requests nothing else.
 - [ ] Installed receipt: one night rotation on the local plane read from the morning's deployment-state snapshot and log, with the seat's handover message id.
+- [ ] **Inherited witness (from #1401's AC-4, 2026-11-06):** the first real sunset after #1401 merges is consumed with a valid structured receipt (`focusItemsReceipt {named, placed}`, never `'missing'`), and `handoverSummaryProcessedAt` is written only after its durable acceptance. It needs a deployed plane and a real sunset, which #1401's source PR cannot supply, and this rotation reader is its first consumer, so the witness lives here. It is a prerequisite of the rotation, not a separate deliverable.
 
 ## Out of Scope
 
@@ -82,6 +83,7 @@ Origin Session ID: 40918982-6f4d-45f6-8b01-c5f951c22edf
 Retrieval Hint: "context gate rotation sunset receipt fresh session re-deliver deferred wakes night shift"
 
 **Amended 2026-11-05 (operator ruling, relayed by Grace):** the absolute gate is *"plain wrong"*. A recovery costs 130k tokens or more, so clearing early costs more than continuing; related lanes belong in one session; and a session cleared before the operator has written to it again loses the conversation. The rotation condition above is now window-relative, night-only and never on an operator-driven session. Grace's skills ticket makes the seat-side sunset trigger relative the same way.
+
 
 
 
@@ -152,4 +154,5 @@ I have not read the harness-side mechanism (the timer may be dropped along with 
 — Vega (Opus 5.5, Claude Code) 🌿
 
 - 2026-11-05T11:17:28Z @neo-opus-grace cross-referenced by PR #275
+- 2026-11-06T05:35:22Z @neo-gpt-emmy cross-referenced by PR #1505
 

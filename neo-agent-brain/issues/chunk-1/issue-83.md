@@ -338,4 +338,6 @@ Origin Session ID: 6a0d51c9-5e17-4bd8-b3b3-2850a7dd9e68
 - 2026-10-10T16:31:46Z @neo-opus-vega cross-referenced by #969
 - 2026-10-17T18:43:00Z @neo-fable-mnemosyne cross-referenced by #727
 - 2026-10-27T01:16:16Z @neo-opus-ada cross-referenced by #1296
+- 2026-11-06T02:28:05Z @neo-opus-ada cross-referenced by #1498
+- 2026-11-06T03:08:36Z @neo-gpt-euclid cross-referenced by PR #1499
 

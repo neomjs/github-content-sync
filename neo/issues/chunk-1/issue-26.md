@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2019-11-17T16:51:44Z'
-updatedAt: '2026-11-06T00:12:21Z'
+updatedAt: '2026-11-06T00:22:11Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/26'
 author: tobiu
 commentsCount: 5
@@ -45,8 +45,9 @@ Prescription checked: `src/tab/Container.mjs` owns close intent and card removal
 | Surface | Authority | Behavior | Edge / fallback | Docs | Evidence |
 | --- | --- | --- | --- | --- | --- |
 | Per-tab `header.closable` | Original request + current header config ownership | Opt-in close affordance; default false; ordinary text/glyph still activates the tab | Preserve lazy headers, effect buttons, overflow and ordering; no nested native button | Header config JSDoc + TabContainers guide | Owning units and native component test |
-| `TabContainer.closeTab(index)` and close intent | Existing Container removal owner | Respect closability, emit synchronous `beforeTabClose` context with mutable `abort`; remove only if not aborted, then emit `tabClose` | Invalid or non-closable target returns false; veto changes no membership; direct `removeAt` keeps its existing programmatic role | API JSDoc + guide | Veto/closed/invalid target controls |
-| Pointer and keyboard interaction | Existing tablist/button/navigation ownership | Pointer close and Delete on a focused closable tab use the same close path; text/glyph activation stays intact; restore focus to a surviving tab when the focused tab closes | No close for default-off or vetoed tabs; no nested interactive markup; empty state remains explicit | Guide + accessible shortcut metadata | Native focus/keyboard/activation controls |
+| `TabContainer.closeTab(index)` and close intent | Existing Container removal owner | Respect closability; emit synchronous `beforeTabClose` with mutable `abort` and `restoreFocus`; remove only if not aborted, then emit `tabClose`; return the captured card/config on success | Invalid, disabled, non-closable or vetoed targets return false; `restoreFocus: false` lets the host own focus; direct `removeAt` remains the structural API | API JSDoc + guide | Veto/return/identity/invalid-target controls |
+| `tabClose` payload | Captured identity plus the resolved removal slot | Carries `cardId`, `headerId`, `text`, `index`, `card` and `header`; ids/text are captured before destruction and index names the actual removal slot after listener reordering | Card/config and header references can already be destroyed; captured ids/text remain usable; lazy cards close without construction | API JSDoc + guide | Captured event identity and listener-reorder controls |
+| Pointer and keyboard interaction | Existing tablist/button/navigation ownership | Pointer close and Delete use one close path; title/glyph activation remains; closing a header or panel that contains focus restores it to the following tab, or the previous tab when last | Focus outside the TabContainer stays; when restoring focus, an empty container receives programmatic focus with tabIndex -1 so Tab can continue; `restoreFocus: false` opts out | Guide + accessible shortcut metadata | Native header/panel/empty/external-focus controls |
 | Post-removal active selection | Existing #20390 acceptance | First active removal selects new index 0; other active removal retains previous-neighbor policy; empty state uses null; silent atomic state remains coherent | Preserve intentional null and keepMounted/deferred DOM semantics | Removal JSDoc | Red/green first/middle/last/only, silent and non-silent cases |
 | Docs consumer | Original PoC | Use generic opt-in configuration and remove custom path inspection/removal code | Preserve custom header content and retained cards | Existing Docs source | Consumer source and browser smoke |
 | Pending lazy-card settlement | Existing `layout.Card` import owner | Follow the admitted occupant after reorder; a closed/removed or destroyed owner returns null without late construction/publication | A replacement reusing an id owns a new flight; preserve same-item/alias joining and retry; refresh active presentation after await | Loader JSDoc | Deferred reorder, active/inactive/only close, replacement generation and existing alias controls |
@@ -92,6 +93,9 @@ This issue was closed because it has been inactive for 14 days since being marke
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-05T20:37:27Z @neo-gpt-sophie cross-referenced by #6781
+- 2026-11-05T22:43:39Z @neo-gpt-euclid added the `ai` label
+- 2026-11-05T22:43:39Z @neo-gpt-euclid added the `core` label
+- 2026-11-05T22:43:41Z @neo-gpt-euclid assigned to @neo-gpt-euclid
 - 2026-11-05T22:45:35Z @neo-gpt-euclid cross-referenced by #20390
 ### @neo-gpt-emmy - 2026-11-05T22:55:44Z
 
@@ -152,8 +156,13 @@ The subsequent head `02dc85b2dd11497201676a63445a5e2b04fc1d99` changes only `bui
 
 The agreed independent validation contribution is complete. Current-head hosted CI and the author's cross-family review handoff still govern PR readiness and the remaining goal exit.
 
+- 2026-11-05T23:28:35Z @neo-gpt-euclid referenced in commit `34f1a57` - "fix(container): retain functional item removal lifecycle (#26)"
 - 2026-11-05T23:29:07Z @neo-gpt-euclid cross-referenced by PR #20399
+- 2026-11-05T23:35:15Z @neo-gpt-euclid referenced in commit `a5f27cc` - "fix(tab): fence stale activation and preserve render-only moves (#26)"
 - 2026-11-05T23:35:43Z @neo-opus-ada cross-referenced by #20401
+- 2026-11-05T23:36:51Z @neo-gpt-euclid referenced in commit `02dc85b` - "chore(tab): record measured reparent guard size (#26)"
 - 2026-11-05T23:38:03Z @neo-opus-ada cross-referenced by PR #20402
 - 2026-11-05T23:51:00Z @neo-opus-ada cross-referenced by PR #20405
+- 2026-11-06T00:12:21Z @neo-opus-ada added this to the **v13.4** milestone
+- 2026-11-06T00:24:17Z @neo-gpt-euclid referenced in commit `19429f4` - "fix(tab): restore focus when closing from inside a card (#26)"
 

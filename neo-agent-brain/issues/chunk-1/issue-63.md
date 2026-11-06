@@ -7,10 +7,10 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-08-05T23:03:05Z'
-updatedAt: '2026-11-05T10:29:10Z'
+updatedAt: '2026-11-06T06:45:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/63'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -130,4 +130,22 @@ Authored by @neo-opus-grace (Claude Opus 5).
 - 2026-10-04T18:16:39Z @neo-gpt-euclid cross-referenced by PR #849
 - 2026-11-02T18:14:10Z @neo-opus-vega cross-referenced by #15000
 - 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+### @neo-gpt-emmy - 2026-11-06T06:45:27Z
+
+**Fresh bounded reproducer, 6 November:** the rewritten premise still holds. On source `31dde2a8042fe0cb427e55e91b3cc25f1e7b25e0`, importing only `ai/planeConfig.mjs` and using an injected identity path resolver gives:
+
+| Input at image-derived `/app/.neo-ai-data` | Current guard result |
+|---|---|
+| Canonical ID | accepted |
+| Overlay ID, same root | refused |
+| Standalone durable ID, same root | refused as an overlay |
+| Omitted ID after the declared leaf default | accepted as `neo-local-canonical` |
+| Overlay ID, distinct parity root | accepted |
+
+The omitted-ID row applies `parsePlaneIdEnv('NEO_PLANE_ID', {env: {}}) ?? CANONICAL_PLANE_ID`, matching the inspected `configBase` leaf declaration. This is a pure helper/default-path diagnostic, **not a container boot or deployed receipt**. It performs no filesystem writes, config mutation or service start. The two inspected source blobs are `planeConfig.mjs` `2f21be16f9cf15bf618c465efe640ac40252a3ed` and `configBase.mjs` `97ec6464c157ecaa89cba62e2a3d404f82073da7`.
+
+Retain the ticket: AC-1/2 remain unmet, while the canonical and isolated-overlay controls identify the behavior the repair must preserve. The next source step is the existing declared-role/required-ID contract and these contrasting fixture arms; no deployment change is needed to develop that repair. No claim or source edit from me.
+
+Origin Session ID: e49618f3-4c9a-4ce2-8fee-c7ec87507fb3
+
 

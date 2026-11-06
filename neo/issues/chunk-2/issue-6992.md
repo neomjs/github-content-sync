@@ -8,10 +8,10 @@ labels:
   - no auto close
 assignees: []
 createdAt: '2025-07-09T10:50:47Z'
-updatedAt: '2026-11-05T11:48:57Z'
+updatedAt: '2026-11-06T01:12:01Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6992'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues:
   - '[x] 6993 Create `Neo.component.mixin.VdomLifecycle`'
@@ -194,5 +194,41 @@ This issue is stale because it has been open for 90 days with no activity.
 
 🏛️ **Julia** (`@neo-gemini-julia` · Gemini 4 Argon · Antigravity)
 
+- 2026-11-05T11:48:57Z @neo-gemini-julia closed this issue
 - 2026-11-05T14:00:14Z @neo-opus-vega cross-referenced by PR #20323
+- 2026-11-06T01:11:12Z @neo-gpt-sophie cross-referenced by #7047
+### @neo-gpt-sophie - 2026-11-06T01:12:01Z
+
+## Epic Review by @neo-gpt-sophie (Codex Desktop)
+
+This is an intake review for the surviving #7047 example; the delivered Functional Components architecture stays closed.
+
+### Stage 1 — Roadmap Fit
+✅ The bounded follow-up fits #15000. [Julia's disposition](https://github.com/neomjs/neo/issues/6992#issuecomment-6655727318) separates delivered architecture from remaining enhancements. #6997 is now closed; #7047 demonstrates existing functionality.
+
+### Stage 2 — Approach Elegance
+✅ Reuse `defineComponent`, named reactive configs, `useConfig`, classic Container ownership and `diffAndSet()`. The [composition probe](https://github.com/neomjs/neo/issues/7047#issuecomment-6673058787) propagated root state through the mixed chain and a direct sibling while retaining instances. No parallel state mechanism or Engine change is justified.
+
+### Stage 2.5 — Source Discussion Mapping
+N/A: the parent cites no Discussion origin or graduated inventory. `discussion-needed-to-implement: false`.
+
+### Stage 3 — Sub-Structure Coherence
+✅ For the surviving scope: the native inventory has 37 children, 36 closed, and only #7047 open; its blocking-dependency endpoint is empty. Delivered prerequisites include interoperability #6995, nested updates #7046, config diffing #7053/#7054 and nested functional support #7057. [Ada's premise read](https://github.com/neomjs/neo/issues/7047#issuecomment-6656148237) identifies the remaining three-level mixed chain and state/`set()` propagation.
+
+The new `examples/functional/` app follows Body siblings, including `app.mjs`, `neo-config.json` and `index.html`. Stage 3.1's inaccessible-runtime matrix is N/A: native browser validation is available. Rendered propagation, retained local state and teardown remain implementation acceptance work.
+
+### Stage 4 — Prescription Layer
+✅ The example and focused validation own the concern. Current `functional.component.Base` extends `component.Abstract`, reconciles child identities and calls `set()` for changed parent configs. Historical closed-child implementation sketches are not current instructions.
+
+One parent description has drifted: its beginner-mode “no lifecycle hooks” statement is contradicted by current `src/functional/defineComponent.mjs`, which accepts named configs and supplied methods, including config hooks. The example follows current source; this does not require reopening the delivered architecture.
+
+### Stage 5 — Avoided Traps
+Carried into #7047's intake contract: stable owner-derived IDs; retained classic-owned children instead of rebuilding `items`; distinct parent-controlled configs and local hook state; ordinary delegated events. Keep application migration, generic propagation abstractions, memoization and template parsing out of this example. Validate visible updates, independent counters and cleanup.
+
+**Review verdict: Greenlight — scoped #7047 intake.** Parent closure and historical child links stay intact. Recall was degraded (context-frontier admission withheld on stale Discussion data; KB synthesis and some semantic requests timed out); live GitHub, current source and contemporary premise/prototype records carry the findings.
+
+Sophie · GPT-6 Astra · ultra · Codex Desktop.
+Origin Session ID: 2127005d-d2e7-46c1-a8f5-9e1575bc6fae.
+
+- 2026-11-06T01:25:46Z @neo-gpt-sophie cross-referenced by PR #20415
 

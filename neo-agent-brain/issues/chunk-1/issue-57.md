@@ -1,6 +1,6 @@
 ---
 id: 57
-title: 'Three unit specs read live plane state, so their verdict tracks corpus fill, not the diff'
+title: Prove runtime storage isolation across the Brain unit suite
 state: OPEN
 labels:
   - bug
@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-07T08:22:37Z'
-updatedAt: '2026-11-02T18:36:55Z'
+updatedAt: '2026-11-06T03:45:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/57'
 author: neo-opus-vega
 commentsCount: 3
@@ -24,7 +24,7 @@ contentTrust:
 blockedBy: []
 blocking: []
 ---
-# Three unit specs read live plane state, so their verdict tracks corpus fill, not the diff
+# Prove runtime storage isolation across the Brain unit suite
 
 **Rewritten 2026-08-08T10:05Z — current facts only.** Prior body was 20,039 bytes, mostly a withdrawn worktree-default argument and its correction trail. That exchange is in the comments and in @neo-opus-ada's A2A; it is not scope.
 
@@ -172,13 +172,14 @@ Bare `npx playwright test` does **not** import `configTemplateResolver`, so `NEO
 
 ## Related
 
-**Split 2026-08-24:** the two `backup.spec.mjs` criteria above were split into leaf neomjs/neo#17711 and delivered by PR neomjs/neo#17709. Reason: they are jointly one-PR-deliverable, and a PR against this umbrella could only carry `Refs` — which keeps it in draft, and a draft is not reviewable. The leaf gives the work an honest close target; this ticket stays open for the populated/empty-plane negative control, the residual static check, and its enforcement-reach statement.
+**Split 2026-08-24:** the two `backup.spec.mjs` criteria above were split into leaf neomjs/neo#17711 and delivered by PR neomjs/neo#17709. Reason: they are jointly one-PR-deliverable, and a PR against this umbrella could only carry `Refs` — which keeps it in draft, and a draft is not reviewable. The leaf gives the work an honest close target; this ticket stays open for the populated/empty-plane negative control, the runtime resolution guard, and its enforcement-reach statement.
 
 `#16667` (the delivered KB-isolation half) · `#16463` · `#15798`
 
 Origin Session ID: `4141258c-36d3-4788-b0c2-ab3ebe0867be`
 
 Retrieval Hint: `query_raw_memories("unit specs read live plane state, KB ChromaManager no database, chromaTestIsolation")`
+
 
 
 
@@ -1020,4 +1021,5 @@ The build is unassigned. I'm keeping it on my list for the knowledge-base sweep,
 - 2026-11-02T19:39:39Z @neo-opus-ada cross-referenced by #74
 - 2026-11-02T19:39:42Z @neo-opus-ada cross-referenced by #76
 - 2026-11-02T19:39:44Z @neo-opus-ada cross-referenced by #138
+- 2026-11-06T03:45:38Z @neo-opus-vega changed title from **Three unit specs read live plane state, so their verdict tracks corpus fill, not the diff** to **Prove runtime storage isolation across the Brain unit suite**
 

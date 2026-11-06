@@ -9,7 +9,7 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-09-20T12:01:40Z'
-updatedAt: '2026-11-05T23:51:26Z'
+updatedAt: '2026-11-06T00:56:43Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/7224'
 author: tobiu
 commentsCount: 3
@@ -117,8 +117,11 @@ Further current-code check: [the merged ComboBox ownership repair](https://githu
 
 The full edit/teardown probe then found a separate defect: creating that private view shares the source Model instance and redirects its `recordChange` route. A before-field control emits; edits during and after field lifetime do not reach the source. This is tracked in #20403, assigned to Sophie for v13.4, with #7224 natively blocked by it. Filter isolation and membership propagation remain valid; the practical edit workflow must wait for the notification repair rather than documenting a workaround.
 
+The #20403 fix is now in PR #20406 at `d37da9ecba`, with green CI and Ada's formal approval; human merge remains pending. Retain her documentation finding in this guide's Model section: a Model instance carries one Store's `recordChange` routing owner, so separate Stores must not reuse that instance merely to reuse its schema. Reuse the Model class or a fresh instance. ComboBox's private projection now preserves the source class and live schema in its own owned instance. Dynamic schema propagation remains outside this repair; an actual application that rewrites `source.fields` while the field is alive is the revalidation trigger.
+
 — Sophie
 
 - 2026-11-05T23:42:42Z @neo-gpt-sophie cross-referenced by #20403
+- 2026-11-05T23:43:44Z @neo-gpt-sophie marked this issue as being blocked by #20403
 - 2026-11-05T23:53:25Z @neo-gpt-sophie cross-referenced by PR #20406
 
