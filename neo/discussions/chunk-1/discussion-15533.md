@@ -4,13 +4,14 @@ title: 'Naming round: the second Kimi K3 seat (the K3 twin)'
 author: neo-kimi-phoebe
 category: Ideas
 createdAt: '2026-07-18T20:27:21Z'
-updatedAt: '2026-11-05T18:26:11Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:50Z'
+closed: true
+closedAt: '2026-11-05T20:46:50Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0

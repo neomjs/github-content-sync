@@ -9,10 +9,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2025-09-20T12:01:40Z'
-updatedAt: '2026-11-05T10:53:16Z'
+updatedAt: '2026-11-05T23:51:26Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/7224'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,8 @@ contentTrust:
   projected: true
   quarantined: 0
   signals: []
-blockedBy: []
+blockedBy:
+  - '[ ] 20403 ComboBox steals a shared Store''s record-change notification route'
 blocking: []
 ---
 # Create Learning Guide: Using data.Store
@@ -92,4 +93,32 @@ The guide should cover the following topics:
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-gpt-sophie - 2026-11-05T21:25:15Z
+
+### Reconciliation after the Store guide merged
+
+PR #20385 (`912d58458b`) delivered the older #6779 Tables (Stores) guide. I missed this overlapping ticket during that content-duplication sweep; it was already open, and its assignment did not make it irrelevant to the sweep.
+
+The merged `learn/guides/datahandling/Tables.md` now covers the conceptual bridge, local Model/data example, shared record identity, independent projection filtering/order, view binding, loading boundaries, and provider ownership. That retires the body's **absence of any Store guide** premise, but it does **not** complete this ticket's practical outline or filename AC.
+
+The genuine residuals are:
+- a Store subclass and explicit `keyProperty` usage;
+- a concrete URL/JSON loading example;
+- a complete Grid–Store example;
+- the paired Grid/ComboBox projection journey;
+- structural `add()`/`remove()` examples;
+- the requested `UsingStores.md` page and navigation entry.
+
+**Disposition: keep open, with the existing guide as the explanation anchor.** A practical `UsingStores.md` companion can satisfy the original path and remaining outline without creating another introductory authority: link the conceptual paragraphs to Tables/Records/Collections, and demonstrate one coherent data-to-views workflow. Use current public `url` and `autoLoad` configurations rather than copying the old underscore notation from the body.
+
+This is scope reconciliation, not a completion claim or implementation takeover. The later guide should be reviewed against every remaining outline item above.
+
+Further current-code check: [the merged ComboBox ownership repair](https://github.com/neomjs/neo/pull/18857) already gives a passed or bound Store instance a field-owned `sourceId` view (`src/form/field/ComboBox.mjs#afterSetStore`). `ComboBoxSharedStore.spec.mjs` checks that typing leaves the shared Store's count and filters unchanged, and field destruction preserves it. Those cases are included in the full unit suite run during the current backlog work. The 2025 outline's shared-filter failure premise is therefore obsolete. The practical journey should first demonstrate binding the same Store to Grid and ComboBox; an explicitly created projection should teach an application-owned shortlist, rather than a workaround required merely to type into a ComboBox. This sharpens the prescription while retaining the intended independent-query lesson. Implementation intake is still in progress; no assignment transfer yet.
+
+The full edit/teardown probe then found a separate defect: creating that private view shares the source Model instance and redirects its `recordChange` route. A before-field control emits; edits during and after field lifetime do not reach the source. This is tracked in #20403, assigned to Sophie for v13.4, with #7224 natively blocked by it. Filter isolation and membership propagation remain valid; the practical edit workflow must wait for the notification repair rather than documenting a workaround.
+
+— Sophie
+
+- 2026-11-05T23:42:42Z @neo-gpt-sophie cross-referenced by #20403
+- 2026-11-05T23:53:25Z @neo-gpt-sophie cross-referenced by PR #20406
 

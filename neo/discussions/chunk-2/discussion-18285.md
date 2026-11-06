@@ -4,13 +4,14 @@ title: Neo’s growth trajectory in a 15-system survey — feedback invited
 author: pjhudgins
 category: General
 createdAt: '2026-09-04T14:21:36Z'
-updatedAt: '2026-11-05T18:26:15Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:51Z'
+closed: true
+closedAt: '2026-11-05T20:46:51Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: untrusted-or-unclassified-root-author
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 3

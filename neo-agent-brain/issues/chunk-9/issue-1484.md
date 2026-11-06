@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-05T14:03:29Z'
-updatedAt: '2026-11-05T18:15:55Z'
+updatedAt: '2026-11-05T19:10:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1484'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: 875
 subIssues: []
 subIssuesCompleted: 0
@@ -81,7 +81,7 @@ Added 2026-11-05 at review RA-2 (5789624471). No runtime mechanism is new; every
 - [ ] AC-1: A unit arm shows a fresh plane's boot provisions the two anchors and the two mailbox roots, and no AgentIdentity node.
 - [ ] AC-2: The manifest and the roster take the two mailbox roots from the one declaration in `mailboxRoots.mjs`.
 - [ ] AC-3: Neither `bootSeedManifest.mjs` nor `GraphService.mjs` imports `identityRoots`. The runtime modules that import it, outside `ai/scripts/`, drop from 18 to 16. The earlier "24" counted files that mention it.
-- [ ] AC-4 (post-merge): on our own plane, the existing identity nodes are unchanged after a Memory Core restart on the new seed.
+- [x] AC-4 (post-merge): on our own plane, the existing identity nodes are unchanged after a Memory Core restart on the new seed.
 
 ## Out of Scope
 
@@ -109,6 +109,7 @@ Authored by Vega (Opus 5.5, Claude Code)
 
 
 
+
 ## Timeline
 
 - 2026-11-05T14:03:29Z @neo-opus-vega assigned to @neo-opus-vega
@@ -116,6 +117,7 @@ Authored by Vega (Opus 5.5, Claude Code)
 - 2026-11-05T14:03:30Z @neo-opus-vega added the `ai` label
 - 2026-11-05T14:03:30Z @neo-opus-vega added the `architecture` label
 - 2026-11-05T14:03:31Z @neo-opus-vega added the `agent-os` label
+- 2026-11-05T14:03:35Z @neo-opus-vega added parent issue #875
 - 2026-11-05T14:03:43Z @neo-opus-vega cross-referenced by #875
 ### @neo-opus-vega - 2026-11-05T16:28:15Z
 
@@ -195,4 +197,19 @@ the subprocess graph. Boot seeds no team identity now, so each test
 writes a scenario graph holding @test-coordinator and hands it to the
 subprocesses through NEO_MEMORY_DB_PATH_TEST, as checkSunsetted.spec does."
 - 2026-11-05T18:15:56Z @tobiu closed this issue
+### @neo-opus-vega - 2026-11-05T19:10:05Z
+
+**AC-4 receipt (post-merge), 2026-11-05:** passed. The plane was cut from Brain `15dbfb38` to dev `5b042434` at 19:07–19:09Z with `cut.sh`. All four services were healthy at `rev=5b042434`, and Chroma and ingress were untouched.
+
+`who_is_online` before (19:04:55Z) and after (19:09:08Z) the Memory Core restart on the new seed: **18 identities both times, the same members.**
+- dark: `@neo-fable-clio`, `@agent-a`, `@agent-b`, `@neo-fable-mnemosyne`
+- benched: `@neo-kimi-phoebe`, `@neo-kimi-iris`, `@neo-preview`
+- never connected: `@tobiu`, `@neo-test-writer`, `@neo-opus`
+- online or idle: the 8 active seats (`@neo-gemini-maryam` moved from idle to online in between)
+
+So additive boot preserved every persisted identity, and the seed added none.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
 

@@ -4,13 +4,14 @@ title: Minimum Browser Requirements?
 author: HLeithner
 category: Q&A
 createdAt: '2022-08-18T16:00:49Z'
-updatedAt: '2026-11-05T18:26:04Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:48Z'
+closed: true
+closedAt: '2026-11-05T20:46:48Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: untrusted-or-unclassified-root-author
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0

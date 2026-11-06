@@ -1,7 +1,7 @@
 ---
 id: 3589
 title: buildScripts/createTheme
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - developer-experience
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2022-12-08T17:39:53Z'
-updatedAt: '2026-11-05T18:17:39Z'
+updatedAt: '2026-11-05T21:18:18Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3589'
 author: tobiu
 commentsCount: 4
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T21:14:44Z'
 ---
 # buildScripts/createTheme
 
@@ -55,11 +56,15 @@ Prescription checked: `buildScripts/create/` owns scaffolding; `buildScripts/bui
 
 ### Acceptance record
 
+Candidate: PR #20365 at `13a5248927f3b4f534fe81632a772e73578aeb75` (RA-1: build tooling follows the devDependencies policy in #5105).
+
+Completed: PR #20365 merged into `dev` on 2026-11-05 at `ba5891d9c3cab76af6cdcabbe4e2becf1c4fab9e`, following 44 passing checks and Grace's Round 2 approval [5792219569](https://github.com/neomjs/neo/pull/20365#pullrequestreview-5792219569).
+
 | Consumer effect | Expected | Observed | State / next proof |
 | --- | --- | --- | --- |
-| Create a workspace theme from a selected existing base | Complete editable source with matching selectors and resolvable dependencies | No generator exists on the inspected dev base | Open — implement and exercise the CLI |
-| Build and use the generated theme | Normal compiled files and theme-map membership for its Global/component paths | Not yet run | Open — physical workspace build, then inspect runtime loading/appearance within the evidence available |
-| Preserve existing work on refusal | Existing source and destination remain byte-identical | Not yet run | Open — invalid/conflicting destination controls |
+| Create a workspace theme from a selected existing base | Complete editable source with matching selectors and resolvable dependencies | CLI, interactive terminal entry and effective source snapshot implemented; a physical packed workspace using create-app's Engine dev-tool postinstall generates and compiles the theme successfully | Passed — 20 local theme cases and the packed workspace's generation/build path; current-head CI and independent review passed; merged |
+| Build and use the generated theme | Normal compiled files and theme-map membership for its Global/component paths | Real workspace builder emits Global/component CSS and both maps; 388 entry pairs across all five shipped bases preserve CSS structure and values after exact class retargeting | Passed at the source/build boundary — no separate browser appearance claim |
+| Preserve existing work on refusal | Existing source and destination remain byte-identical | Refusal snapshots preserve existing source/destination bytes; parser regressions preserve asset URLs, literals and all Sass import targets | Passed — 20 local theme cases on the repaired head; 44 current-head checks passed, including Engine Tests |
 
 No new runtime inheritance layer, theme registry, automatic application config mutation, or replacement ticket is part of this work.
 
@@ -77,6 +82,8 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-14T02:26:44Z @github-actions closed this issue
+- 2026-10-09T20:23:46Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:23:47Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:23:49Z
 
 #19489 set C · T4 · Grace · 2026-10-09: **reopened, valid but later.** There is still no theme generator in `buildScripts/create/`.
@@ -96,5 +103,13 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 🏛️ Julia (`@neo-gemini-julia`)
 
+- 2026-11-05T18:13:58Z @neo-gpt-euclid added the `ai` label
+- 2026-11-05T18:13:58Z @neo-gpt-euclid added the `build` label
+- 2026-11-05T18:13:59Z @neo-gpt-euclid added the `developer-experience` label
+- 2026-11-05T18:17:39Z @neo-gpt-euclid assigned to @neo-gpt-euclid
 - 2026-11-05T18:42:29Z @neo-gpt-euclid cross-referenced by PR #20365
+- 2026-11-05T19:06:59Z @neo-gpt-euclid referenced in commit `50ef8a2` - "fix(build): run theme generation without development CLI packages (#3589)"
+- 2026-11-05T19:36:52Z @neo-gpt-euclid cross-referenced by #20377
+- 2026-11-05T19:40:50Z @neo-gpt-euclid cross-referenced by PR #20378
+- 2026-11-05T20:22:28Z @neo-gpt-euclid referenced in commit `a62c6da` - "chore(build): integrate consumer guard repair (#3589)"
 

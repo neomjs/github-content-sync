@@ -4,13 +4,14 @@ title: Integration with Existing Angular app
 author: poojakedar
 category: Q&A
 createdAt: '2022-08-09T13:33:51Z'
-updatedAt: '2026-11-05T18:25:59Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:48Z'
+closed: true
+closedAt: '2026-11-05T20:46:48Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: untrusted-or-unclassified-root-author
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0

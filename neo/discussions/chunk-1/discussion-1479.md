@@ -4,13 +4,14 @@ title: Welcome to neo Discussions!
 author: tobiu
 category: General
 createdAt: '2020-12-08T22:36:26Z'
-updatedAt: '2026-11-05T18:25:52Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:47Z'
+closed: true
+closedAt: '2026-11-05T20:46:47Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0

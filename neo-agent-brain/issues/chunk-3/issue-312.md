@@ -1,14 +1,15 @@
 ---
 id: 312
-title: '[PROVISIONAL_UNGRADUATED: D#17109] The re-ranker sorts by a score it never returns, so relevanceScore contradicts the order'
-state: OPEN
+title: 'The re-ranker sorts by a score it never returns, so relevanceScore contradicts the order'
+state: CLOSED
 labels:
   - bug
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-09-04T19:01:30Z'
-updatedAt: '2026-11-02T18:40:59Z'
+updatedAt: '2026-11-05T22:19:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/312'
 author: neo-opus-ada
 commentsCount: 1
@@ -22,103 +23,95 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T22:19:35Z'
 ---
-# [PROVISIONAL_UNGRADUATED: D#17109] The re-ranker sorts by a score it never returns, so relevanceScore contradicts the order
+# The re-ranker sorts by a score it never returns, so relevanceScore contradicts the order
 
-> ## `[PROVISIONAL_UNGRADUATED: D#17109]`
->
-> **This is a pre-quorum reservation, not an executable ticket.** Source Discussion: [neomjs/neo#17109](https://github.com/neomjs/neo/discussions/17109) — `Scope: high-blast`, divergence **OPEN**, §5.2 non-Claude Step-Back and §6.2 quorum both **unmet**.
->
-> Per `ticket-create-workflow.md` §1d this ticket **carries no final ACs, is unassigned, and must not be claimed or started.** Any PR before the `[GRADUATED_TO_TICKET]` marker stays **draft** with `Refs #312`, never `Resolves`.
->
-> **Provenance:** filed 2026-09-04 as an assigned final-AC ticket with a ready `Resolves` PR (#313) — an inadmissible entry shape. Caught by @neo-gpt-emmy in [review 5117526892](https://github.com/neomjs/neo-agent-brain/pull/313#pullrequestreview-5117526892); #313 closed, body returned to reservation shape by its author. Reusable source coordinate: `b6078aae59`.
+**Graduated 2026-11-05** from neomjs/neo#17109, Row D (Fold 4, `DC_kwDODSospM4BJ2GB`):
+- **Step-Back and signal:** Julia's non-Claude §5.2 `STEP_BACK` and `[GRADUATION_APPROVED by @neo-gemini-julia @ DC_kwDODSospM4BJ2GB]`, in [`DC_kwDODSospM4BKG-F`](https://github.com/orgs/neomjs/discussions/17109#discussioncomment-19427205).
+- **Her conditions:** her two ⚠ partials are AC-3 and AC-4 below.
+- **Assignable now.** Line coordinates are re-derived at `dev` `ab82c40fec`.
 
-## Attributed rationale (§1d.1)
+## Context
 
-Not identity — a measured, three-instance cost, each attributable:
+A measured, three-instance cost:
 
 | when | who | what they concluded from the visible numbers |
 |---|---|---|
-| 2026-08-14 | two maintainers, within 4h | "ranking is broken" — recorded in D#17109 |
-| 2026-09-04 | @neo-opus-ada | broadcast to `AGENT:*` that semantic recall was degraded, blamed `vectorGeneration: missing`; **retracted after measuring** |
+| 2026-08-14 | two maintainers, within 4h | "ranking is broken", recorded in D#17109 |
+| 2026-09-04 | @neo-opus-ada | broadcast to `AGENT:*` that semantic recall was degraded and blamed `vectorGeneration: missing`; **retracted after measuring** |
 
-The third instance is the sharpest evidence because it is the author's: I read `distance` and `relevanceScore`, saw an order that did not follow them, and published a wrong diagnosis of a **healthy** subsystem. The number that would have corrected me in one glance was computed, used to sort, and discarded three call-frames earlier.
-
-D#17109's own Option D row reads *"Expose `compositeScore` + `_reRanked` … **Worth doing regardless**"*. That is substantive design intent and it is why this reservation exists. It is **not** graduation authority — separability answers dependency topology, not admissibility.
+In the third instance, the author read `distance` and `relevanceScore`, saw an order that did not follow them, and published a wrong diagnosis of a **healthy** subsystem. The number that would have corrected it at a glance was computed, used to sort, and discarded three call frames earlier.
 
 ## The Problem
 
-`injectQueryReRanker` (`ai/services/memory-core/managers/StorageRouter.mjs:138`) computes per row:
+`injectQueryReRanker` (`ai/services/memory-core/managers/StorageRouter.mjs:147`) computes, per row:
 
 ```js
 semanticScore      = 1 / (1 + vectorDist)
 topologyMultiplier = 1.0 + graphWeights.get(id) + log10(1 + in_degree + out_degree) * 0.1
-compositeScore     = semanticScore * topologyMultiplier   // :221
+compositeScore     = semanticScore * topologyMultiplier   // :230
 ```
 
-sorts by `compositeScore` (`:226`), then re-packs (`:230-238`) into `{ids, distances, metadatas, documents, _reRanked: true}` — **dropping the sort key.**
+It sorts by `compositeScore` (`:235`), then re-packs into `{ids, distances, metadatas, documents, _reRanked: true}` (`:246`), **dropping the sort key.**
 
-Downstream `MemoryService.mjs:2574` and `SummaryService.mjs:497` derive `relevanceScore = 1/(1+distance)`, which is **`semanticScore` — the first factor of the composite**, presented as though it were the ranking score. Whenever `topologyMultiplier` differs between rows (i.e. whenever graph gravity differs — essentially always), rows are correctly ordered by a key the response never contains and appear mis-ordered by the only score it does.
+Downstream, `MemoryService.mjs:2900` and `SummaryService.mjs:560` derive `relevanceScore = 1/(1+distance)`. That is **`semanticScore`, the first factor of the composite**, presented as though it were the ranking score. Rows that differ in graph gravity are ordered by a key the response never contains, and they look mis-ordered by the only score it does contain.
 
-Second half: `_reRanked: true` (`:237`) has a comment at `:157` saying it exists *"so the tool-facing callers can"* observe it. `git grep _reRanked -- ai` returns exactly two hits, both inside `StorageRouter.mjs`. **Zero readers.** A caller cannot distinguish a re-ranked set from a raw Chroma slice.
+The `_reRanked` marker exists, per the comment at `:166`, "so the tool-facing callers can" observe it. `git grep _reRanked -- ai` finds two hits, both in `StorageRouter.mjs`: **it has zero readers.** A caller cannot tell a re-ranked set from a raw Chroma slice.
 
-## Divergence matrix (§1d.2) — provisional, refresh at graduation
+## The Architectural Reality
 
-| # | Option | Falsifier — what would kill it |
-|---|---|---|
-| **R** | **Recommended: additive.** Carry `compositeScore` through the re-pack and all three downstream filters; surface `_reRanked`; leave `relevanceScore` untouched | A consumer that treats an **absent** `compositeScore` as `0` would sort legitimate un-re-ranked rows last. Falsified if the absent-vs-zero distinction cannot be held across every emission path — including `conceptWalk:true` |
-| **A1** | **Replace** `relevanceScore` with `compositeScore` under the existing name | Falsified by `ai/context/Assembler.mjs:154`, a live consumer whose output silently changes. The two are different quantities and both are meaningful; a rename destroys one |
-| **A2** | **Document-only:** leave the payload alone, correct the OpenAPI description to say `relevanceScore` is not the ranking key | Falsified by the evidence table above — three maintainers misread it with the docs already available. A correction that must be *read* to prevent the trap has failed three times. Falsified further if a consumer still cannot detect a **bypassed** re-ranker, which no description can convey |
+- **One ranker, three collections:** `StorageRouter.mjs:147` wraps the memory, summary and temporal-summary proxies (`:38`, `:47`, `:67`).
+- **Memory path:** `MemoryService` filters twice before projecting rows: the tombstone `live` list (`:2833`), then the tenant/trust `filteredIndices` (`:2843`). It projects through `shapeMemoryRow` (`:2862`), whose `detail === 'summary'` branch builds a whitelisted object. The `conceptWalk: true` branch (`:2927`–`:2958`) hydrates candidates through `buildMemoryResolveCandidate`, a direct `get` that bypasses Pass 2.
+- **Summary path:** `SummaryService.querySummaries` takes a fast exit when `!needsPostFilter` (`:520`), and otherwise runs a widening loop that re-maps `ids`, `distances`, `metadatas` and `documents` through `filteredIndices` (`:528`–`:544`).
+- **Schemas:** `ai/mcp/server/memory-core/openapi.yaml` declares `QueryMemoriesResponse` (`:5392`), `MemorySearchResult` (`:5452`), `QuerySummariesResponse` (`:5625`) and `SummarySearchResult` (`:5661`).
+- **A live consumer of `relevanceScore`:** `ai/context/Assembler.mjs:154` reads it by name.
 
-## Architectural Reality
+Design authority: D#17109's graduated Row D ("Expose `compositeScore` + `_reRanked` … worth doing regardless"), together with the marker's own comment at `StorageRouter.mjs:166` naming tool-facing callers as its readers.
 
-- `StorageRouter.mjs:138` `injectQueryReRanker`, wrapping the proxy for `:38` memory, `:47` summary, `:67` temporalSummary — one ranker, three collections
-- `:221` composite computed · `:226` the sort · `:230-238` the re-pack that drops it · `:157` the marker described as tool-facing
-- `MemoryService.mjs:2574` / `:2594` and `SummaryService.mjs:497` / `:524` — the `relevanceScore` derivations
-- `ai/mcp/server/memory-core/openapi.yaml:4625` and `:4830` — both response schemas declaring `relevanceScore`
+## Decision
 
-**Cross-substrate reach (this is what makes it §5.2 high-blast):** services **and** MCP — two of §5.2's list. That conjunction with an ungraduated high-blast Discussion is precisely what §1d blocks.
+**R: additive exposure.** Carry `compositeScore` through the re-pack and every downstream filter, surface the marker as `reRanked`, and leave `relevanceScore` untouched.
+- **A1 rejected (rename `relevanceScore`):** `Assembler.mjs:154` would change output silently.
+- **A2 rejected (document only):** three maintainers misread the numbers with the documentation already available, and no description lets a caller detect a bypassed re-ranker.
 
-## Sections to refresh after graduation (§1d.3)
+Decision Record: `NOT_NEEDED`. This restores visibility of an already-computed sort key; no row changes position.
 
-Do not promote this body as-is. At `[GRADUATED_TO_TICKET]`, refresh:
+## Contract Ledger
 
-1. **This entire provisional header** — remove the marker, restore assignability
-2. **Divergence matrix** → collapse to the graduated decision + a Decision Record line
-3. **Acceptance Criteria** → *absent by design*; author them fresh against the graduated scope. Do not resurrect the seven removed ACs verbatim — they were written pre-quorum
-4. **Contract Ledger** → re-derive against then-current source; line coordinates above are pinned to `dev@25d374e388` and will drift
-5. **Scope boundary vs. D#17109 Options A / F / G′** → re-check separability against whatever actually graduates
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+|---|---|---|---|---|---|
+| `compositeScore` on each `MemorySearchResult` / `SummarySearchResult` row | D#17109 Row D | The sort key, a finite number rounded to 6 decimals like `relevanceScore`, on every re-ranked row | **Absent, never `0` or `null`**, on rows that were not re-ranked: `_reRanked` false or absent, and `via: 'concept-walk'` rows | `openapi.yaml` row schemas | AC-1 – AC-3 specs |
+| `reRanked` on `QueryMemoriesResponse` / `QuerySummariesResponse` | D#17109 Row D; `StorageRouter.mjs:166` | `Boolean(searchResult._reRanked)` for the primary vector pass, on the flat and the `conceptWalk` returns | `false` when the pass bypassed or failed the re-ranker | `openapi.yaml` envelope schemas | AC-4 spec |
+| `relevanceScore` | existing contract | Unchanged | — | unchanged | AC-5 (`Assembler.mjs` output byte-identical) |
 
-## Successor obligations (carried from PR #313's terminal review — do not lose with the branch)
+## Acceptance Criteria
 
-Preserved so the closed PR's findings survive it:
+- [ ] AC-1: re-ranked rows of `query_raw_memories` and `query_summaries` carry `compositeScore`, index-parallel through the re-pack and every filter. That means `MemoryService`'s tombstone `live` list and its `filteredIndices`, and `SummaryService`'s fast exit and its `needsPostFilter` loop.
+- [ ] AC-2: a fixture where distance order and `compositeScore` order genuinely disagree proves each row carries its own score after filtering. Without disagreement the arm cannot witness the defect.
+- [ ] AC-3 (Julia, Step-Back point 2): the `detail: 'summary'` branch of `shapeMemoryRow` forwards `compositeScore`, so the default `/context-recovery` probe keeps it.
+- [ ] AC-4 (Julia, Step-Back point 4): `compositeScore` is absent, never `0` or `null`, when `_reRanked` is false or absent and on `via: 'concept-walk'` rows. Both `query_raw_memories` returns (flat and `conceptWalk`) and `query_summaries` carry an envelope-level `reRanked` boolean.
+- [ ] AC-5: `relevanceScore` is unchanged, and `ai/context/Assembler.mjs` output is byte-identical.
+- [ ] AC-6: `openapi.yaml` declares `compositeScore` on both row schemas and `reRanked` on both envelopes. Specs assert the service output directly across `detail: 'full'`, `detail: 'summary'`, `conceptWalk: true` and the `needsPostFilter` path, because `openApiValidator` does not compile `allOf` on these row schemas.
 
-- **Prove the fields through the service envelope + filter boundaries**, not only `StorageRouter`. #313's arm (`StorageRouterScoreExposure.spec.mjs`) proved the router only; `MemoryService` filters **twice** (tombstone `live`, then tenant/trust `filteredIndices`) and `SummaryService` once — a missed re-map lands a score on the wrong row silently
-- **`MemoryService.mjs:2637-2646` drops `_reRanked` on `conceptWalk:true`** while OpenAPI says absence means a raw Chroma slice. Define the mixed-path semantics before reuse
-- **Absent, never `0`**, on every emission path — zero sorts a legitimate row last for any adopting consumer
-- **Index-parallel** re-map through all three filters
-- **Fixture must make the two orders genuinely disagree** (#313 used low-distance `0.10`/unweighted vs high-topology `0.30`/weight `1.0`) or the arm cannot witness the defect
-- Use the canonical `Evidence: L2 achieved (…) → L2 required (…)` declaration in the successor PR body
-- **Separately tracked, not folded here:** `openApiValidator` does not compile `allOf`, so both result schemas compile to `{"type":"array","items":{}}`. Pre-existing, surfaced by #313's review
+## Out of Scope
 
-## Out of Scope (provisional)
-
-- The ranking formula, topology multiplier, and the sort. Legibility only — no row changes position
-- D#17109 Options A (cross-encoder), F (near-duplicate collapse), G′ (write-time suppression). A gated on OQ1, G′ on the blocked OQ9
-- Renaming `relevanceScore` — see A1's falsifier
-- The KB re-ranker path — no KB caller of `injectQueryReRanker` today
+- The ranking formula, the topology multiplier and the sort. This is legibility only; no row changes position.
+- D#17109's Option A (cross-encoder, gated on OQ1), F (near-duplicate collapse), and `G′`. `G′-exact` graduates separately; `G′-semantic` stays parked on OQ9.
+- Renaming `relevanceScore` (A1).
+- The KB re-ranker path: no KB caller of `injectQueryReRanker` exists today.
+- `openApiValidator`'s missing `allOf` compilation, which is pre-existing and tracked separately.
 
 ## Related
 
-- **D#17109** — source Discussion; **the gate**. Blocked three weeks on §5.2 Step-Back by a **non-Claude** peer: author and all Claude-family maintainers cannot meet §6.2 floor-2 between them
-- PR #313 (closed) — the inadmissible first attempt; salvage coordinate `b6078aae59`
-- neomjs/neo#13222 (closed) — `include` omitted `distances`; same surface, **input** side
-- neomjs/neo#12628 (closed) — StorageRouter swallowing Chroma failures as empty results; the error path `:157` describes
-- #128, #133 — corpus-size lanes on the same collections; orthogonal
+- D#17109: the source Discussion, Row D.
+- PR #313 (closed): the inadmissible first attempt; salvage coordinate `b6078aae59`. Its terminal review's successor obligations are AC-1, AC-2, AC-4 and AC-6 above.
+- neomjs/neo#13222 (closed): `include` omitted `distances`; the same surface, input side.
+- neomjs/neo#12628 (closed): StorageRouter swallowing Chroma failures as empty results, the error path the `:166` comment describes.
 
-Origin Session ID: 12595f5d-68f8-48bc-93d2-4a91c7bad164
+Origin Session ID: 12595f5d-68f8-48bc-93d2-4a91c7bad164 (filed) · 89c130ad-8235-41ef-914c-800c028ac868 (graduated)
 
-Retrieval Hint: `PROVISIONAL_UNGRADUATED reservation — relevanceScore is 1/(1+distance) = semanticScore, but rows sort by semanticScore * topologyMultiplier; the sort key compositeScore is discarded at the StorageRouter re-pack and _reRanked has zero readers. Blocked on D#17109 non-Claude Step-Back, not on code.`
+Retrieval Hint: `relevanceScore is 1/(1+distance) = semanticScore, but rows sort by semanticScore * topologyMultiplier; compositeScore is discarded at the StorageRouter re-pack and _reRanked has zero readers`
 
 
 ## Timeline
@@ -149,4 +142,11 @@ Retrieval Hint: `PROVISIONAL_UNGRADUATED reservation — relevanceScore is 1/(1+
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 7be66e78-ca02-4232-af0d-77d4f9fdad46
 
 
+- 2026-11-05T19:31:43Z @neo-gemini-julia cross-referenced by #20358
+- 2026-11-05T21:24:34Z @neo-opus-ada changed title from **[PROVISIONAL_UNGRADUATED: D#17109] The re-ranker sorts by a score it never returns, so relevanceScore contradicts the order** to **The re-ranker sorts by a score it never returns, so relevanceScore contradicts the order**
+- 2026-11-05T21:36:59Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-11-05T21:38:49Z @neo-opus-ada cross-referenced by #1496
+- 2026-11-05T21:49:13Z @neo-gemini-julia cross-referenced by PR #1497
+- 2026-11-05T22:19:35Z @tobiu referenced in commit `87ad358` - "fix(memory-core): expose compositeScore and reRanked on recall results (#312) (#1497)"
+- 2026-11-05T22:19:37Z @tobiu closed this issue
 

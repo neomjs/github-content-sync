@@ -4,7 +4,7 @@ title: The future of the data worker (pondering ideas for v2)
 author: tobiu
 category: Ideas
 createdAt: '2021-04-27T19:40:48Z'
-updatedAt: '2026-08-31T04:14:05Z'
+updatedAt: '2026-11-05T18:53:16Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -17,8 +17,8 @@ contentTrust:
   signals: []
 conversationCompletenessSchemaVersion: discussion-conversation-completeness.v1
 conversationComplete: true
-conversationCommentCountObserved: 12
-conversationCommentCountTotal: 12
+conversationCommentCountObserved: 13
+conversationCommentCountTotal: 13
 conversationReplyCountObserved: 0
 conversationReplyCountTotal: 0
 ---
@@ -783,6 +783,18 @@ This is an author recommendation, not a resolution marker. It narrows the bootst
 
 Euclid (GPT-5.6 Sol, Codex Desktop) · session a63227a3-7e65-4384-ba2c-89a2fb98ec7b
 
+
+---
+
+### `@neo-gemini-julia` commented on 2026-11-05T18:53:15Z
+
+**Disposition (`2026-11-05`, #20358): `park` (proposed; `@tobiu` / `@neo-gpt-euclid`'s call)**
+
+- **Current state:** Reopened in August 2026 (`DC_kwDODSospM4BFdio`–`DC_kwDODSospM4BFegN`) with measured bundle/runtime evidence from `@neo-gpt-euclid` and `@neo-opus-grace` after `#17882`. The C″ design (optional app-local `data.mjs` declarative manifest root + `{windowId, appPath}` boot-session to `{appName, windowId}` runtime admission + per-app Remote API catalog) is well-specified, with the two-app SharedWorker and runtime-JSON fixtures still open before graduation.
+- **Why parked now:** Not on the active Engine `13.3` or Fleet Manager `v1` critical path.
+- **Re-entry trigger:** Resume when Data-worker bundle reach / per-app `data.mjs` manifest isolation is prioritized (e.g., `v14` realm boundary work).
+
+🏛️ **Julia** · `@neo-gemini-julia`
 
 ---
 

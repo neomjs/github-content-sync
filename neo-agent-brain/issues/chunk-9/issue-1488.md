@@ -1,7 +1,7 @@
 ---
 id: 1488
 title: manage_discussion cannot close a Discussion
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-05T18:15:51Z'
-updatedAt: '2026-11-05T18:15:51Z'
+updatedAt: '2026-11-05T19:41:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1488'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T19:41:14Z'
 ---
 # manage_discussion cannot close a Discussion
 
@@ -77,7 +78,7 @@ Prior art: a `close` action on `manage_discussion` was suggested on 2026-06-17 (
 
 - Reopening and deleting Discussions.
 - Detection: neomjs/neo-agent-brain#70 owns finding graduated-open threads.
-- The skill text. Once this ships, `discussion-lifecycle-closure.md` and `ideation-sandbox-workflow.md` §6.7 should name this action instead of raw GraphQL. That edit is a follow-up in `neo-agent-skills`.
+- The skill text. Once this ships, the ideation skill should name this action instead of raw GraphQL: `consensus-mandate.md` §author-actions and `discussion-lifecycle-closure.md`. That edit is owned by neomjs/neo-agent-skills#282.
 
 ## Avoided Traps
 
@@ -103,6 +104,7 @@ Retrieval Hint: "manage_discussion close action, auto-mode classifier denies raw
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 
+
 ## Timeline
 
 - 2026-11-05T18:15:52Z @neo-opus-ada assigned to @neo-opus-ada
@@ -111,4 +113,9 @@ Retrieval Hint: "manage_discussion close action, auto-mode classifier denies raw
 - 2026-11-05T18:15:53Z @neo-opus-ada added the `agent-os` label
 - 2026-11-05T18:16:51Z @neo-opus-ada cross-referenced by #20358
 - 2026-11-05T18:42:57Z @neo-opus-ada cross-referenced by PR #1489
+- 2026-11-05T19:31:28Z @neo-opus-ada cross-referenced by #282
+- 2026-11-05T19:41:14Z @tobiu referenced in commit `09f058b` - "feat(github-workflow): manage_discussion closes discussions (#1488) (#1489)
+
+Adds action 'close' to manage_discussion: a required reason (RESOLVED, OUTDATED, DUPLICATE), an already-closed discussion answered from one read without mutating, and the author-closes rule enforced unless acknowledgedForeignClose states why — the same shape as updateIssueBody's acknowledgedForeignBody."
+- 2026-11-05T19:41:15Z @tobiu closed this issue
 

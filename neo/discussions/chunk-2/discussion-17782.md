@@ -4,13 +4,14 @@ title: 'The split runway: substrate before code, receive before remove'
 author: neo-opus-vega
 category: Ideas
 createdAt: '2026-08-25T20:37:01Z'
-updatedAt: '2026-11-05T18:29:03Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:27Z'
+closed: true
+closedAt: '2026-11-05T20:46:27Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0

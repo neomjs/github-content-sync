@@ -1,7 +1,7 @@
 ---
 id: 25
 title: Two heavy-lease holders never consult the lease's hold bound
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-08-19T09:08:46Z'
-updatedAt: '2026-11-05T18:45:29Z'
+updatedAt: '2026-11-05T21:12:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/25'
 author: neo-opus-vega
 commentsCount: 4
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T21:12:03Z'
 ---
 # Two heavy-lease holders never consult the lease's hold bound
 
@@ -64,13 +65,26 @@ Either path can keep the exclusive heavy slot past `orchestrator.heavyMaintenanc
 
 ## Intake ledger (Emmy, 2026-11-05)
 
-| Existing surface | Retained contract | Planned falsifier |
+| Surface | Contract | Planned falsifier |
 |---|---|---|
 | Shared acquisition + `createLeaseYieldVoter` | Consume the original lease. One reactive bound owner, with no copied config value (ADR 0019 B2/B5). | An already-expired inherited lease, and a fresh lease on an advancing clock |
 | Backfill / reconciliation entry point | Persist completed work, report a yield distinctly, retain unprocessed records | A long-work fixture stops starting work and lets the actual owner hand back |
 | Tenant ingest / `controls.shouldYield` | Preserve batch and stream custody, and report incomplete work, across a yield | Expire during multi-batch work: no lost input, no false completion, and the waiting holder runs |
+| `ingestSourceFiles(payload, controls)`: `controls.onYieldedRecords` (new, process-local; PR #1494) | Hands the CLI the original parsed-chunk records that still have an unsettled derived chunk. No public request control and no config leaf | A yielded multi-batch ingest retains exactly those originals, and never a fully settled one |
+| `VectorService.embed(opts)`: `opts.onYieldedInputIds` (new, process-local; PR #1494) | Maps unsettled post-expansion chunk ids back to their input ids, only under incremental `deleteStale: false` | A resume regenerates the same chunk ids and embeds or upserts no chunk that already landed |
+| Ingestion summary: `acceptedEmbeddingChunks` (new, OpenAPI-documented; PR #1494) | Accepted chunks in expanded-id units, beside settled and remaining; `null` where the producer cannot observe them. The legacy `ingested` stays the normalized input count | The summary never relabels expanded chunks as original records |
 | Corpus-local emission lock | Preserve its own serialization; stay outside shared-slot fairness | The explicit corpus path stays distinct from the shared lease path |
 | Existing holder-adoption tests | Detect a missing consultation wherever the shared-lease contract applies | Remove each new consultation independently; its own witness must fail |
+
+## Decided 2026-11-05 (Vega, author): how ingest yields
+
+Emmy asked (A2A a6a93fa0), and this is the product call for the ingest arm. **Retain replayable input and stop with an explicit incomplete result. Do not reacquire the lease automatically.**
+
+- **A yield never reads as completion at the process boundary.** A yielded run exits with its own non-zero status (`75`, `EX_TEMPFAIL`, "retry later"). Its last line is machine-readable: `status: 'yielded'`, the counts ingested and remaining, and the exact command that resumes. The existing `held` path ("⏸️ Deferred … Re-invoke") is unchanged and out of scope.
+- **Retained input is private and bounded.** It is written under the plane's data root, never a temp directory, with owner-only permissions. It holds only input that is not yet fully ingested, and it is deleted once a resume completes. The replay unit is the original parsed-chunk input record (Emmy, A2A df2d4fd1): a record is retained while at least one embedding chunk derived from it is unsettled, and fully settled records are dropped. Derived chunks are never written as replay records, because stripping their internal fields changes their identities. A resume regenerates the same chunk ids and skips the landed ones through the existing incremental diff. The yield line reports remaining input records and remaining embedding chunks separately. Input records are exact. Embedding chunks are counted for the active batch only; unread input has not expanded yet, so their total is `null`, never an estimate. The resume uses the existing `--from-file` path where the bundle format allows, before any new flag.
+- **A batch error is not a yield.** It stops with `status: 'failed'`, exit 1, and a resume command, and it retains the whole failed batch plus the unread input (Emmy, A2A 7ba453fc). An error's settlement can be unknown, so that replay may include chunks that already landed; the incremental diff skips them.
+- **The owner releases normally.** An inherited child hands its incomplete result up to its parent, and never releases or reacquires the parent's lease.
+- **Out of scope:** automatic in-process yield-and-reacquire, and any scheduler or IPC continuation protocol. Those become a follow-up only once a caller needs unattended resume.
 
 ## Acceptance Criteria
 
@@ -78,7 +92,7 @@ Either path can keep the exclusive heavy slot past `orchestrator.heavyMaintenanc
 - [ ] For each path that yields, a fixture whose work would otherwise run past `maxActiveHoldMs` shows all of the following:
   - the hand-back;
   - a starved peer observed to run;
-  - no work lost or reported complete when it isn't. Backfill keeps committed rows and leaves the rest; ingest keeps incomplete batch and stream work.
+  - no work lost or reported complete when it isn't. Backfill keeps committed rows and leaves the rest; ingest keeps incomplete batch and stream work, and its resume re-embeds no chunk that had already landed (no duplicate embedding or effect).
 
   A task that finishes quickly is not coverage.
 - [ ] An inherited child votes on the parent's acquisition time and never releases the parent's token, witnessed with an already-expired inherited lease.
@@ -89,6 +103,11 @@ Either path can keep the exclusive heavy slot past `orchestrator.heavyMaintenanc
 Related: neomjs/neo#17398, neomjs/neo#17424, #64 (which deferral cause ran the clock).
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code · scope fold session 89c130ad-8235-41ef-914c-800c028ac868
+
+
+
+
+
 
 
 
@@ -294,4 +313,12 @@ Origin Session ID: 3270b5c6-cc24-4a5b-984c-b3a1a4967dcd.
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code · session 89c130ad-8235-41ef-914c-800c028ac868
 
 - 2026-11-05T18:40:40Z @neo-gpt-emmy assigned to @neo-gpt-emmy
+- 2026-11-05T20:19:33Z @neo-gpt-emmy cross-referenced by PR #1494
+- 2026-11-05T20:28:04Z @neo-gpt-emmy referenced in commit `7481e4a` - "fix(maintenance): retain input through native async delegation (#25)"
+- 2026-11-05T21:12:03Z @tobiu referenced in commit `ab82c40` - "feat(maintenance): yield shared leases with replayable ingest input (#25) (#1494)
+
+* feat(maintenance): yield shared leases with replayable ingest input (#25)
+
+* fix(maintenance): retain input through native async delegation (#25)"
+- 2026-11-05T21:12:04Z @tobiu closed this issue
 

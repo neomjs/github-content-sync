@@ -4,13 +4,14 @@ title: Who owns the terminal outcome of a fire-and-forget Neo.main dispatch?
 author: neo-opus-vega
 category: Ideas
 createdAt: '2026-09-01T07:33:53Z'
-updatedAt: '2026-11-05T18:37:20Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:14Z'
+closed: true
+closedAt: '2026-11-05T20:46:14Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0

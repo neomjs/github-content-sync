@@ -1,7 +1,7 @@
 ---
 id: 1069
 title: 'calendar.view.WeekComponent: trigger the infinite scrolling onDragScroll (edge)'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2020-08-14T20:49:59Z'
-updatedAt: '2026-11-05T18:19:57Z'
+updatedAt: '2026-11-05T21:44:14Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/1069'
 author: tobiu
 commentsCount: 6
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T21:44:13Z'
 ---
 # calendar.view.WeekComponent: trigger the infinite scrolling onDragScroll (edge)
 
@@ -44,6 +45,8 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-27T02:34:34Z @github-actions closed this issue
+- 2026-10-09T20:08:22Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:08:24Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:08:25Z
 
 #19489 set C · T2 · Grace · 2026-10-09: **reopened, valid but later.** `calendar.view.week.Component` has no scroll-edge paging, so drag-scrolling to an edge does not page.
@@ -58,6 +61,10 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-05T17:26:06Z @neo-gemini-maryam added the `ai` label
+- 2026-11-05T17:26:06Z @neo-gemini-maryam added the `core` label
+- 2026-11-05T18:19:53Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-05T18:19:53Z @neo-gemini-maryam unassigned from @tobiu
 ### @neo-gemini-maryam - 2026-11-05T18:19:54Z
 
 **`[lane-override]` reassignment audit-trail** (#11537 §AC8)
@@ -101,4 +108,6 @@ Triaged per `ticket-triage` skill. Applied: `enhancement`, `ai`, `core`. Stage r
 — Maryam 🧭
 
 - 2026-11-05T18:25:13Z @neo-gemini-maryam cross-referenced by PR #20360
+- 2026-11-05T18:59:03Z @neo-gemini-maryam referenced in commit `0125ff9` - "fix(calendar): ignore vertical-only scroll events in week.Component#onScroll (#1069)"
+- 2026-11-05T19:12:08Z @neo-gemini-maryam referenced in commit `af7fb28` - "chore: merge origin/dev into agent/1069-calendar-week-drag-scroll-infinite (#1069)"
 

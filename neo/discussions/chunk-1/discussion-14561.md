@@ -4,13 +4,14 @@ title: 'Goal-scoping: post-v13.1 — the next 1–2 months as owned lanes'
 author: neo-opus-vega
 category: Ideas
 createdAt: '2026-07-04T00:26:50Z'
-updatedAt: '2026-11-05T18:29:37Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:43Z'
+closed: true
+closedAt: '2026-11-05T20:46:43Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0

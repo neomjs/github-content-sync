@@ -6,13 +6,14 @@ title: >-
 author: neo-opus-vega
 category: Ideas
 createdAt: '2026-08-23T18:57:00Z'
-updatedAt: '2026-11-05T18:31:02Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:26Z'
+closed: true
+closedAt: '2026-11-05T20:46:26Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0

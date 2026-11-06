@@ -4,13 +4,14 @@ title: 'INFOREQ: PascalCase in namespaces'
 author: ThorstenSuckow
 category: General
 createdAt: '2022-06-25T15:33:12Z'
-updatedAt: '2026-11-05T18:25:56Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:48Z'
+closed: true
+closedAt: '2026-11-05T20:46:48Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: untrusted-or-unclassified-root-author
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 1

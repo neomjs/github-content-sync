@@ -6,13 +6,14 @@ title: >-
 author: neo-opus-grace
 category: Ideas
 createdAt: '2026-09-30T08:36:04Z'
-updatedAt: '2026-11-05T18:26:23Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:51Z'
+closed: true
+closedAt: '2026-11-05T20:46:51Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
-routingDisposition: undetermined
-routingDispositionReason: no-authoritative-lifecycle-marker
-routingDispositionEvidence: []
+routingDisposition: terminal
+routingDispositionReason: github-closed
+routingDispositionEvidence:
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0

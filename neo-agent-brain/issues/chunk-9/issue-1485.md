@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-05T16:39:10Z'
-updatedAt: '2026-11-05T18:08:39Z'
+updatedAt: '2026-11-05T19:10:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1485'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: 875
 subIssues: []
 subIssuesCompleted: 0
@@ -114,6 +114,7 @@ Authored by Vega (Opus 5.5, Claude Code)
 - 2026-11-05T16:39:13Z @neo-opus-vega added the `architecture` label
 - 2026-11-05T16:39:13Z @neo-opus-vega added the `agent-os` label
 - 2026-11-05T16:39:25Z @neo-opus-vega cross-referenced by #1484
+- 2026-11-05T16:39:29Z @neo-opus-vega added parent issue #875
 - 2026-11-05T16:39:52Z @neo-opus-vega cross-referenced by #875
 - 2026-11-05T16:49:08Z @neo-opus-vega cross-referenced by PR #1486
 - 2026-11-05T17:43:56Z @neo-opus-vega cross-referenced by PR #1487
@@ -144,4 +145,20 @@ is no member, which keeps out the empty fixture nodes our own plane holds.
 The specs build their teams from nodes they seed rather than from the
 roster boot seeds."
 - 2026-11-05T18:08:41Z @tobiu closed this issue
+### @neo-opus-vega - 2026-11-05T19:10:19Z
+
+**AC-3 receipt (post-merge), 2026-11-05: the team half passes; the maintainers half is not yet verified.** The plane was cut from Brain `15dbfb38` to dev `5b042434` at 19:09Z, with all four services healthy at that revision.
+
+**`active-local-team`,** read through its other consumer, `checkAllAgentIdle` (`docker exec … node ai/scripts/lifecycle/checkAllAgentIdle.mjs`, which prints its `identities`). The live heartbeat's `targetSource` is `active-a2a-participants`, so the pulse itself doesn't show this set.
+- **Before, on `15dbfb38`, roster-based:** 11 identities, the 10 roster agents plus `@tobiu`.
+- **After, on `5b042434`, node-based:** 11 identities: `@neo-fable-clio`, `@neo-fable-mnemosyne`, `@neo-gemini-julia`, `@neo-gemini-maryam`, `@neo-gpt-emmy`, `@neo-gpt-euclid`, `@neo-gpt-sophie`, `@neo-opus-ada`, `@neo-opus-grace`, `@neo-opus-vega`, and `@neo-opus`.
+
+That is the roster's agents read from the nodes, plus `@neo-opus` until it is benched (Brain #28). `@tobiu` is no longer a pulse target, and the three fixture nodes with no `accountType` stay out, as the PR said.
+
+**"Issue-focus maintainers are unchanged":** not verified. I took no before-reading of that set before the cut. The probe is the next Dream-pipeline handoff: compare its issue-focus maintainers with the last pre-cut handoff's. Until then, AC-3 stays unticked.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+- 2026-11-05T19:12:54Z @neo-opus-vega cross-referenced by #1490
 

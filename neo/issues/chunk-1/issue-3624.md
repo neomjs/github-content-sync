@@ -1,7 +1,7 @@
 ---
 id: 3624
 title: 'Docs should separate "app" from API tab, and should exclude empty folders'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - developer-experience
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2022-12-17T23:18:42Z'
-updatedAt: '2026-11-05T18:23:37Z'
+updatedAt: '2026-11-05T20:16:21Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/3624'
 author: maxrahder
 commentsCount: 9
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-05T20:16:21Z'
 ---
 # Docs should separate "app" from API tab, and should exclude empty folders
 
@@ -50,6 +51,8 @@ This issue was closed because it has been inactive for 14 days since being marke
 #19489 set C · T4 · Grace · 2026-10-09: **confirm-close (obsolete).** The Docs app is gone from `apps/`; the Portal replaced it. Thank you @maxrahder.
 
 - 2026-10-09T20:26:18Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T21:01:23Z @neo-opus-grace reopened this issue
+- 2026-10-09T21:01:24Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T21:01:25Z
 
 #19489 set C · correction · Grace · 2026-10-09: **Correction.** My earlier note here said the Docs app is gone. It is not: it lives at `docs/`, and the Portal embeds it at `/docs` (`apps/portal/view/Viewport.mjs`). Thank you @maxrahder. **Reopened, valid but later.** App classes still share the API tree (a collapsed `apps` branch, `buildScripts/docs/generateDocsJson.mjs`). The empty folders while filtering are a `tree.List#filter` defect, pinned on #3240.
@@ -78,6 +81,8 @@ The split has three concrete integration constraints:
 
 This is a source-grounded continuation plan, not a second empty-folder fix. No implementation or claim yet; the next implementation check is the complete subtree projection and global source lookup. Emmy's nearby #20318 has now merged and will be preserved on the fresh base.
 
+- 2026-11-05T18:05:39Z @neo-gpt-sophie added the `ai` label
+- 2026-11-05T18:05:39Z @neo-gpt-sophie added the `developer-experience` label
 ### @neo-gpt-sophie - 2026-11-05T18:14:09Z
 
 **Maintainer intake — Sophie.** Triaged per `ticket-triage`: retained `enhancement`, added `ai` and `developer-experience`; six-stage retrospective passed for the remaining navigation outcome. Created 2022-12-17, updated 2026-11-05; no stale/exemption label, pre-stale under the current 90-day mark-only workflow. No open blocker or competing PR. Ada's narrowing above and the delivered #3240/#20244 settle the empty-folder half. Verdict: valid for the remaining Apps/API separation; positive ROI, confined to Docs navigation.
@@ -95,6 +100,7 @@ This is a source-grounded continuation plan, not a second empty-folder fix. No i
 
 **Acceptance:** (1) separate API/Apps with API default; (2) search all three; (3) existing class/source URLs work across scopes and hidden leaves; (4) Examples remains correctly disabled in dist; (5) one structure fetch and owned-store cleanup. The contributor's original prose remains intact.
 
+- 2026-11-05T18:14:12Z @neo-gpt-sophie assigned to @neo-gpt-sophie
 ### @neo-gpt-sophie - 2026-11-05T18:23:37Z
 
 **Projection experiment retained.** Question: can one complete structure Store feed two independent navigation Stores without copying/rewriting generated rows? Native `sourceId` projections do; the focused full-view test passes source/API/Apps counts, global source routing, empty-branch reload and owned-store destruction.
@@ -102,4 +108,11 @@ This is a source-grounded continuation plan, not a second empty-folder fix. No i
 One rejected implementation assumption matters: `Filter#filterBy` receives `allItems` during a full filter pass, but insertion's `collection.Base#isFilteredItem` calls it without that argument. The first predicate therefore failed on the real source-mutation path. The final predicate reads the projection's `getSource()` and walks parent IDs in that complete source map; no engine fallback or copied index was added. The root provider loads structure once. Fourteen focused Docs unit cases pass. The existing literal-search browser case and the actual generated-data mixin/source Neural Link case also pass; the app-class-specific browser case is the remaining validation.
 
 - 2026-11-05T18:26:21Z @neo-gpt-sophie cross-referenced by PR #20361
+- 2026-11-05T18:40:24Z @neo-gpt-sophie referenced in commit `d16848b` - "test(docs): keep the highlighter fixture under its generated root (#3624)"
+- 2026-11-05T20:16:20Z @tobiu referenced in commit `146bd04` - "feat(docs): separate application classes from API navigation (#3624) (#20361)
+
+* feat(docs): separate application classes from API navigation (#3624)
+
+* test(docs): keep the highlighter fixture under its generated root (#3624)"
+- 2026-11-05T20:16:22Z @tobiu closed this issue
 

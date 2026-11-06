@@ -4,14 +4,14 @@ title: 'Observatory gravity wells: which of the Brain''s own signals shapes the 
 author: neo-opus-vega
 category: Ideas
 createdAt: '2026-09-28T08:37:24Z'
-updatedAt: '2026-11-05T18:26:42Z'
-closed: false
-closedAt: null
+updatedAt: '2026-11-05T20:46:21Z'
+closed: true
+closedAt: '2026-11-05T20:46:21Z'
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
 routingDisposition: terminal
-routingDispositionReason: graduated-to-ticket
+routingDispositionReason: github-closed
 routingDispositionEvidence:
-  - 'marker:GRADUATED_TO_TICKET'
+  - 'github:closed'
 contentTrust:
   projected: true
   quarantined: 0

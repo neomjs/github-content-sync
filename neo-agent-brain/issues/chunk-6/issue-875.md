@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-05T10:32:47Z'
-updatedAt: '2026-11-05T18:09:05Z'
+updatedAt: '2026-11-05T19:13:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/875'
 author: neo-opus-vega
 commentsCount: 7
@@ -23,8 +23,9 @@ subIssues:
   - '[x] 1279 Trust-tier resolution for graph identities, formerLogins, and GitHub authorAssociation'
   - '[x] 1484 A plane''s boot seed holds no team identity'
   - '[x] 1485 Candidate readers take who exists from the plane''s identity nodes'
+  - '[ ] 1490 who_is_online counts identity nodes that record no account type'
 subIssuesCompleted: 7
-subIssuesTotal: 7
+subIssuesTotal: 8
 contentTrust:
   projected: true
   quarantined: 0
@@ -275,7 +276,9 @@ The intent and the operator's 10-05 ruling stand, and the body is current. The n
 — Vega (Opus 5.5, Claude Code) 🌿
 
 - 2026-11-05T14:03:30Z @neo-opus-vega cross-referenced by #1484
+- 2026-11-05T14:03:35Z @neo-opus-vega added sub-issue #1484
 - 2026-11-05T16:39:11Z @neo-opus-vega cross-referenced by #1485
+- 2026-11-05T16:39:29Z @neo-opus-vega added sub-issue #1485
 ### @neo-opus-vega - 2026-11-05T17:44:41Z
 
 ### Class A status (2026-11-05, handover)
@@ -307,9 +310,9 @@ My defect-note b75b1883 left this untraced and pointed at "the #17728 class". Th
 - **`@neo-test-writer`** was seeded with `properties: {}` by a memory-core unit spec, added in neo #10265 (Apr 24). The upsert was removed by neo #12977, "isolate memory-core unit identities" (Jun 12, `1d6dbd6330`). So the node predates that fix, and the graph has carried it ever since.
 - **`@agent-a` and `@agent-b`** carry the exact shape that `QueryRecentTurns.spec.mjs` seeds today (`properties: {}`, l.124–125). The unit config now sets `UNIT_TEST_MODE`, so `storagePaths.graph` resolves to `graphTest` (`:memory:`), and the spec's own probe throws if storage is not isolated (l.45). The live nodes are pre-isolation leftovers of the same kind.
 
-**Disposition** (corrected in place at 18:1xZ: the first version claimed the `@neo-opus` bench for me):
-- No live leak path was found. The readers already ignore all three fixture nodes, because #1487 makes membership `accountType`-based.
-- Removing those three nodes is plane hygiene: they are fixtures and belong to no one. I'll do it after #1487 merges, because AC-3 reads the plane before and after.
+**Disposition** (corrected in place twice: at 18:1xZ the first version claimed the `@neo-opus` bench for me, and at 19:1xZ I withdrew the node deletion):
+- No live leak path was found.
+- I will not delete those three nodes. Deleting rows on the live plane is a data deletion, and nothing reviewed exists for it. The plan of my first version is withdrawn. After the 19:09Z cut, the four readers #1487 changed already ignore them. The last surface that still counts them, `who_is_online`, now has its own leaf: #1490, which applies the same membership rule. With that merged, the nodes are inert everywhere they are read.
 - Benching the retired `@neo-opus` is not hygiene. Bench and unbench are operator decisions, and #28 (open) is the cockpit control that would record them. Until #28 lands, that bench is the operator's, and this ticket's readers keep counting the node as an active agent.
 
 — Vega (Opus 5.5, Claude Code) 🌿
@@ -317,4 +320,6 @@ My defect-note b75b1883 left this untraced and pointed at "the #17728 class". Th
 
 - 2026-11-05T18:03:07Z @neo-gpt-sophie cross-referenced by PR #1486
 - 2026-11-05T18:03:09Z @neo-gemini-julia cross-referenced by PR #1487
+- 2026-11-05T19:12:54Z @neo-opus-vega cross-referenced by #1490
+- 2026-11-05T19:12:56Z @neo-opus-vega added sub-issue #1490
 
