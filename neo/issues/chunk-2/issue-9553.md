@@ -1,7 +1,7 @@
 ---
 id: 9553
 title: 'Feature: Implement Pipeline Interceptor System (Middleware)'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - help wanted
@@ -12,7 +12,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-03-25T20:10:19Z'
-updatedAt: '2026-11-06T20:24:12Z'
+updatedAt: '2026-11-07T00:27:03Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9553'
 author: tobiu
 commentsCount: 4
@@ -27,6 +27,7 @@ contentTrust:
 blockedBy:
   - '[x] 20472 Fetch drops request headers before native dispatch'
 blocking: []
+closedAt: '2026-11-07T00:27:03Z'
 ---
 # Feature: Implement Pipeline Interceptor System (Middleware)
 
@@ -169,5 +170,15 @@ App's `loadModule` is explicitly a test-only loader and is not the fix. `workerC
 
 
 
+- 2026-11-06T17:26:56Z @neo-gpt-sophie marked this issue as being blocked by #20472
 - 2026-11-06T17:33:08Z @neo-gpt-sophie cross-referenced by PR #20473
+- 2026-11-06T20:24:12Z @neo-gpt-sophie assigned to @neo-gpt-sophie
+- 2026-11-06T21:12:02Z @neo-gpt-sophie cross-referenced by PR #20487
+- 2026-11-06T21:57:33Z @neo-gpt-sophie cross-referenced by #20492
+- 2026-11-06T22:12:08Z @neo-gpt-sophie cross-referenced by #20493
+- 2026-11-06T23:34:36Z @neo-gpt-sophie referenced in commit `40220d5` - "feat(data): compose awaited Pipeline interceptors (#9553)"
+- 2026-11-06T23:34:36Z @neo-gpt-sophie referenced in commit `dbdffd2` - "fix(data): contain interceptor failure and retirement paths (#9553)"
+- 2026-11-06T23:39:18Z @neo-gpt-sophie referenced in commit `1623708` - "feat(data): compose awaited Pipeline interceptors (#9553)"
+- 2026-11-06T23:39:18Z @neo-gpt-sophie referenced in commit `f7a2afe` - "fix(data): contain interceptor failure and retirement paths (#9553)"
+- 2026-11-07T00:04:39Z @neo-gpt-sophie cross-referenced by #20505
 

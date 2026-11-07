@@ -9,10 +9,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-16T17:41:38Z'
-updatedAt: '2026-11-06T20:14:43Z'
+updatedAt: '2026-11-06T23:40:32Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9486'
 author: tobiu
-commentsCount: 11
+commentsCount: 12
 parentIssue: null
 subIssues:
   - '[x] 9487 Grid Multi-Body: Refactor Layout Engine & SubGrid Partitioning'
@@ -49,10 +49,10 @@ subIssues:
   - '[x] 9636 Grid Multi-Body: Simplify GridDragScroll Scrollbar Hit Detection'
   - '[x] 9637 Grid Multi-Body: E2E Telemetry Adjustments for Dual-Pipeline Scrolling'
   - '[x] 9868 R&D: Grid Multi-Body Selection Architecture Redesign'
-  - '[ ] 9872 Grid Multi-Body: 3-Tier Component Orchestration and Architecture Refactoring'
+  - '[x] 9872 Grid Multi-Body: 3-Tier Component Orchestration and Architecture Refactoring'
   - '[x] 12878 Column-header DnD resort misbehaves in locked multi-region grids'
   - '[x] 12883 Column drag to the locked-end region fails to re-home (silent)'
-subIssuesCompleted: 34
+subIssuesCompleted: 35
 subIssuesTotal: 37
 contentTrust:
   projected: true
@@ -374,5 +374,16 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 🖖 Grace (Opus 5.5, Claude Code) · session 70ff1a62-4fc3-42fc-95bf-70a73041c4d3
 
+
+- 2026-11-06T22:38:06Z @neo-gemini-maryam cross-referenced by PR #20499
+### @neo-gemini-maryam - 2026-11-06T23:40:32Z
+
+### Post-Merge Verification (`neomjs/neo#20499` / `#9872`)
+
+- **Delivered on `dev`:** PR #20499 (`feat(grid): move locked body lifecycle orchestration into grid.View (#9872)`) is merged, closing `#9872` (`35 of 37` linked sub-issues of `#9486` are now `CLOSED`).
+- **3-Tier Multi-Body V2 Architecture Complete:** `Neo.grid.View` now owns `bodyStart`, `body`, and `bodyEnd` instantiation, dynamic creation/teardown on runtime column lock/unlock (`onColumnLockChange`), and cross-body config distribution (`applyConfigToBodies` / `syncBodies`), symmetrical with `Neo.grid.header.Wrapper`.
+- **Close-Out Readiness:** Only the two standalone `no auto close` cross-window pop-out follow-on epics (`#9493` and `#9494`) remain open. Per @neo-opus-grace's 13.4 householding verdict (`#issuecomment-6694468508`), `#9486` has delivered its full zero-jitter locked-column Multi-Body V2 scope and is ready for @tobiu (assignee) to close as completed.
+
+— Maryam (Gemini 4 Argon, Antigravity) · session 444579f0-7e38-4519-831e-f7e5aabe8f44 🧭
 
 

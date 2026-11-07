@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-10-31T18:54:15Z'
+updatedAt: '2026-11-07T00:16:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
 commentsCount: 10
@@ -47,7 +47,7 @@ Row state: row 5 · Ada (operator @tobiu; peer read Sophie, #479) · passed with
 - Provocations 2 and 3 pass, and 4 passes on the Connect card (on `20d89be`; #832 does not touch these paths).
 - Provocations 1 and 4 are `missing` at boot: a held run always starts its own fixture plane.
 - Provocations 5 (a PAT revoked while the shell runs) and 6 (a PAT now admitted as another account) **pass** on the candidate (#828 AC-4). The spine names the credential (`pat refused` / `account changed`) in the connect card's words and offers Connect. Each restore returned to the baseline by the product's own reads: 5 at the next 60 s roster read, 6 at the next 300 s re-check (45 s once PR #851 ships).
-- The `[human]` half runs **Fri 10-30** on this candidate once H4 has installed it. · plan: planned 4 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S, #812 S (done: PR #813 merged 2026-10-25 18:03Z) · done 4 (#828: PR #832 merged 2026-10-28 20:09Z) · added 3 (denominator sitting 2026-10-04: 5978785003 + 5978806870; #812 on 2026-10-25; #828 on 2026-10-28, from the peer-side receipt) · depends on: the operator's `[human]` half, Fri 10-30 about 15:05 CET (step list on #516: 6457088113); the vessel arm's plane-member leg, on #12's next package · forecast: `passed` on this candidate once the `[human]` half passes on Fri 10-30 and the plane-member leg has run · next: H4 (install) and the `[human]` half → @tobiu (Fri 10-30)
+- The `[human]` half ran Fri 10-30; its outcome is the line above. · plan: planned 4 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S, #812 S (done: PR #813 merged 2026-10-25 18:03Z) · done 4 (#828: PR #832 merged 2026-10-28 20:09Z) · gap leaves since the sitting: #845 → PR #851 (2026-10-31), #843 → PR #870 (2026-11-04), H0's #841 → PR #888 (2026-11-07 00:14Z) · added 3 (denominator sitting 2026-10-04: 5978785003 + 5978806870; #812 on 2026-10-25; #828 on 2026-10-28, from the peer-side receipt) · depends on: an installed candidate whose Institution carries #888 and whose selected Fleet runtime contains neomjs/neo-agent-brain#1469 and #1472; the operator's slot for H0's cold relaunch and the gap re-checks (step list on #516: 6457088113); the vessel arm's plane-member leg, on #12's next package · forecast: `passed` once H0 re-walks on that candidate · next: the candidate cut (Ada), then H0 and the gap re-checks → @tobiu's slot
 
 ## Problem scope
 
@@ -94,6 +94,7 @@ Origin Session ID: 6f7d14a3-e126-4b47-888f-fc28c748ae83
 Retrieval Hint: "FM v1 row 5 ordinary recovery plane restart stale saved plane expired PAT product guidance"
 
 ⚖️ Ada (Claude Opus 5.5, Claude Code)
+
 
 ## Timeline
 
@@ -640,4 +641,8 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session 1087550a-1da0-4fbb-b7e
 - 2026-11-03T08:43:45Z @neo-opus-ada cross-referenced by #1462
 - 2026-11-03T18:14:53Z @neo-gpt-euclid cross-referenced by PR #1463
 - 2026-11-04T18:53:54Z @neo-gpt-emmy cross-referenced by PR #870
+- 2026-11-04T23:12:01Z @neo-opus-ada cross-referenced by #1468
+- 2026-11-04T23:29:00Z @neo-opus-ada cross-referenced by #875
+- 2026-11-05T18:19:38Z @neo-opus-ada cross-referenced by #20358
+- 2026-11-06T23:10:01Z @neo-opus-ada cross-referenced by PR #888
 

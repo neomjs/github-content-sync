@@ -1,17 +1,18 @@
 ---
 id: 9872
 title: 'Grid Multi-Body: 3-Tier Component Orchestration and Architecture Refactoring'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - grid
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-04-10T18:19:24Z'
-updatedAt: '2026-11-05T10:43:07Z'
+updatedAt: '2026-11-06T23:36:28Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9872'
 author: tobiu
-commentsCount: 5
+commentsCount: 6
 parentIssue: 9486
 subIssues:
   - '[x] 12757 grid.View owns body-scroll orchestration (syncBodies relocation from Container)'
@@ -24,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T23:36:28Z'
 ---
 # Grid Multi-Body: 3-Tier Component Orchestration and Architecture Refactoring
 
@@ -49,6 +51,10 @@ This isolates all physical row logic perfectly beneath `grid.View`, enabling it 
 
 ## Timeline
 
+- 2026-04-10T18:19:26Z @tobiu added the `enhancement` label
+- 2026-04-10T18:19:26Z @tobiu added the `ai` label
+- 2026-04-10T18:19:26Z @tobiu added the `grid` label
+- 2026-04-10T18:19:43Z @tobiu added parent issue #9486
 - 2026-04-10T18:19:48Z @tobiu cross-referenced by #9868
 ### @neo-gpt-euclid - 2026-05-20T06:35:22Z
 
@@ -74,6 +80,7 @@ This isolates all physical row logic perfectly beneath `grid.View`, enabling it 
 > 
 > No assignment or branch taken.
 
+- 2026-06-07T19:10:18Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-06-07T20:44:47Z @neo-gpt-euclid cross-referenced by #12695
 - 2026-06-07T21:26:57Z @neo-opus-grace cross-referenced by #9492
 - 2026-06-07T21:33:35Z @neo-opus-ada cross-referenced by PR #12701
@@ -114,14 +121,117 @@ This isolates all physical row logic perfectly beneath `grid.View`, enabling it 
 - 2026-06-08T10:14:56Z @neo-opus-grace cross-referenced by PR #12754
 - 2026-06-08T11:05:28Z @neo-opus-grace cross-referenced by #12757
 - 2026-06-08T11:05:42Z @neo-opus-grace cross-referenced by #12758
+- 2026-06-08T11:11:51Z @neo-opus-grace added sub-issue #12757
 - 2026-06-08T17:01:08Z @neo-opus-vega cross-referenced by PR #12777
 - 2026-06-08T19:45:24Z @neo-opus-grace cross-referenced by PR #12784
+- 2026-06-08T20:21:49Z @neo-opus-grace referenced in commit `a912f06` - "fix(grid): View-owned SM lifecycle — fix crash + processConfigs recursion from draft feedback (#12758)
+
+Addresses @neo-gpt's #12784 draft-feedback blocker (the unit-job GridScrollProfile crash):
+
+- RowModel/CellModel.destroy + Body.selectedCells/selectedRows now null-guard the view/model (the transient per-body models carry a null view; their teardown crashed via me.view.gridContainer).
+- Body.afterSetSelectionModel forwards a dynamic body.selectionModel swap up to grid.View only when vnodeInitialized — forwarding during construction re-entered processConfigs and recursed infinitely. Initial sharing stays driven by Container.applyViewSelectionModel (now re-entrancy-guarded).
+- Container hoists + shares the single model BEFORE the bodies render; locked bodies pass selectionModel:null so they do not adopt the center body's configured model.
+
+Verified: test/playwright/unit/app/devindex/GridScrollProfile.spec.mjs PASSES (was the failing unit job). The Pooling/Teleportation/LockedColumns unit specs fail identically on clean dev (pre-existing local-env failures), so this switch adds no unit regressions.
+
+Refs #9872, #9492."
 - 2026-06-08T20:30:34Z @neo-gpt-euclid cross-referenced by #12787
+- 2026-06-08T20:41:39Z @neo-opus-grace referenced in commit `8d28ec4` - "test(grid): View-owned SelectionModel AC spec + register the model unconditionally (#12758)
+
+Adds the AC unit spec @neo-gpt asked for (his #12754 probes as ACs):
+- AC1: exactly one SelectionModel instance — bodyStart/body/bodyEnd + grid.View all resolve to the same model, and the model's view is grid.View.
+- AC2: a dynamic body.selectionModel swap updates every body + the View, no stale per-body models.
+
+Also: grid.View.afterSetSelectionModel now registers the model unconditionally (was gated on vnodeInitialized). Container.applyViewSelectionModel hoists during construction when vnodeInitialized is still false, so the gated register never fired and the model's view stayed null (broke the row/record contract + crashed teardown). register() only binds component-level events, safe pre-vnode.
+
+Verified: 21 grid/selection unit specs pass (incl. the 2 new ACs + GridScrollProfile); the 7 Pooling/Teleportation/LockedColumns failures are pre-existing on clean dev (local-env), confirmed by stash+run-on-dev.
+
+Refs #9872, #9492."
+- 2026-06-08T22:03:34Z @neo-opus-grace referenced in commit `b6d2487` - "refactor(grid): drop dead vdom.tag==='table' branches in CellModel/ColumnModel (#12758)
+
+V-B-A per @tobiu's #12784 review: grids are div-based — zero tag:'table' anywhere in src/grid (grid.Body/Row _vdom are divs with cn arrays). So the gridContainer.vdom.tag==='table' branches in CellModel + ColumnModel (addDomListener + destroy, x4) can never fire — legacy copy-paste from table-based selection. Removed all 4.
+
+Behaviorally a no-op (the condition never matched); AC spec (ViewOwnedSelectionModel) + GridScrollProfile re-run green.
+
+Refs #9872, #9492."
 - 2026-06-09T00:11:22Z @neo-opus-grace cross-referenced by #12800
+- 2026-06-09T00:11:30Z @neo-opus-grace added sub-issue #12800
 - 2026-06-09T00:14:03Z @neo-opus-grace cross-referenced by PR #12801
+- 2026-06-09T01:26:13Z @tobiu referenced in commit `f69b56a` - "refactor(grid): grid.View-owned single SelectionModel, eliminate per-body model construction (#12784)
+
+* refactor(grid): grid.View additive SelectionModel-host foundation (#12758)
+
+Additive, dormant foundation for the View-owned single SelectionModel migration.
+
+grid.View gains the selectionModel config + before/afterSet hooks (registering grid.View — not a body — as the model's view) plus the delegating row/record contract (store, bodies, selectedRecordField, getRecordId, getRecordFromLogicalId, getDataField, scrollByRows). All delegate to gridContainer / the center body, which are body-agnostic.
+
+Nothing assigns view.selectionModel yet, so runtime behavior is unchanged until the Container/Body/BaseModel/RowModel switch lands. Refs #9872, #9492.
+
+* refactor(grid): grid.View-owned single SelectionModel, eliminate per-body model construction (#12758)
+
+Replaces the per-body cloned SelectionModels (Container spread ...me.body.initialConfig into bodyStart/bodyEnd) plus the BaseModel peer fan-out with ONE grid.View-owned model that spans all bodies as render/event delegates, per the multi-body design-lock.
+
+- grid.View: owns the selectionModel + the delegating row/record contract (store, bodies, getRecordId, getRecordFromLogicalId, getDataField, getLogicalCellId, scrollByRows, selectedRecordField).
+- grid.Container.applyViewSelectionModel(): hoists the model to grid.View + shares the one instance to every body; called on sub-grid (re)creation and on dynamic body.selectionModel swaps.
+- grid.Body: delegate, instantiates/holds the shared reference, never registers or destroys (grid.View owns lifecycle).
+- BaseModel: updateRows spans all bodies (updateBodyRows extraction); getRowRecord/getRowComponent/unregister span bodies instead of view.items; dataFields reads gridContainer.columns; register drops the obsolete Peer State Adoption.
+- RowModel/CellModel: drop the obsolete event.body!==view dedup gate (the one model listens once on the gridContainer).
+
+Verification: cross-body selection + dynamic body.selectionModel swap via test/playwright/e2e/GridSelectionMultiBody.spec.mjs (CI). Keynav (view.keys) migration + inert getActivePeers fan-out cleanup + a unit-spec baseline tracked as follow-ups.
+
+Refs #9872, #9492.
+
+* fix(grid): View-owned SM lifecycle — fix crash + processConfigs recursion from draft feedback (#12758)
+
+Addresses @neo-gpt's #12784 draft-feedback blocker (the unit-job GridScrollProfile crash):
+
+- RowModel/CellModel.destroy + Body.selectedCells/selectedRows now null-guard the view/model (the transient per-body models carry a null view; their teardown crashed via me.view.gridContainer).
+- Body.afterSetSelectionModel forwards a dynamic body.selectionModel swap up to grid.View only when vnodeInitialized — forwarding during construction re-entered processConfigs and recursed infinitely. Initial sharing stays driven by Container.applyViewSelectionModel (now re-entrancy-guarded).
+- Container hoists + shares the single model BEFORE the bodies render; locked bodies pass selectionModel:null so they do not adopt the center body's configured model.
+
+Verified: test/playwright/unit/app/devindex/GridScrollProfile.spec.mjs PASSES (was the failing unit job). The Pooling/Teleportation/LockedColumns unit specs fail identically on clean dev (pre-existing local-env failures), so this switch adds no unit regressions.
+
+Refs #9872, #9492.
+
+* test(grid): View-owned SelectionModel AC spec + register the model unconditionally (#12758)
+
+Adds the AC unit spec @neo-gpt asked for (his #12754 probes as ACs):
+- AC1: exactly one SelectionModel instance — bodyStart/body/bodyEnd + grid.View all resolve to the same model, and the model's view is grid.View.
+- AC2: a dynamic body.selectionModel swap updates every body + the View, no stale per-body models.
+
+Also: grid.View.afterSetSelectionModel now registers the model unconditionally (was gated on vnodeInitialized). Container.applyViewSelectionModel hoists during construction when vnodeInitialized is still false, so the gated register never fired and the model's view stayed null (broke the row/record contract + crashed teardown). register() only binds component-level events, safe pre-vnode.
+
+Verified: 21 grid/selection unit specs pass (incl. the 2 new ACs + GridScrollProfile); the 7 Pooling/Teleportation/LockedColumns failures are pre-existing on clean dev (local-env), confirmed by stash+run-on-dev.
+
+Refs #9872, #9492.
+
+* refactor(grid): drop dead vdom.tag==='table' branches in CellModel/ColumnModel (#12758)
+
+V-B-A per @tobiu's #12784 review: grids are div-based — zero tag:'table' anywhere in src/grid (grid.Body/Row _vdom are divs with cn arrays). So the gridContainer.vdom.tag==='table' branches in CellModel + ColumnModel (addDomListener + destroy, x4) can never fire — legacy copy-paste from table-based selection. Removed all 4.
+
+Behaviorally a no-op (the condition never matched); AC spec (ViewOwnedSelectionModel) + GridScrollProfile re-run green.
+
+Refs #9872, #9492."
+- 2026-06-09T02:39:46Z @neo-opus-grace referenced in commit `bf9f909` - "refactor(grid): extract dedicated header.Wrapper orchestrator (#12800)
+
+Introduce Neo.grid.header.Wrapper (extends container.Base) as the header-side counterpart to grid.View. It owns the headerStart/headerEnd lifecycle, center headerToolbar placement, column-button ordering (applyColumnButtonOrder) and header-button lookup (getButton). grid.Container delegates these via updateHeaders/applyColumnButtonOrder/getButton and retains only body creation; the headerStart/headerEnd configs move off Container entirely.
+
+Tier 2 of the #9872 3-tier orchestration refactor (mirrors grid.View owning the bodies). Verified locally: grid unit suite identical to the pre-change baseline (7 pre-existing local-env bucket-B failures unchanged, 18 passed); GridScrollProfile passes.
+
+Co-Authored-By: neo-claude-opus <neo-claude-opus@neomjs.com>"
+- 2026-06-09T08:31:29Z @tobiu referenced in commit `d04bc04` - "refactor(grid): extract dedicated header.Wrapper orchestrator (#12800) (#12801)
+
+Introduce Neo.grid.header.Wrapper (extends container.Base) as the header-side counterpart to grid.View. It owns the headerStart/headerEnd lifecycle, center headerToolbar placement, column-button ordering (applyColumnButtonOrder) and header-button lookup (getButton). grid.Container delegates these via updateHeaders/applyColumnButtonOrder/getButton and retains only body creation; the headerStart/headerEnd configs move off Container entirely.
+
+Tier 2 of the #9872 3-tier orchestration refactor (mirrors grid.View owning the bodies). Verified locally: grid unit suite identical to the pre-change baseline (7 pre-existing local-env bucket-B failures unchanged, 18 passed); GridScrollProfile passes."
 - 2026-06-10T23:25:54Z @neo-fable-mnemosyne cross-referenced by #12878
+- 2026-06-11T01:31:45Z @neo-opus-grace unassigned from @neo-opus-grace
 - 2026-06-21T10:56:01Z @neo-opus-vega cross-referenced by #13750
+- 2026-06-23T02:59:59Z @neo-gpt-euclid added the `not-code-ready` label
+- 2026-06-23T02:59:59Z @neo-gpt-euclid added the `needs-design` label
 - 2026-06-23T03:43:57Z @neo-gpt-euclid cross-referenced by #9075
+- 2026-07-06T13:21:50Z @tobiu removed the `not-code-ready` label
+- 2026-07-06T13:22:28Z @tobiu removed the `needs-design` label
 - 2026-09-13T11:36:35Z @neo-fable-clio cross-referenced by #18626
 - 2026-09-18T13:17:52Z @neo-opus-ada cross-referenced by #18885
 - 2026-10-02T12:37:52Z @neo-opus-vega cross-referenced by #19361
@@ -129,8 +239,10 @@ This isolates all physical row logic perfectly beneath `grid.View`, enabling it 
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-10-05T07:17:16Z @github-actions added the `stale` label
 - 2026-10-09T13:03:27Z @neo-fable-mnemosyne cross-referenced by #9486
 - 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
+- 2026-10-09T13:05:04Z @neo-opus-grace removed the `stale` label
 ### @neo-fable-mnemosyne - 2026-10-09T15:29:58Z
 
 **Re-read on #19489's set A (Grace kept it; routed to the grid tranche for one multi-body call) — stays OPEN, narrowed.** At dev `a1f4695af0` two of the three tiers exist, and the goal this ticket named shipped without the third:
@@ -159,4 +271,42 @@ Remaining leaf: move body creation and lifecycle out of the Container into `grid
 
 — Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
 
+- 2026-11-06T22:28:48Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-06T22:28:50Z
+
+## `[TICKET_INTAKE]` — `valid-as-written` (narrowed remaining slice: `Neo.grid.View` body creation & lifecycle)
+
+### 1. Ticket Reality Classification
+- **Ticket age:** `createdAt: 2026-04-10T18:19:24Z`, `updatedAt: 2026-11-05T10:43:07Z`.
+- **Bot stale-band:** `pre-stale` (`stale`: false, `no auto close`: false; `close-inactive-issues.yml` retired).
+- **Parent epic review (`#9486`):** Independent reviews and close-out reconciliation recorded on `#9486` by `@neo-fable-mnemosyne` ([#issuecomment-6081439801](https://github.com/neomjs/neo/issues/9486#issuecomment-6081439801)), `@neo-gemini-maryam` ([#issuecomment-6655922303](https://github.com/neomjs/neo/issues/9486#issuecomment-6655922303)), and `@neo-opus-grace` ([#issuecomment-6694468508](https://github.com/neomjs/neo/issues/9486#issuecomment-6694468508)).
+- **Currency / successor-risk evidence:**
+  - Tier 2 (`src/grid/header/Wrapper.mjs` owning `headerStart`, `headerToolbar`, `headerEnd`, `getToolbars()`, and `updateHeaders()`) and the state/selection/scroll half of Tier 3 (`src/grid/View.mjs` owning `selectionModel_`, `bodies`, and `syncBodies()`) are shipped on `dev`.
+  - The remaining open slice identified in [#issuecomment-6084000185](https://github.com/neomjs/neo/issues/9872#issuecomment-6084000185) and [#issuecomment-6655952534](https://github.com/neomjs/neo/issues/9872#issuecomment-6655952534) holds against current `origin/dev`: `src/grid/Container.mjs#createOrUpdateSubGrids` (`L1062-1126`) still instantiates `bodyStart` and `bodyEnd` via `Neo.cloneNeoInstance(me.body, ...)`, destroys retired bodies, unlinks retired VNodes on `me.view.vnode`, resets `horizontalScrollbar.startWidth` / `endWidth`, and mutates `me.view.items` directly.
+- **Core-Idiom Pre-Flight (`ticket-intake §1 step 9.6`):** Consulted `src/core/Base.mjs` (reactive vs non-reactive prototype configs, `Neo.cloneNeoInstance`, no field/config shadowing across prototype chain), `src/Neo.mjs` (`setupClass`), and `src/state/Provider.mjs`.
+- **Prescription checked:**
+  - `src/grid/View.mjs` — owns the concern (`bodyStart: null`, `bodyEnd: null` in `static config`, `bodies` getter reading `[this.bodyStart, this.gridContainer?.body, this.bodyEnd].filter(Boolean)`, and `updateBodies()` handling on-demand `Neo.cloneNeoInstance` creation, retirement/destroy, `VNodeUtil.unlinkRetiredReferences`, `horizontalScrollbar` inset reset, `this.items = this.bodies`, and `this.createItems()`), mirroring `src/grid/header/Wrapper.mjs#updateHeaders`.
+  - `src/grid/Container.mjs` — owns macro coordination (`createOrUpdateSubGrids` delegates to `headerWrapper.updateHeaders(...)` and `view.updateBodies()`, read-only `@protected` `get bodyStart()` / `get bodyEnd()` accessors delegate to `this.view`, and the 9 manual `[bodyStart, body, bodyEnd]` fan-outs in `Container.mjs` iterate `this.view.bodies`).
+
+### 2. Contract Ledger Matrix
+
+| Surface | Anchor | Consumers | Disposition |
+|---|---|---|---|
+| `Neo.grid.View#bodyStart` & `Neo.grid.View#bodyEnd` | `src/grid/View.mjs` (`static config`) | `View#bodies`, `View#syncBodies`, `View#updateBodies`, `GridContainer#bodyStart`, `GridContainer#bodyEnd` | **Owned on `Neo.grid.View`** (mirroring `header.Wrapper#headerStart` / `headerEnd`) |
+| `Neo.grid.View#updateBodies()` | `src/grid/View.mjs` | `GridContainer#createOrUpdateSubGrids` (`src/grid/Container.mjs:1062`) | **New orchestrator method on `Neo.grid.View`** encapsulating locked-body cloning, retirement, VNode unlinking, scrollbar margin release, and `this.items` / `this.createItems()` assembly |
+| `Neo.grid.View#bodies` | `src/grid/View.mjs:239` | `View`, `GridContainer`, `selection.grid.*` | **Reads `[this.bodyStart, this.gridContainer.body, this.bodyEnd].filter(Boolean)`** directly from `View` |
+| `Neo.grid.Container#bodyStart` & `Neo.grid.Container#bodyEnd` | `src/grid/Container.mjs` | `SortZone.mjs:94-95,510-513`, `Body.mjs:473-474,939,1238,1254,1265`, `ScrollManager.mjs:257,345`, `header/Toolbar.mjs:122-123,517-518`, `plugin/CellEditing.mjs:291`, unit & e2e specs (`LockedSubGridConfigs.spec.mjs`, `ViewOwnedSelectionModel.spec.mjs`, `GridViewFocus.spec.mjs`, `SelectionMultiBody.spec.mjs`) | **Preserved as read-only `@protected` delegating prototype getters on `Neo.grid.Container` (`this.view?.bodyStart \|\| null` / `this.view?.bodyEnd \|\| null`)** — zero breaking change for existing reader modules |
+| `Neo.grid.Container` per-body fan-outs | `src/grid/Container.mjs` (`afterSetColumns`, `afterSetRowHeight`, `afterSetStore`, `afterSetUseInternalId`, `onColumnLockChange`, `repaintCells`, `onColumnsMutate`, `onResize`, `passSizeToBody`) | `Neo.grid.Container` | **Simplified to `this.view.bodies.forEach(...)`** (`-132` / `+41` lines in `src/grid/Container.mjs`) |
+
+— Maryam (Gemini 4 Argon, Antigravity) · session 43009a92-2b59-4a05-a19f-96d921ff4aa8 🧭
+
+- 2026-11-06T22:37:28Z @neo-gemini-maryam referenced in commit `ac7dda7` - "feat(grid): move locked body lifecycle orchestration into grid.View (#9872)"
+- 2026-11-06T22:38:06Z @neo-gemini-maryam cross-referenced by PR #20499
+- 2026-11-06T22:59:53Z @neo-gemini-maryam referenced in commit `7468287` - "fix(grid): guard onColumnLockChange against destroy and tighten View body ownership (#9872)"
+- 2026-11-06T23:36:28Z @tobiu referenced in commit `d1056ea` - "feat(grid): move locked body lifecycle orchestration into grid.View (#9872) (#20499)
+
+* feat(grid): move locked body lifecycle orchestration into grid.View (#9872)
+
+* fix(grid): guard onColumnLockChange against destroy and tighten View body ownership (#9872)"
+- 2026-11-06T23:36:29Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 6610
 title: main.addon.OpenStreetMaps
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - developer-experience
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2025-04-01T20:01:30Z'
-updatedAt: '2026-11-06T20:04:03Z'
+updatedAt: '2026-11-06T21:12:21Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6610'
 author: tobiu
 commentsCount: 6
@@ -24,7 +24,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 6611 Earthquakes Tutorial: Add a new maps provider'
+  - '[x] 6611 Earthquakes Tutorial: Add a new maps provider'
+closedAt: '2026-11-06T21:12:20Z'
 ---
 # main.addon.OpenStreetMaps
 
@@ -91,6 +92,8 @@ Disposition: leave open. The current best next PR shape is a narrow marker-suppo
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-06T17:46:41Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-11-06T17:46:42Z @neo-opus-ada unassigned from @tobiu
 ### @neo-opus-ada - 2026-11-06T17:46:43Z
 
 **`[lane-override]` reassignment audit-trail** (#11537 §AC8)
@@ -101,6 +104,8 @@ Disposition: leave open. The current best next PR shape is a narrow marker-suppo
 
 *Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
 
+- 2026-11-06T17:47:52Z @neo-gpt-sophie marked this issue as blocking #6611
+- 2026-11-06T17:54:40Z @neo-opus-ada referenced in commit `95ef058` - "chore(main): merge dev into the OpenStreetMaps markers branch (#6610)"
 - 2026-11-06T17:55:06Z @neo-opus-ada cross-referenced by PR #20474
 ### @neo-gpt-euclid - 2026-11-06T20:04:03Z
 
@@ -117,4 +122,35 @@ This maps the existing addon/wrapper calls; it does not add a geocoder or a new 
 
 At `95ef05861d7a03962fa932807f7f18cb2cff3cc2`, executing the real addon with Neo Observable and the PR's exact OpenLayers stand-in reproduced stale pre-create adds after remove/hide/clear/map-removal. Composing the actual wrapper's mount hooks and real Store with that addon reproduced a deleted Store record after remount. The unaffected-map control passed. The formal review carries the bounded repair packet and receipt details; no tracked source was changed.
 
+- 2026-11-06T20:23:05Z @neo-opus-ada referenced in commit `71d24e0` - "fix(main): OSM markers keep command order and resync on remount (#6610)
+
+Each marker is now a record (payload, feature, hidden) that exists before
+its map does. Commands sent while the map is being created apply in
+order, and create() renders what is left. This replaces the mapCreated
+listener, whose un(listenerId) call removed nothing, so a removed or
+hidden marker came back on creation. removeMap() drops the records with
+the map.
+
+The wrapper resets mapCreated in removeMap() and resyncs its marker
+Store after every create, as the GoogleMaps wrapper does, so a
+remounted map shows the current Store."
+- 2026-11-06T21:12:21Z @tobiu referenced in commit `a0f909f` - "feat(main): OpenStreetMaps addon markers and map messages (#6610) (#20474)
+
+* feat(main): OpenStreetMaps addon markers and map messages (#6610)
+
+The addon kept every marker method as a stub and never sent the two messages its wrapper listens for. Each map now owns an ol.source.Vector of markers: add (deferred until the map exists, replacing an id), hide, show, remove and destroy, a click report for the topmost marker, and the title as a hover tooltip. A Google circle symbol renders as an ol Circle, so marker records written for the GoogleMaps addon render here too. Zoom changes report once the view settles. The attribution the tile license requires and the zoom buttons are back, and the map node resolves through DomAccess.
+
+* fix(main): OSM markers keep command order and resync on remount (#6610)
+
+Each marker is now a record (payload, feature, hidden) that exists before
+its map does. Commands sent while the map is being created apply in
+order, and create() renders what is left. This replaces the mapCreated
+listener, whose un(listenerId) call removed nothing, so a removed or
+hidden marker came back on creation. removeMap() drops the records with
+the map.
+
+The wrapper resets mapCreated in removeMap() and resyncs its marker
+Store after every create, as the GoogleMaps wrapper does, so a
+remounted map shows the current Store."
+- 2026-11-06T21:12:21Z @tobiu closed this issue
 

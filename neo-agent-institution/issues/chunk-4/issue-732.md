@@ -38,8 +38,8 @@ subIssues:
   - '[x] 758 The FM window stays black: the shell refuses seatLifecycle.mjs'
   - '[x] 763 SeatRenameContainer reads sessions.count and sessions.nextStep from renameSeat plan'
   - '[x] 769 reconcileRoster clears and defers all row-mapped controlReason kinds, not only cleanup'
-  - '[ ] 841 Cold relaunch: the roster read times out while the fleet is ready'
-subIssuesCompleted: 23
+  - '[x] 841 Cold relaunch: the roster read times out while the fleet is ready'
+subIssuesCompleted: 24
 subIssuesTotal: 24
 contentTrust:
   projected: true

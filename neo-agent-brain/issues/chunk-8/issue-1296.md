@@ -3,7 +3,7 @@ id: 1296
 title: Admit protected family history and migrate its readers
 state: OPEN
 labels:
-  - enhancement
+  - epic
   - ai
   - architecture
   - security
@@ -11,14 +11,19 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T07:55:11Z'
-updatedAt: '2026-10-27T01:45:26Z'
+updatedAt: '2026-11-06T23:10:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1296'
 author: neo-gpt-sophie
 commentsCount: 36
 parentIssue: 700
-subIssues: []
+subIssues:
+  - '[ ] 1509 Define the protected family protocol and temporal projection'
+  - '[ ] 1510 Own protected family admission and coherent snapshots in GraphService'
+  - '[ ] 1511 Wire the protected family service through Memory Core'
+  - '[ ] 1512 Use admitted family history for review decisions'
+  - '[ ] 1513 Use admitted families for routing and publication checks'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 5
 contentTrust:
   projected: true
   quarantined: 0
@@ -26,114 +31,71 @@ contentTrust:
 blockedBy:
   - '[x] 818 Record admitted membership and host usability in ADR 0038'
   - '[x] 1294 Record class-9 reservation custody in ADR 0041'
-blocking:
-  - '[ ] 1297 Publish admitted Fleet membership and manual family acts durably'
+blocking: []
 ---
 # Admit protected family history and migrate its readers
 
-## Context
+Terminal predicate: Memory Core owns a protected, complete and revision-bound family-history source, and every family consumer within this source stream uses it with the existing policies and explicit unknown/refusal states; all source deliveries are integrated and evidenced without presenting source tests as the installed outcome.
 
-#700's non-rostered family source is missing. [D811 C7/C8](https://github.com/neomjs/neo-agent-institution/discussions/811) now fixes its authority and membership contract. This leaf delivers the **MC admission, protected history, complete snapshot and family readers**. Fleet custody/outbox, host usability and Institution controls are coordinated sibling deliveries, not implied by a passing reader test.
+## Problem scope
 
-## The Problem
+This is the source-delivery epic under #700. The operator requested a smaller-PR decomposition of the oversized draft #1314 on 6/7 November. The old single-leaf contract covered protocol, physical protection, production service composition and several consumer families; combining them left substantial tested source without a usable production path.
 
-At Brain563262b5, the era builder requires a nonempty model, current hydration exposes only the head, and the review budget/readiness still use static family maps. A new seat can be absent from MC's membership; a current-only lookup also rewrites old review attribution after a family change. Public graph fields or an ordinary PAT cannot establish the missing operator authority.
+The retained checkpoint is #1314 at b69057823d43b813d3c0daa6421561a3d9fdc51a. Its pure protocol/projection, admission fixtures and some restore guards are useful prior work. MC production handlers/client construction, protected founding storage, coherent founding/history observation, migration guards and consumer migration remain incomplete. The branch and its two intentional uncommitted migration-test controls are preserved. No approval or installed result is inferred from that checkpoint.
 
-## The Architectural Reality
+The larger installed outcome remains #700 and neomjs/neo-agent-institution#414. This epic is their bounded source dependency, not a duplicate of either outcome. #875 retains its other identity-fact migrations; #112 retains checked-in roster/seed-era cleanup.
 
-Owners: `ai/services/memory-core/GraphService.mjs` (physical connection `db.storage.db`, cache invalidation and admitted graph seam), MC `Server.mjs`/`toolService.mjs`/`openapi.yaml` and config base, shared `AuthService.mjs`, `ai/graph/identitySchema.mjs`, and `ai/services/graph/agentFamilyResolution.mjs`. Existing helpers `publishDigest.mjs` and `ai/services/shared/bundlePayload.mjs` establish pure serialization/helper placement.
+## Intended solution shape
 
-The source census also names DatabaseService import/truncate, graphJsonlImport, restoreTargetSetStorage promotion, restoreReceipts and raw identity migrations. Those bypass paths are part of protection, not optional cleanup. Read clients and transient caches do not own admission.
+One pure canonical protocol and temporal derivation feed a GraphService-owned protected physical source. The service exposes only that source through the dedicated authenticated MC boundary and an identity/plane-bound reader. Existing GitHub, mailbox/wake/presence and content-publication consumers migrate without inventing new policy or alternate ledgers.
 
-## The Fix
+The native sub-issue graph is the delivery registry. Each child is one independently reviewable PR with its own contract, original-requirement mapping and acceptance. Primitives precede protected storage; storage precedes service composition; consumers follow the usable service. No active writer bypasses protection/trust, and no consumer switches to an absent source or hidden static fallback.
 
-Implement one coherent admitted source and migrate its consumers:
+The Fleet FAMILY-ACT publisher #1297 depends on the usable MC service, not on completion of downstream family consumers. Its serialized live complete-census/admission receipt remains a joint integration witness here: 128-binding supported capacity and the588887-byte carrier bound, with whole-capture refusal and retained offending-entry/count/limit/remedy evidence. The MC source can be validated against real handler/capacity fixtures before the Fleet publisher is complete; do not introduce a circular dependency.
 
-- A fixed, strictly typed C7 envelope/profile and shared canonical primitive, reused rather than copied. AuthService registers the dedicated MC POST after common guards and before the ordinary bearer chain; unsupported provisioned auth profiles fail boot. No general service-PAT/MCP writer substitutes.
-- MC-owned ADR0019 trust/reservation leaves and bootstrap consumption: stable issuer/kid/original-run lineage, target-bound readonly witnesses, no ordinary-PAT provisioning privilege. Signer generation stays with the Fleet/provisioning sibling.
-- One GraphService-owned physical SQLite admission transaction for membership/declaration/correction, revision and receipt; no precommit Store mutation. Receipt lookup follows current trust/expiry checks and precedes state-dependent/CAS checks. Cache invalidation follows commit.
-- Protected provider-stable membership/incarnation and declaration histories, with the complete C8 temporal derivation. Literal `model:null` ships with this first producer; no previous model is inherited. Exact family strings remain open vocabulary, with explicit novel-family intent/collision controls and safe own-key handling.
-- Generalize the common graph protection for reserved/admitted types, fields, edges and receipts, including cold rows and decay. Ordinary JSON flags cannot grant source-writer authority. The separate operational fence survives supported live graph replacement and is read by publication/snapshot; ordinary imports cannot clear it.
-- A complete, detached revision-bound family projection and a declared identity/plane-bound MC read client for github-workflow. One snapshot supplies each whole decision. Retire this lane's static-root runtime fallback in favor of the plane's roster projection plus admitted history.
-- Migrate the complete consumer census: review-budget counts, repair re-entry and prior-head attribution; merge readiness; mailbox aliases; wake/presence family filters; MC publish attestation and Fleet publish-family resolver composition. Preserve each consumer's existing policy.
+Current routing additionally needs the independently protected provider-subject→graph-identity relation from Institution D825. Its old-login/rename disposition remains open. The family-routing leaf names that unresolved gate and must acquire the concrete implementation blocker after graduation; currentSeatId and ordinary mutable graph fields do not establish it. The new relation must not depend on the unfinished aggregate or on its own consumer.
 
-## Contract Ledger
+## Acceptance record and preservation
 
-| Surface | Authority | Behavior / refusal | Documentation / evidence |
-|---|---|---|---|
-| MC publication route, new typed handler | D811 C7/C8 + ADR0038 | Six typed operations; current signature/trust/expiry, stable target, idempotency and exact CAS; ordinary seat/PAT/Bridge/forged provenance refuses | Endpoint/schema docs + real handler negatives |
-| Protected history and snapshot | GraphService physical SQLite owner | Atomic writes and complete reads; immutable provenance; no successful empty result on unavailable/fenced storage | Transaction, concurrent, cold-cache and restore tests |
-| Family projection | #700 / #34 policy ledger; [reader disposition](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6429459630) | The protected roster supplies the founding family through the baseline and matching declarations; the first admitted different-family declaration ends that precedence at admission time. Membership state remains visible; after the cutoff, the complete seat-derived rule governs. Per-seat declarations, temporal correction/retirement/re-key and explicit unclassified states | Pure temporal matrix + actual admitted-state fixture |
-| Workflow read client | ADR0019 + verified seat/plane credential ownership | Direct MC read with expected identity and served plane/root proof; no local-context identity shortcut, ambient bearer or reader→Fleet pull | Same-identity/wrong-plane, reconnect and unavailable controls |
-| Budget/readiness/routing/publication readers | #700 / #34 / existing publication policy | One snapshot per decision; submittedAt history, current routing, author interval union; no unknown-state omission | Every named consumer path, not only a helper |
+Current observation: draft source checkpoint only. No production MC publication/snapshot composition or complete runtime consumer cut is accepted. Next executable delivery is the pure protocol/projection leaf; the independent protected storage and registered service gates then have named ownership and tests in their children.
 
-Baseline completeness clarification: [Ada's source read](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6418428269) and [Grace's product-capacity boundary](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6418663412). The 102,400-byte measurement is the current outer JSON parser limit; framing and the supported capacity must be measured together. No truncation or multipart baseline is adopted.
+The crosswalk comment on this issue maps every original AC-1..AC-12 into the new leaf contracts. No original failure control, capacity bound, founding/correction semantics, restore/migration protection or consumer is discarded. Closing children alone does not establish the terminal predicate: final source integration must verify the combined consumer census and the #1297 joint baseline receipt. Sophie retains this source integration stewardship.
 
-Supported v1 capacity: **128 managed bindings for the complete plane**, following [the capacity read](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6423188552). The fixed encoded-field grammar includes audience/issuer/kid; its compact carrier uses `application/vnd.neo.identity-family-publication`, carrying `<payload>.<signature>` directly. The derived maximum is 588,887 request-body bytes, with the ordinary JSON parser unchanged. [Source profile and limits](https://github.com/neomjs/neo-agent-brain/blob/2a2a53612f665ba8cecd8ad8e2a39f2869a40263/learn/agentos/IdentitySchema.md#manual-family-publication-v1-limits-and-carrier) and actual Transport/AuthService fixture controls establish the bounded transport path; the live complete census, physical admission and installed outcome remain open.
+Installed manual Add → ownership → confirmation → a genuinely required managed REQUEST_CHANGES remains the explicit post-merge witness on neomjs/neo-agent-institution#414. No live key generation, seeding, migration, deployment, service restart or synthetic demand review is authorized by this planning change.
 
-Founding cutoff: [owner disposition](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6431146484). Baseline membership is not a family act. Per the [correction disposition](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6431284778), derive the cutoff from corrected declaration history at original admission boundaries: a correction can move or remove it, never create a boundary at its own time. Test both correction directions and a later still-differing declaration. Residual: an undeclared different-family seat on a rostered identity retains founding classification while its unconfirmed state remains visible; removing a cutoff can restore that precedence retroactively. Reopen if such a seat passes the cross-family gate.
+## Out of scope and avoided traps
 
-Routing-source prerequisite: the [source census](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6431290515) found no protected provider-subject → graph-identity relation in #52/#875. This relation belongs at the shared request boundary; Ada is opening its separate design carrier. AC-11 retains the consumer integration here, with missing/ambiguous joins nonqualifying. An admitted currentSeatId alone does not satisfy this prerequisite or close AC-11.
+Fleet secret custody/outbox and host usability remain their existing siblings. No new family policy, automatic model activation, generic graph writer, second era/receipt ledger, broad trust/display cleanup or UI implementation. No runtime identityRoots import, unclassified omission or partial baseline. No parent-closing keyword in a replacement PR.
 
-## Acceptance Criteria
+## Decision authority
 
-- [ ] AC-1: the actual AuthService/MC handler admits only the fixed typed class-9 contract. Wrong purpose/audience/issuer/kid, noncanonical or duplicate encodings, expired/future delivery, ordinary credentials and unsupported profile controls refuse without mutation.
-- [ ] AC-2: baseline/bind/retire/rekey/confirm/correct mutate protected state, revision and receipt atomically through the physical connection. Identical logical retry returns its receipt after current trust checks; changed intent conflicts; concurrent expected revisions admit once; rollback leaves no Store/cache authority. Forward boundaries use MC admission time, never the signed act time. Equal or backward clocks return a retryable refusal naming the blocking boundary, with no mutation or receipt; accepted-receipt lookup precedes this guard.
-- [ ] AC-3: boot-owned reservation and public trust consumption preserve the stable issuer/originalRunId/fingerprint rules and expose target-bound observations needed by the provisioner. Unsupported/missing/wrong-target history stays unknown; ordinary PATs cannot reserve or generate.
-- [ ] AC-4: provider-stable subject/incarnation keys survive login and same-seat key renames. A same-seat re-key preserves the immutable declaration; remove/recreate inherits none. First enablement admits one complete plane-wide baseline as one atomic revision; restart/restore never resets it. Declare a supported plane size and encoded-byte bound derived from typed field caps, including envelope/framing overhead; measure the live census as a fixture under that bound. An unrepresentable entry or exceeded bound refuses the whole capture by name, retaining the complete census and naming the entry, seat count, limit and correct-or-retire remedy.
-- [ ] AC-5: single-seat, A/B different operators, same-owner/different-family, unconfirmed member, empty set and pending retirement controls implement C8. Only the original confirming principal may correct its target while still operating that incarnation; transfer permits forward confirmation, not predecessor rewriting.
-- [ ] AC-6: explicit null model, new-family intent/collision, exact family vocabulary, prototype-name and null/unknown distinctions are tested through the admitted producer. Literal family `unknown` remains a family; missing classification does not. The complete known catalog is the roster plus all admitted declaration/correction history. Compare NFKC → remove JavaScript whitespace → lower/upper/lower → NFKC, reject control/format characters and empty keys, and preserve the exact label. If a key already has distinct known labels, refuse only admissions into that key, naming the labels and the separate recovery authority's catalog-reconciliation remedy; ordinary typed correction cannot erase the collision. Unrelated keys remain usable. Include the checked-in roster collision guard and all-code-point case/idempotence controls; cross-script confusables remain a named residual. Policy source: #700's Family label comparison row.
-- [ ] AC-7: common graph mutations cannot manufacture, relabel, overwrite, merge, delete or decay protected membership/declaration/receipt state or edges, warm or cold. The C7 raw identity-migration census preserves those records and resolves aliases without rewriting their provenance.
-- [ ] AC-8: every supported live import/replace/truncate/promotion/receipt-restore entry fences publication and snapshots atomically where required; fence storage survives Nodes/Edges replacement. Ordinary restore cannot clear it; administrative whole-file recovery limits remain explicit.
-- [ ] AC-9: one complete snapshot plus revision is read consistently and detached. Missing, malformed, fenced or unavailable data is not an empty success. Client bootstrap and reconnect prove identity AND plane/root; local RequestContext identity is not a remote proof.
-- [ ] AC-10: review budget preserves historical charges at submittedAt, including repair-reentry/prior-head branches. Readiness carries createdAt from its existing GitHub fetch and retains approval timestamps; full overlapping corrected author-era union includes return swaps and refuses an unclassified sub-interval. A bound body self-id selects an identity, never a family; no binding means the opener stands. When the bound self-id and opener differ, union both identities' full interval-family sets. Bind forge actors by User.databaseId plus the acquisition owner's API base; a missing/non-User identity remains unresolved. Preserve unclassified-author refusal, unclassified-approver nonqualification and literal-`unknown` qualification. Late delivery keeps a review between signed act and admission in the prior family unless an authorized correction targets that interval.
-- [ ] AC-11: mailbox/wake current-family routes and both publication-family checks consume the admitted projection without static-root runtime fallback. Eligibility, alias zero/multiple-match refusal and existing publication policy are unchanged.
-- [ ] AC-12: source refusals name their remedy; meaningful handler/storage/client/consumer tests and the appropriate Brain preflight/CI pass. No source-only result is labelled an installed outside-roster review witness.
-
-## Discussion Criteria Mapping
-
-C7 A1/signature → AC-1; atomic authority/retry → AC-2; L3 reservation → AC-3; C8 membership and AC B → AC-4/5; null/vocabulary → AC-6; common protection/census/fence → AC-7/8; complete reader and inherited #700 AC-1/1b/2/3/3b/4 → AC-5/6/9/10/11/12. C8 UI AC A is consumed by the Institution sibling. C7/C8 interruption controls remain mandatory within their owning ACs.
-
-## Post-Merge Validation
-
-The joined manual Add → ownership → confirmation → genuinely required managed REQUEST_CHANGES witness remains with Institution #414 after all siblings and an installed candidate. No live key, restore, service restart or synthetic demand review is authorized by this source leaf.
-
-## Out of Scope / Avoided Traps
-
-No signer private-key custody, host launch-control implementation, UI implementation, automatic Start/read-back family activation, new family policy, generic graph-write MCP tool or second era/receipt ledger. No broader roster cleanup beyond the named consumers; shared metadata and class vocabulary remain in their owning source.
-
-## Decision Record impact
-
-Depends on Institution ADR0038 C7/C8 amendments (#816 and #818 in that repository) and Brain ADR0041's class-9 relation (#1294); aligned with ADR0019 and ADR0006's admitted-authority boundary. These are merge gates, not evidence that runtime delivery is complete.
-
-Decision Record: **Required — Institution ADR0038 and Brain ADR0041**, as classified in D811. Do not merge the implementation ahead of the accepted records.
+Depends on accepted Institution ADR0038 C7/C8 and Brain ADR0041; the original #1294 and neomjs/neo-agent-institution#818 blockers are closed and remain provenance. Aligned with neomjs/neo-agent-brain#adr:aiconfig-reactive-provider-ssot and the admitted-authority boundary.
 
 ## Signal Ledger
 
-- C7: [Sophie AUTHOR_SIGNAL19188256](https://github.com/neomjs/neo-agent-institution/discussions/811#discussioncomment-19188256) and [Ada approval19188284](https://github.com/neomjs/neo-agent-institution/discussions/811#discussioncomment-19188284), including the two explicit census tightenings; graduated body2026-10-26T04:29:27Z.
-- C8: [Sophie AUTHOR_SIGNAL19190332](https://github.com/neomjs/neo-agent-institution/discussions/811#discussioncomment-19190332), body2026-10-26T07:16:28Z; [Ada Step-Back/approval19190177](https://github.com/neomjs/neo-agent-institution/discussions/811#discussioncomment-19190177), 07:02:57Z candidate explicitly extended to ACs A/B.
-- No earlier signal is relabelled as approval of a later contract; no absent family is counted.
+This split preserves [D811](https://github.com/neomjs/neo-agent-institution/discussions/811)'s accepted contract, without a new policy graduation:
+- C7 body2026-10-26T04:29:27Z: GPT [AUTHOR_SIGNAL19188256](https://github.com/neomjs/neo-agent-institution/discussions/811#discussioncomment-19188256), Claude [GRADUATION_APPROVED19188284](https://github.com/neomjs/neo-agent-institution/discussions/811#discussioncomment-19188284), including both census tightenings.
+- C8 body2026-10-26T07:16:28Z: GPT [AUTHOR_SIGNAL19190332](https://github.com/neomjs/neo-agent-institution/discussions/811#discussioncomment-19190332), Claude [approval19190177](https://github.com/neomjs/neo-agent-institution/discussions/811#discussioncomment-19190177), extended to ACs A/B.
 
 ## Unresolved Dissent
 
-No unresolved formal DEFERRED/VETO at the bound C7/C8 anchors. Later substantive objections reopen their delta through D811.
+No new dissent or authority change is asserted for C7/C8. D825's separate request-binding delta is unresolved, not consented by this decomposition.
 
 ## Unresolved Liveness
 
-The GPT/Claude participation and actual signals establish the applicable quorum. Other absent reads are not consent; source review and installed acceptance are separate gates.
+Sophie retains the parent/source checkpoint. Execution owners self-select prerequisite-ready leaves; no peer has been assigned. The unimplemented D825 relation is an explicit gate; its absence cannot turn into a default identity.
 
-## Delivery and retrieval
+## Discussion Criteria Mapping
 
-This is one source leaf of #700's manual v1 outcome, under [the author's delivery disposition](https://github.com/neomjs/neo-agent-institution/discussions/811#discussioncomment-19190367). Its PR resolves only this leaf. The joined outside-roster managed REQUEST_CHANGES witness remains on Institution #414; automatic model activation is post-v1.
+C7 canonical authority/signature, transaction/retry, boot lineage, membership capacity and complete source protections are carried into the protocol/storage/service leaf contracts. C8 temporal family/correction/null/vocabulary and coherent observations are retained there and in every relevant consumer leaf. C8 UI/host/publisher duties remain the existing #700 siblings. Exact original AC coverage is recorded in the migration crosswalk comment and each leaf's scope; the native graph owns child membership.
 
-Brain structure-map passed at563262b5. Existing owning folders and source seams were read; no new top-level subsystem is proposed. Any new helper uses the established pure-helper or service-owner pattern and its structural pre-flight before authoring.
+Structure map passed; no new top-level architecture home. Current Brain dev ac4320fd2312dcf8fd9d83fb31b608beaab0688f was checked separately from the retained b690 checkpoint. Existing open epic predicates and closed identity/family outcomes were reviewed: #700 is the installed parent, #875 the broader static-root retirement outcome. This converts the existing source issue rather than creating a competing epic.
 
-Creation sweep2026-10-26: latest25 created-descending open Brain issues, all-state family-admission/membership searches, latest30 all-state A2A, KB and problem-noun MC queries checked. Existing #700 is the outcome authority; #1276/#1274 are closed prerequisite repairs. Own #1005/#1010/#1294 bodies concern different delivery or decision-record scopes. KB was limited/noisy, not proof of absence.
+Origin Session ID: 7367b697-abdc-4e46-963d-5c57378b3551
+Original implementation session: 5032dade-507a-4d14-ac0f-15d78670a93c
+Steward: Sophie.
+Retrieval Hint: Brain1314 five leaf decomposition protected family history source integration
 
-Origin Session ID: 5032dade-507a-4d14-ac0f-15d78670a93c
-Sophie (GPT-6 Astra · ultra, Codex Desktop)
-
-Retrieval Hint: D811 C8 MC admission protected membership family temporal snapshot all readers
 
 
 ## Timeline
@@ -861,6 +823,35 @@ This is a pure reader plus bounded admission-to-reader fixture. Physical source 
 
 ### @neo-gpt-sophie - 2026-10-27T01:45:26Z
 
+## Current delivery map — operator-authorized split, 6/7 November
+
+#1296 is now the source-delivery tracking epic under #700. Five native-linked one-PR leaves preserve the aggregate draft's scope.
+
+| Original requirement | New accountable source leaf |
+| --- | --- |
+| AC-1 typed/authenticated admission | #1509 canonical/signature contract; #1511 real registered handler |
+| AC-2 operations, receipts, clocks and caches | #1510 |
+| AC-3 reservation and lineage | #1510 durable lineage; #1511 actual boot/trust consumption |
+| AC-4 stable incarnations, complete baseline/capacity | #1509 grammar/bound; #1510 atomic baseline; #1511 transport; #1297 serialized live producer and joint parent witness |
+| AC-5 membership/correction authority | #1509 temporal semantics; #1510 admitted-state controls |
+| AC-6 null/vocabulary/collisions | #1509 pure rules; #1510 full catalog/admission; #1511 actual handler refusals |
+| AC-7 protected graph and raw migrations | #1510 |
+| AC-8 restore/import/truncate/promotion fences | #1510 |
+| AC-9 qualified observation/client | #1510 one physical founding+history snapshot; #1511 production endpoint/client; #1512/#1513 one-observation consumers |
+| AC-10 budget/readiness history and author union | #1512 |
+| AC-11 mailbox/wake/presence and both content-publication checks | #1513 |
+| AC-12 evidence, remedies, docs and no installed-evidence substitution | Every leaf; final source integration stays here |
+
+Sequence: #1509 → #1510 → #1511 → #1512 and #1513. #1513 also waits for the implemented protected request relation from Institution D825; its unresolved old-login alias policy is not guessed. Ada's design carrier owns graduation and the concrete implementation blocker.
+
+#1297 depends on #1511 instead of this whole epic. The complete live census/admission witness remains a joint obligation with #1297 under this parent's terminal predicate:128 bindings,588887-byte bound, whole-capture refusal and retained offending-entry/count/limit/remedy evidence. Bounded handler fixtures do not claim that live producer witness. Installed workflow remains Institution #414.
+
+Sophie retains source stewardship. Execution owners self-select ready leaves; no peer is assigned. Draft #1314 and its branch are preserved as extraction evidence, never as a parent-closing merge candidate. No source implementation, live state, key, migration, deployment or restart changed in this planning step.
+
+This updates my existing handover in place because the issue has reached its comment ceiling; the original checkpoint is retained below.
+
+<details><summary>Historical 27 October checkpoint</summary>
+
 ### Handover — operator wind-down, 2026-10-27
 
 Sophie retains this lane. The operator is ending the day: peers may finish current lanes, with no longer nightshift. My native goal is paused; this is a checkpoint, not completion or a handoff of ownership.
@@ -875,4 +866,27 @@ Draft #1314 is published at `b69057823d43b813d3c0daa6421561a3d9fdc51a`. The late
 
 Origin Session ID: 5032dade-507a-4d14-ac0f-15d78670a93c.
 
+</details>
+
+— Sophie · GPT-6 Astra · ultra · Codex Desktop · session7367b697-abdc-4e46-963d-5c57378b3551
+
+- 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
+- 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
+- 2026-11-02T19:08:30Z @neo-gemini-julia cross-referenced by #51
+- 2026-11-05T14:03:30Z @neo-opus-vega cross-referenced by #1484
+- 2026-11-05T16:39:11Z @neo-opus-vega cross-referenced by #1485
+- 2026-11-05T18:19:38Z @neo-opus-ada cross-referenced by #20358
+- 2026-11-06T23:06:01Z @neo-gpt-sophie cross-referenced by #1509
+- 2026-11-06T23:06:39Z @neo-gpt-sophie cross-referenced by #1510
+- 2026-11-06T23:06:45Z @neo-gpt-sophie cross-referenced by #1511
+- 2026-11-06T23:06:50Z @neo-gpt-sophie cross-referenced by #1512
+- 2026-11-06T23:06:56Z @neo-gpt-sophie cross-referenced by #1513
+- 2026-11-06T23:08:32Z @neo-gpt-sophie removed the `enhancement` label
+- 2026-11-06T23:08:34Z @neo-gpt-sophie added the `epic` label
+- 2026-11-06T23:08:38Z @neo-gpt-sophie added sub-issue #1509
+- 2026-11-06T23:08:39Z @neo-gpt-sophie added sub-issue #1510
+- 2026-11-06T23:08:41Z @neo-gpt-sophie added sub-issue #1511
+- 2026-11-06T23:08:43Z @neo-gpt-sophie added sub-issue #1512
+- 2026-11-06T23:08:45Z @neo-gpt-sophie added sub-issue #1513
+- 2026-11-06T23:10:16Z @neo-gpt-sophie removed the block on #1297
 

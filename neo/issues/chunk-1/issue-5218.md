@@ -1,7 +1,7 @@
 ---
 id: 5218
 title: 'component.DateSelector: we need a new widget to pick the month & year more easily'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - design
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2024-02-13T08:20:55Z'
-updatedAt: '2026-11-06T20:16:24Z'
+updatedAt: '2026-11-06T22:17:49Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/5218'
 author: tobiu
 commentsCount: 6
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-06T22:17:49Z'
 ---
 # component.DateSelector: we need a new widget to pick the month & year more easily
 
@@ -60,6 +61,8 @@ This issue is stale because it has been open for 90 days with no activity.
 This issue was closed because it has been inactive for 14 days since being marked as stale.
 
 - 2024-09-12T02:28:27Z @github-actions closed this issue
+- 2026-10-09T20:52:51Z @neo-opus-grace reopened this issue
+- 2026-10-09T20:52:53Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T20:52:55Z
 
 #19489 set C · T7 · Grace · 2026-10-09: **reopened, valid but later.** `DateSelector` still has only its header year stepping (`updateHeaderYear`); there is no month/year picker widget.
@@ -74,6 +77,9 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-06T19:57:30Z @neo-opus-ada added the `ai` label
+- 2026-11-06T19:57:30Z @neo-opus-ada added the `design` label
+- 2026-11-06T19:57:30Z @neo-opus-ada added the `accessibility` label
 ### @neo-opus-ada - 2026-11-06T19:57:33Z
 
 Picking up per 7-day rule; previous assignee @ExtAnimal; last qualifying activity 2024-02-13T08:20:55Z (the assignment itself, with no comment since). Nige, if you are still on this, say so and I'll step back.
@@ -88,6 +94,8 @@ The contract is in the body's Contract Ledger.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-06T19:57:35Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-11-06T19:57:35Z @neo-opus-ada unassigned from @ExtAnimal
 ### @neo-opus-ada - 2026-11-06T19:57:36Z
 
 **`[lane-override]` reassignment audit-trail** (#11537 §AC8)
@@ -99,4 +107,44 @@ The contract is in the body's Contract Ledger.
 *Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
 
 - 2026-11-06T20:17:50Z @neo-opus-ada cross-referenced by PR #20483
+- 2026-11-06T20:50:28Z @neo-opus-ada referenced in commit `3120ba3` - "chore(docs): register MonthYearSelector in the class hierarchy (#5218)"
+- 2026-11-06T21:18:18Z @neo-opus-ada referenced in commit `7dffe13` - "fix(component): MonthYearSelector arrows from the focused year, bounds clamp the pair (#5218)
+
+Arrow keys now move from the focused option. After a page turn the focused
+year is not the pending one, and moving from the pending value jumped back
+to its page.
+
+A single clampPair() keeps the pending month and year inside minValue /
+maxValue on every change of month, year or bounds, so OK only ever
+confirms an allowed pair. A focus inside the selector follows the moved
+month. It replaces clampMonth(), which only covered a year change."
+- 2026-11-06T21:38:12Z @neo-opus-ada cross-referenced by #20489
+- 2026-11-06T22:17:49Z @tobiu referenced in commit `f12b367` - "feat(component): month and year selector for DateSelector (#5218) (#20483)
+
+* feat(component): month and year selector for DateSelector (#5218)
+
+DateSelector's header label is now a button that opens a new
+Neo.component.MonthYearSelector over the day view: twelve months and a
+page of ten years, picked by click or arrow keys, confirmed with OK or
+Enter, dismissed with Cancel or Escape. The pick moves the value the way
+the previous / next month buttons do.
+
+The selector is a child component, so the keys it handles stop there:
+Escape no longer reaches form.field.Date's picker, and the arrows no
+longer reach the day grid. useMonthYearSelector: false keeps the plain
+label.
+
+* chore(docs): register MonthYearSelector in the class hierarchy (#5218)
+
+* fix(component): MonthYearSelector arrows from the focused year, bounds clamp the pair (#5218)
+
+Arrow keys now move from the focused option. After a page turn the focused
+year is not the pending one, and moving from the pending value jumped back
+to its page.
+
+A single clampPair() keeps the pending month and year inside minValue /
+maxValue on every change of month, year or bounds, so OK only ever
+confirms an allowed pair. A focus inside the selector follows the moved
+month. It replaces clampMonth(), which only covered a year change."
+- 2026-11-06T22:17:49Z @tobiu closed this issue
 

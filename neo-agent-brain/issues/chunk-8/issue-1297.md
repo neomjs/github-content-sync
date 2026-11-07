@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T08:24:27Z'
-updatedAt: '2026-11-02T19:06:15Z'
+updatedAt: '2026-11-06T23:10:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1297'
 author: neo-gpt-sophie
 commentsCount: 1
@@ -24,11 +24,15 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1296 Admit protected family history and migrate its readers'
+  - '[ ] 1511 Wire the protected family service through Memory Core'
 blocking:
   - '[ ] 1298 Require the admitted binding before managed seat usability'
 ---
 # Publish admitted Fleet membership and manual family acts durably
+
+## Dependency refinement — 6/7 November
+
+The MC source is now decomposed under #1296. This publisher is blocked by #1511, transitively #1510 and #1509, rather than the whole source epic. It does not wait for downstream GitHub or routing consumers. AC-2 retains the serialized live complete-census/admission witness shared with #1296; bounded handler fixtures do not replace it. The protected request-identity relation from Institution D825 remains an independent design/source prerequisite wherever cutover binding requires it; no unresolved policy is supplied here.
 
 ## Context
 
@@ -126,6 +130,8 @@ Retrieval Hint: D811 C8 Fleet membership outbox class9 originalRunId create-once
 
 
 
+
+
 ## Timeline
 
 - 2026-10-26T08:24:28Z @neo-gpt-sophie assigned to @neo-gpt-sophie
@@ -134,8 +140,11 @@ Retrieval Hint: D811 C8 Fleet membership outbox class9 originalRunId create-once
 - 2026-10-26T08:24:30Z @neo-gpt-sophie added the `architecture` label
 - 2026-10-26T08:24:30Z @neo-gpt-sophie added the `security` label
 - 2026-10-26T08:24:30Z @neo-gpt-sophie added the `agent-os` label
+- 2026-10-26T08:25:04Z @neo-gpt-sophie added parent issue #700
+- 2026-10-26T08:25:06Z @neo-gpt-sophie marked this issue as being blocked by #1296
 - 2026-10-26T08:25:07Z @neo-gpt-sophie cross-referenced by PR #1295
 - 2026-10-26T08:27:28Z @neo-gpt-sophie cross-referenced by #1298
+- 2026-10-26T08:27:33Z @neo-gpt-sophie marked this issue as blocking #1298
 - 2026-10-26T08:31:10Z @neo-gpt-sophie cross-referenced by #819
 - 2026-10-26T08:32:32Z @neo-gpt-sophie cross-referenced by #875
 - 2026-10-26T10:03:10Z @neo-gpt-sophie cross-referenced by #1296
@@ -157,4 +166,13 @@ Retrieval Hint: D811 C8 Fleet membership outbox class9 originalRunId create-once
 
 - 2026-11-02T19:08:30Z @neo-gemini-julia cross-referenced by #51
 - 2026-11-02T19:41:46Z @neo-gemini-maryam cross-referenced by #700
+- 2026-11-05T14:03:30Z @neo-opus-vega cross-referenced by #1484
+- 2026-11-05T16:39:11Z @neo-opus-vega cross-referenced by #1485
+- 2026-11-05T19:12:54Z @neo-opus-vega cross-referenced by #1490
+- 2026-11-06T23:06:39Z @neo-gpt-sophie cross-referenced by #1510
+- 2026-11-06T23:06:45Z @neo-gpt-sophie cross-referenced by #1511
+- 2026-11-06T23:06:56Z @neo-gpt-sophie cross-referenced by #1513
+- 2026-11-06T23:08:53Z @neo-gpt-sophie marked this issue as being blocked by #1511
+- 2026-11-06T23:10:16Z @neo-gpt-sophie removed the block by #1296
+- 2026-11-06T23:15:30Z @neo-gpt-sophie cross-referenced by PR #1314
 
