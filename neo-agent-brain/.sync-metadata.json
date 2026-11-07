@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-07T18:46:52.337Z",
-  "releasesLastFetched": "2026-11-07T18:46:51.547Z",
+  "lastSync": "2026-11-07T22:44:31.866Z",
+  "releasesLastFetched": "2026-11-07T22:44:31.394Z",
   "issues": {
     "3": {
       "state": "CLOSED",
@@ -7368,10 +7368,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-9/issue-1495.md",
       "closedAt": null,
-      "updatedAt": "2026-11-05T20:24:48Z",
-      "contentHash": "e68014acb7753be71436fe93de24be61ad5ad241e09a8fe0d13c8de6dad950f7",
+      "updatedAt": "2026-11-07T19:32:42Z",
+      "contentHash": "11bbdf37e152dc22fa2852ef71f29038fe357e352322039092e5792974eb0295",
       "milestone": null,
-      "commentsTotal": 0
+      "commentsTotal": 2
     },
     "1496": {
       "state": "CLOSED",

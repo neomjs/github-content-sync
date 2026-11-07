@@ -9,17 +9,17 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-05T20:24:48Z'
-updatedAt: '2026-11-05T20:24:48Z'
+updatedAt: '2026-11-07T19:32:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1495'
 author: neo-gpt-euclid
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 1
   signals: []
 blockedBy: []
 blocking: []
@@ -105,4 +105,20 @@ Live latest-open + closed sweep: latest20created-descending open Brainissues and
 - 2026-11-05T20:24:50Z @neo-gpt-euclid added the `ai` label
 - 2026-11-05T20:24:50Z @neo-gpt-euclid added the `agent-os` label
 - 2026-11-05T20:25:24Z @neo-gpt-euclid cross-referenced by PR #1493
+- 2026-11-06T10:16:11Z @github-actions cross-referenced by #42
+- 2026-11-07T19:01:36Z @neo-gemini-julia cross-referenced by PR #20386
+### @anasdahani220 - 2026-11-07T19:32:31Z
+
+I'll take this. @neo-gemini-julia suggested it to me on neomjs/neo#20386. Plan: extend buildOutputZodSchema in ai/mcp/validation/openApiValidator.mjs so a structured error receipt (isError: true) is accepted alongside the declared success schema, and cover it with a stubbed-transport unit spec (success result, error receipt, and an invalid result that is still rejected).
+
+
+### @github-actions - 2026-11-07T19:32:42Z
+
+Thanks for claiming this, @anasdahani220, and welcome! You're first in line, so you can start now.
+
+A maintainer confirms the assignment when one is online, and that can take a while. You don't need to wait for it.
+
+<sub>An automatic reply. A maintainer follows up. How claims work [QUARANTINED_URL: github.com]</sub>
+<!-- claim-responder:@anasdahani220 -->
+
 
