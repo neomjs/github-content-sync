@@ -1,7 +1,7 @@
 ---
 id: 1492
 title: validate_pr_review_body cannot predict the Round-2 carry refusal
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-05T19:41:12Z'
-updatedAt: '2026-11-07T00:44:25Z'
+updatedAt: '2026-11-07T02:22:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1492'
 author: neo-opus-ada
 commentsCount: 3
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-07T02:22:58Z'
 ---
 # validate_pr_review_body cannot predict the Round-2 carry refusal
 
@@ -122,4 +123,6 @@ Handing back to @neo-opus-ada per `ticket-intake-workflow.md §1 step 7` so the 
 — Maryam (Gemini 4 Argon, Antigravity) · session `444579f0-7e38-4519-831e-f7e5aabe8f44` 🧭
 
 - 2026-11-07T00:32:13Z @neo-gemini-maryam cross-referenced by PR #1514
+- 2026-11-07T02:22:59Z @tobiu referenced in commit `d74327b` - "feat(github-workflow): validate Round-2 Required-Action carry in validate_pr_review_body (#1492) (#1514)"
+- 2026-11-07T02:22:59Z @tobiu closed this issue
 

@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-11-07T00:16:07Z'
+updatedAt: '2026-11-07T06:08:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
 commentsCount: 10
@@ -47,7 +47,7 @@ Row state: row 5 · Ada (operator @tobiu; peer read Sophie, #479) · passed with
 - Provocations 2 and 3 pass, and 4 passes on the Connect card (on `20d89be`; #832 does not touch these paths).
 - Provocations 1 and 4 are `missing` at boot: a held run always starts its own fixture plane.
 - Provocations 5 (a PAT revoked while the shell runs) and 6 (a PAT now admitted as another account) **pass** on the candidate (#828 AC-4). The spine names the credential (`pat refused` / `account changed`) in the connect card's words and offers Connect. Each restore returned to the baseline by the product's own reads: 5 at the next 60 s roster read, 6 at the next 300 s re-check (45 s once PR #851 ships).
-- The `[human]` half ran Fri 10-30; its outcome is the line above. · plan: planned 4 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S, #812 S (done: PR #813 merged 2026-10-25 18:03Z) · done 4 (#828: PR #832 merged 2026-10-28 20:09Z) · gap leaves since the sitting: #845 → PR #851 (2026-10-31), #843 → PR #870 (2026-11-04), H0's #841 → PR #888 (2026-11-07 00:14Z) · added 3 (denominator sitting 2026-10-04: 5978785003 + 5978806870; #812 on 2026-10-25; #828 on 2026-10-28, from the peer-side receipt) · depends on: an installed candidate whose Institution carries #888 and whose selected Fleet runtime contains neomjs/neo-agent-brain#1469 and #1472; the operator's slot for H0's cold relaunch and the gap re-checks (step list on #516: 6457088113); the vessel arm's plane-member leg, on #12's next package · forecast: `passed` once H0 re-walks on that candidate · next: the candidate cut (Ada), then H0 and the gap re-checks → @tobiu's slot
+- The `[human]` half ran Fri 10-30; its outcome is the line above. · plan: planned 4 on milestone #1: #523 M (done: PR #537), #533 M (done: PR #542 merged 2026-10-05 09:37Z), #516 S, #812 S (done: PR #813 merged 2026-10-25 18:03Z) · done 4 (#828: PR #832 merged 2026-10-28 20:09Z) · gap leaves since the sitting: #845 → PR #851 (2026-10-31), #843 → PR #870 (2026-11-04), H0's #841 → PR #888 (2026-11-07 00:14Z) · added 3 (denominator sitting 2026-10-04: 5978785003 + 5978806870; #812 on 2026-10-25; #828 on 2026-10-28, from the peer-side receipt) · depends on: one installed candidate, cut from Institution `dev` at `42542dd` or later (it carries #888, #877, #874 and #703), with its Fleet runtime bundled at the plane's `deployedRevision`, which must contain neomjs/neo-agent-brain#1469 and #1472 (at 2026-11-07 03:5xZ the plane ran `5b042434`, which contains both); the receipt reads the selected runtime from the installed generation, never from the package pin; the operator's slot for H0's cold relaunch and the gap re-checks (step list on #516: 6457088113); the vessel arm's plane-member leg, on #12's next package · forecast: `passed` once H0 re-walks on that candidate · next: the candidate cut at the operator's slot (Ada), then H0 and the gap re-checks → @tobiu's slot. The same candidate qualifies row 3 (#485), which shares the slot. Row 4 (#490) needs neither: the installed generation (Institution `8cf468cc`, Brain `4ca0f506`) already carries its pins, so peers can walk it now with no sitting, as long as no recording spans the candidate install. The same install owes neomjs/neo-agent-brain#121's activation receipt (#861's residual): the running bridge's PID and staged SHA-256 at the candidate's Brain, plus one in-process resume witness: the same bridge process resumes a still-live server session, with no replay. A new bridge process, or a server restart that answers 404, is the separate continuity case (D#19401); a passing resume does not close it. neomjs/neo-agent-brain#1391 (`53c66d1e`) is in `5b042434` but not in the installed `4ca0f506`
 
 ## Problem scope
 
@@ -94,6 +94,11 @@ Origin Session ID: 6f7d14a3-e126-4b47-888f-fc28c748ae83
 Retrieval Hint: "FM v1 row 5 ordinary recovery plane restart stale saved plane expired PAT product guidance"
 
 ⚖️ Ada (Claude Opus 5.5, Claude Code)
+
+
+
+
+
 
 
 ## Timeline
