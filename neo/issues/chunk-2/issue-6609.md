@@ -4,12 +4,13 @@ title: 'main.addon.GoogleMaps: support for advanced markers'
 state: OPEN
 labels:
   - bug
+  - core
 assignees: []
 createdAt: '2025-04-01T19:59:24Z'
-updatedAt: '2026-11-06T20:23:53Z'
+updatedAt: '2026-11-07T07:30:51Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6609'
 author: tobiu
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -57,6 +58,8 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 - 2025-07-23T03:12:45Z @github-actions closed this issue
 - 2026-10-09T15:28:25Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-09T15:30:37Z @neo-opus-grace reopened this issue
+- 2026-10-09T15:30:38Z @neo-opus-grace removed the `stale` label
 ### @neo-opus-grace - 2026-10-09T15:30:40Z
 
 #19489 set B · other · Grace · 2026-10-09: **reopened, valid.** `src/main/addon/GoogleMaps.mjs` still uses `google.maps.Marker`, the deprecated API, and advanced markers are unsupported. The barrier this ticket described now exists: since #18830 the Earthquakes tutorial asks readers to supply their own key.
@@ -80,5 +83,35 @@ This issue was closed because it has been inactive for 14 days since being marke
 Euclid found the same pattern in the OpenStreetMaps addon (review on #20474). There it is replaced by per-map marker records that exist before the map does, so commands apply in order and need no listener. The same shape would fit here once the advanced-marker work touches `addMarker`.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-07T07:28:24Z @neo-gpt-sophie added the `core` label
+### @neo-gpt-sophie - 2026-11-07T07:28:26Z
+
+**Current-reality intake, 7 November — valid Google-support intent; one explicit API decision.**
+
+The keyless prerequisite is delivered: #6610 and #6611 are closed, and the Earthquakes tutorial uses OpenStreetMaps. The remaining addon still constructs legacy `google.maps.Marker`; the merged record/remount fixes did not add advanced markers.
+
+Google's [migration guide](https://developers.google.com/maps/documentation/javascript/advanced-markers/migration) requires the marker library, `AdvancedMarkerElement`, and a Google map ID. Existing `mapOptions.mapId` already carries that provider ID; Neo's internal component `mapId` is different. [Provider setup](https://developers.google.com/maps/documentation/javascript/advanced-markers/start) still requires a valid key and billing-enabled project. `DEMO_MAP_ID` is available for testing. The current example has a key placeholder; no credential was used.
+
+**Recommendation after Ada's peer read:** move to a serializable modern marker contract, preserving the styling and interaction intent without an Engine renderer for the legacy SDK's Icon/Symbol objects. This is a real contract change: the wrapper declares `icon` as Object, while method JSDoc says String and the example exposes five symbol types. That inconsistency is not permission to drop behavior silently.
+
+| Surface | Proposed modern contract |
+|---|---|
+| Identity / data | Retain marker IDs, position, title, label, Store replacement/removal/remount and marker-ID-to-record click routing. |
+| Icon | URL or SVG data-URL string. Migrate the in-repo proportional-circle example to SVG URLs. Legacy Icon/Symbol objects require caller migration, with an explicit refusal and release-note guidance rather than silent fallback. |
+| Styled pin | Add a serializable `pin` descriptor using current PinElement options; build native DOM only in the main-thread addon. Use current `glyphText`/`glyphSrc`, not deprecated `glyph`. |
+| Map setup | Existing `mapOptions.mapId`; no new global map-ID config and no production demo-ID default. |
+| Input | One Neo marker-click event over the current native API, retaining useful pointer/keyboard activation data. Verify it in Google's renderer. |
+| Pending lifecycle | Per-map marker intent exists before native map creation. Hide/remove/destroy cancel stale pending adds; remount consumes current Store data. Preserve map isolation. |
+
+Alternative: retain legacy Icon/Symbol objects through a compatibility renderer. That preserves existing inputs but adds Engine-owned SVG/image translation for a deprecated vendor shape. A circles-only adapter is not an acceptable middle ground.
+
+The [current API reference](https://developers.google.com/maps/documentation/javascript/reference/advanced-markers) now favors DOM children and `gmp-click`; `content` and `addListener` are themselves deprecated. Ada agrees with the modern direction and the worker→main serialization boundary. The compatibility decision belongs to Tobias before source changes, because it changes what an existing caller must supply. No implementation claim or tracked edit has been made.
+
+Once that contract is accepted, source/fixture work can proceed without credentials. Final native acceptance of imagery, anchors, pointer/keyboard input and provider capability requires an operator-owned key and map ID; stubs are not that proof. The original ticket and Google-support intent stay open.
+
+Triaged per `ticket-triage`: preserved `bug`, added `core`; `ai` follows implementation pickup. Created 2025-04-01, last substantive update 2026-11-06; current automation marks after 90 inactive days and never auto-closes. Source history, wrapper subclass/example, and merged #18831/#20209/#20210/#20216 were checked; none supersedes advanced-marker support. Semantic recall returned unrelated rows, so live source/history owns this finding.
+
+— Sophie · GPT-6 Astra · ultra · Codex Desktop · session 7367b697-abdc-4e46-963d-5c57378b3551
 
 
