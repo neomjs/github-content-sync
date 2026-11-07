@@ -1,7 +1,7 @@
 ---
 id: 310
 title: Make contributor skill entry usable without private Neo tools
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - contributor-experience
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-11-07T06:58:17Z'
-updatedAt: '2026-11-07T06:58:19Z'
+updatedAt: '2026-11-07T16:50:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/310'
 author: neo-gpt-euclid
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-07T16:50:25Z'
 ---
 # Make contributor skill entry usable without private Neo tools
 
@@ -98,4 +99,15 @@ Retrieval Hint: "on-demand contributor skills private MC initialization PR autho
 - 2026-11-07T06:58:19Z @neo-gpt-euclid added the `agent-os` label
 - 2026-11-07T06:58:19Z @neo-gpt-euclid assigned to @neo-gpt-euclid
 - 2026-11-07T06:59:36Z @neo-gpt-euclid added parent issue #14230
+- 2026-11-07T07:15:09Z @neo-gpt-euclid cross-referenced by PR #311
+- 2026-11-07T07:17:13Z @neo-gpt-euclid cross-referenced by #14230
+- 2026-11-07T07:23:27Z @neo-gpt-euclid referenced in commit `566f843` - "fix(contributor): retain the maintainer firewall anchor (#310)"
+- 2026-11-07T16:45:25Z @neo-gpt-euclid referenced in commit `bcf1cb5` - "feat(contributor): make the public author path executable (#310)"
+- 2026-11-07T16:45:25Z @neo-gpt-euclid referenced in commit `cdf7129` - "fix(contributor): retain the maintainer firewall anchor (#310)"
+- 2026-11-07T16:50:25Z @tobiu referenced in commit `37e7b1d` - "feat(contributor): make the public author path executable (#310) (#311)
+
+* feat(contributor): make the public author path executable (#310)
+
+* fix(contributor): retain the maintainer firewall anchor (#310)"
+- 2026-11-07T16:50:25Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 1515
 title: Hydrate multi-chunk and Engine references in SearchService#ask
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-07T03:12:10Z'
-updatedAt: '2026-11-07T04:04:22Z'
+updatedAt: '2026-11-07T16:27:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1515'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-07T16:27:48Z'
 ---
 # Hydrate multi-chunk and Engine references in SearchService#ask
 
@@ -111,4 +112,12 @@ Retrieval Hint: "ask_knowledge_base CodebaseOverview hydrateReferenceContent sou
 - 2026-11-07T03:23:26Z @neo-gemini-maryam cross-referenced by PR #1516
 - 2026-11-07T04:03:54Z @neo-gemini-maryam referenced in commit `571d3d4` - "fix(knowledge-base): preserve document provenance and fenced sections (#1515)"
 - 2026-11-07T04:14:52Z @neo-gemini-maryam referenced in commit `189e5e2` - "fix(knowledge-base): escape backtick in fence matcher for retry-bounds scanner (#1515)"
+- 2026-11-07T16:27:48Z @tobiu referenced in commit `f71537e` - "feat(knowledge-base): hydrate multi-chunk and Engine references in SearchService#ask (#1515) (#1516)
+
+* feat(knowledge-base): hydrate multi-chunk and Engine references in SearchService#ask (#1515)
+
+* fix(knowledge-base): preserve document provenance and fenced sections (#1515)
+
+* fix(knowledge-base): escape backtick in fence matcher for retry-bounds scanner (#1515)"
+- 2026-11-07T16:27:49Z @tobiu closed this issue
 

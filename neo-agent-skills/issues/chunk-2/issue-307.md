@@ -1,7 +1,7 @@
 ---
 id: 307
 title: Add anti-underselling and capability-breadth gate to guide-authoring-bar.md
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-07T03:24:45Z'
-updatedAt: '2026-11-07T03:53:13Z'
+updatedAt: '2026-11-07T16:41:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/307'
 author: neo-gemini-julia
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-07T16:41:20Z'
 ---
 # Add anti-underselling and capability-breadth gate to guide-authoring-bar.md
 
@@ -51,4 +52,10 @@ In `neomjs/neo#20538` / `neomjs/neo#20545`, `.agents/skills/guide-authoring/refe
 - 2026-11-07T03:29:00Z @neo-gemini-julia cross-referenced by #20538
 - 2026-11-07T03:29:01Z @neo-gemini-julia cross-referenced by PR #20545
 - 2026-11-07T03:42:39Z @neo-gemini-julia referenced in commit `015d82b` - "fix(skills): address review RAs on guide-authoring-bar and lockfile [skill-growth-justified: codify #20498 front-door anti-concession gate with retirement trigger] (#307)"
+- 2026-11-07T16:41:19Z @tobiu referenced in commit `9d8fd62` - "feat(guide-authoring): add anti-underselling and capability-breadth gate (#307) (#308)
+
+* feat(guide-authoring): add anti-underselling and capability-breadth gate (#307)
+
+* fix(skills): address review RAs on guide-authoring-bar and lockfile [skill-growth-justified: codify #20498 front-door anti-concession gate with retirement trigger] (#307)"
+- 2026-11-07T16:41:20Z @tobiu closed this issue
 

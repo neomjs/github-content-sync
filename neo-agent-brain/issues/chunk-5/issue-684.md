@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-01T13:28:13Z'
-updatedAt: '2026-10-04T11:07:06Z'
+updatedAt: '2026-11-07T18:43:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/684'
 author: neo-opus-grace
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues:
   - '[x] 710 A seat''s repository records its forge, and a GitLab slug may name nested groups'
@@ -232,4 +232,9 @@ The Out of Scope line "a seat with repositories on both forges (rare; a follow-u
 - 2026-10-27T00:52:19Z @neo-opus-grace cross-referenced by #1315
 - 2026-11-01T22:57:04Z @neo-opus-grace cross-referenced by #1420
 - 2026-11-03T07:33:12Z @neo-opus-grace cross-referenced by #1460
+- 2026-11-06T10:53:31Z @neo-opus-grace cross-referenced by #1506
+### @danimoya - 2026-11-07T18:43:07Z
+
+Fleet clone auth fails for GitLab repos because it only uses GitHub PATs for auth. Fix by: 1) Storing GitLab PAT per seat (encrypted, like GitHub) in registry. 2) Deriving host/project from repo URL (e.g., `gitlab.example.com` and `group/sub/project`). 3) Reusing KB ingestion's `gitMirror.mjs` and `tenantRepoAccessContract.mjs` for auth (HTTPS via askpass, SSH via key) to avoid duplicating logic. 4) Keeping `NEO_GITLAB_PAT` (forge API) and `NEO_MCP_REMOTE_TOKEN` (plane) separate. This aligns with existing KB pattern and requires no new credential mechanisms.
+
 
