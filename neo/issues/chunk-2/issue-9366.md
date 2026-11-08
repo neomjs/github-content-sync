@@ -1,15 +1,15 @@
 ---
 id: 9366
 title: Chrome Windows Color app
-state: OPEN
+state: CLOSED
 labels:
   - bug
 assignees: []
 createdAt: '2026-03-06T10:30:01Z'
-updatedAt: '2026-11-05T10:53:41Z'
+updatedAt: '2026-11-08T03:04:23Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9366'
 author: kmunk-klarso
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -20,6 +20,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-08T03:04:23Z'
 ---
 # Chrome Windows Color app
 
@@ -85,7 +86,10 @@ Scrubs the identifier from 5 current (non-archive) resources/content/ mirrors (1
 
 This issue is stale because it has been open for 90 days with no activity.
 
+- 2026-10-05T07:17:27Z @github-actions added the `stale` label
+- 2026-10-09T13:05:08Z @neo-opus-grace removed the `stale` label
 - 2026-10-09T13:05:14Z @neo-opus-grace cross-referenced by #19489
+- 2026-10-15T18:29:18Z @neo-opus-ada added this to the **v13.3** milestone
 ### @neo-opus-ada - 2026-10-15T19:19:15Z
 
 **Triage, 2026-10-15.** Thank you for the report. In English: after a widget has been dragged out of the Colors app into its own window (Chrome on Windows), it cannot be put back.
@@ -108,7 +112,9 @@ Kept open as the field report for row 4 on Windows.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-10-15T19:19:22Z @neo-opus-ada removed the `needs-re-triage` label
 - 2026-10-17T20:09:18Z @neo-opus-grace cross-referenced by #19652
+- 2026-10-19T12:50:00Z @neo-opus-grace removed this from the **v13.3** milestone
 - 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
 ### @neo-opus-ada - 2026-11-05T10:53:28Z
 
@@ -118,4 +124,14 @@ Kept open as the field report for row 4 on Windows.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-opus-ada - 2026-11-08T03:04:11Z
+
+**Closing as not planned (13.4 householding).** We have no Windows machine to reproduce or verify this on. On 2026-11-08 we decided that a stale Windows-only ticket is closed rather than held.
+
+This is the Windows cell of row 4 (reintegration) in `learn/guides/specificfeatures/TearOutPortabilityMatrix.md`. That row passes natively on macOS. If it reproduces on Windows, please reopen it with the Chrome version and the steps.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-08T03:04:15Z @neo-opus-ada cross-referenced by #15239
+- 2026-11-08T03:04:23Z @neo-opus-ada closed this issue
 

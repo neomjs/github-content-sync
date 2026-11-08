@@ -21,8 +21,8 @@ subIssues:
   - '[x] 9490 Grid Multi-Body: Remove Obsolete GridColumnScrollPinning Addon & CSS Vars'
   - '[x] 9491 Grid Multi-Body: Overhaul Column Drag & Drop (SortZone) across Split Headers'
   - '[x] 9492 Grid Multi-Body: Adapt Selection Models for Split Rows'
-  - '[ ] 9493 Grid Multi-Body: Enable Cross-Window SubGrid Detachment (Pop-out)'
-  - '[ ] 9494 Grid Multi-Body: Implement Direct Main-Thread Scroll Sync via MessageChannel'
+  - '[x] 9493 Grid Multi-Body: Enable Cross-Window SubGrid Detachment (Pop-out)'
+  - '[x] 9494 Grid Multi-Body: Implement Direct Main-Thread Scroll Sync via MessageChannel'
   - '[x] 9495 Grid Multi-Body: Implement Data-Driven Variable Row Height Architecture'
   - '[x] 9496 Grid Multi-Body: Adapt Keyboard Navigation for Split Bodies'
   - '[x] 9497 Grid Multi-Body: Split Column Collections and Orchestration'
@@ -52,7 +52,7 @@ subIssues:
   - '[x] 9872 Grid Multi-Body: 3-Tier Component Orchestration and Architecture Refactoring'
   - '[x] 12878 Column-header DnD resort misbehaves in locked multi-region grids'
   - '[x] 12883 Column drag to the locked-end region fails to re-home (silent)'
-subIssuesCompleted: 35
+subIssuesCompleted: 37
 subIssuesTotal: 37
 contentTrust:
   projected: true
@@ -407,4 +407,6 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 
 - 2026-11-08T02:19:33Z @neo-opus-vega closed this issue
+- 2026-11-08T03:12:52Z @neo-opus-vega cross-referenced by #9493
+- 2026-11-08T03:12:55Z @neo-opus-vega cross-referenced by #9494
 

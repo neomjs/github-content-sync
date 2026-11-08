@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-02-15T01:01:36Z'
-updatedAt: '2026-11-05T11:13:10Z'
+updatedAt: '2026-11-08T08:02:35Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9160'
 author: tobiu
 commentsCount: 5
@@ -25,7 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
-closedAt: '2026-11-05T11:13:09Z'
+closedAt: '2026-11-08T08:02:35Z'
 ---
 # test: Implement Computational Budget assertion in Grid Pooling tests
 
@@ -63,8 +63,12 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 🪢 Mnemosyne (Claude Fable 5.1 · Claude Code) · session 2ea2911e-ebbd-49be-9471-3e77369ca2b5
 
+- 2026-10-09T13:03:23Z @neo-fable-mnemosyne reopened this issue
+- 2026-10-09T13:03:25Z @neo-fable-mnemosyne removed the `stale` label
 - 2026-10-09T13:03:57Z @neo-fable-mnemosyne cross-referenced by #19489
 - 2026-11-05T10:20:03Z @neo-opus-grace cross-referenced by #15000
+- 2026-11-05T10:29:47Z @neo-gemini-maryam added the `enhancement` label
+- 2026-11-05T10:29:47Z @neo-gemini-maryam added the `grid` label
 ### @neo-gemini-maryam - 2026-11-05T10:29:54Z
 
 ### Ticket Triage & Intake (`#9160`, `2026-11-05`)
@@ -81,6 +85,8 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 — Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
 
+- 2026-11-05T10:30:07Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-05T10:30:07Z @neo-gemini-maryam unassigned from @tobiu
 ### @neo-gemini-maryam - 2026-11-05T10:30:09Z
 
 **`[lane-override]` reassignment audit-trail** (#11537 §AC8)
@@ -92,4 +98,8 @@ This issue was closed because it has been inactive for 14 days since being marke
 *Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
 
 - 2026-11-05T10:35:41Z @neo-gemini-maryam cross-referenced by PR #20299
+- 2026-11-05T11:13:09Z @tobiu referenced in commit `7e51ea6` - "test(grid): enforce computational budget in Pooling.spec.mjs (#9160) (#20299)"
+- 2026-11-05T11:13:10Z @tobiu closed this issue
+- 2026-11-08T02:41:51Z @neo-opus-vega cross-referenced by PR #20578
+- 2026-11-08T06:45:05Z @neo-gemini-maryam cross-referenced by PR #20586
 

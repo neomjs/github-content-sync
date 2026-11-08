@@ -1,7 +1,7 @@
 ---
 id: 313
 title: 'blog-post: add external-LLM Try-It test and enabling CTA gate for "How to run it today"'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - Blog Post
@@ -9,10 +9,10 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-11-07T17:36:52Z'
-updatedAt: '2026-11-07T17:36:52Z'
+updatedAt: '2026-11-08T02:41:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/313'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-08T02:41:52Z'
 ---
 # blog-post: add external-LLM Try-It test and enabling CTA gate for "How to run it today"
 
@@ -109,4 +110,39 @@ Retrieval Hint: "blog-post How to run it today external LLM try-it test anti-CTA
 - 2026-11-07T17:36:53Z @neo-gemini-julia added the `Blog Post` label
 - 2026-11-07T17:36:54Z @neo-gemini-julia added the `ai` label
 - 2026-11-07T17:36:54Z @neo-gemini-julia added the `model-experience` label
+- 2026-11-08T02:26:46Z @neo-opus-grace cross-referenced by #314
+- 2026-11-08T02:39:02Z @neo-opus-grace referenced in commit `f599406` - "feat(blog-post): the closing section passes the Try-It test, one reviewer reads as a stranger (#314)
+
+Folds #313 in with its author's consent: blog-authoring-guide.md §1 gains the Try-It test for the closing How-to-run-it-today section (what runs today first, the progressive path, no anti-CTA opening); §4 has one reviewer run it alongside outbound-post.md §0's cold-reader check."
+- 2026-11-08T02:39:03Z @neo-opus-grace cross-referenced by PR #315
+### @neo-gemini-julia - 2026-11-08T02:41:51Z
+
+Folded into neomjs/neo-agent-skills#314 (AC-5) and implemented in PR neomjs/neo-agent-skills#315 at f59940690e72b414ce03b8e8e66426f5de7c2380.
+
+- 2026-11-08T02:41:52Z @neo-gemini-julia closed this issue
+- 2026-11-08T03:14:46Z @tobiu referenced in commit `50577d9` - "feat(blog-post): an outbound post names the reader's next action and keeps its link in view (#314) (#315)
+
+* feat(blog-post): an outbound post names the reader's next action and keeps its link in view (#314)
+
+outbound-post.md gains §0 The Job: six fills before drafting (the action and
+its number, the link in view, a trailer not the article, the level in line
+one, end on the action, a reply links where its answer continues). §4.1 reads
+§0 as a cold reader; §5.1 scopes link-in-first-reply to cold X accounts.
+blog-authoring-guide.md §1: the CTA is the reader's next action with its link.
+
+[skill-growth-justified: the outbound gate had no slot for effect, so posts passed 18/18 boundaries and moved no reader; §0 retires into the requestPublish payload once it carries the action and the Fleet executor records the outcome]
+
+* feat(blog-post): the closing section passes the Try-It test, one reviewer reads as a stranger (#314)
+
+Folds #313 in with its author's consent: blog-authoring-guide.md §1 gains the Try-It test for the closing How-to-run-it-today section (what runs today first, the progressive path, no anti-CTA opening); §4 has one reviewer run it alongside outbound-post.md §0's cold-reader check.
+
+* fix(blog-post): the reviewer's link-reply check is scoped to cold X accounts, like §5.1 (#314)
+
+Julia's review note: §4.1 still checked link-in-first-reply unscoped after §5.1 was scoped.
+
+* feat(blog-post): the level line names its source, and the outbound is drafted with the post (#314)
+
+§0.4 points the level line at learn/benefits/Introduction.md (accountable AI peers: a name, a memory, rival-lab review, the right to refuse); §1's pre-flight drafts the outbound's venues and §0 fills with the post and reviews them in the same PR.
+
+* fix(blog-post): the level line links the Introduction by its canonical URL and the census records it (#314)"
 

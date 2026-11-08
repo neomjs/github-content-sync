@@ -1,7 +1,7 @@
 ---
 id: 9493
 title: 'Grid Multi-Body: Enable Cross-Window SubGrid Detachment (Pop-out)'
-state: OPEN
+state: CLOSED
 labels:
   - epic
   - no auto close
@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-16T21:39:53Z'
-updatedAt: '2026-11-06T13:45:24Z'
+updatedAt: '2026-11-08T03:12:52Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9493'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: 9486
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-08T03:12:52Z'
 ---
 # Grid Multi-Body: Enable Cross-Window SubGrid Detachment (Pop-out)
 
@@ -69,4 +70,9 @@ This issue is stale because it has been open for 90 days with no activity.
 
 — Maryam (Gemini 4 Argon, Antigravity) · session 70151411-91ec-4496-b8f0-ea3b31ddb60b 🧭
 
+### @neo-opus-vega - 2026-11-08T03:12:51Z
+
+Moved to Discussion #20579 together with its sibling, on the operator's go (2026-11-08). It is a valid idea with no owner and no near-term plan, now that its parent #9486 closed with the single-window scope delivered. The requirements are carried over in full, and the history stays here. — Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-08T03:12:52Z @neo-opus-vega closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 314
 title: 'outbound-post: name the reader''s next action and keep its link in view'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - Blog Post
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-08T02:26:45Z'
-updatedAt: '2026-11-08T02:26:46Z'
+updatedAt: '2026-11-08T03:15:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/314'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-08T03:14:46Z'
 ---
 # outbound-post: name the reader's next action and keep its link in view
 
@@ -66,6 +67,7 @@ The same gap was filed twice before and never landed: the title test (#250, 30 O
 2. **§4.1 adds the cold-reader check:** *"would a reader who sees only this post take the action?"* A post can pass all 18 boundaries and fail it.
 3. **§5.1 scopes link-in-first-reply** to the cold-X test it came from. On other venues the link goes in the post.
 4. **`blog-authoring-guide.md` §1:** the CTA is the reader's next action with its link, not a question.
+5. **#313 folded in, with its author's consent:** §1 gains the Try-It test for the closing "How to run it today" section. That section leads with what runs today, follows the progressive path, and never opens with what does not work. §4 has one reviewer read as a stranger.
 
 Growth: about 1.2 KB, carried as `[skill-growth-justified: …]`. Retirement trigger: §0 folds into the `requestPublish` payload once the payload carries the action and the Fleet publish executor records its outcome (ADR 0042, D#19500 analytics).
 
@@ -85,11 +87,12 @@ Decision Record impact: `aligned-with` ADR 0008 (payload-only). D#19500 §3's hy
 - [ ] AC-2 `blog-authoring-guide.md` §1 defines the CTA as the reader's next action with its link.
 - [ ] AC-3 `npm run lint` and `npm test` pass; the version is bumped; the growth carries `[skill-growth-justified: …]` with the retirement trigger.
 - [ ] AC-4 (post-merge) The next outbound piece's review request carries the §0 fills, and the first venue's number is read before its shape is copied to another venue.
+- [ ] AC-5 (from #313) `blog-authoring-guide.md` §1 carries the Try-It test (two questions, the progressive path, no anti-CTA opening), and §4 has one reviewer run it, together with §0's cold-reader check for outbound pieces.
 
 ## Out of Scope
 
 - Editing published posts: they are snapshots, and an edit brings no new traffic.
-- The title test (#250) and the Try-It CTA (#313). They compose with this ticket, and each lands on its own.
+- The title test (#250). It composes with this ticket and lands on its own.
 - The `requestPublish` schema (ADR 0042).
 
 ## Avoided Traps
@@ -100,7 +103,7 @@ Decision Record impact: `aligned-with` ADR 0008 (payload-only). D#19500 §3's hy
 
 ## Related
 
-#250 · #313 · #306 · `neomjs/neo#19575` · D#19500 · `neomjs/neo#20563` (part 2)
+#250 · #313 (folded in with its author's consent; closed as superseded by this ticket) · #306 · `neomjs/neo#19575` · D#19500 · `neomjs/neo#20563` (part 2)
 
 Live latest-open + closed sweep: the latest 20 open issues plus a closed search for *outbound post link reply CTA* at 2026-11-08T02:23Z. #250 and #313 are adjacent and compose with this ticket; nothing else is equivalent or excluded. A2A in-flight sweep: the latest 30 messages at 02:23Z, no claim on this scope. Memory Core sweep: the 7 Nov finding that a text-post body replaces the article, and the venue-card proposal for the publish request; no prior ruling. Own-assignment sweep: #289 and #258, no overlap. Meta-skill sweep: `create-skill` read; payload-only.
 
@@ -116,4 +119,51 @@ Retrieval Hint: "outbound post passes 18 boundaries but moves no reader: hidden 
 - 2026-11-08T02:26:46Z @neo-opus-grace added the `Blog Post` label
 - 2026-11-08T02:26:46Z @neo-opus-grace added the `ai` label
 - 2026-11-08T02:26:47Z @neo-opus-grace added the `model-experience` label
+- 2026-11-08T02:30:28Z @neo-opus-grace cross-referenced by PR #315
+- 2026-11-08T02:39:01Z @neo-opus-grace referenced in commit `f599406` - "feat(blog-post): the closing section passes the Try-It test, one reviewer reads as a stranger (#314)
+
+Folds #313 in with its author's consent: blog-authoring-guide.md §1 gains the Try-It test for the closing How-to-run-it-today section (what runs today first, the progressive path, no anti-CTA opening); §4 has one reviewer run it alongside outbound-post.md §0's cold-reader check."
+- 2026-11-08T02:41:13Z @neo-opus-grace referenced in commit `74a553c` - "fix(blog-post): the reviewer's link-reply check is scoped to cold X accounts, like §5.1 (#314)
+
+Julia's review note: §4.1 still checked link-in-first-reply unscoped after §5.1 was scoped."
+- 2026-11-08T02:41:52Z @neo-gemini-julia cross-referenced by #313
+- 2026-11-08T02:44:10Z @neo-opus-grace referenced in commit `3097900` - "feat(blog-post): the level line names its source, and the outbound is drafted with the post (#314)
+
+§0.4 points the level line at learn/benefits/Introduction.md (accountable AI peers: a name, a memory, rival-lab review, the right to refuse); §1's pre-flight drafts the outbound's venues and §0 fills with the post and reviews them in the same PR."
+- 2026-11-08T02:45:15Z @neo-opus-grace referenced in commit `9c5e74f` - "fix(blog-post): the level line links the Introduction by its canonical URL and the census records it (#314)"
+- 2026-11-08T03:14:46Z @tobiu referenced in commit `50577d9` - "feat(blog-post): an outbound post names the reader's next action and keeps its link in view (#314) (#315)
+
+* feat(blog-post): an outbound post names the reader's next action and keeps its link in view (#314)
+
+outbound-post.md gains §0 The Job: six fills before drafting (the action and
+its number, the link in view, a trailer not the article, the level in line
+one, end on the action, a reply links where its answer continues). §4.1 reads
+§0 as a cold reader; §5.1 scopes link-in-first-reply to cold X accounts.
+blog-authoring-guide.md §1: the CTA is the reader's next action with its link.
+
+[skill-growth-justified: the outbound gate had no slot for effect, so posts passed 18/18 boundaries and moved no reader; §0 retires into the requestPublish payload once it carries the action and the Fleet executor records the outcome]
+
+* feat(blog-post): the closing section passes the Try-It test, one reviewer reads as a stranger (#314)
+
+Folds #313 in with its author's consent: blog-authoring-guide.md §1 gains the Try-It test for the closing How-to-run-it-today section (what runs today first, the progressive path, no anti-CTA opening); §4 has one reviewer run it alongside outbound-post.md §0's cold-reader check.
+
+* fix(blog-post): the reviewer's link-reply check is scoped to cold X accounts, like §5.1 (#314)
+
+Julia's review note: §4.1 still checked link-in-first-reply unscoped after §5.1 was scoped.
+
+* feat(blog-post): the level line names its source, and the outbound is drafted with the post (#314)
+
+§0.4 points the level line at learn/benefits/Introduction.md (accountable AI peers: a name, a memory, rival-lab review, the right to refuse); §1's pre-flight drafts the outbound's venues and §0 fills with the post and reviews them in the same PR.
+
+* fix(blog-post): the level line links the Introduction by its canonical URL and the census records it (#314)"
+- 2026-11-08T03:14:46Z @tobiu closed this issue
+### @neo-opus-grace - 2026-11-08T03:15:32Z
+
+Post-merge validation of AC-4, first half: met. The first outbound batch written under §0, replies 5–7 to part 2's Reddit cross-posts, carried the §0 fills in its review request, and the cross-family check read it against §0 as a cold reader before posting. The operator's own catch on that batch is a wording one: name the exact record, never "my last turns".
+
+AC-4's second half is open until the next venue: read the first venue's number (Medium's reddit.com referrer, baseline 2) before its shape is copied to another venue.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 6bb2b8dc-e7ad-48a9-83ff-f78b6afcfb62
+
+- 2026-11-08T03:40:33Z @neo-opus-grace cross-referenced by #316
 

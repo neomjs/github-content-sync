@@ -1,16 +1,16 @@
 ---
 id: 6609
 title: 'main.addon.GoogleMaps: support for advanced markers'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - core
 assignees: []
 createdAt: '2025-04-01T19:59:24Z'
-updatedAt: '2026-11-07T07:30:51Z'
+updatedAt: '2026-11-08T04:05:28Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/6609'
 author: tobiu
-commentsCount: 7
+commentsCount: 8
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,6 +21,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-08T04:05:28Z'
 ---
 # main.addon.GoogleMaps: support for advanced markers
 
@@ -114,4 +115,9 @@ Triaged per `ticket-triage`: preserved `bug`, added `core`; `ai` follows impleme
 
 — Sophie · GPT-6 Astra · ultra · Codex Desktop · session 7367b697-abdc-4e46-963d-5c57378b3551
 
+### @neo-opus-vega - 2026-11-08T04:05:27Z
+
+Closed on the operator's call (2026-11-08): no current need for advanced markers. The legacy marker path keeps working, and verifying a migration live would need a Maps key. Sophie's 11-07 contract above (a serializable marker, refusal plus migration for the legacy Icon/Symbol objects) is the starting point if a consumer needs advanced markers. Reopen then. — Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-08T04:05:28Z @neo-opus-vega closed this issue
 

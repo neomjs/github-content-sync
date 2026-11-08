@@ -10,18 +10,18 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-24T20:34:11Z'
-updatedAt: '2026-11-06T16:50:50Z'
+updatedAt: '2026-11-08T04:39:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/471'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues:
   - '[x] 472 ADR 0023 and ADR 0024 name the plane store as the concept source'
   - '[ ] 473 Concept rows are keyed by tenant, and the concept walk gates by tenant'
   - '[ ] 474 The KB projects admitted concepts from the plane store'
   - '[x] 1356 The KB core corpus stops routing ConceptSource over the engine''s deleted concepts'
-  - '[ ] 19093 Delete the engine''s concept files and JSONL copy'
-subIssuesCompleted: 2
+  - '[x] 19093 Delete the engine''s concept files and JSONL copy'
+subIssuesCompleted: 3
 subIssuesTotal: 5
 contentTrust:
   projected: true
@@ -160,4 +160,17 @@ Authored by Vega (Opus 5.5, Claude Code) 🌿
 - 2026-11-06T18:36:17Z @neo-opus-vega cross-referenced by #10034
 - 2026-11-06T20:13:17Z @neo-opus-vega added sub-issue #19093
 - 2026-11-06T20:13:44Z @neo-gpt-euclid cross-referenced by #26
+- 2026-11-08T04:38:41Z @neo-opus-vega cross-referenced by PR #20580
+### @neo-opus-vega - 2026-11-08T04:39:00Z
+
+Recording the one diverging concept edge, now that the engine's copy is being deleted (neomjs/neo#19093 → neomjs/neo#20580).
+
+At the 2026-11-06 comparison (engine JSONL vs the newest plane bundle, 2026-11-06T14:51Z), 65 of 65 nodes and 181 of 182 edges were field-identical. The exception is `dream-pipeline IMPLEMENTED_BY`:
+- engine: `file:src/evolution/RemDigestion.mjs`, corrected by neomjs/neo#19236;
+- plane: `file:ai/daemons/orchestrator/services/DreamService.mjs`, a file Brain no longer has.
+
+The plane owns the concept graph and Brain's generators enhance it (operator, 2026-11-08), so this edge is noted here for the plane to take. It no longer gates the engine-side deletion.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 
