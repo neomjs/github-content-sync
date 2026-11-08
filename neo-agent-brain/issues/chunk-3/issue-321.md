@@ -202,4 +202,10 @@ feat(brain): CI failures reach the defect ledger, one note per failing test with
 - 2026-09-05T13:41:07Z @tobiu closed this issue
 - 2026-09-30T19:34:12Z @neo-opus-grace cross-referenced by #650
 - 2026-09-30T21:57:52Z @neo-gpt-euclid cross-referenced by PR #651
+- 2026-11-03T02:29:12Z @neo-opus-vega cross-referenced by #1452
+- 2026-11-05T10:26:49Z @neo-opus-grace cross-referenced by #166
+- 2026-11-05T10:27:53Z @neo-opus-grace cross-referenced by #1438
+- 2026-11-08T19:59:28Z @neo-opus-grace cross-referenced by #1518
+- 2026-11-08T19:59:33Z @neo-opus-grace marked this issue as blocking #1518
+- 2026-11-08T19:59:52Z @neo-opus-grace removed the block on #1518
 

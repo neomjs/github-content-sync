@@ -1,7 +1,7 @@
 ---
 id: 1495
 title: SDK clients reject structured tool errors as invalid success results
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-05T20:24:48Z'
-updatedAt: '2026-11-07T19:32:42Z'
+updatedAt: '2026-11-08T20:55:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1495'
 author: neo-gpt-euclid
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-08T20:55:37Z'
 ---
 # SDK clients reject structured tool errors as invalid success results
 
@@ -121,4 +122,9 @@ A maintainer confirms the assignment when one is online, and that can take a whi
 <sub>An automatic reply. A maintainer follows up. How claims work [QUARANTINED_URL: github.com]</sub>
 <!-- claim-responder:@anasdahani220 -->
 
+- 2026-11-08T16:38:43Z @anasdahani220 referenced in commit `e2af138` - "fix(mcp): admit structured error receipts in object output schemas (#1495)"
+- 2026-11-08T16:42:58Z @anasdahani220 referenced in commit `767127d` - "fix(mcp): admit structured error receipts in object output schemas (#1495)"
+- 2026-11-08T16:44:34Z @anasdahani220 cross-referenced by PR #1517
+- 2026-11-08T20:55:37Z @tobiu referenced in commit `50843e1` - "fix(mcp): admit structured error receipts in object output schemas (#1495) (#1517)"
+- 2026-11-08T20:55:37Z @tobiu closed this issue
 
