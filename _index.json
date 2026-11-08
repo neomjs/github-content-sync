@@ -178649,6 +178649,22 @@
   },
   {
     "repoSlug": "neo-agent-institution",
+    "type": "issues",
+    "id": 889,
+    "version": null,
+    "chunkNumber": 5,
+    "path": "neo-agent-institution/issues/chunk-5/issue-889.md"
+  },
+  {
+    "repoSlug": "neo-agent-institution",
+    "type": "issues",
+    "id": 890,
+    "version": null,
+    "chunkNumber": 5,
+    "path": "neo-agent-institution/issues/chunk-5/issue-890.md"
+  },
+  {
+    "repoSlug": "neo-agent-institution",
     "type": "pulls",
     "id": 5,
     "version": null,
@@ -183734,6 +183750,14 @@
     "version": null,
     "chunkNumber": 2,
     "path": "neo-agent-skills/issues/chunk-2/issue-313.md"
+  },
+  {
+    "repoSlug": "neo-agent-skills",
+    "type": "issues",
+    "id": 314,
+    "version": null,
+    "chunkNumber": 2,
+    "path": "neo-agent-skills/issues/chunk-2/issue-314.md"
   },
   {
     "repoSlug": "neo-agent-skills",

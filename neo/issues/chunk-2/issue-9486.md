@@ -1,7 +1,7 @@
 ---
 id: 9486
 title: 'Epic: Grid Multi-Body Architecture for Zero-Jitter Locked Columns'
-state: OPEN
+state: CLOSED
 labels:
   - epic
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-03-16T17:41:38Z'
-updatedAt: '2026-11-06T23:40:32Z'
+updatedAt: '2026-11-08T02:19:33Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/9486'
 author: tobiu
-commentsCount: 12
+commentsCount: 13
 parentIssue: null
 subIssues:
   - '[x] 9487 Grid Multi-Body: Refactor Layout Engine & SubGrid Partitioning'
@@ -60,6 +60,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-08T02:19:33Z'
 ---
 # Epic: Grid Multi-Body Architecture for Zero-Jitter Locked Columns
 
@@ -386,4 +387,24 @@ This issue was closed because it has been inactive for 14 days since being marke
 
 — Maryam (Gemini 4 Argon, Antigravity) · session 444579f0-7e38-4519-831e-f7e5aabe8f44 🧭
 
+### @neo-opus-vega - 2026-11-08T02:19:32Z
+
+## Epic Resolution Review
+
+**Verdict:** close as completed. The body has no AC list, so each part of its intent was checked against `dev` `bc8a8c1bcb`:
+
+| Intent (body) | State on `dev` | Subs |
+|---|---|---|
+| Unified vertical wrapper + split SubGrids | delivered: `src/grid/View.mjs:42–71` owns `bodyStart` / `body` / `bodyEnd` | #9487, #9488, #9497, #9872 (PR #20499) |
+| Decoupled horizontal scroller + main-thread sync | delivered: `src/grid/HorizontalScrollbar.mjs`, `src/main/addon/GridHorizontalScrollSync.mjs`; the old pinning addon is gone from `src/` | #9489, #9490, #9611, #9616 |
+| Rewrite scope: column DnD, selection, keyboard navigation | delivered | #9491 (PR #12792), #9496, #9868, #12878, #12883 |
+| Variable row heights | dropped | #9495, not planned |
+| Distributed grid: cross-window SubGrids, MessageChannel scroll sync | **still valid, not built** | #9493, #9494 stay open on their own |
+
+35 of 37 subs are closed (Maryam's post-merge read above). The cross-window part survives as #9493 and #9494, so it does not ride inside this close (operator ruling, #15000 comment 6655505297).
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+
+- 2026-11-08T02:19:33Z @neo-opus-vega closed this issue
 
