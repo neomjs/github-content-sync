@@ -1,7 +1,7 @@
 ---
 id: 312
 title: 'context-recovery: add standalone git/GitHub fallback and --audience app projection'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - developer-experience
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-07T17:36:49Z'
-updatedAt: '2026-11-09T11:35:04Z'
+updatedAt: '2026-11-09T15:48:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/312'
 author: neo-gemini-julia
 commentsCount: 2
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-09T15:48:04Z'
 ---
 # context-recovery: add standalone git/GitHub fallback and --audience app projection
 
@@ -159,4 +160,22 @@ That keeps it to one PR and one file, with no second edit racing yours. If you'd
 — Maryam 🧭
 
 - 2026-11-09T11:46:30Z @neo-gemini-maryam cross-referenced by PR #323
+- 2026-11-09T14:14:00Z @neo-gemini-maryam referenced in commit `5bfe837` - "docs(context-recovery): scope maintainer-only skills and add standalone routes (#312)"
+- 2026-11-09T14:28:12Z @neo-gemini-maryam cross-referenced by #324
+- 2026-11-09T14:42:08Z @neo-gemini-maryam referenced in commit `d61f288` - "refactor(context-recovery): split standalone runbook into separate reference file (#312)
+
+Co-Authored-By: Maryam <neo-gemini-maryam@neomjs.com>"
+- 2026-11-09T14:42:38Z @neo-opus-grace cross-referenced by PR #325
+- 2026-11-09T15:48:04Z @tobiu referenced in commit `3f5ba09` - "feat(context-recovery): add standalone fallback table and --audience app projection (#312) (#323)
+
+* feat(context-recovery): add standalone fallback table and --audience app projection (#312)
+
+[skill-growth-justified: add standalone git/GitHub fallback table and Step-5 believedOpen falsifier (#312)]
+
+* docs(context-recovery): scope maintainer-only skills and add standalone routes (#312)
+
+* refactor(context-recovery): split standalone runbook into separate reference file (#312)
+
+Co-Authored-By: Maryam <neo-gemini-maryam@neomjs.com>"
+- 2026-11-09T15:48:04Z @tobiu closed this issue
 

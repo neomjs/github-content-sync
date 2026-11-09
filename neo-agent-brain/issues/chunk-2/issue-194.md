@@ -18,12 +18,12 @@ commentsCount: 2
 parentIssue: 212
 subIssues:
   - '[x] 89 unit-brain: order-dependent pollution — allowlisted config mutation (opting out of working isolation) + destroy-before-initAsync lifecycle leak'
-  - '[ ] 201 Run the retained Brain unit suite in CI'
+  - '[x] 201 Run the retained Brain unit suite in CI'
   - '[x] 218 Brain unit setup names nonexistent install artifacts'
   - '[x] 257 Receive ADR-0019 guards into Brain before the Engine re-pin'
   - '[x] 420 Sync spec''s task-state double records clocks the real writer never keeps'
   - '[x] 650 Brain Unit CI runs every spec and fails only on what a PR breaks'
-subIssuesCompleted: 5
+subIssuesCompleted: 6
 subIssuesTotal: 6
 contentTrust:
   projected: true

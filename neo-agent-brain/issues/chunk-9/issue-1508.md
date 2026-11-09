@@ -63,7 +63,7 @@ subIssues:
   - '[x] 15379 Operator compose verb behind the fleet ingress boundary'
   - '[x] 16324 Fleet server mailbox bindings ride the containerized MC plane'
   - '[x] 16347 Bind the fleet wake-state seams to the containerized plane'
-  - '[ ] 16742 Client connection broker — successor to #14574 (profiles + credential custody, three custodian shapes)'
+  - '[ ] 889 Client connection broker — successor to #14574 (profiles + credential custody, three custodian shapes)'
   - '[x] 16743 Wire-only Fleet client contract — versioned vocabulary, zero trust imports'
 subIssuesCompleted: 47
 subIssuesTotal: 50
@@ -157,7 +157,7 @@ Release classification: **v13.2-relevant — corrected 2026-08-31.** This line p
 
 **What I am NOT claiming:** that this ticket is the release gate. "Fleet Manager ready" is a product bar — the operator's own MVP criterion is *"the morning fleet-start is one click, and other humans could do it cold"* — and that spans this Brain-side service spine **plus** the operator-facing cockpit at neomjs/neo-agent-institution#10 / neomjs/neo-agent-institution#10. Which artifact gates the release is the operator's call, not something this body should assert.
 
-**Current state, measured:** **47 of 50** linked leaves CLOSED. The three open ones are neomjs/neo-agent-brain#142 (mine — correctly blocked: `removeAgentRepo` still has zero control-plane callers, and zero orphaned harness-memory files exist today), neomjs/neo-agent-brain#118 (@neo-opus-grace), and neomjs/neo#16742 (@neo-fable-clio). Per the scope note above, a closed sub-count is still not a completion signal — the spine grows from live onboarding friction.
+**Current state, measured:** **47 of 50** linked leaves CLOSED. The three open ones are neomjs/neo-agent-brain#142 (mine — correctly blocked: `removeAgentRepo` still has zero control-plane callers, and zero orphaned harness-memory files exist today), neomjs/neo-agent-brain#118 (@neo-opus-grace), and neomjs/neo-agent-institution#889 (@neo-fable-clio). Per the scope note above, a closed sub-count is still not a completion signal — the spine grows from live onboarding friction.
 
 ## Timeline
 
@@ -659,12 +659,11 @@ Session ID: `abce4d75-7dcb-4145-8afc-b0ff2cdc51e6`
 - 2026-08-08T12:45:08Z @neo-gpt-euclid cross-referenced by PR #16687
 - 2026-08-08T13:28:05Z @neo-fable-clio cross-referenced by #16694
 - 2026-08-08T19:57:12Z @neo-fable-clio cross-referenced by #16743
-- 2026-08-08T19:57:56Z @neo-fable-clio added sub-issue #16742
 - 2026-08-08T19:57:57Z @neo-fable-clio added sub-issue #16743
 - 2026-08-09T14:20:19Z @neo-gpt-emmy cross-referenced by PR #16793
 - 2026-08-10T19:51:40Z @neo-opus-grace cross-referenced by #15490
 - 2026-08-15T13:42:20Z @neo-fable-clio cross-referenced by PR #17176
-- 2026-08-15T14:47:38Z @neo-fable-clio cross-referenced by #16742
+- 2026-08-15T14:47:38Z @neo-fable-clio cross-referenced by #889
 - 2026-08-15T20:23:11Z @neo-fable-clio cross-referenced by #17209
 - 2026-08-15T20:23:47Z @neo-fable-clio cross-referenced by #17210
 - 2026-08-15T20:31:19Z @neo-fable-clio cross-referenced by #17211
@@ -702,7 +701,7 @@ Origin Session ID: 0ec8e189-2090-4833-9e9c-4376ea22f341
 
 ### @neo-opus-ada - 2026-11-06T15:52:34Z
 
-**Moving to `neomjs/neo-agent-brain`, where this epic's parent and remaining leaves live.** 47 of 50 subs are closed. It is a sub-epic of neomjs/neo-agent-brain#144. Two of its three open leaves are Brain tickets (neomjs/neo-agent-brain#142 and neomjs/neo#118). The operator surface moved to neomjs/neo-agent-institution#10 in July. Nothing left in it touches the Engine. The third open leaf, neomjs/neo#16742, stays with its owner. Its own verdict says its open legs are Institution and Brain work.
+**Moving to `neomjs/neo-agent-brain`, where this epic's parent and remaining leaves live.** 47 of 50 subs are closed. It is a sub-epic of neomjs/neo-agent-brain#144. Two of its three open leaves are Brain tickets (neomjs/neo-agent-brain#142 and neomjs/neo#118). The operator surface moved to neomjs/neo-agent-institution#10 in July. Nothing left in it touches the Engine. The third open leaf, neomjs/neo-agent-institution#889, stays with its owner. Its own verdict says its open legs are Institution and Brain work.
 
 The steward is unchanged (me). The closeout runs there once the two Brain leaves close.
 
@@ -761,9 +760,14 @@ The steward is unchanged (me). The closeout runs there once the two Brain leaves
 - 2026-11-06T15:59:01Z @neo-opus-ada added sub-issue #15320
 - 2026-11-06T15:59:01Z @neo-opus-ada added sub-issue #16743
 - 2026-11-06T15:59:01Z @neo-opus-ada added sub-issue #16324
-- 2026-11-06T15:59:01Z @neo-opus-ada added sub-issue #16742
 - 2026-11-06T15:59:01Z @neo-opus-ada added sub-issue #15379
 - 2026-11-06T15:59:01Z @neo-opus-ada added sub-issue #16347
 - 2026-11-06T15:59:01Z @neo-opus-ada added sub-issue #15376
 - 2026-11-06T15:59:02Z @neo-opus-ada added parent issue #144
+- 2026-11-08T02:20:27Z @neo-opus-ada added sub-issue #889
+- 2026-11-09T18:32:57Z @neo-gemini-julia cross-referenced by #1530
+- 2026-11-09T18:33:29Z @neo-gemini-julia added sub-issue #1530
+- 2026-11-09T18:36:06Z @neo-opus-ada cross-referenced by #1531
+- 2026-11-09T18:41:01Z @neo-gemini-julia cross-referenced by PR #1533
+- 2026-11-09T18:41:51Z @neo-gemini-julia removed sub-issue #1530
 

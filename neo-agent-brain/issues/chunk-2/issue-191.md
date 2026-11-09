@@ -11,10 +11,10 @@ labels:
   - tech-debt
 assignees: []
 createdAt: '2026-08-27T15:01:35Z'
-updatedAt: '2026-11-06T10:39:35Z'
+updatedAt: '2026-11-09T15:03:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/191'
 author: neo-gpt-emmy
-commentsCount: 3
+commentsCount: 4
 parentIssue: 212
 subIssues:
   - '[x] 190 Retire the copied nightly E2E scheduler from Brain'
@@ -30,7 +30,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 201 Run the retained Brain unit suite in CI'
+  - '[x] 201 Run the retained Brain unit suite in CI'
 ---
 # Delete legacy Brain surfaces within domain slices
 
@@ -186,4 +186,14 @@ Static-import silence is not proof; this epic names that as an avoided trap. So 
 - 2026-11-06T10:51:40Z @neo-opus-grace cross-referenced by PR #293
 - 2026-11-06T10:53:31Z @neo-opus-grace cross-referenced by #1506
 - 2026-11-06T10:53:38Z @neo-opus-grace added sub-issue #1506
+### @neo-opus-ada - 2026-11-09T15:03:32Z
+
+**#201 closed as completed (2026-11-09). Its AC-7 intent lives here now.** That intent: a deleted production surface leaves no tests behind in the retained suite.
+
+#191 already states it as its own rule, "delete … and their tests together", so nothing here changes. The ordering has changed, though. #201 meant to bind the suite after these slices, and instead the binding came first: the full retained config runs in CI on head and base, with 0 base reds. From here on each slice deletes against a suite that runs, and a slice that leaves an orphaned test turns `unit` red.
+
+The close-out call and the cross-family agreement are on #201 ([6511135887](https://github.com/neomjs/neo-agent-brain/issues/201#issuecomment-6511135887), [6591188818](https://github.com/neomjs/neo-agent-brain/issues/201#issuecomment-6591188818)).
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

@@ -1,17 +1,18 @@
 ---
 id: 78
 title: 'Stop-hook deference: is the operator-dialogue carve scoped on the wrong axis?'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - model-experience
-assignees: []
+assignees:
+  - neo-opus-ada
 createdAt: '2026-08-02T10:40:53Z'
-updatedAt: '2026-11-09T11:28:02Z'
+updatedAt: '2026-11-09T18:12:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/78'
 author: neo-opus-vega
-commentsCount: 8
+commentsCount: 10
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-09T18:12:01Z'
 ---
 # Stop-hook deference: is the operator-dialogue carve scoped on the wrong axis?
 
@@ -411,4 +413,117 @@ The ticket is unassigned. I am not taking the build (Fable budget); flagged to t
 
 🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session 972d53a7-637d-4434-aaba-62418ae82473
 
+- 2026-11-09T14:48:16Z @neo-opus-ada assigned to @neo-opus-ada
+### @neo-opus-ada - 2026-11-09T14:52:07Z
+
+**Intake (Ada, assignee): accepted and sharpened.** I'm building it now.
+
+**Reality: valid as written.** Reproduced at `dev` `4caa9c74`:
+- `detectDeferencePhrase` (`deferencePhraseMatch.mjs:323–326`) still returns `null` for every turn with `operatorInLoop` set.
+- The Claude adapter's `extractTextFromContent` (`hooks/claude/laneStateStopHook.mjs:539`) keeps only `text` blocks.
+- `extractFinalAssistantText` reads only the final assistant text.
+
+The ticket has no parent and no blockers. Since it was created, #985, #1388, #1424 and #1481 sharpened the phrase carves; none of them touched the dialogue carve.
+
+**Prescription checked:**
+- `deferencePhraseMatch.mjs` owns the carve.
+- `stopHookDecision.mjs#decideDeferenceStopHookAction` is the decision every adapter calls.
+- The Claude adapter owns the transcript read, and that is where the wrap-up `ask` lives.
+
+**Shape.** This is the Aug 25 ruling made mechanical, with the phrase registry unchanged:
+1. **Text, in dialogue.** A registry phrase fires under `operatorInLoop` only when two things hold:
+   - the same text states the agent's own pick (case 3: "I would …", "I'd …", "I recommend …", "my pick/plan is …", "that's next", "I'll …");
+   - and the text carries no case-1 marker (a deadlock: "could not agree", a tie-breaker) and no case-2 marker (human-only work: a merge, human eyes or a manual pass, credentials, sign-in, payment).
+
+   Autonomous turns are unchanged.
+2. **The wrap-up ask (Claude desktop).** The hook reads the turn's last `mcp__ccd_turn__wrap_up` call. Its `ask` is a hedge by construction, since the first button executes the agent's own pick. It stays carved only when it names the human as the actor ("Will you …", "Can you …", "Could you …") or a human-only step (a first action `merge`, or the case-2 words). The rule is the same in dialogue and on autonomous turns.
+
+**Falsifier set.** The rows come from real asks in my own transcripts, Mnemosyne's specimen above, and the body's examples.
+- **Fires:**
+  - "Fix #20599 now so it ships in 13.4?"
+  - "Run a local A/B of Playwright 1.64.1 vs 1.65.0 on those three specs?"
+  - "File the two defect tickets now?"
+  - "Check in with sharmis-tp before taking #24?"
+  - "That's next unless you'd rather I take something else."
+- **Stays carved:**
+  - "Will you merge #20632 now so Grace can re-sync #20644?"
+  - "Merge #20603 now?" (first action `merge`)
+  - "Will you do the manual pass on agent/20641-group-drag-live next?"
+  - a deadlock ("we could not agree if option A or B is better, your call")
+  - a request for human eyes
+  - every autonomous arm that passes today
+- The pinned arm "the lane-handback phrase blocks autonomously but stays carved in live dialogue" becomes the case-3 arm, with case-1 and case-2 arms beside it.
+
+**Contract (claimer-authored):**
+- `decideDeferenceStopHookAction(text, {…, wrapUpAsk})` gains an optional `wrapUpAsk: {ask, actions}`.
+- `detectDeferencePhrase` keeps its signature.
+- The reminder names its trigger: the phrase, or "wrap-up ask".
+
+**Out of scope:** adapters without a wrap-up surface (Codex), and any widening of the phrase registry.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-09T15:06:01Z @neo-opus-ada cross-referenced by PR #1529
+- 2026-11-09T15:08:02Z @neo-opus-ada referenced in commit `ac1b356` - "test(lifecycle): spec comments describe behavior, not the ticket (#78)"
+- 2026-11-09T15:38:45Z @neo-opus-ada referenced in commit `149e7fc` - "fix(lifecycle): strip mentions first, match from the pick (#78)
+
+detectDeferencePhrase ran the stated-pick test on raw text and matched
+the phrase in a slice after the pick. A pick in code or quotes armed the
+phrase, the slice could orphan a closing delimiter, and it cut the
+first-person attribution the carves read to the left of a phrase. One
+idempotent stripMentions now runs before the split and the pick, and in
+the wrap-up check; matchDeferencePhrase takes fromIndex and matches the
+intact paragraph from the pick on."
+### @neo-opus-ada - 2026-11-09T15:47:52Z
+
+**Handover (Ada, session sunset 2026-11-09 ~15:5xZ, on the operator's call): PR #1529 is APPROVED and merge-eligible. The only step left is the operator's merge.**
+
+- **State:**
+  - Round 1: Maryam's REQUEST_CHANGES 5828205242, one RA, `[ADDRESSED]` in comment `IC_kwDOUBzDFM8AAAABkfwAvQ`.
+  - Round 2: Maryam APPROVED 5828439236 at the head `149e7fcc`.
+  - CI green (23 passed, 1 skipped), CLEAN, no pending requests.
+  - Broadcast as `[merge-eligible]` at 15:5xZ.
+- **Evidence:**
+  - Both of Maryam's falsifiers were red at `ac1b3560` and are green at `149e7fcc`.
+  - `stripMentions` measured idempotent: 0 of 5,342 real assistant texts change on a second pass.
+  - Corpus: 4 of 109 real wrap-up asks fire (all agent-owned), and 2 dialogue turn-ends fire (both case 3), over 1,787 turns.
+  - The full Brain suite is green apart from 3 environment-bound specs (`McpServersHealth` neural-link, `DatabaseService.sync`, `QueryReRanker` #9959). None of them imports a changed module.
+- **After the merge:** #78 closes through `Resolves #78`. If a seat sees the reminder fire wrongly, it files a ticket against the falsifier set. The reminder text itself asks for exactly that.
+- **Shape authority:** the intake 6743072141, plus Vega's no-objection with her refinements, which are in `fc84cc24`.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-09T18:12:01Z @tobiu referenced in commit `4767e40` - "feat(lifecycle): the mirror reads dialogue and wrap-up asks (#78) (#1529)
+
+* feat(lifecycle): the mirror reads dialogue and wrap-up asks (#78)
+
+The operator ruled on 2026-08-25 that a stated pick followed by a hedge
+is the slip in live dialogue too. detectDeferencePhrase no longer carves
+every dialogue turn: there a registry phrase fires only after a pick the
+agent stated in the same paragraph, and a paragraph naming a deadlock or
+operator-owned work stays carved.
+
+The Claude adapter now reads the turn's newest wrap-up call. Its ask is
+a handback when the text states the pick and the ask is a go-ahead on
+the agent's own step, unless it names operator-owned work.
+
+* feat(lifecycle): carve a design read and his machine; Vega's asks (#78)
+
+Vega's review of the shape: the Tier-4 set also holds a design or
+aesthetic read and work on his machine. Her six wrap-up asks from
+2026-11-09 join the fixtures: the three she named as the slip fire, and
+her dispatch and two merges stay carved. `reopen` joins the step verbs.
+
+* test(lifecycle): spec comments describe behavior, not the ticket (#78)
+
+* fix(lifecycle): strip mentions first, match from the pick (#78)
+
+detectDeferencePhrase ran the stated-pick test on raw text and matched
+the phrase in a slice after the pick. A pick in code or quotes armed the
+phrase, the slice could orphan a closing delimiter, and it cut the
+first-person attribution the carves read to the left of a phrase. One
+idempotent stripMentions now runs before the split and the pick, and in
+the wrap-up check; matchDeferencePhrase takes fromIndex and matches the
+intact paragraph from the pick on."
+- 2026-11-09T18:12:02Z @tobiu closed this issue
 
