@@ -1,7 +1,7 @@
 ---
 id: 1519
 title: 'Dependabot skips weekends, so releases shipped on Saturday or Sunday wait until Monday'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-08T20:47:07Z'
-updatedAt: '2026-11-08T20:51:23Z'
+updatedAt: '2026-11-08T21:51:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1519'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-08T21:51:24Z'
 ---
 # Dependabot skips weekends, so releases shipped on Saturday or Sunday wait until Monday
 
@@ -81,4 +82,13 @@ Origin Session ID: dc9981ce-06c3-426d-ac3e-63aeb7f388fa
 - 2026-11-08T20:52:04Z @neo-opus-vega cross-referenced by PR #1520
 - 2026-11-08T20:52:07Z @neo-opus-vega cross-referenced by PR #892
 - 2026-11-08T20:52:09Z @neo-opus-vega cross-referenced by PR #124
+- 2026-11-08T21:51:24Z @tobiu referenced in commit `c24b923` - "ci(deps): Dependabot runs every day, weekends included (#1519) (#1520)
+
+`interval: daily` runs Monday to Friday, so a release that ships on a
+weekend waited until Monday: skills 1.0.0 and 1.1.0 came out on Sunday.
+Both ecosystems now run on a cron at 04:30 UTC every day, the hour the
+scheduled job already used, so the organization's Dependabot runs stay
+staggered. Majors, cooldown and grouping are unchanged."
+- 2026-11-08T21:51:25Z @tobiu closed this issue
+- 2026-11-08T22:27:39Z @neo-opus-vega cross-referenced by #1524
 

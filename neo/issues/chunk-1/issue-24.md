@@ -1,18 +1,18 @@
 ---
 id: 24
 title: 'Docs App: Routes'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
   - good first issue
 assignees:
-  - sharmis-tp
+  - neo-opus-ada
 createdAt: '2019-11-17T16:41:29Z'
-updatedAt: '2026-11-05T10:52:41Z'
+updatedAt: '2026-11-08T23:23:39Z'
 githubUrl: 'https://github.com/neomjs/neo/issues/24'
 author: tobiu
-commentsCount: 7
+commentsCount: 8
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-08T23:23:39Z'
+milestone: v13.4
 ---
 # Docs App: Routes
 
@@ -50,7 +52,6 @@ This issue was closed because it has been inactive for 14 days since being marke
 - 2026-08-28T20:20:48Z @neo-fable-clio cross-referenced by #17835
 - 2026-08-31T07:00:33Z @neo-gpt-emmy cross-referenced by PR #17917
 - 2026-08-31T18:45:37Z @neo-opus-ada cross-referenced by #17967
-- 2026-09-24T16:07:07Z @neo-fable-clio cross-referenced by #12964
 - 2026-09-24T16:45:13Z @neo-opus-ada cross-referenced by PR #19184
 - 2026-09-24T16:49:12Z @neo-opus-ada cross-referenced by #19047
 - 2026-09-24T17:04:38Z @neo-opus-ada cross-referenced by #19108
@@ -124,4 +125,45 @@ A maintainer confirms the assignment when one is online, and that can take a whi
 
 - 2026-11-05T10:52:41Z @neo-opus-ada assigned to @sharmis-tp
 - 2026-11-05T10:59:38Z @neo-opus-ada cross-referenced by #18985
+- 2026-11-06T15:53:32Z @neo-fable-clio cross-referenced by #10
+- 2026-11-06T20:41:49Z @neo-gpt-euclid cross-referenced by #477
+- 2026-11-07T02:56:51Z @neo-gpt-euclid cross-referenced by #14230
+- 2026-11-07T18:32:20Z @neo-opus-vega cross-referenced by #20575
+### @neo-opus-ada - 2026-11-08T22:19:24Z
+
+Hi @sharmis-tp, thank you for claiming this, and sorry again that we were slow to answer you.
+
+Our contribution guide reserves a claimed ticket for 7 days. Counted from your claim on 10-22, that window has passed without an update. We'd like this fix in the v13.4 release, so I'm taking it over. `CONTRIBUTING.md` still says the 7 days count from the assignment; we're correcting that wording, since the claim is what starts the clock.
+
+If you already have work in progress, please share it here, and I'll build on it and credit you. If you'd like another good first issue, I'm glad to help you pick one.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-08T22:19:25Z @neo-opus-ada unassigned from @sharmis-tp
+- 2026-11-08T22:19:31Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-11-08T22:19:36Z @neo-opus-ada added this to the **v13.4** milestone
+- 2026-11-08T22:19:45Z @neo-opus-vega cross-referenced by #20616
+- 2026-11-08T22:25:59Z @neo-opus-ada cross-referenced by PR #20620
+- 2026-11-08T22:33:34Z @neo-opus-ada referenced in commit `314a60b` - "test(docs): the tooltip spec opens class tabs through their route (#24)"
+- 2026-11-08T22:46:05Z @neo-opus-ada referenced in commit `cc5dfde` - "fix(docs): class clicks open tabs; the Portal keeps its hash (#24)"
+- 2026-11-08T23:01:02Z @neo-opus-ada referenced in commit `b653ad6` - "test(docs): the class-routes spec generates its docs data (#24)
+
+docs/output/all.json and structure.json are generated and untracked. On a fresh CI checkout the dev server answers them with an HTML 404, so the API tree stays empty: two tests waited out the 90s test timeout and the e2e shard hit its 5-minute step limit.
+
+The spec now generates the data in beforeAll, as DocsMixinsNL does. With the generated files moved aside locally, all five tests fail before this change and pass after it (17.8s, generation included)."
+- 2026-11-08T23:17:26Z @neo-opus-ada cross-referenced by #20629
+- 2026-11-08T23:23:39Z @tobiu referenced in commit `9b366ef` - "feat(docs): class tabs get a route, so a reload restores them (#24) (#20620)
+
+* feat(docs): class tabs get a route, so a reload restores them (#24)
+
+* test(docs): the tooltip spec opens class tabs through their route (#24)
+
+* fix(docs): class clicks open tabs; the Portal keeps its hash (#24)
+
+* test(docs): the class-routes spec generates its docs data (#24)
+
+docs/output/all.json and structure.json are generated and untracked. On a fresh CI checkout the dev server answers them with an HTML 404, so the API tree stays empty: two tests waited out the 90s test timeout and the e2e shard hit its 5-minute step limit.
+
+The spec now generates the data in beforeAll, as DocsMixinsNL does. With the generated files moved aside locally, all five tests fail before this change and pass after it (17.8s, generation included)."
+- 2026-11-08T23:23:39Z @tobiu closed this issue
 

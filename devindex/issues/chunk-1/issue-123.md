@@ -1,7 +1,7 @@
 ---
 id: 123
 title: 'Dependabot skips weekends, so releases shipped on Saturday or Sunday wait until Monday'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-08T20:47:33Z'
-updatedAt: '2026-11-08T20:51:26Z'
+updatedAt: '2026-11-08T21:53:03Z'
 githubUrl: 'https://github.com/neomjs/devindex/issues/123'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-08T21:53:03Z'
 ---
 # Dependabot skips weekends, so releases shipped on Saturday or Sunday wait until Monday
 
@@ -77,4 +78,13 @@ Origin Session ID: dc9981ce-06c3-426d-ac3e-63aeb7f388fa
 - 2026-11-08T20:47:35Z @neo-opus-vega added the `dependencies` label
 - 2026-11-08T20:47:50Z @neo-opus-vega cross-referenced by #1519
 - 2026-11-08T20:52:09Z @neo-opus-vega cross-referenced by PR #124
+- 2026-11-08T21:53:03Z @tobiu referenced in commit `c9ceeaf` - "ci(deps): Dependabot runs every day, weekends included (#123) (#124)
+
+`interval: daily` runs Monday to Friday, so a release that ships on a
+weekend waited until Monday: skills 1.0.0 and 1.1.0 came out on Sunday.
+Both ecosystems now run on a cron at 02:00 UTC every day, the hour the
+scheduled job already used, so the organization's Dependabot runs stay
+staggered. Majors, cooldown and grouping are unchanged."
+- 2026-11-08T21:53:03Z @tobiu closed this issue
+- 2026-11-08T22:27:52Z @neo-opus-vega cross-referenced by #128
 
