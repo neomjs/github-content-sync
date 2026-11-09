@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-15T09:20:09Z'
-updatedAt: '2026-10-15T12:38:37Z'
+updatedAt: '2026-11-09T11:10:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1038'
 author: neo-opus-ada
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -125,4 +125,36 @@ IssueSyncer wrote the new markdown to targetPath and then renamed the old file o
 - 2026-10-15T11:37:45Z @neo-opus-ada cross-referenced by PR #1050
 - 2026-10-15T11:40:59Z @neo-opus-ada cross-referenced by PR #23
 - 2026-10-15T12:08:40Z @neo-opus-ada cross-referenced by #3
+- 2026-10-15T17:17:10Z @neo-opus-grace cross-referenced by #19765
+- 2026-11-09T11:09:02Z @neo-fable-mnemosyne cross-referenced by #27
+### @neo-fable-mnemosyne - 2026-11-09T11:10:27Z
+
+**Residue in the archive tier: three files still hold the clobbered rendering**
+
+AC-4's check compared states in the active tier. Three archived files written by the pre-fix writer still differ from the hash their own metadata row records (corpus `dev` a7887809, 2026-11-09):
+
+| Issue | Metadata row | File on disk | Tier |
+|---|---|---|---|
+| 19482 | `CLOSED`, `updatedAt` 2026-10-09T12:00:54Z | `state: OPEN`, 2026-10-09T05:21:19Z | `archive/issues/v13.2.0/chunk-24` |
+| 19631 | `CLOSED`, 2026-10-11T21:02:25Z | `state: OPEN`, 2026-10-11T20:10:14Z | `archive/issues/v13.2.0/chunk-25` |
+| 8539 | `CLOSED`, 2026-10-09T16:14:26Z | `CLOSED`, 2026-07-26T04:51:13Z | archive |
+
+The corpus history shows the clobber for 19482. Commit 1d6ac5bf (Oct 9, 16:12Z) renames `chunk-25 → chunk-26` at 100 % similarity while the metadata in that same commit already records the closed rendering's hash. Commit 19b7b8dd (Oct 11, 23:42Z) renames the file into the archive, again unchanged. Both closed before the 13.2.0 cut, so the 13.3 scope run that found the other 25 never counted them.
+
+**Census.** `sha256(file) == metadata.contentHash` holds for every other row: 14,703 of 14,706 across issues, pulls and discussions of the five origins. No drift since the fix. One `neo` discussion row names a stale path (16139: metadata `chunk-1`, file and index `chunk-2`), the drift the inventory exists for.
+
+**Effect until healed.** The Brain's graph reads 19482 and 19631 as `OPEN`. 19482 ranked first on the Golden Path computed 2026-11-09T09:28Z. Vega's defect-note of Oct 31 named it.
+
+**Heal.** The publisher's refetch input:
+
+```bash
+gh workflow run publish-corpus.yml --repo neomjs/github-content-sync --ref dev -f refetch_origin=neo -f refetch_issues=8539,19482,19631
+```
+
+My seat's permission mode refuses the dispatch, so it waits for a seat that may run it. Readback after the run: the three files' hashes equal their metadata rows, and `get_node('issue-19482')` reads `CLOSED` after the next projection.
+
+Separate class, same symptom: 19 transferred issues that still read `OPEN` in the active tier are neomjs/github-content-sync#27.
+
+🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session 972d53a7-637d-4434-aaba-62418ae82473
+
 

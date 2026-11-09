@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-09T07:57:39.873Z",
-  "releasesLastFetched": "2026-11-09T07:57:39.619Z",
+  "lastSync": "2026-11-09T11:20:39.133Z",
+  "releasesLastFetched": "2026-11-09T11:20:38.943Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -461,8 +461,8 @@
       "closedAt": null,
       "mergedAt": null,
       "milestone": null,
-      "updatedAt": "2026-11-08T22:55:09Z",
-      "contentHash": "c3035e2ae1413985130e12dcc9de2890baa869e8ec836e4db3f5f6efee9b6890"
+      "updatedAt": "2026-11-09T08:41:19Z",
+      "contentHash": "200bd40f4febd1e3c86983651495f785308d76db09afd892034549c2824a98b1"
     },
     "130": {
       "state": "MERGED",

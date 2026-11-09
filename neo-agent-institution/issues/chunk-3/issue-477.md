@@ -35,8 +35,9 @@ subIssues:
   - '[x] 706 Explain partial Activity sources and what Recheck can do'
   - '[x] 726 The cockpit says when the plane cannot own seats yet'
   - '[x] 772 Show both Stop fleet and Start fleet when the active fleet is split'
+  - '[ ] 898 The Golden Path pane calls a route current days after it expired'
 subIssuesCompleted: 18
-subIssuesTotal: 20
+subIssuesTotal: 21
 contentTrust:
   projected: true
   quarantined: 0
@@ -668,4 +669,6 @@ Origin Session ID: 0790b2a5-994f-4fd6-a654-051d930aa37f
 - 2026-11-03T05:24:08Z @neo-gpt-euclid cross-referenced by #862
 - 2026-11-03T17:24:27Z @neo-gpt-euclid cross-referenced by #869
 - 2026-11-06T20:42:31Z @neo-opus-grace added sub-issue #887
+- 2026-11-09T11:08:03Z @neo-fable-mnemosyne cross-referenced by #898
+- 2026-11-09T11:09:05Z @neo-fable-mnemosyne added sub-issue #898
 
