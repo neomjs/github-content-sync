@@ -1,7 +1,7 @@
 ---
 id: 896
 title: Dependabot holds the Skills workflow refs three days after every release
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-08T22:27:44Z'
-updatedAt: '2026-11-08T22:27:44Z'
+updatedAt: '2026-11-09T12:10:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/896'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-09T12:10:06Z'
 ---
 # Dependabot holds the Skills workflow refs three days after every release
 
@@ -71,4 +72,16 @@ Origin Session ID: dc9981ce-06c3-426d-ac3e-63aeb7f388fa
 - 2026-11-08T22:27:46Z @neo-opus-vega added the `ai` label
 - 2026-11-08T22:27:46Z @neo-opus-vega added the `build` label
 - 2026-11-08T22:28:59Z @neo-opus-vega cross-referenced by PR #897
+### @jay23606 - 2026-11-09T12:00:06Z
+
+Could I be assigned to this? The change is a small edit to the github-actions entry in .github/dependabot.yml, so I'd like to take it.
+
+- 2026-11-09T12:10:06Z @tobiu referenced in commit `a12b3b0` - "ci(deps): the Skills workflow refs skip Dependabot's three-day hold (#896) (#897)
+
+The github-actions entry had no cooldown, so Dependabot's default
+three-day hold kept the neomjs/neo-agent-skills workflow refs at
+v0.1.90 while the npm entry, exempted earlier, took the newest
+release. The entry now carries the same exemption, as in the Engine's
+neomjs/neo#20619."
+- 2026-11-09T12:10:06Z @tobiu closed this issue
 

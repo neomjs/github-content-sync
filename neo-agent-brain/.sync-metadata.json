@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-09T11:20:28.187Z",
-  "releasesLastFetched": "2026-11-09T11:20:27.495Z",
+  "lastSync": "2026-11-09T14:02:37.588Z",
+  "releasesLastFetched": "2026-11-09T14:02:35.812Z",
   "issues": {
     "3": {
       "state": "CLOSED",
@@ -609,10 +609,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-1/issue-78.md",
       "closedAt": null,
-      "updatedAt": "2026-11-02T23:11:49Z",
-      "contentHash": "4a133e1d13420311fdb1afebd58b0904dfd3dc2778604ad79f8f0b958e23c125",
+      "updatedAt": "2026-11-09T11:28:02Z",
+      "contentHash": "4005cb91a3edaa2d86968359d54d48ef1449f237f21d5c6daae09f4263120ac4",
       "milestone": null,
-      "commentsTotal": 7
+      "commentsTotal": 8
     },
     "79": {
       "state": "CLOSED",
@@ -6954,10 +6954,10 @@
       "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-8/issue-1390.md",
       "closedAt": "2026-10-31T01:25:34Z",
-      "updatedAt": "2026-10-31T02:10:59Z",
-      "contentHash": "acdeb5a4327c2d12fd09cdfaf059c18bc9e615904198457b19d631ab62d90faf",
+      "updatedAt": "2026-11-09T12:24:11Z",
+      "contentHash": "f6fdb0f4aed9a9db88b6f3768be0fd21222bd145cd55bc87b09b4746d12f3c00",
       "milestone": null,
-      "commentsTotal": 3
+      "commentsTotal": 4
     },
     "1392": {
       "state": "CLOSED",
@@ -7152,10 +7152,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-8/issue-1438.md",
       "closedAt": null,
-      "updatedAt": "2026-11-05T13:25:55Z",
-      "contentHash": "87414947b92664faa6f143e77d4fcd658875a27953ca59e35ee7946b3afce978",
+      "updatedAt": "2026-11-09T12:43:22Z",
+      "contentHash": "2dce44aae5f1260b9c87f323f110657b0c3e0470e41a4f4f2f0e77c7d22fe5fb",
       "milestone": null,
-      "commentsTotal": 12
+      "commentsTotal": 13
     },
     "1439": {
       "state": "CLOSED",
@@ -7500,11 +7500,29 @@
       "commentsTotal": 0
     },
     "1524": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-9/issue-1524.md",
+      "closedAt": "2026-11-09T12:09:35Z",
+      "updatedAt": "2026-11-09T12:09:35Z",
+      "contentHash": "67089ed72a07058e09eec03c39edd8c236d4354c673381b98bcd369a3cd465af",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "1527": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-9/issue-1527.md",
       "closedAt": null,
-      "updatedAt": "2026-11-08T22:27:38Z",
-      "contentHash": "209ac05d1cc81d1fcadd4574e583fe9520f2a883763a8d26e669ad299e46229b",
+      "updatedAt": "2026-11-09T12:22:56Z",
+      "contentHash": "ae7210cf44e1ec9e1eb80396ef0d9e9ea807e5547daba3c6359afa0b6e10859c",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "1528": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-9/issue-1528.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-09T12:41:47Z",
+      "contentHash": "5a0b7daf480996bee09f2d94e5feeaa967058f4c4ed418502ac63da22d645811",
       "milestone": null,
       "commentsTotal": 0
     }
@@ -7751,8 +7769,8 @@
       "closedAt": null,
       "mergedAt": null,
       "milestone": null,
-      "updatedAt": "2026-11-09T04:35:48Z",
-      "contentHash": "898c407ba980d444b8b48e6d4c1d75e4b6079c7f4d56175208909dbf5f1f653a"
+      "updatedAt": "2026-11-09T12:34:10Z",
+      "contentHash": "fa0c7d0e3ac16d0c6944f3d2ef637630c1ff55e0f24741a06e3c84baf7f7315a"
     },
     "1523": {
       "state": "MERGED",
@@ -7764,13 +7782,13 @@
       "contentHash": "49ca6d263c789ac30fac8d5f1435e19baf7f452e32ba5c2736827b006e33e5c8"
     },
     "1525": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-7/pr-1525.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-11-09T12:09:33Z",
+      "mergedAt": "2026-11-09T12:09:33Z",
       "milestone": null,
-      "updatedAt": "2026-11-09T08:41:40Z",
-      "contentHash": "010e5a6013bd23faefeba30c56c213cb3fc387f04de90ee61a52e0361953dcd6"
+      "updatedAt": "2026-11-09T12:09:36Z",
+      "contentHash": "7a8f41dd5d03a169887c2dcd0ec9171f955db7d7676c03cf7ade21c5daee8a94"
     },
     "1526": {
       "state": "MERGED",

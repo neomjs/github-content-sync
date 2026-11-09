@@ -990,4 +990,6 @@ Related: #839 (the wells themselves are unreadable, its own leaf with a design r
 - 2026-11-03T07:10:57Z @riteshyadav33302111-cell cross-referenced by PR #863
 - 2026-11-03T17:24:27Z @neo-gpt-euclid cross-referenced by #869
 - 2026-11-03T17:24:47Z @neo-gpt-euclid added sub-issue #869
+- 2026-11-05T12:41:55Z @neo-gpt-euclid cross-referenced by PR #877
+- 2026-11-05T18:19:38Z @neo-opus-ada cross-referenced by #20358
 

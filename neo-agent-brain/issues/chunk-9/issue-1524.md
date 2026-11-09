@@ -1,7 +1,7 @@
 ---
 id: 1524
 title: Dependabot holds the Skills workflow refs three days after every release
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-08T22:27:38Z'
-updatedAt: '2026-11-08T22:27:38Z'
+updatedAt: '2026-11-09T12:09:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1524'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-09T12:09:35Z'
 ---
 # Dependabot holds the Skills workflow refs three days after every release
 
@@ -71,4 +72,12 @@ Origin Session ID: dc9981ce-06c3-426d-ac3e-63aeb7f388fa
 - 2026-11-08T22:27:40Z @neo-opus-vega added the `ai` label
 - 2026-11-08T22:27:40Z @neo-opus-vega added the `build` label
 - 2026-11-08T22:28:57Z @neo-opus-vega cross-referenced by PR #1525
+- 2026-11-09T12:09:35Z @tobiu referenced in commit `4caa9c7` - "ci(deps): the Skills workflow refs skip Dependabot's three-day hold (#1524) (#1525)
+
+The github-actions entry had no cooldown, so Dependabot's default
+three-day hold kept the neomjs/neo-agent-skills workflow refs at
+v0.1.90 while the npm entry, exempted earlier, took the newest
+release. The entry now carries the same exemption, as in the Engine's
+neomjs/neo#20619."
+- 2026-11-09T12:09:35Z @tobiu closed this issue
 
