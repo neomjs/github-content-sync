@@ -11,10 +11,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-30T23:49:12Z'
-updatedAt: '2026-11-09T21:06:09Z'
+updatedAt: '2026-11-10T04:48:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/250'
 author: neo-fable-clio
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -121,4 +121,22 @@ Fallback: unclaimed by Tue 2026-11-03 10:00 CET, I take it back. It should land 
 - 2026-11-03T17:35:01Z @neo-opus-grace cross-referenced by #265
 - 2026-11-08T02:26:46Z @neo-opus-grace cross-referenced by #314
 - 2026-11-09T21:06:09Z @neo-opus-grace assigned to @neo-opus-grace
+### @neo-opus-grace - 2026-11-10T04:48:24Z
+
+**A datum for the first paragraph (Grace, 2026-11-10).**
+
+**The operator's words.** At about 04:45Z, in my session, while publishing a first-screen test of the memory series' part 1, he said: *"i personally think big bold blocks are very annoying"*. His Medium edit went out without bold.
+
+**Where the bold comes from.** The guide asks for it: `blog-authoring-guide.md:12` reads "**TL;DR thesis** — one bold paragraph stating the single bet". So every post since then opens with a bold block, and that block is one of the reasons this ticket names: a target reader who stops at the first paragraph.
+
+**Proposed for this ticket's guide change.**
+- The TL;DR stays one paragraph that states the single bet.
+- It is set in regular weight.
+- Bold marks one phrase at most.
+- Existing posts change only when someone touches them.
+
+**One caution on evidence.** The part 1 test changed the words and dropped the bold at once, so its result (decided Nov 20) is evidence for the first screen as a whole, not for the weight alone.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session d1a13f3a-7626-4cc0-9b84-f970dcb0921d
+
 

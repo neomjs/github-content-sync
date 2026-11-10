@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-09T18:36:05Z'
-updatedAt: '2026-11-09T23:11:05Z'
+updatedAt: '2026-11-10T04:06:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1531'
 author: neo-opus-ada
 commentsCount: 6
@@ -21,8 +21,8 @@ subIssues:
   - '[x] 1537 Fleet acquires Codex Desktop updates from Sparkle appcast with Ed25519 verification'
   - '[x] 1539 Fleet suppresses Antigravity seat auto-updates and acquires updates from app-update.yml'
   - '[x] 1542 Wake GUI seats by resolved process automation ID across all families'
-  - '[ ] 1543 A seat Start launches its family''s admitted harness generation'
-subIssuesCompleted: 5
+  - '[x] 1543 A seat Start launches its family''s admitted harness generation'
+subIssuesCompleted: 6
 subIssuesTotal: 6
 contentTrust:
   projected: true
@@ -69,7 +69,7 @@ This extends ADR 0034 §2.5 "Runtime generations for managed seats" (Fleet's own
    - Codex: per-process env, which exists today.
    - Antigravity: `autoCheckForUpdates`, set per profile.
    - Claude Desktop: it honours only the enterprise policy `disableAutoUpdates`, which it reads directly from `/Library/Managed Preferences/com.anthropic.claudefordesktop.plist` (machine) or `…/<user>/…` (user). Fleet generates the configuration profile and the operator installs it once. Fleet refuses to opt Claude in while the policy is absent.
-6. **Families opt in one at a time, Codex first.** Its seat updater is already off, its probe is the fragile one, and its lab is the stale one.
+6. **Families opt in one at a time, Codex first.** Its seat updater is already off, its probe is the fragile one, and its lab is the stale one. Before Codex opts in, the two Codex app-server CLI readers outside the Fleet must follow the seat's pin: the wake daemon's `deliverViaCodexAppServer` and the `codex-app-server` resume in `ai/scripts/lifecycle/resumeHarness.mjs` both spawn `fleet.harnessBinaries.codex` today (#1543's census; Maryam's review 5836504522 on #1571). The Fleet arms its own seats with `a2a-webhook` routes (`armFleetSeatWake.mjs`), so a `codex-app-server` route is configured by hand and names an identity, not a seat. The Codex opt-in leaf therefore starts with a census of those routes. It also owns #1543's AC-9, carried here as that PR's residual: a dev Fleet with `codexDesktop` opted in starts a Codex seat whose process runs from `<root>/codex-desktop/<id>/ChatGPT.app` (`ps` receipt), operator-timed because it needs GPT budget and opens a window.
 7. **Cockpit.** Each family shows its selected, rejected and available builds with reasons. Each seat shows its running generation against the selected one. A restart remains the explicit adoption choice.
 
 **Decision Record impact:** amends `neomjs/neo-agent-institution#adr:0034-electron-shell-architecture`. §2.5 places vendor-harness updates outside its surviving-seat promise; this epic brings them under the same generation discipline.
@@ -102,7 +102,6 @@ Origin Session ID: 1ef4ba01-d8ab-4b0e-bb7c-1ee8426dc5fe
 Retrieval Hint: `query_raw_memories("harness generations vendor update admission Sparkle ShipIt seat pin")`
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
-
 
 ## Timeline
 
@@ -299,4 +298,5 @@ Executed the live Antigravity update-config reader, manifest check, and profile 
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-10T03:07:04Z @neo-opus-ada cross-referenced by PR #1571
 

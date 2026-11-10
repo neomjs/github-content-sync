@@ -1,7 +1,7 @@
 ---
 id: 1543
 title: A seat Start launches its family's admitted harness generation
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-09T19:51:06Z'
-updatedAt: '2026-11-10T00:13:14Z'
+updatedAt: '2026-11-10T04:04:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1543'
 author: neo-opus-ada
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-10T04:04:59Z'
 ---
 # A seat Start launches its family's admitted harness generation
 
@@ -54,7 +55,8 @@ This is #1531's seat-side leaf. #1534 admits vendor builds into immutable genera
   |---|---|---|
   | `assertRemoteMcpCapability` (both paths) | config | the selection; this is where it is made |
   | `resolveAntigravityStartContext`, `validateAntigravityStartContext` | config | the selection |
-  | `resolveLaunch` | the proof's `launchBinaryPath`, else config | unchanged: Start always passes the proof |
+  | `resolveLaunch` with the proof | the proof's `launchBinaryPath` | unchanged |
+  | `start` / `resolveLaunch` without a proof: a Start with no repository, or with no remote MCP, passes none | config | the selection. The census at `4605d893` said every Start passes the proof; these two paths do not. |
   | `start`, the Codex auth command (`getHarnessBinaryPath('codex')`) | config CLI | the CLI in the pinned generation |
   | `adoptLeasedSeat`, the launch and the auth command | config | the pinned generation. Otherwise a seat running from a generation is not recognised after a Fleet restart. |
   | `desktopProfileInUse` | config binary | every admitted generation of the family. Otherwise a running seat reads as idle and its MCP rows get rewritten under it. |
@@ -71,14 +73,14 @@ This is #1531's seat-side leaf. #1534 admits vendor builds into immutable genera
 1. **AiConfig, per ADR 0019.** Add a `fleet.harnessGenerations` subtree:
    - `root`: `leaf(path.resolve(os.homedir(), '.neo-ai', 'harnesses'), 'NEO_FLEET_HARNESS_GENERATIONS_ROOT', 'string', {planeMember: false, planeMemberReason: …})`, read at its use sites;
    - one boolean opt-in per GUI family (`codexDesktop`, `antigravity`, `claudeDesktop`), every default `false`. A family that has not opted in behaves exactly as today.
-2. **Bootstrap.** In the async Start path, for an opted-in family:
+2. **Bootstrap.** In the async Start path, before the catalog or the capability proof reads the harness, for an opted-in family:
    - if the installed bundle (the `.app` containing the `harnessBinaries` path) carries a build the family ledger has neither admitted nor rejected, materialise it once (`source: 'installed'`);
    - then select the generation.
 3. **Launch from the selection.**
    - `launchBinaryPath` is the selected generation's main binary.
    - For `codex-desktop`, the bundled CLI is the same relative path inside that generation.
    - With no selection, Start refuses by name and carries the family's latest rejection reason. It never falls back to the rejected `/Applications` copy.
-4. **Pin.** The seat runtime record carries `{family, generationId, shortVersion, buildVersion}`, and `status()` reports it. A running seat never changes generation; its next Start adopts the selection.
+4. **Pin.** The lifecycle record carries `{family, generationId, shortVersion, buildVersion}`, `status()` reports it, and the lease carries only its id. The seat runtime record (`seatRuntimeRecord.mjs`) does not: it accepts exactly its version-2 keys, so a new key would make an older Fleet reject every record after a rollback. A running seat never changes generation; its next Start adopts the selection.
 5. **Readers follow the pin.** Each row of the census above reads its "Must read" column, except the two rows marked as an opt-in precondition. The lease carries the generation id only, validated against the ledger per the trust boundary.
 
 ## Contract Ledger
@@ -88,7 +90,8 @@ This is #1531's seat-side leaf. #1534 admits vendor builds into immutable genera
 | `fleet.harnessGenerations.root` (new leaf) | `ai/configBase.mjs` | absolute store root, `planeMember: false` | none | leaf JSDoc | AiConfig lints, `config-leaf-parity` |
 | `fleet.harnessGenerations.{codexDesktop,antigravity,claudeDesktop}` (new leaves) | `ai/configBase.mjs` | per-family opt-in, default `false` | `false`: today's `harnessBinaries` path | leaf JSDoc | unit specs |
 | Start for an opted-in family | `startAgentProvisioned.mjs` + `FleetLifecycleService.mjs` | bootstrap-admit the installed build if new, then launch the selected generation (Codex app + CLI from one generation) | named refusal with the latest rejection reason | JSDoc | unit specs + host witness |
-| Seat runtime record / `status()` harness generation | `seatRuntimeRecord.mjs` | `{family, generationId, shortVersion, buildVersion}` | absent for families that have not opted in | JSDoc | unit specs |
+| Lifecycle record, `status()` and lease harness generation | `FleetLifecycleService.mjs` | `{family, generationId, shortVersion, buildVersion}` on the record and in `status()`; the id alone on the lease | `null` in `status()` and no lease key for families that have not opted in | JSDoc | unit specs |
+| `listHarnessGenerations({root, family})` (new engine export) | `harnessGeneration.mjs` | every admitted generation whose copy is present, newest first, its paths derived from the store root and its ledger entry; `selectHarnessGeneration` is its first entry | `[]` for a family with no ledger; `ledger-invalid` for a malformed one | JSDoc | `harnessGeneration.spec.mjs` |
 
 **Decision Record impact:** aligned-with #1531, which amends `neomjs/neo-agent-institution#adr:0034-electron-shell-architecture`.
 
@@ -98,7 +101,7 @@ This is #1531's seat-side leaf. #1534 admits vendor builds into immutable genera
 - [ ] For an opted-in family, the first Start admits a new installed build once. A second Start with the same installed build materialises nothing (unit).
 - [ ] An opted-in Start launches the selected generation's main binary. For `codex-desktop`, the bundled CLI resolves inside the same generation (unit).
 - [ ] With no admitted generation, an opted-in Start refuses by name with the family's latest rejection reason and never launches `/Applications` (unit).
-- [ ] The seat runtime record and `status()` report the pinned generation, and a running seat is not re-pinned by a later admission (unit).
+- [ ] The lifecycle record and `status()` report the pinned generation, and a running seat is not re-pinned by a later admission (unit).
 - [ ] After a Fleet restart, `adoptLeasedSeat` recognises a seat running from its pinned generation. A lease naming an id the ledger does not list as admitted is invalid (unit).
 - [ ] `desktopProfileInUse` reports a seat running from any admitted generation of its family as in use (unit).
 - [ ] The new leaves pass the AiConfig lints and `config-leaf-parity`.
@@ -131,6 +134,7 @@ Intake, 2026-11-10 (Ada):
 - **ADR 0019:** read. The new leaves follow §5: declarative `leaf()` declarations read at their use sites, the store root handed to the engine as a pure operation's scalar, and each new path registered in `config-leaf-parity.json`.
 - **ADR successor-risk:** adr-aligned. Artifact #1543 (2026-11-09); ADR neomjs/neo-agent-institution#adr:0034-electron-shell-architecture (Accepted 2026-07-10); evidence §2.5 *Runtime generations for managed seats*. Items 1–3 are the pattern this leaf mirrors for vendor bundles. Item 6 puts a vendor-harness update outside the surviving-seat promise, so pinning seats to admitted copies contradicts nothing. Route: continue. The §2.5 amendment recording vendor-harness generations stays #1531's unfiled leaf.
 - **Verdict:** valid-as-written, with the census sharpened.
+- **Amended during implementation, 2026-11-10:** the pin moved from the seat runtime record to the lifecycle record (Fix 4, the rollback hazard), the census gained the two Start paths that pass no proof, the bootstrap runs before the catalog reads the harness (Fix 2), and the Contract Ledger gained the engine's `listHarnessGenerations`.
 
 Origin Session ID: 1ef4ba01-d8ab-4b0e-bb7c-1ee8426dc5fe
 
@@ -166,4 +170,73 @@ Retrieval Hint: `query_raw_memories("seat Start pins harness generation launchBi
 
 - 2026-11-09T20:27:32Z @neo-opus-ada cross-referenced by #1531
 - 2026-11-09T23:04:49Z @neo-opus-ada cross-referenced by #1552
+- 2026-11-10T00:22:03Z @neo-opus-ada referenced in commit `7d09cdc` - "feat(fleet): an opted-in Start proves its selected harness generation (#1543)
+
+assertRemoteMcpCapability resolves the family's selected generation for an opted-in GUI family, admitting the installed build once per Fleet process when its version is new to the ledger, and proves the app and the bundled Codex CLI inside that one copy. The proof carries the pin, start() takes its CLI from the proof, and the record keeps the pin. A family without a generation refuses by name with the latest rejection and never launches the installed bundle."
+- 2026-11-10T02:55:29Z @neo-opus-ada referenced in commit `0d13cc8` - "feat(fleet): seat readers follow the pinned harness generation (#1543)
+
+- A Start that brings no capability proof (no repository, or no remote
+  MCP) launches an opted-in family's selected generation too, or refuses;
+  startAgentProvisioned admits a new installed build before the catalog
+  or the capability proof reads the harness.
+- The Antigravity context resolves the selected generation and carries
+  its pin; validation compares the pin and binary with the selection.
+- status() reports harnessGeneration; a later admission never re-pins a
+  running seat.
+- The lease carries only the generation id. Adoption derives the binaries
+  from this Fleet's ledger entry for it, and an id the ledger has not
+  admitted voids the lease. A lease without one is written as before.
+- desktopProfileInUse counts the configured binary and every admitted
+  generation of the family, opted in or not.
+- The Codex catalog asks the CLI inside the selected generation.
+- Engine: listHarnessGenerations; selectHarnessGeneration is its first
+  entry."
+- 2026-11-10T03:04:30Z @neo-opus-ada referenced in commit `9d9f56c` - "chore(fleet): merge dev into the seat generation pin branch (#1543)"
+- 2026-11-10T03:04:31Z @neo-opus-ada referenced in commit `3e49fc9` - "test(fleet): composed-start stub resolves no generation (#1543)
+
+startAgentProvisioned now asks its lifecycle service for the family's harness generation before anything reads the harness; the composed-start spec's stub lacked the method, and the lifecycle contract in the JSDoc now names it."
+- 2026-11-10T03:05:55Z @neo-opus-ada referenced in commit `7748194` - "test(fleet): the engine lists every admitted generation (#1543)"
+- 2026-11-10T03:07:04Z @neo-opus-ada cross-referenced by PR #1571
+- 2026-11-10T03:54:49Z @neo-opus-ada referenced in commit `57414f0` - "fix(fleet): a thrown admission is not kept for the process (#1543)
+
+materializeHarnessGeneration refuses a build by resolving {admitted: false}, which stays tried for the Fleet process. It can also throw (an unreadable ledger, a full disk); that rejection was cached the same way, so every later Start of the build failed until the Fleet restarted. A thrown admission is now dropped. From Maryam's review 5836504522."
+- 2026-11-10T04:04:59Z @tobiu referenced in commit `a3d45e9` - "feat(fleet): seats start from admitted harness generations (#1543) (#1571)
+
+* feat(fleet): harnessGenerations leaves, per-family opt-in off by default (#1543)
+
+The store root and one boolean opt-in per GUI family. Nothing reads them yet; the Start path that selects and pins a family's admitted generation follows on this branch.
+
+* feat(fleet): an opted-in Start proves its selected harness generation (#1543)
+
+assertRemoteMcpCapability resolves the family's selected generation for an opted-in GUI family, admitting the installed build once per Fleet process when its version is new to the ledger, and proves the app and the bundled Codex CLI inside that one copy. The proof carries the pin, start() takes its CLI from the proof, and the record keeps the pin. A family without a generation refuses by name with the latest rejection and never launches the installed bundle.
+
+* feat(fleet): seat readers follow the pinned harness generation (#1543)
+
+- A Start that brings no capability proof (no repository, or no remote
+  MCP) launches an opted-in family's selected generation too, or refuses;
+  startAgentProvisioned admits a new installed build before the catalog
+  or the capability proof reads the harness.
+- The Antigravity context resolves the selected generation and carries
+  its pin; validation compares the pin and binary with the selection.
+- status() reports harnessGeneration; a later admission never re-pins a
+  running seat.
+- The lease carries only the generation id. Adoption derives the binaries
+  from this Fleet's ledger entry for it, and an id the ledger has not
+  admitted voids the lease. A lease without one is written as before.
+- desktopProfileInUse counts the configured binary and every admitted
+  generation of the family, opted in or not.
+- The Codex catalog asks the CLI inside the selected generation.
+- Engine: listHarnessGenerations; selectHarnessGeneration is its first
+  entry.
+
+* test(fleet): composed-start stub resolves no generation (#1543)
+
+startAgentProvisioned now asks its lifecycle service for the family's harness generation before anything reads the harness; the composed-start spec's stub lacked the method, and the lifecycle contract in the JSDoc now names it.
+
+* test(fleet): the engine lists every admitted generation (#1543)
+
+* fix(fleet): a thrown admission is not kept for the process (#1543)
+
+materializeHarnessGeneration refuses a build by resolving {admitted: false}, which stays tried for the Fleet process. It can also throw (an unreadable ledger, a full disk); that rejection was cached the same way, so every later Start of the build failed until the Fleet restarted. A thrown admission is now dropped. From Maryam's review 5836504522."
+- 2026-11-10T04:05:00Z @tobiu closed this issue
 

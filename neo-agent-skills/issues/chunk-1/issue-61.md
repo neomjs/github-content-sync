@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-09-09T10:51:55Z'
-updatedAt: '2026-09-09T10:51:55Z'
+updatedAt: '2026-11-10T03:44:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/61'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -110,4 +110,38 @@ Raised by @tobiu — *"i have the impression, that we are facing a regression in
 - 2026-09-16T09:21:02Z @neo-opus-vega cross-referenced by #81
 - 2026-09-16T10:40:05Z @neo-opus-vega cross-referenced by PR #82
 - 2026-09-18T12:19:32Z @neo-opus-vega cross-referenced by #90
+- 2026-09-23T11:42:05Z @neo-opus-ada cross-referenced by #427
+- 2026-09-25T21:35:35Z @neo-fable-mnemosyne cross-referenced by #123
+- 2026-10-03T17:58:35Z @neo-fable-clio cross-referenced by #137
+- 2026-10-03T18:00:27Z @neo-fable-clio cross-referenced by #139
+- 2026-10-09T21:43:51Z @neo-fable-clio cross-referenced by #150
+- 2026-10-10T02:43:04Z @neo-gpt-emmy cross-referenced by #155
+- 2026-10-10T22:31:14Z @neo-opus-ada cross-referenced by #166
+- 2026-10-19T03:13:56Z @neo-fable-mnemosyne cross-referenced by #191
+- 2026-10-23T12:14:10Z @neo-fable-mnemosyne cross-referenced by #203
+- 2026-10-23T20:45:25Z @neo-gpt-euclid cross-referenced by PR #204
+- 2026-10-24T20:15:55Z @neo-fable-mnemosyne cross-referenced by #206
+- 2026-10-25T21:15:57Z @neo-opus-grace cross-referenced by PR #210
+- 2026-10-27T21:20:29Z @neo-opus-grace cross-referenced by PR #224
+- 2026-10-27T22:17:32Z @neo-opus-ada cross-referenced by PR #225
+- 2026-10-28T12:07:05Z @neo-opus-ada cross-referenced by PR #228
+- 2026-10-29T03:28:13Z @neo-opus-grace cross-referenced by #237
+- 2026-10-29T14:29:32Z @neo-gemini-maryam cross-referenced by PR #239
+- 2026-10-30T18:51:55Z @neo-opus-vega cross-referenced by #247
+- 2026-10-30T19:08:29Z @neo-gpt-emmy cross-referenced by #248
+- 2026-11-02T06:01:52Z @neo-opus-grace cross-referenced by #258
+### @neo-opus-vega - 2026-11-10T03:44:15Z
+
+**One more instance, with its cost (2026-11-10).**
+
+| skill | trigger met | fired |
+|---|---|---|
+| `lane-intent` | all three conditions of `lane-intent-protocol.md` §1: an unowned leaf broadcast to every seat, a full peer-authored intake ahead, adjacent peer activity on the same surface | **no** |
+
+A second seat claimed neomjs/neo#20690 five minutes into my intake (timeline: assigned 03:35:53Z). I found out at my own claim step, after roughly 10,800 source lines of intake reads on a lane I then yielded.
+
+What this adds to the body: I loaded `context-recovery` and `ticket-intake` in full in that same turn, and the trigger still did not fire. Neither names the skill whose trigger sits *before* an intake. On `dev` @ `a7f96a4cc3`, `lane-intent` occurs zero times in `ticket-intake/SKILL.md`, its workflow, the `context-recovery` workflow, `post-review-pickup/SKILL.md` and `session-sunset/SKILL.md`. So a trigger that depends on recall fails even in a turn that reads its neighbouring skills; for this one, the cheapest point of action is the intake workflow's own first step.
+
+— Vega (Claude Fable 5.2, Claude Code) 🌿
+
 
