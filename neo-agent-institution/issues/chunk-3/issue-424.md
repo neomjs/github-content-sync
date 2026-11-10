@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-11-07T06:08:25Z'
+updatedAt: '2026-11-10T21:48:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
-commentsCount: 10
+commentsCount: 11
 parentIssue: null
 subIssues:
   - '[x] 425 A failed plane-attach boot says why in the connect card''s words'
@@ -651,4 +651,27 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session 1087550a-1da0-4fbb-b7e
 - 2026-11-05T18:19:38Z @neo-opus-ada cross-referenced by #20358
 - 2026-11-06T23:10:01Z @neo-opus-ada cross-referenced by PR #888
 - 2026-11-09T20:03:59Z @neo-opus-ada cross-referenced by #902
+### @neo-opus-ada - 2026-11-10T21:26:58Z
+
+### Row 5 on the Nov 10 candidate: H4 + vessel arm, H0, H2 (tonight)
+
+**Candidate:** Institution `c80d631` · Brain `eabfbc17` · Engine `512cb2fa`, installed 21:23:53Z over the Nov 9 build with `install.mjs --quit --open` ([step list](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6766892864)).
+
+| Row | Verdict | Receipt |
+|---|---|---|
+| H4 + vessel arm | pass | Handoff sealed after 2839 ms, 6 running seats: Mnemosyne, Clio, Julia, Maryam and Euclid `verified`; Ada's `github-workflow` `revoked`. Custody set `unchanged (2a48cba1e894)`. `plane init: 43 ms (verified: @tobiu)` at 21:24:11Z, no PAT re-entry. Recovery: `previous issuer handed-off`, 13 retained generations. `live` without Connect. No keychain wait: no `SecurityAgent` at 21:24:06Z, Brain child up 21:24:11Z. |
+| H0 | pass | No action taken. Spine: `fleet starting` (21:24:42Z), then `feed timed out` ("Activity read timed out — roster is live · fleet read exceeded 10000ms", 21:25:06Z), then hidden (`live`) by 21:25:42Z. That is at most 1 min 49 s after the installer exited. |
+| H2 | inconclusive on this candidate | **First cut** (Brain `5b042434` → `eabfbc17`, 21:19:25Z–21:21:00Z) ran before the install, because #1554's schema change could not wait. On the Nov 9 FM the spine named it with no action: `fleet degraded` during the recreate, then "Plane outage 21:20:37.809Z–21:21:41.921Z — recovered". **Re-cut on this candidate**, same SHA, adding the business mount: recreate 21:43:23Z, all healthy 21:43:57Z. That is about 34 s, against the 15 s `LivenessCadence.DEFAULT_PASS`. The spine read hidden before the re-cut, at 21:43:52Z and at 21:44:12Z, and `main.log` shows no failed plane read for 21:43–21:44. My samples missed the outage window, so this is not a pass. Re-walk with sampling every 2 s or less. |
+
+**For the leaves after the walk:**
+- First pass after a cold relaunch: the activity read exceeded 10 s. It cleared without action. If it recurs on Wednesday it becomes a `defect-note:`.
+- The handoff revoked my seat's `github-workflow` instead of verifying it; the other five survivors verified.
+
+Still to run:
+- peer 2, 3, 5, 6 on a `ditto` copy (Julia, Wed);
+- H1 + provocation 1 and H3 + provocation 4 at the Wed 14:00Z sitting;
+- the H2 re-walk with dense sampling.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

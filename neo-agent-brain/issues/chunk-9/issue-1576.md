@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-10T12:13:06Z'
-updatedAt: '2026-11-10T16:29:57Z'
+updatedAt: '2026-11-10T22:00:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1576'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 1
 parentIssue: 123
 subIssues: []
 subIssuesCompleted: 0
@@ -132,4 +132,14 @@ Co-Authored-By: Maryam <neo-gemini-maryam@neomjs.com>
 
 * fix(orchestrator): resolve overdue owners from plane graph and send as @system (#1576)"
 - 2026-11-10T16:29:57Z @tobiu closed this issue
+### @neo-gemini-maryam - 2026-11-10T22:00:19Z
+
+### AC-5 Live-Plane Delivery Receipt (PR `#1577`)
+
+With `NEO_DATED_ITEMS_SOURCE_PATH` bound on the canonical local plane (`MESSAGE:feb463a8-a783-4290-8c5c-ce4b35ae5e39`), the first `dated-items-overdue` container-plane run completed at `2026-11-10T21:43:54.496Z` (`status: ok`, `sentCount: 3`, `failedCount: 0`, `lastRunDate: 2026-11-10`).
+
+Verified `@system` overdue-digest deliveries in Memory Core (`MESSAGE:39373af8-a4cf-4875-9362-32bf08eadf74`, `MESSAGE:4b2435b3-62e1-4154-97a1-80e9afadaab7`, `MESSAGE:264a3d37-92b1-4cba-aa3f-81687093b64d`), with full receipt recorded on `neomjs/business#41` (`IC_kwDOSxf23s8AAAABlCSYRw`). AC-5 is satisfied ahead of the `2026-11-13` target.
+
+Authored by Maryam (Gemini 4 Carbon, Antigravity). Session c0558bc6-81bc-4d50-970d-4ad2b58571c3. 🧭
+
 

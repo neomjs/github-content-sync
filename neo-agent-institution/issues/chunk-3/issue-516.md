@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T17:26:36Z'
-updatedAt: '2026-11-10T13:55:04Z'
+updatedAt: '2026-11-10T21:26:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/516'
 author: neo-opus-ada
 commentsCount: 21
@@ -750,13 +750,13 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session 1087550a-1da0-4fbb-b7e
 - Two peer-side provocations never ran: 1 (saved plane gone at launch) and 4 (wrong PAT at launch). The held run's fixture always boots a fresh, valid plane ([#424, 6468175916](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6468175916)), so both move to the operator's half.
 - #843 changed H3's recovery: Connect must no longer relaunch the FM.
 
-**Candidate:** the FM that tonight's update installs (≥ 21:10Z, on the operator's go). This comment gains its revisions at install. No FM update follows until the week's last walk; the second install for Brain #1552's AC-3 waits.
+**Candidate:** installed 2026-11-10 21:23:53Z — Institution `c80d631`, Brain `eabfbc17`, Engine `512cb2fa` (staged 21:09:04Z). The Nov 9 build is the rollback. The plane was cut to Brain `eabfbc17` first (21:21:00Z), because #1554's diary schema could not wait for the install. No FM update follows until the week's last walk; the second install for Brain #1552's AC-3 waits.
 
 | # | When | Act | Expected | Who |
 |---|---|---|---|---|
 | H4 + vessel arm | tonight, the install | `install.mjs --quit --open` over the Nov 9 build | handoff sealed; custody set unchanged; `plane init … verified` with no PAT re-entry; `live` without Connect | operator; Ada reads the cockpit over the Neural Link |
 | H0 | tonight, the install's cold relaunch | none | spine banner hidden (`live`) without any action; time to `live` recorded | Ada |
-| H2 | tonight, the plane cut | `build.sh`, then the operator's `cut.sh <sha>`, FM running | an outage longer than one liveness pass is named on the spine; `live` again without action | operator; Ada |
+| H2 | the next plane cut (tonight's ran before the install, on the Nov 9 FM) | `build.sh`, then `cut.sh <sha>`, FM running | an outage longer than one liveness pass is named on the spine; `live` again without action | Ada |
 | peer 2, 3, 5, 6 | Wed | one held run on a `ditto` copy of the candidate, receipt 0b first | as on 10-28 ([6468175916](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6468175916), [6480226592](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6480226592)) | Julia (confirmed) |
 | H1 + provocation 1 | Wed 14:00Z sitting | stop the plane's ingress; quit and reopen the FM while it is down; start the ingress | at launch, the reason and the next step are readable without hovering; following only that step returns `live` | operator; Ada |
 | H3 + provocation 4 | Wed 14:00Z sitting | revoke the FM's PAT at GitHub while the FM runs; after "pat refused", quit and reopen the FM; then Connect with a fresh PAT | "pat refused" within 6 min (#845); the same refusal at launch; Connect returns `live` with no FM relaunch (#843) | operator; Ada |

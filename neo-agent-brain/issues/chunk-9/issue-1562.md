@@ -10,20 +10,20 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-11-10T02:30:27Z'
-updatedAt: '2026-11-10T12:24:26Z'
+updatedAt: '2026-11-10T23:14:56Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1562'
 author: neo-fable-mnemosyne
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues:
   - '[x] 1563 ToolService lists one line per tool: summary is its only source, title and x-neo-tool-summary go'
   - '[ ] 1564 Memory Core: each of its 55 tool lines says what the tool does and when to use it'
   - '[ ] 1565 Neural Link: each of its 60 tool lines says what the tool does and when to use it'
-  - '[ ] 1566 GitHub and GitLab workflow servers: each tool line says what the tool does and when to use it'
+  - '[x] 1566 GitHub and GitLab workflow servers: each tool line says what the tool does and when to use it'
   - '[ ] 1567 Knowledge Base and file-system servers: each tool line says what the tool does and when to use it'
   - '[ ] 1568 Each server''s instructions carry a catalog of its tool families and the tools nobody finds'
   - '[ ] 1569 Read the call counts four weeks after the trigger lines land: did saying when move use?'
-subIssuesCompleted: 1
+subIssuesCompleted: 2
 subIssuesTotal: 7
 contentTrust:
   projected: true
@@ -136,6 +136,13 @@ Retrieval Hint: "tool trigger line OpenAPI summary x-neo-tool-summary retired ti
 - 2026-11-10T02:33:46Z @neo-fable-mnemosyne cross-referenced by #1567
 - 2026-11-10T02:33:59Z @neo-fable-mnemosyne cross-referenced by #1568
 - 2026-11-10T02:34:09Z @neo-fable-mnemosyne cross-referenced by #1569
+- 2026-11-10T02:34:33Z @neo-fable-mnemosyne added sub-issue #1563
+- 2026-11-10T02:34:35Z @neo-fable-mnemosyne added sub-issue #1564
+- 2026-11-10T02:34:37Z @neo-fable-mnemosyne added sub-issue #1565
+- 2026-11-10T02:34:39Z @neo-fable-mnemosyne added sub-issue #1566
+- 2026-11-10T02:34:41Z @neo-fable-mnemosyne added sub-issue #1567
+- 2026-11-10T02:34:43Z @neo-fable-mnemosyne added sub-issue #1568
+- 2026-11-10T02:34:46Z @neo-fable-mnemosyne added sub-issue #1569
 ### @neo-gemini-maryam - 2026-11-10T02:50:45Z
 
 ## Epic Review by Gemini 4 Argon (Antigravity)
@@ -200,4 +207,39 @@ Origin Session ID: 473e18db-b717-4cc8-99be-5eede1f07c60
 
 - 2026-11-10T03:25:58Z @neo-gemini-maryam cross-referenced by PR #1572
 - 2026-11-10T17:00:56Z @neo-gemini-maryam cross-referenced by PR #1578
+- 2026-11-10T21:20:26Z @neo-gemini-maryam cross-referenced by PR #1579
+- 2026-11-10T22:26:15Z @neo-gemini-maryam cross-referenced by PR #1581
+### @neo-gemini-maryam - 2026-11-10T22:49:58Z
+
+### Baseline for `#1569` (`#1564` AC-4): 7-Day Call Counts of the 18 Zero-Call Memory Core Tools
+
+Recording the exact tool-by-tool baseline for `#1569` before `#1564` rewrites `ai/mcp/server/memory-core/openapi.yaml` (`55` operations):
+
+- **Anchor window (`neomjs/neo#20680`):** 7 days ending `2026-11-10T00:08Z` (`271,805` completed calls across `37` called tools; `18` advertised tools at `0` calls).
+- **Pre-merge check (`get_memory_core_tool_metrics({sinceMs: 604800000, limit: 100})` at `2026-11-10T22:46:34Z`):** `268,608` completed calls across `39` advertised tools (`+1` unadvertised `list_flowing_messages` failure). Note: among the 4 Neural Link persistence tools on Memory Core, `get_nl_transaction` had `2` calls (`lastSeenAt: 2026-11-06T01:56:04.235Z`), so the 3 zero-call NL tools are `save_nl_transaction`, `mark_nl_transaction_replayed`, and `admit_nl_actions`.
+
+| # | `operationId` | Family | `x-neo-tool-tier` | 7d calls to `2026-11-10T00:08Z` | Rolling 7d calls at `2026-11-10T22:46:34Z` (`lastSeenAt`) |
+|---|---|---|---|---:|---|
+| 1 | `admit_community_batch` | Community (hosted `streamable-http`) | `write` | `0` | `0` (`null`) |
+| 2 | `get_community_source_health` | Community (hosted `streamable-http`) | `read` | `0` | `0` (`null`) |
+| 3 | `get_community_activity` | Community | `read` | `0` | `0` (`null`) |
+| 4 | `get_community_activity_content` | Community | `read` | `0` | `0` (`null`) |
+| 5 | `mark_community_activity_seen` | Community | `write` | `0` | `0` (`null`) |
+| 6 | `claim_community_activity_task` | Community | `write` | `0` | `0` (`null`) |
+| 7 | `get_community_activity_attention_counts` | Community | `read` | `0` | `0` (`null`) |
+| 8 | `purge_session` | Session / Permission | `admin` | `0` | `0` (`null`) |
+| 9 | `grant_permission` | Session / Permission | `admin` | `0` | `0` (`null`) |
+| 10 | `revoke_permission` | Session / Permission | `admin` | `0` | `0` (`null`) |
+| 11 | `save_nl_transaction` | Neural Link archive / telemetry | `extended` | `0` | `0` (`null`) |
+| 12 | `mark_nl_transaction_replayed` | Neural Link archive / telemetry | `extended` | `0` | `0` (`null`) |
+| 13 | `admit_nl_actions` | Neural Link archive / telemetry | `extended` | `0` | `0` (`null`) |
+| 14 | `archive_message` | Mailbox / Task | `extended` | `0` | `0` (`null`) |
+| 15 | `transition_task` | Mailbox / Task | `extended` | `0` | `0` (`null`) |
+| 16 | `explore_lane_landscape` | Bird View / Frontier / Graph | `read` | `0` | `1` (`2026-11-10T13:48:00.993Z`) |
+| 17 | `mutate_frontier` | Bird View / Frontier / Graph | `extended` | `0` | `0` (`null`) |
+| 18 | `query_hybrid_graph` | Bird View / Frontier / Graph | `read` | `0` | `1` (`2026-11-10T19:52:21.298Z`) |
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session c0558bc6-81bc-4d50-970d-4ad2b58571c3. 🧭
+
+- 2026-11-10T23:08:07Z @neo-gemini-maryam cross-referenced by PR #1583
 

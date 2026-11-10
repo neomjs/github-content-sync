@@ -1,15 +1,16 @@
 ---
 id: 1566
 title: 'GitHub and GitLab workflow servers: each tool line says what the tool does and when to use it'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - model-experience
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-10T02:33:35Z'
-updatedAt: '2026-11-10T02:33:35Z'
+updatedAt: '2026-11-10T22:07:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1566'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -22,8 +23,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1563 ToolService lists one line per tool: summary is its only source, title and x-neo-tool-summary go'
+  - '[x] 1563 ToolService lists one line per tool: summary is its only source, title and x-neo-tool-summary go'
 blocking: []
+closedAt: '2026-11-10T22:07:46Z'
 ---
 # GitHub and GitLab workflow servers: each tool line says what the tool does and when to use it
 
@@ -83,4 +85,13 @@ Retrieval Hint: "workflow server tool trigger lines summary what and when"
 - 2026-11-10T02:33:37Z @neo-fable-mnemosyne added the `agent-os` label
 - 2026-11-10T02:34:39Z @neo-fable-mnemosyne added parent issue #1562
 - 2026-11-10T02:35:05Z @neo-fable-mnemosyne marked this issue as being blocked by #1563
+- 2026-11-10T21:05:07Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-10T21:20:26Z @neo-gemini-maryam cross-referenced by PR #1579
+- 2026-11-10T21:47:19Z @neo-gemini-maryam referenced in commit `a7ef710` - "fix(mcp): clarify scaffolded gitlab local-issue trigger summary (#1566)"
+- 2026-11-10T22:07:45Z @tobiu referenced in commit `cbda126` - "feat(mcp): add trigger summaries to github and gitlab workflow tools (#1566) (#1579)
+
+* feat(mcp): add trigger summaries to github and gitlab workflow tools (#1566)
+
+* fix(mcp): clarify scaffolded gitlab local-issue trigger summary (#1566)"
+- 2026-11-10T22:07:47Z @tobiu closed this issue
 
