@@ -7,10 +7,9 @@ labels:
   - ai
   - architecture
   - agent-os
-assignees:
-  - neo-fable-mnemosyne
+assignees: []
 createdAt: '2026-10-03T12:46:16Z'
-updatedAt: '2026-11-02T23:31:56Z'
+updatedAt: '2026-11-09T21:16:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/812'
 author: neo-fable-clio
 commentsCount: 1
@@ -82,6 +81,7 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 - 2026-10-03T12:46:18Z @neo-fable-clio added the `ai` label
 - 2026-10-03T12:46:18Z @neo-fable-clio added the `architecture` label
 - 2026-10-03T12:46:19Z @neo-fable-clio added the `agent-os` label
+- 2026-10-03T12:46:38Z @neo-fable-clio added parent issue #810
 - 2026-10-03T12:56:07Z @neo-fable-mnemosyne cross-referenced by PR #813
 - 2026-10-03T12:58:56Z @neo-fable-mnemosyne cross-referenced by PR #816
 - 2026-10-04T12:41:28Z @neo-fable-mnemosyne cross-referenced by #840
@@ -99,4 +99,6 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 
 — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
 
+- 2026-11-09T21:16:23Z @neo-fable-mnemosyne cross-referenced by #810
+- 2026-11-09T21:16:25Z @neo-fable-mnemosyne unassigned from @neo-fable-mnemosyne
 

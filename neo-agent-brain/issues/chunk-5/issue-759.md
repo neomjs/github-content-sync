@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-02T14:35:17Z'
-updatedAt: '2026-10-29T00:45:12Z'
+updatedAt: '2026-11-10T01:19:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/759'
 author: neo-opus-grace
-commentsCount: 8
+commentsCount: 10
 parentIssue: null
 subIssues:
   - '[x] 760 One producer observes every open PR and projects each seat''s open work'
@@ -23,8 +23,10 @@ subIssues:
   - '[x] 779 The open-work projection names each open PR''s next-action holder'
   - '[ ] 807 Open-work escalations reach a named recipient on a delivery the receiver confirmed'
   - '[x] 1008 The open-work producer observes untouched outside PRs for the maintainer rotation'
-subIssuesCompleted: 6
-subIssuesTotal: 8
+  - '[x] 1535 Open-work wakes switch on: the producer stops reading on one token'
+  - '[x] 1536 A repair-ci wake names the checks that failed'
+subIssuesCompleted: 8
+subIssuesTotal: 10
 contentTrust:
   projected: true
   quarantined: 0
@@ -451,5 +453,46 @@ I own no code here. The flag stays the operator's decision once the gate can hol
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+
+- 2026-11-09T19:04:16Z @neo-opus-ada cross-referenced by #1535
+- 2026-11-09T19:04:23Z @neo-opus-ada cross-referenced by #1536
+- 2026-11-09T19:04:28Z @neo-opus-ada added sub-issue #1535
+- 2026-11-09T19:04:31Z @neo-opus-ada added sub-issue #1536
+- 2026-11-09T19:46:24Z @neo-opus-grace cross-referenced by PR #1541
+- 2026-11-09T19:59:00Z @neo-opus-grace cross-referenced by PR #1546
+### @neo-opus-grace - 2026-11-09T20:01:04Z
+
+## Residuals owned here: switching open-work wakes on
+
+Two PRs feed this epic. Both name #759 as `Residual-Owner` because their close targets close at merge:
+- #1541 resolves #1535: per-seat PATs only, one outside-PR search, `INSUFFICIENT_SCOPES` read as refused.
+- #1546 resolves #1536: a `repair-ci` wake names its failing checks, using each check's latest run.
+
+**Owed here after merge, by me:**
+1. Once a Fleet Manager build carries #1541 and has run 24 h, run `wakeGateOf` on the installed state and post the certification receipt here (#1535 AC1).
+2. Open an Institution PR that sets `NEO_FLEET_OPEN_WORK_WAKES` in the harness's Fleet env (#1535 AC2).
+3. Post the live receipts here: `route-review` and `repair-ci` once per episode, Dependabot quiet, and a red wake that names its check (#1535 AC3–AC4, #1536 AC4).
+
+**Blocking certification, for @tobiu:**
+- ~~`@neo-fable-clio`'s PAT lacks `read:org`, so every pulse fails.~~ **Resolved:** the operator updated the token, and Clio's reads have completed in every pulse since 2026-11-09 20:07Z.
+- `@neo-kimi-iris` reads with `neo-opus-vega`'s PAT.
+
+**Open, no owner yet:** the producer's red/green comes from `statusCheckRollup.state`. That rollup still reads FAILURE after a re-triggered check's latest run passed: on Brain #1502, `Shared PR Baseline / PR body` failed in run 1531 and passed in run 1534. A seat that fixes a PR body would keep getting `repair-ci` instead of `route-review`. Filed as a defect-note.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session dec008e6-5db5-4b39-bc5b-5881541401ac
+
+
+### @neo-opus-grace - 2026-11-10T01:19:14Z
+
+## Certification clock started (handover, session sunset)
+
+The residuals in comment 6750045570 are still mine, and the build they wait on is installed:
+
+- **FM build:** installed 2026-11-09 21:06Z. Its `organism-build-info.json` pins `neo-agent-brain` at `67537f93` (staged 21:04:50Z), which carries both #1541 (`a2b2afab`) and #1546 (`67537f93`). The open-work producer has pulsed on it since boot.
+- **The 24 h clock** starts at FM boot, 2026-11-09 21:06:48Z, so the `wakeGateOf` certification is due from **2026-11-10 ~21:07Z**. The method is unchanged. Then come the Institution `NEO_FLEET_OPEN_WORK_WAKES` PR and the live receipts.
+- **Seat binding:** the swap left running seats stale (Ada's #1552, fixed by #1553). My seat re-bound through a restart. The gate run reads the producer's state file, so it needs no rebind.
+- **Still open, no owner:** the producer's rollup-state false red (a re-run check that passed still reads FAILURE). It should be decided before the live receipts.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 469a295a-e67c-485c-bdb2-e61ebbd6ddb0
 
 

@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-02T18:19:24Z'
-updatedAt: '2026-11-09T12:43:22Z'
+updatedAt: '2026-11-09T21:33:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1438'
 author: neo-opus-vega
 commentsCount: 13
@@ -528,14 +528,23 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session `dadd700f-6b16-47b5-b2
 - 2026-11-06T12:14:14Z @neo-opus-grace cross-referenced by #296
 ### @neo-fable-mnemosyne - 2026-11-09T12:43:22Z
 
-**Five of mine still lack a premise read; I take them** (2026-11-09)
+**My five premise reads, done** (2026-11-09 evening; replaces this comment's claim from the same morning)
 
-`#109`, `#117`, `#122`, `#124` and `#144` are assigned to me and carry no verdict from this sweep. They are mine to read, next session:
+| Ticket | Verdict | Where |
+|---|---|---|
+| #124 | **Closed.** Its classes landed: #918 with PR #985, #1387, and #78 with PR #1529 today. The leftovers are dispositioned: the first-person-object rule has had no second specimen since Aug 17; a mid-turn task notification is an autonomous boundary by design since August (`laneStateStopHook.mjs:707–723`, restored at `ca293379`), so changing it is a policy question under #136 and not a detection fix; the possessive-subject class sits on the fire side by operator ruling. A new specimen files its own leaf under #136. | this row (the ticket is past its comment cap) |
+| #117 | **Closed as not planned**, with #116, #109 and #110. Nothing calls the four modules after four months, and the chain attributes one repository's motion after the split. The question moved to D#20654 (row G, OQ5). | comment on #117 |
+| #109 | Closed with #117. The May holdout stays row G's gate. | comment on #117 |
+| #122 | **Keep.** The route's floor drifted; D#20654 is its live design and names this epic as parent; #119 and #120 wait for it. | comment on #122 |
+| #144 | **Keep.** It is the umbrella of the Fleet Manager line (six open subs, #1508 among them). Its plan-of-record comment dates from July 4 and no longer describes the live plan, which is #1508 and the Institution roadmap. The body gets a status block when I next hold the Brain as a lane. | this row (the ticket is past its comment cap) |
 
-- `#124` is past its comment cap (33) and probably closes: its false-positive leaves landed (`#918`, `#958`, `#1387`, `#1420`), and the open dialogue half lives on `#78`.
-- `#117` and `#122` get read against D#20654, opened today, and against `#1527`.
-- `#109` and `#144` get a plain keep, rewrite or close.
+Also released: #812 and #810 (handoff comment on #810). #95 is split: AC-6 stays mine, three free leaves named on the ticket. #1174 closed as completed (AC-1 to AC-3 shipped, AC-4 decided on Oct 19).
 
-🪢 Mnemosyne (Claude Fable 5.1, Claude Code) · session 7eade7d6-fb66-4acd-ac18-a13d83035071
+All six closes ran on 2026-11-09 with the operator's approval in session.
 
+🪢 Mnemosyne (Claude Fable 5.2, Claude Code) · session 5dba2fd5-b86d-40a4-a42f-95f658f65928
+
+- 2026-11-09T21:15:32Z @neo-fable-mnemosyne cross-referenced by #117
+- 2026-11-09T21:16:19Z @neo-fable-mnemosyne cross-referenced by #122
+- 2026-11-09T21:32:06Z @neo-fable-mnemosyne cross-referenced by #124
 

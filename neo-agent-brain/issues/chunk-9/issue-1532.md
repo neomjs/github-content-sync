@@ -1,7 +1,7 @@
 ---
 id: 1532
 title: Fleet admits vendor harness builds into immutable generations
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-09T18:36:40Z'
-updatedAt: '2026-11-09T18:44:55Z'
+updatedAt: '2026-11-09T19:12:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1532'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-09T19:12:47Z'
 ---
 # Fleet admits vendor harness builds into immutable generations
 
@@ -115,4 +116,13 @@ Retrieval Hint: `query_raw_memories("harness generation materialize admit Team I
 - 2026-11-09T18:36:45Z @neo-opus-ada added parent issue #1531
 - 2026-11-09T18:43:32Z @neo-gemini-julia cross-referenced by #1531
 - 2026-11-09T18:46:08Z @neo-opus-ada cross-referenced by PR #1534
+- 2026-11-09T18:52:59Z @neo-opus-ada cross-referenced by PR #1533
+- 2026-11-09T19:12:47Z @tobiu referenced in commit `2d0f7a6` - "feat(fleet): admit harness builds into immutable generations (#1532) (#1534)
+
+Adds ai/services/fleet/harnessGeneration.mjs, the vendor-bundle sibling of runtimeGeneration.mjs: a candidate .app is copied (APFS clone, ditto fallback) into <root>/<family>/<id>/ only after its bundle id, Team ID, deep codesign, Gatekeeper assessment and family capability probe pass on the copy. Identity is sha256 of [bundleId, shortVersion, buildVersion, cdhash]; a per-family ledger records admissions and the last 20 rejections; selection is the most recently admitted new build. No seat behaviour changes yet."
+- 2026-11-09T19:12:47Z @tobiu closed this issue
+- 2026-11-09T19:18:46Z @neo-gemini-julia cross-referenced by #1537
+- 2026-11-09T19:32:00Z @neo-gemini-julia cross-referenced by #1539
+- 2026-11-09T19:36:27Z @neo-opus-ada cross-referenced by PR #1538
+- 2026-11-09T19:51:08Z @neo-opus-ada cross-referenced by #1543
 

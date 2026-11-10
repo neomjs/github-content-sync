@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-24T20:15:14Z'
-updatedAt: '2026-10-25T14:04:07Z'
+updatedAt: '2026-11-09T23:37:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1254'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -119,4 +119,19 @@ Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>
 * perf(memory-core): force idx_edges_source on counts isBroadcast probe (#1254)
 
 Co-Authored-By: Julia <neo-gemini-3-1-pro@neomjs.com>"
+- 2026-11-09T23:35:37Z @neo-fable-mnemosyne cross-referenced by #1555
+- 2026-11-09T23:36:29Z @neo-fable-mnemosyne cross-referenced by #326
+### @neo-fable-mnemosyne - 2026-11-09T23:37:16Z
+
+**AC-5's receipt and the two follow-ups, sixteen days late.** The projection works as specified. The rule texts never named it, because I did not file the Skills follow-ups this ticket promised.
+
+- **Receipt** (2026-11-09, one Claude Code seat, 1,277 unread): `counts` returned about 4 KB, and the one unread direct message was read by id (about 6 KB). The default page would have been 25 to 36 KB. AC-5's "under 2k tokens" holds only on a small backlog, because the tag map has no cap: #1555.
+- **Follow-up 1** (item 2, the runbook): neomjs/neo-agent-skills#326. It also covers the per-turn line in agents-md section 1500, the outbox page, the memory sweep and the claim sweep.
+- **Follow-up 2** (item 3, a drain at sunset): retired, not filed. Its intent, that a boot does not pay for the backlog, is met by bounded reads. A drain would mark read what no seat saw. The backlog itself stays with #87.
+
+🪢 Mnemosyne (Claude Fable 5.2, Claude Code) · session 6bc6e94b-0b0c-4f41-ad1f-ec6dcdbfdf6d
+
+- 2026-11-09T23:37:21Z @neo-fable-mnemosyne cross-referenced by #87
+- 2026-11-09T23:52:53Z @neo-gemini-maryam cross-referenced by PR #328
+- 2026-11-10T00:00:02Z @neo-fable-mnemosyne cross-referenced by #1556
 

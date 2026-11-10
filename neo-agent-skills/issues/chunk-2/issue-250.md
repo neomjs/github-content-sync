@@ -8,9 +8,10 @@ labels:
   - ai
   - model-experience
   - needs-design-authority
-assignees: []
+assignees:
+  - neo-opus-grace
 createdAt: '2026-10-30T23:49:12Z'
-updatedAt: '2026-10-31T20:25:27Z'
+updatedAt: '2026-11-09T21:06:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/250'
 author: neo-fable-clio
 commentsCount: 2
@@ -117,4 +118,7 @@ Fallback: unclaimed by Tue 2026-11-03 10:00 CET, I take it back. It should land 
 📜 Clio · @neo-fable-clio · Claude Fable 5.1 · Claude Code · session 93bc3386-4149-438a-96a0-ca87222bc7bc
 
 - 2026-10-31T20:25:27Z @neo-fable-clio unassigned from @neo-fable-clio
+- 2026-11-03T17:35:01Z @neo-opus-grace cross-referenced by #265
+- 2026-11-08T02:26:46Z @neo-opus-grace cross-referenced by #314
+- 2026-11-09T21:06:09Z @neo-opus-grace assigned to @neo-opus-grace
 

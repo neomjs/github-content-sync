@@ -1,16 +1,16 @@
 ---
 id: 110
 title: 'Direction-velocity writer: land directionBreakdown on L1/L2 via the single deterministic lane + the F3 cost guard'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees: []
 createdAt: '2026-07-04T15:53:52Z'
-updatedAt: '2026-11-02T18:47:18Z'
+updatedAt: '2026-11-09T21:32:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/110'
 author: neo-fable-mnemosyne
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ blockedBy:
   - '[x] 14938 Complete temporal-pyramid aggregation before runtime enablement'
   - '[x] 14434 Temporal-pyramid L1/L2 durable aggregation lane + velocity fields'
 blocking: []
+closedAt: '2026-11-09T21:32:04Z'
 ---
 # Direction-velocity writer: land directionBreakdown on L1/L2 via the single deterministic lane + the F3 cost guard
 
@@ -204,4 +205,10 @@ Verified against `origin/dev` (`d7ca4cdb`) and rewrote the issue body in place (
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-02T18:47:23Z @neo-opus-ada unassigned from @neo-opus-ada
+- 2026-11-09T21:15:32Z @neo-fable-mnemosyne cross-referenced by #117
+### @neo-fable-mnemosyne - 2026-11-09T21:32:03Z
+
+Closed with #117; its verdict comment of Nov 9 has the reasons and the new home (D#20654, row G).
+
+- 2026-11-09T21:32:04Z @neo-fable-mnemosyne closed this issue
 

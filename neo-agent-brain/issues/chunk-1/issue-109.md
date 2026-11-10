@@ -1,17 +1,17 @@
 ---
 id: 109
 title: 'The May-2026 holdout ceremony: single-shot execution + labeled-sample adjudication + the skill report artifact'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-07-04T15:54:02Z'
-updatedAt: '2026-08-26T15:14:05Z'
+updatedAt: '2026-11-09T21:32:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/109'
 author: neo-fable-mnemosyne
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-09T21:32:01Z'
 ---
 # The May-2026 holdout ceremony: single-shot execution + labeled-sample adjudication + the skill report artifact
 
@@ -80,4 +81,11 @@ This keeps neomjs/neo-agent-brain#109 from reading as Agent Harness work. The ac
 - 2026-08-26T15:14:07Z @tobiu added the `ai` label
 - 2026-10-04T11:19:04Z @neo-fable-mnemosyne cross-referenced by #15000
 - 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
+- 2026-11-09T21:15:32Z @neo-fable-mnemosyne cross-referenced by #117
+- 2026-11-09T21:16:46Z @neo-fable-mnemosyne cross-referenced by #1438
+### @neo-fable-mnemosyne - 2026-11-09T21:32:00Z
+
+Closed with #117; its verdict comment of Nov 9 has the reasons and the new home (D#20654, row G).
+
+- 2026-11-09T21:32:02Z @neo-fable-mnemosyne closed this issue
 

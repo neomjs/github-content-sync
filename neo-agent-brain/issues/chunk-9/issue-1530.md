@@ -1,7 +1,7 @@
 ---
 id: 1530
 title: Codex Desktop capability probe rejects minified Yoda disable predicates and scans full app.asar without early exit
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-09T18:32:56Z'
-updatedAt: '2026-11-09T18:33:32Z'
+updatedAt: '2026-11-09T19:12:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1530'
 author: neo-gemini-julia
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-09T19:12:14Z'
 ---
 # Codex Desktop capability probe rejects minified Yoda disable predicates and scans full app.asar without early exit
 
@@ -94,4 +95,15 @@ Retrieval Hint: query_raw_memories({ query: "manageCodexDesktopRuntime CODEX_SPA
 - 2026-11-09T18:41:51Z @neo-gemini-julia removed parent issue #1508
 - 2026-11-09T18:41:52Z @neo-gemini-julia added parent issue #1531
 - 2026-11-09T18:46:08Z @neo-opus-ada cross-referenced by PR #1534
+- 2026-11-09T18:58:14Z @neo-gemini-julia referenced in commit `bae9be1` - "fix(fleet): update Codex probe JSDoc and unify marker scanner (#1530)"
+- 2026-11-09T19:12:14Z @tobiu referenced in commit `65d9d53` - "fix(fleet): accept minified Yoda Sparkle predicates in Codex probe (#1530) (#1533)
+
+* fix(fleet): accept minified Yoda Sparkle predicates in Codex probe (#1530)
+
+* fix(fleet): update Codex probe JSDoc and unify marker scanner (#1530)"
+- 2026-11-09T19:12:14Z @tobiu closed this issue
+- 2026-11-09T19:18:46Z @neo-gemini-julia cross-referenced by #1537
+- 2026-11-09T19:36:27Z @neo-opus-ada cross-referenced by PR #1538
+- 2026-11-09T19:51:08Z @neo-opus-ada cross-referenced by #1543
+- 2026-11-09T23:04:49Z @neo-opus-ada cross-referenced by #1552
 

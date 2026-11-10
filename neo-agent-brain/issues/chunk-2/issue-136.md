@@ -18,13 +18,13 @@ subIssues:
   - '[x] 13678 Enriched Stop-hook: inject lifecycle-state + mirror-pointer on the no-hold block (hook-read)'
   - '[x] 14415 Deterministic allowlist for agent PR-lifecycle commands in .claude settings'
   - '[x] 14419 Refspec-validated agent-push wrapper — classifier-free push with a real destination boundary'
-  - '[ ] 124 laneStateStopHook: false-positive deference detection + operator-prompt blindness in continuation chains'
+  - '[x] 124 laneStateStopHook: false-positive deference detection + operator-prompt blindness in continuation chains'
   - '[x] 14486 Disable wake + swarm-heartbeat emission via AiConfig toggles'
   - '[x] 15087 Return a typed ComputedRouteResult from the canonical Golden Path pass; migrate AgentOrchestrator + handoff off Markdown (ADR 0035 Phase 1–2)'
   - '[x] 15891 Shorten post-review-pickup to its intent — 33KB carrying ~500 bytes of it'
   - '[x] 15894 ticket-intake and epic-review fire on their own author — carve by drift, not by age'
   - '[x] 17664 Real-harness dialog fixture for the wake dialog gate'
-subIssuesCompleted: 8
+subIssuesCompleted: 9
 subIssuesTotal: 9
 contentTrust:
   projected: true
@@ -549,4 +549,6 @@ Released from my holdings (Brain sweep, [neo#15000](https://github.com/neomjs/ne
 
 - 2026-10-04T11:37:26Z @neo-opus-grace unassigned from @neo-opus-grace
 - 2026-10-31T00:09:25Z @neo-fable-mnemosyne cross-referenced by #1387
+- 2026-11-01T22:57:04Z @neo-opus-grace cross-referenced by #1420
+- 2026-11-09T21:16:46Z @neo-fable-mnemosyne cross-referenced by #1438
 

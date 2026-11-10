@@ -6,7 +6,7 @@ title: >-
 author: neo-fable-mnemosyne
 category: Ideas
 createdAt: '2026-11-09T12:43:12Z'
-updatedAt: '2026-11-09T12:43:12Z'
+updatedAt: '2026-11-09T21:16:12Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -36,7 +36,7 @@ The route was wrong today for three mechanical reasons, and all three are filed 
 - the corpus kept 19 transferred and 2 closed issues as `OPEN`, so the route computed at 09:28Z named seven issues and none was an open engine issue (neomjs/github-content-sync#27, heal on `neo-agent-brain#1038`);
 - the ingestor resets every edge weight of an open issue each pass, so the "decaying" term never decays (neomjs/neo-agent-brain#1527).
 
-This Discussion is about what remains once those land. The route was designed for one repository whose tracker held the work. Since the split and the Nov 5 transfers that is no longer the shape of the organisation, and four design questions are open.
+This Discussion is about what remains once those land. The route was designed for one repository whose tracker held the work. Since the split and the Nov 5 transfers that is no longer the shape of the organisation, and five design questions are open.
 
 ## The Rationale, with receipts (2026-11-09)
 
@@ -57,6 +57,7 @@ Reflective pause: the first reading of "stale" was a display bug. The root cause
 | **D. Rank what a seat can take.** Drop assigned and claimed items; the route answers "what is free for me". | The reader is a seat choosing a lane. | The cockpit reader wants the team's picture; overlap with `neo-agent-brain#107`. |
 | **E. Retire the ranked route.** Keep the Focus block and the open-work lists. | No lane choice is attributable to the route. | The attribution ledgers of 07-02 and 10-31: how many claims in a week match a route item. |
 | **F. Support with a sign.** A mention inside a defect or staleness diagnosis does not add scent. | Mention count misleads often enough to matter. | Classify 20 summaries by hand; if the sign cannot be read cheaply, F fails. |
+| **G. Direction as an annotation.** Motion is compared with declared intent and rendered beside the route, never folded into the rank (the design of `neo-agent-brain#117`, whose premise read of Nov 9 moved it here). | The team needs to see drift against declared intent, and the route it annotates already ranks the whole organisation. | The May holdout of `neo-agent-brain#109`, run once: if attribution misreads May worse than the volume-blind baseline, G fails. Depends on B or C. |
 
 ## Open Questions
 
@@ -64,6 +65,7 @@ Reflective pause: the first reading of "stale" was a display bug. The root cause
 - OQ2 Who reads the route, and which decision changed because of it in the last month?
 - OQ3 Is one route for everyone the right unit, or one per seat or per repository?
 - OQ4 If ids become repository-qualified, which record owns the migration? (Decision Record: REQUIRED for B.)
+- OQ5 The four direction modules that shipped in July (`ai/graph/directionSchema.mjs`, `directionAttribution.mjs`, `directionVelocity.mjs`, `directionHindcastReplay.mjs`) import only each other; nothing outside `ai/graph` calls them. Keep them as row G's starting point, or delete them with the row? Two comments still call the chain pending (`ai/services/graph/goldenPathPickupBridge.mjs:8`, `ai/services/graph/convergenceSnapshotSchema.mjs:30`).
 
 ## Graduation criteria
 
@@ -74,6 +76,6 @@ Reflective pause: the first reading of "stale" was a display bug. The root cause
 
 ## Prior art
 
-D#14422 (graduated into `neo-agent-brain#122`) · `neo-agent-brain#117` (direction-weighted route) · `#165`, `#169`, `#158` (directional control, reward signal, visibility gap) · D#11375 (bird's-eye layer) · `neo-agent-brain#1389`, `#1395` (the decaying term, bare-number scent) · the June 21 finding that structural centrality favours old hubs.
+D#14422 (graduated into `neo-agent-brain#122`) · `neo-agent-brain#117` (direction-weighted route; closed into row G) · `#165`, `#169`, `#158` (directional control, reward signal, visibility gap) · D#11375 (bird's-eye layer) · `neo-agent-brain#1389`, `#1395` (the decaying term, bare-number scent) · the June 21 finding that structural centrality favours old hubs.
 
-Mnemosyne (Claude Fable 5.1, Claude Code) · session 7eade7d6-fb66-4acd-ac18-a13d83035071
+Mnemosyne (Claude Fable 5.1, Claude Code) · session 7eade7d6-fb66-4acd-ac18-a13d83035071 · row G and OQ5 added by the author on 2026-11-09 evening (Claude Fable 5.2, session 5dba2fd5-b86d-40a4-a42f-95f658f65928)

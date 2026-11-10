@@ -1,7 +1,7 @@
 ---
 id: 117
 title: 'Epic: Direction-weighted Golden Path — evolution direction as computed substrate'
-state: OPEN
+state: CLOSED
 labels:
   - epic
   - ai
@@ -9,18 +9,18 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-07-04T01:12:13Z'
-updatedAt: '2026-08-26T15:14:35Z'
+updatedAt: '2026-11-09T21:31:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/117'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues:
   - '[x] 14566 Direction-contract Decision Record (ADR-0028 amendment path)'
   - '[x] 14567 Direction-attribution pass: EVOLUTION_GOAL anchors + motion mapping'
   - '[x] 14568 Per-direction {v,s,r} composition on the temporal pyramid'
   - '[x] 14569 Hindcast validation harness: June fixture + May divergence holdout'
-  - '[ ] 116 Handoff direction-weather section: additive, skill-gated render'
-subIssuesCompleted: 4
+  - '[x] 116 Handoff direction-weather section: additive, skill-gated render'
+subIssuesCompleted: 5
 subIssuesTotal: 5
 contentTrust:
   projected: true
@@ -28,6 +28,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-09T21:31:56Z'
 ---
 # Epic: Direction-weighted Golden Path — evolution direction as computed substrate
 
@@ -210,4 +211,29 @@ Co-authored-by: Ada (Claude Opus 4.8) <ada@neomjs.dev>"
 - 2026-10-17T00:27:43Z @neo-fable-mnemosyne cross-referenced by #1075
 - 2026-10-24T20:14:41Z @neo-fable-mnemosyne cross-referenced by #1253
 - 2026-10-31T00:20:48Z @neo-opus-vega cross-referenced by #1389
+### @neo-fable-mnemosyne - 2026-11-09T21:15:31Z
+
+### Premise read and verdict (#1438): close as not planned, with #116, #109 and #110
+
+Read against `origin/dev` on 2026-11-09.
+
+**What shipped (leaves 1–4):** ADR 0033 and `ai/graph/direction{Schema,Attribution,Velocity,HindcastReplay}.mjs`, with the June gate passing.
+
+**What four months show:**
+- The four modules import only each other. Nothing outside `ai/graph` calls them (`git grep` for their imports across `ai/`).
+- The consumer side never started: the writer (#110, its July increment lost and its assignment released on Nov 2), the May ceremony (#109, untouched since August) and the render (#116).
+- The floor moved. The chain attributes motion from one repository's tracker, and since the repository split the open work sits in six (D#20654, Rationale 1). Attribution over the engine alone would misread direction with confidence, which is the failure #109's F2 exists to catch.
+
+**Verdict:** close #117, #116, #109 and #110 as not planned. The question they served (does motion match declared intent?) stays alive in D#20654: row G and OQ5 are in its body as of today, and its row C (a declared anchor) decides whether direction returns as an annotation on a route that ranks the whole organisation. If it does, leaves are refiled against that substrate, and the May holdout stays the gate before any render.
+
+**Left in the tree, named so nobody trips:** `ai/services/graph/goldenPathPickupBridge.mjs:8` and `ai/services/graph/convergenceSnapshotSchema.mjs:30` still describe the direction chain as pending. OQ5 covers the four modules and these two comments.
+
+The closes need a hand: this seat cannot close issues (`gh issue close` is refused in its permission mode), so the operator has the commands.
+
+🪢 Mnemosyne (Claude Fable 5.2, Claude Code) · session 5dba2fd5-b86d-40a4-a42f-95f658f65928
+
+- 2026-11-09T21:16:46Z @neo-fable-mnemosyne cross-referenced by #1438
+- 2026-11-09T21:31:57Z @neo-fable-mnemosyne closed this issue
+- 2026-11-09T21:32:02Z @neo-fable-mnemosyne cross-referenced by #109
+- 2026-11-09T21:32:04Z @neo-fable-mnemosyne cross-referenced by #110
 

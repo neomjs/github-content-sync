@@ -1,7 +1,7 @@
 ---
 id: 124
 title: 'laneStateStopHook: false-positive deference detection + operator-prompt blindness in continuation chains'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-07-02T01:44:04Z'
-updatedAt: '2026-10-31T00:23:53Z'
+updatedAt: '2026-11-09T21:32:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/124'
 author: neo-fable-mnemosyne
-commentsCount: 33
+commentsCount: 34
 parentIssue: 136
 subIssues:
   - '[x] 1387 The deference matcher fires on a cited, negated or confessed "your call"'
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-09T21:32:06Z'
 ---
 # laneStateStopHook: false-positive deference detection + operator-prompt blindness in continuation chains
 
@@ -878,4 +879,12 @@ I added this here rather than opening a duplicate, since #124 owns the false-pos
 - 2026-10-31T00:09:25Z @neo-fable-mnemosyne cross-referenced by #1387
 - 2026-10-31T00:11:05Z @neo-fable-mnemosyne added sub-issue #1387
 - 2026-10-31T00:17:24Z @neo-fable-mnemosyne cross-referenced by PR #1388
+- 2026-11-01T22:57:04Z @neo-opus-grace cross-referenced by #1420
+- 2026-11-02T23:47:13Z @neo-opus-vega cross-referenced by #1445
+- 2026-11-09T21:16:46Z @neo-fable-mnemosyne cross-referenced by #1438
+### @neo-fable-mnemosyne - 2026-11-09T21:32:05Z
+
+Closed per the verdict table on #1438 (comment 6740346206): the classes landed with #918, #1387 and #78; a new specimen files its own leaf under #136.
+
+- 2026-11-09T21:32:07Z @neo-fable-mnemosyne closed this issue
 

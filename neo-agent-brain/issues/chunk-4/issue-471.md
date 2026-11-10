@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-09-24T20:34:11Z'
-updatedAt: '2026-11-08T04:39:00Z'
+updatedAt: '2026-11-09T23:11:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/471'
 author: neo-opus-vega
 commentsCount: 1
@@ -86,7 +86,7 @@ None.
 - **G1** (tenant-qualified store, re-key receipt, two-tenant and same-principal fixture) → neomjs/neo#473 AC-1 to AC-6.
 - **G2** (the candidate path) → decided as E′ here. neomjs/neo#472 records it.
 - **G3** (OQ4, the ADR amendment, `ConceptOntology.md`, the empty KB concept layer as designed) → neomjs/neo#472 AC-1 to AC-5.
-- **G4** (neomjs' migration) → neomjs/neo#19093, promoted, AC-1 to AC-4. Its Markdown half left with neomjs/neo#19159, and neomjs/neo#1356 retired the engine-pin route (this mapping first named neomjs/neo#474 AC-4). **Open, owner Vega (2026-11-06):** the neomjs plane still has `dream-pipeline IMPLEMENTED_BY file:ai/daemons/orchestrator/services/DreamService.mjs`, a file this repository no longer has. neomjs/neo#19236 corrected only the engine copy, to `file:src/evolution/RemDigestion.mjs`. Until the plane takes that row, neomjs/neo#19093's AC-1 blocks the engine copy's deletion. No sanctioned path writes a plane concept edge: `ConceptDiscoveryService` only appends nodes. The missing piece is E′'s import step: equal rows are no-ops, and a differing row is applied only on a recorded decision. Grace endorsed it on 2026-11-06. This row's decision record is neomjs/neo#19235 / PR neomjs/neo#19236 (REM digestion replaced DreamService). Its leaf is filed after the 13.4 cut, because the chain (Brain PR, then plane write, then receipt, then the Engine deletion) cannot finish before it.
+- **G4** (neomjs' migration) → neomjs/neo#19093, promoted, AC-1 to AC-4. Its Markdown half left with neomjs/neo#19159, and neomjs/neo#1356 retired the engine-pin route (this mapping first named neomjs/neo#474 AC-4). **Open, owner Vega (2026-11-06):** the neomjs plane still has `dream-pipeline IMPLEMENTED_BY file:ai/daemons/orchestrator/services/DreamService.mjs`, a file this repository no longer has. neomjs/neo#19236 corrected only the engine copy, to `file:src/evolution/RemDigestion.mjs`. neomjs/neo#19093 closed on 2026-11-08 with the engine copy deleted, so the plane row is the only wrong copy left. No sanctioned path writes a plane concept edge: `ConceptDiscoveryService` only appends nodes. The missing piece is E′'s import step: equal rows are no-ops, and a differing row is applied only on a recorded decision. Grace endorsed it on 2026-11-06. This row's decision record is neomjs/neo#19235 / PR neomjs/neo#19236 (REM digestion replaced DreamService). Its leaf is #1551, the edge import with a remove arm (filed 2026-11-09 under #1258). This row's correction is its second use, and its receipt is posted here.
 - **G5** (the fresh-plane proof, both admission arms, the `ask(conceptWalk: true)` pair, store survival across a recreate) → neomjs/neo#474 AC-2, AC-3, AC-5 and AC-6.
 - **G6:**
   - OQ12's rule (a) → neomjs/neo#474 AC-2 and AC-3.
@@ -126,9 +126,6 @@ Origin Session ID: 9f7b8241-8b3c-4954-a9e5-2f9c1e41d669
 Retrieval Hint: `query_raw_memories("concept custody plane store tenant-scoped E′ D#19096 graduation ConceptSource plane data")`
 
 Authored by Vega (Opus 5.5, Claude Code) 🌿
-
-
-
 
 ## Timeline
 
@@ -173,4 +170,7 @@ The plane owns the concept graph and Brain's generators enhance it (operator, 20
 
 — Vega (Opus 5.5, Claude Code) 🌿
 
+- 2026-11-09T21:59:25Z @neo-gemini-julia cross-referenced by #1547
+- 2026-11-09T22:49:52Z @neo-fable-mnemosyne cross-referenced by PR #1549
+- 2026-11-09T22:55:20Z @neo-fable-mnemosyne cross-referenced by #1551
 
