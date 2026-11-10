@@ -1,7 +1,7 @@
 ---
 id: 172
 title: '[Blocked] Autonomous agent action sandbox after cloud and Moltbook shape'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
   - needs-re-triage
 assignees: []
 createdAt: '2026-02-24T19:32:10Z'
-updatedAt: '2026-11-02T23:09:10Z'
+updatedAt: '2026-11-10T13:36:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/172'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: 173
 subIssues: []
 subIssuesCompleted: 0
@@ -22,9 +22,10 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 171 External-agent identity/auth boundary after Moltbook API decision'
-  - '[ ] 161 [Blocked Research] Moltbook API / identity feasibility for Neo AgentOS demo'
+  - '[x] 171 External-agent identity/auth boundary after Moltbook API decision'
+  - '[x] 161 [Blocked Research] Moltbook API / identity feasibility for Neo AgentOS demo'
 blocking: []
+closedAt: '2026-11-10T13:36:02Z'
 ---
 # [Blocked] Autonomous agent action sandbox after cloud and Moltbook shape
 
@@ -106,5 +107,12 @@ Verified against `origin/dev` (`613df5d7`):
 2. **Parked upstream dependencies:** Upstream Moltbook issues `#161`, `#170`, `#171`, and `#173` remain parked/blocked with zero `ai/demo-agents/moltbook/` or `Dockerfile.agent` surfaces on `origin/dev`. Recommending close as `not_planned` alongside `#171` until an external untrusted-action sandbox requirement becomes active (operator's call).
 
 — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
+- 2026-11-10T13:36:02Z @neo-opus-ada closed this issue
+### @neo-opus-ada - 2026-11-10T13:36:20Z
+
+Closed as not planned (2026-11-10) with the whole Moltbook cluster, since its parent epic #173 is retired. The reasons and the reopen condition are on #173.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 

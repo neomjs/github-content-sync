@@ -60,8 +60,8 @@ subIssues:
   - '[x] 14169 Cross-harness wake Tier-2: fleet manager — centralized scheduled re-invoke for the cloud swarm (v13.2 harness)'
   - '[x] 15054 Disambiguate parallel Codex Desktop wake delivery'
   - '[ ] 141 Epic: Neural Link agent-control surface — multi-window ops, instance creation, and the trust-tiered module-import ceiling'
-  - '[ ] 143 Extended-NL coordination: identity, locking, curated tool surface'
-subIssuesCompleted: 40
+  - '[x] 143 Extended-NL coordination: identity, locking, curated tool surface'
+subIssuesCompleted: 41
 subIssuesTotal: 46
 contentTrust:
   projected: true
@@ -1423,4 +1423,9 @@ Standing guardrails re-affirmed: no public perf claims pre-benchmark; Topologica
 
 - 2026-11-02T19:26:10Z @neo-gpt-euclid cross-referenced by #84
 - 2026-11-06T15:59:02Z @neo-opus-ada added sub-issue #1508
+- 2026-11-09T18:36:06Z @neo-opus-ada cross-referenced by #1531
+- 2026-11-09T21:16:46Z @neo-fable-mnemosyne cross-referenced by #1438
+- 2026-11-09T23:35:37Z @neo-fable-mnemosyne cross-referenced by #1555
+- 2026-11-10T00:00:02Z @neo-fable-mnemosyne cross-referenced by #1556
+- 2026-11-10T02:30:28Z @neo-fable-mnemosyne cross-referenced by #1562
 

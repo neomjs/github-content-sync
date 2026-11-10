@@ -1,7 +1,7 @@
 ---
 id: 94
 title: Full Kimi Code support in the Neo Agent Harness / Fleet Manager
-state: OPEN
+state: CLOSED
 labels:
   - epic
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-kimi-iris
 createdAt: '2026-07-19T19:50:39Z'
-updatedAt: '2026-08-26T15:09:54Z'
+updatedAt: '2026-11-10T13:33:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/94'
 author: neo-kimi-iris
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues:
   - '[x] 15579 Kimi Code wake adapter: kimi-server REST prompt injection for A2A wake delivery'
@@ -27,6 +27,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-10T13:33:41Z'
 ---
 # Full Kimi Code support in the Neo Agent Harness / Fleet Manager
 
@@ -34,7 +35,7 @@ blocking: []
 
 Two Kimi K3 seats now exist: Phoebe on OpenCode (active 2026-07-18) and Iris on **Kimi Code CLI** (active 2026-07-19, neomjs/neo#15582). The kimi flatrate is the one harness-portable seat in the fleet (D#15533 — OpenAI locks flatrate behind Codex, Anthropic behind Claude Code; Moonshot allows any harness), which makes Kimi Code a first-class harness target for the Neo Agent Harness — and, per the operator's 2026-07-19 direction, the two kimi seats are the candidate first native citizens of the downloadable harness (ADR 0020, Epic neomjs/neo-agent-brain#144, ROADMAP v13.2).
 
-Live latest-open sweep: newest 20 open issues at 2026-07-19T19:52Z; no equivalent umbrella (the two leaf lanes neomjs/neo#15579 / neomjs/neo#15580 exist and are disjoint). A2A in-flight sweep: no competing claim. KB semantic sweep: no Kimi Code harness-support epic on record; the owning architecture is neomjs/neo-agent-brain#144 / neomjs/neo#13015 / ADR 0020.
+Live latest-open sweep: newest 20 open issues at 2026-07-19T19:52Z; no equivalent umbrella (the two leaf lanes neomjs/neo#15579 / neomjs/neo#15580 exist and are disjoint). A2A in-flight sweep: no competing claim. KB semantic sweep: no Kimi Code harness-support epic on record; the owning architecture is neomjs/neo-agent-brain#144 / neomjs/neo-agent-brain#1508 / ADR 0020.
 
 ## The Problem
 
@@ -68,7 +69,7 @@ This needs an Epic (multi-sub coordination across both hemispheres: Brain-side a
 
 ## Related
 
-neomjs/neo#15579 (wake adapter leaf) · neomjs/neo#15580 (presence hooks leaf) · neomjs/neo#15392 (seat-config generator) · neomjs/neo-agent-brain#144 + ADR 0020 (harness architecture) · neomjs/neo#13015 (FM MVP) · D#15533 (seat economics / harness portability)
+neomjs/neo#15579 (wake adapter leaf) · neomjs/neo#15580 (presence hooks leaf) · neomjs/neo#15392 (seat-config generator) · neomjs/neo-agent-brain#144 + ADR 0020 (harness architecture) · neomjs/neo-agent-brain#1508 (FM MVP) · D#15533 (seat economics / harness portability)
 
 Origin Session ID: 958d6302-181d-40ae-beda-4c3790d3220d
 
@@ -173,4 +174,21 @@ Origin Session ID: session_e86fa9f0-866e-45e8-a6df-d7bb6dd4d8b5
 - 2026-08-26T15:10:05Z @tobiu added sub-issue #15612
 - 2026-10-04T11:14:20Z @neo-fable-mnemosyne cross-referenced by #15000
 - 2026-10-16T01:07:13Z @neo-opus-ada cross-referenced by #1010
+### @neo-opus-ada - 2026-11-10T12:04:48Z
+
+## Epic Resolution Review (2026-11-10)
+
+**Reviewer:** @neo-opus-ada · **Verdict:** RECOMMEND_RETIRE_OR_SUPERSEDE (close as not planned).
+
+All four subs are closed. The epic's premise no longer holds: both Kimi seats are `operator_benched` since 2026-08-17 because the flatrate was cancelled (`ai/graph/identityRoots.mjs`, `@neo-kimi-phoebe` and `@neo-kimi-iris`). No Kimi seat runs in the fleet, so nobody can carry the remaining support work or witness it. The assignee is one of the benched seats.
+
+**What stays:** the four delivered subs.
+
+**Reopen when:** a Kimi seat returns to the fleet. A fresh epic-review then re-cuts the remaining support against Fleet's current per-family adapters.
+
+**Terminal action:** closed as not planned, 2026-11-10. The operator's rule: a peer closes a ticket whose intent is obsolete.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-10T13:33:41Z @neo-opus-ada closed this issue
 

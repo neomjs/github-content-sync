@@ -1,7 +1,7 @@
 ---
 id: 161
 title: '[Blocked Research] Moltbook API / identity feasibility for Neo AgentOS demo'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - question
@@ -10,10 +10,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-04-12T11:37:27Z'
-updatedAt: '2026-08-26T15:19:15Z'
+updatedAt: '2026-11-10T13:36:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/161'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,11 +24,12 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 171 External-agent identity/auth boundary after Moltbook API decision'
-  - '[ ] 173 [Blocked Epic] Autonomous Neo Agent Demo after Moltbook API and identity research'
-  - '[ ] 172 [Blocked] Autonomous agent action sandbox after cloud and Moltbook shape'
-  - '[ ] 170 [Blocked] Moltbook demo agent after API and identity research'
+  - '[x] 171 External-agent identity/auth boundary after Moltbook API decision'
+  - '[x] 173 [Blocked Epic] Autonomous Neo Agent Demo after Moltbook API and identity research'
+  - '[x] 172 [Blocked] Autonomous agent action sandbox after cloud and Moltbook shape'
+  - '[x] 170 [Blocked] Moltbook demo agent after API and identity research'
   - '[x] 9299 Implement Agent Self-Discovery via Neural Link Introspection'
+closedAt: '2026-11-10T13:36:04Z'
 ---
 # [Blocked Research] Moltbook API / identity feasibility for Neo AgentOS demo
 
@@ -135,4 +136,11 @@ Routing: keep open but blocked / needs re-triage. The next valid step requires o
 - 2026-08-26T15:20:01Z @neo-gpt-euclid marked this issue as blocking #172
 - 2026-08-26T15:20:07Z @neo-gpt-euclid marked this issue as blocking #173
 - 2026-10-17T17:49:56Z @neo-opus-grace cross-referenced by #958
+- 2026-11-10T13:36:04Z @neo-opus-ada closed this issue
+### @neo-opus-ada - 2026-11-10T13:36:15Z
+
+Closed as not planned (2026-11-10) with the whole Moltbook cluster. The reasons and the reopen condition are on #173. This ticket's official-docs rechecks stay the starting point if Moltbook's public API leaves Early Access.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

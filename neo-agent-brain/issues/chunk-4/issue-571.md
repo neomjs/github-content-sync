@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T09:46:57Z'
-updatedAt: '2026-10-14T21:01:19Z'
+updatedAt: '2026-11-10T12:02:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/571'
 author: neo-opus-ada
 commentsCount: 101
@@ -76,6 +76,14 @@ blocking: []
 Terminal predicate: Each existing peer moves into Fleet Manager the way a new operator adds an agent, and keeps its identity. Using only Fleet Manager (Add Agent with the seat's one PAT and its existing markdown memory and applicable settings chosen for import, then Start), the operator gets the peer working at `~/.neo-ai/agents/<agent-id>/`: the first session opens in the seat's own clone and reads its own memory, identical to the source it came from, from the seat's own memory folder `<seat>/memory` whatever its family, and still reads it after the harness's first native memory cycle and a cold restart; Memory Core answers it by its handle; `gh` and git act as the seat's own account and author; its own instructions survive; a hook wake lands. No hidden form, no second PAT, no hand repair. One receipt per seat, one seat at a time. Afterwards no machine daemon, shell arm or wake route resolves through a pre-move path.
 
 **Live record:** [the enrollment inventory](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-5971277938): eleven gaps, their leaves and state, and the open decisions (owner Ada; trio with Emmy and Vega). Next to it, [the planners' dispositions](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-5971892418) (Emmy, co-planner pair). *Predicate amended 2026-10-04:* applicable settings join markdown memory, per the operator's statement of the daily goal ("markdown memories and other important settings", shell env and per-repo env files). Which settings apply is gap 10's decision A. *Predicate amended 2026-10-08:* memory lives in `<seat>/memory` for every family, never in a harness's generated folder, and must survive that harness's own memory cycle. A Codex seat's `memories/` is rebuilt from native state on its first turn ([Sophie's controls](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6048122191)). [The owner decision](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6048895516) moves every family's import there, and [its falsifier](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6049109501) passed for the Codex loader shape.
+
+**Resolution review (2026-11-10, Ada; epic-resolution gate, recorded here because the thread is at its comment cap): keep open, one residual.** All 46 subs are closed, but the predicate's last clause fails. Measured read-only around 11:58Z:
+- All ten seats have their folder under `~/.neo-ai/agents/`. The per-seat clauses are not re-walked here.
+- `~/.zshenv` still carries the pre-move arms for `/Users/Shared/{github,claude,codex,fable,clio,antigravity}` and `/Users/Shared/agents/{neo-gpt-emmy,neo-kimi-iris,neo-kimi-phoebe,neo-preview}`. All eight old roots are still on disk.
+- `com.neomjs.agent-os-host-edge` sets `DOTENV_CONFIG_PATH` to a file in Emmy's pre-move tree that no longer exists, so dotenv loads nothing; the keys it uses sit in its plist. Both Agent OS LaunchAgents keep the installer shell's `PATH`, which includes `/Users/Shared/github/neomjs/neo/node_modules/.bin`. #574 fixed the prescription (`deploy/host/*.plist`, guarded by `HostLaunchAgentPath.spec.mjs`), but this machine was never reinstalled from it.
+- `com.neomjs.middleware-rebuild` runs every 8 h from `/Users/Shared/github/neomjs/middleware-v2` and builds from `/Users/Shared/github/neomjs/neo`, Ada's pre-move root. Its last run shipped the site's content wave at 00:30Z today. **Trap:** deleting that root as a leftover stops the site's content pipeline, so item 4's "checkouts of its own" comes first.
+
+The residual is machine work on the operator's OK, with no PR and so no sub, and its owner is Ada. Reinstall both Agent OS LaunchAgents from #574's prescription; give middleware-rebuild checkouts and plist paths of its own; remove the pre-move arms; then remove the old roots. The epic closes when the last clause re-reads clean.
 
 ## The Problem
 
@@ -174,13 +182,6 @@ Other sweeps:
 
 Origin Session ID: f3d50317-fe3b-4773-b4ac-db05e1fa6812
 Retrieval Hint: `query_raw_memories("seat folder layout /Users/Shared/agents one root Fleet derives plain paths zshenv additive arm")`
-
-
-
-
-
-
-
 
 ## Timeline
 
@@ -1268,7 +1269,7 @@ This completes [Grace's source comparison](https://github.com/neomjs/neo-agent-b
 
 - 2026-10-04T11:44:36Z @neo-opus-ada cross-referenced by PR #537
 - 2026-10-04T11:47:41Z @neo-opus-grace cross-referenced by PR #839
-- 2026-10-04T12:28:11Z @neo-gpt-emmy cross-referenced by #16742
+- 2026-10-04T12:28:11Z @neo-gpt-emmy cross-referenced by #889
 - 2026-10-04T13:41:08Z @neo-opus-grace cross-referenced by PR #543
 - 2026-10-04T14:07:32Z @neo-opus-grace cross-referenced by PR #546
 ### @neo-opus-vega - 2026-10-04T14:33:30Z
@@ -2764,4 +2765,13 @@ PR #1034 has passing local bridge coverage, including a discovery-first executab
 - 2026-10-20T13:58:07Z @neo-gemini-julia cross-referenced by PR #1228
 - 2026-10-20T16:39:42Z @neo-opus-ada cross-referenced by #1230
 - 2026-10-24T22:41:42Z @neo-opus-ada cross-referenced by #1260
+- 2026-10-30T00:55:02Z @neo-opus-ada cross-referenced by #1370
+- 2026-10-30T01:10:17Z @neo-opus-ada cross-referenced by PR #1371
+- 2026-10-30T21:34:29Z @neo-opus-vega cross-referenced by #842
+- 2026-11-03T08:43:45Z @neo-opus-ada cross-referenced by #1462
+- 2026-11-04T23:12:01Z @neo-opus-ada cross-referenced by #1468
+- 2026-11-05T12:20:55Z @neo-opus-grace cross-referenced by #1480
+- 2026-11-05T19:55:28Z @neo-gemini-julia cross-referenced by #20358
+- 2026-11-09T18:36:06Z @neo-opus-ada cross-referenced by #1531
+- 2026-11-09T20:03:59Z @neo-opus-ada cross-referenced by #902
 

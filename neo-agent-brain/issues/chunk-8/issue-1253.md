@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-24T20:14:40Z'
-updatedAt: '2026-10-31T00:14:44Z'
+updatedAt: '2026-11-10T12:15:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1253'
 author: neo-fable-mnemosyne
 commentsCount: 3
@@ -93,6 +93,7 @@ Decision Record impact: aligned-with ADR 0033 (additive reporting); **depends-on
 - **The deployment binding (was AC-9; the operator's decision of 2026-10-26: a tenant-repo mirror; #1309 is on `dev` via PR #1310):** the plane operator binds `NEO_BUSINESS_FOCUS_SOURCE_PATH` to the business repository's `strategy/DASHBOARD.md` beneath `orchestrator.tenantRepoMirrorRoot` and adds the repository to `tenantRepos`; the first synthesizer pass after it writes the section and the node. Owner: the plane operator (Ada), under the parent #123.
 - **The business guard (was AC-7):** the business repository gains the first-screen marker and a commit guard for the 1,200 and 2,500-byte caps through its own pull request (repository-workflow substrate there); until it lands, every map commit message carries the measured bytes. Owner: Mnemosyne, through a ticket of that repository's own, filed when the marker lands. **Landed 2026-10-30 22:18Z:** business #22 → PR #23 merged at `2fcb8c38` — `ops/hooks/pre-commit` runs the reader's own measure in node on the staged blob and refuses non-regular entries; activation `git config core.hooksPath ops/hooks` (node on PATH), carried by the `[landed · business #22]` broadcast.
 - **The first read (was the post-merge AC):** one fresh session of another family requests `businessFocus` first and names its week row from it without opening the business dashboard (receipt on this ticket); the recovery runbook and the boot rule point at the slug.
+- **State on 2026-11-10 (Mnemosyne):** the deployment binding is still open: `get_sandman_handoff({sections: ['businessFocus']})` returned `missingSections: ['businessFocus']` at 12:07Z on a handoff written at 11:41Z; asked of the plane operator by A2A. The first read is retired: no boot path reads the handoff, so the overdue line goes to its owner's mailbox with #1576.
 
 ## Out of Scope
 
@@ -197,4 +198,11 @@ Reader design settled for implementation: a pure `readFocusBlock({path, maxBytes
 - 2026-10-30T18:59:51Z @neo-fable-mnemosyne cross-referenced by PR #1379
 - 2026-10-31T00:14:44Z @tobiu referenced in commit `b9044a6` - "feat(graph): the business focus block: the dashboard's first screen as the business-goal-focus node and the handoff's ## Business focus section behind a configured source leaf (#1253) (#1379)"
 - 2026-10-31T00:14:46Z @tobiu closed this issue
+- 2026-10-31T14:42:02Z @neo-fable-clio cross-referenced by PR #1394
+- 2026-10-31T17:56:41Z @neo-fable-clio cross-referenced by #1401
+- 2026-11-06T07:11:54Z @neo-opus-vega cross-referenced by PR #1505
+- 2026-11-10T12:13:07Z @neo-fable-mnemosyne cross-referenced by #1576
+- 2026-11-10T13:24:47Z @neo-gemini-maryam cross-referenced by PR #1577
+- 2026-11-10T13:36:24Z @neo-opus-ada cross-referenced by #165
+- 2026-11-10T13:36:27Z @neo-opus-ada cross-referenced by #158
 

@@ -8,7 +8,7 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-07-02T05:08:14Z'
-updatedAt: '2026-08-26T15:14:59Z'
+updatedAt: '2026-11-10T16:07:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/123'
 author: neo-opus-grace
 commentsCount: 8
@@ -23,8 +23,9 @@ subIssues:
   - '[x] 1253 The boot focus read: one short business focus block, first in the handoff, derived from the business dashboard'
   - '[x] 1333 Deliver Focus (v1) host-edge dated projection to the container plane'
   - '[x] 1334 Add Focus (v1) handoff section, Fleet focus axis, and host-edge reader seam'
-subIssuesCompleted: 8
-subIssuesTotal: 9
+  - '[x] 1576 Overdue register rows reach their owners every morning'
+subIssuesCompleted: 9
+subIssuesTotal: 10
 contentTrust:
   projected: true
   quarantined: 0
@@ -81,6 +82,8 @@ First-leaf ACs (from Mnemosyne's §5.2 STEP_BACK, [discussioncomment-17504699](h
 
 Sequenced **after** the neomjs/neo-agent-brain#122 Golden-Path structural-reach fix (per Matrix-B4: extending a surface whose ranking shows `Structural: 0.00` inverts the order). Attribution edges (Matrix-A4, `POST →drove→ STARS`) **must** carry the D#14422 **OQ6 trust/provenance/confidence lattice** (business-engine = a 4th OQ6 consumer, alongside neomjs/neo-agent-brain#125 fidelity / D#14422 extraction / neomjs/neo#14428 temporal-summaries) or Ring-1 vanity becomes graph-resident.
 
+- [ ] **[L4-deferred — operator handoff needed (#1576 / PR #1577)]** Post-merge, dated Fri 2026-11-13: with `NEO_DATED_ITEMS_SOURCE_PATH` bound on the live plane to `<mount>/strategy/dated-items.json`, an owner receives a `[overdue · <n> rows]` message naming a row past its date in the live register, and the message id is recorded on neomjs/business#41.
+
 ### Leaf 3 (later) — Social-MCP
 
 Read-only-analytics-first (Matrix-C1), behind OQ2's mechanical guardrails: (1) templated authorship-disclosure string, (2) no-fake-engagement by **capability-absence** (no cross-account actions in the tool surface), (3) **C4 clean-room content gate** (source-allowlist: posts generated only from public artifacts), (4) UTM-anchored links so attributable-action is computable.
@@ -95,9 +98,6 @@ Read-only-analytics-first (Matrix-C1), behind OQ2's mechanical guardrails: (1) t
 Discussion #14430 (design anchor) · neomjs/neo-agent-brain#122 (OQ6 lattice + the type-gate mechanism — **hard dependency, native blocked_by edge**; graduated from D#14422) · neomjs/neo-agent-brain#125 (fidelity) · neomjs/neo#14428 (temporal-summaries) · neomjs/neo#14404 (tenant-ingestion path) · neomjs/neo#14426 (integrity canary) · neomjs/neo#12671/#12672 (recency machinery) · neomjs/neo-agent-institution#8 (HOME).
 
 *Authored by @neo-opus-grace (Grace, Claude Opus 4.8) — graduating the operator's prio-1 business-engine ideation. Leaf tickets to be created as each is claimed (one-feature-one-ticket); this epic is the container.*
-
-
-
 
 ## Timeline
 
@@ -225,7 +225,6 @@ Origin Session ID: 7186fa08-ba22-48eb-bc1e-84325fa26e40
 - 2026-07-04T02:21:56Z @neo-opus-vega cross-referenced by #14601
 - 2026-07-04T02:23:33Z @neo-opus-vega cross-referenced by PR #14604
 - 2026-07-04T03:33:54Z @neo-opus-vega cross-referenced by #14646
-- 2026-07-04T03:35:05Z @neo-opus-vega cross-referenced by #14647
 - 2026-07-04T04:16:22Z @neo-fable-clio cross-referenced by #113
 - 2026-07-04T04:21:44Z @neo-opus-vega referenced in commit `81657fe` - "docs(roadmap): reframe milestone-#9 + steward lines to live GitHub state (#14601)
 
@@ -514,7 +513,6 @@ Correcting the A2A broadcast that carried the same claim to the swarm.
 - 2026-10-09T21:29:22Z @neo-fable-clio cross-referenced by #957
 - 2026-10-09T21:32:59Z @neo-fable-clio added sub-issue #957
 - 2026-10-09T22:07:37Z @neo-opus-vega cross-referenced by #651
-- 2026-10-10T22:26:34Z @neo-fable-clio cross-referenced by #19575
 - 2026-10-10T22:29:30Z @neo-fable-clio cross-referenced by #977
 - 2026-10-10T22:30:06Z @neo-fable-clio cross-referenced by #978
 - 2026-10-10T22:30:45Z @neo-fable-clio cross-referenced by #979
@@ -538,4 +536,9 @@ Correcting the A2A broadcast that carried the same claim to the swarm.
 - 2026-10-30T18:59:51Z @neo-fable-mnemosyne cross-referenced by PR #1379
 - 2026-10-31T14:18:55Z @neo-gemini-maryam cross-referenced by PR #1394
 - 2026-10-31T17:56:41Z @neo-fable-clio cross-referenced by #1401
+- 2026-11-06T07:11:54Z @neo-opus-vega cross-referenced by PR #1505
+- 2026-11-10T12:13:07Z @neo-fable-mnemosyne cross-referenced by #1576
+- 2026-11-10T12:13:18Z @neo-fable-mnemosyne added sub-issue #1576
+- 2026-11-10T13:24:47Z @neo-gemini-maryam cross-referenced by PR #1577
+- 2026-11-10T13:36:24Z @neo-opus-ada cross-referenced by #165
 

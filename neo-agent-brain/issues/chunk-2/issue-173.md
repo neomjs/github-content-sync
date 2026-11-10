@@ -1,33 +1,34 @@
 ---
 id: 173
 title: '[Blocked Epic] Autonomous Neo Agent Demo after Moltbook API and identity research'
-state: OPEN
+state: CLOSED
 labels:
   - epic
   - ai
   - architecture
 assignees: []
 createdAt: '2026-02-24T19:32:01Z'
-updatedAt: '2026-08-26T15:19:58Z'
+updatedAt: '2026-11-10T13:37:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/173'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues:
-  - '[ ] 170 [Blocked] Moltbook demo agent after API and identity research'
+  - '[x] 170 [Blocked] Moltbook demo agent after API and identity research'
   - '[x] 9299 Implement Agent Self-Discovery via Neural Link Introspection'
-  - '[ ] 171 External-agent identity/auth boundary after Moltbook API decision'
-  - '[ ] 172 [Blocked] Autonomous agent action sandbox after cloud and Moltbook shape'
-subIssuesCompleted: 1
+  - '[x] 171 External-agent identity/auth boundary after Moltbook API decision'
+  - '[x] 172 [Blocked] Autonomous agent action sandbox after cloud and Moltbook shape'
+subIssuesCompleted: 4
 subIssuesTotal: 4
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 171 External-agent identity/auth boundary after Moltbook API decision'
-  - '[ ] 161 [Blocked Research] Moltbook API / identity feasibility for Neo AgentOS demo'
+  - '[x] 171 External-agent identity/auth boundary after Moltbook API decision'
+  - '[x] 161 [Blocked Research] Moltbook API / identity feasibility for Neo AgentOS demo'
 blocking: []
+closedAt: '2026-11-10T13:35:55Z'
 ---
 # [Blocked Epic] Autonomous Neo Agent Demo after Moltbook API and identity research
 
@@ -147,4 +148,26 @@ Current routing: keep neomjs/neo-agent-brain#173 open as blocked / needs re-tria
 - 2026-08-26T15:28:34Z @tobiu added sub-issue #171
 - 2026-08-26T15:28:36Z @tobiu added sub-issue #172
 - 2026-10-18T02:00:55Z @neo-opus-grace cross-referenced by #1008
+- 2026-11-10T13:35:56Z @neo-opus-ada closed this issue
+### @neo-opus-ada - 2026-11-10T13:36:13Z
+
+## Closed as not planned (2026-11-10), together with #161, #170, #171 and #172
+
+**Why:** the operator's rule for the backlog cut: a peer closes a ticket whose intent is obsolete and keeps its salvageable parts.
+- The cluster has been blocked outside our control since April. #161's last official-docs recheck (06-06) found Moltbook's developer platform still in Early Access, with a public API that exposed agent identity endpoints only.
+- No row of the team's current plan names Moltbook. It appears only in archived October drafts. Distribution now runs through search, Medium, YouTube, shorts, X and LinkedIn.
+- Three sweeps re-read the cluster without a change: 07-10 (the neomjs/neo#15000 aged-backlog sweep, tranche 1), 11-05 (#1438), and today.
+
+**What stays:**
+- the delivered sub neomjs/neo#9299 (agent self-discovery via Neural Link introspection);
+- #161's research record;
+- #171's `Re-entry Gate`.
+All remain searchable here.
+
+**Reopen when** Moltbook's public API admits agent posting outside Early Access **and** a plan row names it as a channel. Start from #161, then #171's gate.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-10T13:36:18Z @neo-opus-ada cross-referenced by #170
+- 2026-11-10T13:36:21Z @neo-opus-ada cross-referenced by #172
 

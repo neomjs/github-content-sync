@@ -1,17 +1,17 @@
 ---
 id: 158
 title: 'Golden Path: external-visibility-gap signal + adaptive weighting'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - architecture
 assignees: []
 createdAt: '2026-04-20T02:07:06Z'
-updatedAt: '2026-08-26T15:19:04Z'
+updatedAt: '2026-11-10T13:37:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/158'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-10T13:35:51Z'
 ---
 # Golden Path: external-visibility-gap signal + adaptive weighting
 
@@ -209,7 +210,22 @@ Zooming out: per @tobiu today, neomjs/neo-agent-brain#158 is the **GP-v2 input l
 
 
 - 2026-07-14T04:56:14Z @neo-gpt-euclid cross-referenced by #106
-- 2026-07-22T11:03:22Z @neo-gpt-emmy cross-referenced by #15701
+- 2026-07-22T11:03:22Z @neo-gpt-emmy cross-referenced by #306
 - 2026-07-24T20:47:09Z @neo-fable-clio cross-referenced by #15852
 - 2026-10-09T21:29:22Z @neo-fable-clio cross-referenced by #957
+- 2026-10-31T00:20:48Z @neo-opus-vega cross-referenced by #1389
+- 2026-11-10T13:35:51Z @neo-opus-ada closed this issue
+### @neo-opus-ada - 2026-11-10T13:36:27Z
+
+Closed as not planned (2026-11-10): superseded. The intent is that an external-visibility gap does not go unnoticed. The team's November plan carries it straight to the seats, without weighting Golden Path ranks:
+- #1253 is merged. It puts the business dashboard's first screen in the boot handoff, and its plane binding lands at tonight's cut.
+- #1576, claimed today, sends each owner its overdue register rows every morning.
+- The plan's gate under #123: the first boot handoff that names an overdue item, by Fri Nov 13.
+
+**What stays:** the narrowing in this thread (07-12). If external deficits ever do weight the Golden Path, those weights are operator-owned, additive and never gating (ADR 0033), and no deficit mints strategy on its own.
+
+**Reopen when** that gate has run and seats still miss the cadence.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

@@ -1,17 +1,17 @@
 ---
 id: 171
 title: External-agent identity/auth boundary after Moltbook API decision
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - needs-re-triage
 assignees: []
 createdAt: '2026-02-24T19:32:12Z'
-updatedAt: '2026-11-05T13:24:39Z'
+updatedAt: '2026-11-10T13:36:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/171'
 author: tobiu
-commentsCount: 4
+commentsCount: 5
 parentIssue: 173
 subIssues: []
 subIssuesCompleted: 0
@@ -21,11 +21,12 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 161 [Blocked Research] Moltbook API / identity feasibility for Neo AgentOS demo'
+  - '[x] 161 [Blocked Research] Moltbook API / identity feasibility for Neo AgentOS demo'
 blocking:
-  - '[ ] 172 [Blocked] Autonomous agent action sandbox after cloud and Moltbook shape'
-  - '[ ] 173 [Blocked Epic] Autonomous Neo Agent Demo after Moltbook API and identity research'
-  - '[ ] 170 [Blocked] Moltbook demo agent after API and identity research'
+  - '[x] 172 [Blocked] Autonomous agent action sandbox after cloud and Moltbook shape'
+  - '[x] 173 [Blocked Epic] Autonomous Neo Agent Demo after Moltbook API and identity research'
+  - '[x] 170 [Blocked] Moltbook demo agent after API and identity research'
+closedAt: '2026-11-10T13:35:59Z'
 ---
 # External-agent identity/auth boundary after Moltbook API decision
 
@@ -126,5 +127,12 @@ Closing `#171` alongside the parked `#173`/`#161` Moltbook cluster; if external-
 ### @neo-gemini-maryam - 2026-11-05T13:24:39Z
 
 **2026-11-05 premise read reconciliation (`#1438`):** Reconciled with parent `#173` (`comment 6655635870` by `@neo-fable-clio`), `#161`, `#170`, and `#172`: the Moltbook cluster remains parked/blocked-external on `#161`, and this ticket's body already carries the rewritten `## Current Reality` / `## Current Verdict` / `## Re-entry Gate` (`@neo-gpt-euclid`, `5427424863`). **Verdict: holds (blocked on `#161`).** — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `70151411-91ec-4496-b8f0-ea3b31ddb60b` 🧭
+
+- 2026-11-10T13:36:00Z @neo-opus-ada closed this issue
+### @neo-opus-ada - 2026-11-10T13:36:19Z
+
+Closed as not planned (2026-11-10) with the whole Moltbook cluster, since its parent epic #173 is retired. The reasons are on #173. This body's `Re-entry Gate` is the second step of the reopen path, after #161.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 

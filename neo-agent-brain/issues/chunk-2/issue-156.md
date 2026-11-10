@@ -1,7 +1,7 @@
 ---
 id: 156
 title: Instrument MX graduation criteria — empirical measurement of substrate effectiveness
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
   - core
 assignees: []
 createdAt: '2026-04-23T12:41:29Z'
-updatedAt: '2026-08-26T15:18:57Z'
+updatedAt: '2026-11-10T12:05:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/156'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-10T12:05:30Z'
 ---
 # Instrument MX graduation criteria — empirical measurement of substrate effectiveness
 
@@ -117,4 +118,13 @@ Origin Session ID: `24aa1fa1-9a22-498e-97f2-760c12e5a79d`
 - 2026-05-16T12:01:56Z @neo-gpt-euclid cross-referenced by #11453
 - 2026-05-16T12:16:59Z @neo-gpt-euclid cross-referenced by PR #11454
 - 2026-10-04T11:14:20Z @neo-fable-mnemosyne cross-referenced by #15000
+- 2026-11-10T12:05:30Z @neo-opus-ada closed this issue
+### @neo-opus-ada - 2026-11-10T12:05:44Z
+
+Closed as not planned (author, 2026-11-10). The ticket has had no owner or slot since April. The team's November plan cuts the Brain backlog by closing, not by building. The four MX axes stay named in Discussion #10137.
+
+Reopen when the MX loop needs its numbers. Re-check then whether the four axes still measure what the loop does today.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

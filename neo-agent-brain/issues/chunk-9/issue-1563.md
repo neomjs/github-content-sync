@@ -1,7 +1,7 @@
 ---
 id: 1563
 title: 'ToolService lists one line per tool: summary is its only source, title and x-neo-tool-summary go'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-10T02:33:02Z'
-updatedAt: '2026-11-10T03:02:17Z'
+updatedAt: '2026-11-10T13:16:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1563'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -29,6 +29,7 @@ blocking:
   - '[ ] 1566 GitHub and GitLab workflow servers: each tool line says what the tool does and when to use it'
   - '[ ] 1565 Neural Link: each of its 60 tool lines says what the tool does and when to use it'
   - '[ ] 1564 Memory Core: each of its 55 tool lines says what the tool does and when to use it'
+closedAt: '2026-11-10T13:16:18Z'
 ---
 # ToolService lists one line per tool: summary is its only source, title and x-neo-tool-summary go
 
@@ -103,12 +104,6 @@ Retrieval Hint: "ToolService listed description summary only, title omitted, x-n
 - 2026-11-10T02:33:03Z @neo-fable-mnemosyne added the `ai` label
 - 2026-11-10T02:33:03Z @neo-fable-mnemosyne added the `model-experience` label
 - 2026-11-10T02:33:04Z @neo-fable-mnemosyne added the `agent-os` label
-- 2026-11-10T02:34:33Z @neo-fable-mnemosyne added parent issue #1562
-- 2026-11-10T02:35:01Z @neo-fable-mnemosyne marked this issue as blocking #1564
-- 2026-11-10T02:35:03Z @neo-fable-mnemosyne marked this issue as blocking #1565
-- 2026-11-10T02:35:05Z @neo-fable-mnemosyne marked this issue as blocking #1566
-- 2026-11-10T02:35:06Z @neo-fable-mnemosyne marked this issue as blocking #1567
-- 2026-11-10T02:35:08Z @neo-fable-mnemosyne marked this issue as blocking #1568
 - 2026-11-10T02:48:46Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-10T03:25:28Z @neo-gemini-maryam referenced in commit `29b7a8c` - "feat(mcp): source listed tool descriptions from summary alone and drop title (#1563)
 
@@ -117,4 +112,22 @@ Co-authored-by: neo-fable <neo-fable@neomjs.com>"
 - 2026-11-10T03:34:56Z @neo-gemini-maryam referenced in commit `13d2786` - "feat(mcp): source listed tool descriptions from summary alone and drop title (#1563)
 
 Co-authored-by: neo-fable <neo-fable@neomjs.com>"
+- 2026-11-10T12:20:53Z @neo-gemini-maryam referenced in commit `a8ebda1` - "test(mcp): restore BaseServer spec ADR/ticket citations and import digest label (#1563)
+
+Co-Authored-By: Maryam <neo-gemini-maryam@neomjs.com>"
+- 2026-11-10T12:24:27Z @neo-fable-mnemosyne cross-referenced by #1562
+- 2026-11-10T13:16:18Z @tobiu referenced in commit `7549b60` - "feat(mcp): source listed tool descriptions from summary alone and drop title (#1563) (#1572)
+
+* feat(mcp): source listed tool descriptions from summary alone and drop title (#1563)
+
+Co-authored-by: neo-fable <neo-fable@neomjs.com>
+
+* test(mcp): restore BaseServer spec ADR/ticket citations and import digest label (#1563)
+
+Co-Authored-By: Maryam <neo-gemini-maryam@neomjs.com>
+
+---------
+
+Co-authored-by: neo-fable <neo-fable@neomjs.com>"
+- 2026-11-10T13:16:18Z @tobiu closed this issue
 

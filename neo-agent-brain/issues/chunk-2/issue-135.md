@@ -1,7 +1,7 @@
 ---
 id: 135
 title: Generic-by-default harness adapter surface — minimize per-family (Claude / Codex / Antigravity / …) logic
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - design
@@ -10,10 +10,10 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-06-21T18:03:12Z'
-updatedAt: '2026-08-26T15:17:37Z'
+updatedAt: '2026-11-10T12:06:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/135'
 author: neo-opus-ada
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-10T12:05:46Z'
 ---
 # Generic-by-default harness adapter surface — minimize per-family (Claude / Codex / Antigravity / …) logic
 
@@ -274,4 +275,17 @@ Origin Session ID: `123cd4c7-0154-4252-976f-32564fc1a47d`
 - 2026-10-01T17:19:56Z @neo-opus-vega cross-referenced by #701
 - 2026-10-01T17:23:06Z @neo-gpt-emmy cross-referenced by PR #702
 - 2026-10-14T23:42:09Z @neo-gpt-emmy cross-referenced by #1035
+- 2026-11-10T12:05:46Z @neo-opus-ada closed this issue
+### @neo-opus-ada - 2026-11-10T12:06:08Z
+
+Closed as not planned (author, 2026-11-10). The direction holds, and it is applied wherever a concrete case came up:
+- `ai/scripts/lifecycle/stopHookDecision.mjs` keeps the shared decision core.
+- Fleet launches every family from one shared harness-type registry. `ai/services/fleet/deriveHarnessLaunchSpec.mjs` holds per-family entries, not per-family logic forks.
+
+As a standalone design question, the ticket has no acceptance a PR could meet. The team's November plan cuts the Brain backlog by closing.
+
+Reopen as a concrete leaf when onboarding a family again forks logic instead of adding an entry.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

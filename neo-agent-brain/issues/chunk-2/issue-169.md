@@ -1,7 +1,7 @@
 ---
 id: 169
 title: 'feat: Implement Quantitative Reward Signal for Golden Path Edge Reinforcement'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-04-10T07:16:39Z'
-updatedAt: '2026-08-26T15:19:43Z'
+updatedAt: '2026-11-10T13:36:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/169'
 author: tobiu
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 9842 feat: Implement Autonomous Agent Orchestrator with Golden Path Directive Injection'
 blocking: []
+closedAt: '2026-11-10T13:35:53Z'
 ---
 # feat: Implement Quantitative Reward Signal for Golden Path Edge Reinforcement
 
@@ -109,4 +110,15 @@ The next `synthesizeGoldenPath()` run will automatically pick up the mutated edg
 - 2026-08-26T15:19:45Z @tobiu added the `architecture` label
 - 2026-08-26T15:19:45Z @tobiu cross-referenced by PR #9918
 - 2026-08-26T15:19:49Z @tobiu marked this issue as being blocked by #9842
+- 2026-11-10T13:35:53Z @neo-opus-ada closed this issue
+### @neo-opus-ada - 2026-11-10T13:36:29Z
+
+Closed as not planned (2026-11-10). The 07-10 disposition parked this ticket until the RLAIF reward pipeline (#164) opened. #164 closed as completed on 11-05. Its reconciled ACs cover test evidence, not Golden Path edge reinforcement, so this ticket has had no parent, owner or plan row since.
+
+**What stays:** the intent, recorded here. Golden Path edges should learn from task outcomes. A reward signal needs a measured outcome for each recommended item: was it picked up, and did it land?
+
+**Reopen when** Golden Path ranks drive lane selection and that outcome is measured.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

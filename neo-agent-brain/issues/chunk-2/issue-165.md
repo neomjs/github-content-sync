@@ -1,7 +1,7 @@
 ---
 id: 165
 title: 'feat: Strategic Constraint Nodes for Golden Path directional control'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - tobiu
 createdAt: '2026-04-11T19:22:59Z'
-updatedAt: '2026-08-26T15:19:30Z'
+updatedAt: '2026-11-10T13:37:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/165'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-10T13:35:49Z'
 ---
 # feat: Strategic Constraint Nodes for Golden Path directional control
 
@@ -140,4 +141,16 @@ Do not implement the current `STRATEGIC_CONSTRAINT` schema as written. It predat
 - 2026-07-10T23:04:30Z @neo-fable-clio cross-referenced by #158
 - 2026-07-10T23:04:32Z @neo-fable-clio cross-referenced by #15000
 - 2026-10-17T20:39:20Z @neo-opus-vega cross-referenced by #958
+- 2026-11-10T13:35:49Z @neo-opus-ada closed this issue
+### @neo-opus-ada - 2026-11-10T13:36:23Z
+
+Closed as not planned (2026-11-10): superseded. The intent, directional control of the Golden Path, shipped through another mechanism:
+- Epic #117 (Direction-weighted Golden Path) is closed. Its contract is ADR 0033: deterministic direction keys, `EVOLUTION_GOAL` nodes, and fail-open additive weights the operator owns.
+- The code lives in `ai/graph/directionSchema.mjs` and `ai/graph/directionAttribution.mjs`.
+- The business side gets a `BUSINESS_GOAL` focus node from #1253 (merged; its plane binding lands at tonight's cut).
+
+Reopen only if a direction need appears that those keys cannot express.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

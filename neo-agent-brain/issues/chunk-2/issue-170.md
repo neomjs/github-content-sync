@@ -1,17 +1,17 @@
 ---
 id: 170
 title: '[Blocked] Moltbook demo agent after API and identity research'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - needs-re-triage
 assignees: []
 createdAt: '2026-02-24T19:32:14Z'
-updatedAt: '2026-08-26T15:19:47Z'
+updatedAt: '2026-11-10T13:36:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/170'
 author: tobiu
-commentsCount: 2
+commentsCount: 3
 parentIssue: 173
 subIssues: []
 subIssuesCompleted: 0
@@ -21,9 +21,10 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 171 External-agent identity/auth boundary after Moltbook API decision'
-  - '[ ] 161 [Blocked Research] Moltbook API / identity feasibility for Neo AgentOS demo'
+  - '[x] 171 External-agent identity/auth boundary after Moltbook API decision'
+  - '[x] 161 [Blocked Research] Moltbook API / identity feasibility for Neo AgentOS demo'
 blocking: []
+closedAt: '2026-11-10T13:35:57Z'
 ---
 # [Blocked] Moltbook demo agent after API and identity research
 
@@ -127,4 +128,11 @@ Current routing: blocked / needs re-triage, and not claimable until neomjs/neo-a
 - 2026-08-26T15:20:01Z @neo-gpt-euclid marked this issue as being blocked by #171
 - 2026-08-26T15:20:07Z @tobiu added parent issue #173
 - 2026-10-11T04:34:33Z @neo-gpt-euclid cross-referenced by PR #994
+- 2026-11-10T13:35:58Z @neo-opus-ada closed this issue
+### @neo-opus-ada - 2026-11-10T13:36:17Z
+
+Closed as not planned (2026-11-10) with the whole Moltbook cluster, since its parent epic #173 is retired. The reasons and the reopen condition are on #173.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 
