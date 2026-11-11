@@ -6,13 +6,13 @@ labels:
   - enhancement
   - ai
   - build
-  - needs-design-authority
-assignees: []
+assignees:
+  - neo-opus-ada
 createdAt: '2026-11-01T18:26:55Z'
-updatedAt: '2026-11-01T18:27:07Z'
+updatedAt: '2026-11-11T18:42:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/256'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -42,7 +42,8 @@ On 2026-10-10 the operator enabled the `code_scanning` merge rule (tool `CodeQL`
 - Categories must stay `/language:<language>`. That is what Default Setup wrote and what neomjs/neo-agent-brain#1419 keeps, so each repository's alert history continues.
 - Inside a called workflow, job names gain the caller's prefix. The guard reads the Analyze job's log by job, so the port has to resolve the called job's name.
 - Advanced-Setup uploads are refused while Default Setup is on in the consuming repository. Switching it off is a repository setting the operator owns, and it is a merge-order gate for each adoption.
-- Design authority: n/a. This adds a shared lane and calls no existing behavior wrong. The guard's rationale is the engine record neomjs/neo#15370.
+
+Design authority: n/a. This adds a shared lane and calls no existing behavior wrong. The guard's rationale is the engine record neomjs/neo#15370.
 
 ## The Fix
 
@@ -62,11 +63,11 @@ Add `.github/workflows/reusable-codeql.yml` with a `languages` input (JSON array
 
 ## Related
 
-neomjs/neo-agent-brain#1412 · neomjs/neo-agent-brain#1418 / neomjs/neo-agent-brain#1419 · neomjs/neo-agent-institution#855 / neomjs/neo-agent-institution#856 · neomjs/neo#15370 · precedent `.github/workflows/reusable-pr-baseline.yml`
+neomjs/neo-agent-brain#1412 · neomjs/neo-agent-brain#1418 / neomjs/neo-agent-brain#1419 · neomjs/neo-agent-institution#855 / neomjs/neo-agent-institution#856 · neomjs/neo#15370 · precedent `.github/workflows/reusable-pr-baseline.yml` · #338 (the first fork PR this unblocks; the operator chose this fix on 2026-11-11)
 
 Live latest-open + closed sweep: checked latest 20 open + closed search (`codeql OR reusable workflow OR code scanning`; #154, #156 and #15 read as non-equivalent) at 2026-11-01T18:26Z. A2A claims (all read-states, last 12) were checked. The Memory Core rationale sweep covered the 2026-10-10 Default-Setup decision and today's #1412 diagnosis. No equivalent or prior exclusion found.
 
-unowned-rationale: Ready for any maintainer. The CodeQL lane's current owner (neomjs/neo-agent-brain#1418) is the natural pickup. Not a first-contributor ticket, because it needs the operator's Default-Setup switch and cross-repository adoption.
+Owner: @neo-opus-ada (self-assigned 2026-11-11, after the operator chose this fix over a ruleset bypass for #338).
 
 Decision Record impact: none.
 
@@ -82,4 +83,41 @@ Retrieval Hint: "CodeQL default setup fork PR deadlock reusable workflow extract
 - 2026-11-01T18:27:07Z @github-actions added the `needs-design-authority` label
 - 2026-11-01T18:29:16Z @neo-opus-ada cross-referenced by PR #1419
 - 2026-11-01T18:45:41Z @neo-opus-ada cross-referenced by PR #856
+- 2026-11-02T06:01:52Z @neo-opus-grace cross-referenced by #258
+- 2026-11-11T15:20:32Z @neo-gemini-maryam cross-referenced by PR #338
+- 2026-11-11T15:28:22Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-11-11T15:35:59Z @neo-opus-ada cross-referenced by PR #348
+- 2026-11-11T15:36:23Z @neo-opus-ada removed the `needs-design-authority` label
+- 2026-11-11T15:39:35Z @neo-opus-ada referenced in commit `19051b1` - "fix(ci): quote the CodeQL lane's languages description (#256)
+
+An unquoted 'build-mode: none' inside the input description is a YAML mapping, so GitHub refused the workflow file."
+### @neo-opus-ada - 2026-11-11T16:17:22Z
+
+**Handover (session sunset; next session picks up today).** [PR #348](https://github.com/neomjs/neo-agent-skills/pull/348) is at `19051b1`. The lane runs, and both Analyze jobs finish their analysis. GitHub then refuses the upload while Default Setup is on ([status](https://github.com/neomjs/neo-agent-skills/pull/348#issuecomment-6800233832)). That is the merge-order gate, not a defect.
+
+**Pickup:**
+1. The operator switches CodeQL Default Setup off under Settings → Code security.
+2. Re-run the failed jobs: `gh run rerun 43050566912 --failed --repo neomjs/neo-agent-skills`.
+3. Once the checks are green, request Maryam as primary reviewer in GitHub and send her a 1:1. She asked to be pinged at green.
+4. After the merge, #338 needs a rebase onto `dev` and a patch bump (`maintainer_can_modify: true`). Then the operator approves its workflow run once.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-11T18:35:14Z @neo-opus-ada referenced in commit `f82861f` - "chore(ci): merge dev 1.4.0 into the CodeQL lane and bump to 1.4.1 (#256)"
+### @neo-opus-ada - 2026-11-11T18:42:19Z
+
+**#348 pickup, updated 2026-11-11 18:4xZ.**
+
+- **Head:** `f82861f`. Dev `b3a73a9` (#347) is merged in with a ticketed merge, and the version is 1.4.1, above dev's 1.4.0. `npm test` passes locally.
+- **Still blocked on the operator:** turning CodeQL Default Setup off for this repository. Until then the lane's `CodeQL / Analyze (*)` jobs stay red, because uploads are refused.
+- **After the switch:**
+  1. Run `gh run rerun <latest CodeQL run> --failed --repo neomjs/neo-agent-skills`.
+  2. At green, request review from Maryam on GitHub and send her a 1:1.
+  3. After the merge, rebase #338 and give it a patch bump above 1.4.1.
+
+**Owner:** Ada (next session).
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-11T21:10:19Z @neo-opus-ada referenced in commit `422a352` - "chore(ci): merge dev 1.4.3 into the CodeQL lane and bump to 1.4.4 (#256)"
 

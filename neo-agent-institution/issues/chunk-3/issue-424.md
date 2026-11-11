@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-11-10T21:48:29Z'
+updatedAt: '2026-11-11T18:23:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
-commentsCount: 11
+commentsCount: 16
 parentIssue: null
 subIssues:
   - '[x] 425 A failed plane-attach boot says why in the connect card''s words'
@@ -29,8 +29,9 @@ subIssues:
   - '[x] 845 A revoked PAT can take ~10 min to reach the spine: two 300 s intervals stack'
   - '[x] 847 A plane still starting reads as ''not a Neo plane'' and the FM gives up'
   - '[x] 849 A boot refusal that is not the credential''s needs a new PAT to recover'
+  - '[ ] 917 A stored plane down at launch reads "fleet timed out", not "Agent OS starting"'
 subIssuesCompleted: 13
-subIssuesTotal: 14
+subIssuesTotal: 15
 contentTrust:
   projected: true
   quarantined: 0
@@ -674,4 +675,202 @@ Still to run:
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-opus-ada - 2026-11-11T16:17:21Z
+
+### Row 5 on the next candidate: one window (operator approved, 2026-11-11)
+
+The operator approved updating the plane and the Fleet Manager today. The window runs in my next session, which starts now.
+
+**Candidate:**
+- Institution `6f00d3da` and Brain `7219f4e1`. The Brain commit carries #1582, #1598 and neomjs/neo-agent-brain#1603.
+- Engine: `dev` at build time.
+- Vega's four plane images are built at `7219f4e1` (15:40:51Z–15:41:49Z). The containers still run `eabfbc17`, and she holds the recreate until I say go.
+
+| # | Act | Expected | Who |
+|---|---|---|---|
+| 0 | Build and stage the FM candidate: Institution `npm ci`, then `NEO_AGENTOS_RUNTIME_ROOT=<Brain 7219f4e1> npm run dist`. Check the framework cdhash equals `/Applications`'. Run the windowless `rehearse:packaged`, then `install.mjs --quit --open --dry-run` | a clean dry-run plan | Ada |
+| H2 | `cut.sh 7219f4e1` with the FM running | sampled at 2 s or less: an outage longer than one liveness pass is named on the spine, and `live` returns without action | Vega cuts, Ada samples |
+| H4 + H0 | `install.mjs --quit --open` over the Nov 10 build | as on 11-10 | operator; Ada reads |
+| H1 + provocation 1 | stop the plane's ingress, reopen the FM while it is down, start the ingress | the reason and the next step are readable at launch, and that step alone returns `live` | operator; Ada |
+| H3 + provocation 4 | revoke the FM's PAT at GitHub; after "pat refused", reopen the FM; then Connect with a fresh PAT | "pat refused" within 6 min; the same refusal at launch; Connect returns `live` with no relaunch | operator; Ada |
+
+**Same build, other checks:**
+- neomjs/neo-agent-brain#1590 AC-5/6 and #1584 AC-5/6 have waited for exactly this "next FM build".
+- Clio's three window-only stills: the plane down at launch, "pat refused", and the roster after Connect.
+
+The 11-10 receipts on `c80d631` (H4, H0, and an inconclusive H2) stay as history. This window re-walks the whole row on one candidate. Row 3 (#485) runs on the same candidate on Thursday 2026-11-12 at 14:00Z, with Vega driving.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-11T17:07:45Z
+
+### Row 5, 2026-11-11 window: H2 — pass, with two lags
+
+**Candidate:**
+- **Plane:** cut from Brain `eabfbc17` to `7219f4e1` by Vega's `cut.sh`.
+- **FM:** the Nov 10 build (Institution `c80d631`, Brain `eabfbc17`, Engine `512cb2fa`). The install follows the cut, because #1582 binds the two to one window.
+- The spine and liveness code is identical to the staged candidate. `c80d631..6f00d3da` touches only the Memories reader (#909) and open-work wakes (#913).
+- The staged candidate is Institution `6f00d3da`, Brain `7219f4e1`, Engine `c7e19744`, staged 16:48:58Z. Engine `dev` was not taken: neomjs/neo#20783 fails this repository's `FleetActivityObserver` keyboard E2E at engine `dev`. `c7e19744` is the installed `512cb2fa` plus one SEO commit.
+- Checks before the cut:
+  - framework cdhash `29def43c…`, equal to `/Applications`;
+  - `rehearse:packaged` ok, failures `[]`, claude-desktop + codex-desktop;
+  - `install.mjs --dry-run`: a clean 13-step plan.
+
+**The plane** (Vega's `cut.sh` log, UTC):
+- Bootout at 17:04:00Z.
+- Recreate at 17:04:08Z.
+- All four services healthy at 17:04:56Z.
+- Outage: 56 s.
+
+**The FM spine.** I sampled it with window-only frames every 2 s and Neural Link reads of `SpineBannerComponent`:
+
+| Time (UTC) | Spine | Title |
+|---|---|---|
+| through 17:04:37Z | `plane recovered` | the previous load outage (06:00–06:01 PM, local time) |
+| 17:04:41Z | `fleet degraded`: "Fleet feed degraded — showing last-known data", plus Reconnect | `a2a: plane list_messages failed: session lost and plane unreachable (Error); pr-lane: base read: plane get_pr_lane_activ…` |
+| 17:06:04Z | `plane recovered` (live class) | `Plane outage 06:04 PM–06:06 PM — recovered · … · 2026-11-11T17:04:41.648Z–2026-11-11T17:06:04.464Z` |
+
+Neither Vega nor I took any action.
+
+**Against the expected result:**
+- *An outage longer than one liveness pass is named:* yes. It was named from 17:04:41Z, with "plane unreachable" in the title, and on recovery as "Plane outage".
+- *`live` returns without action:* yes, at 17:06:04Z.
+
+**The two lags:**
+- **Detection, 41 s.** From the bootout to the first named state, the spine kept showing the *previous* outage's `plane recovered`.
+- **Recovery, 68 s.** From all services healthy to `live`.
+
+Neither breaks the expected result as written. They are recorded here for the row line.
+
+**Baseline was not clean.** Load outages occurred at 16:49:51–16:50:49Z and 16:52:51–16:53:45Z (`fleet read exceeded 10000ms`), plus one at 06:00–06:01 PM local time. Load average was 15–19, from my packaging, a peer's Playwright run, and the Docker VM. Before the cut, the orchestrator ran at 74% CPU and chroma at 12.6 GiB anonymous memory of 16 GiB.
+
+**Next:** H4 + H0 at the operator's install, then H1 and H3.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-11T17:43:44Z
+
+### Row 5, 2026-11-11 window: H4 + H0 — pass
+
+**Candidate:** Institution `6f00d3da`, Brain `7219f4e1`, Engine `c7e19744`, staged 16:48:58Z. The operator approved the install, and I ran `install.mjs --quit --open` from the operator's terminal.
+
+**H4, the install:**
+- **Attempt 1, from 17:33:26Z, refused before any mutation.** It quit the FM, but the operator relaunched it from its icon. The census reported "bundle users appeared after planning or Quit; refusing package mutation", nothing was changed, and the FM was reopened. The guard works.
+- **Attempt 2 ended at 17:37:32Z.** The installed build now matches the candidate. The 11-10 build (`c80d631`) is the rollback, the runtime generation is `e1f968be101e`, and the custody set is "unchanged (d276331ed1c5)".
+- **The handoff sealed.** `main.log` at 17:36:06.731Z: "continuity handoff sealed after 290 ms (budget 8000 ms)". All 8 running seats were verified as survivors.
+- **Plane init, with no PAT re-entry:**
+  - "boot phase plane init: 434 ms (verified: @tobiu)" (17:38:00Z)
+  - `HARNESS_PLANE_CREDENTIAL {"frame":"boot","identity":"@tobiu","state":"adopted"}`
+  - runtime verify: 24.57 s
+  - open-work wakes are wired (#913)
+- **`live` without Connect:** yes, see H0.
+
+**H0, the cold relaunch.** I sampled with window-only frames every 2 s and Neural Link reads of `SpineBannerComponent`:
+
+| Time (UTC) | Spine | Header |
+|---|---|---|
+| 17:38:18Z | `fleet starting`: "The Fleet is verifying its runtime: Start opens when it finishes" | `0 started · 13 UNKNOWN` |
+| 17:38:39Z–17:40:00Z | `feed timed out`: "Activity read timed out — roster is live · no activity data yet · fleet read exceeded 10000ms" | `8 started` by 17:40:00Z |
+| 17:40:17Z | "Activity read in progress — roster is live" | `8 started` |
+| 17:40:21Z–17:41:18Z | partial: "Activity feed partial — PR lanes partial · mailbox available", with Recheck | `8 started` |
+| **17:41:20Z** | **hidden (`fm-spine-banner-live`)**, still hidden at 17:42:2xZ | `8 started` |
+
+- **Time to `live`:** about 3 min 47 s from the relaunch at 17:37:32Z, with no action. The host load average was 15–16 throughout.
+- **The header refreshes now.** It moves from `0 started · 13 UNKNOWN` to `8 started`. On 11-10 it stayed stuck at the first value.
+
+**Expected follow-on:** every seat launched by the old FM shows "New tool connections are blocked" (continuity recovery: retained generations stale, issuer replaced). Running tools keep working, and each seat clears it at its next restart.
+
+**Next:** H1 with provocation 1, then H3 with provocation 4, at the operator's time. Clio's stills come from those two acts.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-11T17:59:40Z
+
+### Row 5, 2026-11-11 window: H1 + provocation 1 — fail (the reason and the next step are not on screen)
+
+**Candidate:** Institution `6f00d3da`, Brain `7219f4e1`, Engine `c7e19744`.
+
+**The run:**
+- I stopped `neo-local-agent-os-ingress-1` at 17:48:23Z. `127.0.0.1:3102` was unreachable.
+- The operator quit the FM (handoff sealed after 149 ms) and reopened it while the plane was down.
+- The operator's estimate: 10–15 s before the window showed. `main.log`'s first boot line came 27 s after the quit, but the click time is unknown.
+
+**At launch** (Neural Link + window still):
+- **The spine** (cold class) read `fleet timed out`, "Roster read timed out — no fleet data yet · fleet read exceeded 10000ms". The roster read "0 agents, not answered yet".
+- **The only action offered was Reconnect.** The operator clicked it with the plane still down, and it timed out again.
+- **The cause is only in `main.log`, with the wrong advice:** "plane mode refused (http://127.0.0.1:3102): plane unreachable (TypeError) — fix fleet.planeBase / fleet.planeBearer, or empty the base for in-process mode", then "re-probing while Agent OS starts".
+- **Verdict:** fail on "the reason and the next step are readable without hovering". Neither the plane nor "start the plane" appears on screen. Defect-note fingerprint `20a7ac2a6b05ea80`.
+
+**Recovery, no click needed:**
+- I started the ingress at 17:56:13Z, and the plane was reachable at 17:56:14Z.
+- Main re-probed and booted the fleet at 17:56:20Z: plane init 36 ms, verified @tobiu, credential adopted.
+- The roster went live first. The spine read "roster is live · no activity data yet", went `live` between 17:57:24Z and 17:57:30Z, and the header read `8 started · 3 excluded`.
+
+**The operator's observation:**
+- The activity feed lags the roster by 40 s here and by about 2.5 min after the install relaunch (H0).
+- The plane's `get_pr_lane_activity` answered in under 1 s at 17:58:47Z, so the lag sits on the FM side.
+- Defect-note fingerprint `b4be35b967093242`.
+
+**Still:** `plane-down-at-launch`, window-only, for Clio.
+
+**Next:** H3 + provocation 4. The leaf for H1's fail follows the walk.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-11T18:21:14Z
+
+### Row 5, 2026-11-11 window: H3 + provocation 4 — pass (the 6-min detection bound not measurable this run)
+
+**Candidate:** Institution `6f00d3da`, Brain `7219f4e1`, Engine `c7e19744`.
+
+The operator deleted the FM's PAT at GitHub while the FM ran. I sampled with window-only frames every 2 s, Neural Link reads of `SpineBannerComponent`, and `main.log`.
+
+**1. "pat refused" while the FM runs**
+- **Observed:** first visible at 18:11:56Z: `pat refused`, "The plane refused that PAT. Connect again with a current one.", with a Connect button. The spine was live through 18:11:43Z and showed `feed partial` at 18:11:52Z.
+- **Still:** `pat-refused`.
+- **The 6-min bound (#845) is not measurable this run.** The deletion happened between the instruction at about 18:00:30Z and the operator's report at about 18:09Z, so detection took somewhere between 3 and 11.5 min. The plane caches a valid PAT for `auth.patCacheTtlSeconds` = 300 s, so about 5 min is the floor.
+- **Next time:** stamp the revocation itself.
+
+**2. The same refusal at launch**
+- **Observed:** the operator quit and reopened the FM.
+- **Spine at 18:15:40Z:** the same text, now in the cold class, with Connect and an empty roster.
+- **`main.log`:** `HARNESS_BRAIN_BOOT_FAILED [plane-credential-refused]` at 18:15:26Z.
+
+**3. Connect returns `live` with no relaunch (#843)**
+- **Observed:** the operator entered a fresh PAT.
+- **`main.log` at 18:17:00Z:** "plane init: 33 ms (verified: @tobiu)" and `HARNESS_PLANE_CREDENTIAL … "adopted"`. Runtime verify took 7.6 s.
+- **No relaunch:** the same process (PID 68150, started 18:15:09Z) and the same Neural Link session throughout.
+- **The roster came back at once.** The spine showed `feed partial` until it went `live` between 18:19:57Z and 18:20:00Z.
+- **Still:** `roster-after-connect`.
+
+**Frictions and notes:**
+- **The setup panel stays open after a successful Connect.** "Connected. The new PAT is in use, and the Fleet Manager keeps running." sits above the cockpit.
+  - Operator: it should hide. "Connect" makes no sense once connected, and "Not now" implies setup is pending although the institution is set up.
+  - Defect-note fingerprint `49788b8e814e231a`.
+- **The refusal's tone tracks data, not the required action.** It is yellow (degraded) while last-known data is on screen and red (cold) at launch. Either way nothing updates until the operator acts, which argues for one action-required tone. This is a design note.
+- **`main.log` names the wrong cause.** It labels the refused PAT "plane unreachable", at 18:13:40Z and in the boot at 18:15:25Z.
+- **The activity feed lagged again,** by about 3 min after Connect. It is the same finding as H0/H1, defect-note `b4be35b967093242`.
+
+**Row 5 on this candidate:**
+
+| Item | Result | Notes |
+|---|---|---|
+| H2 | pass | detection lag 41 s, recovery lag 68 s |
+| H4 | pass | |
+| H0 | pass | 3 min 47 s to `live` |
+| H1 | **fail** | the reason and the next step are not on screen; defect-note `20a7ac2a6b05ea80` |
+| H3 | pass | the 6-min bound is open |
+
+The row stays open on H1. Its leaf follows. Clio's three stills are in `~/.neo-ai/agents/neo-opus-ada/film/fm-post-2026-11/`.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-11T18:26:31Z @neo-opus-ada cross-referenced by #917
+- 2026-11-11T18:26:37Z @neo-opus-ada added sub-issue #917
+- 2026-11-11T18:27:14Z @neo-opus-ada cross-referenced by #918
+- 2026-11-11T18:39:40Z @neo-opus-ada cross-referenced by #919
+- 2026-11-11T18:39:49Z @neo-opus-ada cross-referenced by #920
+- 2026-11-11T18:40:02Z @neo-opus-ada cross-referenced by #921
+- 2026-11-11T18:40:13Z @neo-opus-ada cross-referenced by #922
+- 2026-11-11T20:08:57Z @neo-opus-ada cross-referenced by #923
 

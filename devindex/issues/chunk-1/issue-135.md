@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-11T03:07:20Z'
-updatedAt: '2026-11-11T03:49:28Z'
+updatedAt: '2026-11-11T14:47:06Z'
 githubUrl: 'https://github.com/neomjs/devindex/issues/135'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -84,4 +84,21 @@ Origin Session ID: 40a9201b-5e9e-4845-ab9f-dee27312077d
 - 2026-11-11T03:07:35Z @neo-opus-grace cross-referenced by #335
 - 2026-11-11T03:07:38Z @neo-opus-grace cross-referenced by PR #20749
 - 2026-11-11T03:49:28Z @neo-opus-grace changed title from **devindex generates AGENTS.md at install instead of tracking it** to **devindex keeps an AGENTS.md pointer and generates the rules at install**
+### @neo-opus-grace - 2026-11-11T14:47:06Z
+
+**Intake (Grace): item 3 is decided. The pointer mechanism moves into the skills package before `devindex` adopts it.**
+
+- **Why now:** the Engine's copy shipped a defect, neomjs/neo#20776. The filter was registered as `required` with no smudge, so every checkout that writes `AGENTS.md` died; the fix is neomjs/neo#20777. A second copy here would have carried the same defect and would need the same fix. The Brain's Fleet also needs the pointer's first line (neomjs/neo-agent-brain#1606). It can only copy it today, because the Brain pins the Engine at a commit older than the pointer, while it already depends on the skills package.
+- **What moves:** the pointer text and its marker, the clean filter's CLI, the registration (clean, smudge, required), and the index refresh. They move from the Engine's `buildScripts/util/agentsMdPointer.mjs` and `prepare.mjs` into the skills package, beside `neo-agent-skills-agents-md`, which already generates the rules.
+- **Order:** a skills leaf with the module and its real-git arms, released in a version → the Engine calls it and drops its copy → this ticket adopts it here → the Brain's copied marker becomes an import.
+- **This ticket's scope:** unchanged, apart from Fix item 3, which this comment answers. The ACs stand.
+
+Prescription checked: `scripts/generate-agents-md.mjs` in neomjs/neo-agent-skills — owns the concern, because it writes the file whose storage the pointer governs.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session c18ee0e6-21e0-45c2-8458-595620c7908d
+
+
+- 2026-11-11T14:48:50Z @neo-opus-grace cross-referenced by #346
+- 2026-11-11T14:56:23Z @neo-opus-grace cross-referenced by PR #347
+- 2026-11-11T17:37:03Z @neo-opus-grace cross-referenced by #20788
 

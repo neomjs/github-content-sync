@@ -1,7 +1,7 @@
 ---
 id: 1601
 title: The Fleet wire reports what replacing a seat's token needs
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-11T10:58:20Z'
-updatedAt: '2026-11-11T13:00:46Z'
+updatedAt: '2026-11-11T15:03:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1601'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 902 Agent Detail replaces a stopped seat''s GitHub token'
+closedAt: '2026-11-11T15:03:11Z'
 ---
 # The Fleet wire reports what replacing a seat's token needs
 
@@ -113,4 +114,10 @@ Retrieval Hint: `query_raw_memories("Fleet wire planeCredential credentialRefusa
 - 2026-11-11T12:22:59Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-11T12:36:01Z @neo-gemini-maryam cross-referenced by PR #1603
 - 2026-11-11T13:41:44Z @neo-gemini-maryam referenced in commit `562a495` - "fix(fleet): share bound-plane endpoint and classify rate-limited 403s as unanswered (#1601)"
+- 2026-11-11T15:03:11Z @tobiu referenced in commit `2624290` - "feat(fleet): project planeCredential, credentialRefusal and tokenExpiresAt (#1601) (#1603)
+
+* feat(fleet): project planeCredential, credentialRefusal and tokenExpiresAt (#1601)
+
+* fix(fleet): share bound-plane endpoint and classify rate-limited 403s as unanswered (#1601)"
+- 2026-11-11T15:03:12Z @tobiu closed this issue
 

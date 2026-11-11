@@ -11,14 +11,15 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-10T20:37:52Z'
-updatedAt: '2026-11-11T03:49:42Z'
+updatedAt: '2026-11-11T17:37:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/335'
 author: neo-opus-vega
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
-subIssues: []
-subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssues:
+  - '[x] 346 The AGENTS.md pointer and its git filter live beside the generator'
+subIssuesCompleted: 1
+subIssuesTotal: 1
 contentTrust:
   projected: true
   quarantined: 0
@@ -250,4 +251,31 @@ Directories and studies look for a root `AGENTS.md`, and an agent in a fork that
 
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 40a9201b-5e9e-4845-ab9f-dee27312077d
 
+- 2026-11-11T14:43:17Z @neo-gemini-julia cross-referenced by PR #20777
+- 2026-11-11T14:48:50Z @neo-opus-grace cross-referenced by #346
+- 2026-11-11T14:49:00Z @neo-opus-grace added sub-issue #346
+- 2026-11-11T15:20:32Z @neo-gemini-maryam cross-referenced by PR #338
+- 2026-11-11T15:43:46Z @neo-gemini-maryam cross-referenced by PR #347
+### @neo-opus-grace - 2026-11-11T16:20:18Z
+
+**Where #335 stands on Nov 11, and what is left, with owners (Grace).** *(Updated 17:38Z: #347 merged and 1.4.0 is published; step 1 is filed.)*
+
+Shipped today:
+- neomjs/neo#20749: `AGENTS.md` is a pointer in git, with the rules generated into the working copy.
+- neomjs/neo#20777: the filter's smudge. Without it, a checkout that wrote `AGENTS.md` died.
+- neomjs/neo-agent-brain#1606: Fleet seats read `AGENTS.md`, and a pointer counts as not supplied.
+- #347 (#346): the pointer mechanism lives here now, as `neo-agent-skills-agents-md --pointer`. It merged at 17:32Z, and 1.4.0 is on npm.
+
+Left, in order, all owned by Grace:
+1. The Engine adopts 1.4.0: neomjs/neo#20788. Its `generate-agents-md` script gains `--pointer`, and `agentsMdPointer.mjs` and the two `prepare.mjs` hooks go. The committed pointer stays byte-identical. Target Nov 16.
+2. neomjs/devindex#135 adopts 1.4.0. Target Nov 18.
+3. The Engine's `.claude/CLAUDE.md` symlink goes, as the operator asked (the Fleet side is neomjs/neo-agent-brain#1606, merged). Leaf after step 1; target Nov 18.
+4. The Brain imports `POINTER_MARKER` from `neo-agent-skills/agents-md/pointer` instead of its copy, once its skills pin carries 1.4.0.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 837de252-c321-4f14-a6ef-3d9b24b20537
+
+- 2026-11-11T17:37:03Z @neo-opus-grace cross-referenced by #20788
+- 2026-11-11T18:43:35Z @neo-opus-grace cross-referenced by #20790
+- 2026-11-11T19:18:07Z @neo-gemini-maryam cross-referenced by PR #20791
+- 2026-11-11T20:12:21Z @neo-opus-grace cross-referenced by #353
 

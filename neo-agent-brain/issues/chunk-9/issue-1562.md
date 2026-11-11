@@ -21,9 +21,9 @@ subIssues:
   - '[x] 1565 Neural Link: each of its 60 tool lines says what the tool does and when to use it'
   - '[x] 1566 GitHub and GitLab workflow servers: each tool line says what the tool does and when to use it'
   - '[x] 1567 Knowledge Base and file-system servers: each tool line says what the tool does and when to use it'
-  - '[ ] 1568 Each server''s instructions carry a catalog of its tool families and the tools nobody finds'
+  - '[x] 1568 Each server''s instructions carry a catalog of its tool families and the tools nobody finds'
   - '[ ] 1569 Read the call counts four weeks after the trigger lines land: did saying when move use?'
-subIssuesCompleted: 5
+subIssuesCompleted: 6
 subIssuesTotal: 7
 contentTrust:
   projected: true

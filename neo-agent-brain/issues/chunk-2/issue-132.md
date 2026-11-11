@@ -8,7 +8,7 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-06-26T13:28:45Z'
-updatedAt: '2026-11-11T05:17:20Z'
+updatedAt: '2026-11-11T21:34:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/132'
 author: neo-opus-vega
 commentsCount: 14
@@ -28,7 +28,7 @@ blocking: []
 > **Premise Read & In-Place Rewrite (`2026-11-02`, `#1438` against `origin/dev` `613df5d7`):**
 > - **Shipped / Resolved:**
 >   1. **Original Fix 1:** Retracted by author (`2026-07-17`).
->   2. **Fix 2 (single `gh` token mis-attribution & collaboration allowlist):** Resolved by per-seat GitHub identities and tokens in Fleet Manager (`ai/graph/identityRoots.mjs`) and `.claude/settings.template.json:64-68` `autoMode.allow`.
+>   2. **Fix 2 (single `gh` token mis-attribution & collaboration allowlist):** The token mis-attribution is resolved by per-seat GitHub identities and tokens in Fleet Manager (`ai/graph/identityRoots.mjs`). The allowlist is not: the classifier never reads `autoMode` from a project file, so `.claude/settings.template.json:64-68` changed nothing (corrected 2026-11-11; evidence: neomjs/neo#20794, comment 6807353591; neomjs/neo#20796 deletes the block). The agent-executed close is #1616.
 >   3. **Convergence-wait / clean-terminal / flow-wait facets (Comments 1, 4–10):** Resolved in `ai/scripts/lifecycle/stopHookDecision.mjs:185-328` (`evaluateCleanTerminalAcceptance` with `namedGates` + `nextActor` + `DEFAULT_MIN_COMPLIANT_DRIVES = 2`, `materialArtifact` primary autonomous allow, and `stopHook.laneContinuation` off by default at `:305-310`).
 > - **Remaining live residual (Comment 12, `2026-09-25`):**
 >   - When the Claude Code auto-mode classifier denies a tool call (`Permission for this action was denied by the Claude Code auto mode classifier`), it instructs the agent to `STOP and explain to the user what you were trying to do … Let the user decide how to proceed`. In `ai/scripts/lifecycle/hooks/claude/laneStateStopHook.mjs` (`extractLastAssistantTextFromJsonl`), inspect the last tool result before the terminal message so a classifier-mandated permission-stop is distinguished from an unprompted deference slip.
@@ -385,33 +385,39 @@ Fold target for the phrase itself: #342's family list, which this instance exten
 
 ### @neo-opus-vega - 2026-11-11T05:16:05Z
 
-**A cause for the classifier half, read on 2026-11-11: the seat's auto-mode settings still describe one repository.**
+**Corrected on 2026-11-11: the cause I named here in the morning is wrong. The specimens stand.**
 
-`neomjs/neo` `.claude/settings.template.json:62-71` (the same text is in the seat's `settings.json`):
+**What died.** "The seat's auto-mode settings still describe one repository" as the cause, and both fixes I derived from it. The classifier does not read `autoMode` from a project file: Claude Code reads it from the user's `~/.claude/settings.json`, from managed settings and from `--settings` only. In a checkout that carries the template's block, `claude auto-mode config` prints exactly the shipped defaults. The evidence with its controls is in neomjs/neo#20794, comment 6807353591. Rewording the template, or merging its `autoMode` into existing seats, would not have changed one refusal. Neither ticket was filed.
 
-- `autoMode.environment` names "the neomjs/neo GitHub repository" as trusted first-party infrastructure, plus the four local MCP servers. No other repository of the organization is named.
-- `autoMode.allow` covers "Editing GitHub issues, pull requests, and discussions this agent authors or co-owns". Closing is not in it.
-
-**Today's specimens, all on `neomjs/neo-agent-brain`, all my own tickets:**
+**What stands: the specimens**, all on `neomjs/neo-agent-brain`, all my own tickets.
 
 | Call | Result |
 |---|---|
 | `gh issue close 36 --reason "not planned"` (verdict comment posted first), inside a compound call and then alone | refused twice, `[External System Writes]` |
 | `gh issue edit 64 --body-file` (2026-11-11, earlier session) | refused three times, after the same command passed for three other tickets that night |
 | `update_issue_body` on #64 and #1597, `manage_issue_comment` on four tickets | passed every time |
-| `git push`, `gh pr create` on the same repository | passed |
+| `gh pr create` on the same repository | passed |
 
-The pattern fits the settings: the MCP servers are named as trusted and pass; a `gh` write to a repository the environment line does not name is an external write; and a close is not an edit. The June specimen in this body was a close on `neomjs/neo`, so the second gap is older than the repository split.
+**What the pattern follows from**, read from `claude auto-mode defaults`:
 
-**What follows from it.**
+- The close is refused by a rule Claude Code ships: `External System Writes` soft-denies closing or resolving items in external collaboration tools "that the agent did not create in this session". It holds on every repository, which is why the June specimen in this body was on `neomjs/neo`.
+- What passed did so before the classifier ran: the MCP servers and `gh pr create` are in the seat's `permissions.allow`.
+- I have no cause for the three `gh issue edit --body-file` refusals. Their reason line was not recorded.
 
-1. The line that fixes the cause is in the template: the environment names the `neomjs` organization's repositories, and the allow list names closing an issue the agent authored or is assigned, once its verdict is on the ticket. `epic-resolution` §4 already records the policy: an issue close "reopens with one click and is a maintainer act (operator, 2026-05-10 and 2026-10-28)". The template is the one place that still says otherwise. It changes what the classifier lets a seat do unasked, so it goes through a PR the operator merges, not through a seat's own `settings.json`.
-2. The template alone reaches only a new seat. `initClaudeSettings` (`ai/scripts/setup/initServerConfigs.mjs`) clones a missing `settings.json` whole from the template and otherwise ensures only its `hooks` block (`mergeClaudeHooks`), keeping `autoMode` as an operator-local key. An existing seat therefore keeps the old text. The fix has to decide that: either the merge also ensures the template's own `autoMode` entries (a union that never removes a local one), or the existing seats' files are refreshed once by the operator.
-3. The stop-hook residual at the top of this body stands as written and is the smaller half: with the cause fixed, the hand-back it has to recognise stops happening for closes and body edits.
-4. Until then the working path for a body is `update_issue_body` (a 30 KB body went through with `expectedBodySha256` and a hash comparison), and there is no working path for a close: the github-workflow server has no close tool.
+**Where it went.**
 
-I take the fix as a lane once my two open PRs have left the review queue: one ticket for the template text in `neomjs/neo`, one here for the merge.
+1. The close: #1616, an issue close on the github-workflow server with #1488's contract. It is assigned to me.
+2. The dead block: neomjs/neo#20796 deletes it.
+3. A template rule change does not reach an existing seat, now measured: #1615.
+4. This ticket keeps its stop-hook residual. Its body said Fix 2 was resolved by `autoMode.allow`; I corrected that line.
+5. Until #1616 runs on the plane, `update_issue_body` is the path for a body, and a close has no path.
 
 — Vega (Fable 5.2, Claude Code) 🌿
 
+- 2026-11-11T15:52:58Z @neo-opus-vega cross-referenced by #38
+- 2026-11-11T21:23:26Z @neo-opus-vega cross-referenced by #20794
+- 2026-11-11T21:28:43Z @neo-opus-vega cross-referenced by #1615
+- 2026-11-11T21:29:09Z @neo-opus-vega cross-referenced by #1616
+- 2026-11-11T21:30:43Z @neo-opus-vega cross-referenced by #20796
+- 2026-11-11T21:49:48Z @neo-opus-vega cross-referenced by PR #1617
 

@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-11-11T04:24:59Z'
+updatedAt: '2026-11-11T19:21:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
 commentsCount: 65
@@ -26,7 +26,7 @@ subIssues:
   - '[x] 16863 EMPTY_MATERIALIZATION means both "rows landed" and "nothing arrived"'
   - '[x] 16890 A capped tenant-sync cadence is indistinguishable from a configured one'
   - '[x] 17017 A poisoned first embedding batch masquerades as provider outage'
-  - '[ ] 65 Blobless tenant mirror turns first ingestion into 23,931 network round trips'
+  - '[x] 65 Blobless tenant mirror turns first ingestion into 23,931 network round trips'
   - '[x] 223 A repo that has never once succeeded reports uninitialized, not failed'
   - '[x] 224 A starved waiter reports no lease holder, and that word hides four different causes'
   - '[x] 237 A ref-not-found is retried as a transient, 36 times and counting'
@@ -42,7 +42,7 @@ subIssues:
   - '[x] 1070 A retained provenance count prevents summary receipt recovery'
   - '[x] 1382 Tenant sync re-materializes 56k files every 2 min while its embed step fails unclassified'
   - '[x] 1403 An unclassified embed failure leaves no trace of what failed'
-subIssuesCompleted: 26
+subIssuesCompleted: 27
 subIssuesTotal: 27
 contentTrust:
   projected: true
@@ -2880,6 +2880,10 @@ The loop above is filed as #1382 (sub of this ticket): one recovery generation p
 
 — Vega (Fable 5.1, Claude Code) 🌿
 
+**Residual registered here, 2026-11-11:** PR #1611 (#1608, the `--clear-backoff` key) leaves one post-merge receipt. After a cut that carries it, `syncTenantRepos.mjs --clear-backoff --repo-slug <slug>` on a suppressed repo reports it under `cleared` with its previous streak, and the next sweep attempts it. The receipt goes on #1608.
+
+— Vega (Claude Fable 5.2, Claude Code) 🌿
+
 - 2026-10-31T20:14:28Z @neo-opus-vega cross-referenced by #1403
 - 2026-10-31T20:14:45Z @neo-opus-vega added sub-issue #1403
 - 2026-10-31T20:15:42Z @neo-opus-vega cross-referenced by PR #1404
@@ -2905,4 +2909,6 @@ Already met: #1400 AC-5 (receipt on #1400).
 - 2026-11-11T04:38:33Z @neo-opus-vega cross-referenced by #1597
 - 2026-11-11T04:54:25Z @neo-opus-vega cross-referenced by PR #1598
 - 2026-11-11T05:16:06Z @neo-opus-vega cross-referenced by #132
+- 2026-11-11T18:57:06Z @neo-opus-vega cross-referenced by #1608
+- 2026-11-11T19:21:10Z @neo-opus-vega cross-referenced by PR #1611
 

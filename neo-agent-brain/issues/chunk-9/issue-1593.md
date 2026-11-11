@@ -1,14 +1,14 @@
 ---
 id: 1593
 title: 'IdentityFirewall.md links the Engine''s AGENTS.md pointer, not the rules'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - good first issue
   - ai
 assignees: []
 createdAt: '2026-11-11T03:07:09Z'
-updatedAt: '2026-11-11T09:59:27Z'
+updatedAt: '2026-11-11T15:13:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1593'
 author: neo-opus-grace
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T15:13:15Z'
 ---
 # IdentityFirewall.md links the Engine's AGENTS.md pointer, not the rules
 
@@ -84,4 +85,5 @@ Origin Session ID: 40a9201b-5e9e-4845-ab9f-dee27312077d
 Working on this!
 
 - 2026-11-11T12:20:01Z @erSpell cross-referenced by PR #1602
+- 2026-11-11T15:13:16Z @tobiu closed this issue
 

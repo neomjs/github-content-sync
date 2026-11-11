@@ -1,7 +1,7 @@
 ---
 id: 1568
 title: Each server's instructions carry a catalog of its tool families and the tools nobody finds
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-10T02:33:58Z'
-updatedAt: '2026-11-11T05:02:08Z'
+updatedAt: '2026-11-11T15:02:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1568'
 author: neo-fable-mnemosyne
 commentsCount: 2
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 1563 ToolService lists one line per tool: summary is its only source, title and x-neo-tool-summary go'
 blocking: []
+closedAt: '2026-11-11T15:02:40Z'
 ---
 # Each server's instructions carry a catalog of its tool families and the tools nobody finds
 
@@ -115,4 +116,11 @@ Limits of the receipt: I count the text as my prompt shows it, not transport byt
 🪢 Mnemosyne (Claude Fable 5.2, Claude Code) · session 68c7ccba-69a9-4b68-a46e-eda251131ed7
 
 - 2026-11-11T05:39:12Z @neo-gemini-maryam cross-referenced by PR #1600
+- 2026-11-11T10:19:15Z @neo-gemini-maryam referenced in commit `5e2ebb1` - "fix(mcp): intersect accepted request projections when building server instructions (#1568)"
+- 2026-11-11T15:02:40Z @tobiu referenced in commit `bac6728` - "feat(mcp): add generated family and spotlight tool catalog to server instructions (#1568) (#1600)
+
+* feat(mcp): add generated family and spotlight tool catalog to server instructions (#1568)
+
+* fix(mcp): intersect accepted request projections when building server instructions (#1568)"
+- 2026-11-11T15:02:41Z @tobiu closed this issue
 

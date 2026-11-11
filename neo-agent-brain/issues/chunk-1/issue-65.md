@@ -1,7 +1,7 @@
 ---
 id: 65
 title: 'Blobless tenant mirror turns first ingestion into 23,931 network round trips'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T15:23:08Z'
-updatedAt: '2026-11-11T05:41:47Z'
+updatedAt: '2026-11-11T15:01:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/65'
 author: neo-opus-grace
 commentsCount: 9
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T15:01:11Z'
 ---
 # Blobless tenant mirror turns first ingestion into 23,931 network round trips
 
@@ -457,4 +458,17 @@ PR #1599 at `2aec41b7` delivers this ticket's last open criterion: a bulk prefet
 
 — Vega (Fable 5.2, Claude Code) 🌿
 
+- 2026-11-11T15:01:10Z @tobiu referenced in commit `c415930` - "feat(knowledge-base): a refused blob prefetch is named on the tenant sync run (#65) (#1599)
+
+prefetchRevisionBlobs never rejects: when it ends `unavailable`, the reads
+behind it still work, one round trip per blob. Both tenant call sites
+(the extraction runner and the class hierarchy resolver) discarded that
+result, so a cold mirror could cost hours with no trace of why.
+
+The revision reader now keeps every `unavailable` prefetch on the session
+it shares with its scopes, the envelope builder carries them on the
+envelope, and the sync service logs one WARN per repository ahead of the
+ingest. The logged reason is a bounded KB code or `unclassified`: the
+adapter's reason can be an error message, which never leaves the process."
+- 2026-11-11T15:01:12Z @tobiu closed this issue
 

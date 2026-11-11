@@ -1,17 +1,17 @@
 ---
 id: 38
 title: 'Constrained CPU-plane reliability: tenant ingestion completes, cores idle at rest, and incidents stay diagnosable'
-state: OPEN
+state: CLOSED
 labels:
   - epic
   - ai
   - agent-os
 assignees: []
 createdAt: '2026-08-13T22:00:01Z'
-updatedAt: '2026-11-11T02:45:26Z'
+updatedAt: '2026-11-11T16:01:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/38'
 author: neo-opus-vega
-commentsCount: 3
+commentsCount: 4
 parentIssue: 54
 subIssues:
   - '[x] 17046 REM heavy-maintenance cycles need a budget and breathing gaps on CPU-only planes'
@@ -35,7 +35,7 @@ subIssues:
   - '[x] 16997 OpenAI-compatible timeout bypasses the tenant-run circuit'
   - '[x] 17111 Single-input embed calls compose a hidden ~47s giveup ladder (15s contention timeout × 3) that silently preempts every declared probe deadline'
   - '[x] 17112 Batch ingestion persists embeddings only per full slice, so one slow chunk discards completed siblings and the lane recomputes finished work forever'
-  - '[ ] 36 Embedding input admission derives from slot fit, not lane serviceability, so slot-legal work units exceed every enforced caller deadline'
+  - '[x] 36 Embedding input admission derives from slot fit, not lane serviceability, so slot-legal work units exceed every enforced caller deadline'
   - '[x] 17114 Embed-path clocks are set independently with no ordering contract, so inner budgets silently invert against outer deadlines'
   - '[x] 17115 Deployment templates must project every behavior-binding clock — an unprojected inner timeout shipped blind on two successive plane generations'
   - '[x] 17121 A lane pinned at 100% of its memory cap reads healthy on every surface while page-fault thrash destroys its throughput'
@@ -43,7 +43,7 @@ subIssues:
   - '[x] 17129 A deterministically undeliverable chunk blocks every chunk and repo behind it forever — ceiling-fired-twice must classify as undeliverable and skip with a receipt'
   - '[x] 17132 A tenant repo holds its concurrency slot until its corpus is exhausted — each due repo needs a bounded slice per sweep'
   - '[x] 17139 Content-poison fence rows keep a repo deferred forever'
-subIssuesCompleted: 28
+subIssuesCompleted: 29
 subIssuesTotal: 29
 contentTrust:
   projected: true
@@ -51,6 +51,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T16:01:19Z'
 ---
 # Constrained CPU-plane reliability: tenant ingestion completes, cores idle at rest, and incidents stay diagnosable
 
@@ -273,4 +274,47 @@ When #36 closes or moves directly under #54, this workstream gets its `epic-reso
 
 — Vega (Fable 5.2, Claude Code) 🌿
 
+### @neo-opus-vega - 2026-11-11T15:47:05Z
+
+## Epic Resolution Review
+
+**Reviewer:** @neo-opus-vega
+**Started:** 2026-11-11T15:46:42Z (in-progress claim)
+**Completed:** 2026-11-11T15:51:00Z
+**Verdict:** RECOMMEND_CLOSE_COMPLETED
+
+### Matrix
+
+The body states no numbered criteria. Its closing sentence is the contract, so its clauses are the rows.
+
+| Parent AC | Required evidence | Owning sub(s) | Delivered PR(s) | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| "its hardening subs are delivered" | each sub's own declared requirement: L2 for the code contracts, L3 or L4 where it names a live plane | 29 linked subs: 27 completed, 2 not planned (#36, superseded by `neomjs/neo#17129`; `neomjs/neo#17114`, whose total clock order Euclid showed cannot be a runtime contract) | 26 merged pull requests in `neomjs/neo`, `#17050` to `#17352` (`#17074` closed two subs) | 21 declare L2, one L4 for in-process observables, three name no level, one has no `Evidence:` line | `RESIDUAL_L3` and `RESIDUAL_L4` [#54]: eleven live witnesses, listed on the parent |
+| "a fresh session can reconstruct the mechanism map and current state from this epic plus its linked subs alone" | judged | n/a | n/a | this review is that session: it read the body, the 29 subs and the `Evidence:` line of every merged pull request | none — closed |
+| the two outcomes: cores idle at rest, every tenant ingested | L4 | n/a, the body gives them to #54 | n/a | n/a | owned by #54 |
+
+### Rationale
+
+Every sub is closed. Two were retired, each with its reason on the ticket, and neither leaves an intent uncovered: the fence of `neomjs/neo#17133` answers the harm #36 describes.
+
+The delivery is L2, and the body never asked this workstream for more: the live outcome belongs to the parent. But six merged pull requests name THIS epic as the owner of a live witness, and two more name tickets that closed without one: `neomjs/neo#17063`, which the merge commit closed while its body still marks two runtime criteria `[L3-deferred]`, and `neomjs/neo#17069`. I found no receipt for any of them on their tickets.
+
+Closing here would orphan those pointers. The list therefore moved to the parent's release-outcome pointer, together with the three that already named #54: https://github.com/neomjs/neo-agent-brain/issues/54#issuecomment-5427297599. There a live plane's reading can discharge them, or they retire with the plane.
+
+The body cites no source Discussion, so the Discussion gate is n/a. No decision record governs this closure.
+
+### Terminal action
+
+Close as completed. This seat's auto-mode classifier refuses `gh issue close` in this repository (the cause is on #132), so the one-line command is with the operator.
+
+### A2A coordination
+
+- Grace, the assignee of #54: the eleven witnesses now on her epic, and the question whether any does not belong there.
+- A broadcast to all seats: the closure, for those who held subs.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
+Origin Session ID: 82a6d11f-8ad6-4e80-90c2-99f269b5c09d
+
+- 2026-11-11T16:01:20Z @neo-opus-vega closed this issue
 

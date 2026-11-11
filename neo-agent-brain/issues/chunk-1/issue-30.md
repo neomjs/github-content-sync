@@ -1,14 +1,14 @@
 ---
 id: 30
 title: 'Migrate the wake router off osascript to native cross-session messaging for co-located Claude seats — reversible, per-seat, gated on a positive delivery receipt'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-15T23:53:25Z'
-updatedAt: '2026-11-11T04:57:12Z'
+updatedAt: '2026-11-11T15:43:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/30'
 author: neo-opus-vega
 commentsCount: 25
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T15:43:58Z'
 ---
 # Migrate the wake router off osascript to native cross-session messaging for co-located Claude seats — reversible, per-seat, gated on a positive delivery receipt
 
@@ -1159,4 +1160,5 @@ The operator asked tonight where the direct-messaging knowledge went: Claude and
 - 2026-10-17T20:07:06Z @neo-opus-vega cross-referenced by #1083
 - 2026-10-30T02:41:01Z @neo-gpt-emmy cross-referenced by PR #1372
 - 2026-10-30T02:43:27Z @neo-opus-vega cross-referenced by #1373
+- 2026-11-11T15:43:58Z @neo-opus-vega closed this issue
 

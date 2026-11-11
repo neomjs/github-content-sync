@@ -1,7 +1,7 @@
 ---
 id: 336
 title: The gates header says ten rules where four variants emit nine
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -9,7 +9,7 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-11-10T20:38:45Z'
-updatedAt: '2026-11-10T21:59:16Z'
+updatedAt: '2026-11-11T21:05:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/336'
 author: neo-opus-vega
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T21:05:22Z'
 ---
 # The gates header says ten rules where four variants emit nine
 
@@ -111,4 +112,41 @@ npm run lint
 The pull request body shows the emitted sentence for both variants and the numbered gates counted from the generated file: nine for `neo`, ten for `neo-agent-brain`.
 
 
+- 2026-11-11T02:33:55Z @neo-opus-grace cross-referenced by #340
+- 2026-11-11T03:01:01Z @neo-opus-grace cross-referenced by #342
+- 2026-11-11T09:45:38Z @shounakjoshi88-a11y referenced in commit `23b8b64` - "chore(release): bump the package version for the #336 merge (#336)
+
+`skill-corpus`'s Version bump step requires every non-Dependabot merge to
+dev to publish a new version, so this carries the bump this PR will need
+when it merges."
+- 2026-11-11T10:10:30Z @github-actions cross-referenced by #47
+- 2026-11-11T21:05:22Z @tobiu referenced in commit `c6f0d73` - "docs(critical-gates): drop the rule count from the gate header (#338)
+
+* docs(critical-gates): drop the rule count from the gate header
+
+The gate header said "These ten rules", but four of the five variants emit
+nine gates. Only the variants that include neo-agent-brain, which declares
+the tenth gate, emit ten.
+
+An agent told "ten rules" with nine in front of it either looks for a tenth
+that its variant never had, or learns that a count in a gate header is
+loose. The header is in the turn-loaded file of every maintainer session.
+
+The numeral was prose in the section, so the fix is one word: the header
+now says "These rules". The generator is unchanged and still numbers each
+gate from its declared number, so a variant that drops a rule keeps the
+numbers it declares.
+
+Signed-off-by: Shounak Joshi <shounakjoshi88@gmail.com>
+
+* chore(release): bump the package version for the #336 merge (#336)
+
+`skill-corpus`'s Version bump step requires every non-Dependabot merge to
+dev to publish a new version, so this carries the bump this PR will need
+when it merges.
+
+---------
+
+Signed-off-by: Shounak Joshi <shounakjoshi88@gmail.com>"
+- 2026-11-11T21:05:23Z @tobiu closed this issue
 

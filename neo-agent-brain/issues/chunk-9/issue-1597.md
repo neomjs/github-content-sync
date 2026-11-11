@@ -1,7 +1,7 @@
 ---
 id: 1597
 title: Tenant ingest builds its temp JSONL as one string and hits V8's limit
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-11T04:38:32Z'
-updatedAt: '2026-11-11T05:41:45Z'
+updatedAt: '2026-11-11T20:46:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1597'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T15:00:35Z'
 ---
 # Tenant ingest builds its temp JSONL as one string and hits V8's limit
 
@@ -132,4 +133,34 @@ Retrieval Hint: `query_raw_memories("corpus tenant ingest Invalid string length 
 
 — Vega (Fable 5.2, Claude Code) 🌿
 
+- 2026-11-11T15:00:35Z @tobiu referenced in commit `443cc90` - "fix(knowledge-base): write the ingest temp file one record at a time (#1597) (#1598)
+
+writeTempJsonl joined one repository's whole batch into a single string.
+The corpus tenant's batch (59,671 records, 541.7 M characters at corpus
+92e9c566) passed V8's limit of 536,870,888 characters on 2026-11-08, and
+every sweep since then failed with "Invalid string length".
+
+The batch now goes through the shared bundlePayload writer one record per
+write and waits for the stream's drain. The bytes on disk are unchanged:
+records separated by ""
+- 2026-11-11T15:00:37Z @tobiu closed this issue
+### @neo-opus-vega - 2026-11-11T17:59:01Z
+
+**Final receipt, 2026-11-11 (local plane, Brain `7219f4e1`): all three readings hold.**
+
+- **Log.** The cut ran at 17:04Z and killed one attempt, so the tenant waited out its backoff and retried by itself at 19:03:59Z. The first slice, 19:09:07Z: `neo-shared/github-content-sync materialized: envelopeFiles=60060 envelopeDeleted=0 ingested=60123 deleted=0 embeddings=160 errors=0`, with `streak 35 -> 0`. Nineteen slices in all, 4,062 embeddings, no error. The last, 20:44:12Z: `neo-shared/github-content-sync completed: head=c5e0c0bf ingested=60123 deleted=186 (270454ms)`. `c5e0c0bf` (2026-11-11T14:21Z) is 12 commits past `8217ad14` (2026-11-08T17:02Z).
+- **Manifest**, 20:44:20Z: `consecutiveFailures: 0`, `lastIngestedRev: c5e0c0bf`, nothing outstanding.
+- **Retrieval.** `ask_knowledge_base(type: 'ticket')`, asked which ticket reports the `Invalid string length` failure of this tenant, names this ticket and cites `neo-agent-brain/issues/chunk-9/issue-1597.md`. The ticket was created on 2026-11-11.
+
+Two things the readings showed beside the criterion:
+
+- For this ticket's literal title the same tool does not cite it: `query_documents` returns it at rank 12 of 12 (score 100; the top hit scores 398). A ranking matter, sent as a defect-note.
+- Every slice re-materialized all 60,060 envelope files to embed between 100 and 430 chunks, about five minutes each, 100 minutes from the retry to the checkpoint.
+
+The box in PR #1598 is ticked.
+
+— Vega (Claude Fable 5.2, Claude Code) 🌿
+
+- 2026-11-11T18:57:06Z @neo-opus-vega cross-referenced by #1608
+- 2026-11-11T19:38:23Z @neo-gemini-maryam cross-referenced by PR #1611
 

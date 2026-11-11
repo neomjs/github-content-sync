@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-08-08T14:33:01Z'
-updatedAt: '2026-09-06T12:06:54Z'
+updatedAt: '2026-11-11T15:52:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/54'
 author: neo-opus-grace
 commentsCount: 48
@@ -31,11 +31,11 @@ subIssues:
   - '[x] 16995 One repo timeout dispatches the next queued embed in the same sweep'
   - '[x] 17012 Provider residency repair can warm a 131K chat model into an active heavy-maintenance lane'
   - '[x] 17013 Long source lines can block tenant refresh on the event loop'
-  - '[ ] 38 Constrained CPU-plane reliability: tenant ingestion completes, cores idle at rest, and incidents stay diagnosable'
+  - '[x] 38 Constrained CPU-plane reliability: tenant ingestion completes, cores idle at rest, and incidents stay diagnosable'
   - '[x] 18 The recovery path demands a full-band probe that nothing produces'
   - '[ ] 48 Early Ollama abort can strand a four-core embedding runner'
   - '[ ] 55 A heap ceiling cannot be applied without recreating the container'
-subIssuesCompleted: 16
+subIssuesCompleted: 17
 subIssuesTotal: 19
 contentTrust:
   projected: true
@@ -3337,6 +3337,31 @@ That generation's verified mechanism map, corrections history, operational doctr
 No edits to this body (frozen); this comment is the release-outcome breadcrumb.
 
 — Vega (Claude Fable 5, Claude Code) 🌿
+
+---
+
+**Update 2026-11-11: that workstream is closed, and its live witnesses sit here now.**
+
+The workstream is #38 (filed as `neomjs/neo#17072`). Its closeout review is https://github.com/neomjs/neo-agent-brain/issues/38#issuecomment-6800347928: 27 of its 29 subs are merged and two were retired with their reasons. The delivery is L2. What it leaves unobserved on a live plane is listed here, because this epic owns the outcome there. I found no receipt for any of these on its ticket.
+
+Their pull request bodies already name this epic:
+- `neomjs/neo#17097`: live re-enable of the paused external plane's dream lane.
+- `neomjs/neo#17089`: an external-plane rollout witness (diagnostic reads stay available during an embedding outage).
+- `neomjs/neo#17091`: an external-plane dependency-restart witness (backup).
+
+Their pull request bodies name #38, which is closed now:
+- `neomjs/neo#17092`: live provider interleaving and a corpus-progress witness (bounded batch width).
+- `neomjs/neo#17093`: a live workload observation after deployment (admission aging).
+- `neomjs/neo#17078`, L3: a plane's snapshot that shows zero residual `executing` on an abandoned provider.
+- `neomjs/neo#17086`, L4: a restart under saturated load on an external plane.
+- `neomjs/neo#17122`, L4: canary settlement and durable ingestion on a constrained plane.
+- `neomjs/neo#17133`, L4: the undeliverable fence validated on a live plane.
+
+Their pull request bodies name a ticket that closed without the receipt:
+- `neomjs/neo#17074` → `neomjs/neo#17063`, L3: the probe survives sustained high CPU inside its timeout, and a corrupt or partial model is refused at boot. The ticket marks both `[L3-deferred — needs a docker-capable runner]`, and the merge commit closed it.
+- `neomjs/neo#17090` → `neomjs/neo#17069`, L3: a boot-time live-shape receipt from a deployed lane.
+
+— Vega (Fable 5.2, Claude Code) 🌿
 
 - 2026-08-13T22:54:17Z @neo-opus-vega cross-referenced by PR #17075
 - 2026-08-13T23:32:22Z @neo-opus-vega cross-referenced by #9

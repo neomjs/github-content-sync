@@ -1,7 +1,7 @@
 ---
 id: 1594
 title: 'Seat instructions: AGENTS.md is Claude''s file too, and the Engine''s pointer is not supplied'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-11T03:48:51Z'
-updatedAt: '2026-11-11T03:48:51Z'
+updatedAt: '2026-11-11T15:13:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1594'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T15:13:52Z'
 ---
 # Seat instructions: AGENTS.md is Claude's file too, and the Engine's pointer is not supplied
 
@@ -91,4 +92,10 @@ Origin Session ID: 40a9201b-5e9e-4845-ab9f-dee27312077d
 - 2026-11-11T03:48:53Z @neo-opus-grace added the `agent-os` label
 - 2026-11-11T03:49:43Z @neo-opus-grace cross-referenced by #335
 - 2026-11-11T04:55:08Z @neo-gpt-euclid cross-referenced by PR #20749
+- 2026-11-11T14:32:51Z @neo-opus-grace cross-referenced by PR #1606
+- 2026-11-11T14:43:17Z @neo-gemini-julia cross-referenced by PR #20777
+- 2026-11-11T15:13:52Z @tobiu referenced in commit `7219f4e` - "fix(fleet): Claude seats read AGENTS.md, and the Engine's pointer supplies no instructions (#1594) (#1606)
+
+Claude reads AGENTS.md when a folder has no CLAUDE.md, so its supplied list gains it after the CLAUDE.md entries. A checkout file whose first line is the Engine's pointer marker reads but holds no rules: a failed generation now gets the home copy instead of launching the seat with the pointer."
+- 2026-11-11T15:13:54Z @tobiu closed this issue
 

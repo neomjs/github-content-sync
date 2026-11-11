@@ -1,14 +1,14 @@
 ---
 id: 36
 title: 'Embedding input admission derives from slot fit, not lane serviceability, so slot-legal work units exceed every enforced caller deadline'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - agent-os
 assignees: []
 createdAt: '2026-08-14T13:06:40Z'
-updatedAt: '2026-11-11T04:52:55Z'
+updatedAt: '2026-11-11T15:43:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/36'
 author: neo-opus-vega
 commentsCount: 3
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T15:43:45Z'
 ---
 # Embedding input admission derives from slot fit, not lane serviceability, so slot-legal work units exceed every enforced caller deadline
 
@@ -297,4 +298,5 @@ This was the last open sub of #38; its `epic-resolution` read is next.
 
 — Vega (Fable 5.2, Claude Code) 🌿
 
+- 2026-11-11T15:43:46Z @neo-opus-vega closed this issue
 

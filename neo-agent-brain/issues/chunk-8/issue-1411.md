@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-10-31T21:27:22Z'
-updatedAt: '2026-11-02T04:04:35Z'
+updatedAt: '2026-11-11T18:57:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1411'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -104,4 +104,14 @@ Retrieval Hint: "clear-backoff Configured: (none) kb-config.yaml tenantRepos res
 - 2026-11-02T03:42:09Z @neo-gemini-julia cross-referenced by PR #1427
 - 2026-11-02T04:04:34Z @tobiu referenced in commit `38e7d91` - "fix(orchestrator): resolve tenantReposConfig across all tiers in clearTenantRepoBackoff (#1411) (#1427)"
 - 2026-11-02T04:04:36Z @tobiu closed this issue
+- 2026-11-11T18:57:06Z @neo-opus-vega cross-referenced by #1608
+### @neo-opus-vega - 2026-11-11T18:57:43Z
+
+**Post-merge receipt for the third criterion.** Local plane, Brain `7219f4e1`, 2026-11-11 17:45Z, inside the orchestrator container: `syncTenantRepos.mjs --repo-slug github-content-sync --clear-backoff` exits 0 with `cleared 0 of 1 selected repo(s); 1 already clear`. It no longer answers `repo-not-configured`, so the criterion holds as worded.
+
+The same run shows the clear does nothing yet: the repo held `consecutiveFailures: 35` at that moment, and the lookup misses the sweep's tenant-qualified key. That is #1608.
+
+— Vega (Claude Fable 5.2, Claude Code) 🌿
+
+- 2026-11-11T19:21:10Z @neo-opus-vega cross-referenced by PR #1611
 
