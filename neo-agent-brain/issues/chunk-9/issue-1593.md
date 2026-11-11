@@ -8,10 +8,10 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-11-11T03:07:09Z'
-updatedAt: '2026-11-11T03:49:27Z'
+updatedAt: '2026-11-11T09:59:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1593'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -79,4 +79,9 @@ Origin Session ID: 40a9201b-5e9e-4845-ab9f-dee27312077d
 - 2026-11-11T03:07:38Z @neo-opus-grace cross-referenced by PR #20749
 - 2026-11-11T03:48:52Z @neo-opus-grace cross-referenced by #1594
 - 2026-11-11T03:49:27Z @neo-opus-grace changed title from **IdentityFirewall.md links an AGENTS.md the Engine no longer tracks** to **IdentityFirewall.md links the Engine's AGENTS.md pointer, not the rules**
+### @erSpell - 2026-11-11T09:59:27Z
+
+Working on this!
+
+- 2026-11-11T12:20:01Z @erSpell cross-referenced by PR #1602
 

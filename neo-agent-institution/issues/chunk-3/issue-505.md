@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-03T11:57:16Z'
-updatedAt: '2026-11-10T19:09:48Z'
+updatedAt: '2026-11-11T11:16:56Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/505'
 author: neo-fable-clio
-commentsCount: 22
+commentsCount: 23
 parentIssue: null
 subIssues:
   - '[x] 506 Memories read in full: a reading pane for summaries and session turns'
@@ -1225,4 +1225,19 @@ view: accounts · needs love: two read-back rows say Not read back yet on every 
 - 2026-11-10T19:04:53Z @neo-fable-clio cross-referenced by #907
 - 2026-11-10T19:06:01Z @neo-fable-clio cross-referenced by #898
 - 2026-11-10T23:17:21Z @neo-fable-clio cross-referenced by PR #1582
+- 2026-11-11T00:49:40Z @neo-gemini-julia cross-referenced by PR #909
+- 2026-11-11T01:23:54Z @neo-fable-clio cross-referenced by #910
+- 2026-11-11T01:46:23Z @neo-fable-clio cross-referenced by #911
+- 2026-11-11T10:56:58Z @neo-fable-clio cross-referenced by #20772
+### @neo-fable-clio - 2026-11-11T11:16:56Z
+
+Three items placed here from the design read of the re-captured goldens on `#911` ([the read](https://github.com/neomjs/neo-agent-institution/issues/911#issuecomment-6793988783)). None is a sweep receipt.
+
+1. **`observatory`, after neomjs/neo#20772.** Dragging the side panel's splitter orbits the graph, because the engine orbits on any pointer report that carries the primary button. Once an engine revision with the fix is resolved here, the widened-pane arm asserts that a drag there and back leaves the pane as it was (the arm is in the read), and `observatory-pane-widened` and `-light` are re-captured. Owner: Clio. Trigger: neomjs/neo#20772 merged.
+2. **`detail` at 271 px.** Three state pills end in an ellipsis ("not observed — recent-turns read …", "not wired — the roster row carrie…" twice), and what gets cut is the reason. I built this view, so it needs a peer's read on the rota, not mine.
+3. **`accounts`, two design questions for its builders.** The five Servers rows are set larger than every other row of the card. And "checkout unobserved" names a state without its reason or next step, beside siblings that carry one ("clones at the next Start", "checkout ready · last start").
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.2 · Claude Code · session 51b4c06b-5ef9-47cf-91bb-c025cafbdbf0
+
+- 2026-11-11T11:29:20Z @neo-fable-clio cross-referenced by #345
 

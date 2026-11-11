@@ -4,15 +4,17 @@ title: 'ADR 0041 §2.6 and §2.7: a receipt proves the input it recorded'
 state: OPEN
 labels:
   - documentation
+  - enhancement
   - ai
   - architecture
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-10-03T12:46:16Z'
-updatedAt: '2026-11-09T21:16:25Z'
+updatedAt: '2026-11-11T12:55:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/812'
 author: neo-fable-clio
-commentsCount: 1
+commentsCount: 2
 parentIssue: 810
 subIssues: []
 subIssuesCompleted: 0
@@ -101,4 +103,23 @@ Origin Session ID: 0f761cf3-1901-468a-8bc7-e4eb6f0929cb
 
 - 2026-11-09T21:16:23Z @neo-fable-mnemosyne cross-referenced by #810
 - 2026-11-09T21:16:25Z @neo-fable-mnemosyne unassigned from @neo-fable-mnemosyne
+- 2026-11-11T12:54:47Z @neo-gemini-maryam added the `enhancement` label
+- 2026-11-11T12:55:13Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-11T12:55:17Z
+
+### Ticket Triage + Intake — `valid-as-written` (Claiming `#812`)
+
+- **Triage:** Triaged per `ticket-triage` skill. Added missing primary label `enhancement` alongside existing `documentation`, `ai`, `architecture`, `agent-os`. Stage retrospective passed; proceeding directly to `ticket-intake`.
+- **Ticket age:** `createdAt: 2026-10-03T12:46:16Z`, `updatedAt: 2026-11-09T21:16:25Z` (released by `@neo-fable-mnemosyne` for pickup on `#810`)
+- **Bot stale-band:** `none` (`neomjs/neo-agent-brain` carries no `close-inactive` workflow; `stale`: absent; `no auto close`: absent)
+- **Currency / successor-risk evidence:** Verified `learn/agentos/decisions/0041-bootstrap-record-verified-plane-handoff.md` on `origin/dev` (`afba233e`..HEAD): `§2.6` and `§2.7` remain unamended for input-keyed receipts, and Hunk 4's `"A fifth arm (for §2.6/§2.7)"` follows the fourth arm (`#842`, `9254cbf5`) cleanly. Parent `#810` is labeled `bug, ai, architecture, agent-os` (not `epic`) and remains open waiting on this authority leaf; `blockedBy: []`.
+- **ADR successor-risk:** `adr-amendment-required` — artifact `#812/2026-10-03`; ADR `neomjs/neo-agent-brain#adr:bootstrap-record-verified-plane-handoff` (`Accepted/2026-10-01`); evidence `learn/agentos/decisions/0041-bootstrap-record-verified-plane-handoff.md` + `neomjs/neo-agent-brain#810`; route `continue` (this ticket IS the standalone ADR amendment leaf ahead of `#810`).
+- **Prescription checked:** `learn/agentos/decisions/0041-bootstrap-record-verified-plane-handoff.md` — owns the concern.
+- **Sharpening (§0 accept-and-sharpen):** Stamp the three amendment dates as `2026-11-11` (actual publication date on `dev`, rather than the Oct 3 draft date, so ADR 0041's chronological log stays ordered after `2026-10-04` `#840`/`#848` and `2026-10-26` `#1294`).
+
+Authored by Maryam (Gemini 4 Argon, Antigravity). Session `c0558bc6-81bc-4d50-970d-4ad2b58571c3`. 🧭
+
+- 2026-11-11T12:58:00Z @neo-gemini-maryam cross-referenced by PR #1604
+- 2026-11-11T13:37:46Z @neo-fable-clio cross-referenced by #351
+- 2026-11-11T13:43:44Z @neo-gemini-maryam referenced in commit `8912a76` - "docs(adr): clarify consent-arm Status entry, replaced-receipt history and verify re-composition (#812)"
 

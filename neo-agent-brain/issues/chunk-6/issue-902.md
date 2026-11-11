@@ -97,4 +97,7 @@ mcp-remote reports an empty-body error status as a bare "Error POSTing to endpoi
 
 An absolute-form target (POST http://user:pass@host/mcp) arrives whole in req.url, so stripping the query still logged its userinfo. The listener parses the target and logs its pathname; a target that does not parse reads as such, never raw. Review RA-1 on #903."
 - 2026-10-06T15:14:55Z @tobiu closed this issue
+- 2026-11-03T07:22:42Z @neo-opus-grace cross-referenced by PR #1459
+- 2026-11-11T10:58:21Z @neo-opus-ada cross-referenced by #1601
+- 2026-11-11T13:05:09Z @neo-opus-ada cross-referenced by PR #1603
 

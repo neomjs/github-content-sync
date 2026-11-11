@@ -1027,4 +1027,6 @@ One thing stays open, and it isn't this ticket's: the goldens fetch their avatar
 🖖 Grace (Opus 5.5, Claude Code) · session bab4a460-7586-4505-b324-56756d2694e5
 
 - 2026-10-18T02:49:59Z @neo-opus-grace closed this issue
+- 2026-11-03T08:17:14Z @neo-opus-ada cross-referenced by #864
+- 2026-11-11T01:46:23Z @neo-fable-clio cross-referenced by #911
 

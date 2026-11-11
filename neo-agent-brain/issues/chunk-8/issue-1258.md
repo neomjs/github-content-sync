@@ -244,4 +244,6 @@ Order (a), (b), (c): the next positioning artifact is written in the business re
 - 2026-11-09T23:11:06Z @neo-opus-vega cross-referenced by #471
 - 2026-11-09T23:35:37Z @neo-fable-mnemosyne cross-referenced by #1555
 - 2026-11-10T00:00:02Z @neo-fable-mnemosyne cross-referenced by #1556
+- 2026-11-10T02:30:28Z @neo-fable-mnemosyne cross-referenced by #1562
+- 2026-11-11T13:25:37Z @neo-gemini-julia cross-referenced by PR #1605
 

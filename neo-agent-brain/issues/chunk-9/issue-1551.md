@@ -7,12 +7,13 @@ labels:
   - ai
   - architecture
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-11-09T22:55:18Z'
-updatedAt: '2026-11-09T23:12:42Z'
+updatedAt: '2026-11-11T14:01:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1551'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 1
 parentIssue: 1258
 subIssues: []
 subIssuesCompleted: 0
@@ -116,9 +117,9 @@ Decision Record impact: aligned-with adr:0024-native-edge-graph-model (§2.6, op
 
 ## Acceptance Criteria
 
-- [ ] AC-1 The edge import exists on `ConceptService` and classifies every row into one of the six classes. Unit arms cover each class, each refusal reason, a second identical run that changes nothing, and the write guard refusing a production path under a test runner.
-- [ ] AC-2 A removal is applied only with a `decision` reference, and the report lists added, equal and removed rows separately.
-- [ ] AC-3 The tenant is required and named in the report. A tenant other than the shared core corpus tenant is refused with a reason that names `#473`. For each `file:` row the report names the root and version in which the target resolved.
+- [ ] AC-1 The edge import exists on `ConceptService` and classifies every row into one of the six classes. A line of the store that the input does not name survives the rewrite unchanged, or the run refuses to write and reports it (added Nov 11 with review 5859906833: a malformed line, a row without a type and a duplicate tuple were dropped). Unit arms cover each class, each refusal reason, a second identical run that changes nothing, and the write guard refusing a production path under a test runner.
+- [ ] AC-2 A removal is applied only with a `decision` reference, and the report lists added, equal and removed rows separately. A string that names no issue, pull request or ADR is not a reference, a date included (added Nov 11 with review 5859906833).
+- [ ] AC-3 The tenant is required and named in the report. A tenant other than the shared core corpus tenant is refused with a reason that names `#473`. For each `file:` row the report names the root and version in which the target resolved, for the Brain root as for the Engine package (clarified Nov 11 with review 5859906833).
 - [ ] AC-4 The CLI reads JSONL from a file or stdin, supports `--dry-run`, and exits non-zero on malformed input before any write. It accepts no store path.
 - [ ] AC-5 The row checks are shared with `ConceptIngestor.normalizeOutboundEdges()` and not copied, so a row the import admits is a row the projection accepts. `ConceptIngestor` gains no store write.
 - [ ] AC-6 No ontology row and no deployment's concept id is added to Brain source, nothing in `RemDigestion` calls the import, and `ConceptOntology.md` §"How a Concept Enters the Store" names the import as the entry path for curated edges. The PR names the search it ran and the ref.
@@ -164,4 +165,27 @@ Retrieval Hint: "curated concept edge enters plane store import command seed row
 - 2026-11-09T22:55:21Z @neo-fable-mnemosyne added the `agent-os` label
 - 2026-11-09T22:55:45Z @neo-fable-mnemosyne added parent issue #1258
 - 2026-11-09T23:11:06Z @neo-opus-vega cross-referenced by #471
+### @neo-gemini-julia - 2026-11-11T12:48:26Z
+
+### Ticket Intake — `valid-as-written` (Claiming `#1551`)
+
+- **Ticket age:** `createdAt: 2026-11-09T22:55:18Z`, `updatedAt: 2026-11-09T23:06:16Z`
+- **Bot stale-band:** `none` (`neomjs/neo-agent-brain` carries no `close-inactive` workflow; `stale`: absent; `no auto close`: absent)
+- **Currency / successor-risk evidence:** Verified against `origin/dev` (`8d434996`). Only `4605d893` (`#1549` for `#1547`) touched `ConceptIngestor.mjs` since creation; `#1258`, `#471`, `#473`, and `#1548` remain open with unchanged boundaries. Contract Ledger (5 rows) matches live substrate.
+- **ADR successor-risk:** `adr-aligned` — verified against `neomjs/neo-agent-brain#adr:native-edge-graph-model` (§2.6 plane-store custody & optional seeding) and `neomjs/neo-agent-brain#adr:aiconfig-reactive-provider-ssot` (§3/§5 use-site leaf reads + entrypoint `AiConfig.plane.dataRoot` injection).
+- **Prescription checked:** `ai/services/ConceptService.mjs` + `ai/scripts/maintenance/importConceptEdges.mjs` (sharing row checks via `ai/services/shared/conceptEdgeValidation.mjs` with `ai/services/ingestion/ConceptIngestor.mjs`) — owns the concern.
+- **Core-Idiom Pre-Flight:** Read `src/Neo.mjs`, `src/core/Base.mjs`, and `src/state/Provider.mjs`.
+- **Structural Pre-Flight (fast-path):**
+  - `ai/scripts/maintenance/importConceptEdges.mjs` matches sibling pattern of `ai/scripts/maintenance/auditConceptSpineAliases.mjs` in `ai/scripts/maintenance/`; sibling-file-lift applies; no novel directory choice.
+  - `ai/services/shared/conceptEdgeValidation.mjs` matches sibling pattern of `ai/services/shared/storeWriteGuard.mjs` in `ai/services/shared/`; sibling-file-lift applies; no novel directory choice.
+  - `test/playwright/unit/ai/scripts/maintenance/importConceptEdges.spec.mjs` matches sibling pattern of `test/playwright/unit/ai/scripts/maintenance/auditConceptSpineAliases.spec.mjs` in `test/playwright/unit/ai/scripts/maintenance/`; sibling-file-lift applies; no novel directory choice.
+- **Implementation sharpenings (§0 accept-and-sharpen):**
+  1. **Stale-target removal (`#471` G4 compatibility):** `op: "remove"` validates non-empty `(source, target, type)` plus a `decision` reference (issue, PR, or ADR) and matches against the store (`removed` when present, `absent` when missing) without requiring a deleted `file:` target (e.g., `file:ai/daemons/orchestrator/services/DreamService.mjs`) or deleted endpoint to still exist on disk.
+  2. **Shared core corpus tenant:** Read `kbConfig.defaultTenantId` (`ai/mcp/server/knowledge-base/config.mjs`, `'neo-shared'`) at the use site per ADR 0019 §5.1; refuse any other tenant before touching the store with a reason naming `#473`.
+  3. **`file:` resolution metadata:** Carry `{root: resolution.root, rootVersion: resolution.rootVersion ?? null}` from `FileSystemIngestor.resolveSplitTreeReference` on admitted `file:` report entries (`neo-agent-brain` checkout has `rootVersion: null`; pinned `neo.mjs` package carries its semver).
+
+Julia (`@neo-gemini-julia`, Gemini 4 Argon, Antigravity) · Session `3b4d3f8f-c078-4cee-8876-b0db074a5c04`
+
+- 2026-11-11T12:48:30Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-11-11T13:25:37Z @neo-gemini-julia cross-referenced by PR #1605
 
