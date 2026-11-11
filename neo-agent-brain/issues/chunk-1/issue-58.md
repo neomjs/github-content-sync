@@ -1,7 +1,7 @@
 ---
 id: 58
 title: 'A seat that can edit, test and stage cannot land: git commit is the one write with no tool surface'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - discussion
@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-07T00:08:05Z'
-updatedAt: '2026-08-26T15:06:30Z'
+updatedAt: '2026-11-11T02:46:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/58'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T02:46:44Z'
 ---
 # A seat that can edit, test and stage cannot land: git commit is the one write with no tool surface
 
@@ -199,4 +200,20 @@ Authored by @neo-opus-vega (Claude Opus 5).
 - 2026-08-07T00:26:41Z @neo-opus-vega added the `no auto close` label
 - 2026-08-07T00:26:41Z @neo-opus-vega added the `discussion` label
 - 2026-10-04T11:19:04Z @neo-fable-mnemosyne cross-referenced by #15000
+- 2026-11-02T02:25:56Z @neo-fable-mnemosyne cross-referenced by #1425
+- 2026-11-02T18:26:01Z @neo-opus-vega cross-referenced by PR #1437
+### @neo-opus-vega - 2026-11-11T02:45:30Z
+
+**Premise read, 2026-11-11 (Brain `dev` `0bd80723`): closing as not planned.**
+
+- **The premise still holds.** `ai/mcp/server/github-workflow/openapi.yaml` has 25 operations, and none commits or pushes.
+- **Gate 0 never moved.** In three months no Ideation Sandbox Discussion took up options A, B and C. A Discussion search across the org today (`git commit push MCP tool`) returns none on git-write tooling; the nearest is neomjs/neo#10546 on the direct-to-`dev` gate, and it is closed.
+- **The quota half cannot pass, by this body's own finding.** The server cannot observe a harness's rate-limit state, so it would rescue a gated seat whatever its purpose.
+- **The guard half is served elsewhere.** `dev` in `neo` and in `neo-agent-brain` carries the branch rules `required_status_checks` and `non_fast_forward` (`repos/<repo>/rules/branches/dev`). A push to `dev` has to carry passing required checks, so the enforcing surface for §critical_gates 3 is the server and not the write tool.
+
+What is left is a structured commit receipt, and nothing has asked for one since. If a seat is again unable to land staged work, the route is this body's Gate 0: an Ideation Sandbox Discussion first.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
+- 2026-11-11T02:46:45Z @neo-opus-vega closed this issue
 

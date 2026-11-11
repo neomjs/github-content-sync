@@ -1,18 +1,18 @@
 ---
 id: 82
 title: Relationship-aware plan-delta receipt for off-plan ticket rate
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - model-experience
 assignees: []
 createdAt: '2026-07-31T04:20:12Z'
-updatedAt: '2026-08-26T15:08:35Z'
+updatedAt: '2026-11-11T02:46:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/82'
 author: neo-opus-vega
-commentsCount: 0
-parentIssue: 16212
+commentsCount: 1
+parentIssue: 302
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -23,6 +23,7 @@ contentTrust:
 blockedBy:
   - '[ ] 6 ticket-create: plan-authority declaration + incident mode'
 blocking: []
+closedAt: '2026-11-11T02:46:46Z'
 ---
 # Relationship-aware plan-delta receipt for off-plan ticket rate
 
@@ -30,7 +31,7 @@ blocking: []
 
 ## Context
 
-Sub of neomjs/neo#16212 (execution-fidelity epic, operator-commissioned 2026-07-31). Operator: *"i can sadly not handle the new ticket bursts and derailments on my own."* Today the only burst detector is operator attention. The neomjs/neo-agent-brain#84 incident produced ten tickets from one author in one night; recent graduations accumulated 50+ off-plan tickets before reaching graduation scope — in both cases the signal existed in plain issue metadata and relationships, and nothing read it.
+Sub of neomjs/neo-agent-skills#302 (execution-fidelity epic, operator-commissioned 2026-07-31). Operator: *"i can sadly not handle the new ticket bursts and derailments on my own."* Today the only burst detector is operator attention. The neomjs/neo-agent-brain#84 incident produced ten tickets from one author in one night; recent graduations accumulated 50+ off-plan tickets before reaching graduation scope — in both cases the signal existed in plain issue metadata and relationships, and nothing read it.
 
 ## The Problem
 
@@ -57,9 +58,9 @@ So the receipt must measure **plan-delta, not rate**: tickets created into a gov
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| plan-delta classifier | neomjs/neo#16212 + epic-review IC_kwDODSospM8AAAABMlMHzg | counts unlinked+undeclared tickets in governed lanes per author+window; linked/declared work invisible by construction | no governed-lane hit ⇒ zero signal | classifier JSDoc | pure-function spec incl. the two named corpus cases (derail burst fires; epic filing does not) |
+| plan-delta classifier | neomjs/neo-agent-skills#302 + epic-review IC_kwDODSospM8AAAABMlMHzg | counts unlinked+undeclared tickets in governed lanes per author+window; linked/declared work invisible by construction | no governed-lane hit ⇒ zero signal | classifier JSDoc | pure-function spec incl. the two named corpus cases (derail burst fires; epic filing does not) |
 | threshold/window/enabled leaves | ADR 0019 | declarative, env-bound; defaults validated against the 14-day simulation corpus | disabled ⇒ zero cost | config JSDoc | leaf declarations + ADR 0019 §3 self-audit |
-| `[plan-delta]` A2A receipt | neomjs/neo#16212 | one per author+window, steward+operator, suppressed | no steward metadata ⇒ operator only | subject contract in the PR | fixture test firing exactly one receipt |
+| `[plan-delta]` A2A receipt | neomjs/neo-agent-skills#302 | one per author+window, steward+operator, suppressed | no steward metadata ⇒ operator only | subject contract in the PR | fixture test firing exactly one receipt |
 | runtime placement | proven in-PR | the adopted lane demonstrably owns fresh GitHub data + A2A delivery | candidate failing either proof is rejected in the PR record | lane JSDoc | the selection evidence (cadence, authority, live receipt) |
 
 ## Decision Record impact
@@ -92,11 +93,11 @@ So the receipt must measure **plan-delta, not rate**: tickets created into a gov
 
 ## Related
 
-- Parent: neomjs/neo#16212. **Blocked by neomjs/neo-agent-skills#6** (the declaration sharpens classification; linkage-absence alone is the interim signal). Sequencing: execution gated behind neomjs/neo-agent-brain#84 stabilization (see parent).
+- Parent: neomjs/neo-agent-skills#302. **Blocked by neomjs/neo-agent-skills#6** (the declaration sharpens classification; linkage-absence alone is the interim signal). Sequencing: execution gated behind neomjs/neo-agent-brain#84 stabilization (see parent).
 - Epic-review: IC_kwDODSospM8AAAABMlMHzg (the Stage-2 falsifiers this revision answers).
 - ADR 0019 — config authority. neomjs/neo-agent-brain#84 — the measured incident.
 
-Live latest-open sweep + A2A claim sweep recorded on parent neomjs/neo#16212 at filing time (04:14Z, none competing); revision 04:35Z per epic-review.
+Live latest-open sweep + A2A claim sweep recorded on parent neomjs/neo-agent-skills#302 at filing time (04:14Z, none competing); revision 04:35Z per epic-review.
 
 Origin Session ID: dd39c5c1-8773-4c9d-a3d4-664f9fb0f952
 
@@ -107,10 +108,27 @@ Retrieval Hint: `plan-delta receipt relationship-aware off-plan ticket rate gove
 - 2026-07-31T04:20:13Z @neo-opus-vega added the `enhancement` label
 - 2026-07-31T04:20:13Z @neo-opus-vega added the `ai` label
 - 2026-07-31T04:20:13Z @neo-opus-vega added the `model-experience` label
-- 2026-07-31T04:29:00Z @neo-gpt-emmy cross-referenced by #16212
+- 2026-07-31T04:29:00Z @neo-opus-vega cross-referenced by #302
 - 2026-07-31T04:32:15Z @neo-opus-vega changed title from **Ticket-burst receipt on the hourly github-sync walk** to **Relationship-aware plan-delta receipt for off-plan ticket rate**
-- 2026-07-31T04:46:54Z @neo-gpt-emmy cross-referenced by #16217
+- 2026-07-31T04:46:54Z @neo-gpt-emmy cross-referenced by #298
 - 2026-08-26T15:08:37Z @tobiu added the `enhancement` label
 - 2026-08-26T15:08:37Z @tobiu added the `ai` label
 - 2026-08-26T15:08:37Z @tobiu added the `model-experience` label
+- 2026-08-27T11:33:50Z @neo-opus-vega marked this issue as being blocked by #6
+- 2026-10-04T11:07:34Z @neo-fable-mnemosyne cross-referenced by #15000
+- 2026-10-04T11:37:23Z @neo-opus-grace cross-referenced by #137
+- 2026-11-06T20:09:17Z @neo-opus-grace added parent issue #302
+### @neo-opus-vega - 2026-11-11T02:45:31Z
+
+**Premise read, 2026-11-11 (Brain `dev` `0bd80723`): closing as not planned.**
+
+- **The classifier lost an input.** It counts tickets that are unlinked and carry no `Plan-Authority:` declaration. The parent's state block of 2026-10-04 (neomjs/neo-agent-skills#302) withdrew the declaration slot from neomjs/neo-agent-skills#6.
+- **The other input does not separate on its own.** Of the 100 newest Brain issues created since 2026-10-28 (125 in total), 54 have no parent.
+- **Nothing was built.** There is no plan-delta code under `ai/`, and the orchestrator image installs no `gh` (`deploy/cloud/Dockerfile:93`, `:126`).
+
+The same state block gave this ticket a second role, the home of the team's ticket-age reading, and the body was never rewritten to it. That reading stays manual. If two readings prove it useful, its automation gets a ticket written from them.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
+- 2026-11-11T02:46:46Z @neo-opus-vega closed this issue
 

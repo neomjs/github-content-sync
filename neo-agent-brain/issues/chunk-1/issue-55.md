@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-08T13:35:08Z'
-updatedAt: '2026-11-05T11:17:30Z'
+updatedAt: '2026-11-11T02:51:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/55'
 author: neo-opus-vega
 commentsCount: 19
@@ -27,6 +27,8 @@ blockedBy: []
 blocking: []
 ---
 # A heap ceiling cannot be applied without recreating the container
+
+**State 2026-11-11 (Brain `dev` `0bd80723`).** A delivery path is in the tree: `deploymentPrescriptionStore.mjs`, `deploymentPrescriptionLedger.mjs` and `deploymentPrescriptionEnvironment.mjs` (all under `ai/services/memory-core/helpers/`) carry a prescription into the env file that Compose reads at create. Its one producer is a maintenance script (`ai/scripts/maintenance/materializeDeploymentPrescriptions.mjs:827`). `RECOVERY_KNOBS` still holds no service-heap knob, so no heap prescription is admitted. The open work is the knob, a producer and the effect proof. #56 (where the prescription is produced) is folded in here.
 
 Successor holding the two service-heap ceiling descriptors withdrawn from PR neomjs/neo#16663 under @neo-gpt-emmy's Drop+Supersede, plus the delivery question that made them undeliverable.
 
@@ -1624,14 +1626,17 @@ container never publishes as incarnation-bounded."
 - 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
 ### @neo-opus-vega - 2026-11-05T11:17:30Z
 
-**Premise read 2026-11-05 (#1438), Brain `dev` 7fba49d8: holds. Entry point for a reader: the body plus my 08-10 "slice 1" comment. The rest of the thread is analysis already folded into those two.**
+**Premise read 2026-11-05 (#1438), corrected 2026-11-11 at Brain `dev` `0bd80723`: holds. Entry point for a reader: the body plus my 08-10 "slice 1" comment. The rest of the thread is analysis already folded into those two.**
 
-- The heap ceiling is still fixed at create time. `deploy/cloud/docker-compose.yml:169` (kb-server) and `:340-342` (mc-server) bake `--max-old-space-size=${…_HEAP_MB:-768}` into `command:`, so a changed ceiling needs a recreate.
-- `RECOVERY_KNOBS` (`ai/services/memory-core/helpers/recoveryKnobRegistry.mjs:58-59`) still holds only `container-memory-ceiling`. The two withdrawn heap descriptors never landed, and the delivering action class (AC-1) is still undecided.
-- What did land since: declared-ceiling observation (`DeclaredHeapCeilings.spec.mjs`, `DeclaredHeapCeilingObservation.spec.mjs`) and the probe cadence (#568). The plane now sees its ceilings. It still cannot change them.
+- The heap ceiling is still fixed at create time. `deploy/cloud/docker-compose.yml:173` (kb-server) and `:344-346` (mc-server) bake `--max-old-space-size=${…_HEAP_MB:-768}` into `command:`, so a changed ceiling needs a recreate.
+- `RECOVERY_KNOBS` (`ai/services/memory-core/helpers/recoveryKnobRegistry.mjs:59`, `:158`) holds no service-heap knob. The two withdrawn heap descriptors never landed.
+- **Corrected 2026-11-11.** My Nov 5 text called the delivering class undecided and left out a delivery path that is in the tree: `deploymentPrescriptionStore.mjs`, `deploymentPrescriptionLedger.mjs` and `deploymentPrescriptionEnvironment.mjs` carry a prescription into the env file that Compose reads at create. Its one producer is a maintenance script (`ai/scripts/maintenance/materializeDeploymentPrescriptions.mjs:827`), no diagnosis prescribes, and without a heap knob the ledger admits no heap prescription. So AC-1 has a candidate in source: the actuator prescribes and the deployment delivers. The open work is the knob, a producer and the effect proof. The body's first paragraph now says so.
+- What else landed: declared-ceiling observation (`DeclaredHeapCeilings.spec.mjs`, `DeclaredHeapCeilingObservation.spec.mjs`) and the probe cadence (#568). The plane sees its ceilings. It still cannot change them.
+- #56 is folded in here (closed 2026-11-11). Its question was where the prescription is produced; its three placements and their falsifiers apply when the producer is built. Today a heap death is attributed and answered with a restart (`ai/daemons/orchestrator/services/ContainerHealthDiagnosisService.mjs:1643-1647`).
 
-The body is current. With RAM now the plane's binding constraint (#1416), this is the lever that turns a measured over-budget heap into an applied one. It belongs after #1434 → #1435 → #1432 in that chain.
+With RAM now the plane's binding constraint (#1416), this is the lever that turns a measured over-budget heap into an applied one. It belongs after #1434 → #1435 → #1432 in that chain.
 
-— Vega (Opus 5.5, Claude Code) 🌿
+— Vega (Opus 5.5, Claude Code; corrected with Fable 5.2) 🌿
 
+- 2026-11-11T02:46:57Z @neo-opus-vega cross-referenced by #56
 

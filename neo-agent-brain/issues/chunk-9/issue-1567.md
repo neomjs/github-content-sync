@@ -1,7 +1,7 @@
 ---
 id: 1567
 title: 'Knowledge Base and file-system servers: each tool line says what the tool does and when to use it'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-10T02:33:45Z'
-updatedAt: '2026-11-10T17:07:20Z'
+updatedAt: '2026-11-11T00:56:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1567'
 author: neo-fable-mnemosyne
 commentsCount: 1
@@ -26,6 +26,7 @@ blockedBy:
   - '[x] 1563 ToolService lists one line per tool: summary is its only source, title and x-neo-tool-summary go'
 blocking:
   - '[ ] 1569 Read the call counts four weeks after the trigger lines land: did saying when move use?'
+closedAt: '2026-11-11T00:56:50Z'
 ---
 # Knowledge Base and file-system servers: each tool line says what the tool does and when to use it
 
@@ -82,6 +83,8 @@ Retrieval Hint: "Knowledge Base file-system tool trigger lines summary what and 
 - 2026-11-10T02:33:46Z @neo-fable-mnemosyne added the `ai` label
 - 2026-11-10T02:33:46Z @neo-fable-mnemosyne added the `model-experience` label
 - 2026-11-10T02:33:46Z @neo-fable-mnemosyne added the `agent-os` label
+- 2026-11-10T02:34:41Z @neo-fable-mnemosyne added parent issue #1562
+- 2026-11-10T02:35:06Z @neo-fable-mnemosyne marked this issue as being blocked by #1563
 - 2026-11-10T16:50:04Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-10T17:00:56Z @neo-gemini-maryam cross-referenced by PR #1578
 - 2026-11-10T17:05:47Z @neo-gemini-maryam referenced in commit `68c2125` - "feat(mcp): refine 6 tool summaries from AC-2 second-seat blind read (#1567)"
@@ -101,4 +104,18 @@ Retrieval Hint: "Knowledge Base file-system tool trigger lines summary what and 
 
 Authored by Maryam (Gemini 4 Argon, Antigravity). Session 985cc2dd-9f98-42ad-b4d3-660e4e5336e5. 🧭
 
+- 2026-11-10T22:33:29Z @neo-gemini-maryam referenced in commit `a609797` - "feat(mcp): add trigger summaries to knowledge-base and file-system tools (#1567)"
+- 2026-11-10T22:33:30Z @neo-gemini-maryam referenced in commit `29d0436` - "feat(mcp): refine 6 tool summaries from AC-2 second-seat blind read (#1567)"
+- 2026-11-10T23:50:00Z @neo-gemini-maryam referenced in commit `62f7f7c` - "feat(mcp): add trigger summaries to knowledge-base and file-system tools (#1567)"
+- 2026-11-10T23:50:00Z @neo-gemini-maryam referenced in commit `6aa2bc1` - "feat(mcp): refine 6 tool summaries from AC-2 second-seat blind read (#1567)"
+- 2026-11-11T00:08:25Z @neo-gemini-maryam referenced in commit `d53ef2f` - "fix(mcp): align KB trigger summaries with corpus scope and MCP volume gate (#1567)"
+- 2026-11-11T00:56:50Z @tobiu referenced in commit `44726d7` - "feat(mcp): add trigger summaries to knowledge-base and file-system tools (#1567) (#1578)
+
+* feat(mcp): add trigger summaries to knowledge-base and file-system tools (#1567)
+
+* feat(mcp): refine 6 tool summaries from AC-2 second-seat blind read (#1567)
+
+* fix(mcp): align KB trigger summaries with corpus scope and MCP volume gate (#1567)"
+- 2026-11-11T00:56:51Z @tobiu closed this issue
+- 2026-11-11T05:39:12Z @neo-gemini-maryam cross-referenced by PR #1600
 

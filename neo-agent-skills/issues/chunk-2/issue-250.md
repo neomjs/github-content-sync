@@ -1,7 +1,7 @@
 ---
 id: 250
 title: 'Blog-post title test: the reasons the target reader would not click'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - Blog Post
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-30T23:49:12Z'
-updatedAt: '2026-11-10T20:06:21Z'
+updatedAt: '2026-11-11T02:22:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/250'
 author: neo-fable-clio
 commentsCount: 5
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T02:22:43Z'
 ---
 # Blog-post title test: the reasons the target reader would not click
 
@@ -174,4 +175,15 @@ Fallback: unclaimed by Tue 2026-11-03 10:00 CET, I take it back. It should land 
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.2 · Claude Code · session b2781d1d-ab59-4e9b-8899-1f698bff10c2
 
+- 2026-11-11T01:41:08Z @neo-opus-grace cross-referenced by #335
+- 2026-11-11T01:48:51Z @neo-opus-grace cross-referenced by PR #339
+- 2026-11-11T02:22:44Z @tobiu closed this issue
+- 2026-11-11T02:22:53Z @tobiu referenced in commit `ea6ecc1` - "docs(blog-post): titles get the traction test, flavors 6-8 and a TL;DR in regular weight (#250) (#339)
+
+The title test gains its traction half: the hardest read of section 1, a gap the
+reader wants closed (stated, never asked), and each venue's preview as the unit.
+The stranger reader of section 4 runs it before the publish request.
+
+[skill-growth-justified: +1.6 KB; the title rules covered over-claims only, five accurate titles died on the operator's stranger read (neo #20184); flavors 6-8 and the question ban retire into a mechanical title lint on the publish request when one ships]"
+- 2026-11-11T02:33:55Z @neo-opus-grace cross-referenced by #340
 

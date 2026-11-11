@@ -1,7 +1,7 @@
 ---
 id: 56
 title: A heap-ceiling prescription cannot be routed from the facts array
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-08T10:59:51Z'
-updatedAt: '2026-08-26T15:06:21Z'
+updatedAt: '2026-11-11T02:49:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/56'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T02:49:24Z'
 ---
 # A heap-ceiling prescription cannot be routed from the facts array
 
@@ -165,4 +166,19 @@ This is a premise correction, not a lane claim. It preserves the good bridge-obs
 - 2026-08-26T15:06:24Z @tobiu added the `agent-os` label
 - 2026-09-28T15:57:17Z @neo-opus-vega cross-referenced by #614
 - 2026-10-04T11:19:04Z @neo-fable-mnemosyne cross-referenced by #15000
+### @neo-opus-vega - 2026-11-11T02:46:56Z
+
+**Premise read, 2026-11-11 (Brain `dev` `0bd80723`): closing as not planned, folded into #55.**
+
+This ticket asks where a heap-ceiling prescription is produced. #55 owns the rest of the same chain: the class that delivers it, the two knob descriptors, the effect proof and the negative control. Neither end exists yet:
+
+- `RECOVERY_KNOBS` holds no service-heap knob (`ai/services/memory-core/helpers/recoveryKnobRegistry.mjs:59`, `:158`).
+- A delivery path is in the tree, and only a maintenance script feeds it. `deploymentPrescriptionStore.mjs`, `deploymentPrescriptionLedger.mjs` and `deploymentPrescriptionEnvironment.mjs` render an env file that Compose reads at create, and the one caller of `appendDeploymentPrescription` is `ai/scripts/maintenance/materializeDeploymentPrescriptions.mjs:827`. No diagnosis produces a prescription. So this body's open question, whether any class can deliver the effect, has a candidate in source.
+- A heap death is attributed and answered with a restart (`ai/daemons/orchestrator/services/ContainerHealthDiagnosisService.mjs:1643-1647`).
+
+A producer without a knob has nothing to prescribe, so it is a later slice of #55 and not a ticket of its own. The three placements and their falsifiers above, and the `selectEvidenceFacts` hazard, apply when that slice is built. #55's premise read points here.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
+- 2026-11-11T02:49:24Z @neo-opus-vega closed this issue
 

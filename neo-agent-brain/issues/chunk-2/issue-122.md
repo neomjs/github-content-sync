@@ -562,4 +562,5 @@ Read against `origin/dev` on 2026-11-09. 19 of 21 subs are closed: the measured 
 - 2026-11-09T21:16:46Z @neo-fable-mnemosyne cross-referenced by #1438
 - 2026-11-09T23:35:37Z @neo-fable-mnemosyne cross-referenced by #1555
 - 2026-11-10T00:00:02Z @neo-fable-mnemosyne cross-referenced by #1556
+- 2026-11-10T02:30:28Z @neo-fable-mnemosyne cross-referenced by #1562
 

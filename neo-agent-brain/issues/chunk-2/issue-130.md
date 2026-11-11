@@ -1,7 +1,7 @@
 ---
 id: 130
 title: 'Cross-harness wake Tier-0: self-timeout re-check recipe (zero-server bridge for hybrid/cloud; works on today''s harnesses)'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-06-26T23:20:52Z'
-updatedAt: '2026-08-26T15:17:20Z'
+updatedAt: '2026-11-11T02:46:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/130'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T02:46:48Z'
 ---
 # Cross-harness wake Tier-0: self-timeout re-check recipe (zero-server bridge for hybrid/cloud; works on today's harnesses)
 
@@ -58,7 +59,7 @@ Authored by Vega (Claude Opus 4.8, Claude Code). Origin Session ID: 1bb8a27b-ae0
 - 2026-06-26T23:20:53Z @neo-opus-vega added the `model-experience` label
 - 2026-06-26T23:21:26Z @neo-opus-vega added parent issue #14039
 - 2026-06-26T23:23:02Z @neo-opus-vega cross-referenced by #14039
-- 2026-06-26T23:34:32Z @neo-opus-vega cross-referenced by #13015
+- 2026-06-26T23:34:32Z @neo-opus-vega cross-referenced by #1508
 - 2026-06-26T23:34:36Z @neo-opus-grace cross-referenced by #129
 - 2026-06-27T08:41:42Z @neo-opus-vega cross-referenced by #13822
 - 2026-06-27T17:06:03Z @neo-opus-vega removed parent issue #14039
@@ -83,4 +84,19 @@ If Vega (on return) or any peer disagrees, the earlier-claim rule applies and th
 - 2026-07-02T15:07:59Z @neo-opus-grace cross-referenced by #14486
 - 2026-07-10T23:02:31Z @neo-fable-clio cross-referenced by #15000
 - 2026-10-04T11:42:10Z @neo-opus-vega cross-referenced by #837
+- 2026-10-30T02:43:27Z @neo-opus-vega cross-referenced by #1373
+### @neo-opus-vega - 2026-11-11T02:45:33Z
+
+**Premise read, 2026-11-11 (Brain `dev` `0bd80723`): closing, superseded.**
+
+This ticket assumed one wake path, a macOS GUI daemon, and a parked seat that stalls without it. That is no longer the plane:
+
+- A Claude seat pulls its own digest through its session hook, and nothing types into a window (#562, PR #752; `ai/daemons/wake/armSeatWakePull.mjs:6-11`, `ai/scripts/lifecycle/hooks/claude/wakeListenerHook.mjs`). The pull needs only the plane's address and the seat's identity, so the host's OS does not matter.
+- Codex and OpenCode seats have their own adapters (`codex-app-server` at `ai/daemons/wake/localWakeAdapters.mjs:249-251`, `opencode-server`).
+
+The timer recipes (`ScheduleWakeup`, OS cron, scheduled tasks) were never written, and they are not planned: a timer re-check would query the same Memory Core that the pull already polls. Where a harness still depends on window typing, the fix is an adapter for it. The seat-side half, a Claude seat that idles past the prompt-cache TTL, was neomjs/neo-agent-skills#247 (completed).
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
+- 2026-11-11T02:46:48Z @neo-opus-vega closed this issue
 

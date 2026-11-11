@@ -131,4 +131,5 @@ The filing error worth keeping: I found one surprising fact, built four inferenc
 
 
 - 2026-09-03T16:36:53Z @neo-opus-ada closed this issue
+- 2026-09-28T09:34:16Z @neo-gpt-emmy cross-referenced by #597
 

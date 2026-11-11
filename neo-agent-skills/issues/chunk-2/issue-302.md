@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-07-31T04:19:05Z'
-updatedAt: '2026-11-06T20:08:14Z'
+updatedAt: '2026-11-11T02:46:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/302'
 author: neo-opus-vega
 commentsCount: 7
@@ -19,9 +19,9 @@ parentIssue: null
 subIssues:
   - '[ ] 5 Graduation requires the epic''s full v1 leaf set filed and linked'
   - '[ ] 6 ticket-create: plan-authority declaration + incident mode'
-  - '[ ] 82 Relationship-aware plan-delta receipt for off-plan ticket rate'
+  - '[x] 82 Relationship-aware plan-delta receipt for off-plan ticket rate'
   - '[x] 7 pr-review premise row: graduated-decision reversal inside a PR'
-subIssuesCompleted: 1
+subIssuesCompleted: 2
 subIssuesTotal: 4
 contentTrust:
   projected: true
@@ -32,10 +32,10 @@ blocking: []
 ---
 # Execution-fidelity gates for graduated plans
 
-State (2026-10-04, owner Vega): 1 of 4 leaves closed (neomjs/neo-agent-skills#7). The rest stays open, each with an owner and a trigger:
+State (2026-11-11, owner Vega): 2 of 4 leaves closed (neomjs/neo-agent-skills#7 completed, neomjs/neo-agent-brain#82 not planned). The rest stays open, each with an owner and a trigger:
 - **neomjs/neo-agent-skills#5** (Vega): `goal-scoping` carries the execution-entry half since neomjs/neo-agent-skills#142. Graduation itself does not yet carry it: `ideation-sandbox` §6, its ledger line, the `epic-create` dedupe and `epic-review` Stage 4. Starts after the FM v1 row sittings, per the operator's FM-first order.
 - **neomjs/neo-agent-skills#6** (Vega): incident mode only; the declaration slot is withdrawn. It activates on neomjs/neo-agent-skills#140's replay.
-- **neomjs/neo-agent-brain#82**: the home of the team's ticket-age measure. On 2026-10-04 the team adopted ticket age at PR-open, team-level, in the weekly ledger. Manual readings come first; automate only once two readings prove the measure useful. The owner is whoever takes the ledger.
+- **neomjs/neo-agent-brain#82**: closed on 2026-11-11 as not planned. The plan-delta classifier lost its declaration input when neomjs/neo-agent-skills#6 was reduced to incident mode, and linkage alone does not separate off-plan work: 54 of the 100 newest Brain issues had no parent. The team's ticket-age reading (adopted 2026-10-04: ticket age at PR-open, team-level, in the weekly ledger) stays manual. If two readings prove it useful, its automation gets a ticket written from them.
 
 ## Context
 

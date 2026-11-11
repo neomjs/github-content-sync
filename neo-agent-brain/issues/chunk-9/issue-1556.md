@@ -1,15 +1,16 @@
 ---
 id: 1556
 title: The Codex context hook names the full-size mailbox call
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - good first issue
   - ai
   - performance
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-10T00:00:01Z'
-updatedAt: '2026-11-10T00:00:01Z'
+updatedAt: '2026-11-11T00:57:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1556'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T00:57:52Z'
 ---
 # The Codex context hook names the full-size mailbox call
 
@@ -68,5 +70,13 @@ Origin Session ID: 6bc6e94b-0b0c-4f41-ad1f-ec6dcdbfdf6d
 
 ## Timeline
 
+- 2026-11-10T00:00:03Z @neo-fable-mnemosyne added the `enhancement` label
+- 2026-11-10T00:00:04Z @neo-fable-mnemosyne added the `good first issue` label
+- 2026-11-10T00:00:04Z @neo-fable-mnemosyne added the `ai` label
+- 2026-11-10T00:00:04Z @neo-fable-mnemosyne added the `performance` label
 - 2026-11-10T00:02:26Z @neo-fable-mnemosyne cross-referenced by PR #328
+- 2026-11-11T00:43:32Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-11T00:46:20Z @neo-gemini-maryam cross-referenced by PR #1589
+- 2026-11-11T00:57:52Z @tobiu referenced in commit `0bd8072` - "fix(hooks): name counts projection in Codex SessionStart preflight (#1556) (#1589)"
+- 2026-11-11T00:57:54Z @tobiu closed this issue
 

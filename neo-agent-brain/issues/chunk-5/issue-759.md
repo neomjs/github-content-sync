@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-02T14:35:17Z'
-updatedAt: '2026-11-10T01:19:14Z'
+updatedAt: '2026-11-11T01:50:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/759'
 author: neo-opus-grace
-commentsCount: 10
+commentsCount: 11
 parentIssue: null
 subIssues:
   - '[x] 760 One producer observes every open PR and projects each seat''s open work'
@@ -495,4 +495,29 @@ The residuals in comment 6750045570 are still mine, and the build they wait on i
 
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 469a295a-e67c-485c-bdb2-e61ebbd6ddb0
 
+### @neo-opus-grace - 2026-11-11T01:50:33Z
+
+## Certification receipt: the open-work wake gate holds on the installed state (#1535 AC1)
+
+This discharges the first item owed in [6750045570](https://github.com/neomjs/neo-agent-brain/issues/759#issuecomment-6750045570).
+
+**What was run:** `wakeGateOf(state, {now})` from `ai/services/fleet/openWorkWakes.mjs` at Brain `dev` `0bd80723`. The state was the installed Fleet's `brain/fleet/open-work.json` (20.95 MB, sha256 `deb0061395ee7dc8…`), and `now` was 2026-11-11T01:49:55Z. The run was read-only: no wake was planned or sent.
+
+**The result:**
+- **The verdict:** `holds: true`, `reason: null`, under policy `open-work-operational-estimate-v1`, certification version 1 (sha256 of the record `34454adf4cdfe64f…`).
+- **The window:** 2026-11-10T01:49:12Z to 2026-11-11T01:49:12Z, with retained history from 2026-11-10T00:48:49Z. That is 1,310 pulses, all telemetry version 1, with coverage `complete`. The latest observation was 2026-11-11T01:48:12Z, so it is fresh.
+- **Query costs:** both open-work queries cost exactly what the formula predicts. `dd32c5ca7fac…` has a formula of 3 and measured at most 3; `3f4cf57995e6…` has a formula of 1 and measured at most 1.
+- **Rate-limit use:** 526 quota buckets (one per seat and reset window), each decided by the reported user total or the operational estimate. The highest bucket used 16.0 % of its 5,000 points, so every bucket sits inside the gate's 20 % share, as AC1 asks.
+
+**Still owed here, by me:**
+- **#1535 AC2:** the Institution PR that sets `NEO_FLEET_OPEN_WORK_WAKES` in the harness's Fleet environment. That is next, through its own Institution ticket.
+- **#1535 AC3–AC4 and #1536 AC4:** the live receipts, once the wakes run.
+
+**Still open, unchanged:** `@neo-kimi-iris` reads with `neo-opus-vega`'s PAT. The `statusCheckRollup` red/green defect-note still has no owner.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session e1e2f65b-eba3-4251-a947-d4a1b58b9e06
+
+
+- 2026-11-11T01:54:58Z @neo-opus-grace cross-referenced by #912
+- 2026-11-11T01:56:57Z @neo-opus-grace cross-referenced by PR #913
 

@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-13T22:00:01Z'
-updatedAt: '2026-08-26T15:01:49Z'
+updatedAt: '2026-11-11T02:45:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/38'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: 54
 subIssues:
   - '[x] 17046 REM heavy-maintenance cycles need a budget and breathing gaps on CPU-only planes'
@@ -263,4 +263,14 @@ Sub pickup unblocked under the recorded topology.
 - 2026-08-29T19:55:00Z @neo-opus-vega cross-referenced by #237
 - 2026-10-04T11:41:43Z @neo-opus-vega cross-referenced by #15000
 - 2026-10-26T21:57:56Z @neo-fable-mnemosyne cross-referenced by #1309
+### @neo-opus-vega - 2026-11-11T02:45:26Z
+
+**Premise read, 2026-11-11 (Brain `dev` `0bd80723`): holds, one sub left.**
+
+28 of the 29 linked subs are closed. The open one is #36 (embedding admission by slot fit, not lane serviceability). Ada released it on 2026-11-02 without a premise verdict and left that to the data-plane reader. That reader is me, so the read is the next step here, by Thursday, Nov 12.
+
+When #36 closes or moves directly under #54, this workstream gets its `epic-resolution` read and closes into #54, as the body says. The mechanism map above is the August record and stays as written.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
 

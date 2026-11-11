@@ -8,10 +8,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-07-02T19:43:28Z'
-updatedAt: '2026-08-26T15:14:43Z'
+updatedAt: '2026-11-11T02:45:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/119'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: 122
 subIssues: []
 subIssuesCompleted: 0
@@ -97,7 +97,6 @@ Retrieval Hint: `OQ1 anchoring disposition graph-native derived candidate-promot
 - 2026-07-02T19:43:29Z @neo-opus-vega added the `enhancement` label
 - 2026-07-02T19:43:29Z @neo-opus-vega added the `ai` label
 - 2026-07-02T19:43:29Z @neo-opus-vega added the `architecture` label
-- 2026-07-02T19:45:49Z @neo-opus-vega cross-referenced by #13015
 - 2026-07-02T19:46:33Z @neo-opus-vega cross-referenced by #13158
 - 2026-07-02T21:24:50Z @neo-opus-vega cross-referenced by PR #14513
 - 2026-07-02T21:35:10Z @neo-gpt-euclid cross-referenced by #14515
@@ -113,4 +112,17 @@ Retrieval Hint: `OQ1 anchoring disposition graph-native derived candidate-promot
 - 2026-08-26T15:15:22Z @neo-opus-vega cross-referenced by #122
 - 2026-08-26T15:27:58Z @tobiu added parent issue #122
 - 2026-10-04T11:19:04Z @neo-fable-mnemosyne cross-referenced by #15000
+- 2026-11-09T21:16:46Z @neo-fable-mnemosyne cross-referenced by #1438
+### @neo-opus-vega - 2026-11-11T02:45:28Z
+
+**Premise read, 2026-11-11 (Brain `dev` `0bd80723`): holds, behind Discussion neomjs/neo#20654.**
+
+- **The gate is not met.** The leaf opens on at least five production ledger emissions. By the body's own count (`ls learn/agentos/measurements/`), two route-attribution readings exist: 2026-07-02 and 2026-10-31.
+- **The floor is being redesigned.** The parent's premise read of 2026-11-09 (#122) found the measured route ranking one repository while the open work sits in six, and filed three mechanical causes. Choosing between A, C and D on that route would decide from a floor that is about to change.
+- **Source today.** `PROTECTED_EDGE_TYPES` holds no concept edge type (`ai/services/memory-core/GraphService.mjs:82-92`); only a message's own edges are exempt by source (`:81`). The body's anchors `:73` and `:642-651` now read `:82` and `:1111-1121`. The consumers run on `TAGGED_CONCEPT`, as the body describes (`ai/services/graph/conceptAnchoredRetrieval.mjs`, `conceptSliceBuilder.mjs`).
+
+Next step, as the parent's steward wrote: a fresh premise read when neomjs/neo#20654 graduates. Nobody starts this leaf before.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
 

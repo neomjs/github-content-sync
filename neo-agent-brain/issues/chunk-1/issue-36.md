@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-14T13:06:40Z'
-updatedAt: '2026-11-02T19:39:35Z'
+updatedAt: '2026-11-11T04:52:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/36'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: 38
 subIssues: []
 subIssuesCompleted: 0
@@ -256,6 +256,7 @@ Co-Authored-By: Ada <neo-opus-4-7@neomjs.com>"
 - 2026-08-26T15:01:52Z @tobiu added the `bug` label
 - 2026-08-26T15:01:53Z @tobiu added the `ai` label
 - 2026-08-26T15:01:53Z @tobiu added the `agent-os` label
+- 2026-08-26T15:03:05Z @tobiu added parent issue #38
 - 2026-10-04T11:41:43Z @neo-opus-vega cross-referenced by #15000
 ### @neo-opus-ada - 2026-11-02T19:39:35Z
 
@@ -264,4 +265,36 @@ Co-Authored-By: Ada <neo-opus-4-7@neomjs.com>"
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-02T19:39:50Z @neo-opus-ada unassigned from @neo-opus-ada
+- 2026-11-11T02:45:27Z @neo-opus-vega cross-referenced by #38
+### @neo-opus-vega - 2026-11-11T04:52:55Z
+
+**Premise read, 2026-11-11 (Brain `dev` `7f1cd698`): superseded. Closing as not planned.**
+
+**What the ticket says is still true of admission.** `resolveEmbeddingAdmissionBand` (`ai/embeddingSafeBand.mjs:68`) takes `contextLimitTokens` and `safeProcessingLimitTokens` and nothing else, and `providerLaneDeclaration.embedding` (`ai/configBase.mjs:1176-1181`) still declares geometry only. No throughput is declared anywhere in `ai/configBase.mjs`.
+
+**What it says about the harm stopped being true the day it was filed.** "It grinds, its caller abandons, and it is re-submitted" ended with `neomjs/neo#17129` / PR `neomjs/neo#17133`, merged 2026-08-14T21:26Z:
+
+- A chunk whose call ceiling expires on two consecutive attempts (`undeliverableTimeoutStrikes`, `ai/mcp/server/knowledge-base/configBase.mjs:768`) graduates to a durable `undeliverable-at-geometry` fence and is no longer offered (`ai/services/knowledge-base/helpers/embedFailureClassification.mjs:76-86`).
+- The fence lifts itself when the embedding generation changes: provider, model, dimension, effective call ceiling, and the admission band (`VectorService.mjs:214-219`).
+- The count reaches the deployment snapshot per repository as `undeliverableChunks`, separate from `contentPoisonChunks`, because the two prescribe opposite actions (`DeploymentStateBridgeService.mjs:3799-3802`).
+
+**What that leaves of the ACs.**
+
+| AC | State |
+|---|---|
+| AC-1 (ceiling from declared throughput × deadline) | Not built. PR `neomjs/neo#17118` was closed unmerged on 2026-08-14 because nothing in production consumed its classifier; its branch predates this repository and none of it is in the tree. |
+| AC-2 (never dispatched whole) | Not met as written: such a chunk is dispatched twice, two call ceilings (2 × 300 s at stock leaves) per process, and then fenced. Bounded, with a receipt. |
+| AC-3, AC-4 | Not built. |
+
+**Why not planned.** AC-1 needs a new declared input, a lane's throughput, whose only consumer would be this guard. The fence reaches the same decision from evidence the lane already produces, on every plane, with no declaration to keep true. No plane I can read holds a specimen: the local plane's snapshot of 2026-11-11T04:28:07Z (deployed `eabfbc17`) carries no `undeliverableChunks` census on any of its five tenant repositories.
+
+**The intent check.**
+
+1. Undeliverable work must not grind forever: delivered by the fence.
+2. Content above what a lane can serve should still become retrievable: the fence's answer is the operator's lever, a raised call ceiling, which re-offers the fenced chunks by itself. The ticket preferred a split. I am not carrying that preference forward: it would make chunk boundaries a function of a plane's speed, and nothing measured asks for it. If a snapshot ever shows `undeliverableChunks` on a plane whose ceiling cannot be raised, that reading is the specimen a new ticket starts from, and the split can key on the fence's own evidence instead of a declared throughput.
+
+This was the last open sub of #38; its `epic-resolution` read is next.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
 

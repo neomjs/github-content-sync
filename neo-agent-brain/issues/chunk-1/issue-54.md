@@ -3744,4 +3744,6 @@ Note the distinguishing state, because a naive probe misses it: `KeepAlive` keep
 - 2026-11-01T22:57:04Z @neo-opus-grace cross-referenced by #1420
 - 2026-11-02T17:37:30Z @neo-opus-vega cross-referenced by #1434
 - 2026-11-03T07:33:12Z @neo-opus-grace cross-referenced by #1460
+- 2026-11-06T10:53:31Z @neo-opus-grace cross-referenced by #1506
+- 2026-11-11T03:48:52Z @neo-opus-grace cross-referenced by #1594
 

@@ -1,7 +1,7 @@
 ---
 id: 1584
 title: Fleet admits Claude Desktop builds with Claude's updater off by policy
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-10T23:09:55Z'
-updatedAt: '2026-11-10T23:09:55Z'
+updatedAt: '2026-11-11T00:57:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1584'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T00:57:19Z'
 ---
 # Fleet admits Claude Desktop builds with Claude's updater off by policy
 
@@ -121,5 +122,29 @@ Retrieval Hint: `query_raw_memories("Claude Desktop disableAutoUpdates profile p
 - 2026-11-10T23:09:57Z @neo-opus-ada added the `ai` label
 - 2026-11-10T23:09:57Z @neo-opus-ada added the `architecture` label
 - 2026-11-10T23:09:57Z @neo-opus-ada added the `agent-os` label
-- 2026-11-10T23:10:00Z @neo-opus-ada added parent issue #1531
+- 2026-11-10T23:24:52Z @neo-opus-ada cross-referenced by PR #1585
+- 2026-11-10T23:41:13Z @neo-opus-ada referenced in commit `7a3ba92` - "fix(fleet): name Device Management and its 8-min window (#1584)
+
+Opening a profile only queues it: macOS drops it from Device Management after eight minutes without approval (observed 2026-11-10, 23:29:03Z queued, 23:37:03Z expiry, discarded as expired at 23:38:41Z). The refusal reason and the docs now name the pane and the window."
+- 2026-11-11T00:03:14Z @neo-opus-ada referenced in commit `a54dbd5` - "docs(fleet): the claudeDesktop opt-in names its policy gate (#1584)
+
+The leaf said opting in refuses every Start until a probe exists. The probe now exists, and the remaining refusal is the host policy gate."
+- 2026-11-11T00:13:24Z @neo-opus-ada cross-referenced by #1587
+- 2026-11-11T00:13:35Z @neo-opus-ada cross-referenced by #1531
+- 2026-11-11T00:57:19Z @tobiu referenced in commit `c32012b` - "feat(fleet): admit Claude Desktop builds, updater off by policy (#1584) (#1585)
+
+* feat(fleet): admit Claude Desktop builds, updater off by policy (#1584)
+
+Claude Desktop joins harness generations. Its probe pins the updater's gate on the disableAutoUpdates policy (the managed-preference path, the key and the gate's log line) and Chromium's --user-data-dir switch. An opted-in Claude Start refuses before any admission while the policy is not in force, through a per-family host gate beside the probes. The Fleet generates the System-scope profile, byte-identical to the one staged for the operator, and ai/scripts/fleet/claudeDesktopUpdatePolicy.mjs writes it and reports the policy.
+
+The streaming marker scan and file checks move from the Codex probe to inspectAppBundle.mjs, so both probes share one scanner.
+
+* fix(fleet): name Device Management and its 8-min window (#1584)
+
+Opening a profile only queues it: macOS drops it from Device Management after eight minutes without approval (observed 2026-11-10, 23:29:03Z queued, 23:37:03Z expiry, discarded as expired at 23:38:41Z). The refusal reason and the docs now name the pane and the window.
+
+* docs(fleet): the claudeDesktop opt-in names its policy gate (#1584)
+
+The leaf said opting in refuses every Start until a probe exists. The probe now exists, and the remaining refusal is the host policy gate."
+- 2026-11-11T00:57:21Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 1565
 title: 'Neural Link: each of its 60 tool lines says what the tool does and when to use it'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-10T02:33:23Z'
-updatedAt: '2026-11-10T22:08:15Z'
+updatedAt: '2026-11-10T23:26:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1565'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -26,6 +26,7 @@ blockedBy:
   - '[x] 1563 ToolService lists one line per tool: summary is its only source, title and x-neo-tool-summary go'
 blocking:
   - '[ ] 1569 Read the call counts four weeks after the trigger lines land: did saying when move use?'
+closedAt: '2026-11-10T23:26:09Z'
 ---
 # Neural Link: each of its 60 tool lines says what the tool does and when to use it
 
@@ -85,8 +86,14 @@ Retrieval Hint: "Neural Link tool trigger lines summary what and when"
 - 2026-11-10T02:33:25Z @neo-fable-mnemosyne added the `agent-os` label
 - 2026-11-10T02:34:37Z @neo-fable-mnemosyne added parent issue #1562
 - 2026-11-10T02:35:03Z @neo-fable-mnemosyne marked this issue as being blocked by #1563
-- 2026-11-10T02:35:11Z @neo-fable-mnemosyne marked this issue as blocking #1569
 - 2026-11-10T22:08:15Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-10T22:26:15Z @neo-gemini-maryam cross-referenced by PR #1581
 - 2026-11-10T23:11:22Z @neo-gemini-maryam referenced in commit `d77ec60` - "fix(mcp): align neural-link get_record and state-provider summaries with runtime (#1565)"
+- 2026-11-10T23:26:08Z @tobiu referenced in commit `2893412` - "feat(mcp): add trigger summaries to neural-link tools (#1565) (#1581)
+
+* feat(mcp): add trigger summaries to neural-link tools (#1565)
+
+* fix(mcp): align neural-link get_record and state-provider summaries with runtime (#1565)"
+- 2026-11-10T23:26:10Z @tobiu closed this issue
+- 2026-11-11T05:39:12Z @neo-gemini-maryam cross-referenced by PR #1600
 

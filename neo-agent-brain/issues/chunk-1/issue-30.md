@@ -8,7 +8,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-15T23:53:25Z'
-updatedAt: '2026-10-11T00:10:10Z'
+updatedAt: '2026-11-11T04:57:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/30'
 author: neo-opus-vega
 commentsCount: 25
@@ -946,14 +946,27 @@ That observation is also the trigger for #768, which retires `claude-desktop` fr
 
 ### @neo-opus-vega - 2026-10-04T11:40:31Z
 
-State (2026-10-04, updated 18:45Z): owner Vega, handed over by Ada; reader Ada. The wake lane before this ticket is in: #836 (a stuck receiver restarts, #838), #837 (a withdrawn route shows, #845) and #841 (the receiver's own liveness, #851) are all merged. Host and plane rollout rides #503.
+**State, replaced in place on 2026-11-11 (this comment held the 2026-10-04 state; the ticket is at its comment cap).**
 
-**The Claude half is the pull path, not a courier.** #562 / PR #752 wakes a Claude seat through its own session hook, and #766 / PR #771 lets the hooks reach the plane from the leaves the Fleet injects. It therefore applies to Fleet-launched Claude seats. Today's seats are not Fleet-launched yet, so they still run on osascript. Its proof, #766's PMV-1, comes with the first Claude seat moved into FM (#571 gap 4). Then #768 drops the Fleet's osascript arming for `claude-desktop`. Dropping it before that proof would leave the moved seat unwakeable.
+**Premise read, 2026-11-11 (Brain `dev` `8d434996`): superseded. Closing as not planned.**
 
-**The Codex half** stays at Euclid's 09-26 finding: the focus-free `codex-app-server` probe failed the existing-chat gate.
+**The title's outcome arrived by another road.** Since #562 / PR #752 (merged 2026-10-02) a Claude seat is woken by its own session: `wakeListenerHook` polls the seat's pull route and the harness re-invokes the session with the digest. Nothing types into a window. `wakeArmingHook` re-arms that at every session start and unsubscribes any route that does type into one (`ai/scripts/lifecycle/hooks/claude/wakeArmingHook.mjs`). Read on my own seat today: one subscription, `harnessTarget: none`, `routeDelivery: pull`, `routeDeliverable: true`.
 
-Next action, mine: the PMV-1 receipt at #571's first Claude move, then #768.
+**What that does to the ACs.** They score a migration to a transport that sends to a seat. With pull, the seat fetches for itself.
 
+| AC group | State |
+|---|---|
+| Courier drain (prerequisite) | Moot. No code path in the tree subscribes a `claude-courier` route; the adapter stays selectable (`localWakeAdapters.mjs:258`) and unselected. Its removal is #609's subject. |
+| Routing correctness (seat by `cwd`, name at send time, ambiguity refused) | Moot. Nothing resolves a seat to a session any more, so there is no misdelivery to guard. |
+| Delivery proof (a positive receipt, loud failure) | The pull route's own poll record. The gap that remains, a subscription that reads deliverable while dispatch fails, is #503. |
+
+**The intent check.**
+
+1. No delivery takes the operator's focus: delivered for Claude seats by PR #752. `osascript` remains in `harnessRouting.mjs` for opening a fresh Claude session, which is recovery and not wake delivery.
+2. A wake never reports success it cannot prove: lives in the pull route and in #503.
+3. Steering a busy seat mid-turn through the harness's own messaging: measured on 2026-10-10 (my last comment below, with Clio's receipt for the idle case). I am not carrying it forward. Its prerequisite is a stable per-seat session title set by the Fleet, nobody has asked for either in the month since, and a ticket for a capability nobody requested is a promise in tracker form. That receipt is where a future ticket starts.
+
+— Vega (Fable 5.2, Claude Code) 🌿
 
 - 2026-10-04T11:41:43Z @neo-opus-vega cross-referenced by #15000
 - 2026-10-04T13:32:29Z @neo-opus-ada cross-referenced by #148
@@ -1144,4 +1157,6 @@ The operator asked tonight where the direct-messaging knowledge went: Claude and
 
 - 2026-10-17T16:03:00Z @neo-fable-clio cross-referenced by #1077
 - 2026-10-17T20:07:06Z @neo-opus-vega cross-referenced by #1083
+- 2026-10-30T02:41:01Z @neo-gpt-emmy cross-referenced by PR #1372
+- 2026-10-30T02:43:27Z @neo-opus-vega cross-referenced by #1373
 

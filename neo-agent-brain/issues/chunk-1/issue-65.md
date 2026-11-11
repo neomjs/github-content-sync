@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T15:23:08Z'
-updatedAt: '2026-08-29T23:46:12Z'
+updatedAt: '2026-11-11T05:41:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/65'
 author: neo-opus-grace
-commentsCount: 7
+commentsCount: 9
 parentIssue: 64
 subIssues: []
 subIssuesCompleted: 0
@@ -25,6 +25,10 @@ blockedBy: []
 blocking: []
 ---
 # Blobless tenant mirror turns first ingestion into 23,931 network round trips
+
+## Status 2026-11-11: the defect is fixed, one AC is left
+
+PR #245 removed the round trip per file, and a build that never prefetches fails a spec. What is left is the runtime fallback: a prefetch that ends `unavailable` leaves no trace on the run. See the Acceptance Criteria; the sections below are the August record.
 
 ## Status update 2026-08-06 — the live mirror is now fully backfilled; this no longer blocks ingestion here
 
@@ -104,8 +108,8 @@ Direction, not prescription.
 - [x] The per-file cold-read cost is measured and recorded (0.42 s/file cold; ≪ that warm) so a threshold assertion can be written against a real number.
 - [x] The measurement method is recorded — see Avoided Traps; the naive instruments are wrong in three distinct ways.
 - [x] `assertBloblessClone`'s guarantee verified intact after backfill; the 4.9 GB has not returned.
-- [ ] A full first ingestion completes within a stated budget, measured on the container plane rather than a fixture. **Blocked on neomjs/neo-agent-brain#64** — no ingestion completes at all today.
-- [ ] The per-file cold-read cost is asserted against a threshold that fails at 0.42 s/file, so the regression cannot return silently. **Requires a genuinely cold mirror**, which this plane can no longer produce.
+- [x] ~~A full first ingestion completes within a stated budget, measured on the container plane.~~ **Retired 2026-11-11.** A first ingest's wall time is the parent's outcome (#64). This fix's share is blob acquisition, measured in PR #245: 23,187 blobs in 28 s on cold clones.
+- [ ] **A prefetch that ends `unavailable` is recorded on the run, with its `reason`.** `prefetchRevisionBlobs` returns both (`gitMirror.mjs:1397-1402`), and the two tenant call sites discard the result (`extractionProfileRunner.mjs:518`, `repositoryClassHierarchyResolver.mjs:180`), so the ingest falls back to one round trip per file with no trace. This replaces the 0.42 s/file threshold (rewritten 2026-11-11): that assertion needs a cold mirror and a network, so it cannot run in CI. The code-side regression is already guarded: `tenantRepoIngestEnvelopeCredential.spec.mjs:238-240` fails when an envelope build never prefetches.
 - [x] **Option A tested properly, on a fresh cold clone.** PR #245. Four cold `--filter=blob:none` clones, no live volume touched. One `git fetch origin <OIDs>` per 1000-OID chunk: 500 blobs in **1.5 s** (vs **234 s** sequential over the identical files), the whole 23,187-blob revision in **28 s**, `--missing=print` reporting **0** afterwards.
   - 🔴 **Root cause of invalid attempt 1, now known: `git fetch-pack` cannot speak smart-HTTPS.** With the remote name it reports `'origin' does not appear to be a git repository`; with the URL, `protocol 'https' is not supported`. It was never going to run — the arms fell through to sequential and the identical timings read as *"batching does not help."*
   - `git cat-file --batch` over many OIDs is **not** a batch: 30 s vs 31 s for the same 60 blobs, because the promisor fetch stays per-object. A real negative result, with both controls, unlike the two above.
@@ -389,6 +393,7 @@ Authored by @neo-opus-vega (Claude Opus 5).
 - 2026-08-19T08:48:35Z @neo-opus-grace cross-referenced by #17377
 - 2026-08-20T08:09:32Z @neo-opus-vega cross-referenced by #17410
 - 2026-08-23T17:03:56Z @neo-opus-vega cross-referenced by #17627
+- 2026-08-26T15:27:13Z @tobiu added parent issue #64
 - 2026-08-29T23:45:14Z @neo-opus-vega cross-referenced by PR #245
 - 2026-08-30T00:42:53Z @neo-opus-vega referenced in commit `d6622fd` - "docs(kb): the prefetch rationale states intent, not its ticket (#65)
 
@@ -410,4 +415,46 @@ genuinely cannot infer."
 perf(kb): prefetch a revision's blobs in one negotiation, not one per file (#65)"
 - 2026-08-30T20:47:51Z @neo-gpt-emmy cross-referenced by #260
 - 2026-08-30T20:55:01Z @neo-opus-ada cross-referenced by #261
+- 2026-09-21T14:18:02Z @neo-opus-vega cross-referenced by #406
+- 2026-09-22T22:25:57Z @neo-opus-vega cross-referenced by #411
+- 2026-09-22T23:29:12Z @neo-opus-vega cross-referenced by #415
+- 2026-09-22T23:39:58Z @neo-opus-vega cross-referenced by #417
+- 2026-09-23T01:41:10Z @neo-opus-vega cross-referenced by #420
+- 2026-09-23T12:32:50Z @neo-opus-vega cross-referenced by #429
+- 2026-09-23T12:33:27Z @neo-opus-vega cross-referenced by #430
+- 2026-09-23T12:52:42Z @neo-opus-vega cross-referenced by #432
+- 2026-09-23T13:31:04Z @neo-opus-vega cross-referenced by #434
+- 2026-09-23T14:17:15Z @neo-opus-vega cross-referenced by #438
+- 2026-09-23T14:39:40Z @neo-opus-vega cross-referenced by #440
+- 2026-09-24T11:46:56Z @neo-opus-vega cross-referenced by #449
+- 2026-09-25T12:42:05Z @neo-opus-vega cross-referenced by #486
+- 2026-09-25T17:54:39Z @neo-opus-vega cross-referenced by #504
+- 2026-09-25T18:09:12Z @neo-preview cross-referenced by PR #505
+- 2026-10-04T11:41:43Z @neo-opus-vega cross-referenced by #15000
+- 2026-10-10T16:27:06Z @neo-opus-vega cross-referenced by #968
+- 2026-10-15T11:28:33Z @neo-opus-ada cross-referenced by #1049
+- 2026-10-29T13:47:17Z @neo-opus-vega cross-referenced by #1350
+- 2026-10-30T21:15:38Z @neo-opus-vega cross-referenced by #1382
+### @neo-opus-vega - 2026-11-11T02:47:51Z
+
+**Premise read, 2026-11-11 (Brain `dev` `0bd80723`): the defect is fixed; the two plane ACs are replaced by one.**
+
+- **Fixed by PR #245.** `prefetchRevisionBlobs` (`ai/services/knowledge-base/helpers/gitMirror.mjs:1309`) fetches a revision's blobs together, and the tenant path calls it before it reads (`extractionProfileRunner.mjs:518`). A build that never prefetches fails `tenantRepoIngestEnvelopeCredential.spec.mjs:238-240`.
+- **Retired: the first-ingest budget on the plane.** A first ingest's wall time is #64's outcome. This fix's share is blob acquisition, measured in PR #245: 23,187 blobs in 28 s on cold clones.
+- **Rewritten: the 0.42 s/file threshold.** It needs a cold mirror and a network, so it cannot run in CI. What can still return silently is the runtime fallback: `prefetchRevisionBlobs` reports `unavailable` with a `reason` (`gitMirror.mjs:1397-1402`), and both tenant call sites discard the result (`extractionProfileRunner.mjs:518`, `repositoryClassHierarchyResolver.mjs:180`). The remaining AC records it on the run.
+
+My two comments of 2026-08-06 (a sparse checkout by declared paths) are superseded by PR #245's path-scoped prefetch. The fix is small and mine.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
+- 2026-11-11T04:38:33Z @neo-opus-vega cross-referenced by #1597
+- 2026-11-11T05:09:28Z @neo-opus-vega cross-referenced by PR #1599
+### @neo-opus-vega - 2026-11-11T05:41:47Z
+
+**Handover at session sunset, 2026-11-11 (owner Vega, session `c5c56705-fbd2-411a-9136-6447cb2eb379`).**
+
+PR #1599 at `2aec41b7` delivers this ticket's last open criterion: a bulk prefetch that ends `unavailable` is kept on the revision reader's shared session, carried on the envelope and logged as one WARN per repository. CI is green and Maryam is the requested primary reviewer since 05:17Z. Mine in the next session: answer the review. Nothing is owed after the merge; it closes this ticket.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
 

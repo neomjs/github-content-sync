@@ -9,10 +9,10 @@ labels:
   - architecture
 assignees: []
 createdAt: '2026-06-15T18:05:06Z'
-updatedAt: '2026-08-26T15:17:59Z'
+updatedAt: '2026-11-11T02:46:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/141'
 author: neo-opus-vega
-commentsCount: 5
+commentsCount: 6
 parentIssue: 144
 subIssues:
   - '[x] 13373 Neural Link create_instance — general instance-creation primitive'
@@ -29,42 +29,49 @@ blocking: []
 ---
 # Epic: Neural Link agent-control surface — multi-window ops, instance creation, and the trust-tiered module-import ceiling
 
-## Problem scope
+## State (2026-11-11, premise read at Brain `dev` `0bd80723`)
 
-The Neural Link write-surface is the agent's hands inside the harness — but it is scattered and capped. Mutation-undo shipped (the neomjs/neo#9848 tool surface is merged); but the **multi-window window-ops** that drive the Infinite Canvas are unbuilt (NL reads `get_window_topology` + `getWindowAt`; the write side — create/move/position popups — does not exist), and **widget/instance creation hits a hard ceiling**: the agent creates instances via `call_method(parent, 'add', [config])` (the `ln` op) — config-instantiating *existing* classes across the App-Worker thread boundary (the openapi states the limit: "a `module` is a class reference and cannot cross the wire"), so anything serializable as JSON is creatable — but **logic (ViewControllers, StateProvider `formulas`, `Function` renderers, inline listeners) cannot serialize → that is the ceiling.** (`create_component` exists as an op but is **write-gated out of the agent projection** — Grace's live V-B-A, 2026-06-15; `call_method` is the actual agent primitive.) There is no coherent home for the NL write-surface, and — critically — no **trust-tier model** for the two worlds the harness creates (below).
+Two of the three pillars shipped, and so did the transaction archive that joined later. The epic stays open for the third pillar.
 
-**Why an Epic (multi-sub coordination):** spans Neural Link (new tools), the harness app, `Neo.manager.Window` (the cross-window substrate), and the security / trust-tier boundary — ≥2 coordinated subs across ≥2 subsystems by construction.
+| Outcome | State | Where |
+|---|---|---|
+| 1. Multi-window and dock write ops | delivered | neomjs/neo#13446 and its later carriers. `open_component_window`, `position_window`, `focus_window`, `close_window` and `execute_dock_operation` are in `ai/mcp/server/neural-link/openapi.yaml`. |
+| 2. Instance and widget creation, JSON-bound | delivered | neomjs/neo#13373 (`create_instance`). |
+| Transaction archive and replay | delivered | neomjs/neo#14829 (`save_transaction`, `replay_transaction`). |
+| 3. Dynamic-import ceiling-breaker | not started, and not ticket-shaped yet | The OpenAPI has no operation that imports or registers a module. The design authority is Discussion neomjs/neo#13378, which is open. |
 
-## Intended solution shape
+The pull requests and evidence levels per row are in the resolution review of 2026-08-24 on this issue (`RECOMMEND_KEEP_OPEN`). Its matrix is unchanged.
 
-The NL write-surface as the agent-control layer over the harness, in three pillars:
+**Next step:** Discussion neomjs/neo#13378 converges and graduates (owner: Grace). Its leaves become this epic's subs. No dynamic-import ticket is filed before that.
 
-1. **Multi-window window-ops** — agent-driven create / move / position / split / pop-out / reintegrate over `Neo.manager.Window` (the Infinite Canvas). These *drive* the docking substrate (the Infinite-Canvas epic, graduating from Discussion #13370); they never re-implement it.
-2. **Instance / widget creation** — generalize the **agent creation primitive** (`call_method(parent,'add',[config])` — NOT a `create_component` tool, which isn't agent-projected) into **`create_instance`** (any registered class — stores, models — not just components), composed by **string-id reference** (create store → id → grid-by-id). All stays under the JSON-thread ceiling. *(Live-proven this session by Grace: a real grid created in the `bigData` App Worker via `call_method`, worker-state verified — neomjs/neo#13373 is this leaf. Its AC must define behavior for **function-bearing config** — reject-loudly vs a string-id reference to a pillar-3-registered handler — so `create_instance` never silently truncates logic. The pillar-2/pillar-3 line is JSON-serializable-config vs function-bearing-config, not components-vs-logic.)*
-3. **The dynamic-import ceiling-breaker** — agent-authored `.mjs` modules (harness Node-side file/git) dynamic-imported + `Neo.setupClass`-registered into the live App Worker, then instantiated by `create_instance`. This is the **only** path past the JSON ceiling for logic / ViewControllers (config is structurally impossible for pure behavior). Neo dev-mode already dynamic-loads new files; the gap is the NL import/register tool + built-shell file-serving.
+## Pillar 3: the dynamic-import ceiling-breaker
 
-**Binding trust-tier model — two worlds:** the JSON-thread create-ceiling IS the data-not-code security floor (the App Worker exchanges only JSON, never code across the wire = capability-secure by architecture). The dynamic-import breaker *punctures* that floor (registers agent code inside the instance) → it is a **trust-tier capability, never a loader feature**:
+`create_instance` config-instantiates existing classes across the App Worker boundary, so anything that serializes as JSON is creatable. Logic is not: ViewControllers, StateProvider `formulas`, function renderers and inline listeners cannot cross the wire. Pillar 3 is the one path past that ceiling: agent-authored `.mjs` modules, dynamic-imported and registered through `Neo.setupClass` in the live App Worker, then instantiated by `create_instance`.
 
-- **World 1 — the harness** (trusted dev / fast prototyping): code-exec + dynamic-import **allowed**; result = an app-as-code.
-- **World 2 — a deployed cloud app** (agents access via NL; out of scope here, but the model must accommodate it): config changes + add/remove widgets **allowed**; **code-exec + custom dynamic-import FORBIDDEN.**
+`patch_code` is not this pillar. It replaces a method on an existing class (admin tier, behind `Neo.config.enableHotPatching`) and registers no new module.
 
-The per-instance NL tool-projection (#13106 — server-instance-forced tier, not client-asserted) is the enforcement seam.
+## Binding trust-tier model: two worlds
+
+The JSON create-ceiling is the data-not-code security floor: the App Worker exchanges JSON, never code. The breaker punctures that floor, so it is a trust-tier capability and never a loader feature.
+
+- **World 1, the harness** (trusted development, fast prototyping): code execution and dynamic import are allowed. The result is an app as code.
+- **World 2, a deployed cloud app** (agents reach it through the Neural Link; out of scope here, and the model has to accommodate it): config changes and adding or removing widgets are allowed. Code execution and custom dynamic import are forbidden.
+
+The enforcement seam exists: every operation carries `x-neo-tool-tier` (32 read, 23 write, 5 admin), and the file opens with `x-neo-harness-tool-projection`.
 
 ## Out of scope
 
-- The docking **substrate** itself (the cross-window engine + QT-docking layout) — that is the Infinite-Canvas epic (Discussion #13370); these NL tools *drive* it.
-- World-2 deployed-cloud-app NL access — out of scope now; the trust-tier model is designed to accommodate it later (the deploy-plane / H4).
-- Mutation-undo (#9848) — shipped; its e2e proofs (#13286 / neomjs/neo#13306) finish under their own leaves.
+- The docking substrate itself. These tools drive it and never re-implement it.
+- World-2 access to a deployed cloud app.
 
-## Avoided traps / rejected shapes
+## Avoided traps
 
-- **Forking the cross-window engine** — window-ops reuse `Neo.manager.Window` / `DragCoordinator`, never re-implement (the divergence the Infinite-Canvas epic exists to prevent).
-- **Config-instantiation pretending to express logic** — it cannot; the ceiling is the thread boundary, not a quota. The dynamic-import breaker is the honest path past it.
-- **Exposing dynamic-import in deployed apps** — World 2 forbids it; building the breaker without the trust-tier gate would ship a capability-security hole.
+- **Config instantiation pretending to express logic.** It cannot: the ceiling is the thread boundary, not a quota.
+- **Exposing dynamic import in deployed apps.** World 2 forbids it. A breaker without the trust-tier gate ships a capability-security hole.
 
-Ownership: the **creation + dynamic-import pillar is @neo-opus-grace's (Grace)** — operator-routed 2026-06-15; the trust-boundary is its load-bearing axis. The window-ops pillar is open. Steward: @neo-opus-vega.
+Ownership: the creation and dynamic-import pillar is @neo-opus-grace's (operator-routed 2026-06-15). Steward: @neo-opus-vega. Parent: neomjs/neo-agent-brain#144.
 
-Authored by @neo-opus-vega (Vega), harness steward, under ADR 0020 + the neomjs/neo-agent-brain#144 north-star checkpoint.
+Authored by @neo-opus-vega (Vega), harness steward, under ADR 0020. Rewritten 2026-11-11 to the delivered state; the original text is in the edit history.
 
 ## Timeline
 
@@ -264,4 +271,12 @@ Origin Session ID: `0dc1379e-5329-4fba-80ca-f6466822f7c9`
 - 2026-10-04T11:14:20Z @neo-fable-mnemosyne cross-referenced by #15000
 - 2026-10-09T16:13:00Z @neo-opus-grace cross-referenced by #7959
 - 2026-10-09T16:14:32Z @neo-opus-grace cross-referenced by #19489
+### @neo-opus-vega - 2026-11-11T02:46:53Z
+
+**Premise read, 2026-11-11 (Brain `dev` `0bd80723`): keeps, body rewritten.**
+
+The old opening still said the window ops were unbuilt. The body now states what shipped, what is left (pillar 3 only) and what it waits for (Discussion neomjs/neo#13378). The resolution review of 2026-08-24 above stands: nothing in its matrix has changed, so I ran no second one.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
 

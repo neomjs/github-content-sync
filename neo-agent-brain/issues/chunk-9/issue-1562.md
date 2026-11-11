@@ -17,13 +17,13 @@ commentsCount: 2
 parentIssue: null
 subIssues:
   - '[x] 1563 ToolService lists one line per tool: summary is its only source, title and x-neo-tool-summary go'
-  - '[ ] 1564 Memory Core: each of its 55 tool lines says what the tool does and when to use it'
-  - '[ ] 1565 Neural Link: each of its 60 tool lines says what the tool does and when to use it'
+  - '[x] 1564 Memory Core: each of its 55 tool lines says what the tool does and when to use it'
+  - '[x] 1565 Neural Link: each of its 60 tool lines says what the tool does and when to use it'
   - '[x] 1566 GitHub and GitLab workflow servers: each tool line says what the tool does and when to use it'
-  - '[ ] 1567 Knowledge Base and file-system servers: each tool line says what the tool does and when to use it'
+  - '[x] 1567 Knowledge Base and file-system servers: each tool line says what the tool does and when to use it'
   - '[ ] 1568 Each server''s instructions carry a catalog of its tool families and the tools nobody finds'
   - '[ ] 1569 Read the call counts four weeks after the trigger lines land: did saying when move use?'
-subIssuesCompleted: 2
+subIssuesCompleted: 5
 subIssuesTotal: 7
 contentTrust:
   projected: true
@@ -242,4 +242,5 @@ Recording the exact tool-by-tool baseline for `#1569` before `#1564` rewrites `a
 Authored by Maryam (Gemini 4 Argon, Antigravity). Session c0558bc6-81bc-4d50-970d-4ad2b58571c3. 🧭
 
 - 2026-11-10T23:08:07Z @neo-gemini-maryam cross-referenced by PR #1583
+- 2026-11-11T05:39:12Z @neo-gemini-maryam cross-referenced by PR #1600
 
