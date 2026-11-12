@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-11T18:26:30Z'
-updatedAt: '2026-11-12T07:02:06Z'
+updatedAt: '2026-11-12T18:09:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/917'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: 424
 subIssues: []
 subIssuesCompleted: 0
@@ -54,11 +54,13 @@ It used the cold class, offered only Reconnect, and showed an empty roster. The 
 
 **Recovery itself worked without any click.** The ingress came back at 17:56:14Z. Main re-probed and booted the fleet at 17:56:20Z (plane init 36 ms, verified), and the spine went `live` between 17:57:24Z and 17:57:30Z. Only the words on screen are wrong.
 
-**Unknown, narrowed on 2026-11-12** (code read on `dev` `72dcd27`; this path is unchanged since `6f00d3da`):
-- **Not the verdict precedence.** The cold branch skips `connectionVerdict` only while `transport.phase === 'starting'`, and `spineBannerPipeline.spec.mjs` "starting transport (#735, #739)…" already turns a cold grid with a timed-out roster read plus a `plane-starting` fact into `Agent OS starting · 62 s`.
-- **Not main's fact.** `uiTransportFact` is `startTransportFact()` before the window can read, `onPlaneStarting` sets the `plane-starting` fact (its log line above fired), and `brain-health` is registered before the window exists.
-- **So the renderer's `shellTransport` was not `starting`.** `BrainHealthRead.apply` is its only writer. A failed pull writes `null`, and only a `starting` answer arms the 1 s re-pull, so after a failed pull the next one waits for the 120 s cadence or a Reconnect. The Reconnect above re-pulled and still showed the timeout, so the pulls failed, or answered without the fact, more than once.
-- **What tells:** an installed run in which main logs each `brain-health` answer's `transport.phase` and the renderer logs each pull's outcome.
+**Root cause, found 2026-11-12 18:03Z** (installed FM: Brain `dc3082cc`, Institution `821376a`, Engine 13.4.0; the plane's ingress was down 18:02:46Z → 18:04:17Z, and the FM was quit and reopened):
+- **The pulls carry the fact.** 3 s after `HARNESS_BRAIN_PLANE_STARTING`, the cockpit controller (`neo-fm-fleet-cockpit-controller-1`) read `brainHealthReadGeneration: 11`, `_brainWasStarting: true` and its 1 s timer armed. The console showed one `brainHealth` call per second and no error. Only a `starting` answer arms that timer.
+- **The provider drops it.** At the same moment the provider (`neo-state-provider-2`) read `data.shellTransport: null`, and the spine read `fleet timed out · Roster read timed out — no fleet data yet` (cold), which reproduces 2026-11-11.
+- **Why.** `BrainHealthRead.apply` calls `provider.setData('shellTransport', transport)`. The engine's `state.Provider#internalSetData` drills a plain-object value into leaf paths (`shellTransport.phase`, …) and bubbles each leaf into its parent, but it stops when the parent's current value is not an object ("Stop if parent is not an object"). The cockpit provider declares `shellTransport: null`, so the parent stays `null`, and `deriveBannerVerdict` hands the spine `transport: null`.
+- **Why the spec is green.** `makeProviderFake` (`cockpitFakes.mjs`) assigns `data[key] = value` whole, so it differs from the real Provider exactly here. Main's fact, the verdict precedence and `coldFallbackFor` are all correct.
+- **A second key, same drop:** `FleetAdmission` writes `presenceCapability: capabilities?.presence` (an object) into another `null`-declared key. It read `null` on the healthy FM as well.
+- **Probe used** (no custom build): Neural Link `get_instance_properties` with dotted paths. `inspect_state_provider` on that provider closed the bridge on 2026-11-12, so it is not used.
 
 ## The Architectural Reality
 
@@ -73,8 +75,8 @@ It used the cold class, offered only Reconnect, and showed an empty roster. The 
 
 ## The Fix
 
-1. **Find where the fact is lost, then reproduce it there, red on `6f00d3da`.** A spine spec cannot do it: with a `starting` fact the spine already answers correctly (see Unknown). The installed run named there finds the seam; its spec feeds the facts seen on 2026-11-11 (a stored plane typed `plane-unreachable` at boot, main in the plane-starting wait, the roster read timing out after 10 s) and shows `fleet timed out`, as the spine did.
-2. **Make the `plane-starting` branch win** at the input the reproduction names, either the transport fact the renderer receives or the verdict precedence:
+1. **Reproduce at the seam, red on `6f00d3da`:** use the REAL cockpit `StateProvider`, not the fake. `BrainHealthRead.apply` with `{state: 'degraded', transport: {phase: 'starting', reason: 'plane-starting', since, elapsedMs}}` should leave the fact in `data.shellTransport` and the spine on `Agent OS starting · N s`. Today it leaves `null` and `fleet timed out`. Add the same arm for `presenceCapability`.
+2. **Keep each fact whole in the real Provider:** a fact (a value whose keys vary between writes) must not be merged leaf by leaf, or stale keys from the previous fact survive. Choose in the PR between a declared full key set that is written in full every time (with the formula reading an all-`null` shape as `null`) and an atomic write. Then the `plane-starting` branch shows:
    - `Agent OS starting · N s` from first paint, with `Longer than usual.` from 60 s;
    - `Agent OS not answering · N min` from 180 s, with `#847`'s lead.
 
@@ -82,6 +84,7 @@ It used the cold class, offered only Reconnect, and showed an empty roster. The 
 
 - [ ] With the stored plane unreachable at boot, the spine never shows `fleet timed out`. It shows `#847` §3's pill and lead before and after 180 s. A spec at the seam that loses the fact is red on `6f00d3da` and green after.
 - [ ] The roster read's 10 s timeout during the plane-starting wait does not produce its own verdict. Same spec.
+- [ ] `presenceCapability`, as `FleetAdmission` writes it, reaches `data.presenceCapability` whole in the real Provider. Same spec.
 - [ ] *(post-merge, installed)* Row 5's H1 re-walk on the next candidate passes: the reason and the next step are readable without hovering. One receipt on #516 and #424.
 
 ## Out of Scope
@@ -117,4 +120,22 @@ Retrieval Hint: "plane down at launch fleet timed out shadows Agent OS starting"
 - 2026-11-12T02:15:43Z @neo-opus-ada cross-referenced by #927
 - 2026-11-12T02:15:56Z @neo-opus-ada cross-referenced by #928
 - 2026-11-12T02:31:04Z @neo-opus-ada cross-referenced by #929
+- 2026-11-12T17:30:37Z @neo-opus-ada cross-referenced by #424
+### @neo-opus-ada - 2026-11-12T18:09:02Z
+
+**Handover (session refresh; the owner stays me):** the seam is found and written into the body (*Root cause, found 2026-11-12 18:03Z*). No branch exists yet.
+
+**Pickup:**
+1. Write a spec on the real `AgentOS.view.fleet.cockpit.StateProvider` (not `makeProviderFake`). `BrainHealthRead.apply` with a `plane-starting` fact must leave it in `data.shellTransport`, and the spine must read `Agent OS starting · N s`. It is red today. Add the same arm for `presenceCapability` written by `FleetAdmission`.
+2. The fix keeps each fact whole in the real Provider. Choose between a full declared key set written in full every time and an atomic write, so that no stale key survives from the previous fact. Ask the engine owners whether `setData('k', {…})` on a key declared `null` should land whole; this ticket fixes the cockpit side either way.
+3. Then an installed candidate and the H1 + provocation 1 re-walk at the operator's slot. Receipt on #424 and #516.
+
+**Probe for the re-walk:** Neural Link `get_instance_properties` with dotted paths on the provider and on `neo-fm-fleet-cockpit-controller-1`. Never `inspect_state_provider`; it closed the bridge.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-12T18:29:52Z @neo-opus-ada cross-referenced by PR #943
+- 2026-11-12T18:38:46Z @neo-opus-ada referenced in commit `3d460bb` - "chore(agentos): restamp baselines; comments carry no refs (#917)
+
+The visual stamp follows the four touched apps/agentos blobs; every screenshot golden verifies unchanged at this head. Test comments drop their ticket references for the archaeology check."
 

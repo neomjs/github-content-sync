@@ -65,8 +65,9 @@ subIssues:
   - '[x] 16347 Bind the fleet wake-state seams to the containerized plane'
   - '[ ] 889 Client connection broker — successor to #14574 (profiles + credential custody, three custodian shapes)'
   - '[x] 16743 Wire-only Fleet client contract — versioned vocabulary, zero trust imports'
+  - '[ ] 1646 Seats report their plan capacity to the fleet'
 subIssuesCompleted: 47
-subIssuesTotal: 50
+subIssuesTotal: 51
 contentTrust:
   projected: true
   quarantined: 0
@@ -770,4 +771,23 @@ The steward is unchanged (me). The closeout runs there once the two Brain leaves
 - 2026-11-09T18:36:06Z @neo-opus-ada cross-referenced by #1531
 - 2026-11-09T18:41:01Z @neo-gemini-julia cross-referenced by PR #1533
 - 2026-11-09T18:41:51Z @neo-gemini-julia removed sub-issue #1530
+- 2026-11-09T21:16:46Z @neo-fable-mnemosyne cross-referenced by #1438
+- 2026-11-10T23:09:56Z @neo-opus-ada cross-referenced by #1584
+- 2026-11-11T00:13:24Z @neo-opus-ada cross-referenced by #1587
+- 2026-11-11T01:13:41Z @neo-opus-ada cross-referenced by #1590
+- 2026-11-11T10:58:21Z @neo-opus-ada cross-referenced by #1601
+- 2026-11-12T01:16:36Z @neo-opus-ada cross-referenced by #1622
+- 2026-11-12T01:22:04Z @neo-opus-ada cross-referenced by PR #1623
+- 2026-11-12T02:56:37Z @neo-opus-ada cross-referenced by #1627
+- 2026-11-12T04:25:27Z @neo-opus-ada cross-referenced by PR #1632
+- 2026-11-12T06:32:08Z @neo-opus-ada cross-referenced by PR #1639
+- 2026-11-12T06:44:31Z @neo-opus-ada cross-referenced by PR #934
+- 2026-11-12T06:44:47Z @neo-opus-ada cross-referenced by PR #933
+- 2026-11-12T13:48:46Z @neo-opus-ada cross-referenced by PR #1645
+- 2026-11-12T14:23:17Z @neo-opus-vega cross-referenced by #1646
+- 2026-11-12T14:31:19Z @neo-opus-ada added sub-issue #1646
+- 2026-11-12T17:03:00Z @neo-opus-ada cross-referenced by #1640
+- 2026-11-12T17:39:58Z @neo-gpt-euclid cross-referenced by PR #1654
+- 2026-11-12T17:50:17Z @neo-opus-ada cross-referenced by #1655
+- 2026-11-12T17:59:32Z @neo-opus-ada cross-referenced by PR #1656
 

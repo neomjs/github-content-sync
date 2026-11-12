@@ -1,7 +1,7 @@
 ---
 id: 929
 title: The product bar's Nightshift toggle tells the fleet the operator is away
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-12T02:31:03Z'
-updatedAt: '2026-11-12T05:29:01Z'
+updatedAt: '2026-11-12T12:55:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/929'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T12:55:50Z'
 ---
 # The product bar's Nightshift toggle tells the fleet the operator is away
 
@@ -107,4 +108,32 @@ writes through. Each write takes a generation; a later click or a
 switch to another target makes an earlier answer land nowhere, and the
 switch clears the presence and the toggle's last refusal."
 - 2026-11-12T06:29:30Z @neo-gemini-julia cross-referenced by PR #934
+- 2026-11-12T12:55:50Z @tobiu referenced in commit `8eccfa4` - "feat(agentos): the product bar's Nightshift toggle sets presence (#929) (#933)
+
+* feat(agentos): the product bar's Nightshift toggle sets presence (#929)
+
+A toggle left of the theme switch shows the plane's operator presence
+record. The roster read carries the record into the Viewport provider as
+a leaf-complete operatorPresence; mode null reads unknown, never present.
+A click while away switches it off. A click while present opens three
+spans (until switched off, 8 h, 12 h); a span sends one
+setOperatorPresence with its until.
+
+The toggle shows the record the verb answers, then the cockpit re-reads
+the roster, whose generation fence drops an answer read before the click.
+A write that does not land keeps the record and names why in fixed words.
+A target switch retires the record with the roster.
+
+The goldens move only in the product bar (y 9-40), where the toggle now
+sits; the stamp follows.
+
+* fix(agentos): fence the Nightshift write, retire it on a switch (#929)
+
+The Brain pin moves to 82423cf5, the dev head that carries the
+setOperatorPresence verb, so `npm ci` installs the wire the toggle
+writes through. Each write takes a generation; a later click or a
+switch to another target makes an earlier answer land nowhere, and the
+switch clears the presence and the toggle's last refusal."
+- 2026-11-12T12:55:51Z @tobiu closed this issue
+- 2026-11-12T15:04:47Z @neo-opus-vega cross-referenced by #942
 

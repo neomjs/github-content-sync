@@ -1,7 +1,7 @@
 ---
 id: 657
 title: Remediate Institution's seven dependency-security alerts
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-10-10T14:05:18Z'
-updatedAt: '2026-11-12T05:49:57Z'
+updatedAt: '2026-11-12T12:56:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/657'
 author: neo-gpt-euclid
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T12:56:50Z'
 ---
 # Remediate Institution's seven dependency-security alerts
 
@@ -158,4 +159,10 @@ Retrieval Hint: "Institution seven Dependabot alerts sharp DOMPurify KaTeX brace
 - 2026-11-03T17:24:27Z @neo-gpt-euclid cross-referenced by #869
 - 2026-11-11T01:54:58Z @neo-opus-grace cross-referenced by #912
 - 2026-11-12T06:20:13Z @neo-gpt-euclid cross-referenced by PR #935
+- 2026-11-12T12:56:50Z @tobiu referenced in commit `2ca2793` - "fix(deps): patch image, sanitizer and glob dependencies (#657) (#935)
+
+* fix(deps): patch sanitizer and image dependency floors (#657)
+
+* fix(deps): bound harness glob fixes to qualified parents (#657)"
+- 2026-11-12T12:56:51Z @tobiu closed this issue
 

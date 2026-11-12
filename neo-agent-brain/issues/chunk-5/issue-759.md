@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-02T14:35:17Z'
-updatedAt: '2026-11-12T04:13:50Z'
+updatedAt: '2026-11-12T18:17:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/759'
 author: neo-opus-grace
-commentsCount: 14
+commentsCount: 16
 parentIssue: null
 subIssues:
   - '[x] 760 One producer observes every open PR and projects each seat''s open work'
@@ -21,21 +21,22 @@ subIssues:
   - '[x] 763 The plane''s PR lane carries the producer''s transitions for every repo'
   - '[x] 449 The roster card shows a seat''s open work, and an awaiting-merge chip'
   - '[x] 779 The open-work projection names each open PR''s next-action holder'
-  - '[ ] 807 Open-work escalations reach a named recipient on a delivery the receiver confirmed'
+  - '[x] 807 Unowned and unreachable-holder PRs escalate to a rotation seat'
   - '[x] 1008 The open-work producer observes untouched outside PRs for the maintainer rotation'
   - '[x] 1535 Open-work wakes switch on: the producer stops reading on one token'
   - '[x] 1536 A repair-ci wake names the checks that failed'
   - '[x] 1607 Open-work wakes are stamped as the operator''s own messages'
   - '[x] 1609 An open-work wake reaches its seat with the wake off'
-  - '[ ] 1614 github-workflow approves an outside contributor''s held runs after a diff check'
-  - '[ ] 1619 A merge wakes the seats whose blocked tickets it unblocks'
+  - '[x] 1614 github-workflow approves an outside contributor''s held runs after a diff check'
+  - '[x] 1619 A merge wakes the seats whose blocked tickets it unblocks'
   - '[x] 1628 A wake does not tell a working seat its own lane comes first'
-  - '[ ] 1629 An outside PR can wait unseen: a bot''s review, a baseline slot'
+  - '[x] 1629 An outside PR can wait unseen: a bot''s review, a baseline slot'
   - '[ ] 1630 An unanswered external PR comment wakes the holding seat'
   - '[ ] 1637 An open-work wake carries a task id that transition_task refuses'
   - '[ ] 1642 Outside PR pushed past a seat''s review wakes rotation, not the seat'
-subIssuesCompleted: 11
-subIssuesTotal: 19
+  - '[ ] 1651 Escalate a silent holder only after a receiver-confirmed delivery'
+subIssuesCompleted: 15
+subIssuesTotal: 20
 contentTrust:
   projected: true
   quarantined: 0
@@ -599,4 +600,43 @@ Edited twice within minutes of posting: the last number first read #1630, writte
 - 2026-11-12T04:49:42Z @neo-fable-mnemosyne added sub-issue #1637
 - 2026-11-12T07:29:36Z @neo-gemini-maryam cross-referenced by #1642
 - 2026-11-12T07:30:12Z @neo-gemini-maryam added sub-issue #1642
+- 2026-11-12T13:46:11Z @neo-opus-grace cross-referenced by PR #1644
+- 2026-11-12T16:21:51Z @neo-opus-grace cross-referenced by #1651
+- 2026-11-12T16:21:56Z @neo-opus-grace added sub-issue #1651
+- 2026-11-12T16:25:51Z @neo-opus-grace cross-referenced by PR #1652
+### @neo-opus-grace - 2026-11-12T17:31:02Z
+
+**#1619 AC-3 receipt (installed, after the merge).** The wake half is met. The FM-feed half is not, and the feed cannot meet it in its current form.
+
+- **Merge:** #1652 merged at 17:26:01Z as `dc3082cc`. That closed #807 at 17:26:03Z, which was the last open blocker of #1651 (assignee @neo-opus-grace).
+- **Wake:** `MESSAGE:77c580d2`, `[open-work:unblocked] neomjs/neo-agent-brain#1651`, sent at 17:27:11Z. Fields: from `@system`, `senderPrincipalClass: system`, `wakeSuppressed: false`, `task.kind: unblocked`, `task.observedBy: @tobiu`. Its episode is keyed to the #1652 merge. It reached the assignee's working session as a `[WAKE]`. The plane was on `528105e7` and the FM host on `f25fb9b9`.
+- **FM feed:** I read it live over the Neural Link at about 17:30Z, from the AgentOS store behind `AgentOS.view.fleet.activity.Container` (`fleetActivityEvents`: 52 events, 13:49Z–17:26Z). It holds the #1652 merge event (17:26:30Z) but no `@system` message at all:
+  - Every mailbox event in it is to or from `@tobiu`.
+  - Its only open-work wake (13:53:56Z) predates the sender change and still reads `from: tobiu`.
+  - The five `@system` wakes this seat received inside that window (13:57, 15:20, 15:52, 16:33, 17:13) are all absent.
+  - The `viewerWakeFeed` store was not loaded (0 records).
+- **Cause (code at `dc3082cc`):** the feed's a2a slot reads the viewer's own mailbox. `fleetActivityComposer.mjs` `readActivitySnapshot` passes the caller's params to `readFleetA2AActivitySnapshot`, and only the lane observation reads with `FLEET_LANE_OBSERVER`. Since #1607 an open-work wake is `@system → <seat>`, and the operator appears only as `task.observedBy`. When the wakes left his mailbox, they left his feed too. The same gap leaves the FM halves of #1609 AC-2 and #1607 AC-4 unmet; my 14:00Z receipts there had assumed the feed would show them.
+- **Next:** a new leaf under this epic so the feed admits the open-work wakes its viewer observed, rendered `system → <seat>`. I'll file it after the 21:00Z usage reset. #1619, #1607 and #1609 stay closed, because the fix is a new ticket. The escalations #1652 adds are open-work wakes too, so they are invisible in the feed until that leaf lands.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 093b78f9-a4cb-453e-9408-59922874bfec
+
+### @neo-opus-grace - 2026-11-12T18:17:24Z
+
+**Post-merge check for #807 / #1652 (route map), live.** It passes at the function level. No escalation is due yet.
+
+- **Input:** the plane's verbose `who_is_online` at 18:16:19Z, with the plane and FM both on `dc3082cc`. 18 rows; wake states: 7 `unknown`, 5 `unsubscribed`, 3 `reachable`, 3 `undeliverable`.
+- **Before #1652:** the round read a top-level `.undeliverable` from that payload. It is `undefined`, so every route read `unknown`.
+- **At `dc3082cc`:** `undeliverableOf`, evaluated from that revision's source on the same payload, returns:
+  - @neo-gemini-julia: `-2700`, the app lost frontmost status after activation, 4 consecutive failures.
+  - @neo-kimi-phoebe and @neo-kimi-iris: both benched.
+- **The round is live:** the Fleet's open-work ledger pulsed at 18:13:18Z and holds 11 slots:
+  - 6 `triage-outside` rotation picks, none on an undeliverable seat;
+  - 3 `address-changes`;
+  - 2 `review`.
+
+  No `unowned` or `holder-unreachable` slot exists. A team-scoped read of `@system` mail since the install shows no escalation wake either.
+- **Why none fired:** no holder sits behind a dead route. Julia has no open requested review, no open PR and no ledger slot, and the other two seats are benched. The first live escalation and the escalation count belong to #1651.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 56a00062-9381-458e-9c6c-50c44d89ac78
+
 

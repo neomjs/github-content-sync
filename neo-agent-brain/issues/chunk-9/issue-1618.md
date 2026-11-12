@@ -1,7 +1,7 @@
 ---
 id: 1618
 title: The mirror misses a wrap-up ask that opens with an unlisted verb
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-11T22:21:28Z'
-updatedAt: '2026-11-11T22:22:33Z'
+updatedAt: '2026-11-12T12:55:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1618'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T12:55:05Z'
 ---
 # The mirror misses a wrap-up ask that opens with an unlisted verb
 
@@ -115,4 +116,21 @@ Retrieval Hint: "deference mirror wrap-up ask verb list; a stated recommendation
 - 2026-11-11T22:21:30Z @neo-fable-mnemosyne added the `agent-os` label
 - 2026-11-11T22:22:32Z @neo-opus-ada assigned to @neo-opus-ada
 - 2026-11-12T01:16:36Z @neo-opus-ada cross-referenced by #1622
+- 2026-11-12T06:32:08Z @neo-opus-ada cross-referenced by PR #1639
+- 2026-11-12T06:38:15Z @neo-opus-ada cross-referenced by #1640
+- 2026-11-12T12:55:04Z @tobiu referenced in commit `cfb998a` - "feat(lifecycle): the question box mirror reads any verb (#1618) (#1639)
+
+A recommendation in the turn's text or in the ask ("I'd", "I recommend",
+"my pick is") now arms the box whatever verb opens it. A bare "I'll"
+keeps the agent-step gate: replayed over Ada's 402 dialogue asks, it
+armed twenty questions that were the operator's own. A box asking what
+he saw or a step only he takes stays his.
+
+In a turn the operator did not prompt, any ask blocks once, with a
+directive naming both exits: take the stated pick, or record the
+question on its ticket and continue with another lane. Both box
+reminders state the test: a question is the human's only when no gate
+of his will see the change before it takes effect."
+- 2026-11-12T12:55:06Z @tobiu closed this issue
+- 2026-11-12T15:10:20Z @neo-gpt-euclid cross-referenced by PR #1645
 

@@ -1,7 +1,7 @@
 ---
 id: 807
-title: Open-work escalations reach a named recipient on a delivery the receiver confirmed
-state: OPEN
+title: Unowned and unreachable-holder PRs escalate to a rotation seat
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-03T11:07:21Z'
-updatedAt: '2026-11-12T04:34:40Z'
+updatedAt: '2026-11-12T17:26:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/807'
 author: neo-opus-grace
-commentsCount: 5
+commentsCount: 6
 parentIssue: 759
 subIssues: []
 subIssuesCompleted: 0
@@ -22,9 +22,12 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[ ] 1653 The open-work rotation skips a seat whose plan is exhausted until its reset'
+  - '[ ] 1651 Escalate a silent holder only after a receiver-confirmed delivery'
+closedAt: '2026-11-12T17:26:03Z'
 ---
-# Open-work escalations reach a named recipient on a delivery the receiver confirmed
+# Unowned and unreachable-holder PRs escalate to a rotation seat
 
 ## Context
 
@@ -53,6 +56,32 @@ A silent-holder escalation built on a planned or attempted send would certify si
 - #1607 (PR #1613) moves open-work wakes to a plane intake that composes fixed text and sends as `@system`. The escalations ride it as further kinds.
 - The fleet server is host-edge, so it can read the receiver's dispatch records.
 
+
+### Intake findings (2026-11-12, Brain `dev` `528105e7`)
+
+Split the same day: the receipt and silence findings below now belong to #1651, together with AC-2's silent-holder half and the post-merge escalation count (the former AC-3). The exclusion AC is now AC-3.
+
+The drift probe fired: every path above has changed since 10-03. The premise still holds:
+- `OPEN_WORK_WAKE_REASONS` in `openWorkWakeMessage.mjs` has no escalation kind.
+- `pickRotationSeat` takes no exclusion.
+
+The intake established these sharpenings:
+- **Unowned** means `openWorkReducer#ownerOf` returned `kind: 'unowned'`: an org account whose body names no resolvable seat.
+  - When `holderOf` hands such a PR to its author (`repair-ci`, `address-changes`, `rebase`), `ids` is empty and nobody is woken. That is AC-1's case.
+  - A green unowned PR with no request and no opinion on its head has the same gap, because `route-review` requires a seat owner.
+- **The receipt needs no receiver change.**
+  - A wake's source id is its message id: `CoalescingEngineService#_getSourceEventId` returns `payload.messageId`.
+  - Each dispatch record keeps its `sourceEventIds` together with a terminal state.
+  - What is missing: `createOpenWorkWakeRound` discards the intake's `addMessage` receipt at `await admitWake(...)`, so no admitted wake knows its message id.
+  - The per-message verdict belongs beside `projectWakeDelivery`, whose module decides what counts as delivered.
+- **Silence is the slot outliving T.** A new head, a review on the head or a requested reviewer each closes the holder's slot. If the same slot is still open T after its wake was recorded `delivered`, the holder is silent. T is a module constant of 4 h, not a config leaf.
+- **Deploy order:** the plane intake learns the three kinds before the host sends them.
+- **Collision watch:** #1642 also changes how the planner routes rotation wakes.
+
+Prescription checked: `ai/services/fleet/openWorkWakes.mjs` — owns the concern (the recipient and the episodes)
+Prescription checked: `ai/services/fleet/openWorkWakeMessage.mjs` + `ai/services/memory-core/openWorkWakeIntake.mjs` — own the concern (the fixed-text `@system` kinds)
+Prescription checked: `ai/services/memory-core/wakeDeliveryProjection.mjs` — owns the concern (delivery verdicts)
+
 ## The Fix
 
 1. **The recipient: decided 2026-11-11.** "The lead" resolves to the maintainer rotation:
@@ -62,16 +91,25 @@ A silent-holder escalation built on a planned or attempted send would certify si
    - The operator's own holdings (an approved, green PR waiting for the human merge) are not escalated; the cockpit's awaiting-merge chip shows them.
    - The three escalations are `@system` kinds on #1607's intake (`unowned`, `holder-unreachable`, `holder-silent`), with fixed text and token payloads.
    - Signals: proposal `IC_kwDOUBzDFM8AAAABlb563w` (Grace, Claude); co-sign and exclude-set amendment `IC_kwDOUBzDFM8AAAABlb77GA` (Ada, Claude); `[GRADUATION_APPROVED]` with the only-holder and eligibility precisions `IC_kwDOUBzDFM8AAAABlcFW-w` (Euclid, GPT).
-2. **A receipt contract.** A sent wake is correlated with the receiver's dispatch record, so "delivered" holds per message. An attempt, or an ambiguous send, never counts as delivered.
-3. **The holder's artifact.** What counts as acting within T (a new head, a review on the head, a reply), read from the producer's transitions.
-4. **The three escalations,** built on #761's round. The salvage map is #761 comment 5968481942.
+2. **Moved to #1651 (split 2026-11-12):** the per-message receipt contract and the holder's artifact within T, which together make `holder-silent`.
+3. **The escalations,** built on #761's round: `unowned` and `holder-unreachable` here, `holder-silent` in #1651. The salvage map is #761 comment 5968481942.
+4. **The route input.** The round's route map comes from the verbose presence rows. It used to read a terse-only field, so no route ever read `unreachable` (defect-note bbac5c73).
+
+## Contract Ledger
+
+| Surface | Authority | Required behavior | Fallback | Documentation | Evidence |
+| --- | --- | --- | --- | --- | --- |
+| `admit_open_work_wake` (MCP) | `openapi.yaml` + `openWorkWakeMessage.mjs#validateOpenWorkObservation` | Two new kinds, `unowned` and `holder-unreachable`. The optional `holder` token is required for `holder-unreachable`, refused for every other kind, and never equal to `to` | An older plane refuses the new kinds and field, so the plane is cut before the host | OpenAPI property description; module JSDoc | Unit (message spec) |
+| `holderOf` (cockpit projection and wake path) | `openWorkHolder.mjs` | A green, unrouted, non-draft unowned PR is its author's `route-review`, with no ids | — | Inline comment | Unit (holder spec) |
+| `pickRotationSeat` | `openWorkWakes.mjs` | Optional exclude set; the hash still lands over the whole roster | No exclude set = the previous pick | JSDoc | Unit |
+| `wireFleetOpenWorkWakes` options | `wireFleetOpenWorkWakes.mjs` | `readPresence` (verbose) replaces `readUndeliverable`; `undeliverableOf` builds the route map | No read, or all rows `unknown` = every route unknown | JSDoc | Unit; boot seam spec |
+| Round ledger | `validateLedger` | An escalation entry carries `holder` in its slot and its key | Malformed = refused, with history preserved | JSDoc | Unit |
 
 ## Acceptance Criteria
 
 - [ ] AC-1 (was #761 AC-4): an unowned org PR reaches the rotation seat with "unowned: <PR>" (unit).
-- [ ] AC-2 (was #761 AC-5): an `unreachable` route reaches the rotation seat with the PR and the dead route. A wake the receiver recorded as `delivered`, with no holder artifact within T, reaches the rotation seat with the PR and the silent holder. A failed or undelivered wake never does. The tests discriminate failed, undelivered and delivered (unit).
-- [ ] AC-3 (was #761 AC-7's escalation falsifier, post-merge): a week after switch-on, #759 records whether escalations outnumber holder wakes.
-- [ ] AC-4: the pick never returns the escalated holder. A unit fixture puts the holder at the hash offset and the next eligible seat is picked. A roster whose only eligible seat is the holder leaves the episode `pending`, with no admitted wake and no send.
+- [ ] AC-2 (was #761 AC-5, first half): an `unreachable` route reaches the rotation seat with the PR and the dead route, and the route map that decides `unreachable` is read from the live presence answer (unit).
+- [ ] AC-3 (was AC-4): the pick never returns the escalated holder. A unit fixture puts the holder at the hash offset and the next eligible seat is picked. A roster whose only eligible seat is the holder leaves the episode `pending`, with no admitted wake and no send.
 
 ## Out of Scope
 
@@ -91,7 +129,6 @@ Origin Session ID: 9eba4853-ea86-428a-85f9-e9060002ca22
 Retrieval Hint: "open-work escalation recipient lead wake receiver confirmed delivery silent holder"
 
 🖖 Grace (Claude Opus 5.5, Claude Code)
-
 
 ## Timeline
 
@@ -207,4 +244,54 @@ Once a rotation slot is `admitted` in `ai/services/fleet/openWorkWakes.mjs`, it 
 
 - 2026-11-12T04:49:39Z @neo-opus-grace cross-referenced by PR #1638
 - 2026-11-12T07:29:36Z @neo-gemini-maryam cross-referenced by #1642
+- 2026-11-12T16:21:51Z @neo-opus-grace cross-referenced by #1651
+- 2026-11-12T16:21:58Z @neo-opus-grace marked this issue as blocking #1651
+- 2026-11-12T16:22:29Z @neo-opus-grace changed title from **Open-work escalations reach a named recipient on a delivery the receiver confirmed** to **Unowned and unreachable-holder PRs escalate to a rotation seat**
+- 2026-11-12T16:25:51Z @neo-opus-grace cross-referenced by PR #1652
+### @neo-opus-grace - 2026-11-12T16:49:05Z
+
+**Handover (Grace, session sunset, solo-refresh): #1652 is in review.**
+
+- **State:** #1652 at `ce033ffe` is green (17 checks pass, 2 skipped) and CLEAN. @neo-gpt-euclid holds the primary review seat. Next owner action: answer his review through the review-response protocol, then hand the merge to the operator.
+- **After merge, in this order:**
+  1. Cut the plane: the intake learns `unowned`, `holder-unreachable` and `holder`.
+  2. Update the FM.
+  3. Run the post-merge check: one live round's route map lists a seat whose verbose row reads `undeliverable`.
+- **Witness for #1619 AC-3:** the FM has carried #1644 since Ada's 16:44Z install. #1652's merge closes this ticket and unblocks #1651 (assigned to me, blocked only by #807), which should wake me with `unblocked`. Post that receipt on #759.
+- **Next lane:** #1651 (per-message receipt and `holder-silent`) once #1652 has merged. It is deferred today on weekly usage.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session a987be86-2d04-45d7-b504-afe80d6033e8
+
+- 2026-11-12T17:00:14Z @neo-opus-vega cross-referenced by #1653
+- 2026-11-12T17:00:21Z @neo-opus-vega marked this issue as blocking #1653
+- 2026-11-12T17:01:00Z @neo-opus-vega cross-referenced by #1646
+- 2026-11-12T17:26:02Z @tobiu referenced in commit `dc3082c` - "feat(fleet): unowned and unreachable-holder PRs escalate to a rotation seat (#807) (#1652)
+
+* feat(fleet): escalate an unowned PR or an unreachable holder to a rotation seat that is never the holder (#807)
+
+An action whose holder cannot act now reaches one rotation seat:
+- `unowned`: the author owes the action and no seat is the author;
+- `holder-unreachable`: a holder wake that waits on a dead route.
+
+`pickRotationSeat` takes an exclude set: the hash still lands over the
+whole roster, an excluded holder passes the pick to its successor, and
+a roster of only the holder stays pending under a placeholder that is
+never the holder. The holder joins the escalation's slot, wake key and
+task id, so two stranded holders are two tasks. An unowned green,
+unrouted PR is its author's `route-review`, which the escalation picks up.
+
+* feat(fleet): the rotation reads its route map from the verbose presence rows (#807)
+
+The round's `readUndeliverable` read `.undeliverable` from the shared
+presence read. That read asks `who_is_online` for its verbose answer,
+which carries each seat's wake state on its row and has no top-level
+map, so every route read `unknown`. A dead route was never skipped, and
+a `holder-unreachable` escalation could never fire.
+
+`wireFleetOpenWorkWakes` now takes `readPresence`, and `undeliverableOf`
+builds the map from the rows' `wake.state`. When every row reads
+`unknown`, the map is null, so an unreadable wake axis stays unknown.
+Defect-note bbac5c73 (Vega)."
+- 2026-11-12T17:26:04Z @tobiu closed this issue
+- 2026-11-12T17:39:58Z @neo-gpt-euclid cross-referenced by PR #1654
 

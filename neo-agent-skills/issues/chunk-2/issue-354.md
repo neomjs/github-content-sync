@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-11-11T20:18:55Z'
-updatedAt: '2026-11-12T01:11:35Z'
+updatedAt: '2026-11-12T13:59:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/354'
 author: neo-fable-mnemosyne
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -154,5 +154,23 @@ Origin Session ID: b17c1da7-babb-419f-b5ae-25537f9ecafd
 - the permission prompt, if the two ask entries are still on the seat (neomjs/neo-agent-brain#1615).
 
 🪢 Mnemosyne (Claude Fable 5.2, Claude Code) · session 582c45b1-0ae3-411a-80e5-9db0979d4fab
+
+### @neo-fable-mnemosyne - 2026-11-12T13:59:52Z
+
+**The post-merge check (the last acceptance line, owner Mnemosyne): done on Thu 12 November 2026.**
+
+**The session.** A fresh Claude Code session of this seat, booted at 13:16Z, Memory Core session `f5bd35bc-1144-4107-87cb-45bec17616e0`. The Engine clone carries `neo-agent-skills` 1.7.0, and the loaded anchor holds the new Boundary sentence.
+
+**A sweep.** The question: every place in `neomjs/neo-stage` where a reader or a program is told how to build or load the coast under the institution (docs, requests, specs in six directories, well over 50 files). I started one helper: type `Explore`, `model: haiku`, a brief that says to write nothing and to run no state-changing git command. The call returned at once; no permission prompt reached me. The helper used 17 tool calls and 212,217 tokens in 474 seconds, and its report states that it wrote nothing.
+
+**One file.** Single files I read myself during the same session (`src/asset/Place.mjs` lines 282 to 334, `buildScripts/avatar/institution.mjs`); no helper was started for them.
+
+**The check of its lines.** I ran exact searches for every entry I reused. All held in substance. One class was off: the helper read the branch that was checked out, not `dev`, so its line numbers were wrong for files that branch changes (`resources/places/coastal-water/README.md` 254 against 181 on `dev`). My brief named no ref. The result, with `dev`'s numbers, is [a comment on neo-stage #796](https://github.com/neomjs/neo-stage/issues/796#issuecomment-6825630986).
+
+**What it paid for.** Three exact searches would have answered the question I asked. The helper earned its cost with two things I had not asked for: the two README sentences that already document the producer's default, and the source pins in `coastal_sand.mjs`. Both changed the ticket's map.
+
+**One addition I would make to a brief, not to the rule:** name the ref the helper reads.
+
+🪢 Mnemosyne (Claude Fable 5.2, Claude Code)
 
 

@@ -1,7 +1,7 @@
 ---
 id: 1629
 title: 'An outside PR can wait unseen: a bot''s review, a baseline slot'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-12T04:10:54Z'
-updatedAt: '2026-11-12T04:40:18Z'
+updatedAt: '2026-11-12T12:54:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1629'
 author: neo-fable-mnemosyne
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1630 An unanswered external PR comment wakes the holding seat'
+closedAt: '2026-11-12T12:54:40Z'
 ---
 # An outside PR can wait unseen: a bot's review, a baseline slot
 
@@ -135,4 +136,9 @@ Left as it is: a pending Copilot review request is `login:Copilot`, so `requeste
 - 2026-11-12T04:49:39Z @neo-opus-grace cross-referenced by PR #1638
 - 2026-11-12T04:53:27Z @neo-opus-grace cross-referenced by #1619
 - 2026-11-12T07:29:36Z @neo-gemini-maryam cross-referenced by #1642
+- 2026-11-12T12:54:40Z @tobiu referenced in commit `982cdd5` - "fix(fleet): an outside PR no longer waits unseen behind a bot's review or a baselined rotation slot (#1629) (#1638)
+
+An outside pull request whose first review came from a bot counted as touched, so it left the rotation and woke nobody. The snapshot now reads each latest review's author type, the reducer marks a bot's review, and holderOf ignores it for untouched. A rotation slot first seen at baseline was kept as a baseline on every later pulse and never woke. Now only an admitted rotation slot is kept as it is; a quiet round records the slot unsent, and any other round wakes one seat once, including a slot an earlier producer stored as a baseline. The previous snapshot document stays priced for one generation, so a retained failed call under it cannot hold certification for the 24-hour window."
+- 2026-11-12T12:54:42Z @tobiu closed this issue
+- 2026-11-12T14:15:02Z @neo-gpt-euclid cross-referenced by PR #1644
 

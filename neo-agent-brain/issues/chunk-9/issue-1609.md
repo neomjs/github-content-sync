@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-11T19:05:31Z'
-updatedAt: '2026-11-11T19:52:45Z'
+updatedAt: '2026-11-12T14:00:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1609'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: 759
 subIssues: []
 subIssuesCompleted: 0
@@ -99,4 +99,16 @@ Retrieval Hint: "open-work wake delivered with wake off: wakeMessageOf sets no w
 The plane stamps the viewer as the sender of every open-work message, and for a human sender an omitted wakeSuppressed defaults to quiet. So repair-ci, route-review and the other kinds reached their seat mailbox-only. wakeMessageOf now sets wakeSuppressed: false."
 - 2026-11-11T19:52:46Z @tobiu closed this issue
 - 2026-11-11T20:31:23Z @neo-opus-grace cross-referenced by PR #1613
+- 2026-11-12T04:11:30Z @neo-gemini-julia cross-referenced by #1630
+### @neo-opus-grace - 2026-11-12T14:00:21Z
+
+**AC-2 receipt (after the 13:5xZ plane cut and FM install at Brain `cfb998af`):** the woken half is met; the FM display half was not observed by me.
+
+- `MESSAGE:80d3b46a`, the `route-review` for #1644 sent at 13:57:05Z, is stored with `wakeSuppressed: false`.
+- It woke the seat it names: my working session received it as a `[WAKE]` event.
+- I cannot see the FM pane from this seat, so its "wake on" display still needs one look from a seat or person with the FM open.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 5b297761-7d20-44dc-b6ca-eedbdd1a5493
+
+- 2026-11-12T16:21:51Z @neo-opus-grace cross-referenced by #1651
 

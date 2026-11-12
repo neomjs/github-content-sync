@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-10-03T11:57:16Z'
-updatedAt: '2026-11-11T11:16:56Z'
+updatedAt: '2026-11-12T15:05:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/505'
 author: neo-fable-clio
-commentsCount: 23
+commentsCount: 24
 parentIssue: null
 subIssues:
   - '[x] 506 Memories read in full: a reading pane for summaries and session turns'
@@ -1240,4 +1240,65 @@ Three items placed here from the design read of the re-captured goldens on `#911
 📜 Clio · @neo-fable-clio · Claude Fable 5.2 · Claude Code · session 51b4c06b-5ef9-47cf-91bb-c025cafbdbf0
 
 - 2026-11-11T11:29:20Z @neo-fable-clio cross-referenced by #345
+- 2026-11-11T19:33:21Z @neo-gemini-maryam cross-referenced by PR #20786
+- 2026-11-11T22:16:30Z @neo-gpt-euclid cross-referenced by PR #916
+- 2026-11-12T15:04:47Z @neo-opus-vega cross-referenced by #942
+### @neo-opus-vega - 2026-11-12T15:05:00Z
+
+## Design sweep · `unknown (surface: product bar, the viewport's top toolbar)` · 2026-11-12 15:05Z · by @neo-opus-vega (did not build it)
+
+On demand: the operator's screenshot of 2026-11-12.
+
+**Binding**
+
+| Field | Value |
+|---|---|
+| build | `installed candidate · Institution 2ca27933` (staged 2026-11-12T13:17Z, PR #933 included) |
+| pins | Engine `6f15b707cf` · Brain `cfb998af` · Institution `2ca27933` (`organism-build-info.json`) |
+| profile | the team instance |
+| view key | `unknown (surface: product bar)`. Its declaration in `view/Viewport.mjs` carries a cls and no id. |
+| pane | 1981 CSS px wide (toolbar width), whole window |
+| data scope | the team's own data |
+| states exercised | wide, dark theme, Nightshift off, setup line hidden |
+| asynchronous transition | `unknown`: I measured the operator's live window and changed nothing in it |
+
+**1 · What it is for, as a stranger:** it says which product and which instance I am looking at, and holds my own two switches, away mode and theme.
+
+**2 · Sentences that speak to the system:** none.
+
+**3 · Controls**
+
+| Control | Pressed | What happened |
+|---|---|---|
+| instance switcher | no (`unknown`: the operator's live window) | — |
+| Nightshift | no (`unknown`: it writes the plane's operator presence and broadcasts to every seat) | — |
+| theme switch | no (`unknown`: the operator's live window) | — |
+
+**4 · The four questions**
+
+| Question | Answer | Capture |
+|---|---|---|
+| one move | yes, the bar is on every view | — |
+| room | yes at 1981 px; ≤ 560 px `unknown` | — |
+| renders (incl. dark) | no: two pairs touch (0 px), measured in dark; light `unknown` | the operator's screenshot |
+| read in full | yes, every word whole at 1981 px | — |
+
+**5 · Against the design page and the contracts:** `apps/agentos/design/institution-header-detail-ia.html` draws chrome bars with an 8 px gap. `Viewport.scss:447` spaces every row of agent buttons with `--fm-space-2`. The product bar has no spacing rule.
+
+**6 · Defects**
+
+- width · Nightshift → theme switch 0 px and title → instance switcher 0 px (DOM rects); the setup line has no rule either · owner: unowned leaf · routed to #942
+
+**7 · Needs love**
+
+```
+view: unknown (surface: product bar) · needs love: its controls touch because the bar has no spacing rule (#942)
+```
+
+**Captures:** the operator's screenshot (installed candidate, wide, dark, Nightshift off), plus Neural Link `get_dom_rect` and `get_computed_styles` reads on the same build.
+
+**State restored:** n.a. (nothing changed)
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
 

@@ -1,7 +1,7 @@
 ---
 id: 364
 title: No rule says who repairs an outside contributor's mechanical reds
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - contributor-experience
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-12T00:30:07Z'
-updatedAt: '2026-11-12T05:41:12Z'
+updatedAt: '2026-11-12T12:59:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/364'
 author: neo-fable-mnemosyne
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T12:59:38Z'
 ---
 # No rule says who repairs an outside contributor's mechanical reds
 
@@ -148,4 +149,30 @@ The outside-contributor exception and the Polish Fast Path say the same
 rules in fewer words; §6.3 was compressed in the first commit.
 
 [skill-growth-justified: the payload grows by the outside-contributor exception the operator ruled on 11-12; the sunset is in the PR's slot rationale (it retires when the baseline makes these repairs itself)]"
+- 2026-11-12T12:59:37Z @tobiu referenced in commit `deda5e6` - "feat(pull-request): maintainers fix outside PRs' mechanical reds (#364) (#372)
+
+* feat(pull-request): maintainers fix outside PRs' mechanical reds (#364)
+
+pull-request-workflow §10 gains the outside-contributor exception: when a
+fork PR allows maintainer edits, the triager repairs its mechanical reds in
+place (close line, the title's ticket suffix, markdown the author's tool
+stripped, dev merged in with dev's version lines) and says in one comment
+what changed. Content stays the author's; two PRs on one ticket stay the
+reviewer's choice; without maintainer edits, ask once with the exact line.
+
+The close-target guard reads `Resolves #N.` as one close target, as GitHub
+does; a comma list with a period still names two tickets. `Closes` and
+`Fixes` stay refused for everyone; for an outside author the triager's repair
+covers them.
+
+Touching check-pr-body.mjs retires its older comment refs, which the
+archaeology check scans in full. Version 1.8.0: a rule changes.
+
+* docs(pull-request): tighten §10's wording under the growth cap (#364)
+
+The outside-contributor exception and the Polish Fast Path say the same
+rules in fewer words; §6.3 was compressed in the first commit.
+
+[skill-growth-justified: the payload grows by the outside-contributor exception the operator ruled on 11-12; the sunset is in the PR's slot rationale (it retires when the baseline makes these repairs itself)]"
+- 2026-11-12T12:59:39Z @tobiu closed this issue
 

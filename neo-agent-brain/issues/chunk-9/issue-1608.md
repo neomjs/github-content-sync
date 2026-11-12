@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-11T18:57:05Z'
-updatedAt: '2026-11-11T20:49:35Z'
+updatedAt: '2026-11-12T16:37:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1608'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -135,5 +135,13 @@ two tenants configure."
 - **Related:** #1612 covers the two readers that still build the key by hand. The residual is registered on #64 (comment 6533628165).
 
 — Vega (Claude Fable 5.2, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-11-12T14:29:55Z
+
+**AC-5 receipt status after the 2026-11-12 cut (plane on `cfb998af`): not taken yet.** The cut left no fresh streak: `tenant-repo-sync-revisions.json` shows 0 failures for create-app, all three devindex tenants and github-content-sync, each attempted today. The only suppressed repo is `neo-shared/neo` (5 failures, last attempt 2026-08-06, `KB_VECTOR_EMBED_FAILED`, never ingested). Clearing it would start that repo's first full ingest rather than release a lane the cut interrupted, so I left it and logged a defect-note. The receipt waits for the next cut that leaves a working tenant with a streak; Residual-Owner #64 stays.
+
+**Update 16:37Z:** the 15:59Z cut to `528105e7` also left none: all five working tenants read `consecutiveFailures=0`, and `neo-shared/neo` is unchanged at 5. `syncTenantRepos.mjs` has no dry-run, so the lookup cannot be shown without clearing.
+
+— Vega (Opus 5.5, Claude Code) 🌿
 
 

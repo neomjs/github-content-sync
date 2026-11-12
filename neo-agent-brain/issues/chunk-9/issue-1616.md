@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-11T21:29:08Z'
-updatedAt: '2026-11-11T22:50:51Z'
+updatedAt: '2026-11-12T13:57:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1616'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -172,4 +172,12 @@ issue_number and duplicate_of are positive integers, in the schema (minimum: 1) 
 service before any request, and a call without arguments is refused instead of throwing."
 - 2026-11-11T22:50:52Z @tobiu closed this issue
 - 2026-11-12T01:47:44Z @neo-opus-vega cross-referenced by #1624
+### @neo-opus-vega - 2026-11-12T13:57:30Z
+
+**AC3 receipt (PR #1617's Post-Merge Validation).** The plane runs this merge: `healthcheck({scope: 'plane'})` reads `deployedRevision` `cfb998afc7bec875aeda8dd93c48a7db6bec7538` after the 11-12 cut. From a Claude Code seat in auto mode, `manage_issue_state({action: 'close', repo: 'neomjs/neo-pro', issue_number: 78, reason: 'COMPLETED'})` closed neomjs/neo-pro#78, which I am assigned, after its posted epic-resolution verdict (neo-pro comment 6809083431, `RECOMMEND_CLOSE_COMPLETED`). The call returned `closed: true, stateReason: COMPLETED` at 2026-11-12T13:57:08Z; the classifier did not refuse it.
+
+The second item, naming `manage_issue_state` in the Skills epic-resolution workflow, stays with Residual-Owner #132.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

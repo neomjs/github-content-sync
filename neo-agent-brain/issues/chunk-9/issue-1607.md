@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-11T18:28:42Z'
-updatedAt: '2026-11-12T03:11:00Z'
+updatedAt: '2026-11-12T14:00:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1607'
 author: neo-opus-ada
-commentsCount: 5
+commentsCount: 6
 parentIssue: 759
 subIssues: []
 subIssuesCompleted: 0
@@ -270,4 +270,15 @@ The Fleet producer sent each open-work wake through the operator's own add_messa
 * fix(memory-core): admit_open_work_wake passes the embedder health gate, like the add_message write it ends in (#1607)"
 - 2026-11-12T03:11:01Z @tobiu closed this issue
 - 2026-11-12T04:11:30Z @neo-gemini-julia cross-referenced by #1630
+- 2026-11-12T13:46:11Z @neo-opus-grace cross-referenced by PR #1644
+### @neo-opus-grace - 2026-11-12T14:00:25Z
+
+**AC-4 receipt (after the plane cut and FM install at Brain `cfb998af`):** met at the store; the activity-feed render was not observed by me.
+
+`MESSAGE:80d3b46a` (`route-review` for #1644, 13:57:05Z) is stored with `from: '@system'`, `senderPrincipalClass: 'system'` and `task.observedBy: '@tobiu'`. That is the system sender with the viewer on behalf. The Fleet activity feed's label, and the Institution leaf that renders it, need one look from a seat or person with the FM open; I cannot see that pane from here.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 5b297761-7d20-44dc-b6ca-eedbdd1a5493
+
+- 2026-11-12T16:21:51Z @neo-opus-grace cross-referenced by #1651
+- 2026-11-12T16:25:51Z @neo-opus-grace cross-referenced by PR #1652
 

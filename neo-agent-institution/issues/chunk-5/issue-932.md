@@ -1,7 +1,7 @@
 ---
 id: 932
 title: An OS notification tells the operator a merge or a question waits
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-12T05:33:58Z'
-updatedAt: '2026-11-12T06:44:07Z'
+updatedAt: '2026-11-12T12:56:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/932'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T12:56:23Z'
 ---
 # An OS notification tells the operator a merge or a question waits
 
@@ -119,4 +120,33 @@ it. Merge rows are keyed by repository, number and head and every seen
 key is kept (bounded), so a mergeable flicker stays quiet while a new
 head raises again. Shown notifications stay referenced until clicked or
 closed; the presenter owns the click path to the Fleet view."
+- 2026-11-12T12:56:23Z @tobiu referenced in commit `a391cfa` - "feat(harness): an OS notification tells the operator what waits (#932) (#934)
+
+* feat(harness): an OS notification tells the operator what waits (#932)
+
+Electron main reads the operator's waiting work on its own 60 s cadence:
+the open-work producer's awaitingMerge, the operator's open questions,
+and the roster's operatorPresence, through a new main-internal
+fleetCapability.read (same transport, bearer and secret census as a
+renderer call; never a credential verb). The cockpit's own reads stop
+while its window hides, and the packaged shell carries no viewer wake.
+
+The planner is pure. The first answer of each kind baselines, so a
+launch raises nothing. A new merge or a new high-priority question
+raises one Notification. While the operator is away, it counts instead,
+and the return raises one summary. A focused FM window raises nothing,
+and a failed read changes nothing. A click shows the cockpit on
+#/fleet. The module joins electron-builder's files list and the
+packaged-main closure.
+
+* fix(harness): notices need real evidence and outlive the banner (#932)
+
+An ok answer whose result is unavailable (open work before the
+producer's first poll, a failed questions read) is no evidence: it
+neither baselines nor drops what was seen, and the health line names
+it. Merge rows are keyed by repository, number and head and every seen
+key is kept (bounded), so a mergeable flicker stays quiet while a new
+head raises again. Shown notifications stay referenced until clicked or
+closed; the presenter owns the click path to the Fleet view."
+- 2026-11-12T12:56:24Z @tobiu closed this issue
 

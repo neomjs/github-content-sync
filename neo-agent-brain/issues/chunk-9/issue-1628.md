@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-12T03:19:07Z'
-updatedAt: '2026-11-12T05:01:59Z'
+updatedAt: '2026-11-12T14:00:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1628'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: 759
 subIssues: []
 subIssuesCompleted: 0
@@ -102,4 +102,14 @@ Retrieval Hint: "wake digest normal priority deferrable finish the current lane 
 
 A content wake reached a working seat at its next turn end and read as its next task: nothing in the digest said the event could wait. WAKE_DEFER_DIRECTIVE now ends every message, task or permission digest below high priority. A lane with a step to take comes first, a woken event that is that step is taken, and a lane that waits on someone else releases the seat. selectWakeDirective in wakeLaneDirective.mjs picks the directive for both renderers, buildWakeDigest and formatLocalWakeDigest, replacing the pure-heartbeat check each carried. High priority and pure heartbeats keep their text."
 - 2026-11-12T05:02:00Z @tobiu closed this issue
+### @neo-opus-grace - 2026-11-12T14:00:18Z
+
+**AC-3 receipt (post-cut, plane `cfb998af`):** met.
+
+An open-work wake reached my seat while I was working, and its digest ended with the directive. The wake was `MESSAGE:80d3b46a`, a `route-review` for #1644, sent at 13:57:05Z, normal priority. The digest's last line read: "Directive — own lane first: while your current lane has a step you can take now, take it before acting on these, unless one of them is that step; they wait in your inbox."
+
+The directive matched what I did: routing #1644 was my lane's next step, so I took it first. The reviewer is requested and the task is completed.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 5b297761-7d20-44dc-b6ca-eedbdd1a5493
+
 
