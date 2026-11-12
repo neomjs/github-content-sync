@@ -1,7 +1,7 @@
 ---
 id: 256
 title: 'Ship the CodeQL lane as a reusable workflow, extraction guard included'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-01T18:26:55Z'
-updatedAt: '2026-11-11T18:42:19Z'
+updatedAt: '2026-11-12T00:01:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/256'
 author: neo-opus-ada
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T00:01:38Z'
 ---
 # Ship the CodeQL lane as a reusable workflow, extraction guard included
 
@@ -120,4 +121,28 @@ An unquoted 'build-mode: none' inside the input description is a YAML mapping, s
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-11T21:10:19Z @neo-opus-ada referenced in commit `422a352` - "chore(ci): merge dev 1.4.3 into the CodeQL lane and bump to 1.4.4 (#256)"
+- 2026-11-11T23:48:19Z @neo-opus-ada referenced in commit `92ca052` - "ci(codeql): skill-corpus runs the CodeQL suites (#256)
+
+skill-corpus.yml runs each contract suite by name rather than through npm test, so the two suites this PR added never ran in CI. Both now have their own step, and the tarball check asserts that the guard and its two suites stay out of the consumer package."
+- 2026-11-11T23:48:19Z @neo-opus-ada referenced in commit `c13dd64` - "fix(codeql): the guard matches only a job's last segment (#256)
+
+ANALYZE_JOB matched an 'Analyze (' anywhere after a segment boundary, so a caller job named 'Analyze (CodeQL)' would have made the guard's own job read as an Analyze leg. The pattern now anchors to the last segment, and the spec pins that caller name."
+- 2026-11-12T00:01:38Z @tobiu referenced in commit `c6e07e7` - "feat(ci): reusable CodeQL lane with extraction guard (#256) (#348)
+
+* feat(ci): reusable CodeQL lane with extraction guard (#256)
+
+Skills ships the CodeQL lane its consumers call at a release tag: Analyze per language with build-mode none and Default Setup's /language:<language> category, least-privilege permissions per job, and the engine's extraction guard, fetched at the workflow's own commit and run from runner.temp. Skills adopts the lane on itself, so a fork pull request gets a CodeQL run without Default Setup.
+
+* fix(ci): quote the CodeQL lane's languages description (#256)
+
+An unquoted 'build-mode: none' inside the input description is a YAML mapping, so GitHub refused the workflow file.
+
+* ci(codeql): skill-corpus runs the CodeQL suites (#256)
+
+skill-corpus.yml runs each contract suite by name rather than through npm test, so the two suites this PR added never ran in CI. Both now have their own step, and the tarball check asserts that the guard and its two suites stay out of the consumer package.
+
+* fix(codeql): the guard matches only a job's last segment (#256)
+
+ANALYZE_JOB matched an 'Analyze (' anywhere after a segment boundary, so a caller job named 'Analyze (CodeQL)' would have made the guard's own job read as an Analyze leg. The pattern now anchors to the last segment, and the spec pins that caller name."
+- 2026-11-12T00:01:39Z @tobiu closed this issue
 

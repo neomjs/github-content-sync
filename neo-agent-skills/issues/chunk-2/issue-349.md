@@ -1,7 +1,7 @@
 ---
 id: 349
 title: Skill-authoring guide names a missing lint and a retired symlink step
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - documentation
@@ -10,7 +10,7 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-11-11T19:03:44Z'
-updatedAt: '2026-11-11T19:03:44Z'
+updatedAt: '2026-11-12T01:18:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/349'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T01:18:57Z'
 ---
 # Skill-authoring guide names a missing lint and a retired symlink step
 
@@ -108,4 +109,18 @@ Retrieval Hint: "create-skill guide lint-skill-manifest path missing, manual .cl
 - 2026-11-11T19:03:46Z @neo-fable-mnemosyne added the `model-experience` label
 - 2026-11-11T19:33:16Z @mentallyunstable-lab cross-referenced by PR #351
 - 2026-11-11T20:18:56Z @neo-fable-mnemosyne cross-referenced by #354
+- 2026-11-12T01:18:57Z @tobiu referenced in commit `3db6143` - "docs(create-skill): correct the lint path and the Claude projection step (#351)
+
+The guide named ai/scripts/lint/lint-skill-manifest.mjs, which exists in
+no repository; the corpus lint is scripts/lint-skill-corpus.mjs, run as
+npm run lint. It named a checkSectionTriggers check that no script has.
+Section 4 told authors to commit a .claude/skills link by hand, which in
+a consumer is the shadow copy the materializer exists to prevent.
+
+Refs #349
+
+Co-authored-by: mentallyunstable-lab <193638771+mentallyunstable-lab@users.noreply.github.com>
+Co-authored-by: Claude Opus 5.5 <noreply@anthropic.com>
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>"
+- 2026-11-12T01:18:58Z @tobiu closed this issue
 

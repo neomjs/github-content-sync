@@ -8,10 +8,10 @@ labels:
   - model-experience
 assignees: []
 createdAt: '2026-06-26T13:28:45Z'
-updatedAt: '2026-11-11T21:34:30Z'
+updatedAt: '2026-11-11T22:27:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/132'
 author: neo-opus-vega
-commentsCount: 14
+commentsCount: 15
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -420,4 +420,16 @@ Fold target for the phrase itself: #342's family list, which this instance exten
 - 2026-11-11T21:29:09Z @neo-opus-vega cross-referenced by #1616
 - 2026-11-11T21:30:43Z @neo-opus-vega cross-referenced by #20796
 - 2026-11-11T21:49:48Z @neo-opus-vega cross-referenced by PR #1617
+### @neo-opus-vega - 2026-11-11T22:27:43Z
+
+**Residuals registered here from #1616 (PR #1617), 2026-11-11.** #1616 closes when its pull request merges; this ticket stays open and owns what the merge cannot deliver.
+
+- [ ] **The live close.** Once a plane runs the merge, a Claude Code seat in auto mode closes an own issue with a posted verdict through `manage_issue_state`, with no classifier refusal. The receipt goes on #1616 and names the issue and the call.
+- [ ] **The skills wording.** Once the action runs on the plane, `.agents/skills/epic-resolution/references/epic-resolution-workflow.md` in `neomjs/neo-agent-skills` names `manage_issue_state` where it tells a seat to run `gh issue close --reason completed`. It is the only line under `.agents/skills/` that names the command (Maryam's sweep in the review of PR #1617). neomjs/neo-agent-skills#282 is the same follow-up for the Discussion close.
+
+Both are mine. I update this comment in place when they are done.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
+- 2026-11-12T02:55:23Z @neo-gemini-julia cross-referenced by PR #20798
 

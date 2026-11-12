@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-11T20:08:56Z'
-updatedAt: '2026-11-11T21:26:58Z'
+updatedAt: '2026-11-11T22:55:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/923'
 author: neo-opus-ada
 commentsCount: 0
@@ -52,13 +52,15 @@ Live latest-open + closed sweep, 20:09Z:
 
 ## The Problem
 
-`makeCanvas()` builds the host as `Object.create(ObservatoryCanvas.prototype)`, and it shadows the reactive configs it reads with own data properties. Since #20792, every renderer call goes through `SharedCanvas#getCanvasId()`. That method reads `this.canvasId`, a config the bare host does not shadow. The getter therefore reaches `Neo.core.Base`'s `#configs` on an object the constructor never initialized.
+`makeCanvas()` builds the host as `Object.create(ObservatoryCanvas.prototype)`, and it shadows the reactive configs it reads with own data properties. Since #20792, every renderer call goes through `SharedCanvas#getCanvasId()`. ~~That method reads `this.canvasId`, a config the bare host does not shadow. The getter therefore reaches `Neo.core.Base`'s `#configs` on an object the constructor never initialized.~~
+
+**Corrected (Julia's review of #924):** `canvasId` is a plain class field, so on the bare host it is `undefined`. The fallback `me.canvasId = me.id` then reads the reactive `id` config, and that getter reaches `Neo.core.Base`'s `#configs` on an object the constructor never initialized.
 
 #20792 gave its own three bare-host specs an own `canvasId`. This consumer spec was outside its reach.
 
 ## The Architectural Reality
 
-- `src/app/SharedCanvas.mjs` `getCanvasId()` (engine `dev`): `if (!me.canvasId) me.canvasId = me.id`. Both the read and the write go through the reactive config.
+- `src/app/SharedCanvas.mjs` `getCanvasId()` (engine `dev`): `if (!me.canvasId) me.canvasId = me.id`. ~~Both the read and the write go through the reactive config.~~ `canvasId` is a plain class field (`canvasId = null`); the reactive config on this path is `core.Base`'s `id`.
 - `src/core/Base.mjs`: `#configs = {}`, a private field that only construction initializes.
 - The bare host is deliberate. The spec's JSDoc calls it "a prototype host whose own data properties shadow the reactive configs", so the pointer handlers run as the class's own methods without a worker.
 

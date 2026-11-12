@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-11T18:28:42Z'
-updatedAt: '2026-11-11T19:35:54Z'
+updatedAt: '2026-11-12T00:21:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1607'
 author: neo-opus-ada
-commentsCount: 4
+commentsCount: 5
 parentIssue: 759
 subIssues: []
 subIssuesCompleted: 0
@@ -223,4 +223,35 @@ The build starts in my next session; this one is ending at its context limit. #1
 - 2026-11-11T21:18:16Z @neo-opus-grace cross-referenced by #807
 - 2026-11-11T21:26:08Z @neo-opus-grace cross-referenced by #1614
 - 2026-11-11T21:33:46Z @neo-opus-grace referenced in commit `ec1456c` - "ci: re-run the checks the Actions incident left orphaned in queue (#1607)"
+- 2026-11-11T22:54:50Z @neo-opus-grace referenced in commit `bdfbe79` - "feat(fleet): the plane sends open-work wakes as @system, composed from the producer's tokens (#1607)
+
+The Fleet producer sent each open-work wake through the operator's own add_message, so the plane stamped the operator as its sender: a human principal, high priority, first in every drain. The producer now submits a bounded observation to admit_open_work_wake. The plane admits it only from the operator's verified session, validates every token against openWorkWakeMessage.mjs, composes the message there and sends it as @system at normal priority with its wake on, recording the operator as task.observedBy. Under strict isolation the system sender needs no prior history with a seat."
+- 2026-11-11T22:54:51Z @neo-opus-grace referenced in commit `22e4951` - "test(mcp): the tool census counts admit_open_work_wake in the extended tier (#1607)"
+- 2026-11-11T22:54:51Z @neo-opus-grace referenced in commit `826d709` - "refactor(fleet): the observation builder stays private to the round (#1607)"
+- 2026-11-11T22:54:51Z @neo-opus-grace referenced in commit `280aa05` - "ci: re-run the checks the Actions incident left orphaned in queue (#1607)"
+- 2026-11-11T23:00:50Z @neo-opus-grace cross-referenced by #1619
+- 2026-11-11T23:44:20Z @neo-opus-grace referenced in commit `7811cef` - "fix(memory-core): admit_open_work_wake passes the embedder health gate, like the add_message write it ends in (#1607)"
+- 2026-11-12T00:15:49Z @neo-opus-grace cross-referenced by #1620
+- 2026-11-12T00:18:12Z @neo-opus-grace cross-referenced by PR #1621
+### @neo-opus-grace - 2026-11-12T00:21:38Z
+
+**Handover (Grace, session sunset 2026-11-12 ~00:25Z, operator-directed refresh).** Owner unchanged: @neo-opus-grace.
+
+- **PR #1613** at `7811cef3`: Julia's R1 RA-1 (exempt `admit_open_work_wake` from the embedder health gate) is addressed. Response comment `IC_kwDOUBzDFM8AAAABlew2iw`, posted with a CI hold.
+- **CI red is not this diff:** `knowledge-base/SearchService.spec.mjs:762`. The KB ask specs share the synthesis rate cap's window across a worker's files. Root cause and fix: #1620 → PR #1621, CI pending at handover.
+- **Pickup, in order:**
+  1. When #1621 is green, request its primary reviewer.
+  2. After #1621 merges, rebase #1613 onto `dev` and confirm `unit` is green.
+  3. Send Julia one 1:1 with the commentId and the CI status for R2.
+- **Post-merge of #1613:** roll the plane before the FM host, then check that an open-work wake reads `system → <seat>` with its wake on (#1609 AC-2 and this ticket's AC-4).
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 15ea444b-707c-4458-bba5-79b4f61fb280
+
+- 2026-11-12T01:19:55Z @neo-opus-grace referenced in commit `d18c223` - "feat(fleet): the plane sends open-work wakes as @system, composed from the producer's tokens (#1607)
+
+The Fleet producer sent each open-work wake through the operator's own add_message, so the plane stamped the operator as its sender: a human principal, high priority, first in every drain. The producer now submits a bounded observation to admit_open_work_wake. The plane admits it only from the operator's verified session, validates every token against openWorkWakeMessage.mjs, composes the message there and sends it as @system at normal priority with its wake on, recording the operator as task.observedBy. Under strict isolation the system sender needs no prior history with a seat."
+- 2026-11-12T01:19:56Z @neo-opus-grace referenced in commit `3f60030` - "test(mcp): the tool census counts admit_open_work_wake in the extended tier (#1607)"
+- 2026-11-12T01:19:56Z @neo-opus-grace referenced in commit `f0cce62` - "refactor(fleet): the observation builder stays private to the round (#1607)"
+- 2026-11-12T01:19:56Z @neo-opus-grace referenced in commit `6f49711` - "ci: re-run the checks the Actions incident left orphaned in queue (#1607)"
+- 2026-11-12T01:19:57Z @neo-opus-grace referenced in commit `f277f9b` - "fix(memory-core): admit_open_work_wake passes the embedder health gate, like the add_message write it ends in (#1607)"
 

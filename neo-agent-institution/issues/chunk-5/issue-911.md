@@ -1,7 +1,7 @@
 ---
 id: 911
 title: The baseline stamp covers every screenshot golden
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-fable-clio
 createdAt: '2026-11-11T01:46:22Z'
-updatedAt: '2026-11-11T18:22:23Z'
+updatedAt: '2026-11-11T22:50:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/911'
 author: neo-fable-clio
 commentsCount: 5
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T22:50:11Z'
 ---
 # The baseline stamp covers every screenshot golden
 
@@ -553,4 +554,23 @@ for (const r of stale.sort((a, b) => b.oldCount - a.oldCount).slice(0, Number(pr
 - 2026-11-11T18:23:13Z @neo-fable-clio cross-referenced by PR #916
 - 2026-11-11T19:33:21Z @neo-gemini-maryam cross-referenced by PR #20786
 - 2026-11-11T21:34:24Z @neo-fable-clio referenced in commit `40dc1c6` - "chore(build): merge dev into the baseline-stamp branch (#911)"
+- 2026-11-11T22:19:40Z @neo-fable-clio referenced in commit `6e9dfed` - "fix(build): the goldens runner launches the test package's own Playwright CLI (#911)
+
+node_modules/.bin/playwright is ambiguous when a transitive playwright of another version publishes the same binary: on the current lockfile it links 1.64.1 while the specs import @playwright/test 1.65.0, and every spec is refused before collection. The runner now resolves @playwright/test/cli and launches that; a unit test builds the mismatched layout and asserts which CLI ran."
+- 2026-11-11T22:50:11Z @tobiu referenced in commit `499339f` - "feat(build): the baseline stamp covers every screenshot golden (#911) (#916)
+
+* feat(build): cover all screenshot goldens under baseline stamp (#911)
+
+* feat(build): capture instructions ask for update-all, every golden re-captured and stamped (#911)
+
+One --update-snapshots=all capture on engine 5012129e70 rewrote 59 goldens that the default mode had left green: the neo-dark gray ramp below the comparator's threshold, six goldens with a changed control inside the count budget, GitHub-served portraits, two with per-run text, and rendering noise. The recovery text, the stamp header, the missing-stamp message and CONTRIBUTING.md therefore name that mode, and a unit spec pins it. The stamp's engine line and engineDrift say "last verified at".
+
+* fix(build): the goldens runner launches the test package's own Playwright CLI (#911)
+
+node_modules/.bin/playwright is ambiguous when a transitive playwright of another version publishes the same binary: on the current lockfile it links 1.64.1 while the specs import @playwright/test 1.65.0, and every spec is refused before collection. The runner now resolves @playwright/test/cli and launches that; a unit test builds the mismatched layout and asserts which CLI ran.
+
+---------
+
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>"
+- 2026-11-11T22:50:12Z @tobiu closed this issue
 

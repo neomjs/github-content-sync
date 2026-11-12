@@ -1,7 +1,7 @@
 ---
 id: 356
 title: 'The README''s opening serves consumers, not a first-time reader'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,20 +10,23 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-11-11T21:17:26Z'
-updatedAt: '2026-11-11T21:17:26Z'
+updatedAt: '2026-11-12T01:19:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/356'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
-subIssues: []
+subIssues:
+  - '[ ] 362 The contributor guide for four repositories never links the pull-request skill'
+  - '[ ] 363 The README''s two skill counts go stale with the next skill'
 subIssuesCompleted: 0
-subIssuesTotal: 0
+subIssuesTotal: 2
 contentTrust:
   projected: true
   quarantined: 0
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T00:50:36Z'
 ---
 # The README's opening serves consumers, not a first-time reader
 
@@ -127,4 +130,40 @@ Retrieval Hint: "skills README opening for a first-time reader: what the package
 - 2026-11-11T21:17:28Z @neo-fable-mnemosyne added the `enhancement` label
 - 2026-11-11T21:17:28Z @neo-fable-mnemosyne added the `contributor-experience` label
 - 2026-11-11T21:17:29Z @neo-fable-mnemosyne added the `ai` label
+- 2026-11-11T23:10:55Z @neo-fable-mnemosyne cross-referenced by #358
+- 2026-11-11T23:16:00Z @neo-fable-mnemosyne cross-referenced by #59
+- 2026-11-11T23:18:01Z @neo-opus-grace cross-referenced by PR #60
+- 2026-11-11T23:26:05Z @neo-fable-mnemosyne cross-referenced by #359
+- 2026-11-11T23:27:11Z @neo-fable-mnemosyne cross-referenced by PR #360
+- 2026-11-11T23:48:42Z @neo-fable-mnemosyne cross-referenced by #362
+- 2026-11-11T23:48:51Z @neo-fable-mnemosyne cross-referenced by #363
+- 2026-11-11T23:49:01Z @neo-fable-mnemosyne added sub-issue #362
+- 2026-11-11T23:49:03Z @neo-fable-mnemosyne added sub-issue #363
+- 2026-11-12T00:30:08Z @neo-fable-mnemosyne cross-referenced by #364
+- 2026-11-12T00:38:30Z @neo-fable-mnemosyne referenced in commit `bc9f531` - "docs(readme): the opening tells a first-time reader what the package is and which line is theirs (#356)"
+### @neo-fable-mnemosyne - 2026-11-12T00:44:48Z
+
+**Handover (Mnemosyne, session end 2026-11-12 ~00:50Z). The work is in PR #360; this is what is left and who has it.**
+
+- **PR #360** is at head `bc9f531`, version 1.4.6, every check green, `CLEAN`. Julia approved the earlier head `4672829` with the cold read passed (review 5866849367). The only change since is one rebase after #348 and #361; she is asked for the delta read (PR comment 6810878589). Owner: me; the merge is the operator's.
+- **If another maintainer pull request merges first,** the version line conflicts again: rebase onto `dev`, take the next free patch number, keep the description line, push with `--force-with-lease`, ask for the delta read.
+- **After the merge, mine:** set the GitHub repository description to `package.json`'s (`gh repo edit neomjs/neo-agent-skills --description …`), then start #359 (five outside readers, within a week).
+- **Follow-ups from the review,** both children of this ticket: #362 (the contributor guide for four repositories never links the `pull-request` skill; unowned, wants a maintainer seat) and #363 (the README's two counts; a good first issue).
+
+🪢 Mnemosyne (Claude Fable 5.2, Claude Code) · session 593bf3c2-8f38-4a45-a034-cabdc74fe0f1
+
+- 2026-11-12T00:50:36Z @tobiu referenced in commit `7c89cff` - "docs(readme): the opening tells a first-time reader what the package is and which line is theirs (#356) (#360)"
+- 2026-11-12T00:50:37Z @tobiu closed this issue
+### @neo-fable-mnemosyne - 2026-11-12T01:11:38Z
+
+**After the merge: the repository's About text now matches `package.json`.** @tobiu set it on 2026-11-12 at 01:19Z; `gh repo view neomjs/neo-agent-skills --json description` returns the new sentence.
+
+Until then it had carried "Install the workflow substrate a cross-model AI team actually runs on […]", the sentence this ticket replaced. The `maintain` role may not change it: `gh repo edit` answers 404 and the GraphQL `updateRepository` mutation answers FORBIDDEN (00:53Z). It is an owner's step:
+
+```bash
+gh repo edit neomjs/neo-agent-skills --description "The working rules (skills) the cross-model Neo.mjs agent team loads every session: ticket intake, PR review gates, lane coordination and guards, versioned as one package. For apps built on Neo.mjs, for contributors, and for anyone who wants to read them."
+```
+
+🪢 Mnemosyne (Claude Fable 5.2, Claude Code) · session 582c45b1-0ae3-411a-80e5-9db0979d4fab
+
 

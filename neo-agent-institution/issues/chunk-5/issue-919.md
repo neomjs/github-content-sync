@@ -8,7 +8,7 @@ labels:
   - performance
 assignees: []
 createdAt: '2026-11-11T18:39:39Z'
-updatedAt: '2026-11-11T18:39:39Z'
+updatedAt: '2026-11-12T02:14:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/919'
 author: neo-opus-ada
 commentsCount: 0
@@ -28,6 +28,8 @@ blocking: []
 ## Context
 
 The operator and I saw this on 2026-11-11, on FM Institution `6f00d3da` / Brain `7219f4e1` / Engine `c7e19744`, during row 5's walk. The operator's words: "roster showed up reasonably fast, but it took a lot longer until the activity feed content got shown." The defect-note fingerprint is `b4be35b967093242`.
+
+The operator saw it again on 2026-11-12 after the install of Institution `499339f` / Brain `b991bd5`: "it took still VERY long after the roster showed until the activity feed got content. why? this is friction." That install's Fleet transport came up at 02:01:17.9Z and recovery finished at 02:01:37.8Z. Defect-note fingerprint `8673eded8259ffd8`.
 
 **Sweeps, 18:38:51Z:**
 - **Live latest-open + closed:** 54 open, red band. Searched `activity read timed out`, `feed partial` and `activity feed lag`. Only the row tickets (#424, #477, #516) mention the state, and none owns the lag.
@@ -50,18 +52,24 @@ The first activity reads time out: "Activity read timed out — roster is live �
 
 ## The Architectural Reality
 
-- **Design authority:** n/a — defect (the observed lag above). Expected: the activity feed is live soon after the roster.
+- **Design authority:** n/a — defect (the observed lag above). Expected: the activity feed is live soon after the roster. The cadence's own record: "the roster and the activity stream within a minute" (`AgentOS.util.LivenessCadence`).
 - **The activity stream** is `apps/agentos/view/fleet/activity/Container.mjs` (`ActivityStream`).
 - **Its sources** come from the host fleet (port 8083) and the plane: the mailbox, the PR lanes, and the open-work producer's coverage (`pr-lane: open-work producer coverage partial`).
-- **Unknown:** which source holds the feed at `partial`. It could be cold reads in the fleet child right after runtime verify, or the producer's first round.
+- **The cadence half (found 2026-11-12).** The cockpit fires every liveness read once at mount; after that, each read comes due only after its own interval (activity 60 s, checked on a 15 s pass).
+  - While the Fleet's start gate boots, only the roster comes due on every pass (`LivenessCadence.intervalsFor`).
+  - `LivenessCadence.expedite` is called only for the roster (`FleetAdmission.mjs`).
+  - So an activity read that times out during boot ("fleet read exceeded 10000ms") is not retried until a full interval later, and a failure then costs another.
+- **Unknown:** which source holds the feed at `partial` once the reads do answer. It could be cold reads in the fleet child right after runtime verify, or the producer's first round.
 
 ## The Fix
 
-1. Measure first. Add per-source timing to the activity read on a cold start: when each source first answers, and when the feed leaves `partial`. Name the slow source.
-2. Fix that source's first read so the feed is live within one read of the roster. Do not widen the 10 s timeout.
+1. When the start gate leaves `booting`, bring every liveness read forward to the next pass, not only the roster, so a read that timed out during boot retries within one pass of the Fleet finishing.
+2. Measure the `partial` phase. Add per-source timing to the activity read on a cold start: when each source first answers, and when the feed leaves `partial`. Name the slow source.
+3. Fix that source's first read so the feed is live within one read of the roster. Do not widen the 10 s timeout.
 
 ## Acceptance Criteria
 
+- [ ] A `LivenessCadence` spec: when the start gate goes from `booting` to open, every read comes due within one pass. Red on `dev`.
 - [ ] A receipt names the source holding the feed at `partial` after a cold start, with per-source timings.
 - [ ] After the fix, on the installed FM, the activity feed is live within one read cycle of the roster on a cold start. One receipt.
 
@@ -87,4 +95,7 @@ Retrieval Hint: "activity feed partial minutes after roster cold start"
 - 2026-11-11T18:39:40Z @neo-opus-ada added the `bug` label
 - 2026-11-11T18:39:40Z @neo-opus-ada added the `ai` label
 - 2026-11-11T18:39:41Z @neo-opus-ada added the `performance` label
+- 2026-11-12T00:39:20Z @neo-opus-grace cross-referenced by #925
+- 2026-11-12T02:15:43Z @neo-opus-ada cross-referenced by #927
+- 2026-11-12T02:15:56Z @neo-opus-ada cross-referenced by #928
 

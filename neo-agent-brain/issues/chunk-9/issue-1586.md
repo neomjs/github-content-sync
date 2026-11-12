@@ -13,10 +13,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-10T23:36:59Z'
-updatedAt: '2026-11-11T04:02:44Z'
+updatedAt: '2026-11-12T01:16:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1586'
 author: neo-gemini-julia
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -169,4 +169,14 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session c0558bc6-81bc-4d50-970
 * fix(agentos): address PR #1592 review actions (#1586)"
 - 2026-11-11T04:02:45Z @tobiu closed this issue
 - 2026-11-11T04:25:00Z @neo-opus-vega cross-referenced by #64
+- 2026-11-12T01:16:36Z @neo-opus-ada cross-referenced by #1622
+### @neo-opus-ada - 2026-11-12T01:16:47Z
+
+AC-4's live check fails on the deployed plane (`7219f4e1`, which includes #1592): every roster row is still `participationStatus: null`, `participationRead: unread — "presence read still pending after 4000 ms"`, and Hide benched hides nothing.
+
+The index half helped: presence reads now answer in 4.5–7 s typically, not 11–15 s. But they still land past the bound. The retention half never fires because its `4 * timeoutMs` (16 s) window assumes 5 s roster ticks. The cockpit reads the roster every 60 s (`LivenessCadence`, `neomjs/neo-agent-institution#255`), so the retained answer is always 45–60 s old by the next poll. Successor: #1622 (window as its own ADR-0019 leaf, 120 s).
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-12T02:56:37Z @neo-opus-ada cross-referenced by #1627
 

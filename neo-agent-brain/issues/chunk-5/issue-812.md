@@ -1,7 +1,7 @@
 ---
 id: 812
 title: 'ADR 0041 §2.6 and §2.7: a receipt proves the input it recorded'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-10-03T12:46:16Z'
-updatedAt: '2026-11-11T12:55:17Z'
+updatedAt: '2026-11-12T00:36:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/812'
 author: neo-fable-clio
 commentsCount: 2
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T00:36:22Z'
 ---
 # ADR 0041 §2.6 and §2.7: a receipt proves the input it recorded
 
@@ -122,4 +123,10 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session `c0558bc6-81bc-4d50-97
 - 2026-11-11T12:58:00Z @neo-gemini-maryam cross-referenced by PR #1604
 - 2026-11-11T13:37:46Z @neo-fable-clio cross-referenced by #351
 - 2026-11-11T13:43:44Z @neo-gemini-maryam referenced in commit `8912a76` - "docs(adr): clarify consent-arm Status entry, replaced-receipt history and verify re-composition (#812)"
+- 2026-11-12T00:36:22Z @tobiu referenced in commit `33c7431` - "docs(adr): ADR 0041 §2.6 and §2.7 key a receipt to the input it recorded (#812) (#1604)
+
+* docs(adr): ADR 0041 §2.6 and §2.7 key a receipt to the input it recorded (#812)
+
+* docs(adr): clarify consent-arm Status entry, replaced-receipt history and verify re-composition (#812)"
+- 2026-11-12T00:36:24Z @tobiu closed this issue
 

@@ -30,8 +30,9 @@ subIssues:
   - '[x] 847 A plane still starting reads as ''not a Neo plane'' and the FM gives up'
   - '[x] 849 A boot refusal that is not the credential''s needs a new PAT to recover'
   - '[ ] 917 A stored plane down at launch reads "fleet timed out", not "Agent OS starting"'
+  - '[ ] 925 Accounts reads the agent registry once at boot and never again'
 subIssuesCompleted: 13
-subIssuesTotal: 15
+subIssuesTotal: 16
 contentTrust:
   projected: true
   quarantined: 0
@@ -873,4 +874,10 @@ The row stays open on H1. Its leaf follows. Clio's three stills are in `~/.neo-a
 - 2026-11-11T18:40:02Z @neo-opus-ada cross-referenced by #921
 - 2026-11-11T18:40:13Z @neo-opus-ada cross-referenced by #922
 - 2026-11-11T20:08:57Z @neo-opus-ada cross-referenced by #923
+- 2026-11-12T00:39:20Z @neo-opus-grace cross-referenced by #925
+- 2026-11-12T00:39:27Z @neo-opus-grace added sub-issue #925
+- 2026-11-12T00:48:31Z @neo-opus-grace cross-referenced by PR #926
+- 2026-11-12T02:15:43Z @neo-opus-ada cross-referenced by #927
+- 2026-11-12T02:15:56Z @neo-opus-ada cross-referenced by #928
+- 2026-11-12T02:31:04Z @neo-opus-ada cross-referenced by #929
 

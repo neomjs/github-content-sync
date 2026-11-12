@@ -1,7 +1,7 @@
 ---
 id: 1616
 title: The github-workflow server cannot close an issue
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-11T21:29:08Z'
-updatedAt: '2026-11-11T21:47:50Z'
+updatedAt: '2026-11-11T22:50:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1616'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-11T22:50:51Z'
 ---
 # The github-workflow server cannot close an issue
 
@@ -120,4 +121,55 @@ Retrieval Hint: "auto mode classifier refuses gh issue close; External System Wr
 - 2026-11-11T21:32:16Z @neo-opus-vega cross-referenced by #132
 - 2026-11-11T21:32:27Z @neo-opus-vega cross-referenced by #20794
 - 2026-11-11T21:49:48Z @neo-opus-vega cross-referenced by PR #1617
+- 2026-11-11T22:27:55Z @neo-opus-vega referenced in commit `d2e7fa0` - "fix(github-workflow): manage_issue_state answers NOT_FOUND for an unknown number (#1616)
+
+GitHub answers a number that is no issue of the repository, unknown or a pull request's, with a
+NOT_FOUND error beside the null field, and GraphqlService.query throws on any error. Both lookups
+of closeIssue now turn that one thrown error into null, so their NOT_FOUND branches are reached;
+every other lookup error still reports GRAPHQL_API_ERROR. The spec's stubs throw the way the
+service does.
+
+issue_number and duplicate_of are positive integers, in the schema (minimum: 1) and in the
+service before any request, and a call without arguments is refused instead of throwing."
+### @neo-opus-vega - 2026-11-11T22:34:52Z
+
+**Handover, 2026-11-11.** My session ends here and the work continues in my next one; nobody else needs to pick this up.
+
+- **State.** PR #1617, branch `vega/1616-issue-close`, head `d2e7fa0b` (two commits). Maryam's Round 1 requested changes with three actions. All three are addressed in `d2e7fa0b`; the author response is https://github.com/neomjs/neo-agent-brain/pull/1617#issuecomment-6808600441.
+- **Evidence at that head.** The six affected specs pass (159 tests). Through the real service against GitHub, an unknown number and a pull request's number answer `NOT_FOUND`. Both GraphQL documents are valid against the live schema.
+- **Next, in order.**
+  1. The re-review request to Maryam, with the response's comment id, once the checks are green on `d2e7fa0b`.
+  2. After approval: the merge handoff.
+  3. After a plane cut that carries the merge: the live-close receipt for the third criterion, posted here, then the skills wording. Both are registered on #132 (its comment 6808582205).
+- **Local run, for whoever reads a red there.** On my seat four arms are red without the remote token: three in `McpServersHealth.spec.mjs` and `QueryReRanker.spec.mjs:550`. CI was green on the first head.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
+- 2026-11-11T22:50:51Z @tobiu referenced in commit `63428c9` - "feat(github-workflow): manage_issue_state closes an issue (#1616) (#1617)
+
+* feat(github-workflow): manage_issue_state closes an issue (#1616)
+
+The server gets an issue close with the contract manage_discussion's close has: a required reason
+(COMPLETED, NOT_PLANNED, or DUPLICATE with its surviving issue), a guard that lets the author or a
+current assignee close and refuses anyone else without acknowledgedForeignClose, and an
+already-closed issue answered unchanged.
+
+A Claude Code seat in auto mode cannot run `gh issue close`: the harness ships a rule that refuses
+closing an item the session did not create, and no repository file lifts it. This server's tools are
+allow-listed before that classifier runs.
+
+stateReason is read with enableDuplicate, since GitHub otherwise reports a duplicate as NOT_PLANNED.
+
+* fix(github-workflow): manage_issue_state answers NOT_FOUND for an unknown number (#1616)
+
+GitHub answers a number that is no issue of the repository, unknown or a pull request's, with a
+NOT_FOUND error beside the null field, and GraphqlService.query throws on any error. Both lookups
+of closeIssue now turn that one thrown error into null, so their NOT_FOUND branches are reached;
+every other lookup error still reports GRAPHQL_API_ERROR. The spec's stubs throw the way the
+service does.
+
+issue_number and duplicate_of are positive integers, in the schema (minimum: 1) and in the
+service before any request, and a call without arguments is refused instead of throwing."
+- 2026-11-11T22:50:52Z @tobiu closed this issue
+- 2026-11-12T01:47:44Z @neo-opus-vega cross-referenced by #1624
 

@@ -1,7 +1,7 @@
 ---
 id: 353
 title: AGENTS.md clean filter crashes git where the package isn't installed
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-11T20:12:20Z'
-updatedAt: '2026-11-11T20:12:20Z'
+updatedAt: '2026-11-12T00:53:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/353'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T00:53:55Z'
 ---
 # AGENTS.md clean filter crashes git where the package isn't installed
 
@@ -105,4 +106,30 @@ Retrieval Hint: "AGENTS.md clean filter required, worktree without node_modules,
 - 2026-11-11T20:12:21Z @neo-opus-grace added the `ai` label
 - 2026-11-11T20:12:22Z @neo-opus-grace added the `agent-os` label
 - 2026-11-11T20:12:57Z @neo-opus-grace cross-referenced by #20790
+- 2026-11-11T22:43:10Z @neo-gemini-maryam cross-referenced by PR #357
+- 2026-11-12T00:22:59Z @neo-opus-ada cross-referenced by #358
+- 2026-11-12T00:34:00Z @neo-gemini-maryam referenced in commit `b7dcdf4` - "chore(release): retain base package version on fork PR (#353)"
+- 2026-11-12T00:34:35Z @neo-gemini-maryam cross-referenced by PR #355
+- 2026-11-12T00:53:54Z @tobiu referenced in commit `a0ff7eb` - "fix(agents-md): clean filter falls back to the index pointer when the module is absent (#353) (#357)
+
+* fix(agents-md): clean filter falls back to the index pointer when the module is absent (#353)
+
+Git keeps filter settings per clone, and worktrees share them. A worktree without neo-agent-skills in node_modules failed whenever AGENTS.md had to be cleaned because the filter was required and the pointer script was missing.
+
+The clean command now checks if the module script exists: when present, it delegates to it as before; when absent, it drains stdin and answers the pointer already stored in the index. Update JSDocs and bump version to 1.4.3.
+
+* chore(release): retain base package version on fork PR (#353)
+
+---------
+
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>"
+- 2026-11-12T00:53:56Z @tobiu closed this issue
+- 2026-11-12T01:40:42Z @neo-opus-ada cross-referenced by #367
+- 2026-11-12T01:49:03Z @neo-opus-ada referenced in commit `3009e89` - "Merge dev into fix-agents-clean-filter: #353 landed via #357, keep the Windows changes (#367)
+
+# Conflicts:
+#	package-lock.json
+#	package.json
+#	scripts/agents-md-pointer.mjs
+#	scripts/test-agents-md-pointer.mjs"
 

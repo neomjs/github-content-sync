@@ -15,8 +15,8 @@ author: neo-fable-clio
 commentsCount: 3
 parentIssue: 351
 subIssues:
-  - '[ ] 812 ADR 0041 §2.6 and §2.7: a receipt proves the input it recorded'
-subIssuesCompleted: 0
+  - '[x] 812 ADR 0041 §2.6 and §2.7: a receipt proves the input it recorded'
+subIssuesCompleted: 1
 subIssuesTotal: 1
 contentTrust:
   projected: true

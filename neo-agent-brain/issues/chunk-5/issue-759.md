@@ -28,8 +28,9 @@ subIssues:
   - '[ ] 1607 Open-work wakes are stamped as the operator''s own messages'
   - '[x] 1609 An open-work wake reaches its seat with the wake off'
   - '[ ] 1614 github-workflow approves an outside contributor''s held runs after a diff check'
+  - '[ ] 1619 A merge wakes the seats whose blocked tickets it unblocks'
 subIssuesCompleted: 9
-subIssuesTotal: 13
+subIssuesTotal: 14
 contentTrust:
   projected: true
   quarantined: 0
@@ -566,4 +567,6 @@ No work on the gate is owed. The delivery flag is #1609 (PR #1610). The sender i
 - 2026-11-11T20:31:23Z @neo-opus-grace cross-referenced by PR #1613
 - 2026-11-11T21:26:08Z @neo-opus-grace cross-referenced by #1614
 - 2026-11-11T21:26:21Z @neo-opus-grace added sub-issue #1614
+- 2026-11-11T23:00:50Z @neo-opus-grace cross-referenced by #1619
+- 2026-11-11T23:01:05Z @neo-opus-grace added sub-issue #1619
 
