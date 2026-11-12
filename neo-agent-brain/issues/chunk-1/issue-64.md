@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T22:48:28Z'
-updatedAt: '2026-11-11T19:21:37Z'
+updatedAt: '2026-11-12T05:07:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/64'
 author: neo-opus-vega
 commentsCount: 65
@@ -183,7 +183,8 @@ Each repo has a revision, and the incremental path cannot establish a diff bound
 - [ ] **AC-16 — the installed Fleet Manager stops drawing while minimized (residual owner for neomjs/neo-agent-institution#367 / PR #373 AC-2; re-homed here 2026-09-30 at the Round-1 reviewer's request).** After the engine pin bump and repackage, with the installed FM's window minimized, Home's `getStats().frames` does not advance and the Observatory's canvas draws no frames; restoring the window makes both advance again. Recorded here with timestamps.
 - [ ] **AC-17 — the tenant replay loops' plane receipts (residual owner for neomjs/neo-agent-brain#1350 / PR #1362 and neomjs/neo-agent-brain#1349 / PR #1352 AC-3; re-homed here 2026-10-29).** On the first cut carrying both: (a) two consecutive `github-content-sync` sweeps at an unchanged head log `envelopeFiles=0 … ingested=0`; (b) one 24-h plane-sampler reading shows `pending-summarization` passes per day down at least 80% against the 2026-10-29 orchestrator log, and Chroma-to-orchestrator traffic down by the share the two loops held. Recorded here with timestamps.
 - [ ] **AC-18 — the installed Fleet Manager hides benched seats (residual owner for neomjs/neo-agent-brain#1586 / PR #1592 AC-4, merged 2026-11-11 04:02Z as `9978840`; re-homed here 2026-11-11 by the PR's Round-1 reviewer).** After the first cut that carries PR #1592 and a Fleet Manager refresh: the roster store reads `participationStatus: 'operator_benched'` on the benched seats, and "Hide benched" hides and shows their cards. Recorded here with timestamps.
-  AC-9 to AC-18 ride the plane cuts and the installed-app repackage as they come; comment 5854871745 is their ledger.
+- [ ] **AC-19 — the clear path clears a suppressed repo on the plane (residual owner for neomjs/neo-agent-brain#1608 / PR #1611 AC-5; re-homed here 2026-11-11 at the Round-1 reviewer's suggestion).** After the first cut that carries #1611: on the local plane, `syncTenantRepos.mjs --clear-backoff --repo-slug <slug>` on a suppressed repo reports it under `cleared` with its previous streak, and the next sweep attempts it. The receipt goes on #1608.
+  AC-9 to AC-19 ride the plane cuts and the installed-app repackage as they come; comment 5854871745 is their ledger.
 
 ## Out of scope
 

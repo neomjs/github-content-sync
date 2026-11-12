@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-11T18:26:30Z'
-updatedAt: '2026-11-11T18:26:30Z'
+updatedAt: '2026-11-12T07:02:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/917'
 author: neo-opus-ada
 commentsCount: 0
@@ -54,7 +54,11 @@ It used the cold class, offered only Reconnect, and showed an empty roster. The 
 
 **Recovery itself worked without any click.** The ingress came back at 17:56:14Z. Main re-probed and booted the fleet at 17:56:20Z (plane init 36 ms, verified), and the spine went `live` between 17:57:24Z and 17:57:30Z. Only the words on screen are wrong.
 
-**Unknown:** which input made the cold verdict win. It could be the transport fact on the brain-health wire (missing, or `settled` rather than `starting`) or the verdict precedence. The fix's first spec finds out.
+**Unknown, narrowed on 2026-11-12** (code read on `dev` `72dcd27`; this path is unchanged since `6f00d3da`):
+- **Not the verdict precedence.** The cold branch skips `connectionVerdict` only while `transport.phase === 'starting'`, and `spineBannerPipeline.spec.mjs` "starting transport (#735, #739)…" already turns a cold grid with a timed-out roster read plus a `plane-starting` fact into `Agent OS starting · 62 s`.
+- **Not main's fact.** `uiTransportFact` is `startTransportFact()` before the window can read, `onPlaneStarting` sets the `plane-starting` fact (its log line above fired), and `brain-health` is registered before the window exists.
+- **So the renderer's `shellTransport` was not `starting`.** `BrainHealthRead.apply` is its only writer. A failed pull writes `null`, and only a `starting` answer arms the 1 s re-pull, so after a failed pull the next one waits for the 120 s cadence or a Reconnect. The Reconnect above re-pulled and still showed the timeout, so the pulls failed, or answered without the fact, more than once.
+- **What tells:** an installed run in which main logs each `brain-health` answer's `transport.phase` and the renderer logs each pull's outcome.
 
 ## The Architectural Reality
 
@@ -69,14 +73,14 @@ It used the cold class, offered only Reconnect, and showed an empty roster. The 
 
 ## The Fix
 
-1. **Reproduce in `spineBanner.spec.mjs`, red on `6f00d3da`.** Use the facts seen on 2026-11-11: a stored plane typed `plane-unreachable` at boot, main in the plane-starting wait, and the roster read timing out after 10 s. The spine must show `fleet timed out`, as it did.
+1. **Find where the fact is lost, then reproduce it there, red on `6f00d3da`.** A spine spec cannot do it: with a `starting` fact the spine already answers correctly (see Unknown). The installed run named there finds the seam; its spec feeds the facts seen on 2026-11-11 (a stored plane typed `plane-unreachable` at boot, main in the plane-starting wait, the roster read timing out after 10 s) and shows `fleet timed out`, as the spine did.
 2. **Make the `plane-starting` branch win** at the input the reproduction names, either the transport fact the renderer receives or the verdict precedence:
    - `Agent OS starting · N s` from first paint, with `Longer than usual.` from 60 s;
    - `Agent OS not answering · N min` from 180 s, with `#847`'s lead.
 
 ## Acceptance Criteria
 
-- [ ] With the stored plane unreachable at boot, the spine never shows `fleet timed out`. It shows `#847` §3's pill and lead before and after 180 s. A spine banner spec is red on `6f00d3da` and green after.
+- [ ] With the stored plane unreachable at boot, the spine never shows `fleet timed out`. It shows `#847` §3's pill and lead before and after 180 s. A spec at the seam that loses the fact is red on `6f00d3da` and green after.
 - [ ] The roster read's 10 s timeout during the plane-starting wait does not produce its own verdict. Same spec.
 - [ ] *(post-merge, installed)* Row 5's H1 re-walk on the next candidate passes: the reason and the next step are readable without hovering. One receipt on #516 and #424.
 
@@ -98,6 +102,7 @@ Retrieval Hint: "plane down at launch fleet timed out shadows Agent OS starting"
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+
 ## Timeline
 
 - 2026-11-11T18:26:30Z @neo-opus-ada assigned to @neo-opus-ada
@@ -108,4 +113,8 @@ Retrieval Hint: "plane down at launch fleet timed out shadows Agent OS starting"
 - 2026-11-11T18:40:02Z @neo-opus-ada cross-referenced by #921
 - 2026-11-11T18:40:13Z @neo-opus-ada cross-referenced by #922
 - 2026-11-11T20:08:57Z @neo-opus-ada cross-referenced by #923
+- 2026-11-12T00:39:20Z @neo-opus-grace cross-referenced by #925
+- 2026-11-12T02:15:43Z @neo-opus-ada cross-referenced by #927
+- 2026-11-12T02:15:56Z @neo-opus-ada cross-referenced by #928
+- 2026-11-12T02:31:04Z @neo-opus-ada cross-referenced by #929
 

@@ -1,7 +1,7 @@
 ---
 id: 1607
 title: Open-work wakes are stamped as the operator's own messages
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-11T18:28:42Z'
-updatedAt: '2026-11-12T00:21:39Z'
+updatedAt: '2026-11-12T03:11:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1607'
 author: neo-opus-ada
 commentsCount: 5
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T03:11:00Z'
 ---
 # Open-work wakes are stamped as the operator's own messages
 
@@ -254,4 +255,19 @@ The Fleet producer sent each open-work wake through the operator's own add_messa
 - 2026-11-12T01:19:56Z @neo-opus-grace referenced in commit `f0cce62` - "refactor(fleet): the observation builder stays private to the round (#1607)"
 - 2026-11-12T01:19:56Z @neo-opus-grace referenced in commit `6f49711` - "ci: re-run the checks the Actions incident left orphaned in queue (#1607)"
 - 2026-11-12T01:19:57Z @neo-opus-grace referenced in commit `f277f9b` - "fix(memory-core): admit_open_work_wake passes the embedder health gate, like the add_message write it ends in (#1607)"
+- 2026-11-12T03:11:00Z @tobiu referenced in commit `568d637` - "feat(fleet): the plane sends open-work wakes as @system, composed from the producer's tokens (#1607) (#1613)
+
+* feat(fleet): the plane sends open-work wakes as @system, composed from the producer's tokens (#1607)
+
+The Fleet producer sent each open-work wake through the operator's own add_message, so the plane stamped the operator as its sender: a human principal, high priority, first in every drain. The producer now submits a bounded observation to admit_open_work_wake. The plane admits it only from the operator's verified session, validates every token against openWorkWakeMessage.mjs, composes the message there and sends it as @system at normal priority with its wake on, recording the operator as task.observedBy. Under strict isolation the system sender needs no prior history with a seat.
+
+* test(mcp): the tool census counts admit_open_work_wake in the extended tier (#1607)
+
+* refactor(fleet): the observation builder stays private to the round (#1607)
+
+* ci: re-run the checks the Actions incident left orphaned in queue (#1607)
+
+* fix(memory-core): admit_open_work_wake passes the embedder health gate, like the add_message write it ends in (#1607)"
+- 2026-11-12T03:11:01Z @tobiu closed this issue
+- 2026-11-12T04:11:30Z @neo-gemini-julia cross-referenced by #1630
 

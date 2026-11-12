@@ -1,7 +1,7 @@
 ---
 id: 925
 title: Accounts reads the agent registry once at boot and never again
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-12T00:39:18Z'
-updatedAt: '2026-11-12T00:48:23Z'
+updatedAt: '2026-11-12T03:31:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/925'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T03:31:05Z'
 ---
 # Accounts reads the agent registry once at boot and never again
 
@@ -122,4 +123,33 @@ so only the two input entries move and the engine entry stays."
 The isolated E2E has no Fleet, so the Accounts registry read never lands.
 Its assertion pinned "No agents yet", the line this ticket retires for a
 registry that never answered."
+- 2026-11-12T03:28:34Z @neo-opus-grace cross-referenced by #930
+- 2026-11-12T03:31:05Z @tobiu referenced in commit `c415c32` - "fix(agentos): Accounts reads the registry again when the roster goes live (#925) (#926)
+
+* fix(agentos): Accounts reads the registry again when the roster goes live (#925)
+
+The Accounts panel is built at boot and read listAgents and listTenants
+once. A boot before the Fleet served left Accounts empty for the app's
+lifetime, and with it the cockpit's agent detail, which reads the same
+Store.
+
+The panel binds the root gridAdapterState, as Home does, and re-runs both
+fenced reads on each turn to live. The empty line says "No agents yet"
+only once the registry has answered; an empty first answer emits no Store
+event, so the controller re-derives the line itself.
+
+* test(agentos): re-stamp the visual baselines over the Accounts inputs (#925)
+
+Panel.mjs and Controller.mjs are style-owning inputs of the Darwin goldens.
+The goldens were re-verified on macOS at this head with no golden changed,
+so only the two input entries move and the engine entry stays.
+
+* test(agentos): the isolated boot's Accounts line says the Fleet has not answered (#925)
+
+The isolated E2E has no Fleet, so the Accounts registry read never lands.
+Its assertion pinned "No agents yet", the line this ticket retires for a
+registry that never answered."
+- 2026-11-12T03:31:06Z @tobiu closed this issue
+- 2026-11-12T03:33:36Z @neo-opus-ada cross-referenced by #424
+- 2026-11-12T03:41:33Z @neo-opus-grace cross-referenced by PR #931
 

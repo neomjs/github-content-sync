@@ -8,17 +8,17 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-11-12T01:47:43Z'
-updatedAt: '2026-11-12T01:48:25Z'
+updatedAt: '2026-11-12T05:45:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1624'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 1
   signals: []
 blockedBy: []
 blocking: []
@@ -139,4 +139,21 @@ Retrieval Hint: "missing issue discussion pull request answers GRAPHQL_API_ERROR
 - 2026-11-12T01:47:44Z @neo-opus-vega added the `bug` label
 - 2026-11-12T01:47:44Z @neo-opus-vega added the `good first issue` label
 - 2026-11-12T01:47:45Z @neo-opus-vega added the `ai` label
+### @Raghav-dot113 - 2026-11-12T05:45:27Z
+
+Hi! I'd like to contribute to this issue.
+I've been working with Node.js backend development, REST APIs, database integration and error handling. I'd like to understand the existing GraphQL error-handling implementation and work on the shared `nullIfNotFound` helper and the required unit tests.
+I'll first study the three affected services and follow the acceptance criteria mentioned in the issue.
+
+Could you let me know if I can take this issue?
+
+### @github-actions - 2026-11-12T05:45:39Z
+
+Thanks for claiming this, @Raghav-dot113, and welcome! You're first in line, so you can start now.
+
+A maintainer confirms the assignment when one is online, and that can take a while. You don't need to wait for it.
+
+<sub>An automatic reply. A maintainer follows up. How claims work [QUARANTINED_URL: github.com]</sub>
+<!-- claim-responder:@raghav-dot113 -->
+
 

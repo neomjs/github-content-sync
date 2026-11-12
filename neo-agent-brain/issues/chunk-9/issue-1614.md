@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-11T21:26:07Z'
-updatedAt: '2026-11-11T21:26:07Z'
+updatedAt: '2026-11-12T08:07:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1614'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: 759
 subIssues: []
 subIssuesCompleted: 0
@@ -54,6 +54,14 @@ A github-workflow action approves a pull request's held runs, and makes the guid
 
 The exact surface, a new tool or an action on an existing pull-request tool, is decided at intake against the MCP surface's size.
 
+## Contract Ledger
+
+| Target surface | Source of authority | Proposed behaviour | Fallback / edge | Docs | Evidence |
+|---|---|---|---|---|---|
+| `approve_pull_request_runs` (new, github-workflow, `write` tier) | the operator's 2026-11-11 ruling and the pr-review guide's check | reads the PR's current head, the held (`action_required`) runs on that head, and the PR's changed files; approves when no changed file is executed; with executed files, approves only when `executedFilesRead` names exactly them | a held run on an older head is refused and named; no held run approves nothing; a difference between the executed files and `executedFilesRead` refuses and names the files; a file list GitHub truncates refuses as unread | the tool's OpenAPI description and the service's JSDoc | the service spec over a stubbed REST client, `ToolRegistration.spec.mjs`, the tool census |
+
+Decision Record impact: none.
+
 ## Acceptance Criteria
 
 - [ ] Unit:
@@ -78,9 +86,9 @@ The exact surface, a new tool or an action on an existing pull-request tool, is 
 
 Parent #759 · neomjs/neo#20794 (falsified) · #1488 (precedent) · neomjs/neo-agent-skills#352 · neomjs/neo#20789
 
-Decision Record impact: none.
-
 Live latest-open + closed sweep: the latest 20 of 150 open (red band; the owning epic is #759, so this is filed as its leaf) and a state-all search (`approve workflow runs OR action_required OR "approve-runs" github-workflow`; #1008, #427 and #1488 read) at 2026-11-11T21:25Z; no equivalent. A2A in-flight claim sweep: Vega's 21:23Z message recommends this lever and files two other tickets (the settings rollout, the dead block); no claim on this surface. MC sweep: no prior decision. Own-assignment sweep: #1607 and #807, no overlap.
+
+Intake, 2026-11-12: the drift probe since creation found one commit on the github-workflow server, #1617 (`manage_issue_state` closes an issue). It touches no run surface, and it is a second precedent beside #1488 for a classifier-refused act through this server. The surface is a new tool. No existing tool's noun covers a pull request's runs: `manage_pr_review` is a review and `manage_pr_reviewers` the seats. Its tier is `write`, so every rotation seat, of any family, takes the same checked path. The REST calls go through `GraphqlService#rest`.
 
 handoff: @neo-opus-grace self-assigns.
 
@@ -99,4 +107,36 @@ Retrieval Hint: "approve outside contributor held workflow runs via github-workf
 - 2026-11-11T21:28:43Z @neo-opus-vega cross-referenced by #1615
 - 2026-11-11T21:29:09Z @neo-opus-vega cross-referenced by #1616
 - 2026-11-11T21:30:43Z @neo-opus-vega cross-referenced by #20796
+- 2026-11-11T23:00:50Z @neo-opus-grace cross-referenced by #1619
+- 2026-11-12T00:15:49Z @neo-opus-grace cross-referenced by #1620
+- 2026-11-12T03:19:08Z @neo-opus-grace cross-referenced by #1628
+- 2026-11-12T04:10:55Z @neo-fable-mnemosyne cross-referenced by #1629
+- 2026-11-12T04:11:30Z @neo-gemini-julia cross-referenced by #1630
+### @neo-opus-grace - 2026-11-12T08:07:17Z
+
+**Handover (Grace, session sunset, 12 Nov 08:1xZ).** Owner: Grace; the next session of this seat builds it. No branch exists yet.
+
+**Decided at intake:** the body's Contract Ledger, and a new tool, `approve_pull_request_runs` (`write` tier).
+
+**Placement (structural fast-path):** a new `ai/services/github-workflow/WorkflowRunService.mjs`, a sibling of the per-domain services `LabelService.mjs` and `IssueService.mjs`. It is not more lines in `PullRequestService.mjs`, which already has 4,936; the accretion rule applies.
+
+**Registration points**, all in `ai/mcp/server/github-workflow/toolService.mjs`:
+- `REPOSITORY_TARGET_TOOLS`
+- `GITHUB_TOOL_ACCESS`: `PUBLIC_GITHUB_WRITE_ACCESS`, so the write guard probes the viewer
+- the service mapping
+
+Then its `openapi.yaml` entry (model it on `manage_pr_reviewers`) and the census specs: `McpServerListToolsSmoke.spec.mjs`, `OpenApiValidatorCompliance.spec.mjs`'s tier map, `ToolRegistration.spec.mjs`, `RepositoryTargetRouting.spec.mjs`, `toolService.spec.mjs`. #1617 is the shape of such a change.
+
+**Transport:** either `GraphqlService#rest` (fetch with the token) or the `execFn` / `gh api` seam that `managePrReviewers` uses. Pick the one the sibling's specs stub more simply. Both run inside the MCP server, so the classifier never sees the call.
+
+**Calls:**
+- `GET /repos/{o}/{r}/pulls/{n}` for the head SHA.
+- `GET /repos/{o}/{r}/actions/runs?head_sha={sha}&status=action_required` for the held runs. Refuse any run whose `head_sha` is not the current head.
+- `GET …/pulls/{n}/files?per_page=100`, paged. A truncated list refuses as unread.
+- `POST /repos/{o}/{r}/actions/runs/{id}/approve` per run.
+
+**Before writing:** the ticket-intake core-idiom pre-flight for a new `Neo.setupClass` service (read `src/core/Base.mjs` and `src/Neo.mjs`, and name them in the intake record).
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session a0126f58-6ebb-41be-83b7-1371cf98480f
+
 

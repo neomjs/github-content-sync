@@ -1,7 +1,7 @@
 ---
 id: 1627
 title: The fleet sets operator presence and serves it to the cockpit
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-12T02:56:36Z'
-updatedAt: '2026-11-12T02:56:36Z'
+updatedAt: '2026-11-12T04:50:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1627'
 author: neo-opus-ada
 commentsCount: 0
@@ -22,8 +22,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1625 Whether the operator is away is plane state every seat can read'
+  - '[x] 1625 Whether the operator is away is plane state every seat can read'
 blocking: []
+closedAt: '2026-11-12T04:50:23Z'
 ---
 # The fleet sets operator presence and serves it to the cockpit
 
@@ -104,4 +105,31 @@ Retrieval Hint: "fleet setOperatorPresence verb, operator-presence broadcast onc
 - 2026-11-12T02:56:38Z @neo-opus-ada added the `ai` label
 - 2026-11-12T02:56:38Z @neo-opus-ada added the `agent-os` label
 - 2026-11-12T02:56:47Z @neo-opus-ada marked this issue as being blocked by #1625
+- 2026-11-12T03:06:18Z @neo-opus-ada referenced in commit `5d40031` - "test(fleet): the presence verb and the roster's mode (#1627)
+
+One notice per changed write and none for a repeated click; a failed notice leaves the write standing; an unwired writer answers not-wired; the roster DTO carries the record, the present default for an older plane, and null for an unanswered read or an unknown mode."
+- 2026-11-12T03:14:27Z @neo-opus-ada referenced in commit `20ab3f4` - "feat(fleet): the cockpit sets and reads operator presence (#1627)
+
+setOperatorPresence joins the wire as a lifecycle-write verb: it writes through the plane's set_operator_presence and sends one non-wake [operator-presence] AGENT:* notice when the write answers changed. The presence report keeps the who_is_online record, and fleetRoster hands it to the cockpit DTO (null when the read did not answer). Behaviour specs follow."
+- 2026-11-12T03:14:27Z @neo-opus-ada referenced in commit `52f4eb9` - "test(fleet): the presence verb and the roster's mode (#1627)
+
+One notice per changed write and none for a repeated click; a failed notice leaves the write standing; an unwired writer answers not-wired; the roster DTO carries the record, the present default for an older plane, and null for an unanswered read or an unknown mode."
+- 2026-11-12T03:19:08Z @neo-opus-grace cross-referenced by #1628
+- 2026-11-12T04:24:47Z @neo-opus-ada referenced in commit `b754719` - "feat(fleet): the cockpit sets and reads operator presence (#1627)
+
+setOperatorPresence joins the wire as a lifecycle-write verb: it writes through the plane's set_operator_presence and sends one non-wake [operator-presence] AGENT:* notice when the write answers changed. The presence report keeps the who_is_online record, and fleetRoster hands it to the cockpit DTO (null when the read did not answer). Behaviour specs follow."
+- 2026-11-12T04:24:47Z @neo-opus-ada referenced in commit `9dc19d5` - "test(fleet): the presence verb and the roster's mode (#1627)
+
+One notice per changed write and none for a repeated click; a failed notice leaves the write standing; an unwired writer answers not-wired; the roster DTO carries the record, the present default for an older plane, and null for an unanswered read or an unknown mode."
+- 2026-11-12T04:25:27Z @neo-opus-ada cross-referenced by PR #1632
+- 2026-11-12T04:50:23Z @tobiu referenced in commit `a66d399` - "feat(fleet): the cockpit sets and reads operator presence (#1627) (#1632)
+
+* feat(fleet): the cockpit sets and reads operator presence (#1627)
+
+setOperatorPresence joins the wire as a lifecycle-write verb: it writes through the plane's set_operator_presence and sends one non-wake [operator-presence] AGENT:* notice when the write answers changed. The presence report keeps the who_is_online record, and fleetRoster hands it to the cockpit DTO (null when the read did not answer). Behaviour specs follow.
+
+* test(fleet): the presence verb and the roster's mode (#1627)
+
+One notice per changed write and none for a repeated click; a failed notice leaves the write standing; an unwired writer answers not-wired; the roster DTO carries the record, the present default for an older plane, and null for an unanswered read or an unknown mode."
+- 2026-11-12T04:50:24Z @tobiu closed this issue
 

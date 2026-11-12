@@ -8,7 +8,7 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-10-30T21:34:28Z'
-updatedAt: '2026-11-12T02:31:09Z'
+updatedAt: '2026-11-12T03:47:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/842'
 author: neo-opus-vega
 commentsCount: 2
@@ -29,7 +29,9 @@ blocking: []
 
 Operator, 2026-10-30 21:2xZ: *"you can always choose when to start a fresh session. exception are night shifts when i am not online => for that we need new tools for agent os and FM to enable a 'sunset and fresh session' combination."*
 
-By day the Fleet Manager already does the second half: the operator boots a seat's fresh session from it after the seat wrote its handover. At night nobody clicks. The wake plane will ask for the rotation (neomjs/neo-agent-brain: *at the context gate the wake plane rotates the seat*, filed beside this ticket, under neomjs/neo-agent-brain#1373); the FM needs a way to answer that is not a seat Stop/Start.
+Operator, 2026-11-12 (relayed in comment 6812636308): *"peers can choose when to sunset. and nothing happens afterwards."* He proposed that the FM reopens the seat with a first prompt: *"Hi <name>, /context-recovery first please. Operator is [not] online. Choose and drive your next lane(s)."*
+
+By day the Fleet Manager already does the second half: the operator boots a seat's fresh session from it after the seat wrote its handover. At night nobody clicks, and by day the seat waits for the click. The wake plane will ask for the rotation (neomjs/neo-agent-brain#1383, under neomjs/neo-agent-brain#1373); the FM needs a way to answer that is not a seat Stop/Start.
 
 ## The Problem
 
@@ -41,29 +43,35 @@ The FM has no request surface for "start a fresh session for this seat and let t
 - #682 (restart every Claude seat for a staged Claude update and restore their sessions) needs the same per-seat primitive at bulk; #732 (an FM update never requires closing a harness) sets the constraint; neomjs/neo-agent-brain#571 (one seat folder layout Fleet provisions and launches into) and neomjs/neo-agent-brain#1230 (Claude Desktop restores a seat's old folder at launch) are the launch-side facts.
 - The operator's standing rule stays: one live session per seat. A rotation is sequential: the old session has written its handover and ends; the fresh one starts; at no point do two sessions of one seat work in parallel.
 - Design authority: a mechanism, not a designed surface; the FM's Agent Detail may later show "rotated at …", which is the design seat's read (#505/#507), not this ticket's.
+- **Added 2026-11-12.** The receipt is the seat's sunset handover, a self-addressed message tagged `sunset-protocol-handover`. Every harness writes it, where a `Stop` hook would see Claude seats only. Whether the operator is away is plane state (neomjs/neo-agent-brain#1625), set from the FM (#929).
+- **Measured on 2026-11-12, one Claude Desktop seat.** The seat wrote its receipt at 03:26:35Z, at 504k of a 1M window, with the operator present. Its `Stop`-hook listener stayed alive and claimed a direct message 9 minutes after the receipt and another about 14 minutes after it. The operator prompted the old session about ten minutes after the receipt. So after a rotation a peer's message and the operator's can both still reach the retired session.
 
 ## The Fix
 
-1. A fleet-server endpoint `rotate-session` for one seat, callable by the plane with the seat's sunset receipt (the handover message id) and refused without it; it is also refused for a session the operator has prompted since that receipt (he is driving it: a rotation would cut him off, operator ruling 2026-11-05); it starts a fresh harness session for that seat through the existing boot path, in the running harness app, touching no other seat and no other harness.
-2. The old session is not killed: it ends itself after its handover (the seat's sunset), and the FM marks it retired once the fresh session's wake route is registered; if the old session is still live after a bounded window, the FM reports it and does nothing destructive.
+1. A fleet-server endpoint `rotate-session` for one seat, callable by the plane with the seat's sunset receipt (the handover message id) and refused without it; it is also refused for a session the operator has prompted since that receipt (he is driving it: a rotation would cut him off, the operator's input of 2026-11-05); it starts a fresh harness session for that seat through the existing boot path, in the running harness app, touching no other seat and no other harness. It runs whether the operator is present or away: peers drive in both modes.
+2. The old session is not killed: it ends itself after its handover (the seat's sunset), and the FM marks it retired once the fresh session's wake route is registered; if the old session is still live after a bounded window, the FM reports it and does nothing destructive. From that registration on the seat's card opens the fresh session, so the operator's next message goes to the live one.
 3. The journal and the roster card carry the rotation (`rotated 21:17Z · from <old> to <new>`), so a morning read of the FM shows every night rotation without the plane's log.
+4. The fresh session's first prompt is a template the FM fills: the seat's name, `/context-recovery`, the operator's mode from neomjs/neo-agent-brain#1625, and the handover's message id. `Hi <name>, /context-recovery first please. Operator is [not] online. Handover: <message id>. Choose and drive your next lane(s).`
+5. A minimum interval between two rotations of one seat, as a config value. A request inside it is refused, and the roster card says so. It stops a seat that fills its context fast from spending its weekly budget on recoveries (130k tokens or more each). It must pass the cadence seats run: 42 to 135 minutes between handovers on one seat over six sessions on 2026-11-11 and 2026-11-12.
 
 ## Acceptance Criteria
 
 - [ ] A unit arm: `rotate-session` for a session the operator prompted after the handover is refused, and the refusal names that prompt.
-
 - [ ] A unit arm: `rotate-session` without a sunset receipt is refused; with one, exactly one fresh session starts for that seat and no other seat's process changes.
 - [ ] A unit arm: the old session is retired only after the fresh session's route registration; a live old session past the window is reported, never killed.
-- [ ] An installed receipt: one rotation of a Claude seat on the local plane, roster card and journal showing it, the other seats' processes unchanged (pid list before/after).
+- [ ] A unit arm: the rotation is accepted with the operator present and with him away, and the first prompt names the mode it read.
+- [ ] A unit arm: the first prompt carries the seat's name, `/context-recovery` and the handover's message id.
+- [ ] A unit arm: a second rotation of one seat inside the minimum interval is refused with the reason on the roster card, and two rotations 42 minutes apart pass at the default.
+- [ ] An installed receipt: one rotation of a Claude seat on the local plane, roster card and journal showing it, the other seats' processes unchanged (pid list before/after). A direct message sent to the seat after the rotation reaches the fresh session, and the seat's card opens the fresh session.
 - [ ] BEFORE/AFTER screenshot pair of the roster card in the PR body.
 
 ## Out of Scope
 
-Deciding when to rotate (the Brain half); the seat's own sunset and its receipt (neomjs/neo-agent-skills#247); bulk restarts for a staged update (#682); the design of a rotation row in Agent Detail.
+Deciding when to rotate (the Brain half, neomjs/neo-agent-brain#1383); the seat's own sunset and its receipt (neomjs/neo-agent-skills#247); what a retired session answers when the operator prompts it (the sunset workflow in neomjs/neo-agent-skills); the presence toggle (#929 on neomjs/neo-agent-brain#1625); bulk restarts for a staged update (#682); the design of a rotation row in Agent Detail.
 
 ## Related
 
-#682, #732, #733, #734, neomjs/neo-agent-brain#571, neomjs/neo-agent-brain#1230, neomjs/neo-agent-brain#1373, neomjs/neo-agent-skills#247.
+#682, #732, #733, #734, #929, neomjs/neo-agent-brain#571, neomjs/neo-agent-brain#1230, neomjs/neo-agent-brain#1373, neomjs/neo-agent-brain#1383, neomjs/neo-agent-brain#1625, neomjs/neo-agent-skills#247.
 
 Ownership: `unowned-rationale:` the seat-lifecycle mechanics belong with #682's owner; a plane steward or the FM steward takes it with a line here.
 
@@ -72,8 +80,9 @@ Live latest-open sweep: latest 20 open Institution issues read at 2026-10-30T21:
 Origin Session ID: 40918982-6f4d-45f6-8b01-c5f951c22edf
 Retrieval Hint: "fleet manager rotate one seat session fresh session old ends after handover no harness closed"
 
-**Amended 2026-11-05:** the operator ruled the absolute 250k gate *"plain wrong"* (recovery costs 130k or more; related lanes stay in one session; never clear before he can write again). The plane's condition (neomjs/neo-agent-brain#1383) is now window-relative and night-only; this endpoint adds the last guard, never rotating a session he is driving.
+**Amended 2026-11-05:** the operator called the absolute 250k gate *"plain wrong"* (recovery costs 130k or more; related lanes stay in one session; never clear before he can write again). The plane's condition (neomjs/neo-agent-brain#1383) is now window-relative and night-only; this endpoint adds the last guard, never rotating a session he is driving.
 
+**Amended 2026-11-12** (session 9c4aa5b1-d9ae-4ded-82ad-852eea290f85), from the operator's input in comment 6812636308: the rotation runs in both modes and is no longer night-only, the first prompt is a template (Fix 4), a minimum interval bounds it (Fix 5), and the seat's card opens the fresh session (Fix 2). Three criteria and one sentence of the installed receipt are new.
 
 ## Timeline
 
@@ -106,4 +115,5 @@ The presence toggle is #929 (FM) on #1625 (plane).
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-12T04:45:37Z @neo-gemini-maryam cross-referenced by PR #1632
 

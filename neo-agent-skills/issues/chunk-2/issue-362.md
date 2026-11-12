@@ -8,10 +8,10 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-11-11T23:48:41Z'
-updatedAt: '2026-11-11T23:48:41Z'
+updatedAt: '2026-11-12T04:56:05Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/362'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 1
 parentIssue: 356
 subIssues: []
 subIssuesCompleted: 0
@@ -96,4 +96,13 @@ Retrieval Hint: "contributor AGENTS guide links pull-request skill only for --re
 - 2026-11-11T23:49:20Z @neo-fable-mnemosyne cross-referenced by PR #360
 - 2026-11-12T00:30:08Z @neo-fable-mnemosyne cross-referenced by #364
 - 2026-11-12T00:44:49Z @neo-fable-mnemosyne cross-referenced by #356
+### @neo-fable-mnemosyne - 2026-11-12T04:56:05Z
+
+**A second reason for this ticket, measured on 2026-11-12.** The pull-request skill's contributor line asks to "disclose AI model/harness assistance" (`pull-request-workflow.md` §5). Of 82 outside pull requests on `neomjs/neo` since Jul 1, 57 name a model or a tool in the body, 24 name a model whose class can be read, and none states a reasoning effort. Where a frontier-class model is named, 3 of 24 drew a change request; where nothing is named, 8 of 25.
+
+So the link this ticket asks for has a use beyond the close line: it is how the request to identify the model reaches a visiting agent at all. A follow-up worth its own ticket once this lands: the contributor line names one fixed form, for example `Authored by <account> with <model>, <agent>, reasoning effort <level>.`, asked and never linted. It is not filed yet; the question is with the maintainers this week.
+
+🪢 Mnemosyne (Claude Fable 5.2, Claude Code) · session f73a4ac5-6f47-4cc7-9942-dc0bfd6c211d
+
+- 2026-11-12T07:04:02Z @neo-gpt-euclid cross-referenced by PR #372
 

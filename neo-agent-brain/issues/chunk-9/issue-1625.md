@@ -1,7 +1,7 @@
 ---
 id: 1625
 title: Whether the operator is away is plane state every seat can read
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-12T02:30:49Z'
-updatedAt: '2026-11-12T02:32:15Z'
+updatedAt: '2026-11-12T04:18:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1625'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,7 +23,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 1627 The fleet sets operator presence and serves it to the cockpit'
+  - '[x] 1627 The fleet sets operator presence and serves it to the cockpit'
+closedAt: '2026-11-12T04:18:06Z'
 ---
 # Whether the operator is away is plane state every seat can read
 
@@ -105,4 +106,33 @@ Retrieval Hint: "operator presence away/present plane state: nightshift toggle, 
 - 2026-11-12T02:52:37Z @neo-opus-ada cross-referenced by PR #1626
 - 2026-11-12T02:56:37Z @neo-opus-ada cross-referenced by #1627
 - 2026-11-12T02:56:47Z @neo-opus-ada marked this issue as blocking #1627
+- 2026-11-12T03:01:03Z @neo-opus-ada referenced in commit `05b73d8` - "chore(memory-core): both presence tools share one tag (#1625)
+
+TurnPresence becomes Presence and carries set_operator_presence too, so the full-surface initialize catalog stays within its 15-line budget; the memory-core operation pin moves to 56."
+- 2026-11-12T03:12:33Z @neo-opus-ada referenced in commit `ad67e88` - "feat(memory-core): operator presence becomes plane state (#1625)
+
+The operator's present/away mode is one shared graph record. set_operator_presence (admin tier) writes it and refuses a caller whose server-stamped accountType is not human; who_is_online carries it as operatorPresence in both answers. An away past its until reads present with expired: true, and the write answers changed, so a caller broadcasts once per change."
+- 2026-11-12T03:12:33Z @neo-opus-ada referenced in commit `d4ce95b` - "chore(memory-core): both presence tools share one tag (#1625)
+
+TurnPresence becomes Presence and carries set_operator_presence too, so the full-surface initialize catalog stays within its 15-line budget; the memory-core operation pin moves to 57 (#1613's tool and this one)."
+- 2026-11-12T03:43:03Z @neo-opus-ada referenced in commit `ca1b56b` - "fix(memory-core): the presence gate uses the operator predicate (#1625)
+
+set_operator_presence now asks isHumanOperatorIdentity, the predicate the open-work intake uses since #1613: an AgentIdentity of a human account that is not external and not marked operator: false. One operator gate instead of two (Maryam's review challenge on PR #1626)."
+- 2026-11-12T03:47:53Z @neo-opus-vega cross-referenced by #842
+- 2026-11-12T04:18:06Z @tobiu referenced in commit `aca17ab` - "feat(memory-core): operator presence becomes plane state (#1625) (#1626)
+
+* feat(memory-core): operator presence becomes plane state (#1625)
+
+The operator's present/away mode is one shared graph record. set_operator_presence (admin tier) writes it and refuses a caller whose server-stamped accountType is not human; who_is_online carries it as operatorPresence in both answers. An away past its until reads present with expired: true, and the write answers changed, so a caller broadcasts once per change.
+
+* chore(memory-core): both presence tools share one tag (#1625)
+
+TurnPresence becomes Presence and carries set_operator_presence too, so the full-surface initialize catalog stays within its 15-line budget; the memory-core operation pin moves to 57 (#1613's tool and this one).
+
+* fix(memory-core): the presence gate uses the operator predicate (#1625)
+
+set_operator_presence now asks isHumanOperatorIdentity, the predicate the open-work intake uses since #1613: an AgentIdentity of a human account that is not external and not marked operator: false. One operator gate instead of two (Maryam's review challenge on PR #1626)."
+- 2026-11-12T04:18:07Z @tobiu closed this issue
+- 2026-11-12T04:25:27Z @neo-opus-ada cross-referenced by PR #1632
+- 2026-11-12T06:29:30Z @neo-gemini-julia cross-referenced by PR #934
 

@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-12T02:31:03Z'
-updatedAt: '2026-11-12T02:57:13Z'
+updatedAt: '2026-11-12T05:29:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/929'
 author: neo-opus-ada
 commentsCount: 0
@@ -49,8 +49,8 @@ Design authority: the operator's words above, and the header IA (`apps/agentos/d
 
 ## The Fix
 
-1. A toggle in the product bar, left of the theme switch: a moon icon plus `Nightshift`, pressed when `away`. Its title carries the state, `since`, and `until` when set. When the DTO's `operatorPresence` is `null` (the presence read did not answer), it shows unknown, never present.
-2. Turning it on offers an optional `until` time. The plane's expiry (#1625) returns it to `present` once `until` passes.
+1. A toggle in the product bar, left of the theme switch: a cloud-moon icon (the theme switch beside it already shows the plain moon) plus `Nightshift`, pressed when `away`. Its title carries the state, `since`, and `until` when set. When the DTO's `operatorPresence` is `null` (the presence read did not answer), it shows unknown, never present.
+2. Turning it on offers spans: until switched off, 8 hours, 12 hours. A span's end is the `until` the plane enforces; the plane's expiry (#1625) returns it to `present` once `until` passes.
 3. A click calls `setOperatorPresence` (`neomjs/neo-agent-brain#1627`), which writes the plane and sends the one broadcast. The button shows the record the verb answers, and the roster DTO between clicks.
 4. The header IA's product bar row records the control.
 
@@ -58,7 +58,11 @@ Design authority: the operator's words above, and the header IA (`apps/agentos/d
 
 - [ ] The toggle shows the plane's mode on load and after a change from elsewhere, and unknown when the roster's `operatorPresence` is `null`.
 - [ ] A click calls `setOperatorPresence` once with the mode (and `until`), and the button shows the record it answers.
-- [ ] Specs cover the state mapping (present, away, away with `until`, expired, unknown). A Neural Link e2e flips it in a packaged run.
+- [ ] Specs cover the state mapping (present, away, away with `until`, expired, unknown). A Neural Link e2e flips it through a loopback Fleet.
+
+## Post-Merge Validation
+
+- [ ] On the installed FM (the batched build after the plane cut that carries `neomjs/neo-agent-brain#1626`), a click flips the plane's record and one `[operator-presence]` notice reaches `AGENT:*`.
 
 ## Out of Scope
 
@@ -91,4 +95,16 @@ Retrieval Hint: "nightshift toggle product bar operator away present broadcast, 
 - 2026-11-12T02:31:05Z @neo-opus-ada added the `design` label
 - 2026-11-12T02:31:10Z @neo-opus-ada cross-referenced by #842
 - 2026-11-12T02:32:18Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-11-12T03:28:34Z @neo-opus-grace cross-referenced by #930
+- 2026-11-12T04:25:27Z @neo-opus-ada cross-referenced by PR #1632
+- 2026-11-12T05:34:00Z @neo-opus-ada cross-referenced by #932
+- 2026-11-12T05:37:27Z @neo-opus-ada cross-referenced by PR #933
+- 2026-11-12T06:15:23Z @neo-opus-ada referenced in commit `8fcf58b` - "fix(agentos): fence the Nightshift write, retire it on a switch (#929)
+
+The Brain pin moves to 82423cf5, the dev head that carries the
+setOperatorPresence verb, so `npm ci` installs the wire the toggle
+writes through. Each write takes a generation; a later click or a
+switch to another target makes an earlier answer land nowhere, and the
+switch clears the presence and the toggle's last refusal."
+- 2026-11-12T06:29:30Z @neo-gemini-julia cross-referenced by PR #934
 

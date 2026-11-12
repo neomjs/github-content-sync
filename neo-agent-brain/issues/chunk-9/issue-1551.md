@@ -1,7 +1,7 @@
 ---
 id: 1551
 title: Curated concept edges enter a plane store through an import command
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-09T22:55:18Z'
-updatedAt: '2026-11-11T14:01:08Z'
+updatedAt: '2026-11-12T04:45:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1551'
 author: neo-fable-mnemosyne
-commentsCount: 1
+commentsCount: 2
 parentIssue: 1258
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T04:40:52Z'
 ---
 # Curated concept edges enter a plane store through an import command
 
@@ -188,4 +189,72 @@ Julia (`@neo-gemini-julia`, Gemini 4 Argon, Antigravity) · Session `3b4d3f8f-c0
 
 - 2026-11-11T12:48:30Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-11-11T13:25:37Z @neo-gemini-julia cross-referenced by PR #1605
+- 2026-11-12T04:24:18Z @neo-gemini-julia referenced in commit `cf378bc` - "fix(concepts): preserve untouched store lines and harden edge import CLI (#1551)"
+- 2026-11-12T04:40:52Z @tobiu referenced in commit `49c1d6e` - "feat(concepts): add curated concept edge import and maintenance CLI (#1551) (#1605)
+
+* feat(concepts): add curated concept edge import and maintenance CLI (#1551)
+
+* fix(concepts): preserve untouched store lines and harden edge import CLI (#1551)"
+- 2026-11-12T04:40:53Z @tobiu closed this issue
+### @neo-gemini-julia - 2026-11-12T04:45:46Z
+
+## Post-Merge `AC-7` & `#471` G4 Canonical Plane Import Handoff (`PR #1605` @ `49c1d6e7`)
+
+`PR #1605` merged to `dev` (`49c1d6e7`, `2026-11-12T04:40:50Z`), landing `ConceptService#importEdges` and `ai/scripts/maintenance/importConceptEdges.mjs` alongside `#1547`'s projection repair (`4605d893`).
+
+### 1. Settled Row Choices (Verified via `FileSystemIngestor.resolveSplitTreeReference`)
+
+All 26 unique split-tree `file:` targets across the 27 identity rows below verified `valid: true` on `dev` (`49c1d6e7`):
+1. **`multi-window` implementation (`src/manager/Window.mjs` over `src/main/addon/WindowPosition.mjs`):** `Neo.manager.Window` (`src/manager/Window.mjs:5-12`) is the App-Worker spatial registry and intersection authority for connected windows, whereas `WindowPosition` (`src/main/addon/WindowPosition.mjs:27-35`) is only the main-thread coordinate poller feeding it.
+2. **`agent-os` second example (`ai/examples/self-healing.mjs` over `ai/scripts/diagnostics/validateConceptEdges.mjs`):** Now that the list lives outside Brain source, `ai/examples/self-healing.mjs` pairs cleanly with `ai/examples/inspectGraph.mjs` as a runnable `ai/examples/` demonstration rather than pointing `EXEMPLIFIED_BY` at a diagnostic CLI.
+
+### 2. Ready-to-Run Canonical Plane Commands (Once the Brain Container Refreshes to `>= 49c1d6e7`)
+
+#### A. `#1551` `AC-7` / `#1258` `AC-4` — 27 Identity Concept Edges (`--dry-run` first, then apply without `--dry-run`)
+
+```bash
+docker exec -i neo-local-agent-os-memory-core-1 \
+  node ai/scripts/maintenance/importConceptEdges.mjs --tenant neo-shared --dry-run <<'EOF'
+{"source":"json-first-vdom","target":"file:src/vdom/Helper.mjs","type":"IMPLEMENTED_BY"}
+{"source":"json-first-vdom","target":"file:src/vdom/VNode.mjs","type":"IMPLEMENTED_BY"}
+{"source":"json-first-vdom","target":"file:src/component/Base.mjs","type":"IMPLEMENTED_BY"}
+{"source":"json-first-vdom","target":"file:examples/component/coronaHelix/MainContainer.mjs","type":"EXEMPLIFIED_BY"}
+{"source":"json-first-vdom","target":"file:examples/grid/bigData/MainContainer.mjs","type":"EXEMPLIFIED_BY"}
+{"source":"agent-os","target":"file:ai/services/ConceptService.mjs","type":"IMPLEMENTED_BY"}
+{"source":"agent-os","target":"file:ai/services/memory-core/GraphService.mjs","type":"IMPLEMENTED_BY"}
+{"source":"agent-os","target":"file:src/evolution/RemDigestion.mjs","type":"IMPLEMENTED_BY"}
+{"source":"agent-os","target":"file:ai/examples/self-healing.mjs","type":"EXEMPLIFIED_BY"}
+{"source":"agent-os","target":"file:ai/examples/inspectGraph.mjs","type":"EXEMPLIFIED_BY"}
+{"source":"multi-window","target":"file:src/worker/App.mjs","type":"IMPLEMENTED_BY"}
+{"source":"multi-window","target":"file:src/manager/Window.mjs","type":"IMPLEMENTED_BY"}
+{"source":"multi-window","target":"file:apps/sharedcovid/view/MainContainerController.mjs","type":"EXEMPLIFIED_BY"}
+{"source":"multi-window","target":"file:examples/component/multiWindowCoronaGallery/Viewport.mjs","type":"EXEMPLIFIED_BY"}
+{"source":"multi-threading","target":"file:src/worker/Manager.mjs","type":"IMPLEMENTED_BY"}
+{"source":"multi-threading","target":"file:src/worker/Base.mjs","type":"IMPLEMENTED_BY"}
+{"source":"multi-threading","target":"file:src/worker/App.mjs","type":"IMPLEMENTED_BY"}
+{"source":"multi-threading","target":"file:apps/sharedcovid/app.mjs","type":"EXEMPLIFIED_BY"}
+{"source":"multi-threading","target":"file:examples/component/multiWindowCoronaGallery/app.mjs","type":"EXEMPLIFIED_BY"}
+{"source":"data-layer","target":"file:learn/guides/datahandling/Collections.md","type":"EXPLAINED_BY"}
+{"source":"data-layer","target":"file:learn/guides/datahandling/Records.md","type":"EXPLAINED_BY"}
+{"source":"data-layer","target":"file:learn/guides/datahandling/DataPipelines.md","type":"EXPLAINED_BY"}
+{"source":"data-layer","target":"file:src/data/Store.mjs","type":"IMPLEMENTED_BY"}
+{"source":"data-layer","target":"file:src/data/Model.mjs","type":"IMPLEMENTED_BY"}
+{"source":"data-layer","target":"file:src/data/RecordFactory.mjs","type":"IMPLEMENTED_BY"}
+{"source":"data-layer","target":"file:examples/grid/bigData/MainStore.mjs","type":"EXEMPLIFIED_BY"}
+{"source":"data-layer","target":"file:examples/grid/bigData/MainModel.mjs","type":"EXEMPLIFIED_BY"}
+EOF
+```
+
+#### B. `#471` G4 (`@neo-opus-vega`) — 2-Row `dream-pipeline` Stale-Edge Replacement
+
+```bash
+docker exec -i neo-local-agent-os-memory-core-1 \
+  node ai/scripts/maintenance/importConceptEdges.mjs --tenant neo-shared --dry-run <<'EOF'
+{"op":"remove","source":"dream-pipeline","target":"file:ai/daemons/orchestrator/services/DreamService.mjs","type":"IMPLEMENTED_BY","decision":"neomjs/neo#19235"}
+{"source":"dream-pipeline","target":"file:src/evolution/RemDigestion.mjs","type":"IMPLEMENTED_BY"}
+EOF
+```
+
+Re-run without `--dry-run` to write `/app/.neo-ai-data/concepts/edges.jsonl` atomically, then record the `counts` (`beforeEdges` / `afterEdges`), dry-run report, and next handoff gap check here (for `AC-7` / `#1258` `AC-4`) and on `#471` (for G4).
+
 

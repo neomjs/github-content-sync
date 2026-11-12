@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-10-10T14:05:18Z'
-updatedAt: '2026-10-10T15:38:13Z'
+updatedAt: '2026-11-12T05:49:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/657'
 author: neo-gpt-euclid
 commentsCount: 0
@@ -32,11 +32,29 @@ blocking: []
 
 The operator escalated the seven open [Institution Dependabot alerts](https://github.com/neomjs/neo-agent-institution/security/dependabot) on 2026-10-10. At `dev af1b85d62228a160e1c1185d0a36fbf6e6c82d29`, seven manifest-specific records cover five npm packages and six advisories. They postdate the repaired cohort in closed `#124` / `#149`; those tickets stay closed.
 
+## Current intake — 2026-11-12
+
+The original seven IDs below remain the close-target cohort. Live GitHub reads at Institution dev `72dcd27e` now show:
+
+| Original alerts | Current disposition / next action |
+| --- | --- |
+| 78 (Sharp) | Open; lock still has 0.35.4. Raise the existing Transformers override floor to ^0.35.5 and refresh Sharp/platform packages. |
+| 75, 67 (DOMPurify) | Open; Monaco pins 3.4.15 while Mermaid already resolves 3.4.17. Qualify a root ^3.4.17 override, remove the duplicate nested resolution, and verify the rebuilt Monaco sanitizer. This also addresses the newer DOMPurify advisories 87–89; stopping at the old 3.4.16 floor is insufficient. |
+| 74 (KaTeX) | GitHub records fixed at 2026-10-16T13:42:06Z; current root lock is 0.18.10. Preserve the existing repair. |
+| 69 (braces) | GitHub returns 410 withdrawn. GHSA-vfj7-8cjw-p6xm was withdrawn 2026-10-23T12:53:02Z. Record as withdrawn, not patched or application-safe. |
+| 76, 70 (sprintf-js) | GitHub returns 410 withdrawn. GHSA-hp3w-g68c-fv3c was withdrawn 2026-10-22T19:21:04Z. Record as withdrawn, not patched or application-safe. |
+
+New harness alert 105 (minimatch 9/10, patched floor 11.0.1) now has a qualified repair in this same dependency-verification lane. Latest compatible electron-builder 26.18.0 still requires minimatch ^10.2.5 and pins @electron/universal 2.0.3, so a parent update alone does not fix it. The candidate overrides only app-builder-lib@26.15.3's minimatch@^10.2.5 and @electron/universal@2.0.3's minimatch@^9.0.3 to the independently tested exact 11.0.1. Actual FileMatcher, Universal ASAR and architecture allow-list consumers pass 63 checks on both the original and actual installed candidate graph; legacy callable minimatch 3/5 consumers are preserved. Installed and lock-only npm ls agree across 441 edges, and the existing overrides guard classifies both entries as needed. No global override or unrelated parent upgrade is used. Scanner-fixed remains a post-merge observation, not this qualification result.
+
+Prescription checked: `package.json` / `package-lock.json` own the root resolutions; `harness/pack.mjs#buildOrganismManifest` projects both owners' overrides into an independent stage install. Pinned Brain overrides (`gray-matter/js-yaml`) do not conflict with these proposed keys. No runtime profile, live FM installation or peer seat is changed. Clean-install, pack-contract, native/image and emitted-browser checks must precede the PR; the scanner disposition remains post-merge.
+
+The sections below retain the filing-time analysis and artifact receipt for provenance. References there to then-current npm versions and unpatched upstream advisories are historical; the dated table above governs their current disposition.
+
 ## The Problem
 
 New-version PRs are useful delivery vehicles, but there is no current PR covering this cohort and no universal available upgrade. GitHub's [security-update contract](https://docs.github.com/en/code-security/concepts/supply-chain-security/dependabot-security-updates) requires an available resolution: a newer parent can sometimes remove or update a vulnerable child, but a PR is not guaranteed.
 
-| Alert(s) | Package / locked copies | Advisory and current fix status |
+| Alert(s) | Package / locked copies | Advisory and fix status at filing |
 | --- | --- | --- |
 | [78](https://github.com/neomjs/neo-agent-institution/security/dependabot/78) | root `sharp 0.35.4`, runtime | [GHSA-wq5f-xc86-pv6w](https://github.com/lovell/sharp/security/advisories/GHSA-wq5f-xc86-pv6w); fixed at `0.35.5` |
 | [75](https://github.com/neomjs/neo-agent-institution/security/dependabot/75), [67](https://github.com/neomjs/neo-agent-institution/security/dependabot/67) | root `dompurify 3.4.15`, development | [GHSA-6688-9rhm-gjv2](https://github.com/cure53/DOMPurify/security/advisories/GHSA-6688-9rhm-gjv2) and [GHSA-p98j-92pf-mc4p](https://github.com/cure53/DOMPurify/security/advisories/GHSA-p98j-92pf-mc4p); both fixed at `3.4.16` |
@@ -44,7 +62,7 @@ New-version PRs are useful delivery vehicles, but there is no current PR coverin
 | [69](https://github.com/neomjs/neo-agent-institution/security/dependabot/69) | root `braces 3.0.3`, runtime and development ancestry | [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm); no patched release listed |
 | [76](https://github.com/neomjs/neo-agent-institution/security/dependabot/76), [70](https://github.com/neomjs/neo-agent-institution/security/dependabot/70) | root `sprintf-js 1.0.3` and nested `1.1.3`; harness `1.1.3` | [GHSA-hp3w-g68c-fv3c](https://github.com/advisories/GHSA-hp3w-g68c-fv3c); no patched release listed |
 
-Live npm metadata agrees: latest `sharp 0.35.5`, `braces 3.0.3`, `sprintf-js 1.1.3`; latest Mermaid `12.1.0` still requires KaTeX `^0.16.47`, while latest Monaco `0.57.0` pins DOMPurify exactly `3.4.15`. This is dependency-presence evidence, not proof of application exploitability.
+At filing, npm metadata agreed: latest `sharp 0.35.5`, `braces 3.0.3`, `sprintf-js 1.1.3`; latest Mermaid `12.1.0` still requires KaTeX `^0.16.47`, while latest Monaco `0.57.0` pins DOMPurify exactly `3.4.15`. This is dependency-presence evidence, not proof of application exploitability.
 
 ## The Architectural Reality
 
@@ -81,8 +99,9 @@ Existing manifest/pack JSDoc remains the documentation owner; update it only if 
 ## Acceptance Criteria
 
 - [ ] All seven alert IDs map to a current dependency path, exposure classification and owned disposition; duplicate advisory records in different manifests are both accounted for.
-- [ ] Sharp, DOMPurify and KaTeX affected copies meet the stated patched floors through a compatibility-verified resolution. No vulnerable nested copy is hidden by a clean hoisted version.
-- [ ] Braces and sprintf-js are removed or fixed through a verified safe dependency path; if upstream is still unpatched, record the blocker/containment, owner and concrete revalidation trigger and leave those rows open. Do not close this remediation ticket while a required repair remains outstanding.
+- [ ] Sharp is at least 0.35.5 and all DOMPurify copies are at least 3.4.17; preserve the scanner-fixed KaTeX resolution. No vulnerable nested copy is hidden by a clean hoisted version.
+- [ ] Record the authoritative withdrawal of the braces and sprintf-js advisories and their manifest-specific alerts; retain dependency-presence evidence without claiming a patch or general safety. An active required repair still blocks completion.
+- [ ] Harness alert 105's affected minimatch 9/10 edges resolve to the qualified 11.0.1 under the two exact parents; legacy callable 3/5 users remain unchanged. Preserve the actual-consumer compatibility receipt and retire the overrides when a qualified parent release makes them unnecessary.
 - [ ] A clean root and harness installation, relevant builds, existing pack/Brain-contract checks and isolated packaged smoke validate the resulting cohort. The rebuilt stage/payload and browser output have their own receipt.
 - [ ] Actual Dependabot update/error coverage is recorded without guessing from an absent PR or inaccessible admin settings.
 - [ ] **Post-merge:** re-read each manifest-specific alert on `dev`; claim fixed only where GitHub records the repaired/removal result. No blanket dismissal or local-audit-as-installed-proof.
@@ -135,4 +154,8 @@ Retrieval Hint: "Institution seven Dependabot alerts sharp DOMPurify KaTeX brace
 - 2026-10-11T01:56:03Z @neo-gpt-sophie cross-referenced by #676
 - 2026-10-11T01:57:20Z @neo-gpt-sophie cross-referenced by PR #675
 - 2026-10-14T10:45:10Z @neo-gpt-euclid cross-referenced by #690
+- 2026-11-03T05:24:08Z @neo-gpt-euclid cross-referenced by #862
+- 2026-11-03T17:24:27Z @neo-gpt-euclid cross-referenced by #869
+- 2026-11-11T01:54:58Z @neo-opus-grace cross-referenced by #912
+- 2026-11-12T06:20:13Z @neo-gpt-euclid cross-referenced by PR #935
 
