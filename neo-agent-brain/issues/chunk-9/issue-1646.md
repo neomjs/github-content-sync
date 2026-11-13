@@ -1,7 +1,7 @@
 ---
 id: 1646
 title: Seats report their plan capacity to the fleet
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-12T14:23:16Z'
-updatedAt: '2026-11-12T18:40:57Z'
+updatedAt: '2026-11-12T20:09:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1646'
 author: neo-opus-vega
-commentsCount: 3
+commentsCount: 4
 parentIssue: 1508
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +23,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[x] 1653 The open-work rotation skips a seat whose plan is exhausted until its reset'
+closedAt: '2026-11-12T19:46:49Z'
 ---
 # Seats report their plan capacity to the fleet
 
@@ -222,4 +224,59 @@ reader ignored the pool's newest windows. Two different pool keys are now
 two accounts: a newer report from another pool replaces every window, an
 older one is dropped, and the node's metadata is the newest observation's.
 The reader lays the pool's windows over a fresh member's own."
+- 2026-11-12T19:25:59Z @neo-opus-vega marked this issue as blocking #1653
+- 2026-11-12T19:46:49Z @tobiu referenced in commit `33af1d7` - "feat(fleet): seats report their plan capacity to the fleet (#1646) (#1654)
+
+* feat(memory-core): seats report their plan capacity with turn presence (#1646)
+
+record_turn_presence takes an optional capacity reading and stores it per
+seat as one SEAT_CAPACITY node, apart from the turn interval: windows are
+keyed by kind and model, the newest observation wins, and a reset that
+still lies ahead carries over to a sample without one. A malformed reading
+refuses the call before anything is written, and a reading lands even when
+the turn event itself is a no-op. TurnPresenceService#getCapacity grades it
+observed, stale (turnPresence.capacityStaleMs, 6 h) or unobserved.
+
+The Claude hook sends the Desktop app's newest usage sample on start. The
+account key is hashed on the seat, and the service refuses a pool key that
+is not an opaque hex hash, so no account id reaches the plane.
+
+* feat(memory-core): who_is_online projects seat capacity and plan pools (#1646)
+
+Verbose rows carry each seat's reading from TurnPresenceService#getCapacity,
+and a pools map groups seats by their opaque poolKey: the members, plus per
+window the newest observation any member reported, keeping a member's reset
+that still lies ahead. The terse answer does not read capacity. The response
+schema declares both.
+
+* feat(fleet): the throttle axis reads each seat's plan capacity (#1646)
+
+FleetManager#throttleStateOptions gets its first reader. capacityThrottleState
+maps a who_is_online row's capacity onto the throttle taxonomy: rate-limited
+while a binding window sits at 100 % (the 5-hour or weekly all-models window,
+or a capped model's window when the seat runs that model), none below it, and
+unknown when the reading is unobserved or stale or no binding window is still
+current. The reader keeps one presence answer per snapshot, so the adapter's
+per-agent calls cost a single read, and joins on the presence identity.
+
+* fix(fleet): a capacity reading stays with its account, and members read their pool (#1646)
+
+Round 1: an older report replaced the newer pool and model; a newer report
+from another pool kept the old pool's windows and resets; and the throttle
+reader ignored the pool's newest windows. Two different pool keys are now
+two accounts: a newer report from another pool replaces every window, an
+older one is dropped, and the node's metadata is the newest observation's.
+The reader lays the pool's windows over a fresh member's own."
+- 2026-11-12T19:46:51Z @tobiu closed this issue
+- 2026-11-12T20:00:03Z @neo-opus-vega cross-referenced by PR #1657
+### @neo-opus-vega - 2026-11-12T20:09:48Z
+
+**Post-merge receipt, partial (2026-11-12 20:09Z), plane at Brain `a16eb4e4`** (Ada's cut and FM install; both carry #1654's `33af1d72`).
+
+- Projection deployed: every one of the 17 `who_is_online` verbose rows carries a `capacity` field.
+- No reading has landed yet. All 17 read `{state: 'unobserved'}`, `pools` is `{}`, and the throttle axis reports `degraded` ("no fleet throttle observation has been published"). Every seat's roster verdict is therefore `unknown`, the honest value without a source.
+- What is missing is the seat-side report. It starts with a seat Start whose settings carry the template's capacity hook, which is the same trigger as #1615's post-merge census. The full receipt reruns after that first Start: real capacity states, pool windows and roster verdicts, together with #1653's rotation receipt (PR #1657, Residual-Owner #1508).
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

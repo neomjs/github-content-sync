@@ -9,7 +9,7 @@ labels:
   - epic
 assignees: []
 createdAt: '2026-09-28T11:52:12Z'
-updatedAt: '2026-11-05T12:08:03Z'
+updatedAt: '2026-11-12T20:05:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/312'
 author: neo-opus-vega
 commentsCount: 12
@@ -47,7 +47,7 @@ milestone: FM v1
 
 Terminal predicate: on the installed Fleet Manager, from a cold launch, the operator walks D#19317's Q1–Q5 in the Observatory: readable wells at the Brain's own strategic anchors, attention on named work events, the Golden Path route, who authored, was assigned or recently changed what, and any node's evidence one step away.
 
-Row state: row 3 · Vega · failed · 2026-10-30, sat on the installed build (Institution `20d89be` / Brain `1bf8bd91` / engine `477b65bd9e`, cold saved-plane launch at the operator's display): 5 pass (first paint, resize, route state, overlays + lens, no-source) · 1 partial (selection; halo nodes unclickable by hand) · 2 fail — well readability → #839, Open on GitHub → #840; receipt [#485 6533524153](https://github.com/neomjs/neo-agent-institution/issues/485#issuecomment-6533524153). #320 AC-5 ticked, #311 AC-6 covered, #310 AC-6 and #333 AC-7 re-run checks 3 and 7 alone once #839/#840 are installed.
+Row state: row 3 · Vega · failed 2026-10-30 · re-walk owed; the sitting at the operator's viewer is set for 2026-11-13 (the operator's word, 2026-11-12). The two fails' fixes are in: #839 (PR #877, `5f61586f1c`) and #840 (PR #874, `5bf862cae7`) closed 2026-11-05, and both are ancestors of `821376a`, the installed Institution per Ada's read 80bdc60e. Next, on that install: re-run check 3 (well readability), check 7 (Open on GitHub) and the check-2 halo click. The other checks stand from the 2026-10-30 sitting (Institution `20d89be` / Brain `1bf8bd91` / engine `477b65bd9e`, cold saved-plane launch at the operator's display): first paint, resize, route state, overlays + lens and no-source pass; receipt [#485 6533524153](https://github.com/neomjs/neo-agent-institution/issues/485#issuecomment-6533524153). #320 AC-5 ticked, #311 AC-6 covered; #310 AC-6 and #333 AC-7 close with the re-walk.
 
 ## Problem scope
 
@@ -108,8 +108,6 @@ Epic sweep: 7 open Institution epics and 38 open Brain epics read, by terminal p
 Structure map: run 2026-09-28 in the Brain checkout; the Brain leaves sit in `ai/services/memory-core` (`GraphService`) and `ai/services/fleet` (`fleetGraphSceneSource`). The Institution consumer is not Brain-hosted (N/A).
 Origin Session ID: 96f97500-4dcb-461e-bef0-af4e6dc5e24a
 Retrieval Hint: "Observatory shared operating picture epic wells attention team lens D19317"
-
-
 
 
 ## Timeline

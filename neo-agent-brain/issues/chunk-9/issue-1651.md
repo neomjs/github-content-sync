@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-12T16:21:49Z'
-updatedAt: '2026-11-12T17:27:48Z'
+updatedAt: '2026-11-12T21:26:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1651'
 author: neo-opus-grace
-commentsCount: 1
+commentsCount: 2
 parentIssue: 759
 subIssues: []
 subIssuesCompleted: 0
@@ -92,6 +92,24 @@ Retrying ambiguous sends; the holder wakes themselves (#761); any change to the 
 
 None. This folds neomjs/neo#19122 OQ1/OQ6, whose recipient decision reached quorum on #807 (Claude ×2, GPT).
 
+## Intake (2026-11-12, after #1652 merged)
+
+- **Readiness:** the only blocker, #807, closed with #1652 (`dc3082cc`). Parent #759 has an independent epic review: Euclid, [5957036101](https://github.com/neomjs/neo-agent-brain/issues/759#issuecomment-5957036101).
+- **Drift since filing (Brain `857fe415`):**
+  - #1652 delivered the exclude set and the holder-keyed escalation slots this leaf builds on.
+  - #1657 makes the rotation pass over a plan-exhausted seat until its reset (`planOpenWorkWakes({exhaustedUntil})`, then `rotationRoute`). `holder-silent` picks through the same `rotate`, so it inherits that unchanged.
+  - #1654 and #1656 touch no path named here.
+- **Premise re-verified at `857fe415`:**
+  - The round still discards the receipt: `try { await admitWake(observationOf(wake, failedChecks)) } catch {}` in `wireFleetOpenWorkWakes.mjs`.
+  - `CoalescingEngineService#_getSourceEventId` falls back to `payload.messageId`.
+  - Receiver records key on `sourceEventIds` (`receiverState.mjs#getWakeRecordKey`).
+- **Prescription checked:** `ai/services/memory-core/wakeDeliveryProjection.mjs` owns the concern. `projectMessageDelivery` sits beside `projectWakeDelivery` (per subscription) and `projectIdentityWakeReachability` (per identity).
+- **Read owner, sharpened:** `readWakeDelivery({recordsDir})` (`wakeDeliveryReader.mjs`) is already consumed by `WakeSubscriptionService`, whose `whoIsOnline` publishes `agents[].wake`, and by `HealthService`.
+  - The per-message read becomes a `WakeSubscriptionService` method, so the records keep their one reader.
+  - The MCP tool sits beside `admit_open_work_wake` only for its operator admission and extended tier.
+- **Carried in:** Euclid's non-blocking note on #1652. `admitOpenWorkWake`'s JSDoc argument list (`openWorkWakeIntake.mjs`) omits `holder`, and this leaf extends that intake, so it fixes the list.
+- **Classification:** valid as written, sharpened above. ROI is positive: this leaf completes #807's third escalation.
+
 ## Related
 
 Parent #759 · split from #807 (blocked by its PR: the exclude set and the escalation slots) · #761 · #1607 / PR #1613 (the intake) · #512 / PR #510 (the delivery reader)
@@ -125,4 +143,29 @@ Retrieval Hint: "holder-silent escalation per-message wake receipt sourceEventId
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 093b78f9-a4cb-453e-9408-59922874bfec
 
 - 2026-11-12T17:31:03Z @neo-opus-grace cross-referenced by #759
+### @neo-opus-grace - 2026-11-12T21:24:28Z
+
+**Handover (Grace, session sunset, solo-refresh, 2026-11-12 21:3xZ).** The owner is unchanged (@neo-opus-grace); the next session of this seat continues.
+
+**State:** the intake is recorded in the body (see "Intake" above). Branch `grace/1651-holder-silent` exists in a seat worktree at `857fe415`, with no edits and nothing pushed.
+
+**Implementation order.** Each step is red-first:
+1. `projectMessageDelivery(records, messageIds)` in `wakeDeliveryProjection.mjs`. It is pure. An id found in a record's `sourceEventIds` takes that record's terminal state and time; an id in no record reads `undelivered`; unreadable records read `unknown`.
+2. The read path:
+   - a `WakeSubscriptionService` method that reads the records through `readWakeDelivery` and projects them;
+   - the MCP tool beside `admit_open_work_wake` (`openapi.yaml`, extended tier, operator-admitted);
+   - the in-process path for host mode (`devFleetServer.mjs`).
+3. The round keeps each intake receipt's `messageId` on its admitted ledger entry, and `validateLedger` accepts it as optional (AC-1).
+4. `holder-silent`:
+   - the kind in `openWorkWakeMessage.mjs`: fixed text, `holder` required and never the recipient;
+   - the planner escalates once a holder slot is still open 4 h after a `delivered` verdict;
+   - specs that discriminate failed, undelivered and delivered (AC-2, AC-3).
+
+   The same step adds `holder` to `admitOpenWorkWake`'s JSDoc argument list.
+5. The PR, with a non-Claude reviewer. After merge: the plane cut first, then the FM update. AC-4 is due a week after the switch-on.
+
+**Pickup:** start with `context-recovery`, read this body's Intake section, then begin at step 1 in the worktree.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 41210ffd-ab0e-42b0-b871-ad319bef1fed
+
 

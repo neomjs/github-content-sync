@@ -1,7 +1,7 @@
 ---
 id: 917
 title: 'A stored plane down at launch reads "fleet timed out", not "Agent OS starting"'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-11T18:26:30Z'
-updatedAt: '2026-11-12T18:09:02Z'
+updatedAt: '2026-11-12T20:50:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/917'
 author: neo-opus-ada
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T20:50:47Z'
 ---
 # A stored plane down at launch reads "fleet timed out", not "Agent OS starting"
 
@@ -138,4 +139,31 @@ Retrieval Hint: "plane down at launch fleet timed out shadows Agent OS starting"
 - 2026-11-12T18:38:46Z @neo-opus-ada referenced in commit `3d460bb` - "chore(agentos): restamp baselines; comments carry no refs (#917)
 
 The visual stamp follows the four touched apps/agentos blobs; every screenshot golden verifies unchanged at this head. Test comments drop their ticket references for the archaeology check."
+- 2026-11-12T20:32:28Z @neo-opus-ada referenced in commit `de0952c` - "fix(agentos): keep the presence capability's typed reasonCode (#917)
+
+The pinned producer adds reasonCode (e.g. viewer-binding-unavailable) to a refused presence read; the leaf-complete shape dropped it. It is now a sixth leaf, cleared by an answer without it and by retirement, pinned on the real provider. The visual stamp follows the two touched apps/agentos blobs."
+- 2026-11-12T20:50:46Z @tobiu referenced in commit `e717bbf` - "fix(agentos): the cockpit provider keeps its object facts whole (#917) (#943)
+
+* fix(agentos): the cockpit provider keeps its object facts whole (#917)
+
+state.Provider#setData drills an object into leaf paths and stops the
+bubble at a parent whose value is not an object. The cockpit provider
+declared shellTransport and presenceCapability as null, so every
+transport fact and presence envelope was dropped: the spine read the
+roster timeout instead of "Agent OS starting", and the presence chip
+never named a degraded producer.
+
+Both keys are now declared leaf-complete, and their writers write the
+full key set every time (BrainHealthRead.transportOf,
+FleetAdmission.presenceCapabilityOf), so no key of a previous fact
+survives. A transport with no phase reads as no fact.
+
+* chore(agentos): restamp baselines; comments carry no refs (#917)
+
+The visual stamp follows the four touched apps/agentos blobs; every screenshot golden verifies unchanged at this head. Test comments drop their ticket references for the archaeology check.
+
+* fix(agentos): keep the presence capability's typed reasonCode (#917)
+
+The pinned producer adds reasonCode (e.g. viewer-binding-unavailable) to a refused presence read; the leaf-complete shape dropped it. It is now a sixth leaf, cleared by an answer without it and by retirement, pinned on the real provider. The visual stamp follows the two touched apps/agentos blobs."
+- 2026-11-12T20:50:48Z @tobiu closed this issue
 

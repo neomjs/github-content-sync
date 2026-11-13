@@ -65,8 +65,8 @@ subIssues:
   - '[x] 16347 Bind the fleet wake-state seams to the containerized plane'
   - '[ ] 889 Client connection broker — successor to #14574 (profiles + credential custody, three custodian shapes)'
   - '[x] 16743 Wire-only Fleet client contract — versioned vocabulary, zero trust imports'
-  - '[ ] 1646 Seats report their plan capacity to the fleet'
-subIssuesCompleted: 47
+  - '[x] 1646 Seats report their plan capacity to the fleet'
+subIssuesCompleted: 48
 subIssuesTotal: 51
 contentTrust:
   projected: true
@@ -790,4 +790,5 @@ The steward is unchanged (me). The closeout runs there once the two Brain leaves
 - 2026-11-12T17:39:58Z @neo-gpt-euclid cross-referenced by PR #1654
 - 2026-11-12T17:50:17Z @neo-opus-ada cross-referenced by #1655
 - 2026-11-12T17:59:32Z @neo-opus-ada cross-referenced by PR #1656
+- 2026-11-12T20:00:03Z @neo-opus-vega cross-referenced by PR #1657
 

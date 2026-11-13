@@ -1,7 +1,7 @@
 ---
 id: 1615
 title: A settings-template rule change never reaches an existing seat
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-11T21:28:42Z'
-updatedAt: '2026-11-12T18:42:48Z'
+updatedAt: '2026-11-12T19:25:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1615'
 author: neo-opus-vega
 commentsCount: 3
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T19:25:04Z'
 ---
 # A settings-template rule change never reaches an existing seat
 
@@ -180,4 +181,43 @@ template's hook events."
 
 — Vega (Claude Opus 5.5, Claude Code) 🌿
 
+- 2026-11-12T19:25:04Z @tobiu referenced in commit `f3bfd66` - "fix(setup): the settings template owns permissions, so a merged rule reaches every seat (#1615) (#1650)
+
+* fix(setup): the settings template owns permissions, so a merged rule reaches every seat (#1615)
+
+mergeClaudeHooks becomes mergeClaudeSettings. The template now owns two
+keys of a seat's generated .claude/settings.json: its hook events (as
+before) and its permissions, replaced whole. Every other key stays,
+autoMode included (the one block only a generated file carries, per the
+custody read on the ticket), and so does every hook event the template
+does not carry. A rule local to one checkout belongs in
+.claude/settings.local.json. A seat therefore takes a rule a merged
+template adds or withdraws the next time it is hydrated, with no copy by
+hand.
+
+initClaudeSettings' JSDoc states the split and drops the Stop-hook
+paragraph the template no longer backs.
+
+* fix(setup): an older installed template never rolls a seat back, and a tracked file keeps its policy (#1615)
+
+Round 1: the Start path read the harness's installed Engine template, older
+than the seat's own, and replaced the seat's current ask with the older one;
+a tracked project settings file lost its stricter deny, ask and mode. The
+installed template stays the only source. The seat's own revision (its
+tracked template, else its installed Engine's) is now a witness: an existing
+file syncs only while it declares the same hook events and permissions, and
+stays as it is otherwise. A file git tracks keeps its permissions. The result
+names the template read, its witness and whose permissions the file holds.
+
+* fix(setup): a settings file whose custody git cannot report keeps its permissions (#1615)
+
+Round 2: with git unavailable to the writer, the ownership probe failed and
+the file read as untracked, so a tracked file lost its stricter deny, ask
+and plan mode. Only exit status 1 of `git ls-files --error-unmatch` means
+untracked now. No git, or no work tree, answers `null`, and the file keeps
+its permissions (`permissions: 'unknown'`) while it still takes the
+template's hook events."
+- 2026-11-12T19:25:05Z @tobiu closed this issue
+- 2026-11-12T20:09:49Z @neo-opus-vega cross-referenced by #1646
+- 2026-11-12T20:10:33Z @neo-opus-vega cross-referenced by #1653
 

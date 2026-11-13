@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-12T18:55:04.086Z",
-  "releasesLastFetched": "2026-11-12T18:55:02.731Z",
+  "lastSync": "2026-11-13T00:21:15.258Z",
+  "releasesLastFetched": "2026-11-13T00:21:14.270Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -1437,8 +1437,8 @@
       "state": "OPEN",
       "path": "neo-agent-institution/issues/chunk-2/issue-312.md",
       "closedAt": null,
-      "updatedAt": "2026-11-05T12:08:03Z",
-      "contentHash": "6f1950923cfdcf23df730a64af5167a7a1bc49b890d1c7c292a0f8e9e6bd3f2e",
+      "updatedAt": "2026-11-12T20:05:19Z",
+      "contentHash": "ebc17583b1756568841a2a8f2f15c2e6b73c59c94037672465f4a8b3472be4c4",
       "milestone": "FM v1",
       "commentsTotal": 12
     },
@@ -1861,7 +1861,7 @@
       "path": "neo-agent-institution/issues/chunk-3/issue-424.md",
       "closedAt": null,
       "updatedAt": "2026-11-12T18:40:10Z",
-      "contentHash": "f0288c22b2a1daa37c73da4bc8b55e3858f51f6a3c917e583bcf2d8b7492ddaa",
+      "contentHash": "4ed20f81001ecd114c4c580e5805ce95494b47fc7ea490d5f3d6757c1733b077",
       "milestone": "FM v1",
       "commentsTotal": 16
     },
@@ -3873,11 +3873,11 @@
       "commentsTotal": 0
     },
     "917": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-institution/issues/chunk-5/issue-917.md",
-      "closedAt": null,
-      "updatedAt": "2026-11-12T18:09:02Z",
-      "contentHash": "e2cd8dc2605f5f4bec3c9478b42c7e11f0c6a385448d99b79c0c83ae94dc593d",
+      "closedAt": "2026-11-12T20:50:47Z",
+      "updatedAt": "2026-11-12T20:50:47Z",
+      "contentHash": "c595ff3c0bc8ab4b2c0bd8d3166d6dda5f79ab4f8529b258ab94137d62b62544",
       "milestone": null,
       "commentsTotal": 1
     },
@@ -4272,13 +4272,13 @@
       "contentHash": "936e0af048af52828ea48729d5e8481eedad87b70be197f848d5615802a2e803"
     },
     "943": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-institution/pulls/chunk-5/pr-943.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-11-12T20:50:45Z",
+      "mergedAt": "2026-11-12T20:50:45Z",
       "milestone": null,
-      "updatedAt": "2026-11-12T18:46:48Z",
-      "contentHash": "2424a30e4ec22c798834b2c8f37d6863866b58a9de01b1485ed7ab859aa78df7"
+      "updatedAt": "2026-11-12T20:50:47Z",
+      "contentHash": "6022d2d631a47f4605612108b7eb67c0e66d56823ea4a3065ea1406c768b581d"
     }
   },
   "discussions": {

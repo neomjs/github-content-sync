@@ -1,7 +1,7 @@
 ---
 id: 1655
 title: Serial survivor validation lets one slow seat fail the whole handoff
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-12T17:50:16Z'
-updatedAt: '2026-11-12T18:09:05Z'
+updatedAt: '2026-11-12T20:58:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1655'
 author: neo-opus-ada
-commentsCount: 1
+commentsCount: 3
 parentIssue: 732
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-12T19:54:29Z'
 ---
 # Serial survivor validation lets one slow seat fail the whole handoff
 
@@ -69,10 +70,10 @@ Run each survivor's `verifySurvivor` concurrently and apply each seat's outcome 
 
 ## Acceptance Criteria
 
-- [ ] Three surviving seats whose verify takes 3 s each seal under an 8 s deadline. Red on `dc3082cc`: refused at survivor-validation at 8 s. Unit, `FleetLifecycleService` handoff spec.
-- [ ] Per-seat semantics are unchanged: an unprovable seat or server revokes only its own authority and keeps its witness line, and a failed durable revocation still refuses the handoff. The existing handoff specs pass unchanged, except where they pinned the serial order of proofs or witness lines.
-- [ ] Concurrent seats on one runtime pin run one runtime verify. Unit.
-- [ ] *(post-merge, installed)* The next FM install with ≥ 6 running seats seals. Its receipt records the survivor-validation time beside the slowest seat's.
+- [x] Three surviving seats whose verify takes 3 s each seal under an 8 s deadline. Red on `dc3082cc`: refused at survivor-validation at 8 s. Unit, `FleetLifecycleService` handoff spec. *(Delivered by #1656.)*
+- [x] Per-seat semantics are unchanged: an unprovable seat or server revokes only its own authority and keeps its witness line, and a failed durable revocation still refuses the handoff. The existing handoff specs pass unchanged, except where they pinned the serial order of proofs or witness lines. *(Delivered by #1656.)*
+- [x] Concurrent seats on one runtime pin run one runtime verify. Unit. *(Delivered by #1656.)*
+- [x] *(post-merge, installed)* The next FM install with ≥ 6 running seats seals. Its receipt records the survivor-validation time beside the slowest seat's. *(Receipt, 2026-11-12T20:56Z: 6 seats, validation 1150 ms, slowest seat 1215 ms, sealed 1245 ms: [comment 6835755699](https://github.com/neomjs/neo-agent-brain/issues/1655#issuecomment-6835755699).)*
 
 ## Out of Scope
 
@@ -114,6 +115,59 @@ Retrieval Hint: "continuity handoff refused at survivor-validation deadline, one
 **Handover (session refresh; the owner stays me):** PR #1656 is at `cca4bdb7` with every check green and `CLEAN`, and Euclid (GPT) is requested as the cross-family reviewer.
 
 **Pickup:** on Euclid's review, address any Required Actions on the same branch. On approval, hand the merge to @tobiu. After the merge, an FM build that carries #1656, then AC-4: an install with ≥ 6 running seats seals, with the survivor-validation time beside the slowest seat's. That same install rebinds nothing by itself; the seats left stale at 17:46Z rebind at their own Stop + Start.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-12T19:54:29Z @tobiu referenced in commit `a16eb4e` - "fix(fleet): survivors prove at once in the continuity handoff (#1655) (#1656)
+
+Survivor validation awaited each seat in turn, so the handoff's one deadline
+paid the sum of every seat's proofs. On 2026-11-12 one seat took 6.8 s, the
+8 s budget ran out at survivor-validation, and every running seat went stale.
+
+Every survivor now proves concurrently and applies its outcome as it settles,
+so the stage costs its slowest seat. The deadline and its issuer-level
+refusal are unchanged (ADR 0034 §2.5, runtime generations, item 4).
+
+The fixture Bridge can hold its answers. Three seats at 400 ms each now seal
+inside a 1000 ms deadline; before this change that refused at
+survivor-validation. Two tests that pinned the serial proof and witness order
+now read them order-free."
+- 2026-11-12T19:54:30Z @tobiu closed this issue
+### @neo-opus-ada - 2026-11-12T20:06:07Z
+
+**Baseline for AC-4, not its receipt.** FM install at 20:03:55Z, out of Brain `dc3082cc` into `a16eb4e4`. The quitting FM still ran the serial survivor validation, so this measures the old path. #1656's concurrent proof first runs when this new FM quits at the next install.
+
+| Survivor | Verified after (ms) |
+|---|---|
+| `neo-gpt-sophie` | 9 |
+| `neo-opus-ada` | 416 |
+| `neo-opus-grace` | 1062 (slowest) |
+| `neo-opus-vega` | 984 |
+| `neo-gpt-emmy` | 19 |
+| `neo-gpt-euclid` | 5 |
+
+The serial sum is 2495 ms, and the handoff sealed at 2553 ms of the 8000 ms budget. The 17:47Z refusal was this same sum with one 6.8 s seat. AC-4's receipt at the next install should show survivor validation close to the slowest seat's time, not the sum. The successor recovered "previous issuer handed-off" with the running seats `active`. Source: `~/Library/Logs/Neo Harness/main.log`, 20:03:55–20:05:26Z.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-12T20:57:59Z
+
+**AC-4 receipt.** The FM install at 20:56:08Z quit the FM installed at Brain `a16eb4e4` (which carries #1656) into Institution `e717bbfb` / Brain `857fe415`. It is the first handoff to run the concurrent survivor proof.
+
+| Survivor | Settled at (ms into the quit) |
+|---|---|
+| `neo-gpt-emmy` | 100 |
+| `neo-gpt-euclid` | 100 |
+| `neo-gpt-sophie` | 100 |
+| `neo-opus-vega` | 1077 |
+| `neo-opus-ada` | 1084 |
+| `neo-opus-grace` | 1215 (slowest) |
+
+- **Survivor validation:** 1150 ms (65 → 1215 ms) for 6 running seats, which is the slowest seat's own time. Settlement order is completion order, not roster order.
+- **Sealed after 1245 ms** of the 8000 ms budget. The serial baseline at 20:03:55Z, same 6 seats, sealed at 2553 ms on a 2495 ms sum (comment above).
+- **Successor:** recovery "previous issuer handed-off" at the inherited origin, running seats `active`, recovery 10.5 s.
+
+Source: the FM's `main.log`, 20:56:08–20:57:32Z.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 

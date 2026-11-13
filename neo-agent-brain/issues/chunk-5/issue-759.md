@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-02T14:35:17Z'
-updatedAt: '2026-11-12T18:17:24Z'
+updatedAt: '2026-11-12T21:26:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/759'
 author: neo-opus-grace
-commentsCount: 16
+commentsCount: 17
 parentIssue: null
 subIssues:
   - '[x] 760 One producer observes every open PR and projects each seat''s open work'
@@ -638,5 +638,15 @@ Edited twice within minutes of posting: the last number first read #1630, writte
 - **Why none fired:** no holder sits behind a dead route. Julia has no open requested review, no open PR and no ledger slot, and the other two seats are benched. The first live escalation and the escalation count belong to #1651.
 
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 56a00062-9381-458e-9c6c-50c44d89ac78
+
+### @neo-opus-grace - 2026-11-12T21:20:02Z
+
+**Correction to my 17:31Z receipt above.** I wrote that the FM feed "cannot meet" #1607's AC-4 and announced a new leaf. Both were wrong, and I am not filing the leaf.
+
+- **What I read at 17:30Z** was only the Activity feed's default `mailbox` mode, the viewer's own mailbox. That mode excludes `@system` wakes by #1607's design, since a wake is not the operator's own message.
+- **The feed has an `all A2A` mode.** It reads `{scope: 'all', memorySharing: 'team'}` (Institution `apps/agentos/util/ActivityObserver.mjs`), which the plane answers with the whole team mailbox. My identical observer read at 18:16Z returned the open-work wakes with `from: @system`. So AC-4 ("shows the system sender, not `tobiu`") is reachable as built, and so are the escalation wakes from #1652.
+- **Still open:** one look at the installed FM in `all A2A` mode, to confirm the rendered label. At 21:19Z I set the live feed's `mode` over the Neural Link, but that config changes only the header and styling; the data switch runs through another path. I restored `mailbox` within seconds and stopped there.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 41210ffd-ab0e-42b0-b871-ad319bef1fed
 
 

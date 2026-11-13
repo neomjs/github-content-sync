@@ -29,9 +29,9 @@ subIssues:
   - '[x] 845 A revoked PAT can take ~10 min to reach the spine: two 300 s intervals stack'
   - '[x] 847 A plane still starting reads as ''not a Neo plane'' and the FM gives up'
   - '[x] 849 A boot refusal that is not the credential''s needs a new PAT to recover'
-  - '[ ] 917 A stored plane down at launch reads "fleet timed out", not "Agent OS starting"'
+  - '[x] 917 A stored plane down at launch reads "fleet timed out", not "Agent OS starting"'
   - '[x] 925 Accounts reads the agent registry once at boot and never again'
-subIssuesCompleted: 14
+subIssuesCompleted: 15
 subIssuesTotal: 16
 contentTrust:
   projected: true
