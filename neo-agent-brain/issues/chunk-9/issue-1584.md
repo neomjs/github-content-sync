@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-10T23:09:55Z'
-updatedAt: '2026-11-11T00:57:20Z'
+updatedAt: '2026-11-13T01:56:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1584'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: 1531
 subIssues: []
 subIssuesCompleted: 0
@@ -83,8 +83,8 @@ Measured in 5.1231.0's `app.asar` on 2026-11-10:
 - [ ] For each marker, a fixture bundle without it is rejected with that marker named, and the family's selected generation stays unchanged.
 - [ ] The generated profile passes `plutil -lint` and carries System scope, the Forced `disableAutoUpdates: true` payload, and the two identifiers above.
 - [ ] An opted-in `claude-desktop` Start without the policy refuses, names the CLI, spawns nothing and writes no ledger row. With the policy in force, it starts from the selected generation.
-- [ ] **Post-merge, after the operator installs the profile:** the machine-level managed plist holds `disableAutoUpdates = 1`. Every seat boot logs `[updater] Auto-updates disabled by enterprise policy`, none logs `enabling initial check and auto-updates`, and no seat shows the ownership dialog.
-- [ ] **Post-merge, over the next Claude release:** `ShipIt_stderr.log` records no install, and no Claude process runs without a seat's `--user-data-dir`.
+- [x] **Post-merge, after the operator installs the profile:** the machine-level managed plist holds `disableAutoUpdates = 1`. Every seat boot logs `[updater] Auto-updates disabled by enterprise policy`, none logs `enabling initial check and auto-updates`, and no seat shows the ownership dialog.
+- [x] **Post-merge, over the next Claude release:** `ShipIt_stderr.log` records no install, and no Claude process runs without a seat's `--user-data-dir`.
 
 ## Out of Scope
 
@@ -122,6 +122,7 @@ Retrieval Hint: `query_raw_memories("Claude Desktop disableAutoUpdates profile p
 - 2026-11-10T23:09:57Z @neo-opus-ada added the `ai` label
 - 2026-11-10T23:09:57Z @neo-opus-ada added the `architecture` label
 - 2026-11-10T23:09:57Z @neo-opus-ada added the `agent-os` label
+- 2026-11-10T23:10:00Z @neo-opus-ada added parent issue #1531
 - 2026-11-10T23:24:52Z @neo-opus-ada cross-referenced by PR #1585
 - 2026-11-10T23:41:13Z @neo-opus-ada referenced in commit `7a3ba92` - "fix(fleet): name Device Management and its 8-min window (#1584)
 
@@ -147,4 +148,19 @@ Opening a profile only queues it: macOS drops it from Device Management after ei
 
 The leaf said opting in refuses every Start until a probe exists. The probe now exists, and the remaining refusal is the host policy gate."
 - 2026-11-11T00:57:21Z @tobiu closed this issue
+- 2026-11-13T01:56:40Z @neo-opus-ada cross-referenced by #1658
+### @neo-opus-ada - 2026-11-13T01:56:48Z
+
+**Post-merge receipt, AC-5 and AC-6** (2026-11-13 ~01:50Z, on the operator's Mac):
+
+- **Policy:** `/Library/Managed Preferences/com.anthropic.claudefordesktop.plist` holds `disableAutoUpdates = true`, and so does the user-scope copy.
+- **Boots:** in `~/Library/Logs/Claude/main*.log` since the profile install (2026-11-10 23:48Z) there are 63 `Starting app` lines, 63 `[updater] Auto-updates disabled by enterprise policy` lines and 0 `enabling initial check and auto-updates` lines. Each of the four running seats' starts (01:16–01:31Z) has its line.
+- **Ownership dialog:** the only ownership lines after the install are two `App bundle is owned by root:wheel but the fix was declined recently; not re-prompting yet` (23:51:29Z and 00:51:29Z), and none since. No dialog was logged.
+- **AC-6, over two releases:** Homebrew's cask record moved to 5.1231.2 (2026-11-11T03:46Z) and 5.11492.0 (2026-11-12T15:48Z). `/Applications/Claude.app` is still 5.1231.0, and `ShipIt_stderr.log` was last written at 2026-11-10 22:31Z, before the policy. At 01:4xZ all four Claude main processes carry a seat `--user-data-dir`; that is a snapshot, not a watch over the window.
+
+Both ACs hold, and they show the cost: with Claude's updater off and no Claude source in the Fleet, every Claude seat is frozen two releases behind. The source and the default-on owner switch this leaf deferred are #1658.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-13T04:52:04Z @neo-gpt-euclid cross-referenced by PR #1661
 

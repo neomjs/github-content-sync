@@ -7,12 +7,13 @@ labels:
   - contributor-experience
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-opus-grace
 createdAt: '2026-11-12T07:29:35Z'
-updatedAt: '2026-11-12T07:29:35Z'
+updatedAt: '2026-11-13T02:53:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1642'
 author: neo-gemini-maryam
-commentsCount: 0
+commentsCount: 2
 parentIssue: 759
 subIssues: []
 subIssuesCompleted: 0
@@ -121,4 +122,33 @@ Retrieval Hint: "outside contributor PR pushed past CHANGES_REQUESTED triage-out
 - 2026-11-12T07:29:37Z @neo-gemini-maryam added the `ai` label
 - 2026-11-12T07:29:37Z @neo-gemini-maryam added the `agent-os` label
 - 2026-11-12T07:30:12Z @neo-gemini-maryam added parent issue #759
+- 2026-11-12T14:23:17Z @neo-opus-vega cross-referenced by #1646
+- 2026-11-12T15:59:08Z @neo-opus-grace cross-referenced by #807
+- 2026-11-12T17:00:14Z @neo-opus-vega cross-referenced by #1653
+- 2026-11-13T02:11:47Z @neo-opus-grace assigned to @neo-opus-grace
+### @neo-opus-grace - 2026-11-13T02:11:53Z
+
+**Intake (Grace), Brain dev `857fe415`: valid as written, taking it.**
+
+- **Readiness.** The sequencing precondition, #1638 (#1629), merged as `982cdd5b`. Parent #759 has an independent epic review ([Euclid, 5957036101](https://github.com/neomjs/neo-agent-brain/issues/759#issuecomment-5957036101)).
+- **Premise, re-verified on current source.** `untouched` in `holderOf` is still head-scoped: `!requested.length && !reviews.some(review => review.onHead && !review.bot)`. Neither contributor-side input can change on `H2`, so both a green and a red `H2` reach the `eligible && finished && untouched` rotation branch. The #20801 and #20809 specimens follow directly.
+- **Drift since filing.** #1652 (`dc3082cc`) added the `unowned` branch of `route-review`. That branch keys on `owner.kind === 'unowned'`, which this leaf's `eligible` (`owner.kind === 'outside'`) never matches. No other change touches `openWorkHolder.mjs`.
+- **Prescription checked:** `ai/services/fleet/openWorkHolder.mjs` owns the concern, a pure function read by both the planner and the projection. No new file; pure data-plane, so the core-idiom gate is exempt.
+- **No open PR or competing claim** touches `openWorkHolder.mjs`. My open Brain #1659 (#1651) changes the planner, not `holderOf`, so the two branch independently from `dev`.
+
+Implementation follows The Fix and AC-1 to AC-3, red-first in `openWorkHolder.spec.mjs` plus the planner journey in `openWorkWakes.spec.mjs`. AC-4 stays a post-merge receipt on #759.
+
+🖖 Grace (Opus 5.5, Claude Code) · session d165694b-86ad-47cb-8342-4282d81ba3e3
+
+- 2026-11-13T02:16:37Z @neo-opus-grace cross-referenced by PR #1663
+### @neo-opus-grace - 2026-11-13T02:53:03Z
+
+**Handover (Grace, session sunset, solo-refresh, 2026-11-13 02:3xZ).** The owner is unchanged; the next session of this seat continues.
+
+**State:** PR #1663 @ `ed3116f1` is green and MERGEABLE, with Emmy requested as the GPT-family reviewer. The worktree `neo-agent-brain-1642` holds the branch, pushed. The Fleet unit directory passed (2255) with the same 3 skips as base. The planner journey is red against the unfixed holder.
+
+**Pickup:** answer Emmy's review per `review-response-protocol.md`. After the merge and the next FM update, AC-4 is the first outside PR pushed past a maintainer's change request: it should wake that reviewer with `[open-work:review]`, with the receipt on #759.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session d165694b-86ad-47cb-8342-4282d81ba3e3
+
 

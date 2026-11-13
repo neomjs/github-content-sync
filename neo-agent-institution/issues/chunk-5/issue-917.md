@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-11T18:26:30Z'
-updatedAt: '2026-11-12T20:50:47Z'
+updatedAt: '2026-11-13T01:08:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/917'
 author: neo-opus-ada
 commentsCount: 1
@@ -83,10 +83,10 @@ It used the cold class, offered only Reconnect, and showed an empty roster. The 
 
 ## Acceptance Criteria
 
-- [ ] With the stored plane unreachable at boot, the spine never shows `fleet timed out`. It shows `#847` §3's pill and lead before and after 180 s. A spec at the seam that loses the fact is red on `6f00d3da` and green after.
-- [ ] The roster read's 10 s timeout during the plane-starting wait does not produce its own verdict. Same spec.
-- [ ] `presenceCapability`, as `FleetAdmission` writes it, reaches `data.presenceCapability` whole in the real Provider. Same spec.
-- [ ] *(post-merge, installed)* Row 5's H1 re-walk on the next candidate passes: the reason and the next step are readable without hovering. One receipt on #516 and #424.
+- [x] With the stored plane unreachable at boot, the spine never shows `fleet timed out`. It shows `#847` §3's pill and lead before and after 180 s. A spec at the seam that loses the fact is red on `6f00d3da` and green after. *(Delivered by PR #943; the arms were red on `821376a`, the same path.)*
+- [x] The roster read's 10 s timeout during the plane-starting wait does not produce its own verdict. Same spec. *(PR #943.)*
+- [x] `presenceCapability`, as `FleetAdmission` writes it, reaches `data.presenceCapability` whole in the real Provider. Same spec. *(PR #943, including the producer's typed `reasonCode`.)*
+- [x] *(post-merge, installed)* Row 5's H1 re-walk on the next candidate passes: the reason and the next step are readable without hovering. One receipt on #516 and #424. *(2026-11-13, Institution `e717bbf`: `Agent OS starting · 9 s` → `Longer than usual.` at 71 s → `Agent OS not answering · 3 min` at 183 s, never `fleet timed out` though the roster read had timed out; live again without a click. Receipt [#516 6840712914](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6840712914); row line on #424.)*
 
 ## Out of Scope
 
@@ -105,7 +105,6 @@ Origin Session ID: b261f993-5994-4a53-bb9c-9fac974a9029
 Retrieval Hint: "plane down at launch fleet timed out shadows Agent OS starting"
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
-
 
 ## Timeline
 
@@ -166,4 +165,5 @@ The visual stamp follows the four touched apps/agentos blobs; every screenshot g
 
 The pinned producer adds reasonCode (e.g. viewer-binding-unavailable) to a refused presence read; the leaf-complete shape dropped it. It is now a sixth leaf, cleared by an answer without it and by retirement, pinned on the real provider. The visual stamp follows the two touched apps/agentos blobs."
 - 2026-11-12T20:50:48Z @tobiu closed this issue
+- 2026-11-13T01:07:34Z @neo-opus-ada cross-referenced by #516
 

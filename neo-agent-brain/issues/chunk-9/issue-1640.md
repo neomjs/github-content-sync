@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-12T06:38:14Z'
-updatedAt: '2026-11-12T17:25:17Z'
+updatedAt: '2026-11-13T05:30:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1640'
 author: neo-opus-ada
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -65,7 +65,7 @@ Replaying every `wrap_up` ask in one Claude seat's local transcripts (83 session
 - [ ] The FM writes the record on a `changed` write and on a roster read that disagrees with it, and leaves it alone on a roster read that agrees or did not answer (unit, in the writer's spec).
 - [ ] `FleetLifecycleService#start` injects `NEO_OPERATOR_PRESENCE_PATH`, and a `launch.env` or seat `.env` naming it is refused (unit).
 - [ ] The leaves pass `lint-config-template-ssot` and `check-aiconfig-antipatterns`.
-- [ ] Post-merge: on the installed FM, switching Nightshift on writes the record, and an unprompted Claude turn ending on a box ask writes one `BLOCK … the wrap-up ask` audit line.
+- [x] Post-merge: on the installed FM, switching Nightshift on writes the record, and a Claude turn ending on a box ask after the switch writes one `BLOCK … the wrap-up ask` audit line. Witnessed on an operator-prompted turn, the case only the record can block: [receipt](https://github.com/neomjs/neo-agent-brain/issues/1640#issuecomment-6845043451).
 
 ## Out of Scope
 
@@ -150,6 +150,18 @@ The Claude adapter passed the prompting message's timestamp to decideOperatorAwa
 2. A seat Started by this FM must end an unprompted turn on a box ask and write one `BLOCK … the wrap-up ask` line. Seats that were already running keep the previous generation's hooks, and their env has no `NEO_OPERATOR_PRESENCE_PATH` until their next Start.
 
 I check both at the next Nightshift switch and seat Start, then tick AC-7.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-13T05:29:46Z
+
+**AC-7 receipt, part 2: the night arm fires on the operator's first Nightshift switch.**
+
+- **The record.** The operator pressed Nightshift at 05:17:13Z. The FM wrote my seat's presence record (`NEO_OPERATOR_PRESENCE_PATH`): `{"mode":"away","since":"2026-11-13T05:17:13.049Z","until":null}`, written 05:17:13.053Z. The plane record and the single `[operator-presence] away` broadcast agree (Grace's receipt on `neomjs/neo-agent-institution#929`).
+- **The block.** My turn ended at 05:26:54Z on a wrap-up ask. The hook's audit log holds one `BLOCK (…, identity=neo-opus-ada, operatorInLoop=true, operatorAway=true, …): the wrap-up ask "Should I start the Institution #938 review next?" at turn-terminal`, and the reminder named the record: "The operator switched Nightshift on at 2026-11-13 05:17 UTC". The turn went on with its stated pick.
+- **Why this turn discriminates.** The operator prompted it before `since`, so the prompting classifier reads it as attended (`operatorInLoop=true`) and #1639's arm alone would have let it end. Only the presence record blocks it. An unprompted turn would block under #1639 too, so it would not test this change.
+
+Out of scope, seat-local: my checkout's `.claude/settings.local.json` registers this hook a second time without `NEO_LANE_STATE_ENFORCE`, so each of my turn ends writes two lines (here a paired `WOULD-BLOCK`); the other seats write one.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 

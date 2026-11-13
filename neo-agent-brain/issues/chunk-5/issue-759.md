@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-02T14:35:17Z'
-updatedAt: '2026-11-12T21:26:30Z'
+updatedAt: '2026-11-13T02:27:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/759'
 author: neo-opus-grace
-commentsCount: 17
+commentsCount: 18
 parentIssue: null
 subIssues:
   - '[x] 760 One producer observes every open PR and projects each seat''s open work'
@@ -34,8 +34,8 @@ subIssues:
   - '[ ] 1630 An unanswered external PR comment wakes the holding seat'
   - '[ ] 1637 An open-work wake carries a task id that transition_task refuses'
   - '[ ] 1642 Outside PR pushed past a seat''s review wakes rotation, not the seat'
-  - '[ ] 1651 Escalate a silent holder only after a receiver-confirmed delivery'
-subIssuesCompleted: 15
+  - '[x] 1651 Escalate a silent holder only after a receiver-confirmed delivery'
+subIssuesCompleted: 16
 subIssuesTotal: 20
 contentTrust:
   projected: true
@@ -649,4 +649,29 @@ Edited twice within minutes of posting: the last number first read #1630, writte
 
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 41210ffd-ab0e-42b0-b871-ad319bef1fed
 
+- 2026-11-13T02:04:39Z @neo-opus-grace cross-referenced by PR #1659
+### @neo-opus-grace - 2026-11-13T02:08:45Z
+
+**Receipt: installed FM, `all A2A` mode, driven as a person would** (toolbar click through the Neural Link; FM restored to `mailbox` afterwards). Installed build: Brain `857fe415`, Institution `e717bbfb`.
+
+**#1607, installed check: witnessed.** The open-work wake `MESSAGE:43aa5803` (`[open-work:review] neomjs/neo#20847`, to @neo-gpt-euclid) renders with sender chip `system`: no avatar, title `system`. The detail pane's from-line also reads `system`, not `tobiu`.
+
+**#1609, installed check: the wake half is witnessed for the exact kinds; the display half has no surface left.**
+- **Wake.** The feed payload carries `wakeSuppressed: false`. The receiver's own record carries that exact id in `sourceEventIds` (with one other message), `state: delivered`, `dispatchFinishedAt: 2026-11-13T02:07:39.057Z`.
+- **The exact kinds the AC names** then woke the seat they name, mine, inside a live session:
+  - `[open-work:repair-ci] neomjs/neo-agent-brain#1659` at 02:12:12Z;
+  - `[open-work:route-review]` for #1663 at 02:25:03Z;
+  - `[open-work:route-review]` for #1659 at 02:27:04Z.
+  - Each reached the seat as a wake event, and I acted on it: re-ran the flaky CI and requested the reviewer.
+- **Display.** The installed FM renders no per-message wake state anywhere. The control is my own broadcast `a3e8b7b3` (`wakeSuppressed: true`): it shows no wake-off chip either, in the row or the detail pane.
+  - In the source (Institution dev `1b446cdf`), mailbox rows chip only priority, task state and recipient class (`mailbox/RowComponent.mjs`). `wake off` is rendered only by the viewer's own wake telltale (`util/ViewerWakeTelltale.mjs`).
+  - The premise "FM labels each wake off" no longer holds, so "shows its wake on in FM" has nothing to show. The delivery records above are the stronger witness of the same fact.
+
+**For Brain #1659 (#1651):** the receiver record is a live witness of the join key that PR depends on. An intake receipt's `MESSAGE:<uuid>` is exactly what the receiver keys a delivery on.
+
+🖖 Grace (Opus 5.5, Claude Code) · session d165694b-86ad-47cb-8342-4282d81ba3e3
+
+- 2026-11-13T02:16:37Z @neo-opus-grace cross-referenced by PR #1663
+- 2026-11-13T04:29:41Z @neo-opus-grace cross-referenced by PR #1670
+- 2026-11-13T06:12:16Z @neo-opus-grace cross-referenced by PR #1676
 

@@ -1,7 +1,7 @@
 ---
 id: 1651
 title: Escalate a silent holder only after a receiver-confirmed delivery
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-12T16:21:49Z'
-updatedAt: '2026-11-12T21:26:33Z'
+updatedAt: '2026-11-13T05:07:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1651'
 author: neo-opus-grace
-commentsCount: 2
+commentsCount: 3
 parentIssue: 759
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 807 Unowned and unreachable-holder PRs escalate to a rotation seat'
 blocking: []
+closedAt: '2026-11-13T05:07:06Z'
 ---
 # Escalate a silent holder only after a receiver-confirmed delivery
 
@@ -168,4 +169,40 @@ Retrieval Hint: "holder-silent escalation per-message wake receipt sourceEventId
 
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 41210ffd-ab0e-42b0-b871-ad319bef1fed
 
+- 2026-11-13T02:04:39Z @neo-opus-grace cross-referenced by PR #1659
+- 2026-11-13T02:11:54Z @neo-opus-grace cross-referenced by #1642
+### @neo-opus-grace - 2026-11-13T02:53:01Z
+
+**Handover (Grace, session sunset, solo-refresh, 2026-11-13 02:3xZ).** The owner is unchanged; the next session of this seat continues.
+
+**State:** PR #1659 @ `74dbf37f` is green and MERGEABLE, with Euclid requested as the GPT-family reviewer. The first CI attempt's red (`daemon.spec.mjs:1256`, a 10 s log poll) was falsified by a full re-run of the same head; [CI note](https://github.com/neomjs/neo-agent-brain/pull/1659#issuecomment-6841883857). The worktree `neo-agent-brain-1651` holds the branch, is pushed, and has its config overlays hydrated.
+
+**Pickup:** answer Euclid's review per `review-response-protocol.md`: an author-response comment with the exact head, then the re-request at green. After merge, cut the plane first, then update the FM; in the other order the read fails, every verdict reads `unknown`, and nothing escalates. AC-4 is due a week after switch-on, recorded on #759. The live join-key witness is on [#759](https://github.com/neomjs/neo-agent-brain/issues/759#issuecomment-6841703543).
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session d165694b-86ad-47cb-8342-4282d81ba3e3
+
+- 2026-11-13T04:40:01Z @neo-opus-grace referenced in commit `4539a0f` - "fix(fleet): read every eligible holder receipt each round in plane-sized batches (#1651)
+
+The round asked the plane about the oldest hundred admitted holder wakes only, so a failed or
+already-escalated wake that stayed open held its place in that prefix, and a delivered wake behind
+it was never read. It now reads every eligible wake each round, at most a hundred ids per call, and
+a call that fails leaves only its own wakes unknown."
+- 2026-11-13T05:07:06Z @tobiu referenced in commit `588362e` - "feat(fleet): escalate a silent holder only after a receiver-confirmed delivery (#1651) (#1659)
+
+* feat(fleet): escalate a silent holder only after a receiver-confirmed delivery (#1651)
+
+The round keeps each intake receipt's message id on its admitted slot and
+reads the slot's delivery back through read_open_work_wake_delivery, an
+operator-admitted plane read over the wake receiver's records. A holder slot
+still open four hours after a delivered wake wakes one rotation seat as
+holder-silent, once per head, never the holder; a sent escalation stays held
+through a round whose read fails.
+
+* fix(fleet): read every eligible holder receipt each round in plane-sized batches (#1651)
+
+The round asked the plane about the oldest hundred admitted holder wakes only, so a failed or
+already-escalated wake that stayed open held its place in that prefix, and a delivered wake behind
+it was never read. It now reads every eligible wake each round, at most a hundred ids per call, and
+a call that fails leaves only its own wakes unknown."
+- 2026-11-13T05:07:07Z @tobiu closed this issue
 

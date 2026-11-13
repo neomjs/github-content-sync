@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-09T18:36:05Z'
-updatedAt: '2026-11-11T04:03:55Z'
+updatedAt: '2026-11-13T04:54:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1531'
 author: neo-opus-ada
-commentsCount: 12
+commentsCount: 14
 parentIssue: null
 subIssues:
   - '[x] 1532 Fleet admits vendor harness builds into immutable generations'
@@ -25,8 +25,12 @@ subIssues:
   - '[x] 1584 Fleet admits Claude Desktop builds with Claude''s updater off by policy'
   - '[x] 1587 The Fleet checks for and fetches harness builds on its own'
   - '[x] 1590 Antigravity seats start from the Fleet''s admitted builds'
+  - '[ ] 1658 The Fleet keeps Claude Desktop seats on the newest admitted build'
+  - '[ ] 1660 Antigravity and Codex acquire through the shared archive pipeline'
+  - '[ ] 1662 Codex Desktop seats run the newest admitted build'
+  - '[ ] 1665 The Fleet retires harness generations nothing holds'
 subIssuesCompleted: 9
-subIssuesTotal: 9
+subIssuesTotal: 13
 contentTrust:
   projected: true
   quarantined: 0
@@ -365,8 +369,10 @@ Points 1, 2 and 4 of the handover above go into one sub first; the source sub fo
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-10T23:09:56Z @neo-opus-ada cross-referenced by #1584
+- 2026-11-10T23:10:00Z @neo-opus-ada added sub-issue #1584
 - 2026-11-10T23:24:52Z @neo-opus-ada cross-referenced by PR #1585
 - 2026-11-11T00:13:24Z @neo-opus-ada cross-referenced by #1587
+- 2026-11-11T00:13:29Z @neo-opus-ada added sub-issue #1587
 ### @neo-opus-ada - 2026-11-11T00:13:34Z
 
 **Correction and re-plan (2026-11-11).**
@@ -406,6 +412,7 @@ Pickup: answer #1588's review, run #1585's Post-Merge Validation after the merge
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-11T01:13:41Z @neo-opus-ada cross-referenced by #1590
+- 2026-11-11T01:13:46Z @neo-opus-ada added sub-issue #1590
 - 2026-11-11T01:29:43Z @neo-opus-ada cross-referenced by PR #1591
 ### @neo-opus-ada - 2026-11-11T04:03:55Z
 
@@ -436,5 +443,53 @@ Pickup: answer #1588's review, run #1585's Post-Merge Validation after the merge
 4. Then file the Codex opt-in leaf.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code · session `956d9aa9-964b-4d27-a1ce-8eb581fd8aad`
+
+- 2026-11-12T01:16:36Z @neo-opus-ada cross-referenced by #1622
+- 2026-11-13T01:56:40Z @neo-opus-ada cross-referenced by #1658
+- 2026-11-13T01:56:44Z @neo-opus-ada added sub-issue #1658
+- 2026-11-13T02:12:25Z @neo-opus-ada cross-referenced by #1660
+- 2026-11-13T02:12:30Z @neo-opus-ada added sub-issue #1660
+- 2026-11-13T02:14:13Z @neo-opus-ada cross-referenced by PR #1661
+- 2026-11-13T02:16:01Z @neo-opus-ada cross-referenced by #1662
+- 2026-11-13T02:16:10Z @neo-opus-ada added sub-issue #1662
+- 2026-11-13T02:21:41Z @neo-opus-ada cross-referenced by PR #1664
+- 2026-11-13T02:30:11Z @neo-opus-ada cross-referenced by #1665
+- 2026-11-13T02:30:17Z @neo-opus-ada added sub-issue #1665
+- 2026-11-13T02:35:36Z @neo-opus-ada cross-referenced by PR #1666
+### @neo-opus-ada - 2026-11-13T02:44:05Z
+
+**Handover (Ada, session sunset 2026-11-13 ~02:45Z, scope solo-refresh; the owner stays me).**
+
+The operator, 2026-11-13: *"FM was supposed to handle harness updates for claude, codex and antigravity. since updates arrive multiple times a week, we need a permanent solution to handle it."* Measured then: Claude and Codex seats were frozen (updaters off, no Fleet path); Antigravity's loop worked. The permanent path is a chain of three PRs, each stacked on the one before:
+
+| Leaf | PR | State at 02:45Z | Next |
+|---|---|---|---|
+| #1658 Claude: cask-record pointer, shared `acquireHarnessArchive.mjs`, `claudeDesktop` default on with the host policy deciding the updater owner | #1661 @ `f36284b8` | green 17/17; Euclid requested | his review; the operator's merge |
+| #1662 Codex: `codexDesktop` default on (census, comment 6841848531: no live `codex-app-server` reader) | #1664 @ `e8465a21`, base #1661's branch | `PR baseline` red by design: it requires base `dev` | after #1661 squash-merges: rebase onto `dev` (drop `f36284b8`), push, request a GPT reviewer at green |
+| #1665 retire generations nothing holds (selected + rollback + seat pins kept) | #1666 @ `73ae6bce`, base #1664's branch | same baseline red | the same, after #1664 |
+| #1660 Antigravity and Codex onto the shared pipeline | none | good first issue, blocked by #1658 | a contributor |
+
+**After the three merge:** an FM build + install (mine). The proof is the FM's own first acquisition pass, never a hand download (the operator, 02:2xZ): the store admits Claude 5.11492.0 or later and Codex 26.1106.51428 or later, a restarted seat of each runs from its generation (`ps`), and Antigravity 2.31.0's copy is retired. Those are #1658 AC-7, #1662 AC-5 and #1665 AC-6.
+
+**Still open on the epic:** the cockpit surface (point 7) is not filed.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-13T03:28:35Z @neo-opus-ada cross-referenced by #1667
+- 2026-11-13T04:07:27Z @neo-opus-ada cross-referenced by PR #1668
+### @neo-opus-ada - 2026-11-13T04:54:08Z
+
+## Handover (2026-11-13 ~04:55Z, owner Ada, solo-refresh)
+
+**State of the harness-update chain:**
+- #1661 (Resolves #1658) @ `f36284b8`: Euclid `CHANGES_REQUESTED` (review 5886324394). RA-1: bind the advertised update version to the actual bundle before admission can publish or select it. `claudeDesktopUpdate.mjs` passes `candidate.version`, but `acquireHarnessArchive.mjs` uses it only for the rejection key, while `harnessGeneration.mjs` admits any new valid id and selection is newest-admission-first. So a mismatched older bundle can displace the selected build. The fix must check before publication, keep the prior selection on a mismatch, and add the seeded-2.0 / advertised-3.0 / actual-1.0 regression plus a matching-3.0 control through the real admission/selection path. It must not change the store's admission-order semantics.
+- #1664 (Resolves #1662) and #1666 (Resolves #1665) stay stacked on #1661. Rebase each onto `dev` after the one below it merges, then route to a non-Claude reviewer at green.
+- Defect-note `ae936e121fd9840a`: `~/.neo-ai/harnesses/codex-desktop/ledger.json` holds a stale `bundle-metadata-invalid` rejection written 02:20:26Z. Settle it on #1662 before #1664 merges.
+
+**Install plan (shared with the seat-boot fixes):** Institution #947 (Resolves #946) and #1668 (Resolves #1667) are approved, handed to the operator for merge. One FM build + install should ship them with this chain. The running FM's hung retirement pass blocks a graceful quit, so that install ends the FM by force: seats go stale, and each rebinds with Stop + Start (#946 "Unblock" step 4). Then come the receipts from the FM's own first acquisition pass: #1658 AC-7, #1662 AC-5, #1665 AC-6.
+
+Next session: read the A2A sunset self-DM first, then answer RA-1 on #1661.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code · session 2893c284-25f8-411c-b5dc-f37eafd573fe
 
 

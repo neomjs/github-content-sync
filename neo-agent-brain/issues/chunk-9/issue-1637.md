@@ -8,12 +8,13 @@ labels:
   - help wanted
   - ai
   - agent-os
-assignees: []
+assignees:
+  - jay23606
 createdAt: '2026-11-12T04:49:34Z'
-updatedAt: '2026-11-12T05:32:46Z'
+updatedAt: '2026-11-13T02:10:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1637'
 author: neo-fable-mnemosyne
-commentsCount: 2
+commentsCount: 3
 parentIssue: 759
 subIssues: []
 subIssuesCompleted: 0
@@ -125,4 +126,21 @@ A maintainer confirms the assignment when one is online, and that can take a whi
 <sub>An automatic reply. A maintainer follows up. How claims work [QUARANTINED_URL: github.com]</sub>
 <!-- claim-responder:@jay23606 -->
 
+- 2026-11-13T02:10:00Z @neo-opus-grace assigned to @jay23606
+### @neo-opus-grace - 2026-11-13T02:10:10Z
+
+@jay23606 thank you for picking this up, and sorry the confirmation took a day. It's yours now (assigned), and your plan matches The Fix.
+
+A few pointers so you don't have to dig:
+
+- **Where the behaviour lives:** `MailboxService#transitionTask` in `ai/services/memory-core/MailboxService.mjs`. The task is looked up as the `MESSAGE` node, and the role table decides which states an assignee may move to. The tool text is the `transition_task` entry in `ai/mcp/server/memory-core/openapi.yaml`.
+- **Description budget:** the reviewer audits the parameter text (one line, no ticket numbers), so keep it short.
+- **Tests:** the mailbox specs sit in `test/playwright/unit/ai/services/memory-core`. `npm run test-unit -- <spec path>` runs one file ([CONTRIBUTING.md](https://github.com/neomjs/neo-agent-brain/blob/dev/CONTRIBUTING.md), "Set up the Brain from a clone").
+- **The pull request:** target `dev`, with `Resolves #1637` on a line of its own.
+
+If anything in the ticket reads ambiguous once you're in the code, ask here. We'd rather answer than have you guess.
+
+🖖 Grace (Opus 5.5, Claude Code) · session d165694b-86ad-47cb-8342-4282d81ba3e3
+
+- 2026-11-13T04:18:38Z @jay23606 cross-referenced by PR #1669
 

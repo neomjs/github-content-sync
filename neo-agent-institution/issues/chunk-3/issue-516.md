@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T17:26:36Z'
-updatedAt: '2026-11-10T21:26:53Z'
+updatedAt: '2026-11-13T01:07:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/516'
 author: neo-opus-ada
-commentsCount: 21
+commentsCount: 22
 parentIssue: 424
 subIssues: []
 subIssuesCompleted: 0
@@ -765,4 +765,35 @@ Each row ends as pass, fail, missing or blocked, with a receipt. A failed or mis
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-11T18:26:31Z @neo-opus-ada cross-referenced by #917
+- 2026-11-11T18:39:40Z @neo-opus-ada cross-referenced by #919
+- 2026-11-11T20:08:57Z @neo-opus-ada cross-referenced by #923
+- 2026-11-12T02:15:43Z @neo-opus-ada cross-referenced by #927
+- 2026-11-12T02:15:56Z @neo-opus-ada cross-referenced by #928
+- 2026-11-12T02:31:04Z @neo-opus-ada cross-referenced by #929
+- 2026-11-12T18:29:52Z @neo-opus-ada cross-referenced by PR #943
+### @neo-opus-ada - 2026-11-13T01:07:33Z
+
+**Row 5 · H1 + provocation 1 re-walk: PASSED** (2026-11-13, operator-approved). Candidate: installed FM, Institution `e717bbf` (carries #943 → #917) · Brain `857fe41` · Engine `7fae35d`; plane Brain `a16eb4e4`.
+
+**Provocation:** `neo-local-agent-os-ingress-1` stopped at 01:01:53Z (`127.0.0.1:3102` refused). The FM quit, and it relaunched at 01:01:55Z with the stored plane unreachable. Main logged `plane init … refused: plane unreachable` at 01:02:10.6Z, then `HARNESS_BRAIN_PLANE_STARTING`.
+
+**The spine.** Instrument: the relaunched cockpit's state provider, read through the Neural Link with dotted paths. The banner binds these leaves, and `lead` is the sentence shown beside the pill, not a tooltip.
+
+| Elapsed | Pill (`spineBanner.text`) | Lead | Roster read |
+|---|---|---|---|
+| 9 s | Agent OS starting · 9 s | Your Agent OS has not answered yet. The Fleet joins by itself when it does. | connecting |
+| 33 s | Agent OS starting · 33 s | (same) | **timeout** ("fleet read exceeded 10000ms") |
+| 71 s | Agent OS starting · 71 s | … when it does. **Longer than usual.** | timeout |
+| 183 s | **Agent OS not answering · 3 min** | Your Agent OS has not answered for 3 min. Start it, or connect to another; the Fleet joins by itself when it answers. | timeout |
+
+At no point did it read "fleet timed out", even with the roster read timed out (the 2026-11-11 failure). The reason and the next step are both in the visible lead, and match #847 §3.
+
+**Recovery, no click:** ingress started at 01:05:22Z. Main re-probed and verified the plane at 01:05:27.6Z; the Fleet booted, and recovery reported "handed-off". At 01:06:38Z the spine was hidden and the roster, feed and presence were all live.
+
+**Side effect of the provocation:** the FM quit ran with the plane down. `neo-gpt-sophie`, `-emmy` and `-euclid` verified, while `neo-opus-ada` had `memory-core` and `knowledge-base` revoked, because those proofs need the plane. That is per-seat by design, and the seat's live session still answers; a Stop + Start rebinds it.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-13T05:37:31Z @neo-opus-ada cross-referenced by #949
 

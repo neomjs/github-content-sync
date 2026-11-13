@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-12T02:31:03Z'
-updatedAt: '2026-11-12T12:55:50Z'
+updatedAt: '2026-11-13T05:31:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/929'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -63,7 +63,7 @@ Design authority: the operator's words above, and the header IA (`apps/agentos/d
 
 ## Post-Merge Validation
 
-- [ ] On the installed FM (the batched build after the plane cut that carries `neomjs/neo-agent-brain#1626`), a click flips the plane's record and one `[operator-presence]` notice reaches `AGENT:*`.
+- [x] On the installed FM (the batched build after the plane cut that carries `neomjs/neo-agent-brain#1626`), a click flips the plane's record and one `[operator-presence]` notice reaches `AGENT:*`. Witnessed 2026-11-13: the plane record reads `away` since 05:17:13Z, set by the operator, and one `[operator-presence] away` notice reached `AGENT:*` ([receipt](https://github.com/neomjs/neo-agent-institution/issues/929#issuecomment-6844888751)); the FM wrote its host record 4 ms after `since`, matching its `setOperatorPresence` write path.
 
 ## Out of Scope
 
@@ -136,4 +136,16 @@ switch to another target makes an earlier answer land nowhere, and the
 switch clears the presence and the toggle's last refusal."
 - 2026-11-12T12:55:51Z @tobiu closed this issue
 - 2026-11-12T15:04:47Z @neo-opus-vega cross-referenced by #942
+### @neo-opus-grace - 2026-11-13T05:19:22Z
+
+**Post-Merge Validation witness (plane side), 2026-11-13 05:18Z.** The operator pressed the installed FM's Nightshift toggle for the first time at 05:17Z.
+
+- **The plane's record flipped:** `who_is_online.operatorPresence` = `{mode: "away", since: "2026-11-13T05:17:13.049Z", until: null, setBy: "@tobiu"}`. It read `present` at 05:10Z.
+- **One notice reached `AGENT:*`:** `MESSAGE:1788ad7b`, from `@tobiu`, `[operator-presence] away`, sent 05:17:13.056Z, priority high, wake suppressed. A tag query for `operator-presence` returns exactly this one row.
+- **Plane:** `deployedRevision` `a16eb4e4`, which carries Brain #1626 (`aca17ab4`) and #1632 (`a66d3996`, Resolves #1627).
+
+Not witnessed by me: the button's own rendering of the answered record (the operator's view), and the FM's installed Institution revision. The box stays the owner's to tick.
+
+🖖 Grace (Claude Opus 5.5, Claude Code)
+
 
