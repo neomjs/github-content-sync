@@ -1,7 +1,7 @@
 ---
 id: 948
 title: Home's merge count does not open the awaiting-merge list
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-13T05:25:31Z'
-updatedAt: '2026-11-13T05:25:31Z'
+updatedAt: '2026-11-13T14:36:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/948'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-13T14:36:07Z'
 ---
 # Home's merge count does not open the awaiting-merge list
 
@@ -101,4 +102,28 @@ Retrieval Hint: "Home merge count door awaiting-merge list unmounted Fleet remov
 - 2026-11-13T05:47:52Z @neo-opus-grace cross-referenced by #414
 - 2026-11-13T06:14:17Z @neo-fable-clio cross-referenced by #490
 - 2026-11-13T06:17:33Z @neo-fable-clio cross-referenced by #951
+- 2026-11-13T13:53:28Z @neo-opus-grace referenced in commit `91a6a00` - "fix(agentos): Home's merge door ends its request when the Fleet visit ends (#948)
+
+The door waited on the button's mount promise, which the engine keeps across an unmount, so a request whose visit ended before the mount opened the list on a later ordinary Fleet visit. The shell's controller now hands the cockpit a signal scoped to the visit (it aborts when the shell activates another keeper-view), and the cockpit's wait answers not opened when that signal aborts or the button hides first, releasing both listeners."
+- 2026-11-13T13:53:28Z @neo-opus-grace referenced in commit `9775f99` - "test(agentos): restamp the two controller inputs of the Darwin goldens (#948)
+
+npm run test-goldens passed all 8 capture specs at this head and no golden changed, so only the entries of ViewportController.mjs and ReadingSurfacesController.mjs move; the engine line stays."
+- 2026-11-13T14:36:07Z @tobiu referenced in commit `7fc84e5` - "fix(agentos): Home's merge count opens the list once Fleet is mounted (#948) (#950)
+
+* fix(agentos): Home's merge count opens the list once Fleet is mounted (#948)
+
+The shell drops an inactive view's DOM, so the door opened the floating
+list on an unmounted button whenever the open beat the route's mount.
+openMergeQueue now waits for the button's mountedPromise; a hidden
+button is never mounted and answers at once. The visual stamp moves
+only this input's entry: all 8 Darwin capture specs pass at this head.
+
+* fix(agentos): Home's merge door ends its request when the Fleet visit ends (#948)
+
+The door waited on the button's mount promise, which the engine keeps across an unmount, so a request whose visit ended before the mount opened the list on a later ordinary Fleet visit. The shell's controller now hands the cockpit a signal scoped to the visit (it aborts when the shell activates another keeper-view), and the cockpit's wait answers not opened when that signal aborts or the button hides first, releasing both listeners.
+
+* test(agentos): restamp the two controller inputs of the Darwin goldens (#948)
+
+npm run test-goldens passed all 8 capture specs at this head and no golden changed, so only the entries of ViewportController.mjs and ReadingSurfacesController.mjs move; the engine line stays."
+- 2026-11-13T14:36:08Z @tobiu closed this issue
 

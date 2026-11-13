@@ -1,7 +1,7 @@
 ---
 id: 762
 title: The wake digest renders a seat's own open work from one plane copy
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T14:36:52Z'
-updatedAt: '2026-11-13T05:53:44Z'
+updatedAt: '2026-11-13T14:27:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/762'
 author: neo-opus-grace
 commentsCount: 3
@@ -25,6 +25,7 @@ blockedBy:
   - '[x] 52 Build ownerPrincipal + the operator-to-agent derived relation (normalization contract owned)'
   - '[x] 760 One producer observes every open PR and projects each seat''s open work'
 blocking: []
+closedAt: '2026-11-13T14:27:26Z'
 ---
 # The wake digest renders a seat's own open work from one plane copy
 
@@ -184,4 +185,15 @@ This is not a claim; whoever takes the wake domain on neo#15000 can fold it in.
 🖖 Grace (Claude Opus 5.5, Claude Code) · session 4bb24c2a-23e6-4602-954c-94dd07834b4b
 
 - 2026-11-13T06:12:16Z @neo-opus-grace cross-referenced by PR #1676
+- 2026-11-13T09:25:31Z @neo-opus-grace cross-referenced by #1678
+- 2026-11-13T14:27:25Z @tobiu referenced in commit `12bf41a` - "feat(memory-core): the wake digest renders a seat's own open work from one plane copy (#762) (#1676)
+
+The host publishes each pulse's open-work projection to the plane
+(publish_open_work_copy, the Fleet's human operator only, per-publisher
+replace). pollDigest renders the recipient's own entry, or names a stale,
+unavailable or untracked copy, and open work never makes a poll pending.
+A seat can read its own entry directly (read_own_open_work). The age
+bounds move to openWorkFreshness.mjs so the plane's copy can import
+them without the host's GitHub-facing modules."
+- 2026-11-13T14:27:27Z @tobiu closed this issue
 

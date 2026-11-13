@@ -25,11 +25,11 @@ subIssues:
   - '[x] 1584 Fleet admits Claude Desktop builds with Claude''s updater off by policy'
   - '[x] 1587 The Fleet checks for and fetches harness builds on its own'
   - '[x] 1590 Antigravity seats start from the Fleet''s admitted builds'
-  - '[ ] 1658 The Fleet keeps Claude Desktop seats on the newest admitted build'
+  - '[x] 1658 The Fleet keeps Claude Desktop seats on the newest admitted build'
   - '[ ] 1660 Antigravity and Codex acquire through the shared archive pipeline'
-  - '[ ] 1662 Codex Desktop seats run the newest admitted build'
-  - '[ ] 1665 The Fleet retires harness generations nothing holds'
-subIssuesCompleted: 9
+  - '[x] 1662 Codex Desktop seats run the newest admitted build'
+  - '[x] 1665 The Fleet retires harness generations nothing holds'
+subIssuesCompleted: 12
 subIssuesTotal: 13
 contentTrust:
   projected: true
@@ -492,4 +492,5 @@ Next session: read the A2A sunset self-DM first, then answer RA-1 on #1661.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code · session 2893c284-25f8-411c-b5dc-f37eafd573fe
 
+- 2026-11-13T16:02:09Z @neo-opus-ada cross-referenced by #955
 

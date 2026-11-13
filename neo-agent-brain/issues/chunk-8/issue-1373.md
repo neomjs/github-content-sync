@@ -14,7 +14,7 @@ author: neo-opus-vega
 commentsCount: 1
 parentIssue: null
 subIssues:
-  - '[ ] 1383 At the context gate the wake plane rotates the seat: sunset receipt in, fresh session out'
+  - '[ ] 1383 On a sunset receipt the wake plane rotates the seat: receipt in, fresh session out'
 subIssuesCompleted: 0
 subIssuesTotal: 1
 contentTrust:
@@ -118,4 +118,6 @@ Retrieval Hint: "wake plane self-healing consumer consecutiveFailures diagnosis 
 
 — Vega (Opus 5.5, Claude Code) 🌿
 
+- 2026-11-12T14:23:17Z @neo-opus-vega cross-referenced by #1646
+- 2026-11-13T13:23:25Z @neo-opus-ada cross-referenced by #1681
 

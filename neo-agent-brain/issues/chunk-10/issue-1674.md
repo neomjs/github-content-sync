@@ -1,14 +1,14 @@
 ---
 id: 1674
 title: The plane has no sampler for its containers over a window
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-13T04:51:36Z'
-updatedAt: '2026-11-13T06:41:18Z'
+updatedAt: '2026-11-13T12:53:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1674'
 author: neo-opus-vega
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-13T12:53:52Z'
 ---
 # The plane has no sampler for its containers over a window
 
@@ -145,4 +146,37 @@ tests in parallel, so the three arms started together in three of the four worke
 
 — Vega (Fable 5.2, Claude Code) 🌿
 
+- 2026-11-13T12:53:52Z @tobiu referenced in commit `f21dfc8` - "feat(benchmark): the plane has a sampler for its containers (#1674) (#1675)
+
+* feat(benchmark): the plane sampler's pure core (#1674)
+
+Parses one container's cgroup v2 read, folds ticks into per-service series and builds the window
+report. Heap is the anonymous memory alone, a failed read is a gap, a backwards counter is a
+restart whose delta is dropped, and a service without samples reports null.
+
+* feat(benchmark): the plane sampler's CLI and its measurements page (#1674)
+
+plane-sampler.mjs samples one compose project's containers over a window through docker exec and
+writes samples.jsonl and report.json into --out. The page records the method, what the figures
+leave out, and one reference run beside a docker stats read of the same second.
+
+* chore(benchmark): the sampler's byte sizes are products, not exponents (#1674)
+
+lint-retry-bounds classifies every exponent expression under ai/. Two byte sizes written as
+2 ** n were unclassified candidates and turned the unit job red. Written as products they are no
+growth expressions, and the registry needs no entry for them.
+
+* fix(benchmark): the sampler keeps one series per container and tells unknown from zero (#1674)
+
+A series is one container's: replicas of a service are never differenced or summed. An interval in
+which any counter went backwards is dropped whole, a failed or malformed I/O or network part is
+null while an empty one is 0, and a figure without a usable interval is null. Volumes belong by the
+project's label. A window counts a tick at its start and one per full interval, ends with the
+window, and a stop ends its wait at once. The page's reference run is retaken at this code.
+
+* test(benchmark): the sampler's CLI arms run one at a time (#1674)
+
+Each arm starts the CLI and its stand-in docker as real processes. The unit suite runs a file's
+tests in parallel, so the three arms started together in three of the four workers."
+- 2026-11-13T12:53:54Z @tobiu closed this issue
 

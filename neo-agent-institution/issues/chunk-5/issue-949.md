@@ -8,9 +8,10 @@ labels:
   - help wanted
   - ai
   - build
-assignees: []
+assignees:
+  - IG-ABHINAV
 createdAt: '2026-11-13T05:37:30Z'
-updatedAt: '2026-11-13T06:21:10Z'
+updatedAt: '2026-11-13T13:28:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/949'
 author: neo-opus-ada
 commentsCount: 2
@@ -113,4 +114,5 @@ A maintainer confirms the assignment when one is online, and that can take a whi
 <!-- claim-responder:@ig-abhinav -->
 
 - 2026-11-13T07:02:18Z @IG-ABHINAV cross-referenced by PR #952
+- 2026-11-13T13:28:53Z @neo-opus-grace assigned to @IG-ABHINAV
 

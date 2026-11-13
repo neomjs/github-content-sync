@@ -31,9 +31,9 @@ subIssues:
   - '[x] 599 The operator''s Mailbox lists open questions and shows an expired plan'
   - '[x] 642 The Repositories card prepares a clone now and removes in two steps'
   - '[x] 962 Preserve observer-scoped mailbox reads in Fleet Activity'
-  - '[ ] 948 Home''s merge count does not open the awaiting-merge list'
+  - '[x] 948 Home''s merge count does not open the awaiting-merge list'
   - '[ ] 951 Home''s question count holds every ask since July'
-subIssuesCompleted: 15
+subIssuesCompleted: 16
 subIssuesTotal: 18
 contentTrust:
   projected: true
@@ -855,4 +855,5 @@ Not filed as leaves: the surface has a steward and a walk this week. If you want
 - 2026-11-13T05:25:37Z @neo-opus-grace added sub-issue #948
 - 2026-11-13T06:17:33Z @neo-fable-clio cross-referenced by #951
 - 2026-11-13T06:17:38Z @neo-fable-clio added sub-issue #951
+- 2026-11-13T08:56:51Z @neo-opus-vega cross-referenced by #1677
 

@@ -1,15 +1,16 @@
 ---
 id: 862
 title: Sort the Accounts agent list alphabetically by displayed name
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - good first issue
   - help wanted
   - ai
-assignees: []
+assignees:
+  - neo-opus-ada
 createdAt: '2026-11-03T05:24:07Z'
-updatedAt: '2026-11-09T12:00:56Z'
+updatedAt: '2026-11-13T14:50:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/862'
 author: neo-gpt-euclid
 commentsCount: 2
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-13T14:50:29Z'
 ---
 # Sort the Accounts agent list alphabetically by displayed name
 
@@ -111,4 +113,40 @@ The full list [QUARANTINED_URL: github.com] has the rest. Comment on one to clai
 <sub>An automatic reply. A maintainer follows up. How claims work [QUARANTINED_URL: github.com]</sub>
 <!-- claim-responder:@jay23606 -->
 
+- 2026-11-10T19:04:53Z @neo-fable-clio cross-referenced by #907
+- 2026-11-13T13:41:35Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-11-13T13:59:15Z @neo-opus-ada cross-referenced by PR #954
+- 2026-11-13T14:21:03Z @neo-opus-ada referenced in commit `8ca340c` - "test(accounts): a browser run proves the rendered order and the kept selection (#862)
+
+Mixed-case labels whose A-Z order is the reverse of their ids, a selected
+non-first row, and a registry refresh that moves it. On dev's unsorted store
+the first order assertion fails; with the sorter it passes."
+- 2026-11-13T14:50:29Z @tobiu referenced in commit `8e9ec43` - "feat(accounts): sort the agent list by displayed name (#862) (#954)
+
+* feat(accounts): sort agent list alphabetically by displayed name (#862)
+
+* refactor(accounts): the store keeps its own order (#862)
+
+The sorter opts into reapplyOnRecordChange, so the engine re-sorts the
+Store after an accepted definition edit. The hand-rolled re-sorts in
+AgentDefinitions#onRecordChange and Panel#onAgentRosterChange go, as do
+the never-deciding id sorter and the Panel's sorter seeding: the app
+seats an AgentDefinitions store that declares its sorter. The Controller's
+selection restore stays; the hydration spec fails without it.
+
+* test(accounts): restamp the visual inputs for the sorted roster (#862)
+
+All 76 screenshot captures pass unchanged at this head (visual, e2e, e2e:nl);
+only the stamp's input identity moves with the apps/agentos sources.
+
+* test(accounts): a browser run proves the rendered order and the kept selection (#862)
+
+Mixed-case labels whose A-Z order is the reverse of their ids, a selected
+non-first row, and a registry refresh that moves it. On dev's unsorted store
+the first order assertion fails; with the sorter it passes.
+
+---------
+
+Co-authored-by: Ritesh Yadav <riteshyadav33302111@gmail.com>"
+- 2026-11-13T14:50:30Z @tobiu closed this issue
 

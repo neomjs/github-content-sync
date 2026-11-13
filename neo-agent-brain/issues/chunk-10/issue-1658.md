@@ -1,7 +1,7 @@
 ---
 id: 1658
 title: The Fleet keeps Claude Desktop seats on the newest admitted build
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-13T01:56:39Z'
-updatedAt: '2026-11-13T02:12:48Z'
+updatedAt: '2026-11-13T16:18:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1658'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: 1531
 subIssues: []
 subIssuesCompleted: 0
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1660 Antigravity and Codex acquire through the shared archive pipeline'
+closedAt: '2026-11-13T12:53:26Z'
 ---
 # The Fleet keeps Claude Desktop seats on the newest admitted build
 
@@ -124,4 +125,136 @@ Retrieval Hint: "Claude Desktop seats frozen behind the updater policy; Homebrew
 Admission refuses a copy whose signed short version differs from the one its source advertised (expectedShortVersion), before Gatekeeper, the probe and publication, so the selection and the admission-ordered store stay as they were. acquireHarnessArchive passes the source's version; the refusal is memoized, so the zip is not fetched again. Addresses Euclid's RA-1: a record advertising 3.0.0 over a 1.0.0 bundle no longer displaces a selected 2.0.0.
 
 The vendor's current archive (5.11492.2) carries CFBundleShortVersionString 5.11492.2, read from its zip by range request, so exact equality holds for real records."
+- 2026-11-13T12:53:26Z @tobiu referenced in commit `8c42d39` - "feat(fleet): Claude Desktop seats run the newest admitted build (#1658) (#1661)
+
+* feat(fleet): Claude Desktop seats run the newest admitted build (#1658)
+
+Claude's own updater is off by policy, and the Fleet had no Claude source,
+so every Claude seat stayed on the build it was installed with. Homebrew's
+public cask record now points at Anthropic's versioned release zip; the
+record only decides whether to download (the vendor's URL shape, its own
+version and commit, the SHA-256 checked before extraction), and admission
+still proves the bundle.
+
+The download half every acquisition shares lives once in
+acquireHarnessArchive.mjs: per-family serialization, the same-admitter
+rejection memo, a capped streaming digest check, ditto extraction, the
+single .app and admission.
+
+fleet.harnessGenerations.claudeDesktop defaults to true, and the host's
+updater policy decides which updater owns the family instead of refusing
+a Start: with the policy, seats start from the selected generation and the
+Fleet acquires; without it, seats start from the installed bundle, whose
+own updater keeps it current. This amends #1584's refusal.
+
+* fix(fleet): a build must carry the version its source named (#1658)
+
+Admission refuses a copy whose signed short version differs from the one its source advertised (expectedShortVersion), before Gatekeeper, the probe and publication, so the selection and the admission-ordered store stay as they were. acquireHarnessArchive passes the source's version; the refusal is memoized, so the zip is not fetched again. Addresses Euclid's RA-1: a record advertising 3.0.0 over a 1.0.0 bundle no longer displaces a selected 2.0.0.
+
+The vendor's current archive (5.11492.2) carries CFBundleShortVersionString 5.11492.2, read from its zip by range request, so exact equality holds for real records."
+- 2026-11-13T12:53:27Z @tobiu closed this issue
+- 2026-11-13T14:26:54Z @tobiu referenced in commit `d1ff148` - "feat(fleet): Codex Desktop seats run the newest admitted build (#1662) (#1664)
+
+* feat(fleet): Claude Desktop seats run the newest admitted build (#1658)
+
+Claude's own updater is off by policy, and the Fleet had no Claude source,
+so every Claude seat stayed on the build it was installed with. Homebrew's
+public cask record now points at Anthropic's versioned release zip; the
+record only decides whether to download (the vendor's URL shape, its own
+version and commit, the SHA-256 checked before extraction), and admission
+still proves the bundle.
+
+The download half every acquisition shares lives once in
+acquireHarnessArchive.mjs: per-family serialization, the same-admitter
+rejection memo, a capped streaming digest check, ditto extraction, the
+single .app and admission.
+
+fleet.harnessGenerations.claudeDesktop defaults to true, and the host's
+updater policy decides which updater owns the family instead of refusing
+a Start: with the policy, seats start from the selected generation and the
+Fleet acquires; without it, seats start from the installed bundle, whose
+own updater keeps it current. This amends #1584's refusal.
+
+* feat(fleet): Codex Desktop seats run the newest admitted build (#1662)
+
+Every Codex seat's Start keeps its own Sparkle updater off, and
+fleet.harnessGenerations.codexDesktop was off, so nothing brought a new
+Codex build. The census on the ticket found no app-server reader that
+drives a Codex seat with the installed CLI, and every Codex CLI reader in
+the Fleet already follows the seat's pin, so the leaf now defaults to true.
+
+The seat journey pins the leaf off for its stand-in bundle, as it pins the
+Codex binary, so a default never decides which app it starts.
+
+* test(fleet): the journey child admits into its own store (#1662)
+
+The fleet child inherits the host's HOME, and its harness-generation root defaulted to ~/.neo-ai/harnesses. Before the Codex pin, an opted-in run bootstrapped the Codex stand-in there and left a bundle-metadata-invalid rejection in the live codex-desktop ledger (02:20:26Z). The child now gets NEO_FLEET_HARNESS_GENERATIONS_ROOT under its run root, so isolation no longer depends on every family being pinned."
+- 2026-11-13T15:26:29Z @neo-opus-ada cross-referenced by PR #1666
+- 2026-11-13T15:49:02Z @tobiu referenced in commit `7b3076c` - "feat(fleet): retire harness generations nothing holds (#1665) (#1666)
+
+* feat(fleet): Claude Desktop seats run the newest admitted build (#1658)
+
+Claude's own updater is off by policy, and the Fleet had no Claude source,
+so every Claude seat stayed on the build it was installed with. Homebrew's
+public cask record now points at Anthropic's versioned release zip; the
+record only decides whether to download (the vendor's URL shape, its own
+version and commit, the SHA-256 checked before extraction), and admission
+still proves the bundle.
+
+The download half every acquisition shares lives once in
+acquireHarnessArchive.mjs: per-family serialization, the same-admitter
+rejection memo, a capped streaming digest check, ditto extraction, the
+single .app and admission.
+
+fleet.harnessGenerations.claudeDesktop defaults to true, and the host's
+updater policy decides which updater owns the family instead of refusing
+a Start: with the policy, seats start from the selected generation and the
+Fleet acquires; without it, seats start from the installed bundle, whose
+own updater keeps it current. This amends #1584's refusal.
+
+* feat(fleet): Codex Desktop seats run the newest admitted build (#1662)
+
+Every Codex seat's Start keeps its own Sparkle updater off, and
+fleet.harnessGenerations.codexDesktop was off, so nothing brought a new
+Codex build. The census on the ticket found no app-server reader that
+drives a Codex seat with the installed CLI, and every Codex CLI reader in
+the Fleet already follows the seat's pin, so the leaf now defaults to true.
+
+The seat journey pins the leaf off for its stand-in bundle, as it pins the
+Codex binary, so a default never decides which app it starts.
+
+* feat(fleet): retire harness generations nothing holds (#1665)
+
+Every GUI family now acquires its own builds several times a week, and no
+copy was ever removed. After each family's acquisition, the job now retires
+every admitted generation except the selected one, its rollback, and the
+ones a seat holds: every seat record's pin and every lease on disk. A lease
+that cannot be read keeps everything and says which. A retired copy's ledger
+entry stays with a retiredAt stamp, so the build is never selected or
+fetched again, and admitting it again clears the stamp. Retirement runs on
+the family's admission chain, so no admission lands between the check and
+a removal.
+
+* test(fleet): the journey child admits into its own store (#1662)
+
+The fleet child inherits the host's HOME, and its harness-generation root defaulted to ~/.neo-ai/harnesses. Before the Codex pin, an opted-in run bootstrapped the Codex stand-in there and left a bundle-metadata-invalid rejection in the live codex-desktop ledger (02:20:26Z). The child now gets NEO_FLEET_HARNESS_GENERATIONS_ROOT under its run root, so isolation no longer depends on every family being pinned.
+
+* fix(fleet): retirement reads holds when it removes, fails closed (#1665)
+
+The store calls `held` on the family's admission chain, in the synchronous step that removes, so a pin published while a retirement waits keeps its copy. A pending Start (it selects its build before its record pins it), an unreadable lease, a lease that is not the seat's own, or a pin that is not a generation id keeps every copy and names the seat. `isHarnessGenerationId` is the one id-shape check, shared by the ledger and the lease read."
+- 2026-11-13T16:02:09Z @neo-opus-ada cross-referenced by #955
+### @neo-opus-ada - 2026-11-13T16:18:37Z
+
+**Post-merge receipt, first half of the post-merge AC (2026-11-13).** FM installed at Brain `7b3076c8` (16:14Z). Its first acquisition pass:
+
+```
+16:17:01.229Z [fleet] harness acquisition claude-desktop: checked admitted (candidate 5.11492.2, selected 5.11492.2)
+```
+
+The live store now holds `85834edb1fb2` (5.11492.2), `source` `https://downloads.claude.ai/releases/darwin/universal/5.11492.2/…`, with its copy present. The bundled Brain also admits the installed `/Applications/Claude.app` into a scratch store, the path a seat's first opted-in Start takes.
+
+**Open:** a Claude seat restarted onto that copy (`ps` path, the policy line in its boot log, the pin on its record). It needs a seat restart, which the AC marks operator-timed. The box stays open until then.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

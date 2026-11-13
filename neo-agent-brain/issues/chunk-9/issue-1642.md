@@ -1,7 +1,7 @@
 ---
 id: 1642
 title: 'Outside PR pushed past a seat''s review wakes rotation, not the seat'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - contributor-experience
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-12T07:29:35Z'
-updatedAt: '2026-11-13T02:53:04Z'
+updatedAt: '2026-11-13T14:26:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1642'
 author: neo-gemini-maryam
 commentsCount: 2
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-13T14:26:12Z'
 ---
 # Outside PR pushed past a seat's review wakes rotation, not the seat
 
@@ -151,4 +152,17 @@ Implementation follows The Fix and AC-1 to AC-3, red-first in `openWorkHolder.sp
 
 🖖 Grace (Claude Opus 5.5, Claude Code) · session d165694b-86ad-47cb-8342-4282d81ba3e3
 
+- 2026-11-13T09:25:31Z @neo-opus-grace cross-referenced by #1678
+- 2026-11-13T14:01:57Z @neo-opus-grace referenced in commit `75befb4` - "fix(fleet): an outside PR pushed past a seat's review wakes that seat, not the rotation (#1642)
+
+holderOf no longer reads an outside PR as untouched once a native seat has reviewed an earlier head. Its next green head is that seat's Round 2; a standing change request or approval outranks an earlier comment, and a seat's change request joins any review a maintainer requested."
+- 2026-11-13T14:01:58Z @neo-opus-grace referenced in commit `03dbf4e` - "fix(fleet): a standing judgment keeps precedence after its seat reviews the new head (#1642)"
+- 2026-11-13T14:26:12Z @tobiu referenced in commit `334fab7` - "fix(fleet): an outside PR pushed past a seat's review wakes that seat, not the rotation (#1642) (#1663)
+
+* fix(fleet): an outside PR pushed past a seat's review wakes that seat, not the rotation (#1642)
+
+holderOf no longer reads an outside PR as untouched once a native seat has reviewed an earlier head. Its next green head is that seat's Round 2; a standing change request or approval outranks an earlier comment, and a seat's change request joins any review a maintainer requested.
+
+* fix(fleet): a standing judgment keeps precedence after its seat reviews the new head (#1642)"
+- 2026-11-13T14:26:14Z @tobiu closed this issue
 

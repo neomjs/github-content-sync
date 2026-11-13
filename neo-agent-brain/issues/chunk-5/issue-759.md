@@ -17,7 +17,7 @@ parentIssue: null
 subIssues:
   - '[x] 760 One producer observes every open PR and projects each seat''s open work'
   - '[x] 761 A PR''s next-action holder is woken once per holder change'
-  - '[ ] 762 The wake digest renders a seat''s own open work from one plane copy'
+  - '[x] 762 The wake digest renders a seat''s own open work from one plane copy'
   - '[x] 763 The plane''s PR lane carries the producer''s transitions for every repo'
   - '[x] 449 The roster card shows a seat''s open work, and an awaiting-merge chip'
   - '[x] 779 The open-work projection names each open PR''s next-action holder'
@@ -33,10 +33,12 @@ subIssues:
   - '[x] 1629 An outside PR can wait unseen: a bot''s review, a baseline slot'
   - '[ ] 1630 An unanswered external PR comment wakes the holding seat'
   - '[ ] 1637 An open-work wake carries a task id that transition_task refuses'
-  - '[ ] 1642 Outside PR pushed past a seat''s review wakes rotation, not the seat'
+  - '[x] 1642 Outside PR pushed past a seat''s review wakes rotation, not the seat'
   - '[x] 1651 Escalate a silent holder only after a receiver-confirmed delivery'
-subIssuesCompleted: 16
-subIssuesTotal: 20
+  - '[x] 1678 A failed open-work wake send is never retried, so its holder never hears'
+  - '[ ] 1681 A failed woken turn leaves a Claude seat with no wake listener'
+subIssuesCompleted: 19
+subIssuesTotal: 22
 contentTrust:
   projected: true
   quarantined: 0
@@ -674,4 +676,10 @@ Edited twice within minutes of posting: the last number first read #1630, writte
 - 2026-11-13T02:16:37Z @neo-opus-grace cross-referenced by PR #1663
 - 2026-11-13T04:29:41Z @neo-opus-grace cross-referenced by PR #1670
 - 2026-11-13T06:12:16Z @neo-opus-grace cross-referenced by PR #1676
+- 2026-11-13T09:25:31Z @neo-opus-grace cross-referenced by #1678
+- 2026-11-13T09:25:40Z @neo-opus-grace added sub-issue #1678
+- 2026-11-13T09:41:32Z @neo-opus-grace cross-referenced by PR #1680
+- 2026-11-13T13:23:25Z @neo-opus-ada cross-referenced by #1681
+- 2026-11-13T13:23:31Z @neo-opus-ada added sub-issue #1681
+- 2026-11-13T13:23:39Z @neo-opus-ada cross-referenced by #1383
 

@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-13T03:29:03Z'
-updatedAt: '2026-11-13T05:06:26Z'
+updatedAt: '2026-11-13T16:18:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/946'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -148,4 +148,16 @@ Only reads (payload verify, census) race the halt now. A removal that
 has started finishes under both leases, and the halt takes effect at
 the next step."
 - 2026-11-13T05:06:27Z @tobiu closed this issue
+### @neo-opus-ada - 2026-11-13T16:18:45Z
+
+**Post-merge, 2026-11-13: installed, and the hung pass's lease was the last thing it blocked.**
+- **Install blocked:** the 16:08Z install of Institution `8e9ec437` (with #947) refused at its first step. FM main pid 99017 still held `installer/package.lock` from 02:51:27Z.
+- **Handoff first:** at the operator's go, SIGINT to the old Fleet (pid 4943) sealed the continuity handoff in 858 ms, with 7 survivors verified.
+- **The hung quit:** FM main then ignored SIGTERM for 10 s, as this ticket predicted for a graceful quit, so it took SIGKILL.
+- **Install and recovery:** the installer took the dead holder's lease and installed. The new FM recovered `previous issuer handed-off`, and the seats read `active`.
+- **First maintenance pass after install:** `16:15:23.600Z HARNESS_RUNTIME_RETIRED ["1bbebbbb…"]`. That is the generation this ticket named as the likely candidate, retired cleanly. No `HARNESS_RUNTIME_MAINTENANCE_DEFERRED` line so far, so the hang has not recurred.
+- **Still open from the Post-Merge Validation:** a seat Start while retirement runs.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

@@ -39,9 +39,9 @@ subIssues:
   - '[x] 790 The Activity stream has no keyboard path: rows never take focus, arrows do nothing'
   - '[x] 791 Selecting a card reveals Agent detail without moving the roster; close goes, pin stays reachable'
   - '[x] 801 Roster cards always render — … — middle elision in the lane row'
-  - '[ ] 862 Sort the Accounts agent list alphabetically by displayed name'
+  - '[x] 862 Sort the Accounts agent list alphabetically by displayed name'
   - '[ ] 869 Awaiting-merge menu overflows when many PRs are approved'
-subIssuesCompleted: 22
+subIssuesCompleted: 23
 subIssuesTotal: 25
 contentTrust:
   projected: true
@@ -1301,4 +1301,7 @@ view: unknown (surface: product bar) · needs love: its controls touch because t
 
 — Vega (Claude Opus 5.5, Claude Code) 🌿
 
+- 2026-11-13T05:25:32Z @neo-opus-grace cross-referenced by #948
+- 2026-11-13T06:17:33Z @neo-fable-clio cross-referenced by #951
+- 2026-11-13T13:59:15Z @neo-opus-ada cross-referenced by PR #954
 
