@@ -1,7 +1,7 @@
 ---
 id: 1630
 title: An unanswered external PR comment wakes the holding seat
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - contributor-experience
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-12T04:11:29Z'
-updatedAt: '2026-11-13T04:07:02Z'
+updatedAt: '2026-11-13T16:57:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1630'
 author: neo-gemini-julia
 commentsCount: 3
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 1629 An outside PR can wait unseen: a bot''s review, a baseline slot'
 blocking: []
+closedAt: '2026-11-13T16:57:19Z'
 ---
 # An unanswered external PR comment wakes the holding seat
 
@@ -176,4 +177,35 @@ Sequencing: the branch stacks on #1663 (same `holderOf` lines) and rebases over 
 
 - 2026-11-13T04:05:33Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-11-13T04:29:41Z @neo-opus-grace cross-referenced by PR #1670
+- 2026-11-13T09:25:31Z @neo-opus-grace cross-referenced by #1678
+- 2026-11-13T15:37:40Z @neo-opus-grace referenced in commit `8c0a15b` - "feat(fleet): an unanswered outside comment wakes the seat that owes the reply (#1630)
+
+The open-work snapshot now reads each PR's latest comments and submitted reviews, and responderOf
+names the reply an outside turn is owed: the earliest outside comment or review after the latest
+member turn. The PR's author seat answers it, else the seat that spoke last, a requested seat or a
+seat that judged it. The planner holds that reply beside the holder under its own slot, keyed by the
+owed turn's time, so a member's reply ends the episode, the next outside turn opens another, and a
+push alone wakes nobody twice. An untouched outside PR's triage covers the turns before it; a later
+one goes to the seat the triage woke. The snapshot's formula cost rises to 4, and the previous
+document stays priced."
+- 2026-11-13T16:26:53Z @neo-opus-grace referenced in commit `5369c42` - "fix(fleet): a reply episode outlives a sliding page, keeps its receipt across heads, and needs a named author (#1630)
+
+responderOf takes the episode the planner already holds and keeps it while no member turn after it shows, so a latest-ten page that slides past the owed turn mints no second reply. A turn whose author GitHub no longer names is no outside human. holdSeat carries an admitted, settled reply's messageId to the new head's slot, so delivered silence is still read after a push."
+- 2026-11-13T16:57:18Z @tobiu referenced in commit `cbadebc` - "feat(fleet): an unanswered outside comment wakes the seat that owes the reply (#1630) (#1670)
+
+* feat(fleet): an unanswered outside comment wakes the seat that owes the reply (#1630)
+
+The open-work snapshot now reads each PR's latest comments and submitted reviews, and responderOf
+names the reply an outside turn is owed: the earliest outside comment or review after the latest
+member turn. The PR's author seat answers it, else the seat that spoke last, a requested seat or a
+seat that judged it. The planner holds that reply beside the holder under its own slot, keyed by the
+owed turn's time, so a member's reply ends the episode, the next outside turn opens another, and a
+push alone wakes nobody twice. An untouched outside PR's triage covers the turns before it; a later
+one goes to the seat the triage woke. The snapshot's formula cost rises to 4, and the previous
+document stays priced.
+
+* fix(fleet): a reply episode outlives a sliding page, keeps its receipt across heads, and needs a named author (#1630)
+
+responderOf takes the episode the planner already holds and keeps it while no member turn after it shows, so a latest-ten page that slides past the owed turn mints no second reply. A turn whose author GitHub no longer names is no outside human. holdSeat carries an admitted, settled reply's messageId to the new head's slot, so delivered silence is still read after a push."
+- 2026-11-13T16:57:20Z @tobiu closed this issue
 

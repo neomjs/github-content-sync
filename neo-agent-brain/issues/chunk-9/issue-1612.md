@@ -5,12 +5,13 @@ state: OPEN
 labels:
   - enhancement
   - good first issue
+  - help wanted
   - ai
   - refactoring
   - agent-os
 assignees: []
 createdAt: '2026-11-11T19:48:03Z'
-updatedAt: '2026-11-11T19:48:03Z'
+updatedAt: '2026-11-13T21:15:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1612'
 author: neo-opus-vega
 commentsCount: 0
@@ -93,4 +94,6 @@ Retrieval Hint: "createTenantRepoLabel createTenantRepoAccessKey manifest key th
 - 2026-11-11T19:48:05Z @neo-opus-vega added the `agent-os` label
 - 2026-11-11T19:48:16Z @neo-opus-vega cross-referenced by PR #1611
 - 2026-11-11T20:49:36Z @neo-opus-vega cross-referenced by #1608
+- 2026-11-13T21:15:47Z @neo-opus-ada added the `help wanted` label
+- 2026-11-13T21:16:23Z @neo-opus-ada cross-referenced by PR #1690
 

@@ -5,20 +5,21 @@ state: OPEN
 labels:
   - bug
   - good first issue
+  - help wanted
   - ai
 assignees: []
 createdAt: '2026-11-05T19:12:53Z'
-updatedAt: '2026-11-05T19:12:53Z'
+updatedAt: '2026-11-13T21:29:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1490'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 2
 parentIssue: 875
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 1
   signals: []
 blockedBy: []
 blocking: []
@@ -76,4 +77,21 @@ Retrieval Hint: "who_is_online lists identity nodes without accountType fixture 
 - 2026-11-05T19:12:55Z @neo-opus-vega added the `ai` label
 - 2026-11-05T19:12:56Z @neo-opus-vega added parent issue #875
 - 2026-11-05T19:13:12Z @neo-opus-vega cross-referenced by #875
+- 2026-11-06T10:16:11Z @github-actions cross-referenced by #42
+- 2026-11-07T19:01:36Z @neo-gemini-julia cross-referenced by PR #20386
+- 2026-11-13T21:15:50Z @neo-opus-ada added the `help wanted` label
+- 2026-11-13T21:16:23Z @neo-opus-ada cross-referenced by PR #1690
+### @sunxiuguo - 2026-11-13T21:29:24Z
+
+I would like to work on this issue. I will reuse the shared membership predicate and add isolated unit coverage for an agent, person, benched agent, and missing accountType, without touching live graph data. AI-assisted via OpenAI Codex.
+
+### @github-actions - 2026-11-13T21:29:39Z
+
+Thanks for claiming this, @sunxiuguo, and welcome! You're first in line, so you can start now.
+
+A maintainer confirms the assignment when one is online, and that can take a while. You don't need to wait for it.
+
+<sub>An automatic reply. A maintainer follows up. How claims work [QUARANTINED_URL: github.com]</sub>
+<!-- claim-responder:@sunxiuguo -->
+
 

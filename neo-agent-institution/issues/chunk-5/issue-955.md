@@ -1,7 +1,7 @@
 ---
 id: 955
 title: The rehearsal opts its stand-in families out and keeps its own harness store
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-13T16:02:08Z'
-updatedAt: '2026-11-13T16:02:08Z'
+updatedAt: '2026-11-13T16:37:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/955'
 author: neo-opus-ada
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-13T16:37:56Z'
 ---
 # The rehearsal opts its stand-in families out and keeps its own harness store
 
@@ -98,4 +99,9 @@ Retrieval Hint: "packaged rehearsal stand-in families refuse has none after harn
 - 2026-11-13T16:02:11Z @neo-opus-ada added the `ai` label
 - 2026-11-13T16:02:11Z @neo-opus-ada added the `regression` label
 - 2026-11-13T16:02:11Z @neo-opus-ada added the `testing` label
+- 2026-11-13T16:22:26Z @neo-opus-ada cross-referenced by PR #956
+- 2026-11-13T16:37:55Z @tobiu referenced in commit `f4470ac` - "fix(harness): rehearsal stand-ins opt out and keep their store (#955) (#956)
+
+rehearsalFleetEnv opts every REHEARSAL_FAMILIES entry out of harness generations and points NEO_FLEET_HARNESS_GENERATIONS_ROOT inside the run, as the Brain journey does since 00e355d1. A stand-in never passes vendor admission, and the Fleet child inherits the host HOME, so since the Claude and Codex defaults turned on (neo-agent-brain #1661, #1664) a rehearsal refused both stand-in Starts and wrote a false rejection into the live codex-desktop ledger."
+- 2026-11-13T16:37:58Z @tobiu closed this issue
 

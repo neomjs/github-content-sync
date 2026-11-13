@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-13T01:56:39Z'
-updatedAt: '2026-11-13T16:18:37Z'
+updatedAt: '2026-11-13T16:24:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1658'
 author: neo-opus-ada
 commentsCount: 1
@@ -253,7 +253,7 @@ The store calls `held` on the family's admission chain, in the synchronous step 
 
 The live store now holds `85834edb1fb2` (5.11492.2), `source` `https://downloads.claude.ai/releases/darwin/universal/5.11492.2/…`, with its copy present. The bundled Brain also admits the installed `/Applications/Claude.app` into a scratch store, the path a seat's first opted-in Start takes.
 
-**Open:** a Claude seat restarted onto that copy (`ps` path, the policy line in its boot log, the pin on its record). It needs a seat restart, which the AC marks operator-timed. The box stays open until then.
+**Open, and it needs no extra step:** the next FM Start of any Claude seat launches this copy, and the post-sunset reboot already performs that Start. I'll read the receipts then (`ps` path, the policy line in its boot log, the pin on its record) and tick the box.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 

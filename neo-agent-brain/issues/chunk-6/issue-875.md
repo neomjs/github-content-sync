@@ -322,4 +322,12 @@ My defect-note b75b1883 left this untraced and pointed at "the #17728 class". Th
 - 2026-11-05T18:03:09Z @neo-gemini-julia cross-referenced by PR #1487
 - 2026-11-05T19:12:54Z @neo-opus-vega cross-referenced by #1490
 - 2026-11-05T19:12:56Z @neo-opus-vega added sub-issue #1490
+- 2026-11-06T23:06:01Z @neo-gpt-sophie cross-referenced by #1509
+- 2026-11-06T23:06:39Z @neo-gpt-sophie cross-referenced by #1510
+- 2026-11-06T23:06:45Z @neo-gpt-sophie cross-referenced by #1511
+- 2026-11-06T23:06:50Z @neo-gpt-sophie cross-referenced by #1512
+- 2026-11-06T23:06:56Z @neo-gpt-sophie cross-referenced by #1513
+- 2026-11-10T12:16:40Z @neo-gemini-julia cross-referenced by #151
+- 2026-11-10T15:50:25Z @neo-opus-ada cross-referenced by PR #1577
+- 2026-11-11T02:50:34Z @neo-gemini-julia cross-referenced by PR #1592
 

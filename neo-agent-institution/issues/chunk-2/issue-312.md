@@ -9,7 +9,7 @@ labels:
   - epic
 assignees: []
 createdAt: '2026-09-28T11:52:12Z'
-updatedAt: '2026-11-12T20:05:19Z'
+updatedAt: '2026-11-13T19:26:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/312'
 author: neo-opus-vega
 commentsCount: 12
@@ -33,8 +33,10 @@ subIssues:
   - '[x] 839 Observatory wells read as unlabeled dust on the installed build'
   - '[x] 840 Observatory''s Open on GitHub opens nothing and drops the window''s port'
   - '[x] 878 The Observatory names its nodes and draws them as marks up close'
+  - '[ ] 957 The Observatory shows a list selection''s details and takes the keyboard'
+  - '[ ] 958 The Observatory''s node list finds a node by name or kind'
 subIssuesCompleted: 17
-subIssuesTotal: 18
+subIssuesTotal: 20
 contentTrust:
   projected: true
   quarantined: 0
@@ -47,7 +49,7 @@ milestone: FM v1
 
 Terminal predicate: on the installed Fleet Manager, from a cold launch, the operator walks D#19317's Q1–Q5 in the Observatory: readable wells at the Brain's own strategic anchors, attention on named work events, the Golden Path route, who authored, was assigned or recently changed what, and any node's evidence one step away.
 
-Row state: row 3 · Vega · failed 2026-10-30 · re-walk owed; the sitting at the operator's viewer is set for 2026-11-13 (the operator's word, 2026-11-12). The two fails' fixes are in: #839 (PR #877, `5f61586f1c`) and #840 (PR #874, `5bf862cae7`) closed 2026-11-05, and both are ancestors of `821376a`, the installed Institution per Ada's read 80bdc60e. Next, on that install: re-run check 3 (well readability), check 7 (Open on GitHub) and the check-2 halo click. The other checks stand from the 2026-10-30 sitting (Institution `20d89be` / Brain `1bf8bd91` / engine `477b65bd9e`, cold saved-plane launch at the operator's display): first paint, resize, route state, overlays + lens and no-source pass; receipt [#485 6533524153](https://github.com/neomjs/neo-agent-institution/issues/485#issuecomment-6533524153). #320 AC-5 ticked, #311 AC-6 covered; #310 AC-6 and #333 AC-7 close with the re-walk.
+Row state: row 3 · Vega · failed 2026-11-13, candidate Institution `8e9ec437` / Brain `7b3076c8` / engine `79d1e693bd` · re-walked at the operator's viewer, receipt [#485 6862535972](https://github.com/neomjs/neo-agent-institution/issues/485#issuecomment-6862535972). Passed: the click on a node outside the wells, and Open on GitHub for a pull request (#840's fix holds on the install). Failed: a viewer cannot reach a session, so #333 AC-7's session case cannot be walked, and the node list cannot be entered from the keyboard. Open: readability (#310 AC-6) has his frames with 26 of 48 well names drawn (#839's fix shows) and no spoken judgment. The other checks stand from 2026-10-30 (Institution `20d89be` / Brain `1bf8bd91` / engine `477b65bd9e`, receipt [#485 6533524153](https://github.com/neomjs/neo-agent-institution/issues/485#issuecomment-6533524153)). #320 AC-5 ticked, #311 AC-6 covered. Leaves: #957 (a list selection shows its details, the list takes the keyboard), #958 (the list finds a node by name or kind), neomjs/neo#20896 (the wheel zooms toward the pointer). Next: the design read for #957 and #958 → the design seat or the operator; one sweep of `observatory` by a peer who did not build it is asked for on #505.
 
 ## Problem scope
 
@@ -85,9 +87,9 @@ The per-leaf mapping is recorded in D#19317's own ledger section (rev 13). At ep
 
 ## Residuals carried from closed leaves
 
-- **#310 AC-6** — sat 2026-10-30 (#485, receipt 6533524153): first useful paint, selection latency, resize and graph/route state **pass**; well and halo readability **fails** → #839. The cold scene read landed 30 s after the window, so the first-paint precondition holds on Inst `20d89be`.
+- **#310 AC-6** — sat 2026-10-30 (#485, receipt 6533524153): first useful paint, selection latency, resize and graph/route state **pass**; well and halo readability **fails** → #839. The cold scene read landed 30 s after the window, so the first-paint precondition holds on Inst `20d89be`. **Re-walked 2026-11-13** ([receipt](https://github.com/neomjs/neo-agent-institution/issues/485#issuecomment-6862535972)): the click on a node outside the wells **passes** by hand. Readability has the operator's frames, route on and off (26 of 48 well names drawn in the first), and no spoken judgment, so it stays open.
 - **#311 AC-6** — covered by the same sitting on the strategic (Roadmap) wells: heat and lens shown, geometry unchanged (receipt 6533524153, check 6).
-- **#333 AC-7** — sat 2026-10-30: the concept's no-source line **passes**; Open on GitHub **fails** (opens nothing, drops the window's port) → #840; the merged-PR case not run (same path); the session case blocked by the read (no uuid session among the listed 500). Re-run checks 3 and 7 alone once #839/#840 are installed.
+- **#333 AC-7** — sat 2026-10-30: the concept's no-source line **passes**; Open on GitHub **fails** (opens nothing, drops the window's port) → #840; the merged-PR case not run (same path); the session case blocked by the read (no uuid session among the listed 500). Re-run checks 3 and 7 alone once #839/#840 are installed. **Re-walked 2026-11-13** ([receipt](https://github.com/neomjs/neo-agent-institution/issues/485#issuecomment-6862535972)): Open on GitHub **passes** for a pull request and the window keeps its port; the issue case was not reported; the session case **fails**, because no viewer can reach a session (none among the 500 listed rows, no search, no filter by kind).
 - **#320 AC-5** — **ticked** 2026-10-30: the operator's viewer, launched cold from a saved plane, showed the Team list (14 of 180), the lens (Ada, Euclid) and the heat (receipt 6533524153, check 6). Palette sighting (hues repeat after five peers) on #505.
 - **neomjs/neo-agent-brain#603 (B1), the installed read**, resolved 2026-09-29 at 19:38Z. On the plane at Brain dev@`83c0e09`, the scene was read through its MC ingress and shaped by the deployed `fleetGraphSceneSource`. Of 152,675 nodes, `gravityWell` is set on 10,472, `strategicWeight` on 28,341 and `lastActivityAt` on 112,381. `activitySources` names all ten kinds, each with `sourceCapturedAt: null`. The fleet-server's own hop is the installed FM's read, which #310 AC-6 exercises.
 
@@ -108,7 +110,6 @@ Epic sweep: 7 open Institution epics and 38 open Brain epics read, by terminal p
 Structure map: run 2026-09-28 in the Brain checkout; the Brain leaves sit in `ai/services/memory-core` (`GraphService`) and `ai/services/fleet` (`fleetGraphSceneSource`). The Institution consumer is not Brain-hosted (N/A).
 Origin Session ID: 96f97500-4dcb-461e-bef0-af4e6dc5e24a
 Retrieval Hint: "Observatory shared operating picture epic wells attention team lens D19317"
-
 
 ## Timeline
 
@@ -568,4 +569,11 @@ red on the old zoom.min (2x against the 9.9x bar). The comment also drops its
 ticket reference, and the visual stamp is refreshed for the changed
 Observatory.mjs."
 - 2026-11-06T16:43:45Z @neo-gpt-emmy cross-referenced by PR #883
+- 2026-11-13T19:23:58Z @neo-opus-vega cross-referenced by #20896
+- 2026-11-13T19:24:46Z @neo-opus-vega cross-referenced by #957
+- 2026-11-13T19:25:31Z @neo-opus-vega cross-referenced by #958
+- 2026-11-13T19:25:39Z @neo-opus-vega added sub-issue #957
+- 2026-11-13T19:25:41Z @neo-opus-vega added sub-issue #958
+- 2026-11-13T19:30:29Z @neo-opus-vega cross-referenced by #1685
+- 2026-11-13T20:57:27Z @bardrop cross-referenced by PR #20905
 

@@ -33,8 +33,9 @@ subIssues:
   - '[x] 962 Preserve observer-scoped mailbox reads in Fleet Activity'
   - '[x] 948 Home''s merge count does not open the awaiting-merge list'
   - '[ ] 951 Home''s question count holds every ask since July'
+  - '[ ] 959 Home counts the asks that expired unanswered'
 subIssuesCompleted: 16
-subIssuesTotal: 18
+subIssuesTotal: 19
 contentTrust:
   projected: true
   quarantined: 0
@@ -856,4 +857,6 @@ Not filed as leaves: the surface has a steward and a walk this week. If you want
 - 2026-11-13T06:17:33Z @neo-fable-clio cross-referenced by #951
 - 2026-11-13T06:17:38Z @neo-fable-clio added sub-issue #951
 - 2026-11-13T08:56:51Z @neo-opus-vega cross-referenced by #1677
+- 2026-11-13T20:29:17Z @neo-fable-clio cross-referenced by #959
+- 2026-11-13T20:29:25Z @neo-fable-clio added sub-issue #959
 

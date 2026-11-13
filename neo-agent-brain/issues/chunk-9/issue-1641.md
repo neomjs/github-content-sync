@@ -1,7 +1,7 @@
 ---
 id: 1641
 title: 'CONTRIBUTING: curated labels open to all; a claim lasts 3 days'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,21 +10,22 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-11-12T07:27:38Z'
-updatedAt: '2026-11-12T18:49:25Z'
+updatedAt: '2026-11-13T22:02:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1641'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 1
   signals: []
 blockedBy:
-  - '[ ] 20805 A curated claim holds for three days, not seven'
+  - '[x] 20805 A curated claim holds for three days, not seven'
 blocking: []
+closedAt: '2026-11-13T22:02:50Z'
 ---
 # CONTRIBUTING: curated labels open to all; a claim lasts 3 days
 
@@ -101,4 +102,37 @@ Retrieval Hint: "CONTRIBUTING curated labels both open to every contributor, goo
 - 2026-11-12T18:49:25Z @neo-opus-ada changed title from **CONTRIBUTING says both curated labels are open to everyone** to **CONTRIBUTING: curated labels open to all; a claim lasts 3 days**
 - 2026-11-12T18:49:39Z @neo-opus-ada marked this issue as being blocked by #20805
 - 2026-11-12T18:49:49Z @neo-opus-ada cross-referenced by #20805
+- 2026-11-12T18:59:50Z @neo-opus-ada cross-referenced by PR #20834
+### @iruzen-dono - 2026-11-13T21:04:25Z
+
+I'd like to take this one.
+
+`neomjs/neo#20805` is merged (`neomjs/neo#20834`), so the blocked-by edge on paragraph 3 is clear. I'll take both paragraphs to the engine's wording as quoted in the ticket, and check that no "7 days" about a claim survives anywhere in the guide.
+
+### @github-actions - 2026-11-13T21:04:36Z
+
+Thanks for claiming this, @iruzen-dono, and welcome! You're first in line, so you can start now.
+
+A maintainer confirms the assignment when one is online, and that can take a while. You don't need to wait for it.
+
+<sub>An automatic reply. A maintainer follows up. How claims work [QUARANTINED_URL: github.com]</sub>
+<!-- claim-responder:@iruzen-dono -->
+
+- 2026-11-13T21:07:00Z @iruzen-dono cross-referenced by PR #1690
+- 2026-11-13T22:02:50Z @tobiu referenced in commit `2ca9075` - "docs(contributing): both curated labels are open to everyone, and a claim lasts 3 days (#1641) (#1690)
+
+Paragraph 1 reserved `good first issue` for a first pull request and sent every
+returning contributor to `help wanted`. Measured on 2026-11-12T07:27Z (the
+ticket's own sample): 8 open `good first issue`, 4 of them carrying only that
+label, so a returning contributor was pointed at 4 tickets while 8 ready ones
+were closed to them. It becomes the engine's paragraph from
+neomjs/neo#20804: both labels open to anyone, and `good first issue` means
+readiness, not size.
+
+Paragraph 3's last sentence promised an assignee seven silent days, which
+contradicts what this repository enforces: `.github/workflows/claim-responder.yml`
+loads `buildScripts/util/claimResponse.mjs` from `neomjs/neo` `dev`, and
+neomjs/neo#20805 moved `CLAIM_WINDOW_DAYS` to 3 (review of neomjs/neo#20834).
+It becomes the engine's sentence."
+- 2026-11-13T22:02:51Z @tobiu closed this issue
 

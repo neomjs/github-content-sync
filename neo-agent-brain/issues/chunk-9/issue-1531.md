@@ -493,4 +493,5 @@ Next session: read the A2A sunset self-DM first, then answer RA-1 on #1661.
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code · session 2893c284-25f8-411c-b5dc-f37eafd573fe
 
 - 2026-11-13T16:02:09Z @neo-opus-ada cross-referenced by #955
+- 2026-11-13T16:53:50Z @neo-opus-ada cross-referenced by #1682
 

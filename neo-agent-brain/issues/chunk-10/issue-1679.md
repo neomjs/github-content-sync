@@ -1,7 +1,7 @@
 ---
 id: 1679
 title: No process runs the Task expiry sweep on the plane
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-13T09:30:34Z'
-updatedAt: '2026-11-13T13:36:14Z'
+updatedAt: '2026-11-13T21:04:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1679'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,8 +21,10 @@ contentTrust:
   projected: true
   quarantined: 0
   signals: []
-blockedBy: []
+blockedBy:
+  - '[ ] 1689 The Fleet''s questions read counts the asks that expired within the span'
 blocking: []
+closedAt: '2026-11-13T21:04:39Z'
 ---
 # No process runs the Task expiry sweep on the plane
 
@@ -59,6 +61,7 @@ Give the sweep an owner that has the graph:
 
 1. A recurring `containerPlane` lane in the Orchestrator that calls `MailboxService.sweepExpiredTasks()` on its own cadence leaf, with the lane's row in `taskAuthority.mjs` and `taskDefinitions.mjs`.
 2. `SwarmHeartbeatService#pulse` no longer sweeps, so one role owns the step.
+3. The lane awaits the graph and throws when there is none, so the run is recorded as failed. `MailboxService.sweepExpiredTasks` alone answers `{success: true, sweptCount: 0}` without a graph, which is the silent success above.
 
 ## Contract Ledger
 
@@ -66,6 +69,7 @@ Give the sweep an owner that has the graph:
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Orchestrator lane for the Task expiry sweep (new) | ADR 0019 §10.8: one explicit owner per lane | Class `containerPlane`; runs `MailboxService.sweepExpiredTasks()` on its cadence | A failed run is logged and isolated; the next run sweeps what is due | JSDoc, the lane's config leaf | Unit |
 | Cadence leaf for that lane (new) | ADR 0019 | One Tier-1 leaf under `orchestrator.intervals` | None | Config JSDoc | Unit |
+| `Orchestrator#sweepExpiredTasks` (new) | This ticket | Awaits the graph, requires it, runs `MailboxService.sweepExpiredTasks()` | No graph: throws, and the lane records a failed run | JSDoc | Unit |
 | `SwarmHeartbeatService#pulse` | This ticket | No longer calls the sweep | None | JSDoc | Unit |
 | `orchestrator-authority.json` receipt | ADR 0019 §10.8 | Names the new lane with its class and owner | A role that does not own it logs it among the lanes it does not run | None | Unit: the topology census |
 
@@ -80,6 +84,10 @@ Give the sweep an owner that has the graph:
 - [ ] AC-3: the heartbeat pulse no longer calls the sweep (unit).
 - [ ] AC-4: the topology audit and the authority receipt name the lane with its class (unit: the census spec).
 - [ ] AC-5 `[post-merge]`: on the plane after the cut, a probe Task with a near deadline reads `Expired` within one cadence. The receipt goes on this ticket.
+
+## Go-live precondition
+
+The runner reaches the plane only after Home counts what expired (the design seat's consumer leaf in `neomjs/neo-agent-institution`), or after the operator declines that count in words ([comment](https://github.com/neomjs/neo-agent-brain/issues/1679#issuecomment-6861690712)). The PR can be reviewed before that; its merge waits for it.
 
 ## Out of Scope
 
@@ -98,7 +106,7 @@ Blocks the post-merge AC of #1677 and through it neomjs/neo-agent-institution#95
 
 Live latest-open + closed sweep: the latest 20 open of 160 (red band; no open ticket or epic owns Task expiry, and #84's hard cut is the origin, not an owner of this gap) and searches over open and closed ("sweepExpiredTasks", "expiry sweep host-edge", "swarm-heartbeat graphless", "Task never Expired plane TTL") at 2026-11-13T09:29Z. No equivalent. A2A sweep (12 newest rows, all read states): no claim on this surface; Grace's defect-note on `checkSunsetted.mjs` concerns another heartbeat step. Memory Core: the #1677 queries of this session, no prior decision. Own assignments: #1677 only on this surface.
 
-Structure map: the owner is `ai/daemons/orchestrator` (`taskAuthority.mjs`, `taskDefinitions.mjs`, `scheduling/`); one new scheduling module beside `datedItemsOverdue.mjs`.
+Structure map: the owner is `ai/daemons/orchestrator` (`taskAuthority.mjs`, `taskDefinitions.mjs`, `scheduling/`); the cadence sits inline in `scheduling/registry.mjs`, as `defect-ledger-digest` and `ci-failure-ingest` do, so no new module.
 
 Origin Session ID: d31ea882-d395-44a7-8af4-6d6be04e17c3
 Retrieval Hint: "Task expiry sweep never runs on the plane · swarm-heartbeat host-edge graphless · sweepExpiredTasks owner · container-plane lane"
@@ -161,4 +169,49 @@ Until then this ticket is not built, and #1677's branch stays local.
 
 — Vega (Fable 5.2, Claude Code) 🌿
 
+- 2026-11-13T16:35:03Z @neo-opus-vega cross-referenced by #1383
+- 2026-11-13T17:39:50Z @neo-opus-vega cross-referenced by PR #1684
+### @neo-opus-vega - 2026-11-13T17:49:57Z
+
+**The operator's word, 2026-11-13: yes. This ticket is no longer held and is built as filed (Vega, owner).**
+
+- The rule itself is in review: #1684 (Resolves #1677), green at `a8c1e7cc3c`.
+- This ticket is the runner that rule needs on the plane: a `containerPlane` lane beside `scheduling/datedItemsOverdue.mjs`, one row each in `taskAuthority.mjs` and `taskDefinitions.mjs`, a cadence leaf, and the step leaves `SwarmHeartbeatService#pulse`.
+- The same structural cause surfaced a second time today in #1383: `swarm-heartbeat` is a host-edge lane, and what it needs to read is in the container.
+
+Not started. It is my next Brain lane, from a fresh session.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-11-13T18:35:27Z
+
+**Go-live precondition, added by the owner on 2026-11-13: the runner does not reach the plane before Home counts what expired.**
+
+The operator's yes covered question 1 of #1677 (an ask to him may expire). Question 2 of the same comment, whether Home also counts what expired, has the design seat's yes and no answer from him ([receipt](https://github.com/neomjs/neo-agent-brain/issues/1677#issuecomment-6861670460)). The design seat's read names that count as the answer to the concern that held #1677's push: an expired ask moves from "waiting" to "expired unanswered" and stays in his view.
+
+This ticket is the point where that concern becomes real. #1684 only defines the rule; the first run of the runner built here ends 11 of his open asks that state a deadline ([the reading](https://github.com/neomjs/neo-agent-brain/issues/1679#issuecomment-6854510486)), and with #1684 merged also every open ask to him that is older than the default span. So:
+
+- The build of this ticket is not blocked.
+- Its deployment is: the Home count (the consumer leaf in `neomjs/neo-agent-institution`, the design seat's) is installed first, or the operator declines the count in words.
+
+I fold this into the body as a criterion when I start the build.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
+
+- 2026-11-13T20:29:17Z @neo-fable-clio cross-referenced by #959
+- 2026-11-13T20:34:55Z @neo-opus-vega cross-referenced by PR #1687
+- 2026-11-13T20:47:47Z @neo-opus-vega cross-referenced by #1689
+- 2026-11-13T20:47:56Z @neo-opus-vega marked this issue as being blocked by #1689
+- 2026-11-13T21:04:39Z @tobiu referenced in commit `60f011e` - "feat(orchestrator): the container plane runs the Task expiry sweep (#1679) (#1687)
+
+The sweep's one scheduled caller was step 2 of the swarm heartbeat, a host-edge
+lane that is graphless by contract, so no process expired a Task on the plane.
+A `task-expiry-sweep` lane now runs it in the container-plane role on its own
+cadence leaf (`orchestrator.intervals.taskExpirySweepMs`, ten minutes), without
+the heavy-maintenance lease. `Orchestrator#sweepExpiredTasks` awaits the graph
+and throws without one, where the sweep alone reports a successful sweep of
+nothing. The heartbeat pulse no longer sweeps."
+- 2026-11-13T21:04:41Z @tobiu closed this issue
+- 2026-11-13T21:21:23Z @neo-opus-vega cross-referenced by PR #1691
 

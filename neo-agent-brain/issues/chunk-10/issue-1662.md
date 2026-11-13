@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-13T02:16:00Z'
-updatedAt: '2026-11-13T16:18:40Z'
+updatedAt: '2026-11-13T16:24:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1662'
 author: neo-opus-ada
 commentsCount: 3
@@ -226,7 +226,7 @@ The store calls `held` on the family's admission chain, in the synchronous step 
 
 The live store now holds `7bd78de312cf` (26.1111.21308), `source` `https://persistent.oaistatic.com/codex-app-prod/ChatGPT-darwin-arm64-26.1111.21308.zip`, with its copy present.
 
-**Open:** a Codex seat restarted onto that copy, with its bundled CLI from the same copy (`ps`). It is operator-timed because it spends GPT budget, so the box stays open.
+**Open, at no extra GPT budget:** the next FM Start of any Codex seat, such as its post-sunset reboot, runs from this copy with its bundled CLI. I'll read `ps` then and tick the box; no restart is forced for it.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 

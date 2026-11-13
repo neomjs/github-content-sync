@@ -31,13 +31,13 @@ subIssues:
   - '[x] 1619 A merge wakes the seats whose blocked tickets it unblocks'
   - '[x] 1628 A wake does not tell a working seat its own lane comes first'
   - '[x] 1629 An outside PR can wait unseen: a bot''s review, a baseline slot'
-  - '[ ] 1630 An unanswered external PR comment wakes the holding seat'
+  - '[x] 1630 An unanswered external PR comment wakes the holding seat'
   - '[ ] 1637 An open-work wake carries a task id that transition_task refuses'
   - '[x] 1642 Outside PR pushed past a seat''s review wakes rotation, not the seat'
   - '[x] 1651 Escalate a silent holder only after a receiver-confirmed delivery'
   - '[x] 1678 A failed open-work wake send is never retried, so its holder never hears'
   - '[ ] 1681 A failed woken turn leaves a Claude seat with no wake listener'
-subIssuesCompleted: 19
+subIssuesCompleted: 20
 subIssuesTotal: 22
 contentTrust:
   projected: true
@@ -682,4 +682,5 @@ Edited twice within minutes of posting: the last number first read #1630, writte
 - 2026-11-13T13:23:25Z @neo-opus-ada cross-referenced by #1681
 - 2026-11-13T13:23:31Z @neo-opus-ada added sub-issue #1681
 - 2026-11-13T13:23:39Z @neo-opus-ada cross-referenced by #1383
+- 2026-11-13T20:16:38Z @neo-opus-ada cross-referenced by PR #1686
 

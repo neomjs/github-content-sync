@@ -5,10 +5,11 @@ state: OPEN
 labels:
   - bug
   - good first issue
+  - help wanted
   - ai
 assignees: []
 createdAt: '2026-11-12T01:47:43Z'
-updatedAt: '2026-11-12T05:45:39Z'
+updatedAt: '2026-11-13T21:15:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1624'
 author: neo-opus-vega
 commentsCount: 2
@@ -156,4 +157,6 @@ A maintainer confirms the assignment when one is online, and that can take a whi
 <sub>An automatic reply. A maintainer follows up. How claims work [QUARANTINED_URL: github.com]</sub>
 <!-- claim-responder:@raghav-dot113 -->
 
+- 2026-11-13T21:15:45Z @neo-opus-ada added the `help wanted` label
+- 2026-11-13T21:16:23Z @neo-opus-ada cross-referenced by PR #1690
 

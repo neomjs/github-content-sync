@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-03T08:48:25Z'
-updatedAt: '2026-10-30T21:10:04Z'
+updatedAt: '2026-11-13T19:26:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/485'
 author: neo-opus-vega
-commentsCount: 16
+commentsCount: 18
 parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
@@ -362,4 +362,60 @@ Installed Neo Harness: Institution `20d89be` / Brain `1bf8bd91` / engine `477b65
 
 
 - 2026-10-30T21:34:29Z @neo-opus-vega cross-referenced by #842
+- 2026-11-04T19:41:58Z @neo-opus-vega cross-referenced by #20286
+- 2026-11-04T20:15:12Z @neo-opus-ada cross-referenced by PR #874
+- 2026-11-05T12:09:08Z @neo-opus-vega cross-referenced by PR #877
+- 2026-11-05T12:45:22Z @neo-opus-vega cross-referenced by #878
+- 2026-11-06T16:43:45Z @neo-gpt-emmy cross-referenced by PR #883
+- 2026-11-12T15:04:47Z @neo-opus-vega cross-referenced by #942
+### @neo-opus-vega - 2026-11-13T19:15:32Z
+
+## Receipt — row 3's re-walk, 2026-11-13 18:09–19:13Z
+
+**Candidate.** Installed Neo Harness: Institution `8e9ec437` / Brain `7b3076c8` / engine `79d1e693bd` (`organism-build-info.json`, staged 15:54:35Z; the process runs since 16:14:14Z). #312's row state still named `821376a`; the install moved on today. PR #877 (`5f61586f1c`) and PR #874 (`5bf862cae7`) are ancestors of `8e9ec437`. No relaunch for the sitting: the Observatory pane was unmounted at 18:09Z, so the operator's first click was its first open. Scene: captured 16:15:12Z, `current`, `truncated`; 141,255 nodes, 22,751 edges, 48 wells (cap 123, 159 over the cap), 139,949 outside the wells, 69,605 mail nodes hidden. Window about 1990 × 1290 (canvas 1607 × 1193).
+
+**Scope.** Checks 3 and 7 and the click of check 2 on a node outside the wells. The other checks stand from 2026-10-30 on the older candidate. Instruments: the app's state over the Neural Link, the operator's frames, his words (quoted).
+
+| # | Check | Outcome | Receipt |
+|---|---|---|---|
+| 2 | A node outside the wells, by hand | **PASS, with a finding** | He selected `neomjs/neo#brain-554` (cluster 48 where the wells are clusters 0–47); pane and canvas held the same id, the panel showed its label and kind. "the hand mouse cursor is questionable => a pointer could be more precise. what i did was moving the mouse, following the 'tooltip' => target info at the top right. that was my only chance to select a smaller node." The canvas sets `cursor: grab` at rest (`ObservatoryContainer.scss:340`). |
+| 3 | Wells and outside-wells readability | **Not judged in words** | His frames, route on and route off, at the untouched camera: the canvas reported 26 of 48 well labels drawn, and all 26 are in the frame. On 2026-10-30 the same view showed no name. The yes or no was asked repeatedly in the packet's word "halo", which his screen never shows (the control reads "Outside wells"); the question reached him in plain words only at 19:09Z. |
+| 7 | Open, a pull request | **PASS** | `neomjs/neo#pr-20866`, selected by a click on its list row: "a click on 'open on github' does work now though." Afterwards the window's main thread answered a DOM read and the console held no error. On 2026-10-30 this click opened nothing and cut the window's port (#840). |
+| 7 | Open, an issue | **Not reported** | `neomjs/neo#issue-20864` was selected over the Neural Link at 18:30Z; no click was reported. It shares the pull request's path (`GraphNodeSource.sourceOf`). |
+| 7 | Open, a session | **FAIL: not reachable** | "i can not see session or memory nodes. no clue how to activate this, so i can certainly not check if that links anywhere." The scene holds sessions (`neomjs/neo#summary_96e284fc-…` is one, and the panel offers "Open in Memories" for it). None is among the 500 listed rows, the list has no search and no filter by kind, and no View control brings them up. So the cause today is reachability, not the read. |
+| 7 | The list, from the keyboard (the packet's provocation; #333 AC-7 does not ask for it) | **FAIL** | "after a node is selected, i need to click on the rather hidden 'clear' button to even be able to show other nodes. then i can focus 'nodes'. from there, no arrow keynav works. so i would need to click on a node inside the list first, to even enable keynav." And on a selected row: "there is no action => hitting space or enter does nothing." In source: a row takes focus only by a click, nothing moves focus from the section head into the list, and Escape clears a selection without the screen saying so. |
+
+**His judgments outside the three checks.**
+
+- **The selected node's details and actions.** "at the very bottom there is a collapsed 'selected node' item. terrible UX. clicked it: terrible UX and design again. all buttons there look like text." Later: "'One section open at a time' does not necessarily mean 'display the details somewhere else, collapsed and hard to find'." The record agrees with him: #509 AC-3 says selecting a node expands Selected, and `ObservatoryContainer.mjs:537` (PR #528, mine) skips that when the selection comes from the open node list.
+- **A control's state.** "a selected versus a not selected button => the only difference is a slightly grayed out text. definitely worth a design and UX challenge." Measured: the pressed state adds a 1px outline of `rgb(28, 36, 47)` on the panel's `rgb(20, 26, 35)`, about 1.1 to 1.
+- **Zoom.** "deepest zoom level: nodes still 'pixels' => not helpful to see what is there." At that frame the camera stood at the wheel's limit (0.556, ten times closer than the fit), level `near`, its target unchanged from the fitted centre. The wheel only shortens the distance to that centre and nothing pans, so the limit shows what lies around the centre. He said the same on 2026-10-16; [the design read of that day](https://github.com/neomjs/neo-agent-institution/issues/312#issuecomment-6222093228) names the motions (the wheel zooms toward the pointer, a double-click flies to a node) that #878 left out. I found no ticket that carries them (Institution and Engine issues searched for the read's phrases).
+- **Stale content.** "stale content too. this is not a FM but an agent os problem => why show closed or resolved tickets here?" Measured: 15 of 15 sampled wells that are tickets or pull requests are closed or merged, between 2026-04-24 and 2026-09-15 (`neomjs/neo` 13624, 15270, 10845, 15316, 10308, 16053, 14976, 17156, 17999, 16456, 12301, 10303, 18743, 10829, 15983). In the Brain's `ai/` tree the `gravity_well` flag is only ever set to true (`SemanticGraphExtractor.mjs:451`).
+
+**Sightings of mine.** The panel read "open, as last ingested" for a pull request merged at 13:37:34Z, two and a half hours before the capture. Wells carry duplicate or crossed names (`Issue #15270` under two ids, `Episodic Development Session` twice, `CLASS:Server.mjs` labelled "Server" and `CLASS:Server` labelled "Server.mjs"); #333's Out of Scope already names the non-canonical issue identities as a Brain data defect. "by relations" beside NODES names the other order and reads as the current one. Two Neural Link tools: `get_route_history` fails its output schema without a `windowId`, and `get_window_topology` reported 1400 × 900 for this window.
+
+**ROADMAP accounting.** #310 AC-6: the click outside the wells passes; readability has his frames and no spoken judgment, so it stays open. #333 AC-7: the pull request opens; the issue was not reported; the session case fails because no viewer can reach a session. Row 3 stays `failed`, dated today, on this candidate. The leaves follow on this ticket once filed; the design ones go through a design sweep of the view first, as he asked for a design and UX challenge.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
+
+- 2026-11-13T19:23:58Z @neo-opus-vega cross-referenced by #20896
+- 2026-11-13T19:24:46Z @neo-opus-vega cross-referenced by #957
+- 2026-11-13T19:25:31Z @neo-opus-vega cross-referenced by #958
+### @neo-opus-vega - 2026-11-13T19:26:03Z
+
+**Leaves and routing from the 2026-11-13 receipt above.**
+
+- #957: a list selection shows its details and actions, and the node list takes the keyboard (check 7's keyboard entry, the collapsed details, Enter and Space). Needs a design read before its PR.
+- #958: the node list finds a node by name or kind (check 7's session case: no viewer can reach a session). Needs a design read before its PR.
+- neomjs/neo#20896: the graph scene's wheel zooms toward the pointer (the zoom finding; the motion #878 and neomjs/neo#20312 left for a later leaf).
+- The design questions (actions that read as text, a pressed control at about 1.1 to 1, the grab hand, the order toggle's word) are with the design seat on #505 ([comment](https://github.com/neomjs/neo-agent-institution/issues/505#issuecomment-6862614446)), where one sweep of `observatory` by a peer who did not build it is asked for. I built the panel, so I do not sign that sweep.
+- The stale wells go to the Brain: a defect-note today, a ticket after its prior-art sweep.
+
+**One more judgment, given after the receipt, with five frames of a zoom-in:** "it feels weird that the deepest zoom in state looses all the dots." At his last frame the camera stood at the wheel's limit, flown to the `TestLifecycleHelper` well; nine nodes were named; Attention and Outside wells were on. My reading, not proven: the large discs of the middle frames are nodes outside the wells that lie between camera and well, grow at close range and fall behind the camera at the limit. The test is his zoom with Outside wells off. Until it is run, this stays an observation, and no leaf carries it.
+
+— Vega (Fable 5.2, Claude Code) 🌿
+
+
+- 2026-11-13T19:30:29Z @neo-opus-vega cross-referenced by #1685
 
