@@ -1,7 +1,7 @@
 ---
 id: 963
 title: Home's expired run reads as a link; the empty list names its date
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-14T03:49:20Z'
-updatedAt: '2026-11-14T03:49:20Z'
+updatedAt: '2026-11-14T14:50:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/963'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T14:50:54Z'
 ---
 # Home's expired run reads as a link; the empty list names its date
 
@@ -91,4 +92,38 @@ run against Brain dev fails it, this one included. The same entry rides
 #962 (7f0dd87); whichever merges first fixes dev, and the other's hunk is
 identical."
 - 2026-11-14T04:08:01Z @neo-opus-ada referenced in commit `2c3ce96` - "test(agentos): re-stamp after the kind registry entry (#963)"
+- 2026-11-14T13:58:05Z @neo-opus-ada referenced in commit `33854be` - "feat(agentos): the expired run is a link, the empty list dated (#963)
+
+From Clio's design read of #961: the expired run on Home's operator line
+takes its siblings' dotted underline at rest and the secondary ink, which
+holds 6.5 : 1 (dark) and 5.0 : 1 (light) on the ground. The expired list's
+empty line names the read's own window, "no ask expired since <date>",
+instead of "this week", true for any window length."
+- 2026-11-14T13:58:06Z @neo-opus-ada referenced in commit `d2c2891` - "test(agentos): the Home goldens show the expired run as a link (#963)"
+- 2026-11-14T13:58:06Z @neo-opus-ada referenced in commit `b8cbada` - "test(agentos): drop the ticket refs from two test comments (#963)
+
+Comment-only change; the re-stamp follows the visual spec's moved blob, no render changed."
+- 2026-11-14T13:58:06Z @neo-opus-ada referenced in commit `9c035c9` - "test(agentos): re-stamp the visual baselines on the rebased head (#963)
+
+Rebased onto dev after #962 merged; the stamp conflict was resolved by re-stamping, not by hand. The kind-registry commit dropped as empty because #962 carries the same session-rotation entry."
+- 2026-11-14T14:50:54Z @tobiu referenced in commit `ec9b1ed` - "feat(agentos): the expired run is a link, the empty list dated (#963) (#964)
+
+* feat(agentos): the expired run is a link, the empty list dated (#963)
+
+From Clio's design read of #961: the expired run on Home's operator line
+takes its siblings' dotted underline at rest and the secondary ink, which
+holds 6.5 : 1 (dark) and 5.0 : 1 (light) on the ground. The expired list's
+empty line names the read's own window, "no ask expired since <date>",
+instead of "this week", true for any window length.
+
+* test(agentos): the Home goldens show the expired run as a link (#963)
+
+* test(agentos): drop the ticket refs from two test comments (#963)
+
+Comment-only change; the re-stamp follows the visual spec's moved blob, no render changed.
+
+* test(agentos): re-stamp the visual baselines on the rebased head (#963)
+
+Rebased onto dev after #962 merged; the stamp conflict was resolved by re-stamping, not by hand. The kind-registry commit dropped as empty because #962 carries the same session-rotation entry."
+- 2026-11-14T14:50:55Z @tobiu closed this issue
 

@@ -1,15 +1,16 @@
 ---
 id: 1685
 title: 'A strategic anchor outlives its ticket: the flag and its weight only rise'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - architecture
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-13T19:30:28Z'
-updatedAt: '2026-11-13T19:30:28Z'
+updatedAt: '2026-11-14T16:00:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1685'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T16:00:42Z'
 ---
 # A strategic anchor outlives its ticket: the flag and its weight only rise
 
@@ -65,15 +67,16 @@ My recommendation is both, in one change: the first fixes what the operator saw,
 | Target surface | Source of authority | Proposed behaviour | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
 | `get_graph_scene` → `nodes.gravityWell` | #603; `GraphService#readSceneGraph` | `1` only for a live anchor: not a closed or merged work item, and asserted inside the window | a consumer on an older Brain reads today's values | the method's JSDoc | the unit arms below and the installed receipt |
+| `strategicAnchorWindowMs` (memory-core config, `NEO_GRAPH_STRATEGIC_ANCHOR_WINDOW_MS`) | ADR 0019 §5.2 | a declarative leaf, 30 days, read at the use site | an unset env takes the default; a non-positive or unparseable one fails the config at boot (`parsePositiveWindowMs`) | the leaf's JSDoc | the unit arms below |
 
 ## Acceptance Criteria
 
 - [ ] AC-1 A unit arm: a node flagged as an anchor whose work item is closed or merged reads `gravityWell: 0` in the scene, and an open one reads `1` (red on `dev` first).
 - [ ] AC-2 A unit arm: an anchor asserted outside the window reads `0`, and a pass that names it again brings it back.
-- [ ] AC-3 The extraction pass no longer keeps the flag unconditionally: the write at `SemanticGraphExtractor.mjs:451` records the assertion time.
+- [ ] AC-3 The extraction pass no longer keeps the flag unconditionally: the write at `SemanticGraphExtractor.mjs:451` records the assertion time. That is the session's own time, never the time a pipeline digested it (REM drains old sessions too), and a later pass never moves it backwards. *(Clarified 2026-11-14 on #1701: "stamps the time" in The Fix read either way.)*
 - [ ] AC-4 A measurement before and after on the plane's own graph, in the PR body: how many flagged anchors are closed work items, and how many remain live.
 - [ ] AC-5 JSDoc on the changed methods says what makes an anchor live.
-- [ ] AC-6 (post-merge, installed) The Observatory's Roadmap wells hold no closed issue and no merged pull request; the receipt goes on neomjs/neo-agent-institution#485.
+- [ ] AC-6 `[L4-deferred — operator handoff needed; Residual-Owner neomjs/neo-agent-institution#485]` (post-merge, installed) The Observatory's Roadmap shows at least one live well, and none of its wells is a closed issue or a merged pull request (a read without anchors falls back to density and proves nothing); the receipt goes on neomjs/neo-agent-institution#485.
 
 ## Out of Scope
 
@@ -100,10 +103,21 @@ Own-assignment sweep: 17 open, none overlapping.
 Origin Session ID: f6cff01d-943c-47c0-a030-ceaa02bae7ef
 Retrieval Hint: "gravity_well never cleared, strategic_weight Math.max, Roadmap wells closed tickets"
 
+
+
 ## Timeline
 
 - 2026-11-13T19:30:30Z @neo-opus-vega added the `bug` label
 - 2026-11-13T19:30:30Z @neo-opus-vega added the `ai` label
 - 2026-11-13T19:30:30Z @neo-opus-vega added the `architecture` label
 - 2026-11-13T19:30:30Z @neo-opus-vega added the `agent-os` label
+- 2026-11-14T11:18:47Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-14T11:26:28Z @neo-gemini-maryam cross-referenced by PR #1701
+- 2026-11-14T15:38:43Z @neo-gemini-maryam referenced in commit `c88af07` - "fix(graph): stamp anchor assertions from session time and merge in upsertNode (#1685)"
+- 2026-11-14T16:00:42Z @tobiu referenced in commit `b098f3c` - "feat(graph): bound strategic anchors by work-item state and assertion window (#1685) (#1701)
+
+* feat(graph): bound strategic anchors by work-item state and assertion window (#1685)
+
+* fix(graph): stamp anchor assertions from session time and merge in upsertNode (#1685)"
+- 2026-11-14T16:00:44Z @tobiu closed this issue
 

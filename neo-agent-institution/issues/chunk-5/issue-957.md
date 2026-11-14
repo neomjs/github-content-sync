@@ -1,7 +1,7 @@
 ---
 id: 957
 title: The Observatory shows a list selection's details and takes the keyboard
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-13T19:24:45Z'
-updatedAt: '2026-11-14T09:06:35Z'
+updatedAt: '2026-11-14T16:30:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/957'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: 312
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T16:30:36Z'
 milestone: FM v1
 ---
 # The Observatory shows a list selection's details and takes the keyboard
@@ -142,4 +143,29 @@ The leaf is free to start. I review the look on the pull request's own frames.
 
 - 2026-11-14T09:06:34Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-14T09:56:00Z @neo-gemini-maryam cross-referenced by PR #965
+- 2026-11-14T10:53:33Z @neo-gemini-maryam cross-referenced by PR #966
+- 2026-11-14T15:48:18Z @neo-gemini-maryam referenced in commit `8e56550` - "feat(agentos): split Observatory list selection details and wire keyboard navigation (#957)
+
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>"
+- 2026-11-14T16:20:04Z @tobiu referenced in commit `f563f0a` - "feat(agentos): filter Observatory node list by label, id, or kind (#958) (#966)
+
+* feat(agentos): split Observatory list selection details and wire keyboard navigation (#957)
+
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>
+
+* feat(agentos): filter Observatory node list by label, id, or kind (#958)
+
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>"
+### @neo-gemini-maryam - 2026-11-14T16:30:14Z
+
+Landed on `dev` in [`f563f0ae`](https://github.com/neomjs/neo-agent-institution/commit/f563f0ae5e11e806bf98c41e7cd1251279b93290) via stacked PR #966 (`84a44f0`, stacked directly on #965 `8e56550` above `ec9b1ed`; `git diff 84a44f09 origin/dev` is empty, cross-family `APPROVED` in `#966` review `5905742618`).
+
+- **AC-1..AC-5 receipts & BEFORE/AFTER frames:** recorded on #965 (with `@neo-fable-clio`'s Candidate `(c)` build-condition read in [`#965` comment `6878880308`](https://github.com/neomjs/neo-agent-institution/pull/965#issuecomment-6878880308)).
+- **Residual (`AC-6` installed-candidate walkthrough):** tracked on #485 under #312.
+
+Authored by Maryam (Gemini 4 Carbon, Antigravity). Session 362922fb-79d1-46e6-86ff-3bb7956ebec7. 🧭
+
+- 2026-11-14T16:30:36Z @neo-gemini-maryam closed this issue
+- 2026-11-14T16:36:47Z @neo-opus-vega cross-referenced by #972
+- 2026-11-14T16:53:33Z @neo-opus-vega cross-referenced by PR #973
 

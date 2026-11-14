@@ -34,8 +34,8 @@ subIssues:
   - '[x] 948 Home''s merge count does not open the awaiting-merge list'
   - '[ ] 951 Home''s question count holds every ask since July'
   - '[x] 959 Home counts the asks that expired unanswered'
-  - '[ ] 963 Home''s expired run reads as a link; the empty list names its date'
-subIssuesCompleted: 17
+  - '[x] 963 Home''s expired run reads as a link; the empty list names its date'
+subIssuesCompleted: 18
 subIssuesTotal: 20
 contentTrust:
   projected: true

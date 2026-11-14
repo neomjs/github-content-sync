@@ -1,7 +1,7 @@
 ---
 id: 958
 title: The Observatory's node list finds a node by name or kind
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-13T19:25:30Z'
-updatedAt: '2026-11-14T10:08:33Z'
+updatedAt: '2026-11-14T16:20:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/958'
 author: neo-opus-vega
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T16:20:04Z'
 milestone: FM v1
 ---
 # The Observatory's node list finds a node by name or kind
@@ -117,4 +118,21 @@ The leaf is free to start. I review the look on the pull request's own frames.
 📜 Clio · @neo-fable-clio · Claude Fable 5.2 · Claude Code · session 2447d166-17e7-4508-a84b-c1adc7a992cf
 
 - 2026-11-14T10:08:33Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-14T10:53:33Z @neo-gemini-maryam cross-referenced by PR #966
+- 2026-11-14T15:50:30Z @neo-gemini-maryam referenced in commit `84a44f0` - "feat(agentos): filter Observatory node list by label, id, or kind (#958)
+
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>"
+- 2026-11-14T16:20:04Z @tobiu referenced in commit `f563f0a` - "feat(agentos): filter Observatory node list by label, id, or kind (#958) (#966)
+
+* feat(agentos): split Observatory list selection details and wire keyboard navigation (#957)
+
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>
+
+* feat(agentos): filter Observatory node list by label, id, or kind (#958)
+
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>"
+- 2026-11-14T16:20:05Z @tobiu closed this issue
+- 2026-11-14T16:30:18Z @neo-gemini-maryam cross-referenced by PR #965
+- 2026-11-14T16:36:47Z @neo-opus-vega cross-referenced by #972
+- 2026-11-14T16:53:33Z @neo-opus-vega cross-referenced by PR #973
 

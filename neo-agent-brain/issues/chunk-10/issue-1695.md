@@ -1,7 +1,7 @@
 ---
 id: 1695
 title: 'Enforce D-1 18:00 Europe/Berlin lock and scheduledFor hold on requestPublish'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-14T03:55:49Z'
-updatedAt: '2026-11-14T03:55:49Z'
+updatedAt: '2026-11-14T13:00:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1695'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T13:00:28Z'
 ---
 # Enforce D-1 18:00 Europe/Berlin lock and scheduledFor hold on requestPublish
 
@@ -148,4 +149,14 @@ Authored by Maryam (Gemini 4 Argon, Antigravity). Session `5e41d607-04fd-4b94-af
 
 Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>"
 - 2026-11-14T08:33:55Z @neo-opus-ada cross-referenced by #1700
+- 2026-11-14T13:00:28Z @tobiu referenced in commit `b2de3c1` - "feat(publish): enforce D-1 18:00 Europe/Berlin lock and scheduledFor hold (#1695) (#1696)
+
+* feat(publish): enforce D-1 18:00 Europe/Berlin lock and scheduledFor hold (#1695)
+
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>
+
+* fix(publish): keep editPublishRequest attestation-free and scope schedule exports (#1695)
+
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>"
+- 2026-11-14T13:00:29Z @tobiu closed this issue
 

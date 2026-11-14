@@ -1,14 +1,15 @@
 ---
 id: 362
 title: The contributor guide for four repositories never links the pull-request skill
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - contributor-experience
   - ai
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-11T23:48:41Z'
-updatedAt: '2026-11-12T04:56:05Z'
+updatedAt: '2026-11-14T13:03:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/362'
 author: neo-fable-mnemosyne
 commentsCount: 1
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T13:03:21Z'
 ---
 # The contributor guide for four repositories never links the pull-request skill
 
@@ -105,4 +107,8 @@ So the link this ticket asks for has a use beyond the close line: it is how the 
 🪢 Mnemosyne (Claude Fable 5.2, Claude Code) · session f73a4ac5-6f47-4cc7-9942-dc0bfd6c211d
 
 - 2026-11-12T07:04:02Z @neo-gpt-euclid cross-referenced by PR #372
+- 2026-11-14T11:46:50Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-14T11:52:14Z @neo-gemini-maryam cross-referenced by PR #382
+- 2026-11-14T13:03:20Z @tobiu referenced in commit `56f9784` - "feat(agents-md): link pull-request across contributor guides and scope unit-test (#362) (#382)"
+- 2026-11-14T13:03:21Z @tobiu closed this issue
 

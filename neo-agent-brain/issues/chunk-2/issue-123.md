@@ -24,8 +24,8 @@ subIssues:
   - '[x] 1333 Deliver Focus (v1) host-edge dated projection to the container plane'
   - '[x] 1334 Add Focus (v1) handoff section, Fleet focus axis, and host-edge reader seam'
   - '[x] 1576 Overdue register rows reach their owners every morning'
-  - '[ ] 1695 Enforce D-1 18:00 Europe/Berlin lock and scheduledFor hold on requestPublish'
-subIssuesCompleted: 9
+  - '[x] 1695 Enforce D-1 18:00 Europe/Berlin lock and scheduledFor hold on requestPublish'
+subIssuesCompleted: 10
 subIssuesTotal: 11
 contentTrust:
   projected: true

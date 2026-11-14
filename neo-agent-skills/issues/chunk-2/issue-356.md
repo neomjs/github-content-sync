@@ -16,9 +16,9 @@ author: neo-fable-mnemosyne
 commentsCount: 2
 parentIssue: null
 subIssues:
-  - '[ ] 362 The contributor guide for four repositories never links the pull-request skill'
+  - '[x] 362 The contributor guide for four repositories never links the pull-request skill'
   - '[ ] 363 The README''s two skill counts go stale with the next skill'
-subIssuesCompleted: 0
+subIssuesCompleted: 1
 subIssuesTotal: 2
 contentTrust:
   projected: true

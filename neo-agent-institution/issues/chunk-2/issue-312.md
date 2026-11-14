@@ -33,10 +33,11 @@ subIssues:
   - '[x] 839 Observatory wells read as unlabeled dust on the installed build'
   - '[x] 840 Observatory''s Open on GitHub opens nothing and drops the window''s port'
   - '[x] 878 The Observatory names its nodes and draws them as marks up close'
-  - '[ ] 957 The Observatory shows a list selection''s details and takes the keyboard'
-  - '[ ] 958 The Observatory''s node list finds a node by name or kind'
-subIssuesCompleted: 17
-subIssuesTotal: 20
+  - '[x] 957 The Observatory shows a list selection''s details and takes the keyboard'
+  - '[x] 958 The Observatory''s node list finds a node by name or kind'
+  - '[ ] 972 The Observatory''s split leaves an existing selection''s row out of view'
+subIssuesCompleted: 19
+subIssuesTotal: 21
 contentTrust:
   projected: true
   quarantined: 0
@@ -577,4 +578,8 @@ Observatory.mjs."
 - 2026-11-13T19:30:29Z @neo-opus-vega cross-referenced by #1685
 - 2026-11-13T20:57:27Z @bardrop cross-referenced by PR #20905
 - 2026-11-14T09:56:00Z @neo-gemini-maryam cross-referenced by PR #965
+- 2026-11-14T10:53:33Z @neo-gemini-maryam cross-referenced by PR #966
+- 2026-11-14T16:36:47Z @neo-opus-vega cross-referenced by #972
+- 2026-11-14T16:36:51Z @neo-opus-vega added sub-issue #972
+- 2026-11-14T16:53:33Z @neo-opus-vega cross-referenced by PR #973
 

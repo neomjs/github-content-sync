@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-21T14:55:52Z'
-updatedAt: '2026-09-21T15:03:22Z'
+updatedAt: '2026-11-14T14:08:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/102'
 author: neo-opus-ada
 commentsCount: 0
@@ -27,88 +27,64 @@ blocking: []
 ---
 # The cross-family test has no answer for a disclosed external AI author
 
-> **Corrected 2026-09-21, after @neo-opus-grace read the record rather than my summary of it.** The first
-> version of this body claimed an external account "reads as `unknown` → differing". **That was wrong**, and
-> it mattered: `unknown` is a *recorded* value, not an absent one. The correction makes the case cleaner, not
-> murkier — the difference test is **undefined** here, never "satisfied". Urgency also corrected below.
+> **Resolved 2026-11-14 by operator ruling** (to `@neo-opus-ada`): *"Let us assume that currently all external PRs fully get created by LLMs (even if sometimes contributors claim otherwise). In this case, a claude PR should get reviewed by a Gemini or GPT peer. If no model is named, anyone can review it. If FM points a peer at a same-lab PR, it should get offered to a peer from a different lab."* This decides the open question below, against the recommendation this body first made (see Avoided Traps). neomjs/neo-agent-brain#1702 gives the Fleet rotation and the merge-readiness verdict the same rule; this ticket is the seat-side half.
 
 ## Context
 
-Live instance, 2026-09-21. External contributor @wofiporia opened [neomjs/neo#19032](https://github.com/neomjs/neo/pull/19032) and ended the body: *"Disclosure: prepared by an AI coding agent (Claude / Claude Code)."* They repeated it on [neomjs/neo#19026](https://github.com/neomjs/neo/issues/19026#issuecomment-5762125857) while claiming the next slice. **@neo-opus-grace — a Claude seat — holds that review.**
+Opened 2026-09-21 on a live instance. @wofiporia's [neomjs/neo#19032](https://github.com/neomjs/neo/pull/19032) disclosed *"prepared by an AI coding agent (Claude / Claude Code)"*, and a Claude seat held its review. The mandate gave no answer for an outside author.
 
-**No gate has been crossed, and this ticket is not urgent in that way.** Her review is `CHANGES_REQUESTED`, and `pull-request-workflow.md:189` binds *"No PR may be merged without at least one cross-family **Approved** review"*. A request for changes approves nothing. The question becomes live for whoever eventually **approves**, which means this can be decided properly rather than under a PR's clock.
-
-What is time-bound is the class, not the instance: Hacktoberfest opens 2026-10-01, `neomjs/neo#18985` exists to bring external contributors in, and in 2026 many are AI-assisted and will say so.
+Measured 2026-11-14 over the 64 outside PRs opened across `neomjs` from 11-01 to 11-14: 27 name a model family (19 Claude, 6 GPT, 2 DeepSeek) and 37 name none. 8 of the 17 merged Claude-named PRs carry only a Claude approval. The method and the list are on neomjs/neo-agent-brain#1702.
 
 ## The Problem
 
-`pull-request/references/cross-family-mandate.md` is deliberately a **difference test on `modelFamily`**, not a list of families — the file explains why an enumeration rots. For an external contributor that test does not return the wrong answer. **It returns no answer at all.**
-
-`pull-request-workflow.md:196` closes the resolution path: *"Author family is resolved from the §5 Social Name, with `author.login` fallback."* An external contributor has neither a Social Name nor a roster row, so resolution yields nothing, and *"the record is the only citation"* leaves the test **undefined** rather than failed or satisfied.
-
-**The `unknown` clause never reaches this case**, and this is the correction that matters. The mandate says *"`unknown` is an accurate value, not a gap to fill"* — a seat recorded `unknown` has been **assessed** and found undisclosed by design. An external contributor has not been assessed at all. Absence of a row is not the value `unknown`; reading it as one silently converts "we never asked" into "we asked and it differs".
-
-Measured against the reviewed tree, `git show origin/dev:ai/graph/identityRoots.mjs` in `neo-agent-brain`, with a positive control so an empty result cannot pass for an absence:
-
-```
-wofiporia       0 rows     <- the subject
-neo-opus-grace  3 rows     <- control passes, so 0 means absent, not "grep failed"
-```
-
-So the letter is **silent**, not contradictory. The only way to make it speak is to treat a self-disclosure as a citation — and the same file forbids that move for handles, codenames and rumours. A disclosure is better evidence than those three about what *produced* the code, and still not a record of an *identity* the roster holds.
-
-That silence is where the rationale has to decide, and nothing currently written decides it. Three maintainers can read this three ways today; I started down a fourth before reading the file, and my first version of this body got the `unknown` half wrong.
+`pull-request/references/cross-family-mandate.md` is a difference test on `modelFamily`, and `pull-request-workflow.md` resolves the author's family *"from the §5 Social Name, with `author.login` fallback"*. An outside author has neither, so the test returns no answer. That is not `unknown`, which is a recorded value for an assessed seat; it is no answer at all. With no rule to check on arrival, seats reviewed and approved same-lab outside PRs, and the census shows how often.
 
 ## The Architectural Reality
 
-- `.agents/skills` in a consumer repo is a symlink into `node_modules/neo-agent-skills/.agents/skills`, so this file governs every repo at once and cannot be patched locally.
-- The mandate's machinery keys on a roster row. There is no row for a drive-by account, and there should not be one — we are not going to profile contributors.
-- Adjacent operator directives live only in agent memory, not here: *Claude reviews ⇒ GPT only* (2026-08-14, because Kimi seats are rate-limited) and *the seat must be live* (phantom coverage). Those govern **seating a reviewer now**; the mandate's *"liveness is not consulted"* governs **whether a completed approval counts**. Two different questions — I nearly "corrected" a correct memory by conflating them. `#85` is the same shape for a different rule.
-- The check must fire on **arrival** of a review request, not only on `--add-reviewer`. Accepting an illegal seat is worse than creating one, because it attaches a real review to a forbidden pairing.
+- `.agents/skills` in a consumer repo is a symlink into `node_modules/neo-agent-skills/.agents/skills`, so the mandate governs every repo at once.
+- The check has to fire when a review request or a Fleet triage wake arrives, not only when a seat is requested. It must be answerable from `gh pr view N --json body,commits`, with no roster lookup.
+
+Design authority: `cross-family-mandate.md`'s difference test and `pull-request-workflow.md`'s author-family line, quoted above. The operator ruling extends them to outside authors.
 
 ## The Fix
 
-State the external-author case in `cross-family-mandate.md`, in the file's own difference-test idiom rather than as a new list.
+In `pull-request/references/cross-family-mandate.md`, in the file's difference-test idiom:
 
-**Recommendation, for the ticket to argue with rather than adopt silently:** an external contribution is **family-less for the mandate's purpose**, and a voluntary authorship disclosure does **not** reduce reviewer eligibility.
-
-1. **The correlation the mandate guards is a closed loop of our own making.** Our seats share `AGENTS.md`, the skills corpus, Memory Core and a prompt substrate; that shared substrate is what makes two Claude seats correlate. An external contributor's Claude instance shares none of it. **The blind spot is manufactured by the substrate, not by the vendor** — @neo-opus-grace's phrasing, and it is the sentence the rule should turn on.
-2. **A rule that punishes disclosure produces less disclosure, not less correlation.** If saying "I used Claude Code" costs a contributor their reviewer pool and stalls their PR, the rational move is silence — and then we have the identical correlation with strictly less information. Ten days from Hacktoberfest the realistic failure mode is not a bad merge; it is contributors quietly dropping the disclosure line.
-
-If the project prefers that disclosed AI authorship bind, that is coherent — but it then needs a stated reviewer path, or a disclosing contributor becomes structurally unreviewable, which is already on record as a real failure for Claude PRs during a GPT-dark window.
+1. An outside author's family is the family its PR names. A name counts in a disclosure line in the body (`Authored by …`, `Generated with …`, `Prepared with …`, an `AI assistance` line) or in a `Co-Authored-By` trailer on any commit. When a PR names several families, all of them count. A harness alone (Cursor, Copilot, OpenCode) names none, and a path or topic mention is not a disclosure.
+2. If the PR names a family, the approval needs a seat of a family it does not name. A seat of a named family that is handed the PR offers it to a seat of another lab.
+3. If the PR names none, any seat may review and approve.
+4. `pull-request-workflow.md`'s author-family line points at this clause for outside authors. `pr-review`'s arrival check reads the body and the commit trailers.
 
 ## Acceptance Criteria
 
-- [ ] AC-1 — `cross-family-mandate.md` states what the difference test returns when the author has no roster row, and says explicitly that this is **undefined** rather than `unknown`, so absence is never read as an assessed value.
-- [ ] AC-2 — It says whether a voluntary authorship disclosure counts as "the record", so the existing *handle / codename / rumour* ban is not extended to it by analogy, nor silently overridden.
-- [ ] AC-3 — Whichever way it resolves, the reviewer path for a disclosing external contributor is stated, so no PR can become structurally unreviewable by its author's honesty.
-- [ ] AC-4 — Applicable on **arrival** of a review request, not only when seating one: answerable from `gh pr view N --json author` plus the body, with no roster lookup.
-- [ ] AC-5 — Net loaded-bytes accounted per the accretion rule: this adds a clause to an existing file, and the change states what it retires or why nothing does.
+- [ ] AC-1: `cross-family-mandate.md` states the outside-author rule in the difference-test idiom, without a family list: a named family needs an approver from another family; nothing named means any seat.
+- [ ] AC-2: It defines a disclosure: body disclosure lines and `Co-Authored-By` trailers on any commit. Harness-only names and path or topic mentions do not count.
+- [ ] AC-3: It states the reviewer path: a same-lab seat that receives such a PR hands it to a seat of another lab, so no PR waits on a seat that cannot approve it.
+- [ ] AC-4: `pr-review`'s arrival check covers outside PRs, answerable from `gh pr view N --json body,commits` with no roster lookup.
+- [ ] AC-5: Net loaded bytes are accounted per the accretion rule. The clause replaces the undefined case; it does not add a parallel rule.
 
 ## Out of Scope
 
-- The seat-to-seat rule. Two of our own seats reviewing each other is settled and this does not reopen it.
-- The operator's *Claude ⇒ GPT-only* routing directive and the seat-liveness requirement — real, adjacent, separate decisions. `#85`'s "lives only in agent memories" gap covers that.
-- Profiling or detecting undisclosed AI authorship. Out of scope permanently, not just here.
+- The Fleet rotation and the merge-readiness verdict: neomjs/neo-agent-brain#1702.
+- Seat-to-seat review: settled, not reopened.
+- Detecting undisclosed AI authorship: permanently out of scope. An outside PR that names nothing is open to any seat.
 
 ## Avoided Traps
 
-- **Reading absence as `unknown`.** The first version of this body did exactly that. It converts "never assessed" into "assessed and differing", which manufactures a permission out of a gap. Caught by @neo-opus-grace.
-- **Treating a self-disclosure as a citation.** It is better evidence than a handle or a rumour about what produced the code, and still not a record of a roster identity. Promoting it would quietly repeal the inference ban for the one case where the author volunteered the answer.
-- **A rule that punishes honesty.** The cost lands on disclosure, not on correlation, so the rule would buy nothing and lose the signal.
-- **Enumerating families to make it concrete.** The mandate names this as the exact failure mode it exists to prevent; the fix stays a difference test.
-- **Reporting an absence without a control.** The roster read above carries one. @neo-opus-grace's first attempt piped `grep` into `head`, so the `||` tested `head`'s exit status and would have reported ABSENT for any input; she redid it. An absence claim needs the instrument proved able to find a present value.
+- **The first recommendation here** treated outside contributions as family-less. It argued that the correlation the mandate guards comes from our shared substrate, and that a binding rule punishes disclosure. The ruling rejects it: outside PRs are presumed model-written, and 8 of 17 merged Claude-named PRs got a Claude-only approval while this question stayed open.
+- **Reading absence as `unknown`:** that turns "never assessed" into "assessed and differing" (caught by @neo-opus-grace, 2026-09-21).
+- **Bare name matching:** `.gemini/` paths and topic sentences name no author (neo `#20789`, `#20798`).
+- **Enumerating families:** the mandate stays a difference test.
 
 ## Decision Record impact
 
-`none` — clarifies an existing rule's scope rather than amending an ADR.
+`none`: clarifies an existing rule's scope rather than amending an ADR.
 
 ## Related
 
-- [neomjs/neo#19032](https://github.com/neomjs/neo/pull/19032) — the live instance, `CHANGES_REQUESTED`, no gate crossed
-- [neomjs/neo#19026](https://github.com/neomjs/neo/issues/19026), [neomjs/neo#19042](https://github.com/neomjs/neo/issues/19042) — the contributor's lane
-- [neomjs/neo#18985](https://github.com/neomjs/neo/issues/18985) — the contributor door, 2026-10-01
-- `#85` — the same shape for a different rule: authority living only in agent memory
+- neomjs/neo-agent-brain#1702: the Fleet and merge-readiness half of the same ruling.
+- [neomjs/neo#19032](https://github.com/neomjs/neo/pull/19032): the first instance.
+- `#85`: the same shape for a different rule, authority living only in agent memory.
 
 ## Sweeps
 
@@ -120,7 +96,7 @@ Origin Session ID: c54728f6-de9d-46a5-921f-aef7e79b91c8
 
 Retrieval Hint: `query_raw_memories("external contributor discloses Claude authorship cross-family reviewer eligibility")`
 
-Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code. Corrected against @neo-opus-grace's source read of `identityRoots.mjs` and `pull-request-workflow.md:189,196`.
+Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code. Rewritten 2026-11-14 (Claude Opus 5.5) to carry the operator's ruling.
 
 
 ## Timeline
@@ -131,4 +107,13 @@ Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code. C
 - 2026-09-21T14:55:54Z @neo-opus-ada added the `ai` label
 - 2026-09-21T14:55:54Z @neo-opus-ada added the `architecture` label
 - 2026-09-21T16:42:36Z @neo-opus-grace cross-referenced by PR #19032
+- 2026-09-23T11:42:05Z @neo-opus-ada cross-referenced by #427
+- 2026-09-23T13:47:39Z @neo-opus-ada cross-referenced by #109
+- 2026-10-10T22:31:14Z @neo-opus-ada cross-referenced by #166
+- 2026-10-19T12:52:54Z @neo-opus-ada cross-referenced by #194
+- 2026-10-21T22:52:39Z @neo-gpt-emmy cross-referenced by #199
+- 2026-10-29T00:10:58Z @neo-opus-ada cross-referenced by #234
+- 2026-11-07T06:58:18Z @neo-gpt-euclid cross-referenced by #310
+- 2026-11-12T01:29:21Z @neo-opus-ada cross-referenced by #366
+- 2026-11-12T01:40:42Z @neo-opus-ada cross-referenced by #367
 

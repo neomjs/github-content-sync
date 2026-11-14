@@ -1,7 +1,7 @@
 ---
 id: 842
 title: 'The Fleet Manager rotates one seat''s session on request, no other harness touched'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-30T21:34:28Z'
-updatedAt: '2026-11-14T09:45:33Z'
+updatedAt: '2026-11-14T13:02:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/842'
 author: neo-opus-vega
 commentsCount: 12
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy:
   - '[x] 1692 The Fleet reads each seat''s session rotations for its card and journal'
 blocking: []
+closedAt: '2026-11-14T13:02:10Z'
 ---
 # The Fleet Manager rotates one seat's session on request, no other harness touched
 
@@ -373,4 +374,61 @@ The wording also carries the operator's "opens" → "names" ruling (6867068045),
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-14T13:02:10Z @tobiu referenced in commit `5930984` - "feat(agentos): the card and journal show the seat's rotation (#842) (#962)
+
+* feat(agentos): the card and journal show the seat's rotation (#842)
+
+The roster card gains one line for the seat's session rotation, and the
+journal words the session-rotation events Brain #1694 emits. Both read
+AgentOS.util.SessionRotation: completed names the fresh session, requested
+says the rotation is in flight, refused gives the plane's reason and the
+next chance, incomplete is reported with no action. A quiet seat gets no line.
+
+The roster row carries no rotation, so the cockpit writes each seat's
+fleetWakeRoutes seats[].rotation onto its record. The read runs on the first
+activity page and on a session-rotation event the store has not seen; the
+roster's first admission re-applies a held answer without a wire call.
+
+* fix(agentos): the cards' rotation read leaves the Wake pane cold (#842)
+
+The automatic read went through loadWakeRoutes, which also fills the Wake
+pane, where reading the routes is the operator's explicit first act; the
+pane-wake-routes golden caught it. loadRotations reads for the cards only,
+keeps its own snapshot and fence, and swallows an unwired or failed read.
+
+* test(agentos): stamp the visual baselines after the rotation goldens (#842)
+
+* chore(agentos): move the rotation read into SessionRotation (#842)
+
+The read and its record projection pushed cockpit/Controller.mjs to 1053
+lines, over the 1000-line apps bar that checkAppFileSizes holds. They now
+live beside the words they serve: SessionRotation.apply, load (the fenced,
+pane-free read; per-owner state in a WeakMap) and reapply. The Controller
+keeps one call in loadWakeRoutes and ends at 995 lines.
+
+* test(agentos): re-stamp the visual baselines after the move (#842)
+
+* fix(agentos): the kind registry knows session-rotation events (#842)
+
+Brain #1694 added session-rotation to FLEET_COCKPIT_EVENT_TYPES, and the
+registry's coverage arm derives from that list, so every Institution run
+against Brain dev failed it. The kind joins lifecycle-request's review
+family (a seat-lifecycle event) under the label "rotation".
+
+* test(agentos): re-stamp the visual baselines after the kind entry (#842)
+
+* fix(agentos): the rotation read belongs to the cockpit's profile (#842)
+
+SessionRotation holds its read on the owner (ReadingSurfacesController#rotationRead) instead of a module WeakMap. A read, the Wake pane's included, is admitted only while its profile is the bridge's, a held answer re-applies only to its own profile, and TargetBinding#retireRoster retires it. Every roster admission re-applies it, so a seat joining a wired roster takes its rotation; an unchanged rotation writes nothing. The journal's rotation row carries the full ids and the receipt as its title.
+
+* build(deps): pin neo-agent-brain at the rotation read's merge (#842)
+
+fef1702ada carries session-rotation in FLEET_COCKPIT_EVENT_TYPES and FLEET_COCKPIT_SOURCES. Under the old pin, FleetAdmission.partialActivityEvents drops a partial activity page that holds a rotation event.
+
+* test(agentos): profile switch, joiner and journal-title arms (#842)
+
+* test(agentos): re-stamp the visual baselines after the repairs (#842)"
+- 2026-11-14T13:02:11Z @tobiu closed this issue
+- 2026-11-14T16:27:09Z @neo-opus-ada cross-referenced by #1710
+- 2026-11-14T17:03:30Z @neo-opus-ada cross-referenced by #1712
 
