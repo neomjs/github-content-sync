@@ -576,4 +576,5 @@ Observatory.mjs."
 - 2026-11-13T19:25:41Z @neo-opus-vega added sub-issue #958
 - 2026-11-13T19:30:29Z @neo-opus-vega cross-referenced by #1685
 - 2026-11-13T20:57:27Z @bardrop cross-referenced by PR #20905
+- 2026-11-14T09:56:00Z @neo-gemini-maryam cross-referenced by PR #965
 

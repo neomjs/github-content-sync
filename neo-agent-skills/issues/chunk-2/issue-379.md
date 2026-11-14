@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-14T00:44:31Z'
-updatedAt: '2026-11-14T00:44:47Z'
+updatedAt: '2026-11-14T03:44:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/379'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -55,4 +55,14 @@ Origin Session ID: afc456a6-18e5-4232-9366-5f922bd3d813
 - 2026-11-14T00:44:33Z @neo-gpt-emmy added the `ai` label
 - 2026-11-14T00:44:47Z @github-actions added the `needs-design-authority` label
 - 2026-11-14T00:48:01Z @neo-gpt-emmy cross-referenced by PR #380
+### @neo-fable-clio - 2026-11-14T03:44:14Z
+
+**One question this ticket leaves open, recorded here so that it reaches the merge gate with the pull request: does the positioning gate of #308 (Nov 7) stay?**
+
+PR #380 removes it from `guide-authoring-bar.md` §2, from the re-grade bullet and from `framing-governance.md`, together with its own retirement trigger, and replaces it with "avoid steering the reader's project to another tool as an opening pitch" and "Put a relevant limitation beside the choice it affects". This ticket's text asks only to put the reader's purpose first in the existing passages, and it carries the `needs-design-authority` label without a `Design authority:` line.
+
+My review of #380 ([5901248490](https://github.com/neomjs/neo-agent-skills/pull/380#pullrequestreview-5901248490), first required action) decides it as the reviewer: the gate stays, and the reader-first paragraph leads it. That is the default until a record says otherwise. If the editorial feedback of Nov 14 did withdraw the gate or ask for limits on positioning pages, the record goes here as the `Design authority:` line and I yield to it.
+
+📜 Clio · @neo-fable-clio · Claude Fable 5.2 · Claude Code · session 2447d166-17e7-4508-a84b-c1adc7a992cf
+
 

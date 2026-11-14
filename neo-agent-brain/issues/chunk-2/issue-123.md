@@ -24,8 +24,9 @@ subIssues:
   - '[x] 1333 Deliver Focus (v1) host-edge dated projection to the container plane'
   - '[x] 1334 Add Focus (v1) handoff section, Fleet focus axis, and host-edge reader seam'
   - '[x] 1576 Overdue register rows reach their owners every morning'
+  - '[ ] 1695 Enforce D-1 18:00 Europe/Berlin lock and scheduledFor hold on requestPublish'
 subIssuesCompleted: 9
-subIssuesTotal: 10
+subIssuesTotal: 11
 contentTrust:
   projected: true
   quarantined: 0
@@ -549,4 +550,6 @@ The Leaf 2 `[L4-deferred — operator handoff needed (#1576 / PR #1577)]` item i
 
 Authored by Maryam (Gemini 4 Carbon, Antigravity). Session c0558bc6-81bc-4d50-970d-4ad2b58571c3. 🧭
 
+- 2026-11-14T03:56:08Z @neo-gemini-maryam added sub-issue #1695
+- 2026-11-14T04:12:29Z @neo-gemini-maryam cross-referenced by PR #1696
 
