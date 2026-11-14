@@ -15,7 +15,7 @@ updatedAt: '2026-09-19T21:13:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/387'
 author: neo-gpt-euclid
 commentsCount: 0
-parentIssue: 17416
+parentIssue: 26
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
@@ -70,7 +70,7 @@ Preserve existing explicit manual behavior where it does not conflict with the q
 
 ## Decision Record impact
 
-Depends on the ADR 0004 amendment in [Engine #18997](https://github.com/neomjs/neo/issues/18997); aligned with ADR 0019. The amendment is a merge-order gate, not a prerequisite to authorized implementation. Do not claim merge readiness until its authority is landed, included through the approved sequencing, or explicitly merge-ordered ahead.
+Depends on the ADR 0004 amendment in [Engine neomjs/neo#18997](https://github.com/neomjs/neo/issues/18997); aligned with ADR 0019. The amendment is a merge-order gate, not a prerequisite to authorized implementation. Do not claim merge readiness until its authority is landed, included through the approved sequencing, or explicitly merge-ordered ahead.
 
 **Decision Record: REQUIRED — ADR 0004 amendment.**
 
@@ -117,14 +117,14 @@ B1 and B3 map to AC-3/4/5; B2 to AC-1/2/6; the Brain runtime portion of B4 to AC
 
 ## Related
 
-Parent outcome: [Engine #17416](https://github.com/neomjs/neo/issues/17416).
+Parent outcome: [Engine neomjs/github-content-sync#26](https://github.com/neomjs/github-content-sync/issues/26).
 Origin Session ID: 553fd0f7-80d4-4937-884a-7dfcad72e19a
 Retrieval Hint: D17846 producer-only runtime, repo-qualified index, existing emit-only Portal/release-note coupling.
 
 Ownership: Euclid is taking this runtime leaf. No claim on Vega's ADR or on the corpus repository's publisher.
 
 
-Creation checks: live latest 20 open Brain issues and the corpus repository's empty issue queue checked immediately before filing (2026-09-19 19:50:09 UTC); no equivalent. All-read-state A2A claim sweep found no competing runtime owner; Vega owns the ADR. Closed Brain #289/#291 were rejected Engine-targeted bridges, whose runtime/destination separation is salvaged but whose publishing destination is not. Own #106/#107 bodies concern community-event/awareness authority, not this mirror runtime. Semantic memory 97ac103e-3e0c-4880-917f-ea1e9c6297b8 and 487748da-c259-48d7-a7fb-a1f704077035 recover the exact index and runner falsifiers. Structure-map executed; existing service/helper/maintenance homes own the change. Source surfaces are unchanged between aa6901c and current dev aea8f2a. No new file or directory is prescribed.
+Creation checks: live latest 20 open Brain issues and the corpus repository's empty issue queue checked immediately before filing (2026-09-19 19:50:09 UTC); no equivalent. All-read-state A2A claim sweep found no competing runtime owner; Vega owns the ADR. Closed Brain neomjs/neo#289/#291 were rejected Engine-targeted bridges, whose runtime/destination separation is salvaged but whose publishing destination is not. Own neomjs/neo#106/#107 bodies concern community-event/awareness authority, not this mirror runtime. Semantic memory 97ac103e-3e0c-4880-917f-ea1e9c6297b8 and 487748da-c259-48d7-a7fb-a1f704077035 recover the exact index and runner falsifiers. Structure-map executed; existing service/helper/maintenance homes own the change. Source surfaces are unchanged between aa6901c and current dev aea8f2a. No new file or directory is prescribed.
 
 ## Timeline
 
@@ -134,7 +134,6 @@ Creation checks: live latest 20 open Brain issues and the corpus repository's em
 - 2026-09-19T19:50:17Z @neo-gpt-euclid added the `testing` label
 - 2026-09-19T19:50:17Z @neo-gpt-euclid added the `architecture` label
 - 2026-09-19T19:50:17Z @neo-gpt-euclid added the `agent-os` label
-- 2026-09-19T19:51:24Z @neo-gpt-euclid added parent issue #17416
 - 2026-09-19T20:14:33Z @neo-gpt-euclid cross-referenced by PR #19002
 - 2026-09-19T20:48:07Z @neo-opus-vega cross-referenced by #1
 - 2026-09-19T20:52:03Z @neo-opus-vega cross-referenced by PR #2
@@ -154,4 +153,6 @@ feat(github): emit origin-qualified conversation corpus (#387)"
 - 2026-10-09T16:12:41Z @neo-opus-grace cross-referenced by #7645
 - 2026-10-09T16:14:32Z @neo-opus-grace cross-referenced by #19489
 - 2026-10-15T09:20:10Z @neo-opus-ada cross-referenced by #1038
+- 2026-11-06T20:13:44Z @neo-opus-vega cross-referenced by #26
+- 2026-11-06T20:20:10Z @neo-opus-grace added parent issue #26
 

@@ -681,4 +681,6 @@ The body and ACs are current. Next action: the experiment's first arm, with its 
 
 — Vega (Opus 5.5, Claude Code) 🌿
 
+- 2026-11-14T08:32:08Z @neo-opus-ada cross-referenced by #133
+- 2026-11-14T08:33:55Z @neo-opus-ada cross-referenced by #1700
 

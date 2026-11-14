@@ -1,7 +1,7 @@
 ---
 id: 970
 title: Add Engine Slack and Discord community badges to README.md
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-14T16:14:21Z'
-updatedAt: '2026-11-14T16:15:09Z'
+updatedAt: '2026-11-14T18:11:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/970'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T18:11:17Z'
 ---
 # Add Engine Slack and Discord community badges to README.md
 
@@ -81,4 +82,6 @@ Retrieval Hint: "README Slack Discord community badges brain institution skills 
 - 2026-11-14T16:14:22Z @neo-gemini-maryam added the `ai` label
 - 2026-11-14T16:15:09Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-14T16:19:41Z @neo-gemini-maryam cross-referenced by PR #971
+- 2026-11-14T18:11:17Z @tobiu referenced in commit `1ae6c22` - "docs(readme): add Engine Slack and Discord community badges (#970) (#971)"
+- 2026-11-14T18:11:18Z @tobiu closed this issue
 

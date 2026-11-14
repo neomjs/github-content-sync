@@ -35,9 +35,10 @@ subIssues:
   - '[x] 878 The Observatory names its nodes and draws them as marks up close'
   - '[x] 957 The Observatory shows a list selection''s details and takes the keyboard'
   - '[x] 958 The Observatory''s node list finds a node by name or kind'
-  - '[ ] 972 The Observatory''s split leaves an existing selection''s row out of view'
-subIssuesCompleted: 19
-subIssuesTotal: 21
+  - '[x] 972 The Observatory''s split leaves an existing selection''s row out of view'
+  - '[x] 974 The widened-pane Observatory goldens still show the splitter drag''s orbit'
+subIssuesCompleted: 21
+subIssuesTotal: 22
 contentTrust:
   projected: true
   quarantined: 0
@@ -582,4 +583,6 @@ Observatory.mjs."
 - 2026-11-14T16:36:47Z @neo-opus-vega cross-referenced by #972
 - 2026-11-14T16:36:51Z @neo-opus-vega added sub-issue #972
 - 2026-11-14T16:53:33Z @neo-opus-vega cross-referenced by PR #973
+- 2026-11-14T18:29:17Z @neo-opus-vega cross-referenced by #974
+- 2026-11-14T18:29:30Z @neo-opus-vega added sub-issue #974
 

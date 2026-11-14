@@ -1,7 +1,7 @@
 ---
 id: 1702
 title: An outside PR that names its model gets an approver from another lab
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-14T14:06:00Z'
-updatedAt: '2026-11-14T16:18:11Z'
+updatedAt: '2026-11-14T18:15:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1702'
 author: neo-opus-ada
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T18:15:16Z'
 ---
 # An outside PR that names its model gets an approver from another lab
 
@@ -180,4 +181,36 @@ A trailer on an interior commit was never read, so the PR read as naming no mode
 
 The added commit-message connection is the snapshot's ninth per pull request, not its eighth: round((1 + 50 * 9) / 100) = 5. A live read of this document reports cost 5, against 4 for dev's. The previous document keeps its measured 4."
 - 2026-11-14T16:29:14Z @neo-opus-ada referenced in commit `9d294f2` - "test(fleet): the review-record spec pins the snapshot cost at 5 (#1702)"
+- 2026-11-14T18:15:16Z @tobiu referenced in commit `e44ef99` - "feat(review): an outside PR's approval comes from another lab (#1702) (#1705)
+
+* feat(graph): read the model an outside pull request names (#1702)
+
+Outside pull requests are presumed model-written (operator ruling, 2026-11-14), so the family a PR names decides who may approve it. The reader counts disclosure lines and Co-Authored-By trailers only; a path or a topic sentence names no author, and a harness alone names no family. It is roster-free, so the Fleet's reducer can read it.
+
+* feat(github-workflow): hold an outside PR to the model it names (#1702)
+
+resolveCrossFamilyVerdict compares an outside author's approvals with the families the pull request names; outside is GitHub's authorAssociation, read only when the caller passes it. Merge readiness reads the association and the derived families, never the body. An outside PR that names no model now carries an advisory instead of the blocker that said the mandate does not apply.
+
+* feat(fleet): route an outside PR away from the lab it names (#1702)
+
+Outside rows carry the families their body and first and head commits name. The rotation never hands such a PR to a seat of a named lab while another seat answers, and falls back to the whole roster when none does. A head approval ends its review only from a seat of a known other family; the families come from the presence answer the wake round already reads, so a first pass without them plans and the second pass decides. The snapshot reads one more connection; its formula cost stays 4, and the previous document's hash is kept for the gate's window.
+
+* fix(fleet): the merge list verifies with the wake's families (#1702)
+
+The open-work projection called holderOf without seat families, so an outside PR that names a model and was approved by another lab read as an unverified review there, missing from awaitingMerge, while the wake round sent its merge wake. The projection now takes the families from the pulse's last presence rows, so both readers decide alike. familiesOf moves beside the presence rows it reads, since the wake wiring already imports that module.
+
+* fix(graph): only trailers name a commit's author; model ids count (#1702)
+
+A commit's subject and body describe the change, so they named families an outside author never disclosed. A provider's model id and a versioned name (anthropic/claude-sonnet-4-5, Qwen3-Coder) were masked as paths or missed by the word boundary, reading as 'names no model'.
+
+* fix(review): read every commit of an outside PR, not its two ends (#1702)
+
+A trailer on an interior commit was never read, so the PR read as naming no model and any approval counted. Both reads now take up to 100 commit messages. Past that, the families found are a lower bound: a cross-family pass degrades to no verdict, 'names no model' becomes a blocker, and the Fleet row is partial.
+
+* fix(fleet): price the open-work snapshot at its measured cost, 5 (#1702)
+
+The added commit-message connection is the snapshot's ninth per pull request, not its eighth: round((1 + 50 * 9) / 100) = 5. A live read of this document reports cost 5, against 4 for dev's. The previous document keeps its measured 4.
+
+* test(fleet): the review-record spec pins the snapshot cost at 5 (#1702)"
+- 2026-11-14T18:15:18Z @tobiu closed this issue
 

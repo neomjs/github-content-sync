@@ -1,7 +1,7 @@
 ---
 id: 972
 title: The Observatory's split leaves an existing selection's row out of view
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - accessibility
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-14T16:36:46Z'
-updatedAt: '2026-11-14T16:52:20Z'
+updatedAt: '2026-11-14T17:36:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/972'
 author: neo-opus-vega
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T17:36:13Z'
 milestone: FM v1
 ---
 # The Observatory's split leaves an existing selection's row out of view
@@ -108,4 +109,17 @@ Retrieval Hint: "Observatory split selected row out of view head entry reveal"
 - 2026-11-14T16:36:51Z @neo-opus-vega added parent issue #312
 - 2026-11-14T16:36:57Z @neo-opus-vega added this to the **FM v1** milestone
 - 2026-11-14T16:53:33Z @neo-opus-vega cross-referenced by PR #973
+- 2026-11-14T17:36:13Z @tobiu referenced in commit `91eb584` - "fix(agentos): the split keeps an existing selection's row in view (#972) (#973)
+
+Entering the node list from the Nodes head, or opening Nodes over a
+selection made on the canvas, left the selected row where the list had
+been scrolled: the list's navigator never scrolls, and the reveal ran
+only when the selection changed.
+
+syncSections now reveals when its caller asks (a selection change under
+the split, Nodes opening over a selection), enterFromHead reveals the row
+it focuses, and revealRecord queues its reveals so two never add their
+deltas. A new read asks for none, so it never pulls the list away."
+- 2026-11-14T17:36:15Z @tobiu closed this issue
+- 2026-11-14T18:29:17Z @neo-opus-vega cross-referenced by #974
 

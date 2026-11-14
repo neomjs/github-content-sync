@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-14T17:06:08.011Z",
-  "releasesLastFetched": "2026-11-14T17:06:07.335Z",
+  "lastSync": "2026-11-14T21:29:30.462Z",
+  "releasesLastFetched": "2026-11-14T21:29:29.800Z",
   "issues": {
     "5": {
       "state": "OPEN",
@@ -1821,26 +1821,35 @@
       "commentsTotal": 0
     },
     "385": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-skills/issues/chunk-3/issue-385.md",
-      "closedAt": null,
-      "updatedAt": "2026-11-14T17:05:22Z",
-      "contentHash": "e5129e5474707e10eed810d28ded01e0166742cda3e4baa8e90b4f8c7a52fdd5",
+      "closedAt": "2026-11-14T18:23:53Z",
+      "updatedAt": "2026-11-14T18:23:53Z",
+      "contentHash": "8349c5a1c5412dd625d701096f1e221ffbc652949f0a34d7a7f7589270ad9497",
       "milestone": null,
       "commentsTotal": 1
+    },
+    "387": {
+      "state": "OPEN",
+      "path": "neo-agent-skills/issues/chunk-3/issue-387.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-14T17:54:32Z",
+      "contentHash": "4e6fb06b1a316b646dc813c3b67e4b8dd000fb9ebfefe36d4e9e8840df55a984",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "388": {
+      "state": "OPEN",
+      "path": "neo-agent-skills/issues/chunk-3/issue-388.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-14T20:03:01Z",
+      "contentHash": "efd58c15caa00999b66f9c83d45a7c1b9177058ff9dff185c37a2fad49a9ef2e",
+      "milestone": null,
+      "commentsTotal": 0
     }
   },
   "releases": {},
   "pulls": {
-    "328": {
-      "state": "MERGED",
-      "path": "neo-agent-skills/pulls/chunk-2/pr-328.md",
-      "closedAt": "2026-11-10T00:29:45Z",
-      "mergedAt": "2026-11-10T00:29:45Z",
-      "milestone": null,
-      "updatedAt": "2026-11-10T00:29:48Z",
-      "contentHash": "780c8eb135b208df8a3d6657ba9e3cfaca68ce66a0dafbf5b49c3e880a081425"
-    },
     "330": {
       "state": "MERGED",
       "path": "neo-agent-skills/pulls/chunk-2/pr-330.md",
@@ -2094,13 +2103,22 @@
       "contentHash": "b3b3e47d7ab16712476213fdeabc6200389cf0d43cdaa83d80b8c7effcfab581"
     },
     "386": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-skills/pulls/chunk-2/pr-386.md",
+      "closedAt": "2026-11-14T18:23:51Z",
+      "mergedAt": "2026-11-14T18:23:51Z",
+      "milestone": null,
+      "updatedAt": "2026-11-14T18:23:54Z",
+      "contentHash": "4e1b4dd45e03917db980c44018c6429d57f8c6ff5a8f8d973d44855fa9575670"
+    },
+    "389": {
+      "state": "OPEN",
+      "path": "neo-agent-skills/pulls/chunk-2/pr-389.md",
       "closedAt": null,
       "mergedAt": null,
       "milestone": null,
-      "updatedAt": "2026-11-14T17:05:47Z",
-      "contentHash": "a2b4d12da12b0d06151b5819ca14e30e1331321bd7537f1e706efc3bfc6f03eb"
+      "updatedAt": "2026-11-14T20:08:47Z",
+      "contentHash": "dd11e4e6ec0677763fd3fe0c4fe52dd022ab3e51490dc92aa19eb47f0ddf1ea4"
     }
   },
   "discussions": {}

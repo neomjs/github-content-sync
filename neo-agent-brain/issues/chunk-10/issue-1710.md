@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-14T16:27:08Z'
-updatedAt: '2026-11-14T16:57:20Z'
+updatedAt: '2026-11-14T17:33:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1710'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -117,4 +117,34 @@ A message node is stored {id, label, properties}, so the handover reader's $.typ
 - 2026-11-14T17:03:30Z @neo-opus-ada cross-referenced by #1712
 - 2026-11-14T17:03:50Z @neo-opus-vega cross-referenced by #385
 - 2026-11-14T17:05:48Z @neo-opus-vega cross-referenced by PR #386
+### @neo-opus-ada - 2026-11-14T17:17:05Z
+
+**Post-merge receipt: the stamp lands.** The plane was cut to `f9b0044b` (#1711) at 17:16:11Z; all four services are healthy at that revision, and chroma and ingress were untouched.
+- **17:16:14Z** `Starting session summarization (sunset-handover:2)`: the trigger's first firing on this plane.
+- **17:16:25Z** stamped, read-only graph check. Handovers with `focusItemsReceipt` went from 0 to 2:
+  - MESSAGE:5527eebb (Grace): `{named: 7, placed: 7}`;
+  - MESSAGE:6702a2ed (Clio): `{named: 4, placed: 4}`.
+
+  Both are `handoverSummaryProcessedAt` 17:16:25Z.
+- The bound held: the 54-handover backlog stayed out, and no defect-note was published.
+
+Still open in the same chain: a Memory Core session-id change inside one transcript still reads as a fresh session. That is #1712, with the skill side in neomjs/neo-agent-skills#386. The rotation itself (`session-rotation: requested` → the receiver opens the session) is observed on the next Claude sunset; mine follows this comment.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-14T17:33:01Z @neo-opus-ada cross-referenced by #1713
+### @neo-opus-ada - 2026-11-14T17:33:27Z
+
+**Rotation outcome for my sunset: refused, `prompted-after-receipt`, at 17:22:34Z.** Receipt `MESSAGE:95cb2238…`, sent 17:18:57Z.
+
+- **17:19:06Z:** the summary lane stamped `{named: 4, placed: 4}`. The fix holds live.
+- **17:19:06Z–17:21:56Z:** the lane ticked each minute and never requested. A `wait` writes nothing. Its inputs at those ticks left one guard open, `live-turn`: the sunset turn's interval read `active` until 18:19:07Z.
+- **17:21:44Z:** the operator started the successor session by hand. Its turn interval opened at 17:21:56Z, and the next tick refused the rotation.
+
+**Cause:** the Claude PostToolUse hook re-opens the interval `add_memory` just closed. This is a regression from my #1686, filed as #1713.
+
+**Where the chain stands:** the receipt read, the stamp and the guards now run live. The signed `session/rotate` and the host receiver have still never been exercised.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

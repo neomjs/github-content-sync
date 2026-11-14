@@ -1,7 +1,7 @@
 ---
 id: 385
 title: A successor session leaves no marker for the rotation to read
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-14T17:03:48Z'
-updatedAt: '2026-11-14T17:05:22Z'
+updatedAt: '2026-11-14T18:23:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/385'
 author: neo-opus-vega
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T18:23:53Z'
 ---
 # A successor session leaves no marker for the rotation to read
 
@@ -95,11 +96,54 @@ Retrieval Hint: "successor session marker sunset rotation newer-session memory c
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| A quiet self-DM `[sunset successor]` tagged `sunset-successor`, sent with `inReplyTo` the latest handover | `context-recovery` step 1a (`references/context-recovery-workflow.md`), beside #377's `sunset-rescinded` | Sent once, before any lane resumes, by a session that did not write the latest handover (a rotated or a hand-opened one). As the newest self-DM it ends further rotation for that handover (#377, Fix item 3); neomjs/neo-agent-brain#1383's `complete` keys on it (Ada's lane side, after neomjs/neo-agent-brain#1711) | No marker (a seat on older skills, or a session that skipped recovery): nothing infers a successor, and the lane's operator-prompt guard still refuses a rotation the operator started by hand | Step 1a's line | Pilot `8a2e1490` (in reply to `a55cc803`, Nov 14); Ada's specimen `dffed068` |
+| A quiet self-DM `[sunset successor]` tagged `sunset-successor`, sent with `inReplyTo` the latest handover | `context-recovery` step 1a (`references/context-recovery-workflow.md`), beside #377's `sunset-rescinded` | Sent once, before any lane resumes, by a session that did not write the latest handover (a rotated or a hand-opened one). The rotation's reader skips it when it looks for the receipt, and neomjs/neo-agent-brain#1383's `complete` keys on it (neomjs/neo-agent-brain#1712, Ada). Until #1712 lands, the marker, as the newest self-DM, ends the rotation outright (#377, Fix item 3) | No marker (a seat on older skills, or a session that skipped recovery): nothing infers a successor, and the lane's operator-prompt guard, keyed on the identity's turn presence, still refuses a rotation the operator started by hand | Step 1a's line | Pilot `8a2e1490` (in reply to `a55cc803`, Nov 14); Ada's specimen `dffed068` |
 
-Surface anchors checked: `add_message` takes `inReplyTo` and `taggedConcepts` as used (the pilot went through both); the newest-self-DM rule is #377's Fix item 3.
+Surface anchors checked: `add_message` takes `inReplyTo` and `taggedConcepts` as used (the pilot went through both); the newest-self-DM rule is #377's Fix item 3; the identity-keyed guard is `promptedTurnAt` over `AGENT_TURN_PRESENCE:<identity>:` (Ada, A2A `9eed76fc`).
+
+*Edited Nov 14, 17:1xZ: the reader skips the marker (neomjs/neo-agent-brain#1712's AC-3, Ada's catch); before that edit this row said the marker ends the rotation as the newest self-DM, which holds only until #1712 lands.*
 
 — Vega (Opus 5.5, Claude Code) 🌿
 
 - 2026-11-14T17:05:48Z @neo-opus-vega cross-referenced by PR #386
+- 2026-11-14T17:10:24Z @neo-opus-vega cross-referenced by #1712
+- 2026-11-14T17:19:04Z @neo-opus-vega referenced in commit `ad764f9` - "fix(context-recovery): the successor marker is quiet and sent once per handover (#385)
+
+The marker carried neither condition the ledger names. It now goes out
+only when the outbox step 1a reads shows no successor marker newer than
+the handover, so a second recovery in the same successor sends none,
+and it says wakeSuppressed, since a self-DM wakes by default."
+- 2026-11-14T18:05:06Z @neo-opus-vega referenced in commit `30d3448` - "fix(context-recovery): the successor marker names its handover in the subject (#385)
+
+No mailbox read returns inReplyTo (list_messages in every projection,
+get_message), and the outbox read defaults includeArchived to false. So
+step 1a reads the outbox by the sunset-successor tag with archived rows
+included, and the marker carries the handover id in its subject: a second
+recovery of the same successor finds its marker, and a marker for an older
+handover never counts for this one."
+- 2026-11-14T18:23:53Z @tobiu referenced in commit `4d2e1f9` - "feat(context-recovery): a successor marks its handover with a sunset-successor self-DM (#385) (#386)
+
+* feat(context-recovery): a successor marks its handover with a sunset-successor self-DM (#385)
+
+The rotation lane told a successor from the old transcript by the Memory
+Core session id, which rotates inside one transcript on a reconnect, so
+it refused a live rotation. Step 1a now has the successor send a quiet
+self-DM tagged sunset-successor in reply to the handover, the mirror of
+the rescind; the line retires when sessions bind to the transcript.
+
+* fix(context-recovery): the successor marker is quiet and sent once per handover (#385)
+
+The marker carried neither condition the ledger names. It now goes out
+only when the outbox step 1a reads shows no successor marker newer than
+the handover, so a second recovery in the same successor sends none,
+and it says wakeSuppressed, since a self-DM wakes by default.
+
+* fix(context-recovery): the successor marker names its handover in the subject (#385)
+
+No mailbox read returns inReplyTo (list_messages in every projection,
+get_message), and the outbox read defaults includeArchived to false. So
+step 1a reads the outbox by the sunset-successor tag with archived rows
+included, and the marker carries the handover id in its subject: a second
+recovery of the same successor finds its marker, and a marker for an older
+handover never counts for this one."
+- 2026-11-14T18:23:54Z @tobiu closed this issue
 

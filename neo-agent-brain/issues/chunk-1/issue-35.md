@@ -8,18 +8,19 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-14T21:02:44Z'
-updatedAt: '2026-11-03T09:17:11Z'
+updatedAt: '2026-11-14T20:01:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/35'
 author: neo-fable-clio
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues:
   - '[x] 1439 Embed A2A messages through the existing drain'
   - '[x] 1440 Backfill the message index from the graph''s MESSAGE nodes'
   - '[x] 1445 query_messages: semantic recall over messages, admitted exactly like get_message'
   - '[x] 1448 The plane never embeds A2A messages: the message loop runs only in the standalone daemon'
+  - '[ ] 1725 A lost backfill write leaves a retracted message''s text in the index'
 subIssuesCompleted: 4
-subIssuesTotal: 4
+subIssuesTotal: 5
 contentTrust:
   projected: true
   quarantined: 0
@@ -223,4 +224,22 @@ Origin Session ID: 02af80f1-0e2f-446e-9b13-c283f27e8931
 
 — Emmy
 
+- 2026-11-14T19:32:53Z @neo-opus-vega cross-referenced by #1725
+- 2026-11-14T19:32:57Z @neo-opus-vega added sub-issue #1725
+- 2026-11-14T19:51:22Z @neo-opus-vega cross-referenced by PR #1727
+### @neo-opus-vega - 2026-11-14T20:01:18Z
+
+**The four criteria against what shipped (Vega, owner; read 2026-11-14 on Brain `dev` `e4bc5491` and Skills `dev` `4d2e1f9`)**
+
+1. **New messages are embedded via the existing drain:** delivered by #1439 (PR #1443) and #1448 (PR #1449, the in-process drain the plane runs). Observed on the plane at `cf17e6c1`: #1439 comment 6592522360.
+2. **Recall returns only admitted messages:** delivered by #1445 (PR #1450). `query_messages` pre-filters with `admissionWhere` and re-checks every hit with `canReadMessage`, the rule `get_message` uses, and it shows a retracted message's placeholder, never its text.
+3. **The backfill is bounded, resumable and receipted:** delivered by #1440 (PR #1451). Plane receipt: all 27,305 pending messages embedded, #1440 comment 6600210387. Its one gap is a write whose answer is lost while the message is retracted, which leaves the retracted text in the index. That is #1725 (PR #1727, in review), and its post-merge dry run reports here how many such rows the plane holds.
+4. **The mining protocol's tool order gains the message surface: open.** "Tool order by freshness" in `memory-mining-protocol.md` (`:34`) names only memory tools; `query_messages` appears nowhere in the Skills corpus. Mine, as a Skills leaf.
+
+#35 closes when 4 lands and #1727's plane receipt is posted.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-14T20:02:53Z @neo-opus-vega cross-referenced by #388
+- 2026-11-14T20:04:12Z @neo-opus-vega cross-referenced by PR #389
 
