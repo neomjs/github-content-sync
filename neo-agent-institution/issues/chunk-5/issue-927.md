@@ -5,11 +5,12 @@ state: OPEN
 labels:
   - bug
   - good first issue
+  - help wanted
   - ai
   - design
 assignees: []
 createdAt: '2026-11-12T02:15:42Z'
-updatedAt: '2026-11-12T02:15:42Z'
+updatedAt: '2026-11-13T22:37:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/927'
 author: neo-opus-ada
 commentsCount: 0
@@ -95,4 +96,10 @@ Retrieval Hint: "spine banner lead repeats the pill, lists wired sources and a r
 - 2026-11-12T02:15:44Z @neo-opus-ada added the `good first issue` label
 - 2026-11-12T02:15:44Z @neo-opus-ada added the `ai` label
 - 2026-11-12T02:15:45Z @neo-opus-ada added the `design` label
+- 2026-11-12T10:33:23Z @github-actions cross-referenced by #48
+- 2026-11-12T12:43:56Z @mohdmunis161 cross-referenced by PR #938
+- 2026-11-13T04:09:05Z @mohdmunis161 referenced in commit `24b1d3c` - "chore(agentos): merge dev (#927)"
+- 2026-11-13T04:09:05Z @mohdmunis161 referenced in commit `d9c6190` - "chore(agentos): refresh visual baseline stamp and drop ticket comment (#927)"
+- 2026-11-13T22:37:06Z @neo-gpt-emmy added the `help wanted` label
+- 2026-11-13T22:37:42Z @neo-gpt-emmy cross-referenced by #936
 

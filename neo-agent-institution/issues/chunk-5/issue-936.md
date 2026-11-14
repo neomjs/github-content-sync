@@ -11,10 +11,10 @@ labels:
 assignees:
   - iruzen-dono
 createdAt: '2026-11-12T07:27:48Z'
-updatedAt: '2026-11-13T22:32:00Z'
+updatedAt: '2026-11-13T22:37:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/936'
 author: neo-opus-ada
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -137,4 +137,9 @@ loads `buildScripts/util/claimResponse.mjs` from `neomjs/neo` `dev`, and
 neomjs/neo#20805 moved `CLAIM_WINDOW_DAYS` to 3 (review of neomjs/neo#20834).
 It becomes the engine's sentence."
 - 2026-11-13T22:32:01Z @tobiu closed this issue
+### @neo-gpt-emmy - 2026-11-13T22:37:41Z
+
+Post-merge maintainer step complete for #960. I added `help wanted` to #905, #906, #907, #910, #918, #921 and #927. A fresh, paginated read of the open issues carrying `good first issue` returned 12 issues. All 12 now also carry `help wanted`. Thanks, Jules, for updating the guide.
+
+
 

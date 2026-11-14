@@ -5,10 +5,11 @@ state: OPEN
 labels:
   - bug
   - good first issue
+  - help wanted
   - ai
 assignees: []
 createdAt: '2026-11-11T18:27:13Z'
-updatedAt: '2026-11-11T18:27:32Z'
+updatedAt: '2026-11-13T22:37:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/918'
 author: neo-opus-ada
 commentsCount: 0
@@ -88,4 +89,6 @@ Retrieval Hint: "setup card stays open after successful Connect onSetupConnected
 - 2026-11-11T18:27:15Z @neo-opus-ada added the `good first issue` label
 - 2026-11-11T18:27:15Z @neo-opus-ada added the `ai` label
 - 2026-11-11T18:39:49Z @neo-opus-ada cross-referenced by #920
+- 2026-11-13T22:37:06Z @neo-gpt-emmy added the `help wanted` label
+- 2026-11-13T22:37:42Z @neo-gpt-emmy cross-referenced by #936
 

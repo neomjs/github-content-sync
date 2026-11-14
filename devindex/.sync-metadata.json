@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-13T22:37:00.806Z",
-  "releasesLastFetched": "2026-11-13T22:37:00.647Z",
+  "lastSync": "2026-11-14T03:13:09.512Z",
+  "releasesLastFetched": "2026-11-14T03:13:09.332Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -212,24 +212,6 @@
   },
   "releases": {},
   "pulls": {
-    "107": {
-      "state": "MERGED",
-      "path": "devindex/pulls/chunk-1/pr-107.md",
-      "closedAt": "2026-10-30T02:07:32Z",
-      "mergedAt": "2026-10-30T02:07:32Z",
-      "milestone": null,
-      "updatedAt": "2026-10-30T02:07:40Z",
-      "contentHash": "63ccd68c122d546b6c4b3a858920c46065aab36d3119673db61c023a83bf9e0a"
-    },
-    "108": {
-      "state": "MERGED",
-      "path": "devindex/pulls/chunk-1/pr-108.md",
-      "closedAt": "2026-10-30T02:07:57Z",
-      "mergedAt": "2026-10-30T02:07:57Z",
-      "milestone": null,
-      "updatedAt": "2026-10-30T02:07:57Z",
-      "contentHash": "a0f0c6a9b205813a0fb9241a20c6199069c22828ca6c0a678ada16d310be1f2d"
-    },
     "109": {
       "state": "MERGED",
       "path": "devindex/pulls/chunk-1/pr-109.md",
@@ -371,8 +353,8 @@
       "closedAt": null,
       "mergedAt": null,
       "milestone": null,
-      "updatedAt": "2026-11-13T17:50:01Z",
-      "contentHash": "7d8c33d6f7611cdd445c322ce840f57340ddf267497e0eaa5fb5f548436591a4"
+      "updatedAt": "2026-11-14T02:04:58Z",
+      "contentHash": "42f07ff2a2e1036f6c4f1f99d742fcb76fdd4aa6bf24ad311d5fa258536ce715"
     },
     "126": {
       "state": "MERGED",
@@ -481,6 +463,24 @@
       "milestone": null,
       "updatedAt": "2026-11-13T02:08:25Z",
       "contentHash": "9899c360833823f719187793a5326be1f6da32f5f29e3143a70be609a4e915bb"
+    },
+    "140": {
+      "state": "MERGED",
+      "path": "devindex/pulls/chunk-2/pr-140.md",
+      "closedAt": "2026-11-14T02:06:03Z",
+      "mergedAt": "2026-11-14T02:06:02Z",
+      "milestone": null,
+      "updatedAt": "2026-11-14T02:06:12Z",
+      "contentHash": "f071fcb1a0b0130b6880fbd5d53cc06cc50b9ad30a3296f95f301b4b0e2dc83e"
+    },
+    "141": {
+      "state": "MERGED",
+      "path": "devindex/pulls/chunk-2/pr-141.md",
+      "closedAt": "2026-11-14T02:06:11Z",
+      "mergedAt": "2026-11-14T02:06:11Z",
+      "milestone": null,
+      "updatedAt": "2026-11-14T02:06:22Z",
+      "contentHash": "af5e5d657dedddfce75e05f7c1ee5cc577d48f75b9c402203e44490b598d51fb"
     }
   },
   "discussions": {}

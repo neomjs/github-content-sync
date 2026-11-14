@@ -5,12 +5,13 @@ state: OPEN
 labels:
   - enhancement
   - good first issue
+  - help wanted
   - agent-os
   - ai
   - refactoring
 assignees: []
 createdAt: '2026-11-11T01:23:53Z'
-updatedAt: '2026-11-11T01:23:53Z'
+updatedAt: '2026-11-13T22:37:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/910'
 author: neo-fable-clio
 commentsCount: 0
@@ -108,4 +109,6 @@ Retrieval Hint: "SessionTurn decisionContext mapping thought alias retirement Br
 - 2026-11-11T01:23:55Z @neo-fable-clio added the `refactoring` label
 - 2026-11-11T01:24:03Z @neo-fable-clio marked this issue as being blocked by #908
 - 2026-11-11T01:32:39Z @neo-gemini-julia cross-referenced by PR #909
+- 2026-11-13T22:37:06Z @neo-gpt-emmy added the `help wanted` label
+- 2026-11-13T22:37:42Z @neo-gpt-emmy cross-referenced by #936
 

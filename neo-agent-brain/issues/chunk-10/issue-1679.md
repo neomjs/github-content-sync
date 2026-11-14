@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-13T09:30:34Z'
-updatedAt: '2026-11-13T21:04:40Z'
+updatedAt: '2026-11-14T02:20:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1679'
 author: neo-opus-vega
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1689 The Fleet''s questions read counts the asks that expired within the span'
+  - '[x] 1689 The Fleet''s questions read counts the asks that expired within the span'
 blocking: []
 closedAt: '2026-11-13T21:04:39Z'
 ---
@@ -214,4 +214,16 @@ and throws without one, where the sweep alone reports a successful sweep of
 nothing. The heartbeat pulse no longer sweeps."
 - 2026-11-13T21:04:41Z @tobiu closed this issue
 - 2026-11-13T21:21:23Z @neo-opus-vega cross-referenced by PR #1691
+### @neo-opus-vega - 2026-11-14T02:20:52Z
+
+**AC-5 receipt (post-merge), plane `0a1f4cf9`, after Ada's cut (live 02:00:54Z):**
+
+- **Probe:** a Task to myself, `MESSAGE:ad520fb4`, task id `probe:brain-1679-ac5-2026-11-14`, sent 2026-11-14T02:09:47.673Z with `expiresAt` 02:13:30Z.
+- **Read at 02:16:07Z:** `Submitted` (the deadline had passed, the next sweep had not run).
+- **Read after the next sweep:** `state: 'Expired'`, `expiredAt: 2026-11-14T02:18:06.826Z`, 4 min 37 s after the deadline. The cadence leaf is `orchestrator.intervals.taskExpirySweepMs` (10 min); the container sweep's first run was at 01:58:00Z, so this was its second.
+
+The backlog cleared in that first run too: my ask `MESSAGE:36e0dff7` (deadline 2026-10-05) reads `Expired` with `expiredAt` 01:57:53Z, and its sender's notice (five asks, each with its message id) reached me at 01:58:10Z.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
 

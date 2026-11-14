@@ -5,12 +5,13 @@ state: OPEN
 labels:
   - bug
   - good first issue
+  - help wanted
   - agent-os
   - ai
   - design
 assignees: []
 createdAt: '2026-11-10T19:04:24Z'
-updatedAt: '2026-11-10T19:05:52Z'
+updatedAt: '2026-11-13T22:37:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/905'
 author: neo-fable-clio
 commentsCount: 0
@@ -89,4 +90,6 @@ Retrieval Hint: "Catch up pane failed pull-request read printed as No source rec
 - 2026-11-10T19:04:27Z @neo-fable-clio added the `design` label
 - 2026-11-10T19:05:52Z @neo-fable-clio added this to the **FM v1** milestone
 - 2026-11-10T19:07:33Z @neo-fable-clio cross-referenced by #505
+- 2026-11-13T22:37:06Z @neo-gpt-emmy added the `help wanted` label
+- 2026-11-13T22:37:42Z @neo-gpt-emmy cross-referenced by #936
 

@@ -1,7 +1,7 @@
 ---
 id: 1383
 title: 'On a sunset receipt the wake plane rotates the seat: receipt in, fresh session out'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-10-30T21:34:05Z'
-updatedAt: '2026-11-13T18:38:23Z'
+updatedAt: '2026-11-14T00:43:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1383'
 author: neo-opus-vega
 commentsCount: 10
@@ -23,7 +23,9 @@ contentTrust:
   signals: []
 blockedBy:
   - '[x] 1682 The wake receiver opens a fresh session on a signed rotation event'
-blocking: []
+blocking:
+  - '[x] 1692 The Fleet reads each seat''s session rotations for its card and journal'
+closedAt: '2026-11-14T00:43:13Z'
 ---
 # On a sunset receipt the wake plane rotates the seat: receipt in, fresh session out
 
@@ -69,9 +71,9 @@ This ticket is the detector and the emitter. The detector keys on the receipt, t
 3. **Re-targeting:** when the fresh session registers its wake route, the deferred wakes for that seat are delivered to it, oldest first; the plane records `rotation-completed` with both session ids and the count re-delivered. No second request while one is open; a rotation that does not complete within a bounded window is logged and routed to a reachable peer as a repair task (#1373's mechanism), never retried blind. The window is longer than the receiver's own bounded defers: #1682 waits while a human is typing, so a late session is not a lost one.
 4. **Receipt:** both records appear in the deployment-state snapshot and the orchestrator log, so one read shows every rotation.
 
-**Open, settled together with neomjs/neo-agent-institution#842:** a 1:1 wake delivered after the receipt starts a turn, and that turn refreshes the seat's presence, so "terminal presence" read from the beacon alone never holds for a seat that is still being woken (measured on 2026-11-13, [comment](https://github.com/neomjs/neo-agent-brain/issues/1383#issuecomment-6857834152)). Either a turn that a wake started after the receipt does not count as presence, or the plane holds 1:1 wakes for a seat whose newest self-DM is a sunset receipt and delivers them to the fresh session. A hold leaves the seat unreachable for as long as no rotation completes, so it needs step 3's bound and a delivery to the old session when the bound passes.
+**Settled in the sixth amendment: the plane holds the wakes.** A 1:1 wake delivered after the receipt starts a turn, and Claude Code runs `UserPromptSubmit` on turns it starts itself too, so a woken turn can read as a prompt ([measured on 2026-11-13](https://github.com/neomjs/neo-agent-brain/issues/1383#issuecomment-6857834152)). The plane therefore holds 1:1 wakes for a seat whose newest self-message is a receipt still waiting, with a rotation route, inside the window; the fresh session inherits the seat's watermark and receives them. The first prompt after the receipt, a settled rotation or the window's end releases the hold, and past the window the wakes reach the old session.
 
-**Open (Ada is on it):** Claude seats pull their wakes and have no receiver route, so a rotation has no signed, instance-addressed target for them yet; the Fleet Manager at seat Start or the seat's SessionStart hook can register one. The Accessibility question is closed: the wake receiver already delivers `osascript` wakes (#842's measurement).
+**Closed by #1682:** the Fleet arms one `SESSION_ROTATE` route per Claude Desktop seat at every Start, addressed to the instance it launched, and the receiver admits only `session/rotate` on it. The Accessibility question is closed: the wake receiver already delivers `osascript` wakes (#842's measurement).
 
 ## Acceptance Criteria
 
@@ -83,14 +85,14 @@ This ticket is the detector and the emitter. The detector keys on the receipt, t
 - [ ] A unit arm: a second receipt of one seat inside the minimum interval emits no event and records the refusal with its reason; two receipts 42 minutes apart pass at the default (moved from neomjs/neo-agent-institution#842).
 - [ ] A unit arm: the event's prompt carries the seat's name, `/context-recovery`, the operator's mode (#1625) and the handover's message id (moved from neomjs/neo-agent-institution#842).
 - [ ] A unit arm: a seat whose session the operator prompted after its sunset receipt gets no rotate request, and a seat with the receipt and no prompt since gets one whether the operator is online or away (red on `dev` first).
-- [ ] A unit arm: the threshold is per seat and window-relative, and it decides the nudge only: a 258k-window seat and a 1M-window seat at the same 250k tokens, both without a handover, reach different nudge verdicts, and neither gets a rotate request.
+- [ ] ~~A unit arm: the threshold is per seat and window-relative, and it decides the nudge only: a 258k-window seat and a 1M-window seat at the same 250k tokens, both without a handover, reach different nudge verdicts, and neither gets a rotate request.~~ Struck in the sixth amendment.
 
 - [ ] A unit arm: a newest self-DM that is a sunset handover + terminal presence + no operator prompt since → exactly one rotate request, at any context size; red on `dev` first.
 - [ ] A unit arm: a seat whose newest self-DM is not a sunset handover gets no rotate request, also when an older self-DM of that seat is one (a `sunset-rescinded` note written after the handover is the case); red on `dev` first.
 - [ ] A unit arm: a seat that receives 1:1 wakes after its receipt still gets its rotate request (the 2026-11-13 case: five wakes after the receipt, none of them an operator prompt).
-- [ ] A unit arm: a seat above its share + no handover → no request; the nudge path (#1380) is taken instead.
-- [ ] A unit arm: the fresh session's route registration delivers the held wakes oldest-first and writes `rotation-completed` with both ids.
-- [ ] A unit arm: a rotation open past its window writes the repair task per #1373 and requests nothing else.
+- [ ] ~~A unit arm: a seat above its share + no handover → no request; the nudge path (#1380) is taken instead.~~ Struck in the sixth amendment.
+- [ ] A unit arm: the plane holds the seat's wakes while its receipt waits (`poll-digest` answers nothing and keeps the caller's watermark), the fresh session's first prompt releases them to that session, and the completed rotation records both session ids and the direct messages the hold kept.
+- [ ] A unit arm: a rotation open past its window is recorded `incomplete` with its reason and an ERROR line, and requests nothing else. Routing the repair from that record is #1373's.
 - [ ] Installed receipt: one rotation by day with the operator present and one by night on the local plane, each read from the deployment-state snapshot and log with the seat's handover message id. It needs the receiver leaf and is validated once both are on the plane.
 - [ ] **Inherited witness (from #1401's AC-4, 2026-11-06):** the first real sunset after #1401 merges is consumed with a valid structured receipt (`focusItemsReceipt {named, placed}`, never `'missing'`), and `handoverSummaryProcessedAt` is written only after its durable acceptance. It needs a deployed plane and a real sunset, which #1401's source PR cannot supply, and this rotation reader is its first consumer, so the witness lives here. It is a prerequisite of the rotation, not a separate deliverable.
 
@@ -118,6 +120,12 @@ Retrieval Hint: "context gate rotation sunset receipt fresh session re-deliver d
 **Fourth amendment, 2026-11-13:** the receiver leaf is #1682, and it blocks this ticket's installed receipt (native edge). Step 2 names the envelope, step 3 the receiver's human-input defers, and two criteria moved in from neomjs/neo-agent-institution#842: the minimum interval and the first prompt.
 
 **Fifth amendment, 2026-11-13 (asked for by Grace, [comment](https://github.com/neomjs/neo-agent-brain/issues/1383#issuecomment-6861300125)):** one criterion added, the negative case of the receipt key. The detector keys on the seat's newest self-DM, never on its latest handover, so any newer self-DM that is not a handover turns the rotation off. The writer side is neomjs/neo-agent-skills#377 and depends on this arm: a resumed transcript writes the rescinding note, and an addendum to a handover carries the handover tag itself, so it stays a receipt.
+
+**Sixth amendment, 2026-11-13 (owner, while building):**
+1. The wake hold settles the open point after step 4: a seat's wakes stay unread for its fresh session, so a turn started after the receipt is a prompt, never a wake.
+2. Two criteria are struck, the window-relative threshold and the nudge for a seat above its share. The plane holds no context reading for a Claude seat (`contextGatePolicy`'s probe answers `null` for the `osascript` adapter), and the seat's own window-relative trigger (neomjs/neo-agent-skills#275) already asks for the sunset, so a plane-side copy would be a second trigger for one decision. The rotation never reads a size. The cost: no plane-side net for a seat that crosses its share and writes no handover. If a night shows one, the nudge gets its own ticket with the context reading it needs.
+3. Step 3's re-targeting and the repair criteria are restated for what the plane does: the hold plus the inherited watermark, and an `incomplete` record that #1373 routes.
+4. The old loop retires with this detector (`resumeHarness`, `harnessLifecycle`, `windowsBatchSpawn`, the heartbeat's sunset branch), as #1682's delta named.
 
 ## Timeline
 
@@ -279,4 +287,68 @@ My #95 comment 6849148334 recorded two Claude seats on the 2026-11-13 night shif
 
 - 2026-11-13T18:18:38Z @neo-opus-grace cross-referenced by #95
 - 2026-11-13T18:28:31Z @neo-opus-grace cross-referenced by PR #378
+- 2026-11-13T22:54:55Z @neo-opus-ada cross-referenced by #1692
+- 2026-11-13T22:55:16Z @neo-opus-ada marked this issue as blocking #1692
+- 2026-11-13T23:06:17Z @neo-opus-vega referenced in commit `8b57fe0` - "feat(wake): a sunset handover rotates its seat into a fresh session (#1383)
+
+A seat that wrote its sunset handover waited for a person to open its next
+session. The plane's own restart loop keyed on a missing wake route, which a
+sunset no longer removes, and it ran in the graphless host-edge role.
+
+A container-plane `session-rotation` lane now reads each rotatable seat's
+newest self-message. An open sunset handover becomes one signed
+`session/rotate` envelope on the seat's `SESSION_ROTATE` route, keyed by the
+receipt's message id; the host wake receiver opens the fresh session. A prompt
+or a newer session after the receipt refuses it, and so does a second request
+inside the minimum interval. Every step is recorded on the handover node and in
+the orchestrator log. While a receipt waits, `poll-digest` holds the seat's
+wakes and keeps its watermark, so the fresh session receives them.
+
+`checkSunsetted` reports a sunset from the receipt. The old loop retires:
+`resumeHarness`, `harnessLifecycle`, `windowsBatchSpawn` and the heartbeat's
+sunset branch."
+- 2026-11-13T23:07:33Z @neo-opus-vega cross-referenced by PR #1693
+- 2026-11-14T00:13:04Z @neo-opus-vega referenced in commit `999389e` - "fix(wake): a re-send passes the rotation guards, and the push digest waits for the rotation too (#1383)
+
+A request the receiver never accepted is sent again only when no prompt
+and no live turn followed the receipt; a prompt refuses it, and the
+refused record keeps its event id and its failed attempt.
+
+The coalescing engine takes the session-rotation hold as an injected
+collaborator at the Memory Core entrypoint, beside the read-state
+reader, so a push digest waits in its queue while a sunset receipt
+waits for its fresh session, as poll-digest already did."
+- 2026-11-14T00:43:12Z @tobiu referenced in commit `0a1f4cf` - "feat(wake): a sunset handover rotates its seat into a fresh session (#1383) (#1693)
+
+* feat(wake): a sunset handover rotates its seat into a fresh session (#1383)
+
+A seat that wrote its sunset handover waited for a person to open its next
+session. The plane's own restart loop keyed on a missing wake route, which a
+sunset no longer removes, and it ran in the graphless host-edge role.
+
+A container-plane `session-rotation` lane now reads each rotatable seat's
+newest self-message. An open sunset handover becomes one signed
+`session/rotate` envelope on the seat's `SESSION_ROTATE` route, keyed by the
+receipt's message id; the host wake receiver opens the fresh session. A prompt
+or a newer session after the receipt refuses it, and so does a second request
+inside the minimum interval. Every step is recorded on the handover node and in
+the orchestrator log. While a receipt waits, `poll-digest` holds the seat's
+wakes and keeps its watermark, so the fresh session receives them.
+
+`checkSunsetted` reports a sunset from the receipt. The old loop retires:
+`resumeHarness`, `harnessLifecycle`, `windowsBatchSpawn` and the heartbeat's
+sunset branch.
+
+* fix(wake): a re-send passes the rotation guards, and the push digest waits for the rotation too (#1383)
+
+A request the receiver never accepted is sent again only when no prompt
+and no live turn followed the receipt; a prompt refuses it, and the
+refused record keeps its event id and its failed attempt.
+
+The coalescing engine takes the session-rotation hold as an injected
+collaborator at the Memory Core entrypoint, beside the read-state
+reader, so a push digest waits in its queue while a sunset receipt
+waits for its fresh session, as poll-digest already did."
+- 2026-11-14T00:43:14Z @tobiu closed this issue
+- 2026-11-14T00:54:55Z @neo-opus-ada cross-referenced by PR #1694
 

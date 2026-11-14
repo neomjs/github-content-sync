@@ -1,7 +1,7 @@
 ---
 id: 1681
 title: A failed woken turn leaves a Claude seat with no wake listener
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-13T13:23:24Z'
-updatedAt: '2026-11-13T21:39:54Z'
+updatedAt: '2026-11-13T22:53:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1681'
 author: neo-opus-ada
 commentsCount: 3
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-13T22:53:23Z'
 ---
 # A failed woken turn leaves a Claude seat with no wake listener
 
@@ -214,4 +215,52 @@ status() read the marker first, and a present CLI credentials file answered fals
 - 2026-11-13T22:30:06Z @neo-opus-ada referenced in commit `c19cc87` - "fix(wake): a failed turn without its own turn id closes nothing (#1681)
 
 A StopFailure whose session has no stored turn id (the store is missing or unreadable, or the payload names no session) would close the seat's newest turn, which a session prompted later may own. The hook now records nothing for it, and the failed turn expires on its own. Progress without an id still joins the newest turn."
+- 2026-11-13T22:53:23Z @tobiu referenced in commit `8132294` - "feat(wake): a failed turn no longer leaves a seat silently deaf (#1681) (#1686)
+
+* feat(wake): a failed turn re-arms the listener and loses no wake (#1681)
+
+A turn that ends on an API error runs StopFailure instead of Stop, so the seat kept no listener, and the wake that woke the turn had already moved the watermark past its events. The listener now records what each wake delivered, commits it at that session's Stop and rolls it back at its StopFailure. It re-arms after transient errors (rate_limit, overloaded, server_error, unknown) with a doubling back-off; any other error waits for the next turn that reaches Stop, because a rewake would fail the same way. The Claude manifest wires the listener and an aborted turn-presence terminal on StopFailure.
+
+Witness: a headless Claude Code 2.1.212 probe on 2026-11-13 ran StopFailure with error authentication_failed and no Stop, and an asyncRewake StopFailure hook that exited 2 started a new turn 3.06 s later.
+
+* feat(wake): a pull seat with no listener reads undeliverable (#1681)
+
+A pull route has no dispatcher, so no receiver record concluded it and who_is_online read every pull-only seat unknown, deaf or not, while the Fleet kept routing work to it. The route rows now carry their pull flag and last poll, and projectPullRouteVerdict concludes each pull route: a poll inside five minutes, or a stale poll during a fresh turn, reads reachable; a stale poll with no turn in progress reads unreachable, listener silent. The Fleet's verbose route map then sends the holder's work to rotation as holder-unreachable.
+
+* feat(fleet): a seat signed out mid-turn reads authRequired (#1681)
+
+A Claude Desktop seat has no auth marker, so Fleet's authRequired read null even while the seat was signed out, and a signed-out seat cannot report itself. The listener record now keeps the StopFailure error of a turn no rewake cures, and Fleet reads an auth-class one (authentication_failed, oauth_org_not_allowed, account_on_hold, billing_error, cloud_credential_error) as authRequired true; any other record stays null, never false.
+
+* test(wake): the rotation spec settles its drain before teardown (#1681)
+
+A 202 answers before the receiver writes its record, so the afterEach could remove the state directory under a write in flight: ENOTEMPTY, once in a CI run on Brain #1684 (defect-note 744e6363) and once in 442 local runs. Awaiting the receiver's serial drain first settles the write; 882 of 882 passed after.
+
+* chore(lint): classify the listener's failure back-off as capped (#1681)
+
+failureBackoffMs grows per failed turn, and the count lives in the seat's listener record until a turn reaches Stop; the Math.min cap in the same expression bounds each wait.
+
+* test(wake): the composed seat carries StopFailure (#1681)
+
+The Claude manifest now wires StopFailure, so the Engine-then-Brain composition yields six events. The comment drops its event count, which was already stale on dev.
+
+* fix(wake): only the owner settles failures; holds stop listeners (#1681)
+
+Only the session that owns the seat settles its failure count: a turn ending in a session that lost the seat no longer clears or sets the owner's failure. A held error now also revokes a listener that is already running, so its in-flight poll stands down instead of waking a session that fails the same way.
+
+* fix(wake): a session's presence names its own turn (#1681)
+
+The hook mints the turn id at the session's prompt and keeps it per session in the OS temp directory; progress and the StopFailure terminal pass it. Without one the plane joined the seat's newest turn, so a session that lost the seat could close the newer session's turn, which the pull route's verdict now reads.
+
+* fix(wake): a pull verdict survives unreadable receiver records (#1681)
+
+A pull route is concluded by its own poll and its seat's turn, so the projection no longer stops at an unconfigured or unreadable receiver records directory: the rows the Fleet routes by carry the pull verdict, push routes stay unknown, and the wake axis still reads degraded.
+
+* fix(fleet): a recorded auth failure outranks the credential file (#1681)
+
+status() read the marker first, and a present CLI credentials file answered false, so the listener's authentication_failed was never read. A positive listener failure now wins; otherwise the marker decides.
+
+* fix(wake): a failed turn without its own turn id closes nothing (#1681)
+
+A StopFailure whose session has no stored turn id (the store is missing or unreadable, or the payload names no session) would close the seat's newest turn, which a session prompted later may own. The hook now records nothing for it, and the failed turn expires on its own. Progress without an id still joins the newest turn."
+- 2026-11-13T22:53:25Z @tobiu closed this issue
 

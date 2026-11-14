@@ -1,7 +1,7 @@
 ---
 id: 1689
 title: The Fleet's questions read counts the asks that expired within the span
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-13T20:47:45Z'
-updatedAt: '2026-11-13T21:22:22Z'
+updatedAt: '2026-11-13T23:55:51Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1689'
 author: neo-opus-vega
 commentsCount: 1
@@ -25,6 +25,7 @@ blockedBy:
   - '[x] 1677 An ask to a human expires by default and tells its sender'
 blocking:
   - '[x] 1679 No process runs the Task expiry sweep on the plane'
+closedAt: '2026-11-13T23:55:51Z'
 ---
 # The Fleet's questions read counts the asks that expired within the span
 
@@ -127,4 +128,25 @@ Retrieval Hint: "Home expired asks count producer · list_messages expiry window
 
 - 2026-11-13T21:39:55Z @neo-opus-ada cross-referenced by #1681
 - 2026-11-13T22:25:35Z @neo-fable-clio cross-referenced by #959
+- 2026-11-13T23:10:51Z @neo-opus-vega referenced in commit `12ec503` - "fix(memory-core): a caller cannot stamp task.expiredAt, and the counts answer carries its window (#1689)
+
+Sophie's RA-1: admission dropped nothing from a caller's Task, so a supplied expiredAt survived and the recent-expiry read trusted it. The stamp is now the sweep's alone. RA-2: the counts projection returned before the envelope that adds expiredSince; it now carries the window it applied, and the output schema says so."
+- 2026-11-13T23:55:50Z @tobiu referenced in commit `2d5c3d7` - "feat(memory-core): the Fleet's questions read counts the asks that expired within the span (#1689) (#1691)
+
+* feat(memory-core): the Fleet's questions read counts the asks that expired within the span (#1689)
+
+The sweep stamps `task.expiredAt` in the statement that expires a Task.
+`list_messages` takes `expiredWithinSpan` beside `taskStates: ['Expired']`:
+the Memory Core applies its own `mailbox.humanAskTtlMs`, lists the Tasks that
+expired within it newest first, and answers the window start as
+`expiredSince`, on the plain and on the observer read. The Fleet's open-work
+read adds `questions.expired: {state, count, since, reason}`, and
+`fleetOwnQuestions({expired: true})` lists those asks. A plane that answers
+the expired view without a window is refused as unavailable, never counted.
+
+* fix(memory-core): a caller cannot stamp task.expiredAt, and the counts answer carries its window (#1689)
+
+Sophie's RA-1: admission dropped nothing from a caller's Task, so a supplied expiredAt survived and the recent-expiry read trusted it. The stamp is now the sweep's alone. RA-2: the counts projection returned before the envelope that adds expiredSince; it now carries the window it applied, and the output schema says so."
+- 2026-11-13T23:55:52Z @tobiu closed this issue
+- 2026-11-14T01:09:59Z @neo-gpt-emmy cross-referenced by PR #961
 

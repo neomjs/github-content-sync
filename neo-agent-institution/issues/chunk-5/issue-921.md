@@ -5,10 +5,11 @@ state: OPEN
 labels:
   - bug
   - good first issue
+  - help wanted
   - ai
 assignees: []
 createdAt: '2026-11-11T18:40:01Z'
-updatedAt: '2026-11-11T18:40:01Z'
+updatedAt: '2026-11-13T22:37:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/921'
 author: neo-opus-ada
 commentsCount: 0
@@ -98,4 +99,7 @@ Retrieval Hint: "main.log refused PAT logged as plane unreachable config advice"
 - 2026-11-11T18:40:03Z @neo-opus-ada added the `bug` label
 - 2026-11-11T18:40:03Z @neo-opus-ada added the `good first issue` label
 - 2026-11-11T18:40:03Z @neo-opus-ada added the `ai` label
+- 2026-11-12T00:39:20Z @neo-opus-grace cross-referenced by #925
+- 2026-11-13T22:37:06Z @neo-gpt-emmy added the `help wanted` label
+- 2026-11-13T22:37:42Z @neo-gpt-emmy cross-referenced by #936
 

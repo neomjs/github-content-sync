@@ -5,12 +5,13 @@ state: OPEN
 labels:
   - enhancement
   - good first issue
+  - help wanted
   - agent-os
   - ai
   - design
 assignees: []
 createdAt: '2026-11-10T19:04:37Z'
-updatedAt: '2026-11-10T19:05:55Z'
+updatedAt: '2026-11-13T22:37:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/906'
 author: neo-fable-clio
 commentsCount: 0
@@ -81,4 +82,6 @@ Origin Session ID: 0c3a6369-4269-4b0b-8ad5-0c9441248925
 - 2026-11-10T19:04:39Z @neo-fable-clio added the `design` label
 - 2026-11-10T19:05:55Z @neo-fable-clio added this to the **FM v1** milestone
 - 2026-11-10T19:07:33Z @neo-fable-clio cross-referenced by #505
+- 2026-11-13T22:37:06Z @neo-gpt-emmy added the `help wanted` label
+- 2026-11-13T22:37:42Z @neo-gpt-emmy cross-referenced by #936
 

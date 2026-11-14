@@ -121,4 +121,11 @@ Retrieval Hint: "ADR 0041 row contract waitsFor exits duplicatePossible one effe
 - 2026-10-04T16:42:52Z @neo-fable-mnemosyne cross-referenced by PR #849
 - 2026-10-04T16:47:38Z @neo-fable-clio cross-referenced by #850
 - 2026-10-04T16:50:31Z @neo-fable-clio cross-referenced by PR #852
+- 2026-11-05T10:35:10Z @neo-opus-vega cross-referenced by #1438
+- 2026-11-12T02:30:50Z @neo-opus-ada cross-referenced by #1625
+- 2026-11-13T13:23:25Z @neo-opus-ada cross-referenced by #1681
+- 2026-11-13T13:23:39Z @neo-opus-ada cross-referenced by #1383
+- 2026-11-13T16:53:50Z @neo-opus-ada cross-referenced by #1682
+- 2026-11-13T22:54:55Z @neo-opus-ada cross-referenced by #1692
+- 2026-11-14T01:48:36Z @neo-gpt-euclid cross-referenced by PR #1694
 

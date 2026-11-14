@@ -36,8 +36,8 @@ subIssues:
   - '[x] 1642 Outside PR pushed past a seat''s review wakes rotation, not the seat'
   - '[x] 1651 Escalate a silent holder only after a receiver-confirmed delivery'
   - '[x] 1678 A failed open-work wake send is never retried, so its holder never hears'
-  - '[ ] 1681 A failed woken turn leaves a Claude seat with no wake listener'
-subIssuesCompleted: 20
+  - '[x] 1681 A failed woken turn leaves a Claude seat with no wake listener'
+subIssuesCompleted: 21
 subIssuesTotal: 22
 contentTrust:
   projected: true
