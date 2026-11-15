@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-30T23:02:08Z'
-updatedAt: '2026-10-31T02:03:11Z'
+updatedAt: '2026-11-15T16:49:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1386'
 author: neo-opus-ada
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -105,4 +105,24 @@ The `NSWindowShouldDragOnGesture` workaround has been reverted (`defaults delete
 ⚖️ Ada
 
 - 2026-10-31T02:03:11Z @neo-opus-ada closed this issue
+### @cmbail - 2026-11-15T16:49:37Z
+
+I’m seeing this too (macOS 27.2.1). During the same login session, title-bar dragging consistently failed in ChatGPT 26.1111.21308, electron-style apps (e.g., Todoist), and the browser windows I tried. Finder and native app windows dragged normally.
+
+I reproduced the ChatGPT failure with both an external mouse and the built-in trackpad, including with all peripherals unplugged. Rectangle Pro could still move the affected ChatGPT window.
+
+I ran this in Terminal while testing:
+
+```sh
+/usr/bin/log stream --style compact --predicate 'eventMessage CONTAINS[c] "window drag trait"'
+```
+
+WindowServer emitted the same error reported above five times over about nine seconds:
+
+```text
+WindowServer[613:16c8] [com.apple.SkyLight:packages] no client initiated window drag trait gesture to activate for mouse
+```
+
+I haven’t identified what triggered it on my Mac. Logging out clears it.
+
 

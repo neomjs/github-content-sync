@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-15T09:22:50.284Z",
-  "releasesLastFetched": "2026-11-15T09:22:48.307Z",
+  "lastSync": "2026-11-15T17:08:13.485Z",
+  "releasesLastFetched": "2026-11-15T17:08:10.804Z",
   "issues": {
     "3": {
       "state": "CLOSED",
@@ -1006,7 +1006,7 @@
       "path": "neo-agent-brain/issues/chunk-2/issue-122.md",
       "closedAt": null,
       "updatedAt": "2026-11-09T21:16:18Z",
-      "contentHash": "053e7278dde3e5d325d695f27df2fa690d086460d45b40e9ac223aa895628f34",
+      "contentHash": "b3d6aaae7ea50b9faa70eedd63859ddfab0d4e182fe6cdc1174f554e233f35c5",
       "milestone": null,
       "commentsTotal": 7
     },
@@ -1104,10 +1104,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-2/issue-133.md",
       "closedAt": null,
-      "updatedAt": "2026-11-15T00:16:50Z",
-      "contentHash": "6d633644b6cabe8d8dff0641173d2f844574f5bfaea3f631a2a6ada2358211ee",
+      "updatedAt": "2026-11-15T12:51:04Z",
+      "contentHash": "5f45d3c8fe8dc946d7af3d83f147eea6ba8131e0f2c45200d35b3fb9e3202e84",
       "milestone": null,
-      "commentsTotal": 11
+      "commentsTotal": 12
     },
     "134": {
       "state": "CLOSED",
@@ -2554,7 +2554,7 @@
       "path": "neo-agent-brain/issues/chunk-3/issue-398.md",
       "closedAt": "2026-09-21T11:09:49Z",
       "updatedAt": "2026-09-21T11:09:49Z",
-      "contentHash": "171a4ab5efb9bb0184cc55a174d0ac1ee6a8037e6f628edbc81a9a6fdd66c510",
+      "contentHash": "3529c0e84667b492e612c6d9af62d0b7658d1a8cbb8ddf65b558cd3e029b1a0a",
       "milestone": null,
       "commentsTotal": 0
     },
@@ -2563,7 +2563,7 @@
       "path": "neo-agent-brain/issues/chunk-3/issue-401.md",
       "closedAt": "2026-09-21T12:36:38Z",
       "updatedAt": "2026-09-21T12:36:38Z",
-      "contentHash": "026b44e5b89c170cd81d076382ca4308df95a226e87df98df98b039afdef0336",
+      "contentHash": "619fe0576e33f35fbc15b5b01cb6992edc9a276437e61654923673cd33a00e24",
       "milestone": null,
       "commentsTotal": 4
     },
@@ -3399,8 +3399,8 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-4/issue-571.md",
       "closedAt": null,
-      "updatedAt": "2026-11-15T06:32:58Z",
-      "contentHash": "175d9ea5a6c2af6a51c51704fd6172e668c638df3f84776f2c4fa59ef3f92588",
+      "updatedAt": "2026-11-15T12:04:43Z",
+      "contentHash": "88827d178c05859e5f48a477d3b8926ce40ba3d7c401ddd6fd318378a68013f3",
       "milestone": null,
       "commentsTotal": 101
     },
@@ -4237,7 +4237,7 @@
       "path": "neo-agent-brain/issues/chunk-5/issue-759.md",
       "closedAt": null,
       "updatedAt": "2026-11-13T02:27:44Z",
-      "contentHash": "c1bdf6efa54cbadac940039665027ca186c4e5b3907bd0acc0d8f2f8ae1fb70c",
+      "contentHash": "1063822cc6d217c82a557749812c80248fa2480baee42f04406b3090fb50291c",
       "milestone": null,
       "commentsTotal": 18
     },
@@ -4875,10 +4875,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-6/issue-904.md",
       "closedAt": null,
-      "updatedAt": "2026-11-07T06:10:42Z",
-      "contentHash": "f6db3899dad06b0b790108e42452b1675a03f52808de98aecba958678c81e3f9",
+      "updatedAt": "2026-11-15T14:58:43Z",
+      "contentHash": "c755ad7cbcc3c4d146e818f96409a958d85bbb0b6b68cf76f281f9fd0364ee2a",
       "milestone": null,
-      "commentsTotal": 24
+      "commentsTotal": 25
     },
     "906": {
       "state": "CLOSED",
@@ -6927,10 +6927,10 @@
       "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-8/issue-1386.md",
       "closedAt": "2026-10-31T02:03:11Z",
-      "updatedAt": "2026-10-31T02:03:11Z",
-      "contentHash": "d0868fb7df9cd5d2770e2d4b2dd5ff640577665d5e729a40285a6b0498962b94",
+      "updatedAt": "2026-11-15T16:49:37Z",
+      "contentHash": "05db5739450ad779747da654864f1521015040f317bf7cf3c250d2a8fcb39ad0",
       "milestone": null,
-      "commentsTotal": 2
+      "commentsTotal": 3
     },
     "1387": {
       "state": "CLOSED",
@@ -8265,22 +8265,22 @@
       "commentsTotal": 0
     },
     "1700": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1700.md",
-      "closedAt": null,
-      "updatedAt": "2026-11-14T09:14:28Z",
-      "contentHash": "91a82c474f79862671f8356d90283c1ecfc7d4993016d04a71f171a5ea16f6cb",
+      "closedAt": "2026-11-15T12:51:45Z",
+      "updatedAt": "2026-11-15T12:51:45Z",
+      "contentHash": "fac3e31508d6671118b052b821a2b2eb42b679af6c1e4199f6cb6626b1033ee3",
       "milestone": null,
-      "commentsTotal": 2
+      "commentsTotal": 4
     },
     "1702": {
       "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1702.md",
       "closedAt": "2026-11-14T18:15:16Z",
-      "updatedAt": "2026-11-14T18:15:16Z",
-      "contentHash": "447ebb9516de9b2f3c6874081047c4b19fa6bbd7f825068c45f1389e2687212e",
+      "updatedAt": "2026-11-15T16:02:23Z",
+      "contentHash": "ef5ec988146852dd13fb81cd7ffc7e6512d8f92c84a5bebdb2dd5a7ded7031a3",
       "milestone": null,
-      "commentsTotal": 2
+      "commentsTotal": 3
     },
     "1703": {
       "state": "CLOSED",
@@ -8341,7 +8341,7 @@
       "path": "neo-agent-brain/issues/chunk-10/issue-1715.md",
       "closedAt": null,
       "updatedAt": "2026-11-15T06:33:11Z",
-      "contentHash": "14b144459f0b537a7f2cab696ef83bece1efdd0b798623d3082019c72a552c7d",
+      "contentHash": "1b20bf96916468cb4673c8323774b2626c0da4cf08b2b1a411918c11ca9a5bcb",
       "milestone": null,
       "commentsTotal": 0
     },
@@ -8355,11 +8355,11 @@
       "commentsTotal": 0
     },
     "1717": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1717.md",
-      "closedAt": null,
-      "updatedAt": "2026-11-15T06:33:08Z",
-      "contentHash": "d6e32bb4dc6e7e14e3378306a0b3413bade49fb5070d2818cd1caf8c6d95af48",
+      "closedAt": "2026-11-15T11:18:59Z",
+      "updatedAt": "2026-11-15T11:18:59Z",
+      "contentHash": "8f49a455998bb3b77da7193190bebbd41fdb553d5447af60c2a33a3a3019c847",
       "milestone": null,
       "commentsTotal": 0
     },
@@ -8409,11 +8409,11 @@
       "commentsTotal": 1
     },
     "1729": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1729.md",
-      "closedAt": null,
-      "updatedAt": "2026-11-15T06:47:00Z",
-      "contentHash": "c979a069b7cfcfe013f1d92386e0eb1a9d0f597fb6fedf023fe7fb0961acb165",
+      "closedAt": "2026-11-15T11:19:42Z",
+      "updatedAt": "2026-11-15T11:19:42Z",
+      "contentHash": "1ba482c2b772478e6fa86434ae1fdc15ae8c698ae77421e0ca7985be6f5fafb0",
       "milestone": null,
       "commentsTotal": 1
     },
@@ -8430,37 +8430,37 @@
       "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1732.md",
       "closedAt": "2026-11-15T03:04:53Z",
-      "updatedAt": "2026-11-15T03:11:01Z",
-      "contentHash": "8827cd03da5ae8daf334340c5026315ee58181a44998a04eb031863e569a86b1",
+      "updatedAt": "2026-11-15T13:07:47Z",
+      "contentHash": "0b8f47c3470f88587ab977a4ba943ec6c37f6585c5525d35caad0da479bcea06",
       "milestone": null,
       "commentsTotal": 1
     },
     "1733": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1733.md",
-      "closedAt": null,
-      "updatedAt": "2026-11-15T06:31:48Z",
-      "contentHash": "4fac22b706f4ec43366dff77c738fe266ffedd7ab5da9706bfabb1e49fba8a49",
+      "closedAt": "2026-11-15T13:07:48Z",
+      "updatedAt": "2026-11-15T13:07:48Z",
+      "contentHash": "76977417cfc3c64db1cf913f317d14177fe7b5dd4e9d2c7f6b569f565ca7a13c",
       "milestone": null,
-      "commentsTotal": 2
+      "commentsTotal": 4
     },
     "1735": {
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-10/issue-1735.md",
       "closedAt": null,
-      "updatedAt": "2026-11-15T06:14:33Z",
-      "contentHash": "0f0576146145ac4631b751556023c2ff45186f17ea09efd0b01b48d43d7303d0",
+      "updatedAt": "2026-11-15T13:40:43Z",
+      "contentHash": "05c25fb3dc15f503fb84872b069c216a791a06acaf52a841d2240d79cdc6d5b0",
       "milestone": null,
-      "commentsTotal": 7
+      "commentsTotal": 9
     },
     "1736": {
       "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1736.md",
       "closedAt": "2026-11-15T05:12:06Z",
-      "updatedAt": "2026-11-15T06:39:33Z",
-      "contentHash": "e2ef9af984fc8f91cf40d5663a4d91225f1b81c4351fe7eb11c0684725661f7b",
+      "updatedAt": "2026-11-15T14:02:20Z",
+      "contentHash": "17e4bfed2d1452dd3f26912646f3d22a792c2bf04a1ecd02d579f26ccb104dd5",
       "milestone": null,
-      "commentsTotal": 2
+      "commentsTotal": 4
     },
     "1738": {
       "state": "OPEN",
@@ -8475,10 +8475,10 @@
       "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1739.md",
       "closedAt": "2026-11-15T05:07:56Z",
-      "updatedAt": "2026-11-15T06:09:41Z",
-      "contentHash": "66277b63343c2885014b2e3cb78ea48daaf166e8818f0cd666229ab4d68b3783",
+      "updatedAt": "2026-11-15T14:21:02Z",
+      "contentHash": "c74fdf95cb478af54e6e2def53463a73511fdf5b2c3bdcc561b895465e247772",
       "milestone": null,
-      "commentsTotal": 7
+      "commentsTotal": 9
     },
     "1741": {
       "state": "OPEN",
@@ -8490,11 +8490,11 @@
       "commentsTotal": 1
     },
     "1742": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1742.md",
-      "closedAt": null,
-      "updatedAt": "2026-11-15T08:35:30Z",
-      "contentHash": "51a8e1a25e5cdd05ec586457e719e21e6011227b79296492240caeacb6f18f42",
+      "closedAt": "2026-11-15T16:39:11Z",
+      "updatedAt": "2026-11-15T16:39:11Z",
+      "contentHash": "709ae1cdf0c40adda36fba9fee6095d1973696871c6d6a517427920324b70c27",
       "milestone": null,
       "commentsTotal": 1
     },
@@ -8517,40 +8517,103 @@
       "commentsTotal": 0
     },
     "1750": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1750.md",
-      "closedAt": null,
-      "updatedAt": "2026-11-15T06:33:25Z",
-      "contentHash": "6e4e665715afabf960aeeb6f8bf5c810a43cdb14074e547c03b3a56911339fb4",
+      "closedAt": "2026-11-15T11:18:11Z",
+      "updatedAt": "2026-11-15T11:18:11Z",
+      "contentHash": "4a48a4d43344aaf594510a2e9f389b217bdd1753a268924a993a8e6383ff6393",
       "milestone": null,
       "commentsTotal": 0
     },
     "1753": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1753.md",
-      "closedAt": null,
-      "updatedAt": "2026-11-15T06:42:51Z",
-      "contentHash": "3ab4a6989902188f5d67458a5af3280f58b6b261c04f832861316b29146f67fb",
+      "closedAt": "2026-11-15T11:19:23Z",
+      "updatedAt": "2026-11-15T11:19:23Z",
+      "contentHash": "b000afc4f01442f5628264a39b8ffed810cb0ec66b21e09cd717b50200313014",
       "milestone": null,
       "commentsTotal": 0
     },
     "1754": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1754.md",
-      "closedAt": null,
-      "updatedAt": "2026-11-15T06:42:09Z",
-      "contentHash": "3a9fc28e96a2a9b966df3c3583c90262be3f8ab30bf5d59e4edbc9ecccfa699b",
+      "closedAt": "2026-11-15T15:07:30Z",
+      "updatedAt": "2026-11-15T15:10:29Z",
+      "contentHash": "203e3b825da765f05829b31e5fa589f5f1b386c4b107653afd13228c63609668",
       "milestone": null,
       "commentsTotal": 0
     },
     "1756": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-10/issue-1756.md",
+      "closedAt": "2026-11-15T11:20:30Z",
+      "updatedAt": "2026-11-15T13:08:06Z",
+      "contentHash": "d153165bbf75fecf85287fba792e24dfe5f7acb9268c2bae14eeff1ec3f7cb54",
+      "milestone": null,
+      "commentsTotal": 2
+    },
+    "1760": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-10/issue-1760.md",
       "closedAt": null,
-      "updatedAt": "2026-11-15T08:01:53Z",
-      "contentHash": "78b8d276a418c85fcf04d963db56c9bbcd2ec917e917c8edfef878e5ffcb2f2a",
+      "updatedAt": "2026-11-15T10:38:27Z",
+      "contentHash": "a352fd26787924d5fca4fc11d4f88b7db24828963d86cc9adce221ee8344a179",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "1762": {
+      "state": "CLOSED",
+      "path": "neo-agent-brain/issues/chunk-10/issue-1762.md",
+      "closedAt": "2026-11-15T14:52:26Z",
+      "updatedAt": "2026-11-15T14:52:26Z",
+      "contentHash": "6d36a1c40781b31c4d03bee0ed06e7ad081623e26674a87d21cf28fe31153150",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "1764": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-10/issue-1764.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-15T15:18:08Z",
+      "contentHash": "ef0b4918fb22889406984e46b788c52ce9143ffa5e0f3aa01c98996cc15c95e3",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "1765": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-10/issue-1765.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-15T16:28:28Z",
+      "contentHash": "3edfb7b286db7237df175649581c180d7c61cabd6323287852cd6d701232b5d8",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "1766": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-10/issue-1766.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-15T16:28:33Z",
+      "contentHash": "d51ea829e9568b37459782d24615e4b6e89b90b95097bd7ae919424337817c4a",
       "milestone": null,
       "commentsTotal": 1
+    },
+    "1767": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-10/issue-1767.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-15T16:28:38Z",
+      "contentHash": "cf6bc8076802c1b2f8c907e3b0ce7690ed49ff4b8c6f555a6ed5801b7d12c119",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "1768": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-10/issue-1768.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-15T16:51:54Z",
+      "contentHash": "bfd2cc4c3cc73797835cd4d7cec4906311fd5eaa69652db5b69c90bdd48cf2d2",
+      "milestone": null,
+      "commentsTotal": 0
     }
   },
   "releases": {},
@@ -8564,15 +8627,6 @@
       "updatedAt": "2026-11-15T05:36:14Z",
       "contentHash": "ef560a75c74703f8596e1c0dccc7129b3032611dddaa1d9fc0d1e6bc5d5c1c94"
     },
-    "1696": {
-      "state": "MERGED",
-      "path": "neo-agent-brain/pulls/chunk-8/pr-1696.md",
-      "closedAt": "2026-11-14T13:00:27Z",
-      "mergedAt": "2026-11-14T13:00:27Z",
-      "milestone": null,
-      "updatedAt": "2026-11-14T13:00:29Z",
-      "contentHash": "7d09c2a5a22a467f0a51d66b20ac7b438be459345cb5b6f8352048b7ae033e62"
-    },
     "1701": {
       "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-8/pr-1701.md",
@@ -8581,15 +8635,6 @@
       "milestone": null,
       "updatedAt": "2026-11-14T16:00:43Z",
       "contentHash": "6fefebf0a5b905d5acdb961a23641e641eb96e1c3b61d82c61227031b92858cc"
-    },
-    "1704": {
-      "state": "MERGED",
-      "path": "neo-agent-brain/pulls/chunk-8/pr-1704.md",
-      "closedAt": "2026-11-14T14:51:24Z",
-      "mergedAt": "2026-11-14T14:51:24Z",
-      "milestone": null,
-      "updatedAt": "2026-11-14T14:51:26Z",
-      "contentHash": "b7c39763abf0ed9deb059e72fa210315e892f1003e48b6eacf9afb48eb871c39"
     },
     "1705": {
       "state": "MERGED",
@@ -8772,58 +8817,76 @@
       "contentHash": "d572f14099eef65cfd5d9de1cd8cc59f5835d108480a8720aa815f1562e7c79c"
     },
     "1751": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-9/pr-1751.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-11-15T11:18:09Z",
+      "mergedAt": "2026-11-15T11:18:09Z",
       "milestone": null,
-      "updatedAt": "2026-11-15T06:47:52Z",
-      "contentHash": "e207524fbdd345b69835a78dc9cdf67c071c0e60cc43a24e637b2a7933337675"
+      "updatedAt": "2026-11-15T11:18:11Z",
+      "contentHash": "6b62267281b4eba2bfffd51b8188c68fbafcdb93983cd5dde9fa72e307fe6558"
     },
     "1752": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-9/pr-1752.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-11-15T11:18:58Z",
+      "mergedAt": "2026-11-15T11:18:58Z",
       "milestone": null,
-      "updatedAt": "2026-11-15T06:49:49Z",
-      "contentHash": "dfabe93f03f4e222c836f769c877803f343de8537438e2b4a60558ac1046d245"
+      "updatedAt": "2026-11-15T11:19:00Z",
+      "contentHash": "a60183778b2ad52be0fd50927749098fadd7f60ce7255913a603c8174f9c6cee"
     },
     "1755": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-9/pr-1755.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-11-15T11:19:22Z",
+      "mergedAt": "2026-11-15T11:19:22Z",
       "milestone": null,
-      "updatedAt": "2026-11-15T06:51:59Z",
-      "contentHash": "cf9d55ed04117acf3e1315d33f6db5199f033ce12d53d94cdece49fd4eb4290d"
+      "updatedAt": "2026-11-15T11:19:24Z",
+      "contentHash": "f640423a704d46d36b858934d66036de79bf992ce9820513e3cd14e7cb2f34c2"
     },
     "1757": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-9/pr-1757.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-11-15T11:19:41Z",
+      "mergedAt": "2026-11-15T11:19:41Z",
       "milestone": null,
-      "updatedAt": "2026-11-15T08:00:27Z",
-      "contentHash": "916ed89befb38aa7354d06d5c8cf218eabf707399999b7fe595b96e032f8169d"
+      "updatedAt": "2026-11-15T11:19:43Z",
+      "contentHash": "a15690382e5356bab696f1505fa9a2bd436d0b718e950f770e6eaeff7781156a"
     },
     "1758": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-9/pr-1758.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-11-15T11:20:29Z",
+      "mergedAt": "2026-11-15T11:20:29Z",
       "milestone": null,
-      "updatedAt": "2026-11-15T09:15:28Z",
-      "contentHash": "515b7d468efec2ec3735c72c71c0603df9814a163826f4845d4d913ec65fb6d0"
+      "updatedAt": "2026-11-15T11:20:32Z",
+      "contentHash": "968e7f6942b196387ffd088796b2780c630244868b1a915330c450bbc56f8207"
     },
     "1759": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-9/pr-1759.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-11-15T16:39:10Z",
+      "mergedAt": "2026-11-15T16:39:10Z",
       "milestone": null,
-      "updatedAt": "2026-11-15T09:14:29Z",
-      "contentHash": "0b3a438b1458969faa10f8190fb8e7d97855fe976d8d87bff5f5e50cd4e20aa0"
+      "updatedAt": "2026-11-15T16:39:12Z",
+      "contentHash": "20f869f4ab4e04abd44392d2e589fdc214925f6875fd3712eb6ffd4f40017f3f"
+    },
+    "1761": {
+      "state": "MERGED",
+      "path": "neo-agent-brain/pulls/chunk-9/pr-1761.md",
+      "closedAt": "2026-11-15T15:07:29Z",
+      "mergedAt": "2026-11-15T15:07:29Z",
+      "milestone": null,
+      "updatedAt": "2026-11-15T15:07:32Z",
+      "contentHash": "68b0d6d518e93802a9cf4b406cfc50a345704c02634875bbc5d9e80d5e8cdda0"
+    },
+    "1763": {
+      "state": "MERGED",
+      "path": "neo-agent-brain/pulls/chunk-9/pr-1763.md",
+      "closedAt": "2026-11-15T14:52:25Z",
+      "mergedAt": "2026-11-15T14:52:24Z",
+      "milestone": null,
+      "updatedAt": "2026-11-15T14:52:27Z",
+      "contentHash": "52c00903a932697e75431346ba497c33c6667c90b35e1da4658a8cd986d8e586"
     }
   },
   "discussions": {}

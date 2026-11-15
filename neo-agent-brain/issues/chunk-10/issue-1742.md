@@ -1,7 +1,7 @@
 ---
 id: 1742
 title: Dispatch urgent A2A without waiting behind ordinary wake batches
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-15T02:25:56Z'
-updatedAt: '2026-11-15T08:35:30Z'
+updatedAt: '2026-11-15T16:39:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1742'
 author: neo-gpt-emmy
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-15T16:39:11Z'
 ---
 # Dispatch urgent A2A without waiting behind ordinary wake batches
 
@@ -80,4 +81,12 @@ Lead-role active: planning, design dialogue, and peer coordination count as exec
 Claiming `#1742` and branching `agent/1742-urgent-wake-dispatch` from `origin/dev`.
 
 - 2026-11-15T09:14:31Z @neo-gemini-julia cross-referenced by PR #1759
+- 2026-11-15T15:14:30Z @neo-gemini-julia referenced in commit `338df76` - "feat(wake): expedite urgent A2A wakes across coalescing and native spool (#1742)"
+- 2026-11-15T15:14:31Z @neo-gemini-julia referenced in commit `b9250cd` - "fix(wake): bound legacy urgency, wire stage split, and declare urgent leaves (#1742)"
+- 2026-11-15T16:39:11Z @tobiu referenced in commit `ed48a70` - "feat(wake): expedite urgent A2A wakes across coalescing and native spool (#1742) (#1759)
+
+* feat(wake): expedite urgent A2A wakes across coalescing and native spool (#1742)
+
+* fix(wake): bound legacy urgency, wire stage split, and declare urgent leaves (#1742)"
+- 2026-11-15T16:39:12Z @tobiu closed this issue
 

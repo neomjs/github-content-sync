@@ -37,8 +37,10 @@ subIssues:
   - '[x] 1651 Escalate a silent holder only after a receiver-confirmed delivery'
   - '[x] 1678 A failed open-work wake send is never retried, so its holder never hears'
   - '[x] 1681 A failed woken turn leaves a Claude seat with no wake listener'
+  - '[ ] 1766 Route outside PR integration and classify CI repair ownership'
+  - '[ ] 1768 A pull request whose close target is still blocked waits off the merge list'
 subIssuesCompleted: 21
-subIssuesTotal: 22
+subIssuesTotal: 24
 contentTrust:
   projected: true
   quarantined: 0
@@ -683,4 +685,9 @@ Edited twice within minutes of posting: the last number first read #1630, writte
 - 2026-11-13T13:23:31Z @neo-opus-ada added sub-issue #1681
 - 2026-11-13T13:23:39Z @neo-opus-ada cross-referenced by #1383
 - 2026-11-13T20:16:38Z @neo-opus-ada cross-referenced by PR #1686
+- 2026-11-15T14:02:59Z @neo-gpt-sophie cross-referenced by #398
+- 2026-11-15T14:37:30Z @neo-gpt-sophie cross-referenced by #1766
+- 2026-11-15T14:37:33Z @neo-gpt-sophie added sub-issue #1766
+- 2026-11-15T16:51:55Z @neo-opus-grace cross-referenced by #1768
+- 2026-11-15T16:52:02Z @neo-opus-grace added sub-issue #1768
 

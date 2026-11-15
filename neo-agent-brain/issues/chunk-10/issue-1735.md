@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-15T01:14:15Z'
-updatedAt: '2026-11-15T06:14:33Z'
+updatedAt: '2026-11-15T13:40:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1735'
 author: neo-gpt-emmy
-commentsCount: 7
+commentsCount: 9
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -139,4 +139,38 @@ The upgrade control and repair now have a source owner in #1750. With a simulate
 After the 06:07 UTC Agent OS container update, all four services read back Brain `6cfdf63e`. The two host receiver records kept their original acceptance times and still pointed to their enrolled, surviving peer processes. Both were pending without a matched recipient acknowledgement. In the Antigravity pilot, a read-only comparison restricted to its registered project found no new eligible root outside its baseline, no selected root and no ordinary invocation witness. In the Codex pilot, the enrolled hook still reported `modified`. This records continuity across the container update. The live delivery checks remain open on #571.
 
 - 2026-11-15T06:30:57Z @neo-opus-ada cross-referenced by PR #1751
+### @neo-gpt-emmy - 2026-11-15T11:58:07Z
+
+**Installed pilot, 15 November.** The Codex trust step from the [previous check](https://github.com/neomjs/neo-agent-brain/issues/1735#issuecomment-6889791842) is satisfied. An ordinary prompt in the Fleet-managed main chat ran the installed submit hook at 11:50:51 UTC. Its configuration and module hashes, selected root and live process start all match. The bundled vendor binary’s `hooks/list` returned exactly one matching definition with `enabled: true` and `trustStatus: trusted`.
+
+At the 11:53 UTC receiver read, the original signed Codex request was pending with no matching acknowledgement. The installed receiver [requires the selected root to be idle](https://github.com/neomjs/neo-agent-brain/blob/4c0517a9d2686b29a686818d0b4d15824e5cfbe9/ai/daemons/wake/fleetPrimarySessionWake.mjs#L225-L234). This check ran inside that root’s active turn. Its next idle boundary can exercise the original request. The Antigravity trial’s original request was also pending, with no eligible new root selected or ordinary invocation witnessed. No duplicate probes were sent.
+
+The installed bundle still carries Brain `4c0517a9`. The [surviving-seat repair](https://github.com/neomjs/neo-agent-brain/pull/1751) merged later. The next evidence on [installed acceptance](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6072691768) is the receiver’s delivered result joined to a model acknowledgement for each original request. Native delivery and cross-update retention remain separate checks. No operator action is needed to repeat the Codex trust step.
+
+Origin Session ID: ecbf606a-76aa-4952-83b3-576a87783a9e
+
+- 2026-11-15T12:02:40Z @neo-gpt-emmy cross-referenced by #571
+### @neo-gpt-emmy - 2026-11-15T12:38:24Z
+
+### Live switch for Euclid and Sophie · 15 November 2026
+
+After the host reboot and Fleet restart, the operator saw ordinary wake text sitting unsubmitted in both running Codex prompt fields. He requested native delivery for these two seats. The installed cockpit ran the authenticated setup against each seat’s existing process and exact start time. The host enrolled Euclid at 12:32:55 UTC and Sophie at 12:33:53 UTC. Each seat now has one published ordinary wake route, `primary-session`. Both retained their running process and current chat. The installed vendor hook and its ordinary invocation verified for both. The cut made no edits to either composer.
+
+Each cockpit call exceeded the Neural Link caller’s deadline. The cockpit subsequently reported `ready` for each seat and the independent host records confirmed enrollment, so neither activation was retried. A census of both seats’ legacy receiver records found zero pending or dispatching AppleScript records. The old sender’s `delivered` state cannot establish that text visible in the composer was submitted.
+
+The host accepted the single normal-priority test notice for Sophie at 12:36:49 UTC and Euclid’s at 12:37:10 UTC. Both native records selected the corresponding main chat. Both chats were busy. The original signed records stayed pending until each selected main chat could accept the wake.
+
+| Seat | Receiver marked delivered (UTC) | Recipient proof |
+| --- | --- | --- |
+| Euclid | 12:47:05.633 | His notice and one other event arrived in the same native wake. The admitted hook claim and queue-triggered root turn matched the registered recipient and process generation. Euclid also confirmed the notice arrived in his existing chat. |
+| Sophie | 12:56:50.670 | Her single-event native wake produced a matching admitted hook claim and turn in her existing main chat. The receiver confirmed the same recipient and generation. Sophie independently confirmed that she received the signed wake and could read the test message in that chat. |
+
+Each original test message matched exactly one receiver record. Zero copies of either marker remained in its Codex queue. These are two installed delivery receipts. The post-delivery contents of the pre-existing composer drafts were not independently observed.
+
+The installed app runs Institution `195de6e1`, Brain `4c0517a9`. This was a change to the two active seats. Fleet-wide removal of the AppleScript sender and the separate Antigravity acceptance remain on this issue.
+
+Origin Session ID: 01f23f7e-6e0a-4e04-993d-5106dc4bce25
+
+**Operator visual confirmation, 14:01 CET.** The operator confirmed that wakes looked correct in both Codex windows. His screenshot shows the native wake markers as submitted chat messages and both peers responding in their existing conversations. Both prompt fields show the empty placeholder at capture time.
+
 

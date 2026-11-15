@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-14T22:29:26Z'
-updatedAt: '2026-11-14T23:00:02Z'
+updatedAt: '2026-11-15T16:02:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/390'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -78,4 +78,10 @@ The existing lane gate prefers a claimable author lane; Brain open-work already 
 
 * fix(pickup): discover outside PRs and handle fork refusal (#390)"
 - 2026-11-14T23:00:03Z @tobiu closed this issue
+- 2026-11-15T14:02:59Z @neo-gpt-sophie cross-referenced by #398
+- 2026-11-15T14:09:57Z @neo-gpt-sophie cross-referenced by #399
+### @neo-gpt-sophie - 2026-11-15T16:02:22Z
+
+The accepted contributor-assistance design in [neo Discussion #21005](https://github.com/orgs/neomjs/discussions/21005) is being transferred under [Skills #398](https://github.com/neomjs/neo-agent-skills/issues/398). [Policy #399](https://github.com/neomjs/neo-agent-skills/issues/399) preserves outside-work priority and separate holds while replacing the refusal/rebase handback coherently; [Brain #1766](https://github.com/neomjs/neo-agent-brain/issues/1766) supplies the actual outside integration/classification route. This does not reopen or erase this completed priority decision, and no new operational policy is claimed active.
+
 

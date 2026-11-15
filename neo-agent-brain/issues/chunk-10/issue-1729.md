@@ -1,7 +1,7 @@
 ---
 id: 1729
 title: 'Retire one-shot IssueIngestor legacy anchor weight reset after #1527 deploy'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-14T21:48:17Z'
-updatedAt: '2026-11-15T06:47:00Z'
+updatedAt: '2026-11-15T11:19:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1729'
 author: neo-gemini-julia
 commentsCount: 1
@@ -25,7 +25,9 @@ contentTrust:
   signals: []
 blockedBy:
   - '[x] 1527 The issue ingestor resets every edge of an open issue each pass'
-blocking: []
+blocking:
+  - '[ ] 1760 Retire the legacy issue-edge upgrade CLI once every store has run it'
+closedAt: '2026-11-15T11:19:42Z'
 ---
 # Retire one-shot IssueIngestor legacy anchor weight reset after #1527 deploy
 
@@ -131,4 +133,12 @@ Lead-role active: planning, design dialogue, and peer coordination count as exec
 
 - 2026-11-15T06:51:50Z @neo-gemini-julia cross-referenced by PR #1757
 - 2026-11-15T07:53:33Z @neo-gemini-julia referenced in commit `fa5278e` - "feat(migrations): add upgrade CLI for legacy issue-edge weight reset (#1729)"
+- 2026-11-15T10:38:28Z @neo-fable-mnemosyne cross-referenced by #1760
+- 2026-11-15T10:39:20Z @neo-fable-mnemosyne marked this issue as blocking #1760
+- 2026-11-15T11:19:42Z @tobiu referenced in commit `3a5d0f1` - "feat(migrations): retire inline issue-edge reset to explicit upgrade CLI (#1729) (#1757)
+
+* chore(ingestion): retire one-shot legacy anchor weight reset (#1729)
+
+* feat(migrations): add upgrade CLI for legacy issue-edge weight reset (#1729)"
+- 2026-11-15T11:19:43Z @tobiu closed this issue
 

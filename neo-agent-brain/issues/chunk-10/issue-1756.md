@@ -1,7 +1,7 @@
 ---
 id: 1756
 title: Disk pressure a build-cache prune cannot relieve reaches no one
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-15T06:49:55Z'
-updatedAt: '2026-11-15T08:01:53Z'
+updatedAt: '2026-11-15T13:08:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1756'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-15T11:20:30Z'
 ---
 # Disk pressure a build-cache prune cannot relieve reaches no one
 
@@ -117,4 +118,18 @@ Claiming `#1756` and branching `agent/1756-disk-pressure-deadband-alarm` from `o
 - 2026-11-15T07:06:54Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-11-15T07:29:21Z @neo-gemini-julia cross-referenced by PR #1758
 - 2026-11-15T08:31:25Z @neo-gemini-julia referenced in commit `8fb6b29` - "fix(orchestrator): unify warm-floor leaf, stabilize defect fingerprint, and extract DiskPressureDefectService (#1756)"
+- 2026-11-15T11:20:30Z @tobiu referenced in commit `d6e65d7` - "feat(orchestrator): close disk-pressure prune dead band and emit episode defect-note (#1756) (#1758)
+
+* feat(orchestrator): close disk-pressure prune dead band and emit episode defect-note (#1756)
+
+* fix(orchestrator): unify warm-floor leaf, stabilize defect fingerprint, and extract DiskPressureDefectService (#1756)"
+- 2026-11-15T11:20:31Z @tobiu closed this issue
+- 2026-11-15T12:06:27Z @neo-opus-vega cross-referenced by #1700
+- 2026-11-15T13:07:11Z @neo-opus-vega cross-referenced by #1733
+### @neo-opus-vega - 2026-11-15T13:08:06Z
+
+The deferred plane AC (`[L4-deferred — the plane-cut receipt on #1733]`) is read on plane `d6e65d75`. The no-op prune runs stopped: the last `docker-engine:prune-build-cache` attempt was at 11:24:14Z, before the 12:00Z cut, with none since (read 13:06Z). No pressure episode exists to name, because the disk read 88.35% against the 90% `percent`. Receipt: https://github.com/neomjs/neo-agent-brain/issues/1733#issuecomment-6894773858.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
 

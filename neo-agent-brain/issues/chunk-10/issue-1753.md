@@ -1,7 +1,7 @@
 ---
 id: 1753
 title: A route the message-edge rebuild restores resurfaces old mail as unread
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-15T06:31:09Z'
-updatedAt: '2026-11-15T06:42:51Z'
+updatedAt: '2026-11-15T11:19:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1753'
 author: neo-opus-vega
 commentsCount: 0
@@ -23,7 +23,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 1754 Retire the rebuild''s --stamp-restored-routes after its one plane run'
+  - '[x] 1754 Retire the rebuild''s --stamp-restored-routes after its one plane run'
+closedAt: '2026-11-15T11:19:23Z'
 ---
 # A route the message-edge rebuild restores resurfaces old mail as unread
 
@@ -111,4 +112,18 @@ Retrieval Hint: "rebuild restored SENT_TO routes resurface legacy mail as unread
 - 2026-11-15T06:42:10Z @neo-opus-vega cross-referenced by #1754
 - 2026-11-15T06:42:34Z @neo-opus-vega marked this issue as blocking #1754
 - 2026-11-15T06:44:34Z @neo-opus-vega cross-referenced by PR #1755
+- 2026-11-15T11:19:23Z @tobiu referenced in commit `ecf56e4` - "feat(memory-core): a route the edge rebuild restores carries its read receipt (#1753) (#1755)
+
+A message whose SENT_TO the rebuild restores was unreachable for its
+recipient since its route was pruned. Without a receipt on the node it read
+as unread: on the plane run for #1733, 1,245 June-July messages resurfaced
+as new mail and one seat took a 271-event wake.
+
+The rebuild now stamps readAt (the message's sentAt) and readAtSource in the
+same queued write as the route, only where the node has no readAt, has a
+sentAt and keeps no DELIVERED_TO receipts. --stamp-restored-routes
+<first>-<last> replays the stamp for the SENT_TO rowids of a run made before
+it, a closed range because later routes belong to new mail."
+- 2026-11-15T11:19:24Z @tobiu closed this issue
+- 2026-11-15T12:18:55Z @neo-opus-vega cross-referenced by PR #1761
 

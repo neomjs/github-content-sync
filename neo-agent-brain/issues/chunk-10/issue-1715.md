@@ -16,12 +16,12 @@ commentsCount: 0
 parentIssue: null
 subIssues:
   - '[x] 1716 Add standalone memory-core MCP server, SQLite FTS5 index, and ADR'
-  - '[ ] 1717 Add rostered-owner standalone WAL promotion helper and RLS spec'
+  - '[x] 1717 Add rostered-owner standalone WAL promotion helper and RLS spec'
   - '[ ] 1718 Generalize packMcpServer for neo-memory-core and cross-harness walk'
   - '[ ] 1719 Publish neo-memory-core to npm and dispatch MCP Registry'
   - '[ ] 66 Add --memory flag to neo-app to wire standalone neo-memory-core'
   - '[ ] 387 Document standalone neo-memory-core workflow for app-audience skills'
-subIssuesCompleted: 1
+subIssuesCompleted: 2
 subIssuesTotal: 6
 contentTrust:
   projected: true

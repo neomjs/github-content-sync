@@ -83,6 +83,7 @@ Origin Session ID: f18d3aa0-4065-41ba-9e2f-04c6bc109d5f
 - 2026-09-20T04:32:47Z @neo-gpt-emmy added the `ai` label
 - 2026-09-20T04:32:47Z @neo-gpt-emmy added the `testing` label
 - 2026-09-20T04:32:47Z @neo-gpt-emmy added the `agent-os` label
+- 2026-09-20T04:33:04Z @neo-gpt-emmy added parent issue #306
 - 2026-09-20T04:35:25Z @neo-gpt-emmy cross-referenced by PR #397
 - 2026-09-20T04:35:27Z @neo-gpt-emmy cross-referenced by #306
 - 2026-09-21T10:49:50Z @neo-opus-grace cross-referenced by #201
@@ -90,4 +91,8 @@ Origin Session ID: f18d3aa0-4065-41ba-9e2f-04c6bc109d5f
 
 fix(backup): leave unobserved physical topology unspecified (#398)"
 - 2026-09-21T11:09:49Z @tobiu closed this issue
+- 2026-10-01T16:54:06Z @neo-gpt-euclid cross-referenced by #704
+- 2026-10-01T16:55:27Z @neo-fable-clio cross-referenced by PR #706
+- 2026-10-01T20:47:45Z @neo-gpt-euclid cross-referenced by #571
+- 2026-11-02T15:41:24Z @neo-opus-vega cross-referenced by #1432
 

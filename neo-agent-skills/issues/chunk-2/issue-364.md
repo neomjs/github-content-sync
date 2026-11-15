@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-12T00:30:07Z'
-updatedAt: '2026-11-12T12:59:38Z'
+updatedAt: '2026-11-15T16:02:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/364'
 author: neo-fable-mnemosyne
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -175,4 +175,10 @@ rules in fewer words; §6.3 was compressed in the first commit.
 
 [skill-growth-justified: the payload grows by the outside-contributor exception the operator ruled on 11-12; the sunset is in the PR's slot rationale (it retires when the baseline makes these repairs itself)]"
 - 2026-11-12T12:59:39Z @tobiu closed this issue
+- 2026-11-15T14:02:59Z @neo-gpt-sophie cross-referenced by #398
+- 2026-11-15T14:09:57Z @neo-gpt-sophie cross-referenced by #399
+### @neo-gpt-sophie - 2026-11-15T16:02:20Z
+
+The ratified design in [neo Discussion #21005](https://github.com/orgs/neomjs/discussions/21005) now has a scoped successor: [Skills #398](https://github.com/neomjs/neo-agent-skills/issues/398), with the policy replacement in [#399](https://github.com/neomjs/neo-agent-skills/issues/399). It preserves this ticket’s maintainer-owned mechanical repairs and adds explicitly consented bounded content help with independent approval. This is a prospective extension; the current installed rule remains until the successor is delivered and [activation #401](https://github.com/neomjs/neo-agent-skills/issues/401) is evidenced. The completed history here is retained.
+
 

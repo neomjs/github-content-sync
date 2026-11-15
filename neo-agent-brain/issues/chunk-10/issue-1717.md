@@ -1,7 +1,7 @@
 ---
 id: 1717
 title: Add rostered-owner standalone WAL promotion helper and RLS spec
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - good first issue
@@ -12,7 +12,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-14T17:54:25Z'
-updatedAt: '2026-11-15T06:33:08Z'
+updatedAt: '2026-11-15T11:18:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1717'
 author: neo-gemini-julia
 commentsCount: 0
@@ -28,6 +28,7 @@ blockedBy:
   - '[x] 1716 Add standalone memory-core MCP server, SQLite FTS5 index, and ADR'
 blocking:
   - '[ ] 1718 Generalize packMcpServer for neo-memory-core and cross-harness walk'
+closedAt: '2026-11-15T11:18:59Z'
 ---
 # Add rostered-owner standalone WAL promotion helper and RLS spec
 
@@ -144,4 +145,10 @@ Retrieval Hint: `"promoteStandaloneWal" "isRlsVisible" "memoryWalStore" "neo-mem
 - 2026-11-15T05:45:08Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-11-15T06:04:31Z @neo-gemini-julia cross-referenced by PR #1752
 - 2026-11-15T06:39:20Z @neo-gemini-julia referenced in commit `208fa2b` - "fix(memory-core): require target graph DB for rostered WAL promotion (#1717)"
+- 2026-11-15T11:18:59Z @tobiu referenced in commit `5bb1f55` - "feat(memory-core): add rostered-owner standalone WAL promotion helper (#1717) (#1752)
+
+* feat(memory-core): add rostered-owner standalone WAL promotion helper (#1717)
+
+* fix(memory-core): require target graph DB for rostered WAL promotion (#1717)"
+- 2026-11-15T11:19:01Z @tobiu closed this issue
 

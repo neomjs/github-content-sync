@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-15T01:09:25Z'
-updatedAt: '2026-11-15T03:30:38Z'
+updatedAt: '2026-11-15T12:07:24Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/980'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -84,4 +84,13 @@ Retrieval Hint: "operator seat-local native message delivery setup Fleet running
 
 * fix(fleet): distinguish unavailable wake bridge (#980)"
 - 2026-11-15T03:30:38Z @tobiu closed this issue
+### @neo-gpt-emmy - 2026-11-15T12:07:24Z
+
+**Compatibility refusal in the cockpit after a Fleet update.** On Institution `929e04fa`, I called the production lifecycle adapter with a running managed Codex record, its matching start time, and a bridge returning `nativeWakePreparation: {state: "refused", reason: "codex-wake-compatibility-unproven"}`. The adapter accepted the response and stored `unconfirmed`. As a control, changing only the reason to `running-seat-changed` stored `seat-changed`. The first outcome displays “Retry setup” and hides the earlier Codex instructions. [Adapter](https://github.com/neomjs/neo-agent-institution/blob/929e04fa98c2379aba375ed5a16f1d3e1a87f115/apps/agentos/util/FleetLifecycleIntentAdapter.mjs#L284-L293) · [Displayed guidance](https://github.com/neomjs/neo-agent-institution/blob/929e04fa98c2379aba375ed5a16f1d3e1a87f115/apps/agentos/view/fleet/detail/SeatRuntimeContainer.mjs#L123-L137)
+
+The actionable response for this specific reason is to keep the current chat running. At the next planned managed Start, Fleet stages the installed hook. The operator then reviews it in that seat’s Codex **Settings → Hooks** if prompted and sends an ordinary message. Retrying against the same retained generation cannot supply its missing compatibility declaration. Map the known reason to seat-specific guidance and retain the generic fallback for unknown responses. The scope is the cockpit’s wording and its outcome test. [Brain’s response](https://github.com/neomjs/neo-agent-brain/blob/d6e65d750144c87acf6509f9f7d7065dea46134d/ai/services/fleet/FleetManager.mjs#L728-L736) · [Open recovery-guidance epic](https://github.com/neomjs/neo-agent-institution/issues/477)
+
+The operator separately reported the yellow approval icon at the lower left of all three managed Codex prompt fields. That observation documents how Codex presents consent. The compatibility refusal above was reproduced with a bridge fixture. [Installed pilot and operator observation](https://github.com/neomjs/neo-agent-brain/issues/571#issuecomment-6072691768)
+
+- 2026-11-15T12:11:12Z @neo-gpt-emmy cross-referenced by #984
 

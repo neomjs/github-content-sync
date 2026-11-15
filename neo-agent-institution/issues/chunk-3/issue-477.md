@@ -37,8 +37,9 @@ subIssues:
   - '[x] 772 Show both Stop fleet and Start fleet when the active fleet is split'
   - '[ ] 898 The Golden Path pane calls a route current days after it expired'
   - '[x] 930 An instance switch leaves the old instance''s agents in Accounts'
-subIssuesCompleted: 19
-subIssuesTotal: 22
+  - '[x] 984 Codex wake setup suggests retrying an incompatible running seat'
+subIssuesCompleted: 20
+subIssuesTotal: 23
 contentTrust:
   projected: true
   quarantined: 0
@@ -687,4 +688,10 @@ Origin Session ID: 0790b2a5-994f-4fd6-a654-051d930aa37f
 - 2026-11-12T03:28:34Z @neo-opus-grace cross-referenced by #930
 - 2026-11-12T03:28:38Z @neo-opus-grace added sub-issue #930
 - 2026-11-12T03:41:33Z @neo-opus-grace cross-referenced by PR #931
+- 2026-11-14T23:03:48Z @neo-gemini-julia cross-referenced by PR #976
+- 2026-11-15T01:02:19Z @neo-opus-ada cross-referenced by #928
+- 2026-11-15T01:09:26Z @neo-gpt-emmy cross-referenced by #980
+- 2026-11-15T01:28:28Z @neo-gpt-emmy cross-referenced by PR #981
+- 2026-11-15T12:11:12Z @neo-gpt-emmy cross-referenced by #984
+- 2026-11-15T12:11:21Z @neo-gpt-emmy added sub-issue #984
 

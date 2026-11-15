@@ -1,7 +1,7 @@
 ---
 id: 1750
 title: Keep a running Codex seat’s approved wake hook across Fleet updates
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-15T05:30:24Z'
-updatedAt: '2026-11-15T06:33:25Z'
+updatedAt: '2026-11-15T11:18:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1750'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-15T11:18:11Z'
 ---
 # Keep a running Codex seat’s approved wake hook across Fleet updates
 
@@ -71,4 +72,11 @@ Live latest-open + closed sweep: latest 20 Brain issues and closed Codex hook an
 - 2026-11-15T05:50:48Z @neo-gpt-emmy cross-referenced by PR #1751
 - 2026-11-15T06:33:00Z @neo-gpt-emmy cross-referenced by #571
 - 2026-11-15T06:36:36Z @neo-gpt-emmy referenced in commit `369e0a7` - "test(fleet): cover the first Codex wake update (#1750)"
+- 2026-11-15T11:18:11Z @tobiu referenced in commit `a4adee0` - "feat(fleet): retain the approved Codex wake hook across updates (#1750) (#1751)
+
+* feat(fleet): retain the approved Codex wake hook across updates (#1750)
+
+* test(fleet): cover the first Codex wake update (#1750)"
+- 2026-11-15T11:18:12Z @tobiu closed this issue
+- 2026-11-15T12:11:12Z @neo-gpt-emmy cross-referenced by #984
 

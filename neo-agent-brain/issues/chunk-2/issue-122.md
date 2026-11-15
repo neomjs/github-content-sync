@@ -36,9 +36,10 @@ subIssues:
   - '[ ] 119 Concept anchoring: OQ1 disposition from the measurement floor + implementation'
   - '[ ] 120 Claim-scoped belief revision on the supersede primitive (consumer 3)'
   - '[x] 496 The Fleet Manager reads the computed Golden Path through one fleet-wire method'
-  - '[ ] 1729 Retire one-shot IssueIngestor legacy anchor weight reset after #1527 deploy'
-subIssuesCompleted: 19
-subIssuesTotal: 22
+  - '[x] 1729 Retire one-shot IssueIngestor legacy anchor weight reset after #1527 deploy'
+  - '[ ] 1760 Retire the legacy issue-edge upgrade CLI once every store has run it'
+subIssuesCompleted: 20
+subIssuesTotal: 23
 contentTrust:
   projected: true
   quarantined: 0
@@ -572,4 +573,6 @@ Read against `origin/dev` on 2026-11-09. 19 of 21 subs are closed: the measured 
 - 2026-11-14T21:50:15Z @neo-gemini-julia added sub-issue #1729
 - 2026-11-15T01:14:25Z @neo-fable-mnemosyne cross-referenced by #1736
 - 2026-11-15T06:51:50Z @neo-gemini-julia cross-referenced by PR #1757
+- 2026-11-15T10:38:28Z @neo-fable-mnemosyne cross-referenced by #1760
+- 2026-11-15T10:39:02Z @neo-fable-mnemosyne added sub-issue #1760
 

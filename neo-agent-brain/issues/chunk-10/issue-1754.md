@@ -1,7 +1,7 @@
 ---
 id: 1754
 title: Retire the rebuild's --stamp-restored-routes after its one plane run
-state: OPEN
+state: CLOSED
 labels:
   - ai
   - refactoring
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-15T06:42:09Z'
-updatedAt: '2026-11-15T06:42:09Z'
+updatedAt: '2026-11-15T15:10:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1754'
 author: neo-opus-vega
 commentsCount: 0
@@ -22,8 +22,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1753 A route the message-edge rebuild restores resurfaces old mail as unread'
+  - '[x] 1753 A route the message-edge rebuild restores resurfaces old mail as unread'
 blocking: []
+closedAt: '2026-11-15T15:07:30Z'
 ---
 # Retire the rebuild's --stamp-restored-routes after its one plane run
 
@@ -44,9 +45,9 @@ One-shot repair logic that stays in the tree is code nobody calls, spec arms tha
 
 ## Acceptance Criteria
 
-- [ ] The plane runs a Brain build that carries #1753 (deployed revision recorded).
-- [ ] Dry run, then apply, with the range above; receipt on #1733: `routes`, stamped count, Ada's unread directs before and after, and the 33 genuinely unread messages from #1753 still unread.
-- [ ] The replay code and its spec arms are deleted; `rebuildMessageEdges.spec.mjs` stays green.
+- [x] The plane runs a Brain build that carries #1753 (deployed revision recorded). `d6e65d75`, cut 2026-11-15 12:00:00–12:02:25Z ([receipt](https://github.com/neomjs/neo-agent-brain/issues/1733#issuecomment-6894191172)).
+- [x] Dry run, then apply, with the range above; receipt on #1733: `routes`, stamped count, Ada's unread directs before and after, and the 33 genuinely unread messages from #1753 still unread.
+- [x] The replay code and its spec arms are deleted; `rebuildMessageEdges.spec.mjs` stays green. Merged in #1761 as `976347e6`, 2026-11-15 15:07Z; no file on `dev` names `stampRestoredRoutes`, `parseRowidRange` or the flag.
 
 ## Out of Scope
 
@@ -73,4 +74,18 @@ Structure map: `ai/scripts/maintenance` owns it; no new file.
 - 2026-11-15T06:42:34Z @neo-opus-vega marked this issue as being blocked by #1753
 - 2026-11-15T06:42:52Z @neo-opus-vega cross-referenced by #1753
 - 2026-11-15T06:44:34Z @neo-opus-vega cross-referenced by PR #1755
+- 2026-11-15T12:17:50Z @neo-opus-vega cross-referenced by #1733
+- 2026-11-15T12:18:55Z @neo-opus-vega cross-referenced by PR #1761
+- 2026-11-15T15:07:30Z @tobiu referenced in commit `976347e` - "chore(maintenance): retire the rebuild's restored-route stamp after its plane run (#1754) (#1761)
+
+The --stamp-restored-routes replay existed for one rebuild run, made before the
+rebuild stamped read receipts at insert time: plane 6cfdf63e, 2026-11-15 06:09Z,
+SENT_TO rowids 4016144-4026679. That range is now stamped on the plane (receipt
+on #1733), and every later rebuild stamps as it links, so the replay has no
+caller.
+
+Deletes stampRestoredRoutes, parseRowidRange, the option, the restoredRoutes
+branch of runRebuildMessageEdges, the module-doc sentence naming the flag, and
+their two spec arms. receiptStatements stays: the insert-time stamp uses it."
+- 2026-11-15T15:07:31Z @tobiu closed this issue
 

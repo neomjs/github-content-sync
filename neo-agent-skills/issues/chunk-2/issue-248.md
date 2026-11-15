@@ -1,17 +1,18 @@
 ---
 id: 248
 title: Honor explicit goal-mode requests before ending the turn
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - model-experience
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-10-30T19:08:28Z'
-updatedAt: '2026-10-30T19:08:28Z'
+updatedAt: '2026-11-15T11:21:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/248'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -22,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-15T11:21:16Z'
 ---
 # Honor explicit goal-mode requests before ending the turn
 
@@ -91,4 +93,22 @@ Retrieval Hint: "requested goal mode idle peers cold cache no progress proposal-
 - 2026-10-30T19:08:30Z @neo-gpt-emmy added the `bug` label
 - 2026-10-30T19:08:30Z @neo-gpt-emmy added the `ai` label
 - 2026-10-30T19:08:30Z @neo-gpt-emmy added the `model-experience` label
+- 2026-11-15T09:30:33Z @neo-gemini-julia assigned to @neo-gemini-julia
+### @neo-gemini-julia - 2026-11-15T09:30:37Z
+
+Lead-role active: planning, design dialogue, and peer coordination count as execution; suspend Auto Mode velocity bias until an exit condition is met.
+
+### Ticket Intake Classification (`valid-as-written`)
+
+- **Prescription checked:** `.agents/skills/goal-scoping/references/goal-scoping-workflow.md` (`§5 Drive to the lane-GOAL`) and `.agents/skills/lead-role/references/lead-role-mode.md` (`§2.1 Coordination Pattern`) — own the goal/lead handoff decision; harness goal tool descriptions remain the authority for tool availability and permitted state transitions.
+- **Ticket age & bot stale-band:** `createdAt` / `updatedAt` `2026-10-30T19:08:28Z` (`pre-stale`, no `stale` or `no auto close` labels).
+- **Currency & existing-enforcement audit:** Zero commits touched `goal-scoping` or `lead-role` on `origin/dev` since `createdAt` (`6329b15`), `0` open PRs in `neomjs/neo-agent-skills`, and existing `AGENTS.md §L3_No_Hold_State` / skill prose lacks the conditional boundary distinguishing explicit native-goal authorization (`ACTIVE` + first authorized action in the same turn, preserving unfinished goals, one focused clarification + independent work on genuine ambiguity, zero goal creation on ordinary tasks/wakes) and sender dispatch vs. recipient-confirmed goal activation.
+- **ADR successor-risk:** `adr-aligned` — artifact `#248/2026-10-30`; ADRs `neomjs/neo#adr:agents-md-compaction-taxonomy` (`Accepted/2026-05-15`) and `neomjs/neo#adr:skill-anatomy-and-authoring-contract` (`Proposed/2026-05-15`); evidence `.agents/skills/goal-scoping/references/goal-scoping-workflow.md` and `.agents/skills/lead-role/references/lead-role-mode.md`; route `continue`.
+- **Turn-memory / corpus-budget plan:** `rewrite` disposition inside the conditional `references/` payloads only (`0` router Map growth; net-negative or well within the `250 B` corpus delta cap via tightening adjacent repetition in `lead-role-mode.md`).
+
+Origin Session ID: `2f084437-cc03-4b7b-aace-a27bff4aa3f9`
+
+- 2026-11-15T09:49:47Z @neo-gemini-julia cross-referenced by PR #397
+- 2026-11-15T11:21:16Z @tobiu referenced in commit `5ce40ac` - "feat(skills): honor explicit goal-mode requests before ending turn (#248) (#397)"
+- 2026-11-15T11:21:17Z @tobiu closed this issue
 

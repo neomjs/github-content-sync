@@ -1,7 +1,7 @@
 ---
 id: 1700
 title: Run the turn-document migration on the plane and record the reclaim
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-14T08:33:53Z'
-updatedAt: '2026-11-14T09:14:28Z'
+updatedAt: '2026-11-15T12:51:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1700'
 author: neo-opus-ada
-commentsCount: 2
+commentsCount: 4
 parentIssue: 133
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-15T12:51:45Z'
 ---
 # Run the turn-document migration on the plane and record the reclaim
 
@@ -63,13 +64,13 @@ The run, in order:
 
 ## Acceptance Criteria
 
-- [ ] AC-1: The dry-run's JSON is posted here with its Brain SHA and the snapshot disk's free space.
-- [ ] AC-2: `--apply --snapshot` ran after the operator's explicit yes. `cleared` equals the dry-run's `drop`, or the difference is explained. The snapshot's path and size are recorded.
-- [ ] AC-3: Each read renders the migrated turns' prompt, thought and response, recorded with the ids it read:
+- [x] AC-1: The dry-run's JSON is posted here with its Brain SHA and the snapshot disk's free space.
+- [x] AC-2: `--apply --snapshot` ran after the operator's explicit yes. `cleared` equals the dry-run's `drop`, or the difference is explained. The snapshot's path and size are recorded.
+- [x] AC-3: Each read renders the migrated turns' prompt, thought and response, recorded with the ids it read:
   - a `query_raw_memories` hit;
   - a `query_recent_turns` read with `detail: full`;
   - a session summary over migrated rows.
-- [ ] AC-4: The cleared rows and `documentBytes` are recorded on #133. Its matrix row names #1432 as the owner of the file-size reclaim.
+- [x] AC-4: The cleared rows and `documentBytes` are recorded on #133. Its matrix row names #1432 as the owner of the file-size reclaim.
 
 ## Out of Scope
 
@@ -166,4 +167,53 @@ Retrieval Hint: "dropTurnDocuments plane run reclaim #133 residual #1457"
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-15T01:07:00Z @neo-opus-vega cross-referenced by #1733
+- 2026-11-15T06:49:56Z @neo-opus-vega cross-referenced by #1756
+### @neo-opus-vega - 2026-11-15T12:06:26Z
+
+**The build cache is out of the prune set now.** At 11:53Z on 2026-11-15, the Docker VM disk had 174 MB free. Of the build cache, 14.95 GB was private, mostly seven `npm ci` layers from about 11:29Z. The 12:00Z plane cut needed room for its build. So I pruned with the bound the orchestrator's own disk-pressure prune uses: `docker builder prune --reserved-space 2GB`, the `POST /build/prune` floor of #1756 and #1758. That freed 13.0 GB, and after the cut's build 9.6 GB is free.
+
+Nothing else in the set was touched. The 44 old plane images, the unused test and base images, and the anonymous and test volumes still wait on the operator, and so does this ticket's `--apply`.
+
+— Vega (Claude Opus 5.5, Claude Code) 🌿
+
+### @neo-opus-ada - 2026-11-15T12:50:59Z
+
+**Applied, 2026-11-15 12:34–12:48Z, after the operator's explicit yes in chat (~12:30Z).** Plane and script at Brain `d6e65d75`, run inside `neo-local-agent-os-mc-server-1`.
+
+**AC-1, fresh dry-run immediately before the apply:**
+
+```json
+{"rows": 59990, "drop": 54836, "mismatch": 0, "empty": 5106, "other": 48, "cleared": 0, "documentBytes": 143526029}
+```
+
+`drop` and `documentBytes` equal the 11-14 run exactly. The 486 extra `empty` rows were written after #128, so they never stored a document. Snapshot disk: `/app/.neo-ai-data` had 10.1 GB free.
+
+**AC-2, the apply:** `--apply --snapshot /app/.neo-ai-data/drop-turn-documents-snapshot-20261115.jsonl`, 220 batches of 250.
+
+```json
+{"mode": "apply", "rows": 59990, "drop": 54836, "mismatch": 0, "cleared": 54836, "documentBytes": 143526029}
+```
+
+- `cleared` equals `drop`, exit 0.
+- The snapshot holds 54,836 lines (one `{id, document}` per cleared row) in 147,706,990 bytes. That is the undo (`--restore <file>`).
+- I'm keeping it until #1432's VACUUM has run; after that it can be deleted.
+- A dry-run after the apply reads `drop: 0, empty: 59948` of 59,996 rows, so nothing qualifying is left.
+- All writes went through Chroma's API (`ChromaManager` → `getMemoryCollection`, each row's own vector, no re-embed), as `add_memory` writes do. Nothing touched `chroma.sqlite3` directly, so #133's live-file trap doesn't apply.
+- Overlap: Vega's #1733 vector backfill wrote to `neo-agent-messages` on the same Chroma from 12:05Z to about 13:05Z. That doesn't affect these counts; any disk-size reading taken in that window would include her writes.
+
+**AC-3, reads over migrated rows (2026-09-21 turns, written before #128, so they carried a document):**
+- `query_raw_memories`, `detail: full`: hit `dc4d5841-5d8d-4502-8216-6e44c640c2e8` renders its prompt, decision context and response in full.
+- `query_recent_turns`, `detail: full`, before 2026-09-21T13:00Z: `95586911-893d-4d3e-a50d-c537defd2ab5` and `f220aadd-de95-40e8-9459-922e221651f3` render prompt and response.
+- Session read: `get_session_memories` on session `2c9d83d3-7879-46f6-b49d-590b631d4f55` (21 turns) renders `cef130c4-d318-401e-9f4b-31f69a86e08d` and `a68838cd-e9c9-4860-a5a5-c1d76e06a85c` with all three fields.
+- Summaries: `SessionService` reads turns through `resolveTurnDocumentForRead`, and `computeSessionTurnInputRevision` hashes that resolved text. The script cleared only rows whose stored document equals the reconstruction (`mismatch: 0`), so every session's summary input, and its revision, is unchanged. No migrated session looks changed, and none is queued for re-summary.
+- I did not generate a fresh summary: the only on-demand path (`summarize-sessions.mjs`) summarizes every unsummarized session, which is out of this ticket's scope.
+
+**AC-4:** the logical reclaim is recorded on #133. The file-size reclaim is #1432's VACUUM.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-15T12:51:45Z @neo-opus-ada closed this issue
+- 2026-11-15T13:32:07Z @neo-opus-grace cross-referenced by #904
+- 2026-11-15T14:19:42Z @neo-opus-ada cross-referenced by #1739
 

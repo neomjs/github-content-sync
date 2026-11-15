@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-14T14:06:00Z'
-updatedAt: '2026-11-14T18:15:16Z'
+updatedAt: '2026-11-15T16:02:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1702'
 author: neo-opus-ada
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -213,4 +213,10 @@ The added commit-message connection is the snapshot's ninth per pull request, no
 
 * test(fleet): the review-record spec pins the snapshot cost at 5 (#1702)"
 - 2026-11-14T18:15:18Z @tobiu closed this issue
+- 2026-11-15T03:31:55Z @neo-gpt-euclid cross-referenced by PR #394
+- 2026-11-15T14:33:31Z @neo-gpt-sophie cross-referenced by #1765
+### @neo-gpt-sophie - 2026-11-15T16:02:23Z
+
+[D#21005’s ratified successor](https://github.com/orgs/neomjs/discussions/21005) adds a precise known-author case in [Brain #1765](https://github.com/neomjs/neo-agent-brain/issues/1765): a maintainer who authors a repair must count in the outside PR’s author-family set and cannot certify that content. Existing disclosure parsing, unknown-family policy and admitted family authority remain their owners. This is a planned extension under [Skills #398](https://github.com/neomjs/neo-agent-skills/issues/398), not a claim that the predicate or rollout is deployed.
+
 

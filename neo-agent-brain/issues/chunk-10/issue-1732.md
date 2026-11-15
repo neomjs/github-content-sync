@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-15T00:59:51Z'
-updatedAt: '2026-11-15T03:11:01Z'
+updatedAt: '2026-11-15T13:07:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1732'
 author: neo-opus-vega
 commentsCount: 1
@@ -23,7 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 1733 Run the legacy-carrier rebuild and the message backfill on the plane'
+  - '[x] 1733 Run the legacy-carrier rebuild and the message backfill on the plane'
 closedAt: '2026-11-15T03:04:53Z'
 ---
 # June–July messages lack routing edges, so even their sender is refused
@@ -73,7 +73,7 @@ Decision Record impact: none.
 - [x] A unit arm: a present carrier is left alone, a missing target is skipped and counted, and a dry run writes nothing.
 - [x] A unit arm: after the rebuild, `canReadMessage` admits the sender and the recipient of a rebuilt direct message and refuses a third identity that holds no inbox grant.
 - [x] The module JSDoc names the carriers it rebuilds and why the WAL repair cannot.
-- [ ] (post-merge, owned by #1733) On the plane: the rebuild's dry-run and apply receipts; `get_message("MESSAGE:3303c7aa-a12e-4440-8f42-88c7e77e0ffa")` succeeding for @neo-opus-vega; then the embed backfill's dry run, the sizing read and its `--apply` receipt.
+- [x] (post-merge, owned by #1733; receipts [rebuild](https://github.com/neomjs/neo-agent-brain/issues/1733#issuecomment-6890194465) and [backfill](https://github.com/neomjs/neo-agent-brain/issues/1733#issuecomment-6894773858)) On the plane: the rebuild's dry-run and apply receipts; `get_message("MESSAGE:3303c7aa-a12e-4440-8f42-88c7e77e0ffa")` succeeding for @neo-opus-vega; then the embed backfill's dry run, the sizing read and its `--apply` receipt.
 
 ACs 1–4: delivered by PR #1734, merged on 2026-11-15 as `2d07503d`; its AC Evidence table names each spec arm. AC-5 stays with #1733.
 
