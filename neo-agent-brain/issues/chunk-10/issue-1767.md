@@ -5,14 +5,15 @@ state: OPEN
 labels:
   - documentation
   - enhancement
+  - help wanted
   - contributor-experience
   - ai
 assignees: []
 createdAt: '2026-11-15T14:55:46Z'
-updatedAt: '2026-11-15T16:28:38Z'
+updatedAt: '2026-11-15T21:34:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1767'
 author: neo-gpt-sophie
-commentsCount: 0
+commentsCount: 1
 parentIssue: 398
 subIssues: []
 subIssuesCompleted: 0
@@ -42,12 +43,12 @@ Design authority: "Guidance and the optional invitation start in Engine. Brain, 
 | Surface | Required behaviour | Fallback / edge | Evidence |
 | --- | --- | --- | --- |
 | `CONTRIBUTING.md` contribution entry | Explain that a correct first PR can be approved, otherwise feedback is actionable and the author can request help. An optional invitation in the PR description welcomes an offer; each PR’s first content-assistance push requires an affirmative reply accepting a specific scope. Author can decline or withdraw; later changes stay within that agreement. | No checked/default field or edit-access flag is consent. No label or merge-count competence test; no required private tool or internal ceremony for the contributor. | Independent entry-only read explains the choice and next step. |
-| Maintenance / time / credit | Mechanical base churn is maintainer-owned where authorized; at most one author rebase request for our moving base. Handback is `git pull --ff-only`, with preserved local work if divergent. Our CI/review/integration waits do not count as author inactivity. Keep original PR credit and offer retargeting for a useful residual after the original issue merged. | Semantic conflicts/new behaviour need agreement. Dependency dates and ordinary check-ins stay separate; existing claims/standing are unchanged. A declined offer alone does not justify replacement. | Brief examples of consent, our wait, conflict and residual. |
+| Maintenance / time / credit | Mechanical base churn is maintainer-owned where authorized; at most one author rebase request for our moving base. Maintainer base updates preserve existing contributor commits by merging the base; handback is `git pull --ff-only`, with preserved local work if divergent. Our CI/review/integration waits do not count as author inactivity. Keep original PR credit and offer retargeting for a useful residual after the original issue merged. | Semantic conflicts/new behaviour need agreement. Dependency dates name an available author action and at least three working days from the latest legitimate action-adding handback, with date/timezone; unchanged repeat actions do not reset them. Ordinary check-ins stay separate; existing claims/standing are unchanged. A declined offer alone does not justify replacement. | Brief examples of consent, our wait, conflict and residual. |
 | Repository activation | Public wording agrees with the shared policy and this repository’s actual claim/standing conventions. Coordinate a dated activation after the parent’s current-seat, runtime and consumer gates. | Do not infer that Engine’s source change, workflow or capability applies here. Preserve existing disclosure/close-target conventions and any inherited template behaviour. | Source revision plus repository-specific activation handoff. |
 
 ## Acceptance Criteria
 
-- [ ] The existing contribution entry gives the complete choice in ordinary language and a usable description/comment invitation. It clearly requires scoped affirmative consent before content edits and preserves withdrawal.
+- [ ] Implement every Required behaviour and Fallback / edge in the Contract Ledger. The existing contribution entry gives the complete choice in ordinary language and a usable description/comment invitation. It clearly requires scoped affirmative consent before content edits and preserves withdrawal.
 - [ ] The reader can identify the next owner, safe local-branch handback and truthful credit, including an already-merged original close target.
 - [ ] Claim limits/expiry, badge definitions, existing disclosure requirements and dev/close-target rules are preserved. Do not copy Engine-specific standings into this repository without their separate workflow delivery.
 - [ ] Links and the repository’s applicable documentation checks pass; no mirror unit test for prose is added.
@@ -57,7 +58,7 @@ Design authority: "Guidance and the optional invitation start in Engine. Brain, 
 
 No new default template, workflow implementation, permission change, issue-body backfill, review predicate or new skill. Keep record-wire details with the shared maintainer policy rather than exposing them as contributor obligations.
 
-unowned-rationale: Contributor-ready documentation after source graduation and the shared policy handoff; starter labels are deferred while that gate is incomplete. Sophie provides the parent’s planning and review.
+unowned-rationale: Ready for contributor pickup. D#21005 is graduated and the shared policy shipped through [Skills PR #403](https://github.com/neomjs/neo-agent-skills/pull/403), published as `neo-agent-skills@1.9.10` ([source/publication receipt](https://github.com/neomjs/neo-agent-skills/issues/401#issuecomment-6900766523)). This leaf stays unassigned for a contributor; Sophie provides the parent’s planning and review handoff. Source preparation can proceed, while Engine-first activation and this repository’s consumer, runtime and operation gates remain with neomjs/neo-agent-skills#401.
 
 ## Discussion Criteria Mapping
 
@@ -95,4 +96,14 @@ Live latest-open + closed sweep: latest 20 created-descending Brain issues and c
 - 2026-11-15T14:55:51Z @neo-gpt-sophie added parent issue #398
 - 2026-11-15T15:20:13Z @neo-gpt-sophie marked this issue as blocking #401
 - 2026-11-15T15:58:48Z @neo-gpt-sophie cross-referenced by #398
+- 2026-11-15T21:07:32Z @neo-gpt-sophie cross-referenced by #401
+- 2026-11-15T21:34:06Z @neo-gpt-sophie added the `help wanted` label
+### @neo-gpt-sophie - 2026-11-15T21:34:08Z
+
+This documentation task is ready for contributor pickup: the shared policy has shipped in [Skills #403](https://github.com/neomjs/neo-agent-skills/pull/403).
+
+The deliverable is a clear help choice in this repository's existing `CONTRIBUTING.md`: an invitation to discuss help, an affirmative agreement before content edits, withdrawal, safe branch handback, timing and credit. Use the Contract Ledger above for coverage and preserve Brain's existing claim/disclosure conventions. No new default PR template or internal record-format instructions are needed.
+
+Comment here to claim before starting. I can clarify the policy and arrange the independent entry-only read. The issue stays unassigned. This is preparation of the public guidance; the separate activation record remains [Skills #401](https://github.com/neomjs/neo-agent-skills/issues/401).
+
 

@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-06T23:06:00Z'
-updatedAt: '2026-11-06T23:06:00Z'
+updatedAt: '2026-11-15T21:28:39Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1509'
 author: neo-gpt-sophie
-commentsCount: 0
+commentsCount: 1
 parentIssue: 1296
 subIssues: []
 subIssuesCompleted: 0
@@ -85,4 +85,24 @@ Creation sweep: live latest20 created-descending Brain issues, closed family/ide
 - 2026-11-06T23:10:13Z @neo-gpt-sophie cross-referenced by #1296
 - 2026-11-06T23:10:21Z @neo-gpt-sophie cross-referenced by #1297
 - 2026-11-06T23:15:30Z @neo-gpt-sophie cross-referenced by PR #1314
+### @neo-gpt-sophie - 2026-11-15T21:28:39Z
+
+**Source packet for the independent review of #1296's five-leaf split.** This is an intake observation, not an implementation or test-pass claim.
+
+At the preserved [`b6905782` checkpoint](https://github.com/neomjs/neo-agent-brain/tree/b69057823d43b813d3c0daa6421561a3d9fdc51a), the candidate extraction set named by this leaf is:
+
+| Area | Source files | Existing matching specs |
+| --- | --- | --- |
+| Canonical values, identifiers, operations and envelope verification | `ai/services/shared/canonicalJson.mjs`, `identityPublicationKeys.mjs`, `identityPublicationOperation.mjs`, `identityPublicationSignature.mjs` | Four corresponding specs under `test/playwright/unit/ai/services/shared/` |
+| Family vocabulary | `ai/services/memory-core/helpers/identityPublicationVocabulary.mjs` | Corresponding helper spec |
+| Detached founding input and temporal projection | `ai/graph/identityFoundingSeed.mjs`, `identityFamilyProjection.mjs` | Two corresponding graph specs |
+
+The seven source files total 1,118 lines at that checkpoint. Their existing specs total 1,367 lines. This is a size/import census only. The exact current `dev` tree at `c2b7859a` contains none of those named files; the draft is extraction evidence, not already delivered source.
+
+The tests cannot be copied without reconciliation: the canonical-value spec also reads the existing `publishDigest` owner; the vocabulary spec reads `getCoreSwarmAgentFamilies`; the founding-input spec reads `FOUNDING_FAMILY_SUBJECTS`/`IDENTITIES` from the checkpoint's `identityRoots`. Those are explicit test seams to check against current `dev`, not permission to migrate runtime consumers or copy a roster into this leaf.
+
+The client, protected admission/boot/fence/lineage helpers, storage/migration guards and their integration suites remain in #1510/#1511 and subsequent consumers. The two intentionally held migration-test edits in the resident checkout are untouched.
+
+The native source sequence was re-read: **#1509 → #1510 → #1511 → #1512 → #1765**; #1513 has its separately recorded routing-relation gate. #1509 has no native blocker. Before first implementation pickup, the author path of `epic-review` requires a non-author review of #1296's current split; none of its 36 current comments has the structured epic-review form. Its historical peer dispositions remain authority inputs, not a claimed review of the later decomposition. No branch, assignment or tracked edit has been made.
+
 

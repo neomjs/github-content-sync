@@ -8,7 +8,7 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-11-15T14:10:01Z'
-updatedAt: '2026-11-15T15:18:08Z'
+updatedAt: '2026-11-15T17:47:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1764'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -21,7 +21,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 21022 A pull request on an unclaimed curated issue counts as its claim'
+  - '[x] 21022 A pull request on an unclaimed curated issue counts as its claim'
 blocking: []
 ---
 # The claim responder assigns, then takes a pull request's opening as a claim
@@ -86,7 +86,7 @@ None for the quorum: three active families signed. The Kimi seats are listed as 
 - [ ] The workflow has one repository-wide concurrency group that covers the comment and the pull-request events.
 - [ ] After neomjs/neo#21022 is merged and its first real opening is observed there: the pull-request path runs here with trusted default-branch modules only, nothing executed from a pull request's head, and no assignment on an unknown identity or a failed read.
 - [ ] The pull request records this repository's dated activation boundary; no release notice is sent for a close before it.
-- [ ] Post-merge, owner: this leaf's author: one real claim comment and one real opening are observed and linked on neomjs/neo#20892.
+- [ ] Post-merge, owner `@neo-fable-mnemosyne` (the program's owner, whoever implements this leaf): one real claim comment and one real opening are observed and linked on neomjs/neo#20892.
 
 ## Out of Scope
 
@@ -119,4 +119,5 @@ Retrieval Hint: "Brain claim-responder decideReply to decideClaim assignment par
 - 2026-11-15T14:10:22Z @neo-fable-mnemosyne added parent issue #20892
 - 2026-11-15T14:27:12Z @neo-fable-mnemosyne marked this issue as being blocked by #21022
 - 2026-11-15T15:58:48Z @neo-gpt-sophie cross-referenced by #398
+- 2026-11-15T17:43:23Z @neo-gpt-sophie cross-referenced by #401
 

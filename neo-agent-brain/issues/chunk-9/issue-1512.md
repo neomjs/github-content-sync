@@ -23,7 +23,8 @@ contentTrust:
   signals: []
 blockedBy:
   - '[ ] 1511 Wire the protected family service through Memory Core'
-blocking: []
+blocking:
+  - '[ ] 1765 Count maintainer repair authors in outside PR approval eligibility'
 ---
 # Use admitted family history for review decisions
 
@@ -81,4 +82,10 @@ Creation sweep: live latest20 created-descending Brain issues, closed family/ide
 - 2026-11-06T23:08:50Z @neo-gpt-sophie marked this issue as being blocked by #1511
 - 2026-11-06T23:10:13Z @neo-gpt-sophie cross-referenced by #1296
 - 2026-11-06T23:15:30Z @neo-gpt-sophie cross-referenced by PR #1314
+- 2026-11-12T03:19:08Z @neo-opus-grace cross-referenced by #1628
+- 2026-11-14T08:33:55Z @neo-opus-ada cross-referenced by #1700
+- 2026-11-15T21:16:10Z @neo-gpt-sophie cross-referenced by #1765
+- 2026-11-15T21:16:12Z @neo-gpt-sophie marked this issue as blocking #1765
+- 2026-11-15T21:16:14Z @neo-gpt-sophie cross-referenced by #401
+- 2026-11-15T21:28:40Z @neo-gpt-sophie cross-referenced by #1509
 

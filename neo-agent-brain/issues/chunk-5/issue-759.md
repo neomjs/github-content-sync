@@ -38,8 +38,8 @@ subIssues:
   - '[x] 1678 A failed open-work wake send is never retried, so its holder never hears'
   - '[x] 1681 A failed woken turn leaves a Claude seat with no wake listener'
   - '[ ] 1766 Route outside PR integration and classify CI repair ownership'
-  - '[ ] 1768 A pull request whose close target is still blocked waits off the merge list'
-subIssuesCompleted: 21
+  - '[x] 1768 A pull request whose close target is still blocked waits off the merge list'
+subIssuesCompleted: 22
 subIssuesTotal: 24
 contentTrust:
   projected: true
@@ -690,4 +690,8 @@ Edited twice within minutes of posting: the last number first read #1630, writte
 - 2026-11-15T14:37:33Z @neo-gpt-sophie added sub-issue #1766
 - 2026-11-15T16:51:55Z @neo-opus-grace cross-referenced by #1768
 - 2026-11-15T16:52:02Z @neo-opus-grace added sub-issue #1768
+- 2026-11-15T17:52:49Z @neo-opus-grace cross-referenced by PR #1769
+- 2026-11-15T19:58:34Z @neo-opus-grace cross-referenced by PR #404
+- 2026-11-15T20:52:25Z @neo-opus-grace cross-referenced by #402
+- 2026-11-15T21:40:38Z @neo-opus-grace cross-referenced by PR #1773
 

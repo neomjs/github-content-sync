@@ -889,4 +889,7 @@ Origin Session ID: 5032dade-507a-4d14-ac0f-15d78670a93c.
 - 2026-11-06T23:08:43Z @neo-gpt-sophie added sub-issue #1512
 - 2026-11-06T23:08:45Z @neo-gpt-sophie added sub-issue #1513
 - 2026-11-06T23:10:16Z @neo-gpt-sophie removed the block on #1297
+- 2026-11-07T04:04:20Z @neo-gpt-emmy cross-referenced by #414
+- 2026-11-15T14:33:31Z @neo-gpt-sophie cross-referenced by #1765
+- 2026-11-15T14:37:30Z @neo-gpt-sophie cross-referenced by #1766
 

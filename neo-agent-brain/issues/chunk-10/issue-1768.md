@@ -1,14 +1,14 @@
 ---
 id: 1768
 title: A pull request whose close target is still blocked waits off the merge list
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-15T16:51:54Z'
-updatedAt: '2026-11-15T16:51:54Z'
+updatedAt: '2026-11-15T19:54:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1768'
 author: neo-opus-grace
 commentsCount: 0
@@ -21,7 +21,10 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[x] 402 A merge order is declared as a native blocked_by edge, not a body line'
+  - '[ ] 991 The seat card names a PR that waits on its close target''s blocker'
+closedAt: '2026-11-15T19:54:59Z'
 ---
 # A pull request whose close target is still blocked waits off the merge list
 
@@ -41,16 +44,16 @@ The operator merges from the Fleet Manager's awaiting-merge list, which shows wh
 
 ## The Fix
 
-1. **The holder reads the close target's open blockers.** When an approved, green head's close target still has an open `blockedBy` issue, `holderOf` names no human merge. It names `{role: 'author', kind: 'await-prerequisite'}` with the blocker as data: the author owns the dependency, and the wake tells them when it clears.
-2. **The read is bounded like the unblock read:** one read per approved head, only when the head would otherwise be the operator's.
+1. **The holder reads the close target's open blockers.** When an approved, green head's close target still has an open `blockedBy` issue, `holderOf` names no human merge. It names `{role: 'author', kind: 'await-prerequisite', targets}` with the blocked close target as data. The author owns the dependency and gets one notice. The wait never escalates to another seat, since nothing waits on a seat but the prerequisite.
+2. **The read rides the snapshot:** GitHub's `issueDependenciesSummary.blockedBy` counts each close target's open blockers. That adds no formula cost, so no second read is needed (decided in #1769).
 3. **The dependency is declared natively:** the close-target ticket is `blocked_by` the prerequisite's ticket. First verify that a cross-repository edge reads through `blockedBy`. If it does not, the fallback is one PR-body line the producer parses, as it parses `Authored by`.
 
 ## Acceptance Criteria
 
-- [ ] An approved, green, mergeable pull request whose close target has an open blocker is not `operator/merge`; it names the blocker (unit, `openWorkHolder.spec.mjs`).
+- [ ] An approved, green, mergeable pull request whose close target has an open blocker is not `operator/merge`. It names that close target, whose page lists its blockers (unit, `openWorkHolder.spec.mjs`). GitHub's count carries no blocker identity, and reading the blockers themselves would multiply the snapshot's cost (decided in #1769's review).
 - [ ] When the blocker closes, the next pulse hands the pull request to the merge (unit).
 - [ ] A cross-repository `blocked_by` edge is read, or the fallback line is implemented and documented (receipt in the PR).
-- [ ] A failed or partial blocker read never certifies the merge (`incomplete` stays `unknown`, as today).
+- [ ] A failed, partial or absent blocker read never certifies the merge, including a row stored before the read existed (`unknown`, as today).
 - [ ] [Post-merge] the installed Fleet Manager's awaiting-merge list omits a blocked pull request and shows it again once its blocker closes.
 
 ## Out of Scope
@@ -82,4 +85,24 @@ Retrieval Hint: "merge order hold: close target blockedBy open issue withholds o
 - 2026-11-15T16:51:56Z @neo-opus-grace added the `enhancement` label
 - 2026-11-15T16:51:56Z @neo-opus-grace added the `ai` label
 - 2026-11-15T16:52:02Z @neo-opus-grace added parent issue #759
+- 2026-11-15T17:43:29Z @neo-gpt-sophie cross-referenced by #1765
+- 2026-11-15T17:52:49Z @neo-opus-grace cross-referenced by PR #1769
+- 2026-11-15T17:58:23Z @neo-opus-grace cross-referenced by #402
+- 2026-11-15T17:58:40Z @neo-opus-grace cross-referenced by #991
+- 2026-11-15T17:59:05Z @neo-opus-grace marked this issue as blocking #991
+- 2026-11-15T17:59:06Z @neo-opus-grace marked this issue as blocking #402
+- 2026-11-15T18:26:04Z @neo-opus-grace referenced in commit `715b045` - "fix(fleet): a merge needs a complete dependency read, and a prerequisite wait never escalates (#1768)
+
+A row without a complete close-target read, including one stored before the read existed, certifies no merge. An await-prerequisite wait wakes its author once and raises no holder-silent, holder-unreachable or unowned escalation."
+- 2026-11-15T19:54:59Z @tobiu referenced in commit `c2b7859` - "feat(fleet): an approved PR whose close target is still blocked waits off the merge list (#1768) (#1769)
+
+* feat(fleet): an approved PR whose close target is still blocked waits off the merge list (#1768)
+
+The open-work snapshot reads each close target's open-blocker count (issueDependenciesSummary.blockedBy), and holderOf names author/await-prerequisite instead of operator/merge while one is blocked. A target list the read did not finish certifies no merge.
+
+* fix(fleet): a merge needs a complete dependency read, and a prerequisite wait never escalates (#1768)
+
+A row without a complete close-target read, including one stored before the read existed, certifies no merge. An await-prerequisite wait wakes its author once and raises no holder-silent, holder-unreachable or unowned escalation."
+- 2026-11-15T19:55:00Z @tobiu closed this issue
+- 2026-11-15T19:58:34Z @neo-opus-grace cross-referenced by PR #404
 
