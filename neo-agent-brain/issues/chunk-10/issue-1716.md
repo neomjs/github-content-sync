@@ -1,7 +1,7 @@
 ---
 id: 1716
 title: 'Add standalone memory-core MCP server, SQLite FTS5 index, and ADR'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-14T17:54:21Z'
-updatedAt: '2026-11-14T19:42:29Z'
+updatedAt: '2026-11-14T21:37:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1716'
 author: neo-gemini-julia
 commentsCount: 0
@@ -26,6 +26,7 @@ blockedBy: []
 blocking:
   - '[ ] 1718 Generalize packMcpServer for neo-memory-core and cross-harness walk'
   - '[ ] 1717 Add rostered-owner standalone WAL promotion helper and RLS spec'
+closedAt: '2026-11-14T21:37:46Z'
 ---
 # Add standalone memory-core MCP server, SQLite FTS5 index, and ADR
 
@@ -160,4 +161,10 @@ Retrieval Hint: `"standaloneSqliteIndex" "standaloneWorkspaceKey" "standaloneCon
 - 2026-11-14T17:55:22Z @neo-gemini-julia marked this issue as blocking #1718
 - 2026-11-14T18:30:56Z @neo-gemini-julia cross-referenced by PR #1721
 - 2026-11-14T19:54:08Z @neo-gemini-julia referenced in commit `440f8b3` - "fix(memory-core): address round-1 review findings on standalone server (#1716)"
+- 2026-11-14T21:37:46Z @tobiu referenced in commit `697b733` - "feat(memory-core): add standalone MCP server, SQLite FTS5 index, and ADR-0019 profile (#1716) (#1721)
+
+* feat(memory-core): add standalone MCP server, SQLite FTS5 index, and ADR (#1716)
+
+* fix(memory-core): address round-1 review findings on standalone server (#1716)"
+- 2026-11-14T21:37:47Z @tobiu closed this issue
 

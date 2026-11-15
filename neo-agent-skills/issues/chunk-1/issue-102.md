@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-21T14:55:52Z'
-updatedAt: '2026-11-14T14:08:30Z'
+updatedAt: '2026-11-15T00:41:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/102'
 author: neo-opus-ada
 commentsCount: 0
@@ -53,14 +53,14 @@ In `pull-request/references/cross-family-mandate.md`, in the file's difference-t
 1. An outside author's family is the family its PR names. A name counts in a disclosure line in the body (`Authored by …`, `Generated with …`, `Prepared with …`, an `AI assistance` line) or in a `Co-Authored-By` trailer on any commit. When a PR names several families, all of them count. A harness alone (Cursor, Copilot, OpenCode) names none, and a path or topic mention is not a disclosure.
 2. If the PR names a family, the approval needs a seat of a family it does not name. A seat of a named family that is handed the PR offers it to a seat of another lab.
 3. If the PR names none, any seat may review and approve.
-4. `pull-request-workflow.md`'s author-family line points at this clause for outside authors. `pr-review`'s arrival check reads the body and the commit trailers.
+4. `pull-request-workflow.md`'s author-family line points at this clause for outside authors. The Review-Seat Gate (`post-review-pickup/references/pre-review-intake-lane-gate.md`), which `pr-review`'s guide runs as §2 step 1 at every review start, makes a seat of a disclosed family hand the PR on.
 
 ## Acceptance Criteria
 
 - [ ] AC-1: `cross-family-mandate.md` states the outside-author rule in the difference-test idiom, without a family list: a named family needs an approver from another family; nothing named means any seat.
 - [ ] AC-2: It defines a disclosure: body disclosure lines and `Co-Authored-By` trailers on any commit. Harness-only names and path or topic mentions do not count.
 - [ ] AC-3: It states the reviewer path: a same-lab seat that receives such a PR hands it to a seat of another lab, so no PR waits on a seat that cannot approve it.
-- [ ] AC-4: `pr-review`'s arrival check covers outside PRs, answerable from `gh pr view N --json body,commits` with no roster lookup.
+- [ ] AC-4: The Review-Seat Gate, which is `pr-review`'s arrival check (guide §2 step 1), covers outside PRs, answerable from `gh pr view N --json body,commits` with no roster lookup.
 - [ ] AC-5: Net loaded bytes are accounted per the accretion rule. The clause replaces the undefined case; it does not add a parallel rule.
 
 ## Out of Scope
@@ -91,6 +91,7 @@ In `pull-request/references/cross-family-mandate.md`, in the file's difference-t
 - Live latest-open sweep: 20 open issues on this repo at 2026-09-21T14:54:44Z; no equivalent. `#85` is adjacent and a different subject.
 - A2A in-flight claim sweep at 14:54Z: no `[lane-claim]` overlaps the cross-family mandate. @neo-opus-grace explicitly declined to claim it.
 - Own-assignment sweep: `#76`, `#66`, `#63` are mine here; none touch review-family eligibility.
+- Intake 2026-11-15 (the drift probe fired on `pr-review/` and `pull-request-workflow.md`): neomjs/neo-agent-brain#1705 (merged 2026-11-14, `e44ef997`) shipped the Fleet and merge-readiness half. Its `ai/services/graph/disclosedModelFamilies.mjs` is the parse, which the mandate cites rather than restates. `pr-review` has no arrival check of its own; its guide's §2 step 1 runs the Review-Seat Gate, so AC-4 lands there. Prescription checked: `cross-family-mandate.md` — owns the concern; `pr-review-guide.md` — better owner: `pre-review-intake-lane-gate.md` §Review-Seat Gate.
 
 Origin Session ID: c54728f6-de9d-46a5-921f-aef7e79b91c8
 
@@ -116,4 +117,6 @@ Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code. R
 - 2026-11-07T06:58:18Z @neo-gpt-euclid cross-referenced by #310
 - 2026-11-12T01:29:21Z @neo-opus-ada cross-referenced by #366
 - 2026-11-12T01:40:42Z @neo-opus-ada cross-referenced by #367
+- 2026-11-15T00:43:11Z @neo-opus-ada cross-referenced by PR #394
+- 2026-11-15T00:44:28Z @neo-opus-ada referenced in commit `102d22e` - "chore(release): bump neo-agent-skills to 1.9.7 (#102)"
 

@@ -1,7 +1,7 @@
 ---
 id: 388
 title: memory-mining's tool order names no search for what peers said
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-14T20:02:52Z'
-updatedAt: '2026-11-14T20:03:01Z'
+updatedAt: '2026-11-14T22:40:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/388'
 author: neo-opus-vega
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T22:40:25Z'
 ---
 # memory-mining's tool order names no search for what peers said
 
@@ -79,4 +80,19 @@ Retrieval Hint: "memory-mining tool order query_messages A2A mailbox semantic re
 - 2026-11-14T20:03:01Z @github-actions added the `needs-design-authority` label
 - 2026-11-14T20:04:12Z @neo-opus-vega cross-referenced by PR #389
 - 2026-11-14T20:06:33Z @neo-opus-vega referenced in commit `77daf73` - "chore(release): neo-agent-skills 1.9.4 (#388)"
+- 2026-11-14T22:34:37Z @neo-opus-vega cross-referenced by #392
+- 2026-11-14T22:40:25Z @tobiu referenced in commit `bffbbcd` - "feat(memory-mining): the tool order names query_messages for what peers said (#388) (#389)
+
+* feat(memory-mining): the tool order names query_messages for what peers said (#388)
+
+What seats said to each other lives in the A2A mailbox, which
+query_messages searches by meaning, admitted like get_message. The tool
+order listed only the memory tools, which index turns, so a sweep for a
+peer's words searched the speaker's turn diaries instead.
+
+The order gains query_messages as its fourth item, and the regression
+gate drops a harness-private filename no reader could open.
+
+* chore(release): neo-agent-skills 1.9.4 (#388)"
+- 2026-11-14T22:40:26Z @tobiu closed this issue
 

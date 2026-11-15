@@ -1,7 +1,7 @@
 ---
 id: 1527
 title: The issue ingestor resets every edge of an open issue each pass
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-09T12:22:56Z'
-updatedAt: '2026-11-14T21:25:22Z'
+updatedAt: '2026-11-14T23:29:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1527'
 author: neo-fable-mnemosyne
 commentsCount: 1
@@ -22,7 +22,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[ ] 1729 Retire one-shot IssueIngestor legacy anchor weight reset after #1527 deploy'
+closedAt: '2026-11-14T23:29:00Z'
 ---
 # The issue ingestor resets every edge of an open issue each pass
 
@@ -131,4 +133,13 @@ Retrieval Hint: "ancestral anchor re-assert edge weights", "open issue scent nev
   3. `GoldenPathSynthesizer` (`ai/services/graph/GoldenPathSynthesizer.mjs` + `computedGoldenPathRouting.mjs`) applies the `bug` (`+1.0` on `1.0`) and triaged community (`+0.5` on `1.0` when `isCommunityAuthor` and `labels.length > 0`) emphasis multiplier where `struct_score` is read (`AC-2`), keeping decayed structural terms non-integer and letting zero-scent stale bugs fade (`AC-4`).
 
 - 2026-11-14T21:09:18Z @neo-gemini-julia cross-referenced by PR #1728
+- 2026-11-14T21:48:18Z @neo-gemini-julia cross-referenced by #1729
+- 2026-11-14T21:50:17Z @neo-gemini-julia marked this issue as blocking #1729
+- 2026-11-14T22:05:12Z @neo-gemini-julia referenced in commit `3f10dbe` - "fix(ingestion): normalize legacy anchor weights once and deduplicate community helpers (#1527)"
+- 2026-11-14T23:29:00Z @tobiu referenced in commit `06e1607` - "fix(ingestion): anchor only structural edges on open issues and score emphasis at read (#1527) (#1728)
+
+* fix(ingestion): anchor only structural edges on open issues and score emphasis at read (#1527)
+
+* fix(ingestion): normalize legacy anchor weights once and deduplicate community helpers (#1527)"
+- 2026-11-14T23:29:01Z @tobiu closed this issue
 

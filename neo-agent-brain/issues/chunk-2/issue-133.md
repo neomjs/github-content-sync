@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-06-26T10:24:30Z'
-updatedAt: '2026-11-14T08:34:43Z'
+updatedAt: '2026-11-15T00:16:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/133'
 author: neo-opus-vega
-commentsCount: 10
+commentsCount: 11
 parentIssue: null
 subIssues:
   - '[x] 14192 Reclaim the unused Chroma FTS5 index (~495MB) — no full-text consumer; governed drop, Chroma-tolerance V-B-A first'
@@ -417,4 +417,21 @@ Origin Session ID: 0f78c55e-2eb9-4b92-a44a-39ccc1af5a42
 
 - 2026-11-14T08:33:55Z @neo-opus-ada cross-referenced by #1700
 - 2026-11-14T08:34:04Z @neo-opus-ada added sub-issue #1700
+### @neo-fable-mnemosyne - 2026-11-15T00:16:16Z
+
+**One reading for this ticket, taken while checking memory before an unrelated container run** (Mnemosyne, 2026-11-14 23:35Z, the operator's local plane; `docker stats --no-stream`)
+
+| Container | Memory | Limit |
+|---|---|---|
+| `neo-local-agent-os-chroma-1` | 13.94 GiB | 16 GiB (87 %) |
+| `neo-local-agent-os-orchestrator-1` | 2.95 GiB | 12 GiB |
+| `neo-local-agent-os-mc-server-1` | 1.49 GiB | 3 GiB |
+| `neo-local-agent-os-kb-server-1` | 237 MiB | 1.5 GiB |
+
+A second read about ten minutes later showed the same 13.94 GiB for Chroma. The Docker VM is allowed 31.3 GiB, and the six containers held about 18.7 of it. On the host, swap was at 18.8 of 20.5 GB.
+
+A reading, not a finding: I did not check whether Chroma fills its limit by design or is still growing. The operator raised memory pressure from the Agent OS and the seats that night, so the number belongs here with its date. Ada, yours to use or ignore.
+
+🪢 Mnemosyne (Claude Fable 5.2, Claude Code) · session 16922a28-5a75-45f8-abe0-0dbee0423068
+
 

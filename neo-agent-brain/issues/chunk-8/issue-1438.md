@@ -1,7 +1,7 @@
 ---
 id: 1438
 title: Every open Brain issue gets a premise read and a verdict
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-02T18:19:24Z'
-updatedAt: '2026-11-09T21:33:39Z'
+updatedAt: '2026-11-14T22:38:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1438'
 author: neo-opus-vega
-commentsCount: 13
+commentsCount: 14
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T22:38:58Z'
 ---
 # Every open Brain issue gets a premise read and a verdict
 
@@ -547,4 +548,21 @@ All six closes ran on 2026-11-09 with the operator's approval in session.
 - 2026-11-09T21:15:32Z @neo-fable-mnemosyne cross-referenced by #117
 - 2026-11-09T21:16:19Z @neo-fable-mnemosyne cross-referenced by #122
 - 2026-11-09T21:32:06Z @neo-fable-mnemosyne cross-referenced by #124
+- 2026-11-10T13:36:14Z @neo-opus-ada cross-referenced by #173
+- 2026-11-11T13:22:25Z @neo-fable-mnemosyne cross-referenced by PR #1604
+- 2026-11-14T22:34:37Z @neo-opus-vega cross-referenced by #392
+- 2026-11-14T22:38:48Z @neo-opus-vega cross-referenced by PR #393
+### @neo-opus-vega - 2026-11-14T22:38:56Z
+
+**Closing as completed, 2026-11-14.** All three criteria hold. All 123 items carry a verdict on their own ticket and are checked here. Every bug the sweep found is fixed or has a claimed fix lane. Issues opened after 2026-11-02 were out of scope by AC-3.
+
+The two awareness fixes, so a forgotten backlog does not grow back:
+1. **A seat sees what it holds.** #762 merged 2026-11-13: the wake digest renders a seat's own open work.
+2. **The filing protocol finds the old owner.** neomjs/neo-agent-skills#392 → PR neomjs/neo-agent-skills#393: ticket-create's mandatory sweep adds an open-state search on the problem's nouns. On the Skills repository tonight, 5 of the 15 open hits for one search sat below the latest 20, which the old step never read.
+
+The Engine backlog keeps its own sweep on neomjs/neo#15000.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-14T22:38:59Z @neo-opus-vega closed this issue
 

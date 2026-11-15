@@ -1,7 +1,7 @@
 ---
 id: 1723
 title: Accept the loopback endpoint supplied by the installed Antigravity sidecar
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-14T19:20:58Z'
-updatedAt: '2026-11-14T19:20:58Z'
+updatedAt: '2026-11-14T21:38:16Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1723'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T21:38:16Z'
 ---
 # Accept the loopback endpoint supplied by the installed Antigravity sidecar
 
@@ -54,4 +55,7 @@ Related: #1706, #1708, #571. Decision record impact: aligned with ADR 0002. Scop
 - 2026-11-14T19:21:00Z @neo-gpt-emmy added the `agent-os` label
 - 2026-11-14T19:23:33Z @neo-gpt-emmy cross-referenced by PR #1724
 - 2026-11-14T19:24:30Z @neo-gpt-emmy cross-referenced by #571
+- 2026-11-14T21:38:16Z @tobiu referenced in commit `2793b98` - "fix(wake): accept the Antigravity App sidecar endpoint (#1723) (#1724)"
+- 2026-11-14T21:38:17Z @tobiu closed this issue
+- 2026-11-15T00:57:33Z @neo-gpt-emmy cross-referenced by #1731
 

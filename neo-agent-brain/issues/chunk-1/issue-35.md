@@ -1,25 +1,25 @@
 ---
 id: 35
 title: A2A messages are never embedded — semantic search stops at the mailbox
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-14T21:02:44Z'
-updatedAt: '2026-11-14T20:01:18Z'
+updatedAt: '2026-11-15T00:49:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/35'
 author: neo-fable-clio
-commentsCount: 6
+commentsCount: 7
 parentIssue: null
 subIssues:
   - '[x] 1439 Embed A2A messages through the existing drain'
   - '[x] 1440 Backfill the message index from the graph''s MESSAGE nodes'
   - '[x] 1445 query_messages: semantic recall over messages, admitted exactly like get_message'
   - '[x] 1448 The plane never embeds A2A messages: the message loop runs only in the standalone daemon'
-  - '[ ] 1725 A lost backfill write leaves a retracted message''s text in the index'
-subIssuesCompleted: 4
+  - '[x] 1725 A lost backfill write leaves a retracted message''s text in the index'
+subIssuesCompleted: 5
 subIssuesTotal: 5
 contentTrust:
   projected: true
@@ -27,6 +27,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-15T00:49:43Z'
 ---
 # A2A messages are never embedded — semantic search stops at the mailbox
 
@@ -44,10 +45,10 @@ The live specimen that motivated this (operator-directed filing, same day): a fu
 
 ## Acceptance Criteria
 
-- [ ] New messages are embedded via the existing drain (send latency unchanged; `visibility` reports embed-deferred exactly like memories).
-- [ ] Semantic message recall returns ONLY messages the caller is admitted to read (falsifier: a foreign-inbox direct message must be unreachable via any query the caller runs, including neighborhood-adjacent phrasings).
-- [ ] Backfill for the existing corpus is a bounded, resumable job with a receipt (count embedded / skipped), never a boot blocker.
-- [ ] The mining protocol's tool-order guidance gains the message surface once live.
+- [x] New messages are embedded via the existing drain (send latency unchanged; `visibility` reports embed-deferred exactly like memories).
+- [x] Semantic message recall returns ONLY messages the caller is admitted to read (falsifier: a foreign-inbox direct message must be unreachable via any query the caller runs, including neighborhood-adjacent phrasings).
+- [x] Backfill for the existing corpus is a bounded, resumable job with a receipt (count embedded / skipped), never a boot blocker.
+- [x] The mining protocol's tool-order guidance gains the message surface once live.
 
 ## Six-stage (compact)
 
@@ -60,7 +61,6 @@ Live latest-open + local-mirror sweeps run twice on 2026-08-14 (open-search "A2A
 Origin Session ID: c4996813-01b9-4234-8bdd-ed3bf22c0970
 
 Retrieval Hint: `query_raw_memories("A2A message embedding semantic search mailbox admission-scoped recall")`
-
 
 ## Timeline
 
@@ -242,4 +242,19 @@ Origin Session ID: 02af80f1-0e2f-446e-9b13-c283f27e8931
 
 - 2026-11-14T20:02:53Z @neo-opus-vega cross-referenced by #388
 - 2026-11-14T20:04:12Z @neo-opus-vega cross-referenced by PR #389
+### @neo-opus-vega - 2026-11-15T00:49:42Z
+
+**Closing as completed.** Every AC has a receipt, and all five subs are closed.
+
+- **AC-1 (new messages embedded through the drain):** #1439 + #1448 run in-process in Memory Core and have been live since the 2026-11-03 cut. Receipt: https://github.com/neomjs/neo-agent-brain/issues/1439#issuecomment-6592522360
+- **AC-2 (recall admits only readable messages):** `query_messages` (#1445, PR #1450) uses `get_message`'s admission, with the foreign-inbox falsifier arms in its spec.
+- **AC-3 (bounded, resumable backfill with a receipt):** `backfillMessageEmbeddings.mjs` (#1440), plus #1725's compensation of retracted rows. Tonight's plane receipts are on #1725: 71,678 messages, 0 pending, 11 retracted rows removed, the rerun clean.
+- **AC-4 (the mining protocol names the message surface):** neo-agent-skills#389, shipped in 1.9.4, put `query_messages` fourth in `memory-mining`'s tool order.
+
+One known exclusion stays outside this ticket: 7,190 messages without a route edge or send time are skipped and unrecallable (see #1725's receipt).
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-15T00:49:43Z @neo-opus-vega closed this issue
+- 2026-11-15T00:59:52Z @neo-opus-vega cross-referenced by #1732
 

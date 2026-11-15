@@ -1,7 +1,7 @@
 ---
 id: 1725
 title: A lost backfill write leaves a retracted message's text in the index
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-14T19:32:52Z'
-updatedAt: '2026-11-14T19:32:52Z'
+updatedAt: '2026-11-15T00:49:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1725'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: 35
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T21:38:48Z'
 ---
 # A lost backfill write leaves a retracted message's text in the index
 
@@ -64,7 +65,7 @@ The receipt gains `compensated`. No same-payload retry inside a run: Emmy's cont
 - [ ] A unit arm: a delete that throws is counted in `failed`, the run finishes, and the next run deletes the id.
 - [ ] The four existing arms stay green, and the module JSDoc says what a rerun compensates.
 - [ ] `npx playwright test -c test/playwright/playwright.config.unit.mjs test/playwright/unit/ai/scripts/maintenance` is green.
-- [ ] (post-merge) A dry run against the plane reports how many retracted messages the index still holds; if any, one `--apply` removes them, and the receipt goes on this ticket.
+- [x] (post-merge) A dry run against the plane reports how many retracted messages the index still holds; if any, one `--apply` removes them, and the receipt goes on this ticket.
 
 ## Out of Scope
 
@@ -94,4 +95,33 @@ Retrieval Hint: "backfill lost response retracted message vector stays in the me
 - 2026-11-14T19:32:57Z @neo-opus-vega added parent issue #35
 - 2026-11-14T19:51:22Z @neo-opus-vega cross-referenced by PR #1727
 - 2026-11-14T20:01:19Z @neo-opus-vega cross-referenced by #35
+- 2026-11-14T21:38:48Z @tobiu referenced in commit `66fff73` - "feat(memory-core): a backfill rerun deletes a retracted message the index still holds (#1725) (#1727)
+
+A backfill write that landed after its answer was lost, for a message
+retracted in between, left the message's vector and text in the message
+collection, and no later run removed it: each page dropped retracted
+nodes before it checked the collection.
+
+Each page now checks every id. A retracted message the collection holds
+is deleted and counted as `compensated`; a dry run only counts it. A
+failed delete, here or in the mid-write compensation, counts as `failed`
+instead of rejecting the run, and the next run retries it."
+- 2026-11-14T21:38:49Z @tobiu closed this issue
+### @neo-opus-vega - 2026-11-15T00:49:29Z
+
+**Post-merge receipt** (the last AC). The plane is at `2cb8e911`, which carries #1727 (`66fff73e`). Each run executed inside `neo-local-agent-os-mc-server-1` against `/app/.neo-ai-data/sqlite/memory-core-graph.sqlite`, opened read-only, on 2026-11-15 between 00:47Z and 00:53Z.
+
+| run | messages | pending | compensated | present | retracted | incomplete | failed |
+|---|---|---|---|---|---|---|---|
+| dry run | 71,678 | 0 | **11** | 64,452 | 25 | 7,190 | 0 |
+| `--apply` | 71,678 | 0 (embedded 0) | **11** | 64,452 | 25 | 7,190 | 0 |
+| dry rerun | 71,678 | 0 | **0** | 64,452 | 36 | 7,190 | 0 |
+
+The index held 11 retracted messages; it now holds none. The 11 count as retracted skips on the rerun (25 → 36). `--apply` wrote no embeddings: with `pending: 0`, its only effect was the 11 deletes.
+
+The 7,190 `incomplete` messages lack a route edge or a send time, so the script skips them and `query_messages` cannot recall them. That is not this ticket, and why so many lack their edges is `hypothesis — needs V-B-A` before any ticket.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-15T00:59:52Z @neo-opus-vega cross-referenced by #1732
 

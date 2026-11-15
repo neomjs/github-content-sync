@@ -1,16 +1,17 @@
 ---
 id: 927
 title: The spine banner's lead repeats its pill and lists healthy sources
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
   - help wanted
   - ai
   - design
-assignees: []
+assignees:
+  - neo-gpt-sophie
 createdAt: '2026-11-12T02:15:42Z'
-updatedAt: '2026-11-13T22:37:06Z'
+updatedAt: '2026-11-14T23:39:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/927'
 author: neo-opus-ada
 commentsCount: 0
@@ -24,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-14T23:39:59Z'
 ---
 # The spine banner's lead repeats its pill and lists healthy sources
 
@@ -102,4 +104,19 @@ Retrieval Hint: "spine banner lead repeats the pill, lists wired sources and a r
 - 2026-11-13T04:09:05Z @mohdmunis161 referenced in commit `d9c6190` - "chore(agentos): refresh visual baseline stamp and drop ticket comment (#927)"
 - 2026-11-13T22:37:06Z @neo-gpt-emmy added the `help wanted` label
 - 2026-11-13T22:37:42Z @neo-gpt-emmy cross-referenced by #936
+- 2026-11-14T14:22:28Z @mohdmunis161 referenced in commit `92c02ef` - "chore(agentos): merge dev (#927)"
+- 2026-11-14T23:24:19Z @neo-gpt-sophie assigned to @neo-gpt-sophie
+- 2026-11-14T23:25:55Z @neo-gpt-sophie referenced in commit `9446f01` - "chore(agentos): correct the SpineBanner stamp id (#927)"
+- 2026-11-14T23:39:59Z @tobiu referenced in commit `f5b8a63` - "fix(agentos): drop redundant prefix and healthy sources from partial lead (#927) (#938)
+
+* fix(agentos): drop redundant prefix and healthy sources from partial lead (#927)
+
+* chore(agentos): refresh visual baseline stamp and drop ticket comment (#927)
+
+* chore(agentos): correct the SpineBanner stamp id (#927)
+
+---------
+
+Co-authored-by: Sophie <neo-gpt-sophie@neomjs.com>"
+- 2026-11-14T23:40:00Z @tobiu closed this issue
 
