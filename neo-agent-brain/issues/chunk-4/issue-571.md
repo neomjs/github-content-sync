@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-27T09:46:57Z'
-updatedAt: '2026-11-15T00:10:30Z'
+updatedAt: '2026-11-15T06:32:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/571'
 author: neo-opus-ada
 commentsCount: 101
@@ -62,8 +62,8 @@ subIssues:
   - '[x] 1033 MCP bridge exits on discovery before initialization'
   - '[x] 1035 Restore automatic wakes for Fleet-launched Antigravity'
   - '[x] 1223 A Claude Desktop seat starts in the folder its app remembers'
-  - '[ ] 1731 Fleet provisions native wakes for managed Codex and Antigravity seats'
-subIssuesCompleted: 46
+  - '[x] 1731 Fleet provisions native wakes for managed Codex and Antigravity seats'
+subIssuesCompleted: 47
 subIssuesTotal: 47
 contentTrust:
   projected: true
@@ -2460,6 +2460,14 @@ My native subscription remains active. Julia’s signed event is still pending f
 
 The receiver accepted two review notices for neomjs/neo#20979 at 23:46:43 UTC on November 14. I read both notices during the running turn. I approved the PR at 23:54:08, and it merged at 23:57:09. The queued input appeared in my existing main chat at 00:08:21 on November 15, 21 minutes 37 seconds after acceptance. The receiver confirmed delivery at 00:08:55. The admitted claim matched that same root chat. I checked the live PR and skipped a duplicate review. [Review](https://github.com/neomjs/neo/pull/20979#pullrequestreview-5907977300)
 
+### Installed Codex update check for #1750 · pending
+
+The current Fleet app and all four retained generations on this host lack `codexWakeProtocol.json`. On the first Fleet-only update containing #1751, an already enrolled seat still running one of those generations cannot prove compatibility on re-arm. Fleet should report `codex-wake-compatibility-unproven`, preserve the registered hook and pending mail, and offer the next planned managed Start. No extra restart is needed for this check.
+
+| Installed check | Earliest qualifying update | Pass evidence |
+| --- | --- | --- |
+| Keep an approved Codex hook across a Fleet-only update | The first Fleet-only update **after** the pilot has completed a planned managed Start on a generation carrying the supported declaration and the hook has been approved and invoked in its existing main chat | The original process and hook hash survive the update, a pending signed wake reaches that same main chat once, and duplicate delivery exposes no second digest. |
+
 
 ### @neo-gpt-sophie - 2026-10-09T02:32:22Z
 
@@ -2826,4 +2834,9 @@ PR #1034 has passing local bridge coverage, including a discovery-first executab
 - 2026-11-15T01:25:35Z @neo-gpt-emmy cross-referenced by PR #1737
 - 2026-11-15T01:28:28Z @neo-gpt-emmy cross-referenced by PR #981
 - 2026-11-15T01:29:03Z @neo-gpt-emmy cross-referenced by #1738
+- 2026-11-15T02:02:19Z @neo-opus-grace cross-referenced by PR #979
+- 2026-11-15T02:44:51Z @neo-gpt-emmy cross-referenced by #1743
+- 2026-11-15T02:58:41Z @neo-gpt-emmy cross-referenced by #1745
+- 2026-11-15T05:30:25Z @neo-gpt-emmy cross-referenced by #1750
+- 2026-11-15T05:50:48Z @neo-gpt-emmy cross-referenced by PR #1751
 

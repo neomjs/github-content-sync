@@ -1,7 +1,7 @@
 ---
 id: 1732
 title: 'June–July messages lack routing edges, so even their sender is refused'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-15T00:59:51Z'
-updatedAt: '2026-11-15T01:44:01Z'
+updatedAt: '2026-11-15T03:11:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1732'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1733 Run the legacy-carrier rebuild and the message backfill on the plane'
+closedAt: '2026-11-15T03:04:53Z'
 ---
 # June–July messages lack routing edges, so even their sender is refused
 
@@ -68,11 +69,13 @@ Decision Record impact: none.
 
 ## Acceptance Criteria
 
-- [ ] A unit arm, red on `dev` first: a `MESSAGE` node with `from` and `to` and no carriers gains `SENT_BY` and `SENT_TO` equal to what the projection writes for the same message.
-- [ ] A unit arm: a present carrier is left alone, a missing target is skipped and counted, and a dry run writes nothing.
-- [ ] A unit arm: after the rebuild, `canReadMessage` admits the sender and the recipient of a rebuilt direct message and refuses a third identity that holds no inbox grant.
-- [ ] The module JSDoc names the carriers it rebuilds and why the WAL repair cannot.
+- [x] A unit arm, red on `dev` first: a `MESSAGE` node with `from` and `to` and no carriers gains `SENT_BY` and `SENT_TO` equal to what the projection writes for the same message.
+- [x] A unit arm: a present carrier is left alone, a missing target is skipped and counted, and a dry run writes nothing.
+- [x] A unit arm: after the rebuild, `canReadMessage` admits the sender and the recipient of a rebuilt direct message and refuses a third identity that holds no inbox grant.
+- [x] The module JSDoc names the carriers it rebuilds and why the WAL repair cannot.
 - [ ] (post-merge, owned by #1733) On the plane: the rebuild's dry-run and apply receipts; `get_message("MESSAGE:3303c7aa-a12e-4440-8f42-88c7e77e0ffa")` succeeding for @neo-opus-vega; then the embed backfill's dry run, the sizing read and its `--apply` receipt.
+
+ACs 1–4: delivered by PR #1734, merged on 2026-11-15 as `2d07503d`; its AC Evidence table names each spec arm. AC-5 stays with #1733.
 
 ## Out of Scope
 
@@ -121,4 +124,48 @@ A route decides who may read a message, and two inputs widened the audience:
   target of a kind the projection routes to (AgentIdentity or System senders,
   AgentIdentity or BroadcastSentinel destinations). Anything else counts as
   `invalid`."
+### @neo-opus-vega - 2026-11-15T02:28:24Z
+
+**Handover (session sunset, 2026-11-15 02:2xZ; owner Vega, next session).**
+
+- **PR #1734 at `de24d970`:** Emmy's RC 5908454433 is addressed (response 6887476436): a route insert now holds one route per message and type atomically, and only a genuine `MESSAGE` with a scalar identity of a routable kind gets one. The rebuild spec passes 16/16 with both controls, which fail on `fe1d54c4` for their behavior. Re-requested at green, 01:51Z. Next: Emmy's Round 2.
+- **After the merge and a plane cut carrying it:** #1733's run, inside `neo-local-agent-os-mc-server-1`:
+  1. the rebuild's dry run, then apply;
+  2. `get_message("MESSAGE:3303c7aa-a12e-4440-8f42-88c7e77e0ffa")` as `@neo-opus-vega`;
+  3. the backfill's dry run;
+  4. the Chroma sizing read;
+  5. the backfill's apply;
+  6. receipts on #1733.
+- **Census (read-only, aggregate):** 7,190 incomplete messages, all from June and July 2026. 7,173 still carry `from` / `to`; the other 17 are `ARTIFACT_TASK` / `ARTIFACT_PLAN` / `MEMORY` nodes (defect-note only).
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-15T03:04:53Z @tobiu referenced in commit `2d07503` - "feat(memory-core): the edge rebuild links a pre-WAL message's sender and destination (#1732) (#1734)
+
+* fix(memory-core): the edge rebuild links a pre-WAL message's sender and destination (#1732)
+
+7,173 messages from June and July keep `from` and `to` on the node but have no
+SENT_BY / SENT_TO edge. The WAL repair cannot rebuild them because they are older
+than the WAL, so get_message refused even their sender, outboxes skipped them, and
+the embed backfill could not index them.
+
+rebuildMessageEdges now links the two carriers from the node's own fields. It
+normalizes the identity as the projection does, links at most one carrier of each
+type, and stamps a broadcast route `broadcastCohort: 'legacy-unknown'`, the
+projection's stamp when no recipient snapshot exists. DELIVERED_TO stays
+unrebuilt: the snapshot is not on the node.
+
+* fix(memory-core): a rebuilt route is atomic and links only routable parties (#1732)
+
+A route decides who may read a message, and two inputs widened the audience:
+- The insert guarded (source, target, type), so a different recipient that
+  another writer linked after the precheck got a second route. The route
+  insert now guards (source, type) itself, and a lost race counts as present.
+- An array-valued `to` led by `AGENT:*` became a legacy broadcast open to every
+  reader. A route now needs a node labelled MESSAGE, a single string, and a
+  target of a kind the projection routes to (AgentIdentity or System senders,
+  AgentIdentity or BroadcastSentinel destinations). Anything else counts as
+  `invalid`."
+- 2026-11-15T03:04:54Z @tobiu closed this issue
+- 2026-11-15T06:31:10Z @neo-opus-vega cross-referenced by #1753
 

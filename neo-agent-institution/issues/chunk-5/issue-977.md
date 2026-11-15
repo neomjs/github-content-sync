@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-15T00:54:37Z'
-updatedAt: '2026-11-15T01:40:56Z'
+updatedAt: '2026-11-15T04:56:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/977'
 author: neo-opus-ada
 commentsCount: 1
@@ -109,7 +109,7 @@ Design authority: ADR 0034 §2.5.2, *"cert provisioning/notarization credentials
   All of them inherit the app's entitlements. Consequences:
   - V8 needs `com.apple.security.cs.allow-jit`.
   - Library validation passes while every native module carries the same team signature. So start without `disable-library-validation`, and add it only if a load measurably fails.
-- **Entitlements:** a tailored `harness/entitlements.mac.plist`. The defaults are too broad: `@electron/osx-sign`'s `default.darwin.plist` adds camera, microphone, Bluetooth, USB, print and location, and electron-builder's template adds `allow-unsigned-executable-memory` and `disable-library-validation`. If any harness path sends Apple Events (`osascript`), it also needs `com.apple.security.automation.apple-events` plus an `NSAppleEventsUsageDescription`. Check that before the first signed build.
+- **Entitlements:** a tailored `harness/entitlements.mac.plist`. The defaults are too broad: `@electron/osx-sign`'s `default.darwin.plist` adds camera, microphone, Bluetooth, USB, print and location, and electron-builder's template adds `allow-unsigned-executable-memory` and `disable-library-validation`. **Apple Events, checked 2026-11-15 ~04:50Z: needed.** The Fleet child sends them under the app's signature: `seatWindowRect.mjs` reads and sets seat windows through System Events, and `armFleetSeatWake.mjs` types wake keystrokes into the seat apps. So the plist carries `com.apple.security.automation.apple-events`, and the app carries an `NSAppleEventsUsageDescription`. That a hardened app's events fail with `-1743` without the entitlement is Apple's documented rule, not measured here; the signed build's first window read is the falsifier.
 - **The release invocation:** `electron-builder --mac --publish never -c.mac.identity="<certificate name>"`, with the hardened runtime and the entitlements set, and `APPLE_KEYCHAIN_PROFILE=<profile>`. The default `identity: null` keeps CI unsigned. Notarize and staple the `.app` before it is zipped.
 - **Verification:**
   - `codesign --verify --deep --strict --verbose=2`;
@@ -130,7 +130,7 @@ Rejected and deferred alternatives:
 4. Store it as a keychain profile: `xcrun notarytool store-credentials neo-harness-notary --key AuthKey_<KEYID>.p8 --key-id <KEYID> --issuer <ISSUER>`, then confirm it with `xcrun notarytool history -p neo-harness-notary`.
 5. Hand over the certificate's name as Keychain shows it (`Developer ID Application: <Name> (<TEAMID>)`) and the profile name. Neither is a secret.
 
-Fix 1 is done on branch `ada/977-release-signing` (`ea8f436`). Its new spec fails on `dev` and passes at the branch. The PR opens once a signed build verifies.
+Fix 1 is done on branch `ada/977-release-signing` (`ea8f436`). Its new spec fails on `dev` and passes at the branch. Fix 2's configuration is on the same branch (`ad76dc4`): the plist, plus the hardened runtime, entitlements and usage string in `electron-builder.yml`, all inert while `identity: null`, and the release invocation with AC-2's checks in the harness README. What remains needs the certificate: the signed build, its verification, a launch smoke, and the install. The PR opens once a signed build verifies.
 
 ## Acceptance Criteria
 
@@ -195,4 +195,5 @@ Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-15T04:54:43Z @neo-opus-ada referenced in commit `ad76dc4` - "feat(harness): the signed release's entitlements and invocation (#977)"
 

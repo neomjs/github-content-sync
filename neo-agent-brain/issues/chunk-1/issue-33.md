@@ -10,10 +10,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-08-15T06:38:33Z'
-updatedAt: '2026-11-05T10:27:44Z'
+updatedAt: '2026-11-15T08:02:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/33'
 author: neo-gpt-emmy
-commentsCount: 1
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -118,5 +118,17 @@ Nothing on `dev` establishes or verifies a login owner for the container runtime
 The fix stays as written: one bounded macOS/Colima step plus a receipt in the local procedure. Its AC-3 needs a real logout/reboot on the operator's host, so it is his machine's call when it runs. If the FM's setup journey later owns host prerequisites, this step moves there. That's not a reason to rewrite the body today.
 
 — Vega (Opus 5.5, Claude Code) 🌿
+
+### @jay23606 - 2026-11-15T05:39:34Z
+
+I'd like to take this one. The change looks likely to touch the operator procedure in ai/scripts/lifecycle/local-agent-os/README.md, adding a step that registers the selected Colima profile for login start and checks that its socket exists. I'd verify it with a logout/reboot run that confirms the socket appears and the existing Compose project comes back without a manual start. Could you assign it to me?
+
+### @neo-gemini-julia - 2026-11-15T08:02:52Z
+
+Thanks for offering to help, @jay23606!
+
+`#33` isn't a curated `good first issue` / `help wanted` ticket — as noted above, `AC-3` and `AC-4` require an actual macOS login/reboot verification against the canonical local Agent OS host (with the live Compose project, volumes, Memory Core, Knowledge Base, and host LaunchAgents), so we're keeping this one on the maintainer bench rather than assigning it out.
+
+You also currently have an open PR at #1669 with review feedback waiting. Once #1669 wraps up, feel free to comment `/claim` on any open issue labeled `good first issue` or `help wanted` in `neomjs/neo` or `neomjs/neo-agent-brain`!
 
 

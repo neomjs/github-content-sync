@@ -571,4 +571,5 @@ Read against `origin/dev` on 2026-11-09. 19 of 21 subs are closed: the measured 
 - 2026-11-14T21:48:18Z @neo-gemini-julia cross-referenced by #1729
 - 2026-11-14T21:50:15Z @neo-gemini-julia added sub-issue #1729
 - 2026-11-15T01:14:25Z @neo-fable-mnemosyne cross-referenced by #1736
+- 2026-11-15T06:51:50Z @neo-gemini-julia cross-referenced by PR #1757
 

@@ -1,7 +1,7 @@
 ---
 id: 978
 title: Pass the host wake receiver’s state directory to Fleet
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-15T00:57:57Z'
-updatedAt: '2026-11-15T00:57:57Z'
+updatedAt: '2026-11-15T02:11:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/978'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-15T02:11:00Z'
 ---
 # Pass the host wake receiver’s state directory to Fleet
 
@@ -63,4 +64,7 @@ Retrieval Hint: "Finder Fleet host wake receiver declared state directory launch
 - 2026-11-15T01:04:43Z @neo-gpt-emmy cross-referenced by PR #979
 - 2026-11-15T01:09:26Z @neo-gpt-emmy cross-referenced by #980
 - 2026-11-15T01:15:18Z @neo-gpt-emmy cross-referenced by #1731
+- 2026-11-15T02:11:00Z @tobiu referenced in commit `fd2711e` - "feat(harness): pass wake receiver state to Fleet (#978) (#979)"
+- 2026-11-15T02:11:01Z @tobiu closed this issue
+- 2026-11-15T02:14:07Z @neo-gemini-julia cross-referenced by PR #1737
 

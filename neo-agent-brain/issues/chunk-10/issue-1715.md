@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-14T17:51:50Z'
-updatedAt: '2026-11-14T19:42:33Z'
+updatedAt: '2026-11-15T06:33:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1715'
 author: neo-gemini-julia
 commentsCount: 0
@@ -67,7 +67,7 @@ Graduated from [`Discussion #20941`](https://github.com/orgs/neomjs/discussions/
 3. **Exact 6-Tool OpenAPI Profile & Response Shapes (`E1`):**
    - `ai/mcp/server/memory-core/openapi.yaml` declares one contiguous `x-neo-exact-tool-profiles.profiles.standalone` block exposing 6 tools bound via lean `standaloneToolService.mjs` (zero `GraphService`/`MemoryService`/`SessionService` imports): `healthcheck`, `get_mcp_tool_handbook`, `add_memory`, `query_recent_turns` (`detail: 'summary'` sets `summaryFallback: true` with a deterministic bounded excerpt), `query_raw_memories` (`retrievalMode: 'lexical-fts5'`, `bm25Score`, `lexicalRankScore: |bm25| / (1 + |bm25|)`, omitting vector `distance` / `compositeScore`), and `get_session_memories` (`query_summaries` omitted). MCP `initialize` `instructions` directs connected harnesses to call `query_recent_turns` at session start and `add_memory` at turn completion.
 4. **Rostered-Owner WAL Promotion Helper (`STEP_BACK` #2 + Quorum Carry-Over):**
-   - `neo-memory-core promote --target-wal-dir <dir> --owner <agentIdentity> [--target-graph-db <sqlitePath>] [--user-id <userId>] [--workspace <ws>]` (`promoteStandaloneWal.mjs`) normalizes `--owner` via `normalizeAgentIdentityNodeId`, validates that `--owner` resolves to a rostered `AgentIdentity` on the target plane (querying `AgentIdentity` nodes in the target plane SQLite graph when present, else `IDENTITIES` in `ai/graph/identityRoots.mjs` excluding `SYSTEM_SENDER` and `BROADCAST_SENTINEL`; refusing unknown/free-text owners), stamps `agentIdentity` + `userId`, and merges records idempotently by `id` into same-day UTC WAL segments with `.embedded.jsonl` and `.graph.jsonl` left unwritten.
+   - `neo-memory-core promote --target-wal-dir <dir> --target-graph-db <sqlitePath> --owner <agentIdentity> [--source-wal-dir <dir>] [--user-id <userId>] [--workspace <ws>]` (`promoteStandaloneWal.mjs`) normalizes `--owner` via `normalizeAgentIdentityNodeId`, validates fail-closed that `--owner` resolves to a rostered `AgentIdentity` node inside `--target-graph-db` (excluding `SYSTEM_SENDER` and `BROADCAST_SENTINEL`, refusing missing/unreadable graphs and unknown/free-text owners without reading `ai/graph/identityRoots.mjs` per `#874`), stamps `agentIdentity` + `userId`, and merges records idempotently by `id` into same-day UTC WAL segments with `.embedded.jsonl` and `.graph.jsonl` left unwritten.
 5. **Generalized MCP Packer, Ecosystem Opt-In & Cross-Harness Walk:**
    - Generalizes `ai/scripts/setup/packNeuralLink.mjs` into `ai/scripts/setup/packMcpServer.mjs` (asserting `chromadb`, `better-sqlite3`, and `@chroma-core/default-embed` are absent from the closure and probing cold stdio framing on Node `22.22+` / `24.x` / `25.x`), adds `npx neo-app --memory` in `neomjs/create-app` (`--workspace <app-name>`), documents standalone `neo-memory-core` recovery in `neomjs/neo-agent-skills`, and gates `neo-memory-core` npm + `io.github.neomjs/memory-core` MCP Registry publication on a clean-HOME cross-harness two-session walk.
 
@@ -117,7 +117,7 @@ None.
 
 - **Dual-store write drift (`M1` raw):** Treating SQLite and JSONL as co-equal primary stores risks divergence on crash; `wal-YYYY-MM-DD.jsonl` is authoritative and `index.sqlite` is purely derived/rebuildable (`M1'`).
 - **Importing `Server.mjs` or `memory-core/toolService.mjs` (`M2`):** Statically pulls `GraphService` (`better-sqlite3`), `MemoryService` (`chromadb`), and `23` full-plane `PLANE_MEMBER_PATHS` (`BaseServer#collectMemberEntries`) into cold `npx`.
-- **World-readable unowned promotion (`STEP_BACK` #2 `✗` + free-text `--owner`):** Promoting records with `userId == null` makes them visible to all identities under `GraphService#isRlsVisible`, and accepting unrostered free-text `--owner` strings reopens the gap under an unheld handle.
+- **World-readable unowned promotion (`STEP_BACK` #2 `✗` + free-text `--owner` + `identityRoots.mjs` fallback):** Promoting records with `userId == null` makes them visible to all identities under `GraphService#isRlsVisible`, accepting unrostered free-text `--owner` strings reopens the gap under an unheld handle, and falling back to `ai/graph/identityRoots.mjs` validates the Neo maintainer roster rather than an adopter's target plane (`#874`).
 - **Client-chosen `cwd` workspace fragmentation (`W1` / raw `--workspace .`):** Resolving raw `process.cwd()` splits cross-harness sessions across directories; canonical `explicit-slug -> git-remote -> git-toplevel -> cwd` aligns harnesses (`STEP_BACK` #3).
 - **Duplicating `packNeuralLink.mjs` (`STEP_BACK` #8):** Maintaining two divergent pack scripts drifts closure filters and `tar` assembly; one parameterized `packMcpServer.mjs` serves both packages.
 
@@ -151,4 +151,5 @@ Retrieval Hint: `"standalone neo-memory-core" "standaloneSqliteIndex" "promoteSt
 - 2026-11-14T17:55:32Z @neo-gemini-julia added sub-issue #66
 - 2026-11-14T17:55:33Z @neo-gemini-julia added sub-issue #387
 - 2026-11-14T18:30:56Z @neo-gemini-julia cross-referenced by PR #1721
+- 2026-11-15T06:04:31Z @neo-gemini-julia cross-referenced by PR #1752
 

@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-30T02:43:26Z'
-updatedAt: '2026-11-05T10:33:24Z'
+updatedAt: '2026-11-15T02:56:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1373'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues:
   - '[x] 1383 On a sunset receipt the wake plane rotates the seat: receipt in, fresh session out'
@@ -121,4 +121,22 @@ Retrieval Hint: "wake plane self-healing consumer consecutiveFailures diagnosis 
 - 2026-11-12T14:23:17Z @neo-opus-vega cross-referenced by #1646
 - 2026-11-13T13:23:25Z @neo-opus-ada cross-referenced by #1681
 - 2026-11-13T23:07:33Z @neo-opus-vega cross-referenced by PR #1693
+- 2026-11-14T09:44:01Z @neo-opus-ada cross-referenced by PR #962
+- 2026-11-14T19:33:39Z @neo-opus-ada cross-referenced by PR #1726
+- 2026-11-14T21:53:46Z @neo-opus-ada cross-referenced by #1722
+- 2026-11-14T22:33:39Z @neo-opus-ada cross-referenced by PR #1730
+- 2026-11-15T01:14:16Z @neo-gpt-emmy cross-referenced by #1735
+- 2026-11-15T02:16:57Z @neo-opus-ada cross-referenced by PR #1740
+- 2026-11-15T02:21:53Z @neo-opus-ada cross-referenced by PR #396
+### @neo-opus-ada - 2026-11-15T02:56:44Z
+
+**Residual ownership, made explicit (rotation lineage: sub #1383, then #1722, then #1739).** PR #1740 (Resolves #1739) names this ticket as the owner of one live check, because its close target cannot own it:
+
+- [ ] After the next plane cut, the first Claude sunset with an amendment, with a writer whose session changed mid-turn, or sent while heavy maintenance runs is requested within one lane tick of its `add_memory` and completed by its marker (`session-rotation:` lines plus the receiver record).
+
+It is recorded here and on #1739 when it happens. This is not #1373's AC-6 (`dispatch-restored` vs `agent-resumed`), which stays its own contract. Owner of the check: Ada.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-15T03:26:34Z @neo-opus-ada cross-referenced by #1739
 

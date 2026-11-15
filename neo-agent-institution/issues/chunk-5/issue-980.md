@@ -1,7 +1,7 @@
 ---
 id: 980
 title: Set up native message delivery from a Fleet seat
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-15T01:09:25Z'
-updatedAt: '2026-11-15T01:09:25Z'
+updatedAt: '2026-11-15T03:30:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/980'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-15T03:30:37Z'
 ---
 # Set up native message delivery from a Fleet seat
 
@@ -65,4 +66,22 @@ Retrieval Hint: "operator seat-local native message delivery setup Fleet running
 - 2026-11-15T01:25:35Z @neo-gpt-emmy cross-referenced by PR #1737
 - 2026-11-15T01:28:28Z @neo-gpt-emmy cross-referenced by PR #981
 - 2026-11-15T01:33:49Z @neo-gpt-emmy referenced in commit `f68b9c1` - "test(fleet): update native wake roster expectations (#980)"
+- 2026-11-15T01:58:34Z @neo-gpt-emmy referenced in commit `bd465db` - "test(fleet): exercise native wake setup in cockpit (#980)"
+- 2026-11-15T02:04:35Z @neo-gpt-emmy referenced in commit `2f7862a` - "test(fleet): record verified visual inputs (#980)"
+- 2026-11-15T02:56:12Z @neo-gpt-emmy referenced in commit `ceed111` - "fix(fleet): centralize native wake guidance (#980)"
+- 2026-11-15T03:16:56Z @neo-gpt-emmy referenced in commit `6058e8e` - "fix(fleet): distinguish unavailable wake bridge (#980)"
+- 2026-11-15T03:30:37Z @tobiu referenced in commit `195de6e` - "feat(fleet): offer native wake setup for running seats (#980) (#981)
+
+* feat(fleet): offer native wake setup for running seats (#980)
+
+* test(fleet): update native wake roster expectations (#980)
+
+* test(fleet): exercise native wake setup in cockpit (#980)
+
+* test(fleet): record verified visual inputs (#980)
+
+* fix(fleet): centralize native wake guidance (#980)
+
+* fix(fleet): distinguish unavailable wake bridge (#980)"
+- 2026-11-15T03:30:38Z @tobiu closed this issue
 

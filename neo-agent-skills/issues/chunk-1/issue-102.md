@@ -1,7 +1,7 @@
 ---
 id: 102
 title: The cross-family test has no answer for a disclosed external AI author
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - contributor-experience
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-09-21T14:55:52Z'
-updatedAt: '2026-11-15T00:41:18Z'
+updatedAt: '2026-11-15T04:26:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/102'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-15T04:26:10Z'
 ---
 # The cross-family test has no answer for a disclosed external AI author
 
@@ -42,7 +43,7 @@ Measured 2026-11-14 over the 64 outside PRs opened across `neomjs` from 11-01 to
 ## The Architectural Reality
 
 - `.agents/skills` in a consumer repo is a symlink into `node_modules/neo-agent-skills/.agents/skills`, so the mandate governs every repo at once.
-- The check has to fire when a review request or a Fleet triage wake arrives, not only when a seat is requested. It must be answerable from `gh pr view N --json body,commits`, with no roster lookup.
+- The check has to fire when a review request or a Fleet triage wake arrives, not only when a seat is requested. It must be answerable from the PR's body and every commit message, with no roster lookup. `gh pr view N --json body,commits` returns only the first 100 commits, so a longer PR stays unread until the rest is read (Euclid's review 5908852312 on #394).
 
 Design authority: `cross-family-mandate.md`'s difference test and `pull-request-workflow.md`'s author-family line, quoted above. The operator ruling extends them to outside authors.
 
@@ -60,7 +61,7 @@ In `pull-request/references/cross-family-mandate.md`, in the file's difference-t
 - [ ] AC-1: `cross-family-mandate.md` states the outside-author rule in the difference-test idiom, without a family list: a named family needs an approver from another family; nothing named means any seat.
 - [ ] AC-2: It defines a disclosure: body disclosure lines and `Co-Authored-By` trailers on any commit. Harness-only names and path or topic mentions do not count.
 - [ ] AC-3: It states the reviewer path: a same-lab seat that receives such a PR hands it to a seat of another lab, so no PR waits on a seat that cannot approve it.
-- [ ] AC-4: The Review-Seat Gate, which is `pr-review`'s arrival check (guide §2 step 1), covers outside PRs, answerable from `gh pr view N --json body,commits` with no roster lookup.
+- [ ] AC-4: The Review-Seat Gate, which is `pr-review`'s arrival check (guide §2 step 1), covers outside PRs, answerable from the PR's body and every commit message with no roster lookup. A read that stops before the last commit is unread, not unnamed.
 - [ ] AC-5: Net loaded bytes are accounted per the accretion rule. The clause replaces the undefined case; it does not add a parallel rule.
 
 ## Out of Scope
@@ -99,7 +100,6 @@ Retrieval Hint: `query_raw_memories("external contributor discloses Claude autho
 
 Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code. Rewritten 2026-11-14 (Claude Opus 5.5) to carry the operator's ruling.
 
-
 ## Timeline
 
 - 2026-09-21T14:55:52Z @neo-opus-ada assigned to @neo-opus-ada
@@ -119,4 +119,65 @@ Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5 · Claude Code. R
 - 2026-11-12T01:40:42Z @neo-opus-ada cross-referenced by #367
 - 2026-11-15T00:43:11Z @neo-opus-ada cross-referenced by PR #394
 - 2026-11-15T00:44:28Z @neo-opus-ada referenced in commit `102d22e` - "chore(release): bump neo-agent-skills to 1.9.7 (#102)"
+- 2026-11-15T03:10:23Z @neo-opus-ada referenced in commit `0d8024c` - "feat(pull-request): an outside PR's named model rules out its lab (#102)
+
+cross-family-mandate.md gains an Outside authors clause. An outside
+author's family is what its PR discloses: body disclosure lines and
+Co-Authored-By trailers on any commit, parsed by Brain's
+disclosedModelFamilies.mjs. A named family needs an approver from
+another family, so a seat of that family hands the PR to an eligible
+seat; a PR naming none is open to any seat.
+
+The author-family line in pull-request-workflow.md section 6.1 and the
+Review-Seat Gate, which pr-review runs at every review start, point at
+the clause. Trims in the same files offset it: rationale the atlas
+already holds, a dated anecdote, and a stale pointer that sent readers
+to the mandate for marker vocabulary its consumers hold. Net corpus
+growth is 238 bytes."
+- 2026-11-15T03:10:23Z @neo-opus-ada referenced in commit `5a85768` - "chore(release): bump neo-agent-skills to 1.9.8 (#102)"
+### @neo-opus-ada - 2026-11-15T03:26:35Z
+
+**Handover (sunset, owner Ada).** PR #394 is rebased onto `dev` after #396 merged (which shipped 1.9.7). The head is `5a85768`: the feature as `0d8024c`, plus the bump to 1.9.8 (check-version-bump: "a version npm does not have yet"). The body is updated.
+- **Review:** Euclid has been requested since 00:49Z, and his seat reads dark (no activity in 4h+).
+- **Pickup:**
+  1. If he has not engaged by 04:49Z (the 4h SLA), reroute to a live non-Claude seat with a recorded reason.
+  2. Re-run the CI-green gate on `5a85768` first.
+  3. If another Skills PR merges and publishes 1.9.8 before this one, re-bump past npm.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-15T03:52:58Z @neo-opus-ada referenced in commit `db9821a` - "fix(pull-request): "none named" needs every commit read (#102)
+
+gh pr view N --json body,commits returns at most 100 commits, so a disclosure on commit 101 reads as none and a seat of the named family takes the review. The atlas now names a complete read for a longer PR and keeps an unread disclosure apart from an unnamed one (Euclid, review 5908852312)."
+- 2026-11-15T03:54:16Z @neo-opus-ada referenced in commit `493aeae` - "fix(pull-request): keep the atlas within the corpus growth cap (#102)
+
+The completeness sentence took the corpus to +423 B against the 250 B cap. It is shorter now, and the unknown-family section drops a sentence that restated the one before it."
+- 2026-11-15T04:26:10Z @tobiu referenced in commit `6329b15` - "feat(pull-request): an outside PR's named model rules out its lab (#102) (#394)
+
+* feat(pull-request): an outside PR's named model rules out its lab (#102)
+
+cross-family-mandate.md gains an Outside authors clause. An outside
+author's family is what its PR discloses: body disclosure lines and
+Co-Authored-By trailers on any commit, parsed by Brain's
+disclosedModelFamilies.mjs. A named family needs an approver from
+another family, so a seat of that family hands the PR to an eligible
+seat; a PR naming none is open to any seat.
+
+The author-family line in pull-request-workflow.md section 6.1 and the
+Review-Seat Gate, which pr-review runs at every review start, point at
+the clause. Trims in the same files offset it: rationale the atlas
+already holds, a dated anecdote, and a stale pointer that sent readers
+to the mandate for marker vocabulary its consumers hold. Net corpus
+growth is 238 bytes.
+
+* chore(release): bump neo-agent-skills to 1.9.8 (#102)
+
+* fix(pull-request): "none named" needs every commit read (#102)
+
+gh pr view N --json body,commits returns at most 100 commits, so a disclosure on commit 101 reads as none and a seat of the named family takes the review. The atlas now names a complete read for a longer PR and keeps an unread disclosure apart from an unnamed one (Euclid, review 5908852312).
+
+* fix(pull-request): keep the atlas within the corpus growth cap (#102)
+
+The completeness sentence took the corpus to +423 B against the 250 B cap. It is shorter now, and the unknown-family section drops a sentence that restated the one before it."
+- 2026-11-15T04:26:12Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 949
 title: The visual stamp misreads a CRLF checkout and moves its engine line
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -11,7 +11,7 @@ labels:
 assignees:
   - IG-ABHINAV
 createdAt: '2026-11-13T05:37:30Z'
-updatedAt: '2026-11-13T13:28:54Z'
+updatedAt: '2026-11-15T02:35:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/949'
 author: neo-opus-ada
 commentsCount: 2
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-15T02:35:40Z'
 ---
 # The visual stamp misreads a CRLF checkout and moves its engine line
 
@@ -115,4 +116,12 @@ A maintainer confirms the assignment when one is online, and that can take a whi
 
 - 2026-11-13T07:02:18Z @IG-ABHINAV cross-referenced by PR #952
 - 2026-11-13T13:28:53Z @neo-opus-grace assigned to @IG-ABHINAV
+- 2026-11-14T18:29:17Z @neo-opus-vega cross-referenced by #974
+- 2026-11-15T02:19:00Z @neo-gpt-sophie referenced in commit `9673a4b` - "chore(build): remove the stamp comment ticket reference (#949)"
+- 2026-11-15T02:35:40Z @tobiu referenced in commit `28036ed` - "fix(build): parse the visual stamp on a CRLF checkout so its engine line stays put (#949) (#952)
+
+* fix(build): parse the visual stamp on a CRLF checkout so its engine line stays put (#949)
+
+parseStamp split on '"
+- 2026-11-15T02:35:41Z @tobiu closed this issue
 

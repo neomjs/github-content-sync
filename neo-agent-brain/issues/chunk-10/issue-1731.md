@@ -1,7 +1,7 @@
 ---
 id: 1731
 title: Fleet provisions native wakes for managed Codex and Antigravity seats
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-15T00:57:32Z'
-updatedAt: '2026-11-15T01:15:17Z'
+updatedAt: '2026-11-15T03:09:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1731'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1735 Retire AppleScript message delivery after native peer validation'
+closedAt: '2026-11-15T03:09:38Z'
 ---
 # Fleet provisions native wakes for managed Codex and Antigravity seats
 
@@ -57,10 +58,10 @@ Codex setup is strictly seat-local. Changes to system policy, MDM, cloud-managed
 
 ## Acceptance Criteria
 
-- [ ] Fresh operator setup with arbitrary seat names and custom directories; two Codex seats and two Gemini seats can progress through Add → Start → FM setup to a confirmed signed wake without profile editing or an enrollment CLI. The temporary explicit activation is retired at #1735. State any real native approval step when required.
+- [ ] Fresh operator setup with arbitrary seat names and custom directories; two Codex seats and two Gemini seats can progress through Add → Start → FM setup to a confirmed signed wake without profile editing or an enrollment CLI. The temporary explicit activation is retired at #1735. State any real native approval step when required. [L4-deferred — operator handoff needed] Residual-Owner: #571.
 - [ ] Existing legacy and already-native seats reconcile on upgrade/repeated Start. Concurrent starts, partial installation, explicit disable, failed publish, pending old GUI records and Stop/restart keep the correct ownership and leave no typing fallback or duplicate sends.
 - [ ] A personal unmanaged app, stale main, fork/subagent and another seat cannot receive a Fleet message. A genuine main-session handoff and a duplicate/retry exercise the existing fences. Hook upgrade and rollback preserve foreign registrations.
-- [ ] The Fleet read exposes the concrete remediation for each setup failure. Validate the normal packaged path with the host receiver and a signed model-side receipt in both families. The installed acceptance owner is #571.
+- [ ] The Fleet read exposes the concrete remediation for each setup failure. Validate the normal packaged path with the host receiver and a signed model-side receipt in both families. The installed acceptance owner is #571. [L4-deferred — operator handoff needed] Residual-Owner: #571.
 
 Out of scope: opening a fresh session after sunset; the distinct rotation route remains separate.
 Decision Record impact: aligned with ADR 0002 and existing Fleet seat custody. Global Codex policy is expressly excluded.
@@ -84,4 +85,20 @@ Retrieval Hint: "generic native wake by default Codex Antigravity Fleet Add Star
 - 2026-11-15T01:16:59Z @neo-gpt-emmy marked this issue as blocking #1735
 - 2026-11-15T01:25:35Z @neo-gpt-emmy cross-referenced by PR #1737
 - 2026-11-15T01:29:03Z @neo-gpt-emmy cross-referenced by #1738
+- 2026-11-15T02:20:51Z @neo-gpt-emmy referenced in commit `abb916b` - "fix(fleet): preserve workspace hygiene for native wakes (#1731)"
+- 2026-11-15T02:21:23Z @neo-opus-vega cross-referenced by PR #981
+- 2026-11-15T02:25:03Z @neo-gpt-emmy cross-referenced by #1741
+- 2026-11-15T02:44:51Z @neo-gpt-emmy cross-referenced by #1743
+- 2026-11-15T02:55:41Z @neo-gpt-emmy referenced in commit `9bf099d` - "fix(wake): preserve enabled Antigravity sidecar metadata (#1731)"
+- 2026-11-15T02:58:41Z @neo-gpt-emmy cross-referenced by #1745
+- 2026-11-15T03:09:38Z @tobiu referenced in commit `4c0517a` - "feat(fleet): prepare native peer delivery for a managed desktop seat (#1731) (#1737)
+
+* feat(fleet): prepare native peer delivery for a managed desktop seat (#1731)
+
+* fix(fleet): preserve workspace hygiene for native wakes (#1731)
+
+* fix(wake): preserve enabled Antigravity sidecar metadata (#1731)"
+- 2026-11-15T03:09:39Z @tobiu closed this issue
+- 2026-11-15T05:30:25Z @neo-gpt-emmy cross-referenced by #1750
+- 2026-11-15T06:30:57Z @neo-opus-ada cross-referenced by PR #1751
 

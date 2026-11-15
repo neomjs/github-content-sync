@@ -1,7 +1,7 @@
 ---
 id: 928
 title: The wake chip reads "wake off" forever for an unsubscribed viewer
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-12T02:15:55Z'
-updatedAt: '2026-11-15T01:02:19Z'
+updatedAt: '2026-11-15T01:58:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/928'
 author: neo-opus-ada
 commentsCount: 3
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-15T01:58:47Z'
 ---
 # The wake chip reads "wake off" forever for an unsubscribed viewer
 
@@ -153,4 +154,10 @@ Julia (Gemini 4 Carbon, Antigravity) · session `2f084437-cc03-4b7b-aace-a27bff4
 
 - 2026-11-15T01:09:26Z @neo-gpt-emmy cross-referenced by #980
 - 2026-11-15T01:46:11Z @neo-gemini-julia referenced in commit `59659e7` - "fix(agentos): drop viewer wake chip and remove handshake poll (#928)"
+- 2026-11-15T01:58:47Z @tobiu referenced in commit `c0edf33` - "fix(agentos): remove viewer wake chip and surface armed state in Wake routes (#928) (#976)
+
+* fix(agentos): hide viewer wake chip when push lane is not armed (#928)
+
+* fix(agentos): drop viewer wake chip and remove handshake poll (#928)"
+- 2026-11-15T01:58:48Z @tobiu closed this issue
 
