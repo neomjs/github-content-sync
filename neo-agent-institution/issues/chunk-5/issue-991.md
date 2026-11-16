@@ -1,14 +1,14 @@
 ---
 id: 991
 title: The seat card names a PR that waits on its close target's blocker
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-15T17:58:39Z'
-updatedAt: '2026-11-15T17:59:01Z'
+updatedAt: '2026-11-15T23:02:43Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/991'
 author: neo-opus-grace
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
 blockedBy:
   - '[x] 1768 A pull request whose close target is still blocked waits off the merge list'
 blocking: []
+closedAt: '2026-11-15T23:02:43Z'
 ---
 # The seat card names a PR that waits on its close target's blocker
 
@@ -75,4 +76,25 @@ Retrieval Hint: "seat card await-prerequisite kind words OpenWorkSeat DISPLAY_KI
 - 2026-11-15T17:59:04Z @neo-opus-grace added parent issue #477
 - 2026-11-15T17:59:05Z @neo-opus-grace marked this issue as being blocked by #1768
 - 2026-11-15T17:59:33Z @neo-opus-grace cross-referenced by PR #1769
+- 2026-11-15T22:27:26Z @neo-opus-grace cross-referenced by PR #992
+- 2026-11-15T22:46:32Z @neo-opus-grace referenced in commit `3d39d47` - "fix(agentos): the seat card counts pull requests on the seat, not ones waiting on it (#991)
+
+A pull request that waits on a blocked ticket asks nothing of its author, so the chip's
+accessible name and title no longer say every held pull request waits on the seat:
+"N pull requests on this seat", with the worst kind still named first."
+- 2026-11-15T23:02:42Z @tobiu referenced in commit `0c5fcac` - "feat(agentos): the seat card names a PR that waits on a blocked ticket (#991) (#992)
+
+* feat(agentos): the seat card names a PR that waits on a blocked ticket (#991)
+
+The open-work producer holds an approved, green head whose close target still has an
+open blocker as author/await-prerequisite. The card mapped that unknown kind to "next
+action unknown"; it now reads "waits on a blocked ticket" and ranks below every action
+the seat can take, above an unknown one.
+
+* fix(agentos): the seat card counts pull requests on the seat, not ones waiting on it (#991)
+
+A pull request that waits on a blocked ticket asks nothing of its author, so the chip's
+accessible name and title no longer say every held pull request waits on the seat:
+"N pull requests on this seat", with the worst kind still named first."
+- 2026-11-15T23:02:44Z @tobiu closed this issue
 

@@ -10,7 +10,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-06T23:06:44Z'
-updatedAt: '2026-11-06T23:06:44Z'
+updatedAt: '2026-11-16T01:21:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1511'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -47,7 +47,7 @@ Use shared AuthService and TransportService, MC Server/toolService/openapi/confi
 ## Acceptance Criteria
 - [ ] Register the actual dedicated publication handler and snapshot operation in Server/toolService/OpenAPI as appropriate, wired to GraphService's protected methods. The fixed application/vnd.neo.identity-family-publication carrier holds payload.signature; ordinary JSON parser limits remain unchanged.
 - [ ] Through the real HTTP path, wrong purpose/audience/issuer/kid, duplicate/noncanonical encoding, expired/future delivery, ordinary seat/PAT/Bridge credentials and forged provenance refuse without mutation. Protected trust cannot be provisioned by an ordinary request.
-- [ ] MC boot consumes the canonical reservation/public trust and exposes target-bound observations with stable originalRunId/issuer/fingerprint; missing, unsupported, fenced or mismatched history refuses explicitly. No private key is generated here and no runtime config writes/pass-along defaults are introduced.
+- [ ] MC boot consumes the canonical reservation/public trust and exposes target-bound observations with stable originRunId/issuer/fingerprint; missing, unsupported, fenced or mismatched history refuses explicitly. No private key is generated here and no runtime config writes/pass-along defaults are introduced.
 - [ ] The actual bounded transport admits a representable complete128-binding baseline and rejects a malformed/oversized588887-byte-contract violation without truncation or partial admission; reports entry/count/limit/remedy. Retain source-derived worst-case fixtures. The joint LIVE serialized census/admission witness is owned with #1297 under parent #1296, not a circular precondition on the publisher.
 - [ ] Construct the identityPublicationClient in production using the declared credential owner. Bootstrap/reconnect prove authenticated identity AND served plane/root; no ambient bearer, local RequestContext shortcut or reader→Fleet pull. Changed identity/plane invalidates retained observations.
 - [ ] The registered snapshot returns one coherent founding+admitted observation from the storage owner, including founding-only subjects and separate source provenance. Missing/malformed/fenced/unavailable never becomes empty success; do not fetch roster and history separately.
@@ -93,4 +93,7 @@ Creation sweep: live latest20 created-descending Brain issues, closed family/ide
 - 2026-11-06T23:10:13Z @neo-gpt-sophie cross-referenced by #1296
 - 2026-11-06T23:10:21Z @neo-gpt-sophie cross-referenced by #1297
 - 2026-11-06T23:15:30Z @neo-gpt-sophie cross-referenced by PR #1314
+- 2026-11-15T21:16:10Z @neo-gpt-sophie cross-referenced by #1765
+- 2026-11-15T21:28:40Z @neo-gpt-sophie cross-referenced by #1509
+- 2026-11-15T22:38:14Z @neo-gpt-sophie cross-referenced by PR #1774
 

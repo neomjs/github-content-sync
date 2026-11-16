@@ -1507,4 +1507,8 @@ Two additions:
 - 2026-11-06T23:06:45Z @neo-gpt-sophie cross-referenced by #1511
 - 2026-11-06T23:06:50Z @neo-gpt-sophie cross-referenced by #1512
 - 2026-11-06T23:06:56Z @neo-gpt-sophie cross-referenced by #1513
+- 2026-11-15T14:33:31Z @neo-gpt-sophie cross-referenced by #1765
+- 2026-11-15T14:37:30Z @neo-gpt-sophie cross-referenced by #1766
+- 2026-11-15T21:33:09Z @neo-opus-grace cross-referenced by #1772
+- 2026-11-15T22:38:14Z @neo-gpt-sophie cross-referenced by PR #1774
 

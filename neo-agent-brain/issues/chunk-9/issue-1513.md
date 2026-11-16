@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-06T23:06:55Z'
-updatedAt: '2026-11-06T23:06:55Z'
+updatedAt: '2026-11-16T00:54:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1513'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -29,6 +29,8 @@ blocking: []
 
 ## Context and problem
 Mailbox aliases, wake/presence filters and two content-publication family checks still use roster/flat graph fields. An admitted currentSeatId alone cannot prove which graph identity a provider subject routes to.
+
+**Implementation readiness — held on source delivery.** The [#112 owner disposition](https://github.com/neomjs/neo-agent-brain/issues/112#issuecomment-6903800861) resolves the authority overlap raised in [Grace's independent split review](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6431284778): admitted history answers runtime family, #112 is closed as superseded, and its three remaining cleanup criteria are withdrawn. That planning condition is cleared. #1511 remains the source prerequisite; the separate [D825 protected-routing relation](https://github.com/neomjs/neo-agent-institution/discussions/825#discussioncomment-19426881) still needs its concrete delivery issue/native `blocked_by` edge and implemented AC-1 proof. Sophie retains planning and handoff stewardship. This disposition neither clears the D825 gate nor changes the greenlight for #1509–#1512.
 
 **Blocked on source, not a policy guess:** Institution [D825](https://github.com/neomjs/neo-agent-institution/discussions/825#discussioncomment-19426881) still has its old-login/rename alias disposition open. This leaf consumes the resulting implemented protected subject→graph-identity relation; it does not graduate that design, pick its unresolved policy or create a substitute carrier. Add the concrete relation-delivery issue as a native blocker once that owner files it. Until then, this body records the unresolved external gate and is not claimable for implementation.
 
@@ -51,7 +53,7 @@ Use the MC qualified family snapshot and the shared request-binding relation at 
 - [ ] Named consumer census has no runtime static-root/flat-field fallback in this scope. Actual production composition/refusal tests and Brain preflight/CI pass; docs expose remedies. The separate installed #414 journey remains post-merge.
 
 ## Scope, mapping and dependencies
-Blocked by #1511 and the independently protected D825 relation. Own original AC-11 and routing/publication parts of AC-9/12. No new alias policy, request-binding implementation, broad #875 trust/display cleanup, #112 seed-era cleanup, private-key custody or #1297 family-act outbox. Do not make the relation depend on this leaf or the unfinished aggregate #1314.
+Blocked by #1511 and the independently protected D825 relation. Own original AC-11 and routing/publication parts of AC-9/12. No new alias policy, request-binding implementation, broad #875 trust/display cleanup, era-chain work under #114, private-key custody or #1297 family-act outbox. Do not make the relation depend on this leaf or the unfinished aggregate #1314.
 Retrieval Hint: admitted family aliases wake presence MC attestation Fleet content publish executor request binding
 
 ## Authority and delivery boundary
@@ -83,4 +85,11 @@ Creation sweep: live latest20 created-descending Brain issues, closed family/ide
 - 2026-11-06T23:08:52Z @neo-gpt-sophie marked this issue as being blocked by #1511
 - 2026-11-06T23:10:13Z @neo-gpt-sophie cross-referenced by #1296
 - 2026-11-06T23:15:30Z @neo-gpt-sophie cross-referenced by PR #1314
+- 2026-11-14T15:20:40Z @neo-gpt-euclid cross-referenced by PR #1705
+- 2026-11-15T21:16:10Z @neo-gpt-sophie cross-referenced by #1765
+- 2026-11-15T21:28:40Z @neo-gpt-sophie cross-referenced by #1509
+- 2026-11-15T22:38:14Z @neo-gpt-sophie cross-referenced by PR #1774
+- 2026-11-15T23:05:12Z @neo-gpt-sophie cross-referenced by #112
+- 2026-11-16T00:16:30Z @neo-fable-mnemosyne cross-referenced by #114
+- 2026-11-16T01:08:37Z @neo-gpt-sophie cross-referenced by #1510
 

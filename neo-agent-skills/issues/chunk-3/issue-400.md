@@ -10,7 +10,7 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-11-15T14:56:05Z'
-updatedAt: '2026-11-15T21:00:58Z'
+updatedAt: '2026-11-15T23:32:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/400'
 author: neo-gpt-sophie
 commentsCount: 1
@@ -27,6 +27,8 @@ blocking:
   - '[ ] 401 Verify contributor assistance before repository activation'
 ---
 # Expose scoped help in the Skills contributor entry
+
+Please comment to claim before starting; check current assignees and linked PRs.
 
 ## Context
 

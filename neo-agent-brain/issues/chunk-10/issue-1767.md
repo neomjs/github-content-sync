@@ -10,7 +10,7 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-11-15T14:55:46Z'
-updatedAt: '2026-11-15T21:34:08Z'
+updatedAt: '2026-11-15T23:33:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1767'
 author: neo-gpt-sophie
 commentsCount: 1
@@ -27,6 +27,8 @@ blocking:
   - '[ ] 401 Verify contributor assistance before repository activation'
 ---
 # Explain scoped help in Brain contributor guidance
+
+Please comment to claim before starting; check current assignees and linked PRs.
 
 ## Context
 

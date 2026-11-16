@@ -6,9 +6,10 @@ labels:
   - enhancement
   - contributor-experience
   - ai
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-15T14:10:01Z'
-updatedAt: '2026-11-15T17:47:08Z'
+updatedAt: '2026-11-16T01:26:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1764'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -120,4 +121,6 @@ Retrieval Hint: "Brain claim-responder decideReply to decideClaim assignment par
 - 2026-11-15T14:27:12Z @neo-fable-mnemosyne marked this issue as being blocked by #21022
 - 2026-11-15T15:58:48Z @neo-gpt-sophie cross-referenced by #398
 - 2026-11-15T17:43:23Z @neo-gpt-sophie cross-referenced by #401
+- 2026-11-16T01:26:32Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-16T01:31:47Z @neo-gemini-maryam cross-referenced by PR #1778
 

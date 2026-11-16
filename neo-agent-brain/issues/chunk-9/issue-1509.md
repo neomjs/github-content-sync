@@ -1,15 +1,16 @@
 ---
 id: 1509
 title: Define the protected family protocol and temporal projection
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - architecture
   - agent-os
-assignees: []
+assignees:
+  - neo-gpt-sophie
 createdAt: '2026-11-06T23:06:00Z'
-updatedAt: '2026-11-15T21:28:39Z'
+updatedAt: '2026-11-16T00:56:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1509'
 author: neo-gpt-sophie
 commentsCount: 1
@@ -24,6 +25,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1510 Own protected family admission and coherent snapshots in GraphService'
+closedAt: '2026-11-16T00:56:42Z'
 ---
 # Define the protected family protocol and temporal projection
 
@@ -39,6 +41,7 @@ Reuse and finish the shared canonical JSON, operation/signature/key and vocabula
 | Canonical operation/envelope | C7 fixed profile | Exactly baseline/bind/retire/rekey/confirm/correct; canonical encodings, domain separation, fixed purpose/audience/issuer/kid and Ed25519 verification; 300000ms delivery validity | Existing canonical, key, operation and signature specs; IdentitySchema reference |
 | Complete-baseline representation | Original #1296 AC-4 / agreed capacity | 128 managed bindings; derive the 588887-byte maximum including envelope/framing, without multipart/truncation | Worst-case encoded fixtures and named offending-entry/limit refusals |
 | Family vocabulary and projection | C8, #700, founding/correction dispositions | Exact family labels, explicit model:null, complete membership diagnostics and corrected temporal intervals | Pure table/property tests and complete malformed-input controls |
+| Publication canonicalizer and revision digest | Existing `ai/services/memory-core/helpers/publishDigest.mjs` exports and content-field projection | Move/re-export the deterministic canonicalizer through the shared owner. Preserve ordinary canonical bytes and publication digest normalization. The raw canonicalizer retains own `__proto__` keys; `computePublishRevisionDigest` still projects media onto its declared fields before canonicalization. | Direct raw-helper key-distinction control plus actual digest compatibility controls, including the projected-out extra-key case; retain scheduling and read-back behaviour. |
 
 ## Acceptance Criteria
 - [ ] All six operations use one closed typed canonical profile. Reject duplicate/noncanonical encodings, wrong purpose/target/issuer/kid and invalid signature/time input; logical identity stays distinct from delivery identity.
@@ -46,12 +49,19 @@ Reuse and finish the shared canonical JSON, operation/signature/key and vocabula
 - [ ] Preserve single-seat, different operators, same-owner/different-family, unconfirmed, empty, pending-retirement and retired-incarnation cases. Explicit model:null never inherits a previous model. Literal family "unknown" is distinct from missing/unclassified.
 - [ ] Vocabulary comparison is NFKC → remove JavaScript whitespace → lower/upper/lower → NFKC; control/format characters and empty keys refuse. Preserve exact labels and safe own-key behavior. Include prototype-name and all-code-point case/idempotence controls. Cross-script confusables remain the recorded residual.
 - [ ] The protected founding family continues through membership baseline and matching declarations. Cutoff is the earliest corrected different-family declaration at its ORIGINAL admission boundary, including retired incarnations. Test both correction directions, a later remaining cutoff, and no boundary at correction time. Membership/unconfirmed diagnostics remain visible; preserve the undeclared different-family residual and its cross-family-gate reopen trigger.
-- [ ] Compile complete reviewed provider-bound founding input with a canonical digest: missing, duplicate, malformed or conflicting rows are not silently omitted; missing/malformed source never falls back to founding. Retain every founding row sharing a subject; conflicting founding families remain ambiguous rather than being selected or removed. Pure projection consumes complete detached input, never fetches two independent runtime snapshots.
+- [ ] Compile complete reviewed provider-bound founding input with a canonical digest: missing, duplicate, malformed or conflicting rows are not silently omitted; missing/malformed source never falls back to founding. Retain every founding row sharing a subject. Conflicting founding families remain ambiguous before the first corrected admitted declaration at its original admission time; from that boundary use the admitted aggregate, including unconfirmed/ambiguous states, without selecting or removing a founding row. Pure projection consumes complete detached input, never fetches two independent runtime snapshots.
 - [ ] Focused primitive/projection suites and Brain preflight/CI pass, with no endpoint, writer, runtime identity-root fallback or consumer activation added.
+- [ ] The existing publication helper re-exports the shared canonicalizer without changing its schedule/read-back APIs or content-field projection. Ordinary canonical bytes and publication digests stay equal; raw JSON objects differing only in an own `__proto__` key stay distinct after canonicalization. The actual digest still ignores unrecognized media fields, including that key, before canonicalization.
 
 ## Scope, mapping and dependencies
-Original #1296: pure portions of AC-1,4,5,6,9,10 and the common AC-12 discipline. Physical enforcement remains with the storage leaf, real transport with the service leaf, and policy consumers with their leaves. #112 retains its checked-in roster/seed-era cleanup and is not closed by this work. No installed census or authority is claimed by a pure compiler.
+Original #1296: pure portions of AC-1,4,5,6,9,10 and the common AC-12 discipline. Physical enforcement remains with the storage leaf, real transport with the service leaf, and policy consumers with their leaves. [#112 was independently closed as superseded](https://github.com/neomjs/neo-agent-brain/issues/112#issuecomment-6903800861); it no longer retires the founding `properties.modelFamily` input. #1509/#1510 own that compiler input; any later representation change must preserve the complete seed digest. No installed census or authority is claimed by a pure compiler. Reject copying raw keys onto a plain `{}` because the prototype setter can erase an own key; retain the publication digest's explicit field projection.
 Retrieval Hint: family canonical bytes typed operations founding cutoff corrected temporal projection
+
+## Intake / independent review
+
+[Grace’s independent epic review](https://github.com/neomjs/neo-agent-brain/issues/1296#issuecomment-6431284778) greenlights #1509–#1512. Its publication-compatibility concern is carried in the ledger and final AC above. A direct two-module probe against `c2b7859a` plus the shared checkpoint canonicalizer confirms the raw-helper key loss and correction, while the real `computePublishRevisionDigest` projects the extra key out both before and after the move. This is a raw canonicalizer correction with digest compatibility, not a new digest input field.
+
+The [policy-owner disposition in review](https://github.com/neomjs/neo-agent-brain/pull/1774#pullrequestreview-5913484734) clarifies the conflicting-founders boundary in the final sentence of AC-6: ambiguity is historical until the first admitted declaration, not a permanent override of later admitted history. The single-family corrected cutoff and its undeclared-seat residual remain unchanged.
 
 ## Authority and delivery boundary
 This is a one-PR source leaf of #1296, split from the preserved draft #1314 at b69057823d43b813d3c0daa6421561a3d9fdc51a by the operator's 6/7 November instruction. Extract the applicable work, then reconcile it against current dev; the old draft is evidence, not a complete implementation.
@@ -105,4 +115,16 @@ The client, protected admission/boot/fence/lineage helpers, storage/migration gu
 
 The native source sequence was re-read: **#1509 → #1510 → #1511 → #1512 → #1765**; #1513 has its separately recorded routing-relation gate. #1509 has no native blocker. Before first implementation pickup, the author path of `epic-review` requires a non-author review of #1296's current split; none of its 36 current comments has the structured epic-review form. Its historical peer dispositions remain authority inputs, not a claimed review of the later decomposition. No branch, assignment or tracked edit has been made.
 
+- 2026-11-15T22:01:37Z @neo-gpt-sophie assigned to @neo-gpt-sophie
+- 2026-11-15T22:38:14Z @neo-gpt-sophie cross-referenced by PR #1774
+- 2026-11-16T00:16:43Z @neo-fable-mnemosyne cross-referenced by #112
+- 2026-11-16T00:22:11Z @neo-gpt-sophie referenced in commit `e872d49` - "fix(identity): bound founding precedence and validate lineage keys (#1509)"
+- 2026-11-16T00:30:05Z @neo-gpt-sophie cross-referenced by #1513
+- 2026-11-16T00:54:09Z @neo-gpt-sophie cross-referenced by #1512
+- 2026-11-16T00:56:42Z @tobiu referenced in commit `1f884fe` - "feat(identity): add pure family protocol and temporal projection (#1509) (#1774)
+
+* feat(identity): add pure family protocol and temporal projection (#1509)
+
+* fix(identity): bound founding precedence and validate lineage keys (#1509)"
+- 2026-11-16T00:56:43Z @tobiu closed this issue
 

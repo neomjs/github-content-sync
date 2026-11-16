@@ -6,9 +6,10 @@ labels:
   - enhancement
   - ai
   - contributor-experience
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-15T14:10:02Z'
-updatedAt: '2026-11-15T17:47:10Z'
+updatedAt: '2026-11-16T01:31:56Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/989'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -120,4 +121,6 @@ Retrieval Hint: "Institution claim-responder decideReply to decideClaim assignme
 - 2026-11-15T14:27:13Z @neo-fable-mnemosyne marked this issue as being blocked by #21022
 - 2026-11-15T15:58:48Z @neo-gpt-sophie cross-referenced by #398
 - 2026-11-15T17:43:23Z @neo-gpt-sophie cross-referenced by #401
+- 2026-11-16T01:31:56Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-16T01:35:21Z @neo-gemini-maryam cross-referenced by PR #996
 

@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-06T23:06:49Z'
-updatedAt: '2026-11-06T23:06:49Z'
+updatedAt: '2026-11-16T00:54:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1512'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -50,7 +50,7 @@ Use the production MC client/qualified projection in ai/services/github-workflow
 - [ ] Production budget/readiness tests use the registered read client/qualified source, including unavailable/malformed/fenced and wrong-identity/plane controls. Remove static-root/flat-field runtime fallback from these consumers; no missing-data empty success. All relevant Brain preflight/CI and docs pass.
 
 ## Scope, mapping and dependencies
-Blocked by #1511. Own original AC-10 and GitHub parts of AC-9/12. #112's checked-in roster/seed-era cleanup and #875's other fact classes remain separate; this changes runtime review inputs, not their review policy. No mailbox/wake/publication migration, Fleet publisher, UI, synthetic review demand or installed witness.
+Blocked by #1511. Own original AC-10 and GitHub parts of AC-9/12. [#112 is closed as superseded](https://github.com/neomjs/neo-agent-brain/issues/112#issuecomment-6903800861), with no remaining roster/seed-era cleanup delegated to it. #1509/#1510 retain the reviewed founding input; #1296 reconciles the full shared-verdict caller census and its delivery ownership. #875's other fact classes remain separate; this changes runtime review inputs, not their review policy. No mailbox/wake/publication migration, Fleet publisher, UI, synthetic review demand or installed witness.
 Retrieval Hint: admitted family review budget merge readiness actor interval union temporal corrections
 
 ## Authority and delivery boundary
@@ -88,4 +88,8 @@ Creation sweep: live latest20 created-descending Brain issues, closed family/ide
 - 2026-11-15T21:16:12Z @neo-gpt-sophie marked this issue as blocking #1765
 - 2026-11-15T21:16:14Z @neo-gpt-sophie cross-referenced by #401
 - 2026-11-15T21:28:40Z @neo-gpt-sophie cross-referenced by #1509
+- 2026-11-15T22:38:14Z @neo-gpt-sophie cross-referenced by PR #1774
+- 2026-11-15T23:05:12Z @neo-gpt-sophie cross-referenced by #112
+- 2026-11-16T00:16:30Z @neo-fable-mnemosyne cross-referenced by #114
+- 2026-11-16T00:30:05Z @neo-gpt-sophie cross-referenced by #1513
 

@@ -38,8 +38,8 @@ subIssues:
   - '[ ] 898 The Golden Path pane calls a route current days after it expired'
   - '[x] 930 An instance switch leaves the old instance''s agents in Accounts'
   - '[x] 984 Codex wake setup suggests retrying an incompatible running seat'
-  - '[ ] 991 The seat card names a PR that waits on its close target''s blocker'
-subIssuesCompleted: 20
+  - '[x] 991 The seat card names a PR that waits on its close target''s blocker'
+subIssuesCompleted: 21
 subIssuesTotal: 24
 contentTrust:
   projected: true

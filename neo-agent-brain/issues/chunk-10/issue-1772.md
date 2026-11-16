@@ -1,14 +1,14 @@
 ---
 id: 1772
 title: who_is_online names an auto-provisioned identity by its id
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-15T21:33:08Z'
-updatedAt: '2026-11-15T21:36:44Z'
+updatedAt: '2026-11-15T22:40:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1772'
 author: neo-opus-grace
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-15T22:40:23Z'
 ---
 # who_is_online names an auto-provisioned identity by its id
 
@@ -45,27 +46,31 @@ The Fleet resolves a PR's author line through these names. `seatIdentities().byN
 - #875: runtime identity facts come from the plane's graph. The graph already holds the right name; this reader looks for it in the wrong place.
 - The same parsed-row read appears nowhere else: of the modules that `SELECT data FROM Nodes`, only this one reads a top-level `name`.
 - The line came with the Agent OS's move into this repository (`11552b08`), and no spec asserts a row's name. `WakeSubscriptionService.spec.mjs` seeds identities with `GraphService.upsertNode({…, name: 'Alice'})`, which stores the name where the projection does not look.
+- Auto-provisioning names a new identity after its provider display name (`Server.mjs` `ensureAgentIdentityForAuthContext`), so distinct identities can legitimately carry one name.
 
 ## The Fix
 
 In `_projectAgentLiveness()`, read the stored name after the roots' display name: `props.displayName || props.name || node.id`. Every row that has a `displayName` reads as before. Of the 16 roots, only `@system` has a `displayName` that differs from its `name` ("System" against "System Sender"). No data change and no reseed.
+
+Once auto-provisioned rows carry their stored names, two identities can share one. So the Fleet's author lookup stops taking the first match. `seatIdentities().byName(name, login)` resolves a name one identity carries as before. A name that several identities carry resolves only to the one whose handle is the PR author's login, and otherwise to no seat. `ownerOf()` passes the login; the body line still decides who is named. Found in review on #1773.
 
 ## Contract Ledger
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
 | `who_is_online` row `name` (`WakeSubscriptionService._projectAgentLiveness()`) | `GraphService.upsertNode()` keeps a node's name at `properties.name`; #875 (identity facts come from the plane's graph) | A row's `name` is the identity's `displayName`, else its stored name, else its id | An identity with neither keeps its id | No: `openapi.yaml:980` types `name` as a string and names no source | `WakeSubscriptionService.spec.mjs`, the #1772 arm |
-| Fleet author resolution (`seatIdentities().byName`, unchanged) | #1485 (`byName` reads the plane's nodes) | "Authored by <name>" resolves a seat whose node has a stored name and no `displayName` | A name no row carries stays `unowned` | No | The same arm, and AC-3 after deployment |
+| Fleet author resolution (`seatIdentities().byName(name, login)`, `ownerOf()`) | #1485 (`byName` reads the plane's nodes); the #1773 review (row order is no evidence of authorship) | "Authored by <name>" resolves the one identity carrying that name; a name several identities carry resolves only to the one whose handle is the PR author's login | Otherwise the PR stays `unowned`, in any row order | No | `wireFleetOpenWorkSource.spec.mjs`, both row orders, through `normalizePullRequest`; AC-4 after deployment |
 
 ## Acceptance Criteria
 
 - [ ] An identity upserted with a `name` and no `displayName` is listed by `who_is_online` under that name: a `WakeSubscriptionService.spec.mjs` arm, red on the merge base.
 - [ ] An identity with neither keeps its id as its name, and a `displayName` still wins over a stored name.
+- [ ] A name that several identities carry resolves only to the identity whose account opened the PR, in either row order; otherwise the PR stays unowned. A uniquely named auto-provisioned seat still owns its PR.
 - [ ] [Post-merge, owner Grace] Once the plane runs the fix, `who_is_online` names `@neo-gemini-maryam` "Maryam", and her next PR raises no `unowned` wake.
 
 ## Out of Scope
 
-- Falling back to the author login in `ownerOf()`: its "never silently its login" rule stands.
+- Falling back to the author login in `ownerOf()` when no seat carries the named name: its "never silently its login" rule stands. The login only chooses among seats that share the named name.
 - Reseeding the plane's identity roots.
 - Moving other readers off `identityRoots.mjs` (#875).
 
@@ -79,7 +84,7 @@ Live latest-open + closed sweep: latest 20 open + open and closed search ("unown
 
 Origin Session ID: cd886d2b-b1fb-4f6a-8e9c-e3a14ae48e68
 
-Retrieval Hint: "who_is_online row name reads node.name but SQLite rows keep name at properties.name; Fleet unowned wakes for an auto-provisioned seat"
+Retrieval Hint: "who_is_online row name reads node.name but SQLite rows keep name at properties.name; Fleet unowned wakes for an auto-provisioned seat; shared name resolves only to the author's seat"
 
 ## Timeline
 
@@ -87,4 +92,23 @@ Retrieval Hint: "who_is_online row name reads node.name but SQLite rows keep nam
 - 2026-11-15T21:33:10Z @neo-opus-grace added the `bug` label
 - 2026-11-15T21:33:10Z @neo-opus-grace added the `ai` label
 - 2026-11-15T21:40:38Z @neo-opus-grace cross-referenced by PR #1773
+- 2026-11-15T22:10:01Z @neo-opus-grace referenced in commit `0518bac` - "fix(fleet): a name two seats share resolves only to the one whose account opened the PR (#1772)
+
+With stored names on every who_is_online row, distinct identities can carry one
+name, and the author lookup took whichever row came first. It now resolves a shared
+name only to the identity whose handle is the PR author's login, else to no seat."
+- 2026-11-15T22:40:23Z @tobiu referenced in commit `79b88ca` - "fix(memory-core): who_is_online names an identity by its stored name (#1772) (#1773)
+
+* fix(memory-core): who_is_online names an identity by its stored name (#1772)
+
+Parsed SQLite rows keep a node's name at properties.name; the projection read a
+top-level name they never carry, so an identity without a displayName (every
+auto-provisioned one) was listed under its id and the Fleet's author lookup missed it.
+
+* fix(fleet): a name two seats share resolves only to the one whose account opened the PR (#1772)
+
+With stored names on every who_is_online row, distinct identities can carry one
+name, and the author lookup took whichever row came first. It now resolves a shared
+name only to the identity whose handle is the PR author's login, else to no seat."
+- 2026-11-15T22:40:24Z @tobiu closed this issue
 
