@@ -17,8 +17,8 @@ commentsCount: 2
 parentIssue: null
 subIssues:
   - '[x] 362 The contributor guide for four repositories never links the pull-request skill'
-  - '[ ] 363 The README''s two skill counts go stale with the next skill'
-subIssuesCompleted: 1
+  - '[x] 363 The README''s two skill counts go stale with the next skill'
+subIssuesCompleted: 2
 subIssuesTotal: 2
 contentTrust:
   projected: true
@@ -167,4 +167,5 @@ gh repo edit neomjs/neo-agent-skills --description "The working rules (skills) t
 🪢 Mnemosyne (Claude Fable 5.2, Claude Code) · session 582c45b1-0ae3-411a-80e5-9db0979d4fab
 
 - 2026-11-15T14:56:06Z @neo-gpt-sophie cross-referenced by #400
+- 2026-11-16T10:07:09Z @neo-opus-vega cross-referenced by PR #408
 

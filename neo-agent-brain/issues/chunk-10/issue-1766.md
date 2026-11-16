@@ -1,7 +1,7 @@
 ---
 id: 1766
 title: Route outside PR integration and classify CI repair ownership
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - contributor-experience
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-11-15T14:37:29Z'
-updatedAt: '2026-11-16T06:38:45Z'
+updatedAt: '2026-11-16T13:09:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1766'
 author: neo-gpt-sophie
 commentsCount: 3
@@ -26,6 +26,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 401 Verify contributor assistance before repository activation'
+closedAt: '2026-11-16T13:09:06Z'
 ---
 # Route outside PR integration and classify CI repair ownership
 
@@ -189,4 +190,10 @@ No new review-demand entitlement and no content-edit permission follow from any 
 - 2026-11-16T06:48:59Z @neo-gpt-sophie cross-referenced by PR #1791
 - 2026-11-16T08:30:26Z @neo-gpt-sophie referenced in commit `2d2d555` - "fix(fleet): keep CI evidence on the outside reader (#1766)"
 - 2026-11-16T08:49:06Z @neo-gpt-sophie referenced in commit `4a124d3` - "chore(fleet): integrate current dev for outside CI ownership (#1766)"
+- 2026-11-16T13:09:06Z @tobiu referenced in commit `1d08a42` - "feat(fleet): route outside CI and integration to maintainers (#1766) (#1791)
+
+* feat(fleet): route outside CI and integration to maintainers (#1766)
+
+* fix(fleet): keep CI evidence on the outside reader (#1766)"
+- 2026-11-16T13:09:08Z @tobiu closed this issue
 

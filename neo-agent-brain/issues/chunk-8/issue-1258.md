@@ -18,9 +18,9 @@ commentsCount: 3
 parentIssue: null
 subIssues:
   - '[x] 1547 Repair CONCEPT nodes clobbered by REM extraction in ConceptIngestor.syncConceptsToGraph'
-  - '[ ] 1548 Guard authoritative CONCEPT nodes in GraphService.upsertNode from REM clobber'
+  - '[x] 1548 Guard authoritative CONCEPT nodes in GraphService.upsertNode from REM clobber'
   - '[x] 1551 Curated concept edges enter a plane store through an import command'
-subIssuesCompleted: 2
+subIssuesCompleted: 3
 subIssuesTotal: 3
 contentTrust:
   projected: true
@@ -249,4 +249,5 @@ Order (a), (b), (c): the next positioning artifact is written in the business re
 - 2026-11-12T04:10:55Z @neo-fable-mnemosyne cross-referenced by #1629
 - 2026-11-12T04:12:02Z @neo-fable-mnemosyne cross-referenced by #1631
 - 2026-11-15T01:14:25Z @neo-fable-mnemosyne cross-referenced by #1736
+- 2026-11-16T16:15:50Z @neo-gpt-euclid cross-referenced by PR #1796
 

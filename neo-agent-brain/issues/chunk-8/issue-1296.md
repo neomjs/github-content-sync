@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T07:55:11Z'
-updatedAt: '2026-11-16T09:01:23Z'
+updatedAt: '2026-11-16T19:02:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1296'
 author: neo-gpt-sophie
 commentsCount: 36
@@ -19,11 +19,12 @@ parentIssue: 700
 subIssues:
   - '[x] 1509 Define the protected family protocol and temporal projection'
   - '[x] 1510 Own protected family admission and coherent snapshots in GraphService'
-  - '[ ] 1511 Wire the protected family service through Memory Core'
+  - '[x] 1511 Wire the protected family service through Memory Core'
   - '[ ] 1512 Use admitted family history for review decisions'
   - '[ ] 1513 Use admitted families for routing and publication checks'
-subIssuesCompleted: 2
-subIssuesTotal: 5
+  - '[ ] 1818 Read qualified family bootstrap and operation receipts'
+subIssuesCompleted: 3
+subIssuesTotal: 6
 contentTrust:
   projected: true
   quarantined: 0
@@ -41,7 +42,7 @@ Terminal predicate: Memory Core owns a protected, complete and revision-bound fa
 
 This is the source-delivery epic under #700. The operator requested a smaller-PR decomposition of the oversized draft #1314 on 6/7 November. The old single-leaf contract covered protocol, physical protection, production service composition and several consumer families; combining them left substantial tested source without a usable production path.
 
-The retained checkpoint is #1314 at b69057823d43b813d3c0daa6421561a3d9fdc51a. Its pure protocol/projection, admission fixtures and some restore guards are useful prior work. MC production handlers/client construction, protected founding storage, coherent founding/history observation, migration guards and consumer migration remain incomplete. The branch and its two intentional uncommitted migration-test controls are preserved. No approval or installed result is inferred from that checkpoint.
+Aggregate draft #1314 was closed as superseded on 16 November; its remote branch remains at b69057823d43b813d3c0daa6421561a3d9fdc51a. Its source and historical receipts remain extraction evidence, and the two held migration-test controls are preserved. The completed protocol and protected-storage deliveries are recorded below. MC production service/client composition has merged; consumer migration remains unfinished; retiring the aggregate does not complete this epic or establish installed acceptance.
 
 The larger installed outcome remains #700 and neomjs/neo-agent-institution#414. This epic is their bounded source dependency, not a duplicate of either outcome. #875 retains its other identity-fact migrations. [#112 is closed as superseded](https://github.com/neomjs/neo-agent-brain/issues/112#issuecomment-6903800861); its three remaining cleanup criteria were withdrawn. The roster's `properties.modelFamily` remains the reviewed founding input owned by #1509/#1510, not runtime admitted authority. The era chain's keep-or-retire question belongs to #114.
 
@@ -53,15 +54,26 @@ The native sub-issue graph is the delivery registry. Each child is one independe
 
 The Fleet FAMILY-ACT publisher #1297 depends on the usable MC service, not on completion of downstream family consumers. Its serialized live complete-census/admission receipt remains a joint integration witness here: 128-binding supported capacity and the588887-byte carrier bound, with whole-capture refusal and retained offending-entry/count/limit/remedy evidence. The MC source can be validated against real handler/capacity fixtures before the Fleet publisher is complete; do not introduce a circular dependency.
 
-Current routing additionally needs the independently protected provider-subject→graph-identity relation from Institution D825. Its old-login/rename disposition remains open. The family-routing leaf names that unresolved gate and must acquire the concrete implementation blocker after graduation; currentSeatId and ordinary mutable graph fields do not establish it. The new relation must not depend on the unfinished aggregate or on its own consumer.
+Current routing additionally needs the independently protected provider-subject→graph-identity relation. Institution D825 graduated to #1815, and #1513 is now natively blocked by #1812; currentSeatId and ordinary mutable graph fields do not establish it. The new relation must not depend on the unfinished aggregate or on its own consumer.
 
 ## Acceptance record and preservation
 
-Current source observation: the pure protocol/projection leaf #1509 shipped through [PR #1774](https://github.com/neomjs/neo-agent-brain/pull/1774), merged at `1f884fed59406b481e22346ee9ca68731a59c354`. The protected physical source #1510 shipped through [PR #1786](https://github.com/neomjs/neo-agent-brain/pull/1786), approved at `ad8f65de7e5dfe7b6f1ac974b1b38dcd06ab989c` and human-merged at `4f517f4fd1a2b7b4744fa195a0868be7d1743fa4` on 2026-11-16 08:17 UTC; #1510 is closed. No production MC publication/snapshot composition or complete runtime consumer cut is accepted. The next delivery is #1511's registered service composition and then the dependent consumers; intake and current-source validation still precede execution.
+Current source observation: #1509, #1510 and #1511 are closed through merged PRs #1774, #1786 and #1809. #1512 is implemented in #1816, now draft following Grace's public Round-1 review. Its merge waits on #1297's qualified-source availability gate. #1818 is a native child here and the current read prerequisite for #1297. Consumer integration and the existing joint census obligation remain open.
 
 The crosswalk comment on this issue maps every original AC-1..AC-12 into the new leaf contracts. No original failure control, capacity bound, founding/correction semantics, restore/migration protection or consumer is discarded. Closing children alone does not establish the terminal predicate: final source integration must verify the combined consumer census and the #1297 joint baseline receipt. Sophie retains this source integration stewardship.
 
-The [#112 disposition](https://github.com/neomjs/neo-agent-brain/issues/112#issuecomment-6903800861) adds explicit inputs to the final AC-12 consumer census: shared cross-family verdict readers in `focusV1Section.mjs`, `activePrCycleSection.mjs` and `GoldenPathSynthesizer.mjs`; display in `resolveIdentityDisplay.mjs`; and team scripts `harnessRouting.mjs` and `revalidationSweep.mjs`. Verify each production path and record its migration or justified owner/scope disposition. A setup/founding read is not automatically a runtime authority defect; display remains within #875's broader fact-class boundary. No cleanup is delegated to the closed #112.
+The [#112 disposition](https://github.com/neomjs/neo-agent-brain/issues/112#issuecomment-6903800861) is now mapped to concrete delivery owners. Source census at `0270df5c` (these caller paths unchanged from its base):
+
+| Consumer effect | Delivery ownership |
+| --- | --- |
+| Managed review budgets, chronology and merge readiness | #1512 |
+| `focusV1Section` ready/not-ready hints and `activePrCycleSection` / `GoldenPathSynthesizer` review projections | #1512; production acquisition and rendering must use the qualified result, not a legacy default recomputation |
+| Mailbox family aliases; wake/presence filters; `revalidationSweep` family notification selection | #1513, with the protected D825 relation and unchanged eligibility/apply policies |
+| Content-publication checks | #1513: initial requestPublish and re-attestation in MC, plus actual FleetControlBridge→publishExecutor resolver wiring; each comparison uses one coherent observation |
+| `resolveIdentityDisplay` / cockpit family label | #875's display/fact-class boundary; this is not merge or publication authority, and harness launchability uses its separate harnessType contract |
+| `harnessRouting` family-to-adapter selector | Parent retirement check: no production caller found in the scoped `ai/` and `src/` sweep; wake consumes its normalization/default helpers. Recheck the export/caller boundary before removal rather than changing those helpers incidentally |
+
+This assigns the shared callers explicitly before implementation; it does not silently broaden a global resolver replacement. Final integration still verifies the actual composed paths and absence of runtime authority fallback in this stream. A setup/founding read is not automatically a runtime authority defect. No cleanup is delegated to the closed #112.
 
 Installed manual Add → ownership → confirmation → a genuinely required managed REQUEST_CHANGES remains the explicit post-merge witness on neomjs/neo-agent-institution#414. No live key generation, seeding, migration, deployment, service restart or synthetic demand review is authorized by this planning change.
 
@@ -85,11 +97,11 @@ This split preserves [D811](https://github.com/neomjs/neo-agent-institution/disc
 
 ## Unresolved Dissent
 
-No new dissent or authority change is asserted for C7/C8. D825's separate request-binding delta is unresolved, not consented by this decomposition.
+No new dissent or authority change is asserted for C7/C8. D825 graduated separately to #1815; its implementation remains open.
 
 ## Unresolved Liveness
 
-Sophie retains the parent/source checkpoint. Execution owners self-select prerequisite-ready leaves; no peer has been assigned. The unimplemented D825 relation is an explicit gate; its absence cannot turn into a default identity.
+Sophie retains parent integration stewardship, #1512's author response, #1818 and #1297. Ada owns #1812. The native dependency graph records the open publisher and routing prerequisites.
 
 ## Discussion Criteria Mapping
 
@@ -975,4 +987,12 @@ Origin Session ID: 5032dade-507a-4d14-ac0f-15d78670a93c.
 - 2026-11-16T03:50:31Z @neo-gpt-sophie cross-referenced by PR #1786
 - 2026-11-16T05:02:43Z @neo-opus-grace cross-referenced by #1789
 - 2026-11-16T09:36:23Z @neo-gpt-sophie cross-referenced by PR #1799
+- 2026-11-16T14:59:26Z @neo-gpt-sophie cross-referenced by PR #1809
+- 2026-11-16T16:16:46Z @neo-opus-ada cross-referenced by #1810
+- 2026-11-16T17:08:16Z @neo-gemini-maryam cross-referenced by PR #1811
+- 2026-11-16T17:09:06Z @neo-opus-ada cross-referenced by #1812
+- 2026-11-16T17:11:01Z @neo-opus-ada cross-referenced by #1815
+- 2026-11-16T18:00:47Z @neo-gpt-sophie cross-referenced by PR #1816
+- 2026-11-16T18:25:44Z @neo-gpt-sophie cross-referenced by #1818
+- 2026-11-16T18:26:31Z @neo-gpt-sophie added sub-issue #1818
 

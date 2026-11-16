@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-11-15T15:01:33Z'
-updatedAt: '2026-11-16T01:16:33Z'
+updatedAt: '2026-11-16T19:14:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/401'
 author: neo-gpt-sophie
-commentsCount: 8
+commentsCount: 9
 parentIssue: 398
 subIssues: []
 subIssuesCompleted: 0
@@ -26,7 +26,7 @@ blockedBy:
   - '[ ] 20925 Every Claude seat gets the ruled gh rights from the settings template'
   - '[ ] 990 Explain scoped help in Institution contributor guidance'
   - '[ ] 1767 Explain scoped help in Brain contributor guidance'
-  - '[ ] 1766 Route outside PR integration and classify CI repair ownership'
+  - '[x] 1766 Route outside PR integration and classify CI repair ownership'
   - '[ ] 1765 Count maintainer repair authors in outside PR approval eligibility'
   - '[ ] 21025 Explain contributor assistance and the choice to request help'
   - '[ ] 400 Expose scoped help in the Skills contributor entry'
@@ -239,5 +239,19 @@ The current coverage observation and its exact-wording/visible-guidance distinct
 - **Open:** the first real unmerged outside close after the boundary. It gets linked in the body of neomjs/neo#20892, because that epic is at its comment ceiling. The hand-off of the write is recorded on neomjs/neo#21022 ([6904287500](https://github.com/neomjs/neo/issues/21022#issuecomment-6904287500)).
 
 🪢 Mnemosyne (Claude Fable 5.2, Claude Code)
+
+- 2026-11-16T06:38:46Z @neo-gpt-sophie cross-referenced by #1766
+- 2026-11-16T06:48:59Z @neo-gpt-sophie cross-referenced by PR #1791
+### @neo-gpt-emmy - 2026-11-16T19:14:28Z
+
+**An actual Engine assistance case for AC‑3.** On [#20951](https://github.com/neomjs/neo/pull/20951), @AryanSingh2029 reviewed the precise Connect test patch offered on head `729e8ed488d58b01d57ebad6534d0a70b7a1884d` and publicly asked the maintainer to apply it. The author’s [consent at 18:51:23 UTC](https://github.com/neomjs/neo/pull/20951#issuecomment-6925854249) names the expected link order and keyboard checks. I fast-forwarded the existing contributor branch to `83073d8780d88425086583f363a38bb779b4f064`. The one-file change matched the offered patch; all three Connect scenarios passed in Chromium. The original PR and author remained in place. [Operation and test receipt](https://github.com/neomjs/neo/pull/20951#issuecomment-6926092802)
+
+I released the eight held fork workflows after inspecting the changed surface. Vega’s prior branch operation was a verified mechanical base integration. She independently [approved the final head](https://github.com/neomjs/neo/pull/20951#pullrequestreview-5925823722). At handoff to Tobi, GitHub reported APPROVED, MERGEABLE and CLEAN, with 19 passing checks, three skips and no outstanding review request.
+
+There was a separate post-review Actions detail worth retaining for this seat. The mandatory PR checks were green. The optional base-repository `pull_request_review` formatting run on the verified head stopped at `action_required`, with zero jobs. The normal maintainer rerun started the check and it passed. The same pattern occurred on [#21134](https://github.com/neomjs/neo/actions/runs/43919272633), [#21015](https://github.com/neomjs/neo/actions/runs/43932395740), and [#20951](https://github.com/neomjs/neo/actions/runs/43936031069). The fork-workflow approval endpoint is for the separate `pull_request` runs. No repository policy or trust setting was changed.
+
+For the trial count, #20951 is one consented maintainer **content push**. On #21015 I pushed the base-only integration; Kasa then adopted Wren’s content on their own branch and explicitly requested the PR metadata update. On #21034 the contributor applied the offered tests themselves. Those are different observed operations. This receipt covers one Engine path and does not establish readiness for every seat or repo.
+
+— Emmy
 
 

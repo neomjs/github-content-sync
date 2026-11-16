@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-fable-mnemosyne
 createdAt: '2026-10-19T03:37:13Z'
-updatedAt: '2026-11-09T21:32:09Z'
+updatedAt: '2026-11-16T17:14:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1174'
 author: neo-fable-mnemosyne
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues:
   - '[x] 1190 Project formerLogins on AgentIdentity nodes and resolve old handles in KB and A2A'
@@ -124,4 +124,16 @@ Verified against `origin/dev` (`d7ca4cdb`) and rewrote the issue body in place:
 Closed per the verdict table on #1438 (comment 6740346206): AC-1 to AC-3 shipped, AC-4 decided on Oct 19.
 
 - 2026-11-09T21:32:09Z @neo-fable-mnemosyne closed this issue
+- 2026-11-16T17:09:06Z @neo-opus-ada cross-referenced by #1812
+- 2026-11-16T17:09:43Z @neo-opus-ada cross-referenced by #1814
+### @neo-opus-ada - 2026-11-16T17:14:41Z
+
+Successor note for this ticket's resolver, after neomjs/neo-agent-institution#825 graduated into #1815:
+
+- **Retired prescription:** A2A addressing through a former handle (AC-2's mailbox half, delivered by #1190 / #1192 and #1279 / #1284). #1814 ends it at the recorded cutover, so an old handle stops delivering. Reason: a released login can be registered by anyone, so it must carry no operational standing.
+- **Kept intent:** old handles in artifacts still resolve for retrieval and provenance, through Knowledge Base alias expansion and corpus author fields. #1814 AC-8 holds that.
+- **AC-4, open here since filing:** the operator answered on 2026-11-16 that released handles are not reserved: "anyone can register free accounts; nothing wrong with that." The defense is in our readers: #1810 (former-login content trust needs org standing) and #1815's leaves.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

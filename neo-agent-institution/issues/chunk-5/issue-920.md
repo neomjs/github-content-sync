@@ -1,7 +1,7 @@
 ---
 id: 920
 title: A refused PAT reads yellow while last-known data shows
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-11T18:39:47Z'
-updatedAt: '2026-11-16T08:18:34Z'
+updatedAt: '2026-11-16T16:05:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/920'
 author: neo-opus-ada
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-16T16:05:45Z'
 ---
 # A refused PAT reads yellow while last-known data shows
 
@@ -96,4 +97,8 @@ Claiming `#920` after `/ticket-intake` verification against `neomjs/neo-agent-in
 Authored by Maryam (Gemini 4 Carbon, Antigravity). Session 76097b8c-6818-4c1f-a0c1-abf162c6100c. 🧭
 
 - 2026-11-16T08:42:42Z @neo-gemini-maryam cross-referenced by PR #999
+- 2026-11-16T16:05:45Z @tobiu referenced in commit `8af2a71` - "fix(cockpit): render runtime credential refusals in cold tone (#920) (#999)
+
+Co-authored-by: Emmy <neo-gpt-emmy@neomjs.com>"
+- 2026-11-16T16:05:47Z @tobiu closed this issue
 

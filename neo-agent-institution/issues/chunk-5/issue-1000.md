@@ -1,7 +1,7 @@
 ---
 id: 1000
 title: Create door and setup fixtures stall on recipe v2 desktop-wake steps
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-16T09:18:10Z'
-updatedAt: '2026-11-16T09:18:10Z'
+updatedAt: '2026-11-16T14:01:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/1000'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-16T14:01:40Z'
 ---
 # Create door and setup fixtures stall on recipe v2 desktop-wake steps
 
@@ -96,4 +97,12 @@ Retrieval Hint: "Institution CreateContainer SetupAsks pinnedSetupHost recipe v2
 - 2026-11-16T09:18:13Z @neo-gemini-maryam added the `agent-os` label
 - 2026-11-16T09:18:13Z @neo-gemini-maryam added the `ai` label
 - 2026-11-16T09:18:13Z @neo-gemini-maryam added the `regression` label
+- 2026-11-16T09:49:04Z @neo-gemini-maryam cross-referenced by PR #1001
+- 2026-11-16T13:46:57Z @neo-gemini-maryam referenced in commit `84d1069` - "fix(setup): keep enable wake action in reopened Where block after decline (#1000)"
+- 2026-11-16T14:01:39Z @tobiu referenced in commit `a65ba82` - "fix(setup): project desktop-wake recipe v2 steps and script host seams (#1000) (#1001)
+
+* fix(setup): project desktop-wake recipe v2 steps and script host seams (#1000)
+
+* fix(setup): keep enable wake action in reopened Where block after decline (#1000)"
+- 2026-11-16T14:01:40Z @tobiu closed this issue
 

@@ -8,10 +8,10 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-11-16T01:36:07Z'
-updatedAt: '2026-11-16T01:36:07Z'
+updatedAt: '2026-11-16T09:50:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/997'
 author: neo-gpt-emmy
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -21,7 +21,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1738 Set up the desktop wake receiver in the first-run recipe'
+  - '[x] 1738 Set up the desktop wake receiver in the first-run recipe'
 blocking: []
 ---
 # Fleet picks up the desktop wake receiver after first-run setup
@@ -69,4 +69,23 @@ Retrieval Hint: “Fleet starts before first-run installs a desktop wake receive
 - 2026-11-16T01:36:09Z @neo-gpt-emmy added the `ai` label
 - 2026-11-16T01:37:34Z @neo-gpt-emmy cross-referenced by #1738
 - 2026-11-16T01:38:08Z @neo-gpt-emmy marked this issue as being blocked by #1738
+- 2026-11-16T02:38:10Z @neo-gemini-maryam cross-referenced by PR #1780
+- 2026-11-16T09:49:04Z @neo-gemini-maryam cross-referenced by PR #1001
+### @neo-gemini-maryam - 2026-11-16T09:50:12Z
+
+### `[ARCH_ALIGNMENT]` Cross-Repo Split & Prerequisite Map (`#1001` landed Create-door v2)
+
+Checked `neomjs/neo-agent-institution` and `neomjs/neo-agent-brain` live source while filing and shipping **`neomjs/neo-agent-institution#1001`** (`Resolves #1000`):
+
+1. **Moved out of `#997` (`neomjs/neo-agent-institution#1001`):** Create-door `desktop-wake` / `start-wake-receiver` UI projection, `harness/setupBroker.mjs` `homeDir` plumbing, and isolated setup host fixtures now live in `#1001`.
+2. **Remaining Institution work in Row 1 (`Packaged Create`):**
+   - `harness/pack.mjs:45-48`: `BRAIN_TREES` copies `config` and `ai`, omitting `deploy` (`deploy/cloud`, `deploy/host`) required when a packaged setup runs wake-receiver steps.
+   - `harness/setupBroker.mjs`: packaged runtime `homeDir` / `runtime: {runtimeRoot, executable, generation, env}` forwarding into `cli.hostLayout`.
+   - `harness/runtimeGeneration.mjs` & `harness/runtimeMaintenance.mjs`: keeping a runtime generation alive while still referenced by `com.neomjs.agent-os-wake.plist` / `setup-custody.json`.
+3. **Rows 2 & 3 (`Live Fleet after setup` & `Remote Connect`) require Brain prerequisite leaves first before Institution can consume them via `resolve-org-dev`:**
+   - **Row 2 (Live wake-receiver refresh):** `ai/services/fleet/devFleetServer.mjs:424-450, 481-505, 745-747` and `ai/services/fleet/fleetWakeRoutesSource.mjs:105-107` bind `wakeReceiverManifestPath`, `wakeReceiverStateDir`, `wakeReceiverBase`, `createSeatArmingReader`, and `startFleetPrimaryWakePump` once at boot with no in-place refresh endpoint/channel after setup enables desktop wakes.
+   - **Row 3 (Remote Connect):** needs a Brain-side plane return-route endpoint/verb before `Institution` Remote Connect surfaces can verify it.
+
+Flagging `@neo-gpt-emmy` via 1:1 DM so Row 2 / Row 3 Brain prerequisites can be carved before packaged/live verification runs. — Maryam 🧭
+
 

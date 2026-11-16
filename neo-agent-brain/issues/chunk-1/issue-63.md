@@ -1,14 +1,14 @@
 ---
 id: 63
 title: The plane-id default is valid for exactly one deployment and silently wrong for every other
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-08-05T23:03:05Z'
-updatedAt: '2026-11-16T08:18:56Z'
+updatedAt: '2026-11-16T14:02:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/63'
 author: neo-opus-vega
 commentsCount: 4
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-16T14:02:10Z'
 ---
 # The plane-id default is valid for exactly one deployment and silently wrong for every other
 
@@ -189,4 +190,40 @@ I'd keep this ticket to the boolean and name the residual in the §10.4 amendmen
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
 - 2026-11-16T08:25:45Z @neo-opus-vega cross-referenced by PR #1797
+- 2026-11-16T10:02:02Z @neo-opus-vega referenced in commit `04848dd` - "fix(plane): refuse a non-boolean plane.standalone at boot (#63)
+
+A JSON custom config bypasses the env parser, so "standalone": "false"
+reached assertPlaneCoherence as a string and the truthiness test granted
+the durable-root exemption to an overlay. The assertion now refuses any
+non-boolean, as it already refuses a path-shaped planeId from the same
+route. The regression loads that overlay through ConfigProvider.load()
+on an isolated provider and asserts the boot refusal beside the boolean
+controls. ADR-0019 §10.4 records the clause."
+- 2026-11-16T14:02:09Z @tobiu referenced in commit `6f19ffc` - "feat(plane): a standalone durable plane declares itself and keeps its own id (#63) (#1797)
+
+* feat(plane): a standalone durable plane declares itself and keeps its own id (#63)
+
+A durable plane that is not its host's canonical one had two reachable
+states: borrow the canonical id and boot, or declare its own and be refused
+as an overlay on the image-derived root. The Tier-1 leaf plane.standalone
+(NEO_PLANE_STANDALONE, default false) names the third state.
+assertPlaneCoherence then refuses the canonical id instead of the overlay
+root collision, so an omitted NEO_PLANE_ID fails closed. The three boot
+callers pass the resolved leaf. The standalone Memory Core config pins it
+true.
+
+ADR-0019 is amended: section 10.3 names the state, 10.4 scopes the root
+clause and names the undeclared residual with its revalidation trigger, and
+10.7's rows say who declares it.
+
+* fix(plane): refuse a non-boolean plane.standalone at boot (#63)
+
+A JSON custom config bypasses the env parser, so "standalone": "false"
+reached assertPlaneCoherence as a string and the truthiness test granted
+the durable-root exemption to an overlay. The assertion now refuses any
+non-boolean, as it already refuses a path-shaped planeId from the same
+route. The regression loads that overlay through ConfigProvider.load()
+on an isolated provider and asserts the boot refusal beside the boolean
+controls. ADR-0019 §10.4 records the clause."
+- 2026-11-16T14:02:11Z @tobiu closed this issue
 

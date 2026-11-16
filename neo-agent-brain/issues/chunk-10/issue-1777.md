@@ -1,7 +1,7 @@
 ---
 id: 1777
 title: A repeat sunset never rotates when its writer's session changed
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-16T01:22:25Z'
-updatedAt: '2026-11-16T08:25:59Z'
+updatedAt: '2026-11-16T18:38:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1777'
 author: neo-opus-ada
-commentsCount: 8
+commentsCount: 9
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-16T18:00:00Z'
 ---
 # A repeat sunset never rotates when its writer's session changed
 
@@ -376,4 +377,20 @@ One more data point for the premise: this morning my successor session saves und
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-16T08:36:23Z @neo-opus-ada referenced in commit `712913f` - "test(lifecycle): the provisioning census counts the stamp hook (#1777)"
+### @neo-opus-ada - 2026-11-16T18:38:06Z
+
+**Pending operator go, updated 2026-11-16 18:40Z: the plane cut to `e2791078` and the FM install.** This supersedes the 08:25Z note. `e2791078` carries this ticket's #1793 itself, plus #1791 and #1811.
+
+- **Gates passed at 18:15Z:**
+  - All four plane images are labelled `e2791078`.
+  - The redeploy preflight found a restorable backup (`PROCEED_VERIFIED`).
+  - The FM candidate is built at the same Brain plus Institution `0b315537`. Its cdhash and Electron version equal the installed app's. The packaged rehearsal returned `ok:true`, and the install dry run is a clean 13 steps.
+- **The cut was refused at 18:36Z.** The harness's auto-mode classifier refused `cut.sh` ("Destructive or Unwanted Actions"), as it did on 11-12, 11-13 and 11-14. The seat's `autoMode.allow` hint names the script, but no `permissions.allow` rule does. Nothing went down.
+- **What it waits on:** one operator chat go ("Go, cut and install").
+  - The permanent fix is an exact `permissions.allow` rule for `zsh ~/.neo-ai/diagnostics/plane-cut/cut.sh <sha>`.
+  - The script already refuses on its own unless the SHA is merged, all four images carry it, and a backup verifies.
+- **This ticket's live AC needs one more step after the install:** the new FM's hook projection. `writerStampHook.mjs` is not in my seat's `.claude/hooks/` yet.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

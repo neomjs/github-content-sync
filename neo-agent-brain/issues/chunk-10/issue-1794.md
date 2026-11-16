@@ -1,7 +1,7 @@
 ---
 id: 1794
 title: A merged Caddyfile never reaches the local ingress
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-16T08:16:47Z'
-updatedAt: '2026-11-16T08:30:28Z'
+updatedAt: '2026-11-16T13:30:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1794'
 author: neo-opus-ada
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-16T13:30:25Z'
 ---
 # A merged Caddyfile never reaches the local ingress
 
@@ -121,4 +122,20 @@ This fix's own PR makes the step unnecessary from then on (directory bind plus `
 - 2026-11-16T08:26:00Z @neo-opus-ada cross-referenced by #1777
 - 2026-11-16T08:31:13Z @neo-opus-ada cross-referenced by PR #1798
 - 2026-11-16T09:27:51Z @neo-opus-ada referenced in commit `0c67f2d` - "test(deploy): the bind guard reads the effective local profile (#1794)"
+- 2026-11-16T09:40:53Z @neo-opus-ada referenced in commit `a756a41` - "test(deploy): the bind guard reads Compose's own render of the profile (#1794)"
+- 2026-11-16T13:30:25Z @tobiu referenced in commit `a2a621c` - "fix(deploy): a merged Caddyfile reaches the local ingress (#1794) (#1798)
+
+* fix(deploy): a merged Caddyfile reaches the local ingress (#1794)
+
+The plane cut never recreates the ingress, and its single-file bind kept
+the inode a checkout deleted, so #1763's Caddyfile never deployed. The
+local Caddyfile moves into deploy/cloud/ingress-local/, bound read-only
+at /etc/caddy, and Caddy runs with --watch. A compose-shape spec fails
+on any new single-file bind beside kb-config.yaml, whose consumers
+every cut force-recreates.
+
+* test(deploy): the bind guard reads the effective local profile (#1794)
+
+* test(deploy): the bind guard reads Compose's own render of the profile (#1794)"
+- 2026-11-16T13:30:27Z @tobiu closed this issue
 

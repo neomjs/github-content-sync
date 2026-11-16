@@ -1,7 +1,7 @@
 ---
 id: 363
 title: The README's two skill counts go stale with the next skill
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-11T23:48:50Z'
-updatedAt: '2026-11-16T08:16:54Z'
+updatedAt: '2026-11-16T18:50:09Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/363'
 author: neo-fable-mnemosyne
 commentsCount: 1
@@ -23,7 +23,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[ ] 412 README count arms pin the literal 40: a 41st skill turns five red'
+closedAt: '2026-11-16T18:50:09Z'
 ---
 # The README's two skill counts go stale with the next skill
 
@@ -96,4 +98,14 @@ Claiming #363 — adding the README opening skill-count guard to `scripts/lint-s
 
 - 2026-11-16T08:20:39Z @neo-gemini-julia referenced in commit `a42e205` - "feat(lint): guard README opening skill counts against manifest (#363)"
 - 2026-11-16T08:21:32Z @neo-gemini-julia cross-referenced by PR #408
+- 2026-11-16T17:34:56Z @neo-gemini-julia referenced in commit `b416793` - "feat(lint): guard README opening skill counts against manifest (#363)"
+- 2026-11-16T17:34:56Z @neo-gemini-julia referenced in commit `0f3cad1` - "fix(lint): derive README count lines in fixtures and update lint header (#363)"
+- 2026-11-16T18:44:44Z @neo-opus-vega cross-referenced by #412
+- 2026-11-16T18:44:52Z @neo-opus-vega marked this issue as blocking #412
+- 2026-11-16T18:50:09Z @tobiu referenced in commit `297a622` - "feat(lint): guard README opening skill counts against manifest (#363) (#408)
+
+* feat(lint): guard README opening skill counts against manifest (#363)
+
+* fix(lint): derive README count lines in fixtures and update lint header (#363)"
+- 2026-11-16T18:50:10Z @tobiu closed this issue
 

@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-06T23:06:55Z'
-updatedAt: '2026-11-16T00:54:12Z'
+updatedAt: '2026-11-16T16:11:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1513'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -22,7 +22,8 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1511 Wire the protected family service through Memory Core'
+  - '[ ] 1812 A protected relation binds each provider subject to its acting identity'
+  - '[x] 1511 Wire the protected family service through Memory Core'
 blocking: []
 ---
 # Use admitted families for routing and publication checks
@@ -35,20 +36,21 @@ Mailbox aliases, wake/presence filters and two content-publication family checks
 **Blocked on source, not a policy guess:** Institution [D825](https://github.com/neomjs/neo-agent-institution/discussions/825#discussioncomment-19426881) still has its old-login/rename alias disposition open. This leaf consumes the resulting implemented protected subject→graph-identity relation; it does not graduate that design, pick its unresolved policy or create a substitute carrier. Add the concrete relation-delivery issue as a native blocker once that owner files it. Until then, this body records the unresolved external gate and is not claimable for implementation.
 
 ## Architectural reality and intended change
-Use the MC qualified family snapshot and the shared request-binding relation at the existing consumers: MailboxService family alias expansion and attestPublishRevision; WakeSubscriptionService family routing/filtering and corresponding presence reader; and Fleet CONTENT publishExecutor's production resolveIdentityFamily composition. The last two publication checks are distinct from #1297, which publishes FAMILY ACTS through its durable outbox/signer.
+Use the MC qualified family snapshot and the shared request-binding relation at the existing consumers: MailboxService family alias expansion and attestPublishRevision; WakeSubscriptionService family routing/filtering and corresponding presence reader; and Fleet CONTENT publishExecutor's production resolveIdentityFamily composition. The two publication owners are distinct from #1297, which publishes FAMILY ACTS through its durable outbox/signer. The MC helper is used at initial `requestPublish` admission as well as `attestPublishRevision`; both call paths belong here. FleetControlBridge's default executor construction currently supplies no family resolver, so the production injection itself must be wired. The parent census also assigns `revalidationSweep.mjs`'s active family-based notification selection to this routing stream; its existing apply/notification behavior remains separate from review approval or automatic reopening.
 
 ## Contract Ledger
 | Surface | Authority | Behavior and refusal | Evidence / docs |
 | --- | --- | --- | --- |
 | Family aliases | Existing mailbox eligibility/alias policy + protected binding | Current admitted family; unchanged zero/multiple-match refusal | Real mailbox recipient paths, rename/new-subject controls |
 | Wake/presence | Existing wake eligibility + qualified snapshot | Current classification, missing/ambiguous relation nonqualifying | Real family-filtered dispatch/presence controls |
-| Content-publication family checks | Existing MC attestation and Fleet publish policy | Both use admitted families without changing publication permission | Actual attestPublishRevision and injected production resolver paths |
+| Content-publication family checks | Existing MC attestation and Fleet publish policy | Both owners use admitted families without changing publication permission; each comparison uses one coherent observation across its identities | Initial requestPublish, attestPublishRevision and actual FleetControlBridge/publishExecutor injection |
+| Revalidation notification selection | Existing revalidation/apply policy + qualified current families | Same recipient-selection purpose, with explicit unavailable state and no static-root fallback | Actual revalidationSweep acquisition/selection path; no change to approval or automatic-reopening authority |
 
 ## Acceptance Criteria
 - [ ] The external D825 relation is graduated AND implemented with its own protection, explicit missing/ambiguous outcomes, rename continuity and same-login/new-provider-ID refusal. The public ticket/PR names its concrete delivered source and native dependency. No reliance on currentSeatId or ordinary providerUserId properties as authority.
 - [ ] Mailbox family aliases consume one coherent admitted current-family observation per resolution. Preserve eligibility, exact family vocabulary and zero/multiple-match refusals. No static identityRoots/modelFamily/family fallback.
-- [ ] Wake and presence family filters consume that same qualified source with the existing activity/participation/eligibility semantics. Unknown/unavailable is not an empty population or permission to route elsewhere.
-- [ ] BOTH MailboxService.attestPublishRevision and the Fleet content publishExecutor production resolveIdentityFamily injection use admitted families. Preserve the accepted content-publication policy; a helper fixture or #1297 family-act publisher alone is insufficient.
+- [ ] Wake, presence and revalidation-notification family filters consume that same qualified source with the existing activity/participation/eligibility semantics. Unknown/unavailable is not an empty population or permission to route elsewhere.
+- [ ] BOTH publication owners use admitted families: MailboxService's initial requestPublish admission and attestPublishRevision, and the Fleet content publishExecutor's actual production resolveIdentityFamily injection. Each author/reviewer comparison uses one coherent observation. Preserve the accepted content-publication policy; a helper fixture or #1297 family-act publisher alone is insufficient.
 - [ ] Integrated recipient/publication controls cover unconfirmed/ambiguous/empty histories, family changes/corrections, same-subject rename, new subject reusing a login, stale/reconnected plane observations, and missing source. No caller chooses a routing identity through mutable login alone.
 - [ ] Named consumer census has no runtime static-root/flat-field fallback in this scope. Actual production composition/refusal tests and Brain preflight/CI pass; docs expose remedies. The separate installed #414 journey remains post-merge.
 
@@ -92,4 +94,11 @@ Creation sweep: live latest20 created-descending Brain issues, closed family/ide
 - 2026-11-15T23:05:12Z @neo-gpt-sophie cross-referenced by #112
 - 2026-11-16T00:16:30Z @neo-fable-mnemosyne cross-referenced by #114
 - 2026-11-16T01:08:37Z @neo-gpt-sophie cross-referenced by #1510
+- 2026-11-16T03:50:31Z @neo-gpt-sophie cross-referenced by PR #1786
+- 2026-11-16T14:59:26Z @neo-gpt-sophie cross-referenced by PR #1809
+- 2026-11-16T17:09:06Z @neo-opus-ada cross-referenced by #1812
+- 2026-11-16T17:11:01Z @neo-opus-ada cross-referenced by #1815
+- 2026-11-16T17:11:19Z @neo-opus-ada marked this issue as being blocked by #1812
+- 2026-11-16T18:00:47Z @neo-gpt-sophie cross-referenced by PR #1816
+- 2026-11-16T18:40:55Z @neo-gpt-sophie cross-referenced by #1512
 

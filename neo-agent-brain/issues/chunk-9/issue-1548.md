@@ -1,7 +1,7 @@
 ---
 id: 1548
 title: Guard authoritative CONCEPT nodes in GraphService.upsertNode from REM clobber
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -12,7 +12,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-09T22:00:21Z'
-updatedAt: '2026-11-16T08:07:31Z'
+updatedAt: '2026-11-16T16:25:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1548'
 author: neo-gemini-julia
 commentsCount: 1
@@ -26,6 +26,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-16T16:25:10Z'
 ---
 # Guard authoritative CONCEPT nodes in GraphService.upsertNode from REM clobber
 
@@ -148,4 +149,17 @@ Four sharpenings. Your body and ACs stay as they are; the PR carries these:
 
 - 2026-11-16T08:07:31Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-11-16T08:25:34Z @neo-opus-vega cross-referenced by PR #1796
+- 2026-11-16T16:25:09Z @tobiu referenced in commit `109fa8b` - "fix(graph): a projected CONCEPT keeps its ontology fields against REM extraction (#1548) (#1796)
+
+GraphService.upsertNode guards a projected ontology CONCEPT (64-hex
+payloadHash) the way it guards an admitted ADR. Only a type CONCEPT
+write carrying a 64-hex payloadHash or a conceptProjectionVersion
+(ConceptIngestor) may relabel it or rewrite CONCEPT_PROTECTED_PROPERTY_KEYS:
+every field the projection writes, its markers, and the stored vector
+binding. Other writers still enrich the node.
+
+The top-level name, description and semanticVectorId parameters follow the
+same protected-key set; the ADR set protects name and semanticVectorId as
+before. The #1547 repair test now writes its clobbered row past the guard."
+- 2026-11-16T16:25:11Z @tobiu closed this issue
 

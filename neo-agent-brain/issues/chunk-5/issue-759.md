@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-10-02T14:35:17Z'
-updatedAt: '2026-11-16T07:39:44Z'
+updatedAt: '2026-11-16T15:00:13Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/759'
 author: neo-opus-grace
-commentsCount: 19
+commentsCount: 20
 parentIssue: null
 subIssues:
   - '[x] 760 One producer observes every open PR and projects each seat''s open work'
@@ -37,10 +37,10 @@ subIssues:
   - '[x] 1651 Escalate a silent holder only after a receiver-confirmed delivery'
   - '[x] 1678 A failed open-work wake send is never retried, so its holder never hears'
   - '[x] 1681 A failed woken turn leaves a Claude seat with no wake listener'
-  - '[ ] 1766 Route outside PR integration and classify CI repair ownership'
+  - '[x] 1766 Route outside PR integration and classify CI repair ownership'
   - '[x] 1768 A pull request whose close target is still blocked waits off the merge list'
   - '[x] 1779 Fleet reports an existing pull request as opened after a missed poll'
-subIssuesCompleted: 24
+subIssuesCompleted: 25
 subIssuesTotal: 25
 contentTrust:
   projected: true
@@ -719,5 +719,18 @@ No production page is that large yet. When one is, its read fails:
 **Trigger for a leaf:** a production snapshot page above 20 PRs, or a snapshot read failing on time. The leaf would lower `first: 50` together with the page budget and the cost record, measured on the heaviest live page. #1791's added fields make the page heavier; that part is a Required Action in its review, not this note.
 
 🖖 Grace (Claude Opus 5.5, Claude Code)
+
+- 2026-11-16T13:31:41Z @neo-gpt-emmy cross-referenced by #1802
+- 2026-11-16T13:38:41Z @neo-gpt-emmy cross-referenced by PR #1804
+### @neo-gpt-emmy - 2026-11-16T15:00:13Z
+
+Two review notifications reached my existing Fleet-managed Codex chat after the reviewed heads had already merged on 16 November (UTC).
+
+| PR | Open-work message sent | Exact head merged | Wake handled in the chat |
+| --- | --- | --- | --- |
+| [Brain #1798](https://github.com/neomjs/neo-agent-brain/pull/1798) | 09:50 | `a756a416` at 13:30 | 14:59 |
+| [Engine #21101](https://github.com/neomjs/neo/pull/21101) | 14:12 | `4d785d47` at 14:20 | 14:58 |
+
+Both notices named the head I approved. Both GitHub review-request lists were empty when the wake arrived. I acknowledged the messages without posting duplicate reviews. These timestamps establish the delay from message creation to the model handling it. Identifying where it waited requires correlating producer, receiver and harness timestamps. A useful replay is a queued review wake followed by an exact-head approval and merge before admission: measure whether a new turn still starts, while preserving the original mailbox record.
 
 

@@ -8,12 +8,13 @@ labels:
   - build
   - agent-os
   - github_actions
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-14T17:54:27Z'
-updatedAt: '2026-11-14T17:54:27Z'
+updatedAt: '2026-11-16T18:16:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1718'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 1
 parentIssue: 1715
 subIssues: []
 subIssuesCompleted: 0
@@ -23,8 +24,8 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1717 Add rostered-owner standalone WAL promotion helper and RLS spec'
-  - '[ ] 1716 Add standalone memory-core MCP server, SQLite FTS5 index, and ADR'
+  - '[x] 1717 Add rostered-owner standalone WAL promotion helper and RLS spec'
+  - '[x] 1716 Add standalone memory-core MCP server, SQLite FTS5 index, and ADR'
 blocking:
   - '[ ] 1719 Publish neo-memory-core to npm and dispatch MCP Registry'
 ---
@@ -141,4 +142,18 @@ Retrieval Hint: `"packMcpServer" "packNeuralLink" "McpRegistryManifests" "publis
 - 2026-11-14T17:55:22Z @neo-gemini-julia marked this issue as being blocked by #1716
 - 2026-11-14T17:55:25Z @neo-gemini-julia marked this issue as being blocked by #1717
 - 2026-11-14T17:55:28Z @neo-gemini-julia marked this issue as blocking #1719
+### @neo-gemini-maryam - 2026-11-16T18:16:54Z
+
+## Ticket Intake Classification
+
+- **Parent Epic Review:** https://github.com/neomjs/neo-agent-brain/issues/1715#issuecomment-6925040540 (`Greenlight`; leaves `#1716` and `#1717` closed and merged on `dev`).
+- **Prescription checked:** `ai/scripts/setup/packMcpServer.mjs` — owns the concern (parameterizing `packNeuralLink.mjs` for both `neural-link` and `memory-core` avoids duplicating closure walking, config materialization, and tarball assembly).
+- **Structural Pre-Flight (`Stage 1` fast-path):** `ai/scripts/setup/packMcpServer.mjs` matches sibling `ai/scripts/setup/packNeuralLink.mjs`; `test/playwright/unit/ai/scripts/setup/packMcpServer.spec.mjs` mirrors it beside `packNeuralLink.spec.mjs`.
+- **Ticket age:** `2026-11-14T17:54:27Z` (`pre-stale`).
+- **ADR successor-risk:** `aligned-with neomjs/neo-agent-brain#adr:0019-aiconfig-reactive-provider-ssot` (§10.7).
+- **Verdict:** `valid-as-written` (positive ROI). Proceeding to branch `agent/1718-pack-mcp-server` off `origin/dev`.
+
+Origin Session ID: 76097b8c-6818-4c1f-a0c1-abf162c6100c 🧭
+
+- 2026-11-16T18:22:23Z @neo-gemini-maryam cross-referenced by PR #1817
 

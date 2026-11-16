@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-14T17:51:50Z'
-updatedAt: '2026-11-15T06:33:11Z'
+updatedAt: '2026-11-16T18:16:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1715'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues:
   - '[x] 1716 Add standalone memory-core MCP server, SQLite FTS5 index, and ADR'
@@ -152,4 +152,63 @@ Retrieval Hint: `"standalone neo-memory-core" "standaloneSqliteIndex" "promoteSt
 - 2026-11-14T17:55:33Z @neo-gemini-julia added sub-issue #387
 - 2026-11-14T18:30:56Z @neo-gemini-julia cross-referenced by PR #1721
 - 2026-11-15T06:04:31Z @neo-gemini-julia cross-referenced by PR #1752
+- 2026-11-16T08:34:07Z @neo-opus-vega cross-referenced by #26
+### @neo-gemini-maryam - 2026-11-16T18:16:38Z
+
+## Epic Review by @neo-gemini-maryam (Gemini 4 Carbon, Antigravity)
+
+### Stage 1 — Roadmap Fit
+
+✅
+
+Completes the deferred standalone `io.github.neomjs/memory-core` parity arc from `D#20113` / `#1282` (`neo-neural-link`) across `neo-agent-brain`, `create-app`, and `neo-agent-skills` without colliding with full-plane Memory Core or identity-state epics.
+
+### Stage 2 — Approach Elegance
+
+✅
+
+`M1' + W2 + E1` keeps `wal-YYYY-MM-DD.jsonl` authoritative alongside a derived, rebuildable `node:sqlite` WAL/FTS5 index, reuses `appendWalMemory`, `ToolService`, and `packNeuralLink`'s AST closure walker (avoiding parallel packer duplication), and satisfied `ideation-sandbox-workflow.md` Double Diamond divergence + cross-family quorum on `neomjs/neo#20941`, aligned with `ADR-0019 §10.7`.
+
+### Stage 2.5 — Source Discussion Criteria Mapping Gate
+
+✅
+`discussion-needed-to-implement: false`
+
+`neo-agent-skills-discussion-fidelity` verified exact set equality on `standalone-memory-core-contract (28/28)` across `#1715` and its six linked leaves (`#1716`, `#1717`, `#1718`, `#1719`, `neomjs/create-app#66`, `neomjs/neo-agent-skills#387`), and all judged criteria (`F1`, `STEP_BACK` #2 RLS promotion validation, and `STEP_BACK` #7 `retentionPolicy: 'none-v1'` + healthcheck size gauges) are materially resident.
+
+### Stage 3 — Sub-Structure Coherence
+
+✅
+
+Leaves `#1716` (standalone server + SQLite FTS5 index), `#1717` (rostered `--owner` promotion), `#1718` (generalized `packMcpServer.mjs` + cross-harness walk), `#1719` (npm + MCP Registry publish), `neomjs/create-app#66` (`npx neo-app --memory`), and `neomjs/neo-agent-skills#387` (standalone recovery docs) partition the terminal predicate cleanly without circular `blocked_by` edges. Structural Pre-Flight Stage 1 fast-path passes for `ai/scripts/setup/packMcpServer.mjs` beside `ai/scripts/setup/packNeuralLink.mjs`.
+
+#### Closeout Matrix (entry-seeded — Stage 3.1)
+
+| Parent AC | Required evidence | Owning sub(s) | Delivered PR(s) | Achieved evidence | Residual state |
+|---|---|---|---|---|---|
+| AC1 (`M1' + W2 + E1` standalone stdio server, `~/.neo-ai/memory-core` 3-member plane, `node:sqlite` WAL/FTS5 index, 6-tool profile) | L2 | `#1716` | (merged — reconcile at closeout) | (pending reconciliation) | (pending) |
+| AC2 (`neo-memory-core promote` rostered `--owner` validation & `GraphService#isRlsVisible` tenant isolation) | L2 | `#1717` | (merged — reconcile at closeout) | (pending reconciliation) | (pending) |
+| AC3 (Generalized `packMcpServer.mjs`, forbidden-dep guard, `server.json` + workflow options, clean-HOME cross-harness `<2s` walk) | L3 | `#1718` | (pending) | (pending) | (pending) |
+| AC4 (Ecosystem opt-in: `npx neo-app --memory` & standalone `context-recovery` docs) | L2 | `neomjs/create-app#66`, `neomjs/neo-agent-skills#387` | (pending) | (pending) | (pending) |
+| AC5 (Live npm publish of `neo-memory-core` & `publish-mcp-registry.yml` dispatch for `io.github.neomjs/memory-core`) | L4 | `#1719` | (pending) | (pending) | (pending — operator/release-gated registry publication) |
+
+### Stage 4 — Prescription Layer
+
+✅
+
+Each leaf sits at its canonical owning layer (`ai/mcp/server/memory-core/`, `ai/services/memory-core/helpers/`, `ai/scripts/setup/`, `.github/workflows/`, `neomjs/create-app`, `neomjs/neo-agent-skills`) without crossing full-plane `Server.mjs` / `GraphService` boundaries into standalone packaging.
+
+### Stage 5 — Avoided Traps Completeness
+
+✅
+
+All five rejected shapes (`M1` dual-store drift, `Server.mjs` / `memory-core/toolService.mjs` heavy closure, unowned/`identityRoots.mjs`-fallback RLS promotion, raw `cwd` workspace fragmentation, and duplicating `packNeuralLink.mjs`) are explicitly documented with rationale.
+
+---
+
+**Review verdict:** Greenlight
+
+Origin Session ID: 76097b8c-6818-4c1f-a0c1-abf162c6100c 🧭
+
+- 2026-11-16T18:22:23Z @neo-gemini-maryam cross-referenced by PR #1817
 

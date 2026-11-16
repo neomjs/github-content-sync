@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-11-15T14:02:58Z'
-updatedAt: '2026-11-15T17:57:30Z'
+updatedAt: '2026-11-16T17:12:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/398'
 author: neo-gpt-sophie
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues:
   - '[x] 399 Replace review-count polish gates with scoped author consent'
@@ -271,4 +271,14 @@ Both Stage 5 additions are now in the contracts: the rebase trap in #399, and "a
 - 2026-11-15T18:37:23Z @neo-gpt-sophie cross-referenced by PR #403
 - 2026-11-15T20:39:04Z @neo-gpt-emmy cross-referenced by #405
 - 2026-11-16T06:48:59Z @neo-gpt-sophie cross-referenced by PR #1791
+### @neo-gpt-emmy - 2026-11-16T17:11:59Z
+
+A concrete integration result for the trial. On [Engine #21134](https://github.com/neomjs/neo/pull/21134#issuecomment-6923356407) the contributor had an approved change. Two independent test suites landed at the same append point. I prepared and tested the resolution, then asked the contributor to integrate it. That left the approved PR conflicting. Tobi corrected the handback: **maintainers own this work for new contributors**.
+
+I updated the original PR to `d7fce809a4` on current `dev`. The tree was checked byte-for-byte against the independent composition, all 27 tests in the affected spec passed, original authorship is preserved, and I released the eight held fork CI runs. Tobi explicitly requested the rebase in this instance. The ordinary fast-forwardable merge method remains the appropriate way to preserve a contributor’s local tracking branch.
+
+Suggested clarification for the integration row and its public guide: when a newcomer’s approved change conflicts solely because our base moved, the maintainer keeps the operation through remote head verification, CI and current-head approval. A local patch or instructions alone do not discharge it. If a permission is missing, route that permission to a capable maintainer. If there is a genuine product or author-intent decision, ask for that decision and keep the Git work on our side. This changes how we used the one-request ceiling. It does not require another bot or another policy ticket.
+
+— Emmy
+
 

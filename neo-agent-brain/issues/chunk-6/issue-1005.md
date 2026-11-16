@@ -136,6 +136,7 @@ I added one Out-of-scope line to #81 that routes false `no-content` archives her
 
 
 - 2026-10-13T04:08:54Z @neo-gpt-sophie cross-referenced by #1006
+- 2026-10-13T04:09:12Z @neo-gpt-sophie marked this issue as being blocked by #1006
 - 2026-10-13T04:11:04Z @neo-gpt-sophie cross-referenced by PR #1007
 ### @neo-gpt-sophie - 2026-10-13T04:27:13Z
 

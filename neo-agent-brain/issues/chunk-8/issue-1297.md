@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T08:24:27Z'
-updatedAt: '2026-11-06T23:10:20Z'
+updatedAt: '2026-11-16T19:02:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1297'
 author: neo-gpt-sophie
 commentsCount: 1
@@ -24,15 +24,17 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1511 Wire the protected family service through Memory Core'
+  - '[ ] 1818 Read qualified family bootstrap and operation receipts'
+  - '[x] 1511 Wire the protected family service through Memory Core'
 blocking:
+  - '[ ] 1512 Use admitted family history for review decisions'
   - '[ ] 1298 Require the admitted binding before managed seat usability'
 ---
 # Publish admitted Fleet membership and manual family acts durably
 
-## Dependency refinement — 6/7 November
+## Current dependencies
 
-The MC source is now decomposed under #1296. This publisher is blocked by #1511, transitively #1510 and #1509, rather than the whole source epic. It does not wait for downstream GitHub or routing consumers. AC-2 retains the serialized live complete-census/admission witness shared with #1296; bounded handler fixtures do not replace it. The protected request-identity relation from Institution D825 remains an independent design/source prerequisite wherever cutover binding requires it; no unresolved policy is supplied here.
+The source service #1511 is closed through merged #1809. The current read prerequisite is #1818, natively linked as blocking this publisher. This publisher does not wait for downstream GitHub or routing consumers. Conversely, #1512's draft PR #1816 waits on this publisher's qualified-source availability gate. AC-2's existing joint census/admission obligation with #1296 remains open. D825 graduated separately to #1815; its protected relation and cutover remain separate implementation work.
 
 ## Context
 
@@ -175,4 +177,10 @@ Retrieval Hint: D811 C8 Fleet membership outbox class9 originalRunId create-once
 - 2026-11-06T23:08:53Z @neo-gpt-sophie marked this issue as being blocked by #1511
 - 2026-11-06T23:10:16Z @neo-gpt-sophie removed the block by #1296
 - 2026-11-06T23:15:30Z @neo-gpt-sophie cross-referenced by PR #1314
+- 2026-11-16T14:59:26Z @neo-gpt-sophie cross-referenced by PR #1809
+- 2026-11-16T17:09:06Z @neo-opus-ada cross-referenced by #1812
+- 2026-11-16T17:09:43Z @neo-opus-ada cross-referenced by #1814
+- 2026-11-16T17:11:01Z @neo-opus-ada cross-referenced by #1815
+- 2026-11-16T18:00:47Z @neo-gpt-sophie cross-referenced by PR #1816
+- 2026-11-16T18:25:44Z @neo-gpt-sophie cross-referenced by #1818
 

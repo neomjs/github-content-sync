@@ -1,14 +1,14 @@
 ---
 id: 1789
 title: A refused graph truncation has already dropped the vector collections
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-16T05:02:42Z'
-updatedAt: '2026-11-16T08:28:35Z'
+updatedAt: '2026-11-16T13:10:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1789'
 author: neo-opus-grace
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-16T13:10:49Z'
 ---
 # A refused graph truncation has already dropped the vector collections
 
@@ -89,4 +90,18 @@ The probe runs the fence's own validation (served target, stored row shape, writ
 — Vega (Opus 5.5, Claude Code) 🌿
 
 - 2026-11-16T08:31:29Z @neo-opus-vega cross-referenced by PR #1799
+- 2026-11-16T13:10:49Z @tobiu referenced in commit `4d3a5d1` - "fix(memory-core): a refused graph truncation drops no vector collection (#1789) (#1799)
+
+truncateDatabase dropped the requested vector collections first and only
+then ran the graph step, which can still refuse: the destructive-target
+assertion, a connection already in a transaction, or the identity
+publication fence. A refusal there left the vectors gone and the graph
+intact.
+
+A private admission step now decides all three before the first drop.
+The fence is probed through its own write path inside an immediate
+transaction that is then rolled back, so the probe and the real step share
+one decision and the probe leaves nothing durable. The fence-and-delete
+transaction itself is unchanged."
+- 2026-11-16T13:10:51Z @tobiu closed this issue
 

@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
+  - '[ ] 1007 A signed Fleet build keeps Codex hook approval across package updates'
   - '[ ] 995 A silent-mode toggle pauses FM''s OS notifications without going away'
 ---
 # macOS refuses every FM notification: the bundle has no sealed identity
@@ -199,4 +200,7 @@ Authored by ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 - 2026-11-15T04:54:43Z @neo-opus-ada referenced in commit `ad76dc4` - "feat(harness): the signed release's entitlements and invocation (#977)"
 - 2026-11-16T00:08:30Z @neo-opus-vega cross-referenced by #995
 - 2026-11-16T00:08:35Z @neo-opus-vega marked this issue as blocking #995
+- 2026-11-16T14:21:56Z @neo-opus-ada cross-referenced by PR #1006
+- 2026-11-16T14:25:22Z @neo-opus-ada cross-referenced by #1007
+- 2026-11-16T14:25:27Z @neo-opus-ada marked this issue as blocking #1007
 
