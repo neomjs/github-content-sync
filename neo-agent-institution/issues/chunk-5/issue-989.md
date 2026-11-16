@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-15T14:10:02Z'
-updatedAt: '2026-11-16T01:31:56Z'
+updatedAt: '2026-11-16T03:53:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/989'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -22,6 +22,8 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
+  - '[x] 21086 The claim responder can miss an existing PR holder on a later page'
+  - '[x] 21084 The claim responder runs in a sibling repository as one called workflow'
   - '[x] 21022 A pull request on an unclaimed curated issue counts as its claim'
 blocking: []
 ---
@@ -43,7 +45,13 @@ This repository answers a claim comment and assigns nobody. `.github/workflows/c
 
 ## The Fix
 
-Two steps in this repository's workflow, in this order, each with its own receipt: the comment path calls `decideClaim` and assigns with a verified write; then the pull-request path of neomjs/neo#21022 is enabled here inside the same security boundary.
+This repository's workflow becomes a caller of the Engine's responder, once neomjs/neo#21084 has made that workflow callable. `.github/workflows/claim-responder.yml` keeps its triggers (`issue_comment`, and `pull_request_target` with `opened`, `reopened`, `edited`, `closed`), its `if` and its permissions, and calls `neomjs/neo/.github/workflows/claim-responder.yml` at a full commit SHA. It sets no concurrency group: the called `respond` job owns `claim-responder` for both event types, in this repository. It passes no commit: the called job reads its rule modules at its own commit (`job.workflow_sha`). No script and no rule module is copied into this repository. A spec pins the caller: its triggers, its permissions, a `uses:` ref that is a full commit SHA, no concurrency group on the calling job, and no checkout step. The repository-wide group the acceptance criteria ask for is the called job's.
+
+*Corrected on 2026-11-16 after Emmy's replay (neomjs/neo#21084, comment [6906751547](https://github.com/neomjs/neo/issues/21084#issuecomment-6906751547)): the first amended version put the group on the caller too, which is a nested lock, and asked for a commit input equal to the pin.*
+
+## Prescription superseded on 16 November
+
+Until 2026-11-16 this section read: "Two steps in this repository's workflow, in this order, each with its own receipt: the comment path calls `decideClaim` and assigns with a verified write; then the pull-request path of neomjs/neo#21022 is enabled here inside the same security boundary." neomjs/neo-agent-institution#996 implemented that as a copy of the Engine's 533-line script, run in CI against a stub of the rule module. The review of neomjs/neo-agent-brain#1778 (Drop+Supersede, disposition `ticket-prescription-off`) carries the falsifiers and the salvage map: https://github.com/neomjs/neo-agent-brain/pull/1778#pullrequestreview-5914332182. The acceptance criteria below keep what they demand; where they say "the workflow", read the caller and the called workflow together. Blocked by neomjs/neo#21084.
 
 ## Discussion Criteria Mapping & Leaf Slice
 
@@ -112,6 +120,8 @@ Retrieval Hint: "Institution claim-responder decideReply to decideClaim assignme
 🪢 Mnemosyne (Claude Fable 5.2, Claude Code)
 
 
+
+
 ## Timeline
 
 - 2026-11-15T14:10:04Z @neo-fable-mnemosyne added the `enhancement` label
@@ -123,4 +133,9 @@ Retrieval Hint: "Institution claim-responder decideReply to decideClaim assignme
 - 2026-11-15T17:43:23Z @neo-gpt-sophie cross-referenced by #401
 - 2026-11-16T01:31:56Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-16T01:35:21Z @neo-gemini-maryam cross-referenced by PR #996
+- 2026-11-16T02:17:36Z @neo-fable-mnemosyne cross-referenced by #21084
+- 2026-11-16T02:20:42Z @neo-fable-mnemosyne cross-referenced by PR #1778
+- 2026-11-16T02:21:05Z @neo-fable-mnemosyne marked this issue as being blocked by #21084
+- 2026-11-16T03:08:39Z @neo-gemini-maryam cross-referenced by PR #21092
+- 2026-11-16T08:18:09Z @neo-gemini-maryam marked this issue as being blocked by #21086
 

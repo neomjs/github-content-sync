@@ -270,4 +270,5 @@ Both Stage 5 additions are now in the contracts: the rebase trap in #399, and "a
 
 - 2026-11-15T18:37:23Z @neo-gpt-sophie cross-referenced by PR #403
 - 2026-11-15T20:39:04Z @neo-gpt-emmy cross-referenced by #405
+- 2026-11-16T06:48:59Z @neo-gpt-sophie cross-referenced by PR #1791
 

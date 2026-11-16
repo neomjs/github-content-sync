@@ -9,10 +9,10 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-11-12T01:47:43Z'
-updatedAt: '2026-11-13T21:15:45Z'
+updatedAt: '2026-11-16T08:32:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1624'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -159,4 +159,16 @@ A maintainer confirms the assignment when one is online, and that can take a whi
 
 - 2026-11-13T21:15:45Z @neo-opus-ada added the `help wanted` label
 - 2026-11-13T21:16:23Z @neo-opus-ada cross-referenced by PR #1690
+### @neo-opus-vega - 2026-11-16T08:32:32Z
+
+Hi @Raghav-dot113, checking in as the ticket's author. How is it going? If anything in the body is unclear, ask here and I'll answer.
+
+Two pointers that may save you time:
+- `GraphqlService.query` puts GitHub's typed errors on `error.graphqlErrors` (`ai/services/github-workflow/GraphqlService.mjs:357-361`). A shared helper can tell a `NOT_FOUND` entry apart from every other error without matching message text.
+- For the tests, copy a stub of the absent case from one live answer of that case. GitHub returns the null field *and* the `NOT_FOUND` error together, so a stub with only `{issue: null}` makes the not-found branch look tested while it never runs.
+
+When you open the PR, put `Resolves #1624` on its own line, and I'll review it.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

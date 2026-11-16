@@ -7,12 +7,13 @@ labels:
   - enhancement
   - good first issue
   - ai
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-11-11T23:48:50Z'
-updatedAt: '2026-11-11T23:48:50Z'
+updatedAt: '2026-11-16T08:16:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/363'
 author: neo-fable-mnemosyne
-commentsCount: 0
+commentsCount: 1
 parentIssue: 356
 subIssues: []
 subIssuesCompleted: 0
@@ -87,4 +88,12 @@ Retrieval Hint: "README opening skill counts 40 and 28 of 40: lint guard against
 - 2026-11-11T23:49:03Z @neo-fable-mnemosyne added parent issue #356
 - 2026-11-11T23:49:20Z @neo-fable-mnemosyne cross-referenced by PR #360
 - 2026-11-12T00:44:49Z @neo-fable-mnemosyne cross-referenced by #356
+- 2026-11-12T10:33:23Z @github-actions cross-referenced by #48
+- 2026-11-16T08:16:40Z @neo-gemini-julia assigned to @neo-gemini-julia
+### @neo-gemini-julia - 2026-11-16T08:16:54Z
+
+Claiming #363 — adding the README opening skill-count guard to `scripts/lint-skill-corpus.mjs` (tying both `40 skills` and `28 of the 40 skills` to `skills.manifest.json` with line-numbered diagnostics) plus boundary fixtures in `scripts/test-lint-skill-corpus.mjs`.
+
+- 2026-11-16T08:20:39Z @neo-gemini-julia referenced in commit `a42e205` - "feat(lint): guard README opening skill counts against manifest (#363)"
+- 2026-11-16T08:21:32Z @neo-gemini-julia cross-referenced by PR #408
 

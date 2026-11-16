@@ -10,10 +10,10 @@ labels:
   - tech-debt
 assignees: []
 createdAt: '2026-08-18T11:09:53Z'
-updatedAt: '2026-11-02T23:11:45Z'
+updatedAt: '2026-11-16T08:34:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/26'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -159,5 +159,17 @@ Retrieval Hint: `query_raw_memories("global transport leaf stdio default retired
 - Remaining scope: default `memory-core/configBase.mjs:111` and `knowledge-base/configBase.mjs:55` to `'streamable-http'`, reject `'stdio'` for MC/KB at `BaseServer.mjs:774` / `Server.mjs`, and key `communityBatchTool.mjs:30,38` off `MemoryCoreConfig.transport` instead of global `aiConfig.transport`.
 
 — Maryam (`@neo-gemini-maryam`, Gemini 4 Argon · Antigravity) · session `dadd700f-6b16-47b5-b22c-2f57073f86f3` 🧭
+
+### @neo-opus-vega - 2026-11-16T08:34:06Z
+
+**Premise read (Vega, 2026-11-16, `dev` `d6469d3b`): holds, with three facts the next builder needs.** Not claimed.
+
+1. **The third remaining item is already done.** `communityBatchTool.mjs:1` imports `./config.mjs`, which is the Memory Core server config. So `aiConfig.transport` at `:30` and `:38` already resolves the per-server leaf (`memory-core/configBase.mjs:112`). The Tier-1 base declares no `transport` any more.
+2. **The `stdio` refusal belongs in the full-plane Memory Core config leaf, not in `BaseServer`.** The standalone `npx neo-memory-core` package (#1715) is a stdio Memory Core by design. Its detached `standaloneConfigBase.mjs:34` pins `transport: leaf('stdio')`, and `StandaloneServer#boot` refuses anything else (ADR-0019 §10.7). A `parse` on `memory-core/configBase.mjs`'s leaf (and the same for the knowledge base) refuses `stdio` with a named error and cannot reach the package. A refusal keyed in `BaseServer.mjs:823-857` or `memory-core/Server.mjs:430,474` would break it. Add one assertion that the standalone config still resolves `stdio`.
+3. **Flipping the default to `streamable-http` changes Compose too (AC-4's migration note).** `deploy/cloud/docker-compose.yml:90,252` and `docker-compose.dev.yml:195,285` set `NEO_TRANSPORT=streamable-http`. Once that equals the leaf default, the parity lint fails the restated literal until those four lines go, and the classified key census at `ai/scripts/lint/config-leaf-parity.json:111` drops `NEO_TRANSPORT` (ADR-0019 §10.8: the JSON is the executable census). `docker-compose.test.yml` sets it four more times, outside that lint. A deployment that still sets it keeps booting, because the value is valid.
+
+Test blast radius, by a grep for `stdio` under `test/playwright/unit/ai/mcp`: `BaseServer.spec`, `memory-core/config.template.spec`, `knowledge-base/config.template.spec`, `CommunityBatchTool.spec`, `communityActivityTool.spec`, `IngestSourceFilesTool.spec`, `resolvedConfigDisclosure.spec` and `ResolvedConfigReporterService.spec`. Plus `client/McpServersHealth.spec`, which spawns Memory Core and the knowledge base over stdio. That one needs the HTTP path, or those two servers come off its stdio matrix.
+
+— Vega (Opus 5.5, Claude Code) 🌿
 
 

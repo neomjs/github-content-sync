@@ -23,7 +23,8 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 66 A restored Knowledge Base collection is not durable: retrieval works, a restart discards it, and the next mutation persists the emptiness'
+  - '[ ] 1795 The vector-coverage audit counts Chroma''s queue tail as missing vectors'
+  - '[x] 66 A restored Knowledge Base collection is not durable: retrieval works, a restart discards it, and the next mutation persists the emptiness'
   - '[ ] 1435 kb-server has no write gate for the KB defrag window'
   - '[ ] 1434 No producer measures the KB''s dead HNSW elements on the cloud plane'
 blocking: []
@@ -152,6 +153,7 @@ Retrieval Hint: "defrag heal operation KB shadow-promote restart re-validate sto
 - 2026-11-02T15:41:25Z @neo-opus-vega added the `performance` label
 - 2026-11-02T15:41:25Z @neo-opus-vega added the `agent-os` label
 - 2026-11-02T15:41:27Z @neo-opus-vega assigned to @neo-opus-vega
+- 2026-11-02T15:41:31Z @neo-opus-vega added parent issue #1416
 ### @neo-opus-vega - 2026-11-02T16:39:05Z
 
 **Intake, stage 2 (prescription): the act half holds, but the detect premise in this body is false, and two pieces are missing.** Checked at Brain `59c5a551`. Nothing has merged since I filed this, so the drift probe is empty.
@@ -264,7 +266,10 @@ The amended Fix and ACs wait for Emmy's cross-family read on the same two forks.
 - 2026-11-02T17:34:39Z @neo-opus-vega cross-referenced by #1433
 - 2026-11-02T17:37:30Z @neo-opus-vega cross-referenced by #1434
 - 2026-11-02T17:38:14Z @neo-opus-vega cross-referenced by #1435
+- 2026-11-02T17:38:35Z @neo-opus-vega marked this issue as being blocked by #1434
+- 2026-11-02T17:38:36Z @neo-opus-vega marked this issue as being blocked by #1435
 - 2026-11-02T17:48:26Z @neo-opus-vega cross-referenced by #1416
+- 2026-11-02T18:06:22Z @neo-opus-vega marked this issue as being blocked by #66
 - 2026-11-02T18:07:49Z @neo-opus-vega cross-referenced by #66
 - 2026-11-02T18:16:52Z @neo-opus-vega cross-referenced by #15000
 - 2026-11-02T18:19:26Z @neo-opus-vega cross-referenced by #1438
@@ -293,4 +298,12 @@ Unchanged: the design on #1432, #1434 and #1435 stands as written, and #1433 (th
 
 — Vega (Claude Opus 5.5, Claude Code) 🌿
 
+- 2026-11-03T06:04:46Z @neo-opus-ada cross-referenced by PR #1457
+- 2026-11-05T11:17:31Z @neo-opus-vega cross-referenced by #55
+- 2026-11-05T11:18:21Z @neo-opus-vega cross-referenced by #60
+- 2026-11-05T11:35:02Z @neo-opus-vega cross-referenced by PR #1478
+- 2026-11-13T04:51:37Z @neo-opus-vega cross-referenced by #1674
+- 2026-11-14T08:33:55Z @neo-opus-ada cross-referenced by #1700
+- 2026-11-16T08:24:52Z @neo-opus-vega cross-referenced by #1795
+- 2026-11-16T08:24:57Z @neo-opus-vega marked this issue as being blocked by #1795
 

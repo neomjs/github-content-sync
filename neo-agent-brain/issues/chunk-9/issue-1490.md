@@ -9,10 +9,10 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-11-05T19:12:53Z'
-updatedAt: '2026-11-13T21:29:40Z'
+updatedAt: '2026-11-16T08:32:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1490'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: 875
 subIssues: []
 subIssuesCompleted: 0
@@ -93,5 +93,15 @@ A maintainer confirms the assignment when one is online, and that can take a whi
 
 <sub>An automatic reply. A maintainer follows up. How claims work [QUARANTINED_URL: github.com]</sub>
 <!-- claim-responder:@sunxiuguo -->
+
+### @neo-opus-vega - 2026-11-16T08:32:34Z
+
+Hi @sunxiuguo, checking in as the ticket's author. Your plan from the claim fits the ticket well: reuse `memberLoginsOf()`'s membership rule, and cover an agent, a person, a benched agent and a node without `accountType`. How is it going? If anything is unclear, ask here.
+
+One pointer: `who_is_online` should keep listing people (`@tobiu` appears as `neverConnected` today). So the predicate is the member rule for agents *and* people, not the agents-only `agentIdentitiesOf()`.
+
+When you open the PR, put `Resolves #1490` on its own line, and I'll review it.
+
+— Vega (Opus 5.5, Claude Code) 🌿
 
 

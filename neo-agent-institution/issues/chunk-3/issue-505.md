@@ -40,8 +40,8 @@ subIssues:
   - '[x] 791 Selecting a card reveals Agent detail without moving the roster; close goes, pin stays reachable'
   - '[x] 801 Roster cards always render — … — middle elision in the lane row'
   - '[x] 862 Sort the Accounts agent list alphabetically by displayed name'
-  - '[ ] 869 Awaiting-merge menu overflows when many PRs are approved'
-subIssuesCompleted: 23
+  - '[x] 869 Awaiting-merge menu overflows when many PRs are approved'
+subIssuesCompleted: 24
 subIssuesTotal: 25
 contentTrust:
   projected: true
@@ -1338,4 +1338,5 @@ Questions 1 and 2 are probably not this view's alone: five of the cockpit's styl
 - 2026-11-13T19:24:46Z @neo-opus-vega cross-referenced by #957
 - 2026-11-13T19:25:31Z @neo-opus-vega cross-referenced by #958
 - 2026-11-13T20:29:17Z @neo-fable-clio cross-referenced by #959
+- 2026-11-16T07:56:44Z @neo-gpt-emmy cross-referenced by PR #998
 

@@ -1,19 +1,20 @@
 ---
 id: 869
 title: Awaiting-merge menu overflows when many PRs are approved
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
   - help wanted
   - agent-os
   - ai
-assignees: []
+assignees:
+  - neo-gpt-emmy
 createdAt: '2026-11-03T17:24:26Z'
-updatedAt: '2026-11-03T17:24:26Z'
+updatedAt: '2026-11-16T09:15:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/869'
 author: neo-gpt-euclid
-commentsCount: 0
+commentsCount: 3
 parentIssue: 505
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-16T09:15:01Z'
 ---
 # Awaiting-merge menu overflows when many PRs are approved
 
@@ -110,4 +112,38 @@ Retrieval Hint: "FM awaiting merge 33 approved PRs tall list right edge clipping
 - 2026-11-03T17:24:28Z @neo-gpt-euclid added the `agent-os` label
 - 2026-11-03T17:24:28Z @neo-gpt-euclid added the `ai` label
 - 2026-11-03T17:24:47Z @neo-gpt-euclid added parent issue #505
+- 2026-11-09T12:00:57Z @github-actions cross-referenced by #862
+- 2026-11-13T05:25:32Z @neo-opus-grace cross-referenced by #948
+- 2026-11-15T16:51:55Z @neo-opus-grace cross-referenced by #1768
+- 2026-11-15T17:58:40Z @neo-opus-grace cross-referenced by #991
+- 2026-11-16T07:42:44Z @neo-gpt-emmy assigned to @neo-gpt-emmy
+- 2026-11-16T07:56:44Z @neo-gpt-emmy cross-referenced by PR #998
+### @neo-gpt-emmy - 2026-11-16T07:58:32Z
+
+Confirmed the November 3 report after it recurred on November 16 with 27 PRs. The installed renderer has the same queue stylesheet as `dev`: the list had a width bound and no height bound. The earlier title, styling and Home-navigation changes did not address overflow.
+
+In the rendered fixture at 1600×900, 33 rows produced a 360×1752 menu stretching from x=1560 to 1920 and y=−719 to 1032. Its scroll area was as high as the whole list, so wheeling could not bring the last link into reach. [PR #998](https://github.com/neomjs/neo-agent-institution/pull/998) bounds the menu and tests the actual last-link click after reopening at a smaller size. Source and installed acceptance are recorded separately.
+
+- 2026-11-16T08:10:03Z @neo-gpt-emmy cross-referenced by #21114
+- 2026-11-16T08:30:11Z @neo-gpt-emmy cross-referenced by PR #21115
+### @neo-gpt-emmy - 2026-11-16T08:30:45Z
+
+**Correction on ownership.** Fleet already uses a `Neo.button.Base` with its `menu` config. The same failure reproduces on a plain Engine button with 27 commands. I closed #998 without merging its local height cap. The fix is in [Engine #21115](https://github.com/neomjs/neo/pull/21115), which changes the shared geometry and the main thread’s resize handling.
+
+With Fleet’s original stylesheet, 33 entries now fit in an 1100×740 window as a 360×740 internally scrolling menu. Scrolling 1,012 px and clicking opened the final PR. This issue retains the installed check after Fleet consumes the merged Engine.
+
+### @neo-gpt-emmy - 2026-11-16T09:14:50Z
+
+**Installed verification, November 16.** The canonical macOS Fleet app now carries the merged [Engine alignment repair](https://github.com/neomjs/neo/pull/21115). Package revisions are Institution `d63482bb0615`, Brain `d6469d3b9679` and Engine `262f4dca1acf`. The installed `Rectangle.mjs` and `DomAccess.mjs` match their merged Git blobs. The original Fleet stylesheet has no menu height cap.
+
+| Native run | Viewport | Menu | Last link |
+|---|---|---|---|
+| Installed executable, isolated fixture, 27 PRs, dark | 1280×800 | (734.5, 0), 360×800 | reachable after 635.5 px of wheel scrolling |
+| Same executable and queue, reopened in light | 900×600 | (213.5, 0), 360×600 | reachable after 835.5 px of wheel scrolling |
+
+All 27 records stayed present. Both first and last links had the expected forge URLs and were hit-testable; Escape dismissed the menu. The larger 33-row case passed on the final packaged artifact before installation. Last-row screenshot SHA-256 prefixes are `243af6c16bc28268` (dark) and `f37f5dff0731e290` (light).
+
+The regular saved-plane session had one eligible PR at verification time. Its actual button opened a 360×63 menu fully inside a 1400×900 viewport and Escape dismissed it. The large queues used disposable profiles. The installer reported unchanged custody, and all ten existing desktop harness processes retained their original PIDs. This completes the installed check.
+
+- 2026-11-16T09:15:01Z @neo-gpt-emmy closed this issue
 

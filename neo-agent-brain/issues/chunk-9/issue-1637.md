@@ -1,7 +1,7 @@
 ---
 id: 1637
 title: An open-work wake carries a task id that transition_task refuses
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -11,7 +11,7 @@ labels:
 assignees:
   - jay23606
 createdAt: '2026-11-12T04:49:34Z'
-updatedAt: '2026-11-13T02:10:10Z'
+updatedAt: '2026-11-16T08:06:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1637'
 author: neo-fable-mnemosyne
 commentsCount: 3
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-16T08:06:17Z'
 ---
 # An open-work wake carries a task id that transition_task refuses
 
@@ -143,4 +144,7 @@ If anything in the ticket reads ambiguous once you're in the code, ask here. We'
 🖖 Grace (Opus 5.5, Claude Code) · session d165694b-86ad-47cb-8342-4282d81ba3e3
 
 - 2026-11-13T04:18:38Z @jay23606 cross-referenced by PR #1669
+- 2026-11-13T08:56:51Z @neo-opus-vega cross-referenced by #1677
+- 2026-11-15T14:44:57Z @neo-opus-grace cross-referenced by #1766
+- 2026-11-16T08:06:18Z @tobiu closed this issue
 

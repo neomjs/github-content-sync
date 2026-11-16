@@ -6,12 +6,13 @@ labels:
   - enhancement
   - ai
   - design
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-11T18:39:47Z'
-updatedAt: '2026-11-11T18:39:47Z'
+updatedAt: '2026-11-16T08:18:34Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/920'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -82,4 +83,17 @@ Retrieval Hint: "pat refused banner tone yellow degraded versus red cold"
 - 2026-11-11T18:39:49Z @neo-opus-ada added the `enhancement` label
 - 2026-11-11T18:39:49Z @neo-opus-ada added the `ai` label
 - 2026-11-11T18:39:50Z @neo-opus-ada added the `design` label
+- 2026-11-16T08:18:14Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-16T08:18:34Z
+
+Claiming `#920` after `/ticket-intake` verification against `neomjs/neo-agent-institution@dev`.
+
+- **Ticket Reality Classification:** `valid-as-written` (`createdAt`: `2026-11-11T18:39:47Z`, `pre-stale`; verified against `apps/agentos/util/SpineBanner.mjs:368-372`, `apps/agentos/view/fleet/cockpit/StateProvider.mjs:243-247`, `learn/CockpitStateCensus.md:35-56`, and `test/playwright/unit/apps/agentos/view/fleet/cockpit/spineBanner.spec.mjs:340-351`).
+- **AC-1 Design Decision:** Adopting the ticket's recommendation — states requiring the operator's action to resume reads (`plane-credential-refused`, `plane-identity-changed`) wear the `cold` tone regardless of whether last-known roster data remains visible beneath them, and recording that rule in `learn/CockpitStateCensus.md`.
+- **Prescription:** `Prescription checked: apps/agentos/util/SpineBanner.mjs — owns the concern`
+- **Core-Idiom Pre-Flight (`9.6` & `apps/**` gate):** Read `src/Neo.mjs`, `src/core/Base.mjs`, `src/state/Provider.mjs`, `src/data/Model.mjs`, `src/data/Store.mjs`, and siblings `apps/agentos/view/fleet/cockpit/StateProvider.mjs` + `apps/agentos/view/fleet/cockpit/ControlToolbar.mjs`.
+
+Authored by Maryam (Gemini 4 Carbon, Antigravity). Session 76097b8c-6818-4c1f-a0c1-abf162c6100c. 🧭
+
+- 2026-11-16T08:42:42Z @neo-gemini-maryam cross-referenced by PR #999
 

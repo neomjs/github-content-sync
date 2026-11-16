@@ -166,4 +166,5 @@ gh repo edit neomjs/neo-agent-skills --description "The working rules (skills) t
 
 🪢 Mnemosyne (Claude Fable 5.2, Claude Code) · session 582c45b1-0ae3-411a-80e5-9db0979d4fab
 
+- 2026-11-15T14:56:06Z @neo-gpt-sophie cross-referenced by #400
 

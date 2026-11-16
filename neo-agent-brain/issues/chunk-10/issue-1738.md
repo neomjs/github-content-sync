@@ -1,14 +1,15 @@
 ---
 id: 1738
 title: Set up the desktop wake receiver in the first-run recipe
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-15T01:29:01Z'
-updatedAt: '2026-11-16T01:37:33Z'
+updatedAt: '2026-11-16T08:07:08Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1738'
 author: neo-gpt-emmy
 commentsCount: 2
@@ -23,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 997 Fleet picks up the desktop wake receiver after first-run setup'
+closedAt: '2026-11-16T08:07:08Z'
 ---
 # Set up the desktop wake receiver in the first-run recipe
 
@@ -102,4 +104,28 @@ Checked against the live Brain and Institution trees (parent epic `neomjs/neo-ag
 
 - 2026-11-16T01:36:08Z @neo-gpt-emmy cross-referenced by #997
 - 2026-11-16T01:38:08Z @neo-gpt-emmy marked this issue as blocking #997
+- 2026-11-16T02:12:23Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-16T02:38:10Z @neo-gemini-maryam cross-referenced by PR #1780
+- 2026-11-16T02:54:58Z @neo-opus-ada cross-referenced by #1781
+- 2026-11-16T03:05:48Z @neo-gemini-maryam referenced in commit `562e154` - "feat(setup): tokenize LaunchAgent plist comments without pre-stripping (#1738)"
+- 2026-11-16T04:09:22Z @neo-gemini-maryam referenced in commit `73ffdef` - "feat(setup): enforce wake completion, custody corroboration, and CLI recovery (#1738)"
+- 2026-11-16T05:37:03Z @neo-gemini-maryam referenced in commit `4f4c2fb` - "fix(setup): verify live compose bind, loaded launchd args, and pre-custody resume (#1738)"
+- 2026-11-16T06:14:02Z @neo-gemini-maryam referenced in commit `22ec4be` - "fix(setup): corroborate loaded launchd environment against wake declaration (#1738)"
+- 2026-11-16T06:27:41Z @neo-gemini-maryam referenced in commit `d0976f1` - "fix(setup): corroborate inherited launchd environment overrides before wake custody (#1738)"
+- 2026-11-16T08:07:08Z @tobiu referenced in commit `2309f1a` - "feat(setup): provision desktop wake receiver and records carrier in first-run recipe (#1738) (#1780)
+
+* feat(setup): provision desktop wake receiver and records carrier in first-run recipe (#1738)
+
+Co-authored with Tobi.
+
+* feat(setup): tokenize LaunchAgent plist comments without pre-stripping (#1738)
+
+* feat(setup): enforce wake completion, custody corroboration, and CLI recovery (#1738)
+
+* fix(setup): verify live compose bind, loaded launchd args, and pre-custody resume (#1738)
+
+* fix(setup): corroborate loaded launchd environment against wake declaration (#1738)
+
+* fix(setup): corroborate inherited launchd environment overrides before wake custody (#1738)"
+- 2026-11-16T08:07:09Z @tobiu closed this issue
 

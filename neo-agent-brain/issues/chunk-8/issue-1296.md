@@ -11,18 +11,18 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-10-26T07:55:11Z'
-updatedAt: '2026-11-16T01:03:35Z'
+updatedAt: '2026-11-16T09:01:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1296'
 author: neo-gpt-sophie
 commentsCount: 36
 parentIssue: 700
 subIssues:
   - '[x] 1509 Define the protected family protocol and temporal projection'
-  - '[ ] 1510 Own protected family admission and coherent snapshots in GraphService'
+  - '[x] 1510 Own protected family admission and coherent snapshots in GraphService'
   - '[ ] 1511 Wire the protected family service through Memory Core'
   - '[ ] 1512 Use admitted family history for review decisions'
   - '[ ] 1513 Use admitted families for routing and publication checks'
-subIssuesCompleted: 1
+subIssuesCompleted: 2
 subIssuesTotal: 5
 contentTrust:
   projected: true
@@ -57,13 +57,17 @@ Current routing additionally needs the independently protected provider-subject�
 
 ## Acceptance record and preservation
 
-Current observation: the pure protocol/projection leaf #1509 shipped through [PR #1774](https://github.com/neomjs/neo-agent-brain/pull/1774), approved at `e872d4972ac519eae153cff87d59dd2bfc7777fd` and merged into `dev` at `1f884fed59406b481e22346ee9ca68731a59c354`. No production MC publication/snapshot composition or complete runtime consumer cut is accepted. The next delivery is #1510's protected physical source, followed by #1511's registered service composition and the dependent consumers; intake and current-source validation precede execution.
+Current source observation: the pure protocol/projection leaf #1509 shipped through [PR #1774](https://github.com/neomjs/neo-agent-brain/pull/1774), merged at `1f884fed59406b481e22346ee9ca68731a59c354`. The protected physical source #1510 shipped through [PR #1786](https://github.com/neomjs/neo-agent-brain/pull/1786), approved at `ad8f65de7e5dfe7b6f1ac974b1b38dcd06ab989c` and human-merged at `4f517f4fd1a2b7b4744fa195a0868be7d1743fa4` on 2026-11-16 08:17 UTC; #1510 is closed. No production MC publication/snapshot composition or complete runtime consumer cut is accepted. The next delivery is #1511's registered service composition and then the dependent consumers; intake and current-source validation still precede execution.
 
 The crosswalk comment on this issue maps every original AC-1..AC-12 into the new leaf contracts. No original failure control, capacity bound, founding/correction semantics, restore/migration protection or consumer is discarded. Closing children alone does not establish the terminal predicate: final source integration must verify the combined consumer census and the #1297 joint baseline receipt. Sophie retains this source integration stewardship.
 
 The [#112 disposition](https://github.com/neomjs/neo-agent-brain/issues/112#issuecomment-6903800861) adds explicit inputs to the final AC-12 consumer census: shared cross-family verdict readers in `focusV1Section.mjs`, `activePrCycleSection.mjs` and `GoldenPathSynthesizer.mjs`; display in `resolveIdentityDisplay.mjs`; and team scripts `harnessRouting.mjs` and `revalidationSweep.mjs`. Verify each production path and record its migration or justified owner/scope disposition. A setup/founding read is not automatically a runtime authority defect; display remains within #875's broader fact-class boundary. No cleanup is delegated to the closed #112.
 
 Installed manual Add → ownership → confirmation → a genuinely required managed REQUEST_CHANGES remains the explicit post-merge witness on neomjs/neo-agent-institution#414. No live key generation, seeding, migration, deployment, service restart or synthetic demand review is authorized by this planning change.
+
+## Recovery disposition ownership
+
+Sophie owns the recovery disposition identified by [#1786’s review](https://github.com/neomjs/neo-agent-brain/pull/1786#pullrequestreview-5915272344), including ordinary restore fencing a never-provisioned plane. Coordinate with #1297’s existing provisioning/custody owner before #1511 enables live serving. Recovery remains unavailable until a separately admitted path and witness exist. This records an owner and revalidation trigger; it authorizes no fence clearing, replacement authority or C7/C8 policy change.
 
 ## Out of scope and avoided traps
 
@@ -967,4 +971,8 @@ Origin Session ID: 5032dade-507a-4d14-ac0f-15d78670a93c.
 - 2026-11-15T22:38:14Z @neo-gpt-sophie cross-referenced by PR #1774
 - 2026-11-15T23:05:12Z @neo-gpt-sophie cross-referenced by #112
 - 2026-11-16T00:16:30Z @neo-fable-mnemosyne cross-referenced by #114
+- 2026-11-16T02:58:12Z @neo-gpt-sophie cross-referenced by #1782
+- 2026-11-16T03:50:31Z @neo-gpt-sophie cross-referenced by PR #1786
+- 2026-11-16T05:02:43Z @neo-opus-grace cross-referenced by #1789
+- 2026-11-16T09:36:23Z @neo-gpt-sophie cross-referenced by PR #1799
 

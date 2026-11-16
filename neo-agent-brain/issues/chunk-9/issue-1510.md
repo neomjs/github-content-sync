@@ -1,7 +1,7 @@
 ---
 id: 1510
 title: Own protected family admission and coherent snapshots in GraphService
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-11-06T23:06:38Z'
-updatedAt: '2026-11-16T01:21:01Z'
+updatedAt: '2026-11-16T08:17:35Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1510'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -27,11 +27,14 @@ blockedBy:
   - '[x] 1509 Define the protected family protocol and temporal projection'
 blocking:
   - '[ ] 1511 Wire the protected family service through Memory Core'
+closedAt: '2026-11-16T08:17:35Z'
 ---
 # Own protected family admission and coherent snapshots in GraphService
 
 ## Context and problem
 The checkpoint has tested admission/snapshot helpers, but no production GraphService caller owns their transaction and cache synchronization. Founding storage and raw migration protection remain unfinished. This leaf supplies one protected physical source; it exposes no publication endpoint.
+
+**Implementation candidate:** [PR #1786](https://github.com/neomjs/neo-agent-brain/pull/1786) at `8def4682b003cafa5c68ce705e82934091418699`; local source/compatibility validation passed, hosted CI and independent review remain separate gates.
 
 ## Architectural reality and intended change
 GraphService owns db.storage.db, caches and graph mutation authority. Compose identityPublicationAdmission, identityPublicationLineage, identityPublicationFence and protection helpers THERE, with DatabaseService, SQLite/Database, graphJsonlImport, restoreTargetSetStorage, restoreReceipts and both raw identity migrations included in the bypass census. Never use an ordinary JSON flag as writer privilege.
@@ -50,7 +53,7 @@ GraphService owns db.storage.db, caches and graph mutation authority. Compose id
 - [ ] First-install ordering/interruption recovery is controlled. One physical transaction reads ALL founding and admitted populations, validates the complete reserved census, includes founding-only subjects, and returns a detached coherent observation with admission revision and founding digest. Missing/malformed/fenced/unavailable storage never returns successful emptiness.
 - [ ] Through actual admission, prove the temporal/incarnation/correction rules, original confirming principal's continuing tenure, explicit model:null and full catalog collision behavior. Known catalog includes founding roster plus all admitted declarations/corrections; refuse only the colliding normalized key, name conflicting labels and reconciliation authority, never erase collision by ordinary correction.
 - [ ] Common warm/cold mutations, relabel/merge/delete/decay and incident-edge operations cannot manufacture or alter protected state. Finish the retained rename/canonicalization negative controls: ordinary routing may converge while protected history bytes and necessary historical endpoints remain intact.
-- [ ] Every supported live import/replace/truncate/promotion/receipt-restore entry is enumerated and fences publication/snapshot atomically. Operational fence storage survives Nodes/Edges replacement, ordinary restore cannot clear it, and whole-file administrative recovery limits remain explicit.
+- [ ] Every supported live import/replace/truncate/promotion/receipt-restore entry is enumerated and fences publication/snapshot atomically. An unqualified legacy restore with no publication-recovery authority refuses before mutation. Operational fence storage survives Nodes/Edges replacement, ordinary restore cannot clear it, and whole-file administrative recovery limits remain explicit.
 - [ ] Physical GraphService/admission tests, process/WAL concurrency, snapshot and supported-path integration suites pass. A no-regression source-consumer witness proves existing graph callers still work while no HTTP publication writer is enabled.
 
 ## Scope, mapping and dependencies
@@ -119,4 +122,19 @@ Creation sweep: live latest20 created-descending Brain issues, closed family/ide
 - 2026-11-16T00:16:43Z @neo-fable-mnemosyne cross-referenced by #112
 - 2026-11-16T00:54:09Z @neo-gpt-sophie cross-referenced by #1512
 - 2026-11-16T01:16:28Z @neo-gpt-sophie assigned to @neo-gpt-sophie
+- 2026-11-16T02:58:12Z @neo-gpt-sophie cross-referenced by #1782
+- 2026-11-16T03:50:31Z @neo-gpt-sophie cross-referenced by PR #1786
+- 2026-11-16T04:24:14Z @neo-gpt-sophie referenced in commit `5e6899c` - "test(identity): use physical SQLite in tenant fixtures (#1510)"
+- 2026-11-16T05:02:43Z @neo-opus-grace cross-referenced by #1789
+- 2026-11-16T05:21:12Z @neo-opus-ada cross-referenced by PR #1785
+- 2026-11-16T05:33:03Z @neo-gpt-sophie referenced in commit `ad8f65d` - "fix(graph): publish reinforced edges after commit (#1510)"
+- 2026-11-16T08:17:35Z @tobiu referenced in commit `4f517f4` - "feat(identity): own protected family storage (#1510) (#1786)
+
+* feat(identity): own protected family storage (#1510)
+
+* test(identity): use physical SQLite in tenant fixtures (#1510)
+
+* fix(graph): publish reinforced edges after commit (#1510)"
+- 2026-11-16T08:17:37Z @tobiu closed this issue
+- 2026-11-16T09:36:23Z @neo-gpt-sophie cross-referenced by PR #1799
 

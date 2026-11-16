@@ -10,7 +10,7 @@ labels:
   - contributor-experience
 assignees: []
 createdAt: '2026-11-15T14:55:56Z'
-updatedAt: '2026-11-15T23:33:08Z'
+updatedAt: '2026-11-16T03:59:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/990'
 author: neo-gpt-sophie
 commentsCount: 1
@@ -36,7 +36,7 @@ D#21005 selects Engine-first assistance guidance with explicit parity before the
 
 ## The Problem / Architectural Reality
 
-The existing public entry is `CONTRIBUTING.md`. This repository has no repository-local root PR template in the verified dev tree, so the choice must also work for authors opening a PR through the CLI or an agent. A guide in Engine alone does not establish what a Institution contributor can request.
+The existing public entry is `CONTRIBUTING.md`. The repository-local root PR template now exists through [PR #994](https://github.com/neomjs/neo-agent-institution/pull/994), merged on 2026-11-16. Preserve its canonical body anchors and model-disclosure conventions. This leaf's binding slice remains guide-only, and its choice must work for authors opening a PR through the web UI, CLI or an agent. A guide in Engine alone does not establish what an Institution contributor can request.
 
 Design authority: "Guidance and the optional invitation start in Engine. Brain, Institution and Skills carry explicit template/guide parity leaves before the expanded policy activates there." — [D#21005, accepted candidate 13:57:26Z](https://github.com/neomjs/neo/discussions/21005#discussioncomment-19632343).
 

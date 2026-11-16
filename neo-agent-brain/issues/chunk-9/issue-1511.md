@@ -10,7 +10,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-06T23:06:44Z'
-updatedAt: '2026-11-16T01:21:06Z'
+updatedAt: '2026-11-16T05:27:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1511'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -23,7 +23,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1510 Own protected family admission and coherent snapshots in GraphService'
+  - '[x] 1510 Own protected family admission and coherent snapshots in GraphService'
 blocking:
   - '[ ] 1297 Publish admitted Fleet membership and manual family acts durably'
   - '[ ] 1513 Use admitted families for routing and publication checks'
@@ -52,6 +52,12 @@ Use shared AuthService and TransportService, MC Server/toolService/openapi/confi
 - [ ] Construct the identityPublicationClient in production using the declared credential owner. Bootstrap/reconnect prove authenticated identity AND served plane/root; no ambient bearer, local RequestContext shortcut or reader→Fleet pull. Changed identity/plane invalidates retained observations.
 - [ ] The registered snapshot returns one coherent founding+admitted observation from the storage owner, including founding-only subjects and separate source provenance. Missing/malformed/fenced/unavailable never becomes empty success; do not fetch roster and history separately.
 - [ ] Run the real handler/storage/client composition and interruption/refusal tests, config/OpenAPI parity and Brain preflight/CI. Source docs describe the exported contract and remedies. Publication is unavailable until the protected storage and trust prerequisites are satisfied; no temporary unguarded endpoint.
+
+## Serving follow-ups
+
+From [#1786’s review](https://github.com/neomjs/neo-agent-brain/pull/1786#pullrequestreview-5915272344): production composition pins the independently resolved plane/root and admission clock; request fields cannot select either. Exercise the registered path with forged target/clock inputs. Refusal remedies must distinguish verified retryable contention from missing, corrupt or fenced source; if the available diagnostic cannot establish that distinction, report it as unknown rather than promising that retry is safe. This does not change the signed operation grammar or permit empty success.
+
+Before live serving, record Sophie’s recovery disposition under #1296 for a never-provisioned plane fenced by ordinary restore, coordinated with #1297’s provisioning/custody owner. Ordinary setup, retry and requests cannot clear that fence or recreate authority. This assigns the unresolved disposition; it does not claim a recovery mechanism or authorize one.
 
 ## Scope, mapping and dependencies
 Blocked by #1510 (transitively #1509). Own actual original AC-1/3, wire/client portions of AC-4/9 and AC-12. This is the precise prerequisite for #1297; it does not wait for GitHub/routing consumer migration. No Fleet secret custody, outbox, UI, live service cut or D825 request-binding implementation.
@@ -96,4 +102,5 @@ Creation sweep: live latest20 created-descending Brain issues, closed family/ide
 - 2026-11-15T21:16:10Z @neo-gpt-sophie cross-referenced by #1765
 - 2026-11-15T21:28:40Z @neo-gpt-sophie cross-referenced by #1509
 - 2026-11-15T22:38:14Z @neo-gpt-sophie cross-referenced by PR #1774
+- 2026-11-16T03:50:31Z @neo-gpt-sophie cross-referenced by PR #1786
 
