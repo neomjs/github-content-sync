@@ -1,19 +1,18 @@
 ---
 id: 898
 title: The Golden Path pane calls a route current days after it expired
-state: OPEN
+state: CLOSED
 labels:
   - bug
-  - good first issue
-  - help wanted
   - agent-os
   - ai
-assignees: []
+assignees:
+  - neo-opus-ada
 createdAt: '2026-11-09T11:08:02Z'
-updatedAt: '2026-11-10T19:06:01Z'
+updatedAt: '2026-11-17T20:22:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/898'
 author: neo-fable-mnemosyne
-commentsCount: 1
+commentsCount: 3
 parentIssue: 477
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-17T20:22:03Z'
 ---
 # The Golden Path pane calls a route current days after it expired
 
@@ -149,4 +149,90 @@ As the views epic's steward I would put this ticket on the FM v1 milestone: it i
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.2 · Claude Code · session 0c3a6369-4269-4b0b-8ad5-0c9441248925
 
+- 2026-11-15T17:58:40Z @neo-opus-grace cross-referenced by #991
+- 2026-11-17T14:40:55Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-11-17T14:40:56Z @neo-opus-ada removed the `good first issue` label
+- 2026-11-17T14:40:56Z @neo-opus-ada removed the `help wanted` label
+### @neo-opus-ada - 2026-11-17T14:40:59Z
+
+**Claimed by Ada at 14:41Z on 2026-11-17. This is FM v1 row 4's observed lane:** #490's claim → PR → cross-family review → operator merge, read live from the cockpit by @neo-opus-grace. Reviewer: @neo-gpt-euclid.
+
+**Intake on Institution dev `4229b9ea`: valid as written.**
+- `GoldenPathEnvelope.currency()` and `withheldReason()` still trust the wire's read-time `route.expired`.
+- The pane applies an envelope only when it lands (`onConstructed`, `afterSetEnvelope`).
+- `LivenessCadence.READS` holds eight reads and no Golden Path.
+- `loadGoldenPath()` fences by generation but counts nothing in flight.
+- Since this ticket was filed, #950, #961 and #962 changed `ReadingSurfacesController`; none of them touched `loadGoldenPath`.
+- Fix 2 has its precedent: `onLivenessTick()` already sets the Mailbox pane's `now`, and `fleet/detail/Container.mjs` carries a `now_` config.
+
+**One sharpening for AC-3.** `LivenessCadence.plan()` reschedules a due read at `now + interval`, and `expedite()` can only move a due time earlier. So a read that comes due at the shown route's expiry needs the cadence to *set* that read's next due time when a route lands. On the `tasks` interval alone it would re-read every 120 s against an hour-long route, which is this ticket's own Avoided Trap. I'll add one static beside `expedite()` for it. The body and its ACs stay as written.
+
+**Labels:** `good first issue` and `help wanted` come off with this claim. AC-7 needs the installed app and a plane, and row 2 needs the fix before Nov 20.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-17T15:07:41Z @neo-opus-ada cross-referenced by PR #1018
+### @neo-opus-ada - 2026-11-17T15:13:16Z
+
+**Handover (session refresh, 2026-11-17, 15:13Z): PR #1018 is open at `ec27e2b5` and merges clean on dev `dffad4da`.**
+
+- **Observed lane:** #1018 is FM v1 row 4's walk lane (#490). @neo-opus-grace reads the cockpit live, and the author DMs her 1:1 when the cross-family review lands and again after the merge.
+- **Next:** at CI green (the Fleet's route-review wake), request @neo-gpt-euclid in GitHub. After the merge, AC-7's installed receipt goes on #479.
+- **Out of scope, noted:** `FleetGoldenPathNL.spec`'s width test is red on dev too (defect-note `98229defd172caec`).
+- **Owner:** `@neo-opus-ada`, next session.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-17T15:56:35Z @neo-opus-ada referenced in commit `1eeafac` - "feat(agentos): the Golden Path pane ages and re-reads at expiry (#898)
+
+The pane trusted the wire expired flag, which holds only for the instant of the read, and formatted its facts once per envelope, so a cockpit left open showed a route current 68 hours after it expired.
+
+GoldenPathEnvelope measures currency against the viewer clock (isExpired, currentUntil). A failed re-read keeps the landed route withheld with the read reason (afterFailedRead, a cockpit-side read block). The pane takes the liveness pass instant as now and re-derives its facts row without a new envelope. The cadence gains a goldenPath read, capped at one wire, rescheduled to a current route expiry (LivenessCadence.reschedule) and retried on the tasks interval while no route is current.
+
+The e2e and visual fixtures move their current expiry to the same calendar instant in 2099, so the goldens render unchanged."
+- 2026-11-17T18:30:13Z @neo-opus-ada referenced in commit `2d18563` - "fix(agentos): the Golden Path reads one at a time, per profile (#898)
+
+The cadence, Refresh, Reconnect and the admission recovery share the read on the wire; only the wire's own settle frees the next one. A read through another profile's bridge retires the landed route and the read in flight, so a failed first read lands as unavailable and a late answer lands nowhere. A read that settles after teardown touches no provider."
+- 2026-11-17T18:51:03Z @neo-opus-ada referenced in commit `d3a8627` - "test(agentos): restamp golden inputs for the Golden Path read (#898)
+
+The read's three controller files are golden inputs. test-goldens passes every screenshot tier with no golden changed; its one failure is the facts-row layout test that is red on dev too. The Reconnect docblock is rewrapped so LivenessController stays under the app file bar."
+- 2026-11-17T19:59:38Z @neo-opus-ada referenced in commit `39a446e` - "fix(agentos): a profile switch keeps the fenced read on the wire (#898)
+
+A profile switch fenced the Golden Path read in flight and dropped its
+slot while the wire still ran, so A, B, then A again put a second read
+for A on the wire before the first settled. The retired read now keeps
+the slot until its wire settles; a request meanwhile waits, then reads
+anew through the bridge in hand, and starts nothing once its owner is
+destroyed. One read stays in flight across profile switches."
+- 2026-11-17T19:59:38Z @neo-opus-ada referenced in commit `88959b3` - "test(agentos): restamp golden inputs for Round 2's controller files (#898)"
+- 2026-11-17T20:22:03Z @tobiu referenced in commit `e8477f6` - "feat(agentos): the Golden Path pane ages and re-reads at expiry (#898) (#1018)
+
+* feat(agentos): the Golden Path pane ages and re-reads at expiry (#898)
+
+The pane trusted the wire expired flag, which holds only for the instant of the read, and formatted its facts once per envelope, so a cockpit left open showed a route current 68 hours after it expired.
+
+GoldenPathEnvelope measures currency against the viewer clock (isExpired, currentUntil). A failed re-read keeps the landed route withheld with the read reason (afterFailedRead, a cockpit-side read block). The pane takes the liveness pass instant as now and re-derives its facts row without a new envelope. The cadence gains a goldenPath read, capped at one wire, rescheduled to a current route expiry (LivenessCadence.reschedule) and retried on the tasks interval while no route is current.
+
+The e2e and visual fixtures move their current expiry to the same calendar instant in 2099, so the goldens render unchanged.
+
+* fix(agentos): the Golden Path reads one at a time, per profile (#898)
+
+The cadence, Refresh, Reconnect and the admission recovery share the read on the wire; only the wire's own settle frees the next one. A read through another profile's bridge retires the landed route and the read in flight, so a failed first read lands as unavailable and a late answer lands nowhere. A read that settles after teardown touches no provider.
+
+* test(agentos): restamp golden inputs for the Golden Path read (#898)
+
+The read's three controller files are golden inputs. test-goldens passes every screenshot tier with no golden changed; its one failure is the facts-row layout test that is red on dev too. The Reconnect docblock is rewrapped so LivenessController stays under the app file bar.
+
+* fix(agentos): a profile switch keeps the fenced read on the wire (#898)
+
+A profile switch fenced the Golden Path read in flight and dropped its
+slot while the wire still ran, so A, B, then A again put a second read
+for A on the wire before the first settled. The retired read now keeps
+the slot until its wire settles; a request meanwhile waits, then reads
+anew through the bridge in hand, and starts nothing once its owner is
+destroyed. One read stays in flight across profile switches.
+
+* test(agentos): restamp golden inputs for Round 2's controller files (#898)"
+- 2026-11-17T20:22:04Z @tobiu closed this issue
+- 2026-11-17T20:29:21Z @neo-opus-grace cross-referenced by #490
 

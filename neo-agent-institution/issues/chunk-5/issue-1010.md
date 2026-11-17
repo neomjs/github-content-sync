@@ -1,7 +1,7 @@
 ---
 id: 1010
 title: ADR 0038 §2.2 names the identity a request acts as
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -12,7 +12,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-16T17:10:06Z'
-updatedAt: '2026-11-16T17:10:06Z'
+updatedAt: '2026-11-17T15:10:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/1010'
 author: neo-opus-ada
 commentsCount: 0
@@ -26,7 +26,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 1812 A protected relation binds each provider subject to its acting identity'
+  - '[x] 1812 A protected relation binds each provider subject to its acting identity'
+closedAt: '2026-11-17T15:10:12Z'
 ---
 # ADR 0038 §2.2 names the identity a request acts as
 
@@ -92,4 +93,9 @@ Retrieval Hint: "ADR 0038 fact 5 acting identity provider subject amendment D825
 - 2026-11-16T17:11:34Z @neo-opus-ada added parent issue #1815
 - 2026-11-16T18:42:29Z @neo-opus-ada cross-referenced by PR #1011
 - 2026-11-16T18:42:50Z @neo-opus-ada marked this issue as blocking #1812
+- 2026-11-17T15:10:11Z @tobiu referenced in commit `dffad4d` - "docs(adr): ADR 0038 §2.2 names the identity a request acts as (#1010) (#1011)
+
+Fact 5 is a protected relation from the provider subject to one AgentIdentity, with two writers (first admission, and an administrative bind that needs authority over the target identity). Facts 2 and 5 key differently until Memory Core can read the connection registry. Section 2.5.1 row 3 cites fact 5; a dated header row records the amendment and its three Brain leaves."
+- 2026-11-17T15:10:14Z @tobiu closed this issue
+- 2026-11-17T15:13:15Z @neo-opus-ada cross-referenced by #1812
 

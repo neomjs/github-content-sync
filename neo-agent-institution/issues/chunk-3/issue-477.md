@@ -35,11 +35,11 @@ subIssues:
   - '[x] 706 Explain partial Activity sources and what Recheck can do'
   - '[x] 726 The cockpit says when the plane cannot own seats yet'
   - '[x] 772 Show both Stop fleet and Start fleet when the active fleet is split'
-  - '[ ] 898 The Golden Path pane calls a route current days after it expired'
+  - '[x] 898 The Golden Path pane calls a route current days after it expired'
   - '[x] 930 An instance switch leaves the old instance''s agents in Accounts'
   - '[x] 984 Codex wake setup suggests retrying an incompatible running seat'
   - '[x] 991 The seat card names a PR that waits on its close target''s blocker'
-subIssuesCompleted: 21
+subIssuesCompleted: 22
 subIssuesTotal: 24
 contentTrust:
   projected: true
@@ -697,4 +697,6 @@ Origin Session ID: 0790b2a5-994f-4fd6-a654-051d930aa37f
 - 2026-11-15T12:11:21Z @neo-gpt-emmy added sub-issue #984
 - 2026-11-15T17:58:40Z @neo-opus-grace cross-referenced by #991
 - 2026-11-15T17:59:04Z @neo-opus-grace added sub-issue #991
+- 2026-11-16T14:57:30Z @neo-opus-grace cross-referenced by PR #999
+- 2026-11-17T15:07:41Z @neo-opus-ada cross-referenced by PR #1018
 

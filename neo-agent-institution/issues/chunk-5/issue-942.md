@@ -1,20 +1,19 @@
 ---
 id: 942
 title: 'The product bar spaces nothing: Nightshift touches the theme switch'
-state: OPEN
+state: CLOSED
 labels:
   - bug
-  - good first issue
-  - help wanted
   - agent-os
   - ai
   - design
-assignees: []
+assignees:
+  - neo-opus-ada
 createdAt: '2026-11-12T15:04:46Z'
-updatedAt: '2026-11-12T15:04:46Z'
+updatedAt: '2026-11-17T18:09:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/942'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -25,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-17T18:09:30Z'
 ---
 # The product bar spaces nothing: Nightshift touches the theme switch
 
@@ -100,4 +100,41 @@ Retrieval Hint: "product bar no gap Nightshift toggle theme switch top toolbar s
 - 2026-11-12T15:04:48Z @neo-opus-vega added the `ai` label
 - 2026-11-12T15:04:49Z @neo-opus-vega added the `design` label
 - 2026-11-12T15:05:01Z @neo-opus-vega cross-referenced by #505
+- 2026-11-16T00:08:30Z @neo-opus-vega cross-referenced by #995
+- 2026-11-17T16:17:51Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-11-17T16:17:56Z @neo-opus-ada removed the `good first issue` label
+- 2026-11-17T16:17:56Z @neo-opus-ada removed the `help wanted` label
+### @neo-opus-ada - 2026-11-17T16:17:59Z
+
+Taking this now. The operator wants the gap shipped, so the contributor labels come off. No claim or PR existed.
+
+Drift since the body was written: #1014 merged today and made the theme sheets plain CSS. The Fix's two rules therefore land in `resources/css/src/apps/agentos/Viewport.css` (`.agent-top-toolbar`, `.agent-logo`), not `Viewport.scss`. The token `--fm-space-2` (8 px) is unchanged.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-17T16:34:33Z @neo-opus-ada referenced in commit `75afa0c` - "test(agentos): the product bar gap test runs in CI, in the shell spec (#942)
+
+The isolated CI job skips every spec that takes the neuralLink fixture, so the gap test moves from NightshiftToggleNL.spec.mjs to Cockpit.spec.mjs, which CI runs; it needs no Brain."
+- 2026-11-17T16:35:34Z @neo-opus-ada cross-referenced by PR #1019
+- 2026-11-17T16:40:05Z @neo-opus-ada referenced in commit `d2e1bbf` - "test(agentos): restamp the visual baselines over the committed goldens (#942)
+
+The first stamp ran before the refreshed goldens were staged, so it recorded their old blobs."
+- 2026-11-17T18:09:30Z @tobiu referenced in commit `6fa385a` - "fix(agentos): the product bar spaces its controls on the 8px step (#942) (#1019)
+
+* fix(agentos): the product bar spaces its controls on the 8px step (#942)
+
+The band gets gap: var(--fm-space-2), and the logo's margin shrinks by the same step: 15px to the title stays 7px plus the gap, and 8px to the switcher at <=560px is the gap alone. The Nightshift spec measures every pair from DOM rects in both themes, wide and narrow, and its span-label pattern accepts the dated form an 8-hour span takes after 16:00.
+
+* test(agentos): the product bar's 8px step moves nine full-view goldens (#942)
+
+Eight change only inside the band (y 9-40). cockpit-review-1280 also carries the activity row's live GitHub avatar, re-fetched at capture (125 px in one 14 px square). Stamp rewritten; check-visual-baselines passes.
+
+* test(agentos): the product bar gap test runs in CI, in the shell spec (#942)
+
+The isolated CI job skips every spec that takes the neuralLink fixture, so the gap test moves from NightshiftToggleNL.spec.mjs to Cockpit.spec.mjs, which CI runs; it needs no Brain.
+
+* test(agentos): restamp the visual baselines over the committed goldens (#942)
+
+The first stamp ran before the refreshed goldens were staged, so it recorded their old blobs."
+- 2026-11-17T18:09:31Z @tobiu closed this issue
 

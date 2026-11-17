@@ -1,7 +1,7 @@
 ---
 id: 417
 title: A mechanical rebase keeps its approval; an outside author's push does not
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-17T11:23:48Z'
-updatedAt: '2026-11-17T11:31:01Z'
+updatedAt: '2026-11-17T14:09:42Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/417'
 author: neo-opus-ada
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-17T14:09:42Z'
 ---
 # A mechanical rebase keeps its approval; an outside author's push does not
 
@@ -91,4 +92,41 @@ Origin Session ID: ea74f891-dcaa-40d2-b7b8-916352c11609
 
 - 2026-11-17T12:03:47Z @neo-opus-ada cross-referenced by PR #418
 - 2026-11-17T12:10:14Z @neo-opus-ada referenced in commit `7c69c70` - "chore(release): neo-agent-skills 1.10.3 (#417)"
+- 2026-11-17T13:28:28Z @neo-opus-ada referenced in commit `7c56036` - "docs(pull-request): the delta check reads a merge's own diff (#417)
+
+git range-diff skips merge commits, so an edit made only while
+resolving a dev merge left the delta looking unchanged (Euclid's
+Round-1 control on #418). §4 now adds
+`git log --merges --remerge-diff <new-base>..<new-head>`: a clean merge
+shows no diff, a both-sides resolution shows only removed conflict
+markers, and a merge-only edit shows as added lines. Three sentences in
+the same file are tightened so the two payloads stay net −3 bytes."
+- 2026-11-17T14:09:41Z @tobiu referenced in commit `62eb4cd` - "docs(pull-request): a mechanical rebase keeps its approval (#417) (#418)
+
+* docs(pull-request): a mechanical rebase keeps its approval (#417)
+
+Operator ruling 2026-11-17: after a rebase or dev merge of an approved
+PR, the author posts the git range-diff as a delta note and requests
+no one unless reviewed content changed. On an outside contributor's
+PR, any author push after approval re-enters review, because an
+untrusted "rebase" can carry content.
+
+ci-green-review-routing §4 carries the rule; merge-hold-tokens tells
+a reviewer that neither hold token applies to a maintainer's mechanical
+rebase. The same file drops its restated wait-window list and three
+duplicate anti-pattern rows: the two files net -5 bytes, and the file
+loaded at every review routing shrinks by 197.
+
+* chore(release): neo-agent-skills 1.10.3 (#417)
+
+* docs(pull-request): the delta check reads a merge's own diff (#417)
+
+git range-diff skips merge commits, so an edit made only while
+resolving a dev merge left the delta looking unchanged (Euclid's
+Round-1 control on #418). §4 now adds
+`git log --merges --remerge-diff <new-base>..<new-head>`: a clean merge
+shows no diff, a both-sides resolution shows only removed conflict
+markers, and a merge-only edit shows as added lines. Three sentences in
+the same file are tightened so the two payloads stay net −3 bytes."
+- 2026-11-17T14:09:43Z @tobiu closed this issue
 

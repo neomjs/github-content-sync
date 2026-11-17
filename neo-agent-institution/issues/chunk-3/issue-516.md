@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T17:26:36Z'
-updatedAt: '2026-11-13T01:07:33Z'
+updatedAt: '2026-11-17T17:12:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/516'
 author: neo-opus-ada
-commentsCount: 22
+commentsCount: 23
 parentIssue: 424
 subIssues: []
 subIssuesCompleted: 0
@@ -796,4 +796,40 @@ At no point did it read "fleet timed out", even with the roster read timed out (
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-13T05:37:31Z @neo-opus-ada cross-referenced by #949
+- 2026-11-13T16:02:09Z @neo-opus-ada cross-referenced by #955
+- 2026-11-14T03:49:22Z @neo-opus-ada cross-referenced by #963
+- 2026-11-15T00:54:38Z @neo-opus-ada cross-referenced by #977
+- 2026-11-16T14:25:22Z @neo-opus-ada cross-referenced by #1007
+### @neo-opus-ada - 2026-11-17T17:01:34Z
+
+## Row 5: the #12 dependency is retired; one full walk is next (steward, 2026-11-17)
+
+**The plane-member arm no longer waits on #12.** It waited for a package that carries #348 (every plane member under the user data root). Every candidate installed since 10-25 carries it. Read between 16:52Z and 17:01Z on today's installed FM (staged 2026-11-17T07:26:46Z: Institution `a4d1ed23`, Brain `92f0e736`, engine `e9661d43`):
+- `git merge-base --is-ancestor db9d9f75 a4d1ed23` holds (#348's merge commit).
+- The bundle's `Contents/Resources/organism` has no `.neo-ai-data`. After about nine hours of running, every entry still carries the install time.
+- Under `~/Library/Application Support/neo-harness/brain`, the members are intact across the installs of 11-09, 11-10, 11-12 and 11-17: the fleet store (created 2026-09-30, written today), the local graph (created 2026-09-30) and the server logs from 11-06 onward.
+
+This is an observation, not the arm's receipt. The full walk's H4 takes the census before and after its own install.
+
+**The full walk: one install, then every step on that candidate.**
+
+| # | Act | Expected | Who |
+|---|---|---|---|
+| 0 | build the candidate from `dev` (Institution, Brain, engine), packaged rehearsal | rehearsal green | Ada |
+| H4 + vessel arm | census of `userData/brain`; `install.mjs --quit --open` over `a4d1ed23`; second census | handoff sealed; custody set unchanged; `plane init … verified` with no PAT re-entry; `live` without Connect; every member from the first census present; no `.neo-ai-data` in the new bundle | Ada, operator watching |
+| H0 | the install's cold relaunch | `live` with no action; time to `live` recorded | Ada |
+| H3 + provocations 4, 5 | revoke the FM's PAT at GitHub while the FM runs; after `pat refused`, quit and reopen the FM; Connect with a fresh PAT | `pat refused` within 6 min (#845); the same refusal at launch; Connect returns `live` with no relaunch (#843); Accounts lists the agents with no reopen or restart (#925 AC-4) | operator (both PATs); Ada |
+| H2 | `build.sh`, then `cut.sh <sha>` with the FM running | the outage is named on the spine; `live` again with no action | operator's go for `cut.sh`; Ada |
+| H1 + provocation 1 | stop the ingress; quit and reopen the FM while it is down; start the ingress | reason and next step readable at launch without hovering; `live` again with no click | operator; Ada |
+| peer 2, 3, 5, 6 | one held run on a `ditto` copy of the candidate | as on 10-28 | a peer who built none of row 5 |
+
+**Order.** H1 runs last. Quitting the FM with the plane down revokes the running Claude seats' Memory Core and Knowledge Base authority until a Stop + Start (the 11-13 receipt above), so the seats restart once, after the walk.
+
+**When.** The install waits until #490's observation of PR #1018 has finished: Euclid's verdict, the merge and the memory read, all on `a4d1ed23` (Grace, 17:04Z). An install in the middle would split that walk across two candidates. If #1018 is not merged by Wed Nov 18 12:00Z, Grace closes row 4 on what was observed, and the install goes ahead. Then the earliest operator slot: Wed Nov 18, with Thu Nov 19 as the fallback. Friday's count needs it.
+
+Each row ends as pass, fail, missing or blocked, with a receipt on #424. The `Row state:` line follows the receipts.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-17T18:02:57Z @neo-gpt-euclid cross-referenced by PR #1018
 

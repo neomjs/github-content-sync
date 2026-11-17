@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-11-13T01:08:17Z'
+updatedAt: '2026-11-17T17:03:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
 commentsCount: 16
@@ -45,11 +45,11 @@ milestone: FM v1
 
 Terminal predicate: on one installed Fleet Manager, each failure FM v1 ROADMAP row 5 names is provoked, and the product returns to `live` by its own guidance alone, with one receipt per failure. The failures are: the plane restarts, the plane is cut to a new Brain commit, the vessel is updated, the saved plane goes stale, the PAT expires or is wrong, the endpoint is wrong. This is row 5's installed check, recorded once.
 
-Row state: row 5 · Ada (operator @tobiu; peer read Sophie, #479) · **blocked by #12** (the vessel arm's plane-member leg) · 2026-11-13: **H1 + provocation 1 passed** on the installed FM, Institution `e717bbf` / Brain `857fe41` / engine `7fae35d`, plane `a16eb4e4`. With the stored plane down at launch, the spine read `Agent OS starting · N s`, added `Longer than usual.` from 60 s and read `Agent OS not answering · 3 min` from 180 s, never `fleet timed out`, and it returned to live without a click ([6840712914](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6840712914)). The other steps passed on the 2026-11-11 candidate (Institution `6f00d3da`, Brain `7219f4e1`, engine `c7e19744`): H2 across the plane cut ([6802206124](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6802206124)), H4 + H0 ([6803020299](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6803020299)), and H3 + provocation 4, whose 6-min detection bound was not measurable that run ([6803845378](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6803845378)). The predicate asks for every step on one installed FM, so `passed` waits for one full walk on one candidate.
+Row state: row 5 · Ada (operator @tobiu; peer read Sophie, #479) · **ready** (#12's dependency retired 2026-11-17, [6954997066](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6954997066)) · 2026-11-13: **H1 + provocation 1 passed** on the installed FM, Institution `e717bbf` / Brain `857fe41` / engine `7fae35d`, plane `a16eb4e4`. With the stored plane down at launch, the spine read `Agent OS starting · N s`, added `Longer than usual.` from 60 s and read `Agent OS not answering · 3 min` from 180 s, never `fleet timed out`, and it returned to live without a click ([6840712914](https://github.com/neomjs/neo-agent-institution/issues/516#issuecomment-6840712914)). The other steps passed on the 2026-11-11 candidate (Institution `6f00d3da`, Brain `7219f4e1`, engine `c7e19744`): H2 across the plane cut ([6802206124](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6802206124)), H4 + H0 ([6803020299](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6803020299)), and H3 + provocation 4, whose 6-min detection bound was not measurable that run ([6803845378](https://github.com/neomjs/neo-agent-institution/issues/424#issuecomment-6803845378)). The predicate asks for every step on one installed FM, so `passed` waits for one full walk on one candidate.
 - Provocations 2, 3, 5 and 6 keep their 10-28 held-run results (2 and 3 pass; 5 and 6 pass, #828 AC-4). The re-run planned for Nov 11 has no receipt on #424 or #516.
 - **Provocation 5 to its end** (#925 AC-4, from Grace): after Connect with a renewed PAT, Accounts lists the agents with no reopen or restart. The installed FM carries `c415c320` (#926), so it can be walked now; it needs a PAT revoke and a fresh PAT, both the operator's. The failing specimen is the 2026-11-11 18:15Z launch (main.log 18:15:25Z → 18:17:00Z).
-- **Quitting the FM while the plane is down** revokes the Claude seats' Memory Core and Knowledge Base authority at the handoff (their proofs need the plane; the GPT seats verified). This is per-seat by design, and a Stop + Start rebinds the seat. The full walk should start seats only after its plane-down step.
-- plan: #523, #533, #812 and #828 done; #516 (the walk) open · gap leaves from the 10-30 sitting done: #845 → PR #851, #843 → PR #870, H0's #841 → PR #888, H1's #917 → PR #943 (2026-11-12) · the vessel arm's plane-member leg still waits for #12's next package · forecast: `passed` after one full walk on one installed candidate, once #12's next package lands · next: #12's package (its owner), then the full walk at the operator's slot (Ada).
+- **Quitting the FM while the plane is down** revokes the Claude seats' Memory Core and Knowledge Base authority at the handoff (their proofs need the plane; the GPT seats verified). This is per-seat by design, and a Stop + Start rebinds the seat. The full walk runs this step last, so the seats restart once afterwards.
+- plan: #523, #533, #812 and #828 done; #516 (the walk) open · gap leaves from the 10-30 sitting done: #845 → PR #851, #843 → PR #870, H0's #841 → PR #888, H1's #917 → PR #943 (2026-11-12) · the vessel arm's plane-member leg is H4's before/after census · forecast: `passed` after one full walk on one installed candidate · next: that walk once #490's observation of PR #1018 ends, at the operator's slot, Wed Nov 18 or Thu Nov 19 (Ada).
 
 ## Problem scope
 
@@ -876,4 +876,9 @@ The row stays open on H1. Its leaf follows. Clio's three stills are in `~/.neo-a
 - 2026-11-12T02:31:04Z @neo-opus-ada cross-referenced by #929
 - 2026-11-12T18:29:52Z @neo-opus-ada cross-referenced by PR #943
 - 2026-11-13T05:37:31Z @neo-opus-ada cross-referenced by #949
+- 2026-11-13T16:02:09Z @neo-opus-ada cross-referenced by #955
+- 2026-11-14T03:49:22Z @neo-opus-ada cross-referenced by #963
+- 2026-11-15T00:54:38Z @neo-opus-ada cross-referenced by #977
+- 2026-11-16T14:25:22Z @neo-opus-ada cross-referenced by #1007
+- 2026-11-16T14:57:30Z @neo-opus-grace cross-referenced by PR #999
 

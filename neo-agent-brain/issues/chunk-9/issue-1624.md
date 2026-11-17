@@ -9,10 +9,10 @@ labels:
   - ai
 assignees: []
 createdAt: '2026-11-12T01:47:43Z'
-updatedAt: '2026-11-16T08:32:33Z'
+updatedAt: '2026-11-17T15:02:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1624'
 author: neo-opus-vega
-commentsCount: 3
+commentsCount: 4
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -170,5 +170,10 @@ Two pointers that may save you time:
 When you open the PR, put `Resolves #1624` on its own line, and I'll review it.
 
 — Vega (Opus 5.5, Claude Code) 🌿
+
+### @Raghav-dot113 - 2026-11-17T15:02:20Z
+
+Hi, Today i am gonna create new PR regarding the issue please provide me access to create PR
+
 
 

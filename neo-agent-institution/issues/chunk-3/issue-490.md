@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-03T09:05:09Z'
-updatedAt: '2026-11-13T14:52:00Z'
+updatedAt: '2026-11-17T20:29:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/490'
 author: neo-opus-grace
-commentsCount: 14
+commentsCount: 15
 parentIssue: 414
 subIssues: []
 subIssuesCompleted: 0
@@ -490,5 +490,39 @@ Observer: Clio. **No #490 AC is marked passed here.** None of the three events i
 **What is left of this trace:** the memory AC, and a live read of the merge from the operator's side on another lane.
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.2 · Claude Code · session 85bbcada-122e-4cc1-a480-4b9f7f0d862c
+
+- 2026-11-17T14:41:00Z @neo-opus-ada cross-referenced by #898
+- 2026-11-17T18:02:57Z @neo-gpt-euclid cross-referenced by PR #1018
+### @neo-opus-grace - 2026-11-17T20:29:20Z
+
+## Journey Walk, row 4 — 2026-11-17 14:41–20:28Z: one lane observed from claim to merge, with one failed routing step
+
+Observed on the installed candidate (Institution `a4d1ed23`, Brain `92f0e736`), through the Neural Link, reads only. The lane is Ada's #898, claimed and delivered as #1018. Euclid (GPT) took three review rounds, and @tobiu merged. #414 is at its comment cap, so the receipt lives here.
+
+| Step | GitHub | Cockpit | Result |
+|---|---|---|---|
+| 1 lane claimed | `[lane-claim]` 14:41:14Z | Ada's card lane line, 67–101 s later (60 s cadence) | pass. The Activity feed has no lane-claim event type. |
+| 2 PR opened | #1018 created 15:07:40Z | Activity `opened`, stamped 15:08:22Z; absent from the pane at 15:08:27Z, present at 15:09:59Z | pass |
+| 3a review requested | 16:03:47Z | Euclid's card `review-due` at 16:05:22Z (+95 s); Ada's `route-review` row cleared at the same observation | pass. No feed event exists for review requests. |
+| 3b changes requested | 18:02:57Z | Ada's card `changes-requested` at 18:04:22Z (+85 s). The feed `verdict` event is stamped 18:03:22Z but arrived in a batch between 18:05:22Z and 18:08:06Z. | pass. The feed's batching shows an event 2–5 min late, back-dated. |
+| 3c fix pushed | 18:30:04Z | Activity `head`, stamped 18:30:22Z. At 18:34:22Z #1018 had left Ada's card. | pass. While CI runs no seat holds the next action, so the PR is on no card. |
+| 3d re-review requested | 19:23:49Z | Euclid's card `review-due` at 19:24:22Z (+33 s) | pass |
+| 3e Round 2 is a Comment with RA-1 still open | 19:29:03Z | Ada's card at 19:30:22Z: `route-review` | **fail.** reviewDecision stayed CHANGES_REQUESTED, so the author's next action is address-changes, not "request a reviewer". Cause below. |
+| 3f approved | 20:13:44Z | Activity `verdict` CR→APPROVED, stamped 20:14:22Z (+38 s); #1018 had left Ada's card by 20:16:22Z | pass |
+| 4 human merge | 20:22:01Z | Activity `merged`, stamped 20:22:22Z (+22 s) | pass. Tasks Recent showed nothing about the merge: 10 of its 11 rows are two recovery records repeating every ~33 s (chroma raise-ceiling no-action, fleet-server diagnosis-record), already present at 14:43Z. |
+| 5 the lane's mail | — | Mailbox read live 14:43–14:44Z; at merge time the pane showed another seat's mail | partial. Re-reading Ada's lane mail needs a selection change in the operator's window, which I did not make. |
+| 6 memory readable | Ada's memory turns | Ada's detail, thought stream: 20 turns 16:13–20:05Z, 9 of them about #1018 or row 4 | pass for the lane from 16:13Z on. The window does not reach the claim or the PR's opening. |
+
+**Cause of 3e.** In `ai/services/fleet/openWorkHolder.mjs` (Brain `92f0e736`), `opinions` comes from `latestOpinionatedReviews`, which excludes COMMENTED reviews. Euclid's only opinion was her Round-1 change request on an earlier head, so `onHead('CHANGES_REQUESTED')` was false, and with no review requested the route-review branch fired. `stands` (a judgment standing on an earlier head) is computed, but only the outside-PR path reads it. Both 3e and the Tasks Recent noise went to the planners as defect-notes.
+
+**Rehomed checks from Brain #28.**
+- Every feed event above carried its actor (`agentId`). I did not read the rendered chip.
+- The memories drill (`memories/Container`) and `CockpitPerspectives` were not walked, because both need navigation in the operator's window. They re-walk on the next candidate.
+
+**Correction to a note I made during the walk.** At 16:05Z Euclid's card read "recent, beacon absent" (last seen 13:55Z) while the feed showed her approving at 16:02Z. After her seat relaunched at 17:51Z the beacon read fresh, so the gap belonged to that session's state, not to codex seats.
+
+**Row state:** the observer outcome is `passed` on steps 1–4 and 6, with one failed step (3e) and one noisy surface (Tasks Recent); step 5 is partial. The operator's one judgment, "does the cockpit tell the story?", is pending. I update the ROADMAP row once it lands. Candidate `a4d1ed23` is released for row 5's install.
+
+🖖 Grace (Claude Opus 5.5, Claude Code)
 
 

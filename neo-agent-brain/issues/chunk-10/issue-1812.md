@@ -1,7 +1,7 @@
 ---
 id: 1812
 title: A protected relation binds each provider subject to its acting identity
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,10 +11,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-16T17:09:04Z'
-updatedAt: '2026-11-17T02:39:15Z'
+updatedAt: '2026-11-17T20:27:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1812'
 author: neo-opus-ada
-commentsCount: 1
+commentsCount: 2
 parentIssue: 1815
 subIssues: []
 subIssuesCompleted: 0
@@ -24,11 +24,12 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1010 ADR 0038 §2.2 names the identity a request acts as'
+  - '[x] 1010 ADR 0038 §2.2 names the identity a request acts as'
 blocking:
   - '[ ] 1813 Every provider-authenticated transport carries the subject'
   - '[ ] 1814 Cutover binds existing identities and retires former-login redirects'
   - '[ ] 1513 Use admitted families for routing and publication checks'
+closedAt: '2026-11-17T20:27:54Z'
 ---
 # A protected relation binds each provider subject to its acting identity
 
@@ -37,6 +38,8 @@ blocking:
 **Decision Record:** Required. ADR 0038 §2.2 gains fact 5 through its Institution leaf. **Decision Record impact:** depends-on that amendment.
 
 Design authority: ADR 0038 §2.2 keeps four identity facts apart and calls the forge login "a DISPLAY/projection fact only". D825 adds fact 5, the identity a request acts as.
+
+**Split 2026-11-17:** The Fix item 5 (the PAT admission guards), their two Contract Ledger rows, and AC-8 and AC-9 moved to #1829. The guards are their own surface in the shared `AuthService`, and #1513 waits only on this leaf's relation.
 
 ## Context
 
@@ -47,8 +50,7 @@ Today a request's acting identity is chosen by its login, and logins are reusabl
 - `buildRequestContext` binds `@<login>` by lookup or provisioning (`ai/mcp/server/memory-core/Server.mjs:495-507` at Brain `d0481ce1`).
   - A seeded node is never compared with the request's `providerUserId`.
   - An auto-provisioned node takes each sign-in's provider fields without comparing them (`:637`).
-- The guards key on the login: `auth.allowedUsers` (`AuthService.mjs:1379`) and `pinFirstProviderSubject`, which compares `info.userId` set from `user.login` (`:1245`, `:1290`).
-- The GitLab verifier has no pin. The outage disk cache stores `user.id` (`AuthService.mjs:1405-1409` at `436aec63`).
+- The PAT admission guards key on the login too. #1829 owns them.
 - `validateMailboxTarget` resolves a former-login alias before it checks the exact graph id (`MailboxService.mjs:758-776` at `5a9c6794`).
 
 ## The Architectural Reality
@@ -84,11 +86,7 @@ Today a request's acting identity is chosen by its login, and logins are reusabl
    - A missing or ambiguous subject is nonqualifying, with no fallback to the login or to `currentSeatId`.
    - Once active, an unbound subject that the founding record maps, to one identity or several, is nonqualifying too. A first admission never claims it for a new identity, which would lock the founding identities out, and the refusal names the mapping.
 4. **Seeding.** Only a singleton founding mapping seeds a binding. `subjectBindings.mjs seed` binds each subject the qualified founding record maps to exactly one identity the graph holds, and only a free pair: an identity an administrative move placed elsewhere is held, and a subject bound elsewhere refuses by name. A subject that the founding record maps to more than one identity, or to one the graph lacks, binds nothing and is named as unresolved.
-5. **Guards.**
-   - `auth.allowedUsers` accepts subject-pinned entries (login plus `providerUserId`) as the admission anchor for servers that bind no graph identity.
-   - Bare-login entries stay, documented as the weaker legacy profile.
-   - The per-login first-use pin keys on the subject tuple. It stays only as defense in depth beside the bootstrap process pin; its removal stays with #83.
-   - The GitLab verifier gets the same pin, and a disk-cache entry without `user.id` fails closed.
+5. **Guards.** Moved to #1829.
 6. **Exact-id-first addressing**, shipped dormant behind the epic's activation gate:
 <!-- binding-inventory: d825-former-login-readers -->
 - `validateMailboxTarget` — the exact canonical id is checked before any alias
@@ -102,8 +100,6 @@ Today a request's acting identity is chosen by its login, and logins are reusabl
 | Subject → identity record | The named protected writer | Written only at first admission or by the administrative path (`bind`, `seed`); a migration and a graph restore carry existing bindings and create none | Any other write refuses | ADR + record JSDoc | AC-5, AC-7 |
 | Graph backup bundle (`graph-backup` JSONL) and every restore of it | The record's AC-5 preservation | Carries `subject-binding` rows and one `subject-binding-activation` record after the edges; each restore path admits and writes them through the relation's restore writer | A malformed record is refused by line (admission, receipts validator) or counted failed (import), never stored | `subjectBinding.mjs`, importer and admission JSDoc | AC-5 |
 | Administrative bind caller | ADR 0038 §2.2 fact 2's plane-local administrative path; §2.3 keeps the Fleet and content grant families separate | Only the plane-local `ai/scripts/maintenance/subjectBindings.mjs` (host access to the Memory Core data root) binds an existing identity; no MCP tool, HTTP route or Fleet wire reaches the writer, and seat operation never authorizes a bind | Refused by name; nothing is written; a dry run unless `--apply` | Script and writer JSDoc | AC-4, AC-7, AC-11 |
-| `auth.allowedUsers` entry | ADR 0038 §2.2 | `{login, providerUserId}` pins the admission anchor | A bare login stays the documented weaker profile | `AuthService.mjs` JSDoc | AC-8 |
-| `pinFirstProviderSubject`, GitLab verifier, outage disk cache | D825 OQ4 | The pin keys on the subject tuple, GitLab is pinned, and a cache entry without `user.id` fails closed | The process pin is unchanged | `AuthService.mjs` JSDoc | AC-9 |
 
 ## Acceptance Criteria
 
@@ -120,8 +116,8 @@ Today a request's acting identity is chosen by its login, and logins are reusabl
   - `@L` and S's `@me` resolve I_S, with no alias rewriting.
   - An administrative claim `@L → I_T` refuses, while I_S's address and T's binding stay valid.
 - [ ] AC-7: An endpoint re-bind (`providerBaseUrl` changes) through the administrative bind keeps the subject's family history reachable.
-- [ ] AC-8: A bare-login allowlist entry is shown to be weaker than a subject-pinned one on a fresh process, on a cache miss, and at a reclaimed login's first presentation.
-- [ ] AC-9: The pin keys on the subject tuple, the GitLab verifier is pinned, and a disk-cache entry without `user.id` fails closed.
+- ~~AC-8: A bare-login allowlist entry is shown to be weaker than a subject-pinned one on a fresh process, on a cache miss, and at a reclaimed login's first presentation.~~ Moved to #1829 as its AC-1.
+- ~~AC-9: The pin keys on the subject tuple, the GitLab verifier is pinned, and a disk-cache entry without `user.id` fails closed.~~ Moved to #1829 as its AC-2.
 - [ ] AC-10: Exact-id-first addressing ships dormant. Before the epic's gate, no changed addressing or trust path is active; control 2 activates at the gate.
 - [ ] AC-11: Negative control: a principal for whom `operatesSeat` is true cannot bind another subject's legacy identity through any surface it can reach. First admission refuses by name (AC-3), and no MCP tool, HTTP route or Fleet wire reaches the administrative writer. The administrative path changes nothing without `--apply`, and re-presenting a matching relation returns it without a write.
 
@@ -156,6 +152,7 @@ Own-assignment sweep: 6 open issues, none overlapping.
 Origin Session ID: 00199bfa-0a61-420b-a86e-496e506fe51e
 
 Retrieval Hint: "D825 protected subject relation acting identity first admission"
+
 
 ## Timeline
 
@@ -226,4 +223,175 @@ foundingSubjectMappings groups a seed's entries by subject in the seed's order; 
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+### @neo-opus-ada - 2026-11-17T15:13:14Z
+
+**Handover addendum (2026-11-17, 15:13Z): unblocked, and the 02:39Z handover above stands.**
+
+- **Unblocked at 15:10Z:** neomjs/neo-agent-institution#1011 merged (ADR 0038 §2.2 fact 5), closing the only blocker, neomjs/neo-agent-institution#1010.
+- **Branch:** `ada/1812-subject-binding` @ `6280ac93` is now 9 commits behind and 9 ahead of dev `92f0e736`. Rebase before the PR.
+- **Next, in the order above:** the founding guard (AC-4), then the AC-8/9 split decision, then the PR. AC-4 reads `aiConfig.identityPublicationBoot`, so ADR 0019 comes first.
+- **Reviewer at green:** Sophie is dark. Request @neo-gpt-euclid or @neo-gemini-julia instead (non-Claude, check `who_is_online` first).
+- **Owner:** `@neo-opus-ada`, next session.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-17T15:35:29Z @neo-opus-ada cross-referenced by #1829
+- 2026-11-17T15:37:41Z @neo-opus-ada referenced in commit `3a32d7c` - "feat(memory-core): a protected subject-to-identity relation (#1812)
+
+A SubjectBinding table outside Nodes/Edges maps the verified provider subject to the one AgentIdentity a request acts as. Two writers: first admission binds only the identity its transaction created; the administrative bind binds an existing identity with its founding revision and moves an identity to its subject's new endpoint. Conflicting claims refuse by name and write nothing; a matching claim reads back. Selection stays dormant until the cutover records its activation."
+- 2026-11-17T15:37:41Z @neo-opus-ada referenced in commit `3dfad39` - "feat(memory-core): the subject selects the acting identity (#1812)
+
+Before the cutover's activation record exists, login selection is unchanged and a first admission binds its subject only to an identity it creates, through GraphService.createBoundIdentity: the identity upsert and the binding share one physical transaction, and a rollback evicts the cached node and restores the GraphLog cursor. After activation, a bound subject keeps its identity whatever its login spells; a login naming an existing identity, bound or legacy, refuses by name; a request without a complete subject is nonqualifying; nothing falls back to the login."
+- 2026-11-17T15:37:41Z @neo-opus-ada referenced in commit `0d313e8` - "feat(memory-core): an exact id addresses itself before an alias (#1812)
+
+Once the cutover has recorded its activation, validateMailboxTarget checks the exact canonical id before any former-login alias, so a newcomer who reclaims a former spelling keeps its own mail. Before activation the alias still resolves first; a connection that cannot read the activation record stays alias-first."
+- 2026-11-17T15:37:42Z @neo-opus-ada referenced in commit `34d20ea` - "feat(memory-core): identity migrations carry subject bindings (#1812)
+
+renameBoundIdentities moves each binding to the id a migration gives its identity, in two passes so a swap never meets the uniqueness constraint, and refuses a rename that would leave two subjects on one identity, which rolls the migration's transaction back. The identity rename and canonicalize migrations call it inside their preservation transaction and report subjectBindingsMoved."
+- 2026-11-17T15:37:42Z @neo-opus-ada referenced in commit `78695b0` - "test(memory-core): canonicalize carries an alias's binding (#1812)"
+- 2026-11-17T15:37:43Z @neo-opus-ada referenced in commit `f78440b` - "feat(memory-core): a graph bundle carries the subject binding (#1812)
+
+The relation lives outside Nodes/Edges, so the graph export dropped it and a restore into a fresh plane lost every binding and the activation record. The export now appends the relation as its own record types (subject-binding, subject-binding-activation), counted in the export's expected/exported verdict; only this exporter produces them, so no ordinary graph row can travel as one.
+
+The importer hands them to the relation's restore writer: an identical binding is skipped, a conflicting one fails by name and never overwrites, replace swaps the binding rows only when the bundle carries one (an older bundle keeps the target's), and the activation record only moves forward."
+- 2026-11-17T15:37:43Z @neo-opus-ada referenced in commit `25c0eaf` - "feat(memory-core): empty-target restore carries the binding (#1812)
+
+Graph bundles now carry the subject-binding relation's records, and two readers refused anything but node and edge records: target-set admission and the receipts validator. Both accept well-formed relation records and refuse malformed ones by line.
+
+Admission counts and fingerprints the relation only when a bundle carries it, so a bundle without it is admitted byte-identically (pinned) and no in-flight v1 descriptor goes stale. Staging rejects a relation record the restore writer fails; validation compares the staged and live relation; promotion moves it through the restore writer inside its transaction and refuses a live graph that already holds a relation, which is no empty target."
+- 2026-11-17T15:37:43Z @neo-opus-ada referenced in commit `0fb7b90` - "feat(memory-core): a plane-local admin path binds an identity (#1812)
+
+ai/scripts/maintenance/subjectBindings.mjs lists the relation and binds a provider subject to an identity the graph already holds; a new identity binds only at its first admission. A bind is a dry run on a read-only connection unless --apply, and an applied bind must target the configured live graph. It records the retained founding source revision, qualified the way identity admission qualifies it (bound lineage, the source's issuer and lineage head), so no caller types the revision. An endpoint move keeps the identity; any other conflict refuses by name.
+
+planAdministrativeBind is the one decision the dry run and the write share. A census spec pins that only this script and the relation's own module name the administrative writer, so no MCP tool, HTTP route or Fleet wire reaches it. The entrypoint reads the boot descriptor, plane target and graph path from AiConfig and passes them to the operation as values (ADR-0019 §5.4 iii)."
+- 2026-11-17T15:37:44Z @neo-opus-ada referenced in commit `804706e` - "feat(memory-core): seed bindings from the founding record (#1812)
+
+subjectBindings.mjs seed binds what the retained founding record authorizes on its own: each subject it maps to exactly one identity the graph holds, under the qualified founding revision. It names, and binds nothing for, a subject mapped to several identities or to one the graph lacks, so nothing is a first-match choice. It binds only a free pair: an identity an administrative move placed elsewhere is held, and a subject bound elsewhere refuses by name. Dry run on a read-only connection unless --apply.
+
+foundingSubjectMappings groups a seed's entries by subject in the seed's order; the founding subject tuple is the relation's subject key."
+- 2026-11-17T15:37:44Z @neo-opus-ada referenced in commit `2d10f0b` - "feat(memory-core): a founding subject never binds at first admission (#1812)
+
+Once selection by subject is active, an unbound subject the qualified founding record maps, to one identity or several, is refused by name (NEO_AGENT_IDENTITY_SUBJECT_FOUNDING_MAPPED) instead of creating a new identity that would lock its founding identities out. An unreadable record fails closed. The qualified founding read moves from the administrative CLI into subjectBinding.mjs, and the request path reaches it through IdentityPublicationService's boot generation."
+- 2026-11-17T15:43:21Z @neo-opus-ada cross-referenced by PR #1830
+- 2026-11-17T18:06:29Z @neo-gpt-euclid cross-referenced by PR #1831
+- 2026-11-17T19:24:07Z @neo-opus-ada referenced in commit `84f4c1d` - "fix(memory-core): an unreadable activation refuses by name (#1812)
+
+isSubjectSelectionActive reads active or known dormant and throws SUBJECT_BINDING_UNAVAILABLE for a missing, closed or unreadable connection. The request boundary maps that, and a graph that is not ready, to NEO_AGENT_IDENTITY_SUBJECT_UNAVAILABLE instead of falling back to the login, and mailbox addressing refuses instead of resolving a former-login alias."
+- 2026-11-17T19:24:08Z @neo-opus-ada referenced in commit `2d6bff7` - "fix(memory-core): a first admission decides inside its transaction (#1812)
+
+createBoundIdentity refuses a node that exists once the write lock is taken (SUBJECT_BINDING_IDENTITY_EXISTS) and runs the caller's admit check before any write; the subject selector passes the founding guard as that check and maps the refusal to a subject conflict. An unbound identity another writer created after the request's own read is kept, never bound or overwritten."
+- 2026-11-17T19:24:08Z @neo-opus-ada referenced in commit `38d1ad7` - "fix(memory-core): a restore commits the relation as one unit (#1812)
+
+restoreSubjectBindingRelation admits and writes a bundle's relation in one transaction after the graph rows: a malformed or conflicting record, a duplicate inside the bundle included, refuses every record and the target keeps its relation and activation. DatabaseService no longer reports such an import as successful, and the empty-target proof counts a live relation as occupancy before anything is staged or promoted."
+- 2026-11-17T19:24:08Z @neo-opus-ada referenced in commit `d054e05` - "fix(memory-core): a bound identity keys every PAT request (#1812)
+
+Once selection is active, every request that carries a provider subject
+or may create an identity selects by subject, lookup-only planes
+included: a bound subject acts as its identity, an unbound one is
+refused by name (NEO_AGENT_IDENTITY_SUBJECT_UNBOUND) where its source
+creates none. The bound identity's bare id is the request's isolation
+key, so a renamed login keeps its identity's rows and never reads what
+an earlier holder of the new login wrote."
+- 2026-11-17T19:24:09Z @neo-opus-ada referenced in commit `41dd356` - "fix(memory-core): an endpoint move keeps the endpoint it leaves (#1812)
+
+Family history is keyed by the full subject tuple, so an administrative
+endpoint move records the endpoints the binding leaves in a
+formerBaseUrls column. The history admitted under an earlier tuple
+stays reachable from the binding through the family-history reader."
+- 2026-11-17T19:27:41Z @neo-opus-ada referenced in commit `bce1eff` - "style(memory-core): align the blocks this change touched (#1812)"
+- 2026-11-17T20:01:59Z @neo-opus-ada referenced in commit `0cc7a12` - "fix(memory-core): a stamped request without a login selects too (#1812)
+
+The empty-login fallthrough ran before the subject decision, so once
+selection was active a provider-stamped request that carried no login
+returned an empty context instead of its bound identity or a named
+refusal. It now returns empty only for a request with neither a login
+nor a provider stamp, and before activation for one without a login."
+- 2026-11-17T20:27:54Z @tobiu referenced in commit `23c077f` - "feat(memory-core): the subject selects the acting identity (#1812) (#1830)
+
+* feat(memory-core): a protected subject-to-identity relation (#1812)
+
+A SubjectBinding table outside Nodes/Edges maps the verified provider subject to the one AgentIdentity a request acts as. Two writers: first admission binds only the identity its transaction created; the administrative bind binds an existing identity with its founding revision and moves an identity to its subject's new endpoint. Conflicting claims refuse by name and write nothing; a matching claim reads back. Selection stays dormant until the cutover records its activation.
+
+* feat(memory-core): the subject selects the acting identity (#1812)
+
+Before the cutover's activation record exists, login selection is unchanged and a first admission binds its subject only to an identity it creates, through GraphService.createBoundIdentity: the identity upsert and the binding share one physical transaction, and a rollback evicts the cached node and restores the GraphLog cursor. After activation, a bound subject keeps its identity whatever its login spells; a login naming an existing identity, bound or legacy, refuses by name; a request without a complete subject is nonqualifying; nothing falls back to the login.
+
+* feat(memory-core): an exact id addresses itself before an alias (#1812)
+
+Once the cutover has recorded its activation, validateMailboxTarget checks the exact canonical id before any former-login alias, so a newcomer who reclaims a former spelling keeps its own mail. Before activation the alias still resolves first; a connection that cannot read the activation record stays alias-first.
+
+* feat(memory-core): identity migrations carry subject bindings (#1812)
+
+renameBoundIdentities moves each binding to the id a migration gives its identity, in two passes so a swap never meets the uniqueness constraint, and refuses a rename that would leave two subjects on one identity, which rolls the migration's transaction back. The identity rename and canonicalize migrations call it inside their preservation transaction and report subjectBindingsMoved.
+
+* test(memory-core): canonicalize carries an alias's binding (#1812)
+
+* feat(memory-core): a graph bundle carries the subject binding (#1812)
+
+The relation lives outside Nodes/Edges, so the graph export dropped it and a restore into a fresh plane lost every binding and the activation record. The export now appends the relation as its own record types (subject-binding, subject-binding-activation), counted in the export's expected/exported verdict; only this exporter produces them, so no ordinary graph row can travel as one.
+
+The importer hands them to the relation's restore writer: an identical binding is skipped, a conflicting one fails by name and never overwrites, replace swaps the binding rows only when the bundle carries one (an older bundle keeps the target's), and the activation record only moves forward.
+
+* feat(memory-core): empty-target restore carries the binding (#1812)
+
+Graph bundles now carry the subject-binding relation's records, and two readers refused anything but node and edge records: target-set admission and the receipts validator. Both accept well-formed relation records and refuse malformed ones by line.
+
+Admission counts and fingerprints the relation only when a bundle carries it, so a bundle without it is admitted byte-identically (pinned) and no in-flight v1 descriptor goes stale. Staging rejects a relation record the restore writer fails; validation compares the staged and live relation; promotion moves it through the restore writer inside its transaction and refuses a live graph that already holds a relation, which is no empty target.
+
+* feat(memory-core): a plane-local admin path binds an identity (#1812)
+
+ai/scripts/maintenance/subjectBindings.mjs lists the relation and binds a provider subject to an identity the graph already holds; a new identity binds only at its first admission. A bind is a dry run on a read-only connection unless --apply, and an applied bind must target the configured live graph. It records the retained founding source revision, qualified the way identity admission qualifies it (bound lineage, the source's issuer and lineage head), so no caller types the revision. An endpoint move keeps the identity; any other conflict refuses by name.
+
+planAdministrativeBind is the one decision the dry run and the write share. A census spec pins that only this script and the relation's own module name the administrative writer, so no MCP tool, HTTP route or Fleet wire reaches it. The entrypoint reads the boot descriptor, plane target and graph path from AiConfig and passes them to the operation as values (ADR-0019 §5.4 iii).
+
+* feat(memory-core): seed bindings from the founding record (#1812)
+
+subjectBindings.mjs seed binds what the retained founding record authorizes on its own: each subject it maps to exactly one identity the graph holds, under the qualified founding revision. It names, and binds nothing for, a subject mapped to several identities or to one the graph lacks, so nothing is a first-match choice. It binds only a free pair: an identity an administrative move placed elsewhere is held, and a subject bound elsewhere refuses by name. Dry run on a read-only connection unless --apply.
+
+foundingSubjectMappings groups a seed's entries by subject in the seed's order; the founding subject tuple is the relation's subject key.
+
+* feat(memory-core): a founding subject never binds at first admission (#1812)
+
+Once selection by subject is active, an unbound subject the qualified founding record maps, to one identity or several, is refused by name (NEO_AGENT_IDENTITY_SUBJECT_FOUNDING_MAPPED) instead of creating a new identity that would lock its founding identities out. An unreadable record fails closed. The qualified founding read moves from the administrative CLI into subjectBinding.mjs, and the request path reaches it through IdentityPublicationService's boot generation.
+
+* fix(memory-core): an unreadable activation refuses by name (#1812)
+
+isSubjectSelectionActive reads active or known dormant and throws SUBJECT_BINDING_UNAVAILABLE for a missing, closed or unreadable connection. The request boundary maps that, and a graph that is not ready, to NEO_AGENT_IDENTITY_SUBJECT_UNAVAILABLE instead of falling back to the login, and mailbox addressing refuses instead of resolving a former-login alias.
+
+* fix(memory-core): a first admission decides inside its transaction (#1812)
+
+createBoundIdentity refuses a node that exists once the write lock is taken (SUBJECT_BINDING_IDENTITY_EXISTS) and runs the caller's admit check before any write; the subject selector passes the founding guard as that check and maps the refusal to a subject conflict. An unbound identity another writer created after the request's own read is kept, never bound or overwritten.
+
+* fix(memory-core): a restore commits the relation as one unit (#1812)
+
+restoreSubjectBindingRelation admits and writes a bundle's relation in one transaction after the graph rows: a malformed or conflicting record, a duplicate inside the bundle included, refuses every record and the target keeps its relation and activation. DatabaseService no longer reports such an import as successful, and the empty-target proof counts a live relation as occupancy before anything is staged or promoted.
+
+* fix(memory-core): a bound identity keys every PAT request (#1812)
+
+Once selection is active, every request that carries a provider subject
+or may create an identity selects by subject, lookup-only planes
+included: a bound subject acts as its identity, an unbound one is
+refused by name (NEO_AGENT_IDENTITY_SUBJECT_UNBOUND) where its source
+creates none. The bound identity's bare id is the request's isolation
+key, so a renamed login keeps its identity's rows and never reads what
+an earlier holder of the new login wrote.
+
+* fix(memory-core): an endpoint move keeps the endpoint it leaves (#1812)
+
+Family history is keyed by the full subject tuple, so an administrative
+endpoint move records the endpoints the binding leaves in a
+formerBaseUrls column. The history admitted under an earlier tuple
+stays reachable from the binding through the family-history reader.
+
+* style(memory-core): align the blocks this change touched (#1812)
+
+* fix(memory-core): a stamped request without a login selects too (#1812)
+
+The empty-login fallthrough ran before the subject decision, so once
+selection was active a provider-stamped request that carried no login
+returned an empty context instead of its bound identity or a named
+refusal. It now returns empty only for a request with neither a login
+nor a provider stamp, and before activation for one without a login."
+- 2026-11-17T20:27:56Z @tobiu closed this issue
+- 2026-11-17T20:58:57Z @neo-opus-ada cross-referenced by PR #1833
 

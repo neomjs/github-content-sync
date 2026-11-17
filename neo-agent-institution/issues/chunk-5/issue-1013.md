@@ -1,7 +1,7 @@
 ---
 id: 1013
 title: The Institution's theme sheets become plain CSS with the engine's 14.0
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-17T04:34:46Z'
-updatedAt: '2026-11-17T04:34:46Z'
+updatedAt: '2026-11-17T15:55:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/1013'
 author: neo-opus-vega
 commentsCount: 0
@@ -22,8 +22,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 21217 Theme sources become plain CSS, and the theme build copies them'
+  - '[x] 21217 Theme sources become plain CSS, and the theme build copies them'
 blocking: []
+closedAt: '2026-11-17T15:55:07Z'
 ---
 # The Institution's theme sheets become plain CSS with the engine's 14.0
 
@@ -105,4 +106,75 @@ so it is not this change."
 The comment sweep touched this spec, and the archaeology guard reads every
 touched file whole, so the comment's old "#73 item 5" ref failed the PR
 baseline. The reason for the settle-aware wait stays."
+- 2026-11-17T14:07:07Z @neo-opus-vega referenced in commit `d201465` - "chore(deps): merge dev; its dependency bumps keep sass out (#1013)
+
+dev's #1015 to #1017 bumped postcss and neo-agent-skills beside sass.
+package.json takes dev's versions without sass; the lock is dev's,
+pruned by `npm install --package-lock-only`: sass and its 357 lock
+lines leave as before. neomjs/neo#21225 is merged, so CI's
+resolve-org-dev step now installs the engine that copies resources/css."
+- 2026-11-17T15:04:16Z @neo-opus-vega referenced in commit `ccf23ea` - "fix(deps): the lock records the engine that copies resources/css (#1013)
+
+`github:neomjs/neo#dev` alone does not move a locked commit, so a plain
+`npm ci` still installed d49f1dd494, whose theme build compiles Sass.
+The lock now records 2f5c29f473, after neomjs/neo#21225: from this lock,
+`npm ci` and `build-themes` write all 59 own sheets from resources/css
+without the resolve-org-dev refresh."
+- 2026-11-17T15:55:07Z @tobiu referenced in commit `b491ed6` - "feat(themes): the theme sheets become plain CSS with the engine's 14.0 (#1013) (#1014)
+
+* feat(themes): the theme sheets become plain CSS with the engine's 14.0 (#1013)
+
+Converted by neomjs/neo's converter at 9955e13cc6 (neomjs/neo#21225) from a4d1ed23:
+59 of 59 files equal under Sass and under a plain nesting reading; 6 flattened in place
+(D2/D3); two hsl() values take Sass's comma form, which is what shipped. The build still
+reads resources/scss until the next commit.
+
+* refactor(themes): the theme build, harness and baselines read resources/css; Sass leaves (#1013)
+
+prepareAssets and the visual globalSetup test staleness against resources/css (the
+engine's too); the visual-baseline stamp keys resources/css, re-stamped with no golden
+changed, since every converted sheet equals its original in both readings; the
+topology spec resolves additionalThemeFiles to .css sheets; resources/scss and the
+sass devDependency go. Builds with neomjs/neo#21225's engine: 774 sheets.
+
+* refactor(themes): the family-ink mapping lives once, and the scroll-fade twins are pinned (#1013)
+
+The conversion left two Sass sharings as copies. The family-ink mapping
+moves into FamilyRailComponent.css as flat lists naming the rail and the
+agent card monogram; the card always mounts a FamilyRail, so the sheet is
+loaded beside it. The scroll-fade consumers share no loaded sheet, so each
+keeps the block between markers, in one flat form, and
+scrollFadeParity.spec.mjs fails when the two diverge. Flattened, both
+scroll-fade sheets keep their rule sequence and the family-ink pair its
+rules.
+
+* docs(themes): the comments and docs name the CSS tree (#1013)
+
+Fifty files still named .scss sheets, resources/scss or "the SCSS" after the
+conversion. File names and paths follow the tree; the engine motion file is
+the engine's src/Global.css now; CONTRIBUTING says build-themes copies the
+sheets. The vendored highlight changelog, design HTML and the lockfile keep
+their wording.
+
+* test(visual): the baseline stamp names the converted inputs (#1013)
+
+test-goldens against the engine at neomjs/neo#21225 (4980924e0e): visual 63
+of 63, e2e 2 of 2, e2e:nl 13 of 14. The one red arm (FleetGoldenPathNL, pane
+width 909 for 988) fails the same way on Institution dev with the engine dev,
+so it is not this change.
+
+* test(e2e): the rail drawer spec keeps its reason and drops a tracking ref (#1013)
+
+The comment sweep touched this spec, and the archaeology guard reads every
+touched file whole, so the comment's old "#73 item 5" ref failed the PR
+baseline. The reason for the settle-aware wait stays.
+
+* fix(deps): the lock records the engine that copies resources/css (#1013)
+
+`github:neomjs/neo#dev` alone does not move a locked commit, so a plain
+`npm ci` still installed d49f1dd494, whose theme build compiles Sass.
+The lock now records 2f5c29f473, after neomjs/neo#21225: from this lock,
+`npm ci` and `build-themes` write all 59 own sheets from resources/css
+without the resolve-org-dev refresh."
+- 2026-11-17T15:55:08Z @tobiu closed this issue
 

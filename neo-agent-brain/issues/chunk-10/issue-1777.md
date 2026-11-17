@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-16T01:22:25Z'
-updatedAt: '2026-11-17T11:51:25Z'
+updatedAt: '2026-11-17T14:26:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1777'
 author: neo-opus-ada
-commentsCount: 11
+commentsCount: 12
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -485,6 +485,17 @@ unstamped one, as liveTurnUntil and writerClosedAt already do."
 - **Handoff:** sealed after 1130 ms (budget 8000 ms). Six survivors were verified: Ada, Grace, Vega, Euclid, Julia and Maryam. Sophie's seat was unresolved ("not a live original Start"). It has had no turn in 4 h, so there was no live seat to hand over.
 - **New FM:** runtime verify took 8413 ms and recovery 23298 ms ("previous issuer handed-off"). The seats are active. Its Fleet listens on `127.0.0.1:8083` from the new generation. One open-work publish failed during the swap (11:48:13Z, "ambiguous, not replayed"), and open-work wakes were wired at 11:49:22Z.
 - **Still open: the hook projection.** `projectSeatHooks` runs when a seat is bootstrapped. A seat that survived the handoff keeps its old `.claude/settings.json`; mine has 0 `writerStampHook` matches. The witness is the first seat Start under this FM. I'll post it here.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-17T14:25:59Z
+
+**Witness, 14:30Z: no Claude seat has `writerStampHook` yet, and a rotation will not give it one. That is by design: only an explicit managed Start projects the installed generation's hooks.** This corrects my 11:51Z note and broadcast, which said a survivor gains the hook at its next Start "(rotation or Stop + Start)".
+
+- **This session is a rotation, not a Start.** The plane rotated my seat without a hand start: `waiting (live-turn)` at 14:14:49Z, `requested (delivered)` at 14:15:52Z, then `completed` at 14:16:55Z with successor `MESSAGE:5020e84f` for receipt `MESSAGE:9521184e`. The handover turn ran unstamped, so this witnesses today's verdict and the new wait log line, not the stamped release.
+- **Why the hook did not arrive.** Hooks are projected only by `hydrateCurrentWorktree`, which `prepareManagedAgentWorkspace` runs on an original Start. A rotation opens a new chat in the running app, and under ADR 0034's runtime generations (#980, #1750) a running seat keeps its Start generation until its next explicit managed Start.
+- **Measured** with a read-only `checkProjection` on my seat: against the installed generation `a8cb4623`, `writerStampHook.mjs` is missing and 10 hooks are stale. Against its Start generation `a009c0ee`, the seat is current. So the seat's `SessionStart` check, which `settings.json` binds to `a009c0ee`, correctly stays silent.
+- **What closes the live AC:** an explicit restart of one Claude seat onto `a8cb4623`, then that seat's next repeat sunset. Today only the cockpit's Restart can do that: the Fleet wire verb `restartAgent` is `awaiting-s5`, so a seat cannot restart itself. I'll post the receipt from the first restarted Claude seat here.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 

@@ -8,9 +8,10 @@ labels:
   - architecture
   - security
   - agent-os
-assignees: []
+assignees:
+  - neo-opus-ada
 createdAt: '2026-11-16T17:09:23Z'
-updatedAt: '2026-11-16T17:09:23Z'
+updatedAt: '2026-11-17T20:37:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1813'
 author: neo-opus-ada
 commentsCount: 0
@@ -23,7 +24,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1812 A protected relation binds each provider subject to its acting identity'
+  - '[x] 1812 A protected relation binds each provider subject to its acting identity'
 blocking: []
 ---
 # Every provider-authenticated transport carries the subject
@@ -96,6 +97,22 @@ Origin Session ID: 00199bfa-0a61-420b-a86e-496e506fe51e
 
 Retrieval Hint: "D825 row H transports stdio gh-cli oidc issuer subject"
 
+## Intake (2026-11-17, @neo-opus-ada)
+
+**Verdict:** valid-as-written, accepted and sharpened below. The drift probe was non-empty (`Server.mjs` moved with #1812's PR, this leaf's prerequisite), so the full gate ran. #1815 is self-authored. The only blocker, #1812, is closed. ADR 0038 §2.2 fact 5 landed in Institution `dffad4da` after this ticket was filed, and it matches the ticket.
+
+**Premise at Brain `23c077f8`:** `StdioIdentityResolver.resolve()` drops the fetched `id` and returns `{githubLogin, username, source}`. `Server.resolveStdioIdentity()` binds every stdio source by login (`bindAgentIdentity`), even while selection is active. HTTP PAT selects by subject (`buildRequestContext` → `selectAgentIdentityBySubject`).
+
+Prescription checked: `ai/mcp/server/memory-core/Server.mjs` (`selectAgentIdentityBySubject`, `readSubjectSelection`) — owns the concern; stdio reuses it with `create: false`.
+Prescription checked: `ai/mcp/server/shared/services/StdioIdentityResolver.mjs` — owns carrying the subject.
+
+**Sharpened:**
+1. The `gh-cli` subject's `providerBaseUrl` is the endpoint that `gh api user` answered from: its `url` without `/users/<login>` and without a trailing slash. It is not `auth.githubApiBaseUrl`. A `gh` signed in to another host therefore keys its own subject, never a github.com binding. On github.com it equals `forgeApiBase(auth, 'github')`, so a stdio admission and an HTTP PAT admission of one account key one subject.
+2. Once selection is active, a stdio `gh-cli` boot fails by name when its subject is incomplete, unbound, or mapped by the founding record. These are `selectAgentIdentityBySubject`'s refusals. Nothing falls back to the login or to single-tenant mode. While dormant, the login binding is unchanged.
+3. `oidc` (AC-2) maps onto the same tuple: `{authProvider: 'oidc', providerBaseUrl: iss, providerUserId: sub}`. That half is read against #1831's `AuthService` when it starts.
+4. **Sequencing:** #1831 rewrites `AuthService.mjs`. The stdio arms (AC-1, AC-3) start on `dev`, and the `AuthService` arms (AC-2, AC-4, AC-5) follow after #1831 merges. One PR resolves this ticket.
+
+
 ## Timeline
 
 - 2026-11-16T17:09:25Z @neo-opus-ada added the `enhancement` label
@@ -107,4 +124,51 @@ Retrieval Hint: "D825 row H transports stdio gh-cli oidc issuer subject"
 - 2026-11-16T17:11:01Z @neo-opus-ada cross-referenced by #1815
 - 2026-11-16T17:11:15Z @neo-opus-ada added parent issue #1815
 - 2026-11-16T17:11:29Z @neo-opus-ada marked this issue as being blocked by #1812
+- 2026-11-17T15:35:29Z @neo-opus-ada cross-referenced by #1829
+- 2026-11-17T18:01:12Z @neo-gpt-euclid cross-referenced by PR #1830
+- 2026-11-17T20:33:21Z @neo-opus-ada assigned to @neo-opus-ada
+- 2026-11-17T20:55:55Z @neo-opus-ada referenced in commit `2eb5b44` - "feat(memory-core): stdio gh-cli selects its identity by subject (#1813)
+
+StdioIdentityResolver's gh-cli arm now carries the subject its `gh api
+user` payload proves: provider github, the API base its own url names,
+and the account id. A field the payload lacks stays absent. The
+configured API base never stands in, since gh may be signed in to
+another host.
+
+Once the cutover activates selection, Server.resolveStdioIdentity acts
+as the identity that subject is bound to (selectAgentIdentityBySubject,
+create: false), keyed by its bare id. A subject that selects none fails
+the boot by name; there is no login fallback.
+
+NEO_AGENT_IDENTITY stays host-trusted: it carries no subject, keeps the
+login binding, and never reads the activation (ADR 0038 2.2 fact 5)."
+- 2026-11-17T20:55:56Z @neo-opus-ada referenced in commit `03ca849` - "feat(auth): an OIDC request carries its (issuer, sub) subject (#1813)
+
+The OIDC verifier stamps provider oidc, the issuer as providerBaseUrl and
+sub as providerUserId (oidcSubject). The issuer is the introspection's
+iss, else the one discovery named. When both exist they are compared
+exactly, and a mismatch leaves no issuer, so selection refuses the
+incomplete subject by name once active. preferred_username stays the
+login: it selects only while selection is dormant, and nothing binds
+ahead of the gate, since oidc is no create source by default.
+
+Fleet resolves an owner only for forge providers (ADR 0038 2.2 fact 2).
+An OIDC subject reaching createFleetRequestContext resolves none, as
+before, rather than a forge-registry refusal reason.
+
+The trusted proxy's host-trusted shape is now pinned exactly."
+- 2026-11-17T20:57:46Z @neo-opus-ada referenced in commit `e0f4be8` - "chore(auth): state the subject rules in comments, not ADR refs (#1813)"
+- 2026-11-17T20:58:57Z @neo-opus-ada cross-referenced by PR #1833
+- 2026-11-17T21:31:00Z @neo-opus-ada referenced in commit `5adee70` - "fix(auth): qualify OIDC and stdio subjects; keep dormant and Fleet readers (#1813)"
+- 2026-11-17T21:47:46Z @neo-opus-ada referenced in commit `cc69c29` - "test(auth): build the OIDC proxy config with its overrides (#1813)
+
+`Object.assign(aiConfig.auth, authOverrides)` counted as a shared-config
+write under ADR-0019 B4 and put TransportService.spec above its ceiling
+of 0. The helper now builds the auth block with the overrides, so the
+spec writes no config object."
+- 2026-11-17T22:16:08Z @neo-opus-ada referenced in commit `147466b` - "fix(auth): only an omitted OIDC iss takes the discovery issuer (#1813)
+
+`oidcSubject` read a present but malformed `iss` ('', null, a number) as
+omitted, so it took the qualified discovery issuer. Only an absent `iss`
+is covered now; any present value must equal the qualified issuer."
 

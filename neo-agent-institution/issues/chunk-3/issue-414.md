@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-02T08:29:48Z'
-updatedAt: '2026-11-13T05:47:51Z'
+updatedAt: '2026-11-17T20:30:11Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/414'
 author: neo-opus-grace
 commentsCount: 25
@@ -50,7 +50,7 @@ milestone: FM v1
 
 Terminal predicate: on the installed Fleet Manager against a real plane, the operator watches one real ticket go from lane claim through PR, cross-family review and human merge in the cockpit alone, then reads the memory written along the way. This is FM v1 ROADMAP row 4's installed check, recorded once.
 
-Row state: row 4 · Grace · failed · 2026-10-07 (candidate revision not in the report, plane Brain `1879b588`; [receipt](https://github.com/neomjs/neo-agent-institution/issues/551#issuecomment-6036643212)) · plan: planned 4 · done 3 · added 5 (gap list accepted 2026-10-03; the additions are the neomjs/neo-agent-brain#700 stack, the operator's own inbox and its split successor #599, D19440's observer chain, and #948, the Home merge door) · next: #948 → Grace (PR #950, red-first, review at green); then #490's walk on the next installed candidate → observer @neo-fable-clio (asked 2026-11-13) or @neo-gemini-maryam after her reset. #551, #596 and #599 are done. Outside-operator stack: neomjs/neo-agent-brain#52, neomjs/neo-agent-brain#856, neomjs/neo-agent-brain#857 and neomjs/neo-agent-brain#858 done; neomjs/neo-agent-brain#700 → Sophie; neomjs/neo-agent-brain#51 stays deferred. #642 is after v1 ([D#19493 OQ-1](https://github.com/neomjs/neo/discussions/19493#discussioncomment-18843014)). No installed pass is implied.
+Row state: row 4 · Grace · observed, operator judgment pending · 2026-11-17 (candidate Institution `a4d1ed23`, Brain `92f0e736`; [receipt](https://github.com/neomjs/neo-agent-institution/issues/490#issuecomment-6960095868): steps 1–4 and 6 pass, 3e fails, step 5 partial; previous walk failed 2026-10-07, [receipt](https://github.com/neomjs/neo-agent-institution/issues/551#issuecomment-6036643212)) · plan: planned 4 · done 3 · added 5 (gap list accepted 2026-10-03; the additions are the neomjs/neo-agent-brain#700 stack, the operator's own inbox and its split successor #599, D19440's observer chain, and #948, the Home merge door) · next: the operator's one judgment on #490's walk, then the ROADMAP row. Step 3e (the open-work holder routes the author to route-review after a Comment round) went out as a defect-note. The memories drill and `CockpitPerspectives` re-walk on row 5's candidate. #948 is done (PR #950). #551, #596 and #599 are done. Outside-operator stack: neomjs/neo-agent-brain#52, neomjs/neo-agent-brain#856, neomjs/neo-agent-brain#857 and neomjs/neo-agent-brain#858 done; neomjs/neo-agent-brain#700 → Sophie; neomjs/neo-agent-brain#51 stays deferred. #642 is after v1 ([D#19493 OQ-1](https://github.com/neomjs/neo/discussions/19493#discussioncomment-18843014)). No installed pass is implied.
 
 ## Problem scope
 
@@ -863,4 +863,8 @@ Not filed as leaves: the surface has a steward and a walk this week. If you want
 - 2026-11-14T01:09:59Z @neo-gpt-emmy cross-referenced by PR #961
 - 2026-11-14T03:49:22Z @neo-opus-ada cross-referenced by #963
 - 2026-11-14T03:49:27Z @neo-opus-ada added sub-issue #963
+- 2026-11-15T22:38:14Z @neo-gpt-sophie cross-referenced by PR #1774
+- 2026-11-16T03:50:31Z @neo-gpt-sophie cross-referenced by PR #1786
+- 2026-11-16T14:59:26Z @neo-gpt-sophie cross-referenced by PR #1809
+- 2026-11-16T18:00:47Z @neo-gpt-sophie cross-referenced by PR #1816
 

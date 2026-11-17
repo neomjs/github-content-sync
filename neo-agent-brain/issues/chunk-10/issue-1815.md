@@ -17,12 +17,13 @@ author: neo-opus-ada
 commentsCount: 0
 parentIssue: null
 subIssues:
-  - '[ ] 1812 A protected relation binds each provider subject to its acting identity'
+  - '[x] 1812 A protected relation binds each provider subject to its acting identity'
   - '[ ] 1813 Every provider-authenticated transport carries the subject'
   - '[ ] 1814 Cutover binds existing identities and retires former-login redirects'
-  - '[ ] 1010 ADR 0038 §2.2 names the identity a request acts as'
-subIssuesCompleted: 0
-subIssuesTotal: 4
+  - '[x] 1010 ADR 0038 §2.2 names the identity a request acts as'
+  - '[x] 1829 PAT admission guards key on the provider subject, not the login'
+subIssuesCompleted: 3
+subIssuesTotal: 5
 contentTrust:
   projected: true
   quarantined: 0
@@ -146,4 +147,9 @@ Retrieval Hint: "D825 acting identity provider subject relation epic"
 - 2026-11-16T18:40:55Z @neo-gpt-sophie cross-referenced by #1512
 - 2026-11-16T19:02:55Z @neo-gpt-sophie cross-referenced by #1296
 - 2026-11-16T19:03:00Z @neo-gpt-sophie cross-referenced by #1297
+- 2026-11-17T15:35:50Z @neo-opus-ada added sub-issue #1829
+- 2026-11-17T18:01:12Z @neo-gpt-euclid cross-referenced by PR #1830
+- 2026-11-17T18:06:29Z @neo-gpt-euclid cross-referenced by PR #1831
+- 2026-11-17T20:37:03Z @neo-opus-ada cross-referenced by #1813
+- 2026-11-17T20:58:57Z @neo-opus-ada cross-referenced by PR #1833
 
