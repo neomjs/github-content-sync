@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-16T13:35:17Z'
-updatedAt: '2026-11-16T16:07:18Z'
+updatedAt: '2026-11-16T20:42:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1803'
 author: neo-gpt-emmy
 commentsCount: 1
@@ -24,7 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 1005 Package the Codex wake hook independently of unrelated Fleet changes'
+  - '[x] 1005 Package the Codex wake hook independently of unrelated Fleet changes'
 closedAt: '2026-11-16T16:07:18Z'
 ---
 # A fresh Codex Start asks for wake-hook approval when only the Fleet package changes
@@ -81,6 +81,8 @@ The separate disposable vendor inventory preserved the same hook/config hash acr
 
 [Brain reader](https://github.com/neomjs/neo-agent-brain/pull/1805) · [Institution packager](https://github.com/neomjs/neo-agent-institution/pull/1006)
 
+**Correction from the two-package post-merge check, 16 November.** The disposable generation test above kept one installed dependency tree. In two independently built packages, node-gyp embedded each build path in SQLite’s generated `Makefile` and `config.gypi`. Those two files changed Codex’s definition hash despite identical hook code and native SQLite bytes. [Institution #1012](https://github.com/neomjs/neo-agent-institution/pull/1012) removes them from the packaged copy before sealing. Replaying that pack step on both real input trees produced the same 871-entry artifact and genuine Codex definition hash at identical seat paths. Changes to a retained module, library bytes or executable permissions still rotated the hash. [Installed grant and signed-delivery handoff](https://github.com/neomjs/neo-agent-brain/issues/1735#issuecomment-6928644199).
+
 - 2026-11-16T14:41:43Z @neo-gpt-emmy marked this issue as blocking #1005
 - 2026-11-16T16:07:18Z @tobiu referenced in commit `08fba72` - "fix(fleet): keep Codex hook approval across package-only Starts (#1803) (#1805)
 
@@ -92,4 +94,5 @@ The separate disposable vendor inventory preserved the same hook/config hash acr
 
 * fix(fleet): refuse unretained hooks before first enrollment (#1803)"
 - 2026-11-16T16:07:19Z @tobiu closed this issue
+- 2026-11-17T00:03:30Z @neo-opus-vega cross-referenced by #1824
 

@@ -1,7 +1,7 @@
 ---
 id: 1764
 title: 'The claim responder assigns, then takes a pull request''s opening as a claim'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - contributor-experience
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-15T14:10:01Z'
-updatedAt: '2026-11-16T15:39:35Z'
+updatedAt: '2026-11-16T21:01:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1764'
 author: neo-fable-mnemosyne
 commentsCount: 0
@@ -26,6 +26,7 @@ blockedBy:
   - '[x] 21084 The claim responder runs in a sibling repository as one called workflow'
   - '[x] 21022 A pull request on an unclaimed curated issue counts as its claim'
 blocking: []
+closedAt: '2026-11-16T21:01:23Z'
 ---
 # The claim responder assigns, then takes a pull request's opening as a claim
 
@@ -150,4 +151,6 @@ Retrieval Hint: "Brain claim-responder decideReply to decideClaim assignment par
 - 2026-11-16T08:18:09Z @neo-gemini-maryam marked this issue as being blocked by #21086
 - 2026-11-16T09:36:18Z @neo-gemini-maryam cross-referenced by PR #1801
 - 2026-11-16T15:26:13Z @neo-gemini-maryam cross-referenced by PR #21151
+- 2026-11-16T21:01:22Z @tobiu referenced in commit `f3ce6f6` - "feat(ci): delegate claim-responder to pinned Engine workflow (#1764) (#1801)"
+- 2026-11-16T21:01:24Z @tobiu closed this issue
 

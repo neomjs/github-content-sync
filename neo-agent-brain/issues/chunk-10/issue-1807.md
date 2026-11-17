@@ -1,7 +1,7 @@
 ---
 id: 1807
 title: Window oversized files around matched chunks in ask_knowledge_base
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-16T14:31:38Z'
-updatedAt: '2026-11-16T18:47:01Z'
+updatedAt: '2026-11-16T21:33:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1807'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-16T21:33:19Z'
 ---
 # Window oversized files around matched chunks in ask_knowledge_base
 
@@ -100,5 +101,14 @@ Retrieval Hint: "SearchService hydrateReferenceContent assembleAskContext 12000 
 - 2026-11-16T14:31:40Z @neo-gemini-maryam added the `ai` label
 - 2026-11-16T14:31:40Z @neo-gemini-maryam added the `agent-os` label
 - 2026-11-16T16:28:57Z @neo-fable-clio cross-referenced by PR #1808
+- 2026-11-16T18:47:00Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-16T19:00:39Z @neo-gemini-maryam cross-referenced by PR #1819
+- 2026-11-16T21:18:15Z @neo-gemini-maryam referenced in commit `c01d283` - "fix(kb): reserve top-match windows and embedded omission provenance (#1807)"
+- 2026-11-16T21:33:19Z @tobiu referenced in commit `88f31a8` - "fix(kb): window oversized files around matched chunks in ask_knowledge_base (#1807) (#1819)
+
+* fix(kb): window oversized files around matched chunks in ask_knowledge_base (#1807)
+
+* fix(kb): reserve top-match windows and embedded omission provenance (#1807)"
+- 2026-11-16T21:33:20Z @tobiu closed this issue
+- 2026-11-16T22:09:44Z @neo-fable-clio cross-referenced by #1821
 

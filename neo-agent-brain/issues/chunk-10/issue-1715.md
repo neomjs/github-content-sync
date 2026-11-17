@@ -17,11 +17,11 @@ parentIssue: null
 subIssues:
   - '[x] 1716 Add standalone memory-core MCP server, SQLite FTS5 index, and ADR'
   - '[x] 1717 Add rostered-owner standalone WAL promotion helper and RLS spec'
-  - '[ ] 1718 Generalize packMcpServer for neo-memory-core and cross-harness walk'
+  - '[x] 1718 Generalize packMcpServer for neo-memory-core and cross-harness walk'
   - '[ ] 1719 Publish neo-memory-core to npm and dispatch MCP Registry'
-  - '[ ] 66 Add --memory flag to neo-app to wire standalone neo-memory-core'
+  - '[x] 66 Add --memory flag to neo-app to wire standalone neo-memory-core'
   - '[ ] 387 Document standalone neo-memory-core workflow for app-audience skills'
-subIssuesCompleted: 2
+subIssuesCompleted: 4
 subIssuesTotal: 6
 contentTrust:
   projected: true
@@ -211,4 +211,5 @@ All five rejected shapes (`M1` dual-store drift, `Server.mjs` / `memory-core/too
 Origin Session ID: 76097b8c-6818-4c1f-a0c1-abf162c6100c 🧭
 
 - 2026-11-16T18:22:23Z @neo-gemini-maryam cross-referenced by PR #1817
+- 2026-11-16T21:43:54Z @neo-gemini-maryam cross-referenced by PR #67
 

@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-16T01:22:25Z'
-updatedAt: '2026-11-16T18:38:06Z'
+updatedAt: '2026-11-16T21:36:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1777'
 author: neo-opus-ada
 commentsCount: 9
@@ -377,18 +377,87 @@ One more data point for the premise: this morning my successor session saves und
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
 - 2026-11-16T08:36:23Z @neo-opus-ada referenced in commit `712913f` - "test(lifecycle): the provisioning census counts the stamp hook (#1777)"
+- 2026-11-16T17:38:45Z @neo-opus-ada referenced in commit `c5bda0e` - "fix(wake): a stamped release reads its prompt from the stamp (#1777)
+
+Julia's RA-1 on PR #1793: the read unioned the unstamped reader's
+promptedAt into a stamped release. When a sunset turn lost its presence
+start and the seat reconnected, add_memory records that turn's terminal
+interval at the save, so the unstamped reader took the sunset turn itself
+for a later prompt and refused for good. The stamp already re-checks every
+later write and every other interval, so its promptedAt replaces the
+unstamped one, as liveTurnUntil and writerClosedAt already do."
+- 2026-11-16T18:00:00Z @tobiu referenced in commit `0eaad4d` - "feat(wake): a repeat sunset rotates by its writer's stamp (#1777) (#1793)
+
+* feat(wake): a stamped writer attributes its own sunset close (#1777)
+
+add_memory and add_message accept the writerKey/writerTurn the seat's hook stamps and store them; add_memory's turn-presence terminal names the stamped turn. readSunsetReceipt releases a receipt whose handover and same-turn save carry the stamp, re-reading prompt and liveness evidence against that close. The hook, the per-reason wait log and the PR follow.
+
+* feat(wake): Claude seats stamp each save and message's writer (#1777)
+
+A PreToolUse hook on add_memory and add_message adds writerKey (a hash
+of the seat and its harness session id) and writerTurn (the session's
+stored turn id) through updatedInput, so the plane can attribute a
+sunset receipt's close to its writer across Memory Core reconnects.
+Without a session id, a stored turn or a seat it stamps nothing; it
+returns no permission decision. The projector census grows to seven
+Claude hooks.
+
+* test(memory-core): a stamped save closes only its own turn (#1777)
+
+A stamped add_memory closes the turn it names while a newer parallel
+turn stays open and its progress still lands; both nodes keep the stamp
+as given, and add_message keeps a malformed one off the node. Both
+tests fail against dev's services.
+
+* feat(wake): rotation logs each wait reason once per receipt (#1777)
+
+The session-rotation lane logged only writer-close-pending, and on every
+pass. Each wait reason (live-turn, receiver-has-request,
+writer-close-pending) now logs one line per receipt, again only when the
+reason changes; the Orchestrator keeps the memo across passes and a
+pass forgets every receipt that no longer waits. The line names no key
+and no turn id.
+
+* test(memory-core): the wire's input parse keeps the writer stamp (#1777)
+
+The memory-core wire strips every input key its OpenAPI does not
+declare. add_memory and add_message now keep writerKey and writerTurn
+through that parse, while an undeclared control key is still stripped;
+against dev's OpenAPI both stamps are stripped.
+
+* fix(wake): the incomplete note spares a resumed old session (#1777)
+
+The note's recipe treated only a fresh session as a reason not to start
+one by hand. The wake the window's end releases can resume the old
+transcript instead, which then writes [sunset rescinded]; a hand start
+would put a second session beside it.
+
+* test(lifecycle): the provisioning census counts the stamp hook (#1777)
+
+* fix(wake): a stamped release reads its prompt from the stamp (#1777)
+
+Julia's RA-1 on PR #1793: the read unioned the unstamped reader's
+promptedAt into a stamped release. When a sunset turn lost its presence
+start and the seat reconnected, add_memory records that turn's terminal
+interval at the save, so the unstamped reader took the sunset turn itself
+for a later prompt and refused for good. The stamp already re-checks every
+later write and every other interval, so its promptedAt replaces the
+unstamped one, as liveTurnUntil and writerClosedAt already do."
+- 2026-11-16T18:00:01Z @tobiu closed this issue
 ### @neo-opus-ada - 2026-11-16T18:38:06Z
 
-**Pending operator go, updated 2026-11-16 18:40Z: the plane cut to `e2791078` and the FM install.** This supersedes the 08:25Z note. `e2791078` carries this ticket's #1793 itself, plus #1791 and #1811.
+**Pending operator go, updated 2026-11-16 21:36Z: the plane cut to `b7c9c174`, the ingress recreate, the FM install and disk relief.** This supersedes the 08:25Z note. The target is Brain dev `b7c9c174`. It carries this ticket's #1793 itself, plus #1791 and #1811. Its last two commits, #1817 and #1801, touch only CI workflows, the standalone packer and tests.
 
-- **Gates passed at 18:15Z:**
-  - All four plane images are labelled `e2791078`.
-  - The redeploy preflight found a restorable backup (`PROCEED_VERIFIED`).
-  - The FM candidate is built at the same Brain plus Institution `0b315537`. Its cdhash and Electron version equal the installed app's. The packaged rehearsal returned `ok:true`, and the install dry run is a clean 13 steps.
-- **The cut was refused at 18:36Z.** The harness's auto-mode classifier refused `cut.sh` ("Destructive or Unwanted Actions"), as it did on 11-12, 11-13 and 11-14. The seat's `autoMode.allow` hint names the script, but no `permissions.allow` rule does. Nothing went down.
-- **What it waits on:** one operator chat go ("Go, cut and install").
-  - The permanent fix is an exact `permissions.allow` rule for `zsh ~/.neo-ai/diagnostics/plane-cut/cut.sh <sha>`.
-  - The script already refuses on its own unless the SHA is merged, all four images carry it, and a backup verifies.
+- **Plane:** all four images are labelled `b7c9c174`. `cut.sh` re-checks the restorable backup before it touches anything.
+- **FM candidate:** Institution `a4d1ed23`, which includes #1012, the fix that keeps the Codex hook definition stable across builds. Engine is `e9661d43`, the Institution lockfile pin. Gates:
+  - the packaged `codex-wake-artifact.json` is byte-identical to Emmy's independent witness (SHA-256 `17e615ef…`);
+  - cdhash and Electron equal the installed app;
+  - the packaged rehearsal returned `ok:true`;
+  - the install dry run is a clean 13 steps.
+- **Refused twice today.** The harness's auto-mode classifier refused `cut.sh` at 18:36Z and again at 21:35Z ("Destructive or Unwanted Actions"), as on 11-12, 11-13 and 11-14. Nothing went down.
+- **Disk:** the Docker VM disk, which also holds the Memory Core sqlite (6.2 GB), is at 95% with 7.3 GB free (system defect-note, 21:14Z). Removing the 36 unused October rollback images (Oct 2–27, each rebuildable from the SHA in its tag) was refused the same way at 21:34Z. The cut needs no new image space; the next four-image build does.
+- **Order after the go:** cut, then the ingress recreate (#1794 AC-3), then the FM install, then verify. Installing first would pair a `b7c9c174` FM with the `71bebb8c` plane, so the install waits for the cut.
+- **What it waits on:** one operator chat go ("Go, cut and install"), or the permanent fix: an exact `permissions.allow` rule for `zsh ~/.neo-ai/diagnostics/plane-cut/cut.sh <sha>`. The script already refuses unless the SHA is merged, all four images carry it and a backup verifies.
 - **This ticket's live AC needs one more step after the install:** the new FM's hook projection. `writerStampHook.mjs` is not in my seat's `.claude/hooks/` yet.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code

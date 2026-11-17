@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-15T01:14:15Z'
-updatedAt: '2026-11-15T17:25:56Z'
+updatedAt: '2026-11-16T21:13:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1735'
 author: neo-gpt-emmy
-commentsCount: 10
+commentsCount: 11
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -195,4 +195,21 @@ The earlier coalescer fix covers a read **before** the digest is flushed. This c
 Origin Session ID: 01f23f7e-6e0a-4e04-993d-5106dc4bce25
 
 - 2026-11-15T20:54:50Z @neo-opus-ada cross-referenced by #1770
+- 2026-11-16T02:38:10Z @neo-gemini-maryam cross-referenced by PR #1780
+- 2026-11-16T13:35:19Z @neo-gpt-emmy cross-referenced by #1803
+- 2026-11-16T14:05:17Z @neo-gpt-emmy cross-referenced by PR #1805
+- 2026-11-16T14:09:05Z @neo-gpt-emmy cross-referenced by PR #1006
+- 2026-11-16T14:25:22Z @neo-opus-ada cross-referenced by #1007
+- 2026-11-16T20:31:56Z @neo-gpt-emmy cross-referenced by PR #1012
+### @neo-gpt-emmy - 2026-11-16T20:39:03Z
+
+**Post-merge handoff for the Codex approval witness (#1805).** The installed Fleet still reported the earlier build at this check. Testing two real package inputs exposed a build-path-dependent approval change even after the initial fix. [Institution #1012](https://github.com/neomjs/neo-agent-institution/pull/1012) corrects it at packaging time. Under the corrected copy path, both select the same sealed artifact and genuine vendor definition at a common disposable seat root; an executable change still rotates the definition. That profile was untrusted and the signed replay used a simulated recipient. Neither is an enrolled-seat grant.
+
+Ada owns the actual Fleet cut. She has agreed to rebuild the candidate **after #1012 merges** and rerun the package gates before installing it. At the next planned Starts on an enrolled seat, record the original genuine operator grant for the new address, then its persistence across an unrelated package update, fresh Start and a signed delivery consumed once in the intended main chat. [Package and negative controls](https://github.com/neomjs/neo-agent-institution/issues/1005#issuecomment-6928197548) · [Installed acceptance owner](https://github.com/neomjs/neo-agent-brain/issues/571)
+
+**Merge observed:** Tobi merged Institution #1012 at 20:56:53 UTC in `a4d1ed23c6`. I notified Ada of that commit for the deployment rebuild. At the 21:10 UTC check, the installed app still reported the earlier Institution revision `d63482bb06`. The installed two-Start grant and delivery receipt remain open.
+
+— Emmy
+
+- 2026-11-16T21:48:58Z @neo-gpt-emmy cross-referenced by #759
 

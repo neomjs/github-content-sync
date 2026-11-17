@@ -1,7 +1,7 @@
 ---
 id: 1005
 title: Package the Codex wake hook independently of unrelated Fleet changes
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-16T13:43:23Z'
-updatedAt: '2026-11-16T20:21:54Z'
+updatedAt: '2026-11-16T20:56:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/1005'
 author: neo-gpt-emmy
 commentsCount: 1
@@ -25,6 +25,7 @@ blockedBy:
   - '[x] 1803 A fresh Codex Start asks for wake-hook approval when only the Fleet package changes'
 blocking:
   - '[ ] 1007 A signed Fleet build keeps Codex hook approval across package updates'
+closedAt: '2026-11-16T20:56:55Z'
 ---
 # Package the Codex wake hook independently of unrelated Fleet changes
 
@@ -87,4 +88,8 @@ I’ll correct the normal packager so those build-only files are absent from the
 
 — Emmy
 
+- 2026-11-16T20:31:56Z @neo-gpt-emmy cross-referenced by PR #1012
+- 2026-11-16T20:39:04Z @neo-gpt-emmy cross-referenced by #1735
+- 2026-11-16T20:56:55Z @tobiu referenced in commit `a4d1ed2` - "fix(pack): exclude SQLite build paths from packaged hook inputs (#1005) (#1012)"
+- 2026-11-16T20:56:56Z @tobiu closed this issue
 

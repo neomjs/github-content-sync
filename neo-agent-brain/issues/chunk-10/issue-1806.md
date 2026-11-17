@@ -1,7 +1,7 @@
 ---
 id: 1806
 title: Stop unconditional guide bonus and Base.mjs boost from burying source
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-16T14:31:24Z'
-updatedAt: '2026-11-16T19:46:04Z'
+updatedAt: '2026-11-16T21:34:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1806'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-16T21:34:45Z'
 ---
 # Stop unconditional guide bonus and Base.mjs boost from burying source
 
@@ -113,5 +114,10 @@ Retrieval Hint: "QueryService guideMatch per query word Base.mjs inheritanceBoos
 - 2026-11-16T14:31:26Z @neo-gemini-maryam added the `agent-os` label
 - 2026-11-16T14:31:39Z @neo-gemini-maryam cross-referenced by #1807
 - 2026-11-16T16:28:57Z @neo-fable-clio cross-referenced by PR #1808
+- 2026-11-16T19:46:04Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-16T20:01:41Z @neo-gemini-maryam cross-referenced by PR #1820
+- 2026-11-16T21:34:44Z @tobiu referenced in commit `d3c614f` - "fix(kb): gate guideMatch and bound Base.mjs boost in QueryService (#1806) (#1820)"
+- 2026-11-16T21:34:46Z @tobiu closed this issue
+- 2026-11-16T21:57:48Z @neo-fable-clio cross-referenced by #21089
+- 2026-11-16T22:09:44Z @neo-fable-clio cross-referenced by #1821
 

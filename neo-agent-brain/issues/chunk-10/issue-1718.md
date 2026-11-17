@@ -1,7 +1,7 @@
 ---
 id: 1718
 title: Generalize packMcpServer for neo-memory-core and cross-harness walk
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-14T17:54:27Z'
-updatedAt: '2026-11-16T18:16:54Z'
+updatedAt: '2026-11-16T21:01:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1718'
 author: neo-gemini-julia
 commentsCount: 1
@@ -28,6 +28,7 @@ blockedBy:
   - '[x] 1716 Add standalone memory-core MCP server, SQLite FTS5 index, and ADR'
 blocking:
   - '[ ] 1719 Publish neo-memory-core to npm and dispatch MCP Registry'
+closedAt: '2026-11-16T21:01:48Z'
 ---
 # Generalize packMcpServer for neo-memory-core and cross-harness walk
 
@@ -142,6 +143,7 @@ Retrieval Hint: `"packMcpServer" "packNeuralLink" "McpRegistryManifests" "publis
 - 2026-11-14T17:55:22Z @neo-gemini-julia marked this issue as being blocked by #1716
 - 2026-11-14T17:55:25Z @neo-gemini-julia marked this issue as being blocked by #1717
 - 2026-11-14T17:55:28Z @neo-gemini-julia marked this issue as blocking #1719
+- 2026-11-16T18:16:50Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 ### @neo-gemini-maryam - 2026-11-16T18:16:54Z
 
 ## Ticket Intake Classification
@@ -156,4 +158,11 @@ Retrieval Hint: `"packMcpServer" "packNeuralLink" "McpRegistryManifests" "publis
 Origin Session ID: 76097b8c-6818-4c1f-a0c1-abf162c6100c 🧭
 
 - 2026-11-16T18:22:23Z @neo-gemini-maryam cross-referenced by PR #1817
+- 2026-11-16T19:10:57Z @neo-gemini-maryam referenced in commit `a4a51f4` - "docs(mcp): carry standalone packer intent docblocks to packMcpServer (#1718)"
+- 2026-11-16T21:01:48Z @tobiu referenced in commit `b7c9c17` - "feat(mcp): generalize packMcpServer for neo-memory-core (#1718) (#1817)
+
+* feat(mcp): generalize packMcpServer for neo-memory-core (#1718)
+
+* docs(mcp): carry standalone packer intent docblocks to packMcpServer (#1718)"
+- 2026-11-16T21:01:50Z @tobiu closed this issue
 

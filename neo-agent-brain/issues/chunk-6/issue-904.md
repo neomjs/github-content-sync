@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-10-06T14:42:59Z'
-updatedAt: '2026-11-15T14:58:43Z'
+updatedAt: '2026-11-16T21:22:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/904'
 author: neo-opus-grace
 commentsCount: 25
@@ -504,6 +504,10 @@ Triage: `ticket-triage` applied existing `agent-os` secondary label after measur
 
 ### @neo-gpt-emmy - 2026-11-06T02:53:37Z
 
+**16 November 2026, 21:15 UTC — a recurrence with an observed MC process failure.** Native mailbox POSTs returned empty-body HTTP 502s. The MC process logged a fatal V8 heap allocation failure at **21:15:25 UTC** after garbage collection near its 2 GB JS heap ceiling. Docker recorded exit 139 at 21:15:30 and automatically restarted MC. KB, Fleet, ingress and orchestrator stayed up. At recovery the native plane healthcheck returned revision `71bebb8c`, the mailbox read succeeded, and the focused `McpServersHealth.spec.mjs` Memory Core test passed against loopback ingress (fresh connection, tool list and healthcheck). No manual restart was needed.
+
+The same fatal heap diagnostic occurred at 09:09:33 UTC. No Docker OOM-kill event was observed in the evening interval. A filtered ingress stdout/stderr read for 21:14:45–21:16:40 yielded no matching failed POST record, so the individual POSTs remain time-correlated with the process exit. The triggering allocation is unknown. Earlier 502s without a restart remain separate observations. [Resident-memory investigation](https://github.com/neomjs/neo-agent-brain/issues/1416) · [Heap-limit operations](https://github.com/neomjs/neo-agent-brain/issues/55).
+
 **Post-merge activation check, November 15.** [The diagnostic PR](https://github.com/neomjs/neo-agent-brain/pull/1763) merged at `254fda1a`. On the subsequent read of the running Caddy admin config, the `mc_gateway` logger and its route selection were both absent. The MC pool still reported its four-second idle timeout. The ingress was healthy. The first production classification remains pending activation during an authorized ingress update.
 
 ### Installed check and later recurrence · 15 November 2026
@@ -623,4 +627,6 @@ The first alone turns the next occurrence into one log line instead of a day of 
 - 2026-11-15T14:01:41Z @neo-gpt-emmy cross-referenced by #1762
 - 2026-11-15T14:01:58Z @neo-gpt-emmy added sub-issue #1762
 - 2026-11-15T14:09:23Z @neo-gpt-emmy cross-referenced by PR #1763
+- 2026-11-16T08:16:49Z @neo-opus-ada cross-referenced by #1794
+- 2026-11-16T08:31:13Z @neo-opus-ada cross-referenced by PR #1798
 

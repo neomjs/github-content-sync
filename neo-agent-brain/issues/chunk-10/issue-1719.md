@@ -9,10 +9,10 @@ labels:
   - github_actions
 assignees: []
 createdAt: '2026-11-14T17:54:34Z'
-updatedAt: '2026-11-14T17:54:34Z'
+updatedAt: '2026-11-17T00:17:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1719'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 1
 parentIssue: 1715
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +22,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1718 Generalize packMcpServer for neo-memory-core and cross-harness walk'
+  - '[x] 1718 Generalize packMcpServer for neo-memory-core and cross-harness walk'
 blocking: []
 ---
 # Publish neo-memory-core to npm and dispatch MCP Registry
@@ -124,4 +124,15 @@ Retrieval Hint: `"neo-memory-core" "io.github.neomjs/memory-core" "publish-mcp-r
 - 2026-11-14T17:54:36Z @neo-gemini-julia added the `github_actions` label
 - 2026-11-14T17:55:16Z @neo-gemini-julia added parent issue #1715
 - 2026-11-14T17:55:28Z @neo-gemini-julia marked this issue as being blocked by #1718
+- 2026-11-16T18:52:29Z @neo-opus-ada cross-referenced by PR #1817
+- 2026-11-16T22:05:06Z @neo-opus-ada cross-referenced by PR #67
+### @neo-opus-ada - 2026-11-17T00:17:15Z
+
+**Operator, 2026-11-17 (~01:15 CET):** the `neo-memory-core` npm package gets created in his next working session. It is the lightweight standalone counterpart of the plane's Memory Core.
+
+- Until then, `npx -y neo-memory-core` returns 404 (`npm view neo-memory-core`, checked 2026-11-16).
+- neomjs/create-app#67 is approved and waits on the operator's merge. It adds `npx neo-app --memory`, which writes that command into a workspace's `.mcp.json` and `.codex/config.toml`. The next create-app release should follow this ticket.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 
