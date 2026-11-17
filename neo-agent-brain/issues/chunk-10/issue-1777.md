@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-16T01:22:25Z'
-updatedAt: '2026-11-16T21:36:41Z'
+updatedAt: '2026-11-17T11:51:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1777'
 author: neo-opus-ada
-commentsCount: 9
+commentsCount: 11
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -459,6 +459,32 @@ unstamped one, as liveTurnUntil and writerClosedAt already do."
 - **Order after the go:** cut, then the ingress recreate (#1794 AC-3), then the FM install, then verify. Installing first would pair a `b7c9c174` FM with the `71bebb8c` plane, so the install waits for the cut.
 - **What it waits on:** one operator chat go ("Go, cut and install"), or the permanent fix: an exact `permissions.allow` rule for `zsh ~/.neo-ai/diagnostics/plane-cut/cut.sh <sha>`. The script already refuses unless the SHA is merged, all four images carry it and a backup verifies.
 - **This ticket's live AC needs one more step after the install:** the new FM's hook projection. `writerStampHook.mjs` is not in my seat's `.claude/hooks/` yet.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-17T07:31:31Z
+
+**#1793 is merged and on the plane, but not live on any seat yet.** Vega measured it after the 06:25Z cut to `92f0e736`. The installed Fleet Manager bundles Brain `d6469d3b` (staged 11-16 09:03Z), which is older than `0eaad4dd`. So no seat has the `writerStampHook` PreToolUse entry or `.claude/hooks/writerStampHook.mjs` (confirmed on my seat: 0 matches).
+
+**A gated FM candidate is ready** (built 07:28Z): Brain `92f0e736` (= the plane), Institution `a4d1ed23`, engine `e9661d43`.
+- `writerStampHook.mjs` is in the bundle (`organism/ai/scripts/lifecycle/hooks/claude/`).
+- Rehearsal `HARNESS_REHEARSAL_RESULT {"failures":[],"ok":true}`: both stand-ins pass start, stop, recover and start-after-recovery.
+- cdhash `469fa943` and Electron 43.8.1 equal the installed app, so no keychain prompt.
+- `install.mjs --quit --open --dry-run` is clean: 13 steps, and the current app moves to the rollback slot (`--restore` undoes it).
+
+**Waiting on:** @tobiu's go. The auto-mode classifier refused `install.mjs --artifact … --quit --open` twice in an automated wake turn, although this seat's allow rule for it (11-12) is intact. A one-line go in any Ada session is enough; there's nothing to run. After it, I install, notify `AGENT:*`, and post here: the handoff receipt, plus the first seat whose `.claude/settings.json` gains the hook entry.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-17T11:51:25Z
+
+**Installed on the operator's go (11:47Z): the Fleet Manager now runs Brain `92f0e736` (the plane's revision), Institution `a4d1ed23` and Engine `e9661d43`.** The hook projection, the last live step, is still open (last bullet).
+
+- **Gates, re-run just before the install:** cdhash `469fa943` and Electron 43.8.1 equal the installed app. `writerStampHook.mjs` is in the bundle. The Codex wake declaration's SHA-256 is `17e615ef…`. The installer's Brain is `92f0e736`. `--quit --open --dry-run` was clean: 13 steps.
+- **Install:** `install.mjs --quit --open` exited 0 with custody unchanged (`7d9c97ba65c1`). The previous app (Brain `d6469d3`, staged 11-16) is in the rollback slot. Runtime generation: `a8cb4623…`. No keychain prompt.
+- **Handoff:** sealed after 1130 ms (budget 8000 ms). Six survivors were verified: Ada, Grace, Vega, Euclid, Julia and Maryam. Sophie's seat was unresolved ("not a live original Start"). It has had no turn in 4 h, so there was no live seat to hand over.
+- **New FM:** runtime verify took 8413 ms and recovery 23298 ms ("previous issuer handed-off"). The seats are active. Its Fleet listens on `127.0.0.1:8083` from the new generation. One open-work publish failed during the swap (11:48:13Z, "ambiguous, not replayed"), and open-work wakes were wired at 11:49:22Z.
+- **Still open: the hook projection.** `projectSeatHooks` runs when a seat is bootstrapped. A seat that survived the handoff keeps its old `.claude/settings.json`; mine has 0 `writerStampHook` matches. The witness is the first seat Start under this FM. I'll post it here.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 

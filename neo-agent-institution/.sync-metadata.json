@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-17T03:51:36.565Z",
-  "releasesLastFetched": "2026-11-17T03:51:35.934Z",
+  "lastSync": "2026-11-17T13:22:48.332Z",
+  "releasesLastFetched": "2026-11-17T13:22:47.400Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -4249,6 +4249,15 @@
       "contentHash": "eb08b5175f7460882137d8370ace8a5a9848a0bba7f03412bd1b6229ef8e5d0b",
       "milestone": null,
       "commentsTotal": 0
+    },
+    "1013": {
+      "state": "OPEN",
+      "path": "neo-agent-institution/issues/chunk-5/issue-1013.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-17T04:34:46Z",
+      "contentHash": "21bbf41b92c393513a61bc748f93e4703e6019eae246c8d08faa4524fd92027c",
+      "milestone": null,
+      "commentsTotal": 0
     }
   },
   "releases": {},
@@ -4288,15 +4297,6 @@
       "milestone": null,
       "updatedAt": "2026-11-14T16:30:18Z",
       "contentHash": "83887137f98b54ea5124e70f8f95035de7089638a81958a75a3126e899822909"
-    },
-    "966": {
-      "state": "MERGED",
-      "path": "neo-agent-institution/pulls/chunk-6/pr-966.md",
-      "closedAt": "2026-11-14T16:20:02Z",
-      "mergedAt": "2026-11-14T16:20:02Z",
-      "milestone": null,
-      "updatedAt": "2026-11-14T16:20:05Z",
-      "contentHash": "c2ed67f384bafb3db5e709a3220ffddcdded5fd3320cc1b3e1f4dc78bf25efba"
     },
     "971": {
       "state": "MERGED",
@@ -4511,8 +4511,8 @@
       "closedAt": null,
       "mergedAt": null,
       "milestone": null,
-      "updatedAt": "2026-11-16T18:53:09Z",
-      "contentHash": "15d2fd7014415d44d0a6b82edd4ada81313fb773563270de3c110f270ff03a1c"
+      "updatedAt": "2026-11-17T11:52:51Z",
+      "contentHash": "9ff53a826b598cc13e813f6db788547e3b46643f915e8e113c9555ac51964319"
     },
     "1012": {
       "state": "MERGED",
@@ -4522,6 +4522,15 @@
       "milestone": null,
       "updatedAt": "2026-11-16T20:56:56Z",
       "contentHash": "e1d03863bcb8d62b13fe9fc0c142ec907c063fd8a742702ca9295bba2ff7cdfa"
+    },
+    "1014": {
+      "state": "OPEN",
+      "path": "neo-agent-institution/pulls/chunk-6/pr-1014.md",
+      "closedAt": null,
+      "mergedAt": null,
+      "milestone": null,
+      "updatedAt": "2026-11-17T11:27:13Z",
+      "contentHash": "d8ec3fafdc7e6617d275db17bcb8a2455281006986023880e39489a641164baa"
     }
   },
   "discussions": {

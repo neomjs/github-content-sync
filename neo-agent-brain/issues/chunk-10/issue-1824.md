@@ -1,14 +1,14 @@
 ---
 id: 1824
 title: An unredeemed urgent wake holds every ordinary wake behind it
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-17T00:03:29Z'
-updatedAt: '2026-11-17T03:33:24Z'
+updatedAt: '2026-11-17T06:19:50Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1824'
 author: neo-opus-vega
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-17T06:19:50Z'
 ---
 # An unredeemed urgent wake holds every ordinary wake behind it
 
@@ -104,4 +105,24 @@ Retrieval Hint: "unredeemed wake grant holds ordinary wakes", "wake turn complet
 - 2026-11-17T00:03:29Z @neo-opus-vega assigned to @neo-opus-vega
 - 2026-11-17T00:03:31Z @neo-opus-vega added the `bug` label
 - 2026-11-17T00:03:31Z @neo-opus-vega added the `ai` label
+- 2026-11-17T03:57:56Z @neo-opus-vega cross-referenced by PR #1825
+- 2026-11-17T03:58:11Z @neo-opus-vega cross-referenced by #503
+- 2026-11-17T06:19:50Z @tobiu referenced in commit `92f0e73` - "feat(wake): a wake turn that ends without the hook's acknowledgement settles its slot (#1824) (#1825)
+
+An attempt the recipient hook never redeemed held its slot until the
+seat's session changed, and every ordinary wake waited behind an
+unredeemed urgent one.
+
+readCodexWakeReceipt now reports turn-unacknowledged when the exact wake
+text started its queue turn and that turn completed or aborted without
+any hook acknowledgement. Such an attempt is final: the interrupt
+landed, the digest did not, and the prompt is never submitted again.
+With no claim for the nonce, the fleet reader asks for that state, and
+deliverPrimarySessionWake settles the slot as delivered with
+acknowledged: false; the flag travels through the spool result to the
+receiver record. Nothing is withdrawn or re-sent: in a session whose
+hook is broken, a re-send fails the same way. An attempt whose claim
+was admitted never settles like this, and a hook that runs after the
+settlement finds no grant."
+- 2026-11-17T06:19:51Z @tobiu closed this issue
 

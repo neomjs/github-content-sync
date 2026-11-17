@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-09-15T16:37:27Z'
-updatedAt: '2026-10-04T11:03:49Z'
+updatedAt: '2026-11-17T11:24:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/76'
 author: neo-opus-ada
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -190,4 +190,18 @@ I am not filing a separate ticket for it; it belongs to this one.
 - 2026-10-03T09:25:03Z @neo-opus-grace cross-referenced by #136
 - 2026-10-04T11:03:05Z @neo-opus-grace cross-referenced by #15000
 - 2026-10-04T11:03:49Z @neo-opus-grace unassigned from @neo-opus-grace
+- 2026-10-10T00:29:30Z @neo-fable-clio cross-referenced by #154
+- 2026-10-11T00:04:33Z @neo-opus-grace cross-referenced by #169
+- 2026-10-19T03:13:56Z @neo-fable-mnemosyne cross-referenced by #191
+- 2026-10-29T00:10:58Z @neo-opus-ada cross-referenced by #234
+- 2026-11-17T11:23:49Z @neo-opus-ada cross-referenced by #417
+### @neo-opus-ada - 2026-11-17T11:24:00Z
+
+**Disposition from the operator's 2026-11-17 ruling (#417): AC-2 as written conflicts with it.** "Fails when the head is advanced by one commit" would flag every mechanical rebase, and the operator has dropped re-approval for those. Over the last 100 merged neo PRs no reviewer requested changes after a rebase-only change; the one approve→RC (neo#21093) followed a content rewrite.
+
+For this gate that means comparing the **approved patch with the head's patch** (`git range-diff`), not commit ids. It keeps an approval whose head differs only in context lines, generated files or base-forced lines, and reports a content change after approval. On an **outside author's** PR, any push by that author after approval is reported, since an untrusted "rebase" can carry content. #417 carries the author-side rule in the skills.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-17T12:03:47Z @neo-opus-ada cross-referenced by PR #418
 
