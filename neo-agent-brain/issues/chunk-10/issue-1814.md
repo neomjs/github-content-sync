@@ -1,7 +1,7 @@
 ---
 id: 1814
 title: Cutover binds existing identities and retires former-login redirects
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-16T17:09:42Z'
-updatedAt: '2026-11-18T03:04:13Z'
+updatedAt: '2026-11-18T05:04:31Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1814'
 author: neo-opus-ada
 commentsCount: 3
@@ -27,6 +27,7 @@ blockedBy:
   - '[x] 1835 Every Brain CI install fails on onnxruntime-node''s CUDA download'
   - '[x] 1812 A protected relation binds each provider subject to its acting identity'
 blocking: []
+closedAt: '2026-11-18T05:04:31Z'
 ---
 # Cutover binds existing identities and retires former-login redirects
 
@@ -101,6 +102,7 @@ The alias source is the roster: `agentFamilyResolution.mjs` imports `IDENTITIES`
 | Content trust (`classifyAuthorTrust`) | fact 5 | A former login confers no tier without subject-bound corroboration | Org standing yields `repo-trusted`, never the former tier | `authorTrustClassifier.mjs` JSDoc | unit arm |
 | Memory trust (`resolveMemoryTrustTier`, `query_raw_memories` `minTrustTier`) | fact 5 | Exact node first; a `formerLogins` scan confers no tier | `unclassified` | JSDoc | unit arm |
 | Dated-item owners, issue member weight | fact 5 | No operational standing from a former spelling | `AGENT:*` / non-member weight | JSDoc | unit arm |
+| `subjectBindings.mjs inventory` and `activate --cutover-revision <revision> [--apply]`, on the plane host only (no MCP tool, HTTP route or Fleet wire) | fact 5 + AC-1, AC-4, AC-7 | `inventory` reads, in one read transaction, every identity with its binding or remedy, every former spelling with the rows stored under it (a row counts for each former spelling it touches), the blockers, and a `cutover-inventory-<sha256>` revision. `activate` takes the inventory again inside its write transaction and records the activation only on the revision it names | `SUBJECT_BINDING_CUTOVER_STALE` once the state has moved past the named revision; `SUBJECT_BINDING_CUTOVER_BLOCKED`, with its blockers, while any remains; without `--apply`, a dry run on a read-only connection. A refusal writes nothing | the module header's usage | unit arms `inventory (#1814)` and `activate (#1814)` |
 
 ## Acceptance Criteria
 
@@ -237,4 +239,51 @@ Brings in #1836 (.npmrc onnxruntime-node-install-cuda=skip) so this branch's npm
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-18T04:24:45Z @neo-opus-ada referenced in commit `d36d2ae` - "fix(memory-core): a row counts for every former spelling on it (#1814)
+
+readFormerSpellings credited a message or an edge to its first former spelling only, so a reclaimed second spelling holding rows read as clear instead of ambiguous legacy ownership. Each row now counts once for every distinct former spelling it touches. A spec arm holds a message and an edge between two former spellings and a self-message."
+- 2026-11-18T05:04:31Z @tobiu referenced in commit `f84726e` - "feat(memory-core): former logins lose standing at the cutover (#1814) (#1834)
+
+* feat(mailbox): a former login stops redirecting after activation (#1814)
+
+Once the cutover's activation record exists, `validateMailboxTarget`
+no longer resolves a former login to the identity that left it: the
+spelling is provenance only, so a target with no node of its own is
+refused. Dormant planes keep alias-first addressing.
+
+* feat(orchestrator): former logins stop owning dated items after activation (#1814)
+
+`resolveKnownIdentities` keeps a member's former logins addressable only
+while selection by subject is dormant. After the cutover a former login
+no longer delivers, so its overdue rows fall back to `AGENT:*` instead
+of failing at send.
+
+* feat(memory-core): mailbox and trust reads drop former logins (#1814)
+
+Once the cutover activates selection by subject, getMailboxIdentityStorageVariants no longer widens a direct identity through its former logins, listMessages stops resolving a former login in its to and fromIdentity filters, and resolveMemoryTrustTier reads the exact node first and confers no tier from a former spelling. Before activation all three keep today's resolution. An activation that cannot be read refuses in the mailbox and confers no former tier in memory trust, never the dormant answer.
+
+* feat(graph): former logins confer no member weight at cutover (#1814)
+
+readInternalAuthorLogins counts formerLogins as members only while selection by subject is dormant. GitHub reports a renamed account's history under its current login, so after the cutover a released login confers no member weight on whoever registers it.
+
+* feat(content-trust): a former login confers no tier of its own (#1814)
+
+classifyAuthorTrust drops the former-login tier map. GitHub reports a renamed account's content under its current login, so a former login only ever names whoever registered it since; with org standing that author is repo-trusted, never the renamed resident.
+
+* feat(scripts): the cutover inventory and its guarded activation (#1814)
+
+subjectBindings.mjs gains inventory, a read-only census of what activating selection by subject would meet: the founding side, every identity with its binding or remedy and binding authority, every former spelling with its stored rows, and the blockers. activate writes the activation record on the reviewed inventory revision only, refusing while the inventory moved or still has a blocker.
+
+* test(conversation-trust): standing yields repo-trusted (#1814)
+
+projectConversationTrust follows classifyAuthorTrust: a former login with org standing is repo-trusted and its GitHub URLs stay untouched.
+
+* docs(memory-core): source comments name no ticket (#1814)
+
+Durable comments describe current behavior; the tracking lives in the commits and the PR, as the ticket-archaeology guard requires.
+
+* fix(memory-core): a row counts for every former spelling on it (#1814)
+
+readFormerSpellings credited a message or an edge to its first former spelling only, so a reclaimed second spelling holding rows read as clear instead of ambiguous legacy ownership. Each row now counts once for every distinct former spelling it touches. A spec arm holds a message and an edge between two former spellings and a self-message."
+- 2026-11-18T05:04:32Z @tobiu closed this issue
 

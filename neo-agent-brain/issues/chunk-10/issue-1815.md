@@ -19,10 +19,10 @@ parentIssue: null
 subIssues:
   - '[x] 1812 A protected relation binds each provider subject to its acting identity'
   - '[x] 1813 Every provider-authenticated transport carries the subject'
-  - '[ ] 1814 Cutover binds existing identities and retires former-login redirects'
+  - '[x] 1814 Cutover binds existing identities and retires former-login redirects'
   - '[x] 1010 ADR 0038 §2.2 names the identity a request acts as'
   - '[x] 1829 PAT admission guards key on the provider subject, not the login'
-subIssuesCompleted: 4
+subIssuesCompleted: 5
 subIssuesTotal: 5
 contentTrust:
   projected: true
