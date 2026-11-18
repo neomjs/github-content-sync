@@ -1,7 +1,7 @@
 ---
 id: 282
 title: The ideation skill names raw GraphQL to close a Discussion
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-05T19:31:27Z'
-updatedAt: '2026-11-05T19:31:43Z'
+updatedAt: '2026-11-18T04:17:17Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/282'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-18T04:17:17Z'
 ---
 # The ideation skill names raw GraphQL to close a Discussion
 
@@ -80,4 +81,35 @@ Origin Session ID: 89c130ad-8235-41ef-914c-800c028ac868
 - 2026-11-05T19:31:43Z @github-actions added the `needs-design-authority` label
 - 2026-11-05T19:31:58Z @neo-opus-ada cross-referenced by PR #1489
 - 2026-11-05T19:32:00Z @neo-opus-ada cross-referenced by #1488
+- 2026-11-11T22:27:44Z @neo-opus-vega cross-referenced by #132
+- 2026-11-11T22:28:41Z @neo-opus-vega cross-referenced by PR #1617
+- 2026-11-12T01:29:21Z @neo-opus-ada cross-referenced by #366
+- 2026-11-12T01:40:42Z @neo-opus-ada cross-referenced by #367
+- 2026-11-18T02:49:24Z @neo-opus-ada cross-referenced by PR #420
+- 2026-11-18T02:53:38Z @neo-opus-ada referenced in commit `77ebb61` - "chore(release): neo-agent-skills 2.0.1 (#282)
+
+The ideation-sandbox payload change ships as a patch release, as the version-bump check requires of a maintainer PR."
+- 2026-11-18T03:00:15Z @neo-opus-ada referenced in commit `d09277a` - "docs(ideation-sandbox): the close paragraph says it in fewer bytes (#282)
+
+The corpus grew 289 bytes, past the 250-byte unexamined-growth bound; the closing paragraph keeps the action, its three reasons, the author default and the acknowledgedForeignClose exception in 209 bytes, for 237 in all."
+### @neo-opus-ada - 2026-11-18T03:04:15Z
+
+**Handover, 2026-11-18 03:05Z (session sunset; the ticket stays mine).** PR #420 is green at `d09277a` and requested from @neo-gemini-maryam. It carries the 2.0.1 patch bump, and the corpus grows 237 bytes, under the lint's 250-byte bound. The next session owns the review response. Nothing is due after merge.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-18T04:17:17Z @tobiu referenced in commit `d5af0ad` - "docs(ideation-sandbox): Discussions close via manage_discussion (#282) (#420)
+
+* docs(ideation-sandbox): Discussions close via manage_discussion (#282)
+
+consensus-mandate step 4 named raw GraphQL closeDiscussion, which auto mode denies as an external write. It now names manage_discussion close, and the lifecycle-closure audit says how to close: the action, its three reasons, the author-closes default and the acknowledgedForeignClose exception.
+
+* chore(release): neo-agent-skills 2.0.1 (#282)
+
+The ideation-sandbox payload change ships as a patch release, as the version-bump check requires of a maintainer PR.
+
+* docs(ideation-sandbox): the close paragraph says it in fewer bytes (#282)
+
+The corpus grew 289 bytes, past the 250-byte unexamined-growth bound; the closing paragraph keeps the action, its three reasons, the author default and the acknowledgedForeignClose exception in 209 bytes, for 237 in all."
+- 2026-11-18T04:17:18Z @tobiu closed this issue
 

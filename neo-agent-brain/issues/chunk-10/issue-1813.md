@@ -1,7 +1,7 @@
 ---
 id: 1813
 title: Every provider-authenticated transport carries the subject
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-16T17:09:23Z'
-updatedAt: '2026-11-17T20:37:02Z'
+updatedAt: '2026-11-17T23:05:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1813'
 author: neo-opus-ada
 commentsCount: 0
@@ -26,6 +26,7 @@ contentTrust:
 blockedBy:
   - '[x] 1812 A protected relation binds each provider subject to its acting identity'
 blocking: []
+closedAt: '2026-11-17T23:05:21Z'
 ---
 # Every provider-authenticated transport carries the subject
 
@@ -171,4 +172,55 @@ spec writes no config object."
 `oidcSubject` read a present but malformed `iss` ('', null, a number) as
 omitted, so it took the qualified discovery issuer. Only an absent `iss`
 is covered now; any present value must equal the qualified issuer."
+- 2026-11-17T23:05:21Z @tobiu referenced in commit `d172de4` - "feat(auth): provider-authenticated transports carry the subject (#1813) (#1833)
+
+* feat(memory-core): stdio gh-cli selects its identity by subject (#1813)
+
+StdioIdentityResolver's gh-cli arm now carries the subject its `gh api
+user` payload proves: provider github, the API base its own url names,
+and the account id. A field the payload lacks stays absent. The
+configured API base never stands in, since gh may be signed in to
+another host.
+
+Once the cutover activates selection, Server.resolveStdioIdentity acts
+as the identity that subject is bound to (selectAgentIdentityBySubject,
+create: false), keyed by its bare id. A subject that selects none fails
+the boot by name; there is no login fallback.
+
+NEO_AGENT_IDENTITY stays host-trusted: it carries no subject, keeps the
+login binding, and never reads the activation (ADR 0038 2.2 fact 5).
+
+* feat(auth): an OIDC request carries its (issuer, sub) subject (#1813)
+
+The OIDC verifier stamps provider oidc, the issuer as providerBaseUrl and
+sub as providerUserId (oidcSubject). The issuer is the introspection's
+iss, else the one discovery named. When both exist they are compared
+exactly, and a mismatch leaves no issuer, so selection refuses the
+incomplete subject by name once active. preferred_username stays the
+login: it selects only while selection is dormant, and nothing binds
+ahead of the gate, since oidc is no create source by default.
+
+Fleet resolves an owner only for forge providers (ADR 0038 2.2 fact 2).
+An OIDC subject reaching createFleetRequestContext resolves none, as
+before, rather than a forge-registry refusal reason.
+
+The trusted proxy's host-trusted shape is now pinned exactly.
+
+* chore(auth): state the subject rules in comments, not ADR refs (#1813)
+
+* fix(auth): qualify OIDC and stdio subjects; keep dormant and Fleet readers (#1813)
+
+* test(auth): build the OIDC proxy config with its overrides (#1813)
+
+`Object.assign(aiConfig.auth, authOverrides)` counted as a shared-config
+write under ADR-0019 B4 and put TransportService.spec above its ceiling
+of 0. The helper now builds the auth block with the overrides, so the
+spec writes no config object.
+
+* fix(auth): only an omitted OIDC iss takes the discovery issuer (#1813)
+
+`oidcSubject` read a present but malformed `iss` ('', null, a number) as
+omitted, so it took the qualified discovery issuer. Only an absent `iss`
+is covered now; any present value must equal the qualified issuer."
+- 2026-11-17T23:05:22Z @tobiu closed this issue
 
