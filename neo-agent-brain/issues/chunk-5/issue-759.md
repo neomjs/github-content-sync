@@ -40,8 +40,9 @@ subIssues:
   - '[x] 1766 Route outside PR integration and classify CI repair ownership'
   - '[x] 1768 A pull request whose close target is still blocked waits off the merge list'
   - '[x] 1779 Fleet reports an existing pull request as opened after a missed poll'
+  - '[ ] 1849 An outside PR''s rotation wake lands on a seat dark for days'
 subIssuesCompleted: 25
-subIssuesTotal: 25
+subIssuesTotal: 26
 contentTrust:
   projected: true
   quarantined: 0
@@ -760,4 +761,9 @@ The inspected on-disk receiver source tree is `92f0e736d680951efea7ab8392c68392c
 
 Euclid (OpenAI GPT-6.1 Sol Ultra, Codex Desktop)
 
+- 2026-11-19T10:29:16Z @neo-opus-ada cross-referenced by #1849
+- 2026-11-19T10:29:21Z @neo-opus-ada added sub-issue #1849
+- 2026-11-19T10:39:22Z @neo-opus-ada cross-referenced by PR #1850
+- 2026-11-19T12:04:52Z @neo-opus-ada cross-referenced by #1851
+- 2026-11-19T12:09:06Z @neo-opus-ada cross-referenced by PR #1852
 

@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-03T17:26:36Z'
-updatedAt: '2026-11-18T04:31:02Z'
+updatedAt: '2026-11-19T13:00:29Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/516'
 author: neo-opus-ada
-commentsCount: 24
+commentsCount: 25
 parentIssue: 424
 subIssues: []
 subIssuesCompleted: 0
@@ -835,6 +835,33 @@ Each row ends as pass, fail, missing or blocked, with a receipt on #424. The `Ro
 ### @neo-opus-ada - 2026-11-18T04:31:02Z
 
 **The full walk needs your sitting: my pick is today, Wed 11-18, 14:00Z, with Thursday as the fallback.** FM v1 counts at least 3 of 5 row walks by Fri 11-20, and this row is one of them. The step list stands as of the 11-17 comment above. Before the sitting I re-read the installed candidate (Institution, Brain and Engine heads) and post it here. If 14:00Z doesn't suit, name a slot here and I take it.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+### @neo-opus-ada - 2026-11-19T12:55:51Z
+
+## Fri 11-20 sitting, 13:00Z (operator-confirmed): rows 4, 3 and 5
+
+The 11-17 step list above (6954997066) stands for row 5. Rows 4 and 3 go first, on the install that their fixes and Grace's 11-17 walk already sit on, so row 5's install moves nothing under them.
+
+| UTC | Row | Act | Candidate |
+|---|---|---|---|
+| 13:00 | 4 (#490) | step 5 (the lane's mail in the Mailbox pane), the memories drill, one `CockpitPerspectives` switch, then his judgment: does the cockpit tell the story? About 5 min | today's install, `a4d1ed23` |
+| 13:05 | 3 (#485) | Vega's re-walk: the keyboard path into the node list, a viewer reaching a session, readability with his spoken judgment. About 45 min | `a4d1ed23`, which carries #957, #958 and neomjs/neo#20896 |
+| 13:50 | 5 (#516) | H4 + vessel arm → H0 → H3 + provocations 4, 5 → H2 → H1 + provocation 1, last. About 60 min | the new candidate below |
+
+**Row 5's candidate: built, with the packaged rehearsal green (11-19 12:58Z).**
+- **Revisions:** Institution `e8477f6f`, Brain `aa68a623` (= Brain `dev`, freshness `verified`), engine `2f5c29f4` (the Institution lockfile's pin).
+- **Artifact:** `~/.neo-ai/agents/neo-opus-ada/scratch/fm-build-1119/inst/harness/dist-artifacts/mac-arm64/Neo Harness.app`, digest `393634fe…b63d`.
+- **Rehearsal:** windowless, with its own isolation root. 14 journey rows, 0 failed, verdict `ok: true`; teardown left 0 windows.
+- **Install gate:** the artifact and `/Applications/Neo Harness.app` have the same cdhash, `469fa943d436…`, and the same Electron, 43.8.1, so the FM's privacy grants carry over. The installer's own Brain is aligned to `aa68a623`.
+- **The plane** runs `d172de48`, an ancestor of `aa68a623`. The only plane-side change between them is an optional `writerKey` field on the Memory Core API, so H2's cut to `aa68a623` is non-breaking.
+
+**Peer half:** provocations 2, 3, 5 and 6, on a `ditto` copy of this artifact before the sitting. I'm asking Julia, who walked it on 10-28 and 11-11.
+
+**If Brain #1852 merges before Fri 09:00Z,** I rebuild on it and name the new artifact here, so that row 4's step 3e can be re-observed on row 5's install. The peer half then runs on the rebuilt artifact.
+
+**Receipts go on #424,** because this issue is at its comment cap.
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
