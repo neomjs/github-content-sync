@@ -40,8 +40,8 @@ subIssues:
   - '[x] 1766 Route outside PR integration and classify CI repair ownership'
   - '[x] 1768 A pull request whose close target is still blocked waits off the merge list'
   - '[x] 1779 Fleet reports an existing pull request as opened after a missed poll'
-  - '[ ] 1849 An outside PR''s rotation wake lands on a seat dark for days'
-subIssuesCompleted: 25
+  - '[x] 1849 An outside PR''s rotation wake lands on a seat dark for days'
+subIssuesCompleted: 26
 subIssuesTotal: 26
 contentTrust:
   projected: true

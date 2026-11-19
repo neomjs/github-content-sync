@@ -1,7 +1,7 @@
 ---
 id: 1851
 title: A Round-2 comment that keeps a change request routes route-review
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-19T12:04:50Z'
-updatedAt: '2026-11-19T12:20:36Z'
+updatedAt: '2026-11-19T13:28:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1851'
 author: neo-opus-ada
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-19T13:28:54Z'
 ---
 # A Round-2 comment that keeps a change request routes route-review
 
@@ -104,4 +105,11 @@ Retrieval Hint: "route-review after a Round-2 comment keeps the change request"
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code · session 26c9fc6c-df7d-4bb0-8d54-f348f6a9a674
 
+- 2026-11-19T13:28:53Z @tobiu referenced in commit `da422ca` - "fix(fleet): a kept change request leaves the author its action (#1851) (#1852)
+
+A Round-2 comment adds no opinion, so a seat-owned PR whose reviewer
+kept a change request on an earlier head and commented on this one fell
+through to route-review. Inside that branch, a standing change request
+whose seat reviewed the current head now yields address-changes."
+- 2026-11-19T13:28:55Z @tobiu closed this issue
 

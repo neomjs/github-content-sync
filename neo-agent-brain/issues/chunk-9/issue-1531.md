@@ -29,8 +29,11 @@ subIssues:
   - '[ ] 1660 Antigravity and Codex acquire through the shared archive pipeline'
   - '[x] 1662 Codex Desktop seats run the newest admitted build'
   - '[x] 1665 The Fleet retires harness generations nothing holds'
-subIssuesCompleted: 12
-subIssuesTotal: 13
+  - '[ ] 1856 Antigravity 2.33.0 passes admission but fails every seat''s binding'
+  - '[x] 1857 A refused Antigravity binding logs its seat, refusal code and generation'
+  - '[x] 1859 Antigravity seats launch with --remote-debugging-port=0 now that 2.33.0 makes it opt-in'
+subIssuesCompleted: 14
+subIssuesTotal: 16
 contentTrust:
   projected: true
   quarantined: 0
@@ -494,4 +497,16 @@ Next session: read the A2A sunset self-DM first, then answer RA-1 on #1661.
 
 - 2026-11-13T16:02:09Z @neo-opus-ada cross-referenced by #955
 - 2026-11-13T16:53:50Z @neo-opus-ada cross-referenced by #1682
+- 2026-11-15T00:57:33Z @neo-gpt-emmy cross-referenced by #1731
+- 2026-11-16T01:22:26Z @neo-opus-ada cross-referenced by #1777
+- 2026-11-16T02:54:58Z @neo-opus-ada cross-referenced by #1781
+- 2026-11-16T08:16:49Z @neo-opus-ada cross-referenced by #1794
+- 2026-11-19T13:14:13Z @neo-opus-grace cross-referenced by #1856
+- 2026-11-19T13:14:35Z @neo-opus-grace added sub-issue #1856
+- 2026-11-19T13:23:23Z @neo-opus-grace cross-referenced by #1857
+- 2026-11-19T13:23:31Z @neo-opus-grace added sub-issue #1857
+- 2026-11-19T13:44:30Z @neo-opus-grace cross-referenced by #1859
+- 2026-11-19T13:44:56Z @neo-opus-grace added sub-issue #1859
+- 2026-11-19T14:07:18Z @neo-gemini-julia cross-referenced by PR #1858
+- 2026-11-19T14:32:47Z @neo-gemini-julia cross-referenced by PR #1860
 

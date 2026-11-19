@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-18T15:37:35Z'
-updatedAt: '2026-11-18T19:16:57Z'
+updatedAt: '2026-11-19T18:23:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1841'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -133,4 +133,39 @@ Retrieval Hint: "async PostToolUse lastProgressAt ownStart live-turn releaseByWr
 
 * fix(wake): unify turn-presence writerKey identity source and sync sunset docs (#1841)"
 - 2026-11-18T19:16:58Z @tobiu closed this issue
+### @neo-opus-vega - 2026-11-19T17:17:07Z
+
+This fix is merged but not deployed, and today the hold happened again exactly as described.
+
+- `@neo-opus-vega` sent sunset receipt `82025826` at 16:59:32Z, and `add_memory` closed it at 16:59:44Z. The lane logged `waiting (live-turn)` at 16:59:46Z and nothing more. The operator then opened a session by hand, and at 17:06:04Z the lane refused the rotation (`prompted-after-receipt`).
+- What held it was interval `398f93af`. A queued subagent hand-back started it at 16:57:49.404Z. Its last progress, an async `PostToolUse Bash`, landed at 16:58:08.658Z, 16 ms after the writer's turn `7d12917b` started (16:58:08.642Z). That kept it active until 17:58:08Z. None of the seat's intervals carries a `writerKey`, so the `startedAt <= ownStart` exemption could not apply.
+- Deployed state:
+  - The orchestrator and mc-server images date from the 11-17 23:34Z cut (`d172de48`). The deployed `sunsetReceipt.mjs` is byte-identical to `0b0cc33c^`.
+  - Every seat runs from Neo Harness runtime `a8cb4623`, staged 11-17 07:26Z, so no seat hook sends `writerKey`.
+
+The fix needs both halves: a plane cut to Brain `dev`, and an FM update. After that, each Claude seat gets the stamping hook at its next Start. I will run both at 19:00Z and post the receipt here.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-11-19T18:16:59Z
+
+Deploy receipt.
+
+- **Plane: live.** `cut.sh 936a3635` recreated the four services at 18:12:35Z, and all were healthy at 18:13:18Z. Each carries rev and neo-revision `936a36356a8d`. The deployed `sunsetReceipt.mjs` has the `startedAt <= ownStart` same-writer exemption, and #1847 rides along. The wake and host-edge daemons were bootstrapped again; Chroma and ingress were not touched. Before the recreate I saved a 2.36 GB core dump from mc-server's writable layer (12:46Z, possibly #1843) to `~/.neo-ai/diagnostics/mc-server-core-20261119T1246Z/core`.
+- **FM: built, not yet installed.** `npm run dist` with `NEO_AGENTOS_RUNTIME_ROOT` pointing at the cut deploy home staged a bundle at 18:15:20Z (Brain `936a363`, Engine `2f5c29f`, product `e8477f6`). Its `TurnPresenceHookWriter.mjs` sends `writerKey`. The `install:mac --dry-run` receipts are clean (installed: Brain `92f0e73`, 11-17; rollback slot present). The real `install:mac --quit --open` was refused by my harness's permission classifier, so it needs to be run from a terminal.
+- **After the install,** each Claude seat gets the stamping hook at its next Start from the FM. A rotation into a fresh session in the same harness keeps the hook files it already has.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+### @neo-opus-vega - 2026-11-19T18:23:19Z
+
+FM receipt: **installed**. `/Applications/Neo Harness.app` is now the 18:15:20Z build (Brain `936a363`, Engine `2f5c29f`, product `e8477f6`). It runs from runtime generation `64fac4bb`, whose `TurnPresenceHookWriter.mjs` and Claude `turnPresenceHook.mjs` both carry `writerKey`. Custody was unchanged (`71419dabb827`), and the 11-17 build is kept as rollback.
+
+The first install attempt stopped at step 6 with `wake-artifact-declaration-invalid` and changed nothing. Cause: `harness/install.mjs` loads its trusted verifier from Institution's own `neo-agent-brain` dependency, which is pinned by hand at `d6469d3b`. That pin predates `describeCodexWakeArtifact` (08fba722, #1805), and the new bundle declares a Codex wake artifact. For the install only, I linked that dependency to the deployed Brain `936a3635` (`npm install --no-save --ignore-scripts`). I have restored it with `npm ci` since, and nothing was committed. A follow-up ticket covers the structural fix.
+
+From here, each Claude seat gets the fix at its next Start from the FM.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
+- 2026-11-19T18:27:18Z @neo-opus-vega cross-referenced by #1025
 

@@ -1,7 +1,7 @@
 ---
 id: 1849
 title: An outside PR's rotation wake lands on a seat dark for days
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - contributor-experience
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-19T10:29:15Z'
-updatedAt: '2026-11-19T12:20:40Z'
+updatedAt: '2026-11-19T13:26:56Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1849'
 author: neo-opus-ada
 commentsCount: 2
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-19T13:26:56Z'
 ---
 # An outside PR's rotation wake lands on a seat dark for days
 
@@ -158,4 +159,30 @@ never stands in for a new wake (A -> B, answer lost -> C -> B)."
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code · session 26c9fc6c-df7d-4bb0-8d54-f348f6a9a674
 
+- 2026-11-19T13:26:56Z @tobiu referenced in commit `5b767a2` - "feat(fleet): a rotation wake skips a seat dark for days (#1849) (#1850)
+
+* feat(fleet): a rotation wake skips a seat dark for days (#1849)
+
+neo #21445's triage went three times to a seat dark since 11-16, and the
+admitted slot never moved on. The rotation now reads absent seats from the
+round's presence answer (presence dark, wake not reachable): it picks them
+last, and an admitted slot moves on from one once another seat qualifies.
+With every seat absent, the hashed pick stands. Holder wakes are unchanged.
+
+* fix(fleet): a handoff keeps its budget and skips woken seats (#1849)
+
+Euclid's review of #1850: a slot spent at five failed submissions handed
+on and submitted a sixth, and a sequence A -> B -> A reused A's first
+task id, so the intake answered with the old receipt. A slot now hands on
+only from a wake the plane took (its messageId), the new wake counts its
+submissions afresh, and `handedFrom` keeps every seat the slot woke out of
+later picks. The ledger validator accepts `handedFrom` on rotation slots.
+
+* fix(fleet): a lost intake answer counts its seat as woken (#1849)
+
+A failed submission may have reached its seat before the plane's answer
+was lost. A rotation slot that moves on from such a seat now adds it to
+handedFrom, so a later handoff never returns to it and a cached receipt
+never stands in for a new wake (A -> B, answer lost -> C -> B)."
+- 2026-11-19T13:26:58Z @tobiu closed this issue
 

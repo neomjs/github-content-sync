@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-19T13:02:24.190Z",
-  "releasesLastFetched": "2026-11-19T13:02:23.746Z",
+  "lastSync": "2026-11-19T21:31:32.539Z",
+  "releasesLastFetched": "2026-11-19T21:31:31.715Z",
   "issues": {
     "5": {
       "state": "OPEN",
@@ -1990,28 +1990,37 @@
       "contentHash": "4ec2e3e1f798b5b928d33bc4cfd9edda3898b144e4116f12f652d7596c720c3d",
       "milestone": null,
       "commentsTotal": 0
+    },
+    "424": {
+      "state": "CLOSED",
+      "path": "neo-agent-skills/issues/chunk-3/issue-424.md",
+      "closedAt": "2026-11-19T17:57:51Z",
+      "updatedAt": "2026-11-19T17:57:51Z",
+      "contentHash": "b98642f91dcfb664d864a1c51db5ee5689a399b6817669e2bdd9f1343517a7aa",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "426": {
+      "state": "CLOSED",
+      "path": "neo-agent-skills/issues/chunk-3/issue-426.md",
+      "closedAt": "2026-11-19T19:50:42Z",
+      "updatedAt": "2026-11-19T19:50:42Z",
+      "contentHash": "a920d997cd7fb061b52e93741f332bcf4f34379fae2dcc119954a014b82c3034",
+      "milestone": null,
+      "commentsTotal": 1
+    },
+    "427": {
+      "state": "CLOSED",
+      "path": "neo-agent-skills/issues/chunk-3/issue-427.md",
+      "closedAt": "2026-11-19T21:10:23Z",
+      "updatedAt": "2026-11-19T21:10:23Z",
+      "contentHash": "e1e85556fd54f27f7808f8013a11d3fc89c9743b2f560cce605a1a734ce6c0c5",
+      "milestone": null,
+      "commentsTotal": 1
     }
   },
   "releases": {},
   "pulls": {
-    "369": {
-      "state": "MERGED",
-      "path": "neo-agent-skills/pulls/chunk-2/pr-369.md",
-      "closedAt": "2026-11-12T04:32:59Z",
-      "mergedAt": "2026-11-12T04:32:59Z",
-      "milestone": null,
-      "updatedAt": "2026-11-12T04:33:02Z",
-      "contentHash": "30fe433e5a112e12995e59691f0f314ce55c94752c3876afd94b37177167dd4f"
-    },
-    "371": {
-      "state": "MERGED",
-      "path": "neo-agent-skills/pulls/chunk-2/pr-371.md",
-      "closedAt": "2026-11-12T05:01:26Z",
-      "mergedAt": "2026-11-12T05:01:26Z",
-      "milestone": null,
-      "updatedAt": "2026-11-12T05:01:28Z",
-      "contentHash": "4527da91df88b4de26238364df8f5c7149f6e1952893305ee71b95bf61eff89c"
-    },
     "372": {
       "state": "MERGED",
       "path": "neo-agent-skills/pulls/chunk-2/pr-372.md",
@@ -2020,15 +2029,6 @@
       "milestone": null,
       "updatedAt": "2026-11-12T12:59:38Z",
       "contentHash": "5a8b6346fd8624a21c03781a3c718b9a7b47496b43242fc597a7b64112ec4f1d"
-    },
-    "373": {
-      "state": "MERGED",
-      "path": "neo-agent-skills/pulls/chunk-2/pr-373.md",
-      "closedAt": "2026-11-12T08:56:00Z",
-      "mergedAt": "2026-11-12T08:56:00Z",
-      "milestone": null,
-      "updatedAt": "2026-11-12T08:56:09Z",
-      "contentHash": "1f6378a77e7d0522dd4aace546b6d0d222d8375ab6307084d9b7c53ccf0366cd"
     },
     "374": {
       "state": "MERGED",
@@ -2263,6 +2263,33 @@
       "milestone": null,
       "updatedAt": "2026-11-19T08:55:56Z",
       "contentHash": "ee449d6b987ba307ecddc05387db14fe35198bd9c2f09db4e51d5688f854c2df"
+    },
+    "425": {
+      "state": "MERGED",
+      "path": "neo-agent-skills/pulls/chunk-3/pr-425.md",
+      "closedAt": "2026-11-19T17:57:49Z",
+      "mergedAt": "2026-11-19T17:57:49Z",
+      "milestone": null,
+      "updatedAt": "2026-11-19T17:57:52Z",
+      "contentHash": "edf8ee0180c60f0008c51374215a683bed539949f39b6e91528b4ce97c54a610"
+    },
+    "428": {
+      "state": "MERGED",
+      "path": "neo-agent-skills/pulls/chunk-3/pr-428.md",
+      "closedAt": "2026-11-19T19:50:40Z",
+      "mergedAt": "2026-11-19T19:50:40Z",
+      "milestone": null,
+      "updatedAt": "2026-11-19T19:50:43Z",
+      "contentHash": "c3d42c240d01ab268a4251d3ee51fa6557c957a2483b4c7b5a2a44f940ac3767"
+    },
+    "429": {
+      "state": "MERGED",
+      "path": "neo-agent-skills/pulls/chunk-3/pr-429.md",
+      "closedAt": "2026-11-19T21:10:21Z",
+      "mergedAt": "2026-11-19T21:10:21Z",
+      "milestone": null,
+      "updatedAt": "2026-11-19T21:10:24Z",
+      "contentHash": "8a06bfab8c18a996e128caa1db701e9a1fde123c4f96f55f2ef7427d10e80389"
     }
   },
   "discussions": {}
