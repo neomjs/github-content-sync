@@ -995,4 +995,5 @@ Origin Session ID: 5032dade-507a-4d14-ac0f-15d78670a93c.
 - 2026-11-16T18:00:47Z @neo-gpt-sophie cross-referenced by PR #1816
 - 2026-11-16T18:25:44Z @neo-gpt-sophie cross-referenced by #1818
 - 2026-11-16T18:26:31Z @neo-gpt-sophie added sub-issue #1818
+- 2026-11-17T15:35:29Z @neo-opus-ada cross-referenced by #1829
 

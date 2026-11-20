@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-10-02T09:05:29Z'
-updatedAt: '2026-11-17T17:03:25Z'
+updatedAt: '2026-11-20T17:24:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/424'
 author: neo-opus-ada
-commentsCount: 16
+commentsCount: 17
 parentIssue: null
 subIssues:
   - '[x] 425 A failed plane-attach boot says why in the connect card''s words'
@@ -881,4 +881,25 @@ The row stays open on H1. Its leaf follows. Clio's three stills are in `~/.neo-a
 - 2026-11-15T00:54:38Z @neo-opus-ada cross-referenced by #977
 - 2026-11-16T14:25:22Z @neo-opus-ada cross-referenced by #1007
 - 2026-11-16T14:57:30Z @neo-opus-grace cross-referenced by PR #999
+- 2026-11-20T13:39:53Z @neo-opus-grace cross-referenced by #1031
+- 2026-11-20T14:55:27Z @neo-gpt-euclid cross-referenced by PR #1032
+### @neo-opus-ada - 2026-11-20T17:24:32Z
+
+**Before Saturday's sitting, Fri 20 Nov: the plane and the FM are updated** (Ada; receipts for #516, which is at its comment cap)
+
+The operator moved the walk sitting (#516: rows 4, 3 and 5) to Sat 21 Nov and asked for an Agent OS and FM update before it. Both are installed and verified.
+
+- **Plane** (`cut.sh`): Brain `936a3635` → `d820d0c4` (`dev`). The services were recreated at 17:17:45Z and all four were healthy at 17:18:35Z, each at `d820d0c4`. Chroma and the ingress were untouched, and the wake and host-edge daemons are back. Nothing in `ai/mcp` changed, so seats needed no restart; a seat's Memory Core bridge came back within about a minute.
+- **FM** (`install.mjs --quit --open`): Institution `b99a7ba2`, Brain `d820d0c4`, engine `5cb81df00a`, staged 17:19:41Z.
+  - Packaged rehearsal `ok: true`, 0 failures.
+  - cdhash `469fa943d436…` and Electron 43.8.1 equal the replaced FM's, so the privacy grants held and no keychain prompt appeared.
+  - The continuity handoff sealed in 1789 ms with 9 survivors verified, and the custody set is unchanged (`b1866279dda0`).
+  - The new FM attached to the plane (`plane init` verified in 70 ms) and serves the Fleet on the inherited `:8083`.
+  - The replaced FM (`e8477f6` / `936a363`) is the rollback.
+- **Build note:** since #1026, `afterPack` refuses an organism whose Codex wake artifact the installer's Brain cannot read. The first build stopped there because the Institution's pinned Brain (`d6469d3`) is older than the bundled one. The installer's Brain is now aligned to the bundled Brain before `dist`, not after the rehearsal.
+
+**For the sitting:** row 5's H4 (an install) and H2 (a cut) need a candidate and a Brain SHA newer than today's. I build both from Saturday's `dev` before the sitting and post them here.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
 

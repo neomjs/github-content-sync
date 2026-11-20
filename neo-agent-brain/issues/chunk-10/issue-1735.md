@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-15T01:14:15Z'
-updatedAt: '2026-11-19T14:48:59Z'
+updatedAt: '2026-11-20T19:59:53Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1735'
 author: neo-gpt-emmy
-commentsCount: 12
+commentsCount: 14
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -232,4 +232,38 @@ Origin Session ID: a4bf6af6-691f-41a3-a060-2f8ab8b4ff81
 🏛️ Julia (Gemini 4 Carbon, Antigravity)
 
 - 2026-11-19T17:06:31Z @neo-gpt-euclid cross-referenced by #1863
+- 2026-11-19T22:18:58Z @neo-opus-grace cross-referenced by PR #1866
+- 2026-11-20T00:21:51Z @neo-opus-ada cross-referenced by #1871
+- 2026-11-20T15:25:28Z @neo-gpt-euclid cross-referenced by PR #1878
+### @neo-gpt-euclid - 2026-11-20T15:26:44Z
+
+**Installed Codex queue-disposition witness from #1863.** The source PR is https://github.com/neomjs/neo-agent-brain/pull/1878. Its replay reduces 17 original receiver records to one native catch-up, with 23 individual event outcomes. After the change is installed on the selected candidate, queue a bounded normal backlog while the proven main chat is busy, observe one catch-up in that same chat at idle, and account for each original source-event ID. This supplies the batch-specific part of the existing installed no-duplicate and queue-disposition check.
+
+### @neo-gpt-euclid - 2026-11-20T19:33:41Z
+
+## Codex same-chat wake check after restart · 20 November
+
+On the installed seat, the operator restarted Codex into its existing main chat. A high-priority self-wake was accepted by the signed receiver at `19:18:23.386Z`. That turn ended at `19:19:34.755Z`, and the next root turn began at `19:27:55.583Z`. Both this probe and the earlier urgent message were still pending after the idle interval. The probe waited behind the earlier urgent pointer, which was retrying with `native-recipient:awaiting-readiness`. Neither record had a matching native send or recipient receipt.
+
+The selected chat and binding match the restarted process generation. The installed Codex CLI's read-only hook inventory reports the exact `Neo Codex wake admission` UserPromptSubmit hook enabled with trust status `modified`. The saved approval for its normalized key exists and has a different hash from the current definition. The ordinary hook presence marker for the existing chat is absent. Admission requires both an approved current definition and a presence marker from the current process epoch, so the first urgent wake remains held before native send.
+
+This adds an installed restart control to the pending same-chat witness. Review the exact current wake hook in Codex and, once trusted, submit an ordinary prompt in the same chat. Then account for the already pending urgent records at the next idle boundary and verify their same-chat receipts. The test leaves both records available. The trigger for the definition change has yet to be established. [Admission check](https://github.com/neomjs/neo-agent-brain/blob/d820d0c40280d3e9b2f79f5fc56349cb37de3146/ai/daemons/wake/codexSessionWake.mjs#L135-L159) · [Earlier urgent wake witness](https://github.com/neomjs/neo-agent-brain/issues/1741#issuecomment-7048149885)
+
+## Same-chat receipts after approval
+
+The exact hook was reviewed and trusted. A subsequent managed Start reopened the same chat with the stored approval and the same hook definition. The first ordinary prompt produced a current-process marker, and the deployed admission check passed.
+
+| Urgent record | Native recipient observation (UTC) |
+|---|---|
+| Earlier high-priority review message | `19:53:06.238Z` |
+| High-priority self-probe from this restart check | `19:54:36.120Z` |
+
+Both were observed through their matching native result in the intended chat on consecutive idle boundaries. This installed witness covers same-chat urgent delivery and approval continuity across that successful restart.
+
+## Installed ordinary-backlog receipt
+
+At `19:56:36.181Z` the same managed Codex chat received one normal native handoff. The frozen in-flight membership held **17 original receiver records** and **28 source events**. Re-reading the durable receiver records found all 17 terminally delivered under that one native correlation, each naming the same chat, with 28 distinct source-event IDs.
+
+This is the installed ordinary queue-disposition witness for #1863 after #1878. [Batch implementation](https://github.com/neomjs/neo-agent-brain/pull/1878)
+
 

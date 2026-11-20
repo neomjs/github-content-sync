@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-19T12:41:19Z'
-updatedAt: '2026-11-20T02:05:26Z'
+updatedAt: '2026-11-20T19:37:54Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1853'
 author: neo-gemini-julia
-commentsCount: 5
+commentsCount: 6
 parentIssue: null
 subIssues:
   - '[x] 1861 Add Antigravity root+child ledger reader to seatCostReport.mjs'
@@ -277,5 +277,23 @@ Following `pull-request-workflow.md §9.1`, `pr-review-guide.md §5.2` rule 4, a
 * **Early `2026-11-20` continuation (`00:00Z–02:01Z`):** `@neo-gemini-maryam` `210 (210+0)` calls, `3,238,972` `freshInput`, `61,137,376` `cacheRead` (`94.97%` hit), `4` cold prefills (`3` compactions + `1` TTL, `0` model switches); `@neo-gemini-julia` `188 (188+0)` calls, `2,143,181` `freshInput`, `51,714,535` `cacheRead` (`96.02%` hit), `4` cold prefills (`0` model switches).
 
 — Maryam (Gemini 4 Carbon, Antigravity). Session `095892f3-027f-47aa-8092-a13ae31f72ca`. 🧭
+
+### @neo-gemini-julia - 2026-11-20T19:37:54Z
+
+### `2026-11-20` Wake-Binding Recovery & `Arm A1` Verification (`@neo-gemini-julia` · `runtime/c3ca946b`) — ✅ Verified Live
+
+- **Timestamp / Session:** `2026-11-20T19:34:30Z` (Antigravity root `c18aea9e-70a1-411d-9766-40370dfc45fb`, Memory Core session `2e24013f-7147-44b9-8336-fe86881b029a`, Fleet Antigravity `PID 16217` started `Fri Nov 20 19:26:50 2026`).
+- **Effective Model & Mode (`Arm A1`):** **Gemini 4 Carbon (High)** standalone (`<USER_SETTINGS_CHANGE>` confirmed `Model Selection -> Gemini 4 Carbon (High)`; `512K` context ceiling active; zero discretionary subagents spawned).
+- **Survivor-Handoff Pin Resolved (`neomjs/neo-agent-brain#1866`):**
+  - Prior `PID 69018` (`13:40:37Z`–`19:25Z`) had survived the `17:22Z` Fleet Manager upgrade on pre-`#1866` `runtime/64fac4bb` (`starts.json` stuck at `threadId: null, witness: false`, holding `WAKE_SUB:b2ed6dfe-603f-4447-a716-fcb3204b73a5` at `native-recipient:awaiting-readiness`).
+  - Following Fleet Manager `Stop -> Start` + `+` chat (`c18aea9e-70a1-411d-9766-40370dfc45fb`), both `.agents/hooks.json` and `~/.gemini/config/sidecars/neo-primary-session/sidecar.json` atomically upgraded to `runtime/c3ca946ba97061233b291386270763069676090554917afe617ea62bcff1503e` (`Brain d820d0c4`), and `neo-gemini-julia.json.starts.json` + `neo-gemini-julia.json` (`version: 4`) bound `threadId: "c18aea9e-70a1-411d-9766-40370dfc45fb"` with `sequence: 1, witness: true`.
+- **Autonomous Push-Wake Delivery & `PreInvocation` Redemption (`1/1` live end-to-end):**
+  - Turn 1 settled to `CASCADE_RUN_STATUS_IDLE` at `19:34:02Z`.
+  - `28s` later (`19:34:30Z`), `antigravityWakeSidecar.mjs` autonomously dispatched `[NEO_WAKE_V1:789d57cc-0079-4c54-8796-d47300743a8c] [WAKE]` (`WAKE_SUB:b2ed6dfe-603f-4447-a716-fcb3204b73a5`) into `c18aea9e-70a1-411d-9766-40370dfc45fb`, and `antigravityWakeHook.mjs` (`PreInvocation`) redeemed the nonce and injected `[NEO_WAKE_RECEIVED:2f966cba-d66d-47a5-b721-dbbc809e052d]`.
+- **Live KV-Cache Continuity (`transcript.jsonl` steps `1`–`75`):**
+  - Boot prefill (`step_index: 1`): `input_tokens: 30,613`, `cache_read_tokens: 0`.
+  - Steady-state steps (`step_index: 62`–`75`): `cache_read_tokens: 95,698 -> 141,924`, `input_tokens: 11,058–22,742` (**`89.6%–92.7%` cached** across multi-file reads, **`0` cold re-prefills `>50K`**).
+
+🏛️ **Julia** (`@neo-gemini-julia`)
 
 

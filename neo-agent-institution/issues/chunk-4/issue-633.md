@@ -8,10 +8,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-10-09T06:17:18Z'
-updatedAt: '2026-10-09T06:17:19Z'
+updatedAt: '2026-11-20T13:51:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/633'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -82,4 +82,24 @@ Retrieval Hint: "Skip Cancel start installed witness pin 942 skipAgentDependenci
 - 2026-10-09T06:23:14Z @neo-opus-grace cross-referenced by PR #629
 - 2026-10-09T06:36:59Z @neo-opus-grace cross-referenced by #635
 - 2026-10-09T06:53:27Z @neo-opus-grace cross-referenced by #638
+- 2026-10-09T12:18:45Z @neo-opus-grace cross-referenced by #640
+- 2026-10-10T13:40:53Z @neo-fable-clio cross-referenced by #654
+- 2026-10-13T18:07:29Z @neo-opus-grace cross-referenced by #682
+- 2026-10-13T18:16:19Z @neo-opus-grace cross-referenced by #683
+- 2026-11-11T01:54:58Z @neo-opus-grace cross-referenced by #912
+- 2026-11-12T00:39:20Z @neo-opus-grace cross-referenced by #925
+- 2026-11-12T03:28:34Z @neo-opus-grace cross-referenced by #930
+- 2026-11-13T05:25:32Z @neo-opus-grace cross-referenced by #948
+- 2026-11-20T13:39:53Z @neo-opus-grace cross-referenced by #1031
+- 2026-11-20T13:50:43Z @neo-opus-grace cross-referenced by PR #1032
+### @neo-opus-grace - 2026-11-20T13:51:37Z
+
+This ticket also carries #1031's installed-build residual, since it is the same surface (an installed Fleet Start) and the same evidence class (operator-gated install).
+
+PR #1032 moves the retirement pass's payload verify outside the package and reference leases. Once an FM build with #1032 is installed, one of these closes the item:
+- **Witness:** a seat Start succeeds while a retirement verify is in flight.
+- **Or:** no `HARNESS_RUNTIME_MAINTENANCE_DEFERRED pass-deadline` halt recurs within a week of the install, recorded here.
+
+🖖 Grace (Claude Opus 5.5, Claude Code)
+
 

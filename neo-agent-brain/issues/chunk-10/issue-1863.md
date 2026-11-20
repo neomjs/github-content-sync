@@ -1,15 +1,16 @@
 ---
 id: 1863
 title: Batch pending normal wakes when the main chat goes idle
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - performance
   - agent-os
-assignees: []
+assignees:
+  - neo-gpt-euclid
 createdAt: '2026-11-19T17:06:30Z'
-updatedAt: '2026-11-19T17:06:30Z'
+updatedAt: '2026-11-20T16:20:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1863'
 author: neo-gpt-euclid
 commentsCount: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-20T16:20:27Z'
 ---
 # Batch pending normal wakes when the main chat goes idle
 
@@ -46,7 +48,11 @@ Design authority: @tobiu, 2026-11-19, requested “batching pending normal wakes
 
 ## The Fix
 
-At the verified idle boundary, use the existing native receiver and spool to select a bounded, ordered set of eligible, unclaimed normal records for the same seat, main chat, and generation. Freeze the dispatch membership durably before sending one catch-up digest. Apply explicit event-count and payload-size bounds. Carry the original record and source event identities through the signed grant and receipt so delivery can settle them individually. Retain overflow for subsequent idle opportunities.
+For the Codex Desktop ordinary native lane, the receiver's existing checks supply an ordered set of eligible candidates. Under the existing native and pointer locks, Fleet proves the current idle main chat and generation, then stores the selected original keys and source-event identities in the existing in-flight attempt. The grant renders one digest of at most 48 events and 16 KiB of digest text. An indivisible original digest that cannot be co-batched takes its existing singleton path. Idle-only nudges keep their existing per-record eligibility. Overflow stays pending.
+
+The signed original envelopes and opaque nonce transport remain the authority. Only a verified terminal native receipt lets the receiver settle the frozen original records. The receiver can resume that projection after interruption or old-route replacement, and the in-flight slot stays until every member is recorded. Urgent precedence remains at the claim boundary.
+
+Prescription checked at Brain `8cdf0ad8`: `receiver.mjs`, `primaryWakeSpool.mjs`, and `fleetPrimarySessionWake.mjs` own eligibility, pointer coordination, and the current-root grant. The earlier #1866 change affects the separate Antigravity observer. The staged receiver/Fleet fixture measures the old path at 17 native handoffs.
 
 Decision Record impact: none. The signed current-main ownership and receipt boundary remains the governing contract.
 
@@ -64,7 +70,7 @@ Use the existing `test/playwright/unit/ai/daemons/wake/primarySessionReceiverInt
 - [ ] Replay 16 older accepted normal batches containing 21 synthetic source events, followed by the fresh normal probe digest with two events. With the chat busy, the records wait. On the verified transition to idle, the 17 records fit the normal bound and **one** native handoff reaches that same chat. Assert all 23 source events are represented exactly once and individually queryable after recipient observation. Run the control against the old one-record spool and show the single-handoff assertion fails.
 - [ ] Exercise a queue just over the event or byte limit. The first digest stays within both limits, preserves order, and leaves every remaining event pending for a later idle handoff.
 - [ ] Exercise a receipt loss and restart. Already-admitted membership stays frozen, a late matching receipt settles the same individual events, and confirmed events get no duplicate presentation. Test a foreign seat or obsolete generation and an urgent wake beside the backlog.
-- [ ] Post-merge, capture an installed same-chat catch-up receipt with the original event IDs accounted for.
+- [ ] `[L4-deferred — operator handoff needed]` Post-merge, capture an installed same-chat catch-up receipt with the original event IDs accounted for. The installed Codex queue-disposition proof is tracked under #1735.
 
 ## Out of Scope
 
@@ -88,4 +94,17 @@ Euclid (@neo-gpt-euclid, OpenAI GPT-6.2 Sol Ultra, Codex Desktop)
 - 2026-11-19T17:06:32Z @neo-gpt-euclid added the `ai` label
 - 2026-11-19T17:06:33Z @neo-gpt-euclid added the `performance` label
 - 2026-11-19T17:06:33Z @neo-gpt-euclid added the `agent-os` label
+- 2026-11-20T15:02:55Z @neo-gpt-euclid assigned to @neo-gpt-euclid
+- 2026-11-20T15:25:28Z @neo-gpt-euclid cross-referenced by PR #1878
+- 2026-11-20T15:26:45Z @neo-gpt-euclid cross-referenced by #1735
+- 2026-11-20T15:31:38Z @neo-gpt-euclid referenced in commit `ef2fd82` - "test(wake): construct the context-gate fixture immutably (#1863)"
+- 2026-11-20T16:08:28Z @neo-gpt-euclid referenced in commit `c50c0b3` - "fix(wake): preserve acceptance order in normal batches (#1863)"
+- 2026-11-20T16:20:26Z @tobiu referenced in commit `d820d0c` - "feat(wake): batch normal wakes at the Codex idle boundary (#1863) (#1878)
+
+* feat(wake): batch normal wakes at the Codex idle boundary (#1863)
+
+* test(wake): construct the context-gate fixture immutably (#1863)
+
+* fix(wake): preserve acceptance order in normal batches (#1863)"
+- 2026-11-20T16:20:28Z @tobiu closed this issue
 
