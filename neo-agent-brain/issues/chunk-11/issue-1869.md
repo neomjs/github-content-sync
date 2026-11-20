@@ -1,7 +1,7 @@
 ---
 id: 1869
 title: Rebase wakes reach every stale approved PR at once
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-20T00:02:23Z'
-updatedAt: '2026-11-20T03:02:42Z'
+updatedAt: '2026-11-20T04:24:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1869'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-20T04:24:26Z'
 ---
 # Rebase wakes reach every stale approved PR at once
 
@@ -75,13 +76,15 @@ Origin Session ID: 4aafd3cc-5d2f-4874-9b04-6e4634ab6378
 
 Retrieval Hint: "Fleet rebase wakes fan out to every stale approved PR; wake only the next in merge order"
 
-## Contract Ledger (intake-derived · claimer @neo-opus-ada, 2026-11-20, rows as shipped)
+## Contract Ledger (intake-derived · claimer @neo-opus-ada, 2026-11-20, rows as shipped at `8ef8f820`)
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `mergeLineOf(rows, {absentSeats})` in `ai/services/fleet/openWorkHolder.mjs` (new) | this ticket, fork 1 | Per repository and base branch, the open non-draft rows with a seat's standing approval, oldest approval `at` first; each row behind one that holds its place maps to the nearest such row ahead (`owner/name#number` to `owner/name#number`) | A row whose approval has no time stays outside the line; a partial row, a change request on its head, a blocked close target or an absent author holds no place; `absentSeats: null` treats nobody as absent | module doc + JSDoc | `openWorkHolder.spec.mjs` (#1869 describe) |
+| `mergeLineOf(rows, {seatFamilies, absentSeats, now})` in `ai/services/fleet/openWorkHolder.mjs` (new) | this ticket, fork 1 | Per repository and base branch, the open non-draft rows with a seat's standing approval, oldest approval `at` first; each row behind one that holds its place maps to the nearest such row ahead (`owner/name#number` to `owner/name#number`). A row holds a place only while its freshness is `ok`, its author is not absent, no close target is blocked and its own holder (read with `incompleteRow`) is not `unknown`, `address-changes` or `await-prerequisite` | A row whose approval has no time stays outside the line; `absentSeats: null` treats nobody as absent | module doc + JSDoc | `openWorkHolder.spec.mjs` (#1869 describe) |
 | `holderOf(row, {seatFamilies, line})` (existing; new option `line`) and holder kind `await-merge-turn` (new) with `ahead` | this ticket | A `rebase` holder whose row the line maps becomes `{role, kind: 'await-merge-turn', ids, ahead}`, with `role` and `ids` unchanged | `line: null`, the default, decides per row as before | `holderOf` JSDoc | `openWorkHolder.spec.mjs` |
-| `projectOpenWork` and `createFleetOpenWorkSource` (`fleetOpenWorkSource.mjs`), `planOpenWorkWakes` (`openWorkWakes.mjs`): existing | `openWorkHolder.mjs` module doc: the projection and the wake path never disagree | Both compute `mergeLineOf` over the snapshot's rows and pass it to `holderOf`; the projection takes `absentSeats` beside `seatFamilies`, which `wireFleetOpenWorkSource.mjs` reads from the same presence rows | A caller passing no `absentSeats` treats nobody as absent | JSDoc | `fleetOpenWorkSource.spec.mjs`, `openWorkWakes.spec.mjs` |
+| `incompleteRow` (existing), moved from `openWorkWakes.mjs` into `openWorkHolder.mjs` | Round 1 of #1875 | Unchanged rule; the wake planner and the merge line share it | — | JSDoc | fleet unit suite |
+| `projectOpenWork` and `createFleetOpenWorkSource` (`fleetOpenWorkSource.mjs`), `planOpenWorkWakes` (`openWorkWakes.mjs`): existing | `openWorkHolder.mjs` module doc: the projection and the wake path never disagree | Both compute `mergeLineOf` over the snapshot's rows at their `now` and pass it to `holderOf`; the projection takes `absentSeats` beside `seatFamilies`, which `wireFleetOpenWorkSource.mjs` reads from the same presence rows | A caller passing no `absentSeats` treats nobody as absent | JSDoc | `fleetOpenWorkSource.spec.mjs`, `openWorkWakes.spec.mjs` |
+| `createOpenWorkWakeRound` (`wireFleetOpenWorkWakes.mjs`), existing | Round 1 of #1875 | Reads the presence answer when a rotation slot is admitted or a PR waits in the merge line | Route-read cache and deduplication unchanged | inline comment | `wireFleetOpenWorkWakes.spec.mjs` (#1869 arm) |
 | `await-merge-turn` wake (new) | this ticket | None: the kind is not in `OPEN_WORK_WAKE_REASONS`, so a waiting row sends nothing; its `rebase` wake fires once nothing ahead holds it | — | — | `openWorkWakes.spec.mjs` |
 | Reducer row (`normalizePullRequest` in `openWorkReducer.mjs`), existing: opinions `{reviewer, state, onHead, bot}` | `latestOpinionatedReviews.submittedAt`, already queried, and `baseRefName`, newly queried, in `ai/services/github-workflow/queries/openWorkQueries.mjs` | Each opinion gains `at`, the review's `submittedAt`; the row gains `base`, the PR's `baseRefName` | Missing → `at: null` / `base: null`; a row without `base` shares the line of its repository's other rows without one | — | `openWorkReducer.spec.mjs` |
 | `absentOf` (existing), moved from `wireFleetOpenWorkWakes.mjs` beside `familiesOf` in `wireFleetOpenWorkSource.mjs` | — | Unchanged; the wake wiring imports it from there, as it already imports `familiesOf` | — | JSDoc | fleet unit suite |
@@ -133,4 +136,38 @@ The Contract Ledger is in the body as a claimer section.
 - 2026-11-20T03:02:02Z @neo-opus-ada referenced in commit `5db6d53` - "feat(fleet): the merge line runs per base branch (#1869)
 
 A release PR into main merges nothing a PR into dev has to rebase onto, so an approved one must not hold dev PRs behind it. The snapshot reads each PR's baseRefName and the line groups rows per repository and base."
+- 2026-11-20T03:41:51Z @neo-opus-ada referenced in commit `8ef8f82` - "feat(fleet): only rows the readers act on hold the merge line (#1869)
+
+A row ahead now holds its place only while both readers would act on it: freshly observed, its author not absent, no blocked close target, and its own holder, read with the wake round's coverage rule, neither unknown nor addressing changes. The wake wiring also reads absent seats when a PR waits in the line, so an author going absent ahead releases the follower on a pulse that plans no wake yet."
+- 2026-11-20T04:05:44Z @neo-opus-ada referenced in commit `42593db` - "fix(fleet): the merge line holds only rows the wake round decides (#1869)
+
+A native head read partially has a holder, repair-ci when its CI is red, yet the wake round skips the row. Holding a place for it left the follower waiting with no wake sent. decidableRow now carries the round's own rule, freshly observed and either read completely or a red outside head; the round and the merge line both read it."
+### @neo-opus-ada - 2026-11-20T04:07:06Z
+
+**Handover (Ada, session refresh, 04:10Z).** PR #1875 is at `42593dbb`, on branch `ada/1869-merge-line`.
+- Euclid's Round 1 had two RAs. RA-2 is ADDRESSED in his Round 2. The RA-1 item his Round 2 left open (a partially read native head the wake round skips) is answered in issuecomment-7030074728: the line and the round now share `decidableRow`.
+- CI is running on `42593dbb`.
+- **Next steps:** at the Fleet's `route-review` wake, check `gh pr checks 1875 --required`, then re-request `neo-gpt-euclid`, the only GPT seat live tonight. His Round 3 is a disposition; his family's change-request round is spent. After his approval, the merge is the operator's.
+- **Owner:** Ada, next session.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-20T04:24:26Z @tobiu referenced in commit `ed40297` - "feat(fleet): one merge wakes one rebase through the merge line (#1869) (#1875)
+
+* feat(fleet): one merge wakes one rebase through the merge line (#1869)
+
+The open-work holder decided each PR alone, so one merge into dev woke every approved PR it left conflicting to rebase, and each rebase re-ran CI on the shared runners. mergeLineOf orders a repository's approved open PRs by their oldest standing approval. A conflicting PR behind one that still holds its place reads await-merge-turn and sends no wake until that PR merges. The projection and the wake round pass the same line to holderOf, and absentOf moves beside familiesOf so both read the same absent seats.
+
+* feat(fleet): the merge line runs per base branch (#1869)
+
+A release PR into main merges nothing a PR into dev has to rebase onto, so an approved one must not hold dev PRs behind it. The snapshot reads each PR's baseRefName and the line groups rows per repository and base.
+
+* feat(fleet): only rows the readers act on hold the merge line (#1869)
+
+A row ahead now holds its place only while both readers would act on it: freshly observed, its author not absent, no blocked close target, and its own holder, read with the wake round's coverage rule, neither unknown nor addressing changes. The wake wiring also reads absent seats when a PR waits in the line, so an author going absent ahead releases the follower on a pulse that plans no wake yet.
+
+* fix(fleet): the merge line holds only rows the wake round decides (#1869)
+
+A native head read partially has a holder, repair-ci when its CI is red, yet the wake round skips the row. Holding a place for it left the follower waiting with no wake sent. decidableRow now carries the round's own rule, freshly observed and either read completely or a red outside head; the round and the merge line both read it."
+- 2026-11-20T04:24:27Z @tobiu closed this issue
 

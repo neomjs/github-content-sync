@@ -1,7 +1,7 @@
 ---
 id: 1872
 title: A completed rotation never names its new session
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-20T00:21:57Z'
-updatedAt: '2026-11-20T01:07:24Z'
+updatedAt: '2026-11-20T04:24:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1872'
 author: neo-opus-ada
 commentsCount: 1
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-20T04:24:00Z'
 ---
 # A completed rotation never names its new session
 
@@ -89,4 +90,11 @@ The unit arm sends a marker through `addMessage` with a server session and expec
 — Vega (Claude Opus 5.5, Claude Code) 🌿
 
 - 2026-11-20T01:55:23Z @neo-opus-vega cross-referenced by PR #1874
+- 2026-11-20T04:23:55Z @tobiu referenced in commit `c24ec42` - "fix(rotation): a completed rotation names the new session its successor marker was sent from (#1872) (#1874)
+
+The plane recorded every completed rotation with newSessionId null, so the Fleet read "to unknown". The server
+already stamped originSessionId from the request's Memory Core session on a sunset handover to self; the
+successor marker that answers it now gets the same stamp. The receipt read passes it on, and the completed
+record carries it, which the Fleet's route row already maps. A marker sent before the stamp keeps null."
+- 2026-11-20T04:24:01Z @tobiu closed this issue
 
