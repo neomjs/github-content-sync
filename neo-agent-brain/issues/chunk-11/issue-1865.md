@@ -1,7 +1,7 @@
 ---
 id: 1865
 title: Serve event-driven /fleet/events SSE push from devFleetServer bridge
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,9 +9,10 @@ labels:
   - performance
   - security
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-11-19T18:11:50Z'
-updatedAt: '2026-11-19T18:11:50Z'
+updatedAt: '2026-11-19T22:33:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1865'
 author: neo-gemini-julia
 commentsCount: 0
@@ -26,6 +27,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1024 Drive cockpit and shell updates from Fleet push events over polling'
+closedAt: '2026-11-19T22:33:21Z'
 ---
 # Serve event-driven /fleet/events SSE push from devFleetServer bridge
 
@@ -53,26 +55,26 @@ Today, the composed container `fleetServer.mjs` owns an SSE wake fan-out (`ai/se
 ## The Fix
 
 1. **Expose authenticated `GET /fleet/events` (`text/event-stream`) on `fleetBridgeServer.mjs`:**
-   - Behind the existing `createFleetIngressGuard` (`admit(req)` — same class-1 `bearerToken`, `Host`, and exact `Origin` CORS headers; zero new credential or unauthenticated surface), accept `GET /fleet/events` when an optional `eventFanout` / `registerEventStream(viewerContext, res, corsOrigin)` seam is supplied to `startFleetBridgeServer`.
+   - Behind the existing `createFleetIngressGuard` (`admit(req)` — same class-1 `bearerToken`, `Host`, and exact `Origin` CORS headers; zero new credential or unauthenticated surface), accept `GET /fleet/events` when an optional `eventFanout` (`{registerStream, dispose}`) seam is supplied to `startFleetBridgeServer`.
    - Integrate stream disposal into `server.drainFleetRequests(timeoutMs)` so active SSE responses close cleanly on `SIGTERM`/`SIGINT` instead of hanging shutdown until `timeoutMs` expires.
-2. **Publish typed, secret-free change topics from `devFleetServer.mjs`:**
+2. **Publish typed, secret-free change topics from `devFleetServer.mjs` via `createFleetWakeFanout#publishTopic`:**
    - Emit lightweight invalidation frames (`event: fleet-topic`, `data: {topic, revision, observedAt, changed}`) — carrying **invalidation metadata only, never credentials or cross-tenant bodies** — on:
-     - `open-work`: inside `wireFleetOpenWorkSource`'s `onPulse` whenever `state.observedAt` advances with `transitions.length > 0` or `coverage`/`state` changes;
-     - `roster`: after seat lifecycle mutations (`startAgent`, `stopAgent`, `bench`, `setPlaneCredential`, `harnessAcquisition` adoption) and `bridgeSupervisor.onStateChange`;
-     - `questions` / `activity` / `operator-inbox` / `recent-turns`: when `devFleetServer`'s plane wake consumer (`createFleetWakeSseConsumer` against `<planeBase>/fleet/events`, when armed) observes a wake frame or state change;
-     - `health` / `deployment`: on bridge/plane connectivity state changes.
-3. **Event-driven retained `questions` cache in `FleetControlBridge#fleetOpenWork` (`ai/services/fleet/FleetControlBridge.mjs`):**
-   - Cache the `{open, expired, settledAtMs}` `readOwnQuestions` summary with invalidation on `questions` / mailbox push events (and bounded background refresh when stale, bounded by `AiConfig.fleet.rosterAxisTimeoutMs` / `rosterRetainedMaxAgeMs` per ADR-0019), so `fleetOpenWork()` returns both `openWork` and fresh retained `questions` in `<1 ms` without firing two synchronous `list_messages` RPCs on every UI read.
+     - `open-work`: inside `wireFleetOpenWorkSource`'s `onPulse` (`didOpenWorkPulseMutate`) whenever a pulse produces current-pulse transitions or `coverage`/`snapshot` state changes;
+     - `roster` / `questions` / `activity`: after accepted bridge dispatch mutations (`createBridgeTopicDispatch` / `topicsForFleetMethod`) and `bridgeSupervisor.onStateChange`;
+     - `questions` / `activity` / `roster` / `health`: when `devFleetServer`'s plane wake consumer (`createFleetWakeSseConsumer` `onFrame` against `<planeBase>/fleet/events`, when armed) observes a `wake` or `state` frame, and on plane credential rotation.
+3. **Back-to-back retained `questions` cache in `FleetControlBridge#fleetOpenWork` (`ai/services/fleet/FleetControlBridge.mjs` & `ai/configBase.mjs`):**
+   - Cache viewer-scoped `{open, expired}` `readOwnQuestions` counts in memory (`WeakMap` keyed by `composeWriter` + `viewerIdentity`, bounded by `AiConfig.fleet.questionsRetainedMaxAgeMs` (`2000` ms default; `0` keeps in-flight coalescing only) and `AiConfig.fleet.rosterAxisTimeoutMs` per ADR-0019), coalescing concurrent and back-to-back reads without waiting on `rosterRetainedMaxAgeMs`'s `120` s failure-retention window in in-process/unarmed modes, while invalidating immediately via `invalidateQuestionsCache` (`invalidateFleetQuestionsCache`) on push wakes and accepted own-inbox/task mutations.
 
 ## Contract Ledger
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge | Docs | Evidence |
-|---|---|---|---|---|--|
-| `GET /fleet/events` (`ai/services/fleet/fleetBridgeServer.mjs`) | ADR 0038 §2.5.1 row 1 + `fleetWakeFanout.mjs` | Authenticated class-1 SSE stream emitting `state` handshake + `fleet-topic` `{topic, revision, observedAt}` frames; evicted on `>256 KB` buffer or `drainFleetRequests` | Unauthenticated/bad-Origin refused fail-closed (`401`/`403`) before stream registration; `404` when `eventFanout` unwired | JSDoc on `startFleetBridgeServer` | `fleetBridgeServer.spec.mjs` |
-| `devFleetServer.mjs` topic emitters (`open-work`, `roster`, `questions`, `activity`, `health`) | `fleetWakeFanout.mjs` ("push for latency, poll for truth") | Emit monotonic `revision` per topic on `onPulse` transitions, seat lifecycle mutations, `bridgeSupervisor` transitions, and plane SSE wakes | Disconnected clients catch up via standard read verbs on reconnect | JSDoc in `devFleetServer.mjs` | `devFleetServer` / fanout unit specs |
-| `FleetControlBridge#fleetOpenWork` (`ai/services/fleet/FleetControlBridge.mjs`) | #1689 + #1842 + ADR-0019 | Serve retained `questions` within freshness window, invalidated immediately on `questions`/wake push events | Cold/expired cache falls back to bounded `readOwnQuestions` (`rosterAxisTimeoutMs`) | JSDoc on `fleetOpenWork` | `wireOperatorComposeWriter.spec.mjs` |
+|---|---|---|---|---|---|
+| `GET /fleet/events` (`ai/services/fleet/fleetBridgeServer.mjs`) | ADR 0038 §2.5.1 row 1 + `fleetWakeFanout.mjs` | Authenticated class-1 SSE stream via `opts.eventFanout` emitting `state` handshake + `fleet-topic` `{topic, revision, observedAt, changed}` frames with exact `Access-Control-Allow-Origin` + `Vary: Origin`; disposed inside `drainFleetRequests` | Unauthenticated/bad-Host/bad-Origin refused fail-closed (`401`/`403`) before stream registration; `429`/`503` on stream cap/disposal; `404` when `eventFanout` unwired; malformed `eventFanout` throws `TypeError` at startup | JSDoc on `startFleetBridgeServer` | `fleetBridgeServer.spec.mjs` |
+| `createFleetWakeFanout` (`registerStream`, `publishTopic`) & `createFleetWakeSseConsumer` (`onFrame`) | `fleetWakeFanout.mjs` ("push for latency, poll for truth") | `registerStream(identity, res, {corsOrigin})` echoes optional exact CORS headers; `publishTopic(identity, {topic, observedAt, changed})` emits secret-free `fleet-topic` frames with monotonic per-`(identity, topic)` `revision`; `createFleetWakeSseConsumer` `onFrame` notifies `{event, observedAt}` on `state`/`wake` frames | Throwing `onFrame` observer is caught and logged without dropping the SSE consumer; disposed fan-out returns `null` | JSDoc in `fleetWakeFanout.mjs` & `fleetWakeSseConsumer.mjs` | `fleetWakeFanout.spec.mjs`, `fleetWakeSseConsumer.spec.mjs` |
+| `devFleetServer.mjs` (`didOpenWorkPulseMutate`, `topicsForFleetMethod`, `createBridgeTopicDispatch`) | `fleetWakeFanout.mjs` + `openWorkProducer.mjs` | Emit `fleet-topic` on `onPulse` mutations, accepted mutating `POST /fleet` verbs (`roster` vs `questions`/`activity`), `bridgeSupervisor` transitions, plane bearer adoption, and plane SSE `state`/`wake` frames | Idle `onPulse` rounds and `read-observe` verbs emit nothing; disconnected clients catch up via standard read verbs on reconnect | JSDoc in `devFleetServer.mjs` | `openWorkBoot.spec.mjs` |
+| `FleetControlBridge#fleetOpenWork`, `invalidateQuestionsCache` & `AiConfig.fleet.questionsRetainedMaxAgeMs` (`ai/services/fleet/FleetControlBridge.mjs`, `ai/configBase.mjs`) | #1689 + #1842 + ADR-0019 | Coalesce concurrent reads and serve viewer-scoped retained `questions` within `maxAgeMs` (`AiConfig.fleet.questionsRetainedMaxAgeMs`, `2000` ms default via `NEO_FLEET_QUESTIONS_RETAINED_MAX_AGE_MS`), invalidated immediately on `invalidateQuestionsCache()` / `invalidateFleetQuestionsCache()` and accepted task/mailbox write verbs | `maxAgeMs = 0` keeps in-flight coalescing only; unbound viewer identity or `unavailable` response bypasses caching and preserves `#1689` / `#1842` fallback semantics (`timeoutMs = AiConfig.fleet.rosterAxisTimeoutMs`); external questions in in-process/unarmed mode surface on the next read past `2000` ms | JSDoc on `fleetOpenWork`, `invalidateQuestionsCache` & `configBase.mjs` | `wireOperatorComposeWriter.spec.mjs` |
 
-Decision Record impact: `aligned-with neomjs/neo-agent-institution#adr:0038-fm-client-topology` (§2.5.1 row 1 — reuses class-1 process bearer on `/fleet/events`; mints no new credential class) and `aligned-with` ADR-0019 (reuses existing `AiConfig.fleet` bounds at consumer sites; zero new env vars or B5 pass-through).
+Decision Record impact: `aligned-with neomjs/neo-agent-institution#adr:0038-fm-client-topology` (§2.5.1 row 1 — reuses class-1 process bearer on `/fleet/events`; mints no new credential class) and `aligned-with` ADR-0019 (declares dedicated `fleet.questionsRetainedMaxAgeMs` leaf read at the consumer site; zero B5 pass-through).
 
 ## Acceptance Criteria
 
@@ -121,4 +123,13 @@ Retrieval Hint: "devFleetServer fleetBridgeServer /fleet/events SSE push invalid
 - 2026-11-19T18:11:53Z @neo-gemini-julia added the `security` label
 - 2026-11-19T18:11:53Z @neo-gemini-julia added the `agent-os` label
 - 2026-11-19T18:13:08Z @neo-gemini-julia marked this issue as blocking #1024
+- 2026-11-19T21:33:24Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-11-19T21:42:29Z @neo-gemini-julia cross-referenced by PR #1868
+- 2026-11-19T22:11:33Z @neo-gemini-julia referenced in commit `333be21` - "fix(fleet): size question-count cache for back-to-back reads and restore stream invariants (#1865)"
+- 2026-11-19T22:33:21Z @tobiu referenced in commit `3ff2869` - "feat(fleet): serve /fleet/events SSE push and retain questions counts (#1865) (#1868)
+
+* feat(fleet): serve /fleet/events SSE push and retain questions counts (#1865)
+
+* fix(fleet): size question-count cache for back-to-back reads and restore stream invariants (#1865)"
+- 2026-11-19T22:33:22Z @tobiu closed this issue
 

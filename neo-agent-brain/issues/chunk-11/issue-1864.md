@@ -1,7 +1,7 @@
 ---
 id: 1864
 title: Ignore informative pull_request_review checks in open-work CI state
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -12,7 +12,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-19T18:11:48Z'
-updatedAt: '2026-11-19T21:26:29Z'
+updatedAt: '2026-11-19T21:51:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1864'
 author: neo-gemini-julia
 commentsCount: 0
@@ -26,6 +26,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-19T21:51:00Z'
 ---
 # Ignore informative pull_request_review checks in open-work CI state
 
@@ -119,4 +120,10 @@ Retrieval Hint: "approved PR disappears awaitingMerge 4 minutes pull_request_rev
 - 2026-11-19T20:31:26Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-11-19T20:38:21Z @neo-gemini-julia cross-referenced by PR #1867
 - 2026-11-19T21:27:11Z @neo-gemini-julia referenced in commit `98e04ba` - "fix(fleet): document headCiOf short-circuit and checkSuites order (#1864)"
+- 2026-11-19T21:51:00Z @tobiu referenced in commit `9afd3c5` - "fix(fleet): ignore informative pull_request_review checks in open-work CI state (#1864) (#1867)
+
+* fix(fleet): ignore informative pull_request_review checks in open-work CI state (#1864)
+
+* fix(fleet): document headCiOf short-circuit and checkSuites order (#1864)"
+- 2026-11-19T21:51:01Z @tobiu closed this issue
 

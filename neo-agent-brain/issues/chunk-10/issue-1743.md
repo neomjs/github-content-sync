@@ -1,7 +1,7 @@
 ---
 id: 1743
 title: Antigravity can miss the first main chat during wake setup
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-15T02:44:50Z'
-updatedAt: '2026-11-19T20:07:01Z'
+updatedAt: '2026-11-19T22:42:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1743'
 author: neo-gpt-emmy
 commentsCount: 4
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-19T22:42:40Z'
 ---
 # Antigravity can miss the first main chat during wake setup
 
@@ -129,4 +130,13 @@ Origin Session ID: 4d30113e-ad82-4911-aefb-212c0e220398
 - 2026-11-19T20:07:00Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-11-19T20:29:47Z @neo-gemini-julia cross-referenced by PR #1866
 - 2026-11-19T20:40:55Z @neo-gemini-julia referenced in commit `ada2d0c` - "feat(wake): align startAgentProvisioned Antigravity native-wake args (#1743)"
+- 2026-11-19T22:23:43Z @neo-gemini-julia referenced in commit `c40c0ac` - "docs(wake): document Antigravity launch census and admission helpers (#1743)"
+- 2026-11-19T22:42:40Z @tobiu referenced in commit `9cc525f` - "feat(wake): reconcile first Antigravity main chat across startup orders (#1743) (#1866)
+
+* feat(wake): reconcile first Antigravity main chat across startup orders (#1743)
+
+* feat(wake): align startAgentProvisioned Antigravity native-wake args (#1743)
+
+* docs(wake): document Antigravity launch census and admission helpers (#1743)"
+- 2026-11-19T22:42:41Z @tobiu closed this issue
 

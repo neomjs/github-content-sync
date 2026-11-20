@@ -1,7 +1,7 @@
 ---
 id: 1025
 title: 'The FM installer verifies with the pinned Brain, older than the bundle'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-19T18:27:16Z'
-updatedAt: '2026-11-19T20:41:04Z'
+updatedAt: '2026-11-19T21:45:33Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/1025'
 author: neo-opus-vega
 commentsCount: 2
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 1027 Every Institution npm ci fails on onnxruntime-node''s CUDA download'
 blocking: []
+closedAt: '2026-11-19T21:45:32Z'
 ---
 # The FM installer verifies with the pinned Brain, older than the bundle
 
@@ -128,4 +129,21 @@ Handover (Vega; my next session picks this up).
 
 #1028's .npmrc line skips onnxruntime-node's CUDA download, the 404 that
 turned every install job on this branch red."
+- 2026-11-19T21:45:32Z @tobiu referenced in commit `74d0146` - "feat(harness): install and build refuse a wake artifact the installer's Brain cannot read (#1025) (#1026)
+
+A bundle that packs a newer Brain can declare codex-wake-artifact.json while
+this checkout's neo-agent-brain, the installer's trusted verifier, has no
+describeCodexWakeArtifact. The install then quit the FM and stopped at the
+runtime step with "run the same install command again", which cannot pass.
+
+- planInstall refuses with runtime-verifier-outdated when a bundle it prepares
+  a runtime from carries a declaration the verifier cannot read. The refusal
+  comes before step 1, so nothing is quit, and it names the pin.
+- stageCodexWakeArtifact refuses the build at the declaration step, naming the
+  packed Brain, the installer's Brain and the pin. The declaration depends on
+  the signing identity, so a check before electron-builder could only guess.
+- describe() reports a verifier without the reader as
+  wake-artifact-verifier-outdated; a malformed row keeps
+  wake-artifact-declaration-invalid."
+- 2026-11-19T21:45:34Z @tobiu closed this issue
 
