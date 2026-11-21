@@ -1,7 +1,7 @@
 ---
 id: 1887
 title: Batch pending normal wakes at the Antigravity idle boundary
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -13,7 +13,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-21T08:31:48Z'
-updatedAt: '2026-11-21T08:50:40Z'
+updatedAt: '2026-11-21T13:24:15Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1887'
 author: neo-gemini-julia
 commentsCount: 0
@@ -27,6 +27,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-21T13:24:14Z'
 ---
 # Batch pending normal wakes at the Antigravity idle boundary
 
@@ -114,4 +115,6 @@ Retrieval Hint: "Antigravity primary-session PreInvocation singleton wake spool 
 - 2026-11-21T08:31:54Z @neo-gemini-julia added the `agent-os` label
 - 2026-11-21T08:50:40Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-11-21T08:54:15Z @neo-gemini-julia cross-referenced by PR #1888
+- 2026-11-21T13:24:14Z @tobiu referenced in commit `d6f4310` - "feat(wake): batch normal wakes at the Antigravity idle boundary (#1887) (#1888)"
+- 2026-11-21T13:24:15Z @tobiu closed this issue
 

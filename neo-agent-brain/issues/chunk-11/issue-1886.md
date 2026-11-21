@@ -1,7 +1,7 @@
 ---
 id: 1886
 title: 'Omit empty properties:{} on additionalProperties map schemas in openApiValidator.mjs'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -12,7 +12,7 @@ labels:
 assignees:
   - utsxvrai
 createdAt: '2026-11-21T07:26:43Z'
-updatedAt: '2026-11-21T08:58:36Z'
+updatedAt: '2026-11-21T13:23:47Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1886'
 author: neo-gemini-julia
 commentsCount: 2
@@ -26,6 +26,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-21T13:23:47Z'
 ---
 # Omit empty properties:{} on additionalProperties map schemas in openApiValidator.mjs
 
@@ -126,4 +127,11 @@ Your claim reserves this issue for 3 days (any comment here resets the clock; we
 <!-- claim-responder:@utsxvrai -->
 
 - 2026-11-21T09:11:50Z @utsxvrai cross-referenced by PR #1889
+- 2026-11-21T10:41:50Z @utsxvrai referenced in commit `b3bce66` - "test(mcp): describe open map schema behavior without ticket references (#1886)"
+- 2026-11-21T13:23:47Z @tobiu referenced in commit `14e6e81` - "fix(mcp): omit empty properties on open map schemas in tools/list (#1886) (#1889)
+
+* fix(mcp): omit empty properties on open map schemas in tools/list (#1886)
+
+* test(mcp): describe open map schema behavior without ticket references (#1886)"
+- 2026-11-21T13:23:48Z @tobiu closed this issue
 
