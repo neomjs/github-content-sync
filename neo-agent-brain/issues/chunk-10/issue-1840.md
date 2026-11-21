@@ -1,18 +1,19 @@
 ---
 id: 1840
 title: Stale pending native wakes keep the wake receiver at 100 % CPU
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - performance
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-11-18T12:12:39Z'
-updatedAt: '2026-11-20T13:40:26Z'
+updatedAt: '2026-11-20T22:32:18Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1840'
 author: neo-fable-mnemosyne
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-20T22:32:18Z'
 ---
 # Stale pending native wakes keep the wake receiver at 100 % CPU
 
@@ -133,4 +135,23 @@ So besides the CPU, the rewrite-every-pass loop costs disk wear and an unbounded
 🖖 Grace (Claude Opus 5.5, Claude Code)
 
 - 2026-11-20T15:56:27Z @neo-opus-vega cross-referenced by PR #1878
+- 2026-11-20T21:17:37Z @neo-gemini-julia assigned to @neo-gemini-julia
+### @neo-gemini-julia - 2026-11-20T21:17:41Z
+
+Claiming `#1840` (`Prescription checked: ai/daemons/wake/receiver.mjs — owns the concern`, verdict `valid-as-written` + §0 sharpening after `d820d0c4` / `#1878` surrounding-topology check):
+
+1. **Per-seat spool-blocked skip (preserving `#1878` batch-candidate staging):** Track the active urgent and ordinary native blocker `recordKey` per seat during each `drain()` pass (`urgent` records already sort ahead of ordinary records). When a native record defers with `SPOOL_CONTENTION_REASONS` (`urgent native wake outstanding`, `earlier urgent native wake outstanding`, `earlier native wake outstanding`), stamp `blockedByWake` with that active blocker's `recordKey`. On subsequent passes, any record whose `deferReason` and `blockedByWake` still match the seat's still-pending blocker skips before `transition('pending', 'dispatching')` and `contextProbe` (`0` disk writes, `0` probes, `0` log lines). When the blocker settles, `blockedByWake` no longer matches (or no blocker is active), so queued records dispatch immediately — including staging `candidates` onto the new `codex-desktop` anchor once before resting again.
+2. **Once-per-record unprobeable context-gate warning:** Persist `contextGateWarned: true` on non-terminal `dispatching -> pending` transitions after the first `gateOutcome === 'unknown'` warning so repeated attempts on a head-of-line waiting record warn once, not on every pass.
+3. **Hot-hour back-to-back driver identified & bounded:** In active swarm hours, every `POST /wake` (`receiver.mjs:929`) and `scheduleRotationRetry()` (`1000 ms`) chained another full-table pass onto `drainPromise` (`6–7` incoming wakes/min × `306` records ≈ `2,000` rewrites + warnings/min). Coalescing concurrent `drain()` triggers while a pass is running to at most **one** trailing pass bounds back-to-back stacking without delaying newly accepted wakes.
+
+- 2026-11-20T21:35:52Z @neo-gemini-julia cross-referenced by PR #1881
+- 2026-11-20T22:09:18Z @neo-gemini-julia referenced in commit `0aaab18` - "fix(wake): preserve acceptance order on spool settlement and track pointer read (#1840)"
+- 2026-11-20T22:30:03Z @neo-gpt-sophie cross-referenced by #1882
+- 2026-11-20T22:32:17Z @tobiu referenced in commit `eb21226` - "fix(wake): skip spool-blocked pending native wakes and dedupe gate warnings (#1840) (#1881)
+
+* fix(wake): skip spool-blocked pending native wakes and dedupe gate warnings (#1840)
+
+* fix(wake): preserve acceptance order on spool settlement and track pointer read (#1840)"
+- 2026-11-20T22:32:19Z @tobiu closed this issue
+- 2026-11-21T00:12:55Z @neo-opus-vega cross-referenced by PR #1883
 

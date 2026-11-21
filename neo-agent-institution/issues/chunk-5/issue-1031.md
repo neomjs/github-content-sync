@@ -1,7 +1,7 @@
 ---
 id: 1031
 title: 'A stuck retirement pass re-takes the runtime lease, so no seat starts'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-20T13:39:52Z'
-updatedAt: '2026-11-20T16:51:59Z'
+updatedAt: '2026-11-20T20:45:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/1031'
 author: neo-opus-grace
 commentsCount: 2
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-20T20:45:32Z'
 ---
 # A stuck retirement pass re-takes the runtime lease, so no seat starts
 
@@ -165,4 +166,48 @@ a removal already running still finishes under both leases."
 - 2026-11-20T20:11:14Z @neo-opus-grace referenced in commit `7cb45ca` - "fix(harness): a removal that fails after a halt still leaves as the halt (#1031)
 
 A joined removal that rejects after the leased deadline fired was caught as an ordinary per-item failure: the last wake artifact returned observed and reset the back-off, and a generation removal went on to the artifact scan. A per-item catch now leaves as the recorded halt with that removal's phase; without a halt the filesystem error is kept."
+- 2026-11-20T20:45:31Z @tobiu referenced in commit `abeeb0a` - "feat(harness): a stuck retirement verify holds no lease, and halts back off (#1031) (#1032)
+
+* feat(harness): a stuck retirement verify holds no lease, and halts back off (#1031)
+
+The retirement pass verified payloads while it held the package and reference
+leases. A verify that never settled halted at the 120 s deadline, the next pass
+took both leases back within milliseconds, and every seat Start's 20 s wait
+refused for as long as the FM lived (12.5 h on 2026-11-20).
+
+The pass now verifies before it takes either lease, choosing what to verify on
+unguarded evidence. Under both leases it decides again on fresh evidence and a
+census, and removes only a tree whose inode is the one captured before its
+verify. Consecutive pass-deadline halts double the wait before the next pass,
+from the cadence up to 30 min; any other result resets it.
+
+* feat(harness): the leased section gets its own deadline below a Start's wait (#1031)
+
+Once the pass holds both leases, its census is the only read left to wait
+on, and one that never settled would hold the leases until the 120 s pass
+deadline, refusing seat Starts again by another step. A 10 s leased deadline
+(a real census takes about 0.35 s) halts it as lease-deadline, which backs
+off like pass-deadline; a spec pins it below the Brain's Start wait.
+
+The replacement arm now swaps the tree during the verify, not after it.
+
+* fix(harness): wake-artifact cleanup shares the pass's halts (#1031)
+
+The wake-artifact phase runs under both leases, but its directory and record
+reads waited outside the pass's deadlines, and its per-artifact catch knew
+only the two original halt codes. A stuck read held both leases past the
+leased deadline, and a swallowed lease-deadline let the loop start the next
+artifact's read or removal and report the pass as observed, which reset the
+scheduler's back-off.
+
+Every read in the phase now races the deadlines, a halt leaves through the
+pass's own rethrow, and no further artifact starts once the pass has halted;
+a removal already running still finishes under both leases.
+
+* fix(harness): a halt during a joined removal leaves with the removal's phase (#1031)
+
+* fix(harness): a removal that fails after a halt still leaves as the halt (#1031)
+
+A joined removal that rejects after the leased deadline fired was caught as an ordinary per-item failure: the last wake artifact returned observed and reset the back-off, and a generation removal went on to the artifact scan. A per-item catch now leaves as the recorded halt with that removal's phase; without a halt the filesystem error is kept."
+- 2026-11-20T20:45:33Z @tobiu closed this issue
 
