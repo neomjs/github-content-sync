@@ -29,10 +29,10 @@ subIssues:
   - '[ ] 1660 Antigravity and Codex acquire through the shared archive pipeline'
   - '[x] 1662 Codex Desktop seats run the newest admitted build'
   - '[x] 1665 The Fleet retires harness generations nothing holds'
-  - '[ ] 1856 Antigravity 2.33.0 passes admission but fails every seat''s binding'
+  - '[x] 1856 Antigravity 2.33.0 passes admission but fails every seat''s binding'
   - '[x] 1857 A refused Antigravity binding logs its seat, refusal code and generation'
   - '[x] 1859 Antigravity seats launch with --remote-debugging-port=0 now that 2.33.0 makes it opt-in'
-subIssuesCompleted: 14
+subIssuesCompleted: 15
 subIssuesTotal: 16
 contentTrust:
   projected: true
@@ -509,4 +509,7 @@ Next session: read the A2A sunset self-DM first, then answer RA-1 on #1661.
 - 2026-11-19T13:44:56Z @neo-opus-grace added sub-issue #1859
 - 2026-11-19T14:07:18Z @neo-gemini-julia cross-referenced by PR #1858
 - 2026-11-19T14:32:47Z @neo-gemini-julia cross-referenced by PR #1860
+- 2026-11-20T00:21:51Z @neo-opus-ada cross-referenced by #1871
+- 2026-11-20T00:21:58Z @neo-opus-ada cross-referenced by #1872
+- 2026-11-22T07:01:48Z @neo-opus-grace cross-referenced by PR #1898
 

@@ -1,19 +1,20 @@
 ---
 id: 1890
 title: Skip pending wake/digest records whose sourceEventIds are handled
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - performance
   - model-experience
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-21T12:09:59Z'
-updatedAt: '2026-11-21T12:09:59Z'
+updatedAt: '2026-11-22T11:01:58Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1890'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-22T11:01:58Z'
 ---
 # Skip pending wake/digest records whose sourceEventIds are handled
 
@@ -122,4 +124,26 @@ Retrieval Hint: "multi-day old wake/digest replay unreadCount 0 sourceEventIds a
 - 2026-11-21T12:10:01Z @neo-gemini-julia added the `model-experience` label
 - 2026-11-21T12:10:02Z @neo-gemini-julia added the `agent-os` label
 - 2026-11-21T13:45:56Z @neo-gemini-julia cross-referenced by #1853
+- 2026-11-22T03:33:54Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-22T03:34:29Z
+
+## Ticket Intake (`valid-as-written` — Accept & Sharpen)
+
+Verified on `origin/dev` (`d6f43108`, with `#1878`, `#1881`, and `#1888` merged):
+
+- **Prescription checked:** `ai/daemons/wake/receiver.mjs`, `ai/daemons/wake/primaryWakeSpool.mjs`, `ai/services/memory-core/{WebhookDeliveryService,MailboxService,WakeSubscriptionService,wakeDeliveryReader,wakeDeliveryProjection}.mjs` — own the concern (`ADR successor-risk: adr-aligned` against `adr:0002-phase3-wake-substrate-standards-alignment` and `adr:0019-aiconfig-reactive-provider-ssot`).
+- **Two `d6f43108` wire/spool sharpenings folded into implementation:**
+  1. **Envelope breakdown check alongside prefix whitelist (`CoalescingEngineService.mjs:912-1049`, `heartbeatPulseEvaluator.mjs:74-162`):** On wire, `wake/heartbeat_pulse`, `wake/permission_granted`, and `wake/task_state_changed` emit bare UUIDs / `01H*` event IDs in `sourceEventIds` rather than `HEARTBEAT_PULSE*` or `PERMISSION*` prefixes, and `wake/task_state_changed` notifies a task's originator on terminal transition. `POST /wake/settle` will verify both the `MESSAGE:`/`TASK:` source-ID prefix whitelist **and** zero counts on `breakdown.{heartbeat_pulse,permission_granted,task_state_changed}` when `breakdown` is present, so non-message digests fail closed regardless of ID shape.
+  2. **Native spool pointer release (`ai/daemons/wake/primaryWakeSpool.mjs:105`):** `isSpoolPointerActive` currently checks `state !== 'delivered'`. Settling a staged-but-uncommitted `normalPointer` or `urgentPointer` record to `skipped` would leave `isSpoolPointerActive === true` and block later wakes (`earlier native wake outstanding`). `isSpoolPointerActive` will treat any `TERMINAL_STATES` (`delivered`, `skipped`, `failed`, `unknown`) as inactive when `attempt?.recordKey !== entry.recordKey`, while `POST /wake/settle` protects any record referenced by `sessionState.inflight` or `sessionState.urgentInflight` (`recordKey` or `members`, whether `status` is `'unknown'` or unretired `'delivered'`) and triggers `drain()` when `skippedCount > 0`.
+
+Origin Session ID: 59ca0d8c-dfdf-4d07-aefe-8ec5c658a398 🧭
+
+- 2026-11-22T04:03:40Z @neo-gemini-maryam cross-referenced by PR #1895
+- 2026-11-22T06:11:12Z @neo-gemini-maryam referenced in commit `c7bf5e7` - "fix(wake): move settlement off MCP response path and unify contract (#1890)"
+- 2026-11-22T11:01:58Z @tobiu referenced in commit `a5f3482` - "feat(wake): skip pending wake digests whose sourceEventIds are handled (#1890) (#1895)
+
+* feat(wake): skip pending wake digests whose sourceEventIds are handled (#1890)
+
+* fix(wake): move settlement off MCP response path and unify contract (#1890)"
+- 2026-11-22T11:01:59Z @tobiu closed this issue
 

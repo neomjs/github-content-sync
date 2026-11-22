@@ -1,6 +1,6 @@
 ---
 id: 1518
-title: 'The Brain''s PR baseline still pins v0.1.84, and every check name repeats its caller'
+title: Every Brain baseline check name repeats its caller
 state: OPEN
 labels:
   - enhancement
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-08T19:59:27Z'
-updatedAt: '2026-11-22T02:49:03Z'
+updatedAt: '2026-11-22T03:20:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1518'
 author: neo-opus-grace
 commentsCount: 0
@@ -25,7 +25,7 @@ blockedBy:
   - '[x] 320 The guide lint runs in the shared PR baseline, not from a Brain checkout'
 blocking: []
 ---
-# The Brain's PR baseline still pins v0.1.84, and every check name repeats its caller
+# Every Brain baseline check name repeats its caller
 
 ## Context
 
@@ -48,18 +48,16 @@ On the same day the Engine finished its side of neomjs/neo#17171's Decision (neo
 
 ## The Fix
 
-1. Pin `shared-pr-baseline.yml` to the release that ships `guides` (≥ 1.2.0). Drop the caller job's `name:`, so the checks read `baseline / PR baseline`, `baseline / Skills materialized` and `baseline / guards`.
-2. Move the Brain's PR-gating guards into the `guards` list and retire their standalone workflows.
-3. Turn on `guides: true` for the Brain's own guides. Retire `ai/scripts/lint/lint-guides.mjs` and its spec, with a `spec-retired:` account, and point `ai:lint-guides` at the bin.
-4. Lint the Engine's guides at the Brain's `neo.mjs` pin for the two Brain-data rules, `dead-script-ref` and `openapi-tool-parity`. A Brain change that breaks an Engine guide then reds the Brain PR that made it.
-5. One Brain ruleset edit (operator) at merge: remove the ten `Shared PR Baseline / …` contexts, and add `baseline / PR baseline`, `baseline / Skills materialized` and `baseline / guards`.
+1. The pin is done (`v2.3.0`, see the re-measure). Drop the caller job's `name:`, so the checks read `baseline / PR baseline` and `baseline / Skills materialized`.
+2. Resolved differently: the standalone guard workflows are gone, and their lints run as steps of `brain-lint.yml`.
+3. and 4. Moved to #1893: `guides: true`, the Engine-guide check at the `neo.mjs` pin, and retiring the copy.
+5. One Brain ruleset edit (operator) at merge: replace the required `Shared PR Baseline / PR baseline` and `Shared PR Baseline / Skills materialized` with `baseline / PR baseline` and `baseline / Skills materialized` (the required set on 2026-11-22).
 
 ## Acceptance Criteria
 
-- [ ] AC-1: A Brain PR's checks show the three baseline contexts under one caller prefix, with no doubled name.
-- [ ] AC-2: No PR-gating guard runs outside the `guards` list. The census sits in the PR body, with each retired workflow named.
-- [ ] AC-3: `ai/scripts/lint/lint-guides.mjs` and its spec are gone, and the Brain's guides fail a required context on a HARD finding.
-- [ ] AC-4: A Brain PR that renames an `ai:*` script named by an Engine guide at the pin fails Brain CI.
+- [ ] AC-1: A Brain PR's checks show the baseline contexts under one caller prefix, with no doubled name.
+- [x] AC-2 (resolved differently): no standalone guard workflow remains; the lints run as steps of `brain-lint.yml`.
+- AC-3 and AC-4 moved to #1893.
 - [ ] AC-5 (post-merge, operator): `gh api repos/neomjs/neo-agent-brain/rules/branches/dev` shows the new set.
 
 ## Out of Scope
@@ -69,7 +67,7 @@ On the same day the Engine finished its side of neomjs/neo#17171's Decision (neo
 
 ## Related
 
-Blocked by neomjs/neo-agent-skills#321 (release 1.2.0). Related: neomjs/neo#17171 (the Decision) · neomjs/neo#20598 (the Engine side) · neomjs/neo#20597 (the guide lint's Engine side) · #523 (the Brain's first baseline caller).
+neomjs/neo-agent-skills#321 has shipped, and the caller pins `v2.3.0`. #1893 takes the guide-lint half. Related: neomjs/neo#17171 (the Decision) · neomjs/neo#20598 (the Engine side) · neomjs/neo#20597 (the guide lint's Engine side) · #523 (the Brain's first baseline caller).
 
 Decision Record impact: none (aligned with neomjs/neo#17171's Decision).
 
@@ -90,6 +88,8 @@ Measured at Brain `dev` `d6f43108`. Two of the four problems are gone, and two s
 
 **This changes the ticket's reason to bundle.** `guides: true` adds a step inside the existing `PR baseline` job, so retiring the copy changes no required context. Only the name fix needs the ruleset edit, and it renames the contexts every in-flight Brain PR reports, so it is better scheduled outside the v14 cut weekend. Plan: split. This ticket keeps the doubled names and the ruleset edit. A new ticket takes the guide-lint retirement: delete the copy and its spec, set `guides: true`, and point `isEntryModule.spec.mjs` at another lint. Before deleting, read closed #1360, #1366 and #1368 for any caller of the copy outside the Brain.
 
+**Split filed (2026-11-22):** #1893. Those three tickets and a code search of nine other organization repositories found no caller outside the Brain.
+
 ## Timeline
 
 - 2026-11-08T19:59:27Z @neo-opus-grace assigned to @neo-opus-grace
@@ -106,4 +106,6 @@ Measured at Brain `dev` `d6f43108`. Two of the four problems are gone, and two s
 - 2026-11-11T03:48:52Z @neo-opus-grace cross-referenced by #1594
 - 2026-11-11T19:05:32Z @neo-opus-grace cross-referenced by #1609
 - 2026-11-12T03:19:08Z @neo-opus-grace cross-referenced by #1628
+- 2026-11-22T03:18:13Z @neo-opus-grace cross-referenced by #1893
+- 2026-11-22T03:20:14Z @neo-opus-grace changed title from **The Brain's PR baseline still pins v0.1.84, and every check name repeats its caller** to **Every Brain baseline check name repeats its caller**
 

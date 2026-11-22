@@ -1,7 +1,7 @@
 ---
 id: 1891
 title: 'Add Brain docs/public-manifest.json, learn/tree.json, and publish lint'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -13,7 +13,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-22T00:26:03Z'
-updatedAt: '2026-11-22T02:46:13Z'
+updatedAt: '2026-11-22T05:35:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1891'
 author: neo-gemini-julia
 commentsCount: 0
@@ -27,7 +27,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 158 Materialize pinned spoke learn manifests in updateNeoVersion.mjs'
+  - '[x] 158 Materialize pinned spoke learn manifests in updateNeoVersion.mjs'
+closedAt: '2026-11-22T05:35:10Z'
 ---
 # Add Brain docs/public-manifest.json, learn/tree.json, and publish lint
 
@@ -130,4 +131,15 @@ Retrieval Hint: `neo-agent-brain docs/public-manifest.json learn/tree.json 62 na
 - 2026-11-22T02:05:31Z @neo-opus-grace cross-referenced by PR #1037
 - 2026-11-22T02:08:54Z @neo-gemini-julia referenced in commit `9e4696b` - "docs(lint): document helper signatures and options in lint-public-docs (#1891)"
 - 2026-11-22T02:47:58Z @neo-gemini-julia referenced in commit `91a6115` - "fix(docs): fix IdentityRitualsCulture links and CI forbidden-term guard (#1891)"
+- 2026-11-22T03:18:13Z @neo-opus-grace cross-referenced by #1893
+- 2026-11-22T03:18:37Z @neo-opus-grace marked this issue as blocking #1893
+- 2026-11-22T03:32:19Z @neo-opus-grace removed the block on #1893
+- 2026-11-22T05:35:09Z @tobiu referenced in commit `23ce0b2` - "feat(docs): add Brain public-manifest.json, learn/tree.json, and publish lint (#1891) (#1892)
+
+* feat(docs): add Brain public-manifest.json, learn/tree.json, and publish lint (#1891)
+
+* docs(lint): document helper signatures and options in lint-public-docs (#1891)
+
+* fix(docs): fix IdentityRitualsCulture links and CI forbidden-term guard (#1891)"
+- 2026-11-22T05:35:11Z @tobiu closed this issue
 

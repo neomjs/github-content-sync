@@ -1,7 +1,7 @@
 ---
 id: 1856
 title: Antigravity 2.33.0 passes admission but fails every seat's binding
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-19T13:14:12Z'
-updatedAt: '2026-11-19T18:56:50Z'
+updatedAt: '2026-11-22T11:02:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1856'
 author: neo-opus-grace
-commentsCount: 5
+commentsCount: 6
 parentIssue: 1531
 subIssues: []
 subIssuesCompleted: 0
@@ -25,6 +25,7 @@ contentTrust:
 blockedBy:
   - '[x] 1857 A refused Antigravity binding logs its seat, refusal code and generation'
 blocking: []
+closedAt: '2026-11-22T11:02:21Z'
 ---
 # Antigravity 2.33.0 passes admission but fails every seat's binding
 
@@ -65,9 +66,15 @@ Epic owner's shape: [issuecomment-7010244718](https://github.com/neomjs/neo-agen
 ## Acceptance Criteria
 
 - [x] The refusal code of a 2.33.0 Start is named in this ticket: `stale-endpoint`, from the bundle diff and the endpoint wait. #1857's line confirms it on the next live 2.33.0 refusal, if one occurs.
-- [ ] Gemini seats start on 2.33.0 (#1859), or 2.33.0 is rejected with its code recorded while 2.32.2 stays selected and the nightly check does not fetch it again.
+- [ ] ~~Gemini seats start on 2.33.0 (#1859), or 2.33.0 is rejected with its code recorded while 2.32.2 stays selected and the nightly check does not fetch it again.~~ Moved to Post-Merge Validation.
 - [ ] A unit spec covers six cases. A late refusal on an unproven generation, whose retry on the proven one binds, rejects it. A first early refusal rejects nothing. A second early refusal at the same step rejects. A retry that also fails rejects nothing. An unlisted code is treated as deterministic. A rejected version is not reported as an available update.
 - [ ] A port file that never appears is refused as `endpoint-missing`; a stale one is refused as `stale-endpoint`.
+- [ ] ~~The parked copy's disposition is recorded: restored (with #1859), deleted, or left rejected.~~ Moved to Post-Merge Validation.
+
+## Post-Merge Validation
+
+Both wait for 2.32.2's first bound Start on the new code, which records its `provenAt` and makes it the fallback, so the watched Start cannot stop a seat:
+- [ ] Gemini seats start on 2.33.0 (#1859), or 2.33.0 is rejected with its code recorded while 2.32.2 stays selected and the nightly check does not fetch it again.
 - [ ] The parked copy's disposition is recorded: restored (with #1859), deleted, or left rejected.
 
 ## Out of Scope
@@ -90,6 +97,27 @@ Origin Session ID: 5a375982-a381-43b6-a753-4fb8e933059d
 Retrieval Hint: "Antigravity 2.33.0 project binding refused, stale-endpoint, remote-debugging-port opt-in, first Start proves a generation, fallback retry on the proven build, EARLY_BINDING_REFUSALS"
 
 🖖 Grace (Claude Opus 5.5, Claude Code)
+
+## Intake (2026-11-22)
+
+- **Ticket reality:** valid-as-written. Both blockers are closed: #1857 by #1858, and #1859 by #1860, merged as `936a3635`, the Fleet build installed on 11-19. Since creation, only `FleetLifecycleService.mjs` has moved, through #1858's log line, which this fix sits beside. 2.33.0's copy is still parked under `~/.neo-ai/retained/`.
+- **Epic review:** #1531 was reviewed by a non-author (Julia): https://github.com/neomjs/neo-agent-brain/issues/1531#issuecomment-6748368888
+- **Prescription checked:** `ai/services/fleet/startAgentProvisioned.mjs` owns the retry. `FleetLifecycleService#resolveAntigravityStartContext` resolves the generation once per Start, and the provisioned Start bakes it into the capability, the workspace preparation, the admission reservation and the binding callback. A retry on another build is therefore one more provisioned Start, pinned to the newest proven generation, not a step inside `finishAntigravityStart`. `FleetLifecycleService` keeps the generation's resolution, its validation and the mark that a bound Start leaves. The ledger marks belong in `harnessGeneration.mjs`, and the refetch guard in `antigravityUpdate.mjs#checkAntigravityUpdate`, which mirrors `codexDesktopUpdate.mjs` (it already matches `ledger.rejected`).
+- **Fork, decided by the epic owner (A2A, 2026-11-22T06:33Z):** `validateAntigravityStartContext` refused a context whose generation is not the selected one. The decision is (A), an explicit pin, with two guardrails. The validator accepts a non-selected pin only when it is the newest proven generation, and a pinned Start never retries. The pin travels on a retry only the lifecycle grants, never on a Start request or a tool input.
+- **Sequencing:** the fallback lands before 2.33.0 is un-parked, so the controlled Start that settles the Post-Merge Validation cannot stop a seat. 2.32.2 has bound many times but carries no `provenAt`. It becomes the fallback at its first bound Start on this code, so the un-park waits until the ledger shows that.
+
+### Contract Ledger
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| `ledger.json`, admitted entry | The Fix, item 1 | The first bound Start writes `provenAt` | No `provenAt` means unproven | `harnessGeneration.mjs` JSDoc | unit spec |
+| `ledger.json`, admitted entry | The Fix, item 3 | A first early refusal whose retry binds records `bindingRefusal: {code, at}`; a second one with the same code rejects | A different early code replaces it | `harnessGeneration.mjs` JSDoc | unit spec |
+| `ledger.json`, `rejected` | The Fix, items 2–3 | A late refusal, or the second same-code early one, whose retry binds moves the generation from `admitted` to `rejected` with `binding-refused:<code>` as `reason`; the next retirement removes its copy unless something holds it | A refused retry rejects nothing | `harnessGeneration.mjs` JSDoc | unit spec |
+| `checkAntigravityUpdate` / `acquireAntigravityUpdate` | The Fix, item 2 | A binding-rejected version reports `updateAvailable: false` and `alreadyRejected: true`; acquisition answers `already-rejected` without fetching | `force` still fetches | `antigravityUpdate.mjs` JSDoc | unit spec |
+| Antigravity provisioned Start | The Fix, item 2 | A binding refused on an unproven generation, with a proven one present, runs the Start once more pinned to the newest proven generation and answers with the retry's outcome | No proven generation keeps today's stop | `startAgentProvisioned.mjs` JSDoc | unit spec |
+| `waitForOwnedProfileEndpoint` | The Fix, item 4 | `endpoint-missing` until the port file has been seen once, then `stale-endpoint` | none | `antigravityProjectBinding.mjs` JSDoc | unit spec |
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 564606f3-c91d-43dd-9d14-8f5b2c5b268d
 
 ## Timeline
 
@@ -206,4 +234,34 @@ I'm coordinating the window with @neo-gemini-julia.
 
 🖖 Grace (Claude Opus 5.5, Claude Code) · session a7f5160d-7da8-4407-9c33-116654eb8204
 
+- 2026-11-22T07:01:48Z @neo-opus-grace cross-referenced by PR #1898
+### @neo-opus-grace - 2026-11-22T07:10:40Z
+
+**Handover (session sunset, solo-refresh).** The fix is up as #1898 at `591379740c`: CI is green, and Julia (cross-family, this harness's cause-finder) has been requested as the one primary reviewer. Ada chose the retry shape (explicit pin, newest proven only, a pinned Start never retries), and the intake above records it.
+
+Next owner action (mine, next session): answer #1898's review. After merge, the Post-Merge Validation runs in order:
+1. The operator installs the Fleet build.
+2. 2.32.2's first bound Start writes `provenAt`.
+3. Only then does a watched Gemini Start un-park 2.33.0 (`~/.neo-ai/retained/antigravity-2.33.0-052eb434-parked-2026-11-19`), and its outcome plus the copy's disposition are recorded here.
+
+Anchors: eight branches were mutation-checked, each red at its own assertion (listed in #1898's Test Evidence).
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 564606f3-c91d-43dd-9d14-8f5b2c5b268d
+
+- 2026-11-22T11:02:21Z @tobiu referenced in commit `4fcb0b9` - "feat(fleet): a refused binding retries once on the proven build (#1856) (#1898)
+
+A Start whose project binding a new, unproven Antigravity build refused now runs once more on the
+family's newest proven build. When that retry binds, the refusal counts against the new build: a late
+refusal rejects it, an early one does so on its second occurrence. A refused retry counts nothing.
+
+- harnessGeneration.mjs: a bound Start records provenAt; recordHarnessGenerationBindingRefusal moves a
+  rejected build from admitted to rejected (binding-refused:<code>); retirement removes its copy.
+  onChain and writeLedger replace the four inline chain and ledger-write copies.
+- startAgentProvisioned.mjs: provisionWithBindingRetry runs the retry, which only the lifecycle grants.
+- FleetLifecycleService.mjs: harnessBindingRetry grants it; the resolver and the validator accept a pin
+  only through a granted token, and only on the newest proven generation.
+- antigravityUpdate.mjs: a binding-rejected version is never reported as an update again.
+- antigravityProjectBinding.mjs: a port file never seen refuses endpoint-missing, not stale-endpoint;
+  classifyBindingRefusal weighs codes early, late or uncounted."
+- 2026-11-22T11:02:22Z @tobiu closed this issue
 

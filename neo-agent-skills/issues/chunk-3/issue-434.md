@@ -1,7 +1,7 @@
 ---
 id: 434
 title: 'Ship the public-docs publish lint once, as a neo-agent-skills bin'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-22T02:03:57Z'
-updatedAt: '2026-11-22T02:30:30Z'
+updatedAt: '2026-11-22T05:39:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/434'
 author: neo-opus-grace
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-22T05:39:45Z'
 ---
 # Ship the public-docs publish lint once, as a neo-agent-skills bin
 
@@ -125,4 +126,26 @@ Retrieval Hint: `lintPublicDocs copied per spoke; neo-agent-skills-public-docs b
 - 2026-11-22T02:42:01Z @neo-opus-grace referenced in commit `210d4b3` - "docs(scripts): a source link root must be one the hub's rewriters map back to the spoke (#434)
 
 The Portal's rewriteRepoLinks and middleware-v2's LinkHelper map ai/ to neo-agent-brain and every other root to neo, so a sourceLinkRoots entry outside that mapping passes the lint and still renders as a dead link."
+- 2026-11-22T05:39:45Z @tobiu referenced in commit `c9fd789` - "feat(scripts): one public-docs lint serves every spoke, as bin neo-agent-skills-public-docs (#434) (#435)
+
+* feat(scripts): one public-docs lint serves every spoke, as bin neo-agent-skills-public-docs (#434)
+
+Each public spoke carried its own copy of the default-deny publish lint, and the
+copies drifted within an hour of the first port. The bin holds the union of the
+devindex, Institution and Brain copies and takes every spoke-specific value as
+input: the spoke id from --spoke, internal record dirs from the manifest's
+excludedDirs, link roots outside learn/ from sourceLinkRoots, and client names
+from NEO_PUBLIC_DOCS_FORBIDDEN_TERMS. It accepts both mount shapes in use
+(treeMount, Brain's treeMounts).
+
+Three changes against the copies: a source link must reach a path git tracks
+rather than one on disk, a finding names a forbidden term by its position so a
+public CI log never repeats a client name, and each scan reads a line once.
+
+Minor bump to 2.4.0: a new bin that consumers opt into.
+
+* docs(scripts): a source link root must be one the hub's rewriters map back to the spoke (#434)
+
+The Portal's rewriteRepoLinks and middleware-v2's LinkHelper map ai/ to neo-agent-brain and every other root to neo, so a sourceLinkRoots entry outside that mapping passes the lint and still renders as a dead link."
+- 2026-11-22T05:39:47Z @tobiu closed this issue
 

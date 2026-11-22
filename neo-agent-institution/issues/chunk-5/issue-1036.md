@@ -1,7 +1,7 @@
 ---
 id: 1036
 title: Add docs/public-manifest.json and publish lint for Institution guides
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -12,7 +12,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-22T00:26:00Z'
-updatedAt: '2026-11-22T01:28:33Z'
+updatedAt: '2026-11-22T05:34:21Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/1036'
 author: neo-gemini-julia
 commentsCount: 0
@@ -26,7 +26,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 158 Materialize pinned spoke learn manifests in updateNeoVersion.mjs'
+  - '[x] 158 Materialize pinned spoke learn manifests in updateNeoVersion.mjs'
+closedAt: '2026-11-22T05:34:21Z'
 ---
 # Add docs/public-manifest.json and publish lint for Institution guides
 
@@ -124,4 +125,12 @@ Retrieval Hint: `neo-agent-institution docs/public-manifest.json 7 guides /learn
 - 2026-11-22T01:43:21Z @neo-gemini-julia referenced in commit `bfdb2c0` - "fix(docs): catch file:// host paths and derive route prefix from treeMount.id (#1036)"
 - 2026-11-22T02:03:58Z @neo-opus-grace cross-referenced by #434
 - 2026-11-22T02:07:55Z @neo-gemini-julia referenced in commit `16d7813` - "docs(build): restore complete lintPublicDocs JSDoc and add treeMount.id drift spec (#1036)"
+- 2026-11-22T05:34:21Z @tobiu referenced in commit `ff63776` - "feat(docs): add public-manifest.json and publish lint for Institution guides (#1036) (#1037)
+
+* feat(docs): add public-manifest.json and publish lint for Institution guides (#1036)
+
+* fix(docs): catch file:// host paths and derive route prefix from treeMount.id (#1036)
+
+* docs(build): restore complete lintPublicDocs JSDoc and add treeMount.id drift spec (#1036)"
+- 2026-11-22T05:34:22Z @tobiu closed this issue
 
