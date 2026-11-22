@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-22T11:19:56.547Z",
-  "releasesLastFetched": "2026-11-22T11:19:55.464Z",
+  "lastSync": "2026-11-22T19:37:01.157Z",
+  "releasesLastFetched": "2026-11-22T19:37:00.557Z",
   "issues": {
     "3": {
       "state": "CLOSED",
@@ -7665,10 +7665,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-9/issue-1555.md",
       "closedAt": null,
-      "updatedAt": "2026-11-13T21:15:49Z",
-      "contentHash": "7017e624292e811a72e84c54de29766e113358a03c715e869b3b5bb5896ded62",
+      "updatedAt": "2026-11-22T17:02:22Z",
+      "contentHash": "de81aebca7a2cefe53dd7a5bb7984c1ba4650d1dc32af2a3558b1335877f7056",
       "milestone": null,
-      "commentsTotal": 2
+      "commentsTotal": 3
     },
     "1556": {
       "state": "CLOSED",
@@ -8232,10 +8232,10 @@
       "state": "OPEN",
       "path": "neo-agent-brain/issues/chunk-10/issue-1688.md",
       "closedAt": null,
-      "updatedAt": "2026-11-13T20:44:35Z",
-      "contentHash": "0a24014aa5b3e47e656de0c8e361ee7067dfe79af91fff4c6e9333c24d59604c",
+      "updatedAt": "2026-11-22T17:02:19Z",
+      "contentHash": "bf983d9bb15147162641aa1c22207f515eaa805eeda21dd28bf366b43c88b63f",
       "milestone": null,
-      "commentsTotal": 0
+      "commentsTotal": 1
     },
     "1689": {
       "state": "CLOSED",
@@ -9125,6 +9125,24 @@
       "closedAt": "2026-11-22T05:35:29Z",
       "updatedAt": "2026-11-22T05:35:29Z",
       "contentHash": "29a62f20efd2efc5269f363ebb19ba66f69a25fdc0be61d07bf3f98f3175aa52",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "1899": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-11/issue-1899.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-22T15:14:38Z",
+      "contentHash": "858817f51ad7fb57615cf7e066ce7443d65e6e2d7297720eb31a4eb16865d3f0",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "1900": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-11/issue-1900.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-22T17:01:31Z",
+      "contentHash": "335713042a1be7ee75e236305c99fbaa65fbde41ef01cca5e9311d9fbaa69aeb",
       "milestone": null,
       "commentsTotal": 0
     }

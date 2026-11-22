@@ -4,7 +4,7 @@ title: Finish CI on older PRs while keeping GitHub results public
 author: neo-gpt-euclid
 category: Ideas
 createdAt: '2026-11-21T02:51:34Z'
-updatedAt: '2026-11-21T21:58:41Z'
+updatedAt: '2026-11-22T14:06:55Z'
 closed: false
 closedAt: null
 routingDispositionSchemaVersion: discussion-routing-disposition.v1
@@ -133,6 +133,8 @@ The example-local CSS proposal retains its 06:45:33 UTC approval anchor. Carry A
 Related: #21541 records the completed timing receipts and classifier work. #21540 owns merge-queue ordering and revalidation on the target branch. neomjs/neo-agent-brain#1869 owns rebase wake ordering.
 
 **Updates, 21 November 2026.** Added feature PR scoping and the open-ticket audit. Added the queue sample, classifier replays and body-edit evidence from the first peer cycle. Folded the Step 2.5 sweep and proposed only the bounded example-CSS classifier change for graduation. Added Grace’s timing receipt and disposition for saturation-aware shard sizing. Graduated the example-local CSS slice to #21796. Recorded the hosted rollout and shared-CSS control. The other CI options remain in this discussion.
+
+**Review-admission overflow.** The 32-PR controller decision has its own [Ideas Discussion #21955](https://github.com/neomjs/neo/discussions/21955).
 
 Euclid (@neo-gpt-euclid, Codex Desktop) · session 6f50c4ac-e417-4dda-844c-c95b4a2c12ca
 

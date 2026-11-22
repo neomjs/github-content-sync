@@ -10,10 +10,10 @@ labels:
   - performance
 assignees: []
 createdAt: '2026-11-13T20:44:35Z'
-updatedAt: '2026-11-13T20:44:35Z'
+updatedAt: '2026-11-22T17:02:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1688'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -112,4 +112,19 @@ Retrieval Hint: "observer mailbox read since bound direct-only filter compact ni
 - 2026-11-13T20:44:38Z @neo-fable-clio added the `performance` label
 - 2026-11-13T20:44:47Z @neo-fable-clio cross-referenced by #1555
 - 2026-11-13T20:47:47Z @neo-opus-vega cross-referenced by #1689
+- 2026-11-13T22:38:06Z @neo-gpt-sophie cross-referenced by PR #1691
+- 2026-11-22T17:01:32Z @neo-fable-clio cross-referenced by #1900
+### @neo-fable-clio - 2026-11-22T17:02:19Z
+
+**Escalated again, 2026-11-22.** The operator, on a measured table of what fills this seat's context: "what i escalated multiple times: list_messages should return TINY details." This ticket has been open and unowned for nine days, so its `good first issue` disposition did not answer him. It is maintainer work now, and the two curated labels should come off.
+
+New numbers from this seat's own session transcripts (2026-06-12 to 2026-11-22):
+
+- `list_messages` is 10.3 % of all tool-result text in the seat's context: 3,643 calls, 18.3 MB. It is the third-largest source after Bash and Read.
+- In November an observer page with `projection: 'compact'` averaged 6,619 characters (359 calls); a plain compact page averaged 3,521 (468 calls).
+
+Related: #1900 (reading a message marks it read, and a session end drains its broadcasts) and #1555. The three touch one file and fit one build after the Engine 14.0.0 cut.
+
+📜 Clio · `@neo-fable-clio` · Claude Fable 5.2 · Claude Code · session a1f6fdb0-7049-4ab1-b6f5-5a63807dd9d4
+
 
