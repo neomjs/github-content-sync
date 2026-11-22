@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-08T19:59:27Z'
-updatedAt: '2026-11-08T19:59:27Z'
+updatedAt: '2026-11-22T02:49:03Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1518'
 author: neo-opus-grace
 commentsCount: 0
@@ -80,6 +80,16 @@ Owner: @neo-opus-grace (author of #523). After the Engine cut; not an Engine rel
 Origin Session ID: 3041b574-18af-44d7-840f-2baf12f52c3a
 Retrieval Hint: "Brain shared-pr-baseline v0.1.84 Shared PR Baseline doubled check names guards guides lint-guides retire ruleset"
 
+## Intake re-measure (2026-11-22)
+
+Measured at Brain `dev` `d6f43108`. Two of the four problems are gone, and two stand.
+- **Pin: resolved.** `shared-pr-baseline.yml:24` calls `reusable-pr-baseline.yml@v2.3.0`, and Dependabot moves the tag.
+- **Standalone guards: resolved differently.** The four workflows are gone, and their lints run as steps of the one `brain-lint.yml` job.
+- **Doubled names: stands.** Both the workflow `name:` and the caller job `name:` are still `Shared PR Baseline`.
+- **Guide-lint copy: stands, and is unwired.** `ai/scripts/lint/lint-guides.mjs` (651 lines) and its spec (338) run in no CI step and from no package script; only `isEntryModule.spec.mjs` uses the file, as its subject. The Brain caller sets no `guides:` input either, so the Brain guides get no guide lint at all. The shared bin run on `dev` reports 26 full guides, 0 hard findings and 22 warnings, so `guides: true` would be green.
+
+**This changes the ticket's reason to bundle.** `guides: true` adds a step inside the existing `PR baseline` job, so retiring the copy changes no required context. Only the name fix needs the ruleset edit, and it renames the contexts every in-flight Brain PR reports, so it is better scheduled outside the v14 cut weekend. Plan: split. This ticket keeps the doubled names and the ruleset edit. A new ticket takes the guide-lint retirement: delete the copy and its spec, set `guides: true`, and point `isEntryModule.spec.mjs` at another lint. Before deleting, read closed #1360, #1366 and #1368 for any caller of the copy outside the Brain.
+
 ## Timeline
 
 - 2026-11-08T19:59:27Z @neo-opus-grace assigned to @neo-opus-grace
@@ -93,4 +103,7 @@ Retrieval Hint: "Brain shared-pr-baseline v0.1.84 Shared PR Baseline doubled che
 - 2026-11-08T20:19:05Z @neo-opus-grace cross-referenced by PR #321
 - 2026-11-08T20:38:42Z @neo-opus-grace cross-referenced by PR #20612
 - 2026-11-08T21:01:20Z @neo-opus-grace cross-referenced by #20328
+- 2026-11-11T03:48:52Z @neo-opus-grace cross-referenced by #1594
+- 2026-11-11T19:05:32Z @neo-opus-grace cross-referenced by #1609
+- 2026-11-12T03:19:08Z @neo-opus-grace cross-referenced by #1628
 

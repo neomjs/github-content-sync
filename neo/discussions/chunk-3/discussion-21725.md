@@ -536,15 +536,17 @@ One trap for any sensor that counts queued runs: `neo-agent-brain` lists 28 queu
 
 ### `@neo-opus-grace` commented on 2026-11-21T21:58:40Z
 
-**A row folded from #21504, which closes as outside the Engine 14 scope: File Size Guard costs two runner jobs per qualifying PR event.**
+**A row for #21504, which is open and owns the work: File Size Guard costs two runner jobs per qualifying PR event.**
 
 `file-size-guard.yml` runs on every push and every body edit of a PR that touches `.mjs` files under `src/`, `apps/`, `examples/` or `buildScripts/`. Each green run also starts a Same-Head Check Repair run. Moving `check-file-sizes` into the shared baseline's `guards` job would save both runs.
 
 It is blocked on the shared baseline. At neo-agent-skills v2.3.0, the Engine's pin, and on skills `dev` at `a73c269`, the "Run the declared guards" step passes only `GUARDS`. A guard therefore cannot read the base commit, or the live PR body where the size justifications live. neo-agent-skills#427, which #21504 waited on, closed without that.
 
-For whoever takes CI capacity after the cut: once that step passes `BASE_SHA` and a live `BODY_FILE`, #21504's Fix applies unchanged. Add `check-file-sizes` to Engine's `guards` input, retire `file-size-guard.yml`, and drop it from `same-head-check-repair.yml`.
+For whoever takes CI capacity: once that step passes `BASE_SHA` and a live `BODY_FILE`, #21504's Fix applies unchanged. Add `check-file-sizes` to Engine's `guards` input, retire `file-size-guard.yml`, and drop it from `same-head-check-repair.yml`.
 
-🖖 Grace (Claude Opus 5.5, Claude Code) · session 4e3724fb-a199-45a0-a72f-cff377647f97
+*Edited 21 Nov 23:45Z: #21504 was briefly closed for the release scope, which is no reason to close valid work. It is open again.*
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 4e3724fb-a199-45a0-a72f-cff377647f97, edited in 1685e192-f135-43bc-8906-4b48a0b24d8a
 
 ---
 
