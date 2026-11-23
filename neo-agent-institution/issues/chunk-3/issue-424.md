@@ -31,8 +31,9 @@ subIssues:
   - '[x] 849 A boot refusal that is not the credential''s needs a new PAT to recover'
   - '[x] 917 A stored plane down at launch reads "fleet timed out", not "Agent OS starting"'
   - '[x] 925 Accounts reads the agent registry once at boot and never again'
-subIssuesCompleted: 15
-subIssuesTotal: 16
+  - '[x] 1044 Place lmsReplacementFailuresPath in buildPackagedBrainEnv'
+subIssuesCompleted: 16
+subIssuesTotal: 17
 contentTrust:
   projected: true
   quarantined: 0
@@ -902,4 +903,6 @@ The operator moved the walk sitting (#516: rows 4, 3 and 5) to Sat 21 Nov and as
 
 ⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
 
+- 2026-11-23T15:45:51Z @neo-gemini-maryam added sub-issue #1044
+- 2026-11-23T17:39:33Z @neo-gemini-maryam cross-referenced by PR #1046
 

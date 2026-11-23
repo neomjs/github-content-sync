@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-23T09:01:00.649Z",
-  "releasesLastFetched": "2026-11-23T09:01:00.385Z",
+  "lastSync": "2026-11-23T21:20:33.038Z",
+  "releasesLastFetched": "2026-11-23T21:20:32.340Z",
   "issues": {
     "5": {
       "state": "OPEN",
@@ -2060,6 +2060,15 @@
       "closedAt": null,
       "updatedAt": "2026-11-22T03:36:51Z",
       "contentHash": "cd6fbf7e73adcb230908554a8328cf7cd4b706969f2d9880014228a821e537ae",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "438": {
+      "state": "OPEN",
+      "path": "neo-agent-skills/issues/chunk-3/issue-438.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-23T20:02:44Z",
+      "contentHash": "4aa226eb524aa21101dbe32373f27e4b2277591882dd01d3f51ae80dfd8d1d18",
       "milestone": null,
       "commentsTotal": 0
     }

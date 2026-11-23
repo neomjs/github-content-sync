@@ -1,16 +1,17 @@
 ---
 id: 1795
 title: The vector-coverage audit counts Chroma's queue tail as missing vectors
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
   - help wanted
   - ai
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-16T08:24:51Z'
-updatedAt: '2026-11-16T08:24:51Z'
+updatedAt: '2026-11-23T20:01:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1795'
 author: neo-opus-vega
 commentsCount: 0
@@ -25,6 +26,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 1432 No defrag heal operation runs the KB''s store-bloat diagnosis'
+closedAt: '2026-11-23T20:01:21Z'
 ---
 # The vector-coverage audit counts Chroma's queue tail as missing vectors
 
@@ -99,4 +101,13 @@ Retrieval Hint: "vector coverage audit embeddings_queue tail max_seq_id sync_thr
 - 2026-11-16T08:24:53Z @neo-opus-vega added the `ai` label
 - 2026-11-16T08:24:54Z @neo-opus-vega added the `agent-os` label
 - 2026-11-16T08:24:57Z @neo-opus-vega marked this issue as blocking #1432
+- 2026-11-23T18:54:35Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-23T18:59:41Z @neo-gemini-maryam cross-referenced by PR #1912
+- 2026-11-23T19:39:51Z @neo-gemini-maryam referenced in commit `d9d7ca6` - "fix(maintenance): apply Chroma vector-membership semantics to queue tail fold (#1795)"
+- 2026-11-23T20:01:21Z @tobiu referenced in commit `56c784c` - "fix(maintenance): fold Chroma queue tail into vector coverage audit (#1795) (#1912)
+
+* fix(maintenance): fold Chroma queue tail into vector coverage audit (#1795)
+
+* fix(maintenance): apply Chroma vector-membership semantics to queue tail fold (#1795)"
+- 2026-11-23T20:01:23Z @tobiu closed this issue
 

@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-09-23T01:34:39Z'
-updatedAt: '2026-11-16T16:29:24Z'
+updatedAt: '2026-11-23T17:55:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/419'
 author: neo-gpt-euclid
 commentsCount: 4
@@ -23,7 +23,7 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1435 kb-server has no write gate for the KB defrag window'
+  - '[x] 1435 kb-server has no write gate for the KB defrag window'
   - '[x] 1501 Implement replacement-proven legacy core-row retirement'
   - '[x] 417 Retire the legacy neo-owned conversation rows once the core profiles are live'
   - '[x] 282 Port the shared core-corpus scan to repository profiles'
@@ -60,7 +60,7 @@ Current source was rechecked at `87ad3580a7bcb99a7109bb9cd10bf1c0850eedfc`: `cor
 
 The next operator-authorized prerequisite is `manage_knowledge_base({action:'create'})` on the selected runtime: `DatabaseService.manageKnowledgeBase` routes it only to `createKnowledgeBase`, which materializes the two exact-revision artifacts and publishes the profile manifest. Capture revisions, artifact digests/counts and manifest digest. Embedding is a separate write/cost decision; the cloud `ai:sync-kb` command combines create and embed and is not materialization-only. No such action was performed by this nightshift.
 
-**Deployed apply is also blocked by #1435.** The existing shared lease fences orchestrator lanes but does not reach kb-server's direct writers. #1435's owner has recorded this retirement operation as its second consumer. Before backup, plan and apply, the deployed operation must engage the KB-exclusive admission fence and observe gate closed for its own lease id with zero in-flight writes, holding that state through application. A closed issue or a held lease alone is not that receipt. The engagement/acknowledgement integration remains required here once the producer lands; PR #1502 does not claim to implement an unlanded gate API. A fresh selected-plane backup with positive export parity and authoritative `RESTORABLE` verdict must precede destructive apply. `kbSync` remains disabled, and activation stays a separate operator decision.
+**Writer fence source merged; deployed apply remains gated (2026-11-23).** [PR #1909](https://github.com/neomjs/neo-agent-brain/pull/1909) closed #1435 at Brain `5073c823fa7b92baf9991509919dd1e7e2b68176`. All four native source dependencies are closed. The canonical KB full healthcheck still served `d820d0c40280d3e9b2f79f5fc56349cb37de3146` on `neo-local-canonical` and returned no `writeGate` field. The merged [retirement CLI](https://github.com/neomjs/neo-agent-brain/blob/5073c823fa7b92baf9991509919dd1e7e2b68176/ai/scripts/maintenance/retireLegacyCoreRows.mjs#L203-L233) still acquires an ordinary maintenance lease. Its next source step is to consume the KB-exclusive gate and prove it refuses before the scoped operation unless the selected KB acknowledges that lease ID as closed with zero in-flight writes. Installed revision and live gate acknowledgement remain separate receipts. Current exact profiles, landed replacement proof, and a fresh selected-plane backup with positive export parity and an authoritative `RESTORABLE` verdict remain prerequisites. `kbSync` stays disabled. This check made no deployment, embedding, or deletion changes.
 
 ## Source and deployed custody
 
@@ -247,4 +247,7 @@ This matches the gate recorded here on 6 Nov (no profile manifest, 0 rows for th
 📜 Clio · @neo-fable-clio · Claude Fable 5.2 · Claude Code · session d14fe642-3e89-46cf-99c6-be16ff7c7354
 
 - 2026-11-16T17:40:44Z @neo-fable-clio cross-referenced by #21089
+- 2026-11-16T22:09:44Z @neo-fable-clio cross-referenced by #1821
+- 2026-11-16T22:23:34Z @neo-fable-clio cross-referenced by PR #21093
+- 2026-11-23T11:45:13Z @neo-opus-ada cross-referenced by PR #1909
 

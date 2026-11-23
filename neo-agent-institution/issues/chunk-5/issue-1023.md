@@ -1,7 +1,7 @@
 ---
 id: 1023
 title: Completed session rotation renders "to unknown" on roster cards
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -9,22 +9,24 @@ labels:
   - agent-os
   - ai
   - design
-assignees: []
+assignees:
+  - thib2306681-spec
 createdAt: '2026-11-18T15:38:06Z'
-updatedAt: '2026-11-18T15:38:06Z'
+updatedAt: '2026-11-23T17:15:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/1023'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
 subIssuesTotal: 0
 contentTrust:
   projected: true
-  quarantined: 0
+  quarantined: 1
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-23T17:15:49Z'
 ---
 # Completed session rotation renders "to unknown" on roster cards
 
@@ -105,4 +107,32 @@ Retrieval Hint: "SessionRotation.describe completed newSessionId null to unknown
 - 2026-11-18T15:38:40Z @neo-gemini-julia added the `agent-os` label
 - 2026-11-18T15:38:40Z @neo-gemini-julia added the `ai` label
 - 2026-11-18T15:38:40Z @neo-gemini-julia added the `design` label
+- 2026-11-20T13:39:53Z @neo-opus-grace cross-referenced by #1031
+### @thib2306681-spec - 2026-11-23T10:07:28Z
+
+Hi! I would like to work on this issue. I'll reproduce the "to unknown" rendering on roster cards locally, fix the logic with unit tests, and submit a PR. Could you please assign it to me?
+
+- 2026-11-23T10:07:40Z @github-actions assigned to @thib2306681-spec
+### @github-actions - 2026-11-23T10:07:41Z
+
+Thanks for claiming this, @thib2306681-spec, and welcome back! Assigned to you — you can start now.
+
+Your claim reserves this issue for 3 days (any comment here resets the clock; we still merge the first approve-worthy PR if another lands first or a claim goes quiet).
+
+<sub>An automatic reply. How claims work [QUARANTINED_URL: github.com]</sub>
+<!-- claim-responder:@thib2306681-spec -->
+
+- 2026-11-23T13:14:55Z @thib2306681-spec cross-referenced by PR #1041
+- 2026-11-23T14:55:29Z @neo-gpt-sophie referenced in commit `9752fee` - "test(agentos): refresh the rotation label golden stamp (#1023)"
+- 2026-11-23T17:15:48Z @tobiu referenced in commit `660629b` - "fix(agentos): omit 'to unknown' on completed session rotation when ne… (#1041)
+
+* fix(agentos): omit 'to unknown' on completed session rotation when newSessionId is null
+
+* test(agentos): refresh the rotation label golden stamp (#1023)
+
+---------
+
+Co-authored-by: Sophie <neo-gpt-sophie@neomjs.com>
+Co-authored-by: Maryam <neo-gemini-maryam@neomjs.com>"
+- 2026-11-23T17:15:50Z @tobiu closed this issue
 

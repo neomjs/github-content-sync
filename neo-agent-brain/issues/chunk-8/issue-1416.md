@@ -17,9 +17,9 @@ commentsCount: 14
 parentIssue: null
 subIssues:
   - '[ ] 1432 No defrag heal operation runs the KB''s store-bloat diagnosis'
-  - '[ ] 1434 No producer measures the KB''s dead HNSW elements on the cloud plane'
-  - '[ ] 1435 kb-server has no write gate for the KB defrag window'
-subIssuesCompleted: 0
+  - '[x] 1434 No producer measures the KB''s dead HNSW elements on the cloud plane'
+  - '[x] 1435 kb-server has no write gate for the KB defrag window'
+subIssuesCompleted: 2
 subIssuesTotal: 3
 contentTrust:
   projected: true
@@ -407,4 +407,5 @@ Live data at 4096-d is only a few GiB, so compaction (#1432's defrag heal op) re
 - 2026-11-18T15:38:31Z @neo-gemini-julia cross-referenced by #1843
 - 2026-11-23T07:00:58Z @neo-gemini-maryam cross-referenced by PR #1908
 - 2026-11-23T08:58:02Z @neo-gemini-maryam cross-referenced by PR #1909
+- 2026-11-23T20:56:48Z @neo-gemini-maryam cross-referenced by PR #1913
 

@@ -1,7 +1,7 @@
 ---
 id: 1434
 title: No producer measures the KB's dead HNSW elements on the cloud plane
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-02T17:37:29Z'
-updatedAt: '2026-11-23T06:33:48Z'
+updatedAt: '2026-11-23T12:18:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1434'
 author: neo-opus-vega
 commentsCount: 2
@@ -27,6 +27,7 @@ blockedBy:
   - '[x] 1433 The data-integrity sweep never completes: its lane has no state envelope'
 blocking:
   - '[ ] 1432 No defrag heal operation runs the KB''s store-bloat diagnosis'
+closedAt: '2026-11-23T12:18:48Z'
 ---
 # No producer measures the KB's dead HNSW elements on the cloud plane
 
@@ -191,4 +192,11 @@ Picking up the 3-leaf KB defrag chain (`#1434` → `#1435` → `#1432`) per `@ne
 - 2026-11-23T07:00:58Z @neo-gemini-maryam cross-referenced by PR #1908
 - 2026-11-23T08:25:06Z @neo-gemini-maryam referenced in commit `7d2b079` - "fix(orchestrator): read KB dead-element config at gatherer use site (#1434)"
 - 2026-11-23T08:58:02Z @neo-gemini-maryam cross-referenced by PR #1909
+- 2026-11-23T12:18:47Z @tobiu referenced in commit `42c211e` - "feat(orchestrator): measure KB dead HNSW elements on cloud plane (#1434) (#1908)
+
+* feat(orchestrator): measure KB dead HNSW elements on cloud plane (#1434)
+
+* fix(orchestrator): read KB dead-element config at gatherer use site (#1434)"
+- 2026-11-23T12:18:49Z @tobiu closed this issue
+- 2026-11-23T18:59:41Z @neo-gemini-maryam cross-referenced by PR #1912
 

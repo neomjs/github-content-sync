@@ -1,19 +1,19 @@
 ---
 id: 493
 title: The LM Studio lane replaces a wrong resident itself
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
   - architecture
   - agent-os
 assignees:
-  - neo-opus-vega
+  - neo-gemini-maryam
 createdAt: '2026-09-25T14:28:46Z'
-updatedAt: '2026-11-05T10:34:32Z'
+updatedAt: '2026-11-23T12:32:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/493'
 author: neo-opus-vega
-commentsCount: 1
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-23T12:32:14Z'
 ---
 # The LM Studio lane replaces a wrong resident itself
 
@@ -131,4 +132,42 @@ There is still no unload primitive. The body's line numbers (`:1778`, `:2030`, `
 
 — Vega (Opus 5.5, Claude Code) 🌿
 
+- 2026-11-23T10:19:33Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-23T10:19:33Z @neo-gemini-maryam unassigned from @neo-opus-vega
+### @neo-gemini-maryam - 2026-11-23T10:19:35Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@neo-opus-vega`
+**New assignees:** `@me`
+**Reason:** Offered by @neo-opus-vega via A2A and 7-day rule (last qualifying activity 2026-11-05T10:34:32Z)
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+### @neo-gemini-maryam - 2026-11-23T10:19:38Z
+
+Picking up per `@neo-opus-vega`'s A2A offer (and 7-day rule; previous assignee `@neo-opus-vega`, last qualifying activity `2026-11-05T10:34:32Z`).
+
+### Ticket Intake Classification (`ticket-intake` §0 / §1.8)
+- **Ticket age:** `createdAt: 2026-09-25T14:28:46Z`, `updatedAt: 2026-11-05T10:34:32Z` (`pre-stale` / no `stale` label).
+- **Prescription checked:**
+  - `ai/services/graph/providerReadinessHelper.mjs` — owns `unloadLmsModel` + `ensureLmsModelsLoaded` (`replaced` / `heal-exhausted` + persisted per-role failure counter, retiring `replacement-required` and operator-imperative summary text).
+  - `ai/daemons/orchestrator/services/DeploymentStateBridgeService.mjs` — owns `collectProviderModelIdentity` (`mismatch` reason retiring operator-imperative sentence while retaining `configuredModel` / `servedModelIds`).
+  - `ai/daemons/orchestrator/services/ContainerHealthDiagnosisService.mjs` — owns `diagnose` + `providerResidency` fact emission (`reasonCode: 'wrong-resident'` from bridge `providerModelIdentity.state === 'mismatch'` and readiness wrong-resident status) + `isProviderRoleResidencyRecoverable` admitting `'wrong-resident'` to dispatch `warm-provider` via `RecoveryActuatorService.warmProviderResidency`.
+- **Core-Idiom & Config Pre-Flight (§9.6 & ADR 0019):** Read `src/Neo.mjs`, `src/core/Base.mjs`, `src/state/Provider.mjs`, and `learn/agentos/decisions/0019-aiconfig-reactive-provider-ssot.md`.
+- **ADR successor-risk:** `aligned-with` ADR 0025 §2.1 & ADR 0026 §2.4/§2.5 (amending `neomjs/neo#17079`'s operator-action clause on the 2026-09-25 operator ruling recorded in Context).
+- **Verdict:** `valid-as-written` (positive ROI).
+
+Origin Session ID: e8124dc1-2dcf-4cfb-b94a-3f0c4c23c560
+
+🧭 Maryam (Gemini 4 Carbon, Antigravity)
+
+- 2026-11-23T11:01:55Z @neo-gemini-maryam cross-referenced by PR #1910
+- 2026-11-23T12:14:16Z @neo-gemini-maryam referenced in commit `cc16c7c` - "feat(orchestrator): scope LMS foreign eviction to diagnosed wrong-resident and declare counter leaf (#493)"
+- 2026-11-23T12:32:14Z @tobiu referenced in commit `2f4c3d1` - "feat(orchestrator): self-heal wrong LM Studio residents via warm-provider (#493) (#1910)
+
+* feat(orchestrator): self-heal wrong LM Studio residents via warm-provider (#493)
+
+* feat(orchestrator): scope LMS foreign eviction to diagnosed wrong-resident and declare counter leaf (#493)"
+- 2026-11-23T12:32:15Z @tobiu closed this issue
 

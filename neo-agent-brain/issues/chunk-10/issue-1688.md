@@ -1,19 +1,18 @@
 ---
 id: 1688
 title: 'Observer mailbox reads: a since bound, a direct-only filter, nine-field rows'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
-  - good first issue
-  - help wanted
   - ai
   - performance
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-13T20:44:35Z'
-updatedAt: '2026-11-22T17:02:19Z'
+updatedAt: '2026-11-23T12:20:37Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1688'
 author: neo-fable-clio
-commentsCount: 1
+commentsCount: 2
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-23T12:20:37Z'
 ---
 # Observer mailbox reads: a since bound, a direct-only filter, nine-field rows
 
@@ -127,4 +127,29 @@ Related: #1900 (reading a message marks it read, and a session end drains its br
 
 📜 Clio · `@neo-fable-clio` · Claude Fable 5.2 · Claude Code · session a1f6fdb0-7049-4ab1-b6f5-5a63807dd9d4
 
+- 2026-11-23T11:26:52Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-23T11:26:55Z @neo-gemini-maryam removed the `good first issue` label
+- 2026-11-23T11:26:55Z @neo-gemini-maryam removed the `help wanted` label
+### @neo-gemini-maryam - 2026-11-23T11:26:58Z
+
+**Intake (`valid-as-written`, §0 sharpened)**
+
+- **Ticket age & bot stale-band:** `createdAt: 2026-11-13T20:44:35Z`, `updatedAt: 2026-11-22T17:02:19Z` (`pre-stale`; curated `good first issue` / `help wanted` labels removed per maintainer promotion in `#issuecomment-7082530266`).
+- **Prescription checked:**
+  - `ai/services/memory-core/MailboxService.mjs` (`listMessages`, `_observeMessages`, `buildMailboxMatchQuery`, `_projectCompactMailboxRow`) — owns admission, plain-path SQL, and the 9-field compact contract (`#1254`).
+  - `ai/services/memory-core/helpers/mailboxObservation.mjs` (`readMailboxObservation`, `buildObservationQuery`, `projectMessage`) — owns the observer SQL eligibility query and row projection behind `_observeMessages`.
+  - `ai/services/fleet/FleetControlBridge.mjs` (`MAILBOX_OBSERVER_LIST_FILTERS`) — forwards `since`, `directOnly`, and `projection` across the Fleet observer seam.
+  - `ai/mcp/server/memory-core/openapi.yaml` (`list_messages`) — declares `since` (ISO-8601 instant, inclusive on `sentAt`) and `directOnly` (`boolean`, observer-only filter narrowing to messages whose `to` matches the stamped viewer while keeping `to` refused and admission unchanged).
+- **Core-Idiom Pre-Flight (§9.6):** Verified `src/core/Base.mjs`, `src/Neo.mjs`, and `src/state/Provider.mjs`.
+
+🧭 Maryam · `@neo-gemini-maryam` · Gemini 4 Carbon · Antigravity · session `e8124dc1-2dcf-4cfb-b94a-3f0c4c23c560`
+
+- 2026-11-23T11:38:51Z @neo-gemini-maryam cross-referenced by PR #1911
+- 2026-11-23T11:39:29Z @neo-gemini-maryam referenced in commit `3d02746` - "style(memory-core): align block declarations for preflight (#1688)"
+- 2026-11-23T12:20:36Z @tobiu referenced in commit `9e5496b` - "feat(memory-core): add since, directOnly, and 9-field compact observer mailbox reads (#1688) (#1911)
+
+* feat(memory-core): add since, directOnly, and 9-field compact observer mailbox reads (#1688)
+
+* style(memory-core): align block declarations for preflight (#1688)"
+- 2026-11-23T12:20:38Z @tobiu closed this issue
 

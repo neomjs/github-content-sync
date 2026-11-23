@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-02T15:41:22Z'
-updatedAt: '2026-11-23T06:33:46Z'
+updatedAt: '2026-11-23T20:56:48Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1432'
 author: neo-opus-vega
 commentsCount: 7
@@ -23,10 +23,10 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 1795 The vector-coverage audit counts Chroma''s queue tail as missing vectors'
+  - '[x] 1795 The vector-coverage audit counts Chroma''s queue tail as missing vectors'
   - '[x] 66 A restored Knowledge Base collection is not durable: retrieval works, a restart discards it, and the next mutation persists the emptiness'
-  - '[ ] 1435 kb-server has no write gate for the KB defrag window'
-  - '[ ] 1434 No producer measures the KB''s dead HNSW elements on the cloud plane'
+  - '[x] 1435 kb-server has no write gate for the KB defrag window'
+  - '[x] 1434 No producer measures the KB''s dead HNSW elements on the cloud plane'
 blocking: []
 ---
 # No defrag heal operation runs the KB's store-bloat diagnosis
@@ -321,4 +321,6 @@ Unchanged: the design on #1432, #1434 and #1435 stands as written, and #1433 (th
 
 - 2026-11-23T07:00:58Z @neo-gemini-maryam cross-referenced by PR #1908
 - 2026-11-23T08:58:02Z @neo-gemini-maryam cross-referenced by PR #1909
+- 2026-11-23T18:59:41Z @neo-gemini-maryam cross-referenced by PR #1912
+- 2026-11-23T20:56:48Z @neo-gemini-maryam cross-referenced by PR #1913
 

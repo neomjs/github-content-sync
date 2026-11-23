@@ -1,7 +1,7 @@
 ---
 id: 1435
 title: kb-server has no write gate for the KB defrag window
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-02T17:38:13Z'
-updatedAt: '2026-11-23T07:06:59Z'
+updatedAt: '2026-11-23T17:47:25Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1435'
 author: neo-opus-vega
 commentsCount: 2
@@ -26,6 +26,7 @@ blockedBy: []
 blocking:
   - '[ ] 419 Retire replaced legacy core rows by profile receipt'
   - '[ ] 1432 No defrag heal operation runs the KB''s store-bloat diagnosis'
+closedAt: '2026-11-23T17:47:25Z'
 ---
 # kb-server has no write gate for the KB defrag window
 
@@ -65,11 +66,13 @@ A write accepted between the bundle and the promotion is lost, and nothing re-ap
 
 | Target surface | Source of authority | Proposed behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| kb-server KB write sites (6) | #1432 convergence item 2 | refuse with `KB_MAINTENANCE_IN_PROGRESS` while a KB-exclusive lease is held | writes proceed when no such lease is held | JSDoc on the gate | specs per write class (upsert, delete) |
-| heavy-maintenance lease record | `HeavyMaintenanceLeaseService.mjs` | the holder can declare KB-write exclusion | absent ⇒ no exclusion | JSDoc | spec |
+| kb-server KB writes: the 6 incremental sites, plus `deleteCollection` and the shadow swap's create and promote (9 writes through `kbWriteGate.runWrite`; `assertOpen` pre-checks before embedding and before a fresh shadow build) | #1432 convergence item 2 | refuse with `KB_MAINTENANCE_IN_PROGRESS` while a KB-exclusive lease is held | writes proceed when no such lease is held; `DatabaseService.importDatabase` / `truncateDatabase` stay ungated as the lease holder's own restore path (#1432) | JSDoc on the gate | specs per write class (upsert, delete) |
+| heavy-maintenance lease record | `HeavyMaintenanceLeaseService.mjs` | the holder can declare KB-write exclusion (`kbWriteExclusive: true`); the record carries a public `leaseId` beside the secret release `token`; a reader in another container inspects it with `crossNamespace: true` (deadline liveness only) | absent ⇒ no exclusion | JSDoc | spec |
 | kb-server health payload | `knowledge-base/HealthService.mjs` | adds `{gate, leaseId, inFlightWrites}` | gate `open`, count 0 when no lease | the health schema | spec + live read after the cut |
 | `ingest_source_files`, `manage_knowledge_base` | `knowledge-base/openapi.yaml` | return the refusal as a retryable error naming the window | none | tool handbook | spec |
 | kb-server compose mounts | `deploy/cloud/docker-compose.yml` | the lease directory, `:ro` | none | compose comment | `docker inspect` after the cut |
+
+*Rows 1 and 2 synced to PR #1909's shipped contract at `a609a46ad3` (Ada, review, 2026-11-23).*
 
 ## Decision Record impact
 
@@ -184,4 +187,13 @@ Advancing to `#1435` (second leaf of the `#1434` → `#1435` → `#1432` KB defr
 🧭 **Maryam** · `@neo-gemini-maryam` · Gemini 4 Carbon · Antigravity
 
 - 2026-11-23T08:58:02Z @neo-gemini-maryam cross-referenced by PR #1909
+- 2026-11-23T09:47:25Z @neo-gemini-maryam referenced in commit `a609a46` - "test(knowledge-base): align OpenAPI union and Compose mount specs with KB write gate (#1435)"
+- 2026-11-23T12:30:01Z @neo-gemini-maryam referenced in commit `7f9bbb1` - "feat(knowledge-base): gate kb-server writes during KB maintenance window (#1435)"
+- 2026-11-23T12:30:01Z @neo-gemini-maryam referenced in commit `177dd9a` - "test(knowledge-base): align OpenAPI union and Compose mount specs with KB write gate (#1435)"
+- 2026-11-23T17:47:24Z @tobiu referenced in commit `5073c82` - "feat(knowledge-base): gate kb-server writes during KB maintenance window (#1435) (#1909)
+
+* feat(knowledge-base): gate kb-server writes during KB maintenance window (#1435)
+
+* test(knowledge-base): align OpenAPI union and Compose mount specs with KB write gate (#1435)"
+- 2026-11-23T17:47:26Z @tobiu closed this issue
 
