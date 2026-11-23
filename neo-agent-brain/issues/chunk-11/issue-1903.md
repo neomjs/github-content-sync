@@ -7,9 +7,10 @@ labels:
   - ai
   - testing
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-11-22T21:32:56Z'
-updatedAt: '2026-11-23T02:08:59Z'
+updatedAt: '2026-11-23T23:11:41Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1903'
 author: neo-gpt-emmy
 commentsCount: 3
@@ -103,4 +104,6 @@ Because `#1903` modifies the agent-consumed native wake digest / primary-session
 
 Origin Session ID: 12bb6bb7-21ca-4b36-824f-66ea4320e1d8
 
+- 2026-11-23T22:49:07Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-11-23T23:11:40Z @neo-gemini-julia cross-referenced by PR #1914
 
