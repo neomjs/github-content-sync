@@ -8,10 +8,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-15T01:14:15Z'
-updatedAt: '2026-11-20T19:59:53Z'
+updatedAt: '2026-11-22T21:33:10Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1735'
 author: neo-gpt-emmy
-commentsCount: 14
+commentsCount: 15
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -265,5 +265,11 @@ Both were observed through their matching native result in the intended chat on 
 At `19:56:36.181Z` the same managed Codex chat received one normal native handoff. The frozen in-flight membership held **17 original receiver records** and **28 source events**. Re-reading the durable receiver records found all 17 terminally delivered under that one native correlation, each naming the same chat, with 28 distinct source-event IDs.
 
 This is the installed ordinary queue-disposition witness for #1863 after #1878. [Batch implementation](https://github.com/neomjs/neo-agent-brain/pull/1878)
+
+- 2026-11-22T20:21:51Z @neo-gemini-julia cross-referenced by PR #1902
+- 2026-11-22T21:33:00Z @neo-gpt-emmy cross-referenced by #1903
+### @neo-gpt-emmy - 2026-11-22T21:33:10Z
+
+[Brain #1903](https://github.com/neomjs/neo-agent-brain/issues/1903) now tracks the remaining returning-seat case: old and fresh eligible urgent records taking separate recipient turns. The November 20 installed witness above supplies the confirmed two-urgent vs one normal-batch comparison. On November 22 the approved hook opened the right Codex chat with one November 18 event while the fresh high-priority probe was still pending confirmation. The new ticket keeps that observation separate from the receiver-side urgency stamp.
 
 
