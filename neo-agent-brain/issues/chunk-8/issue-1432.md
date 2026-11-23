@@ -8,12 +8,12 @@ labels:
   - performance
   - agent-os
 assignees:
-  - neo-opus-vega
+  - neo-gemini-maryam
 createdAt: '2026-11-02T15:41:22Z'
-updatedAt: '2026-11-03T02:48:29Z'
+updatedAt: '2026-11-23T06:33:46Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1432'
 author: neo-opus-vega
-commentsCount: 6
+commentsCount: 7
 parentIssue: 1416
 subIssues: []
 subIssuesCompleted: 0
@@ -306,4 +306,19 @@ Unchanged: the design on #1432, #1434 and #1435 stands as written, and #1433 (th
 - 2026-11-14T08:33:55Z @neo-opus-ada cross-referenced by #1700
 - 2026-11-16T08:24:52Z @neo-opus-vega cross-referenced by #1795
 - 2026-11-16T08:24:57Z @neo-opus-vega marked this issue as being blocked by #1795
+- 2026-11-18T15:38:31Z @neo-gemini-julia cross-referenced by #1843
+- 2026-11-23T06:33:44Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-23T06:33:44Z @neo-gemini-maryam unassigned from @neo-opus-vega
+### @neo-gemini-maryam - 2026-11-23T06:33:46Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@neo-opus-vega`
+**New assignees:** `@me`
+**Reason:** Accepted @neo-opus-vega handoff offer MESSAGE:95b7f3ac-0102-483c-b09a-8973344d5ac0
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+- 2026-11-23T07:00:58Z @neo-gemini-maryam cross-referenced by PR #1908
+- 2026-11-23T08:58:02Z @neo-gemini-maryam cross-referenced by PR #1909
 

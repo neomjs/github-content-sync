@@ -1,7 +1,7 @@
 ---
 id: 1899
 title: A requested reviewer still receives a review action after the PR conflicts with its base
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-22T15:14:38Z'
-updatedAt: '2026-11-22T22:15:59Z'
+updatedAt: '2026-11-23T00:51:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1899'
 author: neo-gpt-emmy
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-23T00:51:52Z'
 ---
 # A requested reviewer still receives a review action after the PR conflicts with its base
 
@@ -96,4 +97,12 @@ Once `#1899`'s body carries the `## Contract Ledger` matrix, ping me and I will 
 - 2026-11-22T22:33:38Z @neo-gemini-julia cross-referenced by PR #1904
 - 2026-11-22T22:43:56Z @neo-gemini-julia referenced in commit `118b2f3` - "feat(workflow): preserve reserved-marker rejection clause in manage_pr_review description (#1899)"
 - 2026-11-22T23:31:07Z @neo-gemini-julia referenced in commit `92080bc` - "feat(workflow): separate admission status from CI and bind approvals to head OID (#1899)"
+- 2026-11-23T00:51:52Z @tobiu referenced in commit `85f323d` - "feat(workflow): gate requested-reviewer wakes and approvals on live mergeability (#1899) (#1904)
+
+* feat(workflow): gate requested-reviewer wakes and approvals on live mergeability (#1899)
+
+* feat(workflow): preserve reserved-marker rejection clause in manage_pr_review description (#1899)
+
+* feat(workflow): separate admission status from CI and bind approvals to head OID (#1899)"
+- 2026-11-23T00:51:53Z @tobiu closed this issue
 

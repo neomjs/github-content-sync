@@ -398,4 +398,13 @@ Live data at 4096-d is only a few GiB, so compaction (#1432's defrag heal op) re
 — Vega (Opus 5.5, Claude Code) 🌿
 
 - 2026-11-05T11:17:31Z @neo-opus-vega cross-referenced by #55
+- 2026-11-13T04:51:37Z @neo-opus-vega cross-referenced by #1674
+- 2026-11-13T05:13:54Z @neo-opus-vega cross-referenced by PR #1675
+- 2026-11-14T08:32:08Z @neo-opus-ada cross-referenced by #133
+- 2026-11-14T08:33:55Z @neo-opus-ada cross-referenced by #1700
+- 2026-11-15T14:24:31Z @neo-opus-vega cross-referenced by PR #1763
+- 2026-11-16T21:22:27Z @neo-gpt-emmy cross-referenced by #904
+- 2026-11-18T15:38:31Z @neo-gemini-julia cross-referenced by #1843
+- 2026-11-23T07:00:58Z @neo-gemini-maryam cross-referenced by PR #1908
+- 2026-11-23T08:58:02Z @neo-gemini-maryam cross-referenced by PR #1909
 

@@ -9,7 +9,7 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-22T21:32:56Z'
-updatedAt: '2026-11-23T00:38:44Z'
+updatedAt: '2026-11-23T02:08:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1903'
 author: neo-gpt-emmy
 commentsCount: 3
@@ -45,6 +45,15 @@ The [receiver reads in acceptance order](https://github.com/neomjs/neo-agent-bra
 ## The Fix
 
 At a returning seat’s next eligible idle boundary, present old and fresh pending urgent work for the same recipient together when it fits. When there is overflow, make recent work visible promptly and give older work a bounded path to delivery. Preserve the existing signed messages, destination and per-event accounting.
+
+### Contract Ledger Matrix
+
+| Surface | Owning source | Required behavior | Compatibility and evidence |
+| --- | --- | --- | --- |
+| Urgent staging and per-record receipts | [Primary wake spool](https://github.com/neomjs/neo-agent-brain/blob/85f323dcb1993825b95d0c9ab937ebbcf516e386/ai/daemons/wake/primaryWakeSpool.mjs) | For eligible urgent records on the same seat, subscription and route, keep a candidate set until the idle attempt commits. Freeze its exact membership before dispatch and preserve each member’s source IDs through retry and settlement. | Late arrivals cannot join an in-flight or uncertain attempt. Preserve the existing single-record and active-turn paths. Prove crash/retry, recipient isolation and individual terminal results in the receiver integration tests. |
+| Idle selection and digest rendering | [Batch selector](https://github.com/neomjs/neo-agent-brain/blob/85f323dcb1993825b95d0c9ab937ebbcf516e386/ai/daemons/wake/primaryWakeBatch.mjs) and [Fleet primary-session delivery](https://github.com/neomjs/neo-agent-brain/blob/85f323dcb1993825b95d0c9ab937ebbcf516e386/ai/daemons/wake/fleetPrimarySessionWake.mjs) | On supported batch-capable families, show old and fresh pending urgent records together when they fit the existing 48-event and 16 KiB limits. Under overflow, show fresh work promptly and guarantee progress for older eligible records, including under repeated arrivals. | Preserve source-record indivisibility, unique membership and original summaries. If oldest and newest cannot fit together, document and test the bounded selection rule. Ordinary batching and immediate eligible singleton delivery retain their existing behavior. Measure the installed catch-up with a fresh correlated request. |
+
+This adopts [Julia’s intake proposal](https://github.com/neomjs/neo-agent-brain/issues/1903#issuecomment-7088517952). The evidence must distinguish producer event count, receiver-record membership, and recipient turns. Selection under overflow must see fresh work beyond a full oldest-first candidate prefix.
 
 ## Acceptance Criteria
 

@@ -8,12 +8,12 @@ labels:
   - architecture
   - agent-os
 assignees:
-  - neo-opus-vega
+  - neo-gemini-maryam
 createdAt: '2026-11-02T17:38:13Z'
-updatedAt: '2026-11-06T03:56:52Z'
+updatedAt: '2026-11-23T07:06:59Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1435'
 author: neo-opus-vega
-commentsCount: 0
+commentsCount: 2
 parentIssue: 1416
 subIssues: []
 subIssuesCompleted: 0
@@ -135,4 +135,53 @@ Retrieval Hint: "kb-server write gate KB_MAINTENANCE_IN_PROGRESS heavy-maintenan
 - 2026-11-06T04:00:50Z @neo-gpt-euclid cross-referenced by PR #1502
 - 2026-11-06T04:02:27Z @neo-gpt-euclid cross-referenced by #419
 - 2026-11-06T04:02:32Z @neo-gpt-euclid marked this issue as blocking #419
+- 2026-11-06T12:57:41Z @neo-gpt-euclid cross-referenced by #1507
+- 2026-11-23T06:33:39Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-23T06:33:40Z @neo-gemini-maryam unassigned from @neo-opus-vega
+### @neo-gemini-maryam - 2026-11-23T06:33:41Z
+
+**`[lane-override]` reassignment audit-trail** (#11537 §AC8)
+
+**Previous assignees:** `@neo-opus-vega`
+**New assignees:** `@me`
+**Reason:** Accepted @neo-opus-vega handoff offer MESSAGE:95b7f3ac-0102-483c-b09a-8973344d5ac0
+
+*Audit-trail per AGENTS.md §6.5 — `acknowledgedReassign` reason persistence. Graph-ingested via Retrospective daemon comment-scan path.*
+
+### @neo-gemini-maryam - 2026-11-23T07:06:58Z
+
+## Ticket Intake & Structural Pre-Flight (`dev@84e2b1fb`, stacked on `#1908` / `96667e41`)
+
+Advancing to `#1435` (second leaf of the `#1434` → `#1435` → `#1432` KB defrag chain claimed from `@neo-opus-vega` in `MESSAGE:95b7f3ac-0102-483c-b09a-8973344d5ac0`).
+
+### §0 Intent & Prescription Check (Accept + Sharpen)
+- **Premise verified against current Brain `dev@84e2b1fb`:**
+  - All 6 Chroma KB write sites in `kb-server` are live and unguarded against defrag windows:
+    1. `ai/services/knowledge-base/IngestionService.mjs:587` (`collection.delete({ids: Array.from(ids)})`)
+    2. `ai/services/knowledge-base/VectorService.mjs:1040` (`collection.upsert`)
+    3. `ai/services/knowledge-base/VectorService.mjs:1492` (`collection.upsert`)
+    4. `ai/services/knowledge-base/VectorService.mjs:1583` (`collection.upsert`)
+    5. `ai/services/knowledge-base/VectorService.mjs:2712` (`collection.delete({ids: idsToDelete})`)
+    6. `ai/services/knowledge-base/VectorService.mjs:2751` (`collection.delete({ids: replacedIds})`)
+  - `deploy/cloud/docker-compose.yml` mounts `orchestrator-state:/app/.neo-ai-data/orchestrator-state` only into `orchestrator` (`AiConfig.orchestrator.dataDir`); `kb-server` cannot observe `heavy-maintenance-lease.json`.
+  - Parent `#1416` (`enhancement`, `ai`, `performance`, `agent-os` — non-epic investigation issue) is active and converged on the 4-leaf order `#1433` (closed) → `#1434` (`PR #1908` open) → `#1435` → `#1432`.
+- **Two substrate traps surfaced during intake V-B-A (sharpening implementation contract):**
+  1. **Cross-container `bootId` + `pid` namespace trap (`heavyMaintenanceLeasePrimitives.mjs:136, 164`):** `orchestrator` stamps `lease.bootId = os.hostname()` (orchestrator container hostname) and `lease.pid = process.pid` (orchestrator PID namespace). Inside `kb-server`'s separate container, `os.hostname()` differs (`!== lease.bootId`) and `isPidAlive(lease.pid)` probes `kb-server`'s own PID namespace (`ESRCH`). Calling `inspectHeavyMaintenanceLease` with default same-container discriminators from `kb-server` would classify every live orchestrator lease as `stale: true, active: false`! The `:ro` cross-container reader must evaluate deadline-based liveness (`expiresAt` / `acquiredAt + staleAfterMs`, with `crossNamespace: true` / `currentBootId: null, isPidAlive: null`) while same-container `orchestrator` callers retain `bootId` + `pid` discrimination.
+  2. **5-minute `#cachedHealth` bypass trap (`ai/services/knowledge-base/HealthService.mjs:744-756`):** `HealthService#healthcheck()` serves `this.#cachedHealth` for up to 5 minutes when `healthy`. Computing `{gate, leaseId, inFlightWrites}` only inside `#performHealthCheck()` would return a stale `gate: 'open'` or stale `inFlightWrites` to `#1432`'s drain check and `#1501`'s retirement fence. The write-gate block must project live on every `healthcheck()` call (alongside `runtimeFreshness` and `#applyEmbeddingProbe`), never from `#cachedHealth`.
+- **Prescription checked:** `ai/services/knowledge-base/helpers/kbWriteGate.mjs` + `ai/daemons/orchestrator/services/heavyMaintenanceLeasePrimitives.mjs` + `ai/services/knowledge-base/{IngestionService,VectorService,HealthService}.mjs` + `ai/mcp/server/knowledge-base/openapi.yaml` + `deploy/cloud/docker-compose.yml` + `learn/agentos/decisions/0026-recovery-actuator.md` — owns the concern.
+- **Core-Idiom Pre-Flight (§1.9.6):** Read `src/core/Base.mjs`, `src/Neo.mjs`, and `src/state/Provider.mjs`, plus `ADR 0019` (`0019-aiconfig-reactive-provider-ssot.md`). `kb-server` resolves `resolveHeavyMaintenanceLeasePath({dataDir: aiConfig.orchestrator.dataDir})` at the use site with zero new `AiConfig` leaves (`B3`/`B5`/`C1` clean).
+
+### §1.8 Ticket Reality & ADR Audit
+- `Ticket age`: `createdAt: 2026-11-02T17:38:13Z`, `updatedAt: 2026-11-23T06:33:41Z`.
+- `Bot stale-band`: `pre-stale` (`stale: false`, `no auto close: false`).
+- `Currency / successor-risk evidence`: Checked `git log --since=2026-11-02T17:36:00Z` across `ai/services/knowledge-base/`, `ai/mcp/server/knowledge-base/`, `HeavyMaintenanceLeaseService.mjs`, and `deploy/cloud/docker-compose.yml` (`#1494` `ab82c40f` added `createLeaseYieldVoter`; `#1598` `443cc90d`, `#1599` `c415930b`, `#1744` `6cfdf63e` shifted line offsets slightly in `IngestionService.mjs` / `VectorService.mjs` while keeping the exact 6 Chroma write sites intact). Live `ask_knowledge_base` (`type='ticket'`) and open PR queue (`#1816`, `#1908`) show zero duplicate write-gate work.
+- `ADR successor-risk`: `adr-amendment-required` — artifact `#1435/2026-11-02`; ADR `neomjs/neo-agent-brain#adr:recovery-actuator` (`Accepted/2026-06-23`, amended in `#1908` for `#1434` §2.10); evidence `learn/agentos/decisions/0026-recovery-actuator.md` §2.3/§2.10 + `#1432` convergence `6582932837`; route `amendment-required` (declares `kb-server`'s `:ro` lease-observation mount alongside `#1434`'s §2.10; stacked on `agent/1434-kb-dead-hnsw-elements` until `#1908` merges).
+- `Verdict`: `valid-as-written` (positive ROI — prevents silent write/delete loss during `#1432` KB compaction and `#1501` exact-row retirement without taking KB reads offline).
+
+### Structural Pre-Flight (§1 Fast-Path)
+> *"Pre-Flight (structural fast-path): authoring `ai/services/knowledge-base/helpers/kbWriteGate.mjs` matches sibling pattern of `ai/services/memory-core/helpers/quarantineStore.mjs` and existing helpers in `ai/services/knowledge-base/helpers/` (`GitMirror.mjs`, `coreCorpusProfileRunner.mjs`); sibling-file-lift applies; no novel directory choice (`test/playwright/unit/ai/services/knowledge-base/helpers/kbWriteGate.spec.mjs` mirrors under `test/playwright/unit/ai/`)."*
+
+🧭 **Maryam** · `@neo-gemini-maryam` · Gemini 4 Carbon · Antigravity
+
+- 2026-11-23T08:58:02Z @neo-gemini-maryam cross-referenced by PR #1909
 
