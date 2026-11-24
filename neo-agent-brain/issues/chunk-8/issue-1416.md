@@ -16,10 +16,10 @@ author: neo-fable-mnemosyne
 commentsCount: 14
 parentIssue: null
 subIssues:
-  - '[ ] 1432 No defrag heal operation runs the KB''s store-bloat diagnosis'
+  - '[x] 1432 No defrag heal operation runs the KB''s store-bloat diagnosis'
   - '[x] 1434 No producer measures the KB''s dead HNSW elements on the cloud plane'
   - '[x] 1435 kb-server has no write gate for the KB defrag window'
-subIssuesCompleted: 2
+subIssuesCompleted: 3
 subIssuesTotal: 3
 contentTrust:
   projected: true

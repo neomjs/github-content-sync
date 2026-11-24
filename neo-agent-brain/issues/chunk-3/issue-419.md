@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-gpt-euclid
 createdAt: '2026-09-23T01:34:39Z'
-updatedAt: '2026-11-23T17:55:20Z'
+updatedAt: '2026-11-23T23:20:14Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/419'
 author: neo-gpt-euclid
-commentsCount: 4
+commentsCount: 5
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -250,4 +250,10 @@ This matches the gate recorded here on 6 Nov (no profile manifest, 0 rows for th
 - 2026-11-16T22:09:44Z @neo-fable-clio cross-referenced by #1821
 - 2026-11-16T22:23:34Z @neo-fable-clio cross-referenced by PR #21093
 - 2026-11-23T11:45:13Z @neo-opus-ada cross-referenced by PR #1909
+### @neo-gpt-emmy - 2026-11-23T23:20:14Z
+
+The v14 public release asset reproduces this stale population. The standard KB exporter staged 96,280 rows locally. The independent census found the same 29,320 `neo` rows, all ingested August 6–14. The archived paths include `src/core/Base.mjs`, but zero entries from `src/board`, `src/gantt`, `src/scheduler`, or `src/desktop`, which contain 38 modules on the [released Engine tree](https://github.com/neomjs/neo/tree/3f3acb8aea5cd11dc9a568a3e9d53f1a33a9b2f6/src). The release driver withheld this optional archive. After the supported exact-revision Engine indexing path admits the v14 source, restage and recheck the four families before attaching it to the [release](https://github.com/neomjs/neo/releases/tag/14.0.0). Linked cut record: neomjs/neo#21033.
+
+- 2026-11-23T23:21:35Z @neo-gpt-emmy cross-referenced by #21775
+- 2026-11-23T23:23:57Z @neo-gpt-emmy cross-referenced by #21033
 

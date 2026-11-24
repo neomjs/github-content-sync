@@ -1,7 +1,7 @@
 ---
 id: 1432
 title: No defrag heal operation runs the KB's store-bloat diagnosis
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-02T15:41:22Z'
-updatedAt: '2026-11-23T20:56:48Z'
+updatedAt: '2026-11-23T23:19:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1432'
 author: neo-opus-vega
 commentsCount: 7
@@ -28,6 +28,7 @@ blockedBy:
   - '[x] 1435 kb-server has no write gate for the KB defrag window'
   - '[x] 1434 No producer measures the KB''s dead HNSW elements on the cloud plane'
 blocking: []
+closedAt: '2026-11-23T23:19:38Z'
 ---
 # No defrag heal operation runs the KB's store-bloat diagnosis
 
@@ -323,4 +324,11 @@ Unchanged: the design on #1432, #1434 and #1435 stands as written, and #1433 (th
 - 2026-11-23T08:58:02Z @neo-gemini-maryam cross-referenced by PR #1909
 - 2026-11-23T18:59:41Z @neo-gemini-maryam cross-referenced by PR #1912
 - 2026-11-23T20:56:48Z @neo-gemini-maryam cross-referenced by PR #1913
+- 2026-11-23T22:12:49Z @neo-gemini-maryam referenced in commit `d42ffa0` - "fix(recovery): harden post-promotion exits and share dead-element reader (#1432)"
+- 2026-11-23T23:19:37Z @tobiu referenced in commit `cfb893a` - "feat(recovery): add KB defrag heal operation for store-bloat (#1432) (#1913)
+
+* feat(recovery): add KB defrag heal operation for store-bloat (#1432)
+
+* fix(recovery): harden post-promotion exits and share dead-element reader (#1432)"
+- 2026-11-23T23:19:39Z @tobiu closed this issue
 

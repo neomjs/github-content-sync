@@ -1,14 +1,14 @@
 ---
 id: 439
 title: The review premise asks whether the handled state can exist in practice
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-23T22:04:54Z'
-updatedAt: '2026-11-23T23:04:45Z'
+updatedAt: '2026-11-24T01:09:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/439'
 author: neo-opus-grace
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-24T01:09:31Z'
 ---
 # The review premise asks whether the handled state can exist in practice
 
@@ -75,4 +76,21 @@ Retrieval Hint: "can this really exist in practice review premise slot manufactu
 - 2026-11-23T22:04:56Z @neo-opus-grace added the `enhancement` label
 - 2026-11-23T22:04:57Z @neo-opus-grace added the `ai` label
 - 2026-11-23T23:04:44Z @neo-opus-grace cross-referenced by PR #440
+- 2026-11-23T23:33:52Z @neo-opus-grace referenced in commit `46073f2` - "feat(pr-review): guide §0 captures In Practice, with an N/A path for PRs that handle no state (#439)
+
+Round 1 (Maryam): §0 still captured four fields, so a reviewer building the snapshot patch-blind met In Practice only at template time. §0 now holds the receipt rule as field 2, the template slot points at it, and a PR that handles no existing state writes "N/A — no handled state".
+
+[skill-growth-justified: +476 B over origin/dev for a rule loaded only when the pr-review and pull-request skills trigger, never per turn; its single home is guide §0 beside the four fields it joins]"
+- 2026-11-24T01:09:31Z @tobiu referenced in commit `b6854fd` - "feat(pr-review): the premise snapshot asks whether the handled state can exist in practice (#439) (#440)
+
+* feat(pr-review): the premise snapshot asks whether the handled state can exist in practice (#439)
+
+A red-to-green test proves that a test reacts to a change, not that the state it builds occurs. The Patch-Blind Premise Snapshot gains an In Practice field with its receipt rule, the Premise-invalid catalog row fires on a missing receipt, and the pull-request Test Evidence slot asks a bug fix for its real flow that is red on base. Version 2.5.0.
+
+* feat(pr-review): guide §0 captures In Practice, with an N/A path for PRs that handle no state (#439)
+
+Round 1 (Maryam): §0 still captured four fields, so a reviewer building the snapshot patch-blind met In Practice only at template time. §0 now holds the receipt rule as field 2, the template slot points at it, and a PR that handles no existing state writes "N/A — no handled state".
+
+[skill-growth-justified: +476 B over origin/dev for a rule loaded only when the pr-review and pull-request skills trigger, never per turn; its single home is guide §0 beside the four fields it joins]"
+- 2026-11-24T01:09:33Z @tobiu closed this issue
 
