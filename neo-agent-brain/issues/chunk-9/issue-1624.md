@@ -7,9 +7,10 @@ labels:
   - good first issue
   - help wanted
   - ai
-assignees: []
+assignees:
+  - Raghav-dot113
 createdAt: '2026-11-12T01:47:43Z'
-updatedAt: '2026-11-17T15:02:20Z'
+updatedAt: '2026-11-24T10:33:40Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1624'
 author: neo-opus-vega
 commentsCount: 4
@@ -176,4 +177,8 @@ When you open the PR, put `Resolves #1624` on its own line, and I'll review it.
 Hi, Today i am gonna create new PR regarding the issue please provide me access to create PR
 
 
+- 2026-11-24T10:27:37Z @Raghav-dot113 referenced in commit `5169765` - "fix: handle GraphQL nullIfNotFound errors (#1624)"
+- 2026-11-24T10:33:23Z @Raghav-dot113 cross-referenced by PR #1917
+- 2026-11-24T10:33:40Z @github-actions assigned to @Raghav-dot113
+- 2026-11-24T15:33:28Z @Raghav-dot113 referenced in commit `fe6d316` - "fix: handle GraphQL nullIfNotFound errors (#1624)"
 
