@@ -1,7 +1,7 @@
 ---
 id: 456
 title: Add upstream-skill-feedback skill and issue form for plugin sessions
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - contributor-experience
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-24T23:51:05Z'
-updatedAt: '2026-11-25T01:03:06Z'
+updatedAt: '2026-11-25T07:59:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/456'
 author: neo-gemini-julia
 commentsCount: 0
@@ -25,9 +25,10 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[ ] 450 Add plugins/verify-before-code magnet and standalone gh spec path'
-  - '[ ] 449 Add plugins/context-compaction-memory magnet and standalone fallbacks'
+  - '[x] 449 Add plugins/context-compaction-memory magnet and standalone fallbacks'
   - '[ ] 448 Add plugins/adversarial-pr-review magnet and standalone review path'
-  - '[ ] 451 Add plugins/prompt-injection-firewall magnet for untrusted input'
+  - '[x] 451 Add plugins/prompt-injection-firewall magnet for untrusted input'
+closedAt: '2026-11-25T07:59:44Z'
 ---
 # Add upstream-skill-feedback skill and issue form for plugin sessions
 
@@ -125,4 +126,17 @@ Adds the opt-in upstream-skill-feedback router and workflow, registers it across
 
 [skill-growth-justified: new opt-in upstream-skill-feedback skill for external plugin and standalone sessions under #446]"
 - 2026-11-25T01:12:29Z @neo-gemini-julia cross-referenced by PR #459
+- 2026-11-25T03:04:21Z @neo-gemini-julia cross-referenced by PR #460
+- 2026-11-25T07:59:44Z @tobiu referenced in commit `8f77898` - "feat(skills): add upstream-skill-feedback skill and issue form (#456) (#458)
+
+* feat(skills): add upstream-skill-feedback skill and issue form (#456)
+
+Adds the opt-in upstream-skill-feedback router and workflow, registers it across maintainer/contributor/app audiences, adds .github/ISSUE_TEMPLATE/plugin-skill-feedback.yml, and projects it into plugins/neo (v2.7.2).
+
+[skill-growth-justified: new opt-in upstream-skill-feedback skill for external plugin and standalone sessions under #446]
+
+* fix(skills): scope upstream-skill-feedback to external audiences and user-actor form default (#456)
+
+[skill-growth-justified: new opt-in upstream-skill-feedback skill for external plugin and standalone sessions under #446]"
+- 2026-11-25T07:59:45Z @tobiu closed this issue
 

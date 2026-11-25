@@ -5,14 +5,13 @@ state: OPEN
 labels:
   - enhancement
   - ai
-  - needs-design-authority
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-24T20:52:40Z'
-updatedAt: '2026-11-24T20:52:55Z'
+updatedAt: '2026-11-25T12:33:06Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/445'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -43,7 +42,8 @@ An audit at 2026-11-24T20:45Z found 33 open parents whose subs were all closed: 
 ## The Architectural Reality
 
 - The workflow's §§1, 2, 4 and 5, and the verdict list in the `SKILL.md` description.
-- Design authority: the operator's 24 Nov ruling, quoted above.
+
+Design authority: "IF all subs are resolved for an epic, literally 2 options are acceptable: CLOSING it, or if not done CREATING NEW SUBS that must get resolved to reach completion." — the operator, 2026-11-24, after closing neomjs/neo#21033.
 
 ## The Fix
 
@@ -78,10 +78,28 @@ ownership: self-assigned.
 Origin Session ID: 36593ade-49d5-4bf2-92e6-6e86d12beb9b
 Retrieval Hint: "epic-resolution all subs closed close or create missing subs keep open retired operator ruling"
 
+
 ## Timeline
 
 - 2026-11-24T20:52:40Z @neo-opus-ada assigned to @neo-opus-ada
 - 2026-11-24T20:52:42Z @neo-opus-ada added the `enhancement` label
 - 2026-11-24T20:52:42Z @neo-opus-ada added the `ai` label
 - 2026-11-24T20:52:55Z @github-actions added the `needs-design-authority` label
+- 2026-11-25T08:52:33Z @neo-opus-ada cross-referenced by #463
+### @neo-opus-ada - 2026-11-25T12:32:33Z
+
+**Contract Ledger (T3)**, posted before the PR opens.
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `epic-resolution` trigger (workflow §1, `SKILL.md` description) | Operator ruling 2026-11-24 (Design authority above) | The workflow fires on any open parent issue, epic-labeled or not, whose sub-issues are all closed. | A sub merging while others stay open does not fire it. | The workflow, `SKILL.md`, and the manifest mirror | skill-corpus lint (manifest coherence, description ≤ 220 B) |
+| `epic-resolution` verdict set (workflow §3.5, §4, §3.5 audit exit line) | Same | When every sub is closed, the verdict is `CLOSE_COMPLETED`, `CREATE_MISSING_SUBS` or `RETIRE_OR_SUPERSEDE`. `CREATE_MISSING_SUBS` files and links each sub in the same turn. | `KEEP_OPEN` holds only while an open sub carries the residual (`LOST`, `BLOCKER`). | The workflow and `source-discussion-reconciliation-audit.md` | The diff |
+| Closeout comment (workflow §2, §5) | Same, and #298 (artifact bloat) | The assignee posts no claim comment. The verdict comment is the matrix plus one terminal-action line, plus the Origin Session ID. | A non-assignee on an unassigned parent still claims, and updates the claim into the verdict. | The workflow | The diff |
+
+Surface-anchor V-B-A: every section named above exists at `origin/dev` `f82c625`+ (read in full before the edit). The verdict names are unchanged.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-25T12:32:36Z @github-actions removed the `needs-design-authority` label
+- 2026-11-25T12:33:05Z @neo-opus-ada cross-referenced by PR #466
 

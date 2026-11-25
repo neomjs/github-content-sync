@@ -7,12 +7,13 @@ labels:
   - ai
   - architecture
   - model-experience
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-11-24T22:00:37Z'
-updatedAt: '2026-11-24T23:51:21Z'
+updatedAt: '2026-11-25T03:27:27Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/450'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 1
 parentIssue: 446
 subIssues: []
 subIssuesCompleted: 0
@@ -22,7 +23,8 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 456 Add upstream-skill-feedback skill and issue form for plugin sessions'
+  - '[ ] 448 Add plugins/adversarial-pr-review magnet and standalone review path'
+  - '[x] 456 Add upstream-skill-feedback skill and issue form for plugin sessions'
   - '[x] 447 Generalize generate-claude-plugin for multi-plugin marketplace'
 blocking: []
 ---
@@ -105,4 +107,44 @@ Retrieval Hint: "plugins/verify-before-code ticket-intake ticket-create epic-rev
 - 2026-11-24T22:25:03Z @neo-opus-grace cross-referenced by #446
 - 2026-11-24T23:51:07Z @neo-gemini-julia cross-referenced by #456
 - 2026-11-24T23:53:22Z @neo-gemini-julia marked this issue as being blocked by #456
+- 2026-11-25T03:27:20Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-11-25T03:27:25Z @neo-gemini-julia marked this issue as being blocked by #448
+### @neo-gemini-julia - 2026-11-25T03:27:27Z
+
+## Ticket Intake, Prescription Check, & `/turn-memory-pre-flight` Record
+
+- **Epic-review pre-check:** Parent epic #446 carries cross-family epic review `https://github.com/neomjs/neo-agent-skills/issues/446#issuecomment-7146202696` (`@neo-opus-grace`) and `issuecomment-7146287821` (`@neo-gpt-sophie`).
+- **Ticket reality classification (`ticket-intake-workflow.md` §1.8):**
+  - `Ticket age`: `createdAt: 2026-11-24T22:00:37Z`, `updatedAt: 2026-11-24T23:51:21Z`.
+  - `Bot stale-band`: `pre-stale` (`< 7h` old; `stale: false`, `no auto close: false`).
+  - `Currency / successor-risk evidence`: short-horizon drift probe (`git log origin/dev --since="2026-11-24T22:00:37Z"`) showed `#452` + `#457` merged on `origin/dev` and stacked `#458` (`v2.8.0`), `#459` (`v2.8.1`), `#460` (`v2.8.2`), and `#448` (`v2.8.3`) in flight; none deliver `plugins/verify-before-code` or standalone `gh` paths in `ticket-intake`, `ticket-create`, and `epic-review`. Sequenced as `v2.8.4` stacked on `agent/448-adversarial-pr-review` (`blocked_by #448`).
+  - `ADR successor-risk`: `adr-aligned — artifact #450/2026-11-24; ADR neomjs/neo#adr:0007-agents-md-compaction-taxonomy (Accepted/2026-05-15) & neomjs/neo#adr:0008-skill-anatomy-and-authoring-contract (Proposed/2026-05-15); evidence .agents/skills/ticket-intake/references/ticket-intake-workflow.md, .agents/skills/ticket-create/references/ticket-create-workflow.md, .agents/skills/epic-review/references/epic-review-workflow.md, scripts/lint-skill-corpus.mjs; route continue.`
+  - `Substrate sufficiency audit`: existing `ticket-intake`, `ticket-create`, and `epic-review` skills assume `neo-mjs-github-workflow`, `neo-mjs-knowledge-base`, and `neo-mjs-memory-core` MCP tools without declaring a standalone `gh` CLI + `git grep`/`git log` branch or `plugins/verify-before-code/` bundle. Verdict: **`valid-as-written`** (positive ROI).
+- **Stage 2 Prescription Check (`self-authored-carve.md`):**
+  - `Prescription checked: .agents/skills/ticket-intake/references/ticket-intake-workflow.md — owns the concern` (pre-execution issue validation & falsification gate; standalone `gh issue view`, `gh issue list --search`, `git grep`, and `git log -S` fallback belongs here).
+  - `Prescription checked: .agents/skills/ticket-create/references/ticket-create-workflow.md — owns the concern` (issue spec authoring & six-stage challenge chain; standalone `gh issue list`, `git grep`/`git log`, and user-confirmed `gh issue create` §2D rules belong here).
+  - `Prescription checked: .agents/skills/epic-review/references/epic-review-workflow.md — owns the concern` (pre-work epic validation chain; standalone `gh issue view`, `gh api .../sub_issues`, `git log`, and chat/opt-in `gh issue comment` §2D rules belong here).
+  - `Prescription checked: scripts/generate-claude-plugin.mjs — owns the concern` (`PLUGIN_BUNDLES` registry projecting `plugins/verify-before-code/` and `.claude-plugin/marketplace.json`).
+- **`/turn-memory-pre-flight` Load-Effect Audit:**
+  - Always-loaded `SKILL.md` routers (`ticket-intake/SKILL.md`, `ticket-create/SKILL.md`, `epic-review/SKILL.md`): `rewrite` (`DISCIPLINE-ONLY`) — normalize `.agents/skills/...` pointers for `${CLAUDE_SKILL_DIR}` projection and tighten verbose router prose (`<= 12` lines, net-reducing router bytes).
+  - Conditional payloads (`ticket-intake-workflow.md`, `ticket-create-workflow.md`, `epic-review-workflow.md`): `rewrite` (`DISCIPLINE-ONLY`) — add compact standalone `gh` CLI + `git grep`/`git log` branches and honest capability-degradation notes while keeping total `.agents/skills/**/*.md` byte delta net-negative (`< 0 B`).
+
+### T3 Contract Ledger Confirmation
+
+| Target Surface | Source of Authority | Shipped Behavior | Fallback | Docs | Verification |
+|---|---|---|---|---|---|
+| `.agents/skills/ticket-intake/`, `ticket-create/`, `epic-review/` | `neomjs/neo#adr:0007-agents-md-compaction-taxonomy`; `neomjs/neo#adr:0008-skill-anatomy-and-authoring-contract`; Directory Policy §2D/§4C | Documents standalone `gh issue`, `gh api` sub-issues, and `git grep`/`git log` sweeps + pre-code falsification, stating honestly where keyword search misses semantic KB/Memory Core prior art, and requiring user confirmation before `gh issue create`/`comment`/`edit` (§2D) | Full Agent OS MCP + A2A rules unchanged when Agent OS MCPs are mounted | `plugins/verify-before-code/README.md` | `npm run lint && npm test` |
+| `plugins/verify-before-code/` & `.claude-plugin/marketplace.json` | `PLUGIN_BUNDLES` in `scripts/generate-claude-plugin.mjs`; `#446` epic review (`issuecomment-7146202696`) | Projects `ticket-intake`, `ticket-create`, `epic-review`, and `upstream-skill-feedback` (`displayName: 'GitHub Issue & Epic Pre-Code Spec Gate'`, `contained` reach, `description <= 500` chars pitched at issue pickup, spec authoring, and epic validation before coding) | Fails closed in `generate-claude-plugin.mjs --check` | `plugins/verify-before-code/README.md` | `npm run generate-claude-plugin -- --check`, `claude plugin validate`, `evals/verify-before-code/` |
+
+- 2026-11-25T03:37:01Z @neo-gemini-julia cross-referenced by PR #462
+- 2026-11-25T08:03:41Z @neo-gemini-julia referenced in commit `7c72833` - "feat(claude): add verify-before-code plugin bundle (#450)"
+- 2026-11-25T08:59:06Z @neo-gemini-julia referenced in commit `8e1cfb2` - "feat(claude): add verify-before-code plugin bundle (#450)"
+- 2026-11-25T10:17:22Z @neo-gemini-julia referenced in commit `477bcca` - "feat(claude): add verify-before-code plugin bundle (#450)"
+- 2026-11-25T11:06:54Z @neo-gemini-maryam cross-referenced by PR #465
+- 2026-11-25T11:10:48Z @neo-opus-ada marked this issue as blocking #463
+- 2026-11-25T11:21:27Z @neo-opus-ada removed the block on #463
+- 2026-11-25T11:24:04Z @neo-gemini-julia referenced in commit `087f5fe` - "feat(claude): add verify-before-code plugin bundle (#450)"
+- 2026-11-25T11:30:22Z @neo-gemini-julia referenced in commit `5a3a114` - "feat(claude): add verify-before-code plugin bundle (#450)"
+- 2026-11-25T11:54:43Z @neo-gemini-julia referenced in commit `801c174` - "feat(claude): add verify-before-code plugin bundle (#450)"
+- 2026-11-25T12:00:12Z @neo-gemini-julia referenced in commit `de65b3d` - "feat(claude): add verify-before-code plugin bundle (#450)"
 

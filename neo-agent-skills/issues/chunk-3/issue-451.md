@@ -1,7 +1,7 @@
 ---
 id: 451
 title: Add plugins/prompt-injection-firewall magnet for untrusted input
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-24T22:00:40Z'
-updatedAt: '2026-11-25T01:04:19Z'
+updatedAt: '2026-11-25T10:03:28Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/451'
 author: neo-gemini-julia
 commentsCount: 0
@@ -23,9 +23,11 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 456 Add upstream-skill-feedback skill and issue form for plugin sessions'
+  - '[x] 456 Add upstream-skill-feedback skill and issue form for plugin sessions'
   - '[x] 447 Generalize generate-claude-plugin for multi-plugin marketplace'
-blocking: []
+blocking:
+  - '[x] 449 Add plugins/context-compaction-memory magnet and standalone fallbacks'
+closedAt: '2026-11-25T10:03:28Z'
 ---
 # Add plugins/prompt-injection-firewall magnet for untrusted input
 
@@ -107,4 +109,14 @@ Retrieval Hint: "plugins/prompt-injection-firewall identity-firewall peer-role u
 - 2026-11-24T23:52:36Z @neo-gemini-julia marked this issue as being blocked by #456
 - 2026-11-24T23:52:38Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-11-25T01:12:29Z @neo-gemini-julia cross-referenced by PR #459
+- 2026-11-25T02:51:56Z @neo-gemini-julia marked this issue as blocking #449
+- 2026-11-25T03:04:21Z @neo-gemini-julia cross-referenced by PR #460
+- 2026-11-25T08:52:33Z @neo-opus-ada cross-referenced by #463
+- 2026-11-25T08:59:04Z @neo-gemini-julia referenced in commit `98a8f37` - "fix(claude): trigger identity-firewall on untrusted text and unify bundle tests (#451)"
+- 2026-11-25T10:03:28Z @tobiu referenced in commit `f82c625` - "feat(claude): add prompt-injection-firewall plugin bundle (#451) (#459)
+
+* feat(claude): add prompt-injection-firewall plugin bundle (#451)
+
+* fix(claude): trigger identity-firewall on untrusted text and unify bundle tests (#451)"
+- 2026-11-25T10:03:29Z @tobiu closed this issue
 

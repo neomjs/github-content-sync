@@ -1,18 +1,19 @@
 ---
 id: 449
 title: Add plugins/context-compaction-memory magnet and standalone fallbacks
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - model-experience
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-11-24T22:00:35Z'
-updatedAt: '2026-11-24T23:51:15Z'
+updatedAt: '2026-11-25T11:52:22Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/449'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 1
 parentIssue: 446
 subIssues: []
 subIssuesCompleted: 0
@@ -22,9 +23,13 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 456 Add upstream-skill-feedback skill and issue form for plugin sessions'
+  - '[ ] 463 pr-review misses closed PRs and ADR-less VDom update-path diffs'
+  - '[x] 451 Add plugins/prompt-injection-firewall magnet for untrusted input'
+  - '[x] 456 Add upstream-skill-feedback skill and issue form for plugin sessions'
   - '[x] 447 Generalize generate-claude-plugin for multi-plugin marketplace'
-blocking: []
+blocking:
+  - '[ ] 448 Add plugins/adversarial-pr-review magnet and standalone review path'
+closedAt: '2026-11-25T11:52:22Z'
 ---
 # Add plugins/context-compaction-memory magnet and standalone fallbacks
 
@@ -67,7 +72,7 @@ Decision Record impact: aligned-with `neomjs/neo#adr:0007-agents-md-compaction-t
 
 - [ ] `session-sunset`, `memory-mining`, and `turn-memory-pre-flight` reference payloads include standalone (`git`/`gh` + structured handover) branches with honest step-level capability notes while keeping `SKILL.md` routers within budget and `contained` reach.
 - [ ] `plugins/context-compaction-memory/` is registered in `PLUGIN_BUNDLES` (`description <= 500` chars pitched at post-`/compact` turn-record recovery & lean `CLAUDE.md`, bundling `context-recovery`, `session-sunset`, `memory-mining`, `turn-memory-pre-flight`, and `upstream-skill-feedback`, with zero `E404` `npx` commands prior to `neomjs/neo-agent-brain#1719`) and passes `npm run generate-claude-plugin -- --check` and `claude plugin validate ./plugins/context-compaction-memory`.
-- [ ] Checked-in eval cases (`claude plugin eval` / fresh-session compaction-recovery benchmark) beat the no-plugin baseline arm, and the fixed `SearchPlugins` query set is recorded (`[L3-deferred — post-listing directory search probe tracked on #446]`).
+- [ ] Checked-in eval cases (`claude -p --plugin-dir --add-dir` fresh-session compaction-recovery & `CLAUDE.md` placement benchmark) beat the no-plugin baseline arm, and the fixed `SearchPlugins` query set is recorded (`[L3-deferred — operator handoff needed; Antigravity author seat lacks Claude CLI login, headless ablation executed by @neo-opus-grace on #460 and pre-submission gate + post-listing search probe tracked on #446]`).
 - [ ] `npm run lint && npm test` exit `0` with bumped `package.json` + `package-lock.json`.
 
 ## Out of Scope
@@ -104,4 +109,37 @@ Retrieval Hint: "plugins/context-compaction-memory session-sunset memory-mining 
 - 2026-11-24T22:25:03Z @neo-opus-grace cross-referenced by #446
 - 2026-11-24T23:51:07Z @neo-gemini-julia cross-referenced by #456
 - 2026-11-24T23:53:19Z @neo-gemini-julia marked this issue as being blocked by #456
+- 2026-11-25T02:51:49Z @neo-gemini-julia assigned to @neo-gemini-julia
+- 2026-11-25T02:51:56Z @neo-gemini-julia marked this issue as being blocked by #451
+### @neo-gemini-julia - 2026-11-25T02:51:57Z
+
+## Intake, Prescription & Turn-Memory Pre-Flight (`#449`)
+
+- **Epic-Review Prerequisite (`§1.2`):** Satisfied by `@neo-opus-grace`'s cross-family review on parent epic `#446` (`https://github.com/neomjs/neo-agent-skills/issues/446#issuecomment-7146202696`).
+- **Self-Authored Drift Probe (`self-authored-carve.md`):** Checked `origin/dev` (`e86ec85`) and stacked branches `#458` (`54e67b1`) + `#459` (`923a217`) since `2026-11-24T22:00:35Z`; generator/test surfaces (`scripts/generate-claude-plugin.mjs`, `scripts/test-claude-plugin.mjs`, `.claude-plugin/marketplace.json`) re-read in full on `923a217`.
+- **Stage 2 Prescription Checked:** `.agents/skills/session-sunset/{SKILL.md,references/session-sunset-workflow.md}`, `.agents/skills/memory-mining/{SKILL.md,references/memory-mining-protocol.md}`, `.agents/skills/turn-memory-pre-flight/{SKILL.md,references/turn-memory-pre-flight-workflow.md}`, `.agents/skills/context-recovery/references/standalone-context-recovery.md`, and `scripts/generate-claude-plugin.mjs` (`PLUGIN_BUNDLES`) — owns the concern (`turn-memory-pre-flight/SKILL.md` also gets canonical `.agents/skills/turn-memory-pre-flight/references/...` path so `generate-claude-plugin.mjs` projects `${CLAUDE_SKILL_DIR}/references/turn-memory-pre-flight-workflow.md`).
+- **`/turn-memory-pre-flight` & `ADR 0007` Audit:**
+  - **Map (`SKILL.md` routers):** `keep` / `rewrite` within `7–16` line router budgets; zero `allowed-tools` added so `plugins/context-compaction-memory` stays `contained` reach.
+  - **World Atlas (`references/*.md`):** `rewrite` (`DISCIPLINE-ONLY`) — adds standalone (`git`/`gh` + `.agents/handover.md`) execution branches and honest step-level capability notes (Directory Policy §2D/§4C compliant, zero `npx -y neo-memory-core` prior to `neomjs/neo-agent-brain#1719`) while compacting verbose prose so net `.agents/skills/**/*.md` byte delta stays `<= 0`.
+
+### Contract Ledger Matrix (T3)
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback / Edge Case | Docs | Evidence |
+|---|---|---|---|---|---|
+| `session-sunset`, `memory-mining`, `turn-memory-pre-flight`, `standalone-context-recovery` | `ADR 0007`, `ADR 0008`; Directory Policy §2D/§2F/§4C; `#446` epic review | Standalone `git`/`gh` + `.agents/handover.md` execution branches in `references/*.md` with step-level capability notes where structured turn-diary / cross-agent recall requires Memory Core; canonical `.agents/skills/...` router path in `turn-memory-pre-flight/SKILL.md` | Full Agent OS maintainer path unchanged when `neo-mjs-memory-core` is mounted; zero `npx -y neo-memory-core` commands before `brain#1719` | `plugins/context-compaction-memory/README.md` | `npm run lint && npm test` (net-negative `.agents/skills/**/*.md` bytes) |
+| `PLUGIN_BUNDLES` (`context-compaction-memory`) & `evals/context-compaction-memory/` | `#449`; `#446` `issuecomment-7146202696` & `issuecomment-7146572018` | Projects `context-recovery`, `session-sunset`, `memory-mining`, `turn-memory-pre-flight`, and `upstream-skill-feedback` (`contained` reach, `description <= 500` chars leading with post-`/compact` turn-record recovery + lean `CLAUDE.md`/`AGENTS.md`, version `2.8.2`) + checked-in eval cases & query set | Fails closed in `generate-claude-plugin.mjs --check` | `plugins/context-compaction-memory/README.md` | `npm run generate-claude-plugin -- --check`, `claude plugin validate ./plugins/context-compaction-memory`, `npm test` |
+
+Origin Session ID: `05580ab8-2f98-4b02-891c-75d444d212ec`
+
+- 2026-11-25T03:04:21Z @neo-gemini-julia cross-referenced by PR #460
+- 2026-11-25T03:17:59Z @neo-gemini-julia marked this issue as blocking #448
+- 2026-11-25T10:16:05Z @neo-gemini-julia referenced in commit `c1c1059` - "feat(claude): add context-compaction-memory plugin bundle (#449)"
+- 2026-11-25T10:18:26Z @neo-gemini-julia cross-referenced by PR #461
+- 2026-11-25T11:29:14Z @neo-gemini-julia marked this issue as being blocked by #463
+- 2026-11-25T11:52:22Z @tobiu referenced in commit `4ea2b1d` - "feat(claude): add context-compaction-memory plugin bundle (#449) (#460)
+
+* feat(claude): add context-compaction-memory plugin bundle (#449)
+
+* fix(skills): refine compaction triggers and standalone sunset Step 1/3.5 (#449)"
+- 2026-11-25T11:52:24Z @tobiu closed this issue
 

@@ -1,7 +1,7 @@
 ---
 id: 1624
 title: 'A missing target answers GRAPHQL_API_ERROR, not its not-found code'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - good first issue
@@ -10,7 +10,7 @@ labels:
 assignees:
   - Raghav-dot113
 createdAt: '2026-11-12T01:47:43Z'
-updatedAt: '2026-11-24T10:33:40Z'
+updatedAt: '2026-11-25T09:43:38Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1624'
 author: neo-opus-vega
 commentsCount: 4
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-25T09:43:38Z'
 ---
 # A missing target answers GRAPHQL_API_ERROR, not its not-found code
 
@@ -181,4 +182,6 @@ Hi, Today i am gonna create new PR regarding the issue please provide me access 
 - 2026-11-24T10:33:23Z @Raghav-dot113 cross-referenced by PR #1917
 - 2026-11-24T10:33:40Z @github-actions assigned to @Raghav-dot113
 - 2026-11-24T15:33:28Z @Raghav-dot113 referenced in commit `fe6d316` - "fix: handle GraphQL nullIfNotFound errors (#1624)"
+- 2026-11-25T09:43:37Z @tobiu referenced in commit `d33666e` - "fix: handle GraphQL nullIfNotFound errors (#1624) (#1917)"
+- 2026-11-25T09:43:39Z @tobiu closed this issue
 
