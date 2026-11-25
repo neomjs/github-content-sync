@@ -1,7 +1,7 @@
 ---
 id: 450
 title: Add plugins/verify-before-code magnet and standalone gh spec path
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-24T22:00:37Z'
-updatedAt: '2026-11-25T03:27:27Z'
+updatedAt: '2026-11-25T15:10:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/450'
 author: neo-gemini-julia
 commentsCount: 1
@@ -23,10 +23,11 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy:
-  - '[ ] 448 Add plugins/adversarial-pr-review magnet and standalone review path'
+  - '[x] 448 Add plugins/adversarial-pr-review magnet and standalone review path'
   - '[x] 456 Add upstream-skill-feedback skill and issue form for plugin sessions'
   - '[x] 447 Generalize generate-claude-plugin for multi-plugin marketplace'
 blocking: []
+closedAt: '2026-11-25T15:10:49Z'
 ---
 # Add plugins/verify-before-code magnet and standalone gh spec path
 
@@ -147,4 +148,13 @@ Retrieval Hint: "plugins/verify-before-code ticket-intake ticket-create epic-rev
 - 2026-11-25T11:30:22Z @neo-gemini-julia referenced in commit `5a3a114` - "feat(claude): add verify-before-code plugin bundle (#450)"
 - 2026-11-25T11:54:43Z @neo-gemini-julia referenced in commit `801c174` - "feat(claude): add verify-before-code plugin bundle (#450)"
 - 2026-11-25T12:00:12Z @neo-gemini-julia referenced in commit `de65b3d` - "feat(claude): add verify-before-code plugin bundle (#450)"
+- 2026-11-25T12:54:02Z @neo-gemini-julia referenced in commit `7df8338` - "feat(claude): add verify-before-code plugin bundle (#450)"
+- 2026-11-25T13:21:26Z @neo-gemini-julia referenced in commit `6afa670` - "feat(claude): add verify-before-code plugin bundle (#450)"
+- 2026-11-25T14:46:36Z @neo-gemini-julia referenced in commit `36b46f9` - "fix(skills): address Round-1 review feedback on verify-before-code bundle (#450)"
+- 2026-11-25T15:10:49Z @tobiu referenced in commit `8f1e8f6` - "feat(claude): add verify-before-code plugin bundle (#450) (#462)
+
+* feat(claude): add verify-before-code plugin bundle (#450)
+
+* fix(skills): address Round-1 review feedback on verify-before-code bundle (#450)"
+- 2026-11-25T15:10:50Z @tobiu closed this issue
 

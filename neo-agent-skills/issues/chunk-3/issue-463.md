@@ -1,7 +1,7 @@
 ---
 id: 463
 title: pr-review misses closed PRs and ADR-less VDom update-path diffs
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-25T08:52:32Z'
-updatedAt: '2026-11-25T11:11:00Z'
+updatedAt: '2026-11-25T15:33:45Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/463'
 author: neo-opus-ada
 commentsCount: 1
@@ -24,6 +24,7 @@ contentTrust:
 blockedBy: []
 blocking:
   - '[x] 449 Add plugins/context-compaction-memory magnet and standalone fallbacks'
+closedAt: '2026-11-25T15:33:45Z'
 ---
 # pr-review misses closed PRs and ADR-less VDom update-path diffs
 
@@ -134,4 +135,27 @@ Surface-anchor V-B-A: every named path resolves on neo `dev` at `6e77da5d72` (`l
 - 2026-11-25T11:33:10Z @neo-gemini-julia cross-referenced by PR #461
 - 2026-11-25T11:33:14Z @neo-gemini-julia cross-referenced by PR #462
 - 2026-11-25T11:54:55Z @neo-opus-ada referenced in commit `f6b2ee2` - "Merge origin/dev into ada/463 after the 2.8.3 release (#463)"
+- 2026-11-25T13:18:29Z @neo-opus-ada referenced in commit `923598b` - "Merge origin/dev into ada/463 after the 2.8.4 release (#463)"
+- 2026-11-25T15:14:54Z @neo-opus-ada referenced in commit `b28520f` - "chore(pr-review): merge dev after #462 landed (#463)"
+- 2026-11-25T15:14:55Z @neo-opus-ada referenced in commit `1eeda09` - "chore(pr-review): regenerate plugin bundles for 2.8.6 after the dev merge (#463)"
+- 2026-11-25T15:33:44Z @tobiu referenced in commit `3e3bd9d` - "feat(pr-review): closed-PR sweep + VDom update-path premise row (#463) (#465)
+
+* feat(pr-review): closed-PR sweep + VDom update-path premise row (#463)
+
+Section 0 item 1 adds every PR that named the close-target to the
+patch-blind inputs: a design rejected in a closed one's closing record
+ends the review there. The premise catalog gains the operator's
+2026-11-25 rule for the VDom update path: guides, then ADR, then code.
+
+[skill-growth-justified: encodes a new operator rule; the path list moves into the engine guides (neo#22189) once they land, and the note shrinks to their link]
+
+* chore(release): 2.8.5 carries the pr-review premise row (#463)
+
+* chore(release): 2.8.2 lands #463 ahead of the plugin stack (#463)
+
+* chore(pr-review): regenerate plugin bundles for 2.8.6 after the dev merge (#463)"
+- 2026-11-25T15:33:46Z @tobiu closed this issue
+- 2026-11-25T17:03:55Z @neo-gemini-julia cross-referenced by #470
+- 2026-11-25T17:32:39Z @neo-opus-ada cross-referenced by #471
+- 2026-11-25T18:03:53Z @neo-gemini-maryam cross-referenced by PR #472
 

@@ -1,7 +1,7 @@
 ---
 id: 448
 title: Add plugins/adversarial-pr-review magnet and standalone review path
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-24T22:00:32Z'
-updatedAt: '2026-11-25T11:54:10Z'
+updatedAt: '2026-11-25T13:12:36Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/448'
 author: neo-gemini-julia
 commentsCount: 1
@@ -27,7 +27,8 @@ blockedBy:
   - '[x] 456 Add upstream-skill-feedback skill and issue form for plugin sessions'
   - '[x] 447 Generalize generate-claude-plugin for multi-plugin marketplace'
 blocking:
-  - '[ ] 450 Add plugins/verify-before-code magnet and standalone gh spec path'
+  - '[x] 450 Add plugins/verify-before-code magnet and standalone gh spec path'
+closedAt: '2026-11-25T13:12:36Z'
 ---
 # Add plugins/adversarial-pr-review magnet and standalone review path
 
@@ -141,4 +142,10 @@ Retrieval Hint: "plugins/adversarial-pr-review pr-review pull-request tech-debt-
 - 2026-11-25T11:51:39Z @neo-gemini-julia referenced in commit `03f5812` - "feat(claude): add adversarial-pr-review plugin bundle (#448)"
 - 2026-11-25T12:00:08Z @neo-gemini-julia referenced in commit `d5107fb` - "feat(claude): add adversarial-pr-review plugin bundle (#448)"
 - 2026-11-25T12:48:57Z @neo-gemini-julia referenced in commit `402ee97` - "fix(claude): split router audiences, fix grep -E, and add discriminating eval (#448)"
+- 2026-11-25T13:12:36Z @tobiu referenced in commit `ff7f311` - "feat(claude): add adversarial-pr-review plugin bundle (#448) (#461)
+
+* feat(claude): add adversarial-pr-review plugin bundle (#448)
+
+* fix(claude): split router audiences, fix grep -E, and add discriminating eval (#448)"
+- 2026-11-25T13:12:38Z @tobiu closed this issue
 

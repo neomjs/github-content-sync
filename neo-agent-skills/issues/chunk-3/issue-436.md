@@ -1,7 +1,7 @@
 ---
 id: 436
 title: A declared guard can read neither the PR's base nor its live body
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-22T03:36:51Z'
-updatedAt: '2026-11-22T03:36:51Z'
+updatedAt: '2026-11-25T16:20:00Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/436'
 author: neo-opus-grace
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +23,8 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking:
-  - '[ ] 21504 Fold File Size Guard into the shared baseline''s guards job'
+  - '[x] 21504 Fold File Size Guard into the shared baseline''s guards job'
+closedAt: '2026-11-25T16:06:55Z'
 ---
 # A declared guard can read neither the PR's base nor its live body
 
@@ -53,17 +54,28 @@ Design authority: "After neo-agent-skills#427 it gives each guard the base's his
 Option 4, in the `guards` job of `reusable-pr-baseline.yml`:
 
 1. `permissions: {contents: read, pull-requests: read}`.
-2. The checkout takes `fetch-depth: 0`, so the base is in history, and `persist-credentials: false`, so git keeps no token for later steps.
+2. The checkout takes `fetch-depth: 0`, so the base is in history, and `persist-credentials: false`, so git keeps no token for later steps. A `Base commit in history` step asserts `git cat-file -e "${BASE_SHA}^{commit}"` before any guard runs.
 3. Before `npm ci`, the same `Read the live pull-request body` step that `pr-baseline` runs, writing `${{ runner.temp }}/pr-body.md`.
 4. `Run the declared guards` passes every guard `BASE_SHA` (`github.event.pull_request.base.sha`) and `BODY_FILE`.
-5. The comments on both jobs state the rule as its real invariant: no job that runs pull-request code holds more than read access to its own repository. A minor release follows, because callers gain inputs and change nothing.
+5. The comments on both jobs state the rule as its real invariant: no job that runs pull-request code holds more than read access to its own repository. A minor release follows, because guards gain two variables and callers change nothing.
+
+## Contract Ledger Matrix
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| `BASE_SHA` and `BODY_FILE` in a caller's declared guards | `reusable-pr-baseline.yml`, `inputs.guards` description | Every guard reads the PR base commit (in history) and the live body as a file | A caller that declares no guards skips the job, unchanged | `inputs.guards` description; the `guards` job comment | `scripts/test-reusable-pr-baseline.mjs`: a fixture guard through the real runner, plus mutation arms |
+| `guards` job permissions and checkout | This ticket's option 4; the `pr-baseline` grant | `contents: read` + `pull-requests: read`; full history; no persisted credential | None: the grant stays read-only on the job's own repository | Both jobs' comments | Same test: required contract plus a mutation arm per property |
 
 ## Acceptance Criteria
 
-- [ ] AC-1: A guard declared by a fixture caller reads `BODY_FILE` and finds the live body, and `git cat-file -e "$BASE_SHA"` succeeds in the job.
+- [ ] AC-1: A fixture guard reads `BODY_FILE` and `BASE_SHA` through the `guards` runner, the job's body read is the same live read as `pr-baseline`'s, and the job asserts `git cat-file -e "${BASE_SHA}^{commit}"`.
 - [ ] AC-2: The `guards` job fetches the body itself on every run attempt, from no job output and no event payload.
 - [ ] AC-3: The `guards` checkout persists no credentials.
 - [ ] AC-4: `package.json` carries the minor version bump.
+
+## Post-Merge Validation
+
+- [ ] The first real `guards` run on a release carrying this (neomjs/neo#21504's pull request) passes `Base commit in history`, and a guard there reads the live body. A reusable workflow runs only from a published release tag, so no pre-merge job can show it.
 
 ## Out of Scope
 
@@ -95,4 +107,37 @@ Retrieval Hint: "shared baseline guards job live PR body BASE_SHA BODY_FILE pull
 - 2026-11-22T03:36:54Z @neo-opus-grace added the `build` label
 - 2026-11-22T03:37:05Z @neo-opus-grace marked this issue as blocking #21504
 - 2026-11-22T03:37:30Z @neo-opus-grace cross-referenced by #21504
+- 2026-11-24T23:08:40Z @neo-opus-grace cross-referenced by #453
+- 2026-11-25T14:18:18Z @neo-opus-grace cross-referenced by PR #468
+- 2026-11-25T15:19:32Z @neo-opus-grace referenced in commit `0d2d247` - "chore(release): merge dev at 2.8.5 (#462) into the guards branch, version 2.9.0 (#436)
+
+Resolves only the version-bearing files: dev's side, then npm version 2.9.0, which regenerated every plugin manifest including verify-before-code."
+- 2026-11-25T15:51:58Z @neo-opus-grace referenced in commit `f4e2067` - "chore(release): merge dev at 2.8.7 (#465, #466) into the guards branch, version 2.9.0 (#436)
+
+Resolves only the version-bearing files: dev's side, then npm version 2.9.0, which regenerated every plugin manifest."
+- 2026-11-25T16:06:55Z @tobiu referenced in commit `486a4e1` - "feat(ci): the guards job hands every guard the base commit and the live PR body (#436) (#468)
+
+A caller's guards now read BASE_SHA (in history: full-depth checkout, asserted
+by a `Base commit in history` step) and BODY_FILE, written by the same live
+read PR baseline runs, before `npm ci`. The job reads the body itself on every
+run attempt, so "Re-run failed jobs" judges a corrected body, not the first
+attempt's. It gains `pull-requests: read`, stays read-only on its own
+repository, and its checkout persists no credential.
+
+The contract test pins the body step byte-equal to PR baseline's, runs a
+fixture guard through the real runner, and adds ten mutation arms.
+
+Minor release: 2.9.0."
+- 2026-11-25T16:07:07Z @tobiu closed this issue
+### @neo-opus-grace - 2026-11-25T16:20:00Z
+
+**Post-Merge Validation: done, on neomjs/neo#22206 (the first caller on v2.9.0).**
+
+In PR Baseline run `45652262107`, `baseline / guards` (job `139339594384`) passed every step: checkout (full history), `Read the live pull-request body`, `Base commit in history`, and `Run the declared guards`. Engine's new `file sizes` guard ran on `$BASE_SHA` and `$BODY_FILE` and logged `check-file-sizes: 4 path(s) evaluated, 4 reported, 0 violations.`
+
+**One caller broke, and it is fixed in that same PR.** The full-depth checkout makes `git fetch --unshallow` fatal ("on a complete repository", exit 128). Engine's `spec retirement` guard used that flag, so #22206 drops it. That is the first caller to move its pin to v2.9.0. I checked the other callers' workflows: neo-agent-brain, devindex and neo-agent-institution have no `--unshallow` and no credentialed git or `gh` in their guards. Their Dependabot bumps to v2.9.0 are safe.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 3a0cf37c-1c66-4dab-ba0f-9c29b72fb048
+
+- 2026-11-25T16:33:25Z @neo-gpt-sophie cross-referenced by PR #22206
 

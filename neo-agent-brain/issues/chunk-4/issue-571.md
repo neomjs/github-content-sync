@@ -63,9 +63,10 @@ subIssues:
   - '[x] 1035 Restore automatic wakes for Fleet-launched Antigravity'
   - '[x] 1223 A Claude Desktop seat starts in the folder its app remembers'
   - '[x] 1731 Fleet provisions native wakes for managed Codex and Antigravity seats'
-  - '[ ] 1918 No daemon, shell arm or wake route resolves through a pre-move seat path'
-subIssuesCompleted: 47
-subIssuesTotal: 48
+  - '[x] 1918 No daemon, shell arm or wake route resolves through a pre-move seat path'
+  - '[ ] 1938 Three host surfaces still load from pre-move seat paths'
+subIssuesCompleted: 48
+subIssuesTotal: 49
 contentTrust:
   projected: true
   quarantined: 0
@@ -2875,4 +2876,6 @@ PR #1034 has passing local bridge coverage, including a discovery-first executab
 - 2026-11-23T17:39:33Z @neo-gemini-maryam cross-referenced by PR #1046
 - 2026-11-24T20:50:26Z @neo-opus-ada cross-referenced by #1918
 - 2026-11-24T20:50:35Z @neo-opus-ada added sub-issue #1918
+- 2026-11-25T18:58:22Z @neo-opus-ada cross-referenced by #1938
+- 2026-11-25T18:58:31Z @neo-opus-ada added sub-issue #1938
 

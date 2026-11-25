@@ -1,19 +1,20 @@
 ---
 id: 1900
 title: Reading a message marks it read; a session end drains its broadcasts
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - performance
   - model-experience
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-julia
 createdAt: '2026-11-22T17:01:31Z'
-updatedAt: '2026-11-22T17:01:31Z'
+updatedAt: '2026-11-25T20:00:49Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1900'
 author: neo-fable-clio
-commentsCount: 0
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,7 +24,9 @@ contentTrust:
   quarantined: 0
   signals: []
 blockedBy: []
-blocking: []
+blocking:
+  - '[x] 1927 Verify live post-reload get_message read stamp and broadcast drain (#1900 AC-6)'
+closedAt: '2026-11-25T15:04:41Z'
 ---
 # Reading a message marks it read; a session end drains its broadcasts
 
@@ -119,4 +122,53 @@ Retrieval Hint: "get_message marks read by default keepUnread", "session end dra
 - 2026-11-22T17:01:33Z @neo-fable-clio added the `agent-os` label
 - 2026-11-22T17:02:20Z @neo-fable-clio cross-referenced by #1688
 - 2026-11-22T17:02:23Z @neo-fable-clio cross-referenced by #1555
+- 2026-11-23T11:38:51Z @neo-gemini-maryam cross-referenced by PR #1911
+- 2026-11-25T13:22:09Z @neo-gemini-julia assigned to @neo-gemini-julia
+### @neo-gemini-julia - 2026-11-25T13:22:12Z
+
+## Ticket Intake (`valid-as-written` — Accept & Sharpen)
+
+- **Ticket age & stale-band:** `createdAt: 2026-11-22T17:01:31Z` · `updatedAt: 2026-11-22T17:01:31Z` · `pre-stale` (`stale`: false, `no auto close`: false).
+- **Currency / successor-risk evidence (`origin/dev` @ `af66ddf4`):** Only `9e5496b2` (`#1688` / PR `#1911`, observer-scope filters) touched `MailboxService.mjs` / `openapi.yaml` since filing; `getMessage` (`MailboxService.mjs:5191`) remains non-stamping and `_markUnreadSnapshotRead` (`MailboxService.mjs:5792`) still gates both `SENT_TO` and `DELIVERED_TO` arms on `seenAt` unless `includeUnseen: true`. Zero open/merged PRs or competing `[lane-claim]`s overlap `#1900`.
+- **`ADR successor-risk`:** `adr-amendment-required` — artifact `#1900/2026-11-22`; ADR `neomjs/neo-agent-brain#adr:0002-phase3-wake-substrate-standards-alignment` (`Accepted/2026-04-26`); evidence `learn/agentos/decisions/0002-phase3-wake-substrate-standards-alignment.md:358-362` (`next_turn` rule); route `amendment-required` (in-PR amendment per `Decision Record impact: amends adr:0002-phase3-wake-substrate-standards-alignment`, recording that `next_turn` holds for direct messages while unseen broadcasts may be drained at session end).
+- **Core-Idiom Pre-Flight (`§1.9.6`):** Read `src/Neo.mjs`, `src/core/Base.mjs`, and `src/state/Provider.mjs` (plus `0019-aiconfig-reactive-provider-ssot.md`).
+- **Prescription checked:** `ai/services/memory-core/MailboxService.mjs`, `ai/mcp/server/memory-core/toolService.mjs`, `ai/mcp/server/memory-core/openapi.yaml`, and `learn/agentos/decisions/0002-phase3-wake-substrate-standards-alignment.md` — owns the concern:
+  1. `getMessageTool` in `toolService.mjs` passes `{recordRead: true}` as the second `callerOptions` argument (mirroring `listMessagesTool`'s `{recordSeen: true}`), while direct `MailboxService.getMessage` calls default `recordRead = false` so services/heartbeats never stamp by omission (`keepUnread: true`, `observer`, sender-only reads, `CAN_READ_INBOX_OF` reads, and legacy delivery-edgeless broadcasts leave read state untouched).
+  2. `mark_read` (`all: true`) gains boolean **`includeUnseenBroadcasts`** (default `false`), draining every unread `DELIVERED_TO` broadcast for the caller regardless of `seenAt` while keeping unseen `SENT_TO` direct messages unread and counted in `withheldUnseenCount`.
+
+Julia (Gemini 4 Carbon, Antigravity) · session 05580ab8-2f98-4b02-891c-75d444d212ec
+
+- 2026-11-25T13:41:43Z @neo-gemini-julia cross-referenced by PR #1925
+- 2026-11-25T14:34:05Z @neo-gemini-julia cross-referenced by #1927
+- 2026-11-25T14:36:30Z @neo-gemini-julia marked this issue as blocking #1927
+### @neo-gemini-julia - 2026-11-25T14:36:32Z
+
+Filed owned post-merge verification record #1927 (`blocked_by` #1900, assigned to `@neo-gemini-julia`) per PR #1925 `RA-3` to capture the live post-reload seat `get_message` + `mark_read({all: true, includeUnseenBroadcasts: true})` receipt (`AC-6`), link it back here, and file the `neomjs/neo-agent-skills` sunset/recovery runbook follow-up once Memory Core reloads onto merged `dev`.
+
+Julia (Gemini 4 Carbon, Antigravity) · session 05580ab8-2f98-4b02-891c-75d444d212ec
+
+- 2026-11-25T14:45:14Z @neo-gemini-julia referenced in commit `46013c1` - "feat(memory-core): return get_message readReceipt and reject dual unseen drain flags (#1900)"
+- 2026-11-25T15:04:40Z @tobiu referenced in commit `63e19a3` - "feat(memory-core): mark get_message read by default and add broadcast drain (#1900) (#1925)
+
+* feat(memory-core): mark get_message read by default and add broadcast drain (#1900)
+
+* feat(memory-core): return get_message readReceipt and reject dual unseen drain flags (#1900)"
+- 2026-11-25T15:04:42Z @tobiu closed this issue
+### @neo-gemini-julia - 2026-11-25T20:00:48Z
+
+### Post-Merge Live-Plane Verification Receipt (`#1900` `AC-6` via `#1927`)
+
+Verified on the live canonical Memory Core plane (`deployedRevision: "191aaaa7c98db873914720a00202d97fcd4b48cf"`, `startedAt: "2026-11-25T19:35:39.885Z"`, which includes `#1925` / `63e19a3f`) in session `05580ab8-2f98-4b02-891c-75d444d212ec` (`@neo-gemini-julia`):
+
+1. **Automatic `get_message` read-stamping (zero per-ID `mark_read` calls):**
+   - `get_message({messageId: "MESSAGE:c851901a-409a-4162-879f-bf57590e1425"})` (`sentAt: "2026-11-25T19:58:12.894Z"`) stamped and returned:
+     `{"readAt":"2026-11-25T19:58:28.281Z","readReceipt":{"status":"read","durable":true,"readAt":"2026-11-25T19:58:28.281Z"}}`
+2. **Unseen-broadcast drain preserving unseen direct messages (`mark_read({all: true, includeUnseenBroadcasts: true})`):**
+   - Pre-drain `list_messages({status: 'unread', projection: 'counts'})`: `unreadCount: 2` (`direct: 1` unseen `MESSAGE:475a670a-fbf1-4c72-ac75-4711d7fb3adb`, `broadcast: 1` unseen `MESSAGE:99654d7c-776e-43a5-8864-96de9de6f56f` from `@neo-gemini-maryam`).
+   - `mark_read({all: true, includeUnseenBroadcasts: true})` at `19:58:57.170Z` returned:
+     `{"status":"read","matchedCount":1,"readCount":1,"durableCount":1,"failureCount":0,"withheldUnseenCount":1}` — durably stamping unseen broadcast `MESSAGE:99654d7c` (`readAt: "2026-11-25T19:58:57.850Z"`) while withholding unseen direct message `MESSAGE:475a670a`!
+   - Subsequent `get_message({messageId: "MESSAGE:475a670a-fbf1-4c72-ac75-4711d7fb3adb"})` auto-stamped `readAt: "2026-11-25T19:59:28.093Z"` (`readReceipt: {status: "read", durable: true}`), leaving `unreadCount: 0`.
+
+🏛️ **Julia** · `@neo-gemini-julia` · Gemini 4 Carbon (High) · Antigravity · session `05580ab8-2f98-4b02-891c-75d444d212ec`
+
 

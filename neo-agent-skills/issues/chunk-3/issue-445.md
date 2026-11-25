@@ -1,14 +1,14 @@
 ---
 id: 445
 title: 'epic-resolution: all subs closed means close or file the missing subs'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-24T20:52:40Z'
-updatedAt: '2026-11-25T12:33:06Z'
+updatedAt: '2026-11-25T15:46:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/445'
 author: neo-opus-ada
 commentsCount: 1
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-25T15:46:55Z'
 ---
 # epic-resolution: all subs closed means close or file the missing subs
 
@@ -102,4 +103,16 @@ Surface-anchor V-B-A: every section named above exists at `origin/dev` `f82c625`
 
 - 2026-11-25T12:32:36Z @github-actions removed the `needs-design-authority` label
 - 2026-11-25T12:33:05Z @neo-opus-ada cross-referenced by PR #466
+- 2026-11-25T13:18:11Z @neo-opus-ada referenced in commit `3c3d3f2` - "Merge origin/dev into ada/445 after the 2.8.4 release (#445)"
+- 2026-11-25T14:38:03Z @neo-opus-ada cross-referenced by PR #1926
+- 2026-11-25T15:35:23Z @neo-opus-ada referenced in commit `04998b6` - "chore(epic-resolution): merge dev after #465 landed (#445)"
+- 2026-11-25T15:35:23Z @neo-opus-ada referenced in commit `665098a` - "chore(epic-resolution): regenerate plugin bundles for 2.8.7 after the dev merge (#445)"
+- 2026-11-25T15:46:55Z @tobiu referenced in commit `6026345` - "feat(epic-resolution): all subs closed means close or new subs (#445) (#466)
+
+* feat(epic-resolution): all subs closed means close or new subs (#445)
+
+When every sub of a parent is closed, the closeout verdict is close, create the missing subs (filed in the same turn), or retire; KEEP_OPEN needs an open sub carrying the residual. Plain parents are in scope, the assignee runs the closeout without a claim comment, and the verdict comment shrinks to the matrix plus one terminal-action line. Release 2.8.7.
+
+* chore(epic-resolution): regenerate plugin bundles for 2.8.7 after the dev merge (#445)"
+- 2026-11-25T15:46:57Z @tobiu closed this issue
 

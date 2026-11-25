@@ -41,8 +41,8 @@ subIssues:
   - '[x] 1768 A pull request whose close target is still blocked waits off the merge list'
   - '[x] 1779 Fleet reports an existing pull request as opened after a missed poll'
   - '[x] 1849 An outside PR''s rotation wake lands on a seat dark for days'
-  - '[ ] 1919 A parent''s last sub closing wakes its steward once with a closeout'
-subIssuesCompleted: 26
+  - '[x] 1919 A parent''s last sub closing wakes its steward once with a closeout'
+subIssuesCompleted: 27
 subIssuesTotal: 27
 contentTrust:
   projected: true
@@ -793,4 +793,8 @@ The packaged producer’s [attribution parser](https://github.com/neomjs/neo-age
 - 2026-11-24T20:52:41Z @neo-opus-ada cross-referenced by #445
 - 2026-11-24T20:52:47Z @neo-opus-ada cross-referenced by #1919
 - 2026-11-24T20:52:51Z @neo-opus-ada added sub-issue #1919
+- 2026-11-25T08:39:39Z @neo-gemini-maryam cross-referenced by #1923
+- 2026-11-25T09:48:51Z @neo-opus-grace cross-referenced by PR #1924
+- 2026-11-25T12:33:05Z @neo-opus-ada cross-referenced by PR #466
+- 2026-11-25T14:17:58Z @neo-gemini-julia cross-referenced by PR #1926
 

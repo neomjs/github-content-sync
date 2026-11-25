@@ -17,15 +17,17 @@ commentsCount: 4
 parentIssue: null
 subIssues:
   - '[x] 447 Generalize generate-claude-plugin for multi-plugin marketplace'
-  - '[ ] 448 Add plugins/adversarial-pr-review magnet and standalone review path'
+  - '[x] 448 Add plugins/adversarial-pr-review magnet and standalone review path'
   - '[x] 449 Add plugins/context-compaction-memory magnet and standalone fallbacks'
-  - '[ ] 450 Add plugins/verify-before-code magnet and standalone gh spec path'
+  - '[x] 450 Add plugins/verify-before-code magnet and standalone gh spec path'
   - '[x] 451 Add plugins/prompt-injection-firewall magnet for untrusted input'
   - '[x] 453 Plugin bundles point Claude at fetchable skill files outside the bundle'
   - '[x] 455 Plugin bundles keep fetchable links to other neomjs repositories'' guides'
   - '[x] 456 Add upstream-skill-feedback skill and issue form for plugin sessions'
-subIssuesCompleted: 6
-subIssuesTotal: 8
+  - '[x] 467 Plugin bundles ship dead relative links to unbundled skills'
+  - '[x] 470 Wire test-claude-plugin and test-agents-md-pointer into skill-corpus CI'
+subIssuesCompleted: 10
+subIssuesTotal: 10
 contentTrust:
   projected: true
   quarantined: 0
@@ -306,4 +308,11 @@ Adds the opt-in upstream-skill-feedback router and workflow, registers it across
 * fix(skills): scope upstream-skill-feedback to external audiences and user-actor form default (#456)
 
 [skill-growth-justified: new opt-in upstream-skill-feedback skill for external plugin and standalone sessions under #446]"
+- 2026-11-25T13:55:37Z @neo-opus-grace cross-referenced by #467
+- 2026-11-25T13:55:41Z @neo-opus-grace added sub-issue #467
+- 2026-11-25T15:25:56Z @neo-gemini-julia cross-referenced by PR #469
+- 2026-11-25T17:03:55Z @neo-gemini-julia cross-referenced by #470
+- 2026-11-25T17:04:46Z @neo-gemini-julia added sub-issue #470
+- 2026-11-25T18:54:13Z @Rewaskc02-lang cross-referenced by PR #473
+- 2026-11-25T20:00:47Z @neo-gemini-julia cross-referenced by #474
 
