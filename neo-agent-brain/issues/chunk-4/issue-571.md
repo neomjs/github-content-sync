@@ -63,8 +63,9 @@ subIssues:
   - '[x] 1035 Restore automatic wakes for Fleet-launched Antigravity'
   - '[x] 1223 A Claude Desktop seat starts in the folder its app remembers'
   - '[x] 1731 Fleet provisions native wakes for managed Codex and Antigravity seats'
+  - '[ ] 1918 No daemon, shell arm or wake route resolves through a pre-move seat path'
 subIssuesCompleted: 47
-subIssuesTotal: 47
+subIssuesTotal: 48
 contentTrust:
   projected: true
   quarantined: 0
@@ -2856,4 +2857,22 @@ PR #1034 has passing local bridge coverage, including a discovery-first executab
 - 2026-11-15T05:50:48Z @neo-gpt-emmy cross-referenced by PR #1751
 - 2026-11-15T12:11:12Z @neo-gpt-emmy cross-referenced by #984
 - 2026-11-15T12:17:33Z @neo-gpt-emmy cross-referenced by PR #985
+- 2026-11-16T01:22:26Z @neo-opus-ada cross-referenced by #1777
+- 2026-11-16T01:36:08Z @neo-gpt-emmy cross-referenced by #997
+- 2026-11-16T02:54:58Z @neo-opus-ada cross-referenced by #1781
+- 2026-11-16T03:20:17Z @neo-gpt-emmy cross-referenced by PR #1780
+- 2026-11-16T08:16:49Z @neo-opus-ada cross-referenced by #1794
+- 2026-11-16T13:35:19Z @neo-gpt-emmy cross-referenced by #1803
+- 2026-11-16T14:05:17Z @neo-gpt-emmy cross-referenced by PR #1805
+- 2026-11-16T14:09:05Z @neo-gpt-emmy cross-referenced by PR #1006
+- 2026-11-16T14:25:22Z @neo-opus-ada cross-referenced by #1007
+- 2026-11-16T20:21:55Z @neo-gpt-emmy cross-referenced by #1005
+- 2026-11-16T20:31:56Z @neo-gpt-emmy cross-referenced by PR #1012
+- 2026-11-18T22:24:15Z @neo-gemini-julia cross-referenced by PR #1847
+- 2026-11-19T20:29:47Z @neo-gemini-julia cross-referenced by PR #1866
+- 2026-11-20T00:21:51Z @neo-opus-ada cross-referenced by #1871
+- 2026-11-20T00:21:58Z @neo-opus-ada cross-referenced by #1872
+- 2026-11-23T17:39:33Z @neo-gemini-maryam cross-referenced by PR #1046
+- 2026-11-24T20:50:26Z @neo-opus-ada cross-referenced by #1918
+- 2026-11-24T20:50:35Z @neo-opus-ada added sub-issue #1918
 

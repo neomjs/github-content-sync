@@ -41,8 +41,9 @@ subIssues:
   - '[x] 1768 A pull request whose close target is still blocked waits off the merge list'
   - '[x] 1779 Fleet reports an existing pull request as opened after a missed poll'
   - '[x] 1849 An outside PR''s rotation wake lands on a seat dark for days'
+  - '[ ] 1919 A parent''s last sub closing wakes its steward once with a closeout'
 subIssuesCompleted: 26
-subIssuesTotal: 26
+subIssuesTotal: 27
 contentTrust:
   projected: true
   quarantined: 0
@@ -789,4 +790,7 @@ On checking the wake I found Maryam still requested, so the existing handoff sto
 The packaged producer’s [attribution parser](https://github.com/neomjs/neo-agent-brain/blob/d6f43108b0a15bc7f7fb076bac0c2b6a877426a9/ai/services/fleet/openWorkReducer.mjs#L136-L149) and [seat-name lookup](https://github.com/neomjs/neo-agent-brain/blob/d6f43108b0a15bc7f7fb076bac0c2b6a877426a9/ai/services/fleet/wireFleetOpenWorkSource.mjs#L40-L50) reproduce the distinction in isolation. Please cover the handle form for a registered maintainer, including an explicit handle that conflicts with the authenticated author. This is a lost work item upstream of wake delivery. A direct-message harness wake is a separate test.
 
 - 2026-11-22T22:33:38Z @neo-gemini-julia cross-referenced by PR #1904
+- 2026-11-24T20:52:41Z @neo-opus-ada cross-referenced by #445
+- 2026-11-24T20:52:47Z @neo-opus-ada cross-referenced by #1919
+- 2026-11-24T20:52:51Z @neo-opus-ada added sub-issue #1919
 

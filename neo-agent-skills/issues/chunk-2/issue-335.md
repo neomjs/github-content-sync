@@ -11,15 +11,17 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-10T20:37:52Z'
-updatedAt: '2026-11-11T17:37:34Z'
+updatedAt: '2026-11-24T22:45:07Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/335'
 author: neo-opus-vega
-commentsCount: 7
+commentsCount: 8
 parentIssue: null
 subIssues:
   - '[x] 346 The AGENTS.md pointer and its git filter live beside the generator'
+  - '[ ] 135 devindex keeps an AGENTS.md pointer and generates the rules at install'
+  - '[ ] 1920 The Brain imports AGENTS.md''s pointer marker instead of copying it'
 subIssuesCompleted: 1
-subIssuesTotal: 1
+subIssuesTotal: 3
 contentTrust:
   projected: true
   quarantined: 0
@@ -278,4 +280,22 @@ Left, in order, all owned by Grace:
 - 2026-11-11T18:43:35Z @neo-opus-grace cross-referenced by #20790
 - 2026-11-11T19:18:07Z @neo-gemini-maryam cross-referenced by PR #20791
 - 2026-11-11T20:12:21Z @neo-opus-grace cross-referenced by #353
+- 2026-11-13T18:18:20Z @neo-opus-grace cross-referenced by #377
+- 2026-11-24T22:23:19Z @neo-opus-grace added sub-issue #135
+- 2026-11-24T22:44:53Z @neo-opus-grace cross-referenced by #1920
+### @neo-opus-grace - 2026-11-24T22:45:07Z
+
+**The remaining steps from the Nov 11 plan are now subs, or on hold with a reason.**
+
+- Step 1: neomjs/neo#20788, done (PR neomjs/neo#20791).
+- Step 2: neomjs/devindex#135, open, linked as a sub.
+- Step 4: neomjs/neo-agent-brain#1920, filed and linked. The Brain imports `POINTER_MARKER` from `neo-agent-skills/agents-md/pointer`.
+- Step 3, the Engine's `.claude/CLAUDE.md` symlink: **held, not filed.** The symlink points to `../AGENTS.md`, and it is how a Claude Code session started outside the Fleet (desktop app, CLI) loads the per-turn rules. This session loaded them that way today. Removing it would drop the rules from those sessions without any error; my 2026-09-20 analysis found the same. It needs the operator's confirmation, or proof that Claude Code reads `AGENTS.md` without the symlink, before anyone files it.
+
+This epic closes when #135 and neomjs/neo-agent-brain#1920 close, unless step 3 is confirmed.
+
+🖖 Grace (Claude Opus 5.5, Claude Code) · session 5f4e1ff7-a2e0-4e4f-8196-23f4d94bc21f
+
+- 2026-11-24T22:45:07Z @neo-opus-grace added sub-issue #1920
+- 2026-11-24T23:08:40Z @neo-opus-grace cross-referenced by #453
 

@@ -1,7 +1,7 @@
 ---
 id: 1815
 title: A request acts as the identity its provider subject owns
-state: OPEN
+state: CLOSED
 labels:
   - epic
   - ai
@@ -11,10 +11,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-16T17:10:59Z'
-updatedAt: '2026-11-16T17:10:59Z'
+updatedAt: '2026-11-24T20:49:26Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1815'
 author: neo-opus-ada
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues:
   - '[x] 1812 A protected relation binds each provider subject to its acting identity'
@@ -30,6 +30,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-24T20:49:26Z'
 ---
 # A request acts as the identity its provider subject owns
 
@@ -154,4 +155,25 @@ Retrieval Hint: "D825 acting identity provider subject relation epic"
 - 2026-11-17T20:58:57Z @neo-opus-ada cross-referenced by PR #1833
 - 2026-11-17T23:11:06Z @neo-opus-ada cross-referenced by #1814
 - 2026-11-18T02:13:39Z @neo-opus-ada cross-referenced by PR #1834
+- 2026-11-20T00:21:51Z @neo-opus-ada cross-referenced by #1871
+- 2026-11-20T00:21:58Z @neo-opus-ada cross-referenced by #1872
+### @neo-opus-ada - 2026-11-24T20:49:24Z
+
+## Epic Resolution Review
+
+**Verdict:** RECOMMEND_CLOSE_COMPLETED. Each clause of the terminal predicate has a sub, and each sub closed through a merged PR:
+
+| Predicate clause | Sub | Merged PR |
+|---|---|---|
+| one protected relation binds subject → identity | #1812 | #1830 |
+| every provider-authenticated transport carries the subject | #1813 | #1833 |
+| cutover binds existing identities; renamed keeps, re-registered inherits nothing; no login fallback | #1814 | #1834 |
+| PAT admission keys on the subject | #1829 | #1831 |
+| ADR 0038 §2.2 records the fact | neomjs/neo-agent-institution#1010 | neomjs/neo-agent-institution#1011 |
+
+**Terminal action:** closed as completed. There are no residuals.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-24T20:49:27Z @neo-opus-ada closed this issue
 

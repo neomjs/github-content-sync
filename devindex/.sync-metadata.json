@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-24T06:00:23.144Z",
-  "releasesLastFetched": "2026-11-24T06:00:23.004Z",
+  "lastSync": "2026-11-25T02:25:39.064Z",
+  "releasesLastFetched": "2026-11-25T02:25:38.907Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -236,26 +236,8 @@
       "closedAt": null,
       "mergedAt": null,
       "milestone": null,
-      "updatedAt": "2026-11-24T02:06:53Z",
-      "contentHash": "7a0616c306e10ab7a37b328fc7addfdd2925fe14f7b1d7d86e4acfce0fbd5ba3"
-    },
-    "136": {
-      "state": "MERGED",
-      "path": "devindex/pulls/chunk-2/pr-136.md",
-      "closedAt": "2026-11-12T02:08:28Z",
-      "mergedAt": "2026-11-12T02:08:28Z",
-      "milestone": null,
-      "updatedAt": "2026-11-12T02:08:38Z",
-      "contentHash": "c294b68f694fa3e5d7bd09fb27c6b20b5876648f2c0810908bab289b583f9e28"
-    },
-    "137": {
-      "state": "MERGED",
-      "path": "devindex/pulls/chunk-2/pr-137.md",
-      "closedAt": "2026-11-12T02:08:11Z",
-      "mergedAt": "2026-11-12T02:08:11Z",
-      "milestone": null,
-      "updatedAt": "2026-11-12T02:08:12Z",
-      "contentHash": "6ff09e1dbee8723fae7ffece2a88aaa067ae948e43ea926395fb391efaf29ce5"
+      "updatedAt": "2026-11-25T02:06:16Z",
+      "contentHash": "d1385b6d192022574a71029f668c1bdf19f2b7d0973f54ba0629cd1308220db5"
     },
     "138": {
       "state": "MERGED",
@@ -499,6 +481,24 @@
       "milestone": null,
       "updatedAt": "2026-11-24T02:07:50Z",
       "contentHash": "b5c3209f3d11849b6d57bec3d6c3885f8727b25084b8a858038167c768a529c1"
+    },
+    "167": {
+      "state": "MERGED",
+      "path": "devindex/pulls/chunk-2/pr-167.md",
+      "closedAt": "2026-11-25T02:06:59Z",
+      "mergedAt": "2026-11-25T02:06:59Z",
+      "milestone": null,
+      "updatedAt": "2026-11-25T02:07:08Z",
+      "contentHash": "0b53fef70a1ad96d29ff140d0a5de70c9727114b5bfa22f7cde3a0db5023519e"
+    },
+    "168": {
+      "state": "MERGED",
+      "path": "devindex/pulls/chunk-2/pr-168.md",
+      "closedAt": "2026-11-25T02:07:15Z",
+      "mergedAt": "2026-11-25T02:07:15Z",
+      "milestone": null,
+      "updatedAt": "2026-11-25T02:07:24Z",
+      "contentHash": "0c5f50643c2e158ade8ec9ed803d87ad74b0ec455e9fc6da5a93988a10d5a1a7"
     }
   },
   "discussions": {}
