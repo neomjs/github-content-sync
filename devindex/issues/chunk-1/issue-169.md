@@ -1,7 +1,7 @@
 ---
 id: 169
 title: Upgrade to neo.mjs 14.0.0 with URL worker switch and mobile benchmark HUD
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-26T01:58:14Z'
-updatedAt: '2026-11-26T02:54:33Z'
+updatedAt: '2026-11-26T12:44:47Z'
 githubUrl: 'https://github.com/neomjs/devindex/issues/169'
 author: neo-gemini-julia
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-26T12:44:47Z'
 ---
 # Upgrade to neo.mjs 14.0.0 with URL worker switch and mobile benchmark HUD
 
@@ -115,4 +116,31 @@ Retrieval Hint: `"useVdomWorker" "bench=1" "MicroLoader" "devindex" "iPhone Safa
 - 2026-11-26T01:58:18Z @neo-gemini-julia added the `javascript` label
 - 2026-11-26T02:54:32Z @neo-gemini-julia cross-referenced by PR #171
 - 2026-11-26T03:54:25Z @neo-gemini-julia referenced in commit `c354a42` - "fix(devindex): exclude per-column warm-up sort from benchmark timing (#169)"
+- 2026-11-26T09:39:38Z @neo-gemini-julia referenced in commit `1491d5e` - "fix(devindex): migrate SCSS to v14 CSS and add GridDragScroll blank-frame benchmark (#169)"
+- 2026-11-26T10:03:02Z @neo-gemini-julia referenced in commit `72f3688` - "fix(devindex): support touch GridDragScroll fling and exact Welch-Satterthwaite CI (#169)"
+- 2026-11-26T11:10:24Z @neo-gemini-julia referenced in commit `1a7511d` - "fix(devindex): enforce fresh 2D benchmark gates, Fieller contrast, and 50k rank-filter timing (#169)"
+- 2026-11-26T11:10:24Z @neo-gemini-julia referenced in commit `c0ae7ab` - "chore(devindex): attach before-and-after review frames (#169)"
+- 2026-11-26T11:10:25Z @neo-gemini-julia referenced in commit `b699294` - "chore(devindex): drop temporary review frames (#169)"
+- 2026-11-26T11:50:19Z @neo-gemini-julia referenced in commit `7d7974d` - "fix(devindex): enforce 50k stream gate, same-cell 2D hops, sample-count gate, and quiescent witnesses (#169)"
+- 2026-11-26T12:08:02Z @neo-gemini-julia referenced in commit `a7db08e` - "fix(devindex): read locale-independent aria-rowcount first and disconnect LongTask observer (#169)"
+- 2026-11-26T12:44:46Z @tobiu referenced in commit `834de6d` - "feat(devindex): upgrade to neo.mjs 14.0.0 with URL worker switch and benchmark HUD (#169) (#171)
+
+* feat(devindex): upgrade to neo.mjs 14.0.0 with URL worker switch and benchmark HUD (#169)
+
+* fix(devindex): exclude per-column warm-up sort from benchmark timing (#169)
+
+* fix(devindex): migrate SCSS to v14 CSS and add GridDragScroll blank-frame benchmark (#169)
+
+* fix(devindex): support touch GridDragScroll fling and exact Welch-Satterthwaite CI (#169)
+
+* fix(devindex): enforce fresh 2D benchmark gates, Fieller contrast, and 50k rank-filter timing (#169)
+
+* chore(devindex): attach before-and-after review frames (#169)
+
+* chore(devindex): drop temporary review frames (#169)
+
+* fix(devindex): enforce 50k stream gate, same-cell 2D hops, sample-count gate, and quiescent witnesses (#169)
+
+* fix(devindex): read locale-independent aria-rowcount first and disconnect LongTask observer (#169)"
+- 2026-11-26T12:44:48Z @tobiu closed this issue
 

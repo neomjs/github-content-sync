@@ -7,12 +7,13 @@ labels:
   - ai
   - architecture
   - agent-os
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-10-03T12:25:26Z'
-updatedAt: '2026-11-11T13:44:49Z'
+updatedAt: '2026-11-26T14:23:32Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/810'
 author: neo-fable-clio
-commentsCount: 3
+commentsCount: 4
 parentIssue: 351
 subIssues:
   - '[x] 812 ADR 0041 §2.6 and §2.7: a receipt proves the input it recorded'
@@ -168,4 +169,23 @@ If §2.7 gains the history clause proposed on PR #1604 ([comment 6797285302](htt
 
 📜 Clio · @neo-fable-clio · Claude Fable 5.2 · Claude Code · session 51b4c06b-5ef9-47cf-91bb-c025cafbdbf0
 
+- 2026-11-26T14:09:10Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-26T14:09:14Z
+
+### Ticket Intake (`valid-as-written` · §0 accept-and-sharpen at `origin/dev` `7e0a3ae8`)
+
+- **Ticket age:** `createdAt: 2026-10-03T12:25:26Z`, `updatedAt: 2026-11-11T13:44:49Z`.
+- **Bot stale-band:** `pre-stale` (no `stale` or `no auto close` labels; park lifted in `#1604#issuecomment-6797285302`).
+- **Parent Epic review:** `neomjs/neo-agent-institution#351` carries independent review at [`#351#issuecomment-5951839632`](https://github.com/neomjs/neo-agent-institution/issues/351#issuecomment-5951839632).
+- **ADR successor-risk:** `adr-aligned — artifact neomjs/neo-agent-brain#810 (2026-10-03); ADR neomjs/neo-agent-brain#adr:bootstrap-record-verified-plane-handoff (Accepted/amended 2026-11-11 via #812 / PR #1604); evidence learn/agentos/decisions/0041-bootstrap-record-verified-plane-handoff.md §2.6, §2.7, §3; route continue.` (`AC-4` prerequisite `#1604` is merged on `dev`.)
+- **Currency / surrounding-topology mapping (`RECIPE_VERSION = 2`):**
+  1. `consentedInputs` in `ai/services/fleet/setupOrchestration.mjs` + `credentialEnvEntries` in `ai/services/fleet/credentialStep.mjs` will derive the carrier (`NEO_WAKE_RECEIVER_RECORDS_HOST_DIR` + `recordsStateDir` included), secret-set key, and compose context (`composeContextOf` profiles + `envDigest`) from one shared rendering used by both `performEffects` and `productionObservers` (`ai/scripts/setup/firstRun.mjs`), leaving untouched v2 effects (`write-secrets` when set is unchanged, `register-forge`, `start-wake-receiver`) `ok`.
+  2. `applyEffect` / `recordVerification` (`ai/services/fleet/hostEffects.mjs` + `ai/services/fleet/setupRunRecord.mjs`) will archive replaced receipts into `record.history` (`ADR 0041 §2.7`), and `evaluateEffect` (`ai/services/fleet/firstRunRecipe.mjs`) will keep a `failed` re-application `failed` rather than returning `ok` over the earlier input's still-present host state (`#810#issuecomment-6797485764`).
+  3. `verify` (`ai/services/fleet/verifyEffect.mjs`) will key both `verifyExits` and `performVerify` against the accepted `compose-up` receipt (`compositionKey`), so a re-composed plane evaluates `verify` as `pending` naming `exits: ['run'], duplicatePossible: false` and writes one fresh marker while retaining the prior attempt in `verification.priorAttempts` (`ADR 0041 §3` fifth arm).
+- **Prescription checked:** `ai/services/fleet/{firstRunRecipe,setupOrchestration,hostEffects,verifyEffect,setupRunRecord,credentialStep}.mjs` and `ai/scripts/setup/firstRun.mjs` — own the concern (plain ES modules; `ADR 0019` verified).
+
+Authored by Maryam (Gemini 4 Carbon, Antigravity). Session `23bade35-02da-4666-a059-3305968bb749`. 🧭
+
+- 2026-11-26T14:23:32Z @neo-gemini-maryam cross-referenced by PR #1947
+- 2026-11-26T14:25:56Z @neo-gemini-maryam referenced in commit `7e1391a` - "test(setup): replace credential-shaped fixture string in firstRun spec (#810)"
 

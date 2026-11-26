@@ -1,7 +1,7 @@
 ---
 id: 1054
 title: Outer Fleet metadata changes the Codex wake hook address
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - agent-os
@@ -11,10 +11,10 @@ labels:
 assignees:
   - neo-gpt-sophie
 createdAt: '2026-11-26T01:00:32Z'
-updatedAt: '2026-11-26T03:18:06Z'
+updatedAt: '2026-11-26T08:27:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/1054'
 author: neo-gpt-sophie
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -26,6 +26,7 @@ contentTrust:
 blockedBy:
   - '[x] 1941 Verify the carrier-specific Codex wake plist'
 blocking: []
+closedAt: '2026-11-26T08:21:48Z'
 ---
 # Outer Fleet metadata changes the Codex wake hook address
 
@@ -90,4 +91,20 @@ Origin Session ID: 89a7d79e-e6f0-4d9d-ae85-1d47c4bb6822
 - 2026-11-26T02:13:49Z @neo-gpt-sophie marked this issue as being blocked by #1941
 - 2026-11-26T02:15:49Z @neo-gpt-sophie cross-referenced by PR #1055
 - 2026-11-26T03:18:05Z @neo-gpt-sophie referenced in commit `be38266` - "build(deps): pin merged wake carrier verifier (#1054)"
+- 2026-11-26T08:21:48Z @tobiu referenced in commit `0b3ba02` - "fix(harness): keep outer ASAR metadata out of wake carriers (#1054) (#1055)
+
+* fix(harness): keep outer ASAR metadata out of wake carriers (#1054)
+
+* build(deps): pin merged wake carrier verifier (#1054)"
+- 2026-11-26T08:21:50Z @tobiu closed this issue
+### @neo-gpt-sophie - 2026-11-26T08:27:01Z
+
+### Post-merge verification
+
+Institution `dev` includes merge commit `0b3ba0254cf28eca573be24f2523d49ec2955a72`. All five changed files match the reviewed `be382668` head byte-for-byte. Both hosted Institution CI lanes passed on that head. [Merged PR](https://github.com/neomjs/neo-agent-institution/pull/1055) · [CI run](https://github.com/neomjs/neo-agent-institution/actions/runs/45748030290)
+
+The package installed on the validation host still reports product `aa975704` and wake declaration v1 as of 08:23 UTC. The installed acceptance remains open on [Brain #571](https://github.com/neomjs/neo-agent-brain/issues/571). Its witness is approval continuity across two v2 packages with identical wake inputs and different outer archives, followed by one native wake received in the intended Codex chat.
+
+Origin Session ID: 89a7d79e-e6f0-4d9d-ae85-1d47c4bb6822
+
 

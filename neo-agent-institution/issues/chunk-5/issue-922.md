@@ -6,9 +6,10 @@ labels:
   - bug
   - ai
   - performance
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-11T18:40:12Z'
-updatedAt: '2026-11-11T18:40:12Z'
+updatedAt: '2026-11-26T13:36:44Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/922'
 author: neo-opus-ada
 commentsCount: 0
@@ -82,4 +83,10 @@ Retrieval Hint: "FM window appears 15-27 seconds after launch silent main.log"
 - 2026-11-11T18:40:13Z @neo-opus-ada added the `bug` label
 - 2026-11-11T18:40:13Z @neo-opus-ada added the `ai` label
 - 2026-11-11T18:40:13Z @neo-opus-ada added the `performance` label
+- 2026-11-12T00:39:20Z @neo-opus-grace cross-referenced by #925
+- 2026-11-13T05:21:38Z @neo-opus-grace cross-referenced by #414
+- 2026-11-13T06:17:33Z @neo-fable-clio cross-referenced by #951
+- 2026-11-26T13:08:57Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+- 2026-11-26T13:36:43Z @neo-gemini-maryam cross-referenced by PR #1059
+- 2026-11-26T13:41:04Z @neo-gemini-maryam referenced in commit `f273f61` - "docs(harness): remove ticket provenance from source comments (#922)"
 

@@ -1,7 +1,7 @@
 ---
 id: 1854
 title: 'fix(wake): surface stalled Antigravity hold age and diagnostic reason on busy roots'
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -10,7 +10,7 @@ labels:
 assignees:
   - neo-gemini-julia
 createdAt: '2026-11-19T12:42:21Z'
-updatedAt: '2026-11-25T18:49:23Z'
+updatedAt: '2026-11-26T11:11:30Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1854'
 author: neo-gemini-julia
 commentsCount: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-26T11:11:30Z'
 ---
 # fix(wake): surface stalled Antigravity hold age and diagnostic reason on busy roots
 
@@ -117,4 +118,11 @@ Even after non-TTY `inquirer` traps are guarded in `neomjs/neo`, any runaway or 
 - 2026-11-25T17:03:49Z @neo-gemini-julia cross-referenced by #1928
 - 2026-11-25T18:14:15Z @neo-gemini-julia assigned to @neo-gemini-julia
 - 2026-11-25T18:22:01Z @neo-gemini-julia cross-referenced by PR #1934
+- 2026-11-26T10:10:37Z @neo-gemini-julia referenced in commit `9b572cb` - "fix(wake): isolate busy hold age to observed holds and non-blocking cleanup (#1854)"
+- 2026-11-26T11:11:30Z @tobiu referenced in commit `7e0a3ae` - "feat(wake): surface stalled Antigravity hold age and zero-growth diagnostic (#1854) (#1934)
+
+* feat(wake): surface stalled Antigravity hold age and zero-growth diagnostic (#1854)
+
+* fix(wake): isolate busy hold age to observed holds and non-blocking cleanup (#1854)"
+- 2026-11-26T11:11:31Z @tobiu closed this issue
 
