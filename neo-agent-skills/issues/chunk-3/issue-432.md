@@ -1,18 +1,19 @@
 ---
 id: 432
 title: Re-read PR diffs after compaction and add class-idiom review checks
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
   - architecture
   - model-experience
-assignees: []
+assignees:
+  - neo-gemini-maryam
 createdAt: '2026-11-21T04:39:11Z'
-updatedAt: '2026-11-21T04:42:04Z'
+updatedAt: '2026-11-26T02:20:55Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/432'
 author: neo-gemini-julia
-commentsCount: 0
+commentsCount: 1
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-26T02:20:55Z'
 ---
 # Re-read PR diffs after compaction and add class-idiom review checks
 
@@ -109,4 +111,39 @@ Retrieval Hint: "context-recovery compaction unsubmitted PR diff re-read core-id
 - 2026-11-21T04:39:13Z @neo-gemini-julia added the `ai` label
 - 2026-11-21T04:39:13Z @neo-gemini-julia added the `architecture` label
 - 2026-11-21T04:39:14Z @neo-gemini-julia added the `model-experience` label
+- 2026-11-23T22:04:55Z @neo-opus-grace cross-referenced by #439
+- 2026-11-26T01:37:11Z @neo-gemini-maryam assigned to @neo-gemini-maryam
+### @neo-gemini-maryam - 2026-11-26T01:38:31Z
+
+## Intake (Maryam): `valid-as-written` (with §0 retirement-trigger sharpening), claiming lane
+
+- **Prescription checked:**
+  - `.agents/skills/context-recovery/references/context-recovery-workflow.md` (§3 step 5) — owns post-compaction live-substrate verification before resuming an unsubmitted PR review (paired with `.agents/skills/context-recovery/references/standalone-context-recovery.md` step 5 for `--audience app` parity).
+  - `.agents/skills/pr-review/audits/core-idiom-audit.md` (`## The checks`) — owns conditional Neo class/instance idiom checks behind `pr-review-guide.md` §7.5.1, keeping `SKILL.md` routers at `0 B` delta and `pr-review-guide.md` (`COMBINED_BUDGETS`) untouched.
+- **§0 *Accept and sharpen* (`neomjs/neo#21737` currency check):** Verified against `neomjs/neo` `origin/dev` (`7370338e47`): `neomjs/neo#21737` has already shipped in `neomjs/neo/buildScripts/util/check-class-module-scope.mjs` (`SCAN_SURFACE = ['src/**/*.mjs', 'apps/**/*.mjs', 'examples/**/*.mjs']`, enforcing at most one top-level `ClassDeclaration` per file while allowing zero-class modules and leaving `className`-to-path unguarded). Consumer repositories (`neo-agent-brain`, `neo-agent-institution`, `devindex`, `neo-stage`) do not yet run `check-class-module-scope.mjs`, so check 6 scopes its consumer-repo retirement trigger strictly to the class-count check and keeps `className`-to-path active independently until a naming guard covers it.
+- **Contract Ledger Addendum (shipped `--audience app` parity row):**
+
+| Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
+|---|---|---|---|---|---|
+| `.agents/skills/context-recovery/references/standalone-context-recovery.md` §3 step 5 | `AGENTS.md §verify_before_assert`, `#432` | Mirrors §3.5 compaction diff invalidation for `--audience app` (`gh pr view <n> --json state,mergedAt,baseRefOid,headRefOid` + pinned `git diff <baseRefOid>...<headRefOid>` / GitHub compare or verified-unchanged `gh pr diff <n>`, refreshing on ref change) | Completed reviews verify PR/CI state only | Inline standalone payload (`SKILL.md` `0 B` delta) | `npm run lint` + `npm test` |
+
+- **Substrate enforcement sufficiency audit (`ticket-intake` §1.9.2):**
+  - Layer 4 (CI): Neither `reusable-pr-review.yml` nor `lint-skill-corpus.mjs` can detect whether a reviewer's `get_pull_request_diff` call occurred before or after a harness compaction boundary (`DISCIPLINE-ONLY`), nor can AST guards distinguish consumer-extensible label maps from private internal constants or subclass imports that defeat a base class's lazy `import()`. At-most-one-class-per-file count is mechanically enforced in `neomjs/neo` (`#21737`) and `MACHINE-ENFORCEABLE-CANDIDATE` across consumer repos; `className`-to-path remains `MACHINE-ENFORCEABLE-CANDIDATE` pending a dedicated naming guard.
+  - Layer 1 (`AGENTS.md`) & existing skills: `AGENTS.md §verify_before_assert` states a code check is spent the turn it ran, while `context-recovery-workflow.md` §3.5 currently checks only `list_pull_requests({believedOpen})` liveness, and `core-idiom-audit.md` (`2,560 B`) checks only batched `set()`, `Neo.get`, `state.Provider`, `initAsync`/`trap`, and stateful owner shape.
+- **Ticket reality & ADR successor-risk:**
+  - `Ticket age`: `createdAt: 2026-11-21T04:39:11Z`, `updatedAt: 2026-11-21T04:42:04Z` (`pre-stale`, no `stale` or `no auto close` labels).
+  - `Core-idiom pre-flight` (`§1.9.6`): `neomjs/neo` `src/core/Base.mjs`, `src/Neo.mjs`, `src/state/Provider.mjs`, and `.github/CODING_GUIDELINES.md` §3 `(11)`, §4 `(20)`, §8 `(34)` verified.
+  - `ADR successor-risk: adr-aligned — artifact neomjs/neo-agent-skills#432/2026-11-21; ADR neomjs/neo#adr:agents-md-compaction-taxonomy (Proposed/2026-05-15) & neomjs/neo#adr:skill-anatomy-and-authoring-contract (Proposed/2026-05-15); evidence .agents/skills/{context-recovery,pr-review}/; route continue.`
+- **Accretion budget:** Targeting `<= 0 B` net corpus byte delta across `.agents/skills` (`SKILL.md` routers untouched, `pr-review-guide.md` untouched).
+
+🧭 Maryam (`@neo-gemini-maryam`) · Gemini 4 Carbon · Antigravity · Session `23bade35-02da-4666-a059-3305968bb749`
+
+- 2026-11-26T01:44:46Z @neo-gemini-maryam cross-referenced by PR #475
+- 2026-11-26T02:04:03Z @neo-gemini-maryam referenced in commit `0b906e4` - "fix(skills): pin post-compaction diff refs and split class-count sunset (#432)"
+- 2026-11-26T02:20:55Z @tobiu referenced in commit `5431cda` - "docs(skills): re-read PR diffs after compaction and add class-idiom checks (#432) (#475)
+
+* docs(skills): re-read PR diffs after compaction and add class-idiom checks (#432)
+
+* fix(skills): pin post-compaction diff refs and split class-count sunset (#432)"
+- 2026-11-26T02:20:56Z @tobiu closed this issue
 

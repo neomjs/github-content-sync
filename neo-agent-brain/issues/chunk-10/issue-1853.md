@@ -9,10 +9,10 @@ labels:
   - agent-os
 assignees: []
 createdAt: '2026-11-19T12:41:19Z'
-updatedAt: '2026-11-21T13:51:08Z'
+updatedAt: '2026-11-26T00:11:04Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1853'
 author: neo-gemini-julia
-commentsCount: 10
+commentsCount: 11
 parentIssue: null
 subIssues:
   - '[x] 1861 Add Antigravity root+child ledger reader to seatCostReport.mjs'
@@ -375,5 +375,36 @@ Following `pull-request-workflow.md §9.1`, `pr-review-guide.md §5.2` rule 4, a
    - **Zero-CI Substrate & Contributor Intake:** Filed `neo-agent-skills#433`, `brain#1890`, `neo#21771` (`PR #21780`), `neo#21779`, and `neo#21783` (`good first issue`s), and reconciled `neo#20987` in place.
 
 — Julia (Gemini 4 Carbon High, Antigravity) · Session `664ca229-4bbd-4e00-ae41-008707688181` 🏛️
+
+- 2026-11-25T17:03:49Z @neo-gemini-julia cross-referenced by #1928
+- 2026-11-25T18:22:01Z @neo-gemini-julia cross-referenced by PR #1934
+### @neo-gemini-julia - 2026-11-26T00:11:04Z
+
+### `2026-11-22` – `2026-11-26` Multi-Day `Arm A1` / `Arm A2` Ledger & `53%` Pool Calibration (`@neo-gemini-julia`)
+
+- **Boot & Wake Verification (`2026-11-26T00:00Z`):**
+  - **Model & Window (`Arm A1`):** **Gemini 4 Carbon (High)** standalone (`512K` context ceiling active; `0` discretionary subagents spawned today; `<RULE>` `AGENTS.md` + `GEMINI.md` / `identity.md` loaded intact in conversation `f5dc9080-2ae6-4908-87cf-b91fa9ff9ab5`).
+  - **Wake Delivery:** `WAKE_SUB:b2ed6dfe-603f-4447-a716-fcb3204b73a5` (`status: "active"`, `routeDeliverable: true`, `routeDelivery: "push"`, `adapter: "primary-session"`, `http://host.docker.internal:3199/wake`).
+- **Provider-Dashboard Weekly Cap Calibration (`@tobiu` reading at `2026-11-26T00:00Z`):**
+  - Shared Google AI Ultra weekly pool stands at **`53%` remaining** (`~42%` net draw since the `2026-11-21T13:28Z` `~95%`-remaining extra reset across 4.5 active days of Engine `v14.0.0` release & post-cut convergence).
+
+#### Per-Seat Antigravity Ledger (`2026-11-22` – `2026-11-25` Full UTC Days, `seatCostReport.mjs`)
+
+| Date (UTC) | Seat & Arm | Calls `(root+child)` | `freshInput` | `cacheRead` (Hit %) | `coldPrefills >50K` | Compactions | `output` |
+|---|---|---:|---:|---:|---:|---:|---:|
+| `2026-11-22` | `@neo-gemini-julia` (`Arm A1`) | `2,212` (`2,212+0`) | `17,584,571` | `645,488,430` (`97.35%`) | `16` | `17` | `2,312,959` |
+| `2026-11-22` | `@neo-gemini-maryam` (`Arm A2`) | `2,288` (`2,215+73`) | `22,510,207` | `667,165,309` (`96.74%`) | `24` | `22` | `2,655,031` |
+| `2026-11-23` | `@neo-gemini-julia` (`Arm A1`) | `926` (`926+0`) | `11,247,854` | `257,441,266` (`95.81%`) | `16` | `10` | `1,097,294` |
+| `2026-11-23` | `@neo-gemini-maryam` (`Arm A2`) | `1,619` (`1,604+15`) | `26,333,125` | `475,885,650` (`94.76%`) | `38` | `21` | `2,123,973` |
+| `2026-11-24` | `@neo-gemini-julia` (`Arm A1`) | `599` (`546+53`*) | `16,314,128` | `143,671,021` (`89.80%`) | `39` | `7` | `882,083` |
+| `2026-11-24` | `@neo-gemini-maryam` (`Arm A2`) | `1,058` (`1,052+6`) | `13,427,043` | `293,252,465` (`95.62%`) | `22` | `10` | `1,362,886` |
+| `2026-11-25` | `@neo-gemini-julia` (`Arm A1`) | `1,017` (`1,017+0`) | `27,149,021` | `285,054,511` (`91.30%`) | `48` | `18` | `2,161,351` |
+| `2026-11-25` | `@neo-gemini-maryam` (`Arm A2`) | `1,565` (`1,547+18`) | `21,723,037` | `448,704,274` (`95.38%`) | `29` | `17` | `1,951,540` |
+
+*\*Note: `2026-11-24`'s `+53` child calls on `@neo-gemini-julia` were the operator-authorized `browser` subagent session (`3073363c`) submitting `plugins/neo` on `claude.ai/directory/manage` (`business#82`); all normal coding days (`11-22`, `11-23`, `11-25`) maintained strict `root + 0`.*
+
+- **Empirical Weekly Billable-Token Pool Calibration:** Across `2026-11-22`..`2026-11-25` (`4` full days), combined `freshInput + output` across both Gemini seats totaled **`170.74M` billable tokens** (`156.29M` `freshInput` + `14.45M` `output`, plus `3.22B` `cacheRead`), consuming `~42%` of the shared Google AI Ultra 7-day pool — placing the effective 2-seat weekly ceiling at **`~400M` `freshInput + output` tokens** under `94–97%` KV-cache hit rates (`~13×` the `30M` single-seat conservative placeholder in `seatCostReport.mjs`).
+
+— Julia (`@neo-gemini-julia`, Gemini 4 Carbon High, Antigravity) · Session `f5dc9080-2ae6-4908-87cf-b91fa9ff9ab5` 🏛️
 
 

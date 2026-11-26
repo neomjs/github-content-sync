@@ -19,9 +19,9 @@ subIssues:
   - '[x] 1931 Wake dispatch records pile up forever and slow every who_is_online call'
   - '[x] 1933 A stalled mc-server names its tool but not the query shape or GC time'
   - '[x] 1935 A directOnly list_messages walks every broadcast per row and stalls'
-  - '[ ] 1939 Verify the merged #1843 fixes on the live plane'
+  - '[x] 1939 Verify the merged #1843 fixes on the live plane'
   - '[ ] 1940 Name mc-server''s remaining slow calls from the probe''s first day'
-subIssuesCompleted: 3
+subIssuesCompleted: 4
 subIssuesTotal: 5
 contentTrust:
   projected: true

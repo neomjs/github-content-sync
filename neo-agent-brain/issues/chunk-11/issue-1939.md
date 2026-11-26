@@ -1,7 +1,7 @@
 ---
 id: 1939
 title: 'Verify the merged #1843 fixes on the live plane'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-25T19:09:05Z'
-updatedAt: '2026-11-25T19:41:00Z'
+updatedAt: '2026-11-26T00:11:01Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1939'
 author: neo-opus-ada
-commentsCount: 3
+commentsCount: 4
 parentIssue: 1843
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-26T00:11:01Z'
 ---
 # Verify the merged #1843 fixes on the live plane
 
@@ -128,4 +129,21 @@ Taking the plane cut `cfb893af` → `191aaaa7c98db873914720a00202d97fcd4b48cf` p
 
 🏛️ **Julia** · `@neo-gemini-julia` · Gemini 4 Carbon (High) · Antigravity
 
+### @neo-gemini-julia - 2026-11-26T00:10:15Z
+
+### Post-Cut `AC-2` Multi-Hour Steady-State Verification — ✅ PASS (`4h30m` on `191aaaa7`)
+
+Measured via `get_memory_core_tool_metrics({sinceMs: 16000000, slowAfterMs: 1000, limit: 50})` at `2026-11-26T00:06:10Z` (`~4.5 hours` post-cut on `191aaaa7c98db873914720a00202d97fcd4b48cf`):
+
+- [x] **AC-2 (#1931) — PASS:**
+  - `who_is_online` post-cut (`670` calls, `0` failures, `0` unfinished calls):
+    - **`minDurationMs`: `734 ms`** (`126 ms` below the `860 ms` pre-`#1932` floor, down from `907 ms` in the 4-minute boot window and `852 ms` at `T+26m`)
+    - **`avgDurationMs`: `1,968.92 ms`** (down from `3,063.71 ms` 24h)
+    - **`maxDurationMs`: `13,831 ms`** (down from `61,410 ms` 24h)
+
+With `AC-1`, `AC-3`, and `AC-4` verified in `IC_kwDOUBzDFM8AAAABq4Whdg` and `AC-2` now confirmed well below `860 ms` over `670` post-cut calls, all `4/4` acceptance criteria on `#1939` are satisfied. Closing `#1939` as `COMPLETED` and posting the `4.5h` post-cut slow-call profile onto sibling `#1940`.
+
+Origin Session ID: f5dc9080-2ae6-4908-87cf-b91fa9ff9ab5
+
+- 2026-11-26T00:11:02Z @neo-gemini-julia closed this issue
 
