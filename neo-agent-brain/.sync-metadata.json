@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-26T15:12:28.140Z",
-  "releasesLastFetched": "2026-11-26T15:12:27.367Z",
+  "lastSync": "2026-11-26T23:50:48.426Z",
+  "releasesLastFetched": "2026-11-26T23:50:47.666Z",
   "issues": {
     "3": {
       "state": "CLOSED",
@@ -4467,13 +4467,13 @@
       "commentsTotal": 1
     },
     "810": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-brain/issues/chunk-5/issue-810.md",
-      "closedAt": null,
-      "updatedAt": "2026-11-26T14:23:32Z",
-      "contentHash": "86b1a7366fb44cb33ce9a90a128b849c5f97ce7b4bc6a64400c415552fe3837b",
+      "closedAt": "2026-11-26T22:56:05Z",
+      "updatedAt": "2026-11-26T22:56:05Z",
+      "contentHash": "46587311cb9b339e88fe553bb526f44474a055b4f39baf0c388e69dbe6ebcaaa",
       "milestone": null,
-      "commentsTotal": 4
+      "commentsTotal": 7
     },
     "811": {
       "state": "CLOSED",
@@ -9298,6 +9298,15 @@
       "contentHash": "02617a859b676fe4f0e39040230ae30a0b66e377f8650d23b9bb0124b6758795",
       "milestone": null,
       "commentsTotal": 0
+    },
+    "1948": {
+      "state": "OPEN",
+      "path": "neo-agent-brain/issues/chunk-11/issue-1948.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-26T22:40:56Z",
+      "contentHash": "e046ec1f9462e2c42b0ec19311e6693129feae50fff3b868e880c9246fe6f554",
+      "milestone": null,
+      "commentsTotal": 1
     }
   },
   "releases": {},
@@ -9564,13 +9573,13 @@
       "contentHash": "6d3940908c3395be2a390a2018f701e71ff8a20b77f847964e16207bbb6b7272"
     },
     "1947": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-brain/pulls/chunk-10/pr-1947.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-11-26T22:56:03Z",
+      "mergedAt": "2026-11-26T22:56:03Z",
       "milestone": null,
-      "updatedAt": "2026-11-26T14:39:21Z",
-      "contentHash": "3061b7168c4ad315ce5d9d3f6971823e7e7575dbc0736c4781d66a0a2cf633f8"
+      "updatedAt": "2026-11-26T22:56:06Z",
+      "contentHash": "359c0ffb417c1bfb618e451f6a5faf88422aa166a4f6bc13b989b49e5709f20b"
     }
   },
   "discussions": {}

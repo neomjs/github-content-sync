@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-26T05:01:15.457Z",
-  "releasesLastFetched": "2026-11-26T05:01:14.815Z",
+  "lastSync": "2026-11-26T23:50:53.967Z",
+  "releasesLastFetched": "2026-11-26T23:50:53.228Z",
   "issues": {
     "5": {
       "state": "OPEN",
@@ -2233,19 +2233,28 @@
       "contentHash": "af68f585d95beb1382430963cfb083d6004f428f18bd8f26b9150ef17d44a448",
       "milestone": null,
       "commentsTotal": 0
+    },
+    "476": {
+      "state": "OPEN",
+      "path": "neo-agent-skills/issues/chunk-3/issue-476.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-26T18:18:03Z",
+      "contentHash": "02302af24b58653db2f24ade59e2d51be0339d786e53d178ad0df55fac50f0b3",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "477": {
+      "state": "OPEN",
+      "path": "neo-agent-skills/issues/chunk-3/issue-477.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-26T23:44:37Z",
+      "contentHash": "c91b2be469b90a27a5e63fb476c73ec592178414a7e831ceffbb99f93821fcca",
+      "milestone": null,
+      "commentsTotal": 0
     }
   },
   "releases": {},
   "pulls": {
-    "418": {
-      "state": "MERGED",
-      "path": "neo-agent-skills/pulls/chunk-2/pr-418.md",
-      "closedAt": "2026-11-17T14:09:40Z",
-      "mergedAt": "2026-11-17T14:09:40Z",
-      "milestone": null,
-      "updatedAt": "2026-11-17T14:09:42Z",
-      "contentHash": "77ebeb2e7f896c6760501e3be13a93e33e8c2a43aae757638c9cfd848ed9a089"
-    },
     "419": {
       "state": "MERGED",
       "path": "neo-agent-skills/pulls/chunk-2/pr-419.md",
@@ -2506,6 +2515,15 @@
       "milestone": null,
       "updatedAt": "2026-11-26T02:20:56Z",
       "contentHash": "6cb4e5fb3d63745e6e2a091f2cf598e2ac9afd4dd2f3c65eeb3d49c9faf24525"
+    },
+    "478": {
+      "state": "OPEN",
+      "path": "neo-agent-skills/pulls/chunk-3/pr-478.md",
+      "closedAt": null,
+      "mergedAt": null,
+      "milestone": null,
+      "updatedAt": "2026-11-26T23:49:03Z",
+      "contentHash": "82deebfd3a76d3a0ab2b94eb430f56d85982f92efd405353d647c50dd621db05"
     }
   },
   "discussions": {}
