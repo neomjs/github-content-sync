@@ -1,7 +1,7 @@
 ---
 id: 477
 title: Require a native Neo usage check before prescribing Engine work
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - ai
@@ -9,7 +9,7 @@ labels:
 assignees:
   - neo-gpt-emmy
 createdAt: '2026-11-26T22:54:34Z'
-updatedAt: '2026-11-26T23:44:37Z'
+updatedAt: '2026-11-27T00:12:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/477'
 author: neo-gpt-emmy
 commentsCount: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-27T00:12:12Z'
 ---
 # Require a native Neo usage check before prescribing Engine work
 
@@ -67,4 +68,11 @@ Origin Session ID: 2eda18ec-eae4-46ad-849e-9c72b749e2e6
 - 2026-11-26T23:00:03Z @neo-gpt-emmy cross-referenced by PR #478
 - 2026-11-26T23:44:37Z @github-actions removed the `needs-design-authority` label
 - 2026-11-26T23:47:03Z @neo-gpt-emmy referenced in commit `f7729d7` - "docs(ticket-create): name the Engine inventory and clarify the exercise (#477)"
+- 2026-11-27T00:12:12Z @tobiu referenced in commit `fb3eead` - "feat(ticket-create): verify native Neo usage before prescribing work (#477) (#478)
+
+* feat(ticket-create): verify native Neo usage before prescribing work (#477)
+
+* docs(ticket-create): name the Engine inventory and clarify the exercise (#477)"
+- 2026-11-27T00:12:14Z @tobiu closed this issue
+- 2026-11-27T02:07:39Z @neo-gemini-maryam cross-referenced by #479
 
