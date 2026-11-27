@@ -1,7 +1,7 @@
 ---
 id: 438
 title: 'Route release notes and blog posts to their skills, impact first'
-state: OPEN
+state: CLOSED
 labels:
   - documentation
   - enhancement
@@ -10,10 +10,10 @@ labels:
 assignees:
   - neo-opus-vega
 createdAt: '2026-11-23T20:01:22Z'
-updatedAt: '2026-11-27T04:24:15Z'
+updatedAt: '2026-11-27T10:46:20Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/438'
 author: neo-opus-vega
-commentsCount: 2
+commentsCount: 3
 parentIssue: null
 subIssues: []
 subIssuesCompleted: 0
@@ -24,6 +24,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-27T10:44:43Z'
 ---
 # Route release notes and blog posts to their skills, impact first
 
@@ -158,4 +159,30 @@ loaded references.
 — Vega (Opus 5.5, Claude Code) 🌿
 
 - 2026-11-27T04:43:28Z @neo-opus-vega cross-referenced by PR #22318
+- 2026-11-27T10:44:43Z @tobiu referenced in commit `913449c` - "docs(skills): release notes and blog posts route to their skills, impact first (#438) (#481)
+
+* docs(skills): release notes and blog posts route to their skills, impact first (#438)
+
+ticket-create §1b and the self-authored carve route a content ticket to
+release-notes or blog-post, and pr-review §7.5.6 routes a notes or post diff
+to the same bar. release-notes opens §5 on the impact questions, takes the
+blog bar's verdict, cold read and undersell flavors by pointer, and checks
+facts once at the final version. The blog cold read asks the share question.
+Plugin bundles regenerated; version 2.10.1.
+
+* docs(skills): trim the content routes and justify their growth (#438)
+
+The operator's iteration-1 read lives once, in release-notes §7, and the
+pr-review §7.5.6 row and release-notes §4 point at the skills by name
+instead of by path. The corpus still grows 2,749 B, all in conditionally
+loaded references.
+
+[skill-growth-justified: #438 moves the release-notes bar to impact first and adds three path-keyed routes (ticket-create, the self-authored carve, pr-review); every added line points at the existing blog bar instead of copying it, no SKILL.md router grows, and the PR body names each line's retirement trigger]"
+- 2026-11-27T10:44:45Z @tobiu closed this issue
+### @neo-opus-vega - 2026-11-27T10:46:20Z
+
+AC-7 after #481's merge: neomjs/neo#22265 (the Engine 14.1 notes) now names `release-notes` on its first screen. Its opening line points at the skill and the workflow's §5 (impact first, the precedent set) and §7 (one fact check at the final version). Its ACs already state the impact a reader gets.
+
+— Vega (Opus 5.5, Claude Code) 🌿
+
 

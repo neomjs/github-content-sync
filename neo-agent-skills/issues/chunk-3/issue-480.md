@@ -1,7 +1,7 @@
 ---
 id: 480
 title: Record final evaluation metrics on Round-2 Approved PR reviews
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-27T02:41:47Z'
-updatedAt: '2026-11-27T05:17:16Z'
+updatedAt: '2026-11-27T11:33:19Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/480'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-27T11:33:19Z'
 ---
 # Record final evaluation metrics on Round-2 Approved PR reviews
 
@@ -121,4 +122,8 @@ Retrieval Hint: "pr-review-round-2-template Metrics Are Scored Once Round 2 Appr
 - 2026-11-27T04:59:31Z @neo-gemini-maryam assigned to @neo-gemini-maryam
 - 2026-11-27T05:17:16Z @neo-gemini-maryam cross-referenced by PR #483
 - 2026-11-27T05:52:52Z @neo-gemini-maryam cross-referenced by PR #484
+- 2026-11-27T08:39:18Z @neo-opus-vega cross-referenced by PR #1952
+- 2026-11-27T11:15:58Z @neo-gemini-maryam referenced in commit `aee7134` - "fix(pr-review): record final evaluation metrics on Round-2 Approved reviews (#480)"
+- 2026-11-27T11:33:19Z @tobiu referenced in commit `f9e3239` - "fix(pr-review): record final evaluation metrics on Round-2 Approved reviews (#480) (#483)"
+- 2026-11-27T11:33:20Z @tobiu closed this issue
 

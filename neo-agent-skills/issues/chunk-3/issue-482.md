@@ -1,14 +1,14 @@
 ---
 id: 482
 title: Shared PR guards compare a merge checkout with a stale base
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
-  - needs-design-authority
-assignees: []
+assignees:
+  - neo-gpt-sophie
 createdAt: '2026-11-27T04:29:18Z'
-updatedAt: '2026-11-27T04:29:28Z'
+updatedAt: '2026-11-27T14:08:57Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-skills/issues/482'
 author: neo-gpt-sophie
 commentsCount: 0
@@ -22,6 +22,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-27T14:08:57Z'
 ---
 # Shared PR guards compare a merge checkout with a stale base
 
@@ -39,7 +40,7 @@ On that exact checked-out commit, `node buildScripts/util/check-file-sizes.mjs -
 
 [The reusable `guards` job](https://github.com/neomjs/neo-agent-skills/blob/v2.9.4/.github/workflows/reusable-pr-baseline.yml#L441-L489) uses the default pull-request merge checkout and injects the event base SHA as `BASE_SHA`. The separate `PR baseline` job checks out the contributor head.
 
-Design authority: [Skills #436](https://github.com/neomjs/neo-agent-skills/issues/436) gives the caller guards the PR base in history and the live body. [Skills #427](https://github.com/neomjs/neo-agent-skills/issues/427) requires a real same-head evaluation on body edits.
+Design authority: "After neo-agent-skills#427 it gives each guard the base's history and the live body (`BASE_SHA`, `BODY_FILE`)." [Skills #436](https://github.com/neomjs/neo-agent-skills/issues/436) · [Engine #21504](https://github.com/neomjs/neo/issues/21504).
 
 ## The Fix
 
@@ -72,7 +73,7 @@ Decision Record impact: none.
 
 Live latest-open + closed sweep: checked the latest 20 open Skills issues and open and closed searches for baseline guards and synthetic merge base; 47 open. Prior #436 and #427 are linked above. A2A: no matching claim in the latest 30 messages. Memory and own-assignment searches surfaced no open equivalent.
 
-Handoff: @neo-opus-grace, maintainer of the existing guards contract. Shared CI workflow repair.
+Owner: @neo-gpt-sophie. Grace is the prior guards contract maintainer. Initial peer handoff and the exact replay are already recorded.
 
 Origin Session ID: 89a7d79e-e6f0-4d9d-ae85-1d47c4bb6822
 Retrieval Hint: "PR Baseline edited synthetic merge first parent BASE_SHA DomAccess false enrollment"
@@ -83,4 +84,14 @@ Retrieval Hint: "PR Baseline edited synthetic merge first parent BASE_SHA DomAcc
 - 2026-11-27T04:29:20Z @neo-gpt-sophie added the `bug` label
 - 2026-11-27T04:29:20Z @neo-gpt-sophie added the `ai` label
 - 2026-11-27T04:29:28Z @github-actions added the `needs-design-authority` label
+- 2026-11-27T09:48:17Z @neo-gpt-sophie assigned to @neo-gpt-sophie
+- 2026-11-27T09:48:26Z @github-actions removed the `needs-design-authority` label
+- 2026-11-27T09:56:19Z @neo-gpt-sophie cross-referenced by PR #486
+- 2026-11-27T10:50:13Z @neo-gpt-sophie referenced in commit `b8b3a7c` - "fix(ci): pair shared guards with the checked-out merge base (#482)"
+- 2026-11-27T11:39:02Z @neo-gpt-sophie referenced in commit `6f11115` - "fix(ci): pair shared guards with the checked-out merge base (#482)"
+- 2026-11-27T12:09:45Z @neo-gpt-sophie referenced in commit `3462c35` - "fix(ci): pair shared guards with the checked-out merge base (#482)"
+- 2026-11-27T14:08:57Z @tobiu referenced in commit `c3b2a52` - "fix(ci): pair shared guards with the checked-out merge base (#482) (#486)"
+- 2026-11-27T14:08:59Z @tobiu closed this issue
+- 2026-11-27T14:15:48Z @neo-gpt-sophie cross-referenced by #22356
+- 2026-11-27T14:18:49Z @neo-gpt-sophie cross-referenced by PR #22357
 

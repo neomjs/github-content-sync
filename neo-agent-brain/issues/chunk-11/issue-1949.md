@@ -1,7 +1,7 @@
 ---
 id: 1949
 title: Validate and prefer final evaluation metrics on Round-2 Approved reviews
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-gemini-maryam
 createdAt: '2026-11-27T02:41:49Z'
-updatedAt: '2026-11-27T05:17:21Z'
+updatedAt: '2026-11-27T11:20:12Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1949'
 author: neo-gemini-maryam
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-27T11:20:12Z'
 ---
 # Validate and prefer final evaluation metrics on Round-2 Approved reviews
 
@@ -41,7 +42,7 @@ In `neomjs/neo-agent-brain`, `PullRequestService` (`manage_pr_review` and `valid
 1. **Pre-submit & post-submit validator parity + missing Round-2 `APPROVED` metrics:**
    - Once `neomjs/neo-agent-skills#480` requires `### 📊 Final Evaluation Metrics` on Round-2 `Approved` / `Approve+Follow-Up` reviews, `PullRequestService` must enforce the exact same grammar (`6` numeric `0–100` scores + `1` categorical `[EFFORT_PROFILE]`, or `N/A — Cycle 1 was Micro-Review` per `neomjs/neo-agent-skills#64`) so `manage_pr_review` and `validate_pr_review_body` agree 100% with `check-pr-review-body.mjs` (`neomjs/neo-agent-brain#1492` parity invariant).
 2. **Latest-Approval metric precedence in graph / evaluation consumers:**
-   - Any Brain evaluation or ingestion reader aggregating evaluation metrics across a PR's reviews must prefer the **latest `APPROVED` review's final metrics** over earlier `CHANGES_REQUESTED` scores on the same review chain, while keeping historical pre-cutover approvals readable via legacy fallback.
+   - Verify whether any Brain evaluation or ingestion reader aggregates evaluation metrics across a PR's reviews; if none exists in Brain code, enforcing final metrics on the Round-2 `APPROVED` review text via `neomjs/neo-agent-skills#480` + `#1952` resolves the precedence record at the source.
 
 ## The Architectural Reality
 
@@ -49,23 +50,24 @@ In `neomjs/neo-agent-brain`, `PullRequestService` (`manage_pr_review` and `valid
   - **6 numeric `0–100` scores:** `[ARCH_ALIGNMENT]`, `[CONTENT_COMPLETENESS]`, `[EXECUTION_QUALITY]`, `[PRODUCTIVITY]`, `[IMPACT]`, `[COMPLEXITY]`.
   - **1 categorical `[EFFORT_PROFILE]`:** `Quick Win | Heavy Lift | Maintenance | Architectural Pillar` (never treated as numeric!).
 - `PullRequestService.mjs` inspects Round-2 `**Status:**` (`L4157`) and fetches prior PR reviews in `#validateRound2PrReviewCarry()` (`L4206+`):
-  - Cited Round 1 was full form + Round 2 `Status` is `Approved` / `Approve+Follow-Up` → require all 7 `VISIBLE_PR_REVIEW_ANCHORS` (`6` numeric `0–100` + `1` categorical `[EFFORT_PROFILE]`).
+  - Cited Round 1 was full form + Round 2 `Status` is `Approved` / `Approve+Follow-Up` → require all 7 evaluation-metric tags (`6` numeric `0–100` + `1` categorical `[EFFORT_PROFILE]`).
   - Cited Round 1 was `Micro-Review` + Round 2 `Status` is `Approved` → accept `N/A — Cycle 1 was Micro-Review` (and refuse a fake `N/A — Cycle 1 was Micro-Review` claim if Round 1 was full form).
   - Round 2 `Status` is `Comment` (`STILL_OPEN`) → metrics not required.
+- **Brain reader audit (`git grep` across `ai/`, verified in `#1952` Round 1/2):** Outside `PullRequestService.mjs`, the 7 evaluation-metric tags appear only as prompt prose in `ai/services/ingestion/ConceptDiscoveryService.mjs` (`L33`, `L163`, `L506`); other Brain review readers (`focusV1Section`, `issueFocusSections`, `review-cost-meter`) read distinct fields, so zero Brain code readers parse evaluation-metric tags directly.
 
 ## The Fix
 
-1. **Sync `PullRequestService.mjs` Round-2 validation with `neomjs/neo-agent-skills#480`:**
-   - Update `getRound2PrReviewTemplateValidationFailure()` and `#validateRound2PrReviewCarry()` in `ai/services/github-workflow/PullRequestService.mjs` to enforce `6` numeric `0–100` scores + `1` categorical `[EFFORT_PROFILE]` on Round-2 `Approved` / `Approve+Follow-Up` reviews (or verified `N/A — Cycle 1 was Micro-Review` when `pr_number` is supplied), running the identical full (`Maintenance` profile), micro, and `Comment` test fixtures as `neomjs/neo-agent-skills#480`.
-2. **Ensure Latest-Approval precedence in Brain review-metric readers:**
-   - Add/verify a canonical helper resolving a PR's effective evaluation metrics (`6` numeric + `1` categorical `[EFFORT_PROFILE]`) from the **latest `APPROVED` review carrying metrics** on the review chain, with legacy fallback for historical pre-cutover Round-2 approvals lacking metrics.
-3. **Unit test parity in `PullRequestService.spec.mjs`** covering full (`Maintenance` profile), `Micro-Review` `N/A` (valid + spoofed), `Comment` (`STILL_OPEN`), and Latest-Approval precedence over Round-1 `CHANGES_REQUESTED` scores.
+1. **Sync `PullRequestService.mjs` validation with `neomjs/neo-agent-skills#480`:**
+   - Update `getRound2PrReviewTemplateValidationFailure()`, `getCanonicalPrReviewTemplateValidationFailure()`, and `#validateRound2PrReviewCarry()` in `ai/services/github-workflow/PullRequestService.mjs` to enforce `6` numeric `0–100` integer scores + `1` categorical `[EFFORT_PROFILE]` on Round-2 `Approved` / `Approve+Follow-Up` and canonical/follow-up reviews (or verified `N/A — Cycle 1 was Micro-Review` when `pr_number` is supplied), running the identical full (`Maintenance` profile), micro, and `Comment` test fixtures as `neomjs/neo-agent-skills#480`.
+2. **Verify Brain review-metric readers:**
+   - Confirm via `git grep` that no Brain code reader aggregates evaluation-metric tags outside `PullRequestService.mjs`, so carrying final metrics on Round-2 `APPROVED` reviews via `neomjs/neo-agent-skills#483` + `#1952` resolves AC-3 without dead service helpers.
+3. **Unit test parity in `PullRequestService.spec.mjs`** covering full (`Maintenance` profile), `Micro-Review` `N/A` (valid + spoofed), and `Comment` (`STILL_OPEN`).
 
 ## Contract Ledger Matrix
 
 | Target Surface | Source of Authority | Proposed Behavior | Fallback | Docs | Evidence |
 |---|---|---|---|---|---|
-| `ai/services/github-workflow/PullRequestService.mjs` (`validatePrReviewBody`, `managePrReview`) | `neomjs/neo-agent-skills#480`, `#34`, `#1492`, `D#22305` | Requires `6` numeric `0–100` scores + `1` categorical `[EFFORT_PROFILE]` on Round-2 `Approved` / `Approve+Follow-Up` reviews (or verified `N/A — Cycle 1 was Micro-Review`); keeps `Status: Comment` exempt and `- [ ]` checklists forbidden | Legacy historical Round-2 approvals remain readable via fallback | JSDoc on `PullRequestService.mjs` | `PullRequestService.spec.mjs` (shared fixtures with `skills#480`) |
+| `ai/services/github-workflow/PullRequestService.mjs` (`validatePrReviewBody`, `managePrReview`) | `neomjs/neo-agent-skills#480`, `#34`, `#1492`, `D#22305` | Requires `6` numeric `0–100` integer scores + `1` categorical `[EFFORT_PROFILE]` on Round-2 `Approved` / `Approve+Follow-Up` and canonical/follow-up reviews (or verified `N/A — Cycle 1 was Micro-Review`); keeps `Status: Comment` exempt and `- [ ]` checklists forbidden | Legacy historical Round-2 approvals remain untouched on GitHub | JSDoc on `PullRequestService.mjs` | `PullRequestService.spec.mjs` (shared fixtures with `skills#480`) |
 
 Decision Record impact: none.
 
@@ -73,7 +75,7 @@ Decision Record impact: none.
 
 - [ ] `PullRequestService#validatePrReviewBody` and `PullRequestService#managePrReview` enforce `6` numeric `0–100` scores + `1` categorical `[EFFORT_PROFILE]` (`Quick Win | Heavy Lift | Maintenance | Architectural Pillar`) on Round-2 `Approved` / `Approve+Follow-Up` reviews in lockstep with `neomjs/neo-agent-skills#480` (verified on shared `Maintenance`, `Micro-Review`, and `Comment` fixtures).
 - [ ] `#validateRound2PrReviewCarry` verifies `N/A — Cycle 1 was Micro-Review` against the cited Round-1 review body (passes when Cycle 1 was `PR Micro-Review`, fails when Cycle 1 was full-form).
-- [ ] Effective PR evaluation-metric resolution prefers post-fix Round-2 `APPROVED` metrics (`6` numeric + `1` categorical) over pre-fix Round-1 `CHANGES_REQUESTED` metrics, with legacy fallback for historical approvals.
+- [ ] Effective PR evaluation-metric resolution prefers post-fix Round-2 `APPROVED` metrics (`6` numeric + `1` categorical) over pre-fix Round-1 `CHANGES_REQUESTED` metrics, with legacy fallback for historical approvals — **verified with zero Brain code readers (`git grep` confirms metric tags appear outside `PullRequestService.mjs` only as prose in `ConceptDiscoveryService.mjs:33,163,506`, so the Round-2 `APPROVED` review text enforced by `#1952` + `neomjs/neo-agent-skills#483` carries the final metrics directly)**.
 - [ ] Unit specs in `PullRequestService.spec.mjs` pass.
 
 ## Out of Scope
@@ -91,7 +93,7 @@ Decision Record impact: none.
 - Related Brain tickets: #34 and #1492 (closed).
 
 Structure-map gate (§1c): `ai/services/github-workflow/PullRequestService.mjs` (`5,056` LOC) verified directly in `../neo-agent-brain`.
-Live latest-open + closed sweep: checked latest 25 open (`154` open at creation in `neomjs/neo-agent-brain`, red band; read `#34`, `#167`, `#1492`) at `2026-11-27T02:38Z`; updated with `D#22305` `STEP_BACK` Check 2 at `2026-11-27T02:58Z`.
+Live latest-open + closed sweep: checked latest 25 open (`154` open at creation in `neomjs/neo-agent-brain`, red band; read `#34`, `#167`, `#1492`) at `2026-11-27T02:38Z`; updated with `D#22305` `STEP_BACK` Check 2 at `2026-11-27T02:58Z` and `#1952` Round-1 AC-3 no-reader audit at `2026-11-27T10:53Z`.
 
 Origin Session ID: 23bade35-02da-4666-a059-3305968bb749
 
@@ -108,4 +110,11 @@ Retrieval Hint: "PullRequestService Round 2 Approved final evaluation metrics 6 
 - 2026-11-27T05:17:21Z @neo-gemini-maryam cross-referenced by PR #1952
 - 2026-11-27T05:27:04Z @neo-opus-vega cross-referenced by PR #483
 - 2026-11-27T05:52:52Z @neo-gemini-maryam cross-referenced by PR #484
+- 2026-11-27T10:52:52Z @neo-gemini-maryam referenced in commit `2b9ff55` - "fix(review): drop unconsumed evaluation-metric resolver and dead anchor list (#1949)"
+- 2026-11-27T11:20:12Z @tobiu referenced in commit `debe6f2` - "fix(review): validate and prefer final evaluation metrics on Round-2 approvals (#1949) (#1952)
+
+* fix(review): validate and prefer final evaluation metrics on Round-2 approvals (#1949)
+
+* fix(review): drop unconsumed evaluation-metric resolver and dead anchor list (#1949)"
+- 2026-11-27T11:20:13Z @tobiu closed this issue
 
