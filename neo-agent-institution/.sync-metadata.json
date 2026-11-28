@@ -1,6 +1,6 @@
 {
-  "lastSync": "2026-11-27T18:57:41.831Z",
-  "releasesLastFetched": "2026-11-27T18:57:40.844Z",
+  "lastSync": "2026-11-28T01:58:39.578Z",
+  "releasesLastFetched": "2026-11-28T01:58:38.864Z",
   "issues": {
     "1": {
       "state": "CLOSED",
@@ -4368,11 +4368,29 @@
       "commentsTotal": 0
     },
     "1071": {
-      "state": "OPEN",
+      "state": "CLOSED",
       "path": "neo-agent-institution/issues/chunk-5/issue-1071.md",
+      "closedAt": "2026-11-27T19:50:52Z",
+      "updatedAt": "2026-11-27T19:50:52Z",
+      "contentHash": "1ce519d82e225ff2afd7593086a98c5c9aea2608e973022d5573ad6edddbadd7",
+      "milestone": null,
+      "commentsTotal": 0
+    },
+    "1073": {
+      "state": "OPEN",
+      "path": "neo-agent-institution/issues/chunk-5/issue-1073.md",
       "closedAt": null,
-      "updatedAt": "2026-11-27T18:28:32Z",
-      "contentHash": "5d737963349446202a228ace34184300322a2ffc8cd9a12786d57fd7b456a3de",
+      "updatedAt": "2026-11-28T01:39:11Z",
+      "contentHash": "f8c12645d4e462e9e706f48d7b5e326147694d2ffe0968eebccfae6e6b7da6a1",
+      "milestone": null,
+      "commentsTotal": 2
+    },
+    "1074": {
+      "state": "OPEN",
+      "path": "neo-agent-institution/issues/chunk-5/issue-1074.md",
+      "closedAt": null,
+      "updatedAt": "2026-11-27T23:46:49Z",
+      "contentHash": "c8391c1bc22a73cb0e652a9e5817441ba925250a94bb7967e6c192cc37a44a75",
       "milestone": null,
       "commentsTotal": 0
     }
@@ -4641,13 +4659,13 @@
       "contentHash": "ca3da98fa3c7d7366bad4353bdb4d4440539a0b5c050b00a857f4d8f2853c4b6"
     },
     "1072": {
-      "state": "OPEN",
+      "state": "MERGED",
       "path": "neo-agent-institution/pulls/chunk-6/pr-1072.md",
-      "closedAt": null,
-      "mergedAt": null,
+      "closedAt": "2026-11-27T19:50:50Z",
+      "mergedAt": "2026-11-27T19:50:50Z",
       "milestone": null,
-      "updatedAt": "2026-11-27T18:34:27Z",
-      "contentHash": "141646411e0a15734838e55b46551d352723237cb88c757975e40a468cb0b430"
+      "updatedAt": "2026-11-27T19:53:04Z",
+      "contentHash": "8de1e9c14ae980e95a0c9f345f9e566a13f20e6a609ed4dc8d2968164e2734e8"
     }
   },
   "discussions": {

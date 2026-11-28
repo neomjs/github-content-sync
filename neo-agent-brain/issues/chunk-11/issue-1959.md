@@ -1,7 +1,7 @@
 ---
 id: 1959
 title: 'The in-memory graph cache never evicts, so mc-server''s heap grows to OOM'
-state: OPEN
+state: CLOSED
 labels:
   - bug
   - ai
@@ -9,10 +9,10 @@ labels:
 assignees:
   - neo-opus-ada
 createdAt: '2026-11-27T17:37:05Z'
-updatedAt: '2026-11-27T17:57:20Z'
+updatedAt: '2026-11-27T20:57:02Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1959'
 author: neo-opus-ada
-commentsCount: 1
+commentsCount: 2
 parentIssue: 1843
 subIssues: []
 subIssuesCompleted: 0
@@ -23,6 +23,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-27T19:49:54Z'
 ---
 # The in-memory graph cache never evicts, so mc-server's heap grows to OOM
 
@@ -122,4 +123,28 @@ The `hasPermission` scan is also a CPU cost of its own: it walks all ~500k cache
 
 Memory Core's Database now carries a bound from memoryService.graphCacheMaxNodes (60,000, NEO_MC_GRAPH_CACHE_MAX_NODES) and pins the populations other services read straight from the cache: WAKE_SUBSCRIPTION nodes and PermissionService's grant edges with their endpoints. Eviction runs on the macrotask after a request, so no caller that loads and then iterates in one synchronous flow sees it."
 - 2026-11-27T17:57:19Z @neo-opus-ada cross-referenced by PR #1960
+- 2026-11-27T19:49:54Z @tobiu referenced in commit `442f2d3` - "fix(graph): bound the Memory Core graph cache (#1959) (#1960)
+
+* fix(graph): evict least-recent cache nodes with their edges (#1959)
+
+The cache tracked only vicinity anchors in its LRU, kept edges forever, and ran no collector while maxGraphNodes was null, so a long-lived process held every node and edge it touched. Every node entering the cache is now tracked through the nodes Store's mutate event; past the bound the collector evicts the least recent down to 80 %, removes their incident edges, clears both ends' vicinity marks, never writes to storage, and waits while a transaction runs.
+
+* feat(memory-core): bound the graph cache, pin what services scan (#1959)
+
+Memory Core's Database now carries a bound from memoryService.graphCacheMaxNodes (60,000, NEO_MC_GRAPH_CACHE_MAX_NODES) and pins the populations other services read straight from the cache: WAKE_SUBSCRIPTION nodes and PermissionService's grant edges with their endpoints. Eviction runs on the macrotask after a request, so no caller that loads and then iterates in one synchronous flow sees it."
+- 2026-11-27T19:49:56Z @tobiu closed this issue
+### @neo-opus-ada - 2026-11-27T20:57:02Z
+
+**Post-cut regression: the bound thrashes on message projection.** The plane was cut to `00762332` (contains #1960) at 20:49:24Z.
+
+The bound is live: `maxGraphNodes` reads 60000. At 20:52:08Z the cache held 48,024 nodes and 37,090 edges, which is the 80 % post-eviction floor (48,000). Since then, mc-server's event loop blocks for 70–85 s at a time: 81.2 s ending 20:51:20Z, 85.3 s ending 20:52:28Z, 70.2 s ending 20:53:21Z, 83.0 s ending 20:55:17Z. The CPU sits at 96 % of its one-core quota.
+
+In `mc_event_loop_block`, the 85.3 s block had a single job in flight, `job:message-graph-projection:2`, and the 70 s and 83 s blocks carry `message-graph-projection` too. The mechanism reads off the code. An eviction clears the vicinity mark at both ends of every evicted edge. A projection's identity hubs then reload their whole vicinities, which pushes the cache back over the bound, and the next collection evicts them again. The old code (`46228e03`) had blocks of 7–21 s in the same post-boot window.
+
+Mitigation, pending the operator's approval (the auto-mode classifier refused it): set the live `GraphService.db.maxGraphNodes` to `null` through the container-local inspector. A restart restores the configured bound. A durable fix gets its own ticket.
+
+⚖️ **Ada** · `@neo-opus-ada` · Claude Opus 5.5 · Claude Code
+
+- 2026-11-27T21:03:13Z @neo-opus-ada cross-referenced by #1964
+- 2026-11-27T21:05:53Z @neo-opus-ada cross-referenced by PR #1965
 

@@ -23,10 +23,11 @@ subIssues:
   - '[x] 1940 Name mc-server''s remaining slow calls from the probe''s first day'
   - '[x] 1954 Mailbox reads block mc-server''s event loop for 10 to 24 seconds'
   - '[x] 1955 Most long mc-server event-loop blocks name no tool call'
-  - '[ ] 1958 The integrity repair blocks mc-server''s event loop 7–10 s every 70 s'
-  - '[ ] 1959 The in-memory graph cache never evicts, so mc-server''s heap grows to OOM'
-subIssuesCompleted: 7
-subIssuesTotal: 9
+  - '[x] 1958 The integrity repair blocks mc-server''s event loop 7–10 s every 70 s'
+  - '[x] 1959 The in-memory graph cache never evicts, so mc-server''s heap grows to OOM'
+  - '[x] 1964 The graph-cache bound thrashes: each message projection stalls 70–85 s'
+subIssuesCompleted: 10
+subIssuesTotal: 10
 contentTrust:
   projected: true
   quarantined: 0
@@ -438,4 +439,8 @@ The fix gets its own sub. The other retained sites are leads for the same pass, 
 - 2026-11-27T17:37:06Z @neo-opus-ada cross-referenced by #1959
 - 2026-11-27T17:37:13Z @neo-opus-ada added sub-issue #1959
 - 2026-11-27T17:57:19Z @neo-opus-ada cross-referenced by PR #1960
+- 2026-11-27T19:40:01Z @neo-opus-ada cross-referenced by PR #1963
+- 2026-11-27T21:03:13Z @neo-opus-ada cross-referenced by #1964
+- 2026-11-27T21:03:20Z @neo-opus-ada added sub-issue #1964
+- 2026-11-27T21:05:53Z @neo-opus-ada cross-referenced by PR #1965
 

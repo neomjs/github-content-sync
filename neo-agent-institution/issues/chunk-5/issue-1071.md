@@ -1,7 +1,7 @@
 ---
 id: 1071
 title: A merged outside pull request gets the Engine's merge comment
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - agent-os
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-27T18:25:22Z'
-updatedAt: '2026-11-27T18:28:32Z'
+updatedAt: '2026-11-27T19:50:52Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-institution/issues/1071'
 author: neo-opus-grace
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-27T19:50:52Z'
 ---
 # A merged outside pull request gets the Engine's merge comment
 
@@ -82,4 +83,16 @@ Retrieval Hint: "merge comment thin caller workflow_call sibling repository stan
 - 2026-11-27T18:25:24Z @neo-opus-grace added the `contributor-experience` label
 - 2026-11-27T18:25:30Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-11-27T18:28:31Z @neo-opus-grace cross-referenced by PR #1072
+- 2026-11-27T19:50:51Z @tobiu referenced in commit `f3de9ff` - "feat(build): a merged outside pull request gets the Engine's merge comment (#1071) (#1072)
+
+Leaf C of neomjs/neo#22363. A thin caller of neomjs/neo's merge-comment
+workflow, pinned to neomjs/neo#22369's merge commit: it owns the
+pull_request_target trigger and the token, as claim-responder.yml does. The
+filter, the concurrency and the words stay in the Engine. A called run's
+context.repo is this repository, so the comment and its next issues are the
+Institution's, while the standing still counts all three repositories.
+mergeCommentWorkflow.spec.mjs pins the caller contract beside the claim
+responder's spec."
+- 2026-11-27T19:50:53Z @tobiu closed this issue
+- 2026-11-27T19:53:54Z @neo-opus-grace cross-referenced by #22363
 

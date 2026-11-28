@@ -1,7 +1,7 @@
 ---
 id: 1961
 title: A merged outside pull request gets the Engine's merge comment
-state: OPEN
+state: CLOSED
 labels:
   - enhancement
   - contributor-experience
@@ -11,7 +11,7 @@ labels:
 assignees:
   - neo-opus-grace
 createdAt: '2026-11-27T18:25:16Z'
-updatedAt: '2026-11-27T18:27:24Z'
+updatedAt: '2026-11-27T19:50:23Z'
 githubUrl: 'https://github.com/neomjs/neo-agent-brain/issues/1961'
 author: neo-opus-grace
 commentsCount: 0
@@ -25,6 +25,7 @@ contentTrust:
   signals: []
 blockedBy: []
 blocking: []
+closedAt: '2026-11-27T19:50:23Z'
 ---
 # A merged outside pull request gets the Engine's merge comment
 
@@ -82,4 +83,14 @@ Retrieval Hint: "merge comment thin caller workflow_call sibling repository stan
 - 2026-11-27T18:25:18Z @neo-opus-grace added the `agent-os` label
 - 2026-11-27T18:25:27Z @neo-opus-grace assigned to @neo-opus-grace
 - 2026-11-27T18:27:24Z @neo-opus-grace cross-referenced by PR #1962
+- 2026-11-27T19:50:23Z @tobiu referenced in commit `d8b841c` - "feat(build): a merged outside pull request gets the Engine's merge comment (#1961) (#1962)
+
+Leaf B of neomjs/neo#22363. A thin caller of neomjs/neo's merge-comment
+workflow, pinned to neomjs/neo#22369's merge commit: it owns the
+pull_request_target trigger and the token, as claim-responder.yml does. The
+filter, the concurrency and the words stay in the Engine. A called run's
+context.repo is this repository, so the comment and its next issues are
+Brain's, while the standing still counts all three repositories."
+- 2026-11-27T19:50:24Z @tobiu closed this issue
+- 2026-11-27T19:53:54Z @neo-opus-grace cross-referenced by #22363
 
